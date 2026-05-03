@@ -79,8 +79,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(BinXCAFDrivers_DocumentRetrievalDriver)
-%wrap_handle(BinXCAFDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -177,7 +175,7 @@ Constructor.
 		 BinXCAFDrivers_DocumentRetrievalDriver();
 
 		/****** BinXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
-		/****** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ******/
+		/****** md5 signature: 853906140084c3b7e755413ade2e920e ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -192,12 +190,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
-
-%make_alias(BinXCAFDrivers_DocumentRetrievalDriver)
 
 %extend BinXCAFDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -224,7 +220,7 @@ Constructor.
 		 BinXCAFDrivers_DocumentStorageDriver();
 
 		/****** BinXCAFDrivers_DocumentStorageDriver::AttributeDrivers ******/
-		/****** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ******/
+		/****** md5 signature: 853906140084c3b7e755413ade2e920e ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -239,12 +235,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
-
-%make_alias(BinXCAFDrivers_DocumentStorageDriver)
 
 %extend BinXCAFDrivers_DocumentStorageDriver {
 	%pythoncode {

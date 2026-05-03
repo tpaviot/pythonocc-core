@@ -82,27 +82,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(StepAP203_CcDesignApproval)
-%wrap_handle(StepAP203_CcDesignCertification)
-%wrap_handle(StepAP203_CcDesignContract)
-%wrap_handle(StepAP203_CcDesignDateAndTimeAssignment)
-%wrap_handle(StepAP203_CcDesignPersonAndOrganizationAssignment)
-%wrap_handle(StepAP203_CcDesignSecurityClassification)
-%wrap_handle(StepAP203_CcDesignSpecificationReference)
-%wrap_handle(StepAP203_Change)
-%wrap_handle(StepAP203_ChangeRequest)
-%wrap_handle(StepAP203_StartRequest)
-%wrap_handle(StepAP203_StartWork)
-%wrap_handle(StepAP203_HArray1OfApprovedItem)
-%wrap_handle(StepAP203_HArray1OfCertifiedItem)
-%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
-%wrap_handle(StepAP203_HArray1OfClassifiedItem)
-%wrap_handle(StepAP203_HArray1OfContractedItem)
-%wrap_handle(StepAP203_HArray1OfDateTimeItem)
-%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
-%wrap_handle(StepAP203_HArray1OfSpecifiedItem)
-%wrap_handle(StepAP203_HArray1OfStartRequestItem)
-%wrap_handle(StepAP203_HArray1OfWorkItem)
 /* end handles declaration */
 
 /* templates */
@@ -149,6 +128,16 @@ typedef NCollection_Array1<StepAP203_PersonOrganizationItem> StepAP203_Array1OfP
 typedef NCollection_Array1<StepAP203_SpecifiedItem> StepAP203_Array1OfSpecifiedItem;
 typedef NCollection_Array1<StepAP203_StartRequestItem> StepAP203_Array1OfStartRequestItem;
 typedef NCollection_Array1<StepAP203_WorkItem> StepAP203_Array1OfWorkItem;
+typedef NCollection_HArray1<StepAP203_ApprovedItem> StepAP203_HArray1OfApprovedItem;
+typedef NCollection_HArray1<StepAP203_CertifiedItem> StepAP203_HArray1OfCertifiedItem;
+typedef NCollection_HArray1<StepAP203_ChangeRequestItem> StepAP203_HArray1OfChangeRequestItem;
+typedef NCollection_HArray1<StepAP203_ClassifiedItem> StepAP203_HArray1OfClassifiedItem;
+typedef NCollection_HArray1<StepAP203_ContractedItem> StepAP203_HArray1OfContractedItem;
+typedef NCollection_HArray1<StepAP203_DateTimeItem> StepAP203_HArray1OfDateTimeItem;
+typedef NCollection_HArray1<StepAP203_PersonOrganizationItem> StepAP203_HArray1OfPersonOrganizationItem;
+typedef NCollection_HArray1<StepAP203_SpecifiedItem> StepAP203_HArray1OfSpecifiedItem;
+typedef NCollection_HArray1<StepAP203_StartRequestItem> StepAP203_HArray1OfStartRequestItem;
+typedef NCollection_HArray1<StepAP203_WorkItem> StepAP203_HArray1OfWorkItem;
 /* end typedefs declaration */
 
 /*******************************
@@ -170,7 +159,7 @@ Empty constructor.
 		 StepAP203_ApprovedItem();
 
 		/****** StepAP203_ApprovedItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -185,7 +174,7 @@ Description
 -----------
 Recognizes a kind of ApprovedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ConfigurationEffectivity from StepRepr 4 -> ConfigurationItem from StepRepr 5 -> SecurityClassification from StepBasic 6 -> ChangeRequest from StepAP203 7 -> Change from StepAP203 8 -> StartRequest from StepAP203 9 -> StartWork from StepAP203 10 -> Certification from StepBasic 11 -> Contract from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_ApprovedItem::Certification ******/
 		/****** md5 signature: e4fcd85461a5932963bf7a1ac4f009a4 ******/
@@ -358,13 +347,13 @@ Empty constructor.
 		 StepAP203_CcDesignApproval();
 
 		/****** StepAP203_CcDesignApproval::Init ******/
-		/****** md5 signature: b0f6754ad5bfa2ccbf314441d1ced319 ******/
+		/****** md5 signature: a6f7e6ae994e9cc851d431a6ed461e0f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aApprovalAssignment_AssignedApproval: StepBasic_Approval
-aItems: StepAP203_HArray1OfApprovedItem
+aItems: NCollection_HArray1<StepAP203_ApprovedItem
 
 Return
 -------
@@ -374,28 +363,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Approval> & aApprovalAssignment_AssignedApproval, const opencascade::handle<StepAP203_HArray1OfApprovedItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_Approval> & aApprovalAssignment_AssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem> > & aItems);
 
 		/****** StepAP203_CcDesignApproval::Items ******/
-		/****** md5 signature: 3e0c43c9a1b902045c545b63f098a5be ******/
+		/****** md5 signature: d9ad87797e1ee24dfb00bcefb360443b ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfApprovedItem>
+opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfApprovedItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem>> Items();
 
 		/****** StepAP203_CcDesignApproval::SetItems ******/
-		/****** md5 signature: cdf24d3db5cd0ede0924b4ea77f68c65 ******/
+		/****** md5 signature: 426486a592fc53400723444fb149d7f7 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfApprovedItem
+Items: NCollection_HArray1<StepAP203_ApprovedItem
 
 Return
 -------
@@ -405,12 +394,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfApprovedItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignApproval)
 
 %extend StepAP203_CcDesignApproval {
 	%pythoncode {
@@ -437,13 +424,13 @@ Empty constructor.
 		 StepAP203_CcDesignCertification();
 
 		/****** StepAP203_CcDesignCertification::Init ******/
-		/****** md5 signature: 6d47bab477dd75efcf248739eacd81e1 ******/
+		/****** md5 signature: d4eb4f7275deebc1d6e57bb9fc1eadca ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aCertificationAssignment_AssignedCertification: StepBasic_Certification
-aItems: StepAP203_HArray1OfCertifiedItem
+aItems: NCollection_HArray1<StepAP203_CertifiedItem
 
 Return
 -------
@@ -453,28 +440,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Certification> & aCertificationAssignment_AssignedCertification, const opencascade::handle<StepAP203_HArray1OfCertifiedItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_Certification> & aCertificationAssignment_AssignedCertification, const opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem> > & aItems);
 
 		/****** StepAP203_CcDesignCertification::Items ******/
-		/****** md5 signature: 82fb4d8199447a39079d491c5ef747c2 ******/
+		/****** md5 signature: 9dcfdbbaff08303ab70420f56ce7be76 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfCertifiedItem>
+opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfCertifiedItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem>> Items();
 
 		/****** StepAP203_CcDesignCertification::SetItems ******/
-		/****** md5 signature: 729eb60287db29f9f5f440a44def8231 ******/
+		/****** md5 signature: 855599bc9e26587e5f215a7d9cf54dd0 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfCertifiedItem
+Items: NCollection_HArray1<StepAP203_CertifiedItem
 
 Return
 -------
@@ -484,12 +471,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfCertifiedItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignCertification)
 
 %extend StepAP203_CcDesignCertification {
 	%pythoncode {
@@ -516,13 +501,13 @@ Empty constructor.
 		 StepAP203_CcDesignContract();
 
 		/****** StepAP203_CcDesignContract::Init ******/
-		/****** md5 signature: 0625c9f2e1cc037237e83e188d1a1520 ******/
+		/****** md5 signature: e6bf079c2b29633e92d20648664ce7df ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aContractAssignment_AssignedContract: StepBasic_Contract
-aItems: StepAP203_HArray1OfContractedItem
+aItems: NCollection_HArray1<StepAP203_ContractedItem
 
 Return
 -------
@@ -532,28 +517,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Contract> & aContractAssignment_AssignedContract, const opencascade::handle<StepAP203_HArray1OfContractedItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_Contract> & aContractAssignment_AssignedContract, const opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem> > & aItems);
 
 		/****** StepAP203_CcDesignContract::Items ******/
-		/****** md5 signature: 4029d34d684086ba4581879e50159de2 ******/
+		/****** md5 signature: 7edd88cd99bfc01cba1e209d3d8c38df ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfContractedItem>
+opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfContractedItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem>> Items();
 
 		/****** StepAP203_CcDesignContract::SetItems ******/
-		/****** md5 signature: 14f59215e3e32347cf5f2e87c15a0c33 ******/
+		/****** md5 signature: f852b41a9c5fc86c3630d540430acdc1 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfContractedItem
+Items: NCollection_HArray1<StepAP203_ContractedItem
 
 Return
 -------
@@ -563,12 +548,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfContractedItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignContract)
 
 %extend StepAP203_CcDesignContract {
 	%pythoncode {
@@ -595,14 +578,14 @@ Empty constructor.
 		 StepAP203_CcDesignDateAndTimeAssignment();
 
 		/****** StepAP203_CcDesignDateAndTimeAssignment::Init ******/
-		/****** md5 signature: c9caa4bd465b7af0e2319487aa1fc334 ******/
+		/****** md5 signature: af69f41f674a5d69f3e71886005b1528 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDateAndTimeAssignment_AssignedDateAndTime: StepBasic_DateAndTime
 aDateAndTimeAssignment_Role: StepBasic_DateTimeRole
-aItems: StepAP203_HArray1OfDateTimeItem
+aItems: NCollection_HArray1<StepAP203_DateTimeItem
 
 Return
 -------
@@ -612,28 +595,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DateAndTime> & aDateAndTimeAssignment_AssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aDateAndTimeAssignment_Role, const opencascade::handle<StepAP203_HArray1OfDateTimeItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_DateAndTime> & aDateAndTimeAssignment_AssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aDateAndTimeAssignment_Role, const opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem> > & aItems);
 
 		/****** StepAP203_CcDesignDateAndTimeAssignment::Items ******/
-		/****** md5 signature: b1c2a88e6d352404197fe738da682c5e ******/
+		/****** md5 signature: b3607aff882dfc103164c5bad1fc74a5 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfDateTimeItem>
+opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfDateTimeItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem>> Items();
 
 		/****** StepAP203_CcDesignDateAndTimeAssignment::SetItems ******/
-		/****** md5 signature: d90d59ab538a0d627c493c5a27b3e195 ******/
+		/****** md5 signature: 321d3b04d616db63a1a038a600a4d1e7 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfDateTimeItem
+Items: NCollection_HArray1<StepAP203_DateTimeItem
 
 Return
 -------
@@ -643,12 +626,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfDateTimeItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignDateAndTimeAssignment)
 
 %extend StepAP203_CcDesignDateAndTimeAssignment {
 	%pythoncode {
@@ -675,14 +656,14 @@ Empty constructor.
 		 StepAP203_CcDesignPersonAndOrganizationAssignment();
 
 		/****** StepAP203_CcDesignPersonAndOrganizationAssignment::Init ******/
-		/****** md5 signature: 7f084c2e757b7b7baed5b21ec699c363 ******/
+		/****** md5 signature: 343e21c493f4d83519b8ccefc1ba0063 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aPersonAndOrganizationAssignment_AssignedPersonAndOrganization: StepBasic_PersonAndOrganization
 aPersonAndOrganizationAssignment_Role: StepBasic_PersonAndOrganizationRole
-aItems: StepAP203_HArray1OfPersonOrganizationItem
+aItems: NCollection_HArray1<StepAP203_PersonOrganizationItem
 
 Return
 -------
@@ -692,28 +673,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aPersonAndOrganizationAssignment_Role, const opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aPersonAndOrganizationAssignment_Role, const opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem> > & aItems);
 
 		/****** StepAP203_CcDesignPersonAndOrganizationAssignment::Items ******/
-		/****** md5 signature: 79252d9dba768943961d2b4c9560bf49 ******/
+		/****** md5 signature: 5d2c118882748e2dcb40a9260ff69d26 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem>
+opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem>> Items();
 
 		/****** StepAP203_CcDesignPersonAndOrganizationAssignment::SetItems ******/
-		/****** md5 signature: 362a13e43843d28d9fb00bdfe9830f3e ******/
+		/****** md5 signature: fa9c6d32898c617609c5a134321e94ab ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfPersonOrganizationItem
+Items: NCollection_HArray1<StepAP203_PersonOrganizationItem
 
 Return
 -------
@@ -723,12 +704,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfPersonOrganizationItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignPersonAndOrganizationAssignment)
 
 %extend StepAP203_CcDesignPersonAndOrganizationAssignment {
 	%pythoncode {
@@ -755,13 +734,13 @@ Empty constructor.
 		 StepAP203_CcDesignSecurityClassification();
 
 		/****** StepAP203_CcDesignSecurityClassification::Init ******/
-		/****** md5 signature: 47ecb1bc1d5b73f30e71202368db7d8f ******/
+		/****** md5 signature: af715535167ca2180fb36b7004b2eb91 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aSecurityClassificationAssignment_AssignedSecurityClassification: StepBasic_SecurityClassification
-aItems: StepAP203_HArray1OfClassifiedItem
+aItems: NCollection_HArray1<StepAP203_ClassifiedItem
 
 Return
 -------
@@ -771,28 +750,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aSecurityClassificationAssignment_AssignedSecurityClassification, const opencascade::handle<StepAP203_HArray1OfClassifiedItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aSecurityClassificationAssignment_AssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem> > & aItems);
 
 		/****** StepAP203_CcDesignSecurityClassification::Items ******/
-		/****** md5 signature: ff874a2aac4f1181827a3c1621be8055 ******/
+		/****** md5 signature: 9554b0594ee207a1384d236ae4ba8f53 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfClassifiedItem>
+opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfClassifiedItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem>> Items();
 
 		/****** StepAP203_CcDesignSecurityClassification::SetItems ******/
-		/****** md5 signature: 80d07f9c40d3de42fa5552cd1c8a5768 ******/
+		/****** md5 signature: 275fe27ea1150150df9b431077709e1c ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfClassifiedItem
+Items: NCollection_HArray1<StepAP203_ClassifiedItem
 
 Return
 -------
@@ -802,12 +781,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfClassifiedItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignSecurityClassification)
 
 %extend StepAP203_CcDesignSecurityClassification {
 	%pythoncode {
@@ -834,14 +811,14 @@ Empty constructor.
 		 StepAP203_CcDesignSpecificationReference();
 
 		/****** StepAP203_CcDesignSpecificationReference::Init ******/
-		/****** md5 signature: 404a8e64b91deee4db632c695e5d36c1 ******/
+		/****** md5 signature: 5f2f23a3ac41f4e6b930b45dd48e9b6e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDocumentReference_AssignedDocument: StepBasic_Document
 aDocumentReference_Source: TCollection_HAsciiString
-aItems: StepAP203_HArray1OfSpecifiedItem
+aItems: NCollection_HArray1<StepAP203_SpecifiedItem
 
 Return
 -------
@@ -851,28 +828,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Document> & aDocumentReference_AssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aDocumentReference_Source, const opencascade::handle<StepAP203_HArray1OfSpecifiedItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_Document> & aDocumentReference_AssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aDocumentReference_Source, const opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem> > & aItems);
 
 		/****** StepAP203_CcDesignSpecificationReference::Items ******/
-		/****** md5 signature: f2200bd42168ec8cd03d8ca5b25e1993 ******/
+		/****** md5 signature: 8bbbaa8e1fe24771b83618f93e2f3874 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfSpecifiedItem>
+opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfSpecifiedItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem>> Items();
 
 		/****** StepAP203_CcDesignSpecificationReference::SetItems ******/
-		/****** md5 signature: 4c57ff2a1db6ce89384bd2aa7948182d ******/
+		/****** md5 signature: b1a5854e0d95e2da3991eb839594a4d8 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfSpecifiedItem
+Items: NCollection_HArray1<StepAP203_SpecifiedItem
 
 Return
 -------
@@ -882,12 +859,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfSpecifiedItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_CcDesignSpecificationReference)
 
 %extend StepAP203_CcDesignSpecificationReference {
 	%pythoncode {
@@ -914,7 +889,7 @@ Empty constructor.
 		 StepAP203_CertifiedItem();
 
 		/****** StepAP203_CertifiedItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -929,7 +904,7 @@ Description
 -----------
 Recognizes a kind of CertifiedItem select type 1 -> SuppliedPartRelationship from StepRepr 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_CertifiedItem::SuppliedPartRelationship ******/
 		/****** md5 signature: 82f31c1241b11735fcdd0b11a9fea9a0 ******/
@@ -972,13 +947,13 @@ Empty constructor.
 		 StepAP203_Change();
 
 		/****** StepAP203_Change::Init ******/
-		/****** md5 signature: 426f4ad0835cd6d75198846fdbb79aae ******/
+		/****** md5 signature: def968515f578602e26047bf258c31d7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aActionAssignment_AssignedAction: StepBasic_Action
-aItems: StepAP203_HArray1OfWorkItem
+aItems: NCollection_HArray1<StepAP203_WorkItem
 
 Return
 -------
@@ -988,28 +963,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<StepAP203_HArray1OfWorkItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & aItems);
 
 		/****** StepAP203_Change::Items ******/
-		/****** md5 signature: da8df3751d3f4dbe5fbc1686a49a6ff8 ******/
+		/****** md5 signature: a8950b8502c6ec845b6a4d99f8d7fb0e ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfWorkItem>
+opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfWorkItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>> Items();
 
 		/****** StepAP203_Change::SetItems ******/
-		/****** md5 signature: 560f3192ead2495f8e28aed14d1b8ccb ******/
+		/****** md5 signature: b593c6e0bc435908d3d641f88375d303 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfWorkItem
+Items: NCollection_HArray1<StepAP203_WorkItem
 
 Return
 -------
@@ -1019,12 +994,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfWorkItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_Change)
 
 %extend StepAP203_Change {
 	%pythoncode {
@@ -1051,13 +1024,13 @@ Empty constructor.
 		 StepAP203_ChangeRequest();
 
 		/****** StepAP203_ChangeRequest::Init ******/
-		/****** md5 signature: 7f289c3ecc4e259b591d39e41ab8c3b8 ******/
+		/****** md5 signature: 97c18b712e7cb696db0470b1bffc9fd0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aActionRequestAssignment_AssignedActionRequest: StepBasic_VersionedActionRequest
-aItems: StepAP203_HArray1OfChangeRequestItem
+aItems: NCollection_HArray1<StepAP203_ChangeRequestItem
 
 Return
 -------
@@ -1067,28 +1040,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<StepAP203_HArray1OfChangeRequestItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem> > & aItems);
 
 		/****** StepAP203_ChangeRequest::Items ******/
-		/****** md5 signature: 81792f1414ba5a02b751f1c89437a316 ******/
+		/****** md5 signature: 732faa4b68d12078666db6632e6c86bd ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfChangeRequestItem>
+opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfChangeRequestItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem>> Items();
 
 		/****** StepAP203_ChangeRequest::SetItems ******/
-		/****** md5 signature: 6da531119799dcb7df5bd2264277b4bb ******/
+		/****** md5 signature: 3dab3fcbe5cb57cb19b9b9731a39be92 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfChangeRequestItem
+Items: NCollection_HArray1<StepAP203_ChangeRequestItem
 
 Return
 -------
@@ -1098,12 +1071,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfChangeRequestItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_ChangeRequest)
 
 %extend StepAP203_ChangeRequest {
 	%pythoncode {
@@ -1130,7 +1101,7 @@ Empty constructor.
 		 StepAP203_ChangeRequestItem();
 
 		/****** StepAP203_ChangeRequestItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1145,7 +1116,7 @@ Description
 -----------
 Recognizes a kind of ChangeRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_ChangeRequestItem::ProductDefinitionFormation ******/
 		/****** md5 signature: 549b153d5236bb5dda717eed81e28565 ******/
@@ -1201,7 +1172,7 @@ Returns Value as AssemblyComponentUsage (or Null if another type).
 		opencascade::handle<StepRepr_AssemblyComponentUsage> AssemblyComponentUsage();
 
 		/****** StepAP203_ClassifiedItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1216,7 +1187,7 @@ Description
 -----------
 Recognizes a kind of ClassifiedItem select type 1 -> ProductDefinitionFormation from StepBasic 2 -> AssemblyComponentUsage from StepRepr 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_ClassifiedItem::ProductDefinitionFormation ******/
 		/****** md5 signature: 549b153d5236bb5dda717eed81e28565 ******/
@@ -1259,7 +1230,7 @@ Empty constructor.
 		 StepAP203_ContractedItem();
 
 		/****** StepAP203_ContractedItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1274,7 +1245,7 @@ Description
 -----------
 Recognizes a kind of ContractedItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_ContractedItem::ProductDefinitionFormation ******/
 		/****** md5 signature: 549b153d5236bb5dda717eed81e28565 ******/
@@ -1330,7 +1301,7 @@ Returns Value as ApprovalPersonOrganization (or Null if another type).
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
 		/****** StepAP203_DateTimeItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1345,7 +1316,7 @@ Description
 -----------
 Recognizes a kind of DateTimeItem select type 1 -> ProductDefinition from StepBasic 2 -> ChangeRequest from StepAP203 3 -> StartRequest from StepAP203 4 -> Change from StepAP203 5 -> StartWork from StepAP203 6 -> ApprovalPersonOrganization from StepBasic 7 -> Contract from StepBasic 8 -> SecurityClassification from StepBasic 9 -> Certification from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_DateTimeItem::Certification ******/
 		/****** md5 signature: e4fcd85461a5932963bf7a1ac4f009a4 ******/
@@ -1479,7 +1450,7 @@ Empty constructor.
 		 StepAP203_PersonOrganizationItem();
 
 		/****** StepAP203_PersonOrganizationItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1494,7 +1465,7 @@ Description
 -----------
 Recognizes a kind of PersonOrganizationItem select type 1 -> Change from StepAP203 2 -> StartWork from StepAP203 3 -> ChangeRequest from StepAP203 4 -> StartRequest from StepAP203 5 -> ConfigurationItem from StepRepr 6 -> Product from StepBasic 7 -> ProductDefinitionFormation from StepBasic 8 -> ProductDefinition from StepBasic 9 -> Contract from StepBasic 10 -> SecurityClassification from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_PersonOrganizationItem::Change ******/
 		/****** md5 signature: 45ba42050277592dfcd807d6ac427663 ******/
@@ -1654,7 +1625,7 @@ Empty constructor.
 		 StepAP203_SpecifiedItem();
 
 		/****** StepAP203_SpecifiedItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1669,7 +1640,7 @@ Description
 -----------
 Recognizes a kind of SpecifiedItem select type 1 -> ProductDefinition from StepBasic 2 -> ShapeAspect from StepRepr 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_SpecifiedItem::ProductDefinition ******/
 		/****** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ******/
@@ -1725,13 +1696,13 @@ Empty constructor.
 		 StepAP203_StartRequest();
 
 		/****** StepAP203_StartRequest::Init ******/
-		/****** md5 signature: bc99f5a4049a7b39ce240d6899a58c09 ******/
+		/****** md5 signature: 4e74dd2fa176f07dda74160a2cf522ed ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aActionRequestAssignment_AssignedActionRequest: StepBasic_VersionedActionRequest
-aItems: StepAP203_HArray1OfStartRequestItem
+aItems: NCollection_HArray1<StepAP203_StartRequestItem
 
 Return
 -------
@@ -1741,28 +1712,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<StepAP203_HArray1OfStartRequestItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem> > & aItems);
 
 		/****** StepAP203_StartRequest::Items ******/
-		/****** md5 signature: ab5cd2755cb62bbf5e124c6ffae0b5da ******/
+		/****** md5 signature: cb9a074c74dde7b9efdae177467b8a24 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfStartRequestItem>
+opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfStartRequestItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem>> Items();
 
 		/****** StepAP203_StartRequest::SetItems ******/
-		/****** md5 signature: 4884427346c77148853c13edfb84152f ******/
+		/****** md5 signature: 1cd0297d90d1fd5692c29b7513db01e0 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfStartRequestItem
+Items: NCollection_HArray1<StepAP203_StartRequestItem
 
 Return
 -------
@@ -1772,12 +1743,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfStartRequestItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_StartRequest)
 
 %extend StepAP203_StartRequest {
 	%pythoncode {
@@ -1804,7 +1773,7 @@ Empty constructor.
 		 StepAP203_StartRequestItem();
 
 		/****** StepAP203_StartRequestItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1819,7 +1788,7 @@ Description
 -----------
 Recognizes a kind of StartRequestItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_StartRequestItem::ProductDefinitionFormation ******/
 		/****** md5 signature: 549b153d5236bb5dda717eed81e28565 ******/
@@ -1862,13 +1831,13 @@ Empty constructor.
 		 StepAP203_StartWork();
 
 		/****** StepAP203_StartWork::Init ******/
-		/****** md5 signature: 426f4ad0835cd6d75198846fdbb79aae ******/
+		/****** md5 signature: def968515f578602e26047bf258c31d7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aActionAssignment_AssignedAction: StepBasic_Action
-aItems: StepAP203_HArray1OfWorkItem
+aItems: NCollection_HArray1<StepAP203_WorkItem
 
 Return
 -------
@@ -1878,28 +1847,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<StepAP203_HArray1OfWorkItem> & aItems);
+		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & aItems);
 
 		/****** StepAP203_StartWork::Items ******/
-		/****** md5 signature: da8df3751d3f4dbe5fbc1686a49a6ff8 ******/
+		/****** md5 signature: a8950b8502c6ec845b6a4d99f8d7fb0e ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepAP203_HArray1OfWorkItem>
+opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepAP203_HArray1OfWorkItem> Items();
+		opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>> Items();
 
 		/****** StepAP203_StartWork::SetItems ******/
-		/****** md5 signature: 560f3192ead2495f8e28aed14d1b8ccb ******/
+		/****** md5 signature: b593c6e0bc435908d3d641f88375d303 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-Items: StepAP203_HArray1OfWorkItem
+Items: NCollection_HArray1<StepAP203_WorkItem
 
 Return
 -------
@@ -1909,12 +1878,10 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepAP203_HArray1OfWorkItem> & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & Items);
 
 };
 
-
-%make_alias(StepAP203_StartWork)
 
 %extend StepAP203_StartWork {
 	%pythoncode {
@@ -1941,7 +1908,7 @@ Empty constructor.
 		 StepAP203_WorkItem();
 
 		/****** StepAP203_WorkItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1956,7 +1923,7 @@ Description
 -----------
 Recognizes a kind of WorkItem select type 1 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP203_WorkItem::ProductDefinitionFormation ******/
 		/****** md5 signature: 549b153d5236bb5dda717eed81e28565 ******/
@@ -1982,112 +1949,112 @@ Returns Value as ProductDefinitionFormation (or Null if another type).
 
 /* harray1 classes */
 
-class StepAP203_HArray1OfApprovedItem : public StepAP203_Array1OfApprovedItem, public Standard_Transient {
+class StepAP203_HArray1OfApprovedItem : public NCollection_Array1<StepAP203_ApprovedItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfApprovedItem::value_type& theValue);
-    StepAP203_HArray1OfApprovedItem(const StepAP203_Array1OfApprovedItem& theOther);
-    const StepAP203_Array1OfApprovedItem& Array1();
-    StepAP203_Array1OfApprovedItem& ChangeArray1();
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ApprovedItem>::value_type& theValue);
+    StepAP203_HArray1OfApprovedItem(const NCollection_Array1<StepAP203_ApprovedItem>& theOther);
+    const NCollection_Array1<StepAP203_ApprovedItem>& Array1();
+    NCollection_Array1<StepAP203_ApprovedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfApprovedItem)
 
 
-class StepAP203_HArray1OfCertifiedItem : public StepAP203_Array1OfCertifiedItem, public Standard_Transient {
+class StepAP203_HArray1OfCertifiedItem : public NCollection_Array1<StepAP203_CertifiedItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfCertifiedItem::value_type& theValue);
-    StepAP203_HArray1OfCertifiedItem(const StepAP203_Array1OfCertifiedItem& theOther);
-    const StepAP203_Array1OfCertifiedItem& Array1();
-    StepAP203_Array1OfCertifiedItem& ChangeArray1();
+    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_CertifiedItem>::value_type& theValue);
+    StepAP203_HArray1OfCertifiedItem(const NCollection_Array1<StepAP203_CertifiedItem>& theOther);
+    const NCollection_Array1<StepAP203_CertifiedItem>& Array1();
+    NCollection_Array1<StepAP203_CertifiedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfCertifiedItem)
 
 
-class StepAP203_HArray1OfChangeRequestItem : public StepAP203_Array1OfChangeRequestItem, public Standard_Transient {
+class StepAP203_HArray1OfChangeRequestItem : public NCollection_Array1<StepAP203_ChangeRequestItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfChangeRequestItem::value_type& theValue);
-    StepAP203_HArray1OfChangeRequestItem(const StepAP203_Array1OfChangeRequestItem& theOther);
-    const StepAP203_Array1OfChangeRequestItem& Array1();
-    StepAP203_Array1OfChangeRequestItem& ChangeArray1();
+    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ChangeRequestItem>::value_type& theValue);
+    StepAP203_HArray1OfChangeRequestItem(const NCollection_Array1<StepAP203_ChangeRequestItem>& theOther);
+    const NCollection_Array1<StepAP203_ChangeRequestItem>& Array1();
+    NCollection_Array1<StepAP203_ChangeRequestItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfChangeRequestItem)
 
 
-class StepAP203_HArray1OfClassifiedItem : public StepAP203_Array1OfClassifiedItem, public Standard_Transient {
+class StepAP203_HArray1OfClassifiedItem : public NCollection_Array1<StepAP203_ClassifiedItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfClassifiedItem::value_type& theValue);
-    StepAP203_HArray1OfClassifiedItem(const StepAP203_Array1OfClassifiedItem& theOther);
-    const StepAP203_Array1OfClassifiedItem& Array1();
-    StepAP203_Array1OfClassifiedItem& ChangeArray1();
+    StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ClassifiedItem>::value_type& theValue);
+    StepAP203_HArray1OfClassifiedItem(const NCollection_Array1<StepAP203_ClassifiedItem>& theOther);
+    const NCollection_Array1<StepAP203_ClassifiedItem>& Array1();
+    NCollection_Array1<StepAP203_ClassifiedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfClassifiedItem)
 
 
-class StepAP203_HArray1OfContractedItem : public StepAP203_Array1OfContractedItem, public Standard_Transient {
+class StepAP203_HArray1OfContractedItem : public NCollection_Array1<StepAP203_ContractedItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfContractedItem::value_type& theValue);
-    StepAP203_HArray1OfContractedItem(const StepAP203_Array1OfContractedItem& theOther);
-    const StepAP203_Array1OfContractedItem& Array1();
-    StepAP203_Array1OfContractedItem& ChangeArray1();
+    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ContractedItem>::value_type& theValue);
+    StepAP203_HArray1OfContractedItem(const NCollection_Array1<StepAP203_ContractedItem>& theOther);
+    const NCollection_Array1<StepAP203_ContractedItem>& Array1();
+    NCollection_Array1<StepAP203_ContractedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfContractedItem)
 
 
-class StepAP203_HArray1OfDateTimeItem : public StepAP203_Array1OfDateTimeItem, public Standard_Transient {
+class StepAP203_HArray1OfDateTimeItem : public NCollection_Array1<StepAP203_DateTimeItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfDateTimeItem::value_type& theValue);
-    StepAP203_HArray1OfDateTimeItem(const StepAP203_Array1OfDateTimeItem& theOther);
-    const StepAP203_Array1OfDateTimeItem& Array1();
-    StepAP203_Array1OfDateTimeItem& ChangeArray1();
+    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_DateTimeItem>::value_type& theValue);
+    StepAP203_HArray1OfDateTimeItem(const NCollection_Array1<StepAP203_DateTimeItem>& theOther);
+    const NCollection_Array1<StepAP203_DateTimeItem>& Array1();
+    NCollection_Array1<StepAP203_DateTimeItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfDateTimeItem)
 
 
-class StepAP203_HArray1OfPersonOrganizationItem : public StepAP203_Array1OfPersonOrganizationItem, public Standard_Transient {
+class StepAP203_HArray1OfPersonOrganizationItem : public NCollection_Array1<StepAP203_PersonOrganizationItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfPersonOrganizationItem::value_type& theValue);
-    StepAP203_HArray1OfPersonOrganizationItem(const StepAP203_Array1OfPersonOrganizationItem& theOther);
-    const StepAP203_Array1OfPersonOrganizationItem& Array1();
-    StepAP203_Array1OfPersonOrganizationItem& ChangeArray1();
+    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_PersonOrganizationItem>::value_type& theValue);
+    StepAP203_HArray1OfPersonOrganizationItem(const NCollection_Array1<StepAP203_PersonOrganizationItem>& theOther);
+    const NCollection_Array1<StepAP203_PersonOrganizationItem>& Array1();
+    NCollection_Array1<StepAP203_PersonOrganizationItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfPersonOrganizationItem)
 
 
-class StepAP203_HArray1OfSpecifiedItem : public StepAP203_Array1OfSpecifiedItem, public Standard_Transient {
+class StepAP203_HArray1OfSpecifiedItem : public NCollection_Array1<StepAP203_SpecifiedItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfSpecifiedItem::value_type& theValue);
-    StepAP203_HArray1OfSpecifiedItem(const StepAP203_Array1OfSpecifiedItem& theOther);
-    const StepAP203_Array1OfSpecifiedItem& Array1();
-    StepAP203_Array1OfSpecifiedItem& ChangeArray1();
+    StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_SpecifiedItem>::value_type& theValue);
+    StepAP203_HArray1OfSpecifiedItem(const NCollection_Array1<StepAP203_SpecifiedItem>& theOther);
+    const NCollection_Array1<StepAP203_SpecifiedItem>& Array1();
+    NCollection_Array1<StepAP203_SpecifiedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfSpecifiedItem)
 
 
-class StepAP203_HArray1OfStartRequestItem : public StepAP203_Array1OfStartRequestItem, public Standard_Transient {
+class StepAP203_HArray1OfStartRequestItem : public NCollection_Array1<StepAP203_StartRequestItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfStartRequestItem::value_type& theValue);
-    StepAP203_HArray1OfStartRequestItem(const StepAP203_Array1OfStartRequestItem& theOther);
-    const StepAP203_Array1OfStartRequestItem& Array1();
-    StepAP203_Array1OfStartRequestItem& ChangeArray1();
+    StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_StartRequestItem>::value_type& theValue);
+    StepAP203_HArray1OfStartRequestItem(const NCollection_Array1<StepAP203_StartRequestItem>& theOther);
+    const NCollection_Array1<StepAP203_StartRequestItem>& Array1();
+    NCollection_Array1<StepAP203_StartRequestItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfStartRequestItem)
 
 
-class StepAP203_HArray1OfWorkItem : public StepAP203_Array1OfWorkItem, public Standard_Transient {
+class StepAP203_HArray1OfWorkItem : public NCollection_Array1<StepAP203_WorkItem>, public Standard_Transient {
   public:
     StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfWorkItem::value_type& theValue);
-    StepAP203_HArray1OfWorkItem(const StepAP203_Array1OfWorkItem& theOther);
-    const StepAP203_Array1OfWorkItem& Array1();
-    StepAP203_Array1OfWorkItem& ChangeArray1();
+    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_WorkItem>::value_type& theValue);
+    StepAP203_HArray1OfWorkItem(const NCollection_Array1<StepAP203_WorkItem>& theOther);
+    const NCollection_Array1<StepAP203_WorkItem>& Array1();
+    NCollection_Array1<StepAP203_WorkItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfWorkItem)
 

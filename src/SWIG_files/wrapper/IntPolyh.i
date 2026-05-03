@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpolyh.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
-#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -59,7 +58,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpolyh.html"
 %import Standard.i
 %import NCollection.i
 %import Adaptor3d.i
-%import TColStd.i
 %import Bnd.i
 
 %pythoncode {
@@ -79,18 +77,13 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%template(IntPolyh_ListIteratorOfListOfCouples) NCollection_TListIterator<IntPolyh_Couple>;
 %template(IntPolyh_ListOfCouples) NCollection_List<IntPolyh_Couple>;
 
 %extend NCollection_List<IntPolyh_Couple> {
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = IntPolyh_ListIteratorOfListOfCouples(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(IntPolyh_SeqOfStartPoints) NCollection_Sequence<IntPolyh_StartPoint>;
@@ -110,9 +103,8 @@ typedef IntPolyh_Array<IntPolyh_Point> IntPolyh_ArrayOfPoints;
 typedef IntPolyh_Array<IntPolyh_SectionLine> IntPolyh_ArrayOfSectionLines;
 typedef IntPolyh_Array<IntPolyh_StartPoint> IntPolyh_ArrayOfTangentZones;
 typedef IntPolyh_Array<IntPolyh_Triangle> IntPolyh_ArrayOfTriangles;
-typedef IntPolyh_ListOfCouples::Iterator IntPolyh_ListIteratorOfListOfCouples;
+typedef NCollection_List<IntPolyh_Couple>::Iterator IntPolyh_ListIteratorOfListOfCouples;
 typedef NCollection_List<IntPolyh_Couple> IntPolyh_ListOfCouples;
-typedef IntPolyh_MaillageAffinage * IntPolyh_PMaillageAffinage;
 typedef NCollection_Sequence<IntPolyh_StartPoint> IntPolyh_SeqOfStartPoints;
 /* end typedefs declaration */
 
@@ -138,14 +130,14 @@ Constructor.
 		 IntPolyh_Couple();
 
 		/****** IntPolyh_Couple::IntPolyh_Couple ******/
-		/****** md5 signature: 2ad54cd045a228f75ac9a719fd4ad546 ******/
+		/****** md5 signature: ea56ddc32f07acb1f4dd7ba4ea23df31 ******/
 		%feature("compactdefaultargs") IntPolyh_Couple;
 		%feature("autodoc", "
 Parameters
 ----------
 theTriangle1: int
 theTriangle2: int
-theAngle: float (optional, default to -2.0)
+theAngle: double (optional, default to -2.0)
 
 Return
 -------
@@ -155,23 +147,23 @@ Description
 -----------
 Constructor.
 ") IntPolyh_Couple;
-		 IntPolyh_Couple(const Standard_Integer theTriangle1, const Standard_Integer theTriangle2, const Standard_Real theAngle = -2.0);
+		 IntPolyh_Couple(const int theTriangle1, const int theTriangle2, const double theAngle = -2.0);
 
 		/****** IntPolyh_Couple::Angle ******/
-		/****** md5 signature: 2e7a91a67b1745bc9ecd36bc3650ed68 ******/
+		/****** md5 signature: 38aa389a84e64daaf9f12a8184465316 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the angle.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** IntPolyh_Couple::Dump ******/
-		/****** md5 signature: 110c93028fb8130e272d294a2869a993 ******/
+		/****** md5 signature: 37de731f10fd777be98163f336102f62 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -186,10 +178,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer v);
+		void Dump(const int v);
 
 		/****** IntPolyh_Couple::FirstValue ******/
-		/****** md5 signature: 74f8032a34f70f7e51a37a08a02625c8 ******/
+		/****** md5 signature: ec857332c6a1803690dc248985ebfd47 ******/
 		%feature("compactdefaultargs") FirstValue;
 		%feature("autodoc", "Return
 -------
@@ -199,10 +191,10 @@ Description
 -----------
 Returns the first index.
 ") FirstValue;
-		Standard_Integer FirstValue();
+		int FirstValue();
 
 		/****** IntPolyh_Couple::IsAnalyzed ******/
-		/****** md5 signature: d6b39f513274b640bd7a5567aecc3da1 ******/
+		/****** md5 signature: a951213edccd0dac9296625b197b29cf ******/
 		%feature("compactdefaultargs") IsAnalyzed;
 		%feature("autodoc", "Return
 -------
@@ -212,10 +204,10 @@ Description
 -----------
 Returns True if the couple has been analyzed.
 ") IsAnalyzed;
-		Standard_Boolean IsAnalyzed();
+		bool IsAnalyzed();
 
 		/****** IntPolyh_Couple::IsEqual ******/
-		/****** md5 signature: 15b5800bdd5cfd6453c13b9e097cb415 ******/
+		/****** md5 signature: 2928127feda0b89e4ca16177a98fcb94 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -230,10 +222,10 @@ Description
 -----------
 Returns true if the Couple is equal to <theOther>.
 ") IsEqual;
-		Standard_Boolean IsEqual(const IntPolyh_Couple & theOther);
+		bool IsEqual(const IntPolyh_Couple & theOther);
 
 		/****** IntPolyh_Couple::SecondValue ******/
-		/****** md5 signature: e2699fc080f4ac7ae7e3aea3abc58618 ******/
+		/****** md5 signature: 7a90dcb1b6f65b9d5c11cf233179d58a ******/
 		%feature("compactdefaultargs") SecondValue;
 		%feature("autodoc", "Return
 -------
@@ -243,10 +235,10 @@ Description
 -----------
 Returns the second index.
 ") SecondValue;
-		Standard_Integer SecondValue();
+		int SecondValue();
 
 		/****** IntPolyh_Couple::SetAnalyzed ******/
-		/****** md5 signature: b7b5baf90ace0ca7154ebea6af13f72b ******/
+		/****** md5 signature: c06d62660201ced92e2a3d32fc3fc7e0 ******/
 		%feature("compactdefaultargs") SetAnalyzed;
 		%feature("autodoc", "
 Parameters
@@ -261,15 +253,15 @@ Description
 -----------
 Sets the analyzed flag.
 ") SetAnalyzed;
-		void SetAnalyzed(const Standard_Boolean theAnalyzed);
+		void SetAnalyzed(const bool theAnalyzed);
 
 		/****** IntPolyh_Couple::SetAngle ******/
-		/****** md5 signature: 76a49ca25a7aa0cf5ba05b3c533fe78e ******/
+		/****** md5 signature: e785312fe18bcd9a7632ff8b78ce5a0f ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theAngle: float
+theAngle: double
 
 Return
 -------
@@ -279,10 +271,10 @@ Description
 -----------
 Sets the angle.
 ") SetAngle;
-		void SetAngle(const Standard_Real theAngle);
+		void SetAngle(const double theAngle);
 
 		/****** IntPolyh_Couple::SetCoupleValue ******/
-		/****** md5 signature: 90f3b87a3f65afded7632970de851c70 ******/
+		/****** md5 signature: 295d23f89abf5a4b1162e275fbb86cd3 ******/
 		%feature("compactdefaultargs") SetCoupleValue;
 		%feature("autodoc", "
 Parameters
@@ -298,7 +290,7 @@ Description
 -----------
 Sets the triangles.
 ") SetCoupleValue;
-		void SetCoupleValue(const Standard_Integer theInd1, const Standard_Integer theInd2);
+		void SetCoupleValue(const int theInd1, const int theInd2);
 
 
 %extend{
@@ -342,7 +334,7 @@ Constructor.
 		 IntPolyh_Edge();
 
 		/****** IntPolyh_Edge::IntPolyh_Edge ******/
-		/****** md5 signature: 546354eae7a42255ee366566dccf8437 ******/
+		/****** md5 signature: bdf3ffdbfeb098ab2f7f69df2ae914b0 ******/
 		%feature("compactdefaultargs") IntPolyh_Edge;
 		%feature("autodoc", "
 Parameters
@@ -360,10 +352,10 @@ Description
 -----------
 Constructor.
 ") IntPolyh_Edge;
-		 IntPolyh_Edge(const Standard_Integer thePoint1, const Standard_Integer thePoint2, const Standard_Integer theTriangle1, const Standard_Integer theTriangle2);
+		 IntPolyh_Edge(const int thePoint1, const int thePoint2, const int theTriangle1, const int theTriangle2);
 
 		/****** IntPolyh_Edge::Dump ******/
-		/****** md5 signature: 110c93028fb8130e272d294a2869a993 ******/
+		/****** md5 signature: 37de731f10fd777be98163f336102f62 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -378,10 +370,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer v);
+		void Dump(const int v);
 
 		/****** IntPolyh_Edge::FirstPoint ******/
-		/****** md5 signature: a96e582923b6d3c6eaa1f60febc5fe6c ******/
+		/****** md5 signature: c05fb4442ea1c5a200b564a266eabd5b ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -391,10 +383,10 @@ Description
 -----------
 Returns the first point.
 ") FirstPoint;
-		Standard_Integer FirstPoint();
+		int FirstPoint();
 
 		/****** IntPolyh_Edge::FirstTriangle ******/
-		/****** md5 signature: 243ce0ddc4d583e71bfc180291f2c74d ******/
+		/****** md5 signature: 9c782e397ec22aabb102208c26a8f271 ******/
 		%feature("compactdefaultargs") FirstTriangle;
 		%feature("autodoc", "Return
 -------
@@ -404,10 +396,10 @@ Description
 -----------
 Returns the first triangle.
 ") FirstTriangle;
-		Standard_Integer FirstTriangle();
+		int FirstTriangle();
 
 		/****** IntPolyh_Edge::SecondPoint ******/
-		/****** md5 signature: 72a7379dccfa5bce46bd84d12acec99b ******/
+		/****** md5 signature: 11a332f59a7deffa9e04bd13881209ec ******/
 		%feature("compactdefaultargs") SecondPoint;
 		%feature("autodoc", "Return
 -------
@@ -417,10 +409,10 @@ Description
 -----------
 Returns the second point.
 ") SecondPoint;
-		Standard_Integer SecondPoint();
+		int SecondPoint();
 
 		/****** IntPolyh_Edge::SecondTriangle ******/
-		/****** md5 signature: f1d8d361be7d166e270edeea48f873f0 ******/
+		/****** md5 signature: 3adbf9f8827ad0d12729d3ea917da2a3 ******/
 		%feature("compactdefaultargs") SecondTriangle;
 		%feature("autodoc", "Return
 -------
@@ -430,10 +422,10 @@ Description
 -----------
 Returns the second triangle.
 ") SecondTriangle;
-		Standard_Integer SecondTriangle();
+		int SecondTriangle();
 
 		/****** IntPolyh_Edge::SetFirstPoint ******/
-		/****** md5 signature: 083b09fcfbdd1fc3d0e79515942eca68 ******/
+		/****** md5 signature: bc0831d73df54adbbd961a44ca93e579 ******/
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -448,10 +440,10 @@ Description
 -----------
 Sets the first point.
 ") SetFirstPoint;
-		void SetFirstPoint(const Standard_Integer thePoint);
+		void SetFirstPoint(const int thePoint);
 
 		/****** IntPolyh_Edge::SetFirstTriangle ******/
-		/****** md5 signature: 8339725513bfad649ea2c41ee13b65ca ******/
+		/****** md5 signature: 11675d2890fab55ccb0f5306c0adbcbc ******/
 		%feature("compactdefaultargs") SetFirstTriangle;
 		%feature("autodoc", "
 Parameters
@@ -466,10 +458,10 @@ Description
 -----------
 Sets the first triangle.
 ") SetFirstTriangle;
-		void SetFirstTriangle(const Standard_Integer theTriangle);
+		void SetFirstTriangle(const int theTriangle);
 
 		/****** IntPolyh_Edge::SetSecondPoint ******/
-		/****** md5 signature: 30ecd94c48d0a5d89ca894a21ecac9ff ******/
+		/****** md5 signature: f1574fbbf6ff0e19c176e5ee3dbc9552 ******/
 		%feature("compactdefaultargs") SetSecondPoint;
 		%feature("autodoc", "
 Parameters
@@ -484,10 +476,10 @@ Description
 -----------
 Sets the second point.
 ") SetSecondPoint;
-		void SetSecondPoint(const Standard_Integer thePoint);
+		void SetSecondPoint(const int thePoint);
 
 		/****** IntPolyh_Edge::SetSecondTriangle ******/
-		/****** md5 signature: c87e8a57291fb8d5c78ffcc4956e7732 ******/
+		/****** md5 signature: 5538e041104cff111f08514508d4e8d9 ******/
 		%feature("compactdefaultargs") SetSecondTriangle;
 		%feature("autodoc", "
 Parameters
@@ -502,7 +494,7 @@ Description
 -----------
 Sets the second triangle.
 ") SetSecondTriangle;
-		void SetSecondTriangle(const Standard_Integer theTriangle);
+		void SetSecondTriangle(const int theTriangle);
 
 };
 
@@ -538,7 +530,7 @@ Constructor for intersection of two surfaces with default parameters. Performs i
 		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2);
 
 		/****** IntPolyh_Intersection::IntPolyh_Intersection ******/
-		/****** md5 signature: 71b7be6adc9244e9f59fb99eaa24befd ******/
+		/****** md5 signature: ee2bfabf21051fb4f9562bcd195ca12c ******/
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "
 Parameters
@@ -558,20 +550,20 @@ Description
 -----------
 Constructor for intersection of two surfaces with the given size of the sampling nets: - <theNbSU1> x <theNbSV1> - for the first surface <theS1>; - <theNbSU2> x <theNbSV2> - for the second surface <theS2>. Performs intersection.
 ") IntPolyh_Intersection;
-		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const Standard_Integer theNbSU1, const Standard_Integer theNbSV1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Integer theNbSU2, const Standard_Integer theNbSV2);
+		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const int theNbSU1, const int theNbSV1, const opencascade::handle<Adaptor3d_Surface> & theS2, const int theNbSU2, const int theNbSV2);
 
 		/****** IntPolyh_Intersection::IntPolyh_Intersection ******/
-		/****** md5 signature: 12ca04ca57100d5f9d30d0ce84e68ecd ******/
+		/****** md5 signature: ad00e307fb7217288d9b2ca8a57eb74a ******/
 		%feature("compactdefaultargs") IntPolyh_Intersection;
 		%feature("autodoc", "
 Parameters
 ----------
 theS1: Adaptor3d_Surface
-theUPars1: TColStd_Array1OfReal
-theVPars1: TColStd_Array1OfReal
+theUPars1: NCollection_Array1<double>
+theVPars1: NCollection_Array1<double>
 theS2: Adaptor3d_Surface
-theUPars2: TColStd_Array1OfReal
-theVPars2: TColStd_Array1OfReal
+theUPars2: NCollection_Array1<double>
+theVPars2: NCollection_Array1<double>
 
 Return
 -------
@@ -581,10 +573,10 @@ Description
 -----------
 Constructor for intersection of two surfaces with the precomputed sampling. Performs intersection.
 ") IntPolyh_Intersection;
-		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const TColStd_Array1OfReal & theUPars1, const TColStd_Array1OfReal & theVPars1, const opencascade::handle<Adaptor3d_Surface> & theS2, const TColStd_Array1OfReal & theUPars2, const TColStd_Array1OfReal & theVPars2);
+		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const NCollection_Array1<double> & theUPars1, const NCollection_Array1<double> & theVPars1, const opencascade::handle<Adaptor3d_Surface> & theS2, const NCollection_Array1<double> & theUPars2, const NCollection_Array1<double> & theVPars2);
 
 		/****** IntPolyh_Intersection::GetLinePoint ******/
-		/****** md5 signature: 1d6e9a1fe8c96c912dec520f27020a75 ******/
+		/****** md5 signature: 267a43dfbc3a6a887e0345e3c00e0c51 ******/
 		%feature("compactdefaultargs") GetLinePoint;
 		%feature("autodoc", "
 Parameters
@@ -594,23 +586,23 @@ IndexPoint: int
 
 Return
 -------
-x: float
-y: float
-z: float
-u1: float
-v1: float
-u2: float
-v2: float
-incidence: float
+x: double
+y: double
+z: double
+u1: double
+v1: double
+u2: double
+v2: double
+incidence: double
 
 Description
 -----------
 Gets the parameters of the point in section line.
 ") GetLinePoint;
-		void GetLinePoint(const Standard_Integer IndexLine, const Standard_Integer IndexPoint, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void GetLinePoint(const int IndexLine, const int IndexPoint, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPolyh_Intersection::GetTangentZonePoint ******/
-		/****** md5 signature: 88ecf410b364d690380833373fef4840 ******/
+		/****** md5 signature: ea942a42d14ac186111136a7af89bbff ******/
 		%feature("compactdefaultargs") GetTangentZonePoint;
 		%feature("autodoc", "
 Parameters
@@ -620,22 +612,22 @@ IndexPoint: int
 
 Return
 -------
-x: float
-y: float
-z: float
-u1: float
-v1: float
-u2: float
-v2: float
+x: double
+y: double
+z: double
+u1: double
+v1: double
+u2: double
+v2: double
 
 Description
 -----------
 Gets the parameters of the point in tangent zone.
 ") GetTangentZonePoint;
-		void GetTangentZonePoint(const Standard_Integer IndexLine, const Standard_Integer IndexPoint, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void GetTangentZonePoint(const int IndexLine, const int IndexPoint, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPolyh_Intersection::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -645,10 +637,10 @@ Description
 -----------
 Returns state of the operation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPolyh_Intersection::IsParallel ******/
-		/****** md5 signature: 1a61f067818333b9699057e51665b906 ******/
+		/****** md5 signature: 7046a6b3b457e744360b84ad9c060428 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -658,10 +650,10 @@ Description
 -----------
 Returns state of the operation.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** IntPolyh_Intersection::NbPointsInLine ******/
-		/****** md5 signature: f3ec11eec3cea5651932d4048586f83f ******/
+		/****** md5 signature: 8f2101837d5e8226719ffa7f6faa2aeb ******/
 		%feature("compactdefaultargs") NbPointsInLine;
 		%feature("autodoc", "
 Parameters
@@ -676,15 +668,15 @@ Description
 -----------
 Returns the number of points in the given line.
 ") NbPointsInLine;
-		Standard_Integer NbPointsInLine(const Standard_Integer IndexLine);
+		int NbPointsInLine(const int IndexLine);
 
 		/****** IntPolyh_Intersection::NbPointsInTangentZone ******/
-		/****** md5 signature: b4e1b98ce7333f7e498d4f2883a85dcb ******/
+		/****** md5 signature: d4afcb5d806f7d1d502fc9678d0797cf ******/
 		%feature("compactdefaultargs") NbPointsInTangentZone;
 		%feature("autodoc", "
 Parameters
 ----------
-Standard_Integer: 
+: int
 
 Return
 -------
@@ -694,10 +686,10 @@ Description
 -----------
 Returns number of points in tangent zone.
 ") NbPointsInTangentZone;
-		Standard_Integer NbPointsInTangentZone(const Standard_Integer);
+		int NbPointsInTangentZone(const int );
 
 		/****** IntPolyh_Intersection::NbSectionLines ******/
-		/****** md5 signature: 4ef07884a98a730b09f648f9f8ad34eb ******/
+		/****** md5 signature: 9c5cf9d6d40603c6e7c04e7a5e468bce ******/
 		%feature("compactdefaultargs") NbSectionLines;
 		%feature("autodoc", "Return
 -------
@@ -707,10 +699,10 @@ Description
 -----------
 Returns the number of section lines.
 ") NbSectionLines;
-		Standard_Integer NbSectionLines();
+		int NbSectionLines();
 
 		/****** IntPolyh_Intersection::NbTangentZones ******/
-		/****** md5 signature: bd37574252f98e4fea4043ef0036c47e ******/
+		/****** md5 signature: f9a15d4bbad300c3dfb77d73287d82e2 ******/
 		%feature("compactdefaultargs") NbTangentZones;
 		%feature("autodoc", "Return
 -------
@@ -720,7 +712,7 @@ Description
 -----------
 No available documentation.
 ") NbTangentZones;
-		Standard_Integer NbTangentZones();
+		int NbTangentZones();
 
 };
 
@@ -753,16 +745,16 @@ Constructor.
 		 IntPolyh_Point();
 
 		/****** IntPolyh_Point::IntPolyh_Point ******/
-		/****** md5 signature: 0dad2edb2770898af34a7ca0fc080236 ******/
+		/****** md5 signature: b83e24b39deac85ce5ce63008911a81b ******/
 		%feature("compactdefaultargs") IntPolyh_Point;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
-y: float
-z: float
-u: float
-v: float
+x: double
+y: double
+z: double
+u: double
+v: double
 
 Return
 -------
@@ -772,7 +764,7 @@ Description
 -----------
 Constructor.
 ") IntPolyh_Point;
-		 IntPolyh_Point(const Standard_Real x, const Standard_Real y, const Standard_Real z, const Standard_Real u, const Standard_Real v);
+		 IntPolyh_Point(const double x, const double y, const double z, const double u, const double v);
 
 		/****** IntPolyh_Point::Add ******/
 		/****** md5 signature: 5e4cb7b51f6648df0782f9601e2b2f67 ******/
@@ -812,7 +804,7 @@ Cross.
 		void Cross(const IntPolyh_Point & P1, const IntPolyh_Point & P2);
 
 		/****** IntPolyh_Point::Degenerated ******/
-		/****** md5 signature: 7b22888241bd7da5f52ede8bce0e69f7 ******/
+		/****** md5 signature: f255cc3db46328e92cfeeb338b9791be ******/
 		%feature("compactdefaultargs") Degenerated;
 		%feature("autodoc", "Return
 -------
@@ -822,15 +814,15 @@ Description
 -----------
 Returns the degenerated flag.
 ") Degenerated;
-		Standard_Boolean Degenerated();
+		bool Degenerated();
 
 		/****** IntPolyh_Point::Divide ******/
-		/****** md5 signature: ace8843482a5d6b8313f113db19c5955 ******/
+		/****** md5 signature: 8bbdbc1d401fe656c208aa92821dd68b ******/
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "
 Parameters
 ----------
-rr: float
+rr: double
 
 Return
 -------
@@ -840,10 +832,10 @@ Description
 -----------
 Division.
 ") Divide;
-		IntPolyh_Point Divide(const Standard_Real rr);
+		IntPolyh_Point Divide(const double rr);
 
 		/****** IntPolyh_Point::Dot ******/
-		/****** md5 signature: 1967f04538b501dbf41bde7bb58346b5 ******/
+		/****** md5 signature: e382793f07fbf672a31ebf6e271a6401 ******/
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "
 Parameters
@@ -852,13 +844,13 @@ P2: IntPolyh_Point
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Dot.
 ") Dot;
-		Standard_Real Dot(const IntPolyh_Point & P2);
+		double Dot(const IntPolyh_Point & P2);
 
 		/****** IntPolyh_Point::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -874,7 +866,7 @@ Dump.
 		void Dump();
 
 		/****** IntPolyh_Point::Dump ******/
-		/****** md5 signature: 76c1e871500c0f93b485d18107c5c977 ******/
+		/****** md5 signature: 8d857d8e4767f88f6dae5d702f3ee6b5 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -889,7 +881,7 @@ Description
 -----------
 Dump.
 ") Dump;
-		void Dump(const Standard_Integer i);
+		void Dump(const int i);
 
 		/****** IntPolyh_Point::Middle ******/
 		/****** md5 signature: d69a1e6fd4244709afb4adc77b42cd7b ******/
@@ -912,12 +904,12 @@ Creates middle point from P1 and P2 and stores it to this.
 		void Middle(const opencascade::handle<Adaptor3d_Surface> & MySurface, const IntPolyh_Point & P1, const IntPolyh_Point & P2);
 
 		/****** IntPolyh_Point::Multiplication ******/
-		/****** md5 signature: 5a6c10891abd815fe7f286827a7694e3 ******/
+		/****** md5 signature: 0358b0adddcf15dafa34c81f1fbd1425 ******/
 		%feature("compactdefaultargs") Multiplication;
 		%feature("autodoc", "
 Parameters
 ----------
-rr: float
+rr: double
 
 Return
 -------
@@ -927,10 +919,10 @@ Description
 -----------
 Multiplication.
 ") Multiplication;
-		IntPolyh_Point Multiplication(const Standard_Real rr);
+		IntPolyh_Point Multiplication(const double rr);
 
 		/****** IntPolyh_Point::PartOfCommon ******/
-		/****** md5 signature: 60db777cf4f2f0d9f60698c0ec033d5c ******/
+		/****** md5 signature: 023fa879f5b6e76fd2fabfb2cac21b74 ******/
 		%feature("compactdefaultargs") PartOfCommon;
 		%feature("autodoc", "Return
 -------
@@ -940,19 +932,19 @@ Description
 -----------
 Returns 0 if the point is not common with the other surface.
 ") PartOfCommon;
-		Standard_Integer PartOfCommon();
+		int PartOfCommon();
 
 		/****** IntPolyh_Point::Set ******/
-		/****** md5 signature: b27fa39f2c422cf1396ccd75f5e8328b ******/
+		/****** md5 signature: 1632a75390354424aac5c27b5bdb5095 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
-y: float
-z: float
-u: float
-v: float
+x: double
+y: double
+z: double
+u: double
+v: double
 II: int (optional, default to 1)
 
 Return
@@ -963,10 +955,10 @@ Description
 -----------
 Sets the point.
 ") Set;
-		void Set(const Standard_Real x, const Standard_Real y, const Standard_Real z, const Standard_Real u, const Standard_Real v, const Standard_Integer II = 1);
+		void Set(const double x, const double y, const double z, const double u, const double v, const int II = 1);
 
 		/****** IntPolyh_Point::SetDegenerated ******/
-		/****** md5 signature: fc4b00c785fe897cdfa5ea3ca33dff73 ******/
+		/****** md5 signature: a4481353a47c8c98e3addcf823c55bf2 ******/
 		%feature("compactdefaultargs") SetDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -981,10 +973,10 @@ Description
 -----------
 Sets the degenerated flag.
 ") SetDegenerated;
-		void SetDegenerated(const Standard_Boolean theFlag);
+		void SetDegenerated(const bool theFlag);
 
 		/****** IntPolyh_Point::SetPartOfCommon ******/
-		/****** md5 signature: f1a70454f64c7bd9610af21997b5a83e ******/
+		/****** md5 signature: 482f46168f115162447011a93d9cb51c ******/
 		%feature("compactdefaultargs") SetPartOfCommon;
 		%feature("autodoc", "
 Parameters
@@ -999,15 +991,15 @@ Description
 -----------
 Sets the part of common.
 ") SetPartOfCommon;
-		void SetPartOfCommon(const Standard_Integer ii);
+		void SetPartOfCommon(const int ii);
 
 		/****** IntPolyh_Point::SetU ******/
-		/****** md5 signature: db5db2c50aff6626a7e1f03a96fce52c ******/
+		/****** md5 signature: 616497531765ed61c8bcda9a5c1776b5 ******/
 		%feature("compactdefaultargs") SetU;
 		%feature("autodoc", "
 Parameters
 ----------
-u: float
+u: double
 
 Return
 -------
@@ -1017,15 +1009,15 @@ Description
 -----------
 Sets the U coordinate for the 2D point.
 ") SetU;
-		void SetU(const Standard_Real u);
+		void SetU(const double u);
 
 		/****** IntPolyh_Point::SetV ******/
-		/****** md5 signature: 245af6edcdd12761fd501416fd5f53ae ******/
+		/****** md5 signature: 32d75889ac1a53e2fe60f3b0f85b8285 ******/
 		%feature("compactdefaultargs") SetV;
 		%feature("autodoc", "
 Parameters
 ----------
-v: float
+v: double
 
 Return
 -------
@@ -1035,15 +1027,15 @@ Description
 -----------
 Sets the V coordinate for the 2D point.
 ") SetV;
-		void SetV(const Standard_Real v);
+		void SetV(const double v);
 
 		/****** IntPolyh_Point::SetX ******/
-		/****** md5 signature: ac4a0be0a06e8b57ecc84f9fb760ea3b ******/
+		/****** md5 signature: 1e98d646d0853ebee977ef3d603c2e8e ******/
 		%feature("compactdefaultargs") SetX;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
+x: double
 
 Return
 -------
@@ -1053,15 +1045,15 @@ Description
 -----------
 Sets the X coordinate for the 3D point.
 ") SetX;
-		void SetX(const Standard_Real x);
+		void SetX(const double x);
 
 		/****** IntPolyh_Point::SetY ******/
-		/****** md5 signature: 17ba29692eecda22f97e3e2852418a54 ******/
+		/****** md5 signature: e61fa0064ea16cb5a90168f348233daf ******/
 		%feature("compactdefaultargs") SetY;
 		%feature("autodoc", "
 Parameters
 ----------
-y: float
+y: double
 
 Return
 -------
@@ -1071,15 +1063,15 @@ Description
 -----------
 Sets the Y coordinate for the 3D point.
 ") SetY;
-		void SetY(const Standard_Real y);
+		void SetY(const double y);
 
 		/****** IntPolyh_Point::SetZ ******/
-		/****** md5 signature: b04395a80dcced2a11b2d48ca0985762 ******/
+		/****** md5 signature: a3234cc7fc086437dac1ffbb95f87d6d ******/
 		%feature("compactdefaultargs") SetZ;
 		%feature("autodoc", "
 Parameters
 ----------
-z: float
+z: double
 
 Return
 -------
@@ -1089,10 +1081,10 @@ Description
 -----------
 Sets the Z coordinate for the 3D point.
 ") SetZ;
-		void SetZ(const Standard_Real z);
+		void SetZ(const double z);
 
 		/****** IntPolyh_Point::SquareDistance ******/
-		/****** md5 signature: e18788ed62dd08151daedaf87cddb1bb ******/
+		/****** md5 signature: bcd121dc2d12f6249dfeb308c843b225 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -1101,26 +1093,26 @@ P2: IntPolyh_Point
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Square distance to the other point.
 ") SquareDistance;
-		Standard_Real SquareDistance(const IntPolyh_Point & P2);
+		double SquareDistance(const IntPolyh_Point & P2);
 
 		/****** IntPolyh_Point::SquareModulus ******/
-		/****** md5 signature: e568dbeb039e9e13533b9c14cc54c454 ******/
+		/****** md5 signature: 809fdaf6a3c1ba38cd2512c7396981aa ******/
 		%feature("compactdefaultargs") SquareModulus;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Square modulus.
 ") SquareModulus;
-		Standard_Real SquareModulus();
+		double SquareModulus();
 
 		/****** IntPolyh_Point::Sub ******/
 		/****** md5 signature: bd76a5f8c74e94ab3162c2671a17bc4c ******/
@@ -1141,77 +1133,77 @@ Subtraction.
 		IntPolyh_Point Sub(const IntPolyh_Point & P1);
 
 		/****** IntPolyh_Point::U ******/
-		/****** md5 signature: cc4bae97855a9f22a96c46784375ec6b ******/
+		/****** md5 signature: d5ca450930df7bccdde5ad8e8b7351f8 ******/
 		%feature("compactdefaultargs") U;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the U coordinate of the 2D point.
 ") U;
-		Standard_Real U();
+		double U();
 
 		/****** IntPolyh_Point::V ******/
-		/****** md5 signature: ee0b5a184192e1fe834b88f93a7072c6 ******/
+		/****** md5 signature: f0c84ae562f4ed08f73c10a7ed78f7a6 ******/
 		%feature("compactdefaultargs") V;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the V coordinate of the 2D point.
 ") V;
-		Standard_Real V();
+		double V();
 
 		/****** IntPolyh_Point::X ******/
-		/****** md5 signature: 05c2850f49d76f9d0f9da9e2fdb99a8b ******/
+		/****** md5 signature: efd6f1a2cc14bc043dd77138d400bbb4 ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns X coordinate of the 3D point.
 ") X;
-		Standard_Real X();
+		double X();
 
 		/****** IntPolyh_Point::Y ******/
-		/****** md5 signature: 0142f6b6b08f82a328de2fb00d13afbf ******/
+		/****** md5 signature: 160f13e9041e0052ec067eecd98ac130 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns Y coordinate of the 3D point.
 ") Y;
-		Standard_Real Y();
+		double Y();
 
 		/****** IntPolyh_Point::Z ******/
-		/****** md5 signature: 786e228d2eeaf64f99dd51d3ab338f77 ******/
+		/****** md5 signature: db34145c012a7388029856eca0ed69b7 ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Z coordinate of the 3D point.
 ") Z;
-		Standard_Real Z();
+		double Z();
 
 		/****** IntPolyh_Point::operator * ******/
-		/****** md5 signature: ea19ca798303740c132cee442c6a73e5 ******/
+		/****** md5 signature: 4a54505da3fc53a74bf14e25bbbd7442 ******/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", "
 Parameters
 ----------
-rr: float
+rr: double
 
 Return
 -------
@@ -1221,7 +1213,7 @@ Description
 -----------
 No available documentation.
 ") operator *;
-		IntPolyh_Point operator *(const Standard_Real rr);
+		IntPolyh_Point operator *(const double rr);
 
 		/****** IntPolyh_Point::operator + ******/
 		/****** md5 signature: 841cff434eca6d0d0659001a7df30cf5 ******/
@@ -1260,12 +1252,12 @@ No available documentation.
 		IntPolyh_Point operator -(const IntPolyh_Point & P1);
 
 		/****** IntPolyh_Point::operator / ******/
-		/****** md5 signature: b26720f1579bb496b4062ffcfc88e10e ******/
+		/****** md5 signature: f91d804ace034d2588763f89d32ce821 ******/
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", "
 Parameters
 ----------
-rr: float
+rr: double
 
 Return
 -------
@@ -1275,7 +1267,7 @@ Description
 -----------
 No available documentation.
 ") operator /;
-		IntPolyh_Point operator /(const Standard_Real rr);
+		IntPolyh_Point operator /(const double rr);
 
 };
 
@@ -1319,7 +1311,7 @@ No available documentation.
 		 IntPolyh_SectionLine();
 
 		/****** IntPolyh_SectionLine::IntPolyh_SectionLine ******/
-		/****** md5 signature: 989391575d0e946fd51e438b94ec4c3a ******/
+		/****** md5 signature: 6cedbdfaca1af40304884c872a4eafc3 ******/
 		%feature("compactdefaultargs") IntPolyh_SectionLine;
 		%feature("autodoc", "
 Parameters
@@ -1334,7 +1326,7 @@ Description
 -----------
 No available documentation.
 ") IntPolyh_SectionLine;
-		 IntPolyh_SectionLine(const Standard_Integer nn);
+		 IntPolyh_SectionLine(const int nn);
 
 		/****** IntPolyh_SectionLine::IntPolyh_SectionLine ******/
 		/****** md5 signature: e7391118f138d629612227fec24a238d ******/
@@ -1355,7 +1347,7 @@ No available documentation.
 		 IntPolyh_SectionLine(const IntPolyh_SectionLine & theOther);
 
 		/****** IntPolyh_SectionLine::ChangeValue ******/
-		/****** md5 signature: 7107f0e7ad6356869980a743b544f7da ******/
+		/****** md5 signature: 66aab7400b4dd1bb3a76ac95ff3fe87d ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -1370,7 +1362,7 @@ Description
 -----------
 No available documentation.
 ") ChangeValue;
-		IntPolyh_StartPoint & ChangeValue(const Standard_Integer nn);
+		IntPolyh_StartPoint & ChangeValue(const int nn);
 
 		/****** IntPolyh_SectionLine::Copy ******/
 		/****** md5 signature: b67c5399d470327d03c3fb0ba898503e ******/
@@ -1417,7 +1409,7 @@ No available documentation.
 		void Dump();
 
 		/****** IntPolyh_SectionLine::GetN ******/
-		/****** md5 signature: 5fb9f4b3874f795a7a815fab85aea7d0 ******/
+		/****** md5 signature: fa5761010f983bb0937b81bd10b3381a ******/
 		%feature("compactdefaultargs") GetN;
 		%feature("autodoc", "Return
 -------
@@ -1427,7 +1419,7 @@ Description
 -----------
 No available documentation.
 ") GetN;
-		Standard_Integer GetN();
+		int GetN();
 
 		/****** IntPolyh_SectionLine::IncrementNbStartPoints ******/
 		/****** md5 signature: 22d610daf3f0535b3b5755ba147b5daf ******/
@@ -1443,7 +1435,7 @@ No available documentation.
 		void IncrementNbStartPoints();
 
 		/****** IntPolyh_SectionLine::Init ******/
-		/****** md5 signature: 672da0aed6232515e23b52be8c42d935 ******/
+		/****** md5 signature: a95a4dc844fa8ea2657a193f52158de3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1458,10 +1450,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer nn);
+		void Init(const int nn);
 
 		/****** IntPolyh_SectionLine::NbStartPoints ******/
-		/****** md5 signature: 1bf73c1a8fe268cf42d764fcf8ea8c32 ******/
+		/****** md5 signature: ce7cae8d6d3129f0fa93a1e70c20d55b ******/
 		%feature("compactdefaultargs") NbStartPoints;
 		%feature("autodoc", "Return
 -------
@@ -1471,7 +1463,7 @@ Description
 -----------
 No available documentation.
 ") NbStartPoints;
-		Standard_Integer NbStartPoints();
+		int NbStartPoints();
 
 		/****** IntPolyh_SectionLine::Prepend ******/
 		/****** md5 signature: af0ffcb4b68f31c5509f72fef525cce7 ******/
@@ -1492,7 +1484,7 @@ No available documentation.
 		void Prepend(const IntPolyh_StartPoint & SP);
 
 		/****** IntPolyh_SectionLine::Value ******/
-		/****** md5 signature: e636beb39aadea778f4226984bd7f1ea ******/
+		/****** md5 signature: b3f0888f1e28d2cb3cddec70842930fe ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1507,7 +1499,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		const IntPolyh_StartPoint & Value(const Standard_Integer nn);
+		const IntPolyh_StartPoint & Value(const int nn);
 
 };
 
@@ -1537,24 +1529,24 @@ No available documentation.
 		 IntPolyh_StartPoint();
 
 		/****** IntPolyh_StartPoint::IntPolyh_StartPoint ******/
-		/****** md5 signature: 05946fa5bbacb9f47b1ed9bfc8040d64 ******/
+		/****** md5 signature: 7bc1d2fccd36531c3ed249bdba4a11ee ******/
 		%feature("compactdefaultargs") IntPolyh_StartPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-xx: float
-yy: float
-zz: float
-uu1: float
-vv1: float
-uu2: float
-vv2: float
+xx: double
+yy: double
+zz: double
+uu1: double
+vv1: double
+uu2: double
+vv2: double
 T1: int
 E1: int
-LAM1: float
+LAM1: double
 T2: int
 E2: int
-LAM2: float
+LAM2: double
 List: int
 
 Return
@@ -1565,10 +1557,10 @@ Description
 -----------
 No available documentation.
 ") IntPolyh_StartPoint;
-		 IntPolyh_StartPoint(const Standard_Real xx, const Standard_Real yy, const Standard_Real zz, const Standard_Real uu1, const Standard_Real vv1, const Standard_Real uu2, const Standard_Real vv2, const Standard_Integer T1, const Standard_Integer E1, const Standard_Real LAM1, const Standard_Integer T2, const Standard_Integer E2, const Standard_Real LAM2, const Standard_Integer List);
+		 IntPolyh_StartPoint(const double xx, const double yy, const double zz, const double uu1, const double vv1, const double uu2, const double vv2, const int T1, const int E1, const double LAM1, const int T2, const int E2, const double LAM2, const int List);
 
 		/****** IntPolyh_StartPoint::ChainList ******/
-		/****** md5 signature: 1c0b4fb6f76ec9018ad0ab27c00c627c ******/
+		/****** md5 signature: 43082a3b0bad5db8c6f6e99b02054e07 ******/
 		%feature("compactdefaultargs") ChainList;
 		%feature("autodoc", "Return
 -------
@@ -1578,10 +1570,10 @@ Description
 -----------
 No available documentation.
 ") ChainList;
-		Standard_Integer ChainList();
+		int ChainList();
 
 		/****** IntPolyh_StartPoint::CheckSameSP ******/
-		/****** md5 signature: df2c758195df1da70c4bd2d489232571 ******/
+		/****** md5 signature: a0cf8fa4d64c537c124e88459889a21b ******/
 		%feature("compactdefaultargs") CheckSameSP;
 		%feature("autodoc", "
 Parameters
@@ -1596,7 +1588,7 @@ Description
 -----------
 No available documentation.
 ") CheckSameSP;
-		Standard_Integer CheckSameSP(const IntPolyh_StartPoint & SP);
+		int CheckSameSP(const IntPolyh_StartPoint & SP);
 
 		/****** IntPolyh_StartPoint::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -1612,7 +1604,7 @@ No available documentation.
 		void Dump();
 
 		/****** IntPolyh_StartPoint::Dump ******/
-		/****** md5 signature: 76c1e871500c0f93b485d18107c5c977 ******/
+		/****** md5 signature: 8d857d8e4767f88f6dae5d702f3ee6b5 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1627,10 +1619,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer i);
+		void Dump(const int i);
 
 		/****** IntPolyh_StartPoint::E1 ******/
-		/****** md5 signature: bbded0f6b595435125aefc3d7cc4347c ******/
+		/****** md5 signature: b61578d3981ad29fe73f3dce39bdffea ******/
 		%feature("compactdefaultargs") E1;
 		%feature("autodoc", "Return
 -------
@@ -1640,10 +1632,10 @@ Description
 -----------
 No available documentation.
 ") E1;
-		Standard_Integer E1();
+		int E1();
 
 		/****** IntPolyh_StartPoint::E2 ******/
-		/****** md5 signature: 97ebb9b696146cfd15fba68f3c19b34f ******/
+		/****** md5 signature: 22f27ffcb53d104c77f78942286e9bf6 ******/
 		%feature("compactdefaultargs") E2;
 		%feature("autodoc", "Return
 -------
@@ -1653,23 +1645,23 @@ Description
 -----------
 No available documentation.
 ") E2;
-		Standard_Integer E2();
+		int E2();
 
 		/****** IntPolyh_StartPoint::GetAngle ******/
-		/****** md5 signature: 471f6054d76102bd99c47a5db9707ccb ******/
+		/****** md5 signature: 484efb81a36de43577575531adbfdc2c ******/
 		%feature("compactdefaultargs") GetAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") GetAngle;
-		Standard_Real GetAngle();
+		double GetAngle();
 
 		/****** IntPolyh_StartPoint::GetEdgePoints ******/
-		/****** md5 signature: 1c18921c6159ff0c48a16735f9352ece ******/
+		/****** md5 signature: 48347b1083029c2da7a647d5dbc7e0a6 ******/
 		%feature("compactdefaultargs") GetEdgePoints;
 		%feature("autodoc", "
 Parameters
@@ -1686,41 +1678,41 @@ Description
 -----------
 No available documentation.
 ") GetEdgePoints;
-		Standard_Integer GetEdgePoints(const IntPolyh_Triangle & Triangle, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		int GetEdgePoints(const IntPolyh_Triangle & Triangle, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** IntPolyh_StartPoint::Lambda1 ******/
-		/****** md5 signature: 89d04a78455fc185e01e8d05fed81c94 ******/
+		/****** md5 signature: 98053f85100784254aba20bcd451f42e ******/
 		%feature("compactdefaultargs") Lambda1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Lambda1;
-		Standard_Real Lambda1();
+		double Lambda1();
 
 		/****** IntPolyh_StartPoint::Lambda2 ******/
-		/****** md5 signature: f343ae8f6725434339d3f2cd0f721d98 ******/
+		/****** md5 signature: f8730d2c7a89b6acfdaea81ec88deef4 ******/
 		%feature("compactdefaultargs") Lambda2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Lambda2;
-		Standard_Real Lambda2();
+		double Lambda2();
 
 		/****** IntPolyh_StartPoint::SetAngle ******/
-		/****** md5 signature: 99d77a1582b439ff5868a61b2489ddee ******/
+		/****** md5 signature: 188a26155b6928954c9b00ccc9c73032 ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-ang: float
+ang: double
 
 Return
 -------
@@ -1730,10 +1722,10 @@ Description
 -----------
 No available documentation.
 ") SetAngle;
-		void SetAngle(const Standard_Real ang);
+		void SetAngle(const double ang);
 
 		/****** IntPolyh_StartPoint::SetChainList ******/
-		/****** md5 signature: bb7bddbb5865101b6b5e9fc1b4a92c73 ******/
+		/****** md5 signature: 3d869e961a8a8850264d3cc2887b3749 ******/
 		%feature("compactdefaultargs") SetChainList;
 		%feature("autodoc", "
 Parameters
@@ -1748,10 +1740,10 @@ Description
 -----------
 No available documentation.
 ") SetChainList;
-		void SetChainList(const Standard_Integer ChList);
+		void SetChainList(const int ChList);
 
 		/****** IntPolyh_StartPoint::SetCoupleValue ******/
-		/****** md5 signature: 7e2d16f77ee447488d9de31bc4c359ac ******/
+		/****** md5 signature: 864575cb9503339d2b90cb5f5d8ee5e9 ******/
 		%feature("compactdefaultargs") SetCoupleValue;
 		%feature("autodoc", "
 Parameters
@@ -1767,10 +1759,10 @@ Description
 -----------
 No available documentation.
 ") SetCoupleValue;
-		void SetCoupleValue(const Standard_Integer IT1, const Standard_Integer IT2);
+		void SetCoupleValue(const int IT1, const int IT2);
 
 		/****** IntPolyh_StartPoint::SetEdge1 ******/
-		/****** md5 signature: bfe76e7f7279c77db3c3d6d3cdf5ec82 ******/
+		/****** md5 signature: e48926e210696f61104b00b9ec7729a0 ******/
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "
 Parameters
@@ -1785,10 +1777,10 @@ Description
 -----------
 No available documentation.
 ") SetEdge1;
-		void SetEdge1(const Standard_Integer IE1);
+		void SetEdge1(const int IE1);
 
 		/****** IntPolyh_StartPoint::SetEdge2 ******/
-		/****** md5 signature: c9975bdad4db8aa3b718d5cf7b56c34d ******/
+		/****** md5 signature: 1eb911bccda6ddff2bb25c752b978c16 ******/
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "
 Parameters
@@ -1803,15 +1795,15 @@ Description
 -----------
 No available documentation.
 ") SetEdge2;
-		void SetEdge2(const Standard_Integer IE2);
+		void SetEdge2(const int IE2);
 
 		/****** IntPolyh_StartPoint::SetLambda1 ******/
-		/****** md5 signature: 907e759b09edddf55c008e3413fa5264 ******/
+		/****** md5 signature: d6eccf4bbfa334c046af9b8f9ee6873e ******/
 		%feature("compactdefaultargs") SetLambda1;
 		%feature("autodoc", "
 Parameters
 ----------
-LAM1: float
+LAM1: double
 
 Return
 -------
@@ -1821,15 +1813,15 @@ Description
 -----------
 No available documentation.
 ") SetLambda1;
-		void SetLambda1(const Standard_Real LAM1);
+		void SetLambda1(const double LAM1);
 
 		/****** IntPolyh_StartPoint::SetLambda2 ******/
-		/****** md5 signature: 3d750d100043ff6f77a92302d47c0fa2 ******/
+		/****** md5 signature: 17ebdf632323765145d888e48192a225 ******/
 		%feature("compactdefaultargs") SetLambda2;
 		%feature("autodoc", "
 Parameters
 ----------
-LAM2: float
+LAM2: double
 
 Return
 -------
@@ -1839,16 +1831,16 @@ Description
 -----------
 No available documentation.
 ") SetLambda2;
-		void SetLambda2(const Standard_Real LAM2);
+		void SetLambda2(const double LAM2);
 
 		/****** IntPolyh_StartPoint::SetUV1 ******/
-		/****** md5 signature: 5d9c58a5127c203b26492da15a66e750 ******/
+		/****** md5 signature: 383a7e3cd7c2e9aad1cc7d6f49d8f6de ******/
 		%feature("compactdefaultargs") SetUV1;
 		%feature("autodoc", "
 Parameters
 ----------
-UU1: float
-VV1: float
+UU1: double
+VV1: double
 
 Return
 -------
@@ -1858,16 +1850,16 @@ Description
 -----------
 No available documentation.
 ") SetUV1;
-		void SetUV1(const Standard_Real UU1, const Standard_Real VV1);
+		void SetUV1(const double UU1, const double VV1);
 
 		/****** IntPolyh_StartPoint::SetUV2 ******/
-		/****** md5 signature: eb7a24497d6e1d8b85b2aa46436478ee ******/
+		/****** md5 signature: fdca431f4616b96f93dffcd909c09585 ******/
 		%feature("compactdefaultargs") SetUV2;
 		%feature("autodoc", "
 Parameters
 ----------
-UU2: float
-VV2: float
+UU2: double
+VV2: double
 
 Return
 -------
@@ -1877,17 +1869,17 @@ Description
 -----------
 No available documentation.
 ") SetUV2;
-		void SetUV2(const Standard_Real UU2, const Standard_Real VV2);
+		void SetUV2(const double UU2, const double VV2);
 
 		/****** IntPolyh_StartPoint::SetXYZ ******/
-		/****** md5 signature: 759f91004ddd84489a1bb3ed01aaa8d3 ******/
+		/****** md5 signature: 99b04007adc97c1ed485d3153e8bbba5 ******/
 		%feature("compactdefaultargs") SetXYZ;
 		%feature("autodoc", "
 Parameters
 ----------
-XX: float
-YY: float
-ZZ: float
+XX: double
+YY: double
+ZZ: double
 
 Return
 -------
@@ -1897,10 +1889,10 @@ Description
 -----------
 No available documentation.
 ") SetXYZ;
-		void SetXYZ(const Standard_Real XX, const Standard_Real YY, const Standard_Real ZZ);
+		void SetXYZ(const double XX, const double YY, const double ZZ);
 
 		/****** IntPolyh_StartPoint::T1 ******/
-		/****** md5 signature: cc0e68757e11b26f4fa9b446ac2bc56d ******/
+		/****** md5 signature: de3b22a22bd8a6278bc07bb11e05f1c5 ******/
 		%feature("compactdefaultargs") T1;
 		%feature("autodoc", "Return
 -------
@@ -1910,10 +1902,10 @@ Description
 -----------
 No available documentation.
 ") T1;
-		Standard_Integer T1();
+		int T1();
 
 		/****** IntPolyh_StartPoint::T2 ******/
-		/****** md5 signature: 77699ddd71989ac62490c57824df0b16 ******/
+		/****** md5 signature: 796411be4a086b02dd57f78bda56bfbe ******/
 		%feature("compactdefaultargs") T2;
 		%feature("autodoc", "Return
 -------
@@ -1923,98 +1915,98 @@ Description
 -----------
 No available documentation.
 ") T2;
-		Standard_Integer T2();
+		int T2();
 
 		/****** IntPolyh_StartPoint::U1 ******/
-		/****** md5 signature: dc11e0157513dfb2ced295d3b3c19ebf ******/
+		/****** md5 signature: 070c473a14c10a26b7ab54c5fbc40e8d ******/
 		%feature("compactdefaultargs") U1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") U1;
-		Standard_Real U1();
+		double U1();
 
 		/****** IntPolyh_StartPoint::U2 ******/
-		/****** md5 signature: 4730f1ce213775f0185223b0deaa41a3 ******/
+		/****** md5 signature: 4e15fb6b4b406d3553d770418e89a883 ******/
 		%feature("compactdefaultargs") U2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") U2;
-		Standard_Real U2();
+		double U2();
 
 		/****** IntPolyh_StartPoint::V1 ******/
-		/****** md5 signature: 4690fe5b6fc46d61802a6f0d508c99e5 ******/
+		/****** md5 signature: c5f7a687b57e1de44b0be2372cc617fd ******/
 		%feature("compactdefaultargs") V1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") V1;
-		Standard_Real V1();
+		double V1();
 
 		/****** IntPolyh_StartPoint::V2 ******/
-		/****** md5 signature: 17961d7c3a50f3016cdb7368fdec1877 ******/
+		/****** md5 signature: 9adf93c07e3be00363edd1a79cb47c70 ******/
 		%feature("compactdefaultargs") V2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") V2;
-		Standard_Real V2();
+		double V2();
 
 		/****** IntPolyh_StartPoint::X ******/
-		/****** md5 signature: 2dbf42f7dc56303f104fb0fa585dc6e6 ******/
+		/****** md5 signature: d1cd5c739a5e638da850f6d4184da84c ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") X;
-		Standard_Real X();
+		double X();
 
 		/****** IntPolyh_StartPoint::Y ******/
-		/****** md5 signature: 7fd17991f11a9702e525c7070ce7cec6 ******/
+		/****** md5 signature: a8645c42b76f8d7a4895271f99de6d50 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Y;
-		Standard_Real Y();
+		double Y();
 
 		/****** IntPolyh_StartPoint::Z ******/
-		/****** md5 signature: 87b89b9e016f37b0146cf52868684676 ******/
+		/****** md5 signature: 0f93794bcb3e7aa1261f56c7c023b4aa ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Z;
-		Standard_Real Z();
+		double Z();
 
 };
 
@@ -2031,34 +2023,34 @@ No available documentation.
 class IntPolyh_Tools {
 	public:
 		/****** IntPolyh_Tools::ComputeDeflection ******/
-		/****** md5 signature: 6910f4dfdc84512a298a4c401025077a ******/
+		/****** md5 signature: 668d119178becaeaf6929f8477b7a43e ******/
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theUPars: TColStd_Array1OfReal
-theVPars: TColStd_Array1OfReal
+theUPars: NCollection_Array1<double>
+theVPars: NCollection_Array1<double>
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the deflection tolerance on the surface for the given sampling.
 ") ComputeDeflection;
-		static Standard_Real ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars);
+		static double ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurf, const NCollection_Array1<double> & theUPars, const NCollection_Array1<double> & theVPars);
 
 		/****** IntPolyh_Tools::FillArrayOfPointNormal ******/
-		/****** md5 signature: 2adb116f2ef679f969c5bf03ddaff6a1 ******/
+		/****** md5 signature: 2aceb5a42339a233bbafe0d8a4a3afa0 ******/
 		%feature("compactdefaultargs") FillArrayOfPointNormal;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theUPars: TColStd_Array1OfReal
-theVPars: TColStd_Array1OfReal
+theUPars: NCollection_Array1<double>
+theVPars: NCollection_Array1<double>
 thePoints: IntPolyh_ArrayOfPointNormal
 
 Return
@@ -2069,10 +2061,10 @@ Description
 -----------
 Fills the array <thePoints> with the points (triangulation nodes) on the surface and normal directions of the surface in these points.
 ") FillArrayOfPointNormal;
-		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
+		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const NCollection_Array1<double> & theUPars, const NCollection_Array1<double> & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
 
 		/****** IntPolyh_Tools::IsEnlargePossible ******/
-		/****** md5 signature: 3ab593ec60e1a248533d894cd7c3cea3 ******/
+		/****** md5 signature: 63a5e556d32de05e89f2a5edba6ab1ff ******/
 		%feature("compactdefaultargs") IsEnlargePossible;
 		%feature("autodoc", "
 Parameters
@@ -2091,7 +2083,7 @@ Checks if the surface can be enlarged in U or V direction.
 		static void IsEnlargePossible(const opencascade::handle<Adaptor3d_Surface> & theSurf, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** IntPolyh_Tools::MakeSampling ******/
-		/****** md5 signature: cfdeaf4bb5f9938ac66f44b0caab0c9e ******/
+		/****** md5 signature: 09e82804c382b7aa9f0901d577411cb8 ******/
 		%feature("compactdefaultargs") MakeSampling;
 		%feature("autodoc", "
 Parameters
@@ -2100,8 +2092,8 @@ theSurf: Adaptor3d_Surface
 theNbSU: int
 theNbSV: int
 theEnlargeZone: bool
-theUPars: TColStd_Array1OfReal
-theVPars: TColStd_Array1OfReal
+theUPars: NCollection_Array1<double>
+theVPars: NCollection_Array1<double>
 
 Return
 -------
@@ -2111,7 +2103,7 @@ Description
 -----------
 Makes the sampling of the given surface <theSurf> making the net of <theNbSU> x <theNbSV> sampling points. The flag <theEnlargeZone> controls the enlargement of the sampling zone on the surface. The parameters of the sampling points are stored into <theUPars> and <theVPars> arrays.
 ") MakeSampling;
-		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Integer theNbSU, const Standard_Integer theNbSV, const Standard_Boolean theEnlargeZone, TColStd_Array1OfReal & theUPars, TColStd_Array1OfReal & theVPars);
+		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const int theNbSU, const int theNbSV, const bool theEnlargeZone, NCollection_Array1<double> & theUPars, NCollection_Array1<double> & theVPars);
 
 };
 
@@ -2141,7 +2133,7 @@ Constructor.
 		 IntPolyh_Triangle();
 
 		/****** IntPolyh_Triangle::IntPolyh_Triangle ******/
-		/****** md5 signature: d9dae26ef6c441c84cc9c185b45673cc ******/
+		/****** md5 signature: 6f9cc2b36c29d774a5c6a1d3b5975b41 ******/
 		%feature("compactdefaultargs") IntPolyh_Triangle;
 		%feature("autodoc", "
 Parameters
@@ -2158,7 +2150,7 @@ Description
 -----------
 Constructor.
 ") IntPolyh_Triangle;
-		 IntPolyh_Triangle(const Standard_Integer thePoint1, const Standard_Integer thePoint2, const Standard_Integer thePoint3);
+		 IntPolyh_Triangle(const int thePoint1, const int thePoint2, const int thePoint3);
 
 		/****** IntPolyh_Triangle::BoundingBox ******/
 		/****** md5 signature: ee96b168b7ff96a0829f7b13933d22c1 ******/
@@ -2179,7 +2171,7 @@ Returns the bounding box of the triangle.
 		const Bnd_Box & BoundingBox(const IntPolyh_ArrayOfPoints & thePoints);
 
 		/****** IntPolyh_Triangle::ComputeDeflection ******/
-		/****** md5 signature: 27152449d94d09952a80dfd69a413feb ******/
+		/****** md5 signature: c0ff9ca6d0c1b9b1e143226b22dc72a4 ******/
 		%feature("compactdefaultargs") ComputeDeflection;
 		%feature("autodoc", "
 Parameters
@@ -2189,29 +2181,29 @@ thePoints: IntPolyh_ArrayOfPoints
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the deflection for the triangle.
 ") ComputeDeflection;
-		Standard_Real ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurface, const IntPolyh_ArrayOfPoints & thePoints);
+		double ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurface, const IntPolyh_ArrayOfPoints & thePoints);
 
 		/****** IntPolyh_Triangle::Deflection ******/
-		/****** md5 signature: 6fb4c31e8f4445c1597fc8b70a63cbfb ******/
+		/****** md5 signature: e7bafce0869e6419d801f7a7f285ba00 ******/
 		%feature("compactdefaultargs") Deflection;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the deflection of the triangle.
 ") Deflection;
-		Standard_Real Deflection();
+		double Deflection();
 
 		/****** IntPolyh_Triangle::Dump ******/
-		/****** md5 signature: 110c93028fb8130e272d294a2869a993 ******/
+		/****** md5 signature: 37de731f10fd777be98163f336102f62 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2226,10 +2218,10 @@ Description
 -----------
 Dumps the contents of the triangle.
 ") Dump;
-		void Dump(const Standard_Integer v);
+		void Dump(const int v);
 
 		/****** IntPolyh_Triangle::FirstEdge ******/
-		/****** md5 signature: 467a40aae538a09fbd07f57b1550a4dd ******/
+		/****** md5 signature: 0e65b9ae7956cdc44fc9fea0d0248f6c ******/
 		%feature("compactdefaultargs") FirstEdge;
 		%feature("autodoc", "Return
 -------
@@ -2239,10 +2231,10 @@ Description
 -----------
 Returns the first edge.
 ") FirstEdge;
-		Standard_Integer FirstEdge();
+		int FirstEdge();
 
 		/****** IntPolyh_Triangle::FirstEdgeOrientation ******/
-		/****** md5 signature: 63fec8812a634740f4958500172c7542 ******/
+		/****** md5 signature: 2eda76f126f50634816f8ecb3f85505f ******/
 		%feature("compactdefaultargs") FirstEdgeOrientation;
 		%feature("autodoc", "Return
 -------
@@ -2252,10 +2244,10 @@ Description
 -----------
 Returns the orientation of the first edge.
 ") FirstEdgeOrientation;
-		Standard_Integer FirstEdgeOrientation();
+		int FirstEdgeOrientation();
 
 		/****** IntPolyh_Triangle::FirstPoint ******/
-		/****** md5 signature: a96e582923b6d3c6eaa1f60febc5fe6c ******/
+		/****** md5 signature: c05fb4442ea1c5a200b564a266eabd5b ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -2265,10 +2257,10 @@ Description
 -----------
 Returns the first point.
 ") FirstPoint;
-		Standard_Integer FirstPoint();
+		int FirstPoint();
 
 		/****** IntPolyh_Triangle::GetEdgeNumber ******/
-		/****** md5 signature: 355e2c5eb6aae26e9646df9f52c7f8d4 ******/
+		/****** md5 signature: 6b37edd9d33e9da71605b7ff3de79bf6 ******/
 		%feature("compactdefaultargs") GetEdgeNumber;
 		%feature("autodoc", "
 Parameters
@@ -2283,10 +2275,10 @@ Description
 -----------
 Gets the edge number by the index.
 ") GetEdgeNumber;
-		Standard_Integer GetEdgeNumber(const Standard_Integer theEdgeIndex);
+		int GetEdgeNumber(const int theEdgeIndex);
 
 		/****** IntPolyh_Triangle::GetEdgeOrientation ******/
-		/****** md5 signature: e31739be22099a0824cdcfef23383bae ******/
+		/****** md5 signature: 64aa4191369046538f698ca9703bef8e ******/
 		%feature("compactdefaultargs") GetEdgeOrientation;
 		%feature("autodoc", "
 Parameters
@@ -2301,10 +2293,10 @@ Description
 -----------
 Gets the edges orientation by the index.
 ") GetEdgeOrientation;
-		Standard_Integer GetEdgeOrientation(const Standard_Integer theEdgeIndex);
+		int GetEdgeOrientation(const int theEdgeIndex);
 
 		/****** IntPolyh_Triangle::GetNextTriangle ******/
-		/****** md5 signature: fa495ec0085898ceb9cde6d6b7a03726 ******/
+		/****** md5 signature: e9c207876694b0acc3fdf0fbc548ccf2 ******/
 		%feature("compactdefaultargs") GetNextTriangle;
 		%feature("autodoc", "
 Parameters
@@ -2321,10 +2313,10 @@ Description
 -----------
 Gets the adjacent triangle.
 ") GetNextTriangle;
-		Standard_Integer GetNextTriangle(const Standard_Integer theTriangle, const Standard_Integer theEdgeNum, const IntPolyh_ArrayOfEdges & TEdges);
+		int GetNextTriangle(const int theTriangle, const int theEdgeNum, const IntPolyh_ArrayOfEdges & TEdges);
 
 		/****** IntPolyh_Triangle::HasIntersection ******/
-		/****** md5 signature: 55f070fe51c559b5db20d742c7f46730 ******/
+		/****** md5 signature: 0056685440f56dba8f3b35f7970dc2c9 ******/
 		%feature("compactdefaultargs") HasIntersection;
 		%feature("autodoc", "Return
 -------
@@ -2334,10 +2326,10 @@ Description
 -----------
 Returns true if the triangle has interfered the other triangle.
 ") HasIntersection;
-		Standard_Boolean HasIntersection();
+		bool HasIntersection();
 
 		/****** IntPolyh_Triangle::IsDegenerated ******/
-		/****** md5 signature: 8ad6b1a35fb6f8c9d08e99a7c18cd60e ******/
+		/****** md5 signature: bc9cd84cecdefb39f2de514cde6b7d4d ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -2347,10 +2339,10 @@ Description
 -----------
 Returns the Degenerated flag.
 ") IsDegenerated;
-		Standard_Boolean IsDegenerated();
+		bool IsDegenerated();
 
 		/****** IntPolyh_Triangle::IsIntersectionPossible ******/
-		/****** md5 signature: e808bda296bf9e48992461ce72fb0cd8 ******/
+		/****** md5 signature: 3b5c4078755ef0a3026cc54f74196b90 ******/
 		%feature("compactdefaultargs") IsIntersectionPossible;
 		%feature("autodoc", "Return
 -------
@@ -2360,10 +2352,10 @@ Description
 -----------
 Returns possibility of the intersection.
 ") IsIntersectionPossible;
-		Standard_Boolean IsIntersectionPossible();
+		bool IsIntersectionPossible();
 
 		/****** IntPolyh_Triangle::LinkEdges2Triangle ******/
-		/****** md5 signature: b549ca2d62ffa16c5479e204bb5a97cb ******/
+		/****** md5 signature: 2596fab3f9f974da355e7c44b48adba7 ******/
 		%feature("compactdefaultargs") LinkEdges2Triangle;
 		%feature("autodoc", "
 Parameters
@@ -2381,10 +2373,10 @@ Description
 -----------
 Links edges to triangle.
 ") LinkEdges2Triangle;
-		void LinkEdges2Triangle(const IntPolyh_ArrayOfEdges & TEdges, const Standard_Integer theEdge1, const Standard_Integer theEdge2, const Standard_Integer theEdge3);
+		void LinkEdges2Triangle(const IntPolyh_ArrayOfEdges & TEdges, const int theEdge1, const int theEdge2, const int theEdge3);
 
 		/****** IntPolyh_Triangle::MiddleRefinement ******/
-		/****** md5 signature: 61626a4a9e3960cafd878c1146fa7f69 ******/
+		/****** md5 signature: 82a1541879591f4f46daf88b16c74e61 ******/
 		%feature("compactdefaultargs") MiddleRefinement;
 		%feature("autodoc", "
 Parameters
@@ -2403,15 +2395,15 @@ Description
 -----------
 Splits the triangle on two to decrease its deflection.
 ") MiddleRefinement;
-		void MiddleRefinement(const Standard_Integer theTriangleNumber, const opencascade::handle<Adaptor3d_Surface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
+		void MiddleRefinement(const int theTriangleNumber, const opencascade::handle<Adaptor3d_Surface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
 
 		/****** IntPolyh_Triangle::MultipleMiddleRefinement ******/
-		/****** md5 signature: edfbe2be00529fe0c26433342bf3f5f2 ******/
+		/****** md5 signature: 5787e264b9807aa6d3123843bf32317f ******/
 		%feature("compactdefaultargs") MultipleMiddleRefinement;
 		%feature("autodoc", "
 Parameters
 ----------
-theRefineCriterion: float
+theRefineCriterion: double
 theBox: Bnd_Box
 theTriangleNumber: int
 theSurface: Adaptor3d_Surface
@@ -2427,10 +2419,10 @@ Description
 -----------
 Splits the current triangle and new triangles until the refinement criterion is not achieved.
 ") MultipleMiddleRefinement;
-		void MultipleMiddleRefinement(const Standard_Real theRefineCriterion, const Bnd_Box & theBox, const Standard_Integer theTriangleNumber, const opencascade::handle<Adaptor3d_Surface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
+		void MultipleMiddleRefinement(const double theRefineCriterion, const Bnd_Box & theBox, const int theTriangleNumber, const opencascade::handle<Adaptor3d_Surface> & theSurface, IntPolyh_ArrayOfPoints & TPoints, IntPolyh_ArrayOfTriangles & TTriangles, IntPolyh_ArrayOfEdges & TEdges);
 
 		/****** IntPolyh_Triangle::SecondEdge ******/
-		/****** md5 signature: 472cb748b92b2789c125a4969bbacbcb ******/
+		/****** md5 signature: fc88dd47eb4e4bc3ffbde4d68d3f192d ******/
 		%feature("compactdefaultargs") SecondEdge;
 		%feature("autodoc", "Return
 -------
@@ -2440,10 +2432,10 @@ Description
 -----------
 Returns the second edge.
 ") SecondEdge;
-		Standard_Integer SecondEdge();
+		int SecondEdge();
 
 		/****** IntPolyh_Triangle::SecondEdgeOrientation ******/
-		/****** md5 signature: 43d5c8f7035ede7da0c5cb45f25ab3a8 ******/
+		/****** md5 signature: 58db592336eb3f4aa547fa52f507cce1 ******/
 		%feature("compactdefaultargs") SecondEdgeOrientation;
 		%feature("autodoc", "Return
 -------
@@ -2453,10 +2445,10 @@ Description
 -----------
 Returns the orientation of the second edge.
 ") SecondEdgeOrientation;
-		Standard_Integer SecondEdgeOrientation();
+		int SecondEdgeOrientation();
 
 		/****** IntPolyh_Triangle::SecondPoint ******/
-		/****** md5 signature: 72a7379dccfa5bce46bd84d12acec99b ******/
+		/****** md5 signature: 11a332f59a7deffa9e04bd13881209ec ******/
 		%feature("compactdefaultargs") SecondPoint;
 		%feature("autodoc", "Return
 -------
@@ -2466,15 +2458,15 @@ Description
 -----------
 Returns the second point.
 ") SecondPoint;
-		Standard_Integer SecondPoint();
+		int SecondPoint();
 
 		/****** IntPolyh_Triangle::SetDeflection ******/
-		/****** md5 signature: ef17e8202a75f8963ebbbf02897eb710 ******/
+		/****** md5 signature: 4ffc3b2c2f617266ffb800b5de7b581b ******/
 		%feature("compactdefaultargs") SetDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
-theDeflection: float
+theDeflection: double
 
 Return
 -------
@@ -2484,10 +2476,10 @@ Description
 -----------
 Sets the deflection.
 ") SetDeflection;
-		void SetDeflection(const Standard_Real theDeflection);
+		void SetDeflection(const double theDeflection);
 
 		/****** IntPolyh_Triangle::SetDegenerated ******/
-		/****** md5 signature: 2eb13d0635ab2d27abe48b356f7b8c57 ******/
+		/****** md5 signature: 16e82b058066aff5f65c296031a377ea ******/
 		%feature("compactdefaultargs") SetDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -2502,10 +2494,10 @@ Description
 -----------
 Sets the degenerated flag.
 ") SetDegenerated;
-		void SetDegenerated(const Standard_Boolean theDegFlag);
+		void SetDegenerated(const bool theDegFlag);
 
 		/****** IntPolyh_Triangle::SetEdge ******/
-		/****** md5 signature: 45ce46febddd0f70ff8fba70c2effdec ******/
+		/****** md5 signature: 1a53eed7caa8d5cd8a3678f6e5369339 ******/
 		%feature("compactdefaultargs") SetEdge;
 		%feature("autodoc", "
 Parameters
@@ -2521,10 +2513,10 @@ Description
 -----------
 Sets the edge by the index.
 ") SetEdge;
-		void SetEdge(const Standard_Integer theEdgeIndex, const Standard_Integer theEdgeNumber);
+		void SetEdge(const int theEdgeIndex, const int theEdgeNumber);
 
 		/****** IntPolyh_Triangle::SetEdgeAndOrientation ******/
-		/****** md5 signature: 4d9bcdfacea3a906672df30a22db3ec2 ******/
+		/****** md5 signature: 4fa8bf795008eb73887c4deca136331c ******/
 		%feature("compactdefaultargs") SetEdgeAndOrientation;
 		%feature("autodoc", "
 Parameters
@@ -2540,10 +2532,10 @@ Description
 -----------
 Sets the appropriate edge and orientation for the triangle.
 ") SetEdgeAndOrientation;
-		void SetEdgeAndOrientation(const IntPolyh_Edge & theEdge, const Standard_Integer theEdgeIndex);
+		void SetEdgeAndOrientation(const IntPolyh_Edge & theEdge, const int theEdgeIndex);
 
 		/****** IntPolyh_Triangle::SetEdgeOrientation ******/
-		/****** md5 signature: 4c46548c23a84d5c7b7bc033268a1c59 ******/
+		/****** md5 signature: 33bb439bef4f03748f3a31d513986f0a ******/
 		%feature("compactdefaultargs") SetEdgeOrientation;
 		%feature("autodoc", "
 Parameters
@@ -2559,10 +2551,10 @@ Description
 -----------
 Sets the edges orientation by the index.
 ") SetEdgeOrientation;
-		void SetEdgeOrientation(const Standard_Integer theEdgeIndex, const Standard_Integer theEdgeOrientation);
+		void SetEdgeOrientation(const int theEdgeIndex, const int theEdgeOrientation);
 
 		/****** IntPolyh_Triangle::SetFirstEdge ******/
-		/****** md5 signature: cd8ab5fc84b382c8f9341ff5a1bee0e4 ******/
+		/****** md5 signature: f056efafd900958275d3ae32f497e412 ******/
 		%feature("compactdefaultargs") SetFirstEdge;
 		%feature("autodoc", "
 Parameters
@@ -2578,10 +2570,10 @@ Description
 -----------
 Sets the first edge.
 ") SetFirstEdge;
-		void SetFirstEdge(const Standard_Integer theEdge, const Standard_Integer theEdgeOrientation);
+		void SetFirstEdge(const int theEdge, const int theEdgeOrientation);
 
 		/****** IntPolyh_Triangle::SetFirstPoint ******/
-		/****** md5 signature: 083b09fcfbdd1fc3d0e79515942eca68 ******/
+		/****** md5 signature: bc0831d73df54adbbd961a44ca93e579 ******/
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -2596,10 +2588,10 @@ Description
 -----------
 Sets the first point.
 ") SetFirstPoint;
-		void SetFirstPoint(const Standard_Integer thePoint);
+		void SetFirstPoint(const int thePoint);
 
 		/****** IntPolyh_Triangle::SetIntersection ******/
-		/****** md5 signature: bf4a98cca40c72ad9a676c94ac89833b ******/
+		/****** md5 signature: b737ca793412fe14eb9831eb0a482a33 ******/
 		%feature("compactdefaultargs") SetIntersection;
 		%feature("autodoc", "
 Parameters
@@ -2614,10 +2606,10 @@ Description
 -----------
 Sets the flag of intersection.
 ") SetIntersection;
-		void SetIntersection(const Standard_Boolean theInt);
+		void SetIntersection(const bool theInt);
 
 		/****** IntPolyh_Triangle::SetIntersectionPossible ******/
-		/****** md5 signature: 52ac32c4e613c89aa8c493d9d9a93c96 ******/
+		/****** md5 signature: c4c19d920b0225a9bd69b15963f3fd03 ******/
 		%feature("compactdefaultargs") SetIntersectionPossible;
 		%feature("autodoc", "
 Parameters
@@ -2632,10 +2624,10 @@ Description
 -----------
 Sets the flag of possibility of intersection.
 ") SetIntersectionPossible;
-		void SetIntersectionPossible(const Standard_Boolean theIP);
+		void SetIntersectionPossible(const bool theIP);
 
 		/****** IntPolyh_Triangle::SetSecondEdge ******/
-		/****** md5 signature: 8236634aa32ab6ce341587949769d1b0 ******/
+		/****** md5 signature: 896c5cad99207cc7e5f6c67925d20274 ******/
 		%feature("compactdefaultargs") SetSecondEdge;
 		%feature("autodoc", "
 Parameters
@@ -2651,10 +2643,10 @@ Description
 -----------
 Sets the second edge.
 ") SetSecondEdge;
-		void SetSecondEdge(const Standard_Integer theEdge, const Standard_Integer theEdgeOrientation);
+		void SetSecondEdge(const int theEdge, const int theEdgeOrientation);
 
 		/****** IntPolyh_Triangle::SetSecondPoint ******/
-		/****** md5 signature: 30ecd94c48d0a5d89ca894a21ecac9ff ******/
+		/****** md5 signature: f1574fbbf6ff0e19c176e5ee3dbc9552 ******/
 		%feature("compactdefaultargs") SetSecondPoint;
 		%feature("autodoc", "
 Parameters
@@ -2669,10 +2661,10 @@ Description
 -----------
 Sets the second point.
 ") SetSecondPoint;
-		void SetSecondPoint(const Standard_Integer thePoint);
+		void SetSecondPoint(const int thePoint);
 
 		/****** IntPolyh_Triangle::SetThirdEdge ******/
-		/****** md5 signature: e08225cdcb1da5834aba548228715747 ******/
+		/****** md5 signature: 4ae36c6d7255edc8d1fadebedc9b2bde ******/
 		%feature("compactdefaultargs") SetThirdEdge;
 		%feature("autodoc", "
 Parameters
@@ -2688,10 +2680,10 @@ Description
 -----------
 Sets the third edge.
 ") SetThirdEdge;
-		void SetThirdEdge(const Standard_Integer theEdge, const Standard_Integer theEdgeOrientation);
+		void SetThirdEdge(const int theEdge, const int theEdgeOrientation);
 
 		/****** IntPolyh_Triangle::SetThirdPoint ******/
-		/****** md5 signature: 5f93dfa17668654844e49e0d36fe169e ******/
+		/****** md5 signature: b062e916ba45b47986e6018ad38236b9 ******/
 		%feature("compactdefaultargs") SetThirdPoint;
 		%feature("autodoc", "
 Parameters
@@ -2706,10 +2698,10 @@ Description
 -----------
 Sets the third point.
 ") SetThirdPoint;
-		void SetThirdPoint(const Standard_Integer thePoint);
+		void SetThirdPoint(const int thePoint);
 
 		/****** IntPolyh_Triangle::ThirdEdge ******/
-		/****** md5 signature: e84977332005f00d178ee7a969c85308 ******/
+		/****** md5 signature: 99e1abb2d9656121a48f99db0a409a1c ******/
 		%feature("compactdefaultargs") ThirdEdge;
 		%feature("autodoc", "Return
 -------
@@ -2719,10 +2711,10 @@ Description
 -----------
 Returns the third edge.
 ") ThirdEdge;
-		Standard_Integer ThirdEdge();
+		int ThirdEdge();
 
 		/****** IntPolyh_Triangle::ThirdEdgeOrientation ******/
-		/****** md5 signature: 247f29dd6cec81c6ffac8dbbb396edcb ******/
+		/****** md5 signature: f352e8a8fd3eea796daa800b7fe7d400 ******/
 		%feature("compactdefaultargs") ThirdEdgeOrientation;
 		%feature("autodoc", "Return
 -------
@@ -2732,10 +2724,10 @@ Description
 -----------
 Returns the orientation of the third edge.
 ") ThirdEdgeOrientation;
-		Standard_Integer ThirdEdgeOrientation();
+		int ThirdEdgeOrientation();
 
 		/****** IntPolyh_Triangle::ThirdPoint ******/
-		/****** md5 signature: 5764723d339a8e1924bb9059befea79f ******/
+		/****** md5 signature: f4297accdeb8fa1f2d143134b531c3e6 ******/
 		%feature("compactdefaultargs") ThirdPoint;
 		%feature("autodoc", "Return
 -------
@@ -2745,7 +2737,7 @@ Description
 -----------
 Returns the third point.
 ") ThirdPoint;
-		Standard_Integer ThirdPoint();
+		int ThirdPoint();
 
 };
 

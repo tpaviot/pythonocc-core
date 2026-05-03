@@ -119,26 +119,26 @@ UnitsMethods_LengthUnit_Microinch = UnitsMethods_LengthUnit.UnitsMethods_LengthU
 class UnitsMethods {
 	public:
 		/****** UnitsMethods::DumpLengthUnit ******/
-		/****** md5 signature: 7e9f29252fe39aeb476d32067ef2003b ******/
+		/****** md5 signature: c1d42045b661fcd1a815493ac34b0d58 ******/
 		%feature("compactdefaultargs") DumpLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theScaleFactor: float
+theScaleFactor: double
 theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns string name for the given scale factor.
 ") DumpLengthUnit;
-		static Standard_CString DumpLengthUnit(const Standard_Real theScaleFactor, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
+		static const char * DumpLengthUnit(const double theScaleFactor, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****** UnitsMethods::DumpLengthUnit ******/
-		/****** md5 signature: 041378fbbb50f903a1e84aa7dd62133b ******/
+		/****** md5 signature: bb4652d1f5f145a80412aa4f3bed7eb2 ******/
 		%feature("compactdefaultargs") DumpLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -147,16 +147,16 @@ theUnit: UnitsMethods_LengthUnit
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns string for the given value of LengthUnit.
 ") DumpLengthUnit;
-		static Standard_CString DumpLengthUnit(const UnitsMethods_LengthUnit theUnit);
+		static const char * DumpLengthUnit(const UnitsMethods_LengthUnit theUnit);
 
 		/****** UnitsMethods::GetCasCadeLengthUnit ******/
-		/****** md5 signature: 4a35e7f810a7fd635427969f415c00c2 ******/
+		/****** md5 signature: 56fb48d5269c52e14475fde13cd10fe4 ******/
 		%feature("compactdefaultargs") GetCasCadeLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -165,16 +165,16 @@ theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUn
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns value of current internal unit for CASCADE in millemeters by default.
 ") GetCasCadeLengthUnit;
-		static Standard_Real GetCasCadeLengthUnit(const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
+		static double GetCasCadeLengthUnit(const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****** UnitsMethods::GetLengthFactorValue ******/
-		/****** md5 signature: 17395326a1aa02b6c1d23575c8d21a16 ******/
+		/****** md5 signature: 163cb23487d25aeb5800dfe12c3522fd ******/
 		%feature("compactdefaultargs") GetLengthFactorValue;
 		%feature("autodoc", "
 Parameters
@@ -183,21 +183,21 @@ theUnit: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns value of unit encoded by parameter theUnit (integer value denoting unit, as described in IGES standard) in millimeters by default.
 ") GetLengthFactorValue;
-		static Standard_Real GetLengthFactorValue(const Standard_Integer theUnit);
+		static double GetLengthFactorValue(const int theUnit);
 
 		/****** UnitsMethods::GetLengthUnitByFactorValue ******/
-		/****** md5 signature: c591653a1cdd834dd045be23996370a7 ******/
+		/****** md5 signature: f4933809957dd0d9b593b7316508cd75 ******/
 		%feature("compactdefaultargs") GetLengthUnitByFactorValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theFactorValue: float
+theFactorValue: double
 theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
 Return
@@ -208,10 +208,10 @@ Description
 -----------
 Returns the enumeration corresponding to the given scale factor.
 ") GetLengthUnitByFactorValue;
-		static UnitsMethods_LengthUnit GetLengthUnitByFactorValue(const Standard_Real theFactorValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
+		static UnitsMethods_LengthUnit GetLengthUnitByFactorValue(const double theFactorValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****** UnitsMethods::GetLengthUnitScale ******/
-		/****** md5 signature: 6bccef8b04bf4f4544844ae745cb54b1 ******/
+		/****** md5 signature: 68b67b7769a1a53a3e5c4b2ada4bb30d ******/
 		%feature("compactdefaultargs") GetLengthUnitScale;
 		%feature("autodoc", "
 Parameters
@@ -221,21 +221,21 @@ theToUnit: UnitsMethods_LengthUnit
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the scale factor for switch from first given unit to second given unit.
 ") GetLengthUnitScale;
-		static Standard_Real GetLengthUnitScale(const UnitsMethods_LengthUnit theFromUnit, const UnitsMethods_LengthUnit theToUnit);
+		static double GetLengthUnitScale(const UnitsMethods_LengthUnit theFromUnit, const UnitsMethods_LengthUnit theToUnit);
 
 		/****** UnitsMethods::LengthUnitFromString ******/
-		/****** md5 signature: 9c68ff81b8a33221a8ac8c7a597944f3 ******/
+		/****** md5 signature: f83887e3c2382cb8f89e079e5e50595b ******/
 		%feature("compactdefaultargs") LengthUnitFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theStr: str
+theStr: char *
 theCaseSensitive: bool
 
 Return
@@ -246,15 +246,15 @@ Description
 -----------
 Make conversion of given string to value of LengthUnit.
 ") LengthUnitFromString;
-		static UnitsMethods_LengthUnit LengthUnitFromString(Standard_CString theStr, const Standard_Boolean theCaseSensitive);
+		static UnitsMethods_LengthUnit LengthUnitFromString(const char * theStr, const bool theCaseSensitive);
 
 		/****** UnitsMethods::SetCasCadeLengthUnit ******/
-		/****** md5 signature: bae022cf6fb5e154dc0ccbb433978128 ******/
+		/****** md5 signature: 6e1696597159c5f9f4f271f4fdc1350c ******/
 		%feature("compactdefaultargs") SetCasCadeLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnitValue: float
+theUnitValue: double
 theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
 Return
@@ -265,10 +265,10 @@ Description
 -----------
 Sets value of current internal unit for CASCADE.
 ") SetCasCadeLengthUnit;
-		static void SetCasCadeLengthUnit(const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
+		static void SetCasCadeLengthUnit(const double theUnitValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****** UnitsMethods::SetCasCadeLengthUnit ******/
-		/****** md5 signature: 888651f664c4b13f838427a3d533c4b5 ******/
+		/****** md5 signature: 9cd8941060719d1a54ccf2ab64f019a2 ******/
 		%feature("compactdefaultargs") SetCasCadeLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -283,7 +283,7 @@ Description
 -----------
 Sets value of current internal unit for CASCADE by parameter theUnit (integer value denoting unit, as described in IGES standard).
 ") SetCasCadeLengthUnit;
-		static void SetCasCadeLengthUnit(const Standard_Integer theUnit);
+		static void SetCasCadeLengthUnit(const int theUnit);
 
 };
 

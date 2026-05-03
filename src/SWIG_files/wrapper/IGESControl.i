@@ -104,11 +104,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(IGESControl_ActorWrite)
-%wrap_handle(IGESControl_AlgoContainer)
-%wrap_handle(IGESControl_Controller)
-%wrap_handle(IGESControl_IGESBoundary)
-%wrap_handle(IGESControl_ToolContainer)
 /* end handles declaration */
 
 /* templates */
@@ -136,7 +131,7 @@ No available documentation.
 		 IGESControl_ActorWrite();
 
 		/****** IGESControl_ActorWrite::Recognize ******/
-		/****** md5 signature: c8970d8be01e43b4712b350a7b483668 ******/
+		/****** md5 signature: c75c372401b17ce93c08832f5db0f899 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -151,10 +146,10 @@ Description
 -----------
 Recognizes a ShapeMapper.
 ") Recognize;
-		virtual Standard_Boolean Recognize(const opencascade::handle<Transfer_Finder> & start);
+		bool Recognize(const opencascade::handle<Transfer_Finder> & start);
 
 		/****** IGESControl_ActorWrite::Transfer ******/
-		/****** md5 signature: de55557a60f11851f77e2ae7fac24dbd ******/
+		/****** md5 signature: 2df2c014c6ebad520b7a1141818c6bec ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -171,12 +166,10 @@ Description
 -----------
 Transfers Shape to IGES Entities //! ModeTrans may be: 0 -> groups of Faces or 1 -> BRep.
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
-
-%make_alias(IGESControl_ActorWrite)
 
 %extend IGESControl_ActorWrite {
 	%pythoncode {
@@ -205,8 +198,6 @@ Empty constructor.
 };
 
 
-%make_alias(IGESControl_AlgoContainer)
-
 %extend IGESControl_AlgoContainer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -219,12 +210,12 @@ Empty constructor.
 class IGESControl_Controller : public XSControl_Controller {
 	public:
 		/****** IGESControl_Controller::IGESControl_Controller ******/
-		/****** md5 signature: 4a2d7445c85f2ad3ec03a228df892823 ******/
+		/****** md5 signature: 0e8bf0949fae13e61d7e93e1bb028b8d ******/
 		%feature("compactdefaultargs") IGESControl_Controller;
 		%feature("autodoc", "
 Parameters
 ----------
-modefnes: bool (optional, default to Standard_False)
+modefnes: bool (optional, default to false)
 
 Return
 -------
@@ -234,10 +225,10 @@ Description
 -----------
 Initializes the use of IGES Norm (the first time) and returns a Controller for IGES-5.1 If <modefnes> is True, sets it to internal FNES format.
 ") IGESControl_Controller;
-		 IGESControl_Controller(const Standard_Boolean modefnes = Standard_False);
+		 IGESControl_Controller(const bool modefnes = false);
 
 		/****** IGESControl_Controller::ActorRead ******/
-		/****** md5 signature: abfcbea3d65b6d0c8061255c5c664b82 ******/
+		/****** md5 signature: e3143b2f5a3dfff5c2b780e11b109166 ******/
 		%feature("compactdefaultargs") ActorRead;
 		%feature("autodoc", "
 Parameters
@@ -255,7 +246,7 @@ Returns the Actor for Read attached to the pair (norm,appli) It is an Actor from
 		opencascade::handle<Transfer_ActorOfTransientProcess> ActorRead(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IGESControl_Controller::Customise ******/
-		/****** md5 signature: 0ba1e38a71954b942c677f3a42125b9f ******/
+		/****** md5 signature: 52b7401df97c95be3e29bd95c1a1f721 ******/
 		%feature("compactdefaultargs") Customise;
 		%feature("autodoc", "
 Parameters
@@ -270,10 +261,10 @@ Description
 -----------
 No available documentation.
 ") Customise;
-		virtual void Customise(opencascade::handle<XSControl_WorkSession> & WS);
+		void Customise(opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** IGESControl_Controller::Init ******/
-		/****** md5 signature: 7a4f426a7cdbf379be5e43123bb3383c ******/
+		/****** md5 signature: 90ec9d1ba4c3761913d797387bfd673d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -283,10 +274,10 @@ Description
 -----------
 Standard Initialisation. It creates a Controller for IGES and records it to various names, available to select it later Returns True when done, False if could not be done Also, it creates and records an Adaptor for FNES.
 ") Init;
-		static Standard_Boolean Init();
+		static bool Init();
 
 		/****** IGESControl_Controller::NewModel ******/
-		/****** md5 signature: 91513f9ebe9e7d52eca2b6b58f6b9b0a ******/
+		/****** md5 signature: 4e176eab7c6da9b73e274debab7af3fb ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -299,7 +290,7 @@ Creates a new empty Model ready to receive data of the Norm. It is taken from IG
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
 		/****** IGESControl_Controller::TransferWriteShape ******/
-		/****** md5 signature: 51f54ac90a57b06cb5da980be6c88b27 ******/
+		/****** md5 signature: e6089c3b261fdd75c217a2b2c38e5bad ******/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "
 Parameters
@@ -318,12 +309,10 @@ Description
 -----------
 Takes one Shape and transfers it to the InterfaceModel (already created by NewModel for instance) <modetrans> is to be interpreted by each kind of XstepAdaptor Returns a status: 0 OK 1 No result 2 Fail -1 bad modeshape -2 bad model (requires an IGESModel) modeshape: 0 group of face (version < 5.1) 1 BREP-version 5.1 of IGES.
 ") TransferWriteShape;
-		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const int modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
-
-%make_alias(IGESControl_Controller)
 
 %extend IGESControl_Controller {
 	%pythoncode {
@@ -368,7 +357,7 @@ Creates an object and calls inherited constructor.
 		 IGESControl_IGESBoundary(const IGESToBRep_CurveAndSurface & CS);
 
 		/****** IGESControl_IGESBoundary::Check ******/
-		/****** md5 signature: 63a886f794f138106bbc9f56c90a2734 ******/
+		/****** md5 signature: 4747c13f667907554f5c8013007c46a2 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -386,12 +375,10 @@ Description
 -----------
 Checks result of translation of IGES boundary entities (types 141, 142 or 508). Checks consistency of 2D and 3D representations and keeps only one if they are inconsistent. Checks the closure of resulting wire and if it is not closed, checks 2D and 3D representation and updates the resulting wire to contain only closed representation.
 ") Check;
-		virtual void Check(const Standard_Boolean result, const Standard_Boolean checkclosure, const Standard_Boolean okCurve3d, const Standard_Boolean okCurve2d);
+		void Check(const bool result, const bool checkclosure, const bool okCurve3d, const bool okCurve2d);
 
 };
 
-
-%make_alias(IGESControl_IGESBoundary)
 
 %extend IGESControl_IGESBoundary {
 	%pythoncode {
@@ -418,13 +405,13 @@ Creates a Reader from scratch.
 		 IGESControl_Reader();
 
 		/****** IGESControl_Reader::IGESControl_Reader ******/
-		/****** md5 signature: 3d03711556fe1f87e36966544be93cec ******/
+		/****** md5 signature: 0bc6e663211cd17d1c9a0ad7bfeb07a2 ******/
 		%feature("compactdefaultargs") IGESControl_Reader;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: XSControl_WorkSession
-scratch: bool (optional, default to Standard_True)
+scratch: bool (optional, default to true)
 
 Return
 -------
@@ -434,10 +421,10 @@ Description
 -----------
 Creates a Reader from an already existing Session.
 ") IGESControl_Reader;
-		 IGESControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
+		 IGESControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
 		/****** IGESControl_Reader::GetReadVisible ******/
-		/****** md5 signature: b0d62c02cb2830074d12f477e2ee93dc ******/
+		/****** md5 signature: fcba611c9d1b9c27ed0eeaa172a23dee ******/
 		%feature("compactdefaultargs") GetReadVisible;
 		%feature("autodoc", "Return
 -------
@@ -447,7 +434,7 @@ Description
 -----------
 No available documentation.
 ") GetReadVisible;
-		Standard_Boolean GetReadVisible();
+		bool GetReadVisible();
 
 		/****** IGESControl_Reader::IGESModel ******/
 		/****** md5 signature: e167708dd2dd1824578c9ddd453217ac ******/
@@ -463,7 +450,7 @@ Returns the model as a IGESModel. It can then be consulted (header, product).
 		opencascade::handle<IGESData_IGESModel> IGESModel();
 
 		/****** IGESControl_Reader::NbRootsForTransfer ******/
-		/****** md5 signature: f207d70f9daf416ec0cdd237b676b8bd ******/
+		/****** md5 signature: 1360662bdc49432e02d6b08717502cde ******/
 		%feature("compactdefaultargs") NbRootsForTransfer;
 		%feature("autodoc", "Return
 -------
@@ -473,7 +460,7 @@ Description
 -----------
 Determines the list of root entities from Model which are candidate for a transfer to a Shape (type of entities is PRODUCT) <theReadOnlyVisible> is taken into account to define roots.
 ") NbRootsForTransfer;
-		virtual Standard_Integer NbRootsForTransfer();
+		int NbRootsForTransfer();
 
 		/****** IGESControl_Reader::PrintTransferInfo ******/
 		/****** md5 signature: 91f0c0b4b2f5f3a830e0906bea79f1e1 ******/
@@ -495,7 +482,7 @@ Prints Statistics and check list for Transfer.
 		void PrintTransferInfo(const IFSelect_PrintFail failwarn, const IFSelect_PrintCount mode);
 
 		/****** IGESControl_Reader::SetReadVisible ******/
-		/****** md5 signature: 6e2c353582827b19c2fc725abf3f500d ******/
+		/****** md5 signature: 40f9594c4260c7bd4a280aa2979a97ac ******/
 		%feature("compactdefaultargs") SetReadVisible;
 		%feature("autodoc", "
 Parameters
@@ -510,7 +497,7 @@ Description
 -----------
 Set the transion of ALL Roots (if theReadOnlyVisible is False) or of Visible Roots (if theReadOnlyVisible is True).
 ") SetReadVisible;
-		void SetReadVisible(const Standard_Boolean ReadRoot);
+		void SetReadVisible(const bool ReadRoot);
 
 };
 
@@ -540,7 +527,7 @@ Empty constructor.
 		 IGESControl_ToolContainer();
 
 		/****** IGESControl_ToolContainer::IGESBoundary ******/
-		/****** md5 signature: 9caa84936e4dc6d27a8bbc4e7788560e ******/
+		/****** md5 signature: 6496cac9f9795a5f17051f3e3ede3a0e ******/
 		%feature("compactdefaultargs") IGESBoundary;
 		%feature("autodoc", "Return
 -------
@@ -550,12 +537,10 @@ Description
 -----------
 Returns IGESControl_IGESBoundary.
 ") IGESBoundary;
-		virtual opencascade::handle<IGESToBRep_IGESBoundary> IGESBoundary();
+		opencascade::handle<IGESToBRep_IGESBoundary> IGESBoundary();
 
 };
 
-
-%make_alias(IGESControl_ToolContainer)
 
 %extend IGESControl_ToolContainer {
 	%pythoncode {
@@ -577,17 +562,17 @@ None
 
 Description
 -----------
-Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const Standard_CString unit, const Standard_Integer modecr = 0);.
+Creates a writer object with the default unit (millimeters) and write mode (Face). IGESControl_Writer (const char* const unit, const int modecr = 0);.
 ") IGESControl_Writer;
 		 IGESControl_Writer();
 
 		/****** IGESControl_Writer::IGESControl_Writer ******/
-		/****** md5 signature: d04ff9d2cacf0210b7eca7a5483ee20d ******/
+		/****** md5 signature: 929abb2afe662ec1d0d266aef3e26942 ******/
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnit: str
+theUnit: char *
 theModecr: int (optional, default to 0)
 
 Return
@@ -598,10 +583,10 @@ Description
 -----------
 Creates a writer with given values for units and for write mode. theUnit may be any unit that is accepted by the IGES standard. By default, it is the millimeter. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
 ") IGESControl_Writer;
-		 IGESControl_Writer(Standard_CString theUnit, const Standard_Integer theModecr = 0);
+		 IGESControl_Writer(const char * const theUnit, const int theModecr = 0);
 
 		/****** IGESControl_Writer::IGESControl_Writer ******/
-		/****** md5 signature: d5968f6cd27f43679865e819b4ab1adc ******/
+		/****** md5 signature: 20264571e241acb0a10cc00ffff63485 ******/
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "
 Parameters
@@ -617,10 +602,10 @@ Description
 -----------
 Creates a writer object with the prepared IGES model theModel in write mode. theModecr defines the write mode and may be: - 0: Faces (default) - 1: BRep.
 ") IGESControl_Writer;
-		 IGESControl_Writer(const opencascade::handle<IGESData_IGESModel> & theModel, const Standard_Integer theModecr = 0);
+		 IGESControl_Writer(const opencascade::handle<IGESData_IGESModel> & theModel, const int theModecr = 0);
 
 		/****** IGESControl_Writer::AddEntity ******/
-		/****** md5 signature: 96b302aaab45677671929668ae473ebb ******/
+		/****** md5 signature: 5a45979f463a209900811aea4d2a827e ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
@@ -635,10 +620,10 @@ Description
 -----------
 Adds an IGES entity (and the ones it references) to the model.
 ") AddEntity;
-		Standard_Boolean AddEntity(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool AddEntity(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESControl_Writer::AddGeom ******/
-		/****** md5 signature: d60779c1b769b5baa3aea9da9b401686 ******/
+		/****** md5 signature: fe0a093db708e5bfa15f9cbfbe3f1be7 ******/
 		%feature("compactdefaultargs") AddGeom;
 		%feature("autodoc", "
 Parameters
@@ -653,10 +638,10 @@ Description
 -----------
 Translates a Geometry (Surface or Curve) to IGES Entities and adds them to the model Returns True if done, False if geom is neither a Surface or a Curve suitable for IGES or is null.
 ") AddGeom;
-		Standard_Boolean AddGeom(const opencascade::handle<Standard_Transient> & geom);
+		bool AddGeom(const opencascade::handle<Standard_Transient> & geom);
 
 		/****** IGESControl_Writer::AddShape ******/
-		/****** md5 signature: f585f65132ef5381fe2eec5704c1d251 ******/
+		/****** md5 signature: 8c52adbde16fb2e39907075b85e85b60 ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -672,7 +657,7 @@ Description
 -----------
 Translates a Shape to IGES Entities and adds them to the model Returns True if done, False if Shape not suitable for IGES or null.
 ") AddShape;
-		Standard_Boolean AddShape(const TopoDS_Shape & sh, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool AddShape(const TopoDS_Shape & sh, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESControl_Writer::ComputeModel ******/
 		/****** md5 signature: f42632b9add7bbc91ef59b252ab06a6f ******/
@@ -838,12 +823,12 @@ No available documentation.
 		const opencascade::handle<Transfer_FinderProcess> & TransferProcess();
 
 		/****** IGESControl_Writer::Write ******/
-		/****** md5 signature: 641c31af3cf254e70aab3e12c5732d18 ******/
+		/****** md5 signature: 1d865f68830a7d915dd77d82a57d2652 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
-fnes: bool (optional, default to Standard_False)
+fnes: bool (optional, default to false)
 
 Return
 -------
@@ -853,16 +838,16 @@ Description
 -----------
 Computes then writes the model to an OStream Returns True when done, false in case of error.
 ") Write;
-		Standard_Boolean Write(std::ostream &OutValue, const Standard_Boolean fnes = Standard_False);
+		bool Write(std::ostream &OutValue, const bool fnes = false);
 
 		/****** IGESControl_Writer::Write ******/
-		/****** md5 signature: 336d0511a9ae227341af6444cb65363f ******/
+		/****** md5 signature: 42bf8b5dacdbd00457739465e1ddc7cc ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
-fnes: bool (optional, default to Standard_False)
+file: char *
+fnes: bool (optional, default to false)
 
 Return
 -------
@@ -872,7 +857,7 @@ Description
 -----------
 Prepares and writes an IGES model either to an OStream, S or to a file name,CString. Returns True if the operation was performed correctly and False if an error occurred (for instance, if the processor could not create the file).
 ") Write;
-		Standard_Boolean Write(Standard_CString file, const Standard_Boolean fnes = Standard_False);
+		bool Write(const char * const file, const bool fnes = false);
 
 };
 

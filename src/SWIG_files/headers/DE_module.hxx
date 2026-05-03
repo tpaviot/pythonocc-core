@@ -25,6 +25,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<DE_Provider.hxx>
 #include<DE_ShapeFixConfigurationNode.hxx>
 #include<DE_ShapeFixParameters.hxx>
+#include<DE_ValidationUtils.hxx>
 #include<DE_Wrapper.hxx>
 
 #endif // DE_HXX

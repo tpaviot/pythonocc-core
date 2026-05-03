@@ -185,7 +185,6 @@ BinTools_ObjectType_EndShape = BinTools_ObjectType.BinTools_ObjectType_EndShape
 /* end templates declaration */
 
 /* typedefs */
-typedef BinTools_LocationSet * BinTools_LocationSetPtr;
 /* end typedefs declaration */
 
 /*****************
@@ -195,7 +194,7 @@ typedef BinTools_LocationSet * BinTools_LocationSetPtr;
 class BinTools {
 	public:
 		/****** BinTools::GetBool ******/
-		/****** md5 signature: 790955f4f4ba6908f582aee44fb265dd ******/
+		/****** md5 signature: 56cc68bda69a4e5eb735fa29ee80c23a ******/
 		%feature("compactdefaultargs") GetBool;
 		%feature("autodoc", "
 Parameters
@@ -213,13 +212,13 @@ No available documentation.
 		static Standard_IStream & GetBool(std::istream & IS, Standard_Boolean &OutValue);
 
 		/****** BinTools::GetExtChar ******/
-		/****** md5 signature: 123b0c66c3051e9feb92d9bfbbb192e6 ******/
+		/****** md5 signature: 7bb4d11327ff3227b58f15b7e15e1505 ******/
 		%feature("compactdefaultargs") GetExtChar;
 		%feature("autodoc", "
 Parameters
 ----------
 IS: str
-theValue: Standard_ExtCharacter
+theValue: char16_t
 
 Return
 -------
@@ -229,10 +228,10 @@ Description
 -----------
 No available documentation.
 ") GetExtChar;
-		static Standard_IStream & GetExtChar(std::istream & IS, Standard_ExtCharacter & theValue);
+		static Standard_IStream & GetExtChar(std::istream & IS, char16_t & theValue);
 
 		/****** BinTools::GetInteger ******/
-		/****** md5 signature: 651f0a33e9e7502671bc3ef42df123eb ******/
+		/****** md5 signature: d884be710034ee836dd6f3fc1dc8d96e ******/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "
 Parameters
@@ -250,7 +249,7 @@ No available documentation.
 		static Standard_IStream & GetInteger(std::istream & IS, Standard_Integer &OutValue);
 
 		/****** BinTools::GetReal ******/
-		/****** md5 signature: 38bb080ad1790d03931bd0c0aa629b48 ******/
+		/****** md5 signature: 3660c40c4d3e48492cb2bdd2780e7e62 ******/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "
 Parameters
@@ -259,7 +258,7 @@ IS: str
 
 Return
 -------
-theValue: float
+theValue: double
 
 Description
 -----------
@@ -268,7 +267,7 @@ No available documentation.
 		static Standard_IStream & GetReal(std::istream & IS, Standard_Real &OutValue);
 
 		/****** BinTools::GetShortReal ******/
-		/****** md5 signature: 825f85854ff0d067143065401770de68 ******/
+		/****** md5 signature: 04a9b47c5be7efa09f2ce96d324d7680 ******/
 		%feature("compactdefaultargs") GetShortReal;
 		%feature("autodoc", "
 Parameters
@@ -286,7 +285,7 @@ No available documentation.
 		static Standard_IStream & GetShortReal(std::istream & IS, Standard_ShortReal &OutValue);
 
 		/****** BinTools::PutBool ******/
-		/****** md5 signature: 0afdd320ec549f8b3da2cea1881b2e46 ******/
+		/****** md5 signature: 033ccb86b2d479734215c1489a2c73de ******/
 		%feature("compactdefaultargs") PutBool;
 		%feature("autodoc", "
 Parameters
@@ -301,15 +300,15 @@ Description
 -----------
 No available documentation.
 ") PutBool;
-		static Standard_OStream & PutBool(std::ostream &OutValue, const Standard_Boolean theValue);
+		static Standard_OStream & PutBool(std::ostream &OutValue, const bool theValue);
 
 		/****** BinTools::PutExtChar ******/
-		/****** md5 signature: 6f5f97a4001fb0c14520fc2b5b0888a6 ******/
+		/****** md5 signature: 14ff5b8eff75e15a458655e212c4084c ******/
 		%feature("compactdefaultargs") PutExtChar;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_ExtCharacter
+theValue: char16_t
 
 Return
 -------
@@ -319,10 +318,10 @@ Description
 -----------
 No available documentation.
 ") PutExtChar;
-		static Standard_OStream & PutExtChar(std::ostream &OutValue, const Standard_ExtCharacter theValue);
+		static Standard_OStream & PutExtChar(std::ostream &OutValue, const char16_t theValue);
 
 		/****** BinTools::PutInteger ******/
-		/****** md5 signature: 9e70411996f2de65be7008dfb8c34a78 ******/
+		/****** md5 signature: 68823fbb23384f0880306b2f94529119 ******/
 		%feature("compactdefaultargs") PutInteger;
 		%feature("autodoc", "
 Parameters
@@ -337,15 +336,15 @@ Description
 -----------
 No available documentation.
 ") PutInteger;
-		static Standard_OStream & PutInteger(std::ostream &OutValue, const Standard_Integer theValue);
+		static Standard_OStream & PutInteger(std::ostream &OutValue, const int theValue);
 
 		/****** BinTools::PutReal ******/
-		/****** md5 signature: f7775506bd4618f420e375baa72bb4b9 ******/
+		/****** md5 signature: 29814cba31b4189ee458a18217beb3c7 ******/
 		%feature("compactdefaultargs") PutReal;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -355,10 +354,10 @@ Description
 -----------
 No available documentation.
 ") PutReal;
-		static Standard_OStream & PutReal(std::ostream &OutValue, const Standard_Real & theValue);
+		static Standard_OStream & PutReal(std::ostream &OutValue, const double & theValue);
 
 		/****** BinTools::PutShortReal ******/
-		/****** md5 signature: 042b4eea8e6fbf4023588ae3edf72eee ******/
+		/****** md5 signature: cd83087d696b3b464bdb8eff0876e175 ******/
 		%feature("compactdefaultargs") PutShortReal;
 		%feature("autodoc", "
 Parameters
@@ -373,7 +372,7 @@ Description
 -----------
 No available documentation.
 ") PutShortReal;
-		static Standard_OStream & PutShortReal(std::ostream &OutValue, const Standard_ShortReal & theValue);
+		static Standard_OStream & PutShortReal(std::ostream &OutValue, const float & theValue);
 
 		/****** BinTools::Read ******/
 		/****** md5 signature: f85bd54e020fe6af72c5aebd07ae8a7b ******/
@@ -396,13 +395,13 @@ Reads a shape from <theStream> and returns it in <theShape>.
 		static void Read(TopoDS_Shape & theShape, std::istream & theStream, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools::Read ******/
-		/****** md5 signature: 8f3081f8c29c84c71da9267be3a08fa6 ******/
+		/****** md5 signature: 86eaa26b886e58eaaf0f5d082bea57a7 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: str
+theFile: char *
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -413,7 +412,7 @@ Description
 -----------
 Reads a shape from <theFile> and returns it in <theShape>.
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static bool Read(TopoDS_Shape & theShape, const char * const theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools::Write ******/
 		/****** md5 signature: 66b06396144ebe349cc1d4ffe3194b4c ******/
@@ -438,7 +437,7 @@ Parameter theRange the range of progress indicator to fill in.
 		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools::Write ******/
-		/****** md5 signature: cfe16f73efe24f22e21aa7c502d4ad33 ******/
+		/****** md5 signature: d110c0c688ddbd1b19737ff86180c143 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -463,16 +462,16 @@ Input parameter: theWithNormals flag which specifies whether to save triangulati
 Input parameter: theVersion the BinTools format version 
 Parameter theRange  the range of progress indicator to fill in.
 ") Write;
-		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const bool theWithTriangles, const bool theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools::Write ******/
-		/****** md5 signature: 3881a3762eede8c671fff2911d095012 ******/
+		/****** md5 signature: 341ca5135ef73af6b221fd9f62e7734e ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: str
+theFile: char *
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -486,16 +485,16 @@ Input parameter: theShape the shape to write
 Input parameter: theFile the path to file to output shape into 
 Parameter theRange the range of progress indicator to fill in.
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static bool Write(const TopoDS_Shape & theShape, const char * const theFile, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools::Write ******/
-		/****** md5 signature: b26fc24f9c2e022ffc6d11aa96e8af41 ******/
+		/****** md5 signature: 03eb730985ff6e0e89742f4a6b870dd3 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: str
+theFile: char *
 theWithTriangles: bool
 theWithNormals: bool
 theVersion: BinTools_FormatVersion
@@ -515,7 +514,7 @@ Input parameter: theWithNormals flag which specifies whether to save triangulati
 Input parameter: theVersion the BinTools format version 
 Parameter theRange  the range of progress indicator to fill in.
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
+		static bool Write(const TopoDS_Shape & theShape, const char * const theFile, const bool theWithTriangles, const bool theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -545,7 +544,7 @@ Returns an empty set of Curves.
 		 BinTools_Curve2dSet();
 
 		/****** BinTools_Curve2dSet::Add ******/
-		/****** md5 signature: 947264273ed6b5c72eac1f308b1f2487 ******/
+		/****** md5 signature: 7b5529147fa639cb09c2b19e17dfef22 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -560,7 +559,7 @@ Description
 -----------
 Incorporate a new Curve in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const opencascade::handle<Geom2d_Curve> & C);
+		int Add(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** BinTools_Curve2dSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -576,7 +575,7 @@ Clears the content of the set.
 		void Clear();
 
 		/****** BinTools_Curve2dSet::Curve2d ******/
-		/****** md5 signature: aca04b75893a006fca996d6d157d858d ******/
+		/****** md5 signature: ac1faa40fbecd6c896493e09cac0733b ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -591,10 +590,10 @@ Description
 -----------
 Returns the Curve of index <I>.
 ") Curve2d;
-		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer I);
+		opencascade::handle<Geom2d_Curve> Curve2d(const int I);
 
 		/****** BinTools_Curve2dSet::Index ******/
-		/****** md5 signature: e1559320ddf80ce0263d324c781a3407 ******/
+		/****** md5 signature: f71ed5f2ca1ab45364174d69a1004651 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -609,7 +608,7 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<Geom2d_Curve> & C);
+		int Index(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** BinTools_Curve2dSet::Read ******/
 		/****** md5 signature: 5f2f4456946ffa93c620ea243e0f1362 ******/
@@ -718,7 +717,7 @@ Returns an empty set of Curves.
 		 BinTools_CurveSet();
 
 		/****** BinTools_CurveSet::Add ******/
-		/****** md5 signature: 4548eacacd2a36c829559b37d6b57411 ******/
+		/****** md5 signature: 8faf055453407b82e5edede2e89d6b34 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -733,7 +732,7 @@ Description
 -----------
 Incorporate a new Curve in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const opencascade::handle<Geom_Curve> & C);
+		int Add(const opencascade::handle<Geom_Curve> & C);
 
 		/****** BinTools_CurveSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -749,7 +748,7 @@ Clears the content of the set.
 		void Clear();
 
 		/****** BinTools_CurveSet::Curve ******/
-		/****** md5 signature: 3509a433898cb7510761da8b37eedb3b ******/
+		/****** md5 signature: d33c0931ecf996d482bcfb88bfe04928 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -764,10 +763,10 @@ Description
 -----------
 Returns the Curve of index <I>.
 ") Curve;
-		opencascade::handle<Geom_Curve> Curve(const Standard_Integer I);
+		opencascade::handle<Geom_Curve> Curve(const int I);
 
 		/****** BinTools_CurveSet::Index ******/
-		/****** md5 signature: c53cbf4d0efdfb90843e67e9b32c5252 ******/
+		/****** md5 signature: 1baaf4c3c2962c561b2c8009133d74f6 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -782,7 +781,7 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<Geom_Curve> & C);
+		int Index(const opencascade::handle<Geom_Curve> & C);
 
 		/****** BinTools_CurveSet::Read ******/
 		/****** md5 signature: 5f2f4456946ffa93c620ea243e0f1362 ******/
@@ -890,7 +889,7 @@ Returns an empty set of locations.
 		 BinTools_LocationSet();
 
 		/****** BinTools_LocationSet::Add ******/
-		/****** md5 signature: 6d3b7662960d74b2d6e66b85d46b59f7 ******/
+		/****** md5 signature: 7cdb3f81017590d68bfd141d252b4cd7 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -905,7 +904,7 @@ Description
 -----------
 Incorporate a new Location in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const TopLoc_Location & L);
+		int Add(const TopLoc_Location & L);
 
 		/****** BinTools_LocationSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -921,7 +920,7 @@ Clears the content of the set.
 		void Clear();
 
 		/****** BinTools_LocationSet::Index ******/
-		/****** md5 signature: fbb01960bb9b443c36d99f6e7b11f6c5 ******/
+		/****** md5 signature: 422bc53fbef9ac2e56c05b850302b1bb ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -936,10 +935,10 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const TopLoc_Location & L);
+		int Index(const TopLoc_Location & L);
 
 		/****** BinTools_LocationSet::Location ******/
-		/****** md5 signature: dc46e30cfdcf3a3cf13e5f29298f5163 ******/
+		/****** md5 signature: 2ce5408eb7d2eeaacf7f0ac26a1b8a72 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -954,10 +953,10 @@ Description
 -----------
 Returns the location of index <I>.
 ") Location;
-		const TopLoc_Location & Location(const Standard_Integer I);
+		const TopLoc_Location & Location(const int I);
 
 		/****** BinTools_LocationSet::NbLocations ******/
-		/****** md5 signature: e6c134b8d9aa92e37488cc54961e88e4 ******/
+		/****** md5 signature: 9505c89c0c873e0d520a75f03b4e825b ******/
 		%feature("compactdefaultargs") NbLocations;
 		%feature("autodoc", "Return
 -------
@@ -967,7 +966,7 @@ Description
 -----------
 Returns number of locations.
 ") NbLocations;
-		Standard_Integer NbLocations();
+		int NbLocations();
 
 		/****** BinTools_LocationSet::Read ******/
 		/****** md5 signature: e0ade46168fbfd205cb072426bbabac5 ******/
@@ -1048,7 +1047,7 @@ Clears the content of the set.
 		virtual void Clear();
 
 		/****** BinTools_ShapeSetBase::FormatNb ******/
-		/****** md5 signature: 279a4e17d42738d62d3eac08d8631329 ******/
+		/****** md5 signature: e86d47dcb7666d660c787799c3ac98d9 ******/
 		%feature("compactdefaultargs") FormatNb;
 		%feature("autodoc", "Return
 -------
@@ -1058,10 +1057,10 @@ Description
 -----------
 Returns the BinTools_FormatVersion.
 ") FormatNb;
-		Standard_Integer FormatNb();
+		int FormatNb();
 
 		/****** BinTools_ShapeSetBase::IsWithNormals ******/
-		/****** md5 signature: 49f5baecd893691e08f163fb559d8b06 ******/
+		/****** md5 signature: c7acafa16493860e7c0a6bd60edea61c ******/
 		%feature("compactdefaultargs") IsWithNormals;
 		%feature("autodoc", "Return
 -------
@@ -1071,10 +1070,10 @@ Description
 -----------
 Return true if shape should be stored triangulation with normals.
 ") IsWithNormals;
-		Standard_Boolean IsWithNormals();
+		bool IsWithNormals();
 
 		/****** BinTools_ShapeSetBase::IsWithTriangles ******/
-		/****** md5 signature: 2adacf1f8e5d4c926108b4db84751e9a ******/
+		/****** md5 signature: c31685fbc77b7c6389330903a3a6386f ******/
 		%feature("compactdefaultargs") IsWithTriangles;
 		%feature("autodoc", "Return
 -------
@@ -1084,7 +1083,7 @@ Description
 -----------
 Return true if shape should be stored with triangles.
 ") IsWithTriangles;
-		Standard_Boolean IsWithTriangles();
+		bool IsWithTriangles();
 
 		/****** BinTools_ShapeSetBase::Read ******/
 		/****** md5 signature: 15d2ae9c24a20dde18a097c304597a5b ******/
@@ -1125,7 +1124,7 @@ An empty virtual method for redefinition in shape-reader.
 		virtual void Read(std::istream &, TopoDS_Shape &);
 
 		/****** BinTools_ShapeSetBase::SetFormatNb ******/
-		/****** md5 signature: efa61c5f0aa586c699f53e1139cd95f9 ******/
+		/****** md5 signature: 82c781302ac5badb8fd104d1fef61b1b ******/
 		%feature("compactdefaultargs") SetFormatNb;
 		%feature("autodoc", "
 Parameters
@@ -1140,10 +1139,10 @@ Description
 -----------
 Sets the BinTools_FormatVersion.
 ") SetFormatNb;
-		void SetFormatNb(const Standard_Integer theFormatNb);
+		void SetFormatNb(const int theFormatNb);
 
 		/****** BinTools_ShapeSetBase::SetWithNormals ******/
-		/****** md5 signature: 9f03f91e56766f46bd17d99a089a0a21 ******/
+		/****** md5 signature: 87699c87d5128dde6485c8bede47cae2 ******/
 		%feature("compactdefaultargs") SetWithNormals;
 		%feature("autodoc", "
 Parameters
@@ -1158,10 +1157,10 @@ Description
 -----------
 Define if shape will be stored triangulation with normals. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithNormals;
-		void SetWithNormals(const Standard_Boolean theWithNormals);
+		void SetWithNormals(const bool theWithNormals);
 
 		/****** BinTools_ShapeSetBase::SetWithTriangles ******/
-		/****** md5 signature: 7b7f7b1dd0aaac0992d59e75b5df79e1 ******/
+		/****** md5 signature: 089286c3553f67f84fb9f893e41739b5 ******/
 		%feature("compactdefaultargs") SetWithTriangles;
 		%feature("autodoc", "
 Parameters
@@ -1176,7 +1175,7 @@ Description
 -----------
 Define if shape will be stored with triangles. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithTriangles;
-		void SetWithTriangles(const Standard_Boolean theWithTriangles);
+		void SetWithTriangles(const bool theWithTriangles);
 
 		/****** BinTools_ShapeSetBase::Write ******/
 		/****** md5 signature: eae5f683a0f7fae7ee4a50d676192413 ******/
@@ -1242,7 +1241,7 @@ Returns an empty set of Surfaces.
 		 BinTools_SurfaceSet();
 
 		/****** BinTools_SurfaceSet::Add ******/
-		/****** md5 signature: 6108c9acf8995214a7cb8b8e5a0b937c ******/
+		/****** md5 signature: 372a7acded5452c654533a84e59a8847 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1257,7 +1256,7 @@ Description
 -----------
 Incorporate a new Surface in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const opencascade::handle<Geom_Surface> & S);
+		int Add(const opencascade::handle<Geom_Surface> & S);
 
 		/****** BinTools_SurfaceSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -1273,7 +1272,7 @@ Clears the content of the set.
 		void Clear();
 
 		/****** BinTools_SurfaceSet::Index ******/
-		/****** md5 signature: 7fc50802d17ebd7c660284e6560fb7f6 ******/
+		/****** md5 signature: 16c0c2f2c4962a55dfed3c6e84e12c9a ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -1288,7 +1287,7 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<Geom_Surface> & S);
+		int Index(const opencascade::handle<Geom_Surface> & S);
 
 		/****** BinTools_SurfaceSet::Read ******/
 		/****** md5 signature: 5f2f4456946ffa93c620ea243e0f1362 ******/
@@ -1329,7 +1328,7 @@ Reads the surface from the stream. The surface is assumed to have been written w
 		static Standard_IStream & ReadSurface(std::istream & IS, opencascade::handle<Geom_Surface> & S);
 
 		/****** BinTools_SurfaceSet::Surface ******/
-		/****** md5 signature: f08a9f2a886e0a3933ae15a38f9b8dda ******/
+		/****** md5 signature: c8dcfe4df85c1847812c4a1ca1a64ead ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -1344,7 +1343,7 @@ Description
 -----------
 Returns the Surface of index <I>.
 ") Surface;
-		opencascade::handle<Geom_Surface> Surface(const Standard_Integer I);
+		opencascade::handle<Geom_Surface> Surface(const int I);
 
 		/****** BinTools_SurfaceSet::Write ******/
 		/****** md5 signature: d5d3cef6bd5a493e7490071dfb7ee4a9 ******/
@@ -1411,7 +1410,7 @@ Initializes a shape reader.
 		 BinTools_ShapeReader();
 
 		/****** BinTools_ShapeReader::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1421,10 +1420,10 @@ Description
 -----------
 Clears the content of the set.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BinTools_ShapeReader::Read ******/
-		/****** md5 signature: 25227b6e5e5f66e65787f684a82d38bd ******/
+		/****** md5 signature: bd72ed9119fcea6db6c276f4730eb338 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1489,7 +1488,7 @@ Input parameter: theWithTriangles flag to write triangulation data.
 		 BinTools_ShapeSet();
 
 		/****** BinTools_ShapeSet::Add ******/
-		/****** md5 signature: 53c72d7ee288afd721c7b0a7e7296012 ******/
+		/****** md5 signature: e00e8e88523f332d4248798e366af3a6 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1504,7 +1503,7 @@ Description
 -----------
 Stores <S> and its sub-shape. Returns the index of <S>. The method AddGeometry is called on each sub-shape.
 ") Add;
-		Standard_Integer Add(const TopoDS_Shape & S);
+		int Add(const TopoDS_Shape & S);
 
 		/****** BinTools_ShapeSet::AddShape ******/
 		/****** md5 signature: c53353d34d3c27129aeecdacd6371580 ******/
@@ -1557,7 +1556,7 @@ No available documentation.
 		BinTools_LocationSet & ChangeLocations();
 
 		/****** BinTools_ShapeSet::Clear ******/
-		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1567,10 +1566,10 @@ Description
 -----------
 Clears the content of the set.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BinTools_ShapeSet::Index ******/
-		/****** md5 signature: 9e94bb6d7b4221be4165f8639cd27d92 ******/
+		/****** md5 signature: 27bedbe3f62518ea8f5e80df9093520c ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -1585,7 +1584,7 @@ Description
 -----------
 Returns the index of <S>.
 ") Index;
-		Standard_Integer Index(const TopoDS_Shape & S);
+		int Index(const TopoDS_Shape & S);
 
 		/****** BinTools_ShapeSet::Locations ******/
 		/****** md5 signature: 1891bed2b7331683f81d8635ed2a6f3e ******/
@@ -1601,7 +1600,7 @@ No available documentation.
 		const BinTools_LocationSet & Locations();
 
 		/****** BinTools_ShapeSet::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -1611,10 +1610,10 @@ Description
 -----------
 Returns number of shapes read from file.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** BinTools_ShapeSet::Read ******/
-		/****** md5 signature: 4b07273aaddc061dc208ad849f29a02f ******/
+		/****** md5 signature: 9c0a247edeb3de19fc49c3c3e356a2d8 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1630,10 +1629,10 @@ Description
 -----------
 Reads the content of me from the binary stream <IS>. me is first cleared. //! Reads the locations. //! Reads the geometry calling ReadGeometry. //! Reads the shapes. For each shape Reads the type. calls ReadGeometry(T,S). Reads the flag, the subshapes.
 ") Read;
-		virtual void Read(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Read(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools_ShapeSet::Read ******/
-		/****** md5 signature: 9e512dab6bca19a0eddcb7c7167d7163 ******/
+		/****** md5 signature: 629882fbeef7c3cdc28bb3851b74bda8 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1649,10 +1648,10 @@ Description
 -----------
 An empty virtual method for redefinition in shape-reader.
 ") Read;
-		virtual void Read(std::istream &, TopoDS_Shape &);
+		void Read(std::istream &, TopoDS_Shape &);
 
 		/****** BinTools_ShapeSet::ReadFlagsAndSubs ******/
-		/****** md5 signature: ec793d841cfc55e44fec35b171f31924 ******/
+		/****** md5 signature: e49d42518a72a8feff510086aa32a39d ******/
 		%feature("compactdefaultargs") ReadFlagsAndSubs;
 		%feature("autodoc", "
 Parameters
@@ -1670,7 +1669,7 @@ Description
 -----------
 Reads from <IS> a shape flags and sub-shapes and modifies S.
 ") ReadFlagsAndSubs;
-		virtual void ReadFlagsAndSubs(TopoDS_Shape & S, const TopAbs_ShapeEnum T, std::istream & IS, const Standard_Integer NbShapes);
+		virtual void ReadFlagsAndSubs(TopoDS_Shape & S, const TopAbs_ShapeEnum T, std::istream & IS, const int NbShapes);
 
 		/****** BinTools_ShapeSet::ReadGeometry ******/
 		/****** md5 signature: 8c49d87428ea54564c18dee1e735e34e ******/
@@ -1750,7 +1749,7 @@ Reads a shape of type <T> from the stream <IS> and returns it in <S>.
 		virtual void ReadShape(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
 
 		/****** BinTools_ShapeSet::ReadSubs ******/
-		/****** md5 signature: 7a4bfadead50fe32d0ef7d49caa4db13 ******/
+		/****** md5 signature: 94680b5d5e2ede2df312efea2df68488 ******/
 		%feature("compactdefaultargs") ReadSubs;
 		%feature("autodoc", "
 Parameters
@@ -1767,7 +1766,7 @@ Description
 -----------
 Reads from <IS> a shape and returns it in S. <NbShapes> is the number of tshapes in the set.
 ") ReadSubs;
-		virtual void ReadSubs(TopoDS_Shape & S, std::istream & IS, const Standard_Integer NbShapes);
+		virtual void ReadSubs(TopoDS_Shape & S, std::istream & IS, const int NbShapes);
 
 		/****** BinTools_ShapeSet::ReadTriangulation ******/
 		/****** md5 signature: 90589deefe94d4f2b164d615d1250312 ******/
@@ -1789,7 +1788,7 @@ Reads the triangulation of me from the stream <IS>.
 		void ReadTriangulation(std::istream & IS, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools_ShapeSet::Shape ******/
-		/****** md5 signature: e70e8ec038f807ea515f2fa1e45089cf ******/
+		/****** md5 signature: 1d3205c445c40f5ad97841ec23395a00 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1804,10 +1803,10 @@ Description
 -----------
 Returns the sub-shape of index <I>.
 ") Shape;
-		const TopoDS_Shape Shape(const Standard_Integer I);
+		const TopoDS_Shape Shape(const int I);
 
 		/****** BinTools_ShapeSet::Write ******/
-		/****** md5 signature: 2090695479553866c37ac063a125c102 ******/
+		/****** md5 signature: db74c1201e7c1126e5dda26cf6f9dd16 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1822,10 +1821,10 @@ Description
 -----------
 Writes the content of me on the stream <OS> in binary format that can be read back by Read. //! Writes the locations. //! Writes the geometry calling WriteGeometry. //! Dumps the shapes from last to first. For each shape: Write the type. calls WriteGeometry(S). Write the flags, the subshapes.
 ") Write;
-		virtual void Write(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Write(std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinTools_ShapeSet::Write ******/
-		/****** md5 signature: abb0b72362303f9400b3c04f195f92e2 ******/
+		/****** md5 signature: eefc315f09415273c1edb96c8021d552 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1840,7 +1839,7 @@ Description
 -----------
 Writes on <OS> the shape <S>. Writes the orientation, the index of the TShape and the index of the Location.
 ") Write;
-		virtual void Write(const TopoDS_Shape & S, std::ostream &OutValue);
+		void Write(const TopoDS_Shape & S, std::ostream &OutValue);
 
 		/****** BinTools_ShapeSet::WriteGeometry ******/
 		/****** md5 signature: 79b02143ea9e44b9406698e1fc0e4a65 ******/
@@ -1960,7 +1959,7 @@ Builds an empty ShapeSet. Parameter <theWithTriangles> is added for XML Persiste
 		 BinTools_ShapeWriter();
 
 		/****** BinTools_ShapeWriter::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1970,10 +1969,10 @@ Description
 -----------
 Clears the content of the set.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BinTools_ShapeWriter::Write ******/
-		/****** md5 signature: 59a6a83cf3635e21cdb1e1ebc16aadda ******/
+		/****** md5 signature: dd39017565fb90c4c244b2fdf56217fe ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1988,7 +1987,7 @@ Description
 -----------
 Writes the shape to stream using previously stored shapes and objects to refer them.
 ") Write;
-		virtual void Write(const TopoDS_Shape & theShape, std::ostream &OutValue);
+		void Write(const TopoDS_Shape & theShape, std::ostream &OutValue);
 
 		/****** BinTools_ShapeWriter::WriteLocation ******/
 		/****** md5 signature: 650139b9f368324efb64446489116d9f ******/

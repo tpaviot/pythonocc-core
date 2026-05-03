@@ -23,17 +23,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MeshVS_Buffer.hxx>
 #include<MeshVS_BuilderPriority.hxx>
 #include<MeshVS_CommonSensitiveEntity.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerColor.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerOwner.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfIntegerVector.hxx>
-#include<MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger.hxx>
 #include<MeshVS_DataMapOfColorMapOfInteger.hxx>
 #include<MeshVS_DataMapOfHArray1OfSequenceOfInteger.hxx>
 #include<MeshVS_DataMapOfIntegerAsciiString.hxx>
@@ -55,7 +44,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MeshVS_ElementalColorPrsBuilder.hxx>
 #include<MeshVS_EntityType.hxx>
 #include<MeshVS_HArray1OfSequenceOfInteger.hxx>
-#include<MeshVS_MapIteratorOfMapOfTwoNodes.hxx>
 #include<MeshVS_MapOfTwoNodes.hxx>
 #include<MeshVS_Mesh.hxx>
 #include<MeshVS_MeshEntityOwner.hxx>

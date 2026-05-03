@@ -84,12 +84,12 @@ from OCC.Core.Exception import *
 class AppCont_Function {
 	public:
 		/****** AppCont_Function::D1 ******/
-		/****** md5 signature: d74f1ada11c5cab4d59bf5506c4d986e ******/
+		/****** md5 signature: ac8922c27ae63da087f7893c373ece5c ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-theU: float
+theU: double
 theVec2d: NCollection_Array1<gp_Vec2d>
 theVec: NCollection_Array1<gp_Vec>
 
@@ -101,23 +101,23 @@ Description
 -----------
 Returns the derivative at parameter <theU>.
 ") D1;
-		virtual Standard_Boolean D1(const Standard_Real theU, NCollection_Array1<gp_Vec2d> & theVec2d, NCollection_Array1<gp_Vec> & theVec);
+		virtual bool D1(const double theU, NCollection_Array1<gp_Vec2d> & theVec2d, NCollection_Array1<gp_Vec> & theVec);
 
 		/****** AppCont_Function::FirstParameter ******/
-		/****** md5 signature: d1641ead93c23610f9b5155af230348d ******/
+		/****** md5 signature: a78bafc15480770b071a253f06828586 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the function.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		virtual double FirstParameter();
 
 		/****** AppCont_Function::GetNbOf2dPoints ******/
-		/****** md5 signature: 3f7ada48633b9454e96b6c14faaaa97b ******/
+		/****** md5 signature: 717030f6580424e29aebc9166dcf7f96 ******/
 		%feature("compactdefaultargs") GetNbOf2dPoints;
 		%feature("autodoc", "Return
 -------
@@ -127,10 +127,10 @@ Description
 -----------
 Get number of 2d points returned by 'Value' and 'D1' functions.
 ") GetNbOf2dPoints;
-		Standard_Integer GetNbOf2dPoints();
+		int GetNbOf2dPoints();
 
 		/****** AppCont_Function::GetNbOf3dPoints ******/
-		/****** md5 signature: 34417cccd11cb70858a56fd546f2c85d ******/
+		/****** md5 signature: 42af6fcfbd1a149d3923122dff2b6069 ******/
 		%feature("compactdefaultargs") GetNbOf3dPoints;
 		%feature("autodoc", "Return
 -------
@@ -140,10 +140,10 @@ Description
 -----------
 Get number of 3d points returned by 'Value' and 'D1' functions.
 ") GetNbOf3dPoints;
-		Standard_Integer GetNbOf3dPoints();
+		int GetNbOf3dPoints();
 
 		/****** AppCont_Function::GetNumberOfPoints ******/
-		/****** md5 signature: f86c4c0754a51bf0afa2e9f149bdf2e0 ******/
+		/****** md5 signature: 098163c36364fed7cea019a7bc3b6da5 ******/
 		%feature("compactdefaultargs") GetNumberOfPoints;
 		%feature("autodoc", "
 Parameters
@@ -161,45 +161,45 @@ Get number of 3d and 2d points returned by 'Value' and 'D1' functions.
 		void GetNumberOfPoints(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** AppCont_Function::LastParameter ******/
-		/****** md5 signature: 78c346d133438e913e50667c32977882 ******/
+		/****** md5 signature: 8158738d773dc87261105cbfc8f7b45a ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the function.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		virtual double LastParameter();
 
 		/****** AppCont_Function::PeriodInformation ******/
-		/****** md5 signature: 2ec0eaf4e71d35192917d14baaa1c237 ******/
+		/****** md5 signature: a005312d9c3bec7d67f80e72aa036cb3 ******/
 		%feature("compactdefaultargs") PeriodInformation;
 		%feature("autodoc", "
 Parameters
 ----------
-Standard_Integer: 
+: int
 
 Return
 -------
 IsPeriodic: bool
-thePeriod: float
+thePeriod: double
 
 Description
 -----------
 Return information about peridicity in output paramateters space. 
 Parameter theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 3 * myNbPnt + 2 * myNbPnt2d.
 ") PeriodInformation;
-		virtual void PeriodInformation(const Standard_Integer, Standard_Boolean &OutValue, Standard_Real &OutValue);
+		virtual void PeriodInformation(const int , Standard_Boolean &OutValue, Standard_Real &OutValue);
 
 		/****** AppCont_Function::Value ******/
-		/****** md5 signature: f5048d9ba7a2a644fd22ab0a87e61896 ******/
+		/****** md5 signature: 75aa31c650b6a1003b7c94bbdc7e401d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-theU: float
+theU: double
 thePnt2d: NCollection_Array1<gp_Pnt2d>
 thePnt: NCollection_Array1<gp_Pnt>
 
@@ -211,7 +211,7 @@ Description
 -----------
 Returns the point at parameter <theU>.
 ") Value;
-		virtual Standard_Boolean Value(const Standard_Real theU, NCollection_Array1<gp_Pnt2d> & thePnt2d, NCollection_Array1<gp_Pnt> & thePnt);
+		virtual bool Value(const double theU, NCollection_Array1<gp_Pnt2d> & thePnt2d, NCollection_Array1<gp_Pnt> & thePnt);
 
 };
 
@@ -228,14 +228,14 @@ Returns the point at parameter <theU>.
 class AppCont_LeastSquare {
 	public:
 		/****** AppCont_LeastSquare::AppCont_LeastSquare ******/
-		/****** md5 signature: bef4a7f12a53a8a2686f96d5313108c8 ******/
+		/****** md5 signature: f53556bd9f0b70c88b80815d0ca2d18c ******/
 		%feature("compactdefaultargs") AppCont_LeastSquare;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppCont_Function
-U0: float
-U1: float
+U0: double
+U1: double
 FirstCons: AppParCurves_Constraint
 LastCons: AppParCurves_Constraint
 Deg: int
@@ -249,10 +249,10 @@ Description
 -----------
 No available documentation.
 ") AppCont_LeastSquare;
-		 AppCont_LeastSquare(const AppCont_Function & SSP, const Standard_Real U0, const Standard_Real U1, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer Deg, const Standard_Integer NbPoints);
+		 AppCont_LeastSquare(const AppCont_Function & SSP, const double U0, const double U1, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int Deg, const int NbPoints);
 
 		/****** AppCont_LeastSquare::Error ******/
-		/****** md5 signature: 6cc4f4a7927f2c0b4ca37a4d45ee7075 ******/
+		/****** md5 signature: 75fafd66063edafbff7888b39a25338c ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -260,9 +260,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -271,7 +271,7 @@ No available documentation.
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppCont_LeastSquare::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -281,7 +281,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppCont_LeastSquare::Value ******/
 		/****** md5 signature: 59eb7b43f630b0afdd94fa8f4898fb6d ******/

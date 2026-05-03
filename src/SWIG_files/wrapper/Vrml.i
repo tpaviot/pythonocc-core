@@ -44,8 +44,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrml.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
-#include<TColgp_module.hxx>
 #include<Quantity_module.hxx>
 #include<gp_module.hxx>
 #include<TCollection_module.hxx>
@@ -66,8 +64,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrml.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
-%import TColgp.i
 %import Quantity.i
 %import gp.i
 %import TCollection.i
@@ -304,12 +300,12 @@ Vrml_POINT = Vrml_WWWAnchorMap.Vrml_POINT
 class Vrml {
 	public:
 		/****** Vrml::CommentWriter ******/
-		/****** md5 signature: e5bd2e2e43a6101d02a4c0fc033b4914 ******/
+		/****** md5 signature: 72caf3429e2d60e7ea9b25a36560f806 ******/
 		%feature("compactdefaultargs") CommentWriter;
 		%feature("autodoc", "
 Parameters
 ----------
-aComment: str
+aComment: char *
 
 Return
 -------
@@ -319,7 +315,7 @@ Description
 -----------
 No available documentation.
 ") CommentWriter;
-		static Standard_OStream & CommentWriter(Standard_CString aComment, std::ostream &OutValue);
+		static Standard_OStream & CommentWriter(const char * const aComment, std::ostream &OutValue);
 
 		/****** Vrml::VrmlHeaderWriter ******/
 		/****** md5 signature: e0e105d95fec65a919874d86d7edc262 ******/
@@ -366,15 +362,15 @@ No available documentation.
 		 Vrml_AsciiText();
 
 		/****** Vrml_AsciiText::Vrml_AsciiText ******/
-		/****** md5 signature: bbb43e550b8479d736d23ce227048e15 ******/
+		/****** md5 signature: 95b30242971c3a84f599fc11e5c0699d ******/
 		%feature("compactdefaultargs") Vrml_AsciiText;
 		%feature("autodoc", "
 Parameters
 ----------
-aString: TColStd_HArray1OfAsciiString
-aSpacing: float
+aString: NCollection_HArray1<TCollection_AsciiString
+aSpacing: double
 aJustification: Vrml_AsciiTextJustification
-aWidth: float
+aWidth: double
 
 Return
 -------
@@ -384,7 +380,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_AsciiText;
-		 Vrml_AsciiText(const opencascade::handle<TColStd_HArray1OfAsciiString> & aString, const Standard_Real aSpacing, const Vrml_AsciiTextJustification aJustification, const Standard_Real aWidth);
+		 Vrml_AsciiText(const opencascade::handle<NCollection_HArray1<TCollection_AsciiString> > & aString, const double aSpacing, const Vrml_AsciiTextJustification aJustification, const double aWidth);
 
 		/****** Vrml_AsciiText::Justification ******/
 		/****** md5 signature: f7b5f3dd5d19ad2211adcdc674352bea ******/
@@ -435,12 +431,12 @@ No available documentation.
 		void SetJustification(const Vrml_AsciiTextJustification aJustification);
 
 		/****** Vrml_AsciiText::SetSpacing ******/
-		/****** md5 signature: 31e734ea4ff25bcb9f6be99f255fddd4 ******/
+		/****** md5 signature: 2d940df4d9bb82a47393b09ef184e07d ******/
 		%feature("compactdefaultargs") SetSpacing;
 		%feature("autodoc", "
 Parameters
 ----------
-aSpacing: float
+aSpacing: double
 
 Return
 -------
@@ -450,15 +446,15 @@ Description
 -----------
 No available documentation.
 ") SetSpacing;
-		void SetSpacing(const Standard_Real aSpacing);
+		void SetSpacing(const double aSpacing);
 
 		/****** Vrml_AsciiText::SetString ******/
-		/****** md5 signature: 3013cd908c644f50fca1a170ab3334fd ******/
+		/****** md5 signature: 57edf56da254cf376b09ca87ca51ff95 ******/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", "
 Parameters
 ----------
-aString: TColStd_HArray1OfAsciiString
+aString: NCollection_HArray1<TCollection_AsciiString
 
 Return
 -------
@@ -468,15 +464,15 @@ Description
 -----------
 No available documentation.
 ") SetString;
-		void SetString(const opencascade::handle<TColStd_HArray1OfAsciiString> & aString);
+		void SetString(const opencascade::handle<NCollection_HArray1<TCollection_AsciiString> > & aString);
 
 		/****** Vrml_AsciiText::SetWidth ******/
-		/****** md5 signature: 241a01ddb40e85ceaaa56807348390c6 ******/
+		/****** md5 signature: ee0607ebb5cc5d325397bde68a8580c0 ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
 ----------
-aWidth: float
+aWidth: double
 
 Return
 -------
@@ -486,46 +482,46 @@ Description
 -----------
 No available documentation.
 ") SetWidth;
-		void SetWidth(const Standard_Real aWidth);
+		void SetWidth(const double aWidth);
 
 		/****** Vrml_AsciiText::Spacing ******/
-		/****** md5 signature: b6f003770198f9bf94078999d47973f8 ******/
+		/****** md5 signature: fd41852ed2c9deea5bc325aa062cc3af ******/
 		%feature("compactdefaultargs") Spacing;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Spacing;
-		Standard_Real Spacing();
+		double Spacing();
 
 		/****** Vrml_AsciiText::String ******/
-		/****** md5 signature: d0b8635a778118e1767640e3dfd7f5e3 ******/
+		/****** md5 signature: 308f6bcef7fb137ac908c51817653f5c ******/
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfAsciiString>
+opencascade::handle<NCollection_HArray1<TCollection_AsciiString>>
 
 Description
 -----------
 No available documentation.
 ") String;
-		opencascade::handle<TColStd_HArray1OfAsciiString> String();
+		opencascade::handle<NCollection_HArray1<TCollection_AsciiString>> String();
 
 		/****** Vrml_AsciiText::Width ******/
-		/****** md5 signature: e40fe8cb5cdcf41ad2ab06ede13e859b ******/
+		/****** md5 signature: 1fd4c6d3d33fbd8b282f769785a59bae ******/
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Width;
-		Standard_Real Width();
+		double Width();
 
 };
 
@@ -544,14 +540,14 @@ No available documentation.
 class Vrml_Cone {
 	public:
 		/****** Vrml_Cone::Vrml_Cone ******/
-		/****** md5 signature: 2bdbeb285d459aa794efa8629d0df067 ******/
+		/****** md5 signature: 87f6d0fbd707bbb46cbad3c8d0bdde55 ******/
 		%feature("compactdefaultargs") Vrml_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
 aParts: Vrml_ConeParts (optional, default to Vrml_ConeALL)
-aBottomRadius: float (optional, default to 1)
-aHeight: float (optional, default to 2)
+aBottomRadius: double (optional, default to 1)
+aHeight: double (optional, default to 2)
 
 Return
 -------
@@ -561,33 +557,33 @@ Description
 -----------
 No available documentation.
 ") Vrml_Cone;
-		 Vrml_Cone(const Vrml_ConeParts aParts = Vrml_ConeALL, const Standard_Real aBottomRadius = 1, const Standard_Real aHeight = 2);
+		 Vrml_Cone(const Vrml_ConeParts aParts = Vrml_ConeALL, const double aBottomRadius = 1, const double aHeight = 2);
 
 		/****** Vrml_Cone::BottomRadius ******/
-		/****** md5 signature: 4cdf2fe7f415a79ecb78d4ee1a2e2e22 ******/
+		/****** md5 signature: b4753df43cde8bf2a9784d1380b28205 ******/
 		%feature("compactdefaultargs") BottomRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") BottomRadius;
-		Standard_Real BottomRadius();
+		double BottomRadius();
 
 		/****** Vrml_Cone::Height ******/
-		/****** md5 signature: b7486e9db42a6b5d4ef64408e52d8a4b ******/
+		/****** md5 signature: 5c7d6acffa5c6358c6b35a05de7a5995 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** Vrml_Cone::Parts ******/
 		/****** md5 signature: 26d39ad8de41c8a9d0752d74b268a6a7 ******/
@@ -620,12 +616,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Cone::SetBottomRadius ******/
-		/****** md5 signature: 83831c7af161fbeed20e59efdcef6cc9 ******/
+		/****** md5 signature: 316e923ebf0b535c0c79e07ed16ba970 ******/
 		%feature("compactdefaultargs") SetBottomRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aBottomRadius: float
+aBottomRadius: double
 
 Return
 -------
@@ -635,15 +631,15 @@ Description
 -----------
 No available documentation.
 ") SetBottomRadius;
-		void SetBottomRadius(const Standard_Real aBottomRadius);
+		void SetBottomRadius(const double aBottomRadius);
 
 		/****** Vrml_Cone::SetHeight ******/
-		/****** md5 signature: b595945ce652624ed7910bc5ffdf66ae ******/
+		/****** md5 signature: 7c13e1b8ec1777da9517ca99bd3e24bd ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeight: float
+aHeight: double
 
 Return
 -------
@@ -653,7 +649,7 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Real aHeight);
+		void SetHeight(const double aHeight);
 
 		/****** Vrml_Cone::SetParts ******/
 		/****** md5 signature: fb601b0ea4acddc3c7126e1dd53f86fc ******/
@@ -688,12 +684,12 @@ No available documentation.
 class Vrml_Coordinate3 : public Standard_Transient {
 	public:
 		/****** Vrml_Coordinate3::Vrml_Coordinate3 ******/
-		/****** md5 signature: ecce689dbb99e4c529f7f2dd3ad54c90 ******/
+		/****** md5 signature: 4f65267e4e1d1cdc18ddb2e133f7a000 ******/
 		%feature("compactdefaultargs") Vrml_Coordinate3;
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: TColgp_HArray1OfVec
+aPoint: NCollection_HArray1<gp_Vec
 
 Return
 -------
@@ -703,7 +699,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Coordinate3;
-		 Vrml_Coordinate3(const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
+		 Vrml_Coordinate3(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aPoint);
 
 		/****** Vrml_Coordinate3::Vrml_Coordinate3 ******/
 		/****** md5 signature: caa651195ec5275c95e9738226765ecf ******/
@@ -719,17 +715,17 @@ No available documentation.
 		 Vrml_Coordinate3();
 
 		/****** Vrml_Coordinate3::Point ******/
-		/****** md5 signature: 835b1d5946610661596b6845f23da1e3 ******/
+		/****** md5 signature: 9138abf2e90d31b6a81e7adccdc2cf75 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColgp_HArray1OfVec>
+opencascade::handle<NCollection_HArray1<gp_Vec>>
 
 Description
 -----------
 No available documentation.
 ") Point;
-		opencascade::handle<TColgp_HArray1OfVec> Point();
+		opencascade::handle<NCollection_HArray1<gp_Vec>> Point();
 
 		/****** Vrml_Coordinate3::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -749,12 +745,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Coordinate3::SetPoint ******/
-		/****** md5 signature: 2531979fc318076a2efdf95b81e431c9 ******/
+		/****** md5 signature: 8bd673eef84aa712c4aff108c81ce111 ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: TColgp_HArray1OfVec
+aPoint: NCollection_HArray1<gp_Vec
 
 Return
 -------
@@ -764,7 +760,7 @@ Description
 -----------
 No available documentation.
 ") SetPoint;
-		void SetPoint(const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
+		void SetPoint(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aPoint);
 
 };
 
@@ -783,14 +779,14 @@ No available documentation.
 class Vrml_Cube {
 	public:
 		/****** Vrml_Cube::Vrml_Cube ******/
-		/****** md5 signature: 4d6aed10ba67bc4d2a31947736f2a9c1 ******/
+		/****** md5 signature: d2e1c5da5d19f87830ad161ab322a8c1 ******/
 		%feature("compactdefaultargs") Vrml_Cube;
 		%feature("autodoc", "
 Parameters
 ----------
-aWidth: float (optional, default to 2)
-aHeight: float (optional, default to 2)
-aDepth: float (optional, default to 2)
+aWidth: double (optional, default to 2)
+aHeight: double (optional, default to 2)
+aDepth: double (optional, default to 2)
 
 Return
 -------
@@ -800,33 +796,33 @@ Description
 -----------
 No available documentation.
 ") Vrml_Cube;
-		 Vrml_Cube(const Standard_Real aWidth = 2, const Standard_Real aHeight = 2, const Standard_Real aDepth = 2);
+		 Vrml_Cube(const double aWidth = 2, const double aHeight = 2, const double aDepth = 2);
 
 		/****** Vrml_Cube::Depth ******/
-		/****** md5 signature: de7560cf701656c85d7ea3c1f074fd03 ******/
+		/****** md5 signature: f37e2236448dd6d5b61209c188407c46 ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Depth;
-		Standard_Real Depth();
+		double Depth();
 
 		/****** Vrml_Cube::Height ******/
-		/****** md5 signature: b7486e9db42a6b5d4ef64408e52d8a4b ******/
+		/****** md5 signature: 5c7d6acffa5c6358c6b35a05de7a5995 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** Vrml_Cube::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -846,12 +842,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Cube::SetDepth ******/
-		/****** md5 signature: 4ed376ce95444c7357cf149677ef5fde ******/
+		/****** md5 signature: 285382766a76a466304b3c8fcac77dba ******/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "
 Parameters
 ----------
-aDepth: float
+aDepth: double
 
 Return
 -------
@@ -861,15 +857,15 @@ Description
 -----------
 No available documentation.
 ") SetDepth;
-		void SetDepth(const Standard_Real aDepth);
+		void SetDepth(const double aDepth);
 
 		/****** Vrml_Cube::SetHeight ******/
-		/****** md5 signature: b595945ce652624ed7910bc5ffdf66ae ******/
+		/****** md5 signature: 7c13e1b8ec1777da9517ca99bd3e24bd ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeight: float
+aHeight: double
 
 Return
 -------
@@ -879,15 +875,15 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Real aHeight);
+		void SetHeight(const double aHeight);
 
 		/****** Vrml_Cube::SetWidth ******/
-		/****** md5 signature: 241a01ddb40e85ceaaa56807348390c6 ******/
+		/****** md5 signature: ee0607ebb5cc5d325397bde68a8580c0 ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
 ----------
-aWidth: float
+aWidth: double
 
 Return
 -------
@@ -897,20 +893,20 @@ Description
 -----------
 No available documentation.
 ") SetWidth;
-		void SetWidth(const Standard_Real aWidth);
+		void SetWidth(const double aWidth);
 
 		/****** Vrml_Cube::Width ******/
-		/****** md5 signature: e40fe8cb5cdcf41ad2ab06ede13e859b ******/
+		/****** md5 signature: 1fd4c6d3d33fbd8b282f769785a59bae ******/
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Width;
-		Standard_Real Width();
+		double Width();
 
 };
 
@@ -927,14 +923,14 @@ No available documentation.
 class Vrml_Cylinder {
 	public:
 		/****** Vrml_Cylinder::Vrml_Cylinder ******/
-		/****** md5 signature: 23454f7be81bee10c0cfe928b9593bb0 ******/
+		/****** md5 signature: 75c92d4d33f48b78b8c05ee757507365 ******/
 		%feature("compactdefaultargs") Vrml_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
 aParts: Vrml_CylinderParts (optional, default to Vrml_CylinderALL)
-aRadius: float (optional, default to 1)
-aHeight: float (optional, default to 2)
+aRadius: double (optional, default to 1)
+aHeight: double (optional, default to 2)
 
 Return
 -------
@@ -944,20 +940,20 @@ Description
 -----------
 No available documentation.
 ") Vrml_Cylinder;
-		 Vrml_Cylinder(const Vrml_CylinderParts aParts = Vrml_CylinderALL, const Standard_Real aRadius = 1, const Standard_Real aHeight = 2);
+		 Vrml_Cylinder(const Vrml_CylinderParts aParts = Vrml_CylinderALL, const double aRadius = 1, const double aHeight = 2);
 
 		/****** Vrml_Cylinder::Height ******/
-		/****** md5 signature: b7486e9db42a6b5d4ef64408e52d8a4b ******/
+		/****** md5 signature: 5c7d6acffa5c6358c6b35a05de7a5995 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** Vrml_Cylinder::Parts ******/
 		/****** md5 signature: f4df95d71d7d2c7655c6fc632b765144 ******/
@@ -990,25 +986,25 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Cylinder::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** Vrml_Cylinder::SetHeight ******/
-		/****** md5 signature: b595945ce652624ed7910bc5ffdf66ae ******/
+		/****** md5 signature: 7c13e1b8ec1777da9517ca99bd3e24bd ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeight: float
+aHeight: double
 
 Return
 -------
@@ -1018,7 +1014,7 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Real aHeight);
+		void SetHeight(const double aHeight);
 
 		/****** Vrml_Cylinder::SetParts ******/
 		/****** md5 signature: 363ab2c780d68466100e4299ef8fa785 ******/
@@ -1039,12 +1035,12 @@ No available documentation.
 		void SetParts(const Vrml_CylinderParts aParts);
 
 		/****** Vrml_Cylinder::SetRadius ******/
-		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
+		/****** md5 signature: f0566f0da6f39e1b404c168108c44985 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aRadius: float
+aRadius: double
 
 Return
 -------
@@ -1054,7 +1050,7 @@ Description
 -----------
 No available documentation.
 ") SetRadius;
-		void SetRadius(const Standard_Real aRadius);
+		void SetRadius(const double aRadius);
 
 };
 
@@ -1084,13 +1080,13 @@ No available documentation.
 		 Vrml_DirectionalLight();
 
 		/****** Vrml_DirectionalLight::Vrml_DirectionalLight ******/
-		/****** md5 signature: 9a6698874f5180376609c4dd677f0935 ******/
+		/****** md5 signature: 26a302dcd49103600c88ab4a11fe57c9 ******/
 		%feature("compactdefaultargs") Vrml_DirectionalLight;
 		%feature("autodoc", "
 Parameters
 ----------
 aOnOff: bool
-aIntensity: float
+aIntensity: double
 aColor: Quantity_Color
 aDirection: gp_Vec
 
@@ -1102,7 +1098,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_DirectionalLight;
-		 Vrml_DirectionalLight(const Standard_Boolean aOnOff, const Standard_Real aIntensity, const Quantity_Color & aColor, const gp_Vec & aDirection);
+		 Vrml_DirectionalLight(const bool aOnOff, const double aIntensity, const Quantity_Color & aColor, const gp_Vec & aDirection);
 
 		/****** Vrml_DirectionalLight::Color ******/
 		/****** md5 signature: b37a2e584a895a08fcf8ead60940b246 ******/
@@ -1131,20 +1127,20 @@ No available documentation.
 		gp_Vec Direction();
 
 		/****** Vrml_DirectionalLight::Intensity ******/
-		/****** md5 signature: ce9240a693f5bdfdaa91a711de325222 ******/
+		/****** md5 signature: 0efec0be4852a323f220a08b45a10290 ******/
 		%feature("compactdefaultargs") Intensity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Intensity;
-		Standard_Real Intensity();
+		double Intensity();
 
 		/****** Vrml_DirectionalLight::OnOff ******/
-		/****** md5 signature: 1623cdf1315a616b653a683621672f41 ******/
+		/****** md5 signature: 81f9db50648440a668d188bd149dec81 ******/
 		%feature("compactdefaultargs") OnOff;
 		%feature("autodoc", "Return
 -------
@@ -1154,7 +1150,7 @@ Description
 -----------
 No available documentation.
 ") OnOff;
-		Standard_Boolean OnOff();
+		bool OnOff();
 
 		/****** Vrml_DirectionalLight::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -1210,12 +1206,12 @@ No available documentation.
 		void SetDirection(const gp_Vec & aDirection);
 
 		/****** Vrml_DirectionalLight::SetIntensity ******/
-		/****** md5 signature: d83199c26d505783e2f37c8e7ca17011 ******/
+		/****** md5 signature: 21a812bfeb21857a4714e2e90fc4b7bd ******/
 		%feature("compactdefaultargs") SetIntensity;
 		%feature("autodoc", "
 Parameters
 ----------
-aIntensity: float
+aIntensity: double
 
 Return
 -------
@@ -1225,10 +1221,10 @@ Description
 -----------
 No available documentation.
 ") SetIntensity;
-		void SetIntensity(const Standard_Real aIntensity);
+		void SetIntensity(const double aIntensity);
 
 		/****** Vrml_DirectionalLight::SetOnOff ******/
-		/****** md5 signature: ec2f3be555932b38580e5b4a2d50b4c2 ******/
+		/****** md5 signature: 33b5d48da02b5c7bf4f9cc2e05805dbb ******/
 		%feature("compactdefaultargs") SetOnOff;
 		%feature("autodoc", "
 Parameters
@@ -1243,7 +1239,7 @@ Description
 -----------
 No available documentation.
 ") SetOnOff;
-		void SetOnOff(const Standard_Boolean aOnOff);
+		void SetOnOff(const bool aOnOff);
 
 };
 
@@ -1260,12 +1256,12 @@ No available documentation.
 class Vrml_FontStyle {
 	public:
 		/****** Vrml_FontStyle::Vrml_FontStyle ******/
-		/****** md5 signature: b18ca7ff2c2af3e2100c7bbc4c170798 ******/
+		/****** md5 signature: 1f29280dac8fa8bbc4faf16410650ca8 ******/
 		%feature("compactdefaultargs") Vrml_FontStyle;
 		%feature("autodoc", "
 Parameters
 ----------
-aSize: float (optional, default to 10)
+aSize: double (optional, default to 10)
 aFamily: Vrml_FontStyleFamily (optional, default to Vrml_SERIF)
 aStyle: Vrml_FontStyleStyle (optional, default to Vrml_NONE)
 
@@ -1277,7 +1273,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_FontStyle;
-		 Vrml_FontStyle(const Standard_Real aSize = 10, const Vrml_FontStyleFamily aFamily = Vrml_SERIF, const Vrml_FontStyleStyle aStyle = Vrml_NONE);
+		 Vrml_FontStyle(const double aSize = 10, const Vrml_FontStyleFamily aFamily = Vrml_SERIF, const Vrml_FontStyleStyle aStyle = Vrml_NONE);
 
 		/****** Vrml_FontStyle::Family ******/
 		/****** md5 signature: d1ecc1f19f57b4ada363cdf58dc7ba8d ******/
@@ -1328,12 +1324,12 @@ No available documentation.
 		void SetFamily(const Vrml_FontStyleFamily aFamily);
 
 		/****** Vrml_FontStyle::SetSize ******/
-		/****** md5 signature: aaab85e4d810aa4f2c968d98c7e6942e ******/
+		/****** md5 signature: b690dc1cb3ecd35a66470a47c25f91e5 ******/
 		%feature("compactdefaultargs") SetSize;
 		%feature("autodoc", "
 Parameters
 ----------
-aSize: float
+aSize: double
 
 Return
 -------
@@ -1343,7 +1339,7 @@ Description
 -----------
 No available documentation.
 ") SetSize;
-		void SetSize(const Standard_Real aSize);
+		void SetSize(const double aSize);
 
 		/****** Vrml_FontStyle::SetStyle ******/
 		/****** md5 signature: 844327ee819b53f260feccbfebd41096 ******/
@@ -1364,17 +1360,17 @@ No available documentation.
 		void SetStyle(const Vrml_FontStyleStyle aStyle);
 
 		/****** Vrml_FontStyle::Size ******/
-		/****** md5 signature: a8e9905382c3964d697ee929ccdb9562 ******/
+		/****** md5 signature: 06192572c9cdca54cf74477cdabdab63 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Size;
-		Standard_Real Size();
+		double Size();
 
 		/****** Vrml_FontStyle::Style ******/
 		/****** md5 signature: 52df975e76cc44f74da30207fc4e3cfc ******/
@@ -1448,15 +1444,15 @@ No available documentation.
 class Vrml_IndexedFaceSet : public Standard_Transient {
 	public:
 		/****** Vrml_IndexedFaceSet::Vrml_IndexedFaceSet ******/
-		/****** md5 signature: 52dbfb6e15b45ad06dc22cf9c835ce09 ******/
+		/****** md5 signature: d9d544373ad44ef35f885d595c955057 ******/
 		%feature("compactdefaultargs") Vrml_IndexedFaceSet;
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: TColStd_HArray1OfInteger
-aMaterialIndex: TColStd_HArray1OfInteger
-aNormalIndex: TColStd_HArray1OfInteger
-aTextureCoordIndex: TColStd_HArray1OfInteger
+aCoordIndex: NCollection_HArray1<int
+aMaterialIndex: NCollection_HArray1<int
+aNormalIndex: NCollection_HArray1<int
+aTextureCoordIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1466,7 +1462,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_IndexedFaceSet;
-		 Vrml_IndexedFaceSet(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+		 Vrml_IndexedFaceSet(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex, const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex, const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex, const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
 
 		/****** Vrml_IndexedFaceSet::Vrml_IndexedFaceSet ******/
 		/****** md5 signature: 50ef4121137fded12bf9eaedab6bc411 ******/
@@ -1482,43 +1478,43 @@ No available documentation.
 		 Vrml_IndexedFaceSet();
 
 		/****** Vrml_IndexedFaceSet::CoordIndex ******/
-		/****** md5 signature: b0c698b923ddf2c5f3eb869ea9ffaa5e ******/
+		/****** md5 signature: bf3a1b35ee8898427271d36dd838250b ******/
 		%feature("compactdefaultargs") CoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") CoordIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> CoordIndex();
+		opencascade::handle<NCollection_HArray1<int>> CoordIndex();
 
 		/****** Vrml_IndexedFaceSet::MaterialIndex ******/
-		/****** md5 signature: 743de42134bcbaa41199998f13a6fb5a ******/
+		/****** md5 signature: f1eb03fb4692c215dd2eac71926e91a4 ******/
 		%feature("compactdefaultargs") MaterialIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") MaterialIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> MaterialIndex();
+		opencascade::handle<NCollection_HArray1<int>> MaterialIndex();
 
 		/****** Vrml_IndexedFaceSet::NormalIndex ******/
-		/****** md5 signature: 7005e8887cf8a878dc47379a1a2f115f ******/
+		/****** md5 signature: ae1a0bdfc1bc7d4c093a1547a7cfd79e ******/
 		%feature("compactdefaultargs") NormalIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") NormalIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex();
+		opencascade::handle<NCollection_HArray1<int>> NormalIndex();
 
 		/****** Vrml_IndexedFaceSet::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -1538,12 +1534,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_IndexedFaceSet::SetCoordIndex ******/
-		/****** md5 signature: 8aac1fe12bc1ddfc66bc94e00112273c ******/
+		/****** md5 signature: 90c6ccbcd98836d665f4cadd6e2ec688 ******/
 		%feature("compactdefaultargs") SetCoordIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: TColStd_HArray1OfInteger
+aCoordIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1553,15 +1549,15 @@ Description
 -----------
 No available documentation.
 ") SetCoordIndex;
-		void SetCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
+		void SetCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex);
 
 		/****** Vrml_IndexedFaceSet::SetMaterialIndex ******/
-		/****** md5 signature: b519ba6144c721dfe16c03654288c8c3 ******/
+		/****** md5 signature: 98d0deb03bc31d666885092c78bfd060 ******/
 		%feature("compactdefaultargs") SetMaterialIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aMaterialIndex: TColStd_HArray1OfInteger
+aMaterialIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1571,15 +1567,15 @@ Description
 -----------
 No available documentation.
 ") SetMaterialIndex;
-		void SetMaterialIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
+		void SetMaterialIndex(const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex);
 
 		/****** Vrml_IndexedFaceSet::SetNormalIndex ******/
-		/****** md5 signature: 3d86b3efe364adf38df4fc2f2d570e60 ******/
+		/****** md5 signature: 3d03b4ce2881c9f2ec84f23207971379 ******/
 		%feature("compactdefaultargs") SetNormalIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aNormalIndex: TColStd_HArray1OfInteger
+aNormalIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1589,15 +1585,15 @@ Description
 -----------
 No available documentation.
 ") SetNormalIndex;
-		void SetNormalIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
+		void SetNormalIndex(const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex);
 
 		/****** Vrml_IndexedFaceSet::SetTextureCoordIndex ******/
-		/****** md5 signature: 4ff25115e630fb57b81ece90f54083dd ******/
+		/****** md5 signature: fae2a579c835a8fbce7f594c4b0a3464 ******/
 		%feature("compactdefaultargs") SetTextureCoordIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aTextureCoordIndex: TColStd_HArray1OfInteger
+aTextureCoordIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1607,20 +1603,20 @@ Description
 -----------
 No available documentation.
 ") SetTextureCoordIndex;
-		void SetTextureCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+		void SetTextureCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
 
 		/****** Vrml_IndexedFaceSet::TextureCoordIndex ******/
-		/****** md5 signature: ddb123225e48c68375519e67052f5ee0 ******/
+		/****** md5 signature: 53a857022e49bb187fdfa58782aa2400 ******/
 		%feature("compactdefaultargs") TextureCoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") TextureCoordIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> TextureCoordIndex();
+		opencascade::handle<NCollection_HArray1<int>> TextureCoordIndex();
 
 };
 
@@ -1639,15 +1635,15 @@ No available documentation.
 class Vrml_IndexedLineSet : public Standard_Transient {
 	public:
 		/****** Vrml_IndexedLineSet::Vrml_IndexedLineSet ******/
-		/****** md5 signature: b044ce6b5bdafc7ebd91d941102c5d9d ******/
+		/****** md5 signature: 184a4b6d512b8275a92d7a8ea56dceed ******/
 		%feature("compactdefaultargs") Vrml_IndexedLineSet;
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: TColStd_HArray1OfInteger
-aMaterialIndex: TColStd_HArray1OfInteger
-aNormalIndex: TColStd_HArray1OfInteger
-aTextureCoordIndex: TColStd_HArray1OfInteger
+aCoordIndex: NCollection_HArray1<int
+aMaterialIndex: NCollection_HArray1<int
+aNormalIndex: NCollection_HArray1<int
+aTextureCoordIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1657,7 +1653,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_IndexedLineSet;
-		 Vrml_IndexedLineSet(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+		 Vrml_IndexedLineSet(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex, const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex, const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex, const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
 
 		/****** Vrml_IndexedLineSet::Vrml_IndexedLineSet ******/
 		/****** md5 signature: d1db7e38579850dce4baefc6cd4bee81 ******/
@@ -1673,43 +1669,43 @@ No available documentation.
 		 Vrml_IndexedLineSet();
 
 		/****** Vrml_IndexedLineSet::CoordIndex ******/
-		/****** md5 signature: b0c698b923ddf2c5f3eb869ea9ffaa5e ******/
+		/****** md5 signature: bf3a1b35ee8898427271d36dd838250b ******/
 		%feature("compactdefaultargs") CoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") CoordIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> CoordIndex();
+		opencascade::handle<NCollection_HArray1<int>> CoordIndex();
 
 		/****** Vrml_IndexedLineSet::MaterialIndex ******/
-		/****** md5 signature: 743de42134bcbaa41199998f13a6fb5a ******/
+		/****** md5 signature: f1eb03fb4692c215dd2eac71926e91a4 ******/
 		%feature("compactdefaultargs") MaterialIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") MaterialIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> MaterialIndex();
+		opencascade::handle<NCollection_HArray1<int>> MaterialIndex();
 
 		/****** Vrml_IndexedLineSet::NormalIndex ******/
-		/****** md5 signature: 7005e8887cf8a878dc47379a1a2f115f ******/
+		/****** md5 signature: ae1a0bdfc1bc7d4c093a1547a7cfd79e ******/
 		%feature("compactdefaultargs") NormalIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") NormalIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex();
+		opencascade::handle<NCollection_HArray1<int>> NormalIndex();
 
 		/****** Vrml_IndexedLineSet::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -1729,12 +1725,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_IndexedLineSet::SetCoordIndex ******/
-		/****** md5 signature: 8aac1fe12bc1ddfc66bc94e00112273c ******/
+		/****** md5 signature: 90c6ccbcd98836d665f4cadd6e2ec688 ******/
 		%feature("compactdefaultargs") SetCoordIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: TColStd_HArray1OfInteger
+aCoordIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1744,15 +1740,15 @@ Description
 -----------
 No available documentation.
 ") SetCoordIndex;
-		void SetCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
+		void SetCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex);
 
 		/****** Vrml_IndexedLineSet::SetMaterialIndex ******/
-		/****** md5 signature: b519ba6144c721dfe16c03654288c8c3 ******/
+		/****** md5 signature: 98d0deb03bc31d666885092c78bfd060 ******/
 		%feature("compactdefaultargs") SetMaterialIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aMaterialIndex: TColStd_HArray1OfInteger
+aMaterialIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1762,15 +1758,15 @@ Description
 -----------
 No available documentation.
 ") SetMaterialIndex;
-		void SetMaterialIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
+		void SetMaterialIndex(const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex);
 
 		/****** Vrml_IndexedLineSet::SetNormalIndex ******/
-		/****** md5 signature: 3d86b3efe364adf38df4fc2f2d570e60 ******/
+		/****** md5 signature: 3d03b4ce2881c9f2ec84f23207971379 ******/
 		%feature("compactdefaultargs") SetNormalIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aNormalIndex: TColStd_HArray1OfInteger
+aNormalIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1780,15 +1776,15 @@ Description
 -----------
 No available documentation.
 ") SetNormalIndex;
-		void SetNormalIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
+		void SetNormalIndex(const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex);
 
 		/****** Vrml_IndexedLineSet::SetTextureCoordIndex ******/
-		/****** md5 signature: 4ff25115e630fb57b81ece90f54083dd ******/
+		/****** md5 signature: fae2a579c835a8fbce7f594c4b0a3464 ******/
 		%feature("compactdefaultargs") SetTextureCoordIndex;
 		%feature("autodoc", "
 Parameters
 ----------
-aTextureCoordIndex: TColStd_HArray1OfInteger
+aTextureCoordIndex: NCollection_HArray1<int
 
 Return
 -------
@@ -1798,20 +1794,20 @@ Description
 -----------
 No available documentation.
 ") SetTextureCoordIndex;
-		void SetTextureCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
+		void SetTextureCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
 
 		/****** Vrml_IndexedLineSet::TextureCoordIndex ******/
-		/****** md5 signature: ddb123225e48c68375519e67052f5ee0 ******/
+		/****** md5 signature: 53a857022e49bb187fdfa58782aa2400 ******/
 		%feature("compactdefaultargs") TextureCoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") TextureCoordIndex;
-		opencascade::handle<TColStd_HArray1OfInteger> TextureCoordIndex();
+		opencascade::handle<NCollection_HArray1<int>> TextureCoordIndex();
 
 };
 
@@ -1989,12 +1985,12 @@ No available documentation.
 		 Vrml_LOD();
 
 		/****** Vrml_LOD::Vrml_LOD ******/
-		/****** md5 signature: 62bc60c83d4806ec16b1a396adf6f9e1 ******/
+		/****** md5 signature: 4b4c4e53dc936dc4da1cf579beeea095 ******/
 		%feature("compactdefaultargs") Vrml_LOD;
 		%feature("autodoc", "
 Parameters
 ----------
-aRange: TColStd_HArray1OfReal
+aRange: NCollection_HArray1<double
 aCenter: gp_Vec
 
 Return
@@ -2005,7 +2001,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_LOD;
-		 Vrml_LOD(const opencascade::handle<TColStd_HArray1OfReal> & aRange, const gp_Vec & aCenter);
+		 Vrml_LOD(const opencascade::handle<NCollection_HArray1<double> > & aRange, const gp_Vec & aCenter);
 
 		/****** Vrml_LOD::Center ******/
 		/****** md5 signature: 61ea9e63ca1b0195aa3037fd3c59632f ******/
@@ -2038,17 +2034,17 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_LOD::Range ******/
-		/****** md5 signature: bef409c2278798ac43ffa883362425bc ******/
+		/****** md5 signature: 57a24bfc5318522824ced1e0a38f2a9c ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") Range;
-		opencascade::handle<TColStd_HArray1OfReal> Range();
+		opencascade::handle<NCollection_HArray1<double>> Range();
 
 		/****** Vrml_LOD::SetCenter ******/
 		/****** md5 signature: a703ddf7cd16de3b4903371c8cb8e217 ******/
@@ -2069,12 +2065,12 @@ No available documentation.
 		void SetCenter(const gp_Vec & aCenter);
 
 		/****** Vrml_LOD::SetRange ******/
-		/****** md5 signature: bf3fdbcd072544cb97370fb2ca496ee1 ******/
+		/****** md5 signature: cca327cd49dc0d4064c18ded4877a991 ******/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "
 Parameters
 ----------
-aRange: TColStd_HArray1OfReal
+aRange: NCollection_HArray1<double
 
 Return
 -------
@@ -2084,7 +2080,7 @@ Description
 -----------
 No available documentation.
 ") SetRange;
-		void SetRange(const opencascade::handle<TColStd_HArray1OfReal> & aRange);
+		void SetRange(const opencascade::handle<NCollection_HArray1<double> > & aRange);
 
 };
 
@@ -2103,17 +2099,17 @@ No available documentation.
 class Vrml_Material : public Standard_Transient {
 	public:
 		/****** Vrml_Material::Vrml_Material ******/
-		/****** md5 signature: fc5891972bc6bcfa22f767dc9cbaa5b3 ******/
+		/****** md5 signature: 41386de85f87fe5bf4e2d20d6a8f1c6e ******/
 		%feature("compactdefaultargs") Vrml_Material;
 		%feature("autodoc", "
 Parameters
 ----------
-aAmbientColor: Quantity_HArray1OfColor
-aDiffuseColor: Quantity_HArray1OfColor
-aSpecularColor: Quantity_HArray1OfColor
-aEmissiveColor: Quantity_HArray1OfColor
-aShininess: TColStd_HArray1OfReal
-aTransparency: TColStd_HArray1OfReal
+aAmbientColor: NCollection_HArray1<Quantity_Color
+aDiffuseColor: NCollection_HArray1<Quantity_Color
+aSpecularColor: NCollection_HArray1<Quantity_Color
+aEmissiveColor: NCollection_HArray1<Quantity_Color
+aShininess: NCollection_HArray1<double
+aTransparency: NCollection_HArray1<double
 
 Return
 -------
@@ -2123,7 +2119,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Material;
-		 Vrml_Material(const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor, const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor, const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor, const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor, const opencascade::handle<TColStd_HArray1OfReal> & aShininess, const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
+		 Vrml_Material(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aAmbientColor, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aDiffuseColor, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aSpecularColor, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aEmissiveColor, const opencascade::handle<NCollection_HArray1<double> > & aShininess, const opencascade::handle<NCollection_HArray1<double> > & aTransparency);
 
 		/****** Vrml_Material::Vrml_Material ******/
 		/****** md5 signature: d9815f4a50eda7816ab5f7d8bebf8226 ******/
@@ -2139,43 +2135,43 @@ No available documentation.
 		 Vrml_Material();
 
 		/****** Vrml_Material::AmbientColor ******/
-		/****** md5 signature: 0f45578f937e203ca177fe48529e0ea4 ******/
+		/****** md5 signature: 3226c6aaa029d908f0a19f0ef7ae8146 ******/
 		%feature("compactdefaultargs") AmbientColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<Quantity_HArray1OfColor>
+opencascade::handle<NCollection_HArray1<Quantity_Color>>
 
 Description
 -----------
 No available documentation.
 ") AmbientColor;
-		opencascade::handle<Quantity_HArray1OfColor> AmbientColor();
+		opencascade::handle<NCollection_HArray1<Quantity_Color>> AmbientColor();
 
 		/****** Vrml_Material::DiffuseColor ******/
-		/****** md5 signature: 6bf474fb593b837a3704daf5d638946f ******/
+		/****** md5 signature: 9a0f336a829e617b18f3c31503dfb8ea ******/
 		%feature("compactdefaultargs") DiffuseColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<Quantity_HArray1OfColor>
+opencascade::handle<NCollection_HArray1<Quantity_Color>>
 
 Description
 -----------
 No available documentation.
 ") DiffuseColor;
-		opencascade::handle<Quantity_HArray1OfColor> DiffuseColor();
+		opencascade::handle<NCollection_HArray1<Quantity_Color>> DiffuseColor();
 
 		/****** Vrml_Material::EmissiveColor ******/
-		/****** md5 signature: b7ca2bdf838107d5e4a264d1ccb1e122 ******/
+		/****** md5 signature: 9e394b9ab494f6388995f915fe8a986c ******/
 		%feature("compactdefaultargs") EmissiveColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<Quantity_HArray1OfColor>
+opencascade::handle<NCollection_HArray1<Quantity_Color>>
 
 Description
 -----------
 No available documentation.
 ") EmissiveColor;
-		opencascade::handle<Quantity_HArray1OfColor> EmissiveColor();
+		opencascade::handle<NCollection_HArray1<Quantity_Color>> EmissiveColor();
 
 		/****** Vrml_Material::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -2195,12 +2191,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Material::SetAmbientColor ******/
-		/****** md5 signature: 7a2810fd7bedaae7bea499eb43ecaf68 ******/
+		/****** md5 signature: f93466014d9e96aeee4c9ad7a07a53e1 ******/
 		%feature("compactdefaultargs") SetAmbientColor;
 		%feature("autodoc", "
 Parameters
 ----------
-aAmbientColor: Quantity_HArray1OfColor
+aAmbientColor: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -2210,15 +2206,15 @@ Description
 -----------
 No available documentation.
 ") SetAmbientColor;
-		void SetAmbientColor(const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor);
+		void SetAmbientColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aAmbientColor);
 
 		/****** Vrml_Material::SetDiffuseColor ******/
-		/****** md5 signature: 5d1708707ef429ff87f51d6f5e8102fa ******/
+		/****** md5 signature: b58b0417da580c3093e1a4c5eb55f047 ******/
 		%feature("compactdefaultargs") SetDiffuseColor;
 		%feature("autodoc", "
 Parameters
 ----------
-aDiffuseColor: Quantity_HArray1OfColor
+aDiffuseColor: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -2228,15 +2224,15 @@ Description
 -----------
 No available documentation.
 ") SetDiffuseColor;
-		void SetDiffuseColor(const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor);
+		void SetDiffuseColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aDiffuseColor);
 
 		/****** Vrml_Material::SetEmissiveColor ******/
-		/****** md5 signature: c19b5023da6c67750532dedebe793ee7 ******/
+		/****** md5 signature: 1049295b3e8828295acc427807f9aebb ******/
 		%feature("compactdefaultargs") SetEmissiveColor;
 		%feature("autodoc", "
 Parameters
 ----------
-aEmissiveColor: Quantity_HArray1OfColor
+aEmissiveColor: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -2246,15 +2242,15 @@ Description
 -----------
 No available documentation.
 ") SetEmissiveColor;
-		void SetEmissiveColor(const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor);
+		void SetEmissiveColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aEmissiveColor);
 
 		/****** Vrml_Material::SetShininess ******/
-		/****** md5 signature: 200abe81afb34ecb5c92f7b6e77f41ae ******/
+		/****** md5 signature: a9cc362cff912b35e471a44f5f9e4e38 ******/
 		%feature("compactdefaultargs") SetShininess;
 		%feature("autodoc", "
 Parameters
 ----------
-aShininess: TColStd_HArray1OfReal
+aShininess: NCollection_HArray1<double
 
 Return
 -------
@@ -2264,15 +2260,15 @@ Description
 -----------
 No available documentation.
 ") SetShininess;
-		void SetShininess(const opencascade::handle<TColStd_HArray1OfReal> & aShininess);
+		void SetShininess(const opencascade::handle<NCollection_HArray1<double> > & aShininess);
 
 		/****** Vrml_Material::SetSpecularColor ******/
-		/****** md5 signature: 81954339a4ca4e01a5727990f4a2f100 ******/
+		/****** md5 signature: 9e09eab21a59d8060413c7a4b4e52b40 ******/
 		%feature("compactdefaultargs") SetSpecularColor;
 		%feature("autodoc", "
 Parameters
 ----------
-aSpecularColor: Quantity_HArray1OfColor
+aSpecularColor: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -2282,15 +2278,15 @@ Description
 -----------
 No available documentation.
 ") SetSpecularColor;
-		void SetSpecularColor(const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor);
+		void SetSpecularColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aSpecularColor);
 
 		/****** Vrml_Material::SetTransparency ******/
-		/****** md5 signature: 683fbea2011164a4a3ced587e6cccdfa ******/
+		/****** md5 signature: 8b7b5431feefe88864e08b782c2ad5be ******/
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", "
 Parameters
 ----------
-aTransparency: TColStd_HArray1OfReal
+aTransparency: NCollection_HArray1<double
 
 Return
 -------
@@ -2300,46 +2296,46 @@ Description
 -----------
 No available documentation.
 ") SetTransparency;
-		void SetTransparency(const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
+		void SetTransparency(const opencascade::handle<NCollection_HArray1<double> > & aTransparency);
 
 		/****** Vrml_Material::Shininess ******/
-		/****** md5 signature: 670f89ce7f4a780dd0f753074b8eb31f ******/
+		/****** md5 signature: b68e59091e55cd881aeee09d0ffd30bc ******/
 		%feature("compactdefaultargs") Shininess;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") Shininess;
-		opencascade::handle<TColStd_HArray1OfReal> Shininess();
+		opencascade::handle<NCollection_HArray1<double>> Shininess();
 
 		/****** Vrml_Material::SpecularColor ******/
-		/****** md5 signature: fc7935d41d9d6c7d322d60ccf72421a2 ******/
+		/****** md5 signature: 4c15257f24587a43add7e29be02f8e2b ******/
 		%feature("compactdefaultargs") SpecularColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<Quantity_HArray1OfColor>
+opencascade::handle<NCollection_HArray1<Quantity_Color>>
 
 Description
 -----------
 No available documentation.
 ") SpecularColor;
-		opencascade::handle<Quantity_HArray1OfColor> SpecularColor();
+		opencascade::handle<NCollection_HArray1<Quantity_Color>> SpecularColor();
 
 		/****** Vrml_Material::Transparency ******/
-		/****** md5 signature: 1191c5d42e1446bee4bdcc4fa69c7767 ******/
+		/****** md5 signature: 36c921cd19c88a2da51fadf174ca34e7 ******/
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") Transparency;
-		opencascade::handle<TColStd_HArray1OfReal> Transparency();
+		opencascade::handle<NCollection_HArray1<double>> Transparency();
 
 };
 
@@ -2544,12 +2540,12 @@ No available documentation.
 class Vrml_Normal : public Standard_Transient {
 	public:
 		/****** Vrml_Normal::Vrml_Normal ******/
-		/****** md5 signature: 3f5862dc13acc90de932cc8cf7777414 ******/
+		/****** md5 signature: 81e4f2db16a3850bde40cd7ec23f7b13 ******/
 		%feature("compactdefaultargs") Vrml_Normal;
 		%feature("autodoc", "
 Parameters
 ----------
-aVector: TColgp_HArray1OfVec
+aVector: NCollection_HArray1<gp_Vec
 
 Return
 -------
@@ -2559,7 +2555,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Normal;
-		 Vrml_Normal(const opencascade::handle<TColgp_HArray1OfVec> & aVector);
+		 Vrml_Normal(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aVector);
 
 		/****** Vrml_Normal::Vrml_Normal ******/
 		/****** md5 signature: aa55807a51549a727bc12f4475aa0b0d ******/
@@ -2592,12 +2588,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Normal::SetVector ******/
-		/****** md5 signature: b29dd66700a7c683cf81610080b02141 ******/
+		/****** md5 signature: f9f05305eac12adb14ed1bccb6cf602b ******/
 		%feature("compactdefaultargs") SetVector;
 		%feature("autodoc", "
 Parameters
 ----------
-aVector: TColgp_HArray1OfVec
+aVector: NCollection_HArray1<gp_Vec
 
 Return
 -------
@@ -2607,20 +2603,20 @@ Description
 -----------
 No available documentation.
 ") SetVector;
-		void SetVector(const opencascade::handle<TColgp_HArray1OfVec> & aVector);
+		void SetVector(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aVector);
 
 		/****** Vrml_Normal::Vector ******/
-		/****** md5 signature: 51abe9f806fea3ca3bb9895ced3da977 ******/
+		/****** md5 signature: 65ead4acdd3eb2dbdf731b16908c0648 ******/
 		%feature("compactdefaultargs") Vector;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColgp_HArray1OfVec>
+opencascade::handle<NCollection_HArray1<gp_Vec>>
 
 Description
 -----------
 No available documentation.
 ") Vector;
-		opencascade::handle<TColgp_HArray1OfVec> Vector();
+		opencascade::handle<NCollection_HArray1<gp_Vec>> Vector();
 
 };
 
@@ -2745,15 +2741,15 @@ No available documentation.
 		 Vrml_OrthographicCamera();
 
 		/****** Vrml_OrthographicCamera::Vrml_OrthographicCamera ******/
-		/****** md5 signature: 0eef0f2c8752b223d1c67b674d8634de ******/
+		/****** md5 signature: 3524cf50b0a36fd758e67c57fdda1e72 ******/
 		%feature("compactdefaultargs") Vrml_OrthographicCamera;
 		%feature("autodoc", "
 Parameters
 ----------
 aPosition: gp_Vec
 aOrientation: Vrml_SFRotation
-aFocalDistance: float
-aHeight: float
+aFocalDistance: double
+aHeight: double
 
 Return
 -------
@@ -2763,33 +2759,33 @@ Description
 -----------
 No available documentation.
 ") Vrml_OrthographicCamera;
-		 Vrml_OrthographicCamera(const gp_Vec & aPosition, const Vrml_SFRotation & aOrientation, const Standard_Real aFocalDistance, const Standard_Real aHeight);
+		 Vrml_OrthographicCamera(const gp_Vec & aPosition, const Vrml_SFRotation & aOrientation, const double aFocalDistance, const double aHeight);
 
 		/****** Vrml_OrthographicCamera::FocalDistance ******/
-		/****** md5 signature: 7e55a83620d991c74488a9052052d6e7 ******/
+		/****** md5 signature: ba6ab931bcda041bfeca9735ba154857 ******/
 		%feature("compactdefaultargs") FocalDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FocalDistance;
-		Standard_Real FocalDistance();
+		double FocalDistance();
 
 		/****** Vrml_OrthographicCamera::Height ******/
-		/****** md5 signature: b7486e9db42a6b5d4ef64408e52d8a4b ******/
+		/****** md5 signature: 5c7d6acffa5c6358c6b35a05de7a5995 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** Vrml_OrthographicCamera::Orientation ******/
 		/****** md5 signature: add97f23d9ae84534aa6ad8eda6b7515 ******/
@@ -2835,12 +2831,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_OrthographicCamera::SetFocalDistance ******/
-		/****** md5 signature: a4382c9d94c6cdb3a408a0da734eb053 ******/
+		/****** md5 signature: 8a578d7c4f516c0903c15e97802def9e ******/
 		%feature("compactdefaultargs") SetFocalDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-aFocalDistance: float
+aFocalDistance: double
 
 Return
 -------
@@ -2850,15 +2846,15 @@ Description
 -----------
 No available documentation.
 ") SetFocalDistance;
-		void SetFocalDistance(const Standard_Real aFocalDistance);
+		void SetFocalDistance(const double aFocalDistance);
 
 		/****** Vrml_OrthographicCamera::SetHeight ******/
-		/****** md5 signature: b595945ce652624ed7910bc5ffdf66ae ******/
+		/****** md5 signature: 7c13e1b8ec1777da9517ca99bd3e24bd ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeight: float
+aHeight: double
 
 Return
 -------
@@ -2868,7 +2864,7 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Real aHeight);
+		void SetHeight(const double aHeight);
 
 		/****** Vrml_OrthographicCamera::SetOrientation ******/
 		/****** md5 signature: d695010f9be74c1befe149ca361b0799 ******/
@@ -2934,15 +2930,15 @@ No available documentation.
 		 Vrml_PerspectiveCamera();
 
 		/****** Vrml_PerspectiveCamera::Vrml_PerspectiveCamera ******/
-		/****** md5 signature: 482062ecd5554d4b2fe392b08b46eace ******/
+		/****** md5 signature: b5d150e6a936a019e6a87245b632725d ******/
 		%feature("compactdefaultargs") Vrml_PerspectiveCamera;
 		%feature("autodoc", "
 Parameters
 ----------
 aPosition: gp_Vec
 aOrientation: Vrml_SFRotation
-aFocalDistance: float
-aHeightAngle: float
+aFocalDistance: double
+aHeightAngle: double
 
 Return
 -------
@@ -2952,33 +2948,33 @@ Description
 -----------
 No available documentation.
 ") Vrml_PerspectiveCamera;
-		 Vrml_PerspectiveCamera(const gp_Vec & aPosition, const Vrml_SFRotation & aOrientation, const Standard_Real aFocalDistance, const Standard_Real aHeightAngle);
+		 Vrml_PerspectiveCamera(const gp_Vec & aPosition, const Vrml_SFRotation & aOrientation, const double aFocalDistance, const double aHeightAngle);
 
 		/****** Vrml_PerspectiveCamera::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** Vrml_PerspectiveCamera::FocalDistance ******/
-		/****** md5 signature: 7e55a83620d991c74488a9052052d6e7 ******/
+		/****** md5 signature: ba6ab931bcda041bfeca9735ba154857 ******/
 		%feature("compactdefaultargs") FocalDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FocalDistance;
-		Standard_Real FocalDistance();
+		double FocalDistance();
 
 		/****** Vrml_PerspectiveCamera::Orientation ******/
 		/****** md5 signature: add97f23d9ae84534aa6ad8eda6b7515 ******/
@@ -3024,12 +3020,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_PerspectiveCamera::SetAngle ******/
-		/****** md5 signature: bb3d72a5f4b071f4f97fb610aca9900b ******/
+		/****** md5 signature: 4b84ba2f96b66a277c9fade54a63c02f ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeightAngle: float
+aHeightAngle: double
 
 Return
 -------
@@ -3039,15 +3035,15 @@ Description
 -----------
 No available documentation.
 ") SetAngle;
-		void SetAngle(const Standard_Real aHeightAngle);
+		void SetAngle(const double aHeightAngle);
 
 		/****** Vrml_PerspectiveCamera::SetFocalDistance ******/
-		/****** md5 signature: a4382c9d94c6cdb3a408a0da734eb053 ******/
+		/****** md5 signature: 8a578d7c4f516c0903c15e97802def9e ******/
 		%feature("compactdefaultargs") SetFocalDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-aFocalDistance: float
+aFocalDistance: double
 
 Return
 -------
@@ -3057,7 +3053,7 @@ Description
 -----------
 No available documentation.
 ") SetFocalDistance;
-		void SetFocalDistance(const Standard_Real aFocalDistance);
+		void SetFocalDistance(const double aFocalDistance);
 
 		/****** Vrml_PerspectiveCamera::SetOrientation ******/
 		/****** md5 signature: d695010f9be74c1befe149ca361b0799 ******/
@@ -3123,13 +3119,13 @@ No available documentation.
 		 Vrml_PointLight();
 
 		/****** Vrml_PointLight::Vrml_PointLight ******/
-		/****** md5 signature: d9fc0917aa01d79b223892ffc2e6bee9 ******/
+		/****** md5 signature: 701b8144f57a73643bf8340e3d75a41f ******/
 		%feature("compactdefaultargs") Vrml_PointLight;
 		%feature("autodoc", "
 Parameters
 ----------
 aOnOff: bool
-aIntensity: float
+aIntensity: double
 aColor: Quantity_Color
 aLocation: gp_Vec
 
@@ -3141,7 +3137,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_PointLight;
-		 Vrml_PointLight(const Standard_Boolean aOnOff, const Standard_Real aIntensity, const Quantity_Color & aColor, const gp_Vec & aLocation);
+		 Vrml_PointLight(const bool aOnOff, const double aIntensity, const Quantity_Color & aColor, const gp_Vec & aLocation);
 
 		/****** Vrml_PointLight::Color ******/
 		/****** md5 signature: b37a2e584a895a08fcf8ead60940b246 ******/
@@ -3157,17 +3153,17 @@ No available documentation.
 		Quantity_Color Color();
 
 		/****** Vrml_PointLight::Intensity ******/
-		/****** md5 signature: ce9240a693f5bdfdaa91a711de325222 ******/
+		/****** md5 signature: 0efec0be4852a323f220a08b45a10290 ******/
 		%feature("compactdefaultargs") Intensity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Intensity;
-		Standard_Real Intensity();
+		double Intensity();
 
 		/****** Vrml_PointLight::Location ******/
 		/****** md5 signature: 0e5541000faade44ea734f501de7a6cf ******/
@@ -3183,7 +3179,7 @@ No available documentation.
 		gp_Vec Location();
 
 		/****** Vrml_PointLight::OnOff ******/
-		/****** md5 signature: 1623cdf1315a616b653a683621672f41 ******/
+		/****** md5 signature: 81f9db50648440a668d188bd149dec81 ******/
 		%feature("compactdefaultargs") OnOff;
 		%feature("autodoc", "Return
 -------
@@ -3193,7 +3189,7 @@ Description
 -----------
 No available documentation.
 ") OnOff;
-		Standard_Boolean OnOff();
+		bool OnOff();
 
 		/****** Vrml_PointLight::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -3231,12 +3227,12 @@ No available documentation.
 		void SetColor(const Quantity_Color & aColor);
 
 		/****** Vrml_PointLight::SetIntensity ******/
-		/****** md5 signature: d83199c26d505783e2f37c8e7ca17011 ******/
+		/****** md5 signature: 21a812bfeb21857a4714e2e90fc4b7bd ******/
 		%feature("compactdefaultargs") SetIntensity;
 		%feature("autodoc", "
 Parameters
 ----------
-aIntensity: float
+aIntensity: double
 
 Return
 -------
@@ -3246,7 +3242,7 @@ Description
 -----------
 No available documentation.
 ") SetIntensity;
-		void SetIntensity(const Standard_Real aIntensity);
+		void SetIntensity(const double aIntensity);
 
 		/****** Vrml_PointLight::SetLocation ******/
 		/****** md5 signature: dd6c082eff758bae985f720fd18c210c ******/
@@ -3267,7 +3263,7 @@ No available documentation.
 		void SetLocation(const gp_Vec & aLocation);
 
 		/****** Vrml_PointLight::SetOnOff ******/
-		/****** md5 signature: ec2f3be555932b38580e5b4a2d50b4c2 ******/
+		/****** md5 signature: 33b5d48da02b5c7bf4f9cc2e05805dbb ******/
 		%feature("compactdefaultargs") SetOnOff;
 		%feature("autodoc", "
 Parameters
@@ -3282,7 +3278,7 @@ Description
 -----------
 No available documentation.
 ") SetOnOff;
-		void SetOnOff(const Standard_Boolean aOnOff);
+		void SetOnOff(const bool aOnOff);
 
 };
 
@@ -3299,7 +3295,7 @@ No available documentation.
 class Vrml_PointSet {
 	public:
 		/****** Vrml_PointSet::Vrml_PointSet ******/
-		/****** md5 signature: b1ecc67635ef11022d23ae77aae9f60b ******/
+		/****** md5 signature: bacbb80312c0115f0ed88cb993ab5e7e ******/
 		%feature("compactdefaultargs") Vrml_PointSet;
 		%feature("autodoc", "
 Parameters
@@ -3315,10 +3311,10 @@ Description
 -----------
 No available documentation.
 ") Vrml_PointSet;
-		 Vrml_PointSet(const Standard_Integer aStartIndex = 0, const Standard_Integer aNumPoints = -1);
+		 Vrml_PointSet(const int aStartIndex = 0, const int aNumPoints = -1);
 
 		/****** Vrml_PointSet::NumPoints ******/
-		/****** md5 signature: 6a99c3bbb22d311fc5d1be9c52821c05 ******/
+		/****** md5 signature: 4de8c8e7e8a2cb1201358cbca48b187a ******/
 		%feature("compactdefaultargs") NumPoints;
 		%feature("autodoc", "Return
 -------
@@ -3328,7 +3324,7 @@ Description
 -----------
 No available documentation.
 ") NumPoints;
-		Standard_Integer NumPoints();
+		int NumPoints();
 
 		/****** Vrml_PointSet::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -3348,7 +3344,7 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_PointSet::SetNumPoints ******/
-		/****** md5 signature: 2c8c0cd8de922cf96b80a152f2efbd3b ******/
+		/****** md5 signature: e0bffd6a50d73a07a9f2f68f883ce72d ******/
 		%feature("compactdefaultargs") SetNumPoints;
 		%feature("autodoc", "
 Parameters
@@ -3363,10 +3359,10 @@ Description
 -----------
 No available documentation.
 ") SetNumPoints;
-		void SetNumPoints(const Standard_Integer aNumPoints);
+		void SetNumPoints(const int aNumPoints);
 
 		/****** Vrml_PointSet::SetStartIndex ******/
-		/****** md5 signature: c53e6b0e6b8aa2b31620a6556ed15927 ******/
+		/****** md5 signature: 0488036ae04b44121ab9f682e058037e ******/
 		%feature("compactdefaultargs") SetStartIndex;
 		%feature("autodoc", "
 Parameters
@@ -3381,10 +3377,10 @@ Description
 -----------
 No available documentation.
 ") SetStartIndex;
-		void SetStartIndex(const Standard_Integer aStartIndex);
+		void SetStartIndex(const int aStartIndex);
 
 		/****** Vrml_PointSet::StartIndex ******/
-		/****** md5 signature: 667fbc1e143954a2a4a0b4adebda9d89 ******/
+		/****** md5 signature: a20c0d24039a464cc4144cedf82a7eb6 ******/
 		%feature("compactdefaultargs") StartIndex;
 		%feature("autodoc", "Return
 -------
@@ -3394,7 +3390,7 @@ Description
 -----------
 No available documentation.
 ") StartIndex;
-		Standard_Integer StartIndex();
+		int StartIndex();
 
 };
 
@@ -3517,7 +3513,7 @@ No available documentation.
 		 Vrml_SFImage();
 
 		/****** Vrml_SFImage::Vrml_SFImage ******/
-		/****** md5 signature: 0702c8e46b9ec4bef53bd20eb164b87f ******/
+		/****** md5 signature: 7ab0e6ce6d44070b756e6e753a5fa592 ******/
 		%feature("compactdefaultargs") Vrml_SFImage;
 		%feature("autodoc", "
 Parameters
@@ -3525,7 +3521,7 @@ Parameters
 aWidth: int
 aHeight: int
 aNumber: Vrml_SFImageNumber
-anArray: TColStd_HArray1OfInteger
+anArray: NCollection_HArray1<int
 
 Return
 -------
@@ -3535,23 +3531,23 @@ Description
 -----------
 No available documentation.
 ") Vrml_SFImage;
-		 Vrml_SFImage(const Standard_Integer aWidth, const Standard_Integer aHeight, const Vrml_SFImageNumber aNumber, const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
+		 Vrml_SFImage(const int aWidth, const int aHeight, const Vrml_SFImageNumber aNumber, const opencascade::handle<NCollection_HArray1<int> > & anArray);
 
 		/****** Vrml_SFImage::Array ******/
-		/****** md5 signature: f8f98163d33e1e4ab36bb87ca7ecb26a ******/
+		/****** md5 signature: a4ab82958dee4fbf9f0f438d586b2273 ******/
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 No available documentation.
 ") Array;
-		opencascade::handle<TColStd_HArray1OfInteger> Array();
+		opencascade::handle<NCollection_HArray1<int>> Array();
 
 		/****** Vrml_SFImage::ArrayFlag ******/
-		/****** md5 signature: 64affbc48ec5d5d5fe3d780dccdbb2b5 ******/
+		/****** md5 signature: 10e90dcab40cbe8de94091f89c446b91 ******/
 		%feature("compactdefaultargs") ArrayFlag;
 		%feature("autodoc", "Return
 -------
@@ -3561,10 +3557,10 @@ Description
 -----------
 No available documentation.
 ") ArrayFlag;
-		Standard_Boolean ArrayFlag();
+		bool ArrayFlag();
 
 		/****** Vrml_SFImage::Height ******/
-		/****** md5 signature: d981fba03da5b96e3da97e6c8c7c57ba ******/
+		/****** md5 signature: 2b9cd9b3060f676bec8aeb2a26e09d87 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
@@ -3574,7 +3570,7 @@ Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Integer Height();
+		int Height();
 
 		/****** Vrml_SFImage::Number ******/
 		/****** md5 signature: d32ee14e26e709ba98a99564ce000438 ******/
@@ -3590,12 +3586,12 @@ No available documentation.
 		Vrml_SFImageNumber Number();
 
 		/****** Vrml_SFImage::SetArray ******/
-		/****** md5 signature: 02cb96990841b569eec46de71fe173a1 ******/
+		/****** md5 signature: acd8cb58c5ac18a10f7b225b62a803c1 ******/
 		%feature("compactdefaultargs") SetArray;
 		%feature("autodoc", "
 Parameters
 ----------
-anArray: TColStd_HArray1OfInteger
+anArray: NCollection_HArray1<int
 
 Return
 -------
@@ -3605,10 +3601,10 @@ Description
 -----------
 No available documentation.
 ") SetArray;
-		void SetArray(const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
+		void SetArray(const opencascade::handle<NCollection_HArray1<int> > & anArray);
 
 		/****** Vrml_SFImage::SetHeight ******/
-		/****** md5 signature: e57769657b31956e9fa2f111ffec52c2 ******/
+		/****** md5 signature: 9518bb434f9db6c09008f2ef84317b6e ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
@@ -3623,7 +3619,7 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Integer aHeight);
+		void SetHeight(const int aHeight);
 
 		/****** Vrml_SFImage::SetNumber ******/
 		/****** md5 signature: dd26cc02b3e32d3b7f733213164e6bae ******/
@@ -3644,7 +3640,7 @@ No available documentation.
 		void SetNumber(const Vrml_SFImageNumber aNumber);
 
 		/****** Vrml_SFImage::SetWidth ******/
-		/****** md5 signature: 00dac6875966e7ac19b35ac220f862d1 ******/
+		/****** md5 signature: 531ed30a49514c463e6acd562526b78b ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
@@ -3659,10 +3655,10 @@ Description
 -----------
 No available documentation.
 ") SetWidth;
-		void SetWidth(const Standard_Integer aWidth);
+		void SetWidth(const int aWidth);
 
 		/****** Vrml_SFImage::Width ******/
-		/****** md5 signature: fcf113de9ea8c617e9091d4b9094173a ******/
+		/****** md5 signature: a118218c547c36df7228be7a9c032ade ******/
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "Return
 -------
@@ -3672,7 +3668,7 @@ Description
 -----------
 No available documentation.
 ") Width;
-		Standard_Integer Width();
+		int Width();
 
 };
 
@@ -3704,15 +3700,15 @@ No available documentation.
 		 Vrml_SFRotation();
 
 		/****** Vrml_SFRotation::Vrml_SFRotation ******/
-		/****** md5 signature: 9ddee70e1d0bb895bf55f1e2eff1a50f ******/
+		/****** md5 signature: 1a89e8701821240b390baf19c2a16e97 ******/
 		%feature("compactdefaultargs") Vrml_SFRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-aRotationX: float
-aRotationY: float
-aRotationZ: float
-anAngle: float
+aRotationX: double
+aRotationY: double
+aRotationZ: double
+anAngle: double
 
 Return
 -------
@@ -3722,67 +3718,67 @@ Description
 -----------
 No available documentation.
 ") Vrml_SFRotation;
-		 Vrml_SFRotation(const Standard_Real aRotationX, const Standard_Real aRotationY, const Standard_Real aRotationZ, const Standard_Real anAngle);
+		 Vrml_SFRotation(const double aRotationX, const double aRotationY, const double aRotationZ, const double anAngle);
 
 		/****** Vrml_SFRotation::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** Vrml_SFRotation::RotationX ******/
-		/****** md5 signature: ab3c87cfae8d94d118359d98c76ab4fb ******/
+		/****** md5 signature: 2003b904ea1b75c8a6cf4a4456f12700 ******/
 		%feature("compactdefaultargs") RotationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") RotationX;
-		Standard_Real RotationX();
+		double RotationX();
 
 		/****** Vrml_SFRotation::RotationY ******/
-		/****** md5 signature: e95edf0f1282423c93196c1ab9e0cb0b ******/
+		/****** md5 signature: 54948df25b88cb91028a1b06f07d82b0 ******/
 		%feature("compactdefaultargs") RotationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") RotationY;
-		Standard_Real RotationY();
+		double RotationY();
 
 		/****** Vrml_SFRotation::RotationZ ******/
-		/****** md5 signature: 3d34ff1a37887f30933f4ae244b7724b ******/
+		/****** md5 signature: 0087dce1f37a241ea3f6c5dedde727a9 ******/
 		%feature("compactdefaultargs") RotationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") RotationZ;
-		Standard_Real RotationZ();
+		double RotationZ();
 
 		/****** Vrml_SFRotation::SetAngle ******/
-		/****** md5 signature: eb58abb1f2735255b52070d752bb180a ******/
+		/****** md5 signature: 18f8ccf115a753efce515c140dec2db6 ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-anAngle: float
+anAngle: double
 
 Return
 -------
@@ -3792,15 +3788,15 @@ Description
 -----------
 No available documentation.
 ") SetAngle;
-		void SetAngle(const Standard_Real anAngle);
+		void SetAngle(const double anAngle);
 
 		/****** Vrml_SFRotation::SetRotationX ******/
-		/****** md5 signature: b67d7d27600d8e18cbe548303aeb91a0 ******/
+		/****** md5 signature: 126735a955258b6584112225265da7de ******/
 		%feature("compactdefaultargs") SetRotationX;
 		%feature("autodoc", "
 Parameters
 ----------
-aRotationX: float
+aRotationX: double
 
 Return
 -------
@@ -3810,15 +3806,15 @@ Description
 -----------
 No available documentation.
 ") SetRotationX;
-		void SetRotationX(const Standard_Real aRotationX);
+		void SetRotationX(const double aRotationX);
 
 		/****** Vrml_SFRotation::SetRotationY ******/
-		/****** md5 signature: 2ef4d3f1bd3d28751351d4dc516c1db9 ******/
+		/****** md5 signature: c6b289569b0f2fab54e7eac7e357744d ******/
 		%feature("compactdefaultargs") SetRotationY;
 		%feature("autodoc", "
 Parameters
 ----------
-aRotationY: float
+aRotationY: double
 
 Return
 -------
@@ -3828,15 +3824,15 @@ Description
 -----------
 No available documentation.
 ") SetRotationY;
-		void SetRotationY(const Standard_Real aRotationY);
+		void SetRotationY(const double aRotationY);
 
 		/****** Vrml_SFRotation::SetRotationZ ******/
-		/****** md5 signature: c60b9fa6b2dc21e7705fbf1d8f3f6886 ******/
+		/****** md5 signature: 746e9d2739af5c1bb3bd8b57641f811a ******/
 		%feature("compactdefaultargs") SetRotationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-aRotationZ: float
+aRotationZ: double
 
 Return
 -------
@@ -3846,7 +3842,7 @@ Description
 -----------
 No available documentation.
 ") SetRotationZ;
-		void SetRotationZ(const Standard_Real aRotationZ);
+		void SetRotationZ(const double aRotationZ);
 
 };
 
@@ -4049,7 +4045,7 @@ No available documentation.
 class Vrml_ShapeHints {
 	public:
 		/****** Vrml_ShapeHints::Vrml_ShapeHints ******/
-		/****** md5 signature: 0ba1fbebda048525b38135ac36f3ee30 ******/
+		/****** md5 signature: 0e24b113cf6695b9a071cfb086bc1696 ******/
 		%feature("compactdefaultargs") Vrml_ShapeHints;
 		%feature("autodoc", "
 Parameters
@@ -4057,7 +4053,7 @@ Parameters
 aVertexOrdering: Vrml_VertexOrdering (optional, default to Vrml_UNKNOWN_ORDERING)
 aShapeType: Vrml_ShapeType (optional, default to Vrml_UNKNOWN_SHAPE_TYPE)
 aFaceType: Vrml_FaceType (optional, default to Vrml_CONVEX)
-aAngle: float (optional, default to 0.5)
+aAngle: double (optional, default to 0.5)
 
 Return
 -------
@@ -4067,20 +4063,20 @@ Description
 -----------
 No available documentation.
 ") Vrml_ShapeHints;
-		 Vrml_ShapeHints(const Vrml_VertexOrdering aVertexOrdering = Vrml_UNKNOWN_ORDERING, const Vrml_ShapeType aShapeType = Vrml_UNKNOWN_SHAPE_TYPE, const Vrml_FaceType aFaceType = Vrml_CONVEX, const Standard_Real aAngle = 0.5);
+		 Vrml_ShapeHints(const Vrml_VertexOrdering aVertexOrdering = Vrml_UNKNOWN_ORDERING, const Vrml_ShapeType aShapeType = Vrml_UNKNOWN_SHAPE_TYPE, const Vrml_FaceType aFaceType = Vrml_CONVEX, const double aAngle = 0.5);
 
 		/****** Vrml_ShapeHints::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** Vrml_ShapeHints::FaceType ******/
 		/****** md5 signature: 797e15fa36f5374104546291099739af ******/
@@ -4113,12 +4109,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_ShapeHints::SetAngle ******/
-		/****** md5 signature: bae7a4d675d363cefe680523e72e869e ******/
+		/****** md5 signature: a18cf69e3e5110e0cc565bf671e960ae ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -4128,7 +4124,7 @@ Description
 -----------
 No available documentation.
 ") SetAngle;
-		void SetAngle(const Standard_Real aAngle);
+		void SetAngle(const double aAngle);
 
 		/****** Vrml_ShapeHints::SetFaceType ******/
 		/****** md5 signature: 86e3947cfe6357aa6884b830b05ce939 ******/
@@ -4225,12 +4221,12 @@ No available documentation.
 class Vrml_Sphere {
 	public:
 		/****** Vrml_Sphere::Vrml_Sphere ******/
-		/****** md5 signature: 9b33b06167acebab2f474ff780a2c50f ******/
+		/****** md5 signature: 339de21234660f15c9861b7cb8790695 ******/
 		%feature("compactdefaultargs") Vrml_Sphere;
 		%feature("autodoc", "
 Parameters
 ----------
-aRadius: float (optional, default to 1)
+aRadius: double (optional, default to 1)
 
 Return
 -------
@@ -4240,7 +4236,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Sphere;
-		 Vrml_Sphere(const Standard_Real aRadius = 1);
+		 Vrml_Sphere(const double aRadius = 1);
 
 		/****** Vrml_Sphere::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -4260,25 +4256,25 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Sphere::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** Vrml_Sphere::SetRadius ******/
-		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
+		/****** md5 signature: f0566f0da6f39e1b404c168108c44985 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aRadius: float
+aRadius: double
 
 Return
 -------
@@ -4288,7 +4284,7 @@ Description
 -----------
 No available documentation.
 ") SetRadius;
-		void SetRadius(const Standard_Real aRadius);
+		void SetRadius(const double aRadius);
 
 };
 
@@ -4318,18 +4314,18 @@ No available documentation.
 		 Vrml_SpotLight();
 
 		/****** Vrml_SpotLight::Vrml_SpotLight ******/
-		/****** md5 signature: 9f911d236ac7163ece0570ae2bcc27a7 ******/
+		/****** md5 signature: f63a6699d50d8b45ee1b470f625764b5 ******/
 		%feature("compactdefaultargs") Vrml_SpotLight;
 		%feature("autodoc", "
 Parameters
 ----------
 aOnOff: bool
-aIntensity: float
+aIntensity: double
 aColor: Quantity_Color
 aLocation: gp_Vec
 aDirection: gp_Vec
-aDropOffRate: float
-aCutOffAngle: float
+aDropOffRate: double
+aCutOffAngle: double
 
 Return
 -------
@@ -4339,7 +4335,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_SpotLight;
-		 Vrml_SpotLight(const Standard_Boolean aOnOff, const Standard_Real aIntensity, const Quantity_Color & aColor, const gp_Vec & aLocation, const gp_Vec & aDirection, const Standard_Real aDropOffRate, const Standard_Real aCutOffAngle);
+		 Vrml_SpotLight(const bool aOnOff, const double aIntensity, const Quantity_Color & aColor, const gp_Vec & aLocation, const gp_Vec & aDirection, const double aDropOffRate, const double aCutOffAngle);
 
 		/****** Vrml_SpotLight::Color ******/
 		/****** md5 signature: b37a2e584a895a08fcf8ead60940b246 ******/
@@ -4355,17 +4351,17 @@ No available documentation.
 		Quantity_Color Color();
 
 		/****** Vrml_SpotLight::CutOffAngle ******/
-		/****** md5 signature: eb49b3259be99acc4c3b002cf8fd78c9 ******/
+		/****** md5 signature: 3225e5f4c9cddff525adc94b6e9a2e35 ******/
 		%feature("compactdefaultargs") CutOffAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") CutOffAngle;
-		Standard_Real CutOffAngle();
+		double CutOffAngle();
 
 		/****** Vrml_SpotLight::Direction ******/
 		/****** md5 signature: 36725d4d9370b25778d365a2d983c00e ******/
@@ -4381,30 +4377,30 @@ No available documentation.
 		gp_Vec Direction();
 
 		/****** Vrml_SpotLight::DropOffRate ******/
-		/****** md5 signature: a290b21e8a614aa4453a2333c8d95fd3 ******/
+		/****** md5 signature: 939b47c3d9fa01b2fa6c3ea9edd438e8 ******/
 		%feature("compactdefaultargs") DropOffRate;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DropOffRate;
-		Standard_Real DropOffRate();
+		double DropOffRate();
 
 		/****** Vrml_SpotLight::Intensity ******/
-		/****** md5 signature: ce9240a693f5bdfdaa91a711de325222 ******/
+		/****** md5 signature: 0efec0be4852a323f220a08b45a10290 ******/
 		%feature("compactdefaultargs") Intensity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Intensity;
-		Standard_Real Intensity();
+		double Intensity();
 
 		/****** Vrml_SpotLight::Location ******/
 		/****** md5 signature: 0e5541000faade44ea734f501de7a6cf ******/
@@ -4420,7 +4416,7 @@ No available documentation.
 		gp_Vec Location();
 
 		/****** Vrml_SpotLight::OnOff ******/
-		/****** md5 signature: 1623cdf1315a616b653a683621672f41 ******/
+		/****** md5 signature: 81f9db50648440a668d188bd149dec81 ******/
 		%feature("compactdefaultargs") OnOff;
 		%feature("autodoc", "Return
 -------
@@ -4430,7 +4426,7 @@ Description
 -----------
 No available documentation.
 ") OnOff;
-		Standard_Boolean OnOff();
+		bool OnOff();
 
 		/****** Vrml_SpotLight::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -4468,12 +4464,12 @@ No available documentation.
 		void SetColor(const Quantity_Color & aColor);
 
 		/****** Vrml_SpotLight::SetCutOffAngle ******/
-		/****** md5 signature: 55517e1e463db76181ad7e29484a7355 ******/
+		/****** md5 signature: 075746c4ea053fd2ad277b514bfb2fb0 ******/
 		%feature("compactdefaultargs") SetCutOffAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-aCutOffAngle: float
+aCutOffAngle: double
 
 Return
 -------
@@ -4483,7 +4479,7 @@ Description
 -----------
 No available documentation.
 ") SetCutOffAngle;
-		void SetCutOffAngle(const Standard_Real aCutOffAngle);
+		void SetCutOffAngle(const double aCutOffAngle);
 
 		/****** Vrml_SpotLight::SetDirection ******/
 		/****** md5 signature: 631fcce8229d14261aa80e6545acf64f ******/
@@ -4504,12 +4500,12 @@ No available documentation.
 		void SetDirection(const gp_Vec & aDirection);
 
 		/****** Vrml_SpotLight::SetDropOffRate ******/
-		/****** md5 signature: f59d6646334001cd2b1eddbbacaab530 ******/
+		/****** md5 signature: 687c1982010aa453a5915b407b4de788 ******/
 		%feature("compactdefaultargs") SetDropOffRate;
 		%feature("autodoc", "
 Parameters
 ----------
-aDropOffRate: float
+aDropOffRate: double
 
 Return
 -------
@@ -4519,15 +4515,15 @@ Description
 -----------
 No available documentation.
 ") SetDropOffRate;
-		void SetDropOffRate(const Standard_Real aDropOffRate);
+		void SetDropOffRate(const double aDropOffRate);
 
 		/****** Vrml_SpotLight::SetIntensity ******/
-		/****** md5 signature: d83199c26d505783e2f37c8e7ca17011 ******/
+		/****** md5 signature: 21a812bfeb21857a4714e2e90fc4b7bd ******/
 		%feature("compactdefaultargs") SetIntensity;
 		%feature("autodoc", "
 Parameters
 ----------
-aIntensity: float
+aIntensity: double
 
 Return
 -------
@@ -4537,7 +4533,7 @@ Description
 -----------
 No available documentation.
 ") SetIntensity;
-		void SetIntensity(const Standard_Real aIntensity);
+		void SetIntensity(const double aIntensity);
 
 		/****** Vrml_SpotLight::SetLocation ******/
 		/****** md5 signature: dd6c082eff758bae985f720fd18c210c ******/
@@ -4558,7 +4554,7 @@ No available documentation.
 		void SetLocation(const gp_Vec & aLocation);
 
 		/****** Vrml_SpotLight::SetOnOff ******/
-		/****** md5 signature: 9021e1a0e25a098d2439898fa805b2e3 ******/
+		/****** md5 signature: 5b1d304015bba141bf840fc264620cd5 ******/
 		%feature("compactdefaultargs") SetOnOff;
 		%feature("autodoc", "
 Parameters
@@ -4573,7 +4569,7 @@ Description
 -----------
 No available documentation.
 ") SetOnOff;
-		void SetOnOff(const Standard_Boolean anOnOff);
+		void SetOnOff(const bool anOnOff);
 
 };
 
@@ -4590,7 +4586,7 @@ No available documentation.
 class Vrml_Switch {
 	public:
 		/****** Vrml_Switch::Vrml_Switch ******/
-		/****** md5 signature: 8dcb8078f4da7693af8a1db487b62856 ******/
+		/****** md5 signature: b4f6a292d8be5a9a34e7ae924fc1f090 ******/
 		%feature("compactdefaultargs") Vrml_Switch;
 		%feature("autodoc", "
 Parameters
@@ -4605,7 +4601,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Switch;
-		 Vrml_Switch(const Standard_Integer aWhichChild = -1);
+		 Vrml_Switch(const int aWhichChild = -1);
 
 		/****** Vrml_Switch::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -4625,7 +4621,7 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Switch::SetWhichChild ******/
-		/****** md5 signature: 903116d3053cda016d7b4d8c736e11f8 ******/
+		/****** md5 signature: 0e1070cb4a327d7989df05e61deb565b ******/
 		%feature("compactdefaultargs") SetWhichChild;
 		%feature("autodoc", "
 Parameters
@@ -4640,10 +4636,10 @@ Description
 -----------
 No available documentation.
 ") SetWhichChild;
-		void SetWhichChild(const Standard_Integer aWhichChild);
+		void SetWhichChild(const int aWhichChild);
 
 		/****** Vrml_Switch::WhichChild ******/
-		/****** md5 signature: 9cc7a1e5ef6d2fbc142d4b6ae3b47afd ******/
+		/****** md5 signature: 4efc2e6e0430c9be8a81a991adaf8941 ******/
 		%feature("compactdefaultargs") WhichChild;
 		%feature("autodoc", "Return
 -------
@@ -4653,7 +4649,7 @@ Description
 -----------
 No available documentation.
 ") WhichChild;
-		Standard_Integer WhichChild();
+		int WhichChild();
 
 };
 
@@ -4872,13 +4868,13 @@ No available documentation.
 		 Vrml_Texture2Transform();
 
 		/****** Vrml_Texture2Transform::Vrml_Texture2Transform ******/
-		/****** md5 signature: 634167654fa4d1fb9ffb89b827d27d54 ******/
+		/****** md5 signature: b3a6c60f8fdfca9e42dc4ac1b9a403ed ******/
 		%feature("compactdefaultargs") Vrml_Texture2Transform;
 		%feature("autodoc", "
 Parameters
 ----------
 aTranslation: gp_Vec2d
-aRotation: float
+aRotation: double
 aScaleFactor: gp_Vec2d
 aCenter: gp_Vec2d
 
@@ -4890,7 +4886,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Texture2Transform;
-		 Vrml_Texture2Transform(const gp_Vec2d & aTranslation, const Standard_Real aRotation, const gp_Vec2d & aScaleFactor, const gp_Vec2d & aCenter);
+		 Vrml_Texture2Transform(const gp_Vec2d & aTranslation, const double aRotation, const gp_Vec2d & aScaleFactor, const gp_Vec2d & aCenter);
 
 		/****** Vrml_Texture2Transform::Center ******/
 		/****** md5 signature: 254292cd89f895c357202578f32a5e7f ******/
@@ -4923,17 +4919,17 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_Texture2Transform::Rotation ******/
-		/****** md5 signature: 88f76ec12684cd0cd3209460634d1bdf ******/
+		/****** md5 signature: b831d6eec89eb60018e13fa21a13171c ******/
 		%feature("compactdefaultargs") Rotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Rotation;
-		Standard_Real Rotation();
+		double Rotation();
 
 		/****** Vrml_Texture2Transform::ScaleFactor ******/
 		/****** md5 signature: 06b1407f24f2bc56b40ebf2462970ffb ******/
@@ -4967,12 +4963,12 @@ No available documentation.
 		void SetCenter(const gp_Vec2d & aCenter);
 
 		/****** Vrml_Texture2Transform::SetRotation ******/
-		/****** md5 signature: ece1c036e824881d5c56f056b4d6cd46 ******/
+		/****** md5 signature: 28f1f7996ff57c8a9599e3a03d91a452 ******/
 		%feature("compactdefaultargs") SetRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-aRotation: float
+aRotation: double
 
 Return
 -------
@@ -4982,7 +4978,7 @@ Description
 -----------
 No available documentation.
 ") SetRotation;
-		void SetRotation(const Standard_Real aRotation);
+		void SetRotation(const double aRotation);
 
 		/****** Vrml_Texture2Transform::SetScaleFactor ******/
 		/****** md5 signature: 8f2e685abe4915cee4e0f95d778cdd33 ******/
@@ -5061,12 +5057,12 @@ No available documentation.
 		 Vrml_TextureCoordinate2();
 
 		/****** Vrml_TextureCoordinate2::Vrml_TextureCoordinate2 ******/
-		/****** md5 signature: ad23cc311cc4996ea622e9f7212fe542 ******/
+		/****** md5 signature: 3d86802658ff15c628d3f227bd5bef34 ******/
 		%feature("compactdefaultargs") Vrml_TextureCoordinate2;
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: TColgp_HArray1OfVec2d
+aPoint: NCollection_HArray1<gp_Vec2d
 
 Return
 -------
@@ -5076,20 +5072,20 @@ Description
 -----------
 No available documentation.
 ") Vrml_TextureCoordinate2;
-		 Vrml_TextureCoordinate2(const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
+		 Vrml_TextureCoordinate2(const opencascade::handle<NCollection_HArray1<gp_Vec2d> > & aPoint);
 
 		/****** Vrml_TextureCoordinate2::Point ******/
-		/****** md5 signature: b912b8ee07a83e69d49ac6076c5d19e0 ******/
+		/****** md5 signature: 2b602943fa63d8973525f80ec05f22b7 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColgp_HArray1OfVec2d>
+opencascade::handle<NCollection_HArray1<gp_Vec2d>>
 
 Description
 -----------
 No available documentation.
 ") Point;
-		opencascade::handle<TColgp_HArray1OfVec2d> Point();
+		opencascade::handle<NCollection_HArray1<gp_Vec2d>> Point();
 
 		/****** Vrml_TextureCoordinate2::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -5109,12 +5105,12 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** Vrml_TextureCoordinate2::SetPoint ******/
-		/****** md5 signature: 576fe8b6b9484adc1a8a9d7148ed1d10 ******/
+		/****** md5 signature: d9672d14aee0e472aa3d9ec771220fb6 ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: TColgp_HArray1OfVec2d
+aPoint: NCollection_HArray1<gp_Vec2d
 
 Return
 -------
@@ -5124,7 +5120,7 @@ Description
 -----------
 No available documentation.
 ") SetPoint;
-		void SetPoint(const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
+		void SetPoint(const opencascade::handle<NCollection_HArray1<gp_Vec2d> > & aPoint);
 
 };
 

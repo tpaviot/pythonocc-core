@@ -42,6 +42,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_DelaunayBaseMeshAlgo.hxx>
 #include<BRepMesh_DelaunayDeflectionControlMeshAlgo.hxx>
 #include<BRepMesh_DelaunayNodeInsertionMeshAlgo.hxx>
+#include<BRepMesh_DiscretAlgoFactory.hxx>
 #include<BRepMesh_DiscretFactory.hxx>
 #include<BRepMesh_DiscretRoot.hxx>
 #include<BRepMesh_Edge.hxx>
@@ -51,10 +52,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_ExtrusionRangeSplitter.hxx>
 #include<BRepMesh_FaceChecker.hxx>
 #include<BRepMesh_FaceDiscret.hxx>
-#include<BRepMesh_FactoryError.hxx>
 #include<BRepMesh_FastDiscret.hxx>
 #include<BRepMesh_GeomTool.hxx>
 #include<BRepMesh_IncrementalMesh.hxx>
+#include<BRepMesh_IncrementalMeshFactory.hxx>
 #include<BRepMesh_MeshAlgoFactory.hxx>
 #include<BRepMesh_MeshTool.hxx>
 #include<BRepMesh_ModelBuilder.hxx>
@@ -65,8 +66,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepMesh_NodeInsertionMeshAlgo.hxx>
 #include<BRepMesh_OrientedEdge.hxx>
 #include<BRepMesh_PairOfIndex.hxx>
-#include<BRepMesh_PluginEntryType.hxx>
-#include<BRepMesh_PluginMacro.hxx>
 #include<BRepMesh_SelectorOfDataStructureOfDelaun.hxx>
 #include<BRepMesh_ShapeTool.hxx>
 #include<BRepMesh_ShapeVisitor.hxx>

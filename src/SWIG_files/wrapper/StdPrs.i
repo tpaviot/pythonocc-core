@@ -51,16 +51,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stdprs.html"
 #include<gp_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<Adaptor3d_module.hxx>
-#include<TColgp_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<BRepAdaptor_module.hxx>
-#include<TColStd_module.hxx>
 #include<Poly_module.hxx>
 #include<TopLoc_module.hxx>
 #include<BRep_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Bnd_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BRepLib_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -94,16 +91,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stdprs.html"
 %import gp.i
 %import Graphic3d.i
 %import Adaptor3d.i
-%import TColgp.i
 %import HLRAlgo.i
 %import BRepAdaptor.i
-%import TColStd.i
 %import Poly.i
 %import TopLoc.i
 %import BRep.i
 %import GeomAbs.i
 %import Bnd.i
-%import TopTools.i
 %import TopAbs.i
 %import BRepLib.i
 
@@ -169,13 +163,13 @@ Empty constructor.
 		 StdPrs_BRepFont();
 
 		/****** StdPrs_BRepFont::StdPrs_BRepFont ******/
-		/****** md5 signature: be40ea26c61925f1c177bbec908f56a1 ******/
+		/****** md5 signature: 63b88d158d6ed01bcf21fb6c9dbfc22a ******/
 		%feature("compactdefaultargs") StdPrs_BRepFont;
 		%feature("autodoc", "
 Parameters
 ----------
 theFontPath: NCollection_String
-theSize: float
+theSize: double
 theFaceId: int (optional, default to 0)
 
 Return
@@ -189,17 +183,17 @@ Parameter theFontPath FULL path to the font
 Parameter theSize the face size in model units 
 Parameter theFaceId face id within the file (0 by default).
 ") StdPrs_BRepFont;
-		 StdPrs_BRepFont(const NCollection_String & theFontPath, const Standard_Real theSize, const Standard_Integer theFaceId = 0);
+		 StdPrs_BRepFont(const NCollection_String & theFontPath, const double theSize, const int theFaceId = 0);
 
 		/****** StdPrs_BRepFont::StdPrs_BRepFont ******/
-		/****** md5 signature: a3ba9975ca459684aea303f32cffc2b9 ******/
+		/****** md5 signature: e0a2beb4aa342989906f5aa9a6d3f1ae ******/
 		%feature("compactdefaultargs") StdPrs_BRepFont;
 		%feature("autodoc", "
 Parameters
 ----------
 theFontName: NCollection_String
 theFontAspect: Font_FontAspect
-theSize: float
+theSize: double
 theStrictLevel: Font_StrictLevel (optional, default to Font_StrictLevel_Any)
 
 Return
@@ -214,107 +208,107 @@ Parameter theFontAspect the font style
 Parameter theSize the face size in model units 
 Parameter theStrictLevel search strict level for using aliases and fallback.
 ") StdPrs_BRepFont;
-		 StdPrs_BRepFont(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+		 StdPrs_BRepFont(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const double theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
 		/****** StdPrs_BRepFont::AdvanceX ******/
-		/****** md5 signature: 4c75b0edceff5f5f44dcaec3b54bea94 ******/
+		/****** md5 signature: b31f73846bdfcf876a51bb8b0a715a85 ******/
 		%feature("compactdefaultargs") AdvanceX;
 		%feature("autodoc", "
 Parameters
 ----------
-theUCharNext: Standard_Utf32Char
+theUCharNext: char32_t
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Compute advance to the next character with kerning applied when applicable. Assuming text rendered horizontally.
 ") AdvanceX;
-		Standard_Real AdvanceX(const Standard_Utf32Char theUCharNext);
+		double AdvanceX(const char32_t theUCharNext);
 
 		/****** StdPrs_BRepFont::AdvanceX ******/
-		/****** md5 signature: db64718620b242f6bb6fcdbcae8836a5 ******/
+		/****** md5 signature: 5276289ce64ed625aa1dafb3aa85448e ******/
 		%feature("compactdefaultargs") AdvanceX;
 		%feature("autodoc", "
 Parameters
 ----------
-theUChar: Standard_Utf32Char
-theUCharNext: Standard_Utf32Char
+theUChar: char32_t
+theUCharNext: char32_t
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Compute advance to the next character with kerning applied when applicable. Assuming text rendered horizontally.
 ") AdvanceX;
-		Standard_Real AdvanceX(const Standard_Utf32Char theUChar, const Standard_Utf32Char theUCharNext);
+		double AdvanceX(const char32_t theUChar, const char32_t theUCharNext);
 
 		/****** StdPrs_BRepFont::AdvanceY ******/
-		/****** md5 signature: ddeb2265cd2bd26fe363410dd3b7e6e0 ******/
+		/****** md5 signature: 529ade02b5d1f79d2b28852f533f8823 ******/
 		%feature("compactdefaultargs") AdvanceY;
 		%feature("autodoc", "
 Parameters
 ----------
-theUCharNext: Standard_Utf32Char
+theUCharNext: char32_t
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Compute advance to the next character with kerning applied when applicable. Assuming text rendered vertically.
 ") AdvanceY;
-		Standard_Real AdvanceY(const Standard_Utf32Char theUCharNext);
+		double AdvanceY(const char32_t theUCharNext);
 
 		/****** StdPrs_BRepFont::AdvanceY ******/
-		/****** md5 signature: e611b288bad1f8a6d972468a7836ee16 ******/
+		/****** md5 signature: 29d3a1666ab25e7613e06a0ae3e26fb9 ******/
 		%feature("compactdefaultargs") AdvanceY;
 		%feature("autodoc", "
 Parameters
 ----------
-theUChar: Standard_Utf32Char
-theUCharNext: Standard_Utf32Char
+theUChar: char32_t
+theUCharNext: char32_t
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Compute advance to the next character with kerning applied when applicable. Assuming text rendered vertically.
 ") AdvanceY;
-		Standard_Real AdvanceY(const Standard_Utf32Char theUChar, const Standard_Utf32Char theUCharNext);
+		double AdvanceY(const char32_t theUChar, const char32_t theUCharNext);
 
 		/****** StdPrs_BRepFont::Ascender ******/
-		/****** md5 signature: 557783a64aa70a912a1e70d3023e6b77 ******/
+		/****** md5 signature: 10b1ebd8fc1c893784ea04dcb76d5a76 ******/
 		%feature("compactdefaultargs") Ascender;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return: vertical distance from the horizontal baseline to the highest character coordinate.
 ") Ascender;
-		Standard_Real Ascender();
+		double Ascender();
 
 		/****** StdPrs_BRepFont::Descender ******/
-		/****** md5 signature: 1ac5f46c4e3c54b4ea51e2bc3b666449 ******/
+		/****** md5 signature: e97c622886c6c0c75c21c631539adbbb ******/
 		%feature("compactdefaultargs") Descender;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return: vertical distance from the horizontal baseline to the lowest character coordinate.
 ") Descender;
-		Standard_Real Descender();
+		double Descender();
 
 		/****** StdPrs_BRepFont::FTFont ******/
 		/****** md5 signature: 4d514b718d712295641b4c0cc60834d8 ******/
@@ -330,14 +324,14 @@ Return wrapper over FreeType font.
 		const opencascade::handle<Font_FTFont> & FTFont();
 
 		/****** StdPrs_BRepFont::FindAndCreate ******/
-		/****** md5 signature: 372fe3fc63150aec0ee289ddf806595a ******/
+		/****** md5 signature: fd879c55efddc77b7d42dc69633de0db ******/
 		%feature("compactdefaultargs") FindAndCreate;
 		%feature("autodoc", "
 Parameters
 ----------
 theFontName: str
 theFontAspect: Font_FontAspect
-theSize: float
+theSize: double
 theStrictLevel: Font_StrictLevel (optional, default to Font_StrictLevel_Any)
 
 Return
@@ -353,17 +347,17 @@ Parameter theSize the face size in model units
 Parameter theStrictLevel search strict level for using aliases and fallback 
 Return: true on success.
 ") FindAndCreate;
-		static opencascade::handle<StdPrs_BRepFont> FindAndCreate(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+		static opencascade::handle<StdPrs_BRepFont> FindAndCreate(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const double theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
 		/****** StdPrs_BRepFont::FindAndInit ******/
-		/****** md5 signature: 33bf264db4f7fb13be769117703cf8e4 ******/
+		/****** md5 signature: da69df8dadb021c708cd09f7b76e1e51 ******/
 		%feature("compactdefaultargs") FindAndInit;
 		%feature("autodoc", "
 Parameters
 ----------
 theFontName: str
 theFontAspect: Font_FontAspect
-theSize: float
+theSize: double
 theStrictLevel: Font_StrictLevel (optional, default to Font_StrictLevel_Any)
 
 Return
@@ -379,16 +373,16 @@ Parameter theSize the face size in model units
 Parameter theStrictLevel search strict level for using aliases and fallback 
 Return: true on success.
 ") FindAndInit;
-		bool FindAndInit(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
+		bool FindAndInit(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const double theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
 		/****** StdPrs_BRepFont::Init ******/
-		/****** md5 signature: 14deab12f664b3e6a0b208965809fe62 ******/
+		/****** md5 signature: ee698e3132b53b91994eb31e2591d960 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theFontPath: NCollection_String
-theSize: float
+theSize: double
 theFaceId: int
 
 Return
@@ -403,17 +397,17 @@ Parameter theSize the face size in model units
 Parameter theFaceId face id within the file (0 by default) 
 Return: true on success.
 ") Init;
-		bool Init(const NCollection_String & theFontPath, const Standard_Real theSize, const Standard_Integer theFaceId);
+		bool Init(const NCollection_String & theFontPath, const double theSize, const int theFaceId);
 
 		/****** StdPrs_BRepFont::Init ******/
-		/****** md5 signature: 5ed045caef5b4cad065c651482b98255 ******/
+		/****** md5 signature: 14a97fadd0006ce5727905c002d2f2c8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theFontName: NCollection_String
 theFontAspect: Font_FontAspect
-theSize: float
+theSize: double
 
 Return
 -------
@@ -423,46 +417,46 @@ Description
 -----------
 Find (using Font_FontMgr) and initialize the font from the given name. Alias for FindAndInit() for backward compatibility.
 ") Init;
-		bool Init(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize);
+		bool Init(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const double theSize);
 
 		/****** StdPrs_BRepFont::LineSpacing ******/
-		/****** md5 signature: 3f893468c66eb56fd7ce68c882d953c8 ******/
+		/****** md5 signature: 862f10215a710230f32f900fd5e7c68b ******/
 		%feature("compactdefaultargs") LineSpacing;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return: default line spacing (the baseline-to-baseline distance).
 ") LineSpacing;
-		Standard_Real LineSpacing();
+		double LineSpacing();
 
 		/****** StdPrs_BRepFont::Mutex ******/
-		/****** md5 signature: 902e13b2343e132a88f2b4c5433ad6d8 ******/
+		/****** md5 signature: 70c35181ff9f64fc6480e7e06848dbf8 ******/
 		%feature("compactdefaultargs") Mutex;
 		%feature("autodoc", "Return
 -------
-Standard_Mutex
+std::mutex
 
 Description
 -----------
 Returns mutex.
 ") Mutex;
-		Standard_Mutex & Mutex();
+		std::mutex & Mutex();
 
 		/****** StdPrs_BRepFont::PointSize ******/
-		/****** md5 signature: a9867d84cde33572abbc3c90ffa97681 ******/
+		/****** md5 signature: c5f76fdcb17ba2432e5d13735f45b47b ******/
 		%feature("compactdefaultargs") PointSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Configured point size.
 ") PointSize;
-		Standard_Real PointSize();
+		double PointSize();
 
 		/****** StdPrs_BRepFont::Release ******/
 		/****** md5 signature: b6fd00166214731bccdaabb58b7e4102 ******/
@@ -478,12 +472,12 @@ Release currently loaded font.
 		virtual void Release();
 
 		/****** StdPrs_BRepFont::RenderGlyph ******/
-		/****** md5 signature: 2951ebf93713dc5641da578f21061f63 ******/
+		/****** md5 signature: 5037cf645b44421866456f7da8ef4419 ******/
 		%feature("compactdefaultargs") RenderGlyph;
 		%feature("autodoc", "
 Parameters
 ----------
-theChar: Standard_Utf32Char
+theChar: char32_t
 
 Return
 -------
@@ -495,23 +489,23 @@ Render single glyph as TopoDS_Shape.
 Parameter theChar glyph identifier 
 Return: rendered glyph within cache, might be NULL shape.
 ") RenderGlyph;
-		TopoDS_Shape RenderGlyph(const Standard_Utf32Char & theChar);
+		TopoDS_Shape RenderGlyph(const char32_t & theChar);
 
 		/****** StdPrs_BRepFont::Scale ******/
-		/****** md5 signature: fff8b387c443c3e852a1bfc198a5a373 ******/
+		/****** md5 signature: 0692a776bbe69c585f3d8d4b86bd225b ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns scaling factor for current font size.
 ") Scale;
-		Standard_Real Scale();
+		double Scale();
 
 		/****** StdPrs_BRepFont::SetCompositeCurveMode ******/
-		/****** md5 signature: 8ce8079e93dd55c18a3ec2e70ee280d6 ******/
+		/****** md5 signature: 8e00fcad9ff69765374f11f24f4d8b5a ******/
 		%feature("compactdefaultargs") SetCompositeCurveMode;
 		%feature("autodoc", "
 Parameters
@@ -526,7 +520,7 @@ Description
 -----------
 Setup glyph geometry construction mode. By default algorithm creates independent TopoDS_Edge for each original curve in the glyph (line segment or Bezie curve). Algorithm might optionally create composite BSpline curve for each contour which reduces memory footprint but limits curve class to C0. Notice that altering this flag clears currently accumulated cache!.
 ") SetCompositeCurveMode;
-		void SetCompositeCurveMode(const Standard_Boolean theToConcatenate);
+		void SetCompositeCurveMode(const bool theToConcatenate);
 
 		/****** StdPrs_BRepFont::SetWidthScaling ******/
 		/****** md5 signature: 04deb132fe6b213fa451e36d262acdbd ******/
@@ -627,7 +621,7 @@ Return: result shape with pen transformation applied as shape location.
 class StdPrs_Curve : public Prs3d_Root {
 	public:
 		/****** StdPrs_Curve::Add ******/
-		/****** md5 signature: ecd0a0350b8a63aec33bccaa23d19556 ******/
+		/****** md5 signature: e46e5801ae2f17eacc18b6965b5029cf ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -635,7 +629,7 @@ Parameters
 aPresentation: Prs3d_Presentation
 aCurve: Adaptor3d_Curve
 aDrawer: Prs3d_Drawer
-drawCurve: bool (optional, default to Standard_True)
+drawCurve: bool (optional, default to true)
 
 Return
 -------
@@ -643,22 +637,22 @@ None
 
 Description
 -----------
-Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
+Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. If drawCurve equals false the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean drawCurve = Standard_True);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, const bool drawCurve = true);
 
 		/****** StdPrs_Curve::Add ******/
-		/****** md5 signature: d8dde21367418e11a33b31c5c3f950dd ******/
+		/****** md5 signature: 35540a21a7458bab03014ba7545dab43 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 aDrawer: Prs3d_Drawer
-drawCurve: bool (optional, default to Standard_True)
+drawCurve: bool (optional, default to true)
 
 Return
 -------
@@ -666,12 +660,12 @@ None
 
 Description
 -----------
-Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
+Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2. If drawCurve equals false the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean drawCurve = Standard_True);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const double U1, const double U2, const opencascade::handle<Prs3d_Drawer> & aDrawer, const bool drawCurve = true);
 
 		/****** StdPrs_Curve::Add ******/
-		/****** md5 signature: 17b8aa9fa3fbb8163ed09605f5f1a057 ******/
+		/****** md5 signature: 7bd2f807324b621f88eb499d1d4d1433 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -679,8 +673,8 @@ Parameters
 aPresentation: Prs3d_Presentation
 aCurve: Adaptor3d_Curve
 aDrawer: Prs3d_Drawer
-Points: TColgp_SequenceOfPnt
-drawCurve: bool (optional, default to Standard_True)
+Points: NCollection_Sequence<gp_Pnt>
+drawCurve: bool (optional, default to true)
 
 Return
 -------
@@ -688,23 +682,23 @@ None
 
 Description
 -----------
-adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
+adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals false the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, TColgp_SequenceOfPnt & Points, const Standard_Boolean drawCurve = Standard_True);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, NCollection_Sequence<gp_Pnt> & Points, const bool drawCurve = true);
 
 		/****** StdPrs_Curve::Add ******/
-		/****** md5 signature: cf52a609a5fb4eb4b458dba149dadd40 ******/
+		/****** md5 signature: 85133d5c9268e434475a88c5445b2b23 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aPresentation: Prs3d_Presentation
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
-Points: TColgp_SequenceOfPnt
+U1: double
+U2: double
+Points: NCollection_Sequence<gp_Pnt>
 aNbPoints: int (optional, default to 30)
-drawCurve: bool (optional, default to Standard_True)
+drawCurve: bool (optional, default to true)
 
 Return
 -------
@@ -712,20 +706,20 @@ None
 
 Description
 -----------
-adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
+adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals false the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, TColgp_SequenceOfPnt & Points, const Standard_Integer aNbPoints = 30, const Standard_Boolean drawCurve = Standard_True);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const double U1, const double U2, NCollection_Sequence<gp_Pnt> & Points, const int aNbPoints = 30, const bool drawCurve = true);
 
 		/****** StdPrs_Curve::Match ******/
-		/****** md5 signature: 4edef5e09e28fc3f4977319a2a5c96b3 ******/
+		/****** md5 signature: 0d26ee80676357f82d1bb27424ca76b6 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aCurve: Adaptor3d_Curve
 aDrawer: Prs3d_Drawer
 
@@ -737,21 +731,21 @@ Description
 -----------
 returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_Curve::Match ******/
-		/****** md5 signature: 2fc416047c48db14019e95b5eb6bce1c ******/
+		/****** md5 signature: 99ccac1a1277d3ad59bccdda51904191 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aCurve: Adaptor3d_Curve
-aDeflection: float
-aLimit: float
+aDeflection: double
+aLimit: double
 aNbPoints: int
 
 Return
@@ -762,21 +756,21 @@ Description
 -----------
 returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const Standard_Real aDeflection, const Standard_Real aLimit, const Standard_Integer aNbPoints);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Curve & aCurve, const double aDeflection, const double aLimit, const int aNbPoints);
 
 		/****** StdPrs_Curve::Match ******/
-		/****** md5 signature: bdc9e4d32789999c268047db86dbb9da ******/
+		/****** md5 signature: 03ba4a288f60d3a4afa981ab030603fc ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 aDrawer: Prs3d_Drawer
 
 Return
@@ -787,22 +781,22 @@ Description
 -----------
 returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Curve & aCurve, const double U1, const double U2, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_Curve::Match ******/
-		/****** md5 signature: 7878a79a49cb16a7e3a81c9bceaeb037 ******/
+		/****** md5 signature: 3740819cfff1482605d3d5c7edb6bda9 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
-aDeflection: float
+U1: double
+U2: double
+aDeflection: double
 aNbPoints: int
 
 Return
@@ -813,7 +807,7 @@ Description
 -----------
 returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real aDeflection, const Standard_Integer aNbPoints);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Curve & aCurve, const double U1, const double U2, const double aDeflection, const int aNbPoints);
 
 };
 
@@ -890,7 +884,7 @@ No available documentation.
 		 StdPrs_HLRToolShape(const TopoDS_Shape & TheShape, const HLRAlgo_Projector & TheProjector);
 
 		/****** StdPrs_HLRToolShape::Hidden ******/
-		/****** md5 signature: 608caa8ffc41ac4b6b1a899608b1940c ******/
+		/****** md5 signature: 9d5e6f2f955591ccca4ad089088fa8a6 ******/
 		%feature("compactdefaultargs") Hidden;
 		%feature("autodoc", "
 Parameters
@@ -899,8 +893,8 @@ TheEdge: BRepAdaptor_Curve
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
@@ -909,7 +903,7 @@ No available documentation.
 		void Hidden(BRepAdaptor_Curve & TheEdge, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** StdPrs_HLRToolShape::InitHidden ******/
-		/****** md5 signature: e773bda49c18e0f29137e21c2658a5e8 ******/
+		/****** md5 signature: 8716d17f84cd4a2304388dde7bdcd358 ******/
 		%feature("compactdefaultargs") InitHidden;
 		%feature("autodoc", "
 Parameters
@@ -924,10 +918,10 @@ Description
 -----------
 No available documentation.
 ") InitHidden;
-		void InitHidden(const Standard_Integer EdgeNumber);
+		void InitHidden(const int EdgeNumber);
 
 		/****** StdPrs_HLRToolShape::InitVisible ******/
-		/****** md5 signature: d6020b6b1d02e2782cfa8398847f0258 ******/
+		/****** md5 signature: 9e050255b08f1ac1cf0ee92089bfce4f ******/
 		%feature("compactdefaultargs") InitVisible;
 		%feature("autodoc", "
 Parameters
@@ -942,10 +936,10 @@ Description
 -----------
 No available documentation.
 ") InitVisible;
-		void InitVisible(const Standard_Integer EdgeNumber);
+		void InitVisible(const int EdgeNumber);
 
 		/****** StdPrs_HLRToolShape::MoreHidden ******/
-		/****** md5 signature: 3b15b62a78bddb9bfa7464762d6947d6 ******/
+		/****** md5 signature: b1b35ce90b158cbbad012e8a7724583d ******/
 		%feature("compactdefaultargs") MoreHidden;
 		%feature("autodoc", "Return
 -------
@@ -955,10 +949,10 @@ Description
 -----------
 No available documentation.
 ") MoreHidden;
-		Standard_Boolean MoreHidden();
+		bool MoreHidden();
 
 		/****** StdPrs_HLRToolShape::MoreVisible ******/
-		/****** md5 signature: 7cca41fab7d11924952196a9afb1cb46 ******/
+		/****** md5 signature: 4ec4c68284a05299b93e00ede44db1af ******/
 		%feature("compactdefaultargs") MoreVisible;
 		%feature("autodoc", "Return
 -------
@@ -968,10 +962,10 @@ Description
 -----------
 No available documentation.
 ") MoreVisible;
-		Standard_Boolean MoreVisible();
+		bool MoreVisible();
 
 		/****** StdPrs_HLRToolShape::NbEdges ******/
-		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
+		/****** md5 signature: f741965989565caaff095f09d2955db8 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -981,7 +975,7 @@ Description
 -----------
 No available documentation.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** StdPrs_HLRToolShape::NextHidden ******/
 		/****** md5 signature: e264eab7635073c92511d973f449cac3 ******/
@@ -1010,7 +1004,7 @@ No available documentation.
 		void NextVisible();
 
 		/****** StdPrs_HLRToolShape::Visible ******/
-		/****** md5 signature: 92f628a6a81a08729ea3a539b7dd9728 ******/
+		/****** md5 signature: cc36be84a7f27e4881f7d1e8ede1a1d8 ******/
 		%feature("compactdefaultargs") Visible;
 		%feature("autodoc", "
 Parameters
@@ -1019,8 +1013,8 @@ TheEdge: BRepAdaptor_Curve
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
@@ -1045,7 +1039,7 @@ class StdPrs_Isolines : public Prs3d_Root {
 		class PntOnIso {};
 		class SegOnIso {};
 		/****** StdPrs_Isolines::Add ******/
-		/****** md5 signature: 01f40ed4679e1484c088196742d4b41a ******/
+		/****** md5 signature: a9e84dc2f43351fff4f71d4cb4393a68 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1053,7 +1047,7 @@ Parameters
 thePresentation: Prs3d_Presentation
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
-theDeflection: float
+theDeflection: double
 
 Return
 -------
@@ -1067,19 +1061,19 @@ Input parameter: theFace the face.
 Input parameter: theDrawer the display settings. 
 Input parameter: theDeflection the deflection for isolines-on-surface version.
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection);
 
 		/****** StdPrs_Isolines::Add ******/
-		/****** md5 signature: 5de803694dec54609521ff59e1207e6a ******/
+		/****** md5 signature: e647ca382eb9c8235c5aa4419c42c49a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
-theDeflection: float
-theUPolylines: Prs3d_NListOfSequenceOfPnt
-theVPolylines: Prs3d_NListOfSequenceOfPnt
+theDeflection: double
+theUPolylines: NCollection_HSequence<gp_Pnt
+theVPolylines: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -1092,10 +1086,10 @@ Input parameter: theFace the face.
 Input parameter: theDrawer the display settings. 
 Input parameter: theDeflection the deflection for isolines-on-surface version.
 ") Add;
-		static void Add(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
+		static void Add(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theUPolylines, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theVPolylines);
 
 		/****** StdPrs_Isolines::AddOnSurface ******/
-		/****** md5 signature: 5eb1a603556cd8cc0d70c55c9e3429fa ******/
+		/****** md5 signature: ca05cdb6c862f780d3f39f8217cb5103 ******/
 		%feature("compactdefaultargs") AddOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1103,7 +1097,7 @@ Parameters
 thePresentation: Prs3d_Presentation
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
-theDeflection: float
+theDeflection: double
 
 Return
 -------
@@ -1117,19 +1111,19 @@ Input parameter: theFace the face.
 Input parameter: theDrawer the display settings. 
 Input parameter: theDeflection the deflection value.
 ") AddOnSurface;
-		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
+		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection);
 
 		/****** StdPrs_Isolines::AddOnSurface ******/
-		/****** md5 signature: de23598b27c666694d6ad57b6ac01a3b ******/
+		/****** md5 signature: fa7fecc7d1d465299f94b1dccd2e370f ******/
 		%feature("compactdefaultargs") AddOnSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
-theDeflection: float
-theUPolylines: Prs3d_NListOfSequenceOfPnt
-theVPolylines: Prs3d_NListOfSequenceOfPnt
+theDeflection: double
+theUPolylines: NCollection_HSequence<gp_Pnt
+theVPolylines: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -1142,10 +1136,10 @@ Input parameter: theFace the face
 Input parameter: theDrawer the display settings 
 Input parameter: theDeflection the deflection value @param[out] theUPolylines the sequence of result polylines @param[out] theVPolylines the sequence of result polylines.
 ") AddOnSurface;
-		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
+		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theUPolylines, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theVPolylines);
 
 		/****** StdPrs_Isolines::AddOnSurface ******/
-		/****** md5 signature: df3d10afd0ae22442b9d52062f1fc4a4 ******/
+		/****** md5 signature: d619f6b2ae6e87aed3f69c39bdf76402 ******/
 		%feature("compactdefaultargs") AddOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1153,9 +1147,9 @@ Parameters
 thePresentation: Prs3d_Presentation
 theSurface: BRepAdaptor_Surface
 theDrawer: Prs3d_Drawer
-theDeflection: float
-theUIsoParams: TColStd_SequenceOfReal
-theVIsoParams: TColStd_SequenceOfReal
+theDeflection: double
+theUIsoParams: NCollection_Sequence<double>
+theVIsoParams: NCollection_Sequence<double>
 
 Return
 -------
@@ -1171,7 +1165,7 @@ Input parameter: theDeflection the deflection value.
 Input parameter: theUIsoParams the parameters of u isolines to compute. 
 Input parameter: theVIsoParams the parameters of v isolines to compute.
 ") AddOnSurface;
-		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
+		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, const NCollection_Sequence<double> & theUIsoParams, const NCollection_Sequence<double> & theVIsoParams);
 
 		/****** StdPrs_Isolines::AddOnTriangulation ******/
 		/****** md5 signature: edc7640cc9248e14e63a44d5f239dbf2 ******/
@@ -1197,15 +1191,15 @@ Input parameter: theDrawer the display settings.
 		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_Isolines::AddOnTriangulation ******/
-		/****** md5 signature: 2a1e1df2f916fded41ad5b7bd67fd011 ******/
+		/****** md5 signature: 78e297700a49b28308efdad7728a9f9c ******/
 		%feature("compactdefaultargs") AddOnTriangulation;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
-theUPolylines: Prs3d_NListOfSequenceOfPnt
-theVPolylines: Prs3d_NListOfSequenceOfPnt
+theUPolylines: NCollection_HSequence<gp_Pnt
+theVPolylines: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -1217,10 +1211,10 @@ Computes isolines on triangulation.
 Input parameter: theFace the face. 
 Input parameter: theDrawer the display settings. @param[out] theUPolylines the sequence of result polylines @param[out] theVPolylines the sequence of result polylines.
 ") AddOnTriangulation;
-		static void AddOnTriangulation(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
+		static void AddOnTriangulation(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theUPolylines, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theVPolylines);
 
 		/****** StdPrs_Isolines::AddOnTriangulation ******/
-		/****** md5 signature: 23b63c464969b08203f007b023922e4c ******/
+		/****** md5 signature: eddcc14971886f9d8ab975130cf91cce ******/
 		%feature("compactdefaultargs") AddOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -1230,8 +1224,8 @@ theTriangulation: Poly_Triangulation
 theSurface: Geom_Surface
 theLocation: TopLoc_Location
 theDrawer: Prs3d_Drawer
-theUIsoParams: TColStd_SequenceOfReal
-theVIsoParams: TColStd_SequenceOfReal
+theUIsoParams: NCollection_Sequence<double>
+theVIsoParams: NCollection_Sequence<double>
 
 Return
 -------
@@ -1248,10 +1242,10 @@ Input parameter: theDrawer the display settings.
 Input parameter: theUIsoParams the parameters of u isolines to compute. 
 Input parameter: theVIsoParams the parameters of v isolines to compute.
 ") AddOnTriangulation;
-		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<Geom_Surface> & theSurface, const TopLoc_Location & theLocation, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
+		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<Geom_Surface> & theSurface, const TopLoc_Location & theLocation, const opencascade::handle<Prs3d_Drawer> & theDrawer, const NCollection_Sequence<double> & theUIsoParams, const NCollection_Sequence<double> & theVIsoParams);
 
 		/****** StdPrs_Isolines::UVIsoParameters ******/
-		/****** md5 signature: 624d137e5f58c70fc47c9a4a74925873 ******/
+		/****** md5 signature: 0b16428ad602b54151e7340fd4c61e01 ******/
 		%feature("compactdefaultargs") UVIsoParameters;
 		%feature("autodoc", "
 Parameters
@@ -1259,16 +1253,16 @@ Parameters
 theFace: TopoDS_Face
 theNbIsoU: int
 theNbIsoV: int
-theUVLimit: float
-theUIsoParams: TColStd_SequenceOfReal
-theVIsoParams: TColStd_SequenceOfReal
+theUVLimit: double
+theUIsoParams: NCollection_Sequence<double>
+theVIsoParams: NCollection_Sequence<double>
 
 Return
 -------
-theUmin: float
-theUmax: float
-theVmin: float
-theVmax: float
+theUmin: double
+theUmax: double
+theVmin: double
+theVmax: double
 
 Description
 -----------
@@ -1278,7 +1272,7 @@ Input parameter: theNbIsoU the number of u isolines.
 Input parameter: theNbIsoV the number of v isolines. 
 Input parameter: theUVLimit the u, v parameter value limit. @param[out] theUIsoParams the sequence of u isoline parameters. @param[out] theVIsoParams the sequence of v isoline parameters. @param[out] theUmin the lower U boundary of theFace. @param[out] theUmax the upper U boundary of theFace. @param[out] theVmin the lower V boundary of theFace. @param[out] theVmax the upper V boundary of theFace.
 ") UVIsoParameters;
-		static void UVIsoParameters(const TopoDS_Face & theFace, const Standard_Integer theNbIsoU, const Standard_Integer theNbIsoV, const Standard_Real theUVLimit, TColStd_SequenceOfReal & theUIsoParams, TColStd_SequenceOfReal & theVIsoParams, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void UVIsoParameters(const TopoDS_Face & theFace, const int theNbIsoU, const int theNbIsoV, const double theUVLimit, NCollection_Sequence<double> & theUIsoParams, NCollection_Sequence<double> & theVIsoParams, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -1315,15 +1309,15 @@ Defines display of infinite planes. The infinite plane aPlane is added to the di
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aPlane, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_Plane::Match ******/
-		/****** md5 signature: 7b7156f4fe814b1640708e811a47f58e ******/
+		/****** md5 signature: e8c98d4ec919aff7a4e652ac2a5dbad1 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aPlane: Adaptor3d_Surface
 aDrawer: Prs3d_Drawer
 
@@ -1335,7 +1329,7 @@ Description
 -----------
 returns true if the distance between the point (X,Y,Z) and the plane is less than aDistance.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Surface & aPlane, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Surface & aPlane, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 };
 
@@ -1372,15 +1366,15 @@ Defines display of BSpline and Bezier curves. Adds the 3D curve aCurve to the St
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_PoleCurve::Match ******/
-		/****** md5 signature: 4edef5e09e28fc3f4977319a2a5c96b3 ******/
+		/****** md5 signature: 0d26ee80676357f82d1bb27424ca76b6 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aCurve: Adaptor3d_Curve
 aDrawer: Prs3d_Drawer
 
@@ -1392,18 +1386,18 @@ Description
 -----------
 returns true if the distance between the point (X,Y,Z) and the broken line made of the poles is less then aDistance.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_PoleCurve::Pick ******/
-		/****** md5 signature: 110350faab9ea047534f7a57de6d598c ******/
+		/****** md5 signature: 201b5cc02669ce8d85785408a25aae47 ******/
 		%feature("compactdefaultargs") Pick;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aCurve: Adaptor3d_Curve
 aDrawer: Prs3d_Drawer
 
@@ -1415,7 +1409,7 @@ Description
 -----------
 returns the pole the most near of the point (X,Y,Z) and returns its range. The distance between the pole and (X,Y,Z) must be less then aDistance. If no pole corresponds, 0 is returned.
 ") Pick;
-		static Standard_Integer Pick(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static int Pick(const double X, const double Y, const double Z, const double aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 };
 
@@ -1432,7 +1426,7 @@ returns the pole the most near of the point (X,Y,Z) and returns its range. The d
 class StdPrs_ShadedShape : public Prs3d_Root {
 	public:
 		/****** StdPrs_ShadedShape::Add ******/
-		/****** md5 signature: eb25cffb7e72ca49100cdcc43a05ee8c ******/
+		/****** md5 signature: 4e80c92dc227484c18d258dc3344e6d3 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1441,7 +1435,7 @@ thePresentation: Prs3d_Presentation
 theShape: TopoDS_Shape
 theDrawer: Prs3d_Drawer
 theVolume: StdPrs_Volume (optional, default to StdPrs_Volume_Autodetection)
-theGroup: Graphic3d_Group (optional, default to NULL)
+theGroup: Graphic3d_Group (optional, default to nullptr)
 
 Return
 -------
@@ -1452,10 +1446,10 @@ Description
 Shades <theShape>. 
 Parameter theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = NULL);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = nullptr);
 
 		/****** StdPrs_ShadedShape::Add ******/
-		/****** md5 signature: c2784d9b78f332340fcb1d6c9293a2a1 ******/
+		/****** md5 signature: 15d50ed4ab7dd5923cb50e0f83f8c62e ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1468,7 +1462,7 @@ theUVOrigin: gp_Pnt2d
 theUVRepeat: gp_Pnt2d
 theUVScale: gp_Pnt2d
 theVolume: StdPrs_Volume (optional, default to StdPrs_Volume_Autodetection)
-theGroup: Graphic3d_Group (optional, default to NULL)
+theGroup: Graphic3d_Group (optional, default to nullptr)
 
 Return
 -------
@@ -1479,7 +1473,7 @@ Description
 Shades <theShape> with texture coordinates. 
 Parameter theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = NULL);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const bool theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = nullptr);
 
 		/****** StdPrs_ShadedShape::AddWireframeForFacesWithoutTriangles ******/
 		/****** md5 signature: 2399101e036cd3b0540bfa37732d6fc1 ******/
@@ -1522,7 +1516,7 @@ Computes wireframe presentation for free wires and vertices.
 		static void AddWireframeForFreeElements(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_ShadedShape::ExploreSolids ******/
-		/****** md5 signature: 0f56ef8bb3796d73330266647168b092 ******/
+		/****** md5 signature: 24dbdd879a97f7d010e3d9378de6e79b ******/
 		%feature("compactdefaultargs") ExploreSolids;
 		%feature("autodoc", "
 Parameters
@@ -1541,7 +1535,7 @@ Description
 -----------
 Searches closed and unclosed subshapes in shape structure and puts them into two compounds for separate processing of closed and unclosed sub-shapes.
 ") ExploreSolids;
-		static void ExploreSolids(const TopoDS_Shape & theShape, const BRep_Builder & theBuilder, TopoDS_Compound & theClosed, TopoDS_Compound & theOpened, const Standard_Boolean theIgnore1DSubShape);
+		static void ExploreSolids(const TopoDS_Shape & theShape, const BRep_Builder & theBuilder, TopoDS_Compound & theClosed, TopoDS_Compound & theOpened, const bool theIgnore1DSubShape);
 
 		/****** StdPrs_ShadedShape::FillFaceBoundaries ******/
 		/****** md5 signature: c71acba81e6e66888a517542dedd393f ******/
@@ -1584,7 +1578,7 @@ Input parameter: theShape the shape with precomputed triangulation.
 		static opencascade::handle<Graphic3d_ArrayOfTriangles> FillTriangles(const TopoDS_Shape & theShape);
 
 		/****** StdPrs_ShadedShape::FillTriangles ******/
-		/****** md5 signature: 419ad4ac31337bdc5a11e70e08df782e ******/
+		/****** md5 signature: 463cdde5fa255470ca8afd521a7cd3fa ******/
 		%feature("compactdefaultargs") FillTriangles;
 		%feature("autodoc", "
 Parameters
@@ -1609,7 +1603,7 @@ Parameter theUVRepeat repeat parameters for UV coordinates
 Parameter theUVScale scale coefficients for UV coordinates 
 Return: triangles array or NULL if specified face does not have computed triangulation.
 ") FillTriangles;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> FillTriangles(const TopoDS_Shape & theShape, const Standard_Boolean theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> FillTriangles(const TopoDS_Shape & theShape, const bool theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale);
 
 };
 
@@ -1660,13 +1654,13 @@ Adds the surface aSurface to the presentation object aPresentation. The surface'
 class StdPrs_ShapeTool {
 	public:
 		/****** StdPrs_ShapeTool::StdPrs_ShapeTool ******/
-		/****** md5 signature: b1cfe601c9ce69d7ecf53050fd390572 ******/
+		/****** md5 signature: 088eba2e4d6c3a31bfc6c819156dae60 ******/
 		%feature("compactdefaultargs") StdPrs_ShapeTool;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theAllVertices: bool (optional, default to Standard_False)
+theAllVertices: bool (optional, default to false)
 
 Return
 -------
@@ -1676,7 +1670,7 @@ Description
 -----------
 Constructs the tool and initializes it using theShape and theAllVertices (optional) arguments. By default, only isolated and internal vertices are considered, however if theAllVertices argument is equal to True, all shape's vertices are taken into account.
 ") StdPrs_ShapeTool;
-		 StdPrs_ShapeTool(const TopoDS_Shape & theShape, const Standard_Boolean theAllVertices = Standard_False);
+		 StdPrs_ShapeTool(const TopoDS_Shape & theShape, const bool theAllVertices = false);
 
 		/****** StdPrs_ShapeTool::CurrentTriangulation ******/
 		/****** md5 signature: e174edc94303c301ad3d548683d6e8cf ******/
@@ -1723,17 +1717,17 @@ No available documentation.
 		Bnd_Box FaceBound();
 
 		/****** StdPrs_ShapeTool::FacesOfEdge ******/
-		/****** md5 signature: 89082386bc651a78938e536e5113de7e ******/
+		/****** md5 signature: 201d3117d33c2cf185c1f2d12d57b134 ******/
 		%feature("compactdefaultargs") FacesOfEdge;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 No available documentation.
 ") FacesOfEdge;
-		opencascade::handle<TopTools_HSequenceOfShape> FacesOfEdge();
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> FacesOfEdge();
 
 		/****** StdPrs_ShapeTool::GetCurve ******/
 		/****** md5 signature: ccf034d9f6867e07e3c267d12089ab5c ******/
@@ -1775,7 +1769,7 @@ No available documentation.
 		const TopoDS_Vertex GetVertex();
 
 		/****** StdPrs_ShapeTool::HasCurve ******/
-		/****** md5 signature: 24512d68611f1b569c1022347b56d2ba ******/
+		/****** md5 signature: 649eaa6297fca8c76e0cfe9e96bc26f2 ******/
 		%feature("compactdefaultargs") HasCurve;
 		%feature("autodoc", "Return
 -------
@@ -1785,10 +1779,10 @@ Description
 -----------
 No available documentation.
 ") HasCurve;
-		Standard_Boolean HasCurve();
+		bool HasCurve();
 
 		/****** StdPrs_ShapeTool::HasSurface ******/
-		/****** md5 signature: e1636f96e3c29ca0e588fc628f12d790 ******/
+		/****** md5 signature: 89a06191855dcc3116166bd376e83450 ******/
 		%feature("compactdefaultargs") HasSurface;
 		%feature("autodoc", "Return
 -------
@@ -1798,7 +1792,7 @@ Description
 -----------
 No available documentation.
 ") HasSurface;
-		Standard_Boolean HasSurface();
+		bool HasSurface();
 
 		/****** StdPrs_ShapeTool::InitCurve ******/
 		/****** md5 signature: 623075abc819963427ae812711cc9f03 ******/
@@ -1840,7 +1834,7 @@ No available documentation.
 		void InitVertex();
 
 		/****** StdPrs_ShapeTool::IsPlanarFace ******/
-		/****** md5 signature: 6b8c88789eed31202251b15ca3358b7f ******/
+		/****** md5 signature: 66e5ad7c28fe94e55264b4d85b184297 ******/
 		%feature("compactdefaultargs") IsPlanarFace;
 		%feature("autodoc", "Return
 -------
@@ -1850,10 +1844,10 @@ Description
 -----------
 No available documentation.
 ") IsPlanarFace;
-		Standard_Boolean IsPlanarFace();
+		bool IsPlanarFace();
 
 		/****** StdPrs_ShapeTool::IsPlanarFace ******/
-		/****** md5 signature: dbd07f0e3771524116dd33a19d098b26 ******/
+		/****** md5 signature: f14d21d848315f028ba689be6336d063 ******/
 		%feature("compactdefaultargs") IsPlanarFace;
 		%feature("autodoc", "
 Parameters
@@ -1868,10 +1862,10 @@ Description
 -----------
 No available documentation.
 ") IsPlanarFace;
-		static Standard_Boolean IsPlanarFace(const TopoDS_Face & theFace);
+		static bool IsPlanarFace(const TopoDS_Face & theFace);
 
 		/****** StdPrs_ShapeTool::MoreCurve ******/
-		/****** md5 signature: 294b10d8505b397b80557f3ffd3abb0a ******/
+		/****** md5 signature: 3d3a3088e574f7fd76d79c54ac6e8c0d ******/
 		%feature("compactdefaultargs") MoreCurve;
 		%feature("autodoc", "Return
 -------
@@ -1881,10 +1875,10 @@ Description
 -----------
 No available documentation.
 ") MoreCurve;
-		Standard_Boolean MoreCurve();
+		bool MoreCurve();
 
 		/****** StdPrs_ShapeTool::MoreFace ******/
-		/****** md5 signature: 22c1aefb1ce1d474b93921421f857dc9 ******/
+		/****** md5 signature: f8450e548edb4d3adf9e3787de22e12e ******/
 		%feature("compactdefaultargs") MoreFace;
 		%feature("autodoc", "Return
 -------
@@ -1894,10 +1888,10 @@ Description
 -----------
 No available documentation.
 ") MoreFace;
-		Standard_Boolean MoreFace();
+		bool MoreFace();
 
 		/****** StdPrs_ShapeTool::MoreVertex ******/
-		/****** md5 signature: b1415b97c2e4eb4b2c3aafb5017477a3 ******/
+		/****** md5 signature: 5a850447c4c5e1b0e2a817733ae00f39 ******/
 		%feature("compactdefaultargs") MoreVertex;
 		%feature("autodoc", "Return
 -------
@@ -1907,10 +1901,10 @@ Description
 -----------
 No available documentation.
 ") MoreVertex;
-		Standard_Boolean MoreVertex();
+		bool MoreVertex();
 
 		/****** StdPrs_ShapeTool::Neighbours ******/
-		/****** md5 signature: f7632ca6a981fecfee9d23781ab8df33 ******/
+		/****** md5 signature: d75db050caf3c286727bed7a3b4ab120 ******/
 		%feature("compactdefaultargs") Neighbours;
 		%feature("autodoc", "Return
 -------
@@ -1920,7 +1914,7 @@ Description
 -----------
 No available documentation.
 ") Neighbours;
-		Standard_Integer Neighbours();
+		int Neighbours();
 
 		/****** StdPrs_ShapeTool::NextCurve ******/
 		/****** md5 signature: c84098e0d5846ddc5c1ef3cd9db559ef ******/
@@ -2014,7 +2008,7 @@ No available documentation.
 class StdPrs_ToolPoint {
 	public:
 		/****** StdPrs_ToolPoint::Coord ******/
-		/****** md5 signature: e463034c9e9a03b9aaa89aab3731cce5 ******/
+		/****** md5 signature: 735ab39c6f0635431b0cfe99609065c2 ******/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "
 Parameters
@@ -2023,9 +2017,9 @@ aPoint: Geom_Point
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -2105,7 +2099,7 @@ Move iterator to the first element.
 		void Init();
 
 		/****** StdPrs_ToolRFace::IsInvalidGeometry ******/
-		/****** md5 signature: 0b90e0298ec2724bd48811a3a15e33a7 ******/
+		/****** md5 signature: 4d86ea8066abf02313b95a8885b5f8e5 ******/
 		%feature("compactdefaultargs") IsInvalidGeometry;
 		%feature("autodoc", "Return
 -------
@@ -2115,10 +2109,10 @@ Description
 -----------
 Return True if NULL curves have been skipped.
 ") IsInvalidGeometry;
-		Standard_Boolean IsInvalidGeometry();
+		bool IsInvalidGeometry();
 
 		/****** StdPrs_ToolRFace::IsOriented ******/
-		/****** md5 signature: ed5befe37b618bc14c188e7a5b194e85 ******/
+		/****** md5 signature: 5bcd25839f48a57eabfe3a57143b82a6 ******/
 		%feature("compactdefaultargs") IsOriented;
 		%feature("autodoc", "Return
 -------
@@ -2128,10 +2122,10 @@ Description
 -----------
 Return True indicating that iterator looks only for oriented edges.
 ") IsOriented;
-		Standard_Boolean IsOriented();
+		bool IsOriented();
 
 		/****** StdPrs_ToolRFace::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2141,7 +2135,7 @@ Description
 -----------
 Return True if iterator points to the curve.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** StdPrs_ToolRFace::Next ******/
 		/****** md5 signature: 1201a55f750036045cd397a65f07fc7d ******/
@@ -2197,7 +2191,7 @@ Return current curve.
 class StdPrs_ToolTriangulatedShape : public BRepLib_ToolTriangulatedShape {
 	public:
 		/****** StdPrs_ToolTriangulatedShape::ClearOnOwnDeflectionChange ******/
-		/****** md5 signature: 98477340457ba32a3ffb2857a082605a ******/
+		/****** md5 signature: 9e9358e98dee7e7b4400ed6c69c7e723 ******/
 		%feature("compactdefaultargs") ClearOnOwnDeflectionChange;
 		%feature("autodoc", "
 Parameters
@@ -2217,10 +2211,10 @@ Input parameter: theShape the shape
 Input parameter: theDrawer the display settings 
 Input parameter: theToResetCoeff updates coefficients in theDrawer to actual state to avoid redundant recomputations.
 ") ClearOnOwnDeflectionChange;
-		static void ClearOnOwnDeflectionChange(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theToResetCoeff);
+		static void ClearOnOwnDeflectionChange(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const bool theToResetCoeff);
 
 		/****** StdPrs_ToolTriangulatedShape::GetDeflection ******/
-		/****** md5 signature: 32d565d6bf5769fcd44726cec516a592 ******/
+		/****** md5 signature: 33a9f46960e3943d1009f46b2dcc78db ******/
 		%feature("compactdefaultargs") GetDeflection;
 		%feature("autodoc", "
 Parameters
@@ -2230,16 +2224,16 @@ theDrawer: Prs3d_Drawer
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the absolute deflection value depending on the type of deflection in theDrawer: <ul> <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative deviation coefficient from theDrawer and the shape's bounding box;</li> <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> </ul> In case of the type of deflection in theDrawer computed relative deflection for shape is stored as absolute deflection. It is necessary to use it later on for sub-shapes. This function should always be used to compute the deflection value for building discrete representations of the shape (triangulation, wireframe) to avoid inconsistencies between different representations of the shape and undesirable visual artifacts.
 ") GetDeflection;
-		static Standard_Real GetDeflection(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static double GetDeflection(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_ToolTriangulatedShape::IsClosed ******/
-		/****** md5 signature: 73cb802be974f5dd2d8d647431bb4edd ******/
+		/****** md5 signature: 15e576735f20250b8e093abb38da1c81 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -2253,12 +2247,12 @@ bool
 Description
 -----------
 Checks back faces visibility for specified shape (to activate back-face culling). 
-Return: true if shape is closed manifold Solid or compound of such Solids. .
+Return: true if shape is closed manifold Solid or compound of such Solids.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const TopoDS_Shape & theShape);
+		static bool IsClosed(const TopoDS_Shape & theShape);
 
 		/****** StdPrs_ToolTriangulatedShape::IsTessellated ******/
-		/****** md5 signature: 41b76557e8a81abcef9c6092a4dd18ec ******/
+		/****** md5 signature: 76958b8154ce9944cc7345412cee8b61 ******/
 		%feature("compactdefaultargs") IsTessellated;
 		%feature("autodoc", "
 Parameters
@@ -2276,10 +2270,10 @@ Checks whether the shape is properly triangulated for a given display settings.
 Input parameter: theShape the shape. 
 Input parameter: theDrawer the display settings.
 ") IsTessellated;
-		static Standard_Boolean IsTessellated(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static bool IsTessellated(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_ToolTriangulatedShape::IsTriangulated ******/
-		/****** md5 signature: 65cde82b83d68e98dc536757110f538b ******/
+		/****** md5 signature: a45d7a9c4cf12e58b84b6dce35b2c5fa ******/
 		%feature("compactdefaultargs") IsTriangulated;
 		%feature("autodoc", "
 Parameters
@@ -2295,10 +2289,10 @@ Description
 Similar to BRepTools::Triangulation() but without extra checks. 
 Return: true if all faces within shape are triangulated.
 ") IsTriangulated;
-		static Standard_Boolean IsTriangulated(const TopoDS_Shape & theShape);
+		static bool IsTriangulated(const TopoDS_Shape & theShape);
 
 		/****** StdPrs_ToolTriangulatedShape::Tessellate ******/
-		/****** md5 signature: 4e3c55da546073fdfff034a5fa73f78a ******/
+		/****** md5 signature: 4ef0df068df649eb9ec9bded47a7ceba ******/
 		%feature("compactdefaultargs") Tessellate;
 		%feature("autodoc", "
 Parameters
@@ -2317,7 +2311,7 @@ Input parameter: theShape the shape.
 Input parameter: theDrawer the display settings. 
 Return: true if tessellation was recomputed and false otherwise.
 ") Tessellate;
-		static Standard_Boolean Tessellate(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static bool Tessellate(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 };
 
@@ -2334,7 +2328,7 @@ Return: true if tessellation was recomputed and false otherwise.
 class StdPrs_ToolVertex {
 	public:
 		/****** StdPrs_ToolVertex::Coord ******/
-		/****** md5 signature: 11b62f4bf7e33fabbb0e6f02db287c74 ******/
+		/****** md5 signature: b0a718e9bcbbc4fddb024b9b04ff9cb7 ******/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "
 Parameters
@@ -2343,9 +2337,9 @@ aPoint: TopoDS_Vertex
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -2388,7 +2382,7 @@ Defines a display featuring U and V isoparameters. Adds the surface aFace to the
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::Add ******/
-		/****** md5 signature: a43b9cb76c2452baca5c8f7ad5d11599 ******/
+		/****** md5 signature: 400e5fd01f0109a202381fbe842634fc ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2397,11 +2391,11 @@ aPresentation: Prs3d_Presentation
 aFace: BRepAdaptor_Surface
 DrawUIso: bool
 DrawVIso: bool
-Deflection: float
+Deflection: double
 NBUiso: int
 NBViso: int
 aDrawer: Prs3d_Drawer
-Curves: Prs3d_NListOfSequenceOfPnt
+Curves: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -2411,7 +2405,7 @@ Description
 -----------
 Defines a display of a delection-specified face. The display will feature U and V isoparameters. Adds the topology aShape to the StdPrs_WFRestrictedFace algorithm. This shape is found in the presentation object aPresentation, and its display attributes - except the number of U and V isoparameters - are set in the attribute manager aDrawer. The function sets the number of U and V isoparameters, NBUiso and NBViso, in the shape. To do this, the arguments DrawUIso and DrawVIso must be true. aFace is BRepAdaptor_Surface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_Surface surface created from it. This is what allows the topological face to be treated as a geometric surface. Curves give a sequence of face curves, it is used if the PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, Prs3d_NListOfSequenceOfPnt & Curves);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const bool DrawUIso, const bool DrawVIso, const double Deflection, const int NBUiso, const int NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & Curves);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::AddUIso ******/
 		/****** md5 signature: abfa66a39e010c944e7999fccfbc51bc ******/
@@ -2454,15 +2448,15 @@ Defines a display featuring V isoparameters respectively. Add the surface aFace 
 		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::Match ******/
-		/****** md5 signature: 36064271588fe17924d682737e08c090 ******/
+		/****** md5 signature: ce8a208a3aa3f4eb8c82995565b8a9e8 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
@@ -2474,23 +2468,23 @@ Description
 -----------
 No available documentation.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::Match ******/
-		/****** md5 signature: 647e7386d58dcbc030ed16f372590bd3 ******/
+		/****** md5 signature: 4a77109c988b00bb156f34623f12d6f7 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 DrawUIso: bool
 DrawVIso: bool
-aDeflection: float
+aDeflection: double
 NBUiso: int
 NBViso: int
 
@@ -2502,18 +2496,18 @@ Description
 -----------
 No available documentation.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real aDeflection, const Standard_Integer NBUiso, const Standard_Integer NBViso);
+		static bool Match(const double X, const double Y, const double Z, const double aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer, const bool DrawUIso, const bool DrawVIso, const double aDeflection, const int NBUiso, const int NBViso);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::MatchUIso ******/
-		/****** md5 signature: c8686c8ec60c7dfe1d0960364542d7a9 ******/
+		/****** md5 signature: cfe33f1df1a707eac7c1d5f655bdb26d ******/
 		%feature("compactdefaultargs") MatchUIso;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
@@ -2525,18 +2519,18 @@ Description
 -----------
 No available documentation.
 ") MatchUIso;
-		static Standard_Boolean MatchUIso(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool MatchUIso(const double X, const double Y, const double Z, const double aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::MatchVIso ******/
-		/****** md5 signature: 7ed1a209bfc944df2831a03220e9bbdd ******/
+		/****** md5 signature: 58b9c5e6561d69bdc6ed05e6fee59645 ******/
 		%feature("compactdefaultargs") MatchVIso;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 aFace: BRepAdaptor_Surface
 aDrawer: Prs3d_Drawer
 
@@ -2548,7 +2542,7 @@ Description
 -----------
 No available documentation.
 ") MatchVIso;
-		static Standard_Boolean MatchVIso(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
+		static bool MatchVIso(const double X, const double Y, const double Z, const double aDistance, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
 };
 
@@ -2633,7 +2627,7 @@ Adds the surface aSurface to the presentation object aPresentation. The shape's 
 class StdPrs_WFRestrictedFace : public Prs3d_Root {
 	public:
 		/****** StdPrs_WFRestrictedFace::Add ******/
-		/****** md5 signature: 997ef5408fc0674910ccf2fdf2cd6526 ******/
+		/****** md5 signature: 0909af20f1b1a5a29232bb4e3e3ea067 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2645,7 +2639,7 @@ theDrawVIso: bool
 theNbUIso: int
 theNbVIso: int
 theDrawer: Prs3d_Drawer
-theCurves: Prs3d_NListOfSequenceOfPnt
+theCurves: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -2655,7 +2649,7 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const bool theDrawUIso, const bool theDrawVIso, const int theNbUIso, const int theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theCurves);
 
 		/****** StdPrs_WFRestrictedFace::Add ******/
 		/****** md5 signature: c9cfe87ac0d1f4614d3646ecf19658e1 ******/
@@ -2718,19 +2712,19 @@ No available documentation.
 		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::Match ******/
-		/****** md5 signature: 73807c62eed49a19c080d0ed89c7ee6e ******/
+		/****** md5 signature: c32ad9568d2c4122e1551cc08be3dd7e ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
-theDistance: float
+theX: double
+theY: double
+theZ: double
+theDistance: double
 theFace: BRepAdaptor_Surface
 theDrawUIso: bool
 theDrawVIso: bool
-theDeflection: float
+theDeflection: double
 theNbUIso: int
 theNbVIso: int
 theDrawer: Prs3d_Drawer
@@ -2743,18 +2737,18 @@ Description
 -----------
 No available documentation.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Real theDeflection, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static bool Match(const double theX, const double theY, const double theZ, const double theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const bool theDrawUIso, const bool theDrawVIso, const double theDeflection, const int theNbUIso, const int theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::Match ******/
-		/****** md5 signature: 891c8b650f703671fbbe03256a120ad1 ******/
+		/****** md5 signature: 638eaa1e651fa505089c7c5f6a3cdf82 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
-theDistance: float
+theX: double
+theY: double
+theZ: double
+theDistance: double
 theFace: BRepAdaptor_Surface
 theDrawer: Prs3d_Drawer
 
@@ -2766,18 +2760,18 @@ Description
 -----------
 No available documentation.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static bool Match(const double theX, const double theY, const double theZ, const double theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::MatchUIso ******/
-		/****** md5 signature: 69e7da890dd62dbded01cce9b3c2ae5d ******/
+		/****** md5 signature: 1759e13773ce29a8e24a51566623e8aa ******/
 		%feature("compactdefaultargs") MatchUIso;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
-theDistance: float
+theX: double
+theY: double
+theZ: double
+theDistance: double
 theFace: BRepAdaptor_Surface
 theDrawer: Prs3d_Drawer
 
@@ -2789,18 +2783,18 @@ Description
 -----------
 No available documentation.
 ") MatchUIso;
-		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static bool MatchUIso(const double theX, const double theY, const double theZ, const double theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::MatchVIso ******/
-		/****** md5 signature: 74aa6ea3dafef67728512fa99d853098 ******/
+		/****** md5 signature: 5f67345a096981de090a88500297ae72 ******/
 		%feature("compactdefaultargs") MatchVIso;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
-theDistance: float
+theX: double
+theY: double
+theZ: double
+theDistance: double
 theFace: BRepAdaptor_Surface
 theDrawer: Prs3d_Drawer
 
@@ -2812,7 +2806,7 @@ Description
 -----------
 No available documentation.
 ") MatchVIso;
-		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
+		static bool MatchVIso(const double theX, const double theY, const double theZ, const double theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 };
 
@@ -2829,7 +2823,7 @@ No available documentation.
 class StdPrs_WFShape : public Prs3d_Root {
 	public:
 		/****** StdPrs_WFShape::Add ******/
-		/****** md5 signature: d3a473601c5ce8dbbf12badedbed254c ******/
+		/****** md5 signature: 6bf8440a5daf269bdb7e14e3ee90cc19 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2837,7 +2831,7 @@ Parameters
 thePresentation: Prs3d_Presentation
 theShape: TopoDS_Shape
 theDrawer: Prs3d_Drawer
-theIsParallel: bool (optional, default to Standard_False)
+theIsParallel: bool (optional, default to false)
 
 Return
 -------
@@ -2851,7 +2845,7 @@ Input parameter: theShape the shape.
 Input parameter: theDrawer the draw settings. 
 Input parameter: theIsParallel perform algorithm using multiple threads.
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, Standard_Boolean theIsParallel = Standard_False);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, bool theIsParallel = false);
 
 		/****** StdPrs_WFShape::AddAllEdges ******/
 		/****** md5 signature: 4d7e4bc00715dfdf3c2311bb197c8859 ******/
@@ -2875,13 +2869,13 @@ Input parameter: theDrawer the drawer settings (deviation angle and maximal para
 		static opencascade::handle<Graphic3d_ArrayOfPrimitives> AddAllEdges(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFShape::AddEdgesOnTriangulation ******/
-		/****** md5 signature: 5a4f39d298356ea43f58252e77fcd7d8 ******/
+		/****** md5 signature: 1548c6a8d36425d03de86268827420f6 ******/
 		%feature("compactdefaultargs") AddEdgesOnTriangulation;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theToExcludeGeometric: bool (optional, default to Standard_True)
+theToExcludeGeometric: bool (optional, default to true)
 
 Return
 -------
@@ -2893,17 +2887,17 @@ Compute free and boundary edges on a triangulation of each face in the given sha
 Input parameter: theShape the list of triangulated faces 
 Input parameter: theToExcludeGeometric flag indicating that Faces with defined Surface should be skipped.
 ") AddEdgesOnTriangulation;
-		static opencascade::handle<Graphic3d_ArrayOfPrimitives> AddEdgesOnTriangulation(const TopoDS_Shape & theShape, const Standard_Boolean theToExcludeGeometric = Standard_True);
+		static opencascade::handle<Graphic3d_ArrayOfPrimitives> AddEdgesOnTriangulation(const TopoDS_Shape & theShape, const bool theToExcludeGeometric = true);
 
 		/****** StdPrs_WFShape::AddEdgesOnTriangulation ******/
-		/****** md5 signature: 818f22c08fe5d4d3cf4085b1ea82ad0a ******/
+		/****** md5 signature: 1f9dd316dbc66d85abe8b57915703dbc ******/
 		%feature("compactdefaultargs") AddEdgesOnTriangulation;
 		%feature("autodoc", "
 Parameters
 ----------
-theSegments: TColgp_SequenceOfPnt
+theSegments: NCollection_Sequence<gp_Pnt>
 theShape: TopoDS_Shape
-theToExcludeGeometric: bool (optional, default to Standard_True)
+theToExcludeGeometric: bool (optional, default to true)
 
 Return
 -------
@@ -2916,7 +2910,7 @@ Input parameter: theSegments the sequence of points defining segments
 Input parameter: theShape the list of triangulated faces 
 Input parameter: theToExcludeGeometric flag indicating that Faces with defined Surface should be skipped.
 ") AddEdgesOnTriangulation;
-		static void AddEdgesOnTriangulation(TColgp_SequenceOfPnt & theSegments, const TopoDS_Shape & theShape, const Standard_Boolean theToExcludeGeometric = Standard_True);
+		static void AddEdgesOnTriangulation(NCollection_Sequence<gp_Pnt> & theSegments, const TopoDS_Shape & theShape, const bool theToExcludeGeometric = true);
 
 		/****** StdPrs_WFShape::AddVertexes ******/
 		/****** md5 signature: d1b2dca7db78c7cfdddec40caebf910c ******/
@@ -2988,7 +2982,7 @@ Draws a surface by drawing the isoparametric curves with respect to a fixed numb
 class StdPrs_HLRPolyShape : public StdPrs_HLRShapeI {
 	public:
 		/****** StdPrs_HLRPolyShape::ComputeHLR ******/
-		/****** md5 signature: dbee7d283c675e79a09ba59bad299adc ******/
+		/****** md5 signature: ecacd663967a0fd20720285e02a52378 ******/
 		%feature("compactdefaultargs") ComputeHLR;
 		%feature("autodoc", "
 Parameters
@@ -3006,7 +3000,7 @@ Description
 -----------
 Compute presentation for specified shape.
 ") ComputeHLR;
-		virtual void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
+		void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
 
 };
 
@@ -3025,7 +3019,7 @@ Compute presentation for specified shape.
 class StdPrs_HLRShape : public StdPrs_HLRShapeI {
 	public:
 		/****** StdPrs_HLRShape::ComputeHLR ******/
-		/****** md5 signature: dbee7d283c675e79a09ba59bad299adc ******/
+		/****** md5 signature: ecacd663967a0fd20720285e02a52378 ******/
 		%feature("compactdefaultargs") ComputeHLR;
 		%feature("autodoc", "
 Parameters
@@ -3043,7 +3037,7 @@ Description
 -----------
 Compute presentation for specified shape.
 ") ComputeHLR;
-		virtual void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
+		void ComputeHLR(const opencascade::handle<Prs3d_Presentation> & thePrs, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const opencascade::handle<Graphic3d_Camera> & theProjector);
 
 };
 

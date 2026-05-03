@@ -99,12 +99,6 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = NLPlate_ListIteratorOfStackOfPlate(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
@@ -122,7 +116,7 @@ typedef NCollection_List<Plate_Plate> NLPlate_StackOfPlate;
 class NLPlate_HGPPConstraint : public Standard_Transient {
 	public:
 		/****** NLPlate_HGPPConstraint::ActiveOrder ******/
-		/****** md5 signature: 207f981136e4bc99c5ca61264358e7b6 ******/
+		/****** md5 signature: 0c5f1ef2150201a94d62ec7c9368e82a ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -132,20 +126,20 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		virtual int ActiveOrder();
 
 		/****** NLPlate_HGPPConstraint::G0Criterion ******/
-		/****** md5 signature: ba8941054f3bef1b8586446aef95008a ******/
+		/****** md5 signature: 316ceb1cd59b01d89c00459a677f46ee ******/
 		%feature("compactdefaultargs") G0Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") G0Criterion;
-		virtual Standard_Real G0Criterion();
+		virtual double G0Criterion();
 
 		/****** NLPlate_HGPPConstraint::G0Target ******/
 		/****** md5 signature: 45a091f6ac88380af9a7e9cd9013e18b ******/
@@ -161,17 +155,17 @@ No available documentation.
 		virtual const gp_XYZ G0Target();
 
 		/****** NLPlate_HGPPConstraint::G1Criterion ******/
-		/****** md5 signature: 31d11b63407a14d85e9e9aec37b45159 ******/
+		/****** md5 signature: 8bb8c0748fc0373c5782cab21b25bb37 ******/
 		%feature("compactdefaultargs") G1Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") G1Criterion;
-		virtual Standard_Real G1Criterion();
+		virtual double G1Criterion();
 
 		/****** NLPlate_HGPPConstraint::G1Target ******/
 		/****** md5 signature: 369f87a65440b83b1ee1c3335e2c3883 ******/
@@ -187,17 +181,17 @@ No available documentation.
 		virtual const Plate_D1 & G1Target();
 
 		/****** NLPlate_HGPPConstraint::G2Criterion ******/
-		/****** md5 signature: 3cf8898f4703729297d25dd47610bd05 ******/
+		/****** md5 signature: 93c53b753e3b614043e7639d3e21d9f4 ******/
 		%feature("compactdefaultargs") G2Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") G2Criterion;
-		virtual Standard_Real G2Criterion();
+		virtual double G2Criterion();
 
 		/****** NLPlate_HGPPConstraint::G2Target ******/
 		/****** md5 signature: a3b5c84a57d4b1f8e190d9162b5d317a ******/
@@ -213,17 +207,17 @@ No available documentation.
 		virtual const Plate_D2 & G2Target();
 
 		/****** NLPlate_HGPPConstraint::G3Criterion ******/
-		/****** md5 signature: 99cf500765c267aed9803a3a3f0a7e24 ******/
+		/****** md5 signature: 41a8b3879d6f368a6b988a2551138c4c ******/
 		%feature("compactdefaultargs") G3Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") G3Criterion;
-		virtual Standard_Real G3Criterion();
+		virtual double G3Criterion();
 
 		/****** NLPlate_HGPPConstraint::G3Target ******/
 		/****** md5 signature: e60232ada2a52449bfff96c4ceccfb36 ******/
@@ -239,7 +233,7 @@ No available documentation.
 		virtual const Plate_D3 & G3Target();
 
 		/****** NLPlate_HGPPConstraint::IncrementalLoadAllowed ******/
-		/****** md5 signature: 7c7315b54d9a7e147b571212d6803624 ******/
+		/****** md5 signature: ac44370c45e3bf6345dbc25a59734f40 ******/
 		%feature("compactdefaultargs") IncrementalLoadAllowed;
 		%feature("autodoc", "Return
 -------
@@ -249,10 +243,10 @@ Description
 -----------
 No available documentation.
 ") IncrementalLoadAllowed;
-		virtual Standard_Boolean IncrementalLoadAllowed();
+		virtual bool IncrementalLoadAllowed();
 
 		/****** NLPlate_HGPPConstraint::IsG0 ******/
-		/****** md5 signature: 08fe88465c5215214e5444d30c67d76c ******/
+		/****** md5 signature: 6af6214d2723396b4c6f1cc08ae97415 ******/
 		%feature("compactdefaultargs") IsG0;
 		%feature("autodoc", "Return
 -------
@@ -262,10 +256,10 @@ Description
 -----------
 No available documentation.
 ") IsG0;
-		virtual Standard_Boolean IsG0();
+		virtual bool IsG0();
 
 		/****** NLPlate_HGPPConstraint::Orientation ******/
-		/****** md5 signature: 6ffae01230ed6b4d068ed7cf8cbbd010 ******/
+		/****** md5 signature: 8c1c72e48fe1e82afc8d392dad080aa1 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -275,10 +269,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		virtual Standard_Integer Orientation();
+		virtual int Orientation();
 
 		/****** NLPlate_HGPPConstraint::SetActiveOrder ******/
-		/****** md5 signature: 6627a648b481434f1002d963b524e3af ******/
+		/****** md5 signature: b2806dc38b0b8e03fc72941f4141109f ******/
 		%feature("compactdefaultargs") SetActiveOrder;
 		%feature("autodoc", "
 Parameters
@@ -293,15 +287,15 @@ Description
 -----------
 No available documentation.
 ") SetActiveOrder;
-		virtual void SetActiveOrder(const Standard_Integer ActiveOrder);
+		virtual void SetActiveOrder(const int ActiveOrder);
 
 		/****** NLPlate_HGPPConstraint::SetG0Criterion ******/
-		/****** md5 signature: e5d4f72943d156f9c7f28ac0f1abcdaf ******/
+		/****** md5 signature: f17622cd5ba5522bfd17856941d39044 ******/
 		%feature("compactdefaultargs") SetG0Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolDist: float
+TolDist: double
 
 Return
 -------
@@ -311,15 +305,15 @@ Description
 -----------
 No available documentation.
 ") SetG0Criterion;
-		virtual void SetG0Criterion(const Standard_Real TolDist);
+		virtual void SetG0Criterion(const double TolDist);
 
 		/****** NLPlate_HGPPConstraint::SetG1Criterion ******/
-		/****** md5 signature: 8561aa02e6a3bca55c5cf2251a617031 ******/
+		/****** md5 signature: eb4d49234ee96cc245e581595cfdb262 ******/
 		%feature("compactdefaultargs") SetG1Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolAng: float
+TolAng: double
 
 Return
 -------
@@ -329,15 +323,15 @@ Description
 -----------
 No available documentation.
 ") SetG1Criterion;
-		virtual void SetG1Criterion(const Standard_Real TolAng);
+		virtual void SetG1Criterion(const double TolAng);
 
 		/****** NLPlate_HGPPConstraint::SetG2Criterion ******/
-		/****** md5 signature: a5d122722718f3249ba2858c9130d173 ******/
+		/****** md5 signature: b337661219a2d4865ae34e2f0c81039b ******/
 		%feature("compactdefaultargs") SetG2Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolCurv: float
+TolCurv: double
 
 Return
 -------
@@ -347,15 +341,15 @@ Description
 -----------
 No available documentation.
 ") SetG2Criterion;
-		virtual void SetG2Criterion(const Standard_Real TolCurv);
+		virtual void SetG2Criterion(const double TolCurv);
 
 		/****** NLPlate_HGPPConstraint::SetG3Criterion ******/
-		/****** md5 signature: 462055d65dd5761a7a23baa70e645f0a ******/
+		/****** md5 signature: a60cadddbe3261f9ba84eae88aa56820 ******/
 		%feature("compactdefaultargs") SetG3Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolG3: float
+TolG3: double
 
 Return
 -------
@@ -365,10 +359,10 @@ Description
 -----------
 No available documentation.
 ") SetG3Criterion;
-		virtual void SetG3Criterion(const Standard_Real TolG3);
+		virtual void SetG3Criterion(const double TolG3);
 
 		/****** NLPlate_HGPPConstraint::SetIncrementalLoadAllowed ******/
-		/****** md5 signature: 7e009556044893c9ae3e1a7a25394afd ******/
+		/****** md5 signature: aebc528c81af8f198845dde6f193547c ******/
 		%feature("compactdefaultargs") SetIncrementalLoadAllowed;
 		%feature("autodoc", "
 Parameters
@@ -383,10 +377,10 @@ Description
 -----------
 No available documentation.
 ") SetIncrementalLoadAllowed;
-		virtual void SetIncrementalLoadAllowed(const Standard_Boolean ILA);
+		virtual void SetIncrementalLoadAllowed(const bool ILA);
 
 		/****** NLPlate_HGPPConstraint::SetOrientation ******/
-		/****** md5 signature: 724d8e15895379fb96f93b0fe0397464 ******/
+		/****** md5 signature: ea8472efb6fc344d596e1410c81f40bb ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -401,7 +395,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		virtual void SetOrientation(const Standard_Integer Orient = 0);
+		virtual void SetOrientation(const int Orient = 0);
 
 		/****** NLPlate_HGPPConstraint::SetUV ******/
 		/****** md5 signature: 420be248beddde77fb3461339c4ac873 ******/
@@ -422,7 +416,7 @@ No available documentation.
 		virtual void SetUV(const gp_XY & UV);
 
 		/****** NLPlate_HGPPConstraint::SetUVFreeSliding ******/
-		/****** md5 signature: 054df600273171ea2ae36dd4be001662 ******/
+		/****** md5 signature: f6fc3791f262a2de5f106d940f31cde5 ******/
 		%feature("compactdefaultargs") SetUVFreeSliding;
 		%feature("autodoc", "
 Parameters
@@ -437,7 +431,7 @@ Description
 -----------
 No available documentation.
 ") SetUVFreeSliding;
-		virtual void SetUVFreeSliding(const Standard_Boolean UVFree);
+		virtual void SetUVFreeSliding(const bool UVFree);
 
 		/****** NLPlate_HGPPConstraint::UV ******/
 		/****** md5 signature: b56f9b837cceb3ce9b7ff3e2244aca28 ******/
@@ -453,7 +447,7 @@ No available documentation.
 		virtual const gp_XY UV();
 
 		/****** NLPlate_HGPPConstraint::UVFreeSliding ******/
-		/****** md5 signature: 93c1bebffd1d30511fbb15c3c2a58ad0 ******/
+		/****** md5 signature: 443f055cf6b0e7cf107b8786fc930eea ******/
 		%feature("compactdefaultargs") UVFreeSliding;
 		%feature("autodoc", "Return
 -------
@@ -463,7 +457,7 @@ Description
 -----------
 No available documentation.
 ") UVFreeSliding;
-		virtual Standard_Boolean UVFreeSliding();
+		virtual bool UVFreeSliding();
 
 };
 
@@ -500,7 +494,7 @@ No available documentation.
 		 NLPlate_NLPlate(const opencascade::handle<Geom_Surface> & InitialSurface);
 
 		/****** NLPlate_NLPlate::ConstraintsSliding ******/
-		/****** md5 signature: d4a48f8fb1eb1520a9a7fb5afa2be1fa ******/
+		/****** md5 signature: f9c356b897acc9509d37c98c6c92068f ******/
 		%feature("compactdefaultargs") ConstraintsSliding;
 		%feature("autodoc", "
 Parameters
@@ -515,10 +509,10 @@ Description
 -----------
 No available documentation.
 ") ConstraintsSliding;
-		void ConstraintsSliding(const Standard_Integer NbIterations = 3);
+		void ConstraintsSliding(const int NbIterations = 3);
 
 		/****** NLPlate_NLPlate::Continuity ******/
-		/****** md5 signature: 4419dd4b2da2aca1389c21e00b442ec1 ******/
+		/****** md5 signature: 0adef6f18eec5ea0742df74b4e0726ff ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -528,7 +522,7 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		Standard_Integer Continuity();
+		int Continuity();
 
 		/****** NLPlate_NLPlate::Evaluate ******/
 		/****** md5 signature: ea37005a58aaa9db10c00849da660f56 ******/
@@ -549,7 +543,7 @@ No available documentation.
 		gp_XYZ Evaluate(const gp_XY & point2d);
 
 		/****** NLPlate_NLPlate::EvaluateDerivative ******/
-		/****** md5 signature: a5aa59fe21be13fd1db05e43decf620a ******/
+		/****** md5 signature: 5ac31cfe60561d9e232523d83d2e27cc ******/
 		%feature("compactdefaultargs") EvaluateDerivative;
 		%feature("autodoc", "
 Parameters
@@ -566,10 +560,10 @@ Description
 -----------
 No available documentation.
 ") EvaluateDerivative;
-		gp_XYZ EvaluateDerivative(const gp_XY & point2d, const Standard_Integer iu, const Standard_Integer iv);
+		gp_XYZ EvaluateDerivative(const gp_XY & point2d, const int iu, const int iv);
 
 		/****** NLPlate_NLPlate::IncrementalSolve ******/
-		/****** md5 signature: 3c5787eb578a340e102dc86c6605f27a ******/
+		/****** md5 signature: a2c981ecd8d66af57b5cd4dc4c68e521 ******/
 		%feature("compactdefaultargs") IncrementalSolve;
 		%feature("autodoc", "
 Parameters
@@ -577,7 +571,7 @@ Parameters
 ord: int (optional, default to 2)
 InitialConsraintOrder: int (optional, default to 1)
 NbIncrements: int (optional, default to 4)
-UVSliding: bool (optional, default to Standard_False)
+UVSliding: bool (optional, default to false)
 
 Return
 -------
@@ -587,7 +581,7 @@ Description
 -----------
 No available documentation.
 ") IncrementalSolve;
-		void IncrementalSolve(const Standard_Integer ord = 2, const Standard_Integer InitialConsraintOrder = 1, const Standard_Integer NbIncrements = 4, const Standard_Boolean UVSliding = Standard_False);
+		void IncrementalSolve(const int ord = 2, const int InitialConsraintOrder = 1, const int NbIncrements = 4, const bool UVSliding = false);
 
 		/****** NLPlate_NLPlate::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -603,7 +597,7 @@ reset the Plate in the initial state ( same as after Create((Surface)).
 		void Init();
 
 		/****** NLPlate_NLPlate::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -613,7 +607,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** NLPlate_NLPlate::Load ******/
 		/****** md5 signature: 714715458486d91f5574e2a0231a2780 ******/
@@ -634,7 +628,7 @@ No available documentation.
 		void Load(const opencascade::handle<NLPlate_HGPPConstraint> & GConst);
 
 		/****** NLPlate_NLPlate::MaxActiveConstraintOrder ******/
-		/****** md5 signature: 57aff8daf8373de430daf5263a89c05d ******/
+		/****** md5 signature: 0642823f305faee0ab639fc706e4d9af ******/
 		%feature("compactdefaultargs") MaxActiveConstraintOrder;
 		%feature("autodoc", "Return
 -------
@@ -644,10 +638,10 @@ Description
 -----------
 No available documentation.
 ") MaxActiveConstraintOrder;
-		Standard_Integer MaxActiveConstraintOrder();
+		int MaxActiveConstraintOrder();
 
 		/****** NLPlate_NLPlate::Solve ******/
-		/****** md5 signature: 6c1fbbdbf6d985a1437f905be32fd064 ******/
+		/****** md5 signature: ba9df9b94cc987bbe2f57e4501d59dfc ******/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "
 Parameters
@@ -663,10 +657,10 @@ Description
 -----------
 No available documentation.
 ") Solve;
-		void Solve(const Standard_Integer ord = 2, const Standard_Integer InitialConsraintOrder = 1);
+		void Solve(const int ord = 2, const int InitialConsraintOrder = 1);
 
 		/****** NLPlate_NLPlate::Solve2 ******/
-		/****** md5 signature: 17043f969e66303a26057adf838fd9bd ******/
+		/****** md5 signature: 40103a2bbeb960794f28a3f618da65e4 ******/
 		%feature("compactdefaultargs") Solve2;
 		%feature("autodoc", "
 Parameters
@@ -682,7 +676,7 @@ Description
 -----------
 No available documentation.
 ") Solve2;
-		void Solve2(const Standard_Integer ord = 2, const Standard_Integer InitialConsraintOrder = 1);
+		void Solve2(const int ord = 2, const int InitialConsraintOrder = 1);
 
 		/****** NLPlate_NLPlate::destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -731,7 +725,7 @@ No available documentation.
 		 NLPlate_HPG0Constraint(const gp_XY & UV, const gp_XYZ & Value);
 
 		/****** NLPlate_HPG0Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -741,10 +735,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG0Constraint::G0Target ******/
-		/****** md5 signature: b3cc59bdd12fca24d022fc570683c0b3 ******/
+		/****** md5 signature: d65dbe28545631ddad91b8fb2574dd5e ******/
 		%feature("compactdefaultargs") G0Target;
 		%feature("autodoc", "Return
 -------
@@ -754,10 +748,10 @@ Description
 -----------
 No available documentation.
 ") G0Target;
-		virtual const gp_XYZ G0Target();
+		const gp_XYZ G0Target();
 
 		/****** NLPlate_HPG0Constraint::IncrementalLoadAllowed ******/
-		/****** md5 signature: 21e2582a7a409a03d8976ae06f48d2d9 ******/
+		/****** md5 signature: 89f023be946c6385fe7216dc125d79a2 ******/
 		%feature("compactdefaultargs") IncrementalLoadAllowed;
 		%feature("autodoc", "Return
 -------
@@ -767,10 +761,10 @@ Description
 -----------
 No available documentation.
 ") IncrementalLoadAllowed;
-		virtual Standard_Boolean IncrementalLoadAllowed();
+		bool IncrementalLoadAllowed();
 
 		/****** NLPlate_HPG0Constraint::IsG0 ******/
-		/****** md5 signature: 68f49666422590db1bfac5d2876b7821 ******/
+		/****** md5 signature: 16ca3514320a5a31fb7b08ea0fe10920 ******/
 		%feature("compactdefaultargs") IsG0;
 		%feature("autodoc", "Return
 -------
@@ -780,10 +774,10 @@ Description
 -----------
 No available documentation.
 ") IsG0;
-		virtual Standard_Boolean IsG0();
+		bool IsG0();
 
 		/****** NLPlate_HPG0Constraint::SetIncrementalLoadAllowed ******/
-		/****** md5 signature: c5a3cf4bde13a3200190dfc3383fca0e ******/
+		/****** md5 signature: 332150d13ca88af92e1571d0a6dd02a4 ******/
 		%feature("compactdefaultargs") SetIncrementalLoadAllowed;
 		%feature("autodoc", "
 Parameters
@@ -798,10 +792,10 @@ Description
 -----------
 No available documentation.
 ") SetIncrementalLoadAllowed;
-		virtual void SetIncrementalLoadAllowed(const Standard_Boolean ILA);
+		void SetIncrementalLoadAllowed(const bool ILA);
 
 		/****** NLPlate_HPG0Constraint::SetUVFreeSliding ******/
-		/****** md5 signature: 1627e60d0aeecbc5345e27692aa6bbbb ******/
+		/****** md5 signature: 268c3ffd779d920712db1ea23980480f ******/
 		%feature("compactdefaultargs") SetUVFreeSliding;
 		%feature("autodoc", "
 Parameters
@@ -816,10 +810,10 @@ Description
 -----------
 No available documentation.
 ") SetUVFreeSliding;
-		virtual void SetUVFreeSliding(const Standard_Boolean UVFree);
+		void SetUVFreeSliding(const bool UVFree);
 
 		/****** NLPlate_HPG0Constraint::UVFreeSliding ******/
-		/****** md5 signature: c571574ce76211546a7c3eaa5a16a836 ******/
+		/****** md5 signature: a33ffa3faac3e9f7efdcf0ff6a8dbe8d ******/
 		%feature("compactdefaultargs") UVFreeSliding;
 		%feature("autodoc", "Return
 -------
@@ -829,7 +823,7 @@ Description
 -----------
 No available documentation.
 ") UVFreeSliding;
-		virtual Standard_Boolean UVFreeSliding();
+		bool UVFreeSliding();
 
 };
 
@@ -867,7 +861,7 @@ No available documentation.
 		 NLPlate_HPG1Constraint(const gp_XY & UV, const Plate_D1 & D1T);
 
 		/****** NLPlate_HPG1Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -877,10 +871,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG1Constraint::G1Target ******/
-		/****** md5 signature: 38327234597f33776755c3d91c20782f ******/
+		/****** md5 signature: 613d23044b830e66b22f88dc095ae4ee ******/
 		%feature("compactdefaultargs") G1Target;
 		%feature("autodoc", "Return
 -------
@@ -890,10 +884,10 @@ Description
 -----------
 No available documentation.
 ") G1Target;
-		virtual const Plate_D1 & G1Target();
+		const Plate_D1 & G1Target();
 
 		/****** NLPlate_HPG1Constraint::IncrementalLoadAllowed ******/
-		/****** md5 signature: 21e2582a7a409a03d8976ae06f48d2d9 ******/
+		/****** md5 signature: 89f023be946c6385fe7216dc125d79a2 ******/
 		%feature("compactdefaultargs") IncrementalLoadAllowed;
 		%feature("autodoc", "Return
 -------
@@ -903,10 +897,10 @@ Description
 -----------
 No available documentation.
 ") IncrementalLoadAllowed;
-		virtual Standard_Boolean IncrementalLoadAllowed();
+		bool IncrementalLoadAllowed();
 
 		/****** NLPlate_HPG1Constraint::IsG0 ******/
-		/****** md5 signature: 68f49666422590db1bfac5d2876b7821 ******/
+		/****** md5 signature: 16ca3514320a5a31fb7b08ea0fe10920 ******/
 		%feature("compactdefaultargs") IsG0;
 		%feature("autodoc", "Return
 -------
@@ -916,10 +910,10 @@ Description
 -----------
 No available documentation.
 ") IsG0;
-		virtual Standard_Boolean IsG0();
+		bool IsG0();
 
 		/****** NLPlate_HPG1Constraint::Orientation ******/
-		/****** md5 signature: 8412e37c175a1f9c850f04016f5685b7 ******/
+		/****** md5 signature: 20f8deda1b4e97fe4239787d9f102f1f ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -929,10 +923,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		virtual Standard_Integer Orientation();
+		int Orientation();
 
 		/****** NLPlate_HPG1Constraint::SetIncrementalLoadAllowed ******/
-		/****** md5 signature: c5a3cf4bde13a3200190dfc3383fca0e ******/
+		/****** md5 signature: 332150d13ca88af92e1571d0a6dd02a4 ******/
 		%feature("compactdefaultargs") SetIncrementalLoadAllowed;
 		%feature("autodoc", "
 Parameters
@@ -947,10 +941,10 @@ Description
 -----------
 No available documentation.
 ") SetIncrementalLoadAllowed;
-		virtual void SetIncrementalLoadAllowed(const Standard_Boolean ILA);
+		void SetIncrementalLoadAllowed(const bool ILA);
 
 		/****** NLPlate_HPG1Constraint::SetOrientation ******/
-		/****** md5 signature: 75e698f74ad007f6ce15d59817bdcb28 ******/
+		/****** md5 signature: 9754ef885cbb8e1249314592fe1e4629 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -965,7 +959,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		virtual void SetOrientation(const Standard_Integer Orient = 0);
+		void SetOrientation(const int Orient = 0);
 
 };
 
@@ -1004,7 +998,7 @@ No available documentation.
 		 NLPlate_HPG0G1Constraint(const gp_XY & UV, const gp_XYZ & Value, const Plate_D1 & D1T);
 
 		/****** NLPlate_HPG0G1Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -1014,10 +1008,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG0G1Constraint::G1Target ******/
-		/****** md5 signature: 38327234597f33776755c3d91c20782f ******/
+		/****** md5 signature: 613d23044b830e66b22f88dc095ae4ee ******/
 		%feature("compactdefaultargs") G1Target;
 		%feature("autodoc", "Return
 -------
@@ -1027,10 +1021,10 @@ Description
 -----------
 No available documentation.
 ") G1Target;
-		virtual const Plate_D1 & G1Target();
+		const Plate_D1 & G1Target();
 
 		/****** NLPlate_HPG0G1Constraint::Orientation ******/
-		/****** md5 signature: 8412e37c175a1f9c850f04016f5685b7 ******/
+		/****** md5 signature: 20f8deda1b4e97fe4239787d9f102f1f ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -1040,10 +1034,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		virtual Standard_Integer Orientation();
+		int Orientation();
 
 		/****** NLPlate_HPG0G1Constraint::SetOrientation ******/
-		/****** md5 signature: 75e698f74ad007f6ce15d59817bdcb28 ******/
+		/****** md5 signature: 9754ef885cbb8e1249314592fe1e4629 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -1058,7 +1052,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		virtual void SetOrientation(const Standard_Integer Orient = 0);
+		void SetOrientation(const int Orient = 0);
 
 };
 
@@ -1097,7 +1091,7 @@ No available documentation.
 		 NLPlate_HPG2Constraint(const gp_XY & UV, const Plate_D1 & D1T, const Plate_D2 & D2T);
 
 		/****** NLPlate_HPG2Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -1107,10 +1101,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG2Constraint::G2Target ******/
-		/****** md5 signature: 1b1bf9555e1b6b2f267ff993ec1e6c8f ******/
+		/****** md5 signature: fd1ff1d45be133168457d4f43801f036 ******/
 		%feature("compactdefaultargs") G2Target;
 		%feature("autodoc", "Return
 -------
@@ -1120,7 +1114,7 @@ Description
 -----------
 No available documentation.
 ") G2Target;
-		virtual const Plate_D2 & G2Target();
+		const Plate_D2 & G2Target();
 
 };
 
@@ -1160,7 +1154,7 @@ No available documentation.
 		 NLPlate_HPG0G2Constraint(const gp_XY & UV, const gp_XYZ & Value, const Plate_D1 & D1T, const Plate_D2 & D2T);
 
 		/****** NLPlate_HPG0G2Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -1170,10 +1164,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG0G2Constraint::G2Target ******/
-		/****** md5 signature: 1b1bf9555e1b6b2f267ff993ec1e6c8f ******/
+		/****** md5 signature: fd1ff1d45be133168457d4f43801f036 ******/
 		%feature("compactdefaultargs") G2Target;
 		%feature("autodoc", "Return
 -------
@@ -1183,7 +1177,7 @@ Description
 -----------
 No available documentation.
 ") G2Target;
-		virtual const Plate_D2 & G2Target();
+		const Plate_D2 & G2Target();
 
 };
 
@@ -1223,7 +1217,7 @@ No available documentation.
 		 NLPlate_HPG3Constraint(const gp_XY & UV, const Plate_D1 & D1T, const Plate_D2 & D2T, const Plate_D3 & D3T);
 
 		/****** NLPlate_HPG3Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -1233,10 +1227,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG3Constraint::G3Target ******/
-		/****** md5 signature: 011f821af879ff512d978c49a235e4b5 ******/
+		/****** md5 signature: e0b61a98b120b6a2eae150e4e45e1e55 ******/
 		%feature("compactdefaultargs") G3Target;
 		%feature("autodoc", "Return
 -------
@@ -1246,7 +1240,7 @@ Description
 -----------
 No available documentation.
 ") G3Target;
-		virtual const Plate_D3 & G3Target();
+		const Plate_D3 & G3Target();
 
 };
 
@@ -1287,7 +1281,7 @@ No available documentation.
 		 NLPlate_HPG0G3Constraint(const gp_XY & UV, const gp_XYZ & Value, const Plate_D1 & D1T, const Plate_D2 & D2T, const Plate_D3 & D3T);
 
 		/****** NLPlate_HPG0G3Constraint::ActiveOrder ******/
-		/****** md5 signature: 6b890b04a93d6b95a211597e197dfec3 ******/
+		/****** md5 signature: 55e008448046091255f11251f1e137c4 ******/
 		%feature("compactdefaultargs") ActiveOrder;
 		%feature("autodoc", "Return
 -------
@@ -1297,10 +1291,10 @@ Description
 -----------
 No available documentation.
 ") ActiveOrder;
-		virtual Standard_Integer ActiveOrder();
+		int ActiveOrder();
 
 		/****** NLPlate_HPG0G3Constraint::G3Target ******/
-		/****** md5 signature: 011f821af879ff512d978c49a235e4b5 ******/
+		/****** md5 signature: e0b61a98b120b6a2eae150e4e45e1e55 ******/
 		%feature("compactdefaultargs") G3Target;
 		%feature("autodoc", "Return
 -------
@@ -1310,7 +1304,7 @@ Description
 -----------
 No available documentation.
 ") G3Target;
-		virtual const Plate_D3 & G3Target();
+		const Plate_D3 & G3Target();
 
 };
 

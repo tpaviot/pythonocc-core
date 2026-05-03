@@ -147,7 +147,7 @@ TopAbs_UNKNOWN = TopAbs_State.TopAbs_UNKNOWN
 class TopAbs {
 	public:
 		/****** TopAbs::Complement ******/
-		/****** md5 signature: d36735cb2b4d8defcd8da7a47d45737d ******/
+		/****** md5 signature: 00d572779348259d31fb4ea9e5f16946 ******/
 		%feature("compactdefaultargs") Complement;
 		%feature("autodoc", "
 Parameters
@@ -165,7 +165,7 @@ Reverses the interior/exterior status of each side of the object. So, to take th
 		static TopAbs_Orientation Complement(const TopAbs_Orientation Or);
 
 		/****** TopAbs::Compose ******/
-		/****** md5 signature: 6d609448eff18789b8606e52047834a9 ******/
+		/****** md5 signature: ec665a833e602c3ff2d7e5c181242e66 ******/
 		%feature("compactdefaultargs") Compose;
 		%feature("autodoc", "
 Parameters
@@ -238,7 +238,7 @@ Prints the name of the State <St> as a String on the Stream <S> and returns <S>.
 		static Standard_OStream & Print(const TopAbs_State St, std::ostream &OutValue);
 
 		/****** TopAbs::Reverse ******/
-		/****** md5 signature: 24070ddabf8011f0d7eb29a4dc573a82 ******/
+		/****** md5 signature: 927b08b25545822c7f93a8cddc33b078 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -251,17 +251,17 @@ TopAbs_Orientation
 
 Description
 -----------
-xchanges the interior/exterior status of the two sides. This is what happens when the sense of direction is reversed. The following rules apply: //! FORWARD REVERSED REVERSED FORWARD INTERNAL INTERNAL EXTERNAL EXTERNAL //! Reverse exchange the material sides.
+Exchanges the interior/exterior status of the two sides. This is what happens when the sense of direction is reversed. The following rules apply: //! FORWARD REVERSED REVERSED FORWARD INTERNAL INTERNAL EXTERNAL EXTERNAL //! Reverse exchange the material sides.
 ") Reverse;
 		static TopAbs_Orientation Reverse(const TopAbs_Orientation Or);
 
 		/****** TopAbs::ShapeOrientationFromString ******/
-		/****** md5 signature: d56c822166135ec6bcf030a0a5131e19 ******/
+		/****** md5 signature: e55d7acdd0eb4ace2c838f9a68da7671 ******/
 		%feature("compactdefaultargs") ShapeOrientationFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theOrientationString: str
+theOrientationString: char *
 
 Return
 -------
@@ -273,15 +273,15 @@ Returns the shape orientation from the given string identifier (using case-insen
 Parameter theOrientationString string identifier 
 Return: shape orientation or TopAbs_FORWARD if string identifier is invalid.
 ") ShapeOrientationFromString;
-		static TopAbs_Orientation ShapeOrientationFromString(Standard_CString theOrientationString);
+		static TopAbs_Orientation ShapeOrientationFromString(const char * const theOrientationString);
 
 		/****** TopAbs::ShapeOrientationFromString ******/
-		/****** md5 signature: 4bd3a8b6506d611c099d1cd778dd9fa2 ******/
+		/****** md5 signature: 2dcf07912afb33e7e02c165b9ffb15b1 ******/
 		%feature("compactdefaultargs") ShapeOrientationFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theOrientationString: str
+theOrientationString: char *
 
 Return
 -------
@@ -294,10 +294,10 @@ Parameter theOrientationString string identifier
 Parameter theOrientation detected shape orientation 
 Return: True if string identifier is known.
 ") ShapeOrientationFromString;
-		static Standard_Boolean ShapeOrientationFromString(Standard_CString theOrientationString, TopAbs_Orientation &OutValue);
+		static bool ShapeOrientationFromString(const char * const theOrientationString, TopAbs_Orientation &OutValue);
 
 		/****** TopAbs::ShapeOrientationToString ******/
-		/****** md5 signature: 08fa460365bf4bd2ca48f9d91582fbaa ******/
+		/****** md5 signature: 2e86056f8cd9f1b34344fb7485ceff32 ******/
 		%feature("compactdefaultargs") ShapeOrientationToString;
 		%feature("autodoc", "
 Parameters
@@ -306,7 +306,7 @@ theOrientation: TopAbs_Orientation
 
 Return
 -------
-str
+char *
 
 Description
 -----------
@@ -314,15 +314,15 @@ Returns the string name for a given shape orientation.
 Parameter theOrientation shape orientation 
 Return: string identifier from the list FORWARD, REVERSED, INTERNAL, EXTERNAL.
 ") ShapeOrientationToString;
-		static Standard_CString ShapeOrientationToString(TopAbs_Orientation theOrientation);
+		static const char * ShapeOrientationToString(TopAbs_Orientation theOrientation);
 
 		/****** TopAbs::ShapeTypeFromString ******/
-		/****** md5 signature: ae0bd90ac4739a50df48b85c8da99f5d ******/
+		/****** md5 signature: e0c4dec30db17f483716bc3334b1cb85 ******/
 		%feature("compactdefaultargs") ShapeTypeFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeString: str
+theTypeString: char *
 
 Return
 -------
@@ -334,15 +334,15 @@ Returns the shape type from the given string identifier (using case-insensitive 
 Parameter theTypeString string identifier 
 Return: shape type or TopAbs_SHAPE if string identifier is invalid.
 ") ShapeTypeFromString;
-		static TopAbs_ShapeEnum ShapeTypeFromString(Standard_CString theTypeString);
+		static TopAbs_ShapeEnum ShapeTypeFromString(const char * theTypeString);
 
 		/****** TopAbs::ShapeTypeFromString ******/
-		/****** md5 signature: d787d966b2bad997712c62065f94654d ******/
+		/****** md5 signature: 73570274c88a0214f3c7c156b8a5e851 ******/
 		%feature("compactdefaultargs") ShapeTypeFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeString: str
+theTypeString: char *
 
 Return
 -------
@@ -355,10 +355,10 @@ Parameter theTypeString string identifier
 Parameter theType detected shape type 
 Return: True if string identifier is known.
 ") ShapeTypeFromString;
-		static Standard_Boolean ShapeTypeFromString(Standard_CString theTypeString, TopAbs_ShapeEnum &OutValue);
+		static bool ShapeTypeFromString(const char * theTypeString, TopAbs_ShapeEnum &OutValue);
 
 		/****** TopAbs::ShapeTypeToString ******/
-		/****** md5 signature: 47d69b9834372b84634fd7993fa38cf6 ******/
+		/****** md5 signature: 0c326091f1c6b09b7614b0383e5eedc7 ******/
 		%feature("compactdefaultargs") ShapeTypeToString;
 		%feature("autodoc", "
 Parameters
@@ -367,7 +367,7 @@ theType: TopAbs_ShapeEnum
 
 Return
 -------
-str
+char *
 
 Description
 -----------
@@ -375,7 +375,7 @@ Returns the string name for a given shape type.
 Parameter theType shape type 
 Return: string identifier from the list COMPOUND, COMPSOLID, SOLID, SHELL, FACE, WIRE, EDGE, VERTEX, SHAPE.
 ") ShapeTypeToString;
-		static Standard_CString ShapeTypeToString(TopAbs_ShapeEnum theType);
+		static const char * ShapeTypeToString(TopAbs_ShapeEnum theType);
 
 };
 

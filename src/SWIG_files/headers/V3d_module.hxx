@@ -27,7 +27,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<V3d_ImageDumpOptions.hxx>
 #include<V3d_Light.hxx>
 #include<V3d_ListOfLight.hxx>
-#include<V3d_ListOfView.hxx>
 #include<V3d_Plane.hxx>
 #include<V3d_PositionLight.hxx>
 #include<V3d_PositionalLight.hxx>
@@ -36,10 +35,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<V3d_StereoDumpOptions.hxx>
 #include<V3d_Trihedron.hxx>
 #include<V3d_TypeOfAxe.hxx>
-#include<V3d_TypeOfBackfacingModel.hxx>
-#include<V3d_TypeOfLight.hxx>
 #include<V3d_TypeOfOrientation.hxx>
-#include<V3d_TypeOfShadingModel.hxx>
 #include<V3d_TypeOfView.hxx>
 #include<V3d_TypeOfVisualization.hxx>
 #include<V3d_UnMapped.hxx>

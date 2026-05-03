@@ -48,8 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom.html"
 #include<GeomAbs_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
-#include<TColgp_module.hxx>
-#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
@@ -81,8 +79,6 @@ end of numpy support section
 %import NCollection.i
 %import gp.i
 %import GeomAbs.i
-%import TColgp.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -99,7 +95,6 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(Geom_Geometry)
-%wrap_handle(Geom_OsculatingSurface)
 %wrap_handle(Geom_Transformation)
 %wrap_handle(Geom_AxisPlacement)
 %wrap_handle(Geom_Curve)
@@ -136,7 +131,6 @@ from OCC.Core.Exception import *
 %wrap_handle(Geom_SurfaceOfRevolution)
 %wrap_handle(Geom_ToroidalSurface)
 %wrap_handle(Geom_TrimmedCurve)
-%wrap_handle(Geom_HSequenceOfBSplineSurface)
 /* end handles declaration */
 
 /* templates */
@@ -151,6 +145,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_HSequence<opencascade::handle<Geom_BSplineSurface>> Geom_HSequenceOfBSplineSurface;
 typedef NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>> Geom_SequenceOfBSplineSurface;
 /* end typedefs declaration */
 
@@ -303,13 +298,13 @@ No available documentation.
 		opencascade::handle<Geom_Geometry> Mirrored(const gp_Ax2 & A2);
 
 		/****** Geom_Geometry::Rotate ******/
-		/****** md5 signature: 12c4967f27a0900e4176252164d2f2ce ******/
+		/****** md5 signature: 4f23eb48ae661bcc2194b1bfa3833e6e ******/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "
 Parameters
 ----------
 A1: gp_Ax1
-Ang: float
+Ang: double
 
 Return
 -------
@@ -319,16 +314,16 @@ Description
 -----------
 Rotates a Geometry. A1 is the axis of the rotation. Ang is the angular value of the rotation in radians.
 ") Rotate;
-		void Rotate(const gp_Ax1 & A1, const Standard_Real Ang);
+		void Rotate(const gp_Ax1 & A1, const double Ang);
 
 		/****** Geom_Geometry::Rotated ******/
-		/****** md5 signature: cb5a01a90604da02e01690d5f3ec0573 ******/
+		/****** md5 signature: 05eb3a4acc2c033fb4545d293be50017 ******/
 		%feature("compactdefaultargs") Rotated;
 		%feature("autodoc", "
 Parameters
 ----------
 A1: gp_Ax1
-Ang: float
+Ang: double
 
 Return
 -------
@@ -338,16 +333,16 @@ Description
 -----------
 No available documentation.
 ") Rotated;
-		opencascade::handle<Geom_Geometry> Rotated(const gp_Ax1 & A1, const Standard_Real Ang);
+		opencascade::handle<Geom_Geometry> Rotated(const gp_Ax1 & A1, const double Ang);
 
 		/****** Geom_Geometry::Scale ******/
-		/****** md5 signature: e66fc526c4232f21fb4238a81292d522 ******/
+		/****** md5 signature: 50055bef65483e2ad604240f27a3f0b6 ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-S: float
+S: double
 
 Return
 -------
@@ -357,16 +352,16 @@ Description
 -----------
 Scales a Geometry. S is the scaling value.
 ") Scale;
-		void Scale(const gp_Pnt & P, const Standard_Real S);
+		void Scale(const gp_Pnt & P, const double S);
 
 		/****** Geom_Geometry::Scaled ******/
-		/****** md5 signature: b56b19e6f209b14dfb703b8090a22d67 ******/
+		/****** md5 signature: 037ead0b4fb8e6c2a4ac00ca9e0655ad ******/
 		%feature("compactdefaultargs") Scaled;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-S: float
+S: double
 
 Return
 -------
@@ -376,7 +371,7 @@ Description
 -----------
 No available documentation.
 ") Scaled;
-		opencascade::handle<Geom_Geometry> Scaled(const gp_Pnt & P, const Standard_Real S);
+		opencascade::handle<Geom_Geometry> Scaled(const gp_Pnt & P, const double S);
 
 		/****** Geom_Geometry::Transform ******/
 		/****** md5 signature: a1d3460922b11ae022509ed1313e419c ******/
@@ -499,160 +494,6 @@ No available documentation.
 	}
 };
 
-/*******************************
-* class Geom_OsculatingSurface *
-*******************************/
-class Geom_OsculatingSurface : public Standard_Transient {
-	public:
-		/****** Geom_OsculatingSurface::Geom_OsculatingSurface ******/
-		/****** md5 signature: 1ee8edb50ce59753aeed0bf012ba88e5 ******/
-		%feature("compactdefaultargs") Geom_OsculatingSurface;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Geom_OsculatingSurface;
-		 Geom_OsculatingSurface();
-
-		/****** Geom_OsculatingSurface::Geom_OsculatingSurface ******/
-		/****** md5 signature: 6805f264f7a2aca9c843e15662924f3b ******/
-		%feature("compactdefaultargs") Geom_OsculatingSurface;
-		%feature("autodoc", "
-Parameters
-----------
-BS: Geom_Surface
-Tol: float
-
-Return
--------
-None
-
-Description
------------
-detects if the surface has punctual U or V isoparametric curve along on the bounds of the surface relatively to the tolerance Tol and Builds the corresponding osculating surfaces.
-") Geom_OsculatingSurface;
-		 Geom_OsculatingSurface(const opencascade::handle<Geom_Surface> & BS, const Standard_Real Tol);
-
-		/****** Geom_OsculatingSurface::BasisSurface ******/
-		/****** md5 signature: 8dbbf01303a0ac26e255b604d8f6addc ******/
-		%feature("compactdefaultargs") BasisSurface;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_Surface>
-
-Description
------------
-No available documentation.
-") BasisSurface;
-		opencascade::handle<Geom_Surface> BasisSurface();
-
-
-        /****************** DumpJson ******************/
-        %feature("autodoc", "
-Parameters
-----------
-depth: int, default=-1
-
-Return
--------
-str
-
-Description
------------
-Dump the object to JSON string.
-") DumpJson;
-        %extend{
-            std::string DumpJson(int depth=-1) {
-            std::stringstream s;
-            self->DumpJson(s, depth);
-            return "{" + s.str() + "}" ;}
-        };
-		/****** Geom_OsculatingSurface::Init ******/
-		/****** md5 signature: 05c5bc64624158cab2c176b4ec75d4d9 ******/
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "
-Parameters
-----------
-BS: Geom_Surface
-Tol: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Init;
-		void Init(const opencascade::handle<Geom_Surface> & BS, const Standard_Real Tol);
-
-		/****** Geom_OsculatingSurface::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-No available documentation.
-") Tolerance;
-		Standard_Real Tolerance();
-
-		/****** Geom_OsculatingSurface::UOscSurf ******/
-		/****** md5 signature: d214d7f2559a57bdb210c2f1992638e5 ******/
-		%feature("compactdefaultargs") UOscSurf;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-L: Geom_BSplineSurface
-
-Return
--------
-t: bool
-
-Description
------------
-if Standard_True, L is the local osculating surface along U at the point U,V.
-") UOscSurf;
-		Standard_Boolean UOscSurf(const Standard_Real U, const Standard_Real V, Standard_Boolean &OutValue, opencascade::handle<Geom_BSplineSurface> & L);
-
-		/****** Geom_OsculatingSurface::VOscSurf ******/
-		/****** md5 signature: 9fe9b662c9482f9ffa9e40c07368f309 ******/
-		%feature("compactdefaultargs") VOscSurf;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-L: Geom_BSplineSurface
-
-Return
--------
-t: bool
-
-Description
------------
-if Standard_True, L is the local osculating surface along V at the point U,V.
-") VOscSurf;
-		Standard_Boolean VOscSurf(const Standard_Real U, const Standard_Real V, Standard_Boolean &OutValue, opencascade::handle<Geom_BSplineSurface> & L);
-
-};
-
-
-%make_alias(Geom_OsculatingSurface)
-
-%extend Geom_OsculatingSurface {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /****************************
 * class Geom_Transformation *
 ****************************/
@@ -763,7 +604,7 @@ Raised if the transformation is singular. This means that the ScaleFactor is low
 		opencascade::handle<Geom_Transformation> Inverted();
 
 		/****** Geom_Transformation::IsNegative ******/
-		/****** md5 signature: 4a3d241c868ecfc4b59898855c5acee1 ******/
+		/****** md5 signature: 26409192a5b5912b4ae2821923bd6b1d ******/
 		%feature("compactdefaultargs") IsNegative;
 		%feature("autodoc", "Return
 -------
@@ -773,7 +614,7 @@ Description
 -----------
 Checks whether this transformation is an indirect transformation: returns true if the determinant of the matrix of the vectorial part of the transformation is less than 0.
 ") IsNegative;
-		Standard_Boolean IsNegative();
+		bool IsNegative();
 
 		/****** Geom_Transformation::Multiplied ******/
 		/****** md5 signature: 71e173a64e0e4d8853e47622b257cfeb ******/
@@ -812,7 +653,7 @@ Computes the transformation composed with Other and <self> . <self> = <self> * O
 		void Multiply(const opencascade::handle<Geom_Transformation> & theOther);
 
 		/****** Geom_Transformation::Power ******/
-		/****** md5 signature: b0a91d705e2c59e2c06b5d1e8653c266 ******/
+		/****** md5 signature: 5ce940fd959874d4fa4526ea85811194 ******/
 		%feature("compactdefaultargs") Power;
 		%feature("autodoc", "
 Parameters
@@ -827,10 +668,10 @@ Description
 -----------
 Computes the following composition of transformations if N > 0 <self> * <self> * .......* <self>. if N = 0 Identity if N < 0 <self>.Invert() * .........* <self>.Invert() //! Raised if N < 0 and if the transformation is not inversible.
 ") Power;
-		void Power(const Standard_Integer N);
+		void Power(const int N);
 
 		/****** Geom_Transformation::Powered ******/
-		/****** md5 signature: 09f92389ad4c408e25d52b4bfd9123f3 ******/
+		/****** md5 signature: 3cb9337090ffca9fce1e47ebe5f34d0c ******/
 		%feature("compactdefaultargs") Powered;
 		%feature("autodoc", "
 Parameters
@@ -845,7 +686,7 @@ Description
 -----------
 Raised if N < 0 and if the transformation is not inversible.
 ") Powered;
-		opencascade::handle<Geom_Transformation> Powered(const Standard_Integer N);
+		opencascade::handle<Geom_Transformation> Powered(const int N);
 
 		/****** Geom_Transformation::PreMultiply ******/
 		/****** md5 signature: b5036346785a93fa4e2524abf7a94067 ******/
@@ -866,17 +707,17 @@ Computes the matrix of the transformation composed with <self> and Other. <self>
 		void PreMultiply(const opencascade::handle<Geom_Transformation> & Other);
 
 		/****** Geom_Transformation::ScaleFactor ******/
-		/****** md5 signature: bf80fcb76494dd02d25b2cd942a598b0 ******/
+		/****** md5 signature: 241886e4679c1d2fb207a361df6123ec ******/
 		%feature("compactdefaultargs") ScaleFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the scale value of the transformation.
 ") ScaleFactor;
-		Standard_Real ScaleFactor();
+		double ScaleFactor();
 
 		/****** Geom_Transformation::SetMirror ******/
 		/****** md5 signature: 018517f54000b1b8726ef644507d76de ******/
@@ -933,13 +774,13 @@ Makes the transformation into a symmetrical transformation with respect to a pla
 		void SetMirror(const gp_Ax2 & theA2);
 
 		/****** Geom_Transformation::SetRotation ******/
-		/****** md5 signature: 2da91cfc39e0fe56bfb0d5751f6035e6 ******/
+		/****** md5 signature: 8ca92f87f96f3ca635971abdb0b8b2f8 ******/
 		%feature("compactdefaultargs") SetRotation;
 		%feature("autodoc", "
 Parameters
 ----------
 theA1: gp_Ax1
-theAng: float
+theAng: double
 
 Return
 -------
@@ -949,16 +790,16 @@ Description
 -----------
 Makes the transformation into a rotation. A1 is the axis rotation and Ang is the angular value of the rotation in radians.
 ") SetRotation;
-		void SetRotation(const gp_Ax1 & theA1, const Standard_Real theAng);
+		void SetRotation(const gp_Ax1 & theA1, const double theAng);
 
 		/****** Geom_Transformation::SetScale ******/
-		/****** md5 signature: bed998146235d63758e4787ea7082fd7 ******/
+		/****** md5 signature: b4799deb82ba26116a58140a8125e467 ******/
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
-theScale: float
+theScale: double
 
 Return
 -------
@@ -968,7 +809,7 @@ Description
 -----------
 Makes the transformation into a scale. P is the center of the scale and S is the scaling value.
 ") SetScale;
-		void SetScale(const gp_Pnt & thePnt, const Standard_Real theScale);
+		void SetScale(const gp_Pnt & thePnt, const double theScale);
 
 		/****** Geom_Transformation::SetTransformation ******/
 		/****** md5 signature: 0442703330a767f0acf817a93f5412e6 ******/
@@ -1063,7 +904,7 @@ Converts the gp_Trsf transformation T into this transformation.
 		void SetTrsf(const gp_Trsf & theTrsf);
 
 		/****** Geom_Transformation::Transforms ******/
-		/****** md5 signature: f2a89563519a1a2e66e96d7ba9d8a162 ******/
+		/****** md5 signature: 2641c96c7a84dc58520acc1c17413ca3 ******/
 		%feature("compactdefaultargs") Transforms;
 		%feature("autodoc", "
 Parameters
@@ -1071,9 +912,9 @@ Parameters
 
 Return
 -------
-theX: float
-theY: float
-theZ: float
+theX: double
+theY: double
+theZ: double
 
 Description
 -----------
@@ -1095,7 +936,7 @@ Returns a non transient copy of <self>.
 		const gp_Trsf Trsf();
 
 		/****** Geom_Transformation::Value ******/
-		/****** md5 signature: db31835fbba84053249e8011cb71725d ******/
+		/****** md5 signature: db03844c832bfd302dffa685b1abdad8 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1105,13 +946,13 @@ theCol: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the coefficients of the global matrix of transformation. It is a 3 rows X 4 columns matrix. //! Raised if Row < 1 or Row > 3 or Col < 1 or Col > 4.
 ") Value;
-		Standard_Real Value(const Standard_Integer theRow, const Standard_Integer theCol);
+		double Value(const int theRow, const int theCol);
 
 };
 
@@ -1131,7 +972,7 @@ Returns the coefficients of the global matrix of transformation. It is a 3 rows 
 class Geom_AxisPlacement : public Geom_Geometry {
 	public:
 		/****** Geom_AxisPlacement::Angle ******/
-		/****** md5 signature: 5790a43e2c6e3e0e15204554178ae983 ******/
+		/****** md5 signature: a6ee85b7f2eefb4d7f1948b0d571f073 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "
 Parameters
@@ -1140,13 +981,13 @@ Other: Geom_AxisPlacement
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the angular value, in radians, between the 'main Direction' of this positioning system and that of positioning system Other. The result is a value between 0 and Pi.
 ") Angle;
-		Standard_Real Angle(const opencascade::handle<Geom_AxisPlacement> & Other);
+		double Angle(const opencascade::handle<Geom_AxisPlacement> & Other);
 
 		/****** Geom_AxisPlacement::Axis ******/
 		/****** md5 signature: cb9b52ff887b682f8bfc1eb2f646705a ******/
@@ -1258,6 +1099,9 @@ Assigns the point P as the origin of this positioning system.
 %nodefaultctor Geom_Curve;
 class Geom_Curve : public Geom_Geometry {
 	public:
+		class ResD1 {};
+		class ResD2 {};
+		class ResD3 {};
 		/****** Geom_Curve::Continuity ******/
 		/****** md5 signature: 8dbb475c198ca068fb275dadeaaecf82 ******/
 		%feature("compactdefaultargs") Continuity;
@@ -1272,12 +1116,12 @@ It is the global continuity of the curve C0: only geometric continuity, C1: cont
 		virtual GeomAbs_Shape Continuity();
 
 		/****** Geom_Curve::D0 ******/
-		/****** md5 signature: 3375707864bca566a2f8c23866c10a67 ******/
+		/****** md5 signature: 77d0123c658983521fc98e228b1cc34e ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 
 Return
@@ -1286,17 +1130,17 @@ None
 
 Description
 -----------
-Returns in P the point of parameter U. If the curve is periodic then the returned point is P(U) with U = Ustart + (U - Uend) where Ustart and Uend are the parametric bounds of the curve. //! Raised only for the 'OffsetCurve' if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel.
+Returns in P the point of parameter U.
 ") D0;
-		virtual void D0(const Standard_Real U, gp_Pnt & P);
+		void D0(const double U, gp_Pnt & P);
 
 		/****** Geom_Curve::D1 ******/
-		/****** md5 signature: 89cd394b2ffd1198b81d32873974b234 ******/
+		/****** md5 signature: 1b5dfa5d3765633365bf4a4589c249fc ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 
@@ -1306,17 +1150,17 @@ None
 
 Description
 -----------
-Returns the point P of parameter U and the first derivative V1. Raised if the continuity of the curve is not C1.
+Returns the point P of parameter U and the first derivative V1.
 ") D1;
-		virtual void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
+		void D1(const double U, gp_Pnt & P, gp_Vec & V1);
 
 		/****** Geom_Curve::D2 ******/
-		/****** md5 signature: 024994d212dd3b4aa49741339d125c2b ******/
+		/****** md5 signature: d0fbe6ed927aa2bf48daab6adc71548e ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1327,17 +1171,17 @@ None
 
 Description
 -----------
-Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the curve is not C2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2.
 ") D2;
-		virtual void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		void D2(const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** Geom_Curve::D3 ******/
-		/****** md5 signature: 40d448ccc90da6aafa9dfe27018a93d8 ******/
+		/****** md5 signature: fdfc8d8a55b0c992f09b9109c61f8841 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1349,17 +1193,17 @@ None
 
 Description
 -----------
-Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the curve is not C3.
+Returns the point P of parameter U, the first, the second and the third derivative.
 ") D3;
-		virtual void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		void D3(const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** Geom_Curve::DN ******/
-		/****** md5 signature: 5f534d3ebc7a93ebbca7a9711f3bbf69 ******/
+		/****** md5 signature: d537398c0d0477f0c4d2ca38198a12ce ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 N: int
 
 Return
@@ -1368,9 +1212,9 @@ gp_Vec
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the curve is not CN. //! Raised if the derivative cannot be computed easily. e.g. rational bspline and n > 3. Raised if N < 1.
+The returned vector gives the value of the derivative for the order of derivation N.
 ") DN;
-		virtual gp_Vec DN(const Standard_Real U, const Standard_Integer N);
+		gp_Vec DN(const double U, const int N);
 
 
         /****************** DumpJson ******************/
@@ -1393,21 +1237,112 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_Curve::EvalD0 ******/
+		/****** md5 signature: 505d557b22b5e4f77ff57096d26b15f0 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter U. Raises an exception on failure (e.g. OffsetCurve at singular point).
+") EvalD0;
+		virtual gp_Pnt EvalD0(const double U);
+
+		/****** Geom_Curve::EvalD1 ******/
+		/****** md5 signature: 5df5bc30fb1157ffc4fac3d13b4447ea ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Computes the point and first derivative at parameter U. Raises an exception if the curve continuity is not C1.
+") EvalD1;
+		virtual Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_Curve::EvalD2 ******/
+		/****** md5 signature: 423e9207dec280b4758e8008e22ad80b ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Computes the point and first two derivatives at parameter U. Raises an exception if the curve continuity is not C2.
+") EvalD2;
+		virtual Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_Curve::EvalD3 ******/
+		/****** md5 signature: a0d3367911b895d245d7d2d3633a78c3 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Computes the point and first three derivatives at parameter U. Raises an exception if the curve continuity is not C3.
+") EvalD3;
+		virtual Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_Curve::EvalDN ******/
+		/****** md5 signature: 802291923f09f22b53ba9e4798098256 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the Nth derivative at parameter U. Raises an exception if the curve continuity is not CN, or N < 1.
+") EvalDN;
+		virtual gp_Vec EvalDN(const double U, const int N);
+
 		/****** Geom_Curve::FirstParameter ******/
-		/****** md5 signature: d1641ead93c23610f9b5155af230348d ******/
+		/****** md5 signature: a78bafc15480770b071a253f06828586 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter. Warnings: It can be RealFirst from package Standard if the curve is infinite.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		virtual double FirstParameter();
 
 		/****** Geom_Curve::IsCN ******/
-		/****** md5 signature: cdc71317785ad261bf847a4d35bd338d ******/
+		/****** md5 signature: d91b7f1c6f18e99f7967c482d42ed15a ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -1422,10 +1357,10 @@ Description
 -----------
 Returns true if the degree of continuity of this curve is at least N. Exceptions - Standard_RangeError if N is less than 0.
 ") IsCN;
-		virtual Standard_Boolean IsCN(const Standard_Integer N);
+		virtual bool IsCN(const int N);
 
 		/****** Geom_Curve::IsClosed ******/
-		/****** md5 signature: be44ba5ab9beeb7f60f33a5068f1446b ******/
+		/****** md5 signature: 405d237c077e28f85d15fe632f54a459 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -1435,10 +1370,10 @@ Description
 -----------
 Returns true if the curve is closed. Some curves such as circle are always closed, others such as line are never closed (by definition). Some Curves such as OffsetCurve can be closed or not. These curves are considered as closed if the distance between the first point and the last point of the curve is lower or equal to the Resolution from package gp which is a fixed criterion independent of the application.
 ") IsClosed;
-		virtual Standard_Boolean IsClosed();
+		virtual bool IsClosed();
 
 		/****** Geom_Curve::IsPeriodic ******/
-		/****** md5 signature: d56d22c204e88ed05ef91fdcfed4696c ******/
+		/****** md5 signature: cc1f4d34e3157e4b3935c7e06662e775 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1448,23 +1383,23 @@ Description
 -----------
 Is the parametrization of the curve periodic ? It is possible only if the curve is closed and if the following relation is satisfied: for each parametric value U the distance between the point P(u) and the point P (u + T) is lower or equal to Resolution from package gp, T is the period and must be a constant. There are three possibilities: . the curve is never periodic by definition (SegmentLine) . the curve is always periodic by definition (Circle) . the curve can be defined as periodic (BSpline). In this case a function SetPeriodic allows you to give the shape of the curve. The general rule for this case is: if a curve can be periodic or not the default periodicity set is non periodic and you have to turn (explicitly) the curve into a periodic curve if you want the curve to be periodic.
 ") IsPeriodic;
-		virtual Standard_Boolean IsPeriodic();
+		virtual bool IsPeriodic();
 
 		/****** Geom_Curve::LastParameter ******/
-		/****** md5 signature: 78c346d133438e913e50667c32977882 ******/
+		/****** md5 signature: 8158738d773dc87261105cbfc8f7b45a ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the last parameter. Warnings: It can be RealLast from package Standard if the curve is infinite.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		virtual double LastParameter();
 
 		/****** Geom_Curve::ParametricTransformation ******/
-		/****** md5 signature: bdca45730355736db0adad0640921553 ******/
+		/****** md5 signature: afcca400669f8e65a6587b6983cf5184 ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -1473,26 +1408,26 @@ T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods returns 1. //! It can be redefined. For example on the Line.
 ") ParametricTransformation;
-		virtual Standard_Real ParametricTransformation(const gp_Trsf & T);
+		virtual double ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_Curve::Period ******/
-		/****** md5 signature: e4913c399f3a0a7037e498c5a9da8e1f ******/
+		/****** md5 signature: 7838680e9098dc30bd28a13c225a8304 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this curve. Exceptions Standard_NoSuchObject if this curve is not periodic.
 ") Period;
-		virtual Standard_Real Period();
+		virtual double Period();
 
 		/****** Geom_Curve::Reverse ******/
 		/****** md5 signature: a5409b070cc6638cc52d06409c4a4a1c ******/
@@ -1521,49 +1456,49 @@ Returns a copy of <self> reversed.
 		opencascade::handle<Geom_Curve> Reversed();
 
 		/****** Geom_Curve::ReversedParameter ******/
-		/****** md5 signature: 1e6faad2f92c4f0b35b1d30d75ce1d6e ******/
+		/****** md5 signature: 3086ae27f5263c3640995e2eed822306 ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the reversed curve for the point of parameter U on <self>. //! me->Reversed()->Value(me->ReversedParameter(U)) //! is the same point as //! me->Value(U).
 ") ReversedParameter;
-		virtual Standard_Real ReversedParameter(const Standard_Real U);
+		virtual double ReversedParameter(const double U);
 
 		/****** Geom_Curve::TransformedParameter ******/
-		/****** md5 signature: d80751dbb3219578b31bd3c0a414bac8 ******/
+		/****** md5 signature: 69aefc9fe5e2d60d5ab36ce984d401c9 ******/
 		%feature("compactdefaultargs") TransformedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. //! me->Transformed(T)->Value(me->TransformedParameter(U,T)) //! is the same point as //! me->Value(U).Transformed(T) //! This methods returns <U> //! It can be redefined. For example on the Line.
 ") TransformedParameter;
-		virtual Standard_Real TransformedParameter(const Standard_Real U, const gp_Trsf & T);
+		virtual double TransformedParameter(const double U, const gp_Trsf & T);
 
 		/****** Geom_Curve::Value ******/
-		/****** md5 signature: 183286476627e1c9a629476db3ac9809 ******/
+		/****** md5 signature: 09b3729e64b5f6780787df28a9af683c ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -1571,9 +1506,9 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter U on <self>. If the curve is periodic then the returned point is P(U) with U = Ustart + (U - Uend) where Ustart and Uend are the parametric bounds of the curve. it is implemented with D0. //! Raised only for the 'OffsetCurve' if it is not possible to compute the current point. For example when the first derivative on the basis curve and the offset direction are parallel.
+Computes the point of parameter U on <self>.
 ") Value;
-		gp_Pnt Value(const Standard_Real U);
+		gp_Pnt Value(const double U);
 
 };
 
@@ -1596,7 +1531,7 @@ CurveArrayEvalExtend(Geom_Curve)
 class Geom_Point : public Geom_Geometry {
 	public:
 		/****** Geom_Point::Coord ******/
-		/****** md5 signature: 79450184f151cdfb2e17082273c2711b ******/
+		/****** md5 signature: c625b777de95eab0b7bf01e38c2d97cc ******/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "
 Parameters
@@ -1604,9 +1539,9 @@ Parameters
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -1615,7 +1550,7 @@ returns the Coordinates of <self>.
 		virtual void Coord(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_Point::Distance ******/
-		/****** md5 signature: 5ca541e2eedee55fbb99d8ccbfeef545 ******/
+		/****** md5 signature: e0344d3d453bef83728d8485cbe9bd8c ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -1624,13 +1559,13 @@ Other: Geom_Point
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the distance between <self> and <Other>.
 ") Distance;
-		Standard_Real Distance(const opencascade::handle<Geom_Point> & Other);
+		double Distance(const opencascade::handle<Geom_Point> & Other);
 
 		/****** Geom_Point::Pnt ******/
 		/****** md5 signature: 62185e082456296be704b7021bf04c3c ******/
@@ -1646,7 +1581,7 @@ returns a non transient copy of <self>.
 		virtual gp_Pnt Pnt();
 
 		/****** Geom_Point::SquareDistance ******/
-		/****** md5 signature: e1841e9c758beabac14dfeb3418f94be ******/
+		/****** md5 signature: 990e8f201337b267f01ea574b6b9c337 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -1655,52 +1590,52 @@ Other: Geom_Point
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the square distance between <self> and <Other>.
 ") SquareDistance;
-		Standard_Real SquareDistance(const opencascade::handle<Geom_Point> & Other);
+		double SquareDistance(const opencascade::handle<Geom_Point> & Other);
 
 		/****** Geom_Point::X ******/
-		/****** md5 signature: 413eb82a4e8452543b5734eec1c1d581 ******/
+		/****** md5 signature: 6a1a08089ba6ebfca1e32a89c4db240e ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the X coordinate of <self>.
 ") X;
-		virtual Standard_Real X();
+		virtual double X();
 
 		/****** Geom_Point::Y ******/
-		/****** md5 signature: f3f396df994cd6abe723c99ac9bdc8cf ******/
+		/****** md5 signature: c57cbfbdf22037ef086c0e73eca57ff2 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the Y coordinate of <self>.
 ") Y;
-		virtual Standard_Real Y();
+		virtual double Y();
 
 		/****** Geom_Point::Z ******/
-		/****** md5 signature: ce6bda01c58a8fbde5f89a8ecfb8ff29 ******/
+		/****** md5 signature: 08283df68faa05a7015bbea60abb654c ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the Z coordinate of <self>.
 ") Z;
-		virtual Standard_Real Z();
+		virtual double Z();
 
 };
 
@@ -1719,8 +1654,11 @@ returns the Z coordinate of <self>.
 %nodefaultctor Geom_Surface;
 class Geom_Surface : public Geom_Geometry {
 	public:
+		class ResD1 {};
+		class ResD2 {};
+		class ResD3 {};
 		/****** Geom_Surface::Bounds ******/
-		/****** md5 signature: 360399f01d1e8a352d0e92c21b81737e ******/
+		/****** md5 signature: 9fea2f0eb84a9e1d97ddb100400e314b ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -1728,14 +1666,14 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
-Returns the parametric bounds U1, U2, V1 and V2 of this surface. If the surface is infinite, this function can return a value equal to Precision::Infinite: instead of Standard_Real::LastReal.
+Returns the parametric bounds U1, U2, V1 and V2 of this surface. If the surface is infinite, this function can return a value equal to Precision::Infinite: instead of double::LastReal.
 ") Bounds;
 		virtual void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1753,13 +1691,13 @@ Returns the Global Continuity of the surface in direction U and V: - C0: only ge
 		virtual GeomAbs_Shape Continuity();
 
 		/****** Geom_Surface::D0 ******/
-		/****** md5 signature: f22bf3454948ea1083f2b615379eae1f ******/
+		/****** md5 signature: dd58ffa5512ae067c7254048cc4d3feb ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 P: gp_Pnt
 
 Return
@@ -1768,18 +1706,18 @@ None
 
 Description
 -----------
-Computes the point of parameter U,V on the surface. //! Raised only for an 'OffsetSurface' if it is not possible to compute the current point.
+Computes the point of parameter (U, V).
 ") D0;
-		virtual void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
+		void D0(const double U, const double V, gp_Pnt & P);
 
 		/****** Geom_Surface::D1 ******/
-		/****** md5 signature: 91515045f48dad47c0dde2583e926abf ******/
+		/****** md5 signature: 1d6676de9a0bb97a20b55fa985191874 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -1790,18 +1728,18 @@ None
 
 Description
 -----------
-Computes the point P and the first derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C1. //! Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
+Computes the point and first partial derivatives.
 ") D1;
-		virtual void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+		void D1(const double U, const double V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
 		/****** Geom_Surface::D2 ******/
-		/****** md5 signature: 1b0a714cc440a85085eed2fbfa932f3d ******/
+		/****** md5 signature: c84d959e6eee7b454fdc0b0fbee8893b ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -1815,18 +1753,18 @@ None
 
 Description
 -----------
-Computes the point P, the first and the second derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C2.
+Computes the point and partial derivatives up to 2nd order.
 ") D2;
-		virtual void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+		void D2(const double U, const double V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
 		/****** Geom_Surface::D3 ******/
-		/****** md5 signature: 079e32ecf07f1478bd5b19119b3ad84f ******/
+		/****** md5 signature: d314ffd0c00c5bc1a3f40c01b3389e6a ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -1844,18 +1782,18 @@ None
 
 Description
 -----------
-Computes the point P, the first,the second and the third derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C2.
+Computes the point and partial derivatives up to 3rd order.
 ") D3;
-		virtual void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+		void D3(const double U, const double V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
 		/****** Geom_Surface::DN ******/
-		/****** md5 signature: c33ccd4f50ab17b4dcf5bde75edfe95e ******/
+		/****** md5 signature: 8e44c2cefc330dc6187ca74074494ff4 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Nu: int
 Nv: int
 
@@ -1865,9 +1803,9 @@ gp_Vec
 
 Description
 -----------
-Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). //! Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+Computes the derivative of order Nu in U and Nv in V.
 ") DN;
-		virtual gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
+		gp_Vec DN(const double U, const double V, const int Nu, const int Nv);
 
 
         /****************** DumpJson ******************/
@@ -1890,8 +1828,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_Surface::EvalD0 ******/
+		/****** md5 signature: 9a0a4322abc15962f961021cbd032f41 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter (U, V) on the surface. Raises an exception on failure.
+") EvalD0;
+		virtual gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_Surface::EvalD1 ******/
+		/****** md5 signature: f8e455111c81eaff92201981a6e40fa2 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception if the surface continuity is not C1.
+") EvalD1;
+		virtual Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_Surface::EvalD2 ******/
+		/****** md5 signature: 6ff2779da7e663dc30d7fcd65bdad12e ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception if the surface continuity is not C2.
+") EvalD2;
+		virtual Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_Surface::EvalD3 ******/
+		/****** md5 signature: 0bbde3cc994459156a8a6da78c7e001a ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Raises an exception if the surface continuity is not C3.
+") EvalD3;
+		virtual Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_Surface::EvalDN ******/
+		/****** md5 signature: 107606daa3e20a2b2b9590484260558d ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at the point (U, V). Raises an exception on failure.
+") EvalDN;
+		virtual gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_Surface::IsCNu ******/
-		/****** md5 signature: 9a8d69e4cda56394291ac9a353acde96 ******/
+		/****** md5 signature: 8af16d85d60adda62ed14642e14f3422 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -1906,10 +1941,10 @@ Description
 -----------
 Returns the order of continuity of the surface in the U parametric direction. Raised if N < 0.
 ") IsCNu;
-		virtual Standard_Boolean IsCNu(const Standard_Integer N);
+		virtual bool IsCNu(const int N);
 
 		/****** Geom_Surface::IsCNv ******/
-		/****** md5 signature: f2ead6755ee2f9b5670869325296fbe1 ******/
+		/****** md5 signature: 22d54040e121b9df617e59d1d006f926 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -1924,10 +1959,10 @@ Description
 -----------
 Returns the order of continuity of the surface in the V parametric direction. Raised if N < 0.
 ") IsCNv;
-		virtual Standard_Boolean IsCNv(const Standard_Integer N);
+		virtual bool IsCNv(const int N);
 
 		/****** Geom_Surface::IsUClosed ******/
-		/****** md5 signature: c0ae2370b7fac0bc8df5c69af1a4bb4f ******/
+		/****** md5 signature: bd59627f450c0455539df9b6085f5a58 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -1937,10 +1972,10 @@ Description
 -----------
 Checks whether this surface is closed in the u parametric direction. Returns true if, in the u parametric direction: taking uFirst and uLast as the parametric bounds in the u parametric direction, for each parameter v, the distance between the points P(uFirst, v) and P(uLast, v) is less than or equal to gp::Resolution().
 ") IsUClosed;
-		virtual Standard_Boolean IsUClosed();
+		virtual bool IsUClosed();
 
 		/****** Geom_Surface::IsUPeriodic ******/
-		/****** md5 signature: 7581170790b0f02294b3a98c2ef39654 ******/
+		/****** md5 signature: 8f478e78b79e79aa422f926fb9ede7dc ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1950,10 +1985,10 @@ Description
 -----------
 Checks if this surface is periodic in the u parametric direction. Returns true if: - this surface is closed in the u parametric direction, and - there is a constant T such that the distance between the points P (u, v) and P (u + T, v) (or the points P (u, v) and P (u, v + T)) is less than or equal to gp::Resolution(). //! Note: T is the parametric period in the u parametric direction.
 ") IsUPeriodic;
-		virtual Standard_Boolean IsUPeriodic();
+		virtual bool IsUPeriodic();
 
 		/****** Geom_Surface::IsVClosed ******/
-		/****** md5 signature: 7bc708d0e5aa4c7d8e106b0974c6ff1a ******/
+		/****** md5 signature: 0130cbd8680ad02350f14716feb2da4d ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -1963,10 +1998,10 @@ Description
 -----------
 Checks whether this surface is closed in the u parametric direction. Returns true if, in the v parametric direction: taking vFirst and vLast as the parametric bounds in the v parametric direction, for each parameter u, the distance between the points P(u, vFirst) and P(u, vLast) is less than or equal to gp::Resolution().
 ") IsVClosed;
-		virtual Standard_Boolean IsVClosed();
+		virtual bool IsVClosed();
 
 		/****** Geom_Surface::IsVPeriodic ******/
-		/****** md5 signature: 157f80ff35b8cd25014f915c1fea4793 ******/
+		/****** md5 signature: 381c929257ac1c9e590592b4c34af90f ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1976,7 +2011,7 @@ Description
 -----------
 Checks if this surface is periodic in the v parametric direction. Returns true if: - this surface is closed in the v parametric direction, and - there is a constant T such that the distance between the points P (u, v) and P (u + T, v) (or the points P (u, v) and P (u, v + T)) is less than or equal to gp::Resolution(). //! Note: T is the parametric period in the v parametric direction.
 ") IsVPeriodic;
-		virtual Standard_Boolean IsVPeriodic();
+		virtual bool IsVPeriodic();
 
 		/****** Geom_Surface::ParametricTransformation ******/
 		/****** md5 signature: 40e23eaf2984de2985d125adc2919a99 ******/
@@ -1997,7 +2032,7 @@ Returns a 2d transformation used to find the new parameters of a point on the tr
 		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_Surface::TransformParameters ******/
-		/****** md5 signature: 0142b5420374870689e386ed7648e08a ******/
+		/****** md5 signature: b66a466be2ab12213596da84ec32d114 ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -2006,8 +2041,8 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -2016,12 +2051,12 @@ Computes the parameters on the transformed surface for the transform of the poin
 		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_Surface::UIso ******/
-		/****** md5 signature: 655eceb48190f9eee1c9e258704f6fd1 ******/
+		/****** md5 signature: 1d43b62905b90a48703299314b6608c1 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -2031,20 +2066,20 @@ Description
 -----------
 Computes the U isoparametric curve.
 ") UIso;
-		virtual opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		virtual opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_Surface::UPeriod ******/
-		/****** md5 signature: b5a8af3fdd028670ffc618d509b562aa ******/
+		/****** md5 signature: da114fd3a2d26886e0b27128e1d80a77 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this surface in the u parametric direction. Raises if the surface is not uperiodic.
 ") UPeriod;
-		virtual Standard_Real UPeriod();
+		virtual double UPeriod();
 
 		/****** Geom_Surface::UReverse ******/
 		/****** md5 signature: c37eb1d71c5ca68f919a2a5076d1feb1 ******/
@@ -2073,30 +2108,30 @@ Reverses the U direction of parametrization of <self>. The bounds of the surface
 		opencascade::handle<Geom_Surface> UReversed();
 
 		/****** Geom_Surface::UReversedParameter ******/
-		/****** md5 signature: 7fd7d20296a57b638e5ad7571b2de083 ******/
+		/****** md5 signature: 1a4ac83b74e6ee1571ccdda1d7275928 ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the Ureversed surface for the point of parameter U on <self>. @code me->UReversed()->Value(me->UReversedParameter(U),V) @endcode is the same point as @code me->Value(U,V) @endcode.
 ") UReversedParameter;
-		virtual Standard_Real UReversedParameter(const Standard_Real U);
+		virtual double UReversedParameter(const double U);
 
 		/****** Geom_Surface::VIso ******/
-		/****** md5 signature: db68084f77ce9d3f4f4583ec9350bf65 ******/
+		/****** md5 signature: 0beb38a85ffd52aeb0d69287b269f873 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -2106,20 +2141,20 @@ Description
 -----------
 Computes the V isoparametric curve.
 ") VIso;
-		virtual opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		virtual opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_Surface::VPeriod ******/
-		/****** md5 signature: aaa8f393a9608b88a2a3f8c8043833cb ******/
+		/****** md5 signature: e86089463b2a89664feb779cfe8eac35 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this surface in the v parametric direction. raises if the surface is not vperiodic.
 ") VPeriod;
-		virtual Standard_Real VPeriod();
+		virtual double VPeriod();
 
 		/****** Geom_Surface::VReverse ******/
 		/****** md5 signature: 6d6df699bdaaa274fe4fc413bec7e505 ******/
@@ -2148,31 +2183,31 @@ Reverses the V direction of parametrization of <self>. The bounds of the surface
 		opencascade::handle<Geom_Surface> VReversed();
 
 		/****** Geom_Surface::VReversedParameter ******/
-		/****** md5 signature: 1d95298bde777a8594bd52e1249dc41e ******/
+		/****** md5 signature: 22702c77133552ce5bd696082de0f16a ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the Vreversed surface for the point of parameter V on <self>. @code me->VReversed()->Value(U,me->VReversedParameter(V)) @endcode is the same point as @code me->Value(U,V) @endcode.
 ") VReversedParameter;
-		virtual Standard_Real VReversedParameter(const Standard_Real V);
+		virtual double VReversedParameter(const double V);
 
 		/****** Geom_Surface::Value ******/
-		/****** md5 signature: 42959897db65d301eb66b5528ed15f16 ******/
+		/****** md5 signature: 1d772e21419ea87f3366f4e4aac10967 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 
 Return
 -------
@@ -2180,9 +2215,9 @@ gp_Pnt
 
 Description
 -----------
-Computes the point of parameter (U, V) on the surface. //! It is implemented with D0. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point. //! Raised only for an 'OffsetSurface' if it is not possible to compute the current point.
+Computes the point of parameter (U, V) on the surface.
 ") Value;
-		gp_Pnt Value(const Standard_Real U, const Standard_Real V);
+		gp_Pnt Value(const double U, const double V);
 
 };
 
@@ -2205,7 +2240,7 @@ SurfaceArrayEvalExtend(Geom_Surface)
 class Geom_Vector : public Geom_Geometry {
 	public:
 		/****** Geom_Vector::Angle ******/
-		/****** md5 signature: e05d4c108d8e1f2ef3793dcc911b8156 ******/
+		/****** md5 signature: f068d89430612894326c397075eb6a57 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "
 Parameters
@@ -2214,16 +2249,16 @@ Other: Geom_Vector
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the angular value, in radians, between this vector and vector Other. The result is a value between 0 and Pi. Exceptions gp_VectorWithNullMagnitude if: - the magnitude of this vector is less than or equal to gp::Resolution(), or - the magnitude of vector Other is less than or equal to gp::Resolution().
 ") Angle;
-		Standard_Real Angle(const opencascade::handle<Geom_Vector> & Other);
+		double Angle(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_Vector::AngleWithRef ******/
-		/****** md5 signature: 6e41e75c2ebb14296a5478ce43f1e727 ******/
+		/****** md5 signature: 291bc94cd85435633f93bc4e6244a743 ******/
 		%feature("compactdefaultargs") AngleWithRef;
 		%feature("autodoc", "
 Parameters
@@ -2233,16 +2268,16 @@ VRef: Geom_Vector
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the angular value, in radians, between this vector and vector Other. The result is a value between -Pi and Pi. The vector VRef defines the positive sense of rotation: the angular value is positive if the cross product this ^ Other has the same orientation as VRef (in relation to the plane defined by this vector and vector Other). Otherwise, it is negative. Exceptions Standard_DomainError if this vector, vector Other and vector VRef are coplanar, except if this vector and vector Other are parallel. gp_VectorWithNullMagnitude if the magnitude of this vector, vector Other or vector VRef is less than or equal to gp::Resolution().
 ") AngleWithRef;
-		Standard_Real AngleWithRef(const opencascade::handle<Geom_Vector> & Other, const opencascade::handle<Geom_Vector> & VRef);
+		double AngleWithRef(const opencascade::handle<Geom_Vector> & Other, const opencascade::handle<Geom_Vector> & VRef);
 
 		/****** Geom_Vector::Coord ******/
-		/****** md5 signature: 43b0651f3b971777fc055ece9d877be9 ******/
+		/****** md5 signature: 8727c8f7843268c68e4567bcf908f51f ******/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "
 Parameters
@@ -2250,9 +2285,9 @@ Parameters
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -2335,7 +2370,7 @@ Computes the cross product between <self> and <Other>. A new direction is return
 		virtual opencascade::handle<Geom_Vector> Crossed(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_Vector::Dot ******/
-		/****** md5 signature: a084614ff065a86541c23b7789ce6ddc ******/
+		/****** md5 signature: 0e1c1129f90afed7e0c8fcda676f7fe2 ******/
 		%feature("compactdefaultargs") Dot;
 		%feature("autodoc", "
 Parameters
@@ -2344,16 +2379,16 @@ Other: Geom_Vector
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the scalar product of this vector and vector Other.
 ") Dot;
-		Standard_Real Dot(const opencascade::handle<Geom_Vector> & Other);
+		double Dot(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_Vector::DotCross ******/
-		/****** md5 signature: fb2becfd159c35bf86275a5c5fd05d09 ******/
+		/****** md5 signature: 186c9a193ed5369a38168f1d81877c4f ******/
 		%feature("compactdefaultargs") DotCross;
 		%feature("autodoc", "
 Parameters
@@ -2363,26 +2398,26 @@ V2: Geom_Vector
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the triple scalar product. Returns me . (V1 ^ V2).
 ") DotCross;
-		Standard_Real DotCross(const opencascade::handle<Geom_Vector> & V1, const opencascade::handle<Geom_Vector> & V2);
+		double DotCross(const opencascade::handle<Geom_Vector> & V1, const opencascade::handle<Geom_Vector> & V2);
 
 		/****** Geom_Vector::Magnitude ******/
-		/****** md5 signature: 0ebeea8be91ecea6aa2ed50ad4c62ecc ******/
+		/****** md5 signature: 95ec16e9fa0ced1bc59271892b633fa9 ******/
 		%feature("compactdefaultargs") Magnitude;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Magnitude of <self>.
 ") Magnitude;
-		virtual Standard_Real Magnitude();
+		virtual double Magnitude();
 
 		/****** Geom_Vector::Reverse ******/
 		/****** md5 signature: b751d6874fc026e19a7a6cb37e9ac1b4 ******/
@@ -2411,17 +2446,17 @@ Returns a copy of <self> reversed.
 		opencascade::handle<Geom_Vector> Reversed();
 
 		/****** Geom_Vector::SquareMagnitude ******/
-		/****** md5 signature: fcb1984b0230cd2baf43b1ca4e59922e ******/
+		/****** md5 signature: 5edb9f761dc5797eca195a49d75e4f16 ******/
 		%feature("compactdefaultargs") SquareMagnitude;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the square magnitude of <self>.
 ") SquareMagnitude;
-		virtual Standard_Real SquareMagnitude();
+		virtual double SquareMagnitude();
 
 		/****** Geom_Vector::Vec ******/
 		/****** md5 signature: 42aa6840ad15a2b32f7e0eedf8e96165 ******/
@@ -2437,43 +2472,43 @@ Converts this vector into a gp_Vec vector.
 		const gp_Vec Vec();
 
 		/****** Geom_Vector::X ******/
-		/****** md5 signature: 2dbf42f7dc56303f104fb0fa585dc6e6 ******/
+		/****** md5 signature: d1cd5c739a5e638da850f6d4184da84c ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the X coordinate of <self>.
 ") X;
-		Standard_Real X();
+		double X();
 
 		/****** Geom_Vector::Y ******/
-		/****** md5 signature: 7fd17991f11a9702e525c7070ce7cec6 ******/
+		/****** md5 signature: a8645c42b76f8d7a4895271f99de6d50 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Y coordinate of <self>.
 ") Y;
-		Standard_Real Y();
+		double Y();
 
 		/****** Geom_Vector::Z ******/
-		/****** md5 signature: 87b89b9e016f37b0146cf52868684676 ******/
+		/****** md5 signature: 0f93794bcb3e7aa1261f56c7c023b4aa ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Z coordinate of <self>.
 ") Z;
-		Standard_Real Z();
+		double Z();
 
 };
 
@@ -2542,7 +2577,7 @@ Returns a non transient copy of <self>.
 		const gp_Ax1 Ax1();
 
 		/****** Geom_Axis1Placement::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -2581,7 +2616,7 @@ Returns a copy of <self> reversed.
 		opencascade::handle<Geom_Axis1Placement> Reversed();
 
 		/****** Geom_Axis1Placement::SetDirection ******/
-		/****** md5 signature: 089cd0dbd337e8a7cca112bb9c58f86d ******/
+		/****** md5 signature: 7de6d13831d580c76c44e99f71e0f77d ******/
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "
 Parameters
@@ -2599,7 +2634,7 @@ Assigns V to the unit vector of this axis.
 		void SetDirection(const gp_Dir & V);
 
 		/****** Geom_Axis1Placement::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -2684,7 +2719,7 @@ Returns a non transient copy of <self>.
 		gp_Ax2 Ax2();
 
 		/****** Geom_Axis2Placement::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -2715,7 +2750,7 @@ Assigns the origin and the three unit vectors of A2 to this coordinate system.
 		void SetAx2(const gp_Ax2 & A2);
 
 		/****** Geom_Axis2Placement::SetDirection ******/
-		/****** md5 signature: 089cd0dbd337e8a7cca112bb9c58f86d ******/
+		/****** md5 signature: 7de6d13831d580c76c44e99f71e0f77d ******/
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "
 Parameters
@@ -2769,7 +2804,7 @@ Changes the 'YDirection' of the axis placement, Vy is the new 'YDirection'. If V
 		void SetYDirection(const gp_Dir & Vy);
 
 		/****** Geom_Axis2Placement::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -2928,14 +2963,14 @@ Returns a transient copy of P.
 		 Geom_CartesianPoint(const gp_Pnt & P);
 
 		/****** Geom_CartesianPoint::Geom_CartesianPoint ******/
-		/****** md5 signature: e3a4b66d209480e6fd0b562beca8419a ******/
+		/****** md5 signature: 65d76c5b6846bfc110758e3bbc0fe79e ******/
 		%feature("compactdefaultargs") Geom_CartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -2945,10 +2980,10 @@ Description
 -----------
 Constructs a point defined by its three Cartesian coordinates X, Y and Z.
 ") Geom_CartesianPoint;
-		 Geom_CartesianPoint(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		 Geom_CartesianPoint(const double X, const double Y, const double Z);
 
 		/****** Geom_CartesianPoint::Coord ******/
-		/****** md5 signature: e99cf8b292099c83aa1f0e5a180b32f4 ******/
+		/****** md5 signature: 6d2907cbd5abf8d847881895e153aba4 ******/
 		%feature("compactdefaultargs") Coord;
 		%feature("autodoc", "
 Parameters
@@ -2956,9 +2991,9 @@ Parameters
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -2967,7 +3002,7 @@ Returns the coordinates of <self>.
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_CartesianPoint::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -2980,7 +3015,7 @@ Creates a new object which is a copy of this point.
 		opencascade::handle<Geom_Geometry> Copy();
 
 		/****** Geom_CartesianPoint::Pnt ******/
-		/****** md5 signature: b4f96417d5d5e751d865e2331d6e77f7 ******/
+		/****** md5 signature: 475856206f63b8f41843db8552f12771 ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "Return
 -------
@@ -2993,14 +3028,14 @@ Returns a non transient cartesian point with the same coordinates as <self>.
 		gp_Pnt Pnt();
 
 		/****** Geom_CartesianPoint::SetCoord ******/
-		/****** md5 signature: 191a33c01dc9e7fdb47a43d5d7ff9d99 ******/
+		/****** md5 signature: e9f689386d623a4dc59a4ed305338e88 ******/
 		%feature("compactdefaultargs") SetCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -3010,7 +3045,7 @@ Description
 -----------
 Assigns the coordinates X, Y and Z to this point.
 ") SetCoord;
-		void SetCoord(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		void SetCoord(const double X, const double Y, const double Z);
 
 		/****** Geom_CartesianPoint::SetPnt ******/
 		/****** md5 signature: bb1b3b80f2d6031f72db1ef2885b3648 ******/
@@ -3031,12 +3066,12 @@ Set <self> to P.X(), P.Y(), P.Z() coordinates.
 		void SetPnt(const gp_Pnt & P);
 
 		/****** Geom_CartesianPoint::SetX ******/
-		/****** md5 signature: 30fe204d4c67d94370133e1d40dc6787 ******/
+		/****** md5 signature: b2a1aeaab5eb38d0f723f9862b1dcc0b ******/
 		%feature("compactdefaultargs") SetX;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
@@ -3044,17 +3079,17 @@ None
 
 Description
 -----------
-Changes the X coordinate of me.
+Changes the X coordinate of <self>.
 ") SetX;
-		void SetX(const Standard_Real X);
+		void SetX(const double X);
 
 		/****** Geom_CartesianPoint::SetY ******/
-		/****** md5 signature: 8f42f770a3959dece2671d90f60e35e2 ******/
+		/****** md5 signature: 999029c3c06ea6c6b1fd3b4a9def6c70 ******/
 		%feature("compactdefaultargs") SetY;
 		%feature("autodoc", "
 Parameters
 ----------
-Y: float
+Y: double
 
 Return
 -------
@@ -3062,17 +3097,17 @@ None
 
 Description
 -----------
-Changes the Y coordinate of me.
+Changes the Y coordinate of <self>.
 ") SetY;
-		void SetY(const Standard_Real Y);
+		void SetY(const double Y);
 
 		/****** Geom_CartesianPoint::SetZ ******/
-		/****** md5 signature: d96a64d9a788ed7bdd745a3dcbb831ea ******/
+		/****** md5 signature: b771b25b89d98d43f45a630401562669 ******/
 		%feature("compactdefaultargs") SetZ;
 		%feature("autodoc", "
 Parameters
 ----------
-Z: float
+Z: double
 
 Return
 -------
@@ -3080,12 +3115,12 @@ None
 
 Description
 -----------
-Changes the Z coordinate of me.
+Changes the Z coordinate of <self>.
 ") SetZ;
-		void SetZ(const Standard_Real Z);
+		void SetZ(const double Z);
 
 		/****** Geom_CartesianPoint::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -3103,43 +3138,43 @@ Applies the transformation T to this point.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_CartesianPoint::X ******/
-		/****** md5 signature: 99239da966ea182594b91106a0316293 ******/
+		/****** md5 signature: 6b68a610151127ede93eadedfa074c72 ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the X coordinate of <self>.
 ") X;
-		Standard_Real X();
+		double X();
 
 		/****** Geom_CartesianPoint::Y ******/
-		/****** md5 signature: 91c17711edaab163697b6c8ad095a159 ******/
+		/****** md5 signature: 48e7bf2a681c5ea1d44b1c5e8fa99158 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Y coordinate of <self>.
 ") Y;
-		Standard_Real Y();
+		double Y();
 
 		/****** Geom_CartesianPoint::Z ******/
-		/****** md5 signature: 4e11ebaa740d12349baa8c6841171adc ******/
+		/****** md5 signature: 75027537d28b451326082d3d38f78a73 ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Z coordinate of <self>.
 ") Z;
-		Standard_Real Z();
+		double Z();
 
 };
 
@@ -3172,7 +3207,7 @@ Returns the 'main Axis' of this conic. This axis is normal to the plane of the c
 		const gp_Ax1 Axis();
 
 		/****** Geom_Conic::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -3206,20 +3241,20 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_Conic::Eccentricity ******/
-		/****** md5 signature: 41bb637fc6d20616b1d8cd81afbd8bee ******/
+		/****** md5 signature: a6a8ac678dd10557d1872da9c2b28bb0 ******/
 		%feature("compactdefaultargs") Eccentricity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the eccentricity value of the conic e. e = 0 for a circle 0 < e < 1 for an ellipse (e = 0 if MajorRadius = MinorRadius) e > 1 for a hyperbola e = 1 for a parabola Exceptions Standard_DomainError in the case of a hyperbola if its major radius is null.
 ") Eccentricity;
-		virtual Standard_Real Eccentricity();
+		virtual double Eccentricity();
 
 		/****** Geom_Conic::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 7148abeb948e78dbe081ec4edd4357f0 ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -3234,7 +3269,7 @@ Description
 -----------
 Returns True. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Geom_Conic::Location ******/
 		/****** md5 signature: becd3d5ba73b438c501a139df51b6b7f ******/
@@ -3263,7 +3298,7 @@ Returns the local coordinates system of the conic. The main direction of the Axi
 		const gp_Ax2 Position();
 
 		/****** Geom_Conic::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 061259e9a1d8313b86b97b8a1591d999 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -3276,22 +3311,22 @@ Reverses the direction of parameterization of <self>. The local coordinate syste
 		void Reverse();
 
 		/****** Geom_Conic::ReversedParameter ******/
-		/****** md5 signature: 4258c49eccf44c1163561aeb5d9c0830 ******/
+		/****** md5 signature: 3df6a145ea2a841a97299da3f3da9d59 ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the reversed curve for the point of parameter U on <self>.
 ") ReversedParameter;
-		virtual Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_Conic::SetAxis ******/
 		/****** md5 signature: 23e0b01de6336ec5c57ea6909e327d35 ******/
@@ -3390,14 +3425,14 @@ Returns the YAxis of the conic. The YAxis is perpendicular to the Xaxis. This ax
 class Geom_Direction : public Geom_Vector {
 	public:
 		/****** Geom_Direction::Geom_Direction ******/
-		/****** md5 signature: 7902c47708d9347585333a9cf11608f3 ******/
+		/****** md5 signature: 5161eb0ca32832a724876b6160b9a323 ******/
 		%feature("compactdefaultargs") Geom_Direction;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -3405,9 +3440,9 @@ None
 
 Description
 -----------
-Creates a unit vector with it 3 cartesian coordinates. //! Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
+Creates a unit vector with it 3 cartesian coordinates. //! Raised if std::sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
 ") Geom_Direction;
-		 Geom_Direction(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		 Geom_Direction(const double X, const double Y, const double Z);
 
 		/****** Geom_Direction::Geom_Direction ******/
 		/****** md5 signature: 77e2a6d99aadc1d8d6f66986ba161b3d ******/
@@ -3428,7 +3463,7 @@ Creates a transient copy of <self>.
 		 Geom_Direction(const gp_Dir & V);
 
 		/****** Geom_Direction::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -3441,7 +3476,7 @@ Creates a new object which is a copy of this unit vector.
 		opencascade::handle<Geom_Geometry> Copy();
 
 		/****** Geom_Direction::Cross ******/
-		/****** md5 signature: a06b8645c602d8aef3b712051c34ad37 ******/
+		/****** md5 signature: fd973088a1718d6cac3db749d7d753e2 ******/
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "
 Parameters
@@ -3459,7 +3494,7 @@ Computes the cross product between <self> and <Other>. //! Raised if the two vec
 		void Cross(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_Direction::CrossCross ******/
-		/****** md5 signature: 4b3dec90e760f8fc351eaf98bbe17760 ******/
+		/****** md5 signature: 86955dc8b0c0f6bddfa9da0bca34976a ******/
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "
 Parameters
@@ -3478,7 +3513,7 @@ Computes the triple vector product <self> ^(V1 ^ V2). //! Raised if V1 and V2 ar
 		void CrossCross(const opencascade::handle<Geom_Vector> & V1, const opencascade::handle<Geom_Vector> & V2);
 
 		/****** Geom_Direction::CrossCrossed ******/
-		/****** md5 signature: 773178c0edb5c20353137f54da44fafe ******/
+		/****** md5 signature: 650c4955e5d0e62e91cc574cbb4898e1 ******/
 		%feature("compactdefaultargs") CrossCrossed;
 		%feature("autodoc", "
 Parameters
@@ -3497,7 +3532,7 @@ Computes the triple vector product <self> ^(V1 ^ V2). //! Raised if V1 and V2 ar
 		opencascade::handle<Geom_Vector> CrossCrossed(const opencascade::handle<Geom_Vector> & V1, const opencascade::handle<Geom_Vector> & V2);
 
 		/****** Geom_Direction::Crossed ******/
-		/****** md5 signature: 2c8e8934238b7f03649fb8fb7a43e59a ******/
+		/****** md5 signature: 7178f2de91930b6e36550f6b38142e2e ******/
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "
 Parameters
@@ -3528,27 +3563,27 @@ Returns the non transient direction with the same coordinates as <self>.
 		gp_Dir Dir();
 
 		/****** Geom_Direction::Magnitude ******/
-		/****** md5 signature: 7de7b7dd76586e80dfb981b910f5ec5e ******/
+		/****** md5 signature: f81e88eb8b9208e45dd09a16fc9ced2c ******/
 		%feature("compactdefaultargs") Magnitude;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns 1.0 which is the magnitude of any unit vector.
 ") Magnitude;
-		Standard_Real Magnitude();
+		double Magnitude();
 
 		/****** Geom_Direction::SetCoord ******/
-		/****** md5 signature: 191a33c01dc9e7fdb47a43d5d7ff9d99 ******/
+		/****** md5 signature: e9f689386d623a4dc59a4ed305338e88 ******/
 		%feature("compactdefaultargs") SetCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -3556,9 +3591,9 @@ None
 
 Description
 -----------
-Sets <self> to X,Y,Z coordinates. //! Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
+Sets <self> to X,Y,Z coordinates. //! Raised if std::sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
 ") SetCoord;
-		void SetCoord(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		void SetCoord(const double X, const double Y, const double Z);
 
 		/****** Geom_Direction::SetDir ******/
 		/****** md5 signature: 530871ac10ae33b7e8737a2c06440a5a ******/
@@ -3579,12 +3614,12 @@ Converts the gp_Dir unit vector V into this unit vector.
 		void SetDir(const gp_Dir & V);
 
 		/****** Geom_Direction::SetX ******/
-		/****** md5 signature: 30fe204d4c67d94370133e1d40dc6787 ******/
+		/****** md5 signature: b2a1aeaab5eb38d0f723f9862b1dcc0b ******/
 		%feature("compactdefaultargs") SetX;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
@@ -3592,17 +3627,17 @@ None
 
 Description
 -----------
-Changes the X coordinate of <self>. //! Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
+Changes the X coordinate of <self>. //! Raised if std::sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
 ") SetX;
-		void SetX(const Standard_Real X);
+		void SetX(const double X);
 
 		/****** Geom_Direction::SetY ******/
-		/****** md5 signature: 8f42f770a3959dece2671d90f60e35e2 ******/
+		/****** md5 signature: 999029c3c06ea6c6b1fd3b4a9def6c70 ******/
 		%feature("compactdefaultargs") SetY;
 		%feature("autodoc", "
 Parameters
 ----------
-Y: float
+Y: double
 
 Return
 -------
@@ -3610,17 +3645,17 @@ None
 
 Description
 -----------
-Changes the Y coordinate of <self>. //! Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
+Changes the Y coordinate of <self>. //! Raised if std::sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
 ") SetY;
-		void SetY(const Standard_Real Y);
+		void SetY(const double Y);
 
 		/****** Geom_Direction::SetZ ******/
-		/****** md5 signature: d96a64d9a788ed7bdd745a3dcbb831ea ******/
+		/****** md5 signature: b771b25b89d98d43f45a630401562669 ******/
 		%feature("compactdefaultargs") SetZ;
 		%feature("autodoc", "
 Parameters
 ----------
-Z: float
+Z: double
 
 Return
 -------
@@ -3628,25 +3663,25 @@ None
 
 Description
 -----------
-Changes the Z coordinate of <self>. //! Raised if Sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
+Changes the Z coordinate of <self>. //! Raised if std::sqrt( X*X + Y*Y + Z*Z) <= Resolution from gp.
 ") SetZ;
-		void SetZ(const Standard_Real Z);
+		void SetZ(const double Z);
 
 		/****** Geom_Direction::SquareMagnitude ******/
-		/****** md5 signature: e9cc7ce2500a11b7e18b76619fa1de15 ******/
+		/****** md5 signature: 36232d3c8b696593d29a30a15f29c945 ******/
 		%feature("compactdefaultargs") SquareMagnitude;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns 1.0 which is the square magnitude of any unit vector.
 ") SquareMagnitude;
-		Standard_Real SquareMagnitude();
+		double SquareMagnitude();
 
 		/****** Geom_Direction::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -3694,7 +3729,7 @@ Returns the main axis of the surface (ZAxis).
 		const gp_Ax1 Axis();
 
 		/****** Geom_ElementarySurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -3728,7 +3763,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_ElementarySurface::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 2f1fcdee848f1e9a21e718a5b5c41401 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -3743,10 +3778,10 @@ Description
 -----------
 Returns True.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_ElementarySurface::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 3b3be48e3062f448d523572dfc48fb76 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -3761,7 +3796,7 @@ Description
 -----------
 Returns True.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_ElementarySurface::Location ******/
 		/****** md5 signature: becd3d5ba73b438c501a139df51b6b7f ******/
@@ -3844,7 +3879,7 @@ Changes the local coordinates system of the surface.
 		void SetPosition(const gp_Ax3 & theAx3);
 
 		/****** Geom_ElementarySurface::UReverse ******/
-		/****** md5 signature: d70147d3bce5fe1e36771349f34ded17 ******/
+		/****** md5 signature: a985506a01d4ef5da425c5f8327a341d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -3854,28 +3889,28 @@ Description
 -----------
 Reverses the U parametric direction of the surface.
 ") UReverse;
-		virtual void UReverse();
+		void UReverse();
 
 		/****** Geom_ElementarySurface::UReversedParameter ******/
-		/****** md5 signature: c74cce5ab6f23209482402eb2638c3e0 ******/
+		/****** md5 signature: 739073017a485168d9f5f9a1a6c5e3b3 ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Ureversed surface for the point of parameter U on <self>. //! me->UReversed()->Value(me->UReversedParameter(U),V) is the same point as me->Value(U,V).
 ") UReversedParameter;
-		virtual Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_ElementarySurface::VReverse ******/
-		/****** md5 signature: 60a0c07d53675378b2bcbe23d1e7e281 ******/
+		/****** md5 signature: f0b1c2d85d545f70e432fc3c0f035672 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -3885,25 +3920,25 @@ Description
 -----------
 Reverses the V parametric direction of the surface.
 ") VReverse;
-		virtual void VReverse();
+		void VReverse();
 
 		/****** Geom_ElementarySurface::VReversedParameter ******/
-		/****** md5 signature: 9ed1a8c3bcf52498af3508eecc419d55 ******/
+		/****** md5 signature: 538845b2aaf4aaf4864392de4dae80ee ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Vreversed surface for the point of parameter V on <self>. //! me->VReversed()->Value(U,me->VReversedParameter(V)) is the same point as me->Value(U,V).
 ") VReversedParameter;
-		virtual Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -3977,7 +4012,7 @@ Constructs a line passing through point P and parallel to vector V (P and V are,
 		 Geom_Line(const gp_Pnt & P, const gp_Dir & V);
 
 		/****** Geom_Line::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -3990,7 +4025,7 @@ Returns GeomAbs_CN, which is the global continuity of any line.
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_Line::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4001,107 +4036,6 @@ Description
 Creates a new object which is a copy of this line.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_Line::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U. P (U) = O + U * Dir where O is the 'Location' point of the line and Dir the direction of the line.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_Line::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter u and the first derivative V1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_Line::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2. V2 is a vector with null magnitude for a line.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_Line::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-V2 and V3 are vectors with null magnitude for a line.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_Line::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
         /****************** DumpJson ******************/
@@ -4124,21 +4058,112 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****** Geom_Line::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "Return
+		/****** Geom_Line::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
 -------
-float
+gp_Pnt
 
 Description
 -----------
-Returns the value of the first parameter of this line. This is Standard_Real::RealFirst().
+Returns the point of parameter U. P (U) = O + U * Dir where O is the 'Location' point of the line and Dir the direction of the line.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_Line::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Returns the point of parameter U and the first derivative.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_Line::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point of parameter U, the first and second derivatives. The second derivative is a vector with null magnitude for a line.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_Line::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point of parameter U, the first, second and third derivatives. The second and third derivatives are vectors with null magnitude for a line.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_Line::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Returns the vector corresponding to the derivative for the order of derivation N. Raised if N < 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
+		/****** Geom_Line::FirstParameter ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns the value of the first parameter of this line. This is double::RealFirst().
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_Line::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 42a5bf57a05eb6426c49586172f0db7e ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -4153,10 +4178,10 @@ Description
 -----------
 returns True. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Geom_Line::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -4166,10 +4191,10 @@ Description
 -----------
 returns False.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_Line::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -4179,20 +4204,20 @@ Description
 -----------
 returns False.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_Line::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-Returns the value of the last parameter of this line. This is Standard_Real::RealLast().
+Returns the value of the last parameter of this line. This is double::RealLast().
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_Line::Lin ******/
 		/****** md5 signature: 15cb03d637d756d27ca006a1853cd726 ******/
@@ -4208,7 +4233,7 @@ Returns non transient line from gp with the same geometric properties as <self>.
 		gp_Lin Lin();
 
 		/****** Geom_Line::ParametricTransformation ******/
-		/****** md5 signature: 0cdeed55440cf3859605fa52b3b17441 ******/
+		/****** md5 signature: d5b05072d7a1c2481b7091b5e669a1d0 ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -4217,13 +4242,13 @@ T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods returns T.ScaleFactor().
 ") ParametricTransformation;
-		virtual Standard_Real ParametricTransformation(const gp_Trsf & T);
+		double ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_Line::Position ******/
 		/****** md5 signature: af37a1ddce8f862eeb41e9689b597340 ******/
@@ -4239,7 +4264,7 @@ Returns the positioning axis of this line; this is also its local coordinate sys
 		const gp_Ax1 Position();
 
 		/****** Geom_Line::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 3329d3f633fce7835a9f2ded949a6050 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -4252,22 +4277,22 @@ Changes the orientation of this line. As a result, the unit vector of the positi
 		void Reverse();
 
 		/****** Geom_Line::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed line for the point of parameter U on this line. For a line, the returned value is -U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_Line::SetDirection ******/
 		/****** md5 signature: df8744d729e050a65ee65230eb199390 ******/
@@ -4342,7 +4367,7 @@ changes the 'Location' and a the 'Direction' of <self>.
 		void SetPosition(const gp_Ax1 & A1);
 
 		/****** Geom_Line::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -4360,23 +4385,23 @@ Applies the transformation T to this line.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_Line::TransformedParameter ******/
-		/****** md5 signature: 1a552ef75f7726e4135a5d28749cc3da ******/
+		/****** md5 signature: e5e02442ab2d2ceaec9a6d45a0f22ef7 ******/
 		%feature("compactdefaultargs") TransformedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. //! me->Transformed(T)->Value(me->TransformedParameter(U,T)) //! is the same point as //! me->Value(U).Transformed(T) //! This methods returns <U> * T.ScaleFactor().
 ") TransformedParameter;
-		virtual Standard_Real TransformedParameter(const Standard_Real U, const gp_Trsf & T);
+		double TransformedParameter(const double U, const gp_Trsf & T);
 
 };
 
@@ -4395,15 +4420,15 @@ Returns the parameter on the transformed curve for the transform of the point of
 class Geom_OffsetCurve : public Geom_Curve {
 	public:
 		/****** Geom_OffsetCurve::Geom_OffsetCurve ******/
-		/****** md5 signature: b632bc220051dc17b379a040b1c35d40 ******/
+		/****** md5 signature: 7734dee1feffebfdd9cf30b648a7303d ******/
 		%feature("compactdefaultargs") Geom_OffsetCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-Offset: float
+Offset: double
 V: gp_Dir
-isNotCheckC0: bool (optional, default to Standard_False)
+isNotCheckC0: bool (optional, default to false)
 
 Return
 -------
@@ -4413,7 +4438,26 @@ Description
 -----------
 C is the basis curve, Offset is the distance between <self> and the basis curve at any point. V defines the fixed reference direction (offset direction). If P is a point on the basis curve and T the first derivative with non zero length at this point, the corresponding point on the offset curve is in the direction of the vector-product N = V ^ T where N is a unitary vector. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Warnings: In this package the entities are not shared. The OffsetCurve is built with a copy of the curve C. So when C is modified the OffsetCurve is not modified //! Raised if the basis curve C is not at least C1. Warnings: No check is done to know if ||V^T|| != 0.0 at any point.
 ") Geom_OffsetCurve;
-		 Geom_OffsetCurve(const opencascade::handle<Geom_Curve> & C, const Standard_Real Offset, const gp_Dir & V, const Standard_Boolean isNotCheckC0 = Standard_False);
+		 Geom_OffsetCurve(const opencascade::handle<Geom_Curve> & C, const double Offset, const gp_Dir & V, const bool isNotCheckC0 = false);
+
+		/****** Geom_OffsetCurve::Geom_OffsetCurve ******/
+		/****** md5 signature: 5d42d374fed8c9e5ddfbbe010a5deed6 ******/
+		%feature("compactdefaultargs") Geom_OffsetCurve;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Geom_OffsetCurve
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor for optimized copying without validation. 
+Input parameter: theOther the offset curve to copy from.
+") Geom_OffsetCurve;
+		 Geom_OffsetCurve(const Geom_OffsetCurve & theOther);
 
 		/****** Geom_OffsetCurve::BasisCurve ******/
 		/****** md5 signature: ece4de977d9b1715803929678e07eec5 ******/
@@ -4428,8 +4472,21 @@ Returns the basis curve of this offset curve. Note: The basis curve can be an of
 ") BasisCurve;
 		opencascade::handle<Geom_Curve> BasisCurve();
 
+		/****** Geom_OffsetCurve::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
+
 		/****** Geom_OffsetCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -4442,7 +4499,7 @@ Returns the global continuity of this offset curve as a value of the GeomAbs_Sha
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_OffsetCurve::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4453,107 +4510,6 @@ Description
 Creates a new object which is a copy of this offset curve.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_OffsetCurve::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Warning! this should not be called if the basis curve is not at least C1. Nevertheless if used on portion where the curve is C1, it is OK.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_OffsetCurve::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Warning! this should not be called if the continuity of the basis curve is not C2. Nevertheless, it's OK to use it on portion where the curve is C2.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_OffsetCurve::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Warning! this should not be called if the continuity of the basis curve is not C3. Nevertheless, it's OK to use it on portion where the curve is C3.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_OffsetCurve::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_OffsetCurve::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. //! The following functions compute the value and derivatives on the offset curve and returns the derivatives on the basis curve too. The computation of the value and derivatives on the basis curve are used to evaluate the offset curve //! Warning: The exception UndefinedValue or UndefinedDerivative is raised if it is not possible to compute a unique offset direction. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 		/****** Geom_OffsetCurve::Direction ******/
 		/****** md5 signature: 6107c9113155a9ae9007c5c8e526a738 ******/
@@ -4589,18 +4545,122 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_OffsetCurve::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Warning! this should not be called if the basis curve is not at least C1. Nevertheless if used on portion where the curve is C1, it is OK.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_OffsetCurve::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Warning! this should not be called if the continuity of the basis curve is not C2. Nevertheless, it's OK to use it on a portion where the curve is C2.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_OffsetCurve::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Warning! this should not be called if the continuity of the basis curve is not C3. Nevertheless, it's OK to use it on a portion where the curve is C3.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_OffsetCurve::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+No available documentation.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_OffsetCurve::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+The returned vector gives the value of the derivative for the order of derivation N. //! The following functions compute the value and derivatives on the offset curve and returns the derivatives on the basis curve too. The computation of the value and derivatives on the basis curve are used to evaluate the offset curve //! Warning: The exception UndefinedValue or UndefinedDerivative is raised if it is not possible to compute a unique offset direction. Raised if N < 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
+		/****** Geom_OffsetCurve::EvalRepresentation ******/
+		/****** md5 signature: a570242ee5a0b07b20294756091ee6a1 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepCurveDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepCurveDesc::Base> & EvalRepresentation();
+
 		/****** Geom_OffsetCurve::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter of this offset curve. The first parameter corresponds to the start point of the curve. Note: the first and last parameters of this offset curve are also the ones of its basis curve.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_OffsetCurve::GetBasisCurveContinuity ******/
 		/****** md5 signature: 5542c2675753571f1c65d428430b4583 ******/
@@ -4615,8 +4675,21 @@ Returns continuity of the basis curve.
 ") GetBasisCurveContinuity;
 		GeomAbs_Shape GetBasisCurveContinuity();
 
+		/****** Geom_OffsetCurve::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
+
 		/****** Geom_OffsetCurve::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 42a5bf57a05eb6426c49586172f0db7e ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -4631,10 +4704,10 @@ Description
 -----------
 Returns true if the degree of continuity of the basis curve of this offset curve is at least N + 1. This method answer True if the continuity of the basis curve is N + 1. We suppose in this class that a normal direction to the basis curve (used to compute the offset curve) is defined at any point on the basis curve. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Geom_OffsetCurve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -4644,10 +4717,10 @@ Description
 -----------
 Returns True if the distance between the start point and the end point of the curve is lower or equal to Resolution from package gp.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_OffsetCurve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -4657,36 +4730,36 @@ Description
 -----------
 Returns true if this offset curve is periodic, i.e. if the basis curve of this offset curve is periodic.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_OffsetCurve::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the last parameter of this offset curve. The last parameter corresponds to the end point. Note: the first and last parameters of this offset curve are also the ones of its basis curve.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_OffsetCurve::Offset ******/
-		/****** md5 signature: 02d05c913be85cd7a6e18ff06a18b8e7 ******/
+		/****** md5 signature: 836b6ce2e49b4dad24937fa829c24b3c ******/
 		%feature("compactdefaultargs") Offset;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the offset value of this offset curve.
 ") Offset;
-		Standard_Real Offset();
+		double Offset();
 
 		/****** Geom_OffsetCurve::ParametricTransformation ******/
-		/****** md5 signature: 0cdeed55440cf3859605fa52b3b17441 ******/
+		/****** md5 signature: d5b05072d7a1c2481b7091b5e669a1d0 ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -4695,29 +4768,29 @@ T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) is the same point as Value(U).Transformed(T) This methods calls the basis curve method.
 ") ParametricTransformation;
-		virtual Standard_Real ParametricTransformation(const gp_Trsf & T);
+		double ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_OffsetCurve::Period ******/
-		/****** md5 signature: a0af1de0407384df43b0e76d6b472231 ******/
+		/****** md5 signature: 840c481cf79bd2e1a55b5fd149e36dea ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this offset curve, i.e. the period of the basis curve of this offset curve. Exceptions Standard_NoSuchObject if the basis curve is not periodic.
 ") Period;
-		virtual Standard_Real Period();
+		double Period();
 
 		/****** Geom_OffsetCurve::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 3329d3f633fce7835a9f2ded949a6050 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -4730,31 +4803,31 @@ Changes the orientation of this offset curve. As a result: - the basis curve is 
 		void Reverse();
 
 		/****** Geom_OffsetCurve::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed curve for the point of parameter U on this offset curve.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_OffsetCurve::SetBasisCurve ******/
-		/****** md5 signature: f45b5f3e6433ae51405d3a64ea717a8a ******/
+		/****** md5 signature: 224acbc2923a903a632daf252da38a99 ******/
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-isNotCheckC0: bool (optional, default to Standard_False)
+isNotCheckC0: bool (optional, default to false)
 
 Return
 -------
@@ -4764,7 +4837,7 @@ Description
 -----------
 Changes this offset curve by assigning C as the basis curve from which it is built. If isNotCheckC0 = True checking if basis curve has C0-continuity is not made. Exceptions Standard_ConstructionError if the curve C is not at least 'C1' continuous.
 ") SetBasisCurve;
-		void SetBasisCurve(const opencascade::handle<Geom_Curve> & C, const Standard_Boolean isNotCheckC0 = Standard_False);
+		void SetBasisCurve(const opencascade::handle<Geom_Curve> & C, const bool isNotCheckC0 = false);
 
 		/****** Geom_OffsetCurve::SetDirection ******/
 		/****** md5 signature: df8744d729e050a65ee65230eb199390 ******/
@@ -4784,13 +4857,31 @@ Changes this offset curve by assigning V as the reference vector used to compute
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
+		/****** Geom_OffsetCurve::SetEvalRepresentation ******/
+		/****** md5 signature: c94b922fdbdc3ba23286b9a9dc213d1c ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepCurveDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepCurveDesc::Base> & theDesc);
+
 		/****** Geom_OffsetCurve::SetOffsetValue ******/
-		/****** md5 signature: b0345a26ec85d9ad16bb8be0106b4798 ******/
+		/****** md5 signature: 638fc518e51dadf4ff1193be6830c419 ******/
 		%feature("compactdefaultargs") SetOffsetValue;
 		%feature("autodoc", "
 Parameters
 ----------
-D: float
+D: double
 
 Return
 -------
@@ -4800,10 +4891,10 @@ Description
 -----------
 Changes this offset curve by assigning D as the offset value.
 ") SetOffsetValue;
-		void SetOffsetValue(const Standard_Real D);
+		void SetOffsetValue(const double D);
 
 		/****** Geom_OffsetCurve::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -4821,23 +4912,23 @@ Applies the transformation T to this offset curve. Note: the basis curve is also
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_OffsetCurve::TransformedParameter ******/
-		/****** md5 signature: 1a552ef75f7726e4135a5d28749cc3da ******/
+		/****** md5 signature: e5e02442ab2d2ceaec9a6d45a0f22ef7 ******/
 		%feature("compactdefaultargs") TransformedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. me->Transformed(T)->Value(me->TransformedParameter(U,T)) is the same point as me->Value(U).Transformed(T) This methods calls the basis curve method.
 ") TransformedParameter;
-		virtual Standard_Real TransformedParameter(const Standard_Real U, const gp_Trsf & T);
+		double TransformedParameter(const double U, const gp_Trsf & T);
 
 };
 
@@ -4856,14 +4947,14 @@ Returns the parameter on the transformed curve for the transform of the point of
 class Geom_OffsetSurface : public Geom_Surface {
 	public:
 		/****** Geom_OffsetSurface::Geom_OffsetSurface ******/
-		/****** md5 signature: 19f12998955114838f962d530aecf707 ******/
+		/****** md5 signature: eade782bf86c05fde5fe705b3c8199c5 ******/
 		%feature("compactdefaultargs") Geom_OffsetSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-Offset: float
-isNotCheckC0: bool (optional, default to Standard_False)
+Offset: double
+isNotCheckC0: bool (optional, default to false)
 
 Return
 -------
@@ -4873,7 +4964,26 @@ Description
 -----------
 Constructs a surface offset from the basis surface S, where Offset is the distance between the offset surface and the basis surface at any point. A point on the offset surface is built by measuring the offset value along a normal vector at a point on S. This normal vector is given by the cross product D1u^D1v, where D1u and D1v are the vectors tangential to the basis surface in the u and v parametric directions at this point. The side of S on which the offset value is measured is indicated by this normal vector if Offset is positive, or is the inverse sense if Offset is negative. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Warnings: - The offset surface is built with a copy of the surface S. Therefore, when S is modified the offset surface is not modified. - No check is made at the time of construction to detect points on S with multiple possible normal directions. Raised if S is not at least C1. Warnings: No check is done to verify that a unique normal direction is defined at any point of the basis surface S.
 ") Geom_OffsetSurface;
-		 Geom_OffsetSurface(const opencascade::handle<Geom_Surface> & S, const Standard_Real Offset, const Standard_Boolean isNotCheckC0 = Standard_False);
+		 Geom_OffsetSurface(const opencascade::handle<Geom_Surface> & S, const double Offset, const bool isNotCheckC0 = false);
+
+		/****** Geom_OffsetSurface::Geom_OffsetSurface ******/
+		/****** md5 signature: a01e8bd3514a1234b935e0380066a96d ******/
+		%feature("compactdefaultargs") Geom_OffsetSurface;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Geom_OffsetSurface
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor for optimized copying without validation. 
+Input parameter: theOther the offset surface to copy from.
+") Geom_OffsetSurface;
+		 Geom_OffsetSurface(const Geom_OffsetSurface & theOther);
 
 		/****** Geom_OffsetSurface::BasisSurface ******/
 		/****** md5 signature: 3daca3cd1c714a11ab105f803cdf2ef7 ******/
@@ -4889,7 +4999,7 @@ Returns the basis surface of this offset surface. Note: The basis surface can be
 		const opencascade::handle<Geom_Surface> & BasisSurface();
 
 		/****** Geom_OffsetSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -4897,19 +5007,32 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
-Returns the parametric bounds U1, U2, V1 and V2 of this offset surface. If the surface is infinite, this function can return: - Standard_Real::RealFirst(), or - Standard_Real::RealLast().
+Returns the parametric bounds U1, U2, V1 and V2 of this offset surface. If the surface is infinite, this function can return: - double::RealFirst(), or - double::RealLast().
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/****** Geom_OffsetSurface::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
+
 		/****** Geom_OffsetSurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -4922,7 +5045,7 @@ This method returns the continuity of the basis surface - 1. Continuity of the O
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_OffsetSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4933,123 +5056,6 @@ Description
 Creates a new object which is a copy of this offset surface.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_OffsetSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-@code P (U, V) = Pbasis + Offset * Ndir @endcode where @code Ndir = D1Ubasis ^ D1Vbasis / ||D1Ubasis ^ D1Vbasis|| @endcode is the normal direction of the basis surface. Pbasis, D1Ubasis, D1Vbasis are the point and the first derivatives on the basis surface. If Ndir is undefined this method computes an approached normal direction using the following limited development: @code Ndir = N0 + DNdir/DU + DNdir/DV + Eps @endcode with Eps->0 which requires to compute the second derivatives on the basis surface. If the normal direction cannot be approximate for this order of derivation the exception UndefinedValue is raised. //! Raised if the continuity of the basis surface is not C1. Raised if the order of derivation required to compute the normal direction is greater than the second order.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_OffsetSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the basis surface is not C2.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_OffsetSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the basis surface is not C3.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_OffsetSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the basis surface is not C4.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_OffsetSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. //! Raised if the continuity of the basis surface is not CNu + 1 in the U direction and CNv + 1 in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. //! The following methods compute the value and derivatives on the offset surface and returns the derivatives on the basis surface too. The computation of the value and derivatives on the basis surface are used to evaluate the offset surface. //! Warnings: The exception UndefinedValue or UndefinedDerivative is raised if it is not possible to compute a unique offset direction.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -5072,6 +5078,116 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_OffsetSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+@code P (U, V) = Pbasis + Offset * Ndir @endcode where @code Ndir = D1Ubasis ^ D1Vbasis / ||D1Ubasis ^ D1Vbasis|| @endcode is the normal direction of the basis surface. Pbasis, D1Ubasis, D1Vbasis are the point and the first derivatives on the basis surface. If Ndir is undefined this method computes an approached normal direction using the following limited development: @code Ndir = N0 + DNdir/DU + DNdir/DV + Eps @endcode with Eps->0 which requires to compute the second derivatives on the basis surface. If the normal direction cannot be approximate for this order of derivation the exception UndefinedValue is raised. //! Raised if the continuity of the basis surface is not C1. Raised if the order of derivation required to compute the normal direction is greater than the second order. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_OffsetSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception if the continuity of the basis surface is not C2.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_OffsetSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception if the continuity of the basis surface is not C3.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_OffsetSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Raises an exception if the continuity of the basis surface is not C4.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_OffsetSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an exception on failure. //! Raised if the continuity of the basis surface is not CNu + 1 in the U direction and CNv + 1 in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. //! Warnings: The exception UndefinedValue or UndefinedDerivative is raised if it is not possible to compute a unique offset direction.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
+		/****** Geom_OffsetSurface::EvalRepresentation ******/
+		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepSurfaceDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
+
 		/****** Geom_OffsetSurface::GetBasisSurfContinuity ******/
 		/****** md5 signature: 40b8f706c00d911b3fc43528ba8520d6 ******/
 		%feature("compactdefaultargs") GetBasisSurfContinuity;
@@ -5085,8 +5201,21 @@ Returns continuity of the basis surface.
 ") GetBasisSurfContinuity;
 		GeomAbs_Shape GetBasisSurfContinuity();
 
+		/****** Geom_OffsetSurface::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
+
 		/****** Geom_OffsetSurface::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -5101,10 +5230,10 @@ Description
 -----------
 This method answer True if the continuity of the basis surface is N + 1 in the U parametric direction. We suppose in this class that a unique normal is defined at any point on the basis surface. Raised if N <0.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_OffsetSurface::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 4e12377e4fee255bb2fbd018134f6b55 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -5119,10 +5248,10 @@ Description
 -----------
 This method answer True if the continuity of the basis surface is N + 1 in the V parametric direction. We suppose in this class that a unique normal is defined at any point on the basis surface. Raised if N <0.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_OffsetSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -5132,10 +5261,10 @@ Description
 -----------
 Checks whether this offset surface is closed in the u parametric direction. Returns true if, taking uFirst and uLast as the parametric bounds in the u parametric direction, the distance between the points P(uFirst,v) and P(uLast,v) is less than or equal to gp::Resolution() for each value of the parameter v.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_OffsetSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -5145,10 +5274,10 @@ Description
 -----------
 Returns true if this offset surface is periodic in the u parametric direction, i.e. if the basis surface of this offset surface is periodic in this direction.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_OffsetSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -5158,10 +5287,10 @@ Description
 -----------
 Checks whether this offset surface is closed in the u or v parametric direction. Returns true if taking vFirst and vLast as the parametric bounds in the v parametric direction, the distance between the points P(u,vFirst) and P(u,vLast) is less than or equal to gp::Resolution() for each value of the parameter u.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_OffsetSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -5171,36 +5300,23 @@ Description
 -----------
 Returns true if this offset surface is periodic in the v parametric direction, i.e. if the basis surface of this offset surface is periodic in this direction.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_OffsetSurface::Offset ******/
-		/****** md5 signature: a94c4bf9f31884e74a7dc8632571268e ******/
+		/****** md5 signature: 99db895087554bc948dfaae64160e276 ******/
 		%feature("compactdefaultargs") Offset;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the offset value of this offset surface.
 ") Offset;
-		Standard_Real Offset();
-
-		/****** Geom_OffsetSurface::OsculatingSurface ******/
-		/****** md5 signature: 3b2b79c090adc05a74f74def3f1d4232 ******/
-		%feature("compactdefaultargs") OsculatingSurface;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_OsculatingSurface>
-
-Description
------------
-Returns osculating surface if base surface is B-spline or Bezier.
-") OsculatingSurface;
-		const opencascade::handle<Geom_OsculatingSurface> & OsculatingSurface();
+		double Offset();
 
 		/****** Geom_OffsetSurface::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -5215,16 +5331,16 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method calls the basis surface method.
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_OffsetSurface::SetBasisSurface ******/
-		/****** md5 signature: 3c9791d7995b558fed5ffbe2e9d33ce2 ******/
+		/****** md5 signature: 9cc3097d94b518094a39dfab7797efa8 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-isNotCheckC0: bool (optional, default to Standard_False)
+isNotCheckC0: bool (optional, default to false)
 
 Return
 -------
@@ -5234,15 +5350,33 @@ Description
 -----------
 Raised if S is not at least C1. Warnings: No check is done to verify that a unique normal direction is defined at any point of the basis surface S. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Exceptions Standard_ConstructionError if the surface S is not at least 'C1' continuous.
 ") SetBasisSurface;
-		void SetBasisSurface(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean isNotCheckC0 = Standard_False);
+		void SetBasisSurface(const opencascade::handle<Geom_Surface> & S, const bool isNotCheckC0 = false);
+
+		/****** Geom_OffsetSurface::SetEvalRepresentation ******/
+		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepSurfaceDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
 
 		/****** Geom_OffsetSurface::SetOffsetValue ******/
-		/****** md5 signature: b0345a26ec85d9ad16bb8be0106b4798 ******/
+		/****** md5 signature: 638fc518e51dadf4ff1193be6830c419 ******/
 		%feature("compactdefaultargs") SetOffsetValue;
 		%feature("autodoc", "
 Parameters
 ----------
-D: float
+D: double
 
 Return
 -------
@@ -5252,7 +5386,7 @@ Description
 -----------
 Changes this offset surface by assigning D as the offset value.
 ") SetOffsetValue;
-		void SetOffsetValue(const Standard_Real D);
+		void SetOffsetValue(const double D);
 
 		/****** Geom_OffsetSurface::Surface ******/
 		/****** md5 signature: 352bd890213763e77e08756c09e1fdcc ******/
@@ -5268,7 +5402,7 @@ returns an equivalent surface of the offset surface when the basis surface is a 
 		opencascade::handle<Geom_Surface> Surface();
 
 		/****** Geom_OffsetSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -5286,7 +5420,7 @@ Applies the transformation T to this offset surface. Note: the basis surface is 
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_OffsetSurface::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -5295,22 +5429,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method calls the basis surface method.
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_OffsetSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -5320,16 +5454,16 @@ Description
 -----------
 Computes the U isoparametric curve.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_OffsetSurface::UOsculatingSurface ******/
-		/****** md5 signature: 4b32d3dc69a020e36ad4fe4216209098 ******/
+		/****** md5 signature: c425ccaa314d710a5e2d02a9ada82531 ******/
 		%feature("compactdefaultargs") UOsculatingSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 UOsculSurf: Geom_BSplineSurface
 
 Return
@@ -5338,25 +5472,25 @@ IsOpposite: bool
 
 Description
 -----------
-if Standard_True, L is the local osculating surface along U at the point U,V. It means that DL/DU is collinear to DS/DU . If IsOpposite == Standard_True these vectors have opposite direction.
+if true, L is the local osculating surface along U at the point U,V. It means that DL/DU is collinear to DS/DU. If IsOpposite == true these vectors have opposite direction.
 ") UOsculatingSurface;
-		Standard_Boolean UOsculatingSurface(const Standard_Real U, const Standard_Real V, Standard_Boolean &OutValue, opencascade::handle<Geom_BSplineSurface> & UOsculSurf);
+		bool UOsculatingSurface(const double U, const double V, Standard_Boolean &OutValue, opencascade::handle<Geom_BSplineSurface> & UOsculSurf);
 
 		/****** Geom_OffsetSurface::UPeriod ******/
-		/****** md5 signature: 99929007fac43736aa36012893e9b882 ******/
+		/****** md5 signature: 1e7bbecc880a641896a1ec12d51117c4 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this offset surface in the u parametric direction respectively, i.e. the period of the basis surface of this offset surface in this parametric direction. raises if the surface is not uperiodic.
 ") UPeriod;
-		virtual Standard_Real UPeriod();
+		double UPeriod();
 
 		/****** Geom_OffsetSurface::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -5369,30 +5503,30 @@ Changes the orientation of this offset surface in the u parametric direction. Th
 		void UReverse();
 
 		/****** Geom_OffsetSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified surface, produced by reversing the u parametric direction of this offset surface, for any point of u parameter U on this offset surface.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_OffsetSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -5402,16 +5536,16 @@ Description
 -----------
 Computes the V isoparametric curve. //! The following methods compute value and derivatives. //! Warnings An exception is raised if a unique normal vector is not defined on the basis surface for the parametric value (U,V). No check is done at the creation time and we suppose in this package that the offset surface can be defined at any point.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_OffsetSurface::VOsculatingSurface ******/
-		/****** md5 signature: 7d608cfa41efd7176bc7900e25924abf ******/
+		/****** md5 signature: 02f16ee5ac1892801b06ce5036c8fbf5 ******/
 		%feature("compactdefaultargs") VOsculatingSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 VOsculSurf: Geom_BSplineSurface
 
 Return
@@ -5420,25 +5554,25 @@ IsOpposite: bool
 
 Description
 -----------
-if Standard_True, L is the local osculating surface along V at the point U,V. It means that DL/DV is collinear to DS/DV . If IsOpposite == Standard_True these vectors have opposite direction.
+if true, L is the local osculating surface along V at the point U,V. It means that DL/DV is collinear to DS/DV. If IsOpposite == true these vectors have opposite direction.
 ") VOsculatingSurface;
-		Standard_Boolean VOsculatingSurface(const Standard_Real U, const Standard_Real V, Standard_Boolean &OutValue, opencascade::handle<Geom_BSplineSurface> & VOsculSurf);
+		bool VOsculatingSurface(const double U, const double V, Standard_Boolean &OutValue, opencascade::handle<Geom_BSplineSurface> & VOsculSurf);
 
 		/****** Geom_OffsetSurface::VPeriod ******/
-		/****** md5 signature: 0b2fb065ece518694127e1e1eadebb25 ******/
+		/****** md5 signature: ae0e6baa0072f7289dd1ba26d8f2d070 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this offset surface in the v parametric direction respectively, i.e. the period of the basis surface of this offset surface in this parametric direction. raises if the surface is not vperiodic.
 ") VPeriod;
-		virtual Standard_Real VPeriod();
+		double VPeriod();
 
 		/****** Geom_OffsetSurface::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -5451,22 +5585,22 @@ Changes the orientation of this offset surface in the v parametric direction. Th
 		void VReverse();
 
 		/****** Geom_OffsetSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified surface, produced by reversing the or v parametric direction of this offset surface, for any point of v parameter V on this offset surface.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -5499,7 +5633,7 @@ Returns the referenced curve of the surface. For a surface of revolution it is t
 		opencascade::handle<Geom_Curve> BasisCurve();
 
 		/****** Geom_SweptSurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -5580,14 +5714,14 @@ Creates a transient copy of V.
 		 Geom_VectorWithMagnitude(const gp_Vec & V);
 
 		/****** Geom_VectorWithMagnitude::Geom_VectorWithMagnitude ******/
-		/****** md5 signature: 721cda91d973dd3353331d0964e1b76d ******/
+		/****** md5 signature: 22538274ad7b5eb36c779c7a40991488 ******/
 		%feature("compactdefaultargs") Geom_VectorWithMagnitude;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -5597,7 +5731,7 @@ Description
 -----------
 Creates a vector with three cartesian coordinates.
 ") Geom_VectorWithMagnitude;
-		 Geom_VectorWithMagnitude(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		 Geom_VectorWithMagnitude(const double X, const double Y, const double Z);
 
 		/****** Geom_VectorWithMagnitude::Geom_VectorWithMagnitude ******/
 		/****** md5 signature: 24229209f10fb0d557f9072e9cdb94fb ******/
@@ -5655,7 +5789,7 @@ Adds the vector Other to <self>.
 		opencascade::handle<Geom_VectorWithMagnitude> Added(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_VectorWithMagnitude::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -5668,7 +5802,7 @@ Creates a new object which is a copy of this vector.
 		opencascade::handle<Geom_Geometry> Copy();
 
 		/****** Geom_VectorWithMagnitude::Cross ******/
-		/****** md5 signature: a06b8645c602d8aef3b712051c34ad37 ******/
+		/****** md5 signature: fd973088a1718d6cac3db749d7d753e2 ******/
 		%feature("compactdefaultargs") Cross;
 		%feature("autodoc", "
 Parameters
@@ -5686,7 +5820,7 @@ Computes the cross product between <self> and Other <self> ^ Other.
 		void Cross(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_VectorWithMagnitude::CrossCross ******/
-		/****** md5 signature: 4b3dec90e760f8fc351eaf98bbe17760 ******/
+		/****** md5 signature: 86955dc8b0c0f6bddfa9da0bca34976a ******/
 		%feature("compactdefaultargs") CrossCross;
 		%feature("autodoc", "
 Parameters
@@ -5705,7 +5839,7 @@ Computes the triple vector product <self> ^ (V1 ^ V2).
 		void CrossCross(const opencascade::handle<Geom_Vector> & V1, const opencascade::handle<Geom_Vector> & V2);
 
 		/****** Geom_VectorWithMagnitude::CrossCrossed ******/
-		/****** md5 signature: 773178c0edb5c20353137f54da44fafe ******/
+		/****** md5 signature: 650c4955e5d0e62e91cc574cbb4898e1 ******/
 		%feature("compactdefaultargs") CrossCrossed;
 		%feature("autodoc", "
 Parameters
@@ -5724,7 +5858,7 @@ Computes the triple vector product <self> ^ (V1 ^ V2). A new vector is returned.
 		opencascade::handle<Geom_Vector> CrossCrossed(const opencascade::handle<Geom_Vector> & V1, const opencascade::handle<Geom_Vector> & V2);
 
 		/****** Geom_VectorWithMagnitude::Crossed ******/
-		/****** md5 signature: 2c8e8934238b7f03649fb8fb7a43e59a ******/
+		/****** md5 signature: 7178f2de91930b6e36550f6b38142e2e ******/
 		%feature("compactdefaultargs") Crossed;
 		%feature("autodoc", "
 Parameters
@@ -5742,12 +5876,12 @@ Computes the cross product between <self> and Other <self> ^ Other. A new vector
 		opencascade::handle<Geom_Vector> Crossed(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_VectorWithMagnitude::Divide ******/
-		/****** md5 signature: 7bc46cf38daaa2229b322d9add0408e3 ******/
+		/****** md5 signature: 832336b743e9ae406509c1b8deba867e ******/
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "
 Parameters
 ----------
-Scalar: float
+Scalar: double
 
 Return
 -------
@@ -5757,15 +5891,15 @@ Description
 -----------
 Divides <self> by a scalar.
 ") Divide;
-		void Divide(const Standard_Real Scalar);
+		void Divide(const double Scalar);
 
 		/****** Geom_VectorWithMagnitude::Divided ******/
-		/****** md5 signature: 083e82bd7d9299e7e5b8f00407207b44 ******/
+		/****** md5 signature: a372aaeebb06c4a66bc457e5228a269f ******/
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "
 Parameters
 ----------
-Scalar: float
+Scalar: double
 
 Return
 -------
@@ -5775,28 +5909,28 @@ Description
 -----------
 Divides <self> by a scalar. A new vector is returned.
 ") Divided;
-		opencascade::handle<Geom_VectorWithMagnitude> Divided(const Standard_Real Scalar);
+		opencascade::handle<Geom_VectorWithMagnitude> Divided(const double Scalar);
 
 		/****** Geom_VectorWithMagnitude::Magnitude ******/
-		/****** md5 signature: 7de7b7dd76586e80dfb981b910f5ec5e ******/
+		/****** md5 signature: f81e88eb8b9208e45dd09a16fc9ced2c ******/
 		%feature("compactdefaultargs") Magnitude;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the magnitude of <self>.
 ") Magnitude;
-		Standard_Real Magnitude();
+		double Magnitude();
 
 		/****** Geom_VectorWithMagnitude::Multiplied ******/
-		/****** md5 signature: daa7dc993f23e1e76f5f8bf2428d513f ******/
+		/****** md5 signature: 8f31c98471063deb351f611820ce0311 ******/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "
 Parameters
 ----------
-Scalar: float
+Scalar: double
 
 Return
 -------
@@ -5806,15 +5940,15 @@ Description
 -----------
 Computes the product of the vector <self> by a scalar. A new vector is returned.
 ") Multiplied;
-		opencascade::handle<Geom_VectorWithMagnitude> Multiplied(const Standard_Real Scalar);
+		opencascade::handle<Geom_VectorWithMagnitude> Multiplied(const double Scalar);
 
 		/****** Geom_VectorWithMagnitude::Multiply ******/
-		/****** md5 signature: c6d925fe0833ff6abc2c1aab20682246 ******/
+		/****** md5 signature: c1b5020cc596ee49b88e41fb192e9e5e ******/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
 ----------
-Scalar: float
+Scalar: double
 
 Return
 -------
@@ -5824,7 +5958,7 @@ Description
 -----------
 Computes the product of the vector <self> by a scalar.
 ") Multiply;
-		void Multiply(const Standard_Real Scalar);
+		void Multiply(const double Scalar);
 
 		/****** Geom_VectorWithMagnitude::Normalize ******/
 		/****** md5 signature: 587346cf1e1c12fdf674aedc915ccd95 ******/
@@ -5853,14 +5987,14 @@ Returns a copy of <self> Normalized. //! Raised if the magnitude of the vector i
 		opencascade::handle<Geom_VectorWithMagnitude> Normalized();
 
 		/****** Geom_VectorWithMagnitude::SetCoord ******/
-		/****** md5 signature: 191a33c01dc9e7fdb47a43d5d7ff9d99 ******/
+		/****** md5 signature: e9f689386d623a4dc59a4ed305338e88 ******/
 		%feature("compactdefaultargs") SetCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -5870,7 +6004,7 @@ Description
 -----------
 Assigns the values X, Y and Z to the coordinates of this vector.
 ") SetCoord;
-		void SetCoord(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		void SetCoord(const double X, const double Y, const double Z);
 
 		/****** Geom_VectorWithMagnitude::SetVec ******/
 		/****** md5 signature: 679db7366752a8b2b6694fa169fbe412 ******/
@@ -5891,12 +6025,12 @@ Converts the gp_Vec vector V into this vector.
 		void SetVec(const gp_Vec & V);
 
 		/****** Geom_VectorWithMagnitude::SetX ******/
-		/****** md5 signature: 30fe204d4c67d94370133e1d40dc6787 ******/
+		/****** md5 signature: b2a1aeaab5eb38d0f723f9862b1dcc0b ******/
 		%feature("compactdefaultargs") SetX;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
@@ -5906,15 +6040,15 @@ Description
 -----------
 Changes the X coordinate of <self>.
 ") SetX;
-		void SetX(const Standard_Real X);
+		void SetX(const double X);
 
 		/****** Geom_VectorWithMagnitude::SetY ******/
-		/****** md5 signature: 8f42f770a3959dece2671d90f60e35e2 ******/
+		/****** md5 signature: 999029c3c06ea6c6b1fd3b4a9def6c70 ******/
 		%feature("compactdefaultargs") SetY;
 		%feature("autodoc", "
 Parameters
 ----------
-Y: float
+Y: double
 
 Return
 -------
@@ -5924,15 +6058,15 @@ Description
 -----------
 Changes the Y coordinate of <self>.
 ") SetY;
-		void SetY(const Standard_Real Y);
+		void SetY(const double Y);
 
 		/****** Geom_VectorWithMagnitude::SetZ ******/
-		/****** md5 signature: d96a64d9a788ed7bdd745a3dcbb831ea ******/
+		/****** md5 signature: b771b25b89d98d43f45a630401562669 ******/
 		%feature("compactdefaultargs") SetZ;
 		%feature("autodoc", "
 Parameters
 ----------
-Z: float
+Z: double
 
 Return
 -------
@@ -5942,20 +6076,20 @@ Description
 -----------
 Changes the Z coordinate of <self>.
 ") SetZ;
-		void SetZ(const Standard_Real Z);
+		void SetZ(const double Z);
 
 		/****** Geom_VectorWithMagnitude::SquareMagnitude ******/
-		/****** md5 signature: e9cc7ce2500a11b7e18b76619fa1de15 ******/
+		/****** md5 signature: 36232d3c8b696593d29a30a15f29c945 ******/
 		%feature("compactdefaultargs") SquareMagnitude;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the square magnitude of <self>.
 ") SquareMagnitude;
-		Standard_Real SquareMagnitude();
+		double SquareMagnitude();
 
 		/****** Geom_VectorWithMagnitude::Subtract ******/
 		/****** md5 signature: d3146a986ae9b0a260509489a297c95f ******/
@@ -5994,7 +6128,7 @@ Subtracts the vector Other to <self>. A new vector is returned.
 		opencascade::handle<Geom_VectorWithMagnitude> Subtracted(const opencascade::handle<Geom_Vector> & Other);
 
 		/****** Geom_VectorWithMagnitude::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -6028,16 +6162,16 @@ Applies the transformation T to this vector.
 class Geom_BSplineCurve : public Geom_BoundedCurve {
 	public:
 		/****** Geom_BSplineCurve::Geom_BSplineCurve ******/
-		/****** md5 signature: aa959be4aa942a29a2164d6bbbaa9836 ******/
+		/****** md5 signature: 68793ed5ec45b0f710866beab7e41a71 ******/
 		%feature("compactdefaultargs") Geom_BSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: TColgp_Array1OfPnt
-Knots: TColStd_Array1OfReal
-Multiplicities: TColStd_Array1OfInteger
+Poles: NCollection_Array1<gp_Pnt>
+Knots: NCollection_Array1<double>
+Multiplicities: NCollection_Array1<int>
 Degree: int
-Periodic: bool (optional, default to Standard_False)
+Periodic: bool (optional, default to false)
 
 Return
 -------
@@ -6047,21 +6181,21 @@ Description
 -----------
 Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 ") Geom_BSplineCurve;
-		 Geom_BSplineCurve(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const Standard_Integer Degree, const Standard_Boolean Periodic = Standard_False);
+		 Geom_BSplineCurve(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false);
 
 		/****** Geom_BSplineCurve::Geom_BSplineCurve ******/
-		/****** md5 signature: febe71f9f4b62c4419f66a23769ade54 ******/
+		/****** md5 signature: a3a8a36e0d7561e0221d409fba6a44df ******/
 		%feature("compactdefaultargs") Geom_BSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: TColgp_Array1OfPnt
-Weights: TColStd_Array1OfReal
-Knots: TColStd_Array1OfReal
-Multiplicities: TColStd_Array1OfInteger
+Poles: NCollection_Array1<gp_Pnt>
+Weights: NCollection_Array1<double>
+Knots: NCollection_Array1<double>
+Multiplicities: NCollection_Array1<int>
 Degree: int
-Periodic: bool (optional, default to Standard_False)
-CheckRational: bool (optional, default to Standard_True)
+Periodic: bool (optional, default to false)
+CheckRational: bool (optional, default to true)
 
 Return
 -------
@@ -6071,10 +6205,42 @@ Description
 -----------
 Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>. Raises ConstructionError subject to the following conditions 0 < Degree <= MaxDegree. //! Weights.Length() == Poles.Length() //! Knots.Length() == Mults.Length() >= 2 //! Knots(i) < Knots(i+1) (Knots are increasing) //! 1 <= Mults(i) <= Degree //! On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! On a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 //! on periodic curves //! Poles.Length() == Sum(Mults(i)) except the first or last.
 ") Geom_BSplineCurve;
-		 Geom_BSplineCurve(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const Standard_Integer Degree, const Standard_Boolean Periodic = Standard_False, const Standard_Boolean CheckRational = Standard_True);
+		 Geom_BSplineCurve(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false, const bool CheckRational = true);
+
+		/****** Geom_BSplineCurve::Geom_BSplineCurve ******/
+		/****** md5 signature: de4fd34abc5f7bd37627b460d7844164 ******/
+		%feature("compactdefaultargs") Geom_BSplineCurve;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Geom_BSplineCurve
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor for optimized copying without validation. 
+Input parameter: theOther the BSpline curve to copy from.
+") Geom_BSplineCurve;
+		 Geom_BSplineCurve(const Geom_BSplineCurve & theOther);
+
+		/****** Geom_BSplineCurve::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
 
 		/****** Geom_BSplineCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -6087,7 +6253,7 @@ Returns the global continuity of the curve: C0: only geometric continuity, C1: c
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_BSplineCurve::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -6099,109 +6265,8 @@ Creates a new object which is a copy of this BSpline curve.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
 
-		/****** Geom_BSplineCurve::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_BSplineCurve::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the curve is not C1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_BSplineCurve::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the curve is not C2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_BSplineCurve::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the curve is not C3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_BSplineCurve::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-For the point of parameter U of this BSpline curve, computes the vector corresponding to the Nth derivative. Warning On a point where the continuity of the curve is not the one requested, this function impacts the part defined by the parameter with a value greater than U, i.e. the part of the curve to the 'right' of the singularity. Exceptions Standard_RangeError if N is less than 1. //! The following functions compute the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** Geom_BSplineCurve::Degree ******/
-		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
+		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -6211,7 +6276,7 @@ Description
 -----------
 Returns the degree of this BSpline curve. The degree of a Geom_BSplineCurve curve cannot be greater than Geom_BSplineCurve::MaxDegree(). Computation of value and derivatives.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 
         /****************** DumpJson ******************/
@@ -6235,7 +6300,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_BSplineCurve::EndPoint ******/
-		/****** md5 signature: 8dd4886e4c303cec8092c23bff0110c3 ******/
+		/****** md5 signature: 1d65a54ecc39cd5733d739743335f6ff ******/
 		%feature("compactdefaultargs") EndPoint;
 		%feature("autodoc", "Return
 -------
@@ -6247,21 +6312,125 @@ Returns the last point of the curve. Warnings: The last point of the curve is di
 ") EndPoint;
 		gp_Pnt EndPoint();
 
+		/****** Geom_BSplineCurve::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the point of parameter U.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_BSplineCurve::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Raised if the continuity of the curve is not C1.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_BSplineCurve::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Raised if the continuity of the curve is not C2.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_BSplineCurve::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Raised if the continuity of the curve is not C3.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_BSplineCurve::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+For the point of parameter U of this BSpline curve, computes the vector corresponding to the Nth derivative. Warning On a point where the continuity of the curve is not the one requested, this function impacts the part defined by the parameter with a value greater than U, i.e. the part of the curve to the 'right' of the singularity. Exceptions Standard_RangeError if N is less than 1. //! The following functions compute the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
+		/****** Geom_BSplineCurve::EvalRepresentation ******/
+		/****** md5 signature: a570242ee5a0b07b20294756091ee6a1 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepCurveDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepCurveDesc::Base> & EvalRepresentation();
+
 		/****** Geom_BSplineCurve::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter of this BSpline curve. This is a knot value. The first parameter is the one of the start point of the BSpline curve.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_BSplineCurve::FirstUKnotIndex ******/
-		/****** md5 signature: cd1268c018861ca921686718cddd2c78 ******/
+		/****** md5 signature: 73211d64126e1b184f22787c35589527 ******/
 		%feature("compactdefaultargs") FirstUKnotIndex;
 		%feature("autodoc", "Return
 -------
@@ -6271,10 +6440,23 @@ Description
 -----------
 Returns the index in the knot array of the knot corresponding to the first or last parameter of this BSpline curve. For a BSpline curve, the first (or last) parameter (which gives the start (or end) point of the curve) is a knot value. However, if the multiplicity of the first (or last) knot is less than Degree + 1, where Degree is the degree of the curve, it is not the first (or last) knot of the curve.
 ") FirstUKnotIndex;
-		Standard_Integer FirstUKnotIndex();
+		int FirstUKnotIndex();
+
+		/****** Geom_BSplineCurve::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
 
 		/****** Geom_BSplineCurve::IncreaseDegree ******/
-		/****** md5 signature: 2f404362ae4c6786bc49eb532abfeb06 ******/
+		/****** md5 signature: bedab57b39ff02828eefe07c657320e1 ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -6289,10 +6471,10 @@ Description
 -----------
 Increases the degree of this BSpline curve to Degree. As a result, the poles, weights and multiplicities tables are modified; the knots table is not changed. Nothing is done if Degree is less than or equal to the current degree. Exceptions Standard_ConstructionError if Degree is greater than Geom_BSplineCurve::MaxDegree().
 ") IncreaseDegree;
-		void IncreaseDegree(const Standard_Integer Degree);
+		void IncreaseDegree(const int Degree);
 
 		/****** Geom_BSplineCurve::IncreaseMultiplicity ******/
-		/****** md5 signature: acbc64714702b7201cc3229bfdba4081 ******/
+		/****** md5 signature: 3546b162d433c77b2281ee8ee90f0cfb ******/
 		%feature("compactdefaultargs") IncreaseMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -6306,12 +6488,12 @@ None
 
 Description
 -----------
-Increases the multiplicity of the knot <Index> to <M>. //! If <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree the degree is used. If <Index> is not in [FirstUKnotIndex, LastUKnotIndex].
+Increases the multiplicity of the knot <Index> to <M>. //! If <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree, the degree is used. If <Index> is not in [FirstUKnotIndex, LastUKnotIndex].
 ") IncreaseMultiplicity;
-		void IncreaseMultiplicity(const Standard_Integer Index, const Standard_Integer M);
+		void IncreaseMultiplicity(const int Index, const int M);
 
 		/****** Geom_BSplineCurve::IncreaseMultiplicity ******/
-		/****** md5 signature: 20329617e559bb513534e7b5d8d351fc ******/
+		/****** md5 signature: 338e0e1466ae655261a8fdb422f3c746 ******/
 		%feature("compactdefaultargs") IncreaseMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -6328,10 +6510,10 @@ Description
 -----------
 Increases the multiplicities of the knots in [I1,I2] to <M>. //! For each knot if <M> is lower or equal to the current multiplicity nothing is done. If <M> is higher than the degree the degree is used. If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex].
 ") IncreaseMultiplicity;
-		void IncreaseMultiplicity(const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer M);
+		void IncreaseMultiplicity(const int I1, const int I2, const int M);
 
 		/****** Geom_BSplineCurve::IncrementMultiplicity ******/
-		/****** md5 signature: 7c6b4452fa65fae5da2a1a56ab1d1564 ******/
+		/****** md5 signature: ae8bd1f92cb1267858ba8100c2a97184 ******/
 		%feature("compactdefaultargs") IncrementMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -6346,20 +6528,20 @@ None
 
 Description
 -----------
-Increment the multiplicities of the knots in [I1,I2] by <M>. //! If <M> is not positive nithing is done. //! For each knot the resulting multiplicity is limited to the Degree. If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex].
+Increment the multiplicities of the knots in [I1,I2] by <M>. //! If <M> is not positive nothing is done. //! For each knot the resulting multiplicity is limited to the Degree. If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex].
 ") IncrementMultiplicity;
-		void IncrementMultiplicity(const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer M);
+		void IncrementMultiplicity(const int I1, const int I2, const int M);
 
 		/****** Geom_BSplineCurve::InsertKnot ******/
-		/****** md5 signature: 4107fd8f43066c1257644c676b582c67 ******/
+		/****** md5 signature: d4ee11baf8f5c45791b9ed98a2167173 ******/
 		%feature("compactdefaultargs") InsertKnot;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 M: int (optional, default to 1)
-ParametricTolerance: float (optional, default to 0.0)
-Add: bool (optional, default to Standard_True)
+ParametricTolerance: double (optional, default to 0.0)
+Add: bool (optional, default to true)
 
 Return
 -------
@@ -6369,18 +6551,18 @@ Description
 -----------
 Inserts a knot value in the sequence of knots. If <U> is an existing knot the multiplicity is increased by <M>. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 ") InsertKnot;
-		void InsertKnot(const Standard_Real U, const Standard_Integer M = 1, const Standard_Real ParametricTolerance = 0.0, const Standard_Boolean Add = Standard_True);
+		void InsertKnot(const double U, const int M = 1, const double ParametricTolerance = 0.0, const bool Add = true);
 
 		/****** Geom_BSplineCurve::InsertKnots ******/
-		/****** md5 signature: 6518beb27958c7c7882b20b52acc844f ******/
+		/****** md5 signature: 566872a4790cfd3823ae734c0748a45d ******/
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
-ParametricTolerance: float (optional, default to 0.0)
-Add: bool (optional, default to Standard_False)
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
+ParametricTolerance: double (optional, default to 0.0)
+Add: bool (optional, default to false)
 
 Return
 -------
@@ -6390,10 +6572,10 @@ Description
 -----------
 Inserts a set of knots values in the sequence of knots. //! For each U = Knots(i), M = Mults(i) //! If <U> is an existing knot the multiplicity is increased by <M> if <Add> is True, increased to <M> if <Add> is False. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 ") InsertKnots;
-		void InsertKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Real ParametricTolerance = 0.0, const Standard_Boolean Add = Standard_False);
+		void InsertKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
 
 		/****** Geom_BSplineCurve::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 42a5bf57a05eb6426c49586172f0db7e ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -6408,10 +6590,10 @@ Description
 -----------
 Returns the continuity of the curve, the curve is at least C0. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Geom_BSplineCurve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -6421,16 +6603,16 @@ Description
 -----------
 Returns true if the distance between the first point and the last point of the curve is lower or equal to Resolution from package gp. Warnings: The first and the last point can be different from the first pole and the last pole of the curve.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_BSplineCurve::IsEqual ******/
-		/****** md5 signature: b76d8f87acae5fdabd21328ec54f8e57 ******/
+		/****** md5 signature: 28462f403fa212d67c5266d0e6d65373 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
 ----------
 theOther: Geom_BSplineCurve
-thePreci: float
+thePreci: double
 
 Return
 -------
@@ -6440,17 +6622,17 @@ Description
 -----------
 Compare two Bspline curve on identity;.
 ") IsEqual;
-		Standard_Boolean IsEqual(const opencascade::handle<Geom_BSplineCurve> & theOther, const Standard_Real thePreci);
+		bool IsEqual(const opencascade::handle<Geom_BSplineCurve> & theOther, const double thePreci);
 
 		/****** Geom_BSplineCurve::IsG1 ******/
-		/****** md5 signature: 9f6daa5a840326c7c14dda9f95a957d1 ******/
+		/****** md5 signature: 3a7232666f5251e8a91b74bc6f689780 ******/
 		%feature("compactdefaultargs") IsG1;
 		%feature("autodoc", "
 Parameters
 ----------
-theTf: float
-theTl: float
-theAngTol: float
+theTf: double
+theTl: double
+theAngTol: double
 
 Return
 -------
@@ -6460,10 +6642,10 @@ Description
 -----------
 Check if curve has at least G1 continuity in interval [theTf, theTl] Returns true if IsCN(1) or angle between 'left' and 'right' first derivatives at knots with C0 continuity is less then theAngTol only knots in interval [theTf, theTl] is checked.
 ") IsG1;
-		Standard_Boolean IsG1(const Standard_Real theTf, const Standard_Real theTl, const Standard_Real theAngTol);
+		bool IsG1(const double theTf, const double theTl, const double theAngTol);
 
 		/****** Geom_BSplineCurve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -6473,10 +6655,10 @@ Description
 -----------
 Returns True if the curve is periodic.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_BSplineCurve::IsRational ******/
-		/****** md5 signature: fd4212ffa7bc30cde420e74a2c539434 ******/
+		/****** md5 signature: 2d134f58b1ac19806ba32cb72ce44772 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -6486,10 +6668,10 @@ Description
 -----------
 Returns True if the weights are not identical. The tolerance criterion is Epsilon of the class Real.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** Geom_BSplineCurve::Knot ******/
-		/****** md5 signature: 87780028b98a8253068f050487c4f4d5 ******/
+		/****** md5 signature: 1f8adaf53c02059612473e2f4f2e5b01 ******/
 		%feature("compactdefaultargs") Knot;
 		%feature("autodoc", "
 Parameters
@@ -6498,13 +6680,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the knot of range Index. When there is a knot with a multiplicity greater than 1 the knot is not repeated. The method Multiplicity can be used to get the multiplicity of the Knot. Raised if Index < 1 or Index > NbKnots.
 ") Knot;
-		Standard_Real Knot(const Standard_Integer Index);
+		double Knot(const int Index);
 
 		/****** Geom_BSplineCurve::KnotDistribution ******/
 		/****** md5 signature: 6b866e71367b1f5428eba6d3bcc36415 ******/
@@ -6520,12 +6702,12 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		GeomAbs_BSplKnotDistribution KnotDistribution();
 
 		/****** Geom_BSplineCurve::KnotSequence ******/
-		/****** md5 signature: 16870e6acc7bcd815fb4e50aaa88ac5a ******/
+		/****** md5 signature: 1b7301fa6b31d7a4f5ea6086e2fd0bec ******/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "
 Parameters
 ----------
-K: TColStd_Array1OfReal
+K: NCollection_Array1<double>
 
 Return
 -------
@@ -6533,30 +6715,30 @@ None
 
 Description
 -----------
-Returns K, the knots sequence of this BSpline curve. In this sequence, knots with a multiplicity greater than 1 are repeated. In the case of a non-periodic curve the length of the sequence must be equal to the sum of the NbKnots multiplicities of the knots of the curve (where NbKnots is the number of knots of this BSpline curve). This sum is also equal to: NbPoles + Degree + 1 where NbPoles is the number of poles and Degree the degree of this BSpline curve. In the case of a periodic curve, if there are k periodic knots, the period is Knot(k+1) - Knot(1). The initial sequence is built by writing knots 1 to k+1, which are repeated according to their corresponding multiplicities. If Degree is the degree of the curve, the degree of continuity of the curve at the knot of index 1 (or k+1) is equal to c = Degree + 1 - Mult(1). c knots are then inserted at the beginning and end of the initial sequence: - the c values of knots preceding the first item Knot(k+1) in the initial sequence are inserted at the beginning; the period is subtracted from these c values; - the c values of knots following the last item Knot(1) in the initial sequence are inserted at the end; the period is added to these c values. The length of the sequence must therefore be equal to: NbPoles + 2*Degree - Mult(1) + 2. Example For a non-periodic BSpline curve of degree 2 where: - the array of knots is: { k1 k2 k3 k4 }, - with associated multiplicities: { 3 1 2 3 }, the knot sequence is: K = { k1 k1 k1 k2 k3 k3 k4 k4 k4 } For a periodic BSpline curve of degree 4 , which is 'C1' continuous at the first knot, and where: - the periodic knots are: { k1 k2 k3 (k4) } (3 periodic knots: the points of parameter k1 and k4 are identical, the period is p = k4 - k1), - with associated multiplicities: { 3 1 2 (3) }, the degree of continuity at knots k1 and k4 is: Degree + 1 - Mult(i) = 2. 2 supplementary knots are added at the beginning and end of the sequence: - at the beginning: the 2 knots preceding k4 minus the period; in this example, this is k3 - p both times; - at the end: the 2 knots following k1 plus the period; in this example, this is k2 + p and k3 + p. The knot sequence is therefore: K = { k3-p k3-p k1 k1 k1 k2 k3 k3 k4 k4 k4 k2+p k3+p } Exceptions Raised if K.Lower() is less than number of first knot in knot sequence with repetitions or K.Upper() is more than number of last knot in knot sequence with repetitions.
+No available documentation.
 ") KnotSequence;
-		void KnotSequence(TColStd_Array1OfReal & K);
+		void KnotSequence(NCollection_Array1<double> & K);
 
 		/****** Geom_BSplineCurve::KnotSequence ******/
-		/****** md5 signature: 4c1c40cd0e87a5ecb1feb1289774c756 ******/
+		/****** md5 signature: 13e41dae8bd546a82617e7927f39c7c2 ******/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 returns the knots of the B-spline curve. Knots with multiplicit greater than 1 are repeated.
 ") KnotSequence;
-		const TColStd_Array1OfReal & KnotSequence();
+		const NCollection_Array1<double> & KnotSequence();
 
 		/****** Geom_BSplineCurve::Knots ******/
-		/****** md5 signature: 949cf09b8db41cbb8ab5188bcb475e56 ******/
+		/****** md5 signature: 28e846af74f6d8e9d9bca42676b511f9 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
 ----------
-K: TColStd_Array1OfReal
+K: NCollection_Array1<double>
 
 Return
 -------
@@ -6564,38 +6746,38 @@ None
 
 Description
 -----------
-returns the knot values of the B-spline curve; Warning A knot with a multiplicity greater than 1 is not repeated in the knot table. The Multiplicity function can be used to obtain the multiplicity of each knot. //! Raised K.Lower() is less than number of first knot or K.Upper() is more than number of last knot.
+No available documentation.
 ") Knots;
-		void Knots(TColStd_Array1OfReal & K);
+		void Knots(NCollection_Array1<double> & K);
 
 		/****** Geom_BSplineCurve::Knots ******/
-		/****** md5 signature: 8001460ab922c7159116eb85f0693b97 ******/
+		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 returns the knot values of the B-spline curve; Warning A knot with a multiplicity greater than 1 is not repeated in the knot table. The Multiplicity function can be used to obtain the multiplicity of each knot.
 ") Knots;
-		const TColStd_Array1OfReal & Knots();
+		const NCollection_Array1<double> & Knots();
 
 		/****** Geom_BSplineCurve::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parametric value of the end point of the curve. It is a knot value.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_BSplineCurve::LastUKnotIndex ******/
-		/****** md5 signature: b5183e855ac73e665e20fe9cd9a25fef ******/
+		/****** md5 signature: fdb1b3a0341af13d2cac11b5f8f49486 ******/
 		%feature("compactdefaultargs") LastUKnotIndex;
 		%feature("autodoc", "Return
 -------
@@ -6605,15 +6787,15 @@ Description
 -----------
 For a BSpline curve the last parameter (which gives the end point of the curve) is a knot value but if the multiplicity of the last knot index is lower than Degree + 1 it is not the last knot of the curve. This method computes the index of the knot corresponding to the last parameter.
 ") LastUKnotIndex;
-		Standard_Integer LastUKnotIndex();
+		int LastUKnotIndex();
 
 		/****** Geom_BSplineCurve::LocalD0 ******/
-		/****** md5 signature: 7f47ff3d5e00339610831a0d52809be4 ******/
+		/****** md5 signature: a7dcdef20cac135102ba4889aa0d4640 ******/
 		%feature("compactdefaultargs") LocalD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 FromK1: int
 ToK2: int
 P: gp_Pnt
@@ -6626,15 +6808,15 @@ Description
 -----------
 Raised if FromK1 = ToK2.
 ") LocalD0;
-		void LocalD0(const Standard_Real U, const Standard_Integer FromK1, const Standard_Integer ToK2, gp_Pnt & P);
+		void LocalD0(const double U, const int FromK1, const int ToK2, gp_Pnt & P);
 
 		/****** Geom_BSplineCurve::LocalD1 ******/
-		/****** md5 signature: 384daee5e7c8e473572b28a29f4c0084 ******/
+		/****** md5 signature: 783f655f968f0a94b5b8d0d7c31c26fc ******/
 		%feature("compactdefaultargs") LocalD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 FromK1: int
 ToK2: int
 P: gp_Pnt
@@ -6648,15 +6830,15 @@ Description
 -----------
 Raised if the local continuity of the curve is not C1 between the knot K1 and the knot K2. Raised if FromK1 = ToK2.
 ") LocalD1;
-		void LocalD1(const Standard_Real U, const Standard_Integer FromK1, const Standard_Integer ToK2, gp_Pnt & P, gp_Vec & V1);
+		void LocalD1(const double U, const int FromK1, const int ToK2, gp_Pnt & P, gp_Vec & V1);
 
 		/****** Geom_BSplineCurve::LocalD2 ******/
-		/****** md5 signature: ef77beb8e22657fb4d943898ae2df73d ******/
+		/****** md5 signature: df71d5e901d7734e349bb3355dbdc1ce ******/
 		%feature("compactdefaultargs") LocalD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 FromK1: int
 ToK2: int
 P: gp_Pnt
@@ -6671,15 +6853,15 @@ Description
 -----------
 Raised if the local continuity of the curve is not C2 between the knot K1 and the knot K2. Raised if FromK1 = ToK2.
 ") LocalD2;
-		void LocalD2(const Standard_Real U, const Standard_Integer FromK1, const Standard_Integer ToK2, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		void LocalD2(const double U, const int FromK1, const int ToK2, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** Geom_BSplineCurve::LocalD3 ******/
-		/****** md5 signature: 0758e25d0170dd9e8bb8ee73e2ec3aaf ******/
+		/****** md5 signature: 4e9eeca07baf7bf8a09994c6b32a7a2e ******/
 		%feature("compactdefaultargs") LocalD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 FromK1: int
 ToK2: int
 P: gp_Pnt
@@ -6695,15 +6877,15 @@ Description
 -----------
 Raised if the local continuity of the curve is not C3 between the knot K1 and the knot K2. Raised if FromK1 = ToK2.
 ") LocalD3;
-		void LocalD3(const Standard_Real U, const Standard_Integer FromK1, const Standard_Integer ToK2, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		void LocalD3(const double U, const int FromK1, const int ToK2, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** Geom_BSplineCurve::LocalDN ******/
-		/****** md5 signature: 4f668f6913b751c73e9de6b9c190fb02 ******/
+		/****** md5 signature: 2cc5234b0407a6a9deb1bcdda34918a6 ******/
 		%feature("compactdefaultargs") LocalDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 FromK1: int
 ToK2: int
 N: int
@@ -6716,15 +6898,15 @@ Description
 -----------
 Raised if the local continuity of the curve is not CN between the knot K1 and the knot K2. Raised if FromK1 = ToK2. Raised if N < 1.
 ") LocalDN;
-		gp_Vec LocalDN(const Standard_Real U, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Integer N);
+		gp_Vec LocalDN(const double U, const int FromK1, const int ToK2, const int N);
 
 		/****** Geom_BSplineCurve::LocalValue ******/
-		/****** md5 signature: 9df5c7e700773d0c94d83d2117dedfd3 ******/
+		/****** md5 signature: 313640199b12f239941862f278c9472b ******/
 		%feature("compactdefaultargs") LocalValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 FromK1: int
 ToK2: int
 
@@ -6736,17 +6918,17 @@ Description
 -----------
 Raised if FromK1 = ToK2.
 ") LocalValue;
-		gp_Pnt LocalValue(const Standard_Real U, const Standard_Integer FromK1, const Standard_Integer ToK2);
+		gp_Pnt LocalValue(const double U, const int FromK1, const int ToK2);
 
 		/****** Geom_BSplineCurve::LocateU ******/
-		/****** md5 signature: d536ddd65ca3edfb5dd75e59f7417959 ******/
+		/****** md5 signature: 1cd251285614aa4c353c1e6f8a41242d ******/
 		%feature("compactdefaultargs") LocateU;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-ParametricTolerance: float
-WithKnotRepetition: bool (optional, default to Standard_False)
+U: double
+ParametricTolerance: double
+WithKnotRepetition: bool (optional, default to false)
 
 Return
 -------
@@ -6755,12 +6937,12 @@ I2: int
 
 Description
 -----------
-Locates the parametric value U in the sequence of knots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. Knots (I1) <= U <= Knots (I2) . if I1 = I2 U is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => U < Knots (1) - Abs(ParametricTolerance) . if I2 > NbKnots => U > Knots (NbKnots) + Abs(ParametricTolerance).
+Locates the parametric value U in the sequence of knots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. Knots (I1) <= U <= Knots (I2) . if I1 = I2 U is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => U < Knots (1) - std::abs(ParametricTolerance) . if I2 > NbKnots => U > Knots (NbKnots) + std::abs(ParametricTolerance).
 ") LocateU;
-		void LocateU(const Standard_Real U, const Standard_Real ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Boolean WithKnotRepetition = Standard_False);
+		void LocateU(const double U, const double ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const bool WithKnotRepetition = false);
 
 		/****** Geom_BSplineCurve::MaxDegree ******/
-		/****** md5 signature: 985314a0ed62b597a9bdf0f555b97bed ******/
+		/****** md5 signature: c1d162018b4c908f3a00335cd079a0ea ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -6770,15 +6952,15 @@ Description
 -----------
 Returns the value of the maximum degree of the normalized B-spline basis functions in this package.
 ") MaxDegree;
-		static Standard_Integer MaxDegree();
+		static int MaxDegree();
 
 		/****** Geom_BSplineCurve::MovePoint ******/
-		/****** md5 signature: 482b67aaf4ab72d5f2ec26c1a1e1a38c ******/
+		/****** md5 signature: f4cf2d3bb319f307c0ec09ce6f953b47 ******/
 		%feature("compactdefaultargs") MovePoint;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 Index1: int
 Index2: int
@@ -6792,18 +6974,18 @@ Description
 -----------
 Moves the point of parameter U of this BSpline curve to P. Index1 and Index2 are the indexes in the table of poles of this BSpline curve of the first and last poles designated to be moved. FirstModifiedPole and LastModifiedPole are the indexes of the first and last poles which are effectively modified. In the event of incompatibility between Index1, Index2 and the value U: - no change is made to this BSpline curve, and - the FirstModifiedPole and LastModifiedPole are returned null. Exceptions Standard_OutOfRange if: - Index1 is greater than or equal to Index2, or - Index1 or Index2 is less than 1 or greater than the number of poles of this BSpline curve.
 ") MovePoint;
-		void MovePoint(const Standard_Real U, const gp_Pnt & P, const Standard_Integer Index1, const Standard_Integer Index2, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void MovePoint(const double U, const gp_Pnt & P, const int Index1, const int Index2, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** Geom_BSplineCurve::MovePointAndTangent ******/
-		/****** md5 signature: 5d9cf04ee9481c575090c788835bb070 ******/
+		/****** md5 signature: 271b4f7c1b6cbd5401fd8cef7e96e2cc ******/
 		%feature("compactdefaultargs") MovePointAndTangent;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 Tangent: gp_Vec
-Tolerance: float
+Tolerance: double
 StartingCondition: int
 EndingCondition: int
 
@@ -6815,15 +6997,15 @@ Description
 -----------
 Move a point with parameter U to P. and makes it tangent at U be Tangent. StartingCondition = -1 means first can move EndingCondition = -1 means last point can move StartingCondition = 0 means the first point cannot move EndingCondition = 0 means the last point cannot move StartingCondition = 1 means the first point and tangent cannot move EndingCondition = 1 means the last point and tangent cannot move and so forth ErrorStatus != 0 means that there are not enough degree of freedom with the constrain to deform the curve accordingly.
 ") MovePointAndTangent;
-		void MovePointAndTangent(const Standard_Real U, const gp_Pnt & P, const gp_Vec & Tangent, const Standard_Real Tolerance, const Standard_Integer StartingCondition, const Standard_Integer EndingCondition, Standard_Integer &OutValue);
+		void MovePointAndTangent(const double U, const gp_Pnt & P, const gp_Vec & Tangent, const double Tolerance, const int StartingCondition, const int EndingCondition, Standard_Integer &OutValue);
 
 		/****** Geom_BSplineCurve::Multiplicities ******/
-		/****** md5 signature: 5e4cb134cc2959735c59c531d6a8b490 ******/
+		/****** md5 signature: 1415188431c1974d7791a9ca90b50607 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
-M: TColStd_Array1OfInteger
+M: NCollection_Array1<int>
 
 Return
 -------
@@ -6831,25 +7013,25 @@ None
 
 Description
 -----------
-Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
+No available documentation.
 ") Multiplicities;
-		void Multiplicities(TColStd_Array1OfInteger & M);
+		void Multiplicities(NCollection_Array1<int> & M);
 
 		/****** Geom_BSplineCurve::Multiplicities ******/
-		/****** md5 signature: cde561f92fd30b25ca2f1b1b8716c207 ******/
+		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfInteger
+NCollection_Array1<int>
 
 Description
 -----------
 returns the multiplicity of the knots of the curve.
 ") Multiplicities;
-		const TColStd_Array1OfInteger & Multiplicities();
+		const NCollection_Array1<int> & Multiplicities();
 
 		/****** Geom_BSplineCurve::Multiplicity ******/
-		/****** md5 signature: 0b00002ea9c75b6fa0f22b159f127931 ******/
+		/****** md5 signature: 6deea6eef255db56cfdeb88488a383cc ******/
 		%feature("compactdefaultargs") Multiplicity;
 		%feature("autodoc", "
 Parameters
@@ -6864,10 +7046,10 @@ Description
 -----------
 Returns the multiplicity of the knots of range Index. Raised if Index < 1 or Index > NbKnots.
 ") Multiplicity;
-		Standard_Integer Multiplicity(const Standard_Integer Index);
+		int Multiplicity(const int Index);
 
 		/****** Geom_BSplineCurve::NbKnots ******/
-		/****** md5 signature: ccda669299f8eba1ba0d3387af4c950e ******/
+		/****** md5 signature: 1d7f6bb61170b57fc8534832d22fab99 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -6877,10 +7059,10 @@ Description
 -----------
 Returns the number of knots. This method returns the number of knot without repetition of multiple knots.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** Geom_BSplineCurve::NbPoles ******/
-		/****** md5 signature: 9a7d6d5f8a21c5833786e951bce99604 ******/
+		/****** md5 signature: ec44b31f908a8be9d45ab84543b6e8d5 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -6890,10 +7072,10 @@ Description
 -----------
 Returns the number of poles.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** Geom_BSplineCurve::PeriodicNormalization ******/
-		/****** md5 signature: ba1016bda06943eb982997be7f9da740 ******/
+		/****** md5 signature: 561cf2a1584a7411ebe6b9b581602ad1 ******/
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "
 Parameters
@@ -6901,7 +7083,7 @@ Parameters
 
 Return
 -------
-U: float
+U: double
 
 Description
 -----------
@@ -6910,7 +7092,7 @@ returns the parameter normalized within the period if the curve is periodic: oth
 		void PeriodicNormalization(Standard_Real &OutValue);
 
 		/****** Geom_BSplineCurve::Pole ******/
-		/****** md5 signature: 5a83797398b762820fe4e76a1b7c2504 ******/
+		/****** md5 signature: 8b51a9aa7ec15affcda64b4301e12ae7 ******/
 		%feature("compactdefaultargs") Pole;
 		%feature("autodoc", "
 Parameters
@@ -6925,15 +7107,15 @@ Description
 -----------
 Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
 ") Pole;
-		const gp_Pnt Pole(const Standard_Integer Index);
+		const gp_Pnt Pole(const int Index);
 
 		/****** Geom_BSplineCurve::Poles ******/
-		/****** md5 signature: 6f58b0e5f2985c3cf12db24d338cf6c3 ******/
+		/****** md5 signature: 25bf8c7a4834c7c94ffb834d7fe32e93 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
-P: TColgp_Array1OfPnt
+P: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -6941,32 +7123,32 @@ None
 
 Description
 -----------
-Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
+No available documentation.
 ") Poles;
-		void Poles(TColgp_Array1OfPnt & P);
+		void Poles(NCollection_Array1<gp_Pnt> & P);
 
 		/****** Geom_BSplineCurve::Poles ******/
-		/****** md5 signature: 74aabdc9663f922ca9ac5a471f930356 ******/
+		/****** md5 signature: 663bb42f249a1a7e08feff11d136eca9 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-TColgp_Array1OfPnt
+NCollection_Array1<gp_Pnt>
 
 Description
 -----------
 Returns the poles of the B-spline curve;.
 ") Poles;
-		const TColgp_Array1OfPnt & Poles();
+		const NCollection_Array1<gp_Pnt> Poles();
 
 		/****** Geom_BSplineCurve::RemoveKnot ******/
-		/****** md5 signature: 9210db71a77261be541bbc23355610eb ******/
+		/****** md5 signature: 54905b41bbca7519e1f70b87cdd71db9 ******/
 		%feature("compactdefaultargs") RemoveKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 M: int
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -6974,30 +7156,30 @@ bool
 
 Description
 -----------
-Reduces the multiplicity of the knot of index Index to M. If M is equal to 0, the knot is removed. With a modification of this type, the array of poles is also modified. Two different algorithms are systematically used to compute the new poles of the curve. If, for each pole, the distance between the pole calculated using the first algorithm and the same pole calculated using the second algorithm, is less than Tolerance, this ensures that the curve is not modified by more than Tolerance. Under these conditions, true is returned; otherwise, false is returned. A low tolerance is used to prevent modification of the curve. A high tolerance is used to 'smooth' the curve. Exceptions Standard_OutOfRange if Index is outside the bounds of the knots table. pole insertion and pole removing this operation is limited to the Uniform or QuasiUniform BSplineCurve. The knot values are modified . If the BSpline is NonUniform or Piecewise Bezier an exception Construction error is raised.
+Reduces the multiplicity of the knot of index Index to M. If M is equal to 0, the knot is removed. With a modification of this type, the array of poles is also modified. Two different algorithms are systematically used to compute the new poles of the curve. If, for each pole, the distance between the pole calculated using the first algorithm and the same pole calculated using the second algorithm, is less than Tolerance, this ensures that the curve is not modified by more than Tolerance. Under these conditions, true is returned; otherwise, false is returned. A low tolerance is used to prevent modification of the curve. A high tolerance is used to 'smooth' the curve. Exceptions Standard_OutOfRange if Index is outside the bounds of the knots table. pole insertion and pole removing this operation is limited to the Uniform or QuasiUniform BSplineCurve. The knot values are modified. If the BSpline is NonUniform or Piecewise Bezier an exception Construction error is raised.
 ") RemoveKnot;
-		Standard_Boolean RemoveKnot(const Standard_Integer Index, const Standard_Integer M, const Standard_Real Tolerance);
+		bool RemoveKnot(const int Index, const int M, const double Tolerance);
 
 		/****** Geom_BSplineCurve::Resolution ******/
-		/****** md5 signature: 6437f52eb15539577fb4ae8621d2ded9 ******/
+		/****** md5 signature: 94a4afa7dce880817d6fdfba2f9ff320 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3D: float
+Tolerance3D: double
 
 Return
 -------
-UTolerance: float
+UTolerance: double
 
 Description
 -----------
 Computes for this BSpline curve the parametric tolerance UTolerance for a given 3D tolerance Tolerance3D. If f(t) is the equation of this BSpline curve, UTolerance ensures that: | t1 - t0| < Utolerance ===> |f(t1) - f(t0)| < Tolerance3D.
 ") Resolution;
-		void Resolution(const Standard_Real Tolerance3D, Standard_Real &OutValue);
+		void Resolution(const double Tolerance3D, Standard_Real &OutValue);
 
 		/****** Geom_BSplineCurve::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 3329d3f633fce7835a9f2ded949a6050 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -7010,32 +7192,32 @@ Changes the direction of parametrization of <self>. The Knot sequence is modifie
 		void Reverse();
 
 		/****** Geom_BSplineCurve::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns UFirst + ULast - U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_BSplineCurve::Segment ******/
-		/****** md5 signature: 26df5d98b25171a395c66397318dcefc ******/
+		/****** md5 signature: d52b984932170ee91ebb3fe384e1f143 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
-theTolerance: float (optional, default to Precision::PConfusion())
+U1: double
+U2: double
+theTolerance: double (optional, default to Precision::PConfusion())
 
 Return
 -------
@@ -7045,16 +7227,34 @@ Description
 -----------
 Modifies this BSpline curve by segmenting it between U1 and U2. Either of these values can be outside the bounds of the curve, but U2 must be greater than U1. All data structure tables of this BSpline curve are modified, but the knots located between U1 and U2 are retained. The degree of the curve is not modified. //! Parameter theTolerance defines the possible proximity of the segment boundaries and B-spline knots to treat them as equal. //! Warnings: Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the curve <self> or if the curve makes loop. After the segmentation the length of a curve can be null. raises if U2 < U1. Standard_DomainError if U2 - U1 exceeds the period for periodic curves. i.e. ((U2 - U1) - Period) > Precision::PConfusion().
 ") Segment;
-		void Segment(const Standard_Real U1, const Standard_Real U2, const Standard_Real theTolerance = Precision::PConfusion());
+		void Segment(const double U1, const double U2, const double theTolerance = Precision::PConfusion());
+
+		/****** Geom_BSplineCurve::SetEvalRepresentation ******/
+		/****** md5 signature: c94b922fdbdc3ba23286b9a9dc213d1c ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepCurveDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepCurveDesc::Base> & theDesc);
 
 		/****** Geom_BSplineCurve::SetKnot ******/
-		/****** md5 signature: 24248dddb124af2118f7043ae254694e ******/
+		/****** md5 signature: 3671e77deddb12405c65a4fc2c4c7333 ******/
 		%feature("compactdefaultargs") SetKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-K: float
+K: double
 
 Return
 -------
@@ -7064,16 +7264,16 @@ Description
 -----------
 Modifies this BSpline curve by assigning the value K to the knot of index Index in the knots table. This is a relatively local modification because K must be such that: Knots(Index - 1) < K < Knots(Index + 1) The second syntax allows you also to increase the multiplicity of the knot to M (but it is not possible to decrease the multiplicity of the knot with this function). Standard_ConstructionError if: - K is not such that: Knots(Index - 1) < K < Knots(Index + 1) - M is greater than the degree of this BSpline curve or lower than the previous multiplicity of knot of index Index in the knots table. Standard_OutOfRange if Index is outside the bounds of the knots table.
 ") SetKnot;
-		void SetKnot(const Standard_Integer Index, const Standard_Real K);
+		void SetKnot(const int Index, const double K);
 
 		/****** Geom_BSplineCurve::SetKnot ******/
-		/****** md5 signature: 12123e73421d28330eec5dae317ac18f ******/
+		/****** md5 signature: 0de49b51f368a1d5ff63bf35be32f5b7 ******/
 		%feature("compactdefaultargs") SetKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-K: float
+K: double
 M: int
 
 Return
@@ -7084,15 +7284,15 @@ Description
 -----------
 Changes the knot of range Index with its multiplicity. You can increase the multiplicity of a knot but it is not allowed to decrease the multiplicity of an existing knot. //! Raised if K >= Knots(Index+1) or K <= Knots(Index-1). Raised if M is greater than Degree or lower than the previous multiplicity of knot of range Index. Raised if Index < 1 || Index > NbKnots.
 ") SetKnot;
-		void SetKnot(const Standard_Integer Index, const Standard_Real K, const Standard_Integer M);
+		void SetKnot(const int Index, const double K, const int M);
 
 		/****** Geom_BSplineCurve::SetKnots ******/
-		/****** md5 signature: d319c647ea235edd171c661a477e0338 ******/
+		/****** md5 signature: c76939d5e20553630d805de848e55d1d ******/
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-K: TColStd_Array1OfReal
+K: NCollection_Array1<double>
 
 Return
 -------
@@ -7102,7 +7302,7 @@ Description
 -----------
 Modifies this BSpline curve by assigning the array K to its knots table. The multiplicity of the knots is not modified. Exceptions Standard_ConstructionError if the values in the array K are not in ascending order. Standard_OutOfRange if the bounds of the array K are not respectively 1 and the number of knots of this BSpline curve.
 ") SetKnots;
-		void SetKnots(const TColStd_Array1OfReal & K);
+		void SetKnots(const NCollection_Array1<double> & K);
 
 		/****** Geom_BSplineCurve::SetNotPeriodic ******/
 		/****** md5 signature: ccfbd171d2b38df3531b77ecbc51dcae ******/
@@ -7118,7 +7318,7 @@ Changes this BSpline curve into a non-periodic curve. If this curve is already n
 		void SetNotPeriodic();
 
 		/****** Geom_BSplineCurve::SetOrigin ******/
-		/****** md5 signature: bcb4756c4db11bf7ed3d05d2f98659f0 ******/
+		/****** md5 signature: a689352e8bf76c88d77419d37d16683c ******/
 		%feature("compactdefaultargs") SetOrigin;
 		%feature("autodoc", "
 Parameters
@@ -7133,16 +7333,16 @@ Description
 -----------
 Assigns the knot of index Index in the knots table as the origin of this periodic BSpline curve. As a consequence, the knots and poles tables are modified. Exceptions Standard_NoSuchObject if this curve is not periodic. Standard_DomainError if Index is outside the bounds of the knots table.
 ") SetOrigin;
-		void SetOrigin(const Standard_Integer Index);
+		void SetOrigin(const int Index);
 
 		/****** Geom_BSplineCurve::SetOrigin ******/
-		/****** md5 signature: 6ec07ce42052ea40f10882071071f1bc ******/
+		/****** md5 signature: db967ba1c4d68774e9146e7afc00162d ******/
 		%feature("compactdefaultargs") SetOrigin;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-Tol: float
+U: double
+Tol: double
 
 Return
 -------
@@ -7152,7 +7352,7 @@ Description
 -----------
 Set the origin of a periodic curve at Knot U. If U is not a knot of the BSpline a new knot is inserted. KnotVector and poles are modified. Raised if the curve is not periodic.
 ") SetOrigin;
-		void SetOrigin(const Standard_Real U, const Standard_Real Tol);
+		void SetOrigin(const double U, const double Tol);
 
 		/****** Geom_BSplineCurve::SetPeriodic ******/
 		/****** md5 signature: 3d498279f2dd83a2ab9aa88181da253f ******/
@@ -7168,7 +7368,7 @@ Changes this BSpline curve into a periodic curve. To become periodic, the curve 
 		void SetPeriodic();
 
 		/****** Geom_BSplineCurve::SetPole ******/
-		/****** md5 signature: c804d6e49d15c749b2cf3bf061821fae ******/
+		/****** md5 signature: 6c1b16e4a0213de20b4394ce01a770f0 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
@@ -7184,17 +7384,17 @@ Description
 -----------
 Modifies this BSpline curve by assigning P to the pole of index Index in the poles table. Exceptions Standard_OutOfRange if Index is outside the bounds of the poles table. Standard_ConstructionError if Weight is negative or null.
 ") SetPole;
-		void SetPole(const Standard_Integer Index, const gp_Pnt & P);
+		void SetPole(const int Index, const gp_Pnt & P);
 
 		/****** Geom_BSplineCurve::SetPole ******/
-		/****** md5 signature: ae5484e750e2e148a7cbe47257d71d1c ******/
+		/****** md5 signature: be3a33a6435dfb27534a4eb64bb62557 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 P: gp_Pnt
-Weight: float
+Weight: double
 
 Return
 -------
@@ -7204,16 +7404,16 @@ Description
 -----------
 Modifies this BSpline curve by assigning P to the pole of index Index in the poles table. This syntax also allows you to modify the weight of the modified pole, which becomes Weight. In this case, if this BSpline curve is non-rational, it can become rational and vice versa. Exceptions Standard_OutOfRange if Index is outside the bounds of the poles table. Standard_ConstructionError if Weight is negative or null.
 ") SetPole;
-		void SetPole(const Standard_Integer Index, const gp_Pnt & P, const Standard_Real Weight);
+		void SetPole(const int Index, const gp_Pnt & P, const double Weight);
 
 		/****** Geom_BSplineCurve::SetWeight ******/
-		/****** md5 signature: 4e7aa00d12e09e9b776d4bf66f07ecec ******/
+		/****** md5 signature: 070f4d4d27969cd02dc5548cbd61269b ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-Weight: float
+Weight: double
 
 Return
 -------
@@ -7223,10 +7423,10 @@ Description
 -----------
 Changes the weight for the pole of range Index. If the curve was non rational it can become rational. If the curve was rational it can become non rational. //! Raised if Index < 1 || Index > NbPoles Raised if Weight <= 0.0.
 ") SetWeight;
-		void SetWeight(const Standard_Integer Index, const Standard_Real Weight);
+		void SetWeight(const int Index, const double Weight);
 
 		/****** Geom_BSplineCurve::StartPoint ******/
-		/****** md5 signature: ccb2a909a54dc7dd0800015a563c1ff7 ******/
+		/****** md5 signature: 8a586296583b30cec9a994e9c703d6ca ******/
 		%feature("compactdefaultargs") StartPoint;
 		%feature("autodoc", "Return
 -------
@@ -7239,7 +7439,7 @@ Returns the start point of the curve. Warnings: This point is different from the
 		gp_Pnt StartPoint();
 
 		/****** Geom_BSplineCurve::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -7257,7 +7457,7 @@ Applies the transformation T to this BSpline curve.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_BSplineCurve::Weight ******/
-		/****** md5 signature: 70cf193bf7498ec22102a906ea9db6f5 ******/
+		/****** md5 signature: 4e490ff1aecfd614d673f3411c64fe0f ******/
 		%feature("compactdefaultargs") Weight;
 		%feature("autodoc", "
 Parameters
@@ -7266,21 +7466,21 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the weight of the pole of range Index . Raised if Index < 1 or Index > NbPoles.
 ") Weight;
-		Standard_Real Weight(const Standard_Integer Index);
+		double Weight(const int Index);
 
 		/****** Geom_BSplineCurve::Weights ******/
-		/****** md5 signature: dd63733e96eafbaacbd2d7b600471c30 ******/
+		/****** md5 signature: 75a527ca0732a5a4c79c4c170bad065d ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
 ----------
-W: TColStd_Array1OfReal
+W: NCollection_Array1<double>
 
 Return
 -------
@@ -7288,22 +7488,35 @@ None
 
 Description
 -----------
-Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
+No available documentation.
 ") Weights;
-		void Weights(TColStd_Array1OfReal & W);
+		void Weights(NCollection_Array1<double> & W);
 
 		/****** Geom_BSplineCurve::Weights ******/
-		/****** md5 signature: 761d13c1de73ab225be280fb8ae764b6 ******/
+		/****** md5 signature: b577b4e8ac6293b0a90c61644b9e289c ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal *
+NCollection_Array1<double> *
 
 Description
 -----------
 Returns the weights of the B-spline curve;.
 ") Weights;
-		const TColStd_Array1OfReal * Weights();
+		const NCollection_Array1<double> * Weights();
+
+		/****** Geom_BSplineCurve::WeightsArray ******/
+		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
+		%feature("compactdefaultargs") WeightsArray;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns a const reference to the weights array. For rational curves: the internal owning weights array. For non-rational curves: a non-owning view of unit weights from BSplCLib. The array is always sized to match NbPoles(). @warning Do NOT modify elements through the returned reference.
+") WeightsArray;
+		const NCollection_Array1<double> & WeightsArray();
 
 };
 
@@ -7322,20 +7535,20 @@ Returns the weights of the B-spline curve;.
 class Geom_BSplineSurface : public Geom_BoundedSurface {
 	public:
 		/****** Geom_BSplineSurface::Geom_BSplineSurface ******/
-		/****** md5 signature: d0e79094e818d7c29ef7d04c55973c13 ******/
+		/****** md5 signature: 0a187d60c589ba688ffa4f96df817cf4 ******/
 		%feature("compactdefaultargs") Geom_BSplineSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: TColgp_Array2OfPnt
-UKnots: TColStd_Array1OfReal
-VKnots: TColStd_Array1OfReal
-UMults: TColStd_Array1OfInteger
-VMults: TColStd_Array1OfInteger
+Poles: NCollection_Array2<gp_Pnt>
+UKnots: NCollection_Array1<double>
+VKnots: NCollection_Array1<double>
+UMults: NCollection_Array1<int>
+VMults: NCollection_Array1<int>
 UDegree: int
 VDegree: int
-UPeriodic: bool (optional, default to Standard_False)
-VPeriodic: bool (optional, default to Standard_False)
+UPeriodic: bool (optional, default to false)
+VPeriodic: bool (optional, default to false)
 
 Return
 -------
@@ -7345,24 +7558,24 @@ Description
 -----------
 Creates a non-rational b-spline surface (weights default value is 1.). The following conditions must be verified. 0 < UDegree <= MaxDegree. UKnots.Length() == UMults.Length() >= 2 UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree On a non uperiodic surface the first and last umultiplicities may be UDegree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). On a uperiodic surface the first and the last umultiplicities must be the same. on non-uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 on uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) except the first or last The previous conditions for U holds also for V, with the RowLength of the poles.
 ") Geom_BSplineSurface;
-		 Geom_BSplineSurface(const TColgp_Array2OfPnt & Poles, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const TColStd_Array1OfInteger & UMults, const TColStd_Array1OfInteger & VMults, const Standard_Integer UDegree, const Standard_Integer VDegree, const Standard_Boolean UPeriodic = Standard_False, const Standard_Boolean VPeriodic = Standard_False);
+		 Geom_BSplineSurface(const NCollection_Array2<gp_Pnt> & Poles, const NCollection_Array1<double> & UKnots, const NCollection_Array1<double> & VKnots, const NCollection_Array1<int> & UMults, const NCollection_Array1<int> & VMults, const int UDegree, const int VDegree, const bool UPeriodic = false, const bool VPeriodic = false);
 
 		/****** Geom_BSplineSurface::Geom_BSplineSurface ******/
-		/****** md5 signature: 52fa5de422f3f634c1a7b0a56209d8b5 ******/
+		/****** md5 signature: 65ccbce53efda1efc43bfa0c80904d8c ******/
 		%feature("compactdefaultargs") Geom_BSplineSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: TColgp_Array2OfPnt
-Weights: TColStd_Array2OfReal
-UKnots: TColStd_Array1OfReal
-VKnots: TColStd_Array1OfReal
-UMults: TColStd_Array1OfInteger
-VMults: TColStd_Array1OfInteger
+Poles: NCollection_Array2<gp_Pnt>
+Weights: NCollection_Array2<double>
+UKnots: NCollection_Array1<double>
+VKnots: NCollection_Array1<double>
+UMults: NCollection_Array1<int>
+VMults: NCollection_Array1<int>
 UDegree: int
 VDegree: int
-UPeriodic: bool (optional, default to Standard_False)
-VPeriodic: bool (optional, default to Standard_False)
+UPeriodic: bool (optional, default to false)
+VPeriodic: bool (optional, default to false)
 
 Return
 -------
@@ -7372,10 +7585,29 @@ Description
 -----------
 Creates a non-rational b-spline surface (weights default value is 1.). //! The following conditions must be verified. 0 < UDegree <= MaxDegree. //! UKnots.Length() == UMults.Length() >= 2 //! UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree //! On a non uperiodic surface the first and last umultiplicities may be UDegree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! On a uperiodic surface the first and the last umultiplicities must be the same. //! on non-uperiodic surfaces //! Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 //! on uperiodic surfaces //! Poles.ColLength() == Sum(UMults(i)) except the first or last //! The previous conditions for U holds also for V, with the RowLength of the poles.
 ") Geom_BSplineSurface;
-		 Geom_BSplineSurface(const TColgp_Array2OfPnt & Poles, const TColStd_Array2OfReal & Weights, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const TColStd_Array1OfInteger & UMults, const TColStd_Array1OfInteger & VMults, const Standard_Integer UDegree, const Standard_Integer VDegree, const Standard_Boolean UPeriodic = Standard_False, const Standard_Boolean VPeriodic = Standard_False);
+		 Geom_BSplineSurface(const NCollection_Array2<gp_Pnt> & Poles, const NCollection_Array2<double> & Weights, const NCollection_Array1<double> & UKnots, const NCollection_Array1<double> & VKnots, const NCollection_Array1<int> & UMults, const NCollection_Array1<int> & VMults, const int UDegree, const int VDegree, const bool UPeriodic = false, const bool VPeriodic = false);
+
+		/****** Geom_BSplineSurface::Geom_BSplineSurface ******/
+		/****** md5 signature: 6a955fc30ba1f2bdb22c7519e8bec7ac ******/
+		%feature("compactdefaultargs") Geom_BSplineSurface;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Geom_BSplineSurface
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor for optimized copying without validation. 
+Input parameter: theOther the BSpline surface to copy from.
+") Geom_BSplineSurface;
+		 Geom_BSplineSurface(const Geom_BSplineSurface & theOther);
 
 		/****** Geom_BSplineSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -7383,10 +7615,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -7395,17 +7627,17 @@ Returns the parametric bounds of the surface. Warnings: These parametric values 
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_BSplineSurface::CheckAndSegment ******/
-		/****** md5 signature: dfc5bea5858729c40332110aa28e7bb8 ******/
+		/****** md5 signature: 11867c16da1d180138747ba3245786d3 ******/
 		%feature("compactdefaultargs") CheckAndSegment;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
-V1: float
-V2: float
-theUTolerance: float (optional, default to Precision::PConfusion())
-theVTolerance: float (optional, default to Precision::PConfusion())
+U1: double
+U2: double
+V1: double
+V2: double
+theUTolerance: double (optional, default to Precision::PConfusion())
+theVTolerance: double (optional, default to Precision::PConfusion())
 
 Return
 -------
@@ -7415,10 +7647,23 @@ Description
 -----------
 Segments the surface between U1 and U2 in the U-Direction. between V1 and V2 in the V-Direction. //! same as Segment but do nothing if U1 and U2 (resp. V1 and V2) are equal to the bounds in U (resp. in V) of <self>. For example, if <self> is periodic in V, it will be always periodic in V after the segmentation if the bounds in V are unchanged //! Parameters theUTolerance, theVTolerance define the possible proximity along the corresponding direction of the segment boundaries and B-spline knots to treat them as equal. //! Warnings: Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the surface <self> or if the surface makes loop. raises if U2 < U1 or V2 < V1. Standard_DomainError if U2 - U1 exceeds the uperiod for uperiodic surfaces. i.e. ((U2 - U1) - UPeriod) > Precision::PConfusion(). Standard_DomainError if V2 - V1 exceeds the vperiod for vperiodic surfaces. i.e. ((V2 - V1) - VPeriod) > Precision::PConfusion()).
 ") CheckAndSegment;
-		void CheckAndSegment(const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real theUTolerance = Precision::PConfusion(), const Standard_Real theVTolerance = Precision::PConfusion());
+		void CheckAndSegment(const double U1, const double U2, const double V1, const double V2, const double theUTolerance = Precision::PConfusion(), const double theVTolerance = Precision::PConfusion());
+
+		/****** Geom_BSplineSurface::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
 
 		/****** Geom_BSplineSurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -7431,7 +7676,7 @@ Returns the continuity of the surface: C0: only geometric continuity, C1: contin
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_BSplineSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -7442,123 +7687,6 @@ Description
 Creates a new object which is a copy of this BSpline surface.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_BSplineSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_BSplineSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the surface is not C1.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_BSplineSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the surface is not C2.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_BSplineSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the surface is not C3.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_BSplineSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Nu is the order of derivation in the U parametric direction and Nv is the order of derivation in the V parametric direction. //! Raised if the continuity of the surface is not CNu in the U direction and CNv in the V direction. //! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. //! The following functions computes the point for the parametric values (U, V) and the derivatives at this point on the B-spline surface patch delimited with the knots FromUK1, FromVK1 and the knots ToUK2, ToVK2. (U, V) can be out of these parametric bounds but for the computation we only use the definition of the surface between these knots. This method is useful to compute local derivative, if the order of continuity of the whole surface is not greater enough. Inside the parametric knot's domain previously defined the evaluations are the same as if we consider the whole definition of the surface. Of course the evaluations are different outside this parametric domain.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -7581,6 +7709,116 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_BSplineSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter (U, V) on the surface. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_BSplineSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception if the surface continuity is not C1.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_BSplineSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception if the surface continuity is not C2.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_BSplineSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Raises an exception if the surface continuity is not C3.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_BSplineSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an exception on failure. //! Raised if the continuity of the surface is not CNu in the U direction and CNv in the V direction. //! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. //! The following functions computes the point for the parametric values (U, V) and the derivatives at this point on the B-spline surface patch delimited with the knots FromUK1, FromVK1 and the knots ToUK2, ToVK2. (U, V) can be out of these parametric bounds but for the computation we only use the definition of the surface between these knots. This method is useful to compute local derivative, if the order of continuity of the whole surface is not greater enough. Inside the parametric knot's domain previously defined the evaluations are the same as if we consider the whole definition of the surface. Of course the evaluations are different outside this parametric domain.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
+		/****** Geom_BSplineSurface::EvalRepresentation ******/
+		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepSurfaceDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
+
 		/****** Geom_BSplineSurface::ExchangeUV ******/
 		/****** md5 signature: fcaf4a45cf2f84fab80e6127ee17ec77 ******/
 		%feature("compactdefaultargs") ExchangeUV;
@@ -7595,7 +7833,7 @@ Exchanges the u and v parametric directions on this BSpline surface. As a conseq
 		void ExchangeUV();
 
 		/****** Geom_BSplineSurface::FirstUKnotIndex ******/
-		/****** md5 signature: cd1268c018861ca921686718cddd2c78 ******/
+		/****** md5 signature: 73211d64126e1b184f22787c35589527 ******/
 		%feature("compactdefaultargs") FirstUKnotIndex;
 		%feature("autodoc", "Return
 -------
@@ -7605,10 +7843,10 @@ Description
 -----------
 Computes the Index of the UKnots which gives the first parametric value of the surface in the U direction. The UIso curve corresponding to this value is a boundary curve of the surface.
 ") FirstUKnotIndex;
-		Standard_Integer FirstUKnotIndex();
+		int FirstUKnotIndex();
 
 		/****** Geom_BSplineSurface::FirstVKnotIndex ******/
-		/****** md5 signature: 7d1184baba1e1523d293389085ada7fe ******/
+		/****** md5 signature: ff0c6e12a2481b8ddd95d7454da587b6 ******/
 		%feature("compactdefaultargs") FirstVKnotIndex;
 		%feature("autodoc", "Return
 -------
@@ -7618,10 +7856,23 @@ Description
 -----------
 Computes the Index of the VKnots which gives the first parametric value of the surface in the V direction. The VIso curve corresponding to this knot is a boundary curve of the surface.
 ") FirstVKnotIndex;
-		Standard_Integer FirstVKnotIndex();
+		int FirstVKnotIndex();
+
+		/****** Geom_BSplineSurface::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
 
 		/****** Geom_BSplineSurface::IncreaseDegree ******/
-		/****** md5 signature: 412378019dc10e155c60641469f98819 ******/
+		/****** md5 signature: 52a23c874f4b2dade82318ba24c203d5 ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -7637,10 +7888,10 @@ Description
 -----------
 Increases the degrees of this BSpline surface to UDegree and VDegree in the u and v parametric directions respectively. As a result, the tables of poles, weights and multiplicities are modified. The tables of knots is not changed. Note: Nothing is done if the given degree is less than or equal to the current degree in the corresponding parametric direction. Exceptions Standard_ConstructionError if UDegree or VDegree is greater than Geom_BSplineSurface::MaxDegree().
 ") IncreaseDegree;
-		void IncreaseDegree(const Standard_Integer UDegree, const Standard_Integer VDegree);
+		void IncreaseDegree(const int UDegree, const int VDegree);
 
 		/****** Geom_BSplineSurface::IncreaseUMultiplicity ******/
-		/****** md5 signature: 127425f9638c40fcc7256ed9a20184d2 ******/
+		/****** md5 signature: 377c8ba687a0fb5902082d4c6dc6a351 ******/
 		%feature("compactdefaultargs") IncreaseUMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -7656,10 +7907,10 @@ Description
 -----------
 Increases the multiplicity of the knot of range UIndex in the UKnots sequence. M is the new multiplicity. M must be greater than the previous multiplicity and lower or equal to the degree of the surface in the U parametric direction. Raised if M is not in the range [1, UDegree] //! Raised if UIndex is not in the range [FirstUKnotIndex, LastUKnotIndex] given by the methods with the same name.
 ") IncreaseUMultiplicity;
-		void IncreaseUMultiplicity(const Standard_Integer UIndex, const Standard_Integer M);
+		void IncreaseUMultiplicity(const int UIndex, const int M);
 
 		/****** Geom_BSplineSurface::IncreaseUMultiplicity ******/
-		/****** md5 signature: 14e25878c4743ca2c9d03481892d2039 ******/
+		/****** md5 signature: ec34d60337f50c27c30efb21f232f542 ******/
 		%feature("compactdefaultargs") IncreaseUMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -7676,10 +7927,10 @@ Description
 -----------
 Increases until order M the multiplicity of the set of knots FromI1,...., ToI2 in the U direction. This method can be used to make a B_spline surface into a PiecewiseBezier B_spline surface. If <self> was uniform, it can become non uniform. //! Raised if FromI1 or ToI2 is out of the range [FirstUKnotIndex, LastUKnotIndex]. //! M should be greater than the previous multiplicity of the all the knots FromI1,..., ToI2 and lower or equal to the Degree of the surface in the U parametric direction.
 ") IncreaseUMultiplicity;
-		void IncreaseUMultiplicity(const Standard_Integer FromI1, const Standard_Integer ToI2, const Standard_Integer M);
+		void IncreaseUMultiplicity(const int FromI1, const int ToI2, const int M);
 
 		/****** Geom_BSplineSurface::IncreaseVMultiplicity ******/
-		/****** md5 signature: bad1723250c8432860262382bfb3c026 ******/
+		/****** md5 signature: 35899e0d52bf4753367d8e91cbce6cf2 ******/
 		%feature("compactdefaultargs") IncreaseVMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -7695,10 +7946,10 @@ Description
 -----------
 Increases the multiplicity of a knot in the V direction. M is the new multiplicity. //! M should be greater than the previous multiplicity and lower than the degree of the surface in the V parametric direction. //! Raised if VIndex is not in the range [FirstVKnotIndex, LastVKnotIndex] given by the methods with the same name.
 ") IncreaseVMultiplicity;
-		void IncreaseVMultiplicity(const Standard_Integer VIndex, const Standard_Integer M);
+		void IncreaseVMultiplicity(const int VIndex, const int M);
 
 		/****** Geom_BSplineSurface::IncreaseVMultiplicity ******/
-		/****** md5 signature: 4977cec37cd17cd47b6f921f6b86d065 ******/
+		/****** md5 signature: fbf03be7f72af4c09f98c767233dc0d4 ******/
 		%feature("compactdefaultargs") IncreaseVMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -7715,10 +7966,10 @@ Description
 -----------
 Increases until order M the multiplicity of the set of knots FromI1,...., ToI2 in the V direction. This method can be used to make a BSplineSurface into a PiecewiseBezier B_spline surface. If <self> was uniform, it can become non-uniform. //! Raised if FromI1 or ToI2 is out of the range [FirstVKnotIndex, LastVKnotIndex] given by the methods with the same name. //! M should be greater than the previous multiplicity of the all the knots FromI1,..., ToI2 and lower or equal to the Degree of the surface in the V parametric direction.
 ") IncreaseVMultiplicity;
-		void IncreaseVMultiplicity(const Standard_Integer FromI1, const Standard_Integer ToI2, const Standard_Integer M);
+		void IncreaseVMultiplicity(const int FromI1, const int ToI2, const int M);
 
 		/****** Geom_BSplineSurface::IncrementUMultiplicity ******/
-		/****** md5 signature: 3c3524b4447db6ae66d098a0c14f8303 ******/
+		/****** md5 signature: 7ede5c89dbba5da57d3010cceeef2607 ******/
 		%feature("compactdefaultargs") IncrementUMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -7735,10 +7986,10 @@ Description
 -----------
 Increments the multiplicity of the consecutives uknots FromI1..ToI2 by step. The multiplicity of each knot FromI1,.....,ToI2 must be lower or equal to the UDegree of the B_spline. //! Raised if FromI1 or ToI2 is not in the range [FirstUKnotIndex, LastUKnotIndex] //! Raised if one knot has a multiplicity greater than UDegree.
 ") IncrementUMultiplicity;
-		void IncrementUMultiplicity(const Standard_Integer FromI1, const Standard_Integer ToI2, const Standard_Integer Step);
+		void IncrementUMultiplicity(const int FromI1, const int ToI2, const int Step);
 
 		/****** Geom_BSplineSurface::IncrementVMultiplicity ******/
-		/****** md5 signature: 3bc44c719c953c6e08b0aed6ad5fbcfa ******/
+		/****** md5 signature: c022157de4b6296dae120fd18311cd79 ******/
 		%feature("compactdefaultargs") IncrementVMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -7755,18 +8006,18 @@ Description
 -----------
 Increments the multiplicity of the consecutives vknots FromI1..ToI2 by step. The multiplicity of each knot FromI1,.....,ToI2 must be lower or equal to the VDegree of the B_spline. //! Raised if FromI1 or ToI2 is not in the range [FirstVKnotIndex, LastVKnotIndex] //! Raised if one knot has a multiplicity greater than VDegree.
 ") IncrementVMultiplicity;
-		void IncrementVMultiplicity(const Standard_Integer FromI1, const Standard_Integer ToI2, const Standard_Integer Step);
+		void IncrementVMultiplicity(const int FromI1, const int ToI2, const int Step);
 
 		/****** Geom_BSplineSurface::InsertUKnot ******/
-		/****** md5 signature: 159d96507482b523179fbba31b268f8b ******/
+		/****** md5 signature: b0a0f05e088e3c1ba550c5c99a98bebb ******/
 		%feature("compactdefaultargs") InsertUKnot;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 M: int
-ParametricTolerance: float
-Add: bool (optional, default to Standard_True)
+ParametricTolerance: double
+Add: bool (optional, default to true)
 
 Return
 -------
@@ -7776,18 +8027,18 @@ Description
 -----------
 Inserts a knot value in the sequence of UKnots. If U is a knot value this method increases the multiplicity of the knot if the previous multiplicity was lower than M else it does nothing. The tolerance criterion is ParametricTolerance. ParametricTolerance should be greater or equal than Resolution from package gp. //! Raised if U is out of the bounds [U1, U2] given by the methods Bounds, the criterion ParametricTolerance is used. Raised if M is not in the range [1, UDegree].
 ") InsertUKnot;
-		void InsertUKnot(const Standard_Real U, const Standard_Integer M, const Standard_Real ParametricTolerance, const Standard_Boolean Add = Standard_True);
+		void InsertUKnot(const double U, const int M, const double ParametricTolerance, const bool Add = true);
 
 		/****** Geom_BSplineSurface::InsertUKnots ******/
-		/****** md5 signature: e7acce1e38ade8afc325615dffddde74 ******/
+		/****** md5 signature: 87dea7fdfdef4d9babb6d36c3d533694 ******/
 		%feature("compactdefaultargs") InsertUKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
-ParametricTolerance: float (optional, default to 0.0)
-Add: bool (optional, default to Standard_True)
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
+ParametricTolerance: double (optional, default to 0.0)
+Add: bool (optional, default to true)
 
 Return
 -------
@@ -7795,20 +8046,20 @@ None
 
 Description
 -----------
-Inserts into the knots table for the U parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and Standard_Real::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
+Inserts into the knots table for the U parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and double::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
 ") InsertUKnots;
-		void InsertUKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Real ParametricTolerance = 0.0, const Standard_Boolean Add = Standard_True);
+		void InsertUKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = true);
 
 		/****** Geom_BSplineSurface::InsertVKnot ******/
-		/****** md5 signature: bcd411440e0545abbba69eee2f586c0c ******/
+		/****** md5 signature: 47cd2a83c9c6996b68113907e6468a11 ******/
 		%feature("compactdefaultargs") InsertVKnot;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 M: int
-ParametricTolerance: float
-Add: bool (optional, default to Standard_True)
+ParametricTolerance: double
+Add: bool (optional, default to true)
 
 Return
 -------
@@ -7818,18 +8069,18 @@ Description
 -----------
 Inserts a knot value in the sequence of VKnots. If V is a knot value this method increases the multiplicity of the knot if the previous multiplicity was lower than M otherwise it does nothing. The tolerance criterion is ParametricTolerance. ParametricTolerance should be greater or equal than Resolution from package gp. //! raises if V is out of the Bounds [V1, V2] given by the methods Bounds, the criterion ParametricTolerance is used. raises if M is not in the range [1, VDegree].
 ") InsertVKnot;
-		void InsertVKnot(const Standard_Real V, const Standard_Integer M, const Standard_Real ParametricTolerance, const Standard_Boolean Add = Standard_True);
+		void InsertVKnot(const double V, const int M, const double ParametricTolerance, const bool Add = true);
 
 		/****** Geom_BSplineSurface::InsertVKnots ******/
-		/****** md5 signature: 1073cf49364a966c64a7793cfa15cd30 ******/
+		/****** md5 signature: 3f035be6d7bb7f2a1866c0195df1abfb ******/
 		%feature("compactdefaultargs") InsertVKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
-ParametricTolerance: float (optional, default to 0.0)
-Add: bool (optional, default to Standard_True)
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
+ParametricTolerance: double (optional, default to 0.0)
+Add: bool (optional, default to true)
 
 Return
 -------
@@ -7837,12 +8088,12 @@ None
 
 Description
 -----------
-Inserts into the knots table for the V parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and Standard_Real::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
+Inserts into the knots table for the V parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and double::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
 ") InsertVKnots;
-		void InsertVKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Real ParametricTolerance = 0.0, const Standard_Boolean Add = Standard_True);
+		void InsertVKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = true);
 
 		/****** Geom_BSplineSurface::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -7857,10 +8108,10 @@ Description
 -----------
 Returns True if the order of continuity of the surface in the U direction is N. Raised if N < 0.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_BSplineSurface::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 4e12377e4fee255bb2fbd018134f6b55 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -7875,10 +8126,10 @@ Description
 -----------
 Returns True if the order of continuity of the surface in the V direction is N. Raised if N < 0.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_BSplineSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -7888,10 +8139,10 @@ Description
 -----------
 Returns true if the first control points row and the last control points row are identical. The tolerance criterion is Resolution from package gp.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_BSplineSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -7901,10 +8152,10 @@ Description
 -----------
 Returns True if the surface is closed in the U direction and if the B-spline has been turned into a periodic surface using the function SetUPeriodic.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_BSplineSurface::IsURational ******/
-		/****** md5 signature: d3be4b63bc17a9c6de48bb978a5cf0e7 ******/
+		/****** md5 signature: 87cbbf86ac97143534bf7a5183bdcf6e ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -7914,10 +8165,10 @@ Description
 -----------
 Returns False if for each row of weights all the weights are identical. The tolerance criterion is resolution from package gp. Example: |1.0, 1.0, 1.0| if Weights = |0.5, 0.5, 0.5| returns False |2.0, 2.0, 2.0|.
 ") IsURational;
-		Standard_Boolean IsURational();
+		bool IsURational();
 
 		/****** Geom_BSplineSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -7927,10 +8178,10 @@ Description
 -----------
 Returns true if the first control points column and the last last control points column are identical. The tolerance criterion is Resolution from package gp.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_BSplineSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -7940,10 +8191,10 @@ Description
 -----------
 Returns True if the surface is closed in the V direction and if the B-spline has been turned into a periodic surface using the function SetVPeriodic.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_BSplineSurface::IsVRational ******/
-		/****** md5 signature: dcc1c1ae4603545d87819084535899bc ******/
+		/****** md5 signature: 38c5da014aa77cd1d45efe57cddbb954 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -7953,10 +8204,10 @@ Description
 -----------
 Returns False if for each column of weights all the weights are identical. The tolerance criterion is resolution from package gp. Examples: |1.0, 2.0, 0.5| if Weights = |1.0, 2.0, 0.5| returns False |1.0, 2.0, 0.5|.
 ") IsVRational;
-		Standard_Boolean IsVRational();
+		bool IsVRational();
 
 		/****** Geom_BSplineSurface::LastUKnotIndex ******/
-		/****** md5 signature: b5183e855ac73e665e20fe9cd9a25fef ******/
+		/****** md5 signature: fdb1b3a0341af13d2cac11b5f8f49486 ******/
 		%feature("compactdefaultargs") LastUKnotIndex;
 		%feature("autodoc", "Return
 -------
@@ -7966,10 +8217,10 @@ Description
 -----------
 Computes the Index of the UKnots which gives the last parametric value of the surface in the U direction. The UIso curve corresponding to this knot is a boundary curve of the surface.
 ") LastUKnotIndex;
-		Standard_Integer LastUKnotIndex();
+		int LastUKnotIndex();
 
 		/****** Geom_BSplineSurface::LastVKnotIndex ******/
-		/****** md5 signature: def5df58d1554a5891cc82afbddd40bc ******/
+		/****** md5 signature: a2b7e419fb71b8d31b689fdab1ea9b9d ******/
 		%feature("compactdefaultargs") LastVKnotIndex;
 		%feature("autodoc", "Return
 -------
@@ -7979,16 +8230,16 @@ Description
 -----------
 Computes the Index of the VKnots which gives the last parametric value of the surface in the V direction. The VIso curve corresponding to this knot is a boundary curve of the surface.
 ") LastVKnotIndex;
-		Standard_Integer LastVKnotIndex();
+		int LastVKnotIndex();
 
 		/****** Geom_BSplineSurface::LocalD0 ******/
-		/****** md5 signature: 90582eea4db1eff768df386d583eb11c ******/
+		/****** md5 signature: 2e6982530a058dcbe9d0c42ed2eddce6 ******/
 		%feature("compactdefaultargs") LocalD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 FromUK1: int
 ToUK2: int
 FromVK1: int
@@ -8003,16 +8254,16 @@ Description
 -----------
 Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
 ") LocalD0;
-		void LocalD0(const Standard_Real U, const Standard_Real V, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, gp_Pnt & P);
+		void LocalD0(const double U, const double V, const int FromUK1, const int ToUK2, const int FromVK1, const int ToVK2, gp_Pnt & P);
 
 		/****** Geom_BSplineSurface::LocalD1 ******/
-		/****** md5 signature: 116c10fb1a5973b110226a32d68d2b77 ******/
+		/****** md5 signature: e3bd47a7bc7beb5197970d26e176fdac ******/
 		%feature("compactdefaultargs") LocalD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 FromUK1: int
 ToUK2: int
 FromVK1: int
@@ -8029,16 +8280,16 @@ Description
 -----------
 Raised if the local continuity of the surface is not C1 between the knots FromUK1, ToUK2 and FromVK1, ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
 ") LocalD1;
-		void LocalD1(const Standard_Real U, const Standard_Real V, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+		void LocalD1(const double U, const double V, const int FromUK1, const int ToUK2, const int FromVK1, const int ToVK2, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
 		/****** Geom_BSplineSurface::LocalD2 ******/
-		/****** md5 signature: adf6d11394af32c7676d493bfb1deb60 ******/
+		/****** md5 signature: d826560d7dc1c9843c6370e1fb185ca2 ******/
 		%feature("compactdefaultargs") LocalD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 FromUK1: int
 ToUK2: int
 FromVK1: int
@@ -8058,16 +8309,16 @@ Description
 -----------
 Raised if the local continuity of the surface is not C2 between the knots FromUK1, ToUK2 and FromVK1, ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
 ") LocalD2;
-		void LocalD2(const Standard_Real U, const Standard_Real V, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+		void LocalD2(const double U, const double V, const int FromUK1, const int ToUK2, const int FromVK1, const int ToVK2, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
 		/****** Geom_BSplineSurface::LocalD3 ******/
-		/****** md5 signature: 147fb4a3d611ca3bcc190498316af4e1 ******/
+		/****** md5 signature: 539e461488fca0a4ce9f26a377f70a58 ******/
 		%feature("compactdefaultargs") LocalD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 FromUK1: int
 ToUK2: int
 FromVK1: int
@@ -8091,16 +8342,16 @@ Description
 -----------
 Raised if the local continuity of the surface is not C3 between the knots FromUK1, ToUK2 and FromVK1, ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
 ") LocalD3;
-		void LocalD3(const Standard_Real U, const Standard_Real V, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+		void LocalD3(const double U, const double V, const int FromUK1, const int ToUK2, const int FromVK1, const int ToVK2, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
 		/****** Geom_BSplineSurface::LocalDN ******/
-		/****** md5 signature: 948da59e73692d79e0499f1ec5f253d0 ******/
+		/****** md5 signature: bd119ddf74bf4df76f305cdcc42c7a09 ******/
 		%feature("compactdefaultargs") LocalDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 FromUK1: int
 ToUK2: int
 FromVK1: int
@@ -8116,16 +8367,16 @@ Description
 -----------
 Raised if the local continuity of the surface is not CNu between the knots FromUK1, ToUK2 and CNv between the knots FromVK1, ToVK2. Raised if FromUK1 = ToUK2 or FromVK1 = ToVK2.
 ") LocalDN;
-		gp_Vec LocalDN(const Standard_Real U, const Standard_Real V, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, const Standard_Integer Nu, const Standard_Integer Nv);
+		gp_Vec LocalDN(const double U, const double V, const int FromUK1, const int ToUK2, const int FromVK1, const int ToVK2, const int Nu, const int Nv);
 
 		/****** Geom_BSplineSurface::LocalValue ******/
-		/****** md5 signature: 2c3bbf44dc57ab1d1015d4fe52ecbf0c ******/
+		/****** md5 signature: f9ba3a794e5b64d8b714b31b868d405b ******/
 		%feature("compactdefaultargs") LocalValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 FromUK1: int
 ToUK2: int
 FromVK1: int
@@ -8139,17 +8390,17 @@ Description
 -----------
 Computes the point of parameter U, V on the BSpline surface patch defines between the knots UK1 UK2, VK1, VK2. U can be out of the bounds [Knot UK1, Knot UK2] and V can be outof the bounds [Knot VK1, Knot VK2] but for the computation we only use the definition of the surface between these knot values. Raises if FromUK1 = ToUK2 or FromVK1 = ToVK2.
 ") LocalValue;
-		gp_Pnt LocalValue(const Standard_Real U, const Standard_Real V, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2);
+		gp_Pnt LocalValue(const double U, const double V, const int FromUK1, const int ToUK2, const int FromVK1, const int ToVK2);
 
 		/****** Geom_BSplineSurface::LocateU ******/
-		/****** md5 signature: d536ddd65ca3edfb5dd75e59f7417959 ******/
+		/****** md5 signature: 1cd251285614aa4c353c1e6f8a41242d ******/
 		%feature("compactdefaultargs") LocateU;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-ParametricTolerance: float
-WithKnotRepetition: bool (optional, default to Standard_False)
+U: double
+ParametricTolerance: double
+WithKnotRepetition: bool (optional, default to false)
 
 Return
 -------
@@ -8158,19 +8409,19 @@ I2: int
 
 Description
 -----------
-Locates the parametric value U in the sequence of UKnots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. UKnots (I1) <= U <= UKnots (I2) . if I1 = I2 U is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => U < UKnots(1) - Abs(ParametricTolerance) . if I2 > NbUKnots => U > UKnots(NbUKnots)+Abs(ParametricTolerance).
+Locates the parametric value U in the sequence of UKnots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. UKnots (I1) <= U <= UKnots (I2) . if I1 = I2 U is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => U < UKnots(1) - std::abs(ParametricTolerance) . if I2 > NbUKnots => U > UKnots(NbUKnots)+std::abs(ParametricTolerance).
 ") LocateU;
-		void LocateU(const Standard_Real U, const Standard_Real ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Boolean WithKnotRepetition = Standard_False);
+		void LocateU(const double U, const double ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const bool WithKnotRepetition = false);
 
 		/****** Geom_BSplineSurface::LocateV ******/
-		/****** md5 signature: be5529d72fc5185e944cc4b64dff67d7 ******/
+		/****** md5 signature: 045ab86708647d28bdf05a594385643a ******/
 		%feature("compactdefaultargs") LocateV;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
-ParametricTolerance: float
-WithKnotRepetition: bool (optional, default to Standard_False)
+V: double
+ParametricTolerance: double
+WithKnotRepetition: bool (optional, default to false)
 
 Return
 -------
@@ -8179,12 +8430,12 @@ I2: int
 
 Description
 -----------
-Locates the parametric value V in the sequence of knots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. VKnots (I1) <= V <= VKnots (I2) . if I1 = I2 V is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => V < VKnots(1) - Abs(ParametricTolerance) . if I2 > NbVKnots => V > VKnots(NbVKnots)+Abs(ParametricTolerance) poles insertion and removing The following methods are available only if the surface is Uniform or QuasiUniform in the considered direction The knot repartition is modified.
+Locates the parametric value V in the sequence of knots. If 'WithKnotRepetition' is True we consider the knot's representation with repetition of multiple knot value, otherwise we consider the knot's representation with no repetition of multiple knot values. VKnots (I1) <= V <= VKnots (I2) . if I1 = I2 V is a knot value (the tolerance criterion ParametricTolerance is used). . if I1 < 1 => V < VKnots(1) - std::abs(ParametricTolerance) . if I2 > NbVKnots => V > VKnots(NbVKnots)+std::abs(ParametricTolerance) poles insertion and removing The following methods are available only if the surface is Uniform or QuasiUniform in the considered direction The knot repartition is modified.
 ") LocateV;
-		void LocateV(const Standard_Real V, const Standard_Real ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Boolean WithKnotRepetition = Standard_False);
+		void LocateV(const double V, const double ParametricTolerance, Standard_Integer &OutValue, Standard_Integer &OutValue, const bool WithKnotRepetition = false);
 
 		/****** Geom_BSplineSurface::MaxDegree ******/
-		/****** md5 signature: 985314a0ed62b597a9bdf0f555b97bed ******/
+		/****** md5 signature: c1d162018b4c908f3a00335cd079a0ea ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -8194,16 +8445,16 @@ Description
 -----------
 Returns the value of the maximum degree of the normalized B-spline basis functions in the u and v directions.
 ") MaxDegree;
-		static Standard_Integer MaxDegree();
+		static int MaxDegree();
 
 		/****** Geom_BSplineSurface::MovePoint ******/
-		/****** md5 signature: 38420f7602e5315b227fe46280e42e38 ******/
+		/****** md5 signature: 9a05c1474702c04b119c28bdab2bdf93 ******/
 		%feature("compactdefaultargs") MovePoint;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 P: gp_Pnt
 UIndex1: int
 UIndex2: int
@@ -8221,10 +8472,10 @@ Description
 -----------
 Move a point with parameter U and V to P. given u,v as parameters) to reach a new position UIndex1, UIndex2, VIndex1, VIndex2: indicates the poles which can be moved if Problem in BSplineBasis calculation, no change for the curve and UFirstIndex, VLastIndex = 0 VFirstIndex, VLastIndex = 0 //! Raised if UIndex1 < UIndex2 or VIndex1 < VIndex2 or UIndex1 < 1 || UIndex1 > NbUPoles or UIndex2 < 1 || UIndex2 > NbUPoles VIndex1 < 1 || VIndex1 > NbVPoles or VIndex2 < 1 || VIndex2 > NbVPoles characteristics of the surface.
 ") MovePoint;
-		void MovePoint(const Standard_Real U, const Standard_Real V, const gp_Pnt & P, const Standard_Integer UIndex1, const Standard_Integer UIndex2, const Standard_Integer VIndex1, const Standard_Integer VIndex2, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void MovePoint(const double U, const double V, const gp_Pnt & P, const int UIndex1, const int UIndex2, const int VIndex1, const int VIndex2, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** Geom_BSplineSurface::NbUKnots ******/
-		/****** md5 signature: dad62b27d386c8d79ed8a3faddece815 ******/
+		/****** md5 signature: 790406b6b06efba57c5111fd80daea5d ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -8234,10 +8485,10 @@ Description
 -----------
 Returns the number of knots in the U direction.
 ") NbUKnots;
-		Standard_Integer NbUKnots();
+		int NbUKnots();
 
 		/****** Geom_BSplineSurface::NbUPoles ******/
-		/****** md5 signature: fb7c625af5aeee8be8cffdd28f1b08d5 ******/
+		/****** md5 signature: ecab3cbbaf18559e002fccdfa81aa0d5 ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -8247,10 +8498,10 @@ Description
 -----------
 Returns number of poles in the U direction.
 ") NbUPoles;
-		Standard_Integer NbUPoles();
+		int NbUPoles();
 
 		/****** Geom_BSplineSurface::NbVKnots ******/
-		/****** md5 signature: c5483500ef062c3949009d9a2ec75b29 ******/
+		/****** md5 signature: b077d9245cbc08be7809ba04ff1e0c69 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -8260,10 +8511,10 @@ Description
 -----------
 Returns the number of knots in the V direction.
 ") NbVKnots;
-		Standard_Integer NbVKnots();
+		int NbVKnots();
 
 		/****** Geom_BSplineSurface::NbVPoles ******/
-		/****** md5 signature: 098754ae7893287e442d0a3c48b39cf0 ******/
+		/****** md5 signature: fd4ae03f2a37db0cb241bb2f458a15bb ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -8273,10 +8524,10 @@ Description
 -----------
 Returns the number of poles in the V direction.
 ") NbVPoles;
-		Standard_Integer NbVPoles();
+		int NbVPoles();
 
 		/****** Geom_BSplineSurface::PeriodicNormalization ******/
-		/****** md5 signature: 0a3e623e55f06f9f39c798f12e70177c ******/
+		/****** md5 signature: 4e6c7c1c842341f6784c87f793f9f969 ******/
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "
 Parameters
@@ -8284,8 +8535,8 @@ Parameters
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -8294,7 +8545,7 @@ returns the parameter normalized within the period if the surface is periodic: o
 		void PeriodicNormalization(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_BSplineSurface::Pole ******/
-		/****** md5 signature: ff2d8ec1af0c36c07e8626aeeac8ea5a ******/
+		/****** md5 signature: 9d967b49fcfd88b24cb0f76a41601e3e ******/
 		%feature("compactdefaultargs") Pole;
 		%feature("autodoc", "
 Parameters
@@ -8310,15 +8561,15 @@ Description
 -----------
 Returns the pole of range (UIndex, VIndex). //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles.
 ") Pole;
-		const gp_Pnt Pole(const Standard_Integer UIndex, const Standard_Integer VIndex);
+		const gp_Pnt Pole(const int UIndex, const int VIndex);
 
 		/****** Geom_BSplineSurface::Poles ******/
-		/****** md5 signature: 13f89ef9fb8304ab9a388808727297da ******/
+		/****** md5 signature: e0523208080f5a97aa048d6c860b619a ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
-P: TColgp_Array2OfPnt
+P: NCollection_Array2<gp_Pnt>
 
 Return
 -------
@@ -8326,32 +8577,32 @@ None
 
 Description
 -----------
-Returns the poles of the B-spline surface. //! Raised if the length of P in the U and V direction is not equal to NbUpoles and NbVPoles.
+No available documentation.
 ") Poles;
-		void Poles(TColgp_Array2OfPnt & P);
+		void Poles(NCollection_Array2<gp_Pnt> & P);
 
 		/****** Geom_BSplineSurface::Poles ******/
-		/****** md5 signature: 8549a39bf10f707b8ef3f52012972a89 ******/
+		/****** md5 signature: 14016e5d40bac5fa096e746e935d87cd ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-TColgp_Array2OfPnt
+NCollection_Array2<gp_Pnt>
 
 Description
 -----------
 Returns the poles of the B-spline surface.
 ") Poles;
-		const TColgp_Array2OfPnt & Poles();
+		const NCollection_Array2<gp_Pnt> Poles();
 
 		/****** Geom_BSplineSurface::RemoveUKnot ******/
-		/****** md5 signature: 3c1c28077acf2faff1bf5fe31f38c1e2 ******/
+		/****** md5 signature: 40cac51d814e89c553cf87b7011fad77 ******/
 		%feature("compactdefaultargs") RemoveUKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 M: int
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -8361,17 +8612,17 @@ Description
 -----------
 Reduces to M the multiplicity of the knot of index Index in the U parametric direction. If M is 0, the knot is removed. With a modification of this type, the table of poles is also modified. Two different algorithms are used systematically to compute the new poles of the surface. For each pole, the distance between the pole calculated using the first algorithm and the same pole calculated using the second algorithm, is checked. If this distance is less than Tolerance it ensures that the surface is not modified by more than Tolerance. Under these conditions, the function returns true; otherwise, it returns false. A low tolerance prevents modification of the surface. A high tolerance 'smoothes' the surface. Exceptions Standard_OutOfRange if Index is outside the bounds of the knots table of this BSpline surface.
 ") RemoveUKnot;
-		Standard_Boolean RemoveUKnot(const Standard_Integer Index, const Standard_Integer M, const Standard_Real Tolerance);
+		bool RemoveUKnot(const int Index, const int M, const double Tolerance);
 
 		/****** Geom_BSplineSurface::RemoveVKnot ******/
-		/****** md5 signature: 85514d1299f04725520a8160843d4e16 ******/
+		/****** md5 signature: c67fbc5e80298ae083384a7aa94e6030 ******/
 		%feature("compactdefaultargs") RemoveVKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 M: int
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -8381,39 +8632,39 @@ Description
 -----------
 Reduces to M the multiplicity of the knot of index Index in the V parametric direction. If M is 0, the knot is removed. With a modification of this type, the table of poles is also modified. Two different algorithms are used systematically to compute the new poles of the surface. For each pole, the distance between the pole calculated using the first algorithm and the same pole calculated using the second algorithm, is checked. If this distance is less than Tolerance it ensures that the surface is not modified by more than Tolerance. Under these conditions, the function returns true; otherwise, it returns false. A low tolerance prevents modification of the surface. A high tolerance 'smoothes' the surface. Exceptions Standard_OutOfRange if Index is outside the bounds of the knots table of this BSpline surface.
 ") RemoveVKnot;
-		Standard_Boolean RemoveVKnot(const Standard_Integer Index, const Standard_Integer M, const Standard_Real Tolerance);
+		bool RemoveVKnot(const int Index, const int M, const double Tolerance);
 
 		/****** Geom_BSplineSurface::Resolution ******/
-		/****** md5 signature: f550ea5c1bc2e29d0800724fa69c6ce9 ******/
+		/****** md5 signature: 0a8485b2104c7e6d206aec498e4b7168 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3D: float
+Tolerance3D: double
 
 Return
 -------
-UTolerance: float
-VTolerance: float
+UTolerance: double
+VTolerance: double
 
 Description
 -----------
 Computes two tolerance values for this BSpline surface, based on the given tolerance in 3D space Tolerance3D. The tolerances computed are: - UTolerance in the u parametric direction, and - VTolerance in the v parametric direction. If f(u,v) is the equation of this BSpline surface, UTolerance and VTolerance guarantee that: | u1 - u0 | < UTolerance and | v1 - v0 | < VTolerance ====> |f (u1,v1) - f (u0,v0)| < Tolerance3D.
 ") Resolution;
-		void Resolution(const Standard_Real Tolerance3D, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Resolution(const double Tolerance3D, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_BSplineSurface::Segment ******/
-		/****** md5 signature: fd76d320a01952f2645e752c81f84bc9 ******/
+		/****** md5 signature: 2e4282bbb9f79bb4b2d5b1f4800d1dd1 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
-V1: float
-V2: float
-theUTolerance: float (optional, default to Precision::PConfusion())
-theVTolerance: float (optional, default to Precision::PConfusion())
+U1: double
+U2: double
+V1: double
+V2: double
+theUTolerance: double (optional, default to Precision::PConfusion())
+theVTolerance: double (optional, default to Precision::PConfusion())
 
 Return
 -------
@@ -8423,10 +8674,28 @@ Description
 -----------
 Segments the surface between U1 and U2 in the U-Direction. between V1 and V2 in the V-Direction. The control points are modified, the first and the last point are not the same. //! Parameters theUTolerance, theVTolerance define the possible proximity along the corresponding direction of the segment boundaries and B-spline knots to treat them as equal. //! Warnings: Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the surface <self> or if the surface makes loop. raises if U2 < U1 or V2 < V1. Standard_DomainError if U2 - U1 exceeds the uperiod for uperiodic surfaces. i.e. ((U2 - U1) - UPeriod) > Precision::PConfusion(). Standard_DomainError if V2 - V1 exceeds the vperiod for vperiodic surfaces. i.e. ((V2 - V1) - VPeriod) > Precision::PConfusion()).
 ") Segment;
-		void Segment(const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real theUTolerance = Precision::PConfusion(), const Standard_Real theVTolerance = Precision::PConfusion());
+		void Segment(const double U1, const double U2, const double V1, const double V2, const double theUTolerance = Precision::PConfusion(), const double theVTolerance = Precision::PConfusion());
+
+		/****** Geom_BSplineSurface::SetEvalRepresentation ******/
+		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepSurfaceDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
 
 		/****** Geom_BSplineSurface::SetPole ******/
-		/****** md5 signature: 7626021decdd1633f78d695c98c81907 ******/
+		/****** md5 signature: d32ef8558923803e33dc7d68f2f2bfd1 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
@@ -8443,10 +8712,10 @@ Description
 -----------
 Substitutes the pole of range (UIndex, VIndex) with P. If the surface is rational the weight of range (UIndex, VIndex) is not modified. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles.
 ") SetPole;
-		void SetPole(const Standard_Integer UIndex, const Standard_Integer VIndex, const gp_Pnt & P);
+		void SetPole(const int UIndex, const int VIndex, const gp_Pnt & P);
 
 		/****** Geom_BSplineSurface::SetPole ******/
-		/****** md5 signature: ddaccd4b5c1880bee0dcb58b2720ffc1 ******/
+		/****** md5 signature: 87c463d2d1bd7570f9ccc04deeb40c33 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
@@ -8454,7 +8723,7 @@ Parameters
 UIndex: int
 VIndex: int
 P: gp_Pnt
-Weight: float
+Weight: double
 
 Return
 -------
@@ -8464,16 +8733,16 @@ Description
 -----------
 Substitutes the pole and the weight of range (UIndex, VIndex) with P and W. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles. Raised if Weight <= Resolution from package gp.
 ") SetPole;
-		void SetPole(const Standard_Integer UIndex, const Standard_Integer VIndex, const gp_Pnt & P, const Standard_Real Weight);
+		void SetPole(const int UIndex, const int VIndex, const gp_Pnt & P, const double Weight);
 
 		/****** Geom_BSplineSurface::SetPoleCol ******/
-		/****** md5 signature: b487d5aaa1aef838201a8aba83188f5e ******/
+		/****** md5 signature: 50042fd50315dce0fe78c66649ee167f ******/
 		%feature("compactdefaultargs") SetPoleCol;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -8483,17 +8752,17 @@ Description
 -----------
 Changes a column of poles or a part of this column. Raised if Vindex < 1 or VIndex > NbVPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
 ") SetPoleCol;
-		void SetPoleCol(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles);
+		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BSplineSurface::SetPoleCol ******/
-		/****** md5 signature: d64560c21dd051f71154432933ab3740 ******/
+		/****** md5 signature: 7409f3e15568c35eba14189ef766adcc ******/
 		%feature("compactdefaultargs") SetPoleCol;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -8503,17 +8772,17 @@ Description
 -----------
 Changes a column of poles or a part of this column with the corresponding weights. If the surface was rational it can become non rational. If the surface was non rational it can become rational. Raised if Vindex < 1 or VIndex > NbVPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles Raised if the bounds of CPoleWeights are not the same as the bounds of CPoles. Raised if one of the weight value of CPoleWeights is lower or equal to Resolution from package gp.
 ") SetPoleCol;
-		void SetPoleCol(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BSplineSurface::SetPoleRow ******/
-		/****** md5 signature: 8b1783ae4e3ecbab3a746a8ae970da2f ******/
+		/****** md5 signature: dcdcb6401c84bd00ed279b555ee31518 ******/
 		%feature("compactdefaultargs") SetPoleRow;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -8523,16 +8792,16 @@ Description
 -----------
 Changes a row of poles or a part of this row with the corresponding weights. If the surface was rational it can become non rational. If the surface was non rational it can become rational. Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles raises if the bounds of CPoleWeights are not the same as the bounds of CPoles. Raised if one of the weight value of CPoleWeights is lower or equal to Resolution from package gp.
 ") SetPoleRow;
-		void SetPoleRow(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BSplineSurface::SetPoleRow ******/
-		/****** md5 signature: 2174ec9de03976c55b3d4c714c979abc ******/
+		/****** md5 signature: f29485f5284e12c3a0b1f445f1848439 ******/
 		%feature("compactdefaultargs") SetPoleRow;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -8542,16 +8811,16 @@ Description
 -----------
 Changes a row of poles or a part of this row. Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
 ") SetPoleRow;
-		void SetPoleRow(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles);
+		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BSplineSurface::SetUKnot ******/
-		/****** md5 signature: 845306343d5bfda3da28f055e2f226c1 ******/
+		/****** md5 signature: 540babfe7eaa6000d81162bebe726d20 ******/
 		%feature("compactdefaultargs") SetUKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-K: float
+K: double
 
 Return
 -------
@@ -8561,16 +8830,16 @@ Description
 -----------
 Substitutes the UKnots of range UIndex with K. //! Raised if UIndex < 1 or UIndex > NbUKnots //! Raised if K >= UKnots(UIndex+1) or K <= UKnots(UIndex-1).
 ") SetUKnot;
-		void SetUKnot(const Standard_Integer UIndex, const Standard_Real K);
+		void SetUKnot(const int UIndex, const double K);
 
 		/****** Geom_BSplineSurface::SetUKnot ******/
-		/****** md5 signature: f8a26e8f14f910f81e606b126cfefeaf ******/
+		/****** md5 signature: fc8e042c7d10a7aa5522c614b8214ab4 ******/
 		%feature("compactdefaultargs") SetUKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-K: float
+K: double
 M: int
 
 Return
@@ -8581,15 +8850,15 @@ Description
 -----------
 Changes the value of the UKnots of range UIndex and increases its multiplicity. //! Raised if UIndex is not in the range [FirstUKnotIndex, LastUKnotIndex] given by the methods with the same name. //! Raised if K >= UKnots(UIndex+1) or K <= UKnots(UIndex-1) M must be lower than UDegree and greater than the previous multiplicity of the knot of range UIndex.
 ") SetUKnot;
-		void SetUKnot(const Standard_Integer UIndex, const Standard_Real K, const Standard_Integer M);
+		void SetUKnot(const int UIndex, const double K, const int M);
 
 		/****** Geom_BSplineSurface::SetUKnots ******/
-		/****** md5 signature: 9d12566748977c7846f4a19e5778a7d2 ******/
+		/****** md5 signature: 332c61d3bdacd1b18052836f8bfe7e70 ******/
 		%feature("compactdefaultargs") SetUKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-UK: TColStd_Array1OfReal
+UK: NCollection_Array1<double>
 
 Return
 -------
@@ -8599,7 +8868,7 @@ Description
 -----------
 Changes all the U-knots of the surface. The multiplicity of the knots are not modified. //! Raised if there is an index such that UK (Index+1) <= UK (Index). //! Raised if UK.Lower() < 1 or UK.Upper() > NbUKnots.
 ") SetUKnots;
-		void SetUKnots(const TColStd_Array1OfReal & UK);
+		void SetUKnots(const NCollection_Array1<double> & UK);
 
 		/****** Geom_BSplineSurface::SetUNotPeriodic ******/
 		/****** md5 signature: 0c7c503e46c4002268ee61603e4110c5 ******/
@@ -8615,7 +8884,7 @@ Sets the surface U not periodic. Changes this BSpline surface into a non-periodi
 		void SetUNotPeriodic();
 
 		/****** Geom_BSplineSurface::SetUOrigin ******/
-		/****** md5 signature: 23ef2fe4aaf020d7c47d71261dd540ac ******/
+		/****** md5 signature: 7818c24a030c705dcbbb670bd923a5ca ******/
 		%feature("compactdefaultargs") SetUOrigin;
 		%feature("autodoc", "
 Parameters
@@ -8630,7 +8899,7 @@ Description
 -----------
 Assigns the knot of index Index in the knots table in the corresponding parametric direction to be the origin of this periodic BSpline surface. As a consequence, the knots and poles tables are modified. Exceptions Standard_NoSuchObject if this BSpline surface is not periodic in the given parametric direction. Standard_DomainError if Index is outside the bounds of the knots table in the given parametric direction.
 ") SetUOrigin;
-		void SetUOrigin(const Standard_Integer Index);
+		void SetUOrigin(const int Index);
 
 		/****** Geom_BSplineSurface::SetUPeriodic ******/
 		/****** md5 signature: 9fd613b3eac0305a90220f75c600a3ff ******/
@@ -8646,13 +8915,13 @@ Sets the surface U periodic. Modifies this surface to be periodic in the U param
 		void SetUPeriodic();
 
 		/****** Geom_BSplineSurface::SetVKnot ******/
-		/****** md5 signature: 4e244b53c44e5a5291d9037bb3d65ce1 ******/
+		/****** md5 signature: f41c75830a706e75777fa5371bde1e6e ******/
 		%feature("compactdefaultargs") SetVKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-K: float
+K: double
 
 Return
 -------
@@ -8662,16 +8931,16 @@ Description
 -----------
 Substitutes the VKnots of range VIndex with K. //! Raised if VIndex < 1 or VIndex > NbVKnots //! Raised if K >= VKnots(VIndex+1) or K <= VKnots(VIndex-1).
 ") SetVKnot;
-		void SetVKnot(const Standard_Integer VIndex, const Standard_Real K);
+		void SetVKnot(const int VIndex, const double K);
 
 		/****** Geom_BSplineSurface::SetVKnot ******/
-		/****** md5 signature: c07f5a612587ccc48c1ab6b7b6b1cabb ******/
+		/****** md5 signature: 792b947c8fe710395438f247dabe24c0 ******/
 		%feature("compactdefaultargs") SetVKnot;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-K: float
+K: double
 M: int
 
 Return
@@ -8682,15 +8951,15 @@ Description
 -----------
 Changes the value of the VKnots of range VIndex and increases its multiplicity. //! Raised if VIndex is not in the range [FirstVKnotIndex, LastVKnotIndex] given by the methods with the same name. //! Raised if K >= VKnots(VIndex+1) or K <= VKnots(VIndex-1) M must be lower than VDegree and greater than the previous multiplicity of the knot of range VIndex.
 ") SetVKnot;
-		void SetVKnot(const Standard_Integer VIndex, const Standard_Real K, const Standard_Integer M);
+		void SetVKnot(const int VIndex, const double K, const int M);
 
 		/****** Geom_BSplineSurface::SetVKnots ******/
-		/****** md5 signature: fde74b904b1d78a8ce8ee5f37d96da75 ******/
+		/****** md5 signature: 4e606d7647c60a4a51d60069747c69f9 ******/
 		%feature("compactdefaultargs") SetVKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-VK: TColStd_Array1OfReal
+VK: NCollection_Array1<double>
 
 Return
 -------
@@ -8700,7 +8969,7 @@ Description
 -----------
 Changes all the V-knots of the surface. The multiplicity of the knots are not modified. //! Raised if there is an index such that VK (Index+1) <= VK (Index). //! Raised if VK.Lower() < 1 or VK.Upper() > NbVKnots.
 ") SetVKnots;
-		void SetVKnots(const TColStd_Array1OfReal & VK);
+		void SetVKnots(const NCollection_Array1<double> & VK);
 
 		/****** Geom_BSplineSurface::SetVNotPeriodic ******/
 		/****** md5 signature: da42223bbcd25fdcedfef03c261300b5 ******/
@@ -8716,7 +8985,7 @@ Sets the surface V not periodic. Changes this BSpline surface into a non-periodi
 		void SetVNotPeriodic();
 
 		/****** Geom_BSplineSurface::SetVOrigin ******/
-		/****** md5 signature: 6eefd3fca7f144d4992d1ffe6d769ad2 ******/
+		/****** md5 signature: 90e34ce8ae3ea551744c159d2c3f53f3 ******/
 		%feature("compactdefaultargs") SetVOrigin;
 		%feature("autodoc", "
 Parameters
@@ -8731,7 +9000,7 @@ Description
 -----------
 Assigns the knot of index Index in the knots table in the corresponding parametric direction to be the origin of this periodic BSpline surface. As a consequence, the knots and poles tables are modified. Exceptions Standard_NoSuchObject if this BSpline surface is not periodic in the given parametric direction. Standard_DomainError if Index is outside the bounds of the knots table in the given parametric direction.
 ") SetVOrigin;
-		void SetVOrigin(const Standard_Integer Index);
+		void SetVOrigin(const int Index);
 
 		/****** Geom_BSplineSurface::SetVPeriodic ******/
 		/****** md5 signature: 1f94890b9cb288124aa1b039be07bd00 ******/
@@ -8747,14 +9016,14 @@ Sets the surface V periodic. Modifies this surface to be periodic in the V param
 		void SetVPeriodic();
 
 		/****** Geom_BSplineSurface::SetWeight ******/
-		/****** md5 signature: a6c32aa43dac551c815b66f94dd1c53a ******/
+		/****** md5 signature: b2f5d40eb9ee4727e1f26bec15206a62 ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
 VIndex: int
-Weight: float
+Weight: double
 
 Return
 -------
@@ -8764,16 +9033,16 @@ Description
 -----------
 Changes the weight of the pole of range UIndex, VIndex. If the surface was non rational it can become rational. If the surface was rational it can become non rational. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles //! Raised if weight is lower or equal to Resolution from package gp.
 ") SetWeight;
-		void SetWeight(const Standard_Integer UIndex, const Standard_Integer VIndex, const Standard_Real Weight);
+		void SetWeight(const int UIndex, const int VIndex, const double Weight);
 
 		/****** Geom_BSplineSurface::SetWeightCol ******/
-		/****** md5 signature: 234dcaf213f6c00246270b60b622de79 ******/
+		/****** md5 signature: 578f3b7e4ffd50e6735dc9f5255dd559 ******/
 		%feature("compactdefaultargs") SetWeightCol;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoleWeights: TColStd_Array1OfReal
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -8783,16 +9052,16 @@ Description
 -----------
 Changes a column of weights of a part of this column. //! Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbUPoles. Raised if a weight value is lower or equal to Resolution from package gp.
 ") SetWeightCol;
-		void SetWeightCol(const Standard_Integer VIndex, const TColStd_Array1OfReal & CPoleWeights);
+		void SetWeightCol(const int VIndex, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BSplineSurface::SetWeightRow ******/
-		/****** md5 signature: dc1d6ada2bbed4e33ef552c09c88f19d ******/
+		/****** md5 signature: a51a8366b979002586886defc95e0539 ******/
 		%feature("compactdefaultargs") SetWeightRow;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoleWeights: TColStd_Array1OfReal
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -8802,10 +9071,10 @@ Description
 -----------
 Changes a row of weights or a part of this row. //! Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbVPoles. Raised if a weight value is lower or equal to Resolution from package gp.
 ") SetWeightRow;
-		void SetWeightRow(const Standard_Integer UIndex, const TColStd_Array1OfReal & CPoleWeights);
+		void SetWeightRow(const int UIndex, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BSplineSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -8823,7 +9092,7 @@ Applies the transformation T to this BSpline surface.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_BSplineSurface::UDegree ******/
-		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
+		/****** md5 signature: 82316803b09fa91a345f15577c8b3c82 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -8833,15 +9102,15 @@ Description
 -----------
 Returns the degree of the normalized B-splines Ni,n in the U direction.
 ") UDegree;
-		Standard_Integer UDegree();
+		int UDegree();
 
 		/****** Geom_BSplineSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -8851,15 +9120,15 @@ Description
 -----------
 Computes the U isoparametric curve. A B-spline curve is returned.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_BSplineSurface::UIso ******/
-		/****** md5 signature: 7cce444f1376c16f94e0b1e9b700f48a ******/
+		/****** md5 signature: a9e62db2220a14e5fd927ed9ad9e386d ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 CheckRational: bool
 
 Return
@@ -8870,10 +9139,10 @@ Description
 -----------
 Computes the U isoparametric curve. If CheckRational=False, no try to make it non-rational. A B-spline curve is returned.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U, const Standard_Boolean CheckRational);
+		opencascade::handle<Geom_Curve> UIso(const double U, const bool CheckRational);
 
 		/****** Geom_BSplineSurface::UKnot ******/
-		/****** md5 signature: ea5353985fdf78f530adfdba4dac6b0b ******/
+		/****** md5 signature: 433ebc61c3e83e25f4005a3ddcae8671 ******/
 		%feature("compactdefaultargs") UKnot;
 		%feature("autodoc", "
 Parameters
@@ -8882,13 +9151,13 @@ UIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Knot value of range UIndex. Raised if UIndex < 1 or UIndex > NbUKnots.
 ") UKnot;
-		Standard_Real UKnot(const Standard_Integer UIndex);
+		double UKnot(const int UIndex);
 
 		/****** Geom_BSplineSurface::UKnotDistribution ******/
 		/****** md5 signature: 2fc78c45c9aea809e270962378dd363c ******/
@@ -8904,12 +9173,12 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		GeomAbs_BSplKnotDistribution UKnotDistribution();
 
 		/****** Geom_BSplineSurface::UKnotSequence ******/
-		/****** md5 signature: ffefc781eb9e61f0fa262a839bd822b2 ******/
+		/****** md5 signature: 5d11e979ce3a9fbedb9e4df956f158aa ******/
 		%feature("compactdefaultargs") UKnotSequence;
 		%feature("autodoc", "
 Parameters
 ----------
-Ku: TColStd_Array1OfReal
+Ku: NCollection_Array1<double>
 
 Return
 -------
@@ -8917,30 +9186,30 @@ None
 
 Description
 -----------
-Returns the uknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of Ku is not equal to NbUPoles + UDegree + 1.
+No available documentation.
 ") UKnotSequence;
-		void UKnotSequence(TColStd_Array1OfReal & Ku);
+		void UKnotSequence(NCollection_Array1<double> & Ku);
 
 		/****** Geom_BSplineSurface::UKnotSequence ******/
-		/****** md5 signature: 9c08bbbe538cce85f3b5344af4253953 ******/
+		/****** md5 signature: c70f9f860680de4062cf6c4db5527f02 ******/
 		%feature("compactdefaultargs") UKnotSequence;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 Returns the uknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}.
 ") UKnotSequence;
-		const TColStd_Array1OfReal & UKnotSequence();
+		const NCollection_Array1<double> & UKnotSequence();
 
 		/****** Geom_BSplineSurface::UKnots ******/
-		/****** md5 signature: 74505cc9e15944eba0c72af5df136b4c ******/
+		/****** md5 signature: 1378264acef76f8707b7640daa96fe6e ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Ku: TColStd_Array1OfReal
+Ku: NCollection_Array1<double>
 
 Return
 -------
@@ -8948,30 +9217,30 @@ None
 
 Description
 -----------
-Returns the knots in the U direction. //! Raised if the length of Ku is not equal to the number of knots in the U direction.
+No available documentation.
 ") UKnots;
-		void UKnots(TColStd_Array1OfReal & Ku);
+		void UKnots(NCollection_Array1<double> & Ku);
 
 		/****** Geom_BSplineSurface::UKnots ******/
-		/****** md5 signature: e600039b7e20985058138f77feba6fe0 ******/
+		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 Returns the knots in the U direction.
 ") UKnots;
-		const TColStd_Array1OfReal & UKnots();
+		const NCollection_Array1<double> & UKnots();
 
 		/****** Geom_BSplineSurface::UMultiplicities ******/
-		/****** md5 signature: cf043bb9d8146195a2d72f075029ed41 ******/
+		/****** md5 signature: fa7961ef7f03eb2b596d741e54730ffa ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
-Mu: TColStd_Array1OfInteger
+Mu: NCollection_Array1<int>
 
 Return
 -------
@@ -8979,25 +9248,25 @@ None
 
 Description
 -----------
-Returns the multiplicities of the knots in the U direction. //! Raised if the length of Mu is not equal to the number of knots in the U direction.
+No available documentation.
 ") UMultiplicities;
-		void UMultiplicities(TColStd_Array1OfInteger & Mu);
+		void UMultiplicities(NCollection_Array1<int> & Mu);
 
 		/****** Geom_BSplineSurface::UMultiplicities ******/
-		/****** md5 signature: e83f5ba93b5b062c75fba51c3acc7d8e ******/
+		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfInteger
+NCollection_Array1<int>
 
 Description
 -----------
 Returns the multiplicities of the knots in the U direction.
 ") UMultiplicities;
-		const TColStd_Array1OfInteger & UMultiplicities();
+		const NCollection_Array1<int> & UMultiplicities();
 
 		/****** Geom_BSplineSurface::UMultiplicity ******/
-		/****** md5 signature: dad23f162889ff220e8176306861eaa1 ******/
+		/****** md5 signature: 1fecbf807fed760eda3f998c7edb022f ******/
 		%feature("compactdefaultargs") UMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -9012,10 +9281,10 @@ Description
 -----------
 Returns the multiplicity value of knot of range UIndex in the u direction. Raised if UIndex < 1 or UIndex > NbUKnots.
 ") UMultiplicity;
-		Standard_Integer UMultiplicity(const Standard_Integer UIndex);
+		int UMultiplicity(const int UIndex);
 
 		/****** Geom_BSplineSurface::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -9028,25 +9297,25 @@ Changes the orientation of this BSpline surface in the U parametric direction. T
 		void UReverse();
 
 		/****** Geom_BSplineSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified surface, produced by reversing its U parametric direction, for the point of u parameter U, on this BSpline surface. For a BSpline surface, these functions return respectively: - UFirst + ULast - U, where UFirst, ULast are the values of the first and last parameters of this BSpline surface, in the u parametric directions.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_BSplineSurface::VDegree ******/
-		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
+		/****** md5 signature: 10a01c94db483e5b8afe43596e767a03 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -9056,15 +9325,15 @@ Description
 -----------
 Returns the degree of the normalized B-splines Ni,d in the V direction.
 ") VDegree;
-		Standard_Integer VDegree();
+		int VDegree();
 
 		/****** Geom_BSplineSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -9074,15 +9343,15 @@ Description
 -----------
 Computes the V isoparametric curve. A B-spline curve is returned.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_BSplineSurface::VIso ******/
-		/****** md5 signature: fc6b3d4095cfce94274b6d401aaae02f ******/
+		/****** md5 signature: 7563eed22457d196e213367e2bda3b0e ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 CheckRational: bool
 
 Return
@@ -9093,10 +9362,10 @@ Description
 -----------
 Computes the V isoparametric curve. If CheckRational=False, no try to make it non-rational. A B-spline curve is returned. transformations.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V, const Standard_Boolean CheckRational);
+		opencascade::handle<Geom_Curve> VIso(const double V, const bool CheckRational);
 
 		/****** Geom_BSplineSurface::VKnot ******/
-		/****** md5 signature: a0608310ec00728bb71733055be08e33 ******/
+		/****** md5 signature: 7a34fd18cd37b135f5e7e2ad1721f5f3 ******/
 		%feature("compactdefaultargs") VKnot;
 		%feature("autodoc", "
 Parameters
@@ -9105,13 +9374,13 @@ VIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Knot value of range VIndex. Raised if VIndex < 1 or VIndex > NbVKnots.
 ") VKnot;
-		Standard_Real VKnot(const Standard_Integer VIndex);
+		double VKnot(const int VIndex);
 
 		/****** Geom_BSplineSurface::VKnotDistribution ******/
 		/****** md5 signature: 37243a8c428a8788b1ed2d20f1deb712 ******/
@@ -9127,12 +9396,12 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		GeomAbs_BSplKnotDistribution VKnotDistribution();
 
 		/****** Geom_BSplineSurface::VKnotSequence ******/
-		/****** md5 signature: 9f3f351d744aca31a83fc1669d89f1b1 ******/
+		/****** md5 signature: 4823b0cab4e42d44ef37c4ddc9586db2 ******/
 		%feature("compactdefaultargs") VKnotSequence;
 		%feature("autodoc", "
 Parameters
 ----------
-Kv: TColStd_Array1OfReal
+Kv: NCollection_Array1<double>
 
 Return
 -------
@@ -9140,30 +9409,30 @@ None
 
 Description
 -----------
-Returns the vknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: Kv = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of Kv is not equal to NbVPoles + VDegree + 1.
+No available documentation.
 ") VKnotSequence;
-		void VKnotSequence(TColStd_Array1OfReal & Kv);
+		void VKnotSequence(NCollection_Array1<double> & Kv);
 
 		/****** Geom_BSplineSurface::VKnotSequence ******/
-		/****** md5 signature: 6a165f095b8367bee175e8be8feab317 ******/
+		/****** md5 signature: 8e70c5e3318ec19a065584c30e956cfa ******/
 		%feature("compactdefaultargs") VKnotSequence;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 Returns the vknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}.
 ") VKnotSequence;
-		const TColStd_Array1OfReal & VKnotSequence();
+		const NCollection_Array1<double> & VKnotSequence();
 
 		/****** Geom_BSplineSurface::VKnots ******/
-		/****** md5 signature: 12b193caec12d0ac888795f65e0d0ae1 ******/
+		/****** md5 signature: c831589eb77a9bd10bbd73a7de246003 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Kv: TColStd_Array1OfReal
+Kv: NCollection_Array1<double>
 
 Return
 -------
@@ -9171,30 +9440,30 @@ None
 
 Description
 -----------
-Returns the knots in the V direction. //! Raised if the length of Kv is not equal to the number of knots in the V direction.
+No available documentation.
 ") VKnots;
-		void VKnots(TColStd_Array1OfReal & Kv);
+		void VKnots(NCollection_Array1<double> & Kv);
 
 		/****** Geom_BSplineSurface::VKnots ******/
-		/****** md5 signature: abf017b4e3038ef4c4599c229a61c857 ******/
+		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 Returns the knots in the V direction.
 ") VKnots;
-		const TColStd_Array1OfReal & VKnots();
+		const NCollection_Array1<double> & VKnots();
 
 		/****** Geom_BSplineSurface::VMultiplicities ******/
-		/****** md5 signature: a8ac3d40bf4a116820e3d4bc53ef5def ******/
+		/****** md5 signature: 31ea5bd1155e0480c8b41e229bebf68e ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
-Mv: TColStd_Array1OfInteger
+Mv: NCollection_Array1<int>
 
 Return
 -------
@@ -9202,25 +9471,25 @@ None
 
 Description
 -----------
-Returns the multiplicities of the knots in the V direction. //! Raised if the length of Mv is not equal to the number of knots in the V direction.
+No available documentation.
 ") VMultiplicities;
-		void VMultiplicities(TColStd_Array1OfInteger & Mv);
+		void VMultiplicities(NCollection_Array1<int> & Mv);
 
 		/****** Geom_BSplineSurface::VMultiplicities ******/
-		/****** md5 signature: 42e4ed449de2a286993c2a1ade45b1d5 ******/
+		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfInteger
+NCollection_Array1<int>
 
 Description
 -----------
 Returns the multiplicities of the knots in the V direction.
 ") VMultiplicities;
-		const TColStd_Array1OfInteger & VMultiplicities();
+		const NCollection_Array1<int> & VMultiplicities();
 
 		/****** Geom_BSplineSurface::VMultiplicity ******/
-		/****** md5 signature: d21b3a277f002a7f3b2fcadb35374bc1 ******/
+		/****** md5 signature: ff1ff8db7d362092f1741bc8fc99fee6 ******/
 		%feature("compactdefaultargs") VMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -9235,10 +9504,10 @@ Description
 -----------
 Returns the multiplicity value of knot of range VIndex in the v direction. Raised if VIndex < 1 or VIndex > NbVKnots.
 ") VMultiplicity;
-		Standard_Integer VMultiplicity(const Standard_Integer VIndex);
+		int VMultiplicity(const int VIndex);
 
 		/****** Geom_BSplineSurface::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -9251,25 +9520,25 @@ Changes the orientation of this BSpline surface in the V parametric direction. T
 		void VReverse();
 
 		/****** Geom_BSplineSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified surface, produced by reversing its V parametric direction, for the point of v parameter V on this BSpline surface. For a BSpline surface, these functions return respectively: - VFirst + VLast - V, VFirst and VLast are the values of the first and last parameters of this BSpline surface, in the v pametric directions.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 		/****** Geom_BSplineSurface::Weight ******/
-		/****** md5 signature: 3f3d90bfc32174f677371ed3017fc02e ******/
+		/****** md5 signature: f9d2ad63ef5103b3682048034554eb8b ******/
 		%feature("compactdefaultargs") Weight;
 		%feature("autodoc", "
 Parameters
@@ -9279,21 +9548,21 @@ VIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the weight value of range UIndex, VIndex. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles.
 ") Weight;
-		Standard_Real Weight(const Standard_Integer UIndex, const Standard_Integer VIndex);
+		double Weight(const int UIndex, const int VIndex);
 
 		/****** Geom_BSplineSurface::Weights ******/
-		/****** md5 signature: bfcff4bb351c5cc316fe1eebca09f020 ******/
+		/****** md5 signature: 239cb12bc795fa3c4057ce031f56f6eb ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
 ----------
-W: TColStd_Array2OfReal
+W: NCollection_Array2<double>
 
 Return
 -------
@@ -9301,22 +9570,35 @@ None
 
 Description
 -----------
-Returns the weights of the B-spline surface. //! Raised if the length of W in the U and V direction is not equal to NbUPoles and NbVPoles.
+No available documentation.
 ") Weights;
-		void Weights(TColStd_Array2OfReal & W);
+		void Weights(NCollection_Array2<double> & W);
 
 		/****** Geom_BSplineSurface::Weights ******/
-		/****** md5 signature: 6a757f06b12c74eb2bedf827727d3100 ******/
+		/****** md5 signature: fb4051a8bd8195e88a7eb79ea1397954 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-TColStd_Array2OfReal *
+NCollection_Array2<double> *
 
 Description
 -----------
 Returns the weights of the B-spline surface. value and derivatives computation.
 ") Weights;
-		const TColStd_Array2OfReal * Weights();
+		const NCollection_Array2<double> * Weights();
+
+		/****** Geom_BSplineSurface::WeightsArray ******/
+		/****** md5 signature: a6f8eebdea79810cd82d23b8cbaafd83 ******/
+		%feature("compactdefaultargs") WeightsArray;
+		%feature("autodoc", "Return
+-------
+NCollection_Array2<double>
+
+Description
+-----------
+Returns a const reference to the weights array. For rational surfaces: the internal owning weights array. For non-rational surfaces: a non-owning view of unit weights from BSplSLib. The array is always sized to match NbUPoles() x NbVPoles(). @warning Do NOT modify elements through the returned reference.
+") WeightsArray;
+		const NCollection_Array2<double> & WeightsArray();
 
 };
 
@@ -9335,12 +9617,12 @@ Returns the weights of the B-spline surface. value and derivatives computation.
 class Geom_BezierCurve : public Geom_BoundedCurve {
 	public:
 		/****** Geom_BezierCurve::Geom_BezierCurve ******/
-		/****** md5 signature: 7b0c51ed2f2bce368deb726ed6e3208f ******/
+		/****** md5 signature: f7d392c059dadd77ad5c3b4da9b861ac ******/
 		%feature("compactdefaultargs") Geom_BezierCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-CurvePoles: TColgp_Array1OfPnt
+CurvePoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -9350,16 +9632,16 @@ Description
 -----------
 Creates a non rational Bezier curve with a set of poles CurvePoles. The weights are defaulted to all being 1. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2.
 ") Geom_BezierCurve;
-		 Geom_BezierCurve(const TColgp_Array1OfPnt & CurvePoles);
+		 Geom_BezierCurve(const NCollection_Array1<gp_Pnt> & CurvePoles);
 
 		/****** Geom_BezierCurve::Geom_BezierCurve ******/
-		/****** md5 signature: 0b6fccb02dabb97c415680b0476d10e8 ******/
+		/****** md5 signature: 62121b3e4c9f8c7ff516d512019a27e7 ******/
 		%feature("compactdefaultargs") Geom_BezierCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-CurvePoles: TColgp_Array1OfPnt
-PoleWeights: TColStd_Array1OfReal
+CurvePoles: NCollection_Array1<gp_Pnt>
+PoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -9367,12 +9649,44 @@ None
 
 Description
 -----------
-Creates a rational Bezier curve with the set of poles CurvePoles and the set of weights PoleWeights . If all the weights are identical the curve is considered as non rational. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2 or CurvePoles and CurveWeights have not the same length or one weight value is lower or equal to Resolution from package gp.
+Creates a rational Bezier curve with the set of poles CurvePoles and the set of weights PoleWeights. If all the weights are identical the curve is considered as non rational. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2 or CurvePoles and CurveWeights have not the same length or one weight value is lower or equal to Resolution from package gp.
 ") Geom_BezierCurve;
-		 Geom_BezierCurve(const TColgp_Array1OfPnt & CurvePoles, const TColStd_Array1OfReal & PoleWeights);
+		 Geom_BezierCurve(const NCollection_Array1<gp_Pnt> & CurvePoles, const NCollection_Array1<double> & PoleWeights);
+
+		/****** Geom_BezierCurve::Geom_BezierCurve ******/
+		/****** md5 signature: 15df871961995cb485509867720c20a8 ******/
+		%feature("compactdefaultargs") Geom_BezierCurve;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Geom_BezierCurve
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor for optimized copying without validation. 
+Input parameter: theOther the Bezier curve to copy from.
+") Geom_BezierCurve;
+		 Geom_BezierCurve(const Geom_BezierCurve & theOther);
+
+		/****** Geom_BezierCurve::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
 
 		/****** Geom_BezierCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -9385,7 +9699,7 @@ a Bezier curve is CN.
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_BezierCurve::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -9397,109 +9711,8 @@ Creates a new object which is a copy of this Bezier curve.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
 
-		/****** Geom_BezierCurve::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_BezierCurve::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_BezierCurve::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_BezierCurve::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-For this Bezier curve, computes - the point P of parameter U, or - the point P and one or more of the following values: - V1, the first derivative vector, - V2, the second derivative vector, - V3, the third derivative vector. Note: the parameter U can be outside the bounds of the curve.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_BezierCurve::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-For the point of parameter U of this Bezier curve, computes the vector corresponding to the Nth derivative. Note: the parameter U can be outside the bounds of the curve. Exceptions Standard_RangeError if N is less than 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** Geom_BezierCurve::Degree ******/
-		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
+		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -9509,7 +9722,7 @@ Description
 -----------
 Returns the polynomial degree of the curve. it is the number of poles - 1 point P and derivatives (V1, V2, V3) computation The Bezier Curve has a Polynomial representation so the parameter U can be out of the bounds of the curve.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 
         /****************** DumpJson ******************/
@@ -9533,7 +9746,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_BezierCurve::EndPoint ******/
-		/****** md5 signature: 8dd4886e4c303cec8092c23bff0110c3 ******/
+		/****** md5 signature: 1d65a54ecc39cd5733d739743335f6ff ******/
 		%feature("compactdefaultargs") EndPoint;
 		%feature("autodoc", "Return
 -------
@@ -9545,21 +9758,138 @@ Returns Value (U=1.), it is the last control point of the Bezier curve.
 ") EndPoint;
 		gp_Pnt EndPoint();
 
+		/****** Geom_BezierCurve::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+No available documentation.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_BezierCurve::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+No available documentation.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_BezierCurve::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+No available documentation.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_BezierCurve::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+For this Bezier curve, computes - the point P of parameter U, or - the point P and one or more of the following values: - V1, the first derivative vector, - V2, the second derivative vector, - V3, the third derivative vector. Note: the parameter U can be outside the bounds of the curve.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_BezierCurve::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+For the point of parameter U of this Bezier curve, computes the vector corresponding to the Nth derivative. Note: the parameter U can be outside the bounds of the curve. Exceptions Standard_RangeError if N is less than 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
+		/****** Geom_BezierCurve::EvalRepresentation ******/
+		/****** md5 signature: a570242ee5a0b07b20294756091ee6a1 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepCurveDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepCurveDesc::Base> & EvalRepresentation();
+
 		/****** Geom_BezierCurve::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter of this Bezier curve. This is 0.0, which gives the start point of this Bezier curve.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
+
+		/****** Geom_BezierCurve::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
 
 		/****** Geom_BezierCurve::Increase ******/
-		/****** md5 signature: e664d16cbd2a07ca42f612f3b1c0f48b ******/
+		/****** md5 signature: 42a99bf63923cac198244f0a91eaa25c ******/
 		%feature("compactdefaultargs") Increase;
 		%feature("autodoc", "
 Parameters
@@ -9574,10 +9904,10 @@ Description
 -----------
 Increases the degree of a bezier curve. Degree is the new degree of <self>. Raises ConstructionError if Degree is greater than MaxDegree or lower than 2 or lower than the initial degree of <self>.
 ") Increase;
-		void Increase(const Standard_Integer Degree);
+		void Increase(const int Degree);
 
 		/****** Geom_BezierCurve::InsertPoleAfter ******/
-		/****** md5 signature: dda28aaffe10cbe608e626c5dd654962 ******/
+		/****** md5 signature: 815cd05c09f137b3177c7cf8c4cb9a63 ******/
 		%feature("compactdefaultargs") InsertPoleAfter;
 		%feature("autodoc", "
 Parameters
@@ -9593,17 +9923,17 @@ Description
 -----------
 Inserts a pole P after the pole of range Index. If the curve <self> is rational the weight value for the new pole of range Index is 1.0. raised if Index is not in the range [1, NbPoles] //! raised if the resulting number of poles is greater than MaxDegree + 1.
 ") InsertPoleAfter;
-		void InsertPoleAfter(const Standard_Integer Index, const gp_Pnt & P);
+		void InsertPoleAfter(const int Index, const gp_Pnt & P);
 
 		/****** Geom_BezierCurve::InsertPoleAfter ******/
-		/****** md5 signature: f3a89b8b481b99f9b0b9304a2ac0e7f0 ******/
+		/****** md5 signature: 14a2992760e9216ef613160a41dac02c ******/
 		%feature("compactdefaultargs") InsertPoleAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 P: gp_Pnt
-Weight: float
+Weight: double
 
 Return
 -------
@@ -9613,10 +9943,10 @@ Description
 -----------
 Inserts a pole with its weight in the set of poles after the pole of range Index. If the curve was non rational it can become rational if all the weights are not identical. Raised if Index is not in the range [1, NbPoles] //! Raised if the resulting number of poles is greater than MaxDegree + 1. Raised if Weight is lower or equal to Resolution from package gp.
 ") InsertPoleAfter;
-		void InsertPoleAfter(const Standard_Integer Index, const gp_Pnt & P, const Standard_Real Weight);
+		void InsertPoleAfter(const int Index, const gp_Pnt & P, const double Weight);
 
 		/****** Geom_BezierCurve::InsertPoleBefore ******/
-		/****** md5 signature: 54e59e7f1bd435e1ff2d398aff5c61cb ******/
+		/****** md5 signature: 52f668fd9e4b62a43f0c0f7ceacc06e9 ******/
 		%feature("compactdefaultargs") InsertPoleBefore;
 		%feature("autodoc", "
 Parameters
@@ -9632,17 +9962,17 @@ Description
 -----------
 Inserts a pole P before the pole of range Index. If the curve <self> is rational the weight value for the new pole of range Index is 1.0. Raised if Index is not in the range [1, NbPoles] //! Raised if the resulting number of poles is greater than MaxDegree + 1.
 ") InsertPoleBefore;
-		void InsertPoleBefore(const Standard_Integer Index, const gp_Pnt & P);
+		void InsertPoleBefore(const int Index, const gp_Pnt & P);
 
 		/****** Geom_BezierCurve::InsertPoleBefore ******/
-		/****** md5 signature: 1fbbc780e37b1af530053e4a71efcfec ******/
+		/****** md5 signature: 86f655c72e31449460e7a11caff18393 ******/
 		%feature("compactdefaultargs") InsertPoleBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 P: gp_Pnt
-Weight: float
+Weight: double
 
 Return
 -------
@@ -9652,10 +9982,10 @@ Description
 -----------
 Inserts a pole with its weight in the set of poles after the pole of range Index. If the curve was non rational it can become rational if all the weights are not identical. Raised if Index is not in the range [1, NbPoles] //! Raised if the resulting number of poles is greater than MaxDegree + 1. Raised if Weight is lower or equal to Resolution from package gp.
 ") InsertPoleBefore;
-		void InsertPoleBefore(const Standard_Integer Index, const gp_Pnt & P, const Standard_Real Weight);
+		void InsertPoleBefore(const int Index, const gp_Pnt & P, const double Weight);
 
 		/****** Geom_BezierCurve::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 42a5bf57a05eb6426c49586172f0db7e ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -9670,10 +10000,10 @@ Description
 -----------
 Continuity of the curve, returns True.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Geom_BezierCurve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -9683,10 +10013,10 @@ Description
 -----------
 Returns True if the distance between the first point and the last point of the curve is lower or equal to the Resolution from package gp.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_BezierCurve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -9696,10 +10026,10 @@ Description
 -----------
 Returns True if the parametrization of a curve is periodic. (P(u) = P(u + T) T = constante).
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_BezierCurve::IsRational ******/
-		/****** md5 signature: fd4212ffa7bc30cde420e74a2c539434 ******/
+		/****** md5 signature: 2d134f58b1ac19806ba32cb72ce44772 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -9709,23 +10039,49 @@ Description
 -----------
 Returns false if all the weights are identical. The tolerance criterion is Resolution from package gp.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
+
+		/****** Geom_BezierCurve::KnotSequence ******/
+		/****** md5 signature: 13e41dae8bd546a82617e7927f39c7c2 ******/
+		%feature("compactdefaultargs") KnotSequence;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns Bezier flat knots for the current degree.
+") KnotSequence;
+		const NCollection_Array1<double> & KnotSequence();
+
+		/****** Geom_BezierCurve::Knots ******/
+		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
+		%feature("compactdefaultargs") Knots;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns Bezier knots {0.0, 1.0} as a static array.
+") Knots;
+		const NCollection_Array1<double> & Knots();
 
 		/****** Geom_BezierCurve::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the last parameter of this Bezier curve. This is 1.0, which gives the end point of this Bezier curve.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_BezierCurve::MaxDegree ******/
-		/****** md5 signature: 985314a0ed62b597a9bdf0f555b97bed ******/
+		/****** md5 signature: c1d162018b4c908f3a00335cd079a0ea ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -9735,10 +10091,23 @@ Description
 -----------
 Returns the value of the maximum polynomial degree of any Geom_BezierCurve curve. This value is 25.
 ") MaxDegree;
-		static Standard_Integer MaxDegree();
+		static int MaxDegree();
+
+		/****** Geom_BezierCurve::Multiplicities ******/
+		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
+		%feature("compactdefaultargs") Multiplicities;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<int>
+
+Description
+-----------
+Returns Bezier multiplicities for the current degree.
+") Multiplicities;
+		const NCollection_Array1<int> & Multiplicities();
 
 		/****** Geom_BezierCurve::NbPoles ******/
-		/****** md5 signature: 9a7d6d5f8a21c5833786e951bce99604 ******/
+		/****** md5 signature: ec44b31f908a8be9d45ab84543b6e8d5 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -9748,10 +10117,10 @@ Description
 -----------
 Returns the number of poles of this Bezier curve.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** Geom_BezierCurve::Pole ******/
-		/****** md5 signature: 5a83797398b762820fe4e76a1b7c2504 ******/
+		/****** md5 signature: 8b51a9aa7ec15affcda64b4301e12ae7 ******/
 		%feature("compactdefaultargs") Pole;
 		%feature("autodoc", "
 Parameters
@@ -9766,15 +10135,15 @@ Description
 -----------
 Returns the pole of range Index. Raised if Index is not in the range [1, NbPoles].
 ") Pole;
-		const gp_Pnt Pole(const Standard_Integer Index);
+		const gp_Pnt Pole(const int Index);
 
 		/****** Geom_BezierCurve::Poles ******/
-		/****** md5 signature: 6f58b0e5f2985c3cf12db24d338cf6c3 ******/
+		/****** md5 signature: 25bf8c7a4834c7c94ffb834d7fe32e93 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
-P: TColgp_Array1OfPnt
+P: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -9782,25 +10151,25 @@ None
 
 Description
 -----------
-Returns all the poles of the curve. //! Raised if the length of P is not equal to the number of poles.
+No available documentation.
 ") Poles;
-		void Poles(TColgp_Array1OfPnt & P);
+		void Poles(NCollection_Array1<gp_Pnt> & P);
 
 		/****** Geom_BezierCurve::Poles ******/
-		/****** md5 signature: 74aabdc9663f922ca9ac5a471f930356 ******/
+		/****** md5 signature: 663bb42f249a1a7e08feff11d136eca9 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-TColgp_Array1OfPnt
+NCollection_Array1<gp_Pnt>
 
 Description
 -----------
 Returns all the poles of the curve.
 ") Poles;
-		const TColgp_Array1OfPnt & Poles();
+		const NCollection_Array1<gp_Pnt> Poles();
 
 		/****** Geom_BezierCurve::RemovePole ******/
-		/****** md5 signature: b488f4ba1aa92b1c805329ca2c5bc2e2 ******/
+		/****** md5 signature: e5a8000c59dc6fb4e1e49bcebf40135a ******/
 		%feature("compactdefaultargs") RemovePole;
 		%feature("autodoc", "
 Parameters
@@ -9815,28 +10184,28 @@ Description
 -----------
 Removes the pole of range Index. If the curve was rational it can become non rational. Raised if Index is not in the range [1, NbPoles] Raised if Degree is lower than 2.
 ") RemovePole;
-		void RemovePole(const Standard_Integer Index);
+		void RemovePole(const int Index);
 
 		/****** Geom_BezierCurve::Resolution ******/
-		/****** md5 signature: 6437f52eb15539577fb4ae8621d2ded9 ******/
+		/****** md5 signature: 94a4afa7dce880817d6fdfba2f9ff320 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3D: float
+Tolerance3D: double
 
 Return
 -------
-UTolerance: float
+UTolerance: double
 
 Description
 -----------
 Computes for this Bezier curve the parametric tolerance UTolerance for a given 3D tolerance Tolerance3D. If f(t) is the equation of this Bezier curve, UTolerance ensures that: |t1-t0| < UTolerance ===> |f(t1)-f(t0)| < Tolerance3D.
 ") Resolution;
-		void Resolution(const Standard_Real Tolerance3D, Standard_Real &OutValue);
+		void Resolution(const double Tolerance3D, Standard_Real &OutValue);
 
 		/****** Geom_BezierCurve::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 3329d3f633fce7835a9f2ded949a6050 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -9849,31 +10218,31 @@ Reverses the direction of parametrization of <self> Value (NewU) = Value (1 - Ol
 		void Reverse();
 
 		/****** Geom_BezierCurve::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the reversed curve for the point of parameter U on <self>. //! returns 1-U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_BezierCurve::Segment ******/
-		/****** md5 signature: fb72a1522f77fa9f134af7f8bf81def8 ******/
+		/****** md5 signature: 431d11e406cedb37e1fce1b029086d31 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
@@ -9883,10 +10252,28 @@ Description
 -----------
 Segments the curve between U1 and U2 which can be out of the bounds of the curve. The curve is oriented from U1 to U2. The control points are modified, the first and the last point are not the same but the parametrization range is [0, 1] else it could not be a Bezier curve. Warnings: Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the curve <self> or if the curve makes loop. After the segmentation the length of a curve can be null.
 ") Segment;
-		void Segment(const Standard_Real U1, const Standard_Real U2);
+		void Segment(const double U1, const double U2);
+
+		/****** Geom_BezierCurve::SetEvalRepresentation ******/
+		/****** md5 signature: c94b922fdbdc3ba23286b9a9dc213d1c ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepCurveDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepCurveDesc::Base> & theDesc);
 
 		/****** Geom_BezierCurve::SetPole ******/
-		/****** md5 signature: c804d6e49d15c749b2cf3bf061821fae ******/
+		/****** md5 signature: 6c1b16e4a0213de20b4394ce01a770f0 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
@@ -9902,17 +10289,17 @@ Description
 -----------
 Substitutes the pole of range index with P. If the curve <self> is rational the weight of range Index is not modified. raiseD if Index is not in the range [1, NbPoles].
 ") SetPole;
-		void SetPole(const Standard_Integer Index, const gp_Pnt & P);
+		void SetPole(const int Index, const gp_Pnt & P);
 
 		/****** Geom_BezierCurve::SetPole ******/
-		/****** md5 signature: ae5484e750e2e148a7cbe47257d71d1c ******/
+		/****** md5 signature: be3a33a6435dfb27534a4eb64bb62557 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 P: gp_Pnt
-Weight: float
+Weight: double
 
 Return
 -------
@@ -9922,16 +10309,16 @@ Description
 -----------
 Substitutes the pole and the weights of range Index. If the curve <self> is not rational it can become rational if all the weights are not identical. If the curve was rational it can become non rational if all the weights are identical. Raised if Index is not in the range [1, NbPoles] Raised if Weight <= Resolution from package gp.
 ") SetPole;
-		void SetPole(const Standard_Integer Index, const gp_Pnt & P, const Standard_Real Weight);
+		void SetPole(const int Index, const gp_Pnt & P, const double Weight);
 
 		/****** Geom_BezierCurve::SetWeight ******/
-		/****** md5 signature: 4e7aa00d12e09e9b776d4bf66f07ecec ******/
+		/****** md5 signature: 070f4d4d27969cd02dc5548cbd61269b ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-Weight: float
+Weight: double
 
 Return
 -------
@@ -9941,10 +10328,10 @@ Description
 -----------
 Changes the weight of the pole of range Index. If the curve <self> is not rational it can become rational if all the weights are not identical. If the curve was rational it can become non rational if all the weights are identical. Raised if Index is not in the range [1, NbPoles] Raised if Weight <= Resolution from package gp.
 ") SetWeight;
-		void SetWeight(const Standard_Integer Index, const Standard_Real Weight);
+		void SetWeight(const int Index, const double Weight);
 
 		/****** Geom_BezierCurve::StartPoint ******/
-		/****** md5 signature: ccb2a909a54dc7dd0800015a563c1ff7 ******/
+		/****** md5 signature: 8a586296583b30cec9a994e9c703d6ca ******/
 		%feature("compactdefaultargs") StartPoint;
 		%feature("autodoc", "Return
 -------
@@ -9957,7 +10344,7 @@ Returns Value (U=0.), it is the first control point of the curve.
 		gp_Pnt StartPoint();
 
 		/****** Geom_BezierCurve::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -9975,7 +10362,7 @@ Applies the transformation T to this Bezier curve.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_BezierCurve::Weight ******/
-		/****** md5 signature: 70cf193bf7498ec22102a906ea9db6f5 ******/
+		/****** md5 signature: 4e490ff1aecfd614d673f3411c64fe0f ******/
 		%feature("compactdefaultargs") Weight;
 		%feature("autodoc", "
 Parameters
@@ -9984,21 +10371,21 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the weight of range Index. Raised if Index is not in the range [1, NbPoles].
 ") Weight;
-		Standard_Real Weight(const Standard_Integer Index);
+		double Weight(const int Index);
 
 		/****** Geom_BezierCurve::Weights ******/
-		/****** md5 signature: dd63733e96eafbaacbd2d7b600471c30 ******/
+		/****** md5 signature: 75a527ca0732a5a4c79c4c170bad065d ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
 ----------
-W: TColStd_Array1OfReal
+W: NCollection_Array1<double>
 
 Return
 -------
@@ -10006,22 +10393,35 @@ None
 
 Description
 -----------
-Returns all the weights of the curve. //! Raised if the length of W is not equal to the number of poles.
+No available documentation.
 ") Weights;
-		void Weights(TColStd_Array1OfReal & W);
+		void Weights(NCollection_Array1<double> & W);
 
 		/****** Geom_BezierCurve::Weights ******/
-		/****** md5 signature: 7c14f36f7b022f971de3890428e2025c ******/
+		/****** md5 signature: d58e535c0e2f6d48057cd9bdc03d1788 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal *
+NCollection_Array1<double> *
 
 Description
 -----------
 Returns all the weights of the curve.
 ") Weights;
-		const TColStd_Array1OfReal * Weights();
+		const NCollection_Array1<double> * Weights();
+
+		/****** Geom_BezierCurve::WeightsArray ******/
+		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
+		%feature("compactdefaultargs") WeightsArray;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns a const reference to the weights array. For rational curves: the internal owning weights array. For non-rational curves: a non-owning view of unit weights from BSplCLib. The array is always sized to match NbPoles(). @warning Do NOT modify elements through the returned reference.
+") WeightsArray;
+		const NCollection_Array1<double> & WeightsArray();
 
 };
 
@@ -10040,12 +10440,12 @@ Returns all the weights of the curve.
 class Geom_BezierSurface : public Geom_BoundedSurface {
 	public:
 		/****** Geom_BezierSurface::Geom_BezierSurface ******/
-		/****** md5 signature: 832ae573ef6a0bd15e1156961264150a ******/
+		/****** md5 signature: 993323691f9552fb11ea88775594e35e ******/
 		%feature("compactdefaultargs") Geom_BezierSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-SurfacePoles: TColgp_Array2OfPnt
+SurfacePoles: NCollection_Array2<gp_Pnt>
 
 Return
 -------
@@ -10055,16 +10455,35 @@ Description
 -----------
 Creates a non-rational Bezier surface with a set of poles. Control points representation: SPoles(Uorigin,Vorigin) ...................SPoles(Uorigin,Vend) .  . .  . SPoles(Uend, Vorigin) .....................SPoles(Uend, Vend) For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. The weights are defaulted to all being 1. //! Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V.
 ") Geom_BezierSurface;
-		 Geom_BezierSurface(const TColgp_Array2OfPnt & SurfacePoles);
+		 Geom_BezierSurface(const NCollection_Array2<gp_Pnt> & SurfacePoles);
 
 		/****** Geom_BezierSurface::Geom_BezierSurface ******/
-		/****** md5 signature: 51418e64bf9bc8ac15418248adb2ef31 ******/
+		/****** md5 signature: f9ab1b71a817c80aa92fadb038c489bc ******/
 		%feature("compactdefaultargs") Geom_BezierSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-SurfacePoles: TColgp_Array2OfPnt
-PoleWeights: TColStd_Array2OfReal
+theOther: Geom_BezierSurface
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor for optimized copying without validation. 
+Input parameter: theOther the Bezier surface to copy from.
+") Geom_BezierSurface;
+		 Geom_BezierSurface(const Geom_BezierSurface & theOther);
+
+		/****** Geom_BezierSurface::Geom_BezierSurface ******/
+		/****** md5 signature: 0fb37bd22522eb0d42352479bd47f250 ******/
+		%feature("compactdefaultargs") Geom_BezierSurface;
+		%feature("autodoc", "
+Parameters
+----------
+SurfacePoles: NCollection_Array2<gp_Pnt>
+PoleWeights: NCollection_Array2<double>
 
 Return
 -------
@@ -10074,10 +10493,10 @@ Description
 -----------
 ---Purpose Creates a rational Bezier surface with a set of poles and a set of weights. For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. If all the weights are identical the surface is considered as non-rational (the tolerance criterion is Resolution from package gp). //! Raised if SurfacePoles and PoleWeights have not the same Rowlength or have not the same ColLength. Raised if PoleWeights (i, j) <= Resolution from gp; Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V.
 ") Geom_BezierSurface;
-		 Geom_BezierSurface(const TColgp_Array2OfPnt & SurfacePoles, const TColStd_Array2OfReal & PoleWeights);
+		 Geom_BezierSurface(const NCollection_Array2<gp_Pnt> & SurfacePoles, const NCollection_Array2<double> & PoleWeights);
 
 		/****** Geom_BezierSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -10085,10 +10504,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -10096,8 +10515,21 @@ Returns the parametric bounds U1, U2, V1 and V2 of this Bezier surface. In the c
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/****** Geom_BezierSurface::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
+
 		/****** Geom_BezierSurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -10110,7 +10542,7 @@ Returns the continuity of the surface CN: the order of continuity is infinite.
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_BezierSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -10121,123 +10553,6 @@ Description
 Creates a new object which is a copy of this Bezier surface.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_BezierSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_BezierSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_BezierSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_BezierSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes P, the point of parameters (U, V) of this Bezier surface, and - one or more of the following sets of vectors: - D1U and D1V, the first derivative vectors at this point, - D2U, D2V and D2UV, the second derivative vectors at this point, - D3U, D3V, D3UUV and D3UVV, the third derivative vectors at this point. Note: The parameters U and V can be outside the bounds of the surface.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_BezierSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction, at the point of parameters (U, V) of this Bezier surface. Note: The parameters U and V can be outside the bounds of the surface. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, or Nu or Nv is negative.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -10260,6 +10575,116 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_BezierSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter (U, V) on the surface. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_BezierSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception if the surface continuity is not C1.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_BezierSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception if the surface continuity is not C2.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_BezierSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Note: The parameters U and V can be outside the bounds of the surface. Raises an exception if the surface continuity is not C3.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_BezierSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction, at the point of parameters (U, V) of this Bezier surface. Note: The parameters U and V can be outside the bounds of the surface. Raises an exception on failure. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, or Nu or Nv is negative.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
+		/****** Geom_BezierSurface::EvalRepresentation ******/
+		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepSurfaceDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
+
 		/****** Geom_BezierSurface::ExchangeUV ******/
 		/****** md5 signature: fcaf4a45cf2f84fab80e6127ee17ec77 ******/
 		%feature("compactdefaultargs") ExchangeUV;
@@ -10273,8 +10698,21 @@ Exchanges the direction U and V on a Bezier surface As a consequence: - the pole
 ") ExchangeUV;
 		void ExchangeUV();
 
+		/****** Geom_BezierSurface::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
+
 		/****** Geom_BezierSurface::Increase ******/
-		/****** md5 signature: fdbaa7924ce9aa9fdf464643ea61bc84 ******/
+		/****** md5 signature: 2c3699df2ae5b614e37aefe13509bd14 ******/
 		%feature("compactdefaultargs") Increase;
 		%feature("autodoc", "
 Parameters
@@ -10290,16 +10728,16 @@ Description
 -----------
 Increases the degree of this Bezier surface in the two parametric directions. //! Raised if UDegree < UDegree <self> or VDegree < VDegree <self> Raised if the degree of the surface is greater than MaxDegree in one of the two directions U or V.
 ") Increase;
-		void Increase(const Standard_Integer UDeg, const Standard_Integer VDeg);
+		void Increase(const int UDeg, const int VDeg);
 
 		/****** Geom_BezierSurface::InsertPoleColAfter ******/
-		/****** md5 signature: 898872ba66e7216dd984f0ddf70a9322 ******/
+		/****** md5 signature: 4b61ac7ed2bb3eba2895c88ea6f40e62 ******/
 		%feature("compactdefaultargs") InsertPoleColAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -10309,17 +10747,17 @@ Description
 -----------
 Inserts a column of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Vindex < 1 or VIndex > NbVPoles. //! raises if VDegree is greater than MaxDegree. raises if the Length of CPoles is not equal to NbUPoles.
 ") InsertPoleColAfter;
-		void InsertPoleColAfter(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles);
+		void InsertPoleColAfter(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleColAfter ******/
-		/****** md5 signature: e73b2056aa8c4c6fb8d0917600c41fd1 ******/
+		/****** md5 signature: f506af4c9f7e2f00ef885a02844c0183 ******/
 		%feature("compactdefaultargs") InsertPoleColAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10329,16 +10767,16 @@ Description
 -----------
 Inserts a column of poles and weights. If the surface was non-rational it can become rational. //! Raised if Vindex < 1 or VIndex > NbVPoles. Raised if . VDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbUPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleColAfter;
-		void InsertPoleColAfter(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void InsertPoleColAfter(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::InsertPoleColBefore ******/
-		/****** md5 signature: 7b93ba3d35d8472c600bbe679879615c ******/
+		/****** md5 signature: ece86ec67d1e9b7ef993f769460011c8 ******/
 		%feature("compactdefaultargs") InsertPoleColBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -10348,17 +10786,17 @@ Description
 -----------
 Inserts a column of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Vindex < 1 or VIndex > NbVPoles. //! Raised if VDegree is greater than MaxDegree. Raised if the Length of CPoles is not equal to NbUPoles.
 ") InsertPoleColBefore;
-		void InsertPoleColBefore(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles);
+		void InsertPoleColBefore(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleColBefore ******/
-		/****** md5 signature: e48c7767254a0fafe55ed7093e403d3c ******/
+		/****** md5 signature: 725883b4a2e818682a21254f3bd2122b ******/
 		%feature("compactdefaultargs") InsertPoleColBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10368,16 +10806,16 @@ Description
 -----------
 Inserts a column of poles and weights. If the surface was non-rational it can become rational. //! Raised if Vindex < 1 or VIndex > NbVPoles. Raised if: . VDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbUPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleColBefore;
-		void InsertPoleColBefore(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void InsertPoleColBefore(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::InsertPoleRowAfter ******/
-		/****** md5 signature: fc5c6aba8c350ef75fd28702d512d2be ******/
+		/****** md5 signature: 7d47f413ea1437495b364f9704c019d6 ******/
 		%feature("compactdefaultargs") InsertPoleRowAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -10387,17 +10825,17 @@ Description
 -----------
 Inserts a row of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if UDegree is greater than MaxDegree. Raised if the Length of CPoles is not equal to NbVPoles.
 ") InsertPoleRowAfter;
-		void InsertPoleRowAfter(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles);
+		void InsertPoleRowAfter(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleRowAfter ******/
-		/****** md5 signature: 14acc60702407d2e3c7a44315291559f ******/
+		/****** md5 signature: 5d4273dbbaa51baf8b1a7c1f6c130d7d ******/
 		%feature("compactdefaultargs") InsertPoleRowAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10407,16 +10845,16 @@ Description
 -----------
 Inserts a row of poles and weights. If the surface was non-rational it can become rational. //! Raised if Uindex < 1 or UIndex > NbUPoles. Raised if: . UDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbVPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleRowAfter;
-		void InsertPoleRowAfter(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void InsertPoleRowAfter(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::InsertPoleRowBefore ******/
-		/****** md5 signature: b0982f47b1fbfea3390ed5eeefed5912 ******/
+		/****** md5 signature: 665ba388d53bd2188cb8ba7949ce1cb1 ******/
 		%feature("compactdefaultargs") InsertPoleRowBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -10426,17 +10864,17 @@ Description
 -----------
 Inserts a row of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if UDegree is greater than MaxDegree. Raised if the Length of CPoles is not equal to NbVPoles.
 ") InsertPoleRowBefore;
-		void InsertPoleRowBefore(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles);
+		void InsertPoleRowBefore(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleRowBefore ******/
-		/****** md5 signature: b3913710825162736c3fd555cb070efe ******/
+		/****** md5 signature: 9fa32d81f94f23102486d1f2287b8e9c ******/
 		%feature("compactdefaultargs") InsertPoleRowBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10446,10 +10884,10 @@ Description
 -----------
 Inserts a row of poles and weights. If the surface was non-rational it can become rational. //! Raised if Uindex < 1 or UIndex > NbUPoles. Raised if: . UDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbVPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleRowBefore;
-		void InsertPoleRowBefore(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void InsertPoleRowBefore(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -10464,10 +10902,10 @@ Description
 -----------
 Returns True, a Bezier surface is always CN.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_BezierSurface::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 4e12377e4fee255bb2fbd018134f6b55 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -10482,10 +10920,10 @@ Description
 -----------
 Returns True, a BezierSurface is always CN.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_BezierSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -10495,10 +10933,10 @@ Description
 -----------
 Returns True if the first control points row and the last control points row are identical. The tolerance criterion is Resolution from package gp.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_BezierSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -10508,10 +10946,10 @@ Description
 -----------
 Returns False.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_BezierSurface::IsURational ******/
-		/****** md5 signature: d3be4b63bc17a9c6de48bb978a5cf0e7 ******/
+		/****** md5 signature: 87cbbf86ac97143534bf7a5183bdcf6e ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -10521,10 +10959,10 @@ Description
 -----------
 Returns False if the weights are identical in the U direction, The tolerance criterion is Resolution from package gp. Example: |1.0, 1.0, 1.0| if Weights = |0.5, 0.5, 0.5| returns False |2.0, 2.0, 2.0|.
 ") IsURational;
-		Standard_Boolean IsURational();
+		bool IsURational();
 
 		/****** Geom_BezierSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -10534,10 +10972,10 @@ Description
 -----------
 Returns True if the first control points column and the last control points column are identical. The tolerance criterion is Resolution from package gp.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_BezierSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -10547,10 +10985,10 @@ Description
 -----------
 Returns False.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_BezierSurface::IsVRational ******/
-		/****** md5 signature: dcc1c1ae4603545d87819084535899bc ******/
+		/****** md5 signature: 38c5da014aa77cd1d45efe57cddbb954 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -10560,10 +10998,10 @@ Description
 -----------
 Returns False if the weights are identical in the V direction, The tolerance criterion is Resolution from package gp. Example: |1.0, 2.0, 0.5| if Weights = |1.0, 2.0, 0.5| returns False |1.0, 2.0, 0.5|.
 ") IsVRational;
-		Standard_Boolean IsVRational();
+		bool IsVRational();
 
 		/****** Geom_BezierSurface::MaxDegree ******/
-		/****** md5 signature: 985314a0ed62b597a9bdf0f555b97bed ******/
+		/****** md5 signature: c1d162018b4c908f3a00335cd079a0ea ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -10573,10 +11011,10 @@ Description
 -----------
 Returns the value of the maximum polynomial degree of a Bezier surface. This value is 25.
 ") MaxDegree;
-		static Standard_Integer MaxDegree();
+		static int MaxDegree();
 
 		/****** Geom_BezierSurface::NbUPoles ******/
-		/****** md5 signature: fb7c625af5aeee8be8cffdd28f1b08d5 ******/
+		/****** md5 signature: ecab3cbbaf18559e002fccdfa81aa0d5 ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -10586,10 +11024,10 @@ Description
 -----------
 Returns the number of poles in the U direction.
 ") NbUPoles;
-		Standard_Integer NbUPoles();
+		int NbUPoles();
 
 		/****** Geom_BezierSurface::NbVPoles ******/
-		/****** md5 signature: 098754ae7893287e442d0a3c48b39cf0 ******/
+		/****** md5 signature: fd4ae03f2a37db0cb241bb2f458a15bb ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -10599,10 +11037,10 @@ Description
 -----------
 Returns the number of poles in the V direction.
 ") NbVPoles;
-		Standard_Integer NbVPoles();
+		int NbVPoles();
 
 		/****** Geom_BezierSurface::Pole ******/
-		/****** md5 signature: ff2d8ec1af0c36c07e8626aeeac8ea5a ******/
+		/****** md5 signature: 9d967b49fcfd88b24cb0f76a41601e3e ******/
 		%feature("compactdefaultargs") Pole;
 		%feature("autodoc", "
 Parameters
@@ -10618,15 +11056,15 @@ Description
 -----------
 Returns the pole of range UIndex, VIndex Raised if UIndex < 1 or UIndex > NbUPoles, or VIndex < 1 or VIndex > NbVPoles.
 ") Pole;
-		const gp_Pnt Pole(const Standard_Integer UIndex, const Standard_Integer VIndex);
+		const gp_Pnt Pole(const int UIndex, const int VIndex);
 
 		/****** Geom_BezierSurface::Poles ******/
-		/****** md5 signature: 13f89ef9fb8304ab9a388808727297da ******/
+		/****** md5 signature: e0523208080f5a97aa048d6c860b619a ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
-P: TColgp_Array2OfPnt
+P: NCollection_Array2<gp_Pnt>
 
 Return
 -------
@@ -10634,25 +11072,25 @@ None
 
 Description
 -----------
-Returns the poles of the Bezier surface. //! Raised if the length of P in the U an V direction is not equal to NbUPoles and NbVPoles.
+No available documentation.
 ") Poles;
-		void Poles(TColgp_Array2OfPnt & P);
+		void Poles(NCollection_Array2<gp_Pnt> & P);
 
 		/****** Geom_BezierSurface::Poles ******/
-		/****** md5 signature: 1efd06442f0df57e43eea2715b77f1f3 ******/
+		/****** md5 signature: aee900d78f57d9391091e96dd2df2c64 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-TColgp_Array2OfPnt
+NCollection_Array2<gp_Pnt>
 
 Description
 -----------
 Returns the poles of the Bezier surface.
 ") Poles;
-		const TColgp_Array2OfPnt & Poles();
+		const NCollection_Array2<gp_Pnt> Poles();
 
 		/****** Geom_BezierSurface::RemovePoleCol ******/
-		/****** md5 signature: ae84ce73f1805b8c88b45af6979d0bf3 ******/
+		/****** md5 signature: 3430a634d2bff0b8c3bb1c55b4bafabc ******/
 		%feature("compactdefaultargs") RemovePoleCol;
 		%feature("autodoc", "
 Parameters
@@ -10667,10 +11105,10 @@ Description
 -----------
 Removes a column of poles. If the surface was rational it can become non-rational. //! Raised if NbVPoles <= 2 after removing, a Bezier surface must have at least two columns of poles. Raised if Vindex < 1 or VIndex > NbVPoles.
 ") RemovePoleCol;
-		void RemovePoleCol(const Standard_Integer VIndex);
+		void RemovePoleCol(const int VIndex);
 
 		/****** Geom_BezierSurface::RemovePoleRow ******/
-		/****** md5 signature: 798c91d196c5e50c9ef235b8a642131c ******/
+		/****** md5 signature: 7ac6a2b697cd36ccce691f86137ce4eb ******/
 		%feature("compactdefaultargs") RemovePoleRow;
 		%feature("autodoc", "
 Parameters
@@ -10685,37 +11123,37 @@ Description
 -----------
 Removes a row of poles. If the surface was rational it can become non-rational. //! Raised if NbUPoles <= 2 after removing, a Bezier surface must have at least two rows of poles. Raised if Uindex < 1 or UIndex > NbUPoles.
 ") RemovePoleRow;
-		void RemovePoleRow(const Standard_Integer UIndex);
+		void RemovePoleRow(const int UIndex);
 
 		/****** Geom_BezierSurface::Resolution ******/
-		/****** md5 signature: f550ea5c1bc2e29d0800724fa69c6ce9 ******/
+		/****** md5 signature: 0a8485b2104c7e6d206aec498e4b7168 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3D: float
+Tolerance3D: double
 
 Return
 -------
-UTolerance: float
-VTolerance: float
+UTolerance: double
+VTolerance: double
 
 Description
 -----------
 Computes two tolerance values for this Bezier surface, based on the given tolerance in 3D space Tolerance3D. The tolerances computed are: - UTolerance in the u parametric direction, and - VTolerance in the v parametric direction. If f(u,v) is the equation of this Bezier surface, UTolerance and VTolerance guarantee that: | u1 - u0 | < UTolerance and | v1 - v0 | < VTolerance ====> |f (u1,v1) - f (u0,v0)| < Tolerance3D.
 ") Resolution;
-		void Resolution(const Standard_Real Tolerance3D, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Resolution(const double Tolerance3D, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_BezierSurface::Segment ******/
-		/****** md5 signature: bda5f7e0a8e55a80a12dc23a16dfe301 ******/
+		/****** md5 signature: 6a32ef85deb005d4e404449b6b5e84f8 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Return
 -------
@@ -10725,10 +11163,28 @@ Description
 -----------
 Modifies this Bezier surface by segmenting it between U1 and U2 in the u parametric direction, and between V1 and V2 in the v parametric direction. U1, U2, V1, and V2 can be outside the bounds of this surface. - U1 and U2 isoparametric Bezier curves, segmented between V1 and V2, become the two bounds of the surface in the v parametric direction (0. and 1. u isoparametric curves). - V1 and V2 isoparametric Bezier curves, segmented between U1 and U2, become the two bounds of the surface in the u parametric direction (0. and 1. v isoparametric curves). The poles and weights tables are modified, but the degree of this surface in the u and v parametric directions does not change. U1 can be greater than U2, and V1 can be greater than V2. In these cases, the corresponding parametric direction is inverted. The orientation of the surface is inverted if one (and only one) parametric direction is inverted.
 ") Segment;
-		void Segment(const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
+		void Segment(const double U1, const double U2, const double V1, const double V2);
+
+		/****** Geom_BezierSurface::SetEvalRepresentation ******/
+		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepSurfaceDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
 
 		/****** Geom_BezierSurface::SetPole ******/
-		/****** md5 signature: 7626021decdd1633f78d695c98c81907 ******/
+		/****** md5 signature: d32ef8558923803e33dc7d68f2f2bfd1 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
@@ -10745,10 +11201,10 @@ Description
 -----------
 Modifies a pole value. If the surface is rational the weight of range (UIndex, VIndex) is not modified. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles.
 ") SetPole;
-		void SetPole(const Standard_Integer UIndex, const Standard_Integer VIndex, const gp_Pnt & P);
+		void SetPole(const int UIndex, const int VIndex, const gp_Pnt & P);
 
 		/****** Geom_BezierSurface::SetPole ******/
-		/****** md5 signature: ddaccd4b5c1880bee0dcb58b2720ffc1 ******/
+		/****** md5 signature: 87c463d2d1bd7570f9ccc04deeb40c33 ******/
 		%feature("compactdefaultargs") SetPole;
 		%feature("autodoc", "
 Parameters
@@ -10756,7 +11212,7 @@ Parameters
 UIndex: int
 VIndex: int
 P: gp_Pnt
-Weight: float
+Weight: double
 
 Return
 -------
@@ -10766,16 +11222,16 @@ Description
 -----------
 Substitutes the pole and the weight of range UIndex, VIndex. If the surface <self> is not rational it can become rational. if the surface was rational it can become non-rational. //! raises if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles. Raised if Weight <= Resolution from package gp.
 ") SetPole;
-		void SetPole(const Standard_Integer UIndex, const Standard_Integer VIndex, const gp_Pnt & P, const Standard_Real Weight);
+		void SetPole(const int UIndex, const int VIndex, const gp_Pnt & P, const double Weight);
 
 		/****** Geom_BezierSurface::SetPoleCol ******/
-		/****** md5 signature: b487d5aaa1aef838201a8aba83188f5e ******/
+		/****** md5 signature: 50042fd50315dce0fe78c66649ee167f ******/
 		%feature("compactdefaultargs") SetPoleCol;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -10785,17 +11241,17 @@ Description
 -----------
 Modifies a column of poles. The length of CPoles can be lower but not greater than NbUPoles so you can modify just a part of the column. Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
 ") SetPoleCol;
-		void SetPoleCol(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles);
+		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BezierSurface::SetPoleCol ******/
-		/****** md5 signature: d64560c21dd051f71154432933ab3740 ******/
+		/****** md5 signature: 7409f3e15568c35eba14189ef766adcc ******/
 		%feature("compactdefaultargs") SetPoleCol;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10805,16 +11261,16 @@ Description
 -----------
 Modifies a column of poles. If the surface was rational it can become non-rational If the surface was non-rational it can become rational. The length of CPoles can be lower but not greater than NbUPoles so you can modify just a part of the column. Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles Raised if CPoleWeights and CPoles have not the same bounds. Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from package gp.
 ") SetPoleCol;
-		void SetPoleCol(const Standard_Integer VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::SetPoleRow ******/
-		/****** md5 signature: 2174ec9de03976c55b3d4c714c979abc ******/
+		/****** md5 signature: f29485f5284e12c3a0b1f445f1848439 ******/
 		%feature("compactdefaultargs") SetPoleRow;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
+CPoles: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -10824,17 +11280,17 @@ Description
 -----------
 Modifies a row of poles. The length of CPoles can be lower but not greater than NbVPoles so you can modify just a part of the row. Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
 ") SetPoleRow;
-		void SetPoleRow(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles);
+		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
 
 		/****** Geom_BezierSurface::SetPoleRow ******/
-		/****** md5 signature: 8b1783ae4e3ecbab3a746a8ae970da2f ******/
+		/****** md5 signature: dcdcb6401c84bd00ed279b555ee31518 ******/
 		%feature("compactdefaultargs") SetPoleRow;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoles: TColgp_Array1OfPnt
-CPoleWeights: TColStd_Array1OfReal
+CPoles: NCollection_Array1<gp_Pnt>
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10844,17 +11300,17 @@ Description
 -----------
 Modifies a row of poles and weights. If the surface was rational it can become non-rational. If the surface was non-rational it can become rational. The length of CPoles can be lower but not greater than NbVPoles so you can modify just a part of the row. Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles Raised if CPoleWeights and CPoles have not the same bounds. Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from gp.
 ") SetPoleRow;
-		void SetPoleRow(const Standard_Integer UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
+		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::SetWeight ******/
-		/****** md5 signature: a6c32aa43dac551c815b66f94dd1c53a ******/
+		/****** md5 signature: b2f5d40eb9ee4727e1f26bec15206a62 ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
 VIndex: int
-Weight: float
+Weight: double
 
 Return
 -------
@@ -10864,16 +11320,16 @@ Description
 -----------
 Modifies the weight of the pole of range UIndex, VIndex. If the surface was non-rational it can become rational. If the surface was rational it can become non-rational. //! Raised if UIndex < 1 or UIndex > NbUPoles or VIndex < 1 or VIndex > NbVPoles. Raised if Weight <= Resolution from package gp.
 ") SetWeight;
-		void SetWeight(const Standard_Integer UIndex, const Standard_Integer VIndex, const Standard_Real Weight);
+		void SetWeight(const int UIndex, const int VIndex, const double Weight);
 
 		/****** Geom_BezierSurface::SetWeightCol ******/
-		/****** md5 signature: 234dcaf213f6c00246270b60b622de79 ******/
+		/****** md5 signature: 578f3b7e4ffd50e6735dc9f5255dd559 ******/
 		%feature("compactdefaultargs") SetWeightCol;
 		%feature("autodoc", "
 Parameters
 ----------
 VIndex: int
-CPoleWeights: TColStd_Array1OfReal
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10883,16 +11339,16 @@ Description
 -----------
 Modifies a column of weights. If the surface was rational it can become non-rational. If the surface was non-rational it can become rational. The length of CPoleWeights can be lower but not greater than NbUPoles. Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbUPoles Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from package gp.
 ") SetWeightCol;
-		void SetWeightCol(const Standard_Integer VIndex, const TColStd_Array1OfReal & CPoleWeights);
+		void SetWeightCol(const int VIndex, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::SetWeightRow ******/
-		/****** md5 signature: dc1d6ada2bbed4e33ef552c09c88f19d ******/
+		/****** md5 signature: a51a8366b979002586886defc95e0539 ******/
 		%feature("compactdefaultargs") SetWeightRow;
 		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
-CPoleWeights: TColStd_Array1OfReal
+CPoleWeights: NCollection_Array1<double>
 
 Return
 -------
@@ -10902,10 +11358,10 @@ Description
 -----------
 Modifies a row of weights. If the surface was rational it can become non-rational. If the surface was non-rational it can become rational. The length of CPoleWeights can be lower but not greater than NbVPoles. Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbVPoles Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from package gp.
 ") SetWeightRow;
-		void SetWeightRow(const Standard_Integer UIndex, const TColStd_Array1OfReal & CPoleWeights);
+		void SetWeightRow(const int UIndex, const NCollection_Array1<double> & CPoleWeights);
 
 		/****** Geom_BezierSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -10923,7 +11379,7 @@ Applies the transformation T to this Bezier surface.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_BezierSurface::UDegree ******/
-		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
+		/****** md5 signature: 82316803b09fa91a345f15577c8b3c82 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -10933,15 +11389,15 @@ Description
 -----------
 Returns the degree of the surface in the U direction it is NbUPoles - 1.
 ") UDegree;
-		Standard_Integer UDegree();
+		int UDegree();
 
 		/****** Geom_BezierSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -10951,10 +11407,49 @@ Description
 -----------
 Computes the U isoparametric curve. For a Bezier surface the UIso curve is a Bezier curve.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
+
+		/****** Geom_BezierSurface::UKnotSequence ******/
+		/****** md5 signature: c70f9f860680de4062cf6c4db5527f02 ******/
+		%feature("compactdefaultargs") UKnotSequence;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns Bezier flat knots for the U degree.
+") UKnotSequence;
+		const NCollection_Array1<double> & UKnotSequence();
+
+		/****** Geom_BezierSurface::UKnots ******/
+		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
+		%feature("compactdefaultargs") UKnots;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns Bezier knots {0.0, 1.0} as a static array.
+") UKnots;
+		const NCollection_Array1<double> & UKnots();
+
+		/****** Geom_BezierSurface::UMultiplicities ******/
+		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
+		%feature("compactdefaultargs") UMultiplicities;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<int>
+
+Description
+-----------
+Returns Bezier multiplicities for the U degree.
+") UMultiplicities;
+		const NCollection_Array1<int> & UMultiplicities();
 
 		/****** Geom_BezierSurface::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -10967,25 +11462,25 @@ Changes the orientation of this Bezier surface in the u parametric direction. Th
 		void UReverse();
 
 		/****** Geom_BezierSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u (or v) parameter on the modified surface, produced by reversing its u (or v) parametric direction, for any point of u parameter U (or of v parameter V) on this Bezier surface. In the case of a Bezier surface, these functions return respectively: - 1.-U, or 1.-V.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_BezierSurface::VDegree ******/
-		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
+		/****** md5 signature: 10a01c94db483e5b8afe43596e767a03 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -10995,15 +11490,15 @@ Description
 -----------
 Returns the degree of the surface in the V direction it is NbVPoles - 1.
 ") VDegree;
-		Standard_Integer VDegree();
+		int VDegree();
 
 		/****** Geom_BezierSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -11013,10 +11508,49 @@ Description
 -----------
 Computes the V isoparametric curve. For a Bezier surface the VIso curve is a Bezier curve.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
+
+		/****** Geom_BezierSurface::VKnotSequence ******/
+		/****** md5 signature: 8e70c5e3318ec19a065584c30e956cfa ******/
+		%feature("compactdefaultargs") VKnotSequence;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns Bezier flat knots for the V degree.
+") VKnotSequence;
+		const NCollection_Array1<double> & VKnotSequence();
+
+		/****** Geom_BezierSurface::VKnots ******/
+		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
+		%feature("compactdefaultargs") VKnots;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<double>
+
+Description
+-----------
+Returns Bezier knots {0.0, 1.0} as a static array.
+") VKnots;
+		const NCollection_Array1<double> & VKnots();
+
+		/****** Geom_BezierSurface::VMultiplicities ******/
+		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
+		%feature("compactdefaultargs") VMultiplicities;
+		%feature("autodoc", "Return
+-------
+NCollection_Array1<int>
+
+Description
+-----------
+Returns Bezier multiplicities for the V degree.
+") VMultiplicities;
+		const NCollection_Array1<int> & VMultiplicities();
 
 		/****** Geom_BezierSurface::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -11029,25 +11563,25 @@ Changes the orientation of this Bezier surface in the v parametric direction. Th
 		void VReverse();
 
 		/****** Geom_BezierSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u (or v) parameter on the modified surface, produced by reversing its u (or v) parametric direction, for any point of u parameter U (or of v parameter V) on this Bezier surface. In the case of a Bezier surface, these functions return respectively: - 1.-U, or 1.-V.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 		/****** Geom_BezierSurface::Weight ******/
-		/****** md5 signature: 3f3d90bfc32174f677371ed3017fc02e ******/
+		/****** md5 signature: f9d2ad63ef5103b3682048034554eb8b ******/
 		%feature("compactdefaultargs") Weight;
 		%feature("autodoc", "
 Parameters
@@ -11057,21 +11591,21 @@ VIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the weight of range UIndex, VIndex //! Raised if UIndex < 1 or UIndex > NbUPoles, or VIndex < 1 or VIndex > NbVPoles.
 ") Weight;
-		Standard_Real Weight(const Standard_Integer UIndex, const Standard_Integer VIndex);
+		double Weight(const int UIndex, const int VIndex);
 
 		/****** Geom_BezierSurface::Weights ******/
-		/****** md5 signature: bfcff4bb351c5cc316fe1eebca09f020 ******/
+		/****** md5 signature: 239cb12bc795fa3c4057ce031f56f6eb ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
 ----------
-W: TColStd_Array2OfReal
+W: NCollection_Array2<double>
 
 Return
 -------
@@ -11079,22 +11613,35 @@ None
 
 Description
 -----------
-Returns the weights of the Bezier surface. //! Raised if the length of W in the U an V direction is not equal to NbUPoles and NbVPoles.
+No available documentation.
 ") Weights;
-		void Weights(TColStd_Array2OfReal & W);
+		void Weights(NCollection_Array2<double> & W);
 
 		/****** Geom_BezierSurface::Weights ******/
-		/****** md5 signature: d156ea3ac60631d77ea2f23f1d8ddf4f ******/
+		/****** md5 signature: 3b906afa8e8b853863ff75ad21eb40e2 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-TColStd_Array2OfReal *
+NCollection_Array2<double> *
 
 Description
 -----------
 Returns the weights of the Bezier surface.
 ") Weights;
-		const TColStd_Array2OfReal * Weights();
+		const NCollection_Array2<double> * Weights();
+
+		/****** Geom_BezierSurface::WeightsArray ******/
+		/****** md5 signature: a6f8eebdea79810cd82d23b8cbaafd83 ******/
+		%feature("compactdefaultargs") WeightsArray;
+		%feature("autodoc", "Return
+-------
+NCollection_Array2<double>
+
+Description
+-----------
+Returns a const reference to the weights array. For rational surfaces: the internal owning weights array. For non-rational surfaces: a non-owning view of unit weights from BSplSLib. The array is always sized to match NbUPoles() x NbVPoles(). @warning Do NOT modify elements through the returned reference.
+") WeightsArray;
+		const NCollection_Array2<double> & WeightsArray();
 
 };
 
@@ -11131,13 +11678,13 @@ Constructs a circle by conversion of the gp_Circ circle C.
 		 Geom_Circle(const gp_Circ & C);
 
 		/****** Geom_Circle::Geom_Circle ******/
-		/****** md5 signature: b8542d594f82b8aa370774e475b4d7f0 ******/
+		/****** md5 signature: cc332a6cc6e8fd36691c6a6b55d5bfac ******/
 		%feature("compactdefaultargs") Geom_Circle;
 		%feature("autodoc", "
 Parameters
 ----------
 A2: gp_Ax2
-Radius: float
+Radius: double
 
 Return
 -------
@@ -11147,7 +11694,7 @@ Description
 -----------
 Constructs a circle of radius Radius, where A2 locates the circle and defines its orientation in 3D space such that: - the center of the circle is the origin of A2, - the origin, 'X Direction' and 'Y Direction' of A2 define the plane of the circle, - A2 is the local coordinate system of the circle. Note: It is possible to create a circle where Radius is equal to 0.0. raised if Radius < 0.
 ") Geom_Circle;
-		 Geom_Circle(const gp_Ax2 & A2, const Standard_Real Radius);
+		 Geom_Circle(const gp_Ax2 & A2, const double Radius);
 
 		/****** Geom_Circle::Circ ******/
 		/****** md5 signature: 5112b99c9c2742a21073a09349dfe6cd ******/
@@ -11163,7 +11710,7 @@ returns the non transient circle from gp with the same geometric properties as <
 		gp_Circ Circ();
 
 		/****** Geom_Circle::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -11174,107 +11721,6 @@ Description
 Creates a new object which is a copy of this circle.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_Circle::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U. P = C + R * Cos (U) * XDir + R * Sin (U) * YDir where C is the center of the circle , XDir the XDirection and YDir the YDirection of the circle's local coordinate system.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_Circle::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U and the first derivative V1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_Circle::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_Circle::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter u, the first second and third derivatives V1 V2 and V3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_Circle::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
         /****************** DumpJson ******************/
@@ -11298,33 +11744,124 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_Circle::Eccentricity ******/
-		/****** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ******/
+		/****** md5 signature: 699f9e1f6116a4a04b89d43165f9b70c ******/
 		%feature("compactdefaultargs") Eccentricity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the eccentricity e = 0 for a circle.
 ") Eccentricity;
-		Standard_Real Eccentricity();
+		double Eccentricity();
+
+		/****** Geom_Circle::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the point of parameter U. P = C + R * Cos (U) * XDir + R * Sin (U) * YDir where C is the center of the circle , XDir the XDirection and YDir the YDirection of the circle's local coordinate system.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_Circle::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Returns the point of parameter U and the first derivative.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_Circle::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point of parameter U, the first and second derivatives.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_Circle::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point of parameter U, the first, second and third derivatives.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_Circle::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Returns the vector corresponding to the derivative for the order of derivation N. Raised if N < 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
 
 		/****** Geom_Circle::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter of this circle. This is 0.0, which gives the start point of this circle, or The start point and end point of a circle are coincident.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_Circle::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -11334,10 +11871,10 @@ Description
 -----------
 returns True.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_Circle::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -11347,51 +11884,51 @@ Description
 -----------
 returns True.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_Circle::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the last parameter of this circle. This is 2.*Pi, which gives the end point of this circle. The start point and end point of a circle are coincident.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_Circle::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the radius of this circle.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** Geom_Circle::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed circle for the point of parameter U on this circle. For a circle, the returned value is: 2.*Pi - U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_Circle::SetCirc ******/
 		/****** md5 signature: 5bf0a7618877e387d8580730ee3beeb3 ******/
@@ -11412,12 +11949,12 @@ Set <self> so that <self> has the same geometric properties as C.
 		void SetCirc(const gp_Circ & C);
 
 		/****** Geom_Circle::SetRadius ******/
-		/****** md5 signature: 452d48523583bd00e647880614077dd6 ******/
+		/****** md5 signature: 032449434c157a5943c66be20d1fafca ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-R: float
+R: double
 
 Return
 -------
@@ -11427,10 +11964,10 @@ Description
 -----------
 Assigns the value R to the radius of this circle. Note: it is possible to have a circle with a radius equal to 0.0. Exceptions - Standard_ConstructionError if R is negative.
 ") SetRadius;
-		void SetRadius(const Standard_Real R);
+		void SetRadius(const double R);
 
 		/****** Geom_Circle::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -11464,14 +12001,14 @@ Applies the transformation T to this circle.
 class Geom_ConicalSurface : public Geom_ElementarySurface {
 	public:
 		/****** Geom_ConicalSurface::Geom_ConicalSurface ******/
-		/****** md5 signature: edef5991bfc9fe184952d7ca05a0c972 ******/
+		/****** md5 signature: 8232f82b08abc363c09b40be0feac189 ******/
 		%feature("compactdefaultargs") Geom_ConicalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 A3: gp_Ax3
-Ang: float
-Radius: float
+Ang: double
+Radius: double
 
 Return
 -------
@@ -11479,9 +12016,9 @@ None
 
 Description
 -----------
-A3 defines the local coordinate system of the conical surface. Ang is the conical surface semi-angle. Its absolute value is in range ]0, PI/2[. Radius is the radius of the circle Viso in the placement plane of the conical surface defined with 'XAxis' and 'YAxis'. The 'ZDirection' of A3 defines the direction of the surface's axis of symmetry. If the location point of A3 is the apex of the surface Radius = 0 . At the creation the parametrization of the surface is defined such that the normal Vector (N = D1U ^ D1V) is oriented towards the 'outside region' of the surface. //! Raised if Radius < 0.0 or Abs(Ang) < Resolution from gp or Abs(Ang) >= PI/2 - Resolution.
+A3 defines the local coordinate system of the conical surface. Ang is the conical surface semi-angle. Its absolute value is in range ]0, PI/2[. Radius is the radius of the circle Viso in the placement plane of the conical surface defined with 'XAxis' and 'YAxis'. The 'ZDirection' of A3 defines the direction of the surface's axis of symmetry. If the location point of A3 is the apex of the surface Radius = 0 . At the creation the parametrization of the surface is defined such that the normal Vector (N = D1U ^ D1V) is oriented towards the 'outside region' of the surface. //! Raised if Radius < 0.0 or std::abs(Ang) < Resolution from gp or std::abs(Ang) >= PI/2 - Resolution.
 ") Geom_ConicalSurface;
-		 Geom_ConicalSurface(const gp_Ax3 & A3, const Standard_Real Ang, const Standard_Real Radius);
+		 Geom_ConicalSurface(const gp_Ax3 & A3, const double Ang, const double Radius);
 
 		/****** Geom_ConicalSurface::Geom_ConicalSurface ******/
 		/****** md5 signature: 517bd27c841c28046143c5aadd886c4a ******/
@@ -11515,7 +12052,7 @@ Computes the apex of this cone. It is on the negative side of the axis of revolu
 		gp_Pnt Apex();
 
 		/****** Geom_ConicalSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -11523,10 +12060,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -11535,7 +12072,7 @@ The conical surface is infinite in the V direction so V1 = Realfirst from Standa
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_ConicalSurface::Coefficients ******/
-		/****** md5 signature: 922ffb066c913dfb924eafd175a6358f ******/
+		/****** md5 signature: 6935e281981cbb88a046cf41d5fed67a ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
@@ -11543,16 +12080,16 @@ Parameters
 
 Return
 -------
-A1: float
-A2: float
-A3: float
-B1: float
-B2: float
-B3: float
-C1: float
-C2: float
-C3: float
-D: float
+A1: double
+A2: double
+A3: double
+B1: double
+B2: double
+B3: double
+C1: double
+C2: double
+C3: double
+D: double
 
 Description
 -----------
@@ -11574,7 +12111,7 @@ Returns a non transient cone with the same geometric properties as <self>.
 		gp_Cone Cone();
 
 		/****** Geom_ConicalSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -11585,123 +12122,6 @@ Description
 Creates a new object which is a copy of this cone.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_ConicalSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on the surface. @code P (U, V) = Loc +  (RefRadius + V * sin (Semi-Angle)) * (cos (U) * XDir + sin (U) * YDir) +  V * cos (Semi-Angle) * ZDir @endcode where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_ConicalSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_ConicalSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first and the second derivatives in the directions U and V.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_ConicalSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first,the second and the third derivatives in the directions U and V.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_ConicalSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction at the point of parameters (U, V) of this cone. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, - Nu or Nv is negative.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -11724,8 +12144,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_ConicalSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on the surface. @code P (U, V) = Loc +  (RefRadius + V * sin (Semi-Angle)) * (cos (U) * XDir + sin (U) * YDir) +  V * cos (Semi-Angle) * ZDir @endcode where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_ConicalSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the current point and the first derivatives in the directions U and V.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_ConicalSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the current point, the first and the second derivatives in the directions U and V.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_ConicalSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the current point, the first,the second and the third derivatives in the directions U and V.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_ConicalSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction at the point of parameters (U, V) of this cone. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, - Nu or Nv is negative.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_ConicalSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -11735,10 +12252,10 @@ Description
 -----------
 returns True.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_ConicalSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -11748,10 +12265,10 @@ Description
 -----------
 Returns True.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_ConicalSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -11761,10 +12278,10 @@ Description
 -----------
 returns False.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_ConicalSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -11774,10 +12291,10 @@ Description
 -----------
 Returns False.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_ConicalSurface::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -11792,33 +12309,33 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the U axis with T.ScaleFactor.
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_ConicalSurface::RefRadius ******/
-		/****** md5 signature: c2dd1bdf66e360705fa187fafdaf00a1 ******/
+		/****** md5 signature: 617c4c4269195e7ad71a54f20a769ecf ******/
 		%feature("compactdefaultargs") RefRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the reference radius of this cone. The reference radius is the radius of the circle formed by the intersection of this cone and its reference plane (i.e. the plane defined by the origin, 'X Direction' and 'Y Direction' of the local coordinate system of this cone). If the apex of this cone is on the origin of the local coordinate system of this cone, the returned value is 0.
 ") RefRadius;
-		Standard_Real RefRadius();
+		double RefRadius();
 
 		/****** Geom_ConicalSurface::SemiAngle ******/
-		/****** md5 signature: a49ed9cc6318be7aa50219450c80bb02 ******/
+		/****** md5 signature: 9697a959b33bed3cf9aa51bfa3c242cf ******/
 		%feature("compactdefaultargs") SemiAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the semi-angle at the apex of this cone. Attention! Semi-angle can be negative.
 ") SemiAngle;
-		Standard_Real SemiAngle();
+		double SemiAngle();
 
 		/****** Geom_ConicalSurface::SetCone ******/
 		/****** md5 signature: 1d6bb07a3b7a9dc07b34ffcfcb3e9146 ******/
@@ -11839,12 +12356,12 @@ Set <self> so that <self> has the same geometric properties as C.
 		void SetCone(const gp_Cone & C);
 
 		/****** Geom_ConicalSurface::SetRadius ******/
-		/****** md5 signature: 452d48523583bd00e647880614077dd6 ******/
+		/****** md5 signature: 032449434c157a5943c66be20d1fafca ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-R: float
+R: double
 
 Return
 -------
@@ -11854,15 +12371,15 @@ Description
 -----------
 Changes the radius of the conical surface in the placement plane (Z = 0, V = 0). The local coordinate system is not modified. Raised if R < 0.0.
 ") SetRadius;
-		void SetRadius(const Standard_Real R);
+		void SetRadius(const double R);
 
 		/****** Geom_ConicalSurface::SetSemiAngle ******/
-		/****** md5 signature: 36b463d2613106dd0747eaeb6783e4fc ******/
+		/****** md5 signature: e97de8a6a256ec03c8330bb2010d34ef ******/
 		%feature("compactdefaultargs") SetSemiAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-Ang: float
+Ang: double
 
 Return
 -------
@@ -11870,12 +12387,12 @@ None
 
 Description
 -----------
-Changes the semi angle of the conical surface. Semi-angle can be negative. Its absolute value Abs(Ang) is in range ]0,PI/2[. Raises ConstructionError if Abs(Ang) < Resolution from gp or Abs(Ang) >= PI/2 - Resolution.
+Changes the semi angle of the conical surface. Semi-angle can be negative. Its absolute value std::abs(Ang) is in range ]0,PI/2[. Raises ConstructionError if std::abs(Ang) < Resolution from gp or std::abs(Ang) >= PI/2 - Resolution.
 ") SetSemiAngle;
-		void SetSemiAngle(const Standard_Real Ang);
+		void SetSemiAngle(const double Ang);
 
 		/****** Geom_ConicalSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -11893,7 +12410,7 @@ Applies the transformation T to this cone.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_ConicalSurface::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -11902,22 +12419,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method multiplies V by T.ScaleFactor().
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_ConicalSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -11927,33 +12444,33 @@ Description
 -----------
 Builds the U isoparametric line of this cone. The origin of this line is on the reference plane of this cone (i.e. the plane defined by the origin, 'X Direction' and 'Y Direction' of the local coordinate system of this cone).
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_ConicalSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Eeturn 2.PI - U.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_ConicalSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -11963,10 +12480,10 @@ Description
 -----------
 Builds the V isoparametric circle of this cone. It is the circle on this cone, located in the plane of Z coordinate V*cos(Semi-Angle) in the local coordinate system of this cone. The 'Axis' of this circle is the axis of revolution of this cone. Its starting point is defined by the 'X Direction' of this cone. Warning If the V isoparametric circle is close to the apex of this cone, the radius of the circle becomes very small. It is possible to have a circle with radius equal to 0.0.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_ConicalSurface::VReverse ******/
-		/****** md5 signature: 60a0c07d53675378b2bcbe23d1e7e281 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -11976,25 +12493,25 @@ Description
 -----------
 Changes the orientation of this cone in the v parametric direction. The bounds of the surface are not changed but the v parametric direction is reversed. As a consequence, for a cone: - the 'main Direction' of the local coordinate system is reversed, and - the half-angle at the apex is inverted.
 ") VReverse;
-		virtual void VReverse();
+		void VReverse();
 
 		/****** Geom_ConicalSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u (or v) parameter on the modified surface, when reversing its u (or v) parametric direction, for any point of u parameter U (or of v parameter V) on this cone. In the case of a cone, these functions return respectively: - 2.*Pi - U, -V.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -12013,13 +12530,13 @@ Computes the u (or v) parameter on the modified surface, when reversing its u (o
 class Geom_CylindricalSurface : public Geom_ElementarySurface {
 	public:
 		/****** Geom_CylindricalSurface::Geom_CylindricalSurface ******/
-		/****** md5 signature: 1045dba72c04cccaf7e24ea1f8070e1a ******/
+		/****** md5 signature: 0f6f4c98cf7aa84e88341fe527d13f43 ******/
 		%feature("compactdefaultargs") Geom_CylindricalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 A3: gp_Ax3
-Radius: float
+Radius: double
 
 Return
 -------
@@ -12029,7 +12546,7 @@ Description
 -----------
 A3 defines the local coordinate system of the cylindrical surface. The 'ZDirection' of A3 defines the direction of the surface's axis of symmetry. At the creation the parametrization of the surface is defined such that the normal Vector (N = D1U ^ D1V) is oriented towards the 'outside region' of the surface. Warnings: It is not forbidden to create a cylindrical surface with Radius = 0.0 Raised if Radius < 0.0.
 ") Geom_CylindricalSurface;
-		 Geom_CylindricalSurface(const gp_Ax3 & A3, const Standard_Real Radius);
+		 Geom_CylindricalSurface(const gp_Ax3 & A3, const double Radius);
 
 		/****** Geom_CylindricalSurface::Geom_CylindricalSurface ******/
 		/****** md5 signature: 6c266d29cc5bbdf322667ddabfeb2ff7 ******/
@@ -12050,7 +12567,7 @@ Creates a CylindricalSurface from a non transient gp_Cylinder.
 		 Geom_CylindricalSurface(const gp_Cylinder & C);
 
 		/****** Geom_CylindricalSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -12058,10 +12575,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -12070,7 +12587,7 @@ The CylindricalSurface is infinite in the V direction so V1 = Realfirst, V2 = Re
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_CylindricalSurface::Coefficients ******/
-		/****** md5 signature: 922ffb066c913dfb924eafd175a6358f ******/
+		/****** md5 signature: 6935e281981cbb88a046cf41d5fed67a ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
@@ -12078,16 +12595,16 @@ Parameters
 
 Return
 -------
-A1: float
-A2: float
-A3: float
-B1: float
-B2: float
-B3: float
-C1: float
-C2: float
-C3: float
-D: float
+A1: double
+A2: double
+A3: double
+B1: double
+B2: double
+B3: double
+C1: double
+C2: double
+C3: double
+D: double
 
 Description
 -----------
@@ -12096,7 +12613,7 @@ Returns the coefficients of the implicit equation of the quadric in the absolute
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_CylindricalSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -12121,123 +12638,6 @@ returns a non transient cylinder with the same geometric properties as <self>.
 ") Cylinder;
 		gp_Cylinder Cylinder();
 
-		/****** Geom_CylindricalSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on the surface. P (U, V) = Loc + Radius * (cos (U) * XDir + sin (U) * YDir) + V * ZDir where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_CylindricalSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_CylindricalSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first and the second derivatives in the directions U and V.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_CylindricalSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first, the second and the third derivatives in the directions U and V.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_CylindricalSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
-
 
         /****************** DumpJson ******************/
         %feature("autodoc", "
@@ -12259,8 +12659,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_CylindricalSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on the surface. P (U, V) = Loc + Radius * (cos (U) * XDir + sin (U) * YDir) + V * ZDir where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_CylindricalSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the current point and the first derivatives in the directions U and V.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_CylindricalSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the current point, the first and the second derivatives in the directions U and V.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_CylindricalSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the current point, the first, the second and the third derivatives in the directions U and V.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_CylindricalSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_CylindricalSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -12270,10 +12767,10 @@ Description
 -----------
 Returns True.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_CylindricalSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -12283,10 +12780,10 @@ Description
 -----------
 Returns True.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_CylindricalSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -12296,10 +12793,10 @@ Description
 -----------
 Returns False.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_CylindricalSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -12309,10 +12806,10 @@ Description
 -----------
 Returns False.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_CylindricalSurface::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -12327,20 +12824,20 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the U axis with T.ScaleFactor.
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_CylindricalSurface::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the radius of this cylinder.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** Geom_CylindricalSurface::SetCylinder ******/
 		/****** md5 signature: 325fb22ec545e2ea4aeb1fa4a39cea5e ******/
@@ -12361,12 +12858,12 @@ Set <self> so that <self> has the same geometric properties as C.
 		void SetCylinder(const gp_Cylinder & C);
 
 		/****** Geom_CylindricalSurface::SetRadius ******/
-		/****** md5 signature: 452d48523583bd00e647880614077dd6 ******/
+		/****** md5 signature: 032449434c157a5943c66be20d1fafca ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-R: float
+R: double
 
 Return
 -------
@@ -12376,10 +12873,10 @@ Description
 -----------
 Changes the radius of the cylinder. Raised if R < 0.0.
 ") SetRadius;
-		void SetRadius(const Standard_Real R);
+		void SetRadius(const double R);
 
 		/****** Geom_CylindricalSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -12397,7 +12894,7 @@ Applies the transformation T to this cylinder.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_CylindricalSurface::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -12406,22 +12903,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method multiplies V by T.ScaleFactor().
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_CylindricalSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -12431,33 +12928,33 @@ Description
 -----------
 The UIso curve is a Line. The location point of this line is on the placement plane (XAxis, YAxis) of the surface. This line is parallel to the axis of symmetry of the surface.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_CylindricalSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Ureversed surface for the point of parameter U on <self>. Return 2.PI - U.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_CylindricalSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -12467,25 +12964,25 @@ Description
 -----------
 The VIso curve is a circle. The start point of this circle (U = 0) is defined with the 'XAxis' of the surface. The center of the circle is on the symmetry axis.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_CylindricalSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Vreversed surface for the point of parameter V on <self>. Return -V.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -12522,14 +13019,14 @@ Constructs an ellipse by conversion of the gp_Elips ellipse E.
 		 Geom_Ellipse(const gp_Elips & E);
 
 		/****** Geom_Ellipse::Geom_Ellipse ******/
-		/****** md5 signature: 3bd0e865627599f0fe69a1146fa5b72a ******/
+		/****** md5 signature: 707567cb2bd88b16cd60bbd67975b313 ******/
 		%feature("compactdefaultargs") Geom_Ellipse;
 		%feature("autodoc", "
 Parameters
 ----------
 A2: gp_Ax2
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 
 Return
 -------
@@ -12539,10 +13036,10 @@ Description
 -----------
 Constructs an ellipse defined by its major and minor radii, MajorRadius and MinorRadius, where A2 locates the ellipse and defines its orientation in 3D space such that: - the center of the ellipse is the origin of A2, - the 'X Direction' of A2 defines the major axis of the ellipse, i.e. the major radius MajorRadius is measured along this axis, - the 'Y Direction' of A2 defines the minor axis of the ellipse, i.e. the minor radius MinorRadius is measured along this axis, - A2 is the local coordinate system of the ellipse. Exceptions Standard_ConstructionError if: - MajorRadius is less than MinorRadius, or - MinorRadius is less than 0. Warning The Geom package does not prevent the construction of an ellipse where MajorRadius and MinorRadius are equal.
 ") Geom_Ellipse;
-		 Geom_Ellipse(const gp_Ax2 & A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+		 Geom_Ellipse(const gp_Ax2 & A2, const double MajorRadius, const double MinorRadius);
 
 		/****** Geom_Ellipse::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -12553,107 +13050,6 @@ Description
 Creates a new object which is a copy of this ellipse.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_Ellipse::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U. P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir where C is the center of the ellipse , XDir the direction of the 'XAxis' and 'YDir' the 'YAxis' of the ellipse.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_Ellipse::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_Ellipse::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U. The vectors V1 and V2 are the first and second derivatives at this point.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_Ellipse::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first second and third derivatives V1 V2 and V3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_Ellipse::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 		/****** Geom_Ellipse::Directrix1 ******/
 		/****** md5 signature: 10272c6052549861204070aa44f046a5 ******/
@@ -12703,17 +13099,17 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_Ellipse::Eccentricity ******/
-		/****** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ******/
+		/****** md5 signature: 699f9e1f6116a4a04b89d43165f9b70c ******/
 		%feature("compactdefaultargs") Eccentricity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the eccentricity of the ellipse between 0.0 and 1.0 If f is the distance between the center of the ellipse and the Focus1 then the eccentricity e = f / MajorRadius. Returns 0 if MajorRadius = 0.
 ") Eccentricity;
-		Standard_Real Eccentricity();
+		double Eccentricity();
 
 		/****** Geom_Ellipse::Elips ******/
 		/****** md5 signature: edb0fab3707edd8be995a5317ea6bab7 ******/
@@ -12728,31 +13124,122 @@ returns the non transient ellipse from gp with the same.
 ") Elips;
 		gp_Elips Elips();
 
+		/****** Geom_Ellipse::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the point of parameter U. P = C + MajorRadius * Cos (U) * XDir + MinorRadius * Sin (U) * YDir where C is the center of the ellipse , XDir the direction of the 'XAxis' and 'YDir' the 'YAxis' of the ellipse.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_Ellipse::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Returns the point of parameter U and the first derivative.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_Ellipse::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point of parameter U and the first and second derivatives.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_Ellipse::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point of parameter U, the first, second and third derivatives.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_Ellipse::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+For the point of parameter U of this ellipse, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
 		/****** Geom_Ellipse::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter of this ellipse. This is respectively: - 0.0, which gives the start point of this ellipse, or The start point and end point of an ellipse are coincident.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_Ellipse::Focal ******/
-		/****** md5 signature: 36c97a85b2e31ded83d59428f0f74c3c ******/
+		/****** md5 signature: 3803e722169e3501b54b680807b4ccc1 ******/
 		%feature("compactdefaultargs") Focal;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the focal distance. It is the distance between the the two focus of the ellipse.
 ") Focal;
-		Standard_Real Focal();
+		double Focal();
 
 		/****** Geom_Ellipse::Focus1 ******/
 		/****** md5 signature: 44668390e44007b6344ae1f20fcc3003 ******/
@@ -12781,7 +13268,7 @@ Returns the second focus of the ellipse. This focus is on the negative side of t
 		gp_Pnt Focus2();
 
 		/****** Geom_Ellipse::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -12791,10 +13278,10 @@ Description
 -----------
 return True.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_Ellipse::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -12804,77 +13291,77 @@ Description
 -----------
 return True.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_Ellipse::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the last parameter of this ellipse. This is respectively: - 2.*Pi, which gives the end point of this ellipse. The start point and end point of an ellipse are coincident.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_Ellipse::MajorRadius ******/
-		/****** md5 signature: e961bb81456f4d0a6154d0e9401e1ce8 ******/
+		/****** md5 signature: 0a2ccb3f2f96e1276e50fba8091d72cb ******/
 		%feature("compactdefaultargs") MajorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the major radius of this ellipse.
 ") MajorRadius;
-		Standard_Real MajorRadius();
+		double MajorRadius();
 
 		/****** Geom_Ellipse::MinorRadius ******/
-		/****** md5 signature: e1383e2287a25901af1e2b42cc95af4d ******/
+		/****** md5 signature: 9e6683b74c7166396bffd8c50cf9899c ******/
 		%feature("compactdefaultargs") MinorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the minor radius of this ellipse.
 ") MinorRadius;
-		Standard_Real MinorRadius();
+		double MinorRadius();
 
 		/****** Geom_Ellipse::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns p = (1 - e * e) * MajorRadius where e is the eccentricity of the ellipse. Returns 0 if MajorRadius = 0.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Geom_Ellipse::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed ellipse for the point of parameter U on this ellipse. For an ellipse, the returned value is: 2.*Pi - U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_Ellipse::SetElips ******/
 		/****** md5 signature: c0fbd702936a7b910f79d219ea0ca3da ******/
@@ -12895,12 +13382,12 @@ Converts the gp_Elips ellipse E into this ellipse.
 		void SetElips(const gp_Elips & E);
 
 		/****** Geom_Ellipse::SetMajorRadius ******/
-		/****** md5 signature: 5b6d39118ca624402ca904f240869d93 ******/
+		/****** md5 signature: d5b45898082f4683aba784db3a9427e2 ******/
 		%feature("compactdefaultargs") SetMajorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-MajorRadius: float
+MajorRadius: double
 
 Return
 -------
@@ -12910,15 +13397,15 @@ Description
 -----------
 Assigns a value to the major radius of this ellipse. ConstructionError raised if MajorRadius < MinorRadius.
 ") SetMajorRadius;
-		void SetMajorRadius(const Standard_Real MajorRadius);
+		void SetMajorRadius(const double MajorRadius);
 
 		/****** Geom_Ellipse::SetMinorRadius ******/
-		/****** md5 signature: 55b33932324c77b3c1e82a433bb9350f ******/
+		/****** md5 signature: 16bb9b548a4db78f0b246fb9bd8633c4 ******/
 		%feature("compactdefaultargs") SetMinorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-MinorRadius: float
+MinorRadius: double
 
 Return
 -------
@@ -12928,10 +13415,10 @@ Description
 -----------
 Assigns a value to the minor radius of this ellipse. ConstructionError raised if MajorRadius < MinorRadius or if MinorRadius < 0.
 ") SetMinorRadius;
-		void SetMinorRadius(const Standard_Real MinorRadius);
+		void SetMinorRadius(const double MinorRadius);
 
 		/****** Geom_Ellipse::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -12983,14 +13470,14 @@ Constructs a hyperbola by conversion of the gp_Hypr hyperbola H.
 		 Geom_Hyperbola(const gp_Hypr & H);
 
 		/****** Geom_Hyperbola::Geom_Hyperbola ******/
-		/****** md5 signature: 427f6f6ac1bbf02bd941d7596b4c05df ******/
+		/****** md5 signature: a2231dc53f04baedfc8a38504547baa0 ******/
 		%feature("compactdefaultargs") Geom_Hyperbola;
 		%feature("autodoc", "
 Parameters
 ----------
 A2: gp_Ax2
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 
 Return
 -------
@@ -13000,7 +13487,7 @@ Description
 -----------
 Constructs a hyperbola defined by its major and minor radii, MajorRadius and MinorRadius, where A2 locates the hyperbola and defines its orientation in 3D space such that: - the center of the hyperbola is the origin of A2, - the 'X Direction' of A2 defines the major axis of the hyperbola, i.e. the major radius MajorRadius is measured along this axis, - the 'Y Direction' of A2 defines the minor axis of the hyperbola, i.e. the minor radius MinorRadius is measured along this axis, - A2 is the local coordinate system of the hyperbola. Exceptions Standard_ConstructionError if: - MajorRadius is less than 0.0, - MinorRadius is less than 0.0.
 ") Geom_Hyperbola;
-		 Geom_Hyperbola(const gp_Ax2 & A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+		 Geom_Hyperbola(const gp_Ax2 & A2, const double MajorRadius, const double MinorRadius);
 
 		/****** Geom_Hyperbola::Asymptote1 ******/
 		/****** md5 signature: de14135c1ce647b5a9f90af716eea7a8 ******/
@@ -13055,7 +13542,7 @@ This branch of hyperbola is on the negative side of the YAxis of <self>. Note: T
 		gp_Hypr ConjugateBranch2();
 
 		/****** Geom_Hyperbola::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -13066,107 +13553,6 @@ Description
 Creates a new object which is a copy of this hyperbola.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_Hyperbola::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U. P = C + MajorRadius * Cosh (U) * XDir + MinorRadius * Sinh (U) * YDir where C is the center of the hyperbola , XDir the XDirection and YDir the YDirection of the hyperbola's local coordinate system.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_Hyperbola::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U and the first derivative V1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_Hyperbola::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_Hyperbola::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first second and third derivatives V1 V2 and V3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_Hyperbola::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 		/****** Geom_Hyperbola::Directrix1 ******/
 		/****** md5 signature: 10272c6052549861204070aa44f046a5 ******/
@@ -13216,43 +13602,134 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_Hyperbola::Eccentricity ******/
-		/****** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ******/
+		/****** md5 signature: 699f9e1f6116a4a04b89d43165f9b70c ******/
 		%feature("compactdefaultargs") Eccentricity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the eccentricity of the hyperbola (e > 1). If f is the distance between the location of the hyperbola and the Focus1 then the eccentricity e = f / MajorRadius. raised if MajorRadius = 0.0.
 ") Eccentricity;
-		Standard_Real Eccentricity();
+		double Eccentricity();
+
+		/****** Geom_Hyperbola::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the point of parameter U. P = C + MajorRadius * std::cosh(U) * XDir + MinorRadius * std::sinh(U) * YDir where C is the center of the hyperbola , XDir the XDirection and YDir the YDirection of the hyperbola's local coordinate system.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_Hyperbola::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Returns the point of parameter U and the first derivative.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_Hyperbola::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point of parameter U, the first and second derivatives.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_Hyperbola::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point of parameter U, the first, second and third derivatives.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_Hyperbola::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Returns the vector corresponding to the derivative for the order of derivation N. Raised if N < 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
 
 		/****** Geom_Hyperbola::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns RealFirst from Standard.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_Hyperbola::Focal ******/
-		/****** md5 signature: 36c97a85b2e31ded83d59428f0f74c3c ******/
+		/****** md5 signature: 3803e722169e3501b54b680807b4ccc1 ******/
 		%feature("compactdefaultargs") Focal;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the focal distance. It is the distance between the two focus of the hyperbola.
 ") Focal;
-		Standard_Real Focal();
+		double Focal();
 
 		/****** Geom_Hyperbola::Focus1 ******/
 		/****** md5 signature: 44668390e44007b6344ae1f20fcc3003 ******/
@@ -13294,7 +13771,7 @@ returns the non transient parabola from gp with the same geometric properties as
 		gp_Hypr Hypr();
 
 		/****** Geom_Hyperbola::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -13304,10 +13781,10 @@ Description
 -----------
 Returns False.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_Hyperbola::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -13317,46 +13794,46 @@ Description
 -----------
 return False for an hyperbola.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_Hyperbola::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns RealLast from Standard.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_Hyperbola::MajorRadius ******/
-		/****** md5 signature: e961bb81456f4d0a6154d0e9401e1ce8 ******/
+		/****** md5 signature: 0a2ccb3f2f96e1276e50fba8091d72cb ******/
 		%feature("compactdefaultargs") MajorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the major or minor radius of this hyperbola. The major radius is also the distance between the center of the hyperbola and the apex of the main branch (located on the 'X Axis' of the hyperbola).
 ") MajorRadius;
-		Standard_Real MajorRadius();
+		double MajorRadius();
 
 		/****** Geom_Hyperbola::MinorRadius ******/
-		/****** md5 signature: e1383e2287a25901af1e2b42cc95af4d ******/
+		/****** md5 signature: 9e6683b74c7166396bffd8c50cf9899c ******/
 		%feature("compactdefaultargs") MinorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the major or minor radius of this hyperbola. The minor radius is also the distance between the center of the hyperbola and the apex of a conjugate branch (located on the 'Y Axis' of the hyperbola).
 ") MinorRadius;
-		Standard_Real MinorRadius();
+		double MinorRadius();
 
 		/****** Geom_Hyperbola::OtherBranch ******/
 		/****** md5 signature: e3f08eb290c33f5759deca11d2e4aa65 ******/
@@ -13372,35 +13849,35 @@ Computes the 'other' branch of this hyperbola. This is the symmetrical branch wi
 		gp_Hypr OtherBranch();
 
 		/****** Geom_Hyperbola::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns p = (e * e - 1) * MajorRadius where e is the eccentricity of the hyperbola. raised if MajorRadius = 0.0.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Geom_Hyperbola::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed hyperbola, for the point of parameter U on this hyperbola. For a hyperbola, the returned value is: -U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_Hyperbola::SetHypr ******/
 		/****** md5 signature: c2958419f8bbf226a53a28e6cfcbc792 ******/
@@ -13421,12 +13898,12 @@ Converts the gp_Hypr hyperbola H into this hyperbola.
 		void SetHypr(const gp_Hypr & H);
 
 		/****** Geom_Hyperbola::SetMajorRadius ******/
-		/****** md5 signature: 5b6d39118ca624402ca904f240869d93 ******/
+		/****** md5 signature: d5b45898082f4683aba784db3a9427e2 ******/
 		%feature("compactdefaultargs") SetMajorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-MajorRadius: float
+MajorRadius: double
 
 Return
 -------
@@ -13436,15 +13913,15 @@ Description
 -----------
 Assigns a value to the major radius of this hyperbola. Exceptions Standard_ConstructionError if: - MajorRadius is less than 0.0, or - MinorRadius is less than 0.0.Raised if MajorRadius < 0.0.
 ") SetMajorRadius;
-		void SetMajorRadius(const Standard_Real MajorRadius);
+		void SetMajorRadius(const double MajorRadius);
 
 		/****** Geom_Hyperbola::SetMinorRadius ******/
-		/****** md5 signature: 55b33932324c77b3c1e82a433bb9350f ******/
+		/****** md5 signature: 16bb9b548a4db78f0b246fb9bd8633c4 ******/
 		%feature("compactdefaultargs") SetMinorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-MinorRadius: float
+MinorRadius: double
 
 Return
 -------
@@ -13454,10 +13931,10 @@ Description
 -----------
 Assigns a value to the minor radius of this hyperbola. Exceptions Standard_ConstructionError if: - MajorRadius is less than 0.0, or - MinorRadius is less than 0.0.Raised if MajorRadius < 0.0.
 ") SetMinorRadius;
-		void SetMinorRadius(const Standard_Real MinorRadius);
+		void SetMinorRadius(const double MinorRadius);
 
 		/****** Geom_Hyperbola::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -13509,13 +13986,13 @@ Creates a parabola from a non transient one.
 		 Geom_Parabola(const gp_Parab & Prb);
 
 		/****** Geom_Parabola::Geom_Parabola ******/
-		/****** md5 signature: 30e7a439bb87bdaf52aeb60ee7bba4dc ******/
+		/****** md5 signature: 341852ab762424b659ec4724163688a7 ******/
 		%feature("compactdefaultargs") Geom_Parabola;
 		%feature("autodoc", "
 Parameters
 ----------
 A2: gp_Ax2
-Focal: float
+Focal: double
 
 Return
 -------
@@ -13525,7 +14002,7 @@ Description
 -----------
 Creates a parabola with its local coordinate system 'A2' and it's focal length 'Focal'. The XDirection of A2 defines the axis of symmetry of the parabola. The YDirection of A2 is parallel to the directrix of the parabola. The Location point of A2 is the vertex of the parabola Raised if Focal < 0.0.
 ") Geom_Parabola;
-		 Geom_Parabola(const gp_Ax2 & A2, const Standard_Real Focal);
+		 Geom_Parabola(const gp_Ax2 & A2, const double Focal);
 
 		/****** Geom_Parabola::Geom_Parabola ******/
 		/****** md5 signature: 3e715743cb09ef5f9513e9452fe92251 ******/
@@ -13547,7 +14024,7 @@ D is the directrix of the parabola and F the focus point. The symmetry axis (XAx
 		 Geom_Parabola(const gp_Ax1 & D, const gp_Pnt & F);
 
 		/****** Geom_Parabola::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -13558,107 +14035,6 @@ Description
 Creates a new object which is a copy of this parabola.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_Parabola::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U. If U = 0 the returned point is the origin of the XAxis and the YAxis of the parabola and it is the vertex of the parabola. P = S + F * (U * U * XDir + * U * YDir) where S is the vertex of the parabola, XDir the XDirection and YDir the YDirection of the parabola's local coordinate system.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_Parabola::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U and the first derivative V1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_Parabola::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_Parabola::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first second and third derivatives V1 V2 and V3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_Parabola::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-For the point of parameter U of this parabola, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 		/****** Geom_Parabola::Directrix ******/
 		/****** md5 signature: 1608f5c20dd70d6d9961c85822ba9a57 ******/
@@ -13695,43 +14071,134 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_Parabola::Eccentricity ******/
-		/****** md5 signature: 7cc0cae0413ab4c2d528df125e42b57e ******/
+		/****** md5 signature: 699f9e1f6116a4a04b89d43165f9b70c ******/
 		%feature("compactdefaultargs") Eccentricity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns 1. (which is the eccentricity of any parabola).
 ") Eccentricity;
-		Standard_Real Eccentricity();
+		double Eccentricity();
 
-		/****** Geom_Parabola::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
-		%feature("compactdefaultargs") FirstParameter;
-		%feature("autodoc", "Return
+		/****** Geom_Parabola::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
 -------
-float
+gp_Pnt
 
 Description
 -----------
-Returns the value of the first or last parameter of this parabola. This is, respectively: - Standard_Real::RealFirst(), or - Standard_Real::RealLast().
+Returns the point of parameter U. If U = 0 the returned point is the origin of the XAxis and the YAxis of the parabola and it is the vertex of the parabola. P = S + F * (U * U * XDir + * U * YDir) where S is the vertex of the parabola, XDir the XDirection and YDir the YDirection of the parabola's local coordinate system.
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_Parabola::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Returns the point of parameter U and the first derivative.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_Parabola::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point of parameter U, the first and second derivatives.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_Parabola::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point of parameter U, the first, second and third derivatives.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_Parabola::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+For the point of parameter U of this parabola, computes the vector corresponding to the Nth derivative. Exceptions Standard_RangeError if N is less than 1.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
+		/****** Geom_Parabola::FirstParameter ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns the value of the first or last parameter of this parabola. This is, respectively: - double::RealFirst(), or - double::RealLast().
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_Parabola::Focal ******/
-		/****** md5 signature: 36c97a85b2e31ded83d59428f0f74c3c ******/
+		/****** md5 signature: 3803e722169e3501b54b680807b4ccc1 ******/
 		%feature("compactdefaultargs") Focal;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the focal distance of this parabola The focal distance is the distance between the apex and the focus of the parabola.
 ") Focal;
-		Standard_Real Focal();
+		double Focal();
 
 		/****** Geom_Parabola::Focus ******/
 		/****** md5 signature: dfde257d151e75b4057f91980799f5e1 ******/
@@ -13747,7 +14214,7 @@ Computes the focus of this parabola. The focus is on the positive side of the 'X
 		gp_Pnt Focus();
 
 		/****** Geom_Parabola::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -13757,10 +14224,10 @@ Description
 -----------
 Returns False.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_Parabola::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -13770,20 +14237,20 @@ Description
 -----------
 Returns False.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_Parabola::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-Returns the value of the first or last parameter of this parabola. This is, respectively: - Standard_Real::RealFirst(), or - Standard_Real::RealLast().
+Returns the value of the first or last parameter of this parabola. This is, respectively: - double::RealFirst(), or - double::RealLast().
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_Parabola::Parab ******/
 		/****** md5 signature: 257cf820f8e80528c6bff34f838212c6 ******/
@@ -13799,20 +14266,20 @@ Returns the non transient parabola from gp with the same geometric properties as
 		gp_Parab Parab();
 
 		/****** Geom_Parabola::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter of this parabola which is the distance between its focus and its directrix. This distance is twice the focal length. If P is the parameter of the parabola, the equation of the parabola in its local coordinate system is: Y**2 = 2.*P*X.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Geom_Parabola::ParametricTransformation ******/
-		/****** md5 signature: e3749cc07a54624f5dc3f6abf7103443 ******/
+		/****** md5 signature: d5b05072d7a1c2481b7091b5e669a1d0 ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -13821,39 +14288,39 @@ T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods returns T.ScaleFactor().
 ") ParametricTransformation;
-		Standard_Real ParametricTransformation(const gp_Trsf & T);
+		double ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_Parabola::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed parabola, for the point of parameter U on this parabola. For a parabola, the returned value is: -U.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_Parabola::SetFocal ******/
-		/****** md5 signature: b79f368485f4739b39b65cdd8789fb05 ******/
+		/****** md5 signature: 633a4701c2142bdd242c16cf670d9d92 ******/
 		%feature("compactdefaultargs") SetFocal;
 		%feature("autodoc", "
 Parameters
 ----------
-Focal: float
+Focal: double
 
 Return
 -------
@@ -13863,7 +14330,7 @@ Description
 -----------
 Assigns the value Focal to the focal distance of this parabola. Exceptions Standard_ConstructionError if Focal is negative.
 ") SetFocal;
-		void SetFocal(const Standard_Real Focal);
+		void SetFocal(const double Focal);
 
 		/****** Geom_Parabola::SetParab ******/
 		/****** md5 signature: bbdf18772ba2eb13af3515334f2070d8 ******/
@@ -13884,7 +14351,7 @@ Converts the gp_Parab parabola Prb into this parabola.
 		void SetParab(const gp_Parab & Prb);
 
 		/****** Geom_Parabola::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -13902,23 +14369,23 @@ Applies the transformation T to this parabola.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_Parabola::TransformedParameter ******/
-		/****** md5 signature: ab2014ea10ce915fb745e74cd1fc4a6d ******/
+		/****** md5 signature: e5e02442ab2d2ceaec9a6d45a0f22ef7 ******/
 		%feature("compactdefaultargs") TransformedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. //! me->Transformed(T)->Value(me->TransformedParameter(U,T)) //! is the same point as //! me->Value(U).Transformed(T) //! This methods returns <U> * T.ScaleFactor().
 ") TransformedParameter;
-		Standard_Real TransformedParameter(const Standard_Real U, const gp_Trsf & T);
+		double TransformedParameter(const double U, const gp_Trsf & T);
 
 };
 
@@ -13992,15 +14459,15 @@ P is the 'Location' point or origin of the plane. V is the direction normal to t
 		 Geom_Plane(const gp_Pnt & P, const gp_Dir & V);
 
 		/****** Geom_Plane::Geom_Plane ******/
-		/****** md5 signature: 06c0ffe19922feef3a5e812341930d38 ******/
+		/****** md5 signature: 750e460f2e1abb17217f8459b4bcdafe ******/
 		%feature("compactdefaultargs") Geom_Plane;
 		%feature("autodoc", "
 Parameters
 ----------
-A: float
-B: float
-C: float
-D: float
+A: double
+B: double
+C: double
+D: double
 
 Return
 -------
@@ -14008,12 +14475,12 @@ None
 
 Description
 -----------
-Creates a plane from its cartesian equation: @code Ax + By + Cz + D = 0.0 @endcode Raised if Sqrt (A*A + B*B + C*C) <= Resolution from gp.
+Creates a plane from its cartesian equation: @code Ax + By + Cz + D = 0.0 @endcode Raised if std::sqrt(A*A + B*B + C*C) <= Resolution from gp.
 ") Geom_Plane;
-		 Geom_Plane(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D);
+		 Geom_Plane(const double A, const double B, const double C, const double D);
 
 		/****** Geom_Plane::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -14021,19 +14488,19 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
-Returns the parametric bounds U1, U2, V1 and V2 of this plane. Because a plane is an infinite surface, the following is always true: - U1 = V1 = Standard_Real::RealFirst() - U2 = V2 = Standard_Real::RealLast().
+Returns the parametric bounds U1, U2, V1 and V2 of this plane. Because a plane is an infinite surface, the following is always true: - U1 = V1 = double::RealFirst() - U2 = V2 = double::RealLast().
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_Plane::Coefficients ******/
-		/****** md5 signature: 5b10aec82a9daa5f313dd60e84b2b00b ******/
+		/****** md5 signature: 83eed5cbbd296759b1c61f5bbef0cc49 ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
@@ -14041,10 +14508,10 @@ Parameters
 
 Return
 -------
-A: float
-B: float
-C: float
-D: float
+A: double
+B: double
+C: double
+D: double
 
 Description
 -----------
@@ -14053,7 +14520,7 @@ Computes the normalized coefficients of the plane's cartesian equation: @code Ax
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_Plane::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -14064,123 +14531,6 @@ Description
 Creates a new object which is a copy of this plane.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_Plane::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on <self>. @code P = O + U * XDir + V * YDir. @endcode where O is the 'Location' point of the plane, XDir the 'XDirection' and YDir the 'YDirection' of the plane's local coordinate system.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_Plane::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_Plane::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first and the second derivatives in the directions U and V.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_Plane::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first,the second and the third derivatives in the directions U and V.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_Plane::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -14203,8 +14553,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_Plane::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on <self>. @code P = O + U * XDir + V * YDir. @endcode where O is the 'Location' point of the plane, XDir the 'XDirection' and YDir the 'YDirection' of the plane's local coordinate system.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_Plane::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the current point and the first derivatives in the directions U and V.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_Plane::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the current point, the first and the second derivatives in the directions U and V.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_Plane::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the current point, the first,the second and the third derivatives in the directions U and V.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_Plane::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_Plane::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -14214,10 +14661,10 @@ Description
 -----------
 return False.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_Plane::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -14227,10 +14674,10 @@ Description
 -----------
 return False.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_Plane::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -14240,10 +14687,10 @@ Description
 -----------
 return False.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_Plane::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -14253,10 +14700,10 @@ Description
 -----------
 return False.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_Plane::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -14271,7 +14718,7 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the origin with T.ScaleFactor.
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_Plane::Pln ******/
 		/****** md5 signature: cb90d57e82c29a723470cfc56b2b22df ******/
@@ -14305,7 +14752,7 @@ Set <self> so that <self> has the same geometric properties as Pl.
 		void SetPln(const gp_Pln & Pl);
 
 		/****** Geom_Plane::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -14323,7 +14770,7 @@ Applies the transformation T to this plane.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_Plane::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -14332,22 +14779,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method multiplies U and V by T.ScaleFactor().
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_Plane::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -14357,10 +14804,10 @@ Description
 -----------
 Computes the U isoparametric curve. This is a Line parallel to the YAxis of the plane.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_Plane::UReverse ******/
-		/****** md5 signature: d70147d3bce5fe1e36771349f34ded17 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -14370,33 +14817,33 @@ Description
 -----------
 Changes the orientation of this plane in the u (or v) parametric direction. The bounds of the plane are not changed but the given parametric direction is reversed. Hence the orientation of the surface is reversed.
 ") UReverse;
-		virtual void UReverse();
+		void UReverse();
 
 		/****** Geom_Plane::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified plane, produced when reversing the u parametric of this plane, for any point of u parameter U on this plane. In the case of a plane, these methods return - -U.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_Plane::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -14406,10 +14853,10 @@ Description
 -----------
 Computes the V isoparametric curve. This is a Line parallel to the XAxis of the plane.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_Plane::VReverse ******/
-		/****** md5 signature: 60a0c07d53675378b2bcbe23d1e7e281 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -14419,25 +14866,25 @@ Description
 -----------
 Changes the orientation of this plane in the u (or v) parametric direction. The bounds of the plane are not changed but the given parametric direction is reversed. Hence the orientation of the surface is reversed.
 ") VReverse;
-		virtual void VReverse();
+		void VReverse();
 
 		/****** Geom_Plane::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified plane, produced when reversing the v parametric of this plane, for any point of v parameter V on this plane. In the case of a plane, these methods return -V.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -14456,18 +14903,18 @@ Computes the v parameter on the modified plane, produced when reversing the v pa
 class Geom_RectangularTrimmedSurface : public Geom_BoundedSurface {
 	public:
 		/****** Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface ******/
-		/****** md5 signature: f7c04061f43d7804d94b684eda583d55 ******/
+		/****** md5 signature: 0b9d5fae1541d0388ffb021f7379ca78 ******/
 		%feature("compactdefaultargs") Geom_RectangularTrimmedSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-U1: float
-U2: float
-V1: float
-V2: float
-USense: bool (optional, default to Standard_True)
-VSense: bool (optional, default to Standard_True)
+U1: double
+U2: double
+V1: double
+V2: double
+USense: bool (optional, default to true)
+VSense: bool (optional, default to true)
 
 Return
 -------
@@ -14477,19 +14924,19 @@ Description
 -----------
 The U parametric direction of the surface is oriented from U1 to U2. The V parametric direction of the surface is oriented from V1 to V2. These two directions define the orientation of the surface (normal). If the surface is not periodic USense and VSense are not used for the construction. If the surface S is periodic in one direction USense and VSense give the available part of the surface. By default in this case the surface has the same orientation as the basis surface S. The returned surface is not closed and not periodic. ConstructionError Raised if S is not periodic in the UDirection and U1 or U2 are out of the bounds of S. S is not periodic in the VDirection and V1 or V2 are out of the bounds of S. U1 = U2 or V1 = V2.
 ") Geom_RectangularTrimmedSurface;
-		 Geom_RectangularTrimmedSurface(const opencascade::handle<Geom_Surface> & S, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Boolean USense = Standard_True, const Standard_Boolean VSense = Standard_True);
+		 Geom_RectangularTrimmedSurface(const opencascade::handle<Geom_Surface> & S, const double U1, const double U2, const double V1, const double V2, const bool USense = true, const bool VSense = true);
 
 		/****** Geom_RectangularTrimmedSurface::Geom_RectangularTrimmedSurface ******/
-		/****** md5 signature: f6030b4c9a985b497c958a26156fd356 ******/
+		/****** md5 signature: 27a0fb78030355b786502bf03587d364 ******/
 		%feature("compactdefaultargs") Geom_RectangularTrimmedSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-Param1: float
-Param2: float
+Param1: double
+Param2: double
 UTrim: bool
-Sense: bool (optional, default to Standard_True)
+Sense: bool (optional, default to true)
 
 Return
 -------
@@ -14499,7 +14946,7 @@ Description
 -----------
 The basis surface S is only trim in one parametric direction. If UTrim = True the surface is trimmed in the U parametric direction else the surface is trimmed in the V parametric direction. In the considered parametric direction the resulting surface is oriented from Param1 to Param2. If S is periodic Sense gives the available part of the surface. By default the trimmed surface has the same orientation as the basis surface S in the considered parametric direction (Sense = True). If the basis surface S is closed or periodic in the parametric direction opposite to the trimming direction the trimmed surface has the same characteristics as the surface S in this direction. Warnings: In this package the entities are not shared. The RectangularTrimmedSurface is built with a copy of the surface S. So when S is modified the RectangularTrimmedSurface is not modified Raised if S is not periodic in the considered parametric direction and Param1 or Param2 are out of the bounds of S. Param1 = Param2.
 ") Geom_RectangularTrimmedSurface;
-		 Geom_RectangularTrimmedSurface(const opencascade::handle<Geom_Surface> & S, const Standard_Real Param1, const Standard_Real Param2, const Standard_Boolean UTrim, const Standard_Boolean Sense = Standard_True);
+		 Geom_RectangularTrimmedSurface(const opencascade::handle<Geom_Surface> & S, const double Param1, const double Param2, const bool UTrim, const bool Sense = true);
 
 		/****** Geom_RectangularTrimmedSurface::BasisSurface ******/
 		/****** md5 signature: 8dbbf01303a0ac26e255b604d8f6addc ******/
@@ -14515,7 +14962,7 @@ Returns the Basis surface of <self>.
 		opencascade::handle<Geom_Surface> BasisSurface();
 
 		/****** Geom_RectangularTrimmedSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -14523,10 +14970,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -14535,7 +14982,7 @@ Returns the parametric bounds U1, U2, V1 and V2 of this patch.
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_RectangularTrimmedSurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -14548,7 +14995,7 @@ Returns the continuity of the surface: C0: only geometric continuity, C1: contin
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_RectangularTrimmedSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -14559,123 +15006,6 @@ Description
 Creates a new object which is a copy of this patch.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_RectangularTrimmedSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Can be raised if the basis surface is an OffsetSurface.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_RectangularTrimmedSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-The returned derivatives have the same orientation as the derivatives of the basis surface even if the trimmed surface has not the same parametric orientation. Warning! UndefinedDerivative raised if the continuity of the surface is not C1.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_RectangularTrimmedSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-The returned derivatives have the same orientation as the derivatives of the basis surface even if the trimmed surface has not the same parametric orientation. Warning! UndefinedDerivative raised if the continuity of the surface is not C2.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_RectangularTrimmedSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-The returned derivatives have the same orientation as the derivatives of the basis surface even if the trimmed surface has not the same parametric orientation. Warning UndefinedDerivative raised if the continuity of the surface is not C3.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_RectangularTrimmedSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned derivative has the same orientation as the derivative of the basis surface even if the trimmed surface has not the same parametric orientation. Warning! UndefinedDerivative raised if the continuity of the surface is not CNu in the U parametric direction and CNv in the V parametric direction. RangeError Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -14698,8 +15028,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_RectangularTrimmedSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter (U, V) on the surface. Can be raised if the basis surface is an OffsetSurface. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_RectangularTrimmedSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). The returned derivatives have the same orientation as the derivatives of the basis surface even if the trimmed surface has not the same parametric orientation. Raises an exception if the surface continuity is not C1.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_RectangularTrimmedSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). The returned derivatives have the same orientation as the derivatives of the basis surface even if the trimmed surface has not the same parametric orientation. Raises an exception if the surface continuity is not C2.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_RectangularTrimmedSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). The returned derivatives have the same orientation as the derivatives of the basis surface even if the trimmed surface has not the same parametric orientation. Raises an exception if the surface continuity is not C3.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_RectangularTrimmedSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at (U, V). The returned derivative has the same orientation as the derivative of the basis surface even if the trimmed surface has not the same parametric orientation. Raises an exception on failure. RangeError Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_RectangularTrimmedSurface::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -14714,10 +15141,10 @@ Description
 -----------
 Returns true if the order of derivation in the U parametric direction is N. Raised if N < 0.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_RectangularTrimmedSurface::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 4e12377e4fee255bb2fbd018134f6b55 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -14732,10 +15159,10 @@ Description
 -----------
 Returns true if the order of derivation in the V parametric direction is N. Raised if N < 0.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_RectangularTrimmedSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -14743,12 +15170,12 @@ bool
 
 Description
 -----------
-Returns true if this patch is closed in the given parametric direction.
+Returns true if this patch is closed in U: either not trimmed in U and the basis surface is U-closed, or trimmed with a length that is an integer multiple of the U period of a U-periodic basis surface.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_RectangularTrimmedSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -14756,12 +15183,12 @@ bool
 
 Description
 -----------
-Returns true if this patch is periodic and not trimmed in the given parametric direction.
+Returns true if the basis surface is U-periodic and either not trimmed in U, or the trim spans an integer multiple of the U period.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_RectangularTrimmedSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -14769,12 +15196,12 @@ bool
 
 Description
 -----------
-Returns true if this patch is closed in the given parametric direction.
+Returns true if this patch is closed in V: either not trimmed in V and the basis surface is V-closed, or trimmed with a length that is an integer multiple of the V period of a V-periodic basis surface.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_RectangularTrimmedSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -14782,12 +15209,12 @@ bool
 
 Description
 -----------
-Returns true if this patch is periodic and not trimmed in the given parametric direction.
+Returns true if the basis surface is V-periodic and either not trimmed in V, or the trim spans an integer multiple of the V period.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_RectangularTrimmedSurface::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -14802,20 +15229,20 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method calls the basis surface method.
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_RectangularTrimmedSurface::SetTrim ******/
-		/****** md5 signature: 9844be93bcf31079b2728cc2858138cd ******/
+		/****** md5 signature: 2255ce918154232d6e2cca94ca34c77f ******/
 		%feature("compactdefaultargs") SetTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
-V1: float
-V2: float
-USense: bool (optional, default to Standard_True)
-VSense: bool (optional, default to Standard_True)
+U1: double
+U2: double
+V1: double
+V2: double
+USense: bool (optional, default to true)
+VSense: bool (optional, default to true)
 
 Return
 -------
@@ -14825,18 +15252,18 @@ Description
 -----------
 Modifies this patch by changing the trim values applied to the original surface The u parametric direction of this patch is oriented from U1 to U2. The v parametric direction of this patch is oriented from V1 to V2. USense and VSense are used for the construction only if the surface is periodic in the corresponding parametric direction, and define the available part of the surface; by default in this case, this patch has the same orientation as the basis surface. Raised if The BasisSurface is not periodic in the UDirection and U1 or U2 are out of the bounds of the BasisSurface. The BasisSurface is not periodic in the VDirection and V1 or V2 are out of the bounds of the BasisSurface. U1 = U2 or V1 = V2.
 ") SetTrim;
-		void SetTrim(const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Boolean USense = Standard_True, const Standard_Boolean VSense = Standard_True);
+		void SetTrim(const double U1, const double U2, const double V1, const double V2, const bool USense = true, const bool VSense = true);
 
 		/****** Geom_RectangularTrimmedSurface::SetTrim ******/
-		/****** md5 signature: e528556b2c58f895bdbfdc36edc57c37 ******/
+		/****** md5 signature: d93e3ae397b84be2cc4a5aa1c68e5099 ******/
 		%feature("compactdefaultargs") SetTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-Param1: float
-Param2: float
+Param1: double
+Param2: double
 UTrim: bool
-Sense: bool (optional, default to Standard_True)
+Sense: bool (optional, default to true)
 
 Return
 -------
@@ -14846,10 +15273,10 @@ Description
 -----------
 Modifies this patch by changing the trim values applied to the original surface The basis surface is trimmed only in one parametric direction: if UTrim is true, the surface is trimmed in the u parametric direction; if it is false, it is trimmed in the v parametric direction. In the 'trimmed' direction, this patch is oriented from Param1 to Param2. If the basis surface is periodic in the 'trimmed' direction, Sense defines its available part. By default in this case, this patch has the same orientation as the basis surface in this parametric direction. If the basis surface is closed or periodic in the other parametric direction (i.e. not the 'trimmed' direction), this patch has the same characteristics as the basis surface in that parametric direction. Raised if The BasisSurface is not periodic in the considered direction and Param1 or Param2 are out of the bounds of the BasisSurface. Param1 = Param2.
 ") SetTrim;
-		void SetTrim(const Standard_Real Param1, const Standard_Real Param2, const Standard_Boolean UTrim, const Standard_Boolean Sense = Standard_True);
+		void SetTrim(const double Param1, const double Param2, const bool UTrim, const bool Sense = true);
 
 		/****** Geom_RectangularTrimmedSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -14867,7 +15294,7 @@ Applies the transformation T to this patch. Warning As a consequence, the basis 
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_RectangularTrimmedSurface::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -14876,22 +15303,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method calls the basis surface method.
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_RectangularTrimmedSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -14901,23 +15328,23 @@ Description
 -----------
 computes the U isoparametric curve.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_RectangularTrimmedSurface::UPeriod ******/
-		/****** md5 signature: 99929007fac43736aa36012893e9b882 ******/
+		/****** md5 signature: 1e7bbecc880a641896a1ec12d51117c4 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this patch in the u parametric direction. raises if the surface is not uperiodic.
 ") UPeriod;
-		virtual Standard_Real UPeriod();
+		double UPeriod();
 
 		/****** Geom_RectangularTrimmedSurface::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -14930,30 +15357,30 @@ Changes the orientation of this patch in the u parametric direction. The bounds 
 		void UReverse();
 
 		/****** Geom_RectangularTrimmedSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified surface, produced by when reversing its u parametric direction, for any point of u parameter U on this patch.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_RectangularTrimmedSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -14963,23 +15390,23 @@ Description
 -----------
 Computes the V isoparametric curve.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_RectangularTrimmedSurface::VPeriod ******/
-		/****** md5 signature: 0b2fb065ece518694127e1e1eadebb25 ******/
+		/****** md5 signature: ae0e6baa0072f7289dd1ba26d8f2d070 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of this patch in the v parametric direction. raises if the surface is not vperiodic. value and derivatives.
 ") VPeriod;
-		virtual Standard_Real VPeriod();
+		double VPeriod();
 
 		/****** Geom_RectangularTrimmedSurface::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -14992,22 +15419,22 @@ Changes the orientation of this patch in the v parametric direction. The bounds 
 		void VReverse();
 
 		/****** Geom_RectangularTrimmedSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified surface, produced by when reversing its v parametric direction, for any point of v parameter V on this patch.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -15026,13 +15453,13 @@ Computes the v parameter on the modified surface, produced by when reversing its
 class Geom_SphericalSurface : public Geom_ElementarySurface {
 	public:
 		/****** Geom_SphericalSurface::Geom_SphericalSurface ******/
-		/****** md5 signature: 73d076df291bdc9a529b87fcc692ea7f ******/
+		/****** md5 signature: f524cfdac9e604b3f74bb7750e2faf7f ******/
 		%feature("compactdefaultargs") Geom_SphericalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 A3: gp_Ax3
-Radius: float
+Radius: double
 
 Return
 -------
@@ -15042,7 +15469,7 @@ Description
 -----------
 A3 is the local coordinate system of the surface. At the creation the parametrization of the surface is defined such as the normal Vector (N = D1U ^ D1V) is directed away from the center of the sphere. The direction of increasing parametric value V is defined by the rotation around the 'YDirection' of A2 in the trigonometric sense and the orientation of increasing parametric value U is defined by the rotation around the main direction of A2 in the trigonometric sense. Warnings: It is not forbidden to create a spherical surface with Radius = 0.0 Raised if Radius < 0.0.
 ") Geom_SphericalSurface;
-		 Geom_SphericalSurface(const gp_Ax3 & A3, const Standard_Real Radius);
+		 Geom_SphericalSurface(const gp_Ax3 & A3, const double Radius);
 
 		/****** Geom_SphericalSurface::Geom_SphericalSurface ******/
 		/****** md5 signature: 45dfeecf08b0b59c47720f33f80ea4dc ******/
@@ -15063,20 +15490,20 @@ Creates a SphericalSurface from a non persistent Sphere from package gp.
 		 Geom_SphericalSurface(const gp_Sphere & S);
 
 		/****** Geom_SphericalSurface::Area ******/
-		/****** md5 signature: a514cbcf0bd2f53e9374f58dcecded92 ******/
+		/****** md5 signature: 4b82d5560f2561bf4d5ec4dc5ee230a0 ******/
 		%feature("compactdefaultargs") Area;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-Computes the aera of the spherical surface.
+Computes the area of the spherical surface.
 ") Area;
-		Standard_Real Area();
+		double Area();
 
 		/****** Geom_SphericalSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -15084,10 +15511,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -15096,7 +15523,7 @@ Returns the parametric bounds U1, U2, V1 and V2 of this sphere. For a sphere: U1
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_SphericalSurface::Coefficients ******/
-		/****** md5 signature: 922ffb066c913dfb924eafd175a6358f ******/
+		/****** md5 signature: 6935e281981cbb88a046cf41d5fed67a ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
@@ -15104,16 +15531,16 @@ Parameters
 
 Return
 -------
-A1: float
-A2: float
-A3: float
-B1: float
-B2: float
-B3: float
-C1: float
-C2: float
-C3: float
-D: float
+A1: double
+A2: double
+A3: double
+B1: double
+B2: double
+B3: double
+C1: double
+C2: double
+C3: double
+D: double
 
 Description
 -----------
@@ -15122,7 +15549,7 @@ Returns the coefficients of the implicit equation of the quadric in the absolute
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_SphericalSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -15133,123 +15560,6 @@ Description
 Creates a new object which is a copy of this sphere.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_SphericalSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on the surface. P (U, V) = Loc + Radius * Sin (V) * Zdir + Radius * Cos (V) * (cos (U) * XDir + sin (U) * YDir) where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis and ZDir the direction of the ZAxis.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_SphericalSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_SphericalSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first and the second derivatives in the directions U and V.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_SphericalSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first,the second and the third derivatives in the directions U and V.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_SphericalSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -15272,8 +15582,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_SphericalSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on the surface. P (U, V) = Loc + Radius * Sin (V) * Zdir + Radius * Cos (V) * (cos (U) * XDir + sin (U) * YDir) where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis and ZDir the direction of the ZAxis.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_SphericalSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the current point and the first derivatives in the directions U and V.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_SphericalSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the current point, the first and the second derivatives in the directions U and V.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_SphericalSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the current point, the first,the second and the third derivatives in the directions U and V.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_SphericalSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_SphericalSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -15283,10 +15690,10 @@ Description
 -----------
 Returns True.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_SphericalSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -15296,10 +15703,10 @@ Description
 -----------
 Returns True.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_SphericalSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -15309,10 +15716,10 @@ Description
 -----------
 Returns False.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_SphericalSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -15322,28 +15729,28 @@ Description
 -----------
 Returns False.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_SphericalSurface::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the coefficients of the implicit equation of this quadric in the absolute Cartesian coordinate system: A1.X**2 + A2.Y**2 + A3.Z**2 + 2.(B1.X.Y + B2.X.Z + B3.Y.Z) + 2.(C1.X + C2.Y + C3.Z) + D = 0.0 An implicit normalization is applied (i.e. A1 = A2 = 1. in the local coordinate system of this sphere).
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** Geom_SphericalSurface::SetRadius ******/
-		/****** md5 signature: 452d48523583bd00e647880614077dd6 ******/
+		/****** md5 signature: 032449434c157a5943c66be20d1fafca ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-R: float
+R: double
 
 Return
 -------
@@ -15353,7 +15760,7 @@ Description
 -----------
 Assigns the value R to the radius of this sphere. Exceptions Standard_ConstructionError if R is less than 0.0.
 ") SetRadius;
-		void SetRadius(const Standard_Real R);
+		void SetRadius(const double R);
 
 		/****** Geom_SphericalSurface::SetSphere ******/
 		/****** md5 signature: c8c7ef86f14ea8b6cd3dd391115e82d4 ******/
@@ -15387,7 +15794,7 @@ Returns a non persistent sphere with the same geometric properties as <self>.
 		gp_Sphere Sphere();
 
 		/****** Geom_SphericalSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -15405,12 +15812,12 @@ Applies the transformation T to this sphere.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_SphericalSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -15420,33 +15827,33 @@ Description
 -----------
 Computes the U isoparametric curve. The U isoparametric curves of the surface are defined by the section of the spherical surface with plane obtained by rotation of the plane (Location, XAxis, ZAxis) around ZAxis. This plane defines the origin of parametrization u. For a SphericalSurface the UIso curve is a Circle. Warnings: The radius of this circle can be zero.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_SphericalSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified surface, when reversing its u parametric direction, for any point of u parameter U on this sphere. In the case of a sphere, these functions returns 2.PI - U.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_SphericalSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -15456,38 +15863,38 @@ Description
 -----------
 Computes the V isoparametric curve. The V isoparametric curves of the surface are defined by the section of the spherical surface with plane parallel to the plane (Location, XAxis, YAxis). This plane defines the origin of parametrization V. Be careful if V is close to PI/2 or 3*PI/2 the radius of the circle becomes tiny. It is not forbidden in this toolkit to create circle with radius = 0.0 For a SphericalSurface the VIso curve is a Circle. Warnings: The radius of this circle can be zero.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_SphericalSurface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified surface, when reversing its v parametric direction, for any point of v parameter V on this sphere. In the case of a sphere, these functions returns -U.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 		/****** Geom_SphericalSurface::Volume ******/
-		/****** md5 signature: 09f69eb56723243a302bd3839799847b ******/
+		/****** md5 signature: 8b02b75a65c59cb472a9ca4a018b0f13 ******/
 		%feature("compactdefaultargs") Volume;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the volume of the spherical surface.
 ") Volume;
-		Standard_Real Volume();
+		double Volume();
 
 };
 
@@ -15525,7 +15932,7 @@ V is the direction of extrusion. C is the extruded curve. The form of a SurfaceO
 		 Geom_SurfaceOfLinearExtrusion(const opencascade::handle<Geom_Curve> & C, const gp_Dir & V);
 
 		/****** Geom_SurfaceOfLinearExtrusion::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -15533,19 +15940,32 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
-Returns the parametric bounds U1, U2, V1 and V2 of this surface of linear extrusion. A surface of linear extrusion is infinite in the v parametric direction, so: - V1 = Standard_Real::RealFirst() - V2 = Standard_Real::RealLast().
+Returns the parametric bounds U1, U2, V1 and V2 of this surface of linear extrusion. A surface of linear extrusion is infinite in the v parametric direction, so: - V1 = double::RealFirst() - V2 = double::RealLast().
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/****** Geom_SurfaceOfLinearExtrusion::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
+
 		/****** Geom_SurfaceOfLinearExtrusion::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -15556,123 +15976,6 @@ Description
 Creates a new object which is a copy of this surface of linear extrusion.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_SurfaceOfLinearExtrusion::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on the surface. The parameter U is the parameter on the extruded curve. The parametrization V is a linear parametrization, and the direction of parametrization is the direction of extrusion. If the point is on the extruded curve, V = 0.0.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_SurfaceOfLinearExtrusion::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V. Raises UndefinedDerivative if the continuity of the surface is not C1.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_SurfaceOfLinearExtrusion::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
---- Purpose ; Computes the current point, the first and the second derivatives in the directions U and V. Raises UndefinedDerivative if the continuity of the surface is not C2.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_SurfaceOfLinearExtrusion::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first,the second and the third derivatives in the directions U and V. Raises UndefinedDerivative if the continuity of the surface is not C3.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_SurfaceOfLinearExtrusion::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. Raises UndefinedDerivative if the continuity of the surface is not CNu in the u direction and CNv in the v direction. Raises RangeError if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -15695,8 +15998,131 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_SurfaceOfLinearExtrusion::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on the surface. The parameter U is the parameter on the extruded curve. The parametrization V is a linear parametrization, and the direction of parametrization is the direction of extrusion. If the point is on the extruded curve, V = 0.0 Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_SurfaceOfLinearExtrusion::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception if the surface continuity is not C1.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_SurfaceOfLinearExtrusion::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception if the surface continuity is not C2.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_SurfaceOfLinearExtrusion::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Raises an exception if the surface continuity is not C3.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_SurfaceOfLinearExtrusion::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an exception on failure. Raises RangeError if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
+		/****** Geom_SurfaceOfLinearExtrusion::EvalRepresentation ******/
+		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepSurfaceDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
+
+		/****** Geom_SurfaceOfLinearExtrusion::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
+
 		/****** Geom_SurfaceOfLinearExtrusion::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -15711,10 +16137,10 @@ Description
 -----------
 IsCNu returns true if the degree of continuity for the 'basis curve' of this surface of linear extrusion is at least N. Raises RangeError if N < 0.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_SurfaceOfLinearExtrusion::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 4e12377e4fee255bb2fbd018134f6b55 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -15729,10 +16155,10 @@ Description
 -----------
 IsCNv always returns true.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_SurfaceOfLinearExtrusion::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -15742,10 +16168,10 @@ Description
 -----------
 IsUClosed returns true if the 'basis curve' of this surface of linear extrusion is closed.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_SurfaceOfLinearExtrusion::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -15755,10 +16181,10 @@ Description
 -----------
 IsUPeriodic returns true if the 'basis curve' of this surface of linear extrusion is periodic.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_SurfaceOfLinearExtrusion::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -15768,10 +16194,10 @@ Description
 -----------
 IsVClosed always returns false.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_SurfaceOfLinearExtrusion::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -15781,10 +16207,10 @@ Description
 -----------
 IsVPeriodic always returns false.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_SurfaceOfLinearExtrusion::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -15799,7 +16225,7 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale U by BasisCurve()->ParametricTransformation(T) V by T.ScaleFactor().
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_SurfaceOfLinearExtrusion::SetBasisCurve ******/
 		/****** md5 signature: 0bacb30e6132653809532b048ced8a5b ******/
@@ -15837,8 +16263,26 @@ Assigns V as the 'direction of extrusion' for this surface of linear extrusion.
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
+		/****** Geom_SurfaceOfLinearExtrusion::SetEvalRepresentation ******/
+		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepSurfaceDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
+
 		/****** Geom_SurfaceOfLinearExtrusion::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -15856,7 +16300,7 @@ Applies the transformation T to this surface of linear extrusion.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_SurfaceOfLinearExtrusion::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -15865,22 +16309,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method multiplies: U by BasisCurve()->ParametricTransformation(T) V by T.ScaleFactor().
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_SurfaceOfLinearExtrusion::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -15890,10 +16334,10 @@ Description
 -----------
 Computes the U isoparametric curve of this surface of linear extrusion. This is the line parallel to the direction of extrusion, passing through the point of parameter U of the basis curve.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_SurfaceOfLinearExtrusion::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -15906,30 +16350,30 @@ Changes the orientation of this surface of linear extrusion in the u parametric 
 		void UReverse();
 
 		/****** Geom_SurfaceOfLinearExtrusion::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified surface, produced by reversing its u parametric direction, for any point of u parameter U on this surface of linear extrusion. In the case of an extruded surface: - UReverseParameter returns the reversed parameter given by the function ReversedParameter called with U on the basis curve,.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_SurfaceOfLinearExtrusion::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -15939,10 +16383,10 @@ Description
 -----------
 Computes the V isoparametric curve of this surface of linear extrusion. This curve is obtained by translating the extruded curve in the direction of extrusion, with the magnitude V.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_SurfaceOfLinearExtrusion::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -15955,22 +16399,22 @@ Changes the orientation of this surface of linear extrusion in the v parametric 
 		void VReverse();
 
 		/****** Geom_SurfaceOfLinearExtrusion::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified surface, produced by reversing its u v parametric direction, for any point of v parameter V on this surface of linear extrusion. In the case of an extruded surface VReverse returns -V.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -16021,7 +16465,7 @@ Returns the revolution axis of the surface.
 		gp_Ax1 Axis();
 
 		/****** Geom_SurfaceOfRevolution::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -16029,10 +16473,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -16040,8 +16484,21 @@ Returns the parametric bounds U1, U2 , V1 and V2 of this surface. A surface of r
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/****** Geom_SurfaceOfRevolution::ClearEvalRepresentation ******/
+		/****** md5 signature: 5c78bc9d081436c816c3f8de3b3086a8 ******/
+		%feature("compactdefaultargs") ClearEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Removes the evaluation representation.
+") ClearEvalRepresentation;
+		void ClearEvalRepresentation();
+
 		/****** Geom_SurfaceOfRevolution::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -16052,123 +16509,6 @@ Description
 Creates a new object which is a copy of this surface of revolution.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_SurfaceOfRevolution::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on the surface. U is the angle of the rotation around the revolution axis. The direction of this axis gives the sense of rotation. V is the parameter of the revolved curve.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_SurfaceOfRevolution::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V. Raised if the continuity of the surface is not C1.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_SurfaceOfRevolution::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first and the second derivatives in the directions U and V. Raised if the continuity of the surface is not C2.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_SurfaceOfRevolution::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first,the second and the third derivatives in the directions U and V. Raised if the continuity of the surface is not C3.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_SurfaceOfRevolution::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. //! Raised if the continuity of the surface is not CNu in the u direction and CNv in the v direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. The following functions evaluates the local derivatives on surface. Useful to manage discontinuities on the surface. if Side = 1 -> P = S( U+,V ) if Side = -1 -> P = S( U-,V ) else P is betveen discontinuities can be evaluated using methods of global evaluations P = S( U ,V ).
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -16191,8 +16531,131 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_SurfaceOfRevolution::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on the surface. U is the angle of the rotation around the revolution axis. The direction of this axis gives the sense of rotation. V is the parameter of the revolved curve. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_SurfaceOfRevolution::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception if the surface continuity is not C1.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_SurfaceOfRevolution::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception if the surface continuity is not C2.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_SurfaceOfRevolution::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Raises an exception if the surface continuity is not C3.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_SurfaceOfRevolution::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an exception on failure. //! Raised if the continuity of the surface is not CNu in the u direction and CNv in the v direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
+		/****** Geom_SurfaceOfRevolution::EvalRepresentation ******/
+		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
+		%feature("compactdefaultargs") EvalRepresentation;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<GeomEval_RepSurfaceDesc::Base>
+
+Description
+-----------
+Returns the current evaluation representation descriptor (may be null).
+") EvalRepresentation;
+		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
+
+		/****** Geom_SurfaceOfRevolution::HasEvalRepresentation ******/
+		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
+		%feature("compactdefaultargs") HasEvalRepresentation;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if an evaluation representation is attached.
+") HasEvalRepresentation;
+		bool HasEvalRepresentation();
+
 		/****** Geom_SurfaceOfRevolution::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -16207,10 +16670,10 @@ Description
 -----------
 IsCNu always returns true.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** Geom_SurfaceOfRevolution::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 4e12377e4fee255bb2fbd018134f6b55 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -16225,10 +16688,10 @@ Description
 -----------
 IsCNv returns true if the degree of continuity of the meridian of this surface of revolution is at least N. Raised if N < 0.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** Geom_SurfaceOfRevolution::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -16238,10 +16701,10 @@ Description
 -----------
 IsUClosed always returns true.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_SurfaceOfRevolution::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -16251,10 +16714,10 @@ Description
 -----------
 Returns True.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_SurfaceOfRevolution::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -16264,10 +16727,10 @@ Description
 -----------
 IsVClosed returns true if the meridian of this surface of revolution is closed.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_SurfaceOfRevolution::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -16277,7 +16740,7 @@ Description
 -----------
 IsVPeriodic returns true if the meridian of this surface of revolution is periodic.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_SurfaceOfRevolution::Location ******/
 		/****** md5 signature: 42040ad2ed401b7e80bf90e4b6b5f418 ******/
@@ -16293,7 +16756,7 @@ Returns the location point of the axis of revolution.
 		const gp_Pnt Location();
 
 		/****** Geom_SurfaceOfRevolution::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: 79bb8ca5e9bc89d611cfe2fa6fd4432d ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -16308,7 +16771,7 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns a scale centered on the U axis with BasisCurve()->ParametricTransformation(T).
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_SurfaceOfRevolution::ReferencePlane ******/
 		/****** md5 signature: 92b79d852695acc61193a9d9588bc947 ******/
@@ -16377,6 +16840,24 @@ Changes the direction of the revolution axis. Warnings: It is not checked that t
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
+		/****** Geom_SurfaceOfRevolution::SetEvalRepresentation ******/
+		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
+		%feature("compactdefaultargs") SetEvalRepresentation;
+		%feature("autodoc", "
+Parameters
+----------
+theDesc: GeomEval_RepSurfaceDesc::Base
+
+Return
+-------
+None
+
+Description
+-----------
+Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
+") SetEvalRepresentation;
+		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
+
 		/****** Geom_SurfaceOfRevolution::SetLocation ******/
 		/****** md5 signature: c028aee785b685956e8e7d5cba7ecb46 ******/
 		%feature("compactdefaultargs") SetLocation;
@@ -16396,7 +16877,7 @@ Changes the location point of the revolution axis. Warnings: It is not checked t
 		void SetLocation(const gp_Pnt & P);
 
 		/****** Geom_SurfaceOfRevolution::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -16414,7 +16895,7 @@ Applies the transformation T to this surface of revolution.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_SurfaceOfRevolution::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: e540e3523cd1f715bd3792afb118661c ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -16423,22 +16904,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This method multiplies V by BasisCurve()->ParametricTransformation(T).
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** Geom_SurfaceOfRevolution::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -16448,10 +16929,10 @@ Description
 -----------
 Computes the U isoparametric curve of this surface of revolution. It is the curve obtained by rotating the meridian through an angle U about the axis of revolution.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_SurfaceOfRevolution::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -16464,30 +16945,30 @@ Changes the orientation of this surface of revolution in the u parametric direct
 		void UReverse();
 
 		/****** Geom_SurfaceOfRevolution::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the u parameter on the modified surface, when reversing its u parametric direction, for any point of u parameter U on this surface of revolution. In the case of a revolved surface: - UReversedParameter returns 2.*Pi - U.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_SurfaceOfRevolution::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -16497,10 +16978,10 @@ Description
 -----------
 Computes the U isoparametric curve of this surface of revolution. It is the curve obtained by rotating the meridian through an angle U about the axis of revolution.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_SurfaceOfRevolution::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -16513,22 +16994,22 @@ Changes the orientation of this surface of revolution in the v parametric direct
 		void VReverse();
 
 		/****** Geom_SurfaceOfRevolution::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: b8382ca1a515d51126c89cc642c85f72 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the v parameter on the modified surface, when reversing its v parametric direction, for any point of v parameter V on this surface of revolution. In the case of a revolved surface: - VReversedParameter returns the reversed parameter given by the function ReversedParameter called with V on the meridian.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -16547,14 +17028,14 @@ Computes the v parameter on the modified surface, when reversing its v parametri
 class Geom_ToroidalSurface : public Geom_ElementarySurface {
 	public:
 		/****** Geom_ToroidalSurface::Geom_ToroidalSurface ******/
-		/****** md5 signature: 25ed5b4c2b73633dc44555421cf57186 ******/
+		/****** md5 signature: 0490c847916bdac6d60eefb64afd5555 ******/
 		%feature("compactdefaultargs") Geom_ToroidalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 A3: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 
 Return
 -------
@@ -16564,7 +17045,7 @@ Description
 -----------
 A3 is the local coordinate system of the surface. The orientation of increasing V parametric value is defined by the rotation around the main axis (ZAxis) in the trigonometric sense. The parametrization of the surface in the U direction is defined such as the normal Vector (N = D1U ^ D1V) is oriented towards the 'outside region' of the surface. Warnings: It is not forbidden to create a toroidal surface with MajorRadius = MinorRadius = 0.0 //! Raised if MinorRadius < 0.0 or if MajorRadius < 0.0.
 ") Geom_ToroidalSurface;
-		 Geom_ToroidalSurface(const gp_Ax3 & A3, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+		 Geom_ToroidalSurface(const gp_Ax3 & A3, const double MajorRadius, const double MinorRadius);
 
 		/****** Geom_ToroidalSurface::Geom_ToroidalSurface ******/
 		/****** md5 signature: 83bbb14e7f62fe323233db4d9608d469 ******/
@@ -16585,20 +17066,20 @@ Creates a ToroidalSurface from a non transient Torus from package gp.
 		 Geom_ToroidalSurface(const gp_Torus & T);
 
 		/****** Geom_ToroidalSurface::Area ******/
-		/****** md5 signature: a514cbcf0bd2f53e9374f58dcecded92 ******/
+		/****** md5 signature: 4b82d5560f2561bf4d5ec4dc5ee230a0 ******/
 		%feature("compactdefaultargs") Area;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-Computes the aera of the surface.
+Computes the area of the surface.
 ") Area;
-		Standard_Real Area();
+		double Area();
 
 		/****** Geom_ToroidalSurface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -16606,10 +17087,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -16618,12 +17099,12 @@ Returns the parametric bounds U1, U2, V1 and V2 of this torus. For a torus: U1 =
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom_ToroidalSurface::Coefficients ******/
-		/****** md5 signature: f3843308545d4e3af26668e295f3d035 ******/
+		/****** md5 signature: 734b3566758823d26947a2af228c1937 ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
 ----------
-Coef: TColStd_Array1OfReal
+Coef: NCollection_Array1<double>
 
 Return
 -------
@@ -16633,10 +17114,10 @@ Description
 -----------
 Returns the coefficients of the implicit equation of the surface in the absolute cartesian coordinate system: Coef(1) * X**4 + Coef(2) * Y**4 + Coef(3) * Z**4 + Coef(4) * X**3 * Y + Coef(5) * X**3 * Z + Coef(6) * Y**3 * X + Coef(7) * Y**3 * Z + Coef(8) * Z**3 * X + Coef(9) * Z**3 * Y + Coef(10) * X**2 * Y**2 + Coef(11) * X**2 * Z**2 + Coef(12) * Y**2 * Z**2 + Coef(13) * X**3 + Coef(14) * Y**3 + Coef(15) * Z**3 + Coef(16) * X**2 * Y + Coef(17) * X**2 * Z + Coef(18) * Y**2 * X + Coef(19) * Y**2 * Z + Coef(20) * Z**2 * X + Coef(21) * Z**2 * Y + Coef(22) * X**2 + Coef(23) * Y**2 + Coef(24) * Z**2 + Coef(25) * X * Y + Coef(26) * X * Z + Coef(27) * Y * Z + Coef(28) * X + Coef(29) * Y + Coef(30) * Z + Coef(31) = 0.0 Raised if the length of Coef is lower than 31.
 ") Coefficients;
-		void Coefficients(TColStd_Array1OfReal & Coef);
+		void Coefficients(NCollection_Array1<double> & Coef);
 
 		/****** Geom_ToroidalSurface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -16647,123 +17128,6 @@ Description
 Creates a new object which is a copy of this torus.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_ToroidalSurface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point P (U, V) on the surface. P (U, V) = Loc + MinorRadius * Sin (V) * Zdir + (MajorRadius + MinorRadius * Cos(V)) * (cos (U) * XDir + sin (U) * YDir) where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis and ZDir the direction of the ZAxis.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** Geom_ToroidalSurface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point and the first derivatives in the directions U and V.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** Geom_ToroidalSurface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first and the second derivatives in the directions U and V.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** Geom_ToroidalSurface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the current point, the first,the second and the third derivatives in the directions U and V.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** Geom_ToroidalSurface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
 
         /****************** DumpJson ******************/
@@ -16786,8 +17150,105 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Geom_ToroidalSurface::EvalD0 ******/
+		/****** md5 signature: 350fc6f963b4f7ad3faccbc657de1f8c ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point P (U, V) on the surface. P (U, V) = Loc + MinorRadius * Sin (V) * Zdir + (MajorRadius + MinorRadius * std::cos(V)) * (cos (U) * XDir + sin (U) * YDir) where Loc is the origin of the placement plane (XAxis, YAxis) XDir is the direction of the XAxis and YDir the direction of the YAxis and ZDir the direction of the ZAxis.
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
+
+		/****** Geom_ToroidalSurface::EvalD1 ******/
+		/****** md5 signature: 715a8ecdc89a0feb3af4c34f4c058eb6 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the current point and the first derivatives in the directions U and V.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
+
+		/****** Geom_ToroidalSurface::EvalD2 ******/
+		/****** md5 signature: 4ec9141f6af0f8059ad5e5eb192fb519 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the current point, the first and the second derivatives in the directions U and V.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
+
+		/****** Geom_ToroidalSurface::EvalD3 ******/
+		/****** md5 signature: 8e3d70385fa2efac26fc5eabd699d449 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the current point, the first,the second and the third derivatives in the directions U and V.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
+
+		/****** Geom_ToroidalSurface::EvalDN ******/
+		/****** md5 signature: 066e5f1f8cacfe362f11e807a1f2627e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+V: double
+Nu: int
+Nv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in the direction u and Nv in the direction v. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
+
 		/****** Geom_ToroidalSurface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: fe32a3e14eefd34f9b5ebf36eb79f283 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -16797,10 +17258,10 @@ Description
 -----------
 Returns True.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** Geom_ToroidalSurface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: af4d7f95dcec12492d73d3d9bab79ae6 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -16810,10 +17271,10 @@ Description
 -----------
 Returns True.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** Geom_ToroidalSurface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: 12726371c104f701024f4c322b920d3b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -16823,10 +17284,10 @@ Description
 -----------
 Returns True.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** Geom_ToroidalSurface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 2c0bd84ed110fb9f9bb998223c49a395 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -16836,41 +17297,41 @@ Description
 -----------
 Returns True.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** Geom_ToroidalSurface::MajorRadius ******/
-		/****** md5 signature: e961bb81456f4d0a6154d0e9401e1ce8 ******/
+		/****** md5 signature: 0a2ccb3f2f96e1276e50fba8091d72cb ******/
 		%feature("compactdefaultargs") MajorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the major radius, or the minor radius, of this torus.
 ") MajorRadius;
-		Standard_Real MajorRadius();
+		double MajorRadius();
 
 		/****** Geom_ToroidalSurface::MinorRadius ******/
-		/****** md5 signature: e1383e2287a25901af1e2b42cc95af4d ******/
+		/****** md5 signature: 9e6683b74c7166396bffd8c50cf9899c ******/
 		%feature("compactdefaultargs") MinorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the major radius, or the minor radius, of this torus.
 ") MinorRadius;
-		Standard_Real MinorRadius();
+		double MinorRadius();
 
 		/****** Geom_ToroidalSurface::SetMajorRadius ******/
-		/****** md5 signature: 5b6d39118ca624402ca904f240869d93 ******/
+		/****** md5 signature: d5b45898082f4683aba784db3a9427e2 ******/
 		%feature("compactdefaultargs") SetMajorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-MajorRadius: float
+MajorRadius: double
 
 Return
 -------
@@ -16880,15 +17341,15 @@ Description
 -----------
 Modifies this torus by changing its major radius. Exceptions Standard_ConstructionError if: - MajorRadius is negative, or - MajorRadius - r is less than or equal to gp::Resolution(), where r is the minor radius of this torus.
 ") SetMajorRadius;
-		void SetMajorRadius(const Standard_Real MajorRadius);
+		void SetMajorRadius(const double MajorRadius);
 
 		/****** Geom_ToroidalSurface::SetMinorRadius ******/
-		/****** md5 signature: 55b33932324c77b3c1e82a433bb9350f ******/
+		/****** md5 signature: 16bb9b548a4db78f0b246fb9bd8633c4 ******/
 		%feature("compactdefaultargs") SetMinorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-MinorRadius: float
+MinorRadius: double
 
 Return
 -------
@@ -16898,7 +17359,7 @@ Description
 -----------
 Modifies this torus by changing its minor radius. Exceptions Standard_ConstructionError if: - MinorRadius is negative, or - R - MinorRadius is less than or equal to gp::Resolution(), where R is the major radius of this torus.
 ") SetMinorRadius;
-		void SetMinorRadius(const Standard_Real MinorRadius);
+		void SetMinorRadius(const double MinorRadius);
 
 		/****** Geom_ToroidalSurface::SetTorus ******/
 		/****** md5 signature: dde85b6216461d99d1a99d908f38c20c ******/
@@ -16932,7 +17393,7 @@ Returns the non transient torus with the same geometric properties as <self>.
 		gp_Torus Torus();
 
 		/****** Geom_ToroidalSurface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -16950,12 +17411,12 @@ Applies the transformation T to this torus.
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_ToroidalSurface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: 3030bc2ea2708d8c6595824c7f7be7f2 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -16965,33 +17426,33 @@ Description
 -----------
 Computes the U isoparametric curve. //! For a toroidal surface the UIso curve is a circle. The center of the Uiso circle is at the distance MajorRadius from the location point of the toroidal surface. Warnings: The radius of the circle can be zero if for the surface MinorRadius = 0.0.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** Geom_ToroidalSurface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 4110bc22c0fb15535eb1019750434fed ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Ureversed surface for the point of parameter U on <self>. Return 2.PI - U.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** Geom_ToroidalSurface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 21b53846c2f42b60b8f8b2cab0ac0270 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -17001,38 +17462,38 @@ Description
 -----------
 Computes the V isoparametric curve. //! For a ToroidalSurface the VIso curve is a circle. The axis of the circle is the main axis (ZAxis) of the toroidal surface. Warnings: The radius of the circle can be zero if for the surface MajorRadius = MinorRadius.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** Geom_ToroidalSurface::VReversedParameter ******/
-		/****** md5 signature: 9ba1e2b28a639214b6f94e4db7b7b7f8 ******/
+		/****** md5 signature: db95c2543603922b83242a39d43a6b3e ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Ureversed surface for the point of parameter U on <self>. Return 2.PI - U.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real U);
+		double VReversedParameter(const double U);
 
 		/****** Geom_ToroidalSurface::Volume ******/
-		/****** md5 signature: 09f69eb56723243a302bd3839799847b ******/
+		/****** md5 signature: 8b02b75a65c59cb472a9ca4a018b0f13 ******/
 		%feature("compactdefaultargs") Volume;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the volume.
 ") Volume;
-		Standard_Real Volume();
+		double Volume();
 
 };
 
@@ -17051,16 +17512,16 @@ Computes the volume.
 class Geom_TrimmedCurve : public Geom_BoundedCurve {
 	public:
 		/****** Geom_TrimmedCurve::Geom_TrimmedCurve ******/
-		/****** md5 signature: af27e9dc4a37cd4bd20912c47b488def ******/
+		/****** md5 signature: 186073f9f1d53df3605221789b685784 ******/
 		%feature("compactdefaultargs") Geom_TrimmedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-U1: float
-U2: float
-Sense: bool (optional, default to Standard_True)
-theAdjustPeriodic: bool (optional, default to Standard_True)
+U1: double
+U2: double
+Sense: bool (optional, default to true)
+theAdjustPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -17070,7 +17531,7 @@ Description
 -----------
 Constructs a trimmed curve from the basis curve C which is limited between parameter values U1 and U2. Note: - U1 can be greater or less than U2; in both cases, the returned curve is oriented from U1 to U2. - If the basis curve C is periodic, there is an ambiguity because two parts are available. In this case, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. - If the curve is closed but not periodic, it is not possible to keep the part of the curve which includes the junction point (except if the junction point is at the beginning or at the end of the trimmed curve). If you tried to do this, you could alter the fundamental characteristics of the basis curve, which are used, for example, to compute the derivatives of the trimmed curve. The rules for a closed curve are therefore the same as those for an open curve. Warning: The trimmed curve is built from a copy of curve C. Therefore, when C is modified, the trimmed curve is not modified. - If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - C is not periodic and U1 or U2 is outside the bounds of C, or - U1 is equal to U2.
 ") Geom_TrimmedCurve;
-		 Geom_TrimmedCurve(const opencascade::handle<Geom_Curve> & C, const Standard_Real U1, const Standard_Real U2, const Standard_Boolean Sense = Standard_True, const Standard_Boolean theAdjustPeriodic = Standard_True);
+		 Geom_TrimmedCurve(const opencascade::handle<Geom_Curve> & C, const double U1, const double U2, const bool Sense = true, const bool theAdjustPeriodic = true);
 
 		/****** Geom_TrimmedCurve::BasisCurve ******/
 		/****** md5 signature: ece4de977d9b1715803929678e07eec5 ******/
@@ -17086,7 +17547,7 @@ Returns the basis curve. Warning This function does not return a constant refere
 		opencascade::handle<Geom_Curve> BasisCurve();
 
 		/****** Geom_TrimmedCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 3913f24bd9959795c7debf7fdd9fbb85 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -17099,7 +17560,7 @@ Returns the continuity of the curve: C0: only geometric continuity, C1: continui
 		GeomAbs_Shape Continuity();
 
 		/****** Geom_TrimmedCurve::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -17110,107 +17571,6 @@ Description
 Creates a new object which is a copy of this trimmed curve.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
-
-		/****** Geom_TrimmedCurve::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Returns in P the point of parameter U. //! If the basis curve is an OffsetCurve sometimes it is not possible to do the evaluation of the curve at the parameter U (see class OffsetCurve).
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Geom_TrimmedCurve::D1 ******/
-		/****** md5 signature: 0264d3f49439e8cb4580d20449d25b51 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the curve is not C1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
-
-		/****** Geom_TrimmedCurve::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the curve is not C2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Geom_TrimmedCurve::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Raised if the continuity of the curve is not C3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Geom_TrimmedCurve::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-N is the order of derivation. Raised if the continuity of the curve is not CN. Raised if N < 1. geometric transformations.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
 
         /****************** DumpJson ******************/
@@ -17234,7 +17594,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Geom_TrimmedCurve::EndPoint ******/
-		/****** md5 signature: 8dd4886e4c303cec8092c23bff0110c3 ******/
+		/****** md5 signature: 1d65a54ecc39cd5733d739743335f6ff ******/
 		%feature("compactdefaultargs") EndPoint;
 		%feature("autodoc", "Return
 -------
@@ -17246,21 +17606,112 @@ Returns the end point of <self>. This point is the evaluation of the curve for t
 ") EndPoint;
 		gp_Pnt EndPoint();
 
+		/****** Geom_TrimmedCurve::EvalD0 ******/
+		/****** md5 signature: 6d2f6bda2def2f1a5c06450e18a2448e ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the point of parameter U. //! If the basis curve is an OffsetCurve sometimes it is not possible to do the evaluation of the curve at the parameter U (see class OffsetCurve).
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
+
+		/****** Geom_TrimmedCurve::EvalD1 ******/
+		/****** md5 signature: 710afaf4eeb9572f5a2c4ff8202a1d98 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Raised if the continuity of the curve is not C1.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
+
+		/****** Geom_TrimmedCurve::EvalD2 ******/
+		/****** md5 signature: 6fcc40610ad4d1edfd19ad102d31116c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Raised if the continuity of the curve is not C2.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
+
+		/****** Geom_TrimmedCurve::EvalD3 ******/
+		/****** md5 signature: 18218212c42fff5822f57b4b4973baff ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Raised if the continuity of the curve is not C3.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
+
+		/****** Geom_TrimmedCurve::EvalDN ******/
+		/****** md5 signature: 2ba89277702b68c9eb2b5061d04892f2 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+N is the order of derivation. Raised if the continuity of the curve is not CN. Raised if N < 1. geometric transformations.
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
+
 		/****** Geom_TrimmedCurve::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the first parameter of <self>. The first parameter is the parameter of the 'StartPoint' of the trimmed curve.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom_TrimmedCurve::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 42a5bf57a05eb6426c49586172f0db7e ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -17275,10 +17726,10 @@ Description
 -----------
 Returns true if the degree of continuity of the basis curve of this trimmed curve is at least N. A trimmed curve is at least 'C0' continuous. Warnings: The continuity of the trimmed curve can be greater than the continuity of the basis curve because you consider only a part of the basis curve. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Geom_TrimmedCurve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: ad3909cb34dcb95a599222e5d4a64ef8 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -17286,12 +17737,12 @@ bool
 
 Description
 -----------
-Returns True if the distance between the StartPoint and the EndPoint is lower or equal to Resolution from package gp.
+Returns True if the basis curve is periodic and the trim spans exactly one full period, or if the distance between the StartPoint and the EndPoint is within computational precision.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom_TrimmedCurve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: 04e54c03a031850aca5f08a3025c1d5a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -17299,25 +17750,25 @@ bool
 
 Description
 -----------
-Always returns False (independently of the type of basis curve).
+Returns True if the basis curve is periodic and the trim spans exactly one full period. Returns False otherwise.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom_TrimmedCurve::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the last parameter of <self>. The last parameter is the parameter of the 'EndPoint' of the trimmed curve.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom_TrimmedCurve::ParametricTransformation ******/
-		/****** md5 signature: 0cdeed55440cf3859605fa52b3b17441 ******/
+		/****** md5 signature: d5b05072d7a1c2481b7091b5e669a1d0 ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -17326,29 +17777,29 @@ T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns a coefficient to compute the parameter on the transformed curve for the transform of the point on <self>. //! Transformed(T)->Value(U * ParametricTransformation(T)) //! is the same point as //! Value(U).Transformed(T) //! This methods calls the basis curve method.
 ") ParametricTransformation;
-		virtual Standard_Real ParametricTransformation(const gp_Trsf & T);
+		double ParametricTransformation(const gp_Trsf & T);
 
 		/****** Geom_TrimmedCurve::Period ******/
-		/****** md5 signature: a0af1de0407384df43b0e76d6b472231 ******/
+		/****** md5 signature: 840c481cf79bd2e1a55b5fd149e36dea ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the period of the basis curve of this trimmed curve. Exceptions Standard_NoSuchObject if the basis curve is not periodic.
 ") Period;
-		virtual Standard_Real Period();
+		double Period();
 
 		/****** Geom_TrimmedCurve::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 3329d3f633fce7835a9f2ded949a6050 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -17361,33 +17812,33 @@ Changes the orientation of this trimmed curve. As a result: - the basis curve is
 		void Reverse();
 
 		/****** Geom_TrimmedCurve::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: 27411d9c5403a777b5b7a63ba1bc2d4a ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the parameter on the reversed curve for the point of parameter U on this trimmed curve.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Geom_TrimmedCurve::SetTrim ******/
-		/****** md5 signature: e089a6e39b5be7b78b7d6ffa6359d842 ******/
+		/****** md5 signature: f73139a607353eb066386b1409339da3 ******/
 		%feature("compactdefaultargs") SetTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-U2: float
-Sense: bool (optional, default to Standard_True)
-theAdjustPeriodic: bool (optional, default to Standard_True)
+U1: double
+U2: double
+Sense: bool (optional, default to true)
+theAdjustPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -17397,10 +17848,10 @@ Description
 -----------
 Changes this trimmed curve, by redefining the parameter values U1 and U2 which limit its basis curve. Note: If the basis curve is periodic, the trimmed curve has the same orientation as the basis curve if Sense is true (default value) or the opposite orientation if Sense is false. Warning If the basis curve is periodic and theAdjustPeriodic is True, the bounds of the trimmed curve may be different from U1 and U2 if the parametric origin of the basis curve is within the arc of the trimmed curve. In this case, the modified parameter will be equal to U1 or U2 plus or minus the period. When theAdjustPeriodic is False, parameters U1 and U2 will be the same, without adjustment into the first period. Exceptions Standard_ConstructionError if: - the basis curve is not periodic, and either U1 or U2 are outside the bounds of the basis curve, or - U1 is equal to U2.
 ") SetTrim;
-		void SetTrim(const Standard_Real U1, const Standard_Real U2, const Standard_Boolean Sense = Standard_True, const Standard_Boolean theAdjustPeriodic = Standard_True);
+		void SetTrim(const double U1, const double U2, const bool Sense = true, const bool theAdjustPeriodic = true);
 
 		/****** Geom_TrimmedCurve::StartPoint ******/
-		/****** md5 signature: ccb2a909a54dc7dd0800015a563c1ff7 ******/
+		/****** md5 signature: 8a586296583b30cec9a994e9c703d6ca ******/
 		%feature("compactdefaultargs") StartPoint;
 		%feature("autodoc", "Return
 -------
@@ -17413,7 +17864,7 @@ Returns the start point of <self>. This point is the evaluation of the curve fro
 		gp_Pnt StartPoint();
 
 		/****** Geom_TrimmedCurve::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -17431,23 +17882,23 @@ Applies the transformation T to this trimmed curve. Warning The basis curve is a
 		void Transform(const gp_Trsf & T);
 
 		/****** Geom_TrimmedCurve::TransformedParameter ******/
-		/****** md5 signature: 1a552ef75f7726e4135a5d28749cc3da ******/
+		/****** md5 signature: e5e02442ab2d2ceaec9a6d45a0f22ef7 ******/
 		%feature("compactdefaultargs") TransformedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 T: gp_Trsf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the transformed curve for the transform of the point of parameter U on <self>. //! me->Transformed(T)->Value(me->TransformedParameter(U,T)) //! is the same point as //! me->Value(U).Transformed(T) //! This methods calls the basis curve method.
 ") TransformedParameter;
-		virtual Standard_Real TransformedParameter(const Standard_Real U, const gp_Trsf & T);
+		double TransformedParameter(const double U, const gp_Trsf & T);
 
 };
 
@@ -17463,14 +17914,14 @@ Returns the parameter on the transformed curve for the transform of the point of
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class Geom_HSequenceOfBSplineSurface : public Geom_SequenceOfBSplineSurface, public Standard_Transient {
+class Geom_HSequenceOfBSplineSurface : public NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>, public Standard_Transient {
   public:
     Geom_HSequenceOfBSplineSurface();
-    Geom_HSequenceOfBSplineSurface(const Geom_SequenceOfBSplineSurface& theOther);
-    const Geom_SequenceOfBSplineSurface& Sequence();
-    void Append (const Geom_SequenceOfBSplineSurface::value_type& theItem);
-    void Append (Geom_SequenceOfBSplineSurface& theSequence);
-    Geom_SequenceOfBSplineSurface& ChangeSequence();
+    Geom_HSequenceOfBSplineSurface(const NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& theOther);
+    const NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& theSequence);
+    NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& ChangeSequence();
 };
 %make_alias(Geom_HSequenceOfBSplineSurface)
 

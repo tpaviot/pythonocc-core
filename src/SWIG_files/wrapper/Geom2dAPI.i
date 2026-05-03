@@ -48,8 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dapi.html"
 #include<Extrema_module.hxx>
 #include<gp_module.hxx>
 #include<Geom2dInt_module.hxx>
-#include<TColgp_module.hxx>
-#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Approx_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -59,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dapi.html"
 #include<Bnd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<Message_module.hxx>
+#include<TColgp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -70,8 +69,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dapi.html"
 %import Extrema.i
 %import gp.i
 %import Geom2dInt.i
-%import TColgp.i
-%import TColStd.i
 %import GeomAbs.i
 %import Approx.i
 
@@ -103,17 +100,17 @@ from OCC.Core.Exception import *
 class Geom2dAPI_ExtremaCurveCurve {
 	public:
 		/****** Geom2dAPI_ExtremaCurveCurve::Geom2dAPI_ExtremaCurveCurve ******/
-		/****** md5 signature: 8f2f31b9577dc2d995aebb74682e6a81 ******/
+		/****** md5 signature: 3043f157df1ec6e433b1cf10c1b6a0e7 ******/
 		%feature("compactdefaultargs") Geom2dAPI_ExtremaCurveCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Geom2d_Curve
 C2: Geom2d_Curve
-U1min: float
-U1max: float
-U2min: float
-U2max: float
+U1min: double
+U1max: double
+U2min: double
+U2max: double
 
 Return
 -------
@@ -123,10 +120,10 @@ Description
 -----------
 Computes the extrema between - the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 ") Geom2dAPI_ExtremaCurveCurve;
-		 Geom2dAPI_ExtremaCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
+		 Geom2dAPI_ExtremaCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const double U1min, const double U1max, const double U2min, const double U2max);
 
 		/****** Geom2dAPI_ExtremaCurveCurve::Distance ******/
-		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
+		/****** md5 signature: 424acc809a4ab476bd27a028fe3e0ca1 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -135,13 +132,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Distance;
-		Standard_Real Distance(const Standard_Integer Index);
+		double Distance(const int Index);
 
 		/****** Geom2dAPI_ExtremaCurveCurve::Extrema ******/
 		/****** md5 signature: b1d6dfe7a95af8a82b7106fd7bcb56f9 ******/
@@ -157,20 +154,20 @@ No available documentation.
 		const Extrema_ExtCC2d & Extrema();
 
 		/****** Geom2dAPI_ExtremaCurveCurve::LowerDistance ******/
-		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
+		/****** md5 signature: 9bdea8626c0ad11eceaa6b7d1fe4c47b ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 ") LowerDistance;
-		Standard_Real LowerDistance();
+		double LowerDistance();
 
 		/****** Geom2dAPI_ExtremaCurveCurve::LowerDistanceParameters ******/
-		/****** md5 signature: 8692eb96773a2ce4edf4599b17864e52 ******/
+		/****** md5 signature: 1eb95ddbe72514181a70f3a90eefec4d ******/
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -178,8 +175,8 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
@@ -188,7 +185,7 @@ Returns the parameters U1 of the point on the first curve and U2 of the point on
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom2dAPI_ExtremaCurveCurve::NbExtrema ******/
-		/****** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ******/
+		/****** md5 signature: 8a15c7200086211498613f19615ee932 ******/
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "Return
 -------
@@ -198,7 +195,7 @@ Description
 -----------
 Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 ") NbExtrema;
-		Standard_Integer NbExtrema();
+		int NbExtrema();
 
 		/****** Geom2dAPI_ExtremaCurveCurve::NearestPoints ******/
 		/****** md5 signature: d1cedc9a4b8798a784e5474f9d0aa977 ******/
@@ -220,7 +217,7 @@ Returns the points P1 on the first curve and P2 on the second curve, which are t
 		void NearestPoints(gp_Pnt2d & P1, gp_Pnt2d & P2);
 
 		/****** Geom2dAPI_ExtremaCurveCurve::Parameters ******/
-		/****** md5 signature: f35f3eb64c1cede9adcbe1fc2f680bb0 ******/
+		/****** md5 signature: d68f60f291b4e469b0325d05c26caa6c ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -229,17 +226,17 @@ Index: int
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
 Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Parameters;
-		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Parameters(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom2dAPI_ExtremaCurveCurve::Points ******/
-		/****** md5 signature: e7ce8c9f5202ad3a50be862129fd5390 ******/
+		/****** md5 signature: b7f0f713de4480891178092a36cb6f10 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -256,7 +253,7 @@ Description
 -----------
 Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Points;
-		void Points(const Standard_Integer Index, gp_Pnt2d & P1, gp_Pnt2d & P2);
+		void Points(const int Index, gp_Pnt2d & P1, gp_Pnt2d & P2);
 
 };
 
@@ -286,14 +283,14 @@ Create an empty intersector. Use the function Init for further initialization of
 		 Geom2dAPI_InterCurveCurve();
 
 		/****** Geom2dAPI_InterCurveCurve::Geom2dAPI_InterCurveCurve ******/
-		/****** md5 signature: 46b74a2815829c9dfa15b95e8e1ce241 ******/
+		/****** md5 signature: 574bb274656880d344c11615bb67786e ******/
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Geom2d_Curve
 C2: Geom2d_Curve
-Tol: float (optional, default to 1.0e-6)
+Tol: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -303,16 +300,16 @@ Description
 -----------
 Creates an object and computes the intersections between the curves C1 and C2.
 ") Geom2dAPI_InterCurveCurve;
-		 Geom2dAPI_InterCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const Standard_Real Tol = 1.0e-6);
+		 Geom2dAPI_InterCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const double Tol = 1.0e-6);
 
 		/****** Geom2dAPI_InterCurveCurve::Geom2dAPI_InterCurveCurve ******/
-		/****** md5 signature: 931286664b6e6aefcf2c51062461087c ******/
+		/****** md5 signature: e117ab6568080770b57d33e270403daf ******/
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Geom2d_Curve
-Tol: float (optional, default to 1.0e-6)
+Tol: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -322,17 +319,17 @@ Description
 -----------
 Creates an object and computes self-intersections of the curve C1. Tolerance value Tol, defaulted to 1.0e-6, defines the precision of computing the intersection points. In case of a tangential intersection, Tol also defines the size of intersection segments (limited portions of the curves) where the distance between all points from two curves (or a curve in case of self-intersection) is less than Tol. Warning Use functions NbPoints and NbSegments to obtain the number of solutions. If the algorithm finds no intersections NbPoints and NbSegments return 0.
 ") Geom2dAPI_InterCurveCurve;
-		 Geom2dAPI_InterCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const Standard_Real Tol = 1.0e-6);
+		 Geom2dAPI_InterCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const double Tol = 1.0e-6);
 
 		/****** Geom2dAPI_InterCurveCurve::Init ******/
-		/****** md5 signature: 16764f90ec7716443cef53da1c6adea1 ******/
+		/****** md5 signature: 751970c15195902cb81aaedcb1e3f1c0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Geom2d_Curve
 C2: Geom2d_Curve
-Tol: float (optional, default to 1.0e-6)
+Tol: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -342,16 +339,16 @@ Description
 -----------
 Initializes an algorithm with the given arguments and computes the intersections between the curves C1. and C2.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const Standard_Real Tol = 1.0e-6);
+		void Init(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const double Tol = 1.0e-6);
 
 		/****** Geom2dAPI_InterCurveCurve::Init ******/
-		/****** md5 signature: dcca515b62d5af999e8065406a32e82b ******/
+		/****** md5 signature: d973f01f2a848ca4d9a8650827ec0b5a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Geom2d_Curve
-Tol: float (optional, default to 1.0e-6)
+Tol: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -361,7 +358,7 @@ Description
 -----------
 Initializes an algorithm with the given arguments and computes the self-intersections of the curve C1. Tolerance value Tol, defaulted to 1.0e-6, defines the precision of computing the intersection points. In case of a tangential intersection, Tol also defines the size of intersection segments (limited portions of the curves) where the distance between all points from two curves (or a curve in case of self-intersection) is less than Tol. Warning Use functions NbPoints and NbSegments to obtain the number of solutions. If the algorithm finds no intersections NbPoints and NbSegments return 0.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C1, const Standard_Real Tol = 1.0e-6);
+		void Init(const opencascade::handle<Geom2d_Curve> & C1, const double Tol = 1.0e-6);
 
 		/****** Geom2dAPI_InterCurveCurve::Intersector ******/
 		/****** md5 signature: 4ebbf59c42ad801a63e34dfa17e19ef4 ******/
@@ -377,7 +374,7 @@ return the algorithmic object from Intersection.
 		const Geom2dInt_GInter & Intersector();
 
 		/****** Geom2dAPI_InterCurveCurve::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -387,10 +384,10 @@ Description
 -----------
 Returns the number of intersection-points in case of cross intersections. NbPoints returns 0 if no intersections were found.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** Geom2dAPI_InterCurveCurve::NbSegments ******/
-		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
+		/****** md5 signature: 9aee6c2253f8ba296b560fdee30e17ad ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -400,10 +397,10 @@ Description
 -----------
 Returns the number of tangential intersections. NbSegments returns 0 if no intersections were found.
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** Geom2dAPI_InterCurveCurve::Point ******/
-		/****** md5 signature: dfa31b44e58975a6577c15284df2704c ******/
+		/****** md5 signature: 995ca978d5adc3e56086d9fc48a6c3b8 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -418,10 +415,10 @@ Description
 -----------
 Returns the intersection point of index Index. Intersection points are computed in case of cross intersections with a precision equal to the tolerance value assigned at the time of construction or in the function Init (this value is defaulted to 1.0e-6). Exceptions Standard_OutOfRange if index is not in the range [ 1,NbPoints ], where NbPoints is the number of computed intersection points.
 ") Point;
-		gp_Pnt2d Point(const Standard_Integer Index);
+		gp_Pnt2d Point(const int Index);
 
 		/****** Geom2dAPI_InterCurveCurve::Segment ******/
-		/****** md5 signature: b37643f2678b364da2f6153ed330844f ******/
+		/****** md5 signature: 9f0418844671c4792556452039155305 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -438,7 +435,7 @@ Description
 -----------
 Use this syntax only to get solutions of tangential intersection between two curves. Output values Curve1 and Curve2 are the intersection segments on the first curve and on the second curve accordingly. Parameter Index defines a number of computed solution. An intersection segment is a portion of an initial curve limited by two points. The distance from each point of this segment to the other curve is less or equal to the tolerance value assigned at the time of construction or in function Init (this value is defaulted to 1.0e-6). Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed tangential intersections. Standard_NullObject if the algorithm is initialized for the computing of self-intersections on a curve.
 ") Segment;
-		void Segment(const Standard_Integer Index, opencascade::handle<Geom2d_Curve> & Curve1, opencascade::handle<Geom2d_Curve> & Curve2);
+		void Segment(const int Index, opencascade::handle<Geom2d_Curve> & Curve1, opencascade::handle<Geom2d_Curve> & Curve2);
 
 };
 
@@ -455,14 +452,14 @@ Use this syntax only to get solutions of tangential intersection between two cur
 class Geom2dAPI_Interpolate {
 	public:
 		/****** Geom2dAPI_Interpolate::Geom2dAPI_Interpolate ******/
-		/****** md5 signature: 49377e07923a612a4e586c2817e4aac7 ******/
+		/****** md5 signature: 3e774a7ac874f5d85d7893a0f5694413 ******/
 		%feature("compactdefaultargs") Geom2dAPI_Interpolate;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_HArray1OfPnt2d
+Points: NCollection_HArray1<gp_Pnt2d
 PeriodicFlag: bool
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -472,18 +469,18 @@ Description
 -----------
 Tolerance is to check if the points are not too close to one an other It is also used to check if the tangent vector is not too small. There should be at least 2 points if PeriodicFlag is True then the curve will be periodic.
 ") Geom2dAPI_Interpolate;
-		 Geom2dAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt2d> & Points, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
+		 Geom2dAPI_Interpolate(const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Points, const bool PeriodicFlag, const double Tolerance);
 
 		/****** Geom2dAPI_Interpolate::Geom2dAPI_Interpolate ******/
-		/****** md5 signature: 2d0547cfca5a9782d47bfd0d341e2b99 ******/
+		/****** md5 signature: a8409fd68105cc757e52a521785dbfc0 ******/
 		%feature("compactdefaultargs") Geom2dAPI_Interpolate;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_HArray1OfPnt2d
-Parameters: TColStd_HArray1OfReal
+Points: NCollection_HArray1<gp_Pnt2d
+Parameters: NCollection_HArray1<double
 PeriodicFlag: bool
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -493,7 +490,7 @@ Description
 -----------
 if PeriodicFlag is True then the curve will be periodic Warning: There should be as many parameters as there are points except if PeriodicFlag is True: then there should be one more parameter to close the curve.
 ") Geom2dAPI_Interpolate;
-		 Geom2dAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt2d> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
+		 Geom2dAPI_Interpolate(const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Points, const opencascade::handle<NCollection_HArray1<double> > & Parameters, const bool PeriodicFlag, const double Tolerance);
 
 		/****** Geom2dAPI_Interpolate::Curve ******/
 		/****** md5 signature: c8126eab6a406e6375cef128d14447d1 ******/
@@ -509,7 +506,7 @@ Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation 
 		const opencascade::handle<Geom2d_BSplineCurve> & Curve();
 
 		/****** Geom2dAPI_Interpolate::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -519,17 +516,17 @@ Description
 -----------
 Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Geom2dAPI_Interpolate::Load ******/
-		/****** md5 signature: 0f23e749706437cef362026287716abb ******/
+		/****** md5 signature: 3bf685f1ec0b3ff64a20034624374e1d ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 InitialTangent: gp_Vec2d
 FinalTangent: gp_Vec2d
-Scale: bool (optional, default to Standard_True)
+Scale: bool (optional, default to true)
 
 Return
 -------
@@ -539,17 +536,17 @@ Description
 -----------
 Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization). <Scale> - boolean flag defining whether tangent vectors are to be scaled according to derivatives of lagrange interpolation.
 ") Load;
-		void Load(const gp_Vec2d & InitialTangent, const gp_Vec2d & FinalTangent, const Standard_Boolean Scale = Standard_True);
+		void Load(const gp_Vec2d & InitialTangent, const gp_Vec2d & FinalTangent, const bool Scale = true);
 
 		/****** Geom2dAPI_Interpolate::Load ******/
-		/****** md5 signature: f5bd9744b516b42691af1429f15fb3a9 ******/
+		/****** md5 signature: 0639eff2dad6cba436cca4dfa677d0ba ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
-Tangents: TColgp_Array1OfVec2d
-TangentFlags: TColStd_HArray1OfBoolean
-Scale: bool (optional, default to Standard_True)
+Tangents: NCollection_Array1<gp_Vec2d>
+TangentFlags: NCollection_HArray1<bool
+Scale: bool (optional, default to true)
 
 Return
 -------
@@ -559,7 +556,7 @@ Description
 -----------
 Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints. <Scale> - boolean flag defining whether tangent vectors are to be scaled according to derivatives of lagrange interpolation.
 ") Load;
-		void Load(const TColgp_Array1OfVec2d & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags, const Standard_Boolean Scale = Standard_True);
+		void Load(const NCollection_Array1<gp_Vec2d> & Tangents, const opencascade::handle<NCollection_HArray1<bool> > & TangentFlags, const bool Scale = true);
 
 		/****** Geom2dAPI_Interpolate::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -606,16 +603,16 @@ Constructs an empty approximation algorithm. Use an Init function to define and 
 		 Geom2dAPI_PointsToBSpline();
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
-		/****** md5 signature: 830d3938863063c3ae0bd0e19d46d2d6 ******/
+		/****** md5 signature: b25f08bbc9beb682019e8783f31bf509 ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
+Points: NCollection_Array1<gp_Pnt2d>
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-6)
+Tol2D: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -625,21 +622,21 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
+		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
-		/****** md5 signature: 58a92343185d22f3ab354500f277e067 ******/
+		/****** md5 signature: f8aef268849dbbca8f4afda11ae3897d ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-YValues: TColStd_Array1OfReal
-X0: float
-DX: float
+YValues: NCollection_Array1<double>
+X0: double
+DX: double
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-6)
+Tol2D: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -649,20 +646,20 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. Of coordinates: //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const TColStd_Array1OfReal & YValues, const Standard_Real X0, const Standard_Real DX, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
+		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<double> & YValues, const double X0, const double DX, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
-		/****** md5 signature: ffd4c32899b0798f37f300c7c11ce76b ******/
+		/****** md5 signature: 208525b64287ae0fa02495ad01158abb ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
+Points: NCollection_Array1<gp_Pnt2d>
 ParType: Approx_ParametrizationType
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-3)
+Tol2D: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -672,20 +669,20 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
+		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const Approx_ParametrizationType ParType, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
-		/****** md5 signature: 38f4cc503788ef04ecb6b56426e8ab0c ******/
+		/****** md5 signature: 5870ff88f848ac9852b02ea362b7718b ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
-Parameters: TColStd_Array1OfReal
+Points: NCollection_Array1<gp_Pnt2d>
+Parameters: NCollection_Array1<double>
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-3)
+Tol2D: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -695,21 +692,21 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array <Parameters>. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
+		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const NCollection_Array1<double> & Parameters, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
-		/****** md5 signature: 1f5e05b5f16b30a46e47882cbed57fbb ******/
+		/****** md5 signature: 6a0cb0098d7b9ac5d2fa09e0b1b58020 ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
-Weight1: float
-Weight2: float
-Weight3: float
+Points: NCollection_Array1<gp_Pnt2d>
+Weight1: double
+Weight2: double
+Weight3: double
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol3D: float (optional, default to 1.0e-3)
+Tol3D: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -719,7 +716,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
+		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const double Weight1, const double Weight2, const double Weight3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol3D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Curve ******/
 		/****** md5 signature: c8126eab6a406e6375cef128d14447d1 ******/
@@ -735,16 +732,16 @@ Returns the approximate BSpline Curve.
 		const opencascade::handle<Geom2d_BSplineCurve> & Curve();
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
-		/****** md5 signature: 6ca3783005f594fec489fa91fab16d07 ******/
+		/****** md5 signature: f0a841efc2e0be3d0e956e18e8eb4d2a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
+Points: NCollection_Array1<gp_Pnt2d>
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-6)
+Tol2D: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -754,21 +751,21 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const TColgp_Array1OfPnt2d & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
+		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
-		/****** md5 signature: d1f1fe186fd7fcfe0d0ab51721cd9f86 ******/
+		/****** md5 signature: 3cd75176178c0c5dbe64939058eb3f45 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-YValues: TColStd_Array1OfReal
-X0: float
-DX: float
+YValues: NCollection_Array1<double>
+X0: double
+DX: double
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-6)
+Tol2D: double (optional, default to 1.0e-6)
 
 Return
 -------
@@ -778,20 +775,20 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. Of coordinates: //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const TColStd_Array1OfReal & YValues, const Standard_Real X0, const Standard_Real DX, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
+		void Init(const NCollection_Array1<double> & YValues, const double X0, const double DX, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
-		/****** md5 signature: 8f56492cb28274fe7d59263eedd837b6 ******/
+		/****** md5 signature: 64039c0a97f28229db0f8aca9d395191 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
+Points: NCollection_Array1<gp_Pnt2d>
 ParType: Approx_ParametrizationType
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-3)
+Tol2D: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -801,20 +798,20 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const TColgp_Array1OfPnt2d & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
+		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const Approx_ParametrizationType ParType, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
-		/****** md5 signature: dccd9fb501307ee3968c5149631048a3 ******/
+		/****** md5 signature: 0b035bf1a8afa446a8f97a7aae55e19d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
-Parameters: TColStd_Array1OfReal
+Points: NCollection_Array1<gp_Pnt2d>
+Parameters: NCollection_Array1<double>
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-3)
+Tol2D: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -824,21 +821,21 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array <Parameters>. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const TColgp_Array1OfPnt2d & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
+		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const NCollection_Array1<double> & Parameters, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
-		/****** md5 signature: ce994358c4ead47ddeae1a6d0064f3fc ******/
+		/****** md5 signature: 2909d6a3f917f037336e8abad46db4b6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-Points: TColgp_Array1OfPnt2d
-Weight1: float
-Weight2: float
-Weight3: float
+Points: NCollection_Array1<gp_Pnt2d>
+Weight1: double
+Weight2: double
+Weight3: double
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-Tol2D: float (optional, default to 1.0e-3)
+Tol2D: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -848,10 +845,10 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
 ") Init;
-		void Init(const TColgp_Array1OfPnt2d & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
+		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const double Weight1, const double Weight2, const double Weight3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -861,7 +858,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -910,15 +907,15 @@ Create the projection of a point <P> on a curve <Curve>.
 		 Geom2dAPI_ProjectPointOnCurve(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Geom2dAPI_ProjectPointOnCurve ******/
-		/****** md5 signature: 2a966d6fa7adafea65c220fc5142a177 ******/
+		/****** md5 signature: e62aebb059de7c3b6bd6d04b2ee9933c ******/
 		%feature("compactdefaultargs") Geom2dAPI_ProjectPointOnCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 Curve: Geom2d_Curve
-Umin: float
-Usup: float
+Umin: double
+Usup: double
 
 Return
 -------
@@ -928,10 +925,10 @@ Description
 -----------
 Create the projection of a point <P> on a curve <Curve> limited by the two points of parameter Umin and Usup. Warning Use the function NbPoints to obtain the number of solutions. If projection fails, NbPoints returns 0.
 ") Geom2dAPI_ProjectPointOnCurve;
-		 Geom2dAPI_ProjectPointOnCurve(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
+		 Geom2dAPI_ProjectPointOnCurve(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve, const double Umin, const double Usup);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Distance ******/
-		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
+		/****** md5 signature: 424acc809a4ab476bd27a028fe3e0ca1 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -940,13 +937,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the distance between the point and its computed orthogonal projection on the curve. Index is a number of computed projected point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Distance;
-		Standard_Real Distance(const Standard_Integer Index);
+		double Distance(const int Index);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Extrema ******/
 		/****** md5 signature: 37af5c9efb51737c22aa348e6a3ceb1b ******/
@@ -981,15 +978,15 @@ Initializes this algorithm with the given arguments, and computes the orthogonal
 		void Init(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Init ******/
-		/****** md5 signature: 88842ac6a9c774f96727660f342b896a ******/
+		/****** md5 signature: 9675d65948bb8596ff77682c43c852b8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 Curve: Geom2d_Curve
-Umin: float
-Usup: float
+Umin: double
+Usup: double
 
 Return
 -------
@@ -999,36 +996,36 @@ Description
 -----------
 Initializes this algorithm with the given arguments, and computes the orthogonal projections of the point P onto the portion of the curve Curve limited by the two points of parameter Umin and Usup.
 ") Init;
-		void Init(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
+		void Init(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve, const double Umin, const double Usup);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::LowerDistance ******/
-		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
+		/****** md5 signature: 9bdea8626c0ad11eceaa6b7d1fe4c47b ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions StdFail_NotDone if this algorithm fails.
 ") LowerDistance;
-		Standard_Real LowerDistance();
+		double LowerDistance();
 
 		/****** Geom2dAPI_ProjectPointOnCurve::LowerDistanceParameter ******/
-		/****** md5 signature: d92357b64b8dcbaeedf932cd195aa800 ******/
+		/****** md5 signature: 995a7a6802398fc73878dc586c07f02b ******/
 		%feature("compactdefaultargs") LowerDistanceParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions StdFail_NotDone if this algorithm fails.
 ") LowerDistanceParameter;
-		Standard_Real LowerDistanceParameter();
+		double LowerDistanceParameter();
 
 		/****** Geom2dAPI_ProjectPointOnCurve::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1038,7 +1035,7 @@ Description
 -----------
 return the number of of computed orthogonal projectionn points.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** Geom2dAPI_ProjectPointOnCurve::NearestPoint ******/
 		/****** md5 signature: cabb3a250e83e793f9286cffa3acff32 ******/
@@ -1054,7 +1051,7 @@ Returns the nearest orthogonal projection of the point on the curve. Exceptions 
 		gp_Pnt2d NearestPoint();
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Parameter ******/
-		/****** md5 signature: 82ceab80f2b18ab921fa91f907001d9f ******/
+		/****** md5 signature: bcd21197dacb6445c9784025e36f0a23 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1063,16 +1060,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the curve of a point which is the orthogonal projection. Index is a number of a computed projected point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Parameter;
-		Standard_Real Parameter(const Standard_Integer Index);
+		double Parameter(const int Index);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Parameter ******/
-		/****** md5 signature: 27513c7a9d44f786990664b216249792 ******/
+		/****** md5 signature: 45f1b1c856d0db741edadd455f1176c7 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1081,16 +1078,16 @@ Index: int
 
 Return
 -------
-U: float
+U: double
 
 Description
 -----------
 Returns the parameter on the curve of a point which is the orthogonal projection. Index is a number of a computed projected point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Parameter;
-		void Parameter(const Standard_Integer Index, Standard_Real &OutValue);
+		void Parameter(const int Index, Standard_Real &OutValue);
 
 		/****** Geom2dAPI_ProjectPointOnCurve::Point ******/
-		/****** md5 signature: dfa31b44e58975a6577c15284df2704c ******/
+		/****** md5 signature: 995ca978d5adc3e56086d9fc48a6c3b8 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1105,7 +1102,7 @@ Description
 -----------
 Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Point;
-		gp_Pnt2d Point(const Standard_Integer Index);
+		gp_Pnt2d Point(const int Index);
 
 };
 

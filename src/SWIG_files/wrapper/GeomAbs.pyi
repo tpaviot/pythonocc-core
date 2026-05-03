@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
+
 class GeomAbs_BSplKnotDistribution(IntEnum):
     GeomAbs_NonUniform: int = ...
     GeomAbs_Uniform: int = ...
@@ -99,3 +100,4 @@ GeomAbs_OtherSurface = GeomAbs_SurfaceType.GeomAbs_OtherSurface
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

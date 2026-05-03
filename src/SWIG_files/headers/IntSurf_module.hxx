@@ -25,7 +25,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntSurf_InteriorPoint.hxx>
 #include<IntSurf_InteriorPointTool.hxx>
 #include<IntSurf_LineOn2S.hxx>
-#include<IntSurf_ListIteratorOfListOfPntOn2S.hxx>
 #include<IntSurf_ListOfPntOn2S.hxx>
 #include<IntSurf_PathPoint.hxx>
 #include<IntSurf_PathPointTool.hxx>

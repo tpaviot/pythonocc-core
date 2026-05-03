@@ -26,7 +26,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_AttributeDelta.hxx>
 #include<TDF_AttributeDeltaList.hxx>
 #include<TDF_AttributeDoubleMap.hxx>
-#include<TDF_AttributeIndexedMap.hxx>
 #include<TDF_AttributeIterator.hxx>
 #include<TDF_AttributeList.hxx>
 #include<TDF_AttributeMap.hxx>
@@ -39,9 +38,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_CopyLabel.hxx>
 #include<TDF_CopyTool.hxx>
 #include<TDF_Data.hxx>
-#include<TDF_DataMapIteratorOfAttributeDataMap.hxx>
-#include<TDF_DataMapIteratorOfLabelDataMap.hxx>
-#include<TDF_DataMapIteratorOfLabelIntegerMap.hxx>
 #include<TDF_DataSet.hxx>
 #include<TDF_DefaultDeltaOnModification.hxx>
 #include<TDF_DefaultDeltaOnRemoval.hxx>
@@ -53,9 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_DeltaOnRemoval.hxx>
 #include<TDF_DeltaOnResume.hxx>
 #include<TDF_DerivedAttribute.hxx>
-#include<TDF_DoubleMapIteratorOfAttributeDoubleMap.hxx>
-#include<TDF_DoubleMapIteratorOfGUIDProgIDMap.hxx>
-#include<TDF_DoubleMapIteratorOfLabelDoubleMap.hxx>
 #include<TDF_GUIDProgIDMap.hxx>
 #include<TDF_HAllocator.hxx>
 #include<TDF_HAttributeArray1.hxx>
@@ -72,14 +65,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_LabelNode.hxx>
 #include<TDF_LabelNodePtr.hxx>
 #include<TDF_LabelSequence.hxx>
-#include<TDF_ListIteratorOfAttributeDeltaList.hxx>
-#include<TDF_ListIteratorOfAttributeList.hxx>
-#include<TDF_ListIteratorOfDeltaList.hxx>
-#include<TDF_ListIteratorOfIDList.hxx>
-#include<TDF_ListIteratorOfLabelList.hxx>
-#include<TDF_MapIteratorOfAttributeMap.hxx>
-#include<TDF_MapIteratorOfIDMap.hxx>
-#include<TDF_MapIteratorOfLabelMap.hxx>
 #include<TDF_Reference.hxx>
 #include<TDF_RelocationTable.hxx>
 #include<TDF_TagSource.hxx>

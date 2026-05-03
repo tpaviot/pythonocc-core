@@ -51,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsmgr.html"
 #include<TopLoc_module.hxx>
 #include<Aspect_module.hxx>
 #include<gp_module.hxx>
-#include<TColStd_module.hxx>
 #include<V3d_module.hxx>
 #include<gp_module.hxx>
 #include<HLRAlgo_module.hxx>
@@ -92,7 +91,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsmgr.html"
 %import TopLoc.i
 %import Aspect.i
 %import gp.i
-%import TColStd.i
 %import V3d.i
 
 %pythoncode {
@@ -149,38 +147,9 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
 /* end handles declaration */
 
 /* templates */
-%template(PrsMgr_ListOfPresentableObjects) NCollection_List<opencascade::handle<PrsMgr_PresentableObject>>;
-
-%extend NCollection_List<opencascade::handle<PrsMgr_PresentableObject>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-
-    def __iter__(self):
-        it = PrsMgr_ListIteratorOfListOfPresentableObjects(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
-    }
-};
-%template(PrsMgr_ListOfPresentableObjectsIter) NCollection_TListIterator<PrsMgr_ListOfPresentableObjects>;
 %template(PrsMgr_ListOfPresentations) NCollection_List<opencascade::handle<Prs3d_Presentation>>;
 
 %extend NCollection_List<opencascade::handle<Prs3d_Presentation>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-
-    def __iter__(self):
-        it = PrsMgr_ListIteratorOfListOfPresentations(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
-    }
-};
-%template(PrsMgr_Presentations) NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>>;
-
-%extend NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>> {
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -189,15 +158,8 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
 /* end templates declaration */
 
 /* typedefs */
-typedef Handle_PrsMgr_Presentation Handle_PrsMgr_Presentation3d;
-typedef Handle_PrsMgr_PresentationManager Handle_PrsMgr_PresentationManager3d;
 typedef Graphic3d_Structure Prs3d_Presentation;
-typedef NCollection_List<opencascade::handle<PrsMgr_PresentableObject>> PrsMgr_ListOfPresentableObjects;
-typedef NCollection_List<opencascade::handle<PrsMgr_PresentableObject>>::Iterator PrsMgr_ListOfPresentableObjectsIter;
 typedef NCollection_List<opencascade::handle<Prs3d_Presentation>> PrsMgr_ListOfPresentations;
-typedef PrsMgr_Presentation PrsMgr_Presentation3d;
-typedef PrsMgr_PresentationManager PrsMgr_PresentationManager3d;
-typedef NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>> PrsMgr_Presentations;
 /* end typedefs declaration */
 
 /*********************************
@@ -208,7 +170,7 @@ typedef NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>> PrsMgr_Pr
 class PrsMgr_PresentableObject : public Standard_Transient {
 	public:
 		/****** PrsMgr_PresentableObject::AcceptDisplayMode ******/
-		/****** md5 signature: bae56e2dc4711c229fb1bab9ec65258f ******/
+		/****** md5 signature: 6780408d8e6c0eaa027335b4159d5fea ******/
 		%feature("compactdefaultargs") AcceptDisplayMode;
 		%feature("autodoc", "
 Parameters
@@ -223,7 +185,7 @@ Description
 -----------
 Returns true if the class of objects accepts specified display mode index. The interactive context can have a default mode of representation for the set of Interactive Objects. This mode may not be accepted by a given class of objects. Consequently, this virtual method allowing us to get information about the class in question must be implemented. At least one display mode index should be accepted by this method. Although subclass can leave default implementation, it is highly desired defining exact list of supported modes instead, which is usually an enumeration for one object or objects class sharing similar list of display modes.
 ") AcceptDisplayMode;
-		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
+		virtual bool AcceptDisplayMode(const int theMode);
 
 		/****** PrsMgr_PresentableObject::AddChild ******/
 		/****** md5 signature: 4cb35725e5658154615dcc48d8d5941f ******/
@@ -312,17 +274,17 @@ Returns bounding box of object correspondingly to its current display mode. This
 		virtual void BoundingBox(Bnd_Box & theBndBox);
 
 		/****** PrsMgr_PresentableObject::Children ******/
-		/****** md5 signature: 8473f800c00ae7231d0d682a7669ae77 ******/
+		/****** md5 signature: d66182f2538dc4b34e838e891cb2be5a ******/
 		%feature("compactdefaultargs") Children;
 		%feature("autodoc", "Return
 -------
-PrsMgr_ListOfPresentableObjects
+NCollection_List<opencascade::handle<PrsMgr_PresentableObject>>
 
 Description
 -----------
 Returns children of the current object.
 ") Children;
-		const PrsMgr_ListOfPresentableObjects & Children();
+		const NCollection_List<opencascade::handle<PrsMgr_PresentableObject>> & Children();
 
 		/****** PrsMgr_PresentableObject::ClipPlanes ******/
 		/****** md5 signature: 26ab80085e76b6f03b64af6598080486 ******/
@@ -383,7 +345,7 @@ Returns the current facing model which is in effect.
 		Aspect_TypeOfFacingModel CurrentFacingModel();
 
 		/****** PrsMgr_PresentableObject::DefaultDisplayMode ******/
-		/****** md5 signature: fda620e5a7d8c732cdacefa5f4f17373 ******/
+		/****** md5 signature: f9ca47b31e04894fff2dbcc67d76e0f3 ******/
 		%feature("compactdefaultargs") DefaultDisplayMode;
 		%feature("autodoc", "Return
 -------
@@ -393,10 +355,10 @@ Description
 -----------
 Returns the default display mode.
 ") DefaultDisplayMode;
-		virtual Standard_Integer DefaultDisplayMode();
+		virtual int DefaultDisplayMode();
 
 		/****** PrsMgr_PresentableObject::DisplayMode ******/
-		/****** md5 signature: 87ab8eae5ccb1d4f4dfd02dc34d6febc ******/
+		/****** md5 signature: ac5a0607c42d4a5cb024f9e1f4d5fff9 ******/
 		%feature("compactdefaultargs") DisplayMode;
 		%feature("autodoc", "Return
 -------
@@ -407,7 +369,7 @@ Description
 Returns the display mode setting of the Interactive Object. The range of supported display mode indexes should be specified within object definition and filtered by AccepDisplayMode(). 
 See also: AcceptDisplayMode().
 ") DisplayMode;
-		Standard_Integer DisplayMode();
+		int DisplayMode();
 
 		/****** PrsMgr_PresentableObject::DisplayStatus ******/
 		/****** md5 signature: ee3d5b78bf379a82087b86d8b5b0b3e3 ******/
@@ -458,7 +420,7 @@ See also: AIS_InteractiveContext::HighlightStyle().
 		const opencascade::handle<Prs3d_Drawer> & DynamicHilightAttributes();
 
 		/****** PrsMgr_PresentableObject::HasColor ******/
-		/****** md5 signature: f14084fe0c7674324d105b06cc1ff5b4 ******/
+		/****** md5 signature: 9d4e6cc50a499be7adbd7b5390ea23e4 ******/
 		%feature("compactdefaultargs") HasColor;
 		%feature("autodoc", "Return
 -------
@@ -468,10 +430,10 @@ Description
 -----------
 Returns true if the Interactive Object has color.
 ") HasColor;
-		Standard_Boolean HasColor();
+		bool HasColor();
 
 		/****** PrsMgr_PresentableObject::HasDisplayMode ******/
-		/****** md5 signature: dd0b9b505cadfeaf92483f8d0b8ffd59 ******/
+		/****** md5 signature: be7d9ef6129f0f32e7e22620ebf88820 ******/
 		%feature("compactdefaultargs") HasDisplayMode;
 		%feature("autodoc", "Return
 -------
@@ -481,10 +443,10 @@ Description
 -----------
 Returns true if the Interactive Object has display mode setting overriding global setting (within Interactive Context).
 ") HasDisplayMode;
-		Standard_Boolean HasDisplayMode();
+		bool HasDisplayMode();
 
 		/****** PrsMgr_PresentableObject::HasHilightMode ******/
-		/****** md5 signature: 35c4cc36b9d1287cbb8be9209c167aef ******/
+		/****** md5 signature: d617b11ce31687e2f0f05424ddf6da8b ******/
 		%feature("compactdefaultargs") HasHilightMode;
 		%feature("autodoc", "Return
 -------
@@ -495,10 +457,10 @@ Description
 Returns true if the Interactive Object is in highlight mode. 
 See also: HilightAttributes().
 ") HasHilightMode;
-		Standard_Boolean HasHilightMode();
+		bool HasHilightMode();
 
 		/****** PrsMgr_PresentableObject::HasMaterial ******/
-		/****** md5 signature: 8bde772f946375b9fcc789f278ec2796 ******/
+		/****** md5 signature: d2a933323bb510a0e71bff3cd6513eb0 ******/
 		%feature("compactdefaultargs") HasMaterial;
 		%feature("autodoc", "Return
 -------
@@ -508,10 +470,10 @@ Description
 -----------
 Returns true if the Interactive Object has a setting for material.
 ") HasMaterial;
-		Standard_Boolean HasMaterial();
+		bool HasMaterial();
 
 		/****** PrsMgr_PresentableObject::HasOwnPresentations ******/
-		/****** md5 signature: 153f02083dc2acb34db1dabac2b5fd90 ******/
+		/****** md5 signature: b1bc6eb173a9caf9b0970395801a23e0 ******/
 		%feature("compactdefaultargs") HasOwnPresentations;
 		%feature("autodoc", "Return
 -------
@@ -521,10 +483,10 @@ Description
 -----------
 Returns true if object should have own presentations.
 ") HasOwnPresentations;
-		Standard_Boolean HasOwnPresentations();
+		bool HasOwnPresentations();
 
 		/****** PrsMgr_PresentableObject::HasPolygonOffsets ******/
-		/****** md5 signature: 046170f7f77257e0750c28d56cd76064 ******/
+		/****** md5 signature: bc192e6cd628f833d51037c44dca4bf7 ******/
 		%feature("compactdefaultargs") HasPolygonOffsets;
 		%feature("autodoc", "Return
 -------
@@ -532,12 +494,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if <myDrawer> has non-null shading aspect.
+Returns true if <myDrawer> has non-null shading aspect.
 ") HasPolygonOffsets;
-		virtual Standard_Boolean HasPolygonOffsets();
+		virtual bool HasPolygonOffsets();
 
 		/****** PrsMgr_PresentableObject::HasTransformation ******/
-		/****** md5 signature: 652edcbacf21dcccd9a135f2682c5344 ******/
+		/****** md5 signature: b8328431b78409c944beaf886dc9a10e ******/
 		%feature("compactdefaultargs") HasTransformation;
 		%feature("autodoc", "Return
 -------
@@ -547,10 +509,10 @@ Description
 -----------
 Returns true if object has a transformation that is different from the identity.
 ") HasTransformation;
-		Standard_Boolean HasTransformation();
+		bool HasTransformation();
 
 		/****** PrsMgr_PresentableObject::HasWidth ******/
-		/****** md5 signature: 93af72110529b1e94c6797d09cd35e15 ******/
+		/****** md5 signature: 4a398cea04ef93366218cbb8b231f7d1 ******/
 		%feature("compactdefaultargs") HasWidth;
 		%feature("autodoc", "Return
 -------
@@ -560,7 +522,7 @@ Description
 -----------
 Returns true if the Interactive Object has width.
 ") HasWidth;
-		Standard_Boolean HasWidth();
+		bool HasWidth();
 
 		/****** PrsMgr_PresentableObject::HilightAttributes ******/
 		/****** md5 signature: 028c3cfd528f1150f36206e2e1fd24ab ******/
@@ -577,7 +539,7 @@ See also: AIS_InteractiveContext::HighlightStyle().
 		const opencascade::handle<Prs3d_Drawer> & HilightAttributes();
 
 		/****** PrsMgr_PresentableObject::HilightMode ******/
-		/****** md5 signature: 65e4b0407fae3cd6d737aa6b7e74bfa0 ******/
+		/****** md5 signature: 9555c6df31e9c0ef5f6100d4793a3cd3 ******/
 		%feature("compactdefaultargs") HilightMode;
 		%feature("autodoc", "Return
 -------
@@ -588,7 +550,7 @@ Description
 Returns highlight display mode. This is obsolete method for backward compatibility - use ::HilightAttributes() and ::DynamicHilightAttributes() instead. 
 See also: HilightAttributes().
 ") HilightMode;
-		Standard_Integer HilightMode();
+		int HilightMode();
 
 		/****** PrsMgr_PresentableObject::InversedTransformation ******/
 		/****** md5 signature: aefc1fc4bc8fc1a359fecf8390084420 ******/
@@ -604,7 +566,7 @@ Return inversed transformation.
 		const gp_GTrsf InversedTransformation();
 
 		/****** PrsMgr_PresentableObject::IsInfinite ******/
-		/****** md5 signature: 7633661c322c89b950f649430bd827bf ******/
+		/****** md5 signature: 7f15d815c957eba08a82497226542810 ******/
 		%feature("compactdefaultargs") IsInfinite;
 		%feature("autodoc", "Return
 -------
@@ -614,10 +576,10 @@ Description
 -----------
 Returns true if the interactive object is infinite; False by default. This flag affects various operations operating on bounding box of graphic presentations of this object. For instance, infinite objects are not taken in account for View FitAll. This does not necessarily means that object is actually infinite, auxiliary objects might be also marked with this flag to achieve desired behavior.
 ") IsInfinite;
-		Standard_Boolean IsInfinite();
+		bool IsInfinite();
 
 		/****** PrsMgr_PresentableObject::IsMutable ******/
-		/****** md5 signature: 3ee3916ef3d39d63be5557b524ac1b86 ******/
+		/****** md5 signature: 6b5855c59f93c0e10dec04d410edb1b7 ******/
 		%feature("compactdefaultargs") IsMutable;
 		%feature("autodoc", "Return
 -------
@@ -627,10 +589,10 @@ Description
 -----------
 Returns true if object has mutable nature (content or location are be changed regularly). Mutable object will be managed in different way than static onces (another optimizations).
 ") IsMutable;
-		Standard_Boolean IsMutable();
+		bool IsMutable();
 
 		/****** PrsMgr_PresentableObject::IsTransparent ******/
-		/****** md5 signature: c84deafd18700322a7b65678305c4b28 ******/
+		/****** md5 signature: a17806d349512a0ec9958f9a7b6c5a53 ******/
 		%feature("compactdefaultargs") IsTransparent;
 		%feature("autodoc", "Return
 -------
@@ -640,7 +602,7 @@ Description
 -----------
 Returns true if there is a transparency setting.
 ") IsTransparent;
-		Standard_Boolean IsTransparent();
+		bool IsTransparent();
 
 		/****** PrsMgr_PresentableObject::LocalTransformation ******/
 		/****** md5 signature: d727e7863f78900c68e430ca7d96d70c ******/
@@ -695,7 +657,7 @@ Returns parent of current object in scene hierarchy.
 		PrsMgr_PresentableObject * Parent();
 
 		/****** PrsMgr_PresentableObject::PolygonOffsets ******/
-		/****** md5 signature: 7abd14e2a1f6ce136288eb910f29a042 ******/
+		/****** md5 signature: 9c9b528ae288d100810b812cc0e9914a ******/
 		%feature("compactdefaultargs") PolygonOffsets;
 		%feature("autodoc", "
 Parameters
@@ -714,17 +676,17 @@ Retrieves current polygon offsets settings from <myDrawer>.
 		virtual void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****** PrsMgr_PresentableObject::Presentations ******/
-		/****** md5 signature: 20fe67fbbae7e29f768f3449d76ed496 ******/
+		/****** md5 signature: 63d2d7cbc1af52c85561918c0cfe1293 ******/
 		%feature("compactdefaultargs") Presentations;
 		%feature("autodoc", "Return
 -------
-PrsMgr_Presentations
+NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>>
 
 Description
 -----------
 Return presentations.
 ") Presentations;
-		PrsMgr_Presentations & Presentations();
+		NCollection_Sequence<opencascade::handle<PrsMgr_Presentation>> & Presentations();
 
 		/****** PrsMgr_PresentableObject::RecomputeTransformation ******/
 		/****** md5 signature: 82ed18839859745368af73d0950cafa4 ******/
@@ -886,7 +848,7 @@ change the current facing model apply on polygons for SetColor(), SetTransparenc
 		void SetCurrentFacingModel(const Aspect_TypeOfFacingModel theModel = Aspect_TOFM_BOTH_SIDE);
 
 		/****** PrsMgr_PresentableObject::SetDisplayMode ******/
-		/****** md5 signature: 2a99a6840fca4af1fbc5cc91ac2d554d ******/
+		/****** md5 signature: e8e6901d77a66a90acf6b94e4ae659ff ******/
 		%feature("compactdefaultargs") SetDisplayMode;
 		%feature("autodoc", "
 Parameters
@@ -902,7 +864,7 @@ Description
 Sets the display mode for the interactive object. An object can have its own temporary display mode, which is different from that proposed by the interactive context. 
 See also: AcceptDisplayMode().
 ") SetDisplayMode;
-		void SetDisplayMode(const Standard_Integer theMode);
+		void SetDisplayMode(const int theMode);
 
 		/****** PrsMgr_PresentableObject::SetDynamicHilightAttributes ******/
 		/****** md5 signature: ca58806abff4ac2f5e9c97a9fcb85be9 ******/
@@ -941,7 +903,7 @@ Initializes the hilight drawing tool theDrawer.
 		virtual void SetHilightAttributes(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** PrsMgr_PresentableObject::SetHilightMode ******/
-		/****** md5 signature: 0fd85a8f52dd5fb591746b6a5ceb9590 ******/
+		/****** md5 signature: f9b4b9d1aa0dd8593f7f8a32b4430118 ******/
 		%feature("compactdefaultargs") SetHilightMode;
 		%feature("autodoc", "
 Parameters
@@ -957,15 +919,15 @@ Description
 Sets highlight display mode. This is obsolete method for backward compatibility - use ::HilightAttributes() and ::DynamicHilightAttributes() instead. 
 See also: HilightAttributes().
 ") SetHilightMode;
-		void SetHilightMode(const Standard_Integer theMode);
+		void SetHilightMode(const int theMode);
 
 		/****** PrsMgr_PresentableObject::SetInfiniteState ******/
-		/****** md5 signature: be53a3ebba916ae90a429c5093c38737 ******/
+		/****** md5 signature: 6eea75ff3fdcd397406027dcc4827f23 ******/
 		%feature("compactdefaultargs") SetInfiniteState;
 		%feature("autodoc", "
 Parameters
 ----------
-theFlag: bool (optional, default to Standard_True)
+theFlag: bool (optional, default to true)
 
 Return
 -------
@@ -975,10 +937,10 @@ Description
 -----------
 Sets if object should be considered as infinite.
 ") SetInfiniteState;
-		void SetInfiniteState(const Standard_Boolean theFlag = Standard_True);
+		void SetInfiniteState(const bool theFlag = true);
 
 		/****** PrsMgr_PresentableObject::SetIsoOnTriangulation ******/
-		/****** md5 signature: ce0a77a4be58bef84b86bf0f2501ffef ******/
+		/****** md5 signature: 8039100d1c4bb4729871d2f94db0cdc4 ******/
 		%feature("compactdefaultargs") SetIsoOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -993,7 +955,7 @@ Description
 -----------
 Enables or disables on-triangulation build of isolines according to the flag given.
 ") SetIsoOnTriangulation;
-		void SetIsoOnTriangulation(const Standard_Boolean theIsEnabled);
+		void SetIsoOnTriangulation(const bool theIsEnabled);
 
 		/****** PrsMgr_PresentableObject::SetLocalTransformation ******/
 		/****** md5 signature: df3591aee60d963520e1b86ed93fcb47 ******/
@@ -1050,7 +1012,7 @@ Sets the material aMat defining this display attribute for the interactive objec
 		virtual void SetMaterial(const Graphic3d_MaterialAspect & aName);
 
 		/****** PrsMgr_PresentableObject::SetMutable ******/
-		/****** md5 signature: 5fa59925e1868e4db8b5115d09b9eea4 ******/
+		/****** md5 signature: ecd07efb18caf105269e935a2980866b ******/
 		%feature("compactdefaultargs") SetMutable;
 		%feature("autodoc", "
 Parameters
@@ -1065,10 +1027,10 @@ Description
 -----------
 Sets if the object has mutable nature (content or location will be changed regularly). This method should be called before object displaying to take effect.
 ") SetMutable;
-		virtual void SetMutable(const Standard_Boolean theIsMutable);
+		virtual void SetMutable(const bool theIsMutable);
 
 		/****** PrsMgr_PresentableObject::SetPolygonOffsets ******/
-		/****** md5 signature: bcb2cc6b36e7f5da584a89ed6e331ba7 ******/
+		/****** md5 signature: ce59300419d64d682a61fab696b8d0bd ******/
 		%feature("compactdefaultargs") SetPolygonOffsets;
 		%feature("autodoc", "
 Parameters
@@ -1086,10 +1048,10 @@ Description
 Sets up polygon offsets for this object. 
 See also: Graphic3d_Aspects::SetPolygonOffsets().
 ") SetPolygonOffsets;
-		virtual void SetPolygonOffsets(const Standard_Integer aMode, const Standard_ShortReal aFactor = 1.0, const Standard_ShortReal aUnits = 0.0);
+		virtual void SetPolygonOffsets(const int aMode, const float aFactor = 1.0, const float aUnits = 0.0);
 
 		/****** PrsMgr_PresentableObject::SetPropagateVisualState ******/
-		/****** md5 signature: d71a048de66c3e35f2dc099b481bcded ******/
+		/****** md5 signature: df9557b62da26c54c4072a9017e7a39d ******/
 		%feature("compactdefaultargs") SetPropagateVisualState;
 		%feature("autodoc", "
 Parameters
@@ -1104,10 +1066,10 @@ Description
 -----------
 Change the value of the flag 'propagate visual state'.
 ") SetPropagateVisualState;
-		void SetPropagateVisualState(const Standard_Boolean theFlag);
+		void SetPropagateVisualState(const bool theFlag);
 
 		/****** PrsMgr_PresentableObject::SetToUpdate ******/
-		/****** md5 signature: 4e115245e20e62a5fea5d45758049758 ******/
+		/****** md5 signature: 08e67cdde3a0a4f6b51e507337bb10c6 ******/
 		%feature("compactdefaultargs") SetToUpdate;
 		%feature("autodoc", "
 Parameters
@@ -1123,7 +1085,7 @@ Description
 Flags presentation to be updated; UpdatePresentations() will recompute these presentations. 
 Parameter theMode presentation (display mode) to invalidate, or -1 to invalidate them all.
 ") SetToUpdate;
-		void SetToUpdate(Standard_Integer theMode);
+		void SetToUpdate(int theMode);
 
 		/****** PrsMgr_PresentableObject::SetToUpdate ******/
 		/****** md5 signature: 4a65af550d5ec39b45b7761dfdbbd7c3 ******/
@@ -1158,12 +1120,12 @@ See also: Graphic3d_TransformPers class description.
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****** PrsMgr_PresentableObject::SetTransparency ******/
-		/****** md5 signature: 6904036a7c429832a3fcf1769aa51bbc ******/
+		/****** md5 signature: efef8205c7248d16288b7a2163741fa8 ******/
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", "
 Parameters
 ----------
-aValue: float (optional, default to 0.6)
+aValue: double (optional, default to 0.6)
 
 Return
 -------
@@ -1173,7 +1135,7 @@ Description
 -----------
 Attributes a setting aValue for transparency. The transparency value should be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent. Warning At a value of 1.0, there may be nothing visible.
 ") SetTransparency;
-		virtual void SetTransparency(const Standard_Real aValue = 0.6);
+		virtual void SetTransparency(const double aValue = 0.6);
 
 		/****** PrsMgr_PresentableObject::SetTypeOfPresentation ******/
 		/****** md5 signature: 8d261802c28692e13d983f3822259436 ******/
@@ -1194,12 +1156,12 @@ Set type of presentation.
 		void SetTypeOfPresentation(const PrsMgr_TypeOfPresentation3d theType);
 
 		/****** PrsMgr_PresentableObject::SetWidth ******/
-		/****** md5 signature: 11debc629042f252811dd0b5a3de5b4a ******/
+		/****** md5 signature: ab4c2bc4c2ab68437441be2575ab8c2f ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
 ----------
-theWidth: float
+theWidth: double
 
 Return
 -------
@@ -1209,7 +1171,7 @@ Description
 -----------
 Allows you to provide the setting aValue for width. Only the Interactive Object knows which Drawer attribute is affected by the width setting.
 ") SetWidth;
-		virtual void SetWidth(const Standard_Real theWidth);
+		virtual void SetWidth(const double theWidth);
 
 		/****** PrsMgr_PresentableObject::SetZLayer ******/
 		/****** md5 signature: 7f7b7652c4d748d54d9fe58f5f98330a ******/
@@ -1243,12 +1205,12 @@ Synchronize presentation aspects after their modification. //! This method shoul
 		void SynchronizeAspects();
 
 		/****** PrsMgr_PresentableObject::ToBeUpdated ******/
-		/****** md5 signature: f2e41689909e2a27ddd3f475e35f02c5 ******/
+		/****** md5 signature: 7ea8906e76a53e4080749385db3fbbf5 ******/
 		%feature("compactdefaultargs") ToBeUpdated;
 		%feature("autodoc", "
 Parameters
 ----------
-theToIncludeHidden: bool (optional, default to Standard_False)
+theToIncludeHidden: bool (optional, default to false)
 
 Return
 -------
@@ -1259,15 +1221,15 @@ Description
 Returns True if any active presentation has invalidation flag. 
 Parameter theToIncludeHidden when True, also checks hidden presentations.
 ") ToBeUpdated;
-		Standard_Boolean ToBeUpdated(Standard_Boolean theToIncludeHidden = Standard_False);
+		bool ToBeUpdated(bool theToIncludeHidden = false);
 
 		/****** PrsMgr_PresentableObject::ToBeUpdated ******/
-		/****** md5 signature: 905b5fc6f277735ff6cfd6892f9be7f4 ******/
+		/****** md5 signature: bcae31d8b1e9f580092ec0ec29239541 ******/
 		%feature("compactdefaultargs") ToBeUpdated;
 		%feature("autodoc", "
 Parameters
 ----------
-ListOfMode: TColStd_ListOfInteger
+ListOfMode: NCollection_List<int>
 
 Return
 -------
@@ -1277,10 +1239,10 @@ Description
 -----------
 gives the list of modes which are flagged 'to be updated'.
 ") ToBeUpdated;
-		void ToBeUpdated(TColStd_ListOfInteger & ListOfMode);
+		void ToBeUpdated(NCollection_List<int> & ListOfMode);
 
 		/****** PrsMgr_PresentableObject::ToPropagateVisualState ******/
-		/****** md5 signature: e1a8691bdd1c5fe7694d8d102a8ff3a9 ******/
+		/****** md5 signature: c93d9d8e0962efe39bca6640addb1dbb ******/
 		%feature("compactdefaultargs") ToPropagateVisualState;
 		%feature("autodoc", "Return
 -------
@@ -1290,7 +1252,7 @@ Description
 -----------
 Get value of the flag 'propagate visual state' It means that the display/erase/color visual state is propagated automatically to all children; by default, the flag is true.
 ") ToPropagateVisualState;
-		Standard_Boolean ToPropagateVisualState();
+		bool ToPropagateVisualState();
 
 		/****** PrsMgr_PresentableObject::TransformPersistence ******/
 		/****** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ******/
@@ -1333,17 +1295,17 @@ Return the transformation taking into account transformation of parent object(s)
 		const opencascade::handle<TopLoc_Datum3D> & TransformationGeom();
 
 		/****** PrsMgr_PresentableObject::Transparency ******/
-		/****** md5 signature: 85ff2aaf1e1e55093c79984940af1fec ******/
+		/****** md5 signature: b2e48aa8d0e36ed803832c6cc31b3a8b ******/
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the transparency setting. This will be between 0.0 and 1.0. At 0.0 an object will be totally opaque, and at 1.0, fully transparent.
 ") Transparency;
-		virtual Standard_Real Transparency();
+		virtual double Transparency();
 
 		/****** PrsMgr_PresentableObject::TypeOfPresentation3d ******/
 		/****** md5 signature: 67a5ba69df5366d9667f1399309351b0 ******/
@@ -1490,17 +1452,17 @@ Return view affinity mask.
 		const opencascade::handle<Graphic3d_ViewAffinity> & ViewAffinity();
 
 		/****** PrsMgr_PresentableObject::Width ******/
-		/****** md5 signature: fabf8349fc4fa48cbd44877ecd356f67 ******/
+		/****** md5 signature: 3b1d43a3d00f5829c4cf473685b2e636 ******/
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the width setting of the Interactive Object.
 ") Width;
-		Standard_Real Width();
+		double Width();
 
 		/****** PrsMgr_PresentableObject::ZLayer ******/
 		/****** md5 signature: 7420fa5788bb824c02345ee38be45933 ******/
@@ -1533,12 +1495,12 @@ Get ID of Z layer for main presentation.
 class PrsMgr_Presentation : public Graphic3d_Structure {
 	public:
 		/****** PrsMgr_Presentation::Clear ******/
-		/****** md5 signature: 23b81bfe6f31892aaf512d3439e16127 ******/
+		/****** md5 signature: 07d3ad9c3120c4c4cfdd4c2ef00f4c53 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
 ----------
-theWithDestruction: bool (optional, default to Standard_True)
+theWithDestruction: bool (optional, default to true)
 
 Return
 -------
@@ -1548,10 +1510,10 @@ Description
 -----------
 removes the whole content of the presentation. Does not remove the other connected presentations.
 ") Clear;
-		virtual void Clear(const Standard_Boolean theWithDestruction = Standard_True);
+		void Clear(const bool theWithDestruction = true);
 
 		/****** PrsMgr_Presentation::Compute ******/
-		/****** md5 signature: e00c7761ecdbff16b5eaa284ed126d0e ******/
+		/****** md5 signature: 99c9e5bb8deeeb0450679c724c8f0175 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Return
 -------
@@ -1561,10 +1523,10 @@ Description
 -----------
 Compute structure using presentation manager.
 ") Compute;
-		virtual void Compute();
+		void Compute();
 
 		/****** PrsMgr_Presentation::Display ******/
-		/****** md5 signature: 869c346ea6117dea2e22059b972a14d6 ******/
+		/****** md5 signature: 903842dd9d893c15b89378195682475b ******/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "Return
 -------
@@ -1574,7 +1536,7 @@ Description
 -----------
 Display structure.
 ") Display;
-		virtual void Display();
+		void Display();
 
 
         /****************** DumpJson ******************/
@@ -1598,7 +1560,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** PrsMgr_Presentation::Erase ******/
-		/****** md5 signature: 1226ba71f21d492e9a9175cd12d59e28 ******/
+		/****** md5 signature: 95546e544a80eb5699868e737e72e695 ******/
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "Return
 -------
@@ -1608,7 +1570,7 @@ Description
 -----------
 Remove structure.
 ") Erase;
-		virtual void Erase();
+		void Erase();
 
 		/****** PrsMgr_Presentation::Highlight ******/
 		/****** md5 signature: 2af121cc6b89a43225bf54a5f726264f ******/
@@ -1629,7 +1591,7 @@ Highlight structure.
 		void Highlight(const opencascade::handle<Prs3d_Drawer> & theStyle);
 
 		/****** PrsMgr_Presentation::IsDisplayed ******/
-		/****** md5 signature: fac1864b342038e36d4e4790c73e2b9e ******/
+		/****** md5 signature: 5341f0de80e92e0a414a67993afca9ef ******/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "Return
 -------
@@ -1639,10 +1601,10 @@ Description
 -----------
 Return True if structure has been displayed and in no hidden state.
 ") IsDisplayed;
-		virtual Standard_Boolean IsDisplayed();
+		bool IsDisplayed();
 
 		/****** PrsMgr_Presentation::Mode ******/
-		/****** md5 signature: b35445cddc9deccdf8a4cb5a0f8a439b ******/
+		/****** md5 signature: 09d98ebbe6bcf8e23b5b0e49c47a4193 ******/
 		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "Return
 -------
@@ -1652,10 +1614,10 @@ Description
 -----------
 Return display mode index.
 ") Mode;
-		Standard_Integer Mode();
+		int Mode();
 
 		/****** PrsMgr_Presentation::MustBeUpdated ******/
-		/****** md5 signature: 417e329cf76d7a136d3982c4ef6dde3f ******/
+		/****** md5 signature: 98efe928d800c2b49d00b9ac1b727cdf ******/
 		%feature("compactdefaultargs") MustBeUpdated;
 		%feature("autodoc", "Return
 -------
@@ -1665,7 +1627,7 @@ Description
 -----------
 No available documentation.
 ") MustBeUpdated;
-		Standard_Boolean MustBeUpdated();
+		bool MustBeUpdated();
 
 		/****** PrsMgr_Presentation::Presentation ******/
 		/****** md5 signature: b7e1666dbf5d4a095a7ae27febdcee77 ******/
@@ -1694,7 +1656,7 @@ returns the PresentationManager in which the presentation has been created.
 		const opencascade::handle<PrsMgr_PresentationManager> & PresentationManager();
 
 		/****** PrsMgr_Presentation::SetUpdateStatus ******/
-		/****** md5 signature: 8f54b569772ca23ead0aece319538eca ******/
+		/****** md5 signature: 380184053efd836a4b9f905a66bcc2f2 ******/
 		%feature("compactdefaultargs") SetUpdateStatus;
 		%feature("autodoc", "
 Parameters
@@ -1709,7 +1671,7 @@ Description
 -----------
 No available documentation.
 ") SetUpdateStatus;
-		void SetUpdateStatus(const Standard_Boolean theUpdateStatus);
+		void SetUpdateStatus(const bool theUpdateStatus);
 
 		/****** PrsMgr_Presentation::Unhighlight ******/
 		/****** md5 signature: 39ce43ce3b46f356efde8e354316b376 ******/
@@ -1790,7 +1752,7 @@ Resets the transient list of presentations previously displayed in immediate mod
 		void BeginImmediateDraw();
 
 		/****** PrsMgr_PresentationManager::Clear ******/
-		/****** md5 signature: 2a61577b895e4850e9c9f89caef0b9b7 ******/
+		/****** md5 signature: 6cdf2d5351563f36f6f5c1ab79f7f724 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -1806,7 +1768,7 @@ Description
 -----------
 Clears the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
 ") Clear;
-		virtual void Clear(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		virtual void Clear(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::ClearImmediateDraw ******/
 		/****** md5 signature: a61ed789427e61ac8a321653e129d97d ******/
@@ -1822,7 +1784,7 @@ Resets the transient list of presentations previously displayed in immediate mod
 		void ClearImmediateDraw();
 
 		/****** PrsMgr_PresentationManager::Color ******/
-		/****** md5 signature: b85d3054a96bd70de66cf45192cfb1ea ******/
+		/****** md5 signature: 460f83d8a0e073d7dedbb25ed37ce549 ******/
 		%feature("compactdefaultargs") Color;
 		%feature("autodoc", "
 Parameters
@@ -1830,7 +1792,7 @@ Parameters
 thePrsObject: PrsMgr_PresentableObject
 theStyle: Prs3d_Drawer
 theMode: int (optional, default to 0)
-theSelObj: PrsMgr_PresentableObject (optional, default to NULL)
+theSelObj: PrsMgr_PresentableObject (optional, default to nullptr)
 theImmediateStructLayerId: int (optional, default to Graphic3d_ZLayerId_Topmost)
 
 Return
@@ -1841,10 +1803,10 @@ Description
 -----------
 Highlights the graphic object thePrsObject in the color theColor. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 ") Color;
-		void Color(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL, int theImmediateStructLayerId = Graphic3d_ZLayerId_Topmost);
+		void Color(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<Prs3d_Drawer> & theStyle, const int theMode = 0, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = nullptr, int theImmediateStructLayerId = Graphic3d_ZLayerId_Topmost);
 
 		/****** PrsMgr_PresentationManager::Connect ******/
-		/****** md5 signature: 1e9fcc77126fa4ddf9593126ebbc3c72 ******/
+		/****** md5 signature: 740319274ccc6f84ca48a956ff259870 ******/
 		%feature("compactdefaultargs") Connect;
 		%feature("autodoc", "
 Parameters
@@ -1862,10 +1824,10 @@ Description
 -----------
 No available documentation.
 ") Connect;
-		void Connect(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<PrsMgr_PresentableObject> & theOtherObject, const Standard_Integer theMode = 0, const Standard_Integer theOtherMode = 0);
+		void Connect(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<PrsMgr_PresentableObject> & theOtherObject, const int theMode = 0, const int theOtherMode = 0);
 
 		/****** PrsMgr_PresentationManager::Display ******/
-		/****** md5 signature: a374b8bbbbf6d606f9b6880a8d6d23fd ******/
+		/****** md5 signature: 50f51ea7c584bf78b6d384fddc08b35e ******/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "
 Parameters
@@ -1881,10 +1843,10 @@ Description
 -----------
 Displays the presentation of the object in the given Presentation manager with the given mode. The mode should be enumerated by the object which inherits PresentableObject.
 ") Display;
-		void Display(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		void Display(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::DisplayPriority ******/
-		/****** md5 signature: 90f66350e590479c3e4675265df1e605 ******/
+		/****** md5 signature: c77ff653811a24ba29108bdf9cb40095 ******/
 		%feature("compactdefaultargs") DisplayPriority;
 		%feature("autodoc", "
 Parameters
@@ -1900,7 +1862,7 @@ Description
 -----------
 Returns the display priority of the presentable object thePrsObject in this framework with the display mode theMode.
 ") DisplayPriority;
-		Graphic3d_DisplayPriority DisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode);
+		Graphic3d_DisplayPriority DisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode);
 
 		/****** PrsMgr_PresentationManager::EndImmediateDraw ******/
 		/****** md5 signature: 6979ec7acf16ddaac04142f401974aa8 ******/
@@ -1921,7 +1883,7 @@ Allows rapid drawing of the each view in theViewer by avoiding an update of the 
 		void EndImmediateDraw(const opencascade::handle<V3d_Viewer> & theViewer);
 
 		/****** PrsMgr_PresentationManager::Erase ******/
-		/****** md5 signature: 72ad4db7aaa1598173431c5b591b6fe6 ******/
+		/****** md5 signature: 79838abfd45a99771787aadfba0b646d ******/
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "
 Parameters
@@ -1937,7 +1899,7 @@ Description
 -----------
 erases the presentation of the object in the given Presentation manager with the given mode. If @theMode is -1, then erases all presentations of the object.
 ") Erase;
-		void Erase(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		void Erase(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::GetZLayer ******/
 		/****** md5 signature: 234266cff6819c09adb5ceab0db4f798 ******/
@@ -1958,7 +1920,7 @@ Get Z layer ID assigned to all presentations of the object. Method returns -1 va
 		Graphic3d_ZLayerId GetZLayer(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
 
 		/****** PrsMgr_PresentationManager::HasPresentation ******/
-		/****** md5 signature: 7269040ca8b3ecda300996321360976b ******/
+		/****** md5 signature: e4ceae78ce20802d059994ca602115ef ******/
 		%feature("compactdefaultargs") HasPresentation;
 		%feature("autodoc", "
 Parameters
@@ -1974,10 +1936,10 @@ Description
 -----------
 Returns true if there is a presentation of the presentable object thePrsObject in this framework, thePrsObject having the display mode theMode.
 ") HasPresentation;
-		Standard_Boolean HasPresentation(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		bool HasPresentation(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::IsDisplayed ******/
-		/****** md5 signature: b3ab321c30d7fe0d9de316b2973869e2 ******/
+		/****** md5 signature: c7648ec097c59f25079120e4077e89f8 ******/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "
 Parameters
@@ -1993,10 +1955,10 @@ Description
 -----------
 No available documentation.
 ") IsDisplayed;
-		Standard_Boolean IsDisplayed(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		bool IsDisplayed(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::IsHighlighted ******/
-		/****** md5 signature: 732c995cfe1cc42df4ef0311005daf6f ******/
+		/****** md5 signature: d809329816bbbc3fd1d15479bc40e927 ******/
 		%feature("compactdefaultargs") IsHighlighted;
 		%feature("autodoc", "
 Parameters
@@ -2012,10 +1974,10 @@ Description
 -----------
 Returns true if the presentation of the presentable object thePrsObject in this framework with the display mode theMode is highlighted.
 ") IsHighlighted;
-		Standard_Boolean IsHighlighted(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		bool IsHighlighted(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::IsImmediateModeOn ******/
-		/****** md5 signature: 4be60babd0bc73da77be0206a101ba4c ******/
+		/****** md5 signature: fd4935f8b4223a6c066f9e5dda12e65a ******/
 		%feature("compactdefaultargs") IsImmediateModeOn;
 		%feature("autodoc", "Return
 -------
@@ -2025,18 +1987,18 @@ Description
 -----------
 Returns true if Presentation Manager is accumulating transient list of presentations to be displayed in immediate mode.
 ") IsImmediateModeOn;
-		Standard_Boolean IsImmediateModeOn();
+		bool IsImmediateModeOn();
 
 		/****** PrsMgr_PresentationManager::Presentation ******/
-		/****** md5 signature: 805551606ed14b1efc696c872a480231 ******/
+		/****** md5 signature: 391af3a9820d998377e82b93c8b969e7 ******/
 		%feature("compactdefaultargs") Presentation;
 		%feature("autodoc", "
 Parameters
 ----------
 thePrsObject: PrsMgr_PresentableObject
 theMode: int (optional, default to 0)
-theToCreate: bool (optional, default to Standard_False)
-theSelObj: PrsMgr_PresentableObject (optional, default to NULL)
+theToCreate: bool (optional, default to false)
+theSelObj: PrsMgr_PresentableObject (optional, default to nullptr)
 
 Return
 -------
@@ -2046,7 +2008,7 @@ Description
 -----------
 Returns the presentation Presentation of the presentable object thePrsObject in this framework. When theToCreate is true - automatically creates presentation for specified mode when not exist. Optional argument theSelObj specifies parent decomposed object to inherit its view affinity.
 ") Presentation;
-		opencascade::handle<PrsMgr_Presentation> Presentation(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0, const Standard_Boolean theToCreate = Standard_False, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
+		opencascade::handle<PrsMgr_Presentation> Presentation(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0, const bool theToCreate = false, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = nullptr);
 
 		/****** PrsMgr_PresentationManager::RedrawImmediate ******/
 		/****** md5 signature: e79e25af7466be6448448d7a6d5349eb ******/
@@ -2067,7 +2029,7 @@ Clears and redisplays immediate structures of the viewer taking into account its
 		void RedrawImmediate(const opencascade::handle<V3d_Viewer> & theViewer);
 
 		/****** PrsMgr_PresentationManager::SetDisplayPriority ******/
-		/****** md5 signature: 9a549ca30dd3170bb74ca40344856587 ******/
+		/****** md5 signature: b1e67b4a191e25cd5f98bf828902f6e8 ******/
 		%feature("compactdefaultargs") SetDisplayPriority;
 		%feature("autodoc", "
 Parameters
@@ -2084,10 +2046,10 @@ Description
 -----------
 Sets the display priority theNewPrior of the presentable object thePrsObject in this framework with the display mode theMode.
 ") SetDisplayPriority;
-		void SetDisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode, const Graphic3d_DisplayPriority theNewPrior);
+		void SetDisplayPriority(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode, const Graphic3d_DisplayPriority theNewPrior);
 
 		/****** PrsMgr_PresentationManager::SetVisibility ******/
-		/****** md5 signature: d7287cc5906b7a3a48ea7b6451457b6e ******/
+		/****** md5 signature: 89a3a17ef69bb280b4264b9504d1320d ******/
 		%feature("compactdefaultargs") SetVisibility;
 		%feature("autodoc", "
 Parameters
@@ -2104,7 +2066,7 @@ Description
 -----------
 Sets the visibility of presentable object.
 ") SetVisibility;
-		void SetVisibility(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode, const Standard_Boolean theValue);
+		void SetVisibility(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode, const bool theValue);
 
 		/****** PrsMgr_PresentationManager::SetZLayer ******/
 		/****** md5 signature: 66d77fb3608e275461264dc059a62d6f ******/
@@ -2139,7 +2101,7 @@ Returns the structure manager.
 		const opencascade::handle<Graphic3d_StructureManager> & StructureManager();
 
 		/****** PrsMgr_PresentationManager::Transform ******/
-		/****** md5 signature: 344885007b9ccb1456edbdc153381925 ******/
+		/****** md5 signature: 506ed89073277fbca34c9649610d7dd4 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -2156,7 +2118,7 @@ Description
 -----------
 Sets the transformation theTransformation for the presentable object thePrsObject. thePrsObject has the display mode theMode; this has the default value of 0, that is, the wireframe display mode.
 ") Transform;
-		void Transform(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<TopLoc_Datum3D> & theTransformation, const Standard_Integer theMode = 0);
+		void Transform(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const opencascade::handle<TopLoc_Datum3D> & theTransformation, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::Unhighlight ******/
 		/****** md5 signature: 1db3626dfa4fdeb3c345157ebf7f6ad8 ******/
@@ -2177,7 +2139,7 @@ Removes highlighting from the presentation of the presentable object.
 		void Unhighlight(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject);
 
 		/****** PrsMgr_PresentationManager::Update ******/
-		/****** md5 signature: 6f121173a28205c89b330155df4d893b ******/
+		/****** md5 signature: 8a6ab2b22e6bbf8f0f21a7f055321d1e ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2193,10 +2155,10 @@ Description
 -----------
 Updates the presentation of the presentable object thePrsObject in this framework with the display mode theMode.
 ") Update;
-		void Update(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const Standard_Integer theMode = 0);
+		void Update(const opencascade::handle<PrsMgr_PresentableObject> & thePrsObject, const int theMode = 0);
 
 		/****** PrsMgr_PresentationManager::UpdateHighlightTrsf ******/
-		/****** md5 signature: 09522853572cb982dd4592da49b4d268 ******/
+		/****** md5 signature: d1aacf30bbce749bacc7569bcd8063d2 ******/
 		%feature("compactdefaultargs") UpdateHighlightTrsf;
 		%feature("autodoc", "
 Parameters
@@ -2204,7 +2166,7 @@ Parameters
 theViewer: V3d_Viewer
 theObj: PrsMgr_PresentableObject
 theMode: int (optional, default to 0)
-theSelObj: PrsMgr_PresentableObject (optional, default to NULL)
+theSelObj: PrsMgr_PresentableObject (optional, default to nullptr)
 
 Return
 -------
@@ -2217,7 +2179,7 @@ Parameter theObj defines the base object, it local transformation will be applie
 Parameter theMode defines display mode of the base object 
 Parameter theSelObj defines the object produced after decomposition of the base object for local selection.
 ") UpdateHighlightTrsf;
-		void UpdateHighlightTrsf(const opencascade::handle<V3d_Viewer> & theViewer, const opencascade::handle<PrsMgr_PresentableObject> & theObj, const Standard_Integer theMode = 0, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = NULL);
+		void UpdateHighlightTrsf(const opencascade::handle<V3d_Viewer> & theViewer, const opencascade::handle<PrsMgr_PresentableObject> & theObj, const int theMode = 0, const opencascade::handle<PrsMgr_PresentableObject> & theSelObj = nullptr);
 
 };
 
@@ -2236,6 +2198,4 @@ Parameter theSelObj defines the object produced after decomposition of the base 
 /* class aliases */
 %pythoncode {
 Prs3d_Presentation=OCC.Core.Graphic3d.Graphic3d_Structure
-PrsMgr_Presentation3d=PrsMgr_Presentation
-PrsMgr_PresentationManager3d=PrsMgr_PresentationManager
 }

@@ -104,15 +104,15 @@ No available documentation.
 		 CPnts_AbscissaPoint();
 
 		/****** CPnts_AbscissaPoint::CPnts_AbscissaPoint ******/
-		/****** md5 signature: dcc9a717899dec558afa4d9cafe504b2 ******/
+		/****** md5 signature: 78f93d7507e8525e065d7c0d4ea04a0b ******/
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Abscissa: float
-U0: float
-Resolution: float
+Abscissa: double
+U0: double
+Resolution: double
 
 Return
 -------
@@ -122,18 +122,18 @@ Description
 -----------
 the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
-		 CPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Resolution);
+		 CPnts_AbscissaPoint(const Adaptor3d_Curve & C, const double Abscissa, const double U0, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::CPnts_AbscissaPoint ******/
-		/****** md5 signature: f61108658c8a9b1f7e88a63a0a95e128 ******/
+		/****** md5 signature: a5b928b9d053ac7035cd098bc92f415b ******/
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Abscissa: float
-U0: float
-Resolution: float
+Abscissa: double
+U0: double
+Resolution: double
 
 Return
 -------
@@ -143,19 +143,19 @@ Description
 -----------
 the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
-		 CPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Resolution);
+		 CPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const double Abscissa, const double U0, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::CPnts_AbscissaPoint ******/
-		/****** md5 signature: 4b965b4c1e38cd5c5c61839c0aa0c443 ******/
+		/****** md5 signature: 60e4e5e0d194193389d8aca4a867dd54 ******/
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Abscissa: float
-U0: float
-Ui: float
-Resolution: float
+Abscissa: double
+U0: double
+Ui: double
+Resolution: double
 
 Return
 -------
@@ -165,19 +165,19 @@ Description
 -----------
 the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
-		 CPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
+		 CPnts_AbscissaPoint(const Adaptor3d_Curve & C, const double Abscissa, const double U0, const double Ui, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::CPnts_AbscissaPoint ******/
-		/****** md5 signature: 55d5c42afa69db1719eeacb7e8767154 ******/
+		/****** md5 signature: 67aeac24cbf279ec2544ed18106a7c82 ******/
 		%feature("compactdefaultargs") CPnts_AbscissaPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Abscissa: float
-U0: float
-Ui: float
-Resolution: float
+Abscissa: double
+U0: double
+Ui: double
+Resolution: double
 
 Return
 -------
@@ -187,18 +187,18 @@ Description
 -----------
 the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
-		 CPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
+		 CPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const double Abscissa, const double U0, const double Ui, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::AdvPerform ******/
-		/****** md5 signature: 951d7d00a89f35f930b917ffe12a10e6 ******/
+		/****** md5 signature: 9195200405286577d6341df83bc6a549 ******/
 		%feature("compactdefaultargs") AdvPerform;
 		%feature("autodoc", "
 Parameters
 ----------
-Abscissa: float
-U0: float
-Ui: float
-Resolution: float
+Abscissa: double
+U0: double
+Ui: double
+Resolution: double
 
 Return
 -------
@@ -208,7 +208,7 @@ Description
 -----------
 Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance management; to use this method in right way it is necessary to call empty constructor. then call method Init with Tolerance = Resolution, then call AdvPermorm. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 ") AdvPerform;
-		void AdvPerform(const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
+		void AdvPerform(const double Abscissa, const double U0, const double Ui, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::Init ******/
 		/****** md5 signature: 05d67a73334304f898ea37473bae91e6 ******/
@@ -247,13 +247,13 @@ Initializes the resolution function with <C>.
 		void Init(const Adaptor2d_Curve2d & C);
 
 		/****** CPnts_AbscissaPoint::Init ******/
-		/****** md5 signature: e92216eb760349ca106506e6088e055d ******/
+		/****** md5 signature: 5ca4f321333231bee1b09578e66c6a5d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Tol: float
+Tol: double
 
 Return
 -------
@@ -263,16 +263,16 @@ Description
 -----------
 Initializes the resolution function with <C>.
 ") Init;
-		void Init(const Adaptor3d_Curve & C, const Standard_Real Tol);
+		void Init(const Adaptor3d_Curve & C, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Init ******/
-		/****** md5 signature: 939717cae9848f8ded250dc6fa561c85 ******/
+		/****** md5 signature: 4251e69b64449bb1ea596845cd8b7499 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Tol: float
+Tol: double
 
 Return
 -------
@@ -282,17 +282,17 @@ Description
 -----------
 Initializes the resolution function with <C>.
 ") Init;
-		void Init(const Adaptor2d_Curve2d & C, const Standard_Real Tol);
+		void Init(const Adaptor2d_Curve2d & C, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Init ******/
-		/****** md5 signature: 87ca1eea65e2958f5df2b13a0b5e6780 ******/
+		/****** md5 signature: 32805f629285b43dee81b0007b592e16 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
@@ -302,17 +302,17 @@ Description
 -----------
 Initializes the resolution function with <C> between U1 and U2.
 ") Init;
-		void Init(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2);
+		void Init(const Adaptor3d_Curve & C, const double U1, const double U2);
 
 		/****** CPnts_AbscissaPoint::Init ******/
-		/****** md5 signature: b77983d5b38237e26121dc1c95e5c88b ******/
+		/****** md5 signature: 17e4f882eb7573108266bb632e6221b4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
@@ -322,18 +322,18 @@ Description
 -----------
 Initializes the resolution function with <C> between U1 and U2.
 ") Init;
-		void Init(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2);
+		void Init(const Adaptor2d_Curve2d & C, const double U1, const double U2);
 
 		/****** CPnts_AbscissaPoint::Init ******/
-		/****** md5 signature: cb69652f51f723a9243f4f750acb1157 ******/
+		/****** md5 signature: 286f5442e7fb51ab4d9ce9195df5fa71 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U1: float
-U2: float
-Tol: float
+U1: double
+U2: double
+Tol: double
 
 Return
 -------
@@ -343,18 +343,18 @@ Description
 -----------
 Initializes the resolution function with <C> between U1 and U2.
 ") Init;
-		void Init(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
+		void Init(const Adaptor3d_Curve & C, const double U1, const double U2, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Init ******/
-		/****** md5 signature: 3e59992846d9e8300e2f40695942e4c6 ******/
+		/****** md5 signature: b777b31c142fd81177759778f7c36dc1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U1: float
-U2: float
-Tol: float
+U1: double
+U2: double
+Tol: double
 
 Return
 -------
@@ -364,10 +364,10 @@ Description
 -----------
 Initializes the resolution function with <C> between U1 and U2.
 ") Init;
-		void Init(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
+		void Init(const Adaptor2d_Curve2d & C, const double U1, const double U2, const double Tol);
 
 		/****** CPnts_AbscissaPoint::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -377,10 +377,10 @@ Description
 -----------
 True if the computation was successful, False otherwise.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: eba769e16675af7987425cafd53458ca ******/
+		/****** md5 signature: eb99b0a8ffc8925f7a4f50cfbd35e468 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
@@ -389,16 +389,16 @@ C: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C>.
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C);
+		static double Length(const Adaptor3d_Curve & C);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 765cbebd0c62408a590e139d7941ff63 ******/
+		/****** md5 signature: 1f93a819e1bb8009279f51ee9409df3a ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
@@ -407,156 +407,156 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C>.
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C);
+		static double Length(const Adaptor2d_Curve2d & C);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 0c294f64dbc0f6a4115eef7dd6094c0a ******/
+		/****** md5 signature: 173c6253b9a5cd18720fb3d27ae78877 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Tol: float
+Tol: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C> with the given tolerance.
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real Tol);
+		static double Length(const Adaptor3d_Curve & C, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 2369489a44197d1ca38f55d75b7ed4bb ******/
+		/****** md5 signature: 50f5b916c4ffe1bba1cee830c676995c ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Tol: float
+Tol: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C> with the given tolerance.
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real Tol);
+		static double Length(const Adaptor2d_Curve2d & C, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 0ff9ac31546f5bd02057bb36f563f5d4 ******/
+		/****** md5 signature: dc899bf3d31ed4bbb1b5a0390465a33d ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C> between <U1> and <U2>.
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2);
+		static double Length(const Adaptor3d_Curve & C, const double U1, const double U2);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 1e46daf657fccb259b7d9f58dc7e413b ******/
+		/****** md5 signature: 0b3d34d6f1f4ac16af86f54cd4b51cf3 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C> between <U1> and <U2>.
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2);
+		static double Length(const Adaptor2d_Curve2d & C, const double U1, const double U2);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 2e36ed9a5703e01dfe14dffcfd406a78 ******/
+		/****** md5 signature: a86d3d8abc982575488914842f7a1f5d ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U1: float
-U2: float
-Tol: float
+U1: double
+U2: double
+Tol: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
 ") Length;
-		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
+		static double Length(const Adaptor3d_Curve & C, const double U1, const double U2, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Length ******/
-		/****** md5 signature: 01305edaf2437396737fa3c58ad94127 ******/
+		/****** md5 signature: 2c7deb9a4583a33f181c08c74d66f766 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U1: float
-U2: float
-Tol: float
+U1: double
+U2: double
+Tol: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance. creation of a indefinite AbscissaPoint.
 ") Length;
-		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
+		static double Length(const Adaptor2d_Curve2d & C, const double U1, const double U2, const double Tol);
 
 		/****** CPnts_AbscissaPoint::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the solution.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** CPnts_AbscissaPoint::Perform ******/
-		/****** md5 signature: 2e65ba72858d674b8c44518b7193d998 ******/
+		/****** md5 signature: 0fb81dcabee49b5b08c114bab0f99b52 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Abscissa: float
-U0: float
-Resolution: float
+Abscissa: double
+U0: double
+Resolution: double
 
 Return
 -------
@@ -566,18 +566,18 @@ Description
 -----------
 Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured.
 ") Perform;
-		void Perform(const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Resolution);
+		void Perform(const double Abscissa, const double U0, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::Perform ******/
-		/****** md5 signature: 022ad22512c6b945dc45153665cc57d8 ******/
+		/****** md5 signature: 97dcd9d8099cc63230f50840bdca1cb9 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Abscissa: float
-U0: float
-Ui: float
-Resolution: float
+Abscissa: double
+U0: double
+Ui: double
+Resolution: double
 
 Return
 -------
@@ -587,15 +587,15 @@ Description
 -----------
 Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 ") Perform;
-		void Perform(const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
+		void Perform(const double Abscissa, const double U0, const double Ui, const double Resolution);
 
 		/****** CPnts_AbscissaPoint::SetParameter ******/
-		/****** md5 signature: d3a5f0f306e71f1174aeb726bf74eacc ******/
+		/****** md5 signature: 939d553102839b2fc01bf3b02107e2ec ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -605,7 +605,7 @@ Description
 -----------
 Enforce the solution, used by GCPnts.
 ") SetParameter;
-		void SetParameter(const Standard_Real P);
+		void SetParameter(const double P);
 
 };
 
@@ -635,13 +635,13 @@ No available documentation.
 		 CPnts_MyGaussFunction();
 
 		/****** CPnts_MyGaussFunction::Init ******/
-		/****** md5 signature: 39f39a8070dd6270a565421459f5d889 ******/
+		/****** md5 signature: 1fe3fef6b6f0d3d1f9e39a407f000848 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 F: CPnts_RealFunction
-D: Standard_Address
+D: void *
 
 Return
 -------
@@ -651,25 +651,25 @@ Description
 -----------
 F is a pointer on a function D is a client data //! Each value is computed with F(D).
 ") Init;
-		void Init(const CPnts_RealFunction & F, const Standard_Address D);
+		void Init(const CPnts_RealFunction & F, void * const D);
 
 		/****** CPnts_MyGaussFunction::Value ******/
-		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
+		/****** md5 signature: 2fdd0f48acb4882f76bbbe432a18ac3a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
+		bool Value(const double X, Standard_Real &OutValue);
 
 };
 
@@ -699,31 +699,31 @@ No available documentation.
 		 CPnts_MyRootFunction();
 
 		/****** CPnts_MyRootFunction::Derivative ******/
-		/****** md5 signature: 07088c713b316ad61988ae53e107d4d9 ******/
+		/****** md5 signature: b3cc0bc1a26f87426c2cc5e0a0f03d9e ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-Df: float
+Df: double
 
 Description
 -----------
 This is F(X,D).
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
+		bool Derivative(const double X, Standard_Real &OutValue);
 
 		/****** CPnts_MyRootFunction::Init ******/
-		/****** md5 signature: 5f1c4dc9119754c59956235d7e867190 ******/
+		/****** md5 signature: d48596e814230d9934975a633edab7da ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 F: CPnts_RealFunction
-D: Standard_Address
+D: void *
 Order: int
 
 Return
@@ -734,16 +734,16 @@ Description
 -----------
 F is a pointer on a function D is a client data Order is the order of integration to use.
 ") Init;
-		void Init(const CPnts_RealFunction & F, const Standard_Address D, const Standard_Integer Order);
+		void Init(const CPnts_RealFunction & F, void * const D, const int Order);
 
 		/****** CPnts_MyRootFunction::Init ******/
-		/****** md5 signature: fe427beeb4a20724629011bcd7029afd ******/
+		/****** md5 signature: 5df5ace0fb1f6b8397ad3b99d04bc149 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-X0: float
-L: float
+X0: double
+L: double
 
 Return
 -------
@@ -753,17 +753,17 @@ Description
 -----------
 We want to solve Integral(X0,X,F(X,D)) = L.
 ") Init;
-		void Init(const Standard_Real X0, const Standard_Real L);
+		void Init(const double X0, const double L);
 
 		/****** CPnts_MyRootFunction::Init ******/
-		/****** md5 signature: 5f72356df0e880274ae4484b7237a98d ******/
+		/****** md5 signature: b2a815c575ee18e55aa5d88856866d0e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-X0: float
-L: float
-Tol: float
+X0: double
+L: double
+Tol: double
 
 Return
 -------
@@ -773,44 +773,44 @@ Description
 -----------
 We want to solve Integral(X0,X,F(X,D)) = L with given tolerance.
 ") Init;
-		void Init(const Standard_Real X0, const Standard_Real L, const Standard_Real Tol);
+		void Init(const double X0, const double L, const double Tol);
 
 		/****** CPnts_MyRootFunction::Value ******/
-		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
+		/****** md5 signature: 2fdd0f48acb4882f76bbbe432a18ac3a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 This is Integral(X0,X,F(X,D)) - L.
 ") Value;
-		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
+		bool Value(const double X, Standard_Real &OutValue);
 
 		/****** CPnts_MyRootFunction::Values ******/
-		/****** md5 signature: c949600f2bbcaa0e904a51394da59e1d ******/
+		/****** md5 signature: cfc6e99471ff562cf6b64a7652afb3b1 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
-Df: float
+F: double
+Df: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double X, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -840,14 +840,14 @@ creation of a indefinite UniformDeflection.
 		 CPnts_UniformDeflection();
 
 		/****** CPnts_UniformDeflection::CPnts_UniformDeflection ******/
-		/****** md5 signature: 84fa75f241a11f8ce3c7710f14125eee ******/
+		/****** md5 signature: 5c1e69d2f9ee112dca868ba9b7e629f3 ******/
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Deflection: float
-Resolution: float
+Deflection: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -856,19 +856,19 @@ None
 
 Description
 -----------
-Computes a uniform deflection distribution of points on the curve <C>. <Deflection> defines the constant deflection value. The algorithm computes the number of points and the points. The curve <C> must be at least C2 else the computation can fail. If just some parts of the curve is C2 it is better to give the parameters bounds and to use the below constructor . if <WithControl> is True, the algorithm controls the estimate deflection when the curve is singular at the point P(u),the algorithm computes the next point as P(u + Max(CurrentStep,Abs(LastParameter-FirstParameter))) if the singularity is at the first point ,the next point calculated is the P(LastParameter).
+Computes a uniform deflection distribution of points on the curve <C>. <Deflection> defines the constant deflection value. The algorithm computes the number of points and the points. The curve <C> must be at least C2 else the computation can fail. If just some parts of the curve is C2 it is better to give the parameters bounds and to use the below constructor . if <WithControl> is True, the algorithm controls the estimate deflection when the curve is singular at the point P(u),the algorithm computes the next point as P(u + std::max(CurrentStep,std::abs(LastParameter-FirstParameter))) if the singularity is at the first point ,the next point calculated is the P(LastParameter).
 ") CPnts_UniformDeflection;
-		 CPnts_UniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		 CPnts_UniformDeflection(const Adaptor3d_Curve & C, const double Deflection, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::CPnts_UniformDeflection ******/
-		/****** md5 signature: 7b383059323db954be890e733e314990 ******/
+		/****** md5 signature: 4c32d72cb1630a95394b38f7a40e03c5 ******/
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Deflection: float
-Resolution: float
+Deflection: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -879,19 +879,19 @@ Description
 -----------
 As above with 2d curve.
 ") CPnts_UniformDeflection;
-		 CPnts_UniformDeflection(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		 CPnts_UniformDeflection(const Adaptor2d_Curve2d & C, const double Deflection, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::CPnts_UniformDeflection ******/
-		/****** md5 signature: 350f6bae333ae018e0b9fb1eb1188e09 ******/
+		/****** md5 signature: f5db0f7b4eaf005e84a3df14162022f7 ******/
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Deflection: float
-U1: float
-U2: float
-Resolution: float
+Deflection: double
+U1: double
+U2: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -902,19 +902,19 @@ Description
 -----------
 Computes an uniform deflection distribution of points on a part of the curve <C>. Deflection defines the step between the points. <U1> and <U2> define the distribution span. <U1> and <U2> must be in the parametric range of the curve.
 ") CPnts_UniformDeflection;
-		 CPnts_UniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		 CPnts_UniformDeflection(const Adaptor3d_Curve & C, const double Deflection, const double U1, const double U2, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::CPnts_UniformDeflection ******/
-		/****** md5 signature: b92aad6ac27525ef3e2fa6be7730b792 ******/
+		/****** md5 signature: 4f398c04c2675c64679b3c7c81a28eff ******/
 		%feature("compactdefaultargs") CPnts_UniformDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Deflection: float
-U1: float
-U2: float
-Resolution: float
+Deflection: double
+U1: double
+U2: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -925,17 +925,17 @@ Description
 -----------
 As above with 2d curve.
 ") CPnts_UniformDeflection;
-		 CPnts_UniformDeflection(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		 CPnts_UniformDeflection(const Adaptor2d_Curve2d & C, const double Deflection, const double U1, const double U2, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::Initialize ******/
-		/****** md5 signature: 3e04248745b7abf1ca127fe927a9d03a ******/
+		/****** md5 signature: 377205f099e4111e99cde1118159891a ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Deflection: float
-Resolution: float
+Deflection: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -946,17 +946,17 @@ Description
 -----------
 Initialize the algorithms with <C>, <Deflection>, <UStep>, <Resolution> and <WithControl>.
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		void Initialize(const Adaptor3d_Curve & C, const double Deflection, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::Initialize ******/
-		/****** md5 signature: fc394fce795394d63421de08f8720ec8 ******/
+		/****** md5 signature: b3fd5c53c26cca98419dfbd3f0d55c73 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Deflection: float
-Resolution: float
+Deflection: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -967,19 +967,19 @@ Description
 -----------
 Initialize the algorithms with <C>, <Deflection>, <UStep>, <Resolution> and <WithControl>.
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		void Initialize(const Adaptor2d_Curve2d & C, const double Deflection, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::Initialize ******/
-		/****** md5 signature: c3c016d21ea4c112d829bfcc114f78d4 ******/
+		/****** md5 signature: 3aee533832489aad857b1efbc0e4070e ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Deflection: float
-U1: float
-U2: float
-Resolution: float
+Deflection: double
+U1: double
+U2: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -990,19 +990,19 @@ Description
 -----------
 Initialize the algorithms with <C>, <Deflection>, <UStep>, <U1>, <U2> and <WithControl>.
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		void Initialize(const Adaptor3d_Curve & C, const double Deflection, const double U1, const double U2, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::Initialize ******/
-		/****** md5 signature: 6d52d63715b1ed7bea1f720001bbd8d5 ******/
+		/****** md5 signature: 41e32ef92b2a2fa686f79cc535845a14 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Deflection: float
-U1: float
-U2: float
-Resolution: float
+Deflection: double
+U1: double
+U2: double
+Resolution: double
 WithControl: bool
 
 Return
@@ -1013,10 +1013,10 @@ Description
 -----------
 Initialize the algorithms with <C>, <Deflection>, <UStep>, <U1>, <U2> and <WithControl>.
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
+		void Initialize(const Adaptor2d_Curve2d & C, const double Deflection, const double U1, const double U2, const double Resolution, const bool WithControl);
 
 		/****** CPnts_UniformDeflection::IsAllDone ******/
-		/****** md5 signature: de15cae0f4e93766f724af4c65c32370 ******/
+		/****** md5 signature: 8628f0fdaac2626da36270f440fd1258 ******/
 		%feature("compactdefaultargs") IsAllDone;
 		%feature("autodoc", "Return
 -------
@@ -1026,10 +1026,10 @@ Description
 -----------
 To know if all the calculus were done successfully (ie all the points have been computed). The calculus can fail if the Curve is not C1 in the considered domain. Returns True if the calculus was successful.
 ") IsAllDone;
-		Standard_Boolean IsAllDone();
+		bool IsAllDone();
 
 		/****** CPnts_UniformDeflection::More ******/
-		/****** md5 signature: f2144011648ae849666b28430a27a0ea ******/
+		/****** md5 signature: 72440e10f19bd09dac0550f651b9d3a2 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1039,7 +1039,7 @@ Description
 -----------
 returns True if it exists a next Point.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** CPnts_UniformDeflection::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1068,17 +1068,17 @@ return the computed parameter.
 		gp_Pnt Point();
 
 		/****** CPnts_UniformDeflection::Value ******/
-		/****** md5 signature: 52655a2fb6642856b2c68a9331826787 ******/
+		/****** md5 signature: dbdf6d9f5299cb6ef730d686d81d15db ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 return the computed parameter.
 ") Value;
-		Standard_Real Value();
+		double Value();
 
 };
 

@@ -45,11 +45,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tnaming.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TDF_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
@@ -61,11 +59,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tnaming.html"
 %import Standard.i
 %import NCollection.i
 %import TDF.i
-%import TopTools.i
 %import TopLoc.i
 %import TopoDS.i
 %import gp.i
-%import TColStd.i
 %import TopAbs.i
 
 %pythoncode {
@@ -146,17 +142,18 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TNaming_DeltaOnModification)
-%wrap_handle(TNaming_DeltaOnRemoval)
-%wrap_handle(TNaming_NamedShape)
-%wrap_handle(TNaming_Naming)
 %wrap_handle(TNaming_TranslateTool)
-%wrap_handle(TNaming_UsedShapes)
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>::KeyValues;
 %template(TNaming_DataMapOfShapeMapOfShape) NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>::KeyValues;
 %template(TNaming_DataMapOfShapePtrRefShape) NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_ShapesSet,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_ShapesSet,TopTools_ShapeMapHasher>::KeyValues;
 %template(TNaming_DataMapOfShapeShapesSet) NCollection_DataMap<TopoDS_Shape,TNaming_ShapesSet,TopTools_ShapeMapHasher>;
 %template(TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape) NCollection_TListIterator<TopTools_IndexedDataMapOfShapeListOfShape>;
 %template(TNaming_ListIteratorOfListOfMapOfShape) NCollection_TListIterator<TopTools_MapOfShape>;
@@ -167,12 +164,6 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TNaming_ListOfMapOfShape) NCollection_List<TopTools_MapOfShape>;
@@ -181,12 +172,6 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TNaming_ListIteratorOfListOfMapOfShape(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TNaming_ListOfNamedShape) NCollection_List<opencascade::handle<TNaming_NamedShape>>;
@@ -195,12 +180,6 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TNaming_ListIteratorOfListOfNamedShape(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>>;
@@ -208,7 +187,7 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 /* end templates declaration */
 
 /* typedefs */
-typedef TNaming_DataMapOfShapeMapOfShape::Iterator TNaming_DataMapIteratorOfDataMapOfShapeMapOfShape;
+typedef NCollection_DataMap<TopoDS_Shape, TNaming_MapOfShape>::Iterator TNaming_DataMapIteratorOfDataMapOfShapeMapOfShape;
 typedef NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape;
 typedef NCollection_DataMap<TopoDS_Shape, TNaming_ShapesSet, TopTools_ShapeMapHasher>::Iterator TNaming_DataMapIteratorOfDataMapOfShapeShapesSet;
 typedef NCollection_DataMap<TopoDS_Shape, TNaming_MapOfShape> TNaming_DataMapOfShapeMapOfShape;
@@ -221,12 +200,9 @@ typedef NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape> TNaming_List
 typedef NCollection_List<TopTools_MapOfShape> TNaming_ListOfMapOfShape;
 typedef NCollection_List<opencascade::handle<TNaming_NamedShape>> TNaming_ListOfNamedShape;
 typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
-typedef TNaming_MapOfShape::Iterator TNaming_MapIteratorOfMapOfShape;
+typedef NCollection_Map<TopoDS_Shape>::Iterator TNaming_MapIteratorOfMapOfShape;
 typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>> TNaming_MapOfNamedShape;
 typedef NCollection_Map<TopoDS_Shape> TNaming_MapOfShape;
-typedef TNaming_NamedShape * TNaming_PtrAttribute;
-typedef TNaming_Node * TNaming_PtrNode;
-typedef TNaming_RefShape * TNaming_PtrRefShape;
 /* end typedefs declaration */
 
 /****************
@@ -236,13 +212,13 @@ typedef TNaming_RefShape * TNaming_PtrRefShape;
 class TNaming {
 	public:
 		/****** TNaming::ChangeShapes ******/
-		/****** md5 signature: 35b83a9835df68d47b84e7b0a4cc67d1 ******/
+		/****** md5 signature: 5a40f6a3adfe2362ea1ad5807b69644a ******/
 		%feature("compactdefaultargs") ChangeShapes;
 		%feature("autodoc", "
 Parameters
 ----------
 label: TDF_Label
-M: TopTools_DataMapOfShapeShape
+M: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -252,17 +228,17 @@ Description
 -----------
 Remplace les shapes du label et des sous-labels par des copies.
 ") ChangeShapes;
-		static void ChangeShapes(const TDF_Label & label, TopTools_DataMapOfShapeShape & M);
+		static void ChangeShapes(const TDF_Label & label, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & M);
 
 		/****** TNaming::Displace ******/
-		/****** md5 signature: f1e75faa1cad00c7f25ecf48dd5954ba ******/
+		/****** md5 signature: aecd2b23d9d552d21457d7dc131a07b4 ******/
 		%feature("compactdefaultargs") Displace;
 		%feature("autodoc", "
 Parameters
 ----------
 label: TDF_Label
 aLocation: TopLoc_Location
-WithOld: bool (optional, default to Standard_True)
+WithOld: bool (optional, default to true)
 
 Return
 -------
@@ -272,7 +248,7 @@ Description
 -----------
 Application de la Location sur les shapes du label et de ses sous labels.
 ") Displace;
-		static void Displace(const TDF_Label & label, const TopLoc_Location & aLocation, const Standard_Boolean WithOld = Standard_True);
+		static void Displace(const TDF_Label & label, const TopLoc_Location & aLocation, const bool WithOld = true);
 
 		/****** TNaming::FindUniqueContext ******/
 		/****** md5 signature: a840eb0c1506c6b14b7841bb92bb32c8 ******/
@@ -294,14 +270,14 @@ Find unique context of shape <S>.
 		static TopoDS_Shape FindUniqueContext(const TopoDS_Shape & S, const TopoDS_Shape & Context);
 
 		/****** TNaming::FindUniqueContextSet ******/
-		/****** md5 signature: f0bb2cb6f08fe13f1ef17596577f529e ******/
+		/****** md5 signature: 83b9e3818b28653f0a0200ddb7a8857f ******/
 		%feature("compactdefaultargs") FindUniqueContextSet;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 Context: TopoDS_Shape
-Arr: TopTools_HArray1OfShape
+Arr: NCollection_HArray1<TopoDS_Shape
 
 Return
 -------
@@ -311,15 +287,15 @@ Description
 -----------
 Find unique context of shape <S>,which is pure concatenation of atomic shapes (Compound). The result is concatenation of single contexts.
 ") FindUniqueContextSet;
-		static TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape & S, const TopoDS_Shape & Context, opencascade::handle<TopTools_HArray1OfShape> & Arr);
+		static TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape & S, const TopoDS_Shape & Context, opencascade::handle<NCollection_HArray1<TopoDS_Shape> > & Arr);
 
 		/****** TNaming::IDList ******/
-		/****** md5 signature: 97de0b35f4f6abc04a631c65d32bacc4 ******/
+		/****** md5 signature: 13c09c8b61f14a9cf4c6ae6a05704f7d ******/
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: TDF_IDList
+anIDList: NCollection_List<Standard_GUID>
 
 Return
 -------
@@ -329,15 +305,15 @@ Description
 -----------
 Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
-		static void IDList(TDF_IDList & anIDList);
+		static void IDList(NCollection_List<Standard_GUID> & anIDList);
 
 		/****** TNaming::MakeShape ******/
-		/****** md5 signature: 630d783504c360aaf8c5e4c4900911e5 ******/
+		/****** md5 signature: 18076748dd1ca649c5dd6aab55dd522c ******/
 		%feature("compactdefaultargs") MakeShape;
 		%feature("autodoc", "
 Parameters
 ----------
-MS: TopTools_MapOfShape
+MS: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -347,10 +323,10 @@ Description
 -----------
 Builds shape from map content.
 ") MakeShape;
-		static TopoDS_Shape MakeShape(const TopTools_MapOfShape & MS);
+		static TopoDS_Shape MakeShape(const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & MS);
 
 		/****** TNaming::OuterShell ******/
-		/****** md5 signature: 7b4f5582736299aaaff85491e430e183 ******/
+		/****** md5 signature: b72516852d083d56df6158318ea9d4fb ******/
 		%feature("compactdefaultargs") OuterShell;
 		%feature("autodoc", "
 Parameters
@@ -366,10 +342,10 @@ Description
 -----------
 Returns True if outer Shell is found and the found shell in <theShell>. Print of TNaming enumeration =============================.
 ") OuterShell;
-		static Standard_Boolean OuterShell(const TopoDS_Solid & theSolid, TopoDS_Shell & theShell);
+		static bool OuterShell(const TopoDS_Solid & theSolid, TopoDS_Shell & theShell);
 
 		/****** TNaming::OuterWire ******/
-		/****** md5 signature: dd33967d99fbf8929938e36ba3c08e55 ******/
+		/****** md5 signature: 160715cd19298f2eea11837a131ca785 ******/
 		%feature("compactdefaultargs") OuterWire;
 		%feature("autodoc", "
 Parameters
@@ -385,7 +361,7 @@ Description
 -----------
 Returns True if outer wire is found and the found wire in <theWire>.
 ") OuterWire;
-		static Standard_Boolean OuterWire(const TopoDS_Face & theFace, TopoDS_Wire & theWire);
+		static bool OuterWire(const TopoDS_Face & theFace, TopoDS_Wire & theWire);
 
 		/****** TNaming::Print ******/
 		/****** md5 signature: 2b639b8df3fe00401374dd95e415224e ******/
@@ -482,14 +458,14 @@ Replicates the shape with the transformation <T> on the label <L> (and sub-label
 		static void Replicate(const TopoDS_Shape & SH, const gp_Trsf & T, const TDF_Label & L);
 
 		/****** TNaming::Substitute ******/
-		/****** md5 signature: 7442a06309ab6a50aecfb1cf15c3cc98 ******/
+		/****** md5 signature: 723066653eda2437eff20557d404fdde ******/
 		%feature("compactdefaultargs") Substitute;
 		%feature("autodoc", "
 Parameters
 ----------
 labelsource: TDF_Label
 labelcible: TDF_Label
-mapOldNew: TopTools_DataMapOfShapeShape
+mapOldNew: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -499,10 +475,10 @@ Description
 -----------
 Subtituter les shapes sur les structures de source vers cible.
 ") Substitute;
-		static void Substitute(const TDF_Label & labelsource, const TDF_Label & labelcible, TopTools_DataMapOfShapeShape & mapOldNew);
+		static void Substitute(const TDF_Label & labelsource, const TDF_Label & labelcible, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapOldNew);
 
 		/****** TNaming::SubstituteSShape ******/
-		/****** md5 signature: da4f9bfab8e604d3c3824a7968ba3ba0 ******/
+		/****** md5 signature: 32de2f3558ece443b8dff7b989cbc5c2 ******/
 		%feature("compactdefaultargs") SubstituteSShape;
 		%feature("autodoc", "
 Parameters
@@ -519,7 +495,7 @@ Description
 -----------
 Substitutes shape in source structure.
 ") SubstituteSShape;
-		static Standard_Boolean SubstituteSShape(const TDF_Label & accesslabel, const TopoDS_Shape & From, TopoDS_Shape & To);
+		static bool SubstituteSShape(const TDF_Label & accesslabel, const TopoDS_Shape & From, TopoDS_Shape & To);
 
 		/****** TNaming::Transform ******/
 		/****** md5 signature: 974cbac4440c78b11585fb3e507cfca5 ******/
@@ -541,13 +517,13 @@ Application de la transformation sur les shapes du label et de ses sous labels. 
 		static void Transform(const TDF_Label & label, const gp_Trsf & aTransformation);
 
 		/****** TNaming::Update ******/
-		/****** md5 signature: 69bc78ea7b332ad3a707e4597841ba51 ******/
+		/****** md5 signature: 82d5226b4a49f58f6d40ac4e381677f5 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
 ----------
 label: TDF_Label
-mapOldNew: TopTools_DataMapOfShapeShape
+mapOldNew: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -557,7 +533,7 @@ Description
 -----------
 Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapOldNew. //! Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
 ") Update;
-		static void Update(const TDF_Label & label, TopTools_DataMapOfShapeShape & mapOldNew);
+		static void Update(const TDF_Label & label, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapOldNew);
 
 };
 
@@ -587,7 +563,7 @@ None
 
 Description
 -----------
-Create an Builder. Warning: Before Addition copies the current Value, and clear.
+Create a Builder. Warning: Before Addition copies the current Value, and clear.
 ") TNaming_Builder;
 		 TNaming_Builder(const TDF_Label & aLabel);
 
@@ -693,7 +669,7 @@ None
 
 Description
 -----------
-Add a Shape to the current label , This Shape is unmodified. Used for example to define a set of shapes under a label.
+Add a Shape to the current label, This Shape is unmodified. Used for example to define a set of shapes under a label.
 ") Select;
 		void Select(const TopoDS_Shape & aShape, const TopoDS_Shape & inShape);
 
@@ -712,13 +688,13 @@ Add a Shape to the current label , This Shape is unmodified. Used for example to
 class TNaming_CopyShape {
 	public:
 		/****** TNaming_CopyShape::CopyTool ******/
-		/****** md5 signature: 68dbabff764be4482b8310e46483bc53 ******/
+		/****** md5 signature: 278cd513ff03fdb7e5caff29b9908af9 ******/
 		%feature("compactdefaultargs") CopyTool;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
-aMap: TColStd_IndexedDataMapOfTransientTransient
+aMap: Standard_Transient
 aResult: TopoDS_Shape
 
 Return
@@ -729,16 +705,16 @@ Description
 -----------
 Makes copy a set of shape(s), using the aMap.
 ") CopyTool;
-		static void CopyTool(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult);
+		static void CopyTool(const TopoDS_Shape & aShape, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & aMap, TopoDS_Shape & aResult);
 
 		/****** TNaming_CopyShape::Translate ******/
-		/****** md5 signature: 979088cf76411c3c287d02989b1b7408 ******/
+		/****** md5 signature: 927c4d5d23cb182f386014e64a279a65 ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
-aMap: TColStd_IndexedDataMapOfTransientTransient
+aMap: Standard_Transient
 aResult: TopoDS_Shape
 TrTool: TNaming_TranslateTool
 
@@ -750,16 +726,16 @@ Description
 -----------
 Translates a Transient shape(s) to Transient.
 ") Translate;
-		static void Translate(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
+		static void Translate(const TopoDS_Shape & aShape, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
 
 		/****** TNaming_CopyShape::Translate ******/
-		/****** md5 signature: 1e92f022ff2e32420dfe6876b46407e3 ******/
+		/****** md5 signature: aef2df3118af83391521faed8e365846 ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
 ----------
 L: TopLoc_Location
-aMap: TColStd_IndexedDataMapOfTransientTransient
+aMap: Standard_Transient
 
 Return
 -------
@@ -769,7 +745,7 @@ Description
 -----------
 Translates a Topological Location to an other Top. Location.
 ") Translate;
-		static TopLoc_Location Translate(const TopLoc_Location & L, TColStd_IndexedDataMapOfTransientTransient & aMap);
+		static TopLoc_Location Translate(const TopLoc_Location & L, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & aMap);
 
 };
 
@@ -804,7 +780,7 @@ Initializes a TDF_DeltaOnModification.
 		 TNaming_DeltaOnModification(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_DeltaOnModification::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -814,12 +790,10 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
-
-%make_alias(TNaming_DeltaOnModification)
 
 %extend TNaming_DeltaOnModification {
 	%pythoncode {
@@ -851,7 +825,7 @@ Initializes a TDF_DeltaOnModification.
 		 TNaming_DeltaOnRemoval(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_DeltaOnRemoval::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -861,12 +835,10 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
-
-%make_alias(TNaming_DeltaOnRemoval)
 
 %extend TNaming_DeltaOnRemoval {
 	%pythoncode {
@@ -880,7 +852,7 @@ Applies the delta to the attribute.
 class TNaming_Identifier {
 	public:
 		/****** TNaming_Identifier::TNaming_Identifier ******/
-		/****** md5 signature: 62d0561d44133a83f74adfeb0d3107af ******/
+		/****** md5 signature: e09713978a1e4c7c6f8b7288fb5d539b ******/
 		%feature("compactdefaultargs") TNaming_Identifier;
 		%feature("autodoc", "
 Parameters
@@ -898,10 +870,10 @@ Description
 -----------
 No available documentation.
 ") TNaming_Identifier;
-		 TNaming_Identifier(const TDF_Label & Lab, const TopoDS_Shape & S, const TopoDS_Shape & Context, const Standard_Boolean Geom);
+		 TNaming_Identifier(const TDF_Label & Lab, const TopoDS_Shape & S, const TopoDS_Shape & Context, const bool Geom);
 
 		/****** TNaming_Identifier::TNaming_Identifier ******/
-		/****** md5 signature: 04356eb4451661be5a0af4cea18e81dc ******/
+		/****** md5 signature: c4ec9f404d87376f88bd29559183a9d7 ******/
 		%feature("compactdefaultargs") TNaming_Identifier;
 		%feature("autodoc", "
 Parameters
@@ -919,7 +891,7 @@ Description
 -----------
 No available documentation.
 ") TNaming_Identifier;
-		 TNaming_Identifier(const TDF_Label & Lab, const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & ContextNS, const Standard_Boolean Geom);
+		 TNaming_Identifier(const TDF_Label & Lab, const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & ContextNS, const bool Geom);
 
 		/****** TNaming_Identifier::AncestorIdentification ******/
 		/****** md5 signature: 2b81eef5c1e7248648501fe054976064 ******/
@@ -941,7 +913,7 @@ No available documentation.
 		void AncestorIdentification(TNaming_Localizer & Localizer, const TopoDS_Shape & Context);
 
 		/****** TNaming_Identifier::ArgIsFeature ******/
-		/****** md5 signature: f6d4bd72536d6a3155180a2e5fe251af ******/
+		/****** md5 signature: 4d94b43d64b0931e74c648c808666adf ******/
 		%feature("compactdefaultargs") ArgIsFeature;
 		%feature("autodoc", "Return
 -------
@@ -951,7 +923,7 @@ Description
 -----------
 No available documentation.
 ") ArgIsFeature;
-		Standard_Boolean ArgIsFeature();
+		bool ArgIsFeature();
 
 		/****** TNaming_Identifier::Feature ******/
 		/****** md5 signature: 5e47ba9d75b024609702b0386c463cc2 ******/
@@ -1031,7 +1003,7 @@ No available documentation.
 		void InitArgs();
 
 		/****** TNaming_Identifier::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1041,10 +1013,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** TNaming_Identifier::IsFeature ******/
-		/****** md5 signature: 39e8d87b7bf0d8fafa0ee5ee48574888 ******/
+		/****** md5 signature: 60d5c28f87e76a75990117984ca42a5a ******/
 		%feature("compactdefaultargs") IsFeature;
 		%feature("autodoc", "Return
 -------
@@ -1054,10 +1026,10 @@ Description
 -----------
 No available documentation.
 ") IsFeature;
-		Standard_Boolean IsFeature();
+		bool IsFeature();
 
 		/****** TNaming_Identifier::MoreArgs ******/
-		/****** md5 signature: 1932bf348ab7f430b6ffb77926d3dee5 ******/
+		/****** md5 signature: 869fc018a12094db66f2bc64928b3057 ******/
 		%feature("compactdefaultargs") MoreArgs;
 		%feature("autodoc", "Return
 -------
@@ -1067,7 +1039,7 @@ Description
 -----------
 No available documentation.
 ") MoreArgs;
-		Standard_Boolean MoreArgs();
+		bool MoreArgs();
 
 		/****** TNaming_Identifier::NamedShapeOfGeneration ******/
 		/****** md5 signature: a602a6f54d6c6371f0808dc2d3a65e1a ******/
@@ -1204,7 +1176,7 @@ Iterates on all the history records in the current transaction.
 		 TNaming_Iterator(const TDF_Label & aLabel);
 
 		/****** TNaming_Iterator::TNaming_Iterator ******/
-		/****** md5 signature: 961ae652f49f014e24c3713b9f4091b3 ******/
+		/****** md5 signature: a35c64addb2b06c153e0dc0e0577cd39 ******/
 		%feature("compactdefaultargs") TNaming_Iterator;
 		%feature("autodoc", "
 Parameters
@@ -1220,7 +1192,7 @@ Description
 -----------
 Iterates on all the history records in the transaction <aTrans>.
 ") TNaming_Iterator;
-		 TNaming_Iterator(const TDF_Label & aLabel, const Standard_Integer aTrans);
+		 TNaming_Iterator(const TDF_Label & aLabel, const int aTrans);
 
 		/****** TNaming_Iterator::Evolution ******/
 		/****** md5 signature: 807db9d74d271aa42843b60e4aab188f ******/
@@ -1236,7 +1208,7 @@ No available documentation.
 		TNaming_Evolution Evolution();
 
 		/****** TNaming_Iterator::IsModification ******/
-		/****** md5 signature: d84cb461ae1f7bb445d699b3caee967e ******/
+		/****** md5 signature: 2316a5cc00a99f34ac77b0db7bb6f392 ******/
 		%feature("compactdefaultargs") IsModification;
 		%feature("autodoc", "Return
 -------
@@ -1244,12 +1216,12 @@ bool
 
 Description
 -----------
-Returns true if the new shape is a modification (split, fuse,etc...) of the old shape.
+Returns true if the new shape is a modification (split, fuse, etc...) of the old shape.
 ") IsModification;
-		Standard_Boolean IsModification();
+		bool IsModification();
 
 		/****** TNaming_Iterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1259,7 +1231,7 @@ Description
 -----------
 Returns True if there is a current Item in the iteration.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TNaming_Iterator::NewShape ******/
 		/****** md5 signature: c4db9c58041458e5fc402a0a744b1143 ******/
@@ -1364,7 +1336,7 @@ Initialize the iteration.
 		void Init(const TNaming_ShapesSet & S);
 
 		/****** TNaming_IteratorOnShapesSet::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1374,7 +1346,7 @@ Description
 -----------
 Returns True if there is a current Item in the iteration.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TNaming_IteratorOnShapesSet::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1430,7 +1402,7 @@ No available documentation.
 		 TNaming_Localizer();
 
 		/****** TNaming_Localizer::Ancestors ******/
-		/****** md5 signature: 249e20f96ebf354ebf2c2f0cfd41ff44 ******/
+		/****** md5 signature: d73e37d81752a22b53fef721c9d59b0c ******/
 		%feature("compactdefaultargs") Ancestors;
 		%feature("autodoc", "
 Parameters
@@ -1440,24 +1412,24 @@ Type: TopAbs_ShapeEnum
 
 Return
 -------
-TopTools_IndexedDataMapOfShapeListOfShape
+NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") Ancestors;
-		const TopTools_IndexedDataMapOfShapeListOfShape & Ancestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
+		const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Ancestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
 
 		/****** TNaming_Localizer::Backward ******/
-		/****** md5 signature: 016c931ceee337fc05c1e64d54f393e2 ******/
+		/****** md5 signature: 6bc8c3760d5a1a299349779b161313d9 ******/
 		%feature("compactdefaultargs") Backward;
 		%feature("autodoc", "
 Parameters
 ----------
 NS: TNaming_NamedShape
 S: TopoDS_Shape
-Primitives: TNaming_MapOfNamedShape
-ValidShapes: TopTools_MapOfShape
+Primitives: TNaming_NamedShape
+ValidShapes: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1467,17 +1439,17 @@ Description
 -----------
 No available documentation.
 ") Backward;
-		void Backward(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, TNaming_MapOfNamedShape & Primitives, TopTools_MapOfShape & ValidShapes);
+		void Backward(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, NCollection_Map<opencascade::handle<TNaming_NamedShape> > & Primitives, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & ValidShapes);
 
 		/****** TNaming_Localizer::FindFeaturesInAncestors ******/
-		/****** md5 signature: e0206583fcd95e7f42e8eb830a0a060b ******/
+		/****** md5 signature: 960f1456a993cb4457958fac5a85f224 ******/
 		%feature("compactdefaultargs") FindFeaturesInAncestors;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 In: TopoDS_Shape
-AncInFeatures: TopTools_MapOfShape
+AncInFeatures: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1487,17 +1459,17 @@ Description
 -----------
 No available documentation.
 ") FindFeaturesInAncestors;
-		void FindFeaturesInAncestors(const TopoDS_Shape & S, const TopoDS_Shape & In, TopTools_MapOfShape & AncInFeatures);
+		void FindFeaturesInAncestors(const TopoDS_Shape & S, const TopoDS_Shape & In, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & AncInFeatures);
 
 		/****** TNaming_Localizer::FindGenerator ******/
-		/****** md5 signature: 396ba219ecc4aa41ab3d44bd0912e343 ******/
+		/****** md5 signature: b8e99e54a8ad2f5f6897d14ce1f2bdfe ******/
 		%feature("compactdefaultargs") FindGenerator;
 		%feature("autodoc", "
 Parameters
 ----------
 NS: TNaming_NamedShape
 S: TopoDS_Shape
-theListOfGenerators: TopTools_ListOfShape
+theListOfGenerators: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1507,17 +1479,17 @@ Description
 -----------
 No available documentation.
 ") FindGenerator;
-		static void FindGenerator(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, TopTools_ListOfShape & theListOfGenerators);
+		static void FindGenerator(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & theListOfGenerators);
 
 		/****** TNaming_Localizer::FindNeighbourg ******/
-		/****** md5 signature: a432bb9220952492e4158921ea252158 ******/
+		/****** md5 signature: 4c24466b2cdf36fc975276d90bba96b4 ******/
 		%feature("compactdefaultargs") FindNeighbourg;
 		%feature("autodoc", "
 Parameters
 ----------
 Cont: TopoDS_Shape
 S: TopoDS_Shape
-Neighbourg: TopTools_MapOfShape
+Neighbourg: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1527,7 +1499,7 @@ Description
 -----------
 No available documentation.
 ") FindNeighbourg;
-		void FindNeighbourg(const TopoDS_Shape & Cont, const TopoDS_Shape & S, TopTools_MapOfShape & Neighbourg);
+		void FindNeighbourg(const TopoDS_Shape & Cont, const TopoDS_Shape & S, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & Neighbourg);
 
 		/****** TNaming_Localizer::FindShapeContext ******/
 		/****** md5 signature: 3080ebceae5e84f4b49f367cb2d966e0 ******/
@@ -1550,7 +1522,7 @@ Finds context of the shape <S>.
 		static void FindShapeContext(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & theS, TopoDS_Shape & theSC);
 
 		/****** TNaming_Localizer::GoBack ******/
-		/****** md5 signature: a6ff591266d2ce72f53a7282d0120b6b ******/
+		/****** md5 signature: b4caf5b70ba1452355213957c4c750d9 ******/
 		%feature("compactdefaultargs") GoBack;
 		%feature("autodoc", "
 Parameters
@@ -1558,8 +1530,8 @@ Parameters
 S: TopoDS_Shape
 Lab: TDF_Label
 Evol: TNaming_Evolution
-OldS: TopTools_ListOfShape
-OldLab: TNaming_ListOfNamedShape
+OldS: NCollection_List<TopoDS_Shape>
+OldLab: TNaming_NamedShape
 
 Return
 -------
@@ -1569,10 +1541,10 @@ Description
 -----------
 No available documentation.
 ") GoBack;
-		void GoBack(const TopoDS_Shape & S, const TDF_Label & Lab, const TNaming_Evolution Evol, TopTools_ListOfShape & OldS, TNaming_ListOfNamedShape & OldLab);
+		void GoBack(const TopoDS_Shape & S, const TDF_Label & Lab, const TNaming_Evolution Evol, NCollection_List<TopoDS_Shape> & OldS, NCollection_List<opencascade::handle<TNaming_NamedShape> > & OldLab);
 
 		/****** TNaming_Localizer::Init ******/
-		/****** md5 signature: f1d09fe1c2db86931045549e32a5e2ee ******/
+		/****** md5 signature: 0ecc4e5ef99cf620414f0bab13a088a8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1588,10 +1560,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TNaming_UsedShapes> & US, const Standard_Integer CurTrans);
+		void Init(const opencascade::handle<TNaming_UsedShapes> & US, const int CurTrans);
 
 		/****** TNaming_Localizer::IsNew ******/
-		/****** md5 signature: ff9f03fb517617ccaa57ffdaa1daf730 ******/
+		/****** md5 signature: 8469e8f650a70b1df6630ba984dc47b6 ******/
 		%feature("compactdefaultargs") IsNew;
 		%feature("autodoc", "
 Parameters
@@ -1607,10 +1579,10 @@ Description
 -----------
 No available documentation.
 ") IsNew;
-		static Standard_Boolean IsNew(const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & NS);
+		static bool IsNew(const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_Localizer::SubShapes ******/
-		/****** md5 signature: f844c78d5c2f56db95a354e510879fd9 ******/
+		/****** md5 signature: 550e2e29cd5b376642bb0d90572e9d2b ******/
 		%feature("compactdefaultargs") SubShapes;
 		%feature("autodoc", "
 Parameters
@@ -1620,13 +1592,13 @@ Type: TopAbs_ShapeEnum
 
 Return
 -------
-TopTools_MapOfShape
+NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") SubShapes;
-		const TopTools_MapOfShape & SubShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
+		const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> SubShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
 
 };
 
@@ -1674,17 +1646,17 @@ No available documentation.
 		void Append(const opencascade::handle<TNaming_NamedShape> & arg);
 
 		/****** TNaming_Name::Arguments ******/
-		/****** md5 signature: be638476169c3be8eb6c45ab65bd319e ******/
+		/****** md5 signature: 75a6f03cd05bc2183fbc6eb2dea2d713 ******/
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
-TNaming_ListOfNamedShape
+NCollection_List<opencascade::handle<TNaming_NamedShape>>
 
 Description
 -----------
 No available documentation.
 ") Arguments;
-		const TNaming_ListOfNamedShape & Arguments();
+		const NCollection_List<opencascade::handle<TNaming_NamedShape>> & Arguments();
 
 		/****** TNaming_Name::ContextLabel ******/
 		/****** md5 signature: 9967b59a06d78957ec944381f315be12 ******/
@@ -1739,7 +1711,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TNaming_Name::Index ******/
-		/****** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ******/
+		/****** md5 signature: 65d23ba13e6a768a6e46646f77667dce ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -1754,10 +1726,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		void Index(const Standard_Integer I);
+		void Index(const int I);
 
 		/****** TNaming_Name::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -1767,7 +1739,7 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** TNaming_Name::Orientation ******/
 		/****** md5 signature: fb9858d598da2673e484eed6974efed9 ******/
@@ -1882,13 +1854,13 @@ No available documentation.
 		TopAbs_ShapeEnum ShapeType();
 
 		/****** TNaming_Name::Solve ******/
-		/****** md5 signature: 327f0047e836e914c43f97af77251fc1 ******/
+		/****** md5 signature: 21cbc3d47f10bec7819559d15af91543 ******/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "
 Parameters
 ----------
 aLab: TDF_Label
-Valid: TDF_LabelMap
+Valid: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -1898,7 +1870,7 @@ Description
 -----------
 No available documentation.
 ") Solve;
-		Standard_Boolean Solve(const TDF_Label & aLab, const TDF_LabelMap & Valid);
+		bool Solve(const TDF_Label & aLab, const NCollection_Map<TDF_Label> & Valid);
 
 		/****** TNaming_Name::StopNamedShape ******/
 		/****** md5 signature: 940a347c419778b1d92400dd9ecc55ce ******/
@@ -1990,13 +1962,13 @@ No available documentation.
 		 TNaming_NamedShape();
 
 		/****** TNaming_NamedShape::AfterUndo ******/
-		/****** md5 signature: 6a782c706f1e9291f121f77d889ed576 ******/
+		/****** md5 signature: 1c658357444dc4e0bd0f4b66ab6d7e3c ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -2006,10 +1978,10 @@ Description
 -----------
 Something to do after applying <anAttDelta>.
 ") AfterUndo;
-		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TNaming_NamedShape::BackupCopy ******/
-		/****** md5 signature: c0c9b77233d223451ec9a7e1bc2427c7 ******/
+		/****** md5 signature: 37a7ca5257c3a9e95a9390edd8c74378 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -2019,10 +1991,10 @@ Description
 -----------
 Copies the attribute contents into a new other attribute. It is used by Backup().
 ") BackupCopy;
-		virtual opencascade::handle<TDF_Attribute> BackupCopy();
+		opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****** TNaming_NamedShape::BeforeRemoval ******/
-		/****** md5 signature: fb87f8354fd142d1ab3d9cd55ada4556 ******/
+		/****** md5 signature: 0f64ecdecef86a02045a45cc05d670d1 ******/
 		%feature("compactdefaultargs") BeforeRemoval;
 		%feature("autodoc", "Return
 -------
@@ -2032,16 +2004,16 @@ Description
 -----------
 No available documentation.
 ") BeforeRemoval;
-		virtual void BeforeRemoval();
+		void BeforeRemoval();
 
 		/****** TNaming_NamedShape::BeforeUndo ******/
-		/****** md5 signature: d409c3f1c759e5fb3727056dd12910e7 ******/
+		/****** md5 signature: 4022cd53002aaa4282f3bc50d4d2b7c9 ******/
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -2051,7 +2023,7 @@ Description
 -----------
 Something to do before applying <anAttDelta>.
 ") BeforeUndo;
-		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TNaming_NamedShape::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2067,7 +2039,7 @@ No available documentation.
 		void Clear();
 
 		/****** TNaming_NamedShape::DeltaOnModification ******/
-		/****** md5 signature: 9a96ec815d43dd1838c022740c5327d0 ******/
+		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -2082,10 +2054,10 @@ Description
 -----------
 Makes a DeltaOnModification between <self> and <anOldAttribute.
 ") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****** TNaming_NamedShape::DeltaOnModification ******/
-		/****** md5 signature: ede0663285b98e98df96462eca3a6ecf ******/
+		/****** md5 signature: 5e133936c006721bd2ce3046206dafb7 ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -2100,10 +2072,10 @@ Description
 -----------
 Applies a DeltaOnModification to <self>.
 ") DeltaOnModification;
-		virtual void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & aDelta);
+		void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & aDelta);
 
 		/****** TNaming_NamedShape::DeltaOnRemoval ******/
-		/****** md5 signature: fce2b18e72dadcfc2bcbf283227db136 ******/
+		/****** md5 signature: 66c7868ee6dc796dade3a515a7cbe057 ******/
 		%feature("compactdefaultargs") DeltaOnRemoval;
 		%feature("autodoc", "Return
 -------
@@ -2113,10 +2085,10 @@ Description
 -----------
 Makes a DeltaOnRemoval on <self> because <self> has disappeared from the DS.
 ") DeltaOnRemoval;
-		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
+		opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
 		/****** TNaming_NamedShape::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2130,7 +2102,7 @@ Description
 -----------
 Dumps the attribute on <aStream>.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -2193,7 +2165,7 @@ class method ============ Returns the GUID for named shapes.
 		static const Standard_GUID & GetID();
 
 		/****** TNaming_NamedShape::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2206,7 +2178,7 @@ Returns the ID of the attribute.
 		const Standard_GUID & ID();
 
 		/****** TNaming_NamedShape::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2216,10 +2188,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TNaming_NamedShape::NewEmpty ******/
-		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2229,10 +2201,10 @@ Description
 -----------
 Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
-		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TNaming_NamedShape::Paste ******/
-		/****** md5 signature: 53b4ec32bedd752fc0ccd186074f75ef ******/
+		/****** md5 signature: ca00147c679ec8fdf08d12c6ca321a64 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2248,10 +2220,10 @@ Description
 -----------
 This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 ") Paste;
-		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
+		void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
 		/****** TNaming_NamedShape::References ******/
-		/****** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ******/
+		/****** md5 signature: 3de62c613451bbbead6f06af1452fc25 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -2266,10 +2238,10 @@ Description
 -----------
 Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
+		void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****** TNaming_NamedShape::Restore ******/
-		/****** md5 signature: c280e51bf6f4f3b5011b0c3698dfb001 ******/
+		/****** md5 signature: 41c5f809a59ee36fde865c853768ba6f ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2284,10 +2256,10 @@ Description
 -----------
 Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
-		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
+		void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
 		/****** TNaming_NamedShape::SetVersion ******/
-		/****** md5 signature: 78536ff299eb6d6824ab1bc2f1e8c204 ******/
+		/****** md5 signature: 06af6fad6e0949707ddc4d991c1e0e8c ******/
 		%feature("compactdefaultargs") SetVersion;
 		%feature("autodoc", "
 Parameters
@@ -2302,10 +2274,10 @@ Description
 -----------
 Set the Version of the attribute.
 ") SetVersion;
-		void SetVersion(const Standard_Integer version);
+		void SetVersion(const int version);
 
 		/****** TNaming_NamedShape::Version ******/
-		/****** md5 signature: 4bb71e2d63c3ae8458fb62f8d03b21ff ******/
+		/****** md5 signature: c5bf2b1b6246dd7052a3df4be3f2c7b5 ******/
 		%feature("compactdefaultargs") Version;
 		%feature("autodoc", "Return
 -------
@@ -2315,12 +2287,10 @@ Description
 -----------
 Returns the Version of the attribute.
 ") Version;
-		Standard_Integer Version();
+		int Version();
 
 };
 
-
-%make_alias(TNaming_NamedShape)
 
 %extend TNaming_NamedShape {
 	%pythoncode {
@@ -2360,7 +2330,7 @@ No available documentation.
 		TNaming_Name & ChangeName();
 
 		/****** TNaming_Naming::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2374,7 +2344,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -2398,13 +2368,13 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TNaming_Naming::ExtendedDump ******/
-		/****** md5 signature: cdafdec412b1ac94fc1e049a6ac0bb97 ******/
+		/****** md5 signature: 49607fe15be04008e9ba9936ade59616 ******/
 		%feature("compactdefaultargs") ExtendedDump;
 		%feature("autodoc", "
 Parameters
 ----------
 aFilter: TDF_IDFilter
-aMap: TDF_AttributeIndexedMap
+aMap: TDF_Attribute
 
 Return
 -------
@@ -2414,7 +2384,7 @@ Description
 -----------
 No available documentation.
 ") ExtendedDump;
-		virtual void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
+		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute> > & aMap);
 
 		/****** TNaming_Naming::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -2443,7 +2413,7 @@ No available documentation.
 		const TNaming_Name & GetName();
 
 		/****** TNaming_Naming::ID ******/
-		/****** md5 signature: 18550bf05502080c8e2a8a16aabb4183 ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2453,7 +2423,7 @@ Description
 -----------
 Deferred methods from TDF_Attribute ===================================.
 ") ID;
-		virtual const Standard_GUID & ID();
+		const Standard_GUID & ID();
 
 		/****** TNaming_Naming::Insert ******/
 		/****** md5 signature: c840f860441ae6b6c580b2a585213883 ******/
@@ -2474,7 +2444,7 @@ No available documentation.
 		static opencascade::handle<TNaming_Naming> Insert(const TDF_Label & under);
 
 		/****** TNaming_Naming::IsDefined ******/
-		/****** md5 signature: 96257d1cfd02677e7d5918092c3e6fb1 ******/
+		/****** md5 signature: ba43cba8b2e3a7b1e8b7b3382fc276e6 ******/
 		%feature("compactdefaultargs") IsDefined;
 		%feature("autodoc", "Return
 -------
@@ -2484,10 +2454,10 @@ Description
 -----------
 No available documentation.
 ") IsDefined;
-		Standard_Boolean IsDefined();
+		bool IsDefined();
 
 		/****** TNaming_Naming::Name ******/
-		/****** md5 signature: 43a576a93986358dd6e60ab2987a31b9 ******/
+		/****** md5 signature: 6f915a39d53270e0ff7d77e241942bbb ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -2495,9 +2465,9 @@ Parameters
 where: TDF_Label
 Selection: TopoDS_Shape
 Context: TopoDS_Shape
-Geometry: bool (optional, default to Standard_False)
-KeepOrientation: bool (optional, default to Standard_False)
-BNproblem: bool (optional, default to Standard_False)
+Geometry: bool (optional, default to false)
+KeepOrientation: bool (optional, default to false)
+BNproblem: bool (optional, default to false)
 
 Return
 -------
@@ -2505,12 +2475,12 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Creates a Namimg attribute at label <where> to identify the shape <Selection>. Geometry is Standard_True if we are only interested by the underlying geometry (e.g. setting a constraint). <Context> is used to find neighbours of <S> when required by the naming. If KeepOrientation is True the Selection orientation is taken into account. BNproblem == True points out that Context sub-shapes in DF have orientation differences with Context shape itself. instance method ===============.
+instance method ===============.
 ") Name;
-		static opencascade::handle<TNaming_NamedShape> Name(const TDF_Label & where, const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientation = Standard_False, const Standard_Boolean BNproblem = Standard_False);
+		static opencascade::handle<TNaming_NamedShape> Name(const TDF_Label & where, const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const bool Geometry = false, const bool KeepOrientation = false, const bool BNproblem = false);
 
 		/****** TNaming_Naming::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2523,7 +2493,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TNaming_Naming::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2542,7 +2512,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TNaming_Naming::References ******/
-		/****** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ******/
+		/****** md5 signature: 3de62c613451bbbead6f06af1452fc25 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -2557,15 +2527,15 @@ Description
 -----------
 No available documentation.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
+		void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****** TNaming_Naming::Regenerate ******/
-		/****** md5 signature: 05a2338f432d838f78697d953440f9a7 ******/
+		/****** md5 signature: 618656e40d24f9f49d81793f74d83441 ******/
 		%feature("compactdefaultargs") Regenerate;
 		%feature("autodoc", "
 Parameters
 ----------
-scope: TDF_LabelMap
+scope: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -2575,10 +2545,10 @@ Description
 -----------
 regenerate only the Name associated to me.
 ") Regenerate;
-		Standard_Boolean Regenerate(TDF_LabelMap & scope);
+		bool Regenerate(NCollection_Map<TDF_Label> & scope);
 
 		/****** TNaming_Naming::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2596,12 +2566,12 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TNaming_Naming::Solve ******/
-		/****** md5 signature: 69bbb6172130b18c37589c097aed4400 ******/
+		/****** md5 signature: f2a36662b02f72e39840764901451880 ******/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "
 Parameters
 ----------
-scope: TDF_LabelMap
+scope: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -2611,12 +2581,10 @@ Description
 -----------
 Regenerate recursively the whole name with scope. If scope is empty it means that all the labels of the framework are valid.
 ") Solve;
-		Standard_Boolean Solve(TDF_LabelMap & scope);
+		bool Solve(NCollection_Map<TDF_Label> & scope);
 
 };
 
-
-%make_alias(TNaming_Naming)
 
 %extend TNaming_Naming {
 	%pythoncode {
@@ -2630,13 +2598,13 @@ Regenerate recursively the whole name with scope. If scope is empty it means tha
 class TNaming_NamingTool {
 	public:
 		/****** TNaming_NamingTool::BuildDescendants ******/
-		/****** md5 signature: 7926f142c131508f29512155d5f95f47 ******/
+		/****** md5 signature: edb687b7eaafbd723c2718d5b503dc0c ******/
 		%feature("compactdefaultargs") BuildDescendants;
 		%feature("autodoc", "
 Parameters
 ----------
 NS: TNaming_NamedShape
-Labels: TDF_LabelMap
+Labels: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -2646,18 +2614,18 @@ Description
 -----------
 No available documentation.
 ") BuildDescendants;
-		static void BuildDescendants(const opencascade::handle<TNaming_NamedShape> & NS, TDF_LabelMap & Labels);
+		static void BuildDescendants(const opencascade::handle<TNaming_NamedShape> & NS, NCollection_Map<TDF_Label> & Labels);
 
 		/****** TNaming_NamingTool::CurrentShape ******/
-		/****** md5 signature: 0ef4d077ff57fd4ff0dcbace038cfc32 ******/
+		/****** md5 signature: 1709875dbb3d53f5c04abb871efd4b70 ******/
 		%feature("compactdefaultargs") CurrentShape;
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: TDF_LabelMap
-Forbiden: TDF_LabelMap
+Valid: NCollection_Map<TDF_Label>
+Forbiden: NCollection_Map<TDF_Label>
 NS: TNaming_NamedShape
-MS: TopTools_IndexedMapOfShape
+MS: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -2667,19 +2635,19 @@ Description
 -----------
 No available documentation.
 ") CurrentShape;
-		static void CurrentShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & NS, TopTools_IndexedMapOfShape & MS);
+		static void CurrentShape(const NCollection_Map<TDF_Label> & Valid, const NCollection_Map<TDF_Label> & Forbiden, const opencascade::handle<TNaming_NamedShape> & NS, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & MS);
 
 		/****** TNaming_NamingTool::CurrentShapeFromShape ******/
-		/****** md5 signature: 8d45a58b80e88b893687176b16d94e8b ******/
+		/****** md5 signature: 3bbfe24fd1f7c888d6862a2c954df153 ******/
 		%feature("compactdefaultargs") CurrentShapeFromShape;
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: TDF_LabelMap
-Forbiden: TDF_LabelMap
+Valid: NCollection_Map<TDF_Label>
+Forbiden: NCollection_Map<TDF_Label>
 Acces: TDF_Label
 S: TopoDS_Shape
-MS: TopTools_IndexedMapOfShape
+MS: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -2689,7 +2657,7 @@ Description
 -----------
 No available documentation.
 ") CurrentShapeFromShape;
-		static void CurrentShapeFromShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const TDF_Label & Acces, const TopoDS_Shape & S, TopTools_IndexedMapOfShape & MS);
+		static void CurrentShapeFromShape(const NCollection_Map<TDF_Label> & Valid, const NCollection_Map<TDF_Label> & Forbiden, const TDF_Label & Acces, const TopoDS_Shape & S, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & MS);
 
 };
 
@@ -2706,7 +2674,7 @@ No available documentation.
 class TNaming_NewShapeIterator {
 	public:
 		/****** TNaming_NewShapeIterator::TNaming_NewShapeIterator ******/
-		/****** md5 signature: 2a4486f9fdd3c78dfadf3442489de981 ******/
+		/****** md5 signature: 6a5e50ea59ba0b145735fb93508b49b6 ******/
 		%feature("compactdefaultargs") TNaming_NewShapeIterator;
 		%feature("autodoc", "
 Parameters
@@ -2723,7 +2691,7 @@ Description
 -----------
 No available documentation.
 ") TNaming_NewShapeIterator;
-		 TNaming_NewShapeIterator(const TopoDS_Shape & aShape, const Standard_Integer Transaction, const TDF_Label & access);
+		 TNaming_NewShapeIterator(const TopoDS_Shape & aShape, const int Transaction, const TDF_Label & access);
 
 		/****** TNaming_NewShapeIterator::TNaming_NewShapeIterator ******/
 		/****** md5 signature: 141ccf0b4fb175df78bf5d046f067e10 ******/
@@ -2781,7 +2749,7 @@ Iterates from the current Shape in <anIterator>.
 		 TNaming_NewShapeIterator(const TNaming_Iterator & anIterator);
 
 		/****** TNaming_NewShapeIterator::IsModification ******/
-		/****** md5 signature: d84cb461ae1f7bb445d699b3caee967e ******/
+		/****** md5 signature: 2316a5cc00a99f34ac77b0db7bb6f392 ******/
 		%feature("compactdefaultargs") IsModification;
 		%feature("autodoc", "Return
 -------
@@ -2791,7 +2759,7 @@ Description
 -----------
 True if the new shape is a modification (split, fuse,etc...) of the old shape.
 ") IsModification;
-		Standard_Boolean IsModification();
+		bool IsModification();
 
 		/****** TNaming_NewShapeIterator::Label ******/
 		/****** md5 signature: 45446fb6d4e5a656e74b10a5eb4cd845 ******/
@@ -2807,7 +2775,7 @@ No available documentation.
 		TDF_Label Label();
 
 		/****** TNaming_NewShapeIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2817,7 +2785,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TNaming_NewShapeIterator::NamedShape ******/
 		/****** md5 signature: f81ceec92565d5b27eb74fc46fdc0cc9 ******/
@@ -2873,7 +2841,7 @@ Warning! Can be a Null Shape if a descendant is deleted.
 class TNaming_OldShapeIterator {
 	public:
 		/****** TNaming_OldShapeIterator::TNaming_OldShapeIterator ******/
-		/****** md5 signature: 0591db4a01d343a1392be5bf7b4bd0b6 ******/
+		/****** md5 signature: b3e6906f80eacb51d315a8078a0e3e3c ******/
 		%feature("compactdefaultargs") TNaming_OldShapeIterator;
 		%feature("autodoc", "
 Parameters
@@ -2890,7 +2858,7 @@ Description
 -----------
 No available documentation.
 ") TNaming_OldShapeIterator;
-		 TNaming_OldShapeIterator(const TopoDS_Shape & aShape, const Standard_Integer Transaction, const TDF_Label & access);
+		 TNaming_OldShapeIterator(const TopoDS_Shape & aShape, const int Transaction, const TDF_Label & access);
 
 		/****** TNaming_OldShapeIterator::TNaming_OldShapeIterator ******/
 		/****** md5 signature: 86ee4b957cbf8b33c2595110c2d733c5 ******/
@@ -2948,7 +2916,7 @@ Iterates from the current Shape in <anIterator>.
 		 TNaming_OldShapeIterator(const TNaming_Iterator & anIterator);
 
 		/****** TNaming_OldShapeIterator::IsModification ******/
-		/****** md5 signature: d84cb461ae1f7bb445d699b3caee967e ******/
+		/****** md5 signature: 2316a5cc00a99f34ac77b0db7bb6f392 ******/
 		%feature("compactdefaultargs") IsModification;
 		%feature("autodoc", "Return
 -------
@@ -2958,7 +2926,7 @@ Description
 -----------
 True if the new shape is a modification (split, fuse,etc...) of the old shape.
 ") IsModification;
-		Standard_Boolean IsModification();
+		bool IsModification();
 
 		/****** TNaming_OldShapeIterator::Label ******/
 		/****** md5 signature: 45446fb6d4e5a656e74b10a5eb4cd845 ******/
@@ -2974,7 +2942,7 @@ No available documentation.
 		TDF_Label Label();
 
 		/****** TNaming_OldShapeIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2984,7 +2952,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TNaming_OldShapeIterator::NamedShape ******/
 		/****** md5 signature: f81ceec92565d5b27eb74fc46fdc0cc9 ******/
@@ -3226,7 +3194,7 @@ No available documentation.
 		TDF_Label Label();
 
 		/****** TNaming_SameShapeIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3236,7 +3204,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TNaming_SameShapeIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -3279,7 +3247,7 @@ WithValid = False.
 		 TNaming_Scope();
 
 		/****** TNaming_Scope::TNaming_Scope ******/
-		/****** md5 signature: 8932f816adb73ddad549d33c17c373d0 ******/
+		/****** md5 signature: 4a0c2e5819e356ddf0acbc6c8c3fccd4 ******/
 		%feature("compactdefaultargs") TNaming_Scope;
 		%feature("autodoc", "
 Parameters
@@ -3294,15 +3262,15 @@ Description
 -----------
 if <WithValid> the scope is defined by the map. If not on the whole framework.
 ") TNaming_Scope;
-		 TNaming_Scope(const Standard_Boolean WithValid);
+		 TNaming_Scope(const bool WithValid);
 
 		/****** TNaming_Scope::TNaming_Scope ******/
-		/****** md5 signature: 268c46cd5cd358414148cf260c8c3319 ******/
+		/****** md5 signature: 5b5fda430d5042ffafac6128722ca04c ******/
 		%feature("compactdefaultargs") TNaming_Scope;
 		%feature("autodoc", "
 Parameters
 ----------
-valid: TDF_LabelMap
+valid: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -3312,20 +3280,20 @@ Description
 -----------
 create a scope with a map. WithValid = True.
 ") TNaming_Scope;
-		 TNaming_Scope(TDF_LabelMap & valid);
+		 TNaming_Scope(NCollection_Map<TDF_Label> & valid);
 
 		/****** TNaming_Scope::ChangeValid ******/
-		/****** md5 signature: 86d84e474f21b877bdf2d277639f7521 ******/
+		/****** md5 signature: 63cd0badcf9e22af17402287a49925aa ******/
 		%feature("compactdefaultargs") ChangeValid;
 		%feature("autodoc", "Return
 -------
-TDF_LabelMap
+NCollection_Map<TDF_Label>
 
 Description
 -----------
 No available documentation.
 ") ChangeValid;
-		TDF_LabelMap & ChangeValid();
+		NCollection_Map<TDF_Label> & ChangeValid();
 
 		/****** TNaming_Scope::ClearValid ******/
 		/****** md5 signature: f75cb19c38c702d6e3a82709605286ee ******/
@@ -3359,20 +3327,20 @@ Returns the current value of <NS> according to the Valid Scope.
 		TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_Scope::GetValid ******/
-		/****** md5 signature: c371157b895ee66ea6eea74aede1c22d ******/
+		/****** md5 signature: e544ee87bdeef2f9f564bf6e738a5f18 ******/
 		%feature("compactdefaultargs") GetValid;
 		%feature("autodoc", "Return
 -------
-TDF_LabelMap
+NCollection_Map<TDF_Label>
 
 Description
 -----------
 No available documentation.
 ") GetValid;
-		const TDF_LabelMap & GetValid();
+		const NCollection_Map<TDF_Label> & GetValid();
 
 		/****** TNaming_Scope::IsValid ******/
-		/****** md5 signature: daf835546ae1359506d879d192f9cbc2 ******/
+		/****** md5 signature: 0a48b190669196f2ebfbe3efa57246ba ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "
 Parameters
@@ -3387,7 +3355,7 @@ Description
 -----------
 No available documentation.
 ") IsValid;
-		Standard_Boolean IsValid(const TDF_Label & L);
+		bool IsValid(const TDF_Label & L);
 
 		/****** TNaming_Scope::Unvalid ******/
 		/****** md5 signature: e970908a0d0a073625221373380e13b4 ******/
@@ -3408,13 +3376,13 @@ No available documentation.
 		void Unvalid(const TDF_Label & L);
 
 		/****** TNaming_Scope::UnvalidChildren ******/
-		/****** md5 signature: dc66e9c3e6a99a5fa20e3b02716bf14b ******/
+		/****** md5 signature: 01d3bc3c3ce6823309e433a9a3c26b71 ******/
 		%feature("compactdefaultargs") UnvalidChildren;
 		%feature("autodoc", "
 Parameters
 ----------
 L: TDF_Label
-withroot: bool (optional, default to Standard_True)
+withroot: bool (optional, default to true)
 
 Return
 -------
@@ -3424,7 +3392,7 @@ Description
 -----------
 No available documentation.
 ") UnvalidChildren;
-		void UnvalidChildren(const TDF_Label & L, const Standard_Boolean withroot = Standard_True);
+		void UnvalidChildren(const TDF_Label & L, const bool withroot = true);
 
 		/****** TNaming_Scope::Valid ******/
 		/****** md5 signature: 3e508c54217f142842715bf4d0c369a0 ******/
@@ -3445,13 +3413,13 @@ No available documentation.
 		void Valid(const TDF_Label & L);
 
 		/****** TNaming_Scope::ValidChildren ******/
-		/****** md5 signature: 2c79ea717fc02455603de17841a774b9 ******/
+		/****** md5 signature: 9faecec59539ba10ec83aed4cb1fd1dc ******/
 		%feature("compactdefaultargs") ValidChildren;
 		%feature("autodoc", "
 Parameters
 ----------
 L: TDF_Label
-withroot: bool (optional, default to Standard_True)
+withroot: bool (optional, default to true)
 
 Return
 -------
@@ -3461,10 +3429,10 @@ Description
 -----------
 No available documentation.
 ") ValidChildren;
-		void ValidChildren(const TDF_Label & L, const Standard_Boolean withroot = Standard_True);
+		void ValidChildren(const TDF_Label & L, const bool withroot = true);
 
 		/****** TNaming_Scope::WithValid ******/
-		/****** md5 signature: 8866a58a3aceee3d9219aa3a6da5444f ******/
+		/****** md5 signature: 63fa5e91891127be3df149adce2f0261 ******/
 		%feature("compactdefaultargs") WithValid;
 		%feature("autodoc", "Return
 -------
@@ -3474,10 +3442,10 @@ Description
 -----------
 No available documentation.
 ") WithValid;
-		Standard_Boolean WithValid();
+		bool WithValid();
 
 		/****** TNaming_Scope::WithValid ******/
-		/****** md5 signature: 1aca92f030cfe32c12c4b8a462301f59 ******/
+		/****** md5 signature: 41ebd5dd7194e6be2c0c35e30461d822 ******/
 		%feature("compactdefaultargs") WithValid;
 		%feature("autodoc", "
 Parameters
@@ -3492,7 +3460,7 @@ Description
 -----------
 No available documentation.
 ") WithValid;
-		void WithValid(const Standard_Boolean mode);
+		void WithValid(const bool mode);
 
 };
 
@@ -3527,12 +3495,12 @@ Create a selector on this label to select a shape. ==================.
 		 TNaming_Selector(const TDF_Label & aLabel);
 
 		/****** TNaming_Selector::Arguments ******/
-		/****** md5 signature: c499cd07de035eeec365e9e3cb1fa454 ******/
+		/****** md5 signature: 78267bc1160243943bb1b0ac40a5e7c1 ******/
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "
 Parameters
 ----------
-args: TDF_AttributeMap
+args: TDF_Attribute
 
 Return
 -------
@@ -3542,10 +3510,10 @@ Description
 -----------
 Returns the attribute list args. This list contains the named shape on which the topological naming was built.
 ") Arguments;
-		void Arguments(TDF_AttributeMap & args);
+		void Arguments(NCollection_Map<opencascade::handle<TDF_Attribute> > & args);
 
 		/****** TNaming_Selector::IsIdentified ******/
-		/****** md5 signature: 171ef65d8719ba2ead9abac890b562d0 ******/
+		/****** md5 signature: f947692265f747cf84b4aea6c8045a53 ******/
 		%feature("compactdefaultargs") IsIdentified;
 		%feature("autodoc", "
 Parameters
@@ -3553,7 +3521,7 @@ Parameters
 access: TDF_Label
 selection: TopoDS_Shape
 NS: TNaming_NamedShape
-Geometry: bool (optional, default to Standard_False)
+Geometry: bool (optional, default to false)
 
 Return
 -------
@@ -3563,7 +3531,7 @@ Description
 -----------
 To know if a shape is already identified (not selected) ======================================================= //! The label access defines the point of access to the data framework. selection is the shape for which we want to know whether it is identified or not. If true, NS is returned as the identity of selection. If Geometry is true, NS will be the named shape containing the first appearance of selection and not any other shape. In other words, selection must be the only shape stored in NS.
 ") IsIdentified;
-		static Standard_Boolean IsIdentified(const TDF_Label & access, const TopoDS_Shape & selection, opencascade::handle<TNaming_NamedShape> & NS, const Standard_Boolean Geometry = Standard_False);
+		static bool IsIdentified(const TDF_Label & access, const TopoDS_Shape & selection, opencascade::handle<TNaming_NamedShape> & NS, const bool Geometry = false);
 
 		/****** TNaming_Selector::NamedShape ******/
 		/****** md5 signature: f81ceec92565d5b27eb74fc46fdc0cc9 ******/
@@ -3579,15 +3547,15 @@ Returns the NamedShape build or under construction, which contains the topologic
 		opencascade::handle<TNaming_NamedShape> NamedShape();
 
 		/****** TNaming_Selector::Select ******/
-		/****** md5 signature: f6787249f27ffbeb261c45ccce5f3b3a ******/
+		/****** md5 signature: 68ce18857cf6e6d67a86a7286d5aba64 ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
 ----------
 Selection: TopoDS_Shape
 Context: TopoDS_Shape
-Geometry: bool (optional, default to Standard_False)
-KeepOrientatation: bool (optional, default to Standard_False)
+Geometry: bool (optional, default to false)
+KeepOrientatation: bool (optional, default to false)
 
 Return
 -------
@@ -3597,17 +3565,17 @@ Description
 -----------
 Creates a topological naming on the label aLabel given as an argument at construction time. If successful, the shape Selection - found in the shape Context - is now identified in the named shape returned in NamedShape. If Geometry is true, NamedShape contains the first appearance of Selection. This syntax is more robust than the previous syntax for this method.
 ") Select;
-		Standard_Boolean Select(const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False);
+		bool Select(const TopoDS_Shape & Selection, const TopoDS_Shape & Context, const bool Geometry = false, const bool KeepOrientatation = false);
 
 		/****** TNaming_Selector::Select ******/
-		/****** md5 signature: 1b089f4a0c9e7f5c0183a64e085582fc ******/
+		/****** md5 signature: b401bf5c5f5e64e33a02cecf5a85958b ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
 ----------
 Selection: TopoDS_Shape
-Geometry: bool (optional, default to Standard_False)
-KeepOrientatation: bool (optional, default to Standard_False)
+Geometry: bool (optional, default to false)
+KeepOrientatation: bool (optional, default to false)
 
 Return
 -------
@@ -3617,15 +3585,15 @@ Description
 -----------
 Creates a topological naming on the label aLabel given as an argument at construction time. If successful, the shape Selection is now identified in the named shape returned in NamedShape. If Geometry is true, NamedShape contains the first appearance of Selection.
 ") Select;
-		Standard_Boolean Select(const TopoDS_Shape & Selection, const Standard_Boolean Geometry = Standard_False, const Standard_Boolean KeepOrientatation = Standard_False);
+		bool Select(const TopoDS_Shape & Selection, const bool Geometry = false, const bool KeepOrientatation = false);
 
 		/****** TNaming_Selector::Solve ******/
-		/****** md5 signature: 3df66f09832bf5105dae6beb36286f58 ******/
+		/****** md5 signature: 007fdd8d35a7e7bdf2c38e880fdc3e32 ******/
 		%feature("compactdefaultargs") Solve;
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: TDF_LabelMap
+Valid: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -3635,7 +3603,7 @@ Description
 -----------
 Updates the topological naming on the label aLabel given as an argument at construction time. The underlying shape returned in the method NamedShape is updated. To read this shape, use the method TNaming_Tool::GetShape.
 ") Solve;
-		Standard_Boolean Solve(TDF_LabelMap & Valid);
+		bool Solve(NCollection_Map<TDF_Label> & Valid);
 
 };
 
@@ -3684,7 +3652,7 @@ No available documentation.
 		 TNaming_ShapesSet(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type = TopAbs_SHAPE);
 
 		/****** TNaming_ShapesSet::Add ******/
-		/****** md5 signature: 5d2382c33d1c9820807378c2a0badd9f ******/
+		/****** md5 signature: d0bb40eec293f89fa8a431c6e0b8d5ed ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3699,7 +3667,7 @@ Description
 -----------
 Adds the Shape <S>.
 ") Add;
-		Standard_Boolean Add(const TopoDS_Shape & S);
+		bool Add(const TopoDS_Shape & S);
 
 		/****** TNaming_ShapesSet::Add ******/
 		/****** md5 signature: 694b6f3c32c0e6d71bc4fa40da255662 ******/
@@ -3720,17 +3688,17 @@ Adds the shapes contained in <Shapes>.
 		void Add(const TNaming_ShapesSet & Shapes);
 
 		/****** TNaming_ShapesSet::ChangeMap ******/
-		/****** md5 signature: 59a4fe45f6aed0c2e4b3d9af0228a846 ******/
+		/****** md5 signature: da61d145f7ca956cf9c91df5ae50d141 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TopTools_MapOfShape
+NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TopTools_MapOfShape & ChangeMap();
+		NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> ChangeMap();
 
 		/****** TNaming_ShapesSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -3746,7 +3714,7 @@ Removes all Shapes.
 		void Clear();
 
 		/****** TNaming_ShapesSet::Contains ******/
-		/****** md5 signature: f099b22f53dc3705b9de7f86b775b20a ******/
+		/****** md5 signature: 9d115853c7c7f9bc8f52911395e69be8 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -3761,7 +3729,7 @@ Description
 -----------
 Returns True if <S> is in <self>.
 ") Contains;
-		Standard_Boolean Contains(const TopoDS_Shape & S);
+		bool Contains(const TopoDS_Shape & S);
 
 		/****** TNaming_ShapesSet::Filter ******/
 		/****** md5 signature: c77e18f9d11a430ef7e8cda4de9aa38d ******/
@@ -3782,7 +3750,7 @@ Erases in <self> the shapes not contained in <Shapes>.
 		void Filter(const TNaming_ShapesSet & Shapes);
 
 		/****** TNaming_ShapesSet::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3792,23 +3760,23 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TNaming_ShapesSet::Map ******/
-		/****** md5 signature: 3583c11e164a7116bd04e325b8161d42 ******/
+		/****** md5 signature: 3415c6178bd13c963cd19f403eb65231 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TopTools_MapOfShape
+NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TopTools_MapOfShape & Map();
+		const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> Map();
 
 		/****** TNaming_ShapesSet::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -3818,10 +3786,10 @@ Description
 -----------
 No available documentation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** TNaming_ShapesSet::Remove ******/
-		/****** md5 signature: 5449c02e45435de23a9951ba8c39aa95 ******/
+		/****** md5 signature: 8ee16821cbecd9e23cb7a8c18d25cef5 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3836,7 +3804,7 @@ Description
 -----------
 Removes <S> in <self>.
 ") Remove;
-		Standard_Boolean Remove(const TopoDS_Shape & S);
+		bool Remove(const TopoDS_Shape & S);
 
 		/****** TNaming_ShapesSet::Remove ******/
 		/****** md5 signature: f13ae410acbb09ecf50860c238d4414e ******/
@@ -3871,14 +3839,14 @@ Removes in <self> the shapes contained in <Shapes>.
 class TNaming_Tool {
 	public:
 		/****** TNaming_Tool::Collect ******/
-		/****** md5 signature: ef8694741dc8a5a15ddcb7a64161db4a ******/
+		/****** md5 signature: 68ac0a6904c6eaff1b52b436a94ac1c2 ******/
 		%feature("compactdefaultargs") Collect;
 		%feature("autodoc", "
 Parameters
 ----------
 NS: TNaming_NamedShape
-Labels: TNaming_MapOfNamedShape
-OnlyModif: bool (optional, default to Standard_True)
+Labels: TNaming_NamedShape
+OnlyModif: bool (optional, default to true)
 
 Return
 -------
@@ -3888,16 +3856,16 @@ Description
 -----------
 No available documentation.
 ") Collect;
-		static void Collect(const opencascade::handle<TNaming_NamedShape> & NS, TNaming_MapOfNamedShape & Labels, const Standard_Boolean OnlyModif = Standard_True);
+		static void Collect(const opencascade::handle<TNaming_NamedShape> & NS, NCollection_Map<opencascade::handle<TNaming_NamedShape> > & Labels, const bool OnlyModif = true);
 
 		/****** TNaming_Tool::CurrentNamedShape ******/
-		/****** md5 signature: 147ce32f7bd73532989750f6a0b51960 ******/
+		/****** md5 signature: 93b8c130c279f3d9bacfe1c57da56aec ******/
 		%feature("compactdefaultargs") CurrentNamedShape;
 		%feature("autodoc", "
 Parameters
 ----------
 NS: TNaming_NamedShape
-Updated: TDF_LabelMap
+Updated: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -3907,7 +3875,7 @@ Description
 -----------
 Returns the NamedShape of the last Modification of <NS>. This shape is identified by a label.
 ") CurrentNamedShape;
-		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
+		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS, const NCollection_Map<TDF_Label> & Updated);
 
 		/****** TNaming_Tool::CurrentNamedShape ******/
 		/****** md5 signature: 30b845dfc2bf9683aac7c44f233fb27d ******/
@@ -3946,13 +3914,13 @@ Returns the last Modification of <NS>. Returns the shape CurrentShape contained 
 		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_Tool::CurrentShape ******/
-		/****** md5 signature: 215ab93ac3381a87a82142c64be729d7 ******/
+		/****** md5 signature: aa10087f809fd81598f6536e154f6f04 ******/
 		%feature("compactdefaultargs") CurrentShape;
 		%feature("autodoc", "
 Parameters
 ----------
 NS: TNaming_NamedShape
-Updated: TDF_LabelMap
+Updated: NCollection_Map<TDF_Label>
 
 Return
 -------
@@ -3962,16 +3930,16 @@ Description
 -----------
 Returns the shape CurrentShape contained in the named shape attribute NS, and present in the updated attribute map Updated. CurrentShape is the current state of the entities if they have been modified in other attributes of the same data structure. Each call to this function creates a new compound. Warning Only the contents of Updated are searched.R.
 ") CurrentShape;
-		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
+		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS, const NCollection_Map<TDF_Label> & Updated);
 
 		/****** TNaming_Tool::FindShape ******/
-		/****** md5 signature: b8f0c64cfdf6508bb0b1b137412bd585 ******/
+		/****** md5 signature: 0b1991daf74e2422905dd66c97c720cc ******/
 		%feature("compactdefaultargs") FindShape;
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: TDF_LabelMap
-Forbiden: TDF_LabelMap
+Valid: NCollection_Map<TDF_Label>
+Forbiden: NCollection_Map<TDF_Label>
 Arg: TNaming_NamedShape
 S: TopoDS_Shape
 
@@ -3983,7 +3951,7 @@ Description
 -----------
 Returns the current shape (a Wire or a Shell) built (in the data framework) from the shapes of the argument named shape. It is used for IDENTITY name type computation.
 ") FindShape;
-		static void FindShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
+		static void FindShape(const NCollection_Map<TDF_Label> & Valid, const NCollection_Map<TDF_Label> & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
 
 		/****** TNaming_Tool::GeneratedShape ******/
 		/****** md5 signature: f0cadb1e38b87f8969e887a7314d2d10 ******/
@@ -4023,7 +3991,7 @@ Returns the entities stored in the named shape attribute NS. If there is only on
 		static TopoDS_Shape GetShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_Tool::HasLabel ******/
-		/****** md5 signature: 954def380083a98f46aca9ad63a0f44c ******/
+		/****** md5 signature: b3baec5a4aed62b1b4c68846e8b8be36 ******/
 		%feature("compactdefaultargs") HasLabel;
 		%feature("autodoc", "
 Parameters
@@ -4039,17 +4007,17 @@ Description
 -----------
 Returns True if <aShape> appears under a label.(DP).
 ") HasLabel;
-		static Standard_Boolean HasLabel(const TDF_Label & access, const TopoDS_Shape & aShape);
+		static bool HasLabel(const TDF_Label & access, const TopoDS_Shape & aShape);
 
 		/****** TNaming_Tool::InitialShape ******/
-		/****** md5 signature: 81b1aa5e7722455cca164c9008574081 ******/
+		/****** md5 signature: 9d518f96c046168e628317fb7ca7e3c2 ******/
 		%feature("compactdefaultargs") InitialShape;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
 anAcces: TDF_Label
-Labels: TDF_LabelList
+Labels: NCollection_List<TDF_Label>
 
 Return
 -------
@@ -4059,10 +4027,10 @@ Description
 -----------
 Returns the shape created from the shape aShape contained in the attribute anAcces.
 ") InitialShape;
-		static TopoDS_Shape InitialShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces, TDF_LabelList & Labels);
+		static TopoDS_Shape InitialShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces, NCollection_List<TDF_Label> & Labels);
 
 		/****** TNaming_Tool::Label ******/
-		/****** md5 signature: 0b54c4797f0a294a17228be81e2d2f85 ******/
+		/****** md5 signature: ac8f6349eb9a54004aa1aa86b483f993 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "
 Parameters
@@ -4095,7 +4063,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the named shape attribute defined by the shape aShape and the label anAccess. This attribute is returned as a new shape. You call this function, if you need to create a topological attribute for existing data. Example class MyPkg_MyClass { public: Standard_Boolean SameEdge(const opencascade::handle<OCafTest_Line>& , const opencascade::handle<CafTest_Line>& ); }; //! Standard_Boolean MyPkg_MyClass::SameEdge (const opencascade::handle<OCafTest_Line>& L1 const opencascade::handle<OCafTest_Line>& L2) { opencascade::handle<TNaming_NamedShape> NS1 = L1->NamedShape(); opencascade::handle<TNaming_NamedShape> NS2 = L2->NamedShape(); //! return BRepTools::Compare(NS1->Get(),NS2->Get()); } In the example above, the function SameEdge is created to compare the edges having two lines for geometric supports. If these edges are found by BRepTools::Compare to be within the same tolerance, they are considered to be the same. Warning To avoid sharing of names, a SELECTED attribute will not be returned. Sharing of names makes it harder to manage the data structure. When the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
+Returns the named shape attribute defined by the shape aShape and the label anAccess. This attribute is returned as a new shape. You call this function, if you need to create a topological attribute for existing data. Example class MyPkg_MyClass { public: bool SameEdge(const opencascade::handle<OCafTest_Line>& , const opencascade::handle<CafTest_Line>& ); }; //! bool MyPkg_MyClass::SameEdge (const opencascade::handle<OCafTest_Line>& L1 const opencascade::handle<OCafTest_Line>& L2) { opencascade::handle<TNaming_NamedShape> NS1 = L1->NamedShape(); opencascade::handle<TNaming_NamedShape> NS2 = L2->NamedShape(); //! return BRepTools::Compare(NS1->Get(),NS2->Get()); } In the example above, the function SameEdge is created to compare the edges having two lines for geometric supports. If these edges are found by BRepTools::Compare to be within the same tolerance, they are considered to be the same. Warning To avoid sharing of names, a SELECTED attribute will not be returned. Sharing of names makes it harder to manage the data structure. When the user of the name is removed, for example, it is difficult to know whether the name should be destroyed.
 ") NamedShape;
 		static opencascade::handle<TNaming_NamedShape> NamedShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces);
 
@@ -4118,7 +4086,7 @@ Returns the shape contained as OldShape in <NS>.
 		static TopoDS_Shape OriginalShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
 		/****** TNaming_Tool::ValidUntil ******/
-		/****** md5 signature: 9f164e3076ba934991747c998e5f774c ******/
+		/****** md5 signature: 5cb089bd85e4290f222c0e2524dc9b5a ******/
 		%feature("compactdefaultargs") ValidUntil;
 		%feature("autodoc", "
 Parameters
@@ -4134,7 +4102,7 @@ Description
 -----------
 Returns the last transaction where the creation of S is valid.
 ") ValidUntil;
-		static Standard_Integer ValidUntil(const TDF_Label & access, const TopoDS_Shape & S);
+		static int ValidUntil(const TDF_Label & access, const TopoDS_Shape & S);
 
 };
 
@@ -4314,14 +4282,14 @@ No available documentation.
 		void MakeWire(TopoDS_Shape & S);
 
 		/****** TNaming_TranslateTool::UpdateEdge ******/
-		/****** md5 signature: 32c88d6a80c068ef7bc4a8f3a213e626 ******/
+		/****** md5 signature: 7848d0cdf248b0fc4b116bd800716f54 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-M: TColStd_IndexedDataMapOfTransientTransient
+M: Standard_Transient
 
 Return
 -------
@@ -4331,17 +4299,17 @@ Description
 -----------
 No available documentation.
 ") UpdateEdge;
-		void UpdateEdge(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
+		void UpdateEdge(const TopoDS_Shape & S1, TopoDS_Shape & S2, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & M);
 
 		/****** TNaming_TranslateTool::UpdateFace ******/
-		/****** md5 signature: a3dc337fc26d7c028daac8cce270aefe ******/
+		/****** md5 signature: e5b0526a1f5a85aa600863cb9bf8239d ******/
 		%feature("compactdefaultargs") UpdateFace;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-M: TColStd_IndexedDataMapOfTransientTransient
+M: Standard_Transient
 
 Return
 -------
@@ -4351,7 +4319,7 @@ Description
 -----------
 No available documentation.
 ") UpdateFace;
-		void UpdateFace(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
+		void UpdateFace(const TopoDS_Shape & S1, TopoDS_Shape & S2, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & M);
 
 		/****** TNaming_TranslateTool::UpdateShape ******/
 		/****** md5 signature: 8bf8def5c83f533e58852e9d10059929 ******/
@@ -4373,14 +4341,14 @@ No available documentation.
 		void UpdateShape(const TopoDS_Shape & S1, TopoDS_Shape & S2);
 
 		/****** TNaming_TranslateTool::UpdateVertex ******/
-		/****** md5 signature: 996e38d30dc10b9ceef4cc601d23d36d ******/
+		/****** md5 signature: 8b8e196dc116af16931c01f2d6e294e6 ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-M: TColStd_IndexedDataMapOfTransientTransient
+M: Standard_Transient
 
 Return
 -------
@@ -4390,7 +4358,7 @@ Description
 -----------
 No available documentation.
 ") UpdateVertex;
-		void UpdateVertex(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
+		void UpdateVertex(const TopoDS_Shape & S1, TopoDS_Shape & S2, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & M);
 
 };
 
@@ -4458,25 +4426,25 @@ returns copied shape.
 		const TopoDS_Shape Copied(const TopoDS_Shape & aShape);
 
 		/****** TNaming_Translator::Copied ******/
-		/****** md5 signature: d10333a4c793322b9feccf7e3a23523a ******/
+		/****** md5 signature: 95f0e111cc6fcf4cd4d83bf5b5da21bd ******/
 		%feature("compactdefaultargs") Copied;
 		%feature("autodoc", "Return
 -------
-TopTools_DataMapOfShapeShape
+NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 returns DataMap of results; (shape <-> copied shape).
 ") Copied;
-		const TopTools_DataMapOfShapeShape & Copied();
+		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> Copied();
 
 		/****** TNaming_Translator::DumpMap ******/
-		/****** md5 signature: 0a2ceed5a21dd3be8407730ae50ff428 ******/
+		/****** md5 signature: 79d3f94b2eb3c0b7272ebc11464668d6 ******/
 		%feature("compactdefaultargs") DumpMap;
 		%feature("autodoc", "
 Parameters
 ----------
-isWrite: bool (optional, default to Standard_False)
+isWrite: bool (optional, default to false)
 
 Return
 -------
@@ -4486,10 +4454,10 @@ Description
 -----------
 No available documentation.
 ") DumpMap;
-		void DumpMap(const Standard_Boolean isWrite = Standard_False);
+		void DumpMap(const bool isWrite = false);
 
 		/****** TNaming_Translator::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4499,7 +4467,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** TNaming_Translator::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -4530,13 +4498,13 @@ No available documentation.
 class TNaming_UsedShapes : public TDF_Attribute {
 	public:
 		/****** TNaming_UsedShapes::AfterUndo ******/
-		/****** md5 signature: 6a782c706f1e9291f121f77d889ed576 ******/
+		/****** md5 signature: 1c658357444dc4e0bd0f4b66ab6d7e3c ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -4546,10 +4514,10 @@ Description
 -----------
 Something to do after applying <anAttDelta>.
 ") AfterUndo;
-		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TNaming_UsedShapes::BackupCopy ******/
-		/****** md5 signature: c0c9b77233d223451ec9a7e1bc2427c7 ******/
+		/****** md5 signature: 37a7ca5257c3a9e95a9390edd8c74378 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -4559,10 +4527,10 @@ Description
 -----------
 Copies the attribute contents into a new other attribute. It is used by Backup().
 ") BackupCopy;
-		virtual opencascade::handle<TDF_Attribute> BackupCopy();
+		opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****** TNaming_UsedShapes::BeforeRemoval ******/
-		/****** md5 signature: fb87f8354fd142d1ab3d9cd55ada4556 ******/
+		/****** md5 signature: 0f64ecdecef86a02045a45cc05d670d1 ******/
 		%feature("compactdefaultargs") BeforeRemoval;
 		%feature("autodoc", "Return
 -------
@@ -4572,10 +4540,10 @@ Description
 -----------
 Clears the table.
 ") BeforeRemoval;
-		virtual void BeforeRemoval();
+		void BeforeRemoval();
 
 		/****** TNaming_UsedShapes::DeltaOnAddition ******/
-		/****** md5 signature: aa2ea5db23993a7e5b0a25784c07a50b ******/
+		/****** md5 signature: a265f39688cf4dd301e84cd159a50d0c ******/
 		%feature("compactdefaultargs") DeltaOnAddition;
 		%feature("autodoc", "Return
 -------
@@ -4585,10 +4553,10 @@ Description
 -----------
 this method returns a null handle (no delta).
 ") DeltaOnAddition;
-		virtual opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition();
+		opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition();
 
 		/****** TNaming_UsedShapes::DeltaOnRemoval ******/
-		/****** md5 signature: fce2b18e72dadcfc2bcbf283227db136 ******/
+		/****** md5 signature: 66c7868ee6dc796dade3a515a7cbe057 ******/
 		%feature("compactdefaultargs") DeltaOnRemoval;
 		%feature("autodoc", "Return
 -------
@@ -4598,7 +4566,7 @@ Description
 -----------
 this method returns a null handle (no delta).
 ") DeltaOnRemoval;
-		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
+		opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
 		/****** TNaming_UsedShapes::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -4614,7 +4582,7 @@ No available documentation.
 		void Destroy();
 
 		/****** TNaming_UsedShapes::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4628,7 +4596,7 @@ Description
 -----------
 Dumps the attribute on <aStream>.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -4665,7 +4633,7 @@ Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
 		static const Standard_GUID & GetID();
 
 		/****** TNaming_UsedShapes::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -4678,20 +4646,20 @@ Returns the ID of the attribute.
 		const Standard_GUID & ID();
 
 		/****** TNaming_UsedShapes::Map ******/
-		/****** md5 signature: 9334310995a65460bf5da71aabb605e3 ******/
+		/****** md5 signature: 681179ec0342e7138df38e00deb428c0 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TNaming_DataMapOfShapePtrRefShape
+NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		TNaming_DataMapOfShapePtrRefShape & Map();
+		NCollection_DataMap<TopoDS_Shape, TNaming_PtrRefShape, TopTools_ShapeMapHasher> Map();
 
 		/****** TNaming_UsedShapes::NewEmpty ******/
-		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4701,10 +4669,10 @@ Description
 -----------
 Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
-		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TNaming_UsedShapes::Paste ******/
-		/****** md5 signature: 53b4ec32bedd752fc0ccd186074f75ef ******/
+		/****** md5 signature: ca00147c679ec8fdf08d12c6ca321a64 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -4720,10 +4688,10 @@ Description
 -----------
 This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 ") Paste;
-		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
+		void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
 		/****** TNaming_UsedShapes::References ******/
-		/****** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ******/
+		/****** md5 signature: 3de62c613451bbbead6f06af1452fc25 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -4738,10 +4706,10 @@ Description
 -----------
 Adds the directly referenced attributes and labels to <aDataSet>. 'Directly' means we have only to look at the first level of references. //! For this, use only the AddLabel() & AddAttribute() from DataSet and do not try to modify information previously stored in <aDataSet>.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
+		void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****** TNaming_UsedShapes::Restore ******/
-		/****** md5 signature: c280e51bf6f4f3b5011b0c3698dfb001 ******/
+		/****** md5 signature: 41c5f809a59ee36fde865c853768ba6f ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -4756,12 +4724,10 @@ Description
 -----------
 Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
-		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
+		void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
 };
 
-
-%make_alias(TNaming_UsedShapes)
 
 %extend TNaming_UsedShapes {
 	%pythoncode {

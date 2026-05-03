@@ -124,32 +124,35 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 %wrap_handle(TDataStd_NoteBook)
 %wrap_handle(TDataStd_Relation)
 %wrap_handle(TDataStd_Tick)
-%wrap_handle(TDataStd_HLabelArray1)
 /* end handles declaration */
 
 /* templates */
-%template(TDataStd_DataMapOfStringByte) NCollection_DataMap<TCollection_ExtendedString,Standard_Byte>;
+%ignore NCollection_DataMap<TCollection_ExtendedString,uint8_t>::Items;
+%ignore NCollection_DataMap<TCollection_ExtendedString,uint8_t>::KeyValues;
+%template(TDataStd_DataMapOfStringByte) NCollection_DataMap<TCollection_ExtendedString,uint8_t>;
+%ignore NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfInteger>>::Items;
+%ignore NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfInteger>>::KeyValues;
 %template(TDataStd_DataMapOfStringHArray1OfInteger) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfInteger>>;
+%ignore NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfReal>>::Items;
+%ignore NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfReal>>::KeyValues;
 %template(TDataStd_DataMapOfStringHArray1OfReal) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfReal>>;
-%template(TDataStd_DataMapOfStringReal) NCollection_DataMap<TCollection_ExtendedString,Standard_Real>;
+%ignore NCollection_DataMap<TCollection_ExtendedString,double>::Items;
+%ignore NCollection_DataMap<TCollection_ExtendedString,double>::KeyValues;
+%template(TDataStd_DataMapOfStringReal) NCollection_DataMap<TCollection_ExtendedString,double>;
+%ignore NCollection_DataMap<TCollection_ExtendedString,TCollection_ExtendedString>::Items;
+%ignore NCollection_DataMap<TCollection_ExtendedString,TCollection_ExtendedString>::KeyValues;
 %template(TDataStd_DataMapOfStringString) NCollection_DataMap<TCollection_ExtendedString,TCollection_ExtendedString>;
 %template(TDataStd_LabelArray1) NCollection_Array1<TDF_Label>;
 Array1ExtendIter(TDF_Label)
 
-%template(TDataStd_ListIteratorOfListOfByte) NCollection_TListIterator<Standard_Byte>;
+%template(TDataStd_ListIteratorOfListOfByte) NCollection_TListIterator<uint8_t>;
 %template(TDataStd_ListIteratorOfListOfExtendedString) NCollection_TListIterator<TCollection_ExtendedString>;
-%template(TDataStd_ListOfByte) NCollection_List<Standard_Byte>;
+%template(TDataStd_ListOfByte) NCollection_List<uint8_t>;
 
-%extend NCollection_List<Standard_Byte> {
+%extend NCollection_List<uint8_t> {
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TDataStd_ListIteratorOfListOfByte(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TDataStd_ListOfExtendedString) NCollection_List<TCollection_ExtendedString>;
@@ -158,33 +161,27 @@ Array1ExtendIter(TDF_Label)
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TDataStd_ListIteratorOfListOfExtendedString(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringByte;
+typedef NCollection_DataMap<TCollection_ExtendedString, uint8_t>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringByte;
 typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
 typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
+typedef NCollection_DataMap<TCollection_ExtendedString, double>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
 typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringString;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte> TDataStd_DataMapOfStringByte;
+typedef NCollection_DataMap<TCollection_ExtendedString, uint8_t> TDataStd_DataMapOfStringByte;
 typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> TDataStd_DataMapOfStringHArray1OfInteger;
 typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>> TDataStd_DataMapOfStringHArray1OfReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real> TDataStd_DataMapOfStringReal;
+typedef NCollection_DataMap<TCollection_ExtendedString, double> TDataStd_DataMapOfStringReal;
 typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> TDataStd_DataMapOfStringString;
+typedef NCollection_HArray1<TDF_Label> TDataStd_HLabelArray1;
 typedef NCollection_Array1<TDF_Label> TDataStd_LabelArray1;
-typedef NCollection_List<Standard_Byte>::Iterator TDataStd_ListIteratorOfListOfByte;
+typedef NCollection_List<uint8_t>::Iterator TDataStd_ListIteratorOfListOfByte;
 typedef NCollection_List<TCollection_ExtendedString>::Iterator TDataStd_ListIteratorOfListOfExtendedString;
-typedef NCollection_List<Standard_Byte> TDataStd_ListOfByte;
+typedef NCollection_List<uint8_t> TDataStd_ListOfByte;
 typedef NCollection_List<TCollection_ExtendedString> TDataStd_ListOfExtendedString;
-typedef TDataStd_TreeNode * TDataStd_PtrTreeNode;
 /* end typedefs declaration */
 
 /*****************
@@ -194,12 +191,12 @@ typedef TDataStd_TreeNode * TDataStd_PtrTreeNode;
 class TDataStd {
 	public:
 		/****** TDataStd::IDList ******/
-		/****** md5 signature: 97de0b35f4f6abc04a631c65d32bacc4 ******/
+		/****** md5 signature: 13c09c8b61f14a9cf4c6ae6a05704f7d ******/
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: TDF_IDList
+anIDList: NCollection_List<Standard_GUID>
 
 Return
 -------
@@ -209,7 +206,7 @@ Description
 -----------
 Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
-		static void IDList(TDF_IDList & anIDList);
+		static void IDList(NCollection_List<Standard_GUID> & anIDList);
 
 		/****** TDataStd::Print ******/
 		/****** md5 signature: 34ef93cfb1f41df788d00d50ea442396 ******/
@@ -257,7 +254,7 @@ No available documentation.
 		 TDataStd_AsciiString();
 
 		/****** TDataStd_AsciiString::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -271,7 +268,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -321,7 +318,7 @@ class methods ============= Returns the GUID of the attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_AsciiString::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -334,7 +331,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_AsciiString::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -344,10 +341,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_AsciiString::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -360,7 +357,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_AsciiString::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -379,7 +376,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_AsciiString::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -454,7 +451,7 @@ No available documentation.
 		void Set(TCollection_AsciiString S);
 
 		/****** TDataStd_AsciiString::SetID ******/
-		/****** md5 signature: 7a929ce753effeac220c978ae7330330 ******/
+		/****** md5 signature: 64789516907731f72c16acfd42a0f70f ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -472,7 +469,7 @@ Sets the explicit user defined GUID to the attribute.
 		void SetID(const Standard_GUID & guid);
 
 		/****** TDataStd_AsciiString::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -514,7 +511,7 @@ No available documentation.
 		 TDataStd_BooleanArray();
 
 		/****** TDataStd_BooleanArray::Dump ******/
-		/****** md5 signature: b935d5dd68e95802ac42f7875d3b6b15 ******/
+		/****** md5 signature: 4b2e787c4f1bb61723a71c7b2716a47b ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -528,7 +525,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -565,7 +562,7 @@ Static methods ============== Returns an ID for array.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_BooleanArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -578,7 +575,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_BooleanArray::Init ******/
-		/****** md5 signature: 7821d9c43d1b72a2a51576c8503c10d4 ******/
+		/****** md5 signature: 9817520653ab29d149c0b92193743f1d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -594,23 +591,23 @@ Description
 -----------
 Initialize the inner array with bounds from <lower> to <upper>.
 ") Init;
-		void Init(const Standard_Integer lower, const Standard_Integer upper);
+		void Init(const int lower, const int upper);
 
 		/****** TDataStd_BooleanArray::InternalArray ******/
-		/****** md5 signature: 61a39b353105b740896ae484cb34e848 ******/
+		/****** md5 signature: da89edd2480e70ea7838439f3620154c ******/
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfByte>
+opencascade::handle<NCollection_HArray1<uint8_t>>
 
 Description
 -----------
 No available documentation.
 ") InternalArray;
-		const opencascade::handle<TColStd_HArray1OfByte> & InternalArray();
+		const opencascade::handle<NCollection_HArray1<uint8_t>> & InternalArray();
 
 		/****** TDataStd_BooleanArray::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -620,10 +617,10 @@ Description
 -----------
 Returns the number of elements in the array.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDataStd_BooleanArray::Lower ******/
-		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
+		/****** md5 signature: ed303acc20e6a8f86d94712204278487 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -633,10 +630,10 @@ Description
 -----------
 Returns the lower boundary of the array.
 ") Lower;
-		Standard_Integer Lower();
+		int Lower();
 
 		/****** TDataStd_BooleanArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -649,7 +646,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_BooleanArray::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -668,7 +665,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_BooleanArray::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -686,7 +683,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****** TDataStd_BooleanArray::Set ******/
-		/****** md5 signature: 3d0966f83c918bab665b182f6f3772af ******/
+		/****** md5 signature: 5cd45fa70924e1060b1823c5b5747b79 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -703,10 +700,10 @@ Description
 -----------
 Finds or creates an attribute with internal boolean array.
 ") Set;
-		static opencascade::handle<TDataStd_BooleanArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper);
+		static opencascade::handle<TDataStd_BooleanArray> Set(const TDF_Label & label, const int lower, const int upper);
 
 		/****** TDataStd_BooleanArray::Set ******/
-		/****** md5 signature: 08a5308f0fac1f619bcf995915c3963f ******/
+		/****** md5 signature: 8c6689f89afeaf4e9cb37ab5c27b2708 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -724,10 +721,10 @@ Description
 -----------
 Finds or creates an attribute with the array using explicit user defined <guid>.
 ") Set;
-		static opencascade::handle<TDataStd_BooleanArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper);
+		static opencascade::handle<TDataStd_BooleanArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const int lower, const int upper);
 
 		/****** TDataStd_BooleanArray::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -745,7 +742,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_BooleanArray::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -758,12 +755,12 @@ Sets default GUID for the attribute.
 		void SetID();
 
 		/****** TDataStd_BooleanArray::SetInternalArray ******/
-		/****** md5 signature: af07cdaee81199f417a2cec4b4522441 ******/
+		/****** md5 signature: 56e78928a2bb87576002f65ad94fe623 ******/
 		%feature("compactdefaultargs") SetInternalArray;
 		%feature("autodoc", "
 Parameters
 ----------
-values: TColStd_HArray1OfByte
+values: NCollection_HArray1<uint8_t
 
 Return
 -------
@@ -773,10 +770,10 @@ Description
 -----------
 No available documentation.
 ") SetInternalArray;
-		void SetInternalArray(const opencascade::handle<TColStd_HArray1OfByte> & values);
+		void SetInternalArray(const opencascade::handle<NCollection_HArray1<uint8_t> > & values);
 
 		/****** TDataStd_BooleanArray::SetValue ******/
-		/****** md5 signature: 605aad63026d3d412637dcaebee62f2e ******/
+		/****** md5 signature: 848214bcea36dd5fd13328455e58f3c3 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -792,10 +789,10 @@ Description
 -----------
 Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
-		void SetValue(const Standard_Integer index, const Standard_Boolean value);
+		void SetValue(const int index, const bool value);
 
 		/****** TDataStd_BooleanArray::Upper ******/
-		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
+		/****** md5 signature: a53a7ba7d20e7ec35b8de8d721ea431d ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -805,10 +802,10 @@ Description
 -----------
 Returns the upper boundary of the array.
 ") Upper;
-		Standard_Integer Upper();
+		int Upper();
 
 		/****** TDataStd_BooleanArray::Value ******/
-		/****** md5 signature: 40dedbbf4e5af7f5ac65490d1e98c0c8 ******/
+		/****** md5 signature: 68d57515e4e49131f4805c8fe79896d9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -823,7 +820,7 @@ Description
 -----------
 Return the value of the <Index>th element of the array.
 ") Value;
-		Standard_Boolean Value(const Standard_Integer Index);
+		bool Value(const int Index);
 
 };
 
@@ -855,7 +852,7 @@ No available documentation.
 		 TDataStd_BooleanList();
 
 		/****** TDataStd_BooleanList::Append ******/
-		/****** md5 signature: 83ceeaaba0bf39e19a46a2ebf946e6d5 ******/
+		/****** md5 signature: 4300e81d5a32b1c434afb0ea03fc09e2 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -870,7 +867,7 @@ Description
 -----------
 No available documentation.
 ") Append;
-		void Append(const Standard_Boolean value);
+		void Append(const bool value);
 
 		/****** TDataStd_BooleanList::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -886,7 +883,7 @@ No available documentation.
 		void Clear();
 
 		/****** TDataStd_BooleanList::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -900,7 +897,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -924,7 +921,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_BooleanList::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -934,10 +931,10 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TDataStd_BooleanList::First ******/
-		/****** md5 signature: 65da73e94c21352acce8ef43e35ce0bd ******/
+		/****** md5 signature: 924519942978881e8a2afbe61a35d5a7 ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
@@ -947,7 +944,7 @@ Description
 -----------
 No available documentation.
 ") First;
-		Standard_Boolean First();
+		bool First();
 
 		/****** TDataStd_BooleanList::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -963,7 +960,7 @@ Static methods ============== Returns the ID of the list of booleans attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_BooleanList::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -976,7 +973,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_BooleanList::InsertAfter ******/
-		/****** md5 signature: 23751c9003f707933931dd2222fa1474 ******/
+		/****** md5 signature: 0e1a0c7fcfce682907cb15a80b71a754 ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -992,10 +989,10 @@ Description
 -----------
 Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const Standard_Integer index, const Standard_Boolean after_value);
+		bool InsertAfter(const int index, const bool after_value);
 
 		/****** TDataStd_BooleanList::InsertBefore ******/
-		/****** md5 signature: bba1fc07c146a59994586980b2f68a56 ******/
+		/****** md5 signature: 761021eba387cb7b10a8e1e8947362ad ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -1011,10 +1008,10 @@ Description
 -----------
 Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const Standard_Integer index, const Standard_Boolean before_value);
+		bool InsertBefore(const int index, const bool before_value);
 
 		/****** TDataStd_BooleanList::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1024,10 +1021,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_BooleanList::Last ******/
-		/****** md5 signature: 89e81e8e3fe45fc4c83ee1f19bb07686 ******/
+		/****** md5 signature: 2be9114eba68b381bf5b1166809d00a4 ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "Return
 -------
@@ -1037,23 +1034,23 @@ Description
 -----------
 No available documentation.
 ") Last;
-		Standard_Boolean Last();
+		bool Last();
 
 		/****** TDataStd_BooleanList::List ******/
-		/****** md5 signature: 1e1c7319a6ab5a44a30c67114ec285e8 ******/
+		/****** md5 signature: de436db6056d31c6f6f74de2e77bf87a ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-TDataStd_ListOfByte
+NCollection_List<uint8_t>
 
 Description
 -----------
 1 - means True, 0 - means False.
 ") List;
-		const TDataStd_ListOfByte & List();
+		const NCollection_List<uint8_t> & List();
 
 		/****** TDataStd_BooleanList::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1066,7 +1063,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_BooleanList::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -1085,7 +1082,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_BooleanList::Prepend ******/
-		/****** md5 signature: e786583abf4210ef9996431ab3fd12d9 ******/
+		/****** md5 signature: de30b1698f1845cb9a013e5cbe93aa44 ******/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "
 Parameters
@@ -1100,10 +1097,10 @@ Description
 -----------
 No available documentation.
 ") Prepend;
-		void Prepend(const Standard_Boolean value);
+		void Prepend(const bool value);
 
 		/****** TDataStd_BooleanList::Remove ******/
-		/****** md5 signature: d5758943c335a06d32f07ab2389e0fe6 ******/
+		/****** md5 signature: d991364949bd4864a2863cd5382583d6 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -1118,10 +1115,10 @@ Description
 -----------
 Removes a value at <index> position.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Integer index);
+		bool Remove(const int index);
 
 		/****** TDataStd_BooleanList::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -1176,7 +1173,7 @@ Finds or creates a list of boolean values attribute with explicit user defined <
 		static opencascade::handle<TDataStd_BooleanList> Set(const TDF_Label & label, const Standard_GUID & theGuid);
 
 		/****** TDataStd_BooleanList::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -1194,7 +1191,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_BooleanList::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -1236,13 +1233,13 @@ No available documentation.
 		 TDataStd_ByteArray();
 
 		/****** TDataStd_ByteArray::ChangeArray ******/
-		/****** md5 signature: ad4bd7d1235654a95c892998f600cc5c ******/
+		/****** md5 signature: 69781b8c99636d81c24b75bf54a9310c ******/
 		%feature("compactdefaultargs") ChangeArray;
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: TColStd_HArray1OfByte
-isCheckItems: bool (optional, default to Standard_True)
+newArray: NCollection_HArray1<uint8_t
+isCheckItems: bool (optional, default to true)
 
 Return
 -------
@@ -1252,10 +1249,10 @@ Description
 -----------
 Sets the inner array <myValue> of the attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfInteger that holds <newArray> values. If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<TColStd_HArray1OfByte> & newArray, const Standard_Boolean isCheckItems = Standard_True);
+		void ChangeArray(const opencascade::handle<NCollection_HArray1<uint8_t> > & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_ByteArray::DeltaOnModification ******/
-		/****** md5 signature: 9a96ec815d43dd1838c022740c5327d0 ******/
+		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -1270,10 +1267,10 @@ Description
 -----------
 Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****** TDataStd_ByteArray::Dump ******/
-		/****** md5 signature: b935d5dd68e95802ac42f7875d3b6b15 ******/
+		/****** md5 signature: 4b2e787c4f1bb61723a71c7b2716a47b ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1287,7 +1284,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -1311,7 +1308,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_ByteArray::GetDelta ******/
-		/****** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ******/
+		/****** md5 signature: 48d284b77526180b9fca72a2b1a82618 ******/
 		%feature("compactdefaultargs") GetDelta;
 		%feature("autodoc", "Return
 -------
@@ -1321,7 +1318,7 @@ Description
 -----------
 No available documentation.
 ") GetDelta;
-		Standard_Boolean GetDelta();
+		bool GetDelta();
 
 		/****** TDataStd_ByteArray::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -1337,7 +1334,7 @@ Static methods ============== Returns an ID for array.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_ByteArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -1350,7 +1347,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_ByteArray::Init ******/
-		/****** md5 signature: 7821d9c43d1b72a2a51576c8503c10d4 ******/
+		/****** md5 signature: 9817520653ab29d149c0b92193743f1d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1366,23 +1363,23 @@ Description
 -----------
 Initialize the inner array with bounds from <lower> to <upper>.
 ") Init;
-		void Init(const Standard_Integer lower, const Standard_Integer upper);
+		void Init(const int lower, const int upper);
 
 		/****** TDataStd_ByteArray::InternalArray ******/
-		/****** md5 signature: eca14aaa6184d37684110db37ee46538 ******/
+		/****** md5 signature: d89248914edcee65cbf5468ebf30b4ee ******/
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfByte>
+opencascade::handle<NCollection_HArray1<uint8_t>>
 
 Description
 -----------
 No available documentation.
 ") InternalArray;
-		const opencascade::handle<TColStd_HArray1OfByte> & InternalArray();
+		const opencascade::handle<NCollection_HArray1<uint8_t>> & InternalArray();
 
 		/****** TDataStd_ByteArray::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -1392,10 +1389,10 @@ Description
 -----------
 Returns the number of elements in the array.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDataStd_ByteArray::Lower ******/
-		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
+		/****** md5 signature: ed303acc20e6a8f86d94712204278487 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -1405,10 +1402,10 @@ Description
 -----------
 Returns the lower boundary of the array.
 ") Lower;
-		Standard_Integer Lower();
+		int Lower();
 
 		/****** TDataStd_ByteArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1421,7 +1418,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_ByteArray::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -1440,7 +1437,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_ByteArray::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -1458,7 +1455,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****** TDataStd_ByteArray::Set ******/
-		/****** md5 signature: aaf065a24a5e11f591e7643080ae324c ******/
+		/****** md5 signature: 8082796fd4482f7d3434d69365097656 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1466,7 +1463,7 @@ Parameters
 label: TDF_Label
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -1476,10 +1473,10 @@ Description
 -----------
 Finds or creates an attribute with the array on the specified label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_ByteArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_ByteArray> Set(const TDF_Label & label, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_ByteArray::Set ******/
-		/****** md5 signature: 5b357c7318d0b6b02a9847ad7ac424cd ******/
+		/****** md5 signature: 99d27673ab65e27a1a3d697db265e887 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1488,7 +1485,7 @@ label: TDF_Label
 theGuid: Standard_GUID
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -1498,10 +1495,10 @@ Description
 -----------
 Finds or creates an attribute with byte array and explicit user defined <guid> on the specified label.
 ") Set;
-		static opencascade::handle<TDataStd_ByteArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_ByteArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_ByteArray::SetDelta ******/
-		/****** md5 signature: 66bc6f747d37a3ea7110a95b02e13c41 ******/
+		/****** md5 signature: ed3080f13a07eb95c0be3f5630b6c6b3 ******/
 		%feature("compactdefaultargs") SetDelta;
 		%feature("autodoc", "
 Parameters
@@ -1516,10 +1513,10 @@ Description
 -----------
 for internal use only!.
 ") SetDelta;
-		void SetDelta(const Standard_Boolean isDelta);
+		void SetDelta(const bool isDelta);
 
 		/****** TDataStd_ByteArray::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -1537,7 +1534,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_ByteArray::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -1550,13 +1547,13 @@ Sets default GUID for the attribute.
 		void SetID();
 
 		/****** TDataStd_ByteArray::SetValue ******/
-		/****** md5 signature: 5eb44f5b1fbbef87d0fc79c872ef9d03 ******/
+		/****** md5 signature: 6172a725ca3406c59806fa29f68cebff ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
 index: int
-value: Standard_Byte
+value: uint8_t
 
 Return
 -------
@@ -1566,10 +1563,10 @@ Description
 -----------
 Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
-		void SetValue(const Standard_Integer index, const Standard_Byte value);
+		void SetValue(const int index, const uint8_t value);
 
 		/****** TDataStd_ByteArray::Upper ******/
-		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
+		/****** md5 signature: a53a7ba7d20e7ec35b8de8d721ea431d ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -1579,10 +1576,10 @@ Description
 -----------
 Returns the upper boundary of the array.
 ") Upper;
-		Standard_Integer Upper();
+		int Upper();
 
 		/****** TDataStd_ByteArray::Value ******/
-		/****** md5 signature: 7d1812c0462c6fd10daef7299dca8cb4 ******/
+		/****** md5 signature: 8aacd98ef2d4c8532900a4227551d6dc ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1591,13 +1588,13 @@ Index: int
 
 Return
 -------
-Standard_Byte
+uint8_t
 
 Description
 -----------
 Return the value of the <Index>th element of the array.
 ") Value;
-		Standard_Byte Value(const Standard_Integer Index);
+		uint8_t Value(const int Index);
 
 };
 
@@ -1629,13 +1626,13 @@ Creates an empty iterator.
 		 TDataStd_ChildNodeIterator();
 
 		/****** TDataStd_ChildNodeIterator::TDataStd_ChildNodeIterator ******/
-		/****** md5 signature: eebf253baf1c60e556b24ea32091843d ******/
+		/****** md5 signature: 290b85fbd63528dea7b44a80e06ab2b8 ******/
 		%feature("compactdefaultargs") TDataStd_ChildNodeIterator;
 		%feature("autodoc", "
 Parameters
 ----------
 aTreeNode: TDataStd_TreeNode
-allLevels: bool (optional, default to Standard_False)
+allLevels: bool (optional, default to false)
 
 Return
 -------
@@ -1645,16 +1642,16 @@ Description
 -----------
 Iterates on the ChildStepren of the given Step. If <allLevels> option is set to true, it explores not only the first, but all the sub Step levels.
 ") TDataStd_ChildNodeIterator;
-		 TDataStd_ChildNodeIterator(const opencascade::handle<TDataStd_TreeNode> & aTreeNode, const Standard_Boolean allLevels = Standard_False);
+		 TDataStd_ChildNodeIterator(const opencascade::handle<TDataStd_TreeNode> & aTreeNode, const bool allLevels = false);
 
 		/****** TDataStd_ChildNodeIterator::Initialize ******/
-		/****** md5 signature: 3c8a27d654697d6383aae622e6ef2566 ******/
+		/****** md5 signature: 873dc7229ed4853039e0157c03d8d8e4 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 aTreeNode: TDataStd_TreeNode
-allLevels: bool (optional, default to Standard_False)
+allLevels: bool (optional, default to false)
 
 Return
 -------
@@ -1664,10 +1661,10 @@ Description
 -----------
 Initializes the iteration on the Children Step of the given Step. If <allLevels> option is set to true, it explores not only the first, but all the sub Step levels.
 ") Initialize;
-		void Initialize(const opencascade::handle<TDataStd_TreeNode> & aTreeNode, const Standard_Boolean allLevels = Standard_False);
+		void Initialize(const opencascade::handle<TDataStd_TreeNode> & aTreeNode, const bool allLevels = false);
 
 		/****** TDataStd_ChildNodeIterator::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1677,7 +1674,7 @@ Description
 -----------
 Returns True if there is a current Item in the iteration.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TDataStd_ChildNodeIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1746,7 +1743,7 @@ No available documentation.
 		 TDataStd_Current();
 
 		/****** TDataStd_Current::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1760,7 +1757,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -1828,7 +1825,7 @@ No available documentation.
 		TDF_Label GetLabel();
 
 		/****** TDataStd_Current::Has ******/
-		/****** md5 signature: 50ae6e2d0e5e7cf8d8a39bf93358e95e ******/
+		/****** md5 signature: 4be26c703c22566df918a80d7bc3bd8a ******/
 		%feature("compactdefaultargs") Has;
 		%feature("autodoc", "
 Parameters
@@ -1843,10 +1840,10 @@ Description
 -----------
 returns True if a current label is managed in <acces> Framework. class methods =============.
 ") Has;
-		static Standard_Boolean Has(const TDF_Label & acces);
+		static bool Has(const TDF_Label & acces);
 
 		/****** TDataStd_Current::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -1859,7 +1856,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_Current::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1872,7 +1869,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_Current::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -1891,7 +1888,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_Current::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -1979,7 +1976,7 @@ Initializes a TDF_DeltaOnModification.
 		 TDataStd_DeltaOnModificationOfByteArray(const opencascade::handle<TDataStd_ByteArray> & Arr);
 
 		/****** TDataStd_DeltaOnModificationOfByteArray::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -1989,7 +1986,7 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
@@ -2026,7 +2023,7 @@ Initializes a TDF_DeltaOnModification.
 		 TDataStd_DeltaOnModificationOfExtStringArray(const opencascade::handle<TDataStd_ExtStringArray> & Arr);
 
 		/****** TDataStd_DeltaOnModificationOfExtStringArray::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -2036,7 +2033,7 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
@@ -2073,7 +2070,7 @@ Initializes a TDF_DeltaOnModification.
 		 TDataStd_DeltaOnModificationOfIntArray(const opencascade::handle<TDataStd_IntegerArray> & Arr);
 
 		/****** TDataStd_DeltaOnModificationOfIntArray::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -2083,7 +2080,7 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
@@ -2120,7 +2117,7 @@ Initializes a TDF_DeltaOnModification.
 		 TDataStd_DeltaOnModificationOfIntPackedMap(const opencascade::handle<TDataStd_IntPackedMap> & Arr);
 
 		/****** TDataStd_DeltaOnModificationOfIntPackedMap::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -2130,7 +2127,7 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
@@ -2167,7 +2164,7 @@ Initializes a TDF_DeltaOnModification.
 		 TDataStd_DeltaOnModificationOfRealArray(const opencascade::handle<TDataStd_RealArray> & Arr);
 
 		/****** TDataStd_DeltaOnModificationOfRealArray::Apply ******/
-		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
+		/****** md5 signature: c812de41f6107ab4b6caba68a166b811 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -2177,7 +2174,7 @@ Description
 -----------
 Applies the delta to the attribute.
 ") Apply;
-		virtual void Apply();
+		void Apply();
 
 };
 
@@ -2209,7 +2206,7 @@ No available documentation.
 		 TDataStd_Expression();
 
 		/****** TDataStd_Expression::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2223,7 +2220,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -2273,20 +2270,20 @@ class methods =============.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_Expression::GetVariables ******/
-		/****** md5 signature: b15a6b025b25c61503dc4b4deba5bd8b ******/
+		/****** md5 signature: bf9d30ce9cc8c37e15f30e0bd7a60bdf ******/
 		%feature("compactdefaultargs") GetVariables;
 		%feature("autodoc", "Return
 -------
-TDF_AttributeList
+NCollection_List<opencascade::handle<TDF_Attribute>>
 
 Description
 -----------
 No available documentation.
 ") GetVariables;
-		TDF_AttributeList & GetVariables();
+		NCollection_List<opencascade::handle<TDF_Attribute>> & GetVariables();
 
 		/****** TDataStd_Expression::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2312,7 +2309,7 @@ build and return the expression name.
 		TCollection_ExtendedString Name();
 
 		/****** TDataStd_Expression::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2325,7 +2322,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_Expression::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2344,7 +2341,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_Expression::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2427,26 +2424,26 @@ No available documentation.
 		 TDataStd_ExtStringArray();
 
 		/****** TDataStd_ExtStringArray::Array ******/
-		/****** md5 signature: bf3a2e32e96eae9bf18b8add11f03226 ******/
+		/****** md5 signature: 41a46359beec1f9354075f89fd422039 ******/
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfExtendedString>
+opencascade::handle<NCollection_HArray1<TCollection_ExtendedString>>
 
 Description
 -----------
 Return the inner array of the ExtStringArray attribute.
 ") Array;
-		const opencascade::handle<TColStd_HArray1OfExtendedString> & Array();
+		const opencascade::handle<NCollection_HArray1<TCollection_ExtendedString>> & Array();
 
 		/****** TDataStd_ExtStringArray::ChangeArray ******/
-		/****** md5 signature: 76cf449b0c78430434ee11ebf388de0d ******/
+		/****** md5 signature: 9801affe705697324d9c29b8714610e7 ******/
 		%feature("compactdefaultargs") ChangeArray;
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: TColStd_HArray1OfExtendedString
-isCheckItems: bool (optional, default to Standard_True)
+newArray: NCollection_HArray1<TCollection_ExtendedString
+isCheckItems: bool (optional, default to true)
 
 Return
 -------
@@ -2456,10 +2453,10 @@ Description
 -----------
 Sets the inner array <myValue> of the ExtStringArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfExtendedString that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<TColStd_HArray1OfExtendedString> & newArray, const Standard_Boolean isCheckItems = Standard_True);
+		void ChangeArray(const opencascade::handle<NCollection_HArray1<TCollection_ExtendedString> > & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_ExtStringArray::DeltaOnModification ******/
-		/****** md5 signature: 9a96ec815d43dd1838c022740c5327d0 ******/
+		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -2474,10 +2471,10 @@ Description
 -----------
 Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****** TDataStd_ExtStringArray::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2491,7 +2488,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -2515,7 +2512,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_ExtStringArray::GetDelta ******/
-		/****** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ******/
+		/****** md5 signature: 48d284b77526180b9fca72a2b1a82618 ******/
 		%feature("compactdefaultargs") GetDelta;
 		%feature("autodoc", "Return
 -------
@@ -2525,7 +2522,7 @@ Description
 -----------
 No available documentation.
 ") GetDelta;
-		Standard_Boolean GetDelta();
+		bool GetDelta();
 
 		/****** TDataStd_ExtStringArray::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -2541,7 +2538,7 @@ class methods ============= Returns the GUID for the attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_ExtStringArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2554,7 +2551,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_ExtStringArray::Init ******/
-		/****** md5 signature: 7821d9c43d1b72a2a51576c8503c10d4 ******/
+		/****** md5 signature: 9817520653ab29d149c0b92193743f1d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2570,10 +2567,10 @@ Description
 -----------
 Initializes the inner array with bounds from <lower> to <upper>.
 ") Init;
-		void Init(const Standard_Integer lower, const Standard_Integer upper);
+		void Init(const int lower, const int upper);
 
 		/****** TDataStd_ExtStringArray::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -2583,10 +2580,10 @@ Description
 -----------
 Return the number of elements of <self>.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDataStd_ExtStringArray::Lower ******/
-		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
+		/****** md5 signature: ed303acc20e6a8f86d94712204278487 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -2596,10 +2593,10 @@ Description
 -----------
 Return the lower bound.
 ") Lower;
-		Standard_Integer Lower();
+		int Lower();
 
 		/****** TDataStd_ExtStringArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2612,7 +2609,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_ExtStringArray::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2631,7 +2628,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_ExtStringArray::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2649,7 +2646,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_ExtStringArray::Set ******/
-		/****** md5 signature: c93882fb1070a4851bcdca0675d4d592 ******/
+		/****** md5 signature: 413d36ce1292abf11443df40f3a9343e ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2657,7 +2654,7 @@ Parameters
 label: TDF_Label
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -2667,10 +2664,10 @@ Description
 -----------
 Finds, or creates, an ExtStringArray attribute with <lower> and <upper> bounds on the specified label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_ExtStringArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_ExtStringArray> Set(const TDF_Label & label, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_ExtStringArray::Set ******/
-		/****** md5 signature: 00e8d7f58163e822658b96ca6e5ae424 ******/
+		/****** md5 signature: acc6ce1580cf5d702de7b603fa928731 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2679,7 +2676,7 @@ label: TDF_Label
 theGuid: Standard_GUID
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -2689,10 +2686,10 @@ Description
 -----------
 Finds, or creates, an ExtStringArray attribute with explicit user defined <guid>. The ExtStringArray attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_ExtStringArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_ExtStringArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_ExtStringArray::SetDelta ******/
-		/****** md5 signature: 66bc6f747d37a3ea7110a95b02e13c41 ******/
+		/****** md5 signature: ed3080f13a07eb95c0be3f5630b6c6b3 ******/
 		%feature("compactdefaultargs") SetDelta;
 		%feature("autodoc", "
 Parameters
@@ -2707,10 +2704,10 @@ Description
 -----------
 for internal use only!.
 ") SetDelta;
-		void SetDelta(const Standard_Boolean isDelta);
+		void SetDelta(const bool isDelta);
 
 		/****** TDataStd_ExtStringArray::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -2728,7 +2725,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_ExtStringArray::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -2741,7 +2738,7 @@ Sets default GUID for the attribute.
 		void SetID();
 
 		/****** TDataStd_ExtStringArray::SetValue ******/
-		/****** md5 signature: c9625cdae892191532dd40ae6ff11a40 ******/
+		/****** md5 signature: faf0738736713344bd7e793953109095 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2757,10 +2754,10 @@ Description
 -----------
 Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
-		void SetValue(const Standard_Integer Index, TCollection_ExtendedString Value);
+		void SetValue(const int Index, TCollection_ExtendedString Value);
 
 		/****** TDataStd_ExtStringArray::Upper ******/
-		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
+		/****** md5 signature: a53a7ba7d20e7ec35b8de8d721ea431d ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -2770,10 +2767,10 @@ Description
 -----------
 Return the upper bound.
 ") Upper;
-		Standard_Integer Upper();
+		int Upper();
 
 		/****** TDataStd_ExtStringArray::Value ******/
-		/****** md5 signature: bbf07c80f5c2f47b499665f5becff5e8 ******/
+		/****** md5 signature: 82c9525e923f83a69b50a33747c0aea0 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2788,7 +2785,7 @@ Description
 -----------
 Returns the value of the <Index>th element of the array.
 ") Value;
-		const TCollection_ExtendedString & Value(const Standard_Integer Index);
+		const TCollection_ExtendedString & Value(const int Index);
 
 };
 
@@ -2851,7 +2848,7 @@ No available documentation.
 		void Clear();
 
 		/****** TDataStd_ExtStringList::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2865,7 +2862,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -2889,7 +2886,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_ExtStringList::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -2899,7 +2896,7 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TDataStd_ExtStringList::First ******/
 		/****** md5 signature: 3f1d3d89a785e40474e1a5651c9efbec ******/
@@ -2928,7 +2925,7 @@ Static methods ============== Returns the ID of the list of strings attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_ExtStringList::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2941,7 +2938,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_ExtStringList::InsertAfter ******/
-		/****** md5 signature: 333f01752b3375ef8e77a252e9fc3355 ******/
+		/****** md5 signature: 1a70422dbcdd529f6655290f6e28634c ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -2957,10 +2954,10 @@ Description
 -----------
 Inserts the <value> after the first meet of <after_value>.
 ") InsertAfter;
-		Standard_Boolean InsertAfter(TCollection_ExtendedString value, TCollection_ExtendedString after_value);
+		bool InsertAfter(TCollection_ExtendedString value, TCollection_ExtendedString after_value);
 
 		/****** TDataStd_ExtStringList::InsertAfter ******/
-		/****** md5 signature: a82efc1671cdc0567d137b17efea7e0e ******/
+		/****** md5 signature: ed9ef46cf527383f0111e8b23b1639c5 ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -2976,10 +2973,10 @@ Description
 -----------
 Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const Standard_Integer index, TCollection_ExtendedString after_value);
+		bool InsertAfter(const int index, TCollection_ExtendedString after_value);
 
 		/****** TDataStd_ExtStringList::InsertBefore ******/
-		/****** md5 signature: e2b5c32e8c030b4febd798d8af9aea38 ******/
+		/****** md5 signature: 7e818f2ff6568272c48b92892bd6d79b ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -2995,10 +2992,10 @@ Description
 -----------
 Inserts the <value> before the first meet of <before_value>.
 ") InsertBefore;
-		Standard_Boolean InsertBefore(TCollection_ExtendedString value, TCollection_ExtendedString before_value);
+		bool InsertBefore(TCollection_ExtendedString value, TCollection_ExtendedString before_value);
 
 		/****** TDataStd_ExtStringList::InsertBefore ******/
-		/****** md5 signature: 39731173faa0cfeb50ebb04e09af3484 ******/
+		/****** md5 signature: 0a5eac8bfe1ab36c51f7ae42feb14eb9 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -3014,10 +3011,10 @@ Description
 -----------
 Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const Standard_Integer index, TCollection_ExtendedString before_value);
+		bool InsertBefore(const int index, TCollection_ExtendedString before_value);
 
 		/****** TDataStd_ExtStringList::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3027,7 +3024,7 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_ExtStringList::Last ******/
 		/****** md5 signature: bbe7512cc0b24fd20ee696e0517ad9d2 ******/
@@ -3043,20 +3040,20 @@ No available documentation.
 		const TCollection_ExtendedString & Last();
 
 		/****** TDataStd_ExtStringList::List ******/
-		/****** md5 signature: a8e6c196b6984ed8d1d16ed7bfc99469 ******/
+		/****** md5 signature: 382533ae060729c41c05beadf9be0cfd ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-TDataStd_ListOfExtendedString
+NCollection_List<TCollection_ExtendedString>
 
 Description
 -----------
 No available documentation.
 ") List;
-		const TDataStd_ListOfExtendedString & List();
+		const NCollection_List<TCollection_ExtendedString> & List();
 
 		/****** TDataStd_ExtStringList::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3069,7 +3066,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_ExtStringList::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -3106,7 +3103,7 @@ No available documentation.
 		void Prepend(TCollection_ExtendedString value);
 
 		/****** TDataStd_ExtStringList::Remove ******/
-		/****** md5 signature: 6fa22246d331e634e7be4fd0a9fc76ad ******/
+		/****** md5 signature: 5f9d01dbbef528524b9702d4bf45be31 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3121,10 +3118,10 @@ Description
 -----------
 Removes the first meet of the <value>.
 ") Remove;
-		Standard_Boolean Remove(TCollection_ExtendedString value);
+		bool Remove(TCollection_ExtendedString value);
 
 		/****** TDataStd_ExtStringList::Remove ******/
-		/****** md5 signature: d5758943c335a06d32f07ab2389e0fe6 ******/
+		/****** md5 signature: d991364949bd4864a2863cd5382583d6 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3139,10 +3136,10 @@ Description
 -----------
 Removes a value at <index> position.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Integer index);
+		bool Remove(const int index);
 
 		/****** TDataStd_ExtStringList::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -3197,7 +3194,7 @@ Finds or creates a list of string values attribute.
 		static opencascade::handle<TDataStd_ExtStringList> Set(const TDF_Label & label, const Standard_GUID & theGuid);
 
 		/****** TDataStd_ExtStringList::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -3215,7 +3212,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_ExtStringList::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -3250,7 +3247,7 @@ Sets default GUID for the attribute.
 class TDataStd_HDataMapOfStringByte : public Standard_Transient {
 	public:
 		/****** TDataStd_HDataMapOfStringByte::TDataStd_HDataMapOfStringByte ******/
-		/****** md5 signature: 679374981b21c2865fb1434f26aac636 ******/
+		/****** md5 signature: 36151e02d33546d773fa2208432bbfa3 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringByte;
 		%feature("autodoc", "
 Parameters
@@ -3265,15 +3262,15 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringByte;
-		 TDataStd_HDataMapOfStringByte(const Standard_Integer NbBuckets = 1);
+		 TDataStd_HDataMapOfStringByte(const int NbBuckets = 1);
 
 		/****** TDataStd_HDataMapOfStringByte::TDataStd_HDataMapOfStringByte ******/
-		/****** md5 signature: b5aac5ec6ebdd85cc054269530f6c8cb ******/
+		/****** md5 signature: 650be4e280c79fb43ce80fef1229d2ef ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringByte;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: TDataStd_DataMapOfStringByte
+theOther: NCollection_DataMap<TCollection_ExtendedString, uint8_t>
 
 Return
 -------
@@ -3283,33 +3280,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringByte;
-		 TDataStd_HDataMapOfStringByte(const TDataStd_DataMapOfStringByte & theOther);
+		 TDataStd_HDataMapOfStringByte(const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & theOther);
 
 		/****** TDataStd_HDataMapOfStringByte::ChangeMap ******/
-		/****** md5 signature: 0a2b5fe4d976a761d358e557a38bad75 ******/
+		/****** md5 signature: f25d2fa3a6be2c71ea4bb6a4b353bbcc ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringByte
+NCollection_DataMap<TCollection_ExtendedString, uint8_t>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TDataStd_DataMapOfStringByte & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, uint8_t> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringByte::Map ******/
-		/****** md5 signature: 50b2e9663ae163f6aff6c0dc3dec2cee ******/
+		/****** md5 signature: 5e6a1284ff530878fb79a84804e5fd36 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringByte
+NCollection_DataMap<TCollection_ExtendedString, uint8_t>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TDataStd_DataMapOfStringByte & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & Map();
 
 };
 
@@ -3328,7 +3325,7 @@ No available documentation.
 class TDataStd_HDataMapOfStringHArray1OfInteger : public Standard_Transient {
 	public:
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger ******/
-		/****** md5 signature: 6cd33f38fb037a0a9006af7162d982d5 ******/
+		/****** md5 signature: 378aaef1914c3e44626ae1037381f179 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringHArray1OfInteger;
 		%feature("autodoc", "
 Parameters
@@ -3343,15 +3340,15 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfInteger;
-		 TDataStd_HDataMapOfStringHArray1OfInteger(const Standard_Integer NbBuckets = 1);
+		 TDataStd_HDataMapOfStringHArray1OfInteger(const int NbBuckets = 1);
 
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::TDataStd_HDataMapOfStringHArray1OfInteger ******/
-		/****** md5 signature: 8259a5e5d4c6b79ac679be61e9013caf ******/
+		/****** md5 signature: 1ef9d14f533d94e7bbba322c9bcbb0bb ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringHArray1OfInteger;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: TDataStd_DataMapOfStringHArray1OfInteger
+theOther: NCollection_HArray1<int
 
 Return
 -------
@@ -3361,33 +3358,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfInteger;
-		 TDataStd_HDataMapOfStringHArray1OfInteger(const TDataStd_DataMapOfStringHArray1OfInteger & theOther);
+		 TDataStd_HDataMapOfStringHArray1OfInteger(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int> > > & theOther);
 
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap ******/
-		/****** md5 signature: f5cd9b08633ff43d0ef43dacb1bfd1c5 ******/
+		/****** md5 signature: 7b884a7f6270351f39baeb1630165358 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringHArray1OfInteger
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TDataStd_DataMapOfStringHArray1OfInteger & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::Map ******/
-		/****** md5 signature: 87a3e5bf8695c07e283bff2c62607045 ******/
+		/****** md5 signature: e71d4bf5539a22163368464c550ac4d0 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringHArray1OfInteger
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TDataStd_DataMapOfStringHArray1OfInteger & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>> & Map();
 
 };
 
@@ -3406,7 +3403,7 @@ No available documentation.
 class TDataStd_HDataMapOfStringHArray1OfReal : public Standard_Transient {
 	public:
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal ******/
-		/****** md5 signature: c4bcf0a4e0c461966986b975b008bc98 ******/
+		/****** md5 signature: 988e91bde93ad3a42a7f5c5938d38800 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringHArray1OfReal;
 		%feature("autodoc", "
 Parameters
@@ -3421,15 +3418,15 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfReal;
-		 TDataStd_HDataMapOfStringHArray1OfReal(const Standard_Integer NbBuckets = 1);
+		 TDataStd_HDataMapOfStringHArray1OfReal(const int NbBuckets = 1);
 
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::TDataStd_HDataMapOfStringHArray1OfReal ******/
-		/****** md5 signature: 2856f7fea212451f72049a738072e95e ******/
+		/****** md5 signature: f2e11a002bbfe6142fc993a20258d6b2 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringHArray1OfReal;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: TDataStd_DataMapOfStringHArray1OfReal
+theOther: NCollection_HArray1<double
 
 Return
 -------
@@ -3439,33 +3436,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfReal;
-		 TDataStd_HDataMapOfStringHArray1OfReal(const TDataStd_DataMapOfStringHArray1OfReal & theOther);
+		 TDataStd_HDataMapOfStringHArray1OfReal(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double> > > & theOther);
 
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap ******/
-		/****** md5 signature: bc651b856da3271678cffdf0fac521fa ******/
+		/****** md5 signature: 2299b3cdec329e77bd0cdecc056632d2 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringHArray1OfReal
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TDataStd_DataMapOfStringHArray1OfReal & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::Map ******/
-		/****** md5 signature: 8281a23b994cfab06b9c3e77e313f3a7 ******/
+		/****** md5 signature: d0990736972c1d8354f84f1a4ed0e974 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringHArray1OfReal
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TDataStd_DataMapOfStringHArray1OfReal & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>> & Map();
 
 };
 
@@ -3484,7 +3481,7 @@ No available documentation.
 class TDataStd_HDataMapOfStringInteger : public Standard_Transient {
 	public:
 		/****** TDataStd_HDataMapOfStringInteger::TDataStd_HDataMapOfStringInteger ******/
-		/****** md5 signature: 742439804a93877a5047a7bff6bccd15 ******/
+		/****** md5 signature: b272c07bde7fb1077edfa6436836cb83 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringInteger;
 		%feature("autodoc", "
 Parameters
@@ -3499,15 +3496,15 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringInteger;
-		 TDataStd_HDataMapOfStringInteger(const Standard_Integer NbBuckets = 1);
+		 TDataStd_HDataMapOfStringInteger(const int NbBuckets = 1);
 
 		/****** TDataStd_HDataMapOfStringInteger::TDataStd_HDataMapOfStringInteger ******/
-		/****** md5 signature: e6f0cd929496302121efaf1bd1e21eb6 ******/
+		/****** md5 signature: 944a25811e1bd219a5fe47cc8b0d2b8c ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringInteger;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: TColStd_DataMapOfStringInteger
+theOther: NCollection_DataMap<TCollection_ExtendedString, int>
 
 Return
 -------
@@ -3517,33 +3514,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringInteger;
-		 TDataStd_HDataMapOfStringInteger(const TColStd_DataMapOfStringInteger & theOther);
+		 TDataStd_HDataMapOfStringInteger(const NCollection_DataMap<TCollection_ExtendedString, int> & theOther);
 
 		/****** TDataStd_HDataMapOfStringInteger::ChangeMap ******/
-		/****** md5 signature: 9895321eab61fe09331de83b60921fd4 ******/
+		/****** md5 signature: bbc64500a252b5d1177543f20cf828cd ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TColStd_DataMapOfStringInteger
+NCollection_DataMap<TCollection_ExtendedString, int>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TColStd_DataMapOfStringInteger & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, int> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringInteger::Map ******/
-		/****** md5 signature: 241cf5fea80e6f4e708f154f8de9e1bc ******/
+		/****** md5 signature: ea6f9bd2903ee4e7de326f59f5f7fe0b ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TColStd_DataMapOfStringInteger
+NCollection_DataMap<TCollection_ExtendedString, int>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TColStd_DataMapOfStringInteger & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, int> & Map();
 
 };
 
@@ -3562,7 +3559,7 @@ No available documentation.
 class TDataStd_HDataMapOfStringReal : public Standard_Transient {
 	public:
 		/****** TDataStd_HDataMapOfStringReal::TDataStd_HDataMapOfStringReal ******/
-		/****** md5 signature: 7488e4768a703dfd339692c806f99f42 ******/
+		/****** md5 signature: 1c6e4aceb77101cc84d9b233df719dd0 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringReal;
 		%feature("autodoc", "
 Parameters
@@ -3577,15 +3574,15 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringReal;
-		 TDataStd_HDataMapOfStringReal(const Standard_Integer NbBuckets = 1);
+		 TDataStd_HDataMapOfStringReal(const int NbBuckets = 1);
 
 		/****** TDataStd_HDataMapOfStringReal::TDataStd_HDataMapOfStringReal ******/
-		/****** md5 signature: 121fa55f802bf43f35b6e87c217075e8 ******/
+		/****** md5 signature: cfbe612156b512c68719f9785479a0f7 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringReal;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: TDataStd_DataMapOfStringReal
+theOther: NCollection_DataMap<TCollection_ExtendedString, double>
 
 Return
 -------
@@ -3595,33 +3592,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringReal;
-		 TDataStd_HDataMapOfStringReal(const TDataStd_DataMapOfStringReal & theOther);
+		 TDataStd_HDataMapOfStringReal(const NCollection_DataMap<TCollection_ExtendedString, double> & theOther);
 
 		/****** TDataStd_HDataMapOfStringReal::ChangeMap ******/
-		/****** md5 signature: d4f36b31743e1eb9d128387ff8b29276 ******/
+		/****** md5 signature: 62dbc4dc76d69ed8d81e7b8ce6e53760 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringReal
+NCollection_DataMap<TCollection_ExtendedString, double>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TDataStd_DataMapOfStringReal & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, double> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringReal::Map ******/
-		/****** md5 signature: 5bb7116fe67c0de1a48abcca2f3ce836 ******/
+		/****** md5 signature: c06e389766508e1ad1efbf382f7c67a5 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringReal
+NCollection_DataMap<TCollection_ExtendedString, double>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TDataStd_DataMapOfStringReal & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, double> & Map();
 
 };
 
@@ -3640,7 +3637,7 @@ No available documentation.
 class TDataStd_HDataMapOfStringString : public Standard_Transient {
 	public:
 		/****** TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString ******/
-		/****** md5 signature: acabe9e4fb1d5a2bf9373c30ced8d28c ******/
+		/****** md5 signature: 3e01b8a462c2fd8306fd984b444aee21 ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringString;
 		%feature("autodoc", "
 Parameters
@@ -3655,15 +3652,15 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringString;
-		 TDataStd_HDataMapOfStringString(const Standard_Integer NbBuckets = 1);
+		 TDataStd_HDataMapOfStringString(const int NbBuckets = 1);
 
 		/****** TDataStd_HDataMapOfStringString::TDataStd_HDataMapOfStringString ******/
-		/****** md5 signature: 44161a1de573f46d1c664ada9cc76d23 ******/
+		/****** md5 signature: 7e6571c9352609cce44d9742c8b49ebd ******/
 		%feature("compactdefaultargs") TDataStd_HDataMapOfStringString;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: TDataStd_DataMapOfStringString
+theOther: NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
 
 Return
 -------
@@ -3673,33 +3670,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringString;
-		 TDataStd_HDataMapOfStringString(const TDataStd_DataMapOfStringString & theOther);
+		 TDataStd_HDataMapOfStringString(const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & theOther);
 
 		/****** TDataStd_HDataMapOfStringString::ChangeMap ******/
-		/****** md5 signature: 31bcb928e8ac89e75cc739cff3709adb ******/
+		/****** md5 signature: 04004d52a8d232412fb2730b8d63f1ea ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringString
+NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		TDataStd_DataMapOfStringString & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringString::Map ******/
-		/****** md5 signature: 5577d37c8d3b29feaa25de9a032320c3 ******/
+		/****** md5 signature: ac2be5d3f36be6a3b1a4b00bcfd8048a ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringString
+NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const TDataStd_DataMapOfStringString & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & Map();
 
 };
 
@@ -3731,7 +3728,7 @@ No available documentation.
 		 TDataStd_IntPackedMap();
 
 		/****** TDataStd_IntPackedMap::Add ******/
-		/****** md5 signature: 36b1accfeee12d40d7635f94e1cf9007 ******/
+		/****** md5 signature: 7626e5d23ef371b57d1bad7fa2013e5b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3746,10 +3743,10 @@ Description
 -----------
 No available documentation.
 ") Add;
-		Standard_Boolean Add(const Standard_Integer theKey);
+		bool Add(const int theKey);
 
 		/****** TDataStd_IntPackedMap::ChangeMap ******/
-		/****** md5 signature: b1ad5ff7f2aa646965f9ac9b8d9bc28c ******/
+		/****** md5 signature: aa0b83a8db31442e2ec9158ab45d65c6 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "
 Parameters
@@ -3764,10 +3761,10 @@ Description
 -----------
 No available documentation.
 ") ChangeMap;
-		Standard_Boolean ChangeMap(const opencascade::handle<TColStd_HPackedMapOfInteger> & theMap);
+		bool ChangeMap(const opencascade::handle<TColStd_HPackedMapOfInteger> & theMap);
 
 		/****** TDataStd_IntPackedMap::ChangeMap ******/
-		/****** md5 signature: 455b9c7f25de770f70c647849552bc59 ******/
+		/****** md5 signature: fe2cb45a42512ac7f66bff461607781e ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "
 Parameters
@@ -3782,10 +3779,10 @@ Description
 -----------
 No available documentation.
 ") ChangeMap;
-		Standard_Boolean ChangeMap(const TColStd_PackedMapOfInteger & theMap);
+		bool ChangeMap(const TColStd_PackedMapOfInteger & theMap);
 
 		/****** TDataStd_IntPackedMap::Clear ******/
-		/****** md5 signature: 5d9992bf01de8ff0ed07e5430de45499 ******/
+		/****** md5 signature: f0582b6634f128157d9a55f725294745 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -3795,10 +3792,10 @@ Description
 -----------
 No available documentation.
 ") Clear;
-		Standard_Boolean Clear();
+		bool Clear();
 
 		/****** TDataStd_IntPackedMap::Contains ******/
-		/****** md5 signature: a02d6cb675cf509371ef561f301441dc ******/
+		/****** md5 signature: eb133c24c162a1d88300fbac6f522bab ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -3813,10 +3810,10 @@ Description
 -----------
 No available documentation.
 ") Contains;
-		Standard_Boolean Contains(const Standard_Integer theKey);
+		bool Contains(const int theKey);
 
 		/****** TDataStd_IntPackedMap::DeltaOnModification ******/
-		/****** md5 signature: 9a96ec815d43dd1838c022740c5327d0 ******/
+		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -3831,10 +3828,10 @@ Description
 -----------
 Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****** TDataStd_IntPackedMap::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -3848,7 +3845,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -3872,7 +3869,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_IntPackedMap::Extent ******/
-		/****** md5 signature: 19453f219e568f9c5109a0fd06459e95 ******/
+		/****** md5 signature: 5ab265087cc74fd902b499a31008b06c ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -3882,10 +3879,10 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TDataStd_IntPackedMap::GetDelta ******/
-		/****** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ******/
+		/****** md5 signature: 48d284b77526180b9fca72a2b1a82618 ******/
 		%feature("compactdefaultargs") GetDelta;
 		%feature("autodoc", "Return
 -------
@@ -3895,7 +3892,7 @@ Description
 -----------
 No available documentation.
 ") GetDelta;
-		Standard_Boolean GetDelta();
+		bool GetDelta();
 
 		/****** TDataStd_IntPackedMap::GetHMap ******/
 		/****** md5 signature: b4f08d4f76579674f567faee1618fdb9 ******/
@@ -3937,7 +3934,7 @@ No available documentation.
 		const TColStd_PackedMapOfInteger & GetMap();
 
 		/****** TDataStd_IntPackedMap::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -3950,7 +3947,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_IntPackedMap::IsEmpty ******/
-		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
+		/****** md5 signature: 70a41d5fe65955a28167088305fc6991 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3960,10 +3957,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_IntPackedMap::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3976,7 +3973,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_IntPackedMap::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -3995,7 +3992,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_IntPackedMap::Remove ******/
-		/****** md5 signature: 6cac194cd74226cc6a8dd18a8cdce193 ******/
+		/****** md5 signature: 837fd793b49ffa29a344acd2e1f1bbce ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -4010,10 +4007,10 @@ Description
 -----------
 No available documentation.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Integer theKey);
+		bool Remove(const int theKey);
 
 		/****** TDataStd_IntPackedMap::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -4031,13 +4028,13 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****** TDataStd_IntPackedMap::Set ******/
-		/****** md5 signature: a1fda0f2938513ca4efcd2592d322153 ******/
+		/****** md5 signature: d687526f05fe6edda859c3561211299a ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 label: TDF_Label
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -4047,10 +4044,10 @@ Description
 -----------
 Finds or creates an integer map attribute on the given label. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, input parameter <isDelta> is refused and the found attribute returned. Attribute methods ===================.
 ") Set;
-		static opencascade::handle<TDataStd_IntPackedMap> Set(const TDF_Label & label, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_IntPackedMap> Set(const TDF_Label & label, const bool isDelta = false);
 
 		/****** TDataStd_IntPackedMap::SetDelta ******/
-		/****** md5 signature: 66bc6f747d37a3ea7110a95b02e13c41 ******/
+		/****** md5 signature: ed3080f13a07eb95c0be3f5630b6c6b3 ******/
 		%feature("compactdefaultargs") SetDelta;
 		%feature("autodoc", "
 Parameters
@@ -4065,7 +4062,7 @@ Description
 -----------
 for internal use only!.
 ") SetDelta;
-		void SetDelta(const Standard_Boolean isDelta);
+		void SetDelta(const bool isDelta);
 
 };
 
@@ -4097,7 +4094,7 @@ No available documentation.
 		 TDataStd_Integer();
 
 		/****** TDataStd_Integer::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4111,7 +4108,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -4135,7 +4132,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_Integer::Get ******/
-		/****** md5 signature: ace457d697a3a35733c5ac95429cad31 ******/
+		/****** md5 signature: 02cc734fc3bf23ff1b84c211da4f6523 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
@@ -4145,7 +4142,7 @@ Description
 -----------
 Returns the integer value contained in the attribute.
 ") Get;
-		Standard_Integer Get();
+		int Get();
 
 		/****** TDataStd_Integer::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -4161,7 +4158,7 @@ class methods ============= Returns the GUID for integers.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_Integer::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -4174,7 +4171,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_Integer::IsCaptured ******/
-		/****** md5 signature: 12ea7252bed17339127c3c98a18cb3cc ******/
+		/****** md5 signature: cf2f28168b4c46b554434756df96061d ******/
 		%feature("compactdefaultargs") IsCaptured;
 		%feature("autodoc", "Return
 -------
@@ -4184,10 +4181,10 @@ Description
 -----------
 Returns True if there is a reference on the same label.
 ") IsCaptured;
-		Standard_Boolean IsCaptured();
+		bool IsCaptured();
 
 		/****** TDataStd_Integer::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4200,7 +4197,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_Integer::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -4219,7 +4216,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_Integer::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -4237,7 +4234,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_Integer::Set ******/
-		/****** md5 signature: b29b5247ad1e42b469a89fa6c91069d4 ******/
+		/****** md5 signature: e830f671dfe5b5fdb4019d34bf54292a ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4253,10 +4250,10 @@ Description
 -----------
 Finds, or creates, an Integer attribute and sets <value> the Integer attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_Integer> Set(const TDF_Label & label, const Standard_Integer value);
+		static opencascade::handle<TDataStd_Integer> Set(const TDF_Label & label, const int value);
 
 		/****** TDataStd_Integer::Set ******/
-		/****** md5 signature: 0e26e9fcb9f71233beb0805c0bcb57f3 ******/
+		/****** md5 signature: bdf3ccb6b9a417e3200ae0b283b5b133 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4273,10 +4270,10 @@ Description
 -----------
 Finds, or creates, an Integer attribute with explicit user defined <guid> and sets <value>. The Integer attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_Integer> Set(const TDF_Label & label, const Standard_GUID & guid, const Standard_Integer value);
+		static opencascade::handle<TDataStd_Integer> Set(const TDF_Label & label, const Standard_GUID & guid, const int value);
 
 		/****** TDataStd_Integer::Set ******/
-		/****** md5 signature: 64858a2de80493b16a443d640276d65c ******/
+		/****** md5 signature: 76b4a8c39d1f4844b3fdc01b2b74ac98 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4291,10 +4288,10 @@ Description
 -----------
 Integer methods ===============.
 ") Set;
-		void Set(const Standard_Integer V);
+		void Set(const int V);
 
 		/****** TDataStd_Integer::SetID ******/
-		/****** md5 signature: 7a929ce753effeac220c978ae7330330 ******/
+		/****** md5 signature: 64789516907731f72c16acfd42a0f70f ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -4312,7 +4309,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & guid);
 
 		/****** TDataStd_Integer::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -4354,26 +4351,26 @@ No available documentation.
 		 TDataStd_IntegerArray();
 
 		/****** TDataStd_IntegerArray::Array ******/
-		/****** md5 signature: a7ef75e682bc0079410477b5a2393bdb ******/
+		/****** md5 signature: 3ac6c5ff6faadd4fa7ebd9ab99090f27 ******/
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Return the inner array of the IntegerArray attribute.
 ") Array;
-		const opencascade::handle<TColStd_HArray1OfInteger> & Array();
+		const opencascade::handle<NCollection_HArray1<int>> & Array();
 
 		/****** TDataStd_IntegerArray::ChangeArray ******/
-		/****** md5 signature: ba925b59c57ea8c952a56ef3a11c0389 ******/
+		/****** md5 signature: b76f2a5f24bace08a34c441cd87057b6 ******/
 		%feature("compactdefaultargs") ChangeArray;
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: TColStd_HArray1OfInteger
-isCheckItems: bool (optional, default to Standard_True)
+newArray: NCollection_HArray1<int
+isCheckItems: bool (optional, default to true)
 
 Return
 -------
@@ -4383,10 +4380,10 @@ Description
 -----------
 Sets the inner array <myValue> of the IntegerArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfInteger that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<TColStd_HArray1OfInteger> & newArray, const Standard_Boolean isCheckItems = Standard_True);
+		void ChangeArray(const opencascade::handle<NCollection_HArray1<int> > & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_IntegerArray::DeltaOnModification ******/
-		/****** md5 signature: 9a96ec815d43dd1838c022740c5327d0 ******/
+		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -4401,10 +4398,10 @@ Description
 -----------
 Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****** TDataStd_IntegerArray::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4418,7 +4415,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -4442,7 +4439,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_IntegerArray::GetDelta ******/
-		/****** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ******/
+		/****** md5 signature: 48d284b77526180b9fca72a2b1a82618 ******/
 		%feature("compactdefaultargs") GetDelta;
 		%feature("autodoc", "Return
 -------
@@ -4452,7 +4449,7 @@ Description
 -----------
 No available documentation.
 ") GetDelta;
-		Standard_Boolean GetDelta();
+		bool GetDelta();
 
 		/****** TDataStd_IntegerArray::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -4468,7 +4465,7 @@ class methods ============= Returns the GUID for arrays of integers.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_IntegerArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -4481,7 +4478,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_IntegerArray::Init ******/
-		/****** md5 signature: 7821d9c43d1b72a2a51576c8503c10d4 ******/
+		/****** md5 signature: 9817520653ab29d149c0b92193743f1d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4497,10 +4494,10 @@ Description
 -----------
 Initialize the inner array with bounds from <lower> to <upper>.
 ") Init;
-		void Init(const Standard_Integer lower, const Standard_Integer upper);
+		void Init(const int lower, const int upper);
 
 		/****** TDataStd_IntegerArray::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -4510,10 +4507,10 @@ Description
 -----------
 Returns the length of this array of integers in terms of the number of elements it contains.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDataStd_IntegerArray::Lower ******/
-		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
+		/****** md5 signature: ed303acc20e6a8f86d94712204278487 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -4523,10 +4520,10 @@ Description
 -----------
 Returns the lower boundary of this array of integers.
 ") Lower;
-		Standard_Integer Lower();
+		int Lower();
 
 		/****** TDataStd_IntegerArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4539,7 +4536,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_IntegerArray::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -4558,7 +4555,7 @@ Note. Uses inside ChangeArray() method.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_IntegerArray::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -4576,7 +4573,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_IntegerArray::Set ******/
-		/****** md5 signature: 3446699890de20ea131346a0fdee1550 ******/
+		/****** md5 signature: 83a9c6d7e70c57c9d1204ef82817bcdb ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4584,7 +4581,7 @@ Parameters
 label: TDF_Label
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -4594,10 +4591,10 @@ Description
 -----------
 Finds or creates on the <label> an integer array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, all input parameters are refused and the found attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_IntegerArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_IntegerArray> Set(const TDF_Label & label, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_IntegerArray::Set ******/
-		/****** md5 signature: fd935a6ba313810711685f37c36a143b ******/
+		/****** md5 signature: 146635a533c16705c6767d77721e7cc0 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4606,7 +4603,7 @@ label: TDF_Label
 theGuid: Standard_GUID
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -4616,10 +4613,10 @@ Description
 -----------
 Finds, or creates, an IntegerArray attribute with explicit user defined <guid>. The IntegerArray attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_IntegerArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_IntegerArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_IntegerArray::SetDelta ******/
-		/****** md5 signature: 66bc6f747d37a3ea7110a95b02e13c41 ******/
+		/****** md5 signature: ed3080f13a07eb95c0be3f5630b6c6b3 ******/
 		%feature("compactdefaultargs") SetDelta;
 		%feature("autodoc", "
 Parameters
@@ -4634,10 +4631,10 @@ Description
 -----------
 for internal use only!.
 ") SetDelta;
-		void SetDelta(const Standard_Boolean isDelta);
+		void SetDelta(const bool isDelta);
 
 		/****** TDataStd_IntegerArray::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -4655,7 +4652,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_IntegerArray::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -4668,7 +4665,7 @@ Sets default GUID for the attribute.
 		void SetID();
 
 		/****** TDataStd_IntegerArray::SetValue ******/
-		/****** md5 signature: 8575533a9631c681a72d28c8c80ec307 ******/
+		/****** md5 signature: e20e3c4bec5b2d07c5a46a22ba90cb46 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -4684,10 +4681,10 @@ Description
 -----------
 Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
-		void SetValue(const Standard_Integer Index, const Standard_Integer Value);
+		void SetValue(const int Index, const int Value);
 
 		/****** TDataStd_IntegerArray::Upper ******/
-		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
+		/****** md5 signature: a53a7ba7d20e7ec35b8de8d721ea431d ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -4697,10 +4694,10 @@ Description
 -----------
 Return the upper boundary of this array of integers.
 ") Upper;
-		Standard_Integer Upper();
+		int Upper();
 
 		/****** TDataStd_IntegerArray::Value ******/
-		/****** md5 signature: a0a106e66557a840a37128177a262f02 ******/
+		/****** md5 signature: 426a56d79fbcc8276c5f22fe754d6d82 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4715,7 +4712,7 @@ Description
 -----------
 Return the value of the <Index>th element of the array.
 ") Value;
-		Standard_Integer Value(const Standard_Integer Index);
+		int Value(const int Index);
 
 };
 
@@ -4747,7 +4744,7 @@ No available documentation.
 		 TDataStd_IntegerList();
 
 		/****** TDataStd_IntegerList::Append ******/
-		/****** md5 signature: d91962192b3053f532e2c32ffd9526b7 ******/
+		/****** md5 signature: a0bcfcea0d11db2254b413a5e26e7037 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -4762,7 +4759,7 @@ Description
 -----------
 No available documentation.
 ") Append;
-		void Append(const Standard_Integer value);
+		void Append(const int value);
 
 		/****** TDataStd_IntegerList::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -4778,7 +4775,7 @@ No available documentation.
 		void Clear();
 
 		/****** TDataStd_IntegerList::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4792,7 +4789,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -4816,7 +4813,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_IntegerList::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -4826,10 +4823,10 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TDataStd_IntegerList::First ******/
-		/****** md5 signature: e9b9b55d0f95896826fc1a7c7b3fdf28 ******/
+		/****** md5 signature: 9976e21cdb70063ea164065ef482c38d ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
@@ -4839,7 +4836,7 @@ Description
 -----------
 No available documentation.
 ") First;
-		Standard_Integer First();
+		int First();
 
 		/****** TDataStd_IntegerList::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -4855,7 +4852,7 @@ Static methods ============== Returns the ID of the list of integer attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_IntegerList::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -4868,7 +4865,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_IntegerList::InsertAfter ******/
-		/****** md5 signature: d212c3e69b13910b3a43e9e7b03a5d9f ******/
+		/****** md5 signature: 71f4af299488b556303f54d97f41d60e ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -4884,10 +4881,10 @@ Description
 -----------
 Inserts the <value> after the first meet of <after_value>.
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const Standard_Integer value, const Standard_Integer after_value);
+		bool InsertAfter(const int value, const int after_value);
 
 		/****** TDataStd_IntegerList::InsertAfterByIndex ******/
-		/****** md5 signature: 4667d81dfb21cbc9a4762284dc6aa583 ******/
+		/****** md5 signature: 36f7a7cd493a4b95ccb2f058e17320cb ******/
 		%feature("compactdefaultargs") InsertAfterByIndex;
 		%feature("autodoc", "
 Parameters
@@ -4903,10 +4900,10 @@ Description
 -----------
 Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfterByIndex;
-		Standard_Boolean InsertAfterByIndex(const Standard_Integer index, const Standard_Integer after_value);
+		bool InsertAfterByIndex(const int index, const int after_value);
 
 		/****** TDataStd_IntegerList::InsertBefore ******/
-		/****** md5 signature: 38d4729675f0992a660a75d530c6b9ff ******/
+		/****** md5 signature: 2e9864147df7d785ba1b898ea584da4b ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -4922,10 +4919,10 @@ Description
 -----------
 Inserts the <value> before the first meet of <before_value>.
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const Standard_Integer value, const Standard_Integer before_value);
+		bool InsertBefore(const int value, const int before_value);
 
 		/****** TDataStd_IntegerList::InsertBeforeByIndex ******/
-		/****** md5 signature: 4fb4880ded31493a5e709139d9f77315 ******/
+		/****** md5 signature: 2ab0b3bf2efe1d81a710be01466cdc47 ******/
 		%feature("compactdefaultargs") InsertBeforeByIndex;
 		%feature("autodoc", "
 Parameters
@@ -4941,10 +4938,10 @@ Description
 -----------
 Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBeforeByIndex;
-		Standard_Boolean InsertBeforeByIndex(const Standard_Integer index, const Standard_Integer before_value);
+		bool InsertBeforeByIndex(const int index, const int before_value);
 
 		/****** TDataStd_IntegerList::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4954,10 +4951,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_IntegerList::Last ******/
-		/****** md5 signature: b34ffc707f6352bb6f1f4c928c84e251 ******/
+		/****** md5 signature: 205142323c0fda3122bd3306b13c1b5e ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "Return
 -------
@@ -4967,23 +4964,23 @@ Description
 -----------
 No available documentation.
 ") Last;
-		Standard_Integer Last();
+		int Last();
 
 		/****** TDataStd_IntegerList::List ******/
-		/****** md5 signature: df226a20283d804fa38e9fe4d4263a45 ******/
+		/****** md5 signature: ad47c2b9326a15179c03efbac077ad1d ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 No available documentation.
 ") List;
-		const TColStd_ListOfInteger & List();
+		const NCollection_List<int> & List();
 
 		/****** TDataStd_IntegerList::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4996,7 +4993,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_IntegerList::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -5015,7 +5012,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_IntegerList::Prepend ******/
-		/****** md5 signature: f8244490f55c7baf7f2e424d000f0e9c ******/
+		/****** md5 signature: ba30a6ae8f7fc984860a79e5829e0f5d ******/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "
 Parameters
@@ -5030,10 +5027,10 @@ Description
 -----------
 No available documentation.
 ") Prepend;
-		void Prepend(const Standard_Integer value);
+		void Prepend(const int value);
 
 		/****** TDataStd_IntegerList::Remove ******/
-		/****** md5 signature: 54b03039a7038c867767a866594d37e1 ******/
+		/****** md5 signature: 142b40d34f9476f3c47f84ebd6da3f87 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -5048,10 +5045,10 @@ Description
 -----------
 Removes the first meet of the <value>.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Integer value);
+		bool Remove(const int value);
 
 		/****** TDataStd_IntegerList::RemoveByIndex ******/
-		/****** md5 signature: c11fa68556ba70a082a882fbe98749a3 ******/
+		/****** md5 signature: 9b68125fdff25de6dfd4bb3d97245836 ******/
 		%feature("compactdefaultargs") RemoveByIndex;
 		%feature("autodoc", "
 Parameters
@@ -5066,10 +5063,10 @@ Description
 -----------
 Removes a value at <index> position.
 ") RemoveByIndex;
-		Standard_Boolean RemoveByIndex(const Standard_Integer index);
+		bool RemoveByIndex(const int index);
 
 		/****** TDataStd_IntegerList::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -5124,7 +5121,7 @@ Finds or creates a list of integer values attribute with explicit user defined <
 		static opencascade::handle<TDataStd_IntegerList> Set(const TDF_Label & label, const Standard_GUID & theGuid);
 
 		/****** TDataStd_IntegerList::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -5142,7 +5139,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_IntegerList::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -5184,12 +5181,12 @@ Empty constructor.
 		 TDataStd_NamedData();
 
 		/****** TDataStd_NamedData::ChangeArraysOfIntegers ******/
-		/****** md5 signature: 55a86cab8f05de2d3a4a141cf9114c07 ******/
+		/****** md5 signature: 01783afecaade2d455f428d29f9488bb ******/
 		%feature("compactdefaultargs") ChangeArraysOfIntegers;
 		%feature("autodoc", "
 Parameters
 ----------
-theArraysOfIntegers: TDataStd_DataMapOfStringHArray1OfInteger
+theArraysOfIntegers: NCollection_HArray1<int
 
 Return
 -------
@@ -5199,15 +5196,15 @@ Description
 -----------
 Replace the container content by new content of the <theArraysOfIntegers>.
 ") ChangeArraysOfIntegers;
-		void ChangeArraysOfIntegers(const TDataStd_DataMapOfStringHArray1OfInteger & theArraysOfIntegers);
+		void ChangeArraysOfIntegers(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int> > > & theArraysOfIntegers);
 
 		/****** TDataStd_NamedData::ChangeArraysOfReals ******/
-		/****** md5 signature: cc70c144703bf55966764ea4966ea324 ******/
+		/****** md5 signature: 9e06093b825e9d701cc4370a47d40532 ******/
 		%feature("compactdefaultargs") ChangeArraysOfReals;
 		%feature("autodoc", "
 Parameters
 ----------
-theArraysOfReals: TDataStd_DataMapOfStringHArray1OfReal
+theArraysOfReals: NCollection_HArray1<double
 
 Return
 -------
@@ -5217,15 +5214,15 @@ Description
 -----------
 Replace the container content by new content of the <theArraysOfReals>.
 ") ChangeArraysOfReals;
-		void ChangeArraysOfReals(const TDataStd_DataMapOfStringHArray1OfReal & theArraysOfReals);
+		void ChangeArraysOfReals(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double> > > & theArraysOfReals);
 
 		/****** TDataStd_NamedData::ChangeBytes ******/
-		/****** md5 signature: c0c7e3ca6b09c6ecdec2c8424121adca ******/
+		/****** md5 signature: eccf66fe581c6a433ab10fefcf0f1873 ******/
 		%feature("compactdefaultargs") ChangeBytes;
 		%feature("autodoc", "
 Parameters
 ----------
-theBytes: TDataStd_DataMapOfStringByte
+theBytes: NCollection_DataMap<TCollection_ExtendedString, uint8_t>
 
 Return
 -------
@@ -5235,15 +5232,15 @@ Description
 -----------
 Replace the container content by new content of the <theBytes>.
 ") ChangeBytes;
-		void ChangeBytes(const TDataStd_DataMapOfStringByte & theBytes);
+		void ChangeBytes(const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & theBytes);
 
 		/****** TDataStd_NamedData::ChangeIntegers ******/
-		/****** md5 signature: f3a9f83b41b019a0c8bc1212f1a76a38 ******/
+		/****** md5 signature: b423bf2099cf0e6df5607c0a7e646d11 ******/
 		%feature("compactdefaultargs") ChangeIntegers;
 		%feature("autodoc", "
 Parameters
 ----------
-theIntegers: TColStd_DataMapOfStringInteger
+theIntegers: NCollection_DataMap<TCollection_ExtendedString, int>
 
 Return
 -------
@@ -5253,15 +5250,15 @@ Description
 -----------
 Replace the container content by new content of the <theIntegers>.
 ") ChangeIntegers;
-		void ChangeIntegers(const TColStd_DataMapOfStringInteger & theIntegers);
+		void ChangeIntegers(const NCollection_DataMap<TCollection_ExtendedString, int> & theIntegers);
 
 		/****** TDataStd_NamedData::ChangeReals ******/
-		/****** md5 signature: 9b1b0533922f259905129bb903ec1f21 ******/
+		/****** md5 signature: 968451bd143cf17065b6651dc131092b ******/
 		%feature("compactdefaultargs") ChangeReals;
 		%feature("autodoc", "
 Parameters
 ----------
-theReals: TDataStd_DataMapOfStringReal
+theReals: NCollection_DataMap<TCollection_ExtendedString, double>
 
 Return
 -------
@@ -5271,15 +5268,15 @@ Description
 -----------
 Replace the container content by new content of the <theReals>.
 ") ChangeReals;
-		void ChangeReals(const TDataStd_DataMapOfStringReal & theReals);
+		void ChangeReals(const NCollection_DataMap<TCollection_ExtendedString, double> & theReals);
 
 		/****** TDataStd_NamedData::ChangeStrings ******/
-		/****** md5 signature: b7bed047d8ce49352e3ab0b211d47cc4 ******/
+		/****** md5 signature: 03a31a6b82edb86ef1840d5c7829bebf ******/
 		%feature("compactdefaultargs") ChangeStrings;
 		%feature("autodoc", "
 Parameters
 ----------
-theStrings: TDataStd_DataMapOfStringString
+theStrings: NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
 
 Return
 -------
@@ -5289,7 +5286,7 @@ Description
 -----------
 Replace the container content by new content of the <theStrings>.
 ") ChangeStrings;
-		void ChangeStrings(const TDataStd_DataMapOfStringString & theStrings);
+		void ChangeStrings(const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & theStrings);
 
 		/****** TDataStd_NamedData::Clear ******/
 		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
@@ -5305,7 +5302,7 @@ Clear data.
 		void Clear();
 
 		/****** TDataStd_NamedData::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -5319,7 +5316,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -5343,7 +5340,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_NamedData::GetArrayOfIntegers ******/
-		/****** md5 signature: 4a96aa72d1e7e4a27eb2b5a59638120e ******/
+		/****** md5 signature: 68be4e2e4a8dee686a4d7d06ba8596a1 ******/
 		%feature("compactdefaultargs") GetArrayOfIntegers;
 		%feature("autodoc", "
 Parameters
@@ -5352,16 +5349,16 @@ theName: str
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns the named array of integer values. It returns a NULL Handle if there is no such a named array of integers (use HasArrayOfIntegers()).
 ") GetArrayOfIntegers;
-		const opencascade::handle<TColStd_HArray1OfInteger> & GetArrayOfIntegers(TCollection_ExtendedString theName);
+		const opencascade::handle<NCollection_HArray1<int>> & GetArrayOfIntegers(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetArrayOfReals ******/
-		/****** md5 signature: db520b1dcc5a20b132bdacec290b4245 ******/
+		/****** md5 signature: 4b07348b7ff7e8d6afa3b42f8c59b9d6 ******/
 		%feature("compactdefaultargs") GetArrayOfReals;
 		%feature("autodoc", "
 Parameters
@@ -5370,42 +5367,42 @@ theName: str
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns the named array of real values. It returns a NULL Handle if there is no such a named array of reals (use HasArrayOfReals()).
 ") GetArrayOfReals;
-		const opencascade::handle<TColStd_HArray1OfReal> & GetArrayOfReals(TCollection_ExtendedString theName);
+		const opencascade::handle<NCollection_HArray1<double>> & GetArrayOfReals(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetArraysOfIntegersContainer ******/
-		/****** md5 signature: a1e9fe686378bda0fc070449d50a998a ******/
+		/****** md5 signature: cf977acc7f469d36984569613d43db4a ******/
 		%feature("compactdefaultargs") GetArraysOfIntegersContainer;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringHArray1OfInteger
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>>
 
 Description
 -----------
 Returns the internal container of named arrays of integer values.
 ") GetArraysOfIntegersContainer;
-		const TDataStd_DataMapOfStringHArray1OfInteger & GetArraysOfIntegersContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>> & GetArraysOfIntegersContainer();
 
 		/****** TDataStd_NamedData::GetArraysOfRealsContainer ******/
-		/****** md5 signature: b25b6380e376a4c0c5e323a6e14ec2f8 ******/
+		/****** md5 signature: 61ebbbc5b18d4639a6832102c99db856 ******/
 		%feature("compactdefaultargs") GetArraysOfRealsContainer;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringHArray1OfReal
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>>
 
 Description
 -----------
 Returns the internal container of named arrays of real values.
 ") GetArraysOfRealsContainer;
-		const TDataStd_DataMapOfStringHArray1OfReal & GetArraysOfRealsContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>> & GetArraysOfRealsContainer();
 
 		/****** TDataStd_NamedData::GetByte ******/
-		/****** md5 signature: 939e82da5466136022c4926a2efe7b35 ******/
+		/****** md5 signature: ec50a8a97fb11a6d684e0c664bad2492 ******/
 		%feature("compactdefaultargs") GetByte;
 		%feature("autodoc", "
 Parameters
@@ -5414,26 +5411,26 @@ theName: str
 
 Return
 -------
-Standard_Byte
+uint8_t
 
 Description
 -----------
 Returns the named byte. It returns 0 if there is no such a named byte (use HasByte()).
 ") GetByte;
-		Standard_Byte GetByte(TCollection_ExtendedString theName);
+		uint8_t GetByte(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetBytesContainer ******/
-		/****** md5 signature: ea73b7a5406b0b6387303ddc10bec47f ******/
+		/****** md5 signature: af46b7287dafb3f2965c413cf4ffb0c7 ******/
 		%feature("compactdefaultargs") GetBytesContainer;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringByte
+NCollection_DataMap<TCollection_ExtendedString, uint8_t>
 
 Description
 -----------
 Returns the internal container of named bytes.
 ") GetBytesContainer;
-		const TDataStd_DataMapOfStringByte & GetBytesContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & GetBytesContainer();
 
 		/****** TDataStd_NamedData::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -5449,7 +5446,7 @@ Returns the ID of the named data attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_NamedData::GetInteger ******/
-		/****** md5 signature: 6b54a2c0c24e0d10ada8e1ef9718d599 ******/
+		/****** md5 signature: 8f3f4338bed25c87d55148fbfdeee34a ******/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "
 Parameters
@@ -5464,23 +5461,23 @@ Description
 -----------
 Returns the integer value specified by the Name. It returns 0 if internal map doesn't contain the specified integer (use HasInteger() to check before).
 ") GetInteger;
-		Standard_Integer GetInteger(TCollection_ExtendedString theName);
+		int GetInteger(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetIntegersContainer ******/
-		/****** md5 signature: 21b7a9b99a1fbfad05d9c3d28560589a ******/
+		/****** md5 signature: 05369bbd458091ec5769292fd92ff0fd ******/
 		%feature("compactdefaultargs") GetIntegersContainer;
 		%feature("autodoc", "Return
 -------
-TColStd_DataMapOfStringInteger
+NCollection_DataMap<TCollection_ExtendedString, int>
 
 Description
 -----------
 Returns the internal container of named integers.
 ") GetIntegersContainer;
-		const TColStd_DataMapOfStringInteger & GetIntegersContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, int> & GetIntegersContainer();
 
 		/****** TDataStd_NamedData::GetReal ******/
-		/****** md5 signature: 4ae7a7a98da3d341416d79e090f6b1a4 ******/
+		/****** md5 signature: 12b3ad6ec8942b8b8553a5af56c22bda ******/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "
 Parameters
@@ -5489,26 +5486,26 @@ theName: str
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the named real. It returns 0.0 if there is no such a named real (use HasReal()).
 ") GetReal;
-		Standard_Real GetReal(TCollection_ExtendedString theName);
+		double GetReal(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetRealsContainer ******/
-		/****** md5 signature: b9e2c4440bc22fb7830c62903dc1a40c ******/
+		/****** md5 signature: 959506b3399d93d6ff47d9ffff7a92d4 ******/
 		%feature("compactdefaultargs") GetRealsContainer;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringReal
+NCollection_DataMap<TCollection_ExtendedString, double>
 
 Description
 -----------
 Returns the internal container of named reals.
 ") GetRealsContainer;
-		const TDataStd_DataMapOfStringReal & GetRealsContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, double> & GetRealsContainer();
 
 		/****** TDataStd_NamedData::GetString ******/
 		/****** md5 signature: 431d366e9e5181ba3f9d7b2cb04484f9 ******/
@@ -5529,20 +5526,20 @@ Returns the named string. It returns an empty string if there is no such a named
 		const TCollection_ExtendedString & GetString(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetStringsContainer ******/
-		/****** md5 signature: 13ee8580b035b794e3fdbc2e42bde3fe ******/
+		/****** md5 signature: 802a49ca0d08caca9ed096b9786ff325 ******/
 		%feature("compactdefaultargs") GetStringsContainer;
 		%feature("autodoc", "Return
 -------
-TDataStd_DataMapOfStringString
+NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
 
 Description
 -----------
 Returns the internal container of named strings.
 ") GetStringsContainer;
-		const TDataStd_DataMapOfStringString & GetStringsContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & GetStringsContainer();
 
 		/****** TDataStd_NamedData::HasArrayOfIntegers ******/
-		/****** md5 signature: bc48c8ef7c6aada5fd483450dcb3d31c ******/
+		/****** md5 signature: f4bf7cccf14d928a4b296e2a77889a56 ******/
 		%feature("compactdefaultargs") HasArrayOfIntegers;
 		%feature("autodoc", "
 Parameters
@@ -5557,10 +5554,10 @@ Description
 -----------
 Returns true if the attribute contains this named array of integer values.
 ") HasArrayOfIntegers;
-		Standard_Boolean HasArrayOfIntegers(TCollection_ExtendedString theName);
+		bool HasArrayOfIntegers(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::HasArrayOfReals ******/
-		/****** md5 signature: 5a74df706dd2f1d3399b54e753d72fa5 ******/
+		/****** md5 signature: 57f87f90c31de8533f8e1c4ee915aadb ******/
 		%feature("compactdefaultargs") HasArrayOfReals;
 		%feature("autodoc", "
 Parameters
@@ -5575,10 +5572,10 @@ Description
 -----------
 Returns true if the attribute contains this named array of real values.
 ") HasArrayOfReals;
-		Standard_Boolean HasArrayOfReals(TCollection_ExtendedString theName);
+		bool HasArrayOfReals(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::HasArraysOfIntegers ******/
-		/****** md5 signature: 630276ad2915cc0f5cb7a7fae1577c12 ******/
+		/****** md5 signature: 4e4423a3ed4ad7e38136285603cc0dba ******/
 		%feature("compactdefaultargs") HasArraysOfIntegers;
 		%feature("autodoc", "Return
 -------
@@ -5588,10 +5585,10 @@ Description
 -----------
 Returns true if there are some named arrays of integer values in the attribute.
 ") HasArraysOfIntegers;
-		Standard_Boolean HasArraysOfIntegers();
+		bool HasArraysOfIntegers();
 
 		/****** TDataStd_NamedData::HasArraysOfReals ******/
-		/****** md5 signature: 3a700fb256757684d41d9b2cb7dfbe60 ******/
+		/****** md5 signature: 51a1dbc65583121cbdfe7fbac5111490 ******/
 		%feature("compactdefaultargs") HasArraysOfReals;
 		%feature("autodoc", "Return
 -------
@@ -5601,10 +5598,10 @@ Description
 -----------
 Returns true if there are some named arrays of real values in the attribute.
 ") HasArraysOfReals;
-		Standard_Boolean HasArraysOfReals();
+		bool HasArraysOfReals();
 
 		/****** TDataStd_NamedData::HasByte ******/
-		/****** md5 signature: 96647156a924919be2a85cac754550c0 ******/
+		/****** md5 signature: 98124358e9ca0ae839123d6e8142bb1b ******/
 		%feature("compactdefaultargs") HasByte;
 		%feature("autodoc", "
 Parameters
@@ -5619,10 +5616,10 @@ Description
 -----------
 Returns true if the attribute contains this named byte.
 ") HasByte;
-		Standard_Boolean HasByte(TCollection_ExtendedString theName);
+		bool HasByte(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::HasBytes ******/
-		/****** md5 signature: 94a3934cdf294db1b998b35763579703 ******/
+		/****** md5 signature: 06c1e291393f81ab6f406ecc90ab1368 ******/
 		%feature("compactdefaultargs") HasBytes;
 		%feature("autodoc", "Return
 -------
@@ -5632,10 +5629,10 @@ Description
 -----------
 Returns true if there are some named bytes in the attribute.
 ") HasBytes;
-		Standard_Boolean HasBytes();
+		bool HasBytes();
 
 		/****** TDataStd_NamedData::HasDeferredData ******/
-		/****** md5 signature: 6d3e21e66856957a5fa945244fecad2c ******/
+		/****** md5 signature: bcbba61d77cd4aa53fabe373e0bdb7a0 ******/
 		%feature("compactdefaultargs") HasDeferredData;
 		%feature("autodoc", "Return
 -------
@@ -5645,10 +5642,10 @@ Description
 -----------
 Returns True if some data is not loaded from deferred storage and can be loaded using LoadDeferredData(). //! Late-load interface allows to avoid loading auxiliary data into memory until it is needed by application and also speed up reader by skipping data chunks in file. This feature requires file format having special structure, and usually implies read-only access, therefore default implementation will return False here. //! Late-load elements require special attention to ensure data consistency, as such elements are created in undefined state (no data) and Undo/Redo mechanism will not work until deferred data being loaded. //! Usage scenarios: - Application displays model in read-only way. Late-load elements are loaded temporarily on demand and immediately unloaded. theNamedData->LoadDeferredData (true); TCollection_AsciiString aValue = theNamedData->GetString (theKey); theNamedData->UnloadDeferredData(); - Application saves the model into another format. All late-load elements should be loaded (at least temporary during operation). - Application modifies the model. Late-load element should be loaded with removed link to deferred storage, so that Undo()/Redo() will work as expected since loading. theNamedData->LoadDeferredData (false); theNamedData->SetString (theKey, theNewValue);.
 ") HasDeferredData;
-		virtual Standard_Boolean HasDeferredData();
+		virtual bool HasDeferredData();
 
 		/****** TDataStd_NamedData::HasInteger ******/
-		/****** md5 signature: 2240b54628b28022d39a4cae802f471c ******/
+		/****** md5 signature: f500acfb628c33f3e4abdf7ab51bc8ef ******/
 		%feature("compactdefaultargs") HasInteger;
 		%feature("autodoc", "
 Parameters
@@ -5663,10 +5660,10 @@ Description
 -----------
 Returns true if the attribute contains specified by Name integer value.
 ") HasInteger;
-		Standard_Boolean HasInteger(TCollection_ExtendedString theName);
+		bool HasInteger(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::HasIntegers ******/
-		/****** md5 signature: aa7fb571afe1cc8055a6c72701aedd1e ******/
+		/****** md5 signature: 331b1bccdc8eb46ca03377b971b19367 ******/
 		%feature("compactdefaultargs") HasIntegers;
 		%feature("autodoc", "Return
 -------
@@ -5676,10 +5673,10 @@ Description
 -----------
 Returns true if at least one named integer value is kept in the attribute.
 ") HasIntegers;
-		Standard_Boolean HasIntegers();
+		bool HasIntegers();
 
 		/****** TDataStd_NamedData::HasReal ******/
-		/****** md5 signature: c4d66ca3fe426eab3bf399ce36cfc35f ******/
+		/****** md5 signature: 9c8da1043f976176e85595bb177c432f ******/
 		%feature("compactdefaultargs") HasReal;
 		%feature("autodoc", "
 Parameters
@@ -5694,10 +5691,10 @@ Description
 -----------
 Returns true if the attribute contains a real specified by Name.
 ") HasReal;
-		Standard_Boolean HasReal(TCollection_ExtendedString theName);
+		bool HasReal(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::HasReals ******/
-		/****** md5 signature: d08f33ee376c6cd75a9d81cc491b4176 ******/
+		/****** md5 signature: d532ca678cb69eed2d275ac31f133e88 ******/
 		%feature("compactdefaultargs") HasReals;
 		%feature("autodoc", "Return
 -------
@@ -5707,10 +5704,10 @@ Description
 -----------
 Returns true if at least one named real value is kept in the attribute.
 ") HasReals;
-		Standard_Boolean HasReals();
+		bool HasReals();
 
 		/****** TDataStd_NamedData::HasString ******/
-		/****** md5 signature: b0713af4d469778dbe03653123a46b1d ******/
+		/****** md5 signature: f2c0d5b8269663924b088e22b3d56079 ******/
 		%feature("compactdefaultargs") HasString;
 		%feature("autodoc", "
 Parameters
@@ -5725,10 +5722,10 @@ Description
 -----------
 Returns true if the attribute contains this named string.
 ") HasString;
-		Standard_Boolean HasString(TCollection_ExtendedString theName);
+		bool HasString(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::HasStrings ******/
-		/****** md5 signature: 91968d2a3a35cf447a545790772a5e0a ******/
+		/****** md5 signature: 6409c610ed9e02442074418b0e5a879f ******/
 		%feature("compactdefaultargs") HasStrings;
 		%feature("autodoc", "Return
 -------
@@ -5738,10 +5735,10 @@ Description
 -----------
 Returns true if there are some named strings in the attribute.
 ") HasStrings;
-		Standard_Boolean HasStrings();
+		bool HasStrings();
 
 		/****** TDataStd_NamedData::ID ******/
-		/****** md5 signature: 18550bf05502080c8e2a8a16aabb4183 ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -5751,10 +5748,10 @@ Description
 -----------
 No available documentation.
 ") ID;
-		virtual const Standard_GUID & ID();
+		const Standard_GUID & ID();
 
 		/****** TDataStd_NamedData::LoadDeferredData ******/
-		/****** md5 signature: 4d667dd77669ff93ce36b42acfa15e09 ******/
+		/****** md5 signature: 928215be73fce4e024bb642935f2607c ******/
 		%feature("compactdefaultargs") LoadDeferredData;
 		%feature("autodoc", "
 Parameters
@@ -5771,10 +5768,10 @@ Load data from deferred storage, without calling Backup(). As result, the conten
 Input parameter: theToKeepDeferred when True, the link to deferred storage will be preserved  so that it will be possible calling UnloadDeferredData()  afterwards for releasing memory 
 Return: False if deferred storage is unavailable or deferred data has been already loaded.
 ") LoadDeferredData;
-		virtual Standard_Boolean LoadDeferredData(Standard_Boolean theToKeepDeferred = false);
+		virtual bool LoadDeferredData(bool theToKeepDeferred = false);
 
 		/****** TDataStd_NamedData::NewEmpty ******/
-		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -5784,10 +5781,10 @@ Description
 -----------
 No available documentation.
 ") NewEmpty;
-		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_NamedData::Paste ******/
-		/****** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -5803,10 +5800,10 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		virtual void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
+		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_NamedData::Restore ******/
-		/****** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -5821,7 +5818,7 @@ Description
 -----------
 No available documentation.
 ") Restore;
-		virtual void Restore(const opencascade::handle<TDF_Attribute> & With);
+		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_NamedData::Set ******/
 		/****** md5 signature: ee0f0e4a73047eda396551b327a75125 ******/
@@ -5842,13 +5839,13 @@ Finds or creates a named data attribute.
 		static opencascade::handle<TDataStd_NamedData> Set(const TDF_Label & label);
 
 		/****** TDataStd_NamedData::SetArrayOfIntegers ******/
-		/****** md5 signature: b617034b38fb8c6f3a9eb39a8befb616 ******/
+		/****** md5 signature: 3f609e30d99740cb21ba02ef49e01aad ******/
 		%feature("compactdefaultargs") SetArrayOfIntegers;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theArrayOfIntegers: TColStd_HArray1OfInteger
+theArrayOfIntegers: NCollection_HArray1<int
 
 Return
 -------
@@ -5860,16 +5857,16 @@ Defines a named array of integer values.
 Input parameter: theName key 
 Input parameter: theArrayOfIntegers new value, overrides existing (passed array will be copied by value!).
 ") SetArrayOfIntegers;
-		void SetArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
+		void SetArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<int> > & theArrayOfIntegers);
 
 		/****** TDataStd_NamedData::SetArrayOfReals ******/
-		/****** md5 signature: 16f1e7f9567f65375c020bb23d8100af ******/
+		/****** md5 signature: 07dd4ccfdcec4e8f0946b17d2faa8ad6 ******/
 		%feature("compactdefaultargs") SetArrayOfReals;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theArrayOfReals: TColStd_HArray1OfReal
+theArrayOfReals: NCollection_HArray1<double
 
 Return
 -------
@@ -5881,16 +5878,16 @@ Defines a named array of real values.
 Input parameter: theName key 
 Input parameter: theArrayOfReals new value, overrides existing (passed array will be copied by value!).
 ") SetArrayOfReals;
-		void SetArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
+		void SetArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<double> > & theArrayOfReals);
 
 		/****** TDataStd_NamedData::SetByte ******/
-		/****** md5 signature: 4a6e013a0bf3337864e2187c10d95ca1 ******/
+		/****** md5 signature: 7dc2dc2d1d062a7821b2e285bbb970a6 ******/
 		%feature("compactdefaultargs") SetByte;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theByte: Standard_Byte
+theByte: uint8_t
 
 Return
 -------
@@ -5900,10 +5897,10 @@ Description
 -----------
 Defines a named byte. If the byte already exists, it changes its value to <theByte>.
 ") SetByte;
-		void SetByte(TCollection_ExtendedString theName, const Standard_Byte theByte);
+		void SetByte(TCollection_ExtendedString theName, const uint8_t theByte);
 
 		/****** TDataStd_NamedData::SetInteger ******/
-		/****** md5 signature: 4e011fdcaf36e99a883b60954eb74fd6 ******/
+		/****** md5 signature: dab093e8e98dc600de5f59f35391a64e ******/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "
 Parameters
@@ -5919,16 +5916,16 @@ Description
 -----------
 Defines a named integer. If the integer already exists, it changes its value to <theInteger>.
 ") SetInteger;
-		void SetInteger(TCollection_ExtendedString theName, const Standard_Integer theInteger);
+		void SetInteger(TCollection_ExtendedString theName, const int theInteger);
 
 		/****** TDataStd_NamedData::SetReal ******/
-		/****** md5 signature: 3881e61413b5d53222042466565b51e6 ******/
+		/****** md5 signature: 84958fc5d0cfc03f7b67d1baf2236c45 ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theReal: float
+theReal: double
 
 Return
 -------
@@ -5938,7 +5935,7 @@ Description
 -----------
 Defines a named real. If the real already exists, it changes its value to <theReal>.
 ") SetReal;
-		void SetReal(TCollection_ExtendedString theName, const Standard_Real theReal);
+		void SetReal(TCollection_ExtendedString theName, const double theReal);
 
 		/****** TDataStd_NamedData::SetString ******/
 		/****** md5 signature: a95bad6b9ababf6273e290a39194b37c ******/
@@ -5960,7 +5957,7 @@ Defines a named string. If the string already exists, it changes its value to <t
 		void SetString(TCollection_ExtendedString theName, TCollection_ExtendedString theString);
 
 		/****** TDataStd_NamedData::UnloadDeferredData ******/
-		/****** md5 signature: 0475147ec5a2f4fc11b633d052584e7a ******/
+		/****** md5 signature: d80868dff34b2caeb404e101256d554e ******/
 		%feature("compactdefaultargs") UnloadDeferredData;
 		%feature("autodoc", "Return
 -------
@@ -5971,7 +5968,7 @@ Description
 Releases data if object has connected deferred storage, without calling Backup(). WARNING! This operation does not unload modifications to deferred storage (normally it is read-only), so that modifications will be discarded (if any). 
 Return: False if object has no deferred data.
 ") UnloadDeferredData;
-		virtual Standard_Boolean UnloadDeferredData();
+		virtual bool UnloadDeferredData();
 
 		/****** TDataStd_NamedData::clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -5987,13 +5984,13 @@ Clear data without calling Backup().
 		void clear();
 
 		/****** TDataStd_NamedData::setArrayOfIntegers ******/
-		/****** md5 signature: 4363833f3b7223b8cbf87ce2438e80a5 ******/
+		/****** md5 signature: 64d6f72c6d30d80be3201668e11fbdac ******/
 		%feature("compactdefaultargs") setArrayOfIntegers;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theArrayOfIntegers: TColStd_HArray1OfInteger
+theArrayOfIntegers: NCollection_HArray1<int
 
 Return
 -------
@@ -6003,16 +6000,16 @@ Description
 -----------
 Defines a named array of integer values (without calling Backup).
 ") setArrayOfIntegers;
-		void setArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
+		void setArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<int> > & theArrayOfIntegers);
 
 		/****** TDataStd_NamedData::setArrayOfReals ******/
-		/****** md5 signature: 26be02bfa2f598e0213856441ddbd2e7 ******/
+		/****** md5 signature: 7a4fcc8d7aa64ea98538e17af71d95b6 ******/
 		%feature("compactdefaultargs") setArrayOfReals;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theArrayOfReals: TColStd_HArray1OfReal
+theArrayOfReals: NCollection_HArray1<double
 
 Return
 -------
@@ -6022,16 +6019,16 @@ Description
 -----------
 Defines a named array of real values (without calling Backup).
 ") setArrayOfReals;
-		void setArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
+		void setArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<double> > & theArrayOfReals);
 
 		/****** TDataStd_NamedData::setByte ******/
-		/****** md5 signature: 4a6e013a0bf3337864e2187c10d95ca1 ******/
+		/****** md5 signature: 7dc2dc2d1d062a7821b2e285bbb970a6 ******/
 		%feature("compactdefaultargs") setByte;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theByte: Standard_Byte
+theByte: uint8_t
 
 Return
 -------
@@ -6041,10 +6038,10 @@ Description
 -----------
 Defines a named byte (without calling Backup).
 ") setByte;
-		void setByte(TCollection_ExtendedString theName, const Standard_Byte theByte);
+		void setByte(TCollection_ExtendedString theName, const uint8_t theByte);
 
 		/****** TDataStd_NamedData::setInteger ******/
-		/****** md5 signature: 4e011fdcaf36e99a883b60954eb74fd6 ******/
+		/****** md5 signature: dab093e8e98dc600de5f59f35391a64e ******/
 		%feature("compactdefaultargs") setInteger;
 		%feature("autodoc", "
 Parameters
@@ -6060,16 +6057,16 @@ Description
 -----------
 Defines a named integer (without calling Backup).
 ") setInteger;
-		void setInteger(TCollection_ExtendedString theName, const Standard_Integer theInteger);
+		void setInteger(TCollection_ExtendedString theName, const int theInteger);
 
 		/****** TDataStd_NamedData::setReal ******/
-		/****** md5 signature: 3881e61413b5d53222042466565b51e6 ******/
+		/****** md5 signature: 84958fc5d0cfc03f7b67d1baf2236c45 ******/
 		%feature("compactdefaultargs") setReal;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-theReal: float
+theReal: double
 
 Return
 -------
@@ -6079,7 +6076,7 @@ Description
 -----------
 Defines a named real (without calling Backup).
 ") setReal;
-		void setReal(TCollection_ExtendedString theName, const Standard_Real theReal);
+		void setReal(TCollection_ExtendedString theName, const double theReal);
 
 		/****** TDataStd_NamedData::setString ******/
 		/****** md5 signature: a95bad6b9ababf6273e290a39194b37c ******/
@@ -6130,7 +6127,7 @@ No available documentation.
 		 TDataStd_Real();
 
 		/****** TDataStd_Real::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -6144,7 +6141,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -6168,17 +6165,17 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_Real::Get ******/
-		/****** md5 signature: fc841fb28cb01367762b1d75c09d001e ******/
+		/****** md5 signature: cdec7cab9884d7fced97581bfac75b03 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the real number value contained in the attribute.
 ") Get;
-		Standard_Real Get();
+		double Get();
 
 		/****** TDataStd_Real::GetDimension ******/
 		/****** md5 signature: 853aef0fdf2cdedcc5c6a512c960301d ******/
@@ -6189,7 +6186,7 @@ TDataStd_RealEnum
 
 Description
 -----------
-Obsolete method that will be removed in next versions. This field is not supported in the persistence mechanism.
+No available documentation.
 ") GetDimension;
 		TDataStd_RealEnum GetDimension();
 
@@ -6207,7 +6204,7 @@ class methods ============= Returns the default GUID for real numbers.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_Real::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -6220,7 +6217,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_Real::IsCaptured ******/
-		/****** md5 signature: 12ea7252bed17339127c3c98a18cb3cc ******/
+		/****** md5 signature: cf2f28168b4c46b554434756df96061d ******/
 		%feature("compactdefaultargs") IsCaptured;
 		%feature("autodoc", "Return
 -------
@@ -6230,10 +6227,10 @@ Description
 -----------
 Returns True if there is a reference on the same label.
 ") IsCaptured;
-		Standard_Boolean IsCaptured();
+		bool IsCaptured();
 
 		/****** TDataStd_Real::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -6246,7 +6243,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_Real::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -6265,7 +6262,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_Real::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -6283,13 +6280,13 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_Real::Set ******/
-		/****** md5 signature: adfae07f13ec85f973dbbc58e9bf051e ******/
+		/****** md5 signature: e51fb0b1abfcefa757d2ddf6e9dd3003 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 label: TDF_Label
-value: float
+value: double
 
 Return
 -------
@@ -6299,17 +6296,17 @@ Description
 -----------
 Finds, or creates, a Real attribute with default GUID and sets <value>. The Real attribute is returned. The Real dimension is Scalar by default. Use SetDimension to overwrite. Real methods ============.
 ") Set;
-		static opencascade::handle<TDataStd_Real> Set(const TDF_Label & label, const Standard_Real value);
+		static opencascade::handle<TDataStd_Real> Set(const TDF_Label & label, const double value);
 
 		/****** TDataStd_Real::Set ******/
-		/****** md5 signature: b5da86df5efbf1d497e3a0f36d50c747 ******/
+		/****** md5 signature: 930617982f7b67acef92fe02f080a7e3 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 label: TDF_Label
 guid: Standard_GUID
-value: float
+value: double
 
 Return
 -------
@@ -6319,15 +6316,15 @@ Description
 -----------
 Finds, or creates, a Real attribute with explicit GUID and sets <value>. The Real attribute is returned. Real methods ============.
 ") Set;
-		static opencascade::handle<TDataStd_Real> Set(const TDF_Label & label, const Standard_GUID & guid, const Standard_Real value);
+		static opencascade::handle<TDataStd_Real> Set(const TDF_Label & label, const Standard_GUID & guid, const double value);
 
 		/****** TDataStd_Real::Set ******/
-		/****** md5 signature: 4d75ecabbf8b06da8c7da02cf6b17a7c ******/
+		/****** md5 signature: 1cadab7f5c63236c1c56e965a1ebc64f ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -6337,7 +6334,7 @@ Description
 -----------
 Sets the real number V.
 ") Set;
-		void Set(const Standard_Real V);
+		void Set(const double V);
 
 		/****** TDataStd_Real::SetDimension ******/
 		/****** md5 signature: 3c462beef751a3f1526e4a72979eac82 ******/
@@ -6353,12 +6350,12 @@ None
 
 Description
 -----------
-Obsolete method that will be removed in next versions. This field is not supported in the persistence mechanism.
+No available documentation.
 ") SetDimension;
 		void SetDimension(const TDataStd_RealEnum DIM);
 
 		/****** TDataStd_Real::SetID ******/
-		/****** md5 signature: 7a929ce753effeac220c978ae7330330 ******/
+		/****** md5 signature: 64789516907731f72c16acfd42a0f70f ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -6376,7 +6373,7 @@ Sets the explicit GUID for the attribute.
 		void SetID(const Standard_GUID & guid);
 
 		/****** TDataStd_Real::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -6418,26 +6415,26 @@ No available documentation.
 		 TDataStd_RealArray();
 
 		/****** TDataStd_RealArray::Array ******/
-		/****** md5 signature: 258fa80f8a51ca0aa0e5ad2f4f009cdc ******/
+		/****** md5 signature: cea9509c05e20ff803d8442bb289aa17 ******/
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns the handle of this array of reals.
 ") Array;
-		const opencascade::handle<TColStd_HArray1OfReal> & Array();
+		const opencascade::handle<NCollection_HArray1<double>> & Array();
 
 		/****** TDataStd_RealArray::ChangeArray ******/
-		/****** md5 signature: 013a639f65bedf7768c12d7b77c602eb ******/
+		/****** md5 signature: d5c452ac8a4e4490f7de91cf8f237c16 ******/
 		%feature("compactdefaultargs") ChangeArray;
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: TColStd_HArray1OfReal
-isCheckItems: bool (optional, default to Standard_True)
+newArray: NCollection_HArray1<double
+isCheckItems: bool (optional, default to true)
 
 Return
 -------
@@ -6447,10 +6444,10 @@ Description
 -----------
 Sets the inner array <myValue> of the RealArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfReal that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<TColStd_HArray1OfReal> & newArray, const Standard_Boolean isCheckItems = Standard_True);
+		void ChangeArray(const opencascade::handle<NCollection_HArray1<double> > & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_RealArray::DeltaOnModification ******/
-		/****** md5 signature: 9a96ec815d43dd1838c022740c5327d0 ******/
+		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -6465,10 +6462,10 @@ Description
 -----------
 Makes a DeltaOnModification between <self> and <anOldAttribute>.
 ") DeltaOnModification;
-		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
+		opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
 		/****** TDataStd_RealArray::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -6482,7 +6479,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -6506,7 +6503,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_RealArray::GetDelta ******/
-		/****** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ******/
+		/****** md5 signature: 48d284b77526180b9fca72a2b1a82618 ******/
 		%feature("compactdefaultargs") GetDelta;
 		%feature("autodoc", "Return
 -------
@@ -6516,7 +6513,7 @@ Description
 -----------
 No available documentation.
 ") GetDelta;
-		Standard_Boolean GetDelta();
+		bool GetDelta();
 
 		/****** TDataStd_RealArray::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -6532,7 +6529,7 @@ class methods ============= Returns the GUID for arrays of reals.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_RealArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -6545,7 +6542,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_RealArray::Init ******/
-		/****** md5 signature: 7821d9c43d1b72a2a51576c8503c10d4 ******/
+		/****** md5 signature: 9817520653ab29d149c0b92193743f1d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6561,10 +6558,10 @@ Description
 -----------
 Initialize the inner array with bounds from <lower> to <upper>.
 ") Init;
-		void Init(const Standard_Integer lower, const Standard_Integer upper);
+		void Init(const int lower, const int upper);
 
 		/****** TDataStd_RealArray::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -6574,10 +6571,10 @@ Description
 -----------
 Returns the number of elements of the array of reals in terms of the number of elements it contains.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDataStd_RealArray::Lower ******/
-		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
+		/****** md5 signature: ed303acc20e6a8f86d94712204278487 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -6587,10 +6584,10 @@ Description
 -----------
 Returns the lower boundary of the array.
 ") Lower;
-		Standard_Integer Lower();
+		int Lower();
 
 		/****** TDataStd_RealArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -6603,7 +6600,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_RealArray::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -6622,7 +6619,7 @@ Note. Uses inside ChangeArray() method.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_RealArray::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -6640,7 +6637,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_RealArray::Set ******/
-		/****** md5 signature: 48f3e162f59c0d9b4ebd2d416bcd46eb ******/
+		/****** md5 signature: 84f62ee7597b49a711569fb99e174aba ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6648,7 +6645,7 @@ Parameters
 label: TDF_Label
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -6658,10 +6655,10 @@ Description
 -----------
 Finds or creates on the <label> a real array attribute with the specified <lower> and <upper> boundaries. If <isDelta> == False, DefaultDeltaOnModification is used. If <isDelta> == True, DeltaOnModification of the current attribute is used. If attribute is already set, input parameter <isDelta> is refused and the found attribute returned.
 ") Set;
-		static opencascade::handle<TDataStd_RealArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_RealArray> Set(const TDF_Label & label, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_RealArray::Set ******/
-		/****** md5 signature: 02926e3f2635296d79033ba0cf76528f ******/
+		/****** md5 signature: 08f5b260f3dd2b889fc5978c39136fd1 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6670,7 +6667,7 @@ label: TDF_Label
 theGuid: Standard_GUID
 lower: int
 upper: int
-isDelta: bool (optional, default to Standard_False)
+isDelta: bool (optional, default to false)
 
 Return
 -------
@@ -6680,10 +6677,10 @@ Description
 -----------
 Finds, or creates, an RealArray attribute with explicit user defined <guid>. The RealArray attribute is returned.
 ") Set;
-		static opencascade::handle<TDataStd_RealArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper, const Standard_Boolean isDelta = Standard_False);
+		static opencascade::handle<TDataStd_RealArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const int lower, const int upper, const bool isDelta = false);
 
 		/****** TDataStd_RealArray::SetDelta ******/
-		/****** md5 signature: 66bc6f747d37a3ea7110a95b02e13c41 ******/
+		/****** md5 signature: ed3080f13a07eb95c0be3f5630b6c6b3 ******/
 		%feature("compactdefaultargs") SetDelta;
 		%feature("autodoc", "
 Parameters
@@ -6698,10 +6695,10 @@ Description
 -----------
 for internal use only!.
 ") SetDelta;
-		void SetDelta(const Standard_Boolean isDelta);
+		void SetDelta(const bool isDelta);
 
 		/****** TDataStd_RealArray::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -6719,7 +6716,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_RealArray::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -6732,13 +6729,13 @@ Sets default GUID for the attribute.
 		void SetID();
 
 		/****** TDataStd_RealArray::SetValue ******/
-		/****** md5 signature: 4716e5d045677f06335160a1ccba754d ******/
+		/****** md5 signature: f1780ee435aa2f659d29090e5b509982 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-Value: float
+Value: double
 
 Return
 -------
@@ -6748,10 +6745,10 @@ Description
 -----------
 Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
-		void SetValue(const Standard_Integer Index, const Standard_Real Value);
+		void SetValue(const int Index, const double Value);
 
 		/****** TDataStd_RealArray::Upper ******/
-		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
+		/****** md5 signature: a53a7ba7d20e7ec35b8de8d721ea431d ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -6761,10 +6758,10 @@ Description
 -----------
 Returns the upper boundary of the array.
 ") Upper;
-		Standard_Integer Upper();
+		int Upper();
 
 		/****** TDataStd_RealArray::Value ******/
-		/****** md5 signature: 848ebada0b45fc838235de2b6b6e8d07 ******/
+		/****** md5 signature: aff42ae108ec5c597d8f60d14b71f54d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6773,13 +6770,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the value of the <Index>th element of the array.
 ") Value;
-		Standard_Real Value(const Standard_Integer Index);
+		double Value(const int Index);
 
 };
 
@@ -6811,12 +6808,12 @@ No available documentation.
 		 TDataStd_RealList();
 
 		/****** TDataStd_RealList::Append ******/
-		/****** md5 signature: f8a8f3c712d27179b5616b621b1bf53e ******/
+		/****** md5 signature: a868ba6ea3e8407fe2f7c33fa841fff6 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
+value: double
 
 Return
 -------
@@ -6826,7 +6823,7 @@ Description
 -----------
 No available documentation.
 ") Append;
-		void Append(const Standard_Real value);
+		void Append(const double value);
 
 		/****** TDataStd_RealList::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -6842,7 +6839,7 @@ No available documentation.
 		void Clear();
 
 		/****** TDataStd_RealList::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -6856,7 +6853,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -6880,7 +6877,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_RealList::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -6890,20 +6887,20 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TDataStd_RealList::First ******/
-		/****** md5 signature: 009dd98af15e46b2da286731f40e1839 ******/
+		/****** md5 signature: 61ce69da508d1629f019b1eaed06f2ac ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") First;
-		Standard_Real First();
+		double First();
 
 		/****** TDataStd_RealList::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -6919,7 +6916,7 @@ Static methods ============== Returns the ID of the list of doubles attribute.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_RealList::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -6932,13 +6929,13 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_RealList::InsertAfter ******/
-		/****** md5 signature: 1526a74510a699288440d63c6d3369d3 ******/
+		/****** md5 signature: 0c0ac6e10b587fe6cef4b1e1e020df2e ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
-after_value: float
+value: double
+after_value: double
 
 Return
 -------
@@ -6948,16 +6945,16 @@ Description
 -----------
 Inserts the <value> after the first meet of <after_value>.
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const Standard_Real value, const Standard_Real after_value);
+		bool InsertAfter(const double value, const double after_value);
 
 		/****** TDataStd_RealList::InsertAfterByIndex ******/
-		/****** md5 signature: d2759367e5d3efc19a4747a928aadd83 ******/
+		/****** md5 signature: a4a1ca7f2d24325e91b28379d42dce14 ******/
 		%feature("compactdefaultargs") InsertAfterByIndex;
 		%feature("autodoc", "
 Parameters
 ----------
 index: int
-after_value: float
+after_value: double
 
 Return
 -------
@@ -6967,16 +6964,16 @@ Description
 -----------
 Inserts the <value> after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfterByIndex;
-		Standard_Boolean InsertAfterByIndex(const Standard_Integer index, const Standard_Real after_value);
+		bool InsertAfterByIndex(const int index, const double after_value);
 
 		/****** TDataStd_RealList::InsertBefore ******/
-		/****** md5 signature: 3a00dd8235479555bdace2eead9b66c1 ******/
+		/****** md5 signature: b919ae0dcfcee0c025b9750c7f2bbff9 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
-before_value: float
+value: double
+before_value: double
 
 Return
 -------
@@ -6986,16 +6983,16 @@ Description
 -----------
 Inserts the <value> before the first meet of <before_value>.
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const Standard_Real value, const Standard_Real before_value);
+		bool InsertBefore(const double value, const double before_value);
 
 		/****** TDataStd_RealList::InsertBeforeByIndex ******/
-		/****** md5 signature: f1ae8f61aa5425f6ac5be85591ec76cd ******/
+		/****** md5 signature: f5763b0fed52ee8407fa0c6dbbb6e733 ******/
 		%feature("compactdefaultargs") InsertBeforeByIndex;
 		%feature("autodoc", "
 Parameters
 ----------
 index: int
-before_value: float
+before_value: double
 
 Return
 -------
@@ -7005,10 +7002,10 @@ Description
 -----------
 Inserts the <value> before the <index> position. The indices start with 1 .. Extent().
 ") InsertBeforeByIndex;
-		Standard_Boolean InsertBeforeByIndex(const Standard_Integer index, const Standard_Real before_value);
+		bool InsertBeforeByIndex(const int index, const double before_value);
 
 		/****** TDataStd_RealList::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -7018,36 +7015,36 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_RealList::Last ******/
-		/****** md5 signature: 4c8063c237a4f73018a7949da8aef9fb ******/
+		/****** md5 signature: f68736fde4f79ad5767aa65cfae8fd87 ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Last;
-		Standard_Real Last();
+		double Last();
 
 		/****** TDataStd_RealList::List ******/
-		/****** md5 signature: bb4687a5f112f09f0c7d954955de692d ******/
+		/****** md5 signature: 600c8dc236df1b669c8ec10ec605286e ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfReal
+NCollection_List<double>
 
 Description
 -----------
 No available documentation.
 ") List;
-		const TColStd_ListOfReal & List();
+		const NCollection_List<double> & List();
 
 		/****** TDataStd_RealList::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -7060,7 +7057,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_RealList::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -7079,12 +7076,12 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_RealList::Prepend ******/
-		/****** md5 signature: 4f2498da5d2b3c6fb99e4393a7cbed84 ******/
+		/****** md5 signature: dee7580e185ee865679ed8f59101c407 ******/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
+value: double
 
 Return
 -------
@@ -7094,15 +7091,15 @@ Description
 -----------
 No available documentation.
 ") Prepend;
-		void Prepend(const Standard_Real value);
+		void Prepend(const double value);
 
 		/****** TDataStd_RealList::Remove ******/
-		/****** md5 signature: 7941dddff97a0eba4713aac77f9daf6a ******/
+		/****** md5 signature: 9da726c90d588b8c2168132de3664a6c ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
+value: double
 
 Return
 -------
@@ -7112,10 +7109,10 @@ Description
 -----------
 Removes the first meet of the <value>.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Real value);
+		bool Remove(const double value);
 
 		/****** TDataStd_RealList::RemoveByIndex ******/
-		/****** md5 signature: c11fa68556ba70a082a882fbe98749a3 ******/
+		/****** md5 signature: 9b68125fdff25de6dfd4bb3d97245836 ******/
 		%feature("compactdefaultargs") RemoveByIndex;
 		%feature("autodoc", "
 Parameters
@@ -7130,10 +7127,10 @@ Description
 -----------
 Removes a value at <index> position.
 ") RemoveByIndex;
-		Standard_Boolean RemoveByIndex(const Standard_Integer index);
+		bool RemoveByIndex(const int index);
 
 		/****** TDataStd_RealList::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -7188,7 +7185,7 @@ Finds or creates a list of double values attribute with explicit user defined <g
 		static opencascade::handle<TDataStd_RealList> Set(const TDF_Label & label, const Standard_GUID & theGuid);
 
 		/****** TDataStd_RealList::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -7206,7 +7203,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_RealList::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -7248,7 +7245,7 @@ No available documentation.
 		 TDataStd_ReferenceArray();
 
 		/****** TDataStd_ReferenceArray::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -7262,7 +7259,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -7299,7 +7296,7 @@ Static methods ============== Returns the ID of the array of references (labels)
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_ReferenceArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -7312,7 +7309,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_ReferenceArray::Init ******/
-		/****** md5 signature: 7821d9c43d1b72a2a51576c8503c10d4 ******/
+		/****** md5 signature: 9817520653ab29d149c0b92193743f1d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7328,23 +7325,23 @@ Description
 -----------
 Initialize the inner array with bounds from <lower> to <upper>.
 ") Init;
-		void Init(const Standard_Integer lower, const Standard_Integer upper);
+		void Init(const int lower, const int upper);
 
 		/****** TDataStd_ReferenceArray::InternalArray ******/
-		/****** md5 signature: 4cb44e93aa5efec14fa520fd2407aff4 ******/
+		/****** md5 signature: 854d0ce3f03380afedc49a1b8da8d427 ******/
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TDataStd_HLabelArray1>
+opencascade::handle<NCollection_HArray1<TDF_Label>>
 
 Description
 -----------
 No available documentation.
 ") InternalArray;
-		const opencascade::handle<TDataStd_HLabelArray1> & InternalArray();
+		const opencascade::handle<NCollection_HArray1<TDF_Label>> & InternalArray();
 
 		/****** TDataStd_ReferenceArray::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -7354,10 +7351,10 @@ Description
 -----------
 Returns the number of elements in the array.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDataStd_ReferenceArray::Lower ******/
-		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
+		/****** md5 signature: ed303acc20e6a8f86d94712204278487 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -7367,10 +7364,10 @@ Description
 -----------
 Returns the lower boundary of the array.
 ") Lower;
-		Standard_Integer Lower();
+		int Lower();
 
 		/****** TDataStd_ReferenceArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -7383,7 +7380,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_ReferenceArray::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -7402,7 +7399,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_ReferenceArray::References ******/
-		/****** md5 signature: f171ce811dbfb205236d26e3cbf15450 ******/
+		/****** md5 signature: 3409f0ad6db182e1a72fab7b19e8b252 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -7417,10 +7414,10 @@ Description
 -----------
 No available documentation.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
+		void References(const opencascade::handle<TDF_DataSet> & DS);
 
 		/****** TDataStd_ReferenceArray::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -7438,7 +7435,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
 		/****** TDataStd_ReferenceArray::Set ******/
-		/****** md5 signature: 0ac756120843d05141929b5124bf699e ******/
+		/****** md5 signature: 9dea4920517f5d754eea2c4624c9efb0 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -7455,10 +7452,10 @@ Description
 -----------
 Finds or creates an array of reference values (labels) attribute.
 ") Set;
-		static opencascade::handle<TDataStd_ReferenceArray> Set(const TDF_Label & label, const Standard_Integer lower, const Standard_Integer upper);
+		static opencascade::handle<TDataStd_ReferenceArray> Set(const TDF_Label & label, const int lower, const int upper);
 
 		/****** TDataStd_ReferenceArray::Set ******/
-		/****** md5 signature: 86dd1a3bfb736b809b1ba224d5acf616 ******/
+		/****** md5 signature: d9e9ea26027200bad4a1d481042603bc ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -7476,10 +7473,10 @@ Description
 -----------
 Finds or creates an array of reference values (labels) attribute with explicit user defined <guid>.
 ") Set;
-		static opencascade::handle<TDataStd_ReferenceArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const Standard_Integer lower, const Standard_Integer upper);
+		static opencascade::handle<TDataStd_ReferenceArray> Set(const TDF_Label & label, const Standard_GUID & theGuid, const int lower, const int upper);
 
 		/****** TDataStd_ReferenceArray::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -7497,7 +7494,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_ReferenceArray::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -7510,13 +7507,13 @@ Sets default GUID for the attribute.
 		void SetID();
 
 		/****** TDataStd_ReferenceArray::SetInternalArray ******/
-		/****** md5 signature: fb1da68a9b4daf661fe381840cb2c5c3 ******/
+		/****** md5 signature: 439a7c79ba1c97ae2311040ce167b844 ******/
 		%feature("compactdefaultargs") SetInternalArray;
 		%feature("autodoc", "
 Parameters
 ----------
-values: TDataStd_HLabelArray1
-isCheckItems: bool (optional, default to Standard_True)
+values: NCollection_HArray1<TDF_Label
+isCheckItems: bool (optional, default to true)
 
 Return
 -------
@@ -7526,10 +7523,10 @@ Description
 -----------
 No available documentation.
 ") SetInternalArray;
-		void SetInternalArray(const opencascade::handle<TDataStd_HLabelArray1> & values, const Standard_Boolean isCheckItems = Standard_True);
+		void SetInternalArray(const opencascade::handle<NCollection_HArray1<TDF_Label> > & values, const bool isCheckItems = true);
 
 		/****** TDataStd_ReferenceArray::SetValue ******/
-		/****** md5 signature: 391200af1382b8920cfedd756d7d73db ******/
+		/****** md5 signature: e6ebbe0b478dd8722d3a179a797e039f ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -7545,10 +7542,10 @@ Description
 -----------
 Sets the <Index>th element of the array to <Value> OutOfRange exception is raised if <Index> doesn't respect Lower and Upper bounds of the internal array.
 ") SetValue;
-		void SetValue(const Standard_Integer index, const TDF_Label & value);
+		void SetValue(const int index, const TDF_Label & value);
 
 		/****** TDataStd_ReferenceArray::Upper ******/
-		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
+		/****** md5 signature: a53a7ba7d20e7ec35b8de8d721ea431d ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -7558,10 +7555,10 @@ Description
 -----------
 Returns the upper boundary of the array.
 ") Upper;
-		Standard_Integer Upper();
+		int Upper();
 
 		/****** TDataStd_ReferenceArray::Value ******/
-		/****** md5 signature: 0a8a674e7de2dce6641ef600a54da113 ******/
+		/****** md5 signature: f5969e497c47ab94b4d1132a988b6e1d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -7576,7 +7573,7 @@ Description
 -----------
 Returns the value of the <Index>th element of the array.
 ") Value;
-		TDF_Label Value(const Standard_Integer Index);
+		TDF_Label Value(const int Index);
 
 };
 
@@ -7639,7 +7636,7 @@ No available documentation.
 		void Clear();
 
 		/****** TDataStd_ReferenceList::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -7653,7 +7650,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -7677,7 +7674,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_ReferenceList::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -7687,7 +7684,7 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TDataStd_ReferenceList::First ******/
 		/****** md5 signature: fc0dfb1b8118d546191271893de453b4 ******/
@@ -7716,7 +7713,7 @@ Static methods ============== Returns the ID of the list of references (labels) 
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_ReferenceList::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -7729,7 +7726,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_ReferenceList::InsertAfter ******/
-		/****** md5 signature: ff77c598a4a4e62f620ea009da1170bd ******/
+		/****** md5 signature: 12dae0814c226b9f39ca9102190aa2ea ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -7745,10 +7742,10 @@ Description
 -----------
 Inserts the <value> after the first meet of <after_value>.
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const TDF_Label & value, const TDF_Label & after_value);
+		bool InsertAfter(const TDF_Label & value, const TDF_Label & after_value);
 
 		/****** TDataStd_ReferenceList::InsertAfter ******/
-		/****** md5 signature: 83eefae3f1ccacd848185dd491b62e11 ******/
+		/****** md5 signature: 808554350ed8ed5fe081cffa629a53b1 ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -7764,10 +7761,10 @@ Description
 -----------
 Inserts the label after the <index> position. The indices start with 1 .. Extent().
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const Standard_Integer index, const TDF_Label & after_value);
+		bool InsertAfter(const int index, const TDF_Label & after_value);
 
 		/****** TDataStd_ReferenceList::InsertBefore ******/
-		/****** md5 signature: 2ac54f6c0511e2a4b41de5160baaace1 ******/
+		/****** md5 signature: bf0d2c816f30abebdc540887cc986834 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -7783,10 +7780,10 @@ Description
 -----------
 Inserts the <value> before the first meet of <before_value>.
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const TDF_Label & value, const TDF_Label & before_value);
+		bool InsertBefore(const TDF_Label & value, const TDF_Label & before_value);
 
 		/****** TDataStd_ReferenceList::InsertBefore ******/
-		/****** md5 signature: e723549c21185a4d8f3f4ad0b44352c1 ******/
+		/****** md5 signature: 44f7a6f11e277ac7bbe3a8ae4308b0fb ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -7802,10 +7799,10 @@ Description
 -----------
 Inserts the label before the <index> position. The indices start with 1 .. Extent().
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const Standard_Integer index, const TDF_Label & before_value);
+		bool InsertBefore(const int index, const TDF_Label & before_value);
 
 		/****** TDataStd_ReferenceList::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -7815,7 +7812,7 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDataStd_ReferenceList::Last ******/
 		/****** md5 signature: af545a63ea1ddbfde05f358f8ed64bbf ******/
@@ -7831,20 +7828,20 @@ No available documentation.
 		const TDF_Label & Last();
 
 		/****** TDataStd_ReferenceList::List ******/
-		/****** md5 signature: 9fe1755f03705d9a6078452748e614f0 ******/
+		/****** md5 signature: 16efd318043eba5da1394db415346b14 ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-TDF_LabelList
+NCollection_List<TDF_Label>
 
 Description
 -----------
 No available documentation.
 ") List;
-		const TDF_LabelList & List();
+		const NCollection_List<TDF_Label> & List();
 
 		/****** TDataStd_ReferenceList::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -7857,7 +7854,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_ReferenceList::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -7894,7 +7891,7 @@ No available documentation.
 		void Prepend(const TDF_Label & value);
 
 		/****** TDataStd_ReferenceList::References ******/
-		/****** md5 signature: f171ce811dbfb205236d26e3cbf15450 ******/
+		/****** md5 signature: 3409f0ad6db182e1a72fab7b19e8b252 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -7909,10 +7906,10 @@ Description
 -----------
 No available documentation.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
+		void References(const opencascade::handle<TDF_DataSet> & DS);
 
 		/****** TDataStd_ReferenceList::Remove ******/
-		/****** md5 signature: 0038b298680b9f13b219a3855474472b ******/
+		/****** md5 signature: 2d5eb84aaf53c63fdb56f4c09294f34c ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -7927,10 +7924,10 @@ Description
 -----------
 Removes the first meet of the <value>.
 ") Remove;
-		Standard_Boolean Remove(const TDF_Label & value);
+		bool Remove(const TDF_Label & value);
 
 		/****** TDataStd_ReferenceList::Remove ******/
-		/****** md5 signature: d5758943c335a06d32f07ab2389e0fe6 ******/
+		/****** md5 signature: d991364949bd4864a2863cd5382583d6 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -7945,10 +7942,10 @@ Description
 -----------
 Removes a label at 'index' position.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Integer index);
+		bool Remove(const int index);
 
 		/****** TDataStd_ReferenceList::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -8003,7 +8000,7 @@ Finds or creates a list of reference values (labels) attribute with explicit use
 		static opencascade::handle<TDataStd_ReferenceList> Set(const TDF_Label & label, const Standard_GUID & theGuid);
 
 		/****** TDataStd_ReferenceList::SetID ******/
-		/****** md5 signature: 9bed89522d0b510ace46b6aebec92ee0 ******/
+		/****** md5 signature: 07ce9c4a6ca92424a2ebf50c156bd3b5 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -8021,7 +8018,7 @@ Sets the explicit GUID (user defined) for the attribute.
 		void SetID(const Standard_GUID & theGuid);
 
 		/****** TDataStd_ReferenceList::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -8063,7 +8060,7 @@ No available documentation.
 		 TDataStd_TreeNode();
 
 		/****** TDataStd_TreeNode::AfterAddition ******/
-		/****** md5 signature: b31825498767e26fb4d69f77ab94108b ******/
+		/****** md5 signature: 677f303b9af6a36d9152349a9ea5b00e ******/
 		%feature("compactdefaultargs") AfterAddition;
 		%feature("autodoc", "Return
 -------
@@ -8073,10 +8070,10 @@ Description
 -----------
 Connect the TreeNode to its father child list.
 ") AfterAddition;
-		virtual void AfterAddition();
+		void AfterAddition();
 
 		/****** TDataStd_TreeNode::AfterResume ******/
-		/****** md5 signature: 1d4195e9b512e0fcd0e4fad379210118 ******/
+		/****** md5 signature: 725997b4942a96537f8067a0c4d51cec ******/
 		%feature("compactdefaultargs") AfterResume;
 		%feature("autodoc", "Return
 -------
@@ -8086,16 +8083,16 @@ Description
 -----------
 Reconnect the TreeNode to its father child list.
 ") AfterResume;
-		virtual void AfterResume();
+		void AfterResume();
 
 		/****** TDataStd_TreeNode::AfterUndo ******/
-		/****** md5 signature: 6a782c706f1e9291f121f77d889ed576 ******/
+		/****** md5 signature: 1c658357444dc4e0bd0f4b66ab6d7e3c ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -8105,10 +8102,10 @@ Description
 -----------
 Reconnect the TreeNode, if necessary. Implementation of Attribute methods: ===================================.
 ") AfterUndo;
-		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TDataStd_TreeNode::Append ******/
-		/****** md5 signature: a8fd473883f7f2817221327a52e3aaf6 ******/
+		/****** md5 signature: 6ee5bb0d6d7288d0becd089cb6edfbd7 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -8123,10 +8120,10 @@ Description
 -----------
 Insert the TreeNode <Child> as last child of <self>. If the insertion is successful <self> becomes the Father of <Child>.
 ") Append;
-		Standard_Boolean Append(const opencascade::handle<TDataStd_TreeNode> & Child);
+		bool Append(const opencascade::handle<TDataStd_TreeNode> & Child);
 
 		/****** TDataStd_TreeNode::BeforeForget ******/
-		/****** md5 signature: e5a78fffddf9fa82f6f158acce858991 ******/
+		/****** md5 signature: 62cb9500c708360c96952b8784c42662 ******/
 		%feature("compactdefaultargs") BeforeForget;
 		%feature("autodoc", "Return
 -------
@@ -8136,16 +8133,16 @@ Description
 -----------
 Disconnect the TreeNode from its Father child list.
 ") BeforeForget;
-		virtual void BeforeForget();
+		void BeforeForget();
 
 		/****** TDataStd_TreeNode::BeforeUndo ******/
-		/****** md5 signature: d409c3f1c759e5fb3727056dd12910e7 ******/
+		/****** md5 signature: 4022cd53002aaa4282f3bc50d4d2b7c9 ******/
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -8155,10 +8152,10 @@ Description
 -----------
 Disconnect the TreeNode, if necessary.
 ") BeforeUndo;
-		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TDataStd_TreeNode::Depth ******/
-		/****** md5 signature: b6eaa771d2fe709741b9c1e8ce5ec68f ******/
+		/****** md5 signature: e4c9db75653d1cf3256add259c83cc30 ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
@@ -8168,10 +8165,10 @@ Description
 -----------
 Returns the depth of this tree node in the overall tree node structure. In other words, the number of father tree nodes of this one is returned.
 ") Depth;
-		Standard_Integer Depth();
+		int Depth();
 
 		/****** TDataStd_TreeNode::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -8185,7 +8182,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -8222,7 +8219,7 @@ Returns the father TreeNode of <self>. Null if root.
 		opencascade::handle<TDataStd_TreeNode> Father();
 
 		/****** TDataStd_TreeNode::Find ******/
-		/****** md5 signature: 3ebbc855e62070f911d56a3225391cca ******/
+		/****** md5 signature: 453a68370e0b2a851d0923f331bd7c2b ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -8236,9 +8233,9 @@ bool
 
 Description
 -----------
-class methods working on the node =================================== Returns true if the tree node T is found on the label L. Otherwise, false is returned.
+class methods working on the node ================================= Returns true if the tree node T is found on the label L. Otherwise, false is returned.
 ") Find;
-		static Standard_Boolean Find(const TDF_Label & L, opencascade::handle<TDataStd_TreeNode> & T);
+		static bool Find(const TDF_Label & L, opencascade::handle<TDataStd_TreeNode> & T);
 
 		/****** TDataStd_TreeNode::FindLast ******/
 		/****** md5 signature: df608722d221823bc8cb3ad3b7b4a692 ******/
@@ -8280,7 +8277,7 @@ returns a default tree ID. this ID is used by the <Set> method without explicit 
 		static const Standard_GUID & GetDefaultTreeID();
 
 		/****** TDataStd_TreeNode::HasFather ******/
-		/****** md5 signature: 460320b1dfa669ec97caaf61775c91ef ******/
+		/****** md5 signature: 6291cd31a97f883a347476179f77964e ******/
 		%feature("compactdefaultargs") HasFather;
 		%feature("autodoc", "Return
 -------
@@ -8290,10 +8287,10 @@ Description
 -----------
 Returns true if this tree node attribute has a father tree node.
 ") HasFather;
-		Standard_Boolean HasFather();
+		bool HasFather();
 
 		/****** TDataStd_TreeNode::HasFirst ******/
-		/****** md5 signature: a68be84c16fa3b425aa2242913b7b855 ******/
+		/****** md5 signature: e3709213009e15725519759b7df9f369 ******/
 		%feature("compactdefaultargs") HasFirst;
 		%feature("autodoc", "Return
 -------
@@ -8303,10 +8300,10 @@ Description
 -----------
 Returns true if this tree node attribute has a first child tree node.
 ") HasFirst;
-		Standard_Boolean HasFirst();
+		bool HasFirst();
 
 		/****** TDataStd_TreeNode::HasLast ******/
-		/****** md5 signature: 013083be5a8309a76ae714f82c261d28 ******/
+		/****** md5 signature: 4082d38197ae024e78ace22387297878 ******/
 		%feature("compactdefaultargs") HasLast;
 		%feature("autodoc", "Return
 -------
@@ -8316,10 +8313,10 @@ Description
 -----------
 Returns true if this tree node attribute has a last child tree node.
 ") HasLast;
-		Standard_Boolean HasLast();
+		bool HasLast();
 
 		/****** TDataStd_TreeNode::HasNext ******/
-		/****** md5 signature: 8e76e2c6de239b72cfbc78ab89aa74ce ******/
+		/****** md5 signature: b93b476ff34c150e5f570f25289b4277 ******/
 		%feature("compactdefaultargs") HasNext;
 		%feature("autodoc", "Return
 -------
@@ -8329,10 +8326,10 @@ Description
 -----------
 Returns true if this tree node attribute has a next tree node.
 ") HasNext;
-		Standard_Boolean HasNext();
+		bool HasNext();
 
 		/****** TDataStd_TreeNode::HasPrevious ******/
-		/****** md5 signature: 222c1ab4a665482cbe8287ca7ac25f9a ******/
+		/****** md5 signature: 419d43a5d100367ba53c59734b719e4f ******/
 		%feature("compactdefaultargs") HasPrevious;
 		%feature("autodoc", "Return
 -------
@@ -8342,10 +8339,10 @@ Description
 -----------
 Returns true if this tree node attribute has a previous tree node.
 ") HasPrevious;
-		Standard_Boolean HasPrevious();
+		bool HasPrevious();
 
 		/****** TDataStd_TreeNode::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -8358,7 +8355,7 @@ Returns the tree ID (default or explicit one depending on the Set method used).
 		const Standard_GUID & ID();
 
 		/****** TDataStd_TreeNode::InsertAfter ******/
-		/****** md5 signature: 3de035405170a903b03e23e39f9378e7 ******/
+		/****** md5 signature: 385678217ef65ab30bfcc789138c5d45 ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -8373,10 +8370,10 @@ Description
 -----------
 Inserts the TreeNode <Node> after <self>. If insertion is successful <self> and <Node> belongs to the same Father.
 ") InsertAfter;
-		Standard_Boolean InsertAfter(const opencascade::handle<TDataStd_TreeNode> & Node);
+		bool InsertAfter(const opencascade::handle<TDataStd_TreeNode> & Node);
 
 		/****** TDataStd_TreeNode::InsertBefore ******/
-		/****** md5 signature: 7eb2bdc1db69daffa10fec5fd50bbe71 ******/
+		/****** md5 signature: 789c6c44f6ac1c550aaa36de910b4cb7 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -8391,10 +8388,10 @@ Description
 -----------
 Inserts the TreeNode <Node> before <self>. If insertion is successful <self> and <Node> belongs to the same Father.
 ") InsertBefore;
-		Standard_Boolean InsertBefore(const opencascade::handle<TDataStd_TreeNode> & Node);
+		bool InsertBefore(const opencascade::handle<TDataStd_TreeNode> & Node);
 
 		/****** TDataStd_TreeNode::IsAscendant ******/
-		/****** md5 signature: 5306d8f606b7847fe40777745e23a33c ******/
+		/****** md5 signature: fe9b88186da49833ba857554c681387c ******/
 		%feature("compactdefaultargs") IsAscendant;
 		%feature("autodoc", "
 Parameters
@@ -8409,10 +8406,10 @@ Description
 -----------
 Returns true if this tree node attribute is an ascendant of of. In other words, if it is a father or the father of a father of of.
 ") IsAscendant;
-		Standard_Boolean IsAscendant(const opencascade::handle<TDataStd_TreeNode> & of);
+		bool IsAscendant(const opencascade::handle<TDataStd_TreeNode> & of);
 
 		/****** TDataStd_TreeNode::IsChild ******/
-		/****** md5 signature: 3ef4546e4ea31cb3867cbce63ca14fb0 ******/
+		/****** md5 signature: 23334ea8b42500d2fc1d385b4778d166 ******/
 		%feature("compactdefaultargs") IsChild;
 		%feature("autodoc", "
 Parameters
@@ -8427,10 +8424,10 @@ Description
 -----------
 Returns true if this tree node attribute is a child of of.
 ") IsChild;
-		Standard_Boolean IsChild(const opencascade::handle<TDataStd_TreeNode> & of);
+		bool IsChild(const opencascade::handle<TDataStd_TreeNode> & of);
 
 		/****** TDataStd_TreeNode::IsDescendant ******/
-		/****** md5 signature: eb70d101aa1ff17850afc10c0c9b6502 ******/
+		/****** md5 signature: 5107c22564abc12d6ecb6f6d046e71c6 ******/
 		%feature("compactdefaultargs") IsDescendant;
 		%feature("autodoc", "
 Parameters
@@ -8445,10 +8442,10 @@ Description
 -----------
 Returns true if this tree node attribute is a descendant of of. In other words, if it is a child or the child of a child of of.
 ") IsDescendant;
-		Standard_Boolean IsDescendant(const opencascade::handle<TDataStd_TreeNode> & of);
+		bool IsDescendant(const opencascade::handle<TDataStd_TreeNode> & of);
 
 		/****** TDataStd_TreeNode::IsFather ******/
-		/****** md5 signature: 86fa942e11bef925735b63310b466f57 ******/
+		/****** md5 signature: 258c54a9a444d24a702c437bc0b63015 ******/
 		%feature("compactdefaultargs") IsFather;
 		%feature("autodoc", "
 Parameters
@@ -8463,10 +8460,10 @@ Description
 -----------
 Returns true if this tree node attribute is a father of of.
 ") IsFather;
-		Standard_Boolean IsFather(const opencascade::handle<TDataStd_TreeNode> & of);
+		bool IsFather(const opencascade::handle<TDataStd_TreeNode> & of);
 
 		/****** TDataStd_TreeNode::IsRoot ******/
-		/****** md5 signature: 9d981f423106a71cbae38fc5c56749f7 ******/
+		/****** md5 signature: 18ba18ee7533a731adf6bd6fdf3afbe1 ******/
 		%feature("compactdefaultargs") IsRoot;
 		%feature("autodoc", "Return
 -------
@@ -8476,7 +8473,7 @@ Description
 -----------
 Returns true if this tree node attribute is the ultimate father in the tree.
 ") IsRoot;
-		Standard_Boolean IsRoot();
+		bool IsRoot();
 
 		/****** TDataStd_TreeNode::Last ******/
 		/****** md5 signature: dd80e1aab4a3cf89b9ab90cc94e8a94b ******/
@@ -8492,12 +8489,12 @@ Returns the last child tree node in this tree node object.
 		opencascade::handle<TDataStd_TreeNode> Last();
 
 		/****** TDataStd_TreeNode::NbChildren ******/
-		/****** md5 signature: 387795ed5ec2927a2e92aa54672b9814 ******/
+		/****** md5 signature: 5622765a35fad6bf062ec84b145911a9 ******/
 		%feature("compactdefaultargs") NbChildren;
 		%feature("autodoc", "
 Parameters
 ----------
-allLevels: bool (optional, default to Standard_False)
+allLevels: bool (optional, default to false)
 
 Return
 -------
@@ -8507,10 +8504,10 @@ Description
 -----------
 Returns the number of child nodes. If <allLevels> is true, the method counts children of all levels (children of children ...).
 ") NbChildren;
-		Standard_Integer NbChildren(const Standard_Boolean allLevels = Standard_False);
+		int NbChildren(const bool allLevels = false);
 
 		/****** TDataStd_TreeNode::NewEmpty ******/
-		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -8520,7 +8517,7 @@ Description
 -----------
 No available documentation.
 ") NewEmpty;
-		virtual opencascade::handle<TDF_Attribute> NewEmpty();
+		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_TreeNode::Next ******/
 		/****** md5 signature: b7ef516aa02e857cd54615aeec6e9a2c ******/
@@ -8536,7 +8533,7 @@ Returns the next tree node in this tree node attribute. Warning This tree node i
 		opencascade::handle<TDataStd_TreeNode> Next();
 
 		/****** TDataStd_TreeNode::Paste ******/
-		/****** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -8552,10 +8549,10 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		virtual void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
+		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_TreeNode::Prepend ******/
-		/****** md5 signature: fa9c7c44fd6439efa9396d3387dc28c8 ******/
+		/****** md5 signature: 25aa1edea9256507b6a992107fde0201 ******/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "
 Parameters
@@ -8570,7 +8567,7 @@ Description
 -----------
 Insert the the TreeNode <Child> as first child of <self>. If the insertion is successful <self> becomes the Father of <Child>.
 ") Prepend;
-		Standard_Boolean Prepend(const opencascade::handle<TDataStd_TreeNode> & Child);
+		bool Prepend(const opencascade::handle<TDataStd_TreeNode> & Child);
 
 		/****** TDataStd_TreeNode::Previous ******/
 		/****** md5 signature: 50ea57789edf52100d8b819a6cfce9c5 ******/
@@ -8586,7 +8583,7 @@ Returns the previous tree node of this tree node attribute. Warning This tree no
 		opencascade::handle<TDataStd_TreeNode> Previous();
 
 		/****** TDataStd_TreeNode::References ******/
-		/****** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ******/
+		/****** md5 signature: 3de62c613451bbbead6f06af1452fc25 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -8601,10 +8598,10 @@ Description
 -----------
 No available documentation.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
+		void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****** TDataStd_TreeNode::Remove ******/
-		/****** md5 signature: 7681d1947992ee3b792c09ff6d3b1bb7 ******/
+		/****** md5 signature: 84d1d98f88a479dff52517b40252b937 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "Return
 -------
@@ -8614,10 +8611,10 @@ Description
 -----------
 Removes this tree node attribute from its father node. The result is that this attribute becomes a root node.
 ") Remove;
-		Standard_Boolean Remove();
+		bool Remove();
 
 		/****** TDataStd_TreeNode::Restore ******/
-		/****** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -8632,7 +8629,7 @@ Description
 -----------
 No available documentation.
 ") Restore;
-		virtual void Restore(const opencascade::handle<TDF_Attribute> & with);
+		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****** TDataStd_TreeNode::Root ******/
 		/****** md5 signature: b560926c389e71646912319417b31c46 ******/
@@ -8822,7 +8819,7 @@ No available documentation.
 		 TDataStd_UAttribute();
 
 		/****** TDataStd_UAttribute::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -8836,7 +8833,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -8860,7 +8857,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDataStd_UAttribute::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -8873,7 +8870,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_UAttribute::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -8886,7 +8883,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_UAttribute::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -8905,7 +8902,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDataStd_UAttribute::References ******/
-		/****** md5 signature: f171ce811dbfb205236d26e3cbf15450 ******/
+		/****** md5 signature: 3409f0ad6db182e1a72fab7b19e8b252 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -8920,10 +8917,10 @@ Description
 -----------
 No available documentation.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
+		void References(const opencascade::handle<TDF_DataSet> & DS);
 
 		/****** TDataStd_UAttribute::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -8960,7 +8957,7 @@ api class methods ============= Find, or create, a UAttribute attribute with <Lo
 		static opencascade::handle<TDataStd_UAttribute> Set(const TDF_Label & label, const Standard_GUID & LocalID);
 
 		/****** TDataStd_UAttribute::SetID ******/
-		/****** md5 signature: 6c38da9a5036a37e6ab684f767db21f9 ******/
+		/****** md5 signature: c133cc6cb23cd2bf7f12d1540cac493e ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -9020,7 +9017,7 @@ create(if doesn't exist) and returns the assigned expression attribute. fill it 
 		opencascade::handle<TDataStd_Expression> Assign();
 
 		/****** TDataStd_Variable::Constant ******/
-		/****** md5 signature: 3dfd8bde0d2494674df91f176168b997 ******/
+		/****** md5 signature: d6072e21c1527cb923eb2c923c6936ed ******/
 		%feature("compactdefaultargs") Constant;
 		%feature("autodoc", "
 Parameters
@@ -9035,7 +9032,7 @@ Description
 -----------
 if <status> is True, this variable will not be modified by the solver.
 ") Constant;
-		void Constant(const Standard_Boolean status);
+		void Constant(const bool status);
 
 		/****** TDataStd_Variable::Desassign ******/
 		/****** md5 signature: 8f4faa2a3ab87866fdd97cd3044ed35f ******/
@@ -9051,7 +9048,7 @@ if <self> is assigned delete the associated expression attribute.
 		void Desassign();
 
 		/****** TDataStd_Variable::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -9065,7 +9062,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -9102,17 +9099,17 @@ if <self> is assigned, returns associated Expression attribute.
 		opencascade::handle<TDataStd_Expression> Expression();
 
 		/****** TDataStd_Variable::Get ******/
-		/****** md5 signature: fc841fb28cb01367762b1d75c09d001e ******/
+		/****** md5 signature: cdec7cab9884d7fced97581bfac75b03 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns value stored in associated Real attribute.
 ") Get;
-		Standard_Real Get();
+		double Get();
 
 		/****** TDataStd_Variable::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -9128,7 +9125,7 @@ class methods =============.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_Variable::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -9141,7 +9138,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDataStd_Variable::IsAssigned ******/
-		/****** md5 signature: 10514134a7a4186d1c438c2b296fef32 ******/
+		/****** md5 signature: 5383a3792b4e2fbee6d4ae6e4a3cba26 ******/
 		%feature("compactdefaultargs") IsAssigned;
 		%feature("autodoc", "Return
 -------
@@ -9151,10 +9148,10 @@ Description
 -----------
 returns True if an Expression attribute is associated. create(if doesn't exist), set and returns the assigned expression attribute.
 ") IsAssigned;
-		Standard_Boolean IsAssigned();
+		bool IsAssigned();
 
 		/****** TDataStd_Variable::IsCaptured ******/
-		/****** md5 signature: 12ea7252bed17339127c3c98a18cb3cc ******/
+		/****** md5 signature: cf2f28168b4c46b554434756df96061d ******/
 		%feature("compactdefaultargs") IsCaptured;
 		%feature("autodoc", "Return
 -------
@@ -9164,10 +9161,10 @@ Description
 -----------
 shortcut for <Real()->IsCaptured()>.
 ") IsCaptured;
-		Standard_Boolean IsCaptured();
+		bool IsCaptured();
 
 		/****** TDataStd_Variable::IsConstant ******/
-		/****** md5 signature: d04428c0cc470abb832fd48242d18c6c ******/
+		/****** md5 signature: 004cfe784b2152966984d86bf19ad8a1 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -9177,10 +9174,10 @@ Description
 -----------
 A constant value is not modified by regeneration.
 ") IsConstant;
-		Standard_Boolean IsConstant();
+		bool IsConstant();
 
 		/****** TDataStd_Variable::IsValued ******/
-		/****** md5 signature: cf4a7019aabbc1fa14b3947b82adad57 ******/
+		/****** md5 signature: 4ec1710cd8e2174a455c45285bbb2741 ******/
 		%feature("compactdefaultargs") IsValued;
 		%feature("autodoc", "Return
 -------
@@ -9190,7 +9187,7 @@ Description
 -----------
 returns True if a Real attribute is associated.
 ") IsValued;
-		Standard_Boolean IsValued();
+		bool IsValued();
 
 		/****** TDataStd_Variable::Name ******/
 		/****** md5 signature: b8987714305e6d22bbd8f16f26c9c23b ******/
@@ -9224,7 +9221,7 @@ returns string stored in the associated Name attribute.
 		const TCollection_ExtendedString & Name();
 
 		/****** TDataStd_Variable::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -9237,7 +9234,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDataStd_Variable::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -9269,7 +9266,7 @@ returns associated Real attribute.
 		opencascade::handle<TDataStd_Real> Real();
 
 		/****** TDataStd_Variable::References ******/
-		/****** md5 signature: f171ce811dbfb205236d26e3cbf15450 ******/
+		/****** md5 signature: 3409f0ad6db182e1a72fab7b19e8b252 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -9284,10 +9281,10 @@ Description
 -----------
 to export reference to the associated Name attribute.
 ") References;
-		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
+		void References(const opencascade::handle<TDF_DataSet> & DS);
 
 		/****** TDataStd_Variable::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -9323,12 +9320,12 @@ Find, or create, a Variable attribute. Real methods ============.
 		static opencascade::handle<TDataStd_Variable> Set(const TDF_Label & label);
 
 		/****** TDataStd_Variable::Set ******/
-		/****** md5 signature: 7072a6e28045c037cf2a8d5eac15314a ******/
+		/****** md5 signature: 22b3f2af08bb65a5140e31d4b4b4ee09 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
+value: double
 
 Return
 -------
@@ -9338,15 +9335,15 @@ Description
 -----------
 retrieve or create the associated real attribute and set the value <value>.
 ") Set;
-		void Set(const Standard_Real value);
+		void Set(const double value);
 
 		/****** TDataStd_Variable::Set ******/
-		/****** md5 signature: 64a2cd368fbb2c0315bcac0b802a9cdb ******/
+		/****** md5 signature: 97e2eda5adb1741156a2c12a87038163 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
+value: double
 dimension: TDataStd_RealEnum
 
 Return
@@ -9355,9 +9352,9 @@ None
 
 Description
 -----------
-Obsolete method that will be removed in next versions. The dimension argument is not supported in the persistence mechanism.
+No available documentation.
 ") Set;
-		void Set(const Standard_Real value, const TDataStd_RealEnum dimension);
+		void Set(const double value, const TDataStd_RealEnum dimension);
 
 		/****** TDataStd_Variable::Unit ******/
 		/****** md5 signature: ff494f2fc5727fcec0378c41ef16d7cb ******/
@@ -9386,7 +9383,7 @@ TCollection_AsciiString
 
 Description
 -----------
-to read/write fields ===================.
+to read/write fields ====================.
 ") Unit;
 		const TCollection_AsciiString & Unit();
 
@@ -9420,7 +9417,7 @@ No available documentation.
 		 TDataStd_Comment();
 
 		/****** TDataStd_Comment::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -9434,7 +9431,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TDataStd_Comment::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -9487,7 +9484,7 @@ Finds, or creates a Comment attribute and sets the string. the Comment attribute
 		static opencascade::handle<TDataStd_Comment> Set(const TDF_Label & label, TCollection_ExtendedString string);
 
 		/****** TDataStd_Comment::Set ******/
-		/****** md5 signature: b14507b5f83a7ddf2dd74b6112f65c39 ******/
+		/****** md5 signature: 1acf2e7ab06e9c57f1dcbe19bf1cc78f ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -9505,7 +9502,7 @@ No available documentation.
 		void Set(TCollection_ExtendedString S);
 
 		/****** TDataStd_Comment::SetID ******/
-		/****** md5 signature: 7a929ce753effeac220c978ae7330330 ******/
+		/****** md5 signature: 64789516907731f72c16acfd42a0f70f ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -9523,7 +9520,7 @@ Sets the explicit user defined GUID to the attribute.
 		void SetID(const Standard_GUID & guid);
 
 		/****** TDataStd_Comment::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -9583,7 +9580,7 @@ Creates a new sub-label and sets the sub-directory dir on that label.
 		static opencascade::handle<TDataStd_Directory> AddDirectory(const opencascade::handle<TDataStd_Directory> & dir);
 
 		/****** TDataStd_Directory::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -9597,10 +9594,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TDataStd_Directory::Find ******/
-		/****** md5 signature: c975c2b1384d4b33c2a54d78edf27d11 ******/
+		/****** md5 signature: 5bce92acf7a0fbd2a99a82729a4459e9 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -9616,7 +9613,7 @@ Description
 -----------
 class methods ============= Searches for a directory attribute on the label current, or on one of the father labels of current. If a directory attribute is found, true is returned, and the attribute found is set as D.
 ") Find;
-		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_Directory> & D);
+		static bool Find(const TDF_Label & current, opencascade::handle<TDataStd_Directory> & D);
 
 		/****** TDataStd_Directory::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -9632,7 +9629,7 @@ Directory methods ===============.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_Directory::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -9710,7 +9707,7 @@ No available documentation.
 		 TDataStd_Name();
 
 		/****** TDataStd_Name::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -9724,7 +9721,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TDataStd_Name::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -9754,7 +9751,7 @@ opencascade::handle<TDataStd_Name>
 
 Description
 -----------
-Creates (if does not exist) and sets the name in the name attribute. from any label <L> search in father labels (L is not concerned) the first name attribute.if found set it in <father>. class methods working on the name tree ====================================== Search in the whole TDF_Data the Name attribute which fit with <fullPath>. Returns True if found. Search under <currentLabel> a label which fit with <name>. Returns True if found. Shortcut which avoids building a ListOfExtendedStrin. Search in the whole TDF_Data the label which fit with name Returns True if found. tools methods to translate path <-> pathlist =========================================== move to draw For Draw test we may provide this tool method which convert a path in a sequence of string to call after the FindLabel methods. Example: if it's given 'Assembly:Part_1:Sketch_5' it will return in <pathlist> the list of 3 strings: 'Assembly','Part_1','Sketch_5'. move to draw from <pathlist> build the string path Name methods ============.
+Creates (if does not exist) and sets the name in the name attribute. from any label <L> search in father labels (L is not concerned) the first name attribute. if found set it in <father>. class methods working on the name tree ====================================== Search in the whole TDF_Data the Name attribute which fit with <fullPath>. Returns True if found. Search under <currentLabel> a label which fit with <name>. Returns True if found. Shortcut which avoids building a ListOfExtendedStrin. Search in the whole TDF_Data the label which fit with name Returns True if found. tools methods to translate path <-> pathlist =========================================== move to draw For Draw test we may provide this tool method which convert a path in a sequence of string to call after the FindLabel methods. Example: if it's given 'Assembly:Part_1:Sketch_5' it will return in <pathlist> the list of 3 strings: 'Assembly','Part_1','Sketch_5'. move to draw from <pathlist> build the string path Name methods ============.
 ") Set;
 		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, TCollection_ExtendedString string);
 
@@ -9779,7 +9776,7 @@ Finds, or creates, a Name attribute with explicit user defined <guid> and sets <
 		static opencascade::handle<TDataStd_Name> Set(const TDF_Label & label, const Standard_GUID & guid, TCollection_ExtendedString string);
 
 		/****** TDataStd_Name::Set ******/
-		/****** md5 signature: b14507b5f83a7ddf2dd74b6112f65c39 ******/
+		/****** md5 signature: 1acf2e7ab06e9c57f1dcbe19bf1cc78f ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -9797,7 +9794,7 @@ Sets <S> as name. Raises if <S> is not a valid name.
 		void Set(TCollection_ExtendedString S);
 
 		/****** TDataStd_Name::SetID ******/
-		/****** md5 signature: 7a929ce753effeac220c978ae7330330 ******/
+		/****** md5 signature: 64789516907731f72c16acfd42a0f70f ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -9815,7 +9812,7 @@ Sets the explicit user defined GUID to the attribute.
 		void SetID(const Standard_GUID & guid);
 
 		/****** TDataStd_Name::SetID ******/
-		/****** md5 signature: 244d113ae14add83954353ca15ede66b ******/
+		/****** md5 signature: 1c04912b49b7be6319020f1d75526111 ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -9857,13 +9854,13 @@ No available documentation.
 		 TDataStd_NoteBook();
 
 		/****** TDataStd_NoteBook::Append ******/
-		/****** md5 signature: e638d87bb80f7e7b3ab388375de60bc6 ******/
+		/****** md5 signature: d681ce394d4d019f0886c46d2442be09 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
 ----------
-value: float
-isExported: bool (optional, default to Standard_False)
+value: double
+isExported: bool (optional, default to false)
 
 Return
 -------
@@ -9873,16 +9870,16 @@ Description
 -----------
 Tool to Create an Integer attribute from <value>, Insert it in a new son label of <self>. The Real attribute is returned.
 ") Append;
-		opencascade::handle<TDataStd_Real> Append(const Standard_Real value, const Standard_Boolean isExported = Standard_False);
+		opencascade::handle<TDataStd_Real> Append(const double value, const bool isExported = false);
 
 		/****** TDataStd_NoteBook::Append ******/
-		/****** md5 signature: 79495fe00184d4d6b78a635aa06c941d ******/
+		/****** md5 signature: 39d8309fbd6e6bb96e3dafac1f18d924 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
 ----------
 value: int
-isExported: bool (optional, default to Standard_False)
+isExported: bool (optional, default to false)
 
 Return
 -------
@@ -9892,10 +9889,10 @@ Description
 -----------
 Tool to Create an Real attribute from <value>, Insert it in a new son label of <self>. The Integer attribute is returned.
 ") Append;
-		opencascade::handle<TDataStd_Integer> Append(const Standard_Integer value, const Standard_Boolean isExported = Standard_False);
+		opencascade::handle<TDataStd_Integer> Append(const int value, const bool isExported = false);
 
 		/****** TDataStd_NoteBook::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -9909,10 +9906,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TDataStd_NoteBook::Find ******/
-		/****** md5 signature: 400d5175f4317bb9f7f5240746dcd5c9 ******/
+		/****** md5 signature: 853ec91d352dbc7705011f839ce97bf2 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -9928,7 +9925,7 @@ Description
 -----------
 class methods ============= try to retrieve a NoteBook attribute at <current> label or in fathers label of <current>. Returns True if found and set <N>.
 ") Find;
-		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataStd_NoteBook> & N);
+		static bool Find(const TDF_Label & current, opencascade::handle<TDataStd_NoteBook> & N);
 
 		/****** TDataStd_NoteBook::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -9944,7 +9941,7 @@ NoteBook methods ===============.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_NoteBook::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -10004,7 +10001,7 @@ No available documentation.
 		 TDataStd_Relation();
 
 		/****** TDataStd_Relation::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -10018,7 +10015,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -10068,7 +10065,7 @@ No available documentation.
 		const TCollection_ExtendedString & GetRelation();
 
 		/****** TDataStd_Relation::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -10146,7 +10143,7 @@ No available documentation.
 		 TDataStd_Tick();
 
 		/****** TDataStd_Tick::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -10160,7 +10157,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TDataStd_Tick::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -10176,7 +10173,7 @@ Static methods ==============.
 		static const Standard_GUID & GetID();
 
 		/****** TDataStd_Tick::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -10231,13 +10228,13 @@ class TDataStd_GenericExtString:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class TDataStd_HLabelArray1 : public TDataStd_LabelArray1, public Standard_Transient {
+class TDataStd_HLabelArray1 : public NCollection_Array1<TDF_Label>, public Standard_Transient {
   public:
     TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const TDataStd_LabelArray1::value_type& theValue);
-    TDataStd_HLabelArray1(const TDataStd_LabelArray1& theOther);
-    const TDataStd_LabelArray1& Array1();
-    TDataStd_LabelArray1& ChangeArray1();
+    TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TDF_Label>::value_type& theValue);
+    TDataStd_HLabelArray1(const NCollection_Array1<TDF_Label>& theOther);
+    const NCollection_Array1<TDF_Label>& Array1();
+    NCollection_Array1<TDF_Label>& ChangeArray1();
 };
 %make_alias(TDataStd_HLabelArray1)
 

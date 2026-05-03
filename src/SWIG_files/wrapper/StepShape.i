@@ -111,8 +111,6 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(StepShape_Block)
-%wrap_handle(StepShape_BooleanResult)
 %wrap_handle(StepShape_BoxDomain)
 %wrap_handle(StepShape_ConnectedFaceShapeRepresentation)
 %wrap_handle(StepShape_ContextDependentShapeRepresentation)
@@ -120,38 +118,25 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_DimensionalCharacteristicRepresentation)
 %wrap_handle(StepShape_DimensionalLocation)
 %wrap_handle(StepShape_DimensionalSize)
-%wrap_handle(StepShape_EdgeBasedWireframeModel)
-%wrap_handle(StepShape_FaceBasedSurfaceModel)
-%wrap_handle(StepShape_GeometricSet)
-%wrap_handle(StepShape_HalfSpaceSolid)
 %wrap_handle(StepShape_LimitsAndFits)
 %wrap_handle(StepShape_MeasureQualification)
 %wrap_handle(StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem)
 %wrap_handle(StepShape_PlusMinusTolerance)
 %wrap_handle(StepShape_PrecisionQualifier)
 %wrap_handle(StepShape_QualifiedRepresentationItem)
-%wrap_handle(StepShape_RightAngularWedge)
-%wrap_handle(StepShape_RightCircularCone)
-%wrap_handle(StepShape_RightCircularCylinder)
 %wrap_handle(StepShape_ShapeDefinitionRepresentation)
 %wrap_handle(StepShape_ShapeRepresentation)
-%wrap_handle(StepShape_ShellBasedSurfaceModel)
-%wrap_handle(StepShape_SolidModel)
-%wrap_handle(StepShape_Sphere)
 %wrap_handle(StepShape_ToleranceValue)
 %wrap_handle(StepShape_TopologicalRepresentationItem)
-%wrap_handle(StepShape_Torus)
 %wrap_handle(StepShape_TypeQualifier)
 %wrap_handle(StepShape_ValueFormatTypeQualifier)
 %wrap_handle(StepShape_AdvancedBrepShapeRepresentation)
 %wrap_handle(StepShape_AngularLocation)
 %wrap_handle(StepShape_AngularSize)
-%wrap_handle(StepShape_BoxedHalfSpace)
 %wrap_handle(StepShape_CompoundShapeRepresentation)
 %wrap_handle(StepShape_ConnectedEdgeSet)
 %wrap_handle(StepShape_ConnectedFaceSet)
 %wrap_handle(StepShape_CsgShapeRepresentation)
-%wrap_handle(StepShape_CsgSolid)
 %wrap_handle(StepShape_DimensionalLocationWithPath)
 %wrap_handle(StepShape_DimensionalSizeWithPath)
 %wrap_handle(StepShape_DirectedDimensionalLocation)
@@ -160,41 +145,29 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_Face)
 %wrap_handle(StepShape_FaceBound)
 %wrap_handle(StepShape_FacetedBrepShapeRepresentation)
-%wrap_handle(StepShape_GeometricCurveSet)
 %wrap_handle(StepShape_GeometricallyBoundedSurfaceShapeRepresentation)
 %wrap_handle(StepShape_GeometricallyBoundedWireframeShapeRepresentation)
 %wrap_handle(StepShape_Loop)
 %wrap_handle(StepShape_LoopAndPath)
-%wrap_handle(StepShape_ManifoldSolidBrep)
 %wrap_handle(StepShape_ManifoldSurfaceShapeRepresentation)
 %wrap_handle(StepShape_NonManifoldSurfaceShapeRepresentation)
 %wrap_handle(StepShape_Path)
 %wrap_handle(StepShape_PointRepresentation)
 %wrap_handle(StepShape_ShapeDimensionRepresentation)
 %wrap_handle(StepShape_ShapeRepresentationWithParameters)
-%wrap_handle(StepShape_SolidReplica)
-%wrap_handle(StepShape_SweptAreaSolid)
-%wrap_handle(StepShape_SweptFaceSolid)
 %wrap_handle(StepShape_TransitionalShapeRepresentation)
 %wrap_handle(StepShape_Vertex)
-%wrap_handle(StepShape_BrepWithVoids)
 %wrap_handle(StepShape_ClosedShell)
 %wrap_handle(StepShape_ConnectedFaceSubSet)
 %wrap_handle(StepShape_EdgeCurve)
 %wrap_handle(StepShape_EdgeLoop)
-%wrap_handle(StepShape_ExtrudedAreaSolid)
-%wrap_handle(StepShape_ExtrudedFaceSolid)
 %wrap_handle(StepShape_FaceOuterBound)
 %wrap_handle(StepShape_FaceSurface)
-%wrap_handle(StepShape_FacetedBrep)
-%wrap_handle(StepShape_FacetedBrepAndBrepWithVoids)
 %wrap_handle(StepShape_OpenShell)
 %wrap_handle(StepShape_OrientedEdge)
 %wrap_handle(StepShape_OrientedFace)
 %wrap_handle(StepShape_OrientedPath)
 %wrap_handle(StepShape_PolyLoop)
-%wrap_handle(StepShape_RevolvedAreaSolid)
-%wrap_handle(StepShape_RevolvedFaceSolid)
 %wrap_handle(StepShape_Subedge)
 %wrap_handle(StepShape_Subface)
 %wrap_handle(StepShape_VertexLoop)
@@ -203,17 +176,6 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_OrientedClosedShell)
 %wrap_handle(StepShape_OrientedOpenShell)
 %wrap_handle(StepShape_SeamEdge)
-%wrap_handle(StepShape_HArray1OfConnectedEdgeSet)
-%wrap_handle(StepShape_HArray1OfConnectedFaceSet)
-%wrap_handle(StepShape_HArray1OfEdge)
-%wrap_handle(StepShape_HArray1OfFace)
-%wrap_handle(StepShape_HArray1OfFaceBound)
-%wrap_handle(StepShape_HArray1OfGeometricSetSelect)
-%wrap_handle(StepShape_HArray1OfOrientedClosedShell)
-%wrap_handle(StepShape_HArray1OfOrientedEdge)
-%wrap_handle(StepShape_HArray1OfShapeDimensionRepresentationItem)
-%wrap_handle(StepShape_HArray1OfShell)
-%wrap_handle(StepShape_HArray1OfValueQualifier)
 /* end handles declaration */
 
 /* templates */
@@ -264,6 +226,17 @@ typedef NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>> StepShap
 typedef NCollection_Array1<StepShape_ShapeDimensionRepresentationItem> StepShape_Array1OfShapeDimensionRepresentationItem;
 typedef NCollection_Array1<StepShape_Shell> StepShape_Array1OfShell;
 typedef NCollection_Array1<StepShape_ValueQualifier> StepShape_Array1OfValueQualifier;
+typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>> StepShape_HArray1OfConnectedEdgeSet;
+typedef NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>> StepShape_HArray1OfConnectedFaceSet;
+typedef NCollection_HArray1<opencascade::handle<StepShape_Edge>> StepShape_HArray1OfEdge;
+typedef NCollection_HArray1<opencascade::handle<StepShape_Face>> StepShape_HArray1OfFace;
+typedef NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> StepShape_HArray1OfFaceBound;
+typedef NCollection_HArray1<StepShape_GeometricSetSelect> StepShape_HArray1OfGeometricSetSelect;
+typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> StepShape_HArray1OfOrientedClosedShell;
+typedef NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> StepShape_HArray1OfOrientedEdge;
+typedef NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem> StepShape_HArray1OfShapeDimensionRepresentationItem;
+typedef NCollection_HArray1<StepShape_Shell> StepShape_HArray1OfShell;
+typedef NCollection_HArray1<StepShape_ValueQualifier> StepShape_HArray1OfValueQualifier;
 /* end typedefs declaration */
 
 /************************
@@ -285,16 +258,16 @@ Returns a Block.
 		 StepShape_Block();
 
 		/****** StepShape_Block::Init ******/
-		/****** md5 signature: c76beee8bc29e462a8e6c05250a357d6 ******/
+		/****** md5 signature: 785111069c3b7375b886e17c762c2218 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aPosition: StepGeom_Axis2Placement3d
-aX: float
-aY: float
-aZ: float
+aX: double
+aY: double
+aZ: double
 
 Return
 -------
@@ -304,7 +277,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aX, const Standard_Real aY, const Standard_Real aZ);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const double aX, const double aY, const double aZ);
 
 		/****** StepShape_Block::Position ******/
 		/****** md5 signature: 713393f125742d29dd4ad15bf921e26c ******/
@@ -338,12 +311,12 @@ No available documentation.
 		void SetPosition(const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
 
 		/****** StepShape_Block::SetX ******/
-		/****** md5 signature: 02cb0e3539e6b062d99f07cef9c7100a ******/
+		/****** md5 signature: d973af8ac596f96b136f891050c3581a ******/
 		%feature("compactdefaultargs") SetX;
 		%feature("autodoc", "
 Parameters
 ----------
-aX: float
+aX: double
 
 Return
 -------
@@ -353,15 +326,15 @@ Description
 -----------
 No available documentation.
 ") SetX;
-		void SetX(const Standard_Real aX);
+		void SetX(const double aX);
 
 		/****** StepShape_Block::SetY ******/
-		/****** md5 signature: a92223e5030169abff888bfa87b3ac2e ******/
+		/****** md5 signature: a25aba5cb46ca1e321f59c66450ee38a ******/
 		%feature("compactdefaultargs") SetY;
 		%feature("autodoc", "
 Parameters
 ----------
-aY: float
+aY: double
 
 Return
 -------
@@ -371,15 +344,15 @@ Description
 -----------
 No available documentation.
 ") SetY;
-		void SetY(const Standard_Real aY);
+		void SetY(const double aY);
 
 		/****** StepShape_Block::SetZ ******/
-		/****** md5 signature: 2f0b912393dc71f7c38c47c52b326af5 ******/
+		/****** md5 signature: 638c4ba088f61c045eb70d92eae54714 ******/
 		%feature("compactdefaultargs") SetZ;
 		%feature("autodoc", "
 Parameters
 ----------
-aZ: float
+aZ: double
 
 Return
 -------
@@ -389,51 +362,49 @@ Description
 -----------
 No available documentation.
 ") SetZ;
-		void SetZ(const Standard_Real aZ);
+		void SetZ(const double aZ);
 
 		/****** StepShape_Block::X ******/
-		/****** md5 signature: 2dbf42f7dc56303f104fb0fa585dc6e6 ******/
+		/****** md5 signature: d1cd5c739a5e638da850f6d4184da84c ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") X;
-		Standard_Real X();
+		double X();
 
 		/****** StepShape_Block::Y ******/
-		/****** md5 signature: 7fd17991f11a9702e525c7070ce7cec6 ******/
+		/****** md5 signature: a8645c42b76f8d7a4895271f99de6d50 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Y;
-		Standard_Real Y();
+		double Y();
 
 		/****** StepShape_Block::Z ******/
-		/****** md5 signature: 87b89b9e016f37b0146cf52868684676 ******/
+		/****** md5 signature: 0f93794bcb3e7aa1261f56c7c023b4aa ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Z;
-		Standard_Real Z();
+		double Z();
 
 };
 
-
-%make_alias(StepShape_Block)
 
 %extend StepShape_Block {
 	%pythoncode {
@@ -571,7 +542,7 @@ No available documentation.
 		void SetSolidModel(const opencascade::handle<StepShape_SolidModel> & aSolidModel);
 
 		/****** StepShape_BooleanOperand::SetTypeOfContent ******/
-		/****** md5 signature: 64ebf9bba16f3a3a03b5db3858660432 ******/
+		/****** md5 signature: 94451abec2f58d721da8db457e5a815f ******/
 		%feature("compactdefaultargs") SetTypeOfContent;
 		%feature("autodoc", "
 Parameters
@@ -586,7 +557,7 @@ Description
 -----------
 No available documentation.
 ") SetTypeOfContent;
-		void SetTypeOfContent(const Standard_Integer aTypeOfContent);
+		void SetTypeOfContent(const int aTypeOfContent);
 
 		/****** StepShape_BooleanOperand::SolidModel ******/
 		/****** md5 signature: 5bdd7fa5a7b0835829bd2bdd7df6b60a ******/
@@ -602,7 +573,7 @@ returns Value as a SolidModel (Null if another type).
 		opencascade::handle<StepShape_SolidModel> SolidModel();
 
 		/****** StepShape_BooleanOperand::TypeOfContent ******/
-		/****** md5 signature: ca265bcca49d9306f069cd5137aa4464 ******/
+		/****** md5 signature: 3acf67591629cab8025083131fc453b8 ******/
 		%feature("compactdefaultargs") TypeOfContent;
 		%feature("autodoc", "Return
 -------
@@ -612,7 +583,7 @@ Description
 -----------
 No available documentation.
 ") TypeOfContent;
-		Standard_Integer TypeOfContent();
+		int TypeOfContent();
 
 };
 
@@ -758,8 +729,6 @@ No available documentation.
 };
 
 
-%make_alias(StepShape_BooleanResult)
-
 %extend StepShape_BooleanResult {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -798,15 +767,15 @@ No available documentation.
 		opencascade::handle<StepGeom_CartesianPoint> Corner();
 
 		/****** StepShape_BoxDomain::Init ******/
-		/****** md5 signature: 0b56f9ef99583eec43dc55a2a29782e4 ******/
+		/****** md5 signature: df09227cac674c4f58aef63fc7d90a74 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aCorner: StepGeom_CartesianPoint
-aXlength: float
-aYlength: float
-aZlength: float
+aXlength: double
+aYlength: double
+aZlength: double
 
 Return
 -------
@@ -816,7 +785,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepGeom_CartesianPoint> & aCorner, const Standard_Real aXlength, const Standard_Real aYlength, const Standard_Real aZlength);
+		void Init(const opencascade::handle<StepGeom_CartesianPoint> & aCorner, const double aXlength, const double aYlength, const double aZlength);
 
 		/****** StepShape_BoxDomain::SetCorner ******/
 		/****** md5 signature: 7e3619fe335983e3bacce9216a7a81a8 ******/
@@ -837,12 +806,12 @@ No available documentation.
 		void SetCorner(const opencascade::handle<StepGeom_CartesianPoint> & aCorner);
 
 		/****** StepShape_BoxDomain::SetXlength ******/
-		/****** md5 signature: 229b158440b3041c34ee744f8461f442 ******/
+		/****** md5 signature: 9d1cb1bb3138badd0cc310bb2e07cfab ******/
 		%feature("compactdefaultargs") SetXlength;
 		%feature("autodoc", "
 Parameters
 ----------
-aXlength: float
+aXlength: double
 
 Return
 -------
@@ -852,15 +821,15 @@ Description
 -----------
 No available documentation.
 ") SetXlength;
-		void SetXlength(const Standard_Real aXlength);
+		void SetXlength(const double aXlength);
 
 		/****** StepShape_BoxDomain::SetYlength ******/
-		/****** md5 signature: 5f027226a33c6c9f34a098606e2e9699 ******/
+		/****** md5 signature: f26a412542578119b75065ab3279104f ******/
 		%feature("compactdefaultargs") SetYlength;
 		%feature("autodoc", "
 Parameters
 ----------
-aYlength: float
+aYlength: double
 
 Return
 -------
@@ -870,15 +839,15 @@ Description
 -----------
 No available documentation.
 ") SetYlength;
-		void SetYlength(const Standard_Real aYlength);
+		void SetYlength(const double aYlength);
 
 		/****** StepShape_BoxDomain::SetZlength ******/
-		/****** md5 signature: 71c172d23a7c95aa9df38d09ab7b34eb ******/
+		/****** md5 signature: db8b50e58b7a5562e932ec4f1fceac88 ******/
 		%feature("compactdefaultargs") SetZlength;
 		%feature("autodoc", "
 Parameters
 ----------
-aZlength: float
+aZlength: double
 
 Return
 -------
@@ -888,46 +857,46 @@ Description
 -----------
 No available documentation.
 ") SetZlength;
-		void SetZlength(const Standard_Real aZlength);
+		void SetZlength(const double aZlength);
 
 		/****** StepShape_BoxDomain::Xlength ******/
-		/****** md5 signature: ce67990e12cd771d97f643f8a8ffae48 ******/
+		/****** md5 signature: 1cfa5875869568af8e94ce95b7d6848e ******/
 		%feature("compactdefaultargs") Xlength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Xlength;
-		Standard_Real Xlength();
+		double Xlength();
 
 		/****** StepShape_BoxDomain::Ylength ******/
-		/****** md5 signature: 05adb1a279a2a723a9eaad9632c694de ******/
+		/****** md5 signature: 6ca2e099ee2a401cc2b9ac33393db8b4 ******/
 		%feature("compactdefaultargs") Ylength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Ylength;
-		Standard_Real Ylength();
+		double Ylength();
 
 		/****** StepShape_BoxDomain::Zlength ******/
-		/****** md5 signature: ea0e53d0a06ae7ec0b732e1f01fd1c9d ******/
+		/****** md5 signature: 383c647e2ab23fccb21980fbb0ee03fe ******/
 		%feature("compactdefaultargs") Zlength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Zlength;
-		Standard_Real Zlength();
+		double Zlength();
 
 };
 
@@ -1111,7 +1080,7 @@ returns Value as a Block (Null if another type).
 		opencascade::handle<StepShape_Block> Block();
 
 		/****** StepShape_CsgPrimitive::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1126,7 +1095,7 @@ Description
 -----------
 Recognizes a CsgPrimitive Kind Entity that is: 1 -> Sphere 2 -> Block 3 -> RightAngularWedge 4 -> Torus 5 -> RightCircularCone 6 -> RightCircularCylinder 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_CsgPrimitive::RightAngularWedge ******/
 		/****** md5 signature: 8d890065e625dbe6820a13b7dccdbb19 ******/
@@ -1283,7 +1252,7 @@ No available documentation.
 		void SetCsgPrimitive(const StepShape_CsgPrimitive & aCsgPrimitive);
 
 		/****** StepShape_CsgSelect::SetTypeOfContent ******/
-		/****** md5 signature: 64ebf9bba16f3a3a03b5db3858660432 ******/
+		/****** md5 signature: 94451abec2f58d721da8db457e5a815f ******/
 		%feature("compactdefaultargs") SetTypeOfContent;
 		%feature("autodoc", "
 Parameters
@@ -1298,10 +1267,10 @@ Description
 -----------
 No available documentation.
 ") SetTypeOfContent;
-		void SetTypeOfContent(const Standard_Integer aTypeOfContent);
+		void SetTypeOfContent(const int aTypeOfContent);
 
 		/****** StepShape_CsgSelect::TypeOfContent ******/
-		/****** md5 signature: ca265bcca49d9306f069cd5137aa4464 ******/
+		/****** md5 signature: 3acf67591629cab8025083131fc453b8 ******/
 		%feature("compactdefaultargs") TypeOfContent;
 		%feature("autodoc", "Return
 -------
@@ -1311,7 +1280,7 @@ Description
 -----------
 No available documentation.
 ") TypeOfContent;
-		Standard_Integer TypeOfContent();
+		int TypeOfContent();
 
 };
 
@@ -1370,7 +1339,7 @@ Empty constructor.
 		 StepShape_DimensionalCharacteristic();
 
 		/****** StepShape_DimensionalCharacteristic::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1385,7 +1354,7 @@ Description
 -----------
 Recognizes a kind of DimensionalCharacteristic select type 1 -> DimensionalLocation from StepShape 2 -> DimensionalSize from StepShape 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_DimensionalCharacteristic::DimensionalLocation ******/
 		/****** md5 signature: 9f4321c54d42036b4fc910a64a234600 ******/
@@ -1690,26 +1659,26 @@ Empty constructor.
 		 StepShape_EdgeBasedWireframeModel();
 
 		/****** StepShape_EdgeBasedWireframeModel::EbwmBoundary ******/
-		/****** md5 signature: da2f1fe63244168588b1b4b3c55dece7 ******/
+		/****** md5 signature: bc44b4c5f53d84d6d24e78c8beb268d2 ******/
 		%feature("compactdefaultargs") EbwmBoundary;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfConnectedEdgeSet>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>>
 
 Description
 -----------
 Returns field EbwmBoundary.
 ") EbwmBoundary;
-		opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> EbwmBoundary();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>>> EbwmBoundary();
 
 		/****** StepShape_EdgeBasedWireframeModel::Init ******/
-		/****** md5 signature: e1eef31d0f89d46803931e9cc424f35c ******/
+		/****** md5 signature: 4832463460e6ffca9f1ea0457b7c7be1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aEbwmBoundary: StepShape_HArray1OfConnectedEdgeSet
+aEbwmBoundary: NCollection_HArray1<
 
 Return
 -------
@@ -1719,15 +1688,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> & aEbwmBoundary);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet> > > & aEbwmBoundary);
 
 		/****** StepShape_EdgeBasedWireframeModel::SetEbwmBoundary ******/
-		/****** md5 signature: 266ac741a96218bd04361ae2f8950735 ******/
+		/****** md5 signature: 865dda2de15374499b91e32753de1637 ******/
 		%feature("compactdefaultargs") SetEbwmBoundary;
 		%feature("autodoc", "
 Parameters
 ----------
-EbwmBoundary: StepShape_HArray1OfConnectedEdgeSet
+EbwmBoundary: NCollection_HArray1<
 
 Return
 -------
@@ -1737,12 +1706,10 @@ Description
 -----------
 Set field EbwmBoundary.
 ") SetEbwmBoundary;
-		void SetEbwmBoundary(const opencascade::handle<StepShape_HArray1OfConnectedEdgeSet> & EbwmBoundary);
+		void SetEbwmBoundary(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet> > > & EbwmBoundary);
 
 };
 
-
-%make_alias(StepShape_EdgeBasedWireframeModel)
 
 %extend StepShape_EdgeBasedWireframeModel {
 	%pythoncode {
@@ -1769,26 +1736,26 @@ Empty constructor.
 		 StepShape_FaceBasedSurfaceModel();
 
 		/****** StepShape_FaceBasedSurfaceModel::FbsmFaces ******/
-		/****** md5 signature: f0003d5b4479fe6a9c8fd60a5c743cbd ******/
+		/****** md5 signature: bbc07e4cee2dd0e5148bec475dd9e967 ******/
 		%feature("compactdefaultargs") FbsmFaces;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfConnectedFaceSet>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>>
 
 Description
 -----------
 Returns field FbsmFaces.
 ") FbsmFaces;
-		opencascade::handle<StepShape_HArray1OfConnectedFaceSet> FbsmFaces();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>>> FbsmFaces();
 
 		/****** StepShape_FaceBasedSurfaceModel::Init ******/
-		/****** md5 signature: bc6d8b381449330d5740e888859868ff ******/
+		/****** md5 signature: e1f392fe4dbf4f76e4fb64fb57ee4173 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aFbsmFaces: StepShape_HArray1OfConnectedFaceSet
+aFbsmFaces: NCollection_HArray1<
 
 Return
 -------
@@ -1798,15 +1765,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_HArray1OfConnectedFaceSet> & aFbsmFaces);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet> > > & aFbsmFaces);
 
 		/****** StepShape_FaceBasedSurfaceModel::SetFbsmFaces ******/
-		/****** md5 signature: dff5070e59f8079821a173286a8de307 ******/
+		/****** md5 signature: 08174a96c217a5f918687f8384fd1705 ******/
 		%feature("compactdefaultargs") SetFbsmFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-FbsmFaces: StepShape_HArray1OfConnectedFaceSet
+FbsmFaces: NCollection_HArray1<
 
 Return
 -------
@@ -1816,12 +1783,10 @@ Description
 -----------
 Set field FbsmFaces.
 ") SetFbsmFaces;
-		void SetFbsmFaces(const opencascade::handle<StepShape_HArray1OfConnectedFaceSet> & FbsmFaces);
+		void SetFbsmFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet> > > & FbsmFaces);
 
 };
 
-
-%make_alias(StepShape_FaceBasedSurfaceModel)
 
 %extend StepShape_FaceBasedSurfaceModel {
 	%pythoncode {
@@ -1848,20 +1813,20 @@ Returns a GeometricSet.
 		 StepShape_GeometricSet();
 
 		/****** StepShape_GeometricSet::Elements ******/
-		/****** md5 signature: 38a8e570b20eba76f6fac400b06e25a2 ******/
+		/****** md5 signature: f28c83130ca618f5e5194226614467e1 ******/
 		%feature("compactdefaultargs") Elements;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfGeometricSetSelect>
+opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect>>
 
 Description
 -----------
 No available documentation.
 ") Elements;
-		opencascade::handle<StepShape_HArray1OfGeometricSetSelect> Elements();
+		opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect>> Elements();
 
 		/****** StepShape_GeometricSet::ElementsValue ******/
-		/****** md5 signature: b843fcc67ebf985c06ed6a5176c14e9b ******/
+		/****** md5 signature: 9546190504276e3e079dadf9e61700f2 ******/
 		%feature("compactdefaultargs") ElementsValue;
 		%feature("autodoc", "
 Parameters
@@ -1876,16 +1841,16 @@ Description
 -----------
 No available documentation.
 ") ElementsValue;
-		StepShape_GeometricSetSelect ElementsValue(const Standard_Integer num);
+		StepShape_GeometricSetSelect ElementsValue(const int num);
 
 		/****** StepShape_GeometricSet::Init ******/
-		/****** md5 signature: 7e7a430ed1de43edada3713d649ff22a ******/
+		/****** md5 signature: 6f1f3efe33e481a8020a17ff99515e35 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aElements: StepShape_HArray1OfGeometricSetSelect
+aElements: NCollection_HArray1<StepShape_GeometricSetSelect
 
 Return
 -------
@@ -1895,10 +1860,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfGeometricSetSelect> & aElements);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect> > & aElements);
 
 		/****** StepShape_GeometricSet::NbElements ******/
-		/****** md5 signature: bda4abdd1e5bc28bcadae491494177fe ******/
+		/****** md5 signature: 936a04e4c43c96574b096e69196411e4 ******/
 		%feature("compactdefaultargs") NbElements;
 		%feature("autodoc", "Return
 -------
@@ -1908,15 +1873,15 @@ Description
 -----------
 No available documentation.
 ") NbElements;
-		Standard_Integer NbElements();
+		int NbElements();
 
 		/****** StepShape_GeometricSet::SetElements ******/
-		/****** md5 signature: e66bcb53df8f8c086e4f936c7b9c3c48 ******/
+		/****** md5 signature: 614988bca2f8a89466a64657d4329fd0 ******/
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", "
 Parameters
 ----------
-aElements: StepShape_HArray1OfGeometricSetSelect
+aElements: NCollection_HArray1<StepShape_GeometricSetSelect
 
 Return
 -------
@@ -1926,12 +1891,10 @@ Description
 -----------
 No available documentation.
 ") SetElements;
-		void SetElements(const opencascade::handle<StepShape_HArray1OfGeometricSetSelect> & aElements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect> > & aElements);
 
 };
 
-
-%make_alias(StepShape_GeometricSet)
 
 %extend StepShape_GeometricSet {
 	%pythoncode {
@@ -1958,7 +1921,7 @@ Returns a GeometricSetSelect SelectType.
 		 StepShape_GeometricSetSelect();
 
 		/****** StepShape_GeometricSetSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1973,7 +1936,7 @@ Description
 -----------
 Recognizes a GeometricSetSelect Kind Entity that is: 1 -> Point 2 -> Curve 3 -> Surface 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_GeometricSetSelect::Curve ******/
 		/****** md5 signature: 29742eb86c60e95cfe724318fdd485f7 ******/
@@ -2042,7 +2005,7 @@ Returns a HalfSpaceSolid.
 		 StepShape_HalfSpaceSolid();
 
 		/****** StepShape_HalfSpaceSolid::AgreementFlag ******/
-		/****** md5 signature: 8b04579db7361451e8f23b9c89f50be8 ******/
+		/****** md5 signature: c42740cda2e1a556f6f59e2e393b6376 ******/
 		%feature("compactdefaultargs") AgreementFlag;
 		%feature("autodoc", "Return
 -------
@@ -2052,7 +2015,7 @@ Description
 -----------
 No available documentation.
 ") AgreementFlag;
-		Standard_Boolean AgreementFlag();
+		bool AgreementFlag();
 
 		/****** StepShape_HalfSpaceSolid::BaseSurface ******/
 		/****** md5 signature: b04fb8bbd601e9e73bc1f0cd379199de ******/
@@ -2068,7 +2031,7 @@ No available documentation.
 		opencascade::handle<StepGeom_Surface> BaseSurface();
 
 		/****** StepShape_HalfSpaceSolid::Init ******/
-		/****** md5 signature: e4bb65b274276f6f9025836a9629f68b ******/
+		/****** md5 signature: 33169a6742bb93f697617fa9c5049813 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2085,10 +2048,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBaseSurface, const Standard_Boolean aAgreementFlag);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBaseSurface, const bool aAgreementFlag);
 
 		/****** StepShape_HalfSpaceSolid::SetAgreementFlag ******/
-		/****** md5 signature: 9cf46b848d7dc31233772e392fb5cc8f ******/
+		/****** md5 signature: c05405b9fb6e6a47865831b3faed1dad ******/
 		%feature("compactdefaultargs") SetAgreementFlag;
 		%feature("autodoc", "
 Parameters
@@ -2103,7 +2066,7 @@ Description
 -----------
 No available documentation.
 ") SetAgreementFlag;
-		void SetAgreementFlag(const Standard_Boolean aAgreementFlag);
+		void SetAgreementFlag(const bool aAgreementFlag);
 
 		/****** StepShape_HalfSpaceSolid::SetBaseSurface ******/
 		/****** md5 signature: 408569ff50581b62fcb0560e242897b6 ******/
@@ -2125,8 +2088,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_HalfSpaceSolid)
 
 %extend StepShape_HalfSpaceSolid {
 	%pythoncode {
@@ -2340,15 +2301,15 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepShape_MeasureQualification::Init ******/
-		/****** md5 signature: 92e898fc7b473a7ce4e67630717433fd ******/
+		/****** md5 signature: 30999bc52fd0246d2edeb1dbbe770095 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 name: TCollection_HAsciiString
 description: TCollection_HAsciiString
-qualified_measure: StepBasic_MeasureWithUnit
-qualifiers: StepShape_HArray1OfValueQualifier
+qualified_measure: Standard_Transient
+qualifiers: NCollection_HArray1<StepShape_ValueQualifier
 
 Return
 -------
@@ -2358,7 +2319,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & name, const opencascade::handle<TCollection_HAsciiString> & description, const opencascade::handle<StepBasic_MeasureWithUnit> & qualified_measure, const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & name, const opencascade::handle<TCollection_HAsciiString> & description, const opencascade::handle<Standard_Transient> & qualified_measure, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
 
 		/****** StepShape_MeasureQualification::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -2374,7 +2335,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepShape_MeasureQualification::NbQualifiers ******/
-		/****** md5 signature: 258f0b2eed3bf7fc2c402f8ee844defe ******/
+		/****** md5 signature: 9a03d8e16f10ad80149f300ca16c9699 ******/
 		%feature("compactdefaultargs") NbQualifiers;
 		%feature("autodoc", "Return
 -------
@@ -2384,36 +2345,36 @@ Description
 -----------
 No available documentation.
 ") NbQualifiers;
-		Standard_Integer NbQualifiers();
+		int NbQualifiers();
 
 		/****** StepShape_MeasureQualification::QualifiedMeasure ******/
-		/****** md5 signature: 93c8513871fd2d8ced038bcd7bea02df ******/
+		/****** md5 signature: f45218f254c420b0ec94fbf72824a144 ******/
 		%feature("compactdefaultargs") QualifiedMeasure;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_MeasureWithUnit>
+opencascade::handle<Standard_Transient>
 
 Description
 -----------
 No available documentation.
 ") QualifiedMeasure;
-		opencascade::handle<StepBasic_MeasureWithUnit> QualifiedMeasure();
+		opencascade::handle<Standard_Transient> QualifiedMeasure();
 
 		/****** StepShape_MeasureQualification::Qualifiers ******/
-		/****** md5 signature: db76bd6ba663e85baa44919cc7af6b05 ******/
+		/****** md5 signature: b4100b14b67033df51b43d8b3244b319 ******/
 		%feature("compactdefaultargs") Qualifiers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfValueQualifier>
+opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>>
 
 Description
 -----------
 No available documentation.
 ") Qualifiers;
-		opencascade::handle<StepShape_HArray1OfValueQualifier> Qualifiers();
+		opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> Qualifiers();
 
 		/****** StepShape_MeasureQualification::QualifiersValue ******/
-		/****** md5 signature: d915ef6153300bbf48bd4a8a4ce90d04 ******/
+		/****** md5 signature: 72795fe14518c14a808b8fbe05de7a65 ******/
 		%feature("compactdefaultargs") QualifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -2428,7 +2389,7 @@ Description
 -----------
 No available documentation.
 ") QualifiersValue;
-		StepShape_ValueQualifier QualifiersValue(const Standard_Integer num);
+		StepShape_ValueQualifier QualifiersValue(const int num);
 
 		/****** StepShape_MeasureQualification::SetDescription ******/
 		/****** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ******/
@@ -2467,12 +2428,12 @@ No available documentation.
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & name);
 
 		/****** StepShape_MeasureQualification::SetQualifiedMeasure ******/
-		/****** md5 signature: 1ba41e095c08297f6c7d78779b25ceb2 ******/
+		/****** md5 signature: ff2d20e3611759d1b8efbc68c5618d92 ******/
 		%feature("compactdefaultargs") SetQualifiedMeasure;
 		%feature("autodoc", "
 Parameters
 ----------
-qualified_measure: StepBasic_MeasureWithUnit
+qualified_measure: Standard_Transient
 
 Return
 -------
@@ -2482,15 +2443,15 @@ Description
 -----------
 No available documentation.
 ") SetQualifiedMeasure;
-		void SetQualifiedMeasure(const opencascade::handle<StepBasic_MeasureWithUnit> & qualified_measure);
+		void SetQualifiedMeasure(const opencascade::handle<Standard_Transient> & qualified_measure);
 
 		/****** StepShape_MeasureQualification::SetQualifiers ******/
-		/****** md5 signature: 52e1c72f673dbabad77679cd11862d6c ******/
+		/****** md5 signature: e4ccfe9e58a5317043f013fecd43701c ******/
 		%feature("compactdefaultargs") SetQualifiers;
 		%feature("autodoc", "
 Parameters
 ----------
-qualifiers: StepShape_HArray1OfValueQualifier
+qualifiers: NCollection_HArray1<StepShape_ValueQualifier
 
 Return
 -------
@@ -2500,10 +2461,10 @@ Description
 -----------
 No available documentation.
 ") SetQualifiers;
-		void SetQualifiers(const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
+		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
 
 		/****** StepShape_MeasureQualification::SetQualifiersValue ******/
-		/****** md5 signature: 5e8388e6143ea875986ea400384a3f94 ******/
+		/****** md5 signature: 0467add7cdcf22fda1f9e2f6c4d5bfc1 ******/
 		%feature("compactdefaultargs") SetQualifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -2519,7 +2480,7 @@ Description
 -----------
 No available documentation.
 ") SetQualifiersValue;
-		void SetQualifiersValue(const Standard_Integer num, const StepShape_ValueQualifier & aqualifier);
+		void SetQualifiersValue(const int num, const StepShape_ValueQualifier & aqualifier);
 
 };
 
@@ -2551,7 +2512,7 @@ No available documentation.
 		 StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem();
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::Init ******/
-		/****** md5 signature: 06e58608636022bba99d627e70ea259a ******/
+		/****** md5 signature: 8dddfaafa08e7869d148e9ecd434b9e3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2559,7 +2520,7 @@ Parameters
 aName: TCollection_HAsciiString
 aValueComponent: StepBasic_MeasureValueMember
 aUnitComponent: StepBasic_Unit
-qualifiers: StepShape_HArray1OfValueQualifier
+qualifiers: NCollection_HArray1<StepShape_ValueQualifier
 
 Return
 -------
@@ -2569,7 +2530,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureValueMember> & aValueComponent, const StepBasic_Unit & aUnitComponent, const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureValueMember> & aValueComponent, const StepBasic_Unit & aUnitComponent, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::Measure ******/
 		/****** md5 signature: cebce694e5bf47672e110f61cddfb670 ******/
@@ -2585,7 +2546,7 @@ No available documentation.
 		opencascade::handle<StepBasic_MeasureWithUnit> Measure();
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::NbQualifiers ******/
-		/****** md5 signature: 258f0b2eed3bf7fc2c402f8ee844defe ******/
+		/****** md5 signature: 9a03d8e16f10ad80149f300ca16c9699 ******/
 		%feature("compactdefaultargs") NbQualifiers;
 		%feature("autodoc", "Return
 -------
@@ -2595,23 +2556,23 @@ Description
 -----------
 No available documentation.
 ") NbQualifiers;
-		Standard_Integer NbQualifiers();
+		int NbQualifiers();
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::Qualifiers ******/
-		/****** md5 signature: db76bd6ba663e85baa44919cc7af6b05 ******/
+		/****** md5 signature: b4100b14b67033df51b43d8b3244b319 ******/
 		%feature("compactdefaultargs") Qualifiers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfValueQualifier>
+opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>>
 
 Description
 -----------
 No available documentation.
 ") Qualifiers;
-		opencascade::handle<StepShape_HArray1OfValueQualifier> Qualifiers();
+		opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> Qualifiers();
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::QualifiersValue ******/
-		/****** md5 signature: d915ef6153300bbf48bd4a8a4ce90d04 ******/
+		/****** md5 signature: 72795fe14518c14a808b8fbe05de7a65 ******/
 		%feature("compactdefaultargs") QualifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -2626,7 +2587,7 @@ Description
 -----------
 No available documentation.
 ") QualifiersValue;
-		StepShape_ValueQualifier QualifiersValue(const Standard_Integer num);
+		StepShape_ValueQualifier QualifiersValue(const int num);
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::SetMeasure ******/
 		/****** md5 signature: 86afc1371188d09e472e16eae3622dde ******/
@@ -2647,12 +2608,12 @@ No available documentation.
 		void SetMeasure(const opencascade::handle<StepBasic_MeasureWithUnit> & Measure);
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::SetQualifiers ******/
-		/****** md5 signature: 52e1c72f673dbabad77679cd11862d6c ******/
+		/****** md5 signature: e4ccfe9e58a5317043f013fecd43701c ******/
 		%feature("compactdefaultargs") SetQualifiers;
 		%feature("autodoc", "
 Parameters
 ----------
-qualifiers: StepShape_HArray1OfValueQualifier
+qualifiers: NCollection_HArray1<StepShape_ValueQualifier
 
 Return
 -------
@@ -2662,10 +2623,10 @@ Description
 -----------
 No available documentation.
 ") SetQualifiers;
-		void SetQualifiers(const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
+		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::SetQualifiersValue ******/
-		/****** md5 signature: 5e8388e6143ea875986ea400384a3f94 ******/
+		/****** md5 signature: 0467add7cdcf22fda1f9e2f6c4d5bfc1 ******/
 		%feature("compactdefaultargs") SetQualifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -2681,7 +2642,7 @@ Description
 -----------
 No available documentation.
 ") SetQualifiersValue;
-		void SetQualifiersValue(const Standard_Integer num, const StepShape_ValueQualifier & aqualifier);
+		void SetQualifiersValue(const int num, const StepShape_ValueQualifier & aqualifier);
 
 };
 
@@ -2823,7 +2784,7 @@ No available documentation.
 		 StepShape_PrecisionQualifier();
 
 		/****** StepShape_PrecisionQualifier::Init ******/
-		/****** md5 signature: 0defd7c439432b0600726883a7d7aa6b ******/
+		/****** md5 signature: 194d77a0a2f79d0f6296520faacc6c1a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2838,10 +2799,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer precision_value);
+		void Init(const int precision_value);
 
 		/****** StepShape_PrecisionQualifier::PrecisionValue ******/
-		/****** md5 signature: da540f26114bfd9de6ac56f04fa0763c ******/
+		/****** md5 signature: 2591a61be6ec66ce5942fe7d24223df5 ******/
 		%feature("compactdefaultargs") PrecisionValue;
 		%feature("autodoc", "Return
 -------
@@ -2851,10 +2812,10 @@ Description
 -----------
 No available documentation.
 ") PrecisionValue;
-		Standard_Integer PrecisionValue();
+		int PrecisionValue();
 
 		/****** StepShape_PrecisionQualifier::SetPrecisionValue ******/
-		/****** md5 signature: c358b4b5d703ba86f22d0e4041e9b972 ******/
+		/****** md5 signature: ad31aa2203e4548af6b34d2a3d363b7c ******/
 		%feature("compactdefaultargs") SetPrecisionValue;
 		%feature("autodoc", "
 Parameters
@@ -2869,7 +2830,7 @@ Description
 -----------
 No available documentation.
 ") SetPrecisionValue;
-		void SetPrecisionValue(const Standard_Integer precision_value);
+		void SetPrecisionValue(const int precision_value);
 
 };
 
@@ -2901,13 +2862,13 @@ No available documentation.
 		 StepShape_QualifiedRepresentationItem();
 
 		/****** StepShape_QualifiedRepresentationItem::Init ******/
-		/****** md5 signature: 21c78b44fc7b48ecda18a2b5bc37ca7a ******/
+		/****** md5 signature: b9385fb62f992d0e57780d244266d273 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-qualifiers: StepShape_HArray1OfValueQualifier
+qualifiers: NCollection_HArray1<StepShape_ValueQualifier
 
 Return
 -------
@@ -2917,10 +2878,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
 
 		/****** StepShape_QualifiedRepresentationItem::NbQualifiers ******/
-		/****** md5 signature: 258f0b2eed3bf7fc2c402f8ee844defe ******/
+		/****** md5 signature: 9a03d8e16f10ad80149f300ca16c9699 ******/
 		%feature("compactdefaultargs") NbQualifiers;
 		%feature("autodoc", "Return
 -------
@@ -2930,23 +2891,23 @@ Description
 -----------
 No available documentation.
 ") NbQualifiers;
-		Standard_Integer NbQualifiers();
+		int NbQualifiers();
 
 		/****** StepShape_QualifiedRepresentationItem::Qualifiers ******/
-		/****** md5 signature: db76bd6ba663e85baa44919cc7af6b05 ******/
+		/****** md5 signature: b4100b14b67033df51b43d8b3244b319 ******/
 		%feature("compactdefaultargs") Qualifiers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfValueQualifier>
+opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>>
 
 Description
 -----------
 No available documentation.
 ") Qualifiers;
-		opencascade::handle<StepShape_HArray1OfValueQualifier> Qualifiers();
+		opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> Qualifiers();
 
 		/****** StepShape_QualifiedRepresentationItem::QualifiersValue ******/
-		/****** md5 signature: d915ef6153300bbf48bd4a8a4ce90d04 ******/
+		/****** md5 signature: 72795fe14518c14a808b8fbe05de7a65 ******/
 		%feature("compactdefaultargs") QualifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -2961,15 +2922,15 @@ Description
 -----------
 No available documentation.
 ") QualifiersValue;
-		StepShape_ValueQualifier QualifiersValue(const Standard_Integer num);
+		StepShape_ValueQualifier QualifiersValue(const int num);
 
 		/****** StepShape_QualifiedRepresentationItem::SetQualifiers ******/
-		/****** md5 signature: 52e1c72f673dbabad77679cd11862d6c ******/
+		/****** md5 signature: e4ccfe9e58a5317043f013fecd43701c ******/
 		%feature("compactdefaultargs") SetQualifiers;
 		%feature("autodoc", "
 Parameters
 ----------
-qualifiers: StepShape_HArray1OfValueQualifier
+qualifiers: NCollection_HArray1<StepShape_ValueQualifier
 
 Return
 -------
@@ -2979,10 +2940,10 @@ Description
 -----------
 No available documentation.
 ") SetQualifiers;
-		void SetQualifiers(const opencascade::handle<StepShape_HArray1OfValueQualifier> & qualifiers);
+		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
 
 		/****** StepShape_QualifiedRepresentationItem::SetQualifiersValue ******/
-		/****** md5 signature: 5e8388e6143ea875986ea400384a3f94 ******/
+		/****** md5 signature: 0467add7cdcf22fda1f9e2f6c4d5bfc1 ******/
 		%feature("compactdefaultargs") SetQualifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -2998,7 +2959,7 @@ Description
 -----------
 No available documentation.
 ") SetQualifiersValue;
-		void SetQualifiersValue(const Standard_Integer num, const StepShape_ValueQualifier & aqualifier);
+		void SetQualifiersValue(const int num, const StepShape_ValueQualifier & aqualifier);
 
 };
 
@@ -3030,7 +2991,7 @@ Returns a ReversibleTopologyItem SelectType.
 		 StepShape_ReversibleTopologyItem();
 
 		/****** StepShape_ReversibleTopologyItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3045,7 +3006,7 @@ Description
 -----------
 Recognizes a ReversibleTopologyItem Kind Entity that is: 1 -> Edge 2 -> Path 3 -> Face 4 -> FaceBound 5 -> ClosedShell 6 -> OpenShell 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_ReversibleTopologyItem::ClosedShell ******/
 		/****** md5 signature: 2d65970d6ce1d1039658d8fb7b61c087 ******/
@@ -3153,17 +3114,17 @@ Returns a RightAngularWedge.
 		 StepShape_RightAngularWedge();
 
 		/****** StepShape_RightAngularWedge::Init ******/
-		/****** md5 signature: 1b42c5563e795dd86ea067b0201d11ce ******/
+		/****** md5 signature: 2fddce295a2c71737fc8967ed943db6e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aPosition: StepGeom_Axis2Placement3d
-aX: float
-aY: float
-aZ: float
-aLtx: float
+aX: double
+aY: double
+aZ: double
+aLtx: double
 
 Return
 -------
@@ -3173,20 +3134,20 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aX, const Standard_Real aY, const Standard_Real aZ, const Standard_Real aLtx);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const double aX, const double aY, const double aZ, const double aLtx);
 
 		/****** StepShape_RightAngularWedge::Ltx ******/
-		/****** md5 signature: dd73f00eee7e2cb9a608ca46e88f62b5 ******/
+		/****** md5 signature: ff09691741b5ad5f02fd5ee9a591459c ******/
 		%feature("compactdefaultargs") Ltx;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Ltx;
-		Standard_Real Ltx();
+		double Ltx();
 
 		/****** StepShape_RightAngularWedge::Position ******/
 		/****** md5 signature: 713393f125742d29dd4ad15bf921e26c ******/
@@ -3202,12 +3163,12 @@ No available documentation.
 		opencascade::handle<StepGeom_Axis2Placement3d> Position();
 
 		/****** StepShape_RightAngularWedge::SetLtx ******/
-		/****** md5 signature: e977cfd3df727219424a34e2c836c216 ******/
+		/****** md5 signature: df17fd4189fab68644ed62a3ecc039b9 ******/
 		%feature("compactdefaultargs") SetLtx;
 		%feature("autodoc", "
 Parameters
 ----------
-aLtx: float
+aLtx: double
 
 Return
 -------
@@ -3217,7 +3178,7 @@ Description
 -----------
 No available documentation.
 ") SetLtx;
-		void SetLtx(const Standard_Real aLtx);
+		void SetLtx(const double aLtx);
 
 		/****** StepShape_RightAngularWedge::SetPosition ******/
 		/****** md5 signature: cdf6c501d6290f351d285af3749a1167 ******/
@@ -3238,12 +3199,12 @@ No available documentation.
 		void SetPosition(const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
 
 		/****** StepShape_RightAngularWedge::SetX ******/
-		/****** md5 signature: 02cb0e3539e6b062d99f07cef9c7100a ******/
+		/****** md5 signature: d973af8ac596f96b136f891050c3581a ******/
 		%feature("compactdefaultargs") SetX;
 		%feature("autodoc", "
 Parameters
 ----------
-aX: float
+aX: double
 
 Return
 -------
@@ -3253,15 +3214,15 @@ Description
 -----------
 No available documentation.
 ") SetX;
-		void SetX(const Standard_Real aX);
+		void SetX(const double aX);
 
 		/****** StepShape_RightAngularWedge::SetY ******/
-		/****** md5 signature: a92223e5030169abff888bfa87b3ac2e ******/
+		/****** md5 signature: a25aba5cb46ca1e321f59c66450ee38a ******/
 		%feature("compactdefaultargs") SetY;
 		%feature("autodoc", "
 Parameters
 ----------
-aY: float
+aY: double
 
 Return
 -------
@@ -3271,15 +3232,15 @@ Description
 -----------
 No available documentation.
 ") SetY;
-		void SetY(const Standard_Real aY);
+		void SetY(const double aY);
 
 		/****** StepShape_RightAngularWedge::SetZ ******/
-		/****** md5 signature: 2f0b912393dc71f7c38c47c52b326af5 ******/
+		/****** md5 signature: 638c4ba088f61c045eb70d92eae54714 ******/
 		%feature("compactdefaultargs") SetZ;
 		%feature("autodoc", "
 Parameters
 ----------
-aZ: float
+aZ: double
 
 Return
 -------
@@ -3289,51 +3250,49 @@ Description
 -----------
 No available documentation.
 ") SetZ;
-		void SetZ(const Standard_Real aZ);
+		void SetZ(const double aZ);
 
 		/****** StepShape_RightAngularWedge::X ******/
-		/****** md5 signature: 2dbf42f7dc56303f104fb0fa585dc6e6 ******/
+		/****** md5 signature: d1cd5c739a5e638da850f6d4184da84c ******/
 		%feature("compactdefaultargs") X;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") X;
-		Standard_Real X();
+		double X();
 
 		/****** StepShape_RightAngularWedge::Y ******/
-		/****** md5 signature: 7fd17991f11a9702e525c7070ce7cec6 ******/
+		/****** md5 signature: a8645c42b76f8d7a4895271f99de6d50 ******/
 		%feature("compactdefaultargs") Y;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Y;
-		Standard_Real Y();
+		double Y();
 
 		/****** StepShape_RightAngularWedge::Z ******/
-		/****** md5 signature: 87b89b9e016f37b0146cf52868684676 ******/
+		/****** md5 signature: 0f93794bcb3e7aa1261f56c7c023b4aa ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Z;
-		Standard_Real Z();
+		double Z();
 
 };
 
-
-%make_alias(StepShape_RightAngularWedge)
 
 %extend StepShape_RightAngularWedge {
 	%pythoncode {
@@ -3360,29 +3319,29 @@ Returns a RightCircularCone.
 		 StepShape_RightCircularCone();
 
 		/****** StepShape_RightCircularCone::Height ******/
-		/****** md5 signature: b7486e9db42a6b5d4ef64408e52d8a4b ******/
+		/****** md5 signature: 5c7d6acffa5c6358c6b35a05de7a5995 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** StepShape_RightCircularCone::Init ******/
-		/****** md5 signature: eeebb23b814c89f9d4d2ff2f0d807d05 ******/
+		/****** md5 signature: f256fe17a1098d947a751a721024b9f8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aPosition: StepGeom_Axis1Placement
-aHeight: float
-aRadius: float
-aSemiAngle: float
+aHeight: double
+aRadius: double
+aSemiAngle: double
 
 Return
 -------
@@ -3392,7 +3351,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis1Placement> & aPosition, const Standard_Real aHeight, const Standard_Real aRadius, const Standard_Real aSemiAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis1Placement> & aPosition, const double aHeight, const double aRadius, const double aSemiAngle);
 
 		/****** StepShape_RightCircularCone::Position ******/
 		/****** md5 signature: 918aab4ca578aee84a42715e0e4bc04d ******/
@@ -3408,38 +3367,38 @@ No available documentation.
 		opencascade::handle<StepGeom_Axis1Placement> Position();
 
 		/****** StepShape_RightCircularCone::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** StepShape_RightCircularCone::SemiAngle ******/
-		/****** md5 signature: a49ed9cc6318be7aa50219450c80bb02 ******/
+		/****** md5 signature: 9697a959b33bed3cf9aa51bfa3c242cf ******/
 		%feature("compactdefaultargs") SemiAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") SemiAngle;
-		Standard_Real SemiAngle();
+		double SemiAngle();
 
 		/****** StepShape_RightCircularCone::SetHeight ******/
-		/****** md5 signature: b595945ce652624ed7910bc5ffdf66ae ******/
+		/****** md5 signature: 7c13e1b8ec1777da9517ca99bd3e24bd ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeight: float
+aHeight: double
 
 Return
 -------
@@ -3449,7 +3408,7 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Real aHeight);
+		void SetHeight(const double aHeight);
 
 		/****** StepShape_RightCircularCone::SetPosition ******/
 		/****** md5 signature: fdfcf5eaecc90e8d09f373ca67be8707 ******/
@@ -3470,12 +3429,12 @@ No available documentation.
 		void SetPosition(const opencascade::handle<StepGeom_Axis1Placement> & aPosition);
 
 		/****** StepShape_RightCircularCone::SetRadius ******/
-		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
+		/****** md5 signature: f0566f0da6f39e1b404c168108c44985 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aRadius: float
+aRadius: double
 
 Return
 -------
@@ -3485,15 +3444,15 @@ Description
 -----------
 No available documentation.
 ") SetRadius;
-		void SetRadius(const Standard_Real aRadius);
+		void SetRadius(const double aRadius);
 
 		/****** StepShape_RightCircularCone::SetSemiAngle ******/
-		/****** md5 signature: 4cae67aa8c3d2c284909ca56f055ccb0 ******/
+		/****** md5 signature: c568f98792bc36fc646bfa34dd62e9a1 ******/
 		%feature("compactdefaultargs") SetSemiAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-aSemiAngle: float
+aSemiAngle: double
 
 Return
 -------
@@ -3503,12 +3462,10 @@ Description
 -----------
 No available documentation.
 ") SetSemiAngle;
-		void SetSemiAngle(const Standard_Real aSemiAngle);
+		void SetSemiAngle(const double aSemiAngle);
 
 };
 
-
-%make_alias(StepShape_RightCircularCone)
 
 %extend StepShape_RightCircularCone {
 	%pythoncode {
@@ -3535,28 +3492,28 @@ Returns a RightCircularCylinder.
 		 StepShape_RightCircularCylinder();
 
 		/****** StepShape_RightCircularCylinder::Height ******/
-		/****** md5 signature: b7486e9db42a6b5d4ef64408e52d8a4b ******/
+		/****** md5 signature: 5c7d6acffa5c6358c6b35a05de7a5995 ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** StepShape_RightCircularCylinder::Init ******/
-		/****** md5 signature: e4a765d4bec535c304476caa45b09afe ******/
+		/****** md5 signature: 7cae4e963e7ed0ccaf4e6532ccc08bad ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aPosition: StepGeom_Axis1Placement
-aHeight: float
-aRadius: float
+aHeight: double
+aRadius: double
 
 Return
 -------
@@ -3566,7 +3523,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis1Placement> & aPosition, const Standard_Real aHeight, const Standard_Real aRadius);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis1Placement> & aPosition, const double aHeight, const double aRadius);
 
 		/****** StepShape_RightCircularCylinder::Position ******/
 		/****** md5 signature: 918aab4ca578aee84a42715e0e4bc04d ******/
@@ -3582,25 +3539,25 @@ No available documentation.
 		opencascade::handle<StepGeom_Axis1Placement> Position();
 
 		/****** StepShape_RightCircularCylinder::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** StepShape_RightCircularCylinder::SetHeight ******/
-		/****** md5 signature: b595945ce652624ed7910bc5ffdf66ae ******/
+		/****** md5 signature: 7c13e1b8ec1777da9517ca99bd3e24bd ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-aHeight: float
+aHeight: double
 
 Return
 -------
@@ -3610,7 +3567,7 @@ Description
 -----------
 No available documentation.
 ") SetHeight;
-		void SetHeight(const Standard_Real aHeight);
+		void SetHeight(const double aHeight);
 
 		/****** StepShape_RightCircularCylinder::SetPosition ******/
 		/****** md5 signature: fdfcf5eaecc90e8d09f373ca67be8707 ******/
@@ -3631,12 +3588,12 @@ No available documentation.
 		void SetPosition(const opencascade::handle<StepGeom_Axis1Placement> & aPosition);
 
 		/****** StepShape_RightCircularCylinder::SetRadius ******/
-		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
+		/****** md5 signature: f0566f0da6f39e1b404c168108c44985 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aRadius: float
+aRadius: double
 
 Return
 -------
@@ -3646,12 +3603,10 @@ Description
 -----------
 No available documentation.
 ") SetRadius;
-		void SetRadius(const Standard_Real aRadius);
+		void SetRadius(const double aRadius);
 
 };
 
-
-%make_alias(StepShape_RightCircularCylinder)
 
 %extend StepShape_RightCircularCylinder {
 	%pythoncode {
@@ -3707,7 +3662,7 @@ Returns a ShapeDimensionRepresentationItem select type.
 		 StepShape_ShapeDimensionRepresentationItem();
 
 		/****** StepShape_ShapeDimensionRepresentationItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3722,7 +3677,7 @@ Description
 -----------
 Recognizes a ShapeDimensionRepresentationItem Kind Entity that is: 1 -> CompoundRepresentationItem 2 -> DescriptiveRepresentationItem 3 -> MeasureRepresentationItem 4 -> Placement 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_ShapeDimensionRepresentationItem::CompoundRepresentationItem ******/
 		/****** md5 signature: b772a37c4ce7cc97d17dfc99f4f1701c ******/
@@ -3833,7 +3788,7 @@ Returns a Shell SelectType.
 		 StepShape_Shell();
 
 		/****** StepShape_Shell::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3848,7 +3803,7 @@ Description
 -----------
 Recognizes a Shell Kind Entity that is: 1 -> OpenShell 2 -> ClosedShell 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_Shell::ClosedShell ******/
 		/****** md5 signature: 2d65970d6ce1d1039658d8fb7b61c087 ******/
@@ -3904,13 +3859,13 @@ Returns a ShellBasedSurfaceModel.
 		 StepShape_ShellBasedSurfaceModel();
 
 		/****** StepShape_ShellBasedSurfaceModel::Init ******/
-		/****** md5 signature: babcdcefbec0f9b8fee99991f7665d0a ******/
+		/****** md5 signature: f9675ad56a107387a3e983b16d1ec189 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aSbsmBoundary: StepShape_HArray1OfShell
+aSbsmBoundary: NCollection_HArray1<StepShape_Shell
 
 Return
 -------
@@ -3920,10 +3875,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfShell> & aSbsmBoundary);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_Shell> > & aSbsmBoundary);
 
 		/****** StepShape_ShellBasedSurfaceModel::NbSbsmBoundary ******/
-		/****** md5 signature: 1757c84b5952a71047c115df252dcf8c ******/
+		/****** md5 signature: 3002ad0af5525ac7faa563101d71f316 ******/
 		%feature("compactdefaultargs") NbSbsmBoundary;
 		%feature("autodoc", "Return
 -------
@@ -3933,23 +3888,23 @@ Description
 -----------
 No available documentation.
 ") NbSbsmBoundary;
-		Standard_Integer NbSbsmBoundary();
+		int NbSbsmBoundary();
 
 		/****** StepShape_ShellBasedSurfaceModel::SbsmBoundary ******/
-		/****** md5 signature: c1d06c2b5fe6a57ecec72e3980ae9d46 ******/
+		/****** md5 signature: 64e91f8d3c475781e4ce9316def35140 ******/
 		%feature("compactdefaultargs") SbsmBoundary;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfShell>
+opencascade::handle<NCollection_HArray1<StepShape_Shell>>
 
 Description
 -----------
 No available documentation.
 ") SbsmBoundary;
-		opencascade::handle<StepShape_HArray1OfShell> SbsmBoundary();
+		opencascade::handle<NCollection_HArray1<StepShape_Shell>> SbsmBoundary();
 
 		/****** StepShape_ShellBasedSurfaceModel::SbsmBoundaryValue ******/
-		/****** md5 signature: 6a3520cfcbeb49b4118ff4afc4d00924 ******/
+		/****** md5 signature: 4a26475264d009ca8602b793c609514f ******/
 		%feature("compactdefaultargs") SbsmBoundaryValue;
 		%feature("autodoc", "
 Parameters
@@ -3964,15 +3919,15 @@ Description
 -----------
 No available documentation.
 ") SbsmBoundaryValue;
-		StepShape_Shell SbsmBoundaryValue(const Standard_Integer num);
+		StepShape_Shell SbsmBoundaryValue(const int num);
 
 		/****** StepShape_ShellBasedSurfaceModel::SetSbsmBoundary ******/
-		/****** md5 signature: 28179b46c336395857f73161dd442967 ******/
+		/****** md5 signature: 7896249a47c375c8becdbfe19cb6d93a ******/
 		%feature("compactdefaultargs") SetSbsmBoundary;
 		%feature("autodoc", "
 Parameters
 ----------
-aSbsmBoundary: StepShape_HArray1OfShell
+aSbsmBoundary: NCollection_HArray1<StepShape_Shell
 
 Return
 -------
@@ -3982,12 +3937,10 @@ Description
 -----------
 No available documentation.
 ") SetSbsmBoundary;
-		void SetSbsmBoundary(const opencascade::handle<StepShape_HArray1OfShell> & aSbsmBoundary);
+		void SetSbsmBoundary(const opencascade::handle<NCollection_HArray1<StepShape_Shell> > & aSbsmBoundary);
 
 };
 
-
-%make_alias(StepShape_ShellBasedSurfaceModel)
 
 %extend StepShape_ShellBasedSurfaceModel {
 	%pythoncode {
@@ -4015,8 +3968,6 @@ Returns a SolidModel.
 
 };
 
-
-%make_alias(StepShape_SolidModel)
 
 %extend StepShape_SolidModel {
 	%pythoncode {
@@ -4056,13 +4007,13 @@ No available documentation.
 		opencascade::handle<StepGeom_Point> Centre();
 
 		/****** StepShape_Sphere::Init ******/
-		/****** md5 signature: c415b7217ed95fd8baa3cc4d7d466c46 ******/
+		/****** md5 signature: b46f63112d77f6a02e817f3cc8238692 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aRadius: float
+aRadius: double
 aCentre: StepGeom_Point
 
 Return
@@ -4073,20 +4024,20 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aRadius, const opencascade::handle<StepGeom_Point> & aCentre);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const double aRadius, const opencascade::handle<StepGeom_Point> & aCentre);
 
 		/****** StepShape_Sphere::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** StepShape_Sphere::SetCentre ******/
 		/****** md5 signature: 67782548b5af30d88b2d3f9a63d25857 ******/
@@ -4107,12 +4058,12 @@ No available documentation.
 		void SetCentre(const opencascade::handle<StepGeom_Point> & aCentre);
 
 		/****** StepShape_Sphere::SetRadius ******/
-		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
+		/****** md5 signature: f0566f0da6f39e1b404c168108c44985 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aRadius: float
+aRadius: double
 
 Return
 -------
@@ -4122,12 +4073,10 @@ Description
 -----------
 No available documentation.
 ") SetRadius;
-		void SetRadius(const Standard_Real aRadius);
+		void SetRadius(const double aRadius);
 
 };
 
-
-%make_alias(StepShape_Sphere)
 
 %extend StepShape_Sphere {
 	%pythoncode {
@@ -4154,7 +4103,7 @@ Returns a SurfaceModel SelectType.
 		 StepShape_SurfaceModel();
 
 		/****** StepShape_SurfaceModel::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4169,7 +4118,7 @@ Description
 -----------
 Recognizes a SurfaceModel Kind Entity that is: 1 -> ShellBasedSurfaceModel 2 -> FaceBasedSurfaceModel 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_SurfaceModel::ShellBasedSurfaceModel ******/
 		/****** md5 signature: aa3343fc93557e2b54e1f833462a8840 ******/
@@ -4212,7 +4161,7 @@ No available documentation.
 		 StepShape_ToleranceMethodDefinition();
 
 		/****** StepShape_ToleranceMethodDefinition::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4227,7 +4176,7 @@ Description
 -----------
 Recognizes a kind of ValueQualifier Select Type: 1 -> ToleranceValue from StepShape 2 -> LimitsAndFits from StepShape.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_ToleranceMethodDefinition::LimitsAndFits ******/
 		/****** md5 signature: 1ab1b5daa9ab6dc771f9e703aa71f29c ******/
@@ -4422,15 +4371,15 @@ Returns a Torus.
 		 StepShape_Torus();
 
 		/****** StepShape_Torus::Init ******/
-		/****** md5 signature: eadfe0accb50124b1aee8e645603305c ******/
+		/****** md5 signature: 5ba51c3cdfde7b80638c94f0dfbf6cf4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aPosition: StepGeom_Axis1Placement
-aMajorRadius: float
-aMinorRadius: float
+aMajorRadius: double
+aMinorRadius: double
 
 Return
 -------
@@ -4440,33 +4389,33 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis1Placement> & aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis1Placement> & aPosition, const double aMajorRadius, const double aMinorRadius);
 
 		/****** StepShape_Torus::MajorRadius ******/
-		/****** md5 signature: e961bb81456f4d0a6154d0e9401e1ce8 ******/
+		/****** md5 signature: 0a2ccb3f2f96e1276e50fba8091d72cb ******/
 		%feature("compactdefaultargs") MajorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MajorRadius;
-		Standard_Real MajorRadius();
+		double MajorRadius();
 
 		/****** StepShape_Torus::MinorRadius ******/
-		/****** md5 signature: e1383e2287a25901af1e2b42cc95af4d ******/
+		/****** md5 signature: 9e6683b74c7166396bffd8c50cf9899c ******/
 		%feature("compactdefaultargs") MinorRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MinorRadius;
-		Standard_Real MinorRadius();
+		double MinorRadius();
 
 		/****** StepShape_Torus::Position ******/
 		/****** md5 signature: 918aab4ca578aee84a42715e0e4bc04d ******/
@@ -4482,12 +4431,12 @@ No available documentation.
 		opencascade::handle<StepGeom_Axis1Placement> Position();
 
 		/****** StepShape_Torus::SetMajorRadius ******/
-		/****** md5 signature: 19063cd2e5c489f1f2f903c09d028591 ******/
+		/****** md5 signature: d26969446e174720e1eb4333ea43a746 ******/
 		%feature("compactdefaultargs") SetMajorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aMajorRadius: float
+aMajorRadius: double
 
 Return
 -------
@@ -4497,15 +4446,15 @@ Description
 -----------
 No available documentation.
 ") SetMajorRadius;
-		void SetMajorRadius(const Standard_Real aMajorRadius);
+		void SetMajorRadius(const double aMajorRadius);
 
 		/****** StepShape_Torus::SetMinorRadius ******/
-		/****** md5 signature: 0929ce2e2ad5f01b2a0006efb5c74779 ******/
+		/****** md5 signature: 5097d6694f4c9d2256c2267f585665f9 ******/
 		%feature("compactdefaultargs") SetMinorRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-aMinorRadius: float
+aMinorRadius: double
 
 Return
 -------
@@ -4515,7 +4464,7 @@ Description
 -----------
 No available documentation.
 ") SetMinorRadius;
-		void SetMinorRadius(const Standard_Real aMinorRadius);
+		void SetMinorRadius(const double aMinorRadius);
 
 		/****** StepShape_Torus::SetPosition ******/
 		/****** md5 signature: fdfcf5eaecc90e8d09f373ca67be8707 ******/
@@ -4537,8 +4486,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_Torus)
 
 %extend StepShape_Torus {
 	%pythoncode {
@@ -4721,7 +4668,7 @@ No available documentation.
 		 StepShape_ValueQualifier();
 
 		/****** StepShape_ValueQualifier::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4736,7 +4683,7 @@ Description
 -----------
 Recognizes a kind of ValueQualifier Select Type: 1 -> PrecisionQualifier from StepShape 2 -> TypeQualifier from StepShape 3 -> UnceraintyQualifier .. not yet implemented 4 -> ValueFormatTypeQualifier.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepShape_ValueQualifier::PrecisionQualifier ******/
 		/****** md5 signature: cf5430497780c213bc1fbd7ec7889e1c ******/
@@ -4847,7 +4794,7 @@ Returns field AngleSelection.
 		StepShape_AngleRelator AngleSelection();
 
 		/****** StepShape_AngularLocation::Init ******/
-		/****** md5 signature: e4f2cba7db8519ffd9a6bce95fbcb1ac ******/
+		/****** md5 signature: 7be1d0d75c5d9ef64f7d03b4198fd57f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4867,7 +4814,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Name, const Standard_Boolean hasShapeAspectRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Description, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatingShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatedShapeAspect, const StepShape_AngleRelator aAngleSelection);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Name, const bool hasShapeAspectRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Description, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatingShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatedShapeAspect, const StepShape_AngleRelator aAngleSelection);
 
 		/****** StepShape_AngularLocation::SetAngleSelection ******/
 		/****** md5 signature: a2b4d999fc24b95bc53e1a8aaaf424ea ******/
@@ -5010,7 +4957,7 @@ No available documentation.
 		opencascade::handle<StepShape_BoxDomain> Enclosure();
 
 		/****** StepShape_BoxedHalfSpace::Init ******/
-		/****** md5 signature: 01348f8395cf70ca7043ca64555c8b9a ******/
+		/****** md5 signature: 6f0ab8ae496ac8da29770661356efc60 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5028,7 +4975,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBaseSurface, const Standard_Boolean aAgreementFlag, const opencascade::handle<StepShape_BoxDomain> & aEnclosure);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBaseSurface, const bool aAgreementFlag, const opencascade::handle<StepShape_BoxDomain> & aEnclosure);
 
 		/****** StepShape_BoxedHalfSpace::SetEnclosure ******/
 		/****** md5 signature: 95e32e90afd31415a4a8d4a80fb1c059 ******/
@@ -5050,8 +4997,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_BoxedHalfSpace)
 
 %extend StepShape_BoxedHalfSpace {
 	%pythoncode {
@@ -5107,26 +5052,26 @@ Empty constructor.
 		 StepShape_ConnectedEdgeSet();
 
 		/****** StepShape_ConnectedEdgeSet::CesEdges ******/
-		/****** md5 signature: 7e018c003984ea736e031bfdd0965ab1 ******/
+		/****** md5 signature: 8d5a5d1effdadf8e5d3d8db15674e091 ******/
 		%feature("compactdefaultargs") CesEdges;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfEdge>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>>
 
 Description
 -----------
 Returns field CesEdges.
 ") CesEdges;
-		opencascade::handle<StepShape_HArray1OfEdge> CesEdges();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>>> CesEdges();
 
 		/****** StepShape_ConnectedEdgeSet::Init ******/
-		/****** md5 signature: 9c989c2b875aa985d92c7fc01d36c9fb ******/
+		/****** md5 signature: 8f623b37e172975b86e400dd7ad95c62 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aCesEdges: StepShape_HArray1OfEdge
+aCesEdges: NCollection_HArray1<
 
 Return
 -------
@@ -5136,15 +5081,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_HArray1OfEdge> & aCesEdges);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge> > > & aCesEdges);
 
 		/****** StepShape_ConnectedEdgeSet::SetCesEdges ******/
-		/****** md5 signature: 66d189bb77366301218ed63f09b6004c ******/
+		/****** md5 signature: a114b8f4c02c1053a7a988dd07371607 ******/
 		%feature("compactdefaultargs") SetCesEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-CesEdges: StepShape_HArray1OfEdge
+CesEdges: NCollection_HArray1<
 
 Return
 -------
@@ -5154,7 +5099,7 @@ Description
 -----------
 Set field CesEdges.
 ") SetCesEdges;
-		void SetCesEdges(const opencascade::handle<StepShape_HArray1OfEdge> & CesEdges);
+		void SetCesEdges(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge> > > & CesEdges);
 
 };
 
@@ -5186,20 +5131,20 @@ Returns a ConnectedFaceSet.
 		 StepShape_ConnectedFaceSet();
 
 		/****** StepShape_ConnectedFaceSet::CfsFaces ******/
-		/****** md5 signature: afaeff0a9d409daf11b0a02399d23bd5 ******/
+		/****** md5 signature: 0bcf3d6b21ef70864b1b52b55e2adae0 ******/
 		%feature("compactdefaultargs") CfsFaces;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfFace>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>
 
 Description
 -----------
 No available documentation.
 ") CfsFaces;
-		virtual opencascade::handle<StepShape_HArray1OfFace> CfsFaces();
+		virtual opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>> CfsFaces();
 
 		/****** StepShape_ConnectedFaceSet::CfsFacesValue ******/
-		/****** md5 signature: 466d34acaf469d11f6f1c0e29fe73313 ******/
+		/****** md5 signature: ef8ec5161c99e1b3bf9e8d49e48c2f84 ******/
 		%feature("compactdefaultargs") CfsFacesValue;
 		%feature("autodoc", "
 Parameters
@@ -5214,16 +5159,16 @@ Description
 -----------
 No available documentation.
 ") CfsFacesValue;
-		virtual opencascade::handle<StepShape_Face> CfsFacesValue(const Standard_Integer num);
+		virtual opencascade::handle<StepShape_Face> CfsFacesValue(const int num);
 
 		/****** StepShape_ConnectedFaceSet::Init ******/
-		/****** md5 signature: d0d68be3daff7ff64423a93a520b0cb9 ******/
+		/****** md5 signature: f242ddb2a98f2714df154633b3382593 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aCfsFaces: StepShape_HArray1OfFace
+aCfsFaces: NCollection_HArray1<
 
 Return
 -------
@@ -5233,10 +5178,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
 
 		/****** StepShape_ConnectedFaceSet::NbCfsFaces ******/
-		/****** md5 signature: ae68772a1d19455ea3b16f5c681e5ac4 ******/
+		/****** md5 signature: 98970f4b348165a508c8634e325296b1 ******/
 		%feature("compactdefaultargs") NbCfsFaces;
 		%feature("autodoc", "Return
 -------
@@ -5246,15 +5191,15 @@ Description
 -----------
 No available documentation.
 ") NbCfsFaces;
-		virtual Standard_Integer NbCfsFaces();
+		virtual int NbCfsFaces();
 
 		/****** StepShape_ConnectedFaceSet::SetCfsFaces ******/
-		/****** md5 signature: 2780a2f57758d8b7d3236b1241523af0 ******/
+		/****** md5 signature: c6f83b614263d6822ca570f74d71daf1 ******/
 		%feature("compactdefaultargs") SetCfsFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-aCfsFaces: StepShape_HArray1OfFace
+aCfsFaces: NCollection_HArray1<
 
 Return
 -------
@@ -5264,7 +5209,7 @@ Description
 -----------
 No available documentation.
 ") SetCfsFaces;
-		virtual void SetCfsFaces(const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
+		virtual void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
 
 };
 
@@ -5377,8 +5322,6 @@ No available documentation.
 };
 
 
-%make_alias(StepShape_CsgSolid)
-
 %extend StepShape_CsgSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5404,7 +5347,7 @@ Empty constructor.
 		 StepShape_DimensionalLocationWithPath();
 
 		/****** StepShape_DimensionalLocationWithPath::Init ******/
-		/****** md5 signature: 542cb539fbe685cf6356df79c23494b2 ******/
+		/****** md5 signature: b092f2f3e7acacb465e0ebce8789c617 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5424,7 +5367,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Name, const Standard_Boolean hasShapeAspectRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Description, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatingShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatedShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aPath);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Name, const bool hasShapeAspectRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aShapeAspectRelationship_Description, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatingShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aShapeAspectRelationship_RelatedShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aPath);
 
 		/****** StepShape_DimensionalLocationWithPath::Path ******/
 		/****** md5 signature: 713772bfa292e0035d1282ffaea482a4 ******/
@@ -5736,20 +5679,20 @@ Returns a Face.
 		 StepShape_Face();
 
 		/****** StepShape_Face::Bounds ******/
-		/****** md5 signature: 4515f8d5973c81fafdffc6ae3e5cc84e ******/
+		/****** md5 signature: 04400f0971879c5b0d02f2fbc8373d1d ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfFaceBound>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>
 
 Description
 -----------
 No available documentation.
 ") Bounds;
-		virtual opencascade::handle<StepShape_HArray1OfFaceBound> Bounds();
+		virtual opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>> Bounds();
 
 		/****** StepShape_Face::BoundsValue ******/
-		/****** md5 signature: eb74d37e538c48b6a782434230722d17 ******/
+		/****** md5 signature: b4ae951f8bcd427e5becbcb2f06bd6fe ******/
 		%feature("compactdefaultargs") BoundsValue;
 		%feature("autodoc", "
 Parameters
@@ -5764,16 +5707,16 @@ Description
 -----------
 No available documentation.
 ") BoundsValue;
-		virtual opencascade::handle<StepShape_FaceBound> BoundsValue(const Standard_Integer num);
+		virtual opencascade::handle<StepShape_FaceBound> BoundsValue(const int num);
 
 		/****** StepShape_Face::Init ******/
-		/****** md5 signature: d2d1dddbdab7edb03de197f48668a8a3 ******/
+		/****** md5 signature: 615327850ab4db80349d6c88a49733a8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aBounds: StepShape_HArray1OfFaceBound
+aBounds: NCollection_HArray1<
 
 Return
 -------
@@ -5783,10 +5726,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds);
 
 		/****** StepShape_Face::NbBounds ******/
-		/****** md5 signature: ba6842706132f743269de4e971a5015e ******/
+		/****** md5 signature: 9a69f23dce79e3b6215c5cd624683cea ******/
 		%feature("compactdefaultargs") NbBounds;
 		%feature("autodoc", "Return
 -------
@@ -5796,15 +5739,15 @@ Description
 -----------
 No available documentation.
 ") NbBounds;
-		virtual Standard_Integer NbBounds();
+		virtual int NbBounds();
 
 		/****** StepShape_Face::SetBounds ******/
-		/****** md5 signature: f60816a870a0f98672acc999fa7b750d ******/
+		/****** md5 signature: 1e08fe07e9b614c6af291ba0c8ba4968 ******/
 		%feature("compactdefaultargs") SetBounds;
 		%feature("autodoc", "
 Parameters
 ----------
-aBounds: StepShape_HArray1OfFaceBound
+aBounds: NCollection_HArray1<
 
 Return
 -------
@@ -5814,7 +5757,7 @@ Description
 -----------
 No available documentation.
 ") SetBounds;
-		virtual void SetBounds(const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds);
+		virtual void SetBounds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds);
 
 };
 
@@ -5859,7 +5802,7 @@ No available documentation.
 		opencascade::handle<StepShape_Loop> Bound();
 
 		/****** StepShape_FaceBound::Init ******/
-		/****** md5 signature: 0762e63b160d0ac1eacbda02296eef62 ******/
+		/****** md5 signature: 076de5b6bd8996100be3b3ae0159f396 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5876,10 +5819,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Loop> & aBound, const Standard_Boolean aOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Loop> & aBound, const bool aOrientation);
 
 		/****** StepShape_FaceBound::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -5889,7 +5832,7 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepShape_FaceBound::SetBound ******/
 		/****** md5 signature: ec5a38713386a1af500e6b0da5d83300 ******/
@@ -5910,7 +5853,7 @@ No available documentation.
 		void SetBound(const opencascade::handle<StepShape_Loop> & aBound);
 
 		/****** StepShape_FaceBound::SetOrientation ******/
-		/****** md5 signature: 6f9691e070f8a78a962e8069b1bcc7d0 ******/
+		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -5925,7 +5868,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean aOrientation);
+		void SetOrientation(const bool aOrientation);
 
 };
 
@@ -5987,8 +5930,6 @@ Returns a GeometricCurveSet.
 
 };
 
-
-%make_alias(StepShape_GeometricCurveSet)
 
 %extend StepShape_GeometricCurveSet {
 	%pythoncode {
@@ -6102,20 +6043,20 @@ Returns a LoopAndPath.
 		 StepShape_LoopAndPath();
 
 		/****** StepShape_LoopAndPath::EdgeList ******/
-		/****** md5 signature: 7059cc673bf899319cd93c43c3ea2f21 ******/
+		/****** md5 signature: 46ddfea2d08672eb60c379f4118e5123 ******/
 		%feature("compactdefaultargs") EdgeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfOrientedEdge>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>
 
 Description
 -----------
 No available documentation.
 ") EdgeList;
-		opencascade::handle<StepShape_HArray1OfOrientedEdge> EdgeList();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>> EdgeList();
 
 		/****** StepShape_LoopAndPath::EdgeListValue ******/
-		/****** md5 signature: 0d67ed1d1f47d10bdd669dfe1ab18741 ******/
+		/****** md5 signature: ed54c177b64821ca7f37ea1bb70a73b9 ******/
 		%feature("compactdefaultargs") EdgeListValue;
 		%feature("autodoc", "
 Parameters
@@ -6130,7 +6071,7 @@ Description
 -----------
 No available documentation.
 ") EdgeListValue;
-		opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const Standard_Integer num);
+		opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const int num);
 
 		/****** StepShape_LoopAndPath::Init ******/
 		/****** md5 signature: a5dfc420b1f7aeca8ed3b47dc89a44b3 ******/
@@ -6153,13 +6094,13 @@ No available documentation.
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Loop> & aLoop, const opencascade::handle<StepShape_Path> & aPath);
 
 		/****** StepShape_LoopAndPath::Init ******/
-		/****** md5 signature: 7fe8de96530a82cd75bb2b8c929b072c ******/
+		/****** md5 signature: c43181f5808802d01a3be6c6b03ab650 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -6169,7 +6110,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 		/****** StepShape_LoopAndPath::Loop ******/
 		/****** md5 signature: f652913b7c4b894441725a83cb117195 ******/
@@ -6185,7 +6126,7 @@ No available documentation.
 		opencascade::handle<StepShape_Loop> Loop();
 
 		/****** StepShape_LoopAndPath::NbEdgeList ******/
-		/****** md5 signature: ed64407a13b02bbbcfdecd6e92bc43b5 ******/
+		/****** md5 signature: ff1f68d4f9ea9b46d4af9e64d43848a4 ******/
 		%feature("compactdefaultargs") NbEdgeList;
 		%feature("autodoc", "Return
 -------
@@ -6195,7 +6136,7 @@ Description
 -----------
 No available documentation.
 ") NbEdgeList;
-		Standard_Integer NbEdgeList();
+		int NbEdgeList();
 
 		/****** StepShape_LoopAndPath::Path ******/
 		/****** md5 signature: 70a013beb029bdf0f121d725b800b390 ******/
@@ -6211,12 +6152,12 @@ No available documentation.
 		opencascade::handle<StepShape_Path> Path();
 
 		/****** StepShape_LoopAndPath::SetEdgeList ******/
-		/****** md5 signature: 6a5df1246b2355adf84bf81d40677491 ******/
+		/****** md5 signature: 839c2bf1716bcc64dbcddabb63451412 ******/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", "
 Parameters
 ----------
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -6226,7 +6167,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		void SetEdgeList(const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 		/****** StepShape_LoopAndPath::SetLoop ******/
 		/****** md5 signature: 3a2d8eadbfda92800e911c985713fe3c ******/
@@ -6365,8 +6306,6 @@ No available documentation.
 };
 
 
-%make_alias(StepShape_ManifoldSolidBrep)
-
 %extend StepShape_ManifoldSolidBrep {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6450,20 +6389,20 @@ Returns a Path.
 		 StepShape_Path();
 
 		/****** StepShape_Path::EdgeList ******/
-		/****** md5 signature: d26f703a268a786f736dd75de6762c85 ******/
+		/****** md5 signature: 1f7a9d5770004188758c0ed0c1d4addb ******/
 		%feature("compactdefaultargs") EdgeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfOrientedEdge>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>
 
 Description
 -----------
 No available documentation.
 ") EdgeList;
-		virtual opencascade::handle<StepShape_HArray1OfOrientedEdge> EdgeList();
+		virtual opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>> EdgeList();
 
 		/****** StepShape_Path::EdgeListValue ******/
-		/****** md5 signature: 48d12206608d94416dd74af995e65659 ******/
+		/****** md5 signature: 0459748e06f6c1f160c0752f912aa7c8 ******/
 		%feature("compactdefaultargs") EdgeListValue;
 		%feature("autodoc", "
 Parameters
@@ -6478,16 +6417,16 @@ Description
 -----------
 No available documentation.
 ") EdgeListValue;
-		virtual opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const Standard_Integer num);
+		virtual opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const int num);
 
 		/****** StepShape_Path::Init ******/
-		/****** md5 signature: 7fe8de96530a82cd75bb2b8c929b072c ******/
+		/****** md5 signature: c43181f5808802d01a3be6c6b03ab650 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -6497,10 +6436,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 		/****** StepShape_Path::NbEdgeList ******/
-		/****** md5 signature: 2b135593104de258fc3bbb1ae738707d ******/
+		/****** md5 signature: 224541a067f6710a1d6b8791f07ec5b4 ******/
 		%feature("compactdefaultargs") NbEdgeList;
 		%feature("autodoc", "Return
 -------
@@ -6510,15 +6449,15 @@ Description
 -----------
 No available documentation.
 ") NbEdgeList;
-		virtual Standard_Integer NbEdgeList();
+		virtual int NbEdgeList();
 
 		/****** StepShape_Path::SetEdgeList ******/
-		/****** md5 signature: 7e591646abca4abf313b5bebb89276a2 ******/
+		/****** md5 signature: 9d05cd63ae5ea4aa4006dd4b8d3aae79 ******/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", "
 Parameters
 ----------
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -6528,7 +6467,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		virtual void SetEdgeList(const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		virtual void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 };
 
@@ -6589,13 +6528,13 @@ Empty constructor.
 		 StepShape_ShapeDimensionRepresentation();
 
 		/****** StepShape_ShapeDimensionRepresentation::Init ******/
-		/****** md5 signature: 1739f1f045640a687c8df3c9459f73e0 ******/
+		/****** md5 signature: f3e77a477e1a346eeb23aa7f22045a6a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theItems: StepRepr_HArray1OfRepresentationItem
+theItems: NCollection_HArray1<
 theContextOfItems: StepRepr_RepresentationContext
 
 Return
@@ -6606,16 +6545,16 @@ Description
 -----------
 Initialize all fields AP214.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
 		/****** StepShape_ShapeDimensionRepresentation::Init ******/
-		/****** md5 signature: 7cea80a52099fce7e99608aa8c3751bf ******/
+		/****** md5 signature: 50cd097034d53a3aed863acecea5b261 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theItems: StepShape_HArray1OfShapeDimensionRepresentationItem
+theItems: NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem
 theContextOfItems: StepRepr_RepresentationContext
 
 Return
@@ -6626,28 +6565,28 @@ Description
 -----------
 Initialize all fields AP242.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem> > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
 		/****** StepShape_ShapeDimensionRepresentation::ItemsAP242 ******/
-		/****** md5 signature: c5013c74c7d36d8d4b8b7e5180eea8c1 ******/
+		/****** md5 signature: e3d6ff714aec00c28f9b211345777a11 ******/
 		%feature("compactdefaultargs") ItemsAP242;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem>
+opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem>>
 
 Description
 -----------
 No available documentation.
 ") ItemsAP242;
-		opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> ItemsAP242();
+		opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem>> ItemsAP242();
 
 		/****** StepShape_ShapeDimensionRepresentation::SetItemsAP242 ******/
-		/****** md5 signature: 2c022b02732d80531f2442353adb6ef1 ******/
+		/****** md5 signature: 9751896518e7e8a169018c2ecb5622c2 ******/
 		%feature("compactdefaultargs") SetItemsAP242;
 		%feature("autodoc", "
 Parameters
 ----------
-theItems: StepShape_HArray1OfShapeDimensionRepresentationItem
+theItems: NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem
 
 Return
 -------
@@ -6657,7 +6596,7 @@ Description
 -----------
 No available documentation.
 ") SetItemsAP242;
-		void SetItemsAP242(const opencascade::handle<StepShape_HArray1OfShapeDimensionRepresentationItem> & theItems);
+		void SetItemsAP242(const opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem> > & theItems);
 
 };
 
@@ -6802,8 +6741,6 @@ No available documentation.
 };
 
 
-%make_alias(StepShape_SolidReplica)
-
 %extend StepShape_SolidReplica {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6881,8 +6818,6 @@ No available documentation.
 };
 
 
-%make_alias(StepShape_SweptAreaSolid)
-
 %extend StepShape_SweptAreaSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6959,8 +6894,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_SweptFaceSolid)
 
 %extend StepShape_SweptFaceSolid {
 	%pythoncode {
@@ -7045,14 +6978,14 @@ Returns a BrepWithVoids.
 		 StepShape_BrepWithVoids();
 
 		/****** StepShape_BrepWithVoids::Init ******/
-		/****** md5 signature: 96c1459943706941f0f9d97f88a3cbfb ******/
+		/****** md5 signature: 30f7286ba2ddcc5f37f9ede347742b5f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aOuter: StepShape_ClosedShell
-aVoids: StepShape_HArray1OfOrientedClosedShell
+aVoids: NCollection_HArray1<
 
 Return
 -------
@@ -7062,10 +6995,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
 
 		/****** StepShape_BrepWithVoids::NbVoids ******/
-		/****** md5 signature: 43d36e9e25be55a1423ccdb24beca7ff ******/
+		/****** md5 signature: eab110eb7472076d485d3b995b0e5603 ******/
 		%feature("compactdefaultargs") NbVoids;
 		%feature("autodoc", "Return
 -------
@@ -7075,15 +7008,15 @@ Description
 -----------
 No available documentation.
 ") NbVoids;
-		Standard_Integer NbVoids();
+		int NbVoids();
 
 		/****** StepShape_BrepWithVoids::SetVoids ******/
-		/****** md5 signature: 8a6633c74f222f4cf6e453fa9f474589 ******/
+		/****** md5 signature: 1b4e6acc7bef02c508f78863eea4b75c ******/
 		%feature("compactdefaultargs") SetVoids;
 		%feature("autodoc", "
 Parameters
 ----------
-aVoids: StepShape_HArray1OfOrientedClosedShell
+aVoids: NCollection_HArray1<
 
 Return
 -------
@@ -7093,23 +7026,23 @@ Description
 -----------
 No available documentation.
 ") SetVoids;
-		void SetVoids(const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
+		void SetVoids(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
 
 		/****** StepShape_BrepWithVoids::Voids ******/
-		/****** md5 signature: 63b6808712308ed5b0c78350606ed428 ******/
+		/****** md5 signature: e0f8a11fcaf292a75413ebb79f3afa09 ******/
 		%feature("compactdefaultargs") Voids;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfOrientedClosedShell>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>
 
 Description
 -----------
 No available documentation.
 ") Voids;
-		opencascade::handle<StepShape_HArray1OfOrientedClosedShell> Voids();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>> Voids();
 
 		/****** StepShape_BrepWithVoids::VoidsValue ******/
-		/****** md5 signature: 069e7e54cebcabad7cb584ac4b644c9f ******/
+		/****** md5 signature: 8976fee324dda37838455680be604244 ******/
 		%feature("compactdefaultargs") VoidsValue;
 		%feature("autodoc", "
 Parameters
@@ -7124,12 +7057,10 @@ Description
 -----------
 No available documentation.
 ") VoidsValue;
-		opencascade::handle<StepShape_OrientedClosedShell> VoidsValue(const Standard_Integer num);
+		opencascade::handle<StepShape_OrientedClosedShell> VoidsValue(const int num);
 
 };
 
-
-%make_alias(StepShape_BrepWithVoids)
 
 %extend StepShape_BrepWithVoids {
 	%pythoncode {
@@ -7185,13 +7116,13 @@ Empty constructor.
 		 StepShape_ConnectedFaceSubSet();
 
 		/****** StepShape_ConnectedFaceSubSet::Init ******/
-		/****** md5 signature: daa9019a2694912ae45ffa92151fcb09 ******/
+		/****** md5 signature: 89a8b3a772dd2194fc94bda5f6732f87 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aConnectedFaceSet_CfsFaces: StepShape_HArray1OfFace
+aConnectedFaceSet_CfsFaces: NCollection_HArray1<
 aParentFaceSet: StepShape_ConnectedFaceSet
 
 Return
@@ -7202,7 +7133,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_HArray1OfFace> & aConnectedFaceSet_CfsFaces, const opencascade::handle<StepShape_ConnectedFaceSet> & aParentFaceSet);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aConnectedFaceSet_CfsFaces, const opencascade::handle<StepShape_ConnectedFaceSet> & aParentFaceSet);
 
 		/****** StepShape_ConnectedFaceSubSet::ParentFaceSet ******/
 		/****** md5 signature: fb7362a7a27a0c47b6febb2fb8adc703 ******/
@@ -7278,7 +7209,7 @@ No available documentation.
 		opencascade::handle<StepGeom_Curve> EdgeGeometry();
 
 		/****** StepShape_EdgeCurve::Init ******/
-		/****** md5 signature: d1d4f44c89c9845370487fc5f432ce9b ******/
+		/****** md5 signature: 53e8ea6ada174e0ebba69b774069a3b4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7297,10 +7228,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Vertex> & aEdgeStart, const opencascade::handle<StepShape_Vertex> & aEdgeEnd, const opencascade::handle<StepGeom_Curve> & aEdgeGeometry, const Standard_Boolean aSameSense);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Vertex> & aEdgeStart, const opencascade::handle<StepShape_Vertex> & aEdgeEnd, const opencascade::handle<StepGeom_Curve> & aEdgeGeometry, const bool aSameSense);
 
 		/****** StepShape_EdgeCurve::SameSense ******/
-		/****** md5 signature: 738a5547658f3a15a3a7e5e372f16add ******/
+		/****** md5 signature: a45add58374f4310c3a05d42dc01c1bb ******/
 		%feature("compactdefaultargs") SameSense;
 		%feature("autodoc", "Return
 -------
@@ -7310,7 +7241,7 @@ Description
 -----------
 No available documentation.
 ") SameSense;
-		Standard_Boolean SameSense();
+		bool SameSense();
 
 		/****** StepShape_EdgeCurve::SetEdgeGeometry ******/
 		/****** md5 signature: 9dbe98ecd62eb7d03a994c9c54a22742 ******/
@@ -7331,7 +7262,7 @@ No available documentation.
 		void SetEdgeGeometry(const opencascade::handle<StepGeom_Curve> & aEdgeGeometry);
 
 		/****** StepShape_EdgeCurve::SetSameSense ******/
-		/****** md5 signature: 2608ebad93831004ef1c8f76b311e415 ******/
+		/****** md5 signature: 1c96f0c7840764d5e81fa3c884e88bc9 ******/
 		%feature("compactdefaultargs") SetSameSense;
 		%feature("autodoc", "
 Parameters
@@ -7346,7 +7277,7 @@ Description
 -----------
 No available documentation.
 ") SetSameSense;
-		void SetSameSense(const Standard_Boolean aSameSense);
+		void SetSameSense(const bool aSameSense);
 
 };
 
@@ -7378,20 +7309,20 @@ Returns a EdgeLoop.
 		 StepShape_EdgeLoop();
 
 		/****** StepShape_EdgeLoop::EdgeList ******/
-		/****** md5 signature: 7059cc673bf899319cd93c43c3ea2f21 ******/
+		/****** md5 signature: 46ddfea2d08672eb60c379f4118e5123 ******/
 		%feature("compactdefaultargs") EdgeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfOrientedEdge>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>
 
 Description
 -----------
 No available documentation.
 ") EdgeList;
-		opencascade::handle<StepShape_HArray1OfOrientedEdge> EdgeList();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>> EdgeList();
 
 		/****** StepShape_EdgeLoop::EdgeListValue ******/
-		/****** md5 signature: 0d67ed1d1f47d10bdd669dfe1ab18741 ******/
+		/****** md5 signature: ed54c177b64821ca7f37ea1bb70a73b9 ******/
 		%feature("compactdefaultargs") EdgeListValue;
 		%feature("autodoc", "
 Parameters
@@ -7406,16 +7337,16 @@ Description
 -----------
 No available documentation.
 ") EdgeListValue;
-		opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const Standard_Integer num);
+		opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const int num);
 
 		/****** StepShape_EdgeLoop::Init ******/
-		/****** md5 signature: 7fe8de96530a82cd75bb2b8c929b072c ******/
+		/****** md5 signature: c43181f5808802d01a3be6c6b03ab650 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -7425,10 +7356,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 		/****** StepShape_EdgeLoop::NbEdgeList ******/
-		/****** md5 signature: ed64407a13b02bbbcfdecd6e92bc43b5 ******/
+		/****** md5 signature: ff1f68d4f9ea9b46d4af9e64d43848a4 ******/
 		%feature("compactdefaultargs") NbEdgeList;
 		%feature("autodoc", "Return
 -------
@@ -7438,15 +7369,15 @@ Description
 -----------
 No available documentation.
 ") NbEdgeList;
-		Standard_Integer NbEdgeList();
+		int NbEdgeList();
 
 		/****** StepShape_EdgeLoop::SetEdgeList ******/
-		/****** md5 signature: 6a5df1246b2355adf84bf81d40677491 ******/
+		/****** md5 signature: 839c2bf1716bcc64dbcddabb63451412 ******/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", "
 Parameters
 ----------
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -7456,7 +7387,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		void SetEdgeList(const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 };
 
@@ -7488,17 +7419,17 @@ Returns a ExtrudedAreaSolid.
 		 StepShape_ExtrudedAreaSolid();
 
 		/****** StepShape_ExtrudedAreaSolid::Depth ******/
-		/****** md5 signature: de7560cf701656c85d7ea3c1f074fd03 ******/
+		/****** md5 signature: f37e2236448dd6d5b61209c188407c46 ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Depth;
-		Standard_Real Depth();
+		double Depth();
 
 		/****** StepShape_ExtrudedAreaSolid::ExtrudedDirection ******/
 		/****** md5 signature: f8e5bba2daff6b6bf9f6fb392a52aeb3 ******/
@@ -7514,7 +7445,7 @@ No available documentation.
 		opencascade::handle<StepGeom_Direction> ExtrudedDirection();
 
 		/****** StepShape_ExtrudedAreaSolid::Init ******/
-		/****** md5 signature: 391ecfdd1e66114739547ae1f14d1a41 ******/
+		/****** md5 signature: 28abd14dc6bbe13c496c76c56109b2ac ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7522,7 +7453,7 @@ Parameters
 aName: TCollection_HAsciiString
 aSweptArea: StepGeom_CurveBoundedSurface
 aExtrudedDirection: StepGeom_Direction
-aDepth: float
+aDepth: double
 
 Return
 -------
@@ -7532,15 +7463,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CurveBoundedSurface> & aSweptArea, const opencascade::handle<StepGeom_Direction> & aExtrudedDirection, const Standard_Real aDepth);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CurveBoundedSurface> & aSweptArea, const opencascade::handle<StepGeom_Direction> & aExtrudedDirection, const double aDepth);
 
 		/****** StepShape_ExtrudedAreaSolid::SetDepth ******/
-		/****** md5 signature: 4ed376ce95444c7357cf149677ef5fde ******/
+		/****** md5 signature: 285382766a76a466304b3c8fcac77dba ******/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "
 Parameters
 ----------
-aDepth: float
+aDepth: double
 
 Return
 -------
@@ -7550,7 +7481,7 @@ Description
 -----------
 No available documentation.
 ") SetDepth;
-		void SetDepth(const Standard_Real aDepth);
+		void SetDepth(const double aDepth);
 
 		/****** StepShape_ExtrudedAreaSolid::SetExtrudedDirection ******/
 		/****** md5 signature: 1c5f83c5d5063dc5c85f92609a3bd0f2 ******/
@@ -7572,8 +7503,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_ExtrudedAreaSolid)
 
 %extend StepShape_ExtrudedAreaSolid {
 	%pythoncode {
@@ -7600,17 +7529,17 @@ Returns a ExtrudedFaceSolid.
 		 StepShape_ExtrudedFaceSolid();
 
 		/****** StepShape_ExtrudedFaceSolid::Depth ******/
-		/****** md5 signature: de7560cf701656c85d7ea3c1f074fd03 ******/
+		/****** md5 signature: f37e2236448dd6d5b61209c188407c46 ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Depth;
-		Standard_Real Depth();
+		double Depth();
 
 		/****** StepShape_ExtrudedFaceSolid::ExtrudedDirection ******/
 		/****** md5 signature: f8e5bba2daff6b6bf9f6fb392a52aeb3 ******/
@@ -7626,7 +7555,7 @@ No available documentation.
 		opencascade::handle<StepGeom_Direction> ExtrudedDirection();
 
 		/****** StepShape_ExtrudedFaceSolid::Init ******/
-		/****** md5 signature: ae8da19f90d802f46ef36e81cb03ff12 ******/
+		/****** md5 signature: 5002835a9df8a928145da3d375a9dd4d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7634,7 +7563,7 @@ Parameters
 aName: TCollection_HAsciiString
 aSweptArea: StepShape_FaceSurface
 aExtrudedDirection: StepGeom_Direction
-aDepth: float
+aDepth: double
 
 Return
 -------
@@ -7644,15 +7573,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_FaceSurface> & aSweptArea, const opencascade::handle<StepGeom_Direction> & aExtrudedDirection, const Standard_Real aDepth);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_FaceSurface> & aSweptArea, const opencascade::handle<StepGeom_Direction> & aExtrudedDirection, const double aDepth);
 
 		/****** StepShape_ExtrudedFaceSolid::SetDepth ******/
-		/****** md5 signature: 4ed376ce95444c7357cf149677ef5fde ******/
+		/****** md5 signature: 285382766a76a466304b3c8fcac77dba ******/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "
 Parameters
 ----------
-aDepth: float
+aDepth: double
 
 Return
 -------
@@ -7662,7 +7591,7 @@ Description
 -----------
 No available documentation.
 ") SetDepth;
-		void SetDepth(const Standard_Real aDepth);
+		void SetDepth(const double aDepth);
 
 		/****** StepShape_ExtrudedFaceSolid::SetExtrudedDirection ******/
 		/****** md5 signature: 1c5f83c5d5063dc5c85f92609a3bd0f2 ******/
@@ -7684,8 +7613,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_ExtrudedFaceSolid)
 
 %extend StepShape_ExtrudedFaceSolid {
 	%pythoncode {
@@ -7754,13 +7681,13 @@ No available documentation.
 		opencascade::handle<StepGeom_Surface> FaceGeometry();
 
 		/****** StepShape_FaceSurface::Init ******/
-		/****** md5 signature: 5f9eafc4a41135bbcf8324be55b5fb08 ******/
+		/****** md5 signature: 68432e9e36956f43bf5ed19360798fd6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aBounds: StepShape_HArray1OfFaceBound
+aBounds: NCollection_HArray1<
 aFaceGeometry: StepGeom_Surface
 aSameSense: bool
 
@@ -7772,10 +7699,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds, const opencascade::handle<StepGeom_Surface> & aFaceGeometry, const Standard_Boolean aSameSense);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds, const opencascade::handle<StepGeom_Surface> & aFaceGeometry, const bool aSameSense);
 
 		/****** StepShape_FaceSurface::SameSense ******/
-		/****** md5 signature: 738a5547658f3a15a3a7e5e372f16add ******/
+		/****** md5 signature: a45add58374f4310c3a05d42dc01c1bb ******/
 		%feature("compactdefaultargs") SameSense;
 		%feature("autodoc", "Return
 -------
@@ -7785,7 +7712,7 @@ Description
 -----------
 No available documentation.
 ") SameSense;
-		Standard_Boolean SameSense();
+		bool SameSense();
 
 		/****** StepShape_FaceSurface::SetFaceGeometry ******/
 		/****** md5 signature: 6be62d344ee70b0abc5ab62db7d6820d ******/
@@ -7806,7 +7733,7 @@ No available documentation.
 		void SetFaceGeometry(const opencascade::handle<StepGeom_Surface> & aFaceGeometry);
 
 		/****** StepShape_FaceSurface::SetSameSense ******/
-		/****** md5 signature: 2608ebad93831004ef1c8f76b311e415 ******/
+		/****** md5 signature: 1c96f0c7840764d5e81fa3c884e88bc9 ******/
 		%feature("compactdefaultargs") SetSameSense;
 		%feature("autodoc", "
 Parameters
@@ -7821,7 +7748,7 @@ Description
 -----------
 No available documentation.
 ") SetSameSense;
-		void SetSameSense(const Standard_Boolean aSameSense);
+		void SetSameSense(const bool aSameSense);
 
 };
 
@@ -7854,8 +7781,6 @@ Returns a FacetedBrep.
 
 };
 
-
-%make_alias(StepShape_FacetedBrep)
 
 %extend StepShape_FacetedBrep {
 	%pythoncode {
@@ -7929,14 +7854,14 @@ No available documentation.
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<StepShape_FacetedBrep> & aFacetedBrep, const opencascade::handle<StepShape_BrepWithVoids> & aBrepWithVoids);
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::Init ******/
-		/****** md5 signature: 96c1459943706941f0f9d97f88a3cbfb ******/
+		/****** md5 signature: 30f7286ba2ddcc5f37f9ede347742b5f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aOuter: StepShape_ClosedShell
-aVoids: StepShape_HArray1OfOrientedClosedShell
+aVoids: NCollection_HArray1<
 
 Return
 -------
@@ -7946,10 +7871,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::NbVoids ******/
-		/****** md5 signature: 43d36e9e25be55a1423ccdb24beca7ff ******/
+		/****** md5 signature: eab110eb7472076d485d3b995b0e5603 ******/
 		%feature("compactdefaultargs") NbVoids;
 		%feature("autodoc", "Return
 -------
@@ -7959,7 +7884,7 @@ Description
 -----------
 No available documentation.
 ") NbVoids;
-		Standard_Integer NbVoids();
+		int NbVoids();
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::SetBrepWithVoids ******/
 		/****** md5 signature: 000094cab3447dcc85652524599ab556 ******/
@@ -7998,12 +7923,12 @@ No available documentation.
 		void SetFacetedBrep(const opencascade::handle<StepShape_FacetedBrep> & aFacetedBrep);
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::SetVoids ******/
-		/****** md5 signature: 8a6633c74f222f4cf6e453fa9f474589 ******/
+		/****** md5 signature: 1b4e6acc7bef02c508f78863eea4b75c ******/
 		%feature("compactdefaultargs") SetVoids;
 		%feature("autodoc", "
 Parameters
 ----------
-aVoids: StepShape_HArray1OfOrientedClosedShell
+aVoids: NCollection_HArray1<
 
 Return
 -------
@@ -8013,23 +7938,23 @@ Description
 -----------
 No available documentation.
 ") SetVoids;
-		void SetVoids(const opencascade::handle<StepShape_HArray1OfOrientedClosedShell> & aVoids);
+		void SetVoids(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::Voids ******/
-		/****** md5 signature: 63b6808712308ed5b0c78350606ed428 ******/
+		/****** md5 signature: e0f8a11fcaf292a75413ebb79f3afa09 ******/
 		%feature("compactdefaultargs") Voids;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfOrientedClosedShell>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>>
 
 Description
 -----------
 No available documentation.
 ") Voids;
-		opencascade::handle<StepShape_HArray1OfOrientedClosedShell> Voids();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>>> Voids();
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::VoidsValue ******/
-		/****** md5 signature: 069e7e54cebcabad7cb584ac4b644c9f ******/
+		/****** md5 signature: 8976fee324dda37838455680be604244 ******/
 		%feature("compactdefaultargs") VoidsValue;
 		%feature("autodoc", "
 Parameters
@@ -8044,12 +7969,10 @@ Description
 -----------
 No available documentation.
 ") VoidsValue;
-		opencascade::handle<StepShape_OrientedClosedShell> VoidsValue(const Standard_Integer num);
+		opencascade::handle<StepShape_OrientedClosedShell> VoidsValue(const int num);
 
 };
 
-
-%make_alias(StepShape_FacetedBrepAndBrepWithVoids)
 
 %extend StepShape_FacetedBrepAndBrepWithVoids {
 	%pythoncode {
@@ -8118,7 +8041,7 @@ No available documentation.
 		opencascade::handle<StepShape_Edge> EdgeElement();
 
 		/****** StepShape_OrientedEdge::EdgeEnd ******/
-		/****** md5 signature: c71f1ea527a26a3e63b9385e3ab5fbc9 ******/
+		/****** md5 signature: a018108dc7c2d6ea861652ac87bd56e3 ******/
 		%feature("compactdefaultargs") EdgeEnd;
 		%feature("autodoc", "Return
 -------
@@ -8128,10 +8051,10 @@ Description
 -----------
 No available documentation.
 ") EdgeEnd;
-		virtual opencascade::handle<StepShape_Vertex> EdgeEnd();
+		opencascade::handle<StepShape_Vertex> EdgeEnd();
 
 		/****** StepShape_OrientedEdge::EdgeStart ******/
-		/****** md5 signature: bdcd99e04dd03be5c8a81e37f1bdba23 ******/
+		/****** md5 signature: 88a27ff8531da469bf50fa9eb9592086 ******/
 		%feature("compactdefaultargs") EdgeStart;
 		%feature("autodoc", "Return
 -------
@@ -8141,10 +8064,10 @@ Description
 -----------
 No available documentation.
 ") EdgeStart;
-		virtual opencascade::handle<StepShape_Vertex> EdgeStart();
+		opencascade::handle<StepShape_Vertex> EdgeStart();
 
 		/****** StepShape_OrientedEdge::Init ******/
-		/****** md5 signature: d724ac46cf806b472ecdb8f03fdf4bd3 ******/
+		/****** md5 signature: ae7b999adbbb691055c224b4e477ef02 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8161,10 +8084,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Edge> & aEdgeElement, const Standard_Boolean aOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Edge> & aEdgeElement, const bool aOrientation);
 
 		/****** StepShape_OrientedEdge::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -8174,7 +8097,7 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepShape_OrientedEdge::SetEdgeElement ******/
 		/****** md5 signature: fdcfcef167d68c5092c15fafa27c2f13 ******/
@@ -8195,7 +8118,7 @@ No available documentation.
 		void SetEdgeElement(const opencascade::handle<StepShape_Edge> & aEdgeElement);
 
 		/****** StepShape_OrientedEdge::SetEdgeEnd ******/
-		/****** md5 signature: 6cfa4e91dc48860a48ac90f310cad010 ******/
+		/****** md5 signature: 75435bc33926d6741ecc5b1bbad64c30 ******/
 		%feature("compactdefaultargs") SetEdgeEnd;
 		%feature("autodoc", "
 Parameters
@@ -8210,10 +8133,10 @@ Description
 -----------
 No available documentation.
 ") SetEdgeEnd;
-		virtual void SetEdgeEnd(const opencascade::handle<StepShape_Vertex> & aEdgeEnd);
+		void SetEdgeEnd(const opencascade::handle<StepShape_Vertex> & aEdgeEnd);
 
 		/****** StepShape_OrientedEdge::SetEdgeStart ******/
-		/****** md5 signature: a1b8ce1a2ac98253db0e0880eb353332 ******/
+		/****** md5 signature: f8b7bca84915724641015ee60679367f ******/
 		%feature("compactdefaultargs") SetEdgeStart;
 		%feature("autodoc", "
 Parameters
@@ -8228,10 +8151,10 @@ Description
 -----------
 No available documentation.
 ") SetEdgeStart;
-		virtual void SetEdgeStart(const opencascade::handle<StepShape_Vertex> & aEdgeStart);
+		void SetEdgeStart(const opencascade::handle<StepShape_Vertex> & aEdgeStart);
 
 		/****** StepShape_OrientedEdge::SetOrientation ******/
-		/****** md5 signature: 6f9691e070f8a78a962e8069b1bcc7d0 ******/
+		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -8246,7 +8169,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean aOrientation);
+		void SetOrientation(const bool aOrientation);
 
 };
 
@@ -8278,20 +8201,20 @@ Returns a OrientedFace.
 		 StepShape_OrientedFace();
 
 		/****** StepShape_OrientedFace::Bounds ******/
-		/****** md5 signature: ebc2031d8aa6db0f42e3454166b879b1 ******/
+		/****** md5 signature: 906f85e051faa90005e4e9d03fab1b66 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfFaceBound>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>>
 
 Description
 -----------
 No available documentation.
 ") Bounds;
-		virtual opencascade::handle<StepShape_HArray1OfFaceBound> Bounds();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>>> Bounds();
 
 		/****** StepShape_OrientedFace::BoundsValue ******/
-		/****** md5 signature: 847f17989726c809d4bfa2b7a23932f5 ******/
+		/****** md5 signature: f428c892ade144dfbe3bc92bf5e0286b ******/
 		%feature("compactdefaultargs") BoundsValue;
 		%feature("autodoc", "
 Parameters
@@ -8306,7 +8229,7 @@ Description
 -----------
 No available documentation.
 ") BoundsValue;
-		virtual opencascade::handle<StepShape_FaceBound> BoundsValue(const Standard_Integer num);
+		opencascade::handle<StepShape_FaceBound> BoundsValue(const int num);
 
 		/****** StepShape_OrientedFace::FaceElement ******/
 		/****** md5 signature: 451dd8f17aa20797dd37ac38b347b034 ******/
@@ -8322,7 +8245,7 @@ No available documentation.
 		opencascade::handle<StepShape_Face> FaceElement();
 
 		/****** StepShape_OrientedFace::Init ******/
-		/****** md5 signature: ee419631284909206102fc950f9fbd1f ******/
+		/****** md5 signature: 6e77adfc21383b15566c6bbe8f510e46 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8339,10 +8262,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Face> & aFaceElement, const Standard_Boolean aOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_Face> & aFaceElement, const bool aOrientation);
 
 		/****** StepShape_OrientedFace::NbBounds ******/
-		/****** md5 signature: 7eced1c3c834c876eb4528e637979e50 ******/
+		/****** md5 signature: ea9e2118d9ea47eb0107013267278e80 ******/
 		%feature("compactdefaultargs") NbBounds;
 		%feature("autodoc", "Return
 -------
@@ -8352,10 +8275,10 @@ Description
 -----------
 No available documentation.
 ") NbBounds;
-		virtual Standard_Integer NbBounds();
+		int NbBounds();
 
 		/****** StepShape_OrientedFace::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -8365,15 +8288,15 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepShape_OrientedFace::SetBounds ******/
-		/****** md5 signature: 5ac1b867a7655b708b375b64f020242d ******/
+		/****** md5 signature: b0060fd15faea94e1cace1b19c74d973 ******/
 		%feature("compactdefaultargs") SetBounds;
 		%feature("autodoc", "
 Parameters
 ----------
-aBounds: StepShape_HArray1OfFaceBound
+aBounds: NCollection_HArray1<
 
 Return
 -------
@@ -8383,7 +8306,7 @@ Description
 -----------
 No available documentation.
 ") SetBounds;
-		virtual void SetBounds(const opencascade::handle<StepShape_HArray1OfFaceBound> & aBounds);
+		void SetBounds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds);
 
 		/****** StepShape_OrientedFace::SetFaceElement ******/
 		/****** md5 signature: 4f96abb4f0ba73ab6f9930fbcc07e5f7 ******/
@@ -8404,7 +8327,7 @@ No available documentation.
 		void SetFaceElement(const opencascade::handle<StepShape_Face> & aFaceElement);
 
 		/****** StepShape_OrientedFace::SetOrientation ******/
-		/****** md5 signature: 6f9691e070f8a78a962e8069b1bcc7d0 ******/
+		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -8419,7 +8342,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean aOrientation);
+		void SetOrientation(const bool aOrientation);
 
 };
 
@@ -8451,20 +8374,20 @@ Returns a OrientedPath.
 		 StepShape_OrientedPath();
 
 		/****** StepShape_OrientedPath::EdgeList ******/
-		/****** md5 signature: 09301ae6ed85b2d655b74a0c10794c27 ******/
+		/****** md5 signature: ba4330edfcdee3de8f3f8ceeb58ad919 ******/
 		%feature("compactdefaultargs") EdgeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfOrientedEdge>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>>
 
 Description
 -----------
 No available documentation.
 ") EdgeList;
-		virtual opencascade::handle<StepShape_HArray1OfOrientedEdge> EdgeList();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>>> EdgeList();
 
 		/****** StepShape_OrientedPath::EdgeListValue ******/
-		/****** md5 signature: bf48afbd82a21d0a1d5227ce0a124a70 ******/
+		/****** md5 signature: 0ad1e411ec4cb57aeea13e84b37d307b ******/
 		%feature("compactdefaultargs") EdgeListValue;
 		%feature("autodoc", "
 Parameters
@@ -8479,10 +8402,10 @@ Description
 -----------
 No available documentation.
 ") EdgeListValue;
-		virtual opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const Standard_Integer num);
+		opencascade::handle<StepShape_OrientedEdge> EdgeListValue(const int num);
 
 		/****** StepShape_OrientedPath::Init ******/
-		/****** md5 signature: 5b52fb65e9d760c46698e212cca14ac2 ******/
+		/****** md5 signature: a5d46788b064565f0f0ccd15a95428cf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8499,10 +8422,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_EdgeLoop> & aPathElement, const Standard_Boolean aOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_EdgeLoop> & aPathElement, const bool aOrientation);
 
 		/****** StepShape_OrientedPath::NbEdgeList ******/
-		/****** md5 signature: ca23197ee4ec843cc4d3a7ff580473d2 ******/
+		/****** md5 signature: 824542b7e199982060cfbd5c67bfae72 ******/
 		%feature("compactdefaultargs") NbEdgeList;
 		%feature("autodoc", "Return
 -------
@@ -8512,10 +8435,10 @@ Description
 -----------
 No available documentation.
 ") NbEdgeList;
-		virtual Standard_Integer NbEdgeList();
+		int NbEdgeList();
 
 		/****** StepShape_OrientedPath::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -8525,7 +8448,7 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepShape_OrientedPath::PathElement ******/
 		/****** md5 signature: 59bec9a372bde8454753ed32eee5c884 ******/
@@ -8541,12 +8464,12 @@ No available documentation.
 		opencascade::handle<StepShape_EdgeLoop> PathElement();
 
 		/****** StepShape_OrientedPath::SetEdgeList ******/
-		/****** md5 signature: 0c1a20a8a88ae402ca4248bc4c8b4202 ******/
+		/****** md5 signature: 07696d6dcc53a65c2b51c005407788c5 ******/
 		%feature("compactdefaultargs") SetEdgeList;
 		%feature("autodoc", "
 Parameters
 ----------
-aEdgeList: StepShape_HArray1OfOrientedEdge
+aEdgeList: NCollection_HArray1<
 
 Return
 -------
@@ -8556,10 +8479,10 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		virtual void SetEdgeList(const opencascade::handle<StepShape_HArray1OfOrientedEdge> & aEdgeList);
+		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
 
 		/****** StepShape_OrientedPath::SetOrientation ******/
-		/****** md5 signature: 6f9691e070f8a78a962e8069b1bcc7d0 ******/
+		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -8574,7 +8497,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean aOrientation);
+		void SetOrientation(const bool aOrientation);
 
 		/****** StepShape_OrientedPath::SetPathElement ******/
 		/****** md5 signature: f455cbd9190424bd17cb213d187c852c ******/
@@ -8624,13 +8547,13 @@ Returns a PolyLoop.
 		 StepShape_PolyLoop();
 
 		/****** StepShape_PolyLoop::Init ******/
-		/****** md5 signature: d12fecb2c1b75899baa1aca937dfc133 ******/
+		/****** md5 signature: 503693ce710ef49d58b9569a357c4f40 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aPolygon: StepGeom_HArray1OfCartesianPoint
+aPolygon: NCollection_HArray1<
 
 Return
 -------
@@ -8640,10 +8563,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPolygon);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aPolygon);
 
 		/****** StepShape_PolyLoop::NbPolygon ******/
-		/****** md5 signature: ef7a97dc4b942bf442319b75a65baf04 ******/
+		/****** md5 signature: 6ef42a17fc215d7232c4192c6071571f ******/
 		%feature("compactdefaultargs") NbPolygon;
 		%feature("autodoc", "Return
 -------
@@ -8653,23 +8576,23 @@ Description
 -----------
 No available documentation.
 ") NbPolygon;
-		Standard_Integer NbPolygon();
+		int NbPolygon();
 
 		/****** StepShape_PolyLoop::Polygon ******/
-		/****** md5 signature: 12aa5f1e67f72665edac7a0d798bb40d ******/
+		/****** md5 signature: e194c76fd11c183aabf8f45ca4cc8077 ******/
 		%feature("compactdefaultargs") Polygon;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepGeom_HArray1OfCartesianPoint>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>>
 
 Description
 -----------
 No available documentation.
 ") Polygon;
-		opencascade::handle<StepGeom_HArray1OfCartesianPoint> Polygon();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>>> Polygon();
 
 		/****** StepShape_PolyLoop::PolygonValue ******/
-		/****** md5 signature: 5b621a57e5f7ac2735286e2bc5d31a7b ******/
+		/****** md5 signature: 1cbe8dd4ff5bc018ce32b803066e9872 ******/
 		%feature("compactdefaultargs") PolygonValue;
 		%feature("autodoc", "
 Parameters
@@ -8684,15 +8607,15 @@ Description
 -----------
 No available documentation.
 ") PolygonValue;
-		opencascade::handle<StepGeom_CartesianPoint> PolygonValue(const Standard_Integer num);
+		opencascade::handle<StepGeom_CartesianPoint> PolygonValue(const int num);
 
 		/****** StepShape_PolyLoop::SetPolygon ******/
-		/****** md5 signature: 6d6394f686952ae51be43dac564ae41f ******/
+		/****** md5 signature: 3d827e5d377b0f0204f421f6f1ba95af ******/
 		%feature("compactdefaultargs") SetPolygon;
 		%feature("autodoc", "
 Parameters
 ----------
-aPolygon: StepGeom_HArray1OfCartesianPoint
+aPolygon: NCollection_HArray1<
 
 Return
 -------
@@ -8702,7 +8625,7 @@ Description
 -----------
 No available documentation.
 ") SetPolygon;
-		void SetPolygon(const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPolygon);
+		void SetPolygon(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aPolygon);
 
 };
 
@@ -8734,17 +8657,17 @@ Returns a RevolvedAreaSolid.
 		 StepShape_RevolvedAreaSolid();
 
 		/****** StepShape_RevolvedAreaSolid::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** StepShape_RevolvedAreaSolid::Axis ******/
 		/****** md5 signature: c5d82199bce2fc1972c4d0bf0946e3b2 ******/
@@ -8760,7 +8683,7 @@ No available documentation.
 		opencascade::handle<StepGeom_Axis1Placement> Axis();
 
 		/****** StepShape_RevolvedAreaSolid::Init ******/
-		/****** md5 signature: dc3cb02984d59a4323acf5e0e873ac1a ******/
+		/****** md5 signature: ed666809f76dd70b7003da8289783663 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8768,7 +8691,7 @@ Parameters
 aName: TCollection_HAsciiString
 aSweptArea: StepGeom_CurveBoundedSurface
 aAxis: StepGeom_Axis1Placement
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -8778,15 +8701,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CurveBoundedSurface> & aSweptArea, const opencascade::handle<StepGeom_Axis1Placement> & aAxis, const Standard_Real aAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CurveBoundedSurface> & aSweptArea, const opencascade::handle<StepGeom_Axis1Placement> & aAxis, const double aAngle);
 
 		/****** StepShape_RevolvedAreaSolid::SetAngle ******/
-		/****** md5 signature: bae7a4d675d363cefe680523e72e869e ******/
+		/****** md5 signature: a18cf69e3e5110e0cc565bf671e960ae ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -8796,7 +8719,7 @@ Description
 -----------
 No available documentation.
 ") SetAngle;
-		void SetAngle(const Standard_Real aAngle);
+		void SetAngle(const double aAngle);
 
 		/****** StepShape_RevolvedAreaSolid::SetAxis ******/
 		/****** md5 signature: 65b42bb2ca1d1ac71c758bb93fd8ddca ******/
@@ -8818,8 +8741,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_RevolvedAreaSolid)
 
 %extend StepShape_RevolvedAreaSolid {
 	%pythoncode {
@@ -8846,17 +8767,17 @@ Returns a RevolvedFaceSolid.
 		 StepShape_RevolvedFaceSolid();
 
 		/****** StepShape_RevolvedFaceSolid::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** StepShape_RevolvedFaceSolid::Axis ******/
 		/****** md5 signature: c5d82199bce2fc1972c4d0bf0946e3b2 ******/
@@ -8891,7 +8812,7 @@ No available documentation.
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_FaceSurface> & aSweptArea);
 
 		/****** StepShape_RevolvedFaceSolid::Init ******/
-		/****** md5 signature: 018bc86830d6474432d29853fe048946 ******/
+		/****** md5 signature: 5700b86916a6bbe888c90716536d50ed ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8899,7 +8820,7 @@ Parameters
 aName: TCollection_HAsciiString
 aSweptArea: StepShape_FaceSurface
 aAxis: StepGeom_Axis1Placement
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -8909,15 +8830,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_FaceSurface> & aSweptArea, const opencascade::handle<StepGeom_Axis1Placement> & aAxis, const Standard_Real aAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_FaceSurface> & aSweptArea, const opencascade::handle<StepGeom_Axis1Placement> & aAxis, const double aAngle);
 
 		/****** StepShape_RevolvedFaceSolid::SetAngle ******/
-		/****** md5 signature: bae7a4d675d363cefe680523e72e869e ******/
+		/****** md5 signature: a18cf69e3e5110e0cc565bf671e960ae ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -8927,7 +8848,7 @@ Description
 -----------
 No available documentation.
 ") SetAngle;
-		void SetAngle(const Standard_Real aAngle);
+		void SetAngle(const double aAngle);
 
 		/****** StepShape_RevolvedFaceSolid::SetAxis ******/
 		/****** md5 signature: 65b42bb2ca1d1ac71c758bb93fd8ddca ******/
@@ -8949,8 +8870,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepShape_RevolvedFaceSolid)
 
 %extend StepShape_RevolvedFaceSolid {
 	%pythoncode {
@@ -9058,13 +8977,13 @@ Empty constructor.
 		 StepShape_Subface();
 
 		/****** StepShape_Subface::Init ******/
-		/****** md5 signature: 9a0bfb744ac90fe5456f96969f483ba2 ******/
+		/****** md5 signature: ffbab8b810d01249eb6e942e1d2376ce ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aFace_Bounds: StepShape_HArray1OfFaceBound
+aFace_Bounds: NCollection_HArray1<
 aParentFace: StepShape_Face
 
 Return
@@ -9075,7 +8994,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_HArray1OfFaceBound> & aFace_Bounds, const opencascade::handle<StepShape_Face> & aParentFace);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aFace_Bounds, const opencascade::handle<StepShape_Face> & aParentFace);
 
 		/****** StepShape_Subface::ParentFace ******/
 		/****** md5 signature: 51c5277caa4f09b077301c4e0e7e180b ******/
@@ -9325,20 +9244,20 @@ Returns a OrientedClosedShell.
 		 StepShape_OrientedClosedShell();
 
 		/****** StepShape_OrientedClosedShell::CfsFaces ******/
-		/****** md5 signature: 2113b17f9f962175b52409fe74619d8b ******/
+		/****** md5 signature: b4aa05c80d5c841ac7e46d6ae94a90fd ******/
 		%feature("compactdefaultargs") CfsFaces;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfFace>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>
 
 Description
 -----------
 No available documentation.
 ") CfsFaces;
-		virtual opencascade::handle<StepShape_HArray1OfFace> CfsFaces();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>> CfsFaces();
 
 		/****** StepShape_OrientedClosedShell::CfsFacesValue ******/
-		/****** md5 signature: e0e66a7aed6653f3091d9024f7051ac0 ******/
+		/****** md5 signature: a80afa9b080624a08679e8661734b1b9 ******/
 		%feature("compactdefaultargs") CfsFacesValue;
 		%feature("autodoc", "
 Parameters
@@ -9353,7 +9272,7 @@ Description
 -----------
 No available documentation.
 ") CfsFacesValue;
-		virtual opencascade::handle<StepShape_Face> CfsFacesValue(const Standard_Integer num);
+		opencascade::handle<StepShape_Face> CfsFacesValue(const int num);
 
 		/****** StepShape_OrientedClosedShell::ClosedShellElement ******/
 		/****** md5 signature: 5c1f8599769be2efee163dcf2de578aa ******/
@@ -9369,7 +9288,7 @@ No available documentation.
 		opencascade::handle<StepShape_ClosedShell> ClosedShellElement();
 
 		/****** StepShape_OrientedClosedShell::Init ******/
-		/****** md5 signature: cbbae2107ed556a37034db279ab9fbda ******/
+		/****** md5 signature: 1f0dfa5f745b34a92a377a3d5ab352be ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9386,10 +9305,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aClosedShellElement, const Standard_Boolean aOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aClosedShellElement, const bool aOrientation);
 
 		/****** StepShape_OrientedClosedShell::NbCfsFaces ******/
-		/****** md5 signature: faf3b1196dda847054783ec0cb3f3fdf ******/
+		/****** md5 signature: 2d625abda07d2d414259249a278016d6 ******/
 		%feature("compactdefaultargs") NbCfsFaces;
 		%feature("autodoc", "Return
 -------
@@ -9399,10 +9318,10 @@ Description
 -----------
 No available documentation.
 ") NbCfsFaces;
-		virtual Standard_Integer NbCfsFaces();
+		int NbCfsFaces();
 
 		/****** StepShape_OrientedClosedShell::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -9412,15 +9331,15 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepShape_OrientedClosedShell::SetCfsFaces ******/
-		/****** md5 signature: 80fd7ec3be516188a38cc7f5dccaed97 ******/
+		/****** md5 signature: c0b60223f4c4454e956b7d0884319c74 ******/
 		%feature("compactdefaultargs") SetCfsFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-aCfsFaces: StepShape_HArray1OfFace
+aCfsFaces: NCollection_HArray1<
 
 Return
 -------
@@ -9430,7 +9349,7 @@ Description
 -----------
 No available documentation.
 ") SetCfsFaces;
-		virtual void SetCfsFaces(const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
+		void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
 
 		/****** StepShape_OrientedClosedShell::SetClosedShellElement ******/
 		/****** md5 signature: fc53cd1031dc353a6c94705f98c71b4b ******/
@@ -9451,7 +9370,7 @@ No available documentation.
 		void SetClosedShellElement(const opencascade::handle<StepShape_ClosedShell> & aClosedShellElement);
 
 		/****** StepShape_OrientedClosedShell::SetOrientation ******/
-		/****** md5 signature: 6f9691e070f8a78a962e8069b1bcc7d0 ******/
+		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -9466,7 +9385,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean aOrientation);
+		void SetOrientation(const bool aOrientation);
 
 };
 
@@ -9498,20 +9417,20 @@ Returns a OrientedOpenShell.
 		 StepShape_OrientedOpenShell();
 
 		/****** StepShape_OrientedOpenShell::CfsFaces ******/
-		/****** md5 signature: 2113b17f9f962175b52409fe74619d8b ******/
+		/****** md5 signature: b4aa05c80d5c841ac7e46d6ae94a90fd ******/
 		%feature("compactdefaultargs") CfsFaces;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepShape_HArray1OfFace>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>>
 
 Description
 -----------
 No available documentation.
 ") CfsFaces;
-		virtual opencascade::handle<StepShape_HArray1OfFace> CfsFaces();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>>> CfsFaces();
 
 		/****** StepShape_OrientedOpenShell::CfsFacesValue ******/
-		/****** md5 signature: e0e66a7aed6653f3091d9024f7051ac0 ******/
+		/****** md5 signature: a80afa9b080624a08679e8661734b1b9 ******/
 		%feature("compactdefaultargs") CfsFacesValue;
 		%feature("autodoc", "
 Parameters
@@ -9526,10 +9445,10 @@ Description
 -----------
 No available documentation.
 ") CfsFacesValue;
-		virtual opencascade::handle<StepShape_Face> CfsFacesValue(const Standard_Integer num);
+		opencascade::handle<StepShape_Face> CfsFacesValue(const int num);
 
 		/****** StepShape_OrientedOpenShell::Init ******/
-		/****** md5 signature: c7f4aa3b7d0f37915793f4df05e53850 ******/
+		/****** md5 signature: 115894b9652f37aebba9eb8ae54831d5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9546,10 +9465,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_OpenShell> & aOpenShellElement, const Standard_Boolean aOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_OpenShell> & aOpenShellElement, const bool aOrientation);
 
 		/****** StepShape_OrientedOpenShell::NbCfsFaces ******/
-		/****** md5 signature: faf3b1196dda847054783ec0cb3f3fdf ******/
+		/****** md5 signature: 2d625abda07d2d414259249a278016d6 ******/
 		%feature("compactdefaultargs") NbCfsFaces;
 		%feature("autodoc", "Return
 -------
@@ -9559,7 +9478,7 @@ Description
 -----------
 No available documentation.
 ") NbCfsFaces;
-		virtual Standard_Integer NbCfsFaces();
+		int NbCfsFaces();
 
 		/****** StepShape_OrientedOpenShell::OpenShellElement ******/
 		/****** md5 signature: 71bc62c85f2f9b31ef51fe749f03c760 ******/
@@ -9575,7 +9494,7 @@ No available documentation.
 		opencascade::handle<StepShape_OpenShell> OpenShellElement();
 
 		/****** StepShape_OrientedOpenShell::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -9585,15 +9504,15 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepShape_OrientedOpenShell::SetCfsFaces ******/
-		/****** md5 signature: 80fd7ec3be516188a38cc7f5dccaed97 ******/
+		/****** md5 signature: c0b60223f4c4454e956b7d0884319c74 ******/
 		%feature("compactdefaultargs") SetCfsFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-aCfsFaces: StepShape_HArray1OfFace
+aCfsFaces: NCollection_HArray1<
 
 Return
 -------
@@ -9603,7 +9522,7 @@ Description
 -----------
 No available documentation.
 ") SetCfsFaces;
-		virtual void SetCfsFaces(const opencascade::handle<StepShape_HArray1OfFace> & aCfsFaces);
+		void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
 
 		/****** StepShape_OrientedOpenShell::SetOpenShellElement ******/
 		/****** md5 signature: b7d967d72833f8e5989bb20c977d4d6a ******/
@@ -9624,7 +9543,7 @@ No available documentation.
 		void SetOpenShellElement(const opencascade::handle<StepShape_OpenShell> & aOpenShellElement);
 
 		/****** StepShape_OrientedOpenShell::SetOrientation ******/
-		/****** md5 signature: 6f9691e070f8a78a962e8069b1bcc7d0 ******/
+		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -9639,7 +9558,7 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean aOrientation);
+		void SetOrientation(const bool aOrientation);
 
 };
 
@@ -9671,7 +9590,7 @@ Empty constructor.
 		 StepShape_SeamEdge();
 
 		/****** StepShape_SeamEdge::Init ******/
-		/****** md5 signature: 44730356750f3b276ac9107496e23c68 ******/
+		/****** md5 signature: 5c70933b921e6467cda805f84f29c933 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9689,7 +9608,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_Edge> & aOrientedEdge_EdgeElement, const Standard_Boolean aOrientedEdge_Orientation, const opencascade::handle<StepGeom_Pcurve> & aPcurveReference);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepShape_Edge> & aOrientedEdge_EdgeElement, const bool aOrientedEdge_Orientation, const opencascade::handle<StepGeom_Pcurve> & aPcurveReference);
 
 		/****** StepShape_SeamEdge::PcurveReference ******/
 		/****** md5 signature: 6c85179dc2cfa34e53057f25ff967ab7 ******/
@@ -9735,123 +9654,123 @@ Set field PcurveReference.
 
 /* harray1 classes */
 
-class StepShape_HArray1OfConnectedEdgeSet : public StepShape_Array1OfConnectedEdgeSet, public Standard_Transient {
+class StepShape_HArray1OfConnectedEdgeSet : public NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>, public Standard_Transient {
   public:
     StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfConnectedEdgeSet::value_type& theValue);
-    StepShape_HArray1OfConnectedEdgeSet(const StepShape_Array1OfConnectedEdgeSet& theOther);
-    const StepShape_Array1OfConnectedEdgeSet& Array1();
-    StepShape_Array1OfConnectedEdgeSet& ChangeArray1();
+    StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>::value_type& theValue);
+    StepShape_HArray1OfConnectedEdgeSet(const NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfConnectedEdgeSet)
 
 
-class StepShape_HArray1OfConnectedFaceSet : public StepShape_Array1OfConnectedFaceSet, public Standard_Transient {
+class StepShape_HArray1OfConnectedFaceSet : public NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>, public Standard_Transient {
   public:
     StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfConnectedFaceSet::value_type& theValue);
-    StepShape_HArray1OfConnectedFaceSet(const StepShape_Array1OfConnectedFaceSet& theOther);
-    const StepShape_Array1OfConnectedFaceSet& Array1();
-    StepShape_Array1OfConnectedFaceSet& ChangeArray1();
+    StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>::value_type& theValue);
+    StepShape_HArray1OfConnectedFaceSet(const NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfConnectedFaceSet)
 
 
-class StepShape_HArray1OfEdge : public StepShape_Array1OfEdge, public Standard_Transient {
+class StepShape_HArray1OfEdge : public NCollection_Array1<opencascade::handle<StepShape_Edge>>, public Standard_Transient {
   public:
     StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfEdge::value_type& theValue);
-    StepShape_HArray1OfEdge(const StepShape_Array1OfEdge& theOther);
-    const StepShape_Array1OfEdge& Array1();
-    StepShape_Array1OfEdge& ChangeArray1();
+    StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_Edge>>::value_type& theValue);
+    StepShape_HArray1OfEdge(const NCollection_Array1<opencascade::handle<StepShape_Edge>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_Edge>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_Edge>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfEdge)
 
 
-class StepShape_HArray1OfFace : public StepShape_Array1OfFace, public Standard_Transient {
+class StepShape_HArray1OfFace : public NCollection_Array1<opencascade::handle<StepShape_Face>>, public Standard_Transient {
   public:
     StepShape_HArray1OfFace(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfFace(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfFace::value_type& theValue);
-    StepShape_HArray1OfFace(const StepShape_Array1OfFace& theOther);
-    const StepShape_Array1OfFace& Array1();
-    StepShape_Array1OfFace& ChangeArray1();
+    StepShape_HArray1OfFace(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_Face>>::value_type& theValue);
+    StepShape_HArray1OfFace(const NCollection_Array1<opencascade::handle<StepShape_Face>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_Face>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_Face>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfFace)
 
 
-class StepShape_HArray1OfFaceBound : public StepShape_Array1OfFaceBound, public Standard_Transient {
+class StepShape_HArray1OfFaceBound : public NCollection_Array1<opencascade::handle<StepShape_FaceBound>>, public Standard_Transient {
   public:
     StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfFaceBound::value_type& theValue);
-    StepShape_HArray1OfFaceBound(const StepShape_Array1OfFaceBound& theOther);
-    const StepShape_Array1OfFaceBound& Array1();
-    StepShape_Array1OfFaceBound& ChangeArray1();
+    StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_FaceBound>>::value_type& theValue);
+    StepShape_HArray1OfFaceBound(const NCollection_Array1<opencascade::handle<StepShape_FaceBound>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_FaceBound>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_FaceBound>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfFaceBound)
 
 
-class StepShape_HArray1OfGeometricSetSelect : public StepShape_Array1OfGeometricSetSelect, public Standard_Transient {
+class StepShape_HArray1OfGeometricSetSelect : public NCollection_Array1<StepShape_GeometricSetSelect>, public Standard_Transient {
   public:
     StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfGeometricSetSelect::value_type& theValue);
-    StepShape_HArray1OfGeometricSetSelect(const StepShape_Array1OfGeometricSetSelect& theOther);
-    const StepShape_Array1OfGeometricSetSelect& Array1();
-    StepShape_Array1OfGeometricSetSelect& ChangeArray1();
+    StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_GeometricSetSelect>::value_type& theValue);
+    StepShape_HArray1OfGeometricSetSelect(const NCollection_Array1<StepShape_GeometricSetSelect>& theOther);
+    const NCollection_Array1<StepShape_GeometricSetSelect>& Array1();
+    NCollection_Array1<StepShape_GeometricSetSelect>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfGeometricSetSelect)
 
 
-class StepShape_HArray1OfOrientedClosedShell : public StepShape_Array1OfOrientedClosedShell, public Standard_Transient {
+class StepShape_HArray1OfOrientedClosedShell : public NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>, public Standard_Transient {
   public:
     StepShape_HArray1OfOrientedClosedShell(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfOrientedClosedShell(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfOrientedClosedShell::value_type& theValue);
-    StepShape_HArray1OfOrientedClosedShell(const StepShape_Array1OfOrientedClosedShell& theOther);
-    const StepShape_Array1OfOrientedClosedShell& Array1();
-    StepShape_Array1OfOrientedClosedShell& ChangeArray1();
+    StepShape_HArray1OfOrientedClosedShell(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>::value_type& theValue);
+    StepShape_HArray1OfOrientedClosedShell(const NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfOrientedClosedShell)
 
 
-class StepShape_HArray1OfOrientedEdge : public StepShape_Array1OfOrientedEdge, public Standard_Transient {
+class StepShape_HArray1OfOrientedEdge : public NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>, public Standard_Transient {
   public:
     StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfOrientedEdge::value_type& theValue);
-    StepShape_HArray1OfOrientedEdge(const StepShape_Array1OfOrientedEdge& theOther);
-    const StepShape_Array1OfOrientedEdge& Array1();
-    StepShape_Array1OfOrientedEdge& ChangeArray1();
+    StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>::value_type& theValue);
+    StepShape_HArray1OfOrientedEdge(const NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>& Array1();
+    NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfOrientedEdge)
 
 
-class StepShape_HArray1OfShapeDimensionRepresentationItem : public StepShape_Array1OfShapeDimensionRepresentationItem, public Standard_Transient {
+class StepShape_HArray1OfShapeDimensionRepresentationItem : public NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>, public Standard_Transient {
   public:
     StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShapeDimensionRepresentationItem::value_type& theValue);
-    StepShape_HArray1OfShapeDimensionRepresentationItem(const StepShape_Array1OfShapeDimensionRepresentationItem& theOther);
-    const StepShape_Array1OfShapeDimensionRepresentationItem& Array1();
-    StepShape_Array1OfShapeDimensionRepresentationItem& ChangeArray1();
+    StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>::value_type& theValue);
+    StepShape_HArray1OfShapeDimensionRepresentationItem(const NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>& theOther);
+    const NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>& Array1();
+    NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfShapeDimensionRepresentationItem)
 
 
-class StepShape_HArray1OfShell : public StepShape_Array1OfShell, public Standard_Transient {
+class StepShape_HArray1OfShell : public NCollection_Array1<StepShape_Shell>, public Standard_Transient {
   public:
     StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfShell::value_type& theValue);
-    StepShape_HArray1OfShell(const StepShape_Array1OfShell& theOther);
-    const StepShape_Array1OfShell& Array1();
-    StepShape_Array1OfShell& ChangeArray1();
+    StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_Shell>::value_type& theValue);
+    StepShape_HArray1OfShell(const NCollection_Array1<StepShape_Shell>& theOther);
+    const NCollection_Array1<StepShape_Shell>& Array1();
+    NCollection_Array1<StepShape_Shell>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfShell)
 
 
-class StepShape_HArray1OfValueQualifier : public StepShape_Array1OfValueQualifier, public Standard_Transient {
+class StepShape_HArray1OfValueQualifier : public NCollection_Array1<StepShape_ValueQualifier>, public Standard_Transient {
   public:
     StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepShape_Array1OfValueQualifier::value_type& theValue);
-    StepShape_HArray1OfValueQualifier(const StepShape_Array1OfValueQualifier& theOther);
-    const StepShape_Array1OfValueQualifier& Array1();
-    StepShape_Array1OfValueQualifier& ChangeArray1();
+    StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_ValueQualifier>::value_type& theValue);
+    StepShape_HArray1OfValueQualifier(const NCollection_Array1<StepShape_ValueQualifier>& theOther);
+    const NCollection_Array1<StepShape_ValueQualifier>& Array1();
+    NCollection_Array1<StepShape_ValueQualifier>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfValueQualifier)
 

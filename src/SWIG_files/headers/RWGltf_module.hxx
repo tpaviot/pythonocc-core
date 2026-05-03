@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<RWGltf_CafReader.hxx>
 #include<RWGltf_CafWriter.hxx>
-#include<RWGltf_ConfigurationNode.hxx>
 #include<RWGltf_DracoParameters.hxx>
 #include<RWGltf_GltfAccessor.hxx>
 #include<RWGltf_GltfAccessorCompType.hxx>
@@ -41,7 +40,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWGltf_GltfSceneNodeMap.hxx>
 #include<RWGltf_MaterialCommon.hxx>
 #include<RWGltf_MaterialMetallicRoughness.hxx>
-#include<RWGltf_Provider.hxx>
 #include<RWGltf_TriangulationReader.hxx>
 #include<RWGltf_WriterTrsfFormat.hxx>
 

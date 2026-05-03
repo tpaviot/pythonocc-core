@@ -76,11 +76,11 @@ public:
   Standard_EXPORT void SetBuffersNoSwap(Standard_Boolean theNoSwap);
   Standard_EXPORT void SetSRGBDisabled(Standard_Boolean theDisabled);
 
-  Standard_EXPORT Handle_V3d_View& GetView() {return myV3dView;};
-	Standard_EXPORT Handle_V3d_Viewer& GetViewer() {return myV3dViewer;};
-  Standard_EXPORT Handle_Graphic3d_Camera& GetCamera() {return myGraphic3dCamera;};
-	Standard_EXPORT Handle_AIS_InteractiveContext& GetContext() {return myAISContext;};
-  Standard_EXPORT Handle_Graphic3d_StructureManager& GetStructureManager() {return myGraphic3dStructureManager;};
+  Standard_EXPORT Handle(V3d_View)& GetView() {return myV3dView;};
+	Standard_EXPORT Handle(V3d_Viewer)& GetViewer() {return myV3dViewer;};
+  Standard_EXPORT Handle(Graphic3d_Camera)& GetCamera() {return myGraphic3dCamera;};
+	Standard_EXPORT Handle(AIS_InteractiveContext)& GetContext() {return myAISContext;};
+  Standard_EXPORT Handle(Graphic3d_StructureManager)& GetStructureManager() {return myGraphic3dStructureManager;};
 	Standard_EXPORT void Test();
   Standard_EXPORT void GlInfo();
 
@@ -95,22 +95,22 @@ public:
                                     const Graphic3d_BufferType& theBufferType = Graphic3d_BT_RGB);
 
 protected:
-   Handle_AIS_InteractiveContext myAISContext;
-   Handle_V3d_Viewer myV3dViewer;
-   Handle_V3d_View myV3dView;
-   Handle_Graphic3d_Camera myGraphic3dCamera;
-   Handle_Graphic3d_StructureManager myGraphic3dStructureManager;
+   Handle(AIS_InteractiveContext) myAISContext;
+   Handle(V3d_Viewer) myV3dViewer;
+   Handle(V3d_View) myV3dView;
+   Handle(Graphic3d_Camera) myGraphic3dCamera;
+   Handle(Graphic3d_StructureManager) myGraphic3dStructureManager;
 
    int mySizeX;
    int mySizeY;
    bool myIsOffscreen;
 
    #ifdef WNT
-     Handle_WNT_Window myWindow;
+     Handle(WNT_Window) myWindow;
    #elif defined(__APPLE__) && !defined(MACOSX_USE_GLX)
-     Handle_Cocoa_Window myWindow;
+     Handle(Cocoa_Window) myWindow;
    #else
-     Handle_Xw_Window myWindow;
+     Handle(Xw_Window) myWindow;
    #endif
 };
 

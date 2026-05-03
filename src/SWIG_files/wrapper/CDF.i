@@ -138,7 +138,6 @@ CDF_TOA_Unchanged = CDF_TypeOfActivation.CDF_TOA_Unchanged
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(CDF_Application)
 %wrap_handle(CDF_Directory)
 %wrap_handle(CDF_MetaDataDriver)
 %wrap_handle(CDF_MetaDataDriverFactory)
@@ -236,20 +235,20 @@ removes the document of the current session directory and closes the document;.
 		void Close(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDF_Application::DefaultFolder ******/
-		/****** md5 signature: dc87db815026b0834c349d2449d986f6 ******/
+		/****** md5 signature: 79f3e3ec3d0aa5a07828380abcca7dbe ******/
 		%feature("compactdefaultargs") DefaultFolder;
 		%feature("autodoc", "Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 No available documentation.
 ") DefaultFolder;
-		Standard_ExtString DefaultFolder();
+		const char16_t * DefaultFolder();
 
 		/****** CDF_Application::Format ******/
-		/****** md5 signature: cd21d8c27cab310899ac9e2c6ebf7f85 ******/
+		/****** md5 signature: 86e4a9eeee1c871bd587e836eeb2d672 ******/
 		%feature("compactdefaultargs") Format;
 		%feature("autodoc", "
 Parameters
@@ -263,9 +262,9 @@ bool
 
 Description
 -----------
-try to retrieve a Format directly in the file or in application resource by using extension. returns True if found;.
+try to retrieve a Format directly in the file or in application resource by using extension. returns True if found.
 ") Format;
-		Standard_Boolean Format(TCollection_ExtendedString aFileName, TCollection_ExtendedString & theFormat);
+		bool Format(TCollection_ExtendedString aFileName, TCollection_ExtendedString & theFormat);
 
 		/****** CDF_Application::GetRetrieveStatus ******/
 		/****** md5 signature: 5a9523dbf252a1564feb97c9e6a00909 ******/
@@ -406,14 +405,14 @@ Returns instance of read driver for specified format. //! Default implementation
 		virtual opencascade::handle<PCDM_Reader> ReaderFromFormat(TCollection_ExtendedString aFormat);
 
 		/****** CDF_Application::Retrieve ******/
-		/****** md5 signature: 529a7c29af3c51fd8c94c064e0b3dbcb ******/
+		/****** md5 signature: 1fdfae83277533451d5724738a98cce9 ******/
 		%feature("compactdefaultargs") Retrieve;
 		%feature("autodoc", "
 Parameters
 ----------
 aFolder: str
 aName: str
-UseStorageConfiguration: bool (optional, default to Standard_True)
+UseStorageConfiguration: bool (optional, default to true)
 theFilter: PCDM_ReaderFilter (optional, default to opencascade::handle<PCDM_ReaderFilter>())
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -423,12 +422,12 @@ opencascade::handle<CDM_Document>
 
 Description
 -----------
-This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. The content of {aFolder}, {aName} and {aVersion} depends on the Database Manager system. If the DBMS is only based on the OS, {aFolder} is a directory and {aName} is the name of a file. In this case the use of the syntax with {aVersion} has no sense. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('/home/cascade','box.dsg'); If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box'); //! Since the version is not specified in this syntax, the latest will be used. A link is kept with the database through an instance of CDM_MetaData.
+This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is true. The content of {aFolder}, {aName} and {aVersion} depends on the Database Manager system. If the DBMS is only based on the OS, {aFolder} is a directory and {aName} is the name of a file. In this case the use of the syntax with {aVersion} has no sense. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('/home/cascade','box.dsg'); If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box'); //! Since the version is not specified in this syntax, the latest will be used. A link is kept with the database through an instance of CDM_MetaData.
 ") Retrieve;
-		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, const bool UseStorageConfiguration = true, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** CDF_Application::Retrieve ******/
-		/****** md5 signature: dd78ce93c0b60ff0965f3c7e69833777 ******/
+		/****** md5 signature: 1cf9f02f9c4bacd074d49f96276d9fbe ******/
 		%feature("compactdefaultargs") Retrieve;
 		%feature("autodoc", "
 Parameters
@@ -436,7 +435,7 @@ Parameters
 aFolder: str
 aName: str
 aVersion: str
-UseStorageConfiguration: bool (optional, default to Standard_True)
+UseStorageConfiguration: bool (optional, default to true)
 theFilter: PCDM_ReaderFilter (optional, default to opencascade::handle<PCDM_ReaderFilter>())
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -446,17 +445,17 @@ opencascade::handle<CDM_Document>
 
 Description
 -----------
-This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is Standard_True. -- If the DBMS is only based on the OS, this syntax should not be used. //! If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} and {aVersion} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box','2'); A link is kept with the database through an instance of CDM_MetaData.
+This method retrieves a document from the database. If the Document references other documents which have been updated, the latest version of these documents will be used if {UseStorageConfiguration} is true. If the DBMS is only based on the OS, this syntax should not be used. //! If the DBMS is EUCLID/Design Manager, {aFolder}, {aName} and {aVersion} have the form they have in EUCLID/Design Manager. For example: //! opencascade::handle<CDM_Document> theDocument=myApplication->Retrieve('|user|cascade','box','2'); A link is kept with the database through an instance of CDM_MetaData.
 ") Retrieve;
-		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion, const Standard_Boolean UseStorageConfiguration = Standard_True, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<CDM_Document> Retrieve(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion, const bool UseStorageConfiguration = true, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** CDF_Application::SetDefaultFolder ******/
-		/****** md5 signature: b5857edec14e8dcab31bb5ac39a5223a ******/
+		/****** md5 signature: c6df0edd8dc3d743fca751c4874773ac ******/
 		%feature("compactdefaultargs") SetDefaultFolder;
 		%feature("autodoc", "
 Parameters
 ----------
-aFolder: Standard_ExtString
+aFolder: char16_t *
 
 Return
 -------
@@ -466,7 +465,7 @@ Description
 -----------
 No available documentation.
 ") SetDefaultFolder;
-		Standard_Boolean SetDefaultFolder(const Standard_ExtString aFolder);
+		bool SetDefaultFolder(const char16_t * const aFolder);
 
 		/****** CDF_Application::WriterFromFormat ******/
 		/****** md5 signature: 2039925e39207c83df1666eea6efb175 ******/
@@ -488,8 +487,6 @@ Returns instance of storage driver for specified format. //! Default implementat
 
 };
 
-
-%make_alias(CDF_Application)
 
 %extend CDF_Application {
 	%pythoncode {
@@ -534,7 +531,7 @@ adds a document into the directory.
 		void Add(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDF_Directory::Contains ******/
-		/****** md5 signature: e701764a85b62396106114052f5091ce ******/
+		/****** md5 signature: 50eb737cb3de469050f517ba48237df2 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -549,10 +546,10 @@ Description
 -----------
 Returns true if the document aDocument is in the directory.
 ") Contains;
-		Standard_Boolean Contains(const opencascade::handle<CDM_Document> & aDocument);
+		bool Contains(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDF_Directory::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -562,7 +559,7 @@ Description
 -----------
 returns true if the directory is empty.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** CDF_Directory::Last ******/
 		/****** md5 signature: 315f5b609ccef6e8a0c865d973889a7c ******/
@@ -578,7 +575,7 @@ returns the last document (if any) which has been added in the directory.
 		opencascade::handle<CDM_Document> Last();
 
 		/****** CDF_Directory::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -588,7 +585,7 @@ Description
 -----------
 returns the number of documents of the directory.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** CDF_Directory::Remove ******/
 		/****** md5 signature: 9a20bceb09f550258abc1a5ffcd3575d ******/
@@ -685,7 +682,7 @@ should create meta-data corresponding to aData and maintaining a meta-link betwe
 		virtual opencascade::handle<CDM_MetaData> CreateMetaData(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName);
 
 		/****** CDF_MetaDataDriver::CreateReference ******/
-		/****** md5 signature: ee0ba7d2788f0a828e0d919b0d1b98e9 ******/
+		/****** md5 signature: 7881d5aa40e39715bee7399cb44d7fe7 ******/
 		%feature("compactdefaultargs") CreateReference;
 		%feature("autodoc", "
 Parameters
@@ -703,7 +700,7 @@ Description
 -----------
 No available documentation.
 ") CreateReference;
-		virtual void CreateReference(const opencascade::handle<CDM_MetaData> & aFrom, const opencascade::handle<CDM_MetaData> & aTo, const Standard_Integer aReferenceIdentifier, const Standard_Integer aToDocumentVersion);
+		virtual void CreateReference(const opencascade::handle<CDM_MetaData> & aFrom, const opencascade::handle<CDM_MetaData> & aTo, const int aReferenceIdentifier, const int aToDocumentVersion);
 
 		/****** CDF_MetaDataDriver::DefaultFolder ******/
 		/****** md5 signature: 8f25b151d43bdae5827f4c1016790f5d ******/
@@ -719,7 +716,7 @@ No available documentation.
 		virtual TCollection_ExtendedString DefaultFolder();
 
 		/****** CDF_MetaDataDriver::Find ******/
-		/****** md5 signature: ac1d26274189761830708e2d8787984d ******/
+		/****** md5 signature: 119fa4cc235dba95d9db6fffc74992c2 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -736,10 +733,10 @@ Description
 -----------
 should indicate whether meta-data exist in the DBMS corresponding to the Data. aVersion may be NULL;.
 ") Find;
-		virtual Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
+		virtual bool Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****** CDF_MetaDataDriver::Find ******/
-		/****** md5 signature: 3790cd3f2b3362c62018b1d3652970dd ******/
+		/****** md5 signature: 77f1cc3003e807f7fe49946644dd2be4 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -755,10 +752,10 @@ Description
 -----------
 calls Find with an empty version.
 ") Find;
-		Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
+		bool Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
 		/****** CDF_MetaDataDriver::FindFolder ******/
-		/****** md5 signature: 9a5e2cbe4eefa1eae2149c38651a75a9 ******/
+		/****** md5 signature: 12abf4e8c751523b88d1a81a9d44d11d ******/
 		%feature("compactdefaultargs") FindFolder;
 		%feature("autodoc", "
 Parameters
@@ -773,10 +770,10 @@ Description
 -----------
 No available documentation.
 ") FindFolder;
-		virtual Standard_Boolean FindFolder(TCollection_ExtendedString aFolder);
+		virtual bool FindFolder(TCollection_ExtendedString aFolder);
 
 		/****** CDF_MetaDataDriver::HasReadPermission ******/
-		/****** md5 signature: 18f97899c0a5d2e41387449551ecf940 ******/
+		/****** md5 signature: 134ab0d9e4cfbc96883c3ee73ee59376 ******/
 		%feature("compactdefaultargs") HasReadPermission;
 		%feature("autodoc", "
 Parameters
@@ -793,10 +790,10 @@ Description
 -----------
 No available documentation.
 ") HasReadPermission;
-		virtual Standard_Boolean HasReadPermission(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
+		virtual bool HasReadPermission(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****** CDF_MetaDataDriver::HasVersion ******/
-		/****** md5 signature: 3e209adcc54fe62e2e5697f2ed0d2d8c ******/
+		/****** md5 signature: 436f5fe08921d8520e6afaf17405c707 ******/
 		%feature("compactdefaultargs") HasVersion;
 		%feature("autodoc", "
 Parameters
@@ -810,12 +807,12 @@ bool
 
 Description
 -----------
-by default return Standard_True.
+by default return true.
 ") HasVersion;
-		virtual Standard_Boolean HasVersion(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
+		virtual bool HasVersion(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName);
 
 		/****** CDF_MetaDataDriver::HasVersionCapability ******/
-		/****** md5 signature: 0e4f0bbd26688c9b437cf5bee430c353 ******/
+		/****** md5 signature: d6a437b78625ec1872648346d39f7332 ******/
 		%feature("compactdefaultargs") HasVersionCapability;
 		%feature("autodoc", "Return
 -------
@@ -823,9 +820,9 @@ bool
 
 Description
 -----------
-returns true if the MetaDataDriver can manage different versions of a Data. By default, returns Standard_False.
+returns true if the MetaDataDriver can manage different versions of a Data. By default, returns false.
 ") HasVersionCapability;
-		virtual Standard_Boolean HasVersionCapability();
+		virtual bool HasVersionCapability();
 
 		/****** CDF_MetaDataDriver::LastVersion ******/
 		/****** md5 signature: 9d9316bfcc062ca6089c234c0ce83791 ******/
@@ -841,7 +838,7 @@ opencascade::handle<CDM_MetaData>
 
 Description
 -----------
-by default returns aMetaDATA should return the MetaData stored in the DBMS with the meta-data corresponding to the path. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. MetaData is called by GetMetaData If the version is not included in the path , MetaData should return the last version of the metadata is deferred;.
+by default returns aMetaDATA should return the MetaData stored in the DBMS with the meta-data corresponding to the path. If the MetaDataDriver has version management capabilities the version has to be set in the returned MetaData. MetaData is called by GetMetaData If the version is not included in the path, MetaData should return the last version of the metadata is deferred;.
 ") LastVersion;
 		virtual opencascade::handle<CDM_MetaData> LastVersion(const opencascade::handle<CDM_MetaData> & aMetaData);
 
@@ -917,7 +914,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-this method is useful if the name of an object -- depends on the metadatadriver. For example a Driver -- based on the operating system can choose to add the extension of file to create to the object.
+this method is useful if the name of an object depends on the metadatadriver. For example a Driver based on the operating system can choose to add the extension of file to create to the object.
 ") SetName;
 		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aName);
 
@@ -986,17 +983,17 @@ creates a store list from the document of the current selection.
 		 CDF_Store(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDF_Store::AssociatedStatusText ******/
-		/****** md5 signature: 9c2a2cc4635869ea6cbe44120e51d8f9 ******/
+		/****** md5 signature: eef46b9b25f3fd92ef166290dad3691b ******/
 		%feature("compactdefaultargs") AssociatedStatusText;
 		%feature("autodoc", "Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 No available documentation.
 ") AssociatedStatusText;
-		Standard_ExtString AssociatedStatusText();
+		const char16_t * AssociatedStatusText();
 
 		/****** CDF_Store::Comment ******/
 		/****** md5 signature: 5dfb2f1d86286c98eb50db6b2ec9776a ******/
@@ -1012,7 +1009,7 @@ No available documentation.
 		opencascade::handle<TCollection_HExtendedString> Comment();
 
 		/****** CDF_Store::CurrentIsConsistent ******/
-		/****** md5 signature: ed98cb46a82669a61995271d69dd9107 ******/
+		/****** md5 signature: a639957f7f25a59712935aaff5c60924 ******/
 		%feature("compactdefaultargs") CurrentIsConsistent;
 		%feature("autodoc", "Return
 -------
@@ -1022,7 +1019,7 @@ Description
 -----------
 No available documentation.
 ") CurrentIsConsistent;
-		Standard_Boolean CurrentIsConsistent();
+		bool CurrentIsConsistent();
 
 		/****** CDF_Store::Description ******/
 		/****** md5 signature: 0f5a6da911401296c8b30f075d3be212 ******/
@@ -1051,7 +1048,7 @@ returns the folder in which the current document will be stored.
 		opencascade::handle<TCollection_HExtendedString> Folder();
 
 		/****** CDF_Store::HasAPreviousVersion ******/
-		/****** md5 signature: 2de8556e4a503e119b5d11cf435187d6 ******/
+		/****** md5 signature: 61962a63f7fe8a04700869d756e38591 ******/
 		%feature("compactdefaultargs") HasAPreviousVersion;
 		%feature("autodoc", "Return
 -------
@@ -1061,10 +1058,10 @@ Description
 -----------
 No available documentation.
 ") HasAPreviousVersion;
-		Standard_Boolean HasAPreviousVersion();
+		bool HasAPreviousVersion();
 
 		/****** CDF_Store::IsConsistent ******/
-		/****** md5 signature: b90ed696be4c8f35165851c36e3a9592 ******/
+		/****** md5 signature: 8a867e130e74d777c88e7e4a67695585 ******/
 		%feature("compactdefaultargs") IsConsistent;
 		%feature("autodoc", "Return
 -------
@@ -1074,10 +1071,10 @@ Description
 -----------
 No available documentation.
 ") IsConsistent;
-		Standard_Boolean IsConsistent();
+		bool IsConsistent();
 
 		/****** CDF_Store::IsMainDocument ******/
-		/****** md5 signature: 97a981e2305064fbd665d8c94b60dd38 ******/
+		/****** md5 signature: d89cd7721b11e81ed220e6d56ed5b854 ******/
 		%feature("compactdefaultargs") IsMainDocument;
 		%feature("autodoc", "Return
 -------
@@ -1087,10 +1084,10 @@ Description
 -----------
 returns true if the currentdocument is the main one, ie the document of the current selection.
 ") IsMainDocument;
-		Standard_Boolean IsMainDocument();
+		bool IsMainDocument();
 
 		/****** CDF_Store::IsModified ******/
-		/****** md5 signature: 9c75f71ece8c473c12f072739ddc9f63 ******/
+		/****** md5 signature: 20a841c48b5ecb63ab1563022bd76327 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "Return
 -------
@@ -1100,10 +1097,10 @@ Description
 -----------
 No available documentation.
 ") IsModified;
-		Standard_Boolean IsModified();
+		bool IsModified();
 
 		/****** CDF_Store::IsStored ******/
-		/****** md5 signature: 0accc82ecbcf65967dcdbcbc0b39163c ******/
+		/****** md5 signature: 50f45f1ea3dc0d91fb1ecc9b03467aa1 ******/
 		%feature("compactdefaultargs") IsStored;
 		%feature("autodoc", "Return
 -------
@@ -1113,7 +1110,7 @@ Description
 -----------
 returns true if the current document is already stored.
 ") IsStored;
-		Standard_Boolean IsStored();
+		bool IsStored();
 
 		/****** CDF_Store::MetaDataPath ******/
 		/****** md5 signature: 835d7c7f39245f9133772b983dcc3304 ******/
@@ -1142,17 +1139,17 @@ returns the name under which the current document will be stored.
 		opencascade::handle<TCollection_HExtendedString> Name();
 
 		/****** CDF_Store::Path ******/
-		/****** md5 signature: 5b9cb02835fedd9ac6afe6651eb8b11d ******/
+		/****** md5 signature: ad181787794f1961316622cedcc4215c ******/
 		%feature("compactdefaultargs") Path;
 		%feature("autodoc", "Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 returns the complete path of the created meta-data.
 ") Path;
-		Standard_ExtString Path();
+		const char16_t * Path();
 
 		/****** CDF_Store::PreviousVersion ******/
 		/****** md5 signature: ad90ed1fb5b96a052d0f5ad3d9c8b43d ******/
@@ -1199,12 +1196,12 @@ defines the name under which the document should be stored. uses for example aft
 		CDF_StoreSetNameStatus RecheckName();
 
 		/****** CDF_Store::SetComment ******/
-		/****** md5 signature: 60d8b5fed8f2853931f87d0698f7f61b ******/
+		/****** md5 signature: bdd790c1af24706acf95e7197866ad5a ******/
 		%feature("compactdefaultargs") SetComment;
 		%feature("autodoc", "
 Parameters
 ----------
-aComment: Standard_ExtString
+aComment: char16_t *
 
 Return
 -------
@@ -1214,15 +1211,15 @@ Description
 -----------
 No available documentation.
 ") SetComment;
-		void SetComment(const Standard_ExtString aComment);
+		void SetComment(const char16_t * const aComment);
 
 		/****** CDF_Store::SetCurrent ******/
-		/****** md5 signature: e37db584b7563caf052bddaaef868e65 ******/
+		/****** md5 signature: 0f93a9c29a476f6f6602183e7b66ee31 ******/
 		%feature("compactdefaultargs") SetCurrent;
 		%feature("autodoc", "
 Parameters
 ----------
-aPresentation: Standard_ExtString
+aPresentation: char16_t *
 
 Return
 -------
@@ -1232,10 +1229,10 @@ Description
 -----------
 No available documentation.
 ") SetCurrent;
-		void SetCurrent(const Standard_ExtString aPresentation);
+		void SetCurrent(const char16_t * const aPresentation);
 
 		/****** CDF_Store::SetFolder ******/
-		/****** md5 signature: b5573393a1ebe307b50d228fbe5e9cc3 ******/
+		/****** md5 signature: 366c24c83d026601daeb0602418236e6 ******/
 		%feature("compactdefaultargs") SetFolder;
 		%feature("autodoc", "
 Parameters
@@ -1248,17 +1245,17 @@ bool
 
 Description
 -----------
-defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.
+defines the folder in which the document should be stored. returns true if the Folder exists, false otherwise.
 ") SetFolder;
-		Standard_Boolean SetFolder(TCollection_ExtendedString aFolder);
+		bool SetFolder(TCollection_ExtendedString aFolder);
 
 		/****** CDF_Store::SetFolder ******/
-		/****** md5 signature: 801d484ce7c807a9dba40870f26f3b9c ******/
+		/****** md5 signature: 1775002da403d0b998d9041ab9850e7b ******/
 		%feature("compactdefaultargs") SetFolder;
 		%feature("autodoc", "
 Parameters
 ----------
-aFolder: Standard_ExtString
+aFolder: char16_t *
 
 Return
 -------
@@ -1266,9 +1263,9 @@ bool
 
 Description
 -----------
-defines the folder in which the document should be stored. returns Standard_True if the Folder exists, Standard_False otherwise.
+defines the folder in which the document should be stored. returns true if the Folder exists, false otherwise.
 ") SetFolder;
-		Standard_Boolean SetFolder(const Standard_ExtString aFolder);
+		bool SetFolder(const char16_t * const aFolder);
 
 		/****** CDF_Store::SetMain ******/
 		/****** md5 signature: a7a1239199c6e8d991408789f7045a98 ******/
@@ -1279,17 +1276,17 @@ None
 
 Description
 -----------
-the two following methods can be used just after Realize or Import -- method to know if thes methods worked correctly, and if not why.
+the two following methods can be used just after Realize or Import -- method to know if these methods worked correctly, and if not why.
 ") SetMain;
 		void SetMain();
 
 		/****** CDF_Store::SetName ******/
-		/****** md5 signature: 5156018271f857517ed09dcbec38d977 ******/
+		/****** md5 signature: af88e4b2afba7c9c33c87c3566dd560d ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-aName: Standard_ExtString
+aName: char16_t *
 
 Return
 -------
@@ -1299,7 +1296,7 @@ Description
 -----------
 defines the name under which the document should be stored.
 ") SetName;
-		CDF_StoreSetNameStatus SetName(const Standard_ExtString aName);
+		CDF_StoreSetNameStatus SetName(const char16_t * const aName);
 
 		/****** CDF_Store::SetName ******/
 		/****** md5 signature: 62a6f4de5c52880dd94476733e959ce4 ******/
@@ -1320,12 +1317,12 @@ defines the name under which the document should be stored.
 		CDF_StoreSetNameStatus SetName(TCollection_ExtendedString aName);
 
 		/****** CDF_Store::SetPreviousVersion ******/
-		/****** md5 signature: db8a5d8d68bb5cba7556c0e7f948b226 ******/
+		/****** md5 signature: f9900d19dcb7f8f8d3ae9a46624f739e ******/
 		%feature("compactdefaultargs") SetPreviousVersion;
 		%feature("autodoc", "
 Parameters
 ----------
-aPreviousVersion: Standard_ExtString
+aPreviousVersion: char16_t *
 
 Return
 -------
@@ -1335,7 +1332,7 @@ Description
 -----------
 No available documentation.
 ") SetPreviousVersion;
-		Standard_Boolean SetPreviousVersion(const Standard_ExtString aPreviousVersion);
+		bool SetPreviousVersion(const char16_t * const aPreviousVersion);
 
 		/****** CDF_Store::StoreStatus ******/
 		/****** md5 signature: 0ea2be88f8e37cedd973fe034f3c1d11 ******/
@@ -1396,7 +1393,7 @@ No available documentation.
 		void Init();
 
 		/****** CDF_StoreList::IsConsistent ******/
-		/****** md5 signature: b90ed696be4c8f35165851c36e3a9592 ******/
+		/****** md5 signature: 8a867e130e74d777c88e7e4a67695585 ******/
 		%feature("compactdefaultargs") IsConsistent;
 		%feature("autodoc", "Return
 -------
@@ -1406,10 +1403,10 @@ Description
 -----------
 No available documentation.
 ") IsConsistent;
-		Standard_Boolean IsConsistent();
+		bool IsConsistent();
 
 		/****** CDF_StoreList::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1419,7 +1416,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** CDF_StoreList::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1484,12 +1481,12 @@ No available documentation.
 class CDF_FWOSDriver : public CDF_MetaDataDriver {
 	public:
 		/****** CDF_FWOSDriver::CDF_FWOSDriver ******/
-		/****** md5 signature: 5a093179f3514d10faf44a50b08ae4ba ******/
+		/****** md5 signature: 4949dc5ad6db20bc32fe56fc77b1a12e ******/
 		%feature("compactdefaultargs") CDF_FWOSDriver;
 		%feature("autodoc", "
 Parameters
 ----------
-theLookUpTable: CDM_MetaDataLookUpTable
+theLookUpTable: CDM_MetaData
 
 Return
 -------
@@ -1499,10 +1496,10 @@ Description
 -----------
 Initializes the MetaDatadriver connected to specified look-up table. Note that the created driver will keep reference to the table, thus it must have life time longer than this object.
 ") CDF_FWOSDriver;
-		 CDF_FWOSDriver(CDM_MetaDataLookUpTable & theLookUpTable);
+		 CDF_FWOSDriver(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData> > & theLookUpTable);
 
 		/****** CDF_FWOSDriver::BuildFileName ******/
-		/****** md5 signature: 1c38ab2ab19e4b54d478d4f310d7a582 ******/
+		/****** md5 signature: 74f50a405de45edf3c6d38fb1392faa7 ******/
 		%feature("compactdefaultargs") BuildFileName;
 		%feature("autodoc", "
 Parameters
@@ -1520,7 +1517,7 @@ No available documentation.
 		TCollection_ExtendedString BuildFileName(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDF_FWOSDriver::DefaultFolder ******/
-		/****** md5 signature: ac13ff4b9ece454471b16d82ee8fc228 ******/
+		/****** md5 signature: 333dc75e3bab5a5304cee97627d9faef ******/
 		%feature("compactdefaultargs") DefaultFolder;
 		%feature("autodoc", "Return
 -------
@@ -1533,7 +1530,7 @@ No available documentation.
 		TCollection_ExtendedString DefaultFolder();
 
 		/****** CDF_FWOSDriver::Find ******/
-		/****** md5 signature: af96c0bc77591fb0d1a5ac71b5dc009d ******/
+		/****** md5 signature: 7d3e7cbc3846417098359bcdd722fd48 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -1550,10 +1547,10 @@ Description
 -----------
 indicate whether a file exists corresponding to the folder and the name.
 ") Find;
-		Standard_Boolean Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
+		bool Find(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****** CDF_FWOSDriver::FindFolder ******/
-		/****** md5 signature: 876d6b8f179e719bd5cd5d7750be1f28 ******/
+		/****** md5 signature: f0cdadbec3a1c8c3fcd6dcdf3323b25a ******/
 		%feature("compactdefaultargs") FindFolder;
 		%feature("autodoc", "
 Parameters
@@ -1568,10 +1565,10 @@ Description
 -----------
 No available documentation.
 ") FindFolder;
-		Standard_Boolean FindFolder(TCollection_ExtendedString aFolder);
+		bool FindFolder(TCollection_ExtendedString aFolder);
 
 		/****** CDF_FWOSDriver::HasReadPermission ******/
-		/****** md5 signature: a56965c6bd74688f05fbee219b9c4232 ******/
+		/****** md5 signature: da212d226af195c57b044ed874cbe84b ******/
 		%feature("compactdefaultargs") HasReadPermission;
 		%feature("autodoc", "
 Parameters
@@ -1588,10 +1585,10 @@ Description
 -----------
 No available documentation.
 ") HasReadPermission;
-		Standard_Boolean HasReadPermission(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
+		bool HasReadPermission(TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aVersion);
 
 		/****** CDF_FWOSDriver::SetName ******/
-		/****** md5 signature: 274c7654cce9308e93e9edd7b5ee5d9d ******/
+		/****** md5 signature: baa56ec3f3e1d4614296dd17e8cecf54 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -1607,7 +1604,7 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aName);
+		TCollection_ExtendedString SetName(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aName);
 
 };
 

@@ -95,16 +95,16 @@ Creates a dummy indexed edge.
 		 Sweep_NumShape();
 
 		/****** Sweep_NumShape::Sweep_NumShape ******/
-		/****** md5 signature: f74f5efc1b7fe5d2d292f9da3e31eab4 ******/
+		/****** md5 signature: 3b2c0e8992a746916adff1c8f8b11eb4 ******/
 		%feature("compactdefaultargs") Sweep_NumShape;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 Type: TopAbs_ShapeEnum
-Closed: bool (optional, default to Standard_False)
-BegInf: bool (optional, default to Standard_False)
-EndInf: bool (optional, default to Standard_False)
+Closed: bool (optional, default to false)
+BegInf: bool (optional, default to false)
+EndInf: bool (optional, default to false)
 
 Return
 -------
@@ -112,12 +112,12 @@ None
 
 Description
 -----------
-Creates a new simple indexed edge. //! For an Edge: Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the begenning, EndInf is true if the edge is infinite at the end. //! For a Vertex: Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, all the other fields have no meanning.
+Creates a new simple indexed edge. //! For an Edge: Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the beginning, EndInf is true if the edge is infinite at the end. //! For a Vertex: Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, all the other fields have no meanning.
 ") Sweep_NumShape;
-		 Sweep_NumShape(const Standard_Integer Index, const TopAbs_ShapeEnum Type, const Standard_Boolean Closed = Standard_False, const Standard_Boolean BegInf = Standard_False, const Standard_Boolean EndInf = Standard_False);
+		 Sweep_NumShape(const int Index, const TopAbs_ShapeEnum Type, const bool Closed = false, const bool BegInf = false, const bool EndInf = false);
 
 		/****** Sweep_NumShape::BegInfinite ******/
-		/****** md5 signature: 4fb9c294eab51637abaf071c19d4a021 ******/
+		/****** md5 signature: ae383dd57b17d0c00284953dc72e74c3 ******/
 		%feature("compactdefaultargs") BegInfinite;
 		%feature("autodoc", "Return
 -------
@@ -127,10 +127,10 @@ Description
 -----------
 No available documentation.
 ") BegInfinite;
-		Standard_Boolean BegInfinite();
+		bool BegInfinite();
 
 		/****** Sweep_NumShape::Closed ******/
-		/****** md5 signature: 6964da666f9b5a80bedb32cfb1fdc0ba ******/
+		/****** md5 signature: 3af99e52b24f54eb2b999649fc18915a ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -140,10 +140,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** Sweep_NumShape::EndInfinite ******/
-		/****** md5 signature: 476bab42a0dcaafcb903df86a82adb7f ******/
+		/****** md5 signature: 507d12d0a620ef44f62373fad55e5cfe ******/
 		%feature("compactdefaultargs") EndInfinite;
 		%feature("autodoc", "Return
 -------
@@ -153,10 +153,10 @@ Description
 -----------
 No available documentation.
 ") EndInfinite;
-		Standard_Boolean EndInfinite();
+		bool EndInfinite();
 
 		/****** Sweep_NumShape::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -166,19 +166,19 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** Sweep_NumShape::Init ******/
-		/****** md5 signature: b0a0a53424ec34c8f8f3bbe108ad77db ******/
+		/****** md5 signature: 79699ba4c43d01c424a29adccf7a5441 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 Type: TopAbs_ShapeEnum
-Closed: bool (optional, default to Standard_False)
-BegInf: bool (optional, default to Standard_False)
-EndInf: bool (optional, default to Standard_False)
+Closed: bool (optional, default to false)
+BegInf: bool (optional, default to false)
+EndInf: bool (optional, default to false)
 
 Return
 -------
@@ -186,9 +186,9 @@ None
 
 Description
 -----------
-Reinitialize a simple indexed edge. //! For an Edge: Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the begenning, EndInf is true if the edge is infinite at the end. //! For a Vertex: Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, Closed is true if it is the vertex of a closed edge, all the other fields have no meanning.
+Reinitialize a simple indexed edge. //! For an Edge: Index is the number of vertices (0, 1 or 2),Type is TopAbs_EDGE, Closed is true if it is a closed edge, BegInf is true if the Edge is infinite at the beginning, EndInf is true if the edge is infinite at the end. //! For a Vertex: Index is the index of the vertex in the edge (1 or 2), Type is TopAbsVERTEX, Closed is true if it is the vertex of a closed edge, all the other fields have no meanning.
 ") Init;
-		void Init(const Standard_Integer Index, const TopAbs_ShapeEnum Type, const Standard_Boolean Closed = Standard_False, const Standard_Boolean BegInf = Standard_False, const Standard_Boolean EndInf = Standard_False);
+		void Init(const int Index, const TopAbs_ShapeEnum Type, const bool Closed = false, const bool BegInf = false, const bool EndInf = false);
 
 		/****** Sweep_NumShape::Orientation ******/
 		/****** md5 signature: 328242fe19b1f80489d8169681ebc029 ******/
@@ -262,7 +262,7 @@ Reset the NumShapeIterator on sub-shapes of <aShape>.
 		void Init(const Sweep_NumShape & aShape);
 
 		/****** Sweep_NumShapeIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -272,7 +272,7 @@ Description
 -----------
 Returns True if there is a current sub-shape.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** Sweep_NumShapeIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -359,7 +359,7 @@ Returns the first vertex.
 		Sweep_NumShape FirstVertex();
 
 		/****** Sweep_NumShapeTool::HasFirstVertex ******/
-		/****** md5 signature: 106ce7f96fc5b1cd719e3bbdca47736a ******/
+		/****** md5 signature: 2462c26c44b02c64a1461503a0d78096 ******/
 		%feature("compactdefaultargs") HasFirstVertex;
 		%feature("autodoc", "Return
 -------
@@ -369,10 +369,10 @@ Description
 -----------
 Returns true if there is a First Vertex in the Shape.
 ") HasFirstVertex;
-		Standard_Boolean HasFirstVertex();
+		bool HasFirstVertex();
 
 		/****** Sweep_NumShapeTool::HasLastVertex ******/
-		/****** md5 signature: f4cf3374b365d7c0ae22d8b5d56f43ae ******/
+		/****** md5 signature: 954e5a104c7630b1d944dc012bb2965a ******/
 		%feature("compactdefaultargs") HasLastVertex;
 		%feature("autodoc", "Return
 -------
@@ -382,10 +382,10 @@ Description
 -----------
 Returns true if there is a Last Vertex in the Shape.
 ") HasLastVertex;
-		Standard_Boolean HasLastVertex();
+		bool HasLastVertex();
 
 		/****** Sweep_NumShapeTool::Index ******/
-		/****** md5 signature: d8d41f1e135100046f53349998fc4021 ******/
+		/****** md5 signature: 0796a47d4efd9fcf2ba07c35e446173b ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -400,7 +400,7 @@ Description
 -----------
 Returns the index of <aShape>.
 ") Index;
-		Standard_Integer Index(const Sweep_NumShape & aShape);
+		int Index(const Sweep_NumShape & aShape);
 
 		/****** Sweep_NumShapeTool::LastVertex ******/
 		/****** md5 signature: 42e8de781c32579a09b293ee5facf62b ******/
@@ -416,7 +416,7 @@ Returns the last vertex.
 		Sweep_NumShape LastVertex();
 
 		/****** Sweep_NumShapeTool::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -426,7 +426,7 @@ Description
 -----------
 Returns the number of subshapes in the shape.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** Sweep_NumShapeTool::Orientation ******/
 		/****** md5 signature: 811407dea437ab8d2413d7000acad4f2 ******/
@@ -447,7 +447,7 @@ Returns the orientation of <aShape>.
 		TopAbs_Orientation Orientation(const Sweep_NumShape & aShape);
 
 		/****** Sweep_NumShapeTool::Shape ******/
-		/****** md5 signature: 93186f95d8445145d1155256dcdda14d ******/
+		/****** md5 signature: 82482b4f731b1f313d349da9b911438f ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -462,7 +462,7 @@ Description
 -----------
 Returns the Shape at index anIndex.
 ") Shape;
-		Sweep_NumShape Shape(const Standard_Integer anIndex);
+		Sweep_NumShape Shape(const int anIndex);
 
 		/****** Sweep_NumShapeTool::Type ******/
 		/****** md5 signature: 4d5de1a9527f334cac00917bb8d1e0da ******/

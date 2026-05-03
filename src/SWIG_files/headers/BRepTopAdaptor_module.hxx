@@ -19,11 +19,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define BREPTOPADAPTOR_HXX
 
 
-#include<BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool.hxx>
 #include<BRepTopAdaptor_FClass2d.hxx>
 #include<BRepTopAdaptor_HVertex.hxx>
 #include<BRepTopAdaptor_MapOfShapeTool.hxx>
-#include<BRepTopAdaptor_SeqOfPtr.hxx>
 #include<BRepTopAdaptor_Tool.hxx>
 #include<BRepTopAdaptor_TopolTool.hxx>
 

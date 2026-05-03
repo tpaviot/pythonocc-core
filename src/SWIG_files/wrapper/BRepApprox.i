@@ -50,14 +50,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepapprox.html"
 #include<Geom2d_module.hxx>
 #include<IntSurf_module.hxx>
 #include<AppParCurves_module.hxx>
-#include<TColStd_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<gp_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<IntImp_module.hxx>
 #include<ApproxInt_module.hxx>
-#include<TColgp_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopoDS_module.hxx>
 #include<FEmTool_module.hxx>
@@ -81,14 +79,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepapprox.html"
 %import Geom2d.i
 %import IntSurf.i
 %import AppParCurves.i
-%import TColStd.i
 %import BRepAdaptor.i
 %import gp.i
 %import Adaptor3d.i
 %import GeomAbs.i
 %import IntImp.i
 %import ApproxInt.i
-%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -133,7 +129,7 @@ No available documentation.
 		 BRepApprox_Approx();
 
 		/****** BRepApprox_Approx::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -143,10 +139,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_Approx::NbMultiCurves ******/
-		/****** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ******/
+		/****** md5 signature: eed274d77446bf2416a954e7f34c2bf0 ******/
 		%feature("compactdefaultargs") NbMultiCurves;
 		%feature("autodoc", "Return
 -------
@@ -156,10 +152,10 @@ Description
 -----------
 No available documentation.
 ") NbMultiCurves;
-		Standard_Integer NbMultiCurves();
+		int NbMultiCurves();
 
 		/****** BRepApprox_Approx::Parameters ******/
-		/****** md5 signature: 81d60914d3a71865160546b151d21f82 ******/
+		/****** md5 signature: 93bf4c2c9d0c4e0fc08fa1ff730285f0 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -178,21 +174,21 @@ Description
 -----------
 No available documentation.
 ") Parameters;
-		static void Parameters(const BRepApprox_TheMultiLineOfApprox & Line, const Standard_Integer firstP, const Standard_Integer lastP, const Approx_ParametrizationType Par, math_Vector & TheParameters);
+		static void Parameters(const BRepApprox_TheMultiLineOfApprox & Line, const int firstP, const int lastP, const Approx_ParametrizationType Par, math_Vector & TheParameters);
 
 		/****** BRepApprox_Approx::SetParameters ******/
-		/****** md5 signature: 224b0c0bb8f1208adc055cd27769623b ******/
+		/****** md5 signature: 94210ea120b2d257f05e1acbccf3cb0a ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 DegMin: int
 DegMax: int
 NbIterMax: int
 NbPntMax: int (optional, default to 30)
-ApproxWithTangency: bool (optional, default to Standard_True)
+ApproxWithTangency: bool (optional, default to true)
 Parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
 
 Return
@@ -203,36 +199,36 @@ Description
 -----------
 No available documentation.
 ") SetParameters;
-		void SetParameters(const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer DegMin, const Standard_Integer DegMax, const Standard_Integer NbIterMax, const Standard_Integer NbPntMax = 30, const Standard_Boolean ApproxWithTangency = Standard_True, const Approx_ParametrizationType Parametrization = Approx_ChordLength);
+		void SetParameters(const double Tol3d, const double Tol2d, const int DegMin, const int DegMax, const int NbIterMax, const int NbPntMax = 30, const bool ApproxWithTangency = true, const Approx_ParametrizationType Parametrization = Approx_ChordLength);
 
 		/****** BRepApprox_Approx::TolReached2d ******/
-		/****** md5 signature: fec1cf227c913f78bf2cca534817572e ******/
+		/****** md5 signature: 71f2e67c8f4f4710d5cf228e07b08caa ******/
 		%feature("compactdefaultargs") TolReached2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TolReached2d;
-		Standard_Real TolReached2d();
+		double TolReached2d();
 
 		/****** BRepApprox_Approx::TolReached3d ******/
-		/****** md5 signature: 683925467818325187b2612f3df211fb ******/
+		/****** md5 signature: 4e947d53f233e22f0dadbde870316f95 ******/
 		%feature("compactdefaultargs") TolReached3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TolReached3d;
-		Standard_Real TolReached3d();
+		double TolReached3d();
 
 		/****** BRepApprox_Approx::Value ******/
-		/****** md5 signature: 9d6e77e44b72348ce39d94f7175b467c ******/
+		/****** md5 signature: 9e5c4f70c7e3f940e4ce9b7e43b0a7d4 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -247,7 +243,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		AppParCurves_MultiBSpCurve Value(const Standard_Integer Index);
+		AppParCurves_MultiBSpCurve Value(const int Index);
 
 };
 
@@ -288,13 +284,13 @@ No available documentation.
 		 BRepApprox_ApproxLine(const opencascade::handle<Geom_BSplineCurve> & CurveXYZ, const opencascade::handle<Geom2d_BSplineCurve> & CurveUV1, const opencascade::handle<Geom2d_BSplineCurve> & CurveUV2);
 
 		/****** BRepApprox_ApproxLine::BRepApprox_ApproxLine ******/
-		/****** md5 signature: fc95bda6dedd235ff09c9509eeb57ba6 ******/
+		/****** md5 signature: da5f81a1a5ac0ded4f450e19bb4af7c3 ******/
 		%feature("compactdefaultargs") BRepApprox_ApproxLine;
 		%feature("autodoc", "
 Parameters
 ----------
 lin: IntSurf_LineOn2S
-theTang: bool (optional, default to Standard_False)
+theTang: bool (optional, default to false)
 
 Return
 -------
@@ -304,10 +300,10 @@ Description
 -----------
 theTang variable has been entered only for compatibility with the alias IntPatch_WLine. They are not used in this class.
 ") BRepApprox_ApproxLine;
-		 BRepApprox_ApproxLine(const opencascade::handle<IntSurf_LineOn2S> & lin, const Standard_Boolean theTang = Standard_False);
+		 BRepApprox_ApproxLine(const opencascade::handle<IntSurf_LineOn2S> & lin, const bool theTang = false);
 
 		/****** BRepApprox_ApproxLine::NbPnts ******/
-		/****** md5 signature: 11421df812eef5f47a644a70b75ab60a ******/
+		/****** md5 signature: 62ca8b9c803953d23e1f278d77f7b8f6 ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -317,10 +313,10 @@ Description
 -----------
 No available documentation.
 ") NbPnts;
-		Standard_Integer NbPnts();
+		int NbPnts();
 
 		/****** BRepApprox_ApproxLine::Point ******/
-		/****** md5 signature: 3f7bb7239d0d53fe95063c8fac27999e ******/
+		/****** md5 signature: b74b588c04301d3568484df9ef527a7e ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -335,7 +331,7 @@ Description
 -----------
 No available documentation.
 ") Point;
-		IntSurf_PntOn2S Point(const Standard_Integer Index);
+		IntSurf_PntOn2S Point(const int Index);
 
 };
 
@@ -354,16 +350,16 @@ No available documentation.
 class BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox : public math_BFGS {
 	public:
 		/****** BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 63a0f87512cd1e6b43564af60dd18905 ******/
+		/****** md5 signature: d04b93cfb53ff7a2403930bf9bf642d4 ******/
 		%feature("compactdefaultargs") BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -374,10 +370,10 @@ Description
 -----------
 No available documentation.
 ") BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -392,7 +388,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -409,7 +405,7 @@ No available documentation.
 class BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 0371b3e981bd07f22a62b26d7304786b ******/
+		/****** md5 signature: 8bb85f580c7149bcbcf6ef6fd56026fb ******/
 		%feature("compactdefaultargs") BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -417,10 +413,10 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 NbPol: int
 
 Return
@@ -431,7 +427,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has <NbPol> control points.
 ") BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer NbPol);
+		 BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int NbPol);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::CurveValue ******/
 		/****** md5 signature: c83ed6c1c3091309bccd8d719a30ec54 ******/
@@ -460,7 +456,7 @@ returns the derivative function matrix used to approximate the multiline.
 		const math_Matrix & DerivativeFunctionMatrix();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Error ******/
-		/****** md5 signature: 540c96711689798ec6a7d515d5e5e1c7 ******/
+		/****** md5 signature: 057333c63ab7a88a7371420a6c1219ea ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -470,21 +466,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -495,7 +491,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -511,7 +507,7 @@ returns the function matrix used to approximate the multiline.
 		const math_Matrix & FunctionMatrix();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -527,7 +523,7 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Index ******/
 		/****** md5 signature: c11a6982042d7a2c5bf9fb50324ac971 ******/
@@ -543,12 +539,12 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & Index();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -559,36 +555,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiBSpCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiBSpCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -598,7 +594,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -614,12 +610,12 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetFirstLambda ******/
-		/****** md5 signature: 819efdb8532bd01857d5e29b79901d19 ******/
+		/****** md5 signature: 8a02004afa2285e14e86881b7aa525ba ******/
 		%feature("compactdefaultargs") SetFirstLambda;
 		%feature("autodoc", "
 Parameters
 ----------
-l1: float
+l1: double
 
 Return
 -------
@@ -629,15 +625,15 @@ Description
 -----------
 No available documentation.
 ") SetFirstLambda;
-		void SetFirstLambda(const Standard_Real l1);
+		void SetFirstLambda(const double l1);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetLastLambda ******/
-		/****** md5 signature: b34d15f9505b8355ba362a879a836d1a ******/
+		/****** md5 signature: 65f6e83eec34c36c73c315c1a577bc1d ******/
 		%feature("compactdefaultargs") SetLastLambda;
 		%feature("autodoc", "
 Parameters
 ----------
-l2: float
+l2: double
 
 Return
 -------
@@ -647,10 +643,10 @@ Description
 -----------
 No available documentation.
 ") SetLastLambda;
-		void SetLastLambda(const Standard_Real l2);
+		void SetLastLambda(const double l2);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -659,16 +655,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -678,13 +674,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -701,7 +697,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 	public:
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 7d9f95650b38892d69ea383796b7ac06 ******/
+		/****** md5 signature: 3e29d9107d5e33dc3f34064fd99f49da ******/
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -722,10 +718,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: ed896d992fcd6877f972dd893988b683 ******/
+		/****** md5 signature: 1a88db7ffec3315c922cbef5a8464e3e ******/
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -745,17 +741,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 54d7cb68618ead710433102a8be8682a ******/
+		/****** md5 signature: 929100c15e77dbc9d6a7853a477fe946 ******/
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: BRepApprox_TheMultiLineOfApprox
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -771,17 +767,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 1daf31a668cb0e28d1e3be57fca0e751 ******/
+		/****** md5 signature: 3762e4e9700c96e5cbc459e940cb49fa ******/
 		%feature("compactdefaultargs") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: BRepApprox_TheMultiLineOfApprox
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -796,7 +792,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -851,7 +847,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -859,9 +855,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -870,7 +866,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -879,9 +875,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -890,17 +886,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -916,7 +912,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -926,7 +922,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -942,17 +938,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -973,14 +969,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -990,10 +986,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1001,8 +997,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -1012,10 +1008,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1025,8 +1021,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -1036,7 +1032,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -1079,16 +1075,16 @@ returns the matrix of resulting control points value.
 class BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox : public math_BFGS {
 	public:
 		/****** BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: a882919bf6f4818f7c85495cfc3ed0e3 ******/
+		/****** md5 signature: bd3f59b2e69f2ae20204239a26bb5c84 ******/
 		%feature("compactdefaultargs") BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1099,10 +1095,10 @@ Description
 -----------
 No available documentation.
 ") BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -1117,7 +1113,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -1134,16 +1130,16 @@ No available documentation.
 class BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox : public math_BFGS {
 	public:
 		/****** BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 546c0cbcdb8b46db6c5066bcf0c3b9d4 ******/
+		/****** md5 signature: 45e837f68011e8aa08fdeca4c5e577ae ******/
 		%feature("compactdefaultargs") BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1154,10 +1150,10 @@ Description
 -----------
 No available documentation.
 ") BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -1172,7 +1168,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -1189,7 +1185,7 @@ No available documentation.
 class BRepApprox_MyBSplGradientOfTheComputeLineOfApprox {
 	public:
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 74aae5255d1c464d98317338f1ddd977 ******/
+		/****** md5 signature: 2d4c56d73b804907e1aa9d08659cbdfa ******/
 		%feature("compactdefaultargs") BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -1197,13 +1193,13 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 1)
 
 Return
@@ -1214,10 +1210,10 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_MyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 1);
+		 BRepApprox_MyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 1);
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 4460f494a9f34dc845cd63bbb5e64be2 ******/
+		/****** md5 signature: dec6c50afbd43b3dd1d8a1af1d7df9d2 ******/
 		%feature("compactdefaultargs") BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -1225,16 +1221,16 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int
-lambda1: float
-lambda2: float
+lambda1: double
+lambda2: double
 
 Return
 -------
@@ -1244,23 +1240,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") BRepApprox_MyBSplGradientOfTheComputeLineOfApprox;
-		 BRepApprox_MyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations, const Standard_Real lambda1, const Standard_Real lambda2);
+		 BRepApprox_MyBSplGradientOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations, const double lambda1, const double lambda2);
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1269,16 +1265,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1288,33 +1284,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** BRepApprox_MyBSplGradientOfTheComputeLineOfApprox::Value ******/
 		/****** md5 signature: 35d2ee100f1a9fc11f00b074d7d3553e ******/
@@ -1344,7 +1340,7 @@ returns all the BSpline curves approximating the MultiLine SSP after minimizatio
 class BRepApprox_MyGradientOfTheComputeLineBezierOfApprox {
 	public:
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 8693996965e51eac054b6488ab22bbc9 ******/
+		/****** md5 signature: a494f82d347f565b5b11ec872d7875d9 ******/
 		%feature("compactdefaultargs") BRepApprox_MyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -1352,11 +1348,11 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1367,23 +1363,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") BRepApprox_MyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_MyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
+		 BRepApprox_MyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1392,16 +1388,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1411,33 +1407,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** BRepApprox_MyGradientOfTheComputeLineBezierOfApprox::Value ******/
 		/****** md5 signature: dac7e49320bc0e9a268aeb92592734dc ******/
@@ -1467,7 +1463,7 @@ returns all the Bezier curves approximating the MultiLine SSP after minimization
 class BRepApprox_MyGradientbisOfTheComputeLineOfApprox {
 	public:
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::BRepApprox_MyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 10fa2f46a78f50fbbd545ab4bed91a1e ******/
+		/****** md5 signature: a07326014fd6e229c7293a4a1f663235 ******/
 		%feature("compactdefaultargs") BRepApprox_MyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -1475,11 +1471,11 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1490,23 +1486,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") BRepApprox_MyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_MyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
+		 BRepApprox_MyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1515,16 +1511,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1534,33 +1530,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** BRepApprox_MyGradientbisOfTheComputeLineOfApprox::Value ******/
 		/****** md5 signature: dac7e49320bc0e9a268aeb92592734dc ******/
@@ -1590,7 +1586,7 @@ returns all the Bezier curves approximating the MultiLine SSP after minimization
 class BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: bff681b6be5a6a4e25fa90b5bd01acfb ******/
+		/****** md5 signature: b1f6fa1b7df099004ea6bc289dc5d382 ******/
 		%feature("compactdefaultargs") BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -1598,7 +1594,7 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
 
@@ -1610,7 +1606,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
+		 BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -1626,7 +1622,7 @@ returns the MultiCurve approximating the set after computing the value F or Grad
 		AppParCurves_MultiCurve CurveValue();
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Error ******/
-		/****** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ******/
+		/****** md5 signature: 6082404cf8493e28701309c5d66645f2 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1636,21 +1632,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -1661,10 +1657,10 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -1680,15 +1676,15 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -1699,36 +1695,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -1738,7 +1734,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -1754,7 +1750,7 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1763,16 +1759,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -1782,13 +1778,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -1805,7 +1801,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 8b57a9539a2a4df5112bf9db1c1bdd18 ******/
+		/****** md5 signature: a883ebf46455b80fed8ae0c2b1707231 ******/
 		%feature("compactdefaultargs") BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -1813,7 +1809,7 @@ Parameters
 SSP: BRepApprox_TheMultiLineOfApprox
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
 
@@ -1825,7 +1821,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
+		 BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -1841,7 +1837,7 @@ returns the MultiCurve approximating the set after computing the value F or Grad
 		AppParCurves_MultiCurve CurveValue();
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Error ******/
-		/****** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ******/
+		/****** md5 signature: 6082404cf8493e28701309c5d66645f2 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1851,21 +1847,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -1876,10 +1872,10 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -1895,15 +1891,15 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -1914,36 +1910,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -1953,7 +1949,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -1969,7 +1965,7 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1978,16 +1974,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -1997,13 +1993,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -2020,7 +2016,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 	public:
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 63854fa8eaf1a59d1f6521f47cb949f4 ******/
+		/****** md5 signature: 6564a47280505fdf93f88286235ae9bf ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -2041,10 +2037,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 13862a104259244c7e66c3cf257e5f13 ******/
+		/****** md5 signature: da66fa58bbf968f2ec33d04861660cb8 ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -2064,17 +2060,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 111e73f87885e55b085cf3e991ef150e ******/
+		/****** md5 signature: 5e6ed6e4e0e7da138a2809231ed6cc17 ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: BRepApprox_TheMultiLineOfApprox
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -2090,17 +2086,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 0c7b493715ad0c1a97b3332bbc089cbb ******/
+		/****** md5 signature: a7c9def60d522eef59c937c52eae8bba ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: BRepApprox_TheMultiLineOfApprox
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -2115,7 +2111,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -2170,7 +2166,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -2178,9 +2174,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -2189,7 +2185,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -2198,9 +2194,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -2209,17 +2205,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -2235,7 +2231,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2245,7 +2241,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -2261,17 +2257,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -2292,14 +2288,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -2309,10 +2305,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2320,8 +2316,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -2331,10 +2327,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2344,8 +2340,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -2355,7 +2351,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -2398,7 +2394,7 @@ returns the matrix of resulting control points value.
 class BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 	public:
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 3ac00deeb526d442bc1969e7ff78b1c3 ******/
+		/****** md5 signature: 6c761c1d1988939f055edc75b314df20 ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -2419,10 +2415,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 76f12d56ace7dfc439e7e0354cf1bd1c ******/
+		/****** md5 signature: 4bd1c87a652107e21401652897a47a1f ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -2442,17 +2438,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: 29e7f98ecf848591af511976103e0377 ******/
+		/****** md5 signature: 756b77de8fb8de1b54de2644261e3d0c ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: BRepApprox_TheMultiLineOfApprox
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -2468,17 +2464,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: d4db96f964b7c67c71af6a1ce55ab129 ******/
+		/****** md5 signature: 3da8566bb8693901ade7e18d36d47577 ******/
 		%feature("compactdefaultargs") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: BRepApprox_TheMultiLineOfApprox
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -2493,7 +2489,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -2548,7 +2544,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -2556,9 +2552,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -2567,7 +2563,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -2576,9 +2572,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -2587,17 +2583,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -2613,7 +2609,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2623,7 +2619,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -2639,17 +2635,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -2670,14 +2666,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -2687,10 +2683,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2698,8 +2694,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -2709,10 +2705,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2722,8 +2718,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -2733,7 +2729,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -2776,7 +2772,7 @@ returns the matrix of resulting control points value.
 class BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 	public:
 		/****** BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 99259d6924dc08d39374b51f073bcefa ******/
+		/****** md5 signature: ab7b420979bb033f52a127a2386c569d ******/
 		%feature("compactdefaultargs") BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -2785,10 +2781,10 @@ SSP: BRepApprox_TheMultiLineOfApprox
 SCurv: AppParCurves_MultiCurve
 FirstPoint: int
 LastPoint: int
-Constraints: AppParCurves_HArray1OfConstraintCouple
+Constraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Bern: math_Matrix
 DerivativeBern: math_Matrix
-Tolerance: float (optional, default to 1.0e-10)
+Tolerance: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -2798,10 +2794,10 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
-		 BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
+		 BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintDerivative ******/
-		/****** md5 signature: e6efe1da7f8bd48fafb9318a027deeea ******/
+		/****** md5 signature: 92ea400ded2e0fa6962fdeccd6b3e54a ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "
 Parameters
@@ -2819,7 +2815,7 @@ Description
 -----------
 Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
-		const math_Matrix & ConstraintDerivative(const BRepApprox_TheMultiLineOfApprox & SSP, const math_Vector & Parameters, const Standard_Integer Deg, const math_Matrix & DA);
+		const math_Matrix & ConstraintDerivative(const BRepApprox_TheMultiLineOfApprox & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
 		/****** BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
@@ -2861,7 +2857,7 @@ returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matri
 		const math_Matrix & InverseMatrix();
 
 		/****** BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2871,7 +2867,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -2892,7 +2888,7 @@ returns True if all has been correctly done.
 class BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 	public:
 		/****** BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox ******/
-		/****** md5 signature: fb3d32286bcfc0e8b2a0d9780cdbeefd ******/
+		/****** md5 signature: 1792fca104ee7f45869fd05e2dd6d239 ******/
 		%feature("compactdefaultargs") BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -2901,10 +2897,10 @@ SSP: BRepApprox_TheMultiLineOfApprox
 SCurv: AppParCurves_MultiCurve
 FirstPoint: int
 LastPoint: int
-Constraints: AppParCurves_HArray1OfConstraintCouple
+Constraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Bern: math_Matrix
 DerivativeBern: math_Matrix
-Tolerance: float (optional, default to 1.0e-10)
+Tolerance: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -2914,10 +2910,10 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
-		 BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
+		 BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintDerivative ******/
-		/****** md5 signature: e6efe1da7f8bd48fafb9318a027deeea ******/
+		/****** md5 signature: 92ea400ded2e0fa6962fdeccd6b3e54a ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "
 Parameters
@@ -2935,7 +2931,7 @@ Description
 -----------
 Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
-		const math_Matrix & ConstraintDerivative(const BRepApprox_TheMultiLineOfApprox & SSP, const math_Vector & Parameters, const Standard_Integer Deg, const math_Matrix & DA);
+		const math_Matrix & ConstraintDerivative(const BRepApprox_TheMultiLineOfApprox & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
 		/****** BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
@@ -2977,7 +2973,7 @@ returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matri
 		const math_Matrix & InverseMatrix();
 
 		/****** BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2987,7 +2983,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -3116,14 +3112,14 @@ No available documentation.
 		static gp_Cylinder Cylinder(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::D0 ******/
-		/****** md5 signature: f6727a78f574aa9b66c39e1e96c68942 ******/
+		/****** md5 signature: e5da3b3efc17e44d280656fa2fa8d50b ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u: float
-v: float
+u: double
+v: double
 P: gp_Pnt
 
 Return
@@ -3134,17 +3130,17 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const BRepAdaptor_Surface & S, const Standard_Real u, const Standard_Real v, gp_Pnt & P);
+		static void D0(const BRepAdaptor_Surface & S, const double u, const double v, gp_Pnt & P);
 
 		/****** BRepApprox_SurfaceTool::D1 ******/
-		/****** md5 signature: 592559bc5aad46ba1e187df1e73ad838 ******/
+		/****** md5 signature: dffe14f018f256d94455a00cd21309ad ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u: float
-v: float
+u: double
+v: double
 P: gp_Pnt
 D1u: gp_Vec
 D1v: gp_Vec
@@ -3157,17 +3153,17 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const BRepAdaptor_Surface & S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1u, gp_Vec & D1v);
+		static void D1(const BRepAdaptor_Surface & S, const double u, const double v, gp_Pnt & P, gp_Vec & D1u, gp_Vec & D1v);
 
 		/****** BRepApprox_SurfaceTool::D2 ******/
-		/****** md5 signature: a71fc6f6361481ce024985ac00c43f2e ******/
+		/****** md5 signature: 5396afceabe6c36d01dc7688afa11ae9 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u: float
-v: float
+u: double
+v: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -3183,17 +3179,17 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const BRepAdaptor_Surface & S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+		static void D2(const BRepAdaptor_Surface & S, const double u, const double v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
 		/****** BRepApprox_SurfaceTool::D3 ******/
-		/****** md5 signature: 93d118ed99ecd1fad00e03761b8d27f7 ******/
+		/****** md5 signature: aad038c5601f31e2d10ca05cead3843d ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u: float
-v: float
+u: double
+v: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -3213,17 +3209,17 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const BRepAdaptor_Surface & S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+		static void D3(const BRepAdaptor_Surface & S, const double u, const double v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
 		/****** BRepApprox_SurfaceTool::DN ******/
-		/****** md5 signature: d1b963467520172ef209df0b307bcadc ******/
+		/****** md5 signature: b8a0eb71a4f9fdf16ad6def9ed4457d8 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u: float
-v: float
+u: double
+v: double
 Nu: int
 Nv: int
 
@@ -3235,7 +3231,7 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const BRepAdaptor_Surface & S, const Standard_Real u, const Standard_Real v, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const BRepAdaptor_Surface & S, const double u, const double v, const int Nu, const int Nv);
 
 		/****** BRepApprox_SurfaceTool::Direction ******/
 		/****** md5 signature: fd02ced937782132e0e4554d6bbe3252 ******/
@@ -3256,7 +3252,7 @@ No available documentation.
 		static gp_Dir Direction(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::FirstUParameter ******/
-		/****** md5 signature: 215eefdde5b80a72e0c8d839d2b57409 ******/
+		/****** md5 signature: 79c77ff735d16bf83228e3d3a9ba2acb ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "
 Parameters
@@ -3265,16 +3261,16 @@ S: BRepAdaptor_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		static Standard_Real FirstUParameter(const BRepAdaptor_Surface & S);
+		static double FirstUParameter(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::FirstVParameter ******/
-		/****** md5 signature: 1f862d65413056d08b9c3704b06a0163 ******/
+		/****** md5 signature: 35cd5a6e6e46ce89966ef258fcb6e9c1 ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "
 Parameters
@@ -3283,13 +3279,13 @@ S: BRepAdaptor_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		static Standard_Real FirstVParameter(const BRepAdaptor_Surface & S);
+		static double FirstVParameter(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::GetType ******/
 		/****** md5 signature: a6cd815bc857179031573432757ec63b ******/
@@ -3310,7 +3306,7 @@ No available documentation.
 		static GeomAbs_SurfaceType GetType(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::IsUClosed ******/
-		/****** md5 signature: 6352112928c9c27caadc94909335e74d ******/
+		/****** md5 signature: 5908c13fb1a067e63a9d8c5ae72b76de ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "
 Parameters
@@ -3325,10 +3321,10 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		static Standard_Boolean IsUClosed(const BRepAdaptor_Surface & S);
+		static bool IsUClosed(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::IsUPeriodic ******/
-		/****** md5 signature: f5b175e4f6dd57d65b7aa72c2941467e ******/
+		/****** md5 signature: 59f5669217b77ddcdf1a990828a92e43 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -3343,10 +3339,10 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		static Standard_Boolean IsUPeriodic(const BRepAdaptor_Surface & S);
+		static bool IsUPeriodic(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::IsVClosed ******/
-		/****** md5 signature: d9c119797cf9f8b013e890abad3502ab ******/
+		/****** md5 signature: 3e005a6b7982e3622407d58c76c7315d ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "
 Parameters
@@ -3361,10 +3357,10 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		static Standard_Boolean IsVClosed(const BRepAdaptor_Surface & S);
+		static bool IsVClosed(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::IsVPeriodic ******/
-		/****** md5 signature: 1e0af70e4e59762e37b38845553d100d ******/
+		/****** md5 signature: 1b6cd04494770f7a3c7e0d4d9915b800 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -3379,10 +3375,10 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		static Standard_Boolean IsVPeriodic(const BRepAdaptor_Surface & S);
+		static bool IsVPeriodic(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::LastUParameter ******/
-		/****** md5 signature: 29020e982d52766d727d8ac302b0c02e ******/
+		/****** md5 signature: f1d4d6b0a9f00b3560cd9b0f6caa6807 ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "
 Parameters
@@ -3391,16 +3387,16 @@ S: BRepAdaptor_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		static Standard_Real LastUParameter(const BRepAdaptor_Surface & S);
+		static double LastUParameter(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::LastVParameter ******/
-		/****** md5 signature: c3df7f5e21991452c33bf232ce7d9562 ******/
+		/****** md5 signature: b8bf1b5175b2694ffb64a4778918530d ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "
 Parameters
@@ -3409,16 +3405,16 @@ S: BRepAdaptor_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		static Standard_Real LastVParameter(const BRepAdaptor_Surface & S);
+		static double LastVParameter(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::NbSamplesU ******/
-		/****** md5 signature: 9164ce7f9a16f7530e1e9750e637940d ******/
+		/****** md5 signature: 14a7984975bec848816f7fd9da6d4e59 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
@@ -3433,17 +3429,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const BRepAdaptor_Surface & S);
+		static int NbSamplesU(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::NbSamplesU ******/
-		/****** md5 signature: 8e4fac5817077b00af0164eaa2215b8b ******/
+		/****** md5 signature: 6e95b7e8f12eb0d0857bdf713433a538 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u1: float
-u2: float
+u1: double
+u2: double
 
 Return
 -------
@@ -3453,10 +3449,10 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const BRepAdaptor_Surface & S, const Standard_Real u1, const Standard_Real u2);
+		static int NbSamplesU(const BRepAdaptor_Surface & S, const double u1, const double u2);
 
 		/****** BRepApprox_SurfaceTool::NbSamplesV ******/
-		/****** md5 signature: 86d363ec0f4f7e93676b703a15088c2d ******/
+		/****** md5 signature: 478503ab8d3543876b301702708a6f5c ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
@@ -3471,17 +3467,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const BRepAdaptor_Surface & S);
+		static int NbSamplesV(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::NbSamplesV ******/
-		/****** md5 signature: 54516aa4669245c8ce78f61e9ac5d717 ******/
+		/****** md5 signature: 4a6fa736f7cea6124a972c8927940fc3 ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-v1: float
-v2: float
+v1: double
+v2: double
 
 Return
 -------
@@ -3491,10 +3487,10 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const BRepAdaptor_Surface & S, const Standard_Real v1, const Standard_Real v2);
+		static int NbSamplesV(const BRepAdaptor_Surface & S, const double v1, const double v2);
 
 		/****** BRepApprox_SurfaceTool::NbUIntervals ******/
-		/****** md5 signature: b5e43427d66fa95d633f0ee4dac920ea ******/
+		/****** md5 signature: ce9b7171ab9111a7a16e54b949e5f770 ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -3510,10 +3506,10 @@ Description
 -----------
 No available documentation.
 ") NbUIntervals;
-		static Standard_Integer NbUIntervals(const BRepAdaptor_Surface & S, const GeomAbs_Shape Sh);
+		static int NbUIntervals(const BRepAdaptor_Surface & S, const GeomAbs_Shape Sh);
 
 		/****** BRepApprox_SurfaceTool::NbVIntervals ******/
-		/****** md5 signature: 71031702e09c8708c0d4c82d81aa774c ******/
+		/****** md5 signature: 7fa8c38274dc5fd2c32ed680656a18ec ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -3529,7 +3525,7 @@ Description
 -----------
 No available documentation.
 ") NbVIntervals;
-		static Standard_Integer NbVIntervals(const BRepAdaptor_Surface & S, const GeomAbs_Shape Sh);
+		static int NbVIntervals(const BRepAdaptor_Surface & S, const GeomAbs_Shape Sh);
 
 		/****** BRepApprox_SurfaceTool::Plane ******/
 		/****** md5 signature: d0190f93fe1c317fbab00796fd96a8dc ******/
@@ -3586,13 +3582,13 @@ No available documentation.
 		static gp_Torus Torus(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::UIntervals ******/
-		/****** md5 signature: fbe812da680c850950d7ed23300ce95c ******/
+		/****** md5 signature: 537d4f0ffef922b7fa4928b23647cdd2 ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 Sh: GeomAbs_Shape
 
 Return
@@ -3603,10 +3599,10 @@ Description
 -----------
 No available documentation.
 ") UIntervals;
-		static void UIntervals(const BRepAdaptor_Surface & S, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
+		static void UIntervals(const BRepAdaptor_Surface & S, NCollection_Array1<double> & T, const GeomAbs_Shape Sh);
 
 		/****** BRepApprox_SurfaceTool::UPeriod ******/
-		/****** md5 signature: 1426e6a3ff241c573f4f523c672fd425 ******/
+		/****** md5 signature: 536103ae360613c32239f9ab11e503ab ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "
 Parameters
@@ -3615,43 +3611,43 @@ S: BRepAdaptor_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		static Standard_Real UPeriod(const BRepAdaptor_Surface & S);
+		static double UPeriod(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::UResolution ******/
-		/****** md5 signature: d2dc7ef7ab08f98e32e14a9c42fc67d4 ******/
+		/****** md5 signature: 4b21a88fdb21d3260141ddc4fcb300ff ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UResolution;
-		static Standard_Real UResolution(const BRepAdaptor_Surface & S, const Standard_Real R3d);
+		static double UResolution(const BRepAdaptor_Surface & S, const double R3d);
 
 		/****** BRepApprox_SurfaceTool::UTrim ******/
-		/****** md5 signature: bdf57f0192f6ba6a046f6fd4b1f37b23 ******/
+		/****** md5 signature: 7f98bf21f16e5630cc77d4f6c8e94a71 ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -3661,16 +3657,16 @@ Description
 -----------
 If <First> >= <Last>.
 ") UTrim;
-		static opencascade::handle<Adaptor3d_Surface> UTrim(const BRepAdaptor_Surface & S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		static opencascade::handle<Adaptor3d_Surface> UTrim(const BRepAdaptor_Surface & S, const double First, const double Last, const double Tol);
 
 		/****** BRepApprox_SurfaceTool::VIntervals ******/
-		/****** md5 signature: f8f1b75e1a214b4246fee76165c9ced2 ******/
+		/****** md5 signature: fa00613172ccca81e242e44f174e5aa6 ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 Sh: GeomAbs_Shape
 
 Return
@@ -3681,10 +3677,10 @@ Description
 -----------
 No available documentation.
 ") VIntervals;
-		static void VIntervals(const BRepAdaptor_Surface & S, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
+		static void VIntervals(const BRepAdaptor_Surface & S, NCollection_Array1<double> & T, const GeomAbs_Shape Sh);
 
 		/****** BRepApprox_SurfaceTool::VPeriod ******/
-		/****** md5 signature: 76e1f053e14f3e5f4a44e609df017849 ******/
+		/****** md5 signature: 5c4a7dec6a8b1b3fc5cbae6c1a99ab4d ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "
 Parameters
@@ -3693,43 +3689,43 @@ S: BRepAdaptor_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		static Standard_Real VPeriod(const BRepAdaptor_Surface & S);
+		static double VPeriod(const BRepAdaptor_Surface & S);
 
 		/****** BRepApprox_SurfaceTool::VResolution ******/
-		/****** md5 signature: 774befbab33949449d55bbb78eb82b14 ******/
+		/****** md5 signature: bee6ed58cd50c6c72b9e2f9d4a75d315 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VResolution;
-		static Standard_Real VResolution(const BRepAdaptor_Surface & S, const Standard_Real R3d);
+		static double VResolution(const BRepAdaptor_Surface & S, const double R3d);
 
 		/****** BRepApprox_SurfaceTool::VTrim ******/
-		/****** md5 signature: 5d6a8558cceb08dff23363d72161ae0a ******/
+		/****** md5 signature: df1366e740e417a0b76e7a2991793ada ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -3739,17 +3735,17 @@ Description
 -----------
 If <First> >= <Last>.
 ") VTrim;
-		static opencascade::handle<Adaptor3d_Surface> VTrim(const BRepAdaptor_Surface & S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		static opencascade::handle<Adaptor3d_Surface> VTrim(const BRepAdaptor_Surface & S, const double First, const double Last, const double Tol);
 
 		/****** BRepApprox_SurfaceTool::Value ******/
-		/****** md5 signature: 99956c15b75117616c431d8c98ec8815 ******/
+		/****** md5 signature: bcdeb9ed5a9e008e6a22a964f85ae16b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 S: BRepAdaptor_Surface
-u: float
-v: float
+u: double
+v: double
 
 Return
 -------
@@ -3759,7 +3755,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const BRepAdaptor_Surface & S, const Standard_Real u, const Standard_Real v);
+		static gp_Pnt Value(const BRepAdaptor_Surface & S, const double u, const double v);
 
 };
 
@@ -3776,7 +3772,7 @@ No available documentation.
 class BRepApprox_TheComputeLineBezierOfApprox {
 	public:
 		/****** BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox ******/
-		/****** md5 signature: d31d365e1d6f25c58216a527367f35f3 ******/
+		/****** md5 signature: 507c9c26da7e57ec9ab8c3fe6ed2f52b ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -3784,12 +3780,12 @@ Parameters
 Line: BRepApprox_TheMultiLineOfApprox
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-3)
-Tolerance2d: float (optional, default to 1.0e-6)
+Tolerance3d: double (optional, default to 1.0e-3)
+Tolerance2d: double (optional, default to 1.0e-6)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -3799,10 +3795,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") BRepApprox_TheComputeLineBezierOfApprox;
-		 BRepApprox_TheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-3, const double Tolerance2d = 1.0e-6, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 5ce81f24eed0e783537a046f76c5aa51 ******/
+		/****** md5 signature: 3fd846d4d51323e12009bec0714e9c8b ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -3811,11 +3807,11 @@ Line: BRepApprox_TheMultiLineOfApprox
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -3825,10 +3821,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") BRepApprox_TheComputeLineBezierOfApprox;
-		 BRepApprox_TheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineBezierOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox ******/
-		/****** md5 signature: e6393cd2ed1ebcee8edef58897732a18 ******/
+		/****** md5 signature: eea13d114531e0c7e8901fd137a3214d ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -3836,11 +3832,11 @@ Parameters
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -3850,22 +3846,22 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") BRepApprox_TheComputeLineBezierOfApprox;
-		 BRepApprox_TheComputeLineBezierOfApprox(const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineBezierOfApprox(const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox ******/
-		/****** md5 signature: 26c9b30b638a7f29b682161b89c9230c ******/
+		/****** md5 signature: cc7d07e6c2870c18953a0aabe7c3c437 ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineBezierOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -3875,10 +3871,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") BRepApprox_TheComputeLineBezierOfApprox;
-		 BRepApprox_TheComputeLineBezierOfApprox(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineBezierOfApprox(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::ChangeValue ******/
-		/****** md5 signature: 141696e747a4846a7446e394b31644d5 ******/
+		/****** md5 signature: f3fa0af427f9f8c0bbdc2e7a6b2416fb ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -3893,10 +3889,10 @@ Description
 -----------
 returns the result of the approximation.
 ") ChangeValue;
-		AppParCurves_MultiCurve & ChangeValue(const Standard_Integer Index = 1);
+		AppParCurves_MultiCurve & ChangeValue(const int Index = 1);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::Error ******/
-		/****** md5 signature: 6a8061230005ba951097d8b73e7dbec6 ******/
+		/****** md5 signature: 16248cd92a25264d4b1676fa28492d15 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -3905,29 +3901,29 @@ Index: int
 
 Return
 -------
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Description
 -----------
 returns the tolerances 2d and 3d of the <Index> MultiCurve.
 ") Error;
-		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Error(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::Init ******/
-		/****** md5 signature: 10f7f80e213a93740574c45700071b76 ******/
+		/****** md5 signature: bcc8d8f763165c6be0dc6db1f9ef3667 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -3937,10 +3933,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Init;
-		void Init(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		void Init(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::IsAllApproximated ******/
-		/****** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ******/
+		/****** md5 signature: 097042183394c222ee066430113409dd ******/
 		%feature("compactdefaultargs") IsAllApproximated;
 		%feature("autodoc", "Return
 -------
@@ -3950,10 +3946,10 @@ Description
 -----------
 returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
-		Standard_Boolean IsAllApproximated();
+		bool IsAllApproximated();
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::IsToleranceReached ******/
-		/****** md5 signature: cbd7380250e74c96655b10c8025eb873 ******/
+		/****** md5 signature: e68ff79913f1e1cb017e363f76fc9fc2 ******/
 		%feature("compactdefaultargs") IsToleranceReached;
 		%feature("autodoc", "Return
 -------
@@ -3963,10 +3959,10 @@ Description
 -----------
 returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
-		Standard_Boolean IsToleranceReached();
+		bool IsToleranceReached();
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::NbMultiCurves ******/
-		/****** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ******/
+		/****** md5 signature: eed274d77446bf2416a954e7f34c2bf0 ******/
 		%feature("compactdefaultargs") NbMultiCurves;
 		%feature("autodoc", "Return
 -------
@@ -3976,10 +3972,10 @@ Description
 -----------
 Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
-		Standard_Integer NbMultiCurves();
+		int NbMultiCurves();
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::Parameters ******/
-		/****** md5 signature: 457fc00b4795a877d025353e491bb905 ******/
+		/****** md5 signature: 5292a6899dfaa94242ecae6a511c8cc3 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -3988,13 +3984,13 @@ Index: int (optional, default to 1)
 
 Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the multicurve <Index>.
 ") Parameters;
-		const TColStd_Array1OfReal & Parameters(const Standard_Integer Index = 1);
+		const NCollection_Array1<double> & Parameters(const int Index = 1);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::Parametrization ******/
 		/****** md5 signature: 28de4bdef662891658a0d7c12417a76f ******/
@@ -4047,7 +4043,7 @@ changes the first and the last constraint points.
 		void SetConstraints(const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::SetDegrees ******/
-		/****** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ******/
+		/****** md5 signature: 83fc53ce842bc5ef5957903d76f43a4a ******/
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "
 Parameters
@@ -4063,16 +4059,16 @@ Description
 -----------
 changes the degrees of the approximation.
 ") SetDegrees;
-		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
+		void SetDegrees(const int degreemin, const int degreemax);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::SetTolerances ******/
-		/****** md5 signature: ce7879738ace848f7a3a27c56467be10 ******/
+		/****** md5 signature: 26249a86974aa99769435e28e43c6d33 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3d: float
-Tolerance2d: float
+Tolerance3d: double
+Tolerance2d: double
 
 Return
 -------
@@ -4082,7 +4078,7 @@ Description
 -----------
 Changes the tolerances of the approximation.
 ") SetTolerances;
-		void SetTolerances(const Standard_Real Tolerance3d, const Standard_Real Tolerance2d);
+		void SetTolerances(const double Tolerance3d, const double Tolerance2d);
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::SplineValue ******/
 		/****** md5 signature: 8abd3bdfb130cc23332c1960701072a6 ******/
@@ -4098,7 +4094,7 @@ returns the result of the approximation.
 		AppParCurves_MultiBSpCurve SplineValue();
 
 		/****** BRepApprox_TheComputeLineBezierOfApprox::Value ******/
-		/****** md5 signature: ce9a9d43a5aa1f3754abfba817bb7838 ******/
+		/****** md5 signature: 0d67f6100bd40a78330bbdbe083cad77 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4113,7 +4109,7 @@ Description
 -----------
 returns the result of the approximation.
 ") Value;
-		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
+		AppParCurves_MultiCurve Value(const int Index = 1);
 
 };
 
@@ -4130,7 +4126,7 @@ returns the result of the approximation.
 class BRepApprox_TheComputeLineOfApprox {
 	public:
 		/****** BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox ******/
-		/****** md5 signature: 9a6d3c8c47cf418e6f4f046d4cf9f79d ******/
+		/****** md5 signature: 35d1c919ce15d57cf7de9267e099f66a ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -4138,12 +4134,12 @@ Parameters
 Line: BRepApprox_TheMultiLineOfApprox
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-3)
-Tolerance2d: float (optional, default to 1.0e-6)
+Tolerance3d: double (optional, default to 1.0e-3)
+Tolerance2d: double (optional, default to 1.0e-6)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -4153,10 +4149,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all. //! The multiplicities of the internal knots is set by default.
 ") BRepApprox_TheComputeLineOfApprox;
-		 BRepApprox_TheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-3, const double Tolerance2d = 1.0e-6, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox ******/
-		/****** md5 signature: f9a03ed8ef6cd6bf796c5329d942956b ******/
+		/****** md5 signature: 2c81ab77206adbb996527e5006e4fef2 ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -4165,11 +4161,11 @@ Line: BRepApprox_TheMultiLineOfApprox
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -4179,10 +4175,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") BRepApprox_TheComputeLineOfApprox;
-		 BRepApprox_TheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineOfApprox(const BRepApprox_TheMultiLineOfApprox & Line, const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox ******/
-		/****** md5 signature: 3f471de7553798c720ada1908a2f8324 ******/
+		/****** md5 signature: 02c58274a6f34f390bcc63d71aaece6a ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -4190,11 +4186,11 @@ Parameters
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -4204,22 +4200,22 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") BRepApprox_TheComputeLineOfApprox;
-		 BRepApprox_TheComputeLineOfApprox(const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineOfApprox(const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox ******/
-		/****** md5 signature: d8f49093a0f2f316909086b8720f3947 ******/
+		/****** md5 signature: 8e243d44958b201920f801a31bb13a22 ******/
 		%feature("compactdefaultargs") BRepApprox_TheComputeLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -4229,7 +4225,7 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") BRepApprox_TheComputeLineOfApprox;
-		 BRepApprox_TheComputeLineOfApprox(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 BRepApprox_TheComputeLineOfApprox(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineOfApprox::ChangeValue ******/
 		/****** md5 signature: afc5e23129509014348d63bb72db41ec ******/
@@ -4245,7 +4241,7 @@ returns the result of the approximation.
 		AppParCurves_MultiBSpCurve & ChangeValue();
 
 		/****** BRepApprox_TheComputeLineOfApprox::Error ******/
-		/****** md5 signature: cda70ea4f3f90e8bdc1d9692db9c77b8 ******/
+		/****** md5 signature: d18fc3b040904ba6fc435937dfbd0183 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -4253,8 +4249,8 @@ Parameters
 
 Return
 -------
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Description
 -----------
@@ -4263,19 +4259,19 @@ returns the tolerances 2d and 3d of the MultiBSpCurve.
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepApprox_TheComputeLineOfApprox::Init ******/
-		/****** md5 signature: 10f7f80e213a93740574c45700071b76 ******/
+		/****** md5 signature: bcc8d8f763165c6be0dc6db1f9ef3667 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -4285,7 +4281,7 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Init;
-		void Init(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		void Init(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** BRepApprox_TheComputeLineOfApprox::Interpol ******/
 		/****** md5 signature: dedf9a1871046c1f521092aee0a9a8a9 ******/
@@ -4306,7 +4302,7 @@ Constructs an interpolation of the MultiLine <Line> The result will be a C2 curv
 		void Interpol(const BRepApprox_TheMultiLineOfApprox & Line);
 
 		/****** BRepApprox_TheComputeLineOfApprox::IsAllApproximated ******/
-		/****** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ******/
+		/****** md5 signature: 097042183394c222ee066430113409dd ******/
 		%feature("compactdefaultargs") IsAllApproximated;
 		%feature("autodoc", "Return
 -------
@@ -4316,10 +4312,10 @@ Description
 -----------
 returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
-		Standard_Boolean IsAllApproximated();
+		bool IsAllApproximated();
 
 		/****** BRepApprox_TheComputeLineOfApprox::IsToleranceReached ******/
-		/****** md5 signature: cbd7380250e74c96655b10c8025eb873 ******/
+		/****** md5 signature: e68ff79913f1e1cb017e363f76fc9fc2 ******/
 		%feature("compactdefaultargs") IsToleranceReached;
 		%feature("autodoc", "Return
 -------
@@ -4329,20 +4325,20 @@ Description
 -----------
 returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
-		Standard_Boolean IsToleranceReached();
+		bool IsToleranceReached();
 
 		/****** BRepApprox_TheComputeLineOfApprox::Parameters ******/
-		/****** md5 signature: 7c84e53bc11f80fb0f3c0e787e4b026e ******/
+		/****** md5 signature: 5c6424b3748c0fbf869b54f8e752f065 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the MultiBSpCurve.
 ") Parameters;
-		const TColStd_Array1OfReal & Parameters();
+		const NCollection_Array1<double> & Parameters();
 
 		/****** BRepApprox_TheComputeLineOfApprox::Perform ******/
 		/****** md5 signature: cc979eff0e4e2337b1fcdd453d833794 ******/
@@ -4382,7 +4378,7 @@ changes the first and the last constraint points.
 		void SetConstraints(const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetContinuity ******/
-		/****** md5 signature: 004921b69180f9ee5c70f476a9b25f44 ******/
+		/****** md5 signature: 2102c15e2e15905eb62da01cecb4ac7e ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -4397,10 +4393,10 @@ Description
 -----------
 sets the continuity of the spline. if C = 2, the spline will be C2.
 ") SetContinuity;
-		void SetContinuity(const Standard_Integer C);
+		void SetContinuity(const int C);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetDegrees ******/
-		/****** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ******/
+		/****** md5 signature: 83fc53ce842bc5ef5957903d76f43a4a ******/
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "
 Parameters
@@ -4416,15 +4412,15 @@ Description
 -----------
 changes the degrees of the approximation.
 ") SetDegrees;
-		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
+		void SetDegrees(const int degreemin, const int degreemax);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetKnots ******/
-		/****** md5 signature: 81377d2824af79de90394b654e5ac494 ******/
+		/****** md5 signature: 9146a7361df1fcecac0514aafcbcc2e8 ******/
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
+Knots: NCollection_Array1<double>
 
 Return
 -------
@@ -4434,16 +4430,16 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 ") SetKnots;
-		void SetKnots(const TColStd_Array1OfReal & Knots);
+		void SetKnots(const NCollection_Array1<double> & Knots);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetKnotsAndMultiplicities ******/
-		/****** md5 signature: 78291c57c68644dfe7114ee9a585b271 ******/
+		/****** md5 signature: 2bee60c8ad635ef591f756f28601492a ******/
 		%feature("compactdefaultargs") SetKnotsAndMultiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 
 Return
 -------
@@ -4453,7 +4449,7 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 ") SetKnotsAndMultiplicities;
-		void SetKnotsAndMultiplicities(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
+		void SetKnotsAndMultiplicities(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetParameters ******/
 		/****** md5 signature: b1eab3f1f1c8f0892e7a87810e5892e3 ******/
@@ -4474,7 +4470,7 @@ The approximation will begin with the set of parameters <ThePar>.
 		void SetParameters(const math_Vector & ThePar);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetPeriodic ******/
-		/****** md5 signature: 3109823bbe448d62437b44b39b4d9b19 ******/
+		/****** md5 signature: 718ea83d411af3da01e7d7d1d2ed1779 ******/
 		%feature("compactdefaultargs") SetPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -4487,18 +4483,18 @@ None
 
 Description
 -----------
-Sets periodic flag. If thePeriodic = Standard_True, algorithm tries to build periodic multicurve using corresponding C1 boundary condition for first and last multipoints. Multiline must be closed.
+Sets periodic flag. If thePeriodic = true, algorithm tries to build periodic multicurve using corresponding C1 boundary condition for first and last multipoints. Multiline must be closed.
 ") SetPeriodic;
-		void SetPeriodic(const Standard_Boolean thePeriodic);
+		void SetPeriodic(const bool thePeriodic);
 
 		/****** BRepApprox_TheComputeLineOfApprox::SetTolerances ******/
-		/****** md5 signature: ce7879738ace848f7a3a27c56467be10 ******/
+		/****** md5 signature: 26249a86974aa99769435e28e43c6d33 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3d: float
-Tolerance2d: float
+Tolerance3d: double
+Tolerance2d: double
 
 Return
 -------
@@ -4508,7 +4504,7 @@ Description
 -----------
 Changes the tolerances of the approximation.
 ") SetTolerances;
-		void SetTolerances(const Standard_Real Tolerance3d, const Standard_Real Tolerance2d);
+		void SetTolerances(const double Tolerance3d, const double Tolerance2d);
 
 		/****** BRepApprox_TheComputeLineOfApprox::Value ******/
 		/****** md5 signature: c818c96a9a832640b6267a997c4dbd3b ******/
@@ -4583,13 +4579,13 @@ No available documentation.
 		BRepAdaptor_Surface AuxillarSurface2();
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::ComputeParameters ******/
-		/****** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ******/
+		/****** md5 signature: 1783678026f1f00e7bd2b3570378cdb6 ******/
 		%feature("compactdefaultargs") ComputeParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 ChoixIso: IntImp_ConstIsoparametric
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 UVap: math_Vector
 BornInf: math_Vector
 BornSup: math_Vector
@@ -4603,10 +4599,10 @@ Description
 -----------
 No available documentation.
 ") ComputeParameters;
-		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const TColStd_Array1OfReal & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
+		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const NCollection_Array1<double> & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -4622,7 +4618,7 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Direction ******/
 		/****** md5 signature: 7db1622a0b370b4453af0886bb5f840c ******/
@@ -4664,13 +4660,13 @@ No available documentation.
 		gp_Dir2d DirectionOnS2();
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::IsTangent ******/
-		/****** md5 signature: 9e73991f5144c0e218a14c453bc89c5f ******/
+		/****** md5 signature: 764eb67880e4e84c6807135e3e9a351c ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "
 Parameters
 ----------
 UVap: math_Vector
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 
 Return
 -------
@@ -4680,10 +4676,10 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		Standard_Boolean IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric &OutValue);
+		bool IsTangent(const math_Vector & UVap, NCollection_Array1<double> & Param, IntImp_ConstIsoparametric &OutValue);
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -4693,10 +4689,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -4706,7 +4702,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Point ******/
 		/****** md5 signature: aacd847206090cc43a493e5072f97000 ******/
@@ -4722,20 +4718,20 @@ No available documentation.
 		gp_Pnt Point();
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns somme des fi*fi.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4751,10 +4747,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -4771,7 +4767,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -4826,7 +4822,7 @@ No available documentation.
 		 BRepApprox_TheImpPrmSvSurfacesOfApprox(const IntSurf_Quadric & Surf1, const BRepAdaptor_Surface & Surf2);
 
 		/****** BRepApprox_TheImpPrmSvSurfacesOfApprox::Compute ******/
-		/****** md5 signature: 1b6699512251d1cde0fa87fb6fb9f2bf ******/
+		/****** md5 signature: 11b8b8096e3a645c50e1f0d3a504f69f ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -4838,27 +4834,27 @@ Tguv2: gp_Vec2d
 
 Return
 -------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 
 Description
 -----------
 returns True if Tg,Tguv1 Tguv2 can be computed.
 ") Compute;
-		Standard_Boolean Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
+		bool Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
 
 		/****** BRepApprox_TheImpPrmSvSurfacesOfApprox::Pnt ******/
-		/****** md5 signature: 9b8bce66add52a246baf1e5f56b41c57 ******/
+		/****** md5 signature: d77bbf722fb56193d518648efbccfdcc ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 P: gp_Pnt
 
 Return
@@ -4869,18 +4865,18 @@ Description
 -----------
 No available documentation.
 ") Pnt;
-		void Pnt(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Pnt & P);
+		void Pnt(const double u1, const double v1, const double u2, const double v2, gp_Pnt & P);
 
 		/****** BRepApprox_TheImpPrmSvSurfacesOfApprox::SeekPoint ******/
-		/****** md5 signature: 1cbe34841922a959c2a9bca52603cce9 ******/
+		/****** md5 signature: 085f7d205addd666e9f01b7748c802fa ******/
 		%feature("compactdefaultargs") SeekPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Point: IntSurf_PntOn2S
 
 Return
@@ -4891,18 +4887,18 @@ Description
 -----------
 No available documentation.
 ") SeekPoint;
-		Standard_Boolean SeekPoint(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, IntSurf_PntOn2S & Point);
+		bool SeekPoint(const double u1, const double v1, const double u2, const double v2, IntSurf_PntOn2S & Point);
 
 		/****** BRepApprox_TheImpPrmSvSurfacesOfApprox::Tangency ******/
-		/****** md5 signature: c0c9891902a6459b409f1a9c52228000 ******/
+		/****** md5 signature: 4de18c917f129589194950dbcfd65a70 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Tg: gp_Vec
 
 Return
@@ -4913,18 +4909,18 @@ Description
 -----------
 No available documentation.
 ") Tangency;
-		Standard_Boolean Tangency(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec & Tg);
+		bool Tangency(const double u1, const double v1, const double u2, const double v2, gp_Vec & Tg);
 
 		/****** BRepApprox_TheImpPrmSvSurfacesOfApprox::TangencyOnSurf1 ******/
-		/****** md5 signature: 92ffba31e07343330c44d9dee4123c55 ******/
+		/****** md5 signature: 55526a3e85efacfd16f0c8d760461290 ******/
 		%feature("compactdefaultargs") TangencyOnSurf1;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Tg: gp_Vec2d
 
 Return
@@ -4935,18 +4931,18 @@ Description
 -----------
 No available documentation.
 ") TangencyOnSurf1;
-		Standard_Boolean TangencyOnSurf1(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d & Tg);
+		bool TangencyOnSurf1(const double u1, const double v1, const double u2, const double v2, gp_Vec2d & Tg);
 
 		/****** BRepApprox_TheImpPrmSvSurfacesOfApprox::TangencyOnSurf2 ******/
-		/****** md5 signature: 0c3b4c57afa7cd03a0f9030ecd47326b ******/
+		/****** md5 signature: eb07438b4c9db2a39b9b5b8bd1ed4cd7 ******/
 		%feature("compactdefaultargs") TangencyOnSurf2;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Tg: gp_Vec2d
 
 Return
@@ -4957,7 +4953,7 @@ Description
 -----------
 No available documentation.
 ") TangencyOnSurf2;
-		Standard_Boolean TangencyOnSurf2(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d & Tg);
+		bool TangencyOnSurf2(const double u1, const double v1, const double u2, const double v2, gp_Vec2d & Tg);
 
 };
 
@@ -4978,15 +4974,15 @@ No available documentation.
 class BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 	public:
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox ******/
-		/****** md5 signature: d3ed7255941cd2b0a551739eda53debc ******/
+		/****** md5 signature: ca677bf0da9cf74e28ae87a307ad0a72 ******/
 		%feature("compactdefaultargs") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 S1: BRepAdaptor_Surface
 S2: BRepAdaptor_Surface
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -4996,17 +4992,17 @@ Description
 -----------
 compute the solution point with the close point.
 ") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
-		 BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox(const TColStd_Array1OfReal & Param, const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const Standard_Real TolTangency);
+		 BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox(const NCollection_Array1<double> & Param, const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const double TolTangency);
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox ******/
-		/****** md5 signature: fb5174c3acb3fe83c13bf6c1aa515267 ******/
+		/****** md5 signature: e88e2bca81f6d6372001e48700f4e4bd ******/
 		%feature("compactdefaultargs") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: BRepAdaptor_Surface
 S2: BRepAdaptor_Surface
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -5016,7 +5012,7 @@ Description
 -----------
 initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }.
 ") BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox;
-		 BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const Standard_Real TolTangency);
+		 BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox(const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2, const double TolTangency);
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::ChangePoint ******/
 		/****** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ******/
@@ -5084,7 +5080,7 @@ return the math function which is used to compute the intersection.
 		BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox & Function();
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5094,10 +5090,10 @@ Description
 -----------
 Returns True if the creation completed without failure.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -5107,10 +5103,10 @@ Description
 -----------
 Returns True when there is no solution to the problem.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::IsTangent ******/
-		/****** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ******/
+		/****** md5 signature: baca3d34e02c226d40f886fc1be3d673 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -5120,15 +5116,15 @@ Description
 -----------
 Returns True if the surfaces are tangent at the intersection point.
 ") IsTangent;
-		Standard_Boolean IsTangent();
+		bool IsTangent();
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::Perform ******/
-		/****** md5 signature: ba19d26576d52e0e2824307d3171f0bf ******/
+		/****** md5 signature: d659bc97d56b1d57957cfd897c4e043b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 Rsnld: math_FunctionSetRoot
 
 Return
@@ -5139,15 +5135,15 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld);
+		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld);
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::Perform ******/
-		/****** md5 signature: 01d0aa4ed60a8ef13ed05d29863bed35 ******/
+		/****** md5 signature: ba4d806ab7c094897017f5371cb7c643 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 Rsnld: math_FunctionSetRoot
 ChoixIso: IntImp_ConstIsoparametric
 
@@ -5159,7 +5155,7 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
+		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
 		/****** BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::Point ******/
 		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/
@@ -5202,24 +5198,24 @@ No available documentation.
 		 BRepApprox_TheMultiLineOfApprox();
 
 		/****** BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox ******/
-		/****** md5 signature: ad07dd28d2fb52ddfeff00bc4f3b39c1 ******/
+		/****** md5 signature: 4d0fc04fc0e7c58e37b432f94341753c ******/
 		%feature("compactdefaultargs") BRepApprox_TheMultiLineOfApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 line: BRepApprox_ApproxLine
-PtrSvSurfaces: Standard_Address
+PtrSvSurfaces: void *
 NbP3d: int
 NbP2d: int
 ApproxU1V1: bool
 ApproxU2V2: bool
-xo: float
-yo: float
-zo: float
-u1o: float
-v1o: float
-u2o: float
-v2o: float
+xo: double
+yo: double
+zo: double
+u1o: double
+v1o: double
+u2o: double
+v2o: double
 P2DOnFirst: bool
 IndMin: int (optional, default to 0)
 IndMax: int (optional, default to 0)
@@ -5232,10 +5228,10 @@ Description
 -----------
 The class SvSurfaces is used when the approximation algorithm needs some extra points on the line <line>. A New line is then created which shares the same surfaces and functions. SvSurfaces is a deferred class which allows several implementations of this algorithm with different surfaces (bi-parametric ones, or implicit and biparametric ones).
 ") BRepApprox_TheMultiLineOfApprox;
-		 BRepApprox_TheMultiLineOfApprox(const opencascade::handle<BRepApprox_ApproxLine> & line, const Standard_Address PtrSvSurfaces, const Standard_Integer NbP3d, const Standard_Integer NbP2d, const Standard_Boolean ApproxU1V1, const Standard_Boolean ApproxU2V2, const Standard_Real xo, const Standard_Real yo, const Standard_Real zo, const Standard_Real u1o, const Standard_Real v1o, const Standard_Real u2o, const Standard_Real v2o, const Standard_Boolean P2DOnFirst, const Standard_Integer IndMin = 0, const Standard_Integer IndMax = 0);
+		 BRepApprox_TheMultiLineOfApprox(const opencascade::handle<BRepApprox_ApproxLine> & line, void * const PtrSvSurfaces, const int NbP3d, const int NbP2d, const bool ApproxU1V1, const bool ApproxU2V2, const double xo, const double yo, const double zo, const double u1o, const double v1o, const double u2o, const double v2o, const bool P2DOnFirst, const int IndMin = 0, const int IndMax = 0);
 
 		/****** BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox ******/
-		/****** md5 signature: 2c60ef9b4d8ce91c87f55b4589e84dcd ******/
+		/****** md5 signature: 3482229cd8e4db7796efcf49f4e3fcf5 ******/
 		%feature("compactdefaultargs") BRepApprox_TheMultiLineOfApprox;
 		%feature("autodoc", "
 Parameters
@@ -5245,13 +5241,13 @@ NbP3d: int
 NbP2d: int
 ApproxU1V1: bool
 ApproxU2V2: bool
-xo: float
-yo: float
-zo: float
-u1o: float
-v1o: float
-u2o: float
-v2o: float
+xo: double
+yo: double
+zo: double
+u1o: double
+v1o: double
+u2o: double
+v2o: double
 P2DOnFirst: bool
 IndMin: int (optional, default to 0)
 IndMax: int (optional, default to 0)
@@ -5264,7 +5260,7 @@ Description
 -----------
 No Extra points will be added on the current line.
 ") BRepApprox_TheMultiLineOfApprox;
-		 BRepApprox_TheMultiLineOfApprox(const opencascade::handle<BRepApprox_ApproxLine> & line, const Standard_Integer NbP3d, const Standard_Integer NbP2d, const Standard_Boolean ApproxU1V1, const Standard_Boolean ApproxU2V2, const Standard_Real xo, const Standard_Real yo, const Standard_Real zo, const Standard_Real u1o, const Standard_Real v1o, const Standard_Real u2o, const Standard_Real v2o, const Standard_Boolean P2DOnFirst, const Standard_Integer IndMin = 0, const Standard_Integer IndMax = 0);
+		 BRepApprox_TheMultiLineOfApprox(const opencascade::handle<BRepApprox_ApproxLine> & line, const int NbP3d, const int NbP2d, const bool ApproxU1V1, const bool ApproxU2V2, const double xo, const double yo, const double zo, const double u1o, const double v1o, const double u2o, const double v2o, const bool P2DOnFirst, const int IndMin = 0, const int IndMax = 0);
 
 		/****** BRepApprox_TheMultiLineOfApprox::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -5280,7 +5276,7 @@ Dump of the current multi-line.
 		void Dump();
 
 		/****** BRepApprox_TheMultiLineOfApprox::FirstPoint ******/
-		/****** md5 signature: 6036aa5f9c36e4ed29b55026423af997 ******/
+		/****** md5 signature: aa7adff2c31e170754932c9201745763 ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -5290,10 +5286,10 @@ Description
 -----------
 No available documentation.
 ") FirstPoint;
-		Standard_Integer FirstPoint();
+		int FirstPoint();
 
 		/****** BRepApprox_TheMultiLineOfApprox::LastPoint ******/
-		/****** md5 signature: e2615285c6676dba4ad25275a0d452ca ******/
+		/****** md5 signature: f65a3f570516bd4ffe035d0125837342 ******/
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "Return
 -------
@@ -5303,10 +5299,10 @@ Description
 -----------
 No available documentation.
 ") LastPoint;
-		Standard_Integer LastPoint();
+		int LastPoint();
 
 		/****** BRepApprox_TheMultiLineOfApprox::MakeMLBetween ******/
-		/****** md5 signature: 87c3b2149dab9604268e6c6bc4f0c906 ******/
+		/****** md5 signature: 9f481d60307612c90b26276189b2ba09 ******/
 		%feature("compactdefaultargs") MakeMLBetween;
 		%feature("autodoc", "
 Parameters
@@ -5323,10 +5319,10 @@ Description
 -----------
 Tries to make a sub-line between <Low> and <High> points of this line by adding <NbPointsToInsert> new points.
 ") MakeMLBetween;
-		BRepApprox_TheMultiLineOfApprox MakeMLBetween(const Standard_Integer Low, const Standard_Integer High, const Standard_Integer NbPointsToInsert);
+		BRepApprox_TheMultiLineOfApprox MakeMLBetween(const int Low, const int High, const int NbPointsToInsert);
 
 		/****** BRepApprox_TheMultiLineOfApprox::MakeMLOneMorePoint ******/
-		/****** md5 signature: 421c45436bad3eda04a112bcb72d86ce ******/
+		/****** md5 signature: bb48254d31ee43ab6a5b5db1d2f9aa8b ******/
 		%feature("compactdefaultargs") MakeMLOneMorePoint;
 		%feature("autodoc", "
 Parameters
@@ -5344,10 +5340,10 @@ Description
 -----------
 Tries to make a sub-line between <Low> and <High> points of this line by adding one more point between (indbad-1)-th and indbad-th points.
 ") MakeMLOneMorePoint;
-		Standard_Boolean MakeMLOneMorePoint(const Standard_Integer Low, const Standard_Integer High, const Standard_Integer indbad, BRepApprox_TheMultiLineOfApprox & OtherLine);
+		bool MakeMLOneMorePoint(const int Low, const int High, const int indbad, BRepApprox_TheMultiLineOfApprox & OtherLine);
 
 		/****** BRepApprox_TheMultiLineOfApprox::NbP2d ******/
-		/****** md5 signature: 9ba8c102bdeba2dda342e0db8269bbf5 ******/
+		/****** md5 signature: 71d76df8d66740461c246ee478d5281c ******/
 		%feature("compactdefaultargs") NbP2d;
 		%feature("autodoc", "Return
 -------
@@ -5357,10 +5353,10 @@ Description
 -----------
 Returns the number of 2d points of a TheLine.
 ") NbP2d;
-		Standard_Integer NbP2d();
+		int NbP2d();
 
 		/****** BRepApprox_TheMultiLineOfApprox::NbP3d ******/
-		/****** md5 signature: 89b8d7613eeb2675b9641bf825abe487 ******/
+		/****** md5 signature: 6ed680c69fb10cf5bf00d59661c55e37 ******/
 		%feature("compactdefaultargs") NbP3d;
 		%feature("autodoc", "Return
 -------
@@ -5370,16 +5366,16 @@ Description
 -----------
 Returns the number of 3d points of a TheLine.
 ") NbP3d;
-		Standard_Integer NbP3d();
+		int NbP3d();
 
 		/****** BRepApprox_TheMultiLineOfApprox::Tangency ******/
-		/****** md5 signature: c6cbaf0059f48e429c903570a14ee737 ******/
+		/****** md5 signature: 3deb19aee2db8a1823452ad28ba29d3d ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 MPointIndex: int
-tabV: TColgp_Array1OfVec
+tabV: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -5389,16 +5385,16 @@ Description
 -----------
 Returns the 3d tangency points of the multipoint <MPointIndex> only when 3d points exist.
 ") Tangency;
-		Standard_Boolean Tangency(const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
+		bool Tangency(const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
 
 		/****** BRepApprox_TheMultiLineOfApprox::Tangency ******/
-		/****** md5 signature: e9d5611508aa120465fde3464ad5ef52 ******/
+		/****** md5 signature: 6adca0bdfc2f14a9b2d2e748dd223ff3 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 MPointIndex: int
-tabV2d: TColgp_Array1OfVec2d
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -5408,17 +5404,17 @@ Description
 -----------
 Returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
-		Standard_Boolean Tangency(const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
+		bool Tangency(const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** BRepApprox_TheMultiLineOfApprox::Tangency ******/
-		/****** md5 signature: c8caf611c9dc97dd9b8842534059cab9 ******/
+		/****** md5 signature: f4a861843c0d21680dada851aa5373fe ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 MPointIndex: int
-tabV: TColgp_Array1OfVec
-tabV2d: TColgp_Array1OfVec2d
+tabV: NCollection_Array1<gp_Vec>
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -5428,16 +5424,16 @@ Description
 -----------
 Returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
-		Standard_Boolean Tangency(const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
+		bool Tangency(const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** BRepApprox_TheMultiLineOfApprox::Value ******/
-		/****** md5 signature: 511d3e7ebcd62cd9cfde5bca091161ea ******/
+		/****** md5 signature: bf9db9427c08427650d3a62ba7773999 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 MPointIndex: int
-tabPt: TColgp_Array1OfPnt
+tabPt: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -5447,16 +5443,16 @@ Description
 -----------
 Returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
-		void Value(const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
+		void Value(const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt);
 
 		/****** BRepApprox_TheMultiLineOfApprox::Value ******/
-		/****** md5 signature: 6626a2a082c59909a2d396794f2d2a4e ******/
+		/****** md5 signature: a98900519cdc0086a3f3828b0190bebb ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 MPointIndex: int
-tabPt2d: TColgp_Array1OfPnt2d
+tabPt2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -5466,17 +5462,17 @@ Description
 -----------
 Returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
-		void Value(const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
+		void Value(const int MPointIndex, NCollection_Array1<gp_Pnt2d> & tabPt2d);
 
 		/****** BRepApprox_TheMultiLineOfApprox::Value ******/
-		/****** md5 signature: 9ace448e14090fa28f4ee0cbe190ed29 ******/
+		/****** md5 signature: 9d7b6d0990f59d91fd43833bb2d1f05b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 MPointIndex: int
-tabPt: TColgp_Array1OfPnt
-tabPt2d: TColgp_Array1OfPnt2d
+tabPt: NCollection_Array1<gp_Pnt>
+tabPt2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -5486,7 +5482,7 @@ Description
 -----------
 Returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
-		void Value(const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
+		void Value(const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt, NCollection_Array1<gp_Pnt2d> & tabPt2d);
 
 		/****** BRepApprox_TheMultiLineOfApprox::WhatStatus ******/
 		/****** md5 signature: 76f55e4a417176afbc003868c157efc5 ******/
@@ -5516,14 +5512,14 @@ No available documentation.
 class BRepApprox_TheMultiLineToolOfApprox {
 	public:
 		/****** BRepApprox_TheMultiLineToolOfApprox::Curvature ******/
-		/****** md5 signature: bf7ee67527922d9913db5a4fbf2e4afb ******/
+		/****** md5 signature: 04ccf02599659e7ba70b86633f7bf957 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabV: TColgp_Array1OfVec
+tabV: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -5533,17 +5529,17 @@ Description
 -----------
 returns the 3d curvature of the multipoint <MPointIndex> when only 3d points exist.
 ") Curvature;
-		static Standard_Boolean Curvature(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
+		static bool Curvature(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Curvature ******/
-		/****** md5 signature: febf4f9f7956f4982c5221e66708df55 ******/
+		/****** md5 signature: 6d0f87afc707956d98f934152bb1506a ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabV2d: TColgp_Array1OfVec2d
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -5553,18 +5549,18 @@ Description
 -----------
 returns the 2d curvature points of the multipoint <MPointIndex> only when 2d points exist.
 ") Curvature;
-		static Standard_Boolean Curvature(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
+		static bool Curvature(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Curvature ******/
-		/****** md5 signature: ac0a699a5da9a476fb76822ea024d997 ******/
+		/****** md5 signature: 50f1cd737b5bc9a3a2a932de55c0c4d0 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabV: TColgp_Array1OfVec
-tabV2d: TColgp_Array1OfVec2d
+tabV: NCollection_Array1<gp_Vec>
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -5574,7 +5570,7 @@ Description
 -----------
 returns the 3d and 2d curvature of the multipoint <MPointIndex>.
 ") Curvature;
-		static Standard_Boolean Curvature(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
+		static bool Curvature(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Dump ******/
 		/****** md5 signature: b9cdb0fd704d7adbd581eb92bfcc2528 ******/
@@ -5595,7 +5591,7 @@ Dump of the current multi-line.
 		static void Dump(const BRepApprox_TheMultiLineOfApprox & ML);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::FirstPoint ******/
-		/****** md5 signature: 85a33a9acd8ba8a4e3e2371ddd20fc7c ******/
+		/****** md5 signature: 12298688292f9d02a960272737e04236 ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -5610,10 +5606,10 @@ Description
 -----------
 Returns the number of multipoints of the TheMultiLine.
 ") FirstPoint;
-		static Standard_Integer FirstPoint(const BRepApprox_TheMultiLineOfApprox & ML);
+		static int FirstPoint(const BRepApprox_TheMultiLineOfApprox & ML);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::LastPoint ******/
-		/****** md5 signature: 47721ef9a832798de7a827f5fa93cc6a ******/
+		/****** md5 signature: 534f0c3df26b84bc8fad1efeab26d263 ******/
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "
 Parameters
@@ -5628,10 +5624,10 @@ Description
 -----------
 Returns the number of multipoints of the TheMultiLine.
 ") LastPoint;
-		static Standard_Integer LastPoint(const BRepApprox_TheMultiLineOfApprox & ML);
+		static int LastPoint(const BRepApprox_TheMultiLineOfApprox & ML);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::MakeMLBetween ******/
-		/****** md5 signature: 0f95b389697bc413dc72ff9ef97cc6a8 ******/
+		/****** md5 signature: 2e7b8e832a908227636b02ff6e190fad ******/
 		%feature("compactdefaultargs") MakeMLBetween;
 		%feature("autodoc", "
 Parameters
@@ -5649,10 +5645,10 @@ Description
 -----------
 Is called if WhatStatus returned 'PointsAdded'.
 ") MakeMLBetween;
-		static BRepApprox_TheMultiLineOfApprox MakeMLBetween(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin);
+		static BRepApprox_TheMultiLineOfApprox MakeMLBetween(const BRepApprox_TheMultiLineOfApprox & ML, const int I1, const int I2, const int NbPMin);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::MakeMLOneMorePoint ******/
-		/****** md5 signature: 4d363a38e0089ecaa07a9e81dab44599 ******/
+		/****** md5 signature: 11b8d38b0cd61fdfa418be1fef0ec4c1 ******/
 		%feature("compactdefaultargs") MakeMLOneMorePoint;
 		%feature("autodoc", "
 Parameters
@@ -5671,10 +5667,10 @@ Description
 -----------
 Is called when the Bezier curve contains a loop.
 ") MakeMLOneMorePoint;
-		static Standard_Boolean MakeMLOneMorePoint(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer indbad, BRepApprox_TheMultiLineOfApprox & OtherLine);
+		static bool MakeMLOneMorePoint(const BRepApprox_TheMultiLineOfApprox & ML, const int I1, const int I2, const int indbad, BRepApprox_TheMultiLineOfApprox & OtherLine);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::NbP2d ******/
-		/****** md5 signature: 4dbf4c9efe98f097e7d61fb3638a07d9 ******/
+		/****** md5 signature: a9d18311204b8b0b02aefca088a44d4d ******/
 		%feature("compactdefaultargs") NbP2d;
 		%feature("autodoc", "
 Parameters
@@ -5689,10 +5685,10 @@ Description
 -----------
 Returns the number of 2d points of a TheMultiLine.
 ") NbP2d;
-		static Standard_Integer NbP2d(const BRepApprox_TheMultiLineOfApprox & ML);
+		static int NbP2d(const BRepApprox_TheMultiLineOfApprox & ML);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::NbP3d ******/
-		/****** md5 signature: cf55a696ef970abbf2e8f74b4a0daed1 ******/
+		/****** md5 signature: 93b5bc4bb1fa66f3c054f08071278a04 ******/
 		%feature("compactdefaultargs") NbP3d;
 		%feature("autodoc", "
 Parameters
@@ -5707,17 +5703,17 @@ Description
 -----------
 Returns the number of 3d points of a TheMultiLine.
 ") NbP3d;
-		static Standard_Integer NbP3d(const BRepApprox_TheMultiLineOfApprox & ML);
+		static int NbP3d(const BRepApprox_TheMultiLineOfApprox & ML);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Tangency ******/
-		/****** md5 signature: b7b561fe15855fef28260b26ee552e4b ******/
+		/****** md5 signature: 42f877965d1eef955e627a71e1cfba85 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabV: TColgp_Array1OfVec
+tabV: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -5727,17 +5723,17 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Tangency;
-		static Standard_Boolean Tangency(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
+		static bool Tangency(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Tangency ******/
-		/****** md5 signature: 8152094c428170ba0f2f1fd17292c27c ******/
+		/****** md5 signature: db2646ca50cae799cca6dd40cf74df09 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabV2d: TColgp_Array1OfVec2d
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -5747,18 +5743,18 @@ Description
 -----------
 returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
-		static Standard_Boolean Tangency(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
+		static bool Tangency(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Tangency ******/
-		/****** md5 signature: 6aef83009c20ac70bd1b04ba431473d4 ******/
+		/****** md5 signature: 1c9253a52137fae70ba804c8edcd72a0 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabV: TColgp_Array1OfVec
-tabV2d: TColgp_Array1OfVec2d
+tabV: NCollection_Array1<gp_Vec>
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -5768,17 +5764,17 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
-		static Standard_Boolean Tangency(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
+		static bool Tangency(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Value ******/
-		/****** md5 signature: ecc7784256b44d7c12f30c0b086997a2 ******/
+		/****** md5 signature: af36572f05b95833633f6ced548d3138 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabPt: TColgp_Array1OfPnt
+tabPt: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -5788,17 +5784,17 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
-		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
+		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Value ******/
-		/****** md5 signature: f04c8e8e6745056be43d70d16c74dcf5 ******/
+		/****** md5 signature: d9cbfc74e55e4d713fc939be5f1e5da3 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabPt2d: TColgp_Array1OfPnt2d
+tabPt2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -5808,18 +5804,18 @@ Description
 -----------
 returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
-		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
+		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Pnt2d> & tabPt2d);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::Value ******/
-		/****** md5 signature: a95dafe6ca3a1d888726e591cc020148 ******/
+		/****** md5 signature: bacd5facc77a33a65045f91f8580d343 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: BRepApprox_TheMultiLineOfApprox
 MPointIndex: int
-tabPt: TColgp_Array1OfPnt
-tabPt2d: TColgp_Array1OfPnt2d
+tabPt: NCollection_Array1<gp_Pnt>
+tabPt2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -5829,10 +5825,10 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
-		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
+		static void Value(const BRepApprox_TheMultiLineOfApprox & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt, NCollection_Array1<gp_Pnt2d> & tabPt2d);
 
 		/****** BRepApprox_TheMultiLineToolOfApprox::WhatStatus ******/
-		/****** md5 signature: d2b8e2cdf30a632e4776399c404b4817 ******/
+		/****** md5 signature: 13e70058d9017178a8ca206ea5032eb9 ******/
 		%feature("compactdefaultargs") WhatStatus;
 		%feature("autodoc", "
 Parameters
@@ -5849,7 +5845,7 @@ Description
 -----------
 No available documentation.
 ") WhatStatus;
-		static Approx_Status WhatStatus(const BRepApprox_TheMultiLineOfApprox & ML, const Standard_Integer I1, const Standard_Integer I2);
+		static Approx_Status WhatStatus(const BRepApprox_TheMultiLineOfApprox & ML, const int I1, const int I2);
 
 };
 
@@ -5885,7 +5881,7 @@ No available documentation.
 		 BRepApprox_ThePrmPrmSvSurfacesOfApprox(const BRepAdaptor_Surface & Surf1, const BRepAdaptor_Surface & Surf2);
 
 		/****** BRepApprox_ThePrmPrmSvSurfacesOfApprox::Compute ******/
-		/****** md5 signature: 1b6699512251d1cde0fa87fb6fb9f2bf ******/
+		/****** md5 signature: 11b8b8096e3a645c50e1f0d3a504f69f ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -5897,27 +5893,27 @@ Tguv2: gp_Vec2d
 
 Return
 -------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 
 Description
 -----------
 returns True if Tg,Tguv1 Tguv2 can be computed.
 ") Compute;
-		Standard_Boolean Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
+		bool Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
 
 		/****** BRepApprox_ThePrmPrmSvSurfacesOfApprox::Pnt ******/
-		/****** md5 signature: 9b8bce66add52a246baf1e5f56b41c57 ******/
+		/****** md5 signature: d77bbf722fb56193d518648efbccfdcc ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 P: gp_Pnt
 
 Return
@@ -5928,18 +5924,18 @@ Description
 -----------
 No available documentation.
 ") Pnt;
-		void Pnt(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Pnt & P);
+		void Pnt(const double u1, const double v1, const double u2, const double v2, gp_Pnt & P);
 
 		/****** BRepApprox_ThePrmPrmSvSurfacesOfApprox::SeekPoint ******/
-		/****** md5 signature: 1cbe34841922a959c2a9bca52603cce9 ******/
+		/****** md5 signature: 085f7d205addd666e9f01b7748c802fa ******/
 		%feature("compactdefaultargs") SeekPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Point: IntSurf_PntOn2S
 
 Return
@@ -5950,18 +5946,18 @@ Description
 -----------
 No available documentation.
 ") SeekPoint;
-		Standard_Boolean SeekPoint(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, IntSurf_PntOn2S & Point);
+		bool SeekPoint(const double u1, const double v1, const double u2, const double v2, IntSurf_PntOn2S & Point);
 
 		/****** BRepApprox_ThePrmPrmSvSurfacesOfApprox::Tangency ******/
-		/****** md5 signature: c0c9891902a6459b409f1a9c52228000 ******/
+		/****** md5 signature: 4de18c917f129589194950dbcfd65a70 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Tg: gp_Vec
 
 Return
@@ -5972,18 +5968,18 @@ Description
 -----------
 No available documentation.
 ") Tangency;
-		Standard_Boolean Tangency(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec & Tg);
+		bool Tangency(const double u1, const double v1, const double u2, const double v2, gp_Vec & Tg);
 
 		/****** BRepApprox_ThePrmPrmSvSurfacesOfApprox::TangencyOnSurf1 ******/
-		/****** md5 signature: 92ffba31e07343330c44d9dee4123c55 ******/
+		/****** md5 signature: 55526a3e85efacfd16f0c8d760461290 ******/
 		%feature("compactdefaultargs") TangencyOnSurf1;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Tg: gp_Vec2d
 
 Return
@@ -5994,18 +5990,18 @@ Description
 -----------
 No available documentation.
 ") TangencyOnSurf1;
-		Standard_Boolean TangencyOnSurf1(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d & Tg);
+		bool TangencyOnSurf1(const double u1, const double v1, const double u2, const double v2, gp_Vec2d & Tg);
 
 		/****** BRepApprox_ThePrmPrmSvSurfacesOfApprox::TangencyOnSurf2 ******/
-		/****** md5 signature: 0c3b4c57afa7cd03a0f9030ecd47326b ******/
+		/****** md5 signature: eb07438b4c9db2a39b9b5b8bd1ed4cd7 ******/
 		%feature("compactdefaultargs") TangencyOnSurf2;
 		%feature("autodoc", "
 Parameters
 ----------
-u1: float
-v1: float
-u2: float
-v2: float
+u1: double
+v1: double
+u2: double
+v2: double
 Tg: gp_Vec2d
 
 Return
@@ -6016,7 +6012,7 @@ Description
 -----------
 No available documentation.
 ") TangencyOnSurf2;
-		Standard_Boolean TangencyOnSurf2(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d & Tg);
+		bool TangencyOnSurf2(const double u1, const double v1, const double u2, const double v2, gp_Vec2d & Tg);
 
 };
 
@@ -6083,7 +6079,7 @@ No available documentation.
 		 BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox(const IntSurf_Quadric & IS);
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -6099,7 +6095,7 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Direction2d ******/
 		/****** md5 signature: e46e583c3b745511fb8654831bfa19d7 ******/
@@ -6141,7 +6137,7 @@ No available documentation.
 		const IntSurf_Quadric & ISurface();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::IsTangent ******/
-		/****** md5 signature: 52337431677eb50512a9391c1db95a81 ******/
+		/****** md5 signature: 57430bba54a67cd70f0eb7addde8c3c7 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -6151,10 +6147,10 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		Standard_Boolean IsTangent();
+		bool IsTangent();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -6164,10 +6160,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -6177,7 +6173,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::PSurface ******/
 		/****** md5 signature: 6400b2748022787da79a4e57d03a7e1a ******/
@@ -6206,17 +6202,17 @@ No available documentation.
 		const gp_Pnt Point();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Set ******/
 		/****** md5 signature: 9058e7788b2e34d9884944da3a219e67 ******/
@@ -6237,12 +6233,12 @@ No available documentation.
 		void Set(const BRepAdaptor_Surface & PS);
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Set ******/
-		/****** md5 signature: 7e3e1092ebe5da1f71e965a1091893e3 ******/
+		/****** md5 signature: bf508c67cd63b5bb26c659d2af54ab81 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -6252,7 +6248,7 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Real Tolerance);
+		void Set(const double Tolerance);
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::SetImplicitSurface ******/
 		/****** md5 signature: 0ad3b55688a2be8e3aa7ec9c9bcbd283 ******/
@@ -6273,20 +6269,20 @@ No available documentation.
 		void SetImplicitSurface(const IntSurf_Quadric & IS);
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-Returns the value Tol so that if Abs(Func.Root())<Tol the function is considered null.
+Returns the value Tol so that if std::abs(Func.Root())<Tol the function is considered null.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6302,10 +6298,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -6322,7 +6318,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 

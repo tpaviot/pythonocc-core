@@ -46,7 +46,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepdata.html"
 #include<NCollection_module.hxx>
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<Resource_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
@@ -60,7 +59,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepdata.html"
 %import NCollection.i
 %import Interface.i
 %import TCollection.i
-%import TColStd.i
 %import Resource.i
 
 %pythoncode {
@@ -113,7 +111,6 @@ StepData_LUnknown = StepData_Logical.StepData_LUnknown
 %wrap_handle(StepData_SelectReal)
 %wrap_handle(StepData_Simple)
 %wrap_handle(StepData_SelectArrReal)
-%wrap_handle(StepData_HArray1OfField)
 /* end handles declaration */
 
 /* templates */
@@ -124,6 +121,7 @@ Array1ExtendIter(StepData_Field)
 
 /* typedefs */
 typedef NCollection_Array1<StepData_Field> StepData_Array1OfField;
+typedef NCollection_HArray1<StepData_Field> StepData_HArray1OfField;
 /* end typedefs declaration */
 
 /*****************
@@ -205,12 +203,12 @@ Returns a Protocol from StepData (avoids to create it).
 class StepData_Described : public Standard_Transient {
 	public:
 		/****** StepData_Described::As ******/
-		/****** md5 signature: e6f72365cd240b51fd7b81aebeaca885 ******/
+		/****** md5 signature: c5aa999b1e6fc17df1b80a471d89bb65 ******/
 		%feature("compactdefaultargs") As;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -220,15 +218,15 @@ Description
 -----------
 Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity: me if it matches, else a null handle For a Complex Entity: the member which matches, else null.
 ") As;
-		virtual opencascade::handle<StepData_Simple> As(Standard_CString steptype);
+		virtual opencascade::handle<StepData_Simple> As(const char * const steptype);
 
 		/****** StepData_Described::CField ******/
-		/****** md5 signature: 3942529d9415c9a1148718142b858ef3 ******/
+		/****** md5 signature: 93c0036e39f9878a4e0d32dd3c774487 ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -238,7 +236,7 @@ Description
 -----------
 Returns a Field from its name; read or write.
 ") CField;
-		virtual StepData_Field & CField(Standard_CString name);
+		virtual StepData_Field & CField(const char * const name);
 
 		/****** StepData_Described::Check ******/
 		/****** md5 signature: a6c0f3d98344bfd32cbe8030f11e49a2 ******/
@@ -272,12 +270,12 @@ Returns the Description used to define this entity.
 		opencascade::handle<StepData_EDescr> Description();
 
 		/****** StepData_Described::Field ******/
-		/****** md5 signature: b54581cafdf7e0ab0516bfe80096faf7 ******/
+		/****** md5 signature: 30bf6b6c6096e21073c7685b4218c746 ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -287,15 +285,15 @@ Description
 -----------
 Returns a Field from its name; read-only.
 ") Field;
-		virtual const StepData_Field & Field(Standard_CString name);
+		virtual const StepData_Field & Field(const char * const name);
 
 		/****** StepData_Described::HasField ******/
-		/****** md5 signature: 763cef82240aba1dfcfff32b45427471 ******/
+		/****** md5 signature: 794f09536ad862ecb4fc1cebf8d9a067 ******/
 		%feature("compactdefaultargs") HasField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -305,10 +303,10 @@ Description
 -----------
 Tells if a Field brings a given name.
 ") HasField;
-		virtual Standard_Boolean HasField(Standard_CString name);
+		virtual bool HasField(const char * const name);
 
 		/****** StepData_Described::IsComplex ******/
-		/****** md5 signature: 215c43b1ca8c148c12b487f2fd98bef8 ******/
+		/****** md5 signature: d099435b48ee3dc99917659ceaf34566 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "Return
 -------
@@ -318,15 +316,15 @@ Description
 -----------
 Tells if a described entity is complex.
 ") IsComplex;
-		virtual Standard_Boolean IsComplex();
+		virtual bool IsComplex();
 
 		/****** StepData_Described::Matches ******/
-		/****** md5 signature: a826a593a3dad8b7fff1d0cd8938a955 ******/
+		/****** md5 signature: 855c9488852ce1d9d633c91dd0dc694f ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -336,7 +334,7 @@ Description
 -----------
 Tells if a step type is matched by <self> For a Simple Entity: own type or super type For a Complex Entity: one of the members.
 ") Matches;
-		virtual Standard_Boolean Matches(Standard_CString steptype);
+		virtual bool Matches(const char * const steptype);
 
 		/****** StepData_Described::Shared ******/
 		/****** md5 signature: d9e9efa040bea745d29689599b296689 ******/
@@ -374,7 +372,7 @@ Fills an EntityIterator with entities shared by <self>.
 class StepData_EDescr : public Standard_Transient {
 	public:
 		/****** StepData_EDescr::IsComplex ******/
-		/****** md5 signature: 215c43b1ca8c148c12b487f2fd98bef8 ******/
+		/****** md5 signature: d099435b48ee3dc99917659ceaf34566 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "Return
 -------
@@ -384,15 +382,15 @@ Description
 -----------
 Tells if a EDescr is complex (ECDescr) or simple (ESDescr).
 ") IsComplex;
-		virtual Standard_Boolean IsComplex();
+		virtual bool IsComplex();
 
 		/****** StepData_EDescr::Matches ******/
-		/****** md5 signature: a826a593a3dad8b7fff1d0cd8938a955 ******/
+		/****** md5 signature: 855c9488852ce1d9d633c91dd0dc694f ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -402,7 +400,7 @@ Description
 -----------
 Tells if a ESDescr matches a step type: exact or super type.
 ") Matches;
-		virtual Standard_Boolean Matches(Standard_CString steptype);
+		virtual bool Matches(const char * const steptype);
 
 		/****** StepData_EDescr::NewEntity ******/
 		/****** md5 signature: 6ca199af3f6d883b631677c74f1720fd ******/
@@ -434,51 +432,51 @@ Creates a described entity (i.e. a simple one).
 class StepData_EnumTool {
 	public:
 		/****** StepData_EnumTool::StepData_EnumTool ******/
-		/****** md5 signature: 8d5339daaaa43e9738a7a169ae14a519 ******/
+		/****** md5 signature: 4e89cf618a6063d35835f68a5e227b0b ******/
 		%feature("compactdefaultargs") StepData_EnumTool;
 		%feature("autodoc", "
 Parameters
 ----------
-e0: str (optional, default to "")
-e1: str (optional, default to "")
-e2: str (optional, default to "")
-e3: str (optional, default to "")
-e4: str (optional, default to "")
-e5: str (optional, default to "")
-e6: str (optional, default to "")
-e7: str (optional, default to "")
-e8: str (optional, default to "")
-e9: str (optional, default to "")
-e10: str (optional, default to "")
-e11: str (optional, default to "")
-e12: str (optional, default to "")
-e13: str (optional, default to "")
-e14: str (optional, default to "")
-e15: str (optional, default to "")
-e16: str (optional, default to "")
-e17: str (optional, default to "")
-e18: str (optional, default to "")
-e19: str (optional, default to "")
-e20: str (optional, default to "")
-e21: str (optional, default to "")
-e22: str (optional, default to "")
-e23: str (optional, default to "")
-e24: str (optional, default to "")
-e25: str (optional, default to "")
-e26: str (optional, default to "")
-e27: str (optional, default to "")
-e28: str (optional, default to "")
-e29: str (optional, default to "")
-e30: str (optional, default to "")
-e31: str (optional, default to "")
-e32: str (optional, default to "")
-e33: str (optional, default to "")
-e34: str (optional, default to "")
-e35: str (optional, default to "")
-e36: str (optional, default to "")
-e37: str (optional, default to "")
-e38: str (optional, default to "")
-e39: str (optional, default to "")
+e0: char * (optional, default to "")
+e1: char * (optional, default to "")
+e2: char * (optional, default to "")
+e3: char * (optional, default to "")
+e4: char * (optional, default to "")
+e5: char * (optional, default to "")
+e6: char * (optional, default to "")
+e7: char * (optional, default to "")
+e8: char * (optional, default to "")
+e9: char * (optional, default to "")
+e10: char * (optional, default to "")
+e11: char * (optional, default to "")
+e12: char * (optional, default to "")
+e13: char * (optional, default to "")
+e14: char * (optional, default to "")
+e15: char * (optional, default to "")
+e16: char * (optional, default to "")
+e17: char * (optional, default to "")
+e18: char * (optional, default to "")
+e19: char * (optional, default to "")
+e20: char * (optional, default to "")
+e21: char * (optional, default to "")
+e22: char * (optional, default to "")
+e23: char * (optional, default to "")
+e24: char * (optional, default to "")
+e25: char * (optional, default to "")
+e26: char * (optional, default to "")
+e27: char * (optional, default to "")
+e28: char * (optional, default to "")
+e29: char * (optional, default to "")
+e30: char * (optional, default to "")
+e31: char * (optional, default to "")
+e32: char * (optional, default to "")
+e33: char * (optional, default to "")
+e34: char * (optional, default to "")
+e35: char * (optional, default to "")
+e36: char * (optional, default to "")
+e37: char * (optional, default to "")
+e38: char * (optional, default to "")
+e39: char * (optional, default to "")
 
 Return
 -------
@@ -488,15 +486,15 @@ Description
 -----------
 Creates an EnumTool with definitions given by e0 .. e<max> Each definition string can bring one term, or several separated by blanks. Each term corresponds to one value of the enumeration, if dots are not presents they are added //! Such a static constructor allows to build a static description as: static StepData_EnumTool myenumtool('e0','e1'...); then use it without having to initialise it //! A null definition can be input by given '$' :the corresponding position is attached to 'null/undefined' value (as one particular item of the enumeration list).
 ") StepData_EnumTool;
-		 StepData_EnumTool(Standard_CString e0 = "", Standard_CString e1 = "", Standard_CString e2 = "", Standard_CString e3 = "", Standard_CString e4 = "", Standard_CString e5 = "", Standard_CString e6 = "", Standard_CString e7 = "", Standard_CString e8 = "", Standard_CString e9 = "", Standard_CString e10 = "", Standard_CString e11 = "", Standard_CString e12 = "", Standard_CString e13 = "", Standard_CString e14 = "", Standard_CString e15 = "", Standard_CString e16 = "", Standard_CString e17 = "", Standard_CString e18 = "", Standard_CString e19 = "", Standard_CString e20 = "", Standard_CString e21 = "", Standard_CString e22 = "", Standard_CString e23 = "", Standard_CString e24 = "", Standard_CString e25 = "", Standard_CString e26 = "", Standard_CString e27 = "", Standard_CString e28 = "", Standard_CString e29 = "", Standard_CString e30 = "", Standard_CString e31 = "", Standard_CString e32 = "", Standard_CString e33 = "", Standard_CString e34 = "", Standard_CString e35 = "", Standard_CString e36 = "", Standard_CString e37 = "", Standard_CString e38 = "", Standard_CString e39 = "");
+		 StepData_EnumTool(const char * const e0 = "", const char * const e1 = "", const char * const e2 = "", const char * const e3 = "", const char * const e4 = "", const char * const e5 = "", const char * const e6 = "", const char * const e7 = "", const char * const e8 = "", const char * const e9 = "", const char * const e10 = "", const char * const e11 = "", const char * const e12 = "", const char * const e13 = "", const char * const e14 = "", const char * const e15 = "", const char * const e16 = "", const char * const e17 = "", const char * const e18 = "", const char * const e19 = "", const char * const e20 = "", const char * const e21 = "", const char * const e22 = "", const char * const e23 = "", const char * const e24 = "", const char * const e25 = "", const char * const e26 = "", const char * const e27 = "", const char * const e28 = "", const char * const e29 = "", const char * const e30 = "", const char * const e31 = "", const char * const e32 = "", const char * const e33 = "", const char * const e34 = "", const char * const e35 = "", const char * const e36 = "", const char * const e37 = "", const char * const e38 = "", const char * const e39 = "");
 
 		/****** StepData_EnumTool::AddDefinition ******/
-		/****** md5 signature: 23a5c4986f78df0c3ae858b925eb5246 ******/
+		/****** md5 signature: 3ae0b5feac7f4634153f117605679727 ******/
 		%feature("compactdefaultargs") AddDefinition;
 		%feature("autodoc", "
 Parameters
 ----------
-term: str
+term: char *
 
 Return
 -------
@@ -506,10 +504,10 @@ Description
 -----------
 Processes a definition, splits it according blanks if any empty definitions are ignored A null definition can be input by given '$' :the corresponding position is attached to 'null/undefined' value (as one particular item of the enumeration list) See also IsSet.
 ") AddDefinition;
-		void AddDefinition(Standard_CString term);
+		void AddDefinition(const char * const term);
 
 		/****** StepData_EnumTool::IsSet ******/
-		/****** md5 signature: d771f80e63fcb5d314de94e557642c75 ******/
+		/****** md5 signature: fa026a649a18f57fe3cfebbe001e5931 ******/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "Return
 -------
@@ -519,10 +517,10 @@ Description
 -----------
 Returns True if at least one definition has been entered after creation time (i.e. by AddDefinition only) //! This allows to build a static description by a first pass: static StepData_EnumTool myenumtool('e0' ...); ... if (!myenumtool.IsSet()) { for further inits myenumtool.AddDefinition('e21'); ... }.
 ") IsSet;
-		Standard_Boolean IsSet();
+		bool IsSet();
 
 		/****** StepData_EnumTool::MaxValue ******/
-		/****** md5 signature: c740afbe5c26bd9e0283229c123b037e ******/
+		/****** md5 signature: afc35dfa5b10c9c829a1fac31890e520 ******/
 		%feature("compactdefaultargs") MaxValue;
 		%feature("autodoc", "Return
 -------
@@ -532,10 +530,10 @@ Description
 -----------
 Returns the maximum integer for a suitable value Remark: while values begin at zero, MaxValue is the count of recorded values minus one.
 ") MaxValue;
-		Standard_Integer MaxValue();
+		int MaxValue();
 
 		/****** StepData_EnumTool::NullValue ******/
-		/****** md5 signature: d87571946a1ab73fe735a14f9a3129d7 ******/
+		/****** md5 signature: 3b8c27800289d268fe9ea1f1a9c28977 ******/
 		%feature("compactdefaultargs") NullValue;
 		%feature("autodoc", "Return
 -------
@@ -545,10 +543,10 @@ Description
 -----------
 Returns the value attached to 'null/undefined value' If none is specified or if Optional has been set to False, returns -1 Null Value has been specified by definition '$'.
 ") NullValue;
-		Standard_Integer NullValue();
+		int NullValue();
 
 		/****** StepData_EnumTool::Optional ******/
-		/****** md5 signature: f01d12334cbcf88113d3cc1ea5fea155 ******/
+		/****** md5 signature: 28c9937a415f4ab07770bc7a0a866702 ******/
 		%feature("compactdefaultargs") Optional;
 		%feature("autodoc", "
 Parameters
@@ -563,10 +561,10 @@ Description
 -----------
 Sets or Unsets the EnumTool to accept undefined value (for optional field). Ignored if no null value is defined (by '$') Can be changed during execution (to read each field), Default is True (if a null value is defined).
 ") Optional;
-		void Optional(const Standard_Boolean mode);
+		void Optional(const bool mode);
 
 		/****** StepData_EnumTool::Text ******/
-		/****** md5 signature: 68f510ac8cb4a3e7a045f9d04d5b5002 ******/
+		/****** md5 signature: bd6fa8b893f97a4046f037d1ecff2989 ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "
 Parameters
@@ -581,15 +579,15 @@ Description
 -----------
 Returns the text which corresponds to a given numeric value It is limited by dots If num is out of range, returns an empty string.
 ") Text;
-		const TCollection_AsciiString & Text(const Standard_Integer num);
+		const TCollection_AsciiString & Text(const int num);
 
 		/****** StepData_EnumTool::Value ******/
-		/****** md5 signature: 3a486bb84d937fe3e67a87cda87049da ******/
+		/****** md5 signature: ca7180abad55e267d1baee96055dd9e3 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-txt: str
+txt: char *
 
 Return
 -------
@@ -599,10 +597,10 @@ Description
 -----------
 Returns the numeric value found for a text The text must be in capitals and limited by dots A non-suitable text gives a negative value to be returned.
 ") Value;
-		Standard_Integer Value(Standard_CString txt);
+		int Value(const char * const txt);
 
 		/****** StepData_EnumTool::Value ******/
-		/****** md5 signature: 297d6bfd8a3e6e4466b4cf9c8399a2f1 ******/
+		/****** md5 signature: 81dae08844f36d30edff5a8604023d4f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -617,7 +615,7 @@ Description
 -----------
 Same as above but works on an AsciiString.
 ") Value;
-		Standard_Integer Value(TCollection_AsciiString txt);
+		int Value(TCollection_AsciiString txt);
 
 };
 
@@ -647,53 +645,53 @@ Constructor.
 		 StepData_Factors();
 
 		/****** StepData_Factors::CascadeUnit ******/
-		/****** md5 signature: 0a04d480977f0e8fef0df000d9bf1748 ******/
+		/****** md5 signature: a4fdf5b096820cb26e8793b5002c86f5 ******/
 		%feature("compactdefaultargs") CascadeUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns length unit for current transfer process (mm by default).
 ") CascadeUnit;
-		Standard_Real CascadeUnit();
+		double CascadeUnit();
 
 		/****** StepData_Factors::FactorDegreeRadian ******/
-		/****** md5 signature: c42d3d03e3dd317c6901b788646067a0 ******/
+		/****** md5 signature: 1949254abf4b991f1a4c89ab210b2367 ******/
 		%feature("compactdefaultargs") FactorDegreeRadian;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns transient factor degree radian for conversion of angles at one stage of transfer process.
 ") FactorDegreeRadian;
-		Standard_Real FactorDegreeRadian();
+		double FactorDegreeRadian();
 
 		/****** StepData_Factors::FactorRadianDegree ******/
-		/****** md5 signature: 3fe70ab620009bf6d8e5fdd4492c13fe ******/
+		/****** md5 signature: c897e7f45b951f0b9bfaafdb97995123 ******/
 		%feature("compactdefaultargs") FactorRadianDegree;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns transient factor radian degree for conversion of angles at one stage of transfer process.
 ") FactorRadianDegree;
-		Standard_Real FactorRadianDegree();
+		double FactorRadianDegree();
 
 		/****** StepData_Factors::InitializeFactors ******/
-		/****** md5 signature: cd04360a2d1cbd674218ed3c1e732874 ******/
+		/****** md5 signature: 1a70a12425e77c7b127270b62a8de95e ******/
 		%feature("compactdefaultargs") InitializeFactors;
 		%feature("autodoc", "
 Parameters
 ----------
-theLengthFactor: float
-thePlaneAngleFactor: float
-theSolidAngleFactor: float
+theLengthFactor: double
+thePlaneAngleFactor: double
+theSolidAngleFactor: double
 
 Return
 -------
@@ -703,41 +701,41 @@ Description
 -----------
 Initializes the 3 factors for the conversion of units.
 ") InitializeFactors;
-		void InitializeFactors(const Standard_Real theLengthFactor, const Standard_Real thePlaneAngleFactor, const Standard_Real theSolidAngleFactor);
+		void InitializeFactors(const double theLengthFactor, const double thePlaneAngleFactor, const double theSolidAngleFactor);
 
 		/****** StepData_Factors::LengthFactor ******/
-		/****** md5 signature: 15771254030d5d42fe1035afb35f49f8 ******/
+		/****** md5 signature: 1b284ce586610caeac599057e74cb7ff ******/
 		%feature("compactdefaultargs") LengthFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns transient length factor for scaling of shapes at one stage of transfer process.
 ") LengthFactor;
-		Standard_Real LengthFactor();
+		double LengthFactor();
 
 		/****** StepData_Factors::PlaneAngleFactor ******/
-		/****** md5 signature: 24a746fdf36cb34234bfa6984c9c2721 ******/
+		/****** md5 signature: 14d51926d2ed0c93fcc15f3cb37b2929 ******/
 		%feature("compactdefaultargs") PlaneAngleFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns transient plane angle factor for conversion of angles at one stage of transfer process.
 ") PlaneAngleFactor;
-		Standard_Real PlaneAngleFactor();
+		double PlaneAngleFactor();
 
 		/****** StepData_Factors::SetCascadeUnit ******/
-		/****** md5 signature: 9681d8ff7bf315f004a2dba0dc32aacc ******/
+		/****** md5 signature: dcf34f9697d732cb5f2a6f6cb26388b9 ******/
 		%feature("compactdefaultargs") SetCascadeUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnit: float
+theUnit: double
 
 Return
 -------
@@ -747,20 +745,20 @@ Description
 -----------
 Sets length unit for current transfer process.
 ") SetCascadeUnit;
-		void SetCascadeUnit(const Standard_Real theUnit);
+		void SetCascadeUnit(const double theUnit);
 
 		/****** StepData_Factors::SolidAngleFactor ******/
-		/****** md5 signature: 5c610c278e1133bf63025e97445bcd03 ******/
+		/****** md5 signature: a639790627747b4845cabbff578f7b75 ******/
 		%feature("compactdefaultargs") SolidAngleFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns transient solid angle factor for conversion of angles at one stage of transfer process.
 ") SolidAngleFactor;
-		Standard_Real SolidAngleFactor();
+		double SolidAngleFactor();
 
 };
 
@@ -790,13 +788,13 @@ Creates a Field, empty ('no value defined').
 		 StepData_Field();
 
 		/****** StepData_Field::StepData_Field ******/
-		/****** md5 signature: dec751dedfc43a6634b948cd2d377747 ******/
+		/****** md5 signature: 9ff3dad52778b6a25a0cc9bb0569a881 ******/
 		%feature("compactdefaultargs") StepData_Field;
 		%feature("autodoc", "
 Parameters
 ----------
 other: StepData_Field
-copy: bool (optional, default to Standard_False)
+copy: bool (optional, default to false)
 
 Return
 -------
@@ -806,10 +804,10 @@ Description
 -----------
 Creates a Field from another one. If <copy> is True, Handled data (Select,String,List, not entities) are copied.
 ") StepData_Field;
-		 StepData_Field(const StepData_Field & other, const Standard_Boolean copy = Standard_False);
+		 StepData_Field(const StepData_Field & other, const bool copy = false);
 
 		/****** StepData_Field::Arity ******/
-		/****** md5 signature: 20ac80f17e36fa74dda1be985f98e194 ******/
+		/****** md5 signature: 3aec866b2a4542c02df59242f44ea80b ******/
 		%feature("compactdefaultargs") Arity;
 		%feature("autodoc", "Return
 -------
@@ -819,10 +817,10 @@ Description
 -----------
 No available documentation.
 ") Arity;
-		Standard_Integer Arity();
+		int Arity();
 
 		/****** StepData_Field::Boolean ******/
-		/****** md5 signature: 84acce27304ec7fab03c41692b2abb27 ******/
+		/****** md5 signature: 43d811e46447e173c8af1b74b5591c0c ******/
 		%feature("compactdefaultargs") Boolean;
 		%feature("autodoc", "
 Parameters
@@ -838,10 +836,10 @@ Description
 -----------
 No available documentation.
 ") Boolean;
-		Standard_Boolean Boolean(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		bool Boolean(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Clear ******/
-		/****** md5 signature: 06a9aa1e7ad36592e140c342d0aa0518 ******/
+		/****** md5 signature: 5e375e83631895f7506b8621bc60e112 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -856,10 +854,10 @@ Description
 -----------
 Clears the field, to set it as 'no value defined' Just before SetList, predeclares it as 'any' A Kind can be directly set here to declare a type.
 ") Clear;
-		void Clear(const Standard_Integer kind = 0);
+		void Clear(const int kind = 0);
 
 		/****** StepData_Field::ClearItem ******/
-		/****** md5 signature: 59665022a329fbab5dc0039fffc2b280 ******/
+		/****** md5 signature: d931adc81c770eb3fd5e37f4919e53b8 ******/
 		%feature("compactdefaultargs") ClearItem;
 		%feature("autodoc", "
 Parameters
@@ -874,7 +872,7 @@ Description
 -----------
 Declares an item of the list as undefined (ignored if list not defined as String,Entity or Any).
 ") ClearItem;
-		void ClearItem(const Standard_Integer num);
+		void ClearItem(const int num);
 
 		/****** StepData_Field::CopyFrom ******/
 		/****** md5 signature: cdf165bfdbd68dff126e1d1ffdb13ca6 ******/
@@ -895,7 +893,7 @@ Gets the copy of the values of another field.
 		void CopyFrom(const StepData_Field & other);
 
 		/****** StepData_Field::Entity ******/
-		/****** md5 signature: e454cfdf3aa08032e84c07a83723c455 ******/
+		/****** md5 signature: f260c8d92e142f17de07521a6102bc9e ******/
 		%feature("compactdefaultargs") Entity;
 		%feature("autodoc", "
 Parameters
@@ -911,10 +909,10 @@ Description
 -----------
 No available documentation.
 ") Entity;
-		opencascade::handle<Standard_Transient> Entity(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		opencascade::handle<Standard_Transient> Entity(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Enum ******/
-		/****** md5 signature: 39cff2ee8ac4ac87a5c98eb58adf5188 ******/
+		/****** md5 signature: bb1795f6da1aaf4726fa970ffcf28ee5 ******/
 		%feature("compactdefaultargs") Enum;
 		%feature("autodoc", "
 Parameters
@@ -930,10 +928,10 @@ Description
 -----------
 No available documentation.
 ") Enum;
-		Standard_Integer Enum(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		int Enum(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::EnumText ******/
-		/****** md5 signature: ac7ad4f1127b4e3312cca940733299f6 ******/
+		/****** md5 signature: 51d63c3e5007ffc84eeadedb7f5a2481 ******/
 		%feature("compactdefaultargs") EnumText;
 		%feature("autodoc", "
 Parameters
@@ -943,16 +941,16 @@ n2: int (optional, default to 1)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") EnumText;
-		Standard_CString EnumText(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		const char * EnumText(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Int ******/
-		/****** md5 signature: 1413d7ff960425ad93b46a46cdc240ec ******/
+		/****** md5 signature: c5232548243e824f05032038d86f2b7b ******/
 		%feature("compactdefaultargs") Int;
 		%feature("autodoc", "Return
 -------
@@ -962,10 +960,10 @@ Description
 -----------
 No available documentation.
 ") Int;
-		Standard_Integer Int();
+		int Int();
 
 		/****** StepData_Field::Integer ******/
-		/****** md5 signature: 190ccfc6369ae2e7ed041adf31cc2f6c ******/
+		/****** md5 signature: 1e42cc1796b59b5b3daeb5ca5faa048a ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "
 Parameters
@@ -981,10 +979,10 @@ Description
 -----------
 No available documentation.
 ") Integer;
-		Standard_Integer Integer(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		int Integer(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::IsSet ******/
-		/****** md5 signature: 551688547dc9940e3115be11a325717f ******/
+		/****** md5 signature: 3d75366dde101cdc14c7771ac3580b7e ******/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "
 Parameters
@@ -1000,10 +998,10 @@ Description
 -----------
 No available documentation.
 ") IsSet;
-		Standard_Boolean IsSet(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		bool IsSet(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::ItemKind ******/
-		/****** md5 signature: 0ac42f8324a90e0da1ec9c71a6bfa8c3 ******/
+		/****** md5 signature: b25ef0b3179aec9186e77c71396a207f ******/
 		%feature("compactdefaultargs") ItemKind;
 		%feature("autodoc", "
 Parameters
@@ -1019,15 +1017,15 @@ Description
 -----------
 Returns the kind of an item in a list or double list It is the kind of the list, except if it is 'Any', in such a case the true kind is determined and returned.
 ") ItemKind;
-		Standard_Integer ItemKind(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		int ItemKind(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Kind ******/
-		/****** md5 signature: 0f949cc91d90c10b6f6b1a0be3460e4d ******/
+		/****** md5 signature: 186a071129ecd6dd86bb438065178bc8 ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "
 Parameters
 ----------
-type: bool (optional, default to Standard_True)
+type: bool (optional, default to true)
 
 Return
 -------
@@ -1037,10 +1035,10 @@ Description
 -----------
 Returns the kind of the field <type> True (D): returns only the type itself else, returns the complete kind.
 ") Kind;
-		Standard_Integer Kind(const Standard_Boolean type = Standard_True);
+		int Kind(const bool type = true);
 
 		/****** StepData_Field::Length ******/
-		/****** md5 signature: 27a4e3d48774cdde854fbae9ccb338e5 ******/
+		/****** md5 signature: 7f9c42f1de234262778863e30d2fe4e4 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
@@ -1055,10 +1053,10 @@ Description
 -----------
 No available documentation.
 ") Length;
-		Standard_Integer Length(const Standard_Integer index = 1);
+		int Length(const int index = 1);
 
 		/****** StepData_Field::Logical ******/
-		/****** md5 signature: 52cf91428cbe20defb88706ca9abba31 ******/
+		/****** md5 signature: 8c7aee499531896ff2a8f371dac9cc58 ******/
 		%feature("compactdefaultargs") Logical;
 		%feature("autodoc", "
 Parameters
@@ -1074,10 +1072,10 @@ Description
 -----------
 No available documentation.
 ") Logical;
-		StepData_Logical Logical(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		StepData_Logical Logical(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Lower ******/
-		/****** md5 signature: 9231e123255a5e0b308cfc7a8936fe8e ******/
+		/****** md5 signature: 757e45f471d731c1aadf57de14b50b38 ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "
 Parameters
@@ -1092,10 +1090,10 @@ Description
 -----------
 No available documentation.
 ") Lower;
-		Standard_Integer Lower(const Standard_Integer index = 1);
+		int Lower(const int index = 1);
 
 		/****** StepData_Field::Real ******/
-		/****** md5 signature: 089acbdc8ea38b93d474a5b20072cadd ******/
+		/****** md5 signature: cbab9dde167413ee4b9738d889681e89 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "
 Parameters
@@ -1105,13 +1103,13 @@ n2: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Real;
-		Standard_Real Real(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		double Real(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Set ******/
 		/****** md5 signature: 53a063b73cbc66b14e226f6ffbcfad0b ******/
@@ -1132,12 +1130,12 @@ Sets an undetermined value: can be String, SelectMember, HArray(1-2) ... else, a
 		void Set(const opencascade::handle<Standard_Transient> & val);
 
 		/****** StepData_Field::SetBoolean ******/
-		/****** md5 signature: d2ae2fd479a934a8e365e260c39a0b9a ******/
+		/****** md5 signature: 798b9e14371eca6dee36518d8ce8400a ******/
 		%feature("compactdefaultargs") SetBoolean;
 		%feature("autodoc", "
 Parameters
 ----------
-val: bool (optional, default to Standard_False)
+val: bool (optional, default to false)
 
 Return
 -------
@@ -1147,10 +1145,10 @@ Description
 -----------
 Sets a Boolean value (or predeclares a list as boolean).
 ") SetBoolean;
-		void SetBoolean(const Standard_Boolean val = Standard_False);
+		void SetBoolean(const bool val = false);
 
 		/****** StepData_Field::SetBoolean ******/
-		/****** md5 signature: 65dcdf98ac9ac398542a91f2b2c70798 ******/
+		/****** md5 signature: d289a9dbad0febbf261a94fdf898c64f ******/
 		%feature("compactdefaultargs") SetBoolean;
 		%feature("autodoc", "
 Parameters
@@ -1166,7 +1164,7 @@ Description
 -----------
 No available documentation.
 ") SetBoolean;
-		void SetBoolean(const Standard_Integer num, const Standard_Boolean val);
+		void SetBoolean(const int num, const bool val);
 
 		/****** StepData_Field::SetDerived ******/
 		/****** md5 signature: a80ad14f5afeeab36a7f513db1256465 ******/
@@ -1213,7 +1211,7 @@ Predeclares a list as of entity.
 		void SetEntity();
 
 		/****** StepData_Field::SetEntity ******/
-		/****** md5 signature: 8f7abced0e0362c329584af4986dee6b ******/
+		/****** md5 signature: 4a80d0f03f430878eabdf850f9720ebb ******/
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "
 Parameters
@@ -1229,16 +1227,16 @@ Description
 -----------
 No available documentation.
 ") SetEntity;
-		void SetEntity(const Standard_Integer num, const opencascade::handle<Standard_Transient> & val);
+		void SetEntity(const int num, const opencascade::handle<Standard_Transient> & val);
 
 		/****** StepData_Field::SetEnum ******/
-		/****** md5 signature: 815c4c3631f6fb0be03cdcb93f3d0ac7 ******/
+		/****** md5 signature: bd264992b4257826ee293278749a0c5f ******/
 		%feature("compactdefaultargs") SetEnum;
 		%feature("autodoc", "
 Parameters
 ----------
 val: int (optional, default to -1)
-text: str (optional, default to "")
+text: char * (optional, default to "")
 
 Return
 -------
@@ -1248,17 +1246,17 @@ Description
 -----------
 Sets an Enum Value (as its integer counterpart) (or predeclares a list as Enum) If <text> is given , also sets its textual expression <val> negative means unknown (known values begin at 0).
 ") SetEnum;
-		void SetEnum(const Standard_Integer val = -1, Standard_CString text = "");
+		void SetEnum(const int val = -1, const char * const text = "");
 
 		/****** StepData_Field::SetEnum ******/
-		/****** md5 signature: bc1babd5877fcdfbed8c3c18c8fb941d ******/
+		/****** md5 signature: 1e4d17cfda8cce10413dbe90efaaf310 ******/
 		%feature("compactdefaultargs") SetEnum;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 val: int
-text: str (optional, default to "")
+text: char * (optional, default to "")
 
 Return
 -------
@@ -1268,10 +1266,10 @@ Description
 -----------
 Sets an Enum Value (Integer counterpart), also its text expression if known (if list has been set as 'any').
 ") SetEnum;
-		void SetEnum(const Standard_Integer num, const Standard_Integer val, Standard_CString text = "");
+		void SetEnum(const int num, const int val, const char * const text = "");
 
 		/****** StepData_Field::SetInt ******/
-		/****** md5 signature: dcaa71e8d1c44545b3a4bd91a6b8e118 ******/
+		/****** md5 signature: e2fd56d2891bb446c69b20d104bbe5d9 ******/
 		%feature("compactdefaultargs") SetInt;
 		%feature("autodoc", "
 Parameters
@@ -1286,10 +1284,10 @@ Description
 -----------
 Directly sets the Integer value, if its Kind matches Integer, Boolean, Logical, or Enum (does not change Kind).
 ") SetInt;
-		void SetInt(const Standard_Integer val);
+		void SetInt(const int val);
 
 		/****** StepData_Field::SetInt ******/
-		/****** md5 signature: 478fb891c77d9c827547911218dbbdf8 ******/
+		/****** md5 signature: 144619ede0dc3fdcaa622380770ca04c ******/
 		%feature("compactdefaultargs") SetInt;
 		%feature("autodoc", "
 Parameters
@@ -1306,10 +1304,10 @@ Description
 -----------
 Internal access to an Integer Value for a list, plus its kind.
 ") SetInt;
-		void SetInt(const Standard_Integer num, const Standard_Integer val, const Standard_Integer kind);
+		void SetInt(const int num, const int val, const int kind);
 
 		/****** StepData_Field::SetInteger ******/
-		/****** md5 signature: 35899117e85fab405a5c10f4096f4868 ******/
+		/****** md5 signature: cfc4ec1ab8c45b65fcb0174ede005bfc ******/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "
 Parameters
@@ -1324,10 +1322,10 @@ Description
 -----------
 Sets an Integer value (before SetList* declares it as Integer).
 ") SetInteger;
-		void SetInteger(const Standard_Integer val = 0);
+		void SetInteger(const int val = 0);
 
 		/****** StepData_Field::SetInteger ******/
-		/****** md5 signature: 44f51fa90a9a3a02c196b18e66b74f9c ******/
+		/****** md5 signature: 1bfcc1e7834506dd4ef752b3802b46e7 ******/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "
 Parameters
@@ -1343,10 +1341,10 @@ Description
 -----------
 Sets an Integer Value for a list (rank num) (recognizes a SelectMember).
 ") SetInteger;
-		void SetInteger(const Standard_Integer num, const Standard_Integer val);
+		void SetInteger(const int num, const int val);
 
 		/****** StepData_Field::SetList ******/
-		/****** md5 signature: ff43def4de223c3631c5bf24aec29410 ******/
+		/****** md5 signature: 2a4692e92a57029be820699eec21fcb5 ******/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "
 Parameters
@@ -1362,10 +1360,10 @@ Description
 -----------
 Declares a field as a list, with an initial size Initial lower is defaulted as 1, can be defined The list starts empty, typed by the last Set* If no Set* before, sets it as 'any' (transient/select).
 ") SetList;
-		void SetList(const Standard_Integer size, const Standard_Integer first = 1);
+		void SetList(const int size, const int first = 1);
 
 		/****** StepData_Field::SetList2 ******/
-		/****** md5 signature: 38fa7e624e6758a095044332a691150b ******/
+		/****** md5 signature: b37d2ca4e9101b8ad1756b414f3c4262 ******/
 		%feature("compactdefaultargs") SetList2;
 		%feature("autodoc", "
 Parameters
@@ -1383,7 +1381,7 @@ Description
 -----------
 Declares a field as an homogeneous square list, with initial sizes, and initial lowers.
 ") SetList2;
-		void SetList2(const Standard_Integer siz1, const Standard_Integer siz2, const Standard_Integer f1 = 1, const Standard_Integer f2 = 1);
+		void SetList2(const int siz1, const int siz2, const int f1 = 1, const int f2 = 1);
 
 		/****** StepData_Field::SetLogical ******/
 		/****** md5 signature: f45ed36db2fa09e8ef1d7d07130f9b83 ******/
@@ -1404,7 +1402,7 @@ Sets a Logical Value (or predeclares a list as logical).
 		void SetLogical(const StepData_Logical val = StepData_LFalse);
 
 		/****** StepData_Field::SetLogical ******/
-		/****** md5 signature: ef76377b7df689a67a0545e7d3a30fee ******/
+		/****** md5 signature: c5fc62c160ff9c2d64352671f942a320 ******/
 		%feature("compactdefaultargs") SetLogical;
 		%feature("autodoc", "
 Parameters
@@ -1420,15 +1418,15 @@ Description
 -----------
 No available documentation.
 ") SetLogical;
-		void SetLogical(const Standard_Integer num, const StepData_Logical val);
+		void SetLogical(const int num, const StepData_Logical val);
 
 		/****** StepData_Field::SetReal ******/
-		/****** md5 signature: 35e6333bdaab648aae6df8a305f6439b ******/
+		/****** md5 signature: e603deef1c18ef58df45d301a18c6142 ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float (optional, default to 0.0)
+val: double (optional, default to 0.0)
 
 Return
 -------
@@ -1438,16 +1436,16 @@ Description
 -----------
 Sets a Real Value (or predeclares a list as Real);.
 ") SetReal;
-		void SetReal(const Standard_Real val = 0.0);
+		void SetReal(const double val = 0.0);
 
 		/****** StepData_Field::SetReal ******/
-		/****** md5 signature: e7283d228809c9467174f045f70fa321 ******/
+		/****** md5 signature: c2aaefacf863cba729a70f9893bb5e12 ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-val: float
+val: double
 
 Return
 -------
@@ -1457,7 +1455,7 @@ Description
 -----------
 No available documentation.
 ") SetReal;
-		void SetReal(const Standard_Integer num, const Standard_Real val);
+		void SetReal(const int num, const double val);
 
 		/****** StepData_Field::SetSelectMember ******/
 		/****** md5 signature: c38cbdb8ec1be691737e204fa9961684 ******/
@@ -1478,12 +1476,12 @@ Sets a SelectMember (for Integer,Boolean,Enum,Real,Logical) Hence, the value of 
 		void SetSelectMember(const opencascade::handle<StepData_SelectMember> & val);
 
 		/****** StepData_Field::SetString ******/
-		/****** md5 signature: fd08d5f8b5cfd32e65c1be12d7e2440a ******/
+		/****** md5 signature: 306cbe1817e0bfaa0e0e9421384f1bfb ******/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str (optional, default to "")
+val: char * (optional, default to "")
 
 Return
 -------
@@ -1493,16 +1491,16 @@ Description
 -----------
 Sets a String Value (or predeclares a list as String) Does not redefine the Kind if it is already String or Enum.
 ") SetString;
-		void SetString(Standard_CString val = "");
+		void SetString(const char * const val = "");
 
 		/****** StepData_Field::SetString ******/
-		/****** md5 signature: f741937452f9aac8d558f8cc952598a6 ******/
+		/****** md5 signature: 143b8f87bbbcabceb1ebc75d7c6234f7 ******/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-val: str
+val: char *
 
 Return
 -------
@@ -1512,10 +1510,10 @@ Description
 -----------
 No available documentation.
 ") SetString;
-		void SetString(const Standard_Integer num, Standard_CString val);
+		void SetString(const int num, const char * const val);
 
 		/****** StepData_Field::String ******/
-		/****** md5 signature: 52aed6fbe6a9dbd2567c65ce961ec922 ******/
+		/****** md5 signature: 05b1efa7bb0c549c8b787d326de5d12e ******/
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "
 Parameters
@@ -1525,13 +1523,13 @@ n2: int (optional, default to 1)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") String;
-		Standard_CString String(const Standard_Integer n1 = 1, const Standard_Integer n2 = 1);
+		const char * String(const int n1 = 1, const int n2 = 1);
 
 		/****** StepData_Field::Transient ******/
 		/****** md5 signature: 5e2d51bfd45ca63ce3acf2b050563c85 ******/
@@ -1574,7 +1572,7 @@ Creates a FieldList of 0 Field.
 		 StepData_FieldList();
 
 		/****** StepData_FieldList::CField ******/
-		/****** md5 signature: 2ab5b964a298bbbf8b72fe8796eda457 ******/
+		/****** md5 signature: eae1537bc1d31c79540bfe93203fc536 ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
@@ -1589,10 +1587,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
-		virtual StepData_Field & CField(const Standard_Integer num);
+		virtual StepData_Field & CField(const int num);
 
 		/****** StepData_FieldList::Field ******/
-		/****** md5 signature: 428e6e13c8309e2322a1ca78618c4624 ******/
+		/****** md5 signature: c260bd5af0c97e74e35b47fb8a9a9afc ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
@@ -1607,7 +1605,7 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
-		virtual const StepData_Field & Field(const Standard_Integer num);
+		virtual const StepData_Field & Field(const int num);
 
 		/****** StepData_FieldList::FillShared ******/
 		/****** md5 signature: c859b171a613ba5d4f5654a157c2c9d5 ******/
@@ -1628,7 +1626,7 @@ Fills an iterator with the entities shared by <self>.
 		void FillShared(Interface_EntityIterator & iter);
 
 		/****** StepData_FieldList::NbFields ******/
-		/****** md5 signature: 724ee9f833e2afc6f707c1556db2ce3a ******/
+		/****** md5 signature: d81169f9fe19d8277cf5154757f85929 ******/
 		%feature("compactdefaultargs") NbFields;
 		%feature("autodoc", "Return
 -------
@@ -1638,7 +1636,7 @@ Description
 -----------
 Returns the count of fields. Here, returns 0.
 ") NbFields;
-		virtual Standard_Integer NbFields();
+		virtual int NbFields();
 
 };
 
@@ -1674,7 +1672,7 @@ Adds a new Recognizer to the Compound, at the end Several calls to Add work by a
 		void Add(const opencascade::handle<StepData_FileRecognizer> & reco);
 
 		/****** StepData_FileRecognizer::Evaluate ******/
-		/****** md5 signature: 7f95a0db3f780527bc96e1921144b3d9 ******/
+		/****** md5 signature: 1c73d7ccd1196e8066541f080618d7e9 ******/
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "
 Parameters
@@ -1690,7 +1688,7 @@ Description
 -----------
 Evaluates if recognition has a result, returns it if yes In case of success, Returns True and puts result in 'res' In case of Failure, simply Returns False Works by calling deferred method Eval, and in case of failure, looks for Added Recognizers to work.
 ") Evaluate;
-		Standard_Boolean Evaluate(TCollection_AsciiString akey, opencascade::handle<Standard_Transient> & res);
+		bool Evaluate(TCollection_AsciiString akey, opencascade::handle<Standard_Transient> & res);
 
 		/****** StepData_FileRecognizer::Result ******/
 		/****** md5 signature: 1e478c458b39937c7be2973ea1c73aa7 ******/
@@ -1726,7 +1724,7 @@ Returns result of last recognition (call of Evaluate).
 class StepData_GeneralModule : public Interface_GeneralModule {
 	public:
 		/****** StepData_GeneralModule::CheckCase ******/
-		/****** md5 signature: f70507a217932123f7ace4ad48391e17 ******/
+		/****** md5 signature: 94b1cc0bf0e14a14c065367807e38e23 ******/
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "
 Parameters
@@ -1744,10 +1742,10 @@ Description
 -----------
 Specific Checking of an Entity <ent>.
 ") CheckCase;
-		virtual void CheckCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
+		void CheckCase(const int casenum, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_GeneralModule::CopyCase ******/
-		/****** md5 signature: efad3342c5c4cce396b731e451727516 ******/
+		/****** md5 signature: f89b86afd939124d57b0e10476d26fa3 ******/
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "
 Parameters
@@ -1765,10 +1763,10 @@ Description
 -----------
 Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a TransferControl which provides its working Map. Use method Transferred from TransferControl to work Specific Copying of Implied References A Default is provided which does nothing (must current case !) Already copied references (by CopyFrom) must remain unchanged Use method Search from TransferControl to work.
 ") CopyCase;
-		virtual void CopyCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
+		void CopyCase(const int casenum, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
 		/****** StepData_GeneralModule::FillSharedCase ******/
-		/****** md5 signature: 94cc5462c692f02ed43b5d49103c610c ******/
+		/****** md5 signature: ec321acec0a9b23be08c636dc4157224 ******/
 		%feature("compactdefaultargs") FillSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -1785,7 +1783,7 @@ Description
 -----------
 Specific filling of the list of Entities shared by an Entity <ent>. Can use the internal utility method Share, below.
 ") FillSharedCase;
-		virtual void FillSharedCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
+		void FillSharedCase(const int casenum, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
 };
 
@@ -1990,7 +1988,7 @@ No available documentation.
 		 StepData_PDescr();
 
 		/****** StepData_PDescr::AddArity ******/
-		/****** md5 signature: 57693e89b3b8b9bd869a21a75b6e1718 ******/
+		/****** md5 signature: bac13d13d23cf5a05775531352f28cbe ******/
 		%feature("compactdefaultargs") AddArity;
 		%feature("autodoc", "
 Parameters
@@ -2005,15 +2003,15 @@ Description
 -----------
 Adds an arity count to <self>, by default 1 1: a simple field passes to a LIST/ARRAY etc or a LIST to a LIST OF LIST 2: a simple field passes to a LIST OF LIST.
 ") AddArity;
-		void AddArity(const Standard_Integer arity = 1);
+		void AddArity(const int arity = 1);
 
 		/****** StepData_PDescr::AddEnumDef ******/
-		/****** md5 signature: 46c7fa9e4331909047350ca948b45d0f ******/
+		/****** md5 signature: fc739bd8d453f3da8c59a65698565df9 ******/
 		%feature("compactdefaultargs") AddEnumDef;
 		%feature("autodoc", "
 Parameters
 ----------
-enumdef: str
+enumdef: char *
 
 Return
 -------
@@ -2023,7 +2021,7 @@ Description
 -----------
 Adds an enum value as a string.
 ") AddEnumDef;
-		void AddEnumDef(Standard_CString enumdef);
+		void AddEnumDef(const char * const enumdef);
 
 		/****** StepData_PDescr::AddMember ******/
 		/****** md5 signature: 8b4d028f234e253b6e252a8999245bcc ******/
@@ -2044,7 +2042,7 @@ Adds a member to a SELECT description.
 		void AddMember(const opencascade::handle<StepData_PDescr> & member);
 
 		/****** StepData_PDescr::Arity ******/
-		/****** md5 signature: 20ac80f17e36fa74dda1be985f98e194 ******/
+		/****** md5 signature: 3aec866b2a4542c02df59242f44ea80b ******/
 		%feature("compactdefaultargs") Arity;
 		%feature("autodoc", "Return
 -------
@@ -2054,7 +2052,7 @@ Description
 -----------
 Returns the arity of <self>.
 ") Arity;
-		Standard_Integer Arity();
+		int Arity();
 
 		/****** StepData_PDescr::Check ******/
 		/****** md5 signature: d68d9bbd232a98cba7bf42d03257f06b ******/
@@ -2076,20 +2074,20 @@ Semantic Check of a Field: does it complies with the given description ?.
 		virtual void Check(const StepData_Field & afild, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_PDescr::DescrName ******/
-		/****** md5 signature: 726678b07d46074a272befd7851786a7 ******/
+		/****** md5 signature: 904361c6395c6b0dc4199cc78da73587 ******/
 		%feature("compactdefaultargs") DescrName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the description (type name) to match, for a Described (else, empty string).
 ") DescrName;
-		Standard_CString DescrName();
+		const char * DescrName();
 
 		/****** StepData_PDescr::EnumMax ******/
-		/****** md5 signature: aa737d66db4ab58d09a625e0a52a3fa7 ******/
+		/****** md5 signature: 93a344430cd458c0c9dc0164bb378a20 ******/
 		%feature("compactdefaultargs") EnumMax;
 		%feature("autodoc", "Return
 -------
@@ -2099,10 +2097,10 @@ Description
 -----------
 Returns the maximum integer for a suitable value (count - 1).
 ") EnumMax;
-		Standard_Integer EnumMax();
+		int EnumMax();
 
 		/****** StepData_PDescr::EnumText ******/
-		/****** md5 signature: 8d101e51207f5b5f1d44b816e2e7ba7d ******/
+		/****** md5 signature: 491663c3eeeadc6ed8e9dfb6b0f132f4 ******/
 		%feature("compactdefaultargs") EnumText;
 		%feature("autodoc", "
 Parameters
@@ -2111,21 +2109,21 @@ val: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the text which corresponds to a numeric value, between 0 and EnumMax. It is limited by dots.
 ") EnumText;
-		Standard_CString EnumText(const Standard_Integer val);
+		const char * EnumText(const int val);
 
 		/****** StepData_PDescr::EnumValue ******/
-		/****** md5 signature: 6c468230915f39b81b0354c088266e55 ******/
+		/****** md5 signature: e5e3a3b234dee4de2a3a1b5b383acd6e ******/
 		%feature("compactdefaultargs") EnumValue;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2135,23 +2133,23 @@ Description
 -----------
 Returns the numeric value found for an enum text The text must be in capitals and limited by dots A non-suitable text gives a negative value to be returned.
 ") EnumValue;
-		Standard_Integer EnumValue(Standard_CString name);
+		int EnumValue(const char * const name);
 
 		/****** StepData_PDescr::FieldName ******/
-		/****** md5 signature: 8f41dbaec7635486ef27f4b3e9739bb0 ******/
+		/****** md5 signature: bc3f4bd560ab5566274e68c9a3a62e73 ******/
 		%feature("compactdefaultargs") FieldName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") FieldName;
-		Standard_CString FieldName();
+		const char * FieldName();
 
 		/****** StepData_PDescr::FieldRank ******/
-		/****** md5 signature: 260020dccf4d2143e00013a5db3a717c ******/
+		/****** md5 signature: 923771bf88fabfa057a6ed69803e6a6c ******/
 		%feature("compactdefaultargs") FieldRank;
 		%feature("autodoc", "Return
 -------
@@ -2161,10 +2159,10 @@ Description
 -----------
 No available documentation.
 ") FieldRank;
-		Standard_Integer FieldRank();
+		int FieldRank();
 
 		/****** StepData_PDescr::IsBoolean ******/
-		/****** md5 signature: 1c61622cf353aca7cea3edcb32444564 ******/
+		/****** md5 signature: 897dbf3bfb6e5cdb45d2a78401e0cd1b ******/
 		%feature("compactdefaultargs") IsBoolean;
 		%feature("autodoc", "Return
 -------
@@ -2174,10 +2172,10 @@ Description
 -----------
 Tells if <self> is for a Boolean value (false,true).
 ") IsBoolean;
-		Standard_Boolean IsBoolean();
+		bool IsBoolean();
 
 		/****** StepData_PDescr::IsDerived ******/
-		/****** md5 signature: d2591312eb12f8b2e296880e7538bb13 ******/
+		/****** md5 signature: ebac32443d9159419b106a0e217d39c6 ******/
 		%feature("compactdefaultargs") IsDerived;
 		%feature("autodoc", "Return
 -------
@@ -2187,10 +2185,10 @@ Description
 -----------
 Tells if <self> is Derived.
 ") IsDerived;
-		Standard_Boolean IsDerived();
+		bool IsDerived();
 
 		/****** StepData_PDescr::IsDescr ******/
-		/****** md5 signature: b1bf4641c095adc7bc8f1d2cb1dcf949 ******/
+		/****** md5 signature: 724194b1f741444a39823846f547f30e ******/
 		%feature("compactdefaultargs") IsDescr;
 		%feature("autodoc", "
 Parameters
@@ -2205,10 +2203,10 @@ Description
 -----------
 Tells if <self> is for a Described entity of a given EDescr (does this EDescr match description name ?). For late-bnd (works for <self> + nexts if <self> is a Select).
 ") IsDescr;
-		Standard_Boolean IsDescr(const opencascade::handle<StepData_EDescr> & descr);
+		bool IsDescr(const opencascade::handle<StepData_EDescr> & descr);
 
 		/****** StepData_PDescr::IsEntity ******/
-		/****** md5 signature: 8a80f2b06c557cd40d0d13dedcde58ff ******/
+		/****** md5 signature: 6f0b6c4ba556b641f1d8e40ec03364c8 ******/
 		%feature("compactdefaultargs") IsEntity;
 		%feature("autodoc", "Return
 -------
@@ -2218,10 +2216,10 @@ Description
 -----------
 Tells if <self> is for an Entity, either Described or CDL Type.
 ") IsEntity;
-		Standard_Boolean IsEntity();
+		bool IsEntity();
 
 		/****** StepData_PDescr::IsEnum ******/
-		/****** md5 signature: 62faa27f841b1b236729320f804d0ea1 ******/
+		/****** md5 signature: 6f1fe35deff735a056a288bc76438370 ******/
 		%feature("compactdefaultargs") IsEnum;
 		%feature("autodoc", "Return
 -------
@@ -2231,10 +2229,10 @@ Description
 -----------
 Tells if <self> is for an Enum value Then, call AddEnumDef ordered from the first one (value 0) Managed by an EnumTool.
 ") IsEnum;
-		Standard_Boolean IsEnum();
+		bool IsEnum();
 
 		/****** StepData_PDescr::IsField ******/
-		/****** md5 signature: a67066329d35b56cb15d4ab721c6d976 ******/
+		/****** md5 signature: 1b7d1a142f2ef783caec3baac6807817 ******/
 		%feature("compactdefaultargs") IsField;
 		%feature("autodoc", "Return
 -------
@@ -2244,10 +2242,10 @@ Description
 -----------
 Tells if <self> is a Field. Else it is a Type.
 ") IsField;
-		Standard_Boolean IsField();
+		bool IsField();
 
 		/****** StepData_PDescr::IsInteger ******/
-		/****** md5 signature: 18ca4dbe35358015c8d493d4befdc431 ******/
+		/****** md5 signature: 2e49701878d787625ded27a7c8bf9742 ******/
 		%feature("compactdefaultargs") IsInteger;
 		%feature("autodoc", "Return
 -------
@@ -2257,10 +2255,10 @@ Description
 -----------
 Tells if <self> is for an Integer.
 ") IsInteger;
-		Standard_Boolean IsInteger();
+		bool IsInteger();
 
 		/****** StepData_PDescr::IsLogical ******/
-		/****** md5 signature: 795b5b4e96a6165e1c72e97010c59da0 ******/
+		/****** md5 signature: 65ee8b8dba51b954b1b48e772895644d ******/
 		%feature("compactdefaultargs") IsLogical;
 		%feature("autodoc", "Return
 -------
@@ -2270,10 +2268,10 @@ Description
 -----------
 Tells if <self> is for a Logical value (false,true,unknown).
 ") IsLogical;
-		Standard_Boolean IsLogical();
+		bool IsLogical();
 
 		/****** StepData_PDescr::IsOptional ******/
-		/****** md5 signature: 9c52f00f8741fdeb63e0063a710dbe63 ******/
+		/****** md5 signature: 37f5134985a3af6a2450aa79ff176e1e ******/
 		%feature("compactdefaultargs") IsOptional;
 		%feature("autodoc", "Return
 -------
@@ -2283,10 +2281,10 @@ Description
 -----------
 Tells if <self> is Optional.
 ") IsOptional;
-		Standard_Boolean IsOptional();
+		bool IsOptional();
 
 		/****** StepData_PDescr::IsReal ******/
-		/****** md5 signature: 269b0701cd2deb04ad298cb258c8a221 ******/
+		/****** md5 signature: 1a9c024e9fee27e394bb7a7f67bc6ccd ******/
 		%feature("compactdefaultargs") IsReal;
 		%feature("autodoc", "Return
 -------
@@ -2296,10 +2294,10 @@ Description
 -----------
 Tells if <self> is for a Real value.
 ") IsReal;
-		Standard_Boolean IsReal();
+		bool IsReal();
 
 		/****** StepData_PDescr::IsSelect ******/
-		/****** md5 signature: 4fd51ac73ac4f170284ef23b73e8ad10 ******/
+		/****** md5 signature: d6c820a6347313dd32508574c67e13aa ******/
 		%feature("compactdefaultargs") IsSelect;
 		%feature("autodoc", "Return
 -------
@@ -2309,10 +2307,10 @@ Description
 -----------
 Tells if <self> is for a SELECT.
 ") IsSelect;
-		Standard_Boolean IsSelect();
+		bool IsSelect();
 
 		/****** StepData_PDescr::IsString ******/
-		/****** md5 signature: ac665e4e9c83f465923dced607b01ce2 ******/
+		/****** md5 signature: 1bfbd3f46eccbed8f58766113fb965cb ******/
 		%feature("compactdefaultargs") IsString;
 		%feature("autodoc", "Return
 -------
@@ -2322,10 +2320,10 @@ Description
 -----------
 Tells if <self> is for a String value.
 ") IsString;
-		Standard_Boolean IsString();
+		bool IsString();
 
 		/****** StepData_PDescr::IsType ******/
-		/****** md5 signature: 7f80c69742aac431c8267e8d799e47a0 ******/
+		/****** md5 signature: f072c62b75f5641e54e8e4ca9b60ae7d ******/
 		%feature("compactdefaultargs") IsType;
 		%feature("autodoc", "
 Parameters
@@ -2340,15 +2338,15 @@ Description
 -----------
 Tells if <self> is for an entity of a given CDL type (early-bnd) (works for <self> + nexts if <self> is a Select).
 ") IsType;
-		Standard_Boolean IsType(const opencascade::handle<Standard_Type> & atype);
+		bool IsType(const opencascade::handle<Standard_Type> & atype);
 
 		/****** StepData_PDescr::Member ******/
-		/****** md5 signature: ca2f280b640e912436a3c96a8631a573 ******/
+		/****** md5 signature: 2d0905fc4066ba67251a5393ee089e75 ******/
 		%feature("compactdefaultargs") Member;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2358,23 +2356,23 @@ Description
 -----------
 For a SELECT, returns the member whose name matches <name> To this member, the following question can then be asked Null Handle if <name> not matched or <self> not a SELECT //! Remark: not to be asked for an entity type Hence, following IsInteger .. Enum* only apply on <self> and require Member While IsType applies on <self> and all Select Members.
 ") Member;
-		opencascade::handle<StepData_PDescr> Member(Standard_CString name);
+		opencascade::handle<StepData_PDescr> Member(const char * const name);
 
 		/****** StepData_PDescr::Name ******/
-		/****** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ******/
+		/****** md5 signature: c01515d64eb8c383d620d861376d0837 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		Standard_CString Name();
+		const char * Name();
 
 		/****** StepData_PDescr::SetArity ******/
-		/****** md5 signature: 19349cb1569c7d2c99201a4b17f62b09 ******/
+		/****** md5 signature: 24ed636cada9042707e237b963b92e29 ******/
 		%feature("compactdefaultargs") SetArity;
 		%feature("autodoc", "
 Parameters
@@ -2389,7 +2387,7 @@ Description
 -----------
 Directly sets the arity count 0: simple field 1: LIST or ARRAY etc 2: LIST OF LIST.
 ") SetArity;
-		void SetArity(const Standard_Integer arity = 1);
+		void SetArity(const int arity = 1);
 
 		/****** StepData_PDescr::SetBoolean ******/
 		/****** md5 signature: bf9900e4b4fd787ac6b581c7fda7a856 ******/
@@ -2405,12 +2403,12 @@ Sets <self> for a Boolean value (false,true).
 		void SetBoolean();
 
 		/****** StepData_PDescr::SetDerived ******/
-		/****** md5 signature: 9093f15053d321b0228c297329293ec1 ******/
+		/****** md5 signature: adde89fe4dd94ffcefd7e4ff785701c4 ******/
 		%feature("compactdefaultargs") SetDerived;
 		%feature("autodoc", "
 Parameters
 ----------
-der: bool (optional, default to Standard_True)
+der: bool (optional, default to true)
 
 Return
 -------
@@ -2420,15 +2418,15 @@ Description
 -----------
 Sets/Unsets <self> to be for a derived field.
 ") SetDerived;
-		void SetDerived(const Standard_Boolean der = Standard_True);
+		void SetDerived(const bool der = true);
 
 		/****** StepData_PDescr::SetDescr ******/
-		/****** md5 signature: febac70e45c7821737578180b25b24b9 ******/
+		/****** md5 signature: d5f2571769e4bd421fbdcb8179fb6183 ******/
 		%feature("compactdefaultargs") SetDescr;
 		%feature("autodoc", "
 Parameters
 ----------
-dscnam: str
+dscnam: char *
 
 Return
 -------
@@ -2438,7 +2436,7 @@ Description
 -----------
 Sets <self> for a Described Entity, whose Description must match the type name <dscnam>.
 ") SetDescr;
-		void SetDescr(Standard_CString dscnam);
+		void SetDescr(const char * const dscnam);
 
 		/****** StepData_PDescr::SetEnum ******/
 		/****** md5 signature: 7f9613aa4cc5debf6e829382aa1b5c8f ******/
@@ -2454,12 +2452,12 @@ Sets <self> for an Enum value Then, call AddEnumDef ordered from the first one (
 		void SetEnum();
 
 		/****** StepData_PDescr::SetField ******/
-		/****** md5 signature: 6bd22ff34c7fd8f3fc9a55e0007dcf69 ******/
+		/****** md5 signature: 17d1a9a1fb61b786417953d239652131 ******/
 		%feature("compactdefaultargs") SetField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 rank: int
 
 Return
@@ -2470,7 +2468,7 @@ Description
 -----------
 Sets <self> to describe a field of an entity With a name and a rank.
 ") SetField;
-		void SetField(Standard_CString name, const Standard_Integer rank);
+		void SetField(const char * const name, const int rank);
 
 		/****** StepData_PDescr::SetFrom ******/
 		/****** md5 signature: 3627e9a1276d95210a26b8aa1638d208 ******/
@@ -2517,12 +2515,12 @@ Sets <self> for a Logical value (false,true,unknown).
 		void SetLogical();
 
 		/****** StepData_PDescr::SetMemberName ******/
-		/****** md5 signature: a28ff59c1912e38954636701e39eb710 ******/
+		/****** md5 signature: 38bada6dfb8bcd5917d1a25ec4adb407 ******/
 		%feature("compactdefaultargs") SetMemberName;
 		%feature("autodoc", "
 Parameters
 ----------
-memname: str
+memname: char *
 
 Return
 -------
@@ -2532,15 +2530,15 @@ Description
 -----------
 Sets a name for SELECT member. To be used if a member is for an immediate type.
 ") SetMemberName;
-		void SetMemberName(Standard_CString memname);
+		void SetMemberName(const char * const memname);
 
 		/****** StepData_PDescr::SetName ******/
-		/****** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ******/
+		/****** md5 signature: 9334b2c77e8aae2ba868615f5b4f7498 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2550,15 +2548,15 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		void SetName(Standard_CString name);
+		void SetName(const char * const name);
 
 		/****** StepData_PDescr::SetOptional ******/
-		/****** md5 signature: 205ea788b56cdff70243eaa68a2bc517 ******/
+		/****** md5 signature: 764c391d0b5156e056200bb0999ec674 ******/
 		%feature("compactdefaultargs") SetOptional;
 		%feature("autodoc", "
 Parameters
 ----------
-opt: bool (optional, default to Standard_True)
+opt: bool (optional, default to true)
 
 Return
 -------
@@ -2568,7 +2566,7 @@ Description
 -----------
 Sets/Unsets <self> to accept undefined values.
 ") SetOptional;
-		void SetOptional(const Standard_Boolean opt = Standard_True);
+		void SetOptional(const bool opt = true);
 
 		/****** StepData_PDescr::SetReal ******/
 		/****** md5 signature: 2ce6cd0118626db593edb228dd1788f0 ******/
@@ -2701,7 +2699,7 @@ Records an ESDescr, intended to build complex descriptions.
 		void AddBasicDescr(const opencascade::handle<StepData_ESDescr> & esdescr);
 
 		/****** StepData_Protocol::AddDescr ******/
-		/****** md5 signature: c81121b35247ced8e3cc3e849be40fe4 ******/
+		/****** md5 signature: 790a2255d581aad6de732810d2d9a7d6 ******/
 		%feature("compactdefaultargs") AddDescr;
 		%feature("autodoc", "
 Parameters
@@ -2717,7 +2715,7 @@ Description
 -----------
 Records an EDescr with its case number Also records its name for an ESDescr (simple type): an ESDescr is then used, for case number, or for type name.
 ") AddDescr;
-		void AddDescr(const opencascade::handle<StepData_EDescr> & adescr, const Standard_Integer CN);
+		void AddDescr(const opencascade::handle<StepData_EDescr> & adescr, const int CN);
 
 		/****** StepData_Protocol::AddPDescr ******/
 		/****** md5 signature: 0b7907fa8b298bf81503a93005ad302f ******/
@@ -2738,13 +2736,13 @@ Records an PDescr.
 		void AddPDescr(const opencascade::handle<StepData_PDescr> & pdescr);
 
 		/****** StepData_Protocol::BasicDescr ******/
-		/****** md5 signature: ea145ef73c875ad092784f773a0ec92e ******/
+		/****** md5 signature: d23f81ce4197eceb0694682741533250 ******/
 		%feature("compactdefaultargs") BasicDescr;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-anylevel: bool (optional, default to Standard_True)
+name: char *
+anylevel: bool (optional, default to true)
 
 Return
 -------
@@ -2754,10 +2752,10 @@ Description
 -----------
 Returns a basic description according to its name <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") BasicDescr;
-		opencascade::handle<StepData_EDescr> BasicDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_EDescr> BasicDescr(const char * const name, const bool anylevel = true);
 
 		/****** StepData_Protocol::CaseNumber ******/
-		/****** md5 signature: d6b7e103ec41af298dd6803be8908a5e ******/
+		/****** md5 signature: 831bfc163524ce730daf18afbff58981 ******/
 		%feature("compactdefaultargs") CaseNumber;
 		%feature("autodoc", "
 Parameters
@@ -2772,10 +2770,10 @@ Description
 -----------
 Returns a unique positive number for any recognized entity Redefined to work by calling both TypeNumber and, for a Described Entity (late binding) DescrNumber.
 ") CaseNumber;
-		virtual Standard_Integer CaseNumber(const opencascade::handle<Standard_Transient> & obj);
+		int CaseNumber(const opencascade::handle<Standard_Transient> & obj);
 
 		/****** StepData_Protocol::Descr ******/
-		/****** md5 signature: bc229387d2901cc0869d62058998449b ******/
+		/****** md5 signature: 980f240ce9341dac16abf2b59e9f1210 ******/
 		%feature("compactdefaultargs") Descr;
 		%feature("autodoc", "
 Parameters
@@ -2790,16 +2788,16 @@ Description
 -----------
 Returns the description attached to a case number, or null.
 ") Descr;
-		opencascade::handle<StepData_EDescr> Descr(const Standard_Integer num);
+		opencascade::handle<StepData_EDescr> Descr(const int num);
 
 		/****** StepData_Protocol::Descr ******/
-		/****** md5 signature: a64b4d396209a530eae12437dcc7dd4b ******/
+		/****** md5 signature: 60fb2b6aadc1935aca315f5f3ee3d36f ******/
 		%feature("compactdefaultargs") Descr;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-anylevel: bool (optional, default to Standard_True)
+name: char *
+anylevel: bool (optional, default to true)
 
 Return
 -------
@@ -2809,10 +2807,10 @@ Description
 -----------
 Returns a description according to its name <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") Descr;
-		opencascade::handle<StepData_EDescr> Descr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_EDescr> Descr(const char * const name, const bool anylevel = true);
 
 		/****** StepData_Protocol::DescrNumber ******/
-		/****** md5 signature: 6654ae9b30db0b05d98cad2dcce64330 ******/
+		/****** md5 signature: ad44b358a317e06d388f1562505349a0 ******/
 		%feature("compactdefaultargs") DescrNumber;
 		%feature("autodoc", "
 Parameters
@@ -2827,16 +2825,16 @@ Description
 -----------
 Returns a unique positive CaseNumber for types described by an EDescr (late binding) Warning: TypeNumber and DescrNumber must give together a unique positive case number for each distinct case, type or descr.
 ") DescrNumber;
-		virtual Standard_Integer DescrNumber(const opencascade::handle<StepData_EDescr> & adescr);
+		virtual int DescrNumber(const opencascade::handle<StepData_EDescr> & adescr);
 
 		/****** StepData_Protocol::ECDescr ******/
-		/****** md5 signature: 3e7da9805ec51804b1b8459683d6d65e ******/
+		/****** md5 signature: 81228032ea839c005d6ea12b00650dca ******/
 		%feature("compactdefaultargs") ECDescr;
 		%feature("autodoc", "
 Parameters
 ----------
-names: TColStd_SequenceOfAsciiString
-anylevel: bool (optional, default to Standard_True)
+names: NCollection_Sequence<TCollection_AsciiString>
+anylevel: bool (optional, default to true)
 
 Return
 -------
@@ -2846,16 +2844,16 @@ Description
 -----------
 Returns a complex description according to list of names <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") ECDescr;
-		opencascade::handle<StepData_ECDescr> ECDescr(const TColStd_SequenceOfAsciiString & names, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_ECDescr> ECDescr(const NCollection_Sequence<TCollection_AsciiString> & names, const bool anylevel = true);
 
 		/****** StepData_Protocol::ESDescr ******/
-		/****** md5 signature: 805abe23f6acecedb762c8bd132622f4 ******/
+		/****** md5 signature: 5e58a071c1665f4214b66b057cb71b20 ******/
 		%feature("compactdefaultargs") ESDescr;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-anylevel: bool (optional, default to Standard_True)
+name: char *
+anylevel: bool (optional, default to true)
 
 Return
 -------
@@ -2865,10 +2863,10 @@ Description
 -----------
 Idem as Descr but cast to simple description.
 ") ESDescr;
-		opencascade::handle<StepData_ESDescr> ESDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_ESDescr> ESDescr(const char * const name, const bool anylevel = true);
 
 		/****** StepData_Protocol::HasDescr ******/
-		/****** md5 signature: bf5be80666d0e25b04a7537155317256 ******/
+		/****** md5 signature: a2c45d01e354a2002571d30a07a0b039 ******/
 		%feature("compactdefaultargs") HasDescr;
 		%feature("autodoc", "Return
 -------
@@ -2878,10 +2876,10 @@ Description
 -----------
 Tells if a Protocol brings at least one ESDescr, i.e. if it defines at least one entity description by ESDescr mechanism.
 ") HasDescr;
-		Standard_Boolean HasDescr();
+		bool HasDescr();
 
 		/****** StepData_Protocol::IsSuitableModel ******/
-		/****** md5 signature: 3a7d76487f7ffeaa887a18b03ce0e06c ******/
+		/****** md5 signature: d2ccb6e77cddff484d0b7a9051bcd673 ******/
 		%feature("compactdefaultargs") IsSuitableModel;
 		%feature("autodoc", "
 Parameters
@@ -2896,10 +2894,10 @@ Description
 -----------
 Returns True if <model> is a Model of Step Norm.
 ") IsSuitableModel;
-		Standard_Boolean IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
+		bool IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** StepData_Protocol::IsUnknownEntity ******/
-		/****** md5 signature: cec9bde85b0ea68f8042a2f3f4f9c29b ******/
+		/****** md5 signature: 02362c70d307360a2b6188ad031013c3 ******/
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "
 Parameters
@@ -2914,10 +2912,10 @@ Description
 -----------
 Returns True if <ent> is an Unknown Entity for the Norm, i.e. Type UndefinedEntity, status Unknown.
 ") IsUnknownEntity;
-		Standard_Boolean IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
+		bool IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_Protocol::NbResources ******/
-		/****** md5 signature: e09215dfaa5a4c92d70662499182122c ******/
+		/****** md5 signature: 3c8410815357f0a892211359291d8070 ******/
 		%feature("compactdefaultargs") NbResources;
 		%feature("autodoc", "Return
 -------
@@ -2927,10 +2925,10 @@ Description
 -----------
 Gives the count of Protocols used as Resource (can be zero) Here, No resource.
 ") NbResources;
-		Standard_Integer NbResources();
+		int NbResources();
 
 		/****** StepData_Protocol::NewModel ******/
-		/****** md5 signature: 91513f9ebe9e7d52eca2b6b58f6b9b0a ******/
+		/****** md5 signature: 4e176eab7c6da9b73e274debab7af3fb ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -2943,13 +2941,13 @@ Creates an empty Model for Step Norm.
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
 		/****** StepData_Protocol::PDescr ******/
-		/****** md5 signature: 2abe2851749e0ea2ddeef19dbac17487 ******/
+		/****** md5 signature: 727349a707b29bc800cc5fc8f8f51325 ******/
 		%feature("compactdefaultargs") PDescr;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-anylevel: bool (optional, default to Standard_True)
+name: char *
+anylevel: bool (optional, default to true)
 
 Return
 -------
@@ -2959,10 +2957,10 @@ Description
 -----------
 Returns a parameter description according to its name <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") PDescr;
-		opencascade::handle<StepData_PDescr> PDescr(Standard_CString name, const Standard_Boolean anylevel = Standard_True);
+		opencascade::handle<StepData_PDescr> PDescr(const char * const name, const bool anylevel = true);
 
 		/****** StepData_Protocol::Resource ******/
-		/****** md5 signature: d60e6fb01254af21c091aa5baad80e74 ******/
+		/****** md5 signature: 3c19c2497364406e7d4e9d2a0f8d51c0 ******/
 		%feature("compactdefaultargs") Resource;
 		%feature("autodoc", "
 Parameters
@@ -2977,10 +2975,10 @@ Description
 -----------
 Returns a Resource, given a rank. Here, none.
 ") Resource;
-		opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
+		opencascade::handle<Interface_Protocol> Resource(const int num);
 
 		/****** StepData_Protocol::SchemaName ******/
-		/****** md5 signature: 9b6562a0bce45ba741d1284ad388153f ******/
+		/****** md5 signature: c7d0a0330aee388dde3198947d282264 ******/
 		%feature("compactdefaultargs") SchemaName;
 		%feature("autodoc", "
 Parameters
@@ -2989,16 +2987,16 @@ theModel: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Schema Name attached to each class of Protocol To be redefined by each sub-class Here, SchemaName returns '(DEFAULT)' was C++: return const.
 ") SchemaName;
-		virtual Standard_CString SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
+		virtual const char * SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****** StepData_Protocol::TypeNumber ******/
-		/****** md5 signature: c141bcfd5e7e4d36c0619b6951ddde94 ******/
+		/****** md5 signature: bbae632533589e3c2443854ef12e6cb8 ******/
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "
 Parameters
@@ -3013,10 +3011,10 @@ Description
 -----------
 Returns a Case Number, specific of each recognized Type Here, only Unknown Entity is recognized.
 ") TypeNumber;
-		Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
+		int TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
 		/****** StepData_Protocol::UnknownEntity ******/
-		/****** md5 signature: 201f936eaa0d5d272733a19cbe8e2fa3 ******/
+		/****** md5 signature: 169032e358d8d8ef4fd05f39169f96f5 ******/
 		%feature("compactdefaultargs") UnknownEntity;
 		%feature("autodoc", "Return
 -------
@@ -3046,7 +3044,7 @@ Creates a new Unknown Entity for Step (UndefinedEntity).
 class StepData_ReadWriteModule : public Interface_ReaderModule {
 	public:
 		/****** StepData_ReadWriteModule::CaseNum ******/
-		/****** md5 signature: 9879d2c99e315f91c57304d23ffeaef0 ******/
+		/****** md5 signature: e807b9c49d9153ce57b3e5855eca12f8 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3062,10 +3060,10 @@ Description
 -----------
 Translate the Type of record <num> in <data> to a positive Case Number, or 0 if failed. Works with a StepReaderData, in which the Type of an Entity is defined as a String: Reads the RecordType <num> then calls CaseNum (this type) Warning: The methods CaseStep, StepType and Recognize, must be in phase (triplets CaseNum-StepType-Type of Object).
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num);
+		int CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const int num);
 
 		/****** StepData_ReadWriteModule::CaseStep ******/
-		/****** md5 signature: 7e65e4b4a69664f65e970d967f008708 ******/
+		/****** md5 signature: bf8bed63481f64209e8b724fd45994d0 ******/
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "
 Parameters
@@ -3080,15 +3078,15 @@ Description
 -----------
 Defines Case Numbers corresponding to the recognized Types Called by CaseNum (data,num) above for a Simple Type Entity Warning: CaseStep must give the same Value as Protocol does for the Entity type which corresponds to this Type given as a String.
 ") CaseStep;
-		virtual Standard_Integer CaseStep(TCollection_AsciiString atype);
+		virtual int CaseStep(TCollection_AsciiString atype);
 
 		/****** StepData_ReadWriteModule::CaseStep ******/
-		/****** md5 signature: d9651ca055fd2343fe45b2e5d648493f ******/
+		/****** md5 signature: 379c1f5aea592abcd3dfadd588a2121c ******/
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "
 Parameters
 ----------
-types: TColStd_SequenceOfAsciiString
+types: NCollection_Sequence<TCollection_AsciiString>
 
 Return
 -------
@@ -3098,16 +3096,16 @@ Description
 -----------
 Same a above but for a Complex Type Entity ('Plex') The provided Default recognizes nothing.
 ") CaseStep;
-		virtual Standard_Integer CaseStep(const TColStd_SequenceOfAsciiString & types);
+		virtual int CaseStep(const NCollection_Sequence<TCollection_AsciiString> & types);
 
 		/****** StepData_ReadWriteModule::ComplexType ******/
-		/****** md5 signature: 52df8730ab1b7428b731404043419d5e ******/
+		/****** md5 signature: 78e3b47462e8a0e9e3e0a061c11eae06 ******/
 		%feature("compactdefaultargs") ComplexType;
 		%feature("autodoc", "
 Parameters
 ----------
 CN: int
-types: TColStd_SequenceOfAsciiString
+types: NCollection_Sequence<TCollection_AsciiString>
 
 Return
 -------
@@ -3117,10 +3115,10 @@ Description
 -----------
 Function specific to STEP, which delivers the list of types which corresponds to a complex type. If <CN> is not for a complex type, this method returns False. Else it returns True and fills the list in alphabetic order. The default returns False. To be redefined as required.
 ") ComplexType;
-		virtual Standard_Boolean ComplexType(const Standard_Integer CN, TColStd_SequenceOfAsciiString & types);
+		virtual bool ComplexType(const int CN, NCollection_Sequence<TCollection_AsciiString> & types);
 
 		/****** StepData_ReadWriteModule::IsComplex ******/
-		/****** md5 signature: f69d23266f548cbef58466865b56b793 ******/
+		/****** md5 signature: 85c6b2fef15897806cf8d77632c47346 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "
 Parameters
@@ -3135,10 +3133,10 @@ Description
 -----------
 Returns True if the Case Number corresponds to a Complex Type ('Plex'). Remember that all possible combinations must be acknowledged to be processed Default is False for all cases. For a Protocol which defines possible Plexes, this method must be redefined.
 ") IsComplex;
-		virtual Standard_Boolean IsComplex(const Standard_Integer CN);
+		virtual bool IsComplex(const int CN);
 
 		/****** StepData_ReadWriteModule::Read ******/
-		/****** md5 signature: 42ded38f13a0a591a94dfdfbbc6644f7 ******/
+		/****** md5 signature: 51f5d802b79e4aa06bb2474af3294dbb ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -3157,10 +3155,10 @@ Description
 -----------
 General Read Function, calls ReadStep.
 ") Read;
-		void Read(const Standard_Integer CN, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
+		void Read(const int CN, const opencascade::handle<Interface_FileReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_ReadWriteModule::ReadStep ******/
-		/****** md5 signature: 7827cf6d9624cefa436418259cfad082 ******/
+		/****** md5 signature: e7adfeb691bfae8306fa3307f3be7581 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3179,10 +3177,10 @@ Description
 -----------
 Specific Read Function. Works with StepReaderData.
 ") ReadStep;
-		virtual void ReadStep(const Standard_Integer CN, const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
+		virtual void ReadStep(const int CN, const opencascade::handle<StepData_StepReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_ReadWriteModule::ShortType ******/
-		/****** md5 signature: feccc5d77de5a4efd2ff9c32c681670d ******/
+		/****** md5 signature: 15f208473fe8a83965ca5d35800d0666 ******/
 		%feature("compactdefaultargs") ShortType;
 		%feature("autodoc", "
 Parameters
@@ -3197,10 +3195,10 @@ Description
 -----------
 Function specific to STEP. Some STEP Types have a short form This method can be redefined to fill it By default, returns an empty string, which is then interpreted to take normal form from StepType.
 ") ShortType;
-		virtual TCollection_AsciiString ShortType(const Standard_Integer CN);
+		virtual TCollection_AsciiString ShortType(const int CN);
 
 		/****** StepData_ReadWriteModule::StepType ******/
-		/****** md5 signature: 8a1b15e32146e0e72c4fad9883c71bc2 ******/
+		/****** md5 signature: 2e9e325a0f23c7db6276030f7bd7ae4d ******/
 		%feature("compactdefaultargs") StepType;
 		%feature("autodoc", "
 Parameters
@@ -3209,16 +3207,16 @@ CN: int
 
 Return
 -------
-TCollection_AsciiString
+std::string_view
 
 Description
 -----------
 Function specific to STEP, which delivers the StepType as it is recorded in and read from a File compliant with STEP. This method is symmetric to the method CaseStep. StepType can be different from Dynamic Type's name, but belongs to the same class of Object. Returns an empty String if <CN> is zero. Warning: For a Complex Type Entity, returns an Empty String (Complex Type must be managed by users).
 ") StepType;
-		virtual const TCollection_AsciiString & StepType(const Standard_Integer CN);
+		virtual const std::string_view & StepType(const int CN);
 
 		/****** StepData_ReadWriteModule::WriteStep ******/
-		/****** md5 signature: 986769118432b0fa4d7f4b1c81f028e4 ******/
+		/****** md5 signature: 7e7d89d871d294f50b44ca7a5d95cbc0 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3235,7 +3233,7 @@ Description
 -----------
 Write Function, switched by CaseNum.
 ") WriteStep;
-		virtual void WriteStep(const Standard_Integer CN, StepData_StepWriter & SW, const opencascade::handle<Standard_Transient> & ent);
+		virtual void WriteStep(const int CN, StepData_StepWriter & SW, const opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -3267,7 +3265,7 @@ No available documentation.
 		 StepData_SelectMember();
 
 		/****** StepData_SelectMember::Boolean ******/
-		/****** md5 signature: 39ad0909384672336008a4c3e79f7717 ******/
+		/****** md5 signature: 07be05793f336e9d3f994ffc3222a79f ******/
 		%feature("compactdefaultargs") Boolean;
 		%feature("autodoc", "Return
 -------
@@ -3277,10 +3275,10 @@ Description
 -----------
 No available documentation.
 ") Boolean;
-		Standard_Boolean Boolean();
+		bool Boolean();
 
 		/****** StepData_SelectMember::Enum ******/
-		/****** md5 signature: 75bb761a19f6ce89aca919b1b06fddaf ******/
+		/****** md5 signature: c185e396a8fc9593cfe32e0b5d9db431 ******/
 		%feature("compactdefaultargs") Enum;
 		%feature("autodoc", "Return
 -------
@@ -3290,23 +3288,23 @@ Description
 -----------
 No available documentation.
 ") Enum;
-		Standard_Integer Enum();
+		int Enum();
 
 		/****** StepData_SelectMember::EnumText ******/
-		/****** md5 signature: 621a527a92778ae4fa5cff824a2c2790 ******/
+		/****** md5 signature: 16bcd56094c4ce5f9c6a393a43b08540 ******/
 		%feature("compactdefaultargs") EnumText;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") EnumText;
-		virtual Standard_CString EnumText();
+		virtual const char * EnumText();
 
 		/****** StepData_SelectMember::HasName ******/
-		/****** md5 signature: a74e6ea53e000ac8d5a7eb1d6d14b850 ******/
+		/****** md5 signature: 430fc08b0e34a96ab4dbd2405acb3bea ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -3316,10 +3314,10 @@ Description
 -----------
 Tells if a SelectMember has a name. Default is False.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		virtual bool HasName();
 
 		/****** StepData_SelectMember::Int ******/
-		/****** md5 signature: f27438da77305a243726a9826a63a916 ******/
+		/****** md5 signature: 6aabae8f29a8a61ea60d76d296418f3a ******/
 		%feature("compactdefaultargs") Int;
 		%feature("autodoc", "Return
 -------
@@ -3329,10 +3327,10 @@ Description
 -----------
 This internal method gives access to a value implemented by an Integer (to read it).
 ") Int;
-		virtual Standard_Integer Int();
+		virtual int Int();
 
 		/****** StepData_SelectMember::Integer ******/
-		/****** md5 signature: 5ca25bbf05344000d69837c81499cc7b ******/
+		/****** md5 signature: 41bc0bf7511a4be8a41ab471a0c3532a ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "Return
 -------
@@ -3342,10 +3340,10 @@ Description
 -----------
 Gets the value as an Integer.
 ") Integer;
-		Standard_Integer Integer();
+		int Integer();
 
 		/****** StepData_SelectMember::Kind ******/
-		/****** md5 signature: 5771a64a3f3c102cd68a48415bbe33eb ******/
+		/****** md5 signature: 36d9a8197556f4a763b376e82d07ec29 ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -3355,7 +3353,7 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		virtual Standard_Integer Kind();
+		virtual int Kind();
 
 		/****** StepData_SelectMember::Logical ******/
 		/****** md5 signature: f59f41b2208e1bd65bb2ef13de48dac8 ******/
@@ -3371,12 +3369,12 @@ No available documentation.
 		StepData_Logical Logical();
 
 		/****** StepData_SelectMember::Matches ******/
-		/****** md5 signature: c9d1ea3408c59311e6e40d3891575d93 ******/
+		/****** md5 signature: ef368c3127474f232802bc33bb24ff22 ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3386,20 +3384,20 @@ Description
 -----------
 Tells if the name of a SelectMember matches a given one By default, compares the strings, can be redefined (optimised).
 ") Matches;
-		virtual Standard_Boolean Matches(Standard_CString name);
+		virtual bool Matches(const char * const name);
 
 		/****** StepData_SelectMember::Name ******/
-		/****** md5 signature: 4bbe2b58331ae651e1fa6526c574b2e9 ******/
+		/****** md5 signature: d0f648d103fb210439b8e51a7c73a769 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of a SelectMember. Default is empty.
 ") Name;
-		virtual Standard_CString Name();
+		virtual const char * Name();
 
 		/****** StepData_SelectMember::ParamType ******/
 		/****** md5 signature: dc18453a4564d25585accbb5ebf0a4f7 ******/
@@ -3415,20 +3413,20 @@ Returns the Kind of the SelectMember, under the form of an enum ParamType.
 		Interface_ParamType ParamType();
 
 		/****** StepData_SelectMember::Real ******/
-		/****** md5 signature: 30595f985b2d3d2d1b6c5cccc0b83aad ******/
+		/****** md5 signature: 8bdc564bf02430f070a77a38d5bcce48 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Real;
-		virtual Standard_Real Real();
+		virtual double Real();
 
 		/****** StepData_SelectMember::SetBoolean ******/
-		/****** md5 signature: 59873555daddcc9f684733208feeb7c7 ******/
+		/****** md5 signature: be83170857f536a88f271beae67c66df ******/
 		%feature("compactdefaultargs") SetBoolean;
 		%feature("autodoc", "
 Parameters
@@ -3443,16 +3441,16 @@ Description
 -----------
 No available documentation.
 ") SetBoolean;
-		void SetBoolean(const Standard_Boolean val);
+		void SetBoolean(const bool val);
 
 		/****** StepData_SelectMember::SetEnum ******/
-		/****** md5 signature: 758f07821669833e2be91cd8731e45df ******/
+		/****** md5 signature: f3c495f541b8f3939079788d52f0f2ea ******/
 		%feature("compactdefaultargs") SetEnum;
 		%feature("autodoc", "
 Parameters
 ----------
 val: int
-text: str (optional, default to "")
+text: char * (optional, default to "")
 
 Return
 -------
@@ -3462,16 +3460,16 @@ Description
 -----------
 No available documentation.
 ") SetEnum;
-		void SetEnum(const Standard_Integer val, Standard_CString text = "");
+		void SetEnum(const int val, const char * const text = "");
 
 		/****** StepData_SelectMember::SetEnumText ******/
-		/****** md5 signature: 6e5583fdb08591f7e8f8f226898b0d67 ******/
+		/****** md5 signature: 55cb51797df1cb596080973dad05b47f ******/
 		%feature("compactdefaultargs") SetEnumText;
 		%feature("autodoc", "
 Parameters
 ----------
 val: int
-text: str
+text: char *
 
 Return
 -------
@@ -3481,10 +3479,10 @@ Description
 -----------
 No available documentation.
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer val, Standard_CString text);
+		virtual void SetEnumText(const int val, const char * const text);
 
 		/****** StepData_SelectMember::SetInt ******/
-		/****** md5 signature: 289060698bf307997261972a524e768b ******/
+		/****** md5 signature: 146a57409bcdce144dd4cf26ac2b706e ******/
 		%feature("compactdefaultargs") SetInt;
 		%feature("autodoc", "
 Parameters
@@ -3499,10 +3497,10 @@ Description
 -----------
 This internal method gives access to a value implemented by an Integer (to set it).
 ") SetInt;
-		virtual void SetInt(const Standard_Integer val);
+		virtual void SetInt(const int val);
 
 		/****** StepData_SelectMember::SetInteger ******/
-		/****** md5 signature: dc131391f0aa1bd4afb803faec59f9d3 ******/
+		/****** md5 signature: 8d0eafa62dbebdf7e4cbd76b1c7313ac ******/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "
 Parameters
@@ -3517,10 +3515,10 @@ Description
 -----------
 No available documentation.
 ") SetInteger;
-		void SetInteger(const Standard_Integer val);
+		void SetInteger(const int val);
 
 		/****** StepData_SelectMember::SetKind ******/
-		/****** md5 signature: 5e6fd09fa87a3b96c34121bb6afbd92b ******/
+		/****** md5 signature: dac8e95eb68ddee9449fd81cc1938199 ******/
 		%feature("compactdefaultargs") SetKind;
 		%feature("autodoc", "
 Parameters
@@ -3535,7 +3533,7 @@ Description
 -----------
 No available documentation.
 ") SetKind;
-		virtual void SetKind(const Standard_Integer kind);
+		virtual void SetKind(const int kind);
 
 		/****** StepData_SelectMember::SetLogical ******/
 		/****** md5 signature: 5e18a3dde7de2dd23dd820298e9ddccb ******/
@@ -3556,12 +3554,12 @@ No available documentation.
 		void SetLogical(const StepData_Logical val);
 
 		/****** StepData_SelectMember::SetName ******/
-		/****** md5 signature: 4188498b2a6d9bd915c04353feb3a32a ******/
+		/****** md5 signature: 9cefcb8e18d0196170e1d2b2e423c108 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3571,15 +3569,15 @@ Description
 -----------
 Sets the name of a SelectMember, returns True if done, False if no name is allowed Default does nothing and returns False.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		virtual bool SetName(const char * const name);
 
 		/****** StepData_SelectMember::SetReal ******/
-		/****** md5 signature: ead3399bdee9d33e972dd778e9163719 ******/
+		/****** md5 signature: 134f203d3f903e79179d37f62f5b3838 ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -3589,15 +3587,15 @@ Description
 -----------
 No available documentation.
 ") SetReal;
-		virtual void SetReal(const Standard_Real val);
+		virtual void SetReal(const double val);
 
 		/****** StepData_SelectMember::SetString ******/
-		/****** md5 signature: ac1c534ccd534f94fa88320cb774264e ******/
+		/****** md5 signature: 04d3bc28944fb557284a3ebf8062fb7f ******/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 
 Return
 -------
@@ -3607,20 +3605,20 @@ Description
 -----------
 No available documentation.
 ") SetString;
-		virtual void SetString(Standard_CString val);
+		virtual void SetString(const char * const val);
 
 		/****** StepData_SelectMember::String ******/
-		/****** md5 signature: 2ee5f6c9286e147f38695747c263fc79 ******/
+		/****** md5 signature: 3d9ad9a383f7ab9461bbfe29096891e4 ******/
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") String;
-		virtual Standard_CString String();
+		virtual const char * String();
 
 };
 
@@ -3640,7 +3638,7 @@ No available documentation.
 class StepData_SelectType {
 	public:
 		/****** StepData_SelectType::Boolean ******/
-		/****** md5 signature: 39ad0909384672336008a4c3e79f7717 ******/
+		/****** md5 signature: 07be05793f336e9d3f994ffc3222a79f ******/
 		%feature("compactdefaultargs") Boolean;
 		%feature("autodoc", "Return
 -------
@@ -3650,10 +3648,10 @@ Description
 -----------
 No available documentation.
 ") Boolean;
-		Standard_Boolean Boolean();
+		bool Boolean();
 
 		/****** StepData_SelectType::CaseMem ******/
-		/****** md5 signature: a17454a8505683177bac9d5e4faa1d1d ******/
+		/****** md5 signature: ba4ef8c4494e3e253b5e719af32bef43 ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -3668,10 +3666,10 @@ Description
 -----------
 Recognize a SelectMember (kind, name). Returns a positive value which identifies the case in the List of immediate cases (distinct from the List of Entity Types). Zero if not recognizes Default returns 0, saying that no immediate value is allowed.
 ") CaseMem;
-		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
+		virtual int CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****** StepData_SelectType::CaseMember ******/
-		/****** md5 signature: 294b9f6dec0f6b31d757999adcb36171 ******/
+		/****** md5 signature: 0c3d15b0220c3ba2b67e0c1695ec96d4 ******/
 		%feature("compactdefaultargs") CaseMember;
 		%feature("autodoc", "Return
 -------
@@ -3681,10 +3679,10 @@ Description
 -----------
 Returns the Type of the stored SelectMember, or zero if it is Null or Entity. Calls the method CaseMem on Value.
 ") CaseMember;
-		Standard_Integer CaseMember();
+		int CaseMember();
 
 		/****** StepData_SelectType::CaseNum ******/
-		/****** md5 signature: 4f0e8f8256342e77e3423e91317a1579 ******/
+		/****** md5 signature: 06c46b008f1b6bb75a86dc6de48995f9 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3699,10 +3697,10 @@ Description
 -----------
 Recognizes the Type of an Entity. Returns a positive Number which identifies the Type in the definition List of the SelectType. Returns Zero if its Type in not in this List.
 ") CaseNum;
-		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		virtual int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_SelectType::CaseNumber ******/
-		/****** md5 signature: 31aa5fdc8212555fb0e3cbfc4b1bab59 ******/
+		/****** md5 signature: ef3f4208c9c9cd6c0745e4862748840c ******/
 		%feature("compactdefaultargs") CaseNumber;
 		%feature("autodoc", "Return
 -------
@@ -3712,7 +3710,7 @@ Description
 -----------
 Recognizes the Type of the stored Entity, or zero if it is Null or SelectMember. Calls the first method CaseNum on Value.
 ") CaseNumber;
-		Standard_Integer CaseNumber();
+		int CaseNumber();
 
 		/****** StepData_SelectType::Description ******/
 		/****** md5 signature: f04ac39845446a6fa87e1ea8e37c7bbc ******/
@@ -3728,7 +3726,7 @@ Returns the Description which corresponds to <self> Null if no specific descript
 		virtual opencascade::handle<StepData_PDescr> Description();
 
 		/****** StepData_SelectType::Int ******/
-		/****** md5 signature: 1413d7ff960425ad93b46a46cdc240ec ******/
+		/****** md5 signature: c5232548243e824f05032038d86f2b7b ******/
 		%feature("compactdefaultargs") Int;
 		%feature("autodoc", "Return
 -------
@@ -3738,10 +3736,10 @@ Description
 -----------
 This internal method gives access to a value implemented by an Integer (to read it).
 ") Int;
-		Standard_Integer Int();
+		int Int();
 
 		/****** StepData_SelectType::Integer ******/
-		/****** md5 signature: 5ca25bbf05344000d69837c81499cc7b ******/
+		/****** md5 signature: 41bc0bf7511a4be8a41ab471a0c3532a ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "Return
 -------
@@ -3751,10 +3749,10 @@ Description
 -----------
 Gets the value as an Integer.
 ") Integer;
-		Standard_Integer Integer();
+		int Integer();
 
 		/****** StepData_SelectType::IsNull ******/
-		/****** md5 signature: eab2964eabd2f0636e5f767661fb72a9 ******/
+		/****** md5 signature: 853b69e6816e494cce299d49aca90322 ******/
 		%feature("compactdefaultargs") IsNull;
 		%feature("autodoc", "Return
 -------
@@ -3764,7 +3762,7 @@ Description
 -----------
 Returns True if there is no Stored Entity (i.e. it is Null).
 ") IsNull;
-		Standard_Boolean IsNull();
+		bool IsNull();
 
 		/****** StepData_SelectType::Logical ******/
 		/****** md5 signature: f59f41b2208e1bd65bb2ef13de48dac8 ******/
@@ -3780,7 +3778,7 @@ No available documentation.
 		StepData_Logical Logical();
 
 		/****** StepData_SelectType::Matches ******/
-		/****** md5 signature: a158768991d394ac27eba9f2e3ebe357 ******/
+		/****** md5 signature: 0a0e7991bc689e400bb8c1c7794f7d28 ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
@@ -3795,7 +3793,7 @@ Description
 -----------
 Returns True if the Type of an Entity complies with the definition list of the SelectType. Also checks for a SelectMember Default Implementation looks for CaseNum or CaseMem positive.
 ") Matches;
-		Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent);
+		bool Matches(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_SelectType::Member ******/
 		/****** md5 signature: 29604dad95e12947007c79462435d631 ******/
@@ -3837,39 +3835,39 @@ Nullifies the Stored Entity.
 		void Nullify();
 
 		/****** StepData_SelectType::Real ******/
-		/****** md5 signature: 181e92704b7f1e346dc134d4b9adb5a7 ******/
+		/****** md5 signature: 16ce6c42ffe077ec7b2a0073fb25cd28 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Real;
-		Standard_Real Real();
+		double Real();
 
 		/****** StepData_SelectType::SelectName ******/
-		/****** md5 signature: 24088194cbf01ec376461d167baf80e1 ******/
+		/****** md5 signature: 6432857d2a60fbad8ee86a3667f023c3 ******/
 		%feature("compactdefaultargs") SelectName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the type name of SelectMember. If no SelectMember or with no type name, returns an empty string To change it, pass through the SelectMember itself.
 ") SelectName;
-		Standard_CString SelectName();
+		const char * SelectName();
 
 		/****** StepData_SelectType::SetBoolean ******/
-		/****** md5 signature: 4c36e531ab59ebb4eac7bfea6d026b1b ******/
+		/****** md5 signature: 0281eab942d220ac5ebe4ab3fd3f02e2 ******/
 		%feature("compactdefaultargs") SetBoolean;
 		%feature("autodoc", "
 Parameters
 ----------
 val: bool
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -3879,10 +3877,10 @@ Description
 -----------
 No available documentation.
 ") SetBoolean;
-		void SetBoolean(const Standard_Boolean val, Standard_CString name = "");
+		void SetBoolean(const bool val, const char * const name = "");
 
 		/****** StepData_SelectType::SetInt ******/
-		/****** md5 signature: dcaa71e8d1c44545b3a4bd91a6b8e118 ******/
+		/****** md5 signature: e2fd56d2891bb446c69b20d104bbe5d9 ******/
 		%feature("compactdefaultargs") SetInt;
 		%feature("autodoc", "
 Parameters
@@ -3897,16 +3895,16 @@ Description
 -----------
 This internal method gives access to a value implemented by an Integer (to set it): a SelectMember MUST ALREADY BE THERE !.
 ") SetInt;
-		void SetInt(const Standard_Integer val);
+		void SetInt(const int val);
 
 		/****** StepData_SelectType::SetInteger ******/
-		/****** md5 signature: 641c279fb96673f3ceb40811e8a55e66 ******/
+		/****** md5 signature: 46d8f076e9b15d5a8ac2c17e10069069 ******/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "
 Parameters
 ----------
 val: int
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -3916,16 +3914,16 @@ Description
 -----------
 Sets a new Integer value, with an optional type name Warning: If a SelectMember is already set, works on it: value and name must then be accepted by this SelectMember.
 ") SetInteger;
-		void SetInteger(const Standard_Integer val, Standard_CString name = "");
+		void SetInteger(const int val, const char * const name = "");
 
 		/****** StepData_SelectType::SetLogical ******/
-		/****** md5 signature: 8b08112ac196caf89d73cb41e1657d45 ******/
+		/****** md5 signature: d109fc4356b6e1159d35fc20a263a5cd ******/
 		%feature("compactdefaultargs") SetLogical;
 		%feature("autodoc", "
 Parameters
 ----------
 val: StepData_Logical
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -3935,16 +3933,16 @@ Description
 -----------
 No available documentation.
 ") SetLogical;
-		void SetLogical(const StepData_Logical val, Standard_CString name = "");
+		void SetLogical(const StepData_Logical val, const char * const name = "");
 
 		/****** StepData_SelectType::SetReal ******/
-		/****** md5 signature: 235b28f168469ea4a0d3160bc30cf516 ******/
+		/****** md5 signature: 9c8f6755655881fe91b65587fd598553 ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
-name: str (optional, default to "")
+val: double
+name: char * (optional, default to "")
 
 Return
 -------
@@ -3954,7 +3952,7 @@ Description
 -----------
 No available documentation.
 ") SetReal;
-		void SetReal(const Standard_Real val, Standard_CString name = "");
+		void SetReal(const double val, const char * const name = "");
 
 		/****** StepData_SelectType::SetValue ******/
 		/****** md5 signature: a322c71f7e82fac78b60be1e7fcd4248 ******/
@@ -4015,7 +4013,7 @@ Returns the Stored Entity. Can be used to define specific read methods (see abov
 class StepData_StepDumper {
 	public:
 		/****** StepData_StepDumper::StepData_StepDumper ******/
-		/****** md5 signature: 9deee2e0f03885b6991eac045d3bff49 ******/
+		/****** md5 signature: 6e0ce962195c9b4453e05169e43c707a ******/
 		%feature("compactdefaultargs") StepData_StepDumper;
 		%feature("autodoc", "
 Parameters
@@ -4032,10 +4030,10 @@ Description
 -----------
 Creates a StepDumper, able to work on a given StepModel (which defines the total scope for dumping entities) and a given Protocol from Step (which defines the authorized types to be dumped) <mode> commands what is to be displayed (number or label) 0 for number (and corresponding labels are displayed apart) 1 for label (and corresponding numbers are displayed apart) 2 for label without anymore.
 ") StepData_StepDumper;
-		 StepData_StepDumper(const opencascade::handle<StepData_StepModel> & amodel, const opencascade::handle<StepData_Protocol> & protocol, const Standard_Integer mode = 0);
+		 StepData_StepDumper(const opencascade::handle<StepData_StepModel> & amodel, const opencascade::handle<StepData_Protocol> & protocol, const int mode = 0);
 
 		/****** StepData_StepDumper::Dump ******/
-		/****** md5 signature: 51a252c8de81ad50ec4845852573a9a5 ******/
+		/****** md5 signature: 0f393bff482132f936f2001c7625f5f6 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4051,10 +4049,10 @@ Description
 -----------
 Dumps a Entity on an Messenger. Returns True if success, False, if the entity to dump has not been recognized by the Protocol. <level> can have one of these values: - 0: prints the TYPE only, as known in STEP Files (StepType) If <ent> has not been regognized by the Protocol, or if its type is Complex, the StepType is replaced by the display of the cdl type. Complex Type are well processed by level 1. - 1: dumps the entity, completely (whatever it has simple or complex type) but alone. - 2: dumps the entity completely, plus the item its refers to at first level (a header message designates the starting entity of the dump) <Lists Shared and Implied> - 3: dumps the entity and its referred items at any levels //! For levels 1,2,3, the numbers displayed (form #nnn) are the numbers of the corresponding entities in the Model.
 ") Dump;
-		Standard_Boolean Dump(std::ostream &OutValue, const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level);
+		bool Dump(std::ostream &OutValue, const opencascade::handle<Standard_Transient> & ent, const int level);
 
 		/****** StepData_StepDumper::Dump ******/
-		/****** md5 signature: 2c2fad53a5ea53ff96aa2a4598e4e028 ******/
+		/****** md5 signature: 586a2f2b2a4ca3824b0d1dc541c2f2ce ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4070,7 +4068,7 @@ Description
 -----------
 Works as Dump with a Transient, but directly takes the entity designated by its number in the Model Returns False, also if <num> is out of range.
 ") Dump;
-		Standard_Boolean Dump(std::ostream &OutValue, const Standard_Integer num, const Standard_Integer level);
+		bool Dump(std::ostream &OutValue, const int num, const int level);
 
 		/****** StepData_StepDumper::StepWriter ******/
 		/****** md5 signature: 96c8201dd445aa612be97bdda77742fe ******/
@@ -4131,7 +4129,7 @@ Adds an Entity to the Header.
 		void AddHeaderEntity(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_StepModel::ClearHeader ******/
-		/****** md5 signature: e0fe665687ba246130521f416ab14715 ******/
+		/****** md5 signature: 81ef923f850ea8300d46a65c729c1bd6 ******/
 		%feature("compactdefaultargs") ClearHeader;
 		%feature("autodoc", "Return
 -------
@@ -4144,7 +4142,7 @@ Clears the Header.
 		void ClearHeader();
 
 		/****** StepData_StepModel::ClearLabels ******/
-		/****** md5 signature: 3045f499e790e0fc2a95acdb522f6ec7 ******/
+		/****** md5 signature: a5f109e33320ab46b6efaa733b163b63 ******/
 		%feature("compactdefaultargs") ClearLabels;
 		%feature("autodoc", "Return
 -------
@@ -4157,7 +4155,7 @@ erases specific labels, i.e. clears the map (entity-ident).
 		void ClearLabels();
 
 		/****** StepData_StepModel::DumpHeader ******/
-		/****** md5 signature: 56f8df745054635fd7397075063f4387 ******/
+		/****** md5 signature: 24251371d0f012679b6af8500c3be0b5 ******/
 		%feature("compactdefaultargs") DumpHeader;
 		%feature("autodoc", "
 Parameters
@@ -4172,10 +4170,10 @@ Description
 -----------
 Dumps the Header, with the Header Protocol of StepData. If the Header Protocol is not defined, for each Header Entity, prints its Type. Else sends the Header under the form of HEADER Section of an Ascii Step File <level> is not used because Header is not so big.
 ") DumpHeader;
-		void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
+		void DumpHeader(std::ostream &OutValue, const int level = 0);
 
 		/****** StepData_StepModel::Entity ******/
-		/****** md5 signature: 1676edef20e54d8138d1f2a308537826 ******/
+		/****** md5 signature: 79caa837fa8980e44dea4c847e6eb9b4 ******/
 		%feature("compactdefaultargs") Entity;
 		%feature("autodoc", "
 Parameters
@@ -4190,10 +4188,10 @@ Description
 -----------
 returns entity given its rank. Same as InterfaceEntity, but with a shorter name.
 ") Entity;
-		opencascade::handle<Standard_Transient> Entity(const Standard_Integer num);
+		opencascade::handle<Standard_Transient> Entity(const int num);
 
 		/****** StepData_StepModel::GetFromAnother ******/
-		/****** md5 signature: 07f4171563413e184028d7c8759ed71c ******/
+		/****** md5 signature: f8d441c5771aa569690b393c9eb132d7 ******/
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "
 Parameters
@@ -4211,7 +4209,7 @@ gets header from another Model (uses Header Protocol).
 		void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
 		/****** StepData_StepModel::HasHeaderEntity ******/
-		/****** md5 signature: b89a0a364c711932b6d01b56cee77906 ******/
+		/****** md5 signature: f2b2d8b9fa8d539b87e4a43fc7f0f824 ******/
 		%feature("compactdefaultargs") HasHeaderEntity;
 		%feature("autodoc", "
 Parameters
@@ -4226,7 +4224,7 @@ Description
 -----------
 says if a Header entity has a specified type.
 ") HasHeaderEntity;
-		Standard_Boolean HasHeaderEntity(const opencascade::handle<Standard_Type> & atype);
+		bool HasHeaderEntity(const opencascade::handle<Standard_Type> & atype);
 
 		/****** StepData_StepModel::Header ******/
 		/****** md5 signature: 3d6e09de2922c048a927493ef2d64848 ******/
@@ -4260,7 +4258,7 @@ Returns Header entity with specified type, if there is.
 		opencascade::handle<Standard_Transient> HeaderEntity(const opencascade::handle<Standard_Type> & atype);
 
 		/****** StepData_StepModel::IdentLabel ******/
-		/****** md5 signature: 10b81eabe33ad8b4029c27784d0a6669 ******/
+		/****** md5 signature: 183be2ffb3d1cb7480f3a12623c93037 ******/
 		%feature("compactdefaultargs") IdentLabel;
 		%feature("autodoc", "
 Parameters
@@ -4275,10 +4273,10 @@ Description
 -----------
 returns the label ident attached to an entity, 0 if not in me.
 ") IdentLabel;
-		Standard_Integer IdentLabel(const opencascade::handle<Standard_Transient> & ent);
+		int IdentLabel(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_StepModel::IsInitializedUnit ******/
-		/****** md5 signature: fe0bd8baacb679c3138fd7d26ea62f98 ******/
+		/****** md5 signature: 34c66fa387636226d6da3df2ced65421 ******/
 		%feature("compactdefaultargs") IsInitializedUnit;
 		%feature("autodoc", "Return
 -------
@@ -4288,23 +4286,23 @@ Description
 -----------
 Returns the unit initialization flag True - the unit was initialized False - the unit value was not initialized, the default value is used.
 ") IsInitializedUnit;
-		Standard_Boolean IsInitializedUnit();
+		bool IsInitializedUnit();
 
 		/****** StepData_StepModel::LocalLengthUnit ******/
-		/****** md5 signature: 985f2c4be943ccdeef11a3c7627d6535 ******/
+		/****** md5 signature: 365a49de9b1fa91cd28443b4dc210e4c ******/
 		%feature("compactdefaultargs") LocalLengthUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns local length unit using for transfer process (1 by default).
 ") LocalLengthUnit;
-		Standard_Real LocalLengthUnit();
+		double LocalLengthUnit();
 
 		/****** StepData_StepModel::NewEmptyModel ******/
-		/****** md5 signature: 40876c8eb593ebc41abaf47645e862e5 ******/
+		/****** md5 signature: c7c7afeaeaa4e3f58350438ec9368a8b ******/
 		%feature("compactdefaultargs") NewEmptyModel;
 		%feature("autodoc", "Return
 -------
@@ -4317,7 +4315,7 @@ Returns a New Empty Model, same type as <self>, i.e. StepModel.
 		opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
 		/****** StepData_StepModel::PrintLabel ******/
-		/****** md5 signature: 70ad5739c870581f6dca5167f0b3bae0 ******/
+		/****** md5 signature: ef9765f6cbdc6da5c6aaea1612f21d9d ******/
 		%feature("compactdefaultargs") PrintLabel;
 		%feature("autodoc", "
 Parameters
@@ -4335,7 +4333,7 @@ Prints label specific to STEP norm for a given entity, i.e. if a LabelIdent has 
 		void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
 		/****** StepData_StepModel::SetIdentLabel ******/
-		/****** md5 signature: d8211ff55cd283602d612ccf9779dc4a ******/
+		/****** md5 signature: fed5b63349eb0e1eada9bd209eab5b9a ******/
 		%feature("compactdefaultargs") SetIdentLabel;
 		%feature("autodoc", "
 Parameters
@@ -4351,15 +4349,15 @@ Description
 -----------
 Attaches an ident to an entity to produce a label (does nothing if <ent> is not in <self>).
 ") SetIdentLabel;
-		void SetIdentLabel(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer ident);
+		void SetIdentLabel(const opencascade::handle<Standard_Transient> & ent, const int ident);
 
 		/****** StepData_StepModel::SetLocalLengthUnit ******/
-		/****** md5 signature: 783595f799eb693ca1a2109c4ddaf448 ******/
+		/****** md5 signature: 6c291fc08631c4107177671a0aa400be ******/
 		%feature("compactdefaultargs") SetLocalLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnit: float
+theUnit: double
 
 Return
 -------
@@ -4369,7 +4367,7 @@ Description
 -----------
 Sets local length unit using for transfer process.
 ") SetLocalLengthUnit;
-		void SetLocalLengthUnit(const Standard_Real theUnit);
+		void SetLocalLengthUnit(const double theUnit);
 
 		/****** StepData_StepModel::SetSourceCodePage ******/
 		/****** md5 signature: aa588b60c23e4bbb2537b739d5a43a57 ******/
@@ -4390,12 +4388,12 @@ Return the encoding of STEP file for converting names into UNICODE.
 		void SetSourceCodePage(Resource_FormatType theCode);
 
 		/****** StepData_StepModel::SetWriteLengthUnit ******/
-		/****** md5 signature: c506583997fe9e8405e47ccc0d6e9a2b ******/
+		/****** md5 signature: d91fcc067a27fa11e6a7e77ad1f45463 ******/
 		%feature("compactdefaultargs") SetWriteLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnit: float
+theUnit: double
 
 Return
 -------
@@ -4405,7 +4403,7 @@ Description
 -----------
 Sets length unit using for writing process.
 ") SetWriteLengthUnit;
-		void SetWriteLengthUnit(const Standard_Real theUnit);
+		void SetWriteLengthUnit(const double theUnit);
 
 		/****** StepData_StepModel::SourceCodePage ******/
 		/****** md5 signature: e194da071972a41e58548e424201cc2c ******/
@@ -4421,7 +4419,7 @@ Return the encoding of STEP file for converting names into UNICODE. Initialized 
 		Resource_FormatType SourceCodePage();
 
 		/****** StepData_StepModel::StringLabel ******/
-		/****** md5 signature: 8051e56e871a0ca086f3d44adb661ad2 ******/
+		/****** md5 signature: 8c1d103d0db383cc063c7d455e356ae6 ******/
 		%feature("compactdefaultargs") StringLabel;
 		%feature("autodoc", "
 Parameters
@@ -4439,7 +4437,7 @@ Returns a string with the label attached to a given entity, same form as for Pri
 		opencascade::handle<TCollection_HAsciiString> StringLabel(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepData_StepModel::VerifyCheck ******/
-		/****** md5 signature: 1054ee41d20b1185127d800c7331e3c3 ******/
+		/****** md5 signature: 695cf5d62a51fec2768c871671281fa7 ******/
 		%feature("compactdefaultargs") VerifyCheck;
 		%feature("autodoc", "
 Parameters
@@ -4454,20 +4452,20 @@ Description
 -----------
 Specific Check, checks Header Items with HeaderProtocol.
 ") VerifyCheck;
-		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
+		void VerifyCheck(opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_StepModel::WriteLengthUnit ******/
-		/****** md5 signature: a15b65aac54886b2c56544fdb4e2f592 ******/
+		/****** md5 signature: f7a9c9c719ba2f8257c4a0364c8a7167 ******/
 		%feature("compactdefaultargs") WriteLengthUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns length unit using for writing process (1 by default).
 ") WriteLengthUnit;
-		Standard_Real WriteLengthUnit();
+		double WriteLengthUnit();
 
 };
 
@@ -4486,7 +4484,7 @@ Returns length unit using for writing process (1 by default).
 class StepData_StepReaderData : public Interface_FileReaderData {
 	public:
 		/****** StepData_StepReaderData::StepData_StepReaderData ******/
-		/****** md5 signature: db335b50fd725a5628db2d961b3a5133 ******/
+		/****** md5 signature: c5088a8425c7f8d759d1b6151ed5962b ******/
 		%feature("compactdefaultargs") StepData_StepReaderData;
 		%feature("autodoc", "
 Parameters
@@ -4504,16 +4502,16 @@ Description
 -----------
 creates StepReaderData correctly dimensioned (necessary at creation time, because it contains arrays) nbheader is nb of records for Header, nbtotal for Header+Data and nbpar gives the total count of parameters.
 ") StepData_StepReaderData;
-		 StepData_StepReaderData(const Standard_Integer nbheader, const Standard_Integer nbtotal, const Standard_Integer nbpar, const Resource_FormatType theSourceCodePage = Resource_FormatType_UTF8);
+		 StepData_StepReaderData(const int nbheader, const int nbtotal, const int nbpar, const Resource_FormatType theSourceCodePage = Resource_FormatType_UTF8);
 
 		/****** StepData_StepReaderData::AddStepParam ******/
-		/****** md5 signature: 834d18d38a342df8da62aa7c53fe99a4 ******/
+		/****** md5 signature: c8d9c63027de869a2e1564e036e55e1e ******/
 		%feature("compactdefaultargs") AddStepParam;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-aval: str
+aval: char *
 atype: Interface_ParamType
 nument: int (optional, default to 0)
 
@@ -4525,10 +4523,10 @@ Description
 -----------
 Fills the fields of a parameter of a record. This is a variant of AddParam, Adapted to STEP (optimized for specific values).
 ") AddStepParam;
-		void AddStepParam(const Standard_Integer num, Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
+		void AddStepParam(const int num, const char * const aval, const Interface_ParamType atype, const int nument = 0);
 
 		/****** StepData_StepReaderData::CType ******/
-		/****** md5 signature: 3471c88389b71f86b2469f9965af46ab ******/
+		/****** md5 signature: f83bdcc999b1d975cb03198d4ece859b ******/
 		%feature("compactdefaultargs") CType;
 		%feature("autodoc", "
 Parameters
@@ -4537,25 +4535,25 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns Record Type as a CString was C++: return const.
 ") CType;
-		Standard_CString CType(const Standard_Integer num);
+		const char * CType(const int num);
 
 		/****** StepData_StepReaderData::CheckDerived ******/
-		/****** md5 signature: d9839de6294aa8ba65f812eb1e812f91 ******/
+		/****** md5 signature: a473cfa1a8fcdeb5bf7f129c7645f139 ******/
 		%feature("compactdefaultargs") CheckDerived;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
-errstat: bool (optional, default to Standard_False)
+errstat: bool (optional, default to false)
 
 Return
 -------
@@ -4565,10 +4563,10 @@ Description
 -----------
 Checks if parameter <nump> of record <num> is given as Derived If this Check is successful (i.e. Param = '*'), returns True Else, fills <ach> with a Message which contains <mess> and returns False. According to <errstat>, this message is Warning if errstat is False (Default), Fail if errstat is True.
 ") CheckDerived;
-		Standard_Boolean CheckDerived(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const Standard_Boolean errstat = Standard_False);
+		bool CheckDerived(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, const bool errstat = false);
 
 		/****** StepData_StepReaderData::CheckNbParams ******/
-		/****** md5 signature: 40bd050708432827e8edcb713a598c03 ******/
+		/****** md5 signature: 2cc9f73e62f8abea7ce5c59ad675be88 ******/
 		%feature("compactdefaultargs") CheckNbParams;
 		%feature("autodoc", "
 Parameters
@@ -4576,7 +4574,7 @@ Parameters
 num: int
 nbreq: int
 ach: Interface_Check
-mess: str (optional, default to "")
+mess: char * (optional, default to "")
 
 Return
 -------
@@ -4586,16 +4584,16 @@ Description
 -----------
 Checks Count of Parameters of record <num> to equate <nbreq> If this Check is successful, returns True Else, fills <ach> with an Error Message then returns False <mess> is included in the Error message if given non empty.
 ") CheckNbParams;
-		Standard_Boolean CheckNbParams(const Standard_Integer num, const Standard_Integer nbreq, opencascade::handle<Interface_Check> & ach, Standard_CString mess = "");
+		bool CheckNbParams(const int num, const int nbreq, opencascade::handle<Interface_Check> & ach, const char * const mess = "");
 
 		/****** StepData_StepReaderData::ComplexType ******/
-		/****** md5 signature: 340da4e2cb3395caa521e4492b2553d1 ******/
+		/****** md5 signature: f4f8f54a4662c9e509556287b1b71b0c ******/
 		%feature("compactdefaultargs") ComplexType;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-types: TColStd_SequenceOfAsciiString
+types: NCollection_Sequence<TCollection_AsciiString>
 
 Return
 -------
@@ -4605,17 +4603,17 @@ Description
 -----------
 Returns the List of Types which correspond to a Complex Type Entity. If not Complex, there is just one Type in it For a SubList or a Scope mark, <types> remains empty.
 ") ComplexType;
-		void ComplexType(const Standard_Integer num, TColStd_SequenceOfAsciiString & types);
+		void ComplexType(const int num, NCollection_Sequence<TCollection_AsciiString> & types);
 
 		/****** StepData_StepReaderData::FailEnumValue ******/
-		/****** md5 signature: 25e193747e56ca1f197d8dbf6eb86a76 ******/
+		/****** md5 signature: 91a43b3b900d87f95767662ae337e8c1 ******/
 		%feature("compactdefaultargs") FailEnumValue;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
@@ -4626,10 +4624,10 @@ Description
 -----------
 Fills a check with a fail message if enumeration value does match parameter definition Just a help to centralize message definitions.
 ") FailEnumValue;
-		void FailEnumValue(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach);
+		void FailEnumValue(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_StepReaderData::FindNextHeaderRecord ******/
-		/****** md5 signature: 4810c89976f8a19ded7f4ad73027cd2a ******/
+		/****** md5 signature: 6e49ce2e5dd43a0e9aa7b9240f1034de ******/
 		%feature("compactdefaultargs") FindNextHeaderRecord;
 		%feature("autodoc", "
 Parameters
@@ -4644,10 +4642,10 @@ Description
 -----------
 determine first suitable record of Header works as FindNextRecord, but treats only Header records.
 ") FindNextHeaderRecord;
-		Standard_Integer FindNextHeaderRecord(const Standard_Integer num);
+		int FindNextHeaderRecord(const int num);
 
 		/****** StepData_StepReaderData::FindNextRecord ******/
-		/****** md5 signature: b54f23c95a9eaf7d62f9c7b9d32982b2 ******/
+		/****** md5 signature: af0880fae3013305c161fab34dea16e9 ******/
 		%feature("compactdefaultargs") FindNextRecord;
 		%feature("autodoc", "
 Parameters
@@ -4662,7 +4660,7 @@ Description
 -----------
 determines the first suitable record following a given one that is, skips SCOPE,ENDSCOPE and SUBLIST records Note: skips Header records, which are accessed separately.
 ") FindNextRecord;
-		Standard_Integer FindNextRecord(const Standard_Integer num);
+		int FindNextRecord(const int num);
 
 		/****** StepData_StepReaderData::GlobalCheck ******/
 		/****** md5 signature: 00501d7eb3a6736e3986f0a6d1d2c559 ******/
@@ -4678,7 +4676,7 @@ Returns the Global Check. It can record Fail messages about Undefined References
 		const opencascade::handle<Interface_Check> GlobalCheck();
 
 		/****** StepData_StepReaderData::IsComplex ******/
-		/****** md5 signature: 14fe1b648c0c4d95a2f1af447484f0fc ******/
+		/****** md5 signature: b743d0c1e380fcd998f0d3c27acea4db ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "
 Parameters
@@ -4693,15 +4691,15 @@ Description
 -----------
 Returns True if <num> corresponds to a Complex Type Entity (as can be defined by ANDOR Express clause).
 ") IsComplex;
-		Standard_Boolean IsComplex(const Standard_Integer num);
+		bool IsComplex(const int num);
 
 		/****** StepData_StepReaderData::NamedForComplex ******/
-		/****** md5 signature: d1ec9ab7b048a14ad3cae103f38e0618 ******/
+		/****** md5 signature: 00b036b2302d7e92f5c05c8414753d65 ******/
 		%feature("compactdefaultargs") NamedForComplex;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 num0: int
 ach: Interface_Check
 
@@ -4713,16 +4711,16 @@ Description
 -----------
 Determines the first component which brings a given name, for a Complex Type Entity <num0> is the very first record of this entity <num> is given the last NextNamedForComplex, starts at zero it is returned as the newly found number Hence, in the normal case, NextNamedForComplex starts by num0 if <num> is zero, else by NextForComplex(num) If the alphabetic order is not respected, it restarts from num0 and loops on NextForComplex until finding <name> In case of 'non-alphabetic order', <ach> is filled with a Warning for this name In case of 'not-found at all', <ach> is filled with a Fail, and <num> is returned as zero //! Returns True if alphabetic order, False else.
 ") NamedForComplex;
-		Standard_Boolean NamedForComplex(Standard_CString name, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
+		bool NamedForComplex(const char * const name, const int num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_StepReaderData::NamedForComplex ******/
-		/****** md5 signature: 9323d5d37d3d46676be6970d81776e60 ******/
+		/****** md5 signature: b6593effd9e1889a88d928af8f3adb15 ******/
 		%feature("compactdefaultargs") NamedForComplex;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
-theShortName: str
+theName: char *
+theShortName: char *
 num0: int
 ach: Interface_Check
 
@@ -4734,10 +4732,10 @@ Description
 -----------
 Determines the first component which brings a given name, or short name for a Complex Type Entity <num0> is the very first record of this entity <num> is given the last NextNamedForComplex, starts at zero it is returned as the newly found number Hence, in the normal case, NextNamedForComplex starts by num0 if <num> is zero, else by NextForComplex(num) If the alphabetic order is not respected, it restarts from num0 and loops on NextForComplex until finding <name> In case of 'non-alphabetic order', <ach> is filled with a Warning for this name In case of 'not-found at all', <ach> is filled with a Fail, and <num> is returned as zero //! Returns True if alphabetic order, False else.
 ") NamedForComplex;
-		Standard_Boolean NamedForComplex(Standard_CString theName, Standard_CString theShortName, const Standard_Integer num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
+		bool NamedForComplex(const char * const theName, const char * const theShortName, const int num0, Standard_Integer &OutValue, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_StepReaderData::NbEntities ******/
-		/****** md5 signature: ab39f1a260e05424e9d879a047ae3f8d ******/
+		/****** md5 signature: 9f1930526dd42b0983ed2f53654ed3b7 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -4747,10 +4745,10 @@ Description
 -----------
 Returns total count of Entities (including Header).
 ") NbEntities;
-		virtual Standard_Integer NbEntities();
+		int NbEntities();
 
 		/****** StepData_StepReaderData::NextForComplex ******/
-		/****** md5 signature: dcd2936f68f0d3198fecec8298b34d93 ******/
+		/****** md5 signature: 6b809e20aab5364d1a13bdb445e7de8d ******/
 		%feature("compactdefaultargs") NextForComplex;
 		%feature("autodoc", "
 Parameters
@@ -4765,7 +4763,7 @@ Description
 -----------
 Returns the Next 'Component' for a Complex Type Entity, of which <num> is already a Component (the first one or a next one) Returns 0 for a Simple Type or for the last Component.
 ") NextForComplex;
-		Standard_Integer NextForComplex(const Standard_Integer num);
+		int NextForComplex(const int num);
 
 		/****** StepData_StepReaderData::PrepareHeader ******/
 		/****** md5 signature: 11051b9ec511cc902c041ebf5d287d0b ******/
@@ -4781,14 +4779,14 @@ Works as SetEntityNumbers but for Header: more simple because there are no Refer
 		void PrepareHeader();
 
 		/****** StepData_StepReaderData::ReadAny ******/
-		/****** md5 signature: f7e94a149abb91c70d6c2dd8819fe3cc ******/
+		/****** md5 signature: 07b41c0f3497522eb0180ef25905860f ******/
 		%feature("compactdefaultargs") ReadAny;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 descr: StepData_PDescr
 val: Standard_Transient
@@ -4801,17 +4799,17 @@ Description
 -----------
 Reads parameter <nump> of record <num> into a Transient Value according to the type of the parameter: Named for Integer,Boolean,Logical,Enum,Real: SelectNamed Immediate Integer,Boolean,Logical,Enum,Real: SelectInt/Real Text: HAsciiString Ident: the referenced Entity Sub-List not processed, see ReadSub This value is controlled by a Parameter Descriptor (PDescr), which controls its allowed type and value <ach> is filled if the read parameter does not match its description (the select is nevertheless created if possible) //! Warning: val is in out, hence it is possible to predefine a specific SelectMember then to fill it. If <val> is Null or if the result is not a SelectMember, val itself is returned a new ref For a Select with a Name, <val> must then be a SelectNamed.
 ") ReadAny;
-		Standard_Boolean ReadAny(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
+		bool ReadAny(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
 
 		/****** StepData_StepReaderData::ReadBoolean ******/
-		/****** md5 signature: c61b344ba750add039b5fae58b747ea7 ******/
+		/****** md5 signature: cc003bda1176f538a19abe670196c73d ******/
 		%feature("compactdefaultargs") ReadBoolean;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
@@ -4822,17 +4820,17 @@ Description
 -----------
 reads parameter <nump> of record <num> as a Boolean Return value and Check managed as by ReadReal (demands a Boolean enum, i.e. text '.T.' for True or '.F.' for False).
 ") ReadBoolean;
-		Standard_Boolean ReadBoolean(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Boolean &OutValue);
+		bool ReadBoolean(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Boolean &OutValue);
 
 		/****** StepData_StepReaderData::ReadEnum ******/
-		/****** md5 signature: 1ba2321f0ae50fef377849bb1f6650d7 ******/
+		/****** md5 signature: 929b27485a24157b080bf36169ce16a0 ******/
 		%feature("compactdefaultargs") ReadEnum;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 enumtool: StepData_EnumTool
 
@@ -4844,19 +4842,19 @@ Description
 -----------
 Reads parameter <nump> of record <num> as an Enumeration (text between dots) and converts it to an integer value, by an EnumTool. Returns True if OK, false if: this parameter is not enumeration, or is not recognized by the EnumTool (with fail).
 ") ReadEnum;
-		Standard_Boolean ReadEnum(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const StepData_EnumTool & enumtool, Standard_Integer &OutValue);
+		bool ReadEnum(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, const StepData_EnumTool & enumtool, Standard_Integer &OutValue);
 
 		/****** StepData_StepReaderData::ReadEnumParam ******/
-		/****** md5 signature: 673529d8e471385b72ef2a193883fa07 ******/
+		/****** md5 signature: a90475e4cdca15f9e37bbc9f8a634d22 ******/
 		%feature("compactdefaultargs") ReadEnumParam;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
-text: str
+text: char *
 
 Return
 -------
@@ -4866,17 +4864,17 @@ Description
 -----------
 No available documentation.
 ") ReadEnumParam;
-		Standard_Boolean ReadEnumParam(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_CString text);
+		bool ReadEnumParam(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, const char * & text);
 
 		/****** StepData_StepReaderData::ReadField ******/
-		/****** md5 signature: 117cffc7ad5a8d128a01db0184aab062 ******/
+		/****** md5 signature: ed579f6390b9fcb2976ab2d940a9e7bf ******/
 		%feature("compactdefaultargs") ReadField;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 descr: StepData_PDescr
 fild: StepData_Field
@@ -4889,17 +4887,17 @@ Description
 -----------
 reads parameter <nump> of record <num> into a Field, controlled by a Parameter Descriptor (PDescr), which controls its allowed type(s) and value <ach> is filled if the read parameter does not match its description (but the field is read anyway) If the description is not defined, no control is done Returns True when done.
 ") ReadField;
-		Standard_Boolean ReadField(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, StepData_Field & fild);
+		bool ReadField(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, StepData_Field & fild);
 
 		/****** StepData_StepReaderData::ReadInteger ******/
-		/****** md5 signature: 8df89f40ca3baa06d5708a995e3bc965 ******/
+		/****** md5 signature: fd45b997700fa7eb99a2a100340febfe ******/
 		%feature("compactdefaultargs") ReadInteger;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
@@ -4910,10 +4908,10 @@ Description
 -----------
 reads parameter <nump> of record <num> as a single Integer. Return value & Check managed as by ReadXY (demands an Integer).
 ") ReadInteger;
-		Standard_Boolean ReadInteger(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue);
+		bool ReadInteger(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue);
 
 		/****** StepData_StepReaderData::ReadList ******/
-		/****** md5 signature: 6fee9a6abd753aabac229fd7505f0bec ******/
+		/****** md5 signature: c2b11e3e9be6224543ad5efa537a0743 ******/
 		%feature("compactdefaultargs") ReadList;
 		%feature("autodoc", "
 Parameters
@@ -4931,17 +4929,17 @@ Description
 -----------
 reads a list of fields controlled by an ESDescr.
 ") ReadList;
-		Standard_Boolean ReadList(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_ESDescr> & descr, StepData_FieldList & list);
+		bool ReadList(const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_ESDescr> & descr, StepData_FieldList & list);
 
 		/****** StepData_StepReaderData::ReadLogical ******/
-		/****** md5 signature: 5e1a0e71d39ef6503884113456db3977 ******/
+		/****** md5 signature: d2ac57eba435501d5426ff5bdd6b2be4 ******/
 		%feature("compactdefaultargs") ReadLogical;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
@@ -4952,38 +4950,38 @@ Description
 -----------
 reads parameter <nump> of record <num> as a Logical Return value and Check managed as by ReadBoolean (demands a Logical enum, i.e. text '.T.', '.F.', or '.U.').
 ") ReadLogical;
-		Standard_Boolean ReadLogical(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, StepData_Logical &OutValue);
+		bool ReadLogical(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, StepData_Logical &OutValue);
 
 		/****** StepData_StepReaderData::ReadReal ******/
-		/****** md5 signature: ffb5a16c71361b585a01f0d634e7c1d7 ******/
+		/****** md5 signature: 2501df368fae3ed243ec96446f557690 ******/
 		%feature("compactdefaultargs") ReadReal;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
 -------
-val: float
+val: double
 
 Description
 -----------
 reads parameter <nump> of record <num> as a single Real value. Return value and Check managed as by ReadXY (demands a Real).
 ") ReadReal;
-		Standard_Boolean ReadReal(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue);
+		bool ReadReal(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue);
 
 		/****** StepData_StepReaderData::ReadString ******/
-		/****** md5 signature: 488fccca903c0d056793019b913279db ******/
+		/****** md5 signature: d50e8e302439b2be2b25bc045d3b74f2 ******/
 		%feature("compactdefaultargs") ReadString;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
@@ -4994,16 +4992,16 @@ Description
 -----------
 reads parameter <nump> of record <num> as a String (text between quotes, quotes are removed by the Read operation) Return value and Check managed as by ReadXY (demands a String).
 ") ReadString;
-		Standard_Boolean ReadString(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		bool ReadString(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****** StepData_StepReaderData::ReadSub ******/
-		/****** md5 signature: c5ac3109022b64e7d22ee6e578f203ae ******/
+		/****** md5 signature: 893e44efbbdf6521f3f36f2d11e9d154 ******/
 		%feature("compactdefaultargs") ReadSub;
 		%feature("autodoc", "
 Parameters
 ----------
 numsub: int
-mess: str
+mess: char *
 ach: Interface_Check
 descr: StepData_PDescr
 val: Standard_Transient
@@ -5016,19 +5014,19 @@ Description
 -----------
 reads the content of a sub-list into a transient: SelectNamed, or HArray1 of Integer,Real,String,Transient ... recursive call if list of list ... If a sub-list has mixed types, an HArray1OfTransient is produced, it may contain SelectMember Intended to be called by ReadField The returned status is: negative if failed, 0 if empty. Else the kind to be recorded in the field.
 ") ReadSub;
-		Standard_Integer ReadSub(const Standard_Integer numsub, Standard_CString mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
+		int ReadSub(const int numsub, const char * const mess, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepData_PDescr> & descr, opencascade::handle<Standard_Transient> & val);
 
 		/****** StepData_StepReaderData::ReadSubList ******/
-		/****** md5 signature: cf974a9ca2509fac417e73c1eeffb784 ******/
+		/****** md5 signature: c72be8506a16d04fb05cbfdb00a63e31 ******/
 		%feature("compactdefaultargs") ReadSubList;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
-optional: bool (optional, default to Standard_False)
+optional: bool (optional, default to false)
 lenmin: int (optional, default to 0)
 lenmax: int (optional, default to 0)
 
@@ -5040,10 +5038,10 @@ Description
 -----------
 reads parameter <nump> of record <num> as a sub-list (may be typed, see ReadTypedParameter in this case) Returns True if OK. Else (not a LIST), returns false and feeds Check with appropriate check If <optional> is True and Param is not defined, returns True with <ach> not filled and <numsub> returned as 0 Works with SubListNumber with <aslast> false (no specific case for last parameter).
 ") ReadSubList;
-		Standard_Boolean ReadSubList(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, const Standard_Boolean optional = Standard_False, const Standard_Integer lenmin = 0, const Standard_Integer lenmax = 0);
+		bool ReadSubList(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, const bool optional = false, const int lenmin = 0, const int lenmax = 0);
 
 		/****** StepData_StepReaderData::ReadTypedParam ******/
-		/****** md5 signature: 9ae8cb43153e7d06c2546e73f27b8a23 ******/
+		/****** md5 signature: ae4532ad46ba3df46639f45cd9618d1f ******/
 		%feature("compactdefaultargs") ReadTypedParam;
 		%feature("autodoc", "
 Parameters
@@ -5051,7 +5049,7 @@ Parameters
 num: int
 nump: int
 mustbetyped: bool
-mess: str
+mess: char *
 ach: Interface_Check
 typ: str
 
@@ -5064,55 +5062,55 @@ Description
 -----------
 Resolves a parameter which can be enclosed in a type def., as TYPE(val). The parameter must then be read normally according its type. Parameter to be resolved is <nump> of record <num> <mustbetyped> True demands a typed parameter <mustbetyped> False accepts a non-typed parameter as option mess and ach as usual <numr>,<numrp> are the resolved record and parameter numbers = num,nump if no type, else numrp=1 <typ> returns the recorded type, or empty string Remark: a non-typed list is considered as 'non-typed'.
 ") ReadTypedParam;
-		Standard_Boolean ReadTypedParam(const Standard_Integer num, const Standard_Integer nump, const Standard_Boolean mustbetyped, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, Standard_Integer &OutValue, TCollection_AsciiString & typ);
+		bool ReadTypedParam(const int num, const int nump, const bool mustbetyped, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Integer &OutValue, Standard_Integer &OutValue, TCollection_AsciiString & typ);
 
 		/****** StepData_StepReaderData::ReadXY ******/
-		/****** md5 signature: 35739d3be1921b37774b2c9ffd74a099 ******/
+		/****** md5 signature: 67ee76cb045e42ee05897ceb9b7ef629 ******/
 		%feature("compactdefaultargs") ReadXY;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
 -------
-X: float
-Y: float
+X: double
+Y: double
 
 Description
 -----------
 reads parameter <nump> of record <num> as a sub-list of two Reals X,Y. Returns True if OK. Else, returns false and feeds Check with appropriate Fails (parameter not a sub-list, not two Reals in the sub-list) composed with 'mess' which gives the name of the parameter.
 ") ReadXY;
-		Standard_Boolean ReadXY(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool ReadXY(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** StepData_StepReaderData::ReadXYZ ******/
-		/****** md5 signature: 7aabc99aae7f903c581d308dafdf7469 ******/
+		/****** md5 signature: 9d7d83849568da061827c1266225bc1c ******/
 		%feature("compactdefaultargs") ReadXYZ;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 nump: int
-mess: str
+mess: char *
 ach: Interface_Check
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
 reads parameter <nump> of record <num> as a sub-list of three Reals X,Y,Z. Return value and Check managed as by ReadXY (demands a sub-list of three Reals).
 ") ReadXYZ;
-		Standard_Boolean ReadXYZ(const Standard_Integer num, const Standard_Integer nump, Standard_CString mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool ReadXYZ(const int num, const int nump, const char * const mess, opencascade::handle<Interface_Check> & ach, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** StepData_StepReaderData::RecordIdent ******/
-		/****** md5 signature: c1cae48e2f0b459a26c9eb869d36a23b ******/
+		/****** md5 signature: 308e97c9b1f553efee72b22b115c7144 ******/
 		%feature("compactdefaultargs") RecordIdent;
 		%feature("autodoc", "
 Parameters
@@ -5127,10 +5125,10 @@ Description
 -----------
 Returns record identifier (Positive number) If returned ident is not positive: Sub-List or Scope mark.
 ") RecordIdent;
-		Standard_Integer RecordIdent(const Standard_Integer num);
+		int RecordIdent(const int num);
 
 		/****** StepData_StepReaderData::RecordType ******/
-		/****** md5 signature: 59d4d9d001fb67e65116864fabb6482e ******/
+		/****** md5 signature: 9002cf266c5eabd55940d8892d9e7136 ******/
 		%feature("compactdefaultargs") RecordType;
 		%feature("autodoc", "
 Parameters
@@ -5145,15 +5143,15 @@ Description
 -----------
 Returns Record Type.
 ") RecordType;
-		const TCollection_AsciiString & RecordType(const Standard_Integer num);
+		const TCollection_AsciiString & RecordType(const int num);
 
 		/****** StepData_StepReaderData::SetEntityNumbers ******/
-		/****** md5 signature: 0a67f4008b023bc680131c73c0ddf183 ******/
+		/****** md5 signature: 3d2bccfc00695e305c5bb6be87bd61f9 ******/
 		%feature("compactdefaultargs") SetEntityNumbers;
 		%feature("autodoc", "
 Parameters
 ----------
-withmap: bool (optional, default to Standard_True)
+withmap: bool (optional, default to true)
 
 Return
 -------
@@ -5163,17 +5161,17 @@ Description
 -----------
 determines reference numbers in EntityNumber fields called by Prepare from StepReaderTool to prepare later using by a StepModel. This method is attached to StepReaderData because it needs a massive amount of data accesses to work //! If <withmap> is given False, the basic exploration algorithm is activated, otherwise a map is used as far as it is possible this option can be used only to test this algorithm.
 ") SetEntityNumbers;
-		void SetEntityNumbers(const Standard_Boolean withmap = Standard_True);
+		void SetEntityNumbers(const bool withmap = true);
 
 		/****** StepData_StepReaderData::SetRecord ******/
-		/****** md5 signature: 80022d16b7147e3f446fb935dfc09fd5 ******/
+		/****** md5 signature: bf37b88d25f59d6b93ed14ed647d4e19 ******/
 		%feature("compactdefaultargs") SetRecord;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-ident: str
-type: str
+ident: char *
+type: char *
 nbpar: int
 
 Return
@@ -5184,10 +5182,10 @@ Description
 -----------
 Fills the fields of a record.
 ") SetRecord;
-		void SetRecord(const Standard_Integer num, Standard_CString ident, Standard_CString type, const Standard_Integer nbpar);
+		void SetRecord(const int num, const char * const ident, const char * const type, const int nbpar);
 
 		/****** StepData_StepReaderData::SubListNumber ******/
-		/****** md5 signature: c968678faf4381e8c92b5055d58a7092 ******/
+		/****** md5 signature: 74a9bec010398f8de0785ab46fe2d517 ******/
 		%feature("compactdefaultargs") SubListNumber;
 		%feature("autodoc", "
 Parameters
@@ -5204,7 +5202,7 @@ Description
 -----------
 Returns SubList numero designated by a parameter (nump) in a record (num), or zero if the parameter does not exist or is not a SubList address. Zero too If aslast is True and nump is not for the last parameter.
 ") SubListNumber;
-		Standard_Integer SubListNumber(const Standard_Integer num, const Standard_Integer nump, const Standard_Boolean aslast);
+		int SubListNumber(const int num, const int nump, const bool aslast);
 
 };
 
@@ -5250,7 +5248,7 @@ creates StepReaderTool to work with a StepReaderData according to a Step Protoco
 		 StepData_StepReaderTool(const opencascade::handle<StepData_StepReaderData> & reader, const opencascade::handle<StepData_Protocol> & protocol);
 
 		/****** StepData_StepReaderTool::AnalyseRecord ******/
-		/****** md5 signature: 11e711b41d10e9d1ee2744d9797437ea ******/
+		/****** md5 signature: a60900bedd4413c52500df36a81d3b7a ******/
 		%feature("compactdefaultargs") AnalyseRecord;
 		%feature("autodoc", "
 Parameters
@@ -5267,10 +5265,10 @@ Description
 -----------
 fills an entity, given record no; works by using a ReaderLib to load each entity, which must be a Transient Actually, returned value is True if no fail, False else.
 ") AnalyseRecord;
-		Standard_Boolean AnalyseRecord(const Standard_Integer num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
+		bool AnalyseRecord(const int num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
 
 		/****** StepData_StepReaderTool::BeginRead ******/
-		/****** md5 signature: 77f0fe12db475c0a685ef00996ac9075 ******/
+		/****** md5 signature: 46873b04bd6384a1d2fef06e6fde3df7 ******/
 		%feature("compactdefaultargs") BeginRead;
 		%feature("autodoc", "
 Parameters
@@ -5288,7 +5286,7 @@ fills model's header; that is, gives to it Header entities and commands their lo
 		void BeginRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
 		/****** StepData_StepReaderTool::EndRead ******/
-		/****** md5 signature: 410f49289536f95f2a8341a522a74781 ******/
+		/****** md5 signature: db8dac182c765bca467b8fdedbbbb0c2 ******/
 		%feature("compactdefaultargs") EndRead;
 		%feature("autodoc", "
 Parameters
@@ -5303,15 +5301,15 @@ Description
 -----------
 Ends file reading after reading all the entities Here, it binds in the model, Idents to Entities (for checks).
 ") EndRead;
-		virtual void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
+		void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
 		/****** StepData_StepReaderTool::Prepare ******/
-		/****** md5 signature: 528d2a7b058744c19c0c36afc9e40229 ******/
+		/****** md5 signature: d7e5553695ef2765973d3b2313e6814b ******/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "
 Parameters
 ----------
-optimize: bool (optional, default to Standard_True)
+optimize: bool (optional, default to true)
 
 Return
 -------
@@ -5321,16 +5319,16 @@ Description
 -----------
 Bounds empty entities to records, uses default Recognition provided by ReaderLib and ReaderModule. Also calls computation of references (SetEntityNumbers from StepReaderData) Works only on data entities (skips header) <optimize> given False allows to test some internal algorithms which are normally avoided (see also StepReaderData).
 ") Prepare;
-		void Prepare(const Standard_Boolean optimize = Standard_True);
+		void Prepare(const bool optimize = true);
 
 		/****** StepData_StepReaderTool::Prepare ******/
-		/****** md5 signature: 1e45dfa3ffd32fc6c18603840e8870f8 ******/
+		/****** md5 signature: 6af363e066b7a29f568fe856b1d49b24 ******/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "
 Parameters
 ----------
 reco: StepData_FileRecognizer
-optimize: bool (optional, default to Standard_True)
+optimize: bool (optional, default to true)
 
 Return
 -------
@@ -5340,7 +5338,7 @@ Description
 -----------
 Bounds empty entities to records, works with a specific FileRecognizer, stored and later used in Recognize Works only on data entities (skips header) <optimize: same as above.
 ") Prepare;
-		void Prepare(const opencascade::handle<StepData_FileRecognizer> & reco, const Standard_Boolean optimize = Standard_True);
+		void Prepare(const opencascade::handle<StepData_FileRecognizer> & reco, const bool optimize = true);
 
 		/****** StepData_StepReaderTool::PrepareHeader ******/
 		/****** md5 signature: f8e57f4971302260e16b8f9eca3c65bd ******/
@@ -5361,7 +5359,7 @@ bounds empty entities and sub-lists to header records works like Prepare + SetEn
 		void PrepareHeader(const opencascade::handle<StepData_FileRecognizer> & reco);
 
 		/****** StepData_StepReaderTool::Recognize ******/
-		/****** md5 signature: 910d8cba6a79ab1da4faa756f31c32c7 ******/
+		/****** md5 signature: a2c2c552219e2267fe1814cabbf3077c ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -5378,7 +5376,7 @@ Description
 -----------
 recognizes records, by asking either ReaderLib (default) or FileRecognizer (if defined) to do so. <ach> is to call RecognizeByLib.
 ") Recognize;
-		Standard_Boolean Recognize(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
+		bool Recognize(const int num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -5438,6 +5436,26 @@ Returns the check-list, which has received possible checks: for unknown entities
 ") CheckList;
 		Interface_CheckIterator CheckList();
 
+		/****** StepData_StepWriter::CleanTextForSend ******/
+		/****** md5 signature: 20926cba0364f2a2a3d74fcbfdd887f9 ******/
+		%feature("compactdefaultargs") CleanTextForSend;
+		%feature("autodoc", "
+Parameters
+----------
+theText: str
+
+Return
+-------
+TCollection_AsciiString
+
+Description
+-----------
+Static helper function to prepare text for STEP file output while preserving existing ISO 10303-21 control directives. //! This function processes input text and escapes special characters (quotes, backslashes, newlines, tabs) for STEP file format compliance, while carefully preserving any existing control directives that may already be present in the input string. //! Supported control directive patterns that are preserved: - \X{HH}\: Single byte character encoding (U+0000 to U+00FF) - \X2\{HHHH}...\X0\: UTF-16 character encoding - \X4\{HHHHHHHH}...\X0\: UTF-32 character encoding - \S\: Latin codepoint character with current code page - \P{A-I}\: Code page control directive - \N\: Newline directive (preserved as-is) - \T\: Tab directive (preserved as-is) //! Character escaping performed (only on non-directive content): - Single quote (') -> double quote ('') - Backslash (\) -> double backslash (\\) - Newline character -> \N\ directive - Tab character -> \T\ directive //! Example: Input: 'text with \XA7\ and 'quotes'' Output: 'text with \XA7\ and ''quotes''' //! 
+Parameter theText The input text string to be processed 
+Return: Processed text with preserved control directives and escaped special characters.
+") CleanTextForSend;
+		static TCollection_AsciiString CleanTextForSend(TCollection_AsciiString theText);
+
 		/****** StepData_StepWriter::CloseSub ******/
 		/****** md5 signature: ab3e69e84e1e558c20f4ba6326702249 ******/
 		%feature("compactdefaultargs") CloseSub;
@@ -5452,7 +5470,7 @@ closes a sublist by a ')'.
 		void CloseSub();
 
 		/****** StepData_StepWriter::Comment ******/
-		/****** md5 signature: dae8a1d9e2b5258fc894237893a1c093 ******/
+		/****** md5 signature: 96f333f8314dc84222a8020af99860ec ******/
 		%feature("compactdefaultargs") Comment;
 		%feature("autodoc", "
 Parameters
@@ -5467,7 +5485,7 @@ Description
 -----------
 sets a comment mark: if mode is True, begins Comment zone, if mode is False, ends Comment zone (if one is begun).
 ") Comment;
-		void Comment(const Standard_Boolean mode);
+		void Comment(const bool mode);
 
 		/****** StepData_StepWriter::EndComplex ******/
 		/****** md5 signature: 647e8f46af8631ebe3ef1f2b96ad4dea ******/
@@ -5535,7 +5553,7 @@ Returns the embedded FloatWriter, which controls sending Reals Use this method t
 		Interface_FloatWriter & FloatWriter();
 
 		/****** StepData_StepWriter::Indent ******/
-		/****** md5 signature: 5b3f6216026f2cb4b28e92afb615a0a4 ******/
+		/****** md5 signature: c7358dd663ba6c179606d62d3a500233 ******/
 		%feature("compactdefaultargs") Indent;
 		%feature("autodoc", "
 Parameters
@@ -5550,10 +5568,10 @@ Description
 -----------
 asks that further indentations will begin at position of entity first opening bracket; else they begin at zero (def) for each sublist level, two more blancks are added at beginning (except for text continuation, which must begin at true zero).
 ") Indent;
-		void Indent(const Standard_Boolean onent);
+		void Indent(const bool onent);
 
 		/****** StepData_StepWriter::IsInScope ******/
-		/****** md5 signature: c571be75c0d507af59b0bf256b886bed ******/
+		/****** md5 signature: d55316ce7c7df89e385ab4cfe56b4911 ******/
 		%feature("compactdefaultargs") IsInScope;
 		%feature("autodoc", "
 Parameters
@@ -5568,10 +5586,10 @@ Description
 -----------
 Returns True if an Entity identified by its Number is in a Scope.
 ") IsInScope;
-		Standard_Boolean IsInScope(const Standard_Integer num);
+		bool IsInScope(const int num);
 
 		/****** StepData_StepWriter::JoinLast ******/
-		/****** md5 signature: 03e4ebde14ce1c095a3f5f2123384503 ******/
+		/****** md5 signature: ac3b8764e1c97c09f95da24d3eac6a06 ******/
 		%feature("compactdefaultargs") JoinLast;
 		%feature("autodoc", "
 Parameters
@@ -5586,23 +5604,23 @@ Description
 -----------
 joins current line to last one, only if new length is 72 max if newline is True, a new current line begins; else, current line is set to the last line (once joined) itself an can be completed.
 ") JoinLast;
-		void JoinLast(const Standard_Boolean newline);
+		void JoinLast(const bool newline);
 
+		/****** StepData_StepWriter::LabelMode ******/
+		/****** md5 signature: 5c8f614e7e8c758690073325f81f58e5 ******/
+		%feature("compactdefaultargs") LabelMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetLabelMode() {
-            return (Standard_Integer) $self->LabelMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetLabelMode(Standard_Integer value) {
-            $self->LabelMode()=value;
-            }
-        };
+Description
+-----------
+ModeLabel controls how to display entity ids: 0 (D) gives entity number in the model 1 gives the already recorded label (else, its number) Warning: conflicts are not controlled.
+") LabelMode;
+		int & LabelMode();
+
 		/****** StepData_StepWriter::Line ******/
-		/****** md5 signature: 2938488b55d0589bc75f9301e49848d4 ******/
+		/****** md5 signature: 8aeca6ab96a5147c8851ef0a905af55b ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -5617,10 +5635,10 @@ Description
 -----------
 Returns a Line given its rank in the File.
 ") Line;
-		opencascade::handle<TCollection_HAsciiString> Line(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> Line(const int num);
 
 		/****** StepData_StepWriter::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -5630,10 +5648,10 @@ Description
 -----------
 Returns count of Lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** StepData_StepWriter::NewLine ******/
-		/****** md5 signature: 073a07ae5e5ffba5c238b71733b36b13 ******/
+		/****** md5 signature: bdcf75b24982bf4e51ea93e69d5f491d ******/
 		%feature("compactdefaultargs") NewLine;
 		%feature("autodoc", "
 Parameters
@@ -5648,7 +5666,7 @@ Description
 -----------
 flushes current line; if empty, flushes it (defines a new empty line) if evenempty is True; else, skips it.
 ") NewLine;
-		void NewLine(const Standard_Boolean evenempty);
+		void NewLine(const bool evenempty);
 
 		/****** StepData_StepWriter::OpenSub ******/
 		/****** md5 signature: 6285529661194732f433bc65662cab85 ******/
@@ -5664,12 +5682,12 @@ open a sublist by a '('.
 		void OpenSub();
 
 		/****** StepData_StepWriter::OpenTypedSub ******/
-		/****** md5 signature: 1162318f55bb89bc1711c1d24c5667d8 ******/
+		/****** md5 signature: 52e8ddc0b09366420157bf676c04b35c ******/
 		%feature("compactdefaultargs") OpenTypedSub;
 		%feature("autodoc", "
 Parameters
 ----------
-subtype: str
+subtype: char *
 
 Return
 -------
@@ -5679,10 +5697,10 @@ Description
 -----------
 open a sublist with its type then a '('.
 ") OpenTypedSub;
-		void OpenTypedSub(Standard_CString subtype);
+		void OpenTypedSub(const char * const subtype);
 
 		/****** StepData_StepWriter::Print ******/
-		/****** md5 signature: 2eb8b686c42ac7926ce46f27d6e81985 ******/
+		/****** md5 signature: 2e9441dae72d0faaf26e312805c35ddd ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -5696,10 +5714,10 @@ Description
 -----------
 writes result on an output defined as an OStream then clears it.
 ") Print;
-		Standard_Boolean Print(std::ostream &OutValue);
+		bool Print(std::ostream &OutValue);
 
 		/****** StepData_StepWriter::Send ******/
-		/****** md5 signature: 834a80f8fb88341c53a16609c1df2e80 ******/
+		/****** md5 signature: 589866becf20444d499fd338a7ad9f08 ******/
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "
 Parameters
@@ -5714,15 +5732,15 @@ Description
 -----------
 sends an integer parameter.
 ") Send;
-		void Send(const Standard_Integer val);
+		void Send(const int val);
 
 		/****** StepData_StepWriter::Send ******/
-		/****** md5 signature: f58679aa6a4d459eeebef2ee9689b9ec ******/
+		/****** md5 signature: 1b26e87909d2e56aede53edb1d52c382 ******/
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -5732,7 +5750,7 @@ Description
 -----------
 sends a real parameter (works with FloatWriter).
 ") Send;
-		void Send(const Standard_Real val);
+		void Send(const double val);
 
 		/****** StepData_StepWriter::Send ******/
 		/****** md5 signature: bdf5dec419f2dac9533249a75c08b658 ******/
@@ -5771,12 +5789,12 @@ sends a reference to an entity (its identifier with '#') REMARK 1: a Null <val> 
 		void Send(const opencascade::handle<Standard_Transient> & val);
 
 		/****** StepData_StepWriter::SendArrReal ******/
-		/****** md5 signature: 1284c431a92505cf0b01eab69001bee8 ******/
+		/****** md5 signature: 86486790a0a8ece40b6b413d9ce20ba3 ******/
 		%feature("compactdefaultargs") SendArrReal;
 		%feature("autodoc", "
 Parameters
 ----------
-anArr: TColStd_HArray1OfReal
+anArr: NCollection_HArray1<double
 
 Return
 -------
@@ -5786,10 +5804,10 @@ Description
 -----------
 sends an array of real.
 ") SendArrReal;
-		void SendArrReal(const opencascade::handle<TColStd_HArray1OfReal> & anArr);
+		void SendArrReal(const opencascade::handle<NCollection_HArray1<double> > & anArr);
 
 		/****** StepData_StepWriter::SendBoolean ******/
-		/****** md5 signature: 64cbf8ca025e041c684fe788899fd7cd ******/
+		/****** md5 signature: a9ab78867e7a9275dfd7011d6487664a ******/
 		%feature("compactdefaultargs") SendBoolean;
 		%feature("autodoc", "
 Parameters
@@ -5804,7 +5822,7 @@ Description
 -----------
 sends a Boolean as .T. for True or .F. for False (it is an useful case of Enum, which is built-in).
 ") SendBoolean;
-		void SendBoolean(const Standard_Boolean val);
+		void SendBoolean(const bool val);
 
 		/****** StepData_StepWriter::SendComment ******/
 		/****** md5 signature: dbfb6c0c398923ecdbc81089745bc3c9 ******/
@@ -5825,12 +5843,12 @@ sends a comment. Error if we are not inside a comment zone.
 		void SendComment(const opencascade::handle<TCollection_HAsciiString> & text);
 
 		/****** StepData_StepWriter::SendComment ******/
-		/****** md5 signature: a5775b5da52c8611fde273141c2534c9 ******/
+		/****** md5 signature: 2955b5d0abe7701c444e1f659bf891b8 ******/
 		%feature("compactdefaultargs") SendComment;
 		%feature("autodoc", "
 Parameters
 ----------
-text: str
+text: char *
 
 Return
 -------
@@ -5840,7 +5858,7 @@ Description
 -----------
 same as above but accepts a CString (ex.: '...' directly).
 ") SendComment;
-		void SendComment(Standard_CString text);
+		void SendComment(const char * const text);
 
 		/****** StepData_StepWriter::SendData ******/
 		/****** md5 signature: d649dad9b048a0857622c773c2313876 ******/
@@ -5882,7 +5900,7 @@ sets an end of Scope (on a separate line).
 		void SendEndscope();
 
 		/****** StepData_StepWriter::SendEntity ******/
-		/****** md5 signature: 815da511e408035eb7d900f0d5de06aa ******/
+		/****** md5 signature: 0ee087cdfc4ccc6425c9857010eb55aa ******/
 		%feature("compactdefaultargs") SendEntity;
 		%feature("autodoc", "
 Parameters
@@ -5898,7 +5916,7 @@ Description
 -----------
 Send an Entity of the Data Section. If it corresponds to a Scope, also Sends the Scope information and contained Items.
 ") SendEntity;
-		void SendEntity(const Standard_Integer nument, const StepData_WriterLib & lib);
+		void SendEntity(const int nument, const StepData_WriterLib & lib);
 
 		/****** StepData_StepWriter::SendEnum ******/
 		/****** md5 signature: 3697a0d2e471dd3afbe9d81d2d3efbe7 ******/
@@ -5919,12 +5937,12 @@ sends an enum given by String (literal expression) adds '.' around it if not don
 		void SendEnum(TCollection_AsciiString val);
 
 		/****** StepData_StepWriter::SendEnum ******/
-		/****** md5 signature: ece5bc46b726e98cedf51fd63ae16366 ******/
+		/****** md5 signature: 1d568718ac35b8c22ba84e9d0badc5a7 ******/
 		%feature("compactdefaultargs") SendEnum;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 
 Return
 -------
@@ -5934,7 +5952,7 @@ Description
 -----------
 sends an enum given by String (literal expression) adds '.' around it if not done.
 ") SendEnum;
-		void SendEnum(Standard_CString val);
+		void SendEnum(const char * const val);
 
 		/****** StepData_StepWriter::SendField ******/
 		/****** md5 signature: d6d4a7b78133afcc05bebc4b4655a49e ******/
@@ -5969,7 +5987,7 @@ Begins model header.
 		void SendHeader();
 
 		/****** StepData_StepWriter::SendIdent ******/
-		/****** md5 signature: 49b63e5df47b48b91702d94c9463480e ******/
+		/****** md5 signature: f20b09c75b8ffef808a1c49e1f5da2c2 ******/
 		%feature("compactdefaultargs") SendIdent;
 		%feature("autodoc", "
 Parameters
@@ -5984,7 +6002,7 @@ Description
 -----------
 begins an entity with an ident plus '=' (at beginning of line) entity ident is its Number given by the containing Model Warning: <ident> must be, either Number or Label, according LabelMode.
 ") SendIdent;
-		void SendIdent(const Standard_Integer ident);
+		void SendIdent(const int ident);
 
 		/****** StepData_StepWriter::SendList ******/
 		/****** md5 signature: 1414296a88bbf3b14e509572c1a4484d ******/
@@ -6024,13 +6042,13 @@ sends a Logical as .T. or .F. or .U. according its Value (it is a standard case 
 		void SendLogical(const StepData_Logical val);
 
 		/****** StepData_StepWriter::SendModel ******/
-		/****** md5 signature: c06391a4b90f77c973013ffd437c3d56 ******/
+		/****** md5 signature: bfd09c8d64bcb85b1bca0a5611dcc7a2 ******/
 		%feature("compactdefaultargs") SendModel;
 		%feature("autodoc", "
 Parameters
 ----------
 protocol: StepData_Protocol
-headeronly: bool (optional, default to Standard_False)
+headeronly: bool (optional, default to false)
 
 Return
 -------
@@ -6040,7 +6058,7 @@ Description
 -----------
 Sends the complete Model, included HEADER and DATA Sections Works with a WriterLib defined through a Protocol If <headeronly> is given True, only the HEADER Section is sent (used to Dump the Header of a StepModel).
 ") SendModel;
-		void SendModel(const opencascade::handle<StepData_Protocol> & protocol, const Standard_Boolean headeronly = Standard_False);
+		void SendModel(const opencascade::handle<StepData_Protocol> & protocol, const bool headeronly = false);
 
 		/****** StepData_StepWriter::SendScope ******/
 		/****** md5 signature: 13f737207035a1625b7eed277cb3c0fd ******/
@@ -6093,12 +6111,12 @@ sends a string exactly as it is given.
 		void SendString(TCollection_AsciiString val);
 
 		/****** StepData_StepWriter::SendString ******/
-		/****** md5 signature: 2a52fec60aa726da40d31560629ccab1 ******/
+		/****** md5 signature: f5d3f8e9fcbc6be5ea0aef5b4bc056ee ******/
 		%feature("compactdefaultargs") SendString;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 
 Return
 -------
@@ -6108,7 +6126,7 @@ Description
 -----------
 sends a string exactly as it is given.
 ") SendString;
-		void SendString(Standard_CString val);
+		void SendString(const char * const val);
 
 		/****** StepData_StepWriter::SendUndef ******/
 		/****** md5 signature: 2f7e3905171f54dc8bc4c8128123b2a0 ******/
@@ -6124,7 +6142,7 @@ sends an undefined (optional absent) parameter (by '$').
 		void SendUndef();
 
 		/****** StepData_StepWriter::SetScope ******/
-		/****** md5 signature: e36cf7e70b5de436eb88dbccfc35a009 ******/
+		/****** md5 signature: 5fb5295af32e55da055199772ebc7e57 ******/
 		%feature("compactdefaultargs") SetScope;
 		%feature("autodoc", "
 Parameters
@@ -6140,7 +6158,7 @@ Description
 -----------
 Declares the Entity Number <numscope> to correspond to a Scope which contains the Entity Number <numin>. Several calls to the same <numscope> add Entities in this Scope, in this order. Error if <numin> is already declared in the Scope Warning: the declaration of the Scopes is assumed to be consistent, i.e. <numin> is not referenced from outside this Scope (not checked here).
 ") SetScope;
-		void SetScope(const Standard_Integer numscope, const Standard_Integer numin);
+		void SetScope(const int numscope, const int numin);
 
 		/****** StepData_StepWriter::StartComplex ******/
 		/****** md5 signature: 32f5a1b6cc0ca2550cde910812f629aa ******/
@@ -6173,19 +6191,19 @@ sets entity's StepType, opens brackets, starts param no to 0 params are separate
 ") StartEntity;
 		void StartEntity(TCollection_AsciiString atype);
 
+		/****** StepData_StepWriter::TypeMode ******/
+		/****** md5 signature: 620ef33997c7b57d752966d2b271e61c ******/
+		%feature("compactdefaultargs") TypeMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetTypeMode() {
-            return (Standard_Integer) $self->TypeMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetTypeMode(Standard_Integer value) {
-            $self->TypeMode()=value;
-            }
-        };
+Description
+-----------
+TypeMode controls the type form to use: 0 (D) for normal long form 1 for short form (if a type name has no short form, normal long form is then used).
+") TypeMode;
+		int & TypeMode();
+
 };
 
 
@@ -6279,7 +6297,7 @@ Returns the current Module in the Iteration.
 		const opencascade::handle<StepData_ReadWriteModule> & Module();
 
 		/****** StepData_WriterLib::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -6289,7 +6307,7 @@ Description
 -----------
 Returns True if there are more Modules to iterate on.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** StepData_WriterLib::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -6318,7 +6336,7 @@ Returns the current Protocol in the Iteration.
 		const opencascade::handle<StepData_Protocol> & Protocol();
 
 		/****** StepData_WriterLib::Select ******/
-		/****** md5 signature: a51c195de5d83ca9713c7290686aba5f ******/
+		/****** md5 signature: b716284dd1c7f523e99500df994fb7fc ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -6334,7 +6352,7 @@ Description
 -----------
 Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
-		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<StepData_ReadWriteModule> & module, Standard_Integer &OutValue);
+		bool Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<StepData_ReadWriteModule> & module, Standard_Integer &OutValue);
 
 		/****** StepData_WriterLib::SetComplete ******/
 		/****** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ******/
@@ -6409,7 +6427,7 @@ Creates a Default General Module.
 		 StepData_DefaultGeneral();
 
 		/****** StepData_DefaultGeneral::CheckCase ******/
-		/****** md5 signature: b796d698a150ad077075774d191929c9 ******/
+		/****** md5 signature: 6c4a5431a68e81bdb79f21990c310521 ******/
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "
 Parameters
@@ -6427,10 +6445,10 @@ Description
 -----------
 Specific Checking of an Entity <ent>.
 ") CheckCase;
-		void CheckCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
+		void CheckCase(const int casenum, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_DefaultGeneral::CopyCase ******/
-		/****** md5 signature: 212e95473a977b4001621330a5cbd483 ******/
+		/****** md5 signature: 2df746a2e9069362b90662b3c59d1e71 ******/
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "
 Parameters
@@ -6448,10 +6466,10 @@ Description
 -----------
 Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. Use method Transferred from TransferControl to work.
 ") CopyCase;
-		void CopyCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
+		void CopyCase(const int casenum, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
 		/****** StepData_DefaultGeneral::FillSharedCase ******/
-		/****** md5 signature: 840a5ecbc52b201313429f5901c0dea9 ******/
+		/****** md5 signature: 57f99a5c34fd0fecbda8fa98b93def34 ******/
 		%feature("compactdefaultargs") FillSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -6468,10 +6486,10 @@ Description
 -----------
 Specific filling of the list of Entities shared by an Entity <ent>, which is an UnknownEntity from StepData.
 ") FillSharedCase;
-		void FillSharedCase(const Standard_Integer casenum, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
+		void FillSharedCase(const int casenum, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
 		/****** StepData_DefaultGeneral::NewVoid ******/
-		/****** md5 signature: 8e184c5622d3823d145bc2105790b57a ******/
+		/****** md5 signature: 8fabc1cc605ad55e47c5042d5c757077 ******/
 		%feature("compactdefaultargs") NewVoid;
 		%feature("autodoc", "
 Parameters
@@ -6487,7 +6505,7 @@ Description
 -----------
 Specific creation of a new void entity.
 ") NewVoid;
-		Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & entto);
+		bool NewVoid(const int CN, opencascade::handle<Standard_Transient> & entto);
 
 };
 
@@ -6537,7 +6555,7 @@ Adds a member Warning: members are added in alphabetic order.
 		void Add(const opencascade::handle<StepData_ESDescr> & member);
 
 		/****** StepData_ECDescr::IsComplex ******/
-		/****** md5 signature: 3fa56289b77889af0bfdd6826c1eed29 ******/
+		/****** md5 signature: b5ef95b2e28f2e58056e1617be433847 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "Return
 -------
@@ -6547,15 +6565,15 @@ Description
 -----------
 Returns True.
 ") IsComplex;
-		Standard_Boolean IsComplex();
+		bool IsComplex();
 
 		/****** StepData_ECDescr::Matches ******/
-		/****** md5 signature: b3ebc80ca8903672d866072d9df6eac3 ******/
+		/****** md5 signature: 94d80901fa8626e1fc42f35c8d661aac ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -6565,10 +6583,10 @@ Description
 -----------
 Tells if a ESDescr matches a step type: exact or super type.
 ") Matches;
-		Standard_Boolean Matches(Standard_CString steptype);
+		bool Matches(const char * const steptype);
 
 		/****** StepData_ECDescr::Member ******/
-		/****** md5 signature: 435d565cdd42b6028f2889346da774f8 ******/
+		/****** md5 signature: b0c4e82dd1c856f782701dd614bc196b ******/
 		%feature("compactdefaultargs") Member;
 		%feature("autodoc", "
 Parameters
@@ -6583,10 +6601,10 @@ Description
 -----------
 Returns a Member from its rank.
 ") Member;
-		opencascade::handle<StepData_ESDescr> Member(const Standard_Integer num);
+		opencascade::handle<StepData_ESDescr> Member(const int num);
 
 		/****** StepData_ECDescr::NbMembers ******/
-		/****** md5 signature: 8e81ec5aa56286fcf33294c6bf3fd7e1 ******/
+		/****** md5 signature: 7f2ef3fd62830b6f845f7166da4c733f ******/
 		%feature("compactdefaultargs") NbMembers;
 		%feature("autodoc", "Return
 -------
@@ -6596,10 +6614,10 @@ Description
 -----------
 Returns the count of members.
 ") NbMembers;
-		Standard_Integer NbMembers();
+		int NbMembers();
 
 		/****** StepData_ECDescr::NewEntity ******/
-		/****** md5 signature: 2cc8d3f443b3d28ca36d56627d2eaa9b ******/
+		/****** md5 signature: 80b82fc200a3bb933a392cbb0854f3f5 ******/
 		%feature("compactdefaultargs") NewEntity;
 		%feature("autodoc", "Return
 -------
@@ -6612,17 +6630,17 @@ Creates a described entity (i.e. a complex one, made of one simple entity per me
 		opencascade::handle<StepData_Described> NewEntity();
 
 		/****** StepData_ECDescr::TypeList ******/
-		/****** md5 signature: 07b37aa698431b74a0484fd073417a16 ******/
+		/****** md5 signature: 81c7be8663859142c9e2aac1c2df7387 ******/
 		%feature("compactdefaultargs") TypeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfAsciiString>
+opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
 
 Description
 -----------
 Returns the ordered list of types.
 ") TypeList;
-		opencascade::handle<TColStd_HSequenceOfAsciiString> TypeList();
+		opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> TypeList();
 
 };
 
@@ -6641,12 +6659,12 @@ Returns the ordered list of types.
 class StepData_ESDescr : public StepData_EDescr {
 	public:
 		/****** StepData_ESDescr::StepData_ESDescr ******/
-		/****** md5 signature: e3b7652268c9e2a9ef78b6139d1ed560 ******/
+		/****** md5 signature: 0389caa7869b6711f5c6de72b8877ebd ******/
 		%feature("compactdefaultargs") StepData_ESDescr;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -6656,7 +6674,7 @@ Description
 -----------
 Creates an ESDescr with a type name.
 ") StepData_ESDescr;
-		 StepData_ESDescr(Standard_CString name);
+		 StepData_ESDescr(const char * const name);
 
 		/****** StepData_ESDescr::Base ******/
 		/****** md5 signature: ea04cb6a986eaf32f4a3b105c2ff525b ******/
@@ -6672,7 +6690,7 @@ Returns the basic ESDescr, null if <self> is not derived.
 		opencascade::handle<StepData_ESDescr> Base();
 
 		/****** StepData_ESDescr::Field ******/
-		/****** md5 signature: e0a7a1ca0b253e518fc233cd0b736d1f ******/
+		/****** md5 signature: 8ea0a29e57bddf4d62ccc9cd98166832 ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
@@ -6687,10 +6705,10 @@ Description
 -----------
 Returns the PDescr for the field <num> (or Null).
 ") Field;
-		opencascade::handle<StepData_PDescr> Field(const Standard_Integer num);
+		opencascade::handle<StepData_PDescr> Field(const int num);
 
 		/****** StepData_ESDescr::IsComplex ******/
-		/****** md5 signature: 3fa56289b77889af0bfdd6826c1eed29 ******/
+		/****** md5 signature: b5ef95b2e28f2e58056e1617be433847 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "Return
 -------
@@ -6700,10 +6718,10 @@ Description
 -----------
 Returns False.
 ") IsComplex;
-		Standard_Boolean IsComplex();
+		bool IsComplex();
 
 		/****** StepData_ESDescr::IsSub ******/
-		/****** md5 signature: f420d4ccccf7c54cb3ff3797f5c1c465 ******/
+		/****** md5 signature: 8ebf3ed2f0f8ed6a0f1c546f1877e2cb ******/
 		%feature("compactdefaultargs") IsSub;
 		%feature("autodoc", "
 Parameters
@@ -6718,15 +6736,15 @@ Description
 -----------
 Tells if <self> is sub-type of (or equal to) another one.
 ") IsSub;
-		Standard_Boolean IsSub(const opencascade::handle<StepData_ESDescr> & other);
+		bool IsSub(const opencascade::handle<StepData_ESDescr> & other);
 
 		/****** StepData_ESDescr::Matches ******/
-		/****** md5 signature: b3ebc80ca8903672d866072d9df6eac3 ******/
+		/****** md5 signature: 94d80901fa8626e1fc42f35c8d661aac ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -6736,10 +6754,10 @@ Description
 -----------
 Tells if a ESDescr matches a step type: exact or super type.
 ") Matches;
-		Standard_Boolean Matches(Standard_CString steptype);
+		bool Matches(const char * const steptype);
 
 		/****** StepData_ESDescr::Name ******/
-		/****** md5 signature: 9147a7d0c7cc3f58d615827664b3d780 ******/
+		/****** md5 signature: 27dcb5b14148583b124fc911a8b27eb1 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -6748,21 +6766,21 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of a field from its rank. empty if outofrange.
 ") Name;
-		Standard_CString Name(const Standard_Integer num);
+		const char * Name(const int num);
 
 		/****** StepData_ESDescr::NamedField ******/
-		/****** md5 signature: a022259a4403307aba71981645b428da ******/
+		/****** md5 signature: 726a84df527df428669e4241838e9d42 ******/
 		%feature("compactdefaultargs") NamedField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -6772,10 +6790,10 @@ Description
 -----------
 Returns the PDescr for the field named <name> (or Null).
 ") NamedField;
-		opencascade::handle<StepData_PDescr> NamedField(Standard_CString name);
+		opencascade::handle<StepData_PDescr> NamedField(const char * const name);
 
 		/****** StepData_ESDescr::NbFields ******/
-		/****** md5 signature: 3a0202b8c2c96cf1ff6b7765aa84d699 ******/
+		/****** md5 signature: b0632c58d21f5d7ffa4b00c6ab4e5997 ******/
 		%feature("compactdefaultargs") NbFields;
 		%feature("autodoc", "Return
 -------
@@ -6785,10 +6803,10 @@ Description
 -----------
 Returns the count of fields.
 ") NbFields;
-		Standard_Integer NbFields();
+		int NbFields();
 
 		/****** StepData_ESDescr::NewEntity ******/
-		/****** md5 signature: 2cc8d3f443b3d28ca36d56627d2eaa9b ******/
+		/****** md5 signature: 80b82fc200a3bb933a392cbb0854f3f5 ******/
 		%feature("compactdefaultargs") NewEntity;
 		%feature("autodoc", "Return
 -------
@@ -6801,12 +6819,12 @@ Creates a described entity (i.e. a simple one).
 		opencascade::handle<StepData_Described> NewEntity();
 
 		/****** StepData_ESDescr::Rank ******/
-		/****** md5 signature: 74e4ffa5bb58ee75e763f5f649866e59 ******/
+		/****** md5 signature: 7766214bbe2150afbe6a297c5312065b ******/
 		%feature("compactdefaultargs") Rank;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -6816,7 +6834,7 @@ Description
 -----------
 Returns the rank of a field from its name. 0 if unknown.
 ") Rank;
-		Standard_Integer Rank(Standard_CString name);
+		int Rank(const char * const name);
 
 		/****** StepData_ESDescr::SetBase ******/
 		/****** md5 signature: 07f8051ecaa95846bec41a717b24c354 ******/
@@ -6837,13 +6855,13 @@ Sets an ESDescr as based on another one Hence, if there are inherited fields, th
 		void SetBase(const opencascade::handle<StepData_ESDescr> & base);
 
 		/****** StepData_ESDescr::SetField ******/
-		/****** md5 signature: 0e14bb3b67bd94de6ba8c30c9f78683b ******/
+		/****** md5 signature: e8d94c8d26cb80530e8cc79c6e85b376 ******/
 		%feature("compactdefaultargs") SetField;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-name: str
+name: char *
 descr: StepData_PDescr
 
 Return
@@ -6854,10 +6872,10 @@ Description
 -----------
 Sets a PDescr to describe a field A Field is designated by its rank and name.
 ") SetField;
-		void SetField(const Standard_Integer num, Standard_CString name, const opencascade::handle<StepData_PDescr> & descr);
+		void SetField(const int num, const char * const name, const opencascade::handle<StepData_PDescr> & descr);
 
 		/****** StepData_ESDescr::SetNbFields ******/
-		/****** md5 signature: 50335a67d4b95ef42d6982fcae5c2187 ******/
+		/****** md5 signature: bc491712488d17a22d960e2f764967ca ******/
 		%feature("compactdefaultargs") SetNbFields;
 		%feature("autodoc", "
 Parameters
@@ -6872,7 +6890,7 @@ Description
 -----------
 Sets a new count of fields Each one is described by a PDescr.
 ") SetNbFields;
-		void SetNbFields(const Standard_Integer nb);
+		void SetNbFields(const int nb);
 
 		/****** StepData_ESDescr::SetSuper ******/
 		/****** md5 signature: 8c0f391472f8b772cf2c95f086f41d64 ******/
@@ -6919,17 +6937,17 @@ Returns the super-type ESDescr, null if <self> is root.
 		opencascade::handle<StepData_ESDescr> Super();
 
 		/****** StepData_ESDescr::TypeName ******/
-		/****** md5 signature: e40228db966cdd2b08c74c84594a73bf ******/
+		/****** md5 signature: 83be516af6f0b375bc8d994b1977584c ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the type name given at creation time.
 ") TypeName;
-		Standard_CString TypeName();
+		const char * TypeName();
 
 };
 
@@ -6961,7 +6979,7 @@ Creates a FieldList of 1 Field.
 		 StepData_FieldList1();
 
 		/****** StepData_FieldList1::CField ******/
-		/****** md5 signature: 1b6b52fc01f6e04947dbba58911e9348 ******/
+		/****** md5 signature: 4ef3385dce19daa758b4e5ddb109faaa ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
@@ -6976,10 +6994,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
-		virtual StepData_Field & CField(const Standard_Integer num);
+		StepData_Field & CField(const int num);
 
 		/****** StepData_FieldList1::Field ******/
-		/****** md5 signature: 9b18ada02aca1ed24117b08a90dccf5c ******/
+		/****** md5 signature: bd416719b5d6d6b0ccbaf13ae88f421e ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
@@ -6994,10 +7012,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
-		virtual const StepData_Field & Field(const Standard_Integer num);
+		const StepData_Field & Field(const int num);
 
 		/****** StepData_FieldList1::NbFields ******/
-		/****** md5 signature: 75c0edacc367c4dfa474083d1ff15eef ******/
+		/****** md5 signature: 2624003e4fc330234a370aae9c2b7315 ******/
 		%feature("compactdefaultargs") NbFields;
 		%feature("autodoc", "Return
 -------
@@ -7007,7 +7025,7 @@ Description
 -----------
 Returns the count of fields. Here, returns 1.
 ") NbFields;
-		virtual Standard_Integer NbFields();
+		int NbFields();
 
 };
 
@@ -7024,7 +7042,7 @@ Returns the count of fields. Here, returns 1.
 class StepData_FieldListD : public StepData_FieldList {
 	public:
 		/****** StepData_FieldListD::StepData_FieldListD ******/
-		/****** md5 signature: 0a3480e10f72c61c1d3ff19ae38eb17f ******/
+		/****** md5 signature: 770b2d140f07e57cc0d028093678017b ******/
 		%feature("compactdefaultargs") StepData_FieldListD;
 		%feature("autodoc", "
 Parameters
@@ -7039,10 +7057,10 @@ Description
 -----------
 Creates a FieldListD of <nb> Fields.
 ") StepData_FieldListD;
-		 StepData_FieldListD(const Standard_Integer nb);
+		 StepData_FieldListD(const int nb);
 
 		/****** StepData_FieldListD::CField ******/
-		/****** md5 signature: 1b6b52fc01f6e04947dbba58911e9348 ******/
+		/****** md5 signature: 4ef3385dce19daa758b4e5ddb109faaa ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
@@ -7057,10 +7075,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
-		virtual StepData_Field & CField(const Standard_Integer num);
+		StepData_Field & CField(const int num);
 
 		/****** StepData_FieldListD::Field ******/
-		/****** md5 signature: 9b18ada02aca1ed24117b08a90dccf5c ******/
+		/****** md5 signature: bd416719b5d6d6b0ccbaf13ae88f421e ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
@@ -7075,10 +7093,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
-		virtual const StepData_Field & Field(const Standard_Integer num);
+		const StepData_Field & Field(const int num);
 
 		/****** StepData_FieldListD::NbFields ******/
-		/****** md5 signature: 75c0edacc367c4dfa474083d1ff15eef ******/
+		/****** md5 signature: 2624003e4fc330234a370aae9c2b7315 ******/
 		%feature("compactdefaultargs") NbFields;
 		%feature("autodoc", "Return
 -------
@@ -7088,10 +7106,10 @@ Description
 -----------
 Returns the count of fields. Here, returns starting <nb>.
 ") NbFields;
-		virtual Standard_Integer NbFields();
+		int NbFields();
 
 		/****** StepData_FieldListD::SetNb ******/
-		/****** md5 signature: 9c23f2226c3d0d27e4de6fc8bf4462c7 ******/
+		/****** md5 signature: 10671db3073eaccc00d818d3510b4392 ******/
 		%feature("compactdefaultargs") SetNb;
 		%feature("autodoc", "
 Parameters
@@ -7106,7 +7124,7 @@ Description
 -----------
 Sets a new count of Fields. Former contents are lost.
 ") SetNb;
-		void SetNb(const Standard_Integer nb);
+		void SetNb(const int nb);
 
 };
 
@@ -7123,7 +7141,7 @@ Sets a new count of Fields. Former contents are lost.
 class StepData_FieldListN : public StepData_FieldList {
 	public:
 		/****** StepData_FieldListN::StepData_FieldListN ******/
-		/****** md5 signature: 5922b172c38ba9df3ba8947317c430c1 ******/
+		/****** md5 signature: 308988577db169acef1baf58c8662305 ******/
 		%feature("compactdefaultargs") StepData_FieldListN;
 		%feature("autodoc", "
 Parameters
@@ -7138,10 +7156,10 @@ Description
 -----------
 Creates a FieldListN of <nb> Fields.
 ") StepData_FieldListN;
-		 StepData_FieldListN(const Standard_Integer nb);
+		 StepData_FieldListN(const int nb);
 
 		/****** StepData_FieldListN::CField ******/
-		/****** md5 signature: 1b6b52fc01f6e04947dbba58911e9348 ******/
+		/****** md5 signature: 4ef3385dce19daa758b4e5ddb109faaa ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
@@ -7156,10 +7174,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields, in order to modify its content.
 ") CField;
-		virtual StepData_Field & CField(const Standard_Integer num);
+		StepData_Field & CField(const int num);
 
 		/****** StepData_FieldListN::Field ******/
-		/****** md5 signature: 9b18ada02aca1ed24117b08a90dccf5c ******/
+		/****** md5 signature: bd416719b5d6d6b0ccbaf13ae88f421e ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
@@ -7174,10 +7192,10 @@ Description
 -----------
 Returns the field n0 <num> between 1 and NbFields (read only).
 ") Field;
-		virtual const StepData_Field & Field(const Standard_Integer num);
+		const StepData_Field & Field(const int num);
 
 		/****** StepData_FieldListN::NbFields ******/
-		/****** md5 signature: 75c0edacc367c4dfa474083d1ff15eef ******/
+		/****** md5 signature: 2624003e4fc330234a370aae9c2b7315 ******/
 		%feature("compactdefaultargs") NbFields;
 		%feature("autodoc", "Return
 -------
@@ -7187,7 +7205,7 @@ Description
 -----------
 Returns the count of fields. Here, returns starting <nb>.
 ") NbFields;
-		virtual Standard_Integer NbFields();
+		int NbFields();
 
 };
 
@@ -7235,7 +7253,7 @@ Adds a Protocol to the definition list of the FileProtocol But ensures that each
 		void Add(const opencascade::handle<StepData_Protocol> & protocol);
 
 		/****** StepData_FileProtocol::GlobalCheck ******/
-		/****** md5 signature: 0c271e5ee55036c2344ebf1a4f07ae92 ******/
+		/****** md5 signature: 87a3530b42c39ea9e90fac7e699798e9 ******/
 		%feature("compactdefaultargs") GlobalCheck;
 		%feature("autodoc", "
 Parameters
@@ -7251,10 +7269,10 @@ Description
 -----------
 Calls GlobalCheck for each of its recorded resources.
 ") GlobalCheck;
-		virtual Standard_Boolean GlobalCheck(const Interface_Graph & G, opencascade::handle<Interface_Check> & ach);
+		bool GlobalCheck(const Interface_Graph & G, opencascade::handle<Interface_Check> & ach);
 
 		/****** StepData_FileProtocol::NbResources ******/
-		/****** md5 signature: cd524335b33aeb6eb83cc80f6b7e5681 ******/
+		/****** md5 signature: 3c8410815357f0a892211359291d8070 ******/
 		%feature("compactdefaultargs") NbResources;
 		%feature("autodoc", "Return
 -------
@@ -7264,10 +7282,10 @@ Description
 -----------
 Gives the count of Protocols used as Resource (can be zero) i.e. the count of Protocol recorded by calling the method Add.
 ") NbResources;
-		virtual Standard_Integer NbResources();
+		int NbResources();
 
 		/****** StepData_FileProtocol::Resource ******/
-		/****** md5 signature: 26597e9d8db9fc70530508f766cf0d70 ******/
+		/****** md5 signature: 3c19c2497364406e7d4e9d2a0f8d51c0 ******/
 		%feature("compactdefaultargs") Resource;
 		%feature("autodoc", "
 Parameters
@@ -7282,10 +7300,10 @@ Description
 -----------
 Returns a Resource, given a rank. Here, rank of calling Add.
 ") Resource;
-		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
+		opencascade::handle<Interface_Protocol> Resource(const int num);
 
 		/****** StepData_FileProtocol::SchemaName ******/
-		/****** md5 signature: 52640e28819c7e829718ce5927c4da83 ******/
+		/****** md5 signature: f5e5aca7e98ca49f6dd2c4128c7187e6 ******/
 		%feature("compactdefaultargs") SchemaName;
 		%feature("autodoc", "
 Parameters
@@ -7294,16 +7312,16 @@ theModel: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Schema Name attached to each class of Protocol To be redefined by each sub-class Here, SchemaName returns '' (empty String) was C++: return const.
 ") SchemaName;
-		virtual Standard_CString SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
+		const char * SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****** StepData_FileProtocol::TypeNumber ******/
-		/****** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ******/
+		/****** md5 signature: bbae632533589e3c2443854ef12e6cb8 ******/
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "
 Parameters
@@ -7318,7 +7336,7 @@ Description
 -----------
 Returns a Case Number, specific of each recognized Type Here, NO Type at all is recognized properly: all Types are recognized by the resources.
 ") TypeNumber;
-		virtual Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
+		int TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
 };
 
@@ -7373,12 +7391,12 @@ Adds a member to <self>.
 		void Add(const opencascade::handle<StepData_Simple> & member);
 
 		/****** StepData_Plex::As ******/
-		/****** md5 signature: e00bfbdc02f2f3b0e5cdb40024fe70aa ******/
+		/****** md5 signature: 02f32a4582696bb35bdee8883d8d6b5d ******/
 		%feature("compactdefaultargs") As;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -7388,15 +7406,15 @@ Description
 -----------
 Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity: me if it matches, else a null handle For a Complex Entity: the member which matches, else null.
 ") As;
-		opencascade::handle<StepData_Simple> As(Standard_CString steptype);
+		opencascade::handle<StepData_Simple> As(const char * const steptype);
 
 		/****** StepData_Plex::CField ******/
-		/****** md5 signature: 40f3201ea099aeccb82acc5445d0f96e ******/
+		/****** md5 signature: f6994a884b9f5b25dc4f812aa66f0aa2 ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -7406,10 +7424,10 @@ Description
 -----------
 Returns a Field from its name; read or write.
 ") CField;
-		StepData_Field & CField(Standard_CString name);
+		StepData_Field & CField(const char * const name);
 
 		/****** StepData_Plex::Check ******/
-		/****** md5 signature: 391f0e357b34862749cae0a57bd47b8d ******/
+		/****** md5 signature: 985a03c528171f996fdf473b46a0684b ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -7440,12 +7458,12 @@ Returns the Description as for a Plex.
 		opencascade::handle<StepData_ECDescr> ECDescr();
 
 		/****** StepData_Plex::Field ******/
-		/****** md5 signature: 77c9826bda429d5f3045df93b81bfc9d ******/
+		/****** md5 signature: 2227bc84d41c10d79aa93fd5fc3dddab ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -7455,15 +7473,15 @@ Description
 -----------
 Returns a Field from its name; read-only.
 ") Field;
-		const StepData_Field & Field(Standard_CString name);
+		const StepData_Field & Field(const char * const name);
 
 		/****** StepData_Plex::HasField ******/
-		/****** md5 signature: d3dae4e2aed9325ead74f94179c5b06c ******/
+		/****** md5 signature: e4fa13ac63d3911ab7e8d4a4d64b16d2 ******/
 		%feature("compactdefaultargs") HasField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -7473,10 +7491,10 @@ Description
 -----------
 Tells if a Field brings a given name.
 ") HasField;
-		Standard_Boolean HasField(Standard_CString name);
+		bool HasField(const char * const name);
 
 		/****** StepData_Plex::IsComplex ******/
-		/****** md5 signature: 3fa56289b77889af0bfdd6826c1eed29 ******/
+		/****** md5 signature: b5ef95b2e28f2e58056e1617be433847 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "Return
 -------
@@ -7486,15 +7504,15 @@ Description
 -----------
 Returns False.
 ") IsComplex;
-		Standard_Boolean IsComplex();
+		bool IsComplex();
 
 		/****** StepData_Plex::Matches ******/
-		/****** md5 signature: b3ebc80ca8903672d866072d9df6eac3 ******/
+		/****** md5 signature: 94d80901fa8626e1fc42f35c8d661aac ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -7504,10 +7522,10 @@ Description
 -----------
 Tells if a step type is matched by <self> For a Simple Entity: own type or super type For a Complex Entity: one of the members.
 ") Matches;
-		Standard_Boolean Matches(Standard_CString steptype);
+		bool Matches(const char * const steptype);
 
 		/****** StepData_Plex::Member ******/
-		/****** md5 signature: c3076bfab7e254207a7d2740ed587727 ******/
+		/****** md5 signature: deef58e864187468d464014314dd3c07 ******/
 		%feature("compactdefaultargs") Member;
 		%feature("autodoc", "
 Parameters
@@ -7522,10 +7540,10 @@ Description
 -----------
 Returns a simple member from its rank.
 ") Member;
-		opencascade::handle<StepData_Simple> Member(const Standard_Integer num);
+		opencascade::handle<StepData_Simple> Member(const int num);
 
 		/****** StepData_Plex::NbMembers ******/
-		/****** md5 signature: 8e81ec5aa56286fcf33294c6bf3fd7e1 ******/
+		/****** md5 signature: 7f2ef3fd62830b6f845f7166da4c733f ******/
 		%feature("compactdefaultargs") NbMembers;
 		%feature("autodoc", "Return
 -------
@@ -7535,10 +7553,10 @@ Description
 -----------
 Returns the count of simple members.
 ") NbMembers;
-		Standard_Integer NbMembers();
+		int NbMembers();
 
 		/****** StepData_Plex::Shared ******/
-		/****** md5 signature: cb09e6cfaa5b4cb4d07e5348e0bd3aeb ******/
+		/****** md5 signature: 0b7ec3674ed1bdb191caacb8dbb02b97 ******/
 		%feature("compactdefaultargs") Shared;
 		%feature("autodoc", "
 Parameters
@@ -7556,17 +7574,17 @@ Fills an EntityIterator with entities shared by <self>.
 		void Shared(Interface_EntityIterator & list);
 
 		/****** StepData_Plex::TypeList ******/
-		/****** md5 signature: 07b37aa698431b74a0484fd073417a16 ******/
+		/****** md5 signature: 81c7be8663859142c9e2aac1c2df7387 ******/
 		%feature("compactdefaultargs") TypeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfAsciiString>
+opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
 
 Description
 -----------
 Returns the actual list of members types.
 ") TypeList;
-		opencascade::handle<TColStd_HSequenceOfAsciiString> TypeList();
+		opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> TypeList();
 
 };
 
@@ -7598,7 +7616,7 @@ No available documentation.
 		 StepData_SelectInt();
 
 		/****** StepData_SelectInt::Int ******/
-		/****** md5 signature: e1d47d32e1361d73ced760c08d2c59fc ******/
+		/****** md5 signature: 3c4f88d18e8d45b712cb44c78bb53612 ******/
 		%feature("compactdefaultargs") Int;
 		%feature("autodoc", "Return
 -------
@@ -7608,10 +7626,10 @@ Description
 -----------
 No available documentation.
 ") Int;
-		virtual Standard_Integer Int();
+		int Int();
 
 		/****** StepData_SelectInt::Kind ******/
-		/****** md5 signature: 6b65ec6e888ef74a618fe34525b57903 ******/
+		/****** md5 signature: 3498b2f7ea64caceb6e4729945892060 ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -7621,10 +7639,10 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		virtual Standard_Integer Kind();
+		int Kind();
 
 		/****** StepData_SelectInt::SetInt ******/
-		/****** md5 signature: 35b20bd74a27947e1ed53d4f2331415b ******/
+		/****** md5 signature: fe25dd22438eec4079fe300e708bf53b ******/
 		%feature("compactdefaultargs") SetInt;
 		%feature("autodoc", "
 Parameters
@@ -7639,10 +7657,10 @@ Description
 -----------
 No available documentation.
 ") SetInt;
-		virtual void SetInt(const Standard_Integer val);
+		void SetInt(const int val);
 
 		/****** StepData_SelectInt::SetKind ******/
-		/****** md5 signature: 0644e60e01d80780dae47df016915fac ******/
+		/****** md5 signature: 7c92c66f2bab746f391fd0e58bc19a8b ******/
 		%feature("compactdefaultargs") SetKind;
 		%feature("autodoc", "
 Parameters
@@ -7657,7 +7675,7 @@ Description
 -----------
 No available documentation.
 ") SetKind;
-		virtual void SetKind(const Standard_Integer kind);
+		void SetKind(const int kind);
 
 };
 
@@ -7715,7 +7733,7 @@ No available documentation.
 		const StepData_Field & Field();
 
 		/****** StepData_SelectNamed::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -7725,10 +7743,10 @@ Description
 -----------
 No available documentation.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepData_SelectNamed::Int ******/
-		/****** md5 signature: e1d47d32e1361d73ced760c08d2c59fc ******/
+		/****** md5 signature: 3c4f88d18e8d45b712cb44c78bb53612 ******/
 		%feature("compactdefaultargs") Int;
 		%feature("autodoc", "Return
 -------
@@ -7738,10 +7756,10 @@ Description
 -----------
 This internal method gives access to a value implemented by an Integer (to read it).
 ") Int;
-		virtual Standard_Integer Int();
+		int Int();
 
 		/****** StepData_SelectNamed::Kind ******/
-		/****** md5 signature: 6b65ec6e888ef74a618fe34525b57903 ******/
+		/****** md5 signature: 3498b2f7ea64caceb6e4729945892060 ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -7751,36 +7769,36 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		virtual Standard_Integer Kind();
+		int Kind();
 
 		/****** StepData_SelectNamed::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepData_SelectNamed::Real ******/
-		/****** md5 signature: c9456a7c56ea266ceb625e159fd1b575 ******/
+		/****** md5 signature: 9b563a66e4f6c06aa9c18be40ccd8396 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Real;
-		virtual Standard_Real Real();
+		double Real();
 
 		/****** StepData_SelectNamed::SetInt ******/
-		/****** md5 signature: 35b20bd74a27947e1ed53d4f2331415b ******/
+		/****** md5 signature: fe25dd22438eec4079fe300e708bf53b ******/
 		%feature("compactdefaultargs") SetInt;
 		%feature("autodoc", "
 Parameters
@@ -7795,10 +7813,10 @@ Description
 -----------
 This internal method gives access to a value implemented by an Integer (to set it).
 ") SetInt;
-		virtual void SetInt(const Standard_Integer val);
+		void SetInt(const int val);
 
 		/****** StepData_SelectNamed::SetKind ******/
-		/****** md5 signature: 0644e60e01d80780dae47df016915fac ******/
+		/****** md5 signature: 7c92c66f2bab746f391fd0e58bc19a8b ******/
 		%feature("compactdefaultargs") SetKind;
 		%feature("autodoc", "
 Parameters
@@ -7813,15 +7831,15 @@ Description
 -----------
 No available documentation.
 ") SetKind;
-		virtual void SetKind(const Standard_Integer kind);
+		void SetKind(const int kind);
 
 		/****** StepData_SelectNamed::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -7831,15 +7849,15 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 		/****** StepData_SelectNamed::SetReal ******/
-		/****** md5 signature: 12ca179780b0a6880b41325c17c33afd ******/
+		/****** md5 signature: b8323169e0efa0a9e7770e3de3cdc82c ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -7849,15 +7867,15 @@ Description
 -----------
 No available documentation.
 ") SetReal;
-		virtual void SetReal(const Standard_Real val);
+		void SetReal(const double val);
 
 		/****** StepData_SelectNamed::SetString ******/
-		/****** md5 signature: cedc4b81002c588163e57c780672a9a6 ******/
+		/****** md5 signature: f473f2293b6fe65749d049ae4ceef880 ******/
 		%feature("compactdefaultargs") SetString;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 
 Return
 -------
@@ -7867,20 +7885,20 @@ Description
 -----------
 No available documentation.
 ") SetString;
-		virtual void SetString(Standard_CString val);
+		void SetString(const char * const val);
 
 		/****** StepData_SelectNamed::String ******/
-		/****** md5 signature: c8e7159fddba166cd70249088a18f326 ******/
+		/****** md5 signature: 0d2af1f1a250ffaacb3bda47cb53702a ******/
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") String;
-		virtual Standard_CString String();
+		const char * String();
 
 };
 
@@ -7912,7 +7930,7 @@ No available documentation.
 		 StepData_SelectReal();
 
 		/****** StepData_SelectReal::Kind ******/
-		/****** md5 signature: 6b65ec6e888ef74a618fe34525b57903 ******/
+		/****** md5 signature: 3498b2f7ea64caceb6e4729945892060 ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -7922,28 +7940,28 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		virtual Standard_Integer Kind();
+		int Kind();
 
 		/****** StepData_SelectReal::Real ******/
-		/****** md5 signature: c9456a7c56ea266ceb625e159fd1b575 ******/
+		/****** md5 signature: 9b563a66e4f6c06aa9c18be40ccd8396 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Real;
-		virtual Standard_Real Real();
+		double Real();
 
 		/****** StepData_SelectReal::SetReal ******/
-		/****** md5 signature: 12ca179780b0a6880b41325c17c33afd ******/
+		/****** md5 signature: b8323169e0efa0a9e7770e3de3cdc82c ******/
 		%feature("compactdefaultargs") SetReal;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -7953,7 +7971,7 @@ Description
 -----------
 No available documentation.
 ") SetReal;
-		virtual void SetReal(const Standard_Real val);
+		void SetReal(const double val);
 
 };
 
@@ -7990,12 +8008,12 @@ Creates a Simple Entity.
 		 StepData_Simple(const opencascade::handle<StepData_ESDescr> & descr);
 
 		/****** StepData_Simple::As ******/
-		/****** md5 signature: e00bfbdc02f2f3b0e5cdb40024fe70aa ******/
+		/****** md5 signature: 02f32a4582696bb35bdee8883d8d6b5d ******/
 		%feature("compactdefaultargs") As;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -8005,15 +8023,15 @@ Description
 -----------
 Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity: me if it matches, else a null handle For a Complex Entity: the member which matches, else null.
 ") As;
-		opencascade::handle<StepData_Simple> As(Standard_CString steptype);
+		opencascade::handle<StepData_Simple> As(const char * const steptype);
 
 		/****** StepData_Simple::CField ******/
-		/****** md5 signature: 40f3201ea099aeccb82acc5445d0f96e ******/
+		/****** md5 signature: f6994a884b9f5b25dc4f812aa66f0aa2 ******/
 		%feature("compactdefaultargs") CField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8023,10 +8041,10 @@ Description
 -----------
 Returns a Field from its name; read or write.
 ") CField;
-		StepData_Field & CField(Standard_CString name);
+		StepData_Field & CField(const char * const name);
 
 		/****** StepData_Simple::CFieldNum ******/
-		/****** md5 signature: a7d486756179e14ce3b0b453f3f39c7a ******/
+		/****** md5 signature: 8b89e286679687951dd20ca13209e409 ******/
 		%feature("compactdefaultargs") CFieldNum;
 		%feature("autodoc", "
 Parameters
@@ -8041,7 +8059,7 @@ Description
 -----------
 Returns a field from its rank, in order to modify it.
 ") CFieldNum;
-		StepData_Field & CFieldNum(const Standard_Integer num);
+		StepData_Field & CFieldNum(const int num);
 
 		/****** StepData_Simple::CFields ******/
 		/****** md5 signature: f5599bdac48411c5f4a346515f0306c0 ******/
@@ -8057,7 +8075,7 @@ Returns the entire field list, read or write.
 		StepData_FieldListN & CFields();
 
 		/****** StepData_Simple::Check ******/
-		/****** md5 signature: 391f0e357b34862749cae0a57bd47b8d ******/
+		/****** md5 signature: 985a03c528171f996fdf473b46a0684b ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -8088,12 +8106,12 @@ Returns description, as for simple.
 		opencascade::handle<StepData_ESDescr> ESDescr();
 
 		/****** StepData_Simple::Field ******/
-		/****** md5 signature: 77c9826bda429d5f3045df93b81bfc9d ******/
+		/****** md5 signature: 2227bc84d41c10d79aa93fd5fc3dddab ******/
 		%feature("compactdefaultargs") Field;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8103,10 +8121,10 @@ Description
 -----------
 Returns a Field from its name; read-only.
 ") Field;
-		const StepData_Field & Field(Standard_CString name);
+		const StepData_Field & Field(const char * const name);
 
 		/****** StepData_Simple::FieldNum ******/
-		/****** md5 signature: 468afcfd3ad5be1751459fde7fa1aa3d ******/
+		/****** md5 signature: fb2193d063ab022afcdc98cbd28a7a8b ******/
 		%feature("compactdefaultargs") FieldNum;
 		%feature("autodoc", "
 Parameters
@@ -8121,7 +8139,7 @@ Description
 -----------
 Returns a field from its rank, for read-only use.
 ") FieldNum;
-		const StepData_Field & FieldNum(const Standard_Integer num);
+		const StepData_Field & FieldNum(const int num);
 
 		/****** StepData_Simple::Fields ******/
 		/****** md5 signature: 21f22355e99961c86e183f991e523ec8 ******/
@@ -8137,12 +8155,12 @@ Returns the entire field list, read-only.
 		const StepData_FieldListN & Fields();
 
 		/****** StepData_Simple::HasField ******/
-		/****** md5 signature: d3dae4e2aed9325ead74f94179c5b06c ******/
+		/****** md5 signature: e4fa13ac63d3911ab7e8d4a4d64b16d2 ******/
 		%feature("compactdefaultargs") HasField;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8152,10 +8170,10 @@ Description
 -----------
 Tells if a Field brings a given name.
 ") HasField;
-		Standard_Boolean HasField(Standard_CString name);
+		bool HasField(const char * const name);
 
 		/****** StepData_Simple::IsComplex ******/
-		/****** md5 signature: 3fa56289b77889af0bfdd6826c1eed29 ******/
+		/****** md5 signature: b5ef95b2e28f2e58056e1617be433847 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "Return
 -------
@@ -8165,15 +8183,15 @@ Description
 -----------
 Returns False.
 ") IsComplex;
-		Standard_Boolean IsComplex();
+		bool IsComplex();
 
 		/****** StepData_Simple::Matches ******/
-		/****** md5 signature: b3ebc80ca8903672d866072d9df6eac3 ******/
+		/****** md5 signature: 94d80901fa8626e1fc42f35c8d661aac ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-steptype: str
+steptype: char *
 
 Return
 -------
@@ -8183,10 +8201,10 @@ Description
 -----------
 Tells if a step type is matched by <self> For a Simple Entity: own type or super type For a Complex Entity: one of the members.
 ") Matches;
-		Standard_Boolean Matches(Standard_CString steptype);
+		bool Matches(const char * const steptype);
 
 		/****** StepData_Simple::NbFields ******/
-		/****** md5 signature: 3a0202b8c2c96cf1ff6b7765aa84d699 ******/
+		/****** md5 signature: b0632c58d21f5d7ffa4b00c6ab4e5997 ******/
 		%feature("compactdefaultargs") NbFields;
 		%feature("autodoc", "Return
 -------
@@ -8196,10 +8214,10 @@ Description
 -----------
 Returns the count of fields.
 ") NbFields;
-		Standard_Integer NbFields();
+		int NbFields();
 
 		/****** StepData_Simple::Shared ******/
-		/****** md5 signature: cb09e6cfaa5b4cb4d07e5348e0bd3aeb ******/
+		/****** md5 signature: 0b7ec3674ed1bdb191caacb8dbb02b97 ******/
 		%feature("compactdefaultargs") Shared;
 		%feature("autodoc", "
 Parameters
@@ -8217,17 +8235,17 @@ Fills an EntityIterator with entities shared by <self>.
 		void Shared(Interface_EntityIterator & list);
 
 		/****** StepData_Simple::StepType ******/
-		/****** md5 signature: 9cdc25631c46d17d3135ea15b612a266 ******/
+		/****** md5 signature: 414e83f20ae8a1d5bb2ccd95edc0449f ******/
 		%feature("compactdefaultargs") StepType;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the recorded StepType (TypeName of its ESDescr).
 ") StepType;
-		Standard_CString StepType();
+		const char * StepType();
 
 };
 
@@ -8259,20 +8277,20 @@ No available documentation.
 		 StepData_SelectArrReal();
 
 		/****** StepData_SelectArrReal::ArrReal ******/
-		/****** md5 signature: e0d5b60d28c635678174b491bcc8a716 ******/
+		/****** md5 signature: 82493cc3a263a0604ce79ee2353ecd17 ******/
 		%feature("compactdefaultargs") ArrReal;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") ArrReal;
-		opencascade::handle<TColStd_HArray1OfReal> ArrReal();
+		opencascade::handle<NCollection_HArray1<double>> ArrReal();
 
 		/****** StepData_SelectArrReal::Kind ******/
-		/****** md5 signature: 6b65ec6e888ef74a618fe34525b57903 ******/
+		/****** md5 signature: 3498b2f7ea64caceb6e4729945892060 ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -8282,15 +8300,15 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		virtual Standard_Integer Kind();
+		int Kind();
 
 		/****** StepData_SelectArrReal::SetArrReal ******/
-		/****** md5 signature: 0693802c089dd2cddf6308a155e0fd08 ******/
+		/****** md5 signature: 914d4ec4e69f464c2bbb748917564fc1 ******/
 		%feature("compactdefaultargs") SetArrReal;
 		%feature("autodoc", "
 Parameters
 ----------
-arr: TColStd_HArray1OfReal
+arr: NCollection_HArray1<double
 
 Return
 -------
@@ -8300,7 +8318,7 @@ Description
 -----------
 No available documentation.
 ") SetArrReal;
-		void SetArrReal(const opencascade::handle<TColStd_HArray1OfReal> & arr);
+		void SetArrReal(const opencascade::handle<NCollection_HArray1<double> > & arr);
 
 };
 
@@ -8327,13 +8345,13 @@ class StepData_UndefinedEntity:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class StepData_HArray1OfField : public StepData_Array1OfField, public Standard_Transient {
+class StepData_HArray1OfField : public NCollection_Array1<StepData_Field>, public Standard_Transient {
   public:
     StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper, const StepData_Array1OfField::value_type& theValue);
-    StepData_HArray1OfField(const StepData_Array1OfField& theOther);
-    const StepData_Array1OfField& Array1();
-    StepData_Array1OfField& ChangeArray1();
+    StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepData_Field>::value_type& theValue);
+    StepData_HArray1OfField(const NCollection_Array1<StepData_Field>& theOther);
+    const NCollection_Array1<StepData_Field>& Array1();
+    NCollection_Array1<StepData_Field>& ChangeArray1();
 };
 %make_alias(StepData_HArray1OfField)
 
@@ -8359,6 +8377,10 @@ def stepdata_Init(*args):
 @deprecated
 def stepdata_Protocol(*args):
 	return stepdata.Protocol(*args)
+
+@deprecated
+def StepData_StepWriter_CleanTextForSend(*args):
+	return StepData_StepWriter.CleanTextForSend(*args)
 
 @deprecated
 def StepData_WriterLib_SetGlobal(*args):

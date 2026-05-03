@@ -92,8 +92,6 @@ BinDrivers_ENDLABEL = BinDrivers_Marker.BinDrivers_ENDLABEL
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(BinDrivers_DocumentRetrievalDriver)
-%wrap_handle(BinDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -190,7 +188,7 @@ Constructor.
 		 BinDrivers_DocumentRetrievalDriver();
 
 		/****** BinDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
-		/****** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ******/
+		/****** md5 signature: 853906140084c3b7e755413ade2e920e ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -205,10 +203,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** BinDrivers_DocumentRetrievalDriver::CheckShapeSection ******/
-		/****** md5 signature: 700e6a408d65152684bc7e5f46482651 ******/
+		/****** md5 signature: 0c137498da38738993f3923ce821887b ******/
 		%feature("compactdefaultargs") CheckShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -224,10 +222,10 @@ Description
 -----------
 No available documentation.
 ") CheckShapeSection;
-		virtual void CheckShapeSection(const Storage_Position & thePos, std::istream & theIS);
+		void CheckShapeSection(const Storage_Position & thePos, std::istream & theIS);
 
 		/****** BinDrivers_DocumentRetrievalDriver::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -237,10 +235,10 @@ Description
 -----------
 Clears the NamedShape driver.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BinDrivers_DocumentRetrievalDriver::EnableQuickPartReading ******/
-		/****** md5 signature: f261e2d709a543f0a293a3d73e15d394 ******/
+		/****** md5 signature: bd1e727e4152f14d0478b5159ab606ba ******/
 		%feature("compactdefaultargs") EnableQuickPartReading;
 		%feature("autodoc", "
 Parameters
@@ -256,17 +254,17 @@ Description
 -----------
 Enables reading in the quick part access mode.
 ") EnableQuickPartReading;
-		virtual void EnableQuickPartReading(const opencascade::handle<Message_Messenger> & theMessageDriver, Standard_Boolean theValue);
+		void EnableQuickPartReading(const opencascade::handle<Message_Messenger> & theMessageDriver, bool theValue);
 
 		/****** BinDrivers_DocumentRetrievalDriver::ReadShapeSection ******/
-		/****** md5 signature: 7bf07d0fc30fd0c1486d23e896f3c271 ******/
+		/****** md5 signature: a6ca690d962747d4a561031e1ec34c2c ******/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "
 Parameters
 ----------
 theSection: BinLDrivers_DocumentSection
 theIS: str
-isMess: bool (optional, default to Standard_False)
+isMess: bool (optional, default to false)
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -277,12 +275,10 @@ Description
 -----------
 No available documentation.
 ") ReadShapeSection;
-		virtual void ReadShapeSection(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const Standard_Boolean isMess = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void ReadShapeSection(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const bool isMess = false, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
-
-%make_alias(BinDrivers_DocumentRetrievalDriver)
 
 %extend BinDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -309,7 +305,7 @@ Constructor.
 		 BinDrivers_DocumentStorageDriver();
 
 		/****** BinDrivers_DocumentStorageDriver::AttributeDrivers ******/
-		/****** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ******/
+		/****** md5 signature: 853906140084c3b7e755413ade2e920e ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -324,10 +320,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** BinDrivers_DocumentStorageDriver::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -337,10 +333,10 @@ Description
 -----------
 Clears the NamedShape driver.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BinDrivers_DocumentStorageDriver::EnableQuickPartWriting ******/
-		/****** md5 signature: 67669b500f4a4f57fa9f8e71b5f7bab8 ******/
+		/****** md5 signature: eb43393ef22448b8d10e94272d036f0e ******/
 		%feature("compactdefaultargs") EnableQuickPartWriting;
 		%feature("autodoc", "
 Parameters
@@ -356,10 +352,10 @@ Description
 -----------
 Enables writing in the quick part access mode.
 ") EnableQuickPartWriting;
-		void EnableQuickPartWriting(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theValue);
+		void EnableQuickPartWriting(const opencascade::handle<Message_Messenger> & theMessageDriver, const bool theValue);
 
 		/****** BinDrivers_DocumentStorageDriver::IsWithNormals ******/
-		/****** md5 signature: 9d2bdcdcd1f884eaceb6d40879d090bb ******/
+		/****** md5 signature: 17e34db7507274367ad282553b696b5f ******/
 		%feature("compactdefaultargs") IsWithNormals;
 		%feature("autodoc", "Return
 -------
@@ -369,10 +365,10 @@ Description
 -----------
 Return true if shape should be stored with triangulation normals.
 ") IsWithNormals;
-		Standard_Boolean IsWithNormals();
+		bool IsWithNormals();
 
 		/****** BinDrivers_DocumentStorageDriver::IsWithTriangles ******/
-		/****** md5 signature: 32c48a11bbc2ae55f906cde0d81b8f2d ******/
+		/****** md5 signature: 9a85416e23e4f231b803854b3f2470ad ******/
 		%feature("compactdefaultargs") IsWithTriangles;
 		%feature("autodoc", "Return
 -------
@@ -382,10 +378,10 @@ Description
 -----------
 Return true if shape should be stored with triangles.
 ") IsWithTriangles;
-		Standard_Boolean IsWithTriangles();
+		bool IsWithTriangles();
 
 		/****** BinDrivers_DocumentStorageDriver::SetWithNormals ******/
-		/****** md5 signature: 7fde6e7e5f05b8658b05741a6e66c3d2 ******/
+		/****** md5 signature: 1959bad707a66b8706d465539a5e3811 ******/
 		%feature("compactdefaultargs") SetWithNormals;
 		%feature("autodoc", "
 Parameters
@@ -401,10 +397,10 @@ Description
 -----------
 Set if triangulation should be stored with normals or not.
 ") SetWithNormals;
-		void SetWithNormals(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
+		void SetWithNormals(const opencascade::handle<Message_Messenger> & theMessageDriver, const bool theWithTriangulation);
 
 		/****** BinDrivers_DocumentStorageDriver::SetWithTriangles ******/
-		/****** md5 signature: db0227376859215948d44ae6c914f15c ******/
+		/****** md5 signature: fbc6eedc01f4c3d78b5eb2b717c9fc63 ******/
 		%feature("compactdefaultargs") SetWithTriangles;
 		%feature("autodoc", "
 Parameters
@@ -420,10 +416,10 @@ Description
 -----------
 Set if triangulation should be stored or not.
 ") SetWithTriangles;
-		void SetWithTriangles(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
+		void SetWithTriangles(const opencascade::handle<Message_Messenger> & theMessageDriver, const bool theWithTriangulation);
 
 		/****** BinDrivers_DocumentStorageDriver::WriteShapeSection ******/
-		/****** md5 signature: 64e554649673659ee22057bde5256cf5 ******/
+		/****** md5 signature: d30258d7e15348f7b7722ee1333e1729 ******/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -440,12 +436,10 @@ Description
 -----------
 implements the procedure of writing a shape section to file.
 ") WriteShapeSection;
-		virtual void WriteShapeSection(BinLDrivers_DocumentSection & theDocSection, std::ostream &OutValue, const TDocStd_FormatVersion theDocVer, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void WriteShapeSection(BinLDrivers_DocumentSection & theDocSection, std::ostream &OutValue, const TDocStd_FormatVersion theDocVer, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
-
-%make_alias(BinDrivers_DocumentStorageDriver)
 
 %extend BinDrivers_DocumentStorageDriver {
 	%pythoncode {

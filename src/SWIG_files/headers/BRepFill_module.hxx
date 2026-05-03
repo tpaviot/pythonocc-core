@@ -26,13 +26,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepFill_CompatibleWires.hxx>
 #include<BRepFill_ComputeCLine.hxx>
 #include<BRepFill_CurveConstraint.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfNodeDataMapOfShapeShape.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfNodeShape.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfOrientedShapeListOfShape.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfShapeDataMapOfShapeListOfShape.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfShapeHArray2OfShape.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfPnt.hxx>
-#include<BRepFill_DataMapIteratorOfDataMapOfShapeSequenceOfReal.hxx>
 #include<BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx>
 #include<BRepFill_DataMapOfNodeShape.hxx>
 #include<BRepFill_DataMapOfOrientedShapeListOfShape.hxx>
@@ -50,7 +43,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepFill_Filling.hxx>
 #include<BRepFill_Generator.hxx>
 #include<BRepFill_IndexedDataMapOfOrientedShapeListOfShape.hxx>
-#include<BRepFill_ListIteratorOfListOfOffsetWire.hxx>
 #include<BRepFill_ListOfOffsetWire.hxx>
 #include<BRepFill_LocationLaw.hxx>
 #include<BRepFill_MultiLine.hxx>

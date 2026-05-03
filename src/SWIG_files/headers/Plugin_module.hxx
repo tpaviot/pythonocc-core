@@ -20,7 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<Plugin.hxx>
-#include<Plugin_DataMapIteratorOfMapOfFunctions.hxx>
 #include<Plugin_Failure.hxx>
 #include<Plugin_Macro.hxx>
 #include<Plugin_MapOfFunctions.hxx>

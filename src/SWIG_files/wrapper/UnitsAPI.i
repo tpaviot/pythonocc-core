@@ -97,149 +97,149 @@ UnitsAPI_MDTV = UnitsAPI_SystemUnits.UnitsAPI_MDTV
 class UnitsAPI {
 	public:
 		/****** UnitsAPI::AnyFromLS ******/
-		/****** md5 signature: 56e084e6a1e979f242ce3261471a2e19 ******/
+		/****** md5 signature: 801ddd863cc7b6e8dedd6599b5fd8ef5 ******/
 		%feature("compactdefaultargs") AnyFromLS;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit: str
+aData: double
+aUnit: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local system units value to the local unit value. Example: AnyFromLS(25.4,'in.') returns 1. if the LocalSystem is MDTV. Note: aUnit is also used to identify the type of physical quantity to convert.
 ") AnyFromLS;
-		static Standard_Real AnyFromLS(const Standard_Real aData, Standard_CString aUnit);
+		static double AnyFromLS(const double aData, const char * const aUnit);
 
 		/****** UnitsAPI::AnyFromSI ******/
-		/****** md5 signature: 51d298a84e57287a88c41611637a9aa9 ******/
+		/****** md5 signature: 61630b29b0b15ef4ee27097acf491941 ******/
 		%feature("compactdefaultargs") AnyFromSI;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit: str
+aData: double
+aUnit: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the SI system units value to the local unit value. Example: AnyFromSI(0.0254,'in.') returns 0.001 Note: aUnit is also used to identify the type of physical quantity to convert.
 ") AnyFromSI;
-		static Standard_Real AnyFromSI(const Standard_Real aData, Standard_CString aUnit);
+		static double AnyFromSI(const double aData, const char * const aUnit);
 
 		/****** UnitsAPI::AnyToAny ******/
-		/****** md5 signature: a34e13f8062d74576011237fdc11241b ******/
+		/****** md5 signature: cadad28827ad93db87ebeb53aca9486b ******/
 		%feature("compactdefaultargs") AnyToAny;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit1: str
-aUnit2: str
+aData: double
+aUnit1: char *
+aUnit2: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local unit value to another local unit value. Example: AnyToAny(0.0254,'in.','millimeter') returns 1. ;.
 ") AnyToAny;
-		static Standard_Real AnyToAny(const Standard_Real aData, Standard_CString aUnit1, Standard_CString aUnit2);
+		static double AnyToAny(const double aData, const char * const aUnit1, const char * const aUnit2);
 
 		/****** UnitsAPI::AnyToLS ******/
-		/****** md5 signature: be97d95d076c1f8b0986e8919aa752ea ******/
+		/****** md5 signature: f6311f81ca190371e92153db758ab40a ******/
 		%feature("compactdefaultargs") AnyToLS;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit: str
+aData: double
+aUnit: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local unit value to the local system units value. Example: AnyToLS(1.,'in.') returns 25.4 if the LocalSystem is MDTV.
 ") AnyToLS;
-		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit);
+		static double AnyToLS(const double aData, const char * const aUnit);
 
 		/****** UnitsAPI::AnyToLS ******/
-		/****** md5 signature: 46cdace99266b9ed9c51e1fdd1e1382a ******/
+		/****** md5 signature: 3392d5a0c6202efa257ffec8c2d18b4d ******/
 		%feature("compactdefaultargs") AnyToLS;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit: str
+aData: double
+aUnit: char *
 aDim: Units_Dimensions
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local unit value to the local system units value. and gives the associated dimension of the unit.
 ") AnyToLS;
-		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
+		static double AnyToLS(const double aData, const char * const aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
 		/****** UnitsAPI::AnyToSI ******/
-		/****** md5 signature: 2322f8d6fc98e87d4c97235741f5c4c0 ******/
+		/****** md5 signature: 6105e05ea69ea128d0081d07c0eeb2b5 ******/
 		%feature("compactdefaultargs") AnyToSI;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit: str
+aData: double
+aUnit: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local unit value to the SI system units value. Example: AnyToSI(1.,'in.') returns 0.0254.
 ") AnyToSI;
-		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit);
+		static double AnyToSI(const double aData, const char * const aUnit);
 
 		/****** UnitsAPI::AnyToSI ******/
-		/****** md5 signature: 3984bca4e7e6b466dd4cc37343372bd4 ******/
+		/****** md5 signature: eb74e5becd565dbe0135f9b2e0e5f44c ******/
 		%feature("compactdefaultargs") AnyToSI;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aUnit: str
+aData: double
+aUnit: char *
 aDim: Units_Dimensions
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local unit value to the SI system units value. and gives the associated dimension of the unit.
 ") AnyToSI;
-		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
+		static double AnyToSI(const double aData, const char * const aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
 		/****** UnitsAPI::Check ******/
-		/****** md5 signature: 8fd354cea0b43ea55552afe1a0c9a172 ******/
+		/****** md5 signature: 6fbeeb258b2e520c2bad6f92cd559305 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
 ----------
-aQuantity: str
-aUnit: str
+aQuantity: char *
+aUnit: char *
 
 Return
 -------
@@ -249,141 +249,141 @@ Description
 -----------
 Checks the coherence between the quantity <aQuantity> and the unit <aUnits> in the current system and returns False when it's WRONG.
 ") Check;
-		static Standard_Boolean Check(Standard_CString aQuantity, Standard_CString aUnit);
+		static bool Check(const char * const aQuantity, const char * const aUnit);
 
 		/****** UnitsAPI::CurrentFromAny ******/
-		/****** md5 signature: e481372ea449ecc215486204b576346a ******/
+		/****** md5 signature: 18ebcb03c4b4b154c576078ba1e9b83a ******/
 		%feature("compactdefaultargs") CurrentFromAny;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
-aUnit: str
+aData: double
+aQuantity: char *
+aUnit: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the aData value expressed in the unit aUnit, into the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function.
 ") CurrentFromAny;
-		static Standard_Real CurrentFromAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
+		static double CurrentFromAny(const double aData, const char * const aQuantity, const char * const aUnit);
 
 		/****** UnitsAPI::CurrentFromLS ******/
-		/****** md5 signature: baf46d9b2387f58a6af6f0df8c113850 ******/
+		/****** md5 signature: 862e81322d7333f15e53d444a7ca1aa6 ******/
 		%feature("compactdefaultargs") CurrentFromLS;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
+aData: double
+aQuantity: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local system units value to the current unit value. Example: CurrentFromLS(1000.,'LENGTH') returns 1. if current length unit is meter and LocalSystem is MDTV.
 ") CurrentFromLS;
-		static Standard_Real CurrentFromLS(const Standard_Real aData, Standard_CString aQuantity);
+		static double CurrentFromLS(const double aData, const char * const aQuantity);
 
 		/****** UnitsAPI::CurrentFromSI ******/
-		/****** md5 signature: b4cb9aa8765d61361f181d61763312f3 ******/
+		/****** md5 signature: 453660e71e2b4409214d805bc8990d9c ******/
 		%feature("compactdefaultargs") CurrentFromSI;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
+aData: double
+aQuantity: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the SI system units value to the current unit value. Example: CurrentFromSI(0.001,'LENGTH') returns 1 if current length unit is millimeter.
 ") CurrentFromSI;
-		static Standard_Real CurrentFromSI(const Standard_Real aData, Standard_CString aQuantity);
+		static double CurrentFromSI(const double aData, const char * const aQuantity);
 
 		/****** UnitsAPI::CurrentToAny ******/
-		/****** md5 signature: 626c139702fb138665d6dd8afd9482ae ******/
+		/****** md5 signature: afc464ddbc6c0e86291077207457a729 ******/
 		%feature("compactdefaultargs") CurrentToAny;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
-aUnit: str
+aData: double
+aQuantity: char *
+aUnit: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the aData value expressed in the current unit for the working environment, as defined for the physical quantity aQuantity by the last call to the SetCurrentUnit function, into the unit aUnit.
 ") CurrentToAny;
-		static Standard_Real CurrentToAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
+		static double CurrentToAny(const double aData, const char * const aQuantity, const char * const aUnit);
 
 		/****** UnitsAPI::CurrentToLS ******/
-		/****** md5 signature: 6a36e9c67f2ece9a3e15958a515e9454 ******/
+		/****** md5 signature: f32bff4aaacc6ecc58405002f24e097a ******/
 		%feature("compactdefaultargs") CurrentToLS;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
+aData: double
+aQuantity: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the current unit value to the local system units value. Example: CurrentToLS(1.,'LENGTH') returns 1000. if the current length unit is meter and LocalSystem is MDTV.
 ") CurrentToLS;
-		static Standard_Real CurrentToLS(const Standard_Real aData, Standard_CString aQuantity);
+		static double CurrentToLS(const double aData, const char * const aQuantity);
 
 		/****** UnitsAPI::CurrentToSI ******/
-		/****** md5 signature: 9286242f061106c9da565bb7a13df149 ******/
+		/****** md5 signature: 32126c6378974a40255765aea0babeaf ******/
 		%feature("compactdefaultargs") CurrentToSI;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
+aData: double
+aQuantity: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the current unit value to the SI system units value. Example: CurrentToSI(1.,'LENGTH') returns 0.001 if current length unit is millimeter.
 ") CurrentToSI;
-		static Standard_Real CurrentToSI(const Standard_Real aData, Standard_CString aQuantity);
+		static double CurrentToSI(const double aData, const char * const aQuantity);
 
 		/****** UnitsAPI::CurrentUnit ******/
-		/****** md5 signature: f01f00f078d1eec0021f4a2418a15c1f ******/
+		/****** md5 signature: 1d70fa17a72fc218913055145d5b33d4 ******/
 		%feature("compactdefaultargs") CurrentUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-aQuantity: str
+aQuantity: char *
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the current unit dimension <aUnit> from the unit quantity <aQuantity>.
 ") CurrentUnit;
-		static Standard_CString CurrentUnit(Standard_CString aQuantity);
+		static const char * CurrentUnit(const char * const aQuantity);
 
 		/****** UnitsAPI::DimensionAmountOfSubstance ******/
 		/****** md5 signature: 6438adbeca1586be140df666112d9ed8 ******/
@@ -516,12 +516,12 @@ No available documentation.
 		static opencascade::handle<Units_Dimensions> DimensionTime();
 
 		/****** UnitsAPI::Dimensions ******/
-		/****** md5 signature: b774aec0d4cbdadea27cddf0f2f2cc6c ******/
+		/****** md5 signature: 5c0f04fad3514a2cb60d2a5fc9d3ac5c ******/
 		%feature("compactdefaultargs") Dimensions;
 		%feature("autodoc", "
 Parameters
 ----------
-aQuantity: str
+aQuantity: char *
 
 Return
 -------
@@ -531,26 +531,26 @@ Description
 -----------
 return the dimension associated to the quantity.
 ") Dimensions;
-		static opencascade::handle<Units_Dimensions> Dimensions(Standard_CString aQuantity);
+		static opencascade::handle<Units_Dimensions> Dimensions(const char * const aQuantity);
 
 		/****** UnitsAPI::LSToSI ******/
-		/****** md5 signature: b7335812925a563eeda3a379ecb8050c ******/
+		/****** md5 signature: 5bd1edb82f1c448144f953dd1b46da14 ******/
 		%feature("compactdefaultargs") LSToSI;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
+aData: double
+aQuantity: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the local system units value to the SI system unit value. Example: LSToSI(1.,'LENGTH') returns 0.001 if the local system length unit is millimeter.
 ") LSToSI;
-		static Standard_Real LSToSI(const Standard_Real aData, Standard_CString aQuantity);
+		static double LSToSI(const double aData, const char * const aQuantity);
 
 		/****** UnitsAPI::LocalSystem ******/
 		/****** md5 signature: 61dd63b9b169d3619a3b18bc847f81b2 ******/
@@ -579,23 +579,23 @@ No available documentation.
 		static void Reload();
 
 		/****** UnitsAPI::SIToLS ******/
-		/****** md5 signature: 3c3f219672fa4407919e8a63ea7f2683 ******/
+		/****** md5 signature: d65dd07f4e5827f95bc7e11f952240a7 ******/
 		%feature("compactdefaultargs") SIToLS;
 		%feature("autodoc", "
 Parameters
 ----------
-aData: float
-aQuantity: str
+aData: double
+aQuantity: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the SI system unit value to the local system units value. Example: SIToLS(1.,'LENGTH') returns 1000. if the local system length unit is millimeter.
 ") SIToLS;
-		static Standard_Real SIToLS(const Standard_Real aData, Standard_CString aQuantity);
+		static double SIToLS(const double aData, const char * const aQuantity);
 
 		/****** UnitsAPI::Save ******/
 		/****** md5 signature: 5415c3e3c77906824a66d1620fd32f67 ******/
@@ -611,13 +611,13 @@ saves the units in the file .CurrentUnits of the directory pointed by the CSF_Cu
 		static void Save();
 
 		/****** UnitsAPI::SetCurrentUnit ******/
-		/****** md5 signature: 86203ba633b8d33e2ad9e71b2468ee6b ******/
+		/****** md5 signature: 3dc59886b34cfdd2f58fcdd3bdfc05f8 ******/
 		%feature("compactdefaultargs") SetCurrentUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-aQuantity: str
-aUnit: str
+aQuantity: char *
+aUnit: char *
 
 Return
 -------
@@ -627,7 +627,7 @@ Description
 -----------
 Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>. Example: SetCurrentUnit('LENGTH','millimeter').
 ") SetCurrentUnit;
-		static void SetCurrentUnit(Standard_CString aQuantity, Standard_CString aUnit);
+		static void SetCurrentUnit(const char * const aQuantity, const char * const aUnit);
 
 		/****** UnitsAPI::SetLocalSystem ******/
 		/****** md5 signature: ee27f19c32ea8b52c56dd6af5e661b4b ******/

@@ -27,7 +27,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NLPlate_HPG1Constraint.hxx>
 #include<NLPlate_HPG2Constraint.hxx>
 #include<NLPlate_HPG3Constraint.hxx>
-#include<NLPlate_ListIteratorOfStackOfPlate.hxx>
 #include<NLPlate_NLPlate.hxx>
 #include<NLPlate_SequenceOfHGPPConstraint.hxx>
 #include<NLPlate_StackOfPlate.hxx>

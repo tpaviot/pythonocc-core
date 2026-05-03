@@ -45,8 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dconvert.htm
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Geom2d_module.hxx>
-#include<TColGeom2d_module.hxx>
-#include<TColStd_module.hxx>
 #include<Convert_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -60,8 +58,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dconvert.htm
 %import Standard.i
 %import NCollection.i
 %import Geom2d.i
-%import TColGeom2d.i
-%import TColStd.i
 %import Convert.i
 %import Adaptor2d.i
 %import GeomAbs.i
@@ -84,18 +80,9 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(Geom2dConvert_SequenceOfPPoint) NCollection_Sequence<Geom2dConvert_PPoint>;
-
-%extend NCollection_Sequence<Geom2dConvert_PPoint> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Sequence<Geom2dConvert_PPoint> Geom2dConvert_SequenceOfPPoint;
 /* end typedefs declaration */
 
 /**********************
@@ -105,14 +92,14 @@ typedef NCollection_Sequence<Geom2dConvert_PPoint> Geom2dConvert_SequenceOfPPoin
 class Geom2dConvert {
 	public:
 		/****** Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve ******/
-		/****** md5 signature: 418e41b3f000190b9bb893d6a0f6f5d0 ******/
+		/****** md5 signature: 0521cffd444c8568f2f3e1ae64cf221e ******/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-tabBS: TColGeom2d_HArray1OfBSplineCurve
-Tolerance: float
+tabBS: NCollection_HArray1<
+Tolerance: double
 
 Return
 -------
@@ -122,18 +109,18 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. Tolerance is a geometrical tolerance.
 ") C0BSplineToArrayOfC1BSplineCurve;
-		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & tabBS, const Standard_Real Tolerance);
+		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & tabBS, const double Tolerance);
 
 		/****** Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve ******/
-		/****** md5 signature: 06271ef4a995d870a72c4ea333fb49db ******/
+		/****** md5 signature: 100d0c7c18c9e0c2d75d80a28a8bca90 ******/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-tabBS: TColGeom2d_HArray1OfBSplineCurve
-AngularTolerance: float
-Tolerance: float
+tabBS: NCollection_HArray1<
+AngularTolerance: double
+Tolerance: double
 
 Return
 -------
@@ -143,16 +130,16 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance.
 ") C0BSplineToArrayOfC1BSplineCurve;
-		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & tabBS, const Standard_Real AngularTolerance, const Standard_Real Tolerance);
+		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & tabBS, const double AngularTolerance, const double Tolerance);
 
 		/****** Geom2dConvert::C0BSplineToC1BSplineCurve ******/
-		/****** md5 signature: 43d98081fc6289414094aef8a5a8373c ******/
+		/****** md5 signature: 2952d1f61314338daedceedc133e42eb ******/
 		%feature("compactdefaultargs") C0BSplineToC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -162,19 +149,19 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns a new BSpline which could still be C0. tolerance is a geometrical tolerance.
 ") C0BSplineToC1BSplineCurve;
-		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real Tolerance);
+		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom2d_BSplineCurve> & BS, const double Tolerance);
 
 		/****** Geom2dConvert::ConcatC1 ******/
-		/****** md5 signature: a14010dff7bc07ad8e245f6a53f4fc55 ******/
+		/****** md5 signature: d221ffe7e52018673446e188413ae15e ******/
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve
-ArrayOfToler: TColStd_Array1OfReal
-ArrayOfIndices: TColStd_HArray1OfInteger
-ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve
-ClosedTolerance: float
+ArrayOfCurves: Geom2d_BSplineCurve
+ArrayOfToler: NCollection_Array1<double>
+ArrayOfIndices: NCollection_HArray1<int
+ArrayOfConcatenated: NCollection_HArray1<
+ClosedTolerance: double
 
 Return
 -------
@@ -184,20 +171,20 @@ Description
 -----------
 This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
-		static void ConcatC1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
+		static void ConcatC1(NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<int> > & ArrayOfIndices, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
 
 		/****** Geom2dConvert::ConcatC1 ******/
-		/****** md5 signature: 5a277b57b6adb52b8e6f919b7bd0fe59 ******/
+		/****** md5 signature: 17e56e215492d0c5354740f16edbf4a5 ******/
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve
-ArrayOfToler: TColStd_Array1OfReal
-ArrayOfIndices: TColStd_HArray1OfInteger
-ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve
-ClosedTolerance: float
-AngularTolerance: float
+ArrayOfCurves: Geom2d_BSplineCurve
+ArrayOfToler: NCollection_Array1<double>
+ArrayOfIndices: NCollection_HArray1<int
+ArrayOfConcatenated: NCollection_HArray1<
+ClosedTolerance: double
+AngularTolerance: double
 
 Return
 -------
@@ -207,18 +194,18 @@ Description
 -----------
 This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
-		static void ConcatC1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance, const Standard_Real AngularTolerance);
+		static void ConcatC1(NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<int> > & ArrayOfIndices, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance, const double AngularTolerance);
 
 		/****** Geom2dConvert::ConcatG1 ******/
-		/****** md5 signature: d7fe6a64c566dd941ed17b92c56628e5 ******/
+		/****** md5 signature: 2bc189a116493fb64f76810ed3cd9848 ******/
 		%feature("compactdefaultargs") ConcatG1;
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve
-ArrayOfToler: TColStd_Array1OfReal
-ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve
-ClosedTolerance: float
+ArrayOfCurves: Geom2d_BSplineCurve
+ArrayOfToler: NCollection_Array1<double>
+ArrayOfConcatenated: NCollection_HArray1<
+ClosedTolerance: double
 
 Return
 -------
@@ -228,7 +215,7 @@ Description
 -----------
 This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatG1;
-		static void ConcatG1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
+		static void ConcatG1(NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
 
 		/****** Geom2dConvert::CurveToBSplineCurve ******/
 		/****** md5 signature: 2605e8125c6f357bc9c5d1ed97296078 ******/
@@ -250,7 +237,7 @@ This function converts a non infinite curve from Geom into a B-spline curve. C m
 		static opencascade::handle<Geom2d_BSplineCurve> CurveToBSplineCurve(const opencascade::handle<Geom2d_Curve> & C, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
 		/****** Geom2dConvert::SplitBSplineCurve ******/
-		/****** md5 signature: 186212ac73a42e139a7d4feef3f60081 ******/
+		/****** md5 signature: 0eed7e0e4c6113b00bdcc672e5c3d5e6 ******/
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -258,7 +245,7 @@ Parameters
 C: Geom2d_BSplineCurve
 FromK1: int
 ToK2: int
-SameOrientation: bool (optional, default to Standard_True)
+SameOrientation: bool (optional, default to true)
 
 Return
 -------
@@ -266,21 +253,21 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
--- Convert a curve to BSpline by Approximation //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = Standard_True. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn't include the repetition of multiple knots in their definition. //! Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] Raised if FromK1 = ToK2.
+Convert a curve to BSpline by Approximation //! This method computes the arc of B-spline curve between the two knots FromK1 and ToK2. If C is periodic the arc has the same orientation as C if SameOrientation = true. If C is not periodic SameOrientation is not used for the computation and C is oriented from the knot fromK1 to the knot toK2. We just keep the local definition of C between the knots FromK1 and ToK2. The returned B-spline curve has its first and last knots with a multiplicity equal to degree + 1, where degree is the polynomial degree of C. The indexes of the knots FromK1 and ToK2 doesn't include the repetition of multiple knots in their definition. //! Raised if FromK1 or ToK2 are out of the bounds [FirstUKnotIndex, LastUKnotIndex] Raised if FromK1 = ToK2.
 ") SplitBSplineCurve;
-		static opencascade::handle<Geom2d_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & C, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean SameOrientation = Standard_True);
+		static opencascade::handle<Geom2d_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & C, const int FromK1, const int ToK2, const bool SameOrientation = true);
 
 		/****** Geom2dConvert::SplitBSplineCurve ******/
-		/****** md5 signature: 5aaeb3c50208c1ec4ec35beb2023e517 ******/
+		/****** md5 signature: 8270eec43716e43a61fcf250e86f29a2 ******/
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_BSplineCurve
-FromU1: float
-ToU2: float
-ParametricTolerance: float
-SameOrientation: bool (optional, default to Standard_True)
+FromU1: double
+ToU2: double
+ParametricTolerance: double
+SameOrientation: bool (optional, default to true)
 
 Return
 -------
@@ -290,7 +277,7 @@ Description
 -----------
 This function computes the segment of B-spline curve between the parametric values FromU1, ToU2. If C is periodic the arc has the same orientation as C if SameOrientation = True. If C is not periodic SameOrientation is not used for the computation and C is oriented fromU1 toU2. If U1 and U2 and two parametric values we consider that U1 = U2 if Abs (U1 - U2) <= ParametricTolerance and ParametricTolerance must be greater or equal to Resolution from package gp. //! Raised if FromU1 or ToU2 are out of the parametric bounds of the curve (The tolerance criterion is ParametricTolerance). Raised if Abs (FromU1 - ToU2) <= ParametricTolerance Raised if ParametricTolerance < Resolution from gp.
 ") SplitBSplineCurve;
-		static opencascade::handle<Geom2d_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & C, const Standard_Real FromU1, const Standard_Real ToU2, const Standard_Real ParametricTolerance, const Standard_Boolean SameOrientation = Standard_True);
+		static opencascade::handle<Geom2d_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & C, const double FromU1, const double ToU2, const double ParametricTolerance, const bool SameOrientation = true);
 
 };
 
@@ -329,14 +316,14 @@ StatusError = Status.StatusError
 /* end python proxy for enums */
 
 		/****** Geom2dConvert_ApproxArcsSegments::Geom2dConvert_ApproxArcsSegments ******/
-		/****** md5 signature: 9436d6631fd8b7c74d966e3a9a65ee33 ******/
+		/****** md5 signature: 95a272638ae0fa737deebb61420d5056 ******/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxArcsSegments;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: Adaptor2d_Curve2d
-theTolerance: float
-theAngleTol: float
+theTolerance: double
+theAngleTol: double
 
 Return
 -------
@@ -346,20 +333,20 @@ Description
 -----------
 Constructor.
 ") Geom2dConvert_ApproxArcsSegments;
-		 Geom2dConvert_ApproxArcsSegments(const Adaptor2d_Curve2d & theCurve, const Standard_Real theTolerance, const Standard_Real theAngleTol);
+		 Geom2dConvert_ApproxArcsSegments(const Adaptor2d_Curve2d & theCurve, const double theTolerance, const double theAngleTol);
 
 		/****** Geom2dConvert_ApproxArcsSegments::GetResult ******/
-		/****** md5 signature: a34db03551bc2315f5a46e5144fc58f3 ******/
+		/****** md5 signature: 3c1ce7d090d65b2db875d85c30a9dcd8 ******/
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "Return
 -------
-TColGeom2d_SequenceOfCurve
+NCollection_Sequence<opencascade::handle<Geom2d_Curve>>
 
 Description
 -----------
 Get the result curve after approximation.
 ") GetResult;
-		TColGeom2d_SequenceOfCurve GetResult();
+		const NCollection_Sequence<opencascade::handle<Geom2d_Curve>> & GetResult();
 
 };
 
@@ -376,13 +363,13 @@ Get the result curve after approximation.
 class Geom2dConvert_ApproxCurve {
 	public:
 		/****** Geom2dConvert_ApproxCurve::Geom2dConvert_ApproxCurve ******/
-		/****** md5 signature: 865981d184c394b2356db9c527a84266 ******/
+		/****** md5 signature: f33ed000964b44eabcdc1bd3e2cd8701 ******/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve: Geom2d_Curve
-Tol2d: float
+Tol2d: double
 Order: GeomAbs_Shape
 MaxSegments: int
 MaxDegree: int
@@ -395,16 +382,16 @@ Description
 -----------
 Constructs an approximation framework defined by - the 2D conic Curve - the tolerance value Tol2d - the degree of continuity Order - the maximum number of segments allowed MaxSegments - the highest degree MaxDegree which the polynomial defining the BSpline is allowed to have.
 ") Geom2dConvert_ApproxCurve;
-		 Geom2dConvert_ApproxCurve(const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+		 Geom2dConvert_ApproxCurve(const opencascade::handle<Geom2d_Curve> & Curve, const double Tol2d, const GeomAbs_Shape Order, const int MaxSegments, const int MaxDegree);
 
 		/****** Geom2dConvert_ApproxCurve::Geom2dConvert_ApproxCurve ******/
-		/****** md5 signature: fef67c6afa73a6f1c88612fc7cbae9d5 ******/
+		/****** md5 signature: 0d7ecced8dd8b2abefbd91cd140d6123 ******/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve: Adaptor2d_Curve2d
-Tol2d: float
+Tol2d: double
 Order: GeomAbs_Shape
 MaxSegments: int
 MaxDegree: int
@@ -417,7 +404,7 @@ Description
 -----------
 Constructs an approximation framework defined by - the 2D conic Curve - the tolerance value Tol2d - the degree of continuity Order - the maximum number of segments allowed MaxSegments - the highest degree MaxDegree which the polynomial defining the BSpline is allowed to have.
 ") Geom2dConvert_ApproxCurve;
-		 Geom2dConvert_ApproxCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
+		 Geom2dConvert_ApproxCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve, const double Tol2d, const GeomAbs_Shape Order, const int MaxSegments, const int MaxDegree);
 
 		/****** Geom2dConvert_ApproxCurve::Curve ******/
 		/****** md5 signature: 1960069de54819d72fccc75ab85806ec ******/
@@ -450,7 +437,7 @@ Print on the stream o information about the object.
 		void Dump(std::ostream &OutValue);
 
 		/****** Geom2dConvert_ApproxCurve::HasResult ******/
-		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
+		/****** md5 signature: 708adea9b732f6b7393066c26f957b86 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -458,12 +445,12 @@ bool
 
 Description
 -----------
-returns Standard_True if the approximation did come out with a result that is not NECESSARELY within the required tolerance.
+returns true if the approximation did come out with a result that is not NECESSARELY within the required tolerance.
 ") HasResult;
-		Standard_Boolean HasResult();
+		bool HasResult();
 
 		/****** Geom2dConvert_ApproxCurve::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -471,22 +458,22 @@ bool
 
 Description
 -----------
-returns Standard_True if the approximation has been done with within required tolerance.
+returns true if the approximation has been done with within required tolerance.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Geom2dConvert_ApproxCurve::MaxError ******/
-		/****** md5 signature: 90f2419f0b1537a77da84305579339a2 ******/
+		/****** md5 signature: 4f47ae0b40baa70b5c95e40911df418d ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the greatest distance between a point on the source conic and the BSpline curve resulting from the approximation. (>0 when an approximation has been done, 0 if no approximation).
 ") MaxError;
-		Standard_Real MaxError();
+		double MaxError();
 
 };
 
@@ -503,7 +490,7 @@ Returns the greatest distance between a point on the source conic and the BSplin
 class Geom2dConvert_BSplineCurveKnotSplitting {
 	public:
 		/****** Geom2dConvert_BSplineCurveKnotSplitting::Geom2dConvert_BSplineCurveKnotSplitting ******/
-		/****** md5 signature: 82665f58283791971d3c2678a64b7a4a ******/
+		/****** md5 signature: 262a1c73da414ce6c981b5b6c554fef0 ******/
 		%feature("compactdefaultargs") Geom2dConvert_BSplineCurveKnotSplitting;
 		%feature("autodoc", "
 Parameters
@@ -519,10 +506,10 @@ Description
 -----------
 Determines points at which the BSpline curve BasisCurve should be split in order to obtain arcs with a degree of continuity equal to ContinuityRange. These points are knot values of BasisCurve. They are identified by indices in the knots table of BasisCurve. Use the available interrogation functions to access computed values, followed by the global function SplitBSplineCurve (provided by the package Geom2dConvert) to split the curve. Exceptions Standard_RangeError if ContinuityRange is less than zero.
 ") Geom2dConvert_BSplineCurveKnotSplitting;
-		 Geom2dConvert_BSplineCurveKnotSplitting(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve, const Standard_Integer ContinuityRange);
+		 Geom2dConvert_BSplineCurveKnotSplitting(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve, const int ContinuityRange);
 
 		/****** Geom2dConvert_BSplineCurveKnotSplitting::NbSplits ******/
-		/****** md5 signature: 4531d20d48cc2f1c4ba8fba36f455258 ******/
+		/****** md5 signature: 450e59ea60ccd5f46ae4d2b16e989c5a ******/
 		%feature("compactdefaultargs") NbSplits;
 		%feature("autodoc", "Return
 -------
@@ -532,10 +519,10 @@ Description
 -----------
 Returns the number of points at which the analysed BSpline curve should be split, in order to obtain arcs with the continuity required by this framework. All these points correspond to knot values. Note that the first and last points of the curve, which bound the first and last arcs, are counted among these splitting points.
 ") NbSplits;
-		Standard_Integer NbSplits();
+		int NbSplits();
 
 		/****** Geom2dConvert_BSplineCurveKnotSplitting::SplitValue ******/
-		/****** md5 signature: 721f3b88e9b98541767484bae1df7e27 ******/
+		/****** md5 signature: 58aee47f7f155f97d1a4ec76b6cebd87 ******/
 		%feature("compactdefaultargs") SplitValue;
 		%feature("autodoc", "
 Parameters
@@ -550,15 +537,15 @@ Description
 -----------
 Returns the split knot of index Index to the split knots table computed in this framework. The returned value is an index in the knots table of the BSpline curve analysed by this algorithm. Notes: - If Index is equal to 1, the corresponding knot gives the first point of the curve. - If Index is equal to the number of split knots computed in this framework, the corresponding point is the last point of the curve. Exceptions Standard_RangeError if Index is less than 1 or greater than the number of split knots computed in this framework.
 ") SplitValue;
-		Standard_Integer SplitValue(const Standard_Integer Index);
+		int SplitValue(const int Index);
 
 		/****** Geom2dConvert_BSplineCurveKnotSplitting::Splitting ******/
-		/****** md5 signature: 735443fa5e885793b9df881715b055c2 ******/
+		/****** md5 signature: 6e6d594c00cac556bf0f204ddde3dabf ******/
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "
 Parameters
 ----------
-SplitValues: TColStd_Array1OfInteger
+SplitValues: NCollection_Array1<int>
 
 Return
 -------
@@ -568,7 +555,7 @@ Description
 -----------
 Loads the SplitValues table with the split knots values computed in this framework. Each value in the table is an index in the knots table of the BSpline curve analysed by this algorithm. The values in SplitValues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. Use two consecutive values from the table as arguments of the global function SplitBSplineCurve (provided by the package Geom2dConvert) to split the curve. Exceptions Standard_DimensionError if the array SplitValues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function NbSplits).
 ") Splitting;
-		void Splitting(TColStd_Array1OfInteger & SplitValues);
+		void Splitting(NCollection_Array1<int> & SplitValues);
 
 };
 
@@ -603,15 +590,15 @@ Computes all the data needed to convert - the BSpline curve BasisCurve, into a s
 		 Geom2dConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::Geom2dConvert_BSplineCurveToBezierCurve ******/
-		/****** md5 signature: 35135a63b65b320cd2cdd5ef8bc3a232 ******/
+		/****** md5 signature: f069dbb2133fc4c8521970e60dd6be0f ******/
 		%feature("compactdefaultargs") Geom2dConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 BasisCurve: Geom2d_BSplineCurve
-U1: float
-U2: float
-ParametricTolerance: float
+U1: double
+U2: double
+ParametricTolerance: double
 
 Return
 -------
@@ -621,10 +608,10 @@ Description
 -----------
 Computes all the data needed to convert the portion of the BSpline curve BasisCurve limited by the two parameter values U1 and U2 for Example if there is a Knot Uk and Uk < U < Uk + ParametricTolerance/2 the last curve corresponds to the span [Uk-1, Uk] and not to [Uk, Uk+1] The result consists of a series of BasisCurve arcs limited by points corresponding to knot values of the curve. Use the available interrogation functions to ascertain the number of computed Bezier arcs, and then to construct each individual Bezier curve (or all Bezier curves). Note: ParametricTolerance is not used. Raises DomainError if U1 or U2 are out of the parametric bounds of the basis curve [FirstParameter, LastParameter]. The Tolerance criterion is ParametricTolerance. Raised if Abs (U2 - U1) <= ParametricTolerance.
 ") Geom2dConvert_BSplineCurveToBezierCurve;
-		 Geom2dConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real ParametricTolerance);
+		 Geom2dConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve, const double U1, const double U2, const double ParametricTolerance);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::Arc ******/
-		/****** md5 signature: 6f8eca87e681791bf36b1028ac6c6130 ******/
+		/****** md5 signature: 599e86a6443cf3f34f1d5449c41ff45c ******/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "
 Parameters
@@ -639,15 +626,15 @@ Description
 -----------
 Constructs and returns the Bezier curve of index Index to the table of adjacent Bezier arcs computed by this algorithm. This Bezier curve has the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_OutOfRange if Index is less than 1 or greater than the number of adjacent Bezier arcs computed by this algorithm.
 ") Arc;
-		opencascade::handle<Geom2d_BezierCurve> Arc(const Standard_Integer Index);
+		opencascade::handle<Geom2d_BezierCurve> Arc(const int Index);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::Arcs ******/
-		/****** md5 signature: 51fd19b32fea76dfb44e9f64d6a96191 ******/
+		/****** md5 signature: be21a17f406bac49c1d672cb848304b2 ******/
 		%feature("compactdefaultargs") Arcs;
 		%feature("autodoc", "
 Parameters
 ----------
-Curves: TColGeom2d_Array1OfBezierCurve
+Curves: Geom2d_BezierCurve
 
 Return
 -------
@@ -657,15 +644,15 @@ Description
 -----------
 Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
 ") Arcs;
-		void Arcs(TColGeom2d_Array1OfBezierCurve & Curves);
+		void Arcs(NCollection_Array1<opencascade::handle<Geom2d_BezierCurve> > & Curves);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::Knots ******/
-		/****** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ******/
+		/****** md5 signature: 0c997620b63f032cdc3c9768bd4c0468 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: TColStd_Array1OfReal
+TKnots: NCollection_Array1<double>
 
 Return
 -------
@@ -675,10 +662,10 @@ Description
 -----------
 This methode returns the bspline's knots associated to the converted arcs Raises DimensionError if the length of Curves is not equal to NbArcs + 1.
 ") Knots;
-		void Knots(TColStd_Array1OfReal & TKnots);
+		void Knots(NCollection_Array1<double> & TKnots);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::NbArcs ******/
-		/****** md5 signature: 5ed9ffd03d9f325b6e3f5ea37278c31f ******/
+		/****** md5 signature: c1c862e41d849390df4d036d37a1ae92 ******/
 		%feature("compactdefaultargs") NbArcs;
 		%feature("autodoc", "Return
 -------
@@ -688,7 +675,7 @@ Description
 -----------
 Returns the number of BezierCurve arcs. If at the creation time you have decomposed the basis curve between the parametric values UFirst, ULast the number of BezierCurve arcs depends on the number of knots included inside the interval [UFirst, ULast]. If you have decomposed the whole basis B-spline curve the number of BezierCurve arcs NbArcs is equal to the number of knots less one.
 ") NbArcs;
-		Standard_Integer NbArcs();
+		int NbArcs();
 
 };
 
@@ -718,7 +705,7 @@ None
 
 Description
 -----------
-Initialize the algorithme - Parameterisation is used to convert.
+Initialize the algorithm - Parameterisation is used to convert.
 ") Geom2dConvert_CompCurveToBSplineCurve;
 		 Geom2dConvert_CompCurveToBSplineCurve(const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
@@ -737,19 +724,19 @@ None
 
 Description
 -----------
-Initialize the algorithme with one curve - Parameterisation is used to convert.
+Initialize the algorithm with one curve - Parameterisation is used to convert.
 ") Geom2dConvert_CompCurveToBSplineCurve;
 		 Geom2dConvert_CompCurveToBSplineCurve(const opencascade::handle<Geom2d_BoundedCurve> & BasisCurve, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
 		/****** Geom2dConvert_CompCurveToBSplineCurve::Add ******/
-		/****** md5 signature: 98a5e3fa8e5a538111199b5b805f80b1 ******/
+		/****** md5 signature: a3dc7c8bdb71b4e71a4d4c365fa78418 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 NewCurve: Geom2d_BoundedCurve
-Tolerance: float
-After: bool (optional, default to Standard_False)
+Tolerance: double
+After: bool (optional, default to false)
 
 Return
 -------
@@ -759,7 +746,7 @@ Description
 -----------
 Append a curve in the BSpline Return False if the curve is not G0 with the BSplineCurve. Tolerance is used to check continuity and decrease Multiplicity at the common Knot After is useful if BasisCurve is a closed curve .
 ") Add;
-		Standard_Boolean Add(const opencascade::handle<Geom2d_BoundedCurve> & NewCurve, const Standard_Real Tolerance, const Standard_Boolean After = Standard_False);
+		bool Add(const opencascade::handle<Geom2d_BoundedCurve> & NewCurve, const double Tolerance, const bool After = false);
 
 		/****** Geom2dConvert_CompCurveToBSplineCurve::BSplineCurve ******/
 		/****** md5 signature: 2fb696f4c732267032b216f38baea435 ******/
@@ -815,12 +802,12 @@ Empty constructor.
 		 Geom2dConvert_PPoint();
 
 		/****** Geom2dConvert_PPoint::Geom2dConvert_PPoint ******/
-		/****** md5 signature: 83fab53d710c50a2f43ab7d934212a29 ******/
+		/****** md5 signature: e2855923996b1bde16594f278678d8af ******/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-theParameter: float
+theParameter: double
 thePoint: gp_XY
 theD1: gp_XY
 
@@ -832,15 +819,15 @@ Description
 -----------
 Constructor.
 ") Geom2dConvert_PPoint;
-		 Geom2dConvert_PPoint(const Standard_Real theParameter, const gp_XY & thePoint, const gp_XY & theD1);
+		 Geom2dConvert_PPoint(const double theParameter, const gp_XY & thePoint, const gp_XY & theD1);
 
 		/****** Geom2dConvert_PPoint::Geom2dConvert_PPoint ******/
-		/****** md5 signature: 8ca77da2aff18500051b72ae40ec0e35 ******/
+		/****** md5 signature: 195cf2572702d0094455195b82b2b6ef ******/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-theParameter: float
+theParameter: double
 theAdaptor: Adaptor2d_Curve2d
 
 Return
@@ -851,7 +838,7 @@ Description
 -----------
 Constructor.
 ") Geom2dConvert_PPoint;
-		 Geom2dConvert_PPoint(const Standard_Real theParameter, const Adaptor2d_Curve2d & theAdaptor);
+		 Geom2dConvert_PPoint(const double theParameter, const Adaptor2d_Curve2d & theAdaptor);
 
 		/****** Geom2dConvert_PPoint::D1 ******/
 		/****** md5 signature: 363c5218bb91ef153804430b7f543e9a ******/
@@ -867,7 +854,7 @@ Query the first derivatives.
 		const gp_XY D1();
 
 		/****** Geom2dConvert_PPoint::Dist ******/
-		/****** md5 signature: fbe08e9f862a6f276bcef10b706a490f ******/
+		/****** md5 signature: eabbba68d29d58b5f0a49e835f349d03 ******/
 		%feature("compactdefaultargs") Dist;
 		%feature("autodoc", "
 Parameters
@@ -876,26 +863,26 @@ theOth: Geom2dConvert_PPoint
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Compute the distance between two 2d points.
 ") Dist;
-		Standard_Real Dist(const Geom2dConvert_PPoint & theOth);
+		double Dist(const Geom2dConvert_PPoint & theOth);
 
 		/****** Geom2dConvert_PPoint::Parameter ******/
-		/****** md5 signature: 5d3812215998dd4ad07d1ceb370aa6b8 ******/
+		/****** md5 signature: c0b45528e8667a6c37e49cb918397f85 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Query the parameter value.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Geom2dConvert_PPoint::Point ******/
 		/****** md5 signature: 0d3e0ab14ec3cab7ff6e03fe3e9807fc ******/

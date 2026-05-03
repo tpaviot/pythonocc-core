@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dadaptor.htm
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -60,7 +59,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dadaptor.htm
 %import Geom2d.i
 %import gp.i
 %import GeomAbs.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -123,6 +121,9 @@ Inherited from GHCurve. Provides a curve handled by reference. Creates a 2d curv
 ****************************/
 class Geom2dAdaptor_Curve : public Adaptor2d_Curve2d {
 	public:
+		class OffsetData {};
+		class BezierData {};
+		class BSplineData {};
 		/****** Geom2dAdaptor_Curve::Geom2dAdaptor_Curve ******/
 		/****** md5 signature: 2791dbc26639b96186559159a2815b29 ******/
 		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
@@ -155,14 +156,14 @@ No available documentation.
 		 Geom2dAdaptor_Curve(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** Geom2dAdaptor_Curve::Geom2dAdaptor_Curve ******/
-		/****** md5 signature: 68f15594f006f79ed7f5d7313c319ebe ******/
+		/****** md5 signature: 883231d9704d3927e0f4eac81ff44436 ******/
 		%feature("compactdefaultargs") Geom2dAdaptor_Curve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
-UFirst: float
-ULast: float
+UFirst: double
+ULast: double
 
 Return
 -------
@@ -172,10 +173,10 @@ Description
 -----------
 Standard_ConstructionError is raised if Ufirst>Ulast.
 ") Geom2dAdaptor_Curve;
-		 Geom2dAdaptor_Curve(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real UFirst, const Standard_Real ULast);
+		 Geom2dAdaptor_Curve(const opencascade::handle<Geom2d_Curve> & C, const double UFirst, const double ULast);
 
 		/****** Geom2dAdaptor_Curve::BSpline ******/
-		/****** md5 signature: 9439c331c4f14f299277aa5a4ff16cec ******/
+		/****** md5 signature: c66055916af14afb8911637fc5e277d6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -188,7 +189,7 @@ No available documentation.
 		opencascade::handle<Geom2d_BSplineCurve> BSpline();
 
 		/****** Geom2dAdaptor_Curve::Bezier ******/
-		/****** md5 signature: cabcbe9e94c679dcfc142972b20ab60b ******/
+		/****** md5 signature: 9e5f9691bdf3aa713aceb92eb8809a74 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -201,7 +202,7 @@ No available documentation.
 		opencascade::handle<Geom2d_BezierCurve> Bezier();
 
 		/****** Geom2dAdaptor_Curve::Circle ******/
-		/****** md5 signature: 031880777795958cc554fa5739cb3a95 ******/
+		/****** md5 signature: c57212f487cf777aef6ef0b0153393bf ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -214,7 +215,7 @@ No available documentation.
 		gp_Circ2d Circle();
 
 		/****** Geom2dAdaptor_Curve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -240,12 +241,12 @@ No available documentation.
 		const opencascade::handle<Geom2d_Curve> & Curve();
 
 		/****** Geom2dAdaptor_Curve::D0 ******/
-		/****** md5 signature: 01a5234aae6db090351bac35b3718fd9 ******/
+		/****** md5 signature: 6f45a8b08ade8dd52e09584562dc5332 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 
 Return
@@ -256,15 +257,15 @@ Description
 -----------
 Computes the point of parameter U.
 ") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
+		void D0(const double U, gp_Pnt2d & P);
 
 		/****** Geom2dAdaptor_Curve::D1 ******/
-		/****** md5 signature: 79a293d0b91ab6d1359881075119fb56 ******/
+		/****** md5 signature: 87c5240df7639bbbdab4d1bd70b5898e ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -276,15 +277,15 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		void D1(const double U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** Geom2dAdaptor_Curve::D2 ******/
-		/****** md5 signature: acc8c0955596bb0bf809102736ad1124 ******/
+		/****** md5 signature: bf9a53dbe16bbf85f544b32f5cf16e36 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -297,15 +298,15 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		void D2(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** Geom2dAdaptor_Curve::D3 ******/
-		/****** md5 signature: 28315b7efe2f6c64fe9497aa5c5ddaf6 ******/
+		/****** md5 signature: f4a61cf187a413c2a82957e6e28e1f3f ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -319,15 +320,15 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		void D3(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** Geom2dAdaptor_Curve::DN ******/
-		/****** md5 signature: a05d2f76912764cef5ac7bb40ebda3d7 ******/
+		/****** md5 signature: ec367a5db47c5f3a0a290b7042a1d328 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 N: int
 
 Return
@@ -338,10 +339,10 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
+		gp_Vec2d DN(const double U, const int N);
 
 		/****** Geom2dAdaptor_Curve::Degree ******/
-		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
+		/****** md5 signature: 6a99b61f429058b67ffcdab561815cfb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -351,10 +352,10 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** Geom2dAdaptor_Curve::Ellipse ******/
-		/****** md5 signature: 57e9088d9546fb79032102b676477b62 ******/
+		/****** md5 signature: 578557aedadd7b6c95c4b18a4591b27d ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -366,21 +367,112 @@ No available documentation.
 ") Ellipse;
 		gp_Elips2d Ellipse();
 
+		/****** Geom2dAdaptor_Curve::EvalD0 ******/
+		/****** md5 signature: b07cd748eddf6e0df7e4fd6caa7c8201 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt2d
+
+Description
+-----------
+Point evaluation. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt2d EvalD0(const double theU);
+
+		/****** Geom2dAdaptor_Curve::EvalD1 ******/
+		/****** md5 signature: 9104e355947ea115c0231a3a87d11221 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom2d_Curve::ResD1
+
+Description
+-----------
+D1 evaluation. Raises an exception on failure.
+") EvalD1;
+		Geom2d_Curve::ResD1 EvalD1(const double theU);
+
+		/****** Geom2dAdaptor_Curve::EvalD2 ******/
+		/****** md5 signature: b382affd6326cd0871f40798216c9c9c ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom2d_Curve::ResD2
+
+Description
+-----------
+D2 evaluation. Raises an exception on failure.
+") EvalD2;
+		Geom2d_Curve::ResD2 EvalD2(const double theU);
+
+		/****** Geom2dAdaptor_Curve::EvalD3 ******/
+		/****** md5 signature: 177b3318e54886217155d3083ed2a4cd ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom2d_Curve::ResD3
+
+Description
+-----------
+D3 evaluation. Raises an exception on failure.
+") EvalD3;
+		Geom2d_Curve::ResD3 EvalD3(const double theU);
+
+		/****** Geom2dAdaptor_Curve::EvalDN ******/
+		/****** md5 signature: c6c1ab6b04d6fb982032f5f9874faa7e ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec2d
+
+Description
+-----------
+DN evaluation. Raises an exception on failure.
+") EvalDN;
+		gp_Vec2d EvalDN(const double theU, const int theN);
+
 		/****** Geom2dAdaptor_Curve::FirstParameter ******/
-		/****** md5 signature: 93c381754667baab23468a195644e410 ******/
+		/****** md5 signature: dc78d2d12bb932c87a4c14a5c9c0d19a ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Geom2dAdaptor_Curve::GetType ******/
-		/****** md5 signature: eaef05bb051ab4b74eda73aca8930d16 ******/
+		/****** md5 signature: e8702ba2a9b67d9bf1a9f4972b71ea7a ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -390,10 +482,10 @@ Description
 -----------
 No available documentation.
 ") GetType;
-		virtual GeomAbs_CurveType GetType();
+		GeomAbs_CurveType GetType();
 
 		/****** Geom2dAdaptor_Curve::Hyperbola ******/
-		/****** md5 signature: 951e1971b5974627f011740e5c4c9ecb ******/
+		/****** md5 signature: 76c8d95163d451200f916b4c08eee717 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -406,12 +498,12 @@ No available documentation.
 		gp_Hypr2d Hyperbola();
 
 		/****** Geom2dAdaptor_Curve::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -422,10 +514,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** Geom2dAdaptor_Curve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -435,10 +527,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Geom2dAdaptor_Curve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -448,10 +540,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Geom2dAdaptor_Curve::IsRational ******/
-		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
+		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -461,23 +553,23 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** Geom2dAdaptor_Curve::LastParameter ******/
-		/****** md5 signature: a2893a92f9c4af09acb0cd59d959d964 ******/
+		/****** md5 signature: 9b49916bc4bf24d69a406e677dabf205 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Geom2dAdaptor_Curve::Line ******/
-		/****** md5 signature: d41344e9c3febf8a7347a9e78e837373 ******/
+		/****** md5 signature: e6ff57a9b7126056447e1c0678038f9b ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -508,14 +600,14 @@ No available documentation.
 		void Load(const opencascade::handle<Geom2d_Curve> & theCurve);
 
 		/****** Geom2dAdaptor_Curve::Load ******/
-		/****** md5 signature: 7a0e04bf8c70800ef741c293e6f1853c ******/
+		/****** md5 signature: cb8b86809f33e85a387f32071daa1a4e ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: Geom2d_Curve
-theUFirst: float
-theULast: float
+theUFirst: double
+theULast: double
 
 Return
 -------
@@ -523,12 +615,12 @@ None
 
 Description
 -----------
-Standard_ConstructionError is raised if theUFirst>theULast.
+Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion().
 ") Load;
-		void Load(const opencascade::handle<Geom2d_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
+		void Load(const opencascade::handle<Geom2d_Curve> & theCurve, const double theUFirst, const double theULast);
 
 		/****** Geom2dAdaptor_Curve::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -543,10 +635,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** Geom2dAdaptor_Curve::NbKnots ******/
-		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
+		/****** md5 signature: d6bff4f2a244b781cf7c609ff1cddaf1 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -556,10 +648,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** Geom2dAdaptor_Curve::NbPoles ******/
-		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
+		/****** md5 signature: bdb1092e5fcaeae9c85a332311d7f069 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -569,10 +661,10 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** Geom2dAdaptor_Curve::NbSamples ******/
-		/****** md5 signature: b50a2e2af8c6f92fd1d1eba428d764af ******/
+		/****** md5 signature: dc632c7fd15de24b8e2e4237602286bc ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "Return
 -------
@@ -582,10 +674,10 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		virtual Standard_Integer NbSamples();
+		int NbSamples();
 
 		/****** Geom2dAdaptor_Curve::Parabola ******/
-		/****** md5 signature: 38729705f952495154cecf7cf9964648 ******/
+		/****** md5 signature: 22adbf7e85ee0cd0635ddfca26c2c71c ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -598,17 +690,17 @@ No available documentation.
 		gp_Parab2d Parabola();
 
 		/****** Geom2dAdaptor_Curve::Period ******/
-		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** Geom2dAdaptor_Curve::Reset ******/
 		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
@@ -624,25 +716,25 @@ Reset currently loaded curve (undone Load()).
 		void Reset();
 
 		/****** Geom2dAdaptor_Curve::Resolution ******/
-		/****** md5 signature: 1c5e768832095b165fef245795734120 ******/
+		/****** md5 signature: fb64d8a8b458d9297a7de9ad4f19a689 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-Ruv: float
+Ruv: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the parametric resolution.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real Ruv);
+		double Resolution(const double Ruv);
 
 		/****** Geom2dAdaptor_Curve::ShallowCopy ******/
-		/****** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ******/
+		/****** md5 signature: 8a61349d8b017265b9f1e5017ac6a907 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -652,17 +744,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
+		opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 		/****** Geom2dAdaptor_Curve::Trim ******/
-		/****** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ******/
+		/****** md5 signature: 0abd427093454f28661226e589511811 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -672,15 +764,15 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor2d_Curve2d> Trim(const double First, const double Last, const double Tol);
 
 		/****** Geom2dAdaptor_Curve::Value ******/
-		/****** md5 signature: 91dcf5c5229f25c64d3a714347090b29 ******/
+		/****** md5 signature: 049c400b0a6ebb06019643af51cd7670 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -690,7 +782,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		gp_Pnt2d Value(const Standard_Real U);
+		gp_Pnt2d Value(const double U);
 
 };
 

@@ -6,8 +6,7 @@ from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 from OCC.Core.Geom2d import *
 from OCC.Core.math import *
-from OCC.Core.TColgp import *
-from OCC.Core.TColStd import *
+
 
 class FairCurve_AnalysisCode(IntEnum):
     FairCurve_OK: int = ...
@@ -21,12 +20,8 @@ FairCurve_InfiniteSliding = FairCurve_AnalysisCode.FairCurve_InfiniteSliding
 FairCurve_NullHeight = FairCurve_AnalysisCode.FairCurve_NullHeight
 
 class FairCurve_Batten:
-    def __init__(
-        self, P1: gp_Pnt2d, P2: gp_Pnt2d, Height: float, Slope: Optional[float] = 0
-    ) -> None: ...
-    def Compute(
-        self, NbIterations: Optional[int] = 50, Tolerance: Optional[float] = 1.0e-3
-    ) -> Tuple[bool, FairCurve_AnalysisCode]: ...
+    def __init__(self, P1: gp_Pnt2d, P2: gp_Pnt2d, Height: float, Slope: Optional[float] = 0) -> None: ...
+    def Compute(self, NbIterations: Optional[int] = 50, Tolerance: Optional[float] = 1.0e-3) -> Tuple[bool, FairCurve_AnalysisCode]: ...
     def Curve(self) -> Geom2d_BSplineCurve: ...
     def Dump(self) -> str: ...
     def GetAngle1(self) -> float: ...
@@ -56,7 +51,6 @@ class FairCurve_BattenLaw(math_Function):
     def SetHeigth(self, Heigth: float) -> None: ...
     def SetSliding(self, Sliding: float) -> None: ...
     def SetSlope(self, Slope: float) -> None: ...
-    def Value(self, T: float) -> Tuple[bool, float]: ...
 
 class FairCurve_DistributionOfEnergy(math_FunctionSet):
     def NbEquations(self) -> int: ...
@@ -66,118 +60,36 @@ class FairCurve_DistributionOfEnergy(math_FunctionSet):
 class FairCurve_Energy(math_MultipleVarFunctionWithHessian):
     def Gradient(self, X: math_Vector, G: math_Vector) -> bool: ...
     def NbVariables(self) -> int: ...
-    def Poles(self) -> TColgp_HArray1OfPnt2d: ...
-    def Value(self, X: math_Vector) -> Tuple[bool, float]: ...
-    @overload
-    def Values(self, X: math_Vector, G: math_Vector) -> Tuple[bool, float]: ...
-    @overload
-    def Values(
-        self, X: math_Vector, G: math_Vector, H: math_Matrix
-    ) -> Tuple[bool, float]: ...
+    def Poles(self) -> False: ...
     def Variable(self, X: math_Vector) -> bool: ...
 
 class FairCurve_Newton(math_NewtonMinimum):
-    def __init__(
-        self,
-        theFunction: math_MultipleVarFunctionWithHessian,
-        theSpatialTolerance: Optional[float] = 1.0e-7,
-        theCriteriumTolerance: Optional[float] = 1.0e-7,
-        theNbIterations: Optional[int] = 40,
-        theConvexity: Optional[float] = 1.0e-6,
-        theWithSingularity: Optional[bool] = True,
-    ) -> None: ...
+    def __init__(self, theFunction: math_MultipleVarFunctionWithHessian, theSpatialTolerance: Optional[float] = 1.0e-7, theCriteriumTolerance: Optional[float] = 1.0e-7, theNbIterations: Optional[int] = 40, theConvexity: Optional[float] = 1.0e-6, theWithSingularity: Optional[bool] = true) -> None: ...
     def IsConverged(self) -> bool: ...
 
 class FairCurve_DistributionOfJerk(FairCurve_DistributionOfEnergy):
-    def __init__(
-        self,
-        BSplOrder: int,
-        FlatKnots: TColStd_HArray1OfReal,
-        Poles: TColgp_HArray1OfPnt2d,
-        DerivativeOrder: int,
-        Law: FairCurve_BattenLaw,
-        NbValAux: Optional[int] = 0,
-    ) -> None: ...
     def Value(self, X: math_Vector, F: math_Vector) -> bool: ...
 
 class FairCurve_DistributionOfSagging(FairCurve_DistributionOfEnergy):
-    def __init__(
-        self,
-        BSplOrder: int,
-        FlatKnots: TColStd_HArray1OfReal,
-        Poles: TColgp_HArray1OfPnt2d,
-        DerivativeOrder: int,
-        Law: FairCurve_BattenLaw,
-        NbValAux: Optional[int] = 0,
-    ) -> None: ...
     def Value(self, X: math_Vector, F: math_Vector) -> bool: ...
 
 class FairCurve_DistributionOfTension(FairCurve_DistributionOfEnergy):
-    def __init__(
-        self,
-        BSplOrder: int,
-        FlatKnots: TColStd_HArray1OfReal,
-        Poles: TColgp_HArray1OfPnt2d,
-        DerivativeOrder: int,
-        LengthSliding: float,
-        Law: FairCurve_BattenLaw,
-        NbValAux: Optional[int] = 0,
-        Uniform: Optional[bool] = False,
-    ) -> None: ...
     def SetLengthSliding(self, LengthSliding: float) -> None: ...
     def Value(self, X: math_Vector, F: math_Vector) -> bool: ...
 
 class FairCurve_EnergyOfBatten(FairCurve_Energy):
-    def __init__(
-        self,
-        BSplOrder: int,
-        FlatKnots: TColStd_HArray1OfReal,
-        Poles: TColgp_HArray1OfPnt2d,
-        ContrOrder1: int,
-        ContrOrder2: int,
-        Law: FairCurve_BattenLaw,
-        LengthSliding: float,
-        FreeSliding: Optional[bool] = True,
-        Angle1: Optional[float] = 0,
-        Angle2: Optional[float] = 0,
-    ) -> None: ...
     def LengthSliding(self) -> float: ...
     def Status(self) -> FairCurve_AnalysisCode: ...
     def Variable(self, X: math_Vector) -> bool: ...
 
 class FairCurve_EnergyOfMVC(FairCurve_Energy):
-    def __init__(
-        self,
-        BSplOrder: int,
-        FlatKnots: TColStd_HArray1OfReal,
-        Poles: TColgp_HArray1OfPnt2d,
-        ContrOrder1: int,
-        ContrOrder2: int,
-        Law: FairCurve_BattenLaw,
-        PhysicalRatio: float,
-        LengthSliding: float,
-        FreeSliding: Optional[bool] = True,
-        Angle1: Optional[float] = 0,
-        Angle2: Optional[float] = 0,
-        Curvature1: Optional[float] = 0,
-        Curvature2: Optional[float] = 0,
-    ) -> None: ...
     def LengthSliding(self) -> float: ...
     def Status(self) -> FairCurve_AnalysisCode: ...
     def Variable(self, X: math_Vector) -> bool: ...
 
 class FairCurve_MinimalVariation(FairCurve_Batten):
-    def __init__(
-        self,
-        P1: gp_Pnt2d,
-        P2: gp_Pnt2d,
-        Heigth: float,
-        Slope: Optional[float] = 0,
-        PhysicalRatio: Optional[float] = 0,
-    ) -> None: ...
-    def Compute(
-        self, NbIterations: Optional[int] = 50, Tolerance: Optional[float] = 1.0e-3
-    ) -> Tuple[bool, FairCurve_AnalysisCode]: ...
+    def __init__(self, P1: gp_Pnt2d, P2: gp_Pnt2d, Heigth: float, Slope: Optional[float] = 0, PhysicalRatio: Optional[float] = 0) -> None: ...
+    def Compute(self, NbIterations: Optional[int] = 50, Tolerance: Optional[float] = 1.0e-3) -> Tuple[bool, FairCurve_AnalysisCode]: ...
     def Dump(self) -> str: ...
     def GetCurvature1(self) -> float: ...
     def GetCurvature2(self) -> float: ...
@@ -189,3 +101,4 @@ class FairCurve_MinimalVariation(FairCurve_Batten):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

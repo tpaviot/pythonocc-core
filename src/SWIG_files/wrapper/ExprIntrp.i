@@ -84,12 +84,6 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = ExprIntrp_ListIteratorOfStackOfGeneralExpression(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(ExprIntrp_StackOfGeneralRelation) NCollection_List<opencascade::handle<Expr_GeneralRelation>>;
@@ -98,12 +92,6 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = ExprIntrp_ListIteratorOfStackOfGeneralRelation(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */

@@ -27,11 +27,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDataStd_ChildNodeIterator.hxx>
 #include<TDataStd_Comment.hxx>
 #include<TDataStd_Current.hxx>
-#include<TDataStd_DataMapIteratorOfDataMapOfStringByte.hxx>
-#include<TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger.hxx>
-#include<TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal.hxx>
-#include<TDataStd_DataMapIteratorOfDataMapOfStringReal.hxx>
-#include<TDataStd_DataMapIteratorOfDataMapOfStringString.hxx>
 #include<TDataStd_DataMapOfStringByte.hxx>
 #include<TDataStd_DataMapOfStringHArray1OfInteger.hxx>
 #include<TDataStd_DataMapOfStringHArray1OfReal.hxx>
@@ -60,8 +55,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDataStd_IntegerArray.hxx>
 #include<TDataStd_IntegerList.hxx>
 #include<TDataStd_LabelArray1.hxx>
-#include<TDataStd_ListIteratorOfListOfByte.hxx>
-#include<TDataStd_ListIteratorOfListOfExtendedString.hxx>
 #include<TDataStd_ListOfByte.hxx>
 #include<TDataStd_ListOfExtendedString.hxx>
 #include<TDataStd_Name.hxx>

@@ -50,9 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepds.html
 #include<TopOpeBRepTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Geom2d_module.hxx>
-#include<TopTools_module.hxx>
 #include<gp_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColgp_module.hxx>
 #include<Adaptor2d_module.hxx>
@@ -81,9 +79,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepds.html
 %import TopOpeBRepTool.i
 %import TopoDS.i
 %import Geom2d.i
-%import TopTools.i
 %import gp.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -176,42 +172,37 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 %wrap_handle(TopOpeBRepDS_SurfaceCurveInterference)
 %wrap_handle(TopOpeBRepDS_EdgeVertexInterference)
 %wrap_handle(TopOpeBRepDS_FaceEdgeInterference)
-%wrap_handle(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
 /* end handles declaration */
 
 /* templates */
-%template(TopOpeBRepDS_DataMapOfCheckStatus) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CheckStatus>;
-
-%extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CheckStatus> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_DataMapOfCheckStatus::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(TopOpeBRepDS_DataMapOfIntegerListOfInterference) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_ListOfInterference>;
-
-%extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_ListOfInterference> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_DataMapOfIntegerListOfInterference::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
+%ignore NCollection_DataMap<int,TopOpeBRepDS_CheckStatus>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_CheckStatus>::KeyValues;
+%template(TopOpeBRepDS_DataMapOfCheckStatus) NCollection_DataMap<int,TopOpeBRepDS_CheckStatus>;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::KeyValues;
+%template(TopOpeBRepDS_DataMapOfIntegerListOfInterference) NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>;
+%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::Items;
+%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfInterferenceListOfInterference) NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>;
+%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopoDS_Shape>::Items;
+%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopoDS_Shape>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfInterferenceShape) NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopoDS_Shape>;
+%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepDS_ListOfShapeOn1State,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepDS_ListOfShapeOn1State,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State) NCollection_DataMap<TopoDS_Shape,TopOpeBRepDS_ListOfShapeOn1State,TopTools_ShapeMapHasher>;
+%ignore NCollection_DataMap<TopoDS_Shape,TopAbs_State,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TopAbs_State,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfShapeState) NCollection_DataMap<TopoDS_Shape,TopAbs_State,TopTools_ShapeMapHasher>;
-%template(TopOpeBRepDS_DoubleMapOfIntegerShape) NCollection_DoubleMap<Standard_Integer,TopoDS_Shape,NCollection_DefaultHasher<int>,TopTools_ShapeMapHasher>;
+%template(TopOpeBRepDS_DoubleMapOfIntegerShape) NCollection_DoubleMap<int,TopoDS_Shape,NCollection_DefaultHasher<int>,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeWithState,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeWithState,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeWithState,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeWithState,TopTools_ShapeMapHasher>::Contained;
 %template(TopOpeBRepDS_IndexedDataMapOfShapeWithState) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeWithState,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_Point,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_Point,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_Point,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_Point,TopTools_ShapeMapHasher>::Contained;
 %template(TopOpeBRepDS_IndexedDataMapOfVertexPoint) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_Point,TopTools_ShapeMapHasher>;
 %template(TopOpeBRepDS_ListIteratorOfListOfInterference) NCollection_TListIterator<opencascade::handle<TopOpeBRepDS_Interference>>;
 %template(TopOpeBRepDS_ListOfInterference) NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>;
@@ -220,101 +211,61 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TopOpeBRepDS_ListIteratorOfListOfInterference(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
-%template(TopOpeBRepDS_MapOfCurve) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CurveData>;
-
-%extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_CurveData> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_MapOfCurve::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(TopOpeBRepDS_MapOfIntegerShapeData) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_ShapeData>;
-
-%extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_ShapeData> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_MapOfIntegerShapeData::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(TopOpeBRepDS_MapOfPoint) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_PointData>;
-
-%extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_PointData> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_MapOfPoint::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
+%ignore NCollection_DataMap<int,TopOpeBRepDS_CurveData>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_CurveData>::KeyValues;
+%template(TopOpeBRepDS_MapOfCurve) NCollection_DataMap<int,TopOpeBRepDS_CurveData>;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_ShapeData>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_ShapeData>::KeyValues;
+%template(TopOpeBRepDS_MapOfIntegerShapeData) NCollection_DataMap<int,TopOpeBRepDS_ShapeData>;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_PointData>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_PointData>::KeyValues;
+%template(TopOpeBRepDS_MapOfPoint) NCollection_DataMap<int,TopOpeBRepDS_PointData>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::Contained;
 %template(TopOpeBRepDS_MapOfShapeData) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>;
-%template(TopOpeBRepDS_MapOfSurface) NCollection_DataMap<Standard_Integer,TopOpeBRepDS_SurfaceData>;
-
-%extend NCollection_DataMap<Standard_Integer,TopOpeBRepDS_SurfaceData> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_MapOfSurface::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
+%ignore NCollection_DataMap<int,TopOpeBRepDS_SurfaceData>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_SurfaceData>::KeyValues;
+%template(TopOpeBRepDS_MapOfSurface) NCollection_DataMap<int,TopOpeBRepDS_SurfaceData>;
+%ignore NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopOpeBRepDS_ShapeSurface) NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference> TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CheckStatus>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ListOfInterference>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference;
+typedef NCollection_DataMap<int, TopOpeBRepDS_CheckStatus>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus;
+typedef NCollection_DataMap<int, TopOpeBRepDS_ListOfInterference>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference;
 typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference;
 typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopoDS_Shape>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape;
 typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State;
 typedef NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CurveData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfCurve;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ShapeData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_PointData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfPoint;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_SurfaceData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfSurface;
+typedef NCollection_DataMap<int, TopOpeBRepDS_CurveData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfCurve;
+typedef NCollection_DataMap<int, TopOpeBRepDS_ShapeData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData;
+typedef NCollection_DataMap<int, TopOpeBRepDS_PointData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfPoint;
+typedef NCollection_DataMap<int, TopOpeBRepDS_SurfaceData>::Iterator TopOpeBRepDS_DataMapIteratorOfMapOfSurface;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Geom_Surface>, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DataMapIteratorOfShapeSurface;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CheckStatus> TopOpeBRepDS_DataMapOfCheckStatus;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ListOfInterference> TopOpeBRepDS_DataMapOfIntegerListOfInterference;
+typedef NCollection_DataMap<int, TopOpeBRepDS_CheckStatus> TopOpeBRepDS_DataMapOfCheckStatus;
+typedef NCollection_DataMap<int, TopOpeBRepDS_ListOfInterference> TopOpeBRepDS_DataMapOfIntegerListOfInterference;
 typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopOpeBRepDS_ListOfInterference> TopOpeBRepDS_DataMapOfInterferenceListOfInterference;
 typedef NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>, TopoDS_Shape> TopOpeBRepDS_DataMapOfInterferenceShape;
 typedef NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State;
 typedef NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> TopOpeBRepDS_DataMapOfShapeState;
-typedef TopOpeBRepDS_DoubleMapOfIntegerShape::Iterator TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
-typedef NCollection_DoubleMap<Standard_Integer, TopoDS_Shape, NCollection_DefaultHasher<int>, TopTools_ShapeMapHasher> TopOpeBRepDS_DoubleMapOfIntegerShape;
+typedef NCollection_DoubleMap<int, TopoDS_Shape, NCollection_DefaultHasher<int>, TopTools_ShapeMapHasher>::Iterator TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape;
+typedef NCollection_DoubleMap<int, TopoDS_Shape, NCollection_DefaultHasher<int>, TopTools_ShapeMapHasher> TopOpeBRepDS_DoubleMapOfIntegerShape;
+typedef NCollection_HArray1<TopOpeBRepDS_DataMapOfIntegerListOfInterference> TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> TopOpeBRepDS_IndexedDataMapOfShapeWithState;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_Point, TopTools_ShapeMapHasher> TopOpeBRepDS_IndexedDataMapOfVertexPoint;
 typedef NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>::Iterator TopOpeBRepDS_ListIteratorOfListOfInterference;
 typedef NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> TopOpeBRepDS_ListOfInterference;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_CurveData> TopOpeBRepDS_MapOfCurve;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_ShapeData> TopOpeBRepDS_MapOfIntegerShapeData;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_PointData> TopOpeBRepDS_MapOfPoint;
+typedef NCollection_DataMap<int, TopOpeBRepDS_CurveData> TopOpeBRepDS_MapOfCurve;
+typedef NCollection_DataMap<int, TopOpeBRepDS_ShapeData> TopOpeBRepDS_MapOfIntegerShapeData;
+typedef NCollection_DataMap<int, TopOpeBRepDS_PointData> TopOpeBRepDS_MapOfPoint;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeData, TopTools_ShapeMapHasher> TopOpeBRepDS_MapOfShapeData;
-typedef NCollection_DataMap<Standard_Integer, TopOpeBRepDS_SurfaceData> TopOpeBRepDS_MapOfSurface;
-typedef TopOpeBRepDS_DataStructure * TopOpeBRepDS_PDataStructure;
+typedef NCollection_DataMap<int, TopOpeBRepDS_SurfaceData> TopOpeBRepDS_MapOfSurface;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Geom_Surface>, TopTools_ShapeMapHasher> TopOpeBRepDS_ShapeSurface;
 /* end typedefs declaration */
 
@@ -325,7 +276,7 @@ typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Geom_Surface>, Top
 class TopOpeBRepDS {
 	public:
 		/****** TopOpeBRepDS::IsGeometry ******/
-		/****** md5 signature: 242801ca13f95697674c13c65cc7edb4 ******/
+		/****** md5 signature: cfdcf92a43598a1fc6e88319ab2a0862 ******/
 		%feature("compactdefaultargs") IsGeometry;
 		%feature("autodoc", "
 Parameters
@@ -340,10 +291,10 @@ Description
 -----------
 No available documentation.
 ") IsGeometry;
-		static Standard_Boolean IsGeometry(const TopOpeBRepDS_Kind K);
+		static bool IsGeometry(const TopOpeBRepDS_Kind K);
 
 		/****** TopOpeBRepDS::IsTopology ******/
-		/****** md5 signature: cfdfdf915ba934546693fb38ce9166d5 ******/
+		/****** md5 signature: 5ae58c444d7627fc81949211cca84e8f ******/
 		%feature("compactdefaultargs") IsTopology;
 		%feature("autodoc", "
 Parameters
@@ -358,7 +309,7 @@ Description
 -----------
 No available documentation.
 ") IsTopology;
-		static Standard_Boolean IsTopology(const TopOpeBRepDS_Kind K);
+		static bool IsTopology(const TopOpeBRepDS_Kind K);
 
 		/****** TopOpeBRepDS::KindToShape ******/
 		/****** md5 signature: 4f93bc69579bee1b877edfea8f0ccbd9 ******/
@@ -415,7 +366,7 @@ No available documentation.
 		static Standard_OStream & Print(const TopOpeBRepDS_Kind K, std::ostream &OutValue);
 
 		/****** TopOpeBRepDS::Print ******/
-		/****** md5 signature: 5d0e4822af3cf499d0d29a1903417a5b ******/
+		/****** md5 signature: c2c17f1cc64f7d4a8b197e412800ba2d ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -433,10 +384,10 @@ Description
 -----------
 No available documentation.
 ") Print;
-		static Standard_OStream & Print(const TopOpeBRepDS_Kind K, const Standard_Integer I, std::ostream &OutValue, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
+		static Standard_OStream & Print(const TopOpeBRepDS_Kind K, const int I, std::ostream &OutValue, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
 
 		/****** TopOpeBRepDS::Print ******/
-		/****** md5 signature: 4d591b5485e1695cd7750b55883e11d9 ******/
+		/****** md5 signature: 17ec0c62a9d3401e3e13ad5683c33c07 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -452,7 +403,7 @@ Description
 -----------
 No available documentation.
 ") Print;
-		static Standard_OStream & Print(const TopAbs_ShapeEnum T, const Standard_Integer I, std::ostream &OutValue);
+		static Standard_OStream & Print(const TopAbs_ShapeEnum T, const int I, std::ostream &OutValue);
 
 		/****** TopOpeBRepDS::Print ******/
 		/****** md5 signature: a5f6b6cef25348e934b1a293f0918f9b ******/
@@ -509,7 +460,7 @@ Description
 		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K);
 
 		/****** TopOpeBRepDS::SPrint ******/
-		/****** md5 signature: b21c57041921895593da7320e6faa822 ******/
+		/****** md5 signature: f621632fcd5e33db13021f0ee7cc586a ******/
 		%feature("compactdefaultargs") SPrint;
 		%feature("autodoc", "
 Parameters
@@ -527,7 +478,7 @@ Description
 -----------
 S1(<K>,<I>)S2.
 ") SPrint;
-		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K, const Standard_Integer I, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
+		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K, const int I, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
 
 		/****** TopOpeBRepDS::SPrint ******/
 		/****** md5 signature: bfdba83544259d7a60db9ed56c313822 ******/
@@ -548,7 +499,7 @@ No available documentation.
 		static TCollection_AsciiString SPrint(const TopAbs_ShapeEnum T);
 
 		/****** TopOpeBRepDS::SPrint ******/
-		/****** md5 signature: 97f7d073e84efbd0be15cd8afad13777 ******/
+		/****** md5 signature: 4c1affc0e03e541d8e16a159119a0119 ******/
 		%feature("compactdefaultargs") SPrint;
 		%feature("autodoc", "
 Parameters
@@ -564,7 +515,7 @@ Description
 -----------
 (<T>,<I>).
 ") SPrint;
-		static TCollection_AsciiString SPrint(const TopAbs_ShapeEnum T, const Standard_Integer I);
+		static TCollection_AsciiString SPrint(const TopAbs_ShapeEnum T, const int I);
 
 		/****** TopOpeBRepDS::SPrint ******/
 		/****** md5 signature: b2e9c40b17d2064b1d342271b06bfc31 ******/
@@ -648,7 +599,7 @@ No available documentation.
 		 TopOpeBRepDS_Association();
 
 		/****** TopOpeBRepDS_Association::AreAssociated ******/
-		/****** md5 signature: 4a754e21e44b132fa50843d27ed967f9 ******/
+		/****** md5 signature: 5574deb63e05019e25a8d6fd8f667b66 ******/
 		%feature("compactdefaultargs") AreAssociated;
 		%feature("autodoc", "
 Parameters
@@ -664,7 +615,7 @@ Description
 -----------
 No available documentation.
 ") AreAssociated;
-		Standard_Boolean AreAssociated(const opencascade::handle<TopOpeBRepDS_Interference> & I, const opencascade::handle<TopOpeBRepDS_Interference> & K);
+		bool AreAssociated(const opencascade::handle<TopOpeBRepDS_Interference> & I, const opencascade::handle<TopOpeBRepDS_Interference> & K);
 
 		/****** TopOpeBRepDS_Association::Associate ******/
 		/****** md5 signature: de02326dc5a740c1244a4872cd74bc4e ******/
@@ -686,13 +637,13 @@ No available documentation.
 		void Associate(const opencascade::handle<TopOpeBRepDS_Interference> & I, const opencascade::handle<TopOpeBRepDS_Interference> & K);
 
 		/****** TopOpeBRepDS_Association::Associate ******/
-		/****** md5 signature: ddadbf71778dfb11dc9a17555bea8682 ******/
+		/****** md5 signature: 6c7ef770424c0b064d68277b15adbc1a ******/
 		%feature("compactdefaultargs") Associate;
 		%feature("autodoc", "
 Parameters
 ----------
 I: TopOpeBRepDS_Interference
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -702,10 +653,10 @@ Description
 -----------
 No available documentation.
 ") Associate;
-		void Associate(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopOpeBRepDS_ListOfInterference & LI);
+		void Associate(const opencascade::handle<TopOpeBRepDS_Interference> & I, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_Association::Associated ******/
-		/****** md5 signature: 9ac2e79662be6672ebdb208f9c40ead4 ******/
+		/****** md5 signature: 55026c3b148b0eccddd3d57c0a65730e ******/
 		%feature("compactdefaultargs") Associated;
 		%feature("autodoc", "
 Parameters
@@ -714,16 +665,16 @@ I: TopOpeBRepDS_Interference
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") Associated;
-		TopOpeBRepDS_ListOfInterference & Associated(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & Associated(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_Association::HasAssociation ******/
-		/****** md5 signature: ba92e7cf09f82761c90ea4da8e4203d8 ******/
+		/****** md5 signature: 405939b5afdfdac219ad3e37039134b6 ******/
 		%feature("compactdefaultargs") HasAssociation;
 		%feature("autodoc", "
 Parameters
@@ -738,7 +689,7 @@ Description
 -----------
 No available documentation.
 ") HasAssociation;
-		Standard_Boolean HasAssociation(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		bool HasAssociation(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 };
 
@@ -921,7 +872,7 @@ No available documentation.
 		void AddWireEdge(TopoDS_Shape & W, const TopoDS_Shape & E);
 
 		/****** TopOpeBRepDS_BuildTool::ApproxCurves ******/
-		/****** md5 signature: 5a40deaa5f89cd7a7ffdabb637762813 ******/
+		/****** md5 signature: ab117f1fe56c0125cf2c91d3a346cc0d ******/
 		%feature("compactdefaultargs") ApproxCurves;
 		%feature("autodoc", "
 Parameters
@@ -941,7 +892,7 @@ No available documentation.
 		void ApproxCurves(const TopOpeBRepDS_Curve & C, TopoDS_Edge & E, Standard_Integer &OutValue, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_BuildTool::Approximation ******/
-		/****** md5 signature: 8db59148951ab23443121333db4394c0 ******/
+		/****** md5 signature: 39b8174b8b89cccdd0203f7d6dc32342 ******/
 		%feature("compactdefaultargs") Approximation;
 		%feature("autodoc", "Return
 -------
@@ -951,7 +902,7 @@ Description
 -----------
 No available documentation.
 ") Approximation;
-		Standard_Boolean Approximation();
+		bool Approximation();
 
 		/****** TopOpeBRepDS_BuildTool::ChangeGeomTool ******/
 		/****** md5 signature: ec177d99f76bb4ed7e436f53436adf03 ******/
@@ -967,7 +918,7 @@ No available documentation.
 		TopOpeBRepTool_GeomTool & ChangeGeomTool();
 
 		/****** TopOpeBRepDS_BuildTool::Closed ******/
-		/****** md5 signature: 82202c2c3ebbcceda8be892e8098526a ******/
+		/****** md5 signature: f7e8c8213851789d8b29ea834f21e851 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -983,10 +934,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		void Closed(TopoDS_Shape & S, const Standard_Boolean B);
+		void Closed(TopoDS_Shape & S, const bool B);
 
 		/****** TopOpeBRepDS_BuildTool::ComputePCurves ******/
-		/****** md5 signature: cd0135f7e8be2cce26eee4970435a681 ******/
+		/****** md5 signature: 7e0c66a2b24fd4da5e9c08b2dffd30e1 ******/
 		%feature("compactdefaultargs") ComputePCurves;
 		%feature("autodoc", "
 Parameters
@@ -1006,7 +957,7 @@ Description
 -----------
 No available documentation.
 ") ComputePCurves;
-		void ComputePCurves(const TopOpeBRepDS_Curve & C, TopoDS_Edge & E, TopOpeBRepDS_Curve & newC, const Standard_Boolean CompPC1, const Standard_Boolean CompPC2, const Standard_Boolean CompC3D);
+		void ComputePCurves(const TopOpeBRepDS_Curve & C, TopoDS_Edge & E, TopOpeBRepDS_Curve & newC, const bool CompPC1, const bool CompPC2, const bool CompC3D);
 
 		/****** TopOpeBRepDS_BuildTool::CopyEdge ******/
 		/****** md5 signature: 06d20ad51d28fd85815a9bc8a46a8a7c ******/
@@ -1047,14 +998,14 @@ Make a face <Fou> with the surface of the face <Fin>.
 		void CopyFace(const TopoDS_Shape & Fin, TopoDS_Shape & Fou);
 
 		/****** TopOpeBRepDS_BuildTool::Curve3D ******/
-		/****** md5 signature: 69d4a367443c8988c91467ed755a8c70 ******/
+		/****** md5 signature: 469b96a8ff1fec91c4c0365b288ceb5c ******/
 		%feature("compactdefaultargs") Curve3D;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
 C: Geom_Curve
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1064,7 +1015,7 @@ Description
 -----------
 Sets the curve <C> for the edge <E>.
 ") Curve3D;
-		void Curve3D(TopoDS_Shape & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
+		void Curve3D(TopoDS_Shape & E, const opencascade::handle<Geom_Curve> & C, const double Tol);
 
 		/****** TopOpeBRepDS_BuildTool::GetGeomTool ******/
 		/****** md5 signature: 6b33ef83138f718a68f748ea1ea7a345 ******/
@@ -1080,7 +1031,7 @@ No available documentation.
 		const TopOpeBRepTool_GeomTool & GetGeomTool();
 
 		/****** TopOpeBRepDS_BuildTool::GetOrientedEdgeVertices ******/
-		/****** md5 signature: 8a058faad507a36784264f0791a5e956 ******/
+		/****** md5 signature: 0caabdd7d3c1b8fd7c837c484dfe61c2 ******/
 		%feature("compactdefaultargs") GetOrientedEdgeVertices;
 		%feature("autodoc", "
 Parameters
@@ -1091,8 +1042,8 @@ Vmax: TopoDS_Vertex
 
 Return
 -------
-Parmin: float
-Parmax: float
+Parmin: double
+Parmax: double
 
 Description
 -----------
@@ -1140,14 +1091,14 @@ No available documentation.
 		void MakeEdge(TopoDS_Shape & E, const TopOpeBRepDS_Curve & C, const TopOpeBRepDS_DataStructure & DS);
 
 		/****** TopOpeBRepDS_BuildTool::MakeEdge ******/
-		/****** md5 signature: ee710c2759cd467c4c7abf745b9a0bc2 ******/
+		/****** md5 signature: 37ba894b6197d0a9f974b36c818d51e2 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
 C: Geom_Curve
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1157,7 +1108,7 @@ Description
 -----------
 No available documentation.
 ") MakeEdge;
-		void MakeEdge(TopoDS_Shape & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
+		void MakeEdge(TopoDS_Shape & E, const opencascade::handle<Geom_Curve> & C, const double Tol);
 
 		/****** TopOpeBRepDS_BuildTool::MakeEdge ******/
 		/****** md5 signature: 4cda8d3e9a1d3660cb358bf543f1397c ******/
@@ -1307,7 +1258,7 @@ No available documentation.
 		TopAbs_Orientation Orientation(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_BuildTool::OverWrite ******/
-		/****** md5 signature: bec7518940a71167e19b7d3b8acfd144 ******/
+		/****** md5 signature: 844cd5e61813505c0f672ad23ee1c20e ******/
 		%feature("compactdefaultargs") OverWrite;
 		%feature("autodoc", "Return
 -------
@@ -1317,10 +1268,10 @@ Description
 -----------
 No available documentation.
 ") OverWrite;
-		Standard_Boolean OverWrite();
+		bool OverWrite();
 
 		/****** TopOpeBRepDS_BuildTool::OverWrite ******/
-		/****** md5 signature: b6e6e846fd6cd1de15cd79ebec13906a ******/
+		/****** md5 signature: 98bb788a273583a113d4cedc5b1b9003 ******/
 		%feature("compactdefaultargs") OverWrite;
 		%feature("autodoc", "
 Parameters
@@ -1335,7 +1286,7 @@ Description
 -----------
 No available documentation.
 ") OverWrite;
-		void OverWrite(const Standard_Boolean O);
+		void OverWrite(const bool O);
 
 		/****** TopOpeBRepDS_BuildTool::PCurve ******/
 		/****** md5 signature: 6f1565ac048eede1654fba5b2c1082b8 ******/
@@ -1379,14 +1330,14 @@ No available documentation.
 		void PCurve(TopoDS_Shape & F, TopoDS_Shape & E, const TopOpeBRepDS_Curve & CDS, const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** TopOpeBRepDS_BuildTool::Parameter ******/
-		/****** md5 signature: ccf33a9c2da9d479a0183b51984856e7 ******/
+		/****** md5 signature: 5c041d92862d7aa6a12c52296033cc51 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
 V: TopoDS_Shape
-P: float
+P: double
 
 Return
 -------
@@ -1396,7 +1347,7 @@ Description
 -----------
 Sets the parameter <P> for the vertex <V> on the edge <E>.
 ") Parameter;
-		void Parameter(const TopoDS_Shape & E, const TopoDS_Shape & V, const Standard_Real P);
+		void Parameter(const TopoDS_Shape & E, const TopoDS_Shape & V, const double P);
 
 		/****** TopOpeBRepDS_BuildTool::Parameter ******/
 		/****** md5 signature: dfdc2af0b69aff19501456742113f6e3 ******/
@@ -1419,7 +1370,7 @@ Compute the parameter of the vertex <V>, supported by the edge <E>, on the curve
 		void Parameter(const TopOpeBRepDS_Curve & C, TopoDS_Shape & E, TopoDS_Shape & V);
 
 		/****** TopOpeBRepDS_BuildTool::PutPCurves ******/
-		/****** md5 signature: 68b0e14caf774f2149574f0121231899 ******/
+		/****** md5 signature: fa3d43ca44daedc5364fb59e824318a8 ******/
 		%feature("compactdefaultargs") PutPCurves;
 		%feature("autodoc", "
 Parameters
@@ -1437,17 +1388,17 @@ Description
 -----------
 No available documentation.
 ") PutPCurves;
-		void PutPCurves(const TopOpeBRepDS_Curve & newC, TopoDS_Edge & E, const Standard_Boolean CompPC1, const Standard_Boolean CompPC2);
+		void PutPCurves(const TopOpeBRepDS_Curve & newC, TopoDS_Edge & E, const bool CompPC1, const bool CompPC2);
 
 		/****** TopOpeBRepDS_BuildTool::Range ******/
-		/****** md5 signature: 91ddc155afc8aa9023e379809ec9e767 ******/
+		/****** md5 signature: af54e54aedb9c7cd1c61efbf6f392d06 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
-first: float
-last: float
+first: double
+last: double
 
 Return
 -------
@@ -1457,10 +1408,10 @@ Description
 -----------
 Sets the range of edge <E>.
 ") Range;
-		void Range(const TopoDS_Shape & E, const Standard_Real first, const Standard_Real last);
+		void Range(const TopoDS_Shape & E, const double first, const double last);
 
 		/****** TopOpeBRepDS_BuildTool::RecomputeCurves ******/
-		/****** md5 signature: d2268d16d9f1e23969ee64454d1f91c1 ******/
+		/****** md5 signature: d308aea533af187b4da7fe42d05be2a6 ******/
 		%feature("compactdefaultargs") RecomputeCurves;
 		%feature("autodoc", "
 Parameters
@@ -1481,7 +1432,7 @@ No available documentation.
 		void RecomputeCurves(const TopOpeBRepDS_Curve & C, const TopoDS_Edge & oldE, TopoDS_Edge & E, Standard_Integer &OutValue, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_BuildTool::Translate ******/
-		/****** md5 signature: 7d0fd2105504278affaad5695ece8dc9 ******/
+		/****** md5 signature: 104487bc04ec587ccaaf0fb982df7feb ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "Return
 -------
@@ -1491,10 +1442,10 @@ Description
 -----------
 No available documentation.
 ") Translate;
-		Standard_Boolean Translate();
+		bool Translate();
 
 		/****** TopOpeBRepDS_BuildTool::Translate ******/
-		/****** md5 signature: c67ac8924df1d8b8f15727247fb6fc77 ******/
+		/****** md5 signature: f304990c90bc5a55db6b7487682b11ef ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
@@ -1509,7 +1460,7 @@ Description
 -----------
 No available documentation.
 ") Translate;
-		void Translate(const Standard_Boolean T);
+		void Translate(const bool T);
 
 		/****** TopOpeBRepDS_BuildTool::UpdateEdge ******/
 		/****** md5 signature: f8436c0d941de854d2f6a6738e02eb32 ******/
@@ -1531,7 +1482,7 @@ Sets the range of edge <Eou> from <Ein> only when <Ein> has a closed geometry.
 		void UpdateEdge(const TopoDS_Shape & Ein, TopoDS_Shape & Eou);
 
 		/****** TopOpeBRepDS_BuildTool::UpdateEdgeCurveTol ******/
-		/****** md5 signature: 938d401b4d706f3534dc3ddc7a87ac22 ******/
+		/****** md5 signature: 872cffa8318d3bdcb9936d16249d27e4 ******/
 		%feature("compactdefaultargs") UpdateEdgeCurveTol;
 		%feature("autodoc", "
 Parameters
@@ -1540,21 +1491,21 @@ F1: TopoDS_Face
 F2: TopoDS_Face
 E: TopoDS_Edge
 C3Dnew: Geom_Curve
-tol3d: float
-tol2d1: float
-tol2d2: float
+tol3d: double
+tol2d1: double
+tol2d2: double
 
 Return
 -------
-newtol: float
-newparmin: float
-newparmax: float
+newtol: double
+newparmin: double
+newparmax: double
 
 Description
 -----------
 No available documentation.
 ") UpdateEdgeCurveTol;
-		void UpdateEdgeCurveTol(const TopoDS_Face & F1, const TopoDS_Face & F2, TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C3Dnew, const Standard_Real tol3d, const Standard_Real tol2d1, const Standard_Real tol2d2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void UpdateEdgeCurveTol(const TopoDS_Face & F1, const TopoDS_Face & F2, TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C3Dnew, const double tol3d, const double tol2d1, const double tol2d2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** TopOpeBRepDS_BuildTool::UpdateSurface ******/
 		/****** md5 signature: e2b70bce5d5cbd079befa501a27c0de3 ******/
@@ -1654,7 +1605,7 @@ No available documentation.
 		opencascade::handle<TopOpeBRepDS_HDataStructure> & ChangeHDS();
 
 		/****** TopOpeBRepDS_Check::CheckDS ******/
-		/****** md5 signature: 7c4d02a9a20320516669bd3c7d333560 ******/
+		/****** md5 signature: 7b6624cf6cdc34463e98f584602d67d7 ******/
 		%feature("compactdefaultargs") CheckDS;
 		%feature("autodoc", "
 Parameters
@@ -1670,15 +1621,15 @@ Description
 -----------
 Verifie que le ieme element de la DS existe, et pour un K de type topologique, verifie qu'il est du bon type (VERTEX, EDGE, WIRE, FACE, SHELL ou SOLID).
 ") CheckDS;
-		Standard_Boolean CheckDS(const Standard_Integer i, const TopOpeBRepDS_Kind K);
+		bool CheckDS(const int i, const TopOpeBRepDS_Kind K);
 
 		/****** TopOpeBRepDS_Check::CheckShapes ******/
-		/****** md5 signature: a6bcd6a1ec62e019edc8f3555be4d4ff ******/
+		/****** md5 signature: 2da7af3666c73f483eaa09bf067e2340 ******/
 		%feature("compactdefaultargs") CheckShapes;
 		%feature("autodoc", "
 Parameters
 ----------
-LS: TopTools_ListOfShape
+LS: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1688,10 +1639,10 @@ Description
 -----------
 Verifie que les Shapes existent bien dans la DS Utile pour les Shapes SameDomain si la liste est vide, renvoie vrai.
 ") CheckShapes;
-		Standard_Boolean CheckShapes(const TopTools_ListOfShape & LS);
+		bool CheckShapes(const NCollection_List<TopoDS_Shape> & LS);
 
 		/****** TopOpeBRepDS_Check::ChkIntg ******/
-		/****** md5 signature: 91cb7fe5fcb74707a99a7630b852c120 ******/
+		/****** md5 signature: 3990b4b9db667c54e616c270eec7ca18 ******/
 		%feature("compactdefaultargs") ChkIntg;
 		%feature("autodoc", "Return
 -------
@@ -1701,15 +1652,15 @@ Description
 -----------
 Check integrition of DS.
 ") ChkIntg;
-		Standard_Boolean ChkIntg();
+		bool ChkIntg();
 
 		/****** TopOpeBRepDS_Check::ChkIntgInterf ******/
-		/****** md5 signature: 3b02951ab93530d6690357693ef8598e ******/
+		/****** md5 signature: e672070f209cddedbd2fbf65151f8aec ******/
 		%feature("compactdefaultargs") ChkIntgInterf;
 		%feature("autodoc", "
 Parameters
 ----------
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -1719,10 +1670,10 @@ Description
 -----------
 Check integrition of interferences (les supports et les geometries de LI).
 ") ChkIntgInterf;
-		Standard_Boolean ChkIntgInterf(const TopOpeBRepDS_ListOfInterference & LI);
+		bool ChkIntgInterf(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_Check::ChkIntgSamDom ******/
-		/****** md5 signature: 54a9ae2f5bbbf5013dded9d16a77e089 ******/
+		/****** md5 signature: 0274cce6a1732517a76db3bc1f1d6ea6 ******/
 		%feature("compactdefaultargs") ChkIntgSamDom;
 		%feature("autodoc", "Return
 -------
@@ -1732,7 +1683,7 @@ Description
 -----------
 Check integrition des champs SameDomain de la DS.
 ") ChkIntgSamDom;
-		Standard_Boolean ChkIntgSamDom();
+		bool ChkIntgSamDom();
 
 		/****** TopOpeBRepDS_Check::HDS ******/
 		/****** md5 signature: 06b167d233b9790bcd0a135ca06a4a10 ******/
@@ -1748,7 +1699,7 @@ No available documentation.
 		const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS();
 
 		/****** TopOpeBRepDS_Check::OneVertexOnPnt ******/
-		/****** md5 signature: 85b7f7c95f7658ca07c0dcb4b73a83d3 ******/
+		/****** md5 signature: bcb21d427034f8e239f84380810cec5c ******/
 		%feature("compactdefaultargs") OneVertexOnPnt;
 		%feature("autodoc", "Return
 -------
@@ -1758,7 +1709,7 @@ Description
 -----------
 Verifie que les Vertex non SameDomain sont bien nonSameDomain, que les vertex sameDomain sont bien SameDomain, que les Points sont non confondus ni entre eux, ni avec des Vertex.
 ") OneVertexOnPnt;
-		Standard_Boolean OneVertexOnPnt();
+		bool OneVertexOnPnt();
 
 		/****** TopOpeBRepDS_Check::Print ******/
 		/****** md5 signature: 086af6ff7c70fce4047a52ee56d84e30 ******/
@@ -1814,7 +1765,7 @@ Prints the name of CheckStatus <stat> as a String.
 		Standard_OStream & PrintShape(const TopAbs_ShapeEnum SE, std::ostream &OutValue);
 
 		/****** TopOpeBRepDS_Check::PrintShape ******/
-		/****** md5 signature: d41a7aa820a314e867e8755240d58f62 ******/
+		/****** md5 signature: ca20ca2be037ebe7f4507d39b3272195 ******/
 		%feature("compactdefaultargs") PrintShape;
 		%feature("autodoc", "
 Parameters
@@ -1829,7 +1780,7 @@ Description
 -----------
 Prints the name of CheckStatus <stat> as a String.
 ") PrintShape;
-		Standard_OStream & PrintShape(const Standard_Integer index, std::ostream &OutValue);
+		Standard_OStream & PrintShape(const int index, std::ostream &OutValue);
 
 };
 
@@ -1861,14 +1812,14 @@ No available documentation.
 		 TopOpeBRepDS_Curve();
 
 		/****** TopOpeBRepDS_Curve::TopOpeBRepDS_Curve ******/
-		/****** md5 signature: de3714b8f28f90d36c1dc9586e5289b3 ******/
+		/****** md5 signature: 79ba3293009e58f80c98b1cf1af45ede ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_Curve;
 		%feature("autodoc", "
 Parameters
 ----------
 P: Geom_Curve
-T: float
-IsWalk: bool (optional, default to Standard_False)
+T: double
+IsWalk: bool (optional, default to false)
 
 Return
 -------
@@ -1878,7 +1829,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_Curve;
-		 TopOpeBRepDS_Curve(const opencascade::handle<Geom_Curve> & P, const Standard_Real T, const Standard_Boolean IsWalk = Standard_False);
+		 TopOpeBRepDS_Curve(const opencascade::handle<Geom_Curve> & P, const double T, const bool IsWalk = false);
 
 		/****** TopOpeBRepDS_Curve::ChangeCurve ******/
 		/****** md5 signature: e819346faf86cc2bea5f869865af9ed2 ******/
@@ -1894,7 +1845,7 @@ No available documentation.
 		opencascade::handle<Geom_Curve> & ChangeCurve();
 
 		/****** TopOpeBRepDS_Curve::ChangeDSIndex ******/
-		/****** md5 signature: 4165a2881b0bdbc8f8e733871dfb4516 ******/
+		/****** md5 signature: 453450fb8c11fe7077fe5077e1e6a0f5 ******/
 		%feature("compactdefaultargs") ChangeDSIndex;
 		%feature("autodoc", "
 Parameters
@@ -1909,10 +1860,10 @@ Description
 -----------
 No available documentation.
 ") ChangeDSIndex;
-		void ChangeDSIndex(const Standard_Integer I);
+		void ChangeDSIndex(const int I);
 
 		/****** TopOpeBRepDS_Curve::ChangeIsWalk ******/
-		/****** md5 signature: a85870a545a55473e88e53b335d20638 ******/
+		/****** md5 signature: 4ddf011c809282b8540e987d53390aa8 ******/
 		%feature("compactdefaultargs") ChangeIsWalk;
 		%feature("autodoc", "
 Parameters
@@ -1927,10 +1878,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIsWalk;
-		void ChangeIsWalk(const Standard_Boolean B);
+		void ChangeIsWalk(const bool B);
 
 		/****** TopOpeBRepDS_Curve::ChangeKeep ******/
-		/****** md5 signature: 75f379b6bb874b0da2db245ffe678874 ******/
+		/****** md5 signature: 20e29780a2e40b1f09b5056bbe67f8ac ******/
 		%feature("compactdefaultargs") ChangeKeep;
 		%feature("autodoc", "
 Parameters
@@ -1945,10 +1896,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeep;
-		void ChangeKeep(const Standard_Boolean B);
+		void ChangeKeep(const bool B);
 
 		/****** TopOpeBRepDS_Curve::ChangeMother ******/
-		/****** md5 signature: c4cfccc9364c313425bc77805633396f ******/
+		/****** md5 signature: 4bdeba25ca72db000127744036469f90 ******/
 		%feature("compactdefaultargs") ChangeMother;
 		%feature("autodoc", "
 Parameters
@@ -1963,7 +1914,7 @@ Description
 -----------
 No available documentation.
 ") ChangeMother;
-		void ChangeMother(const Standard_Integer I);
+		void ChangeMother(const int I);
 
 		/****** TopOpeBRepDS_Curve::ChangeShape1 ******/
 		/****** md5 signature: d2743f9a46939c6cada33939dd36f3f1 ******/
@@ -2005,13 +1956,13 @@ No available documentation.
 		const opencascade::handle<Geom_Curve> & Curve();
 
 		/****** TopOpeBRepDS_Curve::Curve ******/
-		/****** md5 signature: e59e8fad0818900531492d1df21d07a6 ******/
+		/****** md5 signature: ab08e86e8bdf8bb10bfa6a69169321a5 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
 ----------
 C3D: Geom_Curve
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2021,7 +1972,7 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		void Curve(const opencascade::handle<Geom_Curve> & C3D, const Standard_Real Tol);
+		void Curve(const opencascade::handle<Geom_Curve> & C3D, const double Tol);
 
 		/****** TopOpeBRepDS_Curve::Curve1 ******/
 		/****** md5 signature: a306dd9436c220a3a90cc21c2a19c805 ******/
@@ -2086,7 +2037,7 @@ No available documentation.
 		void Curve2(const opencascade::handle<Geom2d_Curve> & PC2);
 
 		/****** TopOpeBRepDS_Curve::DSIndex ******/
-		/****** md5 signature: 0c1df20e7fc560a5a6aeb68151a347a2 ******/
+		/****** md5 signature: 058a6208b5bd8ca7b438b792e71d6d62 ******/
 		%feature("compactdefaultargs") DSIndex;
 		%feature("autodoc", "Return
 -------
@@ -2096,16 +2047,16 @@ Description
 -----------
 No available documentation.
 ") DSIndex;
-		Standard_Integer DSIndex();
+		int DSIndex();
 
 		/****** TopOpeBRepDS_Curve::DefineCurve ******/
-		/****** md5 signature: 725838433163328cad89da4ad0eab9b6 ******/
+		/****** md5 signature: 6e23c67c185f5081ac73a6d2343de689 ******/
 		%feature("compactdefaultargs") DefineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 P: Geom_Curve
-T: float
+T: double
 IsWalk: bool
 
 Return
@@ -2116,16 +2067,16 @@ Description
 -----------
 No available documentation.
 ") DefineCurve;
-		void DefineCurve(const opencascade::handle<Geom_Curve> & P, const Standard_Real T, const Standard_Boolean IsWalk);
+		void DefineCurve(const opencascade::handle<Geom_Curve> & P, const double T, const bool IsWalk);
 
 		/****** TopOpeBRepDS_Curve::GetSCI ******/
-		/****** md5 signature: 5fd9c24ea42e179b86dcfbcfccd1820b ******/
+		/****** md5 signature: 454f78e3b81d7b2fcaebb2d730b6dc2b ******/
 		%feature("compactdefaultargs") GetSCI;
 		%feature("autodoc", "
 Parameters
 ----------
-I1: TopOpeBRepDS_Interference
-I2: TopOpeBRepDS_Interference
+theI1: TopOpeBRepDS_Interference
+theI2: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -2135,7 +2086,7 @@ Description
 -----------
 No available documentation.
 ") GetSCI;
-		void GetSCI(opencascade::handle<TopOpeBRepDS_Interference> & I1, opencascade::handle<TopOpeBRepDS_Interference> & I2);
+		void GetSCI(opencascade::handle<TopOpeBRepDS_Interference> & theI1, opencascade::handle<TopOpeBRepDS_Interference> & theI2);
 
 		/****** TopOpeBRepDS_Curve::GetSCI1 ******/
 		/****** md5 signature: e188e03baf96eae1d28e151ff60ea317 ******/
@@ -2146,7 +2097,8 @@ opencascade::handle<TopOpeBRepDS_Interference>
 
 Description
 -----------
-No available documentation.
+Returns the first surface-curve interference. 
+Return: handle to the first interference.
 ") GetSCI1;
 		const opencascade::handle<TopOpeBRepDS_Interference> & GetSCI1();
 
@@ -2159,7 +2111,8 @@ opencascade::handle<TopOpeBRepDS_Interference>
 
 Description
 -----------
-No available documentation.
+Returns the second surface-curve interference. 
+Return: handle to the second interference.
 ") GetSCI2;
 		const opencascade::handle<TopOpeBRepDS_Interference> & GetSCI2();
 
@@ -2183,7 +2136,7 @@ No available documentation.
 		void GetShapes(TopoDS_Shape & S1, TopoDS_Shape & S2);
 
 		/****** TopOpeBRepDS_Curve::IsWalk ******/
-		/****** md5 signature: 66ccf6ca8d750aa2bca9b1b1c0ea87f9 ******/
+		/****** md5 signature: 4f940e3d444fa3363de226c191720ead ******/
 		%feature("compactdefaultargs") IsWalk;
 		%feature("autodoc", "Return
 -------
@@ -2193,10 +2146,10 @@ Description
 -----------
 No available documentation.
 ") IsWalk;
-		Standard_Boolean IsWalk();
+		bool IsWalk();
 
 		/****** TopOpeBRepDS_Curve::Keep ******/
-		/****** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ******/
+		/****** md5 signature: e8f73f4184955de8bddc5b09318bbab8 ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "Return
 -------
@@ -2206,10 +2159,10 @@ Description
 -----------
 No available documentation.
 ") Keep;
-		Standard_Boolean Keep();
+		bool Keep();
 
 		/****** TopOpeBRepDS_Curve::Mother ******/
-		/****** md5 signature: d14db32971971ed33042eb9000386c14 ******/
+		/****** md5 signature: 845da36d5bbd9f1614bc17a9a9c4f619 ******/
 		%feature("compactdefaultargs") Mother;
 		%feature("autodoc", "Return
 -------
@@ -2219,10 +2172,10 @@ Description
 -----------
 No available documentation.
 ") Mother;
-		Standard_Integer Mother();
+		int Mother();
 
 		/****** TopOpeBRepDS_Curve::Range ******/
-		/****** md5 signature: 399e1aef232e5044dddcdca6c1014dd9 ******/
+		/****** md5 signature: b9a5b3b4cc8874f3c744ba3d3e791856 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -2230,23 +2183,23 @@ Parameters
 
 Return
 -------
-First: float
-Last: float
+First: double
+Last: double
 
 Description
 -----------
 No available documentation.
 ") Range;
-		Standard_Boolean Range(Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Range(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** TopOpeBRepDS_Curve::SetRange ******/
-		/****** md5 signature: 4a19c7b6bd2369f897cb3fd2e6cdf6dd ******/
+		/****** md5 signature: 526f31214adc678145a22614b0117fd4 ******/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
+First: double
+Last: double
 
 Return
 -------
@@ -2256,7 +2209,7 @@ Description
 -----------
 No available documentation.
 ") SetRange;
-		void SetRange(const Standard_Real First, const Standard_Real Last);
+		void SetRange(const double First, const double Last);
 
 		/****** TopOpeBRepDS_Curve::SetSCI ******/
 		/****** md5 signature: 423e8469585bf5f37f922a228def0989 ******/
@@ -2323,12 +2276,12 @@ No available documentation.
 		const TopoDS_Shape Shape2();
 
 		/****** TopOpeBRepDS_Curve::Tolerance ******/
-		/****** md5 signature: e925b87131cc380a2e6cb497cb7384fa ******/
+		/****** md5 signature: c1c7212071b7d95bf782fac6a420fcbb ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-tol: float
+tol: double
 
 Return
 -------
@@ -2338,20 +2291,20 @@ Description
 -----------
 Update the tolerance.
 ") Tolerance;
-		void Tolerance(const Standard_Real tol);
+		void Tolerance(const double tol);
 
 		/****** TopOpeBRepDS_Curve::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -2381,13 +2334,13 @@ No available documentation.
 		 TopOpeBRepDS_CurveExplorer();
 
 		/****** TopOpeBRepDS_CurveExplorer::TopOpeBRepDS_CurveExplorer ******/
-		/****** md5 signature: c0701acb0605e0e56ff447b1f7203a30 ******/
+		/****** md5 signature: 9dacdef271ba94881167d94e3c65c693 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_CurveExplorer;
 		%feature("autodoc", "
 Parameters
 ----------
 DS: TopOpeBRepDS_DataStructure
-FindOnlyKeep: bool (optional, default to Standard_True)
+FindOnlyKeep: bool (optional, default to true)
 
 Return
 -------
@@ -2397,7 +2350,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_CurveExplorer;
-		 TopOpeBRepDS_CurveExplorer(const TopOpeBRepDS_DataStructure & DS, const Standard_Boolean FindOnlyKeep = Standard_True);
+		 TopOpeBRepDS_CurveExplorer(const TopOpeBRepDS_DataStructure & DS, const bool FindOnlyKeep = true);
 
 		/****** TopOpeBRepDS_CurveExplorer::Curve ******/
 		/****** md5 signature: ad855b410817599ecd2040b239b5eadd ******/
@@ -2413,7 +2366,7 @@ No available documentation.
 		TopOpeBRepDS_Curve Curve();
 
 		/****** TopOpeBRepDS_CurveExplorer::Curve ******/
-		/****** md5 signature: f53cb61e2b022b236aa70ffbec11ac31 ******/
+		/****** md5 signature: 8f68387be06709e7244d27d95219e433 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -2428,10 +2381,10 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		TopOpeBRepDS_Curve Curve(const Standard_Integer I);
+		TopOpeBRepDS_Curve Curve(const int I);
 
 		/****** TopOpeBRepDS_CurveExplorer::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -2441,16 +2394,16 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** TopOpeBRepDS_CurveExplorer::Init ******/
-		/****** md5 signature: 3cb53884a0dedff3ad42657c8c345e44 ******/
+		/****** md5 signature: 3df60a2c10c57d419d76e9d2d1ed5ff5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 DS: TopOpeBRepDS_DataStructure
-FindOnlyKeep: bool (optional, default to Standard_True)
+FindOnlyKeep: bool (optional, default to true)
 
 Return
 -------
@@ -2460,10 +2413,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopOpeBRepDS_DataStructure & DS, const Standard_Boolean FindOnlyKeep = Standard_True);
+		void Init(const TopOpeBRepDS_DataStructure & DS, const bool FindOnlyKeep = true);
 
 		/****** TopOpeBRepDS_CurveExplorer::IsCurve ******/
-		/****** md5 signature: f8407e8ba0b908da25f9e9bcca8ca235 ******/
+		/****** md5 signature: 8fcb7c16114accee1c999ee81d86ecb4 ******/
 		%feature("compactdefaultargs") IsCurve;
 		%feature("autodoc", "
 Parameters
@@ -2478,10 +2431,10 @@ Description
 -----------
 No available documentation.
 ") IsCurve;
-		Standard_Boolean IsCurve(const Standard_Integer I);
+		bool IsCurve(const int I);
 
 		/****** TopOpeBRepDS_CurveExplorer::IsCurveKeep ******/
-		/****** md5 signature: b0656fe012bcbf6c193065206be8cfb3 ******/
+		/****** md5 signature: ac119712c0fdb3acd646f5e0b597b99a ******/
 		%feature("compactdefaultargs") IsCurveKeep;
 		%feature("autodoc", "
 Parameters
@@ -2496,10 +2449,10 @@ Description
 -----------
 No available documentation.
 ") IsCurveKeep;
-		Standard_Boolean IsCurveKeep(const Standard_Integer I);
+		bool IsCurveKeep(const int I);
 
 		/****** TopOpeBRepDS_CurveExplorer::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2509,10 +2462,10 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepDS_CurveExplorer::NbCurve ******/
-		/****** md5 signature: d4b093ea6471975ce0cb92d8164116b0 ******/
+		/****** md5 signature: a84cfb6d7590a28b52a9f401a7fcb02d ******/
 		%feature("compactdefaultargs") NbCurve;
 		%feature("autodoc", "Return
 -------
@@ -2522,7 +2475,7 @@ Description
 -----------
 No available documentation.
 ") NbCurve;
-		Standard_Integer NbCurve();
+		int NbCurve();
 
 		/****** TopOpeBRepDS_CurveExplorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -2565,7 +2518,7 @@ No available documentation.
 		 TopOpeBRepDS_DataStructure();
 
 		/****** TopOpeBRepDS_DataStructure::AddCurve ******/
-		/****** md5 signature: 536314d052ec1598a85b19cda8574d31 ******/
+		/****** md5 signature: 4371c3e7aecf30971726d5e673296423 ******/
 		%feature("compactdefaultargs") AddCurve;
 		%feature("autodoc", "
 Parameters
@@ -2580,10 +2533,10 @@ Description
 -----------
 Insert a new curve. Returns the index.
 ") AddCurve;
-		Standard_Integer AddCurve(const TopOpeBRepDS_Curve & S);
+		int AddCurve(const TopOpeBRepDS_Curve & S);
 
 		/****** TopOpeBRepDS_DataStructure::AddPoint ******/
-		/****** md5 signature: 1660691bbbd5a65d53b37c5d419c78ad ******/
+		/****** md5 signature: c4664a56d090ac2ddbd8b26f41ab565d ******/
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "
 Parameters
@@ -2598,10 +2551,10 @@ Description
 -----------
 Insert a new point. Returns the index.
 ") AddPoint;
-		Standard_Integer AddPoint(const TopOpeBRepDS_Point & PDS);
+		int AddPoint(const TopOpeBRepDS_Point & PDS);
 
 		/****** TopOpeBRepDS_DataStructure::AddPointSS ******/
-		/****** md5 signature: 6a6ba9e50dc4ec7e303372f43a3b7b49 ******/
+		/****** md5 signature: eabfa9ba503afb96e75edb32198f3b67 ******/
 		%feature("compactdefaultargs") AddPointSS;
 		%feature("autodoc", "
 Parameters
@@ -2618,10 +2571,10 @@ Description
 -----------
 Insert a new point. Returns the index.
 ") AddPointSS;
-		Standard_Integer AddPointSS(const TopOpeBRepDS_Point & PDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
+		int AddPointSS(const TopOpeBRepDS_Point & PDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****** TopOpeBRepDS_DataStructure::AddSectionEdge ******/
-		/****** md5 signature: 135b445dae35ce43de370fa83956831e ******/
+		/****** md5 signature: ae4aca237423aab72efcba88cd90710a ******/
 		%feature("compactdefaultargs") AddSectionEdge;
 		%feature("autodoc", "
 Parameters
@@ -2636,10 +2589,10 @@ Description
 -----------
 No available documentation.
 ") AddSectionEdge;
-		Standard_Integer AddSectionEdge(const TopoDS_Edge & E);
+		int AddSectionEdge(const TopoDS_Edge & E);
 
 		/****** TopOpeBRepDS_DataStructure::AddShape ******/
-		/****** md5 signature: c451987d8af344862bcedcb55c2e67f4 ******/
+		/****** md5 signature: 5b7fed51d3997d5ec624416b2dc337dc ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -2654,10 +2607,10 @@ Description
 -----------
 Insert a shape S. Returns the index.
 ") AddShape;
-		Standard_Integer AddShape(const TopoDS_Shape & S);
+		int AddShape(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::AddShape ******/
-		/****** md5 signature: 3a33334e90bbe52b73a13279c2a7055b ******/
+		/****** md5 signature: 19402ed8d4ea531d120b9db1f281a969 ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -2673,7 +2626,7 @@ Description
 -----------
 Insert a shape S which ancestor is I = 1 or 2. Returns the index.
 ") AddShape;
-		Standard_Integer AddShape(const TopoDS_Shape & S, const Standard_Integer I);
+		int AddShape(const TopoDS_Shape & S, const int I);
 
 		/****** TopOpeBRepDS_DataStructure::AddShapeInterference ******/
 		/****** md5 signature: dfbd0f55c4b90afe9386f234f93b2caf ******/
@@ -2714,7 +2667,7 @@ No available documentation.
 		void AddShapeSameDomain(const TopoDS_Shape & S, const TopoDS_Shape & SSD);
 
 		/****** TopOpeBRepDS_DataStructure::AddSurface ******/
-		/****** md5 signature: 78c0f2ee65d21c911a1531c2c7d8e876 ******/
+		/****** md5 signature: d8b77994640cc30d089aba5477884b56 ******/
 		%feature("compactdefaultargs") AddSurface;
 		%feature("autodoc", "
 Parameters
@@ -2729,10 +2682,10 @@ Description
 -----------
 Insert a new surface. Returns the index.
 ") AddSurface;
-		Standard_Integer AddSurface(const TopOpeBRepDS_Surface & S);
+		int AddSurface(const TopOpeBRepDS_Surface & S);
 
 		/****** TopOpeBRepDS_DataStructure::AncestorRank ******/
-		/****** md5 signature: 9208946994ce6724866cfa51407fc62f ******/
+		/****** md5 signature: 0e96a08703e284f51d69ad0f8fc98ebb ******/
 		%feature("compactdefaultargs") AncestorRank;
 		%feature("autodoc", "
 Parameters
@@ -2747,10 +2700,10 @@ Description
 -----------
 No available documentation.
 ") AncestorRank;
-		Standard_Integer AncestorRank(const Standard_Integer I);
+		int AncestorRank(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::AncestorRank ******/
-		/****** md5 signature: 962427246486e1c68d80c16027531953 ******/
+		/****** md5 signature: 21d48a0b671f41622417b14a672e98df ******/
 		%feature("compactdefaultargs") AncestorRank;
 		%feature("autodoc", "
 Parameters
@@ -2765,10 +2718,10 @@ Description
 -----------
 No available documentation.
 ") AncestorRank;
-		Standard_Integer AncestorRank(const TopoDS_Shape & S);
+		int AncestorRank(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::AncestorRank ******/
-		/****** md5 signature: 416b03cc7621f4695e4c1c3abb59f5f2 ******/
+		/****** md5 signature: 563c966cd27964769bcf7edcef7e73b6 ******/
 		%feature("compactdefaultargs") AncestorRank;
 		%feature("autodoc", "
 Parameters
@@ -2784,10 +2737,10 @@ Description
 -----------
 No available documentation.
 ") AncestorRank;
-		void AncestorRank(const Standard_Integer I, const Standard_Integer Ianc);
+		void AncestorRank(const int I, const int Ianc);
 
 		/****** TopOpeBRepDS_DataStructure::AncestorRank ******/
-		/****** md5 signature: 6435424809880d1c5a01b8622c605f62 ******/
+		/****** md5 signature: 87948d5a72cfd1dd55236056356d8077 ******/
 		%feature("compactdefaultargs") AncestorRank;
 		%feature("autodoc", "
 Parameters
@@ -2803,10 +2756,10 @@ Description
 -----------
 No available documentation.
 ") AncestorRank;
-		void AncestorRank(const TopoDS_Shape & S, const Standard_Integer Ianc);
+		void AncestorRank(const TopoDS_Shape & S, const int Ianc);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeCurve ******/
-		/****** md5 signature: 0963e13770cf795b99436987493a8a15 ******/
+		/****** md5 signature: 67f619e5c16674515b5d9329aed3580d ******/
 		%feature("compactdefaultargs") ChangeCurve;
 		%feature("autodoc", "
 Parameters
@@ -2821,10 +2774,10 @@ Description
 -----------
 Returns the Curve of index <I>.
 ") ChangeCurve;
-		TopOpeBRepDS_Curve & ChangeCurve(const Standard_Integer I);
+		TopOpeBRepDS_Curve & ChangeCurve(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeCurveInterferences ******/
-		/****** md5 signature: 7deab7ca7e22e42e7a56f29ee8deec68 ******/
+		/****** md5 signature: 41201d2021326a72d1abeb07a66df49c ******/
 		%feature("compactdefaultargs") ChangeCurveInterferences;
 		%feature("autodoc", "
 Parameters
@@ -2833,16 +2786,16 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeCurveInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeCurveInterferences(const Standard_Integer I);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeCurveInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepCurve ******/
-		/****** md5 signature: 4070cbb88042c78999bf00a2161ac9aa ******/
+		/****** md5 signature: 676ac24b41a25ce91a4f9cbd34e6ad09 ******/
 		%feature("compactdefaultargs") ChangeKeepCurve;
 		%feature("autodoc", "
 Parameters
@@ -2858,10 +2811,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepCurve;
-		void ChangeKeepCurve(const Standard_Integer I, const Standard_Boolean FindKeep);
+		void ChangeKeepCurve(const int I, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepCurve ******/
-		/****** md5 signature: bd15a97145444ff65f98c8ce8982593e ******/
+		/****** md5 signature: 6d9bad5ea31844a10d6121a9359133ee ******/
 		%feature("compactdefaultargs") ChangeKeepCurve;
 		%feature("autodoc", "
 Parameters
@@ -2877,10 +2830,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepCurve;
-		void ChangeKeepCurve(TopOpeBRepDS_Curve & C, const Standard_Boolean FindKeep);
+		void ChangeKeepCurve(TopOpeBRepDS_Curve & C, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepPoint ******/
-		/****** md5 signature: a4f111963e183c8efc05d35e57c1e848 ******/
+		/****** md5 signature: bed27a8c69489e78ff827a9d0020f745 ******/
 		%feature("compactdefaultargs") ChangeKeepPoint;
 		%feature("autodoc", "
 Parameters
@@ -2896,10 +2849,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepPoint;
-		void ChangeKeepPoint(const Standard_Integer I, const Standard_Boolean FindKeep);
+		void ChangeKeepPoint(const int I, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepPoint ******/
-		/****** md5 signature: 066e2a50a54f5f4a40ec489dbeb09c82 ******/
+		/****** md5 signature: 6e4c4439689d9b7dd06edf08483385b3 ******/
 		%feature("compactdefaultargs") ChangeKeepPoint;
 		%feature("autodoc", "
 Parameters
@@ -2915,10 +2868,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepPoint;
-		void ChangeKeepPoint(TopOpeBRepDS_Point & P, const Standard_Boolean FindKeep);
+		void ChangeKeepPoint(TopOpeBRepDS_Point & P, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepShape ******/
-		/****** md5 signature: 6210d7ece8c1f1578866f3be6eb1859c ******/
+		/****** md5 signature: 00ff16fd3cc8cb7abf738ee3b8ebf6f5 ******/
 		%feature("compactdefaultargs") ChangeKeepShape;
 		%feature("autodoc", "
 Parameters
@@ -2934,10 +2887,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepShape;
-		void ChangeKeepShape(const Standard_Integer I, const Standard_Boolean FindKeep);
+		void ChangeKeepShape(const int I, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepShape ******/
-		/****** md5 signature: b8b96d1ef3e8f90505ad39e9a82d1771 ******/
+		/****** md5 signature: 7ec9025c30d84c9c34ed1bc9ea833fdc ******/
 		%feature("compactdefaultargs") ChangeKeepShape;
 		%feature("autodoc", "
 Parameters
@@ -2953,10 +2906,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepShape;
-		void ChangeKeepShape(const TopoDS_Shape & S, const Standard_Boolean FindKeep);
+		void ChangeKeepShape(const TopoDS_Shape & S, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepSurface ******/
-		/****** md5 signature: 6eb03af2c227ffbca9e9cb9adb640c32 ******/
+		/****** md5 signature: afc4f92ee63a21a0a07000682b74b9f7 ******/
 		%feature("compactdefaultargs") ChangeKeepSurface;
 		%feature("autodoc", "
 Parameters
@@ -2972,10 +2925,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepSurface;
-		void ChangeKeepSurface(const Standard_Integer I, const Standard_Boolean FindKeep);
+		void ChangeKeepSurface(const int I, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeKeepSurface ******/
-		/****** md5 signature: 69f3fa757fc8355475728bf401e9c5dd ******/
+		/****** md5 signature: e8789b32ea3c5bb57467b40e378cf6ee ******/
 		%feature("compactdefaultargs") ChangeKeepSurface;
 		%feature("autodoc", "
 Parameters
@@ -2991,36 +2944,36 @@ Description
 -----------
 No available documentation.
 ") ChangeKeepSurface;
-		void ChangeKeepSurface(TopOpeBRepDS_Surface & S, const Standard_Boolean FindKeep);
+		void ChangeKeepSurface(TopOpeBRepDS_Surface & S, const bool FindKeep);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfRejectedShapesObj ******/
-		/****** md5 signature: e40559c2eada0493596e18730a9c83f4 ******/
+		/****** md5 signature: b69cd706f987a407d81642ede677c56b ******/
 		%feature("compactdefaultargs") ChangeMapOfRejectedShapesObj;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfShape
+NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeMapOfRejectedShapesObj;
-		TopTools_IndexedMapOfShape & ChangeMapOfRejectedShapesObj();
+		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> ChangeMapOfRejectedShapesObj();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfRejectedShapesTool ******/
-		/****** md5 signature: 3d138fb53314f7a5a40fe9a6bc36a7d3 ******/
+		/****** md5 signature: 02b8b591bfa01669279e263b523cffbb ******/
 		%feature("compactdefaultargs") ChangeMapOfRejectedShapesTool;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfShape
+NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeMapOfRejectedShapesTool;
-		TopTools_IndexedMapOfShape & ChangeMapOfRejectedShapesTool();
+		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> ChangeMapOfRejectedShapesTool();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithState ******/
-		/****** md5 signature: cf7ca25726f7a47424fa1e24c9eaffad ******/
+		/****** md5 signature: 712182c2135607bb770f6b9506866bb4 ******/
 		%feature("compactdefaultargs") ChangeMapOfShapeWithState;
 		%feature("autodoc", "
 Parameters
@@ -3035,36 +2988,36 @@ Description
 -----------
 No available documentation.
 ") ChangeMapOfShapeWithState;
-		TopOpeBRepDS_IndexedDataMapOfShapeWithState & ChangeMapOfShapeWithState(const TopoDS_Shape & aShape, Standard_Boolean &OutValue);
+		NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> ChangeMapOfShapeWithState(const TopoDS_Shape & aShape, Standard_Boolean &OutValue);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithStateObj ******/
-		/****** md5 signature: 6e81b081dcbc1e04934ac25b851372dc ******/
+		/****** md5 signature: 1e36fa550ed989946e775ce666d16c88 ******/
 		%feature("compactdefaultargs") ChangeMapOfShapeWithStateObj;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_IndexedDataMapOfShapeWithState
+NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeMapOfShapeWithStateObj;
-		TopOpeBRepDS_IndexedDataMapOfShapeWithState & ChangeMapOfShapeWithStateObj();
+		NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> ChangeMapOfShapeWithStateObj();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithStateTool ******/
-		/****** md5 signature: 7c5055cc273de3803b1a58bf0d74f8a8 ******/
+		/****** md5 signature: a5b6470fc01bee8a29ef6087610084cd ******/
 		%feature("compactdefaultargs") ChangeMapOfShapeWithStateTool;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_IndexedDataMapOfShapeWithState
+NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeMapOfShapeWithStateTool;
-		TopOpeBRepDS_IndexedDataMapOfShapeWithState & ChangeMapOfShapeWithStateTool();
+		NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> ChangeMapOfShapeWithStateTool();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeNbCurves ******/
-		/****** md5 signature: 61918d90723549dda13bcb2198f3f6a1 ******/
+		/****** md5 signature: bf7893831ffc07a69cb9b966a2082494 ******/
 		%feature("compactdefaultargs") ChangeNbCurves;
 		%feature("autodoc", "
 Parameters
@@ -3079,10 +3032,10 @@ Description
 -----------
 No available documentation.
 ") ChangeNbCurves;
-		void ChangeNbCurves(const Standard_Integer N);
+		void ChangeNbCurves(const int N);
 
 		/****** TopOpeBRepDS_DataStructure::ChangePoint ******/
-		/****** md5 signature: f328d7e06d1ef5c46763a0489395f251 ******/
+		/****** md5 signature: 0358c1015ded19b4de0f0ff3abaa67b8 ******/
 		%feature("compactdefaultargs") ChangePoint;
 		%feature("autodoc", "
 Parameters
@@ -3097,10 +3050,10 @@ Description
 -----------
 Returns the point of index <I>.
 ") ChangePoint;
-		TopOpeBRepDS_Point & ChangePoint(const Standard_Integer I);
+		TopOpeBRepDS_Point & ChangePoint(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangePointInterferences ******/
-		/****** md5 signature: 2a5052527e6519704e556eaa65900401 ******/
+		/****** md5 signature: bb6514324cc018b0cc762d59cd43e9c7 ******/
 		%feature("compactdefaultargs") ChangePointInterferences;
 		%feature("autodoc", "
 Parameters
@@ -3109,16 +3062,16 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangePointInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangePointInterferences(const Standard_Integer I);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangePointInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeInterferences ******/
-		/****** md5 signature: ce1a8a73e7ce343c3d3e3e3f5422ecd1 ******/
+		/****** md5 signature: 75e4af12b91e5b6174f8ea6204df8dce ******/
 		%feature("compactdefaultargs") ChangeShapeInterferences;
 		%feature("autodoc", "
 Parameters
@@ -3127,16 +3080,16 @@ S: TopoDS_Shape
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeShapeInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeShapeInterferences(const TopoDS_Shape & S);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeShapeInterferences(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeInterferences ******/
-		/****** md5 signature: c7c62d3c2d46def711397ef32fa49dc1 ******/
+		/****** md5 signature: 29737c6952c3917bbe5882da94807073 ******/
 		%feature("compactdefaultargs") ChangeShapeInterferences;
 		%feature("autodoc", "
 Parameters
@@ -3145,16 +3098,16 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeShapeInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeShapeInterferences(const Standard_Integer I);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeShapeInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeSameDomain ******/
-		/****** md5 signature: ef398371e60f7181b036dab752b7daed ******/
+		/****** md5 signature: bf729ce1c599dd55f07b035922d8ee31 ******/
 		%feature("compactdefaultargs") ChangeShapeSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -3163,16 +3116,16 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeShapeSameDomain;
-		TopTools_ListOfShape & ChangeShapeSameDomain(const TopoDS_Shape & S);
+		NCollection_List<TopoDS_Shape> ChangeShapeSameDomain(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeSameDomain ******/
-		/****** md5 signature: 5b49d2b8d5777a7f0965113f565e2b9f ******/
+		/****** md5 signature: 8a03c50cfcc6e2cb52e5193cdcc98422 ******/
 		%feature("compactdefaultargs") ChangeShapeSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -3181,29 +3134,29 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeShapeSameDomain;
-		TopTools_ListOfShape & ChangeShapeSameDomain(const Standard_Integer I);
+		NCollection_List<TopoDS_Shape> ChangeShapeSameDomain(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapes ******/
-		/****** md5 signature: 5939b51e203c5eb042017ec89d062826 ******/
+		/****** md5 signature: 5783c34d07d79ef4b3731d966b76b6fc ******/
 		%feature("compactdefaultargs") ChangeShapes;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_MapOfShapeData
+NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeData, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeShapes;
-		TopOpeBRepDS_MapOfShapeData & ChangeShapes();
+		NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeData, TopTools_ShapeMapHasher> ChangeShapes();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeSurface ******/
-		/****** md5 signature: df871aa12b0a35203ee1f41548d4667c ******/
+		/****** md5 signature: 498ee817d8826b59ce9050fb36380aa8 ******/
 		%feature("compactdefaultargs") ChangeSurface;
 		%feature("autodoc", "
 Parameters
@@ -3218,10 +3171,10 @@ Description
 -----------
 Returns the surface of index <I>.
 ") ChangeSurface;
-		TopOpeBRepDS_Surface & ChangeSurface(const Standard_Integer I);
+		TopOpeBRepDS_Surface & ChangeSurface(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeSurfaceInterferences ******/
-		/****** md5 signature: b092d6884d606ccce117b72ba79b7234 ******/
+		/****** md5 signature: 2a4be9d0351ee56d7a895119cd3b24d6 ******/
 		%feature("compactdefaultargs") ChangeSurfaceInterferences;
 		%feature("autodoc", "
 Parameters
@@ -3230,16 +3183,16 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeSurfaceInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeSurfaceInterferences(const Standard_Integer I);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeSurfaceInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::Curve ******/
-		/****** md5 signature: f53cb61e2b022b236aa70ffbec11ac31 ******/
+		/****** md5 signature: 8f68387be06709e7244d27d95219e433 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -3254,10 +3207,10 @@ Description
 -----------
 Returns the Curve of index <I>.
 ") Curve;
-		TopOpeBRepDS_Curve Curve(const Standard_Integer I);
+		TopOpeBRepDS_Curve Curve(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::CurveInterferences ******/
-		/****** md5 signature: 0ae607216e1128d734c938cbcd7a9b19 ******/
+		/****** md5 signature: f6e70023f1bda541e93dd59ae8d550b2 ******/
 		%feature("compactdefaultargs") CurveInterferences;
 		%feature("autodoc", "
 Parameters
@@ -3266,23 +3219,23 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") CurveInterferences;
-		const TopOpeBRepDS_ListOfInterference & CurveInterferences(const Standard_Integer I);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & CurveInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::FillShapesSameDomain ******/
-		/****** md5 signature: 9b085f8f00de0ab0fb18482c7f2aba0a ******/
+		/****** md5 signature: dd772b074417cf4686f4ea79ce959f30 ******/
 		%feature("compactdefaultargs") FillShapesSameDomain;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-refFirst: bool (optional, default to Standard_True)
+refFirst: bool (optional, default to true)
 
 Return
 -------
@@ -3292,10 +3245,10 @@ Description
 -----------
 No available documentation.
 ") FillShapesSameDomain;
-		void FillShapesSameDomain(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Standard_Boolean refFirst = Standard_True);
+		void FillShapesSameDomain(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const bool refFirst = true);
 
 		/****** TopOpeBRepDS_DataStructure::FillShapesSameDomain ******/
-		/****** md5 signature: 2c20793bceac1cb02fd82f898232bb78 ******/
+		/****** md5 signature: f085b3fd5b9d62c4070b9a8eae9e61fb ******/
 		%feature("compactdefaultargs") FillShapesSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -3304,7 +3257,7 @@ S1: TopoDS_Shape
 S2: TopoDS_Shape
 c1: TopOpeBRepDS_Config
 c2: TopOpeBRepDS_Config
-refFirst: bool (optional, default to Standard_True)
+refFirst: bool (optional, default to true)
 
 Return
 -------
@@ -3314,7 +3267,7 @@ Description
 -----------
 No available documentation.
 ") FillShapesSameDomain;
-		void FillShapesSameDomain(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopOpeBRepDS_Config c1, const TopOpeBRepDS_Config c2, const Standard_Boolean refFirst = Standard_True);
+		void FillShapesSameDomain(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopOpeBRepDS_Config c1, const TopOpeBRepDS_Config c2, const bool refFirst = true);
 
 		/****** TopOpeBRepDS_DataStructure::GetShapeWithState ******/
 		/****** md5 signature: a6f2b4fcd0e7a847188e96d6fa4347ba ******/
@@ -3335,7 +3288,7 @@ No available documentation.
 		const TopOpeBRepDS_ShapeWithState & GetShapeWithState(const TopoDS_Shape & aShape);
 
 		/****** TopOpeBRepDS_DataStructure::HasGeometry ******/
-		/****** md5 signature: 515d3381600536728112287b52b5cac8 ******/
+		/****** md5 signature: 8dff57098ee43c62daaf450f31fbae15 ******/
 		%feature("compactdefaultargs") HasGeometry;
 		%feature("autodoc", "
 Parameters
@@ -3350,10 +3303,10 @@ Description
 -----------
 Returns True if <S> has new geometries, i.e: True si: HasShape(S) True S a une liste d'interferences non vide. S = SOLID, FACE, EDGE: true/false S = SHELL, WIRE, VERTEX: false.
 ") HasGeometry;
-		Standard_Boolean HasGeometry(const TopoDS_Shape & S);
+		bool HasGeometry(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::HasNewSurface ******/
-		/****** md5 signature: 4520d52fb0be8c5259d9561c83cbec20 ******/
+		/****** md5 signature: 447e7b8d46da30b2c9c82f9252d0cf08 ******/
 		%feature("compactdefaultargs") HasNewSurface;
 		%feature("autodoc", "
 Parameters
@@ -3368,16 +3321,16 @@ Description
 -----------
 No available documentation.
 ") HasNewSurface;
-		Standard_Boolean HasNewSurface(const TopoDS_Shape & F);
+		bool HasNewSurface(const TopoDS_Shape & F);
 
 		/****** TopOpeBRepDS_DataStructure::HasShape ******/
-		/****** md5 signature: 5afea513cd4da105b0a805fd98689f7b ******/
+		/****** md5 signature: 591fc724353e5bc7095c261f3a5b5959 ******/
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -3387,7 +3340,7 @@ Description
 -----------
 Returns True if <S> est dans myShapes.
 ") HasShape;
-		Standard_Boolean HasShape(const TopoDS_Shape & S, const Standard_Boolean FindKeep = Standard_True);
+		bool HasShape(const TopoDS_Shape & S, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -3416,13 +3369,13 @@ No available documentation.
 		void InitSectionEdges();
 
 		/****** TopOpeBRepDS_DataStructure::IsSectionEdge ******/
-		/****** md5 signature: 48c5e1d6cbf668c80de3274958fb7aad ******/
+		/****** md5 signature: debc534ed8012d19d7160c0f9603dd65 ******/
 		%feature("compactdefaultargs") IsSectionEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -3432,10 +3385,10 @@ Description
 -----------
 No available documentation.
 ") IsSectionEdge;
-		Standard_Boolean IsSectionEdge(const TopoDS_Edge & E, const Standard_Boolean FindKeep = Standard_True);
+		bool IsSectionEdge(const TopoDS_Edge & E, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::Isfafa ******/
-		/****** md5 signature: 627b4d3daad0ef2a74d63fc5001f22c5 ******/
+		/****** md5 signature: 9e03383e2a0634d9edf342f02b593469 ******/
 		%feature("compactdefaultargs") Isfafa;
 		%feature("autodoc", "
 Parameters
@@ -3450,10 +3403,10 @@ Description
 -----------
 No available documentation.
 ") Isfafa;
-		void Isfafa(const Standard_Boolean isfafa);
+		void Isfafa(const bool isfafa);
 
 		/****** TopOpeBRepDS_DataStructure::Isfafa ******/
-		/****** md5 signature: c33bc00e352e9205edc83c835d0965a9 ******/
+		/****** md5 signature: eb8cbff7d58be168ab15a584d70eeab9 ******/
 		%feature("compactdefaultargs") Isfafa;
 		%feature("autodoc", "Return
 -------
@@ -3463,10 +3416,10 @@ Description
 -----------
 No available documentation.
 ") Isfafa;
-		Standard_Boolean Isfafa();
+		bool Isfafa();
 
 		/****** TopOpeBRepDS_DataStructure::KeepCurve ******/
-		/****** md5 signature: a31a1de3acdc06b8d608a4825c7b65d1 ******/
+		/****** md5 signature: 6eee22374fb586e872634bc1370c1da3 ******/
 		%feature("compactdefaultargs") KeepCurve;
 		%feature("autodoc", "
 Parameters
@@ -3481,10 +3434,10 @@ Description
 -----------
 No available documentation.
 ") KeepCurve;
-		Standard_Boolean KeepCurve(const Standard_Integer I);
+		bool KeepCurve(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::KeepCurve ******/
-		/****** md5 signature: 819d464c0a535e10eb3ccd04e73534f9 ******/
+		/****** md5 signature: 9e1183f9c59f24521e57711c45f9d3d0 ******/
 		%feature("compactdefaultargs") KeepCurve;
 		%feature("autodoc", "
 Parameters
@@ -3499,10 +3452,10 @@ Description
 -----------
 No available documentation.
 ") KeepCurve;
-		Standard_Boolean KeepCurve(const TopOpeBRepDS_Curve & C);
+		bool KeepCurve(const TopOpeBRepDS_Curve & C);
 
 		/****** TopOpeBRepDS_DataStructure::KeepPoint ******/
-		/****** md5 signature: c25a8067859a9a79c209816fb30a01f5 ******/
+		/****** md5 signature: 4c4d19b6d05ad8e64e3bfa7fa5c3f90e ******/
 		%feature("compactdefaultargs") KeepPoint;
 		%feature("autodoc", "
 Parameters
@@ -3517,10 +3470,10 @@ Description
 -----------
 No available documentation.
 ") KeepPoint;
-		Standard_Boolean KeepPoint(const Standard_Integer I);
+		bool KeepPoint(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::KeepPoint ******/
-		/****** md5 signature: 73c36fa076d5daf4a05be4fafb7459ba ******/
+		/****** md5 signature: 2b5e58bb8fe35955e1199fe039f39128 ******/
 		%feature("compactdefaultargs") KeepPoint;
 		%feature("autodoc", "
 Parameters
@@ -3535,16 +3488,16 @@ Description
 -----------
 No available documentation.
 ") KeepPoint;
-		Standard_Boolean KeepPoint(const TopOpeBRepDS_Point & P);
+		bool KeepPoint(const TopOpeBRepDS_Point & P);
 
 		/****** TopOpeBRepDS_DataStructure::KeepShape ******/
-		/****** md5 signature: 42d63f4833fb0f4baa5b575971397ec7 ******/
+		/****** md5 signature: 93777a2f8ce0776d335049094ab4ea10 ******/
 		%feature("compactdefaultargs") KeepShape;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -3554,16 +3507,16 @@ Description
 -----------
 No available documentation.
 ") KeepShape;
-		Standard_Boolean KeepShape(const Standard_Integer I, const Standard_Boolean FindKeep = Standard_True);
+		bool KeepShape(const int I, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::KeepShape ******/
-		/****** md5 signature: 8022899b383af025b8b4518995a74765 ******/
+		/****** md5 signature: 5796707c28db695ff6e24cb84548d804 ******/
 		%feature("compactdefaultargs") KeepShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -3573,10 +3526,10 @@ Description
 -----------
 No available documentation.
 ") KeepShape;
-		Standard_Boolean KeepShape(const TopoDS_Shape & S, const Standard_Boolean FindKeep = Standard_True);
+		bool KeepShape(const TopoDS_Shape & S, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::KeepSurface ******/
-		/****** md5 signature: 1306c7905bac38efdc491cb827df27c8 ******/
+		/****** md5 signature: 4062622fc57e320adf8962d1bd44da27 ******/
 		%feature("compactdefaultargs") KeepSurface;
 		%feature("autodoc", "
 Parameters
@@ -3591,10 +3544,10 @@ Description
 -----------
 No available documentation.
 ") KeepSurface;
-		Standard_Boolean KeepSurface(const Standard_Integer I);
+		bool KeepSurface(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::KeepSurface ******/
-		/****** md5 signature: bb98baef27e6279929b589dc67f12903 ******/
+		/****** md5 signature: b87e06eb8a6967356da594ae862561dd ******/
 		%feature("compactdefaultargs") KeepSurface;
 		%feature("autodoc", "
 Parameters
@@ -3609,10 +3562,10 @@ Description
 -----------
 No available documentation.
 ") KeepSurface;
-		Standard_Boolean KeepSurface(TopOpeBRepDS_Surface & S);
+		bool KeepSurface(TopOpeBRepDS_Surface & S);
 
 		/****** TopOpeBRepDS_DataStructure::NbCurves ******/
-		/****** md5 signature: f7f6dbd981df076443155a5a87b5c223 ******/
+		/****** md5 signature: 99661be16aa6b87a1ba6043e7f8f9943 ******/
 		%feature("compactdefaultargs") NbCurves;
 		%feature("autodoc", "Return
 -------
@@ -3622,10 +3575,10 @@ Description
 -----------
 No available documentation.
 ") NbCurves;
-		Standard_Integer NbCurves();
+		int NbCurves();
 
 		/****** TopOpeBRepDS_DataStructure::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -3635,10 +3588,10 @@ Description
 -----------
 No available documentation.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** TopOpeBRepDS_DataStructure::NbSectionEdges ******/
-		/****** md5 signature: aea8f7c64070df22874bc46708a9d81c ******/
+		/****** md5 signature: c26a1a0efd47ff01f590b30a9601223f ******/
 		%feature("compactdefaultargs") NbSectionEdges;
 		%feature("autodoc", "Return
 -------
@@ -3648,10 +3601,10 @@ Description
 -----------
 No available documentation.
 ") NbSectionEdges;
-		Standard_Integer NbSectionEdges();
+		int NbSectionEdges();
 
 		/****** TopOpeBRepDS_DataStructure::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -3661,10 +3614,10 @@ Description
 -----------
 No available documentation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** TopOpeBRepDS_DataStructure::NbSurfaces ******/
-		/****** md5 signature: fbc438e1ec12b28d849e6d0aeb23caaa ******/
+		/****** md5 signature: 7e22bdd58e61d1f35b25d270c1134651 ******/
 		%feature("compactdefaultargs") NbSurfaces;
 		%feature("autodoc", "Return
 -------
@@ -3674,7 +3627,7 @@ Description
 -----------
 No available documentation.
 ") NbSurfaces;
-		Standard_Integer NbSurfaces();
+		int NbSurfaces();
 
 		/****** TopOpeBRepDS_DataStructure::NewSurface ******/
 		/****** md5 signature: 7add5b9199c86c93a7ee2ecb3009e02b ******/
@@ -3695,7 +3648,7 @@ No available documentation.
 		const opencascade::handle<Geom_Surface> & NewSurface(const TopoDS_Shape & F);
 
 		/****** TopOpeBRepDS_DataStructure::Point ******/
-		/****** md5 signature: 5b8c65793f4550a005f74995c521586b ******/
+		/****** md5 signature: 46867378e1165b64904da8b83e56d84c ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -3710,10 +3663,10 @@ Description
 -----------
 Returns the point of index <I>.
 ") Point;
-		const TopOpeBRepDS_Point & Point(const Standard_Integer I);
+		const TopOpeBRepDS_Point & Point(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::PointInterferences ******/
-		/****** md5 signature: 06b954c921d0d1e460c381ddbe58ac66 ******/
+		/****** md5 signature: 9dd2cc827c54a6d96a6c96a9a2be720a ******/
 		%feature("compactdefaultargs") PointInterferences;
 		%feature("autodoc", "
 Parameters
@@ -3722,16 +3675,16 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") PointInterferences;
-		const TopOpeBRepDS_ListOfInterference & PointInterferences(const Standard_Integer I);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & PointInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::RemoveCurve ******/
-		/****** md5 signature: 195425abb6b81c28c9baa5e9f38c8649 ******/
+		/****** md5 signature: 594e8c4738bba31a696019dd52b91142 ******/
 		%feature("compactdefaultargs") RemoveCurve;
 		%feature("autodoc", "
 Parameters
@@ -3746,10 +3699,10 @@ Description
 -----------
 No available documentation.
 ") RemoveCurve;
-		void RemoveCurve(const Standard_Integer I);
+		void RemoveCurve(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::RemovePoint ******/
-		/****** md5 signature: c7bf0e4af319953519a4144b346ae43d ******/
+		/****** md5 signature: 12a1981b82617c972504a79452035927 ******/
 		%feature("compactdefaultargs") RemovePoint;
 		%feature("autodoc", "
 Parameters
@@ -3764,7 +3717,7 @@ Description
 -----------
 No available documentation.
 ") RemovePoint;
-		void RemovePoint(const Standard_Integer I);
+		void RemovePoint(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::RemoveShapeInterference ******/
 		/****** md5 signature: 412e6543d3fd7929a60f32d7a69d67f2 ******/
@@ -3805,7 +3758,7 @@ No available documentation.
 		void RemoveShapeSameDomain(const TopoDS_Shape & S, const TopoDS_Shape & SSD);
 
 		/****** TopOpeBRepDS_DataStructure::RemoveSurface ******/
-		/****** md5 signature: a69795b89612c323bca1cbc3d673efe5 ******/
+		/****** md5 signature: c070a4db76a14f0ffa82c263ddfbc53c ******/
 		%feature("compactdefaultargs") RemoveSurface;
 		%feature("autodoc", "
 Parameters
@@ -3820,10 +3773,10 @@ Description
 -----------
 No available documentation.
 ") RemoveSurface;
-		void RemoveSurface(const Standard_Integer I);
+		void RemoveSurface(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainInd ******/
-		/****** md5 signature: f56179352f4117ca69ca4087b1b0f5f5 ******/
+		/****** md5 signature: fca589b676d3136e0a6b382907362654 ******/
 		%feature("compactdefaultargs") SameDomainInd;
 		%feature("autodoc", "
 Parameters
@@ -3838,10 +3791,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainInd;
-		Standard_Integer SameDomainInd(const Standard_Integer I);
+		int SameDomainInd(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainInd ******/
-		/****** md5 signature: 6f0a88aed570b81816061ae0eb4d1e82 ******/
+		/****** md5 signature: d74e44e56f08a9bf6aae541a54f847f5 ******/
 		%feature("compactdefaultargs") SameDomainInd;
 		%feature("autodoc", "
 Parameters
@@ -3856,10 +3809,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainInd;
-		Standard_Integer SameDomainInd(const TopoDS_Shape & S);
+		int SameDomainInd(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainInd ******/
-		/****** md5 signature: cad8376b20aa19813e52027a34b83505 ******/
+		/****** md5 signature: 2ef407c4178afeaffa611b579b19e568 ******/
 		%feature("compactdefaultargs") SameDomainInd;
 		%feature("autodoc", "
 Parameters
@@ -3875,10 +3828,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainInd;
-		void SameDomainInd(const Standard_Integer I, const Standard_Integer Ind);
+		void SameDomainInd(const int I, const int Ind);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainInd ******/
-		/****** md5 signature: e59bc7a08b6820b92c68b6007a300c04 ******/
+		/****** md5 signature: aa028413f4e22d8f1fb874354b8f0e33 ******/
 		%feature("compactdefaultargs") SameDomainInd;
 		%feature("autodoc", "
 Parameters
@@ -3894,10 +3847,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainInd;
-		void SameDomainInd(const TopoDS_Shape & S, const Standard_Integer Ind);
+		void SameDomainInd(const TopoDS_Shape & S, const int Ind);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainOri ******/
-		/****** md5 signature: e17e474da5df36106cb5b63a342b0de1 ******/
+		/****** md5 signature: c1d024fcac2ec217e66f45fee84e30aa ******/
 		%feature("compactdefaultargs") SameDomainOri;
 		%feature("autodoc", "
 Parameters
@@ -3912,7 +3865,7 @@ Description
 -----------
 No available documentation.
 ") SameDomainOri;
-		TopOpeBRepDS_Config SameDomainOri(const Standard_Integer I);
+		TopOpeBRepDS_Config SameDomainOri(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainOri ******/
 		/****** md5 signature: f5745d68e6f11784571b9b419388de6b ******/
@@ -3933,7 +3886,7 @@ No available documentation.
 		TopOpeBRepDS_Config SameDomainOri(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainOri ******/
-		/****** md5 signature: 5feee33f07dec4e9f64d583aeb283a57 ******/
+		/****** md5 signature: bccb8fe030eb61bcff28a260d9e4ef39 ******/
 		%feature("compactdefaultargs") SameDomainOri;
 		%feature("autodoc", "
 Parameters
@@ -3949,7 +3902,7 @@ Description
 -----------
 No available documentation.
 ") SameDomainOri;
-		void SameDomainOri(const Standard_Integer I, const TopOpeBRepDS_Config Ori);
+		void SameDomainOri(const int I, const TopOpeBRepDS_Config Ori);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainOri ******/
 		/****** md5 signature: 4e62c89b45488901580ee57713832fc7 ******/
@@ -3971,7 +3924,7 @@ No available documentation.
 		void SameDomainOri(const TopoDS_Shape & S, const TopOpeBRepDS_Config Ori);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainRef ******/
-		/****** md5 signature: d905234925d75a0cf96827306b66a6f8 ******/
+		/****** md5 signature: e471f19dacf11be6ee17befd19e88877 ******/
 		%feature("compactdefaultargs") SameDomainRef;
 		%feature("autodoc", "
 Parameters
@@ -3986,10 +3939,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainRef;
-		Standard_Integer SameDomainRef(const Standard_Integer I);
+		int SameDomainRef(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainRef ******/
-		/****** md5 signature: 526031793d8c10151b323146cd2137b6 ******/
+		/****** md5 signature: 13cfa60f07beaeff598b28ec2fbb89a0 ******/
 		%feature("compactdefaultargs") SameDomainRef;
 		%feature("autodoc", "
 Parameters
@@ -4004,10 +3957,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainRef;
-		Standard_Integer SameDomainRef(const TopoDS_Shape & S);
+		int SameDomainRef(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainRef ******/
-		/****** md5 signature: e2c1f51d8216243aee8e9ca18e5ee030 ******/
+		/****** md5 signature: 3b07b4cc523c404c32e8ec4f91211ae5 ******/
 		%feature("compactdefaultargs") SameDomainRef;
 		%feature("autodoc", "
 Parameters
@@ -4023,10 +3976,10 @@ Description
 -----------
 No available documentation.
 ") SameDomainRef;
-		void SameDomainRef(const Standard_Integer I, const Standard_Integer Ref);
+		void SameDomainRef(const int I, const int Ref);
 
 		/****** TopOpeBRepDS_DataStructure::SameDomainRef ******/
-		/****** md5 signature: c4971ef3bef119a1854e73f0db5bd833 ******/
+		/****** md5 signature: 5304fee7ca4bc404928a44459f2feeb0 ******/
 		%feature("compactdefaultargs") SameDomainRef;
 		%feature("autodoc", "
 Parameters
@@ -4042,16 +3995,16 @@ Description
 -----------
 No available documentation.
 ") SameDomainRef;
-		void SameDomainRef(const TopoDS_Shape & S, const Standard_Integer Ref);
+		void SameDomainRef(const TopoDS_Shape & S, const int Ref);
 
 		/****** TopOpeBRepDS_DataStructure::SectionEdge ******/
-		/****** md5 signature: ec2665bd1079cd0f52a4e5419be32faa ******/
+		/****** md5 signature: e54a087246ff9af364b755b372dbcc15 ******/
 		%feature("compactdefaultargs") SectionEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -4061,16 +4014,16 @@ Description
 -----------
 No available documentation.
 ") SectionEdge;
-		const TopoDS_Edge SectionEdge(const Standard_Integer I, const Standard_Boolean FindKeep = Standard_True);
+		const TopoDS_Edge SectionEdge(const int I, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::SectionEdge ******/
-		/****** md5 signature: 4fe69fdd3fecc294f0813b9064c01390 ******/
+		/****** md5 signature: 73990d4a77b8b135ddecb84e839db676 ******/
 		%feature("compactdefaultargs") SectionEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -4080,7 +4033,7 @@ Description
 -----------
 No available documentation.
 ") SectionEdge;
-		Standard_Integer SectionEdge(const TopoDS_Edge & E, const Standard_Boolean FindKeep = Standard_True);
+		int SectionEdge(const TopoDS_Edge & E, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::SetNewSurface ******/
 		/****** md5 signature: d9f8b56466b71f82a0c5d38767680a12 ******/
@@ -4102,13 +4055,13 @@ No available documentation.
 		void SetNewSurface(const TopoDS_Shape & F, const opencascade::handle<Geom_Surface> & S);
 
 		/****** TopOpeBRepDS_DataStructure::Shape ******/
-		/****** md5 signature: 2a9802512a4fc686052467294ae73114 ******/
+		/****** md5 signature: b7e9c2aeeb7bd4998022f2e899438e4e ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -4118,16 +4071,16 @@ Description
 -----------
 returns the shape of index I stored in the map myShapes, accessing a list of interference.
 ") Shape;
-		const TopoDS_Shape Shape(const Standard_Integer I, const Standard_Boolean FindKeep = Standard_True);
+		const TopoDS_Shape Shape(const int I, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::Shape ******/
-		/****** md5 signature: f7e95ef33c87fbd9433c9833cd48ad97 ******/
+		/****** md5 signature: 80f2d0f6c4ba45be9b2bf19b13a932df ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
@@ -4137,48 +4090,48 @@ Description
 -----------
 returns the index of shape <S> stored in the map myShapes, accessing a list of interference. returns 0 if <S> is not in the map.
 ") Shape;
-		Standard_Integer Shape(const TopoDS_Shape & S, const Standard_Boolean FindKeep = Standard_True);
+		int Shape(const TopoDS_Shape & S, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::ShapeInterferences ******/
-		/****** md5 signature: c868e708a42528c47a0ca2a4c3f6a0e4 ******/
+		/****** md5 signature: 6cb9b033e68e587823d6c80d083b1630 ******/
 		%feature("compactdefaultargs") ShapeInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ShapeInterferences;
-		const TopOpeBRepDS_ListOfInterference & ShapeInterferences(const TopoDS_Shape & S, const Standard_Boolean FindKeep = Standard_True);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ShapeInterferences(const TopoDS_Shape & S, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::ShapeInterferences ******/
-		/****** md5 signature: ece9e59140b26b1432b40d26cf22bb47 ******/
+		/****** md5 signature: 542da17277d15ac14071e10de90fe9a6 ******/
 		%feature("compactdefaultargs") ShapeInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-FindKeep: bool (optional, default to Standard_True)
+FindKeep: bool (optional, default to true)
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ShapeInterferences;
-		const TopOpeBRepDS_ListOfInterference & ShapeInterferences(const Standard_Integer I, const Standard_Boolean FindKeep = Standard_True);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ShapeInterferences(const int I, const bool FindKeep = true);
 
 		/****** TopOpeBRepDS_DataStructure::ShapeSameDomain ******/
-		/****** md5 signature: 05999893fcaefdaecc7122403e98d5cc ******/
+		/****** md5 signature: 6a217a8a98f70554b4b23c567aeaafb7 ******/
 		%feature("compactdefaultargs") ShapeSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -4187,16 +4140,16 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ShapeSameDomain;
-		const TopTools_ListOfShape & ShapeSameDomain(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> ShapeSameDomain(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::ShapeSameDomain ******/
-		/****** md5 signature: 5c698556b709903375c4c06d616536f7 ******/
+		/****** md5 signature: f993452380df6d550c045bce6c02f3c4 ******/
 		%feature("compactdefaultargs") ShapeSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -4205,16 +4158,16 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ShapeSameDomain;
-		const TopTools_ListOfShape & ShapeSameDomain(const Standard_Integer I);
+		const NCollection_List<TopoDS_Shape> ShapeSameDomain(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::Surface ******/
-		/****** md5 signature: 0fa398e726541e213860705286d521cb ******/
+		/****** md5 signature: 5439188fcb1b33bc27f0b1b898e5d6da ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -4229,10 +4182,10 @@ Description
 -----------
 Returns the surface of index <I>.
 ") Surface;
-		TopOpeBRepDS_Surface Surface(const Standard_Integer I);
+		TopOpeBRepDS_Surface Surface(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::SurfaceInterferences ******/
-		/****** md5 signature: 732d2b836e88fd503fa982b880b0a0eb ******/
+		/****** md5 signature: a1798d4f44ccf32b2ad8e35fabdaf007 ******/
 		%feature("compactdefaultargs") SurfaceInterferences;
 		%feature("autodoc", "
 Parameters
@@ -4241,13 +4194,13 @@ I: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") SurfaceInterferences;
-		const TopOpeBRepDS_ListOfInterference & SurfaceInterferences(const Standard_Integer I);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & SurfaceInterferences(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::UnfillShapesSameDomain ******/
 		/****** md5 signature: 905209a2e684aadc3d1ca6d75dc22261 ******/
@@ -4301,7 +4254,7 @@ No available documentation.
 		 TopOpeBRepDS_Dumper(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_Dumper::SDumpRefOri ******/
-		/****** md5 signature: 8e6b49d64bdb0a06e4b412da92478a80 ******/
+		/****** md5 signature: e496c17e29dcdffa6053422e1a05b8bf ******/
 		%feature("compactdefaultargs") SDumpRefOri;
 		%feature("autodoc", "
 Parameters
@@ -4317,7 +4270,7 @@ Description
 -----------
 No available documentation.
 ") SDumpRefOri;
-		TCollection_AsciiString SDumpRefOri(const TopOpeBRepDS_Kind K, const Standard_Integer I);
+		TCollection_AsciiString SDumpRefOri(const TopOpeBRepDS_Kind K, const int I);
 
 		/****** TopOpeBRepDS_Dumper::SDumpRefOri ******/
 		/****** md5 signature: 2de056c6b87cd98b2ce3ade55eccba16 ******/
@@ -4338,7 +4291,7 @@ No available documentation.
 		TCollection_AsciiString SDumpRefOri(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_Dumper::SPrintShape ******/
-		/****** md5 signature: b2cb96d441d854b1d0f54190036738cc ******/
+		/****** md5 signature: c57cdbc75814e21e7fbbda8755c95f50 ******/
 		%feature("compactdefaultargs") SPrintShape;
 		%feature("autodoc", "
 Parameters
@@ -4353,7 +4306,7 @@ Description
 -----------
 No available documentation.
 ") SPrintShape;
-		TCollection_AsciiString SPrintShape(const Standard_Integer I);
+		TCollection_AsciiString SPrintShape(const int I);
 
 		/****** TopOpeBRepDS_Dumper::SPrintShape ******/
 		/****** md5 signature: 29aa3a0f30477ccf992e00d9f2c4ade9 ******/
@@ -4393,12 +4346,12 @@ No available documentation.
 		TCollection_AsciiString SPrintShapeRefOri(const TopoDS_Shape & S, TCollection_AsciiString B = "");
 
 		/****** TopOpeBRepDS_Dumper::SPrintShapeRefOri ******/
-		/****** md5 signature: 54da13540540d3a734590ba936839e14 ******/
+		/****** md5 signature: a055dcaf60954f6ba0f6efa46a95c3ce ******/
 		%feature("compactdefaultargs") SPrintShapeRefOri;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 B: str (optional, default to "")
 
 Return
@@ -4409,7 +4362,7 @@ Description
 -----------
 No available documentation.
 ") SPrintShapeRefOri;
-		TCollection_AsciiString SPrintShapeRefOri(const TopTools_ListOfShape & L, TCollection_AsciiString B = "");
+		TCollection_AsciiString SPrintShapeRefOri(const NCollection_List<TopoDS_Shape> & L, TCollection_AsciiString B = "");
 
 };
 
@@ -4461,7 +4414,7 @@ No available documentation.
 		void ProcessEdgeInterferences();
 
 		/****** TopOpeBRepDS_EIR::ProcessEdgeInterferences ******/
-		/****** md5 signature: acd902e6f368f098486cef5b71d435ec ******/
+		/****** md5 signature: 0701560f3ecad2ca4e4002b90f11b089 ******/
 		%feature("compactdefaultargs") ProcessEdgeInterferences;
 		%feature("autodoc", "
 Parameters
@@ -4476,7 +4429,7 @@ Description
 -----------
 No available documentation.
 ") ProcessEdgeInterferences;
-		void ProcessEdgeInterferences(const Standard_Integer I);
+		void ProcessEdgeInterferences(const int I);
 
 };
 
@@ -4548,7 +4501,7 @@ No available documentation.
 		void Init(const TopoDS_Shape & Eref, const TopoDS_Shape & E, const TopoDS_Shape & F, const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_Edge3dInterferenceTool::InitPointVertex ******/
-		/****** md5 signature: cc467f069475b40c868db51fa15b6e4f ******/
+		/****** md5 signature: 14c05cdc8221771971426edbf4152588 ******/
 		%feature("compactdefaultargs") InitPointVertex;
 		%feature("autodoc", "
 Parameters
@@ -4564,7 +4517,7 @@ Description
 -----------
 No available documentation.
 ") InitPointVertex;
-		void InitPointVertex(const Standard_Integer IsVertex, const TopoDS_Shape & VonOO);
+		void InitPointVertex(const int IsVertex, const TopoDS_Shape & VonOO);
 
 		/****** TopOpeBRepDS_Edge3dInterferenceTool::Transition ******/
 		/****** md5 signature: cddcef230eeaaa0ab8b7f8b429bec838 ******/
@@ -4716,14 +4669,14 @@ No available documentation.
 		 TopOpeBRepDS_Explorer();
 
 		/****** TopOpeBRepDS_Explorer::TopOpeBRepDS_Explorer ******/
-		/****** md5 signature: e366addb18ef341ba9e3f059d5ff2398 ******/
+		/****** md5 signature: 3436df1ceee801e0eaf7d993875ef821 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_Explorer;
 		%feature("autodoc", "
 Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
 T: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
-findkeep: bool (optional, default to Standard_True)
+findkeep: bool (optional, default to true)
 
 Return
 -------
@@ -4733,7 +4686,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_Explorer;
-		 TopOpeBRepDS_Explorer(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopAbs_ShapeEnum T = TopAbs_SHAPE, const Standard_Boolean findkeep = Standard_True);
+		 TopOpeBRepDS_Explorer(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopAbs_ShapeEnum T = TopAbs_SHAPE, const bool findkeep = true);
 
 		/****** TopOpeBRepDS_Explorer::Current ******/
 		/****** md5 signature: b191bf677bf7b52144f20d0821ea8f06 ******/
@@ -4775,7 +4728,7 @@ No available documentation.
 		const TopoDS_Face Face();
 
 		/****** TopOpeBRepDS_Explorer::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -4785,17 +4738,17 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** TopOpeBRepDS_Explorer::Init ******/
-		/****** md5 signature: 6fde6f7a8628097003212c0a7065c5e6 ******/
+		/****** md5 signature: 4100fb20cfdbefc87278a3665a6f7966 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
 T: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
-findkeep: bool (optional, default to Standard_True)
+findkeep: bool (optional, default to true)
 
 Return
 -------
@@ -4805,10 +4758,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopAbs_ShapeEnum T = TopAbs_SHAPE, const Standard_Boolean findkeep = Standard_True);
+		void Init(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopAbs_ShapeEnum T = TopAbs_SHAPE, const bool findkeep = true);
 
 		/****** TopOpeBRepDS_Explorer::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -4818,7 +4771,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepDS_Explorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -4892,12 +4845,12 @@ No available documentation.
 		 TopOpeBRepDS_FIR(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_FIR::ProcessFaceInterferences ******/
-		/****** md5 signature: 22ea874d673770f31f98a3c38885bd6a ******/
+		/****** md5 signature: bca602f8ea802578396affd5ec299aa0 ******/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
-M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+M: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4907,16 +4860,16 @@ Description
 -----------
 No available documentation.
 ") ProcessFaceInterferences;
-		void ProcessFaceInterferences(const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & M);
+		void ProcessFaceInterferences(const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & M);
 
 		/****** TopOpeBRepDS_FIR::ProcessFaceInterferences ******/
-		/****** md5 signature: f498bfbdbef6b2b2c5c6887b29314d97 ******/
+		/****** md5 signature: e6d8ebcb6e3aeb55a9df40a7af39363b ******/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+M: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4926,7 +4879,7 @@ Description
 -----------
 No available documentation.
 ") ProcessFaceInterferences;
-		void ProcessFaceInterferences(const Standard_Integer I, const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & M);
+		void ProcessFaceInterferences(const int I, const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & M);
 
 };
 
@@ -4961,7 +4914,7 @@ No available documentation.
 		 TopOpeBRepDS_FaceInterferenceTool(const TopOpeBRepDS_PDataStructure & P);
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::Add ******/
-		/****** md5 signature: 850f900a261e084982a4ff2f1d4e03e9 ******/
+		/****** md5 signature: 2864ecc8a9415c3b5fe19f0b704265bf ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4980,7 +4933,7 @@ Description
 -----------
 Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry().
 ") Add;
-		void Add(const TopoDS_Shape & FI, const TopoDS_Shape & F, const TopoDS_Shape & E, const Standard_Boolean Eisnew, const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		void Add(const TopoDS_Shape & FI, const TopoDS_Shape & F, const TopoDS_Shape & E, const bool Eisnew, const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::Add ******/
 		/****** md5 signature: 47cc6602993a12c2438dc9b1d0e36a75 ******/
@@ -5003,7 +4956,7 @@ No available documentation.
 		void Add(const TopoDS_Shape & E, const TopOpeBRepDS_Curve & C, const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::GetEdgePntPar ******/
-		/****** md5 signature: f23d64f925254b1a87ef0e152423c9f7 ******/
+		/****** md5 signature: 916678840a93b41566df9cf8cfa048b9 ******/
 		%feature("compactdefaultargs") GetEdgePntPar;
 		%feature("autodoc", "
 Parameters
@@ -5012,7 +4965,7 @@ P: gp_Pnt
 
 Return
 -------
-par: float
+par: double
 
 Description
 -----------
@@ -5021,7 +4974,7 @@ No available documentation.
 		void GetEdgePntPar(gp_Pnt & P, Standard_Real &OutValue);
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::Init ******/
-		/****** md5 signature: 4fdbc4d55bb6b5d8955adabdcd7f8921 ******/
+		/****** md5 signature: dabaaabcfc9b3a70988dd1e7d56925b5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5039,10 +4992,10 @@ Description
 -----------
 Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry().
 ") Init;
-		void Init(const TopoDS_Shape & FI, const TopoDS_Shape & E, const Standard_Boolean Eisnew, const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		void Init(const TopoDS_Shape & FI, const TopoDS_Shape & E, const bool Eisnew, const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::IsEdgePntParDef ******/
-		/****** md5 signature: 1396dc1709803c83163f56bf7cbfcc5a ******/
+		/****** md5 signature: ed0903e5e7dd49b112eb2c98f9ba0e01 ******/
 		%feature("compactdefaultargs") IsEdgePntParDef;
 		%feature("autodoc", "Return
 -------
@@ -5052,16 +5005,16 @@ Description
 -----------
 No available documentation.
 ") IsEdgePntParDef;
-		Standard_Boolean IsEdgePntParDef();
+		bool IsEdgePntParDef();
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::SetEdgePntPar ******/
-		/****** md5 signature: 7ab4d2ac72a72d51d433c55bbba758c0 ******/
+		/****** md5 signature: 009f7d98c109a6963d42544950e3df11 ******/
 		%feature("compactdefaultargs") SetEdgePntPar;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-par: float
+par: double
 
 Return
 -------
@@ -5071,7 +5024,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgePntPar;
-		void SetEdgePntPar(const gp_Pnt & P, const Standard_Real par);
+		void SetEdgePntPar(const gp_Pnt & P, const double par);
 
 		/****** TopOpeBRepDS_FaceInterferenceTool::Transition ******/
 		/****** md5 signature: cddcef230eeaaa0ab8b7f8b429bec838 ******/
@@ -5106,13 +5059,13 @@ No available documentation.
 class TopOpeBRepDS_Filter {
 	public:
 		/****** TopOpeBRepDS_Filter::TopOpeBRepDS_Filter ******/
-		/****** md5 signature: 75fb8c520ae1c01d147cebdf2ba9d2bb ******/
+		/****** md5 signature: 95b1e65b7ce852331cd91591e45aa59d ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_Filter;
 		%feature("autodoc", "
 Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
-pClassif: TopOpeBRepTool_PShapeClassifier (optional, default to 0)
+pClassif: TopOpeBRepTool_PShapeClassifier (optional, default to nullptr)
 
 Return
 -------
@@ -5122,7 +5075,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_Filter;
-		 TopOpeBRepDS_Filter(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopOpeBRepTool_PShapeClassifier & pClassif = 0);
+		 TopOpeBRepDS_Filter(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopOpeBRepTool_PShapeClassifier & pClassif = nullptr);
 
 		/****** TopOpeBRepDS_Filter::ProcessCurveInterferences ******/
 		/****** md5 signature: 1465b61e58c569ca8b3a40b168fef6ef ******/
@@ -5138,7 +5091,7 @@ No available documentation.
 		void ProcessCurveInterferences();
 
 		/****** TopOpeBRepDS_Filter::ProcessCurveInterferences ******/
-		/****** md5 signature: 9e91fd561d91f3a2e8ba5d6fef022eaf ******/
+		/****** md5 signature: 275ba336339545e8d0bda4bb5e69fb98 ******/
 		%feature("compactdefaultargs") ProcessCurveInterferences;
 		%feature("autodoc", "
 Parameters
@@ -5153,7 +5106,7 @@ Description
 -----------
 No available documentation.
 ") ProcessCurveInterferences;
-		void ProcessCurveInterferences(const Standard_Integer I);
+		void ProcessCurveInterferences(const int I);
 
 		/****** TopOpeBRepDS_Filter::ProcessEdgeInterferences ******/
 		/****** md5 signature: fdb0a9346715ac3d5b07add0cbfe07d8 ******/
@@ -5169,7 +5122,7 @@ No available documentation.
 		void ProcessEdgeInterferences();
 
 		/****** TopOpeBRepDS_Filter::ProcessEdgeInterferences ******/
-		/****** md5 signature: acd902e6f368f098486cef5b71d435ec ******/
+		/****** md5 signature: 0701560f3ecad2ca4e4002b90f11b089 ******/
 		%feature("compactdefaultargs") ProcessEdgeInterferences;
 		%feature("autodoc", "
 Parameters
@@ -5184,15 +5137,15 @@ Description
 -----------
 No available documentation.
 ") ProcessEdgeInterferences;
-		void ProcessEdgeInterferences(const Standard_Integer I);
+		void ProcessEdgeInterferences(const int I);
 
 		/****** TopOpeBRepDS_Filter::ProcessFaceInterferences ******/
-		/****** md5 signature: 8e2cf91d4fa889e880274c3f50d117c2 ******/
+		/****** md5 signature: 13c725361cc2a6e075b5c72d72a85dc0 ******/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
-MEsp: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+MEsp: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -5202,16 +5155,16 @@ Description
 -----------
 No available documentation.
 ") ProcessFaceInterferences;
-		void ProcessFaceInterferences(const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MEsp);
+		void ProcessFaceInterferences(const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & MEsp);
 
 		/****** TopOpeBRepDS_Filter::ProcessFaceInterferences ******/
-		/****** md5 signature: e5aa50a62588b5d67aa50f847ca70ba7 ******/
+		/****** md5 signature: 01fd55a0750a49826cf3a98c2db5ad6d ******/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-MEsp: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+MEsp: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -5221,7 +5174,7 @@ Description
 -----------
 No available documentation.
 ") ProcessFaceInterferences;
-		void ProcessFaceInterferences(const Standard_Integer I, const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MEsp);
+		void ProcessFaceInterferences(const int I, const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & MEsp);
 
 		/****** TopOpeBRepDS_Filter::ProcessInterferences ******/
 		/****** md5 signature: 03ecfa694ab2b8c0bb984407262d748c ******/
@@ -5269,13 +5222,13 @@ No available documentation.
 		 TopOpeBRepDS_GapFiller(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_GapFiller::AddPointsOnConnexShape ******/
-		/****** md5 signature: a1a33da8601ba47e27ee7deae1184771 ******/
+		/****** md5 signature: 8556d820215996b35b2a169de5d30ae5 ******/
 		%feature("compactdefaultargs") AddPointsOnConnexShape;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5285,16 +5238,16 @@ Description
 -----------
 Methodes pour reduire la liste des Points qui peuvent correspondre a une Point donne.
 ") AddPointsOnConnexShape;
-		void AddPointsOnConnexShape(const TopoDS_Shape & F, const TopOpeBRepDS_ListOfInterference & LI);
+		void AddPointsOnConnexShape(const TopoDS_Shape & F, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::AddPointsOnShape ******/
-		/****** md5 signature: c6339e54001bd6cc3323655b5757d5d3 ******/
+		/****** md5 signature: fc71db17942f501c021a1604c6309d03 ******/
 		%feature("compactdefaultargs") AddPointsOnShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5304,7 +5257,7 @@ Description
 -----------
 No available documentation.
 ") AddPointsOnShape;
-		void AddPointsOnShape(const TopoDS_Shape & S, TopOpeBRepDS_ListOfInterference & LI);
+		void AddPointsOnShape(const TopoDS_Shape & S, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::BuildNewGeometries ******/
 		/****** md5 signature: 2bcc3a668d4ba8f8140566f3c713941d ******/
@@ -5320,12 +5273,12 @@ No available documentation.
 		void BuildNewGeometries();
 
 		/****** TopOpeBRepDS_GapFiller::CheckConnexity ******/
-		/****** md5 signature: c663927441caf5a2bdb02a0d53cddde0 ******/
+		/****** md5 signature: cc8347d5af9b5a8b94a293377dff398a ******/
 		%feature("compactdefaultargs") CheckConnexity;
 		%feature("autodoc", "
 Parameters
 ----------
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5335,16 +5288,16 @@ Description
 -----------
 Enchaine les sections via les points d'Interferences deja associe; Renvoit dans <L> les points extremites des Lignes. Methodes pour construire la liste des Points qui peuvent correspondre a une Point donne.
 ") CheckConnexity;
-		Standard_Boolean CheckConnexity(TopOpeBRepDS_ListOfInterference & LI);
+		bool CheckConnexity(NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FilterByEdge ******/
-		/****** md5 signature: 1c416ae069d10e8f5408d34ef6f14063 ******/
+		/****** md5 signature: 02110384f336a96f998b504bc6371609 ******/
 		%feature("compactdefaultargs") FilterByEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5354,16 +5307,16 @@ Description
 -----------
 No available documentation.
 ") FilterByEdge;
-		void FilterByEdge(const TopoDS_Edge & E, TopOpeBRepDS_ListOfInterference & LI);
+		void FilterByEdge(const TopoDS_Edge & E, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FilterByFace ******/
-		/****** md5 signature: b071ee09f7ff2dec464933e3f78f23c0 ******/
+		/****** md5 signature: c9d55e69653dc7aab67ddf56d3b01bee ******/
 		%feature("compactdefaultargs") FilterByFace;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5373,17 +5326,17 @@ Description
 -----------
 No available documentation.
 ") FilterByFace;
-		void FilterByFace(const TopoDS_Face & F, TopOpeBRepDS_ListOfInterference & LI);
+		void FilterByFace(const TopoDS_Face & F, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FilterByIncidentDistance ******/
-		/****** md5 signature: a20273e832ac0e3a103a3cc20b44dbce ******/
+		/****** md5 signature: 2f16df34faa705e6aef1ac78beba8895 ******/
 		%feature("compactdefaultargs") FilterByIncidentDistance;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
 I: TopOpeBRepDS_Interference
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5393,16 +5346,16 @@ Description
 -----------
 No available documentation.
 ") FilterByIncidentDistance;
-		void FilterByIncidentDistance(const TopoDS_Face & F, const opencascade::handle<TopOpeBRepDS_Interference> & I, TopOpeBRepDS_ListOfInterference & LI);
+		void FilterByIncidentDistance(const TopoDS_Face & F, const opencascade::handle<TopOpeBRepDS_Interference> & I, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FindAssociatedPoints ******/
-		/****** md5 signature: 3a1e8b7f77ae03ac217b2d9432f3b884 ******/
+		/****** md5 signature: 6955d4e4f3421a25f28099268ef12408 ******/
 		%feature("compactdefaultargs") FindAssociatedPoints;
 		%feature("autodoc", "
 Parameters
 ----------
 I: TopOpeBRepDS_Interference
-LI: TopOpeBRepDS_ListOfInterference
+LI: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -5412,10 +5365,10 @@ Description
 -----------
 Recherche parmi l'ensemble des points d'Interference la Liste <LI> des points qui correspondent au point d'indice <Index>.
 ") FindAssociatedPoints;
-		void FindAssociatedPoints(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopOpeBRepDS_ListOfInterference & LI);
+		void FindAssociatedPoints(const opencascade::handle<TopOpeBRepDS_Interference> & I, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
 
 		/****** TopOpeBRepDS_GapFiller::IsOnEdge ******/
-		/****** md5 signature: 601084fd5330ff669b8e8a168e3849b9 ******/
+		/****** md5 signature: b1569a9a37dbc4b523f6b3835f8ef72b ******/
 		%feature("compactdefaultargs") IsOnEdge;
 		%feature("autodoc", "
 Parameters
@@ -5431,10 +5384,10 @@ Description
 -----------
 Return True si I ou une de ses representaions a pour support <E>. Methodes de reconstructions des geometries des point et des courbes de section.
 ") IsOnEdge;
-		Standard_Boolean IsOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Edge & E);
+		bool IsOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Edge & E);
 
 		/****** TopOpeBRepDS_GapFiller::IsOnFace ******/
-		/****** md5 signature: 70f5ecde5396a914e5538d3bfb583667 ******/
+		/****** md5 signature: 4c3a9e96044d08455293511a2211ece7 ******/
 		%feature("compactdefaultargs") IsOnFace;
 		%feature("autodoc", "
 Parameters
@@ -5450,7 +5403,7 @@ Description
 -----------
 Return True si I a ete obtenu par une intersection avec <F>.
 ") IsOnFace;
-		Standard_Boolean IsOnFace(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Face & F);
+		bool IsOnFace(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Face & F);
 
 		/****** TopOpeBRepDS_GapFiller::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -5466,13 +5419,13 @@ No available documentation.
 		void Perform();
 
 		/****** TopOpeBRepDS_GapFiller::ReBuildGeom ******/
-		/****** md5 signature: 739221b80bfd83fbdc3d57147fd38d81 ******/
+		/****** md5 signature: d0f2733074da87b8be91b0130541a9b6 ******/
 		%feature("compactdefaultargs") ReBuildGeom;
 		%feature("autodoc", "
 Parameters
 ----------
 I1: TopOpeBRepDS_Interference
-Done: TColStd_MapOfInteger
+Done: NCollection_Map<int>
 
 Return
 -------
@@ -5482,7 +5435,7 @@ Description
 -----------
 No available documentation.
 ") ReBuildGeom;
-		void ReBuildGeom(const opencascade::handle<TopOpeBRepDS_Interference> & I1, TColStd_MapOfInteger & Done);
+		void ReBuildGeom(const opencascade::handle<TopOpeBRepDS_Interference> & I1, NCollection_Map<int> & Done);
 
 };
 
@@ -5530,7 +5483,7 @@ No available documentation.
 		 TopOpeBRepDS_GapTool(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_GapTool::ChangeSameInterferences ******/
-		/****** md5 signature: 10ff921a613b395592d9493ffc88126a ******/
+		/****** md5 signature: 42c6a5e2d0218832a7e4cd0110146ca2 ******/
 		%feature("compactdefaultargs") ChangeSameInterferences;
 		%feature("autodoc", "
 Parameters
@@ -5539,16 +5492,16 @@ I: TopOpeBRepDS_Interference
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeSameInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeSameInterferences(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeSameInterferences(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_GapTool::Curve ******/
-		/****** md5 signature: a13078d92284b0bd68397d6d4e9713bd ******/
+		/****** md5 signature: 6e94efa6e5f6f1ca70e39d93679de971 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -5564,10 +5517,10 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		Standard_Boolean Curve(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopOpeBRepDS_Curve & C);
+		bool Curve(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopOpeBRepDS_Curve & C);
 
 		/****** TopOpeBRepDS_GapTool::EdgeSupport ******/
-		/****** md5 signature: f6132fe52c3cba50cbfc1e403330620b ******/
+		/****** md5 signature: 9c74ac3cf53b78cb6f02ddf0898e0eb9 ******/
 		%feature("compactdefaultargs") EdgeSupport;
 		%feature("autodoc", "
 Parameters
@@ -5583,10 +5536,10 @@ Description
 -----------
 No available documentation.
 ") EdgeSupport;
-		Standard_Boolean EdgeSupport(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopoDS_Shape & E);
+		bool EdgeSupport(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopoDS_Shape & E);
 
 		/****** TopOpeBRepDS_GapTool::FacesSupport ******/
-		/****** md5 signature: c5eb5d668cb3be5c28e849f094ed2ac8 ******/
+		/****** md5 signature: 601d36203c369acd0ee861257f512957 ******/
 		%feature("compactdefaultargs") FacesSupport;
 		%feature("autodoc", "
 Parameters
@@ -5603,7 +5556,7 @@ Description
 -----------
 Return les faces qui ont genere la section origine de I.
 ") FacesSupport;
-		Standard_Boolean FacesSupport(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopoDS_Shape & F1, TopoDS_Shape & F2);
+		bool FacesSupport(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopoDS_Shape & F1, TopoDS_Shape & F2);
 
 		/****** TopOpeBRepDS_GapTool::Init ******/
 		/****** md5 signature: 024bcfdbf9359dde26d22897154bd930 ******/
@@ -5624,7 +5577,7 @@ No available documentation.
 		void Init(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepDS_GapTool::Interferences ******/
-		/****** md5 signature: ac3f8088a166d46a6c4fb1c5cd2a2333 ******/
+		/****** md5 signature: 035d6298ac8221bf668baf25fc1baa47 ******/
 		%feature("compactdefaultargs") Interferences;
 		%feature("autodoc", "
 Parameters
@@ -5633,16 +5586,16 @@ IndexPoint: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") Interferences;
-		const TopOpeBRepDS_ListOfInterference & Interferences(const Standard_Integer IndexPoint);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & Interferences(const int IndexPoint);
 
 		/****** TopOpeBRepDS_GapTool::ParameterOnEdge ******/
-		/****** md5 signature: fd91bba7a092a453fa1dfa4824d15a70 ******/
+		/****** md5 signature: e5b832249037d256fc995098dbbf80f1 ******/
 		%feature("compactdefaultargs") ParameterOnEdge;
 		%feature("autodoc", "
 Parameters
@@ -5652,16 +5605,16 @@ E: TopoDS_Shape
 
 Return
 -------
-U: float
+U: double
 
 Description
 -----------
 No available documentation.
 ") ParameterOnEdge;
-		Standard_Boolean ParameterOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Shape & E, Standard_Real &OutValue);
+		bool ParameterOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Shape & E, Standard_Real &OutValue);
 
 		/****** TopOpeBRepDS_GapTool::SameInterferences ******/
-		/****** md5 signature: 16567c61420f685f242ddf5294ab3beb ******/
+		/****** md5 signature: 06df1ea106756c2ec9ddfc51953a3ea6 ******/
 		%feature("compactdefaultargs") SameInterferences;
 		%feature("autodoc", "
 Parameters
@@ -5670,23 +5623,23 @@ I: TopOpeBRepDS_Interference
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") SameInterferences;
-		const TopOpeBRepDS_ListOfInterference & SameInterferences(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & SameInterferences(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_GapTool::SetParameterOnEdge ******/
-		/****** md5 signature: 03ce205e073cc6cb39764a6c7302c52d ******/
+		/****** md5 signature: e6a152fb4fbcbe38daa526a50220f40d ******/
 		%feature("compactdefaultargs") SetParameterOnEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 I: TopOpeBRepDS_Interference
 E: TopoDS_Shape
-U: float
+U: double
 
 Return
 -------
@@ -5696,10 +5649,10 @@ Description
 -----------
 No available documentation.
 ") SetParameterOnEdge;
-		void SetParameterOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Shape & E, const Standard_Real U);
+		void SetParameterOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Shape & E, const double U);
 
 		/****** TopOpeBRepDS_GapTool::SetPoint ******/
-		/****** md5 signature: 22cd93a3133fc7e6f2a7b9e6de48b67d ******/
+		/****** md5 signature: 7e6bef0c1672a6753e6846544d422bcf ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
@@ -5715,7 +5668,7 @@ Description
 -----------
 No available documentation.
 ") SetPoint;
-		void SetPoint(const opencascade::handle<TopOpeBRepDS_Interference> & I, const Standard_Integer IndexPoint);
+		void SetPoint(const opencascade::handle<TopOpeBRepDS_Interference> & I, const int IndexPoint);
 
 };
 
@@ -5801,30 +5754,30 @@ No available documentation.
 		void Assign(const TopOpeBRepDS_GeometryData & Other);
 
 		/****** TopOpeBRepDS_GeometryData::ChangeInterferences ******/
-		/****** md5 signature: 1c8cdb23abd41bd3fe65cba4df26ed63 ******/
+		/****** md5 signature: 49be78cb30ff54b8097d34def094ca37 ******/
 		%feature("compactdefaultargs") ChangeInterferences;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeInterferences();
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeInterferences();
 
 		/****** TopOpeBRepDS_GeometryData::Interferences ******/
-		/****** md5 signature: 237ed42d67b2b8b56ca50b69c4e86889 ******/
+		/****** md5 signature: 1ad49ef4c8f0239686b904a9bb96ba95 ******/
 		%feature("compactdefaultargs") Interferences;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") Interferences;
-		const TopOpeBRepDS_ListOfInterference & Interferences();
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & Interferences();
 
 };
 
@@ -5857,7 +5810,7 @@ No available documentation.
 		 TopOpeBRepDS_Interference();
 
 		/****** TopOpeBRepDS_Interference::TopOpeBRepDS_Interference ******/
-		/****** md5 signature: 57f654165021ed20333eaeb9cc568bda ******/
+		/****** md5 signature: b8b0a349fd2930de89e28c9d435653d9 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_Interference;
 		%feature("autodoc", "
 Parameters
@@ -5876,7 +5829,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_Interference;
-		 TopOpeBRepDS_Interference(const TopOpeBRepDS_Transition & Transition, const TopOpeBRepDS_Kind SupportType, const Standard_Integer Support, const TopOpeBRepDS_Kind GeometryType, const Standard_Integer Geometry);
+		 TopOpeBRepDS_Interference(const TopOpeBRepDS_Transition & Transition, const TopOpeBRepDS_Kind SupportType, const int Support, const TopOpeBRepDS_Kind GeometryType, const int Geometry);
 
 		/****** TopOpeBRepDS_Interference::TopOpeBRepDS_Interference ******/
 		/****** md5 signature: 24dc11f4674be209a27cf60b2243e080 ******/
@@ -5910,7 +5863,7 @@ No available documentation.
 		TopOpeBRepDS_Transition & ChangeTransition();
 
 		/****** TopOpeBRepDS_Interference::GKGSKS ******/
-		/****** md5 signature: 29fece9f7cd768c83761bb164d307d2f ******/
+		/****** md5 signature: b2ff7a0095004b13b25e424b823c7b53 ******/
 		%feature("compactdefaultargs") GKGSKS;
 		%feature("autodoc", "
 Parameters
@@ -5930,7 +5883,7 @@ return GeometryType + Geometry + SupportType + Support.
 		void GKGSKS(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue, TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepDS_Interference::Geometry ******/
-		/****** md5 signature: 37e738c2b410a542f3698c2f6ed890de ******/
+		/****** md5 signature: d704724ace2c7d114214e32c7195d171 ******/
 		%feature("compactdefaultargs") Geometry;
 		%feature("autodoc", "Return
 -------
@@ -5940,10 +5893,10 @@ Description
 -----------
 No available documentation.
 ") Geometry;
-		Standard_Integer Geometry();
+		int Geometry();
 
 		/****** TopOpeBRepDS_Interference::Geometry ******/
-		/****** md5 signature: 0f344c7bfc84ae146a04f63060ef6b22 ******/
+		/****** md5 signature: 024f2bb3166d1fb8e14c734adacf5638 ******/
 		%feature("compactdefaultargs") Geometry;
 		%feature("autodoc", "
 Parameters
@@ -5958,7 +5911,7 @@ Description
 -----------
 No available documentation.
 ") Geometry;
-		void Geometry(const Standard_Integer G);
+		void Geometry(const int G);
 
 		/****** TopOpeBRepDS_Interference::GeometryType ******/
 		/****** md5 signature: 844ce07794e9ce4fc9b3f97ebf69382f ******/
@@ -5992,7 +5945,7 @@ No available documentation.
 		void GeometryType(const TopOpeBRepDS_Kind GT);
 
 		/****** TopOpeBRepDS_Interference::HasSameGeometry ******/
-		/****** md5 signature: 9722ce3aeab1e2366ee5810c098d5ed3 ******/
+		/****** md5 signature: 5259d74dd3dd06f330243410119a0aaf ******/
 		%feature("compactdefaultargs") HasSameGeometry;
 		%feature("autodoc", "
 Parameters
@@ -6007,10 +5960,10 @@ Description
 -----------
 No available documentation.
 ") HasSameGeometry;
-		Standard_Boolean HasSameGeometry(const opencascade::handle<TopOpeBRepDS_Interference> & Other);
+		bool HasSameGeometry(const opencascade::handle<TopOpeBRepDS_Interference> & Other);
 
 		/****** TopOpeBRepDS_Interference::HasSameSupport ******/
-		/****** md5 signature: 87f6d4f0ee76b48cd98408e83cf2da3e ******/
+		/****** md5 signature: da7f4da5310c65588f329999db89ddb0 ******/
 		%feature("compactdefaultargs") HasSameSupport;
 		%feature("autodoc", "
 Parameters
@@ -6025,10 +5978,10 @@ Description
 -----------
 No available documentation.
 ") HasSameSupport;
-		Standard_Boolean HasSameSupport(const opencascade::handle<TopOpeBRepDS_Interference> & Other);
+		bool HasSameSupport(const opencascade::handle<TopOpeBRepDS_Interference> & Other);
 
 		/****** TopOpeBRepDS_Interference::SetGeometry ******/
-		/****** md5 signature: 15428bccd2287a10ef837e9e8f5eb21d ******/
+		/****** md5 signature: c6ca5128a3805ef746f0eeff2a711fff ******/
 		%feature("compactdefaultargs") SetGeometry;
 		%feature("autodoc", "
 Parameters
@@ -6043,10 +5996,10 @@ Description
 -----------
 No available documentation.
 ") SetGeometry;
-		void SetGeometry(const Standard_Integer GI);
+		void SetGeometry(const int GI);
 
 		/****** TopOpeBRepDS_Interference::Support ******/
-		/****** md5 signature: 7aa624728551f1bd526b097364323e6c ******/
+		/****** md5 signature: 9090c4e5db2e5c0baea34ea7471993cf ******/
 		%feature("compactdefaultargs") Support;
 		%feature("autodoc", "Return
 -------
@@ -6056,10 +6009,10 @@ Description
 -----------
 No available documentation.
 ") Support;
-		Standard_Integer Support();
+		int Support();
 
 		/****** TopOpeBRepDS_Interference::Support ******/
-		/****** md5 signature: 40fffd6992a1a134cd3c63bb788aba9a ******/
+		/****** md5 signature: 810c63323c69c8e664ac54087781f75a ******/
 		%feature("compactdefaultargs") Support;
 		%feature("autodoc", "
 Parameters
@@ -6074,7 +6027,7 @@ Description
 -----------
 No available documentation.
 ") Support;
-		void Support(const Standard_Integer S);
+		void Support(const int S);
 
 		/****** TopOpeBRepDS_Interference::SupportType ******/
 		/****** md5 signature: 7133e5c87610c7bbd71b6f22b6e541eb ******/
@@ -6168,12 +6121,12 @@ No available documentation.
 		 TopOpeBRepDS_InterferenceIterator();
 
 		/****** TopOpeBRepDS_InterferenceIterator::TopOpeBRepDS_InterferenceIterator ******/
-		/****** md5 signature: 8ed0f027e76b4565a73cb84db6c20802 ******/
+		/****** md5 signature: 35eeb14939d4baaa7170286d7aa6509d ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_InterferenceIterator;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -6183,23 +6136,23 @@ Description
 -----------
 Creates an iterator on the Interference of list <L>.
 ") TopOpeBRepDS_InterferenceIterator;
-		 TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_ListOfInterference & L);
+		 TopOpeBRepDS_InterferenceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_InterferenceIterator::ChangeIterator ******/
-		/****** md5 signature: 5a8a77a0345b10343cd11bd4937db862 ******/
+		/****** md5 signature: 4a5d38d3105b0250e1a523cf855144dd ******/
 		%feature("compactdefaultargs") ChangeIterator;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_ListIteratorOfListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>::Iterator
 
 Description
 -----------
 No available documentation.
 ") ChangeIterator;
-		TopOpeBRepDS_ListIteratorOfListOfInterference & ChangeIterator();
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>::Iterator & ChangeIterator();
 
 		/****** TopOpeBRepDS_InterferenceIterator::Geometry ******/
-		/****** md5 signature: 0f344c7bfc84ae146a04f63060ef6b22 ******/
+		/****** md5 signature: 024f2bb3166d1fb8e14c734adacf5638 ******/
 		%feature("compactdefaultargs") Geometry;
 		%feature("autodoc", "
 Parameters
@@ -6214,7 +6167,7 @@ Description
 -----------
 define a condition on interference iteration process. Interference must match the Geometry <G>.
 ") Geometry;
-		void Geometry(const Standard_Integer G);
+		void Geometry(const int G);
 
 		/****** TopOpeBRepDS_InterferenceIterator::GeometryKind ******/
 		/****** md5 signature: 7c24d25f53c83a2fe339cd9736091f36 ******/
@@ -6235,12 +6188,12 @@ define a condition on interference iteration process. Interference must match th
 		void GeometryKind(const TopOpeBRepDS_Kind GK);
 
 		/****** TopOpeBRepDS_InterferenceIterator::Init ******/
-		/****** md5 signature: 7f5819da47cd75207e05c93d57cc56c6 ******/
+		/****** md5 signature: 17292fa3c18fc235f926ab48eb9544a7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -6250,7 +6203,7 @@ Description
 -----------
 re-initialize interference iteration process on the list of interference <L>. Conditions are not modified.
 ") Init;
-		void Init(const TopOpeBRepDS_ListOfInterference & L);
+		void Init(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_InterferenceIterator::Match ******/
 		/****** md5 signature: 3b22ed9ef0be8edf337a58574cb50ef5 ******/
@@ -6266,7 +6219,7 @@ reach for an interference matching the conditions (if defined).
 		void Match();
 
 		/****** TopOpeBRepDS_InterferenceIterator::MatchInterference ******/
-		/****** md5 signature: f113425c763c976ba037fd6b98a7d608 ******/
+		/****** md5 signature: ca4b26263b412364b2a422f732b7e720 ******/
 		%feature("compactdefaultargs") MatchInterference;
 		%feature("autodoc", "
 Parameters
@@ -6281,10 +6234,10 @@ Description
 -----------
 Returns True if the Interference <I> matches the conditions (if defined). If no conditions defined, returns True.
 ") MatchInterference;
-		virtual Standard_Boolean MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		virtual bool MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_InterferenceIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -6294,7 +6247,7 @@ Description
 -----------
 Returns True if there is a current Interference in the iteration.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepDS_InterferenceIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -6310,7 +6263,7 @@ Move to the next Interference.
 		void Next();
 
 		/****** TopOpeBRepDS_InterferenceIterator::Support ******/
-		/****** md5 signature: 40fffd6992a1a134cd3c63bb788aba9a ******/
+		/****** md5 signature: 810c63323c69c8e664ac54087781f75a ******/
 		%feature("compactdefaultargs") Support;
 		%feature("autodoc", "
 Parameters
@@ -6325,7 +6278,7 @@ Description
 -----------
 define a condition on interference iteration process. Interference must match the Support <S>.
 ") Support;
-		void Support(const Standard_Integer S);
+		void Support(const int S);
 
 		/****** TopOpeBRepDS_InterferenceIterator::SupportKind ******/
 		/****** md5 signature: ecfb3fa2c4963c8fa0cac03ac9ad9f77 ******/
@@ -6391,7 +6344,7 @@ duplicate I in a new interference with Complement() transition.
 		static opencascade::handle<TopOpeBRepDS_Interference> DuplicateCurvePointInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_InterferenceTool::MakeCurveInterference ******/
-		/****** md5 signature: 71edbf5e87c4306ef5dfa4f0a637ce26 ******/
+		/****** md5 signature: cc0b0ad8e68c7436219bdbf773c95a38 ******/
 		%feature("compactdefaultargs") MakeCurveInterference;
 		%feature("autodoc", "
 Parameters
@@ -6401,7 +6354,7 @@ SK: TopOpeBRepDS_Kind
 SI: int
 GK: TopOpeBRepDS_Kind
 GI: int
-P: float
+P: double
 
 Return
 -------
@@ -6411,10 +6364,10 @@ Description
 -----------
 No available documentation.
 ") MakeCurveInterference;
-		static opencascade::handle<TopOpeBRepDS_Interference> MakeCurveInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind SK, const Standard_Integer SI, const TopOpeBRepDS_Kind GK, const Standard_Integer GI, const Standard_Real P);
+		static opencascade::handle<TopOpeBRepDS_Interference> MakeCurveInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind SK, const int SI, const TopOpeBRepDS_Kind GK, const int GI, const double P);
 
 		/****** TopOpeBRepDS_InterferenceTool::MakeEdgeInterference ******/
-		/****** md5 signature: 80c82fe33e5082861fed7023d51e20eb ******/
+		/****** md5 signature: deb89a3b30973ce6773ea93c08f3d8a7 ******/
 		%feature("compactdefaultargs") MakeEdgeInterference;
 		%feature("autodoc", "
 Parameters
@@ -6424,7 +6377,7 @@ SK: TopOpeBRepDS_Kind
 SI: int
 GK: TopOpeBRepDS_Kind
 GI: int
-P: float
+P: double
 
 Return
 -------
@@ -6434,10 +6387,10 @@ Description
 -----------
 No available documentation.
 ") MakeEdgeInterference;
-		static opencascade::handle<TopOpeBRepDS_Interference> MakeEdgeInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind SK, const Standard_Integer SI, const TopOpeBRepDS_Kind GK, const Standard_Integer GI, const Standard_Real P);
+		static opencascade::handle<TopOpeBRepDS_Interference> MakeEdgeInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind SK, const int SI, const TopOpeBRepDS_Kind GK, const int GI, const double P);
 
 		/****** TopOpeBRepDS_InterferenceTool::MakeEdgeVertexInterference ******/
-		/****** md5 signature: c6ba7aaf7a9e5b341392fd222ecf8cb5 ******/
+		/****** md5 signature: bc24b6adbf1d6d0f371271e49b2822dc ******/
 		%feature("compactdefaultargs") MakeEdgeVertexInterference;
 		%feature("autodoc", "
 Parameters
@@ -6447,7 +6400,7 @@ EdgeI: int
 VertexI: int
 VertexIsBound: bool
 Config: TopOpeBRepDS_Config
-param: float
+param: double
 
 Return
 -------
@@ -6457,10 +6410,10 @@ Description
 -----------
 No available documentation.
 ") MakeEdgeVertexInterference;
-		static opencascade::handle<TopOpeBRepDS_Interference> MakeEdgeVertexInterference(const TopOpeBRepDS_Transition & Transition, const Standard_Integer EdgeI, const Standard_Integer VertexI, const Standard_Boolean VertexIsBound, const TopOpeBRepDS_Config Config, const Standard_Real param);
+		static opencascade::handle<TopOpeBRepDS_Interference> MakeEdgeVertexInterference(const TopOpeBRepDS_Transition & Transition, const int EdgeI, const int VertexI, const bool VertexIsBound, const TopOpeBRepDS_Config Config, const double param);
 
 		/****** TopOpeBRepDS_InterferenceTool::MakeFaceCurveInterference ******/
-		/****** md5 signature: 73510f6558324661f2cebcfd5b8da326 ******/
+		/****** md5 signature: 12adeb83064b188d4c073bdb66f7684a ******/
 		%feature("compactdefaultargs") MakeFaceCurveInterference;
 		%feature("autodoc", "
 Parameters
@@ -6478,10 +6431,10 @@ Description
 -----------
 No available documentation.
 ") MakeFaceCurveInterference;
-		static opencascade::handle<TopOpeBRepDS_Interference> MakeFaceCurveInterference(const TopOpeBRepDS_Transition & Transition, const Standard_Integer FaceI, const Standard_Integer CurveI, const opencascade::handle<Geom2d_Curve> & PC);
+		static opencascade::handle<TopOpeBRepDS_Interference> MakeFaceCurveInterference(const TopOpeBRepDS_Transition & Transition, const int FaceI, const int CurveI, const opencascade::handle<Geom2d_Curve> & PC);
 
 		/****** TopOpeBRepDS_InterferenceTool::MakeFaceEdgeInterference ******/
-		/****** md5 signature: d3c084d7a313c6f7c27270c4ed2607f2 ******/
+		/****** md5 signature: 672da6d56bf9d604c88c45c8ffc2f4e6 ******/
 		%feature("compactdefaultargs") MakeFaceEdgeInterference;
 		%feature("autodoc", "
 Parameters
@@ -6500,10 +6453,10 @@ Description
 -----------
 No available documentation.
 ") MakeFaceEdgeInterference;
-		static opencascade::handle<TopOpeBRepDS_Interference> MakeFaceEdgeInterference(const TopOpeBRepDS_Transition & Transition, const Standard_Integer FaceI, const Standard_Integer EdgeI, const Standard_Boolean EdgeIsBound, const TopOpeBRepDS_Config Config);
+		static opencascade::handle<TopOpeBRepDS_Interference> MakeFaceEdgeInterference(const TopOpeBRepDS_Transition & Transition, const int FaceI, const int EdgeI, const bool EdgeIsBound, const TopOpeBRepDS_Config Config);
 
 		/****** TopOpeBRepDS_InterferenceTool::MakeSolidSurfaceInterference ******/
-		/****** md5 signature: 8760ffc9204d7f5d327f3734b96d1eb7 ******/
+		/****** md5 signature: da4bdbcaa8086d7119a5200c2cc91da6 ******/
 		%feature("compactdefaultargs") MakeSolidSurfaceInterference;
 		%feature("autodoc", "
 Parameters
@@ -6520,10 +6473,10 @@ Description
 -----------
 No available documentation.
 ") MakeSolidSurfaceInterference;
-		static opencascade::handle<TopOpeBRepDS_Interference> MakeSolidSurfaceInterference(const TopOpeBRepDS_Transition & Transition, const Standard_Integer SolidI, const Standard_Integer SurfaceI);
+		static opencascade::handle<TopOpeBRepDS_Interference> MakeSolidSurfaceInterference(const TopOpeBRepDS_Transition & Transition, const int SolidI, const int SurfaceI);
 
 		/****** TopOpeBRepDS_InterferenceTool::Parameter ******/
-		/****** md5 signature: 7167c86f23457411d69314ecbc317185 ******/
+		/****** md5 signature: e73f1caf0ccd10c461e48173c19c6b86 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -6532,22 +6485,22 @@ CPI: TopOpeBRepDS_Interference
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		static Standard_Real Parameter(const opencascade::handle<TopOpeBRepDS_Interference> & CPI);
+		static double Parameter(const opencascade::handle<TopOpeBRepDS_Interference> & CPI);
 
 		/****** TopOpeBRepDS_InterferenceTool::Parameter ******/
-		/****** md5 signature: a8e6ad703ffe00dceff696129323dd38 ******/
+		/****** md5 signature: a0872f40cb096129e9eede50e4169a1f ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
 CPI: TopOpeBRepDS_Interference
-Par: float
+Par: double
 
 Return
 -------
@@ -6557,7 +6510,7 @@ Description
 -----------
 No available documentation.
 ") Parameter;
-		static void Parameter(const opencascade::handle<TopOpeBRepDS_Interference> & CPI, const Standard_Real Par);
+		static void Parameter(const opencascade::handle<TopOpeBRepDS_Interference> & CPI, const double Par);
 
 };
 
@@ -6587,17 +6540,17 @@ No available documentation.
 		 TopOpeBRepDS_ListOfShapeOn1State();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::ChangeListOnState ******/
-		/****** md5 signature: 9f8af2605e3234694bc140cf2db45f55 ******/
+		/****** md5 signature: 6fe75ea6d75884eac3157e92c141a851 ******/
 		%feature("compactdefaultargs") ChangeListOnState;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeListOnState;
-		TopTools_ListOfShape & ChangeListOnState();
+		NCollection_List<TopoDS_Shape> ChangeListOnState();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -6613,7 +6566,7 @@ No available documentation.
 		void Clear();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::IsSplit ******/
-		/****** md5 signature: cd297e5305c37fd756c77025e3454dc1 ******/
+		/****** md5 signature: 034069e41e8a0d6e15e3b619c0316146 ******/
 		%feature("compactdefaultargs") IsSplit;
 		%feature("autodoc", "Return
 -------
@@ -6623,28 +6576,28 @@ Description
 -----------
 No available documentation.
 ") IsSplit;
-		Standard_Boolean IsSplit();
+		bool IsSplit();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::ListOnState ******/
-		/****** md5 signature: d8eeb9ed0a4e645267970191ba00edb2 ******/
+		/****** md5 signature: 98fe40f45e68151f93b2bf1aef8fea20 ******/
 		%feature("compactdefaultargs") ListOnState;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ListOnState;
-		const TopTools_ListOfShape & ListOnState();
+		const NCollection_List<TopoDS_Shape> ListOnState();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::Split ******/
-		/****** md5 signature: e15f6a006a319f619e60613f8e8a67e2 ******/
+		/****** md5 signature: a70d1e309550b349f80e954a73798755 ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
 ----------
-B: bool (optional, default to Standard_True)
+B: bool (optional, default to true)
 
 Return
 -------
@@ -6654,7 +6607,7 @@ Description
 -----------
 No available documentation.
 ") Split;
-		void Split(const Standard_Boolean B = Standard_True);
+		void Split(const bool B = true);
 
 };
 
@@ -6684,7 +6637,7 @@ No available documentation.
 		 TopOpeBRepDS_Marker();
 
 		/****** TopOpeBRepDS_Marker::Allocate ******/
-		/****** md5 signature: 8dd88c711bbc17d9cac35e2bf2761af3 ******/
+		/****** md5 signature: c1ec1a7a867fd131169a1c428c2ea3af ******/
 		%feature("compactdefaultargs") Allocate;
 		%feature("autodoc", "
 Parameters
@@ -6699,10 +6652,10 @@ Description
 -----------
 No available documentation.
 ") Allocate;
-		void Allocate(const Standard_Integer n);
+		void Allocate(const int n);
 
 		/****** TopOpeBRepDS_Marker::GetI ******/
-		/****** md5 signature: c504e43ed37d8f9405ff96c0f67ca224 ******/
+		/****** md5 signature: c16a5f89801b9e92a6be0fc5f8dab2f7 ******/
 		%feature("compactdefaultargs") GetI;
 		%feature("autodoc", "
 Parameters
@@ -6717,7 +6670,7 @@ Description
 -----------
 No available documentation.
 ") GetI;
-		Standard_Boolean GetI(const Standard_Integer i);
+		bool GetI(const int i);
 
 		/****** TopOpeBRepDS_Marker::Reset ******/
 		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
@@ -6733,7 +6686,7 @@ No available documentation.
 		void Reset();
 
 		/****** TopOpeBRepDS_Marker::Set ******/
-		/****** md5 signature: c99879bf672036eccb4611c79446d14d ******/
+		/****** md5 signature: 10541fb7799a27bfdf50925596472725 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6749,17 +6702,17 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Integer i, const Standard_Boolean b);
+		void Set(const int i, const bool b);
 
 		/****** TopOpeBRepDS_Marker::Set ******/
-		/****** md5 signature: 3b803ad34d046b499b986074b29cf199 ******/
+		/****** md5 signature: 6072b551bafb0bbb21f38504febf71af ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 b: bool
 n: int
-a: Standard_Address
+a: void *
 
 Return
 -------
@@ -6769,7 +6722,7 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Boolean b, const Standard_Integer n, const Standard_Address a);
+		void Set(const bool b, const int n, void * const a);
 
 };
 
@@ -6801,13 +6754,13 @@ No available documentation.
 		 TopOpeBRepDS_Point();
 
 		/****** TopOpeBRepDS_Point::TopOpeBRepDS_Point ******/
-		/****** md5 signature: b5958abaa1eb0e97583f37b5ac0924a7 ******/
+		/****** md5 signature: 5a4d74fcc32ac9de551d03c36d3a9d51 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_Point;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-T: float
+T: double
 
 Return
 -------
@@ -6817,7 +6770,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_Point;
-		 TopOpeBRepDS_Point(const gp_Pnt & P, const Standard_Real T);
+		 TopOpeBRepDS_Point(const gp_Pnt & P, const double T);
 
 		/****** TopOpeBRepDS_Point::TopOpeBRepDS_Point ******/
 		/****** md5 signature: 1e6cf5507d272bf5736e0d7a92f091d3 ******/
@@ -6838,7 +6791,7 @@ No available documentation.
 		 TopOpeBRepDS_Point(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_Point::ChangeKeep ******/
-		/****** md5 signature: 75f379b6bb874b0da2db245ffe678874 ******/
+		/****** md5 signature: 20e29780a2e40b1f09b5056bbe67f8ac ******/
 		%feature("compactdefaultargs") ChangeKeep;
 		%feature("autodoc", "
 Parameters
@@ -6853,7 +6806,7 @@ Description
 -----------
 No available documentation.
 ") ChangeKeep;
-		void ChangeKeep(const Standard_Boolean B);
+		void ChangeKeep(const bool B);
 
 		/****** TopOpeBRepDS_Point::ChangePoint ******/
 		/****** md5 signature: 33f76a92948a53a65ecd0d3de11b040d ******/
@@ -6869,7 +6822,7 @@ No available documentation.
 		gp_Pnt ChangePoint();
 
 		/****** TopOpeBRepDS_Point::IsEqual ******/
-		/****** md5 signature: 5e59b6db27abceb6b2820f06b0880d15 ******/
+		/****** md5 signature: c7ce79966e1d6318e075d6a0a60167f8 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -6884,10 +6837,10 @@ Description
 -----------
 No available documentation.
 ") IsEqual;
-		Standard_Boolean IsEqual(const TopOpeBRepDS_Point & other);
+		bool IsEqual(const TopOpeBRepDS_Point & other);
 
 		/****** TopOpeBRepDS_Point::Keep ******/
-		/****** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ******/
+		/****** md5 signature: e8f73f4184955de8bddc5b09318bbab8 ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "Return
 -------
@@ -6897,7 +6850,7 @@ Description
 -----------
 No available documentation.
 ") Keep;
-		Standard_Boolean Keep();
+		bool Keep();
 
 		/****** TopOpeBRepDS_Point::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -6913,25 +6866,25 @@ No available documentation.
 		const gp_Pnt Point();
 
 		/****** TopOpeBRepDS_Point::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** TopOpeBRepDS_Point::Tolerance ******/
-		/****** md5 signature: e925b87131cc380a2e6cb497cb7384fa ******/
+		/****** md5 signature: c1c7212071b7d95bf782fac6a420fcbb ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -6941,7 +6894,7 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		void Tolerance(const Standard_Real Tol);
+		void Tolerance(const double Tol);
 
 };
 
@@ -6971,13 +6924,13 @@ No available documentation.
 		 TopOpeBRepDS_PointExplorer();
 
 		/****** TopOpeBRepDS_PointExplorer::TopOpeBRepDS_PointExplorer ******/
-		/****** md5 signature: 2a6dbca93721718f1bf55918e0c7a00e ******/
+		/****** md5 signature: 485a23a8e13e960c1e15bc0c25b0e7b3 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_PointExplorer;
 		%feature("autodoc", "
 Parameters
 ----------
 DS: TopOpeBRepDS_DataStructure
-FindOnlyKeep: bool (optional, default to Standard_True)
+FindOnlyKeep: bool (optional, default to true)
 
 Return
 -------
@@ -6987,10 +6940,10 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_PointExplorer;
-		 TopOpeBRepDS_PointExplorer(const TopOpeBRepDS_DataStructure & DS, const Standard_Boolean FindOnlyKeep = Standard_True);
+		 TopOpeBRepDS_PointExplorer(const TopOpeBRepDS_DataStructure & DS, const bool FindOnlyKeep = true);
 
 		/****** TopOpeBRepDS_PointExplorer::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -7000,16 +6953,16 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** TopOpeBRepDS_PointExplorer::Init ******/
-		/****** md5 signature: 3cb53884a0dedff3ad42657c8c345e44 ******/
+		/****** md5 signature: 3df60a2c10c57d419d76e9d2d1ed5ff5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 DS: TopOpeBRepDS_DataStructure
-FindOnlyKeep: bool (optional, default to Standard_True)
+FindOnlyKeep: bool (optional, default to true)
 
 Return
 -------
@@ -7019,10 +6972,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopOpeBRepDS_DataStructure & DS, const Standard_Boolean FindOnlyKeep = Standard_True);
+		void Init(const TopOpeBRepDS_DataStructure & DS, const bool FindOnlyKeep = true);
 
 		/****** TopOpeBRepDS_PointExplorer::IsPoint ******/
-		/****** md5 signature: b47fb5bce98c767ee2068a626d524140 ******/
+		/****** md5 signature: a8e4298808505ee7e05b733fce965439 ******/
 		%feature("compactdefaultargs") IsPoint;
 		%feature("autodoc", "
 Parameters
@@ -7037,10 +6990,10 @@ Description
 -----------
 No available documentation.
 ") IsPoint;
-		Standard_Boolean IsPoint(const Standard_Integer I);
+		bool IsPoint(const int I);
 
 		/****** TopOpeBRepDS_PointExplorer::IsPointKeep ******/
-		/****** md5 signature: 51dc517d07c940f5d6befee4a6048cc5 ******/
+		/****** md5 signature: 19c1f4b0624c8e8810a7a8a5fd597249 ******/
 		%feature("compactdefaultargs") IsPointKeep;
 		%feature("autodoc", "
 Parameters
@@ -7055,10 +7008,10 @@ Description
 -----------
 No available documentation.
 ") IsPointKeep;
-		Standard_Boolean IsPointKeep(const Standard_Integer I);
+		bool IsPointKeep(const int I);
 
 		/****** TopOpeBRepDS_PointExplorer::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -7068,10 +7021,10 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepDS_PointExplorer::NbPoint ******/
-		/****** md5 signature: 31a8a75525c80d8d0cd3972a811a871a ******/
+		/****** md5 signature: 08b328faa2bc8d6b924aab91dccb9fae ******/
 		%feature("compactdefaultargs") NbPoint;
 		%feature("autodoc", "Return
 -------
@@ -7081,7 +7034,7 @@ Description
 -----------
 No available documentation.
 ") NbPoint;
-		Standard_Integer NbPoint();
+		int NbPoint();
 
 		/****** TopOpeBRepDS_PointExplorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -7110,7 +7063,7 @@ No available documentation.
 		const TopOpeBRepDS_Point & Point();
 
 		/****** TopOpeBRepDS_PointExplorer::Point ******/
-		/****** md5 signature: 5b8c65793f4550a005f74995c521586b ******/
+		/****** md5 signature: 46867378e1165b64904da8b83e56d84c ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7125,7 +7078,7 @@ Description
 -----------
 No available documentation.
 ") Point;
-		const TopOpeBRepDS_Point & Point(const Standard_Integer I);
+		const TopOpeBRepDS_Point & Point(const int I);
 
 };
 
@@ -7173,12 +7126,12 @@ No available documentation.
 		void ProcessEdgeInterferences();
 
 		/****** TopOpeBRepDS_Reducer::ProcessFaceInterferences ******/
-		/****** md5 signature: 22ea874d673770f31f98a3c38885bd6a ******/
+		/****** md5 signature: bca602f8ea802578396affd5ec299aa0 ******/
 		%feature("compactdefaultargs") ProcessFaceInterferences;
 		%feature("autodoc", "
 Parameters
 ----------
-M: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+M: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -7188,7 +7141,7 @@ Description
 -----------
 No available documentation.
 ") ProcessFaceInterferences;
-		void ProcessFaceInterferences(const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & M);
+		void ProcessFaceInterferences(const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & M);
 
 };
 
@@ -7218,20 +7171,20 @@ No available documentation.
 		 TopOpeBRepDS_ShapeData();
 
 		/****** TopOpeBRepDS_ShapeData::ChangeInterferences ******/
-		/****** md5 signature: 1c8cdb23abd41bd3fe65cba4df26ed63 ******/
+		/****** md5 signature: 49be78cb30ff54b8097d34def094ca37 ******/
 		%feature("compactdefaultargs") ChangeInterferences;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeInterferences();
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeInterferences();
 
 		/****** TopOpeBRepDS_ShapeData::ChangeKeep ******/
-		/****** md5 signature: 75f379b6bb874b0da2db245ffe678874 ******/
+		/****** md5 signature: 20e29780a2e40b1f09b5056bbe67f8ac ******/
 		%feature("compactdefaultargs") ChangeKeep;
 		%feature("autodoc", "
 Parameters
@@ -7246,23 +7199,23 @@ Description
 -----------
 No available documentation.
 ") ChangeKeep;
-		void ChangeKeep(const Standard_Boolean B);
+		void ChangeKeep(const bool B);
 
 		/****** TopOpeBRepDS_ShapeData::Interferences ******/
-		/****** md5 signature: 237ed42d67b2b8b56ca50b69c4e86889 ******/
+		/****** md5 signature: 1ad49ef4c8f0239686b904a9bb96ba95 ******/
 		%feature("compactdefaultargs") Interferences;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") Interferences;
-		const TopOpeBRepDS_ListOfInterference & Interferences();
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & Interferences();
 
 		/****** TopOpeBRepDS_ShapeData::Keep ******/
-		/****** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ******/
+		/****** md5 signature: e8f73f4184955de8bddc5b09318bbab8 ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "Return
 -------
@@ -7272,7 +7225,7 @@ Description
 -----------
 No available documentation.
 ") Keep;
-		Standard_Boolean Keep();
+		bool Keep();
 
 };
 
@@ -7321,12 +7274,12 @@ No available documentation.
 		void AddPart(const TopoDS_Shape & aShape, const TopAbs_State aState);
 
 		/****** TopOpeBRepDS_ShapeWithState::AddParts ******/
-		/****** md5 signature: 1b97aa34dfcfaba07a4d57d24b82410d ******/
+		/****** md5 signature: 305d9574f8b82e88c2ef1e1dfde22efe ******/
 		%feature("compactdefaultargs") AddParts;
 		%feature("autodoc", "
 Parameters
 ----------
-aListOfShape: TopTools_ListOfShape
+aListOfShape: NCollection_List<TopoDS_Shape>
 aState: TopAbs_State
 
 Return
@@ -7337,10 +7290,10 @@ Description
 -----------
 No available documentation.
 ") AddParts;
-		void AddParts(const TopTools_ListOfShape & aListOfShape, const TopAbs_State aState);
+		void AddParts(const NCollection_List<TopoDS_Shape> & aListOfShape, const TopAbs_State aState);
 
 		/****** TopOpeBRepDS_ShapeWithState::IsSplitted ******/
-		/****** md5 signature: e67faeac515fe8ba137b50086f37c89e ******/
+		/****** md5 signature: 35e659acda3cacff7c107eb14f898a56 ******/
 		%feature("compactdefaultargs") IsSplitted;
 		%feature("autodoc", "Return
 -------
@@ -7350,10 +7303,10 @@ Description
 -----------
 No available documentation.
 ") IsSplitted;
-		Standard_Boolean IsSplitted();
+		bool IsSplitted();
 
 		/****** TopOpeBRepDS_ShapeWithState::Part ******/
-		/****** md5 signature: 39c7dce1e3b86388fa9280e1271e19ab ******/
+		/****** md5 signature: 53af8c662bc6c0dc895f85acee5a80e5 ******/
 		%feature("compactdefaultargs") Part;
 		%feature("autodoc", "
 Parameters
@@ -7362,16 +7315,16 @@ aState: TopAbs_State
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Part;
-		const TopTools_ListOfShape & Part(const TopAbs_State aState);
+		const NCollection_List<TopoDS_Shape> Part(const TopAbs_State aState);
 
 		/****** TopOpeBRepDS_ShapeWithState::SetIsSplitted ******/
-		/****** md5 signature: e39ed6edc2cda52aa3e12d1bdbdde93b ******/
+		/****** md5 signature: dfce7ce978b094ab1b6343b467528103 ******/
 		%feature("compactdefaultargs") SetIsSplitted;
 		%feature("autodoc", "
 Parameters
@@ -7386,7 +7339,7 @@ Description
 -----------
 No available documentation.
 ") SetIsSplitted;
-		void SetIsSplitted(const Standard_Boolean anIsSplitted);
+		void SetIsSplitted(const bool anIsSplitted);
 
 		/****** TopOpeBRepDS_ShapeWithState::SetState ******/
 		/****** md5 signature: 8d4728ca94737d0ac8e24be948ef249b ******/
@@ -7447,13 +7400,13 @@ No available documentation.
 		 TopOpeBRepDS_Surface();
 
 		/****** TopOpeBRepDS_Surface::TopOpeBRepDS_Surface ******/
-		/****** md5 signature: d182222c8bc6c34b87980490e4b78679 ******/
+		/****** md5 signature: 56578aec5fbab9660ce9b65f858e598f ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_Surface;
 		%feature("autodoc", "
 Parameters
 ----------
 P: Geom_Surface
-T: float
+T: double
 
 Return
 -------
@@ -7463,7 +7416,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_Surface;
-		 TopOpeBRepDS_Surface(const opencascade::handle<Geom_Surface> & P, const Standard_Real T);
+		 TopOpeBRepDS_Surface(const opencascade::handle<Geom_Surface> & P, const double T);
 
 		/****** TopOpeBRepDS_Surface::TopOpeBRepDS_Surface ******/
 		/****** md5 signature: 752d3f0d36c9488cd962ac08a53cdde3 ******/
@@ -7502,7 +7455,7 @@ No available documentation.
 		void Assign(const TopOpeBRepDS_Surface & Other);
 
 		/****** TopOpeBRepDS_Surface::ChangeKeep ******/
-		/****** md5 signature: c0b034be6ced0ecf537a4d2cd976c965 ******/
+		/****** md5 signature: 8e5d77eba3337af8e4dea57bb8e700b4 ******/
 		%feature("compactdefaultargs") ChangeKeep;
 		%feature("autodoc", "
 Parameters
@@ -7517,10 +7470,10 @@ Description
 -----------
 No available documentation.
 ") ChangeKeep;
-		void ChangeKeep(Standard_Boolean theToKeep);
+		void ChangeKeep(bool theToKeep);
 
 		/****** TopOpeBRepDS_Surface::Keep ******/
-		/****** md5 signature: 7a6eea11b699a258601fdf5543ded844 ******/
+		/****** md5 signature: d4d22280ca2cb6a7d996b820dd883dce ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "Return
 -------
@@ -7530,7 +7483,7 @@ Description
 -----------
 No available documentation.
 ") Keep;
-		Standard_Boolean Keep();
+		bool Keep();
 
 		/****** TopOpeBRepDS_Surface::Surface ******/
 		/****** md5 signature: 3aa31a6d63da8a25f018cf96599c0928 ******/
@@ -7546,25 +7499,25 @@ No available documentation.
 		const opencascade::handle<Geom_Surface> & Surface();
 
 		/****** TopOpeBRepDS_Surface::Tolerance ******/
-		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
+		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** TopOpeBRepDS_Surface::Tolerance ******/
-		/****** md5 signature: 6e44bbef8a403b18484e0d3b65d37a2b ******/
+		/****** md5 signature: a94e5889d3fd10e56c96832f50c5deda ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -7574,7 +7527,7 @@ Description
 -----------
 Update the tolerance.
 ") Tolerance;
-		void Tolerance(Standard_Real theTol);
+		void Tolerance(double theTol);
 
 };
 
@@ -7604,13 +7557,13 @@ No available documentation.
 		 TopOpeBRepDS_SurfaceExplorer();
 
 		/****** TopOpeBRepDS_SurfaceExplorer::TopOpeBRepDS_SurfaceExplorer ******/
-		/****** md5 signature: 8cbac392ec2c20a95da9ab8967461215 ******/
+		/****** md5 signature: eeb24ada158597413d0e8bb58bb513fd ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceExplorer;
 		%feature("autodoc", "
 Parameters
 ----------
 DS: TopOpeBRepDS_DataStructure
-FindOnlyKeep: bool (optional, default to Standard_True)
+FindOnlyKeep: bool (optional, default to true)
 
 Return
 -------
@@ -7620,10 +7573,10 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_SurfaceExplorer;
-		 TopOpeBRepDS_SurfaceExplorer(const TopOpeBRepDS_DataStructure & DS, const Standard_Boolean FindOnlyKeep = Standard_True);
+		 TopOpeBRepDS_SurfaceExplorer(const TopOpeBRepDS_DataStructure & DS, const bool FindOnlyKeep = true);
 
 		/****** TopOpeBRepDS_SurfaceExplorer::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -7633,16 +7586,16 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** TopOpeBRepDS_SurfaceExplorer::Init ******/
-		/****** md5 signature: 3cb53884a0dedff3ad42657c8c345e44 ******/
+		/****** md5 signature: 3df60a2c10c57d419d76e9d2d1ed5ff5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 DS: TopOpeBRepDS_DataStructure
-FindOnlyKeep: bool (optional, default to Standard_True)
+FindOnlyKeep: bool (optional, default to true)
 
 Return
 -------
@@ -7652,10 +7605,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopOpeBRepDS_DataStructure & DS, const Standard_Boolean FindOnlyKeep = Standard_True);
+		void Init(const TopOpeBRepDS_DataStructure & DS, const bool FindOnlyKeep = true);
 
 		/****** TopOpeBRepDS_SurfaceExplorer::IsSurface ******/
-		/****** md5 signature: 23653089f9220cade768c1e060f8ad7e ******/
+		/****** md5 signature: 248042e714155b1ce4d230a1df777d99 ******/
 		%feature("compactdefaultargs") IsSurface;
 		%feature("autodoc", "
 Parameters
@@ -7670,10 +7623,10 @@ Description
 -----------
 No available documentation.
 ") IsSurface;
-		Standard_Boolean IsSurface(const Standard_Integer I);
+		bool IsSurface(const int I);
 
 		/****** TopOpeBRepDS_SurfaceExplorer::IsSurfaceKeep ******/
-		/****** md5 signature: b3b41974489a001805ef550cf30b329d ******/
+		/****** md5 signature: 1f08d4c04fb0ee55b05d8c21ef0b9364 ******/
 		%feature("compactdefaultargs") IsSurfaceKeep;
 		%feature("autodoc", "
 Parameters
@@ -7688,10 +7641,10 @@ Description
 -----------
 No available documentation.
 ") IsSurfaceKeep;
-		Standard_Boolean IsSurfaceKeep(const Standard_Integer I);
+		bool IsSurfaceKeep(const int I);
 
 		/****** TopOpeBRepDS_SurfaceExplorer::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -7701,10 +7654,10 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepDS_SurfaceExplorer::NbSurface ******/
-		/****** md5 signature: 01f2d8c6928db710b4dd4353c5bece7f ******/
+		/****** md5 signature: 4ea1b82a54d1a0900bd657e300ebf16e ******/
 		%feature("compactdefaultargs") NbSurface;
 		%feature("autodoc", "Return
 -------
@@ -7714,7 +7667,7 @@ Description
 -----------
 No available documentation.
 ") NbSurface;
-		Standard_Integer NbSurface();
+		int NbSurface();
 
 		/****** TopOpeBRepDS_SurfaceExplorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -7743,7 +7696,7 @@ No available documentation.
 		TopOpeBRepDS_Surface Surface();
 
 		/****** TopOpeBRepDS_SurfaceExplorer::Surface ******/
-		/****** md5 signature: 0fa398e726541e213860705286d521cb ******/
+		/****** md5 signature: 5439188fcb1b33bc27f0b1b898e5d6da ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -7758,7 +7711,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		TopOpeBRepDS_Surface Surface(const Standard_Integer I);
+		TopOpeBRepDS_Surface Surface(const int I);
 
 };
 
@@ -7788,7 +7741,7 @@ No available documentation.
 		 TopOpeBRepDS_TKI();
 
 		/****** TopOpeBRepDS_TKI::Add ******/
-		/****** md5 signature: f55a2389af157567e50919391478ec0f ******/
+		/****** md5 signature: 45e34f930a7ead487f7280a8620fa020 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -7804,10 +7757,10 @@ Description
 -----------
 No available documentation.
 ") Add;
-		void Add(const TopOpeBRepDS_Kind K, const Standard_Integer G);
+		void Add(const TopOpeBRepDS_Kind K, const int G);
 
 		/****** TopOpeBRepDS_TKI::Add ******/
-		/****** md5 signature: bf4db3b7c8d2d6237acea717b54695ba ******/
+		/****** md5 signature: d626688092d21c8303d1bc5343ef6f74 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -7824,10 +7777,10 @@ Description
 -----------
 No available documentation.
 ") Add;
-		void Add(const TopOpeBRepDS_Kind K, const Standard_Integer G, const opencascade::handle<TopOpeBRepDS_Interference> & HI);
+		void Add(const TopOpeBRepDS_Kind K, const int G, const opencascade::handle<TopOpeBRepDS_Interference> & HI);
 
 		/****** TopOpeBRepDS_TKI::ChangeInterferences ******/
-		/****** md5 signature: 2f520ca726f7c5c6d80ab09ed2c80e08 ******/
+		/****** md5 signature: 0a27ddf8f185c2de76810a6d836e2096 ******/
 		%feature("compactdefaultargs") ChangeInterferences;
 		%feature("autodoc", "
 Parameters
@@ -7837,16 +7790,16 @@ G: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") ChangeInterferences;
-		TopOpeBRepDS_ListOfInterference & ChangeInterferences(const TopOpeBRepDS_Kind K, const Standard_Integer G);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeInterferences(const TopOpeBRepDS_Kind K, const int G);
 
 		/****** TopOpeBRepDS_TKI::ChangeValue ******/
-		/****** md5 signature: 94fd5d5cbd269e45cd12e8da39fea321 ******/
+		/****** md5 signature: 5a31b1e81d645df9c0401f4ca30e86b3 ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -7861,7 +7814,7 @@ Description
 -----------
 No available documentation.
 ") ChangeValue;
-		TopOpeBRepDS_ListOfInterference & ChangeValue(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
+		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeValue(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepDS_TKI::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -7896,12 +7849,12 @@ No available documentation.
 		void DumpTKIIterator(TCollection_AsciiString s1 = "", TCollection_AsciiString s2 = "");
 
 		/****** TopOpeBRepDS_TKI::FillOnGeometry ******/
-		/****** md5 signature: bc57c0884bf6423d13a2fa1a0ba316da ******/
+		/****** md5 signature: fc1810d0efef883809870be225f4bc11 ******/
 		%feature("compactdefaultargs") FillOnGeometry;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -7911,15 +7864,15 @@ Description
 -----------
 No available documentation.
 ") FillOnGeometry;
-		void FillOnGeometry(const TopOpeBRepDS_ListOfInterference & L);
+		void FillOnGeometry(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_TKI::FillOnSupport ******/
-		/****** md5 signature: 545c50b7aba4391215c5814b43c1ecbd ******/
+		/****** md5 signature: 17d24901c3ad883688db907a78ff14fa ******/
 		%feature("compactdefaultargs") FillOnSupport;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -7929,10 +7882,10 @@ Description
 -----------
 No available documentation.
 ") FillOnSupport;
-		void FillOnSupport(const TopOpeBRepDS_ListOfInterference & L);
+		void FillOnSupport(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_TKI::HasInterferences ******/
-		/****** md5 signature: f227c521c6c63e3c9841ef5b7409367c ******/
+		/****** md5 signature: 0014880d6afe0e5da603c26be7366993 ******/
 		%feature("compactdefaultargs") HasInterferences;
 		%feature("autodoc", "
 Parameters
@@ -7948,7 +7901,7 @@ Description
 -----------
 No available documentation.
 ") HasInterferences;
-		Standard_Boolean HasInterferences(const TopOpeBRepDS_Kind K, const Standard_Integer G);
+		bool HasInterferences(const TopOpeBRepDS_Kind K, const int G);
 
 		/****** TopOpeBRepDS_TKI::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -7964,7 +7917,7 @@ No available documentation.
 		void Init();
 
 		/****** TopOpeBRepDS_TKI::Interferences ******/
-		/****** md5 signature: 3ff5c12c6b6327e3c022a6739fba28d2 ******/
+		/****** md5 signature: c66e0f11d47c027ac42447e89847ab7b ******/
 		%feature("compactdefaultargs") Interferences;
 		%feature("autodoc", "
 Parameters
@@ -7974,16 +7927,16 @@ G: int
 
 Return
 -------
-TopOpeBRepDS_ListOfInterference
+NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>
 
 Description
 -----------
 No available documentation.
 ") Interferences;
-		const TopOpeBRepDS_ListOfInterference & Interferences(const TopOpeBRepDS_Kind K, const Standard_Integer G);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & Interferences(const TopOpeBRepDS_Kind K, const int G);
 
 		/****** TopOpeBRepDS_TKI::IsBound ******/
-		/****** md5 signature: e5a495fdf225daf5a4c7ba3d93b0ea9a ******/
+		/****** md5 signature: 37a212e0ef14e354ab6107ae6b5bc64b ******/
 		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", "
 Parameters
@@ -7999,10 +7952,10 @@ Description
 -----------
 No available documentation.
 ") IsBound;
-		Standard_Boolean IsBound(const TopOpeBRepDS_Kind K, const Standard_Integer G);
+		bool IsBound(const TopOpeBRepDS_Kind K, const int G);
 
 		/****** TopOpeBRepDS_TKI::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -8012,7 +7965,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepDS_TKI::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -8028,7 +7981,7 @@ No available documentation.
 		void Next();
 
 		/****** TopOpeBRepDS_TKI::Value ******/
-		/****** md5 signature: 74319da71df133747d4e785790ac7c21 ******/
+		/****** md5 signature: 8046cf73f8f49114b619eae590dcb947 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8043,7 +7996,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		const TopOpeBRepDS_ListOfInterference & Value(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
+		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & Value(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
 };
 
@@ -8060,14 +8013,14 @@ No available documentation.
 class TopOpeBRepDS_TOOL {
 	public:
 		/****** TopOpeBRepDS_TOOL::EShareG ******/
-		/****** md5 signature: b849239d1a609d8f9cb08a451d6b1a1a ******/
+		/****** md5 signature: 0c9ddca2142f441c44b1c01df6ca580d ******/
 		%feature("compactdefaultargs") EShareG;
 		%feature("autodoc", "
 Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
 E: TopoDS_Edge
-lEsd: TopTools_ListOfShape
+lEsd: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -8077,16 +8030,16 @@ Description
 -----------
 No available documentation.
 ") EShareG;
-		static Standard_Integer EShareG(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Edge & E, TopTools_ListOfShape & lEsd);
+		static int EShareG(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Edge & E, NCollection_List<TopoDS_Shape> & lEsd);
 
 		/****** TopOpeBRepDS_TOOL::GetConfig ******/
-		/****** md5 signature: 50e3bd3f9d1963cf5a34f472b7207004 ******/
+		/****** md5 signature: 2256aaa5f1b74494907402ff94eea52a ******/
 		%feature("compactdefaultargs") GetConfig;
 		%feature("autodoc", "
 Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
-MEspON: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+MEspON: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 ie: int
 iesd: int
 
@@ -8098,10 +8051,10 @@ Description
 -----------
 No available documentation.
 ") GetConfig;
-		static Standard_Boolean GetConfig(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MEspON, const Standard_Integer ie, const Standard_Integer iesd, Standard_Integer &OutValue);
+		static bool GetConfig(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & MEspON, const int ie, const int iesd, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepDS_TOOL::GetEsd ******/
-		/****** md5 signature: b00b236e3c31577ce32f80c90a4b14a3 ******/
+		/****** md5 signature: 31ed97ebf5fa578bbdee871ba891a1d3 ******/
 		%feature("compactdefaultargs") GetEsd;
 		%feature("autodoc", "
 Parameters
@@ -8118,10 +8071,10 @@ Description
 -----------
 No available documentation.
 ") GetEsd;
-		static Standard_Boolean GetEsd(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S, const Standard_Integer ie, Standard_Integer &OutValue);
+		static bool GetEsd(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S, const int ie, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepDS_TOOL::ShareG ******/
-		/****** md5 signature: d39c16d7b46413f1d5ecaf6edf9774b7 ******/
+		/****** md5 signature: ee8a4acf6af0e2da33fe5c0c2128f0de ******/
 		%feature("compactdefaultargs") ShareG;
 		%feature("autodoc", "
 Parameters
@@ -8138,16 +8091,16 @@ Description
 -----------
 No available documentation.
 ") ShareG;
-		static Standard_Boolean ShareG(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Integer is1, const Standard_Integer is2);
+		static bool ShareG(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const int is1, const int is2);
 
 		/****** TopOpeBRepDS_TOOL::ShareSplitON ******/
-		/****** md5 signature: 9628684691e319e9a5963fd0252f466a ******/
+		/****** md5 signature: 5ba962b0373a55ebdfb82c4b464af02e ******/
 		%feature("compactdefaultargs") ShareSplitON;
 		%feature("autodoc", "
 Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
-MspON: TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+MspON: NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 i1: int
 i2: int
 spON: TopoDS_Shape
@@ -8160,7 +8113,7 @@ Description
 -----------
 No available documentation.
 ") ShareSplitON;
-		static Standard_Boolean ShareSplitON(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MspON, const Standard_Integer i1, const Standard_Integer i2, TopoDS_Shape & spON);
+		static bool ShareSplitON(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> & MspON, const int i1, const int i2, TopoDS_Shape & spON);
 
 };
 
@@ -8306,7 +8259,7 @@ No available documentation.
 		TopOpeBRepDS_Transition Complement();
 
 		/****** TopOpeBRepDS_Transition::Index ******/
-		/****** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ******/
+		/****** md5 signature: 65d23ba13e6a768a6e46646f77667dce ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -8321,10 +8274,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		void Index(const Standard_Integer I);
+		void Index(const int I);
 
 		/****** TopOpeBRepDS_Transition::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -8334,10 +8287,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** TopOpeBRepDS_Transition::IndexAfter ******/
-		/****** md5 signature: 6107475a303c254e6ec126186032ec74 ******/
+		/****** md5 signature: 634c957dcc75076492db6fdd4494701b ******/
 		%feature("compactdefaultargs") IndexAfter;
 		%feature("autodoc", "
 Parameters
@@ -8352,10 +8305,10 @@ Description
 -----------
 No available documentation.
 ") IndexAfter;
-		void IndexAfter(const Standard_Integer I);
+		void IndexAfter(const int I);
 
 		/****** TopOpeBRepDS_Transition::IndexAfter ******/
-		/****** md5 signature: 36ca760f09f0a2780bd04edd64041a5f ******/
+		/****** md5 signature: c6fc643e31d94ad77bc78f1bd6527672 ******/
 		%feature("compactdefaultargs") IndexAfter;
 		%feature("autodoc", "Return
 -------
@@ -8365,10 +8318,10 @@ Description
 -----------
 No available documentation.
 ") IndexAfter;
-		Standard_Integer IndexAfter();
+		int IndexAfter();
 
 		/****** TopOpeBRepDS_Transition::IndexBefore ******/
-		/****** md5 signature: bad742ca713bae21fed223779cd45538 ******/
+		/****** md5 signature: f09ec4d7461d8fd8b31aa758abe51720 ******/
 		%feature("compactdefaultargs") IndexBefore;
 		%feature("autodoc", "
 Parameters
@@ -8383,10 +8336,10 @@ Description
 -----------
 No available documentation.
 ") IndexBefore;
-		void IndexBefore(const Standard_Integer I);
+		void IndexBefore(const int I);
 
 		/****** TopOpeBRepDS_Transition::IndexBefore ******/
-		/****** md5 signature: 85450063c5853e01bb91dec3ff91f13f ******/
+		/****** md5 signature: cc88c12be6d1e8b3429dc38ca53883e7 ******/
 		%feature("compactdefaultargs") IndexBefore;
 		%feature("autodoc", "Return
 -------
@@ -8396,10 +8349,10 @@ Description
 -----------
 No available documentation.
 ") IndexBefore;
-		Standard_Integer IndexBefore();
+		int IndexBefore();
 
 		/****** TopOpeBRepDS_Transition::IsUnknown ******/
-		/****** md5 signature: 3664e7b68ca3ddc8f89b66fb416769e1 ******/
+		/****** md5 signature: 8481ab064ec255119fd91471b1a62117 ******/
 		%feature("compactdefaultargs") IsUnknown;
 		%feature("autodoc", "Return
 -------
@@ -8409,7 +8362,7 @@ Description
 -----------
 returns True if both states are UNKNOWN.
 ") IsUnknown;
-		Standard_Boolean IsUnknown();
+		bool IsUnknown();
 
 		/****** TopOpeBRepDS_Transition::ONAfter ******/
 		/****** md5 signature: 008dca4f114debbf73dba6e7dc3497a8 ******/
@@ -8653,12 +8606,12 @@ No available documentation.
 class TopOpeBRepDS_CurveIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****** TopOpeBRepDS_CurveIterator::TopOpeBRepDS_CurveIterator ******/
-		/****** md5 signature: 2270e0964c87c6cda964e18d58567e4d ******/
+		/****** md5 signature: 7004de98cb07a8b02a61dc81c0854242 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_CurveIterator;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -8668,10 +8621,10 @@ Description
 -----------
 Creates an iterator on the curves on surface described by the interferences in <L>.
 ") TopOpeBRepDS_CurveIterator;
-		 TopOpeBRepDS_CurveIterator(const TopOpeBRepDS_ListOfInterference & L);
+		 TopOpeBRepDS_CurveIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_CurveIterator::Current ******/
-		/****** md5 signature: a56c202295a85f5f102575dc8279e0d7 ******/
+		/****** md5 signature: 73ef1fe36b6963fbfe98d7bfba19998d ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -8681,10 +8634,10 @@ Description
 -----------
 Index of the curve in the data structure.
 ") Current;
-		Standard_Integer Current();
+		int Current();
 
 		/****** TopOpeBRepDS_CurveIterator::MatchInterference ******/
-		/****** md5 signature: 65853f9699421547bf44f4ac95967e30 ******/
+		/****** md5 signature: 00ec1fef3d0973d6c01f61b66b25e0e4 ******/
 		%feature("compactdefaultargs") MatchInterference;
 		%feature("autodoc", "
 Parameters
@@ -8699,7 +8652,7 @@ Description
 -----------
 Returns True if the Interference <I> has a GeometryType() TopOpeBRepDS_CURVE returns False else.
 ") MatchInterference;
-		virtual Standard_Boolean MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		bool MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_CurveIterator::Orientation ******/
 		/****** md5 signature: 2b25381a7db220c2390cfe75dd2cf1f5 ******/
@@ -8747,7 +8700,7 @@ No available documentation.
 class TopOpeBRepDS_CurvePointInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****** TopOpeBRepDS_CurvePointInterference::TopOpeBRepDS_CurvePointInterference ******/
-		/****** md5 signature: adf2a0972e67d37f0217c48b28206e04 ******/
+		/****** md5 signature: ed0dfec5a04609135591cc09b11e9edc ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_CurvePointInterference;
 		%feature("autodoc", "
 Parameters
@@ -8757,7 +8710,7 @@ ST: TopOpeBRepDS_Kind
 S: int
 GT: TopOpeBRepDS_Kind
 G: int
-P: float
+P: double
 
 Return
 -------
@@ -8767,28 +8720,28 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_CurvePointInterference;
-		 TopOpeBRepDS_CurvePointInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const TopOpeBRepDS_Kind GT, const Standard_Integer G, const Standard_Real P);
+		 TopOpeBRepDS_CurvePointInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const int S, const TopOpeBRepDS_Kind GT, const int G, const double P);
 
 		/****** TopOpeBRepDS_CurvePointInterference::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** TopOpeBRepDS_CurvePointInterference::Parameter ******/
-		/****** md5 signature: 26acaf0b4677a7a04af978de63424b8a ******/
+		/****** md5 signature: bd5fcf434c6f44bcf7a174a8658fcc12 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -8798,7 +8751,7 @@ Description
 -----------
 No available documentation.
 ") Parameter;
-		void Parameter(const Standard_Real P);
+		void Parameter(const double P);
 
 };
 
@@ -8848,7 +8801,7 @@ No available documentation.
 		 TopOpeBRepDS_PointData(const TopOpeBRepDS_Point & P);
 
 		/****** TopOpeBRepDS_PointData::TopOpeBRepDS_PointData ******/
-		/****** md5 signature: 6f9f1466981617ccc2049daa2802e3d1 ******/
+		/****** md5 signature: bf7c93f115028473a3411a387a956f02 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_PointData;
 		%feature("autodoc", "
 Parameters
@@ -8865,10 +8818,10 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_PointData;
-		 TopOpeBRepDS_PointData(const TopOpeBRepDS_Point & P, const Standard_Integer I1, const Standard_Integer I2);
+		 TopOpeBRepDS_PointData(const TopOpeBRepDS_Point & P, const int I1, const int I2);
 
 		/****** TopOpeBRepDS_PointData::GetShapes ******/
-		/****** md5 signature: f83386b9050594750b3cbd4a9b328f40 ******/
+		/****** md5 signature: 7da85763394079bbe652314257aef4a1 ******/
 		%feature("compactdefaultargs") GetShapes;
 		%feature("autodoc", "
 Parameters
@@ -8886,7 +8839,7 @@ No available documentation.
 		void GetShapes(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepDS_PointData::SetShapes ******/
-		/****** md5 signature: 3595c3b14ebeb78e69fcff771910d717 ******/
+		/****** md5 signature: 3583cd306df8bdd2a3b14b07580e8f9c ******/
 		%feature("compactdefaultargs") SetShapes;
 		%feature("autodoc", "
 Parameters
@@ -8902,7 +8855,7 @@ Description
 -----------
 No available documentation.
 ") SetShapes;
-		void SetShapes(const Standard_Integer I1, const Standard_Integer I2);
+		void SetShapes(const int I1, const int I2);
 
 };
 
@@ -8919,12 +8872,12 @@ No available documentation.
 class TopOpeBRepDS_PointIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****** TopOpeBRepDS_PointIterator::TopOpeBRepDS_PointIterator ******/
-		/****** md5 signature: 50786931fc02dcd3ee1645d646052bfc ******/
+		/****** md5 signature: 5b7b3ccd36dca9d37dd6e0490da2882d ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_PointIterator;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -8934,10 +8887,10 @@ Description
 -----------
 Creates an iterator on the points on curves described by the interferences in <L>.
 ") TopOpeBRepDS_PointIterator;
-		 TopOpeBRepDS_PointIterator(const TopOpeBRepDS_ListOfInterference & L);
+		 TopOpeBRepDS_PointIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_PointIterator::Current ******/
-		/****** md5 signature: a56c202295a85f5f102575dc8279e0d7 ******/
+		/****** md5 signature: 73ef1fe36b6963fbfe98d7bfba19998d ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -8947,10 +8900,10 @@ Description
 -----------
 Index of the point in the data structure.
 ") Current;
-		Standard_Integer Current();
+		int Current();
 
 		/****** TopOpeBRepDS_PointIterator::DiffOriented ******/
-		/****** md5 signature: 466fb314d7b9e72be54b11041e5045a6 ******/
+		/****** md5 signature: cc757d5e81463a884166ddb251f90feb ******/
 		%feature("compactdefaultargs") DiffOriented;
 		%feature("autodoc", "Return
 -------
@@ -8960,10 +8913,10 @@ Description
 -----------
 No available documentation.
 ") DiffOriented;
-		Standard_Boolean DiffOriented();
+		bool DiffOriented();
 
 		/****** TopOpeBRepDS_PointIterator::IsPoint ******/
-		/****** md5 signature: 64dc7ed350d49695713d262fc8866a96 ******/
+		/****** md5 signature: 8f17b3b8ce1adb1310aaa00c620be9cf ******/
 		%feature("compactdefaultargs") IsPoint;
 		%feature("autodoc", "Return
 -------
@@ -8973,10 +8926,10 @@ Description
 -----------
 No available documentation.
 ") IsPoint;
-		Standard_Boolean IsPoint();
+		bool IsPoint();
 
 		/****** TopOpeBRepDS_PointIterator::IsVertex ******/
-		/****** md5 signature: 7dbb6189450b7f2ae76146c6d5d6e875 ******/
+		/****** md5 signature: a2ec0345ec4add7e1d182223d626cf2f ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "Return
 -------
@@ -8986,10 +8939,10 @@ Description
 -----------
 No available documentation.
 ") IsVertex;
-		Standard_Boolean IsVertex();
+		bool IsVertex();
 
 		/****** TopOpeBRepDS_PointIterator::MatchInterference ******/
-		/****** md5 signature: 65853f9699421547bf44f4ac95967e30 ******/
+		/****** md5 signature: 00ec1fef3d0973d6c01f61b66b25e0e4 ******/
 		%feature("compactdefaultargs") MatchInterference;
 		%feature("autodoc", "
 Parameters
@@ -9004,7 +8957,7 @@ Description
 -----------
 Returns True if the Interference <I> has a GeometryType() TopOpeBRepDS_POINT or TopOpeBRepDS_VERTEX returns False else.
 ") MatchInterference;
-		virtual Standard_Boolean MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		bool MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepDS_PointIterator::Orientation ******/
 		/****** md5 signature: 2b25381a7db220c2390cfe75dd2cf1f5 ******/
@@ -9025,20 +8978,20 @@ No available documentation.
 		TopAbs_Orientation Orientation(const TopAbs_State S);
 
 		/****** TopOpeBRepDS_PointIterator::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** TopOpeBRepDS_PointIterator::SameOriented ******/
-		/****** md5 signature: 7ddd32a10a8f31f931586309eb2ef5bd ******/
+		/****** md5 signature: bfa8f0791537871a8dfc49dce63878cb ******/
 		%feature("compactdefaultargs") SameOriented;
 		%feature("autodoc", "Return
 -------
@@ -9048,10 +9001,10 @@ Description
 -----------
 No available documentation.
 ") SameOriented;
-		Standard_Boolean SameOriented();
+		bool SameOriented();
 
 		/****** TopOpeBRepDS_PointIterator::Support ******/
-		/****** md5 signature: 7aa624728551f1bd526b097364323e6c ******/
+		/****** md5 signature: 9090c4e5db2e5c0baea34ea7471993cf ******/
 		%feature("compactdefaultargs") Support;
 		%feature("autodoc", "Return
 -------
@@ -9061,7 +9014,7 @@ Description
 -----------
 No available documentation.
 ") Support;
-		Standard_Integer Support();
+		int Support();
 
 };
 
@@ -9078,7 +9031,7 @@ No available documentation.
 class TopOpeBRepDS_ShapeShapeInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****** TopOpeBRepDS_ShapeShapeInterference::TopOpeBRepDS_ShapeShapeInterference ******/
-		/****** md5 signature: 8e2adb1114fe11559239180e94b3dd29 ******/
+		/****** md5 signature: 029f6293560093be2101850f7c140d7e ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_ShapeShapeInterference;
 		%feature("autodoc", "
 Parameters
@@ -9099,7 +9052,7 @@ Description
 -----------
 a shape interferes on shape <G> with shape <S>. examples: create a ShapeShapeInterference describing: vertex V of edge E1 found on edge E2: ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V //! create a ShapeShapeInterference describing vertex V of edge E found on face F: ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V //! <GBound> indicates if shape <G> is a bound of shape <S>. //! <SCC>: UNSH_GEOMETRY: <S> and <Ancestor> have any types, <S> and <Ancestor> don't share the same geometry SAME_ORIENTED: <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are IDENTICAL. DIFF_ORIENTED: <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are DIFFERENT.
 ") TopOpeBRepDS_ShapeShapeInterference;
-		 TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const TopOpeBRepDS_Kind GT, const Standard_Integer G, const Standard_Boolean GBound, const TopOpeBRepDS_Config C);
+		 TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const int S, const TopOpeBRepDS_Kind GT, const int G, const bool GBound, const TopOpeBRepDS_Config C);
 
 		/****** TopOpeBRepDS_ShapeShapeInterference::Config ******/
 		/****** md5 signature: a2e2863b46aaef1bb776ec36ce222134 ******/
@@ -9115,7 +9068,7 @@ No available documentation.
 		TopOpeBRepDS_Config Config();
 
 		/****** TopOpeBRepDS_ShapeShapeInterference::GBound ******/
-		/****** md5 signature: 474bafe1cc0a3b14453ea14c11b4bbb5 ******/
+		/****** md5 signature: bed8fc022d0bf5a5bdf3a0980b8b1ecd ******/
 		%feature("compactdefaultargs") GBound;
 		%feature("autodoc", "Return
 -------
@@ -9125,10 +9078,10 @@ Description
 -----------
 No available documentation.
 ") GBound;
-		Standard_Boolean GBound();
+		bool GBound();
 
 		/****** TopOpeBRepDS_ShapeShapeInterference::SetGBound ******/
-		/****** md5 signature: d4bcfc295330ec37f4b72e3e05a87d19 ******/
+		/****** md5 signature: 675527e1cb02054d987cd7b59da8442c ******/
 		%feature("compactdefaultargs") SetGBound;
 		%feature("autodoc", "
 Parameters
@@ -9143,7 +9096,7 @@ Description
 -----------
 No available documentation.
 ") SetGBound;
-		void SetGBound(const Standard_Boolean b);
+		void SetGBound(const bool b);
 
 };
 
@@ -9162,7 +9115,7 @@ No available documentation.
 class TopOpeBRepDS_SolidSurfaceInterference : public TopOpeBRepDS_Interference {
 	public:
 		/****** TopOpeBRepDS_SolidSurfaceInterference::TopOpeBRepDS_SolidSurfaceInterference ******/
-		/****** md5 signature: 3f6ad256568b142d31e16390b222ab1c ******/
+		/****** md5 signature: 839ab0ae430f7db63f5ccf87279cbcec ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_SolidSurfaceInterference;
 		%feature("autodoc", "
 Parameters
@@ -9181,7 +9134,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_SolidSurfaceInterference;
-		 TopOpeBRepDS_SolidSurfaceInterference(const TopOpeBRepDS_Transition & Transition, const TopOpeBRepDS_Kind SupportType, const Standard_Integer Support, const TopOpeBRepDS_Kind GeometryType, const Standard_Integer Geometry);
+		 TopOpeBRepDS_SolidSurfaceInterference(const TopOpeBRepDS_Transition & Transition, const TopOpeBRepDS_Kind SupportType, const int Support, const TopOpeBRepDS_Kind GeometryType, const int Geometry);
 
 };
 
@@ -9213,7 +9166,7 @@ No available documentation.
 		 TopOpeBRepDS_SurfaceCurveInterference();
 
 		/****** TopOpeBRepDS_SurfaceCurveInterference::TopOpeBRepDS_SurfaceCurveInterference ******/
-		/****** md5 signature: 1876a0c0b8a811e2c22fa5353edc53a7 ******/
+		/****** md5 signature: 6035df25b7b766095dc3cd905211f05d ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceCurveInterference;
 		%feature("autodoc", "
 Parameters
@@ -9233,7 +9186,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepDS_SurfaceCurveInterference;
-		 TopOpeBRepDS_SurfaceCurveInterference(const TopOpeBRepDS_Transition & Transition, const TopOpeBRepDS_Kind SupportType, const Standard_Integer Support, const TopOpeBRepDS_Kind GeometryType, const Standard_Integer Geometry, const opencascade::handle<Geom2d_Curve> & PC);
+		 TopOpeBRepDS_SurfaceCurveInterference(const TopOpeBRepDS_Transition & Transition, const TopOpeBRepDS_Kind SupportType, const int Support, const TopOpeBRepDS_Kind GeometryType, const int Geometry, const opencascade::handle<Geom2d_Curve> & PC);
 
 		/****** TopOpeBRepDS_SurfaceCurveInterference::TopOpeBRepDS_SurfaceCurveInterference ******/
 		/****** md5 signature: 527fae42a771e52602c040083be3b2e2 ******/
@@ -9346,12 +9299,12 @@ No available documentation.
 class TopOpeBRepDS_SurfaceIterator : public TopOpeBRepDS_InterferenceIterator {
 	public:
 		/****** TopOpeBRepDS_SurfaceIterator::TopOpeBRepDS_SurfaceIterator ******/
-		/****** md5 signature: f6e295c0d345024c535856fa6a3bf4a3 ******/
+		/****** md5 signature: fb47674dcc0b889c427e74a4d244fa96 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_SurfaceIterator;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepDS_ListOfInterference
+L: TopOpeBRepDS_Interference
 
 Return
 -------
@@ -9361,10 +9314,10 @@ Description
 -----------
 Creates an iterator on the Surfaces on solid described by the interferences in <L>.
 ") TopOpeBRepDS_SurfaceIterator;
-		 TopOpeBRepDS_SurfaceIterator(const TopOpeBRepDS_ListOfInterference & L);
+		 TopOpeBRepDS_SurfaceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
 
 		/****** TopOpeBRepDS_SurfaceIterator::Current ******/
-		/****** md5 signature: a56c202295a85f5f102575dc8279e0d7 ******/
+		/****** md5 signature: 73ef1fe36b6963fbfe98d7bfba19998d ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -9374,7 +9327,7 @@ Description
 -----------
 Index of the surface in the data structure.
 ") Current;
-		Standard_Integer Current();
+		int Current();
 
 		/****** TopOpeBRepDS_SurfaceIterator::Orientation ******/
 		/****** md5 signature: 2b25381a7db220c2390cfe75dd2cf1f5 ******/
@@ -9409,7 +9362,7 @@ No available documentation.
 class TopOpeBRepDS_EdgeVertexInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
 		/****** TopOpeBRepDS_EdgeVertexInterference::TopOpeBRepDS_EdgeVertexInterference ******/
-		/****** md5 signature: ba596e70e44bb7010c9ba4d1c9a7a43e ******/
+		/****** md5 signature: 44ec77ab2594ecfb06f41ccaf5bcf275 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_EdgeVertexInterference;
 		%feature("autodoc", "
 Parameters
@@ -9420,7 +9373,7 @@ S: int
 G: int
 GIsBound: bool
 C: TopOpeBRepDS_Config
-P: float
+P: double
 
 Return
 -------
@@ -9430,10 +9383,10 @@ Description
 -----------
 Create an interference of VERTEX <G> on a crossed EDGE E. //! if support type <ST> == EDGE: <S> is edge E FACE: <S> is the face with bound E. <T> is the transition along the edge, crossing the crossed edge. E is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 ") TopOpeBRepDS_EdgeVertexInterference;
-		 TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const Standard_Integer G, const Standard_Boolean GIsBound, const TopOpeBRepDS_Config C, const Standard_Real P);
+		 TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const int S, const int G, const bool GIsBound, const TopOpeBRepDS_Config C, const double P);
 
 		/****** TopOpeBRepDS_EdgeVertexInterference::TopOpeBRepDS_EdgeVertexInterference ******/
-		/****** md5 signature: 3f20aa74eb9e0a4458bdc25bc6cee5b5 ******/
+		/****** md5 signature: 1f31b9df83dd0e4c7c8cae8227247eea ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_EdgeVertexInterference;
 		%feature("autodoc", "
 Parameters
@@ -9443,7 +9396,7 @@ S: int
 G: int
 GIsBound: bool
 C: TopOpeBRepDS_Config
-P: float
+P: double
 
 Return
 -------
@@ -9453,28 +9406,28 @@ Description
 -----------
 Create an interference of VERTEX <G> on crossed EDGE <S>. //! <T> is the transition along the edge, crossing the crossed edge. <S> is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <C> indicates the geometric configuration between the edge and the crossed edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 ") TopOpeBRepDS_EdgeVertexInterference;
-		 TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_Transition & T, const Standard_Integer S, const Standard_Integer G, const Standard_Boolean GIsBound, const TopOpeBRepDS_Config C, const Standard_Real P);
+		 TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_Transition & T, const int S, const int G, const bool GIsBound, const TopOpeBRepDS_Config C, const double P);
 
 		/****** TopOpeBRepDS_EdgeVertexInterference::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** TopOpeBRepDS_EdgeVertexInterference::Parameter ******/
-		/****** md5 signature: 26acaf0b4677a7a04af978de63424b8a ******/
+		/****** md5 signature: bd5fcf434c6f44bcf7a174a8658fcc12 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -9484,7 +9437,7 @@ Description
 -----------
 No available documentation.
 ") Parameter;
-		void Parameter(const Standard_Real P);
+		void Parameter(const double P);
 
 };
 
@@ -9503,7 +9456,7 @@ No available documentation.
 class TopOpeBRepDS_FaceEdgeInterference : public TopOpeBRepDS_ShapeShapeInterference {
 	public:
 		/****** TopOpeBRepDS_FaceEdgeInterference::TopOpeBRepDS_FaceEdgeInterference ******/
-		/****** md5 signature: 179b7fd57a29ac2f03aa9151c52b6da4 ******/
+		/****** md5 signature: 97641e2cc15eb4051ed0901eda0f0dc8 ******/
 		%feature("compactdefaultargs") TopOpeBRepDS_FaceEdgeInterference;
 		%feature("autodoc", "
 Parameters
@@ -9522,7 +9475,7 @@ Description
 -----------
 Create an interference of EDGE <G> on FACE <S>.
 ") TopOpeBRepDS_FaceEdgeInterference;
-		 TopOpeBRepDS_FaceEdgeInterference(const TopOpeBRepDS_Transition & T, const Standard_Integer S, const Standard_Integer G, const Standard_Boolean GIsBound, const TopOpeBRepDS_Config C);
+		 TopOpeBRepDS_FaceEdgeInterference(const TopOpeBRepDS_Transition & T, const int S, const int G, const bool GIsBound, const TopOpeBRepDS_Config C);
 
 };
 
@@ -9549,13 +9502,13 @@ class TopOpeBRepDS_HDataStructure:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference, public Standard_Transient {
+class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>, public Standard_Transient {
   public:
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper, const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference::value_type& theValue);
-    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& theOther);
-    const TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& Array1();
-    TopOpeBRepDS_Array1OfDataMapOfIntegerListOfInterference& ChangeArray1();
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>::value_type& theValue);
+    TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>& theOther);
+    const NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>& Array1();
+    NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>& ChangeArray1();
 };
 %make_alias(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)
 

@@ -45,8 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transferbrep.html
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Interface_module.hxx>
-#include<TColStd_module.hxx>
-#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<Transfer_module.hxx>
 #include<TopoDS_module.hxx>
@@ -71,8 +69,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transferbrep.html
 %import Standard.i
 %import NCollection.i
 %import Interface.i
-%import TColStd.i
-%import TopTools.i
 %import Message.i
 %import Transfer.i
 %import TopoDS.i
@@ -97,7 +93,6 @@ from OCC.Core.Exception import *
 %wrap_handle(TransferBRep_ShapeMapper)
 %wrap_handle(TransferBRep_TransferResultInfo)
 %wrap_handle(TransferBRep_ShapeBinder)
-%wrap_handle(TransferBRep_HSequenceOfTransferResultInfo)
 /* end handles declaration */
 
 /* templates */
@@ -112,6 +107,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>> TransferBRep_HSequenceOfTransferResultInfo;
 typedef NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>> TransferBRep_SequenceOfTransferResultInfo;
 /* end typedefs declaration */
 
@@ -141,26 +137,26 @@ Returns the check-list bound to a given object, generally none (if OK) or one ch
 		static Interface_CheckIterator CheckObject(const Interface_CheckIterator & chl, const opencascade::handle<Standard_Transient> & obj);
 
 		/****** TransferBRep::Checked ******/
-		/****** md5 signature: 11c1388c4c4067c53fe8aa3d82893878 ******/
+		/****** md5 signature: 3c843c741c797c02ef910279805316b7 ******/
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "
 Parameters
 ----------
 chl: Interface_CheckIterator
-alsoshapes: bool (optional, default to Standard_False)
+alsoshapes: bool (optional, default to false)
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of objects to which a non-empty Check is bound in a check-list. Objects are transients, they can then be either Imagine objects entities for an Interface Norm. <alsoshapes> commands Shapes to be returned too (as ShapeMapper), see also CheckedShapes.
 ") Checked;
-		static opencascade::handle<TColStd_HSequenceOfTransient> Checked(const Interface_CheckIterator & chl, const Standard_Boolean alsoshapes = Standard_False);
+		static opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Checked(const Interface_CheckIterator & chl, const bool alsoshapes = false);
 
 		/****** TransferBRep::CheckedShapes ******/
-		/****** md5 signature: 8d10365a883cad7d4c4020ff84899f9f ******/
+		/****** md5 signature: 126f080d495f23a9b3457849911b0f88 ******/
 		%feature("compactdefaultargs") CheckedShapes;
 		%feature("autodoc", "
 Parameters
@@ -169,16 +165,16 @@ chl: Interface_CheckIterator
 
 Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Returns the list of shapes to which a non-empty Check is bound in a check-list.
 ") CheckedShapes;
-		static opencascade::handle<TopTools_HSequenceOfShape> CheckedShapes(const Interface_CheckIterator & chl);
+		static opencascade::handle<NCollection_HSequence<TopoDS_Shape>> CheckedShapes(const Interface_CheckIterator & chl);
 
 		/****** TransferBRep::PrintResultInfo ******/
-		/****** md5 signature: 70d322420eec79e1a0fa615f977961de ******/
+		/****** md5 signature: 37e2b11704f7882e65a02be038f90604 ******/
 		%feature("compactdefaultargs") PrintResultInfo;
 		%feature("autodoc", "
 Parameters
@@ -186,7 +182,7 @@ Parameters
 Printer: Message_Printer
 Header: Message_Msg
 ResultInfo: TransferBRep_TransferResultInfo
-printEmpty: bool (optional, default to Standard_True)
+printEmpty: bool (optional, default to true)
 
 Return
 -------
@@ -196,7 +192,7 @@ Description
 -----------
 Prints the results of transfer to given priner with given header.
 ") PrintResultInfo;
-		static void PrintResultInfo(const opencascade::handle<Message_Printer> & Printer, const Message_Msg & Header, const opencascade::handle<TransferBRep_TransferResultInfo> & ResultInfo, const Standard_Boolean printEmpty = Standard_True);
+		static void PrintResultInfo(const opencascade::handle<Message_Printer> & Printer, const Message_Msg & Header, const opencascade::handle<TransferBRep_TransferResultInfo> & ResultInfo, const bool printEmpty = true);
 
 		/****** TransferBRep::ResultCheckList ******/
 		/****** md5 signature: 37e46c9522e4067fe15baae592593088 ******/
@@ -353,52 +349,52 @@ Returns a Status regarding a Shape in a FinderProcess - FORWARD means bound with
 		static TopAbs_Orientation ShapeState(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
 		/****** TransferBRep::Shapes ******/
-		/****** md5 signature: 5cb69fb0fd505614728cd43a56a8c3cb ******/
+		/****** md5 signature: d808986ecf67d2c73fac51ac0372c4ae ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
 ----------
 TP: Transfer_TransientProcess
-rootsonly: bool (optional, default to Standard_True)
+rootsonly: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Gets the Shapes recorded in a TransientProcess as result of a Transfer, considers roots only or all results according <rootsonly>, returns them as a HSequence.
 ") Shapes;
-		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const Standard_Boolean rootsonly = Standard_True);
+		static opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const bool rootsonly = true);
 
 		/****** TransferBRep::Shapes ******/
-		/****** md5 signature: a53000cb23554ab000bc5b84b079d910 ******/
+		/****** md5 signature: da088c57afc5717cd643a6a18d242495 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
 ----------
 TP: Transfer_TransientProcess
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Gets the Shapes recorded in a TransientProcess as result of a Transfer, for a given list of starting entities, returns the shapes as a HSequence.
 ") Shapes;
-		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		static opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** TransferBRep::TransferResultInfo ******/
-		/****** md5 signature: 534e95ac62c75feb3ba7977bd718b832 ******/
+		/****** md5 signature: 29088a827361bc6fbd72b567473bc625 ******/
 		%feature("compactdefaultargs") TransferResultInfo;
 		%feature("autodoc", "
 Parameters
 ----------
 TP: Transfer_TransientProcess
-EntityTypes: TColStd_HSequenceOfTransient
-InfoSeq: TransferBRep_HSequenceOfTransferResultInfo
+EntityTypes: NCollection_HSequence<
+InfoSeq: NCollection_HSequence<
 
 Return
 -------
@@ -408,17 +404,17 @@ Description
 -----------
 Fills sequence of TransferResultInfo for each type of entity given in the EntityTypes (entity are given as objects). Method IsKind applied to the entities in TP is used to compare with entities in EntityTypes. TopAbs_ShapeEnum).
 ") TransferResultInfo;
-		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & EntityTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
+		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & EntityTypes, opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo> > > & InfoSeq);
 
 		/****** TransferBRep::TransferResultInfo ******/
-		/****** md5 signature: 2bd2c7e3962729a4433aaf4ea583df8d ******/
+		/****** md5 signature: 3cc221e8c25fd3e7d44f43649797d50f ******/
 		%feature("compactdefaultargs") TransferResultInfo;
 		%feature("autodoc", "
 Parameters
 ----------
 FP: Transfer_FinderProcess
-ShapeTypes: TColStd_HSequenceOfInteger
-InfoSeq: TransferBRep_HSequenceOfTransferResultInfo
+ShapeTypes: NCollection_HSequence<int
+InfoSeq: NCollection_HSequence<
 
 Return
 -------
@@ -428,7 +424,7 @@ Description
 -----------
 Fills sequence of TransferResultInfo for each type of shape given in the ShapeTypes (which are in fact considered as TopAbs_ShapeEnum). The Finders in the FP are considered as ShapeMappers.
 ") TransferResultInfo;
-		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TColStd_HSequenceOfInteger> & ShapeTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
+		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<NCollection_HSequence<int> > & ShapeTypes, opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo> > > & InfoSeq);
 
 		/****** TransferBRep::TransientFromShape ******/
 		/****** md5 signature: ac27ec8ebd551812170c1783235621b5 ******/
@@ -525,7 +521,7 @@ Returns the defined Result, if there is one.
 		const TopoDS_Shape Result();
 
 		/****** TransferBRep_BinderOfShape::ResultType ******/
-		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
+		/****** md5 signature: 4e004b8040dfd0ab644b911d7c8c2437 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -538,17 +534,17 @@ Returns the Type permitted for the Result, i.e. the Type of the Parameter Class 
 		opencascade::handle<Standard_Type> ResultType();
 
 		/****** TransferBRep_BinderOfShape::ResultTypeName ******/
-		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
+		/****** md5 signature: b971c635bd884aa99ea99620671ff261 ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Type Name computed for the Result (dynamic).
 ") ResultTypeName;
-		Standard_CString ResultTypeName();
+		const char * ResultTypeName();
 
 		/****** TransferBRep_BinderOfShape::SetResult ******/
 		/****** md5 signature: b581a5ff3d4839af932b887a85802930 ******/
@@ -611,7 +607,7 @@ Returns the recorded Actor.
 		virtual opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
 		/****** TransferBRep_Reader::BeginTransfer ******/
-		/****** md5 signature: 45b9be9b944a95886bf096a49eb0bf8e ******/
+		/****** md5 signature: 801cfd2af0c797c209e3f797f316b64f ******/
 		%feature("compactdefaultargs") BeginTransfer;
 		%feature("autodoc", "Return
 -------
@@ -621,7 +617,7 @@ Description
 -----------
 Initializes the Reader for a Transfer (one,roots, or list) Also calls PrepareTransfer Returns True when done, False if could not be done.
 ") BeginTransfer;
-		Standard_Boolean BeginTransfer();
+		bool BeginTransfer();
 
 		/****** TransferBRep_Reader::CheckListModel ******/
 		/****** md5 signature: 24d00665e95599b309f8e96a1b949c12 ******/
@@ -650,7 +646,7 @@ Checks the Result of last Transfer (individual or roots, no cumulation on severa
 		Interface_CheckIterator CheckListResult();
 
 		/****** TransferBRep_Reader::CheckStatusModel ******/
-		/****** md5 signature: 870c8266590633214733e675fb7f8dfa ******/
+		/****** md5 signature: 34ce57cecbc66e0eb09074d713dc09df ******/
 		%feature("compactdefaultargs") CheckStatusModel;
 		%feature("autodoc", "
 Parameters
@@ -665,10 +661,10 @@ Description
 -----------
 Checks the Model. Returns True if there is NO FAIL at all (regardless Warnings) If <withprint> is True, also sends Checks on standard output.
 ") CheckStatusModel;
-		Standard_Boolean CheckStatusModel(const Standard_Boolean withprint);
+		bool CheckStatusModel(const bool withprint);
 
 		/****** TransferBRep_Reader::CheckStatusResult ******/
-		/****** md5 signature: 331854297e3a398f63c12a5f55682ab2 ******/
+		/****** md5 signature: 7686a68a7c17297f890516294c3183ba ******/
 		%feature("compactdefaultargs") CheckStatusResult;
 		%feature("autodoc", "
 Parameters
@@ -683,7 +679,7 @@ Description
 -----------
 Checks the Result of last Transfer (individual or roots, no cumulation on several transfers). Returns True if NO fail occurred during Transfer (queries the TransientProcess).
 ") CheckStatusResult;
-		Standard_Boolean CheckStatusResult(const Standard_Boolean withprints);
+		bool CheckStatusResult(const bool withprints);
 
 		/****** TransferBRep_Reader::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -712,7 +708,7 @@ Ebds a Transfer (one, roots or list) by recording its result.
 		void EndTransfer();
 
 		/****** TransferBRep_Reader::FileNotFound ******/
-		/****** md5 signature: 86b2480c0f386323f5deab3669dec3a3 ******/
+		/****** md5 signature: 8611b6997989c076d77e32133390f01c ******/
 		%feature("compactdefaultargs") FileNotFound;
 		%feature("autodoc", "Return
 -------
@@ -722,10 +718,10 @@ Description
 -----------
 Returns True if FileStatus is for FileNotFound.
 ") FileNotFound;
-		Standard_Boolean FileNotFound();
+		bool FileNotFound();
 
 		/****** TransferBRep_Reader::FileStatus ******/
-		/****** md5 signature: 6a634e5454e1bf22f52b13e24d6e2c9c ******/
+		/****** md5 signature: 7eab34e63904d56a8ec3e29fe53af255 ******/
 		%feature("compactdefaultargs") FileStatus;
 		%feature("autodoc", "Return
 -------
@@ -735,10 +731,10 @@ Description
 -----------
 Returns the File Status.
 ") FileStatus;
-		Standard_Integer FileStatus();
+		int FileStatus();
 
 		/****** TransferBRep_Reader::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -748,21 +744,21 @@ Description
 -----------
 Returns True if the LAST Transfer/TransferRoots was a success.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
+		/****** TransferBRep_Reader::ModeNewTransfer ******/
+		/****** md5 signature: 75cf63bf29080c75595a34e584fd5fb4 ******/
+		%feature("compactdefaultargs") ModeNewTransfer;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetModeNewTransfer() {
-            return (Standard_Boolean) $self->ModeNewTransfer();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetModeNewTransfer(Standard_Boolean value) {
-            $self->ModeNewTransfer()=value;
-            }
-        };
+Description
+-----------
+Returns (by Reference, hence can be changed) the Mode for new Transfer: True (D) means that each new Transfer produces a new TransferProcess. Else keeps the original one but each Transfer clears its (former results are not kept).
+") ModeNewTransfer;
+		bool & ModeNewTransfer();
+
 		/****** TransferBRep_Reader::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
@@ -777,7 +773,7 @@ Returns the Model to be worked on.
 		opencascade::handle<Interface_InterfaceModel> Model();
 
 		/****** TransferBRep_Reader::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -787,10 +783,10 @@ Description
 -----------
 Returns the count of produced Shapes (roots).
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** TransferBRep_Reader::NbTransients ******/
-		/****** md5 signature: 9436b9a550cdb03fdd33d4f80aca7526 ******/
+		/****** md5 signature: e02b1f2157c0ad9fd2433ae067a939e8 ******/
 		%feature("compactdefaultargs") NbTransients;
 		%feature("autodoc", "Return
 -------
@@ -800,7 +796,7 @@ Description
 -----------
 Returns the count of produced Transient Results (roots).
 ") NbTransients;
-		Standard_Integer NbTransients();
+		int NbTransients();
 
 		/****** TransferBRep_Reader::OneShape ******/
 		/****** md5 signature: 1fc1610db08b4eec83d275771d406ea5 ******/
@@ -860,7 +856,7 @@ Records the actor to be used for transfers.
 		void SetActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
 		/****** TransferBRep_Reader::SetFileStatus ******/
-		/****** md5 signature: 74a715d4bf31def1e0a74262f5c53207 ******/
+		/****** md5 signature: f0084f1fa3a41beda9b5cab0404f8868 ******/
 		%feature("compactdefaultargs") SetFileStatus;
 		%feature("autodoc", "
 Parameters
@@ -875,7 +871,7 @@ Description
 -----------
 Sets File Status to be interpreted as follows: = 0 OK < 0 file not found > 0 read error, no Model could be created.
 ") SetFileStatus;
-		void SetFileStatus(const Standard_Integer status);
+		void SetFileStatus(const int status);
 
 		/****** TransferBRep_Reader::SetModel ******/
 		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
@@ -914,7 +910,7 @@ Records the protocol to be used for read and transfer roots.
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** TransferBRep_Reader::Shape ******/
-		/****** md5 signature: 1e795d69b15f05ab57c59b0afbc57ddf ******/
+		/****** md5 signature: 26860324d11b89d5d3b80058d8c91d80 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -929,7 +925,7 @@ Description
 -----------
 Returns a Shape given its rank, by default the first one.
 ") Shape;
-		const TopoDS_Shape Shape(const Standard_Integer num = 1);
+		const TopoDS_Shape Shape(const int num = 1);
 
 		/****** TransferBRep_Reader::ShapeResult ******/
 		/****** md5 signature: 01e36bf3f5ba5a6d1aefe4e9aed8c7f6 ******/
@@ -950,20 +946,20 @@ Returns a Shape produced from a given entity (if it was individually transferred
 		TopoDS_Shape ShapeResult(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** TransferBRep_Reader::Shapes ******/
-		/****** md5 signature: fbd983721ce2925a93d47fdb2eb2a61d ******/
+		/****** md5 signature: 5731e74c95cacebc31ebc806d273237f ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Returns the complete list of produced Shapes.
 ") Shapes;
-		opencascade::handle<TopTools_HSequenceOfShape> Shapes();
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Shapes();
 
 		/****** TransferBRep_Reader::SyntaxError ******/
-		/****** md5 signature: fa9da864765cf509ba7abf0725188a11 ******/
+		/****** md5 signature: 433d999e6b11feb4e67a26c1a70d9c2a ******/
 		%feature("compactdefaultargs") SyntaxError;
 		%feature("autodoc", "Return
 -------
@@ -973,10 +969,10 @@ Description
 -----------
 Returns True if FileStatus is for Error during read (major error; for local error, see CheckModel).
 ") SyntaxError;
-		Standard_Boolean SyntaxError();
+		bool SyntaxError();
 
 		/****** TransferBRep_Reader::Transfer ******/
-		/****** md5 signature: b7b93a89ea541f8901206078d3c8ab0f ******/
+		/****** md5 signature: b0d503f3234cb3822195ee354f333ac4 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -992,15 +988,15 @@ Description
 -----------
 Transfers an Entity given its rank in the Model (Root or not) Returns True if it is recognized as Geom-Topol. (But it can have failed: see IsDone).
 ") Transfer;
-		virtual Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Transfer(const int num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TransferBRep_Reader::TransferList ******/
-		/****** md5 signature: 9e2922f2658d44facb646c364ffbbc83 ******/
+		/****** md5 signature: baad914ea40a7eb285c647bc035e07a4 ******/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1011,7 +1007,7 @@ Description
 -----------
 Transfers a list of Entities (only the ones also in the Model) Remark: former result is cleared.
 ") TransferList;
-		virtual void TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual void TransferList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TransferBRep_Reader::TransferRoots ******/
 		/****** md5 signature: b19043600acd2d46b55f29ea05e21678 ******/
@@ -1032,7 +1028,7 @@ Transfers all Root Entities which are recognized as Geom-Topol The result will b
 		virtual void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TransferBRep_Reader::Transient ******/
-		/****** md5 signature: f74282777e87422dedb9fd96d2ddb7db ******/
+		/****** md5 signature: e220123dd1d19eb01151dba95d1bc1a6 ******/
 		%feature("compactdefaultargs") Transient;
 		%feature("autodoc", "
 Parameters
@@ -1047,7 +1043,7 @@ Description
 -----------
 Returns a Transient Root Result, given its rank (by default the first one).
 ") Transient;
-		opencascade::handle<Standard_Transient> Transient(const Standard_Integer num = 1);
+		opencascade::handle<Standard_Transient> Transient(const int num = 1);
 
 		/****** TransferBRep_Reader::TransientProcess ******/
 		/****** md5 signature: cda5aa33365159e82c6213003de44419 ******/
@@ -1063,17 +1059,17 @@ Returns the TransientProcess. It records information about the very last transfe
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
 		/****** TransferBRep_Reader::Transients ******/
-		/****** md5 signature: 6b153a63c3c643b1b8e66b074c9eb931 ******/
+		/****** md5 signature: be79bdf6e146e047f8f7f20a53081f44 ******/
 		%feature("compactdefaultargs") Transients;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the complete list of produced Transient Results.
 ") Transients;
-		opencascade::handle<TColStd_HSequenceOfTransient> Transients();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Transients();
 
 };
 
@@ -1108,7 +1104,7 @@ Returns the Type attached to an object Here, TShape (Shape has no Dynamic Type).
 		static opencascade::handle<Standard_Type> Type(const TopoDS_Shape & ent);
 
 		/****** TransferBRep_ShapeInfo::TypeName ******/
-		/****** md5 signature: 9e3258fdb4a63ed1b39e111643bdaf36 ******/
+		/****** md5 signature: 4b53529c5c139411f7bf25f48ef8dc2f ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "
 Parameters
@@ -1117,13 +1113,13 @@ ent: TopoDS_Shape
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns Type Name (string) Here, the true name of the Type of a Shape.
 ") TypeName;
-		static Standard_CString TypeName(const TopoDS_Shape & ent);
+		static const char * TypeName(const TopoDS_Shape & ent);
 
 };
 
@@ -1153,12 +1149,12 @@ No available documentation.
 		 TransferBRep_ShapeListBinder();
 
 		/****** TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder ******/
-		/****** md5 signature: b18999de218159d56d773f7587711b9b ******/
+		/****** md5 signature: 0684cb6f4f60d080945af182706bd3fe ******/
 		%feature("compactdefaultargs") TransferBRep_ShapeListBinder;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TopTools_HSequenceOfShape
+list: NCollection_HSequence<TopoDS_Shape
 
 Return
 -------
@@ -1168,7 +1164,7 @@ Description
 -----------
 No available documentation.
 ") TransferBRep_ShapeListBinder;
-		 TransferBRep_ShapeListBinder(const opencascade::handle<TopTools_HSequenceOfShape> & list);
+		 TransferBRep_ShapeListBinder(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & list);
 
 		/****** TransferBRep_ShapeListBinder::AddResult ******/
 		/****** md5 signature: 307f4fac54065cc112d1d37fa0ba84d6 ******/
@@ -1189,7 +1185,7 @@ Adds an item to the result list.
 		void AddResult(const TopoDS_Shape & res);
 
 		/****** TransferBRep_ShapeListBinder::CompSolid ******/
-		/****** md5 signature: 85f821a9b9b0553edcd2a0c068013325 ******/
+		/****** md5 signature: b1e5012e0bc0fc8a2163fb745e5e3c0c ******/
 		%feature("compactdefaultargs") CompSolid;
 		%feature("autodoc", "
 Parameters
@@ -1204,10 +1200,10 @@ Description
 -----------
 No available documentation.
 ") CompSolid;
-		TopoDS_CompSolid CompSolid(const Standard_Integer num);
+		TopoDS_CompSolid CompSolid(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Compound ******/
-		/****** md5 signature: ffc423e6583d2e74cfed179181df389f ******/
+		/****** md5 signature: 6f1f382cf1de41658c275d8229a30a35 ******/
 		%feature("compactdefaultargs") Compound;
 		%feature("autodoc", "
 Parameters
@@ -1222,10 +1218,10 @@ Description
 -----------
 No available documentation.
 ") Compound;
-		TopoDS_Compound Compound(const Standard_Integer num);
+		TopoDS_Compound Compound(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Edge ******/
-		/****** md5 signature: 825841bc4e9a24f9987724fcade8ecd7 ******/
+		/****** md5 signature: 94efb4c91a253aa8f1ccf8b1009cbb01 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -1240,10 +1236,10 @@ Description
 -----------
 No available documentation.
 ") Edge;
-		TopoDS_Edge Edge(const Standard_Integer num);
+		TopoDS_Edge Edge(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Face ******/
-		/****** md5 signature: 67e12ab0b51b730d66350be5ffa1f96e ******/
+		/****** md5 signature: 188ea327f7d3753eff3a27febeb100b7 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -1258,10 +1254,10 @@ Description
 -----------
 No available documentation.
 ") Face;
-		TopoDS_Face Face(const Standard_Integer num);
+		TopoDS_Face Face(const int num);
 
 		/****** TransferBRep_ShapeListBinder::IsMultiple ******/
-		/****** md5 signature: 17145d71daab4028b6c7195d5ff772ce ******/
+		/****** md5 signature: b73238879014f1cd1bb02ce2686b5485 ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -1271,10 +1267,10 @@ Description
 -----------
 No available documentation.
 ") IsMultiple;
-		virtual Standard_Boolean IsMultiple();
+		bool IsMultiple();
 
 		/****** TransferBRep_ShapeListBinder::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -1284,23 +1280,23 @@ Description
 -----------
 No available documentation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** TransferBRep_ShapeListBinder::Result ******/
-		/****** md5 signature: c4dc32098a28d0345ee9f33c9098c832 ******/
+		/****** md5 signature: d40b68c89c597349e95d11f0cc7c830d ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 No available documentation.
 ") Result;
-		opencascade::handle<TopTools_HSequenceOfShape> Result();
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Result();
 
 		/****** TransferBRep_ShapeListBinder::ResultType ******/
-		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
+		/****** md5 signature: 4e004b8040dfd0ab644b911d7c8c2437 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -1313,20 +1309,20 @@ No available documentation.
 		opencascade::handle<Standard_Type> ResultType();
 
 		/****** TransferBRep_ShapeListBinder::ResultTypeName ******/
-		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
+		/****** md5 signature: b971c635bd884aa99ea99620671ff261 ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") ResultTypeName;
-		Standard_CString ResultTypeName();
+		const char * ResultTypeName();
 
 		/****** TransferBRep_ShapeListBinder::SetResult ******/
-		/****** md5 signature: ce058a0f2fb955a00dd16b642d73ddf3 ******/
+		/****** md5 signature: 38900e73809ddde935068c9a0a9c3aaa ******/
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "
 Parameters
@@ -1342,10 +1338,10 @@ Description
 -----------
 Changes an already defined sub-result.
 ") SetResult;
-		void SetResult(const Standard_Integer num, const TopoDS_Shape & res);
+		void SetResult(const int num, const TopoDS_Shape & res);
 
 		/****** TransferBRep_ShapeListBinder::Shape ******/
-		/****** md5 signature: 57dfd33e11a02b943ed7391444b46691 ******/
+		/****** md5 signature: d00d28e0c2be2c27fa3af76487e7b786 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1360,10 +1356,10 @@ Description
 -----------
 No available documentation.
 ") Shape;
-		const TopoDS_Shape Shape(const Standard_Integer num);
+		const TopoDS_Shape Shape(const int num);
 
 		/****** TransferBRep_ShapeListBinder::ShapeType ******/
-		/****** md5 signature: 8f05332249aefadde782b65391e51fe2 ******/
+		/****** md5 signature: e9eb0a95773b9416ae340b3a9374734a ******/
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "
 Parameters
@@ -1378,10 +1374,10 @@ Description
 -----------
 No available documentation.
 ") ShapeType;
-		TopAbs_ShapeEnum ShapeType(const Standard_Integer num);
+		TopAbs_ShapeEnum ShapeType(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Shell ******/
-		/****** md5 signature: f705fa0e2e8d1270514f2e407eafc945 ******/
+		/****** md5 signature: c4633f19235e96d6e546a13e783cd428 ******/
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "
 Parameters
@@ -1396,10 +1392,10 @@ Description
 -----------
 No available documentation.
 ") Shell;
-		TopoDS_Shell Shell(const Standard_Integer num);
+		TopoDS_Shell Shell(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Solid ******/
-		/****** md5 signature: eaaa658fc5bdc6be52c2ddaf73d8d00d ******/
+		/****** md5 signature: 3819d1a9770d04087c624eef7e46bd98 ******/
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "
 Parameters
@@ -1414,10 +1410,10 @@ Description
 -----------
 No available documentation.
 ") Solid;
-		TopoDS_Solid Solid(const Standard_Integer num);
+		TopoDS_Solid Solid(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Vertex ******/
-		/****** md5 signature: f53b5dfd31ebea2646e668d6f9b14e1d ******/
+		/****** md5 signature: a5f17a4f65fd58efbbb829abdb4ee937 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -1432,10 +1428,10 @@ Description
 -----------
 No available documentation.
 ") Vertex;
-		TopoDS_Vertex Vertex(const Standard_Integer num);
+		TopoDS_Vertex Vertex(const int num);
 
 		/****** TransferBRep_ShapeListBinder::Wire ******/
-		/****** md5 signature: ea366fc3cbbdc5a77a2dfe378186f7fc ******/
+		/****** md5 signature: 43a878d7ccfba9fd3da2e78673002114 ******/
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "
 Parameters
@@ -1450,7 +1446,7 @@ Description
 -----------
 No available documentation.
 ") Wire;
-		TopoDS_Wire Wire(const Standard_Integer num);
+		TopoDS_Wire Wire(const int num);
 
 };
 
@@ -1487,7 +1483,7 @@ Creates a Mapper with a Value. This Value can then not be changed. It is used by
 		 TransferBRep_ShapeMapper(const TopoDS_Shape & akey);
 
 		/****** TransferBRep_ShapeMapper::Equates ******/
-		/****** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ******/
+		/****** md5 signature: fda61c1d86b7277254b3d2e5d16413a3 ******/
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "
 Parameters
@@ -1500,9 +1496,9 @@ bool
 
 Description
 -----------
-Specific testof equality: defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==).
+Specific test of equality: defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==).
 ") Equates;
-		Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
+		bool Equates(const opencascade::handle<Transfer_Finder> & other);
 
 		/****** TransferBRep_ShapeMapper::Value ******/
 		/****** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ******/
@@ -1518,7 +1514,7 @@ Returns the contained value.
 		const TopoDS_Shape Value();
 
 		/****** TransferBRep_ShapeMapper::ValueType ******/
-		/****** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ******/
+		/****** md5 signature: 9013f89343e9d7fdefc9baa7b7c53b4f ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -1528,20 +1524,20 @@ Description
 -----------
 Returns the Type of the Value. By default, returns the DynamicType of <self>, but can be redefined.
 ") ValueType;
-		virtual opencascade::handle<Standard_Type> ValueType();
+		opencascade::handle<Standard_Type> ValueType();
 
 		/****** TransferBRep_ShapeMapper::ValueTypeName ******/
-		/****** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ******/
+		/****** md5 signature: 28672ff733ba4193d89ffe9994247474 ******/
 		%feature("compactdefaultargs") ValueTypeName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of the Type of the Value. Default is name of ValueType, unless it is for a non-handled object.
 ") ValueTypeName;
-		virtual Standard_CString ValueTypeName();
+		const char * ValueTypeName();
 
 };
 
@@ -1585,110 +1581,110 @@ Resets all the fields.
 ") Clear;
 		void Clear();
 
+		/****** TransferBRep_TransferResultInfo::NoResult ******/
+		/****** md5 signature: a3c5571c31a373e583396c55e9f792ed ******/
+		%feature("compactdefaultargs") NoResult;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNoResult() {
-            return (Standard_Integer) $self->NoResult();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNoResult(Standard_Integer value) {
-            $self->NoResult()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") NoResult;
+		int & NoResult();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNoResultFail() {
-            return (Standard_Integer) $self->NoResultFail();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNoResultFail(Standard_Integer value) {
-            $self->NoResultFail()=value;
-            }
-        };
+		/****** TransferBRep_TransferResultInfo::NoResultFail ******/
+		/****** md5 signature: 07b152543278ffe436a216735ce431bb ******/
+		%feature("compactdefaultargs") NoResultFail;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNoResultWarning() {
-            return (Standard_Integer) $self->NoResultWarning();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNoResultWarning(Standard_Integer value) {
-            $self->NoResultWarning()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") NoResultFail;
+		int & NoResultFail();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNoResultWarningFail() {
-            return (Standard_Integer) $self->NoResultWarningFail();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNoResultWarningFail(Standard_Integer value) {
-            $self->NoResultWarningFail()=value;
-            }
-        };
+		/****** TransferBRep_TransferResultInfo::NoResultWarning ******/
+		/****** md5 signature: a76a7a3d93690a625646157922779e6a ******/
+		%feature("compactdefaultargs") NoResultWarning;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetResult() {
-            return (Standard_Integer) $self->Result();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetResult(Standard_Integer value) {
-            $self->Result()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") NoResultWarning;
+		int & NoResultWarning();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetResultFail() {
-            return (Standard_Integer) $self->ResultFail();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetResultFail(Standard_Integer value) {
-            $self->ResultFail()=value;
-            }
-        };
+		/****** TransferBRep_TransferResultInfo::NoResultWarningFail ******/
+		/****** md5 signature: d8f0b23f6eca26487f3bb645f30022ca ******/
+		%feature("compactdefaultargs") NoResultWarningFail;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetResultWarning() {
-            return (Standard_Integer) $self->ResultWarning();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetResultWarning(Standard_Integer value) {
-            $self->ResultWarning()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") NoResultWarningFail;
+		int & NoResultWarningFail();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetResultWarningFail() {
-            return (Standard_Integer) $self->ResultWarningFail();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetResultWarningFail(Standard_Integer value) {
-            $self->ResultWarningFail()=value;
-            }
-        };
+		/****** TransferBRep_TransferResultInfo::Result ******/
+		/****** md5 signature: a7321ff907618e28bfff86e0c13ce8f3 ******/
+		%feature("compactdefaultargs") Result;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") Result;
+		int & Result();
+
+		/****** TransferBRep_TransferResultInfo::ResultFail ******/
+		/****** md5 signature: 3e120e154fa6e155d6145bfaa98b4058 ******/
+		%feature("compactdefaultargs") ResultFail;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") ResultFail;
+		int & ResultFail();
+
+		/****** TransferBRep_TransferResultInfo::ResultWarning ******/
+		/****** md5 signature: 305f1a77ad1014b0a927ae078f15ee8a ******/
+		%feature("compactdefaultargs") ResultWarning;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") ResultWarning;
+		int & ResultWarning();
+
+		/****** TransferBRep_TransferResultInfo::ResultWarningFail ******/
+		/****** md5 signature: e2b0c7d91ef17d3357984bf3157ae041 ******/
+		%feature("compactdefaultargs") ResultWarningFail;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") ResultWarningFail;
+		int & ResultWarningFail();
+
 };
 
 
@@ -1867,14 +1863,14 @@ No available documentation.
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class TransferBRep_HSequenceOfTransferResultInfo : public TransferBRep_SequenceOfTransferResultInfo, public Standard_Transient {
+class TransferBRep_HSequenceOfTransferResultInfo : public NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>, public Standard_Transient {
   public:
     TransferBRep_HSequenceOfTransferResultInfo();
-    TransferBRep_HSequenceOfTransferResultInfo(const TransferBRep_SequenceOfTransferResultInfo& theOther);
-    const TransferBRep_SequenceOfTransferResultInfo& Sequence();
-    void Append (const TransferBRep_SequenceOfTransferResultInfo::value_type& theItem);
-    void Append (TransferBRep_SequenceOfTransferResultInfo& theSequence);
-    TransferBRep_SequenceOfTransferResultInfo& ChangeSequence();
+    TransferBRep_HSequenceOfTransferResultInfo(const NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& theOther);
+    const NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& theSequence);
+    NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& ChangeSequence();
 };
 %make_alias(TransferBRep_HSequenceOfTransferResultInfo)
 

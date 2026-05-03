@@ -45,8 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plate.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
-#include<TColgp_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -56,8 +54,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plate.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
-%import TColgp.i
-%import TColStd.i
 %import Message.i
 
 %pythoncode {
@@ -74,7 +70,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(Plate_HArray1OfPinpointConstraint)
 /* end handles declaration */
 
 /* templates */
@@ -109,6 +104,7 @@ Array1ExtendIter(Plate_PinpointConstraint)
 
 /* typedefs */
 typedef NCollection_Array1<Plate_PinpointConstraint> Plate_Array1OfPinpointConstraint;
+typedef NCollection_HArray1<Plate_PinpointConstraint> Plate_HArray1OfPinpointConstraint;
 typedef NCollection_Sequence<Plate_LinearScalarConstraint> Plate_SequenceOfLinearScalarConstraint;
 typedef NCollection_Sequence<Plate_LinearXYZConstraint> Plate_SequenceOfLinearXYZConstraint;
 typedef NCollection_Sequence<Plate_PinpointConstraint> Plate_SequenceOfPinpointConstraint;
@@ -302,7 +298,7 @@ No available documentation.
 class Plate_FreeGtoCConstraint {
 	public:
 		/****** Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint ******/
-		/****** md5 signature: 29b295328ddcb6895dce6a02b405f5f5 ******/
+		/****** md5 signature: 1a8866e8dadd70f22c8e29f7d68fad3c ******/
 		%feature("compactdefaultargs") Plate_FreeGtoCConstraint;
 		%feature("autodoc", "
 Parameters
@@ -310,7 +306,7 @@ Parameters
 point2d: gp_XY
 D1S: Plate_D1
 D1T: Plate_D1
-IncrementalLoad: float (optional, default to 1.0)
+IncrementalLoad: double (optional, default to 1.0)
 orientation: int (optional, default to 0)
 
 Return
@@ -321,10 +317,10 @@ Description
 -----------
 No available documentation.
 ") Plate_FreeGtoCConstraint;
-		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Standard_Real IncrementalLoad = 1.0, const Standard_Integer orientation = 0);
+		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const double IncrementalLoad = 1.0, const int orientation = 0);
 
 		/****** Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint ******/
-		/****** md5 signature: 27d1f8d47334612df4bd5ecbf299db9b ******/
+		/****** md5 signature: e6618c0836d9f79dffa64751fa80952b ******/
 		%feature("compactdefaultargs") Plate_FreeGtoCConstraint;
 		%feature("autodoc", "
 Parameters
@@ -334,7 +330,7 @@ D1S: Plate_D1
 D1T: Plate_D1
 D2S: Plate_D2
 D2T: Plate_D2
-IncrementalLoad: float (optional, default to 1.0)
+IncrementalLoad: double (optional, default to 1.0)
 orientation: int (optional, default to 0)
 
 Return
@@ -345,10 +341,10 @@ Description
 -----------
 No available documentation.
 ") Plate_FreeGtoCConstraint;
-		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Plate_D2 & D2S, const Plate_D2 & D2T, const Standard_Real IncrementalLoad = 1.0, const Standard_Integer orientation = 0);
+		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Plate_D2 & D2S, const Plate_D2 & D2T, const double IncrementalLoad = 1.0, const int orientation = 0);
 
 		/****** Plate_FreeGtoCConstraint::Plate_FreeGtoCConstraint ******/
-		/****** md5 signature: 325ce01a43177b7fbbe14401a022e1a7 ******/
+		/****** md5 signature: 5f50ffcf7e5fcfcb58681edb6a062131 ******/
 		%feature("compactdefaultargs") Plate_FreeGtoCConstraint;
 		%feature("autodoc", "
 Parameters
@@ -360,7 +356,7 @@ D2S: Plate_D2
 D2T: Plate_D2
 D3S: Plate_D3
 D3T: Plate_D3
-IncrementalLoad: float (optional, default to 1.0)
+IncrementalLoad: double (optional, default to 1.0)
 orientation: int (optional, default to 0)
 
 Return
@@ -371,10 +367,10 @@ Description
 -----------
 No available documentation.
 ") Plate_FreeGtoCConstraint;
-		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Plate_D2 & D2S, const Plate_D2 & D2T, const Plate_D3 & D3S, const Plate_D3 & D3T, const Standard_Real IncrementalLoad = 1.0, const Standard_Integer orientation = 0);
+		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Plate_D2 & D2S, const Plate_D2 & D2T, const Plate_D3 & D3S, const Plate_D3 & D3T, const double IncrementalLoad = 1.0, const int orientation = 0);
 
 		/****** Plate_FreeGtoCConstraint::GetPPC ******/
-		/****** md5 signature: 695378f1c780027da746944a9cf65e7c ******/
+		/****** md5 signature: d93fcac6ad18e9533d00a9c224468a56 ******/
 		%feature("compactdefaultargs") GetPPC;
 		%feature("autodoc", "
 Parameters
@@ -389,10 +385,10 @@ Description
 -----------
 No available documentation.
 ") GetPPC;
-		const Plate_PinpointConstraint & GetPPC(const Standard_Integer Index);
+		const Plate_PinpointConstraint & GetPPC(const int Index);
 
 		/****** Plate_FreeGtoCConstraint::LSC ******/
-		/****** md5 signature: e14687dbaa35e7d87be4800e1b2b7a0e ******/
+		/****** md5 signature: dcde6ddf64e39780f2c4469061371716 ******/
 		%feature("compactdefaultargs") LSC;
 		%feature("autodoc", "
 Parameters
@@ -407,10 +403,10 @@ Description
 -----------
 No available documentation.
 ") LSC;
-		const Plate_LinearScalarConstraint & LSC(const Standard_Integer Index);
+		const Plate_LinearScalarConstraint & LSC(const int Index);
 
 		/****** Plate_FreeGtoCConstraint::nb_LSC ******/
-		/****** md5 signature: 479420512eeabffd9f945a5e77c48828 ******/
+		/****** md5 signature: dfe29b093573499b0591839c19cd904b ******/
 		%feature("compactdefaultargs") nb_LSC;
 		%feature("autodoc", "Return
 -------
@@ -420,10 +416,10 @@ Description
 -----------
 No available documentation.
 ") nb_LSC;
-		const Standard_Integer & nb_LSC();
+		const int & nb_LSC();
 
 		/****** Plate_FreeGtoCConstraint::nb_PPC ******/
-		/****** md5 signature: 09fff986f7b5f70d54a442a90b2b0e7b ******/
+		/****** md5 signature: c3b3786d41e81b4c84f600c578464ad1 ******/
 		%feature("compactdefaultargs") nb_PPC;
 		%feature("autodoc", "Return
 -------
@@ -433,7 +429,7 @@ Description
 -----------
 No available documentation.
 ") nb_PPC;
-		const Standard_Integer & nb_PPC();
+		const int & nb_PPC();
 
 };
 
@@ -450,12 +446,12 @@ No available documentation.
 class Plate_GlobalTranslationConstraint {
 	public:
 		/****** Plate_GlobalTranslationConstraint::Plate_GlobalTranslationConstraint ******/
-		/****** md5 signature: f6742f1d9db017bae0bb912df773dd39 ******/
+		/****** md5 signature: 4391abfc8c5f48b56dba0d8f474dae4a ******/
 		%feature("compactdefaultargs") Plate_GlobalTranslationConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-SOfXY: TColgp_SequenceOfXY
+SOfXY: NCollection_Sequence<gp_XY>
 
 Return
 -------
@@ -465,7 +461,7 @@ Description
 -----------
 No available documentation.
 ") Plate_GlobalTranslationConstraint;
-		 Plate_GlobalTranslationConstraint(const TColgp_SequenceOfXY & SOfXY);
+		 Plate_GlobalTranslationConstraint(const NCollection_Sequence<gp_XY> & SOfXY);
 
 		/****** Plate_GlobalTranslationConstraint::LXYZC ******/
 		/****** md5 signature: 422f3ddc3fa5aee73e09010319f27198 ******/
@@ -661,7 +657,7 @@ No available documentation.
 		const Plate_D1 & D1SurfInit();
 
 		/****** Plate_GtoCConstraint::GetPPC ******/
-		/****** md5 signature: 695378f1c780027da746944a9cf65e7c ******/
+		/****** md5 signature: d93fcac6ad18e9533d00a9c224468a56 ******/
 		%feature("compactdefaultargs") GetPPC;
 		%feature("autodoc", "
 Parameters
@@ -676,10 +672,10 @@ Description
 -----------
 No available documentation.
 ") GetPPC;
-		const Plate_PinpointConstraint & GetPPC(const Standard_Integer Index);
+		const Plate_PinpointConstraint & GetPPC(const int Index);
 
 		/****** Plate_GtoCConstraint::nb_PPC ******/
-		/****** md5 signature: 09fff986f7b5f70d54a442a90b2b0e7b ******/
+		/****** md5 signature: c3b3786d41e81b4c84f600c578464ad1 ******/
 		%feature("compactdefaultargs") nb_PPC;
 		%feature("autodoc", "Return
 -------
@@ -689,7 +685,7 @@ Description
 -----------
 No available documentation.
 ") nb_PPC;
-		const Standard_Integer & nb_PPC();
+		const int & nb_PPC();
 
 };
 
@@ -706,7 +702,7 @@ No available documentation.
 class Plate_LineConstraint {
 	public:
 		/****** Plate_LineConstraint::Plate_LineConstraint ******/
-		/****** md5 signature: 9e8c5b71f9abe63b78fb3afd294501ca ******/
+		/****** md5 signature: 6e6c928d0c70d49908414a976dbda682 ******/
 		%feature("compactdefaultargs") Plate_LineConstraint;
 		%feature("autodoc", "
 Parameters
@@ -724,7 +720,7 @@ Description
 -----------
 No available documentation.
 ") Plate_LineConstraint;
-		 Plate_LineConstraint(const gp_XY & point2d, const gp_Lin & lin, const Standard_Integer iu = 0, const Standard_Integer iv = 0);
+		 Plate_LineConstraint(const gp_XY & point2d, const gp_Lin & lin, const int iu = 0, const int iv = 0);
 
 		/****** Plate_LineConstraint::LSC ******/
 		/****** md5 signature: 38e8ce4a9a7d5c615d696ae043b116ea ******/
@@ -786,13 +782,13 @@ No available documentation.
 		 Plate_LinearScalarConstraint(const Plate_PinpointConstraint & thePPC1, const gp_XYZ & theCoeff);
 
 		/****** Plate_LinearScalarConstraint::Plate_LinearScalarConstraint ******/
-		/****** md5 signature: da3961e8596b93cc48d49ab64c1ab15a ******/
+		/****** md5 signature: 018dcdc25e9acb144942b7a8a94dd406 ******/
 		%feature("compactdefaultargs") Plate_LinearScalarConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-thePPC: Plate_Array1OfPinpointConstraint
-theCoeff: TColgp_Array1OfXYZ
+thePPC: NCollection_Array1<Plate_PinpointConstraint>
+theCoeff: NCollection_Array1<gp_XYZ>
 
 Return
 -------
@@ -802,16 +798,16 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearScalarConstraint;
-		 Plate_LinearScalarConstraint(const Plate_Array1OfPinpointConstraint & thePPC, const TColgp_Array1OfXYZ & theCoeff);
+		 Plate_LinearScalarConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array1<gp_XYZ> & theCoeff);
 
 		/****** Plate_LinearScalarConstraint::Plate_LinearScalarConstraint ******/
-		/****** md5 signature: bd9920ac303c0c6e5ffe47897152076b ******/
+		/****** md5 signature: 2943320112c12cb92d2bccd1b886185f ******/
 		%feature("compactdefaultargs") Plate_LinearScalarConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-thePPC: Plate_Array1OfPinpointConstraint
-theCoeff: TColgp_Array2OfXYZ
+thePPC: NCollection_Array1<Plate_PinpointConstraint>
+theCoeff: NCollection_Array2<gp_XYZ>
 
 Return
 -------
@@ -821,10 +817,10 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearScalarConstraint;
-		 Plate_LinearScalarConstraint(const Plate_Array1OfPinpointConstraint & thePPC, const TColgp_Array2OfXYZ & theCoeff);
+		 Plate_LinearScalarConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array2<gp_XYZ> & theCoeff);
 
 		/****** Plate_LinearScalarConstraint::Plate_LinearScalarConstraint ******/
-		/****** md5 signature: 93e699f78ebeb293f274d15b8e593871 ******/
+		/****** md5 signature: 627ac88d101c4867c29ac930dd2848e6 ******/
 		%feature("compactdefaultargs") Plate_LinearScalarConstraint;
 		%feature("autodoc", "
 Parameters
@@ -840,36 +836,36 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearScalarConstraint;
-		 Plate_LinearScalarConstraint(const Standard_Integer ColLen, const Standard_Integer RowLen);
+		 Plate_LinearScalarConstraint(const int ColLen, const int RowLen);
 
 		/****** Plate_LinearScalarConstraint::Coeff ******/
-		/****** md5 signature: 7913c7634d4783c9f642b656f154b277 ******/
+		/****** md5 signature: 8d1cb0d1ad1b3625c0a33d653ae5d3af ******/
 		%feature("compactdefaultargs") Coeff;
 		%feature("autodoc", "Return
 -------
-TColgp_Array2OfXYZ
+NCollection_Array2<gp_XYZ>
 
 Description
 -----------
 No available documentation.
 ") Coeff;
-		const TColgp_Array2OfXYZ & Coeff();
+		const NCollection_Array2<gp_XYZ> Coeff();
 
 		/****** Plate_LinearScalarConstraint::GetPPC ******/
-		/****** md5 signature: 8f4d511ec72379feb2e7cbc31c303cda ******/
+		/****** md5 signature: 802b611378a639fca7268b56438b0fab ******/
 		%feature("compactdefaultargs") GetPPC;
 		%feature("autodoc", "Return
 -------
-Plate_Array1OfPinpointConstraint
+NCollection_Array1<Plate_PinpointConstraint>
 
 Description
 -----------
 No available documentation.
 ") GetPPC;
-		const Plate_Array1OfPinpointConstraint & GetPPC();
+		const NCollection_Array1<Plate_PinpointConstraint> & GetPPC();
 
 		/****** Plate_LinearScalarConstraint::SetCoeff ******/
-		/****** md5 signature: 58d8ef6c7b6183f95bd6ad9a79c4811b ******/
+		/****** md5 signature: 2b4c1cf3c07fb658c4ba9aa3f1ebbc87 ******/
 		%feature("compactdefaultargs") SetCoeff;
 		%feature("autodoc", "
 Parameters
@@ -886,10 +882,10 @@ Description
 -----------
 Sets the coeff of index (Row,Col) to Value raise if Row (respectively Col) is greater than the Row (respectively Column) length of coeff.
 ") SetCoeff;
-		void SetCoeff(const Standard_Integer Row, const Standard_Integer Col, const gp_XYZ & Value);
+		void SetCoeff(const int Row, const int Col, const gp_XYZ & Value);
 
 		/****** Plate_LinearScalarConstraint::SetPPC ******/
-		/****** md5 signature: dd1eab2cb2bd1527024a9768fcfeb4b6 ******/
+		/****** md5 signature: 78c395ffdc4767ae62992d0638d1a626 ******/
 		%feature("compactdefaultargs") SetPPC;
 		%feature("autodoc", "
 Parameters
@@ -905,7 +901,7 @@ Description
 -----------
 Sets the PinPointConstraint of index Index to Value raise if Index is greater than the length of PPC or the Row length of coeff or lower than 1.
 ") SetPPC;
-		void SetPPC(const Standard_Integer Index, const Plate_PinpointConstraint & Value);
+		void SetPPC(const int Index, const Plate_PinpointConstraint & Value);
 
 };
 
@@ -935,13 +931,13 @@ No available documentation.
 		 Plate_LinearXYZConstraint();
 
 		/****** Plate_LinearXYZConstraint::Plate_LinearXYZConstraint ******/
-		/****** md5 signature: 71848a1749b080c18b7be2e8c103a7b9 ******/
+		/****** md5 signature: d7210d764a9ddfb9195aaf908bd09b8c ******/
 		%feature("compactdefaultargs") Plate_LinearXYZConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-thePPC: Plate_Array1OfPinpointConstraint
-theCoeff: TColStd_Array1OfReal
+thePPC: NCollection_Array1<Plate_PinpointConstraint>
+theCoeff: NCollection_Array1<double>
 
 Return
 -------
@@ -951,16 +947,16 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearXYZConstraint;
-		 Plate_LinearXYZConstraint(const Plate_Array1OfPinpointConstraint & thePPC, const TColStd_Array1OfReal & theCoeff);
+		 Plate_LinearXYZConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array1<double> & theCoeff);
 
 		/****** Plate_LinearXYZConstraint::Plate_LinearXYZConstraint ******/
-		/****** md5 signature: 8b50c3134baa426e1a50682f2fc5d3f2 ******/
+		/****** md5 signature: 168c3cd49c63044d6cfc554ffd5227bb ******/
 		%feature("compactdefaultargs") Plate_LinearXYZConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-thePPC: Plate_Array1OfPinpointConstraint
-theCoeff: TColStd_Array2OfReal
+thePPC: NCollection_Array1<Plate_PinpointConstraint>
+theCoeff: NCollection_Array2<double>
 
 Return
 -------
@@ -970,10 +966,10 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearXYZConstraint;
-		 Plate_LinearXYZConstraint(const Plate_Array1OfPinpointConstraint & thePPC, const TColStd_Array2OfReal & theCoeff);
+		 Plate_LinearXYZConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array2<double> & theCoeff);
 
 		/****** Plate_LinearXYZConstraint::Plate_LinearXYZConstraint ******/
-		/****** md5 signature: 25a773f54445604ce2b2dc0873886620 ******/
+		/****** md5 signature: ddeb74926023ddde863dc310dd6f7c9a ******/
 		%feature("compactdefaultargs") Plate_LinearXYZConstraint;
 		%feature("autodoc", "
 Parameters
@@ -989,43 +985,43 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearXYZConstraint;
-		 Plate_LinearXYZConstraint(const Standard_Integer ColLen, const Standard_Integer RowLen);
+		 Plate_LinearXYZConstraint(const int ColLen, const int RowLen);
 
 		/****** Plate_LinearXYZConstraint::Coeff ******/
-		/****** md5 signature: b7ca65ff8c4de9597eb9b525e70b8f26 ******/
+		/****** md5 signature: b330b1c43923bf461fde9f83d40e0738 ******/
 		%feature("compactdefaultargs") Coeff;
 		%feature("autodoc", "Return
 -------
-TColStd_Array2OfReal
+NCollection_Array2<double>
 
 Description
 -----------
 No available documentation.
 ") Coeff;
-		const TColStd_Array2OfReal & Coeff();
+		const NCollection_Array2<double> & Coeff();
 
 		/****** Plate_LinearXYZConstraint::GetPPC ******/
-		/****** md5 signature: 8f4d511ec72379feb2e7cbc31c303cda ******/
+		/****** md5 signature: 802b611378a639fca7268b56438b0fab ******/
 		%feature("compactdefaultargs") GetPPC;
 		%feature("autodoc", "Return
 -------
-Plate_Array1OfPinpointConstraint
+NCollection_Array1<Plate_PinpointConstraint>
 
 Description
 -----------
 No available documentation.
 ") GetPPC;
-		const Plate_Array1OfPinpointConstraint & GetPPC();
+		const NCollection_Array1<Plate_PinpointConstraint> & GetPPC();
 
 		/****** Plate_LinearXYZConstraint::SetCoeff ******/
-		/****** md5 signature: 6b3c5367b9fbe33400f0d16eea478cc1 ******/
+		/****** md5 signature: 03d229075afc293d1fdf06fb35d91ad9 ******/
 		%feature("compactdefaultargs") SetCoeff;
 		%feature("autodoc", "
 Parameters
 ----------
 Row: int
 Col: int
-Value: float
+Value: double
 
 Return
 -------
@@ -1035,10 +1031,10 @@ Description
 -----------
 Sets the coeff of index (Row,Col) to Value raise if Row (respectively Col) is greater than the Row (respectively Column) length of coeff.
 ") SetCoeff;
-		void SetCoeff(const Standard_Integer Row, const Standard_Integer Col, const Standard_Real Value);
+		void SetCoeff(const int Row, const int Col, const double Value);
 
 		/****** Plate_LinearXYZConstraint::SetPPC ******/
-		/****** md5 signature: dd1eab2cb2bd1527024a9768fcfeb4b6 ******/
+		/****** md5 signature: 78c395ffdc4767ae62992d0638d1a626 ******/
 		%feature("compactdefaultargs") SetPPC;
 		%feature("autodoc", "
 Parameters
@@ -1054,7 +1050,7 @@ Description
 -----------
 Sets the PinPointConstraint of index Index to Value raise if Index is greater than the length of PPC or the Row length of coeff or lower than 1.
 ") SetPPC;
-		void SetPPC(const Standard_Integer Index, const Plate_PinpointConstraint & Value);
+		void SetPPC(const int Index, const Plate_PinpointConstraint & Value);
 
 };
 
@@ -1084,7 +1080,7 @@ No available documentation.
 		 Plate_PinpointConstraint();
 
 		/****** Plate_PinpointConstraint::Plate_PinpointConstraint ******/
-		/****** md5 signature: 0f1943cae51c0d49a9ee7af5e5ffdfff ******/
+		/****** md5 signature: 9d4846231fe874936e970775ea623873 ******/
 		%feature("compactdefaultargs") Plate_PinpointConstraint;
 		%feature("autodoc", "
 Parameters
@@ -1102,10 +1098,10 @@ Description
 -----------
 No available documentation.
 ") Plate_PinpointConstraint;
-		 Plate_PinpointConstraint(const gp_XY & point2d, const gp_XYZ & ImposedValue, const Standard_Integer iu = 0, const Standard_Integer iv = 0);
+		 Plate_PinpointConstraint(const gp_XY & point2d, const gp_XYZ & ImposedValue, const int iu = 0, const int iv = 0);
 
 		/****** Plate_PinpointConstraint::Idu ******/
-		/****** md5 signature: 7e2fc55cdc8d94beee516884bb81e202 ******/
+		/****** md5 signature: e60dfc3529bf620fb9773f7c2d088126 ******/
 		%feature("compactdefaultargs") Idu;
 		%feature("autodoc", "Return
 -------
@@ -1115,10 +1111,10 @@ Description
 -----------
 No available documentation.
 ") Idu;
-		const Standard_Integer & Idu();
+		const int & Idu();
 
 		/****** Plate_PinpointConstraint::Idv ******/
-		/****** md5 signature: 0edf326fa1eec836dd81944f5ddf0afc ******/
+		/****** md5 signature: 940797acf80af2b46a1aad328ccd75b6 ******/
 		%feature("compactdefaultargs") Idv;
 		%feature("autodoc", "Return
 -------
@@ -1128,7 +1124,7 @@ Description
 -----------
 No available documentation.
 ") Idv;
-		const Standard_Integer & Idv();
+		const int & Idv();
 
 		/****** Plate_PinpointConstraint::Pnt2d ******/
 		/****** md5 signature: 3b3633201b450c67df56dc33d49ac9cf ******/
@@ -1171,7 +1167,7 @@ No available documentation.
 class Plate_PlaneConstraint {
 	public:
 		/****** Plate_PlaneConstraint::Plate_PlaneConstraint ******/
-		/****** md5 signature: aaa0777cb029912b7c9481ceb828497a ******/
+		/****** md5 signature: 243ff0fe1ca9e2bffd80b52ea0fcbd2a ******/
 		%feature("compactdefaultargs") Plate_PlaneConstraint;
 		%feature("autodoc", "
 Parameters
@@ -1189,7 +1185,7 @@ Description
 -----------
 No available documentation.
 ") Plate_PlaneConstraint;
-		 Plate_PlaneConstraint(const gp_XY & point2d, const gp_Pln & pln, const Standard_Integer iu = 0, const Standard_Integer iv = 0);
+		 Plate_PlaneConstraint(const gp_XY & point2d, const gp_Pln & pln, const int iu = 0, const int iv = 0);
 
 		/****** Plate_PlaneConstraint::LSC ******/
 		/****** md5 signature: 38e8ce4a9a7d5c615d696ae043b116ea ******/
@@ -1250,12 +1246,26 @@ No available documentation.
 		 Plate_Plate(const Plate_Plate & Ref);
 
 		/****** Plate_Plate::CoefPol ******/
-		/****** md5 signature: 693ab25cab6687e98493b4413c4ff8c8 ******/
+		/****** md5 signature: 154eae3ee273c87003a303301680db66 ******/
+		%feature("compactdefaultargs") CoefPol;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<NCollection_HArray2<gp_XYZ>>
+
+Description
+-----------
+Returns the coefficients of the polynomial part of the Plate function. 
+Return: 2D array of polynomial coefficients as XYZ values.
+") CoefPol;
+		opencascade::handle<NCollection_HArray2<gp_XYZ>> CoefPol();
+
+		/****** Plate_Plate::CoefPol ******/
+		/****** md5 signature: 28f00a479c92d395990b104018123014 ******/
 		%feature("compactdefaultargs") CoefPol;
 		%feature("autodoc", "
 Parameters
 ----------
-Coefs: TColgp_HArray2OfXYZ
+Coefs: NCollection_HArray2<gp_XYZ
 
 Return
 -------
@@ -1265,10 +1275,10 @@ Description
 -----------
 No available documentation.
 ") CoefPol;
-		void CoefPol(opencascade::handle<TColgp_HArray2OfXYZ> & Coefs);
+		void CoefPol(opencascade::handle<NCollection_HArray2<gp_XYZ> > & Coefs);
 
 		/****** Plate_Plate::Continuity ******/
-		/****** md5 signature: 4419dd4b2da2aca1389c21e00b442ec1 ******/
+		/****** md5 signature: 0adef6f18eec5ea0742df74b4e0726ff ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -1278,7 +1288,7 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		Standard_Integer Continuity();
+		int Continuity();
 
 		/****** Plate_Plate::Copy ******/
 		/****** md5 signature: 11161ac3ed152899e6cd888fd0156816 ******/
@@ -1317,7 +1327,7 @@ No available documentation.
 		gp_XYZ Evaluate(const gp_XY & point2d);
 
 		/****** Plate_Plate::EvaluateDerivative ******/
-		/****** md5 signature: a5aa59fe21be13fd1db05e43decf620a ******/
+		/****** md5 signature: 5ac31cfe60561d9e232523d83d2e27cc ******/
 		%feature("compactdefaultargs") EvaluateDerivative;
 		%feature("autodoc", "
 Parameters
@@ -1334,7 +1344,7 @@ Description
 -----------
 No available documentation.
 ") EvaluateDerivative;
-		gp_XYZ EvaluateDerivative(const gp_XY & point2d, const Standard_Integer iu, const Standard_Integer iv);
+		gp_XYZ EvaluateDerivative(const gp_XY & point2d, const int iu, const int iv);
 
 		/****** Plate_Plate::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -1350,7 +1360,7 @@ reset the Plate in the initial state ( same as after Create()).
 		void Init();
 
 		/****** Plate_Plate::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1360,7 +1370,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Plate_Plate::Load ******/
 		/****** md5 signature: 064f1d3f157aabb80335e0398ecf85c0 ******/
@@ -1525,12 +1535,12 @@ No available documentation.
 		void Load(const Plate_FreeGtoCConstraint & FGtoCConst);
 
 		/****** Plate_Plate::SetPolynomialPartOnly ******/
-		/****** md5 signature: c30b7a41a33baec8da0d64e93f0095e2 ******/
+		/****** md5 signature: 7de44b5850d459fd007345d99c733c5e ******/
 		%feature("compactdefaultargs") SetPolynomialPartOnly;
 		%feature("autodoc", "
 Parameters
 ----------
-PPOnly: bool (optional, default to Standard_True)
+PPOnly: bool (optional, default to true)
 
 Return
 -------
@@ -1540,16 +1550,16 @@ Description
 -----------
 No available documentation.
 ") SetPolynomialPartOnly;
-		void SetPolynomialPartOnly(const Standard_Boolean PPOnly = Standard_True);
+		void SetPolynomialPartOnly(const bool PPOnly = true);
 
 		/****** Plate_Plate::SolveTI ******/
-		/****** md5 signature: b6f245e5d0ad13246dbcd6e1b4b16e27 ******/
+		/****** md5 signature: c1af32b6999b760516c0271fab7bf14f ******/
 		%feature("compactdefaultargs") SolveTI;
 		%feature("autodoc", "
 Parameters
 ----------
 ord: int (optional, default to 4)
-anisotropie: float (optional, default to 1.0)
+anisotropie: double (optional, default to 1.0)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1560,10 +1570,10 @@ Description
 -----------
 No available documentation.
 ") SolveTI;
-		void SolveTI(const Standard_Integer ord = 4, const Standard_Real anisotropie = 1.0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void SolveTI(const int ord = 4, const double anisotropie = 1.0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** Plate_Plate::UVBox ******/
-		/****** md5 signature: 2932a6c5a69aed4f94ed47869da039af ******/
+		/****** md5 signature: 3801fc57f11ca9f4af41a4be3b6f40da ******/
 		%feature("compactdefaultargs") UVBox;
 		%feature("autodoc", "
 Parameters
@@ -1571,10 +1581,10 @@ Parameters
 
 Return
 -------
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Description
 -----------
@@ -1583,12 +1593,12 @@ No available documentation.
 		void UVBox(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Plate_Plate::UVConstraints ******/
-		/****** md5 signature: d57eab39272d2074498d2a7de968b6db ******/
+		/****** md5 signature: 6c68fbf7d5315676d6e0ea2496cbd22d ******/
 		%feature("compactdefaultargs") UVConstraints;
 		%feature("autodoc", "
 Parameters
 ----------
-Seq: TColgp_SequenceOfXY
+Seq: NCollection_Sequence<gp_XY>
 
 Return
 -------
@@ -1598,7 +1608,7 @@ Description
 -----------
 No available documentation.
 ") UVConstraints;
-		void UVConstraints(TColgp_SequenceOfXY & Seq);
+		void UVConstraints(NCollection_Sequence<gp_XY> & Seq);
 
 		/****** Plate_Plate::destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -1628,12 +1638,12 @@ No available documentation.
 class Plate_SampledCurveConstraint {
 	public:
 		/****** Plate_SampledCurveConstraint::Plate_SampledCurveConstraint ******/
-		/****** md5 signature: 1da069f176ed627191a0dcdae227d548 ******/
+		/****** md5 signature: 02473501db6ea6a47327bb049d37ba8c ******/
 		%feature("compactdefaultargs") Plate_SampledCurveConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-SOPPC: Plate_SequenceOfPinpointConstraint
+SOPPC: NCollection_Sequence<Plate_PinpointConstraint>
 n: int
 
 Return
@@ -1644,7 +1654,7 @@ Description
 -----------
 No available documentation.
 ") Plate_SampledCurveConstraint;
-		 Plate_SampledCurveConstraint(const Plate_SequenceOfPinpointConstraint & SOPPC, const Standard_Integer n);
+		 Plate_SampledCurveConstraint(const NCollection_Sequence<Plate_PinpointConstraint> & SOPPC, const int n);
 
 		/****** Plate_SampledCurveConstraint::LXYZC ******/
 		/****** md5 signature: 422f3ddc3fa5aee73e09010319f27198 ******/
@@ -1670,13 +1680,13 @@ No available documentation.
 
 /* harray1 classes */
 
-class Plate_HArray1OfPinpointConstraint : public Plate_Array1OfPinpointConstraint, public Standard_Transient {
+class Plate_HArray1OfPinpointConstraint : public NCollection_Array1<Plate_PinpointConstraint>, public Standard_Transient {
   public:
     Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const Plate_Array1OfPinpointConstraint::value_type& theValue);
-    Plate_HArray1OfPinpointConstraint(const Plate_Array1OfPinpointConstraint& theOther);
-    const Plate_Array1OfPinpointConstraint& Array1();
-    Plate_Array1OfPinpointConstraint& ChangeArray1();
+    Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Plate_PinpointConstraint>::value_type& theValue);
+    Plate_HArray1OfPinpointConstraint(const NCollection_Array1<Plate_PinpointConstraint>& theOther);
+    const NCollection_Array1<Plate_PinpointConstraint>& Array1();
+    NCollection_Array1<Plate_PinpointConstraint>& ChangeArray1();
 };
 %make_alias(Plate_HArray1OfPinpointConstraint)
 

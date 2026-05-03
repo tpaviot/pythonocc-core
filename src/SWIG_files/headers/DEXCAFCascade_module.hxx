@@ -19,7 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define DEXCAFCASCADE_HXX
 
 
-#include<DEXCAFCascade_ConfigurationNode.hxx>
-#include<DEXCAFCascade_Provider.hxx>
 
 #endif // DEXCAFCASCADE_HXX

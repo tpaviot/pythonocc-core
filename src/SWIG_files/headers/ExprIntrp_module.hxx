@@ -25,9 +25,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ExprIntrp_GenFct.hxx>
 #include<ExprIntrp_GenRel.hxx>
 #include<ExprIntrp_Generator.hxx>
-#include<ExprIntrp_ListIteratorOfStackOfGeneralExpression.hxx>
-#include<ExprIntrp_ListIteratorOfStackOfGeneralFunction.hxx>
-#include<ExprIntrp_ListIteratorOfStackOfGeneralRelation.hxx>
 #include<ExprIntrp_SequenceOfNamedExpression.hxx>
 #include<ExprIntrp_SequenceOfNamedFunction.hxx>
 #include<ExprIntrp_StackOfGeneralExpression.hxx>

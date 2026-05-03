@@ -46,9 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appdef.html"
 #include<NCollection_module.hxx>
 #include<math_module.hxx>
 #include<AppParCurves_module.hxx>
-#include<TColStd_module.hxx>
 #include<Approx_module.hxx>
-#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<FEmTool_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -67,9 +65,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appdef.html"
 %import NCollection.i
 %import math.i
 %import AppParCurves.i
-%import TColStd.i
 %import Approx.i
-%import TColgp.i
 %import gp.i
 %import FEmTool.i
 %import GeomAbs.i
@@ -90,7 +86,6 @@ from OCC.Core.Exception import *
 /* handles */
 %wrap_handle(AppDef_SmoothCriterion)
 %wrap_handle(AppDef_LinearCriteria)
-%wrap_handle(AppDef_HArray1OfMultiPointConstraint)
 /* end handles declaration */
 
 /* templates */
@@ -101,6 +96,7 @@ Array1ExtendIter(AppDef_MultiPointConstraint)
 
 /* typedefs */
 typedef NCollection_Array1<AppDef_MultiPointConstraint> AppDef_Array1OfMultiPointConstraint;
+typedef NCollection_HArray1<AppDef_MultiPointConstraint> AppDef_HArray1OfMultiPointConstraint;
 /* end typedefs declaration */
 
 /****************************************************************
@@ -109,16 +105,16 @@ typedef NCollection_Array1<AppDef_MultiPointConstraint> AppDef_Array1OfMultiPoin
 class AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute : public math_BFGS {
 	public:
 		/****** AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: b799c0288bfc80846933f29e0453169e ******/
+		/****** md5 signature: 160e3d2cf3e07f5cb82687a648feaeca ******/
 		%feature("compactdefaultargs") AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -129,10 +125,10 @@ Description
 -----------
 No available documentation.
 ") AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -147,7 +143,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -164,7 +160,7 @@ No available documentation.
 class AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: 659c146b3e69832c7073bcc94e62f2f9 ******/
+		/****** md5 signature: 46f0cb81181dbec5c711f55a53bfe575 ******/
 		%feature("compactdefaultargs") AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -172,10 +168,10 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 NbPol: int
 
 Return
@@ -186,7 +182,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has <NbPol> control points.
 ") AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer NbPol);
+		 AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int NbPol);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::CurveValue ******/
 		/****** md5 signature: c83ed6c1c3091309bccd8d719a30ec54 ******/
@@ -215,7 +211,7 @@ returns the derivative function matrix used to approximate the multiline.
 		const math_Matrix & DerivativeFunctionMatrix();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Error ******/
-		/****** md5 signature: 540c96711689798ec6a7d515d5e5e1c7 ******/
+		/****** md5 signature: 057333c63ab7a88a7371420a6c1219ea ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -225,21 +221,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -250,7 +246,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -266,7 +262,7 @@ returns the function matrix used to approximate the multiline.
 		const math_Matrix & FunctionMatrix();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -282,7 +278,7 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Index ******/
 		/****** md5 signature: c11a6982042d7a2c5bf9fb50324ac971 ******/
@@ -298,12 +294,12 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & Index();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -314,36 +310,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiBSpCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiBSpCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -353,7 +349,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -369,12 +365,12 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::SetFirstLambda ******/
-		/****** md5 signature: 819efdb8532bd01857d5e29b79901d19 ******/
+		/****** md5 signature: 8a02004afa2285e14e86881b7aa525ba ******/
 		%feature("compactdefaultargs") SetFirstLambda;
 		%feature("autodoc", "
 Parameters
 ----------
-l1: float
+l1: double
 
 Return
 -------
@@ -384,15 +380,15 @@ Description
 -----------
 No available documentation.
 ") SetFirstLambda;
-		void SetFirstLambda(const Standard_Real l1);
+		void SetFirstLambda(const double l1);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::SetLastLambda ******/
-		/****** md5 signature: b34d15f9505b8355ba362a879a836d1a ******/
+		/****** md5 signature: 65f6e83eec34c36c73c315c1a577bc1d ******/
 		%feature("compactdefaultargs") SetLastLambda;
 		%feature("autodoc", "
 Parameters
 ----------
-l2: float
+l2: double
 
 Return
 -------
@@ -402,10 +398,10 @@ Description
 -----------
 No available documentation.
 ") SetLastLambda;
-		void SetLastLambda(const Standard_Real l2);
+		void SetLastLambda(const double l2);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -414,16 +410,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -433,13 +429,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -456,7 +452,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 	public:
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: 7212679b8f6e008d4b7aa3fb8cfebd46 ******/
+		/****** md5 signature: d07ab42822f64591c026e65dfde0b8ec ******/
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -477,10 +473,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: 95a7c9c221e01ce5ef38001c1e1f1ed1 ******/
+		/****** md5 signature: aff654c5d5e20df0872f5c840bfacd78 ******/
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -500,17 +496,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: 2780998f405468abc7dcea03504fb32f ******/
+		/****** md5 signature: f0d82dddd3d6a74a469fdb08dde1dbf2 ******/
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -526,17 +522,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: 23e53a2b39fe45234ff5600214a374ac ******/
+		/****** md5 signature: fc5a9a692adf1b92d3cab926eac83e1d ******/
 		%feature("compactdefaultargs") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -551,7 +547,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -606,7 +602,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -614,9 +610,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -625,7 +621,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -634,9 +630,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -645,17 +641,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -671,7 +667,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -681,7 +677,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -697,17 +693,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -728,14 +724,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -745,10 +741,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +752,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -767,10 +763,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -780,8 +776,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -791,7 +787,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -834,7 +830,7 @@ returns the matrix of resulting control points value.
 class AppDef_BSplineCompute {
 	public:
 		/****** AppDef_BSplineCompute::AppDef_BSplineCompute ******/
-		/****** md5 signature: 2408a61abd93bf31117d7ba011536f8c ******/
+		/****** md5 signature: 4bda3cbcece1ec4fb0d707fabefa3dc9 ******/
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -842,12 +838,12 @@ Parameters
 Line: AppDef_MultiLine
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-3)
-Tolerance2d: float (optional, default to 1.0e-6)
+Tolerance3d: double (optional, default to 1.0e-3)
+Tolerance2d: double (optional, default to 1.0e-6)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -857,10 +853,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all. //! The multiplicities of the internal knots is set by default.
 ") AppDef_BSplineCompute;
-		 AppDef_BSplineCompute(const AppDef_MultiLine & Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 AppDef_BSplineCompute(const AppDef_MultiLine & Line, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-3, const double Tolerance2d = 1.0e-6, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** AppDef_BSplineCompute::AppDef_BSplineCompute ******/
-		/****** md5 signature: 7b22210476c396af31272298fe953380 ******/
+		/****** md5 signature: 75056b22b6899a3b8da216b8a1fdf7ed ******/
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -869,11 +865,11 @@ Line: AppDef_MultiLine
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -883,10 +879,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") AppDef_BSplineCompute;
-		 AppDef_BSplineCompute(const AppDef_MultiLine & Line, const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 AppDef_BSplineCompute(const AppDef_MultiLine & Line, const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** AppDef_BSplineCompute::AppDef_BSplineCompute ******/
-		/****** md5 signature: 37659dde443160bc04cf7ecedbff89a5 ******/
+		/****** md5 signature: 73c9d6228dd29b99b4e8c2504e853d01 ******/
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -894,11 +890,11 @@ Parameters
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -908,22 +904,22 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") AppDef_BSplineCompute;
-		 AppDef_BSplineCompute(const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 AppDef_BSplineCompute(const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** AppDef_BSplineCompute::AppDef_BSplineCompute ******/
-		/****** md5 signature: 4beb8fca857f810f35b0c88e2b91fd54 ******/
+		/****** md5 signature: d27628a4ecadc0dbe5c6d2ee22dc63d9 ******/
 		%feature("compactdefaultargs") AppDef_BSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -933,7 +929,7 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") AppDef_BSplineCompute;
-		 AppDef_BSplineCompute(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 AppDef_BSplineCompute(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** AppDef_BSplineCompute::ChangeValue ******/
 		/****** md5 signature: afc5e23129509014348d63bb72db41ec ******/
@@ -949,7 +945,7 @@ returns the result of the approximation.
 		AppParCurves_MultiBSpCurve & ChangeValue();
 
 		/****** AppDef_BSplineCompute::Error ******/
-		/****** md5 signature: cda70ea4f3f90e8bdc1d9692db9c77b8 ******/
+		/****** md5 signature: d18fc3b040904ba6fc435937dfbd0183 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -957,8 +953,8 @@ Parameters
 
 Return
 -------
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Description
 -----------
@@ -967,19 +963,19 @@ returns the tolerances 2d and 3d of the MultiBSpCurve.
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_BSplineCompute::Init ******/
-		/****** md5 signature: 10f7f80e213a93740574c45700071b76 ******/
+		/****** md5 signature: bcc8d8f763165c6be0dc6db1f9ef3667 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -989,7 +985,7 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Init;
-		void Init(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		void Init(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** AppDef_BSplineCompute::Interpol ******/
 		/****** md5 signature: bc4286f280e57eaa20ef92f495fa1e33 ******/
@@ -1010,7 +1006,7 @@ Constructs an interpolation of the MultiLine <Line> The result will be a C2 curv
 		void Interpol(const AppDef_MultiLine & Line);
 
 		/****** AppDef_BSplineCompute::IsAllApproximated ******/
-		/****** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ******/
+		/****** md5 signature: 097042183394c222ee066430113409dd ******/
 		%feature("compactdefaultargs") IsAllApproximated;
 		%feature("autodoc", "Return
 -------
@@ -1020,10 +1016,10 @@ Description
 -----------
 returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
-		Standard_Boolean IsAllApproximated();
+		bool IsAllApproximated();
 
 		/****** AppDef_BSplineCompute::IsToleranceReached ******/
-		/****** md5 signature: cbd7380250e74c96655b10c8025eb873 ******/
+		/****** md5 signature: e68ff79913f1e1cb017e363f76fc9fc2 ******/
 		%feature("compactdefaultargs") IsToleranceReached;
 		%feature("autodoc", "Return
 -------
@@ -1033,20 +1029,20 @@ Description
 -----------
 returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
-		Standard_Boolean IsToleranceReached();
+		bool IsToleranceReached();
 
 		/****** AppDef_BSplineCompute::Parameters ******/
-		/****** md5 signature: 7c84e53bc11f80fb0f3c0e787e4b026e ******/
+		/****** md5 signature: 5c6424b3748c0fbf869b54f8e752f065 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the MultiBSpCurve.
 ") Parameters;
-		const TColStd_Array1OfReal & Parameters();
+		const NCollection_Array1<double> & Parameters();
 
 		/****** AppDef_BSplineCompute::Perform ******/
 		/****** md5 signature: ba94f8a8967068aa8bee6df81ea2be62 ******/
@@ -1086,7 +1082,7 @@ changes the first and the last constraint points.
 		void SetConstraints(const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC);
 
 		/****** AppDef_BSplineCompute::SetContinuity ******/
-		/****** md5 signature: 004921b69180f9ee5c70f476a9b25f44 ******/
+		/****** md5 signature: 2102c15e2e15905eb62da01cecb4ac7e ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -1101,10 +1097,10 @@ Description
 -----------
 sets the continuity of the spline. if C = 2, the spline will be C2.
 ") SetContinuity;
-		void SetContinuity(const Standard_Integer C);
+		void SetContinuity(const int C);
 
 		/****** AppDef_BSplineCompute::SetDegrees ******/
-		/****** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ******/
+		/****** md5 signature: 83fc53ce842bc5ef5957903d76f43a4a ******/
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "
 Parameters
@@ -1120,15 +1116,15 @@ Description
 -----------
 changes the degrees of the approximation.
 ") SetDegrees;
-		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
+		void SetDegrees(const int degreemin, const int degreemax);
 
 		/****** AppDef_BSplineCompute::SetKnots ******/
-		/****** md5 signature: 81377d2824af79de90394b654e5ac494 ******/
+		/****** md5 signature: 9146a7361df1fcecac0514aafcbcc2e8 ******/
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
+Knots: NCollection_Array1<double>
 
 Return
 -------
@@ -1138,16 +1134,16 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 ") SetKnots;
-		void SetKnots(const TColStd_Array1OfReal & Knots);
+		void SetKnots(const NCollection_Array1<double> & Knots);
 
 		/****** AppDef_BSplineCompute::SetKnotsAndMultiplicities ******/
-		/****** md5 signature: 78291c57c68644dfe7114ee9a585b271 ******/
+		/****** md5 signature: 2bee60c8ad635ef591f756f28601492a ******/
 		%feature("compactdefaultargs") SetKnotsAndMultiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 
 Return
 -------
@@ -1157,7 +1153,7 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 ") SetKnotsAndMultiplicities;
-		void SetKnotsAndMultiplicities(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
+		void SetKnotsAndMultiplicities(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults);
 
 		/****** AppDef_BSplineCompute::SetParameters ******/
 		/****** md5 signature: b1eab3f1f1c8f0892e7a87810e5892e3 ******/
@@ -1178,7 +1174,7 @@ The approximation will begin with the set of parameters <ThePar>.
 		void SetParameters(const math_Vector & ThePar);
 
 		/****** AppDef_BSplineCompute::SetPeriodic ******/
-		/****** md5 signature: 3109823bbe448d62437b44b39b4d9b19 ******/
+		/****** md5 signature: 718ea83d411af3da01e7d7d1d2ed1779 ******/
 		%feature("compactdefaultargs") SetPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1191,18 +1187,18 @@ None
 
 Description
 -----------
-Sets periodic flag. If thePeriodic = Standard_True, algorithm tries to build periodic multicurve using corresponding C1 boundary condition for first and last multipoints. Multiline must be closed.
+Sets periodic flag. If thePeriodic = true, algorithm tries to build periodic multicurve using corresponding C1 boundary condition for first and last multipoints. Multiline must be closed.
 ") SetPeriodic;
-		void SetPeriodic(const Standard_Boolean thePeriodic);
+		void SetPeriodic(const bool thePeriodic);
 
 		/****** AppDef_BSplineCompute::SetTolerances ******/
-		/****** md5 signature: ce7879738ace848f7a3a27c56467be10 ******/
+		/****** md5 signature: 26249a86974aa99769435e28e43c6d33 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3d: float
-Tolerance2d: float
+Tolerance3d: double
+Tolerance2d: double
 
 Return
 -------
@@ -1212,7 +1208,7 @@ Description
 -----------
 Changes the tolerances of the approximation.
 ") SetTolerances;
-		void SetTolerances(const Standard_Real Tolerance3d, const Standard_Real Tolerance2d);
+		void SetTolerances(const double Tolerance3d, const double Tolerance2d);
 
 		/****** AppDef_BSplineCompute::Value ******/
 		/****** md5 signature: c818c96a9a832640b6267a997c4dbd3b ******/
@@ -1242,7 +1238,7 @@ returns the result of the approximation.
 class AppDef_Compute {
 	public:
 		/****** AppDef_Compute::AppDef_Compute ******/
-		/****** md5 signature: c6833ee0a5b84d67a02d9dae53b24f5f ******/
+		/****** md5 signature: bd99029639a3a5091fd0052f97392b7e ******/
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "
 Parameters
@@ -1250,12 +1246,12 @@ Parameters
 Line: AppDef_MultiLine
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-3)
-Tolerance2d: float (optional, default to 1.0e-6)
+Tolerance3d: double (optional, default to 1.0e-3)
+Tolerance2d: double (optional, default to 1.0e-6)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -1265,10 +1261,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") AppDef_Compute;
-		 AppDef_Compute(const AppDef_MultiLine & Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 AppDef_Compute(const AppDef_MultiLine & Line, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-3, const double Tolerance2d = 1.0e-6, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** AppDef_Compute::AppDef_Compute ******/
-		/****** md5 signature: 9e4217e85d94e90315d60b7b75f82535 ******/
+		/****** md5 signature: cc39eacb79f85141e791d90ef82b7ca7 ******/
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "
 Parameters
@@ -1277,11 +1273,11 @@ Line: AppDef_MultiLine
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -1291,10 +1287,10 @@ Description
 -----------
 The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") AppDef_Compute;
-		 AppDef_Compute(const AppDef_MultiLine & Line, const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 AppDef_Compute(const AppDef_MultiLine & Line, const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** AppDef_Compute::AppDef_Compute ******/
-		/****** md5 signature: ad9cd1ddc4958b27791ce973be5159af ******/
+		/****** md5 signature: 4536d58e6147906bd02fcc46e174a375 ******/
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "
 Parameters
@@ -1302,11 +1298,11 @@ Parameters
 Parameters: math_Vector
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
-Squares: bool (optional, default to Standard_False)
+cutting: bool (optional, default to true)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -1316,22 +1312,22 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") AppDef_Compute;
-		 AppDef_Compute(const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
+		 AppDef_Compute(const math_Vector & Parameters, const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const bool Squares = false);
 
 		/****** AppDef_Compute::AppDef_Compute ******/
-		/****** md5 signature: c8eee3cf66b774bb63a317362fc20729 ******/
+		/****** md5 signature: a329096fde768c8bf36520b6853a230a ******/
 		%feature("compactdefaultargs") AppDef_Compute;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -1341,10 +1337,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") AppDef_Compute;
-		 AppDef_Compute(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		 AppDef_Compute(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** AppDef_Compute::ChangeValue ******/
-		/****** md5 signature: 141696e747a4846a7446e394b31644d5 ******/
+		/****** md5 signature: f3fa0af427f9f8c0bbdc2e7a6b2416fb ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -1359,10 +1355,10 @@ Description
 -----------
 returns the result of the approximation.
 ") ChangeValue;
-		AppParCurves_MultiCurve & ChangeValue(const Standard_Integer Index = 1);
+		AppParCurves_MultiCurve & ChangeValue(const int Index = 1);
 
 		/****** AppDef_Compute::Error ******/
-		/****** md5 signature: 6a8061230005ba951097d8b73e7dbec6 ******/
+		/****** md5 signature: 16248cd92a25264d4b1676fa28492d15 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1371,29 +1367,29 @@ Index: int
 
 Return
 -------
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Description
 -----------
 returns the tolerances 2d and 3d of the <Index> MultiCurve.
 ") Error;
-		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Error(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_Compute::Init ******/
-		/****** md5 signature: 10f7f80e213a93740574c45700071b76 ******/
+		/****** md5 signature: bcc8d8f763165c6be0dc6db1f9ef3667 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 degreemin: int (optional, default to 4)
 degreemax: int (optional, default to 8)
-Tolerance3d: float (optional, default to 1.0e-03)
-Tolerance2d: float (optional, default to 1.0e-06)
+Tolerance3d: double (optional, default to 1.0e-03)
+Tolerance2d: double (optional, default to 1.0e-06)
 NbIterations: int (optional, default to 5)
-cutting: bool (optional, default to Standard_True)
+cutting: bool (optional, default to true)
 parametrization: Approx_ParametrizationType (optional, default to Approx_ChordLength)
-Squares: bool (optional, default to Standard_False)
+Squares: bool (optional, default to false)
 
 Return
 -------
@@ -1403,10 +1399,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Init;
-		void Init(const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
+		void Init(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
 		/****** AppDef_Compute::IsAllApproximated ******/
-		/****** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ******/
+		/****** md5 signature: 097042183394c222ee066430113409dd ******/
 		%feature("compactdefaultargs") IsAllApproximated;
 		%feature("autodoc", "Return
 -------
@@ -1416,10 +1412,10 @@ Description
 -----------
 returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
-		Standard_Boolean IsAllApproximated();
+		bool IsAllApproximated();
 
 		/****** AppDef_Compute::IsToleranceReached ******/
-		/****** md5 signature: cbd7380250e74c96655b10c8025eb873 ******/
+		/****** md5 signature: e68ff79913f1e1cb017e363f76fc9fc2 ******/
 		%feature("compactdefaultargs") IsToleranceReached;
 		%feature("autodoc", "Return
 -------
@@ -1429,10 +1425,10 @@ Description
 -----------
 returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
-		Standard_Boolean IsToleranceReached();
+		bool IsToleranceReached();
 
 		/****** AppDef_Compute::NbMultiCurves ******/
-		/****** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ******/
+		/****** md5 signature: eed274d77446bf2416a954e7f34c2bf0 ******/
 		%feature("compactdefaultargs") NbMultiCurves;
 		%feature("autodoc", "Return
 -------
@@ -1442,10 +1438,10 @@ Description
 -----------
 Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
-		Standard_Integer NbMultiCurves();
+		int NbMultiCurves();
 
 		/****** AppDef_Compute::Parameters ******/
-		/****** md5 signature: 457fc00b4795a877d025353e491bb905 ******/
+		/****** md5 signature: 5292a6899dfaa94242ecae6a511c8cc3 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1454,13 +1450,13 @@ Index: int (optional, default to 1)
 
 Return
 -------
-TColStd_Array1OfReal
+NCollection_Array1<double>
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the multicurve <Index>.
 ") Parameters;
-		const TColStd_Array1OfReal & Parameters(const Standard_Integer Index = 1);
+		const NCollection_Array1<double> & Parameters(const int Index = 1);
 
 		/****** AppDef_Compute::Parametrization ******/
 		/****** md5 signature: 28de4bdef662891658a0d7c12417a76f ******/
@@ -1513,7 +1509,7 @@ changes the first and the last constraint points.
 		void SetConstraints(const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC);
 
 		/****** AppDef_Compute::SetDegrees ******/
-		/****** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ******/
+		/****** md5 signature: 83fc53ce842bc5ef5957903d76f43a4a ******/
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "
 Parameters
@@ -1529,16 +1525,16 @@ Description
 -----------
 changes the degrees of the approximation.
 ") SetDegrees;
-		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
+		void SetDegrees(const int degreemin, const int degreemax);
 
 		/****** AppDef_Compute::SetTolerances ******/
-		/****** md5 signature: ce7879738ace848f7a3a27c56467be10 ******/
+		/****** md5 signature: 26249a86974aa99769435e28e43c6d33 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance3d: float
-Tolerance2d: float
+Tolerance3d: double
+Tolerance2d: double
 
 Return
 -------
@@ -1548,7 +1544,7 @@ Description
 -----------
 Changes the tolerances of the approximation.
 ") SetTolerances;
-		void SetTolerances(const Standard_Real Tolerance3d, const Standard_Real Tolerance2d);
+		void SetTolerances(const double Tolerance3d, const double Tolerance2d);
 
 		/****** AppDef_Compute::SplineValue ******/
 		/****** md5 signature: 8abd3bdfb130cc23332c1960701072a6 ******/
@@ -1564,7 +1560,7 @@ returns the result of the approximation.
 		AppParCurves_MultiBSpCurve SplineValue();
 
 		/****** AppDef_Compute::Value ******/
-		/****** md5 signature: ce9a9d43a5aa1f3754abfba817bb7838 ******/
+		/****** md5 signature: 0d67f6100bd40a78330bbdbe083cad77 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1579,7 +1575,7 @@ Description
 -----------
 returns the result of the approximation.
 ") Value;
-		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
+		AppParCurves_MultiCurve Value(const int Index = 1);
 
 };
 
@@ -1596,16 +1592,16 @@ returns the result of the approximation.
 class AppDef_Gradient_BFGSOfMyGradientOfCompute : public math_BFGS {
 	public:
 		/****** AppDef_Gradient_BFGSOfMyGradientOfCompute::AppDef_Gradient_BFGSOfMyGradientOfCompute ******/
-		/****** md5 signature: 126f77d585cdec22a8e8a8e4ae8c13ce ******/
+		/****** md5 signature: ce8050352470fd3407b3fec47fe9cc28 ******/
 		%feature("compactdefaultargs") AppDef_Gradient_BFGSOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1616,10 +1612,10 @@ Description
 -----------
 No available documentation.
 ") AppDef_Gradient_BFGSOfMyGradientOfCompute;
-		 AppDef_Gradient_BFGSOfMyGradientOfCompute(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 AppDef_Gradient_BFGSOfMyGradientOfCompute(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** AppDef_Gradient_BFGSOfMyGradientOfCompute::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -1634,7 +1630,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -1651,16 +1647,16 @@ No available documentation.
 class AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute : public math_BFGS {
 	public:
 		/****** AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: db032bfef1a0cabc4126bb1cff8b2cd7 ******/
+		/****** md5 signature: b1c064c7d8a238984e92434a26be5d91 ******/
 		%feature("compactdefaultargs") AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1671,10 +1667,10 @@ Description
 -----------
 No available documentation.
 ") AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute;
-		 AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -1689,7 +1685,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -1706,16 +1702,16 @@ No available documentation.
 class AppDef_Gradient_BFGSOfTheGradient : public math_BFGS {
 	public:
 		/****** AppDef_Gradient_BFGSOfTheGradient::AppDef_Gradient_BFGSOfTheGradient ******/
-		/****** md5 signature: a988e1566651277ba477ec7a76734981 ******/
+		/****** md5 signature: cfda5b6291fc3222a257374f644ebd0b ******/
 		%feature("compactdefaultargs") AppDef_Gradient_BFGSOfTheGradient;
 		%feature("autodoc", "
 Parameters
 ----------
 F: math_MultipleVarFunctionWithGradient
 StartingPoint: math_Vector
-Tolerance3d: float
-Tolerance2d: float
-Eps: float
+Tolerance3d: double
+Tolerance2d: double
+Eps: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -1726,10 +1722,10 @@ Description
 -----------
 No available documentation.
 ") AppDef_Gradient_BFGSOfTheGradient;
-		 AppDef_Gradient_BFGSOfTheGradient(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const Standard_Real Tolerance3d, const Standard_Real Tolerance2d, const Standard_Real Eps, const Standard_Integer NbIterations = 200);
+		 AppDef_Gradient_BFGSOfTheGradient(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint, const double Tolerance3d, const double Tolerance2d, const double Eps, const int NbIterations = 200);
 
 		/****** AppDef_Gradient_BFGSOfTheGradient::IsSolutionReached ******/
-		/****** md5 signature: a6c0da888a257bf852b40b8daf6526dc ******/
+		/****** md5 signature: c3201b5ad767b155f93f678a804b03f2 ******/
 		%feature("compactdefaultargs") IsSolutionReached;
 		%feature("autodoc", "
 Parameters
@@ -1744,7 +1740,7 @@ Description
 -----------
 No available documentation.
 ") IsSolutionReached;
-		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
+		bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
 };
 
@@ -1774,7 +1770,7 @@ creates an undefined MultiLine.
 		 AppDef_MultiLine();
 
 		/****** AppDef_MultiLine::AppDef_MultiLine ******/
-		/****** md5 signature: 12f50085378edce7cd43da048d563786 ******/
+		/****** md5 signature: 60d002082c151075a1baa2b0303e8912 ******/
 		%feature("compactdefaultargs") AppDef_MultiLine;
 		%feature("autodoc", "
 Parameters
@@ -1787,17 +1783,17 @@ None
 
 Description
 -----------
-given the number NbMult of MultiPointConstraints of this MultiLine , it initializes all the fields.SetValue must be called in order for the values of the multipoint constraint to be taken into account. An exception is raised if NbMult < 0.
+given the number NbMult of MultiPointConstraints of this MultiLine, it initializes all the fields.SetValue must be called in order for the values of the multipoint constraint to be taken into account. An exception is raised if NbMult < 0.
 ") AppDef_MultiLine;
-		 AppDef_MultiLine(const Standard_Integer NbMult);
+		 AppDef_MultiLine(const int NbMult);
 
 		/****** AppDef_MultiLine::AppDef_MultiLine ******/
-		/****** md5 signature: 64ec35865d92daa24a03b18b2dd11882 ******/
+		/****** md5 signature: 748b5587abd9f7648517c20c1906f001 ******/
 		%feature("compactdefaultargs") AppDef_MultiLine;
 		%feature("autodoc", "
 Parameters
 ----------
-tabMultiP: AppDef_Array1OfMultiPointConstraint
+tabMultiP: NCollection_Array1<AppDef_MultiPointConstraint>
 
 Return
 -------
@@ -1807,15 +1803,15 @@ Description
 -----------
 Constructs a MultiLine with an array of MultiPointConstraints.
 ") AppDef_MultiLine;
-		 AppDef_MultiLine(const AppDef_Array1OfMultiPointConstraint & tabMultiP);
+		 AppDef_MultiLine(const NCollection_Array1<AppDef_MultiPointConstraint> & tabMultiP);
 
 		/****** AppDef_MultiLine::AppDef_MultiLine ******/
-		/****** md5 signature: 1bf9d9b2d482b677ffc5d1deb2308402 ******/
+		/****** md5 signature: 0232ebf1fe4fd3ecd637546ad63db3c8 ******/
 		%feature("compactdefaultargs") AppDef_MultiLine;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP3d: TColgp_Array1OfPnt
+tabP3d: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -1825,15 +1821,15 @@ Description
 -----------
 The MultiLine constructed will have one line of 3d points without their tangencies.
 ") AppDef_MultiLine;
-		 AppDef_MultiLine(const TColgp_Array1OfPnt & tabP3d);
+		 AppDef_MultiLine(const NCollection_Array1<gp_Pnt> & tabP3d);
 
 		/****** AppDef_MultiLine::AppDef_MultiLine ******/
-		/****** md5 signature: 1d6626e296ebc032e27692387207051e ******/
+		/****** md5 signature: 37911cb82a6188fc1c098dca26ce4e1b ******/
 		%feature("compactdefaultargs") AppDef_MultiLine;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: TColgp_Array1OfPnt2d
+tabP2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -1843,7 +1839,7 @@ Description
 -----------
 The MultiLine constructed will have one line of 2d points without their tangencies.
 ") AppDef_MultiLine;
-		 AppDef_MultiLine(const TColgp_Array1OfPnt2d & tabP2d);
+		 AppDef_MultiLine(const NCollection_Array1<gp_Pnt2d> & tabP2d);
 
 		/****** AppDef_MultiLine::Dump ******/
 		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
@@ -1863,7 +1859,7 @@ Prints on the stream o information on the current state of the object. Is used t
 		void Dump(std::ostream &OutValue);
 
 		/****** AppDef_MultiLine::NbMultiPoints ******/
-		/****** md5 signature: 3773aba9a0a09cf608eddf5448da667d ******/
+		/****** md5 signature: e4a6c2d455990c86e4dd036e66d396cf ******/
 		%feature("compactdefaultargs") NbMultiPoints;
 		%feature("autodoc", "Return
 -------
@@ -1873,10 +1869,10 @@ Description
 -----------
 returns the number of MultiPointConstraints of the MultiLine.
 ") NbMultiPoints;
-		Standard_Integer NbMultiPoints();
+		int NbMultiPoints();
 
 		/****** AppDef_MultiLine::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1886,10 +1882,10 @@ Description
 -----------
 returns the number of Points from MultiPoints composing the MultiLine.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** AppDef_MultiLine::SetValue ******/
-		/****** md5 signature: ae7924dceb17bb1bf8b5a017807c66cf ******/
+		/****** md5 signature: b6edb95cebcee9d64d37d61bbb3b75d9 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1905,10 +1901,10 @@ Description
 -----------
 It sets the MultiPointConstraint of range Index to the value MPoint. An exception is raised if Index < 0 or Index> MPoint. An exception is raised if the dimensions of the MultiPoints are different.
 ") SetValue;
-		void SetValue(const Standard_Integer Index, const AppDef_MultiPointConstraint & MPoint);
+		void SetValue(const int Index, const AppDef_MultiPointConstraint & MPoint);
 
 		/****** AppDef_MultiLine::Value ******/
-		/****** md5 signature: ec3432f3274bca28664158bc2414cf94 ******/
+		/****** md5 signature: f2830f16a110be4cb7ee59a76a9cbbfc ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1923,7 +1919,7 @@ Description
 -----------
 returns the MultiPointConstraint of range Index An exception is raised if Index<0 or Index>MPoint.
 ") Value;
-		AppDef_MultiPointConstraint Value(const Standard_Integer Index);
+		AppDef_MultiPointConstraint Value(const int Index);
 
 };
 
@@ -1957,7 +1953,7 @@ creates an undefined MultiPointConstraint.
 		 AppDef_MultiPointConstraint();
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: ff76964ee920829861e64dfe38e9cb12 ******/
+		/****** md5 signature: 0dfe03cdacb01a7e144131c49de5b6be ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
@@ -1973,15 +1969,15 @@ Description
 -----------
 constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const Standard_Integer NbPoints, const Standard_Integer NbPoints2d);
+		 AppDef_MultiPointConstraint(const int NbPoints, const int NbPoints2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 9184167dca4027cf0f0b5603034fb92c ******/
+		/****** md5 signature: 7f48054d42b11d64316d4d0fc8e936bf ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt
+tabP: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -1991,15 +1987,15 @@ Description
 -----------
 creates a MultiPoint only composed of 3D points.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 46a09e9865b6eb31d4538e09d085c188 ******/
+		/****** md5 signature: 85b9c0777fba92b2336463606627950c ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt2d
+tabP: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -2009,16 +2005,16 @@ Description
 -----------
 creates a MultiPoint only composed of 2D points.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt2d> & tabP);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 4b41af30a79a87deddbf4ee5cd31a158 ******/
+		/****** md5 signature: 93ede81ccd009aaf812ab03e48d4d128 ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt
-tabP2d: TColgp_Array1OfPnt2d
+tabP: NCollection_Array1<gp_Pnt>
+tabP2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -2028,20 +2024,20 @@ Description
 -----------
 constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 44443bf947130186f3723c074454fa6c ******/
+		/****** md5 signature: 13263e78d28f8b1e6cf04a44994bd955 ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt
-tabP2d: TColgp_Array1OfPnt2d
-tabVec: TColgp_Array1OfVec
-tabVec2d: TColgp_Array1OfVec2d
-tabCur: TColgp_Array1OfVec
-tabCur2d: TColgp_Array1OfVec2d
+tabP: NCollection_Array1<gp_Pnt>
+tabP2d: NCollection_Array1<gp_Pnt2d>
+tabVec: NCollection_Array1<gp_Vec>
+tabVec2d: NCollection_Array1<gp_Vec2d>
+tabCur: NCollection_Array1<gp_Vec>
+tabCur2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2051,18 +2047,18 @@ Description
 -----------
 creates a MultiPointConstraint with a constraint of Curvature. An exception is raised if (length of <tabP> + length of <tabP2d> ) is different from (length of <tabVec> + length of <tabVec2d> ) or from (length of <tabCur> + length of <tabCur2d> ).
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec2d & tabVec2d, const TColgp_Array1OfVec & tabCur, const TColgp_Array1OfVec2d & tabCur2d);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec> & tabVec, const NCollection_Array1<gp_Vec2d> & tabVec2d, const NCollection_Array1<gp_Vec> & tabCur, const NCollection_Array1<gp_Vec2d> & tabCur2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: d748f264c5548ebcc67245703c451c24 ******/
+		/****** md5 signature: 43de111c37d1be508a23cf0fcf5f2848 ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt
-tabP2d: TColgp_Array1OfPnt2d
-tabVec: TColgp_Array1OfVec
-tabVec2d: TColgp_Array1OfVec2d
+tabP: NCollection_Array1<gp_Pnt>
+tabP2d: NCollection_Array1<gp_Pnt2d>
+tabVec: NCollection_Array1<gp_Vec>
+tabVec2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2072,17 +2068,17 @@ Description
 -----------
 creates a MultiPointConstraint with a constraint of Tangency. An exception is raised if (length of <tabP> + length of <tabP2d> ) is different from (length of <tabVec> + length of <tabVec2d> ).
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec2d & tabVec2d);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec> & tabVec, const NCollection_Array1<gp_Vec2d> & tabVec2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 94d7957cb88369d49d63036eed746423 ******/
+		/****** md5 signature: 2d437e4d54a742b673cfa8f3fe63225e ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt
-tabVec: TColgp_Array1OfVec
-tabCur: TColgp_Array1OfVec
+tabP: NCollection_Array1<gp_Pnt>
+tabVec: NCollection_Array1<gp_Vec>
+tabCur: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -2092,16 +2088,16 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 3d points with constraints of curvature. An exception is raised if the length of tabP is different from the length of tabVec or from tabCur.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec & tabCur);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Vec> & tabVec, const NCollection_Array1<gp_Vec> & tabCur);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 31f20878f084137d450aeb8e587bf928 ******/
+		/****** md5 signature: e79a8970b885dd146e88e1cee67d70f1 ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: TColgp_Array1OfPnt
-tabVec: TColgp_Array1OfVec
+tabP: NCollection_Array1<gp_Pnt>
+tabVec: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -2111,16 +2107,16 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 3d points with constraints of tangency. An exception is raised if the length of tabP is different from the length of tabVec.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfVec & tabVec);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Vec> & tabVec);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 21d3ccff0015997a435f1a264a1c2e78 ******/
+		/****** md5 signature: 1e8f17c77166f0acb12c7fe5da14cf6c ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: TColgp_Array1OfPnt2d
-tabVec2d: TColgp_Array1OfVec2d
+tabP2d: NCollection_Array1<gp_Pnt2d>
+tabVec2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2130,17 +2126,17 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 2d points with constraints of tangency. An exception is raised if the length of tabP is different from the length of tabVec2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec2d & tabVec2d);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec2d> & tabVec2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
-		/****** md5 signature: 66a61a1bf7f3832fb19b1df85df945e9 ******/
+		/****** md5 signature: f4666f238c85f5a748502dbed468d937 ******/
 		%feature("compactdefaultargs") AppDef_MultiPointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: TColgp_Array1OfPnt2d
-tabVec2d: TColgp_Array1OfVec2d
-tabCur2d: TColgp_Array1OfVec2d
+tabP2d: NCollection_Array1<gp_Pnt2d>
+tabVec2d: NCollection_Array1<gp_Vec2d>
+tabCur2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2150,10 +2146,10 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 2d points with constraints of curvature. An exception is raised if the length of tabP is different from the length of tabVec2d or from tabCur2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec2d & tabVec2d, const TColgp_Array1OfVec2d & tabCur2d);
+		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec2d> & tabVec2d, const NCollection_Array1<gp_Vec2d> & tabCur2d);
 
 		/****** AppDef_MultiPointConstraint::Curv ******/
-		/****** md5 signature: 901fe2bd94b085eee25dc02982da6bce ******/
+		/****** md5 signature: 98c2aea23ce76323bc95a990ab1e2430 ******/
 		%feature("compactdefaultargs") Curv;
 		%feature("autodoc", "
 Parameters
@@ -2168,10 +2164,10 @@ Description
 -----------
 returns the normal vector at the point of range Index. An exception is raised if Index < 0 or if Index > number of 3d points.
 ") Curv;
-		gp_Vec Curv(const Standard_Integer Index);
+		gp_Vec Curv(const int Index);
 
 		/****** AppDef_MultiPointConstraint::Curv2d ******/
-		/****** md5 signature: e6ac9d88d679b86619b3f52f8b16e6a4 ******/
+		/****** md5 signature: 6b0f7e153c941f8e7ccfb48572dbc7b7 ******/
 		%feature("compactdefaultargs") Curv2d;
 		%feature("autodoc", "
 Parameters
@@ -2186,10 +2182,10 @@ Description
 -----------
 returns the normal vector at the point of range Index. An exception is raised if Index < 0 or if Index > number of 3d points.
 ") Curv2d;
-		gp_Vec2d Curv2d(const Standard_Integer Index);
+		gp_Vec2d Curv2d(const int Index);
 
 		/****** AppDef_MultiPointConstraint::Dump ******/
-		/****** md5 signature: b42defe2d7a7208961fa81b225a70479 ******/
+		/****** md5 signature: 3c2a1f639f47eaff57a9bcd4d3fb612a ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2203,10 +2199,10 @@ Description
 -----------
 Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
-		virtual void Dump(std::ostream &OutValue);
+		void Dump(std::ostream &OutValue);
 
 		/****** AppDef_MultiPointConstraint::IsCurvaturePoint ******/
-		/****** md5 signature: d472719ada146163920fff12150b4a88 ******/
+		/****** md5 signature: f7ef281e37c70128a83a41671bed0465 ******/
 		%feature("compactdefaultargs") IsCurvaturePoint;
 		%feature("autodoc", "Return
 -------
@@ -2216,10 +2212,10 @@ Description
 -----------
 returns True if the MultiPoint has a curvature value.
 ") IsCurvaturePoint;
-		Standard_Boolean IsCurvaturePoint();
+		bool IsCurvaturePoint();
 
 		/****** AppDef_MultiPointConstraint::IsTangencyPoint ******/
-		/****** md5 signature: a9c9faea523a7d80ff8416e04b887e70 ******/
+		/****** md5 signature: 5fdbbb5c5371416b1705c6e1255262ea ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -2229,10 +2225,10 @@ Description
 -----------
 returns True if the MultiPoint has a tangency value.
 ") IsTangencyPoint;
-		Standard_Boolean IsTangencyPoint();
+		bool IsTangencyPoint();
 
 		/****** AppDef_MultiPointConstraint::SetCurv ******/
-		/****** md5 signature: 0162d39bffdfbd1d75ead34617bd7b2e ******/
+		/****** md5 signature: 0a887fb021ab40d0467c2e219b4afbbe ******/
 		%feature("compactdefaultargs") SetCurv;
 		%feature("autodoc", "
 Parameters
@@ -2248,10 +2244,10 @@ Description
 -----------
 Vec sets the value of the normal vector at the point of index Index. The norm of the normal vector at the point of position Index is set to the normal curvature. An exception is raised if Index <0 or if Index > number of 3d points. An exception is raised if Curv has an incorrect number of dimensions.
 ") SetCurv;
-		void SetCurv(const Standard_Integer Index, const gp_Vec & Curv);
+		void SetCurv(const int Index, const gp_Vec & Curv);
 
 		/****** AppDef_MultiPointConstraint::SetCurv2d ******/
-		/****** md5 signature: 3ec1dbcf520f618b653d5041e0c8d8dd ******/
+		/****** md5 signature: 53674bec6faa1427f0ba0b494ee48951 ******/
 		%feature("compactdefaultargs") SetCurv2d;
 		%feature("autodoc", "
 Parameters
@@ -2267,10 +2263,10 @@ Description
 -----------
 Vec sets the value of the normal vector at the point of index Index. The norm of the normal vector at the point of position Index is set to the normal curvature. An exception is raised if Index <0 or if Index > number of 3d points. An exception is raised if Curv has an incorrect number of dimensions.
 ") SetCurv2d;
-		void SetCurv2d(const Standard_Integer Index, const gp_Vec2d & Curv2d);
+		void SetCurv2d(const int Index, const gp_Vec2d & Curv2d);
 
 		/****** AppDef_MultiPointConstraint::SetTang ******/
-		/****** md5 signature: b9f6088507651a7284dea739ac0606f3 ******/
+		/****** md5 signature: 06b217a32f8cfd48bc8af85ceec399c6 ******/
 		%feature("compactdefaultargs") SetTang;
 		%feature("autodoc", "
 Parameters
@@ -2286,10 +2282,10 @@ Description
 -----------
 sets the value of the tangency of the point of range Index. An exception is raised if Index <0 or if Index > number of 3d points. An exception is raised if Tang has an incorrect number of dimensions.
 ") SetTang;
-		void SetTang(const Standard_Integer Index, const gp_Vec & Tang);
+		void SetTang(const int Index, const gp_Vec & Tang);
 
 		/****** AppDef_MultiPointConstraint::SetTang2d ******/
-		/****** md5 signature: f8ceb77e6c6d212baca26c1596380f6f ******/
+		/****** md5 signature: 6020ed438a4c64b9fa96d1145c2903bc ******/
 		%feature("compactdefaultargs") SetTang2d;
 		%feature("autodoc", "
 Parameters
@@ -2305,10 +2301,10 @@ Description
 -----------
 sets the value of the tangency of the point of range Index. An exception is raised if Index <number of 3d points or if Index > total number of Points An exception is raised if Tang has an incorrect number of dimensions.
 ") SetTang2d;
-		void SetTang2d(const Standard_Integer Index, const gp_Vec2d & Tang2d);
+		void SetTang2d(const int Index, const gp_Vec2d & Tang2d);
 
 		/****** AppDef_MultiPointConstraint::Tang ******/
-		/****** md5 signature: b3ab01973cc67e0139dc6df881bab23f ******/
+		/****** md5 signature: 67e7fdd0d378023bc7e6e89cc2a5ad53 ******/
 		%feature("compactdefaultargs") Tang;
 		%feature("autodoc", "
 Parameters
@@ -2323,10 +2319,10 @@ Description
 -----------
 returns the tangency value of the point of range Index. An exception is raised if Index < 0 or if Index > number of 3d points.
 ") Tang;
-		gp_Vec Tang(const Standard_Integer Index);
+		gp_Vec Tang(const int Index);
 
 		/****** AppDef_MultiPointConstraint::Tang2d ******/
-		/****** md5 signature: 40fbe4c8c727eda957d23ce8b2313218 ******/
+		/****** md5 signature: bb8d23e5ce22f1b983af29ad6d632779 ******/
 		%feature("compactdefaultargs") Tang2d;
 		%feature("autodoc", "
 Parameters
@@ -2341,7 +2337,7 @@ Description
 -----------
 returns the tangency value of the point of range Index. An exception is raised if Index < number of 3d points or if Index > total number of points.
 ") Tang2d;
-		gp_Vec2d Tang2d(const Standard_Integer Index);
+		gp_Vec2d Tang2d(const int Index);
 
 };
 
@@ -2358,7 +2354,7 @@ returns the tangency value of the point of range Index. An exception is raised i
 class AppDef_MyBSplGradientOfBSplineCompute {
 	public:
 		/****** AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: 285b1c5b1288155aae98fcdade735980 ******/
+		/****** md5 signature: dfa506f827bd1402aa4d829683e000d8 ******/
 		%feature("compactdefaultargs") AppDef_MyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -2366,13 +2362,13 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 1)
 
 Return
@@ -2383,10 +2379,10 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyBSplGradientOfBSplineCompute;
-		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 1);
+		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 1);
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute ******/
-		/****** md5 signature: e90d26c95787b979a56c520408235daf ******/
+		/****** md5 signature: 12544a653fea7f3473e8e8cc600226a0 ******/
 		%feature("compactdefaultargs") AppDef_MyBSplGradientOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -2394,16 +2390,16 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int
-lambda1: float
-lambda2: float
+lambda1: double
+lambda2: double
 
 Return
 -------
@@ -2413,23 +2409,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyBSplGradientOfBSplineCompute;
-		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations, const Standard_Real lambda1, const Standard_Real lambda2);
+		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations, const double lambda1, const double lambda2);
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -2438,16 +2434,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2457,33 +2453,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::Value ******/
 		/****** md5 signature: 35d2ee100f1a9fc11f00b074d7d3553e ******/
@@ -2513,7 +2509,7 @@ returns all the BSpline curves approximating the MultiLine SSP after minimizatio
 class AppDef_MyGradientOfCompute {
 	public:
 		/****** AppDef_MyGradientOfCompute::AppDef_MyGradientOfCompute ******/
-		/****** md5 signature: d6d163c2b5b0d362b397ec1451a85a67 ******/
+		/****** md5 signature: 3c508afbde9dae85bc7fa2d464f9b7ea ******/
 		%feature("compactdefaultargs") AppDef_MyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
@@ -2521,11 +2517,11 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -2536,23 +2532,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyGradientOfCompute;
-		 AppDef_MyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
+		 AppDef_MyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** AppDef_MyGradientOfCompute::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** AppDef_MyGradientOfCompute::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -2561,16 +2557,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** AppDef_MyGradientOfCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2580,33 +2576,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_MyGradientOfCompute::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_MyGradientOfCompute::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_MyGradientOfCompute::Value ******/
 		/****** md5 signature: dac7e49320bc0e9a268aeb92592734dc ******/
@@ -2636,7 +2632,7 @@ returns all the Bezier curves approximating the MultiLine SSP after minimization
 class AppDef_MyGradientbisOfBSplineCompute {
 	public:
 		/****** AppDef_MyGradientbisOfBSplineCompute::AppDef_MyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: 6bd7ad47a144857ac891dd606d181fd3 ******/
+		/****** md5 signature: f052b74f5c85089357c1d0c2ba9181f1 ******/
 		%feature("compactdefaultargs") AppDef_MyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -2644,11 +2640,11 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -2659,23 +2655,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyGradientbisOfBSplineCompute;
-		 AppDef_MyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
+		 AppDef_MyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -2684,16 +2680,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2703,33 +2699,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::Value ******/
 		/****** md5 signature: dac7e49320bc0e9a268aeb92592734dc ******/
@@ -2759,14 +2755,14 @@ returns all the Bezier curves approximating the MultiLine SSP after minimization
 class AppDef_MyLineTool {
 	public:
 		/****** AppDef_MyLineTool::Curvature ******/
-		/****** md5 signature: 12e4a67b8d371d9f1a978704077ccbc8 ******/
+		/****** md5 signature: d10f49881cc09b400dbd2bcd8a2be630 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: TColgp_Array1OfVec
+tabV: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -2776,17 +2772,17 @@ Description
 -----------
 returns the 3d curvatures of the multipoint <MPointIndex> when only 3d points exist.
 ") Curvature;
-		static Standard_Boolean Curvature(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
+		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
 
 		/****** AppDef_MyLineTool::Curvature ******/
-		/****** md5 signature: da227696a9b2e067a20d3b5467649970 ******/
+		/****** md5 signature: 71a3a79a422bd48c20744b4ca9d56457 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV2d: TColgp_Array1OfVec2d
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2796,18 +2792,18 @@ Description
 -----------
 returns the 2d curvatures of the multipoint <MPointIndex> only when 2d points exist.
 ") Curvature;
-		static Standard_Boolean Curvature(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
+		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** AppDef_MyLineTool::Curvature ******/
-		/****** md5 signature: c8420054f061601ba7d5d683c11ca2e7 ******/
+		/****** md5 signature: b39cb6de9ec43ea36e5a9b4e2f7913a1 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: TColgp_Array1OfVec
-tabV2d: TColgp_Array1OfVec2d
+tabV: NCollection_Array1<gp_Vec>
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2817,10 +2813,10 @@ Description
 -----------
 returns the 3d and 2d curvatures of the multipoint <MPointIndex>.
 ") Curvature;
-		static Standard_Boolean Curvature(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
+		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** AppDef_MyLineTool::FirstPoint ******/
-		/****** md5 signature: aa6413da896459eb8c56102a045df964 ******/
+		/****** md5 signature: 8ea1ea611cdf9433a5fd11f910208664 ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -2835,10 +2831,10 @@ Description
 -----------
 Returns the first index of multipoints of the MultiLine.
 ") FirstPoint;
-		static Standard_Integer FirstPoint(const AppDef_MultiLine & ML);
+		static int FirstPoint(const AppDef_MultiLine & ML);
 
 		/****** AppDef_MyLineTool::LastPoint ******/
-		/****** md5 signature: 9f5446370dab90e6dc755040302f27ba ******/
+		/****** md5 signature: 3857fbe8c85130b6033a2a1faf1885c3 ******/
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "
 Parameters
@@ -2853,10 +2849,10 @@ Description
 -----------
 Returns the last index of multipoints of the MultiLine.
 ") LastPoint;
-		static Standard_Integer LastPoint(const AppDef_MultiLine & ML);
+		static int LastPoint(const AppDef_MultiLine & ML);
 
 		/****** AppDef_MyLineTool::MakeMLBetween ******/
-		/****** md5 signature: 45eb4314bc229297ec468e0e68adda67 ******/
+		/****** md5 signature: 63bb75d619f5f5db00e07034a8995966 ******/
 		%feature("compactdefaultargs") MakeMLBetween;
 		%feature("autodoc", "
 Parameters
@@ -2874,10 +2870,10 @@ Description
 -----------
 Is never called in the algorithms. Nothing is done.
 ") MakeMLBetween;
-		static AppDef_MultiLine MakeMLBetween(const AppDef_MultiLine & ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin);
+		static AppDef_MultiLine MakeMLBetween(const AppDef_MultiLine & ML, const int I1, const int I2, const int NbPMin);
 
 		/****** AppDef_MyLineTool::MakeMLOneMorePoint ******/
-		/****** md5 signature: 63482999c5c43dccf4668a0ab37a5909 ******/
+		/****** md5 signature: bc9c751f094e47e7682653348afcf2a3 ******/
 		%feature("compactdefaultargs") MakeMLOneMorePoint;
 		%feature("autodoc", "
 Parameters
@@ -2896,10 +2892,10 @@ Description
 -----------
 Is never called in the algorithms. Nothing is done.
 ") MakeMLOneMorePoint;
-		static Standard_Boolean MakeMLOneMorePoint(const AppDef_MultiLine & ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer indbad, AppDef_MultiLine & OtherLine);
+		static bool MakeMLOneMorePoint(const AppDef_MultiLine & ML, const int I1, const int I2, const int indbad, AppDef_MultiLine & OtherLine);
 
 		/****** AppDef_MyLineTool::NbP2d ******/
-		/****** md5 signature: 7a37caf206ab568500c96708d4d9f281 ******/
+		/****** md5 signature: fa3b75faee6b6cbee9356c09c672b7d6 ******/
 		%feature("compactdefaultargs") NbP2d;
 		%feature("autodoc", "
 Parameters
@@ -2914,10 +2910,10 @@ Description
 -----------
 Returns the number of 2d points of a MultiLine.
 ") NbP2d;
-		static Standard_Integer NbP2d(const AppDef_MultiLine & ML);
+		static int NbP2d(const AppDef_MultiLine & ML);
 
 		/****** AppDef_MyLineTool::NbP3d ******/
-		/****** md5 signature: b37e0daf764f3796dfd4e04f1004f411 ******/
+		/****** md5 signature: 0f8a5c01498a2a52c14d7200881aaf1a ******/
 		%feature("compactdefaultargs") NbP3d;
 		%feature("autodoc", "
 Parameters
@@ -2932,17 +2928,17 @@ Description
 -----------
 Returns the number of 3d points of a MultiLine.
 ") NbP3d;
-		static Standard_Integer NbP3d(const AppDef_MultiLine & ML);
+		static int NbP3d(const AppDef_MultiLine & ML);
 
 		/****** AppDef_MyLineTool::Tangency ******/
-		/****** md5 signature: 899765c31b68f9d5622bb4f335d17af9 ******/
+		/****** md5 signature: d73cd5b70950d80d561ffebe75777d20 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: TColgp_Array1OfVec
+tabV: NCollection_Array1<gp_Vec>
 
 Return
 -------
@@ -2952,17 +2948,17 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Tangency;
-		static Standard_Boolean Tangency(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
+		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
 
 		/****** AppDef_MyLineTool::Tangency ******/
-		/****** md5 signature: 0b0abe2371afc94bdc402cd3a5e13ca6 ******/
+		/****** md5 signature: 382e44873cafba4a5cae55f90ccb3dc7 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV2d: TColgp_Array1OfVec2d
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2972,18 +2968,18 @@ Description
 -----------
 returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
-		static Standard_Boolean Tangency(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
+		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** AppDef_MyLineTool::Tangency ******/
-		/****** md5 signature: 260996d76e35422100d12a8ced363571 ******/
+		/****** md5 signature: 84a6fc57170a008105c1a3448f52ae62 ******/
 		%feature("compactdefaultargs") Tangency;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: TColgp_Array1OfVec
-tabV2d: TColgp_Array1OfVec2d
+tabV: NCollection_Array1<gp_Vec>
+tabV2d: NCollection_Array1<gp_Vec2d>
 
 Return
 -------
@@ -2993,17 +2989,17 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
-		static Standard_Boolean Tangency(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
+		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
 
 		/****** AppDef_MyLineTool::Value ******/
-		/****** md5 signature: 8dcbf0fabc7c1e1761c0065a48505664 ******/
+		/****** md5 signature: 8382ef53bd7bde8830094b722740fc82 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabPt: TColgp_Array1OfPnt
+tabPt: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -3013,17 +3009,17 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
-		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
+		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt);
 
 		/****** AppDef_MyLineTool::Value ******/
-		/****** md5 signature: 531d0eb0a3bfd42e8f41bd5400fec8b8 ******/
+		/****** md5 signature: bd967a6b2fe20dd967a05a8f15b3805d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabPt2d: TColgp_Array1OfPnt2d
+tabPt2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -3033,18 +3029,18 @@ Description
 -----------
 returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
-		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
+		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Pnt2d> & tabPt2d);
 
 		/****** AppDef_MyLineTool::Value ******/
-		/****** md5 signature: 2b0210374c28698cdc099922d8d2b967 ******/
+		/****** md5 signature: ca4ed29237799e7fcbcf0185f363c01d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabPt: TColgp_Array1OfPnt
-tabPt2d: TColgp_Array1OfPnt2d
+tabPt: NCollection_Array1<gp_Pnt>
+tabPt2d: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -3054,10 +3050,10 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
-		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
+		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt, NCollection_Array1<gp_Pnt2d> & tabPt2d);
 
 		/****** AppDef_MyLineTool::WhatStatus ******/
-		/****** md5 signature: a4e05eb1bdb8d525ab7cc67865409902 ******/
+		/****** md5 signature: 325e3979ee95cd6d1ca790d9d041c543 ******/
 		%feature("compactdefaultargs") WhatStatus;
 		%feature("autodoc", "
 Parameters
@@ -3074,7 +3070,7 @@ Description
 -----------
 returns NoPointsAdded.
 ") WhatStatus;
-		static Approx_Status WhatStatus(const AppDef_MultiLine & ML, const Standard_Integer I1, const Standard_Integer I2);
+		static Approx_Status WhatStatus(const AppDef_MultiLine & ML, const int I1, const int I2);
 
 };
 
@@ -3091,7 +3087,7 @@ returns NoPointsAdded.
 class AppDef_ParFunctionOfMyGradientOfCompute : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::AppDef_ParFunctionOfMyGradientOfCompute ******/
-		/****** md5 signature: 5e82b667e483741251b19a4b42af6a1c ******/
+		/****** md5 signature: 72ea8fe6e09157e48b46d4d113cd7e60 ******/
 		%feature("compactdefaultargs") AppDef_ParFunctionOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
@@ -3099,7 +3095,7 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
 
@@ -3111,7 +3107,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfMyGradientOfCompute;
-		 AppDef_ParFunctionOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
+		 AppDef_ParFunctionOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -3127,7 +3123,7 @@ returns the MultiCurve approximating the set after computing the value F or Grad
 		AppParCurves_MultiCurve CurveValue();
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::Error ******/
-		/****** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ******/
+		/****** md5 signature: 6082404cf8493e28701309c5d66645f2 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -3137,21 +3133,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -3162,10 +3158,10 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -3181,15 +3177,15 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -3200,36 +3196,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -3239,7 +3235,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -3255,7 +3251,7 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3264,16 +3260,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3283,13 +3279,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -3306,7 +3302,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class AppDef_ParFunctionOfMyGradientbisOfBSplineCompute : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: 71e0b753e00d6144bda7beaa41e6a211 ******/
+		/****** md5 signature: e771a55bfee74be0cb860e2a2691c9bb ******/
 		%feature("compactdefaultargs") AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -3314,7 +3310,7 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
 
@@ -3326,7 +3322,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParFunctionOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
+		 AppDef_ParFunctionOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -3342,7 +3338,7 @@ returns the MultiCurve approximating the set after computing the value F or Grad
 		AppParCurves_MultiCurve CurveValue();
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Error ******/
-		/****** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ******/
+		/****** md5 signature: 6082404cf8493e28701309c5d66645f2 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -3352,21 +3348,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -3377,10 +3373,10 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -3396,15 +3392,15 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -3415,36 +3411,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -3454,7 +3450,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -3470,7 +3466,7 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3479,16 +3475,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3498,13 +3494,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -3521,7 +3517,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class AppDef_ParFunctionOfTheGradient : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** AppDef_ParFunctionOfTheGradient::AppDef_ParFunctionOfTheGradient ******/
-		/****** md5 signature: 6ae58b53fc28bc68999c5284f8bd72a8 ******/
+		/****** md5 signature: e81fc1a65cbf14a932e2628b2da743ac ******/
 		%feature("compactdefaultargs") AppDef_ParFunctionOfTheGradient;
 		%feature("autodoc", "
 Parameters
@@ -3529,7 +3525,7 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
 
@@ -3541,7 +3537,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfTheGradient;
-		 AppDef_ParFunctionOfTheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
+		 AppDef_ParFunctionOfTheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_ParFunctionOfTheGradient::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -3557,7 +3553,7 @@ returns the MultiCurve approximating the set after computing the value F or Grad
 		AppParCurves_MultiCurve CurveValue();
 
 		/****** AppDef_ParFunctionOfTheGradient::Error ******/
-		/****** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ******/
+		/****** md5 signature: 6082404cf8493e28701309c5d66645f2 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -3567,21 +3563,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** AppDef_ParFunctionOfTheGradient::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -3592,10 +3588,10 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_ParFunctionOfTheGradient::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -3611,15 +3607,15 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** AppDef_ParFunctionOfTheGradient::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -3630,36 +3626,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** AppDef_ParFunctionOfTheGradient::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_ParFunctionOfTheGradient::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_ParFunctionOfTheGradient::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -3669,7 +3665,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** AppDef_ParFunctionOfTheGradient::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -3685,7 +3681,7 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** AppDef_ParFunctionOfTheGradient::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3694,16 +3690,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** AppDef_ParFunctionOfTheGradient::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3713,13 +3709,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -3736,7 +3732,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class AppDef_ParLeastSquareOfMyGradientOfCompute {
 	public:
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute ******/
-		/****** md5 signature: 0f470f8d09760a577136f1515d1bfb47 ******/
+		/****** md5 signature: 0f971c9b9d3cdccb87d608b4feaff83a ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
@@ -3757,10 +3753,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
-		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute ******/
-		/****** md5 signature: 4c1463e27c262a50e76b8fe5dff270c0 ******/
+		/****** md5 signature: 35eddb6dddf12c22f54ea489e989598e ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
@@ -3780,17 +3776,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
-		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute ******/
-		/****** md5 signature: 6150d26142d95dfba2fe070d4d272305 ******/
+		/****** md5 signature: 16eda0d2e8b89f64a7658a1eca70a45b ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -3806,17 +3802,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
-		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute ******/
-		/****** md5 signature: 1e1086e0e59f1c54539147a819762a29 ******/
+		/****** md5 signature: 253674f411670f342105bab049b61905 ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -3831,7 +3827,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
-		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -3886,7 +3882,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -3894,9 +3890,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -3905,7 +3901,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -3914,9 +3910,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -3925,17 +3921,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -3951,7 +3947,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3961,7 +3957,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -3977,17 +3973,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -4008,14 +4004,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4025,10 +4021,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4036,8 +4032,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4047,10 +4043,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4060,8 +4056,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4071,7 +4067,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -4114,7 +4110,7 @@ returns the matrix of resulting control points value.
 class AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute {
 	public:
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: 5c7d889ff7c3c53d9c2d304f6513a770 ******/
+		/****** md5 signature: 963b9ffb1149741127112aeedc8d6f3e ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -4135,10 +4131,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: d358e31489791262a5431ebacf9dc7b9 ******/
+		/****** md5 signature: fea8121f3ad0ab7100753e6258077cd3 ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -4158,17 +4154,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: b4722672fa82bbd3c01a14c4f1ea81fb ******/
+		/****** md5 signature: 4b548aadb855e34c5dee8b024a67d010 ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4184,17 +4180,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: 9ac1102ac0cd7f24c5edbabd8d6c6d2a ******/
+		/****** md5 signature: b8f231499996bd7ab735ed78dcc02bee ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4209,7 +4205,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -4264,7 +4260,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -4272,9 +4268,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -4283,7 +4279,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -4292,9 +4288,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -4303,17 +4299,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -4329,7 +4325,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4339,7 +4335,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -4355,17 +4351,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -4386,14 +4382,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4403,10 +4399,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4414,8 +4410,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4425,10 +4421,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4438,8 +4434,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4449,7 +4445,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -4492,7 +4488,7 @@ returns the matrix of resulting control points value.
 class AppDef_ParLeastSquareOfTheGradient {
 	public:
 		/****** AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient ******/
-		/****** md5 signature: f10deca5c5a2f219a4aac3b29290f883 ******/
+		/****** md5 signature: afc43dd7f9173126ef1e630d2151cffb ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "
 Parameters
@@ -4513,10 +4509,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfTheGradient;
-		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient ******/
-		/****** md5 signature: ffaf2f04cbeda05157e4779b39436d87 ******/
+		/****** md5 signature: fd19e802da3e6c0a395f4cfce472f1a4 ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "
 Parameters
@@ -4536,17 +4532,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfTheGradient;
-		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient ******/
-		/****** md5 signature: 0a6fa28c9440f806dc69f10826983565 ******/
+		/****** md5 signature: 84517d8eda6bc2b068824004d1d0cd81 ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4562,17 +4558,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfTheGradient;
-		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient ******/
-		/****** md5 signature: 41e374c7b096bebe266c47cde703aa75 ******/
+		/****** md5 signature: 1c0941d1ef4d4569327676fa9dfe9ddc ******/
 		%feature("compactdefaultargs") AppDef_ParLeastSquareOfTheGradient;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4587,7 +4583,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfTheGradient;
-		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -4642,7 +4638,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** AppDef_ParLeastSquareOfTheGradient::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -4650,9 +4646,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -4661,7 +4657,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -4670,9 +4666,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -4681,17 +4677,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** AppDef_ParLeastSquareOfTheGradient::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -4707,7 +4703,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** AppDef_ParLeastSquareOfTheGradient::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4717,7 +4713,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_ParLeastSquareOfTheGradient::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -4733,17 +4729,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** AppDef_ParLeastSquareOfTheGradient::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** AppDef_ParLeastSquareOfTheGradient::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -4764,14 +4760,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4781,10 +4777,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4792,8 +4788,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4803,10 +4799,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4816,8 +4812,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -4827,7 +4823,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -4870,7 +4866,7 @@ returns the matrix of resulting control points value.
 class AppDef_ResConstraintOfMyGradientOfCompute {
 	public:
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::AppDef_ResConstraintOfMyGradientOfCompute ******/
-		/****** md5 signature: 6cfad4139f20fc94b0b10535a1a2b060 ******/
+		/****** md5 signature: 8e0824b35caf3216f77d57554e0bb6fb ******/
 		%feature("compactdefaultargs") AppDef_ResConstraintOfMyGradientOfCompute;
 		%feature("autodoc", "
 Parameters
@@ -4879,10 +4875,10 @@ SSP: AppDef_MultiLine
 SCurv: AppParCurves_MultiCurve
 FirstPoint: int
 LastPoint: int
-Constraints: AppParCurves_HArray1OfConstraintCouple
+Constraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Bern: math_Matrix
 DerivativeBern: math_Matrix
-Tolerance: float (optional, default to 1.0e-10)
+Tolerance: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -4892,10 +4888,10 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfMyGradientOfCompute;
-		 AppDef_ResConstraintOfMyGradientOfCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
+		 AppDef_ResConstraintOfMyGradientOfCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::ConstraintDerivative ******/
-		/****** md5 signature: 03ceb3c5a326d9e5b704d04ea0088376 ******/
+		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "
 Parameters
@@ -4913,7 +4909,7 @@ Description
 -----------
 Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
-		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const Standard_Integer Deg, const math_Matrix & DA);
+		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
@@ -4955,7 +4951,7 @@ returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matri
 		const math_Matrix & InverseMatrix();
 
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4965,7 +4961,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -4986,7 +4982,7 @@ returns True if all has been correctly done.
 class AppDef_ResConstraintOfMyGradientbisOfBSplineCompute {
 	public:
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute ******/
-		/****** md5 signature: 19f1d924fc5c45098e224f6711eb1fac ******/
+		/****** md5 signature: a4e7d45cfc247b02dabdeb4a2d291557 ******/
 		%feature("compactdefaultargs") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 		%feature("autodoc", "
 Parameters
@@ -4995,10 +4991,10 @@ SSP: AppDef_MultiLine
 SCurv: AppParCurves_MultiCurve
 FirstPoint: int
 LastPoint: int
-Constraints: AppParCurves_HArray1OfConstraintCouple
+Constraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Bern: math_Matrix
 DerivativeBern: math_Matrix
-Tolerance: float (optional, default to 1.0e-10)
+Tolerance: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -5008,10 +5004,10 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
-		 AppDef_ResConstraintOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
+		 AppDef_ResConstraintOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintDerivative ******/
-		/****** md5 signature: 03ceb3c5a326d9e5b704d04ea0088376 ******/
+		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "
 Parameters
@@ -5029,7 +5025,7 @@ Description
 -----------
 Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
-		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const Standard_Integer Deg, const math_Matrix & DA);
+		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
@@ -5071,7 +5067,7 @@ returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matri
 		const math_Matrix & InverseMatrix();
 
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5081,7 +5077,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -5102,7 +5098,7 @@ returns True if all has been correctly done.
 class AppDef_ResConstraintOfTheGradient {
 	public:
 		/****** AppDef_ResConstraintOfTheGradient::AppDef_ResConstraintOfTheGradient ******/
-		/****** md5 signature: 28edbef59ca63ee686fc7b7c358570b5 ******/
+		/****** md5 signature: 2c724820a576333826948df1ab6308f9 ******/
 		%feature("compactdefaultargs") AppDef_ResConstraintOfTheGradient;
 		%feature("autodoc", "
 Parameters
@@ -5111,10 +5107,10 @@ SSP: AppDef_MultiLine
 SCurv: AppParCurves_MultiCurve
 FirstPoint: int
 LastPoint: int
-Constraints: AppParCurves_HArray1OfConstraintCouple
+Constraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Bern: math_Matrix
 DerivativeBern: math_Matrix
-Tolerance: float (optional, default to 1.0e-10)
+Tolerance: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -5124,10 +5120,10 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfTheGradient;
-		 AppDef_ResConstraintOfTheGradient(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
+		 AppDef_ResConstraintOfTheGradient(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_ResConstraintOfTheGradient::ConstraintDerivative ******/
-		/****** md5 signature: 03ceb3c5a326d9e5b704d04ea0088376 ******/
+		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "
 Parameters
@@ -5145,7 +5141,7 @@ Description
 -----------
 Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
-		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const Standard_Integer Deg, const math_Matrix & DA);
+		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
 		/****** AppDef_ResConstraintOfTheGradient::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
@@ -5187,7 +5183,7 @@ returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matri
 		const math_Matrix & InverseMatrix();
 
 		/****** AppDef_ResConstraintOfTheGradient::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5197,7 +5193,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -5219,33 +5215,47 @@ returns True if all has been correctly done.
 class AppDef_SmoothCriterion : public Standard_Transient {
 	public:
 		/****** AppDef_SmoothCriterion::AssemblyTable ******/
-		/****** md5 signature: 4ea475cc7902240e9011827552f2aa0e ******/
+		/****** md5 signature: 1cd1339adcb33a680c689d1c50cf64e1 ******/
 		%feature("compactdefaultargs") AssemblyTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<FEmTool_HAssemblyTable>
+opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>>
 
 Description
 -----------
 No available documentation.
 ") AssemblyTable;
-		virtual opencascade::handle<FEmTool_HAssemblyTable> AssemblyTable();
+		virtual opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>> AssemblyTable();
+
+		/****** AppDef_SmoothCriterion::Curve ******/
+		/****** md5 signature: 34260c3f4bcd122867c9d1dc1941b3d3 ******/
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<FEmTool_Curve>
+
+Description
+-----------
+Returns the curve associated with this criterion. 
+Return: handle to the FEmTool curve.
+") Curve;
+		opencascade::handle<FEmTool_Curve> Curve();
 
 		/****** AppDef_SmoothCriterion::DependenceTable ******/
-		/****** md5 signature: c016d827aafaa774489e50229cf20da6 ******/
+		/****** md5 signature: b98b4cbca8e5ad30a49bc2fb63838c44 ******/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<NCollection_HArray2<int>>
 
 Description
 -----------
 No available documentation.
 ") DependenceTable;
-		virtual opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
+		virtual opencascade::handle<NCollection_HArray2<int>> DependenceTable();
 
 		/****** AppDef_SmoothCriterion::ErrorValues ******/
-		/****** md5 signature: cfe3e0a15201f20a76cdffc4832deb32 ******/
+		/****** md5 signature: 15f25c8052e25ca6900e43860d8e531d ******/
 		%feature("compactdefaultargs") ErrorValues;
 		%feature("autodoc", "
 Parameters
@@ -5253,9 +5263,9 @@ Parameters
 
 Return
 -------
-MaxError: float
-QuadraticError: float
-AverageError: float
+MaxError: double
+QuadraticError: double
+AverageError: double
 
 Description
 -----------
@@ -5264,17 +5274,17 @@ No available documentation.
 		virtual void ErrorValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_SmoothCriterion::EstLength ******/
-		/****** md5 signature: 0b189fee7c9f70cecec55bd68f2b8b7e ******/
+		/****** md5 signature: 23c4a2189a07f7274e6d83dc4ccdc523 ******/
 		%feature("compactdefaultargs") EstLength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") EstLength;
-		virtual Standard_Real & EstLength();
+		virtual double & EstLength();
 
 		/****** AppDef_SmoothCriterion::GetCurve ******/
 		/****** md5 signature: 8fb90ce90606b6bcb1989378cd53a4f9 ******/
@@ -5295,7 +5305,7 @@ No available documentation.
 		virtual void GetCurve(opencascade::handle<FEmTool_Curve> & C);
 
 		/****** AppDef_SmoothCriterion::GetEstimation ******/
-		/****** md5 signature: 8ba11ef014057784f34452683585efb6 ******/
+		/****** md5 signature: 7c8374a9c4b077da000cf95350fb70a9 ******/
 		%feature("compactdefaultargs") GetEstimation;
 		%feature("autodoc", "
 Parameters
@@ -5303,9 +5313,9 @@ Parameters
 
 Return
 -------
-E1: float
-E2: float
-E3: float
+E1: double
+E2: double
+E3: double
 
 Description
 -----------
@@ -5314,7 +5324,7 @@ No available documentation.
 		virtual void GetEstimation(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_SmoothCriterion::GetWeight ******/
-		/****** md5 signature: af9c1e5043bd3ead9bfc060a4fb69ec7 ******/
+		/****** md5 signature: ee9c7662c8ca3e318b85034d22468814 ******/
 		%feature("compactdefaultargs") GetWeight;
 		%feature("autodoc", "
 Parameters
@@ -5322,8 +5332,8 @@ Parameters
 
 Return
 -------
-QuadraticWeight: float
-QualityWeight: float
+QuadraticWeight: double
+QualityWeight: double
 
 Description
 -----------
@@ -5332,7 +5342,7 @@ No available documentation.
 		virtual void GetWeight(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_SmoothCriterion::Gradient ******/
-		/****** md5 signature: e66cfcf660598f9d33bd6c51e71787ee ******/
+		/****** md5 signature: 5777c1c294ddf2f7716ec905306bf50e ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -5349,10 +5359,10 @@ Description
 -----------
 No available documentation.
 ") Gradient;
-		virtual void Gradient(const Standard_Integer Element, const Standard_Integer Dimension, math_Vector & G);
+		virtual void Gradient(const int Element, const int Dimension, math_Vector & G);
 
 		/****** AppDef_SmoothCriterion::Hessian ******/
-		/****** md5 signature: ae17248c337e30b997401d5573140102 ******/
+		/****** md5 signature: 663ace8b96f535bed12730f0737358ec ******/
 		%feature("compactdefaultargs") Hessian;
 		%feature("autodoc", "
 Parameters
@@ -5370,16 +5380,16 @@ Description
 -----------
 No available documentation.
 ") Hessian;
-		virtual void Hessian(const Standard_Integer Element, const Standard_Integer Dimension1, const Standard_Integer Dimension2, math_Matrix & H);
+		virtual void Hessian(const int Element, const int Dimension1, const int Dimension2, math_Matrix & H);
 
 		/****** AppDef_SmoothCriterion::InputVector ******/
-		/****** md5 signature: d70c25b60b28c3838fab1614a13293f8 ******/
+		/****** md5 signature: 71965fed40efbc9beb6be6525b6f7946 ******/
 		%feature("compactdefaultargs") InputVector;
 		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
-AssTable: FEmTool_HAssemblyTable
+AssTable: NCollection_HArray2<
 
 Return
 -------
@@ -5389,29 +5399,29 @@ Description
 -----------
 Convert the assembly Vector in an Curve;.
 ") InputVector;
-		virtual void InputVector(const math_Vector & X, const opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
+		virtual void InputVector(const math_Vector & X, const opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int> > > > & AssTable);
 
 		/****** AppDef_SmoothCriterion::QualityValues ******/
-		/****** md5 signature: b244d6cd90390992902f1f73faa0efd3 ******/
+		/****** md5 signature: fd589255f90b841bb0d700162f492aa1 ******/
 		%feature("compactdefaultargs") QualityValues;
 		%feature("autodoc", "
 Parameters
 ----------
-J1min: float
-J2min: float
-J3min: float
+J1min: double
+J2min: double
+J3min: double
 
 Return
 -------
-J1: float
-J2: float
-J3: float
+J1: double
+J2: double
+J3: double
 
 Description
 -----------
 No available documentation.
 ") QualityValues;
-		virtual Standard_Integer QualityValues(const Standard_Real J1min, const Standard_Real J2min, const Standard_Real J3min, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		virtual int QualityValues(const double J1min, const double J2min, const double J3min, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_SmoothCriterion::SetCurve ******/
 		/****** md5 signature: f9249c904dd8eed90d010d71e8bbeb67 ******/
@@ -5432,14 +5442,14 @@ No available documentation.
 		virtual void SetCurve(const opencascade::handle<FEmTool_Curve> & C);
 
 		/****** AppDef_SmoothCriterion::SetEstimation ******/
-		/****** md5 signature: 1eee8cba9d7425225339e7da8aafbe68 ******/
+		/****** md5 signature: 9d70708b996e534fbca7657f0c08cd3e ******/
 		%feature("compactdefaultargs") SetEstimation;
 		%feature("autodoc", "
 Parameters
 ----------
-E1: float
-E2: float
-E3: float
+E1: double
+E2: double
+E3: double
 
 Return
 -------
@@ -5449,15 +5459,15 @@ Description
 -----------
 No available documentation.
 ") SetEstimation;
-		virtual void SetEstimation(const Standard_Real E1, const Standard_Real E2, const Standard_Real E3);
+		virtual void SetEstimation(const double E1, const double E2, const double E3);
 
 		/****** AppDef_SmoothCriterion::SetParameters ******/
-		/****** md5 signature: 27aab9728b5d765091cba886e9f49273 ******/
+		/****** md5 signature: aa1927b879dc52dbbabbc1b5f7c131ea ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Parameters: TColStd_HArray1OfReal
+Parameters: NCollection_HArray1<double
 
 Return
 -------
@@ -5467,19 +5477,19 @@ Description
 -----------
 No available documentation.
 ") SetParameters;
-		virtual void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & Parameters);
+		virtual void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & Parameters);
 
 		/****** AppDef_SmoothCriterion::SetWeight ******/
-		/****** md5 signature: dc802dcd07fa8159f377bdea35a73f35 ******/
+		/****** md5 signature: 2aa3be64663887e2dbf83a45968c5163 ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-QuadraticWeight: float
-QualityWeight: float
-percentJ1: float
-percentJ2: float
-percentJ3: float
+QuadraticWeight: double
+QualityWeight: double
+percentJ1: double
+percentJ2: double
+percentJ3: double
 
 Return
 -------
@@ -5489,15 +5499,15 @@ Description
 -----------
 No available documentation.
 ") SetWeight;
-		virtual void SetWeight(const Standard_Real QuadraticWeight, const Standard_Real QualityWeight, const Standard_Real percentJ1, const Standard_Real percentJ2, const Standard_Real percentJ3);
+		virtual void SetWeight(const double QuadraticWeight, const double QualityWeight, const double percentJ1, const double percentJ2, const double percentJ3);
 
 		/****** AppDef_SmoothCriterion::SetWeight ******/
-		/****** md5 signature: 7071df0ad4a367ddf80150dd3c3f5302 ******/
+		/****** md5 signature: 9f402ec78fd3b50cffb89e2cf1f9f738 ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-Weight: TColStd_Array1OfReal
+Weight: NCollection_Array1<double>
 
 Return
 -------
@@ -5507,7 +5517,7 @@ Description
 -----------
 No available documentation.
 ") SetWeight;
-		virtual void SetWeight(const TColStd_Array1OfReal & Weight);
+		virtual void SetWeight(const NCollection_Array1<double> & Weight);
 
 };
 
@@ -5526,7 +5536,7 @@ No available documentation.
 class AppDef_TheFunction : public math_MultipleVarFunctionWithGradient {
 	public:
 		/****** AppDef_TheFunction::AppDef_TheFunction ******/
-		/****** md5 signature: da57d66f050dd8770549a173c8a381bb ******/
+		/****** md5 signature: 7a73c108f8d5973c47cf318228bba613 ******/
 		%feature("compactdefaultargs") AppDef_TheFunction;
 		%feature("autodoc", "
 Parameters
@@ -5534,7 +5544,7 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
 
@@ -5546,7 +5556,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_TheFunction;
-		 AppDef_TheFunction(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
+		 AppDef_TheFunction(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_TheFunction::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -5562,7 +5572,7 @@ returns the MultiCurve approximating the set after computing the value F or Grad
 		AppParCurves_MultiCurve CurveValue();
 
 		/****** AppDef_TheFunction::Error ******/
-		/****** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ******/
+		/****** md5 signature: 6082404cf8493e28701309c5d66645f2 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -5572,21 +5582,21 @@ CurveIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
-		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
+		double Error(const int IPoint, const int CurveIndex);
 
 		/****** AppDef_TheFunction::FirstConstraint ******/
-		/****** md5 signature: 6814c8615ee3f59417c740c77d2ce795 ******/
+		/****** md5 signature: c886a69eb1732317ef08f04814939449 ******/
 		%feature("compactdefaultargs") FirstConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 FirstPoint: int
 
 Return
@@ -5597,10 +5607,10 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_TheFunction::Gradient ******/
-		/****** md5 signature: 5ee531ceab07ab216991e3bf02edf0f7 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -5616,15 +5626,15 @@ Description
 -----------
 returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** AppDef_TheFunction::LastConstraint ******/
-		/****** md5 signature: f3572ad2cc7e299a1f7b6cb9d14677cf ******/
+		/****** md5 signature: dab38d5cd2339455e93aa086852b5786 ******/
 		%feature("compactdefaultargs") LastConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 LastPoint: int
 
 Return
@@ -5635,36 +5645,36 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
 
 		/****** AppDef_TheFunction::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_TheFunction::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_TheFunction::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -5674,7 +5684,7 @@ Description
 -----------
 returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** AppDef_TheFunction::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
@@ -5690,7 +5700,7 @@ returns the new parameters of the MultiLine.
 		const math_Vector & NewParameters();
 
 		/****** AppDef_TheFunction::Value ******/
-		/****** md5 signature: 33f8b9f75d238865cc320f57ac729801 ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5699,16 +5709,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** AppDef_TheFunction::Values ******/
-		/****** md5 signature: 66c7c08f6bec2933f700c6f45cf14285 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -5718,13 +5728,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -5741,7 +5751,7 @@ returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the
 class AppDef_TheGradient {
 	public:
 		/****** AppDef_TheGradient::AppDef_TheGradient ******/
-		/****** md5 signature: 85b9700dca31ee16f7fb2f871aed88ab ******/
+		/****** md5 signature: 900085fb5ace62f52081aeaecf97f22b ******/
 		%feature("compactdefaultargs") AppDef_TheGradient;
 		%feature("autodoc", "
 Parameters
@@ -5749,11 +5759,11 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
 Deg: int
-Tol3d: float
-Tol2d: float
+Tol3d: double
+Tol2d: double
 NbIterations: int (optional, default to 200)
 
 Return
@@ -5764,23 +5774,23 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_TheGradient;
-		 AppDef_TheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
+		 AppDef_TheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** AppDef_TheGradient::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the old and the new approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** AppDef_TheGradient::Error ******/
-		/****** md5 signature: 94d11b0fe58daf5df892c75e38905cde ******/
+		/****** md5 signature: c628b3b203a1892c8da513c71806727d ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -5789,16 +5799,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
-		Standard_Real Error(const Standard_Integer Index);
+		double Error(const int Index);
 
 		/****** AppDef_TheGradient::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5808,33 +5818,33 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_TheGradient::MaxError2d ******/
-		/****** md5 signature: 2590e15e02ab7eeda39345ef64189e30 ******/
+		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
 		%feature("compactdefaultargs") MaxError2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
-		Standard_Real MaxError2d();
+		double MaxError2d();
 
 		/****** AppDef_TheGradient::MaxError3d ******/
-		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
+		/****** md5 signature: 852677885a5c66f2a41b7ad3bb519106 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
-		Standard_Real MaxError3d();
+		double MaxError3d();
 
 		/****** AppDef_TheGradient::Value ******/
 		/****** md5 signature: dac7e49320bc0e9a268aeb92592734dc ******/
@@ -5864,7 +5874,7 @@ returns all the Bezier curves approximating the MultiLine SSP after minimization
 class AppDef_TheLeastSquares {
 	public:
 		/****** AppDef_TheLeastSquares::AppDef_TheLeastSquares ******/
-		/****** md5 signature: f752b383abdb9dda4b6c44712dd024e1 ******/
+		/****** md5 signature: 26dc5be5c4ce58421f2f5d85aaff15f0 ******/
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "
 Parameters
@@ -5885,10 +5895,10 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_TheLeastSquares;
-		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_TheLeastSquares::AppDef_TheLeastSquares ******/
-		/****** md5 signature: ef6a5ff8da68e59f81011325a75bf3c6 ******/
+		/****** md5 signature: 532ff3d053866f70af31e3d172091409 ******/
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "
 Parameters
@@ -5908,17 +5918,17 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_TheLeastSquares;
-		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_TheLeastSquares::AppDef_TheLeastSquares ******/
-		/****** md5 signature: 3a5f460d8866bf1aa381c89f9b8a5452 ******/
+		/****** md5 signature: 4125e26e7efc36c50b9e02555583192c ******/
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -5934,17 +5944,17 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_TheLeastSquares;
-		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
+		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_TheLeastSquares::AppDef_TheLeastSquares ******/
-		/****** md5 signature: 5bbebc9514a1e40a98553eefac06902f ******/
+		/****** md5 signature: 77aa6ff3345f4a32d57c0a29fddd808e ******/
 		%feature("compactdefaultargs") AppDef_TheLeastSquares;
 		%feature("autodoc", "
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: TColStd_Array1OfReal
-Mults: TColStd_Array1OfInteger
+Knots: NCollection_Array1<double>
+Mults: NCollection_Array1<int>
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -5959,7 +5969,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_TheLeastSquares;
-		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const Standard_Integer NbPol);
+		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_TheLeastSquares::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -6014,7 +6024,7 @@ returns the distances between the points of the multiline and the approximation 
 		const math_Matrix & Distance();
 
 		/****** AppDef_TheLeastSquares::Error ******/
-		/****** md5 signature: 7c05c0164fc88dbacc4d90d301fe7f12 ******/
+		/****** md5 signature: 0a258e6832ff5fe8779c9e630282787a ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -6022,9 +6032,9 @@ Parameters
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -6033,7 +6043,7 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_TheLeastSquares::ErrorGradient ******/
-		/****** md5 signature: 3e5c3757aad8d0f394eda590c0bc62e3 ******/
+		/****** md5 signature: fc5a593b6fdfd1a7e10a6c72203888b0 ******/
 		%feature("compactdefaultargs") ErrorGradient;
 		%feature("autodoc", "
 Parameters
@@ -6042,9 +6052,9 @@ Grad: math_Vector
 
 Return
 -------
-F: float
-MaxE3d: float
-MaxE2d: float
+F: double
+MaxE3d: double
+MaxE2d: double
 
 Description
 -----------
@@ -6053,17 +6063,17 @@ returns the maximum errors between the MultiLine and the approximation curves. F
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_TheLeastSquares::FirstLambda ******/
-		/****** md5 signature: 87ad21cc13708c47c81704b38426d999 ******/
+		/****** md5 signature: 2d2b5f578dd8ef8d2cf33a7ce0a2ff85 ******/
 		%feature("compactdefaultargs") FirstLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
-		Standard_Real FirstLambda();
+		double FirstLambda();
 
 		/****** AppDef_TheLeastSquares::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -6079,7 +6089,7 @@ returns the function matrix used to approximate the set.
 		const math_Matrix & FunctionMatrix();
 
 		/****** AppDef_TheLeastSquares::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6089,7 +6099,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_TheLeastSquares::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
@@ -6105,17 +6115,17 @@ Returns the indexes of the first non null values of A and DA. The values are non
 		const math_IntegerVector & KIndex();
 
 		/****** AppDef_TheLeastSquares::LastLambda ******/
-		/****** md5 signature: f7e26790258c4ab513bae9dd1a5955e1 ******/
+		/****** md5 signature: 6bf1023b4898e81b52c32d9dde27c0f6 ******/
 		%feature("compactdefaultargs") LastLambda;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
-		Standard_Real LastLambda();
+		double LastLambda();
 
 		/****** AppDef_TheLeastSquares::Perform ******/
 		/****** md5 signature: 5b8f20d810ea57d5223b42dfd01410ad ******/
@@ -6136,14 +6146,14 @@ Is used after having initialized the fields. The case 'CurvaturePoint' is not tr
 		void Perform(const math_Vector & Parameters);
 
 		/****** AppDef_TheLeastSquares::Perform ******/
-		/****** md5 signature: cbf083f2b8329680dc5a52f482f436ad ******/
+		/****** md5 signature: aa56ee2115a94d6af094bf8d4883e10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Parameters: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -6153,10 +6163,10 @@ Description
 -----------
 Is used after having initialized the fields.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const double l1, const double l2);
 
 		/****** AppDef_TheLeastSquares::Perform ******/
-		/****** md5 signature: 380f2440b07e3b3805c4eda2da2e8c6e ******/
+		/****** md5 signature: 39c3fc9e00f038c06afb8734c658c413 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -6164,8 +6174,8 @@ Parameters
 Parameters: math_Vector
 V1t: math_Vector
 V2t: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -6175,10 +6185,10 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const double l1, const double l2);
 
 		/****** AppDef_TheLeastSquares::Perform ******/
-		/****** md5 signature: 5f7ecae6d947ca76138d939cdd616b0f ******/
+		/****** md5 signature: d177c6fdf0aea693a3c72ad74045f683 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -6188,8 +6198,8 @@ V1t: math_Vector
 V2t: math_Vector
 V1c: math_Vector
 V2c: math_Vector
-l1: float
-l2: float
+l1: double
+l2: double
 
 Return
 -------
@@ -6199,7 +6209,7 @@ Description
 -----------
 Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
-		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
+		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
 		/****** AppDef_TheLeastSquares::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
@@ -6242,7 +6252,7 @@ returns the matrix of resulting control points value.
 class AppDef_TheResol {
 	public:
 		/****** AppDef_TheResol::AppDef_TheResol ******/
-		/****** md5 signature: 4b9b6ad5df71d40b30db8c43f2f8211e ******/
+		/****** md5 signature: 543ec6cabe601c880a43f4b9816c8f72 ******/
 		%feature("compactdefaultargs") AppDef_TheResol;
 		%feature("autodoc", "
 Parameters
@@ -6251,10 +6261,10 @@ SSP: AppDef_MultiLine
 SCurv: AppParCurves_MultiCurve
 FirstPoint: int
 LastPoint: int
-Constraints: AppParCurves_HArray1OfConstraintCouple
+Constraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Bern: math_Matrix
 DerivativeBern: math_Matrix
-Tolerance: float (optional, default to 1.0e-10)
+Tolerance: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -6264,10 +6274,10 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_TheResol;
-		 AppDef_TheResol(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
+		 AppDef_TheResol(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_TheResol::ConstraintDerivative ******/
-		/****** md5 signature: 03ceb3c5a326d9e5b704d04ea0088376 ******/
+		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
 		%feature("autodoc", "
 Parameters
@@ -6285,7 +6295,7 @@ Description
 -----------
 Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
-		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const Standard_Integer Deg, const math_Matrix & DA);
+		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
 		/****** AppDef_TheResol::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
@@ -6327,7 +6337,7 @@ returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matri
 		const math_Matrix & InverseMatrix();
 
 		/****** AppDef_TheResol::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6337,7 +6347,7 @@ Description
 -----------
 returns True if all has been correctly done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -6358,7 +6368,7 @@ returns True if all has been correctly done.
 class AppDef_Variational {
 	public:
 		/****** AppDef_Variational::AppDef_Variational ******/
-		/****** md5 signature: f90b6cf052ecf51b369ee723a9ac7b8b ******/
+		/****** md5 signature: bb4e11b81bf4f99fa7a04bd5573e44c9 ******/
 		%feature("compactdefaultargs") AppDef_Variational;
 		%feature("autodoc", "
 Parameters
@@ -6366,13 +6376,13 @@ Parameters
 SSP: AppDef_MultiLine
 FirstPoint: int
 LastPoint: int
-TheConstraints: AppParCurves_HArray1OfConstraintCouple
+TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 MaxDegree: int (optional, default to 14)
 MaxSegment: int (optional, default to 100)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
-WithMinMax: bool (optional, default to Standard_False)
-WithCutting: bool (optional, default to Standard_True)
-Tolerance: float (optional, default to 1.0)
+WithMinMax: bool (optional, default to false)
+WithCutting: bool (optional, default to true)
+Tolerance: double (optional, default to 1.0)
 NbIterations: int (optional, default to 2)
 
 Return
@@ -6381,9 +6391,9 @@ None
 
 Description
 -----------
-Constructor. Initialization of the fields. warning: Nc0: number of PassagePoint consraints Nc2: number of TangencyPoint constraints Nc3: number of CurvaturePoint constraints if ((MaxDegree-Continuity)*MaxSegment -Nc0 - 2*Nc1 -3*Nc2) is negative The problem is over-constrained. //! Limitation: The MultiLine from AppDef has to be composed by only one Line ( Dimension 2 or 3).
+Constructor. Initialization of the fields. Warning: Nc0: number of PassagePoint consraints Nc2: number of TangencyPoint constraints Nc3: number of CurvaturePoint constraints if ((MaxDegree-Continuity)*MaxSegment -Nc0 - 2*Nc1 -3*Nc2) is negative The problem is over-constrained. //! Limitation: The MultiLine from AppDef has to be composed by only one Line ( Dimension 2 or 3).
 ") AppDef_Variational;
-		 AppDef_Variational(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer MaxDegree = 14, const Standard_Integer MaxSegment = 100, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Boolean WithMinMax = Standard_False, const Standard_Boolean WithCutting = Standard_True, const Standard_Real Tolerance = 1.0, const Standard_Integer NbIterations = 2);
+		 AppDef_Variational(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int MaxDegree = 14, const int MaxSegment = 100, const GeomAbs_Shape Continuity = GeomAbs_C2, const bool WithMinMax = false, const bool WithCutting = true, const double Tolerance = 1.0, const int NbIterations = 2);
 
 		/****** AppDef_Variational::Approximate ******/
 		/****** md5 signature: c99f59de561bcc5fc0bce8bf73c657b1 ******/
@@ -6399,17 +6409,17 @@ Makes the approximation with the current fields.
 		void Approximate();
 
 		/****** AppDef_Variational::AverageError ******/
-		/****** md5 signature: 420f3b7884af8c019ac24a5fe5ae6ff8 ******/
+		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error between the MultiLine from AppDef and the approximation.
 ") AverageError;
-		Standard_Real AverageError();
+		double AverageError();
 
 		/****** AppDef_Variational::Continuity ******/
 		/****** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ******/
@@ -6425,7 +6435,7 @@ returns the Continuity used in the approximation.
 		GeomAbs_Shape Continuity();
 
 		/****** AppDef_Variational::Criterium ******/
-		/****** md5 signature: edb6a5a9c11d025eaea36c85716d20aa ******/
+		/****** md5 signature: 0fa952bee17ad264eef37768e46066e4 ******/
 		%feature("compactdefaultargs") Criterium;
 		%feature("autodoc", "
 Parameters
@@ -6433,9 +6443,9 @@ Parameters
 
 Return
 -------
-VFirstOrder: float
-VSecondOrder: float
-VThirdOrder: float
+VFirstOrder: double
+VSecondOrder: double
+VThirdOrder: double
 
 Description
 -----------
@@ -6444,7 +6454,7 @@ returns the values of the quality criterium.
 		void Criterium(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_Variational::CriteriumWeight ******/
-		/****** md5 signature: d1e8815ca315e3e933ecc550d2c9ab9d ******/
+		/****** md5 signature: 1544acdfb9719eda43fde0599ef767af ******/
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "
 Parameters
@@ -6452,9 +6462,9 @@ Parameters
 
 Return
 -------
-Percent1: float
-Percent2: float
-Percent3: float
+Percent1: double
+Percent2: double
+Percent3: double
 
 Description
 -----------
@@ -6498,7 +6508,7 @@ Prints on the stream o information on the current state of the object. MaxError,
 		void Dump(std::ostream &OutValue);
 
 		/****** AppDef_Variational::IsCreated ******/
-		/****** md5 signature: ee98cd23a823f97ff49721b779c9bc76 ******/
+		/****** md5 signature: f422960c1d258c859e337bcd30afdf15 ******/
 		%feature("compactdefaultargs") IsCreated;
 		%feature("autodoc", "Return
 -------
@@ -6508,10 +6518,10 @@ Description
 -----------
 returns True if the creation is done and correspond to the current fields.
 ") IsCreated;
-		Standard_Boolean IsCreated();
+		bool IsCreated();
 
 		/****** AppDef_Variational::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6521,10 +6531,10 @@ Description
 -----------
 returns True if the approximation is ok and correspond to the current fields.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AppDef_Variational::IsOverConstrained ******/
-		/****** md5 signature: b90429989d8f8debd1e02927f18e060e ******/
+		/****** md5 signature: 66cf3269b81347643cdd47cc6f12ab51 ******/
 		%feature("compactdefaultargs") IsOverConstrained;
 		%feature("autodoc", "Return
 -------
@@ -6534,23 +6544,23 @@ Description
 -----------
 returns True if the problem is overconstrained in this case, approximation cannot be done.
 ") IsOverConstrained;
-		Standard_Boolean IsOverConstrained();
+		bool IsOverConstrained();
 
 		/****** AppDef_Variational::Knots ******/
-		/****** md5 signature: 6fb22c3eaf6dc04bd29ac3396a7169a9 ******/
+		/****** md5 signature: 916a934e3fbc9131c9769cb933e143e3 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 returns the knots uses to the approximations.
 ") Knots;
-		const opencascade::handle<TColStd_HArray1OfReal> & Knots();
+		const opencascade::handle<NCollection_HArray1<double>> & Knots();
 
 		/****** AppDef_Variational::MaxDegree ******/
-		/****** md5 signature: 2c79ca8c281a4e3978650b16dd11f77d ******/
+		/****** md5 signature: 0d1cb72b1379ad321ead28abe36212aa ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -6560,23 +6570,23 @@ Description
 -----------
 returns the Maximum Degree used in the approximation.
 ") MaxDegree;
-		Standard_Integer MaxDegree();
+		int MaxDegree();
 
 		/****** AppDef_Variational::MaxError ******/
-		/****** md5 signature: 90f2419f0b1537a77da84305579339a2 ******/
+		/****** md5 signature: 4f47ae0b40baa70b5c95e40911df418d ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum of the distances between the points of the multiline and the approximation curves.
 ") MaxError;
-		Standard_Real MaxError();
+		double MaxError();
 
 		/****** AppDef_Variational::MaxErrorIndex ******/
-		/****** md5 signature: 971e966c0fe3112e06e17b68cf389166 ******/
+		/****** md5 signature: 589b7251d8fd4426ed59ece6df201506 ******/
 		%feature("compactdefaultargs") MaxErrorIndex;
 		%feature("autodoc", "Return
 -------
@@ -6586,10 +6596,10 @@ Description
 -----------
 returns the index of the MultiPoint of ErrorMax.
 ") MaxErrorIndex;
-		Standard_Integer MaxErrorIndex();
+		int MaxErrorIndex();
 
 		/****** AppDef_Variational::MaxSegment ******/
-		/****** md5 signature: 1053b33469d38c347d8d0e695823bcf7 ******/
+		/****** md5 signature: ed8a683c919f57040cc6f96b070d3d38 ******/
 		%feature("compactdefaultargs") MaxSegment;
 		%feature("autodoc", "Return
 -------
@@ -6599,10 +6609,10 @@ Description
 -----------
 returns the Maximum of segment used in the approximation.
 ") MaxSegment;
-		Standard_Integer MaxSegment();
+		int MaxSegment();
 
 		/****** AppDef_Variational::NbIterations ******/
-		/****** md5 signature: 05334f1e34f7c858ac022754e906f2bf ******/
+		/****** md5 signature: e2122843ad4b16fe4df700a084f7f785 ******/
 		%feature("compactdefaultargs") NbIterations;
 		%feature("autodoc", "Return
 -------
@@ -6612,41 +6622,41 @@ Description
 -----------
 returns the number of iterations used in the approximation.
 ") NbIterations;
-		Standard_Integer NbIterations();
+		int NbIterations();
 
 		/****** AppDef_Variational::Parameters ******/
-		/****** md5 signature: 7527b844d237672b1654e0e34e57815c ******/
+		/****** md5 signature: ec5ffc2b3a4e01e32f9c5f69e8948ebf ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 returns the parameters uses to the approximations.
 ") Parameters;
-		const opencascade::handle<TColStd_HArray1OfReal> & Parameters();
+		const opencascade::handle<NCollection_HArray1<double>> & Parameters();
 
 		/****** AppDef_Variational::QuadraticError ******/
-		/****** md5 signature: 4966a1d89bf85fe81f2bcefbdff19919 ******/
+		/****** md5 signature: 18c4dd3de727943534d24ba84ed7cdd5 ******/
 		%feature("compactdefaultargs") QuadraticError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the quadratic average of the distances between the points of the multiline and the approximation curves.
 ") QuadraticError;
-		Standard_Real QuadraticError();
+		double QuadraticError();
 
 		/****** AppDef_Variational::SetConstraints ******/
-		/****** md5 signature: cc790287f6182849f720a3c5328f25b7 ******/
+		/****** md5 signature: 4fac2ef29203b85a5313f4a150d13c56 ******/
 		%feature("compactdefaultargs") SetConstraints;
 		%feature("autodoc", "
 Parameters
 ----------
-aConstrainst: AppParCurves_HArray1OfConstraintCouple
+aConstrainst: NCollection_HArray1<AppParCurves_ConstraintCouple
 
 Return
 -------
@@ -6656,10 +6666,10 @@ Description
 -----------
 Define the constraints to approximate If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetConstraints;
-		Standard_Boolean SetConstraints(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & aConstrainst);
+		bool SetConstraints(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & aConstrainst);
 
 		/****** AppDef_Variational::SetContinuity ******/
-		/****** md5 signature: f974005f1ed42db31f2565c8a366cbbe ******/
+		/****** md5 signature: 2f68d6ea40cf201b04b4380b9b620a1e ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -6674,17 +6684,17 @@ Description
 -----------
 Define the Continuity used in the approximation If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetContinuity;
-		Standard_Boolean SetContinuity(const GeomAbs_Shape C);
+		bool SetContinuity(const GeomAbs_Shape C);
 
 		/****** AppDef_Variational::SetCriteriumWeight ******/
-		/****** md5 signature: 168b9075f5e06eafee2d48483e8549b2 ******/
+		/****** md5 signature: 82b85dd1ae6e7f94fe6395f5acbb65d0 ******/
 		%feature("compactdefaultargs") SetCriteriumWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-Percent1: float
-Percent2: float
-Percent3: float
+Percent1: double
+Percent2: double
+Percent3: double
 
 Return
 -------
@@ -6694,16 +6704,16 @@ Description
 -----------
 define the Weights (as percent) associed to the criterium used in the optimization. //! if Percent <= 0.
 ") SetCriteriumWeight;
-		void SetCriteriumWeight(const Standard_Real Percent1, const Standard_Real Percent2, const Standard_Real Percent3);
+		void SetCriteriumWeight(const double Percent1, const double Percent2, const double Percent3);
 
 		/****** AppDef_Variational::SetCriteriumWeight ******/
-		/****** md5 signature: 953a9a555201757eb4d851ed7bafb979 ******/
+		/****** md5 signature: aeaa8cf534c553a1bfc99d4bffd66adc ******/
 		%feature("compactdefaultargs") SetCriteriumWeight;
 		%feature("autodoc", "
 Parameters
 ----------
 Order: int
-Percent: float
+Percent: double
 
 Return
 -------
@@ -6713,15 +6723,15 @@ Description
 -----------
 define the Weight (as percent) associed to the criterium Order used in the optimization: Others weights are updated. if Percent < 0 if Order < 1 or Order > 3.
 ") SetCriteriumWeight;
-		void SetCriteriumWeight(const Standard_Integer Order, const Standard_Real Percent);
+		void SetCriteriumWeight(const int Order, const double Percent);
 
 		/****** AppDef_Variational::SetKnots ******/
-		/****** md5 signature: e8661b15a04d92d82b8a0d602a32994c ******/
+		/****** md5 signature: c430875f7d33f2d4d1fe8cb50a442d6a ******/
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-knots: TColStd_HArray1OfReal
+knots: NCollection_HArray1<double
 
 Return
 -------
@@ -6731,10 +6741,10 @@ Description
 -----------
 Defines the knots used by the approximations If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetKnots;
-		Standard_Boolean SetKnots(const opencascade::handle<TColStd_HArray1OfReal> & knots);
+		bool SetKnots(const opencascade::handle<NCollection_HArray1<double> > & knots);
 
 		/****** AppDef_Variational::SetMaxDegree ******/
-		/****** md5 signature: fca035c6d3f4efa993181625249e062c ******/
+		/****** md5 signature: 6f66d774e74903b4b5af2b8dfc5a299e ******/
 		%feature("compactdefaultargs") SetMaxDegree;
 		%feature("autodoc", "
 Parameters
@@ -6749,10 +6759,10 @@ Description
 -----------
 Define the Maximum Degree used in the approximation If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetMaxDegree;
-		Standard_Boolean SetMaxDegree(const Standard_Integer Degree);
+		bool SetMaxDegree(const int Degree);
 
 		/****** AppDef_Variational::SetMaxSegment ******/
-		/****** md5 signature: a24ae9d7cd32cbd6c0a12b78e2965cbf ******/
+		/****** md5 signature: 5cc1f561ea3340f917866ee70d18eedc ******/
 		%feature("compactdefaultargs") SetMaxSegment;
 		%feature("autodoc", "
 Parameters
@@ -6767,10 +6777,10 @@ Description
 -----------
 Define the maximum number of segments used in the approximation If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetMaxSegment;
-		Standard_Boolean SetMaxSegment(const Standard_Integer NbSegment);
+		bool SetMaxSegment(const int NbSegment);
 
 		/****** AppDef_Variational::SetNbIterations ******/
-		/****** md5 signature: 3ae76dd00e47cee8353c15b0f4494e29 ******/
+		/****** md5 signature: 64b621cb577db030f54d40380dfa7254 ******/
 		%feature("compactdefaultargs") SetNbIterations;
 		%feature("autodoc", "
 Parameters
@@ -6785,15 +6795,15 @@ Description
 -----------
 define the number of iterations used in the approximation. if Iter < 1.
 ") SetNbIterations;
-		void SetNbIterations(const Standard_Integer Iter);
+		void SetNbIterations(const int Iter);
 
 		/****** AppDef_Variational::SetParameters ******/
-		/****** md5 signature: 98407971ef258f529d76e2dc1e8651b1 ******/
+		/****** md5 signature: a3868e2777146057db4363f249fbd63a ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-param: TColStd_HArray1OfReal
+param: NCollection_HArray1<double
 
 Return
 -------
@@ -6803,15 +6813,15 @@ Description
 -----------
 Defines the parameters used by the approximations.
 ") SetParameters;
-		void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & param);
+		void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & param);
 
 		/****** AppDef_Variational::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
+		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -6821,10 +6831,10 @@ Description
 -----------
 define the tolerance used in the approximation.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 		/****** AppDef_Variational::SetWithCutting ******/
-		/****** md5 signature: 02d0c9b4b956a64bc1920736b5081e0f ******/
+		/****** md5 signature: 26ea8dda644fcf699b68e6017a500694 ******/
 		%feature("compactdefaultargs") SetWithCutting;
 		%feature("autodoc", "
 Parameters
@@ -6839,10 +6849,10 @@ Description
 -----------
 Define if the approximation can insert new Knots or not. If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetWithCutting;
-		Standard_Boolean SetWithCutting(const Standard_Boolean Cutting);
+		bool SetWithCutting(const bool Cutting);
 
 		/****** AppDef_Variational::SetWithMinMax ******/
-		/****** md5 signature: 1b54e87ae81f0f7a5b31ba668276567f ******/
+		/****** md5 signature: 2f7796325b6b5f1080fbf22e9904257d ******/
 		%feature("compactdefaultargs") SetWithMinMax;
 		%feature("autodoc", "
 Parameters
@@ -6857,20 +6867,20 @@ Description
 -----------
 Define if the approximation search to minimize the maximum Error or not.
 ") SetWithMinMax;
-		void SetWithMinMax(const Standard_Boolean MinMax);
+		void SetWithMinMax(const bool MinMax);
 
 		/****** AppDef_Variational::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the tolerance used in the approximation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** AppDef_Variational::Value ******/
 		/****** md5 signature: 35d2ee100f1a9fc11f00b074d7d3553e ******/
@@ -6886,7 +6896,7 @@ returns all the BSpline curves approximating the MultiLine from AppDef SSP after
 		AppParCurves_MultiBSpCurve Value();
 
 		/****** AppDef_Variational::WithCutting ******/
-		/****** md5 signature: d1aad1460fd0343f58333133d5abda17 ******/
+		/****** md5 signature: b768c1bde232a26a32955cefbad731a5 ******/
 		%feature("compactdefaultargs") WithCutting;
 		%feature("autodoc", "Return
 -------
@@ -6896,10 +6906,10 @@ Description
 -----------
 returns if the approximation can insert new Knots or not.
 ") WithCutting;
-		Standard_Boolean WithCutting();
+		bool WithCutting();
 
 		/****** AppDef_Variational::WithMinMax ******/
-		/****** md5 signature: 4a834814fd8ebdf3109c458400dbeda7 ******/
+		/****** md5 signature: 789d365a8b0ca3fe33dd3c191ffbc999 ******/
 		%feature("compactdefaultargs") WithMinMax;
 		%feature("autodoc", "Return
 -------
@@ -6909,7 +6919,7 @@ Description
 -----------
 returns if the approximation search to minimize the maximum Error or not.
 ") WithMinMax;
-		Standard_Boolean WithMinMax();
+		bool WithMinMax();
 
 };
 
@@ -6926,7 +6936,7 @@ returns if the approximation search to minimize the maximum Error or not.
 class AppDef_LinearCriteria : public AppDef_SmoothCriterion {
 	public:
 		/****** AppDef_LinearCriteria::AppDef_LinearCriteria ******/
-		/****** md5 signature: 7971c8c3b54afa7d1e4ec19e4b96b14a ******/
+		/****** md5 signature: 0abb2d0ba87e5d4b5d333d9d1eb04758 ******/
 		%feature("compactdefaultargs") AppDef_LinearCriteria;
 		%feature("autodoc", "
 Parameters
@@ -6943,36 +6953,36 @@ Description
 -----------
 No available documentation.
 ") AppDef_LinearCriteria;
-		 AppDef_LinearCriteria(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint);
+		 AppDef_LinearCriteria(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint);
 
 		/****** AppDef_LinearCriteria::AssemblyTable ******/
-		/****** md5 signature: bfa501d807c9eb758d31854422707098 ******/
+		/****** md5 signature: 2667831f5e51e952d18feb231f8b9040 ******/
 		%feature("compactdefaultargs") AssemblyTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<FEmTool_HAssemblyTable>
+opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>>
 
 Description
 -----------
 No available documentation.
 ") AssemblyTable;
-		opencascade::handle<FEmTool_HAssemblyTable> AssemblyTable();
+		opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>> AssemblyTable();
 
 		/****** AppDef_LinearCriteria::DependenceTable ******/
-		/****** md5 signature: 74ba8d8ba6ec3333e18c69c449d161a3 ******/
+		/****** md5 signature: 3c6dd946c24496ab93cc5cb266bb098a ******/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<NCollection_HArray2<int>>
 
 Description
 -----------
 No available documentation.
 ") DependenceTable;
-		opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
+		opencascade::handle<NCollection_HArray2<int>> DependenceTable();
 
 		/****** AppDef_LinearCriteria::ErrorValues ******/
-		/****** md5 signature: a777f9d4f93c8023ace5e9d0026ef74c ******/
+		/****** md5 signature: da64e4eedaa767e2b61dc721899ddb72 ******/
 		%feature("compactdefaultargs") ErrorValues;
 		%feature("autodoc", "
 Parameters
@@ -6980,9 +6990,9 @@ Parameters
 
 Return
 -------
-MaxError: float
-QuadraticError: float
-AverageError: float
+MaxError: double
+QuadraticError: double
+AverageError: double
 
 Description
 -----------
@@ -6990,21 +7000,21 @@ No available documentation.
 ") ErrorValues;
 		void ErrorValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/****** AppDef_LinearCriteria::EstLength ******/
+		/****** md5 signature: 97c52113c5736aecf02c24f05a98899d ******/
+		%feature("compactdefaultargs") EstLength;
+		%feature("autodoc", "Return
+-------
+double
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetEstLength() {
-            return (Standard_Real) $self->EstLength();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetEstLength(Standard_Real value) {
-            $self->EstLength()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") EstLength;
+		double & EstLength();
+
 		/****** AppDef_LinearCriteria::GetCurve ******/
-		/****** md5 signature: cd8e9b34a7462f6d0e280ba39eb7013b ******/
+		/****** md5 signature: 63e5c0923d2af959ede91bdad45cbf91 ******/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "
 Parameters
@@ -7022,7 +7032,7 @@ No available documentation.
 		void GetCurve(opencascade::handle<FEmTool_Curve> & C);
 
 		/****** AppDef_LinearCriteria::GetEstimation ******/
-		/****** md5 signature: c203dc9f9f35d061778069cc5bca8cde ******/
+		/****** md5 signature: 3f74549f9d359a09af87b25151f0748b ******/
 		%feature("compactdefaultargs") GetEstimation;
 		%feature("autodoc", "
 Parameters
@@ -7030,9 +7040,9 @@ Parameters
 
 Return
 -------
-E1: float
-E2: float
-E3: float
+E1: double
+E2: double
+E3: double
 
 Description
 -----------
@@ -7041,7 +7051,7 @@ No available documentation.
 		void GetEstimation(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_LinearCriteria::GetWeight ******/
-		/****** md5 signature: 20228a28f0bf77c9b8a22ba4a2c3775a ******/
+		/****** md5 signature: c55e1dce8913e427a0e81ccc32d6c5b7 ******/
 		%feature("compactdefaultargs") GetWeight;
 		%feature("autodoc", "
 Parameters
@@ -7049,8 +7059,8 @@ Parameters
 
 Return
 -------
-QuadraticWeight: float
-QualityWeight: float
+QuadraticWeight: double
+QualityWeight: double
 
 Description
 -----------
@@ -7059,7 +7069,7 @@ No available documentation.
 		void GetWeight(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_LinearCriteria::Gradient ******/
-		/****** md5 signature: 321bc1515ee5e590e26f19411e445e89 ******/
+		/****** md5 signature: 0a5d3f54cbd3008f333b45bbd94d4102 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -7076,10 +7086,10 @@ Description
 -----------
 No available documentation.
 ") Gradient;
-		void Gradient(const Standard_Integer Element, const Standard_Integer Dimension, math_Vector & G);
+		void Gradient(const int Element, const int Dimension, math_Vector & G);
 
 		/****** AppDef_LinearCriteria::Hessian ******/
-		/****** md5 signature: 8b40c8291caedf88a740760d60139e94 ******/
+		/****** md5 signature: 7117052d6318106e456e896215767124 ******/
 		%feature("compactdefaultargs") Hessian;
 		%feature("autodoc", "
 Parameters
@@ -7097,16 +7107,16 @@ Description
 -----------
 No available documentation.
 ") Hessian;
-		void Hessian(const Standard_Integer Element, const Standard_Integer Dimension1, const Standard_Integer Dimension2, math_Matrix & H);
+		void Hessian(const int Element, const int Dimension1, const int Dimension2, math_Matrix & H);
 
 		/****** AppDef_LinearCriteria::InputVector ******/
-		/****** md5 signature: 9fc6c35d42441a4e3e3012543ade00f3 ******/
+		/****** md5 signature: 9dab3bc88225f997862f0d8f7ade1b08 ******/
 		%feature("compactdefaultargs") InputVector;
 		%feature("autodoc", "
 Parameters
 ----------
 X: math_Vector
-AssTable: FEmTool_HAssemblyTable
+AssTable: NCollection_HArray2<
 
 Return
 -------
@@ -7116,32 +7126,32 @@ Description
 -----------
 Convert the assembly Vector in an Curve;.
 ") InputVector;
-		void InputVector(const math_Vector & X, const opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
+		void InputVector(const math_Vector & X, const opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int> > > > & AssTable);
 
 		/****** AppDef_LinearCriteria::QualityValues ******/
-		/****** md5 signature: 827da749488066754087e937754eac94 ******/
+		/****** md5 signature: dda6320c4b729449cfd9ab2379a97ea3 ******/
 		%feature("compactdefaultargs") QualityValues;
 		%feature("autodoc", "
 Parameters
 ----------
-J1min: float
-J2min: float
-J3min: float
+J1min: double
+J2min: double
+J3min: double
 
 Return
 -------
-J1: float
-J2: float
-J3: float
+J1: double
+J2: double
+J3: double
 
 Description
 -----------
 No available documentation.
 ") QualityValues;
-		Standard_Integer QualityValues(const Standard_Real J1min, const Standard_Real J2min, const Standard_Real J3min, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		int QualityValues(const double J1min, const double J2min, const double J3min, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** AppDef_LinearCriteria::SetCurve ******/
-		/****** md5 signature: 04239691cf498ce7af97807decd2562a ******/
+		/****** md5 signature: 1c457252c0e67a89e62141a01828cef5 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -7159,14 +7169,14 @@ No available documentation.
 		void SetCurve(const opencascade::handle<FEmTool_Curve> & C);
 
 		/****** AppDef_LinearCriteria::SetEstimation ******/
-		/****** md5 signature: 7e003424ca19f8200aab6824d74b9d27 ******/
+		/****** md5 signature: 757ac19e61cde86d107bb72b6020f8f3 ******/
 		%feature("compactdefaultargs") SetEstimation;
 		%feature("autodoc", "
 Parameters
 ----------
-E1: float
-E2: float
-E3: float
+E1: double
+E2: double
+E3: double
 
 Return
 -------
@@ -7176,15 +7186,15 @@ Description
 -----------
 No available documentation.
 ") SetEstimation;
-		void SetEstimation(const Standard_Real E1, const Standard_Real E2, const Standard_Real E3);
+		void SetEstimation(const double E1, const double E2, const double E3);
 
 		/****** AppDef_LinearCriteria::SetParameters ******/
-		/****** md5 signature: 5a4d4d2d682d53038fd9018938ef98a7 ******/
+		/****** md5 signature: 59a05a7e3b6ca23ea2c438ea5c80f937 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Parameters: TColStd_HArray1OfReal
+Parameters: NCollection_HArray1<double
 
 Return
 -------
@@ -7194,19 +7204,19 @@ Description
 -----------
 No available documentation.
 ") SetParameters;
-		void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & Parameters);
+		void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & Parameters);
 
 		/****** AppDef_LinearCriteria::SetWeight ******/
-		/****** md5 signature: 8783a77241be255334f6fe96a205454d ******/
+		/****** md5 signature: 6c2433fc5a233111aac0872874066487 ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-QuadraticWeight: float
-QualityWeight: float
-percentJ1: float
-percentJ2: float
-percentJ3: float
+QuadraticWeight: double
+QualityWeight: double
+percentJ1: double
+percentJ2: double
+percentJ3: double
 
 Return
 -------
@@ -7216,15 +7226,15 @@ Description
 -----------
 No available documentation.
 ") SetWeight;
-		void SetWeight(const Standard_Real QuadraticWeight, const Standard_Real QualityWeight, const Standard_Real percentJ1, const Standard_Real percentJ2, const Standard_Real percentJ3);
+		void SetWeight(const double QuadraticWeight, const double QualityWeight, const double percentJ1, const double percentJ2, const double percentJ3);
 
 		/****** AppDef_LinearCriteria::SetWeight ******/
-		/****** md5 signature: e02860ae1c35c7abb2994c7477ce803e ******/
+		/****** md5 signature: 2d47ea96ac1a1d393362ca463ca76422 ******/
 		%feature("compactdefaultargs") SetWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-Weight: TColStd_Array1OfReal
+Weight: NCollection_Array1<double>
 
 Return
 -------
@@ -7234,7 +7244,7 @@ Description
 -----------
 No available documentation.
 ") SetWeight;
-		void SetWeight(const TColStd_Array1OfReal & Weight);
+		void SetWeight(const NCollection_Array1<double> & Weight);
 
 };
 
@@ -7249,13 +7259,13 @@ No available documentation.
 
 /* harray1 classes */
 
-class AppDef_HArray1OfMultiPointConstraint : public AppDef_Array1OfMultiPointConstraint, public Standard_Transient {
+class AppDef_HArray1OfMultiPointConstraint : public NCollection_Array1<AppDef_MultiPointConstraint>, public Standard_Transient {
   public:
     AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
-    AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const AppDef_Array1OfMultiPointConstraint::value_type& theValue);
-    AppDef_HArray1OfMultiPointConstraint(const AppDef_Array1OfMultiPointConstraint& theOther);
-    const AppDef_Array1OfMultiPointConstraint& Array1();
-    AppDef_Array1OfMultiPointConstraint& ChangeArray1();
+    AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<AppDef_MultiPointConstraint>::value_type& theValue);
+    AppDef_HArray1OfMultiPointConstraint(const NCollection_Array1<AppDef_MultiPointConstraint>& theOther);
+    const NCollection_Array1<AppDef_MultiPointConstraint>& Array1();
+    NCollection_Array1<AppDef_MultiPointConstraint>& ChangeArray1();
 };
 %make_alias(AppDef_HArray1OfMultiPointConstraint)
 

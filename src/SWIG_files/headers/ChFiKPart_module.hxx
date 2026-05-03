@@ -30,7 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ChFiKPart_ComputeData_FilPlnPln.hxx>
 #include<ChFiKPart_ComputeData_Rotule.hxx>
 #include<ChFiKPart_ComputeData_Sphere.hxx>
-#include<ChFiKPart_DataMapIteratorOfRstMap.hxx>
 #include<ChFiKPart_RstMap.hxx>
 
 #endif // CHFIKPART_HXX

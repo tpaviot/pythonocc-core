@@ -12,11 +12,10 @@ from OCC.Core.TDocStd import *
 from OCC.Core.TopAbs import *
 from OCC.Core.TopoDS import *
 
+
 class xmlmnaming:
     @staticmethod
-    def AddDrivers(
-        aDriverTable: XmlMDF_ADriverTable, aMessageDriver: Message_Messenger
-    ) -> None: ...
+    def AddDrivers(aDriverTable: XmlMDF_ADriverTable, aMessageDriver: Message_Messenger) -> None: ...
 
 class XmlMNaming_NamedShapeDriver(XmlMDF_ADriver):
     def __init__(self, aMessageDriver: Message_Messenger) -> None: ...
@@ -24,48 +23,19 @@ class XmlMNaming_NamedShapeDriver(XmlMDF_ADriver):
     def GetShapesLocations(self) -> TopTools_LocationSet: ...
     def NewEmpty(self) -> TDF_Attribute: ...
     @overload
-    def Paste(
-        self,
-        theSource: XmlObjMgt_Persistent,
-        theTarget: TDF_Attribute,
-        theRelocTable: XmlObjMgt_RRelocationTable,
-    ) -> bool: ...
+    def Paste(self, theSource: XmlObjMgt_Persistent, theTarget: TDF_Attribute, theRelocTable: XmlObjMgt_RRelocationTable) -> bool: ...
     @overload
-    def Paste(
-        self,
-        theSource: TDF_Attribute,
-        theTarget: XmlObjMgt_Persistent,
-        theRelocTable: XmlObjMgt_SRelocationTable,
-    ) -> None: ...
-    def ReadShapeSection(
-        self,
-        anElement: XmlObjMgt_Element,
-        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
-    ) -> None: ...
-    def WriteShapeSection(
-        self,
-        anElement: XmlObjMgt_Element,
-        theStorageFormatVersion: TDocStd_FormatVersion,
-        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
-    ) -> None: ...
+    def Paste(self, theSource: TDF_Attribute, theTarget: XmlObjMgt_Persistent, theRelocTable: XmlObjMgt_SRelocationTable) -> None: ...
+    def ReadShapeSection(self, anElement: XmlObjMgt_Element, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...
+    def WriteShapeSection(self, anElement: XmlObjMgt_Element, theStorageFormatVersion: TDocStd_FormatVersion, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...
 
 class XmlMNaming_NamingDriver(XmlMDF_ADriver):
     def __init__(self, aMessageDriver: Message_Messenger) -> None: ...
     def NewEmpty(self) -> TDF_Attribute: ...
     @overload
-    def Paste(
-        self,
-        theSource: XmlObjMgt_Persistent,
-        theTarget: TDF_Attribute,
-        theRelocTable: XmlObjMgt_RRelocationTable,
-    ) -> bool: ...
+    def Paste(self, theSource: XmlObjMgt_Persistent, theTarget: TDF_Attribute, theRelocTable: XmlObjMgt_RRelocationTable) -> bool: ...
     @overload
-    def Paste(
-        self,
-        theSource: TDF_Attribute,
-        theTarget: XmlObjMgt_Persistent,
-        theRelocTable: XmlObjMgt_SRelocationTable,
-    ) -> None: ...
+    def Paste(self, theSource: TDF_Attribute, theTarget: XmlObjMgt_Persistent, theRelocTable: XmlObjMgt_SRelocationTable) -> None: ...
 
 class XmlMNaming_Shape1:
     @overload
@@ -85,3 +55,4 @@ class XmlMNaming_Shape1:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

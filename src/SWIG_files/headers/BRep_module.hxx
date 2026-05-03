@@ -26,8 +26,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRep_CurveOnSurface.hxx>
 #include<BRep_CurveRepresentation.hxx>
 #include<BRep_GCurve.hxx>
-#include<BRep_ListIteratorOfListOfCurveRepresentation.hxx>
-#include<BRep_ListIteratorOfListOfPointRepresentation.hxx>
 #include<BRep_ListOfCurveRepresentation.hxx>
 #include<BRep_ListOfPointRepresentation.hxx>
 #include<BRep_PointOnCurve.hxx>

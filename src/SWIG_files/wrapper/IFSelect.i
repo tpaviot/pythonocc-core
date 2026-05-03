@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ifselect.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Interface_module.hxx>
-#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
@@ -58,7 +57,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ifselect.html"
 %import Standard.i
 %import NCollection.i
 %import Interface.i
-%import TColStd.i
 %import TCollection.i
 %import MoniTool.i
 
@@ -192,7 +190,6 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_Selection)
 %wrap_handle(IFSelect_SessionDumper)
 %wrap_handle(IFSelect_ShareOut)
-%wrap_handle(IFSelect_Signature)
 %wrap_handle(IFSelect_SignatureList)
 %wrap_handle(IFSelect_Transformer)
 %wrap_handle(IFSelect_WorkLibrary)
@@ -212,11 +209,7 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_SelectControl)
 %wrap_handle(IFSelect_SelectDeduct)
 %wrap_handle(IFSelect_SessionPilot)
-%wrap_handle(IFSelect_SignCategory)
 %wrap_handle(IFSelect_SignCounter)
-%wrap_handle(IFSelect_SignMultiple)
-%wrap_handle(IFSelect_SignType)
-%wrap_handle(IFSelect_SignValidity)
 %wrap_handle(IFSelect_TransformStandard)
 %wrap_handle(IFSelect_GraphCounter)
 %wrap_handle(IFSelect_ModifEditForm)
@@ -234,7 +227,6 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_SelectSharing)
 %wrap_handle(IFSelect_SelectSuite)
 %wrap_handle(IFSelect_SelectUnion)
-%wrap_handle(IFSelect_SignAncestor)
 %wrap_handle(IFSelect_SelectAnyType)
 %wrap_handle(IFSelect_SelectErrorEntities)
 %wrap_handle(IFSelect_SelectFlag)
@@ -249,7 +241,6 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_SelectUnknownEntities)
 %wrap_handle(IFSelect_SelectIncorrectEntities)
 %wrap_handle(IFSelect_SelectType)
-%wrap_handle(IFSelect_HSeqOfSelection)
 /* end handles declaration */
 
 /* templates */
@@ -296,6 +287,7 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_HSequence<opencascade::handle<IFSelect_Selection>> IFSelect_HSeqOfSelection;
 typedef NCollection_Sequence<opencascade::handle<IFSelect_AppliedModifiers>> IFSelect_SequenceOfAppliedModifiers;
 typedef NCollection_Sequence<opencascade::handle<IFSelect_GeneralModifier>> IFSelect_SequenceOfGeneralModifier;
 typedef NCollection_Sequence<opencascade::handle<Interface_InterfaceModel>> IFSelect_SequenceOfInterfaceModel;
@@ -310,13 +302,13 @@ typedef NCollection_Sequence<opencascade::handle<IFSelect_Selection>> IFSelect_T
 class IFSelect {
 	public:
 		/****** IFSelect::RestoreSession ******/
-		/****** md5 signature: ba8f6fe89afc1197894d3a2b08a62d42 ******/
+		/****** md5 signature: b95a7820f3bc784582959352b928f242 ******/
 		%feature("compactdefaultargs") RestoreSession;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-file: str
+file: char *
 
 Return
 -------
@@ -326,16 +318,16 @@ Description
 -----------
 Restore the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be used (this avoids to export the class SessionFile).
 ") RestoreSession;
-		static Standard_Boolean RestoreSession(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString file);
+		static bool RestoreSession(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const file);
 
 		/****** IFSelect::SaveSession ******/
-		/****** md5 signature: 70b61c20336eaa5196544d5cc6374f24 ******/
+		/****** md5 signature: 057903de70722cd155a32747613aa7db ******/
 		%feature("compactdefaultargs") SaveSession;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-file: str
+file: char *
 
 Return
 -------
@@ -345,7 +337,7 @@ Description
 -----------
 Saves the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be produced (this avoids to export the class SessionFile).
 ") SaveSession;
-		static Standard_Boolean SaveSession(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString file);
+		static bool SaveSession(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const file);
 
 };
 
@@ -363,13 +355,13 @@ Saves the state of a WorkSession from IFSelect, by using a SessionFile from IFSe
 class IFSelect_Activator : public Standard_Transient {
 	public:
 		/****** IFSelect_Activator::Add ******/
-		/****** md5 signature: a37363cdbf22b729575e5e234d977317 ******/
+		/****** md5 signature: 8bc72291754bba373fa08accf0536322 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 number: int
-command: str
+command: char *
 
 Return
 -------
@@ -379,16 +371,16 @@ Description
 -----------
 Allows a self-definition by an Activator of the Commands it processes, call the class method Adding (mode 0).
 ") Add;
-		void Add(const Standard_Integer number, Standard_CString command);
+		void Add(const int number, const char * const command);
 
 		/****** IFSelect_Activator::AddSet ******/
-		/****** md5 signature: 595aba69625ded0c77aa82a56fd1216b ******/
+		/****** md5 signature: dbd55b92474067c5d3598ecedafb1c82 ******/
 		%feature("compactdefaultargs") AddSet;
 		%feature("autodoc", "
 Parameters
 ----------
 number: int
-command: str
+command: char *
 
 Return
 -------
@@ -398,17 +390,17 @@ Description
 -----------
 Same as Add but specifies that this command is candidate for xset (creation of items, xset: named items; mode 1).
 ") AddSet;
-		void AddSet(const Standard_Integer number, Standard_CString command);
+		void AddSet(const int number, const char * const command);
 
 		/****** IFSelect_Activator::Adding ******/
-		/****** md5 signature: 0a5b580e999c19c508a9b0bd5aa30436 ******/
+		/****** md5 signature: 46f63d2b7ccf0387e8b763e2aa4cd7dd ******/
 		%feature("compactdefaultargs") Adding;
 		%feature("autodoc", "
 Parameters
 ----------
 actor: IFSelect_Activator
 number: int
-command: str
+command: char *
 mode: int
 
 Return
@@ -419,29 +411,29 @@ Description
 -----------
 Records, in a Dictionary available for all the Activators, the command title an Activator can process, attached with its number, proper for this Activator <mode> allows to distinguish various execution modes 0: default mode; 1: for xset.
 ") Adding;
-		static void Adding(const opencascade::handle<IFSelect_Activator> & actor, const Standard_Integer number, Standard_CString command, const Standard_Integer mode);
+		static void Adding(const opencascade::handle<IFSelect_Activator> & actor, const int number, const char * const command, const int mode);
 
 		/****** IFSelect_Activator::Commands ******/
-		/****** md5 signature: b84e2057293dd094c9908245b9306ac7 ******/
+		/****** md5 signature: 0cd9bb3592861ae91b0f86770d7a4092 ******/
 		%feature("compactdefaultargs") Commands;
 		%feature("autodoc", "
 Parameters
 ----------
 mode: int (optional, default to -1)
-command: str (optional, default to "")
+command: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfAsciiString>
+opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
 
 Description
 -----------
 Returns, for a root of command title, the list of possible commands. <mode>: -1 (D) for all commands if <commands> is empty -1 + command: about a Group , >= 0 see Adding By default, it returns the whole list of known commands.
 ") Commands;
-		static opencascade::handle<TColStd_HSequenceOfAsciiString> Commands(const Standard_Integer mode = -1, Standard_CString command = "");
+		static opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> Commands(const int mode = -1, const char * const command = "");
 
 		/****** IFSelect_Activator::Do ******/
-		/****** md5 signature: ae99aa557642f0954662530c8a03e1a8 ******/
+		/****** md5 signature: f9411f51fdf7e649cbceeefa09cebd4c ******/
 		%feature("compactdefaultargs") Do;
 		%feature("autodoc", "
 Parameters
@@ -457,36 +449,36 @@ Description
 -----------
 Tries to execute a Command Line. <number> is the number of the command for this Activator. It Must forecast to record the result of the execution, for need of Undo-Redo Must Returns: 0 for a void command (not to be recorded), 1 if execution OK, -1 if command incorrect, -2 if error on execution.
 ") Do;
-		virtual IFSelect_ReturnStatus Do(const Standard_Integer number, const opencascade::handle<IFSelect_SessionPilot> & pilot);
+		virtual IFSelect_ReturnStatus Do(const int number, const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
 		/****** IFSelect_Activator::File ******/
-		/****** md5 signature: 4e35c4fcb8fc2f63233a22d4edc201d8 ******/
+		/****** md5 signature: 9dfc173682f9600d68ab95e58ddcbc43 ******/
 		%feature("compactdefaultargs") File;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") File;
-		Standard_CString File();
+		const char * File();
 
 		/****** IFSelect_Activator::Group ******/
-		/****** md5 signature: e32957ecce589ad0dcae427ef81835ac ******/
+		/****** md5 signature: 1bb975573214e02a226af29747b1c67a ******/
 		%feature("compactdefaultargs") Group;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Group;
-		Standard_CString Group();
+		const char * Group();
 
 		/****** IFSelect_Activator::Help ******/
-		/****** md5 signature: 34063682d348e913be3a5562c588f29e ******/
+		/****** md5 signature: 4749fa6fed78504e68ae08f24723e5ec ******/
 		%feature("compactdefaultargs") Help;
 		%feature("autodoc", "
 Parameters
@@ -495,21 +487,21 @@ number: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Sends a short help message for a given command identified by it number for this Activator (must take one line max).
 ") Help;
-		virtual Standard_CString Help(const Standard_Integer number);
+		virtual const char * Help(const int number);
 
 		/****** IFSelect_Activator::Mode ******/
-		/****** md5 signature: 58c566204904e51650b70f3f1cb93410 ******/
+		/****** md5 signature: a259e7fe0770d6e3888d7c5a18edd426 ******/
 		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "
 Parameters
 ----------
-command: str
+command: char *
 
 Return
 -------
@@ -519,15 +511,15 @@ Description
 -----------
 Returns mode recorded for a command. -1 if not found.
 ") Mode;
-		static Standard_Integer Mode(Standard_CString command);
+		static int Mode(const char * const command);
 
 		/****** IFSelect_Activator::Remove ******/
-		/****** md5 signature: 343d3fe70309328d1e972e9673d8fc49 ******/
+		/****** md5 signature: 69a8a21aa6ced9f2c2b25b5a7f360ea5 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
 ----------
-command: str
+command: char *
 
 Return
 -------
@@ -537,15 +529,15 @@ Description
 -----------
 Removes a Command, if it is recorded (else, does nothing).
 ") Remove;
-		static void Remove(Standard_CString command);
+		static void Remove(const char * const command);
 
 		/****** IFSelect_Activator::Select ******/
-		/****** md5 signature: 6c3045b0ee10861aacbb9f8f770536b8 ******/
+		/****** md5 signature: 9329d22bc3bd0b36ecd843844707c306 ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
 ----------
-command: str
+command: char *
 actor: IFSelect_Activator
 
 Return
@@ -556,16 +548,16 @@ Description
 -----------
 Selects, for a Command given by its title, an actor with its command number. Returns True if found, False else.
 ") Select;
-		static Standard_Boolean Select(Standard_CString command, Standard_Integer &OutValue, opencascade::handle<IFSelect_Activator> & actor);
+		static bool Select(const char * const command, Standard_Integer &OutValue, opencascade::handle<IFSelect_Activator> & actor);
 
 		/****** IFSelect_Activator::SetForGroup ******/
-		/****** md5 signature: 36a5432dee8a72a5a44ee28941e69ed0 ******/
+		/****** md5 signature: 2825d694e7ce084e2e8e468c6ab675ae ******/
 		%feature("compactdefaultargs") SetForGroup;
 		%feature("autodoc", "
 Parameters
 ----------
-group: str
-file: str (optional, default to "")
+group: char *
+file: char * (optional, default to "")
 
 Return
 -------
@@ -575,7 +567,7 @@ Description
 -----------
 Group and SetGroup define a 'Group of commands' which correspond to an Activator. Default is 'XSTEP' Also a file may be attached.
 ") SetForGroup;
-		void SetForGroup(Standard_CString group, Standard_CString file = "");
+		void SetForGroup(const char * const group, const char * const file = "");
 
 };
 
@@ -594,7 +586,7 @@ Group and SetGroup define a 'Group of commands' which correspond to an Activator
 class IFSelect_AppliedModifiers : public Standard_Transient {
 	public:
 		/****** IFSelect_AppliedModifiers::IFSelect_AppliedModifiers ******/
-		/****** md5 signature: 3033336284e6ada7c88014d40ddb6d58 ******/
+		/****** md5 signature: 495123d0358421bd704aeae0fb85ddc5 ******/
 		%feature("compactdefaultargs") IFSelect_AppliedModifiers;
 		%feature("autodoc", "
 Parameters
@@ -610,10 +602,10 @@ Description
 -----------
 Creates an AppliedModifiers, ready to record up to <nbmax> modifiers, on a model of <nbent> entities.
 ") IFSelect_AppliedModifiers;
-		 IFSelect_AppliedModifiers(const Standard_Integer nbmax, const Standard_Integer nbent);
+		 IFSelect_AppliedModifiers(const int nbmax, const int nbent);
 
 		/****** IFSelect_AppliedModifiers::AddModif ******/
-		/****** md5 signature: 192c99c2dc886832c57adf8954b4c026 ******/
+		/****** md5 signature: 74eb602293b8d2f43b57e71e68956d00 ******/
 		%feature("compactdefaultargs") AddModif;
 		%feature("autodoc", "
 Parameters
@@ -628,10 +620,10 @@ Description
 -----------
 Records a modifier. By default, it is to apply on all a produced file. Further calls to AddNum will restrict this. Returns True if done, False if too many modifiers are already recorded.
 ") AddModif;
-		Standard_Boolean AddModif(const opencascade::handle<IFSelect_GeneralModifier> & modif);
+		bool AddModif(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
 		/****** IFSelect_AppliedModifiers::AddNum ******/
-		/****** md5 signature: 8393817679cc15a160c484acb729c688 ******/
+		/****** md5 signature: 4fce8e01ad98df16625b946cd9061561 ******/
 		%feature("compactdefaultargs") AddNum;
 		%feature("autodoc", "
 Parameters
@@ -646,10 +638,10 @@ Description
 -----------
 Adds a number of entity of the output file to be applied on. If a sequence of AddNum is called after AddModif, this Modifier will be applied on the list of designated entities. Else, it will be applied on all the file Returns True if done, False if no modifier has yet been added.
 ") AddNum;
-		Standard_Boolean AddNum(const Standard_Integer nument);
+		bool AddNum(const int nument);
 
 		/****** IFSelect_AppliedModifiers::Count ******/
-		/****** md5 signature: 991c7b8ad8fee748c77481e1ff97e534 ******/
+		/****** md5 signature: 78148c14f4cfe8961517f1210318a2cc ******/
 		%feature("compactdefaultargs") Count;
 		%feature("autodoc", "Return
 -------
@@ -659,10 +651,10 @@ Description
 -----------
 Returns the count of recorded modifiers.
 ") Count;
-		Standard_Integer Count();
+		int Count();
 
 		/****** IFSelect_AppliedModifiers::IsForAll ******/
-		/****** md5 signature: 98f3b84618ad99b83c5b80e6998908b3 ******/
+		/****** md5 signature: 3a16997400388528d3d21d6f7d9db97a ******/
 		%feature("compactdefaultargs") IsForAll;
 		%feature("autodoc", "Return
 -------
@@ -672,10 +664,10 @@ Description
 -----------
 Returns True if the applied modifier queried by last call to Item is to be applied to all the produced file. Else, <entcount> returned by Item gives the count of entity numbers, each one is queried by ItemNum.
 ") IsForAll;
-		Standard_Boolean IsForAll();
+		bool IsForAll();
 
 		/****** IFSelect_AppliedModifiers::Item ******/
-		/****** md5 signature: ac2f44b34ba767c504005a21a442dd72 ******/
+		/****** md5 signature: 4684b48f9d7f8993128c56a43f87ba38 ******/
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "
 Parameters
@@ -691,23 +683,23 @@ Description
 -----------
 Returns the description for applied modifier n0 <num>: the modifier itself, and the count of entities to be applied on. If no specific list of number has been defined, returns the total count of entities of the file If this count is zero, then the modifier applies to all the file (see below). Else, the numbers are then queried by calls to ItemNum between 1 and <entcount> Returns True if OK, False if <num> is out of range.
 ") Item;
-		Standard_Boolean Item(const Standard_Integer num, opencascade::handle<IFSelect_GeneralModifier> & modif, Standard_Integer &OutValue);
+		bool Item(const int num, opencascade::handle<IFSelect_GeneralModifier> & modif, Standard_Integer &OutValue);
 
 		/****** IFSelect_AppliedModifiers::ItemList ******/
-		/****** md5 signature: 2603ed57e1609437c3534a3c49eada50 ******/
+		/****** md5 signature: f67676ece961ef95cbbea0a8d0d09274 ******/
 		%feature("compactdefaultargs") ItemList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfInteger>
+opencascade::handle<NCollection_HSequence<int>>
 
 Description
 -----------
 Returns the list of entities to be applied on (see Item) as a HSequence (IsForAll produces the complete list of all the entity numbers of the file.
 ") ItemList;
-		opencascade::handle<TColStd_HSequenceOfInteger> ItemList();
+		opencascade::handle<NCollection_HSequence<int>> ItemList();
 
 		/****** IFSelect_AppliedModifiers::ItemNum ******/
-		/****** md5 signature: 786fe24e5592b2db2b8f750bebdc421e ******/
+		/****** md5 signature: a18260865c715f809b6792bef00bcc4b ******/
 		%feature("compactdefaultargs") ItemNum;
 		%feature("autodoc", "
 Parameters
@@ -722,7 +714,7 @@ Description
 -----------
 Returns a numero of entity to be applied on, given its rank in the list. If no list is defined (i.e. for all the file), returns <nument> itself, to give all the entities of the file Returns 0 if <nument> out of range.
 ") ItemNum;
-		Standard_Integer ItemNum(const Standard_Integer nument);
+		int ItemNum(const int nument);
 
 };
 
@@ -741,14 +733,14 @@ Returns a numero of entity to be applied on, given its rank in the list. If no l
 class IFSelect_ContextModif {
 	public:
 		/****** IFSelect_ContextModif::IFSelect_ContextModif ******/
-		/****** md5 signature: 13049cffb770bc46a5649297d27f5014 ******/
+		/****** md5 signature: e381b201e8b6b4b4934780e05b2adb76 ******/
 		%feature("compactdefaultargs") IFSelect_ContextModif;
 		%feature("autodoc", "
 Parameters
 ----------
 graph: Interface_Graph
 TC: Interface_CopyTool
-filename: str (optional, default to "")
+filename: char * (optional, default to "")
 
 Return
 -------
@@ -758,16 +750,16 @@ Description
 -----------
 Prepares a ContextModif with these information: - the graph established from original model (target passed directly to Modifier) - the CopyTool which detains the CopyControl, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! Such a ContextModif is considered to be applied on all transferred entities (no filter active).
 ") IFSelect_ContextModif;
-		 IFSelect_ContextModif(const Interface_Graph & graph, const Interface_CopyTool & TC, Standard_CString filename = "");
+		 IFSelect_ContextModif(const Interface_Graph & graph, const Interface_CopyTool & TC, const char * const filename = "");
 
 		/****** IFSelect_ContextModif::IFSelect_ContextModif ******/
-		/****** md5 signature: 39ea63f3302feedaeb379f8e82d5518e ******/
+		/****** md5 signature: 4838c57b1421435f750cdb230574c268 ******/
 		%feature("compactdefaultargs") IFSelect_ContextModif;
 		%feature("autodoc", "
 Parameters
 ----------
 graph: Interface_Graph
-filename: str (optional, default to "")
+filename: char * (optional, default to "")
 
 Return
 -------
@@ -777,7 +769,7 @@ Description
 -----------
 Prepares a ContextModif with these information: - the graph established from original model (target passed directly to Modifier) - an optional file name (for file output) Here, no CopyControl, hence all entities are considered equal as starting and result //! Such a ContextModif is considered to be applied on all transferred entities (no filter active).
 ") IFSelect_ContextModif;
-		 IFSelect_ContextModif(const Interface_Graph & graph, Standard_CString filename = "");
+		 IFSelect_ContextModif(const Interface_Graph & graph, const char * const filename = "");
 
 		/****** IFSelect_ContextModif::AddCheck ******/
 		/****** md5 signature: 8ef46b71a47a9a0c81f5f1e741392794 ******/
@@ -798,14 +790,14 @@ Adds a Check to the CheckList. If it is empty, nothing is done If it concerns an
 		void AddCheck(const opencascade::handle<Interface_Check> & check);
 
 		/****** IFSelect_ContextModif::AddFail ******/
-		/****** md5 signature: 9795f5c11159dce99f638412f8744dee ******/
+		/****** md5 signature: 966b91b25ebd23dbc4c782cd5a197c7f ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
 ----------
 start: Standard_Transient
-mess: str
-orig: str (optional, default to "")
+mess: char *
+orig: char * (optional, default to "")
 
 Return
 -------
@@ -815,17 +807,17 @@ Description
 -----------
 Adds a Fail Message for an Entity from the original Model If <start> is not an Entity from the original model (e.g. the model itself) this message is added to Global Check.
 ") AddFail;
-		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
+		void AddFail(const opencascade::handle<Standard_Transient> & start, const char * const mess, const char * const orig = "");
 
 		/****** IFSelect_ContextModif::AddWarning ******/
-		/****** md5 signature: 988f49b1d5bd3bf018afd5790e28b086 ******/
+		/****** md5 signature: 36a3ceefe47e04abf675897b57d6079f ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
 ----------
 start: Standard_Transient
-mess: str
-orig: str (optional, default to "")
+mess: char *
+orig: char * (optional, default to "")
 
 Return
 -------
@@ -835,10 +827,10 @@ Description
 -----------
 Adds a Warning Message for an Entity from the original Model If <start> is not an Entity from the original model (e.g. the model itself) this message is added to Global Check.
 ") AddWarning;
-		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
+		void AddWarning(const opencascade::handle<Standard_Transient> & start, const char * const mess, const char * const orig = "");
 
 		/****** IFSelect_ContextModif::CCheck ******/
-		/****** md5 signature: 55ff9fbcf9040c69f661ca071beab1f7 ******/
+		/****** md5 signature: 7530cd8d916381b90d488325ec81efb6 ******/
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "
 Parameters
@@ -853,7 +845,7 @@ Description
 -----------
 Returns a Check given an Entity number (in the original Model) by default a Global Check. Creates it the first time. It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...').
 ") CCheck;
-		opencascade::handle<Interface_Check> CCheck(const Standard_Integer num = 0);
+		opencascade::handle<Interface_Check> CCheck(const int num = 0);
 
 		/****** IFSelect_ContextModif::CCheck ******/
 		/****** md5 signature: 3575197c5883daf5cfc41f7742c2838f ******/
@@ -900,20 +892,20 @@ Returns the map for a direct use, if required.
 		opencascade::handle<Interface_CopyControl> Control();
 
 		/****** IFSelect_ContextModif::FileName ******/
-		/****** md5 signature: 85b6394bcac5e528aa5809d0c9e6d178 ******/
+		/****** md5 signature: b2e0ed99951f61cb46bd6fbdc6950932 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns File Name (can be empty).
 ") FileName;
-		Standard_CString FileName();
+		const char * FileName();
 
 		/****** IFSelect_ContextModif::HasFileName ******/
-		/****** md5 signature: 327ef4fb29052a83700cf9cd01e8f2bf ******/
+		/****** md5 signature: abd451f7fabc817780b5c90304dd073f ******/
 		%feature("compactdefaultargs") HasFileName;
 		%feature("autodoc", "Return
 -------
@@ -923,10 +915,10 @@ Description
 -----------
 Returns True if a non empty file name has been defined.
 ") HasFileName;
-		Standard_Boolean HasFileName();
+		bool HasFileName();
 
 		/****** IFSelect_ContextModif::IsForAll ******/
-		/****** md5 signature: 98f3b84618ad99b83c5b80e6998908b3 ******/
+		/****** md5 signature: 3a16997400388528d3d21d6f7d9db97a ******/
 		%feature("compactdefaultargs") IsForAll;
 		%feature("autodoc", "Return
 -------
@@ -936,10 +928,10 @@ Description
 -----------
 Returns True if no filter is defined: a Modifier has to work on all entities of the resulting (target) model.
 ") IsForAll;
-		Standard_Boolean IsForAll();
+		bool IsForAll();
 
 		/****** IFSelect_ContextModif::IsForNone ******/
-		/****** md5 signature: c3594e7baf27992aae07c72265a48cbd ******/
+		/****** md5 signature: 3f4681266cc4b5886a154d4c27271471 ******/
 		%feature("compactdefaultargs") IsForNone;
 		%feature("autodoc", "Return
 -------
@@ -949,10 +941,10 @@ Description
 -----------
 Returns True if Select has determined that a Modifier may not be run (filter defined and empty).
 ") IsForNone;
-		Standard_Boolean IsForNone();
+		bool IsForNone();
 
 		/****** IFSelect_ContextModif::IsSelected ******/
-		/****** md5 signature: f0ab1d0bf73030d8c4999e2184b43299 ******/
+		/****** md5 signature: 9df565033ba518640558a6cac6d8c1bc ******/
 		%feature("compactdefaultargs") IsSelected;
 		%feature("autodoc", "
 Parameters
@@ -967,10 +959,10 @@ Description
 -----------
 Returns True if a starting item has been transferred and selected.
 ") IsSelected;
-		Standard_Boolean IsSelected(const opencascade::handle<Standard_Transient> & ent);
+		bool IsSelected(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_ContextModif::IsTransferred ******/
-		/****** md5 signature: 071f213cacb6e76714c0c64331fb6938 ******/
+		/****** md5 signature: eb5f5c27309bec0802f61cbc6fcc0700 ******/
 		%feature("compactdefaultargs") IsTransferred;
 		%feature("autodoc", "
 Parameters
@@ -985,10 +977,10 @@ Description
 -----------
 Returns True if a starting item has been transferred.
 ") IsTransferred;
-		Standard_Boolean IsTransferred(const opencascade::handle<Standard_Transient> & ent);
+		bool IsTransferred(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_ContextModif::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -998,7 +990,7 @@ Description
 -----------
 Returns True until the iteration has finished.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** IFSelect_ContextModif::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1071,7 +1063,7 @@ This method requires ContextModif to be applied with a filter. If a ModelModifie
 		void Select(Interface_EntityIterator & list);
 
 		/****** IFSelect_ContextModif::SelectedCount ******/
-		/****** md5 signature: 8bfc8689711529915f2f3f8736c2cf0f ******/
+		/****** md5 signature: 8945a29bd117c52e3bbe45607567bf48 ******/
 		%feature("compactdefaultargs") SelectedCount;
 		%feature("autodoc", "Return
 -------
@@ -1081,7 +1073,7 @@ Description
 -----------
 Returns the count of selected and transferred items.
 ") SelectedCount;
-		Standard_Integer SelectedCount();
+		int SelectedCount();
 
 		/****** IFSelect_ContextModif::SelectedOriginal ******/
 		/****** md5 signature: 3cb87a34504bedb08859ceaadb99d916 ******/
@@ -1141,12 +1133,12 @@ Starts an iteration on selected items. It takes into account IsForAll/IsForNone,
 		void Start();
 
 		/****** IFSelect_ContextModif::Trace ******/
-		/****** md5 signature: e5fb36d2d871e060e7060b444733fa32 ******/
+		/****** md5 signature: 4035650a8fd0efca72661a6aec2e82c6 ******/
 		%feature("compactdefaultargs") Trace;
 		%feature("autodoc", "
 Parameters
 ----------
-mess: str (optional, default to "")
+mess: char * (optional, default to "")
 
 Return
 -------
@@ -1156,7 +1148,7 @@ Description
 -----------
 Traces the modification of the current entity (see above, ValueOriginal and ValueResult) for default trace level >= 2. To be called on each individual entity really modified <mess> is an optional additional message.
 ") Trace;
-		void Trace(Standard_CString mess = "");
+		void Trace(const char * const mess = "");
 
 		/****** IFSelect_ContextModif::TraceModifier ******/
 		/****** md5 signature: 3edd0556fe765bd51e9d9fcb6c3184ca ******/
@@ -1221,7 +1213,7 @@ Returns the result counterpart of current selected item (in the target model).
 class IFSelect_ContextWrite {
 	public:
 		/****** IFSelect_ContextWrite::IFSelect_ContextWrite ******/
-		/****** md5 signature: c0439c4f98b565fd22612328b32eb20a ******/
+		/****** md5 signature: 3b993c1d5a965e736e3338e7457efa07 ******/
 		%feature("compactdefaultargs") IFSelect_ContextWrite;
 		%feature("autodoc", "
 Parameters
@@ -1229,7 +1221,7 @@ Parameters
 model: Interface_InterfaceModel
 proto: Interface_Protocol
 applieds: IFSelect_AppliedModifiers
-filename: str
+filename: char *
 
 Return
 -------
@@ -1239,10 +1231,10 @@ Description
 -----------
 Prepares a ContextWrite with these information: - the model which is to be written - the protocol to be used - the filename - an object AppliedModifiers to work. It gives a list of FileModifiers to be ran, and for each one it can give a restricted list of entities (in the model), else all the model is considered.
 ") IFSelect_ContextWrite;
-		 IFSelect_ContextWrite(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, Standard_CString filename);
+		 IFSelect_ContextWrite(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, const char * const filename);
 
 		/****** IFSelect_ContextWrite::IFSelect_ContextWrite ******/
-		/****** md5 signature: d671952aa9c623950812c050cfeec7a6 ******/
+		/****** md5 signature: fd311da1ae7eac261d20599ced4f8491 ******/
 		%feature("compactdefaultargs") IFSelect_ContextWrite;
 		%feature("autodoc", "
 Parameters
@@ -1250,7 +1242,7 @@ Parameters
 hgraph: Interface_HGraph
 proto: Interface_Protocol
 applieds: IFSelect_AppliedModifiers
-filename: str
+filename: char *
 
 Return
 -------
@@ -1260,7 +1252,7 @@ Description
 -----------
 Same as above but with an already computed Graph.
 ") IFSelect_ContextWrite;
-		 IFSelect_ContextWrite(const opencascade::handle<Interface_HGraph> & hgraph, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, Standard_CString filename);
+		 IFSelect_ContextWrite(const opencascade::handle<Interface_HGraph> & hgraph, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, const char * const filename);
 
 		/****** IFSelect_ContextWrite::AddCheck ******/
 		/****** md5 signature: 8ef46b71a47a9a0c81f5f1e741392794 ******/
@@ -1281,14 +1273,14 @@ Adds a Check to the CheckList. If it is empty, nothing is done If it concerns an
 		void AddCheck(const opencascade::handle<Interface_Check> & check);
 
 		/****** IFSelect_ContextWrite::AddFail ******/
-		/****** md5 signature: 9795f5c11159dce99f638412f8744dee ******/
+		/****** md5 signature: 966b91b25ebd23dbc4c782cd5a197c7f ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
 ----------
 start: Standard_Transient
-mess: str
-orig: str (optional, default to "")
+mess: char *
+orig: char * (optional, default to "")
 
 Return
 -------
@@ -1298,17 +1290,17 @@ Description
 -----------
 Adds a Fail Message for an Entity from the Model If <start> is not an Entity from the model (e.g. the model itself) this message is added to Global Check.
 ") AddFail;
-		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
+		void AddFail(const opencascade::handle<Standard_Transient> & start, const char * const mess, const char * const orig = "");
 
 		/****** IFSelect_ContextWrite::AddWarning ******/
-		/****** md5 signature: 988f49b1d5bd3bf018afd5790e28b086 ******/
+		/****** md5 signature: 36a3ceefe47e04abf675897b57d6079f ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
 ----------
 start: Standard_Transient
-mess: str
-orig: str (optional, default to "")
+mess: char *
+orig: char * (optional, default to "")
 
 Return
 -------
@@ -1318,7 +1310,7 @@ Description
 -----------
 Adds a Warning Message for an Entity from the Model If <start> is not an Entity from the model (e.g. the model itself) this message is added to Global Check.
 ") AddWarning;
-		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
+		void AddWarning(const opencascade::handle<Standard_Transient> & start, const char * const mess, const char * const orig = "");
 
 		/****** IFSelect_ContextWrite::AppliedModifiers ******/
 		/****** md5 signature: c907d59264aed84761d23bf1da073632 ******/
@@ -1334,7 +1326,7 @@ Returns the object AppliedModifiers.
 		opencascade::handle<IFSelect_AppliedModifiers> AppliedModifiers();
 
 		/****** IFSelect_ContextWrite::CCheck ******/
-		/****** md5 signature: 55ff9fbcf9040c69f661ca071beab1f7 ******/
+		/****** md5 signature: 7530cd8d916381b90d488325ec81efb6 ******/
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "
 Parameters
@@ -1349,7 +1341,7 @@ Description
 -----------
 Returns a Check given an Entity number (in the Model) by default a Global Check. Creates it the first time. It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...').
 ") CCheck;
-		opencascade::handle<Interface_Check> CCheck(const Standard_Integer num = 0);
+		opencascade::handle<Interface_Check> CCheck(const int num = 0);
 
 		/****** IFSelect_ContextWrite::CCheck ******/
 		/****** md5 signature: 3575197c5883daf5cfc41f7742c2838f ******/
@@ -1396,17 +1388,17 @@ Returns the currently active File Modifier. Cast to be done Null if not properly
 		opencascade::handle<IFSelect_GeneralModifier> FileModifier();
 
 		/****** IFSelect_ContextWrite::FileName ******/
-		/****** md5 signature: 85b6394bcac5e528aa5809d0c9e6d178 ******/
+		/****** md5 signature: b2e0ed99951f61cb46bd6fbdc6950932 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the File Name.
 ") FileName;
-		Standard_CString FileName();
+		const char * FileName();
 
 		/****** IFSelect_ContextWrite::Graph ******/
 		/****** md5 signature: 85b94047fc558166dc241ea6e5d26215 ******/
@@ -1422,7 +1414,7 @@ Returns the Graph, either given when created, else created the first time it is 
 		const Interface_Graph & Graph();
 
 		/****** IFSelect_ContextWrite::IsForAll ******/
-		/****** md5 signature: 98f3b84618ad99b83c5b80e6998908b3 ******/
+		/****** md5 signature: 3a16997400388528d3d21d6f7d9db97a ******/
 		%feature("compactdefaultargs") IsForAll;
 		%feature("autodoc", "Return
 -------
@@ -1432,10 +1424,10 @@ Description
 -----------
 Returns True if the current modifier is to be applied to the whole model. Else, a restricted list of selected entities is defined, it can be exploited by the File Modifier.
 ") IsForAll;
-		Standard_Boolean IsForAll();
+		bool IsForAll();
 
 		/****** IFSelect_ContextWrite::IsForNone ******/
-		/****** md5 signature: c3594e7baf27992aae07c72265a48cbd ******/
+		/****** md5 signature: 3f4681266cc4b5886a154d4c27271471 ******/
 		%feature("compactdefaultargs") IsForNone;
 		%feature("autodoc", "Return
 -------
@@ -1445,7 +1437,7 @@ Description
 -----------
 Returns True if no modifier is currently set.
 ") IsForNone;
-		Standard_Boolean IsForNone();
+		bool IsForNone();
 
 		/****** IFSelect_ContextWrite::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
@@ -1461,7 +1453,7 @@ Returns the Model.
 		opencascade::handle<Interface_InterfaceModel> Model();
 
 		/****** IFSelect_ContextWrite::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1471,10 +1463,10 @@ Description
 -----------
 Returns True until the iteration has finished.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** IFSelect_ContextWrite::NbEntities ******/
-		/****** md5 signature: 533943455099343f106415a0a22e8ac9 ******/
+		/****** md5 signature: 684cc77731940fa1427c4073b379ced5 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -1484,10 +1476,10 @@ Description
 -----------
 Returns the total count of selected entities.
 ") NbEntities;
-		Standard_Integer NbEntities();
+		int NbEntities();
 
 		/****** IFSelect_ContextWrite::NbModifiers ******/
-		/****** md5 signature: b094909a30cd757bd379ce37050e4ed9 ******/
+		/****** md5 signature: 1064b9f92bd53b0322f0ce77a825ea1b ******/
 		%feature("compactdefaultargs") NbModifiers;
 		%feature("autodoc", "Return
 -------
@@ -1497,7 +1489,7 @@ Description
 -----------
 Returns the count of recorded File Modifiers.
 ") NbModifiers;
-		Standard_Integer NbModifiers();
+		int NbModifiers();
 
 		/****** IFSelect_ContextWrite::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1526,7 +1518,7 @@ Returns the Protocol;.
 		opencascade::handle<Interface_Protocol> Protocol();
 
 		/****** IFSelect_ContextWrite::SetModifier ******/
-		/****** md5 signature: 103e7f766af274ddf92a4b6c27424f02 ******/
+		/****** md5 signature: a5c41cd81315c3a7f548f9b5d92e1ca6 ******/
 		%feature("compactdefaultargs") SetModifier;
 		%feature("autodoc", "
 Parameters
@@ -1541,7 +1533,7 @@ Description
 -----------
 Sets active the File Modifier n0 <numod> Then, it prepares the list of entities to consider, if any Returns False if <numod> out of range.
 ") SetModifier;
-		Standard_Boolean SetModifier(const Standard_Integer numod);
+		bool SetModifier(const int numod);
 
 		/****** IFSelect_ContextWrite::Start ******/
 		/****** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ******/
@@ -1585,7 +1577,7 @@ Returns the current selected entity in the model.
 class IFSelect_Dispatch : public Standard_Transient {
 	public:
 		/****** IFSelect_Dispatch::CanHaveRemainder ******/
-		/****** md5 signature: 3eb90f24b23996a4774fa4d1685ddfc4 ******/
+		/****** md5 signature: f56eaaa8bc1cadb7962ce8148f2c47f7 ******/
 		%feature("compactdefaultargs") CanHaveRemainder;
 		%feature("autodoc", "Return
 -------
@@ -1595,7 +1587,7 @@ Description
 -----------
 Returns True if a Dispatch can have a Remainder, i.e. if its criterium can let entities apart. It is a potential answer, remainder can be empty at run-time even if answer is True. (to attach a RemainderFromDispatch Selection is not allowed if answer is True). Default answer given here is False (can be redefined).
 ") CanHaveRemainder;
-		virtual Standard_Boolean CanHaveRemainder();
+		virtual bool CanHaveRemainder();
 
 		/****** IFSelect_Dispatch::FinalSelection ******/
 		/****** md5 signature: 2371e8738ba01e22b0a6a1ed2de0c102 ******/
@@ -1629,7 +1621,7 @@ Gets Unique Root Entities from the Final Selection, given an input Graph This th
 		Interface_EntityIterator GetEntities(const Interface_Graph & G);
 
 		/****** IFSelect_Dispatch::HasRootName ******/
-		/****** md5 signature: c5e6d2997e3f516b861ffede5033108e ******/
+		/****** md5 signature: fdc5a33f7ce3d7c6871789a85a80e096 ******/
 		%feature("compactdefaultargs") HasRootName;
 		%feature("autodoc", "Return
 -------
@@ -1639,7 +1631,7 @@ Description
 -----------
 Returns True if a specific Root Name has been set (else, the Default Root Name has to be used).
 ") HasRootName;
-		Standard_Boolean HasRootName();
+		bool HasRootName();
 
 		/****** IFSelect_Dispatch::Label ******/
 		/****** md5 signature: 458d8d95170c9aa9c0a465eba36c0e6b ******/
@@ -1655,7 +1647,7 @@ Returns a text which defines the way a Dispatch produces packets (which will bec
 		virtual TCollection_AsciiString Label();
 
 		/****** IFSelect_Dispatch::LimitedMax ******/
-		/****** md5 signature: 51a293bbd9b584c17e274e4eb8438671 ******/
+		/****** md5 signature: 25c85a8e02a8a955a5758ec691b3bfe3 ******/
 		%feature("compactdefaultargs") LimitedMax;
 		%feature("autodoc", "
 Parameters
@@ -1670,7 +1662,7 @@ Description
 -----------
 Returns True if a Dispatch generates a count of Packets always less than or equal to a maximum value: it can be computed from the total count of Entities to be dispatched: <nbent>. If answer is False, no limited maximum is expected for account If answer is True, expected maximum is given in argument <max> Default answer given here is False (can be redefined).
 ") LimitedMax;
-		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
+		virtual bool LimitedMax(const int nbent, Standard_Integer &OutValue);
 
 		/****** IFSelect_Dispatch::Packeted ******/
 		/****** md5 signature: 6974e266884cf58002fa4e0032c0d1c4 ******/
@@ -1806,7 +1798,7 @@ Sets a Root Name as an HAsciiString To reset it, give a Null Handle (then, a Sha
 class IFSelect_EditForm : public Standard_Transient {
 	public:
 		/****** IFSelect_EditForm::IFSelect_EditForm ******/
-		/****** md5 signature: 40a621463063c8b5aa01bb6c69e98deb ******/
+		/****** md5 signature: 5334cbe8632a9256f9a9711548744909 ******/
 		%feature("compactdefaultargs") IFSelect_EditForm;
 		%feature("autodoc", "
 Parameters
@@ -1814,7 +1806,7 @@ Parameters
 editor: IFSelect_Editor
 readonly: bool
 undoable: bool
-label: str (optional, default to "")
+label: char * (optional, default to "")
 
 Return
 -------
@@ -1824,19 +1816,19 @@ Description
 -----------
 Creates a complete EditForm from an Editor A specific Label can be given.
 ") IFSelect_EditForm;
-		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const Standard_Boolean readonly, const Standard_Boolean undoable, Standard_CString label = "");
+		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const bool readonly, const bool undoable, const char * const label = "");
 
 		/****** IFSelect_EditForm::IFSelect_EditForm ******/
-		/****** md5 signature: 420707d31c5ea31799194612884ac53f ******/
+		/****** md5 signature: 6ebafc422c24e0ef8b2868d650a0e12d ******/
 		%feature("compactdefaultargs") IFSelect_EditForm;
 		%feature("autodoc", "
 Parameters
 ----------
 editor: IFSelect_Editor
-nums: TColStd_SequenceOfInteger
+nums: NCollection_Sequence<int>
 readonly: bool
 undoable: bool
-label: str (optional, default to "")
+label: char * (optional, default to "")
 
 Return
 -------
@@ -1846,10 +1838,10 @@ Description
 -----------
 Creates an extracted EditForm from an Editor, limited to the values identified in <nums> A specific Label can be given.
 ") IFSelect_EditForm;
-		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const TColStd_SequenceOfInteger & nums, const Standard_Boolean readonly, const Standard_Boolean undoable, Standard_CString label = "");
+		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const NCollection_Sequence<int> & nums, const bool readonly, const bool undoable, const char * const label = "");
 
 		/****** IFSelect_EditForm::Apply ******/
-		/****** md5 signature: d13adb09606778db019693ec430295e5 ******/
+		/****** md5 signature: 40e8fb3d822f3e06a076f66571dcd033 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -1859,10 +1851,10 @@ Description
 -----------
 Applies modifications to own data Calls ApplyData then Clears Status according EditKeepStatus.
 ") Apply;
-		Standard_Boolean Apply();
+		bool Apply();
 
 		/****** IFSelect_EditForm::ApplyData ******/
-		/****** md5 signature: 80776704f26f37e3ba56e3af4c598bba ******/
+		/****** md5 signature: 133d83000648031ba7b309e9bf8500b3 ******/
 		%feature("compactdefaultargs") ApplyData;
 		%feature("autodoc", "
 Parameters
@@ -1878,7 +1870,7 @@ Description
 -----------
 Applies modifications to data Default uses Editor. Can be redefined.
 ") ApplyData;
-		virtual Standard_Boolean ApplyData(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual bool ApplyData(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_EditForm::ClearData ******/
 		/****** md5 signature: e3da16f5fe71c5bd24e86f916af90d46 ******/
@@ -1894,7 +1886,7 @@ No available documentation.
 		void ClearData();
 
 		/****** IFSelect_EditForm::ClearEdit ******/
-		/****** md5 signature: 81d6f4aeb9df95db6f535fa76d3187f1 ******/
+		/****** md5 signature: 419f4856bef9419a69e5989d9502565a ******/
 		%feature("compactdefaultargs") ClearEdit;
 		%feature("autodoc", "
 Parameters
@@ -1909,23 +1901,23 @@ Description
 -----------
 Clears modification status: by default all, or one by its numbers (in the Editor).
 ") ClearEdit;
-		void ClearEdit(const Standard_Integer num = 0);
+		void ClearEdit(const int num = 0);
 
+		/****** IFSelect_EditForm::EditKeepStatus ******/
+		/****** md5 signature: 47541a2d7dd6f82c8f88c2edbff066a4 ******/
+		%feature("compactdefaultargs") EditKeepStatus;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetEditKeepStatus() {
-            return (Standard_Boolean) $self->EditKeepStatus();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetEditKeepStatus(Standard_Boolean value) {
-            $self->EditKeepStatus()=value;
-            }
-        };
+Description
+-----------
+Returns and may change the keep status on modif It starts as False If it is True, Apply does not clear modification status and the EditForm can be loaded again, modified value remain and may be applied again Remark that ApplyData does not clear the modification status, a call to ClearEdit does.
+") EditKeepStatus;
+		bool & EditKeepStatus();
+
 		/****** IFSelect_EditForm::EditedList ******/
-		/****** md5 signature: 87c127cf2797df7cd6b791e2734134ec ******/
+		/****** md5 signature: b29234099f15c8132fe4ba6617670d61 ******/
 		%feature("compactdefaultargs") EditedList;
 		%feature("autodoc", "
 Parameters
@@ -1934,16 +1926,16 @@ num: int
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the Edited Value as a list If IsModified is False, returns OriginalValue Null with IsModified True: means that this value is not defined or has been removed For a single parameter, gives a Null Handle.
 ") EditedList;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> EditedList(const Standard_Integer num);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> EditedList(const int num);
 
 		/****** IFSelect_EditForm::EditedValue ******/
-		/****** md5 signature: fbee68682dce5af06f2116e0bda0730a ******/
+		/****** md5 signature: 62f0bf32aae9685216d754353932adaa ******/
 		%feature("compactdefaultargs") EditedValue;
 		%feature("autodoc", "
 Parameters
@@ -1958,7 +1950,7 @@ Description
 -----------
 Returns the Edited (i.e. Modified) Value (string for single) <num> reports to the EditForm If IsModified is False, returns OriginalValue Null with IsModified True: means that this value is not defined or has been removed It is for a single parameter. For a list, gives a Null Handle.
 ") EditedValue;
-		opencascade::handle<TCollection_HAsciiString> EditedValue(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> EditedValue(const int num);
 
 		/****** IFSelect_EditForm::Editor ******/
 		/****** md5 signature: d75f1cfd49393b96e8a68758376c3f36 ******/
@@ -1987,7 +1979,7 @@ No available documentation.
 		opencascade::handle<Standard_Transient> Entity();
 
 		/****** IFSelect_EditForm::IsComplete ******/
-		/****** md5 signature: 412d1259abf22c70264ba7b2d0bea051 ******/
+		/****** md5 signature: df579fbde831a084e6336ec711f417ca ******/
 		%feature("compactdefaultargs") IsComplete;
 		%feature("autodoc", "Return
 -------
@@ -1997,10 +1989,10 @@ Description
 -----------
 Tells if an EditForm is complete or is an extract from Editor.
 ") IsComplete;
-		Standard_Boolean IsComplete();
+		bool IsComplete();
 
 		/****** IFSelect_EditForm::IsLoaded ******/
-		/****** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ******/
+		/****** md5 signature: fc2ce1bc5ddcb407c056c0f8bbdeface ******/
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "Return
 -------
@@ -2010,10 +2002,10 @@ Description
 -----------
 Tells if the EditForm is loaded now.
 ") IsLoaded;
-		Standard_Boolean IsLoaded();
+		bool IsLoaded();
 
 		/****** IFSelect_EditForm::IsModified ******/
-		/****** md5 signature: 4f4d3fd6642971e1c7fc73abfba221e7 ******/
+		/****** md5 signature: 6eb60cbcccdd58f12570adbca7c22c7c ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -2028,10 +2020,10 @@ Description
 -----------
 Tells if a Value (of the EditForm) is modified (directly or through touching by Update).
 ") IsModified;
-		Standard_Boolean IsModified(const Standard_Integer num);
+		bool IsModified(const int num);
 
 		/****** IFSelect_EditForm::IsTouched ******/
-		/****** md5 signature: e146d70ff5d69b2b24ed24850431695f ******/
+		/****** md5 signature: ba694ebc17a910b121a6620b1ff07ad6 ******/
 		%feature("compactdefaultargs") IsTouched;
 		%feature("autodoc", "
 Parameters
@@ -2046,23 +2038,23 @@ Description
 -----------
 Tells if a Value (of the EditForm) has been touched, i.e. not modified directly but by the modification of another one (by method Update from the Editor).
 ") IsTouched;
-		Standard_Boolean IsTouched(const Standard_Integer num);
+		bool IsTouched(const int num);
 
 		/****** IFSelect_EditForm::Label ******/
-		/****** md5 signature: a2cdaa2c189e4a121892e76566961d64 ******/
+		/****** md5 signature: 0bfe42933f9d80a86e93960dded47048 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Label;
-		Standard_CString Label();
+		const char * Label();
 
 		/****** IFSelect_EditForm::ListEditor ******/
-		/****** md5 signature: ee67a0dbece1ed74b18ddc8b3c6973a5 ******/
+		/****** md5 signature: e806c7139ca453e61687087612450af1 ******/
 		%feature("compactdefaultargs") ListEditor;
 		%feature("autodoc", "
 Parameters
@@ -2077,10 +2069,10 @@ Description
 -----------
 Returns a ListEditor to edit the parameter <num> of the EditForm, if it is a List The Editor created it (by ListEditor) then loads it (by ListValue) For a single parameter, returns a Null Handle ...
 ") ListEditor;
-		opencascade::handle<IFSelect_ListEditor> ListEditor(const Standard_Integer num);
+		opencascade::handle<IFSelect_ListEditor> ListEditor(const int num);
 
 		/****** IFSelect_EditForm::LoadData ******/
-		/****** md5 signature: 185202fc309fb4f48b0a9e4c6f4358ea ******/
+		/****** md5 signature: 185b34a31b20bf3f23f36aa77e5947d2 ******/
 		%feature("compactdefaultargs") LoadData;
 		%feature("autodoc", "
 Parameters
@@ -2096,10 +2088,10 @@ Description
 -----------
 Loads modifications to data Default uses Editor. Can be redefined Remark that <ent> and/or <model> may be null, according to the kind of Editor. Shortcuts are available for these cases, but they finally call LoadData (hence, just ignore non-used args).
 ") LoadData;
-		virtual Standard_Boolean LoadData(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual bool LoadData(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_EditForm::LoadData ******/
-		/****** md5 signature: fef1deaa08a75521b256f24be325fc96 ******/
+		/****** md5 signature: 2c583a7badb941b73099ecb7d895c64e ******/
 		%feature("compactdefaultargs") LoadData;
 		%feature("autodoc", "Return
 -------
@@ -2109,7 +2101,7 @@ Description
 -----------
 Shortcut when both <ent> and <model> are not used (when the Editor works on fully static or global data).
 ") LoadData;
-		Standard_Boolean LoadData();
+		bool LoadData();
 
 		/****** IFSelect_EditForm::LoadDefault ******/
 		/****** md5 signature: a6a329f0bbe3beae1286ff68177a5e6c ******/
@@ -2125,7 +2117,7 @@ For a read-write undoable EditForm, loads original values from defaults stored i
 		void LoadDefault();
 
 		/****** IFSelect_EditForm::LoadEntity ******/
-		/****** md5 signature: ad014f37b2fc0a0068f5744044f7a1e9 ******/
+		/****** md5 signature: 36be56390c9841189a4351f406779aae ******/
 		%feature("compactdefaultargs") LoadEntity;
 		%feature("autodoc", "
 Parameters
@@ -2140,16 +2132,16 @@ Description
 -----------
 Shortcut for LoadData when <model> is not used.
 ") LoadEntity;
-		Standard_Boolean LoadEntity(const opencascade::handle<Standard_Transient> & ent);
+		bool LoadEntity(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_EditForm::LoadList ******/
-		/****** md5 signature: f1a04766d4daa0d09f3ea54af7f0c452 ******/
+		/****** md5 signature: 9806ddd8a23388944bd1a417080f1dc1 ******/
 		%feature("compactdefaultargs") LoadList;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-list: TColStd_HSequenceOfHAsciiString
+list: NCollection_HSequence<
 
 Return
 -------
@@ -2159,10 +2151,10 @@ Description
 -----------
 Loads an original value as a list. Called by the Editor only.
 ") LoadList;
-		void LoadList(const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list);
+		void LoadList(const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list);
 
 		/****** IFSelect_EditForm::LoadModel ******/
-		/****** md5 signature: 41efc6d72a4b4db3ee9dc387778059a4 ******/
+		/****** md5 signature: 5d5a1db7ce2253babdb63d36b4551838 ******/
 		%feature("compactdefaultargs") LoadModel;
 		%feature("autodoc", "
 Parameters
@@ -2177,10 +2169,10 @@ Description
 -----------
 Shortcut for LoadData when only the model is concerned.
 ") LoadModel;
-		Standard_Boolean LoadModel(const opencascade::handle<Interface_InterfaceModel> & model);
+		bool LoadModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_EditForm::LoadValue ******/
-		/****** md5 signature: a88c73e8b40681c632deb9c95fa11783 ******/
+		/****** md5 signature: 4851281c32274b6cc615e265e42e4915 ******/
 		%feature("compactdefaultargs") LoadValue;
 		%feature("autodoc", "
 Parameters
@@ -2196,7 +2188,7 @@ Description
 -----------
 Loads an original value (single). Called by the Editor only.
 ") LoadValue;
-		void LoadValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & val);
+		void LoadValue(const int num, const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IFSelect_EditForm::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
@@ -2212,14 +2204,14 @@ No available documentation.
 		opencascade::handle<Interface_InterfaceModel> Model();
 
 		/****** IFSelect_EditForm::Modify ******/
-		/****** md5 signature: 8975c8428989a04ad8a67db23a032af8 ******/
+		/****** md5 signature: 8db91af9d4fd605d4cf06cb8275e2b80 ******/
 		%feature("compactdefaultargs") Modify;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 newval: TCollection_HAsciiString
-enforce: bool (optional, default to Standard_False)
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -2229,17 +2221,17 @@ Description
 -----------
 Gives a new value for the item <num> of the EditForm, if it is a single parameter (for a list, just returns False) Null means to Remove it <enforce> True to overpass Protected or Computed Access Mode Calls the method Update from the Editor, which can touch other parameters (see NbTouched) Returns True if well recorded, False if this value is not allowed Warning: Does not apply immediately: will be applied by the method Apply.
 ") Modify;
-		Standard_Boolean Modify(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & newval, const Standard_Boolean enforce = Standard_False);
+		bool Modify(const int num, const opencascade::handle<TCollection_HAsciiString> & newval, const bool enforce = false);
 
 		/****** IFSelect_EditForm::ModifyList ******/
-		/****** md5 signature: 506057e34eca718b697fd8098bfc75b6 ******/
+		/****** md5 signature: 677807e76a898e686de7b53de9dc48b7 ******/
 		%feature("compactdefaultargs") ModifyList;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 edited: IFSelect_ListEditor
-enforce: bool (optional, default to Standard_False)
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -2249,17 +2241,17 @@ Description
 -----------
 Changes the value of an item of the EditForm, if it is a List (else, just returns False) The ListEditor contains the edited values of the list If no edition was recorded, just returns False Calls the method Update from the Editor, which can touch other parameters (see NbTouched) Returns True if well recorded, False if this value is not allowed Warning: Does not apply immediately: will be applied by the method Apply.
 ") ModifyList;
-		Standard_Boolean ModifyList(const Standard_Integer num, const opencascade::handle<IFSelect_ListEditor> & edited, const Standard_Boolean enforce = Standard_False);
+		bool ModifyList(const int num, const opencascade::handle<IFSelect_ListEditor> & edited, const bool enforce = false);
 
 		/****** IFSelect_EditForm::ModifyListValue ******/
-		/****** md5 signature: 9c7cc68bd3ef36061c9cb2568f7a27c2 ******/
+		/****** md5 signature: d15dc77b06567283ec74e5bd12297b46 ******/
 		%feature("compactdefaultargs") ModifyListValue;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-list: TColStd_HSequenceOfHAsciiString
-enforce: bool (optional, default to Standard_False)
+list: NCollection_HSequence<
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -2269,15 +2261,15 @@ Description
 -----------
 As ModifyList but the new value is given as such Creates a ListEditor, Loads it, then calls ModifyList.
 ") ModifyListValue;
-		Standard_Boolean ModifyListValue(const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, const Standard_Boolean enforce = Standard_False);
+		bool ModifyListValue(const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list, const bool enforce = false);
 
 		/****** IFSelect_EditForm::NameNumber ******/
-		/****** md5 signature: 92cf82f3d39d60a7ec7147dab4cceeac ******/
+		/****** md5 signature: 17f5e3d46239ec6d78e1e818ae9d4335 ******/
 		%feature("compactdefaultargs") NameNumber;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2287,15 +2279,15 @@ Description
 -----------
 Returns the Value Number in the Editor for a given Name i.e. the true ValueNumber which can be used in various methods of EditForm If it is not complete, for a recorded (in the Editor) but non-loaded name, returns negative value (- number).
 ") NameNumber;
-		Standard_Integer NameNumber(Standard_CString name);
+		int NameNumber(const char * const name);
 
 		/****** IFSelect_EditForm::NameRank ******/
-		/****** md5 signature: 828b9618f5e765e1584b5988eaf154b1 ******/
+		/****** md5 signature: b74544481da12f3c0d8760f6f39fbe5c ******/
 		%feature("compactdefaultargs") NameRank;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2305,10 +2297,10 @@ Description
 -----------
 Returns the Rank of Value in the EditForm for a given Name i.e. if it is not complete, for a recorded (in the Editor) but non-loaded name, returns 0.
 ") NameRank;
-		Standard_Integer NameRank(Standard_CString name);
+		int NameRank(const char * const name);
 
 		/****** IFSelect_EditForm::NbValues ******/
-		/****** md5 signature: 688139b89cb2c7cce6d7bfb88eeb5856 ******/
+		/****** md5 signature: e45db40324217be94b4c27d0a83df2b7 ******/
 		%feature("compactdefaultargs") NbValues;
 		%feature("autodoc", "
 Parameters
@@ -2323,10 +2315,10 @@ Description
 -----------
 Returns the count of values <editable> True: count of editable values, i.e. For a complete EditForm, it is given by the Editor Else, it is the length of the extraction map <editable> False: all the values from the Editor.
 ") NbValues;
-		Standard_Integer NbValues(const Standard_Boolean editable);
+		int NbValues(const bool editable);
 
 		/****** IFSelect_EditForm::NumberFromRank ******/
-		/****** md5 signature: 6b8de5e1d194315ac81a68658a87e861 ******/
+		/****** md5 signature: 72f7cd145499ff0c146cd255fac1e9b3 ******/
 		%feature("compactdefaultargs") NumberFromRank;
 		%feature("autodoc", "
 Parameters
@@ -2341,10 +2333,10 @@ Description
 -----------
 Returns the Value Number in the Editor from a given Rank in the EditForm For a complete EditForm, both are equal Else, it is given by the extraction map Returns 0 if <rank> exceeds the count of editable values,.
 ") NumberFromRank;
-		Standard_Integer NumberFromRank(const Standard_Integer rank);
+		int NumberFromRank(const int rank);
 
 		/****** IFSelect_EditForm::OriginalList ******/
-		/****** md5 signature: 26c000ad9807376ec6e10787067cb185 ******/
+		/****** md5 signature: 818c8c05bfe8c69a84456c844398ba14 ******/
 		%feature("compactdefaultargs") OriginalList;
 		%feature("autodoc", "
 Parameters
@@ -2353,16 +2345,16 @@ num: int
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns an original value, as a list <num> is for the EditForm, not the Editor For a single parameter, gives a Null Handle.
 ") OriginalList;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> OriginalList(const Standard_Integer num);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> OriginalList(const int num);
 
 		/****** IFSelect_EditForm::OriginalValue ******/
-		/****** md5 signature: e4da13ba4e172e8775064ba22f723987 ******/
+		/****** md5 signature: f678e0bc9af9f9bcc6935d88c970c4aa ******/
 		%feature("compactdefaultargs") OriginalValue;
 		%feature("autodoc", "
 Parameters
@@ -2377,7 +2369,7 @@ Description
 -----------
 From an edited value, returns its ... value (original one) Null means that this value is not defined <num> is for the EditForm, not the Editor It is for a single parameter. For a list, gives a Null Handle.
 ") OriginalValue;
-		opencascade::handle<TCollection_HAsciiString> OriginalValue(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> OriginalValue(const int num);
 
 		/****** IFSelect_EditForm::PrintDefs ******/
 		/****** md5 signature: 46629d4f069d37bd12c0384fcc538c0d ******/
@@ -2397,14 +2389,14 @@ Prints Definitions, relative to the Editor.
 		void PrintDefs(std::ostream &OutValue);
 
 		/****** IFSelect_EditForm::PrintValues ******/
-		/****** md5 signature: 9580ee383589529b4c579a30e8eb8c2b ******/
+		/****** md5 signature: efb7cae8646c433ee135546c7e0df3a3 ******/
 		%feature("compactdefaultargs") PrintValues;
 		%feature("autodoc", "
 Parameters
 ----------
 what: int
 names: bool
-alsolist: bool (optional, default to Standard_False)
+alsolist: bool (optional, default to false)
 
 Return
 -------
@@ -2414,10 +2406,10 @@ Description
 -----------
 Prints Values, according to what and alsolist <names> True: prints Long Names; False: prints Short Names <what> < 0: prints Original Values (+ flag Modified) <what> > 0: prints Final Values (+flag Modified) <what> = 0: prints Modified Values (Original + Edited) <alsolist> False (D): lists are printed only as their count <alsolist> True: lists are printed for all their items.
 ") PrintValues;
-		void PrintValues(std::ostream &OutValue, const Standard_Integer what, const Standard_Boolean names, const Standard_Boolean alsolist = Standard_False);
+		void PrintValues(std::ostream &OutValue, const int what, const bool names, const bool alsolist = false);
 
 		/****** IFSelect_EditForm::RankFromNumber ******/
-		/****** md5 signature: fe822a7d919e60ec0cdab5e6f2363afe ******/
+		/****** md5 signature: ef6593dadd17dceeb4876c99c5331472 ******/
 		%feature("compactdefaultargs") RankFromNumber;
 		%feature("autodoc", "
 Parameters
@@ -2432,10 +2424,10 @@ Description
 -----------
 Returns the Rank in the EditForm from a given Number of Value for the Editor For a complete EditForm, both are equal Else, it is given by the extraction map Returns 0 if <number> is not forecast to be edited, or is out of range.
 ") RankFromNumber;
-		Standard_Integer RankFromNumber(const Standard_Integer number);
+		int RankFromNumber(const int number);
 
 		/****** IFSelect_EditForm::Recognize ******/
-		/****** md5 signature: a42ccbdcfc1d681fdb3856fec7d4c07f ******/
+		/****** md5 signature: 1f675caa7373b322026c6002c4d08e2f ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "Return
 -------
@@ -2445,7 +2437,7 @@ Description
 -----------
 Tells if this EditForm can work with its Editor and its actual Data (Entity and Model) Default uses Editor. Can be redefined.
 ") Recognize;
-		virtual Standard_Boolean Recognize();
+		virtual bool Recognize();
 
 		/****** IFSelect_EditForm::SetData ******/
 		/****** md5 signature: 5d992a09eae7af815b80314daa02025c ******/
@@ -2503,7 +2495,7 @@ No available documentation.
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_EditForm::Touch ******/
-		/****** md5 signature: c53aa1f2dd3503addffb8dea38968f69 ******/
+		/****** md5 signature: 2c381960efad089f358337ffda456b90 ******/
 		%feature("compactdefaultargs") Touch;
 		%feature("autodoc", "
 Parameters
@@ -2519,16 +2511,16 @@ Description
 -----------
 Gives a new value computed by the Editor, if another parameter commands the value of <num> It is generally the case for a Computed Parameter for instance Increments the counter of touched parameters Warning: it gives no protection for ReadOnly etc... while it is the internal way of touching parameters Does not work (returns False) if <num> is for a list.
 ") Touch;
-		Standard_Boolean Touch(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & newval);
+		bool Touch(const int num, const opencascade::handle<TCollection_HAsciiString> & newval);
 
 		/****** IFSelect_EditForm::TouchList ******/
-		/****** md5 signature: a8236f5ca1f23bc0845d8b5f657bef7d ******/
+		/****** md5 signature: dfb162840366331fa7a05e862d57b0a0 ******/
 		%feature("compactdefaultargs") TouchList;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-newlist: TColStd_HSequenceOfHAsciiString
+newlist: NCollection_HSequence<
 
 Return
 -------
@@ -2538,10 +2530,10 @@ Description
 -----------
 Acts as Touch but for a list Does not work (returns False) if <num> is for a single param.
 ") TouchList;
-		Standard_Boolean TouchList(const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & newlist);
+		bool TouchList(const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & newlist);
 
 		/****** IFSelect_EditForm::Undo ******/
-		/****** md5 signature: 95113786d46edb519ce9957bac4f72f7 ******/
+		/****** md5 signature: 5950c1df5908636857507b1be28f24a7 ******/
 		%feature("compactdefaultargs") Undo;
 		%feature("autodoc", "Return
 -------
@@ -2551,7 +2543,7 @@ Description
 -----------
 For an undoable EditForm, Applies ... origibal values ! and clears modified ones Can be run only once.
 ") Undo;
-		Standard_Boolean Undo();
+		bool Undo();
 
 };
 
@@ -2575,7 +2567,7 @@ For an undoable EditForm, Applies ... origibal values ! and clears modified ones
 class IFSelect_Editor : public Standard_Transient {
 	public:
 		/****** IFSelect_Editor::Apply ******/
-		/****** md5 signature: 562aef7326608985bb397d577d6e8193 ******/
+		/****** md5 signature: 58ff7f764e552d928c5995d423bdce5e ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -2592,10 +2584,10 @@ Description
 -----------
 Applies modified values of the EditForm with some data Remark: <ent> may be Null, this means all <model> is concerned Also <model> may be Null, if no context applies for <ent> And both <ent> and <model> may be Null, for a full static editor.
 ") Apply;
-		virtual Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual bool Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_Editor::EditMode ******/
-		/****** md5 signature: 63a8dcfe1ba562a3c95c2e8c1538ac3a ******/
+		/****** md5 signature: cc2d8f93205e49937afecb08080bf45d ******/
 		%feature("compactdefaultargs") EditMode;
 		%feature("autodoc", "
 Parameters
@@ -2610,16 +2602,16 @@ Description
 -----------
 Returns the edit mode of a Value.
 ") EditMode;
-		IFSelect_EditValue EditMode(const Standard_Integer num);
+		IFSelect_EditValue EditMode(const int num);
 
 		/****** IFSelect_Editor::Form ******/
-		/****** md5 signature: f62865990fd4180a79f7aff98ee5380c ******/
+		/****** md5 signature: 556b7f8c80cf29abe055284cf881d026 ******/
 		%feature("compactdefaultargs") Form;
 		%feature("autodoc", "
 Parameters
 ----------
 readonly: bool
-undoable: bool (optional, default to Standard_True)
+undoable: bool (optional, default to true)
 
 Return
 -------
@@ -2629,10 +2621,10 @@ Description
 -----------
 Builds and Returns an EditForm, empty (no data yet) Can be redefined to return a specific type of EditForm.
 ") Form;
-		virtual opencascade::handle<IFSelect_EditForm> Form(const Standard_Boolean readonly, const Standard_Boolean undoable = Standard_True);
+		virtual opencascade::handle<IFSelect_EditForm> Form(const bool readonly, const bool undoable = true);
 
 		/****** IFSelect_Editor::IsList ******/
-		/****** md5 signature: 4a6c17030eb86afd03fc4984d7775cb8 ******/
+		/****** md5 signature: d7a25adc09ffb1be76fbf7cffe40ffd3 ******/
 		%feature("compactdefaultargs") IsList;
 		%feature("autodoc", "
 Parameters
@@ -2647,7 +2639,7 @@ Description
 -----------
 Tells if a parameter is a list.
 ") IsList;
-		Standard_Boolean IsList(const Standard_Integer num);
+		bool IsList(const int num);
 
 		/****** IFSelect_Editor::Label ******/
 		/****** md5 signature: 458d8d95170c9aa9c0a465eba36c0e6b ******/
@@ -2663,7 +2655,7 @@ Returns the specific label.
 		virtual TCollection_AsciiString Label();
 
 		/****** IFSelect_Editor::ListEditor ******/
-		/****** md5 signature: 546f401919efe39d6a07e60583f4e768 ******/
+		/****** md5 signature: 8262b884f35301fbd8ad7c2a8c4fbc0c ******/
 		%feature("compactdefaultargs") ListEditor;
 		%feature("autodoc", "
 Parameters
@@ -2678,10 +2670,10 @@ Description
 -----------
 Returns a ListEditor for a parameter which is a List Default returns a basic ListEditor for a List, a Null Handle if <num> is not for a List. Can be redefined.
 ") ListEditor;
-		virtual opencascade::handle<IFSelect_ListEditor> ListEditor(const Standard_Integer num);
+		virtual opencascade::handle<IFSelect_ListEditor> ListEditor(const int num);
 
 		/****** IFSelect_Editor::ListValue ******/
-		/****** md5 signature: f3a3b2c2aa085d25f262d0f070cdbf0d ******/
+		/****** md5 signature: f9de09db84f1d6ee0934dc82dcd963da ******/
 		%feature("compactdefaultargs") ListValue;
 		%feature("autodoc", "
 Parameters
@@ -2691,16 +2683,16 @@ num: int
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the value of an EditForm as a List, for a given item If not a list, a Null Handle should be returned Default returns a Null Handle, because many Editors have no list to edit. To be redefined as required.
 ") ListValue;
-		virtual opencascade::handle<TColStd_HSequenceOfHAsciiString> ListValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
+		virtual opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ListValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
 
 		/****** IFSelect_Editor::Load ******/
-		/****** md5 signature: 42363bfdd05ef14277b05ce8fec9a6bd ******/
+		/****** md5 signature: 21bc5804b7d077b4e35b34ea774620a6 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -2717,10 +2709,10 @@ Description
 -----------
 Loads original values from some data, to an EditForm Remark: <ent> may be Null, this means all <model> is concerned Also <model> may be Null, if no context applies for <ent> And both <ent> and <model> may be Null, for a full static editor.
 ") Load;
-		virtual Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual bool Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_Editor::MaxList ******/
-		/****** md5 signature: 2f0c825d67cd56e6a62066f7646993cf ******/
+		/****** md5 signature: 8ed9eb10224e5096844792b907b7436b ******/
 		%feature("compactdefaultargs") MaxList;
 		%feature("autodoc", "
 Parameters
@@ -2735,10 +2727,10 @@ Description
 -----------
 Returns max length allowed for a list = 0 means: list with no limit < 0 means: not a list.
 ") MaxList;
-		Standard_Integer MaxList(const Standard_Integer num);
+		int MaxList(const int num);
 
 		/****** IFSelect_Editor::MaxNameLength ******/
-		/****** md5 signature: 62496141060828b6243b22e476c8b394 ******/
+		/****** md5 signature: 71ed0429f97be262fed1ca3b5e829d61 ******/
 		%feature("compactdefaultargs") MaxNameLength;
 		%feature("autodoc", "
 Parameters
@@ -2753,34 +2745,34 @@ Description
 -----------
 Returns the MaxLength of, according to what: <what> = -1: length of short names <what> = 0: length of complete names <what> = 1: length of values labels.
 ") MaxNameLength;
-		Standard_Integer MaxNameLength(const Standard_Integer what);
+		int MaxNameLength(const int what);
 
 		/****** IFSelect_Editor::Name ******/
-		/****** md5 signature: ababa801fdf82705a2e0fcee35bcb44f ******/
+		/****** md5 signature: f1758a76d084bbdd88344139d19d804a ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-isshort: bool (optional, default to Standard_False)
+isshort: bool (optional, default to false)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of a Value (complete or short) from its ident Short Name can be empty.
 ") Name;
-		Standard_CString Name(const Standard_Integer num, const Standard_Boolean isshort = Standard_False);
+		const char * Name(const int num, const bool isshort = false);
 
 		/****** IFSelect_Editor::NameNumber ******/
-		/****** md5 signature: 92cf82f3d39d60a7ec7147dab4cceeac ******/
+		/****** md5 signature: 17f5e3d46239ec6d78e1e818ae9d4335 ******/
 		%feature("compactdefaultargs") NameNumber;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2790,10 +2782,10 @@ Description
 -----------
 Returns the number (ident) of a Value, from its name, short or complete. If not found, returns 0.
 ") NameNumber;
-		Standard_Integer NameNumber(Standard_CString name);
+		int NameNumber(const char * const name);
 
 		/****** IFSelect_Editor::NbValues ******/
-		/****** md5 signature: 5aaee992dfbcf21a3b840e127a638649 ******/
+		/****** md5 signature: 10b66e82c0f2dc74d902c1eace19b6fb ******/
 		%feature("compactdefaultargs") NbValues;
 		%feature("autodoc", "Return
 -------
@@ -2803,15 +2795,15 @@ Description
 -----------
 Returns the count of Typed Values.
 ") NbValues;
-		Standard_Integer NbValues();
+		int NbValues();
 
 		/****** IFSelect_Editor::PrintDefs ******/
-		/****** md5 signature: 5eb01ddb6757ab25c90b1081fcc7f846 ******/
+		/****** md5 signature: 6ca53078f774391086a769a80a776213 ******/
 		%feature("compactdefaultargs") PrintDefs;
 		%feature("autodoc", "
 Parameters
 ----------
-labels: bool (optional, default to Standard_False)
+labels: bool (optional, default to false)
 
 Return
 -------
@@ -2821,7 +2813,7 @@ Description
 -----------
 No available documentation.
 ") PrintDefs;
-		void PrintDefs(std::ostream &OutValue, const Standard_Boolean labels = Standard_False);
+		void PrintDefs(std::ostream &OutValue, const bool labels = false);
 
 		/****** IFSelect_Editor::PrintNames ******/
 		/****** md5 signature: 02f5b2a426678e69e3d51e32f074a88c ******/
@@ -2841,7 +2833,7 @@ No available documentation.
 		void PrintNames(std::ostream &OutValue);
 
 		/****** IFSelect_Editor::Recognize ******/
-		/****** md5 signature: 8378a2193566cc16fc414dbb42c7fa11 ******/
+		/****** md5 signature: 743f8bc454bfaae6fe9c0e1c959c69f3 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -2856,10 +2848,10 @@ Description
 -----------
 Tells if this Editor can work on this EditForm and its content (model, entity ?).
 ") Recognize;
-		virtual Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
+		virtual bool Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
 		/****** IFSelect_Editor::SetList ******/
-		/****** md5 signature: 8d933e61e83a1b53dfe3c7125eff57c6 ******/
+		/****** md5 signature: a6d16c326e9ea36b35f63c3f99e8833e ******/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "
 Parameters
@@ -2875,17 +2867,17 @@ Description
 -----------
 Sets a parameter to be a List max < 0: not for a list (set when starting) max = 0: list with no length limit (default for SetList) max > 0: list limited to <max> items.
 ") SetList;
-		void SetList(const Standard_Integer num, const Standard_Integer max = 0);
+		void SetList(const int num, const int max = 0);
 
 		/****** IFSelect_Editor::SetValue ******/
-		/****** md5 signature: 0747f57cead4fe204d3701194d487a02 ******/
+		/****** md5 signature: 390520a859f7eb216af8cc8d04a42897 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 typval: Interface_TypedValue
-shortname: str (optional, default to "")
+shortname: char * (optional, default to "")
 accessmode: IFSelect_EditValue (optional, default to IFSelect_Editable)
 
 Return
@@ -2896,10 +2888,10 @@ Description
 -----------
 Sets a Typed Value for a given ident and short name, with an Edit Mode.
 ") SetValue;
-		void SetValue(const Standard_Integer num, const opencascade::handle<Interface_TypedValue> & typval, Standard_CString shortname = "", const IFSelect_EditValue accessmode = IFSelect_Editable);
+		void SetValue(const int num, const opencascade::handle<Interface_TypedValue> & typval, const char * const shortname = "", const IFSelect_EditValue accessmode = IFSelect_Editable);
 
 		/****** IFSelect_Editor::StringValue ******/
-		/****** md5 signature: 4982a2b783d5aac5c9acf7793c435877 ******/
+		/****** md5 signature: 6e58970eada2b481683d8e10ac648747 ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters
@@ -2915,10 +2907,10 @@ Description
 -----------
 Returns the value of an EditForm, for a given item (if not a list. for a list, a Null String may be returned).
 ") StringValue;
-		virtual opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
+		virtual opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
 
 		/****** IFSelect_Editor::TypedValue ******/
-		/****** md5 signature: 6a2cd2560c12faef1965db1283a596fc ******/
+		/****** md5 signature: b98669535492fe40c9436267bb905341 ******/
 		%feature("compactdefaultargs") TypedValue;
 		%feature("autodoc", "
 Parameters
@@ -2933,10 +2925,10 @@ Description
 -----------
 Returns a Typed Value from its ident.
 ") TypedValue;
-		opencascade::handle<Interface_TypedValue> TypedValue(const Standard_Integer num);
+		opencascade::handle<Interface_TypedValue> TypedValue(const int num);
 
 		/****** IFSelect_Editor::Update ******/
-		/****** md5 signature: 5958d6c8ac88aefc9458be281760538c ******/
+		/****** md5 signature: dca1b5ec5c89c1f9560bd04b84a21f22 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2954,17 +2946,17 @@ Description
 -----------
 Updates the EditForm when a parameter is modified I.E. default does nothing, can be redefined, as follows: Returns True when done (even if does nothing), False in case of refuse (for instance, if the new value is not suitable) <num> is the rank of the parameter for the EDITOR itself <enforce> True means that protected parameters can be touched //! If a parameter commands the value of other ones, when it is modified, it is necessary to touch them by Touch from EditForm.
 ") Update;
-		virtual Standard_Boolean Update(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & newval, const Standard_Boolean enforce);
+		virtual bool Update(const opencascade::handle<IFSelect_EditForm> & form, const int num, const opencascade::handle<TCollection_HAsciiString> & newval, const bool enforce);
 
 		/****** IFSelect_Editor::UpdateList ******/
-		/****** md5 signature: 35413afbd449e9c2ca06f3f9aa3da784 ******/
+		/****** md5 signature: b15a5a94a3990bb11e0b1f520b824685 ******/
 		%feature("compactdefaultargs") UpdateList;
 		%feature("autodoc", "
 Parameters
 ----------
 form: IFSelect_EditForm
 num: int
-newlist: TColStd_HSequenceOfHAsciiString
+newlist: NCollection_HSequence<
 enforce: bool
 
 Return
@@ -2975,7 +2967,7 @@ Description
 -----------
 Acts as Update, but when the value is a list.
 ") UpdateList;
-		virtual Standard_Boolean UpdateList(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & newlist, const Standard_Boolean enforce);
+		virtual bool UpdateList(const opencascade::handle<IFSelect_EditForm> & form, const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & newlist, const bool enforce);
 
 };
 
@@ -2994,14 +2986,14 @@ Acts as Update, but when the value is a list.
 class IFSelect_Functions {
 	public:
 		/****** IFSelect_Functions::GiveDispatch ******/
-		/****** md5 signature: 1a06822bb2b596471e350098898675a1 ******/
+		/****** md5 signature: 0e7a0187e4583ee5a4a1952e37d46b7b ******/
 		%feature("compactdefaultargs") GiveDispatch;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-name: str
-mode: bool (optional, default to Standard_True)
+name: char *
+mode: bool (optional, default to true)
 
 Return
 -------
@@ -3011,16 +3003,16 @@ Description
 -----------
 Evaluates and returns a Dispatch, from data of a WorkSession if <mode> is False, searches for exact name of Dispatch in WS Else (D), allows a parameter between brackets: ex.: dispatch_name(parameter) The parameter can be: an integer for DispPerCount or DispPerFiles or the name of a Signature for DispPerSignature Returns Null Handle if not found not well evaluated.
 ") GiveDispatch;
-		static opencascade::handle<IFSelect_Dispatch> GiveDispatch(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name, const Standard_Boolean mode = Standard_True);
+		static opencascade::handle<IFSelect_Dispatch> GiveDispatch(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const name, const bool mode = true);
 
 		/****** IFSelect_Functions::GiveEntity ******/
-		/****** md5 signature: 4e7f30f23e68802f268399dd529bc222 ******/
+		/****** md5 signature: 871a86c2d681de99d33993b86568a1f0 ******/
 		%feature("compactdefaultargs") GiveEntity;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -3030,16 +3022,16 @@ Description
 -----------
 Takes the name of an entity, either as argument, or (if <name> is empty) on keyboard, and returns the entity name can be a label or a number (in alphanumeric), it is searched by NumberFromLabel from WorkSession. If <name> doesn't match en entity, a Null Handle is returned.
 ") GiveEntity;
-		static opencascade::handle<Standard_Transient> GiveEntity(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name = "");
+		static opencascade::handle<Standard_Transient> GiveEntity(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const name = "");
 
 		/****** IFSelect_Functions::GiveEntityNumber ******/
-		/****** md5 signature: 906076325f9a2e8480976c96de8fd8e5 ******/
+		/****** md5 signature: ca670d2afae1a16fcbc12ee4d0d737cd ******/
 		%feature("compactdefaultargs") GiveEntityNumber;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -3049,27 +3041,27 @@ Description
 -----------
 Same as GetEntity, but returns the number in the model of the entity. Returns 0 for null handle.
 ") GiveEntityNumber;
-		static Standard_Integer GiveEntityNumber(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name = "");
+		static int GiveEntityNumber(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const name = "");
 
 		/****** IFSelect_Functions::GiveList ******/
-		/****** md5 signature: b44baf3972464320be8eb951fb05f91f ******/
+		/****** md5 signature: a9e3f389b0be16a8237ad1863a61a6dd ******/
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-first: str (optional, default to "")
-second: str (optional, default to "")
+first: char * (optional, default to "")
+second: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Computes a List of entities from a WorkSession and two idents, first and second, as follows: if <first> is a Number or Label of an entity: this entity if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection if <first> is for a Selection and <second> is defined, the standard result of this selection from the list computed with <second> (an entity or a selection) If <second> is erroneous, it is ignored.
 ") GiveList;
-		static opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString first = "", Standard_CString second = "");
+		static opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const first = "", const char * const second = "");
 
 		/****** IFSelect_Functions::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -3100,7 +3092,7 @@ Defines and loads all basic functions (as ActFunc).
 class IFSelect_GeneralModifier : public Standard_Transient {
 	public:
 		/****** IFSelect_GeneralModifier::Applies ******/
-		/****** md5 signature: 0a1a7bd4e171610ae038b6d0417f15e6 ******/
+		/****** md5 signature: 9c27c9b8abbb931c345d847aa4569f46 ******/
 		%feature("compactdefaultargs") Applies;
 		%feature("autodoc", "
 Parameters
@@ -3115,7 +3107,7 @@ Description
 -----------
 Returns True if a Model obtained from the Dispatch <disp> is to be treated (apart from the Selection criterium) If Dispatch(me) is Null, returns True. Else, checks <disp>.
 ") Applies;
-		Standard_Boolean Applies(const opencascade::handle<IFSelect_Dispatch> & disp);
+		bool Applies(const opencascade::handle<IFSelect_Dispatch> & disp);
 
 		/****** IFSelect_GeneralModifier::Dispatch ******/
 		/****** md5 signature: bb780838e863dc0373f20cb1226e9297 ******/
@@ -3131,7 +3123,7 @@ Returns the Dispatch to be matched, Null if not set.
 		opencascade::handle<IFSelect_Dispatch> Dispatch();
 
 		/****** IFSelect_GeneralModifier::HasSelection ******/
-		/****** md5 signature: 7bc279c0acb8f59af3371db26a8c8085 ******/
+		/****** md5 signature: e7a1e2b5b783b29fc05e18a1703f6626 ******/
 		%feature("compactdefaultargs") HasSelection;
 		%feature("autodoc", "Return
 -------
@@ -3141,7 +3133,7 @@ Description
 -----------
 Returns True if a Selection is set as an additional criterium.
 ") HasSelection;
-		Standard_Boolean HasSelection();
+		bool HasSelection();
 
 		/****** IFSelect_GeneralModifier::Label ******/
 		/****** md5 signature: 458d8d95170c9aa9c0a465eba36c0e6b ******/
@@ -3157,7 +3149,7 @@ Returns a short text which defines the operation performed.
 		virtual TCollection_AsciiString Label();
 
 		/****** IFSelect_GeneralModifier::MayChangeGraph ******/
-		/****** md5 signature: e92fd2d8b8dc429a00d58aed395c1784 ******/
+		/****** md5 signature: 3c61b63ee5fb1e7113b799e6a61b3a40 ******/
 		%feature("compactdefaultargs") MayChangeGraph;
 		%feature("autodoc", "Return
 -------
@@ -3167,7 +3159,7 @@ Description
 -----------
 Returns True if this modifier may change the graph of dependences (acknowledged at creation time).
 ") MayChangeGraph;
-		Standard_Boolean MayChangeGraph();
+		bool MayChangeGraph();
 
 		/****** IFSelect_GeneralModifier::ResetSelection ******/
 		/****** md5 signature: 01aaf08d4303a13daf85a0aa138cd39f ******/
@@ -3261,12 +3253,12 @@ Creates an IntParam. Initial value is set to zer.
 		 IFSelect_IntParam();
 
 		/****** IFSelect_IntParam::SetStaticName ******/
-		/****** md5 signature: f5d46440dfff3c8055a4a7142e7f0c86 ******/
+		/****** md5 signature: d962079f9f90db2b2ef8306f58ec2b9d ******/
 		%feature("compactdefaultargs") SetStaticName;
 		%feature("autodoc", "
 Parameters
 ----------
-statname: str
+statname: char *
 
 Return
 -------
@@ -3276,10 +3268,10 @@ Description
 -----------
 Commands this IntParam to be bound to a Static Hence, Value will return the value if this Static if it is set Else, Value works on the locally stored value SetValue also will set the value of the Static This works only for a present static of type integer or enum Else, it is ignored //! If <statname> is empty, disconnects the IntParam from Static.
 ") SetStaticName;
-		void SetStaticName(Standard_CString statname);
+		void SetStaticName(const char * const statname);
 
 		/****** IFSelect_IntParam::SetValue ******/
-		/****** md5 signature: 653bb566b3bcc839d91852231e9c0a21 ******/
+		/****** md5 signature: 1d5e3ff75cf4fb53875ca1af5a1027b0 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3294,10 +3286,10 @@ Description
 -----------
 Sets a new Integer Value for the IntParam. If a StaticName is defined and the Static is set, also sets the value of the static.
 ") SetValue;
-		void SetValue(const Standard_Integer val);
+		void SetValue(const int val);
 
 		/****** IFSelect_IntParam::Value ******/
-		/****** md5 signature: c6d99989077b92200f0377d8b792ba0b ******/
+		/****** md5 signature: c627cada3dfed5ccab6c1f1ff49fb87f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3307,7 +3299,7 @@ Description
 -----------
 Reads Integer Value of the IntParam. If a StaticName is defined and the Static is set, looks in priority the value of the static.
 ") Value;
-		Standard_Integer Value();
+		int Value();
 
 };
 
@@ -3343,7 +3335,7 @@ Creates a ListEditor with absolutely no constraint.
 		 IFSelect_ListEditor();
 
 		/****** IFSelect_ListEditor::IFSelect_ListEditor ******/
-		/****** md5 signature: 6e18dd9000326964d8250251eee59d6a ******/
+		/****** md5 signature: 38e794d8df53ba80449ec1b4b9314943 ******/
 		%feature("compactdefaultargs") IFSelect_ListEditor;
 		%feature("autodoc", "
 Parameters
@@ -3359,10 +3351,10 @@ Description
 -----------
 Creates a ListEditor, for which items of the list to edit are defined by <def>, and <max> describes max length: 0 (D) means no limit value > 0 means: no more the <max> items are allowed.
 ") IFSelect_ListEditor;
-		 IFSelect_ListEditor(const opencascade::handle<Interface_TypedValue> & def, const Standard_Integer max = 0);
+		 IFSelect_ListEditor(const opencascade::handle<Interface_TypedValue> & def, const int max = 0);
 
 		/****** IFSelect_ListEditor::AddValue ******/
-		/****** md5 signature: 2ded1cf7f089cf387c898b417d124caa ******/
+		/****** md5 signature: 248a34e7b1c759025e6f699d3b79b406 ******/
 		%feature("compactdefaultargs") AddValue;
 		%feature("autodoc", "
 Parameters
@@ -3378,7 +3370,7 @@ Description
 -----------
 Adds a new item. By default appends (at the end of the list) Can insert before a given rank <num>, if positive Returns True when done. False if MaxLength may be overpassed or if <val> does not satisfy the definition.
 ") AddValue;
-		virtual Standard_Boolean AddValue(const opencascade::handle<TCollection_HAsciiString> & val, const Standard_Integer atnum = 0);
+		virtual bool AddValue(const opencascade::handle<TCollection_HAsciiString> & val, const int atnum = 0);
 
 		/****** IFSelect_ListEditor::ClearEdit ******/
 		/****** md5 signature: af5425cf331d8d25ff0b10fa99bb0ec2 ******/
@@ -3394,20 +3386,20 @@ Clears all editions already recorded.
 		void ClearEdit();
 
 		/****** IFSelect_ListEditor::EditedValues ******/
-		/****** md5 signature: 68836436f281171a2774feed2b3d8dd7 ******/
+		/****** md5 signature: a4e189d32695ee49a524376b57588b03 ******/
 		%feature("compactdefaultargs") EditedValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the result of the edition.
 ") EditedValues;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> EditedValues();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> EditedValues();
 
 		/****** IFSelect_ListEditor::IsAdded ******/
-		/****** md5 signature: ef423d963b59700dfaf88b1a442ef762 ******/
+		/****** md5 signature: 7304786f799fb5cb859d372fb081ffff ******/
 		%feature("compactdefaultargs") IsAdded;
 		%feature("autodoc", "
 Parameters
@@ -3422,10 +3414,10 @@ Description
 -----------
 Tells if a value (in edited list) has been added (new one).
 ") IsAdded;
-		Standard_Boolean IsAdded(const Standard_Integer num);
+		bool IsAdded(const int num);
 
 		/****** IFSelect_ListEditor::IsChanged ******/
-		/****** md5 signature: 0c5ad9ff74e548a4849d8afd8b55a8f2 ******/
+		/****** md5 signature: 2327799e5a54a462cb6a812dd4aea62b ******/
 		%feature("compactdefaultargs") IsChanged;
 		%feature("autodoc", "
 Parameters
@@ -3440,10 +3432,10 @@ Description
 -----------
 Tells if a value (in edited list) has been changed, i.e. either modified-value, or added.
 ") IsChanged;
-		Standard_Boolean IsChanged(const Standard_Integer num);
+		bool IsChanged(const int num);
 
 		/****** IFSelect_ListEditor::IsModified ******/
-		/****** md5 signature: 4f4d3fd6642971e1c7fc73abfba221e7 ******/
+		/****** md5 signature: 6eb60cbcccdd58f12570adbca7c22c7c ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -3458,10 +3450,10 @@ Description
 -----------
 Tells if a value (in edited list) has been modified-value (not added).
 ") IsModified;
-		Standard_Boolean IsModified(const Standard_Integer num);
+		bool IsModified(const int num);
 
 		/****** IFSelect_ListEditor::IsTouched ******/
-		/****** md5 signature: 7e01b348a6868a635cea7174b103d4d0 ******/
+		/****** md5 signature: 89440b240a36f314158947ee312d59d9 ******/
 		%feature("compactdefaultargs") IsTouched;
 		%feature("autodoc", "Return
 -------
@@ -3471,15 +3463,15 @@ Description
 -----------
 Tells if at least one edition (SetValue-AddValue-Remove) has been recorded.
 ") IsTouched;
-		Standard_Boolean IsTouched();
+		bool IsTouched();
 
 		/****** IFSelect_ListEditor::LoadEdited ******/
-		/****** md5 signature: 2205a08973b5e4e5e41a8b45ad182ca5 ******/
+		/****** md5 signature: 78b9b6e3e4d664879205f9ab12b77be7 ******/
 		%feature("compactdefaultargs") LoadEdited;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfHAsciiString
+list: NCollection_HSequence<
 
 Return
 -------
@@ -3489,7 +3481,7 @@ Description
 -----------
 Loads a new list to replace the older one, in once ! By default (can be redefined) checks the length of the list and the value of each item according to the def Items are all recorded as Modified //! If no def has been given at creation time, no check is done Returns True when done, False if checks have failed ... a specialisation may also lock it by returning always False ...
 ") LoadEdited;
-		virtual Standard_Boolean LoadEdited(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list);
+		virtual bool LoadEdited(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list);
 
 		/****** IFSelect_ListEditor::LoadModel ******/
 		/****** md5 signature: df41283b47ba4b5105d39eb762c1d35d ******/
@@ -3510,12 +3502,12 @@ Loads a Model. It is used to check items of type Entity(Ident).
 		void LoadModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_ListEditor::LoadValues ******/
-		/****** md5 signature: 93fe3ab1628622df819d7bba384b59b8 ******/
+		/****** md5 signature: 8b7a4641537c9e6b6caaf92c916e0fff ******/
 		%feature("compactdefaultargs") LoadValues;
 		%feature("autodoc", "
 Parameters
 ----------
-vals: TColStd_HSequenceOfHAsciiString
+vals: NCollection_HSequence<
 
 Return
 -------
@@ -3525,15 +3517,15 @@ Description
 -----------
 Loads the original values for the list. Remark: If its length is more then MaxLength, editions remain allowed, except Add.
 ") LoadValues;
-		void LoadValues(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & vals);
+		void LoadValues(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & vals);
 
 		/****** IFSelect_ListEditor::NbValues ******/
-		/****** md5 signature: d9760f667cf04d1e93f84876bcc88e78 ******/
+		/****** md5 signature: 2a8159fde4764e44fc3c4c5890fbf8d9 ******/
 		%feature("compactdefaultargs") NbValues;
 		%feature("autodoc", "
 Parameters
 ----------
-edited: bool (optional, default to Standard_True)
+edited: bool (optional, default to true)
 
 Return
 -------
@@ -3543,23 +3535,23 @@ Description
 -----------
 Returns count of values, edited (D) or original.
 ") NbValues;
-		Standard_Integer NbValues(const Standard_Boolean edited = Standard_True);
+		int NbValues(const bool edited = true);
 
 		/****** IFSelect_ListEditor::OriginalValues ******/
-		/****** md5 signature: 9b9f838f20672d2459b15906c7e2813d ******/
+		/****** md5 signature: ea6c51066c94ab64599ab1c4bc248b28 ******/
 		%feature("compactdefaultargs") OriginalValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the value from which the edition started.
 ") OriginalValues;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> OriginalValues();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> OriginalValues();
 
 		/****** IFSelect_ListEditor::Remove ******/
-		/****** md5 signature: 81c7bcb432090398e5ad90831a6e6baf ******/
+		/****** md5 signature: 5f39e760dab171bf3cf4d717bcd33b80 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3575,7 +3567,7 @@ Description
 -----------
 Removes items from the list By default removes one item. Else, count given by <howmany> Remove from rank <num> included. By default, from the end Returns True when done, False (and does not work) if case of out of range of if <howmany> is greater than current length.
 ") Remove;
-		virtual Standard_Boolean Remove(const Standard_Integer num = 0, const Standard_Integer howmany = 1);
+		virtual bool Remove(const int num = 0, const int howmany = 1);
 
 		/****** IFSelect_ListEditor::SetTouched ******/
 		/****** md5 signature: 902d6b25ed0d933e1c63e47f5ce2f32c ******/
@@ -3591,7 +3583,7 @@ Declares this ListEditor to have been touched (whatever action).
 		void SetTouched();
 
 		/****** IFSelect_ListEditor::SetValue ******/
-		/****** md5 signature: 62e1c6f6eea5fc2300b21c40592c3dd2 ******/
+		/****** md5 signature: 51344c1729375b57f2a29015f37dc5f5 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3607,16 +3599,16 @@ Description
 -----------
 Sets a new value for the item <num> (in edited list) <val> may be a Null Handle, then the value will be cleared but not removed Returns True when done. False if <num> is out of range or if <val> does not satisfy the definition.
 ") SetValue;
-		virtual Standard_Boolean SetValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & val);
+		virtual bool SetValue(const int num, const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IFSelect_ListEditor::Value ******/
-		/****** md5 signature: 281c0165cd2dcc64d54b3f7431b8455b ******/
+		/****** md5 signature: 608874d7c217807315960dd21adf8b87 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-edited: bool (optional, default to Standard_True)
+edited: bool (optional, default to true)
 
 Return
 -------
@@ -3626,7 +3618,7 @@ Description
 -----------
 Returns a value given its rank. Edited (D) or Original A Null String means the value is cleared but not removed.
 ") Value;
-		opencascade::handle<TCollection_HAsciiString> Value(const Standard_Integer num, const Standard_Boolean edited = Standard_True);
+		opencascade::handle<TCollection_HAsciiString> Value(const int num, const bool edited = true);
 
 };
 
@@ -3658,7 +3650,7 @@ Creates an empty ModelCopier.
 		 IFSelect_ModelCopier();
 
 		/****** IFSelect_ModelCopier::AddFile ******/
-		/****** md5 signature: 0e89514067d47886eb80e7150ada5ce5 ******/
+		/****** md5 signature: 8ef8d96487e72c8b2ca88009dea6c96c ******/
 		%feature("compactdefaultargs") AddFile;
 		%feature("autodoc", "
 Parameters
@@ -3674,15 +3666,15 @@ Description
 -----------
 Records a new File to be sent, as a couple (Name as AsciiString, Content as InterfaceModel) Returns True if Done, False if <filename> is already attached to another File.
 ") AddFile;
-		Standard_Boolean AddFile(TCollection_AsciiString filename, const opencascade::handle<Interface_InterfaceModel> & content);
+		bool AddFile(TCollection_AsciiString filename, const opencascade::handle<Interface_InterfaceModel> & content);
 
 		/****** IFSelect_ModelCopier::AddSentFile ******/
-		/****** md5 signature: d78b945bd2b4881efefcf05b966a19da ******/
+		/****** md5 signature: bba3f68570b83c662d497e368567fd34 ******/
 		%feature("compactdefaultargs") AddSentFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -3692,10 +3684,10 @@ Description
 -----------
 Adds the name of a just sent file, if BeginSentFiles has commanded recording; else does nothing It is called by methods SendCopied Sending.
 ") AddSentFile;
-		void AddSentFile(Standard_CString filename);
+		void AddSentFile(const char * const filename);
 
 		/****** IFSelect_ModelCopier::AppliedModifiers ******/
-		/****** md5 signature: 94df5d02e1774373305e5d426c26c3e7 ******/
+		/****** md5 signature: 6a89466c275b0c6f7730b2d74a97bb71 ******/
 		%feature("compactdefaultargs") AppliedModifiers;
 		%feature("autodoc", "
 Parameters
@@ -3710,10 +3702,10 @@ Description
 -----------
 Returns the list of File Modifiers to be applied on a file when it will be sent, as computed by CopiedModel: If it is a null handle, no File Modifier has to be applied.
 ") AppliedModifiers;
-		opencascade::handle<IFSelect_AppliedModifiers> AppliedModifiers(const Standard_Integer num);
+		opencascade::handle<IFSelect_AppliedModifiers> AppliedModifiers(const int num);
 
 		/****** IFSelect_ModelCopier::BeginSentFiles ******/
-		/****** md5 signature: f03da548e57afd68eaf9f778a8263c7f ******/
+		/****** md5 signature: fb95318afa786192666c4c529ad857cc ******/
 		%feature("compactdefaultargs") BeginSentFiles;
 		%feature("autodoc", "
 Parameters
@@ -3729,10 +3721,10 @@ Description
 -----------
 Begins a sequence of recording the really sent files <sho>: the default file numbering is cleared If <record> is False, clears the list and stops recording If <record> is True, clears the list and commands recording Creation time corresponds to 'stop recording'.
 ") BeginSentFiles;
-		void BeginSentFiles(const opencascade::handle<IFSelect_ShareOut> & sho, const Standard_Boolean record);
+		void BeginSentFiles(const opencascade::handle<IFSelect_ShareOut> & sho, const bool record);
 
 		/****** IFSelect_ModelCopier::ClearAppliedModifiers ******/
-		/****** md5 signature: 30c01bfd0d38cb92e4932e5621c2949c ******/
+		/****** md5 signature: a1f1ef502458780a3f72663803408cab ******/
 		%feature("compactdefaultargs") ClearAppliedModifiers;
 		%feature("autodoc", "
 Parameters
@@ -3747,10 +3739,10 @@ Description
 -----------
 Clears the list of File Modifiers to be applied on a file.
 ") ClearAppliedModifiers;
-		Standard_Boolean ClearAppliedModifiers(const Standard_Integer num);
+		bool ClearAppliedModifiers(const int num);
 
 		/****** IFSelect_ModelCopier::ClearFile ******/
-		/****** md5 signature: 344aab20c8cfe78057a6c83bdeb04b83 ******/
+		/****** md5 signature: 0c931809a2005ad83f3a49ef0a028cc5 ******/
 		%feature("compactdefaultargs") ClearFile;
 		%feature("autodoc", "
 Parameters
@@ -3765,7 +3757,7 @@ Description
 -----------
 Clears the Name attached to a File which was formerly defined by a call to AddFile. This Clearing can be undone by a call to NameFile (with same <num>) Returns True if Done, False else: if <num> is out of range.
 ") ClearFile;
-		Standard_Boolean ClearFile(const Standard_Integer num);
+		bool ClearFile(const int num);
 
 		/****** IFSelect_ModelCopier::ClearResult ******/
 		/****** md5 signature: 269959098ac714b5129d84a6df9fce12 ******/
@@ -3779,6 +3771,29 @@ Description
 Clears the list of produced Models.
 ") ClearResult;
 		void ClearResult();
+
+		/****** IFSelect_ModelCopier::CopiedRemaining ******/
+		/****** md5 signature: c4217f480c8c3f399bf177836d06259d ******/
+		%feature("compactdefaultargs") CopiedRemaining;
+		%feature("autodoc", "
+Parameters
+----------
+G: Interface_Graph
+WL: IFSelect_WorkLibrary
+TC: Interface_CopyTool
+
+Return
+-------
+opencascade::handle<Interface_InterfaceModel>
+
+Description
+-----------
+Produces a Model copied from the Remaining List as <newmod> <newmod> is a Null Handle if this list is empty <WL> performs the copy by using <TC> <TC> is assumed to have been defined with the starting model same as defined by <G>. Produces a model copied from the remaining list. 
+Input parameter: G the interface graph 
+Input parameter: WL the work library performing the copy @param[in,out] TC the copy tool 
+Return: the new model with remaining data, or null handle if empty.
+") CopiedRemaining;
+		opencascade::handle<Interface_InterfaceModel> CopiedRemaining(const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, Interface_CopyTool & TC);
 
 		/****** IFSelect_ModelCopier::CopiedRemaining ******/
 		/****** md5 signature: 8fa4fd94e5b73fe8a05ddc0b711ff3c6 ******/
@@ -3797,7 +3812,7 @@ None
 
 Description
 -----------
-Produces a Model copied from the Remaining List as <newmod> <newmod> is a Null Handle if this list is empty <WL> performs the copy by using <TC> <TC> is assumed to have been defined with the starting model same as defined by <G>.
+No available documentation.
 ") CopiedRemaining;
 		void CopiedRemaining(const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -3822,7 +3837,7 @@ Performs the Copy Operations, which include the Modifications defined by the lis
 		Interface_CheckIterator Copy(IFSelect_ShareOutResult & eval, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_ModelCopier::FileModel ******/
-		/****** md5 signature: e7ebafed780641c5418e50b756d6cfe8 ******/
+		/****** md5 signature: 8cb365dc0e8a7a0a5acbc46003d6b3f4 ******/
 		%feature("compactdefaultargs") FileModel;
 		%feature("autodoc", "
 Parameters
@@ -3837,10 +3852,10 @@ Description
 -----------
 Returns the content of a file before sending, under the form of an InterfaceModel, given its rank.
 ") FileModel;
-		opencascade::handle<Interface_InterfaceModel> FileModel(const Standard_Integer num);
+		opencascade::handle<Interface_InterfaceModel> FileModel(const int num);
 
 		/****** IFSelect_ModelCopier::FileName ******/
-		/****** md5 signature: b2588c3658582d921f5c74ad9b5353f2 ******/
+		/****** md5 signature: 6b3947be12b37f52d30dcfd87eec0d14 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "
 Parameters
@@ -3855,10 +3870,10 @@ Description
 -----------
 Returns the File Name for a file given its rank It is empty after a call to ClearFile on same <num>.
 ") FileName;
-		TCollection_AsciiString FileName(const Standard_Integer num);
+		TCollection_AsciiString FileName(const int num);
 
 		/****** IFSelect_ModelCopier::NameFile ******/
-		/****** md5 signature: 030612ef8321b284b54fb35082a160a3 ******/
+		/****** md5 signature: 3c97b6ef79289a3650fb2668ceb87823 ******/
 		%feature("compactdefaultargs") NameFile;
 		%feature("autodoc", "
 Parameters
@@ -3874,10 +3889,10 @@ Description
 -----------
 Changes the Name attached to a File which was formerly defined by a call to AddFile Returns True if Done, False else: if <num> out of range or if the new <filename> is already attached to another File Remark: Giving an empty File Name is equivalent to ClearFile.
 ") NameFile;
-		Standard_Boolean NameFile(const Standard_Integer num, TCollection_AsciiString filename);
+		bool NameFile(const int num, TCollection_AsciiString filename);
 
 		/****** IFSelect_ModelCopier::NbFiles ******/
-		/****** md5 signature: f4ff740bb702aab2feb817a0f407ce9c ******/
+		/****** md5 signature: 90405b5457734aa0e1b74ce8141c3bff ******/
 		%feature("compactdefaultargs") NbFiles;
 		%feature("autodoc", "Return
 -------
@@ -3887,7 +3902,7 @@ Description
 -----------
 Returns the count of Files produced, i.e. the count of Models memorized (produced by the mmethod Copy) with their file names.
 ") NbFiles;
-		Standard_Integer NbFiles();
+		int NbFiles();
 
 		/****** IFSelect_ModelCopier::Send ******/
 		/****** md5 signature: 1fcee6036db102c9b1be69b0e63cc1b8 ******/
@@ -3910,12 +3925,12 @@ Performs the Copy Operations (which include the Modifications) and Sends the res
 		Interface_CheckIterator Send(IFSelect_ShareOutResult & eval, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_ModelCopier::SendAll ******/
-		/****** md5 signature: e9f8ad0f2f1424c856c84bb40fac7a9c ******/
+		/****** md5 signature: 9a1be76801be1e564d41e7820cbf7f23 ******/
 		%feature("compactdefaultargs") SendAll;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 G: Interface_Graph
 WL: IFSelect_WorkLibrary
 protocol: Interface_Protocol
@@ -3928,7 +3943,7 @@ Description
 -----------
 Sends a model (defined in <G>) into one file, without managing remaining data, already sent files, etc. Applies the Model and File Modifiers. Returns True if well done, False else.
 ") SendAll;
-		Interface_CheckIterator SendAll(Standard_CString filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
+		Interface_CheckIterator SendAll(const char * const filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_ModelCopier::SendCopied ******/
 		/****** md5 signature: a3c0ccfff968b8ebbb53e51c0a714a02 ******/
@@ -3950,12 +3965,12 @@ Sends the formerly defined results (see method Copy) to files, then clears it Re
 		Interface_CheckIterator SendCopied(const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_ModelCopier::SendSelected ******/
-		/****** md5 signature: c860cdd41d70fb9b3f7d707c6a2fdcdb ******/
+		/****** md5 signature: 7fe4499159e172f8202ccdbe5e37a661 ******/
 		%feature("compactdefaultargs") SendSelected;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 G: Interface_Graph
 WL: IFSelect_WorkLibrary
 protocol: Interface_Protocol
@@ -3969,23 +3984,23 @@ Description
 -----------
 Sends a part of a model into one file. Model is gotten from <G>, the part is defined in <iter>. Remaining data are managed and can be later be worked on. Returns True if well done, False else.
 ") SendSelected;
-		Interface_CheckIterator SendSelected(Standard_CString filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol, const Interface_EntityIterator & iter);
+		Interface_CheckIterator SendSelected(const char * const filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol, const Interface_EntityIterator & iter);
 
 		/****** IFSelect_ModelCopier::SentFiles ******/
-		/****** md5 signature: ccec19bbefb996c0e777d6a8d7f3c41a ******/
+		/****** md5 signature: 15a3fea8cfd206427736fc4c6b7ce267 ******/
 		%feature("compactdefaultargs") SentFiles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the list of recorded names of sent files. Can be empty (if no file has been sent). Returns a Null Handle if BeginSentFiles has stopped recording.
 ") SentFiles;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> SentFiles();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SentFiles();
 
 		/****** IFSelect_ModelCopier::SetAppliedModifiers ******/
-		/****** md5 signature: 9e6dc16e030b22032b7db0b2e0c6a2da ******/
+		/****** md5 signature: 73cae3ecb96e58ff2bde97c6b18d073e ******/
 		%feature("compactdefaultargs") SetAppliedModifiers;
 		%feature("autodoc", "
 Parameters
@@ -4001,10 +4016,10 @@ Description
 -----------
 Sets a list of File Modifiers to be applied on a file.
 ") SetAppliedModifiers;
-		Standard_Boolean SetAppliedModifiers(const Standard_Integer num, const opencascade::handle<IFSelect_AppliedModifiers> & applied);
+		bool SetAppliedModifiers(const int num, const opencascade::handle<IFSelect_AppliedModifiers> & applied);
 
 		/****** IFSelect_ModelCopier::SetRemaining ******/
-		/****** md5 signature: 409a7037498fd0f7f508bf8e2470dd84 ******/
+		/****** md5 signature: 99ed2343d8dad1374ea4f78f78ee52ac ******/
 		%feature("compactdefaultargs") SetRemaining;
 		%feature("autodoc", "
 Parameters
@@ -4019,7 +4034,7 @@ Description
 -----------
 Updates Graph status for remaining data, for each entity: - Entities just Sent to file or Copied (by CopiedRemaining) have their status set to 1 - the other keep their former status (1 for Send/Copied, 0 for Remaining) These status are computed by Copying/Sending/CopiedRemaining Then, SetRemaining updates graph status, and mustr be called just after one of these method has been called Returns True if done, False if remaining info if not in phase which the Graph (not same counts of items).
 ") SetRemaining;
-		Standard_Boolean SetRemaining(Interface_Graph & CG);
+		bool SetRemaining(Interface_Graph & CG);
 
 		/****** IFSelect_ModelCopier::SetShareOut ******/
 		/****** md5 signature: 0385da75fb0554c7d333bddc57c0d3ce ******/
@@ -4092,12 +4107,12 @@ Adds an entity from the Model into the current packet for Add.
 		void Add(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_PacketList::AddList ******/
-		/****** md5 signature: aa5a44f7eb178e7bc497b41c38a65aad ******/
+		/****** md5 signature: 52552faf2ef1d366da84fc7806b6538a ******/
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
@@ -4107,7 +4122,7 @@ Description
 -----------
 Adds an list of entities into the current packet for Add.
 ") AddList;
-		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		void AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** IFSelect_PacketList::AddPacket ******/
 		/****** md5 signature: 5819d675cf76b470dc3bbd88cd0bda92 ******/
@@ -4123,7 +4138,7 @@ Declares a new Packet, ready to be filled The entities to be added will be added
 		void AddPacket();
 
 		/****** IFSelect_PacketList::Duplicated ******/
-		/****** md5 signature: bef5c897c11467ef2984019e1ea4accb ******/
+		/****** md5 signature: 218414c67ceb470bef8a542998a22ec3 ******/
 		%feature("compactdefaultargs") Duplicated;
 		%feature("autodoc", "
 Parameters
@@ -4139,10 +4154,10 @@ Description
 -----------
 Returns a list of entities duplicated: <count> times, if <andmore> is False, or <count> or more times, if <andmore> is True Hence, count=2 & andmore=True gives all duplicated entities count=1 gives non-duplicated entities (in only one packet) count=0 gives remaining entities (in no packet at all).
 ") Duplicated;
-		Interface_EntityIterator Duplicated(const Standard_Integer count, const Standard_Boolean andmore);
+		Interface_EntityIterator Duplicated(const int count, const bool andmore);
 
 		/****** IFSelect_PacketList::Entities ******/
-		/****** md5 signature: 8911917ed174e093d06b332b47825845 ******/
+		/****** md5 signature: bce2e35dbfbf2d9b2c19304b47959842 ******/
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "
 Parameters
@@ -4157,10 +4172,10 @@ Description
 -----------
 Returns the content of a Packet given its rank Null Handle if <numpack> is out of range.
 ") Entities;
-		Interface_EntityIterator Entities(const Standard_Integer numpack);
+		Interface_EntityIterator Entities(const int numpack);
 
 		/****** IFSelect_PacketList::HighestDuplicationCount ******/
-		/****** md5 signature: 6f9bb4034a10c7ff83a4e041398aa218 ******/
+		/****** md5 signature: f6db24bcc781e453d39d56117bdbe99a ******/
 		%feature("compactdefaultargs") HighestDuplicationCount;
 		%feature("autodoc", "Return
 -------
@@ -4170,7 +4185,7 @@ Description
 -----------
 Returns the highest number of packets which know a same entity For no duplication, should be one.
 ") HighestDuplicationCount;
-		Standard_Integer HighestDuplicationCount();
+		int HighestDuplicationCount();
 
 		/****** IFSelect_PacketList::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
@@ -4186,20 +4201,20 @@ Returns the Model of reference.
 		opencascade::handle<Interface_InterfaceModel> Model();
 
 		/****** IFSelect_PacketList::Name ******/
-		/****** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ******/
+		/****** md5 signature: c01515d64eb8c383d620d861376d0837 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the recorded name for a packet list.
 ") Name;
-		Standard_CString Name();
+		const char * Name();
 
 		/****** IFSelect_PacketList::NbDuplicated ******/
-		/****** md5 signature: f504f89fdd022fab0637c58f067da950 ******/
+		/****** md5 signature: 66fb1cb2d08502c90ed2803133b059af ******/
 		%feature("compactdefaultargs") NbDuplicated;
 		%feature("autodoc", "
 Parameters
@@ -4215,10 +4230,10 @@ Description
 -----------
 Returns the count of entities duplicated: <count> times, if <andmore> is False, or <count> or more times, if <andmore> is True See Duplicated for more details.
 ") NbDuplicated;
-		Standard_Integer NbDuplicated(const Standard_Integer count, const Standard_Boolean andmore);
+		int NbDuplicated(const int count, const bool andmore);
 
 		/****** IFSelect_PacketList::NbEntities ******/
-		/****** md5 signature: aa951bc8ded7242a13765419c0f22118 ******/
+		/****** md5 signature: ea781ee2816f3122c9edf5d704994ebf ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "
 Parameters
@@ -4233,10 +4248,10 @@ Description
 -----------
 Returns the count of entities in a Packet given its rank, or 0.
 ") NbEntities;
-		Standard_Integer NbEntities(const Standard_Integer numpack);
+		int NbEntities(const int numpack);
 
 		/****** IFSelect_PacketList::NbPackets ******/
-		/****** md5 signature: 5d4127d8d4ce4c4d71910f16e9666e8e ******/
+		/****** md5 signature: 9d4e121c5a024fc4848e075a16c323c8 ******/
 		%feature("compactdefaultargs") NbPackets;
 		%feature("autodoc", "Return
 -------
@@ -4246,15 +4261,15 @@ Description
 -----------
 Returns the count of non-empty packets.
 ") NbPackets;
-		Standard_Integer NbPackets();
+		int NbPackets();
 
 		/****** IFSelect_PacketList::SetName ******/
-		/****** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ******/
+		/****** md5 signature: 9334b2c77e8aae2ba868615f5b4f7498 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -4264,7 +4279,7 @@ Description
 -----------
 Sets a name to a packet list: this makes easier a general routine to print it. Default is 'Packets'.
 ") SetName;
-		void SetName(Standard_CString name);
+		void SetName(const char * const name);
 
 };
 
@@ -4452,12 +4467,12 @@ Adds a Selection to an iterator (if not yet noted).
 		void AddItem(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_SelectionIterator::AddList ******/
-		/****** md5 signature: 0cefa2f41eedd72c727cd8562631b48c ******/
+		/****** md5 signature: 8eb80fb0a6d1389d6505ea09ebab94e1 ******/
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: IFSelect_TSeqOfSelection
+list: IFSelect_Selection
 
 Return
 -------
@@ -4467,10 +4482,10 @@ Description
 -----------
 Adds a list of Selections to an iterator (this list comes from the description of a Selection or a Dispatch, etc...).
 ") AddList;
-		void AddList(const IFSelect_TSeqOfSelection & list);
+		void AddList(const NCollection_Sequence<opencascade::handle<IFSelect_Selection> > & list);
 
 		/****** IFSelect_SelectionIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -4480,7 +4495,7 @@ Description
 -----------
 Returns True if there are more Selections to get.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** IFSelect_SelectionIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -4550,7 +4565,7 @@ Returns the Next SesionDumper in the Library. Returns a Null Handle at the End.
 		opencascade::handle<IFSelect_SessionDumper> Next();
 
 		/****** IFSelect_SessionDumper::ReadOwn ******/
-		/****** md5 signature: 0ba52027df96fc43c669e9b279e81af0 ******/
+		/****** md5 signature: 8005e21184e2be72fa3fa45c7b01dd89 ******/
 		%feature("compactdefaultargs") ReadOwn;
 		%feature("autodoc", "
 Parameters
@@ -4567,10 +4582,10 @@ Description
 -----------
 Recognizes a Type (given as <type>) then Creates an Item of this Type with the Own Parameter, as required. Returns True if it has recognized the Type (in this case, it is assumed to have created the Item, returned as <item>), False else: in that case, SessionFile will try another SessionDumper in the Library. ReadOwn can use these methods from SessionFile to access Own Parameters: NbOwnParams, IsVoid, IsText, TextValue, ItemValue.
 ") ReadOwn;
-		virtual Standard_Boolean ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
+		virtual bool ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SessionDumper::WriteOwn ******/
-		/****** md5 signature: b08a71cf7d60fc4b67e64bbbdeff2fa7 ******/
+		/****** md5 signature: fb4ca69ce5212871fbf8377a75f87d28 ******/
 		%feature("compactdefaultargs") WriteOwn;
 		%feature("autodoc", "
 Parameters
@@ -4586,7 +4601,7 @@ Description
 -----------
 Writes the Own Parameters of a given Item, if it forecast to manage its Type. Returns True if it has recognized the Type of the Item (in this case, it is assumed to have written the Own Parameters if there are some), False else: in that case, SessionFile will try another SessionDumper in the Library. WriteOwn can use these methods from SessionFile: SendVoid, SendItem, SendText, and if necessary, WorkSession.
 ") WriteOwn;
-		virtual Standard_Boolean WriteOwn(IFSelect_SessionFile & file, const opencascade::handle<Standard_Transient> & item);
+		virtual bool WriteOwn(IFSelect_SessionFile & file, const opencascade::handle<Standard_Transient> & item);
 
 };
 
@@ -4623,13 +4638,13 @@ Creates a SessionFile, ready to read Files in order to load them into a given Wo
 		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS);
 
 		/****** IFSelect_SessionFile::IFSelect_SessionFile ******/
-		/****** md5 signature: e27c90f73d83777e2fd736b94eea0e1e ******/
+		/****** md5 signature: 56403055b5debbb2266d6e00de2edfbd ******/
 		%feature("compactdefaultargs") IFSelect_SessionFile;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: IFSelect_WorkSession
-filename: str
+filename: char *
 
 Return
 -------
@@ -4639,16 +4654,16 @@ Description
 -----------
 Creates a SessionFile which Writes the content of a WorkSession to a File (directly calls Write) Then, IsDone acknowledges on the result of the Operation. But such a SessionFile may not Read a File to a WorkSession.
 ") IFSelect_SessionFile;
-		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString filename);
+		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const filename);
 
 		/****** IFSelect_SessionFile::AddItem ******/
-		/****** md5 signature: f1a791c33f3860d5d3ad930160435e21 ******/
+		/****** md5 signature: 5032cbd29a92c923db20fecfe9b135f7 ******/
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "
 Parameters
 ----------
 item: Standard_Transient
-active: bool (optional, default to Standard_True)
+active: bool (optional, default to true)
 
 Return
 -------
@@ -4658,15 +4673,15 @@ Description
 -----------
 Adds an Item to the WorkSession, taken as Name the first item of the read Line. If this Name is not a Name but a Number or if this Name is already recorded in the WorkSession, it adds the Item but with no Name. Then the Name is recorded in order to be used by the method ItemValue <active> commands to make <item> active or not in the session.
 ") AddItem;
-		void AddItem(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
+		void AddItem(const opencascade::handle<Standard_Transient> & item, const bool active = true);
 
 		/****** IFSelect_SessionFile::AddLine ******/
-		/****** md5 signature: 3b219b13dcd6c36fea60a93c3fc075f6 ******/
+		/****** md5 signature: 434a71e3b961026789053baef0263a08 ******/
 		%feature("compactdefaultargs") AddLine;
 		%feature("autodoc", "
 Parameters
 ----------
-line: str
+line: char *
 
 Return
 -------
@@ -4676,7 +4691,7 @@ Description
 -----------
 Adds a line to the list of recorded lines.
 ") AddLine;
-		void AddLine(Standard_CString line);
+		void AddLine(const char * const line);
 
 		/****** IFSelect_SessionFile::ClearLines ******/
 		/****** md5 signature: bd42443a58c4d2b13ae8f9baf81ba414 ******/
@@ -4705,7 +4720,7 @@ Specific Destructor (closes the File if not yet done).
 		void Destroy();
 
 		/****** IFSelect_SessionFile::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4715,10 +4730,10 @@ Description
 -----------
 Returns True if the last Read or Write operation has been correctly performed. Else returns False.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IFSelect_SessionFile::IsText ******/
-		/****** md5 signature: f187a6517ba9053315363c633290f27c ******/
+		/****** md5 signature: 15fc1499e4e1ada9331486d533009aeb ******/
 		%feature("compactdefaultargs") IsText;
 		%feature("autodoc", "
 Parameters
@@ -4733,10 +4748,10 @@ Description
 -----------
 Returns True if a Parameter, in the Own List (see NbOwnParams) is a Text (between '...'). Else it is an Item (Parameter, Selection, Dispatch ...), which can be Void.
 ") IsText;
-		Standard_Boolean IsText(const Standard_Integer num);
+		bool IsText(const int num);
 
 		/****** IFSelect_SessionFile::IsVoid ******/
-		/****** md5 signature: 52176105758977eb4c2daa75c18485b6 ******/
+		/****** md5 signature: fcc1b4b2e318cc75fbd897eb9c4a304b ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "
 Parameters
@@ -4751,10 +4766,10 @@ Description
 -----------
 Returns True if a Parameter, given its rank in the Own List (see NbOwnParams), is Void. Returns also True if <num> is out of range (undefined parameters).
 ") IsVoid;
-		Standard_Boolean IsVoid(const Standard_Integer num);
+		bool IsVoid(const int num);
 
 		/****** IFSelect_SessionFile::ItemValue ******/
-		/****** md5 signature: 6318c4f89a81c26b75f76b09eee9ed59 ******/
+		/****** md5 signature: 40aee3e7172a60bc8269e09914b5760e ******/
 		%feature("compactdefaultargs") ItemValue;
 		%feature("autodoc", "
 Parameters
@@ -4769,10 +4784,10 @@ Description
 -----------
 Returns a Parameter as an Item. Returns a Null Handle if the Parameter is a Text, or if it is defined as Void.
 ") ItemValue;
-		opencascade::handle<Standard_Transient> ItemValue(const Standard_Integer num);
+		opencascade::handle<Standard_Transient> ItemValue(const int num);
 
 		/****** IFSelect_SessionFile::Line ******/
-		/****** md5 signature: 6f4db89800be9e476bbc5badc90f170f ******/
+		/****** md5 signature: e198fe7605db42aeb3c97ca3833e15c5 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -4787,10 +4802,10 @@ Description
 -----------
 Returns a line given its rank in the list of recorded lines.
 ") Line;
-		const TCollection_AsciiString & Line(const Standard_Integer num);
+		const TCollection_AsciiString & Line(const int num);
 
 		/****** IFSelect_SessionFile::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -4800,10 +4815,10 @@ Description
 -----------
 Returns the count of recorded lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IFSelect_SessionFile::NbParams ******/
-		/****** md5 signature: 826f4756fca7f780e6d976c60183d715 ******/
+		/****** md5 signature: 3d5942837081abb877dd0a91d1f0a57f ******/
 		%feature("compactdefaultargs") NbParams;
 		%feature("autodoc", "Return
 -------
@@ -4813,10 +4828,10 @@ Description
 -----------
 During a Read operation, SessionFile processes sequentially the Items to read. For each one, it gives access to the list of its Parameters: they were defined by calls to SendVoid/SendParam/SendText during Writing the File. NbParams returns the count of Parameters for the line currently read.
 ") NbParams;
-		Standard_Integer NbParams();
+		int NbParams();
 
 		/****** IFSelect_SessionFile::NewItem ******/
-		/****** md5 signature: 1f79b682e2c5b8350d58ac36b6d7fc26 ******/
+		/****** md5 signature: 8aeb09ad0cc8a19ee7e6be1b31052e0a ******/
 		%feature("compactdefaultargs") NewItem;
 		%feature("autodoc", "
 Parameters
@@ -4832,10 +4847,10 @@ Description
 -----------
 At beginning of writing an Item, writes its basics: - either its name in the session if it has one - or its relative number of item in the file, else (preceded by a '_') - then, its Dynamic Type (in the sense of cdl: pk_class) This basic description can be followed by the parameters which are used in the definition of the item.
 ") NewItem;
-		void NewItem(const Standard_Integer ident, const opencascade::handle<Standard_Transient> & par);
+		void NewItem(const int ident, const opencascade::handle<Standard_Transient> & par);
 
 		/****** IFSelect_SessionFile::ParamValue ******/
-		/****** md5 signature: 77959bf49598fe08abc770f5758f5137 ******/
+		/****** md5 signature: 174156047042fd27a12ef5fd22e7376e ******/
 		%feature("compactdefaultargs") ParamValue;
 		%feature("autodoc", "
 Parameters
@@ -4850,15 +4865,15 @@ Description
 -----------
 Returns a Parameter (alphanumeric item of a line) as it has been read.
 ") ParamValue;
-		const TCollection_AsciiString & ParamValue(const Standard_Integer num);
+		const TCollection_AsciiString & ParamValue(const int num);
 
 		/****** IFSelect_SessionFile::Read ******/
-		/****** md5 signature: 32105add691a589dcd16d0b81c8dd7d5 ******/
+		/****** md5 signature: c73d078d10692416c60215417de46be1 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -4868,10 +4883,10 @@ Description
 -----------
 Performs a Read Operation from a file to a WorkSession i.e. calls ReadFile, then ReadSession and ReadEnd Returned Value is: 0 for OK, -1 File could not be opened, >0 Error during Read (see WriteSession) IsDone can be called too (will return True for OK).
 ") Read;
-		Standard_Integer Read(Standard_CString filename);
+		int Read(const char * const filename);
 
 		/****** IFSelect_SessionFile::ReadEnd ******/
-		/****** md5 signature: 04b3e9077453f388e860118b0ce9c592 ******/
+		/****** md5 signature: 2e068a9d8dc4b6618d49f6cd1a971093 ******/
 		%feature("compactdefaultargs") ReadEnd;
 		%feature("autodoc", "Return
 -------
@@ -4881,15 +4896,15 @@ Description
 -----------
 Reads the end of a file (its last line). Returns 0 if OK, status >0 in case of error (not a suitable end line).
 ") ReadEnd;
-		Standard_Integer ReadEnd();
+		int ReadEnd();
 
 		/****** IFSelect_SessionFile::ReadFile ******/
-		/****** md5 signature: af35933f568f030166c7c9d87f6a39f9 ******/
+		/****** md5 signature: e91addfdcad4ccec44a684d2fa214c97 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -4899,10 +4914,10 @@ Description
 -----------
 Reads the recorded lines from a file named <name>, after having cleared the list (stops if RecognizeFile fails) Returns False (with no clearing) if the file could not be read.
 ") ReadFile;
-		Standard_Boolean ReadFile(Standard_CString name);
+		bool ReadFile(const char * const name);
 
 		/****** IFSelect_SessionFile::ReadLine ******/
-		/****** md5 signature: e284a22a44adfa94166a34668f8b3114 ******/
+		/****** md5 signature: a92131f0957063c89e9f041f240f028c ******/
 		%feature("compactdefaultargs") ReadLine;
 		%feature("autodoc", "Return
 -------
@@ -4912,10 +4927,10 @@ Description
 -----------
 Reads a Line and splits it into a set of alphanumeric items, which can then be queried by NbParams/ParamValue ...
 ") ReadLine;
-		Standard_Boolean ReadLine();
+		bool ReadLine();
 
 		/****** IFSelect_SessionFile::ReadOwn ******/
-		/****** md5 signature: d0606bc709fc73559f8685321bcac1cc ******/
+		/****** md5 signature: 1b7eccb3dbba05022d2a178d6c1e4839 ******/
 		%feature("compactdefaultargs") ReadOwn;
 		%feature("autodoc", "
 Parameters
@@ -4930,10 +4945,10 @@ Description
 -----------
 Tries to Read an Item, by calling the Library of Dumpers Sets the list of parameters of the line to be read from the first own one.
 ") ReadOwn;
-		Standard_Boolean ReadOwn(opencascade::handle<Standard_Transient> & item);
+		bool ReadOwn(opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SessionFile::ReadSession ******/
-		/****** md5 signature: 4101dcac505e26f22df2d0af36195ef1 ******/
+		/****** md5 signature: fa05114fad214b4207c88359da45e9d8 ******/
 		%feature("compactdefaultargs") ReadSession;
 		%feature("autodoc", "Return
 -------
@@ -4943,15 +4958,15 @@ Description
 -----------
 Performs a Read Operation from a File to a WorkSession, i.e. reads the list of line (which must have already been loaded, by ReadFile or by calls to AddLine) Important Remark: this excludes the reading of the last line, which is performed by ReadEnd Returns 0 for OK, >0 status for Read Error (not a suitable File, or WorkSession given as Immutable at Creation Time) IsDone can be called too (will return True for OK).
 ") ReadSession;
-		Standard_Integer ReadSession();
+		int ReadSession();
 
 		/****** IFSelect_SessionFile::RecognizeFile ******/
-		/****** md5 signature: d6c94bd056bdf98bdb7d6a5944694344 ******/
+		/****** md5 signature: f06b13498a336124027c325316e47228 ******/
 		%feature("compactdefaultargs") RecognizeFile;
 		%feature("autodoc", "
 Parameters
 ----------
-headerline: str
+headerline: char *
 
 Return
 -------
@@ -4961,7 +4976,7 @@ Description
 -----------
 Recognizes the header line. returns True if OK, False else.
 ") RecognizeFile;
-		Standard_Boolean RecognizeFile(Standard_CString headerline);
+		bool RecognizeFile(const char * const headerline);
 
 		/****** IFSelect_SessionFile::RemoveLastLine ******/
 		/****** md5 signature: ed35097c51123c842aa92eeb14b910a4 ******/
@@ -4995,12 +5010,12 @@ During a Write action, commands to send the identification of a Parameter: if it
 		void SendItem(const opencascade::handle<Standard_Transient> & par);
 
 		/****** IFSelect_SessionFile::SendText ******/
-		/****** md5 signature: ff6fba24544bdb20dd7d5b6b9c070585 ******/
+		/****** md5 signature: 5f7de8267881b72f6cdc2da8a6e12578 ******/
 		%feature("compactdefaultargs") SendText;
 		%feature("autodoc", "
 Parameters
 ----------
-text: str
+text: char *
 
 Return
 -------
@@ -5010,7 +5025,7 @@ Description
 -----------
 During a Write action, commands to send a Text without interpretation. It will be sent as well.
 ") SendText;
-		void SendText(Standard_CString text);
+		void SendText(const char * const text);
 
 		/****** IFSelect_SessionFile::SendVoid ******/
 		/****** md5 signature: 57e39e043394ecdca192085943c6d397 ******/
@@ -5026,7 +5041,7 @@ During a Write action, commands to send a Void Parameter i.e. a Parameter which 
 		void SendVoid();
 
 		/****** IFSelect_SessionFile::SetLastGeneral ******/
-		/****** md5 signature: 8cd0b048cd3c79673ba82edbba05a979 ******/
+		/****** md5 signature: 7452357087b4ba2af56fa265e01e7e40 ******/
 		%feature("compactdefaultargs") SetLastGeneral;
 		%feature("autodoc", "
 Parameters
@@ -5041,10 +5056,10 @@ Description
 -----------
 Sets the rank of Last General Parameter to a new value. It is followed by the Fist Own Parameter of the item. Used by SessionFile after reading general parameters.
 ") SetLastGeneral;
-		void SetLastGeneral(const Standard_Integer lastgen);
+		void SetLastGeneral(const int lastgen);
 
 		/****** IFSelect_SessionFile::SetOwn ******/
-		/****** md5 signature: aa9ead28af880aa173e8912d97e05dd2 ******/
+		/****** md5 signature: 156f3209ead9cd6e6b4c6e1a3b8adb8f ******/
 		%feature("compactdefaultargs") SetOwn;
 		%feature("autodoc", "
 Parameters
@@ -5059,15 +5074,15 @@ Description
 -----------
 Sets Parameters to be sent as Own if <mode> is True (their Name or Number or Void Mark or Text Value is preceded by a Column sign ':') else they are sent normally Hence, the Own Parameter are clearly identified in the File.
 ") SetOwn;
-		void SetOwn(const Standard_Boolean mode);
+		void SetOwn(const bool mode);
 
 		/****** IFSelect_SessionFile::SplitLine ******/
-		/****** md5 signature: 406d2a24f92eba1a0c6550644282c1bf ******/
+		/****** md5 signature: 83fdf9aaae4de1b280efa3ec1fb01afc ******/
 		%feature("compactdefaultargs") SplitLine;
 		%feature("autodoc", "
 Parameters
 ----------
-line: str
+line: char *
 
 Return
 -------
@@ -5077,10 +5092,10 @@ Description
 -----------
 Internal routine which processes a line into words and prepares its exploration.
 ") SplitLine;
-		void SplitLine(Standard_CString line);
+		void SplitLine(const char * const line);
 
 		/****** IFSelect_SessionFile::TextValue ******/
-		/****** md5 signature: 2724c1badc7572789ff00cd170d570c6 ******/
+		/****** md5 signature: 54d0aeb605c239b8a6c3a43e794e70d4 ******/
 		%feature("compactdefaultargs") TextValue;
 		%feature("autodoc", "
 Parameters
@@ -5095,7 +5110,7 @@ Description
 -----------
 Returns the content of a Text Parameter (without the quotes). Returns an empty string if the Parameter is not a Text.
 ") TextValue;
-		TCollection_AsciiString TextValue(const Standard_Integer num);
+		TCollection_AsciiString TextValue(const int num);
 
 		/****** IFSelect_SessionFile::WorkSession ******/
 		/****** md5 signature: 804cdd58a69a7b9e571b7f1634f8cfa5 ******/
@@ -5111,12 +5126,12 @@ Returns the WorkSession on which a SessionFile works. Remark that it is returned
 		opencascade::handle<IFSelect_WorkSession> WorkSession();
 
 		/****** IFSelect_SessionFile::Write ******/
-		/****** md5 signature: 4ad9bd7f549ded3804a9df3906579513 ******/
+		/****** md5 signature: 2406a8ed29c58f561345ae8726a500d9 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -5126,10 +5141,10 @@ Description
 -----------
 Performs a Write Operation from a WorkSession to a File i.e. calls WriteSession then WriteEnd, and WriteFile Returned Value is: 0 for OK, -1 File could not be created, >0 Error during Write (see WriteSession) IsDone can be called too (will return True for OK).
 ") Write;
-		Standard_Integer Write(Standard_CString filename);
+		int Write(const char * const filename);
 
 		/****** IFSelect_SessionFile::WriteEnd ******/
-		/****** md5 signature: ebd67493aceb3cb5ca76a180499ed0e5 ******/
+		/****** md5 signature: 749700f9fa228f2b9990e42464b15b2f ******/
 		%feature("compactdefaultargs") WriteEnd;
 		%feature("autodoc", "Return
 -------
@@ -5139,15 +5154,15 @@ Description
 -----------
 Writes the trailing line. It is separate from WriteSession, in order to allow to redefine WriteSession without touching WriteEnd (WriteSession defines the body of the file) WriteEnd fills the list of lines. Returns a status of error, 0 if OK, >0 else.
 ") WriteEnd;
-		Standard_Integer WriteEnd();
+		int WriteEnd();
 
 		/****** IFSelect_SessionFile::WriteFile ******/
-		/****** md5 signature: 39eda0480b58ea116f5a9b2553c70a06 ******/
+		/****** md5 signature: ab3daf960df25deb95625b397df6d057 ******/
 		%feature("compactdefaultargs") WriteFile;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -5157,16 +5172,16 @@ Description
 -----------
 Writes the recorded lines to a file named <name> then clears the list of lines. Returns False (with no clearing) if the file could not be created.
 ") WriteFile;
-		Standard_Boolean WriteFile(Standard_CString name);
+		bool WriteFile(const char * const name);
 
 		/****** IFSelect_SessionFile::WriteLine ******/
-		/****** md5 signature: 614718ee56368b00f0d0d11ed8f12021 ******/
+		/****** md5 signature: a71c20c3144b567a04d47ecc4d96b72d ******/
 		%feature("compactdefaultargs") WriteLine;
 		%feature("autodoc", "
 Parameters
 ----------
-line: str
-follow: Standard_Character (optional, default to 0)
+line: char *
+follow: char (optional, default to 0)
 
 Return
 -------
@@ -5176,10 +5191,10 @@ Description
 -----------
 Writes a line to the File. If <follow> is given, it is added at the following of the line. A newline must be added for the end.
 ") WriteLine;
-		void WriteLine(Standard_CString line, const Standard_Character follow = 0);
+		void WriteLine(const char * const line, const char follow = 0);
 
 		/****** IFSelect_SessionFile::WriteOwn ******/
-		/****** md5 signature: 27828a81117f2e9d53a26b94b00560df ******/
+		/****** md5 signature: ba7c592667b09d4ec5cc3abc535640fd ******/
 		%feature("compactdefaultargs") WriteOwn;
 		%feature("autodoc", "
 Parameters
@@ -5194,10 +5209,10 @@ Description
 -----------
 Writes the Parameters own to each type of Item. Uses the Library of SessionDumpers Returns True if Done, False if <item> could not be treated (hence it remains written with no Own Parameter).
 ") WriteOwn;
-		Standard_Boolean WriteOwn(const opencascade::handle<Standard_Transient> & item);
+		bool WriteOwn(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SessionFile::WriteSession ******/
-		/****** md5 signature: 728b1b1e17d5f17868f266ae82d25936 ******/
+		/****** md5 signature: 38d6237ce92f0e82ea32b9db0df1e567 ******/
 		%feature("compactdefaultargs") WriteSession;
 		%feature("autodoc", "Return
 -------
@@ -5207,7 +5222,7 @@ Description
 -----------
 Prepares the Write operation from a WorkSession (IFSelect) to a File, i.e. fills the list of lines (the file itself remains to be written; or NbLines/Line may be called) Important Remark: this excludes the reading of the last line, which is performed by WriteEnd Returns 0 if OK, status > 0 in case of error.
 ") WriteSession;
-		Standard_Integer WriteSession();
+		int WriteSession();
 
 };
 
@@ -5255,7 +5270,7 @@ Adds a Dispatch to the list.
 		void AddDispatch(const opencascade::handle<IFSelect_Dispatch> & disp);
 
 		/****** IFSelect_ShareOut::AddModif ******/
-		/****** md5 signature: 834e075b7abbb07a49c7407aa8ac94e0 ******/
+		/****** md5 signature: 41065ebe1da8875cd156c9a9cb75bc8c ******/
 		%feature("compactdefaultargs") AddModif;
 		%feature("autodoc", "
 Parameters
@@ -5272,10 +5287,10 @@ Description
 -----------
 Adds a Modifier to the list of Modifiers: Model Modifiers if <formodel> is True, File Modifiers else (internal).
 ") AddModif;
-		void AddModif(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const Standard_Boolean formodel, const Standard_Integer atnum = 0);
+		void AddModif(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const bool formodel, const int atnum = 0);
 
 		/****** IFSelect_ShareOut::AddModifier ******/
-		/****** md5 signature: 1f935b583e5e1d7195bd03e84b27cde2 ******/
+		/****** md5 signature: 1cf1c17031580e813b42592759a11d4c ******/
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "
 Parameters
@@ -5291,10 +5306,10 @@ Description
 -----------
 Sets a Modifier to be applied on all Dispatches to be run If <modifier> is a ModelModifier, adds it to the list of Model Modifiers; else to the list of File Modifiers By default (atnum = 0) at the end of the list, else at <atnum> Each Modifier is used, after each copy of a packet of Entities into a Model: its criteria are checked and if they are OK, the method Perform of this Modifier is run.
 ") AddModifier;
-		void AddModifier(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const Standard_Integer atnum);
+		void AddModifier(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const int atnum);
 
 		/****** IFSelect_ShareOut::AddModifier ******/
-		/****** md5 signature: 21d07e73971dad0f41872796c64d3ee0 ******/
+		/****** md5 signature: 82d60525a33939af7034a3c70c777806 ******/
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "
 Parameters
@@ -5311,10 +5326,10 @@ Description
 -----------
 Sets a Modifier to be applied on the Dispatch <dispnum> If <modifier> is a ModelModifier, adds it to the list of Model Modifiers; else to the list of File Modifiers This is the same list as for all Dispatches, but the Modifier is qualified to be applied to one Dispatch only Then, <atnum> refers to the entire list By default (atnum = 0) at the end of the list, else at <atnum> Remark: if the Modifier was already in the list and if <atnum> = 0, the Modifier is not moved, but only qualified for a Dispatch.
 ") AddModifier;
-		void AddModifier(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const Standard_Integer dispnum, const Standard_Integer atnum);
+		void AddModifier(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const int dispnum, const int atnum);
 
 		/****** IFSelect_ShareOut::ChangeModifierRank ******/
-		/****** md5 signature: ebeacb4da2b8c655d353c2ca5f6f4282 ******/
+		/****** md5 signature: 334a33a106387884561b28e2b3505ff8 ******/
 		%feature("compactdefaultargs") ChangeModifierRank;
 		%feature("autodoc", "
 Parameters
@@ -5331,10 +5346,10 @@ Description
 -----------
 Changes the rank of a modifier in the list: Model Modifiers if <formodel> is True, File Modifiers else from <before> to <after> Returns True if done, False else (before or after out of range).
 ") ChangeModifierRank;
-		Standard_Boolean ChangeModifierRank(const Standard_Boolean formodel, const Standard_Integer befor, const Standard_Integer after);
+		bool ChangeModifierRank(const bool formodel, const int befor, const int after);
 
 		/****** IFSelect_ShareOut::Clear ******/
-		/****** md5 signature: f95144dbbc6bd7b9cb03042bd63d7c5a ******/
+		/****** md5 signature: dba4fac451bb1559a10b1ba50528b325 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -5349,10 +5364,10 @@ Description
 -----------
 Removes in one operation all the Dispatches with their Idents Also clears all information about Names, and all Results but naming information which are: - kept if <onlydisp> is True. - cleared if <onlydisp> is False (complete clearing) If <onlydisp> is True, that's all. Else, clears also Modifiers.
 ") Clear;
-		void Clear(const Standard_Boolean onlydisp);
+		void Clear(const bool onlydisp);
 
 		/****** IFSelect_ShareOut::ClearResult ******/
-		/****** md5 signature: a5958cba0ec4c360c5bb289f047fd501 ******/
+		/****** md5 signature: 90c000668420f35b5e847ecfd809f28d ******/
 		%feature("compactdefaultargs") ClearResult;
 		%feature("autodoc", "
 Parameters
@@ -5367,7 +5382,7 @@ Description
 -----------
 Clears all data produced (apart from Dispatches, etc...) if <alsoname> is True, all is cleared. Else, information about produced Names are kept (to maintain unicity of naming across clearings).
 ") ClearResult;
-		void ClearResult(const Standard_Boolean alsoname);
+		void ClearResult(const bool alsoname);
 
 		/****** IFSelect_ShareOut::DefaultRootName ******/
 		/****** md5 signature: 7c3493bd9f25af040ab0604c5a73e1f7 ******/
@@ -5383,7 +5398,7 @@ Returns the Default Root Name. Can be empty.
 		opencascade::handle<TCollection_HAsciiString> DefaultRootName();
 
 		/****** IFSelect_ShareOut::Dispatch ******/
-		/****** md5 signature: c0126f833323ca9c0b6faffd9e630bb4 ******/
+		/****** md5 signature: 7bde8131c9d9558e191180bb1cf4123b ******/
 		%feature("compactdefaultargs") Dispatch;
 		%feature("autodoc", "
 Parameters
@@ -5398,10 +5413,10 @@ Description
 -----------
 Returns a Dispatch, given its rank in the list.
 ") Dispatch;
-		const opencascade::handle<IFSelect_Dispatch> & Dispatch(const Standard_Integer num);
+		const opencascade::handle<IFSelect_Dispatch> & Dispatch(const int num);
 
 		/****** IFSelect_ShareOut::DispatchRank ******/
-		/****** md5 signature: dfbe0c683941ff8c0cafbd139068388c ******/
+		/****** md5 signature: c22ee11a34f47595231080af0aa9ec21 ******/
 		%feature("compactdefaultargs") DispatchRank;
 		%feature("autodoc", "
 Parameters
@@ -5416,7 +5431,7 @@ Description
 -----------
 Returns the Rank of a Dispatch, given its Value (Handle). Returns 0 if the Dispatch is unknown in the ShareOut.
 ") DispatchRank;
-		Standard_Integer DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
+		int DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
 
 		/****** IFSelect_ShareOut::Extension ******/
 		/****** md5 signature: d8451984f53a06cfa1d5728072a48bf8 ******/
@@ -5432,7 +5447,7 @@ Returns the general Extension. Can be empty (not recommended).
 		opencascade::handle<TCollection_HAsciiString> Extension();
 
 		/****** IFSelect_ShareOut::FileName ******/
-		/****** md5 signature: 8629d350d4d2147621599397ae714458 ******/
+		/****** md5 signature: 5e472d475eb0c3a2220f77872dca8054 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "
 Parameters
@@ -5449,10 +5464,10 @@ Description
 -----------
 Computes the complete file name for a Packet of a Dispatch, given Dispatch Number (Rank), Packet Number, and Count of Packets generated by this Dispatch (0 if unknown) //! File Name is made of following strings, concatenated: General Prefix, Root Name for Dispatch, Packet Suffix, and General Extension. If no Root Name is specified for a Dispatch, DefaultRootName is considered (and pnum is not used, but <thenbdefs> is incremented and used Error if no Root is defined for this <idnum>.
 ") FileName;
-		TCollection_AsciiString FileName(const Standard_Integer dnum, const Standard_Integer pnum, const Standard_Integer nbpack = 0);
+		TCollection_AsciiString FileName(const int dnum, const int pnum, const int nbpack = 0);
 
 		/****** IFSelect_ShareOut::GeneralModifier ******/
-		/****** md5 signature: 65ad361a1bfb20787109319f656494ef ******/
+		/****** md5 signature: d245ef757d4a885ca1e491f80215aa96 ******/
 		%feature("compactdefaultargs") GeneralModifier;
 		%feature("autodoc", "
 Parameters
@@ -5468,10 +5483,10 @@ Description
 -----------
 Returns a Modifier of the list, given its rank: Model Modifiers if <formodel> is True, File Modifiers else.
 ") GeneralModifier;
-		opencascade::handle<IFSelect_GeneralModifier> GeneralModifier(const Standard_Boolean formodel, const Standard_Integer num);
+		opencascade::handle<IFSelect_GeneralModifier> GeneralModifier(const bool formodel, const int num);
 
 		/****** IFSelect_ShareOut::HasRootName ******/
-		/****** md5 signature: 5012cef6558aea1bb7ce5bd6e7f55065 ******/
+		/****** md5 signature: 1f007ddd4d17c4318f2bd0bd73b5c90d ******/
 		%feature("compactdefaultargs") HasRootName;
 		%feature("autodoc", "
 Parameters
@@ -5486,10 +5501,10 @@ Description
 -----------
 Returns True if the Dispatch of rank <num> has an attached Root Name. False else, or if num is out of range.
 ") HasRootName;
-		Standard_Boolean HasRootName(const Standard_Integer num);
+		bool HasRootName(const int num);
 
 		/****** IFSelect_ShareOut::LastRun ******/
-		/****** md5 signature: 7cbc1be465b904f50e5ce9c07cc73894 ******/
+		/****** md5 signature: 2d3c9371d270cf428293fdf173fb58f9 ******/
 		%feature("compactdefaultargs") LastRun;
 		%feature("autodoc", "Return
 -------
@@ -5499,10 +5514,10 @@ Description
 -----------
 Returns the rank of last run item (ClearResult resets it to 0).
 ") LastRun;
-		Standard_Integer LastRun();
+		int LastRun();
 
 		/****** IFSelect_ShareOut::ModelModifier ******/
-		/****** md5 signature: 7fcfa11e0ef0b39d7e68cd4126be10f0 ******/
+		/****** md5 signature: 41d3513db24a2e21dc32f606add95ebd ******/
 		%feature("compactdefaultargs") ModelModifier;
 		%feature("autodoc", "
 Parameters
@@ -5517,10 +5532,10 @@ Description
 -----------
 Returns a Modifier of the list of Model Modifiers, duely casted.
 ") ModelModifier;
-		opencascade::handle<IFSelect_Modifier> ModelModifier(const Standard_Integer num);
+		opencascade::handle<IFSelect_Modifier> ModelModifier(const int num);
 
 		/****** IFSelect_ShareOut::ModifierRank ******/
-		/****** md5 signature: fd129e92f0bd0fc99f40bf71dd5958c8 ******/
+		/****** md5 signature: 27f57654c855d6248a05104c9091b479 ******/
 		%feature("compactdefaultargs") ModifierRank;
 		%feature("autodoc", "
 Parameters
@@ -5535,10 +5550,10 @@ Description
 -----------
 Gives the rank of a Modifier in the list, 0 if not in the list Model Modifiers if <modifier> is kind of ModelModifer, File Modifiers else.
 ") ModifierRank;
-		Standard_Integer ModifierRank(const opencascade::handle<IFSelect_GeneralModifier> & modifier);
+		int ModifierRank(const opencascade::handle<IFSelect_GeneralModifier> & modifier);
 
 		/****** IFSelect_ShareOut::NbDispatches ******/
-		/****** md5 signature: 9ac32b66c4d436a99329f347793d6508 ******/
+		/****** md5 signature: cca99c1654b750da7d6af4dd81948e18 ******/
 		%feature("compactdefaultargs") NbDispatches;
 		%feature("autodoc", "Return
 -------
@@ -5548,10 +5563,10 @@ Description
 -----------
 Returns the count of Dispatches.
 ") NbDispatches;
-		Standard_Integer NbDispatches();
+		int NbDispatches();
 
 		/****** IFSelect_ShareOut::NbModifiers ******/
-		/****** md5 signature: a0815984912b242e5ee3855cdf5a81a9 ******/
+		/****** md5 signature: 2f6dd1ee5ee24fede622334a26078f4d ******/
 		%feature("compactdefaultargs") NbModifiers;
 		%feature("autodoc", "
 Parameters
@@ -5566,7 +5581,7 @@ Description
 -----------
 Returns count of Modifiers (which apply to complete Models): Model Modifiers if <formodel> is True, File Modifiers else.
 ") NbModifiers;
-		Standard_Integer NbModifiers(const Standard_Boolean formodel);
+		int NbModifiers(const bool formodel);
 
 		/****** IFSelect_ShareOut::Prefix ******/
 		/****** md5 signature: 5bbf0f6d1a79843bd4a51453ffec8c03 ******/
@@ -5582,7 +5597,7 @@ Returns the general Prefix. Can be empty.
 		opencascade::handle<TCollection_HAsciiString> Prefix();
 
 		/****** IFSelect_ShareOut::RemoveDispatch ******/
-		/****** md5 signature: c66127bbec44fa1d44cee5eb61049c63 ******/
+		/****** md5 signature: f4f85a3893ab4dda46a79211a12af7d7 ******/
 		%feature("compactdefaultargs") RemoveDispatch;
 		%feature("autodoc", "
 Parameters
@@ -5597,10 +5612,10 @@ Description
 -----------
 Removes a Dispatch, given its rank in the list Returns True if done, False if rank is not between (LastRun + 1) and (NbDispatches).
 ") RemoveDispatch;
-		Standard_Boolean RemoveDispatch(const Standard_Integer rank);
+		bool RemoveDispatch(const int rank);
 
 		/****** IFSelect_ShareOut::RemoveItem ******/
-		/****** md5 signature: 3d21325464cc0ceb3ee75dda2155f717 ******/
+		/****** md5 signature: 2888b508414f802126bab03993be06af ******/
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "
 Parameters
@@ -5615,10 +5630,10 @@ Description
 -----------
 Removes an item, which can be, either a Dispatch (removed from the list of Dispatches), or a GeneralModifier (removed from the list of Model Modifiers or from the list of File Modifiers according to its type). Returns True if done, False if has not been found or if it is neither a Dispatch, nor a Modifier.
 ") RemoveItem;
-		Standard_Boolean RemoveItem(const opencascade::handle<Standard_Transient> & item);
+		bool RemoveItem(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_ShareOut::RemoveModifier ******/
-		/****** md5 signature: 2a21a7702f910e9805df6c6264da9366 ******/
+		/****** md5 signature: d637bea925f0c28b0db15890fbc5ef0c ******/
 		%feature("compactdefaultargs") RemoveModifier;
 		%feature("autodoc", "
 Parameters
@@ -5634,10 +5649,10 @@ Description
 -----------
 Removes a Modifier, given it rank in the list: Model Modifiers if <formodel> is True, File Modifiers else Returns True if done, False if <num> is out of range.
 ") RemoveModifier;
-		Standard_Boolean RemoveModifier(const Standard_Boolean formodel, const Standard_Integer num);
+		bool RemoveModifier(const bool formodel, const int num);
 
 		/****** IFSelect_ShareOut::RootName ******/
-		/****** md5 signature: 979322dccddb38b0cf21411003fe7d73 ******/
+		/****** md5 signature: 9a72173993de950dd26baa20a46b38f3 ******/
 		%feature("compactdefaultargs") RootName;
 		%feature("autodoc", "
 Parameters
@@ -5652,10 +5667,10 @@ Description
 -----------
 Returns the Root bound to a Dispatch, given its rank Returns a Null Handle if not defined.
 ") RootName;
-		opencascade::handle<TCollection_HAsciiString> RootName(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> RootName(const int num);
 
 		/****** IFSelect_ShareOut::RootNumber ******/
-		/****** md5 signature: 8dc08dc9c82f8e5e672ff5aa40d620ba ******/
+		/****** md5 signature: 274979ebeee775dd514b5737833711f5 ******/
 		%feature("compactdefaultargs") RootNumber;
 		%feature("autodoc", "
 Parameters
@@ -5670,10 +5685,10 @@ Description
 -----------
 Returns an integer value about a given root name: - positive: it's the rank of the Dispatch which has this name - null: this root name is unknown - negative (-1): this root name is the default root name.
 ") RootNumber;
-		Standard_Integer RootNumber(const opencascade::handle<TCollection_HAsciiString> & name);
+		int RootNumber(const opencascade::handle<TCollection_HAsciiString> & name);
 
 		/****** IFSelect_ShareOut::SetDefaultRootName ******/
-		/****** md5 signature: f1e4be456fd7b4d64d802eda7ef4c255 ******/
+		/****** md5 signature: 47065ce2303586022cbddf0f20f0eaf2 ******/
 		%feature("compactdefaultargs") SetDefaultRootName;
 		%feature("autodoc", "
 Parameters
@@ -5688,7 +5703,7 @@ Description
 -----------
 Defines or Changes the Default Root Name to a new value (which is used for dispatches which have no attached root name). If this method is not called, DefaultRootName remains empty Returns True if OK, False if this Name is already attached, for a Dispatch or for Default.
 ") SetDefaultRootName;
-		Standard_Boolean SetDefaultRootName(const opencascade::handle<TCollection_HAsciiString> & defrt);
+		bool SetDefaultRootName(const opencascade::handle<TCollection_HAsciiString> & defrt);
 
 		/****** IFSelect_ShareOut::SetExtension ******/
 		/****** md5 signature: 44a62e3056a4560602ac971e2a9e3721 ******/
@@ -5709,7 +5724,7 @@ Defines or Changes the general Extension (which is appended to complete file nam
 		void SetExtension(const opencascade::handle<TCollection_HAsciiString> & ext);
 
 		/****** IFSelect_ShareOut::SetLastRun ******/
-		/****** md5 signature: b63ec78f2b01f512d5db876ecd824b91 ******/
+		/****** md5 signature: 2d31febad65976ffa0958cd9e261d7eb ******/
 		%feature("compactdefaultargs") SetLastRun;
 		%feature("autodoc", "
 Parameters
@@ -5724,7 +5739,7 @@ Description
 -----------
 Records a new value for the rank of last run item.
 ") SetLastRun;
-		void SetLastRun(const Standard_Integer last);
+		void SetLastRun(const int last);
 
 		/****** IFSelect_ShareOut::SetPrefix ******/
 		/****** md5 signature: 6492fb9a33aab1433baec7d10f94af00 ******/
@@ -5745,7 +5760,7 @@ Defines or Changes the general Prefix (which is prepended to complete file name 
 		void SetPrefix(const opencascade::handle<TCollection_HAsciiString> & pref);
 
 		/****** IFSelect_ShareOut::SetRootName ******/
-		/****** md5 signature: d0c31941675b4dedaaebed34e4767ad4 ******/
+		/****** md5 signature: 89d5d91284c358da3bae5d4faf8bc62a ******/
 		%feature("compactdefaultargs") SetRootName;
 		%feature("autodoc", "
 Parameters
@@ -5761,7 +5776,7 @@ Description
 -----------
 Attaches a Root Name to a Dispatch given its rank, as an HAsciiString (standard form). A Null Handle resets this name. Returns True if OK, False if this Name is already attached, for a Dispatch or for Default, or <num> out of range.
 ") SetRootName;
-		Standard_Boolean SetRootName(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & name);
+		bool SetRootName(const int num, const opencascade::handle<TCollection_HAsciiString> & name);
 
 };
 
@@ -5869,7 +5884,7 @@ Returns the current Dispatch.
 		opencascade::handle<IFSelect_Dispatch> Dispatch();
 
 		/****** IFSelect_ShareOutResult::DispatchRank ******/
-		/****** md5 signature: 0e9f760c80c45cf9519cc6cd47b6b28f ******/
+		/****** md5 signature: e0381e7a0bb03dd733bbbb017aa57d4f ******/
 		%feature("compactdefaultargs") DispatchRank;
 		%feature("autodoc", "Return
 -------
@@ -5879,7 +5894,7 @@ Description
 -----------
 Returns the Rank of the current Dispatch in the ShareOut Returns Zero if there is none (iteration finished).
 ") DispatchRank;
-		Standard_Integer DispatchRank();
+		int DispatchRank();
 
 		/****** IFSelect_ShareOutResult::Evaluate ******/
 		/****** md5 signature: d3114edc05ed53814d8d7a8c5bd4b713 ******/
@@ -5921,7 +5936,7 @@ Returns the Graph used to create theShareOutResult.
 		const Interface_Graph & Graph();
 
 		/****** IFSelect_ShareOutResult::More ******/
-		/****** md5 signature: f2144011648ae849666b28430a27a0ea ******/
+		/****** md5 signature: 72440e10f19bd09dac0550f651b9d3a2 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -5931,10 +5946,10 @@ Description
 -----------
 Returns True if there is more packets in the current Dispatch, else if there is more Dispatch in the ShareOut.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** IFSelect_ShareOutResult::NbPackets ******/
-		/****** md5 signature: df5e91b9b515934ada05bf2552f4bf0c ******/
+		/****** md5 signature: 91f7424cb27a7879d6ac37cdfb39a369 ******/
 		%feature("compactdefaultargs") NbPackets;
 		%feature("autodoc", "Return
 -------
@@ -5944,7 +5959,7 @@ Description
 -----------
 Returns the total count of produced non empty packets (in out: calls Evaluate as necessary).
 ") NbPackets;
-		Standard_Integer NbPackets();
+		int NbPackets();
 
 		/****** IFSelect_ShareOutResult::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -5999,12 +6014,12 @@ Returns the list of Roots of the current Packet (never empty) (i.e. the Entities
 		Interface_EntityIterator PacketRoot();
 
 		/****** IFSelect_ShareOutResult::Packets ******/
-		/****** md5 signature: b4205107e1be9e46587677293b78084b ******/
+		/****** md5 signature: 6c76482d09f804b9e87bb2e8e6b38421 ******/
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "
 Parameters
 ----------
-complete: bool (optional, default to Standard_True)
+complete: bool (optional, default to true)
 
 Return
 -------
@@ -6014,10 +6029,10 @@ Description
 -----------
 Returns the list of recorded Packets, under two modes: - <complete> = False, the strict definition of Packets, i.e. for each one, the Root Entities, to be explicitly sent - <complete> = True (Default), the completely evaluated list, i.e. which really gives the destination of each entity: this mode allows to evaluate duplications Remark that to send packets, iteration remains preferable (file names are managed).
 ") Packets;
-		opencascade::handle<IFSelect_PacketList> Packets(const Standard_Boolean complete = Standard_True);
+		opencascade::handle<IFSelect_PacketList> Packets(const bool complete = true);
 
 		/****** IFSelect_ShareOutResult::PacketsInDispatch ******/
-		/****** md5 signature: 4f0fd360a71aecddf08631e8ceb48a61 ******/
+		/****** md5 signature: acae340be75621303f73376f3efec3e2 ******/
 		%feature("compactdefaultargs") PacketsInDispatch;
 		%feature("autodoc", "
 Parameters
@@ -6089,12 +6104,12 @@ Returns the ShareOut used to create the ShareOutResult if creation from a Dispat
 class IFSelect_Signature : public Interface_SignType {
 	public:
 		/****** IFSelect_Signature::AddCase ******/
-		/****** md5 signature: 792fed3fa58363715dfcb0249374d419 ******/
+		/****** md5 signature: 004228f39411feb022b9e887f64ce4f4 ******/
 		%feature("compactdefaultargs") AddCase;
 		%feature("autodoc", "
 Parameters
 ----------
-acase: str
+acase: char *
 
 Return
 -------
@@ -6104,23 +6119,23 @@ Description
 -----------
 Adds a possible case To be called when creating, IF the list of possible cases for Value is known when starting For instance, for CDL types, rather do not fill this, but for a specific enumeration (such as a status), can be used.
 ") AddCase;
-		void AddCase(Standard_CString acase);
+		void AddCase(const char * const acase);
 
 		/****** IFSelect_Signature::CaseList ******/
-		/****** md5 signature: 5b07c3fbe5d7bd548d4ebf205f3fae5d ******/
+		/****** md5 signature: a53601adf6bf02f2751cf94bd87ca8a0 ******/
 		%feature("compactdefaultargs") CaseList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfAsciiString>
+opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
 
 Description
 -----------
 Returns the predefined list of possible cases, filled by AddCase Null Handle if no predefined list (hence, to be counted) Useful to filter on really possible vase, for instance, or for a help.
 ") CaseList;
-		opencascade::handle<TColStd_HSequenceOfAsciiString> CaseList();
+		opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> CaseList();
 
 		/****** IFSelect_Signature::IntValue ******/
-		/****** md5 signature: a3efe9cd570d2214928aaa8c630c57e4 ******/
+		/****** md5 signature: 52b63b9caa860e8a8d7efad9c1108028 ******/
 		%feature("compactdefaultargs") IntValue;
 		%feature("autodoc", "
 Parameters
@@ -6129,16 +6144,16 @@ val: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 This procedure converts an Integer to a CString It is a convenient way when the value of a signature has the form of a simple integer value The value is to be used immediately (one buffer only, no copy).
 ") IntValue;
-		static Standard_CString IntValue(const Standard_Integer val);
+		static const char * IntValue(const int val);
 
 		/****** IFSelect_Signature::IsIntCase ******/
-		/****** md5 signature: 1aa4e85c1e8a2536c5778c68f1fc5e0d ******/
+		/****** md5 signature: 0d046858ef9c281ce04c15df28e40740 ******/
 		%feature("compactdefaultargs") IsIntCase;
 		%feature("autodoc", "
 Parameters
@@ -6155,7 +6170,7 @@ Description
 -----------
 Tells if this Signature gives integer values and returns values from SetIntCase if True.
 ") IsIntCase;
-		Standard_Boolean IsIntCase(Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Integer &OutValue);
+		bool IsIntCase(Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Integer &OutValue);
 
 		/****** IFSelect_Signature::Label ******/
 		/****** md5 signature: d9ee8fc21d5224585b4d8e9dd30f8b00 ******/
@@ -6171,12 +6186,12 @@ The label of a Signature uses its name as follow: 'Signature: <name>'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_Signature::MatchValue ******/
-		/****** md5 signature: 95cc2aabcdae6107c7210b43df05098f ******/
+		/****** md5 signature: 1b85e99f42287a9db33219310e1f819f ******/
 		%feature("compactdefaultargs") MatchValue;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 text: str
 exact: bool
 
@@ -6188,10 +6203,10 @@ Description
 -----------
 Default procedure to tell if a value <val> matches a text with a criterium <exact>. <exact> = True requires equality, else only contained (no reg-exp).
 ") MatchValue;
-		static Standard_Boolean MatchValue(Standard_CString val, TCollection_AsciiString text, const Standard_Boolean exact);
+		static bool MatchValue(const char * const val, TCollection_AsciiString text, const bool exact);
 
 		/****** IFSelect_Signature::Matches ******/
-		/****** md5 signature: 25b571cf97f17f16507fa37183f9efa7 ******/
+		/****** md5 signature: 6d9317b36aef9bf7cd0e8eb3fa2f139f ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
@@ -6209,23 +6224,23 @@ Description
 -----------
 Tells if the value for <ent> in <model> matches a text, with a criterium <exact>. The default definition calls MatchValue Can be redefined.
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
+		virtual bool Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const bool exact);
 
 		/****** IFSelect_Signature::Name ******/
-		/****** md5 signature: f35e373630f40191cc40cd61094fa98a ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns an identification of the Signature (a word), given at initialization time Returns the Signature for a Transient object. It is specific of each sub-class of Signature. For a Null Handle, it should provide '' It can work with the model which contains the entity.
 ") Name;
-		Standard_CString Name();
+		const char * Name();
 
 		/****** IFSelect_Signature::SetIntCase ******/
-		/****** md5 signature: 388e6f31fa1650afe25c0ac6d962f2c1 ******/
+		/****** md5 signature: bfe39a0fc63fae1d8667a55a0030c8a0 ******/
 		%feature("compactdefaultargs") SetIntCase;
 		%feature("autodoc", "
 Parameters
@@ -6243,12 +6258,10 @@ Description
 -----------
 Sets the information data to tell 'integer cases' with possible min and max values To be called when creating.
 ") SetIntCase;
-		void SetIntCase(const Standard_Boolean hasmin, const Standard_Integer valmin, const Standard_Boolean hasmax, const Standard_Integer valmax);
+		void SetIntCase(const bool hasmin, const int valmin, const bool hasmax, const int valmax);
 
 };
 
-
-%make_alias(IFSelect_Signature)
 
 %extend IFSelect_Signature {
 	%pythoncode {
@@ -6262,12 +6275,12 @@ Sets the information data to tell 'integer cases' with possible min and max valu
 class IFSelect_SignatureList : public Standard_Transient {
 	public:
 		/****** IFSelect_SignatureList::IFSelect_SignatureList ******/
-		/****** md5 signature: 617d160cc74b87de389f479b17de80c7 ******/
+		/****** md5 signature: cfbc72e7792ca75ada61d77fe208a3a3 ******/
 		%feature("compactdefaultargs") IFSelect_SignatureList;
 		%feature("autodoc", "
 Parameters
 ----------
-withlist: bool (optional, default to Standard_False)
+withlist: bool (optional, default to false)
 
 Return
 -------
@@ -6277,16 +6290,16 @@ Description
 -----------
 Creates a SignatureList. If <withlist> is True, entities will be not only counted per signature, but also listed.
 ") IFSelect_SignatureList;
-		 IFSelect_SignatureList(const Standard_Boolean withlist = Standard_False);
+		 IFSelect_SignatureList(const bool withlist = false);
 
 		/****** IFSelect_SignatureList::Add ******/
-		/****** md5 signature: 7ced6483bca29148b1ef0b198e2d9fd7 ******/
+		/****** md5 signature: 718935a051c0ae3f4561b8b9306dfdc4 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
-sign: str
+sign: char *
 
 Return
 -------
@@ -6296,7 +6309,7 @@ Description
 -----------
 Adds an entity with its signature, i.e.: - counts an item more for <sign> - if record-list status is set, records the entity Accepts a null entity (the signature is then for the global model). But if the string is empty, counts a Null item. //! If SignOnly Mode is set, this work is replaced by just setting LastValue.
 ") Add;
-		void Add(const opencascade::handle<Standard_Transient> & ent, Standard_CString sign);
+		void Add(const opencascade::handle<Standard_Transient> & ent, const char * const sign);
 
 		/****** IFSelect_SignatureList::Clear ******/
 		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
@@ -6312,25 +6325,25 @@ No available documentation.
 		virtual void Clear();
 
 		/****** IFSelect_SignatureList::Entities ******/
-		/****** md5 signature: f1bca8e0ebbd131d7c9ed5e560f83cdc ******/
+		/****** md5 signature: 84b308ecab826c4a70a9c5049ef943d7 ******/
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "
 Parameters
 ----------
-sign: str
+sign: char *
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of entities attached to a signature It is empty if <sign> has not been recorded It is a Null Handle if the list of entities is not known.
 ") Entities;
-		opencascade::handle<TColStd_HSequenceOfTransient> Entities(Standard_CString sign);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Entities(const char * const sign);
 
 		/****** IFSelect_SignatureList::HasEntities ******/
-		/****** md5 signature: 46f4f7dae74e18c284e18a5f8162ac98 ******/
+		/****** md5 signature: c7404181dc0d24dec7520a3d34972e30 ******/
 		%feature("compactdefaultargs") HasEntities;
 		%feature("autodoc", "Return
 -------
@@ -6340,15 +6353,15 @@ Description
 -----------
 Returns True if the list of Entities is acknowledged, else the method Entities will always return a Null Handle.
 ") HasEntities;
-		Standard_Boolean HasEntities();
+		bool HasEntities();
 
 		/****** IFSelect_SignatureList::Init ******/
-		/****** md5 signature: 2e9264f76b6b94cbbead6ecf86e6651a ******/
+		/****** md5 signature: b66ffa60d60ab9edd98de5dcd1ed52ee ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 count: NCollection_IndexedDataMap<TCollection_AsciiString, int>
 list: Standard_Transient
 nbnuls: int
@@ -6359,69 +6372,69 @@ None
 
 Description
 -----------
-Aknowledges the list in once. Name identifies the Signature.
+Acknowledges the list in once. Name identifies the Signature.
 ") Init;
-		void Init(Standard_CString name, const NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer> & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & list, const Standard_Integer nbnuls);
+		void Init(const char * const name, const NCollection_IndexedDataMap<TCollection_AsciiString, int> & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & list, const int nbnuls);
 
 		/****** IFSelect_SignatureList::LastValue ******/
-		/****** md5 signature: 122bd08c1221c9c0bf5730c64c0a8a77 ******/
+		/****** md5 signature: c509b394df18cc878081d0c782a187da ******/
 		%feature("compactdefaultargs") LastValue;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the last value recorded by Add (only if SignMode set) Cleared by Clear or Init.
 ") LastValue;
-		Standard_CString LastValue();
+		const char * LastValue();
 
 		/****** IFSelect_SignatureList::List ******/
-		/****** md5 signature: 8dc7679cdd22aa66cae030db33c24418 ******/
+		/****** md5 signature: 5d13bb94d511152d7b4073534b1fbe70 ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "
 Parameters
 ----------
-root: str (optional, default to "")
+root: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the list of signatures, as a sequence of strings (but without their respective counts). It is ordered. By default, for all the signatures. If <root> is given non empty, for the signatures which begin by <root>.
 ") List;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> List(Standard_CString root = "");
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> List(const char * const root = "");
 
+		/****** IFSelect_SignatureList::ModeSignOnly ******/
+		/****** md5 signature: e9824297de1a0aa53c52eee10a850065 ******/
+		%feature("compactdefaultargs") ModeSignOnly;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetModeSignOnly() {
-            return (Standard_Boolean) $self->ModeSignOnly();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetModeSignOnly(Standard_Boolean value) {
-            $self->ModeSignOnly()=value;
-            }
-        };
+Description
+-----------
+Returns modifiable the SignOnly Mode If False (D), the counter normally counts If True, the counting work is turned off, Add only fills the LastValue, which can be used as signature, when a counter works from data which are not available from a Signature.
+") ModeSignOnly;
+		bool & ModeSignOnly();
+
 		/****** IFSelect_SignatureList::Name ******/
-		/****** md5 signature: 4bbe2b58331ae651e1fa6526c574b2e9 ******/
+		/****** md5 signature: d0f648d103fb210439b8e51a7c73a769 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the recorded Name. Remark: default is '...' (no SetName called).
 ") Name;
-		virtual Standard_CString Name();
+		virtual const char * Name();
 
 		/****** IFSelect_SignatureList::NbNulls ******/
-		/****** md5 signature: cfa593b3c6472cd03b18541b1ee8bb0e ******/
+		/****** md5 signature: 83053ea2162a6d1a3cd160d319b67346 ******/
 		%feature("compactdefaultargs") NbNulls;
 		%feature("autodoc", "Return
 -------
@@ -6431,15 +6444,15 @@ Description
 -----------
 Returns the count of null entities.
 ") NbNulls;
-		Standard_Integer NbNulls();
+		int NbNulls();
 
 		/****** IFSelect_SignatureList::NbTimes ******/
-		/****** md5 signature: d3928dd8d786be332f5b830bb575825d ******/
+		/****** md5 signature: cf70563086b2aa23d59228585f5a79b8 ******/
 		%feature("compactdefaultargs") NbTimes;
 		%feature("autodoc", "
 Parameters
 ----------
-sign: str
+sign: char *
 
 Return
 -------
@@ -6449,7 +6462,7 @@ Description
 -----------
 Returns the number of times a signature was counted, 0 if it has not been recorded at all.
 ") NbTimes;
-		Standard_Integer NbTimes(Standard_CString sign);
+		int NbTimes(const char * const sign);
 
 		/****** IFSelect_SignatureList::PrintCount ******/
 		/****** md5 signature: 52dc9956b3be6f0fa8745979cb86a350 ******/
@@ -6505,7 +6518,7 @@ Prints a summary Item which has the greatest count of entities For items which a
 		virtual void PrintSum(std::ostream &OutValue);
 
 		/****** IFSelect_SignatureList::SetList ******/
-		/****** md5 signature: b238846d95b165f74a942ebb6e50644f ******/
+		/****** md5 signature: 761f02565409d7a36859628a7086be4d ******/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "
 Parameters
@@ -6520,15 +6533,15 @@ Description
 -----------
 Changes the record-list status. The list is not cleared but its use changes.
 ") SetList;
-		void SetList(const Standard_Boolean withlist);
+		void SetList(const bool withlist);
 
 		/****** IFSelect_SignatureList::SetName ******/
-		/****** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ******/
+		/****** md5 signature: 9334b2c77e8aae2ba868615f5b4f7498 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -6538,7 +6551,7 @@ Description
 -----------
 Defines a name for a SignatureList (used to print it).
 ") SetName;
-		void SetName(Standard_CString name);
+		void SetName(const char * const name);
 
 };
 
@@ -6558,7 +6571,7 @@ Defines a name for a SignatureList (used to print it).
 class IFSelect_Transformer : public Standard_Transient {
 	public:
 		/****** IFSelect_Transformer::ChangeProtocol ******/
-		/****** md5 signature: 2fd7ec0bc37d62ac5279aa66ec99add9 ******/
+		/****** md5 signature: 4d48a24150690e9f535160492b39ba53 ******/
 		%feature("compactdefaultargs") ChangeProtocol;
 		%feature("autodoc", "
 Parameters
@@ -6573,7 +6586,7 @@ Description
 -----------
 This methods allows to declare that the Protocol applied to the new Model has changed. It applies to the last call to Perform. //! Returns True if the Protocol has changed, False else. The provided default keeps the starting Protocol. This method should be redefined as required by the effect of Perform.
 ") ChangeProtocol;
-		virtual Standard_Boolean ChangeProtocol(opencascade::handle<Interface_Protocol> & newproto);
+		virtual bool ChangeProtocol(opencascade::handle<Interface_Protocol> & newproto);
 
 		/****** IFSelect_Transformer::Label ******/
 		/****** md5 signature: 458d8d95170c9aa9c0a465eba36c0e6b ******/
@@ -6589,7 +6602,7 @@ Returns a text which defines the way a Transformer works (to identify the transf
 		virtual TCollection_AsciiString Label();
 
 		/****** IFSelect_Transformer::Perform ******/
-		/****** md5 signature: 3943f0bcb223a865698c1e1a57574b3f ******/
+		/****** md5 signature: 1775a16fd6a045750708915c112227ae ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -6605,12 +6618,12 @@ bool
 
 Description
 -----------
-Performs a Transformation (defined by each sub-class): <G> gives the input data (especially the starting model) and can be used for queries (by Selections, etc...) <protocol> allows to work with General Services as necessary (it applies to input data) If the change corresponds to a conversion to a new protocol, see also the method ChangeProtocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation: - if it is Null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting Model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for ChangeProtocol to be memorized if needed, and to store information useful for the method Updated //! Returns True if Done, False if an Error occurred: in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
+Performs a Transformation (defined by each sub-class): <G> gives the input data (especially the starting model) and can be used for queries (by Selections, etc...) <protocol> allows to work with General Services as necessary (it applies to input data) If the change corresponds to a conversion to a new protocol, see also the method ChangeProtocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation: - if it is Null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependences - if it equates the starting Model, it has been transformed on the spot (possibly some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for ChangeProtocol to be memorized if needed, and to store information useful for the method Updated //! Returns True if Done, False if an Error occurred: in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
 ") Perform;
-		virtual Standard_Boolean Perform(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
+		virtual bool Perform(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
 
 		/****** IFSelect_Transformer::Updated ******/
-		/****** md5 signature: f2c6a42f1c9bf077ccbacd69a8e20215 ******/
+		/****** md5 signature: f6a686927615090a32252df8693e24b4 ******/
 		%feature("compactdefaultargs") Updated;
 		%feature("autodoc", "
 Parameters
@@ -6626,7 +6639,7 @@ Description
 -----------
 This method allows to know what happened to a starting entity after the last Perform. If <entfrom> (from starting model) has one and only one known item which corresponds in the new produced model, this method must return True and fill the argument <entto>. Else, it returns False.
 ") Updated;
-		virtual Standard_Boolean Updated(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto);
+		virtual bool Updated(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto);
 
 };
 
@@ -6646,7 +6659,7 @@ This method allows to know what happened to a starting entity after the last Per
 class IFSelect_WorkLibrary : public Standard_Transient {
 	public:
 		/****** IFSelect_WorkLibrary::CopyModel ******/
-		/****** md5 signature: db5b5d4891f31e9b4ed047a0e96d5d45 ******/
+		/****** md5 signature: e05c9bebba7eae694aaad096fc1384c8 ******/
 		%feature("compactdefaultargs") CopyModel;
 		%feature("autodoc", "
 Parameters
@@ -6664,10 +6677,10 @@ Description
 -----------
 Performs the copy of entities from an original model to a new one. It must also copy headers if any. Returns True when done. The provided default works by copying the individual entities designated in the list, by using the general service class CopyTool. It can be redefined for a norm which, either implements Copy by another way (do not forget to Bind each copied result with its original entity in TC) and returns True, or does not know how to copy and returns False.
 ") CopyModel;
-		virtual Standard_Boolean CopyModel(const opencascade::handle<Interface_InterfaceModel> & original, const opencascade::handle<Interface_InterfaceModel> & newmodel, const Interface_EntityIterator & list, Interface_CopyTool & TC);
+		virtual bool CopyModel(const opencascade::handle<Interface_InterfaceModel> & original, const opencascade::handle<Interface_InterfaceModel> & newmodel, const Interface_EntityIterator & list, Interface_CopyTool & TC);
 
 		/****** IFSelect_WorkLibrary::DumpEntity ******/
-		/****** md5 signature: f8408c5a3c33881cd6f64d4f853e5b90 ******/
+		/****** md5 signature: df0d04b3bf6fc4ddb212678f1ad64649 ******/
 		%feature("compactdefaultargs") DumpEntity;
 		%feature("autodoc", "
 Parameters
@@ -6685,7 +6698,7 @@ Description
 -----------
 Gives the way of dumping an entity under a form comprehensive for each norm. <model> helps to identify, number ... entities. <level> is to be interpreted for each norm (because of the formats which can be very different).
 ") DumpEntity;
-		virtual void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, std::ostream &OutValue, const Standard_Integer level);
+		virtual void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, std::ostream &OutValue, const int level);
 
 		/****** IFSelect_WorkLibrary::DumpEntity ******/
 		/****** md5 signature: d4ac4e0fc19594eff493ccd280b9aab2 ******/
@@ -6708,7 +6721,7 @@ Calls deferred DumpEntity with the recorded default level.
 		void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, std::ostream &OutValue);
 
 		/****** IFSelect_WorkLibrary::DumpHelp ******/
-		/****** md5 signature: f61ff69745dfa047c7a47cefecb0fa1c ******/
+		/****** md5 signature: f8dcea769f87d8f440a1ef990d69ab25 ******/
 		%feature("compactdefaultargs") DumpHelp;
 		%feature("autodoc", "
 Parameters
@@ -6717,16 +6730,16 @@ level: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the help line recorded for <level>, or an empty string.
 ") DumpHelp;
-		Standard_CString DumpHelp(const Standard_Integer level);
+		const char * DumpHelp(const int level);
 
 		/****** IFSelect_WorkLibrary::DumpLevels ******/
-		/****** md5 signature: 529ddb4236462ef77f450e8a022e3d8e ******/
+		/****** md5 signature: c9311858173bf51afd97270889120475 ******/
 		%feature("compactdefaultargs") DumpLevels;
 		%feature("autodoc", "
 Parameters
@@ -6744,12 +6757,12 @@ Returns the recorded default and maximum dump levels If none was recorded, max i
 		void DumpLevels(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** IFSelect_WorkLibrary::ReadFile ******/
-		/****** md5 signature: fe6b60049f66a434e42bea5788b5b985 ******/
+		/****** md5 signature: 375c7bb65101af02a3574d0a4dc65fe0 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 model: Interface_InterfaceModel
 protocol: Interface_Protocol
 
@@ -6761,15 +6774,15 @@ Description
 -----------
 Gives the way to Read a File and transfer it to a Model <mod> is the resulting Model, which has to be created by this method. In case of error, <mod> must be returned Null Return value is a status with free values. Simply, 0 is for 'Execution OK' The Protocol can be used to work (e.g. create the Model, read and recognize the Entities).
 ") ReadFile;
-		virtual Standard_Integer ReadFile(Standard_CString name, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
+		virtual int ReadFile(const char * const name, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_WorkLibrary::ReadStream ******/
-		/****** md5 signature: 7d642d9553aebd964841d2f9dbcaac5a ******/
+		/****** md5 signature: 98f20ad4f17b4fd0b2b07401dfae3d0b ******/
 		%feature("compactdefaultargs") ReadStream;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 theIStream: str
 model: Interface_InterfaceModel
 protocol: Interface_Protocol
@@ -6783,16 +6796,16 @@ Description
 Interface to read a data from the specified stream. 
 Parameter model is the resulting Model, which has to be created by this method. In case of error, model must be returned Null Return value is a status: 0 - OK, 1 - read failure, -1 - stream failure. //! Default implementation returns 1 (error).
 ") ReadStream;
-		virtual Standard_Integer ReadStream(Standard_CString theName, std::istream & theIStream, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
+		virtual int ReadStream(const char * const theName, std::istream & theIStream, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_WorkLibrary::SetDumpHelp ******/
-		/****** md5 signature: 52f5d8333bece08989ec0f399b1dcc5d ******/
+		/****** md5 signature: e22969e5d248e5ba0ae99959042a1acf ******/
 		%feature("compactdefaultargs") SetDumpHelp;
 		%feature("autodoc", "
 Parameters
 ----------
 level: int
-help: str
+help: char *
 
 Return
 -------
@@ -6802,10 +6815,10 @@ Description
 -----------
 Records a short line of help for a level (0 - max).
 ") SetDumpHelp;
-		void SetDumpHelp(const Standard_Integer level, Standard_CString help);
+		void SetDumpHelp(const int level, const char * const help);
 
 		/****** IFSelect_WorkLibrary::SetDumpLevels ******/
-		/****** md5 signature: 21d4e6a7431b11e62e82eb90cee676f0 ******/
+		/****** md5 signature: dae1c2afc819ab4067f2dd1bc2144710 ******/
 		%feature("compactdefaultargs") SetDumpLevels;
 		%feature("autodoc", "
 Parameters
@@ -6821,10 +6834,10 @@ Description
 -----------
 Records a default level and a maximum value for level level for DumpEntity can go between 0 and <max> default value will be <def>.
 ") SetDumpLevels;
-		void SetDumpLevels(const Standard_Integer def, const Standard_Integer max);
+		void SetDumpLevels(const int def, const int max);
 
 		/****** IFSelect_WorkLibrary::WriteFile ******/
-		/****** md5 signature: 4a5c937c1624a07b50e0018985e1414c ******/
+		/****** md5 signature: db3cc527cec06ecf5cb10c267c0e2017 ******/
 		%feature("compactdefaultargs") WriteFile;
 		%feature("autodoc", "
 Parameters
@@ -6839,7 +6852,7 @@ Description
 -----------
 Gives the way to Write a File from a Model. <ctx> contains all necessary information: the model, the protocol, the file name, and the list of File Modifiers to be applied, also with restricted list of selected entities for each one, if required. In return, it brings the produced check-list //! The WorkLibrary has to query <applied> to get then run the ContextWrite by looping like this (example): for (numap = 1; numap <= ctx.NbModifiers(); numap ++) { ctx.SetModifier (numap); cast ctx.FileModifier() to specific type -> variable filemod if (!filemod.IsNull()) filemod->Perform (ctx,writer); filemod then works with ctx. It can, either act on the model itself (for instance on its header), or iterate on selected entities (Start/Next/More/Value) it can call AddFail or AddWarning, as necessary }.
 ") WriteFile;
-		virtual Standard_Boolean WriteFile(IFSelect_ContextWrite & ctx);
+		virtual bool WriteFile(IFSelect_ContextWrite & ctx);
 
 };
 
@@ -6871,13 +6884,13 @@ Creates a Work Session It provides default, empty ShareOut and ModelCopier, whic
 		 IFSelect_WorkSession();
 
 		/****** IFSelect_WorkSession::AddItem ******/
-		/****** md5 signature: 2ba4f0bb951acb9f492e80152bb1a36e ******/
+		/****** md5 signature: 5f94a7b0cb3a2bd2bd657ea19e5f87fc ******/
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "
 Parameters
 ----------
 item: Standard_Transient
-active: bool (optional, default to Standard_True)
+active: bool (optional, default to true)
 
 Return
 -------
@@ -6887,17 +6900,17 @@ Description
 -----------
 Adds an Item and returns its attached Ident. Does nothing if <item> is already recorded (and returns its attached Ident) <active> if True commands call to SetActive (see below) Remark: the determined Ident is used if <item> is a Dispatch, to fill the ShareOut.
 ") AddItem;
-		Standard_Integer AddItem(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
+		int AddItem(const opencascade::handle<Standard_Transient> & item, const bool active = true);
 
 		/****** IFSelect_WorkSession::AddNamedItem ******/
-		/****** md5 signature: 736438f1f777d23e8e1ca4df36f26ab7 ******/
+		/****** md5 signature: fd3ec6ef095822202a56687fc6b26c6a ******/
 		%feature("compactdefaultargs") AddNamedItem;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 item: Standard_Transient
-active: bool (optional, default to Standard_True)
+active: bool (optional, default to true)
 
 Return
 -------
@@ -6907,23 +6920,23 @@ Description
 -----------
 Adds an Item with an attached Name. If the Name is already known in the WorkSession, the older item losts it Returns Ident if Done, 0 else, i.e. if <item> is null If <name> is empty, works as AddItem (i.e. with no name) If <item> is already known but with no attached Name, this method tries to attached a Name to it <active> if True commands call to SetActive (see below).
 ") AddNamedItem;
-		Standard_Integer AddNamedItem(Standard_CString name, const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
+		int AddNamedItem(const char * const name, const opencascade::handle<Standard_Transient> & item, const bool active = true);
 
 		/****** IFSelect_WorkSession::AppliedDispatches ******/
-		/****** md5 signature: 94c59edc2da25d825dd24e1d23fcb8dc ******/
+		/****** md5 signature: e97bac4f81b7039dcbb01358becdeb95 ******/
 		%feature("compactdefaultargs") AppliedDispatches;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfInteger>
+opencascade::handle<NCollection_HSequence<int>>
 
 Description
 -----------
 Returns the ordered list of dispatches stored by the ShareOut.
 ") AppliedDispatches;
-		opencascade::handle<TColStd_HSequenceOfInteger> AppliedDispatches();
+		opencascade::handle<NCollection_HSequence<int>> AppliedDispatches();
 
 		/****** IFSelect_WorkSession::BeginSentFiles ******/
-		/****** md5 signature: 96b7739806debf5e39e1945990896d5b ******/
+		/****** md5 signature: 65467586708818f782036c2790768098 ******/
 		%feature("compactdefaultargs") BeginSentFiles;
 		%feature("autodoc", "
 Parameters
@@ -6938,10 +6951,10 @@ Description
 -----------
 Commands file sending to clear the list of already sent files, commands to record a new one if <record> is True This list is managed by the ModelCopier when SendSplit is called It allows a global exploitation of the set of sent files.
 ") BeginSentFiles;
-		void BeginSentFiles(const Standard_Boolean record);
+		void BeginSentFiles(const bool record);
 
 		/****** IFSelect_WorkSession::CategoryName ******/
-		/****** md5 signature: fe5468462213d0f14e83c9c9416f1c98 ******/
+		/****** md5 signature: 6a6e9a65e18354f325c447b18fd605cd ******/
 		%feature("compactdefaultargs") CategoryName;
 		%feature("autodoc", "
 Parameters
@@ -6950,16 +6963,16 @@ ent: Standard_Transient
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Category Name determined for an entity it is computed by the class Category Remark: an unknown entity gives an empty string.
 ") CategoryName;
-		Standard_CString CategoryName(const opencascade::handle<Standard_Transient> & ent);
+		const char * CategoryName(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::CategoryNumber ******/
-		/****** md5 signature: 4d7b0b22e0a14e3ca4b5666d61fea57d ******/
+		/****** md5 signature: d6acaff1d09692149a730eec65d1877d ******/
 		%feature("compactdefaultargs") CategoryNumber;
 		%feature("autodoc", "
 Parameters
@@ -6974,10 +6987,10 @@ Description
 -----------
 Returns the Category Number determined for an entity it is computed by the class Category An unknown entity (number 0) gives a value -1.
 ") CategoryNumber;
-		Standard_Integer CategoryNumber(const opencascade::handle<Standard_Transient> & ent);
+		int CategoryNumber(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::ChangeModifierRank ******/
-		/****** md5 signature: 1a9b4aae2b699bf7fd4c390abc8ab4c3 ******/
+		/****** md5 signature: efe85ae76135b851a7bf17445e1ad8c5 ******/
 		%feature("compactdefaultargs") ChangeModifierRank;
 		%feature("autodoc", "
 Parameters
@@ -6994,16 +7007,16 @@ Description
 -----------
 Changes the Rank of a Modifier in the Session: Model Modifiers if <formodel> is True, File Modifiers else the Modifier n0 <before> is put to n0 <after> Return True if Done, False if <before> or <after> out of range.
 ") ChangeModifierRank;
-		Standard_Boolean ChangeModifierRank(const Standard_Boolean formodel, const Standard_Integer before, const Standard_Integer after);
+		bool ChangeModifierRank(const bool formodel, const int before, const int after);
 
 		/****** IFSelect_WorkSession::CheckOne ******/
-		/****** md5 signature: b298e5a2d898c55d98dae3821ba73a18 ******/
+		/****** md5 signature: 50afd7a7bb956abebf30c7b0fd8eb689 ******/
 		%feature("compactdefaultargs") CheckOne;
 		%feature("autodoc", "
 Parameters
 ----------
 ent: Standard_Transient
-complete: bool (optional, default to Standard_True)
+complete: bool (optional, default to true)
 
 Return
 -------
@@ -7013,10 +7026,10 @@ Description
 -----------
 Returns a Check for a single entity, under the form of a CheckIterator (this gives only one form for the user) if <ent> is Null or equates the current Model, it gives the Global Check, else the Check for the given entity <complete> as for ModelCheckList.
 ") CheckOne;
-		Interface_CheckIterator CheckOne(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean complete = Standard_True);
+		Interface_CheckIterator CheckOne(const opencascade::handle<Standard_Transient> & ent, const bool complete = true);
 
 		/****** IFSelect_WorkSession::ClearData ******/
-		/****** md5 signature: 44bfb3d19c6421e702d0e3ed8b6c5ea2 ******/
+		/****** md5 signature: 77903d86697fe7c80745bc201db6e46b ******/
 		%feature("compactdefaultargs") ClearData;
 		%feature("autodoc", "
 Parameters
@@ -7031,7 +7044,7 @@ Description
 -----------
 Clears recorded data (not the items) according mode: 1: all Data: Model, Graph, CheckList, + ClearData 4 2: Graph and CheckList (they will then be recomputed later) 3: CheckList (it will be recomputed by ComputeCheck) 4: just content of SelectPointed and Counters Plus 0: does nothing but called by SetModel ClearData is virtual, hence it can be redefined to clear other data of a specialised Work Session.
 ") ClearData;
-		virtual void ClearData(const Standard_Integer mode);
+		virtual void ClearData(const int mode);
 
 		/****** IFSelect_WorkSession::ClearFile ******/
 		/****** md5 signature: 00d692695064cbec934992520500d75e ******/
@@ -7073,7 +7086,7 @@ Clears all the recorded Items: Selections, Dispatches, Modifiers, and Strings & 
 		void ClearItems();
 
 		/****** IFSelect_WorkSession::ClearShareOut ******/
-		/****** md5 signature: 4e98b98b20923a4f8e374c2821b7c655 ******/
+		/****** md5 signature: fb5fbd8a7a0be0160081c9a816e11704 ******/
 		%feature("compactdefaultargs") ClearShareOut;
 		%feature("autodoc", "
 Parameters
@@ -7088,10 +7101,10 @@ Description
 -----------
 Clears the list of Dispatches recorded by the ShareOut if <only> disp is True, tha's all. Else, clears also the lists of Modifiers recorded by the ShareOut.
 ") ClearShareOut;
-		void ClearShareOut(const Standard_Boolean onlydisp);
+		void ClearShareOut(const bool onlydisp);
 
 		/****** IFSelect_WorkSession::CombineAdd ******/
-		/****** md5 signature: 7a13fbb39ab9c92b766fed37dde1f3bb ******/
+		/****** md5 signature: 072e5ab65eb86fc4d3becf63ea373b77 ******/
 		%feature("compactdefaultargs") CombineAdd;
 		%feature("autodoc", "
 Parameters
@@ -7108,10 +7121,10 @@ Description
 -----------
 Adds an input selection to a SelectCombine (Union or Inters.). Returns new count of inputs for this SelectCombine if Done or 0 if <sel> is not kind of SelectCombine, or if <seladd> or <sel> is not in the WorkSession By default, adding is done at the end of the list Else, it is an insertion to rank <atnum> (useful for Un-ReDo).
 ") CombineAdd;
-		Standard_Integer CombineAdd(const opencascade::handle<IFSelect_Selection> & selcomb, const opencascade::handle<IFSelect_Selection> & seladd, const Standard_Integer atnum = 0);
+		int CombineAdd(const opencascade::handle<IFSelect_Selection> & selcomb, const opencascade::handle<IFSelect_Selection> & seladd, const int atnum = 0);
 
 		/****** IFSelect_WorkSession::CombineRemove ******/
-		/****** md5 signature: 194e4e1184bb423b35d0317bcc6b90a9 ******/
+		/****** md5 signature: 4bbd8004bcbd7e37357fa78afb786943 ******/
 		%feature("compactdefaultargs") CombineRemove;
 		%feature("autodoc", "
 Parameters
@@ -7127,15 +7140,15 @@ Description
 -----------
 Removes an input selection from a SelectCombine (Union or Intersection). Returns True if done, False if <selcomb> is not kind of SelectCombine or <selrem> is not source of <selcomb>.
 ") CombineRemove;
-		Standard_Boolean CombineRemove(const opencascade::handle<IFSelect_Selection> & selcomb, const opencascade::handle<IFSelect_Selection> & selrem);
+		bool CombineRemove(const opencascade::handle<IFSelect_Selection> & selcomb, const opencascade::handle<IFSelect_Selection> & selrem);
 
 		/****** IFSelect_WorkSession::ComputeCheck ******/
-		/****** md5 signature: fc8877ffd690e8f5f4c80d1a6500349b ******/
+		/****** md5 signature: 9b00d28b98562f74721105cdb32ddeb2 ******/
 		%feature("compactdefaultargs") ComputeCheck;
 		%feature("autodoc", "
 Parameters
 ----------
-enforce: bool (optional, default to Standard_False)
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -7145,16 +7158,16 @@ Description
 -----------
 Computes the CheckList for the Model currently loaded It can then be used for displays, queries ... Returns True if OK, False else (i.e. no Protocol set, or Model absent). If <enforce> is False, works only if not already done or if a new Model has been loaded from last call. Remark: computation is enforced by every call to SetModel or RunTransformer.
 ") ComputeCheck;
-		Standard_Boolean ComputeCheck(const Standard_Boolean enforce = Standard_False);
+		bool ComputeCheck(const bool enforce = false);
 
 		/****** IFSelect_WorkSession::ComputeCounter ******/
-		/****** md5 signature: d93b204bb7627307599b333023d40680 ******/
+		/****** md5 signature: a497aa16c8ac81d16b208ba12bfa0958 ******/
 		%feature("compactdefaultargs") ComputeCounter;
 		%feature("autodoc", "
 Parameters
 ----------
 counter: IFSelect_SignCounter
-forced: bool (optional, default to Standard_False)
+forced: bool (optional, default to false)
 
 Return
 -------
@@ -7164,17 +7177,17 @@ Description
 -----------
 Computes the content of a SignCounter when it is defined with a Selection, then returns True Returns False if the SignCounter is not defined with a Selection, or if its Selection Mode is inhibited <forced> to work around optimisations.
 ") ComputeCounter;
-		Standard_Boolean ComputeCounter(const opencascade::handle<IFSelect_SignCounter> & counter, const Standard_Boolean forced = Standard_False);
+		bool ComputeCounter(const opencascade::handle<IFSelect_SignCounter> & counter, const bool forced = false);
 
 		/****** IFSelect_WorkSession::ComputeCounterFromList ******/
-		/****** md5 signature: 8359b7ef991de2aef90ada25f3d49680 ******/
+		/****** md5 signature: 4dfb996dec1ef2e289cf71e27a483545 ******/
 		%feature("compactdefaultargs") ComputeCounterFromList;
 		%feature("autodoc", "
 Parameters
 ----------
 counter: IFSelect_SignCounter
-list: TColStd_HSequenceOfTransient
-clear: bool (optional, default to Standard_True)
+list: NCollection_HSequence<
+clear: bool (optional, default to true)
 
 Return
 -------
@@ -7184,15 +7197,15 @@ Description
 -----------
 Computes the content of a SignCounter from an input list If <list> is Null, uses internal definition of the Counter: a Selection, else the whole Model (recomputation forced) If <clear> is True (D), starts from scratch Else, cumulates computations.
 ") ComputeCounterFromList;
-		Standard_Boolean ComputeCounterFromList(const opencascade::handle<IFSelect_SignCounter> & counter, const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Standard_Boolean clear = Standard_True);
+		bool ComputeCounterFromList(const opencascade::handle<IFSelect_SignCounter> & counter, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const bool clear = true);
 
 		/****** IFSelect_WorkSession::ComputeGraph ******/
-		/****** md5 signature: 93f0ae027020183b405c7abf39b5b54c ******/
+		/****** md5 signature: f8cef51029c94d25e732cb4452ea990e ******/
 		%feature("compactdefaultargs") ComputeGraph;
 		%feature("autodoc", "
 Parameters
 ----------
-enforce: bool (optional, default to Standard_False)
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -7202,7 +7215,7 @@ Description
 -----------
 Computes the Graph used for Selections, Displays ... If a HGraph is already set, with same model as given by method Model, does nothing. Else, computes a new Graph. If <enforce> is given True, computes a new Graph anyway. Remark that a call to ClearGraph will cause ComputeGraph to really compute a new Graph Returns True if Graph is OK, False else (i.e. if no Protocol is set, or if Model is absent or empty).
 ") ComputeGraph;
-		Standard_Boolean ComputeGraph(const Standard_Boolean enforce = Standard_False);
+		bool ComputeGraph(const bool enforce = false);
 
 		/****** IFSelect_WorkSession::DefaultFileRoot ******/
 		/****** md5 signature: 76f361e0849c95f490d6a4485ae45c8c ******/
@@ -7218,7 +7231,7 @@ Returns the defined Default File Root. It is used for Dispatches which have no s
 		opencascade::handle<TCollection_HAsciiString> DefaultFileRoot();
 
 		/****** IFSelect_WorkSession::Dispatch ******/
-		/****** md5 signature: 6e9dba48c8f48c694220969de236530d ******/
+		/****** md5 signature: ba9a32cdc7d80db476cb974fb73e0707 ******/
 		%feature("compactdefaultargs") Dispatch;
 		%feature("autodoc", "
 Parameters
@@ -7233,10 +7246,10 @@ Description
 -----------
 Returns a Dispatch, given its Ident in the Session Null result if <id> is not suitable for a Dispatch (undefined, or defined for another kind of variable).
 ") Dispatch;
-		opencascade::handle<IFSelect_Dispatch> Dispatch(const Standard_Integer id);
+		opencascade::handle<IFSelect_Dispatch> Dispatch(const int id);
 
 		/****** IFSelect_WorkSession::DispatchRank ******/
-		/****** md5 signature: dfbe0c683941ff8c0cafbd139068388c ******/
+		/****** md5 signature: c22ee11a34f47595231080af0aa9ec21 ******/
 		%feature("compactdefaultargs") DispatchRank;
 		%feature("autodoc", "
 Parameters
@@ -7251,10 +7264,10 @@ Description
 -----------
 Returns the rank of a Dispatch in the ShareOut, or 0 if <disp> is not in the ShareOut or not in the WorkSession.
 ") DispatchRank;
-		Standard_Integer DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
+		int DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
 
 		/****** IFSelect_WorkSession::DumpEntity ******/
-		/****** md5 signature: f990cff2a6a7f265e11d7bac988dbbd6 ******/
+		/****** md5 signature: 01e9085510919f828782ad7def46e186 ******/
 		%feature("compactdefaultargs") DumpEntity;
 		%feature("autodoc", "
 Parameters
@@ -7270,10 +7283,10 @@ Description
 -----------
 Dumps a starting entity according to the current norm. To do this, it calls DumpEntity from WorkLibrary. <level> is to be interpreted for each norm: see specific classes of WorkLibrary for it. Generally, 0 if for very basic (only type ...), greater values give more and more details.
 ") DumpEntity;
-		void DumpEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level, std::ostream &OutValue);
+		void DumpEntity(const opencascade::handle<Standard_Transient> & ent, const int level, std::ostream &OutValue);
 
 		/****** IFSelect_WorkSession::DumpModel ******/
-		/****** md5 signature: d1b07e5d32687faa97f239407098b2d6 ******/
+		/****** md5 signature: db04c0203390e3f953514095a9e6edf3 ******/
 		%feature("compactdefaultargs") DumpModel;
 		%feature("autodoc", "
 Parameters
@@ -7288,7 +7301,7 @@ Description
 -----------
 Lists the content of the Input Model (if there is one) According level: 0 -> gives only count of Entities and Roots 1 -> Lists also Roots; 2 -> Lists all Entities (by TraceType) 3 -> Performs a call to CheckList (Fails) and lists the result 4 -> as 3 but all CheckList (Fails + Warnings) 5,6,7: as 3 but resp. Count,List,Labels by Fail 8,9,10: as 4 but resp. Count,List,Labels by message.
 ") DumpModel;
-		void DumpModel(const Standard_Integer level, std::ostream &OutValue);
+		void DumpModel(const int level, std::ostream &OutValue);
 
 		/****** IFSelect_WorkSession::DumpSelection ******/
 		/****** md5 signature: 678949be99cdcf061da9cb44548ea4f4 ******/
@@ -7358,7 +7371,7 @@ Returns the Name of an Entity This Name is computed by the general service Name 
 		opencascade::handle<TCollection_HAsciiString> EntityName(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::ErrorHandle ******/
-		/****** md5 signature: 1f8036506b5b043342f3ab6af1622d94 ******/
+		/****** md5 signature: ba2bca9e3abc7ebf67f57ebdc2fa7f2f ******/
 		%feature("compactdefaultargs") ErrorHandle;
 		%feature("autodoc", "Return
 -------
@@ -7368,7 +7381,7 @@ Description
 -----------
 Returns the Error Handler status.
 ") ErrorHandle;
-		Standard_Boolean ErrorHandle();
+		bool ErrorHandle();
 
 		/****** IFSelect_WorkSession::EvalSelection ******/
 		/****** md5 signature: bfb79f278033738ecf36a81b7a08e910 ******/
@@ -7402,7 +7415,7 @@ Returns an Evaluation of the whole ShareOut definition: i.e. how the entities of
 		opencascade::handle<IFSelect_PacketList> EvalSplit();
 
 		/****** IFSelect_WorkSession::EvaluateComplete ******/
-		/****** md5 signature: 93a154e5e4d7ae01aa5611ae7f32813f ******/
+		/****** md5 signature: df8d1f4ab1ce53c855fde8c7560aaca8 ******/
 		%feature("compactdefaultargs") EvaluateComplete;
 		%feature("autodoc", "
 Parameters
@@ -7417,10 +7430,10 @@ Description
 -----------
 Displays the effect of applying the ShareOut on the input Model. <mode> = 0 (default): displays only roots for each packet, <mode> = 1: displays all entities for each packet, plus duplicated entities <mode> = 2: same as <mode> = 1, plus displays forgotten entities (which are in no packet at all).
 ") EvaluateComplete;
-		void EvaluateComplete(const Standard_Integer mode = 0);
+		void EvaluateComplete(const int mode = 0);
 
 		/****** IFSelect_WorkSession::EvaluateDispatch ******/
-		/****** md5 signature: d02dfc9af679b44ff744911d94efa670 ******/
+		/****** md5 signature: ab79be7c4527859ab124e097d8204b50 ******/
 		%feature("compactdefaultargs") EvaluateDispatch;
 		%feature("autodoc", "
 Parameters
@@ -7436,7 +7449,7 @@ Description
 -----------
 Displays the result of applying a Dispatch on the input Model (also shows Remainder if there is) <mode> = 0 (default), displays nothing else <mode> = 1: displays also duplicated entities (because of this dispatch) <mode> = 2: displays the entities of the starting Model which are not taken by this dispatch (forgotten entities) <mode> = 3: displays both duplicated and forgotten entities Remark: EvaluateComplete displays these data evaluated for for all the dispatches, if there are several.
 ") EvaluateDispatch;
-		void EvaluateDispatch(const opencascade::handle<IFSelect_Dispatch> & disp, const Standard_Integer mode = 0);
+		void EvaluateDispatch(const opencascade::handle<IFSelect_Dispatch> & disp, const int mode = 0);
 
 		/****** IFSelect_WorkSession::EvaluateFile ******/
 		/****** md5 signature: fd154556856381374f925701b3204990 ******/
@@ -7483,7 +7496,7 @@ Returns the defined File Extension. Null Handle if not defined.
 		opencascade::handle<TCollection_HAsciiString> FileExtension();
 
 		/****** IFSelect_WorkSession::FileModel ******/
-		/****** md5 signature: e7ebafed780641c5418e50b756d6cfe8 ******/
+		/****** md5 signature: 8cb365dc0e8a7a0a5acbc46003d6b3f4 ******/
 		%feature("compactdefaultargs") FileModel;
 		%feature("autodoc", "
 Parameters
@@ -7498,10 +7511,10 @@ Description
 -----------
 Returns a Model, given its rank in the Evaluation List.
 ") FileModel;
-		opencascade::handle<Interface_InterfaceModel> FileModel(const Standard_Integer num);
+		opencascade::handle<Interface_InterfaceModel> FileModel(const int num);
 
 		/****** IFSelect_WorkSession::FileName ******/
-		/****** md5 signature: b2588c3658582d921f5c74ad9b5353f2 ******/
+		/****** md5 signature: 6b3947be12b37f52d30dcfd87eec0d14 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "
 Parameters
@@ -7516,7 +7529,7 @@ Description
 -----------
 Returns the name of a file corresponding to a produced Model, given its rank in the Evaluation List.
 ") FileName;
-		TCollection_AsciiString FileName(const Standard_Integer num);
+		TCollection_AsciiString FileName(const int num);
 
 		/****** IFSelect_WorkSession::FilePrefix ******/
 		/****** md5 signature: 2a089741355b029c51a1e7e430302c16 ******/
@@ -7550,7 +7563,7 @@ Returns the File Root defined for a Dispatch. Null if no Root Name is defined fo
 		opencascade::handle<TCollection_HAsciiString> FileRoot(const opencascade::handle<IFSelect_Dispatch> & disp);
 
 		/****** IFSelect_WorkSession::FinalModifierIdents ******/
-		/****** md5 signature: 313c53766a6ff4aa1d9d1532f7666caa ******/
+		/****** md5 signature: 6b4d859d29747ad293b93bfac94cd73e ******/
 		%feature("compactdefaultargs") FinalModifierIdents;
 		%feature("autodoc", "
 Parameters
@@ -7559,16 +7572,16 @@ formodel: bool
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfInteger>
+opencascade::handle<NCollection_HSequence<int>>
 
 Description
 -----------
 Fills a Sequence with a list of Idents, those attached to the Modifiers applied to final sending. Model Modifiers if <formodel> is True, File Modifiers else This list is given in the order in which they will be applied (which takes into account the Changes to Modifier Ranks).
 ") FinalModifierIdents;
-		opencascade::handle<TColStd_HSequenceOfInteger> FinalModifierIdents(const Standard_Boolean formodel);
+		opencascade::handle<NCollection_HSequence<int>> FinalModifierIdents(const bool formodel);
 
 		/****** IFSelect_WorkSession::GeneralModifier ******/
-		/****** md5 signature: 4310729e060bd6ea83940ba4efe70eed ******/
+		/****** md5 signature: e1752b1a6ee507db4346cf6ee268aa74 ******/
 		%feature("compactdefaultargs") GeneralModifier;
 		%feature("autodoc", "
 Parameters
@@ -7583,10 +7596,10 @@ Description
 -----------
 Returns a Modifier, given its Ident in the Session Null result if <id> is not suitable for a Modifier (undefined, or defined for another kind of variable).
 ") GeneralModifier;
-		opencascade::handle<IFSelect_GeneralModifier> GeneralModifier(const Standard_Integer id);
+		opencascade::handle<IFSelect_GeneralModifier> GeneralModifier(const int id);
 
 		/****** IFSelect_WorkSession::GetModeStat ******/
-		/****** md5 signature: 03ccade5c68d171caace83f6c5f02345 ******/
+		/****** md5 signature: cf8b616a57cdda000621b1404163fadb ******/
 		%feature("compactdefaultargs") GetModeStat;
 		%feature("autodoc", "Return
 -------
@@ -7596,46 +7609,46 @@ Description
 -----------
 Return value of mode defining of filling selection during loading.
 ") GetModeStat;
-		Standard_Boolean GetModeStat();
+		bool GetModeStat();
 
 		/****** IFSelect_WorkSession::GiveFileComplete ******/
-		/****** md5 signature: 1247eff38c1782c84de458497d335c69 ******/
+		/****** md5 signature: 919017e7dcd3bbe07eacf70faf743095 ******/
 		%feature("compactdefaultargs") GiveFileComplete;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
+file: char *
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Completes a file name as required, with Prefix and Extension (if defined; for a non-defined item, completes nothing).
 ") GiveFileComplete;
-		Standard_CString GiveFileComplete(Standard_CString file);
+		const char * GiveFileComplete(const char * const file);
 
 		/****** IFSelect_WorkSession::GiveFileRoot ******/
-		/****** md5 signature: c99880fd6445cdb93e8e5b259e121dbb ******/
+		/****** md5 signature: e524b75333f67161ab12492bef42ed8f ******/
 		%feature("compactdefaultargs") GiveFileRoot;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
+file: char *
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Extracts File Root Name from a given complete file name (uses OSD_Path).
 ") GiveFileRoot;
-		Standard_CString GiveFileRoot(Standard_CString file);
+		const char * GiveFileRoot(const char * const file);
 
 		/****** IFSelect_WorkSession::GiveList ******/
-		/****** md5 signature: 4bca4d5724ad519a68e85d9dda679748 ******/
+		/****** md5 signature: 52aa59d21505ee3f8af522a630ee3cdf ******/
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "
 Parameters
@@ -7644,79 +7657,79 @@ obj: Standard_Transient
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Determines a list of entities from an object: <obj> already HSequenceOfTransient: returned itself <obj> Selection: its Result of Evaluation is returned <obj> an entity of the Model: a HSequence which contains it else, an empty HSequence <obj> the Model it self: ALL its content (not only the roots).
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<Standard_Transient> & obj);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const opencascade::handle<Standard_Transient> & obj);
 
 		/****** IFSelect_WorkSession::GiveList ******/
-		/****** md5 signature: 97668f9eec00d5b9865925cdfdd4bca2 ******/
+		/****** md5 signature: 6c98dba3e7eebc858dc17fbb92833916 ******/
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "
 Parameters
 ----------
-first: str
-second: str (optional, default to "")
+first: char *
+second: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Computes a List of entities from two alphanums, first and second, as follows: if <first> is a Number or Label of an entity: this entity if <first> is a list of Numbers/Labels: the list of entities if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection else, let's consider 'first second': this whole phrase is split by blanks, as follows (RECURSIVE CALL): - the leftest term is the final selection - the other terms define the result of the selection - and so on (the 'leftest minus one' is a selection, of which the input is given by the remaining ...).
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first, Standard_CString second = "");
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const char * const first, const char * const second = "");
 
 		/****** IFSelect_WorkSession::GiveListCombined ******/
-		/****** md5 signature: 50ed957a633c524c90881f765cc28f20 ******/
+		/****** md5 signature: fc1eef8460518cf28ef600dedbfb35cd ******/
 		%feature("compactdefaultargs") GiveListCombined;
 		%feature("autodoc", "
 Parameters
 ----------
-l1: TColStd_HSequenceOfTransient
-l2: TColStd_HSequenceOfTransient
+l1: NCollection_HSequence<
+l2: NCollection_HSequence<
 mode: int
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Combines two lists and returns the result, according to mode: <mode> < 0: entities in <l1> AND NOT in <l2> <mode> = 0: entities in <l1> AND in <l2> <mode> > 0: entities in <l1> OR in <l2>.
 ") GiveListCombined;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveListCombined(const opencascade::handle<TColStd_HSequenceOfTransient> & l1, const opencascade::handle<TColStd_HSequenceOfTransient> & l2, const Standard_Integer mode);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveListCombined(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & l1, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & l2, const int mode);
 
 		/****** IFSelect_WorkSession::GiveListFromList ******/
-		/****** md5 signature: 45cdbed754a81f3930fc7962c5907e61 ******/
+		/****** md5 signature: a7f91850f94ba5aeb15ae473850ace39 ******/
 		%feature("compactdefaultargs") GiveListFromList;
 		%feature("autodoc", "
 Parameters
 ----------
-selname: str
+selname: char *
 ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Computes a List of entities from the model as follows <first> being a Selection or a combination of Selections, <ent> being an entity or a list of entities (as a HSequenceOfTransient): the standard result of this selection applied to this list if <ent> is Null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! REMARK: selname is processed as <first second> of preceding GiveList.
 ") GiveListFromList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveListFromList(Standard_CString selname, const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveListFromList(const char * const selname, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::GiveSelection ******/
-		/****** md5 signature: e7bdb5970e9ecb00b538d69fec32ab68 ******/
+		/****** md5 signature: 9811506c637b8c753c938c92d30adfc1 ******/
 		%feature("compactdefaultargs") GiveSelection;
 		%feature("autodoc", "
 Parameters
 ----------
-selname: str
+selname: char *
 
 Return
 -------
@@ -7726,7 +7739,7 @@ Description
 -----------
 Returns a Selection from a Name: - the name of a Selection: this Selection - the name of a Signature + criteria between (..): a new Selection from this Signature - an entity or a list of entities: a new SelectPointed Else, returns a Null Handle.
 ") GiveSelection;
-		opencascade::handle<IFSelect_Selection> GiveSelection(Standard_CString selname);
+		opencascade::handle<IFSelect_Selection> GiveSelection(const char * const selname);
 
 		/****** IFSelect_WorkSession::Graph ******/
 		/****** md5 signature: 85b94047fc558166dc241ea6e5d26215 ******/
@@ -7755,7 +7768,7 @@ Returns the Computed Graph as HGraph (Null Handle if not set).
 		opencascade::handle<Interface_HGraph> HGraph();
 
 		/****** IFSelect_WorkSession::HasModel ******/
-		/****** md5 signature: db25e718411e452d99df991da304cdf3 ******/
+		/****** md5 signature: 37eb51dea8f70c9b349c73228786e3a5 ******/
 		%feature("compactdefaultargs") HasModel;
 		%feature("autodoc", "Return
 -------
@@ -7765,10 +7778,10 @@ Description
 -----------
 Returns True is a Model has been set.
 ") HasModel;
-		Standard_Boolean HasModel();
+		bool HasModel();
 
 		/****** IFSelect_WorkSession::HasName ******/
-		/****** md5 signature: f489bd18e6696d866a74d06f0e87d676 ******/
+		/****** md5 signature: da1ccc8f43c7d9a93e33efcb7b5046da ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "
 Parameters
@@ -7783,10 +7796,10 @@ Description
 -----------
 Returns True if an Item of the WorkSession has an attached Name.
 ") HasName;
-		Standard_Boolean HasName(const opencascade::handle<Standard_Transient> & item);
+		bool HasName(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_WorkSession::IntParam ******/
-		/****** md5 signature: 4580da0fc1da7c6ebea81b8b134d0342 ******/
+		/****** md5 signature: 0b41bb82cd53bcdd1b7d5736609817ac ******/
 		%feature("compactdefaultargs") IntParam;
 		%feature("autodoc", "
 Parameters
@@ -7801,10 +7814,10 @@ Description
 -----------
 Returns an IntParam, given its Ident in the Session Null result if <id> is not suitable for an IntParam (undefined, or defined for another kind of variable).
 ") IntParam;
-		opencascade::handle<IFSelect_IntParam> IntParam(const Standard_Integer id);
+		opencascade::handle<IFSelect_IntParam> IntParam(const int id);
 
 		/****** IFSelect_WorkSession::IntValue ******/
-		/****** md5 signature: 6df8db46d8ca39c6b0c598f88056d95e ******/
+		/****** md5 signature: 68285e1f78803ff090c487d56e0d41ac ******/
 		%feature("compactdefaultargs") IntValue;
 		%feature("autodoc", "
 Parameters
@@ -7819,10 +7832,10 @@ Description
 -----------
 Returns Integer Value of an IntParam.
 ") IntValue;
-		Standard_Integer IntValue(const opencascade::handle<IFSelect_IntParam> & it);
+		int IntValue(const opencascade::handle<IFSelect_IntParam> & it);
 
 		/****** IFSelect_WorkSession::IsLoaded ******/
-		/****** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ******/
+		/****** md5 signature: fc2ce1bc5ddcb407c056c0f8bbdeface ******/
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "Return
 -------
@@ -7832,10 +7845,10 @@ Description
 -----------
 Returns True if a Model is defined and really loaded (not empty), a Protocol is set and a Graph has been computed. In this case, the WorkSession can start to work.
 ") IsLoaded;
-		Standard_Boolean IsLoaded();
+		bool IsLoaded();
 
 		/****** IFSelect_WorkSession::IsReversedSelectExtract ******/
-		/****** md5 signature: 9d0d40555ac05518aa0261cd00f86b14 ******/
+		/****** md5 signature: 2d159ec820c9ab357e243f6f6880ce6a ******/
 		%feature("compactdefaultargs") IsReversedSelectExtract;
 		%feature("autodoc", "
 Parameters
@@ -7850,10 +7863,10 @@ Description
 -----------
 Returns True if <sel> a Reversed SelectExtract, False else.
 ") IsReversedSelectExtract;
-		Standard_Boolean IsReversedSelectExtract(const opencascade::handle<IFSelect_Selection> & sel);
+		bool IsReversedSelectExtract(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::Item ******/
-		/****** md5 signature: 132f1a8cbf2d87a24c33c9654317b9aa ******/
+		/****** md5 signature: 6d552b159d123ae57a7bf8a50e5159af ******/
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "
 Parameters
@@ -7868,10 +7881,10 @@ Description
 -----------
 Returns an Item, given its Ident. Returns a Null Handle if no Item corresponds to this Ident.
 ") Item;
-		opencascade::handle<Standard_Transient> Item(const Standard_Integer id);
+		opencascade::handle<Standard_Transient> Item(const int id);
 
 		/****** IFSelect_WorkSession::ItemIdent ******/
-		/****** md5 signature: c0bb85f5bfbf2ff656a0c075d8e848df ******/
+		/****** md5 signature: d4142a749986cc25090a695593f6a339 ******/
 		%feature("compactdefaultargs") ItemIdent;
 		%feature("autodoc", "
 Parameters
@@ -7886,10 +7899,10 @@ Description
 -----------
 Returns the Ident attached to an Item in the WorkSession, or Zero if it is unknown.
 ") ItemIdent;
-		Standard_Integer ItemIdent(const opencascade::handle<Standard_Transient> & item);
+		int ItemIdent(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_WorkSession::ItemIdents ******/
-		/****** md5 signature: f52b498d34523b439bb963eac07a86dc ******/
+		/****** md5 signature: 8a2c17357113b2d5dd29b32e01099a45 ******/
 		%feature("compactdefaultargs") ItemIdents;
 		%feature("autodoc", "
 Parameters
@@ -7898,16 +7911,16 @@ type: Standard_Type
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfInteger>
+opencascade::handle<NCollection_HSequence<int>>
 
 Description
 -----------
 Fills a Sequence with the List of Idents attached to the Items of which Type complies with (IsKind) <type> (alphabetic order) Remark: <type> = TYPE(Standard_Transient) gives all the Idents which are suitable in the WorkSession.
 ") ItemIdents;
-		opencascade::handle<TColStd_HSequenceOfInteger> ItemIdents(const opencascade::handle<Standard_Type> & type);
+		opencascade::handle<NCollection_HSequence<int>> ItemIdents(const opencascade::handle<Standard_Type> & type);
 
 		/****** IFSelect_WorkSession::ItemLabel ******/
-		/****** md5 signature: 5c395d828e11322209d78f62dcdd99cf ******/
+		/****** md5 signature: 84010bde2c382e5575a07f11545b1890 ******/
 		%feature("compactdefaultargs") ItemLabel;
 		%feature("autodoc", "
 Parameters
@@ -7922,10 +7935,10 @@ Description
 -----------
 Returns a Label which illustrates the content of an Item, given its Ident. This Label is: - for a Text Parameter, 'Text:<text value>' - for an Integer Parameter, 'Integer:<integer value>' - for a Selection, a Dispatch or a Modifier, its Label (see these classes) - for any other kind of Variable, its cdl type.
 ") ItemLabel;
-		opencascade::handle<TCollection_HAsciiString> ItemLabel(const Standard_Integer id);
+		opencascade::handle<TCollection_HAsciiString> ItemLabel(const int id);
 
 		/****** IFSelect_WorkSession::ItemNames ******/
-		/****** md5 signature: f2cbd78e305cc2e7a1f0ee7eb7911051 ******/
+		/****** md5 signature: 4f3494126b583910c8f799ea74f9f902 ******/
 		%feature("compactdefaultargs") ItemNames;
 		%feature("autodoc", "
 Parameters
@@ -7934,31 +7947,31 @@ type: Standard_Type
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Fills a Sequence with the list of the Names attached to Items of which Type complies with (IsKind) <type> (alphabetic order) Remark: <type> = TYPE(Standard_Transient) gives all the Names.
 ") ItemNames;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNames(const opencascade::handle<Standard_Type> & type);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ItemNames(const opencascade::handle<Standard_Type> & type);
 
 		/****** IFSelect_WorkSession::ItemNamesForLabel ******/
-		/****** md5 signature: 41ac431e11ca2cf7caff9d3a999774b9 ******/
+		/****** md5 signature: 67dc6381ff2986b7161884470fb043dc ******/
 		%feature("compactdefaultargs") ItemNamesForLabel;
 		%feature("autodoc", "
 Parameters
 ----------
-label: str
+label: char *
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Fills a Sequence with the NAMES of the control items, of which the label matches <label> (contain it): see NextIdentForLabel Search mode is fixed to 'contained' If <label> is empty, returns all Names.
 ") ItemNamesForLabel;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNamesForLabel(Standard_CString label);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ItemNamesForLabel(const char * const label);
 
 		/****** IFSelect_WorkSession::ItemSelection ******/
 		/****** md5 signature: 956eda2c30cfefc248c7413783399d39 ******/
@@ -7992,7 +8005,7 @@ Returns the Check List produced by the last execution of either: EvaluateFile(fo
 		Interface_CheckIterator LastRunCheckList();
 
 		/****** IFSelect_WorkSession::ListEntities ******/
-		/****** md5 signature: 7dcb72658ee62c200859aa51b254701d ******/
+		/****** md5 signature: 5151bcc340eaea46e9167a2eef1d8973 ******/
 		%feature("compactdefaultargs") ListEntities;
 		%feature("autodoc", "
 Parameters
@@ -8008,10 +8021,10 @@ Description
 -----------
 Internal method which displays an EntityIterator <mode> 0 gives short display (only entity numbers) 1 gives a more complete trace (1 line per Entity) (can be used each time a trace has to be output from a list) 2 gives a form suitable for givelist: (n1,n2,n3...).
 ") ListEntities;
-		void ListEntities(const Interface_EntityIterator & iter, const Standard_Integer mode, std::ostream &OutValue);
+		void ListEntities(const Interface_EntityIterator & iter, const int mode, std::ostream &OutValue);
 
 		/****** IFSelect_WorkSession::ListFinalModifiers ******/
-		/****** md5 signature: b6f48db447f14a56611601af586a67c5 ******/
+		/****** md5 signature: 4b440d34764ca6993390d732bd6c1c56 ******/
 		%feature("compactdefaultargs") ListFinalModifiers;
 		%feature("autodoc", "
 Parameters
@@ -8026,15 +8039,15 @@ Description
 -----------
 Lists the Modifiers of the session (for each one, displays its Label). Listing is done following Ranks (Modifiers are invoked following their ranks) Model Modifiers if <formodel> is True, File Modifiers else.
 ") ListFinalModifiers;
-		void ListFinalModifiers(const Standard_Boolean formodel);
+		void ListFinalModifiers(const bool formodel);
 
 		/****** IFSelect_WorkSession::ListItems ******/
-		/****** md5 signature: 683ddff48d5f3d3d6d4ec6e71a193c84 ******/
+		/****** md5 signature: d73671862bbfe2d46f33f5980ab1e32b ******/
 		%feature("compactdefaultargs") ListItems;
 		%feature("autodoc", "
 Parameters
 ----------
-label: str (optional, default to "")
+label: char * (optional, default to "")
 
 Return
 -------
@@ -8044,23 +8057,23 @@ Description
 -----------
 Lists the Labels of all Items of the WorkSession If <label> is defined, lists labels which contain it.
 ") ListItems;
-		void ListItems(Standard_CString label = "");
+		void ListItems(const char * const label = "");
 
 		/****** IFSelect_WorkSession::LoadedFile ******/
-		/****** md5 signature: cd8186f0319b05e7f10c031208799d3c ******/
+		/****** md5 signature: 4fb8fd6f811187b27fdb188f1c90c0e4 ******/
 		%feature("compactdefaultargs") LoadedFile;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the filename used to load current model empty if unknown.
 ") LoadedFile;
-		Standard_CString LoadedFile();
+		const char * LoadedFile();
 
 		/****** IFSelect_WorkSession::MaxIdent ******/
-		/****** md5 signature: 77c22d5a5b7fd8e9eb6d83243211ef9c ******/
+		/****** md5 signature: 7e958616dfbc4d71b655c4db85f7d5a8 ******/
 		%feature("compactdefaultargs") MaxIdent;
 		%feature("autodoc", "Return
 -------
@@ -8070,10 +8083,10 @@ Description
 -----------
 Returns the Maximum Value for an Item Identifier. It can be greater to the count of known Items, because some can have been removed.
 ") MaxIdent;
-		Standard_Integer MaxIdent();
+		int MaxIdent();
 
 		/****** IFSelect_WorkSession::MaxSendingCount ******/
-		/****** md5 signature: 45e0fad1b2c16e3e07b24501a553972f ******/
+		/****** md5 signature: adb39fa78501015734c08f8627493d1a ******/
 		%feature("compactdefaultargs") MaxSendingCount;
 		%feature("autodoc", "Return
 -------
@@ -8083,7 +8096,7 @@ Description
 -----------
 Returns the greater count of different files in which any of the starting entities could be sent. Before any file output, this count is 0. Ideal count is 1. More than 1 means that duplications occur.
 ") MaxSendingCount;
-		Standard_Integer MaxSendingCount();
+		int MaxSendingCount();
 
 		/****** IFSelect_WorkSession::Model ******/
 		/****** md5 signature: e485d2c2a2cfa9af3cc655f00e076be4 ******/
@@ -8099,12 +8112,12 @@ Returns the Model of the Work Session (Null Handle if none) should be C++: retur
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
 		/****** IFSelect_WorkSession::ModelCheckList ******/
-		/****** md5 signature: 58a6f423123e100fdaf4cf8cf70713dc ******/
+		/****** md5 signature: 82682b9d04c9d38a1d446f1d421c4152 ******/
 		%feature("compactdefaultargs") ModelCheckList;
 		%feature("autodoc", "
 Parameters
 ----------
-complete: bool (optional, default to Standard_True)
+complete: bool (optional, default to true)
 
 Return
 -------
@@ -8114,7 +8127,7 @@ Description
 -----------
 Returns the Check List for the Model currently loaded: <complete> = True: complete (syntactic & semantic messages), computed if not yet done <complete> = False: only syntactic (check file form).
 ") ModelCheckList;
-		Interface_CheckIterator ModelCheckList(const Standard_Boolean complete = Standard_True);
+		Interface_CheckIterator ModelCheckList(const bool complete = true);
 
 		/****** IFSelect_WorkSession::ModelCopier ******/
 		/****** md5 signature: ad7ee3ce8061cc1adc1d6ccdcfb01632 ******/
@@ -8130,7 +8143,7 @@ Gives access to the complete ModelCopier.
 		const opencascade::handle<IFSelect_ModelCopier> & ModelCopier();
 
 		/****** IFSelect_WorkSession::ModelModifier ******/
-		/****** md5 signature: cf8080f3bc00a23c230710114ac1ca85 ******/
+		/****** md5 signature: 876f4ed4e9d6220ccb832f23ead02f2f ******/
 		%feature("compactdefaultargs") ModelModifier;
 		%feature("autodoc", "
 Parameters
@@ -8145,10 +8158,10 @@ Description
 -----------
 Returns a Model Modifier, given its Ident in the Session, i.e. typed as a Modifier (not simply a GeneralModifier) Null result if <id> is not suitable for a Modifier (undefined, or defined for another kind of variable).
 ") ModelModifier;
-		opencascade::handle<IFSelect_Modifier> ModelModifier(const Standard_Integer id);
+		opencascade::handle<IFSelect_Modifier> ModelModifier(const int id);
 
 		/****** IFSelect_WorkSession::ModifierRank ******/
-		/****** md5 signature: 1e05c613e9e851b9336b134d58bfe203 ******/
+		/****** md5 signature: fe21932dfa4a2f209ace30d19d68f201 ******/
 		%feature("compactdefaultargs") ModifierRank;
 		%feature("autodoc", "
 Parameters
@@ -8163,7 +8176,7 @@ Description
 -----------
 Returns the Rank of a Modifier given its Ident. Model or File Modifier according its type (ModelModifier or not) Remember that Modifiers are applied sequentially following their Rank: first Model Modifiers then File Modifiers Rank is given by rank of call to AddItem and can be changed by ChangeModifierRank.
 ") ModifierRank;
-		Standard_Integer ModifierRank(const opencascade::handle<IFSelect_GeneralModifier> & item);
+		int ModifierRank(const opencascade::handle<IFSelect_GeneralModifier> & item);
 
 		/****** IFSelect_WorkSession::Name ******/
 		/****** md5 signature: 4eb988c37c62d2064ec5a737a0caf819 ******/
@@ -8184,12 +8197,12 @@ Returns the Name attached to an Item as a Variable of this WorkSession. If <item
 		opencascade::handle<TCollection_HAsciiString> Name(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_WorkSession::NameIdent ******/
-		/****** md5 signature: b544ec8c9aae179a44211339c01e944d ******/
+		/****** md5 signature: 8abb12c87f4f7bff92f6191b9af833c7 ******/
 		%feature("compactdefaultargs") NameIdent;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8199,15 +8212,15 @@ Description
 -----------
 Returns the Ident attached to a Name, 0 if name not recorded.
 ") NameIdent;
-		Standard_Integer NameIdent(Standard_CString name);
+		int NameIdent(const char * const name);
 
 		/****** IFSelect_WorkSession::NamedItem ******/
-		/****** md5 signature: 302deb3c11d9f50a82fa45a13797af54 ******/
+		/****** md5 signature: bf392bbd73e9d25bb51d3b7695e3b279 ******/
 		%feature("compactdefaultargs") NamedItem;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8217,7 +8230,7 @@ Description
 -----------
 Returns the Item which corresponds to a Variable, given its Name (whatever the type of this Item). Returns a Null Handle if this Name is not recorded.
 ") NamedItem;
-		opencascade::handle<Standard_Transient> NamedItem(Standard_CString name);
+		opencascade::handle<Standard_Transient> NamedItem(const char * const name);
 
 		/****** IFSelect_WorkSession::NamedItem ******/
 		/****** md5 signature: bfe651ccce454616f8543444833ecfc7 ******/
@@ -8238,7 +8251,7 @@ Same as above, but <name> is given through a Handle Especially useful with metho
 		opencascade::handle<Standard_Transient> NamedItem(const opencascade::handle<TCollection_HAsciiString> & name);
 
 		/****** IFSelect_WorkSession::NbFiles ******/
-		/****** md5 signature: f4ff740bb702aab2feb817a0f407ce9c ******/
+		/****** md5 signature: 90405b5457734aa0e1b74ce8141c3bff ******/
 		%feature("compactdefaultargs") NbFiles;
 		%feature("autodoc", "Return
 -------
@@ -8248,10 +8261,10 @@ Description
 -----------
 Returns the count of produced Models.
 ") NbFiles;
-		Standard_Integer NbFiles();
+		int NbFiles();
 
 		/****** IFSelect_WorkSession::NbFinalModifiers ******/
-		/****** md5 signature: 71b68f79e3e588c28221dab42073c56e ******/
+		/****** md5 signature: 0958e5c59b4ca54d47566089c663f8e8 ******/
 		%feature("compactdefaultargs") NbFinalModifiers;
 		%feature("autodoc", "
 Parameters
@@ -8266,10 +8279,10 @@ Description
 -----------
 Returns the count of Modifiers applied to final sending Model Modifiers if <formodel> is True, File Modifiers else (i.e. Modifiers which apply once the Models have been filled).
 ") NbFinalModifiers;
-		Standard_Integer NbFinalModifiers(const Standard_Boolean formodel);
+		int NbFinalModifiers(const bool formodel);
 
 		/****** IFSelect_WorkSession::NbSources ******/
-		/****** md5 signature: 6684d46b361e61e86c6cd30a2d338206 ******/
+		/****** md5 signature: c51dce3251215ebe63a91f3314670451 ******/
 		%feature("compactdefaultargs") NbSources;
 		%feature("autodoc", "
 Parameters
@@ -8284,10 +8297,10 @@ Description
 -----------
 Returns the count of Input Selections known for a Selection, or 0 if <sel> not in the WorkSession. This count is one for a SelectDeduct / SelectExtract kind, two for SelectControl kind, variable for a SelectCombine (Union/Intersection), zero else.
 ") NbSources;
-		Standard_Integer NbSources(const opencascade::handle<IFSelect_Selection> & sel);
+		int NbSources(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::NbStartingEntities ******/
-		/****** md5 signature: 1c3d9ea9a72aae2d0993be716f6c341d ******/
+		/****** md5 signature: 1da5d1c5b88c61191089811d5017670b ******/
 		%feature("compactdefaultargs") NbStartingEntities;
 		%feature("autodoc", "Return
 -------
@@ -8297,15 +8310,15 @@ Description
 -----------
 Returns the count of Entities stored in the Model, or 0.
 ") NbStartingEntities;
-		Standard_Integer NbStartingEntities();
+		int NbStartingEntities();
 
 		/****** IFSelect_WorkSession::NewIntParam ******/
-		/****** md5 signature: 19feaedf11ea76301401b0c4ed4eed4d ******/
+		/****** md5 signature: 561ae0151ba970df98062d17aa10cfe0 ******/
 		%feature("compactdefaultargs") NewIntParam;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -8315,16 +8328,16 @@ Description
 -----------
 Creates a new IntParam. A Name can be set (Optional) Returns the created IntParam, or a Null Handle in case of Failure (see AddItem/AddNamedItem).
 ") NewIntParam;
-		opencascade::handle<IFSelect_IntParam> NewIntParam(Standard_CString name = "");
+		opencascade::handle<IFSelect_IntParam> NewIntParam(const char * const name = "");
 
 		/****** IFSelect_WorkSession::NewParamFromStatic ******/
-		/****** md5 signature: 465eeca8f66472ff58410161834efa3c ******/
+		/****** md5 signature: 2f886ccd3e0b77a2cd2c0f9f63890a07 ******/
 		%feature("compactdefaultargs") NewParamFromStatic;
 		%feature("autodoc", "
 Parameters
 ----------
-statname: str
-name: str (optional, default to "")
+statname: char *
+name: char * (optional, default to "")
 
 Return
 -------
@@ -8334,16 +8347,16 @@ Description
 -----------
 Creates a parameter as being bound to a Static If the Static is Integer, this creates an IntParam bound to it by its name. Else this creates a String which is the value of the Static. Returns a null handle if <statname> is unknown as a Static.
 ") NewParamFromStatic;
-		opencascade::handle<Standard_Transient> NewParamFromStatic(Standard_CString statname, Standard_CString name = "");
+		opencascade::handle<Standard_Transient> NewParamFromStatic(const char * const statname, const char * const name = "");
 
 		/****** IFSelect_WorkSession::NewSelectPointed ******/
-		/****** md5 signature: 365a636cfc8cac99bd91aeb7635d138f ******/
+		/****** md5 signature: 53171bfb3429865c0341c7a570df0c0f ******/
 		%feature("compactdefaultargs") NewSelectPointed;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
-name: str
+list: NCollection_HSequence<
+name: char *
 
 Return
 -------
@@ -8353,15 +8366,15 @@ Description
 -----------
 Creates a new Selection, of type SelectPointed, its content starts with <list>. A name must be given (can be empty).
 ") NewSelectPointed;
-		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<TColStd_HSequenceOfTransient> & list, Standard_CString name);
+		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const char * const name);
 
 		/****** IFSelect_WorkSession::NewTextParam ******/
-		/****** md5 signature: 94aa5b9597995b0dacc18fe76ea6bc7a ******/
+		/****** md5 signature: 7c1bef5f839a72bf419b29ff07d04f68 ******/
 		%feature("compactdefaultargs") NewTextParam;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -8371,16 +8384,16 @@ Description
 -----------
 Creates a new (empty) TextParam. A Name can be set (Optional) Returns the created TextParam (as an HAsciiString), or a Null Handle in case of Failure (see AddItem/AddNamedItem).
 ") NewTextParam;
-		opencascade::handle<TCollection_HAsciiString> NewTextParam(Standard_CString name = "");
+		opencascade::handle<TCollection_HAsciiString> NewTextParam(const char * const name = "");
 
 		/****** IFSelect_WorkSession::NewTransformStandard ******/
-		/****** md5 signature: ab82691f7eeaf6b2bcfe7c083f1b0b93 ******/
+		/****** md5 signature: ae490415ea860155477babe1af3cf9ac ******/
 		%feature("compactdefaultargs") NewTransformStandard;
 		%feature("autodoc", "
 Parameters
 ----------
 copy: bool
-name: str (optional, default to "")
+name: char * (optional, default to "")
 
 Return
 -------
@@ -8390,15 +8403,15 @@ Description
 -----------
 Creates and returns a TransformStandard, empty, with its Copy Option (True = Copy, False = On the Spot) and an optional name. To a TransformStandard, the method SetAppliedModifier applies.
 ") NewTransformStandard;
-		opencascade::handle<IFSelect_Transformer> NewTransformStandard(const Standard_Boolean copy, Standard_CString name = "");
+		opencascade::handle<IFSelect_Transformer> NewTransformStandard(const bool copy, const char * const name = "");
 
 		/****** IFSelect_WorkSession::NextIdentForLabel ******/
-		/****** md5 signature: 9dc1fa9cf365c59a75ed057df7775147 ******/
+		/****** md5 signature: 2fc9b6379388a976f0f51f863374038a ******/
 		%feature("compactdefaultargs") NextIdentForLabel;
 		%feature("autodoc", "
 Parameters
 ----------
-label: str
+label: char *
 id: int
 mode: int (optional, default to 0)
 
@@ -8410,15 +8423,15 @@ Description
 -----------
 For query by Label with possible iterations Searches the Ident of which Item has a Label which matches a given one, the search starts from an initial Ident. Returns the first found Ident which follows <id>, or ZERO //! The search must start with <id> = 0, it returns the next Ident which matches. To iterate, call again this method which this returned value as <id>. Once an Ident has been returned, the Item can be obtained by the method Item //! <mode> precises the required matching mode: - 0 (Default): <label> must match exactly with the Item Label - 1: <label> must match the exact beginning (the end is free) - 2: <label> must be at least once wherever in the Item Label - other values are ignored.
 ") NextIdentForLabel;
-		Standard_Integer NextIdentForLabel(Standard_CString label, const Standard_Integer id, const Standard_Integer mode = 0);
+		int NextIdentForLabel(const char * const label, const int id, const int mode = 0);
 
 		/****** IFSelect_WorkSession::NumberFromLabel ******/
-		/****** md5 signature: bd5e300d553ef788ce1731e581bced03 ******/
+		/****** md5 signature: cbf6406c3a97b3255dda9c082623e51f ******/
 		%feature("compactdefaultargs") NumberFromLabel;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 afternum: int (optional, default to 0)
 
 Return
@@ -8429,10 +8442,10 @@ Description
 -----------
 From a given label in Model, returns the corresponding number Starts from first entity by Default, may start after a given number: this number may be given negative, its absolute value is then considered. Hence a loop on NumberFromLabel may be programmed (stop test is: returned value positive or null) //! Returns 0 if not found, < 0 if more than one found (first found in negative). If <val> just gives an integer value, returns it.
 ") NumberFromLabel;
-		Standard_Integer NumberFromLabel(Standard_CString val, const Standard_Integer afternum = 0);
+		int NumberFromLabel(const char * const val, const int afternum = 0);
 
 		/****** IFSelect_WorkSession::PrintCheckList ******/
-		/****** md5 signature: abe5e5f6e65ec20b5fa1bdc0150abd4b ******/
+		/****** md5 signature: f6d3b36f49348d5b64cd496013b5f3e1 ******/
 		%feature("compactdefaultargs") PrintCheckList;
 		%feature("autodoc", "
 Parameters
@@ -8449,7 +8462,7 @@ Description
 -----------
 Prints a CheckIterator to the current Trace File, controlled with the current Model complete or fails only, according to <failsonly> <mode> defines the mode of printing 0: sequential, according entities; else with a CheckCounter 1: according messages, count of entities 2: id but with list of entities, designated by their numbers 3: as 2 but with labels of entities.
 ") PrintCheckList;
-		void PrintCheckList(std::ostream &OutValue, const Interface_CheckIterator & checklist, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+		void PrintCheckList(std::ostream &OutValue, const Interface_CheckIterator & checklist, const bool failsonly, const IFSelect_PrintCount mode);
 
 		/****** IFSelect_WorkSession::PrintEntityStatus ******/
 		/****** md5 signature: 23f12785981bcfcd0d9cd330e2c76792 ******/
@@ -8520,7 +8533,7 @@ Loads data from a check iterator to query status on it.
 		void QueryCheckList(const Interface_CheckIterator & chl);
 
 		/****** IFSelect_WorkSession::QueryCheckStatus ******/
-		/****** md5 signature: 3a36d1e360cb92701c41f9868c3fb038 ******/
+		/****** md5 signature: ca76f33a079c6f327baf9c4151bde8c8 ******/
 		%feature("compactdefaultargs") QueryCheckStatus;
 		%feature("autodoc", "
 Parameters
@@ -8535,10 +8548,10 @@ Description
 -----------
 Determines check status for an entity regarding last call to QueryCheckList: -1: <ent> unknown in the model, ignored 0: no check at all, immediate or inherited thru Graph 1: immediate warning (no fail), no inherited check 2: immediate fail, no inherited check +10: idem but some inherited warning (no fail) +20: idem but some inherited fail.
 ") QueryCheckStatus;
-		Standard_Integer QueryCheckStatus(const opencascade::handle<Standard_Transient> & ent);
+		int QueryCheckStatus(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::QueryParent ******/
-		/****** md5 signature: 011d8e959ffad77fc7c24656d191763d ******/
+		/****** md5 signature: cffa7c6a4e43d72235f8e936c801bd0b ******/
 		%feature("compactdefaultargs") QueryParent;
 		%feature("autodoc", "
 Parameters
@@ -8554,15 +8567,15 @@ Description
 -----------
 Determines if <entdad> is parent of <entson> (in the graph), returns: -1 if no; 0 if <entdad> = <entson> 1 if immediate parent, > 1 if parent, gives count of steps.
 ") QueryParent;
-		Standard_Integer QueryParent(const opencascade::handle<Standard_Transient> & entdad, const opencascade::handle<Standard_Transient> & entson);
+		int QueryParent(const opencascade::handle<Standard_Transient> & entdad, const opencascade::handle<Standard_Transient> & entson);
 
 		/****** IFSelect_WorkSession::ReadFile ******/
-		/****** md5 signature: 0c5675761cd6df0c5f286882695ad872 ******/
+		/****** md5 signature: 0fcf8332f61dd8fcf8e1afedd4235e54 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -8572,15 +8585,15 @@ Description
 -----------
 Reads a file with the WorkLibrary (sets Model and LoadedFile) Returns a integer status which can be: RetDone if OK, RetVoid if no Protocol not defined, RetError for file not found, RetFail if fail during read.
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(Standard_CString filename);
+		IFSelect_ReturnStatus ReadFile(const char * const filename);
 
 		/****** IFSelect_WorkSession::ReadStream ******/
-		/****** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ******/
+		/****** md5 signature: 06334efe05f06eec7a1d1bfac9f23c44 ******/
 		%feature("compactdefaultargs") ReadStream;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 theIStream: str
 
 Return
@@ -8591,10 +8604,10 @@ Description
 -----------
 Reads a file from stream with the WorkLibrary (sets Model and LoadedFile) Returns a integer status which can be: RetDone if OK, RetVoid if no Protocol not defined, RetError for file not found, RetFail if fail during read.
 ") ReadStream;
-		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
+		IFSelect_ReturnStatus ReadStream(const char * const theName, std::istream & theIStream);
 
 		/****** IFSelect_WorkSession::RemoveItem ******/
-		/****** md5 signature: 3d21325464cc0ceb3ee75dda2155f717 ******/
+		/****** md5 signature: 2888b508414f802126bab03993be06af ******/
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "
 Parameters
@@ -8609,15 +8622,15 @@ Description
 -----------
 Removes an Item given its Ident. Returns False if <id> is attached to no Item in the WorkSession. For a Named Item, also removes its Name.
 ") RemoveItem;
-		Standard_Boolean RemoveItem(const opencascade::handle<Standard_Transient> & item);
+		bool RemoveItem(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_WorkSession::RemoveName ******/
-		/****** md5 signature: 50d6961cfe2364d3cb736f125ad7050f ******/
+		/****** md5 signature: 84218a7a9ac3d1cdf8868bea9b630dda ******/
 		%feature("compactdefaultargs") RemoveName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8627,15 +8640,15 @@ Description
 -----------
 Removes a Name without removing the Item Returns True if Done, False else (Name not recorded).
 ") RemoveName;
-		Standard_Boolean RemoveName(Standard_CString name);
+		bool RemoveName(const char * const name);
 
 		/****** IFSelect_WorkSession::RemoveNamedItem ******/
-		/****** md5 signature: 53ad2f8ee41fcd5d3ce5a228f1d78364 ******/
+		/****** md5 signature: 02a617084a5e1716c05ddbdc6e994ca2 ******/
 		%feature("compactdefaultargs") RemoveNamedItem;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8645,10 +8658,10 @@ Description
 -----------
 Removes an Item from the Session, given its Name Returns True if Done, False else (Name not recorded) (Applies only on Item which are Named).
 ") RemoveNamedItem;
-		Standard_Boolean RemoveNamedItem(Standard_CString name);
+		bool RemoveNamedItem(const char * const name);
 
 		/****** IFSelect_WorkSession::ResetAppliedModifier ******/
-		/****** md5 signature: dc48b8468d19fd478fa2baf43d97549c ******/
+		/****** md5 signature: 454a4eb8e8026a7f70bef02239a5c18c ******/
 		%feature("compactdefaultargs") ResetAppliedModifier;
 		%feature("autodoc", "
 Parameters
@@ -8663,10 +8676,10 @@ Description
 -----------
 Resets a GeneralModifier to be applied Returns True if done, False if <modif> was not applied.
 ") ResetAppliedModifier;
-		Standard_Boolean ResetAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif);
+		bool ResetAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
 		/****** IFSelect_WorkSession::ResetItemSelection ******/
-		/****** md5 signature: 9d4eb47f139cc634b466d5c574e30162 ******/
+		/****** md5 signature: c1d03b012f0332a7d582e89a11762195 ******/
 		%feature("compactdefaultargs") ResetItemSelection;
 		%feature("autodoc", "
 Parameters
@@ -8681,10 +8694,10 @@ Description
 -----------
 Resets input Selection which was set by SetItemSelection Same conditions as for SetItemSelection Returns True if done, False if <item> is not in the WorkSession.
 ") ResetItemSelection;
-		Standard_Boolean ResetItemSelection(const opencascade::handle<Standard_Transient> & item);
+		bool ResetItemSelection(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_WorkSession::RunModifier ******/
-		/****** md5 signature: 2ddd5c6852a8686700ea5eb832827e02 ******/
+		/****** md5 signature: 87d1e20cc4da35658ca089769fad5fce ******/
 		%feature("compactdefaultargs") RunModifier;
 		%feature("autodoc", "
 Parameters
@@ -8700,10 +8713,10 @@ Description
 -----------
 Runs a Modifier on Starting Model. It can modify entities, or add new ones. But the Model or the Protocol is unchanged. The Modifier is applied on each entity of the Model. See also RunModifierSelected Fills LastRunCheckList //! <copy>: if True, a new data set is produced which brings the modifications (Model + its Entities) if False, data are modified on the spot //! It works through a TransformStandard defined with <modif> Returned status as RunTransformer: 0 nothing done, >0 OK, <0 problem, but only between -3 and 3 (protocol unchanged) Remark: <copy> True will give <effect> = 3 or -3.
 ") RunModifier;
-		Standard_Integer RunModifier(const opencascade::handle<IFSelect_Modifier> & modif, const Standard_Boolean copy);
+		int RunModifier(const opencascade::handle<IFSelect_Modifier> & modif, const bool copy);
 
 		/****** IFSelect_WorkSession::RunModifierSelected ******/
-		/****** md5 signature: 97f312de7eea46359ddc27a95815b8a3 ******/
+		/****** md5 signature: 55ee1d7fdf4d990ec2322ae0ce4c7bc3 ******/
 		%feature("compactdefaultargs") RunModifierSelected;
 		%feature("autodoc", "
 Parameters
@@ -8720,10 +8733,10 @@ Description
 -----------
 Acts as RunModifier, but the Modifier is applied on the list determined by a Selection, rather than on the whole Model If the selection is a null handle, the whole model is taken.
 ") RunModifierSelected;
-		Standard_Integer RunModifierSelected(const opencascade::handle<IFSelect_Modifier> & modif, const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean copy);
+		int RunModifierSelected(const opencascade::handle<IFSelect_Modifier> & modif, const opencascade::handle<IFSelect_Selection> & sel, const bool copy);
 
 		/****** IFSelect_WorkSession::RunTransformer ******/
-		/****** md5 signature: ce58899d242786dd3edb621a934671f1 ******/
+		/****** md5 signature: 0c2eb22bc709c21a4be44d87970ec220 ******/
 		%feature("compactdefaultargs") RunTransformer;
 		%feature("autodoc", "
 Parameters
@@ -8738,10 +8751,10 @@ Description
 -----------
 Runs a Transformer on starting Model, which can then be edited or replaced by a new one. The Protocol can also be changed. Fills LastRunCheckList //! Returned status is 0 if nothing done (<transf> or model undefined), positive if OK, negative else: 0: Nothing done 1: OK, edition on the spot with no change to the graph of dependencies (purely local) 2: OK, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3: OK, new model produced, same protocol 4: OK, model edited on the spot (graph recomputed), but protocol has changed 5: OK, new model produced, protocol has changed -1: Error on the spot (slight changes), data may be corrupted (remark: corruption should not be profound) -2: Error on edition the spot, data may be corrupted (checking them is recommended) -3: Error with a new data set, transformation ignored -4: OK as 4, but graph of dependences count not be recomputed (the former one is kept): check the protocol.
 ") RunTransformer;
-		Standard_Integer RunTransformer(const opencascade::handle<IFSelect_Transformer> & transf);
+		int RunTransformer(const opencascade::handle<IFSelect_Transformer> & transf);
 
 		/****** IFSelect_WorkSession::Selection ******/
-		/****** md5 signature: 7b0ed3ef69750ee2f01ea61b1ac64790 ******/
+		/****** md5 signature: fb48d93bee3bbd2e622a125dc72d4fa4 ******/
 		%feature("compactdefaultargs") Selection;
 		%feature("autodoc", "
 Parameters
@@ -8756,10 +8769,10 @@ Description
 -----------
 Returns a Selection, given its Ident in the Session Null result if <id> is not suitable for a Selection (undefined, or defined for another kind of variable).
 ") Selection;
-		opencascade::handle<IFSelect_Selection> Selection(const Standard_Integer id);
+		opencascade::handle<IFSelect_Selection> Selection(const int id);
 
 		/****** IFSelect_WorkSession::SelectionResult ******/
-		/****** md5 signature: 22d7475d8646fd72b6ad7e374a8c38b9 ******/
+		/****** md5 signature: 600b14edd09f76d03c1d4bbe8895ad4d ******/
 		%feature("compactdefaultargs") SelectionResult;
 		%feature("autodoc", "
 Parameters
@@ -8768,41 +8781,41 @@ sel: IFSelect_Selection
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the result of a Selection, computed by EvalSelection (see above) under the form of a HSequence (hence, it can be used by a frontal-engine logic). It can be empty Returns a Null Handle if <sel> is not in the WorkSession.
 ") SelectionResult;
-		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResult(const opencascade::handle<IFSelect_Selection> & sel);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> SelectionResult(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::SelectionResultFromList ******/
-		/****** md5 signature: 59219e4c15c0472c4683f58ca2a2951f ******/
+		/****** md5 signature: fb34c81138202894ad42f09dc2202824 ******/
 		%feature("compactdefaultargs") SelectionResultFromList;
 		%feature("autodoc", "
 Parameters
 ----------
 sel: IFSelect_Selection
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the result of a Selection, by forcing its input with a given list <list> (unless <list> is Null). RULES: <list> applies only for a SelectDeduct kind Selection: its Input is considered: if it is a SelectDeduct kind Selection, its Input is considered, etc... until an Input is not a Deduct/Extract: its result is replaced by <list> and all the chain of deductions is applied.
 ") SelectionResultFromList;
-		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResultFromList(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> SelectionResultFromList(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** IFSelect_WorkSession::SendAll ******/
-		/****** md5 signature: c2b1e4ce07d1cfced6ef3f58127820b9 ******/
+		/****** md5 signature: 1f339be40efb947e5299ebcee1214f3a ******/
 		%feature("compactdefaultargs") SendAll;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
-computegraph: bool (optional, default to Standard_False)
+filename: char *
+computegraph: bool (optional, default to false)
 
 Return
 -------
@@ -8812,17 +8825,17 @@ Description
 -----------
 Sends the starting Model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the Graph to be recomputed before sending: required when a Model is filled in several steps //! The Model and File Modifiers recorded to be applied on sending files are. Returns a status of execution: Done if OK, Void if no data available, Error if errors occurred (work library is not defined), errors during translation Fail if exception during translation is raised Stop if no disk space or disk, file is write protected Fills LastRunCheckList.
 ") SendAll;
-		IFSelect_ReturnStatus SendAll(Standard_CString filename, const Standard_Boolean computegraph = Standard_False);
+		IFSelect_ReturnStatus SendAll(const char * const filename, const bool computegraph = false);
 
 		/****** IFSelect_WorkSession::SendSelected ******/
-		/****** md5 signature: 39c03cff7e1c0be3f448192e8c12d306 ******/
+		/****** md5 signature: 2286512983af3933f9f0e63ec6abf672 ******/
 		%feature("compactdefaultargs") SendSelected;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 sel: IFSelect_Selection
-computegraph: bool (optional, default to Standard_False)
+computegraph: bool (optional, default to false)
 
 Return
 -------
@@ -8832,10 +8845,10 @@ Description
 -----------
 Sends a part of the starting Model into one file, without splitting. But remaining data are managed. <computegraph> true commands the Graph to be recomputed before sending: required when a Model is filled in several steps //! The Model and File Modifiers recorded to be applied on sending files are. Returns a status: Done if OK, Fail if error during send, Error: WorkLibrary not defined, Void: selection list empty Fills LastRunCheckList.
 ") SendSelected;
-		IFSelect_ReturnStatus SendSelected(Standard_CString filename, const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean computegraph = Standard_False);
+		IFSelect_ReturnStatus SendSelected(const char * const filename, const opencascade::handle<IFSelect_Selection> & sel, const bool computegraph = false);
 
 		/****** IFSelect_WorkSession::SendSplit ******/
-		/****** md5 signature: 6321d8c6881589ddbe6233be55e93e86 ******/
+		/****** md5 signature: 646106626a449cfc2466b439dc8d1664 ******/
 		%feature("compactdefaultargs") SendSplit;
 		%feature("autodoc", "Return
 -------
@@ -8845,23 +8858,23 @@ Description
 -----------
 Performs creation of derived files from the input Model Takes its data (sub-models and names), from result EvaluateFile if active, else by dynamic Evaluation (not stored) After SendSplit, result of EvaluateFile is Cleared Fills LastRunCheckList //! Works with the WorkLibrary which acts on specific type of Model and can work with File Modifiers (managed by the Model Copier) and a ModelCopier, which can work with Model Modifiers Returns False if, either WorkLibrary has failed on at least one sub-file, or the Work Session is badly conditioned (no Model defined, or FileNaming not in phase with ShareOut).
 ") SendSplit;
-		Standard_Boolean SendSplit();
+		bool SendSplit();
 
 		/****** IFSelect_WorkSession::SentFiles ******/
-		/****** md5 signature: ccec19bbefb996c0e777d6a8d7f3c41a ******/
+		/****** md5 signature: 15a3fea8cfd206427736fc4c6b7ce267 ******/
 		%feature("compactdefaultargs") SentFiles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the list of recorded sent files, or a Null Handle is recording has not been enabled.
 ") SentFiles;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> SentFiles();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SentFiles();
 
 		/****** IFSelect_WorkSession::SentList ******/
-		/****** md5 signature: 4d2680f98f4c5a8aaaa30100248e90b0 ******/
+		/****** md5 signature: cbdf268780eba0f0ddf1c260e11b3325 ******/
 		%feature("compactdefaultargs") SentList;
 		%feature("autodoc", "
 Parameters
@@ -8876,10 +8889,10 @@ Description
 -----------
 Returns the list of Entities sent in files, according to the count of files each one has been sent (these counts are reset by SetModel or SetRemaining(Forget) ) stored in Graph Status <count> = -1 (default) is for ENtities sent at least once <count> = 0 is for the Remaining List (entities not yet sent) <count> = 1 is for entities sent in one and only one file (the ideal case) Remaining Data are computed on each Sending/Copying output files (see methods EvaluateFile and SendSplit) Graph Status is 0 for Remaining Entity, <count> for Sent into <count> files This status is set to 0 (not yet sent) for all by SetModel and by SetRemaining(mode=Forget,Display).
 ") SentList;
-		Interface_EntityIterator SentList(const Standard_Integer count = -1);
+		Interface_EntityIterator SentList(const int count = -1);
 
 		/****** IFSelect_WorkSession::SetActive ******/
-		/****** md5 signature: 940b9bc390662ec729381d139a68dcd6 ******/
+		/****** md5 signature: ecd12abbcbd0dcf687a3db71d84ffbd0 ******/
 		%feature("compactdefaultargs") SetActive;
 		%feature("autodoc", "
 Parameters
@@ -8895,10 +8908,10 @@ Description
 -----------
 Following the type of <item>: - Dispatch: Adds or Removes it in the ShareOut & FileNaming - GeneralModifier: Adds or Removes it for final sending (i.e. in the ModelCopier) Returns True if it did something, False else (state unchanged).
 ") SetActive;
-		Standard_Boolean SetActive(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean mode);
+		bool SetActive(const opencascade::handle<Standard_Transient> & item, const bool mode);
 
 		/****** IFSelect_WorkSession::SetAppliedModifier ******/
-		/****** md5 signature: e9ed571d8b9bebd0a1fb74a2c90e86d3 ******/
+		/****** md5 signature: 80ab209c513c3b3319a416e4c018d135 ******/
 		%feature("compactdefaultargs") SetAppliedModifier;
 		%feature("autodoc", "
 Parameters
@@ -8914,17 +8927,17 @@ Description
 -----------
 Sets a GeneralModifier to be applied to an item: - item = ShareOut: applies for final sending (all dispatches) - item is a Dispatch: applies for this dispatch only Returns True if done, False if <modif> or <item> not in <self>.
 ") SetAppliedModifier;
-		Standard_Boolean SetAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif, const opencascade::handle<Standard_Transient> & item);
+		bool SetAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif, const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_WorkSession::SetControl ******/
-		/****** md5 signature: 05af01ea1f67168a8030ea59ecde2174 ******/
+		/****** md5 signature: 3430e19d33db1bfb9fa8230f5c3a868f ******/
 		%feature("compactdefaultargs") SetControl;
 		%feature("autodoc", "
 Parameters
 ----------
 sel: IFSelect_Selection
 sc: IFSelect_Selection
-formain: bool (optional, default to Standard_True)
+formain: bool (optional, default to true)
 
 Return
 -------
@@ -8934,15 +8947,15 @@ Description
 -----------
 Sets an Input Selection, Main if <formain> is True, Second else (as <sc>) to a SelectControl (as <sel>). Returns True if Done, False if <sel> is not a SelectControl, or <sc> or <sel> is not in the WorkSession.
 ") SetControl;
-		Standard_Boolean SetControl(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<IFSelect_Selection> & sc, const Standard_Boolean formain = Standard_True);
+		bool SetControl(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<IFSelect_Selection> & sc, const bool formain = true);
 
 		/****** IFSelect_WorkSession::SetDefaultFileRoot ******/
-		/****** md5 signature: 34373a07c269c9a147574911502379fa ******/
+		/****** md5 signature: e9c06fbe6d248de78f4b81752c8fc223 ******/
 		%feature("compactdefaultargs") SetDefaultFileRoot;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8952,10 +8965,10 @@ Description
 -----------
 Defines a Default File Root Name. Clears it is <name> = '' Returns True if OK, False if <name> already set for a Dispatch.
 ") SetDefaultFileRoot;
-		Standard_Boolean SetDefaultFileRoot(Standard_CString name);
+		bool SetDefaultFileRoot(const char * const name);
 
 		/****** IFSelect_WorkSession::SetErrorHandle ******/
-		/****** md5 signature: e34e0e7413eb0cf0d82c36bfcce58564 ******/
+		/****** md5 signature: 45c0bf4b9358ec371c6bd653e5f95bcc ******/
 		%feature("compactdefaultargs") SetErrorHandle;
 		%feature("autodoc", "
 Parameters
@@ -8970,15 +8983,15 @@ Description
 -----------
 Changes the Error Handler status (by default, it is not set).
 ") SetErrorHandle;
-		void SetErrorHandle(const Standard_Boolean toHandle);
+		void SetErrorHandle(const bool toHandle);
 
 		/****** IFSelect_WorkSession::SetFileExtension ******/
-		/****** md5 signature: 6c043b5c4437fe749ed293af164511dc ******/
+		/****** md5 signature: 04a2eabfee41a8123a4bcd6bf5143739 ******/
 		%feature("compactdefaultargs") SetFileExtension;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -8988,15 +9001,15 @@ Description
 -----------
 Defines a File Extension.
 ") SetFileExtension;
-		void SetFileExtension(Standard_CString name);
+		void SetFileExtension(const char * const name);
 
 		/****** IFSelect_WorkSession::SetFilePrefix ******/
-		/****** md5 signature: 935ba3ec4b009a6c90d1d4c415de055c ******/
+		/****** md5 signature: de8db65e12481dcdadca4cadd020c12d ******/
 		%feature("compactdefaultargs") SetFilePrefix;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -9006,16 +9019,16 @@ Description
 -----------
 Defines a File Prefix.
 ") SetFilePrefix;
-		void SetFilePrefix(Standard_CString name);
+		void SetFilePrefix(const char * const name);
 
 		/****** IFSelect_WorkSession::SetFileRoot ******/
-		/****** md5 signature: 1fd824ca1468435546e56024ca700721 ******/
+		/****** md5 signature: 51815a11cc2be3fbe8119c05d2a662d6 ******/
 		%feature("compactdefaultargs") SetFileRoot;
 		%feature("autodoc", "
 Parameters
 ----------
 disp: IFSelect_Dispatch
-name: str
+name: char *
 
 Return
 -------
@@ -9025,10 +9038,10 @@ Description
 -----------
 Defines a Root for a Dispatch If <name> is empty, clears Root Name This has as effect to inhibit the production of File by <disp> Returns False if <disp> is not in the WorkSession or if a root name is already defined for it.
 ") SetFileRoot;
-		Standard_Boolean SetFileRoot(const opencascade::handle<IFSelect_Dispatch> & disp, Standard_CString name);
+		bool SetFileRoot(const opencascade::handle<IFSelect_Dispatch> & disp, const char * const name);
 
 		/****** IFSelect_WorkSession::SetInputSelection ******/
-		/****** md5 signature: efc80d2cba7e4bfb82d3449ae9456f04 ******/
+		/****** md5 signature: 18cc7c1e0ea9e391a88609ef15e89586 ******/
 		%feature("compactdefaultargs") SetInputSelection;
 		%feature("autodoc", "
 Parameters
@@ -9044,10 +9057,10 @@ Description
 -----------
 Sets an Input Selection (as <input>) to a SelectExtract or a SelectDeduct (as <sel>). Returns True if Done, False if <sel> is neither a SelectExtract nor a SelectDeduct, or not in the WorkSession.
 ") SetInputSelection;
-		Standard_Boolean SetInputSelection(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<IFSelect_Selection> & input);
+		bool SetInputSelection(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<IFSelect_Selection> & input);
 
 		/****** IFSelect_WorkSession::SetIntValue ******/
-		/****** md5 signature: 77ebf48a1387ab3ac676568328be9ee3 ******/
+		/****** md5 signature: 3a976710bbe916557666814ae6716c19 ******/
 		%feature("compactdefaultargs") SetIntValue;
 		%feature("autodoc", "
 Parameters
@@ -9063,10 +9076,10 @@ Description
 -----------
 Changes the Integer Value of an IntParam Returns True if Done, False if <it> is not in the WorkSession.
 ") SetIntValue;
-		Standard_Boolean SetIntValue(const opencascade::handle<IFSelect_IntParam> & it, const Standard_Integer val);
+		bool SetIntValue(const opencascade::handle<IFSelect_IntParam> & it, const int val);
 
 		/****** IFSelect_WorkSession::SetItemSelection ******/
-		/****** md5 signature: 22a8aadbf5b8012b0bf203b12452ecb4 ******/
+		/****** md5 signature: 3dafc10f2ca872449d1c4a76d523d211 ******/
 		%feature("compactdefaultargs") SetItemSelection;
 		%feature("autodoc", "
 Parameters
@@ -9082,7 +9095,7 @@ Description
 -----------
 Sets a Selection as input for an item, according its type: if <item> is a Dispatch: as Final Selection if <item> is a GeneralModifier (i.e. any kind of Modifier): as Selection used to filter entities to modify <sel> Null causes this Selection to be nullified Returns False if <item> is not of a suitable type, or <item> or <sel> is not in the WorkSession.
 ") SetItemSelection;
-		Standard_Boolean SetItemSelection(const opencascade::handle<Standard_Transient> & item, const opencascade::handle<IFSelect_Selection> & sel);
+		bool SetItemSelection(const opencascade::handle<Standard_Transient> & item, const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::SetLibrary ******/
 		/****** md5 signature: bf9fd355c4832219eadf210a8a57f2f1 ******/
@@ -9103,12 +9116,12 @@ Sets a WorkLibrary, which will be used to Read and Write Files.
 		void SetLibrary(const opencascade::handle<IFSelect_WorkLibrary> & theLib);
 
 		/****** IFSelect_WorkSession::SetLoadedFile ******/
-		/****** md5 signature: 7e273eaababe38518db41d3ac90cb161 ******/
+		/****** md5 signature: 6ebc00d95404f836d05f22a35acf5a67 ******/
 		%feature("compactdefaultargs") SetLoadedFile;
 		%feature("autodoc", "
 Parameters
 ----------
-theFileName: str
+theFileName: char *
 
 Return
 -------
@@ -9118,10 +9131,10 @@ Description
 -----------
 Stores the filename used for read for setting the model It is cleared by SetModel and ClearData(1).
 ") SetLoadedFile;
-		void SetLoadedFile(Standard_CString theFileName);
+		void SetLoadedFile(const char * const theFileName);
 
 		/****** IFSelect_WorkSession::SetModeStat ******/
-		/****** md5 signature: c142785e8c8c940a8a328422512002b1 ******/
+		/****** md5 signature: 83483a54bf03b0d7dd509993898fe674 ******/
 		%feature("compactdefaultargs") SetModeStat;
 		%feature("autodoc", "
 Parameters
@@ -9136,16 +9149,16 @@ Description
 -----------
 Set value of mode responsible for presence of selections after loading If mode set to true that different selections will be accessible after loading else selections will be not accessible after loading( for economy memory in applications).
 ") SetModeStat;
-		void SetModeStat(const Standard_Boolean theMode);
+		void SetModeStat(const bool theMode);
 
 		/****** IFSelect_WorkSession::SetModel ******/
-		/****** md5 signature: 7e372f4e826bf0a9ecad785814b86e54 ******/
+		/****** md5 signature: fbedc792ec799edb2305de795e3e3ab8 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
 ----------
 model: Interface_InterfaceModel
-clearpointed: bool (optional, default to Standard_True)
+clearpointed: bool (optional, default to true)
 
 Return
 -------
@@ -9155,10 +9168,10 @@ Description
 -----------
 Sets a Model as input: this will be the Model from which the ShareOut will work if <clearpointed> is True (default) all SelectPointed items are cleared, else they must be managed by the caller Remark: SetModel clears the Graph, recomputes it if a Protocol is set and if the Model is not empty, of course.
 ") SetModel;
-		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean clearpointed = Standard_True);
+		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model, const bool clearpointed = true);
 
 		/****** IFSelect_WorkSession::SetModelContent ******/
-		/****** md5 signature: 4dd44a6105e913c7252b2ae562ef04f7 ******/
+		/****** md5 signature: b16629021ca2c86515bfc4ffd7647bc5 ******/
 		%feature("compactdefaultargs") SetModelContent;
 		%feature("autodoc", "
 Parameters
@@ -9174,7 +9187,7 @@ Description
 -----------
 Defines a new content from the former one If <keep> is True, it is given by entities selected by Selection <sel> (and all shared entities) Else, it is given by all the former content but entities selected by the Selection <sel> (and properly shared ones) Returns True if done. Returns False if the selected list (from <sel>) is empty, hence nothing is done.
 ") SetModelContent;
-		Standard_Boolean SetModelContent(const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean keep);
+		bool SetModelContent(const opencascade::handle<IFSelect_Selection> & sel, const bool keep);
 
 		/****** IFSelect_WorkSession::SetModelCopier ******/
 		/****** md5 signature: 3c24bae00078104168cc28f40f3cbd0b ******/
@@ -9195,7 +9208,7 @@ Sets a new ModelCopier. Fills Items which its content.
 		void SetModelCopier(const opencascade::handle<IFSelect_ModelCopier> & copier);
 
 		/****** IFSelect_WorkSession::SetParams ******/
-		/****** md5 signature: 7615df0c6511c294a819db27267b7ef4 ******/
+		/****** md5 signature: d86bfe336ffa3a026765502688a34391 ******/
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "
 Parameters
@@ -9211,7 +9224,7 @@ Description
 -----------
 Sets a list of Parameters, i.e. TypedValue, to be handled through an Editor The two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use //! EditForms are created to handle these parameters (list, edit) on the basis of a ParamEditor xst-params-edit //! A use number dispatches the parameter to a given EditForm EditForms are defined as follows Name Use Means xst-params all All Parameters (complete list) xst-params-general 1 Generals xst-params-load 2 LoadFile (no Transfer) xst-params-send 3 SendFile (Write, no Transfer) xst-params-split 4 Split xst-param-read 5 Transfer on Reading xst-param-write 6 Transfer on Writing.
 ") SetParams;
-		void SetParams(const NCollection_Vector<opencascade::handle<Standard_Transient> > & params, const NCollection_Vector<Standard_Integer> & uselist);
+		void SetParams(const NCollection_Vector<opencascade::handle<Standard_Transient> > & params, const NCollection_Vector<int> & uselist);
 
 		/****** IFSelect_WorkSession::SetProtocol ******/
 		/****** md5 signature: 032ba93c3a9bfe80213c23be9d305675 ******/
@@ -9232,7 +9245,7 @@ Sets a Protocol, which will be used to determine Graphs, to Read and to Write Fi
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & protocol);
 
 		/****** IFSelect_WorkSession::SetRemaining ******/
-		/****** md5 signature: c1d3998fe70637a6e64246ec2203ecb8 ******/
+		/****** md5 signature: 9558f4932798ef2c2e9c104d5018e759 ******/
 		%feature("compactdefaultargs") SetRemaining;
 		%feature("autodoc", "
 Parameters
@@ -9247,16 +9260,16 @@ Description
 -----------
 Processes Remaining data (after having sent files), mode: Forget: forget remaining info (i.e. clear all 'Sent' status) Compute: compute and keep remaining (does nothing if: remaining is empty or if no files has been sent) Display: display entities recorded as remaining Undo: restore former state of data (after Remaining(1) ) Returns True if OK, False else (i.e. mode = 2 and Remaining List is either empty or takes all the entities, or mode = 3 and no former computation of remaining data was done).
 ") SetRemaining;
-		Standard_Boolean SetRemaining(const IFSelect_RemainMode mode);
+		bool SetRemaining(const IFSelect_RemainMode mode);
 
 		/****** IFSelect_WorkSession::SetSelectPointed ******/
-		/****** md5 signature: d86e748512fef7d08c3d1450a5c12398 ******/
+		/****** md5 signature: 265e539b63ca23c655a8672e01c203bd ******/
 		%feature("compactdefaultargs") SetSelectPointed;
 		%feature("autodoc", "
 Parameters
 ----------
 sel: IFSelect_Selection
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 mode: int
 
 Return
@@ -9267,7 +9280,7 @@ Description
 -----------
 Changes the content of a Selection of type SelectPointed According <mode>: 0 set <list> as new content (clear former) 1: adds <list> to actual content -1: removes <list> from actual content Returns True if done, False if <sel> is not a SelectPointed.
 ") SetSelectPointed;
-		Standard_Boolean SetSelectPointed(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Standard_Integer mode);
+		bool SetSelectPointed(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const int mode);
 
 		/****** IFSelect_WorkSession::SetShareOut ******/
 		/****** md5 signature: c50a730405495501dc6609ec99f5cfc0 ******/
@@ -9306,13 +9319,13 @@ Sets a specific Signature to be the SignType, i.e. the Signature which will dete
 		void SetSignType(const opencascade::handle<IFSelect_Signature> & signtype);
 
 		/****** IFSelect_WorkSession::SetTextValue ******/
-		/****** md5 signature: de40a4f9005b8c259d1e43897aee6827 ******/
+		/****** md5 signature: d04996ec7b99cf229632eab464ef786d ******/
 		%feature("compactdefaultargs") SetTextValue;
 		%feature("autodoc", "
 Parameters
 ----------
 par: TCollection_HAsciiString
-val: str
+val: char *
 
 Return
 -------
@@ -9322,7 +9335,7 @@ Description
 -----------
 Changes the Text Value of a TextParam (an HAsciiString) Returns True if Done, False if <it> is not in the WorkSession.
 ") SetTextValue;
-		Standard_Boolean SetTextValue(const opencascade::handle<TCollection_HAsciiString> & par, Standard_CString val);
+		bool SetTextValue(const opencascade::handle<TCollection_HAsciiString> & par, const char * const val);
 
 		/****** IFSelect_WorkSession::ShareOut ******/
 		/****** md5 signature: 7d7ba6d89ad65a951a2f527007d5837f ******/
@@ -9338,7 +9351,7 @@ Returns the ShareOut defined at creation time.
 		const opencascade::handle<IFSelect_ShareOut> & ShareOut();
 
 		/****** IFSelect_WorkSession::Shareds ******/
-		/****** md5 signature: 0d7eefad00726da1b50dc525c1f1499f ******/
+		/****** md5 signature: 2c65db3ad021f5bedb2f0055d1d3f950 ******/
 		%feature("compactdefaultargs") Shareds;
 		%feature("autodoc", "
 Parameters
@@ -9347,16 +9360,16 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of entities shared by <ent> (can be empty) Returns a null Handle if <ent> is unknown.
 ") Shareds;
-		opencascade::handle<TColStd_HSequenceOfTransient> Shareds(const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Shareds(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::Sharings ******/
-		/****** md5 signature: 76739a45c106cce619c3ad5dcf556c6b ******/
+		/****** md5 signature: 08ce214dc1c2536ea0e6d480cd84d518 ******/
 		%feature("compactdefaultargs") Sharings;
 		%feature("autodoc", "
 Parameters
@@ -9365,16 +9378,16 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of entities sharing <ent> (can be empty) Returns a null Handle if <ent> is unknown.
 ") Sharings;
-		opencascade::handle<TColStd_HSequenceOfTransient> Sharings(const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Sharings(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::SignCounter ******/
-		/****** md5 signature: f5139898078feaeb4f35ca5845f69009 ******/
+		/****** md5 signature: fdaa057d3730a1272b463eb01c87db67 ******/
 		%feature("compactdefaultargs") SignCounter;
 		%feature("autodoc", "
 Parameters
@@ -9389,7 +9402,7 @@ Description
 -----------
 Returns a SignCounter from its ident in the Session Null result if <id> is not suitable for a SignCounter (undefined, or defined for another kind of variable).
 ") SignCounter;
-		opencascade::handle<IFSelect_SignCounter> SignCounter(const Standard_Integer id);
+		opencascade::handle<IFSelect_SignCounter> SignCounter(const int id);
 
 		/****** IFSelect_WorkSession::SignType ******/
 		/****** md5 signature: 3bb57051bc559fc5c36b0ab9d9ac28c0 ******/
@@ -9405,7 +9418,7 @@ Returns the current SignType.
 		opencascade::handle<IFSelect_Signature> SignType();
 
 		/****** IFSelect_WorkSession::SignValue ******/
-		/****** md5 signature: 402c9760e2a4dd6c2333c0ef4e0fecbe ******/
+		/****** md5 signature: 82df2e7324c14f53057b4a3b0bde5379 ******/
 		%feature("compactdefaultargs") SignValue;
 		%feature("autodoc", "
 Parameters
@@ -9415,16 +9428,16 @@ ent: Standard_Transient
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Value computed by a Signature for an Entity Returns an empty string if the entity does not belong to the loaded model.
 ") SignValue;
-		Standard_CString SignValue(const opencascade::handle<IFSelect_Signature> & sign, const opencascade::handle<Standard_Transient> & ent);
+		const char * SignValue(const opencascade::handle<IFSelect_Signature> & sign, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::Signature ******/
-		/****** md5 signature: 07c27665dfc4d330174c985be304efbf ******/
+		/****** md5 signature: 36d354a93bc996ec29e44446401b4fd9 ******/
 		%feature("compactdefaultargs") Signature;
 		%feature("autodoc", "
 Parameters
@@ -9439,10 +9452,10 @@ Description
 -----------
 Returns a Signature, given its Ident in the Session Null result if <id> is not suitable for a Signature (undefined, or defined for another kind of variable).
 ") Signature;
-		opencascade::handle<IFSelect_Signature> Signature(const Standard_Integer id);
+		opencascade::handle<IFSelect_Signature> Signature(const int id);
 
 		/****** IFSelect_WorkSession::Source ******/
-		/****** md5 signature: 93a5194d2243dce02e1e6f73b1fde29e ******/
+		/****** md5 signature: 63224aad5190639bd80268b3554c5fa8 ******/
 		%feature("compactdefaultargs") Source;
 		%feature("autodoc", "
 Parameters
@@ -9458,7 +9471,7 @@ Description
 -----------
 Returns the <num>th Input Selection of a Selection (see NbSources). Returns a Null Handle if <sel> is not in the WorkSession or if <num> is out of the range <1-NbSources> To obtain more details, see the method Sources.
 ") Source;
-		opencascade::handle<IFSelect_Selection> Source(const opencascade::handle<IFSelect_Selection> & sel, const Standard_Integer num = 1);
+		opencascade::handle<IFSelect_Selection> Source(const opencascade::handle<IFSelect_Selection> & sel, const int num = 1);
 
 		/****** IFSelect_WorkSession::Sources ******/
 		/****** md5 signature: 6c65dd919745a931c9ffa71b4e599512 ******/
@@ -9479,7 +9492,7 @@ Returns the Selections which are source of Selection, given its rank in the List
 		IFSelect_SelectionIterator Sources(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::StartingEntity ******/
-		/****** md5 signature: 396b57d8908e4be7e46af7128922d973 ******/
+		/****** md5 signature: 4d330a4514a66cba80576cfceb135a68 ******/
 		%feature("compactdefaultargs") StartingEntity;
 		%feature("autodoc", "
 Parameters
@@ -9494,10 +9507,10 @@ Description
 -----------
 Returns an Entity stored in the Model of the WorkSession (Null Handle is no Model or num out of range).
 ") StartingEntity;
-		opencascade::handle<Standard_Transient> StartingEntity(const Standard_Integer num);
+		opencascade::handle<Standard_Transient> StartingEntity(const int num);
 
 		/****** IFSelect_WorkSession::StartingNumber ******/
-		/****** md5 signature: f0b745d78fe6cfa953c093565f62a144 ******/
+		/****** md5 signature: c9b047ea853bf15dd6acb38e5b8dd60f ******/
 		%feature("compactdefaultargs") StartingNumber;
 		%feature("autodoc", "
 Parameters
@@ -9512,10 +9525,10 @@ Description
 -----------
 Returns the Number of an Entity in the Model (0 if no Model set or <ent> not in the Model).
 ") StartingNumber;
-		Standard_Integer StartingNumber(const opencascade::handle<Standard_Transient> & ent);
+		int StartingNumber(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::TextParam ******/
-		/****** md5 signature: 411f98985b17a8da10b137efd64ae96d ******/
+		/****** md5 signature: ab6654df6b3c314236b3bccb1e5b514e ******/
 		%feature("compactdefaultargs") TextParam;
 		%feature("autodoc", "
 Parameters
@@ -9530,7 +9543,7 @@ Description
 -----------
 Returns a TextParam, given its Ident in the Session Null result if <id> is not suitable for a TextParam (undefined, or defined for another kind of variable).
 ") TextParam;
-		opencascade::handle<TCollection_HAsciiString> TextParam(const Standard_Integer id);
+		opencascade::handle<TCollection_HAsciiString> TextParam(const int id);
 
 		/****** IFSelect_WorkSession::TextValue ******/
 		/****** md5 signature: 80fcbc8dd437ccf904e32873fd3864d8 ******/
@@ -9551,7 +9564,7 @@ Returns Text Value of a TextParam (a String) or an empty string if <it> is not i
 		TCollection_AsciiString TextValue(const opencascade::handle<TCollection_HAsciiString> & par);
 
 		/****** IFSelect_WorkSession::ToggleSelectExtract ******/
-		/****** md5 signature: 317c5f6c662e793d22443d6fd7fd5899 ******/
+		/****** md5 signature: 69df3fe6173622cf3703711072c2d158 ******/
 		%feature("compactdefaultargs") ToggleSelectExtract;
 		%feature("autodoc", "
 Parameters
@@ -9566,10 +9579,10 @@ Description
 -----------
 Toggles the Sense (Direct <-> Reversed) of a SelectExtract Returns True if Done, False if <sel> is not a SelectExtract or is not in the WorkSession.
 ") ToggleSelectExtract;
-		Standard_Boolean ToggleSelectExtract(const opencascade::handle<IFSelect_Selection> & sel);
+		bool ToggleSelectExtract(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::TraceDumpEntity ******/
-		/****** md5 signature: 6759d779439cb5c24ed789703fec9be6 ******/
+		/****** md5 signature: 0423ee163cb30d9b1e70c6ed2b607425 ******/
 		%feature("compactdefaultargs") TraceDumpEntity;
 		%feature("autodoc", "
 Parameters
@@ -9585,10 +9598,10 @@ Description
 -----------
 Dumps an entity from the current Model as inherited DumpEntity on currently defined Default Trace File (<level> interpreted according to the Norm, see WorkLibrary).
 ") TraceDumpEntity;
-		void TraceDumpEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level);
+		void TraceDumpEntity(const opencascade::handle<Standard_Transient> & ent, const int level);
 
 		/****** IFSelect_WorkSession::TraceDumpModel ******/
-		/****** md5 signature: bad4b90f30d2c71ea1a874b1c47ac874 ******/
+		/****** md5 signature: 20fb7ced2fc28f768fd184c0965e2a3c ******/
 		%feature("compactdefaultargs") TraceDumpModel;
 		%feature("autodoc", "
 Parameters
@@ -9603,10 +9616,10 @@ Description
 -----------
 Dumps the current Model (as inherited DumpModel), on currently defined Default Trace File (default is standard output).
 ") TraceDumpModel;
-		void TraceDumpModel(const Standard_Integer mode);
+		void TraceDumpModel(const int mode);
 
 		/****** IFSelect_WorkSession::TraceStatics ******/
-		/****** md5 signature: a53f7a793b51d3575891ba4c23a57acc ******/
+		/****** md5 signature: 98b373860dad4e3e09adbcdda3052bea ******/
 		%feature("compactdefaultargs") TraceStatics;
 		%feature("autodoc", "
 Parameters
@@ -9622,10 +9635,10 @@ Description
 -----------
 Traces the Statics attached to a given use number If <use> is given positive (normal), the trace is embedded with a header and a trailer If <use> is negative, just values are printed (this allows to make compositions) Remark: use number 5 commands use -2 to be traced Remark: use numbers 4 and 6 command use -3 to be traced.
 ") TraceStatics;
-		void TraceStatics(const Standard_Integer use, const Standard_Integer mode = 0);
+		void TraceStatics(const int use, const int mode = 0);
 
 		/****** IFSelect_WorkSession::Transformer ******/
-		/****** md5 signature: 6c8756b547be8db586993ea779da51ee ******/
+		/****** md5 signature: 336df5af14be77c77272b0339fe55460 ******/
 		%feature("compactdefaultargs") Transformer;
 		%feature("autodoc", "
 Parameters
@@ -9640,7 +9653,7 @@ Description
 -----------
 Returns a Transformer, given its Ident in the Session Null result if <id> is not suitable for a Transformer (undefined, or defined for another kind of variable).
 ") Transformer;
-		opencascade::handle<IFSelect_Transformer> Transformer(const Standard_Integer id);
+		opencascade::handle<IFSelect_Transformer> Transformer(const int id);
 
 		/****** IFSelect_WorkSession::UsesAppliedModifier ******/
 		/****** md5 signature: b7759325d298eacddb0ad38f7cc7ea7e ******/
@@ -9661,7 +9674,7 @@ Returns the item on which a GeneralModifier is applied: the ShareOut, or a given
 		opencascade::handle<Standard_Transient> UsesAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
 		/****** IFSelect_WorkSession::ValidityName ******/
-		/****** md5 signature: b01c5408d7a1bdcdd278561f74c782e9 ******/
+		/****** md5 signature: a5084479536f5992764a5f04eecf7e6a ******/
 		%feature("compactdefaultargs") ValidityName;
 		%feature("autodoc", "
 Parameters
@@ -9670,13 +9683,13 @@ ent: Standard_Transient
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Validity Name determined for an entity it is computed by the class SignValidity Remark: an unknown entity gives an empty string.
 ") ValidityName;
-		Standard_CString ValidityName(const opencascade::handle<Standard_Transient> & ent);
+		const char * ValidityName(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::WorkLibrary ******/
 		/****** md5 signature: 7c195930f9d0e8c986e2cba27b8d6ee4 ******/
@@ -9692,12 +9705,12 @@ Returns the WorkLibrary. Null Handle if not yet set should be C++: return const 
 		const opencascade::handle<IFSelect_WorkLibrary> & WorkLibrary();
 
 		/****** IFSelect_WorkSession::WriteFile ******/
-		/****** md5 signature: c443eb482eff3288f82d0142e04359c7 ******/
+		/****** md5 signature: 41c8ea74aa811ba8d8a27eb8de2d8099 ******/
 		%feature("compactdefaultargs") WriteFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -9707,15 +9720,15 @@ Description
 -----------
 Writes the current Interface Model globally to a File, and returns a write status which can be: Done OK, Fail file could not be written, Error no norm is selected Remark: It is a simple, one-file writing, other operations are available (such as splitting ...) which calls SendAll.
 ") WriteFile;
-		IFSelect_ReturnStatus WriteFile(Standard_CString filename);
+		IFSelect_ReturnStatus WriteFile(const char * const filename);
 
 		/****** IFSelect_WorkSession::WriteFile ******/
-		/****** md5 signature: 790e8d08c70c44f34f75df82bc09ca6e ******/
+		/****** md5 signature: 359a9279e2161eef5c3256d5ade41629 ******/
 		%feature("compactdefaultargs") WriteFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 sel: IFSelect_Selection
 
 Return
@@ -9726,7 +9739,7 @@ Description
 -----------
 Writes a sub-part of the current Interface Model to a File, as defined by a Selection <sel>, recomputes the Graph, and returns a write status which can be: Done OK, Fail file could not be written, Error no norm is selected Remark: It is a simple, one-file writing, other operations are available (such as splitting ...) which calls SendSelected.
 ") WriteFile;
-		IFSelect_ReturnStatus WriteFile(Standard_CString filename, const opencascade::handle<IFSelect_Selection> & sel);
+		IFSelect_ReturnStatus WriteFile(const char * const filename, const opencascade::handle<IFSelect_Selection> & sel);
 
 };
 
@@ -9749,13 +9762,13 @@ Writes a sub-part of the current Interface Model to a File, as defined by a Sele
 class IFSelect_Act : public IFSelect_Activator {
 	public:
 		/****** IFSelect_Act::IFSelect_Act ******/
-		/****** md5 signature: 76e29d8059e49b0f38dbbfab62fb71e0 ******/
+		/****** md5 signature: 6b8102fe5ce0937dfe9496ae60a3fc5a ******/
 		%feature("compactdefaultargs") IFSelect_Act;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-help: str
+name: char *
+help: char *
 func: IFSelect_ActFunc
 
 Return
@@ -9766,16 +9779,16 @@ Description
 -----------
 Creates an Act with a name, help and a function mode (Add or AddSet) is given when recording.
 ") IFSelect_Act;
-		 IFSelect_Act(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
+		 IFSelect_Act(const char * const name, const char * const help, const IFSelect_ActFunc func);
 
 		/****** IFSelect_Act::AddFSet ******/
-		/****** md5 signature: e2ffb6b816fea57f96597521d91d13d1 ******/
+		/****** md5 signature: f3eb5a3afe2daa3ae32172d5a2ae9cf9 ******/
 		%feature("compactdefaultargs") AddFSet;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-help: str
+name: char *
+help: char *
 func: IFSelect_ActFunc
 
 Return
@@ -9786,16 +9799,16 @@ Description
 -----------
 Adds a function with its name and help: creates an Act then records it as function for XSET (i.e. to create control item).
 ") AddFSet;
-		static void AddFSet(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
+		static void AddFSet(const char * const name, const char * const help, const IFSelect_ActFunc func);
 
 		/****** IFSelect_Act::AddFunc ******/
-		/****** md5 signature: fbe777bcbfe4244fa2ba5ff24fe49d8f ******/
+		/****** md5 signature: 852443058027eac7fb29e6b1b2b67239 ******/
 		%feature("compactdefaultargs") AddFunc;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
-help: str
+name: char *
+help: char *
 func: IFSelect_ActFunc
 
 Return
@@ -9806,10 +9819,10 @@ Description
 -----------
 Adds a function with its name and help: creates an Act then records it as normal function.
 ") AddFunc;
-		static void AddFunc(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
+		static void AddFunc(const char * const name, const char * const help, const IFSelect_ActFunc func);
 
 		/****** IFSelect_Act::Do ******/
-		/****** md5 signature: 84f46bc11d2d5e9591ed76f3c0abda9a ******/
+		/****** md5 signature: b5e711193c4c2637f6cb97da2b922a97 ******/
 		%feature("compactdefaultargs") Do;
 		%feature("autodoc", "
 Parameters
@@ -9825,10 +9838,10 @@ Description
 -----------
 Execution of Command Line. remark that <number> is senseless because each Act brings one and only one function.
 ") Do;
-		IFSelect_ReturnStatus Do(const Standard_Integer number, const opencascade::handle<IFSelect_SessionPilot> & pilot);
+		IFSelect_ReturnStatus Do(const int number, const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
 		/****** IFSelect_Act::Help ******/
-		/****** md5 signature: f58ae97ad0af39f2393512a71352549e ******/
+		/****** md5 signature: 76e145e2de37fecfc007fe90ff493ff6 ******/
 		%feature("compactdefaultargs") Help;
 		%feature("autodoc", "
 Parameters
@@ -9837,22 +9850,22 @@ number: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Short Help for commands: returns the help given to create.
 ") Help;
-		Standard_CString Help(const Standard_Integer number);
+		const char * Help(const int number);
 
 		/****** IFSelect_Act::SetGroup ******/
-		/****** md5 signature: d0c9e1b75a0955e5e67ca3830fd2cdcf ******/
+		/****** md5 signature: 3997760ad68886d7f5420e9e245552d0 ******/
 		%feature("compactdefaultargs") SetGroup;
 		%feature("autodoc", "
 Parameters
 ----------
-group: str
-file: str (optional, default to "")
+group: char *
+file: char * (optional, default to "")
 
 Return
 -------
@@ -9862,7 +9875,7 @@ Description
 -----------
 Changes the default group name for the following Acts group empty means to come back to default from Activator Also a file name can be precised (to query by getsource).
 ") SetGroup;
-		static void SetGroup(Standard_CString group, Standard_CString file = "");
+		static void SetGroup(const char * const group, const char * const file = "");
 
 };
 
@@ -9894,7 +9907,7 @@ Creates a BasicDumper and puts it into the Library of Dumper.
 		 IFSelect_BasicDumper();
 
 		/****** IFSelect_BasicDumper::ReadOwn ******/
-		/****** md5 signature: 537cf3342fb63eef348b1c1130ae0574 ******/
+		/****** md5 signature: eb4d10ebe4a0441949e15e76a00eda38 ******/
 		%feature("compactdefaultargs") ReadOwn;
 		%feature("autodoc", "
 Parameters
@@ -9911,10 +9924,10 @@ Description
 -----------
 Recognizes and Read Own Parameters for Types of package IFSelect. Returns True if done and <item> created, False else.
 ") ReadOwn;
-		Standard_Boolean ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
+		bool ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_BasicDumper::WriteOwn ******/
-		/****** md5 signature: d3ac6824a29798b0b3016080139d7006 ******/
+		/****** md5 signature: 1e368ed79314092e6ac89bc999f8f55a ******/
 		%feature("compactdefaultargs") WriteOwn;
 		%feature("autodoc", "
 Parameters
@@ -9930,7 +9943,7 @@ Description
 -----------
 Write the Own Parameters of Types defined in package IFSelect Returns True if <item> has been processed, False else.
 ") WriteOwn;
-		Standard_Boolean WriteOwn(IFSelect_SessionFile & file, const opencascade::handle<Standard_Transient> & item);
+		bool WriteOwn(IFSelect_SessionFile & file, const opencascade::handle<Standard_Transient> & item);
 
 };
 
@@ -9949,12 +9962,12 @@ Write the Own Parameters of Types defined in package IFSelect Returns True if <i
 class IFSelect_CheckCounter : public IFSelect_SignatureList {
 	public:
 		/****** IFSelect_CheckCounter::IFSelect_CheckCounter ******/
-		/****** md5 signature: 027a1d19c7792e2533f7fa6a254f2332 ******/
+		/****** md5 signature: 799f7a225354ffb8807003e8e6ad3021 ******/
 		%feature("compactdefaultargs") IFSelect_CheckCounter;
 		%feature("autodoc", "
 Parameters
 ----------
-withlist: bool (optional, default to Standard_False)
+withlist: bool (optional, default to false)
 
 Return
 -------
@@ -9964,18 +9977,18 @@ Description
 -----------
 Creates a CheckCounter, empty ready to work.
 ") IFSelect_CheckCounter;
-		 IFSelect_CheckCounter(const Standard_Boolean withlist = Standard_False);
+		 IFSelect_CheckCounter(const bool withlist = false);
 
 		/****** IFSelect_CheckCounter::Analyse ******/
-		/****** md5 signature: 7cd832463e3ab9638e83ab58216e13e0 ******/
+		/****** md5 signature: 75b4170653d64326b23a24bcdba483af ******/
 		%feature("compactdefaultargs") Analyse;
 		%feature("autodoc", "
 Parameters
 ----------
 list: Interface_CheckIterator
 model: Interface_InterfaceModel
-original: bool (optional, default to Standard_False)
-failsonly: bool (optional, default to Standard_False)
+original: bool (optional, default to false)
+failsonly: bool (optional, default to false)
 
 Return
 -------
@@ -9985,7 +9998,7 @@ Description
 -----------
 Analyses a CheckIterator according a Model (which detains the entities for which the CheckIterator has messages), i.e. counts messages for entities If <original> is True, does not consider final messages but those before interpretation (such as inserting variables: integers, reals, strings) If <failsonly> is True, only Fails are considered Remark: global messages are recorded with a Null entity.
 ") Analyse;
-		void Analyse(const Interface_CheckIterator & list, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean original = Standard_False, const Standard_Boolean failsonly = Standard_False);
+		void Analyse(const Interface_CheckIterator & list, const opencascade::handle<Interface_InterfaceModel> & model, const bool original = false, const bool failsonly = false);
 
 		/****** IFSelect_CheckCounter::SetSignature ******/
 		/****** md5 signature: 1a48019d9a598f298ba9f537ddd35bcf ******/
@@ -10048,7 +10061,7 @@ Creates a DispGlobal.
 		 IFSelect_DispGlobal();
 
 		/****** IFSelect_DispGlobal::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -10061,7 +10074,7 @@ Returns as Label, 'One File for all Input'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_DispGlobal::LimitedMax ******/
-		/****** md5 signature: bebedf32506bd4e0fabf1509db75df8f ******/
+		/****** md5 signature: 0662bc0d391cf78a9c0086a6edff5dad ******/
 		%feature("compactdefaultargs") LimitedMax;
 		%feature("autodoc", "
 Parameters
@@ -10076,10 +10089,10 @@ Description
 -----------
 Returns True: maximum equates 1.
 ") LimitedMax;
-		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
+		bool LimitedMax(const int nbent, Standard_Integer &OutValue);
 
 		/****** IFSelect_DispGlobal::Packets ******/
-		/****** md5 signature: 926a75218f16786de747dd6ee34bde90 ******/
+		/****** md5 signature: 7c5e53c6bafce52bb9a023537cee1ac2 ******/
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "
 Parameters
@@ -10140,7 +10153,7 @@ Returns the Count Parameter used for splitting.
 		opencascade::handle<IFSelect_IntParam> Count();
 
 		/****** IFSelect_DispPerCount::CountValue ******/
-		/****** md5 signature: 34aef256795b3aff969f27bc6b2b1d5b ******/
+		/****** md5 signature: 4975da7bbabae2d9ab4e39408167265f ******/
 		%feature("compactdefaultargs") CountValue;
 		%feature("autodoc", "Return
 -------
@@ -10150,10 +10163,10 @@ Description
 -----------
 Returns the effective value of the count parameter (if Count Parameter not Set or value not positive, returns 1).
 ") CountValue;
-		Standard_Integer CountValue();
+		int CountValue();
 
 		/****** IFSelect_DispPerCount::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -10166,7 +10179,7 @@ Returns as Label, 'One File per <count> Input Entities'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_DispPerCount::LimitedMax ******/
-		/****** md5 signature: bebedf32506bd4e0fabf1509db75df8f ******/
+		/****** md5 signature: 0662bc0d391cf78a9c0086a6edff5dad ******/
 		%feature("compactdefaultargs") LimitedMax;
 		%feature("autodoc", "
 Parameters
@@ -10181,10 +10194,10 @@ Description
 -----------
 Returns True, maximum count is given as <nbent>.
 ") LimitedMax;
-		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
+		bool LimitedMax(const int nbent, Standard_Integer &OutValue);
 
 		/****** IFSelect_DispPerCount::Packets ******/
-		/****** md5 signature: 926a75218f16786de747dd6ee34bde90 ******/
+		/****** md5 signature: 7c5e53c6bafce52bb9a023537cee1ac2 ******/
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "
 Parameters
@@ -10263,7 +10276,7 @@ Returns the Count Parameter used for splitting.
 		opencascade::handle<IFSelect_IntParam> Count();
 
 		/****** IFSelect_DispPerFiles::CountValue ******/
-		/****** md5 signature: 34aef256795b3aff969f27bc6b2b1d5b ******/
+		/****** md5 signature: 4975da7bbabae2d9ab4e39408167265f ******/
 		%feature("compactdefaultargs") CountValue;
 		%feature("autodoc", "Return
 -------
@@ -10273,10 +10286,10 @@ Description
 -----------
 Returns the effective value of the count parameter (if Count Parameter not Set or value not positive, returns 1).
 ") CountValue;
-		Standard_Integer CountValue();
+		int CountValue();
 
 		/****** IFSelect_DispPerFiles::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -10289,7 +10302,7 @@ Returns as Label, 'Maximum <count> Files'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_DispPerFiles::LimitedMax ******/
-		/****** md5 signature: bebedf32506bd4e0fabf1509db75df8f ******/
+		/****** md5 signature: 0662bc0d391cf78a9c0086a6edff5dad ******/
 		%feature("compactdefaultargs") LimitedMax;
 		%feature("autodoc", "
 Parameters
@@ -10304,10 +10317,10 @@ Description
 -----------
 Returns True, maximum count is given as CountValue.
 ") LimitedMax;
-		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
+		bool LimitedMax(const int nbent, Standard_Integer &OutValue);
 
 		/****** IFSelect_DispPerFiles::Packets ******/
-		/****** md5 signature: 926a75218f16786de747dd6ee34bde90 ******/
+		/****** md5 signature: 7c5e53c6bafce52bb9a023537cee1ac2 ******/
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "
 Parameters
@@ -10373,7 +10386,7 @@ Creates a DispPerOne.
 		 IFSelect_DispPerOne();
 
 		/****** IFSelect_DispPerOne::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -10386,7 +10399,7 @@ Returns as Label, 'One File per Input Entity'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_DispPerOne::LimitedMax ******/
-		/****** md5 signature: bebedf32506bd4e0fabf1509db75df8f ******/
+		/****** md5 signature: 0662bc0d391cf78a9c0086a6edff5dad ******/
 		%feature("compactdefaultargs") LimitedMax;
 		%feature("autodoc", "
 Parameters
@@ -10401,10 +10414,10 @@ Description
 -----------
 Returns True, maximum limit is given as <nbent>.
 ") LimitedMax;
-		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
+		bool LimitedMax(const int nbent, Standard_Integer &OutValue);
 
 		/****** IFSelect_DispPerOne::Packets ******/
-		/****** md5 signature: 926a75218f16786de747dd6ee34bde90 ******/
+		/****** md5 signature: 7c5e53c6bafce52bb9a023537cee1ac2 ******/
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "
 Parameters
@@ -10452,7 +10465,7 @@ Creates a DispPerSignature with no SignCounter (by default, produces only one pa
 		 IFSelect_DispPerSignature();
 
 		/****** IFSelect_DispPerSignature::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -10465,7 +10478,7 @@ Returns as Label, 'One File per Signature <name>'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_DispPerSignature::LimitedMax ******/
-		/****** md5 signature: bebedf32506bd4e0fabf1509db75df8f ******/
+		/****** md5 signature: 0662bc0d391cf78a9c0086a6edff5dad ******/
 		%feature("compactdefaultargs") LimitedMax;
 		%feature("autodoc", "
 Parameters
@@ -10480,10 +10493,10 @@ Description
 -----------
 Returns True, maximum count is given as <nbent>.
 ") LimitedMax;
-		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
+		bool LimitedMax(const int nbent, Standard_Integer &OutValue);
 
 		/****** IFSelect_DispPerSignature::Packets ******/
-		/****** md5 signature: 926a75218f16786de747dd6ee34bde90 ******/
+		/****** md5 signature: 7c5e53c6bafce52bb9a023537cee1ac2 ******/
 		%feature("compactdefaultargs") Packets;
 		%feature("autodoc", "
 Parameters
@@ -10533,17 +10546,17 @@ Returns the SignCounter used for splitting.
 		opencascade::handle<IFSelect_SignCounter> SignCounter();
 
 		/****** IFSelect_DispPerSignature::SignName ******/
-		/****** md5 signature: c80dec5f02b4d9bc775dd97b309227ce ******/
+		/****** md5 signature: 0114b7e49b2c1b7a9d31df1ae036bb97 ******/
 		%feature("compactdefaultargs") SignName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of the SignCounter, which caracterises the sorting criterium for this Dispatch.
 ") SignName;
-		Standard_CString SignName();
+		const char * SignName();
 
 };
 
@@ -10600,13 +10613,13 @@ This deferred method defines the action specific to each class of Modifier. It i
 class IFSelect_ParamEditor : public IFSelect_Editor {
 	public:
 		/****** IFSelect_ParamEditor::IFSelect_ParamEditor ******/
-		/****** md5 signature: 29dc66cedcbb1c95578667fc7c2afcfb ******/
+		/****** md5 signature: 586ecad0b90a6830fd397124f070faf2 ******/
 		%feature("compactdefaultargs") IFSelect_ParamEditor;
 		%feature("autodoc", "
 Parameters
 ----------
 nbmax: int (optional, default to 100)
-label: str (optional, default to "")
+label: char * (optional, default to "")
 
 Return
 -------
@@ -10616,17 +10629,17 @@ Description
 -----------
 Creates a ParamEditor, empty, with a maximum count of params (default is 100) And a label, by default it will be 'Param Editor'.
 ") IFSelect_ParamEditor;
-		 IFSelect_ParamEditor(const Standard_Integer nbmax = 100, Standard_CString label = "");
+		 IFSelect_ParamEditor(const int nbmax = 100, const char * const label = "");
 
 		/****** IFSelect_ParamEditor::AddConstantText ******/
-		/****** md5 signature: c706f09bb0add6352d9a4e15a803ba72 ******/
+		/****** md5 signature: cf3f967dd432732cc5314d65c53e2399 ******/
 		%feature("compactdefaultargs") AddConstantText;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
-shortname: str
-completename: str (optional, default to "")
+val: char *
+shortname: char *
+completename: char * (optional, default to "")
 
 Return
 -------
@@ -10636,16 +10649,16 @@ Description
 -----------
 Adds a Constant Text, it will be Read Only By default, its long name equates its shortname.
 ") AddConstantText;
-		void AddConstantText(Standard_CString val, Standard_CString shortname, Standard_CString completename = "");
+		void AddConstantText(const char * const val, const char * const shortname, const char * const completename = "");
 
 		/****** IFSelect_ParamEditor::AddValue ******/
-		/****** md5 signature: ac3627cf81d5bc516ddff45ba712da52 ******/
+		/****** md5 signature: 62cb800d1f2ccd304d70b7ebbea55d0c ******/
 		%feature("compactdefaultargs") AddValue;
 		%feature("autodoc", "
 Parameters
 ----------
 val: Interface_TypedValue
-shortname: str (optional, default to "")
+shortname: char * (optional, default to "")
 
 Return
 -------
@@ -10655,10 +10668,10 @@ Description
 -----------
 Adds a TypedValue By default, its short name equates its complete name, it can be made explicit.
 ") AddValue;
-		void AddValue(const opencascade::handle<Interface_TypedValue> & val, Standard_CString shortname = "");
+		void AddValue(const opencascade::handle<Interface_TypedValue> & val, const char * const shortname = "");
 
 		/****** IFSelect_ParamEditor::Apply ******/
-		/****** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ******/
+		/****** md5 signature: 237672ec1da84109b9ea6f043145de35 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -10675,10 +10688,10 @@ Description
 -----------
 No available documentation.
 ") Apply;
-		Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_ParamEditor::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -10691,7 +10704,7 @@ No available documentation.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_ParamEditor::Load ******/
-		/****** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ******/
+		/****** md5 signature: f4e0bbd5e382865fe3b9f893311ac634 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -10708,10 +10721,10 @@ Description
 -----------
 No available documentation.
 ") Load;
-		Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_ParamEditor::Recognize ******/
-		/****** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ******/
+		/****** md5 signature: 46498f540a370a7d0afd43a35f2e9bfa ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -10726,16 +10739,16 @@ Description
 -----------
 No available documentation.
 ") Recognize;
-		Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
+		bool Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
 		/****** IFSelect_ParamEditor::StaticEditor ******/
-		/****** md5 signature: 54fea9b5c2756d061b4380cb6bde0089 ******/
+		/****** md5 signature: da1c69ba3c6e2209c2c8fc4f99d53b6e ******/
 		%feature("compactdefaultargs") StaticEditor;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfHAsciiString
-label: str (optional, default to "")
+list: NCollection_HSequence<
+label: char * (optional, default to "")
 
 Return
 -------
@@ -10745,10 +10758,10 @@ Description
 -----------
 Returns a ParamEditor to work on the Static Parameters of which names are listed in <list> Null Handle if <list> is null or empty.
 ") StaticEditor;
-		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, Standard_CString label = "");
+		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list, const char * const label = "");
 
 		/****** IFSelect_ParamEditor::StringValue ******/
-		/****** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ******/
+		/****** md5 signature: 8111b8adf2f25bfd021d0c036189e878 ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters
@@ -10764,7 +10777,7 @@ Description
 -----------
 No available documentation.
 ") StringValue;
-		opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
 
 };
 
@@ -10784,7 +10797,7 @@ No available documentation.
 class IFSelect_SelectBase : public IFSelect_Selection {
 	public:
 		/****** IFSelect_SelectBase::FillIterator ******/
-		/****** md5 signature: 86f07b80fdbd697d2596463dcdc47dac ******/
+		/****** md5 signature: b1b542754b03b70d4c995cbbdd8a04f1 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -10819,7 +10832,7 @@ Puts in an Iterator the Selections from which 'me' depends This list is empty fo
 class IFSelect_SelectCombine : public IFSelect_Selection {
 	public:
 		/****** IFSelect_SelectCombine::Add ******/
-		/****** md5 signature: d2dfaf0466b66672814f414f1e5e27c6 ******/
+		/****** md5 signature: 954f2491a5ba843eaa78180f97883568 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -10835,10 +10848,10 @@ Description
 -----------
 Adds a Selection to the filling list By default, adds it to the end of the list A Positive rank less then NbInputs gives an insertion rank (InsertBefore: the new <atnum>th item of the list is <sel>).
 ") Add;
-		void Add(const opencascade::handle<IFSelect_Selection> & sel, const Standard_Integer atnum = 0);
+		void Add(const opencascade::handle<IFSelect_Selection> & sel, const int atnum = 0);
 
 		/****** IFSelect_SelectCombine::FillIterator ******/
-		/****** md5 signature: 86f07b80fdbd697d2596463dcdc47dac ******/
+		/****** md5 signature: b1b542754b03b70d4c995cbbdd8a04f1 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -10856,7 +10869,7 @@ Puts in an Iterator the Selections from which 'me' depends That is to say, the l
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
 		/****** IFSelect_SelectCombine::Input ******/
-		/****** md5 signature: 91e0e176fea36b9ac27267b16927382c ******/
+		/****** md5 signature: 341c6afc97fda3c31511bfe664bacf24 ******/
 		%feature("compactdefaultargs") Input;
 		%feature("autodoc", "
 Parameters
@@ -10871,10 +10884,10 @@ Description
 -----------
 Returns an Input Selection, given its rank in the list.
 ") Input;
-		opencascade::handle<IFSelect_Selection> Input(const Standard_Integer num);
+		opencascade::handle<IFSelect_Selection> Input(const int num);
 
 		/****** IFSelect_SelectCombine::InputRank ******/
-		/****** md5 signature: 51944a1092194b5263cf30f94e575dda ******/
+		/****** md5 signature: ebd537a3f587116dc5d5015878236265 ******/
 		%feature("compactdefaultargs") InputRank;
 		%feature("autodoc", "
 Parameters
@@ -10889,10 +10902,10 @@ Description
 -----------
 Returns the rank of an input Selection, 0 if not in the list. Most generally, its value is meaningless, except for testing the presence of an input Selection: - == 0 if <sel> is not an input for <self> - > 0 if <sel> is an input for <self>.
 ") InputRank;
-		Standard_Integer InputRank(const opencascade::handle<IFSelect_Selection> & sel);
+		int InputRank(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_SelectCombine::NbInputs ******/
-		/****** md5 signature: 509964fdaeeadc87abe4a39a3d5c6ec4 ******/
+		/****** md5 signature: 14f2ec5d5cb9222cebbdbbccdec5f528 ******/
 		%feature("compactdefaultargs") NbInputs;
 		%feature("autodoc", "Return
 -------
@@ -10902,10 +10915,10 @@ Description
 -----------
 Returns the count of Input Selections.
 ") NbInputs;
-		Standard_Integer NbInputs();
+		int NbInputs();
 
 		/****** IFSelect_SelectCombine::Remove ******/
-		/****** md5 signature: fde13a626af095b2cec77be85622263c ******/
+		/****** md5 signature: c8ce3727b33fcbc1c16cde5c636094c4 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -10920,10 +10933,10 @@ Description
 -----------
 Removes an input Selection. Returns True if Done, False, if <sel> is not an input for <self>.
 ") Remove;
-		Standard_Boolean Remove(const opencascade::handle<IFSelect_Selection> & sel);
+		bool Remove(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_SelectCombine::Remove ******/
-		/****** md5 signature: 37f5a5cdb681cc08ea6f88bf3c6c2dca ******/
+		/****** md5 signature: e431019970c473f965e0ff4e65d0a65b ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -10938,7 +10951,7 @@ Description
 -----------
 Removes an input Selection, given its rank in the list Returns True if Done, False if <num> is out of range.
 ") Remove;
-		Standard_Boolean Remove(const Standard_Integer num);
+		bool Remove(const int num);
 
 };
 
@@ -10958,7 +10971,7 @@ Removes an input Selection, given its rank in the list Returns True if Done, Fal
 class IFSelect_SelectControl : public IFSelect_Selection {
 	public:
 		/****** IFSelect_SelectControl::FillIterator ******/
-		/****** md5 signature: 86f07b80fdbd697d2596463dcdc47dac ******/
+		/****** md5 signature: b1b542754b03b70d4c995cbbdd8a04f1 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -10976,7 +10989,7 @@ Puts in an Iterator the Selections from which 'me' depends That is to say, the l
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
 		/****** IFSelect_SelectControl::HasSecondInput ******/
-		/****** md5 signature: 5603b991dc92e59288a565bd8eef4051 ******/
+		/****** md5 signature: 688bb2c6fc060e63227491718f8b9e7d ******/
 		%feature("compactdefaultargs") HasSecondInput;
 		%feature("autodoc", "Return
 -------
@@ -10986,7 +10999,7 @@ Description
 -----------
 Returns True if a Control Input is defined Thus, Result can be computed differently if there is a Control Input or if there is none.
 ") HasSecondInput;
-		Standard_Boolean HasSecondInput();
+		bool HasSecondInput();
 
 		/****** IFSelect_SelectControl::MainInput ******/
 		/****** md5 signature: 8eaee9be6fec1b7b6a5de5cd683cdaaa ******/
@@ -11081,7 +11094,7 @@ Returns the Alternate Definition It is returned modifiable, hence an already def
 		opencascade::handle<IFSelect_SelectPointed> & Alternate();
 
 		/****** IFSelect_SelectDeduct::FillIterator ******/
-		/****** md5 signature: 86f07b80fdbd697d2596463dcdc47dac ******/
+		/****** md5 signature: b1b542754b03b70d4c995cbbdd8a04f1 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -11099,7 +11112,7 @@ Puts in an Iterator the Selections from which 'me' depends This list contains on
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
 		/****** IFSelect_SelectDeduct::HasAlternate ******/
-		/****** md5 signature: 0ba0213c4364b48f7f228e6340101505 ******/
+		/****** md5 signature: 3fb57b431e6111cdae0bfea551cb8f1b ******/
 		%feature("compactdefaultargs") HasAlternate;
 		%feature("autodoc", "Return
 -------
@@ -11109,10 +11122,10 @@ Description
 -----------
 Tells if an Alternate List has been set, i.e.: the Alternate Definition is present and set.
 ") HasAlternate;
-		Standard_Boolean HasAlternate();
+		bool HasAlternate();
 
 		/****** IFSelect_SelectDeduct::HasInput ******/
-		/****** md5 signature: 2b7ad360bfc35ddacf02c758861e0a37 ******/
+		/****** md5 signature: 31050a9667bcd920e91895f74eb9dd40 ******/
 		%feature("compactdefaultargs") HasInput;
 		%feature("autodoc", "Return
 -------
@@ -11122,7 +11135,7 @@ Description
 -----------
 Returns True if the Input Selection is defined, False else.
 ") HasInput;
-		Standard_Boolean HasInput();
+		bool HasInput();
 
 		/****** IFSelect_SelectDeduct::Input ******/
 		/****** md5 signature: a6ac3acd9f0ef17e1d1b87ef2e7da981 ******/
@@ -11190,12 +11203,12 @@ Defines or Changes the Input Selection.
 class IFSelect_SessionPilot : public IFSelect_Activator {
 	public:
 		/****** IFSelect_SessionPilot::IFSelect_SessionPilot ******/
-		/****** md5 signature: 857975c9d2e3289c6f312355cf6b83e4 ******/
+		/****** md5 signature: a23a247517d5eda281c56c4e0b6c7594 ******/
 		%feature("compactdefaultargs") IFSelect_SessionPilot;
 		%feature("autodoc", "
 Parameters
 ----------
-prompt: str (optional, default to "")
+prompt: char * (optional, default to "")
 
 Return
 -------
@@ -11205,10 +11218,10 @@ Description
 -----------
 Creates an empty SessionPilot, with a prompt which will be displayed on querying commands. If not precised (''), this prompt is set to 'Test-XSTEP>'.
 ") IFSelect_SessionPilot;
-		 IFSelect_SessionPilot(Standard_CString prompt = "");
+		 IFSelect_SessionPilot(const char * const prompt = "");
 
 		/****** IFSelect_SessionPilot::Arg ******/
-		/****** md5 signature: 2da64ea2a48487fcd46dcb82c6e58e6b ******/
+		/****** md5 signature: 3a46f9cc600385c3ce352e587244acd9 ******/
 		%feature("compactdefaultargs") Arg;
 		%feature("autodoc", "
 Parameters
@@ -11217,13 +11230,13 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns a word given its rank, as a CString. As for Word, begins at 0 (the command name), etc...
 ") Arg;
-		Standard_CString Arg(const Standard_Integer num);
+		const char * Arg(const int num);
 
 		/****** IFSelect_SessionPilot::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -11239,7 +11252,7 @@ Clears the recorded information (commands, objects).
 		void Clear();
 
 		/****** IFSelect_SessionPilot::Command ******/
-		/****** md5 signature: ee33c81c64d90099e926ad4996fd30c7 ******/
+		/****** md5 signature: e83b9c3ab29e2b389618c3f5030f4564 ******/
 		%feature("compactdefaultargs") Command;
 		%feature("autodoc", "
 Parameters
@@ -11254,7 +11267,7 @@ Description
 -----------
 Returns a recorded Command, given its rank (from 1).
 ") Command;
-		const TCollection_AsciiString & Command(const Standard_Integer num);
+		const TCollection_AsciiString & Command(const int num);
 
 		/****** IFSelect_SessionPilot::CommandLine ******/
 		/****** md5 signature: 6bddf17df28ae73fcb4b88ac7337c0af ******/
@@ -11270,7 +11283,7 @@ Returns the Command Line to be interpreted.
 		const TCollection_AsciiString & CommandLine();
 
 		/****** IFSelect_SessionPilot::CommandPart ******/
-		/****** md5 signature: 83e1d4e8dabebb7f34cc34cc3d07ab01 ******/
+		/****** md5 signature: b816d77feac77297af65c7c7353dbada ******/
 		%feature("compactdefaultargs") CommandPart;
 		%feature("autodoc", "
 Parameters
@@ -11279,16 +11292,16 @@ numarg: int (optional, default to 0)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the part of the command line which begins at argument <numarg> between 0 and NbWords-1 (by default, all the line) Empty string if out of range.
 ") CommandPart;
-		Standard_CString CommandPart(const Standard_Integer numarg = 0);
+		const char * CommandPart(const int numarg = 0);
 
 		/****** IFSelect_SessionPilot::Do ******/
-		/****** md5 signature: 5ceca079a69923771351b0545691221e ******/
+		/****** md5 signature: 6c7891700e69521c9180c736016b52a0 ******/
 		%feature("compactdefaultargs") Do;
 		%feature("autodoc", "
 Parameters
@@ -11304,7 +11317,7 @@ Description
 -----------
 Processes specific commands, which are: x or exit for end of session ? or help for help messages xcommand to control command lines (Record Mode, List, Clear, File Output ...) xsource to execute a command file (no nesting allowed), in case of error, source is stopped and keyword recovers xstep is a simple prefix (useful in a wider environment, to avoid conflicts on command names) xset control commands which create items with names.
 ") Do;
-		IFSelect_ReturnStatus Do(const Standard_Integer number, const opencascade::handle<IFSelect_SessionPilot> & session);
+		IFSelect_ReturnStatus Do(const int number, const opencascade::handle<IFSelect_SessionPilot> & session);
 
 		/****** IFSelect_SessionPilot::Execute ******/
 		/****** md5 signature: 8c56d2ed0161657a57d3d5a1e4920b73 ******/
@@ -11343,7 +11356,7 @@ Executes the Commands, except that the command name (word 0) is aliased. The res
 		IFSelect_ReturnStatus ExecuteAlias(TCollection_AsciiString aliasname);
 
 		/****** IFSelect_SessionPilot::ExecuteCounter ******/
-		/****** md5 signature: 4eaa898031294b8c05e43daa1cc2d67f ******/
+		/****** md5 signature: 00e1791c0a3818bdd74626f75462be88 ******/
 		%feature("compactdefaultargs") ExecuteCounter;
 		%feature("autodoc", "
 Parameters
@@ -11360,10 +11373,10 @@ Description
 -----------
 Executes a Counter in a general way If <numword> is greater than count of command words, it counts all the model. Else it considers the word <numword> as the identifier of a Selection <mode> gives the mode of printing results, default is CountByItem.
 ") ExecuteCounter;
-		IFSelect_ReturnStatus ExecuteCounter(const opencascade::handle<IFSelect_SignCounter> & counter, const Standard_Integer numword, const IFSelect_PrintCount mode = IFSelect_CountByItem);
+		IFSelect_ReturnStatus ExecuteCounter(const opencascade::handle<IFSelect_SignCounter> & counter, const int numword, const IFSelect_PrintCount mode = IFSelect_CountByItem);
 
 		/****** IFSelect_SessionPilot::Help ******/
-		/****** md5 signature: f58ae97ad0af39f2393512a71352549e ******/
+		/****** md5 signature: 76e145e2de37fecfc007fe90ff493ff6 ******/
 		%feature("compactdefaultargs") Help;
 		%feature("autodoc", "
 Parameters
@@ -11372,13 +11385,13 @@ number: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Help for specific commands (apart from general command help).
 ") Help;
-		Standard_CString Help(const Standard_Integer number);
+		const char * Help(const int number);
 
 		/****** IFSelect_SessionPilot::Library ******/
 		/****** md5 signature: 6f8e211d941f22828ff8762b8fc91e49 ******/
@@ -11394,7 +11407,7 @@ Returns the WorKlibrary (Null if not set). WorkLibrary is used to Read and Write
 		opencascade::handle<IFSelect_WorkLibrary> Library();
 
 		/****** IFSelect_SessionPilot::NbCommands ******/
-		/****** md5 signature: 6078e4a9471b1f847391aaa4bebb1c99 ******/
+		/****** md5 signature: 788765ffbe2a7273d1885419fa5b5eb1 ******/
 		%feature("compactdefaultargs") NbCommands;
 		%feature("autodoc", "Return
 -------
@@ -11404,10 +11417,10 @@ Description
 -----------
 Returns the count of recorded Commands.
 ") NbCommands;
-		Standard_Integer NbCommands();
+		int NbCommands();
 
 		/****** IFSelect_SessionPilot::NbWords ******/
-		/****** md5 signature: fb558e9d827d2ed283207e25bf36b070 ******/
+		/****** md5 signature: bfed7d00534535fe0c9af88745db3b96 ******/
 		%feature("compactdefaultargs") NbWords;
 		%feature("autodoc", "Return
 -------
@@ -11417,15 +11430,15 @@ Description
 -----------
 Returns the count of words of the Command Line, separated by blanks: 0 if empty, one if a command without args, else it gives the count of args minus one. Warning: limited to 10 (command title + 9 args).
 ") NbWords;
-		Standard_Integer NbWords();
+		int NbWords();
 
 		/****** IFSelect_SessionPilot::Number ******/
-		/****** md5 signature: 8d09d879f9815dde65029de8e1331381 ******/
+		/****** md5 signature: 950c1bcc8d074c350a964ad948b67369 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "
 Parameters
 ----------
-val: str
+val: char *
 
 Return
 -------
@@ -11435,7 +11448,7 @@ Description
 -----------
 Interprets a string value as an entity number: if it gives an integer, returns its value else, considers it as ENtityLabel (preferably case sensitive) in case of failure, returns 0.
 ") Number;
-		Standard_Integer Number(Standard_CString val);
+		int Number(const char * const val);
 
 		/****** IFSelect_SessionPilot::Perform ******/
 		/****** md5 signature: 8c78d156fdf5368ae88c10d60efd4428 ******/
@@ -11451,12 +11464,12 @@ Executes the Command, itself (for built-in commands, which have priority) or by 
 		IFSelect_ReturnStatus Perform();
 
 		/****** IFSelect_SessionPilot::ReadScript ******/
-		/****** md5 signature: 51ef359f92322c3b2d8c2e9c1c36dae1 ******/
+		/****** md5 signature: 2e7a3cf12db79ec423341f2f42838180 ******/
 		%feature("compactdefaultargs") ReadScript;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str (optional, default to "")
+file: char * (optional, default to "")
 
 Return
 -------
@@ -11466,7 +11479,7 @@ Description
 -----------
 Reads commands from a Script File, named <file>. By default (file = ''), reads from standard input with a prompt Else (reading from a file), the read commands are displayed onto standard output. Allows nested reads. Reading is stopped either by command x or exit, or by reaching end of file Return Value follows the rules of Do: RetEnd for normal end, RetFail if script could not be opened.
 ") ReadScript;
-		IFSelect_ReturnStatus ReadScript(Standard_CString file = "");
+		IFSelect_ReturnStatus ReadScript(const char * const file = "");
 
 		/****** IFSelect_SessionPilot::RecordItem ******/
 		/****** md5 signature: f1527347754a5e5054d80ddc568a5131 ******/
@@ -11487,7 +11500,7 @@ Allows to associate a Transient Value with the last execution as a partial resul
 		IFSelect_ReturnStatus RecordItem(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SessionPilot::RecordMode ******/
-		/****** md5 signature: 0d08a70331d1db8b3781ed5b3555caae ******/
+		/****** md5 signature: a45ffbd9e1497108287c0508bbbf6f89 ******/
 		%feature("compactdefaultargs") RecordMode;
 		%feature("autodoc", "Return
 -------
@@ -11497,7 +11510,7 @@ Description
 -----------
 Returns the Record Mode for Commands. Default is False.
 ") RecordMode;
-		Standard_Boolean RecordMode();
+		bool RecordMode();
 
 		/****** IFSelect_SessionPilot::RecordedItem ******/
 		/****** md5 signature: c8f555fbdde1b5878c3c322131bc0972 ******/
@@ -11513,7 +11526,7 @@ Returns the Transient Object which was recorded with the current Line Command. I
 		opencascade::handle<Standard_Transient> RecordedItem();
 
 		/****** IFSelect_SessionPilot::RemoveWord ******/
-		/****** md5 signature: 4ce2a0f95cb1359a38bc88957771c5c2 ******/
+		/****** md5 signature: 81bed6ca8f188b746ca21b9f62d3aab7 ******/
 		%feature("compactdefaultargs") RemoveWord;
 		%feature("autodoc", "
 Parameters
@@ -11528,7 +11541,7 @@ Description
 -----------
 Removes a word given its rank. Returns True if Done, False if <num> is out of range.
 ") RemoveWord;
-		Standard_Boolean RemoveWord(const Standard_Integer num);
+		bool RemoveWord(const int num);
 
 		/****** IFSelect_SessionPilot::Session ******/
 		/****** md5 signature: 60e69ff7e32725297667bb2b3b3fb532 ******/
@@ -11580,7 +11593,7 @@ Sets a WorkLibrary.
 		void SetLibrary(const opencascade::handle<IFSelect_WorkLibrary> & WL);
 
 		/****** IFSelect_SessionPilot::SetRecordMode ******/
-		/****** md5 signature: df94b23ba2a4f5cb349f3b71b9af48cb ******/
+		/****** md5 signature: 3d4b865756a473ac0861e7e188162e4f ******/
 		%feature("compactdefaultargs") SetRecordMode;
 		%feature("autodoc", "
 Parameters
@@ -11595,7 +11608,7 @@ Description
 -----------
 Changes the RecordMode.
 ") SetRecordMode;
-		void SetRecordMode(const Standard_Boolean mode);
+		void SetRecordMode(const bool mode);
 
 		/****** IFSelect_SessionPilot::SetSession ******/
 		/****** md5 signature: e037c882fa5543b1a8cc4af9b785204c ******/
@@ -11616,7 +11629,7 @@ Sets a WorkSession to be worked on.
 		void SetSession(const opencascade::handle<IFSelect_WorkSession> & WS);
 
 		/****** IFSelect_SessionPilot::Word ******/
-		/****** md5 signature: e9741d12192b37b17d42c267e6ce2a03 ******/
+		/****** md5 signature: 919db32098500b1250192d05237200b2 ******/
 		%feature("compactdefaultargs") Word;
 		%feature("autodoc", "
 Parameters
@@ -11631,7 +11644,7 @@ Description
 -----------
 Returns a word given its rank in the Command Line. Begins at 0 which is the Command Title, 1 is the 1st arg., etc...
 ") Word;
-		const TCollection_AsciiString & Word(const Standard_Integer num);
+		const TCollection_AsciiString & Word(const int num);
 
 };
 
@@ -11663,7 +11676,7 @@ Returns a SignCategory.
 		 IFSelect_SignCategory();
 
 		/****** IFSelect_SignCategory::Value ******/
-		/****** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ******/
+		/****** md5 signature: 5a5afde3bba2f0674f3051246f752061 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -11673,18 +11686,16 @@ model: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Signature for a Transient object, as its Category recorded in the model.
 ") Value;
-		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
-
-%make_alias(IFSelect_SignCategory)
 
 %extend IFSelect_SignCategory {
 	%pythoncode {
@@ -11698,13 +11709,13 @@ Returns the Signature for a Transient object, as its Category recorded in the mo
 class IFSelect_SignCounter : public IFSelect_SignatureList {
 	public:
 		/****** IFSelect_SignCounter::IFSelect_SignCounter ******/
-		/****** md5 signature: ef8188163ad05dffc670c2aa920e76f5 ******/
+		/****** md5 signature: 0750eae0f05e438b9c06e434576677b7 ******/
 		%feature("compactdefaultargs") IFSelect_SignCounter;
 		%feature("autodoc", "
 Parameters
 ----------
-withmap: bool (optional, default to Standard_True)
-withlist: bool (optional, default to Standard_False)
+withmap: bool (optional, default to true)
+withlist: bool (optional, default to false)
 
 Return
 -------
@@ -11714,17 +11725,17 @@ Description
 -----------
 Creates a SignCounter, without proper Signature If <withmap> is True (default), added entities are counted only if they are not yet recorded in the map Map control can be set off if the input guarantees uniqueness of data <withlist> is transmitted to SignatureList (option to list entities, not only to count them).
 ") IFSelect_SignCounter;
-		 IFSelect_SignCounter(const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
+		 IFSelect_SignCounter(const bool withmap = true, const bool withlist = false);
 
 		/****** IFSelect_SignCounter::IFSelect_SignCounter ******/
-		/****** md5 signature: 50e58c41f76c3f49231c01c0e98259e0 ******/
+		/****** md5 signature: 54b1db9e7e5f9ab466ebf58a05cf089e ******/
 		%feature("compactdefaultargs") IFSelect_SignCounter;
 		%feature("autodoc", "
 Parameters
 ----------
 matcher: IFSelect_Signature
-withmap: bool (optional, default to Standard_True)
-withlist: bool (optional, default to Standard_False)
+withmap: bool (optional, default to true)
+withlist: bool (optional, default to false)
 
 Return
 -------
@@ -11734,10 +11745,10 @@ Description
 -----------
 Creates a SignCounter, with a predefined Signature Other arguments as for Create without Signature.
 ") IFSelect_SignCounter;
-		 IFSelect_SignCounter(const opencascade::handle<IFSelect_Signature> & matcher, const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
+		 IFSelect_SignCounter(const opencascade::handle<IFSelect_Signature> & matcher, const bool withmap = true, const bool withlist = false);
 
 		/****** IFSelect_SignCounter::AddEntity ******/
-		/****** md5 signature: e8508b798076af5bbd931d49d2fd0e9a ******/
+		/****** md5 signature: c8094c5bd28c7da1d87aef439e608bd1 ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
@@ -11753,7 +11764,7 @@ Description
 -----------
 Adds an entity by considering its signature, which is given by call to method AddSign Returns True if added, False if already in the map (and map control status set).
 ") AddEntity;
-		virtual Standard_Boolean AddEntity(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual bool AddEntity(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SignCounter::AddFromSelection ******/
 		/****** md5 signature: 8d9bf9a5a23356fc53d132b07a1560d5 ******/
@@ -11775,12 +11786,12 @@ Adds the result determined by a Selection from a Graph Remark: does not impact a
 		void AddFromSelection(const opencascade::handle<IFSelect_Selection> & sel, const Interface_Graph & G);
 
 		/****** IFSelect_SignCounter::AddList ******/
-		/****** md5 signature: 9d3d777c0f0784aa96982a76ddad27d6 ******/
+		/****** md5 signature: adfbe9b141ee8d4e3363c90fbb707056 ******/
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 model: Interface_InterfaceModel
 
 Return
@@ -11791,7 +11802,7 @@ Description
 -----------
 Adds a list of entities by adding each of the items.
 ") AddList;
-		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const opencascade::handle<Interface_InterfaceModel> & model);
+		void AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SignCounter::AddModel ******/
 		/****** md5 signature: 382e0e340780b5b95ec820d1c6e5d0e3 ******/
@@ -11831,12 +11842,12 @@ Adds an entity (already filtered by Map) with its signature. This signature can 
 		virtual void AddSign(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SignCounter::AddWithGraph ******/
-		/****** md5 signature: 0ad72fe2a9811130a2f0ead77172eebb ******/
+		/****** md5 signature: 7f7e211ebb9151e7f8e15045e79695d9 ******/
 		%feature("compactdefaultargs") AddWithGraph;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 graph: Interface_Graph
 
 Return
@@ -11847,16 +11858,16 @@ Description
 -----------
 Adds a list of entities in the context given by the graph Default just call basic AddList Can be redefined to get a signature computed with the graph.
 ") AddWithGraph;
-		virtual void AddWithGraph(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Interface_Graph & graph);
+		virtual void AddWithGraph(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Interface_Graph & graph);
 
 		/****** IFSelect_SignCounter::ComputeSelected ******/
-		/****** md5 signature: ac021174fd1e107095060f7bad43f6bc ******/
+		/****** md5 signature: 004a287ce3d26b1a7e09f624b78a347b ******/
 		%feature("compactdefaultargs") ComputeSelected;
 		%feature("autodoc", "
 Parameters
 ----------
 G: Interface_Graph
-forced: bool (optional, default to Standard_False)
+forced: bool (optional, default to false)
 
 Return
 -------
@@ -11866,10 +11877,10 @@ Description
 -----------
 Computes from the selection result, if selection is active (mode 2). If selection is not defined (mode 0) or is inhibited (mode 1) does nothing. Returns True if computation is done (or optimised), False else This method is called by ComputeCounter from WorkSession //! If <forced> is True, recomputes systematically Else (D), if the counter was not cleared and if the former computed result started from the same total size of Graph and same count of selected entities: computation is not redone unless <forced> is given as True.
 ") ComputeSelected;
-		Standard_Boolean ComputeSelected(const Interface_Graph & G, const Standard_Boolean forced = Standard_False);
+		bool ComputeSelected(const Interface_Graph & G, const bool forced = false);
 
 		/****** IFSelect_SignCounter::ComputedSign ******/
-		/****** md5 signature: 2fa69519baea2b68372eea8bfd58a08e ******/
+		/****** md5 signature: 76120b0feb75c35cf742482ee396fdfb ******/
 		%feature("compactdefaultargs") ComputedSign;
 		%feature("autodoc", "
 Parameters
@@ -11879,16 +11890,16 @@ G: Interface_Graph
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Applies AddWithGraph on one entity, and returns the Signature Value which has been recorded To do this, Add is called with SignOnly Mode True during the call, the returned value is LastValue.
 ") ComputedSign;
-		Standard_CString ComputedSign(const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
+		const char * ComputedSign(const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
 		/****** IFSelect_SignCounter::SelMode ******/
-		/****** md5 signature: ddfdcb2d213abcd775c5035b238d1167 ******/
+		/****** md5 signature: 9671c6511d1a53c999b2eeddf5bf5750 ******/
 		%feature("compactdefaultargs") SelMode;
 		%feature("autodoc", "Return
 -------
@@ -11898,7 +11909,7 @@ Description
 -----------
 Returns the mode of working with the selection.
 ") SelMode;
-		Standard_Integer SelMode();
+		int SelMode();
 
 		/****** IFSelect_SignCounter::Selection ******/
 		/****** md5 signature: e05f8581b544958a8c567b8bd0f3b0c4 ******/
@@ -11914,7 +11925,7 @@ Returns the selection, or a null Handle.
 		opencascade::handle<IFSelect_Selection> Selection();
 
 		/****** IFSelect_SignCounter::SetMap ******/
-		/****** md5 signature: 69fbfc1a3017c51bdf30d41f8cfc792c ******/
+		/****** md5 signature: c22c74f5b1b76ce388d3fb5d04ff6d47 ******/
 		%feature("compactdefaultargs") SetMap;
 		%feature("autodoc", "
 Parameters
@@ -11929,10 +11940,10 @@ Description
 -----------
 Changes the control status. The map is not cleared, simply its use changes.
 ") SetMap;
-		void SetMap(const Standard_Boolean withmap);
+		void SetMap(const bool withmap);
 
 		/****** IFSelect_SignCounter::SetSelMode ******/
-		/****** md5 signature: 9e722ba859e1ebd68aed9c9ddbecff64 ******/
+		/****** md5 signature: 40df1d00d4db7114e23614b342a1ddd3 ******/
 		%feature("compactdefaultargs") SetSelMode;
 		%feature("autodoc", "
 Parameters
@@ -11947,7 +11958,7 @@ Description
 -----------
 Changes the mode of working with the selection: -1 just clears optimisation data and nothing else 0 clears it 1 inhibits it for computing (but no clearing) 2 sets it active for computing Default at creation is 0, after SetSelection (not null) is 2.
 ") SetSelMode;
-		void SetSelMode(const Standard_Integer selmode);
+		void SetSelMode(const int selmode);
 
 		/****** IFSelect_SignCounter::SetSelection ******/
 		/****** md5 signature: c33ace088a61e8e42ceb139b2bb56198 ******/
@@ -12016,12 +12027,12 @@ Returns the Signature used to count entities. It can be null.
 class IFSelect_SignMultiple : public IFSelect_Signature {
 	public:
 		/****** IFSelect_SignMultiple::IFSelect_SignMultiple ******/
-		/****** md5 signature: fa2ffecc7cbb7183778497de04da427e ******/
+		/****** md5 signature: 6fde7fb3814c66a6ec0a4848145cca68 ******/
 		%feature("compactdefaultargs") IFSelect_SignMultiple;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -12031,17 +12042,17 @@ Description
 -----------
 Creates an empty SignMultiple with a Name This name should take expected tabulations into account.
 ") IFSelect_SignMultiple;
-		 IFSelect_SignMultiple(Standard_CString name);
+		 IFSelect_SignMultiple(const char * const name);
 
 		/****** IFSelect_SignMultiple::Add ******/
-		/****** md5 signature: 3228a1194cec7f5e691e5dcd687ac67c ******/
+		/****** md5 signature: 46d36ce6ad3878857aac291f8a9d7452 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 subsign: IFSelect_Signature
 width: int (optional, default to 0)
-maxi: bool (optional, default to Standard_False)
+maxi: bool (optional, default to false)
 
 Return
 -------
@@ -12051,10 +12062,10 @@ Description
 -----------
 Adds a Signature. Width, if given, gives the tabulation If <maxi> is True, it is a forced tabulation (overlength is replaced by a final dot) If <maxi> is False, just 3 blanks follow an overlength.
 ") Add;
-		void Add(const opencascade::handle<IFSelect_Signature> & subsign, const Standard_Integer width = 0, const Standard_Boolean maxi = Standard_False);
+		void Add(const opencascade::handle<IFSelect_Signature> & subsign, const int width = 0, const bool maxi = false);
 
 		/****** IFSelect_SignMultiple::Matches ******/
-		/****** md5 signature: 6cdb41c3b6f4c6d9bbd3a66d390d7419 ******/
+		/****** md5 signature: bf8eb5c0c0aa654385b3629357ee2805 ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
@@ -12072,10 +12083,10 @@ Description
 -----------
 Specialized Match Rule If <exact> is False, simply checks if at least one sub-item matches If <exact> is True, standard match with Value (i.e. tabulations must be respected).
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
+		bool Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const bool exact);
 
 		/****** IFSelect_SignMultiple::Value ******/
-		/****** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ******/
+		/****** md5 signature: 5a5afde3bba2f0674f3051246f752061 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -12085,18 +12096,16 @@ model: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Concatenates the values of sub-signatures, with their tabulations.
 ") Value;
-		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
-
-%make_alias(IFSelect_SignMultiple)
 
 %extend IFSelect_SignMultiple {
 	%pythoncode {
@@ -12110,12 +12119,12 @@ Concatenates the values of sub-signatures, with their tabulations.
 class IFSelect_SignType : public IFSelect_Signature {
 	public:
 		/****** IFSelect_SignType::IFSelect_SignType ******/
-		/****** md5 signature: 41686c79bd379b0908e693de64f7d4cc ******/
+		/****** md5 signature: a00a45d55ee7c1f86c7ea4062177c509 ******/
 		%feature("compactdefaultargs") IFSelect_SignType;
 		%feature("autodoc", "
 Parameters
 ----------
-nopk: bool (optional, default to Standard_False)
+nopk: bool (optional, default to false)
 
 Return
 -------
@@ -12125,10 +12134,10 @@ Description
 -----------
 Returns a SignType <nopk> false (D): complete dynamic type (name = Dynamic Type) <nopk> true: class type without pk (name = Class Type).
 ") IFSelect_SignType;
-		 IFSelect_SignType(const Standard_Boolean nopk = Standard_False);
+		 IFSelect_SignType(const bool nopk = false);
 
 		/****** IFSelect_SignType::Value ******/
-		/****** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ******/
+		/****** md5 signature: 5a5afde3bba2f0674f3051246f752061 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -12138,18 +12147,16 @@ model: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Signature for a Transient object, as its Dynamic Type, with or without package name, according starting option.
 ") Value;
-		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
-
-%make_alias(IFSelect_SignType)
 
 %extend IFSelect_SignType {
 	%pythoncode {
@@ -12176,7 +12183,7 @@ Returns a SignValidity.
 		 IFSelect_SignValidity();
 
 		/****** IFSelect_SignValidity::CVal ******/
-		/****** md5 signature: ff90db2a43fce7d2caa3714fa159f9db ******/
+		/****** md5 signature: ea1c19ccacbcc8fccd541d7e23516ac0 ******/
 		%feature("compactdefaultargs") CVal;
 		%feature("autodoc", "
 Parameters
@@ -12186,16 +12193,16 @@ model: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model. Class method, can be called by any one.
 ") CVal;
-		static Standard_CString CVal(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		static const char * CVal(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SignValidity::Value ******/
-		/****** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ******/
+		/****** md5 signature: 5a5afde3bba2f0674f3051246f752061 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -12205,18 +12212,16 @@ model: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model Calls the class method CVal.
 ") Value;
-		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
-
-%make_alias(IFSelect_SignValidity)
 
 %extend IFSelect_SignValidity {
 	%pythoncode {
@@ -12243,7 +12248,7 @@ Creates a TransformStandard, option StandardCopy, no Modifier.
 		 IFSelect_TransformStandard();
 
 		/****** IFSelect_TransformStandard::AddModifier ******/
-		/****** md5 signature: 5eec899d81cf52da7352880ed3c3555d ******/
+		/****** md5 signature: c6426a6ba91bf6da23e73febf893bdf3 ******/
 		%feature("compactdefaultargs") AddModifier;
 		%feature("autodoc", "
 Parameters
@@ -12259,10 +12264,10 @@ Description
 -----------
 Adds a Modifier to the list: - <atnum> = 0 (default): at the end of the list - <atnum> > 0: at rank <atnum> Returns True if done, False if <atnum> is out of range.
 ") AddModifier;
-		Standard_Boolean AddModifier(const opencascade::handle<IFSelect_Modifier> & modif, const Standard_Integer atnum = 0);
+		bool AddModifier(const opencascade::handle<IFSelect_Modifier> & modif, const int atnum = 0);
 
 		/****** IFSelect_TransformStandard::ApplyModifiers ******/
-		/****** md5 signature: a5207e41a6732f7b81a83eaf77bf9108 ******/
+		/****** md5 signature: 5af14f773654910bf74f1b680a2ced28 ******/
 		%feature("compactdefaultargs") ApplyModifiers;
 		%feature("autodoc", "
 Parameters
@@ -12281,7 +12286,28 @@ Description
 -----------
 Applies the modifiers sequentially. For each one, prepares required data (if a Selection is associated as a filter). For the option OnTheSpot, it determines if the graph may be changed and updates <newmod> if required If a Modifier causes an error (check 'HasFailed'), ApplyModifier stops: the following Modifiers are ignored.
 ") ApplyModifiers;
-		Standard_Boolean ApplyModifiers(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CopyTool & TC, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
+		bool ApplyModifiers(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CopyTool & TC, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
+
+		/****** IFSelect_TransformStandard::Copy ******/
+		/****** md5 signature: 82ba12c16020c5d91e0ea7594e94c5bf ******/
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "
+Parameters
+----------
+G: Interface_Graph
+TC: Interface_CopyTool
+
+Return
+-------
+opencascade::handle<Interface_InterfaceModel>
+
+Description
+-----------
+This the first operation. It calls StandardCopy or OnTheSpot according the option Performs the copy operation. Calls StandardCopy or OnTheSpot according to the copy option. 
+Input parameter: G the interface graph @param[in,out] TC the copy tool 
+Return: the new model produced by the copy.
+") Copy;
+		opencascade::handle<Interface_InterfaceModel> Copy(const Interface_Graph & G, Interface_CopyTool & TC);
 
 		/****** IFSelect_TransformStandard::Copy ******/
 		/****** md5 signature: e964fcafc4f6e0ee301a833097202210 ******/
@@ -12299,12 +12325,12 @@ None
 
 Description
 -----------
-This the first operation. It calls StandardCopy or OnTheSpot according the option.
+No available documentation.
 ") Copy;
 		void Copy(const Interface_Graph & G, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
 		/****** IFSelect_TransformStandard::CopyOption ******/
-		/****** md5 signature: 44719f7f46cc5e4d45169f38dd8d18fd ******/
+		/****** md5 signature: b0d29e9ca3a931d687719e9873b24247 ******/
 		%feature("compactdefaultargs") CopyOption;
 		%feature("autodoc", "Return
 -------
@@ -12314,10 +12340,10 @@ Description
 -----------
 Returns the Copy option.
 ") CopyOption;
-		Standard_Boolean CopyOption();
+		bool CopyOption();
 
 		/****** IFSelect_TransformStandard::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -12330,7 +12356,7 @@ Returns a text which defines the way a Transformer works: 'On the spot edition' 
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_TransformStandard::Modifier ******/
-		/****** md5 signature: 7b8472ad81054bc38a2db613da8911e2 ******/
+		/****** md5 signature: 4589ead9d8f44c207f91263354720c27 ******/
 		%feature("compactdefaultargs") Modifier;
 		%feature("autodoc", "
 Parameters
@@ -12345,10 +12371,10 @@ Description
 -----------
 Returns a Modifier given its rank in the list.
 ") Modifier;
-		opencascade::handle<IFSelect_Modifier> Modifier(const Standard_Integer num);
+		opencascade::handle<IFSelect_Modifier> Modifier(const int num);
 
 		/****** IFSelect_TransformStandard::ModifierRank ******/
-		/****** md5 signature: 6d9507d045d5370e99d88b4a8b5e48b8 ******/
+		/****** md5 signature: 350044da663fa5c4a6943c0f45e461e7 ******/
 		%feature("compactdefaultargs") ModifierRank;
 		%feature("autodoc", "
 Parameters
@@ -12363,10 +12389,10 @@ Description
 -----------
 Returns the rank of a Modifier in the list, 0 if unknown.
 ") ModifierRank;
-		Standard_Integer ModifierRank(const opencascade::handle<IFSelect_Modifier> & modif);
+		int ModifierRank(const opencascade::handle<IFSelect_Modifier> & modif);
 
 		/****** IFSelect_TransformStandard::NbModifiers ******/
-		/****** md5 signature: b094909a30cd757bd379ce37050e4ed9 ******/
+		/****** md5 signature: 1064b9f92bd53b0322f0ce77a825ea1b ******/
 		%feature("compactdefaultargs") NbModifiers;
 		%feature("autodoc", "Return
 -------
@@ -12376,7 +12402,28 @@ Description
 -----------
 Returns the count of recorded Modifiers.
 ") NbModifiers;
-		Standard_Integer NbModifiers();
+		int NbModifiers();
+
+		/****** IFSelect_TransformStandard::OnTheSpot ******/
+		/****** md5 signature: 752310c9d05a13cce2a565863a3d9d31 ******/
+		%feature("compactdefaultargs") OnTheSpot;
+		%feature("autodoc", "
+Parameters
+----------
+G: Interface_Graph
+TC: Interface_CopyTool
+
+Return
+-------
+opencascade::handle<Interface_InterfaceModel>
+
+Description
+-----------
+This is the OnTheSpot action: each entity is bound with ... itself. The produced model is the same as the starting one. Performs the on-the-spot action: each entity is bound with itself. The produced model is the same as the starting one. 
+Input parameter: G the interface graph @param[in,out] TC the copy tool 
+Return: the starting model (same instance).
+") OnTheSpot;
+		opencascade::handle<Interface_InterfaceModel> OnTheSpot(const Interface_Graph & G, Interface_CopyTool & TC);
 
 		/****** IFSelect_TransformStandard::OnTheSpot ******/
 		/****** md5 signature: 22f7ea0c28b2e3adfaacf03c3a0abe89 ******/
@@ -12394,12 +12441,12 @@ None
 
 Description
 -----------
-This is the OnTheSpot action: each entity is bound with ... itself. The produced model is the same as the starting one.
+No available documentation.
 ") OnTheSpot;
 		void OnTheSpot(const Interface_Graph & G, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
 		/****** IFSelect_TransformStandard::Perform ******/
-		/****** md5 signature: b1205e0b994dfb92700072b5562fb3aa ******/
+		/****** md5 signature: aa5052b3839634df6324aba977bd95a8 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -12417,10 +12464,10 @@ Description
 -----------
 Performs the Standard Transformation, by calling Copy then ApplyModifiers (which can return an error status).
 ") Perform;
-		Standard_Boolean Perform(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
+		bool Perform(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
 
 		/****** IFSelect_TransformStandard::RemoveModifier ******/
-		/****** md5 signature: 335a49604c6b5b3141175f0223c4c508 ******/
+		/****** md5 signature: 59665dbc57ae765b1d01eee2d2a019e5 ******/
 		%feature("compactdefaultargs") RemoveModifier;
 		%feature("autodoc", "
 Parameters
@@ -12435,10 +12482,10 @@ Description
 -----------
 Removes a Modifier from the list Returns True if done, False if <modif> not in the list.
 ") RemoveModifier;
-		Standard_Boolean RemoveModifier(const opencascade::handle<IFSelect_Modifier> & modif);
+		bool RemoveModifier(const opencascade::handle<IFSelect_Modifier> & modif);
 
 		/****** IFSelect_TransformStandard::RemoveModifier ******/
-		/****** md5 signature: 0651bb2b627676a79ab95725de23dd75 ******/
+		/****** md5 signature: 8f55963316ccf270c80dc5bf5042beaf ******/
 		%feature("compactdefaultargs") RemoveModifier;
 		%feature("autodoc", "
 Parameters
@@ -12453,7 +12500,7 @@ Description
 -----------
 Removes a Modifier from the list, given its rank Returns True if done, False if <num> is out of range.
 ") RemoveModifier;
-		Standard_Boolean RemoveModifier(const Standard_Integer num);
+		bool RemoveModifier(const int num);
 
 		/****** IFSelect_TransformStandard::Selection ******/
 		/****** md5 signature: e05f8581b544958a8c567b8bd0f3b0c4 ******/
@@ -12469,7 +12516,7 @@ Returns the Selection, Null by default.
 		opencascade::handle<IFSelect_Selection> Selection();
 
 		/****** IFSelect_TransformStandard::SetCopyOption ******/
-		/****** md5 signature: 9111ed0e23e1d11950ff2050e79e4d4a ******/
+		/****** md5 signature: 5bb8b7d56003870953fefb0af3c06d5a ******/
 		%feature("compactdefaultargs") SetCopyOption;
 		%feature("autodoc", "
 Parameters
@@ -12482,9 +12529,9 @@ None
 
 Description
 -----------
-Sets the Copy option to a new value: - True for StandardCopy - False for OnTheSpot.
+Sets the Copy option to a new value: True for StandardCopy. False for OnTheSpot.
 ") SetCopyOption;
-		void SetCopyOption(const Standard_Boolean option);
+		void SetCopyOption(const bool option);
 
 		/****** IFSelect_TransformStandard::SetSelection ******/
 		/****** md5 signature: c33ace088a61e8e42ceb139b2bb56198 ******/
@@ -12505,6 +12552,27 @@ Sets a Selection (or unsets if Null) This Selection then defines the list of ent
 		void SetSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_TransformStandard::StandardCopy ******/
+		/****** md5 signature: 598c2274bae51d72337a674a61cd1f48 ******/
+		%feature("compactdefaultargs") StandardCopy;
+		%feature("autodoc", "
+Parameters
+----------
+G: Interface_Graph
+TC: Interface_CopyTool
+
+Return
+-------
+opencascade::handle<Interface_InterfaceModel>
+
+Description
+-----------
+This is the standard action of Copy: its takes into account only the remaining entities (noted by Graph Status positive) and their proper dependences of course. Produces a new model. Performs a standard copy of remaining entities and their dependencies. 
+Input parameter: G the interface graph @param[in,out] TC the copy tool 
+Return: the new model with copied entities.
+") StandardCopy;
+		opencascade::handle<Interface_InterfaceModel> StandardCopy(const Interface_Graph & G, Interface_CopyTool & TC);
+
+		/****** IFSelect_TransformStandard::StandardCopy ******/
 		/****** md5 signature: 2ab4626116ebade474c45656f0976a5b ******/
 		%feature("compactdefaultargs") StandardCopy;
 		%feature("autodoc", "
@@ -12520,12 +12588,12 @@ None
 
 Description
 -----------
-This is the standard action of Copy: its takes into account only the remaining entities (noted by Graph Status positive) and their proper dependances of course. Produces a new model.
+No available documentation.
 ") StandardCopy;
 		void StandardCopy(const Interface_Graph & G, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
 		/****** IFSelect_TransformStandard::Updated ******/
-		/****** md5 signature: ef53f73b484d5d7527130e47523fc8ca ******/
+		/****** md5 signature: 99d80ae74fae9ad98b4929e7e52e66ef ******/
 		%feature("compactdefaultargs") Updated;
 		%feature("autodoc", "
 Parameters
@@ -12541,7 +12609,7 @@ Description
 -----------
 This methods allows to know what happened to a starting entity after the last Perform. It reads result from the map which was filled by Perform.
 ") Updated;
-		Standard_Boolean Updated(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto);
+		bool Updated(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto);
 
 };
 
@@ -12560,13 +12628,13 @@ This methods allows to know what happened to a starting entity after the last Pe
 class IFSelect_GraphCounter : public IFSelect_SignCounter {
 	public:
 		/****** IFSelect_GraphCounter::IFSelect_GraphCounter ******/
-		/****** md5 signature: 338db17640fb19a55cf72489b5ab1f58 ******/
+		/****** md5 signature: a0f13d31907ae49c85a46f696fb4e12c ******/
 		%feature("compactdefaultargs") IFSelect_GraphCounter;
 		%feature("autodoc", "
 Parameters
 ----------
-withmap: bool (optional, default to Standard_True)
-withlist: bool (optional, default to Standard_False)
+withmap: bool (optional, default to true)
+withlist: bool (optional, default to false)
 
 Return
 -------
@@ -12576,15 +12644,15 @@ Description
 -----------
 Creates a GraphCounter, without applied selection.
 ") IFSelect_GraphCounter;
-		 IFSelect_GraphCounter(const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
+		 IFSelect_GraphCounter(const bool withmap = true, const bool withlist = false);
 
 		/****** IFSelect_GraphCounter::AddWithGraph ******/
-		/****** md5 signature: e51239465fde5d0a8e796c49f1a32936 ******/
+		/****** md5 signature: 29995730603be7f78847832b7d8e492e ******/
 		%feature("compactdefaultargs") AddWithGraph;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 graph: Interface_Graph
 
 Return
@@ -12595,7 +12663,7 @@ Description
 -----------
 Adds a list of entities in the context given by the graph Default takes the count of entities selected by the applied selection, when it is given each entity of the list Can be redefined.
 ") AddWithGraph;
-		virtual void AddWithGraph(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Interface_Graph & graph);
+		void AddWithGraph(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Interface_Graph & graph);
 
 		/****** IFSelect_GraphCounter::Applied ******/
 		/****** md5 signature: ec455be5b56bf4b787932b51f6c2ad00 ******/
@@ -12676,7 +12744,7 @@ Returns the EditForm.
 		opencascade::handle<IFSelect_EditForm> EditForm();
 
 		/****** IFSelect_ModifEditForm::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -12689,7 +12757,7 @@ Returns Label as 'Apply EditForm <+ label of EditForm>'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_ModifEditForm::Perform ******/
-		/****** md5 signature: 4c70286fda376ec2d1b40913ebcbb75a ******/
+		/****** md5 signature: 6bf3883ac24e883da0995f9dde4fb45d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -12726,12 +12794,12 @@ Acts by applying an EditForm to entities, selected or all model.
 class IFSelect_ModifReorder : public IFSelect_Modifier {
 	public:
 		/****** IFSelect_ModifReorder::IFSelect_ModifReorder ******/
-		/****** md5 signature: eb7e0fdb0bfa34f9bf9960b432367fde ******/
+		/****** md5 signature: a24b852159399c6ce4ba487358398e45 ******/
 		%feature("compactdefaultargs") IFSelect_ModifReorder;
 		%feature("autodoc", "
 Parameters
 ----------
-rootlast: bool (optional, default to Standard_True)
+rootlast: bool (optional, default to true)
 
 Return
 -------
@@ -12741,10 +12809,10 @@ Description
 -----------
 Creates a ModifReorder. It may change the graph (it does !) If <rootlast> is True (D), roots are set at the end of packets Else, they are set at beginning (as done by AddWithRefs).
 ") IFSelect_ModifReorder;
-		 IFSelect_ModifReorder(const Standard_Boolean rootlast = Standard_True);
+		 IFSelect_ModifReorder(const bool rootlast = true);
 
 		/****** IFSelect_ModifReorder::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -12757,7 +12825,7 @@ Returns Label as 'Reorder, Roots (last or first)'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_ModifReorder::Perform ******/
-		/****** md5 signature: 4c70286fda376ec2d1b40913ebcbb75a ******/
+		/****** md5 signature: 6bf3883ac24e883da0995f9dde4fb45d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -12795,7 +12863,7 @@ Acts by computing orders (by method All from ShareTool) then forcing them in the
 class IFSelect_SelectAnyList : public IFSelect_SelectDeduct {
 	public:
 		/****** IFSelect_SelectAnyList::FillResult ******/
-		/****** md5 signature: 792aeac22016ad9131e6d4c40d505207 ******/
+		/****** md5 signature: a73ad1e1ac57e03a04ad2cde00000e1d ******/
 		%feature("compactdefaultargs") FillResult;
 		%feature("autodoc", "
 Parameters
@@ -12813,10 +12881,10 @@ Description
 -----------
 Puts into <res>, the sub-entities of the list, from n1 to n2 included. Remark that adequation with Entity's type and length of list has already been made at this stage Called by RootResult.
 ") FillResult;
-		virtual void FillResult(const Standard_Integer n1, const Standard_Integer n2, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & res);
+		virtual void FillResult(const int n1, const int n2, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & res);
 
 		/****** IFSelect_SelectAnyList::HasLower ******/
-		/****** md5 signature: fed85e72f70b42adca46c7b901badc46 ******/
+		/****** md5 signature: 1759f8bd2fea26f270eb2cc00202af81 ******/
 		%feature("compactdefaultargs") HasLower;
 		%feature("autodoc", "Return
 -------
@@ -12826,10 +12894,10 @@ Description
 -----------
 Returns True if a Lower limit is defined.
 ") HasLower;
-		Standard_Boolean HasLower();
+		bool HasLower();
 
 		/****** IFSelect_SelectAnyList::HasUpper ******/
-		/****** md5 signature: d70f1e270858eac8843f77542c8137ff ******/
+		/****** md5 signature: d967c1c952b4c7f0972c38bf1ab8ec1e ******/
 		%feature("compactdefaultargs") HasUpper;
 		%feature("autodoc", "Return
 -------
@@ -12839,7 +12907,7 @@ Description
 -----------
 Returns True if a Lower limit is defined.
 ") HasUpper;
-		Standard_Boolean HasUpper();
+		bool HasUpper();
 
 		/****** IFSelect_SelectAnyList::KeepInputEntity ******/
 		/****** md5 signature: 07a33c3b4b75593ca76702a01e11475c ******/
@@ -12860,7 +12928,7 @@ Keeps Input Entity, as having required type. It works by keeping in <iter>, only
 		virtual void KeepInputEntity(Interface_EntityIterator & iter);
 
 		/****** IFSelect_SelectAnyList::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -12899,7 +12967,7 @@ Returns Lower limit (if there is; else, value is senseless).
 		opencascade::handle<IFSelect_IntParam> Lower();
 
 		/****** IFSelect_SelectAnyList::LowerValue ******/
-		/****** md5 signature: 02a3a48796ebc55a19b891812ce46acd ******/
+		/****** md5 signature: e2f074ebb9e1f3062b7d4516e97a1cb0 ******/
 		%feature("compactdefaultargs") LowerValue;
 		%feature("autodoc", "Return
 -------
@@ -12909,10 +12977,10 @@ Description
 -----------
 Returns Integer Value of Lower Limit (0 if none).
 ") LowerValue;
-		Standard_Integer LowerValue();
+		int LowerValue();
 
 		/****** IFSelect_SelectAnyList::NbItems ******/
-		/****** md5 signature: f5503bb7738b7054f156f3d2ade7bc7c ******/
+		/****** md5 signature: 7978db7261fde4948431af7137ca0fd7 ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "
 Parameters
@@ -12927,10 +12995,10 @@ Description
 -----------
 Returns count of Items in the list in the Entity <ent> If <ent> has not required type, returned value must be Zero.
 ") NbItems;
-		virtual Standard_Integer NbItems(const opencascade::handle<Standard_Transient> & ent);
+		virtual int NbItems(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_SelectAnyList::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13034,7 +13102,7 @@ Returns Upper limit (if there is; else, value is senseless).
 		opencascade::handle<IFSelect_IntParam> Upper();
 
 		/****** IFSelect_SelectAnyList::UpperValue ******/
-		/****** md5 signature: bfeb4eb1504ceefb62ee59ee5fd7e8b8 ******/
+		/****** md5 signature: 4ed795a93185a3287cb99abe7cda2656 ******/
 		%feature("compactdefaultargs") UpperValue;
 		%feature("autodoc", "Return
 -------
@@ -13044,7 +13112,7 @@ Description
 -----------
 Returns Integer Value of Upper Limit (0 if none).
 ") UpperValue;
-		Standard_Integer UpperValue();
+		int UpperValue();
 
 };
 
@@ -13076,7 +13144,7 @@ Creates an empty SelectDiff.
 		 IFSelect_SelectDiff();
 
 		/****** IFSelect_SelectDiff::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13089,7 +13157,7 @@ Returns a text defining the criterium: 'Difference'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectDiff::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13136,7 +13204,7 @@ Creates a SelectEntityNumber, initially with no specified Number.
 		 IFSelect_SelectEntityNumber();
 
 		/****** IFSelect_SelectEntityNumber::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13162,7 +13230,7 @@ Returns specified Number (as a Parameter).
 		opencascade::handle<IFSelect_IntParam> Number();
 
 		/****** IFSelect_SelectEntityNumber::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13215,7 +13283,7 @@ Sets Entity Number to be taken (initially, none is set: 0).
 class IFSelect_SelectExplore : public IFSelect_SelectDeduct {
 	public:
 		/****** IFSelect_SelectExplore::Explore ******/
-		/****** md5 signature: 73de1e3d33f392b762de263931616f8a ******/
+		/****** md5 signature: 01ec9925f3bbdb318d89a985b8d98791 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -13233,7 +13301,7 @@ Description
 -----------
 Analyses and, if required, Explores an entity, as follows: The explored list starts as empty, it has to be filled by this method. If it returns False, <ent> is rejected for result (this is to be used only as safety) If it returns True and <explored> remains empty, <ent> is taken itself for result, not explored If it returns True and <explored> is not empty, the content of this list is considered: If maximum level is attained, it is taken for result Else (or no max), each of its entity will be itself explored.
 ") Explore;
-		virtual Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		virtual bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** IFSelect_SelectExplore::ExploreLabel ******/
 		/****** md5 signature: 71c1c113516263d6e90cc832e42af5dd ******/
@@ -13249,7 +13317,7 @@ Returns a text defining the way of exploration.
 		virtual TCollection_AsciiString ExploreLabel();
 
 		/****** IFSelect_SelectExplore::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13262,7 +13330,7 @@ Returns a text saying '(Recursive)' or '(Level nn)' plus specific criterium retu
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectExplore::Level ******/
-		/****** md5 signature: 06f7279e938b54c0bc4a49915192a536 ******/
+		/****** md5 signature: 1c6749a8f4fa3c4b1ef506600d9abb66 ******/
 		%feature("compactdefaultargs") Level;
 		%feature("autodoc", "Return
 -------
@@ -13272,10 +13340,10 @@ Description
 -----------
 Returns the required exploring level.
 ") Level;
-		Standard_Integer Level();
+		int Level();
 
 		/****** IFSelect_SelectExplore::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13323,7 +13391,7 @@ Returns a text defining the criterium for extraction.
 		virtual TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectExtract::IsDirect ******/
-		/****** md5 signature: e230b64eefbb898397296c5ca615d396 ******/
+		/****** md5 signature: 0698e173be0eb75250fb7e49b03f5a76 ******/
 		%feature("compactdefaultargs") IsDirect;
 		%feature("autodoc", "Return
 -------
@@ -13333,10 +13401,10 @@ Description
 -----------
 Returns True if Sort criterium is Direct, False if Reverse.
 ") IsDirect;
-		Standard_Boolean IsDirect();
+		bool IsDirect();
 
 		/****** IFSelect_SelectExtract::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13349,7 +13417,7 @@ Returns a text saying 'Picked' or 'Removed', plus the specific criterium returne
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectExtract::RootResult ******/
-		/****** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13364,10 +13432,10 @@ Description
 -----------
 Returns the list of selected entities. Works by calling the method Sort on each input Entity: the Entity is kept as output if Sort returns the same value as Direct status.
 ") RootResult;
-		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
+		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectExtract::SetDirect ******/
-		/****** md5 signature: 9a3925830632dd6e10f403370415281a ******/
+		/****** md5 signature: 003e168fd45b493ac611e58bdb20e119 ******/
 		%feature("compactdefaultargs") SetDirect;
 		%feature("autodoc", "
 Parameters
@@ -13382,10 +13450,10 @@ Description
 -----------
 Sets Sort criterium sense to a new value (True: Direct , False: Reverse).
 ") SetDirect;
-		void SetDirect(const Standard_Boolean direct);
+		void SetDirect(const bool direct);
 
 		/****** IFSelect_SelectExtract::Sort ******/
-		/****** md5 signature: 60e9196aa7be68c76123c021ea73ecdf ******/
+		/****** md5 signature: ce5c4fc23c7ff43ce2f53e6661faf835 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -13402,10 +13470,10 @@ Description
 -----------
 Returns True for an Entity if it satisfies the Sort criterium It receives: - <rank>, the rank of the Entity in the Iteration, - <ent> , the Entity itself, and - <model>, the Starting Model Hence, the Entity to check is 'model->Value(num)' (but an InterfaceModel allows other checks) This method is specific to each class of SelectExtract.
 ") Sort;
-		virtual Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		virtual bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SelectExtract::SortInGraph ******/
-		/****** md5 signature: b2e994402c58f8cc2d7dc07b0e1595d6 ******/
+		/****** md5 signature: 79fd55f72a259c3cb306cd8304d95460 ******/
 		%feature("compactdefaultargs") SortInGraph;
 		%feature("autodoc", "
 Parameters
@@ -13422,7 +13490,7 @@ Description
 -----------
 Works as Sort but works on the Graph Default directly calls Sort, but it can be redefined If SortInGraph is redefined, Sort should be defined even if not called (to avoid deferred methods in a final class).
 ") SortInGraph;
-		virtual Standard_Boolean SortInGraph(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
+		virtual bool SortInGraph(const int rank, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
 };
 
@@ -13454,7 +13522,7 @@ Creates an empty SelectIntersection.
 		 IFSelect_SelectIntersection();
 
 		/****** IFSelect_SelectIntersection::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13467,7 +13535,7 @@ Returns a text defining the criterium: 'Intersection (AND)'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectIntersection::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13514,7 +13582,7 @@ Creates a SelectModelRoot.
 		 IFSelect_SelectModelEntities();
 
 		/****** IFSelect_SelectModelEntities::CompleteResult ******/
-		/****** md5 signature: 8b8d1b7dae97537052d6d27e34e8ef9f ******/
+		/****** md5 signature: b03b66652d9725585ea77f8a3dae4208 ******/
 		%feature("compactdefaultargs") CompleteResult;
 		%feature("autodoc", "
 Parameters
@@ -13529,10 +13597,10 @@ Description
 -----------
 The complete list of Entities (including shared ones) ... is exactly identical to RootResults in this case.
 ") CompleteResult;
-		virtual Interface_EntityIterator CompleteResult(const Interface_Graph & G);
+		Interface_EntityIterator CompleteResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectModelEntities::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13545,7 +13613,7 @@ Returns a text defining the criterium: 'Model Entities'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectModelEntities::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13592,7 +13660,7 @@ Creates a SelectModelRoot.
 		 IFSelect_SelectModelRoots();
 
 		/****** IFSelect_SelectModelRoots::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13605,7 +13673,7 @@ Returns a text defining the criterium: 'Model Roots'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectModelRoots::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13652,7 +13720,7 @@ Creates a SelectPointed.
 		 IFSelect_SelectPointed();
 
 		/****** IFSelect_SelectPointed::Add ******/
-		/****** md5 signature: ff0fc108940d9f0bec7b4421016b378d ******/
+		/****** md5 signature: 785f1d50eb7b9be0313577d5fdef6d4e ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -13667,15 +13735,15 @@ Description
 -----------
 Adds an item. Returns True if Done, False if <item> is already in the selected list.
 ") Add;
-		Standard_Boolean Add(const opencascade::handle<Standard_Transient> & item);
+		bool Add(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SelectPointed::AddList ******/
-		/****** md5 signature: a748d60a9253f9c0592c623b56cf1cdb ******/
+		/****** md5 signature: 452770ed0a51b3cea9c5b663acf0f159 ******/
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
@@ -13685,7 +13753,7 @@ Description
 -----------
 Adds all the items defined in a list. Returns True if at least one item has been added, False else.
 ") AddList;
-		Standard_Boolean AddList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		bool AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** IFSelect_SelectPointed::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -13701,7 +13769,7 @@ Clears the list of selected items Also says the list is unset All Add* methods a
 		void Clear();
 
 		/****** IFSelect_SelectPointed::IsSet ******/
-		/****** md5 signature: d771f80e63fcb5d314de94e557642c75 ******/
+		/****** md5 signature: fa026a649a18f57fe3cfebbe001e5931 ******/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "Return
 -------
@@ -13711,10 +13779,10 @@ Description
 -----------
 Tells if the list has been set. Even if empty.
 ") IsSet;
-		Standard_Boolean IsSet();
+		bool IsSet();
 
 		/****** IFSelect_SelectPointed::Item ******/
-		/****** md5 signature: 66f7741a43d54c42c064895d26ab5375 ******/
+		/****** md5 signature: b6650e9557aeb4e80a24a73fb7a66f63 ******/
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "
 Parameters
@@ -13729,10 +13797,10 @@ Description
 -----------
 Returns an item given its rank, or a Null Handle.
 ") Item;
-		opencascade::handle<Standard_Transient> Item(const Standard_Integer num);
+		opencascade::handle<Standard_Transient> Item(const int num);
 
 		/****** IFSelect_SelectPointed::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13745,7 +13813,7 @@ Returns a text which identifies the type of selection made. It is 'Pointed Entit
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectPointed::NbItems ******/
-		/****** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ******/
+		/****** md5 signature: 2b529efc4e5d8a11084d3f577abfb55b ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "Return
 -------
@@ -13755,10 +13823,10 @@ Description
 -----------
 Returns the count of selected items.
 ") NbItems;
-		Standard_Integer NbItems();
+		int NbItems();
 
 		/****** IFSelect_SelectPointed::Rank ******/
-		/****** md5 signature: 74f5dad68e50ae1b6d5b2dedb8c1fa73 ******/
+		/****** md5 signature: bbc4e6d763ce61db27d3bbbf30d4d48d ******/
 		%feature("compactdefaultargs") Rank;
 		%feature("autodoc", "
 Parameters
@@ -13773,10 +13841,10 @@ Description
 -----------
 Returns the rank of an item in the selected list, or 0.
 ") Rank;
-		Standard_Integer Rank(const opencascade::handle<Standard_Transient> & item);
+		int Rank(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SelectPointed::Remove ******/
-		/****** md5 signature: 68a9816f2be665c51c676934dfa31934 ******/
+		/****** md5 signature: 966b4c0b2fa70f33abed5b447d2a26f8 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -13791,15 +13859,15 @@ Description
 -----------
 Removes an item. Returns True if Done, False if <item> was not in the selected list.
 ") Remove;
-		Standard_Boolean Remove(const opencascade::handle<Standard_Transient> & item);
+		bool Remove(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SelectPointed::RemoveList ******/
-		/****** md5 signature: abec2ee71575b393465491aafcc29a21 ******/
+		/****** md5 signature: b8d07c5f2ded73e2400635c89e850a6a ******/
 		%feature("compactdefaultargs") RemoveList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
@@ -13809,10 +13877,10 @@ Description
 -----------
 Removes all the items defined in a list. Returns True if at least one item has been removed, False else.
 ") RemoveList;
-		Standard_Boolean RemoveList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		bool RemoveList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** IFSelect_SelectPointed::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -13848,12 +13916,12 @@ As SetList but with only one entity If <ent> is Null, the list is said as being 
 		void SetEntity(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SelectPointed::SetList ******/
-		/****** md5 signature: 556e1691778026004005c6ae7ac6d2c1 ******/
+		/****** md5 signature: 0959a7b81f67b78e5bbd2ed669cdcb40 ******/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
@@ -13863,10 +13931,10 @@ Description
 -----------
 Sets a given list to define the list of selected items <list> can be empty or null: in this case, the list is said as being set, but it is empty //! To use it as an alternate input, one shot: - SetList or SetEntity to define the input list - RootResult to get it - then Clear to drop it.
 ") SetList;
-		void SetList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		void SetList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** IFSelect_SelectPointed::Toggle ******/
-		/****** md5 signature: 8721ea0a3c73db2983ada68f80f4a3a3 ******/
+		/****** md5 signature: eaa8664d2cb16ae2cea01bfe4d12ea40 ******/
 		%feature("compactdefaultargs") Toggle;
 		%feature("autodoc", "
 Parameters
@@ -13881,15 +13949,15 @@ Description
 -----------
 Toggles status of an item: adds it if not pointed or removes it if already pointed. Returns the new status (Pointed or not).
 ") Toggle;
-		Standard_Boolean Toggle(const opencascade::handle<Standard_Transient> & item);
+		bool Toggle(const opencascade::handle<Standard_Transient> & item);
 
 		/****** IFSelect_SelectPointed::ToggleList ******/
-		/****** md5 signature: 94ba531837906ffc70b865c011fb7e04 ******/
+		/****** md5 signature: 14e0700cdae62fb02fb8759e63f568fc ******/
 		%feature("compactdefaultargs") ToggleList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
@@ -13899,7 +13967,7 @@ Description
 -----------
 Toggles status of all the items defined in a list: adds it if not pointed or removes it if already pointed.
 ") ToggleList;
-		Standard_Boolean ToggleList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
+		bool ToggleList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
 
 		/****** IFSelect_SelectPointed::Update ******/
 		/****** md5 signature: e0a85344e057ec35d54f5c9d3a503443 ******/
@@ -13967,7 +14035,7 @@ Creates a SelectShared;.
 		 IFSelect_SelectShared();
 
 		/****** IFSelect_SelectShared::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -13980,7 +14048,7 @@ Returns a text defining the criterium: 'Shared (one level)'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectShared::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14027,7 +14095,7 @@ Creates a SelectSharing;.
 		 IFSelect_SelectSharing();
 
 		/****** IFSelect_SelectSharing::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -14040,7 +14108,7 @@ Returns a text defining the criterium: 'Sharing (one level)'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectSharing::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14087,7 +14155,7 @@ Creates an empty SelectSuite.
 		 IFSelect_SelectSuite();
 
 		/****** IFSelect_SelectSuite::AddInput ******/
-		/****** md5 signature: 14a27eed39d530b3cad0a04d57057980 ******/
+		/****** md5 signature: faa78a018193f39f1c291fb1e4e09fac ******/
 		%feature("compactdefaultargs") AddInput;
 		%feature("autodoc", "
 Parameters
@@ -14102,7 +14170,7 @@ Description
 -----------
 Adds an input selection. I.E.: If <item> is a SelectDeduct, adds it as Previous, not as Input Else, sets it as Input Returns True when done Returns False and refuses to work if Input is already defined.
 ") AddInput;
-		Standard_Boolean AddInput(const opencascade::handle<IFSelect_Selection> & item);
+		bool AddInput(const opencascade::handle<IFSelect_Selection> & item);
 
 		/****** IFSelect_SelectSuite::AddNext ******/
 		/****** md5 signature: b4b7b6d9af18a529b9ee68aa5cc3ed3c ******/
@@ -14141,7 +14209,7 @@ Adds a new first item (prepends to the list). The Input is not touched If <item>
 		void AddPrevious(const opencascade::handle<IFSelect_SelectDeduct> & item);
 
 		/****** IFSelect_SelectSuite::Item ******/
-		/****** md5 signature: 0bccbbc944456fe799d469f43de65b45 ******/
+		/****** md5 signature: 81780349c0ed8d46171c94a27f5d95b5 ******/
 		%feature("compactdefaultargs") Item;
 		%feature("autodoc", "
 Parameters
@@ -14156,10 +14224,10 @@ Description
 -----------
 Returns an item from its rank in the list (the Input is always apart).
 ") Item;
-		opencascade::handle<IFSelect_SelectDeduct> Item(const Standard_Integer num);
+		opencascade::handle<IFSelect_SelectDeduct> Item(const int num);
 
 		/****** IFSelect_SelectSuite::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -14172,7 +14240,7 @@ Returns the Label Either it has been defined by SetLabel, or it will give 'Suite
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectSuite::NbItems ******/
-		/****** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ******/
+		/****** md5 signature: 2b529efc4e5d8a11084d3f577abfb55b ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "Return
 -------
@@ -14182,10 +14250,10 @@ Description
 -----------
 Returns the count of Items.
 ") NbItems;
-		Standard_Integer NbItems();
+		int NbItems();
 
 		/****** IFSelect_SelectSuite::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14203,12 +14271,12 @@ Returns the list of selected entities To do this, once InputResult has been take
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectSuite::SetLabel ******/
-		/****** md5 signature: 16900850d3343b8f43e74a725689b453 ******/
+		/****** md5 signature: 1bc0f6024e42afc66955aac6083c9fea ******/
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "
 Parameters
 ----------
-lab: str
+lab: char *
 
 Return
 -------
@@ -14218,7 +14286,7 @@ Description
 -----------
 Sets a value for the Label.
 ") SetLabel;
-		void SetLabel(Standard_CString lab);
+		void SetLabel(const char * const lab);
 
 };
 
@@ -14250,7 +14318,7 @@ Creates an empty SelectUnion.
 		 IFSelect_SelectUnion();
 
 		/****** IFSelect_SelectUnion::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -14263,7 +14331,7 @@ Returns a text defining the criterium: 'Union (OR)'.
 		TCollection_AsciiString Label();
 
 		/****** IFSelect_SelectUnion::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14297,12 +14365,12 @@ Returns the list of selected Entities, which is the addition result from all inp
 class IFSelect_SignAncestor : public IFSelect_SignType {
 	public:
 		/****** IFSelect_SignAncestor::IFSelect_SignAncestor ******/
-		/****** md5 signature: b9a0046fdc97a5b66ba4d6c37999aa3f ******/
+		/****** md5 signature: 0f5b052e48ec5b9176fac49e7ec311b3 ******/
 		%feature("compactdefaultargs") IFSelect_SignAncestor;
 		%feature("autodoc", "
 Parameters
 ----------
-nopk: bool (optional, default to Standard_False)
+nopk: bool (optional, default to false)
 
 Return
 -------
@@ -14312,10 +14380,10 @@ Description
 -----------
 No available documentation.
 ") IFSelect_SignAncestor;
-		 IFSelect_SignAncestor(const Standard_Boolean nopk = Standard_False);
+		 IFSelect_SignAncestor(const bool nopk = false);
 
 		/****** IFSelect_SignAncestor::Matches ******/
-		/****** md5 signature: 6cdb41c3b6f4c6d9bbd3a66d390d7419 ******/
+		/****** md5 signature: bf8eb5c0c0aa654385b3629357ee2805 ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
@@ -14333,12 +14401,10 @@ Description
 -----------
 No available documentation.
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
+		bool Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const bool exact);
 
 };
 
-
-%make_alias(IFSelect_SignAncestor)
 
 %extend IFSelect_SignAncestor {
 	%pythoncode {
@@ -14353,7 +14419,7 @@ No available documentation.
 class IFSelect_SelectAnyType : public IFSelect_SelectExtract {
 	public:
 		/****** IFSelect_SelectAnyType::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -14370,7 +14436,7 @@ Description
 -----------
 Returns True for an Entity (model->Value(num)) which is kind of the chosen type, given by the method TypeForMatch. Criterium is IsKind.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SelectAnyType::TypeForMatch ******/
 		/****** md5 signature: c1321bc33df9f17a74f78d6be1bfbc44 ******/
@@ -14415,7 +14481,7 @@ Creates a SelectErrorEntities.
 		 IFSelect_SelectErrorEntities();
 
 		/****** IFSelect_SelectErrorEntities::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -14428,7 +14494,7 @@ Returns a text defining the criterium: 'Error Entities'.
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectErrorEntities::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -14445,7 +14511,7 @@ Description
 -----------
 Returns True for an Entity which is qualified as 'Error', i.e. if <model> explicitly knows <ent> (through its Number) as Erroneous.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -14464,12 +14530,12 @@ Returns True for an Entity which is qualified as 'Error', i.e. if <model> explic
 class IFSelect_SelectFlag : public IFSelect_SelectExtract {
 	public:
 		/****** IFSelect_SelectFlag::IFSelect_SelectFlag ******/
-		/****** md5 signature: b126e5f9a0c528bcc2370837bc7e0a4c ******/
+		/****** md5 signature: 17dfef64967ea2ef727322c5c7ea3cce ******/
 		%feature("compactdefaultargs") IFSelect_SelectFlag;
 		%feature("autodoc", "
 Parameters
 ----------
-flagname: str
+flagname: char *
 
 Return
 -------
@@ -14479,10 +14545,10 @@ Description
 -----------
 Creates a Select Flag, to query a flag designated by its name.
 ") IFSelect_SelectFlag;
-		 IFSelect_SelectFlag(Standard_CString flagname);
+		 IFSelect_SelectFlag(const char * const flagname);
 
 		/****** IFSelect_SelectFlag::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -14495,20 +14561,20 @@ Returns a text defining the criterium, includes the flag name.
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectFlag::FlagName ******/
-		/****** md5 signature: e9b9cfad020f8be9b237b32c5c534195 ******/
+		/****** md5 signature: 2f4902d6d83bb6abe1cef6c9c9a03433 ******/
 		%feature("compactdefaultargs") FlagName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of the flag.
 ") FlagName;
-		Standard_CString FlagName();
+		const char * FlagName();
 
 		/****** IFSelect_SelectFlag::RootResult ******/
-		/****** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14523,10 +14589,10 @@ Description
 -----------
 Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its flag is True on Direct mode, False on Reversed mode //! If flag does not exist for the given name, returns an empty result, whatever the Direct/Reversed sense.
 ") RootResult;
-		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
+		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectFlag::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -14543,7 +14609,7 @@ Description
 -----------
 Returns always False because RootResult has done the work.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -14563,7 +14629,7 @@ Returns always False because RootResult has done the work.
 class IFSelect_SelectInList : public IFSelect_SelectAnyList {
 	public:
 		/****** IFSelect_SelectInList::FillResult ******/
-		/****** md5 signature: e5527da2a86d9cf2e2966fd3b79d23e5 ******/
+		/****** md5 signature: ae52f4ed5e586961ccfe79cd041b9cbd ******/
 		%feature("compactdefaultargs") FillResult;
 		%feature("autodoc", "
 Parameters
@@ -14581,10 +14647,10 @@ Description
 -----------
 Puts into the result, the sub-entities of the list, from n1 to n2 included. Remark that adequation with Entity's type and length of list has already been made at this stage Called by RootResult; calls ListedEntity (see below).
 ") FillResult;
-		void FillResult(const Standard_Integer n1, const Standard_Integer n2, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & result);
+		void FillResult(const int n1, const int n2, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & result);
 
 		/****** IFSelect_SelectInList::ListedEntity ******/
-		/****** md5 signature: 865dc656560a2a4809fb73bc8f1c9e0c ******/
+		/****** md5 signature: 85c9d3364af331d708ac6f1986ca3bcb ******/
 		%feature("compactdefaultargs") ListedEntity;
 		%feature("autodoc", "
 Parameters
@@ -14600,7 +14666,7 @@ Description
 -----------
 Returns an Entity, given its rank in the list.
 ") ListedEntity;
-		virtual opencascade::handle<Standard_Transient> ListedEntity(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
+		virtual opencascade::handle<Standard_Transient> ListedEntity(const int num, const opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -14632,7 +14698,7 @@ Creates a SelectRange. Default is Take all the input list.
 		 IFSelect_SelectRange();
 
 		/****** IFSelect_SelectRange::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -14645,7 +14711,7 @@ Returns a text defining the criterium: following cases, ' From .. Until ..' or '
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectRange::HasLower ******/
-		/****** md5 signature: fed85e72f70b42adca46c7b901badc46 ******/
+		/****** md5 signature: 1759f8bd2fea26f270eb2cc00202af81 ******/
 		%feature("compactdefaultargs") HasLower;
 		%feature("autodoc", "Return
 -------
@@ -14655,10 +14721,10 @@ Description
 -----------
 Returns True if a Lower limit is defined.
 ") HasLower;
-		Standard_Boolean HasLower();
+		bool HasLower();
 
 		/****** IFSelect_SelectRange::HasUpper ******/
-		/****** md5 signature: d70f1e270858eac8843f77542c8137ff ******/
+		/****** md5 signature: d967c1c952b4c7f0972c38bf1ab8ec1e ******/
 		%feature("compactdefaultargs") HasUpper;
 		%feature("autodoc", "Return
 -------
@@ -14668,7 +14734,7 @@ Description
 -----------
 Returns True if a Lower limit is defined.
 ") HasUpper;
-		Standard_Boolean HasUpper();
+		bool HasUpper();
 
 		/****** IFSelect_SelectRange::Lower ******/
 		/****** md5 signature: b8e70b42a5787ced8e76ff8aea48c3a4 ******/
@@ -14684,7 +14750,7 @@ Returns Lower limit (if there is; else, value is senseless).
 		opencascade::handle<IFSelect_IntParam> Lower();
 
 		/****** IFSelect_SelectRange::LowerValue ******/
-		/****** md5 signature: 02a3a48796ebc55a19b891812ce46acd ******/
+		/****** md5 signature: e2f074ebb9e1f3062b7d4516e97a1cb0 ******/
 		%feature("compactdefaultargs") LowerValue;
 		%feature("autodoc", "Return
 -------
@@ -14694,7 +14760,7 @@ Description
 -----------
 Returns Value of Lower Limit (0 if none is defined).
 ") LowerValue;
-		Standard_Integer LowerValue();
+		int LowerValue();
 
 		/****** IFSelect_SelectRange::SetFrom ******/
 		/****** md5 signature: 05cb4dd02524b771922c7da233564821 ******/
@@ -14770,7 +14836,7 @@ Sets an Upper limit but no lower limit (equivalent to lower 1).
 		void SetUntil(const opencascade::handle<IFSelect_IntParam> & rankto);
 
 		/****** IFSelect_SelectRange::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -14787,7 +14853,7 @@ Description
 -----------
 Returns True for an Entity of which occurrence number in the iteration is inside the selected Range (considers <rank>).
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SelectRange::Upper ******/
 		/****** md5 signature: 95ed998f50d75ea326bf46efbee3cc71 ******/
@@ -14803,7 +14869,7 @@ Returns Upper limit (if there is; else, value is senseless).
 		opencascade::handle<IFSelect_IntParam> Upper();
 
 		/****** IFSelect_SelectRange::UpperValue ******/
-		/****** md5 signature: bfeb4eb1504ceefb62ee59ee5fd7e8b8 ******/
+		/****** md5 signature: 4ed795a93185a3287cb99abe7cda2656 ******/
 		%feature("compactdefaultargs") UpperValue;
 		%feature("autodoc", "Return
 -------
@@ -14813,7 +14879,7 @@ Description
 -----------
 Returns Value of Upper Limit (0 if none is defined).
 ") UpperValue;
-		Standard_Integer UpperValue();
+		int UpperValue();
 
 };
 
@@ -14845,7 +14911,7 @@ Creates a SelectRootComps.
 		 IFSelect_SelectRootComps();
 
 		/****** IFSelect_SelectRootComps::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -14858,7 +14924,7 @@ Returns a text defining the criterium: 'Local Root Components'.
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectRootComps::RootResult ******/
-		/****** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14873,10 +14939,10 @@ Description
 -----------
 Returns the list of local root strong components, by one Entity per component. It is redefined for a purpose of efficiency: calling a Sort routine for each Entity would cost more resources than to work in once using a Map RootResult takes in account the Direct status.
 ") RootResult;
-		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
+		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectRootComps::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -14893,7 +14959,7 @@ Description
 -----------
 Returns always True, because RootResult has done work.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -14925,7 +14991,7 @@ Creates a SelectRoots.
 		 IFSelect_SelectRoots();
 
 		/****** IFSelect_SelectRoots::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -14938,7 +15004,7 @@ Returns a text defining the criterium: 'Local Root Entities'.
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectRoots::RootResult ******/
-		/****** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -14953,10 +15019,10 @@ Description
 -----------
 Returns the list of local roots. It is redefined for a purpose of efficiency: calling a Sort routine for each Entity would cost more resources than to work in once using a Map RootResult takes in account the Direct status.
 ") RootResult;
-		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
+		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectRoots::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -14973,7 +15039,7 @@ Description
 -----------
 Returns always True, because RootResult has done work.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -14992,13 +15058,13 @@ Returns always True, because RootResult has done work.
 class IFSelect_SelectSent : public IFSelect_SelectExtract {
 	public:
 		/****** IFSelect_SelectSent::IFSelect_SelectSent ******/
-		/****** md5 signature: b86d5743b0517a3f6670d90b3e38dcce ******/
+		/****** md5 signature: 22d250d325bb01e1f95d62795bc31417 ******/
 		%feature("compactdefaultargs") IFSelect_SelectSent;
 		%feature("autodoc", "
 Parameters
 ----------
 sentcount: int (optional, default to 1)
-atleast: bool (optional, default to Standard_True)
+atleast: bool (optional, default to true)
 
 Return
 -------
@@ -15008,10 +15074,10 @@ Description
 -----------
 Creates a SelectSent: sentcount = 0 -> remaining (non-sent) entities sentcount = 1, atleast = True (D) -> sent (at least once) sentcount = 2, atleast = True -> duplicated (sent least twice) etc... sentcount = 1, atleast = False -> sent just once (non-dupl.d) sentcount = 2, atleast = False -> sent just twice etc...
 ") IFSelect_SelectSent;
-		 IFSelect_SelectSent(const Standard_Integer sentcount = 1, const Standard_Boolean atleast = Standard_True);
+		 IFSelect_SelectSent(const int sentcount = 1, const bool atleast = true);
 
 		/****** IFSelect_SelectSent::AtLeast ******/
-		/****** md5 signature: 8b0d752710d18485146955b90dc3a75d ******/
+		/****** md5 signature: b17861e4879d530307866325c9f11bdb ******/
 		%feature("compactdefaultargs") AtLeast;
 		%feature("autodoc", "Return
 -------
@@ -15021,10 +15087,10 @@ Description
 -----------
 Returns the <atleast> status, True for sending at least the sending count, False for sending exactly the sending count Remark: if SentCount is 0, AtLeast is ignored.
 ") AtLeast;
-		Standard_Boolean AtLeast();
+		bool AtLeast();
 
 		/****** IFSelect_SelectSent::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -15037,7 +15103,7 @@ Returns a text defining the criterium: query: SentCount = 0 -> 'Remaining (non-s
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectSent::RootResult ******/
-		/****** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -15052,10 +15118,10 @@ Description
 -----------
 Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its count complies to the query in Direct Mode, rejected in Reversed Mode //! Query works on the sending count recorded as status in Graph.
 ") RootResult;
-		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
+		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 		/****** IFSelect_SelectSent::SentCount ******/
-		/****** md5 signature: 142890545509570f962393f4193bd3b3 ******/
+		/****** md5 signature: f47b563306fb2f9b68bacca8176f44a9 ******/
 		%feature("compactdefaultargs") SentCount;
 		%feature("autodoc", "Return
 -------
@@ -15065,10 +15131,10 @@ Description
 -----------
 Returns the queried count of sending.
 ") SentCount;
-		Standard_Integer SentCount();
+		int SentCount();
 
 		/****** IFSelect_SelectSent::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -15085,7 +15151,7 @@ Description
 -----------
 Returns always False because RootResult has done the work.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -15104,14 +15170,14 @@ Returns always False because RootResult has done the work.
 class IFSelect_SelectSignature : public IFSelect_SelectExtract {
 	public:
 		/****** IFSelect_SelectSignature::IFSelect_SelectSignature ******/
-		/****** md5 signature: 06c8d4879441f5001948c8adbf7ae06f ******/
+		/****** md5 signature: 41eb65e44d6a1a74b81d9fb76c847574 ******/
 		%feature("compactdefaultargs") IFSelect_SelectSignature;
 		%feature("autodoc", "
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: str
-exact: bool (optional, default to Standard_True)
+signtext: char *
+exact: bool (optional, default to true)
 
 Return
 -------
@@ -15121,17 +15187,17 @@ Description
 -----------
 Creates a SelectSignature with its Signature and its Text to Match. <exact> if True requires exact match, if False requires <signtext> to be contained in the Signature of the entity (default is 'exact').
 ") IFSelect_SelectSignature;
-		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True);
+		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, const char * const signtext, const bool exact = true);
 
 		/****** IFSelect_SelectSignature::IFSelect_SelectSignature ******/
-		/****** md5 signature: f0f816e1d36acf4abc69d940efcff930 ******/
+		/****** md5 signature: 0f53ea428b1c6bd2530810a2ea68c7b5 ******/
 		%feature("compactdefaultargs") IFSelect_SelectSignature;
 		%feature("autodoc", "
 Parameters
 ----------
 matcher: IFSelect_Signature
 signtext: str
-exact: bool (optional, default to Standard_True)
+exact: bool (optional, default to true)
 
 Return
 -------
@@ -15141,17 +15207,17 @@ Description
 -----------
 As above with an AsciiString.
 ") IFSelect_SelectSignature;
-		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, TCollection_AsciiString signtext, const Standard_Boolean exact = Standard_True);
+		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, TCollection_AsciiString signtext, const bool exact = true);
 
 		/****** IFSelect_SelectSignature::IFSelect_SelectSignature ******/
-		/****** md5 signature: 2d5482446f425374777509a08ad2da25 ******/
+		/****** md5 signature: 05910ca9cf507120673e020dc067de33 ******/
 		%feature("compactdefaultargs") IFSelect_SelectSignature;
 		%feature("autodoc", "
 Parameters
 ----------
 matcher: IFSelect_SignCounter
-signtext: str
-exact: bool (optional, default to Standard_True)
+signtext: char *
+exact: bool (optional, default to true)
 
 Return
 -------
@@ -15161,7 +15227,7 @@ Description
 -----------
 Creates a SelectSignature with a Counter, more precisely a SelectSignature. Which is used here to just give a Signature Value (by SignOnly Mode) Matching is the default provided by the class Signature.
 ") IFSelect_SelectSignature;
-		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_SignCounter> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True);
+		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_SignCounter> & matcher, const char * const signtext, const bool exact = true);
 
 		/****** IFSelect_SelectSignature::Counter ******/
 		/****** md5 signature: 863d5febc23db3b01c693ba5cbe7a5ab ******/
@@ -15177,7 +15243,7 @@ Returns the used SignCounter. Can be used as alternative for Signature.
 		opencascade::handle<IFSelect_SignCounter> Counter();
 
 		/****** IFSelect_SelectSignature::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -15190,7 +15256,7 @@ Returns a text defining the criterium. (it refers to the text and exact flag to 
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectSignature::IsExact ******/
-		/****** md5 signature: e3074f243878c1aad335a0483fed22b5 ******/
+		/****** md5 signature: 1654cc8cc41e641a9f35d7f7212477c3 ******/
 		%feature("compactdefaultargs") IsExact;
 		%feature("autodoc", "Return
 -------
@@ -15200,7 +15266,7 @@ Description
 -----------
 Returns True if match must be exact.
 ") IsExact;
-		Standard_Boolean IsExact();
+		bool IsExact();
 
 		/****** IFSelect_SelectSignature::Signature ******/
 		/****** md5 signature: 6971baf30f0d8a413d639c156d76dfc1 ******/
@@ -15229,7 +15295,7 @@ Returns Text used to Sort Entity on its Signature or SignCounter.
 		const TCollection_AsciiString & SignatureText();
 
 		/****** IFSelect_SelectSignature::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -15246,10 +15312,10 @@ Description
 -----------
 Not called, defined only to remove a deferred method here.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SelectSignature::SortInGraph ******/
-		/****** md5 signature: 22baa547cd2c588d8d10eb6c3e1cd4dd ******/
+		/****** md5 signature: 4e83940a6fd41846cdf5b98323955089 ******/
 		%feature("compactdefaultargs") SortInGraph;
 		%feature("autodoc", "
 Parameters
@@ -15266,7 +15332,7 @@ Description
 -----------
 Returns True for an Entity (model->Value(num)) of which the signature matches the text given as creation time May also work with a Counter from the Graph.
 ") SortInGraph;
-		virtual Standard_Boolean SortInGraph(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
+		bool SortInGraph(const int rank, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
 };
 
@@ -15285,14 +15351,14 @@ Returns True for an Entity (model->Value(num)) of which the signature matches th
 class IFSelect_SelectSignedShared : public IFSelect_SelectExplore {
 	public:
 		/****** IFSelect_SelectSignedShared::IFSelect_SelectSignedShared ******/
-		/****** md5 signature: 6894f56fa16bd7b933451fd3318aa5b4 ******/
+		/****** md5 signature: fc3b02c6ad4ea7419bdc9f74c9ea5f67 ******/
 		%feature("compactdefaultargs") IFSelect_SelectSignedShared;
 		%feature("autodoc", "
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: str
-exact: bool (optional, default to Standard_True)
+signtext: char *
+exact: bool (optional, default to true)
 level: int (optional, default to 0)
 
 Return
@@ -15303,10 +15369,10 @@ Description
 -----------
 Creates a SelectSignedShared, defaulted for any level with a given Signature and text to match.
 ") IFSelect_SelectSignedShared;
-		 IFSelect_SelectSignedShared(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
+		 IFSelect_SelectSignedShared(const opencascade::handle<IFSelect_Signature> & matcher, const char * const signtext, const bool exact = true, const int level = 0);
 
 		/****** IFSelect_SelectSignedShared::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -15324,10 +15390,10 @@ Description
 -----------
 Explores an entity: its Shared entities <ent> to take if it matches the Signature At level max, filters the result. Else gives all Shareds.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** IFSelect_SelectSignedShared::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -15340,7 +15406,7 @@ Returns a text defining the criterium. (it refers to the text and exact flag to 
 		TCollection_AsciiString ExploreLabel();
 
 		/****** IFSelect_SelectSignedShared::IsExact ******/
-		/****** md5 signature: e3074f243878c1aad335a0483fed22b5 ******/
+		/****** md5 signature: 1654cc8cc41e641a9f35d7f7212477c3 ******/
 		%feature("compactdefaultargs") IsExact;
 		%feature("autodoc", "Return
 -------
@@ -15350,7 +15416,7 @@ Description
 -----------
 Returns True if match must be exact.
 ") IsExact;
-		Standard_Boolean IsExact();
+		bool IsExact();
 
 		/****** IFSelect_SelectSignedShared::Signature ******/
 		/****** md5 signature: 6971baf30f0d8a413d639c156d76dfc1 ******/
@@ -15395,14 +15461,14 @@ Returns Text used to Sort Entity on its Signature.
 class IFSelect_SelectSignedSharing : public IFSelect_SelectExplore {
 	public:
 		/****** IFSelect_SelectSignedSharing::IFSelect_SelectSignedSharing ******/
-		/****** md5 signature: e1086f5665e398bffb4a1b904e16051d ******/
+		/****** md5 signature: cb1d5892d6f300cf1a1e990da3fad328 ******/
 		%feature("compactdefaultargs") IFSelect_SelectSignedSharing;
 		%feature("autodoc", "
 Parameters
 ----------
 matcher: IFSelect_Signature
-signtext: str
-exact: bool (optional, default to Standard_True)
+signtext: char *
+exact: bool (optional, default to true)
 level: int (optional, default to 0)
 
 Return
@@ -15413,10 +15479,10 @@ Description
 -----------
 Creates a SelectSignedSharing, defaulted for any level with a given Signature and text to match.
 ") IFSelect_SelectSignedSharing;
-		 IFSelect_SelectSignedSharing(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
+		 IFSelect_SelectSignedSharing(const opencascade::handle<IFSelect_Signature> & matcher, const char * const signtext, const bool exact = true, const int level = 0);
 
 		/****** IFSelect_SelectSignedSharing::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -15434,10 +15500,10 @@ Description
 -----------
 Explores an entity: its sharing entities <ent> to take if it matches the Signature At level max, filters the result. Else gives all sharings.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** IFSelect_SelectSignedSharing::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -15450,7 +15516,7 @@ Returns a text defining the criterium. (it refers to the text and exact flag to 
 		TCollection_AsciiString ExploreLabel();
 
 		/****** IFSelect_SelectSignedSharing::IsExact ******/
-		/****** md5 signature: e3074f243878c1aad335a0483fed22b5 ******/
+		/****** md5 signature: 1654cc8cc41e641a9f35d7f7212477c3 ******/
 		%feature("compactdefaultargs") IsExact;
 		%feature("autodoc", "Return
 -------
@@ -15460,7 +15526,7 @@ Description
 -----------
 Returns True if match must be exact.
 ") IsExact;
-		Standard_Boolean IsExact();
+		bool IsExact();
 
 		/****** IFSelect_SelectSignedSharing::Signature ******/
 		/****** md5 signature: 6971baf30f0d8a413d639c156d76dfc1 ******/
@@ -15518,7 +15584,7 @@ Creates a SelectUnknownEntities.
 		 IFSelect_SelectUnknownEntities();
 
 		/****** IFSelect_SelectUnknownEntities::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -15531,7 +15597,7 @@ Returns a text defining the criterium: 'Recognized Entities'.
 		TCollection_AsciiString ExtractLabel();
 
 		/****** IFSelect_SelectUnknownEntities::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -15548,7 +15614,7 @@ Description
 -----------
 Returns True for an Entity which is qualified as 'Unknown', i.e. if <model> known <ent> (through its Number) as Unknown.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -15627,7 +15693,7 @@ Creates a SelectType for a given Type.
 		 IFSelect_SelectType(const opencascade::handle<Standard_Type> & atype);
 
 		/****** IFSelect_SelectType::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -15658,7 +15724,7 @@ Sets a TYpe for filter.
 		void SetType(const opencascade::handle<Standard_Type> & atype);
 
 		/****** IFSelect_SelectType::TypeForMatch ******/
-		/****** md5 signature: 2eae14e421973a399b61842a002e7d81 ******/
+		/****** md5 signature: 91db70579003b0fe9189866a82d86f0e ******/
 		%feature("compactdefaultargs") TypeForMatch;
 		%feature("autodoc", "Return
 -------
@@ -15684,14 +15750,14 @@ Returns the Type to be matched for select: this is the type given at instantiati
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class IFSelect_HSeqOfSelection : public IFSelect_TSeqOfSelection, public Standard_Transient {
+class IFSelect_HSeqOfSelection : public NCollection_Sequence<opencascade::handle<IFSelect_Selection>>, public Standard_Transient {
   public:
     IFSelect_HSeqOfSelection();
-    IFSelect_HSeqOfSelection(const IFSelect_TSeqOfSelection& theOther);
-    const IFSelect_TSeqOfSelection& Sequence();
-    void Append (const IFSelect_TSeqOfSelection::value_type& theItem);
-    void Append (IFSelect_TSeqOfSelection& theSequence);
-    IFSelect_TSeqOfSelection& ChangeSequence();
+    IFSelect_HSeqOfSelection(const NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& theOther);
+    const NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<IFSelect_Selection>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& theSequence);
+    NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& ChangeSequence();
 };
 %make_alias(IFSelect_HSeqOfSelection)
 

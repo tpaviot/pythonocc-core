@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bvh.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+using namespace BVH;
 %};
 %import Standard.i
 %import NCollection.i
@@ -81,29 +82,29 @@ enum  {
 /* end templates declaration */
 
 /* typedefs */
-typedef BVH::ArrayType<Standard_Real, 2>::Type BVH_Array2d;
-typedef BVH::ArrayType<Standard_ShortReal, 2>::Type BVH_Array2f;
-typedef BVH::ArrayType<Standard_Integer, 2>::Type BVH_Array2i;
-typedef BVH::ArrayType<Standard_Real, 3>::Type BVH_Array3d;
-typedef BVH::ArrayType<Standard_ShortReal, 3>::Type BVH_Array3f;
-typedef BVH::ArrayType<Standard_Integer, 3>::Type BVH_Array3i;
-typedef BVH::ArrayType<Standard_Real, 4>::Type BVH_Array4d;
-typedef BVH::ArrayType<Standard_ShortReal, 4>::Type BVH_Array4f;
-typedef BVH::ArrayType<Standard_Integer, 4>::Type BVH_Array4i;
-typedef BVH_Builder<Standard_Real, 3> BVH_Builder3d;
-typedef std::pair<unsigned int, Standard_Integer> BVH_EncodedLink;
-typedef BVH::MatrixType<Standard_Real, 4>::Type BVH_Mat4d;
-typedef BVH::MatrixType<Standard_ShortReal, 4>::Type BVH_Mat4f;
-typedef BVH_PrimitiveSet<Standard_Real, 3> BVH_PrimitiveSet3d;
-typedef BVH::VectorType<Standard_Real, 2>::Type BVH_Vec2d;
-typedef BVH::VectorType<Standard_ShortReal, 2>::Type BVH_Vec2f;
-typedef BVH::VectorType<Standard_Integer, 2>::Type BVH_Vec2i;
-typedef BVH::VectorType<Standard_Real, 3>::Type BVH_Vec3d;
-typedef BVH::VectorType<Standard_ShortReal, 3>::Type BVH_Vec3f;
-typedef BVH::VectorType<Standard_Integer, 3>::Type BVH_Vec3i;
-typedef BVH::VectorType<Standard_Real, 4>::Type BVH_Vec4d;
-typedef BVH::VectorType<Standard_ShortReal, 4>::Type BVH_Vec4f;
-typedef BVH::VectorType<Standard_Integer, 4>::Type BVH_Vec4i;
+typedef BVH::ArrayType<double, 2>::Type BVH_Array2d;
+typedef BVH::ArrayType<float, 2>::Type BVH_Array2f;
+typedef BVH::ArrayType<int, 2>::Type BVH_Array2i;
+typedef BVH::ArrayType<double, 3>::Type BVH_Array3d;
+typedef BVH::ArrayType<float, 3>::Type BVH_Array3f;
+typedef BVH::ArrayType<int, 3>::Type BVH_Array3i;
+typedef BVH::ArrayType<double, 4>::Type BVH_Array4d;
+typedef BVH::ArrayType<float, 4>::Type BVH_Array4f;
+typedef BVH::ArrayType<int, 4>::Type BVH_Array4i;
+typedef BVH_Builder<double, 3> BVH_Builder3d;
+typedef std::pair<unsigned int, int> BVH_EncodedLink;
+typedef BVH::MatrixType<double, 4>::Type BVH_Mat4d;
+typedef BVH::MatrixType<float, 4>::Type BVH_Mat4f;
+typedef BVH_PrimitiveSet<double, 3> BVH_PrimitiveSet3d;
+typedef BVH::VectorType<double, 2>::Type BVH_Vec2d;
+typedef BVH::VectorType<float, 2>::Type BVH_Vec2f;
+typedef BVH::VectorType<int, 2>::Type BVH_Vec2i;
+typedef BVH::VectorType<double, 3>::Type BVH_Vec3d;
+typedef BVH::VectorType<float, 3>::Type BVH_Vec3f;
+typedef BVH::VectorType<int, 3>::Type BVH_Vec3i;
+typedef BVH::VectorType<double, 4>::Type BVH_Vec4d;
+typedef BVH::VectorType<float, 4>::Type BVH_Vec4f;
+typedef BVH::VectorType<int, 4>::Type BVH_Vec4i;
 /* end typedefs declaration */
 
 /**************
@@ -118,89 +119,12 @@ typedef BVH::VectorType<Standard_Integer, 4>::Type BVH_Vec4i;
 /******************************
 * class BVH_AxisSelector<T,2> *
 ******************************/
-class BVH_AxisSelector<T,2> {
-	public:
-typedef typename BVH ::VectorType<T , 2>::Type BVH_VecNt;
-		/****** BVH_AxisSelector<T,2>::MainAxis ******/
-		/****** md5 signature: 3eeb73485373349ee6e5770c410c7405 ******/
-		%feature("compactdefaultargs") MainAxis;
-		%feature("autodoc", "
-Parameters
-----------
-theSize: BVH_VecNt
-
-Return
--------
-int
-
-Description
------------
-No available documentation.
-") MainAxis;
-		static Standard_Integer MainAxis(const BVH_VecNt & theSize);
-
-};
-
-
-%extend BVH_AxisSelector<T,2> {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /********************
 * class BVH_BaseBox *
 ********************/
 /*********************************
 * class BVH_BaseBox<T,3,BVH_Box> *
 *********************************/
-class BVH_BaseBox<T,3,BVH_Box> {
-	public:
-		/****** BVH_BaseBox<T,3,BVH_Box>::Transform ******/
-		/****** md5 signature: f52fb52638bf0b2d8089837b32d1b6fb ******/
-		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "
-Parameters
-----------
-theTransform: NCollection_Mat4<T>
-
-Return
--------
-None
-
-Description
------------
-Transforms this box with given transformation.
-") Transform;
-		void Transform(const NCollection_Mat4<T> & theTransform);
-
-		/****** BVH_BaseBox<T,3,BVH_Box>::Transformed ******/
-		/****** md5 signature: 4f3a0339459a68755a160d7708c81f4e ******/
-		%feature("compactdefaultargs") Transformed;
-		%feature("autodoc", "
-Parameters
-----------
-theTransform: NCollection_Mat4<T>
-
-Return
--------
-BVH_Box<T, 3 >
-
-Description
------------
-Returns a box which is the result of applying the given transformation to this box.
-") Transformed;
-		BVH_Box<T, 3 > Transformed(const NCollection_Mat4<T> & theTransform);
-
-};
-
-
-%extend BVH_BaseBox<T,3,BVH_Box> {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*************************
 * class BVH_BaseTraverse *
 *************************/
@@ -264,21 +188,9 @@ Returns a box which is the result of applying the given transformation to this b
 /******************
 * class BoxMinMax *
 ******************/
-/***********************
-* class BoxMinMax<T,2> *
-***********************/
 /*******************
 * class CenterAxis *
 *******************/
-/************************
-* class CenterAxis<T,2> *
-************************/
-/************************
-* class CenterAxis<T,3> *
-************************/
-/************************
-* class CenterAxis<T,4> *
-************************/
 /*****************
 * class MatrixOp *
 *****************/
@@ -297,15 +209,6 @@ Returns a box which is the result of applying the given transformation to this b
 /**************************
 * class SurfaceCalculator *
 **************************/
-/*******************************
-* class SurfaceCalculator<T,2> *
-*******************************/
-/*******************************
-* class SurfaceCalculator<T,3> *
-*******************************/
-/*******************************
-* class SurfaceCalculator<T,4> *
-*******************************/
 /*******************
 * class UnitVector *
 *******************/
@@ -411,271 +314,9 @@ Returns a box which is the result of applying the given transformation to this b
 /*************************************
 * class BVH_Tree<T,N,BVH_BinaryTree> *
 *************************************/
-class BVH_Tree<T,N,BVH_BinaryTree> : public BVH_TreeBase<T,N> {
-	public:
-typedef typename BVH_TreeBase<T , N>::BVH_VecNt BVH_VecNt;
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::BVH_Tree ******/
-		/****** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ******/
-		%feature("compactdefaultargs") BVH_Tree;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Creates new empty BVH tree.
-") BVH_Tree;
-		 BVH_Tree();
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddInnerNode ******/
-		/****** md5 signature: f58328730bdea31b9795074762e2ff33 ******/
-		%feature("compactdefaultargs") AddInnerNode;
-		%feature("autodoc", "
-Parameters
-----------
-theMinPoint: BVH_VecNt
-theMaxPoint: BVH_VecNt
-theLftChild: int
-theRghChild: int
-
-Return
--------
-int
-
-Description
------------
-Adds new inner node to the BVH.
-") AddInnerNode;
-		int AddInnerNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theLftChild, const int theRghChild);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddInnerNode ******/
-		/****** md5 signature: 5f6cb26dae5b038c2e68cab73611154e ******/
-		%feature("compactdefaultargs") AddInnerNode;
-		%feature("autodoc", "
-Parameters
-----------
-theAABB: BVH_Box<T, N>
-theLftChild: int
-theRghChild: int
-
-Return
--------
-int
-
-Description
------------
-Adds new inner node to the BVH.
-") AddInnerNode;
-		int AddInnerNode(const BVH_Box<T, N> & theAABB, const int theLftChild, const int theRghChild);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddInnerNode ******/
-		/****** md5 signature: 7349e9c4c6e6de36606d9ec9f409a423 ******/
-		%feature("compactdefaultargs") AddInnerNode;
-		%feature("autodoc", "
-Parameters
-----------
-theLftChild: int
-theRghChild: int
-
-Return
--------
-int
-
-Description
------------
-Adds new inner node to the BVH with UNINITIALIZED bounds.
-") AddInnerNode;
-		int AddInnerNode(const int theLftChild, const int theRghChild);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddLeafNode ******/
-		/****** md5 signature: 0cd89637e7eea803e0a24110ae682988 ******/
-		%feature("compactdefaultargs") AddLeafNode;
-		%feature("autodoc", "
-Parameters
-----------
-theMinPoint: BVH_VecNt
-theMaxPoint: BVH_VecNt
-theBegElem: int
-theEndElem: int
-
-Return
--------
-int
-
-Description
------------
-Adds new leaf node to the BVH.
-") AddLeafNode;
-		int AddLeafNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theBegElem, const int theEndElem);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddLeafNode ******/
-		/****** md5 signature: 5fe9f2fb528719ca7bfb42a304e784f8 ******/
-		%feature("compactdefaultargs") AddLeafNode;
-		%feature("autodoc", "
-Parameters
-----------
-theAABB: BVH_Box<T, N>
-theBegElem: int
-theEndElem: int
-
-Return
--------
-int
-
-Description
------------
-Adds new leaf node to the BVH.
-") AddLeafNode;
-		int AddLeafNode(const BVH_Box<T, N> & theAABB, const int theBegElem, const int theEndElem);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddLeafNode ******/
-		/****** md5 signature: 0b15c5077d62fd3e3e631a06cb249fdb ******/
-		%feature("compactdefaultargs") AddLeafNode;
-		%feature("autodoc", "
-Parameters
-----------
-theBegElem: int
-theEndElem: int
-
-Return
--------
-int
-
-Description
------------
-Adds new leaf node to the BVH with UNINITIALIZED bounds.
-") AddLeafNode;
-		int AddLeafNode(const int theBegElem, const int theEndElem);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::Clear ******/
-		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
-		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Removes all nodes from the tree.
-") Clear;
-		void Clear();
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::CollapseToQuadTree ******/
-		/****** md5 signature: 26af2d95ff6621c0dd1347a8eddea988 ******/
-		%feature("compactdefaultargs") CollapseToQuadTree;
-		%feature("autodoc", "Return
--------
-BVH_Tree<T, N, BVH_QuadTree> *
-
-Description
------------
-Collapses the tree into QBVH an returns it. As a result, each 2-nd level of current tree is kept and the rest are discarded.
-") CollapseToQuadTree;
-		BVH_Tree<T, N, BVH_QuadTree> * CollapseToQuadTree();
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::EstimateSAH ******/
-		/****** md5 signature: 3b150e7f34a26485a48f784b21aaf6ef ******/
-		%feature("compactdefaultargs") EstimateSAH;
-		%feature("autodoc", "Return
--------
-T
-
-Description
------------
-Returns value of SAH (surface area heuristic). Allows to compare the quality of BVH trees constructed for the same sets of geometric objects with different methods.
-") EstimateSAH;
-		T EstimateSAH();
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::Reserve ******/
-		/****** md5 signature: 19d96c51c8d28b94e8cf4c818e3f894e ******/
-		%feature("compactdefaultargs") Reserve;
-		%feature("autodoc", "
-Parameters
-----------
-theNbNodes: int
-
-Return
--------
-None
-
-Description
------------
-Reserves internal BVH storage, so that it can contain the given number of BVH nodes.
-") Reserve;
-		void Reserve(const int theNbNodes);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::SetInner ******/
-		/****** md5 signature: e211f149b4289ac87e5ce7758471a95a ******/
-		%feature("compactdefaultargs") SetInner;
-		%feature("autodoc", "
-Parameters
-----------
-theNodeIndex: int
-
-Return
--------
-None
-
-Description
------------
-Sets node type to 'inner'.
-") SetInner;
-		void SetInner(const int theNodeIndex);
-
-		/****** BVH_Tree<T,N,BVH_BinaryTree>::SetOuter ******/
-		/****** md5 signature: 17ac31f632333f17c9c7c88deadd549f ******/
-		%feature("compactdefaultargs") SetOuter;
-		%feature("autodoc", "
-Parameters
-----------
-theNodeIndex: int
-
-Return
--------
-None
-
-Description
------------
-Sets node type to 'outer'.
-") SetOuter;
-		void SetOuter(const int theNodeIndex);
-
-};
-
-
-%extend BVH_Tree<T,N,BVH_BinaryTree> {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***********************************
 * class BVH_Tree<T,N,BVH_QuadTree> *
 ***********************************/
-class BVH_Tree<T,N,BVH_QuadTree> : public BVH_TreeBase<T,N> {
-	public:
-		/****** BVH_Tree<T,N,BVH_QuadTree>::BVH_Tree ******/
-		/****** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ******/
-		%feature("compactdefaultargs") BVH_Tree;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Creates new empty BVH tree.
-") BVH_Tree;
-		 BVH_Tree();
-
-};
-
-
-%extend BVH_Tree<T,N,BVH_QuadTree> {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*********************
 * class BVH_TreeBase *
 *********************/
@@ -916,3 +557,27 @@ class Array:
 /* class aliases */
 %pythoncode {
 }
+		/****** ::EncodeMortonCode ******/
+		/****** md5 signature: 8aac796e0900d08d8101bd9930b3d865 ******/
+		%feature("compactdefaultargs") EncodeMortonCode;
+		%feature("autodoc", "
+Parameters
+----------
+theVoxelX: unsigned int
+theVoxelY: unsigned int
+theVoxelZ: unsigned int
+
+Return
+-------
+unsigned int
+
+Description
+-----------
+Encodes 10-bit voxel coordinates into 30-bit Morton code using LUT. 
+Parameter theVoxelX X coordinate (0-1023) 
+Parameter theVoxelY Y coordinate (0-1023) 
+Parameter theVoxelZ Z coordinate (0-1023) 
+Return: 30-bit Morton code with interleaved bits.
+") EncodeMortonCode;
+		unsigned int EncodeMortonCode(unsigned int theVoxelX, unsigned int theVoxelY, unsigned int theVoxelZ);
+

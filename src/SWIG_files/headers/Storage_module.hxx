@@ -26,8 +26,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_BucketOfPersistent.hxx>
 #include<Storage_CallBack.hxx>
 #include<Storage_Data.hxx>
-#include<Storage_DataMapIteratorOfMapOfCallBack.hxx>
-#include<Storage_DataMapIteratorOfMapOfPers.hxx>
 #include<Storage_DefaultCallBack.hxx>
 #include<Storage_Error.hxx>
 #include<Storage_HArrayOfCallBack.hxx>

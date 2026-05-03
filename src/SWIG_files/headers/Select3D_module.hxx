@@ -22,8 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Select3D_BVHBuilder3d.hxx>
 #include<Select3D_BVHIndexBuffer.hxx>
 #include<Select3D_BndBox3d.hxx>
-#include<Select3D_EntitySequence.hxx>
-#include<Select3D_IndexedMapOfEntity.hxx>
 #include<Select3D_InteriorSensitivePointSet.hxx>
 #include<Select3D_Pnt.hxx>
 #include<Select3D_PointData.hxx>

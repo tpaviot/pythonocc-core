@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<FEmTool_LinearFlexion.hxx>
 #include<FEmTool_LinearJerk.hxx>
 #include<FEmTool_LinearTension.hxx>
-#include<FEmTool_ListIteratorOfListOfVectors.hxx>
 #include<FEmTool_ListOfVectors.hxx>
 #include<FEmTool_ProfileMatrix.hxx>
 #include<FEmTool_SeqOfLinConstr.hxx>

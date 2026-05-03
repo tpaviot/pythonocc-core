@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<GProp.hxx>
 #include<GProp_CelGProps.hxx>
-#include<GProp_EquaType.hxx>
 #include<GProp_GProps.hxx>
 #include<GProp_PEquation.hxx>
 #include<GProp_PGProps.hxx>

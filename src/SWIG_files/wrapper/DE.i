@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_de.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<TDocStd_module.hxx>
 #include<XSControl_module.hxx>
 #include<Message_module.hxx>
@@ -68,7 +67,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_de.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
-%import TColStd.i
 %import TDocStd.i
 %import XSControl.i
 %import Message.i
@@ -95,15 +93,9 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(DE_ConfigurationFormatMap) NCollection_DataMap<TCollection_AsciiString,DE_ConfigurationVendorMap>;
-%template(DE_ConfigurationVendorMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<DE_ConfigurationNode>>;
-%template(DE_ResourceMap) NCollection_DataMap<TCollection_AsciiString,TCollection_AsciiString>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, DE_ConfigurationVendorMap> DE_ConfigurationFormatMap;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<DE_ConfigurationNode>> DE_ConfigurationVendorMap;
-typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> DE_ResourceMap;
 /* end typedefs declaration */
 
 /********************************
@@ -125,7 +117,7 @@ Creates an empty tool.
 		 DE_ConfigurationContext();
 
 		/****** DE_ConfigurationContext::BooleanVal ******/
-		/****** md5 signature: 39a405c397dbbfd6b8ad8f1477e31469 ******/
+		/****** md5 signature: 3b50b99dbf928a94c40892fd3420d490 ******/
 		%feature("compactdefaultargs") BooleanVal;
 		%feature("autodoc", "
 Parameters
@@ -146,10 +138,10 @@ Input parameter: theDefValue value by default if param is not found or has wrong
 Input parameter: theScope base parameter name 
 Return: specific type value.
 ") BooleanVal;
-		Standard_Boolean BooleanVal(TCollection_AsciiString theParam, const Standard_Boolean theDefValue, TCollection_AsciiString theScope = "");
+		bool BooleanVal(TCollection_AsciiString theParam, const bool theDefValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::GetBoolean ******/
-		/****** md5 signature: 306703583f727555f4b7620b1de3e55e ******/
+		/****** md5 signature: 5d62a90357d97a68563b358b87034f6c ******/
 		%feature("compactdefaultargs") GetBoolean;
 		%feature("autodoc", "
 Parameters
@@ -166,12 +158,12 @@ Description
 Gets value of parameter as being of specific type 
 Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
 Input parameter: theScope base parameter name 
-Return: Standard_False if parameter is not defined or has a wrong type.
+Return: false if parameter is not defined or has a wrong type.
 ") GetBoolean;
-		Standard_Boolean GetBoolean(TCollection_AsciiString theParam, Standard_Boolean &OutValue, TCollection_AsciiString theScope = "");
+		bool GetBoolean(TCollection_AsciiString theParam, Standard_Boolean &OutValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::GetInteger ******/
-		/****** md5 signature: 88fba8515b9407a97f258d961c684f50 ******/
+		/****** md5 signature: e5b46434ed40f25295258afcc29f4cdb ******/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "
 Parameters
@@ -188,26 +180,26 @@ Description
 Gets value of parameter as being of specific type 
 Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
 Input parameter: theScope base parameter name 
-Return: Standard_False if parameter is not defined or has a wrong type.
+Return: false if parameter is not defined or has a wrong type.
 ") GetInteger;
-		Standard_Boolean GetInteger(TCollection_AsciiString theParam, Standard_Integer &OutValue, TCollection_AsciiString theScope = "");
+		bool GetInteger(TCollection_AsciiString theParam, Standard_Integer &OutValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::GetInternalMap ******/
-		/****** md5 signature: 8008565a02e4edcec3f31a539c3e3790 ******/
+		/****** md5 signature: ec33cc9099c151853aa172a22e287290 ******/
 		%feature("compactdefaultargs") GetInternalMap;
 		%feature("autodoc", "Return
 -------
-DE_ResourceMap
+NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Description
 -----------
 Gets internal resource map 
 Return: map with resource value.
 ") GetInternalMap;
-		const DE_ResourceMap & GetInternalMap();
+		const NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> & GetInternalMap();
 
 		/****** DE_ConfigurationContext::GetReal ******/
-		/****** md5 signature: 5c258f8e0dc09497a133e3fb2aa542ec ******/
+		/****** md5 signature: 0ab931f3e7180746087a18825b6f5d66 ******/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "
 Parameters
@@ -217,19 +209,19 @@ theScope: str (optional, default to "")
 
 Return
 -------
-theValue: float
+theValue: double
 
 Description
 -----------
 Gets value of parameter as being of specific type 
 Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
 Input parameter: theScope base parameter name 
-Return: Standard_False if parameter is not defined or has a wrong type.
+Return: false if parameter is not defined or has a wrong type.
 ") GetReal;
-		Standard_Boolean GetReal(TCollection_AsciiString theParam, Standard_Real &OutValue, TCollection_AsciiString theScope = "");
+		bool GetReal(TCollection_AsciiString theParam, Standard_Real &OutValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::GetString ******/
-		/****** md5 signature: 173aecee56d4aebec31415bb2c10a9d5 ******/
+		/****** md5 signature: 335eeb2cd4107292d830e5cedaedc17f ******/
 		%feature("compactdefaultargs") GetString;
 		%feature("autodoc", "
 Parameters
@@ -247,18 +239,18 @@ Description
 Gets value of parameter as being of specific type 
 Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
 Input parameter: theScope base parameter name 
-Return: Standard_False if parameter is not defined or has a wrong type.
+Return: false if parameter is not defined or has a wrong type.
 ") GetString;
-		Standard_Boolean GetString(TCollection_AsciiString theParam, TCollection_AsciiString & theValue, TCollection_AsciiString theScope = "");
+		bool GetString(TCollection_AsciiString theParam, TCollection_AsciiString & theValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::GetStringSeq ******/
-		/****** md5 signature: 7087b14b95eaad840e609bb71fd8f86f ******/
+		/****** md5 signature: 579746131dea3524c5b386031fd02501 ******/
 		%feature("compactdefaultargs") GetStringSeq;
 		%feature("autodoc", "
 Parameters
 ----------
 theParam: str
-theValue: TColStd_ListOfAsciiString
+theValue: NCollection_List<TCollection_AsciiString>
 theScope: str (optional, default to "")
 
 Return
@@ -270,12 +262,12 @@ Description
 Gets value of parameter as being of specific type 
 Input parameter: theParam complex parameter name @param[out] theValue value to get by parameter 
 Input parameter: theScope base parameter name 
-Return: Standard_False if parameter is not defined or has a wrong type.
+Return: false if parameter is not defined or has a wrong type.
 ") GetStringSeq;
-		Standard_Boolean GetStringSeq(TCollection_AsciiString theParam, TColStd_ListOfAsciiString & theValue, TCollection_AsciiString theScope = "");
+		bool GetStringSeq(TCollection_AsciiString theParam, NCollection_List<TCollection_AsciiString> & theValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::IntegerVal ******/
-		/****** md5 signature: 2328fede3f47d9dc4e0421406847f927 ******/
+		/****** md5 signature: 6c0c04700038279895d3ad9ad180c58e ******/
 		%feature("compactdefaultargs") IntegerVal;
 		%feature("autodoc", "
 Parameters
@@ -296,10 +288,10 @@ Input parameter: theDefValue value by default if param is not found or has wrong
 Input parameter: theScope base parameter name 
 Return: specific type value.
 ") IntegerVal;
-		Standard_Integer IntegerVal(TCollection_AsciiString theParam, const Standard_Integer theDefValue, TCollection_AsciiString theScope = "");
+		int IntegerVal(TCollection_AsciiString theParam, const int theDefValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::IsParamSet ******/
-		/****** md5 signature: 514011ad24f2fe71af50c4db2aa4f335 ******/
+		/****** md5 signature: 209db1ee9e52aa3c101626a2a2b201d4 ******/
 		%feature("compactdefaultargs") IsParamSet;
 		%feature("autodoc", "
 Parameters
@@ -316,12 +308,12 @@ Description
 Checks for existing the parameter name 
 Input parameter: theParam complex parameter name 
 Input parameter: theScope base parameter name 
-Return: Standard_True if parameter is defined in the resource file.
+Return: true if parameter is defined in the resource file.
 ") IsParamSet;
-		Standard_Boolean IsParamSet(TCollection_AsciiString theParam, TCollection_AsciiString theScope = "");
+		bool IsParamSet(TCollection_AsciiString theParam, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::Load ******/
-		/****** md5 signature: 4e8a302be9369683c07217887175d412 ******/
+		/****** md5 signature: c94b8ff44079c6e0599306adce13ed63 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -338,10 +330,10 @@ Import the custom configuration Save all parameters with their values.
 Input parameter: theConfiguration path to configuration file or string value 
 Return: true in case of success, false otherwise.
 ") Load;
-		Standard_Boolean Load(TCollection_AsciiString theConfiguration);
+		bool Load(TCollection_AsciiString theConfiguration);
 
 		/****** DE_ConfigurationContext::LoadFile ******/
-		/****** md5 signature: 18e80d660da0dece9383ef8c96a1925f ******/
+		/****** md5 signature: 8494e7d9078b4143657807704fd044a9 ******/
 		%feature("compactdefaultargs") LoadFile;
 		%feature("autodoc", "
 Parameters
@@ -358,10 +350,10 @@ Import the resource file. Save all parameters with their values.
 Input parameter: theFile path to the resource file 
 Return: true in case of success, false otherwise.
 ") LoadFile;
-		Standard_Boolean LoadFile(TCollection_AsciiString theFile);
+		bool LoadFile(TCollection_AsciiString theFile);
 
 		/****** DE_ConfigurationContext::LoadStr ******/
-		/****** md5 signature: b4c4f75492d28f07b4e7f36ad6859270 ******/
+		/****** md5 signature: eb386ad9229253ce44b354b0cfc882b6 ******/
 		%feature("compactdefaultargs") LoadStr;
 		%feature("autodoc", "
 Parameters
@@ -378,21 +370,21 @@ Import the resource string. Save all parameters with their values.
 Input parameter: theResource string with resource content 
 Return: true in case of success, false otherwise.
 ") LoadStr;
-		Standard_Boolean LoadStr(TCollection_AsciiString theResource);
+		bool LoadStr(TCollection_AsciiString theResource);
 
 		/****** DE_ConfigurationContext::RealVal ******/
-		/****** md5 signature: fb5bc95b5b186eec2c62b384c68e6789 ******/
+		/****** md5 signature: 1f0e3f36290b7eb8f5f4d4faccf95e28 ******/
 		%feature("compactdefaultargs") RealVal;
 		%feature("autodoc", "
 Parameters
 ----------
 theParam: str
-theDefValue: float
+theDefValue: double
 theScope: str (optional, default to "")
 
 Return
 -------
-float
+double
 
 Description
 -----------
@@ -402,7 +394,7 @@ Input parameter: theDefValue value by default if param is not found or has wrong
 Input parameter: theScope base parameter name 
 Return: specific type value.
 ") RealVal;
-		Standard_Real RealVal(TCollection_AsciiString theParam, const Standard_Real theDefValue, TCollection_AsciiString theScope = "");
+		double RealVal(TCollection_AsciiString theParam, const double theDefValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::StringVal ******/
 		/****** md5 signature: 9e1849b2727da98db2b1bf37b408bfab ******/
@@ -476,7 +468,7 @@ Description
 -----------
 Checks the file content to verify a format 
 Input parameter: theBuffer read stream buffer to check content 
-Return: Standard_True if file is supported by a current provider.
+Return: true if file is supported by a current provider.
 ") CheckContent;
 		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
 
@@ -496,7 +488,7 @@ Description
 -----------
 Checks the file extension to verify a format 
 Input parameter: theExtension input file extension 
-Return: Standard_True if file is supported by a current provider.
+Return: true if file is supported by a current provider.
 ") CheckExtension;
 		virtual bool CheckExtension(TCollection_AsciiString theExtension);
 
@@ -515,12 +507,12 @@ Return: new object with the same field values.
 		virtual opencascade::handle<DE_ConfigurationNode> Copy();
 
 		/****** DE_ConfigurationNode::CustomActivation ******/
-		/****** md5 signature: aefc913885bf6690f801021e14c05c82 ******/
+		/****** md5 signature: e7d83441d0dac910d9eea6eadac4b276 ******/
 		%feature("compactdefaultargs") CustomActivation;
 		%feature("autodoc", "
 Parameters
 ----------
-&: TColStd_ListOfAsciiString
+&: NCollection_List<TCollection_AsciiString >
 
 Return
 -------
@@ -530,21 +522,21 @@ Description
 -----------
 Custom function to activate commercial DE component. The input is special sequence of values that described in specific component documentation. Order is important. Each component can have own way of activation. //! The main goal - real-time loading plug-in activation. OpenSource components don't need to have activation process.
 ") CustomActivation;
-		virtual void CustomActivation(const TColStd_ListOfAsciiString &);
+		virtual void CustomActivation(const NCollection_List<TCollection_AsciiString > &);
 
 		/****** DE_ConfigurationNode::GetExtensions ******/
-		/****** md5 signature: 6817e63aa129d8a185e6f5a2ec2a2914 ******/
+		/****** md5 signature: ab1c965ab573b0547c5dfc052bb957e7 ******/
 		%feature("compactdefaultargs") GetExtensions;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfAsciiString
+NCollection_List<TCollection_AsciiString >
 
 Description
 -----------
 Gets list of supported file extensions 
 Return: list of extensions.
 ") GetExtensions;
-		virtual TColStd_ListOfAsciiString GetExtensions();
+		virtual NCollection_List<TCollection_AsciiString > GetExtensions();
 
 		/****** DE_ConfigurationNode::GetFormat ******/
 		/****** md5 signature: 463cfc83b2259fc53dc9328af3a9b59c ******/
@@ -575,7 +567,7 @@ Return: provider's vendor name.
 		virtual TCollection_AsciiString GetVendor();
 
 		/****** DE_ConfigurationNode::IsEnabled ******/
-		/****** md5 signature: cf6340b5d1701025377d42db5601a57b ******/
+		/****** md5 signature: 08e6d5dff97c02382ea77da63335995c ******/
 		%feature("compactdefaultargs") IsEnabled;
 		%feature("autodoc", "Return
 -------
@@ -584,9 +576,9 @@ bool
 Description
 -----------
 Gets the provider loading status 
-Return: Standard_True if the load is correct.
+Return: true if the load is correct.
 ") IsEnabled;
-		Standard_Boolean IsEnabled();
+		bool IsEnabled();
 
 		/****** DE_ConfigurationNode::IsExportSupported ******/
 		/****** md5 signature: be38b1e13370efd225253f651dabd3e4 ******/
@@ -597,8 +589,8 @@ bool
 
 Description
 -----------
-Checks the export supporting 
-Return: Standard_True if export is support.
+Checks for export support. 
+Return: true if export is supported.
 ") IsExportSupported;
 		virtual bool IsExportSupported();
 
@@ -611,10 +603,24 @@ bool
 
 Description
 -----------
-Checks the import supporting 
-Return: Standard_True if import is support.
+Checks for import support. 
+Return: true if import is supported.
 ") IsImportSupported;
 		virtual bool IsImportSupported();
+
+		/****** DE_ConfigurationNode::IsStreamSupported ******/
+		/****** md5 signature: cbf6b9c91c68a90405d6de4be26d2f5b ******/
+		%feature("compactdefaultargs") IsStreamSupported;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Checks for stream support. 
+Return: true if streams are supported.
+") IsStreamSupported;
+		virtual bool IsStreamSupported();
 
 		/****** DE_ConfigurationNode::Load ******/
 		/****** md5 signature: 9b5cc764241d5877675334ad8da3c1e3 ******/
@@ -656,6 +662,25 @@ Return: True if Load was successful.
 ") Load;
 		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
 
+		/****** DE_ConfigurationNode::Register ******/
+		/****** md5 signature: d11d23ed039ccf350bfc59d2f3a72d4a ******/
+		%feature("compactdefaultargs") Register;
+		%feature("autodoc", "
+Parameters
+----------
+theWrapper: DE_Wrapper
+
+Return
+-------
+None
+
+Description
+-----------
+Registers configuration node with the specified wrapper 
+Input parameter: theWrapper wrapper to register with.
+") Register;
+		virtual void Register(const opencascade::handle<DE_Wrapper> & theWrapper);
+
 		/****** DE_ConfigurationNode::Save ******/
 		/****** md5 signature: 300b6c1565eb95b4415a1d3dabc4aceb ******/
 		%feature("compactdefaultargs") Save;
@@ -691,7 +716,7 @@ Return: result resource string.
 		virtual TCollection_AsciiString Save();
 
 		/****** DE_ConfigurationNode::SetEnabled ******/
-		/****** md5 signature: 08fbab9585baa2c996daa67d3fe8cb2d ******/
+		/****** md5 signature: 6502e0ca451de6d62fb0a9a71e77253e ******/
 		%feature("compactdefaultargs") SetEnabled;
 		%feature("autodoc", "
 Parameters
@@ -707,10 +732,29 @@ Description
 Sets the provider loading status 
 Input parameter: theIsLoaded input load status.
 ") SetEnabled;
-		void SetEnabled(const Standard_Boolean theIsLoaded);
+		void SetEnabled(const bool theIsLoaded);
+
+		/****** DE_ConfigurationNode::UnRegister ******/
+		/****** md5 signature: fadbccdc54e62748e548897474985978 ******/
+		%feature("compactdefaultargs") UnRegister;
+		%feature("autodoc", "
+Parameters
+----------
+theWrapper: DE_Wrapper
+
+Return
+-------
+None
+
+Description
+-----------
+Unregisters configuration node from the specified wrapper 
+Input parameter: theWrapper wrapper to unregister from.
+") UnRegister;
+		virtual void UnRegister(const opencascade::handle<DE_Wrapper> & theWrapper);
 
 		/****** DE_ConfigurationNode::UpdateLoad ******/
-		/****** md5 signature: e4d00b4aa4bb21adbf62beb264cc06cd ******/
+		/****** md5 signature: 6207170936fc290eafc0a8fe260dcf6a ******/
 		%feature("compactdefaultargs") UpdateLoad;
 		%feature("autodoc", "
 Parameters
@@ -725,11 +769,11 @@ bool
 Description
 -----------
 Update loading status. Checking for the ability to read and write. 
-Input parameter: theToImport flag to updates for import. Standard_True-import, Standard_False-export 
+Input parameter: theToImport flag to updates for import. true-import, false-export 
 Input parameter: theToKeep flag to save update result 
-Return: Standard_True, if node can be used.
+Return: true, if node can be used.
 ") UpdateLoad;
-		virtual bool UpdateLoad(const Standard_Boolean theToImport, const Standard_Boolean theToKeep);
+		virtual bool UpdateLoad(const bool theToImport, const bool theToKeep);
 
 };
 
@@ -742,6 +786,9 @@ Return: Standard_True, if node can be used.
 	}
 };
 
+/*****************************
+* class DE_MultiPluginHolder *
+*****************************/
 /************************
 * class DE_PluginHolder *
 ************************/
@@ -751,6 +798,8 @@ Return: Standard_True, if node can be used.
 %nodefaultctor DE_Provider;
 class DE_Provider : public Standard_Transient {
 	public:
+		class WriteStreamNode {};
+		class ReadStreamNode {};
 		/****** DE_Provider::GetFormat ******/
 		/****** md5 signature: 463cfc83b2259fc53dc9328af3a9b59c ******/
 		%feature("compactdefaultargs") GetFormat;
@@ -793,102 +842,6 @@ Return: provider's vendor name.
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****** DE_Provider::Read ******/
-		/****** md5 signature: ffd5e83c299a2aac49b58d0084ab11d6 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a CAD file, according internal configuration 
-Input parameter: thePath path to the import CAD file @param[out] theDocument document to save result 
-Input parameter: theWS current work session 
-Input parameter: theProgress progress indicator 
-Return: True if Read was successful.
-") Read;
-		virtual Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** DE_Provider::Read ******/
-		/****** md5 signature: c1e34bf06baf1ea974ad18b724413618 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a CAD file, according internal configuration 
-Input parameter: thePath path to the import CAD file @param[out] theDocument document to save result 
-Input parameter: theProgress progress indicator 
-Return: True if Read was successful.
-") Read;
-		virtual Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** DE_Provider::Read ******/
-		/****** md5 signature: 55639ad04662343e547548226928d55b ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a CAD file, according internal configuration 
-Input parameter: thePath path to the import CAD file @param[out] theShape shape to save result 
-Input parameter: theWS current work session 
-Input parameter: theProgress progress indicator 
-Return: True if Read was successful.
-") Read;
-		virtual Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** DE_Provider::Read ******/
-		/****** md5 signature: dccc17e0a0a544feace2161f02bcc4e6 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a CAD file, according internal configuration 
-Input parameter: thePath path to the import CAD file @param[out] theShape shape to save result 
-Input parameter: theProgress progress indicator 
-Return: True if Read was successful.
-") Read;
-		virtual Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
 		/****** DE_Provider::SetNode ******/
 		/****** md5 signature: 6357926adf4af2af0332dfba77e7d554 ******/
 		%feature("compactdefaultargs") SetNode;
@@ -908,102 +861,6 @@ Input parameter: theNode configuration node to set.
 ") SetNode;
 		void SetNode(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
-		/****** DE_Provider::Write ******/
-		/****** md5 signature: f341356a003498c8128edb7fbe413575 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a CAD file, according internal configuration 
-Input parameter: thePath path to the export CAD file @param[out] theDocument document to export 
-Input parameter: theWS current work session 
-Input parameter: theProgress progress indicator 
-Return: True if Write was successful.
-") Write;
-		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** DE_Provider::Write ******/
-		/****** md5 signature: 2e47d8fb696b938e5600c74ce12da037 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a CAD file, according internal configuration 
-Input parameter: thePath path to the export CAD file @param[out] theDocument document to export 
-Input parameter: theProgress progress indicator 
-Return: True if Write was successful.
-") Write;
-		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** DE_Provider::Write ******/
-		/****** md5 signature: 368389284ef9549d28132af2ec7852cc ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a CAD file, according internal configuration 
-Input parameter: thePath path to the export CAD file @param[out] theShape shape to export 
-Input parameter: theWS current work session 
-Input parameter: theProgress progress indicator 
-Return: True if Write was successful.
-") Write;
-		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** DE_Provider::Write ******/
-		/****** md5 signature: 73e0be0cefb41c11946f9e840381252b ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a CAD file, according internal configuration 
-Input parameter: thePath path to the export CAD file @param[out] theShape shape to export 
-Input parameter: theProgress progress indicator 
-Return: True if Write was successful.
-") Write;
-		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
 };
 
 
@@ -1012,12 +869,245 @@ Return: True if Write was successful.
 %extend DE_Provider {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Read(self):
+		pass
+
+	@methodnotwrapped
+	def Write(self):
+		pass
 	}
 };
 
 /******************************
 * class DE_ShapeFixParameters *
 ******************************/
+/***************************
+* class DE_ValidationUtils *
+***************************/
+class DE_ValidationUtils {
+	public:
+		/****** DE_ValidationUtils::CreateContentBuffer ******/
+		/****** md5 signature: 35a498b58f421df22e94d04c01f2d4d3 ******/
+		%feature("compactdefaultargs") CreateContentBuffer;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theBuffer: NCollection_Buffer
+
+Return
+-------
+bool
+
+Description
+-----------
+Creates buffer by reading from file stream for content checking 
+Input parameter: thePath file path for reading @param[out] theBuffer output buffer with file content 
+Return: true if successful, false otherwise.
+") CreateContentBuffer;
+		static bool CreateContentBuffer(TCollection_AsciiString thePath, opencascade::handle<NCollection_Buffer> & theBuffer);
+
+		/****** DE_ValidationUtils::CreateContentBuffer ******/
+		/****** md5 signature: 7642a38254f019072933395b46328496 ******/
+		%feature("compactdefaultargs") CreateContentBuffer;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theBuffer: NCollection_Buffer
+
+Return
+-------
+bool
+
+Description
+-----------
+Creates buffer by reading from input stream for content checking @param[in,out] theStream input stream to read from (position will be restored) @param[out] theBuffer output buffer with stream content 
+Return: true if successful, false otherwise.
+") CreateContentBuffer;
+		static bool CreateContentBuffer(std::istream & theStream, opencascade::handle<NCollection_Buffer> & theBuffer);
+
+		/****** DE_ValidationUtils::ValidateConfigurationNode ******/
+		/****** md5 signature: 6b5f502855970e395a690d1072946d39 ******/
+		%feature("compactdefaultargs") ValidateConfigurationNode;
+		%feature("autodoc", "
+Parameters
+----------
+theNode: DE_ConfigurationNode
+theExpectedType: Standard_Type
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Validates that configuration node is not null and matches expected type 
+Input parameter: theNode configuration node to validate 
+Input parameter: theExpectedType expected RTTI type 
+Input parameter: theContext context string for error messages 
+Input parameter: theIsVerbose if true, sends detailed error messages via Message::SendFail 
+Return: true if node is valid, false otherwise.
+") ValidateConfigurationNode;
+		static bool ValidateConfigurationNode(const opencascade::handle<DE_ConfigurationNode> & theNode, const opencascade::handle<Standard_Type> & theExpectedType, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+		/****** DE_ValidationUtils::ValidateDocument ******/
+		/****** md5 signature: 780e4a5e4400b5eb6bca5c61f19fd903 ******/
+		%feature("compactdefaultargs") ValidateDocument;
+		%feature("autodoc", "
+Parameters
+----------
+theDocument: TDocStd_Document
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Validates that TDocStd_Document handle is not null 
+Input parameter: theDocument document to validate 
+Input parameter: theContext context string for error messages 
+Input parameter: theIsVerbose if true, sends detailed error messages via Message::SendFail 
+Return: true if document is not null, false otherwise.
+") ValidateDocument;
+		static bool ValidateDocument(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+		/****** DE_ValidationUtils::ValidateFileForReading ******/
+		/****** md5 signature: d45d7306fb019d50f9894645d7527e0b ******/
+		%feature("compactdefaultargs") ValidateFileForReading;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Checks if file exists and is readable 
+Input parameter: thePath file path to check 
+Input parameter: theContext context string for error messages 
+Input parameter: theIsVerbose if true, sends detailed error messages via Message::SendFail 
+Return: true if file exists and is readable, false otherwise.
+") ValidateFileForReading;
+		static bool ValidateFileForReading(TCollection_AsciiString thePath, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+		/****** DE_ValidationUtils::ValidateFileForWriting ******/
+		/****** md5 signature: e5f32fba723c850e9486c9f3639cb137 ******/
+		%feature("compactdefaultargs") ValidateFileForWriting;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Checks if file location is writable (file may or may not exist) 
+Input parameter: thePath file path to check 
+Input parameter: theContext context string for error messages 
+Input parameter: theIsVerbose if true, sends detailed error messages via Message::SendFail 
+Return: true if location is writable, false otherwise.
+") ValidateFileForWriting;
+		static bool ValidateFileForWriting(TCollection_AsciiString thePath, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+		/****** DE_ValidationUtils::ValidateReadStreamList ******/
+		/****** md5 signature: f585a15a9fe1d4b9fac350663696dd9c ******/
+		%feature("compactdefaultargs") ValidateReadStreamList;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::ReadStreamList
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Validates read stream list, warns if multiple streams 
+Input parameter: theStreams read stream list to validate 
+Input parameter: theContext context string for error messages 
+Input parameter: theIsVerbose if true, sends detailed error/warning messages 
+Return: true if stream list is valid, false otherwise.
+") ValidateReadStreamList;
+		static bool ValidateReadStreamList(const DE_Provider::ReadStreamList & theStreams, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+		/****** DE_ValidationUtils::ValidateWriteStreamList ******/
+		/****** md5 signature: aad264886ac6863fc917f0eb97364dcd ******/
+		%feature("compactdefaultargs") ValidateWriteStreamList;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::WriteStreamList
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Validates write stream list, warns if multiple streams 
+Input parameter: theStreams write stream list to validate 
+Input parameter: theContext context string for error messages 
+Input parameter: theIsVerbose if true, sends detailed error/warning messages 
+Return: true if stream list is valid, false otherwise.
+") ValidateWriteStreamList;
+		static bool ValidateWriteStreamList(DE_Provider::WriteStreamList & theStreams, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+		/****** DE_ValidationUtils::WarnLengthUnitNotSupported ******/
+		/****** md5 signature: 0665a3a00fc115b549fab64c3287ee39 ******/
+		%feature("compactdefaultargs") WarnLengthUnitNotSupported;
+		%feature("autodoc", "
+Parameters
+----------
+theLengthUnit: double
+theContext: str
+theIsVerbose: bool (optional, default to true)
+
+Return
+-------
+bool
+
+Description
+-----------
+Sends warning when format doesn't support length unit scaling 
+Input parameter: theLengthUnit length unit value to check 
+Input parameter: theContext context string for warning messages 
+Input parameter: theIsVerbose if true, sends warning messages via Message::SendWarning 
+Return: true always (this is just a warning).
+") WarnLengthUnitNotSupported;
+		static bool WarnLengthUnitNotSupported(const double theLengthUnit, TCollection_AsciiString theContext, const bool theIsVerbose = true);
+
+};
+
+
+%extend DE_ValidationUtils {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*******************
 * class DE_Wrapper *
 *******************/
@@ -1056,7 +1146,7 @@ Input parameter: theWrapper object to copy.
 		 DE_Wrapper(const opencascade::handle<DE_Wrapper> & theWrapper);
 
 		/****** DE_Wrapper::Bind ******/
-		/****** md5 signature: 25c481436cdaae1e3ed686394dd61ae2 ******/
+		/****** md5 signature: 213eba6a846c9738c658baabd8abcbb9 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -1071,19 +1161,19 @@ Description
 -----------
 Creates new node copy and adds to the map 
 Input parameter: theNode input node to copy 
-Return: Standard_True if binded.
+Return: true if binded.
 ") Bind;
-		Standard_Boolean Bind(const opencascade::handle<DE_ConfigurationNode> & theNode);
+		bool Bind(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
 		/****** DE_Wrapper::ChangePriority ******/
-		/****** md5 signature: e156ca6527dd6624205892852e05b609 ******/
+		/****** md5 signature: 266c96a9bf8894445611e99a07dd7a09 ******/
 		%feature("compactdefaultargs") ChangePriority;
 		%feature("autodoc", "
 Parameters
 ----------
 theFormat: str
-theVendorPriority: TColStd_ListOfAsciiString
-theToDisable: bool (optional, default to Standard_False)
+theVendorPriority: NCollection_List<TCollection_AsciiString>
+theToDisable: bool (optional, default to false)
 
 Return
 -------
@@ -1096,16 +1186,16 @@ Input parameter: theFormat input node CAD format
 Input parameter: theVendorPriority priority of work with vendors 
 Input parameter: theToDisable flag for disabling nodes that are not included in the priority.
 ") ChangePriority;
-		void ChangePriority(TCollection_AsciiString theFormat, const TColStd_ListOfAsciiString & theVendorPriority, const Standard_Boolean theToDisable = Standard_False);
+		void ChangePriority(TCollection_AsciiString theFormat, const NCollection_List<TCollection_AsciiString> & theVendorPriority, const bool theToDisable = false);
 
 		/****** DE_Wrapper::ChangePriority ******/
-		/****** md5 signature: 9ae8e808309bf1f6a3804b1ac5811235 ******/
+		/****** md5 signature: 2ee8ba94b40bf213779d9de6f1eec08a ******/
 		%feature("compactdefaultargs") ChangePriority;
 		%feature("autodoc", "
 Parameters
 ----------
-theVendorPriority: TColStd_ListOfAsciiString
-theToDisable: bool (optional, default to Standard_False)
+theVendorPriority: NCollection_List<TCollection_AsciiString>
+theToDisable: bool (optional, default to false)
 
 Return
 -------
@@ -1117,7 +1207,7 @@ Changes provider priority to all loaded nodes
 Input parameter: theVendorPriority priority of work with vendors 
 Input parameter: theToDisable flag for disabling nodes that are not included in the priority.
 ") ChangePriority;
-		void ChangePriority(const TColStd_ListOfAsciiString & theVendorPriority, const Standard_Boolean theToDisable = Standard_False);
+		void ChangePriority(const NCollection_List<TCollection_AsciiString> & theVendorPriority, const bool theToDisable = false);
 
 		/****** DE_Wrapper::Copy ******/
 		/****** md5 signature: eda87f309cc4af4bc0dc983df7323008 ******/
@@ -1134,7 +1224,7 @@ Return: new object with the same field values.
 		virtual opencascade::handle<DE_Wrapper> Copy();
 
 		/****** DE_Wrapper::Find ******/
-		/****** md5 signature: 98cf7f9b76f8dd3c2ea6d6377f80054b ******/
+		/****** md5 signature: 5dc963a641c4c0b35e1e84c36ecb50a5 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -1152,12 +1242,12 @@ Description
 Finds a node associated with input format and vendor 
 Input parameter: theFormat input node CAD format 
 Input parameter: theVendor input node vendor name @param[out] theNode output node 
-Return: Standard_True if the node is found.
+Return: true if the node is found.
 ") Find;
-		Standard_Boolean Find(TCollection_AsciiString theFormat, TCollection_AsciiString theVendor, opencascade::handle<DE_ConfigurationNode> & theNode);
+		bool Find(TCollection_AsciiString theFormat, TCollection_AsciiString theVendor, opencascade::handle<DE_ConfigurationNode> & theNode);
 
 		/****** DE_Wrapper::FindProvider ******/
-		/****** md5 signature: 7de521c2a889b057519978daf75f4f9c ******/
+		/****** md5 signature: daa5d58ee148967a7d16eaae786cc36e ******/
 		%feature("compactdefaultargs") FindProvider;
 		%feature("autodoc", "
 Parameters
@@ -1174,23 +1264,90 @@ Description
 -----------
 Find available provider from the configuration. If there are several providers, choose the one with the highest priority. 
 Input parameter: thePath path to the CAD file 
-Input parameter: theToImport flag to finds for import. Standard_True-import, Standard_False-export @param[out] theProvider created new provider 
-Return: Standard_True if provider found and created.
+Input parameter: theToImport flag to finds for import. true-import, false-export @param[out] theProvider created new provider 
+Return: true if provider found and created.
 ") FindProvider;
-		virtual Standard_Boolean FindProvider(TCollection_AsciiString thePath, const Standard_Boolean theToImport, opencascade::handle<DE_Provider> & theProvider);
+		virtual bool FindProvider(TCollection_AsciiString thePath, const bool theToImport, opencascade::handle<DE_Provider> & theProvider);
+
+		/****** DE_Wrapper::FindReadProvider ******/
+		/****** md5 signature: 629d936eea87b6618c453f900c3868b6 ******/
+		%feature("compactdefaultargs") FindReadProvider;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theCheckContent: bool
+theProvider: DE_Provider
+
+Return
+-------
+bool
+
+Description
+-----------
+Find available read provider from the configuration for file-based operations. If there are several providers, choose the one with the highest priority. 
+Input parameter: thePath path to the CAD file (for extension and content checking) 
+Input parameter: theCheckContent flag to enable content checking via file reading @param[out] theProvider created new provider 
+Return: true if provider found and created.
+") FindReadProvider;
+		virtual bool FindReadProvider(TCollection_AsciiString thePath, const bool theCheckContent, opencascade::handle<DE_Provider> & theProvider);
+
+		/****** DE_Wrapper::FindReadProvider ******/
+		/****** md5 signature: d7d9050c8ee23041fb79588e281c8ff6 ******/
+		%feature("compactdefaultargs") FindReadProvider;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theStream: str
+theProvider: DE_Provider
+
+Return
+-------
+bool
+
+Description
+-----------
+Find available read provider from the configuration for stream-based operations. If there are several providers, choose the one with the highest priority. 
+Input parameter: thePath path to the CAD file (for extension extraction) 
+Input parameter: theStream input stream for content checking @param[out] theProvider created new provider 
+Return: true if provider found and created.
+") FindReadProvider;
+		virtual bool FindReadProvider(TCollection_AsciiString thePath, std::istream & theStream, opencascade::handle<DE_Provider> & theProvider);
+
+		/****** DE_Wrapper::FindWriteProvider ******/
+		/****** md5 signature: b42ad753e8add8c08ed2e947fcbd2dad ******/
+		%feature("compactdefaultargs") FindWriteProvider;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theProvider: DE_Provider
+
+Return
+-------
+bool
+
+Description
+-----------
+Find available write provider from the configuration. If there are several providers, choose the one with the highest priority. 
+Input parameter: thePath path to the CAD file (for extension checking only) @param[out] theProvider created new provider 
+Return: true if provider found and created.
+") FindWriteProvider;
+		virtual bool FindWriteProvider(TCollection_AsciiString thePath, opencascade::handle<DE_Provider> & theProvider);
 
 		/****** DE_Wrapper::GlobalLoadMutex ******/
-		/****** md5 signature: 697f6434ea0d77c8fc11f1d70733107a ******/
+		/****** md5 signature: 0534776e17602a2e7a1a3ef730b464e3 ******/
 		%feature("compactdefaultargs") GlobalLoadMutex;
 		%feature("autodoc", "Return
 -------
-Standard_Mutex
+std::mutex
 
 Description
 -----------
 No available documentation.
 ") GlobalLoadMutex;
-		static Standard_Mutex & GlobalLoadMutex();
+		static std::mutex & GlobalLoadMutex();
 
 		/****** DE_Wrapper::GlobalWrapper ******/
 		/****** md5 signature: ace26dd3eb9eb53a4aa43a02d795749b ******/
@@ -1207,7 +1364,7 @@ Return: point to global configuration.
 		static const opencascade::handle<DE_Wrapper> & GlobalWrapper();
 
 		/****** DE_Wrapper::KeepUpdates ******/
-		/****** md5 signature: 544bb1c1219d5ad8a52415cd9d472045 ******/
+		/****** md5 signature: 6588937765dda59b05b9fd8b6581ec36 ******/
 		%feature("compactdefaultargs") KeepUpdates;
 		%feature("autodoc", "Return
 -------
@@ -1217,16 +1374,16 @@ Description
 -----------
 Gets flag that keeps changes on configuration nodes which are being updated, false by default.
 ") KeepUpdates;
-		Standard_Boolean KeepUpdates();
+		bool KeepUpdates();
 
 		/****** DE_Wrapper::Load ******/
-		/****** md5 signature: e38468f71a09d1e0264cdd36b0ce0aec ******/
+		/****** md5 signature: b5aafcec166293c0c2d492d526f026f2 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 theResource: str (optional, default to "")
-theIsRecursive: bool (optional, default to Standard_True)
+theIsRecursive: bool (optional, default to true)
 
 Return
 -------
@@ -1239,16 +1396,16 @@ Input parameter: theResource file path to resource or resource value
 Input parameter: theIsRecursive flag to update all nodes 
 Return: true if theResource has loaded correctly.
 ") Load;
-		Standard_Boolean Load(TCollection_AsciiString theResource = "", const Standard_Boolean theIsRecursive = Standard_True);
+		bool Load(TCollection_AsciiString theResource = "", const bool theIsRecursive = true);
 
 		/****** DE_Wrapper::Load ******/
-		/****** md5 signature: d8568a3d1c2509fb6a86ee649f6b430c ******/
+		/****** md5 signature: 653c24ab8be0b0651185c0d4383f8dfb ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 theResource: DE_ConfigurationContext
-theIsRecursive: bool (optional, default to Standard_True)
+theIsRecursive: bool (optional, default to true)
 
 Return
 -------
@@ -1261,24 +1418,24 @@ Input parameter: theResource input resource to use
 Input parameter: theIsRecursive flag to update all nodes 
 Return: true if theResource has loaded correctly.
 ") Load;
-		Standard_Boolean Load(const opencascade::handle<DE_ConfigurationContext> & theResource, const Standard_Boolean theIsRecursive = Standard_True);
+		bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource, const bool theIsRecursive = true);
 
 		/****** DE_Wrapper::Nodes ******/
-		/****** md5 signature: cd4f7b408a19aecbbaabce1f082f6f4b ******/
+		/****** md5 signature: 4eea0a5d549731d87befbdd02bb34f6c ******/
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-DE_ConfigurationFormatMap
+NCollection_DataMap<TCollection_AsciiString, NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<DE_ConfigurationNode>>>
 
 Description
 -----------
 Gets format map, contains vendor map with nodes 
 Return: internal map of formats.
 ") Nodes;
-		const DE_ConfigurationFormatMap & Nodes();
+		const NCollection_DataMap<TCollection_AsciiString, NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<DE_ConfigurationNode>>> & Nodes();
 
 		/****** DE_Wrapper::Read ******/
-		/****** md5 signature: 07afd098e3ea845271c66b1665ad0b77 ******/
+		/****** md5 signature: c53a8a1ffc9c62150825edceada57907 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1300,10 +1457,10 @@ Input parameter: theWS current work session
 Input parameter: theProgress progress indicator 
 Return: true if Read operation has ended correctly.
 ") Read;
-		Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Read ******/
-		/****** md5 signature: 6d5a018f6898d40e701b1edd5451a141 ******/
+		/****** md5 signature: 4fe320311b9a8d14c6a4fe556d2ad5a0 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1323,10 +1480,10 @@ Input parameter: thePath path to the import CAD file @param[out] theDocument doc
 Input parameter: theProgress progress indicator 
 Return: true if Read operation has ended correctly.
 ") Read;
-		Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Read ******/
-		/****** md5 signature: 33ad960c8c398403758f27e8591bde70 ******/
+		/****** md5 signature: 421a1a7565728ad4a634eafa372c2167 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1348,10 +1505,10 @@ Input parameter: theWS current work session
 Input parameter: theProgress progress indicator 
 Return: true if Read operation has ended correctly.
 ") Read;
-		Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Read ******/
-		/****** md5 signature: ba650fdec802d5e46b2a5c384d97cdcb ******/
+		/****** md5 signature: d11e49b520c451b3d749a9ab7a8316cc ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1371,18 +1528,114 @@ Input parameter: thePath path to the import CAD file @param[out] theShape shape 
 Input parameter: theProgress progress indicator 
 Return: true if Read operation has ended correctly.
 ") Read;
-		Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Read ******/
+		/****** md5 signature: f10a1b62e525dca290f56fe6132f1775 ******/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::ReadStreamList
+theDocument: TDocStd_Document
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Reads streams according to internal configuration 
+Input parameter: theStreams streams to read from @param[out] theDocument document to save result 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
+") Read;
+		bool Read(DE_Provider::ReadStreamList & theStreams, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Read ******/
+		/****** md5 signature: b9c27823239395f87f23a7cda3bf81bc ******/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::ReadStreamList
+theDocument: TDocStd_Document
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Reads streams according to internal configuration 
+Input parameter: theStreams streams to read from @param[out] theDocument document to save result 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
+") Read;
+		bool Read(DE_Provider::ReadStreamList & theStreams, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Read ******/
+		/****** md5 signature: c4236743c7f2a7a855d1b75287ce24c2 ******/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::ReadStreamList
+theShape: TopoDS_Shape
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Reads streams according to internal configuration 
+Input parameter: theStreams streams to read from @param[out] theShape shape to save result 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
+") Read;
+		bool Read(DE_Provider::ReadStreamList & theStreams, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Read ******/
+		/****** md5 signature: d0097eef92b415bcef9e6adce15e5513 ******/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::ReadStreamList
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Reads streams according to internal configuration 
+Input parameter: theStreams streams to read from @param[out] theShape shape to save result 
+Input parameter: theProgress progress indicator 
+Return: true if Read operation has ended correctly.
+") Read;
+		bool Read(DE_Provider::ReadStreamList & theStreams, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Save ******/
-		/****** md5 signature: 7d9531bb632f8f4fce109a1374d3bb53 ******/
+		/****** md5 signature: ca3247a4f7105d5da37ffb2921b62cea ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "
 Parameters
 ----------
 theResourcePath: str
-theIsRecursive: bool (optional, default to Standard_True)
-theFormats: TColStd_ListOfAsciiString (optional, default to TColStd_ListOfAsciiString())
-theVendors: TColStd_ListOfAsciiString (optional, default to TColStd_ListOfAsciiString())
+theIsRecursive: bool (optional, default to true)
+theFormats: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
+theVendors: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
 
 Return
 -------
@@ -1397,17 +1650,17 @@ Input parameter: theFormats list of formats to save. If empty, saves all availab
 Input parameter: theVendors list of providers to save. If empty, saves all available 
 Return: true if the Configuration has saved correctly.
 ") Save;
-		Standard_Boolean Save(TCollection_AsciiString theResourcePath, const Standard_Boolean theIsRecursive = Standard_True, const TColStd_ListOfAsciiString & theFormats = TColStd_ListOfAsciiString(), const TColStd_ListOfAsciiString & theVendors = TColStd_ListOfAsciiString());
+		bool Save(TCollection_AsciiString theResourcePath, const bool theIsRecursive = true, const NCollection_List<TCollection_AsciiString> & theFormats = NCollection_List<TCollection_AsciiString>(), const NCollection_List<TCollection_AsciiString> & theVendors = NCollection_List<TCollection_AsciiString>());
 
 		/****** DE_Wrapper::Save ******/
-		/****** md5 signature: 53550bbdecde27c0dd886095bf29bd98 ******/
+		/****** md5 signature: 10dd8f9dc619b58a4753b0622590d007 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "
 Parameters
 ----------
-theIsRecursive: bool (optional, default to Standard_True)
-theFormats: TColStd_ListOfAsciiString (optional, default to TColStd_ListOfAsciiString())
-theVendors: TColStd_ListOfAsciiString (optional, default to TColStd_ListOfAsciiString())
+theIsRecursive: bool (optional, default to true)
+theFormats: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
+theVendors: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
 
 Return
 -------
@@ -1421,7 +1674,7 @@ Input parameter: theFormats list of formats to save. If empty, saves all availab
 Input parameter: theVendors list of providers to save. If empty, saves all available 
 Return: result resource string.
 ") Save;
-		TCollection_AsciiString Save(const Standard_Boolean theIsRecursive = Standard_True, const TColStd_ListOfAsciiString & theFormats = TColStd_ListOfAsciiString(), const TColStd_ListOfAsciiString & theVendors = TColStd_ListOfAsciiString());
+		TCollection_AsciiString Save(const bool theIsRecursive = true, const NCollection_List<TCollection_AsciiString> & theFormats = NCollection_List<TCollection_AsciiString>(), const NCollection_List<TCollection_AsciiString> & theVendors = NCollection_List<TCollection_AsciiString>());
 
 		/****** DE_Wrapper::SetGlobalWrapper ******/
 		/****** md5 signature: c12f22416c96f19cad70ed542d976aec ******/
@@ -1443,7 +1696,7 @@ Input parameter: theWrapper object to set as global configuration.
 		static void SetGlobalWrapper(const opencascade::handle<DE_Wrapper> & theWrapper);
 
 		/****** DE_Wrapper::SetKeepUpdates ******/
-		/****** md5 signature: 93e00676fa5dea60bfa87b89e1017a3f ******/
+		/****** md5 signature: 06787d71414622032803c18dc45052ef ******/
 		%feature("compactdefaultargs") SetKeepUpdates;
 		%feature("autodoc", "
 Parameters
@@ -1458,10 +1711,10 @@ Description
 -----------
 Sets flag that keeps changes on configuration nodes which are being updated, false by default.
 ") SetKeepUpdates;
-		void SetKeepUpdates(const Standard_Boolean theToKeepUpdates);
+		void SetKeepUpdates(const bool theToKeepUpdates);
 
 		/****** DE_Wrapper::UnBind ******/
-		/****** md5 signature: a24be7b2a3b0d23c7167000ca320b6d1 ******/
+		/****** md5 signature: 0b07b30fe18eea5c81e5c0f4eacc5ff7 ******/
 		%feature("compactdefaultargs") UnBind;
 		%feature("autodoc", "
 Parameters
@@ -1476,17 +1729,17 @@ Description
 -----------
 Removes node with the same type from the map 
 Input parameter: theNode input node to remove the same 
-Return: Standard_True if removed.
+Return: true if removed.
 ") UnBind;
-		Standard_Boolean UnBind(const opencascade::handle<DE_ConfigurationNode> & theNode);
+		bool UnBind(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
 		/****** DE_Wrapper::UpdateLoad ******/
-		/****** md5 signature: e6ea8d1aa59c1e0ab1496dac5ec01fcf ******/
+		/****** md5 signature: ccf442335bdba37e86fca8c0913d96b7 ******/
 		%feature("compactdefaultargs") UpdateLoad;
 		%feature("autodoc", "
 Parameters
 ----------
-theToForceUpdate: bool (optional, default to Standard_False)
+theToForceUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -1497,10 +1750,10 @@ Description
 Updates all registered nodes, all changes will be saved in nodes 
 Input parameter: theToForceUpdate flag that turns on/of nodes, according to updated ability to import/export.
 ") UpdateLoad;
-		void UpdateLoad(const Standard_Boolean theToForceUpdate = Standard_False);
+		void UpdateLoad(const bool theToForceUpdate = false);
 
 		/****** DE_Wrapper::Write ******/
-		/****** md5 signature: 854c168c488f764c7b691b8074994e37 ******/
+		/****** md5 signature: 63a0331663689b9d3fc9a0161e2508a2 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1522,10 +1775,10 @@ Input parameter: theWS current work session
 Input parameter: theProgress progress indicator 
 Return: true if Write operation has ended correctly.
 ") Write;
-		Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Write ******/
-		/****** md5 signature: 43124dc92a954a7ec3b4993ab1810406 ******/
+		/****** md5 signature: 1198a04880d11a3a50987163200b3665 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1545,10 +1798,10 @@ Input parameter: thePath path to the export CAD file @param[out] theDocument doc
 Input parameter: theProgress progress indicator 
 Return: true if Write operation has ended correctly.
 ") Write;
-		Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Write ******/
-		/****** md5 signature: 0a31da375f98721ebf0da0ae8fdec42d ******/
+		/****** md5 signature: 46dc25c258df56b609bf82bec8e66bb6 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1570,10 +1823,10 @@ Input parameter: theWS current work session
 Input parameter: theProgress progress indicator 
 Return: true if Write operation has ended correctly.
 ") Write;
-		Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** DE_Wrapper::Write ******/
-		/****** md5 signature: 6aee5229322f053659fa9a59408599ad ******/
+		/****** md5 signature: a89dff5e2b9e4f61517870b18305f151 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1593,7 +1846,103 @@ Input parameter: thePath path to the export CAD file @param[out] theShape shape 
 Input parameter: theProgress progress indicator 
 Return: true if Write operation has ended correctly.
 ") Write;
-		Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Write ******/
+		/****** md5 signature: 3d2b40770de386b9f1c0aacf7888fafc ******/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::WriteStreamList
+theDocument: TDocStd_Document
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Writes streams according to internal configuration 
+Input parameter: theStreams streams to write to @param[out] theDocument document to export 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
+") Write;
+		bool Write(DE_Provider::WriteStreamList & theStreams, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Write ******/
+		/****** md5 signature: ecfde9eb940fa442ed6409658a4069b9 ******/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::WriteStreamList
+theDocument: TDocStd_Document
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Writes streams according to internal configuration 
+Input parameter: theStreams streams to write to @param[out] theDocument document to export 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
+") Write;
+		bool Write(DE_Provider::WriteStreamList & theStreams, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Write ******/
+		/****** md5 signature: 8d2e92922c0fd824964805b16f184f5c ******/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::WriteStreamList
+theShape: TopoDS_Shape
+theWS: XSControl_WorkSession
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Writes streams according to internal configuration 
+Input parameter: theStreams streams to write to @param[out] theShape shape to export 
+Input parameter: theWS current work session 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
+") Write;
+		bool Write(DE_Provider::WriteStreamList & theStreams, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** DE_Wrapper::Write ******/
+		/****** md5 signature: a54f5d0b3f06a372a0e3bcbe27f96265 ******/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theStreams: DE_Provider::WriteStreamList
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Writes streams according to internal configuration 
+Input parameter: theStreams streams to write to @param[out] theShape shape to export 
+Input parameter: theProgress progress indicator 
+Return: true if Write operation has ended correctly.
+") Write;
+		bool Write(DE_Provider::WriteStreamList & theStreams, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -1616,6 +1965,10 @@ class DE_PluginHolder:
 	pass
 
 @classnotwrapped
+class DE_MultiPluginHolder:
+	pass
+
+@classnotwrapped
 class DE_ShapeFixConfigurationNode:
 	pass
 
@@ -1633,6 +1986,42 @@ class DE_ShapeFixParameters:
 }
 /* deprecated methods */
 %pythoncode {
+@deprecated
+def DE_ValidationUtils_CreateContentBuffer(*args):
+	return DE_ValidationUtils.CreateContentBuffer(*args)
+
+@deprecated
+def DE_ValidationUtils_CreateContentBuffer(*args):
+	return DE_ValidationUtils.CreateContentBuffer(*args)
+
+@deprecated
+def DE_ValidationUtils_ValidateConfigurationNode(*args):
+	return DE_ValidationUtils.ValidateConfigurationNode(*args)
+
+@deprecated
+def DE_ValidationUtils_ValidateDocument(*args):
+	return DE_ValidationUtils.ValidateDocument(*args)
+
+@deprecated
+def DE_ValidationUtils_ValidateFileForReading(*args):
+	return DE_ValidationUtils.ValidateFileForReading(*args)
+
+@deprecated
+def DE_ValidationUtils_ValidateFileForWriting(*args):
+	return DE_ValidationUtils.ValidateFileForWriting(*args)
+
+@deprecated
+def DE_ValidationUtils_ValidateReadStreamList(*args):
+	return DE_ValidationUtils.ValidateReadStreamList(*args)
+
+@deprecated
+def DE_ValidationUtils_ValidateWriteStreamList(*args):
+	return DE_ValidationUtils.ValidateWriteStreamList(*args)
+
+@deprecated
+def DE_ValidationUtils_WarnLengthUnitNotSupported(*args):
+	return DE_ValidationUtils.WarnLengthUnitNotSupported(*args)
+
 @deprecated
 def DE_Wrapper_GlobalLoadMutex(*args):
 	return DE_Wrapper.GlobalLoadMutex(*args)

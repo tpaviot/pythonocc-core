@@ -44,14 +44,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepvisual.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<StepShape_module.hxx>
 #include<StepData_module.hxx>
 #include<StepRepr_module.hxx>
 #include<StepGeom_module.hxx>
 #include<TCollection_module.hxx>
 #include<StepBasic_module.hxx>
-#include<TColgp_module.hxx>
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<MoniTool_module.hxx>
@@ -64,14 +62,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepvisual.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import StepShape.i
 %import StepData.i
 %import StepRepr.i
 %import StepGeom.i
 %import TCollection.i
 %import StepBasic.i
-%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -180,40 +176,23 @@ StepVisual_tpLeft = StepVisual_TextPath.StepVisual_tpLeft
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(StepVisual_AnnotationFillArea)
-%wrap_handle(StepVisual_AnnotationText)
 %wrap_handle(StepVisual_AreaInSet)
-%wrap_handle(StepVisual_CameraImage)
-%wrap_handle(StepVisual_CameraModel)
-%wrap_handle(StepVisual_CameraModelD3MultiClippingIntersection)
-%wrap_handle(StepVisual_CameraModelD3MultiClippingUnion)
-%wrap_handle(StepVisual_CameraUsage)
 %wrap_handle(StepVisual_Colour)
-%wrap_handle(StepVisual_CompositeText)
 %wrap_handle(StepVisual_CurveStyle)
 %wrap_handle(StepVisual_CurveStyleFont)
 %wrap_handle(StepVisual_CurveStyleFontPattern)
-%wrap_handle(StepVisual_DraughtingCallout)
-%wrap_handle(StepVisual_DraughtingModel)
-%wrap_handle(StepVisual_ExternallyDefinedCurveFont)
-%wrap_handle(StepVisual_ExternallyDefinedTextFont)
 %wrap_handle(StepVisual_FillAreaStyle)
 %wrap_handle(StepVisual_FillAreaStyleColour)
 %wrap_handle(StepVisual_Invisibility)
-%wrap_handle(StepVisual_MarkerMember)
-%wrap_handle(StepVisual_NullStyleMember)
-%wrap_handle(StepVisual_PlanarExtent)
 %wrap_handle(StepVisual_PointStyle)
 %wrap_handle(StepVisual_PreDefinedItem)
 %wrap_handle(StepVisual_PresentationLayerAssignment)
 %wrap_handle(StepVisual_PresentationLayerUsage)
-%wrap_handle(StepVisual_PresentationRepresentation)
 %wrap_handle(StepVisual_PresentationSet)
 %wrap_handle(StepVisual_PresentationSize)
 %wrap_handle(StepVisual_PresentationStyleAssignment)
 %wrap_handle(StepVisual_PresentedItem)
 %wrap_handle(StepVisual_PresentedItemRepresentation)
-%wrap_handle(StepVisual_StyledItem)
 %wrap_handle(StepVisual_SurfaceSideStyle)
 %wrap_handle(StepVisual_SurfaceStyleBoundary)
 %wrap_handle(StepVisual_SurfaceStyleControlGrid)
@@ -225,87 +204,23 @@ StepVisual_tpLeft = StepVisual_TextPath.StepVisual_tpLeft
 %wrap_handle(StepVisual_SurfaceStyleSilhouette)
 %wrap_handle(StepVisual_SurfaceStyleTransparent)
 %wrap_handle(StepVisual_SurfaceStyleUsage)
-%wrap_handle(StepVisual_Template)
-%wrap_handle(StepVisual_TemplateInstance)
-%wrap_handle(StepVisual_TessellatedItem)
-%wrap_handle(StepVisual_TessellatedShapeRepresentation)
-%wrap_handle(StepVisual_TextLiteral)
 %wrap_handle(StepVisual_TextStyle)
 %wrap_handle(StepVisual_TextStyleForDefinedFont)
 %wrap_handle(StepVisual_ViewVolume)
-%wrap_handle(StepVisual_AnnotationOccurrence)
 %wrap_handle(StepVisual_BackgroundColour)
-%wrap_handle(StepVisual_CameraImage2dWithScale)
-%wrap_handle(StepVisual_CameraImage3dWithScale)
-%wrap_handle(StepVisual_CameraModelD2)
-%wrap_handle(StepVisual_CameraModelD3)
-%wrap_handle(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel)
 %wrap_handle(StepVisual_ColourSpecification)
-%wrap_handle(StepVisual_CompositeTextWithExtent)
 %wrap_handle(StepVisual_ContextDependentInvisibility)
-%wrap_handle(StepVisual_CoordinatesList)
-%wrap_handle(StepVisual_MechanicalDesignGeometricPresentationRepresentation)
-%wrap_handle(StepVisual_OverRidingStyledItem)
-%wrap_handle(StepVisual_PlanarBox)
 %wrap_handle(StepVisual_PreDefinedColour)
 %wrap_handle(StepVisual_PreDefinedCurveFont)
 %wrap_handle(StepVisual_PreDefinedTextFont)
-%wrap_handle(StepVisual_PresentationArea)
 %wrap_handle(StepVisual_PresentationStyleByContext)
-%wrap_handle(StepVisual_PresentationView)
-%wrap_handle(StepVisual_RepositionedTessellatedItem)
+%wrap_handle(StepVisual_SurfaceStyleReflectanceAmbientDiffuse)
 %wrap_handle(StepVisual_SurfaceStyleRenderingWithProperties)
-%wrap_handle(StepVisual_TessellatedAnnotationOccurrence)
-%wrap_handle(StepVisual_TessellatedCurveSet)
-%wrap_handle(StepVisual_TessellatedGeometricSet)
-%wrap_handle(StepVisual_TessellatedPointSet)
-%wrap_handle(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters)
-%wrap_handle(StepVisual_TessellatedShell)
-%wrap_handle(StepVisual_TessellatedSolid)
-%wrap_handle(StepVisual_TessellatedStructuredItem)
-%wrap_handle(StepVisual_TessellatedSurfaceSet)
-%wrap_handle(StepVisual_TessellatedWire)
 %wrap_handle(StepVisual_TextStyleWithBoxCharacteristics)
-%wrap_handle(StepVisual_AnnotationCurveOccurrence)
-%wrap_handle(StepVisual_AnnotationFillAreaOccurrence)
-%wrap_handle(StepVisual_AnnotationPlane)
-%wrap_handle(StepVisual_AnnotationTextOccurrence)
-%wrap_handle(StepVisual_CameraModelD3MultiClipping)
 %wrap_handle(StepVisual_ColourRgb)
-%wrap_handle(StepVisual_ComplexTriangulatedSurfaceSet)
-%wrap_handle(StepVisual_ContextDependentOverRidingStyledItem)
-%wrap_handle(StepVisual_DraughtingAnnotationOccurrence)
 %wrap_handle(StepVisual_DraughtingPreDefinedColour)
 %wrap_handle(StepVisual_DraughtingPreDefinedCurveFont)
-%wrap_handle(StepVisual_MechanicalDesignGeometricPresentationArea)
-%wrap_handle(StepVisual_RepositionedTessellatedGeometricSet)
-%wrap_handle(StepVisual_TessellatedEdge)
-%wrap_handle(StepVisual_TessellatedFace)
-%wrap_handle(StepVisual_TessellatedVertex)
-%wrap_handle(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem)
-%wrap_handle(StepVisual_ComplexTriangulatedFace)
-%wrap_handle(StepVisual_CubicBezierTessellatedEdge)
-%wrap_handle(StepVisual_CubicBezierTriangulatedFace)
-%wrap_handle(StepVisual_TessellatedConnectingEdge)
-%wrap_handle(StepVisual_TriangulatedFace)
-%wrap_handle(StepVisual_HArray1OfAnnotationPlaneElement)
-%wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
-%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
-%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
-%wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
-%wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
-%wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
-%wrap_handle(StepVisual_HArray1OfFillStyleSelect)
-%wrap_handle(StepVisual_HArray1OfInvisibleItem)
-%wrap_handle(StepVisual_HArray1OfLayeredItem)
-%wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
-%wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
-%wrap_handle(StepVisual_HArray1OfRenderingPropertiesSelect)
-%wrap_handle(StepVisual_HArray1OfStyleContextSelect)
-%wrap_handle(StepVisual_HArray1OfSurfaceStyleElementSelect)
-%wrap_handle(StepVisual_HArray1OfTessellatedEdgeOrVertex)
-%wrap_handle(StepVisual_HArray1OfTessellatedStructuredItem)
-%wrap_handle(StepVisual_HArray1OfTextOrCharacter)
+%wrap_handle(StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular)
 /* end handles declaration */
 
 /* templates */
@@ -357,16 +272,12 @@ Array1ExtendIter(StepVisual_SurfaceStyleElementSelect)
 %template(StepVisual_Array1OfTessellatedEdgeOrVertex) NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>;
 Array1ExtendIter(StepVisual_TessellatedEdgeOrVertex)
 
-%template(StepVisual_Array1OfTessellatedItem) NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>>;
-Array1ExtendIter(opencascade::handle<StepVisual_TessellatedItem>)
-
 %template(StepVisual_Array1OfTessellatedStructuredItem) NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>;
 Array1ExtendIter(opencascade::handle<StepVisual_TessellatedStructuredItem>)
 
 %template(StepVisual_Array1OfTextOrCharacter) NCollection_Array1<StepVisual_TextOrCharacter>;
 Array1ExtendIter(StepVisual_TextOrCharacter)
 
-%template(StepVisual_VectorOfHSequenceOfInteger) NCollection_Vector<opencascade::handle<TColStd_HSequenceOfInteger>>;
 /* end templates declaration */
 
 /* typedefs */
@@ -386,10 +297,26 @@ typedef NCollection_Array1<StepVisual_RenderingPropertiesSelect> StepVisual_Arra
 typedef NCollection_Array1<StepVisual_StyleContextSelect> StepVisual_Array1OfStyleContextSelect;
 typedef NCollection_Array1<StepVisual_SurfaceStyleElementSelect> StepVisual_Array1OfSurfaceStyleElementSelect;
 typedef NCollection_Array1<StepVisual_TessellatedEdgeOrVertex> StepVisual_Array1OfTessellatedEdgeOrVertex;
-typedef NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>> StepVisual_Array1OfTessellatedItem;
 typedef NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>> StepVisual_Array1OfTessellatedStructuredItem;
 typedef NCollection_Array1<StepVisual_TextOrCharacter> StepVisual_Array1OfTextOrCharacter;
-typedef NCollection_Vector<opencascade::handle<TColStd_HSequenceOfInteger>> StepVisual_VectorOfHSequenceOfInteger;
+typedef NCollection_HArray1<StepVisual_AnnotationPlaneElement> StepVisual_HArray1OfAnnotationPlaneElement;
+typedef NCollection_HArray1<StepVisual_BoxCharacteristicSelect> StepVisual_HArray1OfBoxCharacteristicSelect;
+typedef NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect> StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect;
+typedef NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect> StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>> StepVisual_HArray1OfCurveStyleFontPattern;
+typedef NCollection_HArray1<StepVisual_DirectionCountSelect> StepVisual_HArray1OfDirectionCountSelect;
+typedef NCollection_HArray1<StepVisual_DraughtingCalloutElement> StepVisual_HArray1OfDraughtingCalloutElement;
+typedef NCollection_HArray1<StepVisual_FillStyleSelect> StepVisual_HArray1OfFillStyleSelect;
+typedef NCollection_HArray1<StepVisual_InvisibleItem> StepVisual_HArray1OfInvisibleItem;
+typedef NCollection_HArray1<StepVisual_LayeredItem> StepVisual_HArray1OfLayeredItem;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>> StepVisual_HArray1OfPresentationStyleAssignment;
+typedef NCollection_HArray1<StepVisual_PresentationStyleSelect> StepVisual_HArray1OfPresentationStyleSelect;
+typedef NCollection_HArray1<StepVisual_RenderingPropertiesSelect> StepVisual_HArray1OfRenderingPropertiesSelect;
+typedef NCollection_HArray1<StepVisual_StyleContextSelect> StepVisual_HArray1OfStyleContextSelect;
+typedef NCollection_HArray1<StepVisual_SurfaceStyleElementSelect> StepVisual_HArray1OfSurfaceStyleElementSelect;
+typedef NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex> StepVisual_HArray1OfTessellatedEdgeOrVertex;
+typedef NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>> StepVisual_HArray1OfTessellatedStructuredItem;
+typedef NCollection_HArray1<StepVisual_TextOrCharacter> StepVisual_HArray1OfTextOrCharacter;
 /* end typedefs declaration */
 
 /**************************************
@@ -412,8 +339,6 @@ Returns a AnnotationFillArea.
 
 };
 
-
-%make_alias(StepVisual_AnnotationFillArea)
 
 %extend StepVisual_AnnotationFillArea {
 	%pythoncode {
@@ -440,7 +365,7 @@ Returns a AnnotationPlaneElement select type.
 		 StepVisual_AnnotationPlaneElement();
 
 		/****** StepVisual_AnnotationPlaneElement::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -455,7 +380,7 @@ Description
 -----------
 Recognizes a IdAttributeSelect Kind Entity that is: 1 -> DraughtingCallout 2 -> StyledItem 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_AnnotationPlaneElement::DraughtingCallout ******/
 		/****** md5 signature: dcafc9e5148472aaa32c6a7f0e12127f ******/
@@ -512,8 +437,6 @@ Returns a AnnotationText.
 
 };
 
-
-%make_alias(StepVisual_AnnotationText)
 
 %extend StepVisual_AnnotationText {
 	%pythoncode {
@@ -650,7 +573,7 @@ Returns a AreaOrView SelectType.
 		 StepVisual_AreaOrView();
 
 		/****** StepVisual_AreaOrView::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -665,7 +588,7 @@ Description
 -----------
 Recognizes a AreaOrView Kind Entity that is: 1 -> PresentationArea 2 -> PresentationView 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_AreaOrView::PresentationArea ******/
 		/****** md5 signature: 6adf2ef7fa0a7b503035224ca0f9247c ******/
@@ -721,25 +644,25 @@ No available documentation.
 		 StepVisual_BoxCharacteristicSelect();
 
 		/****** StepVisual_BoxCharacteristicSelect::RealValue ******/
-		/****** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ******/
+		/****** md5 signature: c2cf21cf42a875e7427474a09b5db0a4 ******/
 		%feature("compactdefaultargs") RealValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") RealValue;
-		Standard_Real RealValue();
+		double RealValue();
 
 		/****** StepVisual_BoxCharacteristicSelect::SetRealValue ******/
-		/****** md5 signature: b1a34c70efe46ae8de6ad173e999d614 ******/
+		/****** md5 signature: 7c1eb8b9c3ad2daac293953b68286a40 ******/
 		%feature("compactdefaultargs") SetRealValue;
 		%feature("autodoc", "
 Parameters
 ----------
-aValue: float
+aValue: double
 
 Return
 -------
@@ -749,10 +672,10 @@ Description
 -----------
 No available documentation.
 ") SetRealValue;
-		void SetRealValue(const Standard_Real aValue);
+		void SetRealValue(const double aValue);
 
 		/****** StepVisual_BoxCharacteristicSelect::SetTypeOfContent ******/
-		/****** md5 signature: d14a573f3748772e762e335529920c74 ******/
+		/****** md5 signature: 6dccb569e7f32c1b42f23d65ed13370d ******/
 		%feature("compactdefaultargs") SetTypeOfContent;
 		%feature("autodoc", "
 Parameters
@@ -767,10 +690,10 @@ Description
 -----------
 No available documentation.
 ") SetTypeOfContent;
-		void SetTypeOfContent(const Standard_Integer aType);
+		void SetTypeOfContent(const int aType);
 
 		/****** StepVisual_BoxCharacteristicSelect::TypeOfContent ******/
-		/****** md5 signature: ca265bcca49d9306f069cd5137aa4464 ******/
+		/****** md5 signature: 3acf67591629cab8025083131fc453b8 ******/
 		%feature("compactdefaultargs") TypeOfContent;
 		%feature("autodoc", "Return
 -------
@@ -780,7 +703,7 @@ Description
 -----------
 No available documentation.
 ") TypeOfContent;
-		Standard_Integer TypeOfContent();
+		int TypeOfContent();
 
 };
 
@@ -812,8 +735,6 @@ Returns a CameraImage.
 };
 
 
-%make_alias(StepVisual_CameraImage)
-
 %extend StepVisual_CameraImage {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -840,8 +761,6 @@ Returns a CameraModel.
 
 };
 
-
-%make_alias(StepVisual_CameraModel)
 
 %extend StepVisual_CameraModel {
 	%pythoncode {
@@ -881,7 +800,7 @@ returns Value as a CameraModelD3MultiClippingUnion (Null if another type).
 		opencascade::handle<StepVisual_CameraModelD3MultiClippingUnion> CameraModelD3MultiClippingUnion();
 
 		/****** StepVisual_CameraModelD3MultiClippingInterectionSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -896,7 +815,7 @@ Description
 -----------
 Recognizes a IdAttributeSelect Kind Entity that is: 1 -> Plane 2 -> CameraModelD3MultiClippingUnion 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_CameraModelD3MultiClippingInterectionSelect::Plane ******/
 		/****** md5 signature: ef9462bf5902509743365943aea2b64d ******/
@@ -939,13 +858,13 @@ Returns a StepVisual_CameraModelD3MultiClippingIntersection.
 		 StepVisual_CameraModelD3MultiClippingIntersection();
 
 		/****** StepVisual_CameraModelD3MultiClippingIntersection::Init ******/
-		/****** md5 signature: c7d69399b62c4f997e4ef95bf195487b ******/
+		/****** md5 signature: 1b24c4000586a9ec3f7b3a640110dd41 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
+theShapeClipping: NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect
 
 Return
 -------
@@ -955,15 +874,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect> > & theShapeClipping);
 
 		/****** StepVisual_CameraModelD3MultiClippingIntersection::SetShapeClipping ******/
-		/****** md5 signature: d3f138def09366b1d4de0425b5fa7872 ******/
+		/****** md5 signature: 187599a571177f4385040e3ae451bae8 ******/
 		%feature("compactdefaultargs") SetShapeClipping;
 		%feature("autodoc", "
 Parameters
 ----------
-theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
+theShapeClipping: NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect
 
 Return
 -------
@@ -973,25 +892,23 @@ Description
 -----------
 No available documentation.
 ") SetShapeClipping;
-		void SetShapeClipping(const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
+		void SetShapeClipping(const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect> > & theShapeClipping);
 
 		/****** StepVisual_CameraModelD3MultiClippingIntersection::ShapeClipping ******/
-		/****** md5 signature: 6eb5c9a377534fa0b6410bb68e41bb5b ******/
+		/****** md5 signature: ed107bc4601a5fc64b033b41b9c3a47c ******/
 		%feature("compactdefaultargs") ShapeClipping;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect>>
 
 Description
 -----------
 No available documentation.
 ") ShapeClipping;
-		const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> ShapeClipping();
+		const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect>> ShapeClipping();
 
 };
 
-
-%make_alias(StepVisual_CameraModelD3MultiClippingIntersection)
 
 %extend StepVisual_CameraModelD3MultiClippingIntersection {
 	%pythoncode {
@@ -1018,13 +935,13 @@ Returns a StepVisual_CameraModelD3MultiClippingUnion.
 		 StepVisual_CameraModelD3MultiClippingUnion();
 
 		/****** StepVisual_CameraModelD3MultiClippingUnion::Init ******/
-		/****** md5 signature: 11efd3fe0c5c4a223ffd91529793efcd ******/
+		/****** md5 signature: c16f9a0ec0b39ddc6b4d053e5c521bd9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
+theShapeClipping: NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect
 
 Return
 -------
@@ -1034,15 +951,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> & theShapeClipping);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect> > & theShapeClipping);
 
 		/****** StepVisual_CameraModelD3MultiClippingUnion::SetShapeClipping ******/
-		/****** md5 signature: 038c1c8ce5cdfba4e8c3a99cb3c5a7e9 ******/
+		/****** md5 signature: 469d258a2de2f76d5e0b3e8618989e9d ******/
 		%feature("compactdefaultargs") SetShapeClipping;
 		%feature("autodoc", "
 Parameters
 ----------
-theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect
+theShapeClipping: NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect
 
 Return
 -------
@@ -1052,25 +969,23 @@ Description
 -----------
 No available documentation.
 ") SetShapeClipping;
-		void SetShapeClipping(const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> & theShapeClipping);
+		void SetShapeClipping(const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect> > & theShapeClipping);
 
 		/****** StepVisual_CameraModelD3MultiClippingUnion::ShapeClipping ******/
-		/****** md5 signature: 66c073b815f6e452df319d197d092d8b ******/
+		/****** md5 signature: b30ae246e3c8bbf91002b985b4c31a57 ******/
 		%feature("compactdefaultargs") ShapeClipping;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect>>
 
 Description
 -----------
 No available documentation.
 ") ShapeClipping;
-		const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect> ShapeClipping();
+		const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingUnionSelect>> ShapeClipping();
 
 };
 
-
-%make_alias(StepVisual_CameraModelD3MultiClippingUnion)
 
 %extend StepVisual_CameraModelD3MultiClippingUnion {
 	%pythoncode {
@@ -1110,7 +1025,7 @@ returns Value as a CameraModelD3MultiClippingIntersection (Null if another type)
 		opencascade::handle<StepVisual_CameraModelD3MultiClippingIntersection> CameraModelD3MultiClippingIntersection();
 
 		/****** StepVisual_CameraModelD3MultiClippingUnionSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1125,7 +1040,7 @@ Description
 -----------
 Recognizes a IdAttributeSelect Kind Entity that is: 1 -> Plane 2 -> CameraModelD3MultiClippingIntersection 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_CameraModelD3MultiClippingUnionSelect::Plane ******/
 		/****** md5 signature: ef9462bf5902509743365943aea2b64d ******/
@@ -1169,8 +1084,6 @@ Returns a CameraUsage.
 
 };
 
-
-%make_alias(StepVisual_CameraUsage)
 
 %extend StepVisual_CameraUsage {
 	%pythoncode {
@@ -1226,20 +1139,20 @@ Returns a CompositeText.
 		 StepVisual_CompositeText();
 
 		/****** StepVisual_CompositeText::CollectedText ******/
-		/****** md5 signature: 2cd390c56cca036e0603361f0f50dab8 ******/
+		/****** md5 signature: 1369f3cb1bcc8ec6ac571a767d0d6cea ******/
 		%feature("compactdefaultargs") CollectedText;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfTextOrCharacter>
+opencascade::handle<NCollection_HArray1<StepVisual_TextOrCharacter>>
 
 Description
 -----------
 No available documentation.
 ") CollectedText;
-		opencascade::handle<StepVisual_HArray1OfTextOrCharacter> CollectedText();
+		opencascade::handle<NCollection_HArray1<StepVisual_TextOrCharacter>> CollectedText();
 
 		/****** StepVisual_CompositeText::CollectedTextValue ******/
-		/****** md5 signature: 570a73e4912d499935e33e1e84bddad8 ******/
+		/****** md5 signature: cbe4adc2316d59c48f0199ec2a1e2866 ******/
 		%feature("compactdefaultargs") CollectedTextValue;
 		%feature("autodoc", "
 Parameters
@@ -1254,16 +1167,16 @@ Description
 -----------
 No available documentation.
 ") CollectedTextValue;
-		StepVisual_TextOrCharacter CollectedTextValue(const Standard_Integer num);
+		StepVisual_TextOrCharacter CollectedTextValue(const int num);
 
 		/****** StepVisual_CompositeText::Init ******/
-		/****** md5 signature: 0ac419a47d5af14d5ffe09a081812e1c ******/
+		/****** md5 signature: 9ff10250eae04e5256d63dfbc58e45e2 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aCollectedText: StepVisual_HArray1OfTextOrCharacter
+aCollectedText: NCollection_HArray1<StepVisual_TextOrCharacter
 
 Return
 -------
@@ -1273,10 +1186,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepVisual_TextOrCharacter> > & aCollectedText);
 
 		/****** StepVisual_CompositeText::NbCollectedText ******/
-		/****** md5 signature: d17d775367ed59d4fe52e7d92becf9b2 ******/
+		/****** md5 signature: 06e0a83b13e3959ff85d9e254cbe33cb ******/
 		%feature("compactdefaultargs") NbCollectedText;
 		%feature("autodoc", "Return
 -------
@@ -1286,15 +1199,15 @@ Description
 -----------
 No available documentation.
 ") NbCollectedText;
-		Standard_Integer NbCollectedText();
+		int NbCollectedText();
 
 		/****** StepVisual_CompositeText::SetCollectedText ******/
-		/****** md5 signature: af98ee77e57354d975664705fcbdf314 ******/
+		/****** md5 signature: 6491a849cdf3cfa79ec65d7af2f4a903 ******/
 		%feature("compactdefaultargs") SetCollectedText;
 		%feature("autodoc", "
 Parameters
 ----------
-aCollectedText: StepVisual_HArray1OfTextOrCharacter
+aCollectedText: NCollection_HArray1<StepVisual_TextOrCharacter
 
 Return
 -------
@@ -1304,12 +1217,10 @@ Description
 -----------
 No available documentation.
 ") SetCollectedText;
-		void SetCollectedText(const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText);
+		void SetCollectedText(const opencascade::handle<NCollection_HArray1<StepVisual_TextOrCharacter> > & aCollectedText);
 
 };
 
-
-%make_alias(StepVisual_CompositeText)
 
 %extend StepVisual_CompositeText {
 	%pythoncode {
@@ -1510,13 +1421,13 @@ Returns a CurveStyleFont.
 		 StepVisual_CurveStyleFont();
 
 		/****** StepVisual_CurveStyleFont::Init ******/
-		/****** md5 signature: 56be91c2265461529bfbe169d722039b ******/
+		/****** md5 signature: 09da27aa6d757260cf0906e10ba87511 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aPatternList: StepVisual_HArray1OfCurveStyleFontPattern
+aPatternList: NCollection_HArray1<
 
 Return
 -------
@@ -1526,7 +1437,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> & aPatternList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern> > > & aPatternList);
 
 		/****** StepVisual_CurveStyleFont::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -1542,7 +1453,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepVisual_CurveStyleFont::NbPatternList ******/
-		/****** md5 signature: b1b6eda1040dd7056f2e6585591bdf68 ******/
+		/****** md5 signature: 6d2ffd63162b9c3af74c3aa137466b2c ******/
 		%feature("compactdefaultargs") NbPatternList;
 		%feature("autodoc", "Return
 -------
@@ -1552,23 +1463,23 @@ Description
 -----------
 No available documentation.
 ") NbPatternList;
-		Standard_Integer NbPatternList();
+		int NbPatternList();
 
 		/****** StepVisual_CurveStyleFont::PatternList ******/
-		/****** md5 signature: 4c6d4f82ee2bff32944dea7e0d3c469e ******/
+		/****** md5 signature: b17b4a714f499f8fbfb10fe14e2f1287 ******/
 		%feature("compactdefaultargs") PatternList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>>
 
 Description
 -----------
 No available documentation.
 ") PatternList;
-		opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> PatternList();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern>>> PatternList();
 
 		/****** StepVisual_CurveStyleFont::PatternListValue ******/
-		/****** md5 signature: 4ebb3c7b7a8aeb6b8448d1e548314593 ******/
+		/****** md5 signature: 662e671dfee313d293b92725cd43e3eb ******/
 		%feature("compactdefaultargs") PatternListValue;
 		%feature("autodoc", "
 Parameters
@@ -1583,7 +1494,7 @@ Description
 -----------
 No available documentation.
 ") PatternListValue;
-		opencascade::handle<StepVisual_CurveStyleFontPattern> PatternListValue(const Standard_Integer num);
+		opencascade::handle<StepVisual_CurveStyleFontPattern> PatternListValue(const int num);
 
 		/****** StepVisual_CurveStyleFont::SetName ******/
 		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
@@ -1604,12 +1515,12 @@ No available documentation.
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****** StepVisual_CurveStyleFont::SetPatternList ******/
-		/****** md5 signature: 2bf4ac68cd54c522f51dcf81a67a6427 ******/
+		/****** md5 signature: ca4b7868af1c38b3bb140342722887f7 ******/
 		%feature("compactdefaultargs") SetPatternList;
 		%feature("autodoc", "
 Parameters
 ----------
-aPatternList: StepVisual_HArray1OfCurveStyleFontPattern
+aPatternList: NCollection_HArray1<
 
 Return
 -------
@@ -1619,7 +1530,7 @@ Description
 -----------
 No available documentation.
 ") SetPatternList;
-		void SetPatternList(const opencascade::handle<StepVisual_HArray1OfCurveStyleFontPattern> & aPatternList);
+		void SetPatternList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_CurveStyleFontPattern> > > & aPatternList);
 
 };
 
@@ -1651,13 +1562,13 @@ Returns a CurveStyleFontPattern.
 		 StepVisual_CurveStyleFontPattern();
 
 		/****** StepVisual_CurveStyleFontPattern::Init ******/
-		/****** md5 signature: da8b86f284cc6745833744e819a928be ******/
+		/****** md5 signature: 073c8db0e26cf98da5ded6bb9afe215e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aVisibleSegmentLength: float
-aInvisibleSegmentLength: float
+aVisibleSegmentLength: double
+aInvisibleSegmentLength: double
 
 Return
 -------
@@ -1667,28 +1578,28 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Real aVisibleSegmentLength, const Standard_Real aInvisibleSegmentLength);
+		void Init(const double aVisibleSegmentLength, const double aInvisibleSegmentLength);
 
 		/****** StepVisual_CurveStyleFontPattern::InvisibleSegmentLength ******/
-		/****** md5 signature: 8b295afdd729873b7a3167469c7d7c62 ******/
+		/****** md5 signature: 45d7978d0608431fe2f81fa848f1957c ******/
 		%feature("compactdefaultargs") InvisibleSegmentLength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") InvisibleSegmentLength;
-		Standard_Real InvisibleSegmentLength();
+		double InvisibleSegmentLength();
 
 		/****** StepVisual_CurveStyleFontPattern::SetInvisibleSegmentLength ******/
-		/****** md5 signature: 63e7a7d60db9ca0863c82f4a0cc3cf5d ******/
+		/****** md5 signature: 84676b6be3fafc1c7a9d5c0637e9f875 ******/
 		%feature("compactdefaultargs") SetInvisibleSegmentLength;
 		%feature("autodoc", "
 Parameters
 ----------
-aInvisibleSegmentLength: float
+aInvisibleSegmentLength: double
 
 Return
 -------
@@ -1698,15 +1609,15 @@ Description
 -----------
 No available documentation.
 ") SetInvisibleSegmentLength;
-		void SetInvisibleSegmentLength(const Standard_Real aInvisibleSegmentLength);
+		void SetInvisibleSegmentLength(const double aInvisibleSegmentLength);
 
 		/****** StepVisual_CurveStyleFontPattern::SetVisibleSegmentLength ******/
-		/****** md5 signature: 7630cd0d6d3230359bbffdfa368b56aa ******/
+		/****** md5 signature: c708a53718ceab33e76bb66afbc65e47 ******/
 		%feature("compactdefaultargs") SetVisibleSegmentLength;
 		%feature("autodoc", "
 Parameters
 ----------
-aVisibleSegmentLength: float
+aVisibleSegmentLength: double
 
 Return
 -------
@@ -1716,20 +1627,20 @@ Description
 -----------
 No available documentation.
 ") SetVisibleSegmentLength;
-		void SetVisibleSegmentLength(const Standard_Real aVisibleSegmentLength);
+		void SetVisibleSegmentLength(const double aVisibleSegmentLength);
 
 		/****** StepVisual_CurveStyleFontPattern::VisibleSegmentLength ******/
-		/****** md5 signature: bb7aea0f1cc06928a599d62aabfdf1bb ******/
+		/****** md5 signature: e8d0a0bc4969c373253f2e649b005d40 ******/
 		%feature("compactdefaultargs") VisibleSegmentLength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VisibleSegmentLength;
-		Standard_Real VisibleSegmentLength();
+		double VisibleSegmentLength();
 
 };
 
@@ -1761,7 +1672,7 @@ Returns a CurveStyleFontSelect SelectType.
 		 StepVisual_CurveStyleFontSelect();
 
 		/****** StepVisual_CurveStyleFontSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1776,7 +1687,7 @@ Description
 -----------
 Recognizes a CurveStyleFontSelect Kind Entity that is: 1 -> CurveStyleFont 2 -> PreDefinedCurveFont 3 -> ExternallyDefinedCurveFont 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_CurveStyleFontSelect::CurveStyleFont ******/
 		/****** md5 signature: eeccc82a951dd63f3e36805c7a195791 ******/
@@ -1845,7 +1756,7 @@ No available documentation.
 		 StepVisual_DirectionCountSelect();
 
 		/****** StepVisual_DirectionCountSelect::SetTypeOfContent ******/
-		/****** md5 signature: 64ebf9bba16f3a3a03b5db3858660432 ******/
+		/****** md5 signature: 94451abec2f58d721da8db457e5a815f ******/
 		%feature("compactdefaultargs") SetTypeOfContent;
 		%feature("autodoc", "
 Parameters
@@ -1860,10 +1771,10 @@ Description
 -----------
 No available documentation.
 ") SetTypeOfContent;
-		void SetTypeOfContent(const Standard_Integer aTypeOfContent);
+		void SetTypeOfContent(const int aTypeOfContent);
 
 		/****** StepVisual_DirectionCountSelect::SetUDirectionCount ******/
-		/****** md5 signature: d2b37605e30f9f3a164437046c90b643 ******/
+		/****** md5 signature: 24def81778c523fbe8af22ed90cca532 ******/
 		%feature("compactdefaultargs") SetUDirectionCount;
 		%feature("autodoc", "
 Parameters
@@ -1878,10 +1789,10 @@ Description
 -----------
 No available documentation.
 ") SetUDirectionCount;
-		void SetUDirectionCount(const Standard_Integer aUDirectionCount);
+		void SetUDirectionCount(const int aUDirectionCount);
 
 		/****** StepVisual_DirectionCountSelect::SetVDirectionCount ******/
-		/****** md5 signature: 270f7ae76ba877c54b0a67a19a996e9d ******/
+		/****** md5 signature: 9a2c203e4e9b4c31b5105661f98b2c19 ******/
 		%feature("compactdefaultargs") SetVDirectionCount;
 		%feature("autodoc", "
 Parameters
@@ -1896,10 +1807,10 @@ Description
 -----------
 No available documentation.
 ") SetVDirectionCount;
-		void SetVDirectionCount(const Standard_Integer aUDirectionCount);
+		void SetVDirectionCount(const int aUDirectionCount);
 
 		/****** StepVisual_DirectionCountSelect::TypeOfContent ******/
-		/****** md5 signature: ca265bcca49d9306f069cd5137aa4464 ******/
+		/****** md5 signature: 3acf67591629cab8025083131fc453b8 ******/
 		%feature("compactdefaultargs") TypeOfContent;
 		%feature("autodoc", "Return
 -------
@@ -1909,10 +1820,10 @@ Description
 -----------
 No available documentation.
 ") TypeOfContent;
-		Standard_Integer TypeOfContent();
+		int TypeOfContent();
 
 		/****** StepVisual_DirectionCountSelect::UDirectionCount ******/
-		/****** md5 signature: e971de5fe8c36b62a342c36a1aaabe76 ******/
+		/****** md5 signature: f6970bc987da266cf5a59de9a227b2df ******/
 		%feature("compactdefaultargs") UDirectionCount;
 		%feature("autodoc", "Return
 -------
@@ -1922,10 +1833,10 @@ Description
 -----------
 No available documentation.
 ") UDirectionCount;
-		Standard_Integer UDirectionCount();
+		int UDirectionCount();
 
 		/****** StepVisual_DirectionCountSelect::VDirectionCount ******/
-		/****** md5 signature: 1a2bb477a938673186e5eca69c3b0579 ******/
+		/****** md5 signature: 77e93d945004567262268732a761c4bd ******/
 		%feature("compactdefaultargs") VDirectionCount;
 		%feature("autodoc", "Return
 -------
@@ -1935,7 +1846,7 @@ Description
 -----------
 No available documentation.
 ") VDirectionCount;
-		Standard_Integer VDirectionCount();
+		int VDirectionCount();
 
 };
 
@@ -1965,20 +1876,20 @@ Returns a DraughtingCallout.
 		 StepVisual_DraughtingCallout();
 
 		/****** StepVisual_DraughtingCallout::Contents ******/
-		/****** md5 signature: 095947082d889e7c32de10dc5bbd03d1 ******/
+		/****** md5 signature: 50011107fc6f75ebd8bdb73cd9eee7af ******/
 		%feature("compactdefaultargs") Contents;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement>
+opencascade::handle<NCollection_HArray1<StepVisual_DraughtingCalloutElement>>
 
 Description
 -----------
 Returns field Contents.
 ") Contents;
-		opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> Contents();
+		opencascade::handle<NCollection_HArray1<StepVisual_DraughtingCalloutElement>> Contents();
 
 		/****** StepVisual_DraughtingCallout::ContentsValue ******/
-		/****** md5 signature: e5e1f2450ca3a5a2db96d1c0d164d96f ******/
+		/****** md5 signature: 4ee2f7c50d528d51ed38b7d58a246163 ******/
 		%feature("compactdefaultargs") ContentsValue;
 		%feature("autodoc", "
 Parameters
@@ -1993,16 +1904,16 @@ Description
 -----------
 Returns Contents with the given number.
 ") ContentsValue;
-		StepVisual_DraughtingCalloutElement ContentsValue(const Standard_Integer theNum);
+		StepVisual_DraughtingCalloutElement ContentsValue(const int theNum);
 
 		/****** StepVisual_DraughtingCallout::Init ******/
-		/****** md5 signature: 0f3491ec3799c4002589207be16d6de9 ******/
+		/****** md5 signature: 3ee8526a3d9c176dbec7931fa199baea ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theContents: StepVisual_HArray1OfDraughtingCalloutElement
+theContents: NCollection_HArray1<StepVisual_DraughtingCalloutElement
 
 Return
 -------
@@ -2012,10 +1923,10 @@ Description
 -----------
 Init.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<StepVisual_DraughtingCalloutElement> > & theContents);
 
 		/****** StepVisual_DraughtingCallout::NbContents ******/
-		/****** md5 signature: 648b0dcfd621b001a960425b98fd0875 ******/
+		/****** md5 signature: 5d439066b3851b8c25c15c9ac771bf1f ******/
 		%feature("compactdefaultargs") NbContents;
 		%feature("autodoc", "Return
 -------
@@ -2025,15 +1936,15 @@ Description
 -----------
 Returns number of Contents.
 ") NbContents;
-		Standard_Integer NbContents();
+		int NbContents();
 
 		/****** StepVisual_DraughtingCallout::SetContents ******/
-		/****** md5 signature: a627aa9980b13436d86c6b1751ff16c7 ******/
+		/****** md5 signature: 6e5b0d2927d1502b9b0011d5e80a3541 ******/
 		%feature("compactdefaultargs") SetContents;
 		%feature("autodoc", "
 Parameters
 ----------
-theContents: StepVisual_HArray1OfDraughtingCalloutElement
+theContents: NCollection_HArray1<StepVisual_DraughtingCalloutElement
 
 Return
 -------
@@ -2043,10 +1954,10 @@ Description
 -----------
 Set field Contents.
 ") SetContents;
-		void SetContents(const opencascade::handle<StepVisual_HArray1OfDraughtingCalloutElement> & theContents);
+		void SetContents(const opencascade::handle<NCollection_HArray1<StepVisual_DraughtingCalloutElement> > & theContents);
 
 		/****** StepVisual_DraughtingCallout::SetContentsValue ******/
-		/****** md5 signature: 182606d6bc94b4b624f4ec4bba91a2ce ******/
+		/****** md5 signature: a73860735bb453a5a6cd5c78af273b7d ******/
 		%feature("compactdefaultargs") SetContentsValue;
 		%feature("autodoc", "
 Parameters
@@ -2062,12 +1973,10 @@ Description
 -----------
 Sets Contents with given number.
 ") SetContentsValue;
-		void SetContentsValue(const Standard_Integer theNum, const StepVisual_DraughtingCalloutElement & theItem);
+		void SetContentsValue(const int theNum, const StepVisual_DraughtingCalloutElement & theItem);
 
 };
 
-
-%make_alias(StepVisual_DraughtingCallout)
 
 %extend StepVisual_DraughtingCallout {
 	%pythoncode {
@@ -2133,7 +2042,7 @@ returns Value as a AnnotationTextOccurrence.
 		opencascade::handle<StepVisual_AnnotationTextOccurrence> AnnotationTextOccurrence();
 
 		/****** StepVisual_DraughtingCalloutElement::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2148,7 +2057,7 @@ Description
 -----------
 Recognizes a IdAttributeSelect Kind Entity that is: 1 -> AnnotationCurveOccurrence 2 -> AnnotationTextOccurrence 3 -> TessellatedAnnotationOccurrence 4 -> AnnotationFillAreaOccurrence 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_DraughtingCalloutElement::TessellatedAnnotationOccurrence ******/
 		/****** md5 signature: 9a51ea8427317a0230ff1ad6f1ec5743 ******/
@@ -2193,8 +2102,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepVisual_DraughtingModel)
-
 %extend StepVisual_DraughtingModel {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2220,7 +2127,7 @@ Empty constructor.
 		 StepVisual_EdgeOrCurve();
 
 		/****** StepVisual_EdgeOrCurve::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2235,7 +2142,7 @@ Description
 -----------
 Recognizes a kind of EdgeOrCurve select type -- 1 -> Curve -- 2 -> Edge.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_EdgeOrCurve::Curve ******/
 		/****** md5 signature: 29742eb86c60e95cfe724318fdd485f7 ******/
@@ -2293,8 +2200,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepVisual_ExternallyDefinedCurveFont)
-
 %extend StepVisual_ExternallyDefinedCurveFont {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2322,8 +2227,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepVisual_ExternallyDefinedTextFont)
-
 %extend StepVisual_ExternallyDefinedTextFont {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2349,7 +2252,7 @@ Empty constructor.
 		 StepVisual_FaceOrSurface();
 
 		/****** StepVisual_FaceOrSurface::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2364,7 +2267,7 @@ Description
 -----------
 Recognizes a kind of FaceOrSurface select type -- 1 -> Face -- 2 -> Surface.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_FaceOrSurface::Face ******/
 		/****** md5 signature: cb3fb10fb42f13714d2b79863e6a19e2 ******/
@@ -2420,20 +2323,20 @@ Returns a FillAreaStyle.
 		 StepVisual_FillAreaStyle();
 
 		/****** StepVisual_FillAreaStyle::FillStyles ******/
-		/****** md5 signature: bfc36d830b15b08a7d0b1384ee4ccc34 ******/
+		/****** md5 signature: f035ab77cbc830f87524fad58b173e22 ******/
 		%feature("compactdefaultargs") FillStyles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfFillStyleSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_FillStyleSelect>>
 
 Description
 -----------
 No available documentation.
 ") FillStyles;
-		opencascade::handle<StepVisual_HArray1OfFillStyleSelect> FillStyles();
+		opencascade::handle<NCollection_HArray1<StepVisual_FillStyleSelect>> FillStyles();
 
 		/****** StepVisual_FillAreaStyle::FillStylesValue ******/
-		/****** md5 signature: 72fdc401b454ca337f6dbd61f7cc768e ******/
+		/****** md5 signature: a6f877fbcaaca9a027b1cd9dc0682556 ******/
 		%feature("compactdefaultargs") FillStylesValue;
 		%feature("autodoc", "
 Parameters
@@ -2448,16 +2351,16 @@ Description
 -----------
 No available documentation.
 ") FillStylesValue;
-		StepVisual_FillStyleSelect FillStylesValue(const Standard_Integer num);
+		StepVisual_FillStyleSelect FillStylesValue(const int num);
 
 		/****** StepVisual_FillAreaStyle::Init ******/
-		/****** md5 signature: b122c0a70ff57a17efa8592a47047cc2 ******/
+		/****** md5 signature: a22d8eadc9b879d752d79ba6677a3b29 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aFillStyles: StepVisual_HArray1OfFillStyleSelect
+aFillStyles: NCollection_HArray1<StepVisual_FillStyleSelect
 
 Return
 -------
@@ -2467,7 +2370,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfFillStyleSelect> & aFillStyles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepVisual_FillStyleSelect> > & aFillStyles);
 
 		/****** StepVisual_FillAreaStyle::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -2483,7 +2386,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepVisual_FillAreaStyle::NbFillStyles ******/
-		/****** md5 signature: abf777e4c20d44bb00c07d1ac5743b9b ******/
+		/****** md5 signature: c479e3ee4978bd76866b654ca3e31ea4 ******/
 		%feature("compactdefaultargs") NbFillStyles;
 		%feature("autodoc", "Return
 -------
@@ -2493,15 +2396,15 @@ Description
 -----------
 No available documentation.
 ") NbFillStyles;
-		Standard_Integer NbFillStyles();
+		int NbFillStyles();
 
 		/****** StepVisual_FillAreaStyle::SetFillStyles ******/
-		/****** md5 signature: 88bc4d07eadb53c25317d10fd2c1f7af ******/
+		/****** md5 signature: 1af9b9b65b3bb4e68c1228b6cfc97917 ******/
 		%feature("compactdefaultargs") SetFillStyles;
 		%feature("autodoc", "
 Parameters
 ----------
-aFillStyles: StepVisual_HArray1OfFillStyleSelect
+aFillStyles: NCollection_HArray1<StepVisual_FillStyleSelect
 
 Return
 -------
@@ -2511,7 +2414,7 @@ Description
 -----------
 No available documentation.
 ") SetFillStyles;
-		void SetFillStyles(const opencascade::handle<StepVisual_HArray1OfFillStyleSelect> & aFillStyles);
+		void SetFillStyles(const opencascade::handle<NCollection_HArray1<StepVisual_FillStyleSelect> > & aFillStyles);
 
 		/****** StepVisual_FillAreaStyle::SetName ******/
 		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
@@ -2671,7 +2574,7 @@ Returns a FillStyleSelect SelectType.
 		 StepVisual_FillStyleSelect();
 
 		/****** StepVisual_FillStyleSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2686,7 +2589,7 @@ Description
 -----------
 Recognizes a FillStyleSelect Kind Entity that is: 1 -> FillAreaStyleColour 2 -> ExternallyDefinedTileStyle 3 -> FillAreaStyleTiles 4 -> ExternallyDefinedHatchStyle 5 -> FillAreaStyleHatching 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_FillStyleSelect::FillAreaStyleColour ******/
 		/****** md5 signature: e3faf68b401a2aaeb9697abe8bd0a44e ******/
@@ -2729,7 +2632,7 @@ Returns a FontSelect SelectType.
 		 StepVisual_FontSelect();
 
 		/****** StepVisual_FontSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2744,7 +2647,7 @@ Description
 -----------
 Recognizes a FontSelect Kind Entity that is: 1 -> PreDefinedTextFont 2 -> ExternallyDefinedTextFont 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_FontSelect::ExternallyDefinedTextFont ******/
 		/****** md5 signature: dc1f9c851d899996d490564ecb340dfd ******/
@@ -2800,12 +2703,12 @@ Returns a Invisibility.
 		 StepVisual_Invisibility();
 
 		/****** StepVisual_Invisibility::Init ******/
-		/****** md5 signature: 43418f7b6dedd792034c03b90ac07989 ******/
+		/****** md5 signature: ae8bca62fd28c7ec531123dda3302b56 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aInvisibleItems: StepVisual_HArray1OfInvisibleItem
+aInvisibleItems: NCollection_HArray1<StepVisual_InvisibleItem
 
 Return
 -------
@@ -2815,23 +2718,23 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems);
+		void Init(const opencascade::handle<NCollection_HArray1<StepVisual_InvisibleItem> > & aInvisibleItems);
 
 		/****** StepVisual_Invisibility::InvisibleItems ******/
-		/****** md5 signature: be820ab6c1eeb1d37e5a217109d55712 ******/
+		/****** md5 signature: 11df5d413c1748b0be03ef3cac1a2672 ******/
 		%feature("compactdefaultargs") InvisibleItems;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfInvisibleItem>
+opencascade::handle<NCollection_HArray1<StepVisual_InvisibleItem>>
 
 Description
 -----------
 No available documentation.
 ") InvisibleItems;
-		opencascade::handle<StepVisual_HArray1OfInvisibleItem> InvisibleItems();
+		opencascade::handle<NCollection_HArray1<StepVisual_InvisibleItem>> InvisibleItems();
 
 		/****** StepVisual_Invisibility::InvisibleItemsValue ******/
-		/****** md5 signature: a0f0f2c308f4bcad141aef8e2da622e0 ******/
+		/****** md5 signature: 7d0bd621e8f8c6d3d8106373d000c342 ******/
 		%feature("compactdefaultargs") InvisibleItemsValue;
 		%feature("autodoc", "
 Parameters
@@ -2846,10 +2749,10 @@ Description
 -----------
 No available documentation.
 ") InvisibleItemsValue;
-		StepVisual_InvisibleItem InvisibleItemsValue(const Standard_Integer num);
+		StepVisual_InvisibleItem InvisibleItemsValue(const int num);
 
 		/****** StepVisual_Invisibility::NbInvisibleItems ******/
-		/****** md5 signature: 17dadfd787033a03c16e43aa43fb9e42 ******/
+		/****** md5 signature: bc9ab10935aff5c9ab6793f8b36838c0 ******/
 		%feature("compactdefaultargs") NbInvisibleItems;
 		%feature("autodoc", "Return
 -------
@@ -2859,15 +2762,15 @@ Description
 -----------
 No available documentation.
 ") NbInvisibleItems;
-		Standard_Integer NbInvisibleItems();
+		int NbInvisibleItems();
 
 		/****** StepVisual_Invisibility::SetInvisibleItems ******/
-		/****** md5 signature: 38b0c0c6a390652a9dbe483c166b24e3 ******/
+		/****** md5 signature: 60551ccc80d801e8737089646bc4a496 ******/
 		%feature("compactdefaultargs") SetInvisibleItems;
 		%feature("autodoc", "
 Parameters
 ----------
-aInvisibleItems: StepVisual_HArray1OfInvisibleItem
+aInvisibleItems: NCollection_HArray1<StepVisual_InvisibleItem
 
 Return
 -------
@@ -2877,7 +2780,7 @@ Description
 -----------
 No available documentation.
 ") SetInvisibleItems;
-		void SetInvisibleItems(const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems);
+		void SetInvisibleItems(const opencascade::handle<NCollection_HArray1<StepVisual_InvisibleItem> > & aInvisibleItems);
 
 };
 
@@ -2909,7 +2812,7 @@ Returns a InvisibilityContext SelectType.
 		 StepVisual_InvisibilityContext();
 
 		/****** StepVisual_InvisibilityContext::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2924,7 +2827,7 @@ Description
 -----------
 Recognizes a InvisibilityContext Kind Entity that is: 1 -> PresentationRepresentation 2 -> PresentationSet 2 -> DraughtingModel 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_InvisibilityContext::DraughtingModel ******/
 		/****** md5 signature: 375dc663ce6735b6fbc38731ef539d11 ******/
@@ -2993,7 +2896,7 @@ Returns a InvisibleItem SelectType.
 		 StepVisual_InvisibleItem();
 
 		/****** StepVisual_InvisibleItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3008,7 +2911,7 @@ Description
 -----------
 Recognizes a InvisibleItem Kind Entity that is: 1 -> StyledItem 2 -> PresentationLayerAssignment 3 -> PresentationRepresentation 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_InvisibleItem::PresentationLayerAssignment ******/
 		/****** md5 signature: 49c7f239f0489b439f796bd73a3c191b ******/
@@ -3077,7 +2980,7 @@ Returns a LayeredItem SelectType.
 		 StepVisual_LayeredItem();
 
 		/****** StepVisual_LayeredItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3092,7 +2995,7 @@ Description
 -----------
 Recognizes a LayeredItem Kind Entity that is: 1 -> PresentationRepresentation 2 -> RepresentationItem 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_LayeredItem::PresentationRepresentation ******/
 		/****** md5 signature: cc6c70dd495b260c6d02169df44fd1e5 ******/
@@ -3148,20 +3051,20 @@ No available documentation.
 		 StepVisual_MarkerMember();
 
 		/****** StepVisual_MarkerMember::EnumText ******/
-		/****** md5 signature: a63e2e811ad86b44e1eb67e1ce00ea65 ******/
+		/****** md5 signature: 87fbaffd80c8fa4d76c26544ce1197f7 ******/
 		%feature("compactdefaultargs") EnumText;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") EnumText;
-		virtual Standard_CString EnumText();
+		const char * EnumText();
 
 		/****** StepVisual_MarkerMember::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -3171,29 +3074,29 @@ Description
 -----------
 No available documentation.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepVisual_MarkerMember::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepVisual_MarkerMember::SetEnumText ******/
-		/****** md5 signature: 120d4c122fb5eaba7d84896e45beec24 ******/
+		/****** md5 signature: ff167410ab2a2f7b248146090132a718 ******/
 		%feature("compactdefaultargs") SetEnumText;
 		%feature("autodoc", "
 Parameters
 ----------
 val: int
-text: str
+text: char *
 
 Return
 -------
@@ -3203,15 +3106,15 @@ Description
 -----------
 No available documentation.
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer val, Standard_CString text);
+		virtual void SetEnumText(const int val, const char * const text);
 
 		/****** StepVisual_MarkerMember::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3221,7 +3124,7 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 		/****** StepVisual_MarkerMember::SetValue ******/
 		/****** md5 signature: e50f72140ef69e3beed4121f92905c6a ******/
@@ -3257,8 +3160,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_MarkerMember)
-
 %extend StepVisual_MarkerMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3284,7 +3185,7 @@ Returns a MarkerSelect SelectType.
 		 StepVisual_MarkerSelect();
 
 		/****** StepVisual_MarkerSelect::CaseMem ******/
-		/****** md5 signature: 9b67f0d9aae1302e7b91faea7b14b6d6 ******/
+		/****** md5 signature: 37c055b5b19d1e0f29bc55a1b120999a ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -3299,10 +3200,10 @@ Description
 -----------
 Returns 1 for a SelectMember enum, named MARKER_TYPE.
 ") CaseMem;
-		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & sm);
+		int CaseMem(const opencascade::handle<StepData_SelectMember> & sm);
 
 		/****** StepVisual_MarkerSelect::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3317,7 +3218,7 @@ Description
 -----------
 Recognizes a MarkerSelect Kind Entity that is: 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_MarkerSelect::MarkerMember ******/
 		/****** md5 signature: 904b592dc010a92e404a5231a11e3db0 ******/
@@ -3333,7 +3234,7 @@ Gives access to the MarkerMember in order to get/set its value.
 		opencascade::handle<StepVisual_MarkerMember> MarkerMember();
 
 		/****** StepVisual_MarkerSelect::NewMember ******/
-		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
+		/****** md5 signature: 4dce57062553ca704dad3d58f4286daa ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -3343,7 +3244,7 @@ Description
 -----------
 Returns a new MarkerMember.
 ") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember();
+		opencascade::handle<StepData_SelectMember> NewMember();
 
 };
 
@@ -3373,20 +3274,20 @@ No available documentation.
 		 StepVisual_NullStyleMember();
 
 		/****** StepVisual_NullStyleMember::EnumText ******/
-		/****** md5 signature: a63e2e811ad86b44e1eb67e1ce00ea65 ******/
+		/****** md5 signature: 87fbaffd80c8fa4d76c26544ce1197f7 ******/
 		%feature("compactdefaultargs") EnumText;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") EnumText;
-		virtual Standard_CString EnumText();
+		const char * EnumText();
 
 		/****** StepVisual_NullStyleMember::HasName ******/
-		/****** md5 signature: 454c871a85ff9e9d126353d7d8ebe205 ******/
+		/****** md5 signature: bd4b315f6f18a622c3bb84e9a6a133ce ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -3396,10 +3297,10 @@ Description
 -----------
 No available documentation.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepVisual_NullStyleMember::Kind ******/
-		/****** md5 signature: 68423d7a619b16473db8e5cece0b7d32 ******/
+		/****** md5 signature: 42ae9b06920f935350eb38434723dded ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -3409,29 +3310,29 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		Standard_Integer Kind();
+		int Kind();
 
 		/****** StepVisual_NullStyleMember::Name ******/
-		/****** md5 signature: 06f88ef4dbb86ad142e1fa4f6645d0a3 ******/
+		/****** md5 signature: 19718bc4bb388d5a1a916f8e4ff42243 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepVisual_NullStyleMember::SetEnumText ******/
-		/****** md5 signature: b2fa2c708967006363f06f147171c7a7 ******/
+		/****** md5 signature: 0e8cc72552245d37177c56972370085a ******/
 		%feature("compactdefaultargs") SetEnumText;
 		%feature("autodoc", "
 Parameters
 ----------
 theValue: int
-theText: str
+theText: char *
 
 Return
 -------
@@ -3441,15 +3342,15 @@ Description
 -----------
 No available documentation.
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer theValue, Standard_CString theText);
+		void SetEnumText(const int theValue, const char * const theText);
 
 		/****** StepVisual_NullStyleMember::SetName ******/
-		/****** md5 signature: c0fb4b116d47426ff8c83f0fba90c9d0 ******/
+		/****** md5 signature: 6e2722badfd64d55b14c15921c94cda5 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-Standard_CString: 
+const: char *
 
 Return
 -------
@@ -3459,7 +3360,7 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual Standard_Boolean SetName(const Standard_CString);
+		bool SetName(const char * const);
 
 		/****** StepVisual_NullStyleMember::SetValue ******/
 		/****** md5 signature: 60b2edcaeb2ecfca6564c87df8d43442 ******/
@@ -3495,8 +3396,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_NullStyleMember)
-
 %extend StepVisual_NullStyleMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3522,7 +3421,7 @@ Empty constructor.
 		 StepVisual_PathOrCompositeCurve();
 
 		/****** StepVisual_PathOrCompositeCurve::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3537,7 +3436,7 @@ Description
 -----------
 Recognizes a kind of PathOrCompositeCurve select type -- 1 -> CompositeCurve -- 2 -> Path.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_PathOrCompositeCurve::CompositeCurve ******/
 		/****** md5 signature: 42a10fec5b3fc66e2fe2af9d3d5512d3 ******/
@@ -3593,14 +3492,14 @@ Returns a PlanarExtent.
 		 StepVisual_PlanarExtent();
 
 		/****** StepVisual_PlanarExtent::Init ******/
-		/****** md5 signature: 11c89a3a54c891c12e325c7a8f02c313 ******/
+		/****** md5 signature: d218fc1425f28eb3dca81c20fbb268ea ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aSizeInX: float
-aSizeInY: float
+aSizeInX: double
+aSizeInY: double
 
 Return
 -------
@@ -3610,15 +3509,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aSizeInX, const Standard_Real aSizeInY);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const double aSizeInX, const double aSizeInY);
 
 		/****** StepVisual_PlanarExtent::SetSizeInX ******/
-		/****** md5 signature: db14fc0ae7767c757c95681db0fcaef5 ******/
+		/****** md5 signature: 35bb23f8643b38cf7948214459ed028e ******/
 		%feature("compactdefaultargs") SetSizeInX;
 		%feature("autodoc", "
 Parameters
 ----------
-aSizeInX: float
+aSizeInX: double
 
 Return
 -------
@@ -3628,15 +3527,15 @@ Description
 -----------
 No available documentation.
 ") SetSizeInX;
-		void SetSizeInX(const Standard_Real aSizeInX);
+		void SetSizeInX(const double aSizeInX);
 
 		/****** StepVisual_PlanarExtent::SetSizeInY ******/
-		/****** md5 signature: f18d2e4c5890dfb270b4fcdf4e4dc52a ******/
+		/****** md5 signature: 5eee05276803f50104f0192dc18b0745 ******/
 		%feature("compactdefaultargs") SetSizeInY;
 		%feature("autodoc", "
 Parameters
 ----------
-aSizeInY: float
+aSizeInY: double
 
 Return
 -------
@@ -3646,38 +3545,36 @@ Description
 -----------
 No available documentation.
 ") SetSizeInY;
-		void SetSizeInY(const Standard_Real aSizeInY);
+		void SetSizeInY(const double aSizeInY);
 
 		/****** StepVisual_PlanarExtent::SizeInX ******/
-		/****** md5 signature: 207e37afbd922509f9b5429d02a8630e ******/
+		/****** md5 signature: 4c9c998f0d0b37a3bb03b7c1f01f8c5c ******/
 		%feature("compactdefaultargs") SizeInX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") SizeInX;
-		Standard_Real SizeInX();
+		double SizeInX();
 
 		/****** StepVisual_PlanarExtent::SizeInY ******/
-		/****** md5 signature: aa84661dba951a2ac821696b99f24fcd ******/
+		/****** md5 signature: 715950c0d471bb98239104219cc00c22 ******/
 		%feature("compactdefaultargs") SizeInY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") SizeInY;
-		Standard_Real SizeInY();
+		double SizeInY();
 
 };
 
-
-%make_alias(StepVisual_PlanarExtent)
 
 %extend StepVisual_PlanarExtent {
 	%pythoncode {
@@ -3956,20 +3853,20 @@ Returns a PresentationLayerAssignment.
 		 StepVisual_PresentationLayerAssignment();
 
 		/****** StepVisual_PresentationLayerAssignment::AssignedItems ******/
-		/****** md5 signature: 5603a149ac3a31a63988a3b44a83cded ******/
+		/****** md5 signature: 316da28d08640dd7ed7717f795d90995 ******/
 		%feature("compactdefaultargs") AssignedItems;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfLayeredItem>
+opencascade::handle<NCollection_HArray1<StepVisual_LayeredItem>>
 
 Description
 -----------
 No available documentation.
 ") AssignedItems;
-		opencascade::handle<StepVisual_HArray1OfLayeredItem> AssignedItems();
+		opencascade::handle<NCollection_HArray1<StepVisual_LayeredItem>> AssignedItems();
 
 		/****** StepVisual_PresentationLayerAssignment::AssignedItemsValue ******/
-		/****** md5 signature: 2e9dd445e1b3ba65039cd5d54a7c9316 ******/
+		/****** md5 signature: 2384d06c0fff07159846e1b9e913321a ******/
 		%feature("compactdefaultargs") AssignedItemsValue;
 		%feature("autodoc", "
 Parameters
@@ -3984,7 +3881,7 @@ Description
 -----------
 No available documentation.
 ") AssignedItemsValue;
-		StepVisual_LayeredItem AssignedItemsValue(const Standard_Integer num);
+		StepVisual_LayeredItem AssignedItemsValue(const int num);
 
 		/****** StepVisual_PresentationLayerAssignment::Description ******/
 		/****** md5 signature: 68309bdf9d57a000073490b39f8e7a41 ******/
@@ -4000,14 +3897,14 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepVisual_PresentationLayerAssignment::Init ******/
-		/****** md5 signature: 6e8c8d74d5fe4b7f775d4682a1fa4ca0 ******/
+		/****** md5 signature: 6f09cc7c3ac129bf91fbad8fbf974e33 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aAssignedItems: StepVisual_HArray1OfLayeredItem
+aAssignedItems: NCollection_HArray1<StepVisual_LayeredItem
 
 Return
 -------
@@ -4017,7 +3914,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepVisual_HArray1OfLayeredItem> & aAssignedItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<StepVisual_LayeredItem> > & aAssignedItems);
 
 		/****** StepVisual_PresentationLayerAssignment::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -4033,7 +3930,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepVisual_PresentationLayerAssignment::NbAssignedItems ******/
-		/****** md5 signature: b8ff0a501e3564d97f419c4084a2f772 ******/
+		/****** md5 signature: 35286f12ef77e0a11c9b3f2b3bb82ede ******/
 		%feature("compactdefaultargs") NbAssignedItems;
 		%feature("autodoc", "Return
 -------
@@ -4043,15 +3940,15 @@ Description
 -----------
 No available documentation.
 ") NbAssignedItems;
-		Standard_Integer NbAssignedItems();
+		int NbAssignedItems();
 
 		/****** StepVisual_PresentationLayerAssignment::SetAssignedItems ******/
-		/****** md5 signature: 577a8a14d39f41f4104333bccc4bb2e8 ******/
+		/****** md5 signature: 463f3c47a81c64ceafa1fa2b84d3105b ******/
 		%feature("compactdefaultargs") SetAssignedItems;
 		%feature("autodoc", "
 Parameters
 ----------
-aAssignedItems: StepVisual_HArray1OfLayeredItem
+aAssignedItems: NCollection_HArray1<StepVisual_LayeredItem
 
 Return
 -------
@@ -4061,7 +3958,7 @@ Description
 -----------
 No available documentation.
 ") SetAssignedItems;
-		void SetAssignedItems(const opencascade::handle<StepVisual_HArray1OfLayeredItem> & aAssignedItems);
+		void SetAssignedItems(const opencascade::handle<NCollection_HArray1<StepVisual_LayeredItem> > & aAssignedItems);
 
 		/****** StepVisual_PresentationLayerAssignment::SetDescription ******/
 		/****** md5 signature: adddd13a906718df58a2eee683a382cf ******/
@@ -4241,8 +4138,6 @@ Returns a PresentationRepresentation.
 };
 
 
-%make_alias(StepVisual_PresentationRepresentation)
-
 %extend StepVisual_PresentationRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4268,7 +4163,7 @@ Returns a PresentationRepresentationSelect SelectType.
 		 StepVisual_PresentationRepresentationSelect();
 
 		/****** StepVisual_PresentationRepresentationSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4283,7 +4178,7 @@ Description
 -----------
 Recognizes a PresentationRepresentationSelect Kind Entity that is: 1 -> PresentationRepresentation 2 -> PresentationSet 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_PresentationRepresentationSelect::PresentationRepresentation ******/
 		/****** md5 signature: cc6c70dd495b260c6d02169df44fd1e5 ******/
@@ -4491,7 +4386,7 @@ returns Value as a AreaInSet (Null if another type).
 		opencascade::handle<StepVisual_AreaInSet> AreaInSet();
 
 		/****** StepVisual_PresentationSizeAssignmentSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4506,7 +4401,7 @@ Description
 -----------
 Recognizes a PresentationSizeAssignmentSelect Kind Entity that is: 1 -> PresentationView 2 -> PresentationArea 3 -> AreaInSet 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_PresentationSizeAssignmentSelect::PresentationArea ******/
 		/****** md5 signature: 6adf2ef7fa0a7b503035224ca0f9247c ******/
@@ -4562,12 +4457,12 @@ Returns a PresentationStyleAssignment.
 		 StepVisual_PresentationStyleAssignment();
 
 		/****** StepVisual_PresentationStyleAssignment::Init ******/
-		/****** md5 signature: 19337abb8014667e7ee598bc01dd719e ******/
+		/****** md5 signature: 4f2d0da623a220c875e5ea709a7819bf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aStyles: StepVisual_HArray1OfPresentationStyleSelect
+aStyles: NCollection_HArray1<StepVisual_PresentationStyleSelect
 
 Return
 -------
@@ -4577,10 +4472,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles);
+		void Init(const opencascade::handle<NCollection_HArray1<StepVisual_PresentationStyleSelect> > & aStyles);
 
 		/****** StepVisual_PresentationStyleAssignment::NbStyles ******/
-		/****** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ******/
+		/****** md5 signature: 97420cad9904f1e553d5bec514daf50b ******/
 		%feature("compactdefaultargs") NbStyles;
 		%feature("autodoc", "Return
 -------
@@ -4590,15 +4485,15 @@ Description
 -----------
 No available documentation.
 ") NbStyles;
-		Standard_Integer NbStyles();
+		int NbStyles();
 
 		/****** StepVisual_PresentationStyleAssignment::SetStyles ******/
-		/****** md5 signature: ec9247e94c63a82ce89f12d338fddc67 ******/
+		/****** md5 signature: 781b67057dbe1d597de4ce3f65454007 ******/
 		%feature("compactdefaultargs") SetStyles;
 		%feature("autodoc", "
 Parameters
 ----------
-aStyles: StepVisual_HArray1OfPresentationStyleSelect
+aStyles: NCollection_HArray1<StepVisual_PresentationStyleSelect
 
 Return
 -------
@@ -4608,23 +4503,23 @@ Description
 -----------
 No available documentation.
 ") SetStyles;
-		void SetStyles(const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles);
+		void SetStyles(const opencascade::handle<NCollection_HArray1<StepVisual_PresentationStyleSelect> > & aStyles);
 
 		/****** StepVisual_PresentationStyleAssignment::Styles ******/
-		/****** md5 signature: 3579cb1cc88465f94e6e54dc0c81881f ******/
+		/****** md5 signature: e83d59a316647809580f3751317e12a8 ******/
 		%feature("compactdefaultargs") Styles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_PresentationStyleSelect>>
 
 Description
 -----------
 No available documentation.
 ") Styles;
-		opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> Styles();
+		opencascade::handle<NCollection_HArray1<StepVisual_PresentationStyleSelect>> Styles();
 
 		/****** StepVisual_PresentationStyleAssignment::StylesValue ******/
-		/****** md5 signature: dc0642b4c23e4b1290ec9bad05389a4c ******/
+		/****** md5 signature: 32527a25a2f0309129cd80a9c82cfa72 ******/
 		%feature("compactdefaultargs") StylesValue;
 		%feature("autodoc", "
 Parameters
@@ -4639,7 +4534,7 @@ Description
 -----------
 No available documentation.
 ") StylesValue;
-		StepVisual_PresentationStyleSelect StylesValue(const Standard_Integer num);
+		StepVisual_PresentationStyleSelect StylesValue(const int num);
 
 };
 
@@ -4671,7 +4566,7 @@ Returns a PresentationStyleSelect SelectType.
 		 StepVisual_PresentationStyleSelect();
 
 		/****** StepVisual_PresentationStyleSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4686,7 +4581,7 @@ Description
 -----------
 Recognizes a PresentationStyleSelect Kind Entity that is: 1 -> PointStyle 2 -> CurveStyle 3 -> SurfaceStyleUsage 4 -> SymbolStyle 5 -> FillAreaStyle 6 -> TextStyle 7 -> NullStyle 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_PresentationStyleSelect::CurveStyle ******/
 		/****** md5 signature: feb37ceb221ce52916abd36c51e4b45e ******/
@@ -4894,7 +4789,7 @@ Empty constructor.
 		 StepVisual_RenderingPropertiesSelect();
 
 		/****** StepVisual_RenderingPropertiesSelect::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4909,7 +4804,7 @@ Description
 -----------
 Recognizes a kind of RenderingPropertiesSelect select type -- 1 -> SurfaceStyleReflectanceAmbient -- 2 -> SurfaceStyleTransparent.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_RenderingPropertiesSelect::SurfaceStyleReflectanceAmbient ******/
 		/****** md5 signature: 9bed639fef414c2878d022d2ab14c51d ******/
@@ -4965,7 +4860,7 @@ Returns a StyleContextSelect SelectType.
 		 StepVisual_StyleContextSelect();
 
 		/****** StepVisual_StyleContextSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4980,7 +4875,7 @@ Description
 -----------
 Recognizes a StyleContextSelect Kind Entity that is: 1 -> Representation 2 -> RepresentationItem 3 -> PresentationSet 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_StyleContextSelect::PresentationSet ******/
 		/****** md5 signature: e22661d0b7db8ea09e8adbe07ae2d793 ******/
@@ -5036,7 +4931,7 @@ returns Value as a RepresentationItem (Null if another type).
 class StepVisual_StyledItem : public StepRepr_RepresentationItem {
 	public:
 		/****** StepVisual_StyledItem::StepVisual_StyledItem ******/
-		/****** md5 signature: eb9228bcc80d4151a6612f9ea37e8ab9 ******/
+		/****** md5 signature: ba356b13d240ad620cd30b3911a83616 ******/
 		%feature("compactdefaultargs") StepVisual_StyledItem;
 		%feature("autodoc", "Return
 -------
@@ -5049,13 +4944,13 @@ Returns a StyledItem.
 		 StepVisual_StyledItem();
 
 		/****** StepVisual_StyledItem::Init ******/
-		/****** md5 signature: 0c994c2dbfe076b8f4ec7e6dd9459789 ******/
+		/****** md5 signature: 46e65cf6630bd4c5646663caab6db854 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aStyles: StepVisual_HArray1OfPresentationStyleAssignment
+aStyles: NCollection_HArray1<
 aItem: Standard_Transient
 
 Return
@@ -5066,7 +4961,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles, const opencascade::handle<Standard_Transient> & aItem);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment> > > & aStyles, const opencascade::handle<Standard_Transient> & aItem);
 
 		/****** StepVisual_StyledItem::Item ******/
 		/****** md5 signature: b179c866de84187747718fbbc1a1a674 ******/
@@ -5095,7 +4990,7 @@ No available documentation.
 		StepVisual_StyledItemTarget ItemAP242();
 
 		/****** StepVisual_StyledItem::NbStyles ******/
-		/****** md5 signature: f4c9254e3c2f31482b51b67dc038e70c ******/
+		/****** md5 signature: a804bdb3bec61420efd3a70e362fe1f5 ******/
 		%feature("compactdefaultargs") NbStyles;
 		%feature("autodoc", "Return
 -------
@@ -5105,7 +5000,7 @@ Description
 -----------
 No available documentation.
 ") NbStyles;
-		Standard_Integer NbStyles();
+		int NbStyles();
 
 		/****** StepVisual_StyledItem::SetItem ******/
 		/****** md5 signature: f8751c7ecf676d7196a87836c9ffe6aa ******/
@@ -5144,12 +5039,12 @@ No available documentation.
 		void SetItem(const StepVisual_StyledItemTarget & aItem);
 
 		/****** StepVisual_StyledItem::SetStyles ******/
-		/****** md5 signature: 4b4d81591c544820ce2b1108b7e4089d ******/
+		/****** md5 signature: 1f1eca0651c19159e80ad7e01f54f9e4 ******/
 		%feature("compactdefaultargs") SetStyles;
 		%feature("autodoc", "
 Parameters
 ----------
-aStyles: StepVisual_HArray1OfPresentationStyleAssignment
+aStyles: NCollection_HArray1<
 
 Return
 -------
@@ -5159,23 +5054,23 @@ Description
 -----------
 No available documentation.
 ") SetStyles;
-		void SetStyles(const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles);
+		void SetStyles(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment> > > & aStyles);
 
 		/****** StepVisual_StyledItem::Styles ******/
-		/****** md5 signature: 4fc5a17642e216edc2586083b1d1576c ******/
+		/****** md5 signature: 9dbbc61bd574d20f6183b0d7222d5c92 ******/
 		%feature("compactdefaultargs") Styles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>>
 
 Description
 -----------
 No available documentation.
 ") Styles;
-		const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & Styles();
+		const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment>>> & Styles();
 
 		/****** StepVisual_StyledItem::StylesValue ******/
-		/****** md5 signature: a674d5f4ef7c5fbc1388477679cc8fc5 ******/
+		/****** md5 signature: c25f9b28afba13d2a7dd4ed12fffe090 ******/
 		%feature("compactdefaultargs") StylesValue;
 		%feature("autodoc", "
 Parameters
@@ -5190,12 +5085,10 @@ Description
 -----------
 No available documentation.
 ") StylesValue;
-		const opencascade::handle<StepVisual_PresentationStyleAssignment> & StylesValue(const Standard_Integer num);
+		const opencascade::handle<StepVisual_PresentationStyleAssignment> & StylesValue(const int num);
 
 };
 
-
-%make_alias(StepVisual_StyledItem)
 
 %extend StepVisual_StyledItem {
 	%pythoncode {
@@ -5222,7 +5115,7 @@ Returns a StyledItemTarget select type.
 		 StepVisual_StyledItemTarget();
 
 		/****** StepVisual_StyledItemTarget::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -5237,7 +5130,7 @@ Description
 -----------
 Recognizes a StyledItemTarget Kind Entity that is: 1 -> GeometricRepresentationItem 2 -> MappedItem 3 -> Representation 4 -> TopologicalRepresentationItem 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_StyledItemTarget::GeometricRepresentationItem ******/
 		/****** md5 signature: 5fe5040cbfbd8308bf2067e8e59f2a57 ******/
@@ -5319,13 +5212,13 @@ Returns a SurfaceSideStyle.
 		 StepVisual_SurfaceSideStyle();
 
 		/****** StepVisual_SurfaceSideStyle::Init ******/
-		/****** md5 signature: af9881776eea5dc5e4c94f3b1bf501e4 ******/
+		/****** md5 signature: 2afc516dec2f73c330b51c8090915d24 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aStyles: StepVisual_HArray1OfSurfaceStyleElementSelect
+aStyles: NCollection_HArray1<StepVisual_SurfaceStyleElementSelect
 
 Return
 -------
@@ -5335,7 +5228,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> & aStyles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepVisual_SurfaceStyleElementSelect> > & aStyles);
 
 		/****** StepVisual_SurfaceSideStyle::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -5351,7 +5244,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepVisual_SurfaceSideStyle::NbStyles ******/
-		/****** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ******/
+		/****** md5 signature: 97420cad9904f1e553d5bec514daf50b ******/
 		%feature("compactdefaultargs") NbStyles;
 		%feature("autodoc", "Return
 -------
@@ -5361,7 +5254,7 @@ Description
 -----------
 No available documentation.
 ") NbStyles;
-		Standard_Integer NbStyles();
+		int NbStyles();
 
 		/****** StepVisual_SurfaceSideStyle::SetName ******/
 		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
@@ -5382,12 +5275,12 @@ No available documentation.
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
 		/****** StepVisual_SurfaceSideStyle::SetStyles ******/
-		/****** md5 signature: 837f1427282dbfa1651f570dd3067799 ******/
+		/****** md5 signature: 7e34e52758eb81aaa80815ef62cb3b45 ******/
 		%feature("compactdefaultargs") SetStyles;
 		%feature("autodoc", "
 Parameters
 ----------
-aStyles: StepVisual_HArray1OfSurfaceStyleElementSelect
+aStyles: NCollection_HArray1<StepVisual_SurfaceStyleElementSelect
 
 Return
 -------
@@ -5397,23 +5290,23 @@ Description
 -----------
 No available documentation.
 ") SetStyles;
-		void SetStyles(const opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> & aStyles);
+		void SetStyles(const opencascade::handle<NCollection_HArray1<StepVisual_SurfaceStyleElementSelect> > & aStyles);
 
 		/****** StepVisual_SurfaceSideStyle::Styles ******/
-		/****** md5 signature: c067261784184af9c7aa81ebec0a6230 ******/
+		/****** md5 signature: 0c736cb1bace419a0e6b94fe43432266 ******/
 		%feature("compactdefaultargs") Styles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_SurfaceStyleElementSelect>>
 
 Description
 -----------
 No available documentation.
 ") Styles;
-		opencascade::handle<StepVisual_HArray1OfSurfaceStyleElementSelect> Styles();
+		opencascade::handle<NCollection_HArray1<StepVisual_SurfaceStyleElementSelect>> Styles();
 
 		/****** StepVisual_SurfaceSideStyle::StylesValue ******/
-		/****** md5 signature: e69ee134d7ec481cf940915040946e40 ******/
+		/****** md5 signature: 833adeb2c4773d8d36d5bc8c8071207c ******/
 		%feature("compactdefaultargs") StylesValue;
 		%feature("autodoc", "
 Parameters
@@ -5428,7 +5321,7 @@ Description
 -----------
 No available documentation.
 ") StylesValue;
-		StepVisual_SurfaceStyleElementSelect StylesValue(const Standard_Integer num);
+		StepVisual_SurfaceStyleElementSelect StylesValue(const int num);
 
 };
 
@@ -5616,7 +5509,7 @@ Returns a SurfaceStyleElementSelect SelectType.
 		 StepVisual_SurfaceStyleElementSelect();
 
 		/****** StepVisual_SurfaceStyleElementSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -5631,7 +5524,7 @@ Description
 -----------
 Recognizes a SurfaceStyleElementSelect Kind Entity that is: 1 -> SurfaceStyleFillArea 2 -> SurfaceStyleBoundary 3 -> SurfaceStyleParameterLine 4 -> SurfaceStyleSilhouette 5 -> SurfaceStyleSegmentationCurve 6 -> SurfaceStyleControlGrid 7 -> SurfaceStyleRendering 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_SurfaceStyleElementSelect::SurfaceStyleBoundary ******/
 		/****** md5 signature: 60e2375370484d5abf5ea7b996a7c3ba ******/
@@ -5791,20 +5684,20 @@ Returns a SurfaceStyleParameterLine.
 		 StepVisual_SurfaceStyleParameterLine();
 
 		/****** StepVisual_SurfaceStyleParameterLine::DirectionCounts ******/
-		/****** md5 signature: cec970c2af8f43f00bfa3fce5d3ed6b2 ******/
+		/****** md5 signature: 090978fea32ed5da2301e6cf5d077acc ******/
 		%feature("compactdefaultargs") DirectionCounts;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfDirectionCountSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_DirectionCountSelect>>
 
 Description
 -----------
 No available documentation.
 ") DirectionCounts;
-		opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> DirectionCounts();
+		opencascade::handle<NCollection_HArray1<StepVisual_DirectionCountSelect>> DirectionCounts();
 
 		/****** StepVisual_SurfaceStyleParameterLine::DirectionCountsValue ******/
-		/****** md5 signature: 31f9040d4b8643736207e0a58197608b ******/
+		/****** md5 signature: a4b4ace7dbff46ab767ef134b0010a6d ******/
 		%feature("compactdefaultargs") DirectionCountsValue;
 		%feature("autodoc", "
 Parameters
@@ -5819,16 +5712,16 @@ Description
 -----------
 No available documentation.
 ") DirectionCountsValue;
-		StepVisual_DirectionCountSelect DirectionCountsValue(const Standard_Integer num);
+		StepVisual_DirectionCountSelect DirectionCountsValue(const int num);
 
 		/****** StepVisual_SurfaceStyleParameterLine::Init ******/
-		/****** md5 signature: cbaa35e98130ae00d7c7e312198b037e ******/
+		/****** md5 signature: 97735e6d0c6015e9b765aca9c78b1015 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aStyleOfParameterLines: StepVisual_CurveStyle
-aDirectionCounts: StepVisual_HArray1OfDirectionCountSelect
+aDirectionCounts: NCollection_HArray1<StepVisual_DirectionCountSelect
 
 Return
 -------
@@ -5838,10 +5731,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfParameterLines, const opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> & aDirectionCounts);
+		void Init(const opencascade::handle<StepVisual_CurveStyle> & aStyleOfParameterLines, const opencascade::handle<NCollection_HArray1<StepVisual_DirectionCountSelect> > & aDirectionCounts);
 
 		/****** StepVisual_SurfaceStyleParameterLine::NbDirectionCounts ******/
-		/****** md5 signature: e620a789179fbed828f7fff88217dcab ******/
+		/****** md5 signature: ca03c2788a478390ce838f82a67657a1 ******/
 		%feature("compactdefaultargs") NbDirectionCounts;
 		%feature("autodoc", "Return
 -------
@@ -5851,15 +5744,15 @@ Description
 -----------
 No available documentation.
 ") NbDirectionCounts;
-		Standard_Integer NbDirectionCounts();
+		int NbDirectionCounts();
 
 		/****** StepVisual_SurfaceStyleParameterLine::SetDirectionCounts ******/
-		/****** md5 signature: 19b9a183d71574f73b0f7a31b324685e ******/
+		/****** md5 signature: 790d3656a9b19b71090797163f1bb455 ******/
 		%feature("compactdefaultargs") SetDirectionCounts;
 		%feature("autodoc", "
 Parameters
 ----------
-aDirectionCounts: StepVisual_HArray1OfDirectionCountSelect
+aDirectionCounts: NCollection_HArray1<StepVisual_DirectionCountSelect
 
 Return
 -------
@@ -5869,7 +5762,7 @@ Description
 -----------
 No available documentation.
 ") SetDirectionCounts;
-		void SetDirectionCounts(const opencascade::handle<StepVisual_HArray1OfDirectionCountSelect> & aDirectionCounts);
+		void SetDirectionCounts(const opencascade::handle<NCollection_HArray1<StepVisual_DirectionCountSelect> > & aDirectionCounts);
 
 		/****** StepVisual_SurfaceStyleParameterLine::SetStyleOfParameterLines ******/
 		/****** md5 signature: 60991ea2b6f263eb992462d00c39f07a ******/
@@ -5932,25 +5825,25 @@ default constructor.
 		 StepVisual_SurfaceStyleReflectanceAmbient();
 
 		/****** StepVisual_SurfaceStyleReflectanceAmbient::AmbientReflectance ******/
-		/****** md5 signature: 91c71cacd5aaa1e29a74a253278cf822 ******/
+		/****** md5 signature: 70951726e18d9b458ffacd0c725b33c1 ******/
 		%feature("compactdefaultargs") AmbientReflectance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field AmbientReflectance.
 ") AmbientReflectance;
-		Standard_Real AmbientReflectance();
+		double AmbientReflectance();
 
 		/****** StepVisual_SurfaceStyleReflectanceAmbient::Init ******/
-		/****** md5 signature: ebf8757f098298aaf1e593c46dac0b0b ******/
+		/****** md5 signature: e36595b1dae2051f62dd43207b2371f4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-theAmbientReflectance: float
+theAmbientReflectance: double
 
 Return
 -------
@@ -5960,15 +5853,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const Standard_Real theAmbientReflectance);
+		void Init(const double theAmbientReflectance);
 
 		/****** StepVisual_SurfaceStyleReflectanceAmbient::SetAmbientReflectance ******/
-		/****** md5 signature: f19473c235a6e050fa102bf332502825 ******/
+		/****** md5 signature: aed6481acd8947adfde93f05cb7bb9cf ******/
 		%feature("compactdefaultargs") SetAmbientReflectance;
 		%feature("autodoc", "
 Parameters
 ----------
-theAmbientReflectance: float
+theAmbientReflectance: double
 
 Return
 -------
@@ -5978,7 +5871,7 @@ Description
 -----------
 Sets field AmbientReflectance.
 ") SetAmbientReflectance;
-		void SetAmbientReflectance(const Standard_Real theAmbientReflectance);
+		void SetAmbientReflectance(const double theAmbientReflectance);
 
 };
 
@@ -6276,12 +6169,12 @@ default constructor.
 		 StepVisual_SurfaceStyleTransparent();
 
 		/****** StepVisual_SurfaceStyleTransparent::Init ******/
-		/****** md5 signature: d0471972d41a7e6008fada7eb54b59eb ******/
+		/****** md5 signature: 5fd97bfbaab138286e83c607dac0b036 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-theTransparency: float
+theTransparency: double
 
 Return
 -------
@@ -6291,15 +6184,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const Standard_Real theTransparency);
+		void Init(const double theTransparency);
 
 		/****** StepVisual_SurfaceStyleTransparent::SetTransparency ******/
-		/****** md5 signature: b63ccc026f1e33423da5a4fb3a4c87f6 ******/
+		/****** md5 signature: 02b4fed6ee1a4240530c7396d8f781a9 ******/
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", "
 Parameters
 ----------
-theTransparency: float
+theTransparency: double
 
 Return
 -------
@@ -6309,20 +6202,20 @@ Description
 -----------
 Sets field Transparency.
 ") SetTransparency;
-		void SetTransparency(const Standard_Real theTransparency);
+		void SetTransparency(const double theTransparency);
 
 		/****** StepVisual_SurfaceStyleTransparent::Transparency ******/
-		/****** md5 signature: 395111f5ce5a38f6b8d6009c7b6b1222 ******/
+		/****** md5 signature: 080317bfb744c0d6d6d612bb6c05010b ******/
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field Transparency.
 ") Transparency;
-		Standard_Real Transparency();
+		double Transparency();
 
 };
 
@@ -6466,8 +6359,6 @@ Returns a Template.
 };
 
 
-%make_alias(StepVisual_Template)
-
 %extend StepVisual_Template {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6495,8 +6386,6 @@ Returns a TemplateInstance.
 };
 
 
-%make_alias(StepVisual_TemplateInstance)
-
 %extend StepVisual_TemplateInstance {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6522,7 +6411,7 @@ Empty constructor.
 		 StepVisual_TessellatedEdgeOrVertex();
 
 		/****** StepVisual_TessellatedEdgeOrVertex::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -6537,7 +6426,7 @@ Description
 -----------
 Recognizes a kind of TessellatedEdgeOrVertex select type -- 1 -> TessellatedEdge -- 2 -> TessellatedVertex.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_TessellatedEdgeOrVertex::TessellatedEdge ******/
 		/****** md5 signature: 0fd3afdf3d4017d4a02e01bd9318e50c ******/
@@ -6595,8 +6484,6 @@ Returns a DraughtingCalloutElement select type.
 };
 
 
-%make_alias(StepVisual_TessellatedItem)
-
 %extend StepVisual_TessellatedItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6623,8 +6510,6 @@ default constructor.
 
 };
 
-
-%make_alias(StepVisual_TessellatedShapeRepresentation)
 
 %extend StepVisual_TessellatedShapeRepresentation {
 	%pythoncode {
@@ -6831,8 +6716,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_TextLiteral)
-
 %extend StepVisual_TextLiteral {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6871,7 +6754,7 @@ returns Value as a AnnotationText (Null if another type).
 		opencascade::handle<StepVisual_AnnotationText> AnnotationText();
 
 		/****** StepVisual_TextOrCharacter::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -6886,7 +6769,7 @@ Description
 -----------
 Recognizes a TextOrCharacter Kind Entity that is: 1 -> AnnotationText 2 -> CompositeText 3 -> TextLiteral 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepVisual_TextOrCharacter::CompositeText ******/
 		/****** md5 signature: 02d79e50e6e540a3c424977d9d1dc388 ******/
@@ -7130,7 +7013,7 @@ Returns a ViewVolume.
 		 StepVisual_ViewVolume();
 
 		/****** StepVisual_ViewVolume::BackPlaneClipping ******/
-		/****** md5 signature: f4942e08a89ca03b954ef65f79bc0317 ******/
+		/****** md5 signature: 9d2173074052993a1fa074458ab5fc3e ******/
 		%feature("compactdefaultargs") BackPlaneClipping;
 		%feature("autodoc", "Return
 -------
@@ -7140,23 +7023,23 @@ Description
 -----------
 No available documentation.
 ") BackPlaneClipping;
-		Standard_Boolean BackPlaneClipping();
+		bool BackPlaneClipping();
 
 		/****** StepVisual_ViewVolume::BackPlaneDistance ******/
-		/****** md5 signature: 461642553ea3f9afa8cccbf4dbb17426 ******/
+		/****** md5 signature: 3a91404ddc19b3d462c9f0c7742fca8a ******/
 		%feature("compactdefaultargs") BackPlaneDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") BackPlaneDistance;
-		Standard_Real BackPlaneDistance();
+		double BackPlaneDistance();
 
 		/****** StepVisual_ViewVolume::FrontPlaneClipping ******/
-		/****** md5 signature: 5dc08f835aab66c4ebeee8ea44aac106 ******/
+		/****** md5 signature: a2b32a533a58863b5c38a4ec269dcd61 ******/
 		%feature("compactdefaultargs") FrontPlaneClipping;
 		%feature("autodoc", "Return
 -------
@@ -7166,33 +7049,33 @@ Description
 -----------
 No available documentation.
 ") FrontPlaneClipping;
-		Standard_Boolean FrontPlaneClipping();
+		bool FrontPlaneClipping();
 
 		/****** StepVisual_ViewVolume::FrontPlaneDistance ******/
-		/****** md5 signature: 9b0f3629420a101cad94471e4b2f5dc8 ******/
+		/****** md5 signature: 9b6f84d16594f0bd1ece2f47befa6792 ******/
 		%feature("compactdefaultargs") FrontPlaneDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FrontPlaneDistance;
-		Standard_Real FrontPlaneDistance();
+		double FrontPlaneDistance();
 
 		/****** StepVisual_ViewVolume::Init ******/
-		/****** md5 signature: 5334c63ff086d260ee00224d8efba9bb ******/
+		/****** md5 signature: 24d9c3a0ab8211e67eb8df6e8316ddbd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aProjectionType: StepVisual_CentralOrParallel
 aProjectionPoint: StepGeom_CartesianPoint
-aViewPlaneDistance: float
-aFrontPlaneDistance: float
+aViewPlaneDistance: double
+aFrontPlaneDistance: double
 aFrontPlaneClipping: bool
-aBackPlaneDistance: float
+aBackPlaneDistance: double
 aBackPlaneClipping: bool
 aViewVolumeSidesClipping: bool
 aViewWindow: StepVisual_PlanarBox
@@ -7205,7 +7088,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const StepVisual_CentralOrParallel aProjectionType, const opencascade::handle<StepGeom_CartesianPoint> & aProjectionPoint, const Standard_Real aViewPlaneDistance, const Standard_Real aFrontPlaneDistance, const Standard_Boolean aFrontPlaneClipping, const Standard_Real aBackPlaneDistance, const Standard_Boolean aBackPlaneClipping, const Standard_Boolean aViewVolumeSidesClipping, const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
+		void Init(const StepVisual_CentralOrParallel aProjectionType, const opencascade::handle<StepGeom_CartesianPoint> & aProjectionPoint, const double aViewPlaneDistance, const double aFrontPlaneDistance, const bool aFrontPlaneClipping, const double aBackPlaneDistance, const bool aBackPlaneClipping, const bool aViewVolumeSidesClipping, const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
 		/****** StepVisual_ViewVolume::ProjectionPoint ******/
 		/****** md5 signature: 4314d1b4352760cb5ce3c88148f1e3ec ******/
@@ -7234,7 +7117,7 @@ No available documentation.
 		StepVisual_CentralOrParallel ProjectionType();
 
 		/****** StepVisual_ViewVolume::SetBackPlaneClipping ******/
-		/****** md5 signature: 6674976d6d401c95326e70806fc1ae26 ******/
+		/****** md5 signature: e571720931b29a4ba9edca8cb6c7eb9d ******/
 		%feature("compactdefaultargs") SetBackPlaneClipping;
 		%feature("autodoc", "
 Parameters
@@ -7249,15 +7132,15 @@ Description
 -----------
 No available documentation.
 ") SetBackPlaneClipping;
-		void SetBackPlaneClipping(const Standard_Boolean aBackPlaneClipping);
+		void SetBackPlaneClipping(const bool aBackPlaneClipping);
 
 		/****** StepVisual_ViewVolume::SetBackPlaneDistance ******/
-		/****** md5 signature: edfc21fcbb6d0e0206180b0f4a0e4f16 ******/
+		/****** md5 signature: dbe89224be3ad19caf7469d03440c254 ******/
 		%feature("compactdefaultargs") SetBackPlaneDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-aBackPlaneDistance: float
+aBackPlaneDistance: double
 
 Return
 -------
@@ -7267,10 +7150,10 @@ Description
 -----------
 No available documentation.
 ") SetBackPlaneDistance;
-		void SetBackPlaneDistance(const Standard_Real aBackPlaneDistance);
+		void SetBackPlaneDistance(const double aBackPlaneDistance);
 
 		/****** StepVisual_ViewVolume::SetFrontPlaneClipping ******/
-		/****** md5 signature: 2ef3554ed4085b640a49951a13c68697 ******/
+		/****** md5 signature: b5a9fbd3d8d2315cb2cd063fb595f88f ******/
 		%feature("compactdefaultargs") SetFrontPlaneClipping;
 		%feature("autodoc", "
 Parameters
@@ -7285,15 +7168,15 @@ Description
 -----------
 No available documentation.
 ") SetFrontPlaneClipping;
-		void SetFrontPlaneClipping(const Standard_Boolean aFrontPlaneClipping);
+		void SetFrontPlaneClipping(const bool aFrontPlaneClipping);
 
 		/****** StepVisual_ViewVolume::SetFrontPlaneDistance ******/
-		/****** md5 signature: 0abafb345d231817ec21629b7183d720 ******/
+		/****** md5 signature: 02a314ebfa4eeb94d8cfe1e5f9ad1bc3 ******/
 		%feature("compactdefaultargs") SetFrontPlaneDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-aFrontPlaneDistance: float
+aFrontPlaneDistance: double
 
 Return
 -------
@@ -7303,7 +7186,7 @@ Description
 -----------
 No available documentation.
 ") SetFrontPlaneDistance;
-		void SetFrontPlaneDistance(const Standard_Real aFrontPlaneDistance);
+		void SetFrontPlaneDistance(const double aFrontPlaneDistance);
 
 		/****** StepVisual_ViewVolume::SetProjectionPoint ******/
 		/****** md5 signature: 88da046078f60f581b65e026335ecd38 ******/
@@ -7342,12 +7225,12 @@ No available documentation.
 		void SetProjectionType(const StepVisual_CentralOrParallel aProjectionType);
 
 		/****** StepVisual_ViewVolume::SetViewPlaneDistance ******/
-		/****** md5 signature: da1f3356e5f41bcfc2bb04e77f58c10e ******/
+		/****** md5 signature: 1b66778eebf2d517f4e56d6118b4c625 ******/
 		%feature("compactdefaultargs") SetViewPlaneDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-aViewPlaneDistance: float
+aViewPlaneDistance: double
 
 Return
 -------
@@ -7357,10 +7240,10 @@ Description
 -----------
 No available documentation.
 ") SetViewPlaneDistance;
-		void SetViewPlaneDistance(const Standard_Real aViewPlaneDistance);
+		void SetViewPlaneDistance(const double aViewPlaneDistance);
 
 		/****** StepVisual_ViewVolume::SetViewVolumeSidesClipping ******/
-		/****** md5 signature: 938e917fe37c3b73ccc2088beb9e6574 ******/
+		/****** md5 signature: e3d49ec69afcea159f9bab92e0957bac ******/
 		%feature("compactdefaultargs") SetViewVolumeSidesClipping;
 		%feature("autodoc", "
 Parameters
@@ -7375,7 +7258,7 @@ Description
 -----------
 No available documentation.
 ") SetViewVolumeSidesClipping;
-		void SetViewVolumeSidesClipping(const Standard_Boolean aViewVolumeSidesClipping);
+		void SetViewVolumeSidesClipping(const bool aViewVolumeSidesClipping);
 
 		/****** StepVisual_ViewVolume::SetViewWindow ******/
 		/****** md5 signature: 136a748355c9fefae97d375748f65d19 ******/
@@ -7396,20 +7279,20 @@ No available documentation.
 		void SetViewWindow(const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
 		/****** StepVisual_ViewVolume::ViewPlaneDistance ******/
-		/****** md5 signature: 7ab9aeb9cdc69dbf281d1fbcecc18b25 ******/
+		/****** md5 signature: 89aa4913cc7360e0847355b749bebfc2 ******/
 		%feature("compactdefaultargs") ViewPlaneDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ViewPlaneDistance;
-		Standard_Real ViewPlaneDistance();
+		double ViewPlaneDistance();
 
 		/****** StepVisual_ViewVolume::ViewVolumeSidesClipping ******/
-		/****** md5 signature: a3f90f4afd2383c29f11c96039e9a2f1 ******/
+		/****** md5 signature: 5825f49939988390cbd0bdf944e0f92a ******/
 		%feature("compactdefaultargs") ViewVolumeSidesClipping;
 		%feature("autodoc", "Return
 -------
@@ -7419,7 +7302,7 @@ Description
 -----------
 No available documentation.
 ") ViewVolumeSidesClipping;
-		Standard_Boolean ViewVolumeSidesClipping();
+		bool ViewVolumeSidesClipping();
 
 		/****** StepVisual_ViewVolume::ViewWindow ******/
 		/****** md5 signature: 725cc0912678c398b3fece353204acfc ******/
@@ -7465,8 +7348,6 @@ Returns a AnnotationOccurrence.
 
 };
 
-
-%make_alias(StepVisual_AnnotationOccurrence)
 
 %extend StepVisual_AnnotationOccurrence {
 	%pythoncode {
@@ -7573,8 +7454,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_CameraImage2dWithScale)
-
 %extend StepVisual_CameraImage2dWithScale {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7602,8 +7481,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_CameraImage3dWithScale)
-
 %extend StepVisual_CameraImage3dWithScale {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7629,7 +7506,7 @@ Returns a CameraModelD2.
 		 StepVisual_CameraModelD2();
 
 		/****** StepVisual_CameraModelD2::Init ******/
-		/****** md5 signature: dbffc25b3471018fbf5fe9cab1b7eb83 ******/
+		/****** md5 signature: f18380dfe5832e409fff1e1f5d15d1ed ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7646,7 +7523,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_PlanarBox> & aViewWindow, const Standard_Boolean aViewWindowClipping);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_PlanarBox> & aViewWindow, const bool aViewWindowClipping);
 
 		/****** StepVisual_CameraModelD2::SetViewWindow ******/
 		/****** md5 signature: 136a748355c9fefae97d375748f65d19 ******/
@@ -7667,7 +7544,7 @@ No available documentation.
 		void SetViewWindow(const opencascade::handle<StepVisual_PlanarBox> & aViewWindow);
 
 		/****** StepVisual_CameraModelD2::SetViewWindowClipping ******/
-		/****** md5 signature: 2b3733762e8bdaf1ef52f2d1b7c8b674 ******/
+		/****** md5 signature: 166227600b619a404b954286a3d17309 ******/
 		%feature("compactdefaultargs") SetViewWindowClipping;
 		%feature("autodoc", "
 Parameters
@@ -7682,7 +7559,7 @@ Description
 -----------
 No available documentation.
 ") SetViewWindowClipping;
-		void SetViewWindowClipping(const Standard_Boolean aViewWindowClipping);
+		void SetViewWindowClipping(const bool aViewWindowClipping);
 
 		/****** StepVisual_CameraModelD2::ViewWindow ******/
 		/****** md5 signature: 725cc0912678c398b3fece353204acfc ******/
@@ -7698,7 +7575,7 @@ No available documentation.
 		opencascade::handle<StepVisual_PlanarBox> ViewWindow();
 
 		/****** StepVisual_CameraModelD2::ViewWindowClipping ******/
-		/****** md5 signature: 60a35ab5c04f44b804a3cc10158ea739 ******/
+		/****** md5 signature: 0894495f9d462977d3b1d4a75a290da3 ******/
 		%feature("compactdefaultargs") ViewWindowClipping;
 		%feature("autodoc", "Return
 -------
@@ -7708,12 +7585,10 @@ Description
 -----------
 No available documentation.
 ") ViewWindowClipping;
-		Standard_Boolean ViewWindowClipping();
+		bool ViewWindowClipping();
 
 };
 
-
-%make_alias(StepVisual_CameraModelD2)
 
 %extend StepVisual_CameraModelD2 {
 	%pythoncode {
@@ -7824,8 +7699,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_CameraModelD3)
-
 %extend StepVisual_CameraModelD3 {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7852,8 +7725,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel)
 
 %extend StepVisual_CharacterizedObjAndRepresentationAndDraughtingModel {
 	%pythoncode {
@@ -7971,13 +7842,13 @@ No available documentation.
 		opencascade::handle<StepVisual_PlanarExtent> Extent();
 
 		/****** StepVisual_CompositeTextWithExtent::Init ******/
-		/****** md5 signature: 110b91406c02697e42c454f3b015db2d ******/
+		/****** md5 signature: c2ad472b89d685f219e285a304744e77 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aCollectedText: StepVisual_HArray1OfTextOrCharacter
+aCollectedText: NCollection_HArray1<StepVisual_TextOrCharacter
 aExtent: StepVisual_PlanarExtent
 
 Return
@@ -7988,7 +7859,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfTextOrCharacter> & aCollectedText, const opencascade::handle<StepVisual_PlanarExtent> & aExtent);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepVisual_TextOrCharacter> > & aCollectedText, const opencascade::handle<StepVisual_PlanarExtent> & aExtent);
 
 		/****** StepVisual_CompositeTextWithExtent::SetExtent ******/
 		/****** md5 signature: 32a808f68d4795ac572a482545c43c81 ******/
@@ -8010,8 +7881,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepVisual_CompositeTextWithExtent)
 
 %extend StepVisual_CompositeTextWithExtent {
 	%pythoncode {
@@ -8038,12 +7907,12 @@ Returns a ContextDependentInvisibility.
 		 StepVisual_ContextDependentInvisibility();
 
 		/****** StepVisual_ContextDependentInvisibility::Init ******/
-		/****** md5 signature: 994ad424222e64e933e9c610e0b1c703 ******/
+		/****** md5 signature: b2a660ab6dfefd138eecba3d6fb0dc0d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aInvisibleItems: StepVisual_HArray1OfInvisibleItem
+aInvisibleItems: NCollection_HArray1<StepVisual_InvisibleItem
 aPresentationContext: StepVisual_InvisibilityContext
 
 Return
@@ -8054,7 +7923,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepVisual_HArray1OfInvisibleItem> & aInvisibleItems, const StepVisual_InvisibilityContext & aPresentationContext);
+		void Init(const opencascade::handle<NCollection_HArray1<StepVisual_InvisibleItem> > & aInvisibleItems, const StepVisual_InvisibilityContext & aPresentationContext);
 
 		/****** StepVisual_ContextDependentInvisibility::PresentationContext ******/
 		/****** md5 signature: 65ec5e64ff0da9a7fc1f18ae60091180 ******/
@@ -8117,13 +7986,13 @@ Returns a coordinate list.
 		 StepVisual_CoordinatesList();
 
 		/****** StepVisual_CoordinatesList::Init ******/
-		/****** md5 signature: 6b8cf97a27cc571f37e1cba05bc22c29 ******/
+		/****** md5 signature: 31ed61d1c8b2b6b610787bc962553763 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-thePoints: TColgp_HArray1OfXYZ
+thePoints: NCollection_HArray1<gp_XYZ
 
 Return
 -------
@@ -8133,25 +8002,23 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints);
 
 		/****** StepVisual_CoordinatesList::Points ******/
-		/****** md5 signature: ae57370bd0bdd13575b3a053117bf726 ******/
+		/****** md5 signature: c1f589bfa1d6a4cc209d379075fd518a ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColgp_HArray1OfXYZ>
+opencascade::handle<NCollection_HArray1<gp_XYZ>>
 
 Description
 -----------
 No available documentation.
 ") Points;
-		opencascade::handle<TColgp_HArray1OfXYZ> Points();
+		opencascade::handle<NCollection_HArray1<gp_XYZ>> Points();
 
 };
 
-
-%make_alias(StepVisual_CoordinatesList)
 
 %extend StepVisual_CoordinatesList {
 	%pythoncode {
@@ -8180,8 +8047,6 @@ Returns a MechanicalDesignGeometricPresentationRepresentation.
 };
 
 
-%make_alias(StepVisual_MechanicalDesignGeometricPresentationRepresentation)
-
 %extend StepVisual_MechanicalDesignGeometricPresentationRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8207,13 +8072,13 @@ Returns a OverRidingStyledItem.
 		 StepVisual_OverRidingStyledItem();
 
 		/****** StepVisual_OverRidingStyledItem::Init ******/
-		/****** md5 signature: b6eaf947f5bce980117254b1de3cdbd8 ******/
+		/****** md5 signature: e010bfe9676cd618d97fcda48382c7e5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aStyles: StepVisual_HArray1OfPresentationStyleAssignment
+aStyles: NCollection_HArray1<
 aItem: Standard_Transient
 aOverRiddenStyle: StepVisual_StyledItem
 
@@ -8225,7 +8090,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles, const opencascade::handle<Standard_Transient> & aItem, const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment> > > & aStyles, const opencascade::handle<Standard_Transient> & aItem, const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle);
 
 		/****** StepVisual_OverRidingStyledItem::OverRiddenStyle ******/
 		/****** md5 signature: 9e4e31e172072f2fc6a76eb75d8d429e ******/
@@ -8261,8 +8126,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_OverRidingStyledItem)
-
 %extend StepVisual_OverRidingStyledItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8288,14 +8151,14 @@ Returns a PlanarBox.
 		 StepVisual_PlanarBox();
 
 		/****** StepVisual_PlanarBox::Init ******/
-		/****** md5 signature: 8bf864327a59155b489a5980c7481f2f ******/
+		/****** md5 signature: 1fa90e5afbd9f09edfb82ff572fdc414 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aSizeInX: float
-aSizeInY: float
+aSizeInX: double
+aSizeInY: double
 aPlacement: StepGeom_Axis2Placement
 
 Return
@@ -8306,7 +8169,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aSizeInX, const Standard_Real aSizeInY, const StepGeom_Axis2Placement & aPlacement);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const double aSizeInX, const double aSizeInY, const StepGeom_Axis2Placement & aPlacement);
 
 		/****** StepVisual_PlanarBox::Placement ******/
 		/****** md5 signature: b66e16bd2b866237c0d300c709f8aafe ******/
@@ -8341,8 +8204,6 @@ No available documentation.
 
 };
 
-
-%make_alias(StepVisual_PlanarBox)
 
 %extend StepVisual_PlanarBox {
 	%pythoncode {
@@ -8489,8 +8350,6 @@ Returns a PresentationArea.
 };
 
 
-%make_alias(StepVisual_PresentationArea)
-
 %extend StepVisual_PresentationArea {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8516,12 +8375,12 @@ Returns a PresentationStyleByContext.
 		 StepVisual_PresentationStyleByContext();
 
 		/****** StepVisual_PresentationStyleByContext::Init ******/
-		/****** md5 signature: 9d9086df5e83732bdf0436ac9ab29d79 ******/
+		/****** md5 signature: 24cd4cfff9f7d45ec6f2c55cf204ea93 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aStyles: StepVisual_HArray1OfPresentationStyleSelect
+aStyles: NCollection_HArray1<StepVisual_PresentationStyleSelect
 aStyleContext: StepVisual_StyleContextSelect
 
 Return
@@ -8532,7 +8391,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepVisual_HArray1OfPresentationStyleSelect> & aStyles, const StepVisual_StyleContextSelect & aStyleContext);
+		void Init(const opencascade::handle<NCollection_HArray1<StepVisual_PresentationStyleSelect> > & aStyles, const StepVisual_StyleContextSelect & aStyleContext);
 
 		/****** StepVisual_PresentationStyleByContext::SetStyleContext ******/
 		/****** md5 signature: 8d8197c8c77f7080eddfc3b83e7ca162 ******/
@@ -8597,8 +8456,6 @@ Returns a PresentationView.
 };
 
 
-%make_alias(StepVisual_PresentationView)
-
 %extend StepVisual_PresentationView {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8611,7 +8468,7 @@ Returns a PresentationView.
 class StepVisual_RepositionedTessellatedItem : public StepVisual_TessellatedItem {
 	public:
 		/****** StepVisual_RepositionedTessellatedItem::StepVisual_RepositionedTessellatedItem ******/
-		/****** md5 signature: 676ee0afc6ba0ef5b172214d520839b2 ******/
+		/****** md5 signature: 8828630e63b33355a5d8f1af7489fbb2 ******/
 		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedItem;
 		%feature("autodoc", "Return
 -------
@@ -8676,9 +8533,86 @@ Sets location.
 };
 
 
-%make_alias(StepVisual_RepositionedTessellatedItem)
-
 %extend StepVisual_RepositionedTessellatedItem {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************************
+* class StepVisual_SurfaceStyleReflectanceAmbientDiffuse *
+*********************************************************/
+class StepVisual_SurfaceStyleReflectanceAmbientDiffuse : public StepVisual_SurfaceStyleReflectanceAmbient {
+	public:
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuse::StepVisual_SurfaceStyleReflectanceAmbientDiffuse ******/
+		/****** md5 signature: 2970d5bc9080fb838b60bf8aabaa4ed7 ******/
+		%feature("compactdefaultargs") StepVisual_SurfaceStyleReflectanceAmbientDiffuse;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+default constructor.
+") StepVisual_SurfaceStyleReflectanceAmbientDiffuse;
+		 StepVisual_SurfaceStyleReflectanceAmbientDiffuse();
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuse::DiffuseReflectance ******/
+		/****** md5 signature: 85e9bf2b3bac947067c8949f010739fb ******/
+		%feature("compactdefaultargs") DiffuseReflectance;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns field DiffuseReflectance.
+") DiffuseReflectance;
+		double DiffuseReflectance();
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuse::Init ******/
+		/****** md5 signature: f3171e6216aff3a8ebe52a1ef6e8a42e ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theAmbientReflectance: double
+theDiffuseReflectance: double
+
+Return
+-------
+None
+
+Description
+-----------
+Initialize all fields (own and inherited).
+") Init;
+		void Init(const double theAmbientReflectance, const double theDiffuseReflectance);
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuse::SetDiffuseReflectance ******/
+		/****** md5 signature: 944280b6485a4c1af7bc55b23f7bbc44 ******/
+		%feature("compactdefaultargs") SetDiffuseReflectance;
+		%feature("autodoc", "
+Parameters
+----------
+theDiffuseReflectance: double
+
+Return
+-------
+None
+
+Description
+-----------
+Sets field DiffuseReflectance.
+") SetDiffuseReflectance;
+		void SetDiffuseReflectance(const double theDiffuseReflectance);
+
+};
+
+
+%make_alias(StepVisual_SurfaceStyleReflectanceAmbientDiffuse)
+
+%extend StepVisual_SurfaceStyleReflectanceAmbientDiffuse {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -8703,14 +8637,14 @@ default constructor.
 		 StepVisual_SurfaceStyleRenderingWithProperties();
 
 		/****** StepVisual_SurfaceStyleRenderingWithProperties::Init ******/
-		/****** md5 signature: 6ccee1bad33817e66b5f255ad860827b ******/
+		/****** md5 signature: 01f46d19ebbdc0450b837239f27b9f3b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurfaceStyleRendering_RenderingMethod: StepVisual_ShadingSurfaceMethod
 theSurfaceStyleRendering_SurfaceColour: StepVisual_Colour
-theProperties: StepVisual_HArray1OfRenderingPropertiesSelect
+theProperties: NCollection_HArray1<StepVisual_RenderingPropertiesSelect
 
 Return
 -------
@@ -8720,28 +8654,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const StepVisual_ShadingSurfaceMethod theSurfaceStyleRendering_RenderingMethod, const opencascade::handle<StepVisual_Colour> & theSurfaceStyleRendering_SurfaceColour, const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
+		void Init(const StepVisual_ShadingSurfaceMethod theSurfaceStyleRendering_RenderingMethod, const opencascade::handle<StepVisual_Colour> & theSurfaceStyleRendering_SurfaceColour, const opencascade::handle<NCollection_HArray1<StepVisual_RenderingPropertiesSelect> > & theProperties);
 
 		/****** StepVisual_SurfaceStyleRenderingWithProperties::Properties ******/
-		/****** md5 signature: dcd41794385dc173a5798e6ef5ebdf66 ******/
+		/****** md5 signature: 6dee952cd20102ced01501b711c9993c ******/
 		%feature("compactdefaultargs") Properties;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_RenderingPropertiesSelect>>
 
 Description
 -----------
 Returns field Properties.
 ") Properties;
-		opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> Properties();
+		opencascade::handle<NCollection_HArray1<StepVisual_RenderingPropertiesSelect>> Properties();
 
 		/****** StepVisual_SurfaceStyleRenderingWithProperties::SetProperties ******/
-		/****** md5 signature: 94b0b2d7f95c87b9c8fd1441d384ffa5 ******/
+		/****** md5 signature: bab066736f88ca2e01ab4428e3fe9519 ******/
 		%feature("compactdefaultargs") SetProperties;
 		%feature("autodoc", "
 Parameters
 ----------
-theProperties: StepVisual_HArray1OfRenderingPropertiesSelect
+theProperties: NCollection_HArray1<StepVisual_RenderingPropertiesSelect
 
 Return
 -------
@@ -8751,7 +8685,7 @@ Description
 -----------
 Sets field Properties.
 ") SetProperties;
-		void SetProperties(const opencascade::handle<StepVisual_HArray1OfRenderingPropertiesSelect> & theProperties);
+		void SetProperties(const opencascade::handle<NCollection_HArray1<StepVisual_RenderingPropertiesSelect> > & theProperties);
 
 };
 
@@ -8778,14 +8712,12 @@ None
 
 Description
 -----------
-Returns a TesselatedAnnotationOccurence.
+Returns a TesselatedAnnotationOccurrence.
 ") StepVisual_TessellatedAnnotationOccurrence;
 		 StepVisual_TessellatedAnnotationOccurrence();
 
 };
 
-
-%make_alias(StepVisual_TessellatedAnnotationOccurrence)
 
 %extend StepVisual_TessellatedAnnotationOccurrence {
 	%pythoncode {
@@ -8825,27 +8757,27 @@ No available documentation.
 		opencascade::handle<StepVisual_CoordinatesList> CoordList();
 
 		/****** StepVisual_TessellatedCurveSet::Curves ******/
-		/****** md5 signature: 2fcc167b61b3b4e02a3fe5f1ad44dc28 ******/
+		/****** md5 signature: ab1231ea345030733d76cc7a3fd49128 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "Return
 -------
-NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger >
+NCollection_Handle<NCollection_Vector<opencascade::handle<NCollection_HSequence<int>>>>
 
 Description
 -----------
 No available documentation.
 ") Curves;
-		NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger > Curves();
+		NCollection_Handle<NCollection_Vector<opencascade::handle<NCollection_HSequence<int>>>> Curves();
 
 		/****** StepVisual_TessellatedCurveSet::Init ******/
-		/****** md5 signature: 3e1b0139b2d5cd0ae25418ff544765a7 ******/
+		/****** md5 signature: b46e94ad15c915a0a788cd1fa3b76e4e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theCoordList: StepVisual_CoordinatesList
-theCurves: NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger>
+theCurves: NCollection_HSequence<int
 
 Return
 -------
@@ -8855,12 +8787,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_CoordinatesList> & theCoordList, const NCollection_Handle<StepVisual_VectorOfHSequenceOfInteger> & theCurves);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_CoordinatesList> & theCoordList, const NCollection_Handle<NCollection_Vector<opencascade::handle<NCollection_HSequence<int> > > > & theCurves);
 
 };
 
-
-%make_alias(StepVisual_TessellatedCurveSet)
 
 %extend StepVisual_TessellatedCurveSet {
 	%pythoncode {
@@ -8887,13 +8817,13 @@ Returns a DraughtingCalloutElement select type.
 		 StepVisual_TessellatedGeometricSet();
 
 		/****** StepVisual_TessellatedGeometricSet::Init ******/
-		/****** md5 signature: 5a1e4132221dbd9bd990e3b979865450 ******/
+		/****** md5 signature: e9815393ddfcdbf36937b3cd16ae9e06 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem>
+theItems: StepVisual_TessellatedItem
 
 Return
 -------
@@ -8903,25 +8833,23 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<StepVisual_Array1OfTessellatedItem> & theItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem> > > & theItems);
 
 		/****** StepVisual_TessellatedGeometricSet::Items ******/
-		/****** md5 signature: f2c8bdf941344c8dc9a1b9e0f0dbd6f2 ******/
+		/****** md5 signature: c9f82d2eee3184f24a2f6fecd668e8c1 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-NCollection_Handle<StepVisual_Array1OfTessellatedItem >
+NCollection_Handle<NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>>>
 
 Description
 -----------
 No available documentation.
 ") Items;
-		NCollection_Handle<StepVisual_Array1OfTessellatedItem > Items();
+		NCollection_Handle<NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem>>> Items();
 
 };
 
-
-%make_alias(StepVisual_TessellatedGeometricSet)
 
 %extend StepVisual_TessellatedGeometricSet {
 	%pythoncode {
@@ -8961,14 +8889,14 @@ Returns field Coordinates.
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****** StepVisual_TessellatedPointSet::Init ******/
-		/****** md5 signature: ec4773c2104213411962b46a2e3b3447 ******/
+		/****** md5 signature: ecca887104b9426419a024612ff6e9a1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 theCoordinates: StepVisual_CoordinatesList
-thePointList: TColStd_HArray1OfInteger
+thePointList: NCollection_HArray1<int
 
 Return
 -------
@@ -8978,10 +8906,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const opencascade::handle<NCollection_HArray1<int> > & thePointList);
 
 		/****** StepVisual_TessellatedPointSet::NbPointList ******/
-		/****** md5 signature: b90b8a3ea8a0827b868e6afd5f3bf74b ******/
+		/****** md5 signature: 11ec15efaa7cd8148e356b260650d6fc ******/
 		%feature("compactdefaultargs") NbPointList;
 		%feature("autodoc", "Return
 -------
@@ -8991,23 +8919,23 @@ Description
 -----------
 Returns number of PointList.
 ") NbPointList;
-		Standard_Integer NbPointList();
+		int NbPointList();
 
 		/****** StepVisual_TessellatedPointSet::PointList ******/
-		/****** md5 signature: 2581e8b82450570684893bd02acfd0bd ******/
+		/****** md5 signature: 29188045ee53e29bad5815922b5841d8 ******/
 		%feature("compactdefaultargs") PointList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field PointList.
 ") PointList;
-		opencascade::handle<TColStd_HArray1OfInteger> PointList();
+		opencascade::handle<NCollection_HArray1<int>> PointList();
 
 		/****** StepVisual_TessellatedPointSet::PointListValue ******/
-		/****** md5 signature: 9f5033dc63673f11f4cb1e36bb1f4e93 ******/
+		/****** md5 signature: aca25e2d4fb2a88826836835e4c03640 ******/
 		%feature("compactdefaultargs") PointListValue;
 		%feature("autodoc", "
 Parameters
@@ -9022,7 +8950,7 @@ Description
 -----------
 Returns value of PointList by its num.
 ") PointListValue;
-		Standard_Integer PointListValue(const Standard_Integer theNum);
+		int PointListValue(const int theNum);
 
 		/****** StepVisual_TessellatedPointSet::SetCoordinates ******/
 		/****** md5 signature: 67496989a6887e140d96a4901bab43cb ******/
@@ -9043,12 +8971,12 @@ Sets field Coordinates.
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****** StepVisual_TessellatedPointSet::SetPointList ******/
-		/****** md5 signature: 790f3d2e1872305718f8dd98a09ffda7 ******/
+		/****** md5 signature: 92e29f778d5a78f76fcd1e9e489bac02 ******/
 		%feature("compactdefaultargs") SetPointList;
 		%feature("autodoc", "
 Parameters
 ----------
-thePointList: TColStd_HArray1OfInteger
+thePointList: NCollection_HArray1<int
 
 Return
 -------
@@ -9058,12 +8986,10 @@ Description
 -----------
 Sets field PointList.
 ") SetPointList;
-		void SetPointList(const opencascade::handle<TColStd_HArray1OfInteger> & thePointList);
+		void SetPointList(const opencascade::handle<NCollection_HArray1<int> > & thePointList);
 
 };
 
-
-%make_alias(StepVisual_TessellatedPointSet)
 
 %extend StepVisual_TessellatedPointSet {
 	%pythoncode {
@@ -9090,15 +9016,15 @@ default constructor.
 		 StepVisual_TessellatedShapeRepresentationWithAccuracyParameters();
 
 		/****** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters::Init ******/
-		/****** md5 signature: f85408479b34c1cade618da7b4de70e9 ******/
+		/****** md5 signature: 061d1400d8ff6b2affe830d162144318 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentation_Name: TCollection_HAsciiString
-theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+theRepresentation_Items: NCollection_HArray1<
 theRepresentation_ContextOfItems: StepRepr_RepresentationContext
-theTessellationAccuracyParameters: TColStd_HArray1OfReal
+theTessellationAccuracyParameters: NCollection_HArray1<double
 
 Return
 -------
@@ -9108,10 +9034,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<NCollection_HArray1<double> > & theTessellationAccuracyParameters);
 
 		/****** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters::NbTessellationAccuracyParameters ******/
-		/****** md5 signature: 13b9a7e33d8f6c2c3b0aae5277001286 ******/
+		/****** md5 signature: 0c06bd4a5f2d56aaf60057c743a036f3 ******/
 		%feature("compactdefaultargs") NbTessellationAccuracyParameters;
 		%feature("autodoc", "Return
 -------
@@ -9121,15 +9047,15 @@ Description
 -----------
 Returns number of TessellationAccuracyParameters.
 ") NbTessellationAccuracyParameters;
-		Standard_Integer NbTessellationAccuracyParameters();
+		int NbTessellationAccuracyParameters();
 
 		/****** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters::SetTessellationAccuracyParameters ******/
-		/****** md5 signature: 546fb6b6bbb12e01f420401102f6cfb1 ******/
+		/****** md5 signature: 6cc286a8bf081919579933099436b22d ******/
 		%feature("compactdefaultargs") SetTessellationAccuracyParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-theTessellationAccuracyParameters: TColStd_HArray1OfReal
+theTessellationAccuracyParameters: NCollection_HArray1<double
 
 Return
 -------
@@ -9139,23 +9065,23 @@ Description
 -----------
 Sets field TessellationAccuracyParameters.
 ") SetTessellationAccuracyParameters;
-		void SetTessellationAccuracyParameters(const opencascade::handle<TColStd_HArray1OfReal> & theTessellationAccuracyParameters);
+		void SetTessellationAccuracyParameters(const opencascade::handle<NCollection_HArray1<double> > & theTessellationAccuracyParameters);
 
 		/****** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters::TessellationAccuracyParameters ******/
-		/****** md5 signature: 15082317812f6de6cca655069baeb736 ******/
+		/****** md5 signature: c26a6c53a986e2cc5603069cead08d27 ******/
 		%feature("compactdefaultargs") TessellationAccuracyParameters;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns field TessellationAccuracyParameters.
 ") TessellationAccuracyParameters;
-		opencascade::handle<TColStd_HArray1OfReal> TessellationAccuracyParameters();
+		opencascade::handle<NCollection_HArray1<double>> TessellationAccuracyParameters();
 
 		/****** StepVisual_TessellatedShapeRepresentationWithAccuracyParameters::TessellationAccuracyParametersValue ******/
-		/****** md5 signature: a2b0a93749d491897c6eb85998771d00 ******/
+		/****** md5 signature: f013cf678c770328315cf7c32a22d525 ******/
 		%feature("compactdefaultargs") TessellationAccuracyParametersValue;
 		%feature("autodoc", "
 Parameters
@@ -9164,18 +9090,16 @@ theNum: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns value of TessellationAccuracyParameters by its num.
 ") TessellationAccuracyParametersValue;
-		const Standard_Real & TessellationAccuracyParametersValue(const Standard_Integer theNum);
+		const double & TessellationAccuracyParametersValue(const int theNum);
 
 };
 
-
-%make_alias(StepVisual_TessellatedShapeRepresentationWithAccuracyParameters)
 
 %extend StepVisual_TessellatedShapeRepresentationWithAccuracyParameters {
 	%pythoncode {
@@ -9202,7 +9126,7 @@ default constructor.
 		 StepVisual_TessellatedShell();
 
 		/****** StepVisual_TessellatedShell::HasTopologicalLink ******/
-		/****** md5 signature: b2a8f6180f026b329187f8297fbc4881 ******/
+		/****** md5 signature: f4cbb5d53bb67ed635ad7c9628c33302 ******/
 		%feature("compactdefaultargs") HasTopologicalLink;
 		%feature("autodoc", "Return
 -------
@@ -9212,16 +9136,16 @@ Description
 -----------
 Returns True if optional field TopologicalLink is defined.
 ") HasTopologicalLink;
-		Standard_Boolean HasTopologicalLink();
+		bool HasTopologicalLink();
 
 		/****** StepVisual_TessellatedShell::Init ******/
-		/****** md5 signature: 94210c7f690ac44251daba880caa734d ******/
+		/****** md5 signature: 26ea0e083e274e328df5d814390f1cc6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
-theItems: StepVisual_HArray1OfTessellatedStructuredItem
+theItems: NCollection_HArray1<
 theHasTopologicalLink: bool
 theTopologicalLink: StepShape_ConnectedFaceSet
 
@@ -9233,23 +9157,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems, const Standard_Boolean theHasTopologicalLink, const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem> > > & theItems, const bool theHasTopologicalLink, const opencascade::handle<StepShape_ConnectedFaceSet> & theTopologicalLink);
 
 		/****** StepVisual_TessellatedShell::Items ******/
-		/****** md5 signature: 203b14c6f195b69b3e0aacbe9f49e3fa ******/
+		/****** md5 signature: 551618fff81588d330a54ff6d6cd1b68 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>> Items();
 
 		/****** StepVisual_TessellatedShell::ItemsValue ******/
-		/****** md5 signature: 282108d369d7aea12634aa7e081aaa30 ******/
+		/****** md5 signature: 4f24dcab8edfab0529a974fad70d8be2 ******/
 		%feature("compactdefaultargs") ItemsValue;
 		%feature("autodoc", "
 Parameters
@@ -9264,10 +9188,10 @@ Description
 -----------
 Returns value of Items by its num.
 ") ItemsValue;
-		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
+		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const int theNum);
 
 		/****** StepVisual_TessellatedShell::NbItems ******/
-		/****** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ******/
+		/****** md5 signature: 2b529efc4e5d8a11084d3f577abfb55b ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "Return
 -------
@@ -9277,15 +9201,15 @@ Description
 -----------
 Returns number of Items.
 ") NbItems;
-		Standard_Integer NbItems();
+		int NbItems();
 
 		/****** StepVisual_TessellatedShell::SetItems ******/
-		/****** md5 signature: b21476192d46c8f6e58044ebf10ef43c ******/
+		/****** md5 signature: 17aaa75e212a969a1b4171af00f478f1 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-theItems: StepVisual_HArray1OfTessellatedStructuredItem
+theItems: NCollection_HArray1<
 
 Return
 -------
@@ -9295,7 +9219,7 @@ Description
 -----------
 Sets field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem> > > & theItems);
 
 		/****** StepVisual_TessellatedShell::SetTopologicalLink ******/
 		/****** md5 signature: fb3583e7f62ff4dd76a0e4a084a80aa3 ******/
@@ -9330,8 +9254,6 @@ Returns field TopologicalLink.
 
 };
 
-
-%make_alias(StepVisual_TessellatedShell)
 
 %extend StepVisual_TessellatedShell {
 	%pythoncode {
@@ -9371,7 +9293,7 @@ Returns field GeometricLink.
 		opencascade::handle<StepShape_ManifoldSolidBrep> GeometricLink();
 
 		/****** StepVisual_TessellatedSolid::HasGeometricLink ******/
-		/****** md5 signature: 432ca769d0ec23ad86df023b91c35498 ******/
+		/****** md5 signature: 7973d6dd6244b6e2282e3fd64891961e ******/
 		%feature("compactdefaultargs") HasGeometricLink;
 		%feature("autodoc", "Return
 -------
@@ -9381,16 +9303,16 @@ Description
 -----------
 Returns True if optional field GeometricLink is defined.
 ") HasGeometricLink;
-		Standard_Boolean HasGeometricLink();
+		bool HasGeometricLink();
 
 		/****** StepVisual_TessellatedSolid::Init ******/
-		/****** md5 signature: 85dcd9e89962e4c2fe1ef90c4cccbb73 ******/
+		/****** md5 signature: 25c78955fd62fd7d4dd55b25d394ced0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
-theItems: StepVisual_HArray1OfTessellatedStructuredItem
+theItems: NCollection_HArray1<
 theHasGeometricLink: bool
 theGeometricLink: StepShape_ManifoldSolidBrep
 
@@ -9402,23 +9324,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems, const Standard_Boolean theHasGeometricLink, const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem> > > & theItems, const bool theHasGeometricLink, const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
 
 		/****** StepVisual_TessellatedSolid::Items ******/
-		/****** md5 signature: 203b14c6f195b69b3e0aacbe9f49e3fa ******/
+		/****** md5 signature: 551618fff81588d330a54ff6d6cd1b68 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> Items();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem>>> Items();
 
 		/****** StepVisual_TessellatedSolid::ItemsValue ******/
-		/****** md5 signature: 282108d369d7aea12634aa7e081aaa30 ******/
+		/****** md5 signature: 4f24dcab8edfab0529a974fad70d8be2 ******/
 		%feature("compactdefaultargs") ItemsValue;
 		%feature("autodoc", "
 Parameters
@@ -9433,10 +9355,10 @@ Description
 -----------
 Returns value of Items by its num.
 ") ItemsValue;
-		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const Standard_Integer theNum);
+		opencascade::handle<StepVisual_TessellatedStructuredItem> ItemsValue(const int theNum);
 
 		/****** StepVisual_TessellatedSolid::NbItems ******/
-		/****** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ******/
+		/****** md5 signature: 2b529efc4e5d8a11084d3f577abfb55b ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "Return
 -------
@@ -9446,7 +9368,7 @@ Description
 -----------
 Returns number of Items.
 ") NbItems;
-		Standard_Integer NbItems();
+		int NbItems();
 
 		/****** StepVisual_TessellatedSolid::SetGeometricLink ******/
 		/****** md5 signature: a18372a243c7cd29aec2b1d7e7c35312 ******/
@@ -9467,12 +9389,12 @@ Sets field GeometricLink.
 		void SetGeometricLink(const opencascade::handle<StepShape_ManifoldSolidBrep> & theGeometricLink);
 
 		/****** StepVisual_TessellatedSolid::SetItems ******/
-		/****** md5 signature: b21476192d46c8f6e58044ebf10ef43c ******/
+		/****** md5 signature: 17aaa75e212a969a1b4171af00f478f1 ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-theItems: StepVisual_HArray1OfTessellatedStructuredItem
+theItems: NCollection_HArray1<
 
 Return
 -------
@@ -9482,12 +9404,10 @@ Description
 -----------
 Sets field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedStructuredItem> & theItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_TessellatedStructuredItem> > > & theItems);
 
 };
 
-
-%make_alias(StepVisual_TessellatedSolid)
 
 %extend StepVisual_TessellatedSolid {
 	%pythoncode {
@@ -9515,8 +9435,6 @@ default constructor.
 
 };
 
-
-%make_alias(StepVisual_TessellatedStructuredItem)
 
 %extend StepVisual_TessellatedStructuredItem {
 	%pythoncode {
@@ -9556,7 +9474,7 @@ Returns field Coordinates.
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****** StepVisual_TessellatedSurfaceSet::Init ******/
-		/****** md5 signature: 01962d23e27f7d3450592abfc9bcc70c ******/
+		/****** md5 signature: cfb8e8d8406db36704a30ddab11bb5f0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9564,7 +9482,7 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 theCoordinates: StepVisual_CoordinatesList
 thePnmax: int
-theNormals: TColStd_HArray2OfReal
+theNormals: NCollection_HArray2<double
 
 Return
 -------
@@ -9574,10 +9492,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Integer thePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const int thePnmax, const opencascade::handle<NCollection_HArray2<double> > & theNormals);
 
 		/****** StepVisual_TessellatedSurfaceSet::NbNormals ******/
-		/****** md5 signature: e8ae9c17a546ef8db4eb8b45e7edd0e8 ******/
+		/****** md5 signature: 70704d74c52f9f781807886fb702a9a0 ******/
 		%feature("compactdefaultargs") NbNormals;
 		%feature("autodoc", "Return
 -------
@@ -9587,23 +9505,23 @@ Description
 -----------
 Returns number of Normals.
 ") NbNormals;
-		Standard_Integer NbNormals();
+		int NbNormals();
 
 		/****** StepVisual_TessellatedSurfaceSet::Normals ******/
-		/****** md5 signature: 369b381d12bed5d4109e95bc2ede0ab6 ******/
+		/****** md5 signature: 6e61cf49fb411fafdb848cd6d5537857 ******/
 		%feature("compactdefaultargs") Normals;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfReal>
+opencascade::handle<NCollection_HArray2<double>>
 
 Description
 -----------
 Returns field Normals.
 ") Normals;
-		opencascade::handle<TColStd_HArray2OfReal> Normals();
+		opencascade::handle<NCollection_HArray2<double>> Normals();
 
 		/****** StepVisual_TessellatedSurfaceSet::Pnmax ******/
-		/****** md5 signature: 0b280e192c56c44fffab9481c68ac038 ******/
+		/****** md5 signature: f8c9f6434162140214befb9c86ad56a9 ******/
 		%feature("compactdefaultargs") Pnmax;
 		%feature("autodoc", "Return
 -------
@@ -9613,7 +9531,7 @@ Description
 -----------
 Returns field Pnmax.
 ") Pnmax;
-		Standard_Integer Pnmax();
+		int Pnmax();
 
 		/****** StepVisual_TessellatedSurfaceSet::SetCoordinates ******/
 		/****** md5 signature: 67496989a6887e140d96a4901bab43cb ******/
@@ -9634,12 +9552,12 @@ Sets field Coordinates.
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****** StepVisual_TessellatedSurfaceSet::SetNormals ******/
-		/****** md5 signature: 6dd69aae81e446ea2f47e92611adf4ec ******/
+		/****** md5 signature: 842aa9edbe18cb9cfb26e7712adf84b0 ******/
 		%feature("compactdefaultargs") SetNormals;
 		%feature("autodoc", "
 Parameters
 ----------
-theNormals: TColStd_HArray2OfReal
+theNormals: NCollection_HArray2<double
 
 Return
 -------
@@ -9649,10 +9567,10 @@ Description
 -----------
 Sets field Normals.
 ") SetNormals;
-		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
+		void SetNormals(const opencascade::handle<NCollection_HArray2<double> > & theNormals);
 
 		/****** StepVisual_TessellatedSurfaceSet::SetPnmax ******/
-		/****** md5 signature: 684034e32240f760527db1f7f7c9f728 ******/
+		/****** md5 signature: b8d9a8891a4a0dd68dc51880031eb888 ******/
 		%feature("compactdefaultargs") SetPnmax;
 		%feature("autodoc", "
 Parameters
@@ -9667,12 +9585,10 @@ Description
 -----------
 Sets field Pnmax.
 ") SetPnmax;
-		void SetPnmax(const Standard_Integer thePnmax);
+		void SetPnmax(const int thePnmax);
 
 };
 
-
-%make_alias(StepVisual_TessellatedSurfaceSet)
 
 %extend StepVisual_TessellatedSurfaceSet {
 	%pythoncode {
@@ -9712,7 +9628,7 @@ Returns field GeometricModelLink.
 		StepVisual_PathOrCompositeCurve GeometricModelLink();
 
 		/****** StepVisual_TessellatedWire::HasGeometricModelLink ******/
-		/****** md5 signature: 7807a19596f6c3f1b22f6e665f78b0d0 ******/
+		/****** md5 signature: 4e8d9f715b2a870c05be9d9ecf3780cc ******/
 		%feature("compactdefaultargs") HasGeometricModelLink;
 		%feature("autodoc", "Return
 -------
@@ -9722,16 +9638,16 @@ Description
 -----------
 Returns True if optional field GeometricModelLink is defined.
 ") HasGeometricModelLink;
-		Standard_Boolean HasGeometricModelLink();
+		bool HasGeometricModelLink();
 
 		/****** StepVisual_TessellatedWire::Init ******/
-		/****** md5 signature: 3e058d127115bf40cd9b0af41383277f ******/
+		/****** md5 signature: 7386d8feb363cdca7e2ecc92d6d57e52 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
-theItems: StepVisual_HArray1OfTessellatedEdgeOrVertex
+theItems: NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex
 theHasGeometricModelLink: bool
 theGeometricModelLink: StepVisual_PathOrCompositeCurve
 
@@ -9743,23 +9659,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems, const Standard_Boolean theHasGeometricModelLink, const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex> > & theItems, const bool theHasGeometricModelLink, const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
 
 		/****** StepVisual_TessellatedWire::Items ******/
-		/****** md5 signature: 7173f9b87705b3ad84710a5560ff269f ******/
+		/****** md5 signature: 84b70a8d1be57b8bbfec3ca22dba7aed ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex>
+opencascade::handle<NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex>>
 
 Description
 -----------
 Returns field Items.
 ") Items;
-		opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> Items();
+		opencascade::handle<NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex>> Items();
 
 		/****** StepVisual_TessellatedWire::ItemsValue ******/
-		/****** md5 signature: 5d3a2bcb1e6aad294ea96aa96fa9b5b4 ******/
+		/****** md5 signature: ce669d7fe45e564adda3273db8d5b493 ******/
 		%feature("compactdefaultargs") ItemsValue;
 		%feature("autodoc", "
 Parameters
@@ -9774,10 +9690,10 @@ Description
 -----------
 Returns value of Items by its num.
 ") ItemsValue;
-		const StepVisual_TessellatedEdgeOrVertex & ItemsValue(const Standard_Integer theNum);
+		const StepVisual_TessellatedEdgeOrVertex & ItemsValue(const int theNum);
 
 		/****** StepVisual_TessellatedWire::NbItems ******/
-		/****** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ******/
+		/****** md5 signature: 2b529efc4e5d8a11084d3f577abfb55b ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "Return
 -------
@@ -9787,7 +9703,7 @@ Description
 -----------
 Returns number of Items.
 ") NbItems;
-		Standard_Integer NbItems();
+		int NbItems();
 
 		/****** StepVisual_TessellatedWire::SetGeometricModelLink ******/
 		/****** md5 signature: 3c1b193092fd68648e9fa59ae725fa94 ******/
@@ -9808,12 +9724,12 @@ Sets field GeometricModelLink.
 		void SetGeometricModelLink(const StepVisual_PathOrCompositeCurve & theGeometricModelLink);
 
 		/****** StepVisual_TessellatedWire::SetItems ******/
-		/****** md5 signature: 259d17bf79770a16966154928a674ffa ******/
+		/****** md5 signature: 021ba42fedbd6ed4a95eb4e872a2a34d ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-theItems: StepVisual_HArray1OfTessellatedEdgeOrVertex
+theItems: NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex
 
 Return
 -------
@@ -9823,12 +9739,10 @@ Description
 -----------
 Sets field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepVisual_HArray1OfTessellatedEdgeOrVertex> & theItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex> > & theItems);
 
 };
 
-
-%make_alias(StepVisual_TessellatedWire)
 
 %extend StepVisual_TessellatedWire {
 	%pythoncode {
@@ -9855,20 +9769,20 @@ Returns a TextStyleWithBoxCharacteristics.
 		 StepVisual_TextStyleWithBoxCharacteristics();
 
 		/****** StepVisual_TextStyleWithBoxCharacteristics::Characteristics ******/
-		/****** md5 signature: f404ef9ffc1e7202571832cfe61d6f1a ******/
+		/****** md5 signature: ddbfb8c88952a08bb7b7ff036a441638 ******/
 		%feature("compactdefaultargs") Characteristics;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_BoxCharacteristicSelect>>
 
 Description
 -----------
 No available documentation.
 ") Characteristics;
-		opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> Characteristics();
+		opencascade::handle<NCollection_HArray1<StepVisual_BoxCharacteristicSelect>> Characteristics();
 
 		/****** StepVisual_TextStyleWithBoxCharacteristics::CharacteristicsValue ******/
-		/****** md5 signature: d504f1937c0bfbbf3548ed45b0cf5d75 ******/
+		/****** md5 signature: a7291e286f02af25e55c04ec1a0eb9e6 ******/
 		%feature("compactdefaultargs") CharacteristicsValue;
 		%feature("autodoc", "
 Parameters
@@ -9883,17 +9797,17 @@ Description
 -----------
 No available documentation.
 ") CharacteristicsValue;
-		StepVisual_BoxCharacteristicSelect CharacteristicsValue(const Standard_Integer num);
+		StepVisual_BoxCharacteristicSelect CharacteristicsValue(const int num);
 
 		/****** StepVisual_TextStyleWithBoxCharacteristics::Init ******/
-		/****** md5 signature: f2cdd3ec9856430e059eee611e1e6811 ******/
+		/****** md5 signature: 86ff56288c2f71f7fbaf9de1ef1e4859 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aCharacterAppearance: StepVisual_TextStyleForDefinedFont
-aCharacteristics: StepVisual_HArray1OfBoxCharacteristicSelect
+aCharacteristics: NCollection_HArray1<StepVisual_BoxCharacteristicSelect
 
 Return
 -------
@@ -9903,10 +9817,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance, const opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> & aCharacteristics);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_TextStyleForDefinedFont> & aCharacterAppearance, const opencascade::handle<NCollection_HArray1<StepVisual_BoxCharacteristicSelect> > & aCharacteristics);
 
 		/****** StepVisual_TextStyleWithBoxCharacteristics::NbCharacteristics ******/
-		/****** md5 signature: 4c7f646d04322e6acab962ed47134e10 ******/
+		/****** md5 signature: 5599383221a9f1329ae14fba75253922 ******/
 		%feature("compactdefaultargs") NbCharacteristics;
 		%feature("autodoc", "Return
 -------
@@ -9916,15 +9830,15 @@ Description
 -----------
 No available documentation.
 ") NbCharacteristics;
-		Standard_Integer NbCharacteristics();
+		int NbCharacteristics();
 
 		/****** StepVisual_TextStyleWithBoxCharacteristics::SetCharacteristics ******/
-		/****** md5 signature: 8fdd6de6baaffbe99586f96ed70c9a26 ******/
+		/****** md5 signature: 6960ff67e698cecb5719a1557345cac6 ******/
 		%feature("compactdefaultargs") SetCharacteristics;
 		%feature("autodoc", "
 Parameters
 ----------
-aCharacteristics: StepVisual_HArray1OfBoxCharacteristicSelect
+aCharacteristics: NCollection_HArray1<StepVisual_BoxCharacteristicSelect
 
 Return
 -------
@@ -9934,7 +9848,7 @@ Description
 -----------
 No available documentation.
 ") SetCharacteristics;
-		void SetCharacteristics(const opencascade::handle<StepVisual_HArray1OfBoxCharacteristicSelect> & aCharacteristics);
+		void SetCharacteristics(const opencascade::handle<NCollection_HArray1<StepVisual_BoxCharacteristicSelect> > & aCharacteristics);
 
 };
 
@@ -9967,8 +9881,6 @@ Returns a AnnotationCurveOccurrence.
 
 };
 
-
-%make_alias(StepVisual_AnnotationCurveOccurrence)
 
 %extend StepVisual_AnnotationCurveOccurrence {
 	%pythoncode {
@@ -10008,13 +9920,13 @@ Returns field fill_style_target.
 		opencascade::handle<StepGeom_GeometricRepresentationItem> FillStyleTarget();
 
 		/****** StepVisual_AnnotationFillAreaOccurrence::Init ******/
-		/****** md5 signature: da37e729d86f3d06f5f8f71fb1dab436 ******/
+		/****** md5 signature: 8d5dfcff20475bc9da1414507bafcfc6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theStyles: StepVisual_HArray1OfPresentationStyleAssignment
+theStyles: NCollection_HArray1<
 theItem: Standard_Transient
 theFillStyleTarget: StepGeom_GeometricRepresentationItem
 
@@ -10026,7 +9938,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & theStyles, const opencascade::handle<Standard_Transient> & theItem, const opencascade::handle<StepGeom_GeometricRepresentationItem> & theFillStyleTarget);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment> > > & theStyles, const opencascade::handle<Standard_Transient> & theItem, const opencascade::handle<StepGeom_GeometricRepresentationItem> & theFillStyleTarget);
 
 		/****** StepVisual_AnnotationFillAreaOccurrence::SetFillStyleTarget ******/
 		/****** md5 signature: 4bae9db8bbdfc96357201013c6b4fd01 ******/
@@ -10048,8 +9960,6 @@ Set field fill_style_target.
 
 };
 
-
-%make_alias(StepVisual_AnnotationFillAreaOccurrence)
 
 %extend StepVisual_AnnotationFillAreaOccurrence {
 	%pythoncode {
@@ -10076,20 +9986,20 @@ Returns a AnnotationPlane.
 		 StepVisual_AnnotationPlane();
 
 		/****** StepVisual_AnnotationPlane::Elements ******/
-		/****** md5 signature: 30df17a80e0c98e5b234b9ff1cd427a0 ******/
+		/****** md5 signature: f2110067d2ac5763306d87a1001ae0a4 ******/
 		%feature("compactdefaultargs") Elements;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement>
+opencascade::handle<NCollection_HArray1<StepVisual_AnnotationPlaneElement>>
 
 Description
 -----------
 Returns field Elements.
 ") Elements;
-		opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> Elements();
+		opencascade::handle<NCollection_HArray1<StepVisual_AnnotationPlaneElement>> Elements();
 
 		/****** StepVisual_AnnotationPlane::ElementsValue ******/
-		/****** md5 signature: 379b6c8e1b13a66de92ec2d7c43d8776 ******/
+		/****** md5 signature: f1016edd7c226dbc1d718487d687a057 ******/
 		%feature("compactdefaultargs") ElementsValue;
 		%feature("autodoc", "
 Parameters
@@ -10104,18 +10014,18 @@ Description
 -----------
 Returns Elements with the given number.
 ") ElementsValue;
-		StepVisual_AnnotationPlaneElement ElementsValue(const Standard_Integer theNum);
+		StepVisual_AnnotationPlaneElement ElementsValue(const int theNum);
 
 		/****** StepVisual_AnnotationPlane::Init ******/
-		/****** md5 signature: 860354e1ff63df2679046b0a92f60e36 ******/
+		/****** md5 signature: e55f51d31574d165f952a6035a095781 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theStyles: StepVisual_HArray1OfPresentationStyleAssignment
+theStyles: NCollection_HArray1<
 theItem: Standard_Transient
-theElements: StepVisual_HArray1OfAnnotationPlaneElement
+theElements: NCollection_HArray1<StepVisual_AnnotationPlaneElement
 
 Return
 -------
@@ -10125,10 +10035,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & theStyles, const opencascade::handle<Standard_Transient> & theItem, const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment> > > & theStyles, const opencascade::handle<Standard_Transient> & theItem, const opencascade::handle<NCollection_HArray1<StepVisual_AnnotationPlaneElement> > & theElements);
 
 		/****** StepVisual_AnnotationPlane::NbElements ******/
-		/****** md5 signature: a2c5844890f023732a846fde2e05ced3 ******/
+		/****** md5 signature: 6bd0da2ccc5d818911c9af362928577e ******/
 		%feature("compactdefaultargs") NbElements;
 		%feature("autodoc", "Return
 -------
@@ -10138,15 +10048,15 @@ Description
 -----------
 Returns number of Elements.
 ") NbElements;
-		Standard_Integer NbElements();
+		int NbElements();
 
 		/****** StepVisual_AnnotationPlane::SetElements ******/
-		/****** md5 signature: 536b19fc09faf4695df49add05c14afe ******/
+		/****** md5 signature: 78070bb3a7852db1df7df0b048e6b6b1 ******/
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", "
 Parameters
 ----------
-theElements: StepVisual_HArray1OfAnnotationPlaneElement
+theElements: NCollection_HArray1<StepVisual_AnnotationPlaneElement
 
 Return
 -------
@@ -10156,10 +10066,10 @@ Description
 -----------
 Set field Elements.
 ") SetElements;
-		void SetElements(const opencascade::handle<StepVisual_HArray1OfAnnotationPlaneElement> & theElements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<StepVisual_AnnotationPlaneElement> > & theElements);
 
 		/****** StepVisual_AnnotationPlane::SetElementsValue ******/
-		/****** md5 signature: 3e944a5dc67dafe486647a4b36fef1cc ******/
+		/****** md5 signature: 622562171ac48b1af642c9f71ec720c4 ******/
 		%feature("compactdefaultargs") SetElementsValue;
 		%feature("autodoc", "
 Parameters
@@ -10175,12 +10085,10 @@ Description
 -----------
 Sets Elements with given number.
 ") SetElementsValue;
-		void SetElementsValue(const Standard_Integer theNum, const StepVisual_AnnotationPlaneElement & theItem);
+		void SetElementsValue(const int theNum, const StepVisual_AnnotationPlaneElement & theItem);
 
 };
 
-
-%make_alias(StepVisual_AnnotationPlane)
 
 %extend StepVisual_AnnotationPlane {
 	%pythoncode {
@@ -10209,8 +10117,6 @@ Returns a AnnotationTextOccurrence.
 };
 
 
-%make_alias(StepVisual_AnnotationTextOccurrence)
-
 %extend StepVisual_AnnotationTextOccurrence {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10236,7 +10142,7 @@ Returns a CameraModelD3MultiClipping.
 		 StepVisual_CameraModelD3MultiClipping();
 
 		/****** StepVisual_CameraModelD3MultiClipping::Init ******/
-		/****** md5 signature: 87e84293664db9dea1350dfc9b17aaca ******/
+		/****** md5 signature: 5c635395cca9e820df379cf52e4e923a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10244,7 +10150,7 @@ Parameters
 theName: TCollection_HAsciiString
 theViewReferenceSystem: StepGeom_Axis2Placement3d
 thePerspectiveOfVolume: StepVisual_ViewVolume
-theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
+theShapeClipping: NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect
 
 Return
 -------
@@ -10254,15 +10160,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepGeom_Axis2Placement3d> & theViewReferenceSystem, const opencascade::handle<StepVisual_ViewVolume> & thePerspectiveOfVolume, const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepGeom_Axis2Placement3d> & theViewReferenceSystem, const opencascade::handle<StepVisual_ViewVolume> & thePerspectiveOfVolume, const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect> > & theShapeClipping);
 
 		/****** StepVisual_CameraModelD3MultiClipping::SetShapeClipping ******/
-		/****** md5 signature: d3f138def09366b1d4de0425b5fa7872 ******/
+		/****** md5 signature: 187599a571177f4385040e3ae451bae8 ******/
 		%feature("compactdefaultargs") SetShapeClipping;
 		%feature("autodoc", "
 Parameters
 ----------
-theShapeClipping: StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect
+theShapeClipping: NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect
 
 Return
 -------
@@ -10272,25 +10178,23 @@ Description
 -----------
 No available documentation.
 ") SetShapeClipping;
-		void SetShapeClipping(const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> & theShapeClipping);
+		void SetShapeClipping(const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect> > & theShapeClipping);
 
 		/****** StepVisual_CameraModelD3MultiClipping::ShapeClipping ******/
-		/****** md5 signature: 6eb5c9a377534fa0b6410bb68e41bb5b ******/
+		/****** md5 signature: ed107bc4601a5fc64b033b41b9c3a47c ******/
 		%feature("compactdefaultargs") ShapeClipping;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect>>
 
 Description
 -----------
 No available documentation.
 ") ShapeClipping;
-		const opencascade::handle<StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect> ShapeClipping();
+		const opencascade::handle<NCollection_HArray1<StepVisual_CameraModelD3MultiClippingInterectionSelect>> ShapeClipping();
 
 };
 
-
-%make_alias(StepVisual_CameraModelD3MultiClipping)
 
 %extend StepVisual_CameraModelD3MultiClipping {
 	%pythoncode {
@@ -10317,41 +10221,41 @@ Returns a ColourRgb.
 		 StepVisual_ColourRgb();
 
 		/****** StepVisual_ColourRgb::Blue ******/
-		/****** md5 signature: 4771e446272835844a2885353fcdb8a9 ******/
+		/****** md5 signature: 6fb31a269592d13ae487d86b3081830d ******/
 		%feature("compactdefaultargs") Blue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Blue;
-		Standard_Real Blue();
+		double Blue();
 
 		/****** StepVisual_ColourRgb::Green ******/
-		/****** md5 signature: 3857670a16bf31e5b3300ec575b3b216 ******/
+		/****** md5 signature: 33ac4077510e9c187992357a2d6e41a8 ******/
 		%feature("compactdefaultargs") Green;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Green;
-		Standard_Real Green();
+		double Green();
 
 		/****** StepVisual_ColourRgb::Init ******/
-		/****** md5 signature: b7e1356da609efcfd53471dedf143b49 ******/
+		/****** md5 signature: 62b8dd19e1d7e719db2b8de0301df84e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aRed: float
-aGreen: float
-aBlue: float
+aRed: double
+aGreen: double
+aBlue: double
 
 Return
 -------
@@ -10361,28 +10265,28 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real aRed, const Standard_Real aGreen, const Standard_Real aBlue);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const double aRed, const double aGreen, const double aBlue);
 
 		/****** StepVisual_ColourRgb::Red ******/
-		/****** md5 signature: 0afa693a7d24010fd8ce065be2035322 ******/
+		/****** md5 signature: 7608aa9ac6327222fd720ce42e31bb70 ******/
 		%feature("compactdefaultargs") Red;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Red;
-		Standard_Real Red();
+		double Red();
 
 		/****** StepVisual_ColourRgb::SetBlue ******/
-		/****** md5 signature: 153b68d0a9744c5c4a5834c535b2fe82 ******/
+		/****** md5 signature: aa11d019748323e604a04fcfc23bded8 ******/
 		%feature("compactdefaultargs") SetBlue;
 		%feature("autodoc", "
 Parameters
 ----------
-aBlue: float
+aBlue: double
 
 Return
 -------
@@ -10392,15 +10296,15 @@ Description
 -----------
 No available documentation.
 ") SetBlue;
-		void SetBlue(const Standard_Real aBlue);
+		void SetBlue(const double aBlue);
 
 		/****** StepVisual_ColourRgb::SetGreen ******/
-		/****** md5 signature: 4ffb261016c5334ce3b48e8f3df004e0 ******/
+		/****** md5 signature: 9d7ac2bc731ccbefeac1b9b49e4aff55 ******/
 		%feature("compactdefaultargs") SetGreen;
 		%feature("autodoc", "
 Parameters
 ----------
-aGreen: float
+aGreen: double
 
 Return
 -------
@@ -10410,15 +10314,15 @@ Description
 -----------
 No available documentation.
 ") SetGreen;
-		void SetGreen(const Standard_Real aGreen);
+		void SetGreen(const double aGreen);
 
 		/****** StepVisual_ColourRgb::SetRed ******/
-		/****** md5 signature: 4fed618355890a659dc4d036fb5614c4 ******/
+		/****** md5 signature: b8366d98dc723630b0d4b8a6c3ae5e69 ******/
 		%feature("compactdefaultargs") SetRed;
 		%feature("autodoc", "
 Parameters
 ----------
-aRed: float
+aRed: double
 
 Return
 -------
@@ -10428,7 +10332,7 @@ Description
 -----------
 No available documentation.
 ") SetRed;
-		void SetRed(const Standard_Real aRed);
+		void SetRed(const double aRed);
 
 };
 
@@ -10460,7 +10364,7 @@ default constructor.
 		 StepVisual_ComplexTriangulatedSurfaceSet();
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::Init ******/
-		/****** md5 signature: 63566f9c374f4f0aa10d5acf4d88a990 ******/
+		/****** md5 signature: f57b66a6adae4d3e3c0c0483d22f1afa ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10468,10 +10372,10 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 theTessellatedSurfaceSet_Coordinates: StepVisual_CoordinatesList
 theTessellatedSurfaceSet_Pnmax: int
-theTessellatedSurfaceSet_Normals: TColStd_HArray2OfReal
-thePnindex: TColStd_HArray1OfInteger
-theTriangleStrips: TColStd_HArray1OfTransient
-theTriangleFans: TColStd_HArray1OfTransient
+theTessellatedSurfaceSet_Normals: NCollection_HArray2<double
+thePnindex: NCollection_HArray1<int
+theTriangleStrips: NCollection_HArray1<
+theTriangleFans: NCollection_HArray1<
 
 Return
 -------
@@ -10481,10 +10385,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedSurfaceSet_Coordinates, const Standard_Integer theTessellatedSurfaceSet_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedSurfaceSet_Normals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedSurfaceSet_Coordinates, const int theTessellatedSurfaceSet_Pnmax, const opencascade::handle<NCollection_HArray2<double> > & theTessellatedSurfaceSet_Normals, const opencascade::handle<NCollection_HArray1<int> > & thePnindex, const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleStrips, const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleFans);
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::NbPnindex ******/
-		/****** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ******/
+		/****** md5 signature: fa0390b522536d32c57fd2258eaae3dc ******/
 		%feature("compactdefaultargs") NbPnindex;
 		%feature("autodoc", "Return
 -------
@@ -10494,10 +10398,10 @@ Description
 -----------
 Returns number of Pnindex.
 ") NbPnindex;
-		Standard_Integer NbPnindex();
+		int NbPnindex();
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::NbTriangleFans ******/
-		/****** md5 signature: e32a7cc03e1bf132b8ca51d998c1ef91 ******/
+		/****** md5 signature: 9b57e4a36b65f1c3d38a8964c33db1e8 ******/
 		%feature("compactdefaultargs") NbTriangleFans;
 		%feature("autodoc", "Return
 -------
@@ -10507,10 +10411,10 @@ Description
 -----------
 Returns number of TriangleFans.
 ") NbTriangleFans;
-		Standard_Integer NbTriangleFans();
+		int NbTriangleFans();
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::NbTriangleStrips ******/
-		/****** md5 signature: 41f96c6e8734a500c69e77eb743995d5 ******/
+		/****** md5 signature: 7728d0f4aa103c83439c219d7bffb985 ******/
 		%feature("compactdefaultargs") NbTriangleStrips;
 		%feature("autodoc", "Return
 -------
@@ -10520,23 +10424,23 @@ Description
 -----------
 Returns number of TriangleStrips.
 ") NbTriangleStrips;
-		Standard_Integer NbTriangleStrips();
+		int NbTriangleStrips();
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::Pnindex ******/
-		/****** md5 signature: 4b1e18390247fb42f42f10361e8626ac ******/
+		/****** md5 signature: 09e8994aba918b05d67109a1b6cb169f ******/
 		%feature("compactdefaultargs") Pnindex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field Pnindex.
 ") Pnindex;
-		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+		opencascade::handle<NCollection_HArray1<int>> Pnindex();
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::PnindexValue ******/
-		/****** md5 signature: fee0b439b0a18d03931d2516a7a9914f ******/
+		/****** md5 signature: 48ee39bad81e98bebf477adb861fdae9 ******/
 		%feature("compactdefaultargs") PnindexValue;
 		%feature("autodoc", "
 Parameters
@@ -10551,15 +10455,15 @@ Description
 -----------
 Returns value of Pnindex by its num.
 ") PnindexValue;
-		Standard_Integer PnindexValue(const Standard_Integer theNum);
+		int PnindexValue(const int theNum);
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::SetPnindex ******/
-		/****** md5 signature: 43575e7d7486f7f39672441e3410d824 ******/
+		/****** md5 signature: 6b1df731da4f31c7c40911228c1c4e69 ******/
 		%feature("compactdefaultargs") SetPnindex;
 		%feature("autodoc", "
 Parameters
 ----------
-thePnindex: TColStd_HArray1OfInteger
+thePnindex: NCollection_HArray1<int
 
 Return
 -------
@@ -10569,15 +10473,15 @@ Description
 -----------
 Sets field Pnindex.
 ") SetPnindex;
-		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+		void SetPnindex(const opencascade::handle<NCollection_HArray1<int> > & thePnindex);
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::SetTriangleFans ******/
-		/****** md5 signature: 9629b6105819199c0dd3f0e14db0df98 ******/
+		/****** md5 signature: 97555164e55acbc445db5108ed5e4f5d ******/
 		%feature("compactdefaultargs") SetTriangleFans;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleFans: TColStd_HArray1OfTransient
+theTriangleFans: NCollection_HArray1<
 
 Return
 -------
@@ -10587,15 +10491,15 @@ Description
 -----------
 Sets field TriangleFans.
 ") SetTriangleFans;
-		void SetTriangleFans(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
+		void SetTriangleFans(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleFans);
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::SetTriangleStrips ******/
-		/****** md5 signature: 49e636f3062980a08cfdfaafe4ef656a ******/
+		/****** md5 signature: f9e564016d990ea902d6179d6d59b86d ******/
 		%feature("compactdefaultargs") SetTriangleStrips;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleStrips: TColStd_HArray1OfTransient
+theTriangleStrips: NCollection_HArray1<
 
 Return
 -------
@@ -10605,38 +10509,36 @@ Description
 -----------
 Sets field TriangleStrips.
 ") SetTriangleStrips;
-		void SetTriangleStrips(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips);
+		void SetTriangleStrips(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleStrips);
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::TriangleFans ******/
-		/****** md5 signature: 07232d50b3ce09c2619ce7c6fa0c1c43 ******/
+		/****** md5 signature: 784e501cc34d4419979a45bb8211121f ******/
 		%feature("compactdefaultargs") TriangleFans;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfTransient>
+opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns field TriangleFans.
 ") TriangleFans;
-		opencascade::handle<TColStd_HArray1OfTransient> TriangleFans();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>> TriangleFans();
 
 		/****** StepVisual_ComplexTriangulatedSurfaceSet::TriangleStrips ******/
-		/****** md5 signature: dd10a0721f01f517c2ac8d65518e6951 ******/
+		/****** md5 signature: e3466b34e9c2635ab287cc9c74f97401 ******/
 		%feature("compactdefaultargs") TriangleStrips;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfTransient>
+opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns field TriangleStrips.
 ") TriangleStrips;
-		opencascade::handle<TColStd_HArray1OfTransient> TriangleStrips();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>> TriangleStrips();
 
 };
 
-
-%make_alias(StepVisual_ComplexTriangulatedSurfaceSet)
 
 %extend StepVisual_ComplexTriangulatedSurfaceSet {
 	%pythoncode {
@@ -10663,16 +10565,16 @@ Returns a ContextDependentOverRidingStyledItem.
 		 StepVisual_ContextDependentOverRidingStyledItem();
 
 		/****** StepVisual_ContextDependentOverRidingStyledItem::Init ******/
-		/****** md5 signature: c24b8b9ad7b5d9a438ed02d1ab423525 ******/
+		/****** md5 signature: 01fbb94db34fcbec169aa65be52aa2a1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aStyles: StepVisual_HArray1OfPresentationStyleAssignment
+aStyles: NCollection_HArray1<
 aItem: Standard_Transient
 aOverRiddenStyle: StepVisual_StyledItem
-aStyleContext: StepVisual_HArray1OfStyleContextSelect
+aStyleContext: NCollection_HArray1<StepVisual_StyleContextSelect
 
 Return
 -------
@@ -10682,10 +10584,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepVisual_HArray1OfPresentationStyleAssignment> & aStyles, const opencascade::handle<Standard_Transient> & aItem, const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle, const opencascade::handle<StepVisual_HArray1OfStyleContextSelect> & aStyleContext);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepVisual_PresentationStyleAssignment> > > & aStyles, const opencascade::handle<Standard_Transient> & aItem, const opencascade::handle<StepVisual_StyledItem> & aOverRiddenStyle, const opencascade::handle<NCollection_HArray1<StepVisual_StyleContextSelect> > & aStyleContext);
 
 		/****** StepVisual_ContextDependentOverRidingStyledItem::NbStyleContext ******/
-		/****** md5 signature: e206fcfa49f6276b6afdc06f261c7d44 ******/
+		/****** md5 signature: f9b43da9f856e7df76d9552304bb59ff ******/
 		%feature("compactdefaultargs") NbStyleContext;
 		%feature("autodoc", "Return
 -------
@@ -10695,15 +10597,15 @@ Description
 -----------
 No available documentation.
 ") NbStyleContext;
-		Standard_Integer NbStyleContext();
+		int NbStyleContext();
 
 		/****** StepVisual_ContextDependentOverRidingStyledItem::SetStyleContext ******/
-		/****** md5 signature: 7d00700c8ebba1fb8dc98de6e0ff48bd ******/
+		/****** md5 signature: c772541ffa378d6b88a4fc2c0b7abe0f ******/
 		%feature("compactdefaultargs") SetStyleContext;
 		%feature("autodoc", "
 Parameters
 ----------
-aStyleContext: StepVisual_HArray1OfStyleContextSelect
+aStyleContext: NCollection_HArray1<StepVisual_StyleContextSelect
 
 Return
 -------
@@ -10713,23 +10615,23 @@ Description
 -----------
 No available documentation.
 ") SetStyleContext;
-		void SetStyleContext(const opencascade::handle<StepVisual_HArray1OfStyleContextSelect> & aStyleContext);
+		void SetStyleContext(const opencascade::handle<NCollection_HArray1<StepVisual_StyleContextSelect> > & aStyleContext);
 
 		/****** StepVisual_ContextDependentOverRidingStyledItem::StyleContext ******/
-		/****** md5 signature: 1062c06ab4b28ef6d87d81774a639831 ******/
+		/****** md5 signature: b2c85c7232377d6a445b1c093cd9bd4e ******/
 		%feature("compactdefaultargs") StyleContext;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepVisual_HArray1OfStyleContextSelect>
+opencascade::handle<NCollection_HArray1<StepVisual_StyleContextSelect>>
 
 Description
 -----------
 No available documentation.
 ") StyleContext;
-		opencascade::handle<StepVisual_HArray1OfStyleContextSelect> StyleContext();
+		opencascade::handle<NCollection_HArray1<StepVisual_StyleContextSelect>> StyleContext();
 
 		/****** StepVisual_ContextDependentOverRidingStyledItem::StyleContextValue ******/
-		/****** md5 signature: 84bf7add41c48b8b6ef0e966cfaea101 ******/
+		/****** md5 signature: 7f1b11a2839aa6c1c6a9991c88a24003 ******/
 		%feature("compactdefaultargs") StyleContextValue;
 		%feature("autodoc", "
 Parameters
@@ -10744,12 +10646,10 @@ Description
 -----------
 No available documentation.
 ") StyleContextValue;
-		StepVisual_StyleContextSelect StyleContextValue(const Standard_Integer num);
+		StepVisual_StyleContextSelect StyleContextValue(const int num);
 
 };
 
-
-%make_alias(StepVisual_ContextDependentOverRidingStyledItem)
 
 %extend StepVisual_ContextDependentOverRidingStyledItem {
 	%pythoncode {
@@ -10777,8 +10677,6 @@ Returns a DraughtingAnnotationOccurrence.
 
 };
 
-
-%make_alias(StepVisual_DraughtingAnnotationOccurrence)
 
 %extend StepVisual_DraughtingAnnotationOccurrence {
 	%pythoncode {
@@ -10865,8 +10763,6 @@ Returns a MechanicalDesignGeometricPresentationArea.
 };
 
 
-%make_alias(StepVisual_MechanicalDesignGeometricPresentationArea)
-
 %extend StepVisual_MechanicalDesignGeometricPresentationArea {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10879,7 +10775,7 @@ Returns a MechanicalDesignGeometricPresentationArea.
 class StepVisual_RepositionedTessellatedGeometricSet : public StepVisual_TessellatedGeometricSet {
 	public:
 		/****** StepVisual_RepositionedTessellatedGeometricSet::StepVisual_RepositionedTessellatedGeometricSet ******/
-		/****** md5 signature: 4dadf8237649c53a97237d8aad1e7be2 ******/
+		/****** md5 signature: f0eaa0b11b56b08e5e60762a9dfae648 ******/
 		%feature("compactdefaultargs") StepVisual_RepositionedTessellatedGeometricSet;
 		%feature("autodoc", "Return
 -------
@@ -10892,13 +10788,13 @@ Default constructor.
 		 StepVisual_RepositionedTessellatedGeometricSet();
 
 		/****** StepVisual_RepositionedTessellatedGeometricSet::Init ******/
-		/****** md5 signature: 2bf436aa69aeba3149fe483555dd0d5b ******/
+		/****** md5 signature: 812a97755f4871e9c69c096993726f4b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theItems: NCollection_Handle<StepVisual_Array1OfTessellatedItem>
+theItems: StepVisual_TessellatedItem
 theLocation: StepGeom_Axis2Placement3d
 
 Return
@@ -10909,7 +10805,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<StepVisual_Array1OfTessellatedItem> & theItems, const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const NCollection_Handle<NCollection_Array1<opencascade::handle<StepVisual_TessellatedItem> > > & theItems, const opencascade::handle<StepGeom_Axis2Placement3d> & theLocation);
 
 		/****** StepVisual_RepositionedTessellatedGeometricSet::Location ******/
 		/****** md5 signature: 39fc6625e849c305cb623a87ef9754a6 ******/
@@ -10945,9 +10841,151 @@ Sets location.
 };
 
 
-%make_alias(StepVisual_RepositionedTessellatedGeometricSet)
-
 %extend StepVisual_RepositionedTessellatedGeometricSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*****************************************************************
+* class StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular *
+*****************************************************************/
+class StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular : public StepVisual_SurfaceStyleReflectanceAmbientDiffuse {
+	public:
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular ******/
+		/****** md5 signature: 7de526301c388a578f2dd40d8ba0efa1 ******/
+		%feature("compactdefaultargs") StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+default constructor.
+") StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular;
+		 StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular();
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::Init ******/
+		/****** md5 signature: 1999a903e17d5d4b18bab05f6be67b09 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theAmbientReflectance: double
+theDiffuseReflectance: double
+theSpecularReflectance: double
+theSpecularExponent: double
+theSpecularColour: StepVisual_Colour
+
+Return
+-------
+None
+
+Description
+-----------
+Initialize all fields (own and inherited).
+") Init;
+		void Init(const double theAmbientReflectance, const double theDiffuseReflectance, const double theSpecularReflectance, const double theSpecularExponent, const opencascade::handle<StepVisual_Colour> & theSpecularColour);
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::SetSpecularColour ******/
+		/****** md5 signature: c8c19b4b207048438a0c361e907eda2a ******/
+		%feature("compactdefaultargs") SetSpecularColour;
+		%feature("autodoc", "
+Parameters
+----------
+theSpecularColour: StepVisual_Colour
+
+Return
+-------
+None
+
+Description
+-----------
+Sets field SpecularColour.
+") SetSpecularColour;
+		void SetSpecularColour(const opencascade::handle<StepVisual_Colour> & theSpecularColour);
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::SetSpecularExponent ******/
+		/****** md5 signature: d899f682bc3d3ec8ccbaa3f671ac01f7 ******/
+		%feature("compactdefaultargs") SetSpecularExponent;
+		%feature("autodoc", "
+Parameters
+----------
+theSpecularExponent: double
+
+Return
+-------
+None
+
+Description
+-----------
+Sets field SpecularExponent.
+") SetSpecularExponent;
+		void SetSpecularExponent(const double theSpecularExponent);
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::SetSpecularReflectance ******/
+		/****** md5 signature: 2f24a44729f75ae9aac8290df60386e2 ******/
+		%feature("compactdefaultargs") SetSpecularReflectance;
+		%feature("autodoc", "
+Parameters
+----------
+theSpecularReflectance: double
+
+Return
+-------
+None
+
+Description
+-----------
+Sets field SpecularReflectance.
+") SetSpecularReflectance;
+		void SetSpecularReflectance(const double theSpecularReflectance);
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::SpecularColour ******/
+		/****** md5 signature: 24d356fe3173335d4799172e80fff2b0 ******/
+		%feature("compactdefaultargs") SpecularColour;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepVisual_Colour>
+
+Description
+-----------
+Returns field SpecularColour.
+") SpecularColour;
+		opencascade::handle<StepVisual_Colour> SpecularColour();
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::SpecularExponent ******/
+		/****** md5 signature: 960d5e9571ed6d5a2feae06b7ccaa955 ******/
+		%feature("compactdefaultargs") SpecularExponent;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns field SpecularExponent.
+") SpecularExponent;
+		double SpecularExponent();
+
+		/****** StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular::SpecularReflectance ******/
+		/****** md5 signature: 0ef056b84c0ae58e1a5b357064ec67b8 ******/
+		%feature("compactdefaultargs") SpecularReflectance;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns field SpecularReflectance.
+") SpecularReflectance;
+		double SpecularReflectance();
+
+};
+
+
+%make_alias(StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular)
+
+%extend StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -10998,7 +11036,7 @@ Returns field GeometricLink.
 		StepVisual_EdgeOrCurve GeometricLink();
 
 		/****** StepVisual_TessellatedEdge::HasGeometricLink ******/
-		/****** md5 signature: 432ca769d0ec23ad86df023b91c35498 ******/
+		/****** md5 signature: 7973d6dd6244b6e2282e3fd64891961e ******/
 		%feature("compactdefaultargs") HasGeometricLink;
 		%feature("autodoc", "Return
 -------
@@ -11008,10 +11046,10 @@ Description
 -----------
 Returns True if optional field GeometricLink is defined.
 ") HasGeometricLink;
-		Standard_Boolean HasGeometricLink();
+		bool HasGeometricLink();
 
 		/****** StepVisual_TessellatedEdge::Init ******/
-		/****** md5 signature: 11a5c3cdbb8a817154f67381d04958f4 ******/
+		/****** md5 signature: 7ad15a7f820e9517ea81fa68bd7c4b84 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11020,7 +11058,7 @@ theRepresentationItem_Name: TCollection_HAsciiString
 theCoordinates: StepVisual_CoordinatesList
 theHasGeometricLink: bool
 theGeometricLink: StepVisual_EdgeOrCurve
-theLineStrip: TColStd_HArray1OfInteger
+theLineStrip: NCollection_HArray1<int
 
 Return
 -------
@@ -11030,23 +11068,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Boolean theHasGeometricLink, const StepVisual_EdgeOrCurve & theGeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const bool theHasGeometricLink, const StepVisual_EdgeOrCurve & theGeometricLink, const opencascade::handle<NCollection_HArray1<int> > & theLineStrip);
 
 		/****** StepVisual_TessellatedEdge::LineStrip ******/
-		/****** md5 signature: 3ef443bbf72e31cb5369b198c3ad9fc5 ******/
+		/****** md5 signature: 051d50f80c0a07a26035705e45fe89a1 ******/
 		%feature("compactdefaultargs") LineStrip;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field LineStrip.
 ") LineStrip;
-		opencascade::handle<TColStd_HArray1OfInteger> LineStrip();
+		opencascade::handle<NCollection_HArray1<int>> LineStrip();
 
 		/****** StepVisual_TessellatedEdge::LineStripValue ******/
-		/****** md5 signature: a1e48466fbe771da213017820e55d46b ******/
+		/****** md5 signature: fcead8284d1c5c3583071d86ad066792 ******/
 		%feature("compactdefaultargs") LineStripValue;
 		%feature("autodoc", "
 Parameters
@@ -11061,10 +11099,10 @@ Description
 -----------
 Returns value of LineStrip by its num.
 ") LineStripValue;
-		Standard_Integer LineStripValue(const Standard_Integer theNum);
+		int LineStripValue(const int theNum);
 
 		/****** StepVisual_TessellatedEdge::NbLineStrip ******/
-		/****** md5 signature: e3a6a387f711fc1b2573309d507eb3f8 ******/
+		/****** md5 signature: 7fa0e23cc14145d2518b2cb26374505b ******/
 		%feature("compactdefaultargs") NbLineStrip;
 		%feature("autodoc", "Return
 -------
@@ -11074,7 +11112,7 @@ Description
 -----------
 Returns number of LineStrip.
 ") NbLineStrip;
-		Standard_Integer NbLineStrip();
+		int NbLineStrip();
 
 		/****** StepVisual_TessellatedEdge::SetCoordinates ******/
 		/****** md5 signature: 67496989a6887e140d96a4901bab43cb ******/
@@ -11113,12 +11151,12 @@ Sets field GeometricLink.
 		void SetGeometricLink(const StepVisual_EdgeOrCurve & theGeometricLink);
 
 		/****** StepVisual_TessellatedEdge::SetLineStrip ******/
-		/****** md5 signature: ede707a2de223a4694210c12bfadb98a ******/
+		/****** md5 signature: 69540710c9fa42581c20699ecfe3cfcb ******/
 		%feature("compactdefaultargs") SetLineStrip;
 		%feature("autodoc", "
 Parameters
 ----------
-theLineStrip: TColStd_HArray1OfInteger
+theLineStrip: NCollection_HArray1<int
 
 Return
 -------
@@ -11128,12 +11166,10 @@ Description
 -----------
 Sets field LineStrip.
 ") SetLineStrip;
-		void SetLineStrip(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStrip);
+		void SetLineStrip(const opencascade::handle<NCollection_HArray1<int> > & theLineStrip);
 
 };
 
-
-%make_alias(StepVisual_TessellatedEdge)
 
 %extend StepVisual_TessellatedEdge {
 	%pythoncode {
@@ -11186,7 +11222,7 @@ Returns field GeometricLink.
 		StepVisual_FaceOrSurface GeometricLink();
 
 		/****** StepVisual_TessellatedFace::HasGeometricLink ******/
-		/****** md5 signature: 432ca769d0ec23ad86df023b91c35498 ******/
+		/****** md5 signature: 7973d6dd6244b6e2282e3fd64891961e ******/
 		%feature("compactdefaultargs") HasGeometricLink;
 		%feature("autodoc", "Return
 -------
@@ -11196,10 +11232,10 @@ Description
 -----------
 Returns True if optional field GeometricLink is defined.
 ") HasGeometricLink;
-		Standard_Boolean HasGeometricLink();
+		bool HasGeometricLink();
 
 		/****** StepVisual_TessellatedFace::Init ******/
-		/****** md5 signature: 835bebcd43fab8c7eb2394c030081db6 ******/
+		/****** md5 signature: 611979e6652a26111c557d504d9a3fa9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11207,7 +11243,7 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 theCoordinates: StepVisual_CoordinatesList
 thePnmax: int
-theNormals: TColStd_HArray2OfReal
+theNormals: NCollection_HArray2<double
 theHasGeometricLink: bool
 theGeometricLink: StepVisual_FaceOrSurface
 
@@ -11219,10 +11255,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Integer thePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theNormals, const Standard_Boolean theHasGeometricLink, const StepVisual_FaceOrSurface & theGeometricLink);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const int thePnmax, const opencascade::handle<NCollection_HArray2<double> > & theNormals, const bool theHasGeometricLink, const StepVisual_FaceOrSurface & theGeometricLink);
 
 		/****** StepVisual_TessellatedFace::NbNormals ******/
-		/****** md5 signature: e8ae9c17a546ef8db4eb8b45e7edd0e8 ******/
+		/****** md5 signature: 70704d74c52f9f781807886fb702a9a0 ******/
 		%feature("compactdefaultargs") NbNormals;
 		%feature("autodoc", "Return
 -------
@@ -11232,23 +11268,23 @@ Description
 -----------
 Returns number of Normals.
 ") NbNormals;
-		Standard_Integer NbNormals();
+		int NbNormals();
 
 		/****** StepVisual_TessellatedFace::Normals ******/
-		/****** md5 signature: 369b381d12bed5d4109e95bc2ede0ab6 ******/
+		/****** md5 signature: 6e61cf49fb411fafdb848cd6d5537857 ******/
 		%feature("compactdefaultargs") Normals;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfReal>
+opencascade::handle<NCollection_HArray2<double>>
 
 Description
 -----------
 Returns field Normals.
 ") Normals;
-		opencascade::handle<TColStd_HArray2OfReal> Normals();
+		opencascade::handle<NCollection_HArray2<double>> Normals();
 
 		/****** StepVisual_TessellatedFace::Pnmax ******/
-		/****** md5 signature: 0b280e192c56c44fffab9481c68ac038 ******/
+		/****** md5 signature: f8c9f6434162140214befb9c86ad56a9 ******/
 		%feature("compactdefaultargs") Pnmax;
 		%feature("autodoc", "Return
 -------
@@ -11258,7 +11294,7 @@ Description
 -----------
 Returns field Pnmax.
 ") Pnmax;
-		Standard_Integer Pnmax();
+		int Pnmax();
 
 		/****** StepVisual_TessellatedFace::SetCoordinates ******/
 		/****** md5 signature: 67496989a6887e140d96a4901bab43cb ******/
@@ -11297,12 +11333,12 @@ Sets field GeometricLink.
 		void SetGeometricLink(const StepVisual_FaceOrSurface & theGeometricLink);
 
 		/****** StepVisual_TessellatedFace::SetNormals ******/
-		/****** md5 signature: 6dd69aae81e446ea2f47e92611adf4ec ******/
+		/****** md5 signature: 842aa9edbe18cb9cfb26e7712adf84b0 ******/
 		%feature("compactdefaultargs") SetNormals;
 		%feature("autodoc", "
 Parameters
 ----------
-theNormals: TColStd_HArray2OfReal
+theNormals: NCollection_HArray2<double
 
 Return
 -------
@@ -11312,10 +11348,10 @@ Description
 -----------
 Sets field Normals.
 ") SetNormals;
-		void SetNormals(const opencascade::handle<TColStd_HArray2OfReal> & theNormals);
+		void SetNormals(const opencascade::handle<NCollection_HArray2<double> > & theNormals);
 
 		/****** StepVisual_TessellatedFace::SetPnmax ******/
-		/****** md5 signature: 684034e32240f760527db1f7f7c9f728 ******/
+		/****** md5 signature: b8d9a8891a4a0dd68dc51880031eb888 ******/
 		%feature("compactdefaultargs") SetPnmax;
 		%feature("autodoc", "
 Parameters
@@ -11330,12 +11366,10 @@ Description
 -----------
 Sets field Pnmax.
 ") SetPnmax;
-		void SetPnmax(const Standard_Integer thePnmax);
+		void SetPnmax(const int thePnmax);
 
 };
 
-
-%make_alias(StepVisual_TessellatedFace)
 
 %extend StepVisual_TessellatedFace {
 	%pythoncode {
@@ -11375,7 +11409,7 @@ Returns field Coordinates.
 		opencascade::handle<StepVisual_CoordinatesList> Coordinates();
 
 		/****** StepVisual_TessellatedVertex::HasTopologicalLink ******/
-		/****** md5 signature: b2a8f6180f026b329187f8297fbc4881 ******/
+		/****** md5 signature: f4cbb5d53bb67ed635ad7c9628c33302 ******/
 		%feature("compactdefaultargs") HasTopologicalLink;
 		%feature("autodoc", "Return
 -------
@@ -11385,10 +11419,10 @@ Description
 -----------
 Returns True if optional field TopologicalLink is defined.
 ") HasTopologicalLink;
-		Standard_Boolean HasTopologicalLink();
+		bool HasTopologicalLink();
 
 		/****** StepVisual_TessellatedVertex::Init ******/
-		/****** md5 signature: 7a588a64770cae4be3ab835050b28a7b ******/
+		/****** md5 signature: 3ceba78bc29a37074b4d935cdd4dd17c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11407,10 +11441,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const Standard_Boolean theHasTopologicalLink, const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink, const Standard_Integer thePointIndex);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates, const bool theHasTopologicalLink, const opencascade::handle<StepShape_VertexPoint> & theTopologicalLink, const int thePointIndex);
 
 		/****** StepVisual_TessellatedVertex::PointIndex ******/
-		/****** md5 signature: a7100f38206242b5067e31337a15de37 ******/
+		/****** md5 signature: 45fd17763ffbdac72527f9f3b9d9afd6 ******/
 		%feature("compactdefaultargs") PointIndex;
 		%feature("autodoc", "Return
 -------
@@ -11420,7 +11454,7 @@ Description
 -----------
 Returns field PointIndex.
 ") PointIndex;
-		Standard_Integer PointIndex();
+		int PointIndex();
 
 		/****** StepVisual_TessellatedVertex::SetCoordinates ******/
 		/****** md5 signature: 67496989a6887e140d96a4901bab43cb ******/
@@ -11441,7 +11475,7 @@ Sets field Coordinates.
 		void SetCoordinates(const opencascade::handle<StepVisual_CoordinatesList> & theCoordinates);
 
 		/****** StepVisual_TessellatedVertex::SetPointIndex ******/
-		/****** md5 signature: d00ee3c6c96d00bf1679920e38c21622 ******/
+		/****** md5 signature: d2ec91e466a2f8f8fdf2aeca243c7133 ******/
 		%feature("compactdefaultargs") SetPointIndex;
 		%feature("autodoc", "
 Parameters
@@ -11456,7 +11490,7 @@ Description
 -----------
 Sets field PointIndex.
 ") SetPointIndex;
-		void SetPointIndex(const Standard_Integer thePointIndex);
+		void SetPointIndex(const int thePointIndex);
 
 		/****** StepVisual_TessellatedVertex::SetTopologicalLink ******/
 		/****** md5 signature: 7eb4225ce032f77d5e9072cb2c704a14 ******/
@@ -11492,8 +11526,6 @@ Returns field TopologicalLink.
 };
 
 
-%make_alias(StepVisual_TessellatedVertex)
-
 %extend StepVisual_TessellatedVertex {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11519,7 +11551,7 @@ default constructor.
 		 StepVisual_TriangulatedSurfaceSet();
 
 		/****** StepVisual_TriangulatedSurfaceSet::Init ******/
-		/****** md5 signature: 3ffa47b673439b6a5d3f4f39a3856c61 ******/
+		/****** md5 signature: 3d1030f357ad817b950a02613c467c08 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11527,9 +11559,9 @@ Parameters
 theRepresentationItemName: TCollection_HAsciiString
 theTessellatedFaceCoordinates: StepVisual_CoordinatesList
 theTessellatedFacePnmax: int
-theTessellatedFaceNormals: TColStd_HArray2OfReal
-thePnindex: TColStd_HArray1OfInteger
-theTriangles: TColStd_HArray2OfInteger
+theTessellatedFaceNormals: NCollection_HArray2<double
+thePnindex: NCollection_HArray1<int
+theTriangles: NCollection_HArray2<int
 
 Return
 -------
@@ -11539,10 +11571,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItemName, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFaceCoordinates, const Standard_Integer theTessellatedFacePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFaceNormals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItemName, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFaceCoordinates, const int theTessellatedFacePnmax, const opencascade::handle<NCollection_HArray2<double> > & theTessellatedFaceNormals, const opencascade::handle<NCollection_HArray1<int> > & thePnindex, const opencascade::handle<NCollection_HArray2<int> > & theTriangles);
 
 		/****** StepVisual_TriangulatedSurfaceSet::NbPnindex ******/
-		/****** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ******/
+		/****** md5 signature: fa0390b522536d32c57fd2258eaae3dc ******/
 		%feature("compactdefaultargs") NbPnindex;
 		%feature("autodoc", "Return
 -------
@@ -11552,10 +11584,10 @@ Description
 -----------
 Returns number of Pnindex.
 ") NbPnindex;
-		Standard_Integer NbPnindex();
+		int NbPnindex();
 
 		/****** StepVisual_TriangulatedSurfaceSet::NbTriangles ******/
-		/****** md5 signature: c1e2294db77a16b75e32923c5461b457 ******/
+		/****** md5 signature: f8c321c40dc1f5710c6325a5eef3d9fe ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "Return
 -------
@@ -11565,23 +11597,23 @@ Description
 -----------
 Returns number of Triangles.
 ") NbTriangles;
-		Standard_Integer NbTriangles();
+		int NbTriangles();
 
 		/****** StepVisual_TriangulatedSurfaceSet::Pnindex ******/
-		/****** md5 signature: cff3c5eb8d6e25aa45b47da9a42703c3 ******/
+		/****** md5 signature: 2440001bbf672588ad2f48f99bd99b83 ******/
 		%feature("compactdefaultargs") Pnindex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field Pnindex.
 ") Pnindex;
-		const opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+		const opencascade::handle<NCollection_HArray1<int>> Pnindex();
 
 		/****** StepVisual_TriangulatedSurfaceSet::PnindexValue ******/
-		/****** md5 signature: fee0b439b0a18d03931d2516a7a9914f ******/
+		/****** md5 signature: 48ee39bad81e98bebf477adb861fdae9 ******/
 		%feature("compactdefaultargs") PnindexValue;
 		%feature("autodoc", "
 Parameters
@@ -11596,15 +11628,15 @@ Description
 -----------
 Returns value of Pnindex by its num.
 ") PnindexValue;
-		Standard_Integer PnindexValue(const Standard_Integer theNum);
+		int PnindexValue(const int theNum);
 
 		/****** StepVisual_TriangulatedSurfaceSet::SetPnindex ******/
-		/****** md5 signature: 110102dd4b7257dec29b0db217b97edf ******/
+		/****** md5 signature: 6b9fb1f707a973e37b1ea695d19c3325 ******/
 		%feature("compactdefaultargs") SetPnindex;
 		%feature("autodoc", "
 Parameters
 ----------
-thePnindex: TColStd_HArray1OfInteger
+thePnindex: NCollection_HArray1<int
 
 Return
 -------
@@ -11614,15 +11646,15 @@ Description
 -----------
 Sets field Pnindex.
 ") SetPnindex;
-		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+		void SetPnindex(const opencascade::handle<NCollection_HArray1<int> > & thePnindex);
 
 		/****** StepVisual_TriangulatedSurfaceSet::SetTriangles ******/
-		/****** md5 signature: fd0f621d0e44e0a5ea8c27a6e3ac9a39 ******/
+		/****** md5 signature: bdfa5d865618047131b00f3c66c56d3b ******/
 		%feature("compactdefaultargs") SetTriangles;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangles: TColStd_HArray2OfInteger
+theTriangles: NCollection_HArray2<int
 
 Return
 -------
@@ -11632,20 +11664,20 @@ Description
 -----------
 Sets field Triangles.
 ") SetTriangles;
-		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+		void SetTriangles(const opencascade::handle<NCollection_HArray2<int> > & theTriangles);
 
 		/****** StepVisual_TriangulatedSurfaceSet::Triangles ******/
-		/****** md5 signature: 240ee640b11d228ad1fef9537a847098 ******/
+		/****** md5 signature: b1fa554825d4d01801e65feb5313ad4d ******/
 		%feature("compactdefaultargs") Triangles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<NCollection_HArray2<int>>
 
 Description
 -----------
 Returns field Triangles.
 ") Triangles;
-		const opencascade::handle<TColStd_HArray2OfInteger> Triangles();
+		const opencascade::handle<NCollection_HArray2<int>> Triangles();
 
 };
 
@@ -11677,8 +11709,6 @@ No available documentation.
 };
 
 
-%make_alias(StepVisual_AnnotationCurveOccurrenceAndGeomReprItem)
-
 %extend StepVisual_AnnotationCurveOccurrenceAndGeomReprItem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11704,7 +11734,7 @@ default constructor.
 		 StepVisual_ComplexTriangulatedFace();
 
 		/****** StepVisual_ComplexTriangulatedFace::Init ******/
-		/****** md5 signature: b7f18cc4ed3463aaf8bf8db40c193d48 ******/
+		/****** md5 signature: d2f91d2bf90d1b3a2a0a8a04ab815e5e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11712,12 +11742,12 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 theTessellatedFace_Coordinates: StepVisual_CoordinatesList
 theTessellatedFace_Pnmax: int
-theTessellatedFace_Normals: TColStd_HArray2OfReal
+theTessellatedFace_Normals: NCollection_HArray2<double
 theHasTessellatedFace_GeometricLink: bool
 theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
-thePnindex: TColStd_HArray1OfInteger
-theTriangleStrips: TColStd_HArray1OfTransient
-theTriangleFans: TColStd_HArray1OfTransient
+thePnindex: NCollection_HArray1<int
+theTriangleStrips: NCollection_HArray1<
+theTriangleFans: NCollection_HArray1<
 
 Return
 -------
@@ -11727,10 +11757,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const int theTessellatedFace_Pnmax, const opencascade::handle<NCollection_HArray2<double> > & theTessellatedFace_Normals, const bool theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<NCollection_HArray1<int> > & thePnindex, const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleStrips, const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleFans);
 
 		/****** StepVisual_ComplexTriangulatedFace::NbPnindex ******/
-		/****** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ******/
+		/****** md5 signature: fa0390b522536d32c57fd2258eaae3dc ******/
 		%feature("compactdefaultargs") NbPnindex;
 		%feature("autodoc", "Return
 -------
@@ -11740,10 +11770,10 @@ Description
 -----------
 Returns number of Pnindex.
 ") NbPnindex;
-		Standard_Integer NbPnindex();
+		int NbPnindex();
 
 		/****** StepVisual_ComplexTriangulatedFace::NbTriangleFans ******/
-		/****** md5 signature: e32a7cc03e1bf132b8ca51d998c1ef91 ******/
+		/****** md5 signature: 9b57e4a36b65f1c3d38a8964c33db1e8 ******/
 		%feature("compactdefaultargs") NbTriangleFans;
 		%feature("autodoc", "Return
 -------
@@ -11753,10 +11783,10 @@ Description
 -----------
 Returns number of TriangleFans.
 ") NbTriangleFans;
-		Standard_Integer NbTriangleFans();
+		int NbTriangleFans();
 
 		/****** StepVisual_ComplexTriangulatedFace::NbTriangleStrips ******/
-		/****** md5 signature: 41f96c6e8734a500c69e77eb743995d5 ******/
+		/****** md5 signature: 7728d0f4aa103c83439c219d7bffb985 ******/
 		%feature("compactdefaultargs") NbTriangleStrips;
 		%feature("autodoc", "Return
 -------
@@ -11766,23 +11796,23 @@ Description
 -----------
 Returns number of TriangleStrips.
 ") NbTriangleStrips;
-		Standard_Integer NbTriangleStrips();
+		int NbTriangleStrips();
 
 		/****** StepVisual_ComplexTriangulatedFace::Pnindex ******/
-		/****** md5 signature: 4b1e18390247fb42f42f10361e8626ac ******/
+		/****** md5 signature: 09e8994aba918b05d67109a1b6cb169f ******/
 		%feature("compactdefaultargs") Pnindex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field Pnindex.
 ") Pnindex;
-		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+		opencascade::handle<NCollection_HArray1<int>> Pnindex();
 
 		/****** StepVisual_ComplexTriangulatedFace::PnindexValue ******/
-		/****** md5 signature: fee0b439b0a18d03931d2516a7a9914f ******/
+		/****** md5 signature: 48ee39bad81e98bebf477adb861fdae9 ******/
 		%feature("compactdefaultargs") PnindexValue;
 		%feature("autodoc", "
 Parameters
@@ -11797,15 +11827,15 @@ Description
 -----------
 Returns value of Pnindex by its num.
 ") PnindexValue;
-		Standard_Integer PnindexValue(const Standard_Integer theNum);
+		int PnindexValue(const int theNum);
 
 		/****** StepVisual_ComplexTriangulatedFace::SetPnindex ******/
-		/****** md5 signature: 43575e7d7486f7f39672441e3410d824 ******/
+		/****** md5 signature: 6b1df731da4f31c7c40911228c1c4e69 ******/
 		%feature("compactdefaultargs") SetPnindex;
 		%feature("autodoc", "
 Parameters
 ----------
-thePnindex: TColStd_HArray1OfInteger
+thePnindex: NCollection_HArray1<int
 
 Return
 -------
@@ -11815,15 +11845,15 @@ Description
 -----------
 Sets field Pnindex.
 ") SetPnindex;
-		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+		void SetPnindex(const opencascade::handle<NCollection_HArray1<int> > & thePnindex);
 
 		/****** StepVisual_ComplexTriangulatedFace::SetTriangleFans ******/
-		/****** md5 signature: 9629b6105819199c0dd3f0e14db0df98 ******/
+		/****** md5 signature: 97555164e55acbc445db5108ed5e4f5d ******/
 		%feature("compactdefaultargs") SetTriangleFans;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleFans: TColStd_HArray1OfTransient
+theTriangleFans: NCollection_HArray1<
 
 Return
 -------
@@ -11833,15 +11863,15 @@ Description
 -----------
 Sets field TriangleFans.
 ") SetTriangleFans;
-		void SetTriangleFans(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
+		void SetTriangleFans(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleFans);
 
 		/****** StepVisual_ComplexTriangulatedFace::SetTriangleStrips ******/
-		/****** md5 signature: 49e636f3062980a08cfdfaafe4ef656a ******/
+		/****** md5 signature: f9e564016d990ea902d6179d6d59b86d ******/
 		%feature("compactdefaultargs") SetTriangleStrips;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleStrips: TColStd_HArray1OfTransient
+theTriangleStrips: NCollection_HArray1<
 
 Return
 -------
@@ -11851,38 +11881,36 @@ Description
 -----------
 Sets field TriangleStrips.
 ") SetTriangleStrips;
-		void SetTriangleStrips(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips);
+		void SetTriangleStrips(const opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient> > > & theTriangleStrips);
 
 		/****** StepVisual_ComplexTriangulatedFace::TriangleFans ******/
-		/****** md5 signature: 07232d50b3ce09c2619ce7c6fa0c1c43 ******/
+		/****** md5 signature: 784e501cc34d4419979a45bb8211121f ******/
 		%feature("compactdefaultargs") TriangleFans;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfTransient>
+opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns field TriangleFans.
 ") TriangleFans;
-		opencascade::handle<TColStd_HArray1OfTransient> TriangleFans();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>> TriangleFans();
 
 		/****** StepVisual_ComplexTriangulatedFace::TriangleStrips ******/
-		/****** md5 signature: dd10a0721f01f517c2ac8d65518e6951 ******/
+		/****** md5 signature: e3466b34e9c2635ab287cc9c74f97401 ******/
 		%feature("compactdefaultargs") TriangleStrips;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfTransient>
+opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns field TriangleStrips.
 ") TriangleStrips;
-		opencascade::handle<TColStd_HArray1OfTransient> TriangleStrips();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<Standard_Transient>>> TriangleStrips();
 
 };
 
-
-%make_alias(StepVisual_ComplexTriangulatedFace)
 
 %extend StepVisual_ComplexTriangulatedFace {
 	%pythoncode {
@@ -11911,8 +11939,6 @@ default constructor.
 };
 
 
-%make_alias(StepVisual_CubicBezierTessellatedEdge)
-
 %extend StepVisual_CubicBezierTessellatedEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11938,20 +11964,20 @@ default constructor.
 		 StepVisual_CubicBezierTriangulatedFace();
 
 		/****** StepVisual_CubicBezierTriangulatedFace::Ctriangles ******/
-		/****** md5 signature: 102b295b6af84fe7d8a1b398774f2b91 ******/
+		/****** md5 signature: c8c1f264f724c1b5a53be4ee86d13c1b ******/
 		%feature("compactdefaultargs") Ctriangles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<NCollection_HArray2<int>>
 
 Description
 -----------
 Returns field Ctriangles.
 ") Ctriangles;
-		opencascade::handle<TColStd_HArray2OfInteger> Ctriangles();
+		opencascade::handle<NCollection_HArray2<int>> Ctriangles();
 
 		/****** StepVisual_CubicBezierTriangulatedFace::Init ******/
-		/****** md5 signature: 33020c5fbd6b62e12d7b9c676274ab5d ******/
+		/****** md5 signature: eb439903c040c83f3b175717c2bda1e9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11959,10 +11985,10 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 theTessellatedFace_Coordinates: StepVisual_CoordinatesList
 theTessellatedFace_Pnmax: int
-theTessellatedFace_Normals: TColStd_HArray2OfReal
+theTessellatedFace_Normals: NCollection_HArray2<double
 theHasTessellatedFace_GeometricLink: bool
 theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
-theCtriangles: TColStd_HArray2OfInteger
+theCtriangles: NCollection_HArray2<int
 
 Return
 -------
@@ -11972,10 +11998,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const int theTessellatedFace_Pnmax, const opencascade::handle<NCollection_HArray2<double> > & theTessellatedFace_Normals, const bool theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<NCollection_HArray2<int> > & theCtriangles);
 
 		/****** StepVisual_CubicBezierTriangulatedFace::NbCtriangles ******/
-		/****** md5 signature: 13825b33bcce4596e533525b461804fe ******/
+		/****** md5 signature: cf60e2a33a49199b1dd1aea23c21c07b ******/
 		%feature("compactdefaultargs") NbCtriangles;
 		%feature("autodoc", "Return
 -------
@@ -11985,15 +12011,15 @@ Description
 -----------
 Returns number of Ctriangles.
 ") NbCtriangles;
-		Standard_Integer NbCtriangles();
+		int NbCtriangles();
 
 		/****** StepVisual_CubicBezierTriangulatedFace::SetCtriangles ******/
-		/****** md5 signature: c78b3847a8d411dcb9aa0b29064c662e ******/
+		/****** md5 signature: 65f72c0177f28a50e6bab0a1ad491d98 ******/
 		%feature("compactdefaultargs") SetCtriangles;
 		%feature("autodoc", "
 Parameters
 ----------
-theCtriangles: TColStd_HArray2OfInteger
+theCtriangles: NCollection_HArray2<int
 
 Return
 -------
@@ -12003,12 +12029,10 @@ Description
 -----------
 Sets field Ctriangles.
 ") SetCtriangles;
-		void SetCtriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theCtriangles);
+		void SetCtriangles(const opencascade::handle<NCollection_HArray2<int> > & theCtriangles);
 
 };
 
-
-%make_alias(StepVisual_CubicBezierTriangulatedFace)
 
 %extend StepVisual_CubicBezierTriangulatedFace {
 	%pythoncode {
@@ -12061,7 +12085,7 @@ Returns field Face2.
 		opencascade::handle<StepVisual_TessellatedFace> Face2();
 
 		/****** StepVisual_TessellatedConnectingEdge::Init ******/
-		/****** md5 signature: 6f7011c37a483db00e2012c0e0b5fed6 ******/
+		/****** md5 signature: 8a4aa08889da437910d3362527c8abcd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12070,12 +12094,12 @@ theRepresentationItem_Name: TCollection_HAsciiString
 theTessellatedEdge_Coordinates: StepVisual_CoordinatesList
 theHasTessellatedEdge_GeometricLink: bool
 theTessellatedEdge_GeometricLink: StepVisual_EdgeOrCurve
-theTessellatedEdge_LineStrip: TColStd_HArray1OfInteger
+theTessellatedEdge_LineStrip: NCollection_HArray1<int
 theSmooth: StepData_Logical
 theFace1: StepVisual_TessellatedFace
 theFace2: StepVisual_TessellatedFace
-theLineStripFace1: TColStd_HArray1OfInteger
-theLineStripFace2: TColStd_HArray1OfInteger
+theLineStripFace1: NCollection_HArray1<int
+theLineStripFace2: NCollection_HArray1<int
 
 Return
 -------
@@ -12085,23 +12109,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedEdge_Coordinates, const Standard_Boolean theHasTessellatedEdge_GeometricLink, const StepVisual_EdgeOrCurve & theTessellatedEdge_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & theTessellatedEdge_LineStrip, const StepData_Logical theSmooth, const opencascade::handle<StepVisual_TessellatedFace> & theFace1, const opencascade::handle<StepVisual_TessellatedFace> & theFace2, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1, const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedEdge_Coordinates, const bool theHasTessellatedEdge_GeometricLink, const StepVisual_EdgeOrCurve & theTessellatedEdge_GeometricLink, const opencascade::handle<NCollection_HArray1<int> > & theTessellatedEdge_LineStrip, const StepData_Logical theSmooth, const opencascade::handle<StepVisual_TessellatedFace> & theFace1, const opencascade::handle<StepVisual_TessellatedFace> & theFace2, const opencascade::handle<NCollection_HArray1<int> > & theLineStripFace1, const opencascade::handle<NCollection_HArray1<int> > & theLineStripFace2);
 
 		/****** StepVisual_TessellatedConnectingEdge::LineStripFace1 ******/
-		/****** md5 signature: 0b7971e6a92c9c058b28d7fbec9a3bb1 ******/
+		/****** md5 signature: 5514765089937cb19a11d57eba9649fd ******/
 		%feature("compactdefaultargs") LineStripFace1;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field LineStripFace1.
 ") LineStripFace1;
-		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace1();
+		opencascade::handle<NCollection_HArray1<int>> LineStripFace1();
 
 		/****** StepVisual_TessellatedConnectingEdge::LineStripFace1Value ******/
-		/****** md5 signature: b66bd9daa4369c7dbc9c9933e5752bb9 ******/
+		/****** md5 signature: 7fb74fd6d5ae2615ec91efab8e830dda ******/
 		%feature("compactdefaultargs") LineStripFace1Value;
 		%feature("autodoc", "
 Parameters
@@ -12116,23 +12140,23 @@ Description
 -----------
 Returns value of LineStripFace1 by its num.
 ") LineStripFace1Value;
-		Standard_Integer LineStripFace1Value(const Standard_Integer theNum);
+		int LineStripFace1Value(const int theNum);
 
 		/****** StepVisual_TessellatedConnectingEdge::LineStripFace2 ******/
-		/****** md5 signature: df497d760e695587a621010b5edcb83e ******/
+		/****** md5 signature: 0d5ba2acb1880749d4aba187064dc3b9 ******/
 		%feature("compactdefaultargs") LineStripFace2;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field LineStripFace2.
 ") LineStripFace2;
-		opencascade::handle<TColStd_HArray1OfInteger> LineStripFace2();
+		opencascade::handle<NCollection_HArray1<int>> LineStripFace2();
 
 		/****** StepVisual_TessellatedConnectingEdge::LineStripFace2Value ******/
-		/****** md5 signature: 1a065201dc96fe780a0ca0f3bba9b65c ******/
+		/****** md5 signature: b277192f37198e3bdea2e433b74e134a ******/
 		%feature("compactdefaultargs") LineStripFace2Value;
 		%feature("autodoc", "
 Parameters
@@ -12147,10 +12171,10 @@ Description
 -----------
 Returns value of LineStripFace2 by its num.
 ") LineStripFace2Value;
-		Standard_Integer LineStripFace2Value(const Standard_Integer theNum);
+		int LineStripFace2Value(const int theNum);
 
 		/****** StepVisual_TessellatedConnectingEdge::NbLineStripFace1 ******/
-		/****** md5 signature: 6635634092840488cc7bb70f66269c04 ******/
+		/****** md5 signature: 3542a7912fc052389db08812bb16448f ******/
 		%feature("compactdefaultargs") NbLineStripFace1;
 		%feature("autodoc", "Return
 -------
@@ -12160,10 +12184,10 @@ Description
 -----------
 Returns number of LineStripFace1.
 ") NbLineStripFace1;
-		Standard_Integer NbLineStripFace1();
+		int NbLineStripFace1();
 
 		/****** StepVisual_TessellatedConnectingEdge::NbLineStripFace2 ******/
-		/****** md5 signature: f48092b6b68ea97a6dd7859a19f37f10 ******/
+		/****** md5 signature: 77f458a2de2af2ae999f14b86e7c1ea4 ******/
 		%feature("compactdefaultargs") NbLineStripFace2;
 		%feature("autodoc", "Return
 -------
@@ -12173,7 +12197,7 @@ Description
 -----------
 Returns number of LineStripFace2.
 ") NbLineStripFace2;
-		Standard_Integer NbLineStripFace2();
+		int NbLineStripFace2();
 
 		/****** StepVisual_TessellatedConnectingEdge::SetFace1 ******/
 		/****** md5 signature: cbae07fafdf9bee2009c474118199284 ******/
@@ -12212,12 +12236,12 @@ Sets field Face2.
 		void SetFace2(const opencascade::handle<StepVisual_TessellatedFace> & theFace2);
 
 		/****** StepVisual_TessellatedConnectingEdge::SetLineStripFace1 ******/
-		/****** md5 signature: 13b5d9f5b2ea77a515da533e3f220c3d ******/
+		/****** md5 signature: 9058b860b2a55fc5a1d7122e011f419c ******/
 		%feature("compactdefaultargs") SetLineStripFace1;
 		%feature("autodoc", "
 Parameters
 ----------
-theLineStripFace1: TColStd_HArray1OfInteger
+theLineStripFace1: NCollection_HArray1<int
 
 Return
 -------
@@ -12227,15 +12251,15 @@ Description
 -----------
 Sets field LineStripFace1.
 ") SetLineStripFace1;
-		void SetLineStripFace1(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace1);
+		void SetLineStripFace1(const opencascade::handle<NCollection_HArray1<int> > & theLineStripFace1);
 
 		/****** StepVisual_TessellatedConnectingEdge::SetLineStripFace2 ******/
-		/****** md5 signature: d540d27bf6489bfed701c6605eae7f77 ******/
+		/****** md5 signature: 3aa7f10b918cc0fbcbee6fd78f923d02 ******/
 		%feature("compactdefaultargs") SetLineStripFace2;
 		%feature("autodoc", "
 Parameters
 ----------
-theLineStripFace2: TColStd_HArray1OfInteger
+theLineStripFace2: NCollection_HArray1<int
 
 Return
 -------
@@ -12245,7 +12269,7 @@ Description
 -----------
 Sets field LineStripFace2.
 ") SetLineStripFace2;
-		void SetLineStripFace2(const opencascade::handle<TColStd_HArray1OfInteger> & theLineStripFace2);
+		void SetLineStripFace2(const opencascade::handle<NCollection_HArray1<int> > & theLineStripFace2);
 
 		/****** StepVisual_TessellatedConnectingEdge::SetSmooth ******/
 		/****** md5 signature: 87175ba25d9b6c8a69467c8ddf380c38 ******/
@@ -12281,8 +12305,6 @@ Returns field Smooth.
 };
 
 
-%make_alias(StepVisual_TessellatedConnectingEdge)
-
 %extend StepVisual_TessellatedConnectingEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12308,7 +12330,7 @@ Default constructor.
 		 StepVisual_TriangulatedFace();
 
 		/****** StepVisual_TriangulatedFace::Init ******/
-		/****** md5 signature: 51fae17da7ab38215a33b883083c62fc ******/
+		/****** md5 signature: c4ecb1e7ec937055e3b3582cbcf1fd0c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12316,11 +12338,11 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 theTessellatedFace_Coordinates: StepVisual_CoordinatesList
 theTessellatedFace_Pnmax: int
-theTessellatedFace_Normals: TColStd_HArray2OfReal
+theTessellatedFace_Normals: NCollection_HArray2<double
 theHasTessellatedFace_GeometricLink: bool
 theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
-thePnindex: TColStd_HArray1OfInteger
-theTriangles: TColStd_HArray2OfInteger
+thePnindex: NCollection_HArray1<int
+theTriangles: NCollection_HArray2<int
 
 Return
 -------
@@ -12330,10 +12352,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const int theTessellatedFace_Pnmax, const opencascade::handle<NCollection_HArray2<double> > & theTessellatedFace_Normals, const bool theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<NCollection_HArray1<int> > & thePnindex, const opencascade::handle<NCollection_HArray2<int> > & theTriangles);
 
 		/****** StepVisual_TriangulatedFace::NbPnindex ******/
-		/****** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ******/
+		/****** md5 signature: fa0390b522536d32c57fd2258eaae3dc ******/
 		%feature("compactdefaultargs") NbPnindex;
 		%feature("autodoc", "Return
 -------
@@ -12343,10 +12365,10 @@ Description
 -----------
 Returns number of Pnindex.
 ") NbPnindex;
-		Standard_Integer NbPnindex();
+		int NbPnindex();
 
 		/****** StepVisual_TriangulatedFace::NbTriangles ******/
-		/****** md5 signature: c1e2294db77a16b75e32923c5461b457 ******/
+		/****** md5 signature: f8c321c40dc1f5710c6325a5eef3d9fe ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "Return
 -------
@@ -12356,23 +12378,23 @@ Description
 -----------
 Returns number of Triangles.
 ") NbTriangles;
-		Standard_Integer NbTriangles();
+		int NbTriangles();
 
 		/****** StepVisual_TriangulatedFace::Pnindex ******/
-		/****** md5 signature: 4b1e18390247fb42f42f10361e8626ac ******/
+		/****** md5 signature: 09e8994aba918b05d67109a1b6cb169f ******/
 		%feature("compactdefaultargs") Pnindex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns field Pnindex.
 ") Pnindex;
-		opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+		opencascade::handle<NCollection_HArray1<int>> Pnindex();
 
 		/****** StepVisual_TriangulatedFace::PnindexValue ******/
-		/****** md5 signature: fee0b439b0a18d03931d2516a7a9914f ******/
+		/****** md5 signature: 48ee39bad81e98bebf477adb861fdae9 ******/
 		%feature("compactdefaultargs") PnindexValue;
 		%feature("autodoc", "
 Parameters
@@ -12387,15 +12409,15 @@ Description
 -----------
 Returns value of Pnindex by its num.
 ") PnindexValue;
-		Standard_Integer PnindexValue(const Standard_Integer theNum);
+		int PnindexValue(const int theNum);
 
 		/****** StepVisual_TriangulatedFace::SetPnindex ******/
-		/****** md5 signature: 43575e7d7486f7f39672441e3410d824 ******/
+		/****** md5 signature: 6b1df731da4f31c7c40911228c1c4e69 ******/
 		%feature("compactdefaultargs") SetPnindex;
 		%feature("autodoc", "
 Parameters
 ----------
-thePnindex: TColStd_HArray1OfInteger
+thePnindex: NCollection_HArray1<int
 
 Return
 -------
@@ -12405,15 +12427,15 @@ Description
 -----------
 Sets field Pnindex.
 ") SetPnindex;
-		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+		void SetPnindex(const opencascade::handle<NCollection_HArray1<int> > & thePnindex);
 
 		/****** StepVisual_TriangulatedFace::SetTriangles ******/
-		/****** md5 signature: 7becaa4c9c5db60f179ba306d43829c7 ******/
+		/****** md5 signature: c901f5a07774e6eebcbc7be1600b7bc3 ******/
 		%feature("compactdefaultargs") SetTriangles;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangles: TColStd_HArray2OfInteger
+theTriangles: NCollection_HArray2<int
 
 Return
 -------
@@ -12423,25 +12445,23 @@ Description
 -----------
 Sets field Triangles.
 ") SetTriangles;
-		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+		void SetTriangles(const opencascade::handle<NCollection_HArray2<int> > & theTriangles);
 
 		/****** StepVisual_TriangulatedFace::Triangles ******/
-		/****** md5 signature: f0a213a304d57e07a9ee9efaa8d64eff ******/
+		/****** md5 signature: 746f1d66f2feb5f284875cbb09b5e4d7 ******/
 		%feature("compactdefaultargs") Triangles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<NCollection_HArray2<int>>
 
 Description
 -----------
 Returns field Triangles.
 ") Triangles;
-		opencascade::handle<TColStd_HArray2OfInteger> Triangles();
+		opencascade::handle<NCollection_HArray2<int>> Triangles();
 
 };
 
-
-%make_alias(StepVisual_TriangulatedFace)
 
 %extend StepVisual_TriangulatedFace {
 	%pythoncode {
@@ -12451,200 +12471,200 @@ Returns field Triangles.
 
 /* harray1 classes */
 
-class StepVisual_HArray1OfAnnotationPlaneElement : public StepVisual_Array1OfAnnotationPlaneElement, public Standard_Transient {
+class StepVisual_HArray1OfAnnotationPlaneElement : public NCollection_Array1<StepVisual_AnnotationPlaneElement>, public Standard_Transient {
   public:
     StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfAnnotationPlaneElement::value_type& theValue);
-    StepVisual_HArray1OfAnnotationPlaneElement(const StepVisual_Array1OfAnnotationPlaneElement& theOther);
-    const StepVisual_Array1OfAnnotationPlaneElement& Array1();
-    StepVisual_Array1OfAnnotationPlaneElement& ChangeArray1();
+    StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_AnnotationPlaneElement>::value_type& theValue);
+    StepVisual_HArray1OfAnnotationPlaneElement(const NCollection_Array1<StepVisual_AnnotationPlaneElement>& theOther);
+    const NCollection_Array1<StepVisual_AnnotationPlaneElement>& Array1();
+    NCollection_Array1<StepVisual_AnnotationPlaneElement>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfAnnotationPlaneElement)
 
 
-class StepVisual_HArray1OfBoxCharacteristicSelect : public StepVisual_Array1OfBoxCharacteristicSelect, public Standard_Transient {
+class StepVisual_HArray1OfBoxCharacteristicSelect : public NCollection_Array1<StepVisual_BoxCharacteristicSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfBoxCharacteristicSelect::value_type& theValue);
-    StepVisual_HArray1OfBoxCharacteristicSelect(const StepVisual_Array1OfBoxCharacteristicSelect& theOther);
-    const StepVisual_Array1OfBoxCharacteristicSelect& Array1();
-    StepVisual_Array1OfBoxCharacteristicSelect& ChangeArray1();
+    StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_BoxCharacteristicSelect>::value_type& theValue);
+    StepVisual_HArray1OfBoxCharacteristicSelect(const NCollection_Array1<StepVisual_BoxCharacteristicSelect>& theOther);
+    const NCollection_Array1<StepVisual_BoxCharacteristicSelect>& Array1();
+    NCollection_Array1<StepVisual_BoxCharacteristicSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfBoxCharacteristicSelect)
 
 
-class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect, public Standard_Transient {
+class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect::value_type& theValue);
-    StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect& theOther);
-    const StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect& Array1();
-    StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect& ChangeArray1();
+    StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>::value_type& theValue);
+    StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>& theOther);
+    const NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>& Array1();
+    NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
 
 
-class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect, public Standard_Transient {
+class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect::value_type& theValue);
-    StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect& theOther);
-    const StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect& Array1();
-    StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect& ChangeArray1();
+    StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>::value_type& theValue);
+    StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>& theOther);
+    const NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>& Array1();
+    NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
 
 
-class StepVisual_HArray1OfCurveStyleFontPattern : public StepVisual_Array1OfCurveStyleFontPattern, public Standard_Transient {
+class StepVisual_HArray1OfCurveStyleFontPattern : public NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>, public Standard_Transient {
   public:
     StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfCurveStyleFontPattern::value_type& theValue);
-    StepVisual_HArray1OfCurveStyleFontPattern(const StepVisual_Array1OfCurveStyleFontPattern& theOther);
-    const StepVisual_Array1OfCurveStyleFontPattern& Array1();
-    StepVisual_Array1OfCurveStyleFontPattern& ChangeArray1();
+    StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>::value_type& theValue);
+    StepVisual_HArray1OfCurveStyleFontPattern(const NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>& Array1();
+    NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
 
 
-class StepVisual_HArray1OfDirectionCountSelect : public StepVisual_Array1OfDirectionCountSelect, public Standard_Transient {
+class StepVisual_HArray1OfDirectionCountSelect : public NCollection_Array1<StepVisual_DirectionCountSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfDirectionCountSelect::value_type& theValue);
-    StepVisual_HArray1OfDirectionCountSelect(const StepVisual_Array1OfDirectionCountSelect& theOther);
-    const StepVisual_Array1OfDirectionCountSelect& Array1();
-    StepVisual_Array1OfDirectionCountSelect& ChangeArray1();
+    StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_DirectionCountSelect>::value_type& theValue);
+    StepVisual_HArray1OfDirectionCountSelect(const NCollection_Array1<StepVisual_DirectionCountSelect>& theOther);
+    const NCollection_Array1<StepVisual_DirectionCountSelect>& Array1();
+    NCollection_Array1<StepVisual_DirectionCountSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfDirectionCountSelect)
 
 
-class StepVisual_HArray1OfDraughtingCalloutElement : public StepVisual_Array1OfDraughtingCalloutElement, public Standard_Transient {
+class StepVisual_HArray1OfDraughtingCalloutElement : public NCollection_Array1<StepVisual_DraughtingCalloutElement>, public Standard_Transient {
   public:
     StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfDraughtingCalloutElement::value_type& theValue);
-    StepVisual_HArray1OfDraughtingCalloutElement(const StepVisual_Array1OfDraughtingCalloutElement& theOther);
-    const StepVisual_Array1OfDraughtingCalloutElement& Array1();
-    StepVisual_Array1OfDraughtingCalloutElement& ChangeArray1();
+    StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_DraughtingCalloutElement>::value_type& theValue);
+    StepVisual_HArray1OfDraughtingCalloutElement(const NCollection_Array1<StepVisual_DraughtingCalloutElement>& theOther);
+    const NCollection_Array1<StepVisual_DraughtingCalloutElement>& Array1();
+    NCollection_Array1<StepVisual_DraughtingCalloutElement>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfDraughtingCalloutElement)
 
 
-class StepVisual_HArray1OfFillStyleSelect : public StepVisual_Array1OfFillStyleSelect, public Standard_Transient {
+class StepVisual_HArray1OfFillStyleSelect : public NCollection_Array1<StepVisual_FillStyleSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfFillStyleSelect::value_type& theValue);
-    StepVisual_HArray1OfFillStyleSelect(const StepVisual_Array1OfFillStyleSelect& theOther);
-    const StepVisual_Array1OfFillStyleSelect& Array1();
-    StepVisual_Array1OfFillStyleSelect& ChangeArray1();
+    StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_FillStyleSelect>::value_type& theValue);
+    StepVisual_HArray1OfFillStyleSelect(const NCollection_Array1<StepVisual_FillStyleSelect>& theOther);
+    const NCollection_Array1<StepVisual_FillStyleSelect>& Array1();
+    NCollection_Array1<StepVisual_FillStyleSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfFillStyleSelect)
 
 
-class StepVisual_HArray1OfInvisibleItem : public StepVisual_Array1OfInvisibleItem, public Standard_Transient {
+class StepVisual_HArray1OfInvisibleItem : public NCollection_Array1<StepVisual_InvisibleItem>, public Standard_Transient {
   public:
     StepVisual_HArray1OfInvisibleItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfInvisibleItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfInvisibleItem::value_type& theValue);
-    StepVisual_HArray1OfInvisibleItem(const StepVisual_Array1OfInvisibleItem& theOther);
-    const StepVisual_Array1OfInvisibleItem& Array1();
-    StepVisual_Array1OfInvisibleItem& ChangeArray1();
+    StepVisual_HArray1OfInvisibleItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_InvisibleItem>::value_type& theValue);
+    StepVisual_HArray1OfInvisibleItem(const NCollection_Array1<StepVisual_InvisibleItem>& theOther);
+    const NCollection_Array1<StepVisual_InvisibleItem>& Array1();
+    NCollection_Array1<StepVisual_InvisibleItem>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfInvisibleItem)
 
 
-class StepVisual_HArray1OfLayeredItem : public StepVisual_Array1OfLayeredItem, public Standard_Transient {
+class StepVisual_HArray1OfLayeredItem : public NCollection_Array1<StepVisual_LayeredItem>, public Standard_Transient {
   public:
     StepVisual_HArray1OfLayeredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfLayeredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfLayeredItem::value_type& theValue);
-    StepVisual_HArray1OfLayeredItem(const StepVisual_Array1OfLayeredItem& theOther);
-    const StepVisual_Array1OfLayeredItem& Array1();
-    StepVisual_Array1OfLayeredItem& ChangeArray1();
+    StepVisual_HArray1OfLayeredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_LayeredItem>::value_type& theValue);
+    StepVisual_HArray1OfLayeredItem(const NCollection_Array1<StepVisual_LayeredItem>& theOther);
+    const NCollection_Array1<StepVisual_LayeredItem>& Array1();
+    NCollection_Array1<StepVisual_LayeredItem>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfLayeredItem)
 
 
-class StepVisual_HArray1OfPresentationStyleAssignment : public StepVisual_Array1OfPresentationStyleAssignment, public Standard_Transient {
+class StepVisual_HArray1OfPresentationStyleAssignment : public NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>, public Standard_Transient {
   public:
     StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfPresentationStyleAssignment::value_type& theValue);
-    StepVisual_HArray1OfPresentationStyleAssignment(const StepVisual_Array1OfPresentationStyleAssignment& theOther);
-    const StepVisual_Array1OfPresentationStyleAssignment& Array1();
-    StepVisual_Array1OfPresentationStyleAssignment& ChangeArray1();
+    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>::value_type& theValue);
+    StepVisual_HArray1OfPresentationStyleAssignment(const NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>& Array1();
+    NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
 
 
-class StepVisual_HArray1OfPresentationStyleSelect : public StepVisual_Array1OfPresentationStyleSelect, public Standard_Transient {
+class StepVisual_HArray1OfPresentationStyleSelect : public NCollection_Array1<StepVisual_PresentationStyleSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfPresentationStyleSelect::value_type& theValue);
-    StepVisual_HArray1OfPresentationStyleSelect(const StepVisual_Array1OfPresentationStyleSelect& theOther);
-    const StepVisual_Array1OfPresentationStyleSelect& Array1();
-    StepVisual_Array1OfPresentationStyleSelect& ChangeArray1();
+    StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_PresentationStyleSelect>::value_type& theValue);
+    StepVisual_HArray1OfPresentationStyleSelect(const NCollection_Array1<StepVisual_PresentationStyleSelect>& theOther);
+    const NCollection_Array1<StepVisual_PresentationStyleSelect>& Array1();
+    NCollection_Array1<StepVisual_PresentationStyleSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfPresentationStyleSelect)
 
 
-class StepVisual_HArray1OfRenderingPropertiesSelect : public StepVisual_Array1OfRenderingPropertiesSelect, public Standard_Transient {
+class StepVisual_HArray1OfRenderingPropertiesSelect : public NCollection_Array1<StepVisual_RenderingPropertiesSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfRenderingPropertiesSelect::value_type& theValue);
-    StepVisual_HArray1OfRenderingPropertiesSelect(const StepVisual_Array1OfRenderingPropertiesSelect& theOther);
-    const StepVisual_Array1OfRenderingPropertiesSelect& Array1();
-    StepVisual_Array1OfRenderingPropertiesSelect& ChangeArray1();
+    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_RenderingPropertiesSelect>::value_type& theValue);
+    StepVisual_HArray1OfRenderingPropertiesSelect(const NCollection_Array1<StepVisual_RenderingPropertiesSelect>& theOther);
+    const NCollection_Array1<StepVisual_RenderingPropertiesSelect>& Array1();
+    NCollection_Array1<StepVisual_RenderingPropertiesSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfRenderingPropertiesSelect)
 
 
-class StepVisual_HArray1OfStyleContextSelect : public StepVisual_Array1OfStyleContextSelect, public Standard_Transient {
+class StepVisual_HArray1OfStyleContextSelect : public NCollection_Array1<StepVisual_StyleContextSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfStyleContextSelect::value_type& theValue);
-    StepVisual_HArray1OfStyleContextSelect(const StepVisual_Array1OfStyleContextSelect& theOther);
-    const StepVisual_Array1OfStyleContextSelect& Array1();
-    StepVisual_Array1OfStyleContextSelect& ChangeArray1();
+    StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_StyleContextSelect>::value_type& theValue);
+    StepVisual_HArray1OfStyleContextSelect(const NCollection_Array1<StepVisual_StyleContextSelect>& theOther);
+    const NCollection_Array1<StepVisual_StyleContextSelect>& Array1();
+    NCollection_Array1<StepVisual_StyleContextSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfStyleContextSelect)
 
 
-class StepVisual_HArray1OfSurfaceStyleElementSelect : public StepVisual_Array1OfSurfaceStyleElementSelect, public Standard_Transient {
+class StepVisual_HArray1OfSurfaceStyleElementSelect : public NCollection_Array1<StepVisual_SurfaceStyleElementSelect>, public Standard_Transient {
   public:
     StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfSurfaceStyleElementSelect::value_type& theValue);
-    StepVisual_HArray1OfSurfaceStyleElementSelect(const StepVisual_Array1OfSurfaceStyleElementSelect& theOther);
-    const StepVisual_Array1OfSurfaceStyleElementSelect& Array1();
-    StepVisual_Array1OfSurfaceStyleElementSelect& ChangeArray1();
+    StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_SurfaceStyleElementSelect>::value_type& theValue);
+    StepVisual_HArray1OfSurfaceStyleElementSelect(const NCollection_Array1<StepVisual_SurfaceStyleElementSelect>& theOther);
+    const NCollection_Array1<StepVisual_SurfaceStyleElementSelect>& Array1();
+    NCollection_Array1<StepVisual_SurfaceStyleElementSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
 
 
-class StepVisual_HArray1OfTessellatedEdgeOrVertex : public StepVisual_Array1OfTessellatedEdgeOrVertex, public Standard_Transient {
+class StepVisual_HArray1OfTessellatedEdgeOrVertex : public NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>, public Standard_Transient {
   public:
     StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedEdgeOrVertex::value_type& theValue);
-    StepVisual_HArray1OfTessellatedEdgeOrVertex(const StepVisual_Array1OfTessellatedEdgeOrVertex& theOther);
-    const StepVisual_Array1OfTessellatedEdgeOrVertex& Array1();
-    StepVisual_Array1OfTessellatedEdgeOrVertex& ChangeArray1();
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>::value_type& theValue);
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>& theOther);
+    const NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>& Array1();
+    NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfTessellatedEdgeOrVertex)
 
 
-class StepVisual_HArray1OfTessellatedStructuredItem : public StepVisual_Array1OfTessellatedStructuredItem, public Standard_Transient {
+class StepVisual_HArray1OfTessellatedStructuredItem : public NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>, public Standard_Transient {
   public:
     StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedStructuredItem::value_type& theValue);
-    StepVisual_HArray1OfTessellatedStructuredItem(const StepVisual_Array1OfTessellatedStructuredItem& theOther);
-    const StepVisual_Array1OfTessellatedStructuredItem& Array1();
-    StepVisual_Array1OfTessellatedStructuredItem& ChangeArray1();
+    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>::value_type& theValue);
+    StepVisual_HArray1OfTessellatedStructuredItem(const NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>& Array1();
+    NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfTessellatedStructuredItem)
 
 
-class StepVisual_HArray1OfTextOrCharacter : public StepVisual_Array1OfTextOrCharacter, public Standard_Transient {
+class StepVisual_HArray1OfTextOrCharacter : public NCollection_Array1<StepVisual_TextOrCharacter>, public Standard_Transient {
   public:
     StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTextOrCharacter::value_type& theValue);
-    StepVisual_HArray1OfTextOrCharacter(const StepVisual_Array1OfTextOrCharacter& theOther);
-    const StepVisual_Array1OfTextOrCharacter& Array1();
-    StepVisual_Array1OfTextOrCharacter& ChangeArray1();
+    StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_TextOrCharacter>::value_type& theValue);
+    StepVisual_HArray1OfTextOrCharacter(const NCollection_Array1<StepVisual_TextOrCharacter>& theOther);
+    const NCollection_Array1<StepVisual_TextOrCharacter>& Array1();
+    NCollection_Array1<StepVisual_TextOrCharacter>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfTextOrCharacter)
 

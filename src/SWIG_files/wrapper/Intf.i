@@ -133,7 +133,7 @@ typedef NCollection_Sequence<Intf_TangentZone> Intf_SeqOfTangentZone;
 class Intf {
 	public:
 		/****** Intf::Contain ******/
-		/****** md5 signature: 156ef9419a42fbb64425e1d94938a4c4 ******/
+		/****** md5 signature: f3e7a45dc147e0fd6975c3d927184f8d ******/
 		%feature("compactdefaultargs") Contain;
 		%feature("autodoc", "
 Parameters
@@ -151,10 +151,10 @@ Description
 -----------
 Compute if the triangle <P1> <P2> <P3> contain <ThePnt>.
 ") Contain;
-		static Standard_Boolean Contain(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & ThePnt);
+		static bool Contain(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & ThePnt);
 
 		/****** Intf::PlaneEquation ******/
-		/****** md5 signature: 3d31c751b38275a0958b3d3f95a4af14 ******/
+		/****** md5 signature: 677295b1d6bf82280abb36cf82d8fb73 ******/
 		%feature("compactdefaultargs") PlaneEquation;
 		%feature("autodoc", "
 Parameters
@@ -166,7 +166,7 @@ NormalVector: gp_XYZ
 
 Return
 -------
-PolarDistance: float
+PolarDistance: double
 
 Description
 -----------
@@ -191,7 +191,7 @@ Computes the interference between two polygons in 2d. Result: points of intersec
 class Intf_Interference {
 	public:
 		/****** Intf_Interference::Contains ******/
-		/****** md5 signature: 8db690ba8b601a23e59578a9a0afb5bb ******/
+		/****** md5 signature: f47d4b64c2c9a1b651577e68e3f50d8f ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -206,7 +206,7 @@ Description
 -----------
 Tests if the polylines of intersection or the zones of tangence contain the point of intersection <ThePnt>.
 ") Contains;
-		Standard_Boolean Contains(const Intf_SectionPoint & ThePnt);
+		bool Contains(const Intf_SectionPoint & ThePnt);
 
 		/****** Intf_Interference::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -222,20 +222,20 @@ No available documentation.
 		void Dump();
 
 		/****** Intf_Interference::GetTolerance ******/
-		/****** md5 signature: 0b68579e68d60bdd102d14afab21387e ******/
+		/****** md5 signature: 20360866d6338eb8a4e50f80a4bf35d3 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Gives the tolerance used for the calculation.
 ") GetTolerance;
-		Standard_Real GetTolerance();
+		double GetTolerance();
 
 		/****** Intf_Interference::Insert ******/
-		/****** md5 signature: 71cbe00f6c4a142c12a68911c6740031 ******/
+		/****** md5 signature: ecd7a4b92ac96fbae3b2ed5b81e00268 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -250,7 +250,7 @@ Description
 -----------
 Inserts a new zone of tangence in the current list of tangent zones of the interference and returns True when done.
 ") Insert;
-		Standard_Boolean Insert(const Intf_TangentZone & TheZone);
+		bool Insert(const Intf_TangentZone & TheZone);
 
 		/****** Intf_Interference::Insert ******/
 		/****** md5 signature: fbc4280014a2d36acc45dd0957195304 ******/
@@ -272,7 +272,7 @@ Insert a new segment of intersection in the current list of polylines of interse
 		void Insert(const Intf_SectionPoint & pdeb, const Intf_SectionPoint & pfin);
 
 		/****** Intf_Interference::LineValue ******/
-		/****** md5 signature: b704865f2c00714f3b0ac1887854a2ac ******/
+		/****** md5 signature: ffbda651b20d7a3a14b07d8a2bbe6bae ******/
 		%feature("compactdefaultargs") LineValue;
 		%feature("autodoc", "
 Parameters
@@ -287,10 +287,10 @@ Description
 -----------
 Gives the polyline of intersection at address <Index> in the interference.
 ") LineValue;
-		const Intf_SectionLine & LineValue(const Standard_Integer Index);
+		const Intf_SectionLine & LineValue(const int Index);
 
 		/****** Intf_Interference::NbSectionLines ******/
-		/****** md5 signature: 5d1ec577898373b206a6d53c486eab88 ******/
+		/****** md5 signature: 1ddb0ab84a8c80eb26a9314db561c1f6 ******/
 		%feature("compactdefaultargs") NbSectionLines;
 		%feature("autodoc", "Return
 -------
@@ -300,10 +300,10 @@ Description
 -----------
 Gives the number of polylines of intersection in the interference.
 ") NbSectionLines;
-		Standard_Integer NbSectionLines();
+		int NbSectionLines();
 
 		/****** Intf_Interference::NbSectionPoints ******/
-		/****** md5 signature: b0aa9aa17c5a4b8c958465b588b90d3d ******/
+		/****** md5 signature: 4aa69d6b5c358eb29a823e311e01592c ******/
 		%feature("compactdefaultargs") NbSectionPoints;
 		%feature("autodoc", "Return
 -------
@@ -313,10 +313,10 @@ Description
 -----------
 Gives the number of points of intersection in the interference.
 ") NbSectionPoints;
-		Standard_Integer NbSectionPoints();
+		int NbSectionPoints();
 
 		/****** Intf_Interference::NbTangentZones ******/
-		/****** md5 signature: 031aadc96353eb85159345c32c6f3bb8 ******/
+		/****** md5 signature: fd338de2c41fae8f35075602ab70de1e ******/
 		%feature("compactdefaultargs") NbTangentZones;
 		%feature("autodoc", "Return
 -------
@@ -326,10 +326,10 @@ Description
 -----------
 Gives the number of zones of tangence in the interference.
 ") NbTangentZones;
-		Standard_Integer NbTangentZones();
+		int NbTangentZones();
 
 		/****** Intf_Interference::PntValue ******/
-		/****** md5 signature: e6ced9cf8349bb488a07338813702561 ******/
+		/****** md5 signature: fc7044c17da4696c2d0059a82f38f55e ******/
 		%feature("compactdefaultargs") PntValue;
 		%feature("autodoc", "
 Parameters
@@ -344,10 +344,10 @@ Description
 -----------
 Gives the point of intersection of address Index in the interference.
 ") PntValue;
-		const Intf_SectionPoint & PntValue(const Standard_Integer Index);
+		const Intf_SectionPoint & PntValue(const int Index);
 
 		/****** Intf_Interference::ZoneValue ******/
-		/****** md5 signature: 1e1ef9f8bb7f993fcc74e246010ed9d5 ******/
+		/****** md5 signature: 7f58c2b7df999129ed02600377b92542 ******/
 		%feature("compactdefaultargs") ZoneValue;
 		%feature("autodoc", "
 Parameters
@@ -362,7 +362,7 @@ Description
 -----------
 Gives the zone of tangence at address Index in the interference.
 ") ZoneValue;
-		const Intf_TangentZone & ZoneValue(const Standard_Integer Index);
+		const Intf_TangentZone & ZoneValue(const int Index);
 
 };
 
@@ -393,7 +393,7 @@ Returns the bounding box of the polygon.
 		const Bnd_Box2d & Bounding();
 
 		/****** Intf_Polygon2d::Closed ******/
-		/****** md5 signature: a8fb73c0af73671826a8b1d0720125a8 ******/
+		/****** md5 signature: 895307ddb450574aa7e1f957d547f684 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -403,23 +403,23 @@ Description
 -----------
 Returns True if the polyline is closed.
 ") Closed;
-		virtual Standard_Boolean Closed();
+		virtual bool Closed();
 
 		/****** Intf_Polygon2d::DeflectionOverEstimation ******/
-		/****** md5 signature: e82e4ae6adfd64b8fc516358f6065772 ******/
+		/****** md5 signature: a0d0dc0b17b6db5e485c30af14c92136 ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the tolerance of the polygon.
 ") DeflectionOverEstimation;
-		virtual Standard_Real DeflectionOverEstimation();
+		virtual double DeflectionOverEstimation();
 
 		/****** Intf_Polygon2d::NbSegments ******/
-		/****** md5 signature: 087ae63d8d49582ae2f8fd7945f7f59e ******/
+		/****** md5 signature: dbfc3af650268281b98b8686f72e5618 ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -429,10 +429,10 @@ Description
 -----------
 Returns the number of Segments in the polyline.
 ") NbSegments;
-		virtual Standard_Integer NbSegments();
+		virtual int NbSegments();
 
 		/****** Intf_Polygon2d::Segment ******/
-		/****** md5 signature: bc5ab1ff556cae31a31ab1853588bdcd ******/
+		/****** md5 signature: f1f0eb353ddfcf0aeeb8a6295a2548bc ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -449,7 +449,7 @@ Description
 -----------
 Returns the points of the segment <Index> in the Polygon.
 ") Segment;
-		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
+		virtual void Segment(const int theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
 };
 
@@ -546,7 +546,7 @@ Closes the SectionLine.
 		void Close();
 
 		/****** Intf_SectionLine::Contains ******/
-		/****** md5 signature: be07516264da743a11034b366a6c2a69 ******/
+		/****** md5 signature: 2737c22549a5c9de62eab21148640678 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -561,10 +561,10 @@ Description
 -----------
 Returns True if ThePI is in the SectionLine <self>.
 ") Contains;
-		Standard_Boolean Contains(const Intf_SectionPoint & ThePI);
+		bool Contains(const Intf_SectionPoint & ThePI);
 
 		/****** Intf_SectionLine::Dump ******/
-		/****** md5 signature: f0d397df9c761149ff15491c97c7fb2a ******/
+		/****** md5 signature: 8982a47168524f427d3a4ec28bf82ef7 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -579,10 +579,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer Indent);
+		void Dump(const int Indent);
 
 		/****** Intf_SectionLine::GetPoint ******/
-		/****** md5 signature: a4ea9d0ca5b9b2d467ad4ce33aefb421 ******/
+		/****** md5 signature: 48c5e57e1f8102dd176d40f541ab402f ******/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "
 Parameters
@@ -597,10 +597,10 @@ Description
 -----------
 Gives the point of intersection of address <Index> in the SectionLine.
 ") GetPoint;
-		const Intf_SectionPoint & GetPoint(const Standard_Integer Index);
+		const Intf_SectionPoint & GetPoint(const int Index);
 
 		/****** Intf_SectionLine::IsClosed ******/
-		/****** md5 signature: 29709d02fadc9fcb79a766bc9679271b ******/
+		/****** md5 signature: 66fc0caa1853d24780b1d28b8296bc6c ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -610,10 +610,10 @@ Description
 -----------
 Returns True if the SectionLine is closed.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Intf_SectionLine::IsEnd ******/
-		/****** md5 signature: ece272bbe48c8ae65e931c27a1df2429 ******/
+		/****** md5 signature: c01e46f85cdaa09458fad5dfae03ade9 ******/
 		%feature("compactdefaultargs") IsEnd;
 		%feature("autodoc", "
 Parameters
@@ -628,10 +628,10 @@ Description
 -----------
 Checks if <ThePI> is an end of the SectionLine. Returns 1 for the beginning, 2 for the end, otherwise 0.
 ") IsEnd;
-		Standard_Integer IsEnd(const Intf_SectionPoint & ThePI);
+		int IsEnd(const Intf_SectionPoint & ThePI);
 
 		/****** Intf_SectionLine::IsEqual ******/
-		/****** md5 signature: 6bc841410a65a4b80b86b64372ac7b00 ******/
+		/****** md5 signature: c944ecd8fafd680585aa9ad832914c81 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -646,10 +646,10 @@ Description
 -----------
 Compares two SectionLines.
 ") IsEqual;
-		Standard_Boolean IsEqual(const Intf_SectionLine & Other);
+		bool IsEqual(const Intf_SectionLine & Other);
 
 		/****** Intf_SectionLine::NumberOfPoints ******/
-		/****** md5 signature: 08a156dcf48a55298dd198b89e929d8e ******/
+		/****** md5 signature: 8303ed651fbba205b29ad19fe3508579 ******/
 		%feature("compactdefaultargs") NumberOfPoints;
 		%feature("autodoc", "Return
 -------
@@ -659,7 +659,7 @@ Description
 -----------
 Returns number of points in this SectionLine.
 ") NumberOfPoints;
-		Standard_Integer NumberOfPoints();
+		int NumberOfPoints();
 
 		/****** Intf_SectionLine::Prepend ******/
 		/****** md5 signature: e5ed2c981ae507bf42166b84fc0d82c4 ******/
@@ -752,7 +752,7 @@ No available documentation.
 		 Intf_SectionPoint();
 
 		/****** Intf_SectionPoint::Intf_SectionPoint ******/
-		/****** md5 signature: 354168116f1f0f7f24fa48c01643fff8 ******/
+		/****** md5 signature: e86a3c2a44b602b4d1ef834003b3820a ******/
 		%feature("compactdefaultargs") Intf_SectionPoint;
 		%feature("autodoc", "
 Parameters
@@ -761,12 +761,12 @@ Where: gp_Pnt
 DimeO: Intf_PIType
 AddrO1: int
 AddrO2: int
-ParamO: float
+ParamO: double
 DimeT: Intf_PIType
 AddrT1: int
 AddrT2: int
-ParamT: float
-Incid: float
+ParamT: double
+Incid: double
 
 Return
 -------
@@ -776,10 +776,10 @@ Description
 -----------
 Builds a SectionPoint with the respective dimensions (vertex edge or face) of the concerned arguments and their addresses in the Topological structure.
 ") Intf_SectionPoint;
-		 Intf_SectionPoint(const gp_Pnt & Where, const Intf_PIType DimeO, const Standard_Integer AddrO1, const Standard_Integer AddrO2, const Standard_Real ParamO, const Intf_PIType DimeT, const Standard_Integer AddrT1, const Standard_Integer AddrT2, const Standard_Real ParamT, const Standard_Real Incid);
+		 Intf_SectionPoint(const gp_Pnt & Where, const Intf_PIType DimeO, const int AddrO1, const int AddrO2, const double ParamO, const Intf_PIType DimeT, const int AddrT1, const int AddrT2, const double ParamT, const double Incid);
 
 		/****** Intf_SectionPoint::Intf_SectionPoint ******/
-		/****** md5 signature: 15ab5bba1cab2c2651398d9c12a63d96 ******/
+		/****** md5 signature: c5681101b76aa822ee675522404d10b9 ******/
 		%feature("compactdefaultargs") Intf_SectionPoint;
 		%feature("autodoc", "
 Parameters
@@ -787,11 +787,11 @@ Parameters
 Where: gp_Pnt2d
 DimeO: Intf_PIType
 AddrO1: int
-ParamO: float
+ParamO: double
 DimeT: Intf_PIType
 AddrT1: int
-ParamT: float
-Incid: float
+ParamT: double
+Incid: double
 
 Return
 -------
@@ -801,10 +801,10 @@ Description
 -----------
 Builds a SectionPoint 2d with the respective dimensions (vertex or edge) of the concerned arguments and their addresses in the Topological structure.
 ") Intf_SectionPoint;
-		 Intf_SectionPoint(const gp_Pnt2d & Where, const Intf_PIType DimeO, const Standard_Integer AddrO1, const Standard_Real ParamO, const Intf_PIType DimeT, const Standard_Integer AddrT1, const Standard_Real ParamT, const Standard_Real Incid);
+		 Intf_SectionPoint(const gp_Pnt2d & Where, const Intf_PIType DimeO, const int AddrO1, const double ParamO, const Intf_PIType DimeT, const int AddrT1, const double ParamT, const double Incid);
 
 		/****** Intf_SectionPoint::Dump ******/
-		/****** md5 signature: f0d397df9c761149ff15491c97c7fb2a ******/
+		/****** md5 signature: 8982a47168524f427d3a4ec28bf82ef7 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -819,23 +819,23 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer Indent);
+		void Dump(const int Indent);
 
 		/****** Intf_SectionPoint::Incidence ******/
-		/****** md5 signature: a54ce8012327d6bfaef1c0c55c6bff2c ******/
+		/****** md5 signature: 9ea935f6bccd380e2ba9a4faa6278620 ******/
 		%feature("compactdefaultargs") Incidence;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Gives the incidence at this section point. The incidence between the two triangles is given by the cosine. The best incidence is 0. (PI/2). The worst is 1. (null angle).
 ") Incidence;
-		Standard_Real Incidence();
+		double Incidence();
 
 		/****** Intf_SectionPoint::InfoFirst ******/
-		/****** md5 signature: 926a9420119721acf9f191aeb5c5ae82 ******/
+		/****** md5 signature: 4899bf83579a896a61a26706f036d2dd ******/
 		%feature("compactdefaultargs") InfoFirst;
 		%feature("autodoc", "
 Parameters
@@ -846,7 +846,7 @@ Return
 Dim: Intf_PIType
 Add1: int
 Add2: int
-Param: float
+Param: double
 
 Description
 -----------
@@ -855,7 +855,7 @@ No available documentation.
 		void InfoFirst(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_SectionPoint::InfoFirst ******/
-		/****** md5 signature: 20ef78affbd1bcd59c9ff0691a63d6e8 ******/
+		/****** md5 signature: dc1146bb80f0379c95ed6c0e7792392d ******/
 		%feature("compactdefaultargs") InfoFirst;
 		%feature("autodoc", "
 Parameters
@@ -865,7 +865,7 @@ Return
 -------
 Dim: Intf_PIType
 Addr: int
-Param: float
+Param: double
 
 Description
 -----------
@@ -874,7 +874,7 @@ Gives the data about the first argument of the Interference.
 		void InfoFirst(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_SectionPoint::InfoSecond ******/
-		/****** md5 signature: 0e6c6ce5ffa684bc9e1fd4cdc0839d91 ******/
+		/****** md5 signature: b1d348fa7edfa5b49e372737be058d7a ******/
 		%feature("compactdefaultargs") InfoSecond;
 		%feature("autodoc", "
 Parameters
@@ -885,7 +885,7 @@ Return
 Dim: Intf_PIType
 Add1: int
 Add2: int
-Param: float
+Param: double
 
 Description
 -----------
@@ -894,7 +894,7 @@ No available documentation.
 		void InfoSecond(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_SectionPoint::InfoSecond ******/
-		/****** md5 signature: 679ab58838015e2dca23bde4c3ef8e13 ******/
+		/****** md5 signature: 08b703a5d65ea678ca110fa420fdc335 ******/
 		%feature("compactdefaultargs") InfoSecond;
 		%feature("autodoc", "
 Parameters
@@ -904,7 +904,7 @@ Return
 -------
 Dim: Intf_PIType
 Addr: int
-Param: float
+Param: double
 
 Description
 -----------
@@ -913,7 +913,7 @@ Gives the data about the second argument of the Interference.
 		void InfoSecond(Intf_PIType &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_SectionPoint::IsEqual ******/
-		/****** md5 signature: 927719925907a38badbab5fe6cdce988 ******/
+		/****** md5 signature: bb39313695700bce16c826fcbfb7de07 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -928,10 +928,10 @@ Description
 -----------
 Returns True if the two SectionPoint have the same logical information.
 ") IsEqual;
-		Standard_Boolean IsEqual(const Intf_SectionPoint & Other);
+		bool IsEqual(const Intf_SectionPoint & Other);
 
 		/****** Intf_SectionPoint::IsOnSameEdge ******/
-		/****** md5 signature: 952981c6627c427fbdce3a8ca9675f9e ******/
+		/****** md5 signature: aa80fe7c49339a678e944795ee939041 ******/
 		%feature("compactdefaultargs") IsOnSameEdge;
 		%feature("autodoc", "
 Parameters
@@ -946,7 +946,7 @@ Description
 -----------
 Returns True if the two SectionPoints are on the same edge of the first or the second element.
 ") IsOnSameEdge;
-		Standard_Boolean IsOnSameEdge(const Intf_SectionPoint & Other);
+		bool IsOnSameEdge(const Intf_SectionPoint & Other);
 
 		/****** Intf_SectionPoint::Merge ******/
 		/****** md5 signature: 8a78871c4bc6a59032fe9b7aa376c181 ******/
@@ -967,30 +967,30 @@ Merges two SectionPoints.
 		void Merge(Intf_SectionPoint & Other);
 
 		/****** Intf_SectionPoint::ParamOnFirst ******/
-		/****** md5 signature: c1af1fad86dcc6635235f3d2a2efda3a ******/
+		/****** md5 signature: 2f88afb75508f4b380339ca1dd478625 ******/
 		%feature("compactdefaultargs") ParamOnFirst;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the cumulated Parameter of the SectionPoint on the first element.
 ") ParamOnFirst;
-		Standard_Real ParamOnFirst();
+		double ParamOnFirst();
 
 		/****** Intf_SectionPoint::ParamOnSecond ******/
-		/****** md5 signature: 4cf4e18e7ca9aa68a1f4328994d835d7 ******/
+		/****** md5 signature: 6368db0882aa68546b85e64558fde976 ******/
 		%feature("compactdefaultargs") ParamOnSecond;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the cumulated Parameter of the section point on the second element.
 ") ParamOnSecond;
-		Standard_Real ParamOnSecond();
+		double ParamOnSecond();
 
 		/****** Intf_SectionPoint::Pnt ******/
 		/****** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ******/
@@ -1109,7 +1109,7 @@ Adds the TangentZone <Tzi> to <self>.
 		void Append(const Intf_TangentZone & Tzi);
 
 		/****** Intf_TangentZone::Contains ******/
-		/****** md5 signature: be07516264da743a11034b366a6c2a69 ******/
+		/****** md5 signature: 2737c22549a5c9de62eab21148640678 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -1124,10 +1124,10 @@ Description
 -----------
 Checks if <ThePI> is in TangentZone.
 ") Contains;
-		Standard_Boolean Contains(const Intf_SectionPoint & ThePI);
+		bool Contains(const Intf_SectionPoint & ThePI);
 
 		/****** Intf_TangentZone::Dump ******/
-		/****** md5 signature: f0d397df9c761149ff15491c97c7fb2a ******/
+		/****** md5 signature: 8982a47168524f427d3a4ec28bf82ef7 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1142,10 +1142,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer Indent);
+		void Dump(const int Indent);
 
 		/****** Intf_TangentZone::GetPoint ******/
-		/****** md5 signature: a4ea9d0ca5b9b2d467ad4ce33aefb421 ******/
+		/****** md5 signature: 48c5e57e1f8102dd176d40f541ab402f ******/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "
 Parameters
@@ -1160,10 +1160,10 @@ Description
 -----------
 Gives the SectionPoint of address <Index> in the TangentZone.
 ") GetPoint;
-		const Intf_SectionPoint & GetPoint(const Standard_Integer Index);
+		const Intf_SectionPoint & GetPoint(const int Index);
 
 		/****** Intf_TangentZone::HasCommonRange ******/
-		/****** md5 signature: 8b1479e7b80e217c3df8b97f3dc12ea5 ******/
+		/****** md5 signature: dbcf8b92f279b1df56d2a0fa2017a876 ******/
 		%feature("compactdefaultargs") HasCommonRange;
 		%feature("autodoc", "
 Parameters
@@ -1178,10 +1178,10 @@ Description
 -----------
 Returns True if the TangentZone <Other> has a common part with <self>.
 ") HasCommonRange;
-		Standard_Boolean HasCommonRange(const Intf_TangentZone & Other);
+		bool HasCommonRange(const Intf_TangentZone & Other);
 
 		/****** Intf_TangentZone::InfoFirst ******/
-		/****** md5 signature: 47cb9500578f7ae633417afefbf8521b ******/
+		/****** md5 signature: 7b6dae32e5f379e2fb14bac93b22d558 ******/
 		%feature("compactdefaultargs") InfoFirst;
 		%feature("autodoc", "
 Parameters
@@ -1190,9 +1190,9 @@ Parameters
 Return
 -------
 segMin: int
-paraMin: float
+paraMin: double
 segMax: int
-paraMax: float
+paraMax: double
 
 Description
 -----------
@@ -1201,7 +1201,7 @@ Gives information about the first argument of the Interference. (Usable only for
 		void InfoFirst(Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_TangentZone::InfoSecond ******/
-		/****** md5 signature: 5f7628c3595ae1430ae905fb1aaa5468 ******/
+		/****** md5 signature: 3d48eefab691d501041e6dc10ed98ac2 ******/
 		%feature("compactdefaultargs") InfoSecond;
 		%feature("autodoc", "
 Parameters
@@ -1210,9 +1210,9 @@ Parameters
 Return
 -------
 segMin: int
-paraMin: float
+paraMin: double
 segMax: int
-paraMax: float
+paraMax: double
 
 Description
 -----------
@@ -1221,7 +1221,7 @@ Gives information about the second argument of the Interference. (Usable only fo
 		void InfoSecond(Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_TangentZone::Insert ******/
-		/****** md5 signature: c218d5942b1197ae8c201bf9d308b0e7 ******/
+		/****** md5 signature: 9a32337cc66e170230bae0707a008bce ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -1236,10 +1236,10 @@ Description
 -----------
 Inserts a SectionPoint in the TangentZone.
 ") Insert;
-		Standard_Boolean Insert(const Intf_SectionPoint & Pi);
+		bool Insert(const Intf_SectionPoint & Pi);
 
 		/****** Intf_TangentZone::InsertAfter ******/
-		/****** md5 signature: 79a503be92b650a7108b45aa4ab56b82 ******/
+		/****** md5 signature: 13a844355ff5292d4eedcfc6e7b13022 ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -1255,10 +1255,10 @@ Description
 -----------
 Inserts a SectionPoint after <Index> in the TangentZone.
 ") InsertAfter;
-		void InsertAfter(const Standard_Integer Index, const Intf_SectionPoint & Pi);
+		void InsertAfter(const int Index, const Intf_SectionPoint & Pi);
 
 		/****** Intf_TangentZone::InsertBefore ******/
-		/****** md5 signature: fdda2b3944af866b52689974ee5c9e83 ******/
+		/****** md5 signature: 0e9948d35074911abd244aa2398dfdf8 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -1274,10 +1274,10 @@ Description
 -----------
 Inserts a SectionPoint before <Index> in the TangentZone.
 ") InsertBefore;
-		void InsertBefore(const Standard_Integer Index, const Intf_SectionPoint & Pi);
+		void InsertBefore(const int Index, const Intf_SectionPoint & Pi);
 
 		/****** Intf_TangentZone::IsEqual ******/
-		/****** md5 signature: 57d99b1ed842f83f7f61f43c9f9dd6fc ******/
+		/****** md5 signature: d023c56e254011090fd91ebc01501ceb ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -1292,10 +1292,10 @@ Description
 -----------
 Compares two TangentZones.
 ") IsEqual;
-		Standard_Boolean IsEqual(const Intf_TangentZone & Other);
+		bool IsEqual(const Intf_TangentZone & Other);
 
 		/****** Intf_TangentZone::NumberOfPoints ******/
-		/****** md5 signature: 08a156dcf48a55298dd198b89e929d8e ******/
+		/****** md5 signature: 8303ed651fbba205b29ad19fe3508579 ******/
 		%feature("compactdefaultargs") NumberOfPoints;
 		%feature("autodoc", "Return
 -------
@@ -1305,10 +1305,10 @@ Description
 -----------
 Returns number of SectionPoint in this TangentZone.
 ") NumberOfPoints;
-		Standard_Integer NumberOfPoints();
+		int NumberOfPoints();
 
 		/****** Intf_TangentZone::ParamOnFirst ******/
-		/****** md5 signature: 2d7771c6548d35b12f462c97b7fd79ed ******/
+		/****** md5 signature: fcc5379d5a343382d46b53183ae8ad67 ******/
 		%feature("compactdefaultargs") ParamOnFirst;
 		%feature("autodoc", "
 Parameters
@@ -1316,8 +1316,8 @@ Parameters
 
 Return
 -------
-paraMin: float
-paraMax: float
+paraMin: double
+paraMax: double
 
 Description
 -----------
@@ -1326,7 +1326,7 @@ Gives the parameter range of the TangentZone on the first argument of the Interf
 		void ParamOnFirst(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Intf_TangentZone::ParamOnSecond ******/
-		/****** md5 signature: b146b9ecc208b8340c01cec02277baae ******/
+		/****** md5 signature: c97797d030fc9b8f606f9a2d21a2f9ae ******/
 		%feature("compactdefaultargs") ParamOnSecond;
 		%feature("autodoc", "
 Parameters
@@ -1334,8 +1334,8 @@ Parameters
 
 Return
 -------
-paraMin: float
-paraMax: float
+paraMin: double
+paraMax: double
 
 Description
 -----------
@@ -1362,7 +1362,7 @@ Inserts a point in the polygonal TangentZone.
 		void PolygonInsert(const Intf_SectionPoint & Pi);
 
 		/****** Intf_TangentZone::RangeContains ******/
-		/****** md5 signature: 1a1fba3d09d37f6b5ccf865b904c91d0 ******/
+		/****** md5 signature: bd524989ad17f65157225cfc73d64c6e ******/
 		%feature("compactdefaultargs") RangeContains;
 		%feature("autodoc", "
 Parameters
@@ -1377,7 +1377,7 @@ Description
 -----------
 Returns True if <ThePI> is in the parameter range of the TangentZone.
 ") RangeContains;
-		Standard_Boolean RangeContains(const Intf_SectionPoint & ThePI);
+		bool RangeContains(const Intf_SectionPoint & ThePI);
 
 
 %extend{
@@ -1421,7 +1421,7 @@ No available documentation.
 		 Intf_Tool();
 
 		/****** Intf_Tool::BeginParam ******/
-		/****** md5 signature: 84c1c1ad39d95432060b5f123f7bd49a ******/
+		/****** md5 signature: ff604310cbdcfa238abeee4e1a0d5cfe ******/
 		%feature("compactdefaultargs") BeginParam;
 		%feature("autodoc", "
 Parameters
@@ -1430,16 +1430,16 @@ SegmentNum: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") BeginParam;
-		Standard_Real BeginParam(const Standard_Integer SegmentNum);
+		double BeginParam(const int SegmentNum);
 
 		/****** Intf_Tool::EndParam ******/
-		/****** md5 signature: 31c22722db428201c045f44ab1bcffe0 ******/
+		/****** md5 signature: e3c9697a4c8a3601132fed35b9419eff ******/
 		%feature("compactdefaultargs") EndParam;
 		%feature("autodoc", "
 Parameters
@@ -1448,13 +1448,13 @@ SegmentNum: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") EndParam;
-		Standard_Real EndParam(const Standard_Integer SegmentNum);
+		double EndParam(const int SegmentNum);
 
 		/****** Intf_Tool::Hypr2dBox ******/
 		/****** md5 signature: 8a782a74fec254a9ef7aca89808d6d7b ******/
@@ -1537,7 +1537,7 @@ No available documentation.
 		void LinBox(const gp_Lin & theLin, const Bnd_Box & bounding, Bnd_Box & boxLin);
 
 		/****** Intf_Tool::NbSegments ******/
-		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
+		/****** md5 signature: 9aee6c2253f8ba296b560fdee30e17ad ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -1547,7 +1547,7 @@ Description
 -----------
 No available documentation.
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** Intf_Tool::Parab2dBox ******/
 		/****** md5 signature: 90884c06d1dbaa8731b2b3ad139132dd ******/
@@ -1691,7 +1691,7 @@ Computes the self interference of a Polygon.
 		void Perform(const Intf_Polygon2d & Obje);
 
 		/****** Intf_InterferencePolygon2d::Pnt2dValue ******/
-		/****** md5 signature: b47807b474167c80cc6ba5bf45358d37 ******/
+		/****** md5 signature: d4cf9cad6c2dd790e445e11e0625a9f2 ******/
 		%feature("compactdefaultargs") Pnt2dValue;
 		%feature("autodoc", "
 Parameters
@@ -1706,7 +1706,7 @@ Description
 -----------
 Gives the geometrical 2d point of the intersection point at address <Index> in the interference.
 ") Pnt2dValue;
-		gp_Pnt2d Pnt2dValue(const Standard_Integer Index);
+		gp_Pnt2d Pnt2dValue(const int Index);
 
 };
 

@@ -22,7 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TObj_Application.hxx>
 #include<TObj_Assistant.hxx>
 #include<TObj_CheckModel.hxx>
-#include<TObj_Container.hxx>
 #include<TObj_DeletingMode.hxx>
 #include<TObj_HiddenPartition.hxx>
 #include<TObj_LabelIterator.hxx>
@@ -36,7 +35,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TObj_ReferenceIterator.hxx>
 #include<TObj_SequenceIterator.hxx>
 #include<TObj_SequenceOfIterator.hxx>
-#include<TObj_SequenceOfObject.hxx>
 #include<TObj_TIntSparseArray.hxx>
 #include<TObj_TModel.hxx>
 #include<TObj_TNameContainer.hxx>

@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Message_module.hxx>
-#include<TopTools_module.hxx>
 #include<Draft_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -99,6 +98,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 #include<Geom_module.hxx>
 #include<BRepAlgo_module.hxx>
 #include<ChFiDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -110,7 +110,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 %import TopoDS.i
 %import gp.i
 %import Message.i
-%import TopTools.i
 %import Draft.i
 %import Geom.i
 %import GeomAbs.i
@@ -199,16 +198,16 @@ Initializes an algorithm to perform taper-adding transformations on faces of the
 		 BRepOffsetAPI_DraftAngle(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::Add ******/
-		/****** md5 signature: 4ce7b2535b631733771b79ec806daaad ******/
+		/****** md5 signature: ffdecc616dc0d95998763cf6b0d6098b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
 Direction: gp_Dir
-Angle: float
+Angle: double
 NeutralPlane: gp_Pln
-Flag: bool (optional, default to Standard_True)
+Flag: bool (optional, default to true)
 
 Return
 -------
@@ -218,10 +217,10 @@ Description
 -----------
 Adds the face F, the direction Direction, the angle Angle, the plane NeutralPlane, and the flag Flag to the framework created at construction time, and with this data, defines the taper-adding transformation. F is a face, which belongs to the initial shape of this algorithm or to the shape loaded by the function Init. Only planar, cylindrical or conical faces can be tapered: - If the face F is planar, it is tapered by inclining it through the angle Angle about the line of intersection between the plane NeutralPlane and F. Direction indicates the side of NeutralPlane from which matter is removed if Angle is positive or added if Angle is negative. - If F is cylindrical or conical, it is transformed in the same way on a single face, resulting in a conical face if F is cylindrical, and a conical or cylindrical face if it is already conical. The taper-adding transformation is propagated from the face F along the series of planar, cylindrical or conical faces containing F, which are tangential to one another. Use the function AddDone to check if this taper-adding transformation is successful. Warning Nothing is done if: - the face F does not belong to the initial shape of this algorithm, or - the face F is not planar, cylindrical or conical. Exceptions - Standard_NullObject if the initial shape is not defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the Init function. - Standard_ConstructionError if the previous call to Add has failed. The function AddDone ought to have been used to check for this, and the function Remove to cancel the results of the unsuccessful taper-adding transformation and to retrieve the previous shape.
 ") Add;
-		void Add(const TopoDS_Face & F, const gp_Dir & Direction, const Standard_Real Angle, const gp_Pln & NeutralPlane, const Standard_Boolean Flag = Standard_True);
+		void Add(const TopoDS_Face & F, const gp_Dir & Direction, const double Angle, const gp_Pln & NeutralPlane, const bool Flag = true);
 
 		/****** BRepOffsetAPI_DraftAngle::AddDone ******/
-		/****** md5 signature: 225f23d0ffea018222bcb24ee9311796 ******/
+		/****** md5 signature: cdfc5999f0ba904414e2c2d3fc784759 ******/
 		%feature("compactdefaultargs") AddDone;
 		%feature("autodoc", "Return
 -------
@@ -231,10 +230,10 @@ Description
 -----------
 Returns true if the previous taper-adding transformation performed by this algorithm in the last call to Add, was successful. If AddDone returns false: - the function ProblematicShape returns the face on which the error occurred, - the function Remove has to be used to cancel the results of the unsuccessful taper-adding transformation and to retrieve the previous shape. Exceptions Standard_NullObject if the initial shape has not been defined, i.e. if this algorithm has not been initialized with the non-empty constructor or the .Init function.
 ") AddDone;
-		Standard_Boolean AddDone();
+		bool AddDone();
 
 		/****** BRepOffsetAPI_DraftAngle::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -249,7 +248,7 @@ Description
 -----------
 Builds the resulting shape (redefined from MakeShape).
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_DraftAngle::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -265,7 +264,7 @@ Cancels the results of all taper-adding transformations performed by this algori
 		void Clear();
 
 		/****** BRepOffsetAPI_DraftAngle::ConnectedFaces ******/
-		/****** md5 signature: be55b5929554f7dfde3eec1b9ab3f977 ******/
+		/****** md5 signature: 426f435c07d208b52b12dced85cda9d7 ******/
 		%feature("compactdefaultargs") ConnectedFaces;
 		%feature("autodoc", "
 Parameters
@@ -274,13 +273,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns all the faces which have been added together with the face <F>.
 ") ConnectedFaces;
-		const TopTools_ListOfShape & ConnectedFaces(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> ConnectedFaces(const TopoDS_Face & F);
 
 		/****** BRepOffsetAPI_DraftAngle::CorrectWires ******/
 		/****** md5 signature: 81ca023a91873cfa63a02fb08e0cbd78 ******/
@@ -296,7 +295,7 @@ No available documentation.
 		void CorrectWires();
 
 		/****** BRepOffsetAPI_DraftAngle::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -305,13 +304,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -332,7 +331,7 @@ Initializes, or reinitializes this taper-adding algorithm with the shape S. S wi
 		void Init(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::Modified ******/
-		/****** md5 signature: 73ccfe97b4ed94547a190332224ffe23 ******/
+		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -341,29 +340,29 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::ModifiedFaces ******/
-		/****** md5 signature: cd09c09ae96bda548c679db0e897d478 ******/
+		/****** md5 signature: 04d53bdf9425df173667a3e8bed63dfa ******/
 		%feature("compactdefaultargs") ModifiedFaces;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns all the faces on which a modification has been given.
 ") ModifiedFaces;
-		const TopTools_ListOfShape & ModifiedFaces();
+		const NCollection_List<TopoDS_Shape> ModifiedFaces();
 
 		/****** BRepOffsetAPI_DraftAngle::ModifiedShape ******/
-		/****** md5 signature: 52b70a5b01905688e2ddbc00ab060e3c ******/
+		/****** md5 signature: 03484d6ed49b502775c03b5171cdf2be ******/
 		%feature("compactdefaultargs") ModifiedShape;
 		%feature("autodoc", "
 Parameters
@@ -378,7 +377,7 @@ Description
 -----------
 Returns the modified shape corresponding to <S>. S can correspond to the entire initial shape or to its subshape. Raises exceptions Standard_NoSuchObject if S is not the initial shape or a subshape of the initial shape to which the transformation has been applied.
 ") ModifiedShape;
-		virtual TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
+		TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::ProblematicShape ******/
 		/****** md5 signature: 4b993ee84b1645cd4a03936d51cfc6ec ******/
@@ -420,7 +419,7 @@ Draft_ErrorStatus
 
 Description
 -----------
-Returns an error status when an error has occurred (Face, Edge or Vertex recomputation problem). Otherwise returns Draft_NoError. The method may be called if AddDone returns Standard_False, or when IsDone returns Standard_False.
+Returns an error status when an error has occurred (Face, Edge or Vertex recomputation problem). Otherwise returns Draft_NoError. The method may be called if AddDone returns false, or when IsDone returns false.
 ") Status;
 		Draft_ErrorStatus Status();
 
@@ -439,13 +438,13 @@ Returns an error status when an error has occurred (Face, Edge or Vertex recompu
 class BRepOffsetAPI_FindContigousEdges {
 	public:
 		/****** BRepOffsetAPI_FindContigousEdges::BRepOffsetAPI_FindContigousEdges ******/
-		/****** md5 signature: fd7a2ffb22004077f79a7dae2c0d118b ******/
+		/****** md5 signature: f6f9bb67efe2045cc85cb2c513a0eacc ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_FindContigousEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-tolerance: float (optional, default to 1.0e-06)
-option: bool (optional, default to Standard_True)
+tolerance: double (optional, default to 1.0e-06)
+option: bool (optional, default to true)
 
 Return
 -------
@@ -455,7 +454,7 @@ Description
 -----------
 Initializes an algorithm for identifying contiguous edges on shapes with tolerance as the tolerance of contiguity (defaulted to 1.0e-6). This tolerance value is used to determine whether two edges or sections of edges are coincident. Use the function Add to define the shapes to be checked. Set option to false. This argument (defaulted to true) will serve in subsequent software releases for performing an analysis of degenerated shapes.
 ") BRepOffsetAPI_FindContigousEdges;
-		 BRepOffsetAPI_FindContigousEdges(const Standard_Real tolerance = 1.0e-06, const Standard_Boolean option = Standard_True);
+		 BRepOffsetAPI_FindContigousEdges(const double tolerance = 1.0e-06, const bool option = true);
 
 		/****** BRepOffsetAPI_FindContigousEdges::Add ******/
 		/****** md5 signature: e2be6f2074943772e403ebcbe671347a ******/
@@ -476,7 +475,7 @@ Adds the shape shape to the list of shapes to be checked by this algorithm. Once
 		void Add(const TopoDS_Shape & shape);
 
 		/****** BRepOffsetAPI_FindContigousEdges::ContigousEdge ******/
-		/****** md5 signature: 528f0ebefe61a096548f88451970603d ******/
+		/****** md5 signature: 42b0567591568f409eafa7e487cff57f ******/
 		%feature("compactdefaultargs") ContigousEdge;
 		%feature("autodoc", "
 Parameters
@@ -491,10 +490,10 @@ Description
 -----------
 Returns the contiguous edge of index index found by the function Perform on the shapes added to this algorithm. Exceptions Standard_OutOfRange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") ContigousEdge;
-		const TopoDS_Edge ContigousEdge(const Standard_Integer index);
+		const TopoDS_Edge ContigousEdge(const int index);
 
 		/****** BRepOffsetAPI_FindContigousEdges::ContigousEdgeCouple ******/
-		/****** md5 signature: 783b24657c04ecf4547ffd8cfddcc368 ******/
+		/****** md5 signature: c0e1c71ff5e3c5d2b6dc04865f2b2ea9 ******/
 		%feature("compactdefaultargs") ContigousEdgeCouple;
 		%feature("autodoc", "
 Parameters
@@ -503,16 +502,16 @@ index: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of edges coincident with the contiguous edge of index index found by the function Perform. There are as many edges in the list as there are faces adjacent to this contiguous edge. Exceptions Standard_OutOfRange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") ContigousEdgeCouple;
-		const TopTools_ListOfShape & ContigousEdgeCouple(const Standard_Integer index);
+		const NCollection_List<TopoDS_Shape> ContigousEdgeCouple(const int index);
 
 		/****** BRepOffsetAPI_FindContigousEdges::DegeneratedShape ******/
-		/****** md5 signature: e6eb24cfb41ed6276abbd22e81382ad4 ******/
+		/****** md5 signature: c68ee497bd94dc28a04346b118a632f1 ******/
 		%feature("compactdefaultargs") DegeneratedShape;
 		%feature("autodoc", "
 Parameters
@@ -527,7 +526,7 @@ Description
 -----------
 Gives a degenerated shape.
 ") DegeneratedShape;
-		const TopoDS_Shape DegeneratedShape(const Standard_Integer index);
+		const TopoDS_Shape DegeneratedShape(const int index);
 
 		/****** BRepOffsetAPI_FindContigousEdges::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -543,12 +542,12 @@ Dump properties of resulting shape.
 		void Dump();
 
 		/****** BRepOffsetAPI_FindContigousEdges::Init ******/
-		/****** md5 signature: dd6c1b1cc9e67e536ec1bfeda1eb7f2d ******/
+		/****** md5 signature: b02bda04af0b1d1f299cbd3ea1912e08 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-tolerance: float
+tolerance: double
 option: bool
 
 Return
@@ -559,10 +558,10 @@ Description
 -----------
 Initializes this algorithm for identifying contiguous edges on shapes using the tolerance of contiguity tolerance. This tolerance value is used to determine whether two edges or sections of edges are coincident. Use the function Add to define the shapes to be checked. Sets <option> to false.
 ") Init;
-		void Init(const Standard_Real tolerance, const Standard_Boolean option);
+		void Init(const double tolerance, const bool option);
 
 		/****** BRepOffsetAPI_FindContigousEdges::IsDegenerated ******/
-		/****** md5 signature: 84979167278e746e62a21a790a7cd87e ******/
+		/****** md5 signature: dc802ade1aadc67c5f55a1b6e6f980cd ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -577,10 +576,10 @@ Description
 -----------
 Indicates if a input shape is degenerated.
 ") IsDegenerated;
-		Standard_Boolean IsDegenerated(const TopoDS_Shape & shape);
+		bool IsDegenerated(const TopoDS_Shape & shape);
 
 		/****** BRepOffsetAPI_FindContigousEdges::IsModified ******/
-		/****** md5 signature: 1d5d4f025b62ca0ccc6672d39cdf22fc ******/
+		/****** md5 signature: dccf7fda362d4cb9c311ff5d702d0091 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -595,7 +594,7 @@ Description
 -----------
 Returns true if the copy of the initial shape shape was modified by the function Perform (i.e. if one or more of its edges was broken down into contiguous and non-contiguous sections). Warning Returns false if shape is not one of the initial shapes added to this algorithm.
 ") IsModified;
-		Standard_Boolean IsModified(const TopoDS_Shape & shape);
+		bool IsModified(const TopoDS_Shape & shape);
 
 		/****** BRepOffsetAPI_FindContigousEdges::Modified ******/
 		/****** md5 signature: 8eae36e55014fa2f45331a4af35cda4c ******/
@@ -616,7 +615,7 @@ Gives a modifieded shape Raises NoSuchObject if shape has not been modified.
 		const TopoDS_Shape Modified(const TopoDS_Shape & shape);
 
 		/****** BRepOffsetAPI_FindContigousEdges::NbContigousEdges ******/
-		/****** md5 signature: c293fac1d421e2d1f7207054b4a45923 ******/
+		/****** md5 signature: 23381f36e1c7e01a6db55155d2e1bd81 ******/
 		%feature("compactdefaultargs") NbContigousEdges;
 		%feature("autodoc", "Return
 -------
@@ -626,10 +625,10 @@ Description
 -----------
 Returns the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") NbContigousEdges;
-		Standard_Integer NbContigousEdges();
+		int NbContigousEdges();
 
 		/****** BRepOffsetAPI_FindContigousEdges::NbDegeneratedShapes ******/
-		/****** md5 signature: 002576d80bfb4575f6cdfeeff5b81a1e ******/
+		/****** md5 signature: 84c2b6495ec64f0100f51ddcb46e7501 ******/
 		%feature("compactdefaultargs") NbDegeneratedShapes;
 		%feature("autodoc", "Return
 -------
@@ -639,7 +638,7 @@ Description
 -----------
 Gives the number of degenerated shapes.
 ") NbDegeneratedShapes;
-		Standard_Integer NbDegeneratedShapes();
+		int NbDegeneratedShapes();
 
 		/****** BRepOffsetAPI_FindContigousEdges::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -691,14 +690,14 @@ Returns the edge on the initial shape, of which the modified copy contains the e
 class BRepOffsetAPI_MakeDraft : public BRepBuilderAPI_MakeShape {
 	public:
 		/****** BRepOffsetAPI_MakeDraft::BRepOffsetAPI_MakeDraft ******/
-		/****** md5 signature: 71eb0e38473fd7d62078ab8ae3d81222 ******/
+		/****** md5 signature: 4b153aef16f0bf04d542607bf5dc7664 ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakeDraft;
 		%feature("autodoc", "
 Parameters
 ----------
 Shape: TopoDS_Shape
 Dir: gp_Dir
-Angle: float
+Angle: double
 
 Return
 -------
@@ -708,10 +707,10 @@ Description
 -----------
 Constructs the draft surface object defined by the shape Shape, the direction Dir, and the angle Angle. Shape must be a TopoDS_Wire, Topo_DS_Face or TopoDS_Shell with free boundaries. Exceptions Standard_NotDone if Shape is not a TopoDS_Wire, Topo_DS_Face or TopoDS_Shell with free boundaries.
 ") BRepOffsetAPI_MakeDraft;
-		 BRepOffsetAPI_MakeDraft(const TopoDS_Shape & Shape, const gp_Dir & Dir, const Standard_Real Angle);
+		 BRepOffsetAPI_MakeDraft(const TopoDS_Shape & Shape, const gp_Dir & Dir, const double Angle);
 
 		/****** BRepOffsetAPI_MakeDraft::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -720,21 +719,21 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeDraft::Perform ******/
-		/****** md5 signature: b03f32ebc120d00e3e8e32d44b202b9d ******/
+		/****** md5 signature: 9d9ab6613b03c320d8f9e5fc88ef5b38 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-LengthMax: float
+LengthMax: double
 
 Return
 -------
@@ -744,16 +743,16 @@ Description
 -----------
 Performs the draft using the length LengthMax as the maximum length for the corner edge between two draft faces.
 ") Perform;
-		void Perform(const Standard_Real LengthMax);
+		void Perform(const double LengthMax);
 
 		/****** BRepOffsetAPI_MakeDraft::Perform ******/
-		/****** md5 signature: 3a80e47101026da2c90ae735de0ac1b9 ******/
+		/****** md5 signature: f8aca8670b538031116d9f133df0d09e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Surface: Geom_Surface
-KeepInsideSurface: bool (optional, default to Standard_True)
+KeepInsideSurface: bool (optional, default to true)
 
 Return
 -------
@@ -763,16 +762,16 @@ Description
 -----------
 Performs the draft up to the surface Surface. If KeepInsideSurface is true, the part of Surface inside the draft is kept in the result.
 ") Perform;
-		void Perform(const opencascade::handle<Geom_Surface> & Surface, const Standard_Boolean KeepInsideSurface = Standard_True);
+		void Perform(const opencascade::handle<Geom_Surface> & Surface, const bool KeepInsideSurface = true);
 
 		/****** BRepOffsetAPI_MakeDraft::Perform ******/
-		/****** md5 signature: c18fafced10e4c987e315cfc1b3d96ad ******/
+		/****** md5 signature: 14b760b2f4918915dec319a41029e675 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 StopShape: TopoDS_Shape
-KeepOutSide: bool (optional, default to Standard_True)
+KeepOutSide: bool (optional, default to true)
 
 Return
 -------
@@ -782,15 +781,15 @@ Description
 -----------
 Performs the draft up to the shape StopShape. If KeepOutSide is true, the part of StopShape which is outside the Draft is kept in the result.
 ") Perform;
-		void Perform(const TopoDS_Shape & StopShape, const Standard_Boolean KeepOutSide = Standard_True);
+		void Perform(const TopoDS_Shape & StopShape, const bool KeepOutSide = true);
 
 		/****** BRepOffsetAPI_MakeDraft::SetDraft ******/
-		/****** md5 signature: 6a0b2e71733b262480aa38daaecff626 ******/
+		/****** md5 signature: 868e0921628ae7ed5d98d4bc0b4c43a4 ******/
 		%feature("compactdefaultargs") SetDraft;
 		%feature("autodoc", "
 Parameters
 ----------
-IsInternal: bool (optional, default to Standard_False)
+IsInternal: bool (optional, default to false)
 
 Return
 -------
@@ -800,17 +799,17 @@ Description
 -----------
 Sets the direction of the draft for this object. If IsInternal is true, the draft is internal to the argument Shape used in the constructor.
 ") SetDraft;
-		void SetDraft(const Standard_Boolean IsInternal = Standard_False);
+		void SetDraft(const bool IsInternal = false);
 
 		/****** BRepOffsetAPI_MakeDraft::SetOptions ******/
-		/****** md5 signature: 736d57b77de1cd53364406245ccef568 ******/
+		/****** md5 signature: b7d669a8a540374fe6a3d99e68c8c275 ******/
 		%feature("compactdefaultargs") SetOptions;
 		%feature("autodoc", "
 Parameters
 ----------
 Style: BRepBuilderAPI_TransitionMode (optional, default to BRepBuilderAPI_RightCorner)
-AngleMin: float (optional, default to 0.01)
-AngleMax: float (optional, default to 3.0)
+AngleMin: double (optional, default to 0.01)
+AngleMax: double (optional, default to 3.0)
 
 Return
 -------
@@ -820,7 +819,7 @@ Description
 -----------
 Sets the options of this draft tool. If a transition has to be performed, it can be defined by the mode Style as RightCorner or RoundCorner, RightCorner being a corner defined by a sharp angle, and RoundCorner being a rounded corner. AngleMin is an angular tolerance used to detect whether a transition has to be performed or not. AngleMax sets the maximum value within which a RightCorner transition can be performed. AngleMin and AngleMax are expressed in radians.
 ") SetOptions;
-		void SetOptions(const BRepBuilderAPI_TransitionMode Style = BRepBuilderAPI_RightCorner, const Standard_Real AngleMin = 0.01, const Standard_Real AngleMax = 3.0);
+		void SetOptions(const BRepBuilderAPI_TransitionMode Style = BRepBuilderAPI_RightCorner, const double AngleMin = 0.01, const double AngleMax = 3.0);
 
 		/****** BRepOffsetAPI_MakeDraft::Shell ******/
 		/****** md5 signature: 3ea4686086a18491532865f1cfbce9ad ******/
@@ -863,7 +862,7 @@ No available documentation.
 		 BRepOffsetAPI_MakeEvolved();
 
 		/****** BRepOffsetAPI_MakeEvolved::BRepOffsetAPI_MakeEvolved ******/
-		/****** md5 signature: ca863b02acd410c7e5d5badc6d5c93f9 ******/
+		/****** md5 signature: 07ab3f634941ea2335a3376d3b1882c1 ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakeEvolved;
 		%feature("autodoc", "
 Parameters
@@ -871,12 +870,12 @@ Parameters
 theSpine: TopoDS_Shape
 theProfile: TopoDS_Wire
 theJoinType: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-theIsAxeProf: bool (optional, default to Standard_True)
-theIsSolid: bool (optional, default to Standard_False)
-theIsProfOnSpine: bool (optional, default to Standard_False)
-theTol: float (optional, default to 0.0000001)
-theIsVolume: bool (optional, default to Standard_False)
-theRunInParallel: bool (optional, default to Standard_False)
+theIsAxeProf: bool (optional, default to true)
+theIsSolid: bool (optional, default to false)
+theIsProfOnSpine: bool (optional, default to false)
+theTol: double (optional, default to 0.0000001)
+theIsVolume: bool (optional, default to false)
+theRunInParallel: bool (optional, default to false)
 
 Return
 -------
@@ -886,7 +885,7 @@ Description
 -----------
 Constructs an evolved shape by sweeping the profile (theProfile) along the spine (theSpine). theSpine can be shape only of type wire or face. See description to this class for detailed information.
 ") BRepOffsetAPI_MakeEvolved;
-		 BRepOffsetAPI_MakeEvolved(const TopoDS_Shape & theSpine, const TopoDS_Wire & theProfile, const GeomAbs_JoinType theJoinType = GeomAbs_Arc, const Standard_Boolean theIsAxeProf = Standard_True, const Standard_Boolean theIsSolid = Standard_False, const Standard_Boolean theIsProfOnSpine = Standard_False, const Standard_Real theTol = 0.0000001, const Standard_Boolean theIsVolume = Standard_False, const Standard_Boolean theRunInParallel = Standard_False);
+		 BRepOffsetAPI_MakeEvolved(const TopoDS_Shape & theSpine, const TopoDS_Wire & theProfile, const GeomAbs_JoinType theJoinType = GeomAbs_Arc, const bool theIsAxeProf = true, const bool theIsSolid = false, const bool theIsProfOnSpine = false, const double theTol = 0.0000001, const bool theIsVolume = false, const bool theRunInParallel = false);
 
 		/****** BRepOffsetAPI_MakeEvolved::Bottom ******/
 		/****** md5 signature: 25476ceb1dec30bd7775d9279e3f641c ******/
@@ -902,7 +901,7 @@ Return the face Bottom if <Solid> is True in the constructor.
 		const TopoDS_Shape Bottom();
 
 		/****** BRepOffsetAPI_MakeEvolved::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -917,7 +916,7 @@ Description
 -----------
 Builds the resulting shape (redefined from MakeShape).
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeEvolved::Evolved ******/
 		/****** md5 signature: 9cd16375e762072934864900214c9cab ******/
@@ -933,7 +932,7 @@ No available documentation.
 		const BRepFill_Evolved & Evolved();
 
 		/****** BRepOffsetAPI_MakeEvolved::GeneratedShapes ******/
-		/****** md5 signature: d6b410f91bd0b638e68b4f66ed161f82 ******/
+		/****** md5 signature: 7e5aec1b811d413bca252b1fc93ab87c ******/
 		%feature("compactdefaultargs") GeneratedShapes;
 		%feature("autodoc", "
 Parameters
@@ -943,13 +942,13 @@ ProfShape: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 ") GeneratedShapes;
-		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
+		const NCollection_List<TopoDS_Shape> GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
 
 		/****** BRepOffsetAPI_MakeEvolved::Top ******/
 		/****** md5 signature: c5b73d85ae980e083fd62982344b1f23 ******/
@@ -979,7 +978,7 @@ Return the face Top if <Solid> is True in the constructor.
 class BRepOffsetAPI_MakeFilling : public BRepBuilderAPI_MakeShape {
 	public:
 		/****** BRepOffsetAPI_MakeFilling::BRepOffsetAPI_MakeFilling ******/
-		/****** md5 signature: 6b2c1458dee21e3098205eace85ff1c2 ******/
+		/****** md5 signature: d01e165a932e9b103e48e4143597d082 ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakeFilling;
 		%feature("autodoc", "
 Parameters
@@ -987,11 +986,11 @@ Parameters
 Degree: int (optional, default to 3)
 NbPtsOnCur: int (optional, default to 15)
 NbIter: int (optional, default to 2)
-Anisotropie: bool (optional, default to Standard_False)
-Tol2d: float (optional, default to 0.00001)
-Tol3d: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
+Anisotropie: bool (optional, default to false)
+Tol2d: double (optional, default to 0.00001)
+Tol3d: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
 MaxDeg: int (optional, default to 8)
 MaxSegments: int (optional, default to 9)
 
@@ -1003,17 +1002,17 @@ Description
 -----------
 Constructs a wire filling object defined by - the energy minimizing criterion Degree - the number of points on the curve NbPntsOnCur - the number of iterations NbIter - the Boolean Anisotropie - the 2D tolerance Tol2d - the 3D tolerance Tol3d - the angular tolerance TolAng - the tolerance for curvature TolCur - the highest polynomial degree MaxDeg - the greatest number of segments MaxSeg. If the Boolean Anistropie is true, the algorithm's performance is better in cases where the ratio of the length U and the length V indicate a great difference between the two. In other words, when the surface is, for example, extremely long.
 ") BRepOffsetAPI_MakeFilling;
-		 BRepOffsetAPI_MakeFilling(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Integer MaxDeg = 8, const Standard_Integer MaxSegments = 9);
+		 BRepOffsetAPI_MakeFilling(const int Degree = 3, const int NbPtsOnCur = 15, const int NbIter = 2, const bool Anisotropie = false, const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1, const int MaxDeg = 8, const int MaxSegments = 9);
 
 		/****** BRepOffsetAPI_MakeFilling::Add ******/
-		/****** md5 signature: f3f101643ae89de07cd1205b58a9a0bc ******/
+		/****** md5 signature: 7d04fabf1ba673f5ed3075945551434f ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 Constr: TopoDS_Edge
 Order: GeomAbs_Shape
-IsBound: bool (optional, default to Standard_True)
+IsBound: bool (optional, default to true)
 
 Return
 -------
@@ -1023,10 +1022,10 @@ Description
 -----------
 Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0: the surface has to pass by 3D representation of the edge GeomAbs_G1: the surface has to pass by 3D representation of the edge and to respect tangency with the first face of the edge GeomAbs_G2: the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the first face of the edge. Raises ConstructionError if the edge has no representation on a face and Order is GeomAbs_G1 or GeomAbs_G2.
 ") Add;
-		Standard_Integer Add(const TopoDS_Edge & Constr, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True);
+		int Add(const TopoDS_Edge & Constr, const GeomAbs_Shape Order, const bool IsBound = true);
 
 		/****** BRepOffsetAPI_MakeFilling::Add ******/
-		/****** md5 signature: 415312c3d021976e6e2f3b6a96253fb7 ******/
+		/****** md5 signature: 7cfe4882288d327d30f715ef5fa7c725 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1034,7 +1033,7 @@ Parameters
 Constr: TopoDS_Edge
 Support: TopoDS_Face
 Order: GeomAbs_Shape
-IsBound: bool (optional, default to Standard_True)
+IsBound: bool (optional, default to true)
 
 Return
 -------
@@ -1044,10 +1043,10 @@ Description
 -----------
 Adds a new constraint which also defines an edge of the wire of the face Order: Order of the constraint: GeomAbs_C0: the surface has to pass by 3D representation of the edge GeomAbs_G1: the surface has to pass by 3D representation of the edge and to respect tangency with the given face GeomAbs_G2: the surface has to pass by 3D representation of the edge and to respect tangency and curvature with the given face. Raises ConstructionError if the edge has no 2d representation on the given face.
 ") Add;
-		Standard_Integer Add(const TopoDS_Edge & Constr, const TopoDS_Face & Support, const GeomAbs_Shape Order, const Standard_Boolean IsBound = Standard_True);
+		int Add(const TopoDS_Edge & Constr, const TopoDS_Face & Support, const GeomAbs_Shape Order, const bool IsBound = true);
 
 		/****** BRepOffsetAPI_MakeFilling::Add ******/
-		/****** md5 signature: c110c3c507d8423f3ffde002d65004bf ******/
+		/****** md5 signature: a1ca9d60ec095747924109cd4c012c9d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1063,10 +1062,10 @@ Description
 -----------
 Adds a free constraint on a face. The corresponding edge has to be automatically recomputed. It is always a bound.
 ") Add;
-		Standard_Integer Add(const TopoDS_Face & Support, const GeomAbs_Shape Order);
+		int Add(const TopoDS_Face & Support, const GeomAbs_Shape Order);
 
 		/****** BRepOffsetAPI_MakeFilling::Add ******/
-		/****** md5 signature: 1323f2a6b2ca8774ee472101d9518362 ******/
+		/****** md5 signature: 542f2f6e12b281d8a04b02d4c431425e ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1081,16 +1080,16 @@ Description
 -----------
 Adds a punctual constraint.
 ") Add;
-		Standard_Integer Add(const gp_Pnt & Point);
+		int Add(const gp_Pnt & Point);
 
 		/****** BRepOffsetAPI_MakeFilling::Add ******/
-		/****** md5 signature: 66afaf29b06657fd99d38717aeeeb9f6 ******/
+		/****** md5 signature: 32062246047b72c9d9ad13c015c24b6a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Support: TopoDS_Face
 Order: GeomAbs_Shape
 
@@ -1102,10 +1101,10 @@ Description
 -----------
 Adds a punctual constraint.
 ") Add;
-		Standard_Integer Add(const Standard_Real U, const Standard_Real V, const TopoDS_Face & Support, const GeomAbs_Shape Order);
+		int Add(const double U, const double V, const TopoDS_Face & Support, const GeomAbs_Shape Order);
 
 		/****** BRepOffsetAPI_MakeFilling::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1120,23 +1119,23 @@ Description
 -----------
 Builds the resulting faces.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeFilling::G0Error ******/
-		/****** md5 signature: ba177a9a7bac2d394577a179fd8040ef ******/
+		/****** md5 signature: 26eb7ac7e7e086c9d50aef459fbfc494 ******/
 		%feature("compactdefaultargs") G0Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the maximum distance between the result and the constraints. This is set at construction time.
 ") G0Error;
-		Standard_Real G0Error();
+		double G0Error();
 
 		/****** BRepOffsetAPI_MakeFilling::G0Error ******/
-		/****** md5 signature: f99dce5527bffb3ecaa2d1093b4a3635 ******/
+		/****** md5 signature: ea82fba658102289e47be6340460e251 ******/
 		%feature("compactdefaultargs") G0Error;
 		%feature("autodoc", "
 Parameters
@@ -1145,29 +1144,29 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the maximum distance attained between the result and the constraint Index. This is set at construction time.
 ") G0Error;
-		Standard_Real G0Error(const Standard_Integer Index);
+		double G0Error(const int Index);
 
 		/****** BRepOffsetAPI_MakeFilling::G1Error ******/
-		/****** md5 signature: 0a0e55267bc5572a38177b75a97dfedc ******/
+		/****** md5 signature: 08f961c041db3fae562606499fdd288a ******/
 		%feature("compactdefaultargs") G1Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the maximum angle between the result and the constraints. This is set at construction time.
 ") G1Error;
-		Standard_Real G1Error();
+		double G1Error();
 
 		/****** BRepOffsetAPI_MakeFilling::G1Error ******/
-		/****** md5 signature: 0d786918d533628c34e845fd87da5a9b ******/
+		/****** md5 signature: 103532f19d83aceac2beb425fa280c25 ******/
 		%feature("compactdefaultargs") G1Error;
 		%feature("autodoc", "
 Parameters
@@ -1176,29 +1175,29 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the maximum angle between the result and the constraints. This is set at construction time.
 ") G1Error;
-		Standard_Real G1Error(const Standard_Integer Index);
+		double G1Error(const int Index);
 
 		/****** BRepOffsetAPI_MakeFilling::G2Error ******/
-		/****** md5 signature: 0eac129a84e8ae945532a18ff833414e ******/
+		/****** md5 signature: eb154307507c3c72e5cef135c1e59efe ******/
 		%feature("compactdefaultargs") G2Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the maximum angle between the result and the constraints. This is set at construction time.
 ") G2Error;
-		Standard_Real G2Error();
+		double G2Error();
 
 		/****** BRepOffsetAPI_MakeFilling::G2Error ******/
-		/****** md5 signature: 02032765271044476a9ce38570208342 ******/
+		/****** md5 signature: 3059ba7eb7ff114be17a14733c4b41dc ******/
 		%feature("compactdefaultargs") G2Error;
 		%feature("autodoc", "
 Parameters
@@ -1207,16 +1206,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the greatest difference in curvature found between the result and the constraint Index.
 ") G2Error;
-		Standard_Real G2Error(const Standard_Integer Index);
+		double G2Error(const int Index);
 
 		/****** BRepOffsetAPI_MakeFilling::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1225,16 +1224,16 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeFilling::IsDone ******/
-		/****** md5 signature: e2af43c18fdd9d21f5f5de9eae7fc9de ******/
+		/****** md5 signature: 2be114a985aea21262ebd32099ccc3a6 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1244,7 +1243,7 @@ Description
 -----------
 Tests whether computation of the filling plate has been completed.
 ") IsDone;
-		virtual Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepOffsetAPI_MakeFilling::LoadInitSurface ******/
 		/****** md5 signature: f3dc564cdf464b4c186eaa11f91e9fe8 ******/
@@ -1265,7 +1264,7 @@ Loads the initial surface Surf to begin the construction of the surface. This op
 		void LoadInitSurface(const TopoDS_Face & Surf);
 
 		/****** BRepOffsetAPI_MakeFilling::SetApproxParam ******/
-		/****** md5 signature: 24678d9cf0187a1e2d5fe74dfef72b0d ******/
+		/****** md5 signature: e3e1471a8eee64ca6afb7e25537ada8a ******/
 		%feature("compactdefaultargs") SetApproxParam;
 		%feature("autodoc", "
 Parameters
@@ -1281,18 +1280,18 @@ Description
 -----------
 Sets the parameters used to approximate the filling surface. These include: - MaxDeg - the highest degree which the polynomial defining the filling surface can have - MaxSegments - the greatest number of segments which the filling surface can have.
 ") SetApproxParam;
-		void SetApproxParam(const Standard_Integer MaxDeg = 8, const Standard_Integer MaxSegments = 9);
+		void SetApproxParam(const int MaxDeg = 8, const int MaxSegments = 9);
 
 		/****** BRepOffsetAPI_MakeFilling::SetConstrParam ******/
-		/****** md5 signature: 2d967f76f30735b0413b7afac7004fa6 ******/
+		/****** md5 signature: 7f84103dbc0392ac3d2244ef330c3133 ******/
 		%feature("compactdefaultargs") SetConstrParam;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol2d: float (optional, default to 0.00001)
-Tol3d: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
+Tol2d: double (optional, default to 0.00001)
+Tol3d: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
 
 Return
 -------
@@ -1302,10 +1301,10 @@ Description
 -----------
 Sets the values of Tolerances used to control the constraint. Tol2d: Tol3d: it is the maximum distance allowed between the support surface and the constraints TolAng: it is the maximum angle allowed between the normal of the surface and the constraints TolCurv: it is the maximum difference of curvature allowed between the surface and the constraint.
 ") SetConstrParam;
-		void SetConstrParam(const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
+		void SetConstrParam(const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1);
 
 		/****** BRepOffsetAPI_MakeFilling::SetResolParam ******/
-		/****** md5 signature: 96cad4665171fb74735ecc8d46155136 ******/
+		/****** md5 signature: 5cdda1fab4b90a67ebdfb08d31967631 ******/
 		%feature("compactdefaultargs") SetResolParam;
 		%feature("autodoc", "
 Parameters
@@ -1313,7 +1312,7 @@ Parameters
 Degree: int (optional, default to 3)
 NbPtsOnCur: int (optional, default to 15)
 NbIter: int (optional, default to 2)
-Anisotropie: bool (optional, default to Standard_False)
+Anisotropie: bool (optional, default to false)
 
 Return
 -------
@@ -1323,7 +1322,7 @@ Description
 -----------
 Sets the parameters used for resolution. The default values of these parameters have been chosen for a good ratio quality/performance. Degree: it is the order of energy criterion to minimize for computing the deformation of the surface. The default value is 3 The recommended value is i+2 where i is the maximum order of the constraints. NbPtsOnCur: it is the average number of points for discretisation of the edges. NbIter: it is the maximum number of iterations of the process. For each iteration the number of discretisation points is increased. Anisotropie:.
 ") SetResolParam;
-		void SetResolParam(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 15, const Standard_Integer NbIter = 2, const Standard_Boolean Anisotropie = Standard_False);
+		void SetResolParam(const int Degree = 3, const int NbPtsOnCur = 15, const int NbIter = 2, const bool Anisotropie = false);
 
 };
 
@@ -1353,14 +1352,14 @@ Constructs an algorithm for creating an empty offset.
 		 BRepOffsetAPI_MakeOffset();
 
 		/****** BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset ******/
-		/****** md5 signature: 6c382c138f0e83f35d2532782330627a ******/
+		/****** md5 signature: c0291d05e47d81e623e6ce51bbd51cec ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakeOffset;
 		%feature("autodoc", "
 Parameters
 ----------
 Spine: TopoDS_Face
 Join: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -1370,17 +1369,17 @@ Description
 -----------
 Constructs an algorithm for creating an algorithm to build parallels to the spine Spine.
 ") BRepOffsetAPI_MakeOffset;
-		 BRepOffsetAPI_MakeOffset(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
+		 BRepOffsetAPI_MakeOffset(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool IsOpenResult = false);
 
 		/****** BRepOffsetAPI_MakeOffset::BRepOffsetAPI_MakeOffset ******/
-		/****** md5 signature: edca00730463e7bdc67c3ca57a3de792 ******/
+		/****** md5 signature: 63756dba4f681b61090848e147cf4ca0 ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakeOffset;
 		%feature("autodoc", "
 Parameters
 ----------
 Spine: TopoDS_Wire
 Join: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -1390,7 +1389,7 @@ Description
 -----------
 No available documentation.
 ") BRepOffsetAPI_MakeOffset;
-		 BRepOffsetAPI_MakeOffset(const TopoDS_Wire & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
+		 BRepOffsetAPI_MakeOffset(const TopoDS_Wire & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool IsOpenResult = false);
 
 		/****** BRepOffsetAPI_MakeOffset::AddWire ******/
 		/****** md5 signature: f11eaa49e4d45e90c9ae3f7a4166b6ad ******/
@@ -1411,7 +1410,7 @@ Initializes the algorithm to construct parallels to the wire Spine.
 		void AddWire(const TopoDS_Wire & Spine);
 
 		/****** BRepOffsetAPI_MakeOffset::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1426,16 +1425,16 @@ Description
 -----------
 Builds the resulting shape (redefined from MakeShape).
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeOffset::ConvertFace ******/
-		/****** md5 signature: 4995d6c46f75b841a5ec1eeddfe269b6 ******/
+		/****** md5 signature: f35664c54614e60da500450a4e0aa87c ******/
 		%feature("compactdefaultargs") ConvertFace;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
-theAngleTolerance: float
+theAngleTolerance: double
 
 Return
 -------
@@ -1445,10 +1444,10 @@ Description
 -----------
 Converts each wire of the face into contour consisting only of arcs and segments. New 3D curves are built too.
 ") ConvertFace;
-		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const Standard_Real theAngleTolerance);
+		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const double theAngleTolerance);
 
 		/****** BRepOffsetAPI_MakeOffset::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1457,23 +1456,23 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 returns a list of the created shapes from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffset::Init ******/
-		/****** md5 signature: 04028fd0677eb2fad3b6134f24c0b959 ******/
+		/****** md5 signature: 20cdbc88c6b16cae965fca7361033325 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 Spine: TopoDS_Face
 Join: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -1483,16 +1482,16 @@ Description
 -----------
 Initializes the algorithm to construct parallels to the spine Spine. Join defines the type of parallel generated by the salient vertices of the spine. The default type is GeomAbs_Arc where the vertices generate sections of a circle. If join type is GeomAbs_Intersection, the edges that intersect in a salient vertex generate the edges prolonged until intersection.
 ") Init;
-		void Init(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
+		void Init(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool IsOpenResult = false);
 
 		/****** BRepOffsetAPI_MakeOffset::Init ******/
-		/****** md5 signature: 36efcaeec9c18f0906259d528d83ea6b ******/
+		/****** md5 signature: f8c7a86e8bfdaf22ba663ee331f4d0e8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 Join: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -1502,16 +1501,16 @@ Description
 -----------
 Initialize the evaluation of Offsetting.
 ") Init;
-		void Init(const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
+		void Init(const GeomAbs_JoinType Join = GeomAbs_Arc, const bool IsOpenResult = false);
 
 		/****** BRepOffsetAPI_MakeOffset::Perform ******/
-		/****** md5 signature: 50205eaf73b49f4d2b44f0537bf87989 ******/
+		/****** md5 signature: e364fb2052ec52ed44b84fa9ec16dc39 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Offset: float
-Alt: float (optional, default to 0.0)
+Offset: double
+Alt: double (optional, default to 0.0)
 
 Return
 -------
@@ -1521,10 +1520,10 @@ Description
 -----------
 Computes a parallel to the spine at distance Offset and at an altitude Alt from the plane of the spine in relation to the normal to the spine. Exceptions: StdFail_NotDone if the offset is not built.
 ") Perform;
-		void Perform(const Standard_Real Offset, const Standard_Real Alt = 0.0);
+		void Perform(const double Offset, const double Alt = 0.0);
 
 		/****** BRepOffsetAPI_MakeOffset::SetApprox ******/
-		/****** md5 signature: 57e45b5381196ac1a2610a07df3f37fa ******/
+		/****** md5 signature: 985ee17a3b83a00c0dd63b364549d922 ******/
 		%feature("compactdefaultargs") SetApprox;
 		%feature("autodoc", "
 Parameters
@@ -1539,7 +1538,7 @@ Description
 -----------
 Set approximation flag for conversion input contours into ones consisting of 2D circular arcs and 2D linear segments only.
 ") SetApprox;
-		void SetApprox(const Standard_Boolean ToApprox);
+		void SetApprox(const bool ToApprox);
 
 };
 
@@ -1569,7 +1568,7 @@ Constructor does nothing.
 		 BRepOffsetAPI_MakeOffsetShape();
 
 		/****** BRepOffsetAPI_MakeOffsetShape::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1584,10 +1583,10 @@ Description
 -----------
 Does nothing.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeOffsetShape::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1596,13 +1595,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffsetShape::GetJoinType ******/
 		/****** md5 signature: 98bbd653674d56f0804dd681f91e2cf5 ******/
@@ -1618,7 +1617,7 @@ Returns offset join type.
 		GeomAbs_JoinType GetJoinType();
 
 		/****** BRepOffsetAPI_MakeOffsetShape::IsDeleted ******/
-		/****** md5 signature: 28be7c17a3b2776f59567554f488bbf5 ******/
+		/****** md5 signature: bccb9782bf72a0b11faae5cda38123ec ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -1633,7 +1632,7 @@ Description
 -----------
 Returns true if the shape has been removed from the result.
 ") IsDeleted;
-		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
+		bool IsDeleted(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffsetShape::MakeOffset ******/
 		/****** md5 signature: 3130f0edba2681c2d8feeda712784d5d ******/
@@ -1649,7 +1648,7 @@ Returns instance of the underlying intersection / arc algorithm.
 		virtual const BRepOffset_MakeOffset & MakeOffset();
 
 		/****** BRepOffsetAPI_MakeOffsetShape::Modified ******/
-		/****** md5 signature: 73ccfe97b4ed94547a190332224ffe23 ******/
+		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1658,28 +1657,28 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes Modified from the shape <S>.
 ") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffsetShape::PerformByJoin ******/
-		/****** md5 signature: 95722a888d9ea1332d96f8f0377af232 ******/
+		/****** md5 signature: d3b7fce4a1d6fb690efb37353df0df1b ******/
 		%feature("compactdefaultargs") PerformByJoin;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Offset: float
-Tol: float
+Offset: double
+Tol: double
 Mode: BRepOffset_Mode (optional, default to BRepOffset_Skin)
-Intersection: bool (optional, default to Standard_False)
-SelfInter: bool (optional, default to Standard_False)
+Intersection: bool (optional, default to false)
+SelfInter: bool (optional, default to false)
 Join: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-RemoveIntEdges: bool (optional, default to Standard_False)
+RemoveIntEdges: bool (optional, default to false)
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1690,16 +1689,16 @@ Description
 -----------
 Constructs a shape parallel to the shape S, where - S may be a face, a shell, a solid or a compound of these shape kinds; - Offset is the offset value. The offset shape is constructed: - outside S, if Offset is positive, - inside S, if Offset is negative; - Tol defines the coincidence tolerance criterion for generated shapes; - Mode defines the construction type of parallels applied to the free edges of shape S; currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value BRepOffset_Skin; - Intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if Intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if Intersection is true, the intersection is calculated by taking all generated parallels into account; this computation method is more general as it avoids some self-intersections generated in the offset shape from features of small dimensions on shape S, however this method has not been completely implemented and therefore is not recommended for use; - SelfInter tells the algorithm whether a computation to eliminate self-intersections must be applied to the resulting shape; however, as this functionality is not yet implemented, it is recommended to use the default value (false); - Join defines how to fill the holes that may appear between parallels to the two adjacent faces. It may take values GeomAbs_Arc or GeomAbs_Intersection: - if Join is equal to GeomAbs_Arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if Join is equal to GeomAbs_Intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. RemoveIntEdges flag defines whether to remove the INTERNAL edges from the result or not. Warnings 1. All the faces of the shape S should be based on the surfaces with continuity at least C1. 2. The offset value should be sufficiently small to avoid self-intersections in resulting shape. Otherwise these self-intersections may appear inside an offset face if its initial surface is not plane or sphere or cylinder, also some non-adjacent offset faces may intersect each other. Also, some offset surfaces may 'turn inside out'. 3. The algorithm may fail if the shape S contains vertices where more than 3 edges converge. 4. Since 3d-offset algorithm involves intersection of surfaces, it is under limitations of surface intersection algorithm. 5. A result cannot be generated if the underlying geometry of S is BSpline with continuity C0. Exceptions Geom_UndefinedDerivative if the underlying geometry of S is BSpline with continuity C0.
 ") PerformByJoin;
-		void PerformByJoin(const TopoDS_Shape & S, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void PerformByJoin(const TopoDS_Shape & S, const double Offset, const double Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const bool Intersection = false, const bool SelfInter = false, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool RemoveIntEdges = false, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeOffsetShape::PerformBySimple ******/
-		/****** md5 signature: 005d9d4f6366bed358be54e547e045db ******/
+		/****** md5 signature: f4969d77a7ddc2de03390a78ee87dc76 ******/
 		%feature("compactdefaultargs") PerformBySimple;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theOffsetValue: float
+theOffsetValue: double
 
 Return
 -------
@@ -1709,7 +1708,7 @@ Description
 -----------
 Constructs offset shape for the given one using simple algorithm without intersections computation.
 ") PerformBySimple;
-		void PerformBySimple(const TopoDS_Shape & theS, const Standard_Real theOffsetValue);
+		void PerformBySimple(const TopoDS_Shape & theS, const double theOffsetValue);
 
 };
 
@@ -1745,7 +1744,7 @@ Constructs a pipe by sweeping the shape Profile along the wire Spine.The angle m
 		 BRepOffsetAPI_MakePipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile);
 
 		/****** BRepOffsetAPI_MakePipe::BRepOffsetAPI_MakePipe ******/
-		/****** md5 signature: 7fdb4b4ef91c75cd892ca136b43bf5da ******/
+		/****** md5 signature: 8a5ca4e1971b4d2f6e471abcef670d88 ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_MakePipe;
 		%feature("autodoc", "
 Parameters
@@ -1753,7 +1752,7 @@ Parameters
 Spine: TopoDS_Wire
 Profile: TopoDS_Shape
 aMode: GeomFill_Trihedron
-ForceApproxC1: bool (optional, default to Standard_False)
+ForceApproxC1: bool (optional, default to false)
 
 Return
 -------
@@ -1763,10 +1762,10 @@ Description
 -----------
 the same as previous but with setting of mode of sweep and the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0.
 ") BRepOffsetAPI_MakePipe;
-		 BRepOffsetAPI_MakePipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile, const GeomFill_Trihedron aMode, const Standard_Boolean ForceApproxC1 = Standard_False);
+		 BRepOffsetAPI_MakePipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile, const GeomFill_Trihedron aMode, const bool ForceApproxC1 = false);
 
 		/****** BRepOffsetAPI_MakePipe::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1781,23 +1780,23 @@ Description
 -----------
 Builds the resulting shape (redefined from MakeShape).
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakePipe::ErrorOnSurface ******/
-		/****** md5 signature: b6b87ca0efc7814953c22829fefc7f65 ******/
+		/****** md5 signature: 0ab673c2dfbd4ce8e0d165ef9c450b15 ******/
 		%feature("compactdefaultargs") ErrorOnSurface;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ErrorOnSurface;
-		Standard_Real ErrorOnSurface();
+		double ErrorOnSurface();
 
 		/****** BRepOffsetAPI_MakePipe::FirstShape ******/
-		/****** md5 signature: 58fcb2a790a0aa12dce93bc2307abc16 ******/
+		/****** md5 signature: cdf66e19ba39bdf16401bc58aff5897f ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -1810,7 +1809,7 @@ Returns the TopoDS Shape of the bottom of the prism.
 		TopoDS_Shape FirstShape();
 
 		/****** BRepOffsetAPI_MakePipe::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1819,13 +1818,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakePipe::Generated ******/
 		/****** md5 signature: da81408487ea6911b58fe475fd4ea546 ******/
@@ -1847,7 +1846,7 @@ No available documentation.
 		TopoDS_Shape Generated(const TopoDS_Shape & SSpine, const TopoDS_Shape & SProfile);
 
 		/****** BRepOffsetAPI_MakePipe::LastShape ******/
-		/****** md5 signature: 00d36051126aa083896abae0c2f17b32 ******/
+		/****** md5 signature: 07b730c910b364659accaaae17aee8e5 ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
@@ -1905,14 +1904,14 @@ Constructs the shell-generating framework defined by the wire Spine. Sets an swe
 		 BRepOffsetAPI_MakePipeShell(const TopoDS_Wire & Spine);
 
 		/****** BRepOffsetAPI_MakePipeShell::Add ******/
-		/****** md5 signature: 4646415ed2583fb1eb7c020fef17efa7 ******/
+		/****** md5 signature: ebeaf5a784d72ee73388729f34113ba3 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 Profile: TopoDS_Shape
-WithContact: bool (optional, default to Standard_False)
-WithCorrection: bool (optional, default to Standard_False)
+WithContact: bool (optional, default to false)
+WithCorrection: bool (optional, default to false)
 
 Return
 -------
@@ -1922,18 +1921,18 @@ Description
 -----------
 Adds the section Profile to this framework. First and last sections may be punctual, so the shape Profile may be both wire and vertex. Correspondent point on spine is computed automatically. If WithContact is true, the section is translated to be in contact with the spine. If WithCorrection is true, the section is rotated to be orthogonal to the spine?s tangent in the correspondent point. This option has no sense if the section is punctual (Profile is of type TopoDS_Vertex).
 ") Add;
-		void Add(const TopoDS_Shape & Profile, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
+		void Add(const TopoDS_Shape & Profile, const bool WithContact = false, const bool WithCorrection = false);
 
 		/****** BRepOffsetAPI_MakePipeShell::Add ******/
-		/****** md5 signature: ea9d6839d1fe733dcb8684defcce8b79 ******/
+		/****** md5 signature: 3b3780e526244ae49e78ea55be54fdb5 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 Profile: TopoDS_Shape
 Location: TopoDS_Vertex
-WithContact: bool (optional, default to Standard_False)
-WithCorrection: bool (optional, default to Standard_False)
+WithContact: bool (optional, default to false)
+WithCorrection: bool (optional, default to false)
 
 Return
 -------
@@ -1943,10 +1942,10 @@ Description
 -----------
 Adds the section Profile to this framework. Correspondent point on the spine is given by Location. Warning: To be effective, it is not recommended to combine methods Add and SetLaw.
 ") Add;
-		void Add(const TopoDS_Shape & Profile, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
+		void Add(const TopoDS_Shape & Profile, const TopoDS_Vertex & Location, const bool WithContact = false, const bool WithCorrection = false);
 
 		/****** BRepOffsetAPI_MakePipeShell::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1961,7 +1960,7 @@ Description
 -----------
 Builds the resulting shape (redefined from MakeShape).
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakePipeShell::Delete ******/
 		/****** md5 signature: 12e4f2f3609a7b21fcf42ba451fc7b90 ******/
@@ -1982,20 +1981,20 @@ Removes the section Profile from this framework.
 		void Delete(const TopoDS_Shape & Profile);
 
 		/****** BRepOffsetAPI_MakePipeShell::ErrorOnSurface ******/
-		/****** md5 signature: b6b87ca0efc7814953c22829fefc7f65 ******/
+		/****** md5 signature: 0ab673c2dfbd4ce8e0d165ef9c450b15 ******/
 		%feature("compactdefaultargs") ErrorOnSurface;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ErrorOnSurface;
-		Standard_Real ErrorOnSurface();
+		double ErrorOnSurface();
 
 		/****** BRepOffsetAPI_MakePipeShell::FirstShape ******/
-		/****** md5 signature: 9141e4a066781501fc49e6dc1e5e4641 ******/
+		/****** md5 signature: cdf66e19ba39bdf16401bc58aff5897f ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -2005,10 +2004,10 @@ Description
 -----------
 Returns the TopoDS Shape of the bottom of the sweep.
 ") FirstShape;
-		virtual TopoDS_Shape FirstShape();
+		TopoDS_Shape FirstShape();
 
 		/****** BRepOffsetAPI_MakePipeShell::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -2017,13 +2016,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of new shapes generated from the shape S by the shell-generating algorithm. This function is redefined from BRepOffsetAPI_MakeShape::Generated. S can be an edge or a vertex of a given Profile (see methods Add).
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakePipeShell::GetStatus ******/
 		/****** md5 signature: 7fc2662f43e326653463499b95ca8153 ******/
@@ -2038,8 +2037,21 @@ Get a status, when Simulate or Build failed. It can be BRepBuilderAPI_PipeDone, 
 ") GetStatus;
 		BRepBuilderAPI_PipeError GetStatus();
 
+		/****** BRepOffsetAPI_MakePipeShell::IsBuildHistory ******/
+		/****** md5 signature: e037101729cd4b8425182c01491bd79a ******/
+		%feature("compactdefaultargs") IsBuildHistory;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns the build history flag. If True, the pipe shell stores the history of the sections and the spine.
+") IsBuildHistory;
+		bool IsBuildHistory();
+
 		/****** BRepOffsetAPI_MakePipeShell::IsReady ******/
-		/****** md5 signature: 68a96b040fc0b59848125a1a3ef33dcb ******/
+		/****** md5 signature: c55402f1e031fb2faa07c9375fee061b ******/
 		%feature("compactdefaultargs") IsReady;
 		%feature("autodoc", "Return
 -------
@@ -2049,10 +2061,10 @@ Description
 -----------
 Returns true if this tool object is ready to build the shape, i.e. has a definition for the wire section Profile.
 ") IsReady;
-		Standard_Boolean IsReady();
+		bool IsReady();
 
 		/****** BRepOffsetAPI_MakePipeShell::LastShape ******/
-		/****** md5 signature: 6f7d02deb40719f75425be30543f3deb ******/
+		/****** md5 signature: 07b730c910b364659accaaae17aee8e5 ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
@@ -2062,10 +2074,10 @@ Description
 -----------
 Returns the TopoDS Shape of the top of the sweep.
 ") LastShape;
-		virtual TopoDS_Shape LastShape();
+		TopoDS_Shape LastShape();
 
 		/****** BRepOffsetAPI_MakePipeShell::MakeSolid ******/
-		/****** md5 signature: cac327adfb21fa10211d68dabc53974b ******/
+		/****** md5 signature: f542d79ff68cacfdbd4ad6dd6a6e1a75 ******/
 		%feature("compactdefaultargs") MakeSolid;
 		%feature("autodoc", "Return
 -------
@@ -2075,15 +2087,15 @@ Description
 -----------
 Transforms the sweeping Shell in Solid. If a propfile is not closed returns False.
 ") MakeSolid;
-		Standard_Boolean MakeSolid();
+		bool MakeSolid();
 
 		/****** BRepOffsetAPI_MakePipeShell::Profiles ******/
-		/****** md5 signature: 1b2b499d210731d9c45ae6c16e16db56 ******/
+		/****** md5 signature: c0b5197044432a85b44466e78e6c652f ******/
 		%feature("compactdefaultargs") Profiles;
 		%feature("autodoc", "
 Parameters
 ----------
-theProfiles: TopTools_ListOfShape
+theProfiles: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2093,7 +2105,7 @@ Description
 -----------
 Returns the list of original profiles.
 ") Profiles;
-		void Profiles(TopTools_ListOfShape & theProfiles);
+		void Profiles(NCollection_List<TopoDS_Shape> & theProfiles);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetDiscreteMode ******/
 		/****** md5 signature: 0366446a5945e513e46ee5778018b32d ******/
@@ -2109,7 +2121,7 @@ Sets a Discrete trihedron to perform the sweeping.
 		void SetDiscreteMode();
 
 		/****** BRepOffsetAPI_MakePipeShell::SetForceApproxC1 ******/
-		/****** md5 signature: ef99bf0713e14fbe9531aef549b5c75b ******/
+		/****** md5 signature: bb5360547d7f38f9dcab06086e0e5e80 ******/
 		%feature("compactdefaultargs") SetForceApproxC1;
 		%feature("autodoc", "
 Parameters
@@ -2124,18 +2136,36 @@ Description
 -----------
 Set the flag that indicates attempt to approximate a C1-continuous surface if a swept surface proved to be C0.
 ") SetForceApproxC1;
-		void SetForceApproxC1(const Standard_Boolean ForceApproxC1);
+		void SetForceApproxC1(const bool ForceApproxC1);
+
+		/****** BRepOffsetAPI_MakePipeShell::SetIsBuildHistory ******/
+		/****** md5 signature: 59d4b20de394440b9048f3b688f47d3e ******/
+		%feature("compactdefaultargs") SetIsBuildHistory;
+		%feature("autodoc", "
+Parameters
+----------
+theIsBuildHistory: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the build history flag. If set to True, the pipe shell will store the history of the sections and the spine, which can be used for further modifications or analysis.
+") SetIsBuildHistory;
+		void SetIsBuildHistory(const bool theIsBuildHistory);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetLaw ******/
-		/****** md5 signature: af186f09c05a666850d65baf0970c9c2 ******/
+		/****** md5 signature: ad55e889e4489f1f2f917103e6de6866 ******/
 		%feature("compactdefaultargs") SetLaw;
 		%feature("autodoc", "
 Parameters
 ----------
 Profile: TopoDS_Shape
 L: Law_Function
-WithContact: bool (optional, default to Standard_False)
-WithCorrection: bool (optional, default to Standard_False)
+WithContact: bool (optional, default to false)
+WithCorrection: bool (optional, default to false)
 
 Return
 -------
@@ -2145,10 +2175,10 @@ Description
 -----------
 Sets the evolution law defined by the wire Profile with its position (Location, WithContact, WithCorrection are the same options as in methods Add) and a homotetic law defined by the function L. Warning: To be effective, it is not recommended to combine methods Add and SetLaw.
 ") SetLaw;
-		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
+		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const bool WithContact = false, const bool WithCorrection = false);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetLaw ******/
-		/****** md5 signature: d67cbe53520bea57d641b9a7a96a4fae ******/
+		/****** md5 signature: a7ee853d6e539d1bfa17e54e99c6d516 ******/
 		%feature("compactdefaultargs") SetLaw;
 		%feature("autodoc", "
 Parameters
@@ -2156,8 +2186,8 @@ Parameters
 Profile: TopoDS_Shape
 L: Law_Function
 Location: TopoDS_Vertex
-WithContact: bool (optional, default to Standard_False)
-WithCorrection: bool (optional, default to Standard_False)
+WithContact: bool (optional, default to false)
+WithCorrection: bool (optional, default to false)
 
 Return
 -------
@@ -2167,10 +2197,10 @@ Description
 -----------
 Sets the evolution law defined by the wire Profile with its position (Location, WithContact, WithCorrection are the same options as in methods Add) and a homotetic law defined by the function L. Warning: To be effective, it is not recommended to combine methods Add and SetLaw.
 ") SetLaw;
-		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const TopoDS_Vertex & Location, const Standard_Boolean WithContact = Standard_False, const Standard_Boolean WithCorrection = Standard_False);
+		void SetLaw(const TopoDS_Shape & Profile, const opencascade::handle<Law_Function> & L, const TopoDS_Vertex & Location, const bool WithContact = false, const bool WithCorrection = false);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetMaxDegree ******/
-		/****** md5 signature: 2a3ad6060a0d872631abe8d437d6229f ******/
+		/****** md5 signature: 8ea78f4bab380860d163b0979dcc546c ******/
 		%feature("compactdefaultargs") SetMaxDegree;
 		%feature("autodoc", "
 Parameters
@@ -2185,10 +2215,10 @@ Description
 -----------
 Define the maximum V degree of resulting surface.
 ") SetMaxDegree;
-		void SetMaxDegree(const Standard_Integer NewMaxDegree);
+		void SetMaxDegree(const int NewMaxDegree);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetMaxSegments ******/
-		/****** md5 signature: 7215f32d76e44b535e90a1a1c2957613 ******/
+		/****** md5 signature: 92fc41847e6e0e81f326122eba938b4b ******/
 		%feature("compactdefaultargs") SetMaxSegments;
 		%feature("autodoc", "
 Parameters
@@ -2203,15 +2233,15 @@ Description
 -----------
 Define the maximum number of spans in V-direction on resulting surface.
 ") SetMaxSegments;
-		void SetMaxSegments(const Standard_Integer NewMaxSegments);
+		void SetMaxSegments(const int NewMaxSegments);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetMode ******/
-		/****** md5 signature: 20857301a5924ef00dcb05d83545dafe ******/
+		/****** md5 signature: 22b02b745fa44df043df374cdd77d782 ******/
 		%feature("compactdefaultargs") SetMode;
 		%feature("autodoc", "
 Parameters
 ----------
-IsFrenet: bool (optional, default to Standard_False)
+IsFrenet: bool (optional, default to false)
 
 Return
 -------
@@ -2221,7 +2251,7 @@ Description
 -----------
 Sets a Frenet or a CorrectedFrenet trihedron to perform the sweeping If IsFrenet is false, a corrected Frenet trihedron is used.
 ") SetMode;
-		void SetMode(const Standard_Boolean IsFrenet = Standard_False);
+		void SetMode(const bool IsFrenet = false);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetMode ******/
 		/****** md5 signature: 53e884a5bc116ff1835f19ced706e8c7 ******/
@@ -2255,12 +2285,12 @@ None
 
 Description
 -----------
-Sets a fixed BiNormal direction to perform the -- sweeping. Angular relations between the section(s) and <BiNormal> will be constant.
+Sets a fixed BiNormal direction to perform the sweeping. Angular relations between the section(s) and <BiNormal> will be constant.
 ") SetMode;
 		void SetMode(const gp_Dir & BiNormal);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetMode ******/
-		/****** md5 signature: f11f503b2f352f2900bc069378318b41 ******/
+		/****** md5 signature: 705ec1507fa5873983817409a247d5e3 ******/
 		%feature("compactdefaultargs") SetMode;
 		%feature("autodoc", "
 Parameters
@@ -2275,10 +2305,10 @@ Description
 -----------
 Sets support to the spine to define the BiNormal of the trihedron, like the normal to the surfaces. Warning: To be effective, Each edge of the <spine> must have a representation on one face of<SpineSupport>.
 ") SetMode;
-		Standard_Boolean SetMode(const TopoDS_Shape & SpineSupport);
+		bool SetMode(const TopoDS_Shape & SpineSupport);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetMode ******/
-		/****** md5 signature: b56b51364ac5002747edc4b052d16a76 ******/
+		/****** md5 signature: f361e7883469724393daf275fa2c0fac ******/
 		%feature("compactdefaultargs") SetMode;
 		%feature("autodoc", "
 Parameters
@@ -2293,19 +2323,19 @@ None
 
 Description
 -----------
-Sets an auxiliary spine to define the Normal For each Point of the Spine P, an Point Q is evalued on <AuxiliarySpine> If <CurvilinearEquivalence> Q split <AuxiliarySpine> with the same length ratio than P split <Spline>. Else the plan define by P and the tangent to the <Spine> intersect <AuxiliarySpine> in Q. If <KeepContact> equals BRepFill_NoContact: The Normal is defined by the vector PQ. If <KeepContact> equals BRepFill_Contact: The Normal is defined to achieve that the sweeped section is in contact to the auxiliarySpine. The width of section is constant all along the path. In other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. However, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path. Give section to sweep. Possibilities are: - Give one or several section - Give one profile and an homotetic law. - Automatic compute of correspondence between spine, and section on the sweeped shape - correspondence between spine, and section on the sweeped shape defined by a vertex of the spine.
+Sets an auxiliary spine to define the Normal For each Point of the Spine P, an Point Q is evaluated on <AuxiliarySpine> If <CurvilinearEquivalence> Q split <AuxiliarySpine> with the same length ratio than P split <Spline>. Else the plan define by P and the tangent to the <Spine> intersect <AuxiliarySpine> in Q. If <KeepContact> equals BRepFill_NoContact: The Normal is defined by the vector PQ. If <KeepContact> equals BRepFill_Contact: The Normal is defined to achieve that the sweeped section is in contact to the auxiliarySpine. The width of section is constant all along the path. In other words, the auxiliary spine lies on the swept surface, but not necessarily is a boundary of this surface. However, the auxiliary spine has to be close enough to the main spine to provide intersection with any section all along the path. If <KeepContact> equals BRepFill_ContactOnBorder: The auxiliary spine becomes a boundary of the swept surface and the width of section varies along the path. Give section to sweep. Possibilities are: - Give one or several section - Give one profile and an homotetic law. - Automatic compute of correspondence between spine, and section on the sweeped shape - correspondence between spine, and section on the sweeped shape defined by a vertex of the spine.
 ") SetMode;
-		void SetMode(const TopoDS_Wire & AuxiliarySpine, const Standard_Boolean CurvilinearEquivalence, const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact);
+		void SetMode(const TopoDS_Wire & AuxiliarySpine, const bool CurvilinearEquivalence, const BRepFill_TypeOfContact KeepContact = BRepFill_NoContact);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetTolerance ******/
-		/****** md5 signature: 7a6605305c5a1448579b26f09880877f ******/
+		/****** md5 signature: b4b54ea5593d784ccb4f5a6aea41e9f3 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol3d: float (optional, default to 1.0e-4)
-BoundTol: float (optional, default to 1.0e-4)
-TolAngular: float (optional, default to 1.0e-2)
+Tol3d: double (optional, default to 1.0e-4)
+BoundTol: double (optional, default to 1.0e-4)
+TolAngular: double (optional, default to 1.0e-2)
 
 Return
 -------
@@ -2315,7 +2345,7 @@ Description
 -----------
 Sets the following tolerance values - 3D tolerance Tol3d - boundary tolerance BoundTol - angular tolerance TolAngular.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol3d = 1.0e-4, const Standard_Real BoundTol = 1.0e-4, const Standard_Real TolAngular = 1.0e-2);
+		void SetTolerance(const double Tol3d = 1.0e-4, const double BoundTol = 1.0e-4, const double TolAngular = 1.0e-2);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetTransitionMode ******/
 		/****** md5 signature: 52d1ed1eb716770e53a2e79bdf9a0449 ******/
@@ -2336,13 +2366,13 @@ Sets the transition mode to manage discontinuities on the swept shape caused by 
 		void SetTransitionMode(const BRepBuilderAPI_TransitionMode Mode = BRepBuilderAPI_Transformed);
 
 		/****** BRepOffsetAPI_MakePipeShell::Simulate ******/
-		/****** md5 signature: b923147c061b5747b67b09a6323794bf ******/
+		/****** md5 signature: 1c340179bda70de9b0c017a774ad2628 ******/
 		%feature("compactdefaultargs") Simulate;
 		%feature("autodoc", "
 Parameters
 ----------
 NumberOfSection: int
-Result: TopTools_ListOfShape
+Result: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2352,7 +2382,7 @@ Description
 -----------
 Simulates the resulting shape by calculating its cross-sections. The spine is divided by this cross-sections into (NumberOfSection - 1) equal parts, the number of cross-sections is NumberOfSection. The cross-sections are wires and they are returned in the list Result. This gives a rapid preview of the resulting shape, which will be obtained using the settings you have provided. Raises NotDone if <self> it is not Ready.
 ") Simulate;
-		void Simulate(const Standard_Integer NumberOfSection, TopTools_ListOfShape & Result);
+		void Simulate(const int NumberOfSection, NCollection_List<TopoDS_Shape> & Result);
 
 		/****** BRepOffsetAPI_MakePipeShell::Spine ******/
 		/****** md5 signature: 6331688635fc3e41ab0cf89de46bd269 ******/
@@ -2402,7 +2432,7 @@ General constructor. StartShape and EndShape may be a wire or a face.
 		 BRepOffsetAPI_MiddlePath(const TopoDS_Shape & aShape, const TopoDS_Shape & StartShape, const TopoDS_Shape & EndShape);
 
 		/****** BRepOffsetAPI_MiddlePath::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -2417,7 +2447,7 @@ Description
 -----------
 No available documentation.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -2501,7 +2531,7 @@ Returns the initial edge corresponding to the edge E resulting from the computat
 		const TopoDS_Shape Ancestor(const TopoDS_Edge & E);
 
 		/****** BRepOffsetAPI_NormalProjection::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -2516,15 +2546,15 @@ Description
 -----------
 Builds the result of the projection as a compound of wires. Tries to build oriented wires.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_NormalProjection::BuildWire ******/
-		/****** md5 signature: e5fb4f3952649b872b4fb3c469f5b161 ******/
+		/****** md5 signature: 2e61db6b13a554fd3e6dc5c9f244848e ******/
 		%feature("compactdefaultargs") BuildWire;
 		%feature("autodoc", "
 Parameters
 ----------
-Liste: TopTools_ListOfShape
+Liste: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2534,15 +2564,15 @@ Description
 -----------
 build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
 ") BuildWire;
-		Standard_Boolean BuildWire(TopTools_ListOfShape & Liste);
+		bool BuildWire(NCollection_List<TopoDS_Shape> & Liste);
 
 		/****** BRepOffsetAPI_NormalProjection::Compute3d ******/
-		/****** md5 signature: a18b9a3fc4a7d346645e19e03d893102 ******/
+		/****** md5 signature: 8b864583fd604bf1369f0261b87b0b61 ******/
 		%feature("compactdefaultargs") Compute3d;
 		%feature("autodoc", "
 Parameters
 ----------
-With3d: bool (optional, default to Standard_True)
+With3d: bool (optional, default to true)
 
 Return
 -------
@@ -2552,7 +2582,7 @@ Description
 -----------
 Returns true if a 3D curve is computed. If not, false is returned and an initial 3D curve is kept to build the resulting edges.
 ") Compute3d;
-		void Compute3d(const Standard_Boolean With3d = Standard_True);
+		void Compute3d(const bool With3d = true);
 
 		/****** BRepOffsetAPI_NormalProjection::Couple ******/
 		/****** md5 signature: cbe6db4e25bf42b45544f6235fc33773 ******/
@@ -2573,7 +2603,7 @@ Returns the initial face corresponding to the projected edge E. Exceptions StdFa
 		const TopoDS_Shape Couple(const TopoDS_Edge & E);
 
 		/****** BRepOffsetAPI_NormalProjection::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -2582,13 +2612,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_NormalProjection::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2609,7 +2639,7 @@ Initializes the empty constructor framework with the shape S.
 		void Init(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_NormalProjection::IsDone ******/
-		/****** md5 signature: c9aa3a454774a145a334d5dad12c1786 ******/
+		/****** md5 signature: 2be114a985aea21262ebd32099ccc3a6 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2619,7 +2649,7 @@ Description
 -----------
 Returns true if the object was correctly built by the shape construction algorithm. If at the construction time of the shape, the algorithm cannot be completed, or the original data is corrupted, IsDone returns false and therefore protects the use of functions to access the result of the construction (typically the Shape function).
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepOffsetAPI_NormalProjection::Projection ******/
 		/****** md5 signature: d96e6638e8d3c59fa6809c83eda77a82 ******/
@@ -2635,12 +2665,12 @@ Performs the projection. The construction of the result is performed by Build. E
 		const TopoDS_Shape Projection();
 
 		/****** BRepOffsetAPI_NormalProjection::SetLimit ******/
-		/****** md5 signature: 2affba7d2b02ca0d9a96522f0a57d409 ******/
+		/****** md5 signature: 8d05629866b6b27473b9f7a8bd1651dc ******/
 		%feature("compactdefaultargs") SetLimit;
 		%feature("autodoc", "
 Parameters
 ----------
-FaceBoundaries: bool (optional, default to Standard_True)
+FaceBoundaries: bool (optional, default to true)
 
 Return
 -------
@@ -2650,15 +2680,15 @@ Description
 -----------
 Manage limitation of projected edges.
 ") SetLimit;
-		void SetLimit(const Standard_Boolean FaceBoundaries = Standard_True);
+		void SetLimit(const bool FaceBoundaries = true);
 
 		/****** BRepOffsetAPI_NormalProjection::SetMaxDistance ******/
-		/****** md5 signature: 7c596903416448c58cc2576fe5ca8153 ******/
+		/****** md5 signature: 3c9cee64c2fcc2d28142dcb7f3aff71c ******/
 		%feature("compactdefaultargs") SetMaxDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxDist: float
+MaxDist: double
 
 Return
 -------
@@ -2668,16 +2698,16 @@ Description
 -----------
 Sets the maximum distance between target shape and shape to project. If this condition is not satisfied then corresponding part of solution is discarded. if MaxDist < 0 then this method does not affect the algorithm.
 ") SetMaxDistance;
-		void SetMaxDistance(const Standard_Real MaxDist);
+		void SetMaxDistance(const double MaxDist);
 
 		/****** BRepOffsetAPI_NormalProjection::SetParams ******/
-		/****** md5 signature: 145439fe62b19bd0fd3e24e9c7dd4c4d ******/
+		/****** md5 signature: 327b5f7089d5098c585de1f720d50257 ******/
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol3D: float
-Tol2D: float
+Tol3D: double
+Tol2D: double
 InternalContinuity: GeomAbs_Shape
 MaxDegree: int
 MaxSeg: int
@@ -2690,7 +2720,7 @@ Description
 -----------
 Sets the parameters used for computation Tol3 is the required tolerance between the 3d projected curve and its 2d representation InternalContinuity is the order of constraints used for approximation MaxDeg and MaxSeg are the maximum degree and the maximum number of segment for BSpline resulting of an approximation.
 ") SetParams;
-		void SetParams(const Standard_Real Tol3D, const Standard_Real Tol2D, const GeomAbs_Shape InternalContinuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSeg);
+		void SetParams(const double Tol3D, const double Tol2D, const GeomAbs_Shape InternalContinuity, const int MaxDegree, const int MaxSeg);
 
 };
 
@@ -2707,14 +2737,14 @@ Sets the parameters used for computation Tol3 is the required tolerance between 
 class BRepOffsetAPI_ThruSections : public BRepBuilderAPI_MakeShape {
 	public:
 		/****** BRepOffsetAPI_ThruSections::BRepOffsetAPI_ThruSections ******/
-		/****** md5 signature: 2d1d68118a0d4fb22ccde1e154fbe87e ******/
+		/****** md5 signature: 965b3aafbda5d3be2a40b81926b99f1f ******/
 		%feature("compactdefaultargs") BRepOffsetAPI_ThruSections;
 		%feature("autodoc", "
 Parameters
 ----------
-isSolid: bool (optional, default to Standard_False)
-ruled: bool (optional, default to Standard_False)
-pres3d: float (optional, default to 1.0e-06)
+isSolid: bool (optional, default to false)
+ruled: bool (optional, default to false)
+pres3d: double (optional, default to 1.0e-06)
 
 Return
 -------
@@ -2724,7 +2754,7 @@ Description
 -----------
 Initializes an algorithm for building a shell or a solid passing through a set of sections, where: - isSolid is set to true if the construction algorithm is required to build a solid or to false if it is required to build a shell (the default value), - ruled is set to true if the faces generated between the edges of two consecutive wires are ruled surfaces or to false (the default value) if they are smoothed out by approximation, - pres3d defines the precision criterion used by the approximation algorithm; the default value is 1.0e-6. Use AddWire and AddVertex to define the successive sections of the shell or solid to be built.
 ") BRepOffsetAPI_ThruSections;
-		 BRepOffsetAPI_ThruSections(const Standard_Boolean isSolid = Standard_False, const Standard_Boolean ruled = Standard_False, const Standard_Real pres3d = 1.0e-06);
+		 BRepOffsetAPI_ThruSections(const bool isSolid = false, const bool ruled = false, const double pres3d = 1.0e-06);
 
 		/****** BRepOffsetAPI_ThruSections::AddVertex ******/
 		/****** md5 signature: b3427ef9c13bb9d306f4377b747f6e3c ******/
@@ -2763,7 +2793,7 @@ Adds the wire wire to the set of sections through which the shell or solid is bu
 		void AddWire(const TopoDS_Wire & wire);
 
 		/****** BRepOffsetAPI_ThruSections::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -2778,15 +2808,15 @@ Description
 -----------
 No available documentation.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_ThruSections::CheckCompatibility ******/
-		/****** md5 signature: 9d9925f6850c3d616051e8fa827482f4 ******/
+		/****** md5 signature: 1306006df015e9a90ac0c79bf5724c04 ******/
 		%feature("compactdefaultargs") CheckCompatibility;
 		%feature("autodoc", "
 Parameters
 ----------
-check: bool (optional, default to Standard_True)
+check: bool (optional, default to true)
 
 Return
 -------
@@ -2796,7 +2826,7 @@ Description
 -----------
 Sets/unsets the option to compute origin and orientation on wires to avoid twisted results and update wires to have same number of edges.
 ") CheckCompatibility;
-		void CheckCompatibility(const Standard_Boolean check = Standard_True);
+		void CheckCompatibility(const bool check = true);
 
 		/****** BRepOffsetAPI_ThruSections::Continuity ******/
 		/****** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ******/
@@ -2812,7 +2842,7 @@ returns the Continuity used in the approximation.
 		GeomAbs_Shape Continuity();
 
 		/****** BRepOffsetAPI_ThruSections::CriteriumWeight ******/
-		/****** md5 signature: 4b68323f3c03d233f69e27404a58a42c ******/
+		/****** md5 signature: 139386b2127d6614989017eba0879b6e ******/
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "
 Parameters
@@ -2820,9 +2850,9 @@ Parameters
 
 Return
 -------
-W1: float
-W2: float
-W3: float
+W1: double
+W2: double
+W3: double
 
 Description
 -----------
@@ -2844,7 +2874,7 @@ Returns the TopoDS Shape of the bottom of the loft if solid.
 		const TopoDS_Shape FirstShape();
 
 		/****** BRepOffsetAPI_ThruSections::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -2853,13 +2883,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of new shapes generated from the shape S by the shell-generating algorithm. This function is redefined from BRepBuilderAPI_MakeShape::Generated. S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_ThruSections::GeneratedFace ******/
 		/****** md5 signature: 03196f2ef499f6adc08e797085c3e792 ******/
@@ -2893,14 +2923,14 @@ Returns the status of thrusection operation.
 		BRepFill_ThruSectionErrorStatus GetStatus();
 
 		/****** BRepOffsetAPI_ThruSections::Init ******/
-		/****** md5 signature: 82b061dc05f66b08422610d2d7504487 ******/
+		/****** md5 signature: 7a7e3f30a3f5ec58ce49d1c1318626ee ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-isSolid: bool (optional, default to Standard_False)
-ruled: bool (optional, default to Standard_False)
-pres3d: float (optional, default to 1.0e-06)
+isSolid: bool (optional, default to false)
+ruled: bool (optional, default to false)
+pres3d: double (optional, default to 1.0e-06)
 
 Return
 -------
@@ -2910,10 +2940,10 @@ Description
 -----------
 Initializes this algorithm for building a shell or a solid passing through a set of sections, where: - isSolid is set to true if this construction algorithm is required to build a solid or to false if it is required to build a shell. false is the default value; - ruled is set to true if the faces generated between the edges of two consecutive wires are ruled surfaces or to false (the default value) if they are smoothed out by approximation, - pres3d defines the precision criterion used by the approximation algorithm; the default value is 1.0e-6. Use AddWire and AddVertex to define the successive sections of the shell or solid to be built.
 ") Init;
-		void Init(const Standard_Boolean isSolid = Standard_False, const Standard_Boolean ruled = Standard_False, const Standard_Real pres3d = 1.0e-06);
+		void Init(const bool isSolid = false, const bool ruled = false, const double pres3d = 1.0e-06);
 
 		/****** BRepOffsetAPI_ThruSections::IsMutableInput ******/
-		/****** md5 signature: 2df16e5a957577cfce65832aa2d90512 ******/
+		/****** md5 signature: ad3b03c729fefbfdc12b6e6c3ea060ab ******/
 		%feature("compactdefaultargs") IsMutableInput;
 		%feature("autodoc", "Return
 -------
@@ -2923,7 +2953,7 @@ Description
 -----------
 Returns the current mutable input state.
 ") IsMutableInput;
-		Standard_Boolean IsMutableInput();
+		bool IsMutableInput();
 
 		/****** BRepOffsetAPI_ThruSections::LastShape ******/
 		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
@@ -2939,7 +2969,7 @@ Returns the TopoDS Shape of the top of the loft if solid.
 		const TopoDS_Shape LastShape();
 
 		/****** BRepOffsetAPI_ThruSections::MaxDegree ******/
-		/****** md5 signature: 2c79ca8c281a4e3978650b16dd11f77d ******/
+		/****** md5 signature: 0d1cb72b1379ad321ead28abe36212aa ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -2949,7 +2979,7 @@ Description
 -----------
 returns the maximal U degree of result surface.
 ") MaxDegree;
-		Standard_Integer MaxDegree();
+		int MaxDegree();
 
 		/****** BRepOffsetAPI_ThruSections::ParType ******/
 		/****** md5 signature: 97fa11d31bc8075ba4a84bf8b926a855 ******/
@@ -2983,14 +3013,14 @@ Define the Continuity used in the approximation.
 		void SetContinuity(const GeomAbs_Shape C);
 
 		/****** BRepOffsetAPI_ThruSections::SetCriteriumWeight ******/
-		/****** md5 signature: f8c7045bd0e7f781a0984d023e8b1268 ******/
+		/****** md5 signature: 05101a83f2b5fa2243baf47e817e2437 ******/
 		%feature("compactdefaultargs") SetCriteriumWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-W1: float
-W2: float
-W3: float
+W1: double
+W2: double
+W3: double
 
 Return
 -------
@@ -3000,10 +3030,10 @@ Description
 -----------
 define the Weights associed to the criterium used in the optimization. //! if Wi <= 0.
 ") SetCriteriumWeight;
-		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
+		void SetCriteriumWeight(const double W1, const double W2, const double W3);
 
 		/****** BRepOffsetAPI_ThruSections::SetMaxDegree ******/
-		/****** md5 signature: 764b2b655767f13bc2f68fea914b035d ******/
+		/****** md5 signature: 9fefa00500248fd1c890d962ce42b8db ******/
 		%feature("compactdefaultargs") SetMaxDegree;
 		%feature("autodoc", "
 Parameters
@@ -3018,10 +3048,10 @@ Description
 -----------
 Define the maximal U degree of result surface.
 ") SetMaxDegree;
-		void SetMaxDegree(const Standard_Integer MaxDeg);
+		void SetMaxDegree(const int MaxDeg);
 
 		/****** BRepOffsetAPI_ThruSections::SetMutableInput ******/
-		/****** md5 signature: a0db619cccd4a2c2b443a5ab39c10ef8 ******/
+		/****** md5 signature: f6ab0bc4a8d438ee3b64d47724347c79 ******/
 		%feature("compactdefaultargs") SetMutableInput;
 		%feature("autodoc", "
 Parameters
@@ -3036,7 +3066,7 @@ Description
 -----------
 Sets the mutable input state. If true then the input profile can be modified inside the thrusection operation. Default value is true.
 ") SetMutableInput;
-		void SetMutableInput(const Standard_Boolean theIsMutableInput);
+		void SetMutableInput(const bool theIsMutableInput);
 
 		/****** BRepOffsetAPI_ThruSections::SetParType ******/
 		/****** md5 signature: ff343d7833ad3cc796439eb5cefa88ba ******/
@@ -3057,7 +3087,7 @@ Define the type of parametrization used in the approximation.
 		void SetParType(const Approx_ParametrizationType ParType);
 
 		/****** BRepOffsetAPI_ThruSections::SetSmoothing ******/
-		/****** md5 signature: bd2468fb64c3e1eaeaa057fe519f5331 ******/
+		/****** md5 signature: c82c6809935723eab212da202ddac1d7 ******/
 		%feature("compactdefaultargs") SetSmoothing;
 		%feature("autodoc", "
 Parameters
@@ -3072,10 +3102,10 @@ Description
 -----------
 Define the approximation algorithm.
 ") SetSmoothing;
-		void SetSmoothing(const Standard_Boolean UseSmoothing);
+		void SetSmoothing(const bool UseSmoothing);
 
 		/****** BRepOffsetAPI_ThruSections::UseSmoothing ******/
-		/****** md5 signature: 6d5d2a8f22f593639c02abb00ea646e6 ******/
+		/****** md5 signature: d92c5dbee2eee544ae5d68f55c670f9e ******/
 		%feature("compactdefaultargs") UseSmoothing;
 		%feature("autodoc", "Return
 -------
@@ -3085,20 +3115,20 @@ Description
 -----------
 Define the approximation algorithm.
 ") UseSmoothing;
-		Standard_Boolean UseSmoothing();
+		bool UseSmoothing();
 
 		/****** BRepOffsetAPI_ThruSections::Wires ******/
-		/****** md5 signature: 7af6829b521050de003f1b861d6f8640 ******/
+		/****** md5 signature: 86907142f570a5e90f84956a3323ee3e ******/
 		%feature("compactdefaultargs") Wires;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of original wires.
 ") Wires;
-		const TopTools_ListOfShape & Wires();
+		const NCollection_List<TopoDS_Shape> Wires();
 
 };
 
@@ -3128,7 +3158,7 @@ Constructor does nothing.
 		 BRepOffsetAPI_MakeThickSolid();
 
 		/****** BRepOffsetAPI_MakeThickSolid::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -3143,23 +3173,23 @@ Description
 -----------
 No available documentation.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeThickSolid::MakeThickSolidByJoin ******/
-		/****** md5 signature: dcb05ab3a700af2d16599d05a81891dd ******/
+		/****** md5 signature: 62a30665a272fd6be39fbeb7d762de8e ******/
 		%feature("compactdefaultargs") MakeThickSolidByJoin;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-ClosingFaces: TopTools_ListOfShape
-Offset: float
-Tol: float
+ClosingFaces: NCollection_List<TopoDS_Shape>
+Offset: double
+Tol: double
 Mode: BRepOffset_Mode (optional, default to BRepOffset_Skin)
-Intersection: bool (optional, default to Standard_False)
-SelfInter: bool (optional, default to Standard_False)
+Intersection: bool (optional, default to false)
+SelfInter: bool (optional, default to false)
 Join: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-RemoveIntEdges: bool (optional, default to Standard_False)
+RemoveIntEdges: bool (optional, default to false)
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -3170,16 +3200,16 @@ Description
 -----------
 Constructs a hollowed solid from the solid S by removing the set of faces ClosingFaces from S, where: Offset defines the thickness of the walls. Its sign indicates which side of the surface of the solid the hollowed shape is built on; - Tol defines the tolerance criterion for coincidence in generated shapes; - Mode defines the construction type of parallels applied to free edges of shape S. Currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value BRepOffset_Skin; Intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if Intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if Intersection is true, the intersection is calculated by taking account of all parallels generated; this computation method is more general as it avoids self-intersections generated in the offset shape from features of small dimensions on shape S, however this method has not been completely implemented and therefore is not recommended for use; - SelfInter tells the algorithm whether a computation to eliminate self-intersections needs to be applied to the resulting shape. However, as this functionality is not yet implemented, you should use the default value (false); - Join defines how to fill the holes that may appear between parallels to the two adjacent faces. It may take values GeomAbs_Arc or GeomAbs_Intersection: - if Join is equal to GeomAbs_Arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if Join is equal to GeomAbs_Intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. RemoveIntEdges flag defines whether to remove the INTERNAL edges from the result or not. Warnings Since the algorithm of MakeThickSolid is based on MakeOffsetShape algorithm, the warnings are the same as for MakeOffsetShape.
 ") MakeThickSolidByJoin;
-		void MakeThickSolidByJoin(const TopoDS_Shape & S, const TopTools_ListOfShape & ClosingFaces, const Standard_Real Offset, const Standard_Real Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const Standard_Boolean Intersection = Standard_False, const Standard_Boolean SelfInter = Standard_False, const GeomAbs_JoinType Join = GeomAbs_Arc, const Standard_Boolean RemoveIntEdges = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void MakeThickSolidByJoin(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & ClosingFaces, const double Offset, const double Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const bool Intersection = false, const bool SelfInter = false, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool RemoveIntEdges = false, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple ******/
-		/****** md5 signature: 61ce1557142588e14d9829f511172d15 ******/
+		/****** md5 signature: 842c4b953e3c653636f62c4006a2e7a6 ******/
 		%feature("compactdefaultargs") MakeThickSolidBySimple;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theOffsetValue: float
+theOffsetValue: double
 
 Return
 -------
@@ -3189,10 +3219,10 @@ Description
 -----------
 Constructs solid using simple algorithm. According to its nature it is not possible to set list of the closing faces. This algorithm does not support faces removing. It is caused by fact that intersections are not computed during offset creation. Non-closed shell or face is expected as input.
 ") MakeThickSolidBySimple;
-		void MakeThickSolidBySimple(const TopoDS_Shape & theS, const Standard_Real theOffsetValue);
+		void MakeThickSolidBySimple(const TopoDS_Shape & theS, const double theOffsetValue);
 
 		/****** BRepOffsetAPI_MakeThickSolid::Modified ******/
-		/****** md5 signature: 73ccfe97b4ed94547a190332224ffe23 ******/
+		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -3201,13 +3231,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
 
 };
 

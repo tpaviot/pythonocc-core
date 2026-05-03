@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlapi.html"
 #include<RWMesh_module.hxx>
 #include<VrmlConverter_module.hxx>
 #include<Vrml_module.hxx>
-#include<Quantity_module.hxx>
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
 #include<Geom_module.hxx>
@@ -89,6 +88,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlapi.html"
 #include<TNaming_module.hxx>
 #include<TDataXtd_module.hxx>
 #include<DE_module.hxx>
+#include<Quantity_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -100,7 +100,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlapi.html"
 %import RWMesh.i
 %import VrmlConverter.i
 %import Vrml.i
-%import Quantity.i
 %import TDocStd.i
 
 %pythoncode {
@@ -147,13 +146,13 @@ VrmlAPI_BothRepresentation = VrmlAPI_RepresentationOfShape.VrmlAPI_BothRepresent
 class VrmlAPI {
 	public:
 		/****** VrmlAPI::Write ******/
-		/****** md5 signature: eadf93f5a80979126b45a40f5dc9c966 ******/
+		/****** md5 signature: 4949437304f7a109320e7c68c09b0179 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
-aFileName: str
+aFileName: char *
 aVersion: int (optional, default to 2)
 
 Return
@@ -164,7 +163,7 @@ Description
 -----------
 With help of this class user can change parameters of writing. Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFileName using default parameters.
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & aShape, Standard_CString aFileName, const Standard_Integer aVersion = 2);
+		static bool Write(const TopoDS_Shape & aShape, const char * const aFileName, const int aVersion = 2);
 
 };
 
@@ -353,13 +352,13 @@ Resets all parameters (representation, deflection) to their default values..
 		void ResetToDefaults();
 
 		/****** VrmlAPI_Writer::SetAmbientColorToMaterial ******/
-		/****** md5 signature: ff58bc5173015f1d152e07a1fce01896 ******/
+		/****** md5 signature: 3da4049cd6d213b75721ca599e0896a0 ******/
 		%feature("compactdefaultargs") SetAmbientColorToMaterial;
 		%feature("autodoc", "
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: Quantity_HArray1OfColor
+Color: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -369,15 +368,15 @@ Description
 -----------
 No available documentation.
 ") SetAmbientColorToMaterial;
-		void SetAmbientColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
+		void SetAmbientColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
 
 		/****** VrmlAPI_Writer::SetDeflection ******/
-		/****** md5 signature: 66f0952d6a5fb24175d4c477b25a2145 ******/
+		/****** md5 signature: cadbb483fd0847577f031c832400cb85 ******/
 		%feature("compactdefaultargs") SetDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
-aDef: float
+aDef: double
 
 Return
 -------
@@ -387,16 +386,16 @@ Description
 -----------
 Sets the deflection aDef of the mesh algorithm which is used to compute the shaded representation of the translated shape. The default value is -1. When the deflection value is less than 0, the deflection is calculated from the relative size of the shaped.
 ") SetDeflection;
-		void SetDeflection(const Standard_Real aDef);
+		void SetDeflection(const double aDef);
 
 		/****** VrmlAPI_Writer::SetDiffuseColorToMaterial ******/
-		/****** md5 signature: c4180794403474cbd61cc41108eaa759 ******/
+		/****** md5 signature: 12074cb1b9f29e29fd8c4079bb637f4e ******/
 		%feature("compactdefaultargs") SetDiffuseColorToMaterial;
 		%feature("autodoc", "
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: Quantity_HArray1OfColor
+Color: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -406,16 +405,16 @@ Description
 -----------
 No available documentation.
 ") SetDiffuseColorToMaterial;
-		void SetDiffuseColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
+		void SetDiffuseColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
 
 		/****** VrmlAPI_Writer::SetEmissiveColorToMaterial ******/
-		/****** md5 signature: d14ea7513242ae41b196539a22ad2104 ******/
+		/****** md5 signature: 97942ca574623dfb81f9d6bb10231902 ******/
 		%feature("compactdefaultargs") SetEmissiveColorToMaterial;
 		%feature("autodoc", "
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: Quantity_HArray1OfColor
+Color: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -425,7 +424,7 @@ Description
 -----------
 No available documentation.
 ") SetEmissiveColorToMaterial;
-		void SetEmissiveColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
+		void SetEmissiveColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
 
 		/****** VrmlAPI_Writer::SetRepresentation ******/
 		/****** md5 signature: 0369655e9fa20e8a3bf3d2fc75c6f6c5 ******/
@@ -446,13 +445,13 @@ Sets the representation of the shape aRep which is written to the VRML file. The
 		void SetRepresentation(const VrmlAPI_RepresentationOfShape aRep);
 
 		/****** VrmlAPI_Writer::SetShininessToMaterial ******/
-		/****** md5 signature: 21587669ae68343630ae9c1178e09a99 ******/
+		/****** md5 signature: c2d3d90487a8dd954ebd53d7267e2da5 ******/
 		%feature("compactdefaultargs") SetShininessToMaterial;
 		%feature("autodoc", "
 Parameters
 ----------
 aMaterial: Vrml_Material
-aShininess: float
+aShininess: double
 
 Return
 -------
@@ -462,16 +461,16 @@ Description
 -----------
 No available documentation.
 ") SetShininessToMaterial;
-		void SetShininessToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const Standard_Real aShininess);
+		void SetShininessToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const double aShininess);
 
 		/****** VrmlAPI_Writer::SetSpecularColorToMaterial ******/
-		/****** md5 signature: d95b9c8c286dfb0cba79da45d846ef18 ******/
+		/****** md5 signature: 84d44d655c921e3cfaf87135dd9b8fd7 ******/
 		%feature("compactdefaultargs") SetSpecularColorToMaterial;
 		%feature("autodoc", "
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: Quantity_HArray1OfColor
+Color: NCollection_HArray1<Quantity_Color
 
 Return
 -------
@@ -481,16 +480,16 @@ Description
 -----------
 No available documentation.
 ") SetSpecularColorToMaterial;
-		void SetSpecularColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
+		void SetSpecularColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
 
 		/****** VrmlAPI_Writer::SetTransparencyToMaterial ******/
-		/****** md5 signature: 4feb0931bc6ea687fcd929caed5868f2 ******/
+		/****** md5 signature: b0e3375a7c3c442f58797d0a206d3f9e ******/
 		%feature("compactdefaultargs") SetTransparencyToMaterial;
 		%feature("autodoc", "
 Parameters
 ----------
 aMaterial: Vrml_Material
-aTransparency: float
+aTransparency: double
 
 Return
 -------
@@ -498,18 +497,18 @@ None
 
 Description
 -----------
-Set transparency to given material.
+No available documentation.
 ") SetTransparencyToMaterial;
-		void SetTransparencyToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const Standard_Real aTransparency);
+		void SetTransparencyToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const double aTransparency);
 
 		/****** VrmlAPI_Writer::Write ******/
-		/****** md5 signature: badea54785d979ffd7adddf30e53d573 ******/
+		/****** md5 signature: df14091d76e81cd0dcb65ebe888be2ad ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
-aFile: str
+aFile: char *
 aVersion: int (optional, default to 2)
 
 Return
@@ -520,17 +519,36 @@ Description
 -----------
 Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFile.
 ") Write;
-		Standard_Boolean Write(const TopoDS_Shape & aShape, Standard_CString aFile, const Standard_Integer aVersion = 2);
+		bool Write(const TopoDS_Shape & aShape, const char * const aFile, const int aVersion = 2);
+
+		/****** VrmlAPI_Writer::Write ******/
+		/****** md5 signature: 74013e4398097df05ca92216f1301d2c ******/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+aShape: TopoDS_Shape
+aVersion: int (optional, default to 2)
+
+Return
+-------
+theOStream: Standard_OStream
+
+Description
+-----------
+Converts the shape aShape to VRML format of the passed version and writes it to the given stream.
+") Write;
+		bool Write(const TopoDS_Shape & aShape, std::ostream &OutValue, const int aVersion = 2);
 
 		/****** VrmlAPI_Writer::WriteDoc ******/
-		/****** md5 signature: 293e597b30a83ac910add0bca5222bf1 ******/
+		/****** md5 signature: 8da6f66c4b9234b084e0e2001f0689d4 ******/
 		%feature("compactdefaultargs") WriteDoc;
 		%feature("autodoc", "
 Parameters
 ----------
 theDoc: TDocStd_Document
-theFile: str
-theScale: float
+theFile: char *
+theScale: double
 
 Return
 -------
@@ -540,7 +558,26 @@ Description
 -----------
 Converts the document to VRML format of the passed version and writes it to the file identified by aFile.
 ") WriteDoc;
-		Standard_Boolean WriteDoc(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFile, const Standard_Real theScale);
+		bool WriteDoc(const opencascade::handle<TDocStd_Document> & theDoc, const char * const theFile, const double theScale);
+
+		/****** VrmlAPI_Writer::WriteDoc ******/
+		/****** md5 signature: a1e9cc3326d5104f9146a06e167ba20b ******/
+		%feature("compactdefaultargs") WriteDoc;
+		%feature("autodoc", "
+Parameters
+----------
+theDoc: TDocStd_Document
+theScale: double
+
+Return
+-------
+theOStream: Standard_OStream
+
+Description
+-----------
+Converts the document to VRML format of the passed version and writes it to the given stream.
+") WriteDoc;
+		bool WriteDoc(const opencascade::handle<TDocStd_Document> & theDoc, std::ostream &OutValue, const double theScale);
 
 };
 

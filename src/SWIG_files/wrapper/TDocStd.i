@@ -44,14 +44,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdocstd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TDF_module.hxx>
 #include<CDF_module.hxx>
 #include<TCollection_module.hxx>
 #include<PCDM_module.hxx>
 #include<CDM_module.hxx>
 #include<Message_module.hxx>
-#include<TColStd_module.hxx>
 #include<Resource_module.hxx>
+#include<TDF_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -59,14 +58,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdocstd.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TDF.i
 %import CDF.i
 %import TCollection.i
 %import PCDM.i
 %import CDM.i
 %import Message.i
-%import TColStd.i
 %import Resource.i
+%import TDF.i
 
 %pythoncode {
 from enum import IntEnum
@@ -128,7 +126,6 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TDocStd_Application)
 %wrap_handle(TDocStd_ApplicationDelta)
 %wrap_handle(TDocStd_CompoundDelta)
 %wrap_handle(TDocStd_Document)
@@ -140,6 +137,8 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TDF_Label,TDF_IDMap>::Items;
+%ignore NCollection_DataMap<TDF_Label,TDF_IDMap>::KeyValues;
 %template(TDocStd_LabelIDMapDataMap) NCollection_DataMap<TDF_Label,TDF_IDMap>;
 %template(TDocStd_SequenceOfApplicationDelta) NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>>;
 
@@ -164,7 +163,6 @@ typedef NCollection_DataMap<TDF_Label, TDF_IDMap>::Iterator TDocStd_DataMapItera
 typedef NCollection_DataMap<TDF_Label, TDF_IDMap> TDocStd_LabelIDMapDataMap;
 typedef NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> TDocStd_SequenceOfApplicationDelta;
 typedef NCollection_Sequence<opencascade::handle<TDocStd_Document>> TDocStd_SequenceOfDocument;
-typedef TDocStd_XLink * TDocStd_XLinkPtr;
 /* end typedefs declaration */
 
 /****************
@@ -174,12 +172,12 @@ typedef TDocStd_XLink * TDocStd_XLinkPtr;
 class TDocStd {
 	public:
 		/****** TDocStd::IDList ******/
-		/****** md5 signature: 97de0b35f4f6abc04a631c65d32bacc4 ******/
+		/****** md5 signature: 13c09c8b61f14a9cf4c6ae6a05704f7d ******/
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: TDF_IDList
+anIDList: NCollection_List<Standard_GUID>
 
 Return
 -------
@@ -189,7 +187,7 @@ Description
 -----------
 specific GUID of this package ============================= Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
-		static void IDList(TDF_IDList & anIDList);
+		static void IDList(NCollection_List<Standard_GUID> & anIDList);
 
 };
 
@@ -285,7 +283,27 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDocStd_Application::GetDocument ******/
-		/****** md5 signature: 15b7beb5a9532b9cd3868298ccdb9245 ******/
+		/****** md5 signature: 6ad662a7c488d1f5a6326f119be077cd ******/
+		%feature("compactdefaultargs") GetDocument;
+		%feature("autodoc", "
+Parameters
+----------
+index: int
+
+Return
+-------
+opencascade::handle<TDocStd_Document>
+
+Description
+-----------
+Returns the document at the given 1-based index. The index is any integer between 1 and NbDocuments(). 
+Input parameter: index 1-based document index 
+Return: handle to the document.
+") GetDocument;
+		opencascade::handle<TDocStd_Document> GetDocument(const int index);
+
+		/****** TDocStd_Application::GetDocument ******/
+		/****** md5 signature: 20a853caa8d765bedfbd20f5c8f0d1d1 ******/
 		%feature("compactdefaultargs") GetDocument;
 		%feature("autodoc", "
 Parameters
@@ -299,12 +317,12 @@ None
 
 Description
 -----------
-Constructs the new document aDoc. aDoc is identified by the index index which is any integer between 1 and n where n is the number of documents returned by NbDocument. Example opencascade::handle<TDocStd_Application> anApp; if (!CafTest::Find(A)) return 1; opencascade::handle<TDocStd> aDoc; Standard_Integer nbdoc = anApp->NbDocuments(); for (Standard_Integer i = 1; i <= nbdoc; i++) { aApp->GetDocument(i,aDoc);.
+No available documentation.
 ") GetDocument;
-		void GetDocument(const Standard_Integer index, opencascade::handle<TDocStd_Document> & aDoc);
+		void GetDocument(const int index, opencascade::handle<TDocStd_Document> & aDoc);
 
 		/****** TDocStd_Application::InitDocument ******/
-		/****** md5 signature: cb8b1250bf5bfec47bac72c3724adc69 ******/
+		/****** md5 signature: 66a04f8e4f397c3ef1986cf636cfc014 ******/
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "
 Parameters
@@ -319,10 +337,10 @@ Description
 -----------
 Initialize the document aDoc for the applicative session. This virtual function is called by NewDocument and is to be redefined for each specific application. Modified flag (different of disk version) ============= to open/save a document =======================.
 ") InitDocument;
-		virtual void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
+		void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
 
 		/****** TDocStd_Application::IsDriverLoaded ******/
-		/****** md5 signature: ce5001e98f2a57f66a3f7e6514b3374d ******/
+		/****** md5 signature: ba360b9a1098da62b9dc97b892c92175 ******/
 		%feature("compactdefaultargs") IsDriverLoaded;
 		%feature("autodoc", "Return
 -------
@@ -332,10 +350,10 @@ Description
 -----------
 Check if meta data driver was successfully loaded by the application constructor.
 ") IsDriverLoaded;
-		Standard_Boolean IsDriverLoaded();
+		bool IsDriverLoaded();
 
 		/****** TDocStd_Application::IsInSession ******/
-		/****** md5 signature: 3d147ee90a50e9855b5c982d010e4c9f ******/
+		/****** md5 signature: 40d96b80418448f3950dbe2c6d442836 ******/
 		%feature("compactdefaultargs") IsInSession;
 		%feature("autodoc", "
 Parameters
@@ -348,12 +366,12 @@ int
 
 Description
 -----------
-Returns an index for the document found in the path path in this applicative session. If the returned value is 0, the document is not present in the applicative session. This method can be used for the interactive part of an application. For instance, on a call to Open, the document to be opened may already be in memory. IsInSession checks to see if this is the case. Open can be made to depend on the value of the index returned: if IsInSession returns 0, the document is opened; if it returns another value, a message is displayed asking the user if he wants to override the version of the document in memory. Example: Standard_Integer insession = A->IsInSession(aDoc); if (insession > 0) { std::cout << 'document ' << insession << ' is already in session' << std::endl; return 0; }.
+Returns an index for the document found in the path path in this applicative session. If the returned value is 0, the document is not present in the applicative session. This method can be used for the interactive part of an application. For instance, on a call to Open, the document to be opened may already be in memory. IsInSession checks to see if this is the case. Open can be made to depend on the value of the index returned: if IsInSession returns 0, the document is opened; if it returns another value, a message is displayed asking the user if he wants to override the version of the document in memory. Example: int insession = A->IsInSession(aDoc); if (insession > 0) { std::cout << 'document ' << insession << ' is already in session' << std::endl; return 0; }.
 ") IsInSession;
-		Standard_Integer IsInSession(TCollection_ExtendedString path);
+		int IsInSession(TCollection_ExtendedString path);
 
 		/****** TDocStd_Application::NbDocuments ******/
-		/****** md5 signature: 962bf94556b581ec6396ebefd0c99d4c ******/
+		/****** md5 signature: f4e3be4ea493b3903297f9c0d60b8213 ******/
 		%feature("compactdefaultargs") NbDocuments;
 		%feature("autodoc", "Return
 -------
@@ -363,10 +381,10 @@ Description
 -----------
 returns the number of documents handled by the current applicative session.
 ") NbDocuments;
-		Standard_Integer NbDocuments();
+		int NbDocuments();
 
 		/****** TDocStd_Application::NewDocument ******/
-		/****** md5 signature: 286edb8ff55901567cc19085406b6fa3 ******/
+		/****** md5 signature: 4e6d1e005ee65d0d4ad298781036f3d9 ******/
 		%feature("compactdefaultargs") NewDocument;
 		%feature("autodoc", "
 Parameters
@@ -382,7 +400,7 @@ Description
 -----------
 Constructs the empty new document aDoc. This document will have the format format. If InitDocument is redefined for a specific application, the new document is handled by the applicative session.
 ") NewDocument;
-		virtual void NewDocument(TCollection_ExtendedString format, opencascade::handle<CDM_Document> & aDoc);
+		void NewDocument(TCollection_ExtendedString format, opencascade::handle<CDM_Document> & aDoc);
 
 		/****** TDocStd_Application::NewDocument ******/
 		/****** md5 signature: 304cba09d9f9b321dcbffa19f8ee14a3 ******/
@@ -552,12 +570,12 @@ Return: reading status.
 		PCDM_ReaderStatus Open(std::istream & theIStream, opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** TDocStd_Application::ReadingFormats ******/
-		/****** md5 signature: 6dff661583c284b08e2b917089276643 ******/
+		/****** md5 signature: 534951cc8aa1d21d0aec20a29634b8d3 ******/
 		%feature("compactdefaultargs") ReadingFormats;
 		%feature("autodoc", "
 Parameters
 ----------
-theFormats: TColStd_SequenceOfAsciiString
+theFormats: NCollection_Sequence<TCollection_AsciiString>
 
 Return
 -------
@@ -568,10 +586,10 @@ Description
 Returns the sequence of reading formats supported by the application. //! 
 Parameter theFormats - sequence of reading formats. Output parameter.
 ") ReadingFormats;
-		void ReadingFormats(TColStd_SequenceOfAsciiString & theFormats);
+		void ReadingFormats(NCollection_Sequence<TCollection_AsciiString> & theFormats);
 
 		/****** TDocStd_Application::Resources ******/
-		/****** md5 signature: 69ca16cd0321dc8bb777384aea250771 ******/
+		/****** md5 signature: 7dc445d1d690abf3f5b8ce090a2aae7d ******/
 		%feature("compactdefaultargs") Resources;
 		%feature("autodoc", "Return
 -------
@@ -581,20 +599,20 @@ Description
 -----------
 Returns resource manager defining supported persistent formats. //! Default implementation loads resource file with name ResourcesName(), unless field myResources is already initialized (either by previous call or in any other way). //! The resource manager should define: //! * Format name for each file extension supported: - [Extension].FileFormat: [Format] //! * For each format supported (as returned by Formats()), its extension, description string, and (when applicable) GUIDs of storage and retrieval plugins: - [Format].Description: [Description] - [Format].FileExtension: [Extension] - [Format].RetrievalPlugin: [GUID] (optional) - [Format].StoragePlugin: [GUID] (optional).
 ") Resources;
-		virtual opencascade::handle<Resource_Manager> Resources();
+		opencascade::handle<Resource_Manager> Resources();
 
 		/****** TDocStd_Application::ResourcesName ******/
-		/****** md5 signature: bd72e341abd0de3065c0732583c9ce29 ******/
+		/****** md5 signature: 829ebe373ae9aa62b5c4ab32c89fb480 ******/
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of the file containing the resources of this application, for support of legacy method of loading formats data from resource files. //! Method DefineFormat() can be used to define all necessary parameters explicitly without actually using resource files. //! In a resource file, the application associates the schema name of the document with the storage and retrieval plug-ins that are to be loaded for each document. On retrieval, the application reads the schema name in the heading of the CSF file and loads the plug-in indicated in the resource file. This plug-in instantiates the actual driver for transient-persistent conversion. Your application can bring this process into play by defining a class which inherits CDF_Application and redefines the function which returns the appropriate resources file. At this point, the function Retrieve and the class CDF_Store can be called. This allows you to deal with storage and retrieval of - as well as copying and pasting - documents. To implement a class like this, several virtual functions should be redefined. In particular, you must redefine the abstract function Resources inherited from the superclass CDM_Application. //! Default implementation returns empty string.
 ") ResourcesName;
-		virtual Standard_CString ResourcesName();
+		virtual const char * ResourcesName();
 
 		/****** TDocStd_Application::Save ******/
 		/****** md5 signature: b571dab0fb3d3e07b3e8150d22309a53 ******/
@@ -651,7 +669,7 @@ PCDM_StoreStatus
 
 Description
 -----------
-Save the active document in the file <name> in the path <path> ; o verwrites the file if it already exists.
+Save the active document in the file <name> in the path <path>. overwrites the file if it already exists.
 ") SaveAs;
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString path, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -691,7 +709,7 @@ PCDM_StoreStatus
 
 Description
 -----------
-Save the active document in the file <name> in the path <path> . overwrite the file if it already exist.
+Save the active document in the file <name> in the path <path>. overwrite the file if it already exists.
 ") SaveAs;
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString path, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -716,12 +734,12 @@ Save theDoc TO standard SEEKABLE stream theOStream. the stream should support SE
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, std::ostream &OutValue, TCollection_ExtendedString & theStatusMessage, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** TDocStd_Application::WritingFormats ******/
-		/****** md5 signature: a5407beb640b0ebe68c0c3306feeeddb ******/
+		/****** md5 signature: 0e6b080214c847ce818530331ad15a0d ******/
 		%feature("compactdefaultargs") WritingFormats;
 		%feature("autodoc", "
 Parameters
 ----------
-theFormats: TColStd_SequenceOfAsciiString
+theFormats: NCollection_Sequence<TCollection_AsciiString>
 
 Return
 -------
@@ -732,12 +750,10 @@ Description
 Returns the sequence of writing formats supported by the application. //! 
 Parameter theFormats - sequence of writing formats. Output parameter.
 ") WritingFormats;
-		void WritingFormats(TColStd_SequenceOfAsciiString & theFormats);
+		void WritingFormats(NCollection_Sequence<TCollection_AsciiString> & theFormats);
 
 };
 
-
-%make_alias(TDocStd_Application)
 
 %extend TDocStd_Application {
 	%pythoncode {
@@ -781,17 +797,17 @@ No available documentation.
 		void Dump(std::ostream &OutValue);
 
 		/****** TDocStd_ApplicationDelta::GetDocuments ******/
-		/****** md5 signature: 3949b6234d6a0eb9778487caa2291ad4 ******/
+		/****** md5 signature: 9e22518b220abc419b8c2a6b79b25ae3 ******/
 		%feature("compactdefaultargs") GetDocuments;
 		%feature("autodoc", "Return
 -------
-TDocStd_SequenceOfDocument
+NCollection_Sequence<opencascade::handle<TDocStd_Document>>
 
 Description
 -----------
 No available documentation.
 ") GetDocuments;
-		TDocStd_SequenceOfDocument & GetDocuments();
+		NCollection_Sequence<opencascade::handle<TDocStd_Document>> & GetDocuments();
 
 		/****** TDocStd_ApplicationDelta::GetName ******/
 		/****** md5 signature: 3c50eb9eaf9ae32c5f28a54596fff8d5 ******/
@@ -883,7 +899,7 @@ No available documentation.
 		 TDocStd_Context();
 
 		/****** TDocStd_Context::ModifiedReferences ******/
-		/****** md5 signature: 224afee24fa4f6d3b2a9839d9ee6f541 ******/
+		/****** md5 signature: e65edc5452fc537b8b2358cbf107fc00 ******/
 		%feature("compactdefaultargs") ModifiedReferences;
 		%feature("autodoc", "Return
 -------
@@ -893,10 +909,10 @@ Description
 -----------
 No available documentation.
 ") ModifiedReferences;
-		Standard_Boolean ModifiedReferences();
+		bool ModifiedReferences();
 
 		/****** TDocStd_Context::SetModifiedReferences ******/
-		/****** md5 signature: 240dac990b28a5adfbfe5943cc9dd4c9 ******/
+		/****** md5 signature: 346e429354f1eecaf2008c6bf32d0cb5 ******/
 		%feature("compactdefaultargs") SetModifiedReferences;
 		%feature("autodoc", "
 Parameters
@@ -911,7 +927,7 @@ Description
 -----------
 No available documentation.
 ") SetModifiedReferences;
-		void SetModifiedReferences(const Standard_Boolean Mod);
+		void SetModifiedReferences(const bool Mod);
 
 };
 
@@ -1034,7 +1050,7 @@ Remove all stored Undos and Redos.
 		void ClearUndos();
 
 		/****** TDocStd_Document::CommitCommand ******/
-		/****** md5 signature: faa383479ebff95ab2d1b0ab2a6c6947 ******/
+		/****** md5 signature: 055097f5015e33bae65a77d0679b408c ******/
 		%feature("compactdefaultargs") CommitCommand;
 		%feature("autodoc", "Return
 -------
@@ -1044,7 +1060,7 @@ Description
 -----------
 Commits documents transactions and fills the transaction manager with documents that have been changed during the transaction. If no command transaction is open, nothing is done. Returns True if a new delta has been added to myUndos.
 ") CommitCommand;
-		Standard_Boolean CommitCommand();
+		bool CommitCommand();
 
 		/****** TDocStd_Document::CurrentStorageFormatVersion ******/
 		/****** md5 signature: 41d846be0884fc722f98ab0cecb47e30 ******/
@@ -1081,7 +1097,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TDocStd_Document::EmptyLabelsSavingMode ******/
-		/****** md5 signature: ebbf4e01e7bb5a968c5adb29c08e5c61 ******/
+		/****** md5 signature: afcf74960c371949b29736ebe5c71810 ******/
 		%feature("compactdefaultargs") EmptyLabelsSavingMode;
 		%feature("autodoc", "Return
 -------
@@ -1091,7 +1107,7 @@ Description
 -----------
 Returns saving mode for empty labels.
 ") EmptyLabelsSavingMode;
-		Standard_Boolean EmptyLabelsSavingMode();
+		bool EmptyLabelsSavingMode();
 
 		/****** TDocStd_Document::Get ******/
 		/****** md5 signature: 77e2a849942dfb62d55ba8818957eae5 ******/
@@ -1112,7 +1128,7 @@ Will Abort any execution, clear fields returns the document which contains <L>. 
 		static opencascade::handle<TDocStd_Document> Get(const TDF_Label & L);
 
 		/****** TDocStd_Document::GetAvailableRedos ******/
-		/****** md5 signature: 6d7c07e798e1b111df27b9fd7352d234 ******/
+		/****** md5 signature: e64e4ed3bb70a3ae3c04ff4308e5bd3b ******/
 		%feature("compactdefaultargs") GetAvailableRedos;
 		%feature("autodoc", "Return
 -------
@@ -1122,10 +1138,10 @@ Description
 -----------
 Returns the number of redos stored in this document. If this figure is greater than 0, the method Redo can be used.
 ") GetAvailableRedos;
-		Standard_Integer GetAvailableRedos();
+		int GetAvailableRedos();
 
 		/****** TDocStd_Document::GetAvailableUndos ******/
-		/****** md5 signature: a9fe7db4eaa69142eaad134d9efb1510 ******/
+		/****** md5 signature: d3b6bac1351fbc35d989ff9edad4eb83 ******/
 		%feature("compactdefaultargs") GetAvailableUndos;
 		%feature("autodoc", "Return
 -------
@@ -1135,7 +1151,7 @@ Description
 -----------
 Returns the number of undos stored in this document. If this figure is greater than 0, the method Undo can be used.
 ") GetAvailableUndos;
-		Standard_Integer GetAvailableUndos();
+		int GetAvailableUndos();
 
 		/****** TDocStd_Document::GetData ******/
 		/****** md5 signature: 31c5fbe37dd19f7a9a8b8efbf6ab68ed ******/
@@ -1151,17 +1167,17 @@ No available documentation.
 		opencascade::handle<TDF_Data> GetData();
 
 		/****** TDocStd_Document::GetModified ******/
-		/****** md5 signature: e0b00984d11d90f6ebccba55f2bedac9 ******/
+		/****** md5 signature: f3847d1e108476e2883e984cdd777f7f ******/
 		%feature("compactdefaultargs") GetModified;
 		%feature("autodoc", "Return
 -------
-TDF_LabelMap
+NCollection_Map<TDF_Label>
 
 Description
 -----------
 Returns the labels which have been modified in this document.
 ") GetModified;
-		const TDF_LabelMap & GetModified();
+		const NCollection_Map<TDF_Label> & GetModified();
 
 		/****** TDocStd_Document::GetName ******/
 		/****** md5 signature: fccd7cb624ceb6d77e85524978a24f14 ******/
@@ -1190,20 +1206,20 @@ returns the OS path of the file, in which one <self> is saved. Raise an exceptio
 		TCollection_ExtendedString GetPath();
 
 		/****** TDocStd_Document::GetRedos ******/
-		/****** md5 signature: a17c398f7ad847f1311a76088a19db6a ******/
+		/****** md5 signature: ac751514b78e86d321d4f77d0a7bc2ad ******/
 		%feature("compactdefaultargs") GetRedos;
 		%feature("autodoc", "Return
 -------
-TDF_DeltaList
+NCollection_List<opencascade::handle<TDF_Delta>>
 
 Description
 -----------
 No available documentation.
 ") GetRedos;
-		const TDF_DeltaList & GetRedos();
+		const NCollection_List<opencascade::handle<TDF_Delta>> & GetRedos();
 
 		/****** TDocStd_Document::GetSavedTime ******/
-		/****** md5 signature: 4d6497e8e59fc456a92bd8fb1cb73c06 ******/
+		/****** md5 signature: 5a334d860bcab730d09889ff87eab9d5 ******/
 		%feature("compactdefaultargs") GetSavedTime;
 		%feature("autodoc", "Return
 -------
@@ -1213,10 +1229,10 @@ Description
 -----------
 Returns value of <mySavedTime> to be used later in SetSavedTime().
 ") GetSavedTime;
-		Standard_Integer GetSavedTime();
+		int GetSavedTime();
 
 		/****** TDocStd_Document::GetUndoLimit ******/
-		/****** md5 signature: 4d03b93f640587c3abcd1bd1d5a774a9 ******/
+		/****** md5 signature: 9eb3f9f5d20c446c1d3067dc46ddd01c ******/
 		%feature("compactdefaultargs") GetUndoLimit;
 		%feature("autodoc", "Return
 -------
@@ -1226,23 +1242,23 @@ Description
 -----------
 The current limit on the number of undos.
 ") GetUndoLimit;
-		Standard_Integer GetUndoLimit();
+		int GetUndoLimit();
 
 		/****** TDocStd_Document::GetUndos ******/
-		/****** md5 signature: a92983c53fbaea20c65e729b47250791 ******/
+		/****** md5 signature: 477773c64b86fe283fe948e806d1945e ******/
 		%feature("compactdefaultargs") GetUndos;
 		%feature("autodoc", "Return
 -------
-TDF_DeltaList
+NCollection_List<opencascade::handle<TDF_Delta>>
 
 Description
 -----------
 No available documentation.
 ") GetUndos;
-		const TDF_DeltaList & GetUndos();
+		const NCollection_List<opencascade::handle<TDF_Delta>> & GetUndos();
 
 		/****** TDocStd_Document::HasOpenCommand ******/
-		/****** md5 signature: dd69c57ebd4821e931afe0accf5d3235 ******/
+		/****** md5 signature: 5601cfe5457870d35a28da8037b39545 ******/
 		%feature("compactdefaultargs") HasOpenCommand;
 		%feature("autodoc", "Return
 -------
@@ -1252,10 +1268,10 @@ Description
 -----------
 returns True if a Command transaction is open in the current .
 ") HasOpenCommand;
-		Standard_Boolean HasOpenCommand();
+		bool HasOpenCommand();
 
 		/****** TDocStd_Document::InitDeltaCompaction ******/
-		/****** md5 signature: 77faa00b1c44f05079d8166afa89b7e2 ******/
+		/****** md5 signature: edc4c4424273deeb1b9ba365ffe4d181 ******/
 		%feature("compactdefaultargs") InitDeltaCompaction;
 		%feature("autodoc", "Return
 -------
@@ -1265,10 +1281,10 @@ Description
 -----------
 Initializes the procedure of delta compaction Returns false if there is no delta to compact Marks the last delta as a 'from' delta.
 ") InitDeltaCompaction;
-		Standard_Boolean InitDeltaCompaction();
+		bool InitDeltaCompaction();
 
 		/****** TDocStd_Document::IsChanged ******/
-		/****** md5 signature: c6ef5df821d55ba9601e2f39be013961 ******/
+		/****** md5 signature: 07baa788c44caed0eee27ab4602e54f8 ******/
 		%feature("compactdefaultargs") IsChanged;
 		%feature("autodoc", "Return
 -------
@@ -1278,10 +1294,10 @@ Description
 -----------
 returns True if document differs from the state of last saving. this method have to be called only working in the transaction mode.
 ") IsChanged;
-		Standard_Boolean IsChanged();
+		bool IsChanged();
 
 		/****** TDocStd_Document::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1291,10 +1307,10 @@ Description
 -----------
 Returns True if the main label has no attributes.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDocStd_Document::IsNestedTransactionMode ******/
-		/****** md5 signature: 1efb73f5e84074596fa47f1cfe63ee41 ******/
+		/****** md5 signature: 53d847f8482f62b3e7d65e4a38035e18 ******/
 		%feature("compactdefaultargs") IsNestedTransactionMode;
 		%feature("autodoc", "Return
 -------
@@ -1302,12 +1318,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if mode is set.
+Returns true if mode is set.
 ") IsNestedTransactionMode;
-		Standard_Boolean IsNestedTransactionMode();
+		bool IsNestedTransactionMode();
 
 		/****** TDocStd_Document::IsSaved ******/
-		/****** md5 signature: a05df8be7169b3a9328ebaa74888756c ******/
+		/****** md5 signature: e88d3e43ff9e6b1c1ceb82140db8f296 ******/
 		%feature("compactdefaultargs") IsSaved;
 		%feature("autodoc", "Return
 -------
@@ -1317,10 +1333,10 @@ Description
 -----------
 the document is saved in a file.
 ") IsSaved;
-		Standard_Boolean IsSaved();
+		bool IsSaved();
 
 		/****** TDocStd_Document::IsValid ******/
-		/****** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ******/
+		/****** md5 signature: f11036be78d4c26ffdc54c2415b67292 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -1330,7 +1346,7 @@ Description
 -----------
 Returns False if the document has been modified but not recomputed.
 ") IsValid;
-		Standard_Boolean IsValid();
+		bool IsValid();
 
 		/****** TDocStd_Document::Main ******/
 		/****** md5 signature: d3bdeedf7e55e8ec4190ba1b192424e7 ******/
@@ -1346,7 +1362,7 @@ Returns the main label in this data framework. By definition, this is the label 
 		TDF_Label Main();
 
 		/****** TDocStd_Document::ModificationMode ******/
-		/****** md5 signature: 19d64027addb7f66c90a4e97325ce41b ******/
+		/****** md5 signature: 0de7fbadb1b2d08c8af48ce787e2b9f8 ******/
 		%feature("compactdefaultargs") ModificationMode;
 		%feature("autodoc", "Return
 -------
@@ -1356,7 +1372,7 @@ Description
 -----------
 returns True if changes allowed only inside transactions.
 ") ModificationMode;
-		Standard_Boolean ModificationMode();
+		bool ModificationMode();
 
 		/****** TDocStd_Document::NewCommand ******/
 		/****** md5 signature: 32f8f9d54085e00883022af8c40334a2 ******/
@@ -1385,7 +1401,7 @@ Opens a new command transaction in this document. You can use HasOpenCommand to 
 		void OpenCommand();
 
 		/****** TDocStd_Document::PerformDeltaCompaction ******/
-		/****** md5 signature: c672e4672cd7849522ba54bb9983cad3 ******/
+		/****** md5 signature: db30943767a5079619e4a593ced06464 ******/
 		%feature("compactdefaultargs") PerformDeltaCompaction;
 		%feature("autodoc", "Return
 -------
@@ -1395,7 +1411,7 @@ Description
 -----------
 Performs the procedure of delta compaction Makes all deltas starting from 'from' delta till the last one to be one delta.
 ") PerformDeltaCompaction;
-		Standard_Boolean PerformDeltaCompaction();
+		bool PerformDeltaCompaction();
 
 		/****** TDocStd_Document::PurgeModified ******/
 		/****** md5 signature: 8ea2d8d4e2c5c8c84506ff3ff3412d40 ******/
@@ -1424,7 +1440,7 @@ Recompute if the document was not valid and propagate the recorded modification.
 		void Recompute();
 
 		/****** TDocStd_Document::Redo ******/
-		/****** md5 signature: 25a8729b05a3d55e4dea49595855f14b ******/
+		/****** md5 signature: 17ddabb8f8042e3ad5b6cc494ab2a7ef ******/
 		%feature("compactdefaultargs") Redo;
 		%feature("autodoc", "Return
 -------
@@ -1434,7 +1450,7 @@ Description
 -----------
 Will REDO one step, returns False if no redo was done (Redos == 0). Otherwise, true is returned, and one step in the list of redoes is done again.
 ") Redo;
-		Standard_Boolean Redo();
+		bool Redo();
 
 		/****** TDocStd_Document::RemoveFirstUndo ******/
 		/****** md5 signature: 8d230c6a572865285db038c1c0910766 ******/
@@ -1468,7 +1484,7 @@ No available documentation.
 		void SetData(const opencascade::handle<TDF_Data> & data);
 
 		/****** TDocStd_Document::SetEmptyLabelsSavingMode ******/
-		/****** md5 signature: ee194820db474fc612626ff3eef85f45 ******/
+		/****** md5 signature: 69e71b339b9be305ed60643d9a2bd128 ******/
 		%feature("compactdefaultargs") SetEmptyLabelsSavingMode;
 		%feature("autodoc", "
 Parameters
@@ -1481,12 +1497,12 @@ None
 
 Description
 -----------
-Sets saving mode for empty labels. If Standard_True, empty labels will be saved.
+Sets saving mode for empty labels. If true, empty labels will be saved.
 ") SetEmptyLabelsSavingMode;
-		void SetEmptyLabelsSavingMode(const Standard_Boolean isAllowed);
+		void SetEmptyLabelsSavingMode(const bool isAllowed);
 
 		/****** TDocStd_Document::SetModificationMode ******/
-		/****** md5 signature: f670168c2039d1fa00cc4c8fedbbda89 ******/
+		/****** md5 signature: 9b617ba206591da9e3f35bab2675eb3c ******/
 		%feature("compactdefaultargs") SetModificationMode;
 		%feature("autodoc", "
 Parameters
@@ -1501,7 +1517,7 @@ Description
 -----------
 if theTransactionOnly is True changes is denied outside transactions.
 ") SetModificationMode;
-		void SetModificationMode(const Standard_Boolean theTransactionOnly);
+		void SetModificationMode(const bool theTransactionOnly);
 
 		/****** TDocStd_Document::SetModified ******/
 		/****** md5 signature: de33735160e5da48a69bcd5ba99fcfd2 ******/
@@ -1522,12 +1538,12 @@ Notify the label as modified, the Document becomes UnValid. returns True if <L> 
 		void SetModified(const TDF_Label & L);
 
 		/****** TDocStd_Document::SetNestedTransactionMode ******/
-		/****** md5 signature: f79f8b65409bf3f9c2580d96405aa86c ******/
+		/****** md5 signature: 41b71d7262cca0f02e0e2b40297b4cd9 ******/
 		%feature("compactdefaultargs") SetNestedTransactionMode;
 		%feature("autodoc", "
 Parameters
 ----------
-isAllowed: bool (optional, default to Standard_True)
+isAllowed: bool (optional, default to true)
 
 Return
 -------
@@ -1535,9 +1551,9 @@ None
 
 Description
 -----------
-Sets nested transaction mode if isAllowed == Standard_True.
+Sets nested transaction mode if isAllowed == true.
 ") SetNestedTransactionMode;
-		void SetNestedTransactionMode(const Standard_Boolean isAllowed = Standard_True);
+		void SetNestedTransactionMode(const bool isAllowed = true);
 
 		/****** TDocStd_Document::SetSaved ******/
 		/****** md5 signature: 014ee06619c79447bd1c1c60537c8358 ******/
@@ -1553,7 +1569,7 @@ This method have to be called to show document that it has been saved.
 		void SetSaved();
 
 		/****** TDocStd_Document::SetSavedTime ******/
-		/****** md5 signature: 3372eae5a5d0d58452934202ff83c7cc ******/
+		/****** md5 signature: a9419601da2d5ee1619161cb71f13722 ******/
 		%feature("compactdefaultargs") SetSavedTime;
 		%feature("autodoc", "
 Parameters
@@ -1568,10 +1584,10 @@ Description
 -----------
 Say to document what it is not saved. Use value, returned earlier by GetSavedTime().
 ") SetSavedTime;
-		void SetSavedTime(const Standard_Integer theTime);
+		void SetSavedTime(const int theTime);
 
 		/****** TDocStd_Document::SetUndoLimit ******/
-		/****** md5 signature: a11fa9e33e71f4e544c1b0655a8f4f2f ******/
+		/****** md5 signature: e70a1413e35b18ca6c49c215747470eb ******/
 		%feature("compactdefaultargs") SetUndoLimit;
 		%feature("autodoc", "
 Parameters
@@ -1586,10 +1602,10 @@ Description
 -----------
 Set the limit on the number of Undo Delta stored 0 will disable Undo on the document A negative value means no limit. Note that by default Undo is disabled. Enabling it will take effect with the next call to NewCommand. Of course this limit is the same for Redo.
 ") SetUndoLimit;
-		void SetUndoLimit(const Standard_Integer L);
+		void SetUndoLimit(const int L);
 
 		/****** TDocStd_Document::StorageFormat ******/
-		/****** md5 signature: f4ddc2d3ada784edaf0395475d9df359 ******/
+		/****** md5 signature: 0ad27aec4b782854bf3d1f127dd20271 ******/
 		%feature("compactdefaultargs") StorageFormat;
 		%feature("autodoc", "Return
 -------
@@ -1599,7 +1615,7 @@ Description
 -----------
 No available documentation.
 ") StorageFormat;
-		virtual TCollection_ExtendedString StorageFormat();
+		TCollection_ExtendedString StorageFormat();
 
 		/****** TDocStd_Document::StorageFormatVersion ******/
 		/****** md5 signature: b49a4fe8d3ebc03aaa9fc51a5634cc04 ******/
@@ -1615,7 +1631,7 @@ Returns version of the format to be used to store the document.
 		TDocStd_FormatVersion StorageFormatVersion();
 
 		/****** TDocStd_Document::Undo ******/
-		/****** md5 signature: 95113786d46edb519ce9957bac4f72f7 ******/
+		/****** md5 signature: 5950c1df5908636857507b1be28f24a7 ******/
 		%feature("compactdefaultargs") Undo;
 		%feature("autodoc", "Return
 -------
@@ -1625,17 +1641,17 @@ Description
 -----------
 Will UNDO one step, returns False if no undo was done (Undos == 0). Otherwise, true is returned and one step in the list of undoes is undone.
 ") Undo;
-		Standard_Boolean Undo();
+		bool Undo();
 
 		/****** TDocStd_Document::Update ******/
-		/****** md5 signature: 97c07ea29dd5305b368cebf252ceb33b ******/
+		/****** md5 signature: 562ac1a6513ed561b12c4c9b89b1fe80 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
 ----------
 aToDocument: CDM_Document
 aReferenceIdentifier: int
-aModifContext: Standard_Address
+aModifContext: void *
 
 Return
 -------
@@ -1645,7 +1661,7 @@ Description
 -----------
 This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString. Update the document by propagation ================================== Update the document from internal stored modifications. If you want to undoing this operation, please call NewCommand before. to change format (advanced programming) ================.
 ") Update;
-		virtual void Update(const opencascade::handle<CDM_Document> & aToDocument, const Standard_Integer aReferenceIdentifier, const Standard_Address aModifContext);
+		void Update(const opencascade::handle<CDM_Document> & aToDocument, const int aReferenceIdentifier, void * const aModifContext);
 
 		/****** TDocStd_Document::UpdateReferences ******/
 		/****** md5 signature: a48237fc53570334df18734e1672c38a ******/
@@ -1695,7 +1711,7 @@ No available documentation.
 		 TDocStd_Modified();
 
 		/****** TDocStd_Modified::Add ******/
-		/****** md5 signature: 86383525d25c987b354e36fad576210c ******/
+		/****** md5 signature: f7ce14c905c53d6c7fac85116fad12d5 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1710,10 +1726,10 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static Standard_Boolean Add(const TDF_Label & alabel);
+		static bool Add(const TDF_Label & alabel);
 
 		/****** TDocStd_Modified::AddLabel ******/
-		/****** md5 signature: dcf184d5ea52ec11f1c30bdbbba1bd57 ******/
+		/****** md5 signature: 059f432426ec5f7c2398615f33be535e ******/
 		%feature("compactdefaultargs") AddLabel;
 		%feature("autodoc", "
 Parameters
@@ -1728,7 +1744,7 @@ Description
 -----------
 add <L> as modified.
 ") AddLabel;
-		Standard_Boolean AddLabel(const TDF_Label & L);
+		bool AddLabel(const TDF_Label & L);
 
 		/****** TDocStd_Modified::Clear ******/
 		/****** md5 signature: 9e93a4d4f3d5f8790d097e1fff43e3da ******/
@@ -1762,7 +1778,7 @@ No available documentation.
 		void Clear();
 
 		/****** TDocStd_Modified::Contains ******/
-		/****** md5 signature: 0dd6e3d57c4d3da88b25f8fac0dd5eb4 ******/
+		/****** md5 signature: d930ea8aa66fbdfda6a260347a9d54b8 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -1777,10 +1793,10 @@ Description
 -----------
 No available documentation.
 ") Contains;
-		static Standard_Boolean Contains(const TDF_Label & alabel);
+		static bool Contains(const TDF_Label & alabel);
 
 		/****** TDocStd_Modified::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1794,10 +1810,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TDocStd_Modified::Get ******/
-		/****** md5 signature: bd123f000340e7375ce09c289c0daf49 ******/
+		/****** md5 signature: 91e83ff97625d80b2c1b93fbaa9a9999 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "
 Parameters
@@ -1806,26 +1822,26 @@ access: TDF_Label
 
 Return
 -------
-TDF_LabelMap
+NCollection_Map<TDF_Label>
 
 Description
 -----------
 if <IsEmpty> raise an exception.
 ") Get;
-		static const TDF_LabelMap & Get(const TDF_Label & access);
+		static const NCollection_Map<TDF_Label> & Get(const TDF_Label & access);
 
 		/****** TDocStd_Modified::Get ******/
-		/****** md5 signature: 7648f1c097b7b0c852cc4f0bb24dcf2c ******/
+		/****** md5 signature: b8344649f4faf15165151e88dfdc67ca ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
-TDF_LabelMap
+NCollection_Map<TDF_Label>
 
 Description
 -----------
 returns modified label map.
 ") Get;
-		const TDF_LabelMap & Get();
+		const NCollection_Map<TDF_Label> & Get();
 
 		/****** TDocStd_Modified::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -1841,7 +1857,7 @@ Modified methods ================.
 		static const Standard_GUID & GetID();
 
 		/****** TDocStd_Modified::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -1854,7 +1870,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDocStd_Modified::IsEmpty ******/
-		/****** md5 signature: 4ea2b484127f0664f85494cb4d8b0352 ******/
+		/****** md5 signature: 630b2afb15d5d853c6b428a857974484 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "
 Parameters
@@ -1869,10 +1885,10 @@ Description
 -----------
 API class methods =================.
 ") IsEmpty;
-		static Standard_Boolean IsEmpty(const TDF_Label & access);
+		static bool IsEmpty(const TDF_Label & access);
 
 		/****** TDocStd_Modified::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1882,10 +1898,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TDocStd_Modified::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1898,7 +1914,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDocStd_Modified::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -1917,7 +1933,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDocStd_Modified::Remove ******/
-		/****** md5 signature: 743b4afbaae6706eb55d9985c7d5b2ba ******/
+		/****** md5 signature: 8eb61ea87ed5752f380f3eac98e6bd3c ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -1932,10 +1948,10 @@ Description
 -----------
 No available documentation.
 ") Remove;
-		static Standard_Boolean Remove(const TDF_Label & alabel);
+		static bool Remove(const TDF_Label & alabel);
 
 		/****** TDocStd_Modified::RemoveLabel ******/
-		/****** md5 signature: 0dc39faec3559dcae42899b7e5ef40ff ******/
+		/****** md5 signature: 5106f34b8fbd5f480421d8c8367329ad ******/
 		%feature("compactdefaultargs") RemoveLabel;
 		%feature("autodoc", "
 Parameters
@@ -1950,10 +1966,10 @@ Description
 -----------
 remove <L> as modified.
 ") RemoveLabel;
-		Standard_Boolean RemoveLabel(const TDF_Label & L);
+		bool RemoveLabel(const TDF_Label & L);
 
 		/****** TDocStd_Modified::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2057,7 +2073,7 @@ Clears undos in the manager and in documents.
 		void ClearUndos();
 
 		/****** TDocStd_MultiTransactionManager::CommitCommand ******/
-		/****** md5 signature: faa383479ebff95ab2d1b0ab2a6c6947 ******/
+		/****** md5 signature: 055097f5015e33bae65a77d0679b408c ******/
 		%feature("compactdefaultargs") CommitCommand;
 		%feature("autodoc", "Return
 -------
@@ -2067,10 +2083,10 @@ Description
 -----------
 Commits transaction in all documents and fills the transaction manager with the documents that have been changed during the transaction. Returns True if new data has been added to myUndos. NOTE: All nested transactions in the documents will be committed.
 ") CommitCommand;
-		Standard_Boolean CommitCommand();
+		bool CommitCommand();
 
 		/****** TDocStd_MultiTransactionManager::CommitCommand ******/
-		/****** md5 signature: d693105a187093a1581df589429f5d07 ******/
+		/****** md5 signature: d452da2ed4a2dcbd59f0cf3c58b37755 ******/
 		%feature("compactdefaultargs") CommitCommand;
 		%feature("autodoc", "
 Parameters
@@ -2085,20 +2101,20 @@ Description
 -----------
 Makes the same steps as the previous function but defines the name for transaction. Returns True if new data has been added to myUndos.
 ") CommitCommand;
-		Standard_Boolean CommitCommand(TCollection_ExtendedString theName);
+		bool CommitCommand(TCollection_ExtendedString theName);
 
 		/****** TDocStd_MultiTransactionManager::Documents ******/
-		/****** md5 signature: 65ccd54a293a56a7b15c353e5c466919 ******/
+		/****** md5 signature: 7764ac0e899d0acd6e882356adbb0ffa ******/
 		%feature("compactdefaultargs") Documents;
 		%feature("autodoc", "Return
 -------
-TDocStd_SequenceOfDocument
+NCollection_Sequence<opencascade::handle<TDocStd_Document>>
 
 Description
 -----------
 Returns the added documents to the transaction manager.
 ") Documents;
-		const TDocStd_SequenceOfDocument & Documents();
+		const NCollection_Sequence<opencascade::handle<TDocStd_Document>> & Documents();
 
 		/****** TDocStd_MultiTransactionManager::DumpTransaction ******/
 		/****** md5 signature: 4eb314c9880f16b84a5b19db7c403e6c ******/
@@ -2118,33 +2134,33 @@ Dumps transactions in undos and redos.
 		void DumpTransaction(std::ostream &OutValue);
 
 		/****** TDocStd_MultiTransactionManager::GetAvailableRedos ******/
-		/****** md5 signature: 500cc68e983f9a7d304824d6e36eaecc ******/
+		/****** md5 signature: c89d2c9982f0cf1b3bd6ea3a5160f41a ******/
 		%feature("compactdefaultargs") GetAvailableRedos;
 		%feature("autodoc", "Return
 -------
-TDocStd_SequenceOfApplicationDelta
+NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>>
 
 Description
 -----------
 Returns available manager redos.
 ") GetAvailableRedos;
-		const TDocStd_SequenceOfApplicationDelta & GetAvailableRedos();
+		const NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> & GetAvailableRedos();
 
 		/****** TDocStd_MultiTransactionManager::GetAvailableUndos ******/
-		/****** md5 signature: f40ce0c74bf4312033d043449a41d5ee ******/
+		/****** md5 signature: 752fa4ce44a3fd3e509ce3c512ba2a2d ******/
 		%feature("compactdefaultargs") GetAvailableUndos;
 		%feature("autodoc", "Return
 -------
-TDocStd_SequenceOfApplicationDelta
+NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>>
 
 Description
 -----------
 Returns available manager undos.
 ") GetAvailableUndos;
-		const TDocStd_SequenceOfApplicationDelta & GetAvailableUndos();
+		const NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> & GetAvailableUndos();
 
 		/****** TDocStd_MultiTransactionManager::GetUndoLimit ******/
-		/****** md5 signature: 4d03b93f640587c3abcd1bd1d5a774a9 ******/
+		/****** md5 signature: 9eb3f9f5d20c446c1d3067dc46ddd01c ******/
 		%feature("compactdefaultargs") GetUndoLimit;
 		%feature("autodoc", "Return
 -------
@@ -2154,10 +2170,10 @@ Description
 -----------
 Returns undo limit for the manager.
 ") GetUndoLimit;
-		Standard_Integer GetUndoLimit();
+		int GetUndoLimit();
 
 		/****** TDocStd_MultiTransactionManager::HasOpenCommand ******/
-		/****** md5 signature: dd69c57ebd4821e931afe0accf5d3235 ******/
+		/****** md5 signature: 5601cfe5457870d35a28da8037b39545 ******/
 		%feature("compactdefaultargs") HasOpenCommand;
 		%feature("autodoc", "Return
 -------
@@ -2167,10 +2183,10 @@ Description
 -----------
 Returns true if a transaction is opened.
 ") HasOpenCommand;
-		Standard_Boolean HasOpenCommand();
+		bool HasOpenCommand();
 
 		/****** TDocStd_MultiTransactionManager::IsNestedTransactionMode ******/
-		/****** md5 signature: 1efb73f5e84074596fa47f1cfe63ee41 ******/
+		/****** md5 signature: 53d847f8482f62b3e7d65e4a38035e18 ******/
 		%feature("compactdefaultargs") IsNestedTransactionMode;
 		%feature("autodoc", "Return
 -------
@@ -2178,12 +2194,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if NestedTransaction mode is set. Methods for protection of changes outside transactions.
+Returns true if NestedTransaction mode is set. Methods for protection of changes outside transactions.
 ") IsNestedTransactionMode;
-		Standard_Boolean IsNestedTransactionMode();
+		bool IsNestedTransactionMode();
 
 		/****** TDocStd_MultiTransactionManager::ModificationMode ******/
-		/****** md5 signature: 19d64027addb7f66c90a4e97325ce41b ******/
+		/****** md5 signature: 0de7fbadb1b2d08c8af48ce787e2b9f8 ******/
 		%feature("compactdefaultargs") ModificationMode;
 		%feature("autodoc", "Return
 -------
@@ -2193,7 +2209,7 @@ Description
 -----------
 Returns True if changes are allowed only inside transactions.
 ") ModificationMode;
-		Standard_Boolean ModificationMode();
+		bool ModificationMode();
 
 		/****** TDocStd_MultiTransactionManager::OpenCommand ******/
 		/****** md5 signature: a5c155bd5cc75696d479b13cfff2f26e ******/
@@ -2253,7 +2269,7 @@ Removes undo information from the list of undos of the manager and all documents
 		void RemoveLastUndo();
 
 		/****** TDocStd_MultiTransactionManager::SetModificationMode ******/
-		/****** md5 signature: f670168c2039d1fa00cc4c8fedbbda89 ******/
+		/****** md5 signature: 9b617ba206591da9e3f35bab2675eb3c ******/
 		%feature("compactdefaultargs") SetModificationMode;
 		%feature("autodoc", "
 Parameters
@@ -2268,15 +2284,15 @@ Description
 -----------
 If theTransactionOnly is True, denies all changes outside transactions.
 ") SetModificationMode;
-		void SetModificationMode(const Standard_Boolean theTransactionOnly);
+		void SetModificationMode(const bool theTransactionOnly);
 
 		/****** TDocStd_MultiTransactionManager::SetNestedTransactionMode ******/
-		/****** md5 signature: f79f8b65409bf3f9c2580d96405aa86c ******/
+		/****** md5 signature: 41b71d7262cca0f02e0e2b40297b4cd9 ******/
 		%feature("compactdefaultargs") SetNestedTransactionMode;
 		%feature("autodoc", "
 Parameters
 ----------
-isAllowed: bool (optional, default to Standard_True)
+isAllowed: bool (optional, default to true)
 
 Return
 -------
@@ -2284,12 +2300,12 @@ None
 
 Description
 -----------
-Sets nested transaction mode if isAllowed == Standard_True NOTE: field myIsNestedTransactionMode exists only for synchronization between several documents and has no effect on transactions of multitransaction manager.
+Sets nested transaction mode if isAllowed == true NOTE: field myIsNestedTransactionMode exists only for synchronization between several documents and has no effect on transactions of multitransaction manager.
 ") SetNestedTransactionMode;
-		void SetNestedTransactionMode(const Standard_Boolean isAllowed = Standard_True);
+		void SetNestedTransactionMode(const bool isAllowed = true);
 
 		/****** TDocStd_MultiTransactionManager::SetUndoLimit ******/
-		/****** md5 signature: fe308b2e19b2d2ca1b0cf0cb35727ef4 ******/
+		/****** md5 signature: 4a3610132472c5d5cb10b0864c2d50fa ******/
 		%feature("compactdefaultargs") SetUndoLimit;
 		%feature("autodoc", "
 Parameters
@@ -2304,7 +2320,7 @@ Description
 -----------
 Sets undo limit for the manager and all documents.
 ") SetUndoLimit;
-		void SetUndoLimit(const Standard_Integer theLimit);
+		void SetUndoLimit(const int theLimit);
 
 		/****** TDocStd_MultiTransactionManager::Undo ******/
 		/****** md5 signature: 7971ef9a4384d347502ae08a96db5b7e ******/
@@ -2349,7 +2365,7 @@ No available documentation.
 		 TDocStd_Owner();
 
 		/****** TDocStd_Owner::Dump ******/
-		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2363,7 +2379,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 
         /****************** DumpJson ******************/
@@ -2431,7 +2447,7 @@ class methods =============.
 		static const Standard_GUID & GetID();
 
 		/****** TDocStd_Owner::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2444,7 +2460,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TDocStd_Owner::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2457,7 +2473,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDocStd_Owner::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2476,7 +2492,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TDocStd_Owner::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2615,7 +2631,7 @@ No available documentation.
 		TCollection_ExtendedString Extension();
 
 		/****** TDocStd_PathParser::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -2625,7 +2641,7 @@ Description
 -----------
 No available documentation.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** TDocStd_PathParser::Name ******/
 		/****** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ******/
@@ -2707,7 +2723,7 @@ Initializes fields.
 		 TDocStd_XLink();
 
 		/****** TDocStd_XLink::AfterAddition ******/
-		/****** md5 signature: c10a57c15d27b9db0d635746de6e11f7 ******/
+		/****** md5 signature: 677f303b9af6a36d9152349a9ea5b00e ******/
 		%feature("compactdefaultargs") AfterAddition;
 		%feature("autodoc", "Return
 -------
@@ -2720,13 +2736,13 @@ Updates the XLinkRoot attribute by adding <self> to its list.
 		void AfterAddition();
 
 		/****** TDocStd_XLink::AfterUndo ******/
-		/****** md5 signature: 6a782c706f1e9291f121f77d889ed576 ******/
+		/****** md5 signature: 1c658357444dc4e0bd0f4b66ab6d7e3c ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -2736,10 +2752,10 @@ Description
 -----------
 Something to do after applying <anAttDelta>.
 ") AfterUndo;
-		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TDocStd_XLink::BackupCopy ******/
-		/****** md5 signature: be67c343943ad438128f575f7f5feaa1 ******/
+		/****** md5 signature: 37a7ca5257c3a9e95a9390edd8c74378 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -2752,7 +2768,7 @@ Returns a null handle. Raise always for it is nonsense to use this method.
 		opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****** TDocStd_XLink::BeforeRemoval ******/
-		/****** md5 signature: d89eaaf972748732c31cf1a2da2bc4a0 ******/
+		/****** md5 signature: 0f64ecdecef86a02045a45cc05d670d1 ******/
 		%feature("compactdefaultargs") BeforeRemoval;
 		%feature("autodoc", "Return
 -------
@@ -2765,13 +2781,13 @@ Updates the XLinkRoot attribute by removing <self> from its list.
 		void BeforeRemoval();
 
 		/****** TDocStd_XLink::BeforeUndo ******/
-		/****** md5 signature: d409c3f1c759e5fb3727056dd12910e7 ******/
+		/****** md5 signature: 4022cd53002aaa4282f3bc50d4d2b7c9 ******/
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -2781,7 +2797,7 @@ Description
 -----------
 Something to do before applying <anAttDelta>.
 ") BeforeUndo;
-		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TDocStd_XLink::DocumentEntry ******/
 		/****** md5 signature: aed3c77da0189600f213269241abb1a9 ******/
@@ -2815,7 +2831,7 @@ Returns the contents of the document identified by aDocEntry. aDocEntry provides
 		const TCollection_AsciiString & DocumentEntry();
 
 		/****** TDocStd_XLink::Dump ******/
-		/****** md5 signature: f10ae7331e480cfb94f59763803fa51d ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2845,7 +2861,7 @@ Returns the GUID for external links.
 		static const Standard_GUID & GetID();
 
 		/****** TDocStd_XLink::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2907,7 +2923,7 @@ Returns the contents of the field <myLabelEntry>.
 		const TCollection_AsciiString & LabelEntry();
 
 		/****** TDocStd_XLink::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2920,7 +2936,7 @@ Returns a null handle.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDocStd_XLink::Paste ******/
-		/****** md5 signature: 732eeda7b56fec2b5bb3307d96171353 ******/
+		/****** md5 signature: 13f1b0ba2ef45dec2b66b97205c5a0b6 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2939,7 +2955,7 @@ Does nothing.
 		void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
 		/****** TDocStd_XLink::Restore ******/
-		/****** md5 signature: f52dc28ed8fe4be2a44014ebfb6e733e ******/
+		/****** md5 signature: 41c5f809a59ee36fde865c853768ba6f ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -3053,7 +3069,7 @@ Restarts an iteration with <D>.
 		void Initialize(const opencascade::handle<TDocStd_Document> & D);
 
 		/****** TDocStd_XLinkIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3063,7 +3079,7 @@ Description
 -----------
 Returns True if there is a current Item in the iteration.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TDocStd_XLinkIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -3107,7 +3123,7 @@ Returns the current item; a null handle if there is none.
 class TDocStd_XLinkRoot : public TDF_Attribute {
 	public:
 		/****** TDocStd_XLinkRoot::BackupCopy ******/
-		/****** md5 signature: be67c343943ad438128f575f7f5feaa1 ******/
+		/****** md5 signature: 37a7ca5257c3a9e95a9390edd8c74378 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -3120,7 +3136,7 @@ Returns a null handle.
 		opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****** TDocStd_XLinkRoot::Dump ******/
-		/****** md5 signature: f10ae7331e480cfb94f59763803fa51d ******/
+		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -3150,7 +3166,7 @@ Returns the ID: 2a96b61d-ec8b-11d0-bee7-080009dc3333.
 		static const Standard_GUID & GetID();
 
 		/****** TDocStd_XLinkRoot::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -3181,7 +3197,7 @@ Inserts <anXLinkPtr> at the beginning of the XLink chain.
 		static void Insert(const TDocStd_XLinkPtr & anXLinkPtr);
 
 		/****** TDocStd_XLinkRoot::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3194,7 +3210,7 @@ Returns a null handle.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TDocStd_XLinkRoot::Paste ******/
-		/****** md5 signature: 732eeda7b56fec2b5bb3307d96171353 ******/
+		/****** md5 signature: 13f1b0ba2ef45dec2b66b97205c5a0b6 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -3231,7 +3247,7 @@ Removes <anXLinkPtr> from the XLink chain, if it exists.
 		static void Remove(const TDocStd_XLinkPtr & anXLinkPtr);
 
 		/****** TDocStd_XLinkRoot::Restore ******/
-		/****** md5 signature: f52dc28ed8fe4be2a44014ebfb6e733e ******/
+		/****** md5 signature: 41c5f809a59ee36fde865c853768ba6f ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -3310,7 +3326,7 @@ None
 
 Description
 -----------
-Copy the content of <fromsource> under <intarget>. No link is registered. No check is done. Example opencascade::handle<TDocStd_Document> DOC, XDOC; TDF_Label L, XL; TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); Exceptions: Standard_DomainError if the contents of fromsource are not entirely in the scope of this label, in other words, are not self-contained. !!! ==> Warning: If the document manages shapes use the next way: TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); TopTools_DataMapOfShapeShape M; TNaming::ChangeShapes(target,M);.
+Copy the content of <fromsource> under <intarget>. No link is registered. No check is done. Example opencascade::handle<TDocStd_Document> DOC, XDOC; TDF_Label L, XL; TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); Exceptions: Standard_DomainError if the contents of fromsource are not entirely in the scope of this label, in other words, are not self-contained. !!! ==> Warning: If the document manages shapes use the next way: TDocStd_XLinkTool xlinktool; xlinktool.Copy(L,XL); NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> M; TNaming::ChangeShapes(target,M);.
 ") Copy;
 		virtual void Copy(const TDF_Label & intarget, const TDF_Label & fromsource);
 
@@ -3347,7 +3363,7 @@ No available documentation.
 		opencascade::handle<TDF_DataSet> DataSet();
 
 		/****** TDocStd_XLinkTool::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3357,7 +3373,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** TDocStd_XLinkTool::RelocationTable ******/
 		/****** md5 signature: 671660b65181661cbeabfffeb9205cbd ******/

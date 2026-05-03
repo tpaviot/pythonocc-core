@@ -24,7 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntAna_IntConicQuad.hxx>
 #include<IntAna_IntLinTorus.hxx>
 #include<IntAna_IntQuadQuad.hxx>
-#include<IntAna_ListIteratorOfListOfCurve.hxx>
 #include<IntAna_ListOfCurve.hxx>
 #include<IntAna_QuadQuadGeo.hxx>
 #include<IntAna_Quadric.hxx>

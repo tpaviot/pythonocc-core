@@ -23,12 +23,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<STEPConstruct_AP203Context.hxx>
 #include<STEPConstruct_Assembly.hxx>
 #include<STEPConstruct_ContextTool.hxx>
-#include<STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient.hxx>
-#include<STEPConstruct_DataMapIteratorOfDataMapOfPointTransient.hxx>
 #include<STEPConstruct_DataMapOfAsciiStringTransient.hxx>
 #include<STEPConstruct_DataMapOfPointTransient.hxx>
 #include<STEPConstruct_ExternRefs.hxx>
 #include<STEPConstruct_Part.hxx>
+#include<STEPConstruct_RenderingProperties.hxx>
 #include<STEPConstruct_Styles.hxx>
 #include<STEPConstruct_Tool.hxx>
 #include<STEPConstruct_UnitContext.hxx>

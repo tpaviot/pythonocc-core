@@ -83,16 +83,16 @@ from OCC.Core.Exception import *
 class ElSLib {
 	public:
 		/****** ElSLib::ConeD0 ******/
-		/****** md5 signature: a6a8c3ca9b6ab93e831e6ddbb749417a ******/
+		/****** md5 signature: d7bb5434520d3c2bdf1137c637e23347 ******/
 		%feature("compactdefaultargs") ConeD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 P: gp_Pnt
 
 Return
@@ -103,19 +103,19 @@ Description
 -----------
 No available documentation.
 ") ConeD0;
-		static void ConeD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P);
+		static void ConeD0(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const double SAngle, gp_Pnt & P);
 
 		/****** ElSLib::ConeD1 ******/
-		/****** md5 signature: b7922f6a69582ddcc606331f197ae875 ******/
+		/****** md5 signature: 417527b799f68abf5ea61b807842ceba ******/
 		%feature("compactdefaultargs") ConeD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -128,19 +128,19 @@ Description
 -----------
 No available documentation.
 ") ConeD1;
-		static void ConeD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void ConeD1(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const double SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::ConeD2 ******/
-		/****** md5 signature: f45870273e8a9027657f1e50e1d202ea ******/
+		/****** md5 signature: 4d7e0b37db68b73a4c91863701e3bc6b ******/
 		%feature("compactdefaultargs") ConeD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -156,19 +156,19 @@ Description
 -----------
 No available documentation.
 ") ConeD2;
-		static void ConeD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void ConeD2(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const double SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::ConeD3 ******/
-		/****** md5 signature: 21e324e65c179f04c4743596117fa1d9 ******/
+		/****** md5 signature: 0e15160a2b1a57d1067228f331aaccf0 ******/
 		%feature("compactdefaultargs") ConeD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -188,19 +188,19 @@ Description
 -----------
 No available documentation.
 ") ConeD3;
-		static void ConeD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void ConeD3(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const double SAngle, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::ConeDN ******/
-		/****** md5 signature: e56054aeadff97b49c9f693dec864322 ******/
+		/****** md5 signature: cba378843b47286ce8cc2e5a2190c93b ******/
 		%feature("compactdefaultargs") ConeDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 Nu: int
 Nv: int
 
@@ -212,40 +212,40 @@ Description
 -----------
 No available documentation.
 ") ConeDN;
-		static gp_Vec ConeDN(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec ConeDN(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const double SAngle, const int Nu, const int Nv);
 
 		/****** ElSLib::ConeParameters ******/
-		/****** md5 signature: 233c5aeeea47852312c0008854f30810 ******/
+		/****** md5 signature: a3a27eeb09e773a9efdb2c12679d921c ******/
 		%feature("compactdefaultargs") ConeParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
-parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (Cos(U) * XDirection + Sin(U) * YDirection).
+parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (std::cos(U) * XDirection + std::sin(U) * YDirection).
 ") ConeParameters;
-		static void ConeParameters(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void ConeParameters(const gp_Ax3 & Pos, const double Radius, const double SAngle, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::ConeUIso ******/
-		/****** md5 signature: 6c41af9a3679cbfa9dc777622fdc87b6 ******/
+		/****** md5 signature: e526687a863f4f5c08849a805cc265f9 ******/
 		%feature("compactdefaultargs") ConeUIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-SAngle: float
-U: float
+Radius: double
+SAngle: double
+U: double
 
 Return
 -------
@@ -255,18 +255,18 @@ Description
 -----------
 compute the U Isoparametric gp_Lin of the cone.
 ") ConeUIso;
-		static gp_Lin ConeUIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const Standard_Real U);
+		static gp_Lin ConeUIso(const gp_Ax3 & Pos, const double Radius, const double SAngle, const double U);
 
 		/****** ElSLib::ConeVIso ******/
-		/****** md5 signature: 7ecce60781ee68676bcc13f34b34a531 ******/
+		/****** md5 signature: c71b544d0d65cc3026edd8d9e92c44c8 ******/
 		%feature("compactdefaultargs") ConeVIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-SAngle: float
-V: float
+Radius: double
+SAngle: double
+V: double
 
 Return
 -------
@@ -276,19 +276,19 @@ Description
 -----------
 compute the V Isoparametric gp_Circ of the cone.
 ") ConeVIso;
-		static gp_Circ ConeVIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle, const Standard_Real V);
+		static gp_Circ ConeVIso(const gp_Ax3 & Pos, const double Radius, const double SAngle, const double V);
 
 		/****** ElSLib::ConeValue ******/
-		/****** md5 signature: 0fb9287ac9e0eb160f76d904ec3ce2c0 ******/
+		/****** md5 signature: 472783287e51147024612ae16784cf4b ******/
 		%feature("compactdefaultargs") ConeValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
-SAngle: float
+Radius: double
+SAngle: double
 
 Return
 -------
@@ -298,18 +298,18 @@ Description
 -----------
 No available documentation.
 ") ConeValue;
-		static gp_Pnt ConeValue(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real SAngle);
+		static gp_Pnt ConeValue(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const double SAngle);
 
 		/****** ElSLib::CylinderD0 ******/
-		/****** md5 signature: ea8a8b240713a9b32d77bd11a8cbe0cc ******/
+		/****** md5 signature: a40a2290c30bacc6d319a16d3b1d1bb5 ******/
 		%feature("compactdefaultargs") CylinderD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 
 Return
@@ -320,18 +320,18 @@ Description
 -----------
 No available documentation.
 ") CylinderD0;
-		static void CylinderD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P);
+		static void CylinderD0(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P);
 
 		/****** ElSLib::CylinderD1 ******/
-		/****** md5 signature: 2d9a365abe021a49deec1726fb95f430 ******/
+		/****** md5 signature: b56a52206c1acc73917cc4ed9b866135 ******/
 		%feature("compactdefaultargs") CylinderD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -344,18 +344,18 @@ Description
 -----------
 No available documentation.
 ") CylinderD1;
-		static void CylinderD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void CylinderD1(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::CylinderD2 ******/
-		/****** md5 signature: 19b2a1ce1ec76472f8a729357b75a415 ******/
+		/****** md5 signature: 8913cb2c34a27708f6df43587c260436 ******/
 		%feature("compactdefaultargs") CylinderD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -371,18 +371,18 @@ Description
 -----------
 No available documentation.
 ") CylinderD2;
-		static void CylinderD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void CylinderD2(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::CylinderD3 ******/
-		/****** md5 signature: 09aec245d3e6e8868d0b87ee908d919d ******/
+		/****** md5 signature: 68f865a7805c46b93951cf6cba73f8d7 ******/
 		%feature("compactdefaultargs") CylinderD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -402,18 +402,18 @@ Description
 -----------
 No available documentation.
 ") CylinderD3;
-		static void CylinderD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void CylinderD3(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::CylinderDN ******/
-		/****** md5 signature: 4c52237383cbad82b2472ee40223ecf2 ******/
+		/****** md5 signature: f2d34144084a2c97ff0a92ee505924e3 ******/
 		%feature("compactdefaultargs") CylinderDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 Nu: int
 Nv: int
 
@@ -425,38 +425,38 @@ Description
 -----------
 No available documentation.
 ") CylinderDN;
-		static gp_Vec CylinderDN(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec CylinderDN(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const int Nu, const int Nv);
 
 		/****** ElSLib::CylinderParameters ******/
-		/****** md5 signature: 4e8a0ab017ee9ab8c9fba1e2ddc8c606 ******/
+		/****** md5 signature: b6857eb7ad41fdaa45df05ba8e5ad687 ******/
 		%feature("compactdefaultargs") CylinderParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
-parametrization P (U, V) = Location + V * ZDirection + Radius * (Cos(U) * XDirection + Sin (U) * YDirection).
+parametrization P (U, V) = Location + V * ZDirection + Radius * (std::cos(U) * XDirection + Sin (U) * YDirection).
 ") CylinderParameters;
-		static void CylinderParameters(const gp_Ax3 & Pos, const Standard_Real Radius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void CylinderParameters(const gp_Ax3 & Pos, const double Radius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::CylinderUIso ******/
-		/****** md5 signature: 43a9a487a13558cdd650992d38ac68f4 ******/
+		/****** md5 signature: 495060d81ddb8aadcb3461e0021ec783 ******/
 		%feature("compactdefaultargs") CylinderUIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-U: float
+Radius: double
+U: double
 
 Return
 -------
@@ -466,17 +466,17 @@ Description
 -----------
 compute the U Isoparametric gp_Lin of the cylinder.
 ") CylinderUIso;
-		static gp_Lin CylinderUIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real U);
+		static gp_Lin CylinderUIso(const gp_Ax3 & Pos, const double Radius, const double U);
 
 		/****** ElSLib::CylinderVIso ******/
-		/****** md5 signature: 98f6ae083ed3c528883c4b0f6baa1eb9 ******/
+		/****** md5 signature: 8f147d71d7e005cfe7f5f0e6246e4b5c ******/
 		%feature("compactdefaultargs") CylinderVIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-V: float
+Radius: double
+V: double
 
 Return
 -------
@@ -486,18 +486,18 @@ Description
 -----------
 compute the V Isoparametric gp_Circ of the cylinder.
 ") CylinderVIso;
-		static gp_Circ CylinderVIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real V);
+		static gp_Circ CylinderVIso(const gp_Ax3 & Pos, const double Radius, const double V);
 
 		/****** ElSLib::CylinderValue ******/
-		/****** md5 signature: 80a7729f00abb41d21efa535b17256f9 ******/
+		/****** md5 signature: fc56de51a0a5bac5c095fb6f44f736e0 ******/
 		%feature("compactdefaultargs") CylinderValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 
 Return
 -------
@@ -507,16 +507,16 @@ Description
 -----------
 No available documentation.
 ") CylinderValue;
-		static gp_Pnt CylinderValue(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius);
+		static gp_Pnt CylinderValue(const double U, const double V, const gp_Ax3 & Pos, const double Radius);
 
 		/****** ElSLib::D0 ******/
-		/****** md5 signature: e5de4017e5ac69b3c6b1efee6459cb6e ******/
+		/****** md5 signature: 48af646a95a2ce0835cb7bb762332198 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pl: gp_Pln
 P: gp_Pnt
 
@@ -528,16 +528,16 @@ Description
 -----------
 For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point P of parameters (U, V).inline.
 ") D0;
-		static void D0(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, gp_Pnt & P);
+		static void D0(const double U, const double V, const gp_Pln & Pl, gp_Pnt & P);
 
 		/****** ElSLib::D0 ******/
-		/****** md5 signature: f24a8fddeb7cf76abdc6aa1f16455f69 ******/
+		/****** md5 signature: ba266bf754a7333100250ce3d3a47e07 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cone
 P: gp_Pnt
 
@@ -549,16 +549,16 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P);
+		static void D0(const double U, const double V, const gp_Cone & C, gp_Pnt & P);
 
 		/****** ElSLib::D0 ******/
-		/****** md5 signature: 72868a65a74f61d500769be079aa72ac ******/
+		/****** md5 signature: 73c918517791c38eccc8c7b88c7c37cf ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cylinder
 P: gp_Pnt
 
@@ -570,16 +570,16 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P);
+		static void D0(const double U, const double V, const gp_Cylinder & C, gp_Pnt & P);
 
 		/****** ElSLib::D0 ******/
-		/****** md5 signature: 85814fdc514b19c99627244373697036 ******/
+		/****** md5 signature: c0d6ce527c7786bd00cc444add1e14da ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 S: gp_Sphere
 P: gp_Pnt
 
@@ -591,16 +591,16 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P);
+		static void D0(const double U, const double V, const gp_Sphere & S, gp_Pnt & P);
 
 		/****** ElSLib::D0 ******/
-		/****** md5 signature: 77e6e855f630c8e2097641faa0df5fdc ******/
+		/****** md5 signature: 35f945bc82d7b4c9549d321b9a312366 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 T: gp_Torus
 P: gp_Pnt
 
@@ -612,16 +612,16 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P);
+		static void D0(const double U, const double V, const gp_Torus & T, gp_Pnt & P);
 
 		/****** ElSLib::D1 ******/
-		/****** md5 signature: 8b3e71c551e069e94861e33289a5d32b ******/
+		/****** md5 signature: 63d33748cff4bd5ee3209bc06c222b0c ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pl: gp_Pln
 P: gp_Pnt
 Vu: gp_Vec
@@ -635,16 +635,16 @@ Description
 -----------
 For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes: - the point P of parameters (U, V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively.
 ") D1;
-		static void D1(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void D1(const double U, const double V, const gp_Pln & Pl, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::D1 ******/
-		/****** md5 signature: 65987cf4ac86ea09cb0ec5c2c87fd6ec ******/
+		/****** md5 signature: 5f62af0d272391e362ab94b26501a111 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cone
 P: gp_Pnt
 Vu: gp_Vec
@@ -658,16 +658,16 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void D1(const double U, const double V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::D1 ******/
-		/****** md5 signature: a52113862081149395b44f081fc01663 ******/
+		/****** md5 signature: 1f5d33af983c20f025b3215a789e6da8 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cylinder
 P: gp_Pnt
 Vu: gp_Vec
@@ -681,16 +681,16 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void D1(const double U, const double V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::D1 ******/
-		/****** md5 signature: c0e7a883f69a28ac574298469f1245ed ******/
+		/****** md5 signature: 6855973e2879f3ccbc45c90be53b25bd ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 S: gp_Sphere
 P: gp_Pnt
 Vu: gp_Vec
@@ -704,16 +704,16 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void D1(const double U, const double V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::D1 ******/
-		/****** md5 signature: 38cc310ed64bbeaf2e03bc1be5bdaba7 ******/
+		/****** md5 signature: a9132fc4562c07b38f9d5cdb8179c519 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 T: gp_Torus
 P: gp_Pnt
 Vu: gp_Vec
@@ -727,16 +727,16 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void D1(const double U, const double V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::D2 ******/
-		/****** md5 signature: ee5b1941fb35a973f76c57bcf41753b5 ******/
+		/****** md5 signature: bf4cbb5b7bab717922d08efa4f141885 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cone
 P: gp_Pnt
 Vu: gp_Vec
@@ -753,16 +753,16 @@ Description
 -----------
 For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point P of parameters (U, V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively, and - the second derivative vectors Vuu, Vvv and Vuv at this point.
 ") D2;
-		static void D2(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void D2(const double U, const double V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::D2 ******/
-		/****** md5 signature: 4e91bb4316b3387f47ca119242089a8d ******/
+		/****** md5 signature: 6e60809c365d2cd3b11ee8def75f9785 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cylinder
 P: gp_Pnt
 Vu: gp_Vec
@@ -779,16 +779,16 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void D2(const double U, const double V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::D2 ******/
-		/****** md5 signature: 90f829908b1ed92bfaaceced09880949 ******/
+		/****** md5 signature: 1b81890eae266335273d1307f28b3259 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 S: gp_Sphere
 P: gp_Pnt
 Vu: gp_Vec
@@ -805,16 +805,16 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void D2(const double U, const double V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::D2 ******/
-		/****** md5 signature: 9ee7f64fada1507c167eaac491c3986c ******/
+		/****** md5 signature: 875d5489f4bee6edba354cc5e487d0cf ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 T: gp_Torus
 P: gp_Pnt
 Vu: gp_Vec
@@ -831,16 +831,16 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void D2(const double U, const double V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::D3 ******/
-		/****** md5 signature: 87e2507fa9fe13340f6e34131e391d93 ******/
+		/****** md5 signature: 9a08e94ce4b2ca11cd124e81e769b4c8 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cone
 P: gp_Pnt
 Vu: gp_Vec
@@ -861,16 +861,16 @@ Description
 -----------
 For elementary surfaces from the gp package (cones, cylinders, spheres and tori), computes: - the point P of parameters (U,V), and - the first derivative vectors Vu and Vv at this point in the u and v parametric directions respectively, and - the second derivative vectors Vuu, Vvv and Vuv at this point, and - the third derivative vectors Vuuu, Vvvv, Vuuv and Vuvv at this point.
 ") D3;
-		static void D3(const Standard_Real U, const Standard_Real V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void D3(const double U, const double V, const gp_Cone & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::D3 ******/
-		/****** md5 signature: 40555ae131b0b8299c2822d871d02d34 ******/
+		/****** md5 signature: fd8c21592a5d765733457bedff4e4db6 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cylinder
 P: gp_Pnt
 Vu: gp_Vec
@@ -891,16 +891,16 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void D3(const double U, const double V, const gp_Cylinder & C, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::D3 ******/
-		/****** md5 signature: d3da98bd7eb606ecf52313afc32cec23 ******/
+		/****** md5 signature: cef0fa07656e27ce242b111b2098f7fd ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 S: gp_Sphere
 P: gp_Pnt
 Vu: gp_Vec
@@ -921,16 +921,16 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void D3(const double U, const double V, const gp_Sphere & S, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::D3 ******/
-		/****** md5 signature: d3305be8886796dce18f1f9e28e27d36 ******/
+		/****** md5 signature: 21921e8247cc4241a9a11e6a25f05b2f ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 T: gp_Torus
 P: gp_Pnt
 Vu: gp_Vec
@@ -951,16 +951,16 @@ Description
 -----------
 Surface evaluation The following functions compute the point and the derivatives on elementary surfaces defined with their geometric characteristics. You don't need to create the surface to use these functions. These functions are called by the previous ones. Example: A cylinder is defined with its position and its radius.
 ") D3;
-		static void D3(const Standard_Real U, const Standard_Real V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void D3(const double U, const double V, const gp_Torus & T, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::DN ******/
-		/****** md5 signature: 20191fe8e2e8b71b3e6d1e05cb633204 ******/
+		/****** md5 signature: 065a64d3a199f905f67d908eeaf2ab11 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pl: gp_Pln
 Nu: int
 Nv: int
@@ -973,16 +973,16 @@ Description
 -----------
 For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the derivative vector of order Nu and Nv in the u and v parametric directions respectively, at the point of parameters (U, V).
 ") DN;
-		static gp_Vec DN(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const double U, const double V, const gp_Pln & Pl, const int Nu, const int Nv);
 
 		/****** ElSLib::DN ******/
-		/****** md5 signature: f989bb4492d90b0bd707a8e9089be97f ******/
+		/****** md5 signature: 9bc7aca19a4456bfd0a7348bbdd9a39d ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cone
 Nu: int
 Nv: int
@@ -995,16 +995,16 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Standard_Real U, const Standard_Real V, const gp_Cone & C, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const double U, const double V, const gp_Cone & C, const int Nu, const int Nv);
 
 		/****** ElSLib::DN ******/
-		/****** md5 signature: d37980014b7e94fe985887936f027957 ******/
+		/****** md5 signature: 434c64a4dddd058d4720725595742964 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cylinder
 Nu: int
 Nv: int
@@ -1017,16 +1017,16 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const double U, const double V, const gp_Cylinder & C, const int Nu, const int Nv);
 
 		/****** ElSLib::DN ******/
-		/****** md5 signature: d19562bf3ca33f87ddbf950456b379fc ******/
+		/****** md5 signature: 424040c17792aab47d732368f766da8a ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 S: gp_Sphere
 Nu: int
 Nv: int
@@ -1039,16 +1039,16 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Standard_Real U, const Standard_Real V, const gp_Sphere & S, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const double U, const double V, const gp_Sphere & S, const int Nu, const int Nv);
 
 		/****** ElSLib::DN ******/
-		/****** md5 signature: 9b14e6145ecd0317362034ebe4985083 ******/
+		/****** md5 signature: 687509b57bfaabef38e40a5d34fbe98f ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 T: gp_Torus
 Nu: int
 Nv: int
@@ -1061,10 +1061,10 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Standard_Real U, const Standard_Real V, const gp_Torus & T, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const double U, const double V, const gp_Torus & T, const int Nu, const int Nv);
 
 		/****** ElSLib::Parameters ******/
-		/****** md5 signature: 1193daacb3600cf259746b1239ffd84b ******/
+		/****** md5 signature: 761a5ce7ebe09a5aeae40854ef7beb36 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1074,8 +1074,8 @@ P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -1084,7 +1084,7 @@ parametrization P (U, V) = Pl.Location() + U * Pl.XDirection() + V * Pl.YDirecti
 		static void Parameters(const gp_Pln & Pl, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::Parameters ******/
-		/****** md5 signature: 2c6a3002278296bffd3e2c4a544464be ******/
+		/****** md5 signature: c669e44cb84b6b72ba13e84c67ac0286 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1094,17 +1094,17 @@ P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
-parametrization P (U, V) = Location + V * ZDirection + Radius * (Cos(U) * XDirection + Sin (U) * YDirection).
+parametrization P (U, V) = Location + V * ZDirection + Radius * (std::cos(U) * XDirection + Sin (U) * YDirection).
 ") Parameters;
 		static void Parameters(const gp_Cylinder & C, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::Parameters ******/
-		/****** md5 signature: 559ffec208c47755687b2596dd9eedc6 ******/
+		/****** md5 signature: f928e71ed5559fa1e23a562e5106f25a ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1114,17 +1114,17 @@ P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
-parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (Cos(U) * XDirection + Sin(U) * YDirection).
+parametrization P (U, V) = Location + V * ZDirection + (Radius + V * Tan (SemiAngle)) * (std::cos(U) * XDirection + std::sin(U) * YDirection).
 ") Parameters;
 		static void Parameters(const gp_Cone & C, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::Parameters ******/
-		/****** md5 signature: cf74053fc0e62465fe9e58dedf8fe163 ******/
+		/****** md5 signature: 0b8c1a6a4ac1ee340a384b5ccbf54f49 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1134,8 +1134,8 @@ P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -1144,7 +1144,7 @@ parametrization P (U, V) = Location + Radius * Cos (V) * (Cos (U) * XDirection +
 		static void Parameters(const gp_Sphere & S, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::Parameters ******/
-		/****** md5 signature: db68d4d53eec293d6506b9a27933bb12 ******/
+		/****** md5 signature: 9a65eb0039de7ba87356bbe2903b1149 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1154,23 +1154,23 @@ P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
-parametrization P (U, V) = Location + (MajorRadius + MinorRadius * Cos(U)) * (Cos(V) * XDirection - Sin(V) * YDirection) + MinorRadius * Sin(U) * ZDirection.
+parametrization P (U, V) = Location + (MajorRadius + MinorRadius * std::cos(U)) * (std::cos(V) * XDirection - std::sin(V) * YDirection) + MinorRadius * std::sin(U) * ZDirection.
 ") Parameters;
 		static void Parameters(const gp_Torus & T, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::PlaneD0 ******/
-		/****** md5 signature: 253b675d96876221a4c23c3f38091465 ******/
+		/****** md5 signature: c94f15c7420ed2a52af59227119cfde7 ******/
 		%feature("compactdefaultargs") PlaneD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
 P: gp_Pnt
 
@@ -1182,16 +1182,16 @@ Description
 -----------
 No available documentation.
 ") PlaneD0;
-		static void PlaneD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, gp_Pnt & P);
+		static void PlaneD0(const double U, const double V, const gp_Ax3 & Pos, gp_Pnt & P);
 
 		/****** ElSLib::PlaneD1 ******/
-		/****** md5 signature: b931e31079446c1b6d26efe4cc18ba7d ******/
+		/****** md5 signature: 37bf33653a9b6ee32a0adcc70d7f1b90 ******/
 		%feature("compactdefaultargs") PlaneD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
 P: gp_Pnt
 Vu: gp_Vec
@@ -1205,16 +1205,16 @@ Description
 -----------
 No available documentation.
 ") PlaneD1;
-		static void PlaneD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void PlaneD1(const double U, const double V, const gp_Ax3 & Pos, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::PlaneDN ******/
-		/****** md5 signature: 6f682d5eec64825b302a89b223c098b4 ******/
+		/****** md5 signature: a5fea910cce37eb2e5f063d6ccd58882 ******/
 		%feature("compactdefaultargs") PlaneDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
 Nu: int
 Nv: int
@@ -1227,10 +1227,10 @@ Description
 -----------
 No available documentation.
 ") PlaneDN;
-		static gp_Vec PlaneDN(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec PlaneDN(const double U, const double V, const gp_Ax3 & Pos, const int Nu, const int Nv);
 
 		/****** ElSLib::PlaneParameters ******/
-		/****** md5 signature: f18b35a9f1f722d9507197e90c3a49af ******/
+		/****** md5 signature: ae0d4e16da8e0cfcf3b8ed5eb32110d9 ******/
 		%feature("compactdefaultargs") PlaneParameters;
 		%feature("autodoc", "
 Parameters
@@ -1240,8 +1240,8 @@ P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -1250,13 +1250,13 @@ parametrization P (U, V) = Pl.Location() + U * Pl.XDirection() + V * Pl.YDirecti
 		static void PlaneParameters(const gp_Ax3 & Pos, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::PlaneUIso ******/
-		/****** md5 signature: 2eb55c09f5910260707672fd56e8b9f1 ******/
+		/****** md5 signature: 506d4ee7fd233987df8c619bb549d3ce ******/
 		%feature("compactdefaultargs") PlaneUIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-U: float
+U: double
 
 Return
 -------
@@ -1266,16 +1266,16 @@ Description
 -----------
 compute the U Isoparametric gp_Lin of the plane.
 ") PlaneUIso;
-		static gp_Lin PlaneUIso(const gp_Ax3 & Pos, const Standard_Real U);
+		static gp_Lin PlaneUIso(const gp_Ax3 & Pos, const double U);
 
 		/****** ElSLib::PlaneVIso ******/
-		/****** md5 signature: e1f3e4b52efb38e446c9c7b9040390e2 ******/
+		/****** md5 signature: 8c593b142691c7c40882a578a48f6eaa ******/
 		%feature("compactdefaultargs") PlaneVIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-V: float
+V: double
 
 Return
 -------
@@ -1285,16 +1285,16 @@ Description
 -----------
 compute the V Isoparametric gp_Lin of the plane.
 ") PlaneVIso;
-		static gp_Lin PlaneVIso(const gp_Ax3 & Pos, const Standard_Real V);
+		static gp_Lin PlaneVIso(const gp_Ax3 & Pos, const double V);
 
 		/****** ElSLib::PlaneValue ******/
-		/****** md5 signature: 86b5df7b2de0791c9a27036594c8ae20 ******/
+		/****** md5 signature: f85fd223c3842b2e6851e06c16b5d891 ******/
 		%feature("compactdefaultargs") PlaneValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
 
 Return
@@ -1305,18 +1305,18 @@ Description
 -----------
 No available documentation.
 ") PlaneValue;
-		static gp_Pnt PlaneValue(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos);
+		static gp_Pnt PlaneValue(const double U, const double V, const gp_Ax3 & Pos);
 
 		/****** ElSLib::SphereD0 ******/
-		/****** md5 signature: d1dc9191ac65f4903609f04bdd641611 ******/
+		/****** md5 signature: a6a5f48dcf30b326f8b306a453171996 ******/
 		%feature("compactdefaultargs") SphereD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 
 Return
@@ -1327,18 +1327,18 @@ Description
 -----------
 No available documentation.
 ") SphereD0;
-		static void SphereD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P);
+		static void SphereD0(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P);
 
 		/****** ElSLib::SphereD1 ******/
-		/****** md5 signature: 207470e39b232cec2e472a84113ab7d8 ******/
+		/****** md5 signature: 7778cee603667f95ee9c1deaee2ed1ff ******/
 		%feature("compactdefaultargs") SphereD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -1351,18 +1351,18 @@ Description
 -----------
 No available documentation.
 ") SphereD1;
-		static void SphereD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void SphereD1(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::SphereD2 ******/
-		/****** md5 signature: 4bd92282af1a9b5c82cc46da1f39465c ******/
+		/****** md5 signature: 65d334b7b8bcf9837200f52116664a0e ******/
 		%feature("compactdefaultargs") SphereD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -1378,18 +1378,18 @@ Description
 -----------
 No available documentation.
 ") SphereD2;
-		static void SphereD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void SphereD2(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::SphereD3 ******/
-		/****** md5 signature: a0a2fd9756b3370dbafc0e80e4d512d3 ******/
+		/****** md5 signature: 1450116c60c4e189cd94a891c03dbc95 ******/
 		%feature("compactdefaultargs") SphereD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -1409,18 +1409,18 @@ Description
 -----------
 No available documentation.
 ") SphereD3;
-		static void SphereD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void SphereD3(const double U, const double V, const gp_Ax3 & Pos, const double Radius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::SphereDN ******/
-		/****** md5 signature: e0c3a6a2cfaa57cd876b588a8a4e4902 ******/
+		/****** md5 signature: f564b3801ad5daa211c43f121ba7f53e ******/
 		%feature("compactdefaultargs") SphereDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 Nu: int
 Nv: int
 
@@ -1432,38 +1432,38 @@ Description
 -----------
 No available documentation.
 ") SphereDN;
-		static gp_Vec SphereDN(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec SphereDN(const double U, const double V, const gp_Ax3 & Pos, const double Radius, const int Nu, const int Nv);
 
 		/****** ElSLib::SphereParameters ******/
-		/****** md5 signature: 45229f5876a988a1bb081b16af8eb894 ******/
+		/****** md5 signature: 49b3ac7c2ea5d27e6a7782264184b594 ******/
 		%feature("compactdefaultargs") SphereParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
+Radius: double
 P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 parametrization P (U, V) = Location + Radius * Cos (V) * (Cos (U) * XDirection + Sin (U) * YDirection) + Radius * Sin (V) * ZDirection.
 ") SphereParameters;
-		static void SphereParameters(const gp_Ax3 & Pos, const Standard_Real Radius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void SphereParameters(const gp_Ax3 & Pos, const double Radius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::SphereUIso ******/
-		/****** md5 signature: 88af4242816cbc6f9872562706f513a7 ******/
+		/****** md5 signature: 6d17f1a2c37e6ca6f8420c444fc3a2ff ******/
 		%feature("compactdefaultargs") SphereUIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-U: float
+Radius: double
+U: double
 
 Return
 -------
@@ -1473,17 +1473,17 @@ Description
 -----------
 compute the U Isoparametric gp_Circ of the sphere, (the meridian is not trimmed).
 ") SphereUIso;
-		static gp_Circ SphereUIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real U);
+		static gp_Circ SphereUIso(const gp_Ax3 & Pos, const double Radius, const double U);
 
 		/****** ElSLib::SphereVIso ******/
-		/****** md5 signature: b3543400820bba426bd59ea05e3789ac ******/
+		/****** md5 signature: d522f1078b8f5fca7ecbb9fc6d2cbf64 ******/
 		%feature("compactdefaultargs") SphereVIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-Radius: float
-V: float
+Radius: double
+V: double
 
 Return
 -------
@@ -1493,18 +1493,18 @@ Description
 -----------
 compute the V Isoparametric gp_Circ of the sphere, (the meridian is not trimmed).
 ") SphereVIso;
-		static gp_Circ SphereVIso(const gp_Ax3 & Pos, const Standard_Real Radius, const Standard_Real V);
+		static gp_Circ SphereVIso(const gp_Ax3 & Pos, const double Radius, const double V);
 
 		/****** ElSLib::SphereValue ******/
-		/****** md5 signature: 5749766342e62a530c2fa0e9811e748d ******/
+		/****** md5 signature: 341ee5f78a686602623d902a720a2d18 ******/
 		%feature("compactdefaultargs") SphereValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-Radius: float
+Radius: double
 
 Return
 -------
@@ -1514,19 +1514,19 @@ Description
 -----------
 No available documentation.
 ") SphereValue;
-		static gp_Pnt SphereValue(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real Radius);
+		static gp_Pnt SphereValue(const double U, const double V, const gp_Ax3 & Pos, const double Radius);
 
 		/****** ElSLib::TorusD0 ******/
-		/****** md5 signature: b65571b9cccdbe899c9ed0fa915d86d5 ******/
+		/****** md5 signature: 4c4eb0121cd4f123efe05ffe7765fd68 ******/
 		%feature("compactdefaultargs") TorusD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 P: gp_Pnt
 
 Return
@@ -1537,19 +1537,19 @@ Description
 -----------
 No available documentation.
 ") TorusD0;
-		static void TorusD0(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P);
+		static void TorusD0(const double U, const double V, const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, gp_Pnt & P);
 
 		/****** ElSLib::TorusD1 ******/
-		/****** md5 signature: 05ad177c582f2bd47131f8512c9b3ecd ******/
+		/****** md5 signature: ed1fc75687079eac19146d4179985120 ******/
 		%feature("compactdefaultargs") TorusD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -1562,19 +1562,19 @@ Description
 -----------
 No available documentation.
 ") TorusD1;
-		static void TorusD1(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
+		static void TorusD1(const double U, const double V, const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv);
 
 		/****** ElSLib::TorusD2 ******/
-		/****** md5 signature: 640c1bce6964f2d2dd8626a369c5d86c ******/
+		/****** md5 signature: c5c7e368b3acbf83aeec3f2657142aca ******/
 		%feature("compactdefaultargs") TorusD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -1590,19 +1590,19 @@ Description
 -----------
 No available documentation.
 ") TorusD2;
-		static void TorusD2(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
+		static void TorusD2(const double U, const double V, const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv);
 
 		/****** ElSLib::TorusD3 ******/
-		/****** md5 signature: 42264545c46c4f2420a120c3477f0ab2 ******/
+		/****** md5 signature: 33c1f22851f55b69538e006185d903b2 ******/
 		%feature("compactdefaultargs") TorusD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 P: gp_Pnt
 Vu: gp_Vec
 Vv: gp_Vec
@@ -1622,19 +1622,19 @@ Description
 -----------
 The following functions compute the parametric values corresponding to a given point on a elementary surface. The point should be on the surface.
 ") TorusD3;
-		static void TorusD3(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
+		static void TorusD3(const double U, const double V, const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, gp_Pnt & P, gp_Vec & Vu, gp_Vec & Vv, gp_Vec & Vuu, gp_Vec & Vvv, gp_Vec & Vuv, gp_Vec & Vuuu, gp_Vec & Vvvv, gp_Vec & Vuuv, gp_Vec & Vuvv);
 
 		/****** ElSLib::TorusDN ******/
-		/****** md5 signature: 00b4b484ed3ba712a672d3596679e624 ******/
+		/****** md5 signature: ea030371054a1d560a7b611e447a4133 ******/
 		%feature("compactdefaultargs") TorusDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 Nu: int
 Nv: int
 
@@ -1646,40 +1646,40 @@ Description
 -----------
 No available documentation.
 ") TorusDN;
-		static gp_Vec TorusDN(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec TorusDN(const double U, const double V, const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, const int Nu, const int Nv);
 
 		/****** ElSLib::TorusParameters ******/
-		/****** md5 signature: 1a64032b3e1405c9914a3b9c15478c78 ******/
+		/****** md5 signature: b55d0b0d22c592306cb4158c730fe159 ******/
 		%feature("compactdefaultargs") TorusParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 P: gp_Pnt
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
-parametrization P (U, V) = Location + (MajorRadius + MinorRadius * Cos(U)) * (Cos(V) * XDirection - Sin(V) * YDirection) + MinorRadius * Sin(U) * ZDirection.
+parametrization P (U, V) = Location + (MajorRadius + MinorRadius * std::cos(U)) * (std::cos(V) * XDirection - std::sin(V) * YDirection) + MinorRadius * std::sin(U) * ZDirection.
 ") TorusParameters;
-		static void TorusParameters(const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void TorusParameters(const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ElSLib::TorusUIso ******/
-		/****** md5 signature: 37fe7e3ec73cd2011b9cbf7dc39bd56b ******/
+		/****** md5 signature: 9305ae7e3c7d18d960d8991454fe3318 ******/
 		%feature("compactdefaultargs") TorusUIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
-U: float
+MajorRadius: double
+MinorRadius: double
+U: double
 
 Return
 -------
@@ -1689,18 +1689,18 @@ Description
 -----------
 compute the U Isoparametric gp_Circ of the torus.
 ") TorusUIso;
-		static gp_Circ TorusUIso(const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Real U);
+		static gp_Circ TorusUIso(const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, const double U);
 
 		/****** ElSLib::TorusVIso ******/
-		/****** md5 signature: ab0c458ec8d335c887195482416c196d ******/
+		/****** md5 signature: dabb468d749950e30ad23ddcdc5d28d4 ******/
 		%feature("compactdefaultargs") TorusVIso;
 		%feature("autodoc", "
 Parameters
 ----------
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
-V: float
+MajorRadius: double
+MinorRadius: double
+V: double
 
 Return
 -------
@@ -1710,19 +1710,19 @@ Description
 -----------
 compute the V Isoparametric gp_Circ of the torus.
 ") TorusVIso;
-		static gp_Circ TorusVIso(const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Real V);
+		static gp_Circ TorusVIso(const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius, const double V);
 
 		/****** ElSLib::TorusValue ******/
-		/****** md5 signature: 4c2a0ff740f61b4a46cea362acaa3364 ******/
+		/****** md5 signature: 383c8e1e02d45f6bf2c540ae533ca2be ******/
 		%feature("compactdefaultargs") TorusValue;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pos: gp_Ax3
-MajorRadius: float
-MinorRadius: float
+MajorRadius: double
+MinorRadius: double
 
 Return
 -------
@@ -1732,16 +1732,16 @@ Description
 -----------
 No available documentation.
 ") TorusValue;
-		static gp_Pnt TorusValue(const Standard_Real U, const Standard_Real V, const gp_Ax3 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
+		static gp_Pnt TorusValue(const double U, const double V, const gp_Ax3 & Pos, const double MajorRadius, const double MinorRadius);
 
 		/****** ElSLib::Value ******/
-		/****** md5 signature: 6f5bb1a556b8db99ba566296a1b87e73 ******/
+		/****** md5 signature: 4379e1cff962992cf231a182f488cb6b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Pl: gp_Pln
 
 Return
@@ -1752,16 +1752,16 @@ Description
 -----------
 For elementary surfaces from the gp package (planes, cones, cylinders, spheres and tori), computes the point of parameters (U, V).
 ") Value;
-		static gp_Pnt Value(const Standard_Real U, const Standard_Real V, const gp_Pln & Pl);
+		static gp_Pnt Value(const double U, const double V, const gp_Pln & Pl);
 
 		/****** ElSLib::Value ******/
-		/****** md5 signature: a373832afa323b501e93b7891b224ee1 ******/
+		/****** md5 signature: b3130e24b9346696b5d9e734672ae7c2 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cone
 
 Return
@@ -1772,16 +1772,16 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const Standard_Real U, const Standard_Real V, const gp_Cone & C);
+		static gp_Pnt Value(const double U, const double V, const gp_Cone & C);
 
 		/****** ElSLib::Value ******/
-		/****** md5 signature: 7c20fe60e441dc10e5d46525a67c4d1c ******/
+		/****** md5 signature: d19e98bde011629f8aeb8e7b894dec9e ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 C: gp_Cylinder
 
 Return
@@ -1792,16 +1792,16 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const Standard_Real U, const Standard_Real V, const gp_Cylinder & C);
+		static gp_Pnt Value(const double U, const double V, const gp_Cylinder & C);
 
 		/****** ElSLib::Value ******/
-		/****** md5 signature: f965d2cccc915fb129b4b68d50a21583 ******/
+		/****** md5 signature: cc8e2cfb5dd5e71df73221c0a3580a67 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 S: gp_Sphere
 
 Return
@@ -1812,16 +1812,16 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const Standard_Real U, const Standard_Real V, const gp_Sphere & S);
+		static gp_Pnt Value(const double U, const double V, const gp_Sphere & S);
 
 		/****** ElSLib::Value ******/
-		/****** md5 signature: e8ae5be93a05a3539c4739aaa2248aab ******/
+		/****** md5 signature: 073b79a9089119b4a0171c2f6e0c8312 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 T: gp_Torus
 
 Return
@@ -1832,7 +1832,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const Standard_Real U, const Standard_Real V, const gp_Torus & T);
+		static gp_Pnt Value(const double U, const double V, const gp_Torus & T);
 
 };
 

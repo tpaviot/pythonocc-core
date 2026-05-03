@@ -303,7 +303,7 @@ Reset the Iterator on sub-shapes of <aShape>.
 		void Init(const TopoDS_Shape & aShape);
 
 		/****** BRepSweep_Iterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -313,7 +313,7 @@ Description
 -----------
 Returns True if there is a current sub-shape.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BRepSweep_Iterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -370,7 +370,7 @@ Returns the current sub-shape.
 class BRepSweep_NumLinearRegularSweep {
 	public:
 		/****** BRepSweep_NumLinearRegularSweep::Closed ******/
-		/****** md5 signature: 6964da666f9b5a80bedb32cfb1fdc0ba ******/
+		/****** md5 signature: 3af99e52b24f54eb2b999649fc18915a ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -380,7 +380,7 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** BRepSweep_NumLinearRegularSweep::DirectSolid ******/
 		/****** md5 signature: 467ad4e54890d65522aecc070a205901 ******/
@@ -433,7 +433,7 @@ Returns the resulting Shape indexed by the first Vertex of myDirWire and aGenS.
 		TopoDS_Shape FirstShape(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_NumLinearRegularSweep::GDDShapeIsToAdd ******/
-		/****** md5 signature: fe88d75093634a6a9b82af7ecb844883 ******/
+		/****** md5 signature: 639f5938fdb0411d9fda00ccaab12f27 ******/
 		%feature("compactdefaultargs") GDDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -452,10 +452,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aGenS and aSubDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GDDShapeIsToAdd;
-		virtual Standard_Boolean GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
+		virtual bool GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
 
 		/****** BRepSweep_NumLinearRegularSweep::GGDShapeIsToAdd ******/
-		/****** md5 signature: 9fa440fddebdfb679e9340eb82dffc8a ******/
+		/****** md5 signature: 90de6523608ede01c87a7907ddcb0b21 ******/
 		%feature("compactdefaultargs") GGDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -474,10 +474,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aSubGenS and aDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GGDShapeIsToAdd;
-		virtual Standard_Boolean GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		virtual bool GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_NumLinearRegularSweep::GenIsUsed ******/
-		/****** md5 signature: 2eee5f7a9e572952f4de3dcfe523608a ******/
+		/****** md5 signature: fd1f0f955c0bd8fc0265a6afa2d4acf6 ******/
 		%feature("compactdefaultargs") GenIsUsed;
 		%feature("autodoc", "
 Parameters
@@ -492,10 +492,10 @@ Description
 -----------
 Returns true if the shape, generated from theS is used in result shape.
 ") GenIsUsed;
-		Standard_Boolean GenIsUsed(const TopoDS_Shape & theS);
+		bool GenIsUsed(const TopoDS_Shape & theS);
 
 		/****** BRepSweep_NumLinearRegularSweep::HasShape ******/
-		/****** md5 signature: 20f9af4b351b229b5a6f40f7e751b053 ******/
+		/****** md5 signature: b34651fc3cfdd338f3e3fc76b4e1d7ac ******/
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "
 Parameters
@@ -511,10 +511,10 @@ Description
 -----------
 Returns true if aDirS and aGenS addresses a resulting Shape. In some specific cases the shape can be geometrically inexsistant, then this function returns false.
 ") HasShape;
-		virtual Standard_Boolean HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
+		virtual bool HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_NumLinearRegularSweep::IsInvariant ******/
-		/****** md5 signature: 9d05aaff715a168d29ddf032477dee17 ******/
+		/****** md5 signature: f3d36ed3360c2eae5e8415ba1e0a8dea ******/
 		%feature("compactdefaultargs") IsInvariant;
 		%feature("autodoc", "
 Parameters
@@ -529,10 +529,10 @@ Description
 -----------
 Returns true if aGenS cannot be transformed.
 ") IsInvariant;
-		virtual Standard_Boolean IsInvariant(const TopoDS_Shape & aGenS);
+		virtual bool IsInvariant(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_NumLinearRegularSweep::IsUsed ******/
-		/****** md5 signature: 6c55c7bbee1cca89bd9680a50ccdcec0 ******/
+		/****** md5 signature: 10fa0678b750fea7a9f656dd3aaebc48 ******/
 		%feature("compactdefaultargs") IsUsed;
 		%feature("autodoc", "
 Parameters
@@ -547,7 +547,7 @@ Description
 -----------
 Returns true if the initial shape aGenS is used in result shape.
 ") IsUsed;
-		Standard_Boolean IsUsed(const TopoDS_Shape & aGenS);
+		bool IsUsed(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_NumLinearRegularSweep::LastShape ******/
 		/****** md5 signature: 1988f5b4cf413dea813498473161b41a ******/
@@ -657,7 +657,7 @@ Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but witho
 		virtual TopoDS_Shape MakeEmptyVertex(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_NumLinearRegularSweep::SeparatedWires ******/
-		/****** md5 signature: 59729d23b465e6739a88651dce236e8e ******/
+		/****** md5 signature: ef3382cfa499cdbd95589b711de7194d ******/
 		%feature("compactdefaultargs") SeparatedWires;
 		%feature("autodoc", "
 Parameters
@@ -676,7 +676,7 @@ Description
 -----------
 In some particular cases the topology of a generated face must be composed of independent closed wires, in this case this function returns true.
 ") SeparatedWires;
-		virtual Standard_Boolean SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		virtual bool SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_NumLinearRegularSweep::SetContinuity ******/
 		/****** md5 signature: 78a1073d0172ad1dff1fc828f4c35e5b ******/
@@ -915,15 +915,15 @@ In some particular cases the topology of a generated Shell must be composed of i
 class BRepSweep_Prism {
 	public:
 		/****** BRepSweep_Prism::BRepSweep_Prism ******/
-		/****** md5 signature: 8a50c07b3584cdb6ef78115e1d21e740 ******/
+		/****** md5 signature: adafacd8cfd5dbb2d4c12c16a5551b3a ******/
 		%feature("compactdefaultargs") BRepSweep_Prism;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 V: gp_Vec
-Copy: bool (optional, default to Standard_False)
-Canonize: bool (optional, default to Standard_True)
+Copy: bool (optional, default to false)
+Canonize: bool (optional, default to true)
 
 Return
 -------
@@ -933,19 +933,19 @@ Description
 -----------
 Builds the prism of base S and vector V. If C is true, S is copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types.
 ") BRepSweep_Prism;
-		 BRepSweep_Prism(const TopoDS_Shape & S, const gp_Vec & V, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
+		 BRepSweep_Prism(const TopoDS_Shape & S, const gp_Vec & V, const bool Copy = false, const bool Canonize = true);
 
 		/****** BRepSweep_Prism::BRepSweep_Prism ******/
-		/****** md5 signature: 38c094323dc54f925ddebf265609afdc ******/
+		/****** md5 signature: 821521ad254e99067895d822e55f52bb ******/
 		%feature("compactdefaultargs") BRepSweep_Prism;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 D: gp_Dir
-Inf: bool (optional, default to Standard_True)
-Copy: bool (optional, default to Standard_False)
-Canonize: bool (optional, default to Standard_True)
+Inf: bool (optional, default to true)
+Copy: bool (optional, default to false)
+Canonize: bool (optional, default to true)
 
 Return
 -------
@@ -955,7 +955,7 @@ Description
 -----------
 Builds a semi-infinite or an infinite prism of base S. If Copy is true S is copied. If Inf is true the prism is infinite, if Inf is false the prism is infinite in the direction D. If Canonize is true then generated surfaces are attempted to be canonized in simple types.
 ") BRepSweep_Prism;
-		 BRepSweep_Prism(const TopoDS_Shape & S, const gp_Dir & D, const Standard_Boolean Inf = Standard_True, const Standard_Boolean Copy = Standard_False, const Standard_Boolean Canonize = Standard_True);
+		 BRepSweep_Prism(const TopoDS_Shape & S, const gp_Dir & D, const bool Inf = true, const bool Copy = false, const bool Canonize = true);
 
 		/****** BRepSweep_Prism::FirstShape ******/
 		/****** md5 signature: 99e62ccf294eacd7ee50fd33dc8f595f ******/
@@ -989,7 +989,7 @@ Returns the TopoDS Shape of the bottom of the prism. generated with aGenS (subSh
 		TopoDS_Shape FirstShape(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Prism::GenIsUsed ******/
-		/****** md5 signature: 2eee5f7a9e572952f4de3dcfe523608a ******/
+		/****** md5 signature: fd1f0f955c0bd8fc0265a6afa2d4acf6 ******/
 		%feature("compactdefaultargs") GenIsUsed;
 		%feature("autodoc", "
 Parameters
@@ -1004,10 +1004,10 @@ Description
 -----------
 Returns true if the shape, generated from theS is used in result shape.
 ") GenIsUsed;
-		Standard_Boolean GenIsUsed(const TopoDS_Shape & theS);
+		bool GenIsUsed(const TopoDS_Shape & theS);
 
 		/****** BRepSweep_Prism::IsUsed ******/
-		/****** md5 signature: 6c55c7bbee1cca89bd9680a50ccdcec0 ******/
+		/****** md5 signature: 10fa0678b750fea7a9f656dd3aaebc48 ******/
 		%feature("compactdefaultargs") IsUsed;
 		%feature("autodoc", "
 Parameters
@@ -1022,7 +1022,7 @@ Description
 -----------
 Returns true if the aGenS is used in resulting shape.
 ") IsUsed;
-		Standard_Boolean IsUsed(const TopoDS_Shape & aGenS);
+		bool IsUsed(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Prism::LastShape ******/
 		/****** md5 signature: 1988f5b4cf413dea813498473161b41a ******/
@@ -1114,15 +1114,15 @@ Returns the Vector of the Prism, if it is an infinite prism the Vec is unitar.
 class BRepSweep_Revol {
 	public:
 		/****** BRepSweep_Revol::BRepSweep_Revol ******/
-		/****** md5 signature: 8d47a9098cea3ba3286b2b0f0097229c ******/
+		/****** md5 signature: 2b1ba77a4bad184c5d2a94ef99f9c26d ******/
 		%feature("compactdefaultargs") BRepSweep_Revol;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 A: gp_Ax1
-D: float
-C: bool (optional, default to Standard_False)
+D: double
+C: bool (optional, default to false)
 
 Return
 -------
@@ -1132,17 +1132,17 @@ Description
 -----------
 Builds the Revol of meridian S axis A and angle D. If C is true S is copied.
 ") BRepSweep_Revol;
-		 BRepSweep_Revol(const TopoDS_Shape & S, const gp_Ax1 & A, const Standard_Real D, const Standard_Boolean C = Standard_False);
+		 BRepSweep_Revol(const TopoDS_Shape & S, const gp_Ax1 & A, const double D, const bool C = false);
 
 		/****** BRepSweep_Revol::BRepSweep_Revol ******/
-		/****** md5 signature: f16f016d2fc715defa64e7bfaa3e89a6 ******/
+		/****** md5 signature: b6751ee465bd2d98e3d9e04c16619e9a ******/
 		%feature("compactdefaultargs") BRepSweep_Revol;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 A: gp_Ax1
-C: bool (optional, default to Standard_False)
+C: bool (optional, default to false)
 
 Return
 -------
@@ -1152,20 +1152,20 @@ Description
 -----------
 Builds the Revol of meridian S axis A and angle 2*Pi. If C is true S is copied.
 ") BRepSweep_Revol;
-		 BRepSweep_Revol(const TopoDS_Shape & S, const gp_Ax1 & A, const Standard_Boolean C = Standard_False);
+		 BRepSweep_Revol(const TopoDS_Shape & S, const gp_Ax1 & A, const bool C = false);
 
 		/****** BRepSweep_Revol::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the angle.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** BRepSweep_Revol::Axe ******/
 		/****** md5 signature: ae9358c470f1ac8b11f3860f80ec2cd7 ******/
@@ -1212,7 +1212,7 @@ Returns the first shape of the revol (coinciding with the generating shape).
 		TopoDS_Shape FirstShape(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Revol::IsUsed ******/
-		/****** md5 signature: 6c55c7bbee1cca89bd9680a50ccdcec0 ******/
+		/****** md5 signature: 10fa0678b750fea7a9f656dd3aaebc48 ******/
 		%feature("compactdefaultargs") IsUsed;
 		%feature("autodoc", "
 Parameters
@@ -1227,7 +1227,7 @@ Description
 -----------
 Returns true if the aGenS is used in resulting Shape.
 ") IsUsed;
-		Standard_Boolean IsUsed(const TopoDS_Shape & aGenS);
+		bool IsUsed(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Revol::LastShape ******/
 		/****** md5 signature: 1988f5b4cf413dea813498473161b41a ******/
@@ -1324,7 +1324,7 @@ Initialize the tool with <aShape>. The IndexTool must prepare an indexation for 
 		 BRepSweep_Tool(const TopoDS_Shape & aShape);
 
 		/****** BRepSweep_Tool::Index ******/
-		/****** md5 signature: f2df6704dd6a221c450c874e56f265b1 ******/
+		/****** md5 signature: 2f0d7465ae86ea5f7e124fe93b6c1d97 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -1339,10 +1339,10 @@ Description
 -----------
 Returns the index of <aShape>.
 ") Index;
-		Standard_Integer Index(const TopoDS_Shape & aShape);
+		int Index(const TopoDS_Shape & aShape);
 
 		/****** BRepSweep_Tool::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -1352,7 +1352,7 @@ Description
 -----------
 Returns the number of subshapes in the shape.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** BRepSweep_Tool::Orientation ******/
 		/****** md5 signature: 3e6195d49fb7b31ece701e3a305e5410 ******/
@@ -1392,7 +1392,7 @@ Set the Orientation of <aShape> with Or.
 		void SetOrientation(TopoDS_Shape & aShape, const TopAbs_Orientation Or);
 
 		/****** BRepSweep_Tool::Shape ******/
-		/****** md5 signature: c1f5f0f58a7a298380121ab4ee711fa5 ******/
+		/****** md5 signature: ef596fa7b9cc679ae04b4738863ea2eb ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1407,7 +1407,7 @@ Description
 -----------
 Returns the Shape at Index anIdex.
 ") Shape;
-		TopoDS_Shape Shape(const Standard_Integer anIndex);
+		TopoDS_Shape Shape(const int anIndex);
 
 		/****** BRepSweep_Tool::Type ******/
 		/****** md5 signature: 2e9c60b86d2e6a35e37e3b8ab7f4ee8d ******/
@@ -1443,7 +1443,7 @@ Returns the type of <aShape>.
 class BRepSweep_Trsf : public BRepSweep_NumLinearRegularSweep {
 	public:
 		/****** BRepSweep_Trsf::GDDShapeIsToAdd ******/
-		/****** md5 signature: fe88d75093634a6a9b82af7ecb844883 ******/
+		/****** md5 signature: a8103a431d7b89856ea3547ae994e012 ******/
 		%feature("compactdefaultargs") GDDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -1462,10 +1462,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aGenS and aSubDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GDDShapeIsToAdd;
-		virtual Standard_Boolean GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
+		bool GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
 
 		/****** BRepSweep_Trsf::GGDShapeIsToAdd ******/
-		/****** md5 signature: 9fa440fddebdfb679e9340eb82dffc8a ******/
+		/****** md5 signature: 84f0c52a97158775b3cb4f837b11c47b ******/
 		%feature("compactdefaultargs") GGDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -1484,10 +1484,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aSubGenS and aDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GGDShapeIsToAdd;
-		virtual Standard_Boolean GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		bool GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Trsf::HasShape ******/
-		/****** md5 signature: 20f9af4b351b229b5a6f40f7e751b053 ******/
+		/****** md5 signature: 3fde53622fc116227c77c923496b9bd2 ******/
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "
 Parameters
@@ -1503,7 +1503,7 @@ Description
 -----------
 Returns true if aDirS and aGenS addresses a resulting Shape. In some specific cases the shape can be geometrically inexsistant, then this function returns false.
 ") HasShape;
-		virtual Standard_Boolean HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
+		bool HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Trsf::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -1519,7 +1519,7 @@ ends the construction of the swept primitive calling the virtual geometric funct
 		void Init();
 
 		/****** BRepSweep_Trsf::IsInvariant ******/
-		/****** md5 signature: 9d05aaff715a168d29ddf032477dee17 ******/
+		/****** md5 signature: 24121c3ebee1870931c4fb027efb6fe7 ******/
 		%feature("compactdefaultargs") IsInvariant;
 		%feature("autodoc", "
 Parameters
@@ -1534,10 +1534,10 @@ Description
 -----------
 Returns true if the geometry of aGenS is not modified by the trsf of the BRepSweep Trsf.
 ") IsInvariant;
-		virtual Standard_Boolean IsInvariant(const TopoDS_Shape & aGenS);
+		bool IsInvariant(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Trsf::MakeEmptyDirectingEdge ******/
-		/****** md5 signature: 2aab75cc53737cfb5bfdef4c69ec0563 ******/
+		/****** md5 signature: 663f258d74c3e6ebcde6402be58b7900 ******/
 		%feature("compactdefaultargs") MakeEmptyDirectingEdge;
 		%feature("autodoc", "
 Parameters
@@ -1553,10 +1553,10 @@ Description
 -----------
 Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without subcomponents.
 ") MakeEmptyDirectingEdge;
-		virtual TopoDS_Shape MakeEmptyDirectingEdge(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE);
+		TopoDS_Shape MakeEmptyDirectingEdge(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE);
 
 		/****** BRepSweep_Trsf::MakeEmptyFace ******/
-		/****** md5 signature: 31039ada5c38b16e74d987b5f6927423 ******/
+		/****** md5 signature: 96e0ba95d4e4b967ef9cfc60f6cebba0 ******/
 		%feature("compactdefaultargs") MakeEmptyFace;
 		%feature("autodoc", "
 Parameters
@@ -1572,10 +1572,10 @@ Description
 -----------
 Builds the face addressed by [aGenS,aDirS], with its geometric part, but without subcomponents. The couple aGenS, aDirS can be a 'generating face and a directing vertex' or 'a generating edge and a directing edge'.
 ") MakeEmptyFace;
-		virtual TopoDS_Shape MakeEmptyFace(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
+		TopoDS_Shape MakeEmptyFace(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Trsf::MakeEmptyGeneratingEdge ******/
-		/****** md5 signature: 23e17669af9dbd7ec9fe69968d38e689 ******/
+		/****** md5 signature: d9c6e73a37fc8fe98f6a9e510480030e ******/
 		%feature("compactdefaultargs") MakeEmptyGeneratingEdge;
 		%feature("autodoc", "
 Parameters
@@ -1591,10 +1591,10 @@ Description
 -----------
 Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without subcomponents.
 ") MakeEmptyGeneratingEdge;
-		virtual TopoDS_Shape MakeEmptyGeneratingEdge(const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV);
+		TopoDS_Shape MakeEmptyGeneratingEdge(const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Trsf::MakeEmptyVertex ******/
-		/****** md5 signature: 65fb4c43c0fb4fc058233497f0455f67 ******/
+		/****** md5 signature: 462c78ddbd677bbbcc15246413beecc8 ******/
 		%feature("compactdefaultargs") MakeEmptyVertex;
 		%feature("autodoc", "
 Parameters
@@ -1610,10 +1610,10 @@ Description
 -----------
 Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but without subcomponents.
 ") MakeEmptyVertex;
-		virtual TopoDS_Shape MakeEmptyVertex(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
+		TopoDS_Shape MakeEmptyVertex(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Trsf::Process ******/
-		/****** md5 signature: 5531c3417943534a0975ac67d55763b7 ******/
+		/****** md5 signature: b54c6083207b0304834c0ce8b0ec7a8b ******/
 		%feature("compactdefaultargs") Process;
 		%feature("autodoc", "
 Parameters
@@ -1629,10 +1629,10 @@ Description
 -----------
 function called to analyze the way of construction of the shapes generated by aGenS and aDirV.
 ") Process;
-		Standard_Boolean Process(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirV);
+		bool Process(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Trsf::SeparatedWires ******/
-		/****** md5 signature: 59729d23b465e6739a88651dce236e8e ******/
+		/****** md5 signature: f335c1e9042ed6c97cadb2bd63d4bb06 ******/
 		%feature("compactdefaultargs") SeparatedWires;
 		%feature("autodoc", "
 Parameters
@@ -1651,10 +1651,10 @@ Description
 -----------
 In some particular cases the topology of a generated face must be composed of independent closed wires, in this case this function returns true.
 ") SeparatedWires;
-		virtual Standard_Boolean SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		bool SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Trsf::SetContinuity ******/
-		/****** md5 signature: 37089da5d56ab940e9d05de1978f2d84 ******/
+		/****** md5 signature: 16834adaedaedc779669b1bb551f3502 ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -1673,7 +1673,7 @@ Called to propagate the continuity of every vertex between two edges of the gene
 		void SetContinuity(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Trsf::SetDirectingPCurve ******/
-		/****** md5 signature: b0f97a562d10fef4a186a331be6109f4 ******/
+		/****** md5 signature: bf4d9186f5a7215cb12461678633de02 ******/
 		%feature("compactdefaultargs") SetDirectingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1693,10 +1693,10 @@ Description
 -----------
 Sets the PCurve for a new edge on a new face. The new edge and the new face were generated using aGenE, aDirE and aGenV.
 ") SetDirectingPCurve;
-		virtual void SetDirectingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const TopAbs_Orientation orien);
+		void SetDirectingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Trsf::SetDirectingParameter ******/
-		/****** md5 signature: 08b0629c42aaa96e43af7f24cbb9257b ******/
+		/****** md5 signature: 259d9dec6c3a93149b0573e4de79fe42 ******/
 		%feature("compactdefaultargs") SetDirectingParameter;
 		%feature("autodoc", "
 Parameters
@@ -1715,10 +1715,10 @@ Description
 -----------
 Sets the parameter of the new vertex on the new edge. The new edge and new vertex where generated from aGenV aDirE, and aDirV.
 ") SetDirectingParameter;
-		virtual void SetDirectingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV);
+		void SetDirectingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Trsf::SetGeneratingPCurve ******/
-		/****** md5 signature: c6bfd0a789cdcef392f507b01f9589ba ******/
+		/****** md5 signature: dcd5041f77513a8594fd41f64a897e69 ******/
 		%feature("compactdefaultargs") SetGeneratingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1738,10 +1738,10 @@ Description
 -----------
 Sets the PCurve for a new edge on a new face. The new edge and the new face were generated using aGenE, aDirE and aDirV.
 ") SetGeneratingPCurve;
-		virtual void SetGeneratingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
+		void SetGeneratingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Trsf::SetGeneratingParameter ******/
-		/****** md5 signature: 1ae98cd619b9a59c964fca35b3740112 ******/
+		/****** md5 signature: 84713397c8df071daa9c0f33622e293c ******/
 		%feature("compactdefaultargs") SetGeneratingParameter;
 		%feature("autodoc", "
 Parameters
@@ -1758,12 +1758,12 @@ None
 
 Description
 -----------
-Sets the parameter of the new vertex on the new edge. The new edge and new vertex where generated from aGenE, aGenV and aDirV .
+Sets the parameter of the new vertex on the new edge. The new edge and new vertex where generated from aGenE, aGenV and aDirV.
 ") SetGeneratingParameter;
-		virtual void SetGeneratingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
+		void SetGeneratingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Trsf::SetPCurve ******/
-		/****** md5 signature: c0047c2fbc5572ce3e8faa535000b53b ******/
+		/****** md5 signature: c5401b2e52877ccc88daabe6528ef1a8 ******/
 		%feature("compactdefaultargs") SetPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1783,10 +1783,10 @@ Description
 -----------
 Sets the PCurve for a new edge on a new face. The new edge and the new face were generated using aGenF, aGenE and aDirV.
 ") SetPCurve;
-		virtual void SetPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
+		void SetPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Trsf::SetParameters ******/
-		/****** md5 signature: 0f6f4a8a442b075a2da09819fc70d120 ******/
+		/****** md5 signature: b41e04d94aebefd31355bde62013ac9c ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
@@ -1803,9 +1803,9 @@ None
 
 Description
 -----------
-Sets the parameters of the new vertex on the new face. The new face and new vertex where generated from aGenF, aGenV and aDirV .
+Sets the parameters of the new vertex on the new face. The new face and new vertex where generated from aGenF, aGenV and aDirV.
 ") SetParameters;
-		virtual void SetParameters(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
+		void SetParameters(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 };
 
@@ -1822,7 +1822,7 @@ Sets the parameters of the new vertex on the new face. The new face and new vert
 class BRepSweep_Rotation : public BRepSweep_Trsf {
 	public:
 		/****** BRepSweep_Rotation::BRepSweep_Rotation ******/
-		/****** md5 signature: e05b8c8ad1e8a545059b8133e5773ece ******/
+		/****** md5 signature: 4727fcc5a4d71c084f259fb6fddaf167 ******/
 		%feature("compactdefaultargs") BRepSweep_Rotation;
 		%feature("autodoc", "
 Parameters
@@ -1831,7 +1831,7 @@ S: TopoDS_Shape
 N: Sweep_NumShape
 L: TopLoc_Location
 A: gp_Ax1
-D: float
+D: double
 C: bool
 
 Return
@@ -1842,20 +1842,20 @@ Description
 -----------
 Creates a topology by rotating <S> around A with the angle D.
 ") BRepSweep_Rotation;
-		 BRepSweep_Rotation(const TopoDS_Shape & S, const Sweep_NumShape & N, const TopLoc_Location & L, const gp_Ax1 & A, const Standard_Real D, const Standard_Boolean C);
+		 BRepSweep_Rotation(const TopoDS_Shape & S, const Sweep_NumShape & N, const TopLoc_Location & L, const gp_Ax1 & A, const double D, const bool C);
 
 		/****** BRepSweep_Rotation::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the angle.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** BRepSweep_Rotation::Axe ******/
 		/****** md5 signature: ae9358c470f1ac8b11f3860f80ec2cd7 ******/
@@ -1871,7 +1871,7 @@ returns the axis.
 		gp_Ax1 Axe();
 
 		/****** BRepSweep_Rotation::DirectSolid ******/
-		/****** md5 signature: 9cb0ca77deb76ca34b12ea167a341446 ******/
+		/****** md5 signature: 9fe4419d7348eb29f7af415418ba2595 ******/
 		%feature("compactdefaultargs") DirectSolid;
 		%feature("autodoc", "
 Parameters
@@ -1890,7 +1890,7 @@ Returns the Orientation of the shell in the solid generated by the face aGenS wi
 		TopAbs_Orientation DirectSolid(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Rotation::GDDShapeIsToAdd ******/
-		/****** md5 signature: 2cfce7bc408f276129caef6b714b93db ******/
+		/****** md5 signature: 302cc23038cbe775e87899dda8f3dbe8 ******/
 		%feature("compactdefaultargs") GDDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -1909,10 +1909,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aGenS and aSubDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GDDShapeIsToAdd;
-		Standard_Boolean GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
+		bool GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
 
 		/****** BRepSweep_Rotation::GGDShapeIsToAdd ******/
-		/****** md5 signature: f76ffaf46f9b0140f61fbb7b95e70ed3 ******/
+		/****** md5 signature: eb8ece902aa3fe1b7ad9a7f983ca5bb4 ******/
 		%feature("compactdefaultargs") GGDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -1931,10 +1931,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aSubGenS and aDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GGDShapeIsToAdd;
-		Standard_Boolean GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		bool GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Rotation::HasShape ******/
-		/****** md5 signature: 711d609505b211d9a398bccd167235e0 ******/
+		/****** md5 signature: 1e330367c2366d126d8bcec20a65bd90 ******/
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "
 Parameters
@@ -1950,10 +1950,10 @@ Description
 -----------
 Returns true if aDirS and aGenS addresses a resulting Shape. In some specific cases the shape can be geometrically inexsistant, then this function returns false.
 ") HasShape;
-		Standard_Boolean HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
+		bool HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Rotation::IsInvariant ******/
-		/****** md5 signature: 20d6e3772ed9b3bde1eae17149263c8b ******/
+		/****** md5 signature: 671da5e6c0a8bb507971f8b3bf37a714 ******/
 		%feature("compactdefaultargs") IsInvariant;
 		%feature("autodoc", "
 Parameters
@@ -1968,10 +1968,10 @@ Description
 -----------
 Returns true when the geometry of aGenS is not modified by the rotation.
 ") IsInvariant;
-		Standard_Boolean IsInvariant(const TopoDS_Shape & aGenS);
+		bool IsInvariant(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Rotation::MakeEmptyDirectingEdge ******/
-		/****** md5 signature: 0f93e821c4aa02ba0f107ee7052c361e ******/
+		/****** md5 signature: 9ff8ad2d06a9791f1720d0cb720a9579 ******/
 		%feature("compactdefaultargs") MakeEmptyDirectingEdge;
 		%feature("autodoc", "
 Parameters
@@ -1990,7 +1990,7 @@ Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without
 		TopoDS_Shape MakeEmptyDirectingEdge(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE);
 
 		/****** BRepSweep_Rotation::MakeEmptyFace ******/
-		/****** md5 signature: 98e50f7aa97124fb05b166b09df39c7b ******/
+		/****** md5 signature: 57e7905efee919833de51d86de676fcc ******/
 		%feature("compactdefaultargs") MakeEmptyFace;
 		%feature("autodoc", "
 Parameters
@@ -2009,7 +2009,7 @@ Builds the face addressed by [aGenS,aDirS], with its geometric part, but without
 		TopoDS_Shape MakeEmptyFace(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Rotation::MakeEmptyGeneratingEdge ******/
-		/****** md5 signature: 7f34a55a558b66e59d2526bcd9cc7fac ******/
+		/****** md5 signature: 2d7b7e6cae6a627df92b5db75c420f8d ******/
 		%feature("compactdefaultargs") MakeEmptyGeneratingEdge;
 		%feature("autodoc", "
 Parameters
@@ -2028,7 +2028,7 @@ Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without
 		TopoDS_Shape MakeEmptyGeneratingEdge(const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Rotation::MakeEmptyVertex ******/
-		/****** md5 signature: 4030e180c6a95c0f80633cbf091de2aa ******/
+		/****** md5 signature: a01c8260727a7ca7999d738ad0bfa7d4 ******/
 		%feature("compactdefaultargs") MakeEmptyVertex;
 		%feature("autodoc", "
 Parameters
@@ -2047,7 +2047,7 @@ Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but witho
 		TopoDS_Shape MakeEmptyVertex(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Rotation::SeparatedWires ******/
-		/****** md5 signature: 739dcb9703dcd526a3fe95d4061137b6 ******/
+		/****** md5 signature: ce3a6748c8b02ec77de20af8912bd9b0 ******/
 		%feature("compactdefaultargs") SeparatedWires;
 		%feature("autodoc", "
 Parameters
@@ -2066,10 +2066,10 @@ Description
 -----------
 In some particular cases the topology of a generated face must be composed of independent closed wires, in this case this function returns true. The only case in which the function may return true is a planar face in a closed revol.
 ") SeparatedWires;
-		Standard_Boolean SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		bool SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Rotation::SetDirectingPCurve ******/
-		/****** md5 signature: ac278d087240b35efa4b4e9de80b53ad ******/
+		/****** md5 signature: 4588632e312aac9ec998bf4642841e00 ******/
 		%feature("compactdefaultargs") SetDirectingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2092,7 +2092,7 @@ Sets the PCurve for a new edge on a new face. The new edge and the new face were
 		void SetDirectingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Rotation::SetDirectingParameter ******/
-		/****** md5 signature: ddc02383cd4f7c52eece59495c5ca915 ******/
+		/****** md5 signature: 80fe67c8b2fe1635fa8c7077f7ff3985 ******/
 		%feature("compactdefaultargs") SetDirectingParameter;
 		%feature("autodoc", "
 Parameters
@@ -2114,7 +2114,7 @@ Sets the parameter of the new vertex on the new edge. The new edge and new verte
 		void SetDirectingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Rotation::SetGeneratingPCurve ******/
-		/****** md5 signature: c76422746bf77e364ca36e17af28e484 ******/
+		/****** md5 signature: 3ef923eb92c5b61d74805386fadb49f3 ******/
 		%feature("compactdefaultargs") SetGeneratingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2137,7 +2137,7 @@ Sets the PCurve for a new edge on a new face. The new edge and the new face were
 		void SetGeneratingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Rotation::SetGeneratingParameter ******/
-		/****** md5 signature: 928b4f6f046054bb6e378769bfeac8a5 ******/
+		/****** md5 signature: e439298076dffdbe575b9808d1e82385 ******/
 		%feature("compactdefaultargs") SetGeneratingParameter;
 		%feature("autodoc", "
 Parameters
@@ -2159,7 +2159,7 @@ Sets the parameter of the new vertex on the new edge. The new edge and new verte
 		void SetGeneratingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Rotation::SetPCurve ******/
-		/****** md5 signature: 531017a24828b97a1b79fbd881d93b12 ******/
+		/****** md5 signature: d9f42cd537593f47791fb1a0bfee22c3 ******/
 		%feature("compactdefaultargs") SetPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2182,7 +2182,7 @@ Sets the PCurve for a new edge on a new face. The new edge and the new face were
 		void SetPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Rotation::SetParameters ******/
-		/****** md5 signature: d358640d733de7983cfbfe868a9e3846 ******/
+		/****** md5 signature: 49aa7b776292994fbfe2868ba4701401 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
@@ -2204,7 +2204,7 @@ Sets the parameters of the new vertex on the new face. The new face and new vert
 		void SetParameters(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Rotation::SplitShell ******/
-		/****** md5 signature: 04721169aec9020dc4e10a271a4b00bb ******/
+		/****** md5 signature: 0373d81de836145d66179921ca82c1ce ******/
 		%feature("compactdefaultargs") SplitShell;
 		%feature("autodoc", "
 Parameters
@@ -2219,7 +2219,7 @@ Description
 -----------
 In some particular cases the topology of a generated Shell must be composed of independent closed Shells, in this case this function returns a Compound of independent Shells.
 ") SplitShell;
-		virtual TopoDS_Shape SplitShell(const TopoDS_Shape & aNewShape);
+		TopoDS_Shape SplitShell(const TopoDS_Shape & aNewShape);
 
 };
 
@@ -2236,7 +2236,7 @@ In some particular cases the topology of a generated Shell must be composed of i
 class BRepSweep_Translation : public BRepSweep_Trsf {
 	public:
 		/****** BRepSweep_Translation::BRepSweep_Translation ******/
-		/****** md5 signature: 08b25f8206a6f7e202ce4aaea7bc802c ******/
+		/****** md5 signature: b2bea937da30468dece47642ada19084 ******/
 		%feature("compactdefaultargs") BRepSweep_Translation;
 		%feature("autodoc", "
 Parameters
@@ -2246,7 +2246,7 @@ N: Sweep_NumShape
 L: TopLoc_Location
 V: gp_Vec
 C: bool
-Canonize: bool (optional, default to Standard_True)
+Canonize: bool (optional, default to true)
 
 Return
 -------
@@ -2254,12 +2254,12 @@ None
 
 Description
 -----------
-Creates a topology by translating <S> with the vector <V>. If C is true S Sucomponents are copied. If Canonize is true then generated surfaces are attempted to be canonized in simple types.
+Creates a topology by translating <S> with the vector <V>. If C is true S Sucomponents are copied If Canonize is true then generated surfaces are attempted to be canonized in simple types.
 ") BRepSweep_Translation;
-		 BRepSweep_Translation(const TopoDS_Shape & S, const Sweep_NumShape & N, const TopLoc_Location & L, const gp_Vec & V, const Standard_Boolean C, const Standard_Boolean Canonize = Standard_True);
+		 BRepSweep_Translation(const TopoDS_Shape & S, const Sweep_NumShape & N, const TopLoc_Location & L, const gp_Vec & V, const bool C, const bool Canonize = true);
 
 		/****** BRepSweep_Translation::DirectSolid ******/
-		/****** md5 signature: 1e98a941ececf830d972fe0e1b051e61 ******/
+		/****** md5 signature: 9fe4419d7348eb29f7af415418ba2595 ******/
 		%feature("compactdefaultargs") DirectSolid;
 		%feature("autodoc", "
 Parameters
@@ -2278,7 +2278,7 @@ Returns the Orientation of the shell in the solid generated by the face aGenS wi
 		TopAbs_Orientation DirectSolid(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Translation::GDDShapeIsToAdd ******/
-		/****** md5 signature: d9aea4aa9a99d8f03fdb096eceb85a80 ******/
+		/****** md5 signature: 302cc23038cbe775e87899dda8f3dbe8 ******/
 		%feature("compactdefaultargs") GDDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -2297,10 +2297,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aGenS and aSubDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GDDShapeIsToAdd;
-		Standard_Boolean GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
+		bool GDDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS, const Sweep_NumShape & aSubDirS);
 
 		/****** BRepSweep_Translation::GGDShapeIsToAdd ******/
-		/****** md5 signature: 0f2fc383cbd5635177c9320ce4d4fd50 ******/
+		/****** md5 signature: eb8ece902aa3fe1b7ad9a7f983ca5bb4 ******/
 		%feature("compactdefaultargs") GGDShapeIsToAdd;
 		%feature("autodoc", "
 Parameters
@@ -2319,10 +2319,10 @@ Description
 -----------
 Returns true if aNewSubShape (addressed by aSubGenS and aDirS) must be added in aNewShape (addressed by aGenS and aDirS).
 ") GGDShapeIsToAdd;
-		Standard_Boolean GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		bool GGDShapeIsToAdd(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Translation::HasShape ******/
-		/****** md5 signature: 71a14855721136181f7e601dc52ad930 ******/
+		/****** md5 signature: 1e330367c2366d126d8bcec20a65bd90 ******/
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "
 Parameters
@@ -2338,10 +2338,10 @@ Description
 -----------
 Returns true if aDirS and aGenS addresses a resulting Shape. In some specific cases the shape can be geometrically inexsistant, then this function returns false.
 ") HasShape;
-		Standard_Boolean HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
+		bool HasShape(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Translation::IsInvariant ******/
-		/****** md5 signature: 5b066db5fa001b1a153d6adfb0c20a85 ******/
+		/****** md5 signature: 671da5e6c0a8bb507971f8b3bf37a714 ******/
 		%feature("compactdefaultargs") IsInvariant;
 		%feature("autodoc", "
 Parameters
@@ -2356,10 +2356,10 @@ Description
 -----------
 Returns always false because here the transformation is a translation.
 ") IsInvariant;
-		Standard_Boolean IsInvariant(const TopoDS_Shape & aGenS);
+		bool IsInvariant(const TopoDS_Shape & aGenS);
 
 		/****** BRepSweep_Translation::MakeEmptyDirectingEdge ******/
-		/****** md5 signature: 38849a5c3c2911b325ff114fca85ea2c ******/
+		/****** md5 signature: 9ff8ad2d06a9791f1720d0cb720a9579 ******/
 		%feature("compactdefaultargs") MakeEmptyDirectingEdge;
 		%feature("autodoc", "
 Parameters
@@ -2378,7 +2378,7 @@ Builds the edge addressed by [aGenV,aDirE], with its geometric part, but without
 		TopoDS_Shape MakeEmptyDirectingEdge(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE);
 
 		/****** BRepSweep_Translation::MakeEmptyFace ******/
-		/****** md5 signature: 2e9bb3007bfbd0575e1026d1a3f0c6b6 ******/
+		/****** md5 signature: 57e7905efee919833de51d86de676fcc ******/
 		%feature("compactdefaultargs") MakeEmptyFace;
 		%feature("autodoc", "
 Parameters
@@ -2397,7 +2397,7 @@ Builds the face addressed by [aGenS,aDirS], with its geometric part, but without
 		TopoDS_Shape MakeEmptyFace(const TopoDS_Shape & aGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Translation::MakeEmptyGeneratingEdge ******/
-		/****** md5 signature: 036ae7ff9f87f6ad8322cb7cfe2ebf0e ******/
+		/****** md5 signature: 2d7b7e6cae6a627df92b5db75c420f8d ******/
 		%feature("compactdefaultargs") MakeEmptyGeneratingEdge;
 		%feature("autodoc", "
 Parameters
@@ -2416,7 +2416,7 @@ Builds the edge addressed by [aGenE,aDirV], with its geometric part, but without
 		TopoDS_Shape MakeEmptyGeneratingEdge(const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Translation::MakeEmptyVertex ******/
-		/****** md5 signature: 2cabb10fca2f11e5b6e30693c4008fd6 ******/
+		/****** md5 signature: a01c8260727a7ca7999d738ad0bfa7d4 ******/
 		%feature("compactdefaultargs") MakeEmptyVertex;
 		%feature("autodoc", "
 Parameters
@@ -2435,7 +2435,7 @@ Builds the vertex addressed by [aGenV,aDirV], with its geometric part, but witho
 		TopoDS_Shape MakeEmptyVertex(const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Translation::SeparatedWires ******/
-		/****** md5 signature: 7fc703b1ba19708e5eeebc73a6803fc3 ******/
+		/****** md5 signature: ce3a6748c8b02ec77de20af8912bd9b0 ******/
 		%feature("compactdefaultargs") SeparatedWires;
 		%feature("autodoc", "
 Parameters
@@ -2454,10 +2454,10 @@ Description
 -----------
 In some particular cases the topology of a generated face must be composed of independent closed wires, in this case this function returns true. Here it always returns false.
 ") SeparatedWires;
-		Standard_Boolean SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
+		bool SeparatedWires(const TopoDS_Shape & aNewShape, const TopoDS_Shape & aNewSubShape, const TopoDS_Shape & aGenS, const TopoDS_Shape & aSubGenS, const Sweep_NumShape & aDirS);
 
 		/****** BRepSweep_Translation::SetDirectingPCurve ******/
-		/****** md5 signature: bc185c2655e0221d27e7dc24ac617cff ******/
+		/****** md5 signature: 4588632e312aac9ec998bf4642841e00 ******/
 		%feature("compactdefaultargs") SetDirectingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2480,7 +2480,7 @@ Sets the PCurve for a new edge on a new face. The new edge and the new face were
 		void SetDirectingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Translation::SetDirectingParameter ******/
-		/****** md5 signature: adabbfe5e879c458d04ce866541654c2 ******/
+		/****** md5 signature: 80fe67c8b2fe1635fa8c7077f7ff3985 ******/
 		%feature("compactdefaultargs") SetDirectingParameter;
 		%feature("autodoc", "
 Parameters
@@ -2502,7 +2502,7 @@ Sets the parameter of the new vertex on the new edge. The new edge and new verte
 		void SetDirectingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Translation::SetGeneratingPCurve ******/
-		/****** md5 signature: b2fce02ea5e92edb57d0d16b15cc9a8d ******/
+		/****** md5 signature: 3ef923eb92c5b61d74805386fadb49f3 ******/
 		%feature("compactdefaultargs") SetGeneratingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2525,7 +2525,7 @@ Sets the PCurve for a new edge on a new face. The new edge and the new face were
 		void SetGeneratingPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Translation::SetGeneratingParameter ******/
-		/****** md5 signature: 938b35569af58b948eeb07a2cc3f5de6 ******/
+		/****** md5 signature: e439298076dffdbe575b9808d1e82385 ******/
 		%feature("compactdefaultargs") SetGeneratingParameter;
 		%feature("autodoc", "
 Parameters
@@ -2547,7 +2547,7 @@ Sets the parameter of the new vertex on the new edge. The new edge and new verte
 		void SetGeneratingParameter(const TopoDS_Shape & aNewEdge, TopoDS_Shape & aNewVertex, const TopoDS_Shape & aGenE, const TopoDS_Shape & aGenV, const Sweep_NumShape & aDirV);
 
 		/****** BRepSweep_Translation::SetPCurve ******/
-		/****** md5 signature: 16fe81d7a5038184bcfd79b186ef48ff ******/
+		/****** md5 signature: d9f42cd537593f47791fb1a0bfee22c3 ******/
 		%feature("compactdefaultargs") SetPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2570,7 +2570,7 @@ Sets the PCurve for a new edge on a new face. The new edge and the new face were
 		void SetPCurve(const TopoDS_Shape & aNewFace, TopoDS_Shape & aNewEdge, const TopoDS_Shape & aGenF, const TopoDS_Shape & aGenE, const Sweep_NumShape & aDirV, const TopAbs_Orientation orien);
 
 		/****** BRepSweep_Translation::SetParameters ******/
-		/****** md5 signature: 45a1be1aedcb3aaa7aebb14c04352cb0 ******/
+		/****** md5 signature: 49aa7b776292994fbfe2868ba4701401 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters

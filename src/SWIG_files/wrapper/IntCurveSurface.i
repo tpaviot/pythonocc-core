@@ -49,7 +49,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurvesurface.h
 #include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<Intf_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntSurf_module.hxx>
@@ -68,7 +67,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurvesurface.h
 %import Adaptor3d.i
 %import Geom.i
 %import GeomAbs.i
-%import TColStd.i
 %import Intf.i
 %import Bnd.i
 %import IntSurf.i
@@ -148,7 +146,7 @@ Dump all the fields.
 		void Dump();
 
 		/****** IntCurveSurface_Intersection::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -158,10 +156,10 @@ Description
 -----------
 returns the <done> field.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntCurveSurface_Intersection::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -171,10 +169,10 @@ Description
 -----------
 Returns true if curve is parallel or belongs surface This case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** IntCurveSurface_Intersection::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -184,10 +182,10 @@ Description
 -----------
 returns the number of IntersectionPoint if IsDone returns True. else NotDone is raised.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntCurveSurface_Intersection::NbSegments ******/
-		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
+		/****** md5 signature: 9aee6c2253f8ba296b560fdee30e17ad ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -197,10 +195,10 @@ Description
 -----------
 returns the number of IntersectionSegment if IsDone returns True. else NotDone is raised.
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** IntCurveSurface_Intersection::Point ******/
-		/****** md5 signature: d256d65e02c0791f5559745977a1209e ******/
+		/****** md5 signature: 59000dcaae2246109b20c8634724f06c ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -215,10 +213,10 @@ Description
 -----------
 returns the IntersectionPoint of range <Index> raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbPoints>.
 ") Point;
-		IntCurveSurface_IntersectionPoint Point(const Standard_Integer Index);
+		IntCurveSurface_IntersectionPoint Point(const int Index);
 
 		/****** IntCurveSurface_Intersection::Segment ******/
-		/****** md5 signature: 7447c62bdef950bcde1897b587756423 ******/
+		/****** md5 signature: 5c1325b26a75b4cbd4589e92e42ae686 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -233,7 +231,7 @@ Description
 -----------
 returns the IntersectionSegment of range <Index> raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbSegment>.
 ") Segment;
-		IntCurveSurface_IntersectionSegment Segment(const Standard_Integer Index);
+		IntCurveSurface_IntersectionSegment Segment(const int Index);
 
 };
 
@@ -263,15 +261,15 @@ Empty Constructor.
 		 IntCurveSurface_IntersectionPoint();
 
 		/****** IntCurveSurface_IntersectionPoint::IntCurveSurface_IntersectionPoint ******/
-		/****** md5 signature: ccaf6da9f784540c7c0813c49dd41e7d ******/
+		/****** md5 signature: f131a6ad07f06bdcc4ae4cf17d6daf97 ******/
 		%feature("compactdefaultargs") IntCurveSurface_IntersectionPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-USurf: float
-VSurf: float
-UCurv: float
+USurf: double
+VSurf: double
+UCurv: double
 TrCurv: IntCurveSurface_TransitionOnCurve
 
 Return
@@ -282,7 +280,7 @@ Description
 -----------
 Create an IntersectionPoint.
 ") IntCurveSurface_IntersectionPoint;
-		 IntCurveSurface_IntersectionPoint(const gp_Pnt & P, const Standard_Real USurf, const Standard_Real VSurf, const Standard_Real UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
+		 IntCurveSurface_IntersectionPoint(const gp_Pnt & P, const double USurf, const double VSurf, const double UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
 
 		/****** IntCurveSurface_IntersectionPoint::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -311,15 +309,15 @@ returns the geometric point.
 		const gp_Pnt Pnt();
 
 		/****** IntCurveSurface_IntersectionPoint::SetValues ******/
-		/****** md5 signature: 4484a1960ef186062763f9c263178096 ******/
+		/****** md5 signature: a837281e3d678870fa690b0996d2371c ******/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-USurf: float
-VSurf: float
-UCurv: float
+USurf: double
+VSurf: double
+UCurv: double
 TrCurv: IntCurveSurface_TransitionOnCurve
 
 Return
@@ -330,7 +328,7 @@ Description
 -----------
 Set the fields of the current IntersectionPoint.
 ") SetValues;
-		void SetValues(const gp_Pnt & P, const Standard_Real USurf, const Standard_Real VSurf, const Standard_Real UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
+		void SetValues(const gp_Pnt & P, const double USurf, const double VSurf, const double UCurv, const IntCurveSurface_TransitionOnCurve TrCurv);
 
 		/****** IntCurveSurface_IntersectionPoint::Transition ******/
 		/****** md5 signature: bd528dc9c78a60a5b26409b8cf4f3afe ******/
@@ -346,33 +344,33 @@ returns the Transition of the point.
 		IntCurveSurface_TransitionOnCurve Transition();
 
 		/****** IntCurveSurface_IntersectionPoint::U ******/
-		/****** md5 signature: dd41b21b6ce05c48c2d8d002663816e1 ******/
+		/****** md5 signature: 24a52b75fd4611a4a916df4a2ae4ce79 ******/
 		%feature("compactdefaultargs") U;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the U parameter on the surface.
 ") U;
-		Standard_Real U();
+		double U();
 
 		/****** IntCurveSurface_IntersectionPoint::V ******/
-		/****** md5 signature: a561db1f9ebb0e926d3862b2e88ce187 ******/
+		/****** md5 signature: 9cf199b5c48f75fe3b18269f74bd944d ******/
 		%feature("compactdefaultargs") V;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the V parameter on the surface.
 ") V;
-		Standard_Real V();
+		double V();
 
 		/****** IntCurveSurface_IntersectionPoint::Values ******/
-		/****** md5 signature: 125307a2c06cc906fe4b9af7cc3b2872 ******/
+		/****** md5 signature: 6766346f46da935402da24cf55143472 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -381,9 +379,9 @@ P: gp_Pnt
 
 Return
 -------
-USurf: float
-VSurf: float
-UCurv: float
+USurf: double
+VSurf: double
+UCurv: double
 TrCurv: IntCurveSurface_TransitionOnCurve
 
 Description
@@ -393,17 +391,17 @@ Get the fields of the current IntersectionPoint.
 		void Values(gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, IntCurveSurface_TransitionOnCurve &OutValue);
 
 		/****** IntCurveSurface_IntersectionPoint::W ******/
-		/****** md5 signature: dde24677dd63b48ccacea2fe8006eed7 ******/
+		/****** md5 signature: cbc50f6628b29f2a86ad0521bdf9bc53 ******/
 		%feature("compactdefaultargs") W;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the parameter on the curve.
 ") W;
-		Standard_Real W();
+		double W();
 
 };
 
@@ -624,7 +622,7 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface();
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -640,10 +638,10 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -653,10 +651,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -666,7 +664,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -682,20 +680,20 @@ No available documentation.
 		const gp_Pnt Point();
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -711,10 +709,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** IntCurveSurface_TheCSFunctionOfHInter::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -731,7 +729,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -748,17 +746,17 @@ No available documentation.
 class IntCurveSurface_TheExactHInter {
 	public:
 		/****** IntCurveSurface_TheExactHInter::IntCurveSurface_TheExactHInter ******/
-		/****** md5 signature: 223895d0a9dc70600c94ab17c6dc65dd ******/
+		/****** md5 signature: 702c086fb5eddff760ee7f495a78624b ******/
 		%feature("compactdefaultargs") IntCurveSurface_TheExactHInter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-W: float
+U: double
+V: double
+W: double
 F: IntCurveSurface_TheCSFunctionOfHInter
-TolTangency: float
-MarginCoef: float (optional, default to 0.0)
+TolTangency: double
+MarginCoef: double (optional, default to 0.0)
 
 Return
 -------
@@ -768,16 +766,16 @@ Description
 -----------
 compute the solution point with the close point MarginCoef is the coefficient for extension of UV bounds. Ex., UFirst -= MarginCoef*(ULast-UFirst).
 ") IntCurveSurface_TheExactHInter;
-		 IntCurveSurface_TheExactHInter(const Standard_Real U, const Standard_Real V, const Standard_Real W, const IntCurveSurface_TheCSFunctionOfHInter & F, const Standard_Real TolTangency, const Standard_Real MarginCoef = 0.0);
+		 IntCurveSurface_TheExactHInter(const double U, const double V, const double W, const IntCurveSurface_TheCSFunctionOfHInter & F, const double TolTangency, const double MarginCoef = 0.0);
 
 		/****** IntCurveSurface_TheExactHInter::IntCurveSurface_TheExactHInter ******/
-		/****** md5 signature: 1ab676920576692ff41bf3df7e08260c ******/
+		/****** md5 signature: 2e99f07ebf6d505e6e344e05f80d6ab2 ******/
 		%feature("compactdefaultargs") IntCurveSurface_TheExactHInter;
 		%feature("autodoc", "
 Parameters
 ----------
 F: IntCurveSurface_TheCSFunctionOfHInter
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -787,7 +785,7 @@ Description
 -----------
 initialize the parameters to compute the solution.
 ") IntCurveSurface_TheExactHInter;
-		 IntCurveSurface_TheExactHInter(const IntCurveSurface_TheCSFunctionOfHInter & F, const Standard_Real TolTangency);
+		 IntCurveSurface_TheExactHInter(const IntCurveSurface_TheCSFunctionOfHInter & F, const double TolTangency);
 
 		/****** IntCurveSurface_TheExactHInter::Function ******/
 		/****** md5 signature: 87817a81458dd7b55e723924632b4ea1 ******/
@@ -803,7 +801,7 @@ return the math function which is used to compute the intersection.
 		IntCurveSurface_TheCSFunctionOfHInter & Function();
 
 		/****** IntCurveSurface_TheExactHInter::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -813,10 +811,10 @@ Description
 -----------
 Returns True if the creation completed without failure.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntCurveSurface_TheExactHInter::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -826,23 +824,23 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntCurveSurface_TheExactHInter::ParameterOnCurve ******/
-		/****** md5 signature: ac81682b4b1f0988f8f73835e37144bf ******/
+		/****** md5 signature: 57f5295e1d0243d744a43fcea3cf7388 ******/
 		%feature("compactdefaultargs") ParameterOnCurve;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParameterOnCurve;
-		Standard_Real ParameterOnCurve();
+		double ParameterOnCurve();
 
 		/****** IntCurveSurface_TheExactHInter::ParameterOnSurface ******/
-		/****** md5 signature: b1ff2b42bc6096157075c8f0a6c1b6a5 ******/
+		/****** md5 signature: 7f31eb7c473aecf695130da66c37cc8a ******/
 		%feature("compactdefaultargs") ParameterOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -850,8 +848,8 @@ Parameters
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -860,21 +858,21 @@ No available documentation.
 		void ParameterOnSurface(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntCurveSurface_TheExactHInter::Perform ******/
-		/****** md5 signature: 193bc13b7dd6d13fbf6a72a44d7ddd7b ******/
+		/****** md5 signature: 32414faba82bb6739429b692c1146008 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-W: float
+U: double
+V: double
+W: double
 Rsnld: math_FunctionSetRoot
-u0: float
-v0: float
-u1: float
-v1: float
-w0: float
-w1: float
+u0: double
+v0: double
+u1: double
+v1: double
+w0: double
+w1: double
 
 Return
 -------
@@ -884,7 +882,7 @@ Description
 -----------
 compute the solution it's possible to write to optimize: IntImp_IntCS inter(S1,C1,Toltangency) math_FunctionSetRoot rsnld(Inter.function()) while ...{ u=... v=... w=... inter.Perform(u,v,w,rsnld) } or IntImp_IntCS inter(Toltangency) inter.SetSurface(S); math_FunctionSetRoot rsnld(Inter.function()) while ...{ C=... inter.SetCurve(C); u=... v=... w=... inter.Perform(u,v,w,rsnld) }.
 ") Perform;
-		void Perform(const Standard_Real U, const Standard_Real V, const Standard_Real W, math_FunctionSetRoot & Rsnld, const Standard_Real u0, const Standard_Real v0, const Standard_Real u1, const Standard_Real v1, const Standard_Real w0, const Standard_Real w1);
+		void Perform(const double U, const double V, const double W, math_FunctionSetRoot & Rsnld, const double u0, const double v0, const double u1, const double v1, const double w0, const double w1);
 
 		/****** IntCurveSurface_TheExactHInter::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -986,13 +984,13 @@ No available documentation.
 		static GeomAbs_Shape Continuity(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::D0 ******/
-		/****** md5 signature: 1904835766bb10f31708f629b8bb606d ******/
+		/****** md5 signature: c4c9abda4b04307222fd06dbc649edcb ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U: float
+U: double
 P: gp_Pnt
 
 Return
@@ -1003,16 +1001,16 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		static void D0(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P);
+		static void D0(const opencascade::handle<Adaptor3d_Curve> & C, const double U, gp_Pnt & P);
 
 		/****** IntCurveSurface_TheHCurveTool::D1 ******/
-		/****** md5 signature: 354bdf853d601711ce0e15e45fbe03c7 ******/
+		/****** md5 signature: 383cbf11f3a05591215ff3345f427822 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U: float
+U: double
 P: gp_Pnt
 V: gp_Vec
 
@@ -1024,16 +1022,16 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
+		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const double U, gp_Pnt & P, gp_Vec & V);
 
 		/****** IntCurveSurface_TheHCurveTool::D2 ******/
-		/****** md5 signature: cc9b7dad360ef1436afcb96410e2145a ******/
+		/****** md5 signature: 9cb6049109401bde84aae23bb5afad0a ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1046,16 +1044,16 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** IntCurveSurface_TheHCurveTool::D3 ******/
-		/****** md5 signature: e1e4feeb3ea84a4f70c896deb89d59cd ******/
+		/****** md5 signature: 8fd0cbbb81e20416668374e0d0902fcc ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1069,16 +1067,16 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** IntCurveSurface_TheHCurveTool::DN ******/
-		/****** md5 signature: 33fba57fa0e43164542a459fa95cc32b ******/
+		/****** md5 signature: c475e77fa460933ae409b29cb01e970b ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U: float
+U: double
 N: int
 
 Return
@@ -1089,7 +1087,7 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		static gp_Vec DN(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec DN(const opencascade::handle<Adaptor3d_Curve> & C, const double U, const int N);
 
 		/****** IntCurveSurface_TheHCurveTool::Ellipse ******/
 		/****** md5 signature: de248e1260f87dec86decdd85617a0d4 ******/
@@ -1110,7 +1108,7 @@ No available documentation.
 		static gp_Elips Ellipse(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::FirstParameter ******/
-		/****** md5 signature: 065317d1a0ad241cbbf084ece4451980 ******/
+		/****** md5 signature: c303245480149ff265cc4b53afa4b717 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -1119,13 +1117,13 @@ C: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const opencascade::handle<Adaptor3d_Curve> & C);
+		static double FirstParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::GetType ******/
 		/****** md5 signature: cb051ca1196d0306cf670dc876af9ad8 ******/
@@ -1164,13 +1162,13 @@ No available documentation.
 		static gp_Hypr Hyperbola(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Intervals ******/
-		/****** md5 signature: d5a4bb40cdb6a8b5891abeea0ea89a92 ******/
+		/****** md5 signature: e9fd5b5356455eead7005cf798fdbcc6 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -1181,10 +1179,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** IntCurveSurface_TheHCurveTool::IsClosed ******/
-		/****** md5 signature: aeb1d7388bc1c1c6c162cf2bb09b47c3 ******/
+		/****** md5 signature: b229007a72b110f368a977486fc9b60b ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -1199,10 +1197,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const opencascade::handle<Adaptor3d_Curve> & C);
+		static bool IsClosed(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::IsPeriodic ******/
-		/****** md5 signature: b28709e22e2b6eb72c7ae6c9691d26cc ******/
+		/****** md5 signature: 3063547102afe5d6e2aa4aceb60165e4 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1217,10 +1215,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const opencascade::handle<Adaptor3d_Curve> & C);
+		static bool IsPeriodic(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::LastParameter ******/
-		/****** md5 signature: ddc56989a2eb226d2e27c5454157f912 ******/
+		/****** md5 signature: 5ce70a8541f7a3dc8fd0ebffdfb69f45 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -1229,13 +1227,13 @@ C: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const opencascade::handle<Adaptor3d_Curve> & C);
+		static double LastParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Line ******/
 		/****** md5 signature: 81850752bdbb876955439b815e391b19 ******/
@@ -1256,7 +1254,7 @@ No available documentation.
 		static gp_Lin Line(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::NbIntervals ******/
-		/****** md5 signature: 3aacda9f1e126d5751d268b46a4f7576 ******/
+		/****** md5 signature: 299712a3abb65ab93eeaa449a3885334 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1272,17 +1270,17 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor3d_Curve> & C, const GeomAbs_Shape S);
+		static int NbIntervals(const opencascade::handle<Adaptor3d_Curve> & C, const GeomAbs_Shape S);
 
 		/****** IntCurveSurface_TheHCurveTool::NbSamples ******/
-		/****** md5 signature: b050222a5e2dbdd07a79f2aec3a93db5 ******/
+		/****** md5 signature: 1cd7024b658dee50eb25704471421ead ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U0: float
-U1: float
+U0: double
+U1: double
 
 Return
 -------
@@ -1292,7 +1290,7 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		static Standard_Integer NbSamples(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U0, const Standard_Real U1);
+		static int NbSamples(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1);
 
 		/****** IntCurveSurface_TheHCurveTool::Parabola ******/
 		/****** md5 signature: cd5041b75a0e8fd63a8ea0db7fdf8b69 ******/
@@ -1313,7 +1311,7 @@ No available documentation.
 		static gp_Parab Parabola(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Period ******/
-		/****** md5 signature: c1952c704f70b1bcad49c5690ca1f85f ******/
+		/****** md5 signature: 0ae0eb32c4eff7c382765eda0b120ba4 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
@@ -1322,45 +1320,73 @@ C: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const opencascade::handle<Adaptor3d_Curve> & C);
+		static double Period(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheHCurveTool::Resolution ******/
-		/****** md5 signature: a30595435b718ddc527b3d6b86455085 ******/
+		/****** md5 signature: 6f399c364a8363f505be7715add4af69 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		static Standard_Real Resolution(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real R3d);
+		static double Resolution(const opencascade::handle<Adaptor3d_Curve> & C, const double R3d);
 
 		/****** IntCurveSurface_TheHCurveTool::SamplePars ******/
-		/****** md5 signature: 687011ec6271e681eb1f024a48e6210e ******/
+		/****** md5 signature: 574c3376bd1e8f8fe03e0b9b1c97066c ******/
 		%feature("compactdefaultargs") SamplePars;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U0: float
-U1: float
-Defl: float
+U0: double
+U1: double
+Defl: double
 NbMin: int
-Pars: TColStd_HArray1OfReal
+
+Return
+-------
+opencascade::handle<NCollection_HArray1<double>>
+
+Description
+-----------
+Returns sample parameters for the curve within [U0, U1] range, computed based on deflection and minimum number of points. 
+Input parameter: C the curve adaptor 
+Input parameter: U0 start parameter 
+Input parameter: U1 end parameter 
+Input parameter: Defl deflection tolerance 
+Input parameter: NbMin minimum number of sample points 
+Return: array of sample parameter values.
+") SamplePars;
+		static opencascade::handle<NCollection_HArray1<double>> SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1, const double Defl, const int NbMin);
+
+		/****** IntCurveSurface_TheHCurveTool::SamplePars ******/
+		/****** md5 signature: 04ef48e8971fdba663161152af15047f ******/
+		%feature("compactdefaultargs") SamplePars;
+		%feature("autodoc", "
+Parameters
+----------
+C: Adaptor3d_Curve
+U0: double
+U1: double
+Defl: double
+NbMin: int
+Pars: NCollection_HArray1<double
 
 Return
 -------
@@ -1370,16 +1396,16 @@ Description
 -----------
 No available documentation.
 ") SamplePars;
-		static void SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U0, const Standard_Real U1, const Standard_Real Defl, const Standard_Integer NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
+		static void SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1, const double Defl, const int NbMin, opencascade::handle<NCollection_HArray1<double> > & Pars);
 
 		/****** IntCurveSurface_TheHCurveTool::Value ******/
-		/****** md5 signature: 533412a1a9d91bbfb74754dc0e074a68 ******/
+		/****** md5 signature: 12d50f41171920cb7684ceb1b87ec20a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-U: float
+U: double
 
 Return
 -------
@@ -1389,7 +1415,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		static gp_Pnt Value(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U);
+		static gp_Pnt Value(const opencascade::handle<Adaptor3d_Curve> & C, const double U);
 
 };
 
@@ -1457,12 +1483,12 @@ Constructs and computes an interference between the Straight Line and the Polyhe
 		 IntCurveSurface_TheInterferenceOfHInter(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::IntCurveSurface_TheInterferenceOfHInter ******/
-		/****** md5 signature: c482c24d732ca7f0ebaa5ccf5267a806 ******/
+		/****** md5 signature: 34dc36fe5fc52042e32794555cc419d0 ******/
 		%feature("compactdefaultargs") IntCurveSurface_TheInterferenceOfHInter;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 
 Return
@@ -1473,7 +1499,7 @@ Description
 -----------
 Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
-		 IntCurveSurface_TheInterferenceOfHInter(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		 IntCurveSurface_TheInterferenceOfHInter(const NCollection_Array1<gp_Lin> & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::IntCurveSurface_TheInterferenceOfHInter ******/
 		/****** md5 signature: cb2d29a8a9436369c974bf35e252c9c8 ******/
@@ -1516,12 +1542,12 @@ Constructs and computes an interference between the Straight Line and the Polyhe
 		 IntCurveSurface_TheInterferenceOfHInter(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::IntCurveSurface_TheInterferenceOfHInter ******/
-		/****** md5 signature: 4a140f601a5623b0babeabfacd1f2833 ******/
+		/****** md5 signature: 3a820f76c34a442a5982cb6c64217495 ******/
 		%feature("compactdefaultargs") IntCurveSurface_TheInterferenceOfHInter;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 theBoundSB: Bnd_BoundSortBox
 
@@ -1533,7 +1559,7 @@ Description
 -----------
 Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") IntCurveSurface_TheInterferenceOfHInter;
-		 IntCurveSurface_TheInterferenceOfHInter(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
+		 IntCurveSurface_TheInterferenceOfHInter(const NCollection_Array1<gp_Lin> & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::Interference ******/
 		/****** md5 signature: 6bf066120f0891c84d5b834298c9fef9 ******/
@@ -1613,12 +1639,12 @@ Computes an interference between the Straight Line and the Polyhedron.
 		void Perform(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::Perform ******/
-		/****** md5 signature: 51d211e4e454f4ac60fa5f4e78cf27c5 ******/
+		/****** md5 signature: c6489d51187ac5da816be4e019ad30b8 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 
 Return
@@ -1629,7 +1655,7 @@ Description
 -----------
 Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
-		void Perform(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		void Perform(const NCollection_Array1<gp_Lin> & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::Perform ******/
 		/****** md5 signature: 69eb7cb92ebac1fb15f3a670084d267d ******/
@@ -1672,12 +1698,12 @@ Computes an interference between the Straight Line and the Polyhedron.
 		void Perform(const gp_Lin & theLin, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 		/****** IntCurveSurface_TheInterferenceOfHInter::Perform ******/
-		/****** md5 signature: 4c5038f0fe76add60e56a6105b83d1ea ******/
+		/****** md5 signature: dbd67b050ced475a62ba506ced64a7fd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 theBoundSB: Bnd_BoundSortBox
 
@@ -1689,7 +1715,7 @@ Description
 -----------
 Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
-		void Perform(const Intf_Array1OfLin & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
+		void Perform(const NCollection_Array1<gp_Lin> & theLins, const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 };
 
@@ -1706,7 +1732,7 @@ Computes an interference between the Straight Lines and the Polyhedron.
 class IntCurveSurface_ThePolygonOfHInter {
 	public:
 		/****** IntCurveSurface_ThePolygonOfHInter::IntCurveSurface_ThePolygonOfHInter ******/
-		/****** md5 signature: 8607fc4d81bccabc25390ed85263028a ******/
+		/****** md5 signature: a56438313eed87fc34111bfd1ab94642 ******/
 		%feature("compactdefaultargs") IntCurveSurface_ThePolygonOfHInter;
 		%feature("autodoc", "
 Parameters
@@ -1722,17 +1748,17 @@ Description
 -----------
 No available documentation.
 ") IntCurveSurface_ThePolygonOfHInter;
-		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Integer NbPnt);
+		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const int NbPnt);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::IntCurveSurface_ThePolygonOfHInter ******/
-		/****** md5 signature: cfc389022764ab206816e49acf0b9b59 ******/
+		/****** md5 signature: f5b578f805c61bec123d5695f57e4593 ******/
 		%feature("compactdefaultargs") IntCurveSurface_ThePolygonOfHInter;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 NbPnt: int
 
 Return
@@ -1743,16 +1769,16 @@ Description
 -----------
 No available documentation.
 ") IntCurveSurface_ThePolygonOfHInter;
-		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real U1, const Standard_Real U2, const Standard_Integer NbPnt);
+		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const double U1, const double U2, const int NbPnt);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::IntCurveSurface_ThePolygonOfHInter ******/
-		/****** md5 signature: 4b3c71047f9b5f23656b10d928f193be ******/
+		/****** md5 signature: d71b648697855d4baac2897cdb1d5578 ******/
 		%feature("compactdefaultargs") IntCurveSurface_ThePolygonOfHInter;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve: Adaptor3d_Curve
-Upars: TColStd_Array1OfReal
+Upars: NCollection_Array1<double>
 
 Return
 -------
@@ -1762,29 +1788,29 @@ Description
 -----------
 No available documentation.
 ") IntCurveSurface_ThePolygonOfHInter;
-		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const TColStd_Array1OfReal & Upars);
+		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const NCollection_Array1<double> & Upars);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::ApproxParamOnCurve ******/
-		/****** md5 signature: ea6b1c4f19abd104ce26cf986e38bc0b ******/
+		/****** md5 signature: 520ca19aee00f08506bff5bce4928594 ******/
 		%feature("compactdefaultargs") ApproxParamOnCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-ParamOnLine: float
+ParamOnLine: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
-		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
+		double ApproxParamOnCurve(const int Index, const double ParamOnLine);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::BeginOfSeg ******/
-		/****** md5 signature: d9c773bc099d0d92cc222653e8226d5e ******/
+		/****** md5 signature: b5f0a31ca14db0a2f84ebff20a6aa499 ******/
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -1799,7 +1825,7 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") BeginOfSeg;
-		const gp_Pnt BeginOfSeg(const Standard_Integer theIndex);
+		const gp_Pnt BeginOfSeg(const int theIndex);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::Bounding ******/
 		/****** md5 signature: 54ccbf8f63f02bb43c2fc9c718922d78 ******/
@@ -1815,7 +1841,7 @@ Give the bounding box of the polygon.
 		const Bnd_Box & Bounding();
 
 		/****** IntCurveSurface_ThePolygonOfHInter::Closed ******/
-		/****** md5 signature: e853f3a0de69f6e7f92ebd8ac1362e0c ******/
+		/****** md5 signature: 81313c484636cef829aac0b752efb72e ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -1830,10 +1856,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		void Closed(const Standard_Boolean flag);
+		void Closed(const bool flag);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::Closed ******/
-		/****** md5 signature: f94551c898fe323903f1d14861bbe901 ******/
+		/****** md5 signature: 8fa7f82a3a97ae7fb9544764f500c779 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -1843,20 +1869,20 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** IntCurveSurface_ThePolygonOfHInter::DeflectionOverEstimation ******/
-		/****** md5 signature: b4c80a54735f171bb52e56c083257109 ******/
+		/****** md5 signature: 414fb811f991fcfbdeae5077c8f62bef ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DeflectionOverEstimation;
-		Standard_Real DeflectionOverEstimation();
+		double DeflectionOverEstimation();
 
 		/****** IntCurveSurface_ThePolygonOfHInter::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -1872,7 +1898,7 @@ No available documentation.
 		void Dump();
 
 		/****** IntCurveSurface_ThePolygonOfHInter::EndOfSeg ******/
-		/****** md5 signature: fa65a7dd84749b3192eff93d48f5b1d6 ******/
+		/****** md5 signature: dc55838f0a8bf871ed662c6fdbf445f0 ******/
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -1887,23 +1913,23 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") EndOfSeg;
-		const gp_Pnt EndOfSeg(const Standard_Integer theIndex);
+		const gp_Pnt EndOfSeg(const int theIndex);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::InfParameter ******/
-		/****** md5 signature: f596238a0398d517210e4fad0d4b84b2 ******/
+		/****** md5 signature: 5220389c34cc0aa1dc89c36017792ac2 ******/
 		%feature("compactdefaultargs") InfParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
-		Standard_Real InfParameter();
+		double InfParameter();
 
 		/****** IntCurveSurface_ThePolygonOfHInter::NbSegments ******/
-		/****** md5 signature: 9f8199ef0d5690074e4037e7feba62da ******/
+		/****** md5 signature: a484f4ef51493a5d103a692e844665ba ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -1913,15 +1939,15 @@ Description
 -----------
 Give the number of Segments in the polyline.
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** IntCurveSurface_ThePolygonOfHInter::SetDeflectionOverEstimation ******/
-		/****** md5 signature: 872cf63726ece2c3b812a597bb60fe29 ******/
+		/****** md5 signature: 1dc358280ad6b7d445cb3da24d8ffaf3 ******/
 		%feature("compactdefaultargs") SetDeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
+x: double
 
 Return
 -------
@@ -1931,20 +1957,20 @@ Description
 -----------
 No available documentation.
 ") SetDeflectionOverEstimation;
-		void SetDeflectionOverEstimation(const Standard_Real x);
+		void SetDeflectionOverEstimation(const double x);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::SupParameter ******/
-		/****** md5 signature: 688f110f02a5711ae550904ec8e3220d ******/
+		/****** md5 signature: c9a151df103c425bae261f99509e51b2 ******/
 		%feature("compactdefaultargs") SupParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
-		Standard_Real SupParameter();
+		double SupParameter();
 
 };
 
@@ -1961,7 +1987,7 @@ Returns the parameter (On the curve) of the last point of the Polygon.
 class IntCurveSurface_ThePolygonToolOfHInter {
 	public:
 		/****** IntCurveSurface_ThePolygonToolOfHInter::BeginOfSeg ******/
-		/****** md5 signature: c3ce8d71b99130386b371f37d249b1c2 ******/
+		/****** md5 signature: fd0ec0ee504d04f5499c215b36f836aa ******/
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -1977,10 +2003,10 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") BeginOfSeg;
-		static const gp_Pnt BeginOfSeg(const IntCurveSurface_ThePolygonOfHInter & thePolygon, const Standard_Integer Index);
+		static const gp_Pnt BeginOfSeg(const IntCurveSurface_ThePolygonOfHInter & thePolygon, const int Index);
 
 		/****** IntCurveSurface_ThePolygonToolOfHInter::Bounding ******/
-		/****** md5 signature: 2d8a88eea83f895f9a0709d892b00faa ******/
+		/****** md5 signature: 63bfbd5bca4f7c2214c55ed4626758e2 ******/
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "
 Parameters
@@ -1998,7 +2024,7 @@ Give the bounding box of the polygon.
 		static const Bnd_Box & Bounding(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****** IntCurveSurface_ThePolygonToolOfHInter::Closed ******/
-		/****** md5 signature: fa65dc78037adcd44ed4a44d893cab0a ******/
+		/****** md5 signature: a5f267b8437a01ea2f41d460d1a1a77a ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -2013,10 +2039,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		static Standard_Boolean Closed(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
+		static bool Closed(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****** IntCurveSurface_ThePolygonToolOfHInter::DeflectionOverEstimation ******/
-		/****** md5 signature: 1c23357db2c1501e81a046c3c9b6eb3d ******/
+		/****** md5 signature: 697a7f1c546617dc3fd977191bbcd29f ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
@@ -2025,13 +2051,13 @@ thePolygon: IntCurveSurface_ThePolygonOfHInter
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DeflectionOverEstimation;
-		static Standard_Real DeflectionOverEstimation(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
+		static double DeflectionOverEstimation(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****** IntCurveSurface_ThePolygonToolOfHInter::Dump ******/
 		/****** md5 signature: 9966370870a318adeb703c8d631ca2b8 ******/
@@ -2052,7 +2078,7 @@ No available documentation.
 		static void Dump(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 		/****** IntCurveSurface_ThePolygonToolOfHInter::EndOfSeg ******/
-		/****** md5 signature: a659f74ed9f2eaed8ffda44c22ad74da ******/
+		/****** md5 signature: 6688698d2489e949487b80074a20ded6 ******/
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -2068,10 +2094,10 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") EndOfSeg;
-		static const gp_Pnt EndOfSeg(const IntCurveSurface_ThePolygonOfHInter & thePolygon, const Standard_Integer Index);
+		static const gp_Pnt EndOfSeg(const IntCurveSurface_ThePolygonOfHInter & thePolygon, const int Index);
 
 		/****** IntCurveSurface_ThePolygonToolOfHInter::NbSegments ******/
-		/****** md5 signature: 69db76ba53411856428bd7f75b3c1833 ******/
+		/****** md5 signature: 99085e70a50d60bca65f46064ff7887c ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "
 Parameters
@@ -2086,7 +2112,7 @@ Description
 -----------
 No available documentation.
 ") NbSegments;
-		static Standard_Integer NbSegments(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
+		static int NbSegments(const IntCurveSurface_ThePolygonOfHInter & thePolygon);
 
 };
 
@@ -2106,7 +2132,7 @@ No available documentation.
 class IntCurveSurface_ThePolyhedronToolOfHInter {
 	public:
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::Bounding ******/
-		/****** md5 signature: b831938a9c6064b113ea9dcbbaacd0d7 ******/
+		/****** md5 signature: b5b15d8c8135dd1774c44082578c9821 ******/
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "
 Parameters
@@ -2124,7 +2150,7 @@ Give the bounding box of the PolyhedronTool.
 		static const Bnd_Box & Bounding(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::ComponentsBounding ******/
-		/****** md5 signature: 761297bd30540845381cd002f5cd3092 ******/
+		/****** md5 signature: eddf82b173f5db4551f1f8db461ecad8 ******/
 		%feature("compactdefaultargs") ComponentsBounding;
 		%feature("autodoc", "
 Parameters
@@ -2133,16 +2159,16 @@ thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 
 Return
 -------
-opencascade::handle<Bnd_HArray1OfBox>
+opencascade::handle<NCollection_HArray1<Bnd_Box>>
 
 Description
 -----------
 Give the array of boxes. The box <n> corresponding to the triangle <n>.
 ") ComponentsBounding;
-		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		static const opencascade::handle<NCollection_HArray1<Bnd_Box>> & ComponentsBounding(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::DeflectionOverEstimation ******/
-		/****** md5 signature: 12ee30a0552628992c8694e5e537d220 ******/
+		/****** md5 signature: 27997ccbd22d587245548e041f4db6c6 ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
@@ -2151,13 +2177,13 @@ thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Give the tolerance of the polygon.
 ") DeflectionOverEstimation;
-		static Standard_Real DeflectionOverEstimation(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		static double DeflectionOverEstimation(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::Dump ******/
 		/****** md5 signature: a04645c47ddce194e67fff3da32e9074 ******/
@@ -2178,7 +2204,7 @@ No available documentation.
 		static void Dump(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::GetBorderDeflection ******/
-		/****** md5 signature: 6e6e6b15c436ca7e936bf316e36c39b8 ******/
+		/****** md5 signature: 660847fc2a76dd5758598de25b99c89e ******/
 		%feature("compactdefaultargs") GetBorderDeflection;
 		%feature("autodoc", "
 Parameters
@@ -2187,16 +2213,16 @@ thePolyh: IntCurveSurface_ThePolyhedronOfHInter
 
 Return
 -------
-float
+double
 
 Description
 -----------
 This method returns a border deflection of the polyhedron.
 ") GetBorderDeflection;
-		static Standard_Real GetBorderDeflection(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		static double GetBorderDeflection(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::IsOnBound ******/
-		/****** md5 signature: cbbd7a99516fc080c7522ed924cf9a8b ******/
+		/****** md5 signature: bfbaab59d2b6f53b6179927fffa38744 ******/
 		%feature("compactdefaultargs") IsOnBound;
 		%feature("autodoc", "
 Parameters
@@ -2213,10 +2239,10 @@ Description
 -----------
 This method returns true if the edge based on points with indices Index1 and Index2 represents a boundary edge. It is necessary to take into account the boundary deflection for this edge.
 ") IsOnBound;
-		static Standard_Boolean IsOnBound(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Index1, const Standard_Integer Index2);
+		static bool IsOnBound(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const int Index1, const int Index2);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::NbTriangles ******/
-		/****** md5 signature: bdd670f00f0a5edcddc9ab980b962494 ******/
+		/****** md5 signature: 96206de4306b1400d5e0df729daf7f2f ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "
 Parameters
@@ -2231,10 +2257,10 @@ Description
 -----------
 Give the number of triangles in this polyhedral surface.
 ") NbTriangles;
-		static Standard_Integer NbTriangles(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
+		static int NbTriangles(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::Point ******/
-		/****** md5 signature: 52a78c4f8cd34c4673e1816fe02109c7 ******/
+		/****** md5 signature: 8e8291db04c395e8baf102dd26fd76de ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2250,10 +2276,10 @@ Description
 -----------
 Give the point of index i in the polyhedral surface.
 ") Point;
-		static const gp_Pnt Point(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Index);
+		static const gp_Pnt Point(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const int Index);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::TriConnex ******/
-		/****** md5 signature: a3ad5c2542c00278319177801a1d1337 ******/
+		/****** md5 signature: 0612a0c6b395abd8950c397150c79529 ******/
 		%feature("compactdefaultargs") TriConnex;
 		%feature("autodoc", "
 Parameters
@@ -2272,10 +2298,10 @@ Description
 -----------
 Give the address Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 ") TriConnex;
-		static Standard_Integer TriConnex(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static int TriConnex(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const int Triang, const int Pivot, const int Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** IntCurveSurface_ThePolyhedronToolOfHInter::Triangle ******/
-		/****** md5 signature: 18708030ea56c11d997b59c6e831ccb4 ******/
+		/****** md5 signature: ca4940b284af85cdf0d0a3285d011df1 ******/
 		%feature("compactdefaultargs") Triangle;
 		%feature("autodoc", "
 Parameters
@@ -2293,7 +2319,7 @@ Description
 -----------
 Give the indices of the 3 points of the triangle of address Index in the PolyhedronTool.
 ") Triangle;
-		static void Triangle(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void Triangle(const IntCurveSurface_ThePolyhedronOfHInter & thePolyh, const int Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 };
 
@@ -2329,7 +2355,7 @@ Provides the signed distance function: Q(w) and its first derivative dQ(w)/dw.
 		 IntCurveSurface_TheQuadCurvExactHInter(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheQuadCurvExactHInter::Intervals ******/
-		/****** md5 signature: a19f8bd23050233003b16b9179a07a15 ******/
+		/****** md5 signature: bdd6e5353d45148d8c089d86d60d9f07 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -2338,17 +2364,17 @@ Index: int
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
 U1 and U2 are the parameters of a segment on the curve.
 ") Intervals;
-		void Intervals(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Intervals(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntCurveSurface_TheQuadCurvExactHInter::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2358,10 +2384,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntCurveSurface_TheQuadCurvExactHInter::NbIntervals ******/
-		/****** md5 signature: 64f54fde4d9752772b52d73d27261bcb ******/
+		/****** md5 signature: 487b014b9cd194c58d109502ca451d5e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -2371,10 +2397,10 @@ Description
 -----------
 No available documentation.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** IntCurveSurface_TheQuadCurvExactHInter::NbRoots ******/
-		/****** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ******/
+		/****** md5 signature: fe443a1190b192943b5fddf45586a22a ******/
 		%feature("compactdefaultargs") NbRoots;
 		%feature("autodoc", "Return
 -------
@@ -2384,10 +2410,10 @@ Description
 -----------
 No available documentation.
 ") NbRoots;
-		Standard_Integer NbRoots();
+		int NbRoots();
 
 		/****** IntCurveSurface_TheQuadCurvExactHInter::Root ******/
-		/****** md5 signature: 2e5be20bda2ce764c489750fb301f80e ******/
+		/****** md5 signature: 924d892bdccaf8b866e5773695c2abbb ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "
 Parameters
@@ -2396,13 +2422,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root(const Standard_Integer Index);
+		double Root(const int Index);
 
 };
 
@@ -2438,59 +2464,59 @@ Create the function.
 		 IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter(const IntSurf_Quadric & Q, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::Derivative ******/
-		/****** md5 signature: f61c873331fa555e182f1973e95f59da ******/
+		/****** md5 signature: 9056fc5f695c62612651effc85cb18ad ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 Computes the derivative of the previous function at parameter Param. Derivative always returns True.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
+		bool Derivative(const double Param, Standard_Real &OutValue);
 
 		/****** IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::Value ******/
-		/****** md5 signature: 96999dda9fe43560f6ec0c3dc2a0f930 ******/
+		/****** md5 signature: 92dd35931de1aecdc8277d063de13ec7 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 Computes the value of the signed distance between the implicit surface and the point at parameter Param on the parametrised curve. Value always returns True.
 ") Value;
-		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
+		bool Value(const double Param, Standard_Real &OutValue);
 
 		/****** IntCurveSurface_TheQuadCurvFuncOfTheQuadCurvExactHInter::Values ******/
-		/****** md5 signature: 30b6c9e0ecc359e02c44e042b54e6b7c ******/
+		/****** md5 signature: 03dca4b59c48db2ee672dd2d7904db60 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 Computes the value and the derivative of the function. returns True.
 ") Values;
-		Standard_Boolean Values(const Standard_Real Param, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double Param, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -2737,6 +2763,10 @@ def IntCurveSurface_TheHCurveTool_Period(*args):
 @deprecated
 def IntCurveSurface_TheHCurveTool_Resolution(*args):
 	return IntCurveSurface_TheHCurveTool.Resolution(*args)
+
+@deprecated
+def IntCurveSurface_TheHCurveTool_SamplePars(*args):
+	return IntCurveSurface_TheHCurveTool.SamplePars(*args)
 
 @deprecated
 def IntCurveSurface_TheHCurveTool_SamplePars(*args):

@@ -85,7 +85,7 @@ from OCC.Core.Exception import *
 class IntImpParGen {
 	public:
 		/****** IntImpParGen::DeterminePosition ******/
-		/****** md5 signature: 2311389a4097b825249812f448715aba ******/
+		/****** md5 signature: 3b52aa210a313a47b6632ce0fd9c3e8e ******/
 		%feature("compactdefaultargs") DeterminePosition;
 		%feature("autodoc", "
 Parameters
@@ -93,7 +93,7 @@ Parameters
 Pos1: IntRes2d_Position
 Dom1: IntRes2d_Domain
 P1: gp_Pnt2d
-Tol: float
+Tol: double
 
 Return
 -------
@@ -103,10 +103,10 @@ Description
 -----------
 No available documentation.
 ") DeterminePosition;
-		static void DeterminePosition(IntRes2d_Position & Pos1, const IntRes2d_Domain & Dom1, const gp_Pnt2d & P1, const Standard_Real Tol);
+		static void DeterminePosition(IntRes2d_Position & Pos1, const IntRes2d_Domain & Dom1, const gp_Pnt2d & P1, const double Tol);
 
 		/****** IntImpParGen::DetermineTransition ******/
-		/****** md5 signature: e1ccc20a7d6725566e0bdbf35ac12b3c ******/
+		/****** md5 signature: d53289e899f59b20d1ea2d5a46516cc9 ******/
 		%feature("compactdefaultargs") DetermineTransition;
 		%feature("autodoc", "
 Parameters
@@ -119,7 +119,7 @@ Pos2: IntRes2d_Position
 Tan2: gp_Vec2d
 Norm2: gp_Vec2d
 Trans2: IntRes2d_Transition
-Tol: float
+Tol: double
 
 Return
 -------
@@ -129,10 +129,10 @@ Description
 -----------
 Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen.
 ") DetermineTransition;
-		static void DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, const gp_Vec2d & Norm1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, const gp_Vec2d & Norm2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
+		static void DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, const gp_Vec2d & Norm1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, const gp_Vec2d & Norm2, IntRes2d_Transition & Trans2, const double Tol);
 
 		/****** IntImpParGen::DetermineTransition ******/
-		/****** md5 signature: 750da560212e082031f278352e1006f5 ******/
+		/****** md5 signature: 4a56c8d2b82288479a5fd0fc7ed5da4b ******/
 		%feature("compactdefaultargs") DetermineTransition;
 		%feature("autodoc", "
 Parameters
@@ -143,7 +143,7 @@ Trans1: IntRes2d_Transition
 Pos2: IntRes2d_Position
 Tan2: gp_Vec2d
 Trans2: IntRes2d_Transition
-Tol: float
+Tol: double
 
 Return
 -------
@@ -153,10 +153,10 @@ Description
 -----------
 No available documentation.
 ") DetermineTransition;
-		static Standard_Boolean DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
+		static bool DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, IntRes2d_Transition & Trans2, const double Tol);
 
 		/****** IntImpParGen::NormalizeOnDomain ******/
-		/****** md5 signature: 49d232da43b9807ba00746a6d2513277 ******/
+		/****** md5 signature: 93345cd0b84ce0c17339b7fbb4a11d7e ******/
 		%feature("compactdefaultargs") NormalizeOnDomain;
 		%feature("autodoc", "
 Parameters
@@ -165,13 +165,13 @@ Dom1: IntRes2d_Domain
 
 Return
 -------
-Par1: float
+Par1: double
 
 Description
 -----------
 No available documentation.
 ") NormalizeOnDomain;
-		static Standard_Real NormalizeOnDomain(Standard_Real &OutValue, const IntRes2d_Domain & Dom1);
+		static double NormalizeOnDomain(Standard_Real &OutValue, const IntRes2d_Domain & Dom1);
 
 };
 

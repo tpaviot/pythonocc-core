@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplib.html"
 #include<TopoDS_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
-#include<TopTools_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<BRepTools_module.hxx>
@@ -61,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplib.html"
 #include<Bnd_module.hxx>
 #include<Poly_module.hxx>
 #include<TShort_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -72,7 +72,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplib.html"
 %import TopoDS.i
 %import GeomAbs.i
 %import Geom2d.i
-%import TopTools.i
 %import Adaptor3d.i
 %import Geom.i
 %import BRepTools.i
@@ -208,7 +207,7 @@ BRepLib_NonManifoldWire = BRepLib_WireError.BRepLib_NonManifoldWire
 class BRepLib {
 	public:
 		/****** BRepLib::BoundingVertex ******/
-		/****** md5 signature: 9d6407d339f4bd152392962cf95ced95 ******/
+		/****** md5 signature: 44ef9202099c72cdb1465b821b583924 ******/
 		%feature("compactdefaultargs") BoundingVertex;
 		%feature("autodoc", "
 Parameters
@@ -218,7 +217,7 @@ theNewCenter: gp_Pnt
 
 Return
 -------
-theNewTol: float
+theNewTol: double
 
 Description
 -----------
@@ -227,13 +226,13 @@ Calculates the bounding sphere around the set of vertexes from the theLV list. R
 		static void BoundingVertex(const NCollection_List<TopoDS_Shape> & theLV, gp_Pnt & theNewCenter, Standard_Real &OutValue);
 
 		/****** BRepLib::BuildCurve3d ******/
-		/****** md5 signature: d8e9099e9a30a929518b09d1cd9244fb ******/
+		/****** md5 signature: 9fe7a270bbad327f47685c8b8ced4221 ******/
 		%feature("compactdefaultargs") BuildCurve3d;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-Tolerance: float (optional, default to 1.0e-5)
+Tolerance: double (optional, default to 1.0e-5)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C1)
 MaxDegree: int (optional, default to 14)
 MaxSegment: int (optional, default to 0)
@@ -246,16 +245,16 @@ Description
 -----------
 Computes the 3d curve for the edge <E> if it does not exist. Returns True if the curve was computed or existed. Returns False if there is no planar pcurve or the computation failed. <MaxSegment> >= 30 in approximation.
 ") BuildCurve3d;
-		static Standard_Boolean BuildCurve3d(const TopoDS_Edge & E, const Standard_Real Tolerance = 1.0e-5, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Integer MaxDegree = 14, const Standard_Integer MaxSegment = 0);
+		static bool BuildCurve3d(const TopoDS_Edge & E, const double Tolerance = 1.0e-5, const GeomAbs_Shape Continuity = GeomAbs_C1, const int MaxDegree = 14, const int MaxSegment = 0);
 
 		/****** BRepLib::BuildCurves3d ******/
-		/****** md5 signature: f2e476cec2d67740b544a128660a06ff ******/
+		/****** md5 signature: 85b53a8b0e21948332027291614b2c56 ******/
 		%feature("compactdefaultargs") BuildCurves3d;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Tolerance: float
+Tolerance: double
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C1)
 MaxDegree: int (optional, default to 14)
 MaxSegment: int (optional, default to 0)
@@ -268,10 +267,10 @@ Description
 -----------
 Computes the 3d curves for all the edges of <S> return False if one of the computation failed. <MaxSegment> >= 30 in approximation.
 ") BuildCurves3d;
-		static Standard_Boolean BuildCurves3d(const TopoDS_Shape & S, const Standard_Real Tolerance, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Integer MaxDegree = 14, const Standard_Integer MaxSegment = 0);
+		static bool BuildCurves3d(const TopoDS_Shape & S, const double Tolerance, const GeomAbs_Shape Continuity = GeomAbs_C1, const int MaxDegree = 14, const int MaxSegment = 0);
 
 		/****** BRepLib::BuildCurves3d ******/
-		/****** md5 signature: 204d092b783dfacd75dfb95b12784384 ******/
+		/****** md5 signature: 1165cb939081d5fdfc73ea2b13742bc0 ******/
 		%feature("compactdefaultargs") BuildCurves3d;
 		%feature("autodoc", "
 Parameters
@@ -286,7 +285,7 @@ Description
 -----------
 Computes the 3d curves for all the edges of <S> return False if one of the computation failed.
 ") BuildCurves3d;
-		static Standard_Boolean BuildCurves3d(const TopoDS_Shape & S);
+		static bool BuildCurves3d(const TopoDS_Shape & S);
 
 		/****** BRepLib::BuildPCurveForEdgeOnPlane ******/
 		/****** md5 signature: eb2eaf6bd1e25fb580fd234600800513 ******/
@@ -308,7 +307,7 @@ Builds pcurve of edge on face if the surface is plane, and updates the edge.
 		static void BuildPCurveForEdgeOnPlane(const TopoDS_Edge & theE, const TopoDS_Face & theF);
 
 		/****** BRepLib::BuildPCurveForEdgeOnPlane ******/
-		/****** md5 signature: 74f8fb705bcddf6e8ff15664dc8d47b7 ******/
+		/****** md5 signature: b75c43d2840fdb12d2bc2d433173237a ******/
 		%feature("compactdefaultargs") BuildPCurveForEdgeOnPlane;
 		%feature("autodoc", "
 Parameters
@@ -328,13 +327,13 @@ Builds pcurve of edge on face if the surface is plane, but does not update the e
 		static void BuildPCurveForEdgeOnPlane(const TopoDS_Edge & theE, const TopoDS_Face & theF, opencascade::handle<Geom2d_Curve> & aC2D, Standard_Boolean &OutValue);
 
 		/****** BRepLib::CheckSameRange ******/
-		/****** md5 signature: d9ef2cd4ef3374a22ba2fd4a9050572c ******/
+		/****** md5 signature: fa68f28e9e197bee22df3b34a5f0b797 ******/
 		%feature("compactdefaultargs") CheckSameRange;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-Confusion: float (optional, default to 1.0e-12)
+Confusion: double (optional, default to 1.0e-12)
 
 Return
 -------
@@ -344,10 +343,10 @@ Description
 -----------
 checks if the Edge is same range IGNORING the same range flag of the edge Confusion argument is to compare real numbers idenpendently of any model space tolerance.
 ") CheckSameRange;
-		static Standard_Boolean CheckSameRange(const TopoDS_Edge & E, const Standard_Real Confusion = 1.0e-12);
+		static bool CheckSameRange(const TopoDS_Edge & E, const double Confusion = 1.0e-12);
 
 		/****** BRepLib::ContinuityOfFaces ******/
-		/****** md5 signature: 2405b9a750027ac7614f072b1358fffc ******/
+		/****** md5 signature: c028e3c7201f03e998b22da01d434315 ******/
 		%feature("compactdefaultargs") ContinuityOfFaces;
 		%feature("autodoc", "
 Parameters
@@ -355,7 +354,7 @@ Parameters
 theEdge: TopoDS_Edge
 theFace1: TopoDS_Face
 theFace2: TopoDS_Face
-theAngleTol: float
+theAngleTol: double
 
 Return
 -------
@@ -365,16 +364,16 @@ Description
 -----------
 Returns the order of continuity between two faces connected by an edge.
 ") ContinuityOfFaces;
-		static GeomAbs_Shape ContinuityOfFaces(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const Standard_Real theAngleTol);
+		static GeomAbs_Shape ContinuityOfFaces(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const double theAngleTol);
 
 		/****** BRepLib::EncodeRegularity ******/
-		/****** md5 signature: 19c910eb7197237b12eb01c92eebe9e5 ******/
+		/****** md5 signature: 4d0116b5de7f8c4774343a6e2e1930a2 ******/
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-TolAng: float (optional, default to 1.0e-10)
+TolAng: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -384,17 +383,17 @@ Description
 -----------
 Encodes the Regularity of edges on a Shape. Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 ") EncodeRegularity;
-		static void EncodeRegularity(const TopoDS_Shape & S, const Standard_Real TolAng = 1.0e-10);
+		static void EncodeRegularity(const TopoDS_Shape & S, const double TolAng = 1.0e-10);
 
 		/****** BRepLib::EncodeRegularity ******/
-		/****** md5 signature: 0fb005a839a1ca0e40b83d5aa3066041 ******/
+		/****** md5 signature: a635b01a3c2296e8c42d1285469bedfc ******/
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LE: TopTools_ListOfShape
-TolAng: float (optional, default to 1.0e-10)
+LE: NCollection_List<TopoDS_Shape>
+TolAng: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -404,10 +403,10 @@ Description
 -----------
 Encodes the Regularity of edges in list <LE> on the shape <S> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 ") EncodeRegularity;
-		static void EncodeRegularity(const TopoDS_Shape & S, const TopTools_ListOfShape & LE, const Standard_Real TolAng = 1.0e-10);
+		static void EncodeRegularity(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & LE, const double TolAng = 1.0e-10);
 
 		/****** BRepLib::EncodeRegularity ******/
-		/****** md5 signature: 172eaf1d13de1fe1ad03867f4f67dce0 ******/
+		/****** md5 signature: 8e5f272254cdf650c5b97e1466890104 ******/
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "
 Parameters
@@ -415,7 +414,7 @@ Parameters
 E: TopoDS_Edge
 F1: TopoDS_Face
 F2: TopoDS_Face
-TolAng: float (optional, default to 1.0e-10)
+TolAng: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -425,17 +424,17 @@ Description
 -----------
 Encodes the Regularity between <F1> and <F2> by <E> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edge's regularity is coded before, nothing is done.
 ") EncodeRegularity;
-		static void EncodeRegularity(TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const Standard_Real TolAng = 1.0e-10);
+		static void EncodeRegularity(TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const double TolAng = 1.0e-10);
 
 		/****** BRepLib::EnsureNormalConsistency ******/
-		/****** md5 signature: 333cd3af6b2fdcd6cde8b593c31284a9 ******/
+		/****** md5 signature: 20d46c10edec7be20d9852b5fdfc4c20 ******/
 		%feature("compactdefaultargs") EnsureNormalConsistency;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-theAngTol: float (optional, default to 0.001)
-ForceComputeNormals: bool (optional, default to Standard_False)
+theAngTol: double (optional, default to 0.001)
+ForceComputeNormals: bool (optional, default to false)
 
 Return
 -------
@@ -445,16 +444,16 @@ Description
 -----------
 Corrects the normals in Poly_Triangulation of faces, in such way that normals at nodes lying along smooth edges have the same value on both adjacent triangulations. Returns True if any correction is done.
 ") EnsureNormalConsistency;
-		static Standard_Boolean EnsureNormalConsistency(const TopoDS_Shape & S, const Standard_Real theAngTol = 0.001, const Standard_Boolean ForceComputeNormals = Standard_False);
+		static bool EnsureNormalConsistency(const TopoDS_Shape & S, const double theAngTol = 0.001, const bool ForceComputeNormals = false);
 
 		/****** BRepLib::ExtendFace ******/
-		/****** md5 signature: b2c07a72140e36de05af305bcd484489 ******/
+		/****** md5 signature: b3d232bac1d11ceb718b06edd218c5cc ******/
 		%feature("compactdefaultargs") ExtendFace;
 		%feature("autodoc", "
 Parameters
 ----------
 theF: TopoDS_Face
-theExtVal: float
+theExtVal: double
 theExtUMin: bool
 theExtUMax: bool
 theExtVMin: bool
@@ -476,36 +475,36 @@ Input parameter: theExtVMin Defines whether to extend the face in VMin direction
 Input parameter: theExtVMax Defines whether to extend the face in VMax direction 
 Input parameter: theFExtended The extended face.
 ") ExtendFace;
-		static void ExtendFace(const TopoDS_Face & theF, const Standard_Real theExtVal, const Standard_Boolean theExtUMin, const Standard_Boolean theExtUMax, const Standard_Boolean theExtVMin, const Standard_Boolean theExtVMax, TopoDS_Face & theFExtended);
+		static void ExtendFace(const TopoDS_Face & theF, const double theExtVal, const bool theExtUMin, const bool theExtUMax, const bool theExtVMin, const bool theExtVMax, TopoDS_Face & theFExtended);
 
 		/****** BRepLib::FindValidRange ******/
-		/****** md5 signature: 5d83ca03919e4732c16bdd3ceefc7d56 ******/
+		/****** md5 signature: ccd0e6f1510e63a1fbb943f927e9f557 ******/
 		%feature("compactdefaultargs") FindValidRange;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: Adaptor3d_Curve
-theTolE: float
-theParV1: float
+theTolE: double
+theParV1: double
 thePntV1: gp_Pnt
-theTolV1: float
-theParV2: float
+theTolV1: double
+theParV2: double
 thePntV2: gp_Pnt
-theTolV2: float
+theTolV2: double
 
 Return
 -------
-theFirst: float
-theLast: float
+theFirst: double
+theLast: double
 
 Description
 -----------
 For an edge defined by 3d curve and tolerance and vertices defined by points, parameters on curve and tolerances, finds a range of curve between vertices not covered by vertices tolerances. Returns false if there is no such range. Otherwise, sets theFirst and theLast as its bounds.
 ") FindValidRange;
-		static Standard_Boolean FindValidRange(const Adaptor3d_Curve & theCurve, const Standard_Real theTolE, const Standard_Real theParV1, const gp_Pnt & thePntV1, const Standard_Real theTolV1, const Standard_Real theParV2, const gp_Pnt & thePntV2, const Standard_Real theTolV2, Standard_Real &OutValue, Standard_Real &OutValue);
+		static bool FindValidRange(const Adaptor3d_Curve & theCurve, const double theTolE, const double theParV1, const gp_Pnt & thePntV1, const double theTolV1, const double theParV2, const gp_Pnt & thePntV2, const double theTolV2, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepLib::FindValidRange ******/
-		/****** md5 signature: 16a8dd6346bc70745b1437c644d131d2 ******/
+		/****** md5 signature: 18bb7bc724a4bff38a0824ccd0dbe6f1 ******/
 		%feature("compactdefaultargs") FindValidRange;
 		%feature("autodoc", "
 Parameters
@@ -514,17 +513,17 @@ theEdge: TopoDS_Edge
 
 Return
 -------
-theFirst: float
-theLast: float
+theFirst: double
+theLast: double
 
 Description
 -----------
 Finds a range of 3d curve of the edge not covered by vertices tolerances. Returns false if there is no such range. Otherwise, sets theFirst and theLast as its bounds.
 ") FindValidRange;
-		static Standard_Boolean FindValidRange(const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
+		static bool FindValidRange(const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepLib::OrientClosedSolid ******/
-		/****** md5 signature: cde24280a2621155ab6f58b7cc92c489 ******/
+		/****** md5 signature: 6fd937fff15cf2e790e8e08316e9694a ******/
 		%feature("compactdefaultargs") OrientClosedSolid;
 		%feature("autodoc", "
 Parameters
@@ -539,7 +538,7 @@ Description
 -----------
 Orients the solid forward and the shell with the orientation to have matter in the solid. Returns False if the solid is unOrientable (open or incoherent).
 ") OrientClosedSolid;
-		static Standard_Boolean OrientClosedSolid(TopoDS_Solid & solid);
+		static bool OrientClosedSolid(TopoDS_Solid & solid);
 
 		/****** BRepLib::Plane ******/
 		/****** md5 signature: 215779db6a724a03f9f8ce477370cef4 ******/
@@ -573,12 +572,12 @@ Returns the current plane.
 		static const opencascade::handle<Geom_Plane> & Plane();
 
 		/****** BRepLib::Precision ******/
-		/****** md5 signature: ced9db4ac4e8a407df5972bac5488688 ******/
+		/****** md5 signature: 8499a47a22c769b8f0294260f896e858 ******/
 		%feature("compactdefaultargs") Precision;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -588,29 +587,29 @@ Description
 -----------
 Computes the max distance between edge and its 2d representation on the face. Sets the default precision. The current Precision is returned.
 ") Precision;
-		static void Precision(const Standard_Real P);
+		static void Precision(const double P);
 
 		/****** BRepLib::Precision ******/
-		/****** md5 signature: 5a0c763be80263f1e28f9182713f12dc ******/
+		/****** md5 signature: 2353c65be8f48fbd68786cb917cafb10 ******/
 		%feature("compactdefaultargs") Precision;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the default precision.
 ") Precision;
-		static Standard_Real Precision();
+		static double Precision();
 
 		/****** BRepLib::ReverseSortFaces ******/
-		/****** md5 signature: 5c834edf3fced01cd530658b4e20344b ******/
+		/****** md5 signature: 239c8319defbcdf926a13aed26639637 ******/
 		%feature("compactdefaultargs") ReverseSortFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LF: TopTools_ListOfShape
+LF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -620,16 +619,16 @@ Description
 -----------
 Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane).
 ") ReverseSortFaces;
-		static void ReverseSortFaces(const TopoDS_Shape & S, TopTools_ListOfShape & LF);
+		static void ReverseSortFaces(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LF);
 
 		/****** BRepLib::SameParameter ******/
-		/****** md5 signature: 5c5d4240cd8907cefccc80b8b3ea011e ******/
+		/****** md5 signature: 93361a379487c6a95ee9debc32df969d ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
-Tolerance: float (optional, default to 1.0e-5)
+Tolerance: double (optional, default to 1.0e-5)
 
 Return
 -------
@@ -639,37 +638,37 @@ Description
 -----------
 Computes new 2d curve(s) for the edge <theEdge> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge.
 ") SameParameter;
-		static void SameParameter(const TopoDS_Edge & theEdge, const Standard_Real Tolerance = 1.0e-5);
+		static void SameParameter(const TopoDS_Edge & theEdge, const double Tolerance = 1.0e-5);
 
 		/****** BRepLib::SameParameter ******/
-		/****** md5 signature: b4fbeb89b4594cf9352322c9856b5950 ******/
+		/****** md5 signature: 2bbe553f0489dc508db9c1efc0c469cc ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
-theTolerance: float
+theTolerance: double
 IsUseOldEdge: bool
 
 Return
 -------
-theNewTol: float
+theNewTol: double
 
 Description
 -----------
 Computes new 2d curve(s) for the edge <theEdge> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on the Edge. theNewTol is a new tolerance of vertices of the input edge (not applied inside the algorithm, but pre-computed). If IsUseOldEdge is true then the input edge will be modified, otherwise the new copy of input edge will be created. Returns the new edge as a result, can be ignored if IsUseOldEdge is true.
 ") SameParameter;
-		static TopoDS_Edge SameParameter(const TopoDS_Edge & theEdge, const Standard_Real theTolerance, Standard_Real &OutValue, const Standard_Boolean IsUseOldEdge);
+		static TopoDS_Edge SameParameter(const TopoDS_Edge & theEdge, const double theTolerance, Standard_Real &OutValue, const bool IsUseOldEdge);
 
 		/****** BRepLib::SameParameter ******/
-		/****** md5 signature: 2b6345dbc9df15880edd16e53a03b47f ******/
+		/****** md5 signature: a0c7528025a51ea967ec4233ad5999d7 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Tolerance: float (optional, default to 1.0e-5)
-forced: bool (optional, default to Standard_False)
+Tolerance: double (optional, default to 1.0e-5)
+forced: bool (optional, default to false)
 
 Return
 -------
@@ -679,18 +678,18 @@ Description
 -----------
 Computes new 2d curve(s) for all the edges of <S> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge.
 ") SameParameter;
-		static void SameParameter(const TopoDS_Shape & S, const Standard_Real Tolerance = 1.0e-5, const Standard_Boolean forced = Standard_False);
+		static void SameParameter(const TopoDS_Shape & S, const double Tolerance = 1.0e-5, const bool forced = false);
 
 		/****** BRepLib::SameParameter ******/
-		/****** md5 signature: cfb21365f9a6e6262e51c4374bfdfcc0 ******/
+		/****** md5 signature: c863e189746665cf7ff4ed76dc0c7220 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 theReshaper: BRepTools_ReShape
-Tolerance: float (optional, default to 1.0e-5)
-forced: bool (optional, default to Standard_False)
+Tolerance: double (optional, default to 1.0e-5)
+forced: bool (optional, default to false)
 
 Return
 -------
@@ -700,16 +699,16 @@ Description
 -----------
 Computes new 2d curve(s) for all the edges of <S> to have the same parameter as the 3d curve. The algorithm is not done if the flag SameParameter was True on an Edge. theReshaper is used to record the modifications of input shape <S> to prevent any modifications on the shape itself. Thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
 ") SameParameter;
-		static void SameParameter(const TopoDS_Shape & S, BRepTools_ReShape & theReshaper, const Standard_Real Tolerance = 1.0e-5, const Standard_Boolean forced = Standard_False);
+		static void SameParameter(const TopoDS_Shape & S, BRepTools_ReShape & theReshaper, const double Tolerance = 1.0e-5, const bool forced = false);
 
 		/****** BRepLib::SameRange ******/
-		/****** md5 signature: e07686d7b9c2e87d078e9cf28f531b62 ******/
+		/****** md5 signature: f4409793b16081022abec271ced97b15 ******/
 		%feature("compactdefaultargs") SameRange;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-Tolerance: float (optional, default to 1.0e-5)
+Tolerance: double (optional, default to 1.0e-5)
 
 Return
 -------
@@ -719,16 +718,16 @@ Description
 -----------
 will make all the curve representation have the same range domain for the parameters. This will IGNORE the same range flag value to proceed. If there is a 3D curve there it will the range of that curve. If not the first curve representation encountered in the list will give its range to the all the other curves.
 ") SameRange;
-		static void SameRange(const TopoDS_Edge & E, const Standard_Real Tolerance = 1.0e-5);
+		static void SameRange(const TopoDS_Edge & E, const double Tolerance = 1.0e-5);
 
 		/****** BRepLib::SortFaces ******/
-		/****** md5 signature: c670dbe0a47983eb81dd61ba0887f298 ******/
+		/****** md5 signature: b3ed5a1d1f02597b292960e63560c045 ******/
 		%feature("compactdefaultargs") SortFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LF: TopTools_ListOfShape
+LF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -738,7 +737,7 @@ Description
 -----------
 Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other).
 ") SortFaces;
-		static void SortFaces(const TopoDS_Shape & S, TopTools_ListOfShape & LF);
+		static void SortFaces(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LF);
 
 		/****** BRepLib::UpdateDeflection ******/
 		/****** md5 signature: 76d35fdabbd1c46be0db3f1ad51bcdc9 ******/
@@ -759,14 +758,14 @@ Updates value of deflection in Poly_Triangulation of faces by the maximum deviat
 		static void UpdateDeflection(const TopoDS_Shape & S);
 
 		/****** BRepLib::UpdateEdgeTol ******/
-		/****** md5 signature: 38bb8b704b359479ae8f63fd5e383848 ******/
+		/****** md5 signature: 69b9c2a5cae5a166a9c8eaf8d016dc7a ******/
 		%feature("compactdefaultargs") UpdateEdgeTol;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-MinToleranceRequest: float
-MaxToleranceToCheck: float
+MinToleranceRequest: double
+MaxToleranceToCheck: double
 
 Return
 -------
@@ -774,19 +773,19 @@ bool
 
 Description
 -----------
-Checks if the edge has a Tolerance smaller than -- -- -- -- MaxToleranceToCheck if so it will compute the radius of -- the cylindrical pipe surface that MinToleranceRequest is the minimum tolerance before it is useful to start testing. Usually it should be around 10e-5 contains all -- the curve representation of the edge returns True if the Edge tolerance had to be updated.
+Checks if the edge has a Tolerance smaller than MaxToleranceToCheck if so it will compute the radius of the cylindrical pipe surface that MinToleranceRequest is the minimum tolerance before it is useful to start testing. Usually it should be around 10e-5 contains all the curve representation of the edge returns True if the Edge tolerance had to be updated.
 ") UpdateEdgeTol;
-		static Standard_Boolean UpdateEdgeTol(const TopoDS_Edge & E, const Standard_Real MinToleranceRequest, const Standard_Real MaxToleranceToCheck);
+		static bool UpdateEdgeTol(const TopoDS_Edge & E, const double MinToleranceRequest, const double MaxToleranceToCheck);
 
 		/****** BRepLib::UpdateEdgeTolerance ******/
-		/****** md5 signature: a900570e66aa87edd638ebad627eb240 ******/
+		/****** md5 signature: 3bde3c540e0f7f5fcef4861d3e68ab8a ******/
 		%feature("compactdefaultargs") UpdateEdgeTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-MinToleranceRequest: float
-MaxToleranceToCheck: float
+MinToleranceRequest: double
+MaxToleranceToCheck: double
 
 Return
 -------
@@ -794,9 +793,9 @@ bool
 
 Description
 -----------
--- Checks all the edges of the shape whose -- -- -- Tolerance is smaller than MaxToleranceToCheck -- Returns True if at least one edge was updated -- MinToleranceRequest is the minimum tolerance before -- it -- is useful to start testing. Usually it should be around -- 10e-5-- //! Warning :The method is very slow as it checks all. Use only in interfaces or processing assimilate batch.
+Checks all the edges of the shape whose Tolerance is smaller than MaxToleranceToCheck Returns True if at least one edge was updated MinToleranceRequest is the minimum tolerance before it is useful to start testing. Usually it should be around 10e-5 //! Warning: The method is very slow as it checks all. Use only in interfaces or processing assimilate batch.
 ") UpdateEdgeTolerance;
-		static Standard_Boolean UpdateEdgeTolerance(const TopoDS_Shape & S, const Standard_Real MinToleranceRequest, const Standard_Real MaxToleranceToCheck);
+		static bool UpdateEdgeTolerance(const TopoDS_Shape & S, const double MinToleranceRequest, const double MaxToleranceToCheck);
 
 		/****** BRepLib::UpdateInnerTolerances ******/
 		/****** md5 signature: f8274e750a439791de5f4024a2905387 ******/
@@ -817,13 +816,13 @@ Checks tolerances of edges (including inner points) and vertices of a shape and 
 		static void UpdateInnerTolerances(const TopoDS_Shape & S);
 
 		/****** BRepLib::UpdateTolerances ******/
-		/****** md5 signature: 0198d839071a3de5f272c500a29a7eae ******/
+		/****** md5 signature: 070d895be262c373fd29d3bdcd126faf ******/
 		%feature("compactdefaultargs") UpdateTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-verifyFaceTolerance: bool (optional, default to Standard_False)
+verifyFaceTolerance: bool (optional, default to false)
 
 Return
 -------
@@ -833,17 +832,17 @@ Description
 -----------
 Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in).
 ") UpdateTolerances;
-		static void UpdateTolerances(const TopoDS_Shape & S, const Standard_Boolean verifyFaceTolerance = Standard_False);
+		static void UpdateTolerances(const TopoDS_Shape & S, const bool verifyFaceTolerance = false);
 
 		/****** BRepLib::UpdateTolerances ******/
-		/****** md5 signature: d1c1288e8bbb918e38ee02d611522fe2 ******/
+		/****** md5 signature: e1661b619f666a4c9c3175579c810203 ******/
 		%feature("compactdefaultargs") UpdateTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 theReshaper: BRepTools_ReShape
-verifyFaceTolerance: bool (optional, default to Standard_False)
+verifyFaceTolerance: bool (optional, default to false)
 
 Return
 -------
@@ -853,7 +852,7 @@ Description
 -----------
 Replaces tolerance of FACE EDGE VERTEX by the tolerance Max of their connected handling shapes. It is not necessary to use this call after SameParameter. (called in) theReshaper is used to record the modifications of input shape <S> to prevent any modifications on the shape itself. Thus the input shape (and its subshapes) will not be modified, instead the reshaper will contain a modified empty-copies of original subshapes as substitutions.
 ") UpdateTolerances;
-		static void UpdateTolerances(const TopoDS_Shape & S, BRepTools_ReShape & theReshaper, const Standard_Boolean verifyFaceTolerance = Standard_False);
+		static void UpdateTolerances(const TopoDS_Shape & S, BRepTools_ReShape & theReshaper, const bool verifyFaceTolerance = false);
 
 };
 
@@ -906,7 +905,7 @@ Constructor.
 		 BRepLib_CheckCurveOnSurface(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
 		/****** BRepLib_CheckCurveOnSurface::ErrorStatus ******/
-		/****** md5 signature: 23ccaf4f25108c0b871675cdf964cbf6 ******/
+		/****** md5 signature: d9fcbadbff0953c639e060241b086dec ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -916,7 +915,7 @@ Description
 -----------
 Returns error status The possible values are: 0 - OK; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.
 ") ErrorStatus;
-		Standard_Integer ErrorStatus();
+		int ErrorStatus();
 
 		/****** BRepLib_CheckCurveOnSurface::Init ******/
 		/****** md5 signature: 2a831d636c2c924d38adfdfa075e8336 ******/
@@ -938,7 +937,7 @@ Sets the data for the algorithm.
 		void Init(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
 		/****** BRepLib_CheckCurveOnSurface::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -948,10 +947,10 @@ Description
 -----------
 Returns true if the max distance has been found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepLib_CheckCurveOnSurface::IsParallel ******/
-		/****** md5 signature: fc1de18a583c6aa3b3d9897c80aa553e ******/
+		/****** md5 signature: b5dec32788c4cabf441ea364e8b4616c ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -961,33 +960,33 @@ Description
 -----------
 Returns true if parallel flag is set.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** BRepLib_CheckCurveOnSurface::MaxDistance ******/
-		/****** md5 signature: eb56c1d1489e07dddfaf89c1bd00ff56 ******/
+		/****** md5 signature: e99afdda005d648d0eb2efaa1f1e2e1b ******/
 		%feature("compactdefaultargs") MaxDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns max distance.
 ") MaxDistance;
-		Standard_Real MaxDistance();
+		double MaxDistance();
 
 		/****** BRepLib_CheckCurveOnSurface::MaxParameter ******/
-		/****** md5 signature: 23a45560d6d0376bf4b799705df1e0c0 ******/
+		/****** md5 signature: 6206e00ea5d2de4bb7d2e735b3d64893 ******/
 		%feature("compactdefaultargs") MaxParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns parameter in which the distance is maximal.
 ") MaxParameter;
-		Standard_Real MaxParameter();
+		double MaxParameter();
 
 		/****** BRepLib_CheckCurveOnSurface::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -998,12 +997,12 @@ None
 
 Description
 -----------
-Performs the calculation If myIsParallel == Standard_True then computation will be performed in parallel.
+Performs the calculation If myIsParallel == true then computation will be performed in parallel.
 ") Perform;
 		void Perform();
 
 		/****** BRepLib_CheckCurveOnSurface::SetParallel ******/
-		/****** md5 signature: 91c6328a8c6135d4f1f1da7db8aee28f ******/
+		/****** md5 signature: 255bd129e77b56c0dddef79b343deb4b ******/
 		%feature("compactdefaultargs") SetParallel;
 		%feature("autodoc", "
 Parameters
@@ -1018,7 +1017,7 @@ Description
 -----------
 Sets parallel flag.
 ") SetParallel;
-		void SetParallel(const Standard_Boolean theIsParallel);
+		void SetParallel(const bool theIsParallel);
 
 };
 
@@ -1049,7 +1048,7 @@ Raises NotDone if done is false.
 		void Check();
 
 		/****** BRepLib_Command::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1059,7 +1058,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -1089,15 +1088,15 @@ No available documentation.
 		 BRepLib_FindSurface();
 
 		/****** BRepLib_FindSurface::BRepLib_FindSurface ******/
-		/****** md5 signature: b8cba8dda11d30fdcb78d4560e9a7962 ******/
+		/****** md5 signature: b0530f52cd22101a5dfb0e429a2385d3 ******/
 		%feature("compactdefaultargs") BRepLib_FindSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Tol: float (optional, default to -1)
-OnlyPlane: bool (optional, default to Standard_False)
-OnlyClosed: bool (optional, default to Standard_False)
+Tol: double (optional, default to -1)
+OnlyPlane: bool (optional, default to false)
+OnlyClosed: bool (optional, default to false)
 
 Return
 -------
@@ -1107,10 +1106,10 @@ Description
 -----------
 Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S should be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 ") BRepLib_FindSurface;
-		 BRepLib_FindSurface(const TopoDS_Shape & S, const Standard_Real Tol = -1, const Standard_Boolean OnlyPlane = Standard_False, const Standard_Boolean OnlyClosed = Standard_False);
+		 BRepLib_FindSurface(const TopoDS_Shape & S, const double Tol = -1, const bool OnlyPlane = false, const bool OnlyClosed = false);
 
 		/****** BRepLib_FindSurface::Existed ******/
-		/****** md5 signature: 3e9d26310a54bcfa26ae446236bcd326 ******/
+		/****** md5 signature: 1f292c389730fdd4546dfe3781d61bf2 ******/
 		%feature("compactdefaultargs") Existed;
 		%feature("autodoc", "Return
 -------
@@ -1120,10 +1119,10 @@ Description
 -----------
 No available documentation.
 ") Existed;
-		Standard_Boolean Existed();
+		bool Existed();
 
 		/****** BRepLib_FindSurface::Found ******/
-		/****** md5 signature: f98a87b5981b48fa74222eaa5aa8feb6 ******/
+		/****** md5 signature: 5b4f2554092d035591453d3a6da63bd3 ******/
 		%feature("compactdefaultargs") Found;
 		%feature("autodoc", "Return
 -------
@@ -1133,18 +1132,18 @@ Description
 -----------
 No available documentation.
 ") Found;
-		Standard_Boolean Found();
+		bool Found();
 
 		/****** BRepLib_FindSurface::Init ******/
-		/****** md5 signature: ffdff77a564b351561b3277d0ad3c0f6 ******/
+		/****** md5 signature: fcd5e8d5250fc671c1ba05c35884a0c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Tol: float (optional, default to -1)
-OnlyPlane: bool (optional, default to Standard_False)
-OnlyClosed: bool (optional, default to Standard_False)
+Tol: double (optional, default to -1)
+OnlyPlane: bool (optional, default to false)
+OnlyClosed: bool (optional, default to false)
 
 Return
 -------
@@ -1154,7 +1153,7 @@ Description
 -----------
 Computes the Surface from the edges of <S> with the given tolerance. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set. If <OnlyClosed> is true, then S should be a wire and the existing surface, on which wire S is not closed in 2D, will be ignored.
 ") Init;
-		void Init(const TopoDS_Shape & S, const Standard_Real Tol = -1, const Standard_Boolean OnlyPlane = Standard_False, const Standard_Boolean OnlyClosed = Standard_False);
+		void Init(const TopoDS_Shape & S, const double Tol = -1, const bool OnlyPlane = false, const bool OnlyClosed = false);
 
 		/****** BRepLib_FindSurface::Location ******/
 		/****** md5 signature: 9aada9ca43432b6e0a1b3215ca813c4b ******/
@@ -1183,30 +1182,30 @@ No available documentation.
 		opencascade::handle<Geom_Surface> Surface();
 
 		/****** BRepLib_FindSurface::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** BRepLib_FindSurface::ToleranceReached ******/
-		/****** md5 signature: a6314d79889dbea629fdb016144cc500 ******/
+		/****** md5 signature: 30e9580d438abb6d0f78978f7bdbf804 ******/
 		%feature("compactdefaultargs") ToleranceReached;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ToleranceReached;
-		Standard_Real ToleranceReached();
+		double ToleranceReached();
 
 };
 
@@ -1223,13 +1222,13 @@ No available documentation.
 class BRepLib_FuseEdges {
 	public:
 		/****** BRepLib_FuseEdges::BRepLib_FuseEdges ******/
-		/****** md5 signature: 3192e647e21f5c4050a8d8df456f8b45 ******/
+		/****** md5 signature: 55197ed840d8e15fc5df1188ff847219 ******/
 		%feature("compactdefaultargs") BRepLib_FuseEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-PerformNow: bool (optional, default to Standard_False)
+PerformNow: bool (optional, default to false)
 
 Return
 -------
@@ -1239,15 +1238,15 @@ Description
 -----------
 Initialise members and build construction of map of ancestors.
 ") BRepLib_FuseEdges;
-		 BRepLib_FuseEdges(const TopoDS_Shape & theShape, const Standard_Boolean PerformNow = Standard_False);
+		 BRepLib_FuseEdges(const TopoDS_Shape & theShape, const bool PerformNow = false);
 
 		/****** BRepLib_FuseEdges::AvoidEdges ******/
-		/****** md5 signature: d76ba44d4c0d9554fdf47f67049f8da0 ******/
+		/****** md5 signature: f818e50fc2b6589ea6e4232f3ecf29b2 ******/
 		%feature("compactdefaultargs") AvoidEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-theMapEdg: TopTools_IndexedMapOfShape
+theMapEdg: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1257,15 +1256,15 @@ Description
 -----------
 set edges to avoid being fused.
 ") AvoidEdges;
-		void AvoidEdges(const TopTools_IndexedMapOfShape & theMapEdg);
+		void AvoidEdges(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapEdg);
 
 		/****** BRepLib_FuseEdges::Edges ******/
-		/****** md5 signature: 8084c179e24e67079a00b4a173ee9313 ******/
+		/****** md5 signature: 5379174e9d14e3e3ea311fe7df3bef29 ******/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "
 Parameters
 ----------
-theMapLstEdg: TopTools_DataMapOfIntegerListOfShape
+theMapLstEdg: NCollection_DataMap<int, NCollection_List<TopoDS_Shape> >
 
 Return
 -------
@@ -1275,15 +1274,15 @@ Description
 -----------
 returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 ") Edges;
-		void Edges(TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
+		void Edges(NCollection_DataMap<int, NCollection_List<TopoDS_Shape> > & theMapLstEdg);
 
 		/****** BRepLib_FuseEdges::Faces ******/
-		/****** md5 signature: f5abad97fb8ff03cd2b7955c20acd767 ******/
+		/****** md5 signature: e6edd7a821bbcfb3e5ad657809fa2a22 ******/
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "
 Parameters
 ----------
-theMapFac: TopTools_DataMapOfShapeShape
+theMapFac: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1293,10 +1292,10 @@ Description
 -----------
 returns the map of modified faces.
 ") Faces;
-		void Faces(TopTools_DataMapOfShapeShape & theMapFac);
+		void Faces(NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & theMapFac);
 
 		/****** BRepLib_FuseEdges::NbVertices ******/
-		/****** md5 signature: 18584eb261816370021ae75041e9f83a ******/
+		/****** md5 signature: 45ce1fb31ba11f2d666ff6e9e2192133 ******/
 		%feature("compactdefaultargs") NbVertices;
 		%feature("autodoc", "Return
 -------
@@ -1306,7 +1305,7 @@ Description
 -----------
 returns the number of vertices candidate to be removed.
 ") NbVertices;
-		Standard_Integer NbVertices();
+		int NbVertices();
 
 		/****** BRepLib_FuseEdges::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -1322,12 +1321,12 @@ Using map of list of connex edges, fuse each list to one edge and then update my
 		void Perform();
 
 		/****** BRepLib_FuseEdges::ResultEdges ******/
-		/****** md5 signature: c473d3c90614f31ceb4528d8ba7addb5 ******/
+		/****** md5 signature: 69dd616f0de4fac58c62191aaa94e718 ******/
 		%feature("compactdefaultargs") ResultEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-theMapEdg: TopTools_DataMapOfIntegerShape
+theMapEdg: NCollection_DataMap<int, TopoDS_Shape>
 
 Return
 -------
@@ -1337,15 +1336,15 @@ Description
 -----------
 returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i).
 ") ResultEdges;
-		void ResultEdges(TopTools_DataMapOfIntegerShape & theMapEdg);
+		void ResultEdges(NCollection_DataMap<int, TopoDS_Shape> & theMapEdg);
 
 		/****** BRepLib_FuseEdges::SetConcatBSpl ******/
-		/****** md5 signature: 3dafc254ea0616772e4fe7729e2596de ******/
+		/****** md5 signature: 6d129e69069790bcb6417528371bbae2 ******/
 		%feature("compactdefaultargs") SetConcatBSpl;
 		%feature("autodoc", "
 Parameters
 ----------
-theConcatBSpl: bool (optional, default to Standard_True)
+theConcatBSpl: bool (optional, default to true)
 
 Return
 -------
@@ -1355,7 +1354,7 @@ Description
 -----------
 set mode to enable concatenation G1 BSpline edges in one End Modified by IFV 19.04.07.
 ") SetConcatBSpl;
-		void SetConcatBSpl(const Standard_Boolean theConcatBSpl = Standard_True);
+		void SetConcatBSpl(const bool theConcatBSpl = true);
 
 		/****** BRepLib_FuseEdges::Shape ******/
 		/****** md5 signature: 4968b0e4669317ad9b7893680ac9a219 ******/
@@ -1386,12 +1385,12 @@ returns myShape modified with the list of internal edges removed from it.
 class BRepLib_PointCloudShape {
 	public:
 		/****** BRepLib_PointCloudShape::GeneratePointsByDensity ******/
-		/****** md5 signature: 619270416b95000e397399807042b65a ******/
+		/****** md5 signature: 90ff320d7adb2d5e35dcba62bc22c5e1 ******/
 		%feature("compactdefaultargs") GeneratePointsByDensity;
 		%feature("autodoc", "
 Parameters
 ----------
-theDensity: float (optional, default to 0.0)
+theDensity: double (optional, default to 0.0)
 
 Return
 -------
@@ -1401,10 +1400,10 @@ Description
 -----------
 Computes points with specified density for initial shape. If parameter Density is equal to 0 then density will be computed automatically by criterion: - 10 points per minimal unreduced face area. //! Note: this function should not be called from concurrent threads without external lock.
 ") GeneratePointsByDensity;
-		Standard_Boolean GeneratePointsByDensity(const Standard_Real theDensity = 0.0);
+		bool GeneratePointsByDensity(const double theDensity = 0.0);
 
 		/****** BRepLib_PointCloudShape::GeneratePointsByTriangulation ******/
-		/****** md5 signature: 912b82f3a10b1a54374d28369fcc6a67 ******/
+		/****** md5 signature: d6e5202ea1bdf8257f79db0e16c10320 ******/
 		%feature("compactdefaultargs") GeneratePointsByTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1414,28 +1413,28 @@ Description
 -----------
 Get points from triangulation existing in the shape.
 ") GeneratePointsByTriangulation;
-		Standard_Boolean GeneratePointsByTriangulation();
+		bool GeneratePointsByTriangulation();
 
 		/****** BRepLib_PointCloudShape::GetDistance ******/
-		/****** md5 signature: a3cf6093e8abf55853fd25f21f892d82 ******/
+		/****** md5 signature: 0bfb16507b3914e8d46e66bb175d95a5 ******/
 		%feature("compactdefaultargs") GetDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns value of the distance to define deflection of points from shape along normal to shape; 0.0 by default.
 ") GetDistance;
-		Standard_Real GetDistance();
+		double GetDistance();
 
 		/****** BRepLib_PointCloudShape::NbPointsByDensity ******/
-		/****** md5 signature: 2a3faf3ea9aed5ce1b6e260486ac5094 ******/
+		/****** md5 signature: cfc1c1368284ddfdd4d00fa78c4159e9 ******/
 		%feature("compactdefaultargs") NbPointsByDensity;
 		%feature("autodoc", "
 Parameters
 ----------
-theDensity: float (optional, default to 0.0)
+theDensity: double (optional, default to 0.0)
 
 Return
 -------
@@ -1445,10 +1444,10 @@ Description
 -----------
 Returns size of the point cloud for specified density.
 ") NbPointsByDensity;
-		Standard_Integer NbPointsByDensity(const Standard_Real theDensity = 0.0);
+		int NbPointsByDensity(const double theDensity = 0.0);
 
 		/****** BRepLib_PointCloudShape::NbPointsByTriangulation ******/
-		/****** md5 signature: c88afd500722f5a19d60b6d00aabd05a ******/
+		/****** md5 signature: ecdf6e03983b440e8bde79eadc7177df ******/
 		%feature("compactdefaultargs") NbPointsByTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1458,15 +1457,15 @@ Description
 -----------
 Returns size of the point cloud for using triangulation.
 ") NbPointsByTriangulation;
-		Standard_Integer NbPointsByTriangulation();
+		int NbPointsByTriangulation();
 
 		/****** BRepLib_PointCloudShape::SetDistance ******/
-		/****** md5 signature: 9c8aa9fbc03cbbcac598e64ccf79cf2e ******/
+		/****** md5 signature: dd0c791fae1e84f7e45db4a517f92b7c ******/
 		%feature("compactdefaultargs") SetDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-theDist: float
+theDist: double
 
 Return
 -------
@@ -1476,7 +1475,7 @@ Description
 -----------
 Sets value of the distance to define deflection of points from shape along normal to shape. Negative values of theDist parameter are ignored.
 ") SetDistance;
-		void SetDistance(const Standard_Real theDist);
+		void SetDistance(const double theDist);
 
 		/****** BRepLib_PointCloudShape::SetShape ******/
 		/****** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ******/
@@ -1497,12 +1496,12 @@ Set shape.
 		void SetShape(const TopoDS_Shape & theShape);
 
 		/****** BRepLib_PointCloudShape::SetTolerance ******/
-		/****** md5 signature: 24665c79b6c4a1cf17fbde5e4ed41549 ******/
+		/****** md5 signature: 7a122d62cf37c0f7110c25c0847e82a8 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -1512,7 +1511,7 @@ Description
 -----------
 Set tolerance.
 ") SetTolerance;
-		void SetTolerance(Standard_Real theTol);
+		void SetTolerance(double theTol);
 
 		/****** BRepLib_PointCloudShape::Shape ******/
 		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
@@ -1528,17 +1527,17 @@ Return loaded shape.
 		const TopoDS_Shape Shape();
 
 		/****** BRepLib_PointCloudShape::Tolerance ******/
-		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
+		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return tolerance.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -1612,7 +1611,7 @@ Input parameter: theTris the definition of a face triangulation @param[in,out] t
 class BRepLib_ValidateEdge {
 	public:
 		/****** BRepLib_ValidateEdge::BRepLib_ValidateEdge ******/
-		/****** md5 signature: 743d4b813a0a60f0a8f03719aecc2eb8 ******/
+		/****** md5 signature: 2417e5b4337a85342d5f65b3bcf013cb ******/
 		%feature("compactdefaultargs") BRepLib_ValidateEdge;
 		%feature("autodoc", "
 Parameters
@@ -1629,15 +1628,15 @@ Description
 -----------
 Initialization constructor.
 ") BRepLib_ValidateEdge;
-		 BRepLib_ValidateEdge(const opencascade::handle<Adaptor3d_Curve > theReferenceCurve, const opencascade::handle<Adaptor3d_CurveOnSurface > theOtherCurve, Standard_Boolean theSameParameter);
+		 BRepLib_ValidateEdge(const opencascade::handle<Adaptor3d_Curve > theReferenceCurve, const opencascade::handle<Adaptor3d_CurveOnSurface > theOtherCurve, bool theSameParameter);
 
 		/****** BRepLib_ValidateEdge::CheckTolerance ******/
-		/****** md5 signature: 5785e5be76b0b006dcca89fcac000a5f ******/
+		/****** md5 signature: cd63ceea2c55b19771ba46d4f5bde78a ******/
 		%feature("compactdefaultargs") CheckTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theToleranceToCheck: float
+theToleranceToCheck: double
 
 Return
 -------
@@ -1647,23 +1646,23 @@ Description
 -----------
 Returns true if computed distance is less than <theToleranceToCheck>.
 ") CheckTolerance;
-		Standard_Boolean CheckTolerance(Standard_Real theToleranceToCheck);
+		bool CheckTolerance(double theToleranceToCheck);
 
 		/****** BRepLib_ValidateEdge::GetMaxDistance ******/
-		/****** md5 signature: 4732d2c21b2f300e493e252dd95feaf9 ******/
+		/****** md5 signature: 7ec2859170d83c36739259c139a41584 ******/
 		%feature("compactdefaultargs") GetMaxDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns max distance.
 ") GetMaxDistance;
-		Standard_Real GetMaxDistance();
+		double GetMaxDistance();
 
 		/****** BRepLib_ValidateEdge::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1673,10 +1672,10 @@ Description
 -----------
 Returns true if the distance has been found for all points.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepLib_ValidateEdge::IsExactMethod ******/
-		/****** md5 signature: 5e4b019881aa7aa6b5765966d6b467ca ******/
+		/****** md5 signature: a07bdef08a4b8aa4e8d81be4766f4e4d ******/
 		%feature("compactdefaultargs") IsExactMethod;
 		%feature("autodoc", "Return
 -------
@@ -1686,10 +1685,10 @@ Description
 -----------
 Returns true if exact method selected.
 ") IsExactMethod;
-		Standard_Boolean IsExactMethod();
+		bool IsExactMethod();
 
 		/****** BRepLib_ValidateEdge::IsParallel ******/
-		/****** md5 signature: fc1de18a583c6aa3b3d9897c80aa553e ******/
+		/****** md5 signature: b5dec32788c4cabf441ea364e8b4616c ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -1699,7 +1698,7 @@ Description
 -----------
 Returns true if parallel flag is set.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** BRepLib_ValidateEdge::Process ******/
 		/****** md5 signature: f69ec5068362d1fb1c1da24f6f943a3d ******/
@@ -1715,7 +1714,7 @@ Computes the max distance for the 3d curve <myReferenceCurve> and curve on surfa
 		void Process();
 
 		/****** BRepLib_ValidateEdge::SetControlPointsNumber ******/
-		/****** md5 signature: 23357e0c62202a31f8a5a8da5865b56d ******/
+		/****** md5 signature: 501936f5e2383b5775793a4e78ebe5be ******/
 		%feature("compactdefaultargs") SetControlPointsNumber;
 		%feature("autodoc", "
 Parameters
@@ -1730,10 +1729,10 @@ Description
 -----------
 Set control points number (if you need a value other than 22).
 ") SetControlPointsNumber;
-		void SetControlPointsNumber(Standard_Integer theControlPointsNumber);
+		void SetControlPointsNumber(int theControlPointsNumber);
 
 		/****** BRepLib_ValidateEdge::SetExactMethod ******/
-		/****** md5 signature: 61e71faebec158e548494f19380d6da6 ******/
+		/****** md5 signature: a6612f28201c4984d73119fb925235ee ******/
 		%feature("compactdefaultargs") SetExactMethod;
 		%feature("autodoc", "
 Parameters
@@ -1748,10 +1747,10 @@ Description
 -----------
 Sets method to calculate distance: Calculating in finite number of points (if theIsExact is false, faster, but possible not correct result) or exact calculating by using BRepLib_CheckCurveOnSurface class (if theIsExact is true, slowly, but more correctly). Exact method is used only when edge is SameParameter. Default method is calculating in finite number of points.
 ") SetExactMethod;
-		void SetExactMethod(Standard_Boolean theIsExact);
+		void SetExactMethod(bool theIsExact);
 
 		/****** BRepLib_ValidateEdge::SetParallel ******/
-		/****** md5 signature: 6daf50fa108f9f0000233a9dba805cd8 ******/
+		/****** md5 signature: edf502d8fced8f0a5916d1d68bf2e792 ******/
 		%feature("compactdefaultargs") SetParallel;
 		%feature("autodoc", "
 Parameters
@@ -1766,10 +1765,10 @@ Description
 -----------
 Sets parallel flag.
 ") SetParallel;
-		void SetParallel(Standard_Boolean theIsMultiThread);
+		void SetParallel(bool theIsMultiThread);
 
 		/****** BRepLib_ValidateEdge::UpdateTolerance ******/
-		/****** md5 signature: 041719f1b7cceef57cb2fd1857736488 ******/
+		/****** md5 signature: 722f2785827beac017cbf3d2aa543f80 ******/
 		%feature("compactdefaultargs") UpdateTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1777,7 +1776,7 @@ Parameters
 
 Return
 -------
-theToleranceToUpdate: float
+theToleranceToUpdate: double
 
 Description
 -----------
@@ -1818,7 +1817,7 @@ This is called by Shape(). It does nothing but may be redefined.
 		void Build();
 
 		/****** BRepLib_MakeShape::DescendantFaces ******/
-		/****** md5 signature: 8df58efb7992f4d5a7fd3ff07c209ade ******/
+		/****** md5 signature: aa40cd3f62c88531cb176b0bd70535db ******/
 		%feature("compactdefaultargs") DescendantFaces;
 		%feature("autodoc", "
 Parameters
@@ -1827,13 +1826,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 returns the list of generated Faces.
 ") DescendantFaces;
-		virtual const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
+		virtual const NCollection_List<TopoDS_Shape> DescendantFaces(const TopoDS_Face & F);
 
 		/****** BRepLib_MakeShape::FaceStatus ******/
 		/****** md5 signature: 5ba76a83c885c175dfdc1ccf1a0b227c ******/
@@ -1854,7 +1853,7 @@ returns the status of the Face after the shape creation.
 		virtual BRepLib_ShapeModification FaceStatus(const TopoDS_Face & F);
 
 		/****** BRepLib_MakeShape::FacesFromEdges ******/
-		/****** md5 signature: ede406fa6cad5565fccbde10219d8cdc ******/
+		/****** md5 signature: 9f022964a5614d17de41931c8c96499d ******/
 		%feature("compactdefaultargs") FacesFromEdges;
 		%feature("autodoc", "
 Parameters
@@ -1863,16 +1862,16 @@ E: TopoDS_Edge
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 returns a list of the created faces from the edge <E>.
 ") FacesFromEdges;
-		virtual const TopTools_ListOfShape & FacesFromEdges(const TopoDS_Edge & E);
+		virtual const NCollection_List<TopoDS_Shape> FacesFromEdges(const TopoDS_Edge & E);
 
 		/****** BRepLib_MakeShape::HasDescendants ******/
-		/****** md5 signature: 5dfd9dee6a174cf40b37fcc3fc769ec8 ******/
+		/****** md5 signature: ca2809a6d801cfc899d44016b6c2993b ******/
 		%feature("compactdefaultargs") HasDescendants;
 		%feature("autodoc", "
 Parameters
@@ -1887,10 +1886,10 @@ Description
 -----------
 Returns True if the Face generates new topology.
 ") HasDescendants;
-		virtual Standard_Boolean HasDescendants(const TopoDS_Face & F);
+		virtual bool HasDescendants(const TopoDS_Face & F);
 
 		/****** BRepLib_MakeShape::NbSurfaces ******/
-		/****** md5 signature: 9fc085a7006ba3837eefd2b047c50505 ******/
+		/****** md5 signature: 2375662626d3902aec7750ab9ae790bd ******/
 		%feature("compactdefaultargs") NbSurfaces;
 		%feature("autodoc", "Return
 -------
@@ -1900,10 +1899,10 @@ Description
 -----------
 returns the number of surfaces after the shape creation.
 ") NbSurfaces;
-		virtual Standard_Integer NbSurfaces();
+		virtual int NbSurfaces();
 
 		/****** BRepLib_MakeShape::NewFaces ******/
-		/****** md5 signature: e7c3baccbeecb1721ee5663fcedbeab2 ******/
+		/****** md5 signature: 6bec6d356ff84edae7e7f3df1bf57418 ******/
 		%feature("compactdefaultargs") NewFaces;
 		%feature("autodoc", "
 Parameters
@@ -1912,13 +1911,13 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Return the faces created for surface I.
 ") NewFaces;
-		virtual const TopTools_ListOfShape & NewFaces(const Standard_Integer I);
+		virtual const NCollection_List<TopoDS_Shape> NewFaces(const int I);
 
 		/****** BRepLib_MakeShape::Shape ******/
 		/****** md5 signature: 35cc6b8a92112f8b2067e768b8f01ff2 ******/
@@ -2017,14 +2016,14 @@ No available documentation.
 		 BRepLib_MakeEdge(const gp_Lin & L);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: af34800776240963b0b7ad5bf6dced9a ******/
+		/****** md5 signature: 5dff2befe9da5e4bbeb57752bca7dc7e ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2034,7 +2033,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const gp_Lin & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const gp_Lin & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: 0d4017c8497dcacedd786f3dcdaac683 ******/
@@ -2095,14 +2094,14 @@ No available documentation.
 		 BRepLib_MakeEdge(const gp_Circ & L);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 8010b690a9edf1d81b0ba93c583608fe ******/
+		/****** md5 signature: e1c08bcc392128d329c3a80628309c85 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Circ
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2112,7 +2111,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const gp_Circ & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const gp_Circ & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: c91a90ae7df25d6b8e40b81940ca4b7c ******/
@@ -2173,14 +2172,14 @@ No available documentation.
 		 BRepLib_MakeEdge(const gp_Elips & L);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 108b98c6e7ed81c7015103c1a1a29781 ******/
+		/****** md5 signature: 24154d599c0205d67bd1054091dc6e84 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Elips
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2190,7 +2189,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const gp_Elips & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const gp_Elips & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: 06d1280d59fc92a193890b79160b0e77 ******/
@@ -2251,14 +2250,14 @@ No available documentation.
 		 BRepLib_MakeEdge(const gp_Hypr & L);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 0397aae04f47fff57560d095d3e7437b ******/
+		/****** md5 signature: 57c8f2850f48d768089819f858ba5800 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Hypr
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2268,7 +2267,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const gp_Hypr & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const gp_Hypr & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: 26ce953ab7e802cc208f18f1cfbab2b6 ******/
@@ -2329,14 +2328,14 @@ No available documentation.
 		 BRepLib_MakeEdge(const gp_Parab & L);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: c7b5a08fc84bfe38d0a90725df5bbd9c ******/
+		/****** md5 signature: 92d2546a4f08d0d71fe76f9fe8a92e93 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Parab
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2346,7 +2345,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const gp_Parab & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const gp_Parab & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: f3507502fb730d27f98864f12d561310 ******/
@@ -2407,14 +2406,14 @@ No available documentation.
 		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 106f831047c13089c37f719079f78549 ******/
+		/****** md5 signature: 2b3b0cd4875c66f2b764b68ce401bc10 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: Geom_Curve
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2424,7 +2423,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: d743b1166a4aa754c0386de9a92c966d ******/
@@ -2467,7 +2466,7 @@ No available documentation.
 		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 89bd22fddf706495b67ddcef6ea6bbfd ******/
+		/****** md5 signature: 5ae8190c352efdde0e3a942af566d131 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -2475,8 +2474,8 @@ Parameters
 L: Geom_Curve
 P1: gp_Pnt
 P2: gp_Pnt
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2486,10 +2485,10 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const gp_Pnt & P1, const gp_Pnt & P2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: b89ec974f95c1dfee86f5665308a042d ******/
+		/****** md5 signature: 474c91f96f67166ac529c5f1b99a37bc ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -2497,8 +2496,8 @@ Parameters
 L: Geom_Curve
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2508,7 +2507,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const opencascade::handle<Geom_Curve> & L, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: 8dee1765d199f2245a83cccdf28b5532 ******/
@@ -2530,15 +2529,15 @@ No available documentation.
 		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 0bf5e5b81574251e312a4e57ecadac83 ******/
+		/****** md5 signature: 9a9a0471340096a6511a7ea4d190e89f ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 L: Geom2d_Curve
 S: Geom_Surface
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2548,7 +2547,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
 		/****** md5 signature: c6bebde95ae610ff35a5d9ef3622e044 ******/
@@ -2593,7 +2592,7 @@ No available documentation.
 		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: fa7462603260f1fe2035d75f5e6f4c61 ******/
+		/****** md5 signature: c753960ce847c2a9e9a4955f41de371c ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -2602,8 +2601,8 @@ L: Geom2d_Curve
 S: Geom_Surface
 P1: gp_Pnt
 P2: gp_Pnt
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2613,10 +2612,10 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const gp_Pnt & P1, const gp_Pnt & P2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::BRepLib_MakeEdge ******/
-		/****** md5 signature: 1dd23a8eff7c5f01c11450ba4106db9d ******/
+		/****** md5 signature: a3b605979559892f127f1dd98b3cd0b2 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -2625,8 +2624,8 @@ L: Geom2d_Curve
 S: Geom_Surface
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2636,7 +2635,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge;
-		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge(const opencascade::handle<Geom2d_Curve> & L, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Edge ******/
 		/****** md5 signature: 768a18012e715670ae29301e23e2cf8b ******/
@@ -2683,14 +2682,14 @@ No available documentation.
 		void Init(const opencascade::handle<Geom_Curve> & C);
 
 		/****** BRepLib_MakeEdge::Init ******/
-		/****** md5 signature: 69ab6deacb22a5a946bd084862db1233 ******/
+		/****** md5 signature: db52bb95b13038d980ab380aed071983 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2700,7 +2699,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & C, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom_Curve> & C, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Init ******/
 		/****** md5 signature: 235ac27b5a022827b7d54091e2111592 ******/
@@ -2743,7 +2742,7 @@ No available documentation.
 		void Init(const opencascade::handle<Geom_Curve> & C, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakeEdge::Init ******/
-		/****** md5 signature: b7311420b3eb1ee66bd9b3232f6bbf14 ******/
+		/****** md5 signature: 412e03566949b7e42dd24c71b9ce7422 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2751,8 +2750,8 @@ Parameters
 C: Geom_Curve
 P1: gp_Pnt
 P2: gp_Pnt
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2762,10 +2761,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & C, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom_Curve> & C, const gp_Pnt & P1, const gp_Pnt & P2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Init ******/
-		/****** md5 signature: f0ddd1dcd6baa38ff9d6ad052ec8cf95 ******/
+		/****** md5 signature: 022e39933a80148892b5a7415d2df3ec ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2773,8 +2772,8 @@ Parameters
 C: Geom_Curve
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2784,7 +2783,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & C, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom_Curve> & C, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Init ******/
 		/****** md5 signature: 2207b24682fbbcefc3a70c5dcfc79e41 ******/
@@ -2806,15 +2805,15 @@ No available documentation.
 		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
 		/****** BRepLib_MakeEdge::Init ******/
-		/****** md5 signature: 46ba1cf0906b7383d025da040ff8be26 ******/
+		/****** md5 signature: 7d1c78307a623b9f37bb35153ddce6a9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
 S: Geom_Surface
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2824,7 +2823,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Init ******/
 		/****** md5 signature: 0b0c938b079b5bfdc1085e8f8a945803 ******/
@@ -2869,7 +2868,7 @@ No available documentation.
 		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakeEdge::Init ******/
-		/****** md5 signature: 13f84c1b43401d2a23e02820d3c88735 ******/
+		/****** md5 signature: 9e1d937daa68062a67ed0f38b9f236a5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2878,8 +2877,8 @@ C: Geom2d_Curve
 S: Geom_Surface
 P1: gp_Pnt
 P2: gp_Pnt
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2889,10 +2888,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const gp_Pnt & P1, const gp_Pnt & P2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Init ******/
-		/****** md5 signature: 59918a63418830ecee317dd35f9016cc ******/
+		/****** md5 signature: 1443b848b33c02245039596ae4dac49c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2901,8 +2900,8 @@ C: Geom2d_Curve
 S: Geom_Surface
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -2912,7 +2911,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge::Vertex1 ******/
 		/****** md5 signature: 3013872331c1fad0ef9330909eb27447 ******/
@@ -3011,14 +3010,14 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const gp_Lin2d & L);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: a997108b16e661a09a24601c5679b3f0 ******/
+		/****** md5 signature: 79cfcb35a62c631c4cd82ba2b15ac2bb ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3028,7 +3027,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const gp_Lin2d & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const gp_Lin2d & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
 		/****** md5 signature: f329f0e3c21f7ff3e9bc12ff69d8b321 ******/
@@ -3089,14 +3088,14 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const gp_Circ2d & L);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: 81bf556eb25414c4ddc242abe229d407 ******/
+		/****** md5 signature: 2d1cd5382ae1d248800d9c2d421e07ce ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Circ2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3106,7 +3105,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const gp_Circ2d & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const gp_Circ2d & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
 		/****** md5 signature: 8c7cc68166b1dd1eeec27938ba6fa2c4 ******/
@@ -3167,14 +3166,14 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const gp_Elips2d & L);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: 6cb9ee1cd761cae52b422fd6a23516ec ******/
+		/****** md5 signature: acc9b0325307cd51fcceb6b55681d882 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Elips2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3184,7 +3183,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const gp_Elips2d & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const gp_Elips2d & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
 		/****** md5 signature: 028cece37204c3539e721c37f7b9b093 ******/
@@ -3245,14 +3244,14 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const gp_Hypr2d & L);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: a996888dfa7a37ac3d5c3f51d223671c ******/
+		/****** md5 signature: 379a56ee4366f0f0b57e35a411f5d05d ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Hypr2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3262,7 +3261,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const gp_Hypr2d & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const gp_Hypr2d & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
 		/****** md5 signature: 70ee7ca5e1e5bfe58065106dbb4dc8e0 ******/
@@ -3323,14 +3322,14 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const gp_Parab2d & L);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: 390fd21101740f5959dc03f6e4d3c944 ******/
+		/****** md5 signature: 88deb2cfcbc3c2a1ffaa485fc97e3d6b ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Parab2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3340,7 +3339,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const gp_Parab2d & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const gp_Parab2d & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
 		/****** md5 signature: 6916a6786470149e1f649e7b30d6b377 ******/
@@ -3401,14 +3400,14 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: d94e150f6ac8f771336a088e1e0ad54d ******/
+		/****** md5 signature: 86dd2105d169e66f66057f6ed0bbf8f1 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
 ----------
 L: Geom2d_Curve
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3418,7 +3417,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
 		/****** md5 signature: 01ee21ab26910f427461fb97cb2e22e5 ******/
@@ -3461,7 +3460,7 @@ No available documentation.
 		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: 300875173ff311f28ba469b85de9fc1e ******/
+		/****** md5 signature: 68a59901fd161b611c677dde739d9da7 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
@@ -3469,8 +3468,8 @@ Parameters
 L: Geom2d_Curve
 P1: gp_Pnt2d
 P2: gp_Pnt2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3480,10 +3479,10 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::BRepLib_MakeEdge2d ******/
-		/****** md5 signature: 20f292df496f48d81091104b3ad42efa ******/
+		/****** md5 signature: 261423f8e46d5b7f0a706a02a401b681 ******/
 		%feature("compactdefaultargs") BRepLib_MakeEdge2d;
 		%feature("autodoc", "
 Parameters
@@ -3491,8 +3490,8 @@ Parameters
 L: Geom2d_Curve
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3502,7 +3501,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeEdge2d;
-		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
+		 BRepLib_MakeEdge2d(const opencascade::handle<Geom2d_Curve> & L, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::Edge ******/
 		/****** md5 signature: 768a18012e715670ae29301e23e2cf8b ******/
@@ -3549,14 +3548,14 @@ No available documentation.
 		void Init(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** BRepLib_MakeEdge2d::Init ******/
-		/****** md5 signature: 0961809b47e34c89a735be9bbe4cd201 ******/
+		/****** md5 signature: df4a86664fa2a622c4f3f9fb6cc6f46a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3566,7 +3565,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::Init ******/
 		/****** md5 signature: 3aebe7beccd2278aab8e691a1202290a ******/
@@ -3609,7 +3608,7 @@ No available documentation.
 		void Init(const opencascade::handle<Geom2d_Curve> & C, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakeEdge2d::Init ******/
-		/****** md5 signature: 909c5b62ad2dddf89a9e7ed6c45abf2e ******/
+		/****** md5 signature: 514f20b14aa76c7593782059c41a3b32 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3617,8 +3616,8 @@ Parameters
 C: Geom2d_Curve
 P1: gp_Pnt2d
 P2: gp_Pnt2d
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3628,10 +3627,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::Init ******/
-		/****** md5 signature: c6a6dc0247fd8deba360e5bd07dc5e73 ******/
+		/****** md5 signature: 934af206561188846e8d24e2e5dba24c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3639,8 +3638,8 @@ Parameters
 C: Geom2d_Curve
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3650,7 +3649,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real p1, const Standard_Real p2);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double p1, const double p2);
 
 		/****** BRepLib_MakeEdge2d::Vertex1 ******/
 		/****** md5 signature: 3013872331c1fad0ef9330909eb27447 ******/
@@ -3814,13 +3813,13 @@ Make a face from a torus.
 		 BRepLib_MakeFace(const gp_Torus & C);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: 71fcda54bfeccc386fb75b2aff873cfb ******/
+		/****** md5 signature: 1229d21fa554a83562f671df33c1a5d7 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-TolDegen: float
+TolDegen: double
 
 Return
 -------
@@ -3830,19 +3829,19 @@ Description
 -----------
 Make a face from a Surface. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const Standard_Real TolDegen);
+		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const double TolDegen);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: e22b1b0fb58fd884291f1e45462b13b1 ******/
+		/****** md5 signature: c1ac56f2be1c10196674adb660c542c6 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -3852,19 +3851,19 @@ Description
 -----------
 Make a face from a plane.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Pln & P, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		 BRepLib_MakeFace(const gp_Pln & P, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: d8da7666ae167d4a95b1316b8cd9e07c ******/
+		/****** md5 signature: d3b79a53207ce9b66a81eddb0f453702 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cylinder
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -3874,19 +3873,19 @@ Description
 -----------
 Make a face from a cylinder.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Cylinder & C, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		 BRepLib_MakeFace(const gp_Cylinder & C, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: ad0c69f42c45c8362f1abab4fbbf43a8 ******/
+		/****** md5 signature: 5856b5ad7a02a9225610d9d9fa46f98e ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cone
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -3896,19 +3895,19 @@ Description
 -----------
 Make a face from a cone.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Cone & C, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		 BRepLib_MakeFace(const gp_Cone & C, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: d521384eae57a8868ab132a84828ba6f ******/
+		/****** md5 signature: dfa207f3579d561171aee292f48d3a7e ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 S: gp_Sphere
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -3918,19 +3917,19 @@ Description
 -----------
 Make a face from a sphere.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Sphere & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		 BRepLib_MakeFace(const gp_Sphere & S, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: f3864ce104fe0b7123172ce1e14051c7 ******/
+		/****** md5 signature: 7252afdf5f1c0359b841d9eaf295b7db ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Torus
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -3940,20 +3939,20 @@ Description
 -----------
 Make a face from a torus.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Torus & C, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		 BRepLib_MakeFace(const gp_Torus & C, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: f016cba06f591c9b61ab608145612651 ******/
+		/****** md5 signature: eb4d70d8e8004e4afee8423aaa60eaf6 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-UMin: float
-UMax: float
-VMin: float
-VMax: float
-TolDegen: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
+TolDegen: double
 
 Return
 -------
@@ -3963,16 +3962,16 @@ Description
 -----------
 Make a face from a Surface. Accepts min & max parameters to construct the face's bounds. Also accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real TolDegen);
+		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const double UMin, const double UMax, const double VMin, const double VMax, const double TolDegen);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: ed28ba4982d2f9b3dddc1392d53f7acd ******/
+		/****** md5 signature: e6f51fedbd1c972dc644dc8949d3043d ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 W: TopoDS_Wire
-OnlyPlane: bool (optional, default to Standard_False)
+OnlyPlane: bool (optional, default to false)
 
 Return
 -------
@@ -3982,17 +3981,17 @@ Description
 -----------
 Find a surface from the wire and make a face. if <OnlyPlane> is true, the computed surface will be a plane. If it is not possible to find a plane, the flag NotDone will be set.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const TopoDS_Wire & W, const Standard_Boolean OnlyPlane = Standard_False);
+		 BRepLib_MakeFace(const TopoDS_Wire & W, const bool OnlyPlane = false);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: 354be0c0ac63645d25f576674820f14a ******/
+		/****** md5 signature: 7a7e7287588e80db7a81e3e6f5d65276 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
 W: TopoDS_Wire
-Inside: bool (optional, default to Standard_True)
+Inside: bool (optional, default to true)
 
 Return
 -------
@@ -4002,17 +4001,17 @@ Description
 -----------
 Make a face from a plane and a wire.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Pln & P, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
+		 BRepLib_MakeFace(const gp_Pln & P, const TopoDS_Wire & W, const bool Inside = true);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: a4de9a65b88a70bbef252d71c2886c6c ******/
+		/****** md5 signature: 283e05e1eb0105bed3ada6e3d76ca5c1 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cylinder
 W: TopoDS_Wire
-Inside: bool (optional, default to Standard_True)
+Inside: bool (optional, default to true)
 
 Return
 -------
@@ -4022,17 +4021,17 @@ Description
 -----------
 Make a face from a cylinder and a wire.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Cylinder & C, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
+		 BRepLib_MakeFace(const gp_Cylinder & C, const TopoDS_Wire & W, const bool Inside = true);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: 642cbd945296b1bbb29dd1d9b4177253 ******/
+		/****** md5 signature: 9509efc98ef1c1f1b922fc0cfaf1ae28 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cone
 W: TopoDS_Wire
-Inside: bool (optional, default to Standard_True)
+Inside: bool (optional, default to true)
 
 Return
 -------
@@ -4042,17 +4041,17 @@ Description
 -----------
 Make a face from a cone and a wire.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Cone & C, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
+		 BRepLib_MakeFace(const gp_Cone & C, const TopoDS_Wire & W, const bool Inside = true);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: f2e533bf67075db9c8a755d4745f4351 ******/
+		/****** md5 signature: 9d7338f5a668948793818d21a406fb57 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 S: gp_Sphere
 W: TopoDS_Wire
-Inside: bool (optional, default to Standard_True)
+Inside: bool (optional, default to true)
 
 Return
 -------
@@ -4062,17 +4061,17 @@ Description
 -----------
 Make a face from a sphere and a wire.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Sphere & S, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
+		 BRepLib_MakeFace(const gp_Sphere & S, const TopoDS_Wire & W, const bool Inside = true);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: f588f43ab7388d61ecf7054cc98e3736 ******/
+		/****** md5 signature: 5ef1942b0c91ef9958b4df6c9901fb70 ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Torus
 W: TopoDS_Wire
-Inside: bool (optional, default to Standard_True)
+Inside: bool (optional, default to true)
 
 Return
 -------
@@ -4082,17 +4081,17 @@ Description
 -----------
 Make a face from a torus and a wire.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const gp_Torus & C, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
+		 BRepLib_MakeFace(const gp_Torus & C, const TopoDS_Wire & W, const bool Inside = true);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
-		/****** md5 signature: 7b3f376200a4a9abc0db46cc88285ec9 ******/
+		/****** md5 signature: 8614c35973ce648a30672c6f49829f4f ******/
 		%feature("compactdefaultargs") BRepLib_MakeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
 W: TopoDS_Wire
-Inside: bool (optional, default to Standard_True)
+Inside: bool (optional, default to true)
 
 Return
 -------
@@ -4102,7 +4101,7 @@ Description
 -----------
 Make a face from a Surface and a wire.
 ") BRepLib_MakeFace;
-		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const TopoDS_Wire & W, const Standard_Boolean Inside = Standard_True);
+		 BRepLib_MakeFace(const opencascade::handle<Geom_Surface> & S, const TopoDS_Wire & W, const bool Inside = true);
 
 		/****** BRepLib_MakeFace::BRepLib_MakeFace ******/
 		/****** md5 signature: 3a87da05adde53547b32a7202b8c6c7f ******/
@@ -4186,14 +4185,14 @@ Load the face.
 		void Init(const TopoDS_Face & F);
 
 		/****** BRepLib_MakeFace::Init ******/
-		/****** md5 signature: 4537ccbc32157e9ea035d63999e8cd22 ******/
+		/****** md5 signature: 59a79bdfb378004ca374a9c6f71209d4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
 Bound: bool
-TolDegen: float
+TolDegen: double
 
 Return
 -------
@@ -4203,20 +4202,20 @@ Description
 -----------
 Creates the face from the surface. If Bound is True a wire is made from the natural bounds. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") Init;
-		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean Bound, const Standard_Real TolDegen);
+		void Init(const opencascade::handle<Geom_Surface> & S, const bool Bound, const double TolDegen);
 
 		/****** BRepLib_MakeFace::Init ******/
-		/****** md5 signature: 1577db0535b260fa5404a98f8fa219d8 ******/
+		/****** md5 signature: a597d1760b0138e199fed686ed17455e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-UMin: float
-UMax: float
-VMin: float
-VMax: float
-TolDegen: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
+TolDegen: double
 
 Return
 -------
@@ -4226,26 +4225,26 @@ Description
 -----------
 Creates the face from the surface and the min-max values. Accepts tolerance value (TolDegen) for resolution of degenerated edges.
 ") Init;
-		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real TolDegen);
+		void Init(const opencascade::handle<Geom_Surface> & S, const double UMin, const double UMax, const double VMin, const double VMax, const double TolDegen);
 
 		/****** BRepLib_MakeFace::IsDegenerated ******/
-		/****** md5 signature: 8569447db8fb27d83d66da5cfdd04d4e ******/
+		/****** md5 signature: 967595e0a3fa58aa7b3526a7d40cd506 ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: Geom_Curve
-theMaxTol: float
+theMaxTol: double
 
 Return
 -------
-theActTol: float
+theActTol: double
 
 Description
 -----------
 Checks the specified curve is degenerated according to specified tolerance. Returns <theActTol> less than <theMaxTol>, which shows actual tolerance to decide the curve is degenerated. Warning: For internal use of BRepLib_MakeFace and BRepLib_MakeShell.
 ") IsDegenerated;
-		static Standard_Boolean IsDegenerated(const opencascade::handle<Geom_Curve> & theCurve, const Standard_Real theMaxTol, Standard_Real &OutValue);
+		static bool IsDegenerated(const opencascade::handle<Geom_Curve> & theCurve, const double theMaxTol, Standard_Real &OutValue);
 
 };
 
@@ -4294,7 +4293,7 @@ No available documentation.
 		 BRepLib_MakePolygon(const gp_Pnt & P1, const gp_Pnt & P2);
 
 		/****** BRepLib_MakePolygon::BRepLib_MakePolygon ******/
-		/****** md5 signature: 8773333921c39918b59dcd751d310fed ******/
+		/****** md5 signature: 2fd5459dadc123372392a19a1b17c18c ******/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", "
 Parameters
@@ -4302,7 +4301,7 @@ Parameters
 P1: gp_Pnt
 P2: gp_Pnt
 P3: gp_Pnt
-Close: bool (optional, default to Standard_False)
+Close: bool (optional, default to false)
 
 Return
 -------
@@ -4312,10 +4311,10 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakePolygon;
-		 BRepLib_MakePolygon(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const Standard_Boolean Close = Standard_False);
+		 BRepLib_MakePolygon(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const bool Close = false);
 
 		/****** BRepLib_MakePolygon::BRepLib_MakePolygon ******/
-		/****** md5 signature: 29183b2578b472750b34c4ce98f6f3bf ******/
+		/****** md5 signature: aff1e56cc13bf077c10820e402cd3c28 ******/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", "
 Parameters
@@ -4324,7 +4323,7 @@ P1: gp_Pnt
 P2: gp_Pnt
 P3: gp_Pnt
 P4: gp_Pnt
-Close: bool (optional, default to Standard_False)
+Close: bool (optional, default to false)
 
 Return
 -------
@@ -4334,7 +4333,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakePolygon;
-		 BRepLib_MakePolygon(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & P4, const Standard_Boolean Close = Standard_False);
+		 BRepLib_MakePolygon(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & P4, const bool Close = false);
 
 		/****** BRepLib_MakePolygon::BRepLib_MakePolygon ******/
 		/****** md5 signature: 7b0a8f06e39ac3e818558e82f36dc363 ******/
@@ -4356,7 +4355,7 @@ No available documentation.
 		 BRepLib_MakePolygon(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepLib_MakePolygon::BRepLib_MakePolygon ******/
-		/****** md5 signature: 3641e43af47b1d25d5f849e10b5b22b1 ******/
+		/****** md5 signature: dfea62c23b7b18944aaa2c2ff2778800 ******/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", "
 Parameters
@@ -4364,7 +4363,7 @@ Parameters
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
 V3: TopoDS_Vertex
-Close: bool (optional, default to Standard_False)
+Close: bool (optional, default to false)
 
 Return
 -------
@@ -4374,10 +4373,10 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakePolygon;
-		 BRepLib_MakePolygon(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const TopoDS_Vertex & V3, const Standard_Boolean Close = Standard_False);
+		 BRepLib_MakePolygon(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const TopoDS_Vertex & V3, const bool Close = false);
 
 		/****** BRepLib_MakePolygon::BRepLib_MakePolygon ******/
-		/****** md5 signature: 9216cf1c809a9fbfc2560c5240b6f8d9 ******/
+		/****** md5 signature: a6095d0bb56f314fb5eca3a1e2902f8b ******/
 		%feature("compactdefaultargs") BRepLib_MakePolygon;
 		%feature("autodoc", "
 Parameters
@@ -4386,7 +4385,7 @@ V1: TopoDS_Vertex
 V2: TopoDS_Vertex
 V3: TopoDS_Vertex
 V4: TopoDS_Vertex
-Close: bool (optional, default to Standard_False)
+Close: bool (optional, default to false)
 
 Return
 -------
@@ -4396,7 +4395,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakePolygon;
-		 BRepLib_MakePolygon(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const TopoDS_Vertex & V3, const TopoDS_Vertex & V4, const Standard_Boolean Close = Standard_False);
+		 BRepLib_MakePolygon(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const TopoDS_Vertex & V3, const TopoDS_Vertex & V4, const bool Close = false);
 
 		/****** BRepLib_MakePolygon::Add ******/
 		/****** md5 signature: b714bfb888eecda75b87221b873365bd ******/
@@ -4435,7 +4434,7 @@ No available documentation.
 		void Add(const TopoDS_Vertex & V);
 
 		/****** BRepLib_MakePolygon::Added ******/
-		/****** md5 signature: ae76eff202ef54dd186494f9fb9a5cb0 ******/
+		/****** md5 signature: 0ff01a94154508f30c229b29032dd902 ******/
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "Return
 -------
@@ -4445,7 +4444,7 @@ Description
 -----------
 Returns True if the last vertex or point was successfully added.
 ") Added;
-		Standard_Boolean Added();
+		bool Added();
 
 		/****** BRepLib_MakePolygon::Close ******/
 		/****** md5 signature: d50d7ba65c2beb3eb436584b5735f108 ******/
@@ -4540,13 +4539,13 @@ Not done.
 		 BRepLib_MakeShell();
 
 		/****** BRepLib_MakeShell::BRepLib_MakeShell ******/
-		/****** md5 signature: bc40882509752595dfaf04541e1aa7c9 ******/
+		/****** md5 signature: 20a9947d117012f90e0deb3f92333f12 ******/
 		%feature("compactdefaultargs") BRepLib_MakeShell;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-Segment: bool (optional, default to Standard_False)
+Segment: bool (optional, default to false)
 
 Return
 -------
@@ -4556,20 +4555,20 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeShell;
-		 BRepLib_MakeShell(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean Segment = Standard_False);
+		 BRepLib_MakeShell(const opencascade::handle<Geom_Surface> & S, const bool Segment = false);
 
 		/****** BRepLib_MakeShell::BRepLib_MakeShell ******/
-		/****** md5 signature: f722e53312cdff1b556905c138f432a4 ******/
+		/****** md5 signature: ee072aad7a3e63036a8f71d2bfc8cbfe ******/
 		%feature("compactdefaultargs") BRepLib_MakeShell;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-UMin: float
-UMax: float
-VMin: float
-VMax: float
-Segment: bool (optional, default to Standard_False)
+UMin: double
+UMax: double
+VMin: double
+VMax: double
+Segment: bool (optional, default to false)
 
 Return
 -------
@@ -4579,7 +4578,7 @@ Description
 -----------
 No available documentation.
 ") BRepLib_MakeShell;
-		 BRepLib_MakeShell(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Boolean Segment = Standard_False);
+		 BRepLib_MakeShell(const opencascade::handle<Geom_Surface> & S, const double UMin, const double UMax, const double VMin, const double VMax, const bool Segment = false);
 
 		/****** BRepLib_MakeShell::Error ******/
 		/****** md5 signature: f86105343d1f7a8c438926b5ff57d481 ******/
@@ -4595,17 +4594,17 @@ No available documentation.
 		BRepLib_ShellError Error();
 
 		/****** BRepLib_MakeShell::Init ******/
-		/****** md5 signature: ee785ff5defa7d18e86d0ad913d864fa ******/
+		/****** md5 signature: 69d67daed41794b8ce653a8118f3fd38 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-UMin: float
-UMax: float
-VMin: float
-VMax: float
-Segment: bool (optional, default to Standard_False)
+UMin: double
+UMax: double
+VMin: double
+VMax: double
+Segment: bool (optional, default to false)
 
 Return
 -------
@@ -4615,7 +4614,7 @@ Description
 -----------
 Creates the shell from the surface and the min-max values.
 ") Init;
-		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Boolean Segment = Standard_False);
+		void Init(const opencascade::handle<Geom_Surface> & S, const double UMin, const double UMax, const double VMin, const double VMax, const bool Segment = false);
 
 		/****** BRepLib_MakeShell::Shell ******/
 		/****** md5 signature: c581862d26a0a34b15cf9dd6d442e65d ******/
@@ -4788,7 +4787,7 @@ Add the shell to the current solid.
 		void Add(const TopoDS_Shell & S);
 
 		/****** BRepLib_MakeSolid::FaceStatus ******/
-		/****** md5 signature: dfb2223b5e4227b4e612837e5f690792 ******/
+		/****** md5 signature: 60eaf2fc9c7953b9266e8a04d9fab3d8 ******/
 		%feature("compactdefaultargs") FaceStatus;
 		%feature("autodoc", "
 Parameters
@@ -4803,7 +4802,7 @@ Description
 -----------
 returns the status of the Face after the shape creation.
 ") FaceStatus;
-		virtual BRepLib_ShapeModification FaceStatus(const TopoDS_Face & F);
+		BRepLib_ShapeModification FaceStatus(const TopoDS_Face & F);
 
 		/****** BRepLib_MakeSolid::Solid ******/
 		/****** md5 signature: 2538cb0f3104aa1b86470e63b7cc116d ******/
@@ -5043,12 +5042,12 @@ Add the edges of <W> to the current wire.
 		void Add(const TopoDS_Wire & W);
 
 		/****** BRepLib_MakeWire::Add ******/
-		/****** md5 signature: acaf1f40b8e0173007b2aad5fa46572c ******/
+		/****** md5 signature: d1ddbe829aeb1ce590d51acd2c54c9aa ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -5058,7 +5057,7 @@ Description
 -----------
 Add the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically.
 ") Add;
-		void Add(const TopTools_ListOfShape & L);
+		void Add(const NCollection_List<TopoDS_Shape> & L);
 
 		/****** BRepLib_MakeWire::Edge ******/
 		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/

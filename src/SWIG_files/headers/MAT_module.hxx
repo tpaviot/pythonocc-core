@@ -22,10 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MAT_Arc.hxx>
 #include<MAT_BasicElt.hxx>
 #include<MAT_Bisector.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerArc.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerBasicElt.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerBisector.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerNode.hxx>
 #include<MAT_DataMapOfIntegerArc.hxx>
 #include<MAT_DataMapOfIntegerBasicElt.hxx>
 #include<MAT_DataMapOfIntegerBisector.hxx>

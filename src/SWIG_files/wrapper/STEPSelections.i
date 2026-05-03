@@ -100,13 +100,6 @@ from OCC.Core.Exception import *
 /* handles */
 %wrap_handle(STEPSelections_AssemblyComponent)
 %wrap_handle(STEPSelections_AssemblyLink)
-%wrap_handle(STEPSelections_SelectAssembly)
-%wrap_handle(STEPSelections_SelectDerived)
-%wrap_handle(STEPSelections_SelectFaces)
-%wrap_handle(STEPSelections_SelectForTransfer)
-%wrap_handle(STEPSelections_SelectGSCurves)
-%wrap_handle(STEPSelections_SelectInstances)
-%wrap_handle(STEPSelections_HSequenceOfAssemblyLink)
 /* end handles declaration */
 
 /* templates */
@@ -129,6 +122,7 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>> STEPSelections_HSequenceOfAssemblyLink;
 typedef NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyComponent>> STEPSelections_SequenceOfAssemblyComponent;
 typedef NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>> STEPSelections_SequenceOfAssemblyLink;
 /* end typedefs declaration */
@@ -152,13 +146,13 @@ No available documentation.
 		 STEPSelections_AssemblyComponent();
 
 		/****** STEPSelections_AssemblyComponent::STEPSelections_AssemblyComponent ******/
-		/****** md5 signature: 821e42438f5d9172f23f58083dfdec94 ******/
+		/****** md5 signature: b0b6c91b1ed8f32c20a80d14e0b0a177 ******/
 		%feature("compactdefaultargs") STEPSelections_AssemblyComponent;
 		%feature("autodoc", "
 Parameters
 ----------
 sdr: StepShape_ShapeDefinitionRepresentation
-list: STEPSelections_HSequenceOfAssemblyLink
+list: NCollection_HSequence<
 
 Return
 -------
@@ -168,20 +162,20 @@ Description
 -----------
 No available documentation.
 ") STEPSelections_AssemblyComponent;
-		 STEPSelections_AssemblyComponent(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr, const opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> & list);
+		 STEPSelections_AssemblyComponent(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr, const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink> > > & list);
 
 		/****** STEPSelections_AssemblyComponent::GetList ******/
-		/****** md5 signature: baa8fc1d4da39ad20abb9d73054d97b8 ******/
+		/****** md5 signature: 7568c7d8a66d904c86ee4f57a256b3bb ******/
 		%feature("compactdefaultargs") GetList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<STEPSelections_HSequenceOfAssemblyLink>
+opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>>
 
 Description
 -----------
 No available documentation.
 ") GetList;
-		opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> GetList();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>>> GetList();
 
 		/****** STEPSelections_AssemblyComponent::GetSDR ******/
 		/****** md5 signature: faabed04bfe8f4d021f36796932db420 ******/
@@ -197,12 +191,12 @@ No available documentation.
 		opencascade::handle<StepShape_ShapeDefinitionRepresentation> GetSDR();
 
 		/****** STEPSelections_AssemblyComponent::SetList ******/
-		/****** md5 signature: ced6586bf0d104075ad70c1d1486179d ******/
+		/****** md5 signature: b2cbc3eea0e7209edd88a84605b39d33 ******/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: STEPSelections_HSequenceOfAssemblyLink
+list: NCollection_HSequence<
 
 Return
 -------
@@ -212,7 +206,7 @@ Description
 -----------
 No available documentation.
 ") SetList;
-		void SetList(const opencascade::handle<STEPSelections_HSequenceOfAssemblyLink> & list);
+		void SetList(const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink> > > & list);
 
 		/****** STEPSelections_AssemblyComponent::SetSDR ******/
 		/****** md5 signature: 6e7bfe74d0634693e540292c51836b91 ******/
@@ -356,7 +350,7 @@ No available documentation.
 		void Init(const Interface_Graph & G);
 
 		/****** STEPSelections_AssemblyExplorer::NbAssemblies ******/
-		/****** md5 signature: dc1428818eb91c6e976d2aeb6e16644c ******/
+		/****** md5 signature: 3bd795ac5698fce9c44a848c9edb8277 ******/
 		%feature("compactdefaultargs") NbAssemblies;
 		%feature("autodoc", "Return
 -------
@@ -366,10 +360,10 @@ Description
 -----------
 Returns the number of root assemblies;.
 ") NbAssemblies;
-		Standard_Integer NbAssemblies();
+		int NbAssemblies();
 
 		/****** STEPSelections_AssemblyExplorer::Root ******/
-		/****** md5 signature: d67d3cf147a9ad9c102eb501ae27dfa6 ******/
+		/****** md5 signature: d75c261c1139c2deb004e3d1e54aa6ee ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "
 Parameters
@@ -384,7 +378,7 @@ Description
 -----------
 Returns root of assenbly by its rank;.
 ") Root;
-		opencascade::handle<STEPSelections_AssemblyComponent> Root(const Standard_Integer rank = 1);
+		opencascade::handle<STEPSelections_AssemblyComponent> Root(const int rank = 1);
 
 };
 
@@ -588,7 +582,7 @@ No available documentation.
 		void Count(const Interface_Graph & graph, const opencascade::handle<Standard_Transient> & start);
 
 		/****** STEPSelections_Counter::NbInstancesOfEdges ******/
-		/****** md5 signature: 9e707fbb9d2dbae6701f885083bdc38b ******/
+		/****** md5 signature: 2119090120c5dd9163a220c15e040c00 ******/
 		%feature("compactdefaultargs") NbInstancesOfEdges;
 		%feature("autodoc", "Return
 -------
@@ -598,10 +592,10 @@ Description
 -----------
 No available documentation.
 ") NbInstancesOfEdges;
-		Standard_Integer NbInstancesOfEdges();
+		int NbInstancesOfEdges();
 
 		/****** STEPSelections_Counter::NbInstancesOfFaces ******/
-		/****** md5 signature: 851afe6e292ce2fbcadfb6dd5bd38b7a ******/
+		/****** md5 signature: b8555bf7b6d10e74735ff5353ca0f8d7 ******/
 		%feature("compactdefaultargs") NbInstancesOfFaces;
 		%feature("autodoc", "Return
 -------
@@ -611,10 +605,10 @@ Description
 -----------
 No available documentation.
 ") NbInstancesOfFaces;
-		Standard_Integer NbInstancesOfFaces();
+		int NbInstancesOfFaces();
 
 		/****** STEPSelections_Counter::NbInstancesOfShells ******/
-		/****** md5 signature: bf0aa7a0b515f3507d98dec1da678382 ******/
+		/****** md5 signature: 723be1dd51fdc687de05c070de98f317 ******/
 		%feature("compactdefaultargs") NbInstancesOfShells;
 		%feature("autodoc", "Return
 -------
@@ -624,10 +618,10 @@ Description
 -----------
 No available documentation.
 ") NbInstancesOfShells;
-		Standard_Integer NbInstancesOfShells();
+		int NbInstancesOfShells();
 
 		/****** STEPSelections_Counter::NbInstancesOfSolids ******/
-		/****** md5 signature: 44ab1c26fdac82059198f4fce331e966 ******/
+		/****** md5 signature: 5f1eff1c1b9d3e3eef91604b31695fae ******/
 		%feature("compactdefaultargs") NbInstancesOfSolids;
 		%feature("autodoc", "Return
 -------
@@ -637,10 +631,10 @@ Description
 -----------
 No available documentation.
 ") NbInstancesOfSolids;
-		Standard_Integer NbInstancesOfSolids();
+		int NbInstancesOfSolids();
 
 		/****** STEPSelections_Counter::NbInstancesOfWires ******/
-		/****** md5 signature: 0b36afcebca0c1914bc030f3c253be5b ******/
+		/****** md5 signature: 02cfefd0d27f53635f4485c79496c2c2 ******/
 		%feature("compactdefaultargs") NbInstancesOfWires;
 		%feature("autodoc", "Return
 -------
@@ -650,10 +644,10 @@ Description
 -----------
 No available documentation.
 ") NbInstancesOfWires;
-		Standard_Integer NbInstancesOfWires();
+		int NbInstancesOfWires();
 
 		/****** STEPSelections_Counter::NbSourceEdges ******/
-		/****** md5 signature: 23469679a5d64918a0945574907492ea ******/
+		/****** md5 signature: 73568b872e325d4946e6620aa759ec09 ******/
 		%feature("compactdefaultargs") NbSourceEdges;
 		%feature("autodoc", "Return
 -------
@@ -663,10 +657,10 @@ Description
 -----------
 No available documentation.
 ") NbSourceEdges;
-		Standard_Integer NbSourceEdges();
+		int NbSourceEdges();
 
 		/****** STEPSelections_Counter::NbSourceFaces ******/
-		/****** md5 signature: 21f8e307b8a8a0e510711cf6f11b8373 ******/
+		/****** md5 signature: 5fa2ac9c1ec617e084e8432d115c016e ******/
 		%feature("compactdefaultargs") NbSourceFaces;
 		%feature("autodoc", "Return
 -------
@@ -676,10 +670,10 @@ Description
 -----------
 No available documentation.
 ") NbSourceFaces;
-		Standard_Integer NbSourceFaces();
+		int NbSourceFaces();
 
 		/****** STEPSelections_Counter::NbSourceShells ******/
-		/****** md5 signature: ec3c243700aeed99904be52fc3589dda ******/
+		/****** md5 signature: cf577238c8fde641b7b7a3fbee64da18 ******/
 		%feature("compactdefaultargs") NbSourceShells;
 		%feature("autodoc", "Return
 -------
@@ -689,10 +683,10 @@ Description
 -----------
 No available documentation.
 ") NbSourceShells;
-		Standard_Integer NbSourceShells();
+		int NbSourceShells();
 
 		/****** STEPSelections_Counter::NbSourceSolids ******/
-		/****** md5 signature: 12cac9a4b0521efe13743e3b679d14f1 ******/
+		/****** md5 signature: e1de6ff603bd6aa9b88c87017b997559 ******/
 		%feature("compactdefaultargs") NbSourceSolids;
 		%feature("autodoc", "Return
 -------
@@ -702,10 +696,10 @@ Description
 -----------
 No available documentation.
 ") NbSourceSolids;
-		Standard_Integer NbSourceSolids();
+		int NbSourceSolids();
 
 		/****** STEPSelections_Counter::NbSourceWires ******/
-		/****** md5 signature: f68145444cef7eff65f860dbccf9bab6 ******/
+		/****** md5 signature: 07c2917a445cadd9cb5d3c6a4463cac4 ******/
 		%feature("compactdefaultargs") NbSourceWires;
 		%feature("autodoc", "Return
 -------
@@ -715,7 +709,7 @@ Description
 -----------
 No available documentation.
 ") NbSourceWires;
-		Standard_Integer NbSourceWires();
+		int NbSourceWires();
 
 };
 
@@ -753,7 +747,7 @@ No available documentation.
 		 STEPSelections_SelectAssembly();
 
 		/****** STEPSelections_SelectAssembly::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -771,10 +765,10 @@ Description
 -----------
 Explores an entity, to take its faces Works recursively.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** STEPSelections_SelectAssembly::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -788,8 +782,6 @@ Returns a text defining the criterium: 'Assembly structures'.
 
 };
 
-
-%make_alias(STEPSelections_SelectAssembly)
 
 %extend STEPSelections_SelectAssembly {
 	%pythoncode {
@@ -816,7 +808,7 @@ No available documentation.
 		 STEPSelections_SelectDerived();
 
 		/****** STEPSelections_SelectDerived::Matches ******/
-		/****** md5 signature: 6cdb41c3b6f4c6d9bbd3a66d390d7419 ******/
+		/****** md5 signature: bf8eb5c0c0aa654385b3629357ee2805 ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
@@ -834,12 +826,10 @@ Description
 -----------
 No available documentation.
 ") Matches;
-		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
+		bool Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const bool exact);
 
 };
 
-
-%make_alias(STEPSelections_SelectDerived)
 
 %extend STEPSelections_SelectDerived {
 	%pythoncode {
@@ -866,7 +856,7 @@ No available documentation.
 		 STEPSelections_SelectFaces();
 
 		/****** STEPSelections_SelectFaces::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -884,10 +874,10 @@ Description
 -----------
 Explores an entity, to take its faces Works recursively.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** STEPSelections_SelectFaces::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -901,8 +891,6 @@ Returns a text defining the criterium: 'Faces'.
 
 };
 
-
-%make_alias(STEPSelections_SelectFaces)
 
 %extend STEPSelections_SelectFaces {
 	%pythoncode {
@@ -947,7 +935,7 @@ No available documentation.
 		 STEPSelections_SelectForTransfer(const opencascade::handle<XSControl_TransferReader> & TR);
 
 		/****** STEPSelections_SelectForTransfer::RootResult ******/
-		/****** md5 signature: 06f84f6b90b9fc5b3d5fc4b15404fb86 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -962,12 +950,10 @@ Description
 -----------
 No available documentation.
 ") RootResult;
-		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
+		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
 };
 
-
-%make_alias(STEPSelections_SelectForTransfer)
 
 %extend STEPSelections_SelectForTransfer {
 	%pythoncode {
@@ -994,7 +980,7 @@ No available documentation.
 		 STEPSelections_SelectGSCurves();
 
 		/****** STEPSelections_SelectGSCurves::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -1012,10 +998,10 @@ Description
 -----------
 No available documentation.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** STEPSelections_SelectGSCurves::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -1029,8 +1015,6 @@ Returns a text defining the criterium: 'Curves'.
 
 };
 
-
-%make_alias(STEPSelections_SelectGSCurves)
 
 %extend STEPSelections_SelectGSCurves {
 	%pythoncode {
@@ -1057,7 +1041,7 @@ No available documentation.
 		 STEPSelections_SelectInstances();
 
 		/****** STEPSelections_SelectInstances::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -1075,10 +1059,10 @@ Description
 -----------
 No available documentation.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** STEPSelections_SelectInstances::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -1091,7 +1075,7 @@ Returns a text defining the criterium: 'Instances'.
 		TCollection_AsciiString ExploreLabel();
 
 		/****** STEPSelections_SelectInstances::RootResult ******/
-		/****** md5 signature: 94d3d2ba84f70a954fe8975e2590bfd2 ******/
+		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -1111,8 +1095,6 @@ No available documentation.
 };
 
 
-%make_alias(STEPSelections_SelectInstances)
-
 %extend STEPSelections_SelectInstances {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1122,14 +1104,14 @@ No available documentation.
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class STEPSelections_HSequenceOfAssemblyLink : public STEPSelections_SequenceOfAssemblyLink, public Standard_Transient {
+class STEPSelections_HSequenceOfAssemblyLink : public NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>, public Standard_Transient {
   public:
     STEPSelections_HSequenceOfAssemblyLink();
-    STEPSelections_HSequenceOfAssemblyLink(const STEPSelections_SequenceOfAssemblyLink& theOther);
-    const STEPSelections_SequenceOfAssemblyLink& Sequence();
-    void Append (const STEPSelections_SequenceOfAssemblyLink::value_type& theItem);
-    void Append (STEPSelections_SequenceOfAssemblyLink& theSequence);
-    STEPSelections_SequenceOfAssemblyLink& ChangeSequence();
+    STEPSelections_HSequenceOfAssemblyLink(const NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& theOther);
+    const NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& theSequence);
+    NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& ChangeSequence();
 };
 %make_alias(STEPSelections_HSequenceOfAssemblyLink)
 

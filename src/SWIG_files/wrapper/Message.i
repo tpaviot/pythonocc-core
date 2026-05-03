@@ -602,12 +602,6 @@ Message_FAIL = Message_StatusType.Message_FAIL
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = Message_ListIteratorOfListOfAlert(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(Message_ListOfMsg) NCollection_List<Message_Msg>;
@@ -616,12 +610,6 @@ Message_FAIL = Message_StatusType.Message_FAIL
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = Message_ListIteratorOfListOfMsg(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(Message_SequenceOfPrinters) NCollection_Sequence<opencascade::handle<Message_Printer>>;
@@ -663,12 +651,12 @@ Defines default messenger for OCCT applications. This is global static instance 
 		static const opencascade::handle<Message_Messenger> & DefaultMessenger();
 
 		/****** Message::DefaultReport ******/
-		/****** md5 signature: 1a46d101e264ecb7a9ff31ebaa8389d0 ******/
+		/****** md5 signature: 6ab65cb2d206d1b7c38210ebaaa7d03b ******/
 		%feature("compactdefaultargs") DefaultReport;
 		%feature("autodoc", "
 Parameters
 ----------
-theToCreate: bool (optional, default to Standard_False)
+theToCreate: bool (optional, default to false)
 
 Return
 -------
@@ -678,17 +666,17 @@ Description
 -----------
 returns the only one instance of Report When theToCreate is true - automatically creates message report when not exist.
 ") DefaultReport;
-		static const opencascade::handle<Message_Report> & DefaultReport(const Standard_Boolean theToCreate = Standard_False);
+		static const opencascade::handle<Message_Report> & DefaultReport(const bool theToCreate = false);
 
 		/****** Message::FillTime ******/
-		/****** md5 signature: dab98a75a667832aa851701dbbc2d085 ******/
+		/****** md5 signature: 962c9798e2378d5cacd0b33e81c89dff ******/
 		%feature("compactdefaultargs") FillTime;
 		%feature("autodoc", "
 Parameters
 ----------
 Hour: int
 Minute: int
-Second: float
+Second: double
 
 Return
 -------
@@ -698,15 +686,15 @@ Description
 -----------
 Returns the string filled with values of hours, minutes and seconds. Example: 1. (5, 12, 26.3345) returns '05h:12m:26.33s', 2. (0, 6, 34.496 ) returns '06m:34.50s', 3. (0, 0, 4.5 ) returns '4.50s'.
 ") FillTime;
-		static TCollection_AsciiString FillTime(const Standard_Integer Hour, const Standard_Integer Minute, const Standard_Real Second);
+		static TCollection_AsciiString FillTime(const int Hour, const int Minute, const double Second);
 
 		/****** Message::MetricFromString ******/
-		/****** md5 signature: 8b9b33ac06ea8343eec4ac0d86f4a849 ******/
+		/****** md5 signature: e2d53c0968589eff1082f640071f0582 ******/
 		%feature("compactdefaultargs") MetricFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theString: str
+theString: char *
 
 Return
 -------
@@ -719,15 +707,15 @@ Parameter theString string identifier
 Parameter theType detected type of metric 
 Return: True if string identifier is known.
 ") MetricFromString;
-		static Standard_Boolean MetricFromString(Standard_CString theString, Message_MetricType &OutValue);
+		static bool MetricFromString(const char * const theString, Message_MetricType &OutValue);
 
 		/****** Message::MetricFromString ******/
-		/****** md5 signature: 7bcfa45f3a495293ba4a5aaadbb2c36c ******/
+		/****** md5 signature: ff7b9d913371ad93d872dfcd1cecbd2d ******/
 		%feature("compactdefaultargs") MetricFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theString: str
+theString: char *
 
 Return
 -------
@@ -739,10 +727,10 @@ Returns the metric type from the given string identifier.
 Parameter theString string identifier 
 Return: metric type or Message_MetricType_None if string identifier is invalid.
 ") MetricFromString;
-		static Message_MetricType MetricFromString(Standard_CString theString);
+		static Message_MetricType MetricFromString(const char * const theString);
 
 		/****** Message::MetricToString ******/
-		/****** md5 signature: decdd094dd1c76ec3583d959cc1518c6 ******/
+		/****** md5 signature: af376512024e4ea3292de767cd78b7c6 ******/
 		%feature("compactdefaultargs") MetricToString;
 		%feature("autodoc", "
 Parameters
@@ -751,7 +739,7 @@ theType: Message_MetricType
 
 Return
 -------
-str
+char *
 
 Description
 -----------
@@ -759,10 +747,10 @@ Returns the string name for a given metric type.
 Parameter theType metric type 
 Return: string identifier from the list of Message_MetricType.
 ") MetricToString;
-		static Standard_CString MetricToString(const Message_MetricType theType);
+		static const char * MetricToString(const Message_MetricType theType);
 
 		/****** Message::ToMessageMetric ******/
-		/****** md5 signature: b5f6d46706472fd2bb258a2427547372 ******/
+		/****** md5 signature: f6d2cb600096120ef98beb7978d1783c ******/
 		%feature("compactdefaultargs") ToMessageMetric;
 		%feature("autodoc", "
 Parameters
@@ -779,10 +767,10 @@ Converts OSD memory info type to message metric.
 Parameter theMemInfo [int] memory info type @param[out] theMetric filled message metric 
 Return: true if converted.
 ") ToMessageMetric;
-		static Standard_Boolean ToMessageMetric(const OSD_MemInfo::Counter theMemInfo, Message_MetricType &OutValue);
+		static bool ToMessageMetric(const OSD_MemInfo::Counter theMemInfo, Message_MetricType &OutValue);
 
 		/****** Message::ToOSDMetric ******/
-		/****** md5 signature: 24e960587fb400b2dc0ce233166ebe2c ******/
+		/****** md5 signature: 616451c55f02272e3f4c6d8be1bdeb59 ******/
 		%feature("compactdefaultargs") ToOSDMetric;
 		%feature("autodoc", "
 Parameters
@@ -800,7 +788,7 @@ Converts message metric to OSD memory info type.
 Input parameter: theMetric message metric @param[out] theMemInfo filled memory info type 
 Return: true if converted.
 ") ToOSDMetric;
-		static Standard_Boolean ToOSDMetric(const Message_MetricType theMetric, OSD_MemInfo::Counter & theMemInfo);
+		static bool ToOSDMetric(const Message_MetricType theMetric, OSD_MemInfo::Counter & theMemInfo);
 
 };
 
@@ -862,20 +850,20 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_Alert::GetMessageKey ******/
-		/****** md5 signature: 71c9c83f94a6139aa0d49ac59c2b9561 ******/
+		/****** md5 signature: 53171146680f53517b88aedfd1a11e2e ******/
 		%feature("compactdefaultargs") GetMessageKey;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
 ") GetMessageKey;
-		virtual Standard_CString GetMessageKey();
+		virtual const char * GetMessageKey();
 
 		/****** Message_Alert::Merge ******/
-		/****** md5 signature: acdcb5438c842f7d18969756cbabade8 ******/
+		/****** md5 signature: b353eb971a694206e1b967aabf06fcb1 ******/
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "
 Parameters
@@ -891,10 +879,10 @@ Description
 If possible, merge data contained in this alert to theTarget. 
 Return: True if merged. Base implementation always returns true.
 ") Merge;
-		virtual Standard_Boolean Merge(const opencascade::handle<Message_Alert> & theTarget);
+		virtual bool Merge(const opencascade::handle<Message_Alert> & theTarget);
 
 		/****** Message_Alert::SupportsMerge ******/
-		/****** md5 signature: b7457ae62f3508957acc79d507c0f597 ******/
+		/****** md5 signature: 6be24e10a347fb1b190a9012944391bb ******/
 		%feature("compactdefaultargs") SupportsMerge;
 		%feature("autodoc", "Return
 -------
@@ -904,7 +892,7 @@ Description
 -----------
 Return true if this type of alert can be merged with other of the same type to avoid duplication. Basis implementation returns true.
 ") SupportsMerge;
-		virtual Standard_Boolean SupportsMerge();
+		virtual bool SupportsMerge();
 
 };
 
@@ -1017,7 +1005,7 @@ Return the numbers associated with the indicated status; Null handle if no such 
 		opencascade::handle<TColStd_HPackedMapOfInteger> GetMessageNumbers(const Message_Status & theStatus);
 
 		/****** Message_Algorithm::GetMessageStrings ******/
-		/****** md5 signature: b96182c7abb8c320b6a5139b02e6b62f ******/
+		/****** md5 signature: ac22a49c4fd34cab014496cf6b549ed0 ******/
 		%feature("compactdefaultargs") GetMessageStrings;
 		%feature("autodoc", "
 Parameters
@@ -1026,13 +1014,13 @@ theStatus: Message_Status
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHExtendedString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>
 
 Description
 -----------
 Return the strings associated with the indicated status; Null handle if no such status or no strings associated with it.
 ") GetMessageStrings;
-		opencascade::handle<TColStd_HSequenceOfHExtendedString> GetMessageStrings(const Message_Status & theStatus);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>> GetMessageStrings(const Message_Status & theStatus);
 
 		/****** Message_Algorithm::GetMessenger ******/
 		/****** md5 signature: 29076e594d0ec0e5d3c6d238094013a4 ******/
@@ -1061,7 +1049,7 @@ Returns copy of exec status of algorithm.
 		const Message_ExecStatus & GetStatus();
 
 		/****** Message_Algorithm::PrepareReport ******/
-		/****** md5 signature: 22eb00e4bad6cc91192d03864338d970 ******/
+		/****** md5 signature: 9e1763f27051f0b9b30cf1db2e30d0a8 ******/
 		%feature("compactdefaultargs") PrepareReport;
 		%feature("autodoc", "
 Parameters
@@ -1077,15 +1065,15 @@ Description
 -----------
 Prepares a string containing a list of integers contained in theError map, but not more than theMaxCount.
 ") PrepareReport;
-		static TCollection_ExtendedString PrepareReport(const opencascade::handle<TColStd_HPackedMapOfInteger> & theError, const Standard_Integer theMaxCount);
+		static TCollection_ExtendedString PrepareReport(const opencascade::handle<TColStd_HPackedMapOfInteger> & theError, const int theMaxCount);
 
 		/****** Message_Algorithm::PrepareReport ******/
-		/****** md5 signature: a760ed814814b3ab4fdc40e0177e2b35 ******/
+		/****** md5 signature: 0197a47dfbe9c460daa19bd75a5fb847 ******/
 		%feature("compactdefaultargs") PrepareReport;
 		%feature("autodoc", "
 Parameters
 ----------
-theReportSeq: TColStd_SequenceOfHExtendedString
+theReportSeq: TCollection_HExtendedString
 theMaxCount: int
 
 Return
@@ -1096,10 +1084,10 @@ Description
 -----------
 Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount.
 ") PrepareReport;
-		static TCollection_ExtendedString PrepareReport(const TColStd_SequenceOfHExtendedString & theReportSeq, const Standard_Integer theMaxCount);
+		static TCollection_ExtendedString PrepareReport(const NCollection_Sequence<opencascade::handle<TCollection_HExtendedString> > & theReportSeq, const int theMaxCount);
 
 		/****** Message_Algorithm::SendMessages ******/
-		/****** md5 signature: b1a44b272f7dccdd35a09052dff1cdc3 ******/
+		/****** md5 signature: 94a619c7e0c94d18167449c97b5712f8 ******/
 		%feature("compactdefaultargs") SendMessages;
 		%feature("autodoc", "
 Parameters
@@ -1115,10 +1103,10 @@ Description
 -----------
 Convenient variant of SendStatusMessages() with theFilter having defined all WARN, ALARM, and FAIL (but not DONE) status flags.
 ") SendMessages;
-		void SendMessages(const Message_Gravity theTraceLevel = Message_Warning, const Standard_Integer theMaxCount = 20);
+		void SendMessages(const Message_Gravity theTraceLevel = Message_Warning, const int theMaxCount = 20);
 
 		/****** Message_Algorithm::SendStatusMessages ******/
-		/****** md5 signature: 292dfafa4847d965f2c85cf36450acef ******/
+		/****** md5 signature: d72132a08f35b4f5f25754be1dec3bd2 ******/
 		%feature("compactdefaultargs") SendStatusMessages;
 		%feature("autodoc", "
 Parameters
@@ -1135,7 +1123,7 @@ Description
 -----------
 Print messages for all status flags that have been set during algorithm execution, excluding statuses that are NOT set in theFilter. //! The messages are taken from resource file, names being constructed as {dynamic class type}.{status name}, for instance, 'Message_Algorithm.Fail5'. If message is not found in resources for this class and all its base types, surrogate text is printed. //! For the statuses having number or string parameters, theMaxCount defines maximal number of numbers or strings to be included in the message //! Note that this method is virtual; this allows descendant classes to customize message output (e.g. by adding messages from other sub-algorithms).
 ") SendStatusMessages;
-		virtual void SendStatusMessages(const Message_ExecStatus & theFilter, const Message_Gravity theTraceLevel = Message_Warning, const Standard_Integer theMaxCount = 20);
+		virtual void SendStatusMessages(const Message_ExecStatus & theFilter, const Message_Gravity theTraceLevel = Message_Warning, const int theMaxCount = 20);
 
 		/****** Message_Algorithm::SetMessenger ******/
 		/****** md5 signature: abb58d7a57a486fe28d78b4ad1c82b73 ******/
@@ -1174,7 +1162,7 @@ Sets status with no parameter.
 		void SetStatus(const Message_Status & theStat);
 
 		/****** Message_Algorithm::SetStatus ******/
-		/****** md5 signature: 8016fc7828e232650c6431b67db88b7d ******/
+		/****** md5 signature: 02a839ccfc1a2d0c5e66f417b74ab18c ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -1190,17 +1178,17 @@ Description
 -----------
 Sets status with integer parameter.
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, const Standard_Integer theInt);
+		void SetStatus(const Message_Status & theStat, const int theInt);
 
 		/****** Message_Algorithm::SetStatus ******/
-		/****** md5 signature: 6bee2d8786f13b996a483f0fe4a9e1b2 ******/
+		/****** md5 signature: 4c392e9e32080a3943ddf7d783a6ee46 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
 ----------
 theStat: Message_Status
-theStr: str
-noRepetitions: bool (optional, default to Standard_True)
+theStr: char *
+noRepetitions: bool (optional, default to true)
 
 Return
 -------
@@ -1210,17 +1198,17 @@ Description
 -----------
 Sets status with string parameter. If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, Standard_CString theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, const char * const theStr, const bool noRepetitions = true);
 
 		/****** Message_Algorithm::SetStatus ******/
-		/****** md5 signature: 6ea7f63dea4d03ea5d72c2052270b87e ******/
+		/****** md5 signature: 2f319470538808cff9170904432b7d25 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
 ----------
 theStat: Message_Status
 theStr: str
-noRepetitions: bool (optional, default to Standard_True)
+noRepetitions: bool (optional, default to true)
 
 Return
 -------
@@ -1230,17 +1218,17 @@ Description
 -----------
 Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, TCollection_AsciiString theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, TCollection_AsciiString theStr, const bool noRepetitions = true);
 
 		/****** Message_Algorithm::SetStatus ******/
-		/****** md5 signature: e8c38966846b71da031483a199e40a71 ******/
+		/****** md5 signature: 5d9e13412f60aff9d67f4825a184dcad ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
 ----------
 theStat: Message_Status
 theStr: TCollection_HAsciiString
-noRepetitions: bool (optional, default to Standard_True)
+noRepetitions: bool (optional, default to true)
 
 Return
 -------
@@ -1250,17 +1238,17 @@ Description
 -----------
 Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, const opencascade::handle<TCollection_HAsciiString> & theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, const opencascade::handle<TCollection_HAsciiString> & theStr, const bool noRepetitions = true);
 
 		/****** Message_Algorithm::SetStatus ******/
-		/****** md5 signature: ab2887c539ef3a405d8f2b1f591c379c ******/
+		/****** md5 signature: 17666f74df4257b668dc376709a454a4 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
 ----------
 theStat: Message_Status
 theStr: str
-noRepetitions: bool (optional, default to Standard_True)
+noRepetitions: bool (optional, default to true)
 
 Return
 -------
@@ -1270,17 +1258,17 @@ Description
 -----------
 Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, TCollection_ExtendedString theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, TCollection_ExtendedString theStr, const bool noRepetitions = true);
 
 		/****** Message_Algorithm::SetStatus ******/
-		/****** md5 signature: 8aad4895c12632591f8b584c181b749e ******/
+		/****** md5 signature: db8391c355212ac9c6f64a21d4e02850 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
 ----------
 theStat: Message_Status
 theStr: TCollection_HExtendedString
-noRepetitions: bool (optional, default to Standard_True)
+noRepetitions: bool (optional, default to true)
 
 Return
 -------
@@ -1290,7 +1278,7 @@ Description
 -----------
 Sets status with string parameter If noRepetitions is True, the parameter will be added only if it has not been yet recorded for the same status flag.
 ") SetStatus;
-		void SetStatus(const Message_Status & theStat, const opencascade::handle<TCollection_HExtendedString> & theStr, const Standard_Boolean noRepetitions = Standard_True);
+		void SetStatus(const Message_Status & theStat, const opencascade::handle<TCollection_HExtendedString> & theStr, const bool noRepetitions = true);
 
 		/****** Message_Algorithm::SetStatus ******/
 		/****** md5 signature: 45fc0d88809b7418ca0779427ba9522b ******/
@@ -1328,12 +1316,12 @@ Sets status with preformatted message. This message will be used directly to rep
 class Message_Attribute : public Standard_Transient {
 	public:
 		/****** Message_Attribute::Message_Attribute ******/
-		/****** md5 signature: b36397f58fadc697ba00b619118e7732 ******/
+		/****** md5 signature: e43e0a78195f59d0c471d9004447abcd ******/
 		%feature("compactdefaultargs") Message_Attribute;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str (optional, default to TCollection_AsciiString())
+theName: str (optional, default to TCollection_AsciiString::EmptyString())
 
 Return
 -------
@@ -1343,7 +1331,7 @@ Description
 -----------
 Empty constructor.
 ") Message_Attribute;
-		 Message_Attribute(TCollection_AsciiString theName = TCollection_AsciiString());
+		 Message_Attribute(TCollection_AsciiString theName = TCollection_AsciiString::EmptyString());
 
 
         /****************** DumpJson ******************/
@@ -1367,17 +1355,17 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_Attribute::GetMessageKey ******/
-		/****** md5 signature: 71c9c83f94a6139aa0d49ac59c2b9561 ******/
+		/****** md5 signature: 53171146680f53517b88aedfd1a11e2e ******/
 		%feature("compactdefaultargs") GetMessageKey;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
 ") GetMessageKey;
-		virtual Standard_CString GetMessageKey();
+		virtual const char * GetMessageKey();
 
 		/****** Message_Attribute::GetName ******/
 		/****** md5 signature: 03f303d315214c418f43c2b4c12c386a ******/
@@ -1429,7 +1417,7 @@ Parameter theName a name for the alert.
 class Message_CompositeAlerts : public Standard_Transient {
 	public:
 		/****** Message_CompositeAlerts::Message_CompositeAlerts ******/
-		/****** md5 signature: d533e6984f420f01322ce334ac736541 ******/
+		/****** md5 signature: 9c31dc5bccab8f10ba0d800b313f2494 ******/
 		%feature("compactdefaultargs") Message_CompositeAlerts;
 		%feature("autodoc", "Return
 -------
@@ -1442,7 +1430,7 @@ Empty constructor.
 		 Message_CompositeAlerts();
 
 		/****** Message_CompositeAlerts::AddAlert ******/
-		/****** md5 signature: 0dd0f641b9ac70c8921f38d63e5df5a6 ******/
+		/****** md5 signature: 0e12e87f5b3759faaab0c866c7b7b43a ******/
 		%feature("compactdefaultargs") AddAlert;
 		%feature("autodoc", "
 Parameters
@@ -1461,10 +1449,10 @@ Parameter theGravity an alert gravity
 Parameter theAlert an alert to be added as a child alert 
 Return: true if the alert is added or merged.
 ") AddAlert;
-		Standard_Boolean AddAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
+		bool AddAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
 		/****** Message_CompositeAlerts::Alerts ******/
-		/****** md5 signature: 2721a4c27570c7cfecd3c1541a2c2b8a ******/
+		/****** md5 signature: 3c01638b0dfae2a78bd10f9138a20453 ******/
 		%feature("compactdefaultargs") Alerts;
 		%feature("autodoc", "
 Parameters
@@ -1473,13 +1461,13 @@ theGravity: Message_Gravity
 
 Return
 -------
-Message_ListOfAlert
+NCollection_List<opencascade::handle<Message_Alert>>
 
 Description
 -----------
 Returns list of collected alerts with specified gravity.
 ") Alerts;
-		const Message_ListOfAlert & Alerts(const Message_Gravity theGravity);
+		const NCollection_List<opencascade::handle<Message_Alert>> & Alerts(const Message_Gravity theGravity);
 
 		/****** Message_CompositeAlerts::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -1554,7 +1542,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_CompositeAlerts::HasAlert ******/
-		/****** md5 signature: c84dc45f7e7e49755037ef8eafb79d8b ******/
+		/****** md5 signature: 7fca1faec13ec57e0e87c5680e505df9 ******/
 		%feature("compactdefaultargs") HasAlert;
 		%feature("autodoc", "
 Parameters
@@ -1571,10 +1559,10 @@ Returns true if the alert belong the list of the child alerts.
 Parameter theAlert an alert to be checked as a child alert 
 Return: true if the alert is found in a container of children.
 ") HasAlert;
-		Standard_Boolean HasAlert(const opencascade::handle<Message_Alert> & theAlert);
+		bool HasAlert(const opencascade::handle<Message_Alert> & theAlert);
 
 		/****** Message_CompositeAlerts::HasAlert ******/
-		/****** md5 signature: 33bb8095c0695e3b2dfa7bf20c5d452c ******/
+		/****** md5 signature: d54da9148b7e2da8de50b707c6dd0609 ******/
 		%feature("compactdefaultargs") HasAlert;
 		%feature("autodoc", "
 Parameters
@@ -1593,10 +1581,10 @@ Parameter theType an alert type
 Parameter theGravity an alert gravity 
 Return: true if the alert is found in a container of children.
 ") HasAlert;
-		Standard_Boolean HasAlert(const opencascade::handle<Standard_Type> & theType, Message_Gravity theGravity);
+		bool HasAlert(const opencascade::handle<Standard_Type> & theType, Message_Gravity theGravity);
 
 		/****** Message_CompositeAlerts::RemoveAlert ******/
-		/****** md5 signature: 81cd6e4bb8706243a84108d77f15c2c8 ******/
+		/****** md5 signature: 3d88cb86742c87297ea689651d1de40f ******/
 		%feature("compactdefaultargs") RemoveAlert;
 		%feature("autodoc", "
 Parameters
@@ -1615,7 +1603,7 @@ Parameter theGravity an alert gravity
 Parameter theAlert an alert to be removed from the children 
 Return: true if the alert is removed.
 ") RemoveAlert;
-		Standard_Boolean RemoveAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
+		bool RemoveAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
 };
 
@@ -1809,7 +1797,7 @@ No available documentation.
 		void ClearAllWarn();
 
 		/****** Message_ExecStatus::IsAlarm ******/
-		/****** md5 signature: b03ab45d600e724c50296e8180c55b5b ******/
+		/****** md5 signature: 4e00c5e3a57214e36f23218b261636f8 ******/
 		%feature("compactdefaultargs") IsAlarm;
 		%feature("autodoc", "Return
 -------
@@ -1819,10 +1807,10 @@ Description
 -----------
 No available documentation.
 ") IsAlarm;
-		Standard_Boolean IsAlarm();
+		bool IsAlarm();
 
 		/****** Message_ExecStatus::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1832,10 +1820,10 @@ Description
 -----------
 Check if at least one status of each type is set.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Message_ExecStatus::IsFail ******/
-		/****** md5 signature: 1e1f97b278fc3f40c0a7bac429b30df2 ******/
+		/****** md5 signature: c7663d95e4110c693d40407157876e76 ******/
 		%feature("compactdefaultargs") IsFail;
 		%feature("autodoc", "Return
 -------
@@ -1845,10 +1833,10 @@ Description
 -----------
 No available documentation.
 ") IsFail;
-		Standard_Boolean IsFail();
+		bool IsFail();
 
 		/****** Message_ExecStatus::IsSet ******/
-		/****** md5 signature: 19eb5fde3d07014e5af1d2a78dc374fb ******/
+		/****** md5 signature: d4e89dafe1620338d9e162c20b8fe0d0 ******/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "
 Parameters
@@ -1863,10 +1851,10 @@ Description
 -----------
 Check status for being set.
 ") IsSet;
-		Standard_Boolean IsSet(Message_Status theStatus);
+		bool IsSet(Message_Status theStatus);
 
 		/****** Message_ExecStatus::IsWarn ******/
-		/****** md5 signature: 78d32331471a393a46e40ed3531de5f6 ******/
+		/****** md5 signature: 5328957a0d38e65dd19985306fba0831 ******/
 		%feature("compactdefaultargs") IsWarn;
 		%feature("autodoc", "Return
 -------
@@ -1876,10 +1864,10 @@ Description
 -----------
 No available documentation.
 ") IsWarn;
-		Standard_Boolean IsWarn();
+		bool IsWarn();
 
 		/****** Message_ExecStatus::LocalStatusIndex ******/
-		/****** md5 signature: 6c712b1771472bd46c2b10e4dfc2c642 ******/
+		/****** md5 signature: 91eaa2138a380277d6a1ab501ae07a9e ******/
 		%feature("compactdefaultargs") LocalStatusIndex;
 		%feature("autodoc", "
 Parameters
@@ -1894,7 +1882,7 @@ Description
 -----------
 Returns index of status inside type of status (Done or Warn or, etc) in range [1, StatusesPerType].
 ") LocalStatusIndex;
-		static Standard_Integer LocalStatusIndex(Message_Status theStatus);
+		static int LocalStatusIndex(Message_Status theStatus);
 
 		/****** Message_ExecStatus::Set ******/
 		/****** md5 signature: b242a4657d21c49402bda067388b0208 ******/
@@ -1967,7 +1955,7 @@ No available documentation.
 		void SetAllWarn();
 
 		/****** Message_ExecStatus::StatusByIndex ******/
-		/****** md5 signature: 69b005c3b3e5169650a12b17eef18a3d ******/
+		/****** md5 signature: ab5acef3bf3992c8110ef7efe26a0ee3 ******/
 		%feature("compactdefaultargs") StatusByIndex;
 		%feature("autodoc", "
 Parameters
@@ -1982,10 +1970,10 @@ Description
 -----------
 Returns status with index theIndex in whole range [FirstStatus, LastStatus].
 ") StatusByIndex;
-		static Message_Status StatusByIndex(const Standard_Integer theIndex);
+		static Message_Status StatusByIndex(const int theIndex);
 
 		/****** Message_ExecStatus::StatusIndex ******/
-		/****** md5 signature: 97762e4edd481e82f85b8126209f9d05 ******/
+		/****** md5 signature: 80641610ca77ed9fa5f629fa1ca29d86 ******/
 		%feature("compactdefaultargs") StatusIndex;
 		%feature("autodoc", "
 Parameters
@@ -2000,7 +1988,7 @@ Description
 -----------
 Returns index of status in whole range [FirstStatus, LastStatus].
 ") StatusIndex;
-		static Standard_Integer StatusIndex(Message_Status theStatus);
+		static int StatusIndex(Message_Status theStatus);
 
 		/****** Message_ExecStatus::TypeOfStatus ******/
 		/****** md5 signature: 7df3ebd7e6811078add1c79ae4d46cbb ******/
@@ -2035,12 +2023,12 @@ Returns status type (DONE, WARN, ALARM, or FAIL).
 class Message_Level {
 	public:
 		/****** Message_Level::Message_Level ******/
-		/****** md5 signature: 52d64033607531376dbce6771633395a ******/
+		/****** md5 signature: d34deb53c721cbfec3affa3573f2a7ea ******/
 		%feature("compactdefaultargs") Message_Level;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str (optional, default to TCollection_AsciiString())
+theName: str (optional, default to TCollection_AsciiString::EmptyString())
 
 Return
 -------
@@ -2050,10 +2038,10 @@ Description
 -----------
 Constructor. One string key is used for all alert meters. The perf meter is not started automatically, it will be done in AddAlert() method.
 ") Message_Level;
-		 Message_Level(TCollection_AsciiString theName = TCollection_AsciiString());
+		 Message_Level(TCollection_AsciiString theName = TCollection_AsciiString::EmptyString());
 
 		/****** Message_Level::AddAlert ******/
-		/****** md5 signature: 6822168d042ac1736351cc369078d114 ******/
+		/****** md5 signature: e2935aa39095a193c16481067fefdc8d ******/
 		%feature("compactdefaultargs") AddAlert;
 		%feature("autodoc", "
 Parameters
@@ -2072,7 +2060,7 @@ Parameter theGravity an alert gravity
 Parameter theAlert an alert 
 Return: true if alert is added.
 ") AddAlert;
-		Standard_Boolean AddAlert(const Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
+		bool AddAlert(const Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
 		/****** Message_Level::RootAlert ******/
 		/****** md5 signature: df580c9f60fdc517981ba7c5bb3795f3 ******/
@@ -2089,7 +2077,7 @@ Return: alert instance or NULL.
 		const opencascade::handle<Message_AlertExtended> & RootAlert();
 
 		/****** Message_Level::SetRootAlert ******/
-		/****** md5 signature: c29b138aed7a3f4a0a0900c584513f03 ******/
+		/****** md5 signature: 9ff3704393d05fe914e0f76d18d71c61 ******/
 		%feature("compactdefaultargs") SetRootAlert;
 		%feature("autodoc", "
 Parameters
@@ -2106,7 +2094,7 @@ Description
 Sets the root alert. Starts collects alert metrics if active. 
 Parameter theAlert an alert.
 ") SetRootAlert;
-		void SetRootAlert(const opencascade::handle<Message_AlertExtended> & theAlert, const Standard_Boolean isRequiredToStart);
+		void SetRootAlert(const opencascade::handle<Message_AlertExtended> & theAlert, const bool isRequiredToStart);
 
 };
 
@@ -2155,7 +2143,7 @@ Create messenger with single printer.
 		 Message_Messenger(const opencascade::handle<Message_Printer> & thePrinter);
 
 		/****** Message_Messenger::AddPrinter ******/
-		/****** md5 signature: 8f7291e2628f45e1341b1d3cde72dcc6 ******/
+		/****** md5 signature: f00d3b7863cc67edf26d35638c7f648f ******/
 		%feature("compactdefaultargs") AddPrinter;
 		%feature("autodoc", "
 Parameters
@@ -2170,20 +2158,20 @@ Description
 -----------
 Add a printer to the messenger. The printer will be added only if it is not yet in the list. Returns True if printer has been added.
 ") AddPrinter;
-		Standard_Boolean AddPrinter(const opencascade::handle<Message_Printer> & thePrinter);
+		bool AddPrinter(const opencascade::handle<Message_Printer> & thePrinter);
 
 		/****** Message_Messenger::ChangePrinters ******/
-		/****** md5 signature: 0bff0f1cb07fdb5a8d0b23aaed744574 ******/
+		/****** md5 signature: 448481e321ace473c7e28e5de9ae7261 ******/
 		%feature("compactdefaultargs") ChangePrinters;
 		%feature("autodoc", "Return
 -------
-Message_SequenceOfPrinters
+NCollection_Sequence<opencascade::handle<Message_Printer>>
 
 Description
 -----------
 Returns sequence of printers The sequence can be modified.
 ") ChangePrinters;
-		Message_SequenceOfPrinters & ChangePrinters();
+		NCollection_Sequence<opencascade::handle<Message_Printer>> & ChangePrinters();
 
 
         /****************** DumpJson ******************/
@@ -2207,20 +2195,20 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_Messenger::Printers ******/
-		/****** md5 signature: 6c5b0fba9e527d551e7123cf4b988068 ******/
+		/****** md5 signature: c911588734b7061a508898c9b27627c1 ******/
 		%feature("compactdefaultargs") Printers;
 		%feature("autodoc", "Return
 -------
-Message_SequenceOfPrinters
+NCollection_Sequence<opencascade::handle<Message_Printer>>
 
 Description
 -----------
 Returns current sequence of printers.
 ") Printers;
-		const Message_SequenceOfPrinters & Printers();
+		const NCollection_Sequence<opencascade::handle<Message_Printer>> & Printers();
 
 		/****** Message_Messenger::RemovePrinter ******/
-		/****** md5 signature: e1bb7c6a4a8f9e41a20e519627391bd5 ******/
+		/****** md5 signature: 82ee30cca7070c84c5581c83040ce681 ******/
 		%feature("compactdefaultargs") RemovePrinter;
 		%feature("autodoc", "
 Parameters
@@ -2235,10 +2223,10 @@ Description
 -----------
 Removes specified printer from the messenger. Returns True if this printer has been found in the list and removed.
 ") RemovePrinter;
-		Standard_Boolean RemovePrinter(const opencascade::handle<Message_Printer> & thePrinter);
+		bool RemovePrinter(const opencascade::handle<Message_Printer> & thePrinter);
 
 		/****** Message_Messenger::RemovePrinters ******/
-		/****** md5 signature: 76986e66651ae0643c390eb8de5d6527 ******/
+		/****** md5 signature: 83f67cb5172805f6e92b899390435e8b ******/
 		%feature("compactdefaultargs") RemovePrinters;
 		%feature("autodoc", "
 Parameters
@@ -2253,7 +2241,7 @@ Description
 -----------
 Removes printers of specified type (including derived classes) from the messenger. Returns number of removed printers.
 ") RemovePrinters;
-		Standard_Integer RemovePrinters(const opencascade::handle<Standard_Type> & theType);
+		int RemovePrinters(const opencascade::handle<Standard_Type> & theType);
 
 };
 
@@ -2327,12 +2315,12 @@ Copy constructor.
 		 Message_Msg(const Message_Msg & theMsg);
 
 		/****** Message_Msg::Message_Msg ******/
-		/****** md5 signature: 744684cff9f095700a1e322236ec1a58 ******/
+		/****** md5 signature: 6343657698a6a5a957878e42546cf6d2 ******/
 		%feature("compactdefaultargs") Message_Msg;
 		%feature("autodoc", "
 Parameters
 ----------
-theKey: str
+theKey: char *
 
 Return
 -------
@@ -2342,7 +2330,7 @@ Description
 -----------
 Create a message using a corresponding entry in Message_MsgFile.
 ") Message_Msg;
-		 Message_Msg(Standard_CString theKey);
+		 Message_Msg(const char * const theKey);
 
 		/****** Message_Msg::Message_Msg ******/
 		/****** md5 signature: 9a71629a327a5dff18cec73638731fd0 ******/
@@ -2363,12 +2351,12 @@ Create a message using a corresponding entry in Message_MsgFile.
 		 Message_Msg(TCollection_ExtendedString theKey);
 
 		/****** Message_Msg::Arg ******/
-		/****** md5 signature: bdfbd4e9c9fdf706ac8b5dff6cf9cf7e ******/
+		/****** md5 signature: daf5669240750ca197603fe438a588cb ******/
 		%feature("compactdefaultargs") Arg;
 		%feature("autodoc", "
 Parameters
 ----------
-theString: str
+theString: char *
 
 Return
 -------
@@ -2378,7 +2366,7 @@ Description
 -----------
 Set a value for %..s conversion.
 ") Arg;
-		Message_Msg & Arg(Standard_CString theString);
+		Message_Msg & Arg(const char * const theString);
 
 		/****** Message_Msg::Arg ******/
 		/****** md5 signature: 53e0f531702eaebee5ed185deb9f154d ******/
@@ -2453,7 +2441,7 @@ Set a value for %..s conversion.
 		Message_Msg & Arg(const opencascade::handle<TCollection_HExtendedString> & theString);
 
 		/****** Message_Msg::Arg ******/
-		/****** md5 signature: f91e505a0e027335f0996966486eaed9 ******/
+		/****** md5 signature: 628aa59f558b9562c580e7adf47a0a12 ******/
 		%feature("compactdefaultargs") Arg;
 		%feature("autodoc", "
 Parameters
@@ -2468,15 +2456,15 @@ Description
 -----------
 Set a value for %..d, %..i, %..o, %..u, %..x or %..X conversion.
 ") Arg;
-		Message_Msg & Arg(const Standard_Integer theInt);
+		Message_Msg & Arg(const int theInt);
 
 		/****** Message_Msg::Arg ******/
-		/****** md5 signature: 014327372c083665236cee2c81ca34c8 ******/
+		/****** md5 signature: 1844be97fa5de411e1e6a1aa196cd684 ******/
 		%feature("compactdefaultargs") Arg;
 		%feature("autodoc", "
 Parameters
 ----------
-theReal: float
+theReal: double
 
 Return
 -------
@@ -2486,7 +2474,7 @@ Description
 -----------
 Set a value for %..f, %..e, %..E, %..g or %..G conversion.
 ") Arg;
-		Message_Msg & Arg(const Standard_Real theReal);
+		Message_Msg & Arg(const double theReal);
 
 		/****** Message_Msg::Get ******/
 		/****** md5 signature: f8c88c41af24fcef115a47458b797652 ******/
@@ -2502,7 +2490,7 @@ Return the resulting message string with all parameters filled. If some paramete
 		const TCollection_ExtendedString & Get();
 
 		/****** Message_Msg::IsEdited ******/
-		/****** md5 signature: a79267920468a931255363cb4caffb00 ******/
+		/****** md5 signature: e1057fe256212c411a0d5b202f516dc1 ******/
 		%feature("compactdefaultargs") IsEdited;
 		%feature("autodoc", "Return
 -------
@@ -2512,7 +2500,7 @@ Description
 -----------
 Tells if Value differs from Original.
 ") IsEdited;
-		Standard_Boolean IsEdited();
+		bool IsEdited();
 
 		/****** Message_Msg::Original ******/
 		/****** md5 signature: e23e7a271ddf85e9db1a3ab6e18b109b ******/
@@ -2528,12 +2516,12 @@ Returns the original message text.
 		const TCollection_ExtendedString & Original();
 
 		/****** Message_Msg::Set ******/
-		/****** md5 signature: 8499dc113fd535e0df78ca149846f95a ******/
+		/****** md5 signature: ec4b25f7b7459e4b10b2c02b25f2c828 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-theMsg: str
+theMsg: char *
 
 Return
 -------
@@ -2543,7 +2531,7 @@ Description
 -----------
 Set a message body text -- can be used as alternative to using messages from resource file.
 ") Set;
-		void Set(Standard_CString theMsg);
+		void Set(const char * const theMsg);
 
 		/****** Message_Msg::Set ******/
 		/****** md5 signature: 793a790c0dfc3ad98d22667b966665f4 ******/
@@ -2591,7 +2579,7 @@ Returns current state of the message text with parameters to the moment.
 class Message_MsgFile {
 	public:
 		/****** Message_MsgFile::AddMsg ******/
-		/****** md5 signature: 20b2f09fa5bb5f2a41c560e929261d52 ******/
+		/****** md5 signature: de0b97411e86b5de49bf8f8354f8f5ba ******/
 		%feature("compactdefaultargs") AddMsg;
 		%feature("autodoc", "
 Parameters
@@ -2607,10 +2595,10 @@ Description
 -----------
 Adds new message to the map. Parameter <key> gives the key of the message, <text> defines the message itself. If there already was defined the message identified by the same keyword, it is replaced with the new one.
 ") AddMsg;
-		static Standard_Boolean AddMsg(TCollection_AsciiString key, TCollection_ExtendedString text);
+		static bool AddMsg(TCollection_AsciiString key, TCollection_ExtendedString text);
 
 		/****** Message_MsgFile::HasMsg ******/
-		/****** md5 signature: 05156f53d05b0341643ee4353c054060 ******/
+		/****** md5 signature: 944283914c1c26f6f7394c53174c5f59 ******/
 		%feature("compactdefaultargs") HasMsg;
 		%feature("autodoc", "
 Parameters
@@ -2625,16 +2613,16 @@ Description
 -----------
 Returns True if message with specified keyword is registered.
 ") HasMsg;
-		static Standard_Boolean HasMsg(TCollection_AsciiString key);
+		static bool HasMsg(TCollection_AsciiString key);
 
 		/****** Message_MsgFile::Load ******/
-		/****** md5 signature: ec5da7edc4d116c864312f5c13e0bb66 ******/
+		/****** md5 signature: d32e594b261a990521e9a377008d6f90 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
-theDirName: str
-theFileName: str
+theDirName: char *
+theFileName: char *
 
 Return
 -------
@@ -2644,15 +2632,15 @@ Description
 -----------
 Load message file <theFileName> from directory <theDirName> or its sub-directory.
 ") Load;
-		static Standard_Boolean Load(Standard_CString theDirName, Standard_CString theFileName);
+		static bool Load(const char * const theDirName, const char * const theFileName);
 
 		/****** Message_MsgFile::LoadFile ******/
-		/****** md5 signature: d126fd90b1ca292002a4e526aa9878bb ******/
+		/****** md5 signature: 47a3cdb0614bfa6e19e931eb01470b35 ******/
 		%feature("compactdefaultargs") LoadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-theFName: str
+theFName: char *
 
 Return
 -------
@@ -2662,17 +2650,17 @@ Description
 -----------
 Load the messages from the given file, additive to any previously loaded messages. Messages with same keywords, if already present, are replaced with the new ones.
 ") LoadFile;
-		static Standard_Boolean LoadFile(Standard_CString theFName);
+		static bool LoadFile(const char * const theFName);
 
 		/****** Message_MsgFile::LoadFromEnv ******/
-		/****** md5 signature: 70ebce2d146849639495af085d921cad ******/
+		/****** md5 signature: b39dde110446564c5074f88ef9f852dc ******/
 		%feature("compactdefaultargs") LoadFromEnv;
 		%feature("autodoc", "
 Parameters
 ----------
-theEnvName: str
-theFileName: str
-theLangExt: str (optional, default to "")
+theEnvName: char *
+theFileName: char *
+theLangExt: char * (optional, default to "")
 
 Return
 -------
@@ -2683,15 +2671,15 @@ Description
 Loads the messages from the file with name (without extension) given by environment variable. Extension of the file name is given separately. If its not defined, it is taken: - by default from environment CSF_LANGUAGE, - if not defined either, as 'us'. @name theEnvName environment variable name @name theFileName file name without language suffix @name theLangExt language file name extension 
 Return: True on success.
 ") LoadFromEnv;
-		static Standard_Boolean LoadFromEnv(Standard_CString theEnvName, Standard_CString theFileName, Standard_CString theLangExt = "");
+		static bool LoadFromEnv(const char * const theEnvName, const char * const theFileName, const char * const theLangExt = "");
 
 		/****** Message_MsgFile::LoadFromString ******/
-		/****** md5 signature: bd4253d938220e0de15c97ede6647b1f ******/
+		/****** md5 signature: ddaecf8fa4e27a4ec7e0edbab018eb85 ******/
 		%feature("compactdefaultargs") LoadFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theContent: str
+theContent: char *
 theLength: int (optional, default to -1)
 
 Return
@@ -2704,15 +2692,15 @@ Loads the messages from the given text buffer.
 Parameter theContent string containing the messages 
 Parameter theLength length of the buffer;  when -1 specified - theContent will be considered as NULL-terminated string.
 ") LoadFromString;
-		static Standard_Boolean LoadFromString(Standard_CString theContent, const Standard_Integer theLength = -1);
+		static bool LoadFromString(const char * const theContent, const int theLength = -1);
 
 		/****** Message_MsgFile::Msg ******/
-		/****** md5 signature: 1e408810c811877f3892fd1e97e25dcb ******/
+		/****** md5 signature: d063b6ea6eb23d5b304feef0e173cb0d ******/
 		%feature("compactdefaultargs") Msg;
 		%feature("autodoc", "
 Parameters
 ----------
-key: str
+key: char *
 
 Return
 -------
@@ -2722,7 +2710,7 @@ Description
 -----------
 No available documentation.
 ") Msg;
-		static const TCollection_ExtendedString & Msg(Standard_CString key);
+		static const TCollection_ExtendedString & Msg(const char * const key);
 
 		/****** Message_MsgFile::Msg ******/
 		/****** md5 signature: 8c621fc4cece4752495337f2186770bf ******/
@@ -2790,12 +2778,12 @@ Send a string message with specified trace level. The last Boolean argument is d
 		virtual void Send(TCollection_ExtendedString theString, const Message_Gravity theGravity);
 
 		/****** Message_Printer::Send ******/
-		/****** md5 signature: 0c58ee0dbb6a09d1744f40578405c768 ******/
+		/****** md5 signature: 6f3f1ee4585e6e18b6bfa7242aed03d3 ******/
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "
 Parameters
 ----------
-theString: str
+theString: char *
 theGravity: Message_Gravity
 
 Return
@@ -2806,7 +2794,7 @@ Description
 -----------
 Send a string message with specified trace level. The last Boolean argument is deprecated and unused. Default implementation redirects to send().
 ") Send;
-		virtual void Send(Standard_CString theString, const Message_Gravity theGravity);
+		virtual void Send(const char * const theString, const Message_Gravity theGravity);
 
 		/****** Message_Printer::Send ******/
 		/****** md5 signature: 4b9e6e900c60c7a53742bdd6d96a0c34 ******/
@@ -2901,17 +2889,17 @@ Set trace level used for filtering messages. By default, trace level is Message_
 class Message_ProgressIndicator : public Standard_Transient {
 	public:
 		/****** Message_ProgressIndicator::GetPosition ******/
-		/****** md5 signature: a5e1b2902874eb36e192e83771aaa0de ******/
+		/****** md5 signature: 147551bc09cf7cd269131c5ce6eb35af ******/
 		%feature("compactdefaultargs") GetPosition;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns total progress position ranged from 0 to 1. Should not be called concurrently while the progress is advancing, except from implementation of method Show().
 ") GetPosition;
-		Standard_Real GetPosition();
+		double GetPosition();
 
 		/****** Message_ProgressIndicator::Start ******/
 		/****** md5 signature: 641d195faa8ef13594a798925aa3d5fe ******/
@@ -3005,7 +2993,7 @@ Closes the current range and advances indicator.
 		void Close();
 
 		/****** Message_ProgressRange::IsActive ******/
-		/****** md5 signature: 476abafc82a8bb87ac904f5a77e179a3 ******/
+		/****** md5 signature: 8e968f083ce219897192deb87af3e187 ******/
 		%feature("compactdefaultargs") IsActive;
 		%feature("autodoc", "Return
 -------
@@ -3015,10 +3003,10 @@ Description
 -----------
 Returns true if this progress range is attached to some indicator.
 ") IsActive;
-		Standard_Boolean IsActive();
+		bool IsActive();
 
 		/****** Message_ProgressRange::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3028,10 +3016,10 @@ Description
 -----------
 Returns false if ProgressIndicator signals UserBreak.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** Message_ProgressRange::UserBreak ******/
-		/****** md5 signature: a3184031f8c031243ff09aeb0da2460e ******/
+		/****** md5 signature: b7956e23560948ae67c24d3ff1016578 ******/
 		%feature("compactdefaultargs") UserBreak;
 		%feature("autodoc", "Return
 -------
@@ -3041,7 +3029,7 @@ Description
 -----------
 Returns true if ProgressIndicator signals UserBreak.
 ") UserBreak;
-		Standard_Boolean UserBreak();
+		bool UserBreak();
 
 };
 
@@ -3074,13 +3062,13 @@ Empty constructor.
 		 Message_Report();
 
 		/****** Message_Report::ActivateInMessenger ******/
-		/****** md5 signature: 6760ecf65f1a6556a3e99e8ba7275f7d ******/
+		/****** md5 signature: 476200fd6bcb7663659b3268337f8a70 ******/
 		%feature("compactdefaultargs") ActivateInMessenger;
 		%feature("autodoc", "
 Parameters
 ----------
 toActivate: bool
-theMessenger: Message_Messenger (optional, default to NULL)
+theMessenger: Message_Messenger (optional, default to nullptr)
 
 Return
 -------
@@ -3092,7 +3080,7 @@ Creates an instance of Message_PrinterToReport with the current report and regis
 Parameter toActivate if true, activated else deactivated 
 Parameter theMessenger the messenger. If it's NULL, the default messenger is used.
 ") ActivateInMessenger;
-		void ActivateInMessenger(const Standard_Boolean toActivate, const opencascade::handle<Message_Messenger> & theMessenger = NULL);
+		void ActivateInMessenger(const bool toActivate, const opencascade::handle<Message_Messenger> & theMessenger = nullptr);
 
 		/****** Message_Report::ActiveMetrics ******/
 		/****** md5 signature: 69fbfa35c1d07de4faca23e67c2982b0 ******/
@@ -3265,7 +3253,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_Report::GetAlerts ******/
-		/****** md5 signature: e105d4af57088013fb229b16770b2450 ******/
+		/****** md5 signature: d2058eda79dba0bf1ff3041b7d6fe141 ******/
 		%feature("compactdefaultargs") GetAlerts;
 		%feature("autodoc", "
 Parameters
@@ -3274,16 +3262,16 @@ theGravity: Message_Gravity
 
 Return
 -------
-Message_ListOfAlert
+NCollection_List<opencascade::handle<Message_Alert>>
 
 Description
 -----------
 Returns list of collected alerts with specified gravity.
 ") GetAlerts;
-		const Message_ListOfAlert & GetAlerts(Message_Gravity theGravity);
+		const NCollection_List<opencascade::handle<Message_Alert>> & GetAlerts(Message_Gravity theGravity);
 
 		/****** Message_Report::HasAlert ******/
-		/****** md5 signature: e66dc06e59dc87e1a74ae38f1afc055a ******/
+		/****** md5 signature: 529ecb9d39fd5aadf3d2788586bf375f ******/
 		%feature("compactdefaultargs") HasAlert;
 		%feature("autodoc", "
 Parameters
@@ -3298,10 +3286,10 @@ Description
 -----------
 Returns true if specific type of alert is recorded.
 ") HasAlert;
-		Standard_Boolean HasAlert(const opencascade::handle<Standard_Type> & theType);
+		bool HasAlert(const opencascade::handle<Standard_Type> & theType);
 
 		/****** Message_Report::HasAlert ******/
-		/****** md5 signature: 33bb8095c0695e3b2dfa7bf20c5d452c ******/
+		/****** md5 signature: d54da9148b7e2da8de50b707c6dd0609 ******/
 		%feature("compactdefaultargs") HasAlert;
 		%feature("autodoc", "
 Parameters
@@ -3317,15 +3305,15 @@ Description
 -----------
 Returns true if specific type of alert is recorded with specified gravity.
 ") HasAlert;
-		Standard_Boolean HasAlert(const opencascade::handle<Standard_Type> & theType, Message_Gravity theGravity);
+		bool HasAlert(const opencascade::handle<Standard_Type> & theType, Message_Gravity theGravity);
 
 		/****** Message_Report::IsActiveInMessenger ******/
-		/****** md5 signature: c742075e9f41eeea7a7151a5775d8232 ******/
+		/****** md5 signature: b73c96b601e8a771f74d0f36077008d9 ******/
 		%feature("compactdefaultargs") IsActiveInMessenger;
 		%feature("autodoc", "
 Parameters
 ----------
-theMessenger: Message_Messenger (optional, default to NULL)
+theMessenger: Message_Messenger (optional, default to nullptr)
 
 Return
 -------
@@ -3336,10 +3324,10 @@ Description
 Returns true if a report printer for the current report is registered in the messenger 
 Parameter theMessenger the messenger. If it's NULL, the default messenger is used.
 ") IsActiveInMessenger;
-		Standard_Boolean IsActiveInMessenger(const opencascade::handle<Message_Messenger> & theMessenger = NULL);
+		bool IsActiveInMessenger(const opencascade::handle<Message_Messenger> & theMessenger = nullptr);
 
 		/****** Message_Report::Limit ******/
-		/****** md5 signature: 4c143ecf7a94bec5302a799121b4f1fa ******/
+		/****** md5 signature: 7a6d447c98762e9afe5f63faa0464a36 ******/
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "Return
 -------
@@ -3350,7 +3338,7 @@ Description
 Returns maximum number of collecting alerts. If the limit is achieved, first alert is removed, the new alert is added in the container. 
 Return: the limit value.
 ") Limit;
-		Standard_Integer Limit();
+		int Limit();
 
 		/****** Message_Report::Merge ******/
 		/****** md5 signature: 7f64bb1154040a49da5f52b1a2407ab9 ******/
@@ -3445,7 +3433,7 @@ Dumps collected alerts with specified gravity to messenger. Default implementati
 		virtual void SendMessages(const opencascade::handle<Message_Messenger> & theMessenger, Message_Gravity theGravity);
 
 		/****** Message_Report::SetActiveMetric ******/
-		/****** md5 signature: 8b0fd359e5d58f4029b1e7748552f229 ******/
+		/****** md5 signature: c5223e243edddc7e4caae649870e2bc1 ******/
 		%feature("compactdefaultargs") SetActiveMetric;
 		%feature("autodoc", "
 Parameters
@@ -3462,10 +3450,10 @@ Description
 Sets metrics to compute when alerts are performed 
 Parameter theMetrics container of metrics.
 ") SetActiveMetric;
-		void SetActiveMetric(const Message_MetricType theMetricType, const Standard_Boolean theActivate);
+		void SetActiveMetric(const Message_MetricType theMetricType, const bool theActivate);
 
 		/****** Message_Report::SetLimit ******/
-		/****** md5 signature: 3086e0a1c8b869746059ea97fbe95f3e ******/
+		/****** md5 signature: 4f98d02bab8fefeb0c3528655e95998b ******/
 		%feature("compactdefaultargs") SetLimit;
 		%feature("autodoc", "
 Parameters
@@ -3481,15 +3469,15 @@ Description
 Sets maximum number of collecting alerts. 
 Parameter theLimit limit value.
 ") SetLimit;
-		void SetLimit(const Standard_Integer theLimit);
+		void SetLimit(const int theLimit);
 
 		/****** Message_Report::UpdateActiveInMessenger ******/
-		/****** md5 signature: 2fce97adc40cd2d6c92a74c8ec882d00 ******/
+		/****** md5 signature: d291337c0b8e3134aaffa769354d20a4 ******/
 		%feature("compactdefaultargs") UpdateActiveInMessenger;
 		%feature("autodoc", "
 Parameters
 ----------
-theMessenger: Message_Messenger (optional, default to NULL)
+theMessenger: Message_Messenger (optional, default to nullptr)
 
 Return
 -------
@@ -3500,7 +3488,7 @@ Description
 Updates internal flag IsActiveInMessenger. It becomes true if messenger contains at least one instance of Message_PrinterToReport. 
 Parameter theMessenger the messenger. If it's NULL, the default messenger is used.
 ") UpdateActiveInMessenger;
-		void UpdateActiveInMessenger(const opencascade::handle<Message_Messenger> & theMessenger = NULL);
+		void UpdateActiveInMessenger(const opencascade::handle<Message_Messenger> & theMessenger = nullptr);
 
 };
 
@@ -3568,12 +3556,12 @@ Returns container of the alert attributes.
 		const opencascade::handle<Message_Attribute> & Attribute();
 
 		/****** Message_AlertExtended::CompositeAlerts ******/
-		/****** md5 signature: 4be9cfb8aebe49f3027c7e6c3e36e566 ******/
+		/****** md5 signature: fcb8f7108cbc1d0cd8bf7328be3d34db ******/
 		%feature("compactdefaultargs") CompositeAlerts;
 		%feature("autodoc", "
 Parameters
 ----------
-theToCreate: bool (optional, default to Standard_False)
+theToCreate: bool (optional, default to false)
 
 Return
 -------
@@ -3585,7 +3573,7 @@ Returns class provided hierarchy of alerts if created or create if the parameter
 Parameter theToCreate if composite alert has not been created for this alert, it should be created 
 Return: instance or NULL.
 ") CompositeAlerts;
-		opencascade::handle<Message_CompositeAlerts> CompositeAlerts(const Standard_Boolean theToCreate = Standard_False);
+		opencascade::handle<Message_CompositeAlerts> CompositeAlerts(const bool theToCreate = false);
 
 
         /****************** DumpJson ******************/
@@ -3609,20 +3597,20 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_AlertExtended::GetMessageKey ******/
-		/****** md5 signature: a89afc9b71fa70bfa5a05fd046a77fe7 ******/
+		/****** md5 signature: 507ce2e0a5d4dda36afd751279bbd47a ******/
 		%feature("compactdefaultargs") GetMessageKey;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Return a C string to be used as a key for generating text user messages describing this alert. The messages are generated with help of Message_Msg class, in Message_Report::Dump(). Base implementation returns dynamic type name of the instance.
 ") GetMessageKey;
-		virtual Standard_CString GetMessageKey();
+		const char * GetMessageKey();
 
 		/****** Message_AlertExtended::Merge ******/
-		/****** md5 signature: 35843034c2fcb7185666677c75445acd ******/
+		/****** md5 signature: dfb47b009836e4916c8a13cadbd5fe63 ******/
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "
 Parameters
@@ -3638,7 +3626,7 @@ Description
 If possible, merge data contained in this alert to theTarget. Base implementation always returns false. 
 Return: True if merged.
 ") Merge;
-		virtual Standard_Boolean Merge(const opencascade::handle<Message_Alert> & theTarget);
+		bool Merge(const opencascade::handle<Message_Alert> & theTarget);
 
 		/****** Message_AlertExtended::SetAttribute ******/
 		/****** md5 signature: 1dd3f1a57ce4137320643019f6422bc5 ******/
@@ -3660,7 +3648,7 @@ Parameter theAttributes an attribute values.
 		void SetAttribute(const opencascade::handle<Message_Attribute> & theAttribute);
 
 		/****** Message_AlertExtended::SupportsMerge ******/
-		/****** md5 signature: 45abe0601cddac599cb8c2c1cbfefd85 ******/
+		/****** md5 signature: dd48e8f0812d510329f32f116fd11f10 ******/
 		%feature("compactdefaultargs") SupportsMerge;
 		%feature("autodoc", "Return
 -------
@@ -3670,7 +3658,7 @@ Description
 -----------
 Return true if this type of alert can be merged with other of the same type to avoid duplication. Hierarchical alerts can not be merged Basis implementation returns true.
 ") SupportsMerge;
-		virtual Standard_Boolean SupportsMerge();
+		bool SupportsMerge();
 
 };
 
@@ -3689,12 +3677,12 @@ Return true if this type of alert can be merged with other of the same type to a
 class Message_AttributeMeter : public Message_Attribute {
 	public:
 		/****** Message_AttributeMeter::Message_AttributeMeter ******/
-		/****** md5 signature: 3b95a3ca364fcdb6d37e6da5b52bfd05 ******/
+		/****** md5 signature: eeebdc7468934890861f85684d6d16fb ******/
 		%feature("compactdefaultargs") Message_AttributeMeter;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str (optional, default to TCollection_AsciiString())
+theName: str (optional, default to TCollection_AsciiString::EmptyString())
 
 Return
 -------
@@ -3704,7 +3692,7 @@ Description
 -----------
 Constructor with string argument.
 ") Message_AttributeMeter;
-		 Message_AttributeMeter(TCollection_AsciiString theName = TCollection_AsciiString());
+		 Message_AttributeMeter(TCollection_AsciiString theName = TCollection_AsciiString::EmptyString());
 
 
         /****************** DumpJson ******************/
@@ -3728,7 +3716,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Message_AttributeMeter::HasMetric ******/
-		/****** md5 signature: 3f12286f59675604f3124d35ffdcb72e ******/
+		/****** md5 signature: 04678dfb1a619d91749004b34c72a958 ******/
 		%feature("compactdefaultargs") HasMetric;
 		%feature("autodoc", "
 Parameters
@@ -3745,10 +3733,10 @@ Checks whether the attribute has values for the metric
 Input parameter: theMetric metric type 
 Return: true if the metric values exist in the attribute.
 ") HasMetric;
-		Standard_Boolean HasMetric(const Message_MetricType & theMetric);
+		bool HasMetric(const Message_MetricType & theMetric);
 
 		/****** Message_AttributeMeter::IsMetricValid ******/
-		/****** md5 signature: ec98d3332b7fa587970240f15aebd779 ******/
+		/****** md5 signature: 5418d0580aaea0c3c8b7fe77d289b4d9 ******/
 		%feature("compactdefaultargs") IsMetricValid;
 		%feature("autodoc", "
 Parameters
@@ -3765,10 +3753,10 @@ Returns true when both values of the metric are set.
 Input parameter: theMetric metric type 
 Return: true if metric values are valid.
 ") IsMetricValid;
-		Standard_Boolean IsMetricValid(const Message_MetricType & theMetric);
+		bool IsMetricValid(const Message_MetricType & theMetric);
 
 		/****** Message_AttributeMeter::SetAlertMetrics ******/
-		/****** md5 signature: c66a5c7cae777f915625c21e78f2d68c ******/
+		/****** md5 signature: 4918338079b0d436bca1cb2f639e8a91 ******/
 		%feature("compactdefaultargs") SetAlertMetrics;
 		%feature("autodoc", "
 Parameters
@@ -3786,16 +3774,16 @@ Sets current values of default report metrics into the alert. Processed only ale
 Parameter theAlert an alert 
 Parameter theStartValue flag, if true, the start value is collected otherwise stop.
 ") SetAlertMetrics;
-		static void SetAlertMetrics(const opencascade::handle<Message_AlertExtended> & theAlert, const Standard_Boolean theStartValue);
+		static void SetAlertMetrics(const opencascade::handle<Message_AlertExtended> & theAlert, const bool theStartValue);
 
 		/****** Message_AttributeMeter::SetStartValue ******/
-		/****** md5 signature: 34ac0c1ff7621a8f76e8ce7457dd3619 ******/
+		/****** md5 signature: 6a7e57718e37633cd84114840cdedac8 ******/
 		%feature("compactdefaultargs") SetStartValue;
 		%feature("autodoc", "
 Parameters
 ----------
 theMetric: Message_MetricType
-theValue: float
+theValue: double
 
 Return
 -------
@@ -3806,16 +3794,16 @@ Description
 Sets start values for the metric 
 Input parameter: theMetric metric type.
 ") SetStartValue;
-		void SetStartValue(const Message_MetricType & theMetric, const Standard_Real theValue);
+		void SetStartValue(const Message_MetricType & theMetric, const double theValue);
 
 		/****** Message_AttributeMeter::SetStopValue ******/
-		/****** md5 signature: 4c1d382df1bb019f355be83c4c89c490 ******/
+		/****** md5 signature: e61a1810cf7210a6a9bfc5562054446f ******/
 		%feature("compactdefaultargs") SetStopValue;
 		%feature("autodoc", "
 Parameters
 ----------
 theMetric: Message_MetricType
-theValue: float
+theValue: double
 
 Return
 -------
@@ -3826,7 +3814,7 @@ Description
 Sets stop values for the metric 
 Input parameter: theMetric metric type.
 ") SetStopValue;
-		void SetStopValue(const Message_MetricType & theMetric, const Standard_Real theValue);
+		void SetStopValue(const Message_MetricType & theMetric, const double theValue);
 
 		/****** Message_AttributeMeter::StartAlert ******/
 		/****** md5 signature: 9cfb4f2fed520f32c1c0141fab40cd55 ******/
@@ -3848,7 +3836,7 @@ Parameter theAlert an alert.
 		static void StartAlert(const opencascade::handle<Message_AlertExtended> & theAlert);
 
 		/****** Message_AttributeMeter::StartValue ******/
-		/****** md5 signature: 2d2ac7b89e0ba81754328eb8d3bd3d52 ******/
+		/****** md5 signature: 64407d119261a1bb00ae564caa93c96b ******/
 		%feature("compactdefaultargs") StartValue;
 		%feature("autodoc", "
 Parameters
@@ -3857,7 +3845,7 @@ theMetric: Message_MetricType
 
 Return
 -------
-float
+double
 
 Description
 -----------
@@ -3865,7 +3853,7 @@ Returns start value for the metric
 Input parameter: theMetric metric type 
 Return: real value.
 ") StartValue;
-		Standard_Real StartValue(const Message_MetricType & theMetric);
+		double StartValue(const Message_MetricType & theMetric);
 
 		/****** Message_AttributeMeter::StopAlert ******/
 		/****** md5 signature: f051aa14cda40746a870817f89d9ca1c ******/
@@ -3887,7 +3875,7 @@ Parameter theAlert an alert.
 		static void StopAlert(const opencascade::handle<Message_AlertExtended> & theAlert);
 
 		/****** Message_AttributeMeter::StopValue ******/
-		/****** md5 signature: 73140499ec46cab9a3b54b561db9d503 ******/
+		/****** md5 signature: 32a93cc8098a33d053bdc2ebba31e780 ******/
 		%feature("compactdefaultargs") StopValue;
 		%feature("autodoc", "
 Parameters
@@ -3896,7 +3884,7 @@ theMetric: Message_MetricType
 
 Return
 -------
-float
+double
 
 Description
 -----------
@@ -3904,21 +3892,21 @@ Returns stop value for the metric
 Input parameter: theMetric metric type 
 Return: real value.
 ") StopValue;
-		Standard_Real StopValue(const Message_MetricType & theMetric);
+		double StopValue(const Message_MetricType & theMetric);
 
 		/****** Message_AttributeMeter::UndefinedMetricValue ******/
-		/****** md5 signature: 1197c1dee25da141b862477e3a1ff2ca ******/
+		/****** md5 signature: 71728b32994abe786281134ce5a968f9 ******/
 		%feature("compactdefaultargs") UndefinedMetricValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns default value of the metric when it is not defined 
 Return: undefined value.
 ") UndefinedMetricValue;
-		static Standard_Real UndefinedMetricValue();
+		static double UndefinedMetricValue();
 
 };
 
@@ -3937,13 +3925,13 @@ Return: undefined value.
 class Message_AttributeObject : public Message_Attribute {
 	public:
 		/****** Message_AttributeObject::Message_AttributeObject ******/
-		/****** md5 signature: 6c4bfa828e8a46e741976178e861a689 ******/
+		/****** md5 signature: 450e4f7d09e428f11cad259437b2e470 ******/
 		%feature("compactdefaultargs") Message_AttributeObject;
 		%feature("autodoc", "
 Parameters
 ----------
 theObject: Standard_Transient
-theName: str (optional, default to TCollection_AsciiString())
+theName: str (optional, default to TCollection_AsciiString::EmptyString())
 
 Return
 -------
@@ -3953,7 +3941,7 @@ Description
 -----------
 Constructor with string argument.
 ") Message_AttributeObject;
-		 Message_AttributeObject(const opencascade::handle<Standard_Transient> & theObject, TCollection_AsciiString theName = TCollection_AsciiString());
+		 Message_AttributeObject(const opencascade::handle<Standard_Transient> & theObject, TCollection_AsciiString theName = TCollection_AsciiString::EmptyString());
 
 
         /****************** DumpJson ******************/
@@ -4026,13 +4014,13 @@ Parameter theObject an instance.
 class Message_AttributeStream : public Message_Attribute {
 	public:
 		/****** Message_AttributeStream::Message_AttributeStream ******/
-		/****** md5 signature: ae1d92aaabc47d48af35c92f68dead8d ******/
+		/****** md5 signature: 4e8085a9f544b3b20a182eb5680a418f ******/
 		%feature("compactdefaultargs") Message_AttributeStream;
 		%feature("autodoc", "
 Parameters
 ----------
 theStream: std::stringstream
-theName: str (optional, default to TCollection_AsciiString())
+theName: str (optional, default to TCollection_AsciiString::EmptyString())
 
 Return
 -------
@@ -4042,7 +4030,7 @@ Description
 -----------
 Constructor with string argument.
 ") Message_AttributeStream;
-		 Message_AttributeStream(const std::stringstream & theStream, TCollection_AsciiString theName = TCollection_AsciiString());
+		 Message_AttributeStream(const std::stringstream & theStream, TCollection_AsciiString theName = TCollection_AsciiString::EmptyString());
 
 
         /****************** DumpJson ******************/
@@ -4134,12 +4122,12 @@ Empty constructor, defaulting to cout.
 		 Message_PrinterOStream(const Message_Gravity theTraceLevel = Message_Info);
 
 		/****** Message_PrinterOStream::Message_PrinterOStream ******/
-		/****** md5 signature: a6bd858a46b40d4da229ad5782663911 ******/
+		/****** md5 signature: 250148bec404968f5941d31d82f50652 ******/
 		%feature("compactdefaultargs") Message_PrinterOStream;
 		%feature("autodoc", "
 Parameters
 ----------
-theFileName: str
+theFileName: char *
 theDoAppend: bool
 theTraceLevel: Message_Gravity (optional, default to Message_Info)
 
@@ -4151,7 +4139,7 @@ Description
 -----------
 Create printer for output to a specified file. The option theDoAppend specifies whether file should be appended or rewritten. For specific file names (cout, cerr) standard streams are used.
 ") Message_PrinterOStream;
-		 Message_PrinterOStream(Standard_CString theFileName, const Standard_Boolean theDoAppend, const Message_Gravity theTraceLevel = Message_Info);
+		 Message_PrinterOStream(const char * const theFileName, const bool theDoAppend, const Message_Gravity theTraceLevel = Message_Info);
 
 		/****** Message_PrinterOStream::Close ******/
 		/****** md5 signature: d50d7ba65c2beb3eb436584b5735f108 ******/
@@ -4200,7 +4188,7 @@ Setup console text color. //! On Windows, this would affect active terminal colo
 		static void SetConsoleTextColor(Standard_OStream * theOStream, Message_ConsoleColor theTextColor, bool theIsIntenseText = false);
 
 		/****** Message_PrinterOStream::SetToColorize ******/
-		/****** md5 signature: b4f903af5677d00a1f393de87002a6a5 ******/
+		/****** md5 signature: 783871e55a037bf6709f8a4c3dac32fd ******/
 		%feature("compactdefaultargs") SetToColorize;
 		%feature("autodoc", "
 Parameters
@@ -4215,10 +4203,10 @@ Description
 -----------
 Set if text output into console should be colorized depending on message gravity.
 ") SetToColorize;
-		void SetToColorize(Standard_Boolean theToColorize);
+		void SetToColorize(bool theToColorize);
 
 		/****** Message_PrinterOStream::ToColorize ******/
-		/****** md5 signature: 8b29b99ccd01eee1376b6c14a1d2e81a ******/
+		/****** md5 signature: 94bf4ce793c2b15baceb032e5883f16e ******/
 		%feature("compactdefaultargs") ToColorize;
 		%feature("autodoc", "Return
 -------
@@ -4228,7 +4216,7 @@ Description
 -----------
 Returns True if text output into console should be colorized depending on message gravity; True by default.
 ") ToColorize;
-		Standard_Boolean ToColorize();
+		bool ToColorize();
 
 };
 
@@ -4282,7 +4270,7 @@ Main constructor.
 class Message_PrinterToReport : public Message_Printer {
 	public:
 		/****** Message_PrinterToReport::Message_PrinterToReport ******/
-		/****** md5 signature: 4d806309372807fc173121055fa6b751 ******/
+		/****** md5 signature: 702d90bdef5aa23a913a03940d8768fb ******/
 		%feature("compactdefaultargs") Message_PrinterToReport;
 		%feature("autodoc", "Return
 -------
@@ -4308,7 +4296,7 @@ Returns the current or default report.
 		const opencascade::handle<Message_Report> & Report();
 
 		/****** Message_PrinterToReport::SendObject ******/
-		/****** md5 signature: c28ab021e116263770372caf8295e160 ******/
+		/****** md5 signature: 881912404bc6228cfee25af5077fb911 ******/
 		%feature("compactdefaultargs") SendObject;
 		%feature("autodoc", "
 Parameters
@@ -4324,10 +4312,10 @@ Description
 -----------
 Send a string message with specified trace level. The object is converted to string in format: <object kind>: <object pointer>. The parameter theToPutEol specified whether end-of-line should be added to the end of the message. Default implementation calls first method Send().
 ") SendObject;
-		virtual void SendObject(const opencascade::handle<Standard_Transient> & theObject, const Message_Gravity theGravity);
+		void SendObject(const opencascade::handle<Standard_Transient> & theObject, const Message_Gravity theGravity);
 
 		/****** Message_PrinterToReport::SendStringStream ******/
-		/****** md5 signature: b78a7459709969aa520bb51c62824536 ******/
+		/****** md5 signature: 05552e3253f0f53490019b850bb53db4 ******/
 		%feature("compactdefaultargs") SendStringStream;
 		%feature("autodoc", "
 Parameters
@@ -4343,7 +4331,7 @@ Description
 -----------
 Send a string message with specified trace level. Stream is converted to string value. Default implementation calls first method Send().
 ") SendStringStream;
-		virtual void SendStringStream(const std::stringstream & theStream, const Message_Gravity theGravity);
+		void SendStringStream(const std::stringstream & theStream, const Message_Gravity theGravity);
 
 		/****** Message_PrinterToReport::SetReport ******/
 		/****** md5 signature: f93d4cd16d2a9be962c8ab7766dddef1 ******/
@@ -4381,18 +4369,18 @@ Parameter theReport report for messages processing, if NULL, the default report 
 class Message_ProgressSentry : public Message_ProgressScope {
 	public:
 		/****** Message_ProgressSentry::Message_ProgressSentry ******/
-		/****** md5 signature: 1230165fd9f060b2f2607edcf046b87e ******/
+		/****** md5 signature: a46f07b5f60e185935f5aa793a63bbb6 ******/
 		%feature("compactdefaultargs") Message_ProgressSentry;
 		%feature("autodoc", "
 Parameters
 ----------
 theRange: Message_ProgressRange
-theName: str
-theMin: float
-theMax: float
-theStep: float
-theIsInf: bool (optional, default to Standard_False)
-theNewScopeSpan: float (optional, default to 0.0)
+theName: char *
+theMin: double
+theMax: double
+theStep: double
+theIsInf: bool (optional, default to false)
+theNewScopeSpan: double (optional, default to 0.0)
 
 Return
 -------
@@ -4402,7 +4390,7 @@ Description
 -----------
 Deprecated constructor, Message_ProgressScope should be created instead.
 ") Message_ProgressSentry;
-		 Message_ProgressSentry(const Message_ProgressRange & theRange, Standard_CString theName, const Standard_Real theMin, const Standard_Real theMax, const Standard_Real theStep, const Standard_Boolean theIsInf = Standard_False, const Standard_Real theNewScopeSpan = 0.0);
+		 Message_ProgressSentry(const Message_ProgressRange & theRange, const char * const theName, const double theMin, const double theMax, const double theStep, const bool theIsInf = false, const double theNewScopeSpan = 0.0);
 
 		/****** Message_ProgressSentry::Relieve ******/
 		/****** md5 signature: afb30890579d12c604229a7b3e1a2bcf ******/

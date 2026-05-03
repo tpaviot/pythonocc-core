@@ -20,11 +20,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<TFunction_Array1OfDataMapOfGUIDDriver.hxx>
-#include<TFunction_DataMapIteratorOfDataMapOfGUIDDriver.hxx>
-#include<TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel.hxx>
 #include<TFunction_DataMapOfGUIDDriver.hxx>
 #include<TFunction_DataMapOfLabelListOfLabel.hxx>
-#include<TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel.hxx>
 #include<TFunction_DoubleMapOfIntegerLabel.hxx>
 #include<TFunction_Driver.hxx>
 #include<TFunction_DriverTable.hxx>

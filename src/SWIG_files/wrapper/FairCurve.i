@@ -47,8 +47,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_faircurve.html"
 #include<gp_module.hxx>
 #include<Geom2d_module.hxx>
 #include<math_module.hxx>
-#include<TColgp_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -60,8 +58,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_faircurve.html"
 %import gp.i
 %import Geom2d.i
 %import math.i
-%import TColgp.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -108,15 +104,15 @@ FairCurve_NullHeight = FairCurve_AnalysisCode.FairCurve_NullHeight
 class FairCurve_Batten {
 	public:
 		/****** FairCurve_Batten::FairCurve_Batten ******/
-		/****** md5 signature: 380407de622a1c4cdbb02a5494e3f311 ******/
+		/****** md5 signature: b977aacb2439d9bc62055936885846fb ******/
 		%feature("compactdefaultargs") FairCurve_Batten;
 		%feature("autodoc", "
 Parameters
 ----------
 P1: gp_Pnt2d
 P2: gp_Pnt2d
-Height: float
-Slope: float (optional, default to 0)
+Height: double
+Slope: double (optional, default to 0)
 
 Return
 -------
@@ -126,16 +122,16 @@ Description
 -----------
 Constructor with the two points and the geometrical characteristics of the batten (elastic beam) Height is the height of the deformation, and Slope is the slope value, initialized at 0. The user can then supply the desired slope value by the method, SetSlope. Other parameters are initialized as follow: - FreeSliding = False - ConstraintOrder1 = 1 - ConstraintOrder2 = 1 - Angle1 = 0 - Angle2 = 0 - SlidingFactor = 1 Exceptions NegativeValue if Height is less than or equal to 0. NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case.
 ") FairCurve_Batten;
-		 FairCurve_Batten(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Real Height, const Standard_Real Slope = 0);
+		 FairCurve_Batten(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const double Height, const double Slope = 0);
 
 		/****** FairCurve_Batten::Compute ******/
-		/****** md5 signature: 859acceef7f0c7c74b5b50c52c471073 ******/
+		/****** md5 signature: d00238c9078e4eecc790a8b7e9d39af3 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
 ----------
 NbIterations: int (optional, default to 50)
-Tolerance: float (optional, default to 1.0e-3)
+Tolerance: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -145,7 +141,7 @@ Description
 -----------
 Performs the algorithm, using the arguments Code, NbIterations and Tolerance and computes the curve with respect to the constraints. Code will have one of the following values: - OK - NotConverged - InfiniteSliding - NullHeight The parameters Tolerance and NbIterations control how precise the computation is, and how long it will take.
 ") Compute;
-		virtual Standard_Boolean Compute(FairCurve_AnalysisCode &OutValue, const Standard_Integer NbIterations = 50, const Standard_Real Tolerance = 1.0e-3);
+		virtual bool Compute(FairCurve_AnalysisCode &OutValue, const int NbIterations = 50, const double Tolerance = 1.0e-3);
 
 		/****** FairCurve_Batten::Curve ******/
 		/****** md5 signature: 1960069de54819d72fccc75ab85806ec ******/
@@ -178,33 +174,33 @@ Prints on the stream o information on the current state of the object. //! Priva
 		virtual void Dump(std::ostream &OutValue);
 
 		/****** FairCurve_Batten::GetAngle1 ******/
-		/****** md5 signature: 4d8e16f87d9a075ff3d1c86749675db9 ******/
+		/****** md5 signature: 9f76c71806a0e17e5b9cf7c14bc79418 ******/
 		%feature("compactdefaultargs") GetAngle1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the established first angle.
 ") GetAngle1;
-		Standard_Real GetAngle1();
+		double GetAngle1();
 
 		/****** FairCurve_Batten::GetAngle2 ******/
-		/****** md5 signature: 1b0116e759407aff13eea52f7386c84b ******/
+		/****** md5 signature: 270af563eee4d7ab19606bba5e5dea7a ******/
 		%feature("compactdefaultargs") GetAngle2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the established second angle.
 ") GetAngle2;
-		Standard_Real GetAngle2();
+		double GetAngle2();
 
 		/****** FairCurve_Batten::GetConstraintOrder1 ******/
-		/****** md5 signature: c4b51bbe0bd7e6a31f685b79fe737211 ******/
+		/****** md5 signature: 68ce162caca35ad2d532825af19e300a ******/
 		%feature("compactdefaultargs") GetConstraintOrder1;
 		%feature("autodoc", "Return
 -------
@@ -214,10 +210,10 @@ Description
 -----------
 Returns the established first constraint order.
 ") GetConstraintOrder1;
-		Standard_Integer GetConstraintOrder1();
+		int GetConstraintOrder1();
 
 		/****** FairCurve_Batten::GetConstraintOrder2 ******/
-		/****** md5 signature: 75f9bf17465b91904e29b2d19da33e9e ******/
+		/****** md5 signature: 01b67f31a667337739d6a6ec90b7dd50 ******/
 		%feature("compactdefaultargs") GetConstraintOrder2;
 		%feature("autodoc", "Return
 -------
@@ -227,10 +223,10 @@ Description
 -----------
 Returns the established second constraint order.
 ") GetConstraintOrder2;
-		Standard_Integer GetConstraintOrder2();
+		int GetConstraintOrder2();
 
 		/****** FairCurve_Batten::GetFreeSliding ******/
-		/****** md5 signature: 8a10e85d9006392ce97c8cbdcb1440a3 ******/
+		/****** md5 signature: f23850b1a92a9003dff05f21ce5bf7c3 ******/
 		%feature("compactdefaultargs") GetFreeSliding;
 		%feature("autodoc", "Return
 -------
@@ -240,20 +236,20 @@ Description
 -----------
 Returns the initial free sliding value, false by default. Free sliding is generally more aesthetically pleasing than constrained sliding. However, the computation can fail with values such as angles greater than PI/2. This is because the resulting batten length is theoretically infinite.
 ") GetFreeSliding;
-		Standard_Boolean GetFreeSliding();
+		bool GetFreeSliding();
 
 		/****** FairCurve_Batten::GetHeight ******/
-		/****** md5 signature: cb55b42cbc9248a1048701c4dad2d0e9 ******/
+		/****** md5 signature: 614c56a5370db026a1c8697071236705 ******/
 		%feature("compactdefaultargs") GetHeight;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the thickness of the lathe.
 ") GetHeight;
-		Standard_Real GetHeight();
+		double GetHeight();
 
 		/****** FairCurve_Batten::GetP1 ******/
 		/****** md5 signature: e3b7e23912656f86e80f8f709427d9f1 ******/
@@ -282,38 +278,38 @@ Returns the established location of the point P2.
 		const gp_Pnt2d GetP2();
 
 		/****** FairCurve_Batten::GetSlidingFactor ******/
-		/****** md5 signature: 91085c4affe8e6adc614143ccbdd50be ******/
+		/****** md5 signature: 08558ad495a65fda46254366bf0ade6a ******/
 		%feature("compactdefaultargs") GetSlidingFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the initial sliding factor.
 ") GetSlidingFactor;
-		Standard_Real GetSlidingFactor();
+		double GetSlidingFactor();
 
 		/****** FairCurve_Batten::GetSlope ******/
-		/****** md5 signature: cb1e8d7130c876dd179aa3aea152fa51 ******/
+		/****** md5 signature: 458d432338198e94d828e1a7497b6ea6 ******/
 		%feature("compactdefaultargs") GetSlope;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the established slope value.
 ") GetSlope;
-		Standard_Real GetSlope();
+		double GetSlope();
 
 		/****** FairCurve_Batten::SetAngle1 ******/
-		/****** md5 signature: ccadb264eed86a01c5686f6aaf84bed3 ******/
+		/****** md5 signature: 778af9c696947e14351846d93239f9e9 ******/
 		%feature("compactdefaultargs") SetAngle1;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle1: float
+Angle1: double
 
 Return
 -------
@@ -323,15 +319,15 @@ Description
 -----------
 Allows you to change the angle Angle1 at the first point, P1. The default setting is 0.
 ") SetAngle1;
-		void SetAngle1(const Standard_Real Angle1);
+		void SetAngle1(const double Angle1);
 
 		/****** FairCurve_Batten::SetAngle2 ******/
-		/****** md5 signature: b346b4f56583f36504e5d16d1c5ff35d ******/
+		/****** md5 signature: 6417f6ff5ae05e1df6e68c743d630c0a ******/
 		%feature("compactdefaultargs") SetAngle2;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle2: float
+Angle2: double
 
 Return
 -------
@@ -341,10 +337,10 @@ Description
 -----------
 Allows you to change the angle Angle2 at the second point, P2. The default setting is 0.
 ") SetAngle2;
-		void SetAngle2(const Standard_Real Angle2);
+		void SetAngle2(const double Angle2);
 
 		/****** FairCurve_Batten::SetConstraintOrder1 ******/
-		/****** md5 signature: 706157cb862e27fa9cb42242c8b68e2c ******/
+		/****** md5 signature: 17865e9d1a299cdf94fc5810be100933 ******/
 		%feature("compactdefaultargs") SetConstraintOrder1;
 		%feature("autodoc", "
 Parameters
@@ -359,10 +355,10 @@ Description
 -----------
 Allows you to change the order of the constraint on the first point. ConstraintOrder has the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
 ") SetConstraintOrder1;
-		void SetConstraintOrder1(const Standard_Integer ConstraintOrder);
+		void SetConstraintOrder1(const int ConstraintOrder);
 
 		/****** FairCurve_Batten::SetConstraintOrder2 ******/
-		/****** md5 signature: 8f9a675e3b420569b88d1d934fc1e8d0 ******/
+		/****** md5 signature: 4c9f54cbd428a48e70b187d671067305 ******/
 		%feature("compactdefaultargs") SetConstraintOrder2;
 		%feature("autodoc", "
 Parameters
@@ -377,10 +373,10 @@ Description
 -----------
 Allows you to change the order of the constraint on the second point. ConstraintOrder is initialized with the default setting of 1. The following settings are available: - 0-the curve must pass through a point - 1-the curve must pass through a point and have a given tangent - 2-the curve must pass through a point, have a given tangent and a given curvature. The third setting is only valid for FairCurve_MinimalVariation curves. These constraints, though geometric, represent the mechanical constraints due, for example, to the resistance of the material the actual physical batten is made of.
 ") SetConstraintOrder2;
-		void SetConstraintOrder2(const Standard_Integer ConstraintOrder);
+		void SetConstraintOrder2(const int ConstraintOrder);
 
 		/****** FairCurve_Batten::SetFreeSliding ******/
-		/****** md5 signature: fada5a85cef264052bf0479f2974be05 ******/
+		/****** md5 signature: 46ad8559149c1f1f3398b229a4eb18ed ******/
 		%feature("compactdefaultargs") SetFreeSliding;
 		%feature("autodoc", "
 Parameters
@@ -395,15 +391,15 @@ Description
 -----------
 Freesliding is initialized with the default setting false. When Freesliding is set to true and, as a result, sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten.
 ") SetFreeSliding;
-		void SetFreeSliding(const Standard_Boolean FreeSliding);
+		void SetFreeSliding(const bool FreeSliding);
 
 		/****** FairCurve_Batten::SetHeight ******/
-		/****** md5 signature: 229695ff1af7f3f1e8a3576f456b61c1 ******/
+		/****** md5 signature: 824e4e866c615b9e18be2338716259a1 ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-Height: float
+Height: double
 
 Return
 -------
@@ -413,7 +409,7 @@ Description
 -----------
 Allows you to change the height of the deformation. Raises NegativeValue; -- if Height <= 0 if Height <= 0.
 ") SetHeight;
-		void SetHeight(const Standard_Real Height);
+		void SetHeight(const double Height);
 
 		/****** FairCurve_Batten::SetP1 ******/
 		/****** md5 signature: 0dfcde59302bc2af29fd06cfd3a3752c ******/
@@ -452,12 +448,12 @@ Allows you to change the location of the point, P1, and in doing so, modify the 
 		void SetP2(const gp_Pnt2d & P2);
 
 		/****** FairCurve_Batten::SetSlidingFactor ******/
-		/****** md5 signature: 18d0d2495aa8aa622ba79db6133d2944 ******/
+		/****** md5 signature: 57416de43f6224fd2779aa154fe4376f ******/
 		%feature("compactdefaultargs") SetSlidingFactor;
 		%feature("autodoc", "
 Parameters
 ----------
-SlidingFactor: float
+SlidingFactor: double
 
 Return
 -------
@@ -467,15 +463,15 @@ Description
 -----------
 Allows you to change the ratio SlidingFactor. This compares the length of the batten and the reference length, which is, in turn, a function of the constraints. This modification has one of the following two effects: - if you increase the value, it inflates the batten - if you decrease the value, it flattens the batten. When sliding is free, the sliding factor is automatically computed to satisfy the equilibrium of the batten. When sliding is imposed, a value is required for the sliding factor. SlidingFactor is initialized with the default setting of 1.
 ") SetSlidingFactor;
-		void SetSlidingFactor(const Standard_Real SlidingFactor);
+		void SetSlidingFactor(const double SlidingFactor);
 
 		/****** FairCurve_Batten::SetSlope ******/
-		/****** md5 signature: 454b326f397753f4b78e0ff55e205027 ******/
+		/****** md5 signature: b60756715a3035ea0e96a84892254a95 ******/
 		%feature("compactdefaultargs") SetSlope;
 		%feature("autodoc", "
 Parameters
 ----------
-Slope: float
+Slope: double
 
 Return
 -------
@@ -485,20 +481,20 @@ Description
 -----------
 Allows you to set the slope value, Slope.
 ") SetSlope;
-		void SetSlope(const Standard_Real Slope);
+		void SetSlope(const double Slope);
 
 		/****** FairCurve_Batten::SlidingOfReference ******/
-		/****** md5 signature: 6fd1a7741882e63f841356aad5e67e34 ******/
+		/****** md5 signature: 0ba869e844363c3c577bc55a60336722 ******/
 		%feature("compactdefaultargs") SlidingOfReference;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Computes the real number value for length Sliding of Reference for new constraints. If you want to give a specific length to a batten curve, use the following syntax: b.SetSlidingFactor(L / b.SlidingOfReference()) where b is the name of the batten curve object.
 ") SlidingOfReference;
-		Standard_Real SlidingOfReference();
+		double SlidingOfReference();
 
 };
 
@@ -515,14 +511,14 @@ Computes the real number value for length Sliding of Reference for new constrain
 class FairCurve_BattenLaw : public math_Function {
 	public:
 		/****** FairCurve_BattenLaw::FairCurve_BattenLaw ******/
-		/****** md5 signature: 2dff18d7398fa7390870579151b00dda ******/
+		/****** md5 signature: 94900983e6d03e13b6035862059e7ee4 ******/
 		%feature("compactdefaultargs") FairCurve_BattenLaw;
 		%feature("autodoc", "
 Parameters
 ----------
-Heigth: float
-Slope: float
-Sliding: float
+Heigth: double
+Slope: double
+Sliding: double
 
 Return
 -------
@@ -532,15 +528,15 @@ Description
 -----------
 Constructor of linear batten with Heigth: the Heigth at the middle point Slope: the geometric slope of the batten Sliding: Active Length of the batten without extension.
 ") FairCurve_BattenLaw;
-		 FairCurve_BattenLaw(const Standard_Real Heigth, const Standard_Real Slope, const Standard_Real Sliding);
+		 FairCurve_BattenLaw(const double Heigth, const double Slope, const double Sliding);
 
 		/****** FairCurve_BattenLaw::SetHeigth ******/
-		/****** md5 signature: 13fef69a8278fbf42dc5d1ec9f30efe8 ******/
+		/****** md5 signature: 1ff5d521721118892f64e13052a2d6d0 ******/
 		%feature("compactdefaultargs") SetHeigth;
 		%feature("autodoc", "
 Parameters
 ----------
-Heigth: float
+Heigth: double
 
 Return
 -------
@@ -550,15 +546,15 @@ Description
 -----------
 Change the value of Heigth at the middle point.
 ") SetHeigth;
-		void SetHeigth(const Standard_Real Heigth);
+		void SetHeigth(const double Heigth);
 
 		/****** FairCurve_BattenLaw::SetSliding ******/
-		/****** md5 signature: d65baa74829661bf4b5edd29b88bfdc2 ******/
+		/****** md5 signature: 4f5266154d5961171a810e3d31d9a0ca ******/
 		%feature("compactdefaultargs") SetSliding;
 		%feature("autodoc", "
 Parameters
 ----------
-Sliding: float
+Sliding: double
 
 Return
 -------
@@ -568,15 +564,15 @@ Description
 -----------
 Change the value of sliding.
 ") SetSliding;
-		void SetSliding(const Standard_Real Sliding);
+		void SetSliding(const double Sliding);
 
 		/****** FairCurve_BattenLaw::SetSlope ******/
-		/****** md5 signature: 454b326f397753f4b78e0ff55e205027 ******/
+		/****** md5 signature: b60756715a3035ea0e96a84892254a95 ******/
 		%feature("compactdefaultargs") SetSlope;
 		%feature("autodoc", "
 Parameters
 ----------
-Slope: float
+Slope: double
 
 Return
 -------
@@ -586,25 +582,25 @@ Description
 -----------
 Change the value of the geometric slope.
 ") SetSlope;
-		void SetSlope(const Standard_Real Slope);
+		void SetSlope(const double Slope);
 
 		/****** FairCurve_BattenLaw::Value ******/
-		/****** md5 signature: 9e6faca0f50ca085e868fe1cb096506b ******/
+		/****** md5 signature: 1aa50fc9a0f27ff94d82c2e1ac7ed8e4 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-T: float
+T: double
 
 Return
 -------
-THeigth: float
+THeigth: double
 
 Description
 -----------
 computes the value of the heigth for the parameter T on the neutral fibber.
 ") Value;
-		virtual Standard_Boolean Value(const Standard_Real T, Standard_Real &OutValue);
+		bool Value(const double T, Standard_Real &OutValue);
 
 };
 
@@ -622,7 +618,7 @@ computes the value of the heigth for the parameter T on the neutral fibber.
 class FairCurve_DistributionOfEnergy : public math_FunctionSet {
 	public:
 		/****** FairCurve_DistributionOfEnergy::NbEquations ******/
-		/****** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -632,10 +628,10 @@ Description
 -----------
 returns the number of equations of the function.
 ") NbEquations;
-		virtual Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** FairCurve_DistributionOfEnergy::NbVariables ******/
-		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -645,10 +641,10 @@ Description
 -----------
 returns the number of variables of the function.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** FairCurve_DistributionOfEnergy::SetDerivativeOrder ******/
-		/****** md5 signature: 61a52ca37f217ee57d4348b2d158671b ******/
+		/****** md5 signature: b6c529d321ab7b539e1e9ce05f3b481c ******/
 		%feature("compactdefaultargs") SetDerivativeOrder;
 		%feature("autodoc", "
 Parameters
@@ -663,7 +659,7 @@ Description
 -----------
 No available documentation.
 ") SetDerivativeOrder;
-		void SetDerivativeOrder(const Standard_Integer DerivativeOrder);
+		void SetDerivativeOrder(const int DerivativeOrder);
 
 };
 
@@ -681,7 +677,7 @@ No available documentation.
 class FairCurve_Energy : public math_MultipleVarFunctionWithHessian {
 	public:
 		/****** FairCurve_Energy::Gradient ******/
-		/****** md5 signature: 1a885d14faccb1c8d59b3f361f1c9167 ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -697,10 +693,10 @@ Description
 -----------
 computes the gradient <G> of the energys for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Gradient;
-		virtual Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** FairCurve_Energy::NbVariables ******/
-		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -710,23 +706,23 @@ Description
 -----------
 returns the number of variables of the energy.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** FairCurve_Energy::Poles ******/
-		/****** md5 signature: 4a151d768c1822dfa99232d1389d5e79 ******/
+		/****** md5 signature: 613bd70a9a75e11d80606a0eafb9b257 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColgp_HArray1OfPnt2d>
+opencascade::handle<NCollection_HArray1<gp_Pnt2d>>
 
 Description
 -----------
 return the poles.
 ") Poles;
-		const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles();
+		const opencascade::handle<NCollection_HArray1<gp_Pnt2d>> Poles();
 
 		/****** FairCurve_Energy::Value ******/
-		/****** md5 signature: 309672a7cfa6f1105664cb95344f4bcc ******/
+		/****** md5 signature: a76cb02434bec60c18ea5eede648a0e3 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -735,16 +731,16 @@ X: math_Vector
 
 Return
 -------
-E: float
+E: double
 
 Description
 -----------
 computes the values of the Energys E for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** FairCurve_Energy::Values ******/
-		/****** md5 signature: 10c7b2f720f30502e78b77290fcc0e35 ******/
+		/****** md5 signature: 5c46408e4c4fff3c78764de90e23fbbb ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -754,16 +750,16 @@ G: math_Vector
 
 Return
 -------
-E: float
+E: double
 
 Description
 -----------
 computes the Energy <E> and the gradient <G> of the energy for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 		/****** FairCurve_Energy::Values ******/
-		/****** md5 signature: f03bbcb06a95f87d927a152a25318980 ******/
+		/****** md5 signature: bf6c6ce31890fd6cbbd00ee26fd82a37 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -774,16 +770,16 @@ H: math_Matrix
 
 Return
 -------
-E: float
+E: double
 
 Description
 -----------
 computes the Energy <E>, the gradient <G> and the Hessian <H> of the energy for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G, math_Matrix & H);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G, math_Matrix & H);
 
 		/****** FairCurve_Energy::Variable ******/
-		/****** md5 signature: fa8df2d29e345b3cf776461e366afde6 ******/
+		/****** md5 signature: 5c400edfcc0b63c6446300ce04f559fe ******/
 		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "
 Parameters
@@ -798,7 +794,7 @@ Description
 -----------
 compute the variables <X> which correspond with the field <MyPoles>.
 ") Variable;
-		virtual Standard_Boolean Variable(math_Vector & X);
+		virtual bool Variable(math_Vector & X);
 
 };
 
@@ -815,17 +811,17 @@ compute the variables <X> which correspond with the field <MyPoles>.
 class FairCurve_Newton : public math_NewtonMinimum {
 	public:
 		/****** FairCurve_Newton::FairCurve_Newton ******/
-		/****** md5 signature: 9a2660a6c8e2c1dbddd3a05f6d65cbfa ******/
+		/****** md5 signature: 2acdb02714c034dab33a3e8e5945f419 ******/
 		%feature("compactdefaultargs") FairCurve_Newton;
 		%feature("autodoc", "
 Parameters
 ----------
 theFunction: math_MultipleVarFunctionWithHessian
-theSpatialTolerance: float (optional, default to 1.0e-7)
-theCriteriumTolerance: float (optional, default to 1.0e-7)
+theSpatialTolerance: double (optional, default to 1.0e-7)
+theCriteriumTolerance: double (optional, default to 1.0e-7)
 theNbIterations: int (optional, default to 40)
-theConvexity: float (optional, default to 1.0e-6)
-theWithSingularity: bool (optional, default to Standard_True)
+theConvexity: double (optional, default to 1.0e-6)
+theWithSingularity: bool (optional, default to true)
 
 Return
 -------
@@ -835,10 +831,10 @@ Description
 -----------
 The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor do not computation.
 ") FairCurve_Newton;
-		 FairCurve_Newton(const math_MultipleVarFunctionWithHessian & theFunction, const Standard_Real theSpatialTolerance = 1.0e-7, const Standard_Real theCriteriumTolerance = 1.0e-7, const Standard_Integer theNbIterations = 40, const Standard_Real theConvexity = 1.0e-6, const Standard_Boolean theWithSingularity = Standard_True);
+		 FairCurve_Newton(const math_MultipleVarFunctionWithHessian & theFunction, const double theSpatialTolerance = 1.0e-7, const double theCriteriumTolerance = 1.0e-7, const int theNbIterations = 40, const double theConvexity = 1.0e-6, const bool theWithSingularity = true);
 
 		/****** FairCurve_Newton::IsConverged ******/
-		/****** md5 signature: 1f771ed93f3c652c579f0d5bf4b5d4a5 ******/
+		/****** md5 signature: 8bbcd129778b5d55bcd317a2c89ea745 ******/
 		%feature("compactdefaultargs") IsConverged;
 		%feature("autodoc", "Return
 -------
@@ -848,7 +844,7 @@ Description
 -----------
 This method is called at the end of each iteration to check the convergence: || Xi+1 - Xi || < SpatialTolerance/100 Or || Xi+1 - Xi || < SpatialTolerance and |F(Xi+1) - F(Xi)| < CriteriumTolerance * |F(xi)| It can be redefined in a sub-class to implement a specific test.
 ") IsConverged;
-		virtual Standard_Boolean IsConverged();
+		bool IsConverged();
 
 };
 
@@ -865,14 +861,14 @@ This method is called at the end of each iteration to check the convergence: || 
 class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 	public:
 		/****** FairCurve_DistributionOfJerk::FairCurve_DistributionOfJerk ******/
-		/****** md5 signature: 7e7584f0643d5cb994e495c5fce52166 ******/
+		/****** md5 signature: 5797dc40eb39388f0c37884119953fd7 ******/
 		%feature("compactdefaultargs") FairCurve_DistributionOfJerk;
 		%feature("autodoc", "
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: TColStd_HArray1OfReal
-Poles: TColgp_HArray1OfPnt2d
+FlatKnots: NCollection_HArray1<double
+Poles: NCollection_HArray1<gp_Pnt2d
 DerivativeOrder: int
 Law: FairCurve_BattenLaw
 NbValAux: int (optional, default to 0)
@@ -885,10 +881,10 @@ Description
 -----------
 No available documentation.
 ") FairCurve_DistributionOfJerk;
-		 FairCurve_DistributionOfJerk(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer DerivativeOrder, const FairCurve_BattenLaw & Law, const Standard_Integer NbValAux = 0);
+		 FairCurve_DistributionOfJerk(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int DerivativeOrder, const FairCurve_BattenLaw & Law, const int NbValAux = 0);
 
 		/****** FairCurve_DistributionOfJerk::Value ******/
-		/****** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -904,7 +900,7 @@ Description
 -----------
 computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 };
 
@@ -921,14 +917,14 @@ computes the values <F> of the functions for the variable <X>. returns True if t
 class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 	public:
 		/****** FairCurve_DistributionOfSagging::FairCurve_DistributionOfSagging ******/
-		/****** md5 signature: 89a4678163f0a066b64e7643c2a41501 ******/
+		/****** md5 signature: d6304ca04491f440a5a56f38336f24e9 ******/
 		%feature("compactdefaultargs") FairCurve_DistributionOfSagging;
 		%feature("autodoc", "
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: TColStd_HArray1OfReal
-Poles: TColgp_HArray1OfPnt2d
+FlatKnots: NCollection_HArray1<double
+Poles: NCollection_HArray1<gp_Pnt2d
 DerivativeOrder: int
 Law: FairCurve_BattenLaw
 NbValAux: int (optional, default to 0)
@@ -941,10 +937,10 @@ Description
 -----------
 No available documentation.
 ") FairCurve_DistributionOfSagging;
-		 FairCurve_DistributionOfSagging(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer DerivativeOrder, const FairCurve_BattenLaw & Law, const Standard_Integer NbValAux = 0);
+		 FairCurve_DistributionOfSagging(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int DerivativeOrder, const FairCurve_BattenLaw & Law, const int NbValAux = 0);
 
 		/****** FairCurve_DistributionOfSagging::Value ******/
-		/****** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -960,7 +956,7 @@ Description
 -----------
 computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 };
 
@@ -977,19 +973,19 @@ computes the values <F> of the functions for the variable <X>. returns True if t
 class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 	public:
 		/****** FairCurve_DistributionOfTension::FairCurve_DistributionOfTension ******/
-		/****** md5 signature: 28ac1783dc89f2e8a2ab0e2b2db5d32c ******/
+		/****** md5 signature: 6f3a80a1a4432c8a7c1311a0168e4207 ******/
 		%feature("compactdefaultargs") FairCurve_DistributionOfTension;
 		%feature("autodoc", "
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: TColStd_HArray1OfReal
-Poles: TColgp_HArray1OfPnt2d
+FlatKnots: NCollection_HArray1<double
+Poles: NCollection_HArray1<gp_Pnt2d
 DerivativeOrder: int
-LengthSliding: float
+LengthSliding: double
 Law: FairCurve_BattenLaw
 NbValAux: int (optional, default to 0)
-Uniform: bool (optional, default to Standard_False)
+Uniform: bool (optional, default to false)
 
 Return
 -------
@@ -999,15 +995,15 @@ Description
 -----------
 No available documentation.
 ") FairCurve_DistributionOfTension;
-		 FairCurve_DistributionOfTension(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer DerivativeOrder, const Standard_Real LengthSliding, const FairCurve_BattenLaw & Law, const Standard_Integer NbValAux = 0, const Standard_Boolean Uniform = Standard_False);
+		 FairCurve_DistributionOfTension(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int DerivativeOrder, const double LengthSliding, const FairCurve_BattenLaw & Law, const int NbValAux = 0, const bool Uniform = false);
 
 		/****** FairCurve_DistributionOfTension::SetLengthSliding ******/
-		/****** md5 signature: 4e17a9d00916de919a874074fff25d1d ******/
+		/****** md5 signature: b2e6ec88d081bdee92288e409dbf6b29 ******/
 		%feature("compactdefaultargs") SetLengthSliding;
 		%feature("autodoc", "
 Parameters
 ----------
-LengthSliding: float
+LengthSliding: double
 
 Return
 -------
@@ -1017,10 +1013,10 @@ Description
 -----------
 change the length sliding.
 ") SetLengthSliding;
-		void SetLengthSliding(const Standard_Real LengthSliding);
+		void SetLengthSliding(const double LengthSliding);
 
 		/****** FairCurve_DistributionOfTension::Value ******/
-		/****** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1036,7 +1032,7 @@ Description
 -----------
 computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 };
 
@@ -1053,21 +1049,21 @@ computes the values <F> of the functions for the variable <X>. returns True if t
 class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 	public:
 		/****** FairCurve_EnergyOfBatten::FairCurve_EnergyOfBatten ******/
-		/****** md5 signature: 4c2d6f4d88f3053d8cf08761865050dd ******/
+		/****** md5 signature: e671259e46ea0a6cf73adb49789992ef ******/
 		%feature("compactdefaultargs") FairCurve_EnergyOfBatten;
 		%feature("autodoc", "
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: TColStd_HArray1OfReal
-Poles: TColgp_HArray1OfPnt2d
+FlatKnots: NCollection_HArray1<double
+Poles: NCollection_HArray1<gp_Pnt2d
 ContrOrder1: int
 ContrOrder2: int
 Law: FairCurve_BattenLaw
-LengthSliding: float
-FreeSliding: bool (optional, default to Standard_True)
-Angle1: float (optional, default to 0)
-Angle2: float (optional, default to 0)
+LengthSliding: double
+FreeSliding: bool (optional, default to true)
+Angle1: double (optional, default to 0)
+Angle2: double (optional, default to 0)
 
 Return
 -------
@@ -1077,20 +1073,20 @@ Description
 -----------
 Angles correspond to the Ox axis.
 ") FairCurve_EnergyOfBatten;
-		 FairCurve_EnergyOfBatten(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer ContrOrder1, const Standard_Integer ContrOrder2, const FairCurve_BattenLaw & Law, const Standard_Real LengthSliding, const Standard_Boolean FreeSliding = Standard_True, const Standard_Real Angle1 = 0, const Standard_Real Angle2 = 0);
+		 FairCurve_EnergyOfBatten(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int ContrOrder1, const int ContrOrder2, const FairCurve_BattenLaw & Law, const double LengthSliding, const bool FreeSliding = true, const double Angle1 = 0, const double Angle2 = 0);
 
 		/****** FairCurve_EnergyOfBatten::LengthSliding ******/
-		/****** md5 signature: 272f9ad7d0db8234f1a58e19b812a9fe ******/
+		/****** md5 signature: 11484c3b60e3aad6790ca4483662a526 ******/
 		%feature("compactdefaultargs") LengthSliding;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 return the lengthSliding = P1P2 + Sliding.
 ") LengthSliding;
-		Standard_Real LengthSliding();
+		double LengthSliding();
 
 		/****** FairCurve_EnergyOfBatten::Status ******/
 		/****** md5 signature: 12583fcd04e2709327135f855828d15d ******/
@@ -1106,7 +1102,7 @@ return the status.
 		FairCurve_AnalysisCode Status();
 
 		/****** FairCurve_EnergyOfBatten::Variable ******/
-		/****** md5 signature: 6b3488daaca93e6e9325a2eab7fcdfd7 ******/
+		/****** md5 signature: 273330c331364af01c072df10b163000 ******/
 		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "
 Parameters
@@ -1121,7 +1117,7 @@ Description
 -----------
 compute the variables <X> which correspond with the field <MyPoles>.
 ") Variable;
-		virtual Standard_Boolean Variable(math_Vector & X);
+		bool Variable(math_Vector & X);
 
 };
 
@@ -1138,24 +1134,24 @@ compute the variables <X> which correspond with the field <MyPoles>.
 class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 	public:
 		/****** FairCurve_EnergyOfMVC::FairCurve_EnergyOfMVC ******/
-		/****** md5 signature: de2177808d51e5df75076822e78b5709 ******/
+		/****** md5 signature: 0518fa3c150864914c0890989cfcb799 ******/
 		%feature("compactdefaultargs") FairCurve_EnergyOfMVC;
 		%feature("autodoc", "
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: TColStd_HArray1OfReal
-Poles: TColgp_HArray1OfPnt2d
+FlatKnots: NCollection_HArray1<double
+Poles: NCollection_HArray1<gp_Pnt2d
 ContrOrder1: int
 ContrOrder2: int
 Law: FairCurve_BattenLaw
-PhysicalRatio: float
-LengthSliding: float
-FreeSliding: bool (optional, default to Standard_True)
-Angle1: float (optional, default to 0)
-Angle2: float (optional, default to 0)
-Curvature1: float (optional, default to 0)
-Curvature2: float (optional, default to 0)
+PhysicalRatio: double
+LengthSliding: double
+FreeSliding: bool (optional, default to true)
+Angle1: double (optional, default to 0)
+Angle2: double (optional, default to 0)
+Curvature1: double (optional, default to 0)
+Curvature2: double (optional, default to 0)
 
 Return
 -------
@@ -1165,20 +1161,20 @@ Description
 -----------
 Angles correspond to the Ox axis.
 ") FairCurve_EnergyOfMVC;
-		 FairCurve_EnergyOfMVC(const Standard_Integer BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const Standard_Integer ContrOrder1, const Standard_Integer ContrOrder2, const FairCurve_BattenLaw & Law, const Standard_Real PhysicalRatio, const Standard_Real LengthSliding, const Standard_Boolean FreeSliding = Standard_True, const Standard_Real Angle1 = 0, const Standard_Real Angle2 = 0, const Standard_Real Curvature1 = 0, const Standard_Real Curvature2 = 0);
+		 FairCurve_EnergyOfMVC(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int ContrOrder1, const int ContrOrder2, const FairCurve_BattenLaw & Law, const double PhysicalRatio, const double LengthSliding, const bool FreeSliding = true, const double Angle1 = 0, const double Angle2 = 0, const double Curvature1 = 0, const double Curvature2 = 0);
 
 		/****** FairCurve_EnergyOfMVC::LengthSliding ******/
-		/****** md5 signature: 272f9ad7d0db8234f1a58e19b812a9fe ******/
+		/****** md5 signature: 11484c3b60e3aad6790ca4483662a526 ******/
 		%feature("compactdefaultargs") LengthSliding;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 return the lengthSliding = P1P2 + Sliding.
 ") LengthSliding;
-		Standard_Real LengthSliding();
+		double LengthSliding();
 
 		/****** FairCurve_EnergyOfMVC::Status ******/
 		/****** md5 signature: 12583fcd04e2709327135f855828d15d ******/
@@ -1194,7 +1190,7 @@ return the status.
 		FairCurve_AnalysisCode Status();
 
 		/****** FairCurve_EnergyOfMVC::Variable ******/
-		/****** md5 signature: 6b3488daaca93e6e9325a2eab7fcdfd7 ******/
+		/****** md5 signature: 273330c331364af01c072df10b163000 ******/
 		%feature("compactdefaultargs") Variable;
 		%feature("autodoc", "
 Parameters
@@ -1209,7 +1205,7 @@ Description
 -----------
 compute the variables <X> which correspond with the field <MyPoles>.
 ") Variable;
-		virtual Standard_Boolean Variable(math_Vector & X);
+		bool Variable(math_Vector & X);
 
 };
 
@@ -1226,16 +1222,16 @@ compute the variables <X> which correspond with the field <MyPoles>.
 class FairCurve_MinimalVariation : public FairCurve_Batten {
 	public:
 		/****** FairCurve_MinimalVariation::FairCurve_MinimalVariation ******/
-		/****** md5 signature: 15ec89a9e6a7c802ed5347068718d11a ******/
+		/****** md5 signature: 47ffd403aed61700a67b553ee63214e0 ******/
 		%feature("compactdefaultargs") FairCurve_MinimalVariation;
 		%feature("autodoc", "
 Parameters
 ----------
 P1: gp_Pnt2d
 P2: gp_Pnt2d
-Heigth: float
-Slope: float (optional, default to 0)
-PhysicalRatio: float (optional, default to 0)
+Heigth: double
+Slope: double (optional, default to 0)
+PhysicalRatio: double (optional, default to 0)
 
 Return
 -------
@@ -1245,16 +1241,16 @@ Description
 -----------
 Constructs the two contact points P1 and P2 and the geometrical characteristics of the batten (elastic beam) These include the real number values for height of deformation Height, slope value Slope, and kind of energy PhysicalRatio. The kinds of energy include: - Jerk (0) - Sagging (1). Note that the default setting for Physical Ration is in FairCurve_Batten Other parameters are initialized as follow: - FreeSliding = False - ConstraintOrder1 = 1 - ConstraintOrder2 = 1 - Angle1 = 0 - Angle2 = 0 - Curvature1 = 0 - Curvature2 = 0 - SlidingFactor = 1 Warning If PhysicalRatio equals 1, you cannot impose constraints on curvature. Exceptions NegativeValue if Height is less than or equal to 0. NullValue if the distance between P1 and P2 is less than or equal to the tolerance value for distance in Precision::Confusion: P1.IsEqual(P2, Precision::Confusion()). The function gp_Pnt2d::IsEqual tests to see if this is the case. Definition of the geometricals constraints.
 ") FairCurve_MinimalVariation;
-		 FairCurve_MinimalVariation(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Real Heigth, const Standard_Real Slope = 0, const Standard_Real PhysicalRatio = 0);
+		 FairCurve_MinimalVariation(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const double Heigth, const double Slope = 0, const double PhysicalRatio = 0);
 
 		/****** FairCurve_MinimalVariation::Compute ******/
-		/****** md5 signature: 9d89354911c318a7bbdacd498c599c52 ******/
+		/****** md5 signature: 4f1939fcbf30caab9ac0fd38e34c79d3 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
 ----------
 NbIterations: int (optional, default to 50)
-Tolerance: float (optional, default to 1.0e-3)
+Tolerance: double (optional, default to 1.0e-3)
 
 Return
 -------
@@ -1264,10 +1260,10 @@ Description
 -----------
 Computes the curve with respect to the constraints, NbIterations and Tolerance. The tolerance setting allows you to control the precision of computation, and the maximum number of iterations allows you to set a limit on computation time.
 ") Compute;
-		virtual Standard_Boolean Compute(FairCurve_AnalysisCode &OutValue, const Standard_Integer NbIterations = 50, const Standard_Real Tolerance = 1.0e-3);
+		bool Compute(FairCurve_AnalysisCode &OutValue, const int NbIterations = 50, const double Tolerance = 1.0e-3);
 
 		/****** FairCurve_MinimalVariation::Dump ******/
-		/****** md5 signature: b42defe2d7a7208961fa81b225a70479 ******/
+		/****** md5 signature: 3c2a1f639f47eaff57a9bcd4d3fb612a ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1281,54 +1277,54 @@ Description
 -----------
 Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
-		virtual void Dump(std::ostream &OutValue);
+		void Dump(std::ostream &OutValue);
 
 		/****** FairCurve_MinimalVariation::GetCurvature1 ******/
-		/****** md5 signature: 52b65eab76a83b1bbd4a765dc4226232 ******/
+		/****** md5 signature: 0907bcc5134506bf6ff3409e9c9831d6 ******/
 		%feature("compactdefaultargs") GetCurvature1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first established curvature.
 ") GetCurvature1;
-		Standard_Real GetCurvature1();
+		double GetCurvature1();
 
 		/****** FairCurve_MinimalVariation::GetCurvature2 ******/
-		/****** md5 signature: 6b3b641177834a6f128d99403e9ac113 ******/
+		/****** md5 signature: f08038ca5ffefd47f8ca311cfa6dbc3f ******/
 		%feature("compactdefaultargs") GetCurvature2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the second established curvature.
 ") GetCurvature2;
-		Standard_Real GetCurvature2();
+		double GetCurvature2();
 
 		/****** FairCurve_MinimalVariation::GetPhysicalRatio ******/
-		/****** md5 signature: 275978b7653383b1349cc68e46c8b622 ******/
+		/****** md5 signature: 147166d64b19b6d9f0b68d156e0575d0 ******/
 		%feature("compactdefaultargs") GetPhysicalRatio;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the physical ratio, or kind of energy.
 ") GetPhysicalRatio;
-		Standard_Real GetPhysicalRatio();
+		double GetPhysicalRatio();
 
 		/****** FairCurve_MinimalVariation::SetCurvature1 ******/
-		/****** md5 signature: 93b3376ba676beeb67d10c6e0602a80a ******/
+		/****** md5 signature: 6c1f5e2b1fc853411df4eb784abd3e7e ******/
 		%feature("compactdefaultargs") SetCurvature1;
 		%feature("autodoc", "
 Parameters
 ----------
-Curvature: float
+Curvature: double
 
 Return
 -------
@@ -1338,15 +1334,15 @@ Description
 -----------
 Allows you to set a new constraint on curvature at the first point.
 ") SetCurvature1;
-		void SetCurvature1(const Standard_Real Curvature);
+		void SetCurvature1(const double Curvature);
 
 		/****** FairCurve_MinimalVariation::SetCurvature2 ******/
-		/****** md5 signature: ea0938f5c8643407fc679bf756ffb409 ******/
+		/****** md5 signature: 6962dcc67c20ba6af5601d840e87e63c ******/
 		%feature("compactdefaultargs") SetCurvature2;
 		%feature("autodoc", "
 Parameters
 ----------
-Curvature: float
+Curvature: double
 
 Return
 -------
@@ -1356,15 +1352,15 @@ Description
 -----------
 Allows you to set a new constraint on curvature at the second point.
 ") SetCurvature2;
-		void SetCurvature2(const Standard_Real Curvature);
+		void SetCurvature2(const double Curvature);
 
 		/****** FairCurve_MinimalVariation::SetPhysicalRatio ******/
-		/****** md5 signature: 4f45863d9aa49df9742e861f722cf012 ******/
+		/****** md5 signature: 5db75a33241654f6cd563c40f4c64c84 ******/
 		%feature("compactdefaultargs") SetPhysicalRatio;
 		%feature("autodoc", "
 Parameters
 ----------
-Ratio: float
+Ratio: double
 
 Return
 -------
@@ -1374,7 +1370,7 @@ Description
 -----------
 Allows you to set the physical ratio Ratio. The kinds of energy which you can specify include: 0 is only 'Jerk' Energy 1 is only 'Sagging' Energy like batten Warning: if Ratio is 1 it is impossible to impose curvature constraints. Raises DomainError if Ratio < 0 or Ratio > 1.
 ") SetPhysicalRatio;
-		void SetPhysicalRatio(const Standard_Real Ratio);
+		void SetPhysicalRatio(const double Ratio);
 
 };
 

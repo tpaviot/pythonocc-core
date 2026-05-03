@@ -21,11 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<StepToTopoDS.hxx>
 #include<StepToTopoDS_BuilderError.hxx>
-#include<StepToTopoDS_DataMapIteratorOfDataMapOfRI.hxx>
-#include<StepToTopoDS_DataMapIteratorOfDataMapOfRINames.hxx>
-#include<StepToTopoDS_DataMapIteratorOfDataMapOfTRI.hxx>
-#include<StepToTopoDS_DataMapIteratorOfPointEdgeMap.hxx>
-#include<StepToTopoDS_DataMapIteratorOfPointVertexMap.hxx>
 #include<StepToTopoDS_DataMapOfRI.hxx>
 #include<StepToTopoDS_DataMapOfRINames.hxx>
 #include<StepToTopoDS_DataMapOfTRI.hxx>

@@ -19,7 +19,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define APPCONT_HXX
 
 
-#include<AppCont_ContMatrices.hxx>
 #include<AppCont_Function.hxx>
 #include<AppCont_LeastSquare.hxx>
 

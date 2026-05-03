@@ -49,8 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRBRep_InternalAlgo.hxx>
 #include<HLRBRep_Intersector.hxx>
 #include<HLRBRep_LineTool.hxx>
-#include<HLRBRep_ListIteratorOfListOfBPnt2D.hxx>
-#include<HLRBRep_ListIteratorOfListOfBPoint.hxx>
 #include<HLRBRep_ListOfBPnt2D.hxx>
 #include<HLRBRep_ListOfBPoint.hxx>
 #include<HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx>
@@ -81,6 +79,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRBRep_TheProjPCurOfCInter.hxx>
 #include<HLRBRep_TheQuadCurvExactInterCSurf.hxx>
 #include<HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx>
+#include<HLRBRep_TypeDef.hxx>
 #include<HLRBRep_TypeOfResultingEdge.hxx>
 #include<HLRBRep_VertexList.hxx>
 

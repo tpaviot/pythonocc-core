@@ -66,8 +66,7 @@ std::string get_readable_method_name(const std::string& method_name) {
 
 // Mapping OpenCASCADE exceptions to appropriate Python exceptions
 PyObject* get_exception_type(const Standard_Failure& error) {
-    const Handle(Standard_Type)& error_type = error.DynamicType();
-    const std::string type_name = error_type->Name();
+    const std::string type_name = error.ExceptionType();
     
     // Specific error type mapping
     if (type_name.find("OutOfRange") != std::string::npos || 
@@ -114,8 +113,8 @@ void process_opencascade_exception(const Standard_Failure& error,
     std::ostringstream oss;
     
     // Basic error information
-    const std::string error_type = error.DynamicType()->Name();
-    const std::string error_message = error.GetMessageString();
+    const std::string error_type = error.ExceptionType();
+    const std::string error_message = error.what();
     const std::string readable_class = get_readable_class_name(class_name);
     const std::string readable_method = get_readable_method_name(method_name);
     

@@ -21,8 +21,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<GeomLProp.hxx>
 #include<GeomLProp_CLProps.hxx>
-#include<GeomLProp_CurveTool.hxx>
+#include<GeomLProp_CurAndInf2d.hxx>
 #include<GeomLProp_SLProps.hxx>
-#include<GeomLProp_SurfaceTool.hxx>
+#include<GeomLProp_SurfaceUtils.hxx>
 
 #endif // GEOMLPROP_HXX

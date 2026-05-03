@@ -50,9 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfids.html"
 #include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
-#include<TopTools_module.hxx>
 #include<Law_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
@@ -74,9 +72,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfids.html"
 %import Adaptor3d.i
 %import Geom.i
 %import GeomAbs.i
-%import TColStd.i
 %import Geom2d.i
-%import TopTools.i
 %import Law.i
 
 %pythoncode {
@@ -196,11 +192,13 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
 %wrap_handle(ChFiDS_SurfData)
 %wrap_handle(ChFiDS_ChamfSpine)
 %wrap_handle(ChFiDS_FilSpine)
-%wrap_handle(ChFiDS_SecHArray1)
-%wrap_handle(ChFiDS_HData)
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,ChFiDS_ListOfStripe,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,ChFiDS_ListOfStripe,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,ChFiDS_ListOfStripe,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,ChFiDS_ListOfStripe,TopTools_ShapeMapHasher>::Contained;
 %template(ChFiDS_IndexedDataMapOfVertexListOfStripe) NCollection_IndexedDataMap<TopoDS_Vertex,ChFiDS_ListOfStripe,TopTools_ShapeMapHasher>;
 %template(ChFiDS_ListIteratorOfListOfHElSpine) NCollection_TListIterator<opencascade::handle<ChFiDS_ElSpine>>;
 %template(ChFiDS_ListIteratorOfListOfStripe) NCollection_TListIterator<opencascade::handle<ChFiDS_Stripe>>;
@@ -211,12 +209,6 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = ChFiDS_ListIteratorOfListOfHElSpine(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(ChFiDS_ListOfStripe) NCollection_List<opencascade::handle<ChFiDS_Stripe>>;
@@ -225,12 +217,6 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = ChFiDS_ListIteratorOfListOfStripe(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(ChFiDS_Regularities) NCollection_List<ChFiDS_Regul>;
@@ -239,12 +225,6 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = ChFiDS_ListIteratorOfRegularities(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(ChFiDS_SecArray1) NCollection_Array1<ChFiDS_CircSection>;
@@ -272,6 +252,7 @@ Array1ExtendIter(opencascade::handle<ChFiDS_Stripe>)
 /* end templates declaration */
 
 /* typedefs */
+typedef NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>> ChFiDS_HData;
 typedef NCollection_IndexedDataMap<TopoDS_Vertex, ChFiDS_ListOfStripe, TopTools_ShapeMapHasher> ChFiDS_IndexedDataMapOfVertexListOfStripe;
 typedef NCollection_List<opencascade::handle<ChFiDS_ElSpine>>::Iterator ChFiDS_ListIteratorOfListOfHElSpine;
 typedef NCollection_List<opencascade::handle<ChFiDS_Stripe>>::Iterator ChFiDS_ListIteratorOfListOfStripe;
@@ -280,6 +261,7 @@ typedef NCollection_List<opencascade::handle<ChFiDS_ElSpine>> ChFiDS_ListOfHElSp
 typedef NCollection_List<opencascade::handle<ChFiDS_Stripe>> ChFiDS_ListOfStripe;
 typedef NCollection_List<ChFiDS_Regul> ChFiDS_Regularities;
 typedef NCollection_Array1<ChFiDS_CircSection> ChFiDS_SecArray1;
+typedef NCollection_HArray1<ChFiDS_CircSection> ChFiDS_SecHArray1;
 typedef NCollection_Sequence<opencascade::handle<ChFiDS_Spine>> ChFiDS_SequenceOfSpine;
 typedef NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> ChFiDS_SequenceOfSurfData;
 typedef NCollection_Array1<opencascade::handle<ChFiDS_Stripe>> ChFiDS_StripeArray1;
@@ -304,7 +286,7 @@ No available documentation.
 		 ChFiDS_CircSection();
 
 		/****** ChFiDS_CircSection::Get ******/
-		/****** md5 signature: a1f8c105562696f8f7b9cb3c76886f3b ******/
+		/****** md5 signature: 375785218b6b484a451ff981b1084ea6 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "
 Parameters
@@ -313,8 +295,8 @@ C: gp_Circ
 
 Return
 -------
-F: float
-L: float
+F: double
+L: double
 
 Description
 -----------
@@ -323,7 +305,7 @@ No available documentation.
 		void Get(gp_Circ & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ChFiDS_CircSection::Get ******/
-		/****** md5 signature: 308ba452ddd6c0ba74516bc55b787d5c ******/
+		/****** md5 signature: a6d673d9976da9ad29aaf40350672c8b ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "
 Parameters
@@ -332,8 +314,8 @@ C: gp_Lin
 
 Return
 -------
-F: float
-L: float
+F: double
+L: double
 
 Description
 -----------
@@ -342,14 +324,14 @@ No available documentation.
 		void Get(gp_Lin & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ChFiDS_CircSection::Set ******/
-		/****** md5 signature: f809c774b4f408588ecfa44007642c36 ******/
+		/****** md5 signature: a1e5df207a7d08b10da5372a9988ec0d ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ
-F: float
-L: float
+F: double
+L: double
 
 Return
 -------
@@ -359,17 +341,17 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const gp_Circ & C, const Standard_Real F, const Standard_Real L);
+		void Set(const gp_Circ & C, const double F, const double L);
 
 		/****** ChFiDS_CircSection::Set ******/
-		/****** md5 signature: 51063ff92fa3854b20788a299c724e02 ******/
+		/****** md5 signature: 08056a36f2e35c238aebba8619331f12 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-F: float
-L: float
+F: double
+L: double
 
 Return
 -------
@@ -379,7 +361,7 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const gp_Lin & C, const Standard_Real F, const Standard_Real L);
+		void Set(const gp_Lin & C, const double F, const double L);
 
 };
 
@@ -422,7 +404,7 @@ Returns the arc of restriction containing the vertex.
 		const TopoDS_Edge Arc();
 
 		/****** ChFiDS_CommonPoint::HasVector ******/
-		/****** md5 signature: cdf1102fba87269c204cf4398c655af3 ******/
+		/****** md5 signature: c9bc907d1d8266e593a3dd743b74f2f5 ******/
 		%feature("compactdefaultargs") HasVector;
 		%feature("autodoc", "Return
 -------
@@ -432,10 +414,10 @@ Description
 -----------
 Returns True if the output vector is stored.
 ") HasVector;
-		Standard_Boolean HasVector();
+		bool HasVector();
 
 		/****** ChFiDS_CommonPoint::IsOnArc ******/
-		/****** md5 signature: b03b70dd2ee9f895b787f6dbe3e85ce3 ******/
+		/****** md5 signature: 63f7b12ba969383d793d907b816e8342 ******/
 		%feature("compactdefaultargs") IsOnArc;
 		%feature("autodoc", "Return
 -------
@@ -445,10 +427,10 @@ Description
 -----------
 Returns True if the point is a on an edge of the initial restriction facet of the surface.
 ") IsOnArc;
-		Standard_Boolean IsOnArc();
+		bool IsOnArc();
 
 		/****** ChFiDS_CommonPoint::IsVertex ******/
-		/****** md5 signature: 856b3bdfdec770bc63025788388af574 ******/
+		/****** md5 signature: 4f009a9ae0099801e234ea40f8be9cb2 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "Return
 -------
@@ -458,33 +440,33 @@ Description
 -----------
 Returns True if the point is a vertex on the initial restriction facet of the surface.
 ") IsVertex;
-		Standard_Boolean IsVertex();
+		bool IsVertex();
 
 		/****** ChFiDS_CommonPoint::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the spine.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** ChFiDS_CommonPoint::ParameterOnArc ******/
-		/****** md5 signature: 53d2051734836b1f3c7d9edd7c3c1884 ******/
+		/****** md5 signature: 325a1d6a3796b5402c690f182eda9fae ******/
 		%feature("compactdefaultargs") ParameterOnArc;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the point on the arc returned by the method Arc().
 ") ParameterOnArc;
-		Standard_Real ParameterOnArc();
+		double ParameterOnArc();
 
 		/****** ChFiDS_CommonPoint::Point ******/
 		/****** md5 signature: 4e742d9ca138939180edee86d3b37a8f ******/
@@ -513,14 +495,14 @@ default value for all fields.
 		void Reset();
 
 		/****** ChFiDS_CommonPoint::SetArc ******/
-		/****** md5 signature: dd555be3b4e20b36002df68268f8cf7b ******/
+		/****** md5 signature: 0196d1361ff948eed8a471e64a65361e ******/
 		%feature("compactdefaultargs") SetArc;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 A: TopoDS_Edge
-Param: float
+Param: double
 TArc: TopAbs_Orientation
 
 Return
@@ -531,15 +513,15 @@ Description
 -----------
 Sets the values of a point which is on the arc A, at parameter Param.
 ") SetArc;
-		void SetArc(const Standard_Real Tol, const TopoDS_Edge & A, const Standard_Real Param, const TopAbs_Orientation TArc);
+		void SetArc(const double Tol, const TopoDS_Edge & A, const double Param, const TopAbs_Orientation TArc);
 
 		/****** ChFiDS_CommonPoint::SetParameter ******/
-		/****** md5 signature: 26222f3f8c770197bec88d8e30e2baa3 ******/
+		/****** md5 signature: 0f95a348489d7d61925025ebfc2018ad ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
@@ -549,7 +531,7 @@ Description
 -----------
 Sets the value of the parameter on the spine.
 ") SetParameter;
-		void SetParameter(const Standard_Real Param);
+		void SetParameter(const double Param);
 
 		/****** ChFiDS_CommonPoint::SetPoint ******/
 		/****** md5 signature: 68bd126cf7c8875dfaa4eadfc6d81506 ******/
@@ -570,12 +552,12 @@ Set the 3d point for a commonpoint that is not a vertex or on an arc.
 		void SetPoint(const gp_Pnt & thePoint);
 
 		/****** ChFiDS_CommonPoint::SetTolerance ******/
-		/****** md5 signature: 44b5b8eb060c2e3cbf3e6124065a0e26 ******/
+		/****** md5 signature: a15d19c9a732229b4d3bda7594347be6 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -585,7 +567,7 @@ Description
 -----------
 This method set the fuzziness on the point.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 		/****** ChFiDS_CommonPoint::SetVector ******/
 		/****** md5 signature: f00faab372d6b4314d8a10832bbb9931 ******/
@@ -624,17 +606,17 @@ Sets the values of a point which is a vertex on the initial facet of restriction
 		void SetVertex(const TopoDS_Vertex & theVertex);
 
 		/****** ChFiDS_CommonPoint::Tolerance ******/
-		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
+		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 This method returns the fuzziness on the point.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** ChFiDS_CommonPoint::TransitionOnArc ******/
 		/****** md5 signature: e46e4c017a4b2c34dda6e6f7744be5bc ******/
@@ -721,7 +703,7 @@ No available documentation.
 		void AddVertexWithTangent(const gp_Ax1 & anAx1);
 
 		/****** ChFiDS_ElSpine::BSpline ******/
-		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
+		/****** md5 signature: 7bed4aa4788773a8c748371dea2999b6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -734,7 +716,7 @@ No available documentation.
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****** ChFiDS_ElSpine::Bezier ******/
-		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
+		/****** md5 signature: 18c746ed347d210e28744f5b1c7eb527 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -773,7 +755,7 @@ No available documentation.
 		opencascade::handle<ChFiDS_SurfData> & ChangePrevious();
 
 		/****** ChFiDS_ElSpine::Circle ******/
-		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
+		/****** md5 signature: 7475f3d2915ecc09ceb3114f02b43080 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -786,7 +768,7 @@ No available documentation.
 		gp_Circ Circle();
 
 		/****** ChFiDS_ElSpine::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -798,90 +780,8 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****** ChFiDS_ElSpine::D0 ******/
-		/****** md5 signature: df369f5511c6c7a731860654c0a9c298 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-AbsC: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		virtual void D0(const Standard_Real AbsC, gp_Pnt & P);
-
-		/****** ChFiDS_ElSpine::D1 ******/
-		/****** md5 signature: 3b92546c7cd3f352b04381c39c25dd0a ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-AbsC: float
-P: gp_Pnt
-V1: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		virtual void D1(const Standard_Real AbsC, gp_Pnt & P, gp_Vec & V1);
-
-		/****** ChFiDS_ElSpine::D2 ******/
-		/****** md5 signature: 28864d9f51b38b7472bc2136e503c2d9 ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-AbsC: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D2;
-		virtual void D2(const Standard_Real AbsC, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** ChFiDS_ElSpine::D3 ******/
-		/****** md5 signature: 34fe4c1ec1dee0428cc3c133ef021b7c ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-AbsC: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D3;
-		virtual void D3(const Standard_Real AbsC, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
 		/****** ChFiDS_ElSpine::Ellipse ******/
-		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
+		/****** md5 signature: b7cf7020e3992d6d2378fd2118e8d198 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -893,26 +793,98 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
+		/****** ChFiDS_ElSpine::EvalD0 ******/
+		/****** md5 signature: fc8320117964af4b9e741cd6724988a1 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theAbsC: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter theAbsC on the curve.
+") EvalD0;
+		gp_Pnt EvalD0(const double theAbsC);
+
+		/****** ChFiDS_ElSpine::EvalD1 ******/
+		/****** md5 signature: 370bbc0ca07eb145a16b6eabdfc24efc ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theAbsC: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Computes the point and first derivative at parameter theAbsC.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double theAbsC);
+
+		/****** ChFiDS_ElSpine::EvalD2 ******/
+		/****** md5 signature: e1b8fb04b6b3a628144e8596e3e43020 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theAbsC: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Computes the point and first two derivatives at parameter theAbsC.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double theAbsC);
+
+		/****** ChFiDS_ElSpine::EvalD3 ******/
+		/****** md5 signature: 8f2233ab525d22b30b45c7ccb686c6c7 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theAbsC: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Computes the point and first three derivatives at parameter theAbsC.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double theAbsC);
+
 		/****** ChFiDS_ElSpine::FirstParameter ******/
-		/****** md5 signature: 4764beb92499e70705c5628a20961327 ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ChFiDS_ElSpine::FirstParameter ******/
-		/****** md5 signature: f70a98e5455eda40d623400b3a7621bd ******/
+		/****** md5 signature: 07bc10e080cd242ff5ccc59e74bed29c ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -922,7 +894,7 @@ Description
 -----------
 No available documentation.
 ") FirstParameter;
-		void FirstParameter(const Standard_Real P);
+		void FirstParameter(const double P);
 
 		/****** ChFiDS_ElSpine::FirstPointAndTgt ******/
 		/****** md5 signature: 9251482358a41a8213a518ba9d7054fd ******/
@@ -944,33 +916,33 @@ No available documentation.
 		void FirstPointAndTgt(gp_Pnt & P, gp_Vec & T);
 
 		/****** ChFiDS_ElSpine::GetSavedFirstParameter ******/
-		/****** md5 signature: 75db463c8364b8f77f9e3de51ecbedc6 ******/
+		/****** md5 signature: 0ac1c896a0affe364049abd440b09cda ******/
 		%feature("compactdefaultargs") GetSavedFirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") GetSavedFirstParameter;
-		Standard_Real GetSavedFirstParameter();
+		double GetSavedFirstParameter();
 
 		/****** ChFiDS_ElSpine::GetSavedLastParameter ******/
-		/****** md5 signature: 6c55b3c4ecd4337f064cf9ed6c0eecaa ******/
+		/****** md5 signature: d4a0ba21ee102b9391a2bd2c317e0429 ******/
 		%feature("compactdefaultargs") GetSavedLastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") GetSavedLastParameter;
-		Standard_Real GetSavedLastParameter();
+		double GetSavedLastParameter();
 
 		/****** ChFiDS_ElSpine::GetType ******/
-		/****** md5 signature: 33b481526e57ba1551397943374a197a ******/
+		/****** md5 signature: 5a645f79981f2ae05742e39e35676600 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -980,10 +952,10 @@ Description
 -----------
 No available documentation.
 ") GetType;
-		virtual GeomAbs_CurveType GetType();
+		GeomAbs_CurveType GetType();
 
 		/****** ChFiDS_ElSpine::Hyperbola ******/
-		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
+		/****** md5 signature: 308d3b34f3aaba706261ba7e6cb1678e ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -996,12 +968,12 @@ No available documentation.
 		gp_Hypr Hyperbola();
 
 		/****** ChFiDS_ElSpine::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -1012,10 +984,10 @@ Description
 -----------
 No available documentation.
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** ChFiDS_ElSpine::IsPeriodic ******/
-		/****** md5 signature: 13a0a38f32e22e8a1ec5aa34cbf9bbea ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1025,28 +997,28 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		virtual Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** ChFiDS_ElSpine::LastParameter ******/
-		/****** md5 signature: 51650ab8b3afb0a24f930d23afae31ca ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ChFiDS_ElSpine::LastParameter ******/
-		/****** md5 signature: 960ed927a400b05e09d04421f57f40c3 ******/
+		/****** md5 signature: 5002e4e2350408e3a97fc87e1cc2e926 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -1056,7 +1028,7 @@ Description
 -----------
 No available documentation.
 ") LastParameter;
-		void LastParameter(const Standard_Real P);
+		void LastParameter(const double P);
 
 		/****** ChFiDS_ElSpine::LastPointAndTgt ******/
 		/****** md5 signature: 93100e74cc6db5e39d9d8d1a6cf42013 ******/
@@ -1078,7 +1050,7 @@ No available documentation.
 		void LastPointAndTgt(gp_Pnt & P, gp_Vec & T);
 
 		/****** ChFiDS_ElSpine::Line ******/
-		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
+		/****** md5 signature: acdc8f5fc99e967530fe196307d05538 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -1091,7 +1063,7 @@ No available documentation.
 		gp_Lin Line();
 
 		/****** ChFiDS_ElSpine::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1106,10 +1078,10 @@ Description
 -----------
 No available documentation.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** ChFiDS_ElSpine::NbVertices ******/
-		/****** md5 signature: 435b05539d6b9d704dc04d9218f26996 ******/
+		/****** md5 signature: 859a4b3acdcc81718e66502bc37368ea ******/
 		%feature("compactdefaultargs") NbVertices;
 		%feature("autodoc", "Return
 -------
@@ -1119,7 +1091,7 @@ Description
 -----------
 No available documentation.
 ") NbVertices;
-		Standard_Integer NbVertices();
+		int NbVertices();
 
 		/****** ChFiDS_ElSpine::Next ******/
 		/****** md5 signature: 39ca926c37bee1c887d1f87f377ea7fd ******/
@@ -1135,7 +1107,7 @@ No available documentation.
 		const opencascade::handle<ChFiDS_SurfData> & Next();
 
 		/****** ChFiDS_ElSpine::Parabola ******/
-		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
+		/****** md5 signature: de70ebd3fa2d227512b9d0058ee94ca5 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -1148,17 +1120,17 @@ No available documentation.
 		gp_Parab Parabola();
 
 		/****** ChFiDS_ElSpine::Period ******/
-		/****** md5 signature: a0af1de0407384df43b0e76d6b472231 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		virtual Standard_Real Period();
+		double Period();
 
 		/****** ChFiDS_ElSpine::Previous ******/
 		/****** md5 signature: e96ad254506925dd4b71cfbc11e5467e ******/
@@ -1174,22 +1146,22 @@ No available documentation.
 		const opencascade::handle<ChFiDS_SurfData> & Previous();
 
 		/****** ChFiDS_ElSpine::Resolution ******/
-		/****** md5 signature: ff921b502a972d22db1a77196e34d53d ******/
+		/****** md5 signature: 7cb383c1a004c01dc3f51b7088c4d899 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Resolution;
-		virtual Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** ChFiDS_ElSpine::SaveFirstParameter ******/
 		/****** md5 signature: ef62d193c97ecc49ce192ba3a979c7aa ******/
@@ -1274,12 +1246,12 @@ No available documentation.
 		void SetLastPointAndTgt(const gp_Pnt & P, const gp_Vec & T);
 
 		/****** ChFiDS_ElSpine::SetOrigin ******/
-		/****** md5 signature: 90772090782b64db2bef099a0d3c0950 ******/
+		/****** md5 signature: 5f0a660a8ca489213219850a7ac41c60 ******/
 		%feature("compactdefaultargs") SetOrigin;
 		%feature("autodoc", "
 Parameters
 ----------
-O: float
+O: double
 
 Return
 -------
@@ -1289,10 +1261,10 @@ Description
 -----------
 No available documentation.
 ") SetOrigin;
-		void SetOrigin(const Standard_Real O);
+		void SetOrigin(const double O);
 
 		/****** ChFiDS_ElSpine::SetPeriodic ******/
-		/****** md5 signature: 350f9c15209db2caa06ef8c73d0952ea ******/
+		/****** md5 signature: e36775b4742c5c2f7a7ee6d7be464681 ******/
 		%feature("compactdefaultargs") SetPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1307,10 +1279,10 @@ Description
 -----------
 No available documentation.
 ") SetPeriodic;
-		void SetPeriodic(const Standard_Boolean I);
+		void SetPeriodic(const bool I);
 
 		/****** ChFiDS_ElSpine::ShallowCopy ******/
-		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
+		/****** md5 signature: 20e70b6ba2d95db55811b68454eb9003 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -1320,17 +1292,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+		opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****** ChFiDS_ElSpine::Trim ******/
-		/****** md5 signature: 974fe27e2868c6786b8c68ef515f97f8 ******/
+		/****** md5 signature: 91538b497dfbccd564dbd54083e8e395 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -1340,28 +1312,10 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion.
 ") Trim;
-		virtual opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
-
-		/****** ChFiDS_ElSpine::Value ******/
-		/****** md5 signature: ba8231e7dc3a72ecafee01b4eb348bbe ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-AbsC: float
-
-Return
--------
-gp_Pnt
-
-Description
------------
-No available documentation.
-") Value;
-		virtual gp_Pnt Value(const Standard_Real AbsC);
+		opencascade::handle<Adaptor3d_Curve> Trim(const double First, const double Last, const double Tol);
 
 		/****** ChFiDS_ElSpine::VertexWithTangent ******/
-		/****** md5 signature: 8a3fc0491ddd2e2bccd694dc8b3d06ef ******/
+		/****** md5 signature: 30c55ce34f31dd6e8c0ecc5cb25e7c5f ******/
 		%feature("compactdefaultargs") VertexWithTangent;
 		%feature("autodoc", "
 Parameters
@@ -1376,7 +1330,7 @@ Description
 -----------
 No available documentation.
 ") VertexWithTangent;
-		const gp_Ax1 VertexWithTangent(const Standard_Integer Index);
+		const gp_Ax1 VertexWithTangent(const int Index);
 
 };
 
@@ -1434,33 +1388,33 @@ No available documentation.
 		opencascade::handle<Geom2d_Curve> & ChangePCurveOnSurf();
 
 		/****** ChFiDS_FaceInterference::FirstParameter ******/
-		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
+		/****** md5 signature: 663a02fdcfecea2f8437f306e48dfc6b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ChFiDS_FaceInterference::LastParameter ******/
-		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
+		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ChFiDS_FaceInterference::LineIndex ******/
-		/****** md5 signature: af9fb0debe68e98e2e0bb7899c89cba3 ******/
+		/****** md5 signature: 32f076db83081d15923726f955bd63d3 ******/
 		%feature("compactdefaultargs") LineIndex;
 		%feature("autodoc", "Return
 -------
@@ -1470,7 +1424,7 @@ Description
 -----------
 No available documentation.
 ") LineIndex;
-		Standard_Integer LineIndex();
+		int LineIndex();
 
 		/****** ChFiDS_FaceInterference::PCurveOnFace ******/
 		/****** md5 signature: 9ffab450fa8f2ab4e8bb4275bd561666 ******/
@@ -1499,7 +1453,7 @@ No available documentation.
 		const opencascade::handle<Geom2d_Curve> & PCurveOnSurf();
 
 		/****** ChFiDS_FaceInterference::Parameter ******/
-		/****** md5 signature: 6e1a73f976dcd9d42920accd4007f409 ******/
+		/****** md5 signature: a4c9d984b0c752364fca72d1ad4ecfc7 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1508,21 +1462,21 @@ IsFirst: bool
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter(const Standard_Boolean IsFirst);
+		double Parameter(const bool IsFirst);
 
 		/****** ChFiDS_FaceInterference::SetFirstParameter ******/
-		/****** md5 signature: 66a146ecdaa6c152259c9690094161f5 ******/
+		/****** md5 signature: 0a2ff6d29731f00fc2527ff1d1d19560 ******/
 		%feature("compactdefaultargs") SetFirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
+U1: double
 
 Return
 -------
@@ -1532,10 +1486,10 @@ Description
 -----------
 No available documentation.
 ") SetFirstParameter;
-		void SetFirstParameter(const Standard_Real U1);
+		void SetFirstParameter(const double U1);
 
 		/****** ChFiDS_FaceInterference::SetInterference ******/
-		/****** md5 signature: a98dba3aad417a54ca288a277242d9c2 ******/
+		/****** md5 signature: 0d2ac6de03efddc2be31d376740b0088 ******/
 		%feature("compactdefaultargs") SetInterference;
 		%feature("autodoc", "
 Parameters
@@ -1553,15 +1507,15 @@ Description
 -----------
 No available documentation.
 ") SetInterference;
-		void SetInterference(const Standard_Integer LineIndex, const TopAbs_Orientation Trans, const opencascade::handle<Geom2d_Curve> & PCurv1, const opencascade::handle<Geom2d_Curve> & PCurv2);
+		void SetInterference(const int LineIndex, const TopAbs_Orientation Trans, const opencascade::handle<Geom2d_Curve> & PCurv1, const opencascade::handle<Geom2d_Curve> & PCurv2);
 
 		/****** ChFiDS_FaceInterference::SetLastParameter ******/
-		/****** md5 signature: 4fb4fec24280eed5cf49207ba2a859cb ******/
+		/****** md5 signature: 3879b26a3f6e52f8a5fdf8edebb5c6c7 ******/
 		%feature("compactdefaultargs") SetLastParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
+U1: double
 
 Return
 -------
@@ -1571,10 +1525,10 @@ Description
 -----------
 No available documentation.
 ") SetLastParameter;
-		void SetLastParameter(const Standard_Real U1);
+		void SetLastParameter(const double U1);
 
 		/****** ChFiDS_FaceInterference::SetLineIndex ******/
-		/****** md5 signature: a5c84457c710effed03309c68b7e0080 ******/
+		/****** md5 signature: f05e46de57820b665c6268ef02283bd4 ******/
 		%feature("compactdefaultargs") SetLineIndex;
 		%feature("autodoc", "
 Parameters
@@ -1589,15 +1543,15 @@ Description
 -----------
 No available documentation.
 ") SetLineIndex;
-		void SetLineIndex(const Standard_Integer I);
+		void SetLineIndex(const int I);
 
 		/****** ChFiDS_FaceInterference::SetParameter ******/
-		/****** md5 signature: d404d706cf6c6419b8088620190503fe ******/
+		/****** md5 signature: 374c2b862907526bf8718303752c4275 ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
+U1: double
 IsFirst: bool
 
 Return
@@ -1608,7 +1562,7 @@ Description
 -----------
 No available documentation.
 ") SetParameter;
-		void SetParameter(const Standard_Real U1, const Standard_Boolean IsFirst);
+		void SetParameter(const double U1, const bool IsFirst);
 
 		/****** ChFiDS_FaceInterference::SetTransition ******/
 		/****** md5 signature: c6b23800a90c4cbe4b35094ba16f44ff ******/
@@ -1669,7 +1623,7 @@ Create an empty Map.
 		 ChFiDS_Map();
 
 		/****** ChFiDS_Map::Contains ******/
-		/****** md5 signature: f099b22f53dc3705b9de7f86b775b20a ******/
+		/****** md5 signature: 9d115853c7c7f9bc8f52911395e69be8 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -1684,7 +1638,7 @@ Description
 -----------
 No available documentation.
 ") Contains;
-		Standard_Boolean Contains(const TopoDS_Shape & S);
+		bool Contains(const TopoDS_Shape & S);
 
 		/****** ChFiDS_Map::Fill ******/
 		/****** md5 signature: 5e4d793db169463c7138d45a1bebb3bd ******/
@@ -1707,7 +1661,7 @@ Fills the map with the subshapes of type T1 as keys and the list of ancestors of
 		void Fill(const TopoDS_Shape & S, const TopAbs_ShapeEnum T1, const TopAbs_ShapeEnum T2);
 
 		/****** ChFiDS_Map::FindFromIndex ******/
-		/****** md5 signature: e27fc1939ed1a458284d9db1fe7832e5 ******/
+		/****** md5 signature: 03f0408e7296dd7493e34944d2e1a5e5 ******/
 		%feature("compactdefaultargs") FindFromIndex;
 		%feature("autodoc", "
 Parameters
@@ -1716,16 +1670,16 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") FindFromIndex;
-		const TopTools_ListOfShape & FindFromIndex(const Standard_Integer I);
+		const NCollection_List<TopoDS_Shape> FindFromIndex(const int I);
 
 		/****** ChFiDS_Map::FindFromKey ******/
-		/****** md5 signature: f822fc0350ed0d0f3926ef4f484545ff ******/
+		/****** md5 signature: 4ed5dc4ed7b3f32ad3e73446a96f35ad ******/
 		%feature("compactdefaultargs") FindFromKey;
 		%feature("autodoc", "
 Parameters
@@ -1734,13 +1688,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") FindFromKey;
-		const TopTools_ListOfShape & FindFromKey(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> FindFromKey(const TopoDS_Shape & S);
 
 };
 
@@ -1770,7 +1724,7 @@ No available documentation.
 		 ChFiDS_Regul();
 
 		/****** ChFiDS_Regul::Curve ******/
-		/****** md5 signature: 246fcc6b84e8ea0976c82438745a18e2 ******/
+		/****** md5 signature: e68eed5ce3ee0bd0eba65900dac7dd46 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -1780,10 +1734,10 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		Standard_Integer Curve();
+		int Curve();
 
 		/****** ChFiDS_Regul::IsSurface1 ******/
-		/****** md5 signature: 1c53bb199493b75cd867c8b8f1857b7e ******/
+		/****** md5 signature: cd717a80c611f84c9ab50a27d58faa56 ******/
 		%feature("compactdefaultargs") IsSurface1;
 		%feature("autodoc", "Return
 -------
@@ -1793,10 +1747,10 @@ Description
 -----------
 No available documentation.
 ") IsSurface1;
-		Standard_Boolean IsSurface1();
+		bool IsSurface1();
 
 		/****** ChFiDS_Regul::IsSurface2 ******/
-		/****** md5 signature: 3786cfa4e1033fd0661f2149711c4979 ******/
+		/****** md5 signature: 2655c888eec4e00c9c54cd6959ff5180 ******/
 		%feature("compactdefaultargs") IsSurface2;
 		%feature("autodoc", "Return
 -------
@@ -1806,10 +1760,10 @@ Description
 -----------
 No available documentation.
 ") IsSurface2;
-		Standard_Boolean IsSurface2();
+		bool IsSurface2();
 
 		/****** ChFiDS_Regul::S1 ******/
-		/****** md5 signature: 7361e2dcae16373490107e5583aaf589 ******/
+		/****** md5 signature: 798bcdcfff7476e6a2edc7101e2db028 ******/
 		%feature("compactdefaultargs") S1;
 		%feature("autodoc", "Return
 -------
@@ -1819,10 +1773,10 @@ Description
 -----------
 No available documentation.
 ") S1;
-		Standard_Integer S1();
+		int S1();
 
 		/****** ChFiDS_Regul::S2 ******/
-		/****** md5 signature: c836932bf1af4e841c58b4c6a36aeaf0 ******/
+		/****** md5 signature: 5c4564d059f31465aeed449d621b85c5 ******/
 		%feature("compactdefaultargs") S2;
 		%feature("autodoc", "Return
 -------
@@ -1832,10 +1786,10 @@ Description
 -----------
 No available documentation.
 ") S2;
-		Standard_Integer S2();
+		int S2();
 
 		/****** ChFiDS_Regul::SetCurve ******/
-		/****** md5 signature: ba1234c816a1bb5dd773be07b8fffae8 ******/
+		/****** md5 signature: 142601de41915b91b6b05688526625ab ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -1850,16 +1804,16 @@ Description
 -----------
 No available documentation.
 ") SetCurve;
-		void SetCurve(const Standard_Integer IC);
+		void SetCurve(const int IC);
 
 		/****** ChFiDS_Regul::SetS1 ******/
-		/****** md5 signature: d114cea9a6abd7c04e0272eb6007472c ******/
+		/****** md5 signature: 10490dfb2a805f779396279e92aa3f60 ******/
 		%feature("compactdefaultargs") SetS1;
 		%feature("autodoc", "
 Parameters
 ----------
 IS1: int
-IsFace: bool (optional, default to Standard_True)
+IsFace: bool (optional, default to true)
 
 Return
 -------
@@ -1869,16 +1823,16 @@ Description
 -----------
 No available documentation.
 ") SetS1;
-		void SetS1(const Standard_Integer IS1, const Standard_Boolean IsFace = Standard_True);
+		void SetS1(const int IS1, const bool IsFace = true);
 
 		/****** ChFiDS_Regul::SetS2 ******/
-		/****** md5 signature: 5178f4086ad526928fce374b96c2fec1 ******/
+		/****** md5 signature: 5290c3ad5afafe079fd866a953c1e3a5 ******/
 		%feature("compactdefaultargs") SetS2;
 		%feature("autodoc", "
 Parameters
 ----------
 IS2: int
-IsFace: bool (optional, default to Standard_True)
+IsFace: bool (optional, default to true)
 
 Return
 -------
@@ -1888,7 +1842,7 @@ Description
 -----------
 No available documentation.
 ") SetS2;
-		void SetS2(const Standard_Integer IS2, const Standard_Boolean IsFace = Standard_True);
+		void SetS2(const int IS2, const bool IsFace = true);
 
 };
 
@@ -1918,12 +1872,12 @@ No available documentation.
 		 ChFiDS_Spine();
 
 		/****** ChFiDS_Spine::ChFiDS_Spine ******/
-		/****** md5 signature: 69bf141eeae74093a4bfd1758f04012c ******/
+		/****** md5 signature: ebaa28550d5dd7144b68d5d91990f411 ******/
 		%feature("compactdefaultargs") ChFiDS_Spine;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1933,47 +1887,47 @@ Description
 -----------
 No available documentation.
 ") ChFiDS_Spine;
-		 ChFiDS_Spine(const Standard_Real Tol);
+		 ChFiDS_Spine(const double Tol);
 
 		/****** ChFiDS_Spine::Absc ******/
-		/****** md5 signature: 0fcb71e8c4d0991d4bf628fec7467762 ******/
+		/****** md5 signature: 16e12bfc776c8fe7e1cdc8aefa58b7fd ******/
 		%feature("compactdefaultargs") Absc;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Absc;
-		Standard_Real Absc(const Standard_Real U);
+		double Absc(const double U);
 
 		/****** ChFiDS_Spine::Absc ******/
-		/****** md5 signature: 675de99f7389e5730307190bef4c9a62 ******/
+		/****** md5 signature: cb27f5db99d57909d28ec0ead5b2eb8d ******/
 		%feature("compactdefaultargs") Absc;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Absc;
-		Standard_Real Absc(const Standard_Real U, const Standard_Integer I);
+		double Absc(const double U, const int I);
 
 		/****** ChFiDS_Spine::Absc ******/
-		/****** md5 signature: 73e436bf62d13ac2b7905d3f4ff661eb ******/
+		/****** md5 signature: 98114f5b6c432cad659c614500762b3a ******/
 		%feature("compactdefaultargs") Absc;
 		%feature("autodoc", "
 Parameters
@@ -1982,13 +1936,13 @@ V: TopoDS_Vertex
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Absc;
-		Standard_Real Absc(const TopoDS_Vertex & V);
+		double Absc(const TopoDS_Vertex & V);
 
 		/****** ChFiDS_Spine::AppendElSpine ******/
 		/****** md5 signature: ede48293dc1624531bd53eae90637b01 ******/
@@ -2027,30 +1981,30 @@ No available documentation.
 		virtual void AppendOffsetElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****** ChFiDS_Spine::ChangeElSpines ******/
-		/****** md5 signature: da07220d851808a3a9bd3eb7b7c1f436 ******/
+		/****** md5 signature: 0a5e0f3c49192fd0462ade762556c25e ******/
 		%feature("compactdefaultargs") ChangeElSpines;
 		%feature("autodoc", "Return
 -------
-ChFiDS_ListOfHElSpine
+NCollection_List<opencascade::handle<ChFiDS_ElSpine>>
 
 Description
 -----------
 No available documentation.
 ") ChangeElSpines;
-		ChFiDS_ListOfHElSpine & ChangeElSpines();
+		NCollection_List<opencascade::handle<ChFiDS_ElSpine>> & ChangeElSpines();
 
 		/****** ChFiDS_Spine::ChangeOffsetElSpines ******/
-		/****** md5 signature: df5b593fad1988821c82858086d7da93 ******/
+		/****** md5 signature: 3849b96b1fb6924aea5ad26c9a2d95e4 ******/
 		%feature("compactdefaultargs") ChangeOffsetElSpines;
 		%feature("autodoc", "Return
 -------
-ChFiDS_ListOfHElSpine
+NCollection_List<opencascade::handle<ChFiDS_ElSpine>>
 
 Description
 -----------
 No available documentation.
 ") ChangeOffsetElSpines;
-		ChFiDS_ListOfHElSpine & ChangeOffsetElSpines();
+		NCollection_List<opencascade::handle<ChFiDS_ElSpine>> & ChangeOffsetElSpines();
 
 		/****** ChFiDS_Spine::Circle ******/
 		/****** md5 signature: cab8b08988d177bd7107adbbccc4ef89 ******/
@@ -2066,7 +2020,7 @@ No available documentation.
 		gp_Circ Circle();
 
 		/****** ChFiDS_Spine::CurrentElementarySpine ******/
-		/****** md5 signature: ebf570cca4dd01a3b354a55130d60083 ******/
+		/****** md5 signature: 0eab64bbd28f8de6a879bdc64a22efdf ******/
 		%feature("compactdefaultargs") CurrentElementarySpine;
 		%feature("autodoc", "
 Parameters
@@ -2081,10 +2035,10 @@ Description
 -----------
 sets the current curve and returns it.
 ") CurrentElementarySpine;
-		BRepAdaptor_Curve CurrentElementarySpine(const Standard_Integer Index);
+		BRepAdaptor_Curve CurrentElementarySpine(const int Index);
 
 		/****** ChFiDS_Spine::CurrentIndexOfElementarySpine ******/
-		/****** md5 signature: 6987473580f0e6e3e57d9cf51fd473ea ******/
+		/****** md5 signature: e210a6f3b68801f5f6ad5bd907a2633c ******/
 		%feature("compactdefaultargs") CurrentIndexOfElementarySpine;
 		%feature("autodoc", "Return
 -------
@@ -2094,15 +2048,15 @@ Description
 -----------
 No available documentation.
 ") CurrentIndexOfElementarySpine;
-		Standard_Integer CurrentIndexOfElementarySpine();
+		int CurrentIndexOfElementarySpine();
 
 		/****** ChFiDS_Spine::D0 ******/
-		/****** md5 signature: 44a3de94c03d6c53050ebe26e6846129 ******/
+		/****** md5 signature: 2a48bd1bf91762cb87ff875c59b77a12 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-AbsC: float
+AbsC: double
 P: gp_Pnt
 
 Return
@@ -2113,15 +2067,15 @@ Description
 -----------
 No available documentation.
 ") D0;
-		void D0(const Standard_Real AbsC, gp_Pnt & P);
+		void D0(const double AbsC, gp_Pnt & P);
 
 		/****** ChFiDS_Spine::D1 ******/
-		/****** md5 signature: 5d82740615c70fe17ed6f28d75ed8f63 ******/
+		/****** md5 signature: a2e16d8e6a8c3b48bddb4d7d79301c1d ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-AbsC: float
+AbsC: double
 P: gp_Pnt
 V1: gp_Vec
 
@@ -2133,15 +2087,15 @@ Description
 -----------
 No available documentation.
 ") D1;
-		void D1(const Standard_Real AbsC, gp_Pnt & P, gp_Vec & V1);
+		void D1(const double AbsC, gp_Pnt & P, gp_Vec & V1);
 
 		/****** ChFiDS_Spine::D2 ******/
-		/****** md5 signature: c983c708a57ca80b2c76c9a6dfcbd6d5 ******/
+		/****** md5 signature: 0bcbc1e0667b8988fe4b58b202346479 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-AbsC: float
+AbsC: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -2154,10 +2108,10 @@ Description
 -----------
 No available documentation.
 ") D2;
-		void D2(const Standard_Real AbsC, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		void D2(const double AbsC, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** ChFiDS_Spine::Edges ******/
-		/****** md5 signature: 9520525f1c3103f30fb61fd68a118272 ******/
+		/****** md5 signature: 6cae6f6cd17af46c200bc5948283eebf ******/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "
 Parameters
@@ -2172,10 +2126,10 @@ Description
 -----------
 No available documentation.
 ") Edges;
-		const TopoDS_Edge Edges(const Standard_Integer I);
+		const TopoDS_Edge Edges(const int I);
 
 		/****** ChFiDS_Spine::ElSpine ******/
-		/****** md5 signature: 4f2d3b9c01c3241e7da904843452e45a ******/
+		/****** md5 signature: 00126911aac4d8dc2cc8ced3c9264503 ******/
 		%feature("compactdefaultargs") ElSpine;
 		%feature("autodoc", "
 Parameters
@@ -2190,7 +2144,7 @@ Description
 -----------
 No available documentation.
 ") ElSpine;
-		opencascade::handle<ChFiDS_ElSpine> ElSpine(const Standard_Integer IE);
+		opencascade::handle<ChFiDS_ElSpine> ElSpine(const int IE);
 
 		/****** ChFiDS_Spine::ElSpine ******/
 		/****** md5 signature: ca68c09c1a4fca52b0ec8982006abd2f ******/
@@ -2211,12 +2165,12 @@ No available documentation.
 		opencascade::handle<ChFiDS_ElSpine> ElSpine(const TopoDS_Edge & E);
 
 		/****** ChFiDS_Spine::ElSpine ******/
-		/****** md5 signature: dea9d922cd6fd6701ac14ca526f46966 ******/
+		/****** md5 signature: eff16573e470961cd6b21bdec65dae0e ******/
 		%feature("compactdefaultargs") ElSpine;
 		%feature("autodoc", "
 Parameters
 ----------
-W: float
+W: double
 
 Return
 -------
@@ -2226,7 +2180,7 @@ Description
 -----------
 No available documentation.
 ") ElSpine;
-		opencascade::handle<ChFiDS_ElSpine> ElSpine(const Standard_Real W);
+		opencascade::handle<ChFiDS_ElSpine> ElSpine(const double W);
 
 		/****** ChFiDS_Spine::ErrorStatus ******/
 		/****** md5 signature: 2f7016f891923155aac331ba8260eaa0 ******/
@@ -2242,20 +2196,20 @@ No available documentation.
 		ChFiDS_ErrorStatus ErrorStatus();
 
 		/****** ChFiDS_Spine::FirstParameter ******/
-		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
+		/****** md5 signature: 663a02fdcfecea2f8437f306e48dfc6b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ChFiDS_Spine::FirstParameter ******/
-		/****** md5 signature: 43e78c2d3dcec0442b4c6f7d4e9d550a ******/
+		/****** md5 signature: 2f57dc035a7e8c58efa245dac9a53c23 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -2264,13 +2218,13 @@ IndexSpine: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 gives the total length of all arcs before the number IndexSp.
 ") FirstParameter;
-		Standard_Real FirstParameter(const Standard_Integer IndexSpine);
+		double FirstParameter(const int IndexSpine);
 
 		/****** ChFiDS_Spine::FirstStatus ******/
 		/****** md5 signature: 50597ffb992e45ab92d72d217bf44f0d ******/
@@ -2299,17 +2253,17 @@ No available documentation.
 		TopoDS_Vertex FirstVertex();
 
 		/****** ChFiDS_Spine::GetTolesp ******/
-		/****** md5 signature: 217c13748b3cb2bf2cc59e96cafe8207 ******/
+		/****** md5 signature: 0f357cca0110e213b676b4cbb0b99078 ******/
 		%feature("compactdefaultargs") GetTolesp;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return tolesp parameter.
 ") GetTolesp;
-		Standard_Real GetTolesp();
+		double GetTolesp();
 
 		/****** ChFiDS_Spine::GetType ******/
 		/****** md5 signature: 6d4e6ae7972633971ba343e8afc91aa1 ******/
@@ -2338,7 +2292,7 @@ returns the type of concavity in the connection.
 		ChFiDS_TypeOfConcavity GetTypeOfConcavity();
 
 		/****** ChFiDS_Spine::HasFirstTgt ******/
-		/****** md5 signature: 9b196c93880f437114c8ea979581acea ******/
+		/****** md5 signature: b586680dc8378ebbd804b3d50b1cc964 ******/
 		%feature("compactdefaultargs") HasFirstTgt;
 		%feature("autodoc", "Return
 -------
@@ -2348,10 +2302,10 @@ Description
 -----------
 No available documentation.
 ") HasFirstTgt;
-		Standard_Boolean HasFirstTgt();
+		bool HasFirstTgt();
 
 		/****** ChFiDS_Spine::HasLastTgt ******/
-		/****** md5 signature: 2cba4c4f6e09df1a2f01573597139cdc ******/
+		/****** md5 signature: a620f9a0e4ae93c1a24bedaf1dff28e5 ******/
 		%feature("compactdefaultargs") HasLastTgt;
 		%feature("autodoc", "Return
 -------
@@ -2361,16 +2315,16 @@ Description
 -----------
 No available documentation.
 ") HasLastTgt;
-		Standard_Boolean HasLastTgt();
+		bool HasLastTgt();
 
 		/****** ChFiDS_Spine::Index ******/
-		/****** md5 signature: 3f748690e0677200c2dc24172c072dfb ******/
+		/****** md5 signature: 92e3601a1710b1c683706b6bf37769a7 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
 ----------
-W: float
-Forward: bool (optional, default to Standard_True)
+W: double
+Forward: bool (optional, default to true)
 
 Return
 -------
@@ -2380,10 +2334,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index(const Standard_Real W, const Standard_Boolean Forward = Standard_True);
+		int Index(const double W, const bool Forward = true);
 
 		/****** ChFiDS_Spine::Index ******/
-		/****** md5 signature: 49ccac80c083800f0efd13d0804ff82b ******/
+		/****** md5 signature: 8cd205e30fc8428a0509544a4b319bfb ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -2398,10 +2352,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index(const TopoDS_Edge & E);
+		int Index(const TopoDS_Edge & E);
 
 		/****** ChFiDS_Spine::IsClosed ******/
-		/****** md5 signature: 29709d02fadc9fcb79a766bc9679271b ******/
+		/****** md5 signature: 66fc0caa1853d24780b1d28b8296bc6c ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -2411,10 +2365,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** ChFiDS_Spine::IsPeriodic ******/
-		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
+		/****** md5 signature: d36764d6f9b1283d23b2bfdabe28da79 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2424,10 +2378,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** ChFiDS_Spine::IsTangencyExtremity ******/
-		/****** md5 signature: a8210f1da4c1179547e590586db2e9fc ******/
+		/****** md5 signature: 60440c1c811e1e5351273e3d3b01692f ******/
 		%feature("compactdefaultargs") IsTangencyExtremity;
 		%feature("autodoc", "
 Parameters
@@ -2442,23 +2396,23 @@ Description
 -----------
 returns if the set of edges starts (or end) on Tangency point.
 ") IsTangencyExtremity;
-		Standard_Boolean IsTangencyExtremity(const Standard_Boolean IsFirst);
+		bool IsTangencyExtremity(const bool IsFirst);
 
 		/****** ChFiDS_Spine::LastParameter ******/
-		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
+		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ChFiDS_Spine::LastParameter ******/
-		/****** md5 signature: 366210a41f77093ca4e26a0a007fd1c7 ******/
+		/****** md5 signature: 4906ad0993820a0564231854eeba071d ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -2467,13 +2421,13 @@ IndexSpine: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 gives the total length till the ark with number IndexSpine (inclus).
 ") LastParameter;
-		Standard_Real LastParameter(const Standard_Integer IndexSpine);
+		double LastParameter(const int IndexSpine);
 
 		/****** ChFiDS_Spine::LastStatus ******/
 		/****** md5 signature: b6ecda5b6d98b4e6874281ffca404974 ******/
@@ -2502,7 +2456,7 @@ No available documentation.
 		TopoDS_Vertex LastVertex();
 
 		/****** ChFiDS_Spine::Length ******/
-		/****** md5 signature: 926b764d195681905675afe57b7fea5c ******/
+		/****** md5 signature: 248c8deff49def7fc5acf100c3446815 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
@@ -2511,13 +2465,13 @@ IndexSpine: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 gives the length of ark with number IndexSp.
 ") Length;
-		Standard_Real Length(const Standard_Integer IndexSpine);
+		double Length(const int IndexSpine);
 
 		/****** ChFiDS_Spine::Line ******/
 		/****** md5 signature: 63e1fa189ca3bcfdb401241217a93bfb ******/
@@ -2559,7 +2513,7 @@ Return the mode of chamfers used.
 		ChFiDS_ChamfMode Mode();
 
 		/****** ChFiDS_Spine::NbEdges ******/
-		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
+		/****** md5 signature: f741965989565caaff095f09d2955db8 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -2569,10 +2523,10 @@ Description
 -----------
 No available documentation.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** ChFiDS_Spine::OffsetEdges ******/
-		/****** md5 signature: 023ae8426dd348d41da1fc3390821a18 ******/
+		/****** md5 signature: 2c1f09e693ddfc14e4c9c7234c23ef1c ******/
 		%feature("compactdefaultargs") OffsetEdges;
 		%feature("autodoc", "
 Parameters
@@ -2587,59 +2541,59 @@ Description
 -----------
 No available documentation.
 ") OffsetEdges;
-		const TopoDS_Edge OffsetEdges(const Standard_Integer I);
+		const TopoDS_Edge OffsetEdges(const int I);
 
 		/****** ChFiDS_Spine::Parameter ******/
-		/****** md5 signature: f6408694e8db59cfea682b2df277b46e ******/
+		/****** md5 signature: 97986a03b4a48a77a7cf202eb922c7ef ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
-AbsC: float
-Oriented: bool (optional, default to Standard_True)
+AbsC: double
+Oriented: bool (optional, default to true)
 
 Return
 -------
-U: float
+U: double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		void Parameter(const Standard_Real AbsC, Standard_Real &OutValue, const Standard_Boolean Oriented = Standard_True);
+		void Parameter(const double AbsC, Standard_Real &OutValue, const bool Oriented = true);
 
 		/****** ChFiDS_Spine::Parameter ******/
-		/****** md5 signature: b0623594a2f8c3e8d9682053b9bc9428 ******/
+		/****** md5 signature: 24ae49a3b0e6c17284a7f28023a7f6ec ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-AbsC: float
-Oriented: bool (optional, default to Standard_True)
+AbsC: double
+Oriented: bool (optional, default to true)
 
 Return
 -------
-U: float
+U: double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		void Parameter(const Standard_Integer Index, const Standard_Real AbsC, Standard_Real &OutValue, const Standard_Boolean Oriented = Standard_True);
+		void Parameter(const int Index, const double AbsC, Standard_Real &OutValue, const bool Oriented = true);
 
 		/****** ChFiDS_Spine::Period ******/
-		/****** md5 signature: 0270204961d3b0052ffe029cbcdbacd9 ******/
+		/****** md5 signature: 46c44a3d0a70e4379c4de5440be6b09a ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** ChFiDS_Spine::PutInFirst ******/
 		/****** md5 signature: 42323ad897907ad53dba909bcf69916c ******/
@@ -2678,12 +2632,12 @@ store the offset edge at the first position before all others.
 		void PutInFirstOffset(const TopoDS_Edge & E);
 
 		/****** ChFiDS_Spine::Reset ******/
-		/****** md5 signature: b38141635965f0cadd351580233542fa ******/
+		/****** md5 signature: 056263a4209bfdacd1bac210497aac10 ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
 ----------
-AllData: bool (optional, default to Standard_False)
+AllData: bool (optional, default to false)
 
 Return
 -------
@@ -2693,28 +2647,28 @@ Description
 -----------
 No available documentation.
 ") Reset;
-		virtual void Reset(const Standard_Boolean AllData = Standard_False);
+		virtual void Reset(const bool AllData = false);
 
 		/****** ChFiDS_Spine::Resolution ******/
-		/****** md5 signature: 955dbc498c06516d62e17e1e8d38cba7 ******/
+		/****** md5 signature: 9e003da76059b4ae9d259081be3b319a ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** ChFiDS_Spine::SetCurrent ******/
-		/****** md5 signature: b163c78c1924d8c473179ae0f702e2b8 ******/
+		/****** md5 signature: 7c48206721d0dc4bb701d0447c651d2b ******/
 		%feature("compactdefaultargs") SetCurrent;
 		%feature("autodoc", "
 Parameters
@@ -2729,7 +2683,7 @@ Description
 -----------
 No available documentation.
 ") SetCurrent;
-		void SetCurrent(const Standard_Integer Index);
+		void SetCurrent(const int Index);
 
 		/****** ChFiDS_Spine::SetEdges ******/
 		/****** md5 signature: fe28ef02235441ee10e561bb0206a043 ******/
@@ -2768,12 +2722,12 @@ No available documentation.
 		void SetErrorStatus(const ChFiDS_ErrorStatus state);
 
 		/****** ChFiDS_Spine::SetFirstParameter ******/
-		/****** md5 signature: 6a2e52e0e61601a1f5ba51e18658c5ce ******/
+		/****** md5 signature: ab3c8aa7120dadb4aa17eca12807883e ******/
 		%feature("compactdefaultargs") SetFirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-Par: float
+Par: double
 
 Return
 -------
@@ -2783,7 +2737,7 @@ Description
 -----------
 No available documentation.
 ") SetFirstParameter;
-		void SetFirstParameter(const Standard_Real Par);
+		void SetFirstParameter(const double Par);
 
 		/****** ChFiDS_Spine::SetFirstStatus ******/
 		/****** md5 signature: d77c159df2076b6b62b20f6985d86432 ******/
@@ -2804,12 +2758,12 @@ stores if the start of a set of edges starts on a section of free border or form
 		void SetFirstStatus(const ChFiDS_State S);
 
 		/****** ChFiDS_Spine::SetFirstTgt ******/
-		/****** md5 signature: d975ed3950244fc7eabbe6c08e8a2878 ******/
+		/****** md5 signature: 0f4b4ad6ae4be18a5bf9e31ed2d75df3 ******/
 		%feature("compactdefaultargs") SetFirstTgt;
 		%feature("autodoc", "
 Parameters
 ----------
-W: float
+W: double
 
 Return
 -------
@@ -2819,15 +2773,15 @@ Description
 -----------
 No available documentation.
 ") SetFirstTgt;
-		void SetFirstTgt(const Standard_Real W);
+		void SetFirstTgt(const double W);
 
 		/****** ChFiDS_Spine::SetLastParameter ******/
-		/****** md5 signature: ee92068a5cb2a54f8f050c2704670a1b ******/
+		/****** md5 signature: fb0180633452f5c5da2de2897bd6108d ******/
 		%feature("compactdefaultargs") SetLastParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-Par: float
+Par: double
 
 Return
 -------
@@ -2837,7 +2791,7 @@ Description
 -----------
 No available documentation.
 ") SetLastParameter;
-		void SetLastParameter(const Standard_Real Par);
+		void SetLastParameter(const double Par);
 
 		/****** ChFiDS_Spine::SetLastStatus ******/
 		/****** md5 signature: a8144c2e2ced4bb9cfd41e3485bbe1b2 ******/
@@ -2858,12 +2812,12 @@ stores if the end of a set of edges starts on a section of free border or forms 
 		void SetLastStatus(const ChFiDS_State S);
 
 		/****** ChFiDS_Spine::SetLastTgt ******/
-		/****** md5 signature: e03b8adbbab3a9d6e9fd1f49184126ea ******/
+		/****** md5 signature: 260f0d4e7c614e2a3db391d144b4e730 ******/
 		%feature("compactdefaultargs") SetLastTgt;
 		%feature("autodoc", "
 Parameters
 ----------
-W: float
+W: double
 
 Return
 -------
@@ -2873,7 +2827,7 @@ Description
 -----------
 No available documentation.
 ") SetLastTgt;
-		void SetLastTgt(const Standard_Real W);
+		void SetLastTgt(const double W);
 
 		/****** ChFiDS_Spine::SetOffsetEdges ******/
 		/****** md5 signature: 87a9a0e91bf387d101e8a06a591da1b1 ******/
@@ -2894,12 +2848,12 @@ store offset edges composing the offset guideline.
 		void SetOffsetEdges(const TopoDS_Edge & E);
 
 		/****** ChFiDS_Spine::SetReference ******/
-		/****** md5 signature: 3a8b5dd00fd5d7398ee966850f76fe13 ******/
+		/****** md5 signature: 1cfc6f5caa731396fe8468cda49359e8 ******/
 		%feature("compactdefaultargs") SetReference;
 		%feature("autodoc", "
 Parameters
 ----------
-W: float
+W: double
 
 Return
 -------
@@ -2909,10 +2863,10 @@ Description
 -----------
 set a parameter reference for the approx.
 ") SetReference;
-		void SetReference(const Standard_Real W);
+		void SetReference(const double W);
 
 		/****** ChFiDS_Spine::SetReference ******/
-		/****** md5 signature: 0f054f194fe4862ac635de5ef9c15f94 ******/
+		/****** md5 signature: 43516a38da4ce43037dc89b18e136d3c ******/
 		%feature("compactdefaultargs") SetReference;
 		%feature("autodoc", "
 Parameters
@@ -2927,10 +2881,10 @@ Description
 -----------
 set a parameter reference for the approx, at the middle of edge I.
 ") SetReference;
-		void SetReference(const Standard_Integer I);
+		void SetReference(const int I);
 
 		/****** ChFiDS_Spine::SetStatus ******/
-		/****** md5 signature: 5fd64ab9882277f6b1fc7a49a50d1342 ******/
+		/****** md5 signature: 2d1f716c17288242de51951eca364454 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -2946,10 +2900,10 @@ Description
 -----------
 No available documentation.
 ") SetStatus;
-		void SetStatus(const ChFiDS_State S, const Standard_Boolean IsFirst);
+		void SetStatus(const ChFiDS_State S, const bool IsFirst);
 
 		/****** ChFiDS_Spine::SetTangencyExtremity ******/
-		/****** md5 signature: fd36b4a0e9cda0189944269998d8e8fd ******/
+		/****** md5 signature: a07ad893b26868eb5d5bbcf64c5ee6bc ******/
 		%feature("compactdefaultargs") SetTangencyExtremity;
 		%feature("autodoc", "
 Parameters
@@ -2965,7 +2919,7 @@ Description
 -----------
 No available documentation.
 ") SetTangencyExtremity;
-		void SetTangencyExtremity(const Standard_Boolean IsTangency, const Standard_Boolean IsFirst);
+		void SetTangencyExtremity(const bool IsTangency, const bool IsFirst);
 
 		/****** ChFiDS_Spine::SetTypeOfConcavity ******/
 		/****** md5 signature: ee22fc43cd6253adde8756526c94bf06 ******/
@@ -2986,7 +2940,7 @@ sets the type of concavity in the connection.
 		void SetTypeOfConcavity(const ChFiDS_TypeOfConcavity theType);
 
 		/****** ChFiDS_Spine::SplitDone ******/
-		/****** md5 signature: fe2c9168a5cde6a3136bcf314c46600a ******/
+		/****** md5 signature: e9702a61cdfec28783efa4b68a0281b8 ******/
 		%feature("compactdefaultargs") SplitDone;
 		%feature("autodoc", "Return
 -------
@@ -2996,10 +2950,10 @@ Description
 -----------
 No available documentation.
 ") SplitDone;
-		Standard_Boolean SplitDone();
+		bool SplitDone();
 
 		/****** ChFiDS_Spine::SplitDone ******/
-		/****** md5 signature: 51227265bfba30085217e0dddb32ef11 ******/
+		/****** md5 signature: b5c4f626d41ac4541620221074f1ad23 ******/
 		%feature("compactdefaultargs") SplitDone;
 		%feature("autodoc", "
 Parameters
@@ -3014,10 +2968,10 @@ Description
 -----------
 No available documentation.
 ") SplitDone;
-		void SplitDone(const Standard_Boolean B);
+		void SplitDone(const bool B);
 
 		/****** ChFiDS_Spine::Status ******/
-		/****** md5 signature: 2d1d2e8edcc0c537fdec0b339a92e500 ******/
+		/****** md5 signature: bf695a58c89bc8e41720f23373049f7d ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -3032,7 +2986,7 @@ Description
 -----------
 No available documentation.
 ") Status;
-		ChFiDS_State Status(const Standard_Boolean IsFirst);
+		ChFiDS_State Status(const bool IsFirst);
 
 		/****** ChFiDS_Spine::UnsetReference ******/
 		/****** md5 signature: 5b60ccb91b7978ec5de638bf27913a17 ******/
@@ -3048,12 +3002,12 @@ No available documentation.
 		void UnsetReference();
 
 		/****** ChFiDS_Spine::Value ******/
-		/****** md5 signature: 8f4832a5df54c11193b328e54fef02cd ******/
+		/****** md5 signature: 998630f5e9e2a22e14fc0f39875e7427 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-AbsC: float
+AbsC: double
 
 Return
 -------
@@ -3063,7 +3017,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		gp_Pnt Value(const Standard_Real AbsC);
+		gp_Pnt Value(const double AbsC);
 
 };
 
@@ -3095,7 +3049,7 @@ No available documentation.
 		 ChFiDS_Stripe();
 
 		/****** ChFiDS_Stripe::ChangeFirstCurve ******/
-		/****** md5 signature: 64afe48b2b2e0de75967baed9ae805b2 ******/
+		/****** md5 signature: a76c2c21a37b887cfed5e857114bc941 ******/
 		%feature("compactdefaultargs") ChangeFirstCurve;
 		%feature("autodoc", "
 Parameters
@@ -3110,7 +3064,7 @@ Description
 -----------
 No available documentation.
 ") ChangeFirstCurve;
-		void ChangeFirstCurve(const Standard_Integer Index);
+		void ChangeFirstCurve(const int Index);
 
 		/****** ChFiDS_Stripe::ChangeFirstPCurve ******/
 		/****** md5 signature: 4c3a2910e0a4ada6305295597483d2b7 ******/
@@ -3126,13 +3080,13 @@ No available documentation.
 		opencascade::handle<Geom2d_Curve> & ChangeFirstPCurve();
 
 		/****** ChFiDS_Stripe::ChangeFirstParameters ******/
-		/****** md5 signature: 1405a444bb650f1cff1e8f70dd710961 ******/
+		/****** md5 signature: 8a461292d7609e65ea111808ed90c6ee ******/
 		%feature("compactdefaultargs") ChangeFirstParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Pdeb: float
-Pfin: float
+Pdeb: double
+Pfin: double
 
 Return
 -------
@@ -3142,10 +3096,10 @@ Description
 -----------
 No available documentation.
 ") ChangeFirstParameters;
-		void ChangeFirstParameters(const Standard_Real Pdeb, const Standard_Real Pfin);
+		void ChangeFirstParameters(const double Pdeb, const double Pfin);
 
 		/****** ChFiDS_Stripe::ChangeIndexFirstPointOnS1 ******/
-		/****** md5 signature: dd0905ce8f519caac604d0878819752b ******/
+		/****** md5 signature: 8e92e1fda8fd8a6a395228a1aa4126b8 ******/
 		%feature("compactdefaultargs") ChangeIndexFirstPointOnS1;
 		%feature("autodoc", "
 Parameters
@@ -3160,10 +3114,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIndexFirstPointOnS1;
-		void ChangeIndexFirstPointOnS1(const Standard_Integer Index);
+		void ChangeIndexFirstPointOnS1(const int Index);
 
 		/****** ChFiDS_Stripe::ChangeIndexFirstPointOnS2 ******/
-		/****** md5 signature: e717349708084d2ba0268af2f99bae5e ******/
+		/****** md5 signature: fed1ecccbf40232a77b34f438ef9e052 ******/
 		%feature("compactdefaultargs") ChangeIndexFirstPointOnS2;
 		%feature("autodoc", "
 Parameters
@@ -3178,10 +3132,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIndexFirstPointOnS2;
-		void ChangeIndexFirstPointOnS2(const Standard_Integer Index);
+		void ChangeIndexFirstPointOnS2(const int Index);
 
 		/****** ChFiDS_Stripe::ChangeIndexLastPointOnS1 ******/
-		/****** md5 signature: ae86e60291183382f929be0f0181777b ******/
+		/****** md5 signature: 5ae4b68a436b2454c73a44d5ef502c72 ******/
 		%feature("compactdefaultargs") ChangeIndexLastPointOnS1;
 		%feature("autodoc", "
 Parameters
@@ -3196,10 +3150,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIndexLastPointOnS1;
-		void ChangeIndexLastPointOnS1(const Standard_Integer Index);
+		void ChangeIndexLastPointOnS1(const int Index);
 
 		/****** ChFiDS_Stripe::ChangeIndexLastPointOnS2 ******/
-		/****** md5 signature: be14a55f58ce51c0c7e8d3ae2a94acc0 ******/
+		/****** md5 signature: 42dab0575ca0d8f2b0b570b1274ac1ff ******/
 		%feature("compactdefaultargs") ChangeIndexLastPointOnS2;
 		%feature("autodoc", "
 Parameters
@@ -3214,10 +3168,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIndexLastPointOnS2;
-		void ChangeIndexLastPointOnS2(const Standard_Integer Index);
+		void ChangeIndexLastPointOnS2(const int Index);
 
 		/****** ChFiDS_Stripe::ChangeLastCurve ******/
-		/****** md5 signature: ec90f9463a1b17f9446b2ffd17f81783 ******/
+		/****** md5 signature: 6d4a207e348f6c289ad092218c110b00 ******/
 		%feature("compactdefaultargs") ChangeLastCurve;
 		%feature("autodoc", "
 Parameters
@@ -3232,7 +3186,7 @@ Description
 -----------
 No available documentation.
 ") ChangeLastCurve;
-		void ChangeLastCurve(const Standard_Integer Index);
+		void ChangeLastCurve(const int Index);
 
 		/****** ChFiDS_Stripe::ChangeLastPCurve ******/
 		/****** md5 signature: 26816c8546bc85460a1d73fc2ba2ed1a ******/
@@ -3248,13 +3202,13 @@ No available documentation.
 		opencascade::handle<Geom2d_Curve> & ChangeLastPCurve();
 
 		/****** ChFiDS_Stripe::ChangeLastParameters ******/
-		/****** md5 signature: be44a3b27b758b559e9cd0b16c1a19b8 ******/
+		/****** md5 signature: d93ea8ac6918d48d9251352ee5a29159 ******/
 		%feature("compactdefaultargs") ChangeLastParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Pdeb: float
-Pfin: float
+Pdeb: double
+Pfin: double
 
 Return
 -------
@@ -3264,10 +3218,10 @@ Description
 -----------
 No available documentation.
 ") ChangeLastParameters;
-		void ChangeLastParameters(const Standard_Real Pdeb, const Standard_Real Pfin);
+		void ChangeLastParameters(const double Pdeb, const double Pfin);
 
 		/****** ChFiDS_Stripe::ChangePCurve ******/
-		/****** md5 signature: 4d15bb5c05522fd834cba04b802760b2 ******/
+		/****** md5 signature: e4139e86c9056c93443a9747128746a6 ******/
 		%feature("compactdefaultargs") ChangePCurve;
 		%feature("autodoc", "
 Parameters
@@ -3282,20 +3236,20 @@ Description
 -----------
 No available documentation.
 ") ChangePCurve;
-		opencascade::handle<Geom2d_Curve> & ChangePCurve(const Standard_Boolean First);
+		opencascade::handle<Geom2d_Curve> & ChangePCurve(const bool First);
 
 		/****** ChFiDS_Stripe::ChangeSetOfSurfData ******/
-		/****** md5 signature: b816f955dbe517b2d321f59f961a85db ******/
+		/****** md5 signature: d4be66f827b4938a3a3cf93685b242ef ******/
 		%feature("compactdefaultargs") ChangeSetOfSurfData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<ChFiDS_HData>
+opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>
 
 Description
 -----------
 No available documentation.
 ") ChangeSetOfSurfData;
-		opencascade::handle<ChFiDS_HData> & ChangeSetOfSurfData();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>> & ChangeSetOfSurfData();
 
 		/****** ChFiDS_Stripe::ChangeSpine ******/
 		/****** md5 signature: 111982dc16f5c59f6e1f0e0a045654cf ******/
@@ -3311,7 +3265,7 @@ No available documentation.
 		opencascade::handle<ChFiDS_Spine> & ChangeSpine();
 
 		/****** ChFiDS_Stripe::Choix ******/
-		/****** md5 signature: 56d44f443206b1fa3fc4d5896c29d333 ******/
+		/****** md5 signature: 6589f93472052df99f5c7301b10bcef9 ******/
 		%feature("compactdefaultargs") Choix;
 		%feature("autodoc", "Return
 -------
@@ -3321,10 +3275,10 @@ Description
 -----------
 No available documentation.
 ") Choix;
-		Standard_Integer Choix();
+		int Choix();
 
 		/****** ChFiDS_Stripe::Choix ******/
-		/****** md5 signature: 7098bc3f3221f811ff516ed38dbafc43 ******/
+		/****** md5 signature: 81c3a864aac9d3e8896e5a480ed156d3 ******/
 		%feature("compactdefaultargs") Choix;
 		%feature("autodoc", "
 Parameters
@@ -3339,10 +3293,10 @@ Description
 -----------
 No available documentation.
 ") Choix;
-		void Choix(const Standard_Integer C);
+		void Choix(const int C);
 
 		/****** ChFiDS_Stripe::Curve ******/
-		/****** md5 signature: c42994028e166e54fa54a45e4ff3466f ******/
+		/****** md5 signature: 5b1b46a92df7fc5dde280bd1c9cf7c9c ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -3357,10 +3311,10 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		Standard_Integer Curve(const Standard_Boolean First);
+		int Curve(const bool First);
 
 		/****** ChFiDS_Stripe::FirstCurve ******/
-		/****** md5 signature: 60996397389363fc426c2e9259e80745 ******/
+		/****** md5 signature: b1a84a637e4300fa952bb817485c92e1 ******/
 		%feature("compactdefaultargs") FirstCurve;
 		%feature("autodoc", "Return
 -------
@@ -3370,7 +3324,7 @@ Description
 -----------
 No available documentation.
 ") FirstCurve;
-		Standard_Integer FirstCurve();
+		int FirstCurve();
 
 		/****** ChFiDS_Stripe::FirstPCurve ******/
 		/****** md5 signature: 3275b667b2b0b6418edc91afc7389f29 ******/
@@ -3417,7 +3371,7 @@ No available documentation.
 		void FirstPCurveOrientation(const TopAbs_Orientation O);
 
 		/****** ChFiDS_Stripe::FirstParameters ******/
-		/****** md5 signature: b43cd7691f73448e706863640f0dca48 ******/
+		/****** md5 signature: 9d61cb296df139e438e557874fc1a80b ******/
 		%feature("compactdefaultargs") FirstParameters;
 		%feature("autodoc", "
 Parameters
@@ -3425,8 +3379,8 @@ Parameters
 
 Return
 -------
-Pdeb: float
-Pfin: float
+Pdeb: double
+Pfin: double
 
 Description
 -----------
@@ -3435,7 +3389,7 @@ No available documentation.
 		void FirstParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ChFiDS_Stripe::InDS ******/
-		/****** md5 signature: a5871e23609fcaa44d3f69008692f43a ******/
+		/****** md5 signature: c8f7cca183f0cf32760b671d8e764bde ******/
 		%feature("compactdefaultargs") InDS;
 		%feature("autodoc", "
 Parameters
@@ -3451,10 +3405,10 @@ Description
 -----------
 Set nb of SurfData's at end put in DS.
 ") InDS;
-		void InDS(const Standard_Boolean First, const Standard_Integer Nb = 1);
+		void InDS(const bool First, const int Nb = 1);
 
 		/****** ChFiDS_Stripe::IndexFirstPointOnS1 ******/
-		/****** md5 signature: 0cb214af2c656e7adaca42c868ab4c95 ******/
+		/****** md5 signature: a0b9146199bbfd25d712e2dbe5c59063 ******/
 		%feature("compactdefaultargs") IndexFirstPointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3464,10 +3418,10 @@ Description
 -----------
 No available documentation.
 ") IndexFirstPointOnS1;
-		Standard_Integer IndexFirstPointOnS1();
+		int IndexFirstPointOnS1();
 
 		/****** ChFiDS_Stripe::IndexFirstPointOnS2 ******/
-		/****** md5 signature: 6fc8025c2af83728a43c896a6e828c5d ******/
+		/****** md5 signature: 8f705a385086f68c05e281e0d22f127b ******/
 		%feature("compactdefaultargs") IndexFirstPointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3477,10 +3431,10 @@ Description
 -----------
 No available documentation.
 ") IndexFirstPointOnS2;
-		Standard_Integer IndexFirstPointOnS2();
+		int IndexFirstPointOnS2();
 
 		/****** ChFiDS_Stripe::IndexLastPointOnS1 ******/
-		/****** md5 signature: 87ccadbfd52d6d960ecd36487129ed37 ******/
+		/****** md5 signature: 760a7ee5f3ea7e3e690efc402e1b5088 ******/
 		%feature("compactdefaultargs") IndexLastPointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3490,10 +3444,10 @@ Description
 -----------
 No available documentation.
 ") IndexLastPointOnS1;
-		Standard_Integer IndexLastPointOnS1();
+		int IndexLastPointOnS1();
 
 		/****** ChFiDS_Stripe::IndexLastPointOnS2 ******/
-		/****** md5 signature: 604bbd01c4500957c46c3939b989aac6 ******/
+		/****** md5 signature: 4ddddc0b085ef76e0e2ec08a0a07a05b ******/
 		%feature("compactdefaultargs") IndexLastPointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3503,10 +3457,10 @@ Description
 -----------
 No available documentation.
 ") IndexLastPointOnS2;
-		Standard_Integer IndexLastPointOnS2();
+		int IndexLastPointOnS2();
 
 		/****** ChFiDS_Stripe::IndexPoint ******/
-		/****** md5 signature: b6c9341a0da84b7f7c54cf09ce53baf1 ******/
+		/****** md5 signature: 7ceec7458875413275c07a0eea0412ff ******/
 		%feature("compactdefaultargs") IndexPoint;
 		%feature("autodoc", "
 Parameters
@@ -3522,10 +3476,10 @@ Description
 -----------
 No available documentation.
 ") IndexPoint;
-		Standard_Integer IndexPoint(const Standard_Boolean First, const Standard_Integer OnS);
+		int IndexPoint(const bool First, const int OnS);
 
 		/****** ChFiDS_Stripe::IsInDS ******/
-		/****** md5 signature: cd05c727dce6b8210afc351e5ac7fd91 ******/
+		/****** md5 signature: 147b6043b773bd5fdb18bc9d8fff61cd ******/
 		%feature("compactdefaultargs") IsInDS;
 		%feature("autodoc", "
 Parameters
@@ -3540,10 +3494,10 @@ Description
 -----------
 Returns nb of SurfData's at end being in DS.
 ") IsInDS;
-		Standard_Integer IsInDS(const Standard_Boolean First);
+		int IsInDS(const bool First);
 
 		/****** ChFiDS_Stripe::LastCurve ******/
-		/****** md5 signature: d6610cdfb3323f36ef3f5b49a9fc1453 ******/
+		/****** md5 signature: ea98f3fd4cb9e1227ec18caaa39d50ea ******/
 		%feature("compactdefaultargs") LastCurve;
 		%feature("autodoc", "Return
 -------
@@ -3553,7 +3507,7 @@ Description
 -----------
 No available documentation.
 ") LastCurve;
-		Standard_Integer LastCurve();
+		int LastCurve();
 
 		/****** ChFiDS_Stripe::LastPCurve ******/
 		/****** md5 signature: cb9a448d17d26a7972588092a53e1ea9 ******/
@@ -3600,7 +3554,7 @@ No available documentation.
 		void LastPCurveOrientation(const TopAbs_Orientation O);
 
 		/****** ChFiDS_Stripe::LastParameters ******/
-		/****** md5 signature: 339528eb2397be639136e26491e13a98 ******/
+		/****** md5 signature: 47146059692e148ade883a2168c309ff ******/
 		%feature("compactdefaultargs") LastParameters;
 		%feature("autodoc", "
 Parameters
@@ -3608,8 +3562,8 @@ Parameters
 
 Return
 -------
-Pdeb: float
-Pfin: float
+Pdeb: double
+Pfin: double
 
 Description
 -----------
@@ -3618,7 +3572,7 @@ No available documentation.
 		void LastParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ChFiDS_Stripe::Orientation ******/
-		/****** md5 signature: e459d64aa914c0c6260ec32e9a5b7eae ******/
+		/****** md5 signature: 24653536b8386ef927ed37fe6e171bd8 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -3633,10 +3587,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		TopAbs_Orientation Orientation(const Standard_Integer OnS);
+		TopAbs_Orientation Orientation(const int OnS);
 
 		/****** ChFiDS_Stripe::Orientation ******/
-		/****** md5 signature: 5e69f6fd26a9a3ace7299c96327f2db6 ******/
+		/****** md5 signature: 48851096f84f37ce4e55a1458d42ed3e ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -3651,7 +3605,7 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		TopAbs_Orientation Orientation(const Standard_Boolean First);
+		TopAbs_Orientation Orientation(const bool First);
 
 		/****** ChFiDS_Stripe::OrientationOnFace1 ******/
 		/****** md5 signature: 99a202362c7060da6590bb4c43c41e5e ******/
@@ -3716,7 +3670,7 @@ No available documentation.
 		void OrientationOnFace2(const TopAbs_Orientation Or2);
 
 		/****** ChFiDS_Stripe::PCurve ******/
-		/****** md5 signature: 9fa93399392272abea49fa61f719aa07 ******/
+		/****** md5 signature: ba1977b038780db0454eb21920012797 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -3731,10 +3685,10 @@ Description
 -----------
 No available documentation.
 ") PCurve;
-		const opencascade::handle<Geom2d_Curve> & PCurve(const Standard_Boolean First);
+		const opencascade::handle<Geom2d_Curve> & PCurve(const bool First);
 
 		/****** ChFiDS_Stripe::Parameters ******/
-		/****** md5 signature: e434f92bc401b080e1f82d4278f0b49d ******/
+		/****** md5 signature: 703de8c8188d3f24f1789f22ffe261f6 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -3743,14 +3697,14 @@ First: bool
 
 Return
 -------
-Pdeb: float
-Pfin: float
+Pdeb: double
+Pfin: double
 
 Description
 -----------
 No available documentation.
 ") Parameters;
-		void Parameters(const Standard_Boolean First, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Parameters(const bool First, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ChFiDS_Stripe::Reset ******/
 		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
@@ -3766,7 +3720,7 @@ Reset everything except Spine.
 		void Reset();
 
 		/****** ChFiDS_Stripe::SetCurve ******/
-		/****** md5 signature: 33d4a3b4d710b3b8650fa405c30f22f4 ******/
+		/****** md5 signature: 450319b92ef907358f09d50f1f1af5c4 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -3782,10 +3736,10 @@ Description
 -----------
 No available documentation.
 ") SetCurve;
-		void SetCurve(const Standard_Integer Index, const Standard_Boolean First);
+		void SetCurve(const int Index, const bool First);
 
 		/****** ChFiDS_Stripe::SetIndexPoint ******/
-		/****** md5 signature: c41b722b86a09aa685a4475ec2df0601 ******/
+		/****** md5 signature: 0940f980a0ab8818aa0ceb4ce471de90 ******/
 		%feature("compactdefaultargs") SetIndexPoint;
 		%feature("autodoc", "
 Parameters
@@ -3802,23 +3756,23 @@ Description
 -----------
 No available documentation.
 ") SetIndexPoint;
-		void SetIndexPoint(const Standard_Integer Index, const Standard_Boolean First, const Standard_Integer OnS);
+		void SetIndexPoint(const int Index, const bool First, const int OnS);
 
 		/****** ChFiDS_Stripe::SetOfSurfData ******/
-		/****** md5 signature: a442d39e57ce35749e899380e2ecc9bc ******/
+		/****** md5 signature: c4b15200f7d00a3b0f4eaa1b05a6af40 ******/
 		%feature("compactdefaultargs") SetOfSurfData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<ChFiDS_HData>
+opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>>
 
 Description
 -----------
 No available documentation.
 ") SetOfSurfData;
-		const opencascade::handle<ChFiDS_HData> & SetOfSurfData();
+		const opencascade::handle<NCollection_HSequence<opencascade::handle<ChFiDS_SurfData>>> & SetOfSurfData();
 
 		/****** ChFiDS_Stripe::SetOrientation ******/
-		/****** md5 signature: 749bd92540850256c711d2ad35ac8cad ******/
+		/****** md5 signature: 6304d7b103fbbd01638f77530d048171 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -3834,10 +3788,10 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const TopAbs_Orientation Or, const Standard_Integer OnS);
+		void SetOrientation(const TopAbs_Orientation Or, const int OnS);
 
 		/****** ChFiDS_Stripe::SetOrientation ******/
-		/****** md5 signature: ae28934bf0dabf2c291cc15de55030e3 ******/
+		/****** md5 signature: 9b21c8aa0ce59112fd49d8c396c7ef6c ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -3853,17 +3807,17 @@ Description
 -----------
 No available documentation.
 ") SetOrientation;
-		void SetOrientation(const TopAbs_Orientation Or, const Standard_Boolean First);
+		void SetOrientation(const TopAbs_Orientation Or, const bool First);
 
 		/****** ChFiDS_Stripe::SetParameters ******/
-		/****** md5 signature: 4db950b9a62330a8ee989fda40f71a20 ******/
+		/****** md5 signature: 647d015fccb4dd0d7b5311f34a06de48 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 First: bool
-Pdeb: float
-Pfin: float
+Pdeb: double
+Pfin: double
 
 Return
 -------
@@ -3873,10 +3827,10 @@ Description
 -----------
 No available documentation.
 ") SetParameters;
-		void SetParameters(const Standard_Boolean First, const Standard_Real Pdeb, const Standard_Real Pfin);
+		void SetParameters(const bool First, const double Pdeb, const double Pfin);
 
 		/****** ChFiDS_Stripe::SetSolidIndex ******/
-		/****** md5 signature: 8eadbe97c4c76389094efc550670c7a2 ******/
+		/****** md5 signature: fa6df0a18043a2fc9938d2d98678978a ******/
 		%feature("compactdefaultargs") SetSolidIndex;
 		%feature("autodoc", "
 Parameters
@@ -3891,10 +3845,10 @@ Description
 -----------
 No available documentation.
 ") SetSolidIndex;
-		void SetSolidIndex(const Standard_Integer Index);
+		void SetSolidIndex(const int Index);
 
 		/****** ChFiDS_Stripe::SolidIndex ******/
-		/****** md5 signature: a8fd277f867e1d86dd72f41ff6395800 ******/
+		/****** md5 signature: a06a4332a9a5b28dc194f9bc97e03052 ******/
 		%feature("compactdefaultargs") SolidIndex;
 		%feature("autodoc", "Return
 -------
@@ -3904,7 +3858,7 @@ Description
 -----------
 No available documentation.
 ") SolidIndex;
-		Standard_Integer SolidIndex();
+		int SolidIndex();
 
 		/****** ChFiDS_Stripe::Spine ******/
 		/****** md5 signature: 131048b17dbd5a413d557d000aa4f6ee ******/
@@ -3981,7 +3935,7 @@ No available documentation.
 		void Clear();
 
 		/****** ChFiDS_StripeMap::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -3991,10 +3945,10 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** ChFiDS_StripeMap::FindFromIndex ******/
-		/****** md5 signature: a4cb4e0913cfb62cd51ca90fc6e045c2 ******/
+		/****** md5 signature: 6b0310d29845174cf9dc06bb275ef011 ******/
 		%feature("compactdefaultargs") FindFromIndex;
 		%feature("autodoc", "
 Parameters
@@ -4003,16 +3957,16 @@ I: int
 
 Return
 -------
-ChFiDS_ListOfStripe
+NCollection_List<opencascade::handle<ChFiDS_Stripe>>
 
 Description
 -----------
 No available documentation.
 ") FindFromIndex;
-		const ChFiDS_ListOfStripe & FindFromIndex(const Standard_Integer I);
+		const NCollection_List<opencascade::handle<ChFiDS_Stripe>> & FindFromIndex(const int I);
 
 		/****** ChFiDS_StripeMap::FindFromKey ******/
-		/****** md5 signature: 3e35c916c2d4713eae2d9d28b14b97f0 ******/
+		/****** md5 signature: 7f6b9008eede8d7e67f2a1172629fc5d ******/
 		%feature("compactdefaultargs") FindFromKey;
 		%feature("autodoc", "
 Parameters
@@ -4021,16 +3975,16 @@ V: TopoDS_Vertex
 
 Return
 -------
-ChFiDS_ListOfStripe
+NCollection_List<opencascade::handle<ChFiDS_Stripe>>
 
 Description
 -----------
 No available documentation.
 ") FindFromKey;
-		const ChFiDS_ListOfStripe & FindFromKey(const TopoDS_Vertex & V);
+		const NCollection_List<opencascade::handle<ChFiDS_Stripe>> & FindFromKey(const TopoDS_Vertex & V);
 
 		/****** ChFiDS_StripeMap::FindKey ******/
-		/****** md5 signature: 8178cd24d0bbc4f0a4efae070c360666 ******/
+		/****** md5 signature: dca0436e919be63a88534c6ba2238f56 ******/
 		%feature("compactdefaultargs") FindKey;
 		%feature("autodoc", "
 Parameters
@@ -4045,7 +3999,7 @@ Description
 -----------
 No available documentation.
 ") FindKey;
-		const TopoDS_Vertex FindKey(const Standard_Integer I);
+		const TopoDS_Vertex FindKey(const int I);
 
 };
 
@@ -4075,7 +4029,7 @@ No available documentation.
 		 ChFiDS_SurfData();
 
 		/****** ChFiDS_SurfData::ChangeIndexOfS1 ******/
-		/****** md5 signature: 464a81c4ded1d461524d80d6a6781808 ******/
+		/****** md5 signature: 85558f812ebb19d3d70f7d8cfa77ef57 ******/
 		%feature("compactdefaultargs") ChangeIndexOfS1;
 		%feature("autodoc", "
 Parameters
@@ -4090,10 +4044,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIndexOfS1;
-		void ChangeIndexOfS1(const Standard_Integer Index);
+		void ChangeIndexOfS1(const int Index);
 
 		/****** ChFiDS_SurfData::ChangeIndexOfS2 ******/
-		/****** md5 signature: 836ea02facf61fa10ec5efea297795bf ******/
+		/****** md5 signature: 14f1966ba67be4a61892f52bc6d85e44 ******/
 		%feature("compactdefaultargs") ChangeIndexOfS2;
 		%feature("autodoc", "
 Parameters
@@ -4108,10 +4062,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIndexOfS2;
-		void ChangeIndexOfS2(const Standard_Integer Index);
+		void ChangeIndexOfS2(const int Index);
 
 		/****** ChFiDS_SurfData::ChangeInterference ******/
-		/****** md5 signature: 765d18b794185e8b4adc52e73713512a ******/
+		/****** md5 signature: 36d14e4e084257d7b4db489595508239 ******/
 		%feature("compactdefaultargs") ChangeInterference;
 		%feature("autodoc", "
 Parameters
@@ -4126,7 +4080,7 @@ Description
 -----------
 No available documentation.
 ") ChangeInterference;
-		ChFiDS_FaceInterference & ChangeInterference(const Standard_Integer OnS);
+		ChFiDS_FaceInterference & ChangeInterference(const int OnS);
 
 		/****** ChFiDS_SurfData::ChangeInterferenceOnS1 ******/
 		/****** md5 signature: f0413a5ac7c0de69a5d4a3d529a10583 ******/
@@ -4168,7 +4122,7 @@ No available documentation.
 		TopAbs_Orientation  ChangeOrientation();
 
 		/****** ChFiDS_SurfData::ChangeSurf ******/
-		/****** md5 signature: 04810584e755bde58033397adab639cd ******/
+		/****** md5 signature: 514ab442a1b55d1fb30e1fca4d7262a9 ******/
 		%feature("compactdefaultargs") ChangeSurf;
 		%feature("autodoc", "
 Parameters
@@ -4183,10 +4137,10 @@ Description
 -----------
 No available documentation.
 ") ChangeSurf;
-		void ChangeSurf(const Standard_Integer Index);
+		void ChangeSurf(const int Index);
 
 		/****** ChFiDS_SurfData::ChangeVertex ******/
-		/****** md5 signature: a8ddf20f93239324ee9ea0b0bd371c2a ******/
+		/****** md5 signature: e3c554114ad1c885d9f2a9b2b59a91c3 ******/
 		%feature("compactdefaultargs") ChangeVertex;
 		%feature("autodoc", "
 Parameters
@@ -4202,7 +4156,7 @@ Description
 -----------
 returns one of the four vertices whether First is true or wrong and OnS equals 1 or 2.
 ") ChangeVertex;
-		ChFiDS_CommonPoint & ChangeVertex(const Standard_Boolean First, const Standard_Integer OnS);
+		ChFiDS_CommonPoint & ChangeVertex(const bool First, const int OnS);
 
 		/****** ChFiDS_SurfData::ChangeVertexFirstOnS1 ******/
 		/****** md5 signature: 3108659a3a5bf4019308c76481ef6d62 ******/
@@ -4275,25 +4229,25 @@ No available documentation.
 		void Copy(const opencascade::handle<ChFiDS_SurfData> & Other);
 
 		/****** ChFiDS_SurfData::FirstExtensionValue ******/
-		/****** md5 signature: 5762a3564e85ee2c2d5a982d2d5be2b6 ******/
+		/****** md5 signature: 0a5eda5f9fc5a448f73d4f4b523c4bb2 ******/
 		%feature("compactdefaultargs") FirstExtensionValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstExtensionValue;
-		Standard_Real FirstExtensionValue();
+		double FirstExtensionValue();
 
 		/****** ChFiDS_SurfData::FirstExtensionValue ******/
-		/****** md5 signature: dffd070f2463c275043731ce8aaa835a ******/
+		/****** md5 signature: 4dae1b698fd28156bf84d12b841cea5a ******/
 		%feature("compactdefaultargs") FirstExtensionValue;
 		%feature("autodoc", "
 Parameters
 ----------
-Extend: float
+Extend: double
 
 Return
 -------
@@ -4303,28 +4257,28 @@ Description
 -----------
 No available documentation.
 ") FirstExtensionValue;
-		void FirstExtensionValue(const Standard_Real Extend);
+		void FirstExtensionValue(const double Extend);
 
 		/****** ChFiDS_SurfData::FirstSpineParam ******/
-		/****** md5 signature: 85cb7fa56a31345ca448ea81a805d5a6 ******/
+		/****** md5 signature: 91f104c1e5d13cc47d64d7c1af97b499 ******/
 		%feature("compactdefaultargs") FirstSpineParam;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstSpineParam;
-		Standard_Real FirstSpineParam();
+		double FirstSpineParam();
 
 		/****** ChFiDS_SurfData::FirstSpineParam ******/
-		/****** md5 signature: a9bff714e1565d13d5330c6d7db44b07 ******/
+		/****** md5 signature: 04d76da2c7c4c6a44f88ed227daa2d19 ******/
 		%feature("compactdefaultargs") FirstSpineParam;
 		%feature("autodoc", "
 Parameters
 ----------
-Par: float
+Par: double
 
 Return
 -------
@@ -4334,10 +4288,10 @@ Description
 -----------
 No available documentation.
 ") FirstSpineParam;
-		void FirstSpineParam(const Standard_Real Par);
+		void FirstSpineParam(const double Par);
 
 		/****** ChFiDS_SurfData::Get2dPoints ******/
-		/****** md5 signature: c0b76123de363b14c9d65851a4731623 ******/
+		/****** md5 signature: 469782d07bd166c38676b6de4ec7733f ******/
 		%feature("compactdefaultargs") Get2dPoints;
 		%feature("autodoc", "
 Parameters
@@ -4353,7 +4307,7 @@ Description
 -----------
 No available documentation.
 ") Get2dPoints;
-		gp_Pnt2d Get2dPoints(const Standard_Boolean First, const Standard_Integer OnS);
+		gp_Pnt2d Get2dPoints(const bool First, const int OnS);
 
 		/****** ChFiDS_SurfData::Get2dPoints ******/
 		/****** md5 signature: 532fbd8ec9795a1c784ff3fd2dfa42ce ******/
@@ -4377,7 +4331,7 @@ No available documentation.
 		void Get2dPoints(gp_Pnt2d & P2df1, gp_Pnt2d & P2dl1, gp_Pnt2d & P2df2, gp_Pnt2d & P2dl2);
 
 		/****** ChFiDS_SurfData::Index ******/
-		/****** md5 signature: aa936d15dc38493d194d98f4e3620447 ******/
+		/****** md5 signature: 675cee3f6aafb4507629df7e4570b884 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -4392,10 +4346,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index(const Standard_Integer OfS);
+		int Index(const int OfS);
 
 		/****** ChFiDS_SurfData::IndexOfC ******/
-		/****** md5 signature: 79cb134274da4314c248ce29add33a2d ******/
+		/****** md5 signature: c211683d7ee0df9d62e2fb43ede40cde ******/
 		%feature("compactdefaultargs") IndexOfC;
 		%feature("autodoc", "
 Parameters
@@ -4410,10 +4364,10 @@ Description
 -----------
 No available documentation.
 ") IndexOfC;
-		Standard_Integer IndexOfC(const Standard_Integer OnS);
+		int IndexOfC(const int OnS);
 
 		/****** ChFiDS_SurfData::IndexOfC1 ******/
-		/****** md5 signature: 7b68134b11c71080846dd64a481e6cf3 ******/
+		/****** md5 signature: 7e6fa593bbde04d5ea478ce1ade7aca9 ******/
 		%feature("compactdefaultargs") IndexOfC1;
 		%feature("autodoc", "Return
 -------
@@ -4423,10 +4377,10 @@ Description
 -----------
 No available documentation.
 ") IndexOfC1;
-		Standard_Integer IndexOfC1();
+		int IndexOfC1();
 
 		/****** ChFiDS_SurfData::IndexOfC2 ******/
-		/****** md5 signature: e15a0488edee7b0d89e07059e021e999 ******/
+		/****** md5 signature: 51cc96af3f80358500e6dfa436212ebe ******/
 		%feature("compactdefaultargs") IndexOfC2;
 		%feature("autodoc", "Return
 -------
@@ -4436,10 +4390,10 @@ Description
 -----------
 No available documentation.
 ") IndexOfC2;
-		Standard_Integer IndexOfC2();
+		int IndexOfC2();
 
 		/****** ChFiDS_SurfData::IndexOfS1 ******/
-		/****** md5 signature: cae260f6fc1b135c75d40e23b72662b6 ******/
+		/****** md5 signature: df83f6ea6ce4d45d146795af7ed9ec83 ******/
 		%feature("compactdefaultargs") IndexOfS1;
 		%feature("autodoc", "Return
 -------
@@ -4449,10 +4403,10 @@ Description
 -----------
 No available documentation.
 ") IndexOfS1;
-		Standard_Integer IndexOfS1();
+		int IndexOfS1();
 
 		/****** ChFiDS_SurfData::IndexOfS2 ******/
-		/****** md5 signature: 65bb5d204d53ff0a6f2b801ef29c59c2 ******/
+		/****** md5 signature: 9fa3279a3160a50b417960ec676944d9 ******/
 		%feature("compactdefaultargs") IndexOfS2;
 		%feature("autodoc", "Return
 -------
@@ -4462,10 +4416,10 @@ Description
 -----------
 No available documentation.
 ") IndexOfS2;
-		Standard_Integer IndexOfS2();
+		int IndexOfS2();
 
 		/****** ChFiDS_SurfData::Interference ******/
-		/****** md5 signature: 721126f8fff1ec76678eac4e5dabfaa8 ******/
+		/****** md5 signature: 53c241186e4dfbe0dfc65a481319b8aa ******/
 		%feature("compactdefaultargs") Interference;
 		%feature("autodoc", "
 Parameters
@@ -4480,7 +4434,7 @@ Description
 -----------
 No available documentation.
 ") Interference;
-		const ChFiDS_FaceInterference & Interference(const Standard_Integer OnS);
+		const ChFiDS_FaceInterference & Interference(const int OnS);
 
 		/****** ChFiDS_SurfData::InterferenceOnS1 ******/
 		/****** md5 signature: 84de26124a5e0740b80f38705ca471b3 ******/
@@ -4509,7 +4463,7 @@ No available documentation.
 		const ChFiDS_FaceInterference & InterferenceOnS2();
 
 		/****** ChFiDS_SurfData::IsOnCurve ******/
-		/****** md5 signature: c7ef125fb459f6494dcf4ad0b12f2685 ******/
+		/****** md5 signature: 1b7fd2b30728dd17064ca8adf6feb1cc ******/
 		%feature("compactdefaultargs") IsOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -4524,10 +4478,10 @@ Description
 -----------
 No available documentation.
 ") IsOnCurve;
-		Standard_Boolean IsOnCurve(const Standard_Integer OnS);
+		bool IsOnCurve(const int OnS);
 
 		/****** ChFiDS_SurfData::IsOnCurve1 ******/
-		/****** md5 signature: af913d0df1bfdaa10c15b69b831a5528 ******/
+		/****** md5 signature: 2749a3fcc0a4edfdd8368336afd1b0ce ******/
 		%feature("compactdefaultargs") IsOnCurve1;
 		%feature("autodoc", "Return
 -------
@@ -4537,10 +4491,10 @@ Description
 -----------
 No available documentation.
 ") IsOnCurve1;
-		Standard_Boolean IsOnCurve1();
+		bool IsOnCurve1();
 
 		/****** ChFiDS_SurfData::IsOnCurve2 ******/
-		/****** md5 signature: 461844d6cb2ec1f6b2f31eed5d129109 ******/
+		/****** md5 signature: 917e66c937fd698cbc1466eeaf9d1087 ******/
 		%feature("compactdefaultargs") IsOnCurve2;
 		%feature("autodoc", "Return
 -------
@@ -4550,28 +4504,28 @@ Description
 -----------
 No available documentation.
 ") IsOnCurve2;
-		Standard_Boolean IsOnCurve2();
+		bool IsOnCurve2();
 
 		/****** ChFiDS_SurfData::LastExtensionValue ******/
-		/****** md5 signature: 23c75e037feda815b5430178c48b5b00 ******/
+		/****** md5 signature: 1fbcb6fb381b823ecddec97d4e9b4529 ******/
 		%feature("compactdefaultargs") LastExtensionValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastExtensionValue;
-		Standard_Real LastExtensionValue();
+		double LastExtensionValue();
 
 		/****** ChFiDS_SurfData::LastExtensionValue ******/
-		/****** md5 signature: b91d11693c0b645a15a8f54908977d42 ******/
+		/****** md5 signature: 4e410ffe2c3c35ab2e284d67b3e5c50f ******/
 		%feature("compactdefaultargs") LastExtensionValue;
 		%feature("autodoc", "
 Parameters
 ----------
-Extend: float
+Extend: double
 
 Return
 -------
@@ -4581,28 +4535,28 @@ Description
 -----------
 No available documentation.
 ") LastExtensionValue;
-		void LastExtensionValue(const Standard_Real Extend);
+		void LastExtensionValue(const double Extend);
 
 		/****** ChFiDS_SurfData::LastSpineParam ******/
-		/****** md5 signature: e486c269dbc2903bdab7750b7673bcd2 ******/
+		/****** md5 signature: 2ac30ccbd6c6f466cec1c367bde2e216 ******/
 		%feature("compactdefaultargs") LastSpineParam;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastSpineParam;
-		Standard_Real LastSpineParam();
+		double LastSpineParam();
 
 		/****** ChFiDS_SurfData::LastSpineParam ******/
-		/****** md5 signature: cbf1f2f51110a7d4048655e2098604ac ******/
+		/****** md5 signature: 5a275eed5b3f4b4335089530b51014e2 ******/
 		%feature("compactdefaultargs") LastSpineParam;
 		%feature("autodoc", "
 Parameters
 ----------
-Par: float
+Par: double
 
 Return
 -------
@@ -4612,7 +4566,7 @@ Description
 -----------
 No available documentation.
 ") LastSpineParam;
-		void LastSpineParam(const Standard_Real Par);
+		void LastSpineParam(const double Par);
 
 		/****** ChFiDS_SurfData::Orientation ******/
 		/****** md5 signature: 328242fe19b1f80489d8169681ebc029 ******/
@@ -4662,7 +4616,7 @@ No available documentation.
 		void Set2dPoints(const gp_Pnt2d & P2df1, const gp_Pnt2d & P2dl1, const gp_Pnt2d & P2df2, const gp_Pnt2d & P2dl2);
 
 		/****** ChFiDS_SurfData::SetIndexOfC1 ******/
-		/****** md5 signature: e9e20dfa0037167b3db1039fdf9ddbd4 ******/
+		/****** md5 signature: e2724afd5c345afc90c326c5ae14dedc ******/
 		%feature("compactdefaultargs") SetIndexOfC1;
 		%feature("autodoc", "
 Parameters
@@ -4677,10 +4631,10 @@ Description
 -----------
 No available documentation.
 ") SetIndexOfC1;
-		void SetIndexOfC1(const Standard_Integer Index);
+		void SetIndexOfC1(const int Index);
 
 		/****** ChFiDS_SurfData::SetIndexOfC2 ******/
-		/****** md5 signature: 699facddccc422aedc676f7ce2d4ae70 ******/
+		/****** md5 signature: 429a2d993d8279e54f18fd6e231c50ee ******/
 		%feature("compactdefaultargs") SetIndexOfC2;
 		%feature("autodoc", "
 Parameters
@@ -4695,7 +4649,7 @@ Description
 -----------
 No available documentation.
 ") SetIndexOfC2;
-		void SetIndexOfC2(const Standard_Integer Index);
+		void SetIndexOfC2(const int Index);
 
 		/****** ChFiDS_SurfData::SetSimul ******/
 		/****** md5 signature: 0b9016e6717c670bf80fee8060fff7f8 ******/
@@ -4729,7 +4683,7 @@ No available documentation.
 		opencascade::handle<Standard_Transient> Simul();
 
 		/****** ChFiDS_SurfData::Surf ******/
-		/****** md5 signature: 1098b0d819c18c444ca2aaecf83fe6fe ******/
+		/****** md5 signature: be9f6994c804bfc3d091dfe3d52ea6c3 ******/
 		%feature("compactdefaultargs") Surf;
 		%feature("autodoc", "Return
 -------
@@ -4739,10 +4693,10 @@ Description
 -----------
 No available documentation.
 ") Surf;
-		Standard_Integer Surf();
+		int Surf();
 
 		/****** ChFiDS_SurfData::TwistOnS1 ******/
-		/****** md5 signature: 9e7cba134041c48814f8e911bc7ceb7d ******/
+		/****** md5 signature: a5d52f8dc5c7eae9b23cdd5e7c7908f7 ******/
 		%feature("compactdefaultargs") TwistOnS1;
 		%feature("autodoc", "Return
 -------
@@ -4752,10 +4706,10 @@ Description
 -----------
 No available documentation.
 ") TwistOnS1;
-		Standard_Boolean TwistOnS1();
+		bool TwistOnS1();
 
 		/****** ChFiDS_SurfData::TwistOnS1 ******/
-		/****** md5 signature: 0acb5632246f7d8546f899592bf293f6 ******/
+		/****** md5 signature: 9adc1d225dc85be8fbb76ea6a9bee180 ******/
 		%feature("compactdefaultargs") TwistOnS1;
 		%feature("autodoc", "
 Parameters
@@ -4770,10 +4724,10 @@ Description
 -----------
 No available documentation.
 ") TwistOnS1;
-		void TwistOnS1(const Standard_Boolean T);
+		void TwistOnS1(const bool T);
 
 		/****** ChFiDS_SurfData::TwistOnS2 ******/
-		/****** md5 signature: d09d14bd26a5c6922f795ecb44cf2f66 ******/
+		/****** md5 signature: 0923ad99b335481d4c13cea7964daa51 ******/
 		%feature("compactdefaultargs") TwistOnS2;
 		%feature("autodoc", "Return
 -------
@@ -4783,10 +4737,10 @@ Description
 -----------
 No available documentation.
 ") TwistOnS2;
-		Standard_Boolean TwistOnS2();
+		bool TwistOnS2();
 
 		/****** ChFiDS_SurfData::TwistOnS2 ******/
-		/****** md5 signature: 86b835475f2f1a22123081c9ad1406c3 ******/
+		/****** md5 signature: f15266844334672a75a4c0b2524f4918 ******/
 		%feature("compactdefaultargs") TwistOnS2;
 		%feature("autodoc", "
 Parameters
@@ -4801,10 +4755,10 @@ Description
 -----------
 No available documentation.
 ") TwistOnS2;
-		void TwistOnS2(const Standard_Boolean T);
+		void TwistOnS2(const bool T);
 
 		/****** ChFiDS_SurfData::Vertex ******/
-		/****** md5 signature: 18d5b7a519c656abcce6733eb3f805bc ******/
+		/****** md5 signature: cec1750e21135bf25c0ce71693137297 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -4820,7 +4774,7 @@ Description
 -----------
 returns one of the four vertices whether First is true or wrong and OnS equals 1 or 2.
 ") Vertex;
-		const ChFiDS_CommonPoint & Vertex(const Standard_Boolean First, const Standard_Integer OnS);
+		const ChFiDS_CommonPoint & Vertex(const bool First, const int OnS);
 
 		/****** ChFiDS_SurfData::VertexFirstOnS1 ******/
 		/****** md5 signature: fbdcb24d9af55411ab7405474d1a35b9 ******/
@@ -4904,12 +4858,12 @@ No available documentation.
 		 ChFiDS_ChamfSpine();
 
 		/****** ChFiDS_ChamfSpine::ChFiDS_ChamfSpine ******/
-		/****** md5 signature: 33f39a16a9e9fd99378615ca285c48a9 ******/
+		/****** md5 signature: 1b828eeeb09cede56ba8d0f2d0ce5cd5 ******/
 		%feature("compactdefaultargs") ChFiDS_ChamfSpine;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4919,10 +4873,10 @@ Description
 -----------
 No available documentation.
 ") ChFiDS_ChamfSpine;
-		 ChFiDS_ChamfSpine(const Standard_Real Tol);
+		 ChFiDS_ChamfSpine(const double Tol);
 
 		/****** ChFiDS_ChamfSpine::Dists ******/
-		/****** md5 signature: 2e7b681679b701fdc1f1a885c6746b43 ******/
+		/****** md5 signature: 3db0c46352072f7a870a306dac2dfdb3 ******/
 		%feature("compactdefaultargs") Dists;
 		%feature("autodoc", "
 Parameters
@@ -4930,8 +4884,8 @@ Parameters
 
 Return
 -------
-Dis1: float
-Dis2: float
+Dis1: double
+Dis2: double
 
 Description
 -----------
@@ -4940,7 +4894,7 @@ No available documentation.
 		void Dists(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ChFiDS_ChamfSpine::GetDist ******/
-		/****** md5 signature: 6f22d39c9d38288e6a9d1e40741e84b4 ******/
+		/****** md5 signature: 04221547c3f9fcf80972494db5df889e ******/
 		%feature("compactdefaultargs") GetDist;
 		%feature("autodoc", "
 Parameters
@@ -4948,7 +4902,7 @@ Parameters
 
 Return
 -------
-Dis: float
+Dis: double
 
 Description
 -----------
@@ -4957,7 +4911,7 @@ No available documentation.
 		void GetDist(Standard_Real &OutValue);
 
 		/****** ChFiDS_ChamfSpine::GetDistAngle ******/
-		/****** md5 signature: b7e8c4f4dca6f7925ece8caaf424f067 ******/
+		/****** md5 signature: c5322e4013afc162a1b48301a7e99325 ******/
 		%feature("compactdefaultargs") GetDistAngle;
 		%feature("autodoc", "
 Parameters
@@ -4965,8 +4919,8 @@ Parameters
 
 Return
 -------
-Dis: float
-Angle: float
+Dis: double
+Angle: double
 
 Description
 -----------
@@ -4988,12 +4942,12 @@ Return the method of chamfers used.
 		ChFiDS_ChamfMethod IsChamfer();
 
 		/****** ChFiDS_ChamfSpine::SetDist ******/
-		/****** md5 signature: 3234cee1a1528df7657370712255a4e9 ******/
+		/****** md5 signature: f871d05972b8bf2844bca7e8655efaf2 ******/
 		%feature("compactdefaultargs") SetDist;
 		%feature("autodoc", "
 Parameters
 ----------
-Dis: float
+Dis: double
 
 Return
 -------
@@ -5003,16 +4957,16 @@ Description
 -----------
 No available documentation.
 ") SetDist;
-		void SetDist(const Standard_Real Dis);
+		void SetDist(const double Dis);
 
 		/****** ChFiDS_ChamfSpine::SetDistAngle ******/
-		/****** md5 signature: dc437b103bb0ff46b0c641a081c767b1 ******/
+		/****** md5 signature: e63d91cc45e186969eb4eb9173da7670 ******/
 		%feature("compactdefaultargs") SetDistAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-Dis: float
-Angle: float
+Dis: double
+Angle: double
 
 Return
 -------
@@ -5022,16 +4976,16 @@ Description
 -----------
 No available documentation.
 ") SetDistAngle;
-		void SetDistAngle(const Standard_Real Dis, const Standard_Real Angle);
+		void SetDistAngle(const double Dis, const double Angle);
 
 		/****** ChFiDS_ChamfSpine::SetDists ******/
-		/****** md5 signature: e2a0b86c65b45aa81960cb17a64c4df1 ******/
+		/****** md5 signature: b54cc627052c37a06984f6d7a52bc48a ******/
 		%feature("compactdefaultargs") SetDists;
 		%feature("autodoc", "
 Parameters
 ----------
-Dis1: float
-Dis2: float
+Dis1: double
+Dis2: double
 
 Return
 -------
@@ -5041,7 +4995,7 @@ Description
 -----------
 No available documentation.
 ") SetDists;
-		void SetDists(const Standard_Real Dis1, const Standard_Real Dis2);
+		void SetDists(const double Dis1, const double Dis2);
 
 		/****** ChFiDS_ChamfSpine::SetMode ******/
 		/****** md5 signature: 85103d8a8712f2721bdad80918d54319 ******/
@@ -5091,12 +5045,12 @@ No available documentation.
 		 ChFiDS_FilSpine();
 
 		/****** ChFiDS_FilSpine::ChFiDS_FilSpine ******/
-		/****** md5 signature: 62b18d0760aa4d6ecc105f7fa320840e ******/
+		/****** md5 signature: 07f26883239bca09ce358e4667e1b675 ******/
 		%feature("compactdefaultargs") ChFiDS_FilSpine;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -5106,10 +5060,10 @@ Description
 -----------
 No available documentation.
 ") ChFiDS_FilSpine;
-		 ChFiDS_FilSpine(const Standard_Real Tol);
+		 ChFiDS_FilSpine(const double Tol);
 
 		/****** ChFiDS_FilSpine::AppendElSpine ******/
-		/****** md5 signature: 372916a9ea66113bdf5cde8ef4cde52f ******/
+		/****** md5 signature: 5a9e220830af64996d9273a7835d30ab ******/
 		%feature("compactdefaultargs") AppendElSpine;
 		%feature("autodoc", "
 Parameters
@@ -5124,7 +5078,7 @@ Description
 -----------
 No available documentation.
 ") AppendElSpine;
-		virtual void AppendElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
+		void AppendElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****** ChFiDS_FilSpine::ChangeLaw ******/
 		/****** md5 signature: 8ae71aa7535429ad90f7a710389558b8 ******/
@@ -5145,7 +5099,7 @@ returns the elementary law.
 		opencascade::handle<Law_Function> & ChangeLaw(const TopoDS_Edge & E);
 
 		/****** ChFiDS_FilSpine::IsConstant ******/
-		/****** md5 signature: d04428c0cc470abb832fd48242d18c6c ******/
+		/****** md5 signature: 004cfe784b2152966984d86bf19ad8a1 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -5155,10 +5109,10 @@ Description
 -----------
 returns true if the radius is constant all along the spine.
 ") IsConstant;
-		Standard_Boolean IsConstant();
+		bool IsConstant();
 
 		/****** ChFiDS_FilSpine::IsConstant ******/
-		/****** md5 signature: bc11f93510cfff4e44a25f3e84ce1ada ******/
+		/****** md5 signature: aca8861275eec200d0b5bbfa54f32c56 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "
 Parameters
@@ -5173,7 +5127,7 @@ Description
 -----------
 returns true if the radius is constant all along the edge E.
 ") IsConstant;
-		Standard_Boolean IsConstant(const Standard_Integer IE);
+		bool IsConstant(const int IE);
 
 		/****** ChFiDS_FilSpine::Law ******/
 		/****** md5 signature: 7cf16ab410922973e30dbb370c179506 ******/
@@ -5194,33 +5148,33 @@ No available documentation.
 		opencascade::handle<Law_Composite> Law(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
 		/****** ChFiDS_FilSpine::MaxRadFromSeqAndLaws ******/
-		/****** md5 signature: 5d0ba972a5439e16c0aae93c053bd63b ******/
+		/****** md5 signature: 1a4deb9574088c4b551dc03c72238b74 ******/
 		%feature("compactdefaultargs") MaxRadFromSeqAndLaws;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum radius if the fillet is non-constant.
 ") MaxRadFromSeqAndLaws;
-		Standard_Real MaxRadFromSeqAndLaws();
+		double MaxRadFromSeqAndLaws();
 
 		/****** ChFiDS_FilSpine::Radius ******/
-		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
+		/****** md5 signature: 3f212b2355d53c03baacfd2fb8e2678a ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the radius if the fillet is constant all along the spine.
 ") Radius;
-		Standard_Real Radius();
+		double Radius();
 
 		/****** ChFiDS_FilSpine::Radius ******/
-		/****** md5 signature: 75a8a890fcaa49d59f2a13a8dfdd6194 ******/
+		/****** md5 signature: c04d1880ddb5efd03c01c2e2f2c7d9a5 ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "
 Parameters
@@ -5229,16 +5183,16 @@ IE: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the radius if the fillet is constant all along the edge E.
 ") Radius;
-		Standard_Real Radius(const Standard_Integer IE);
+		double Radius(const int IE);
 
 		/****** ChFiDS_FilSpine::Radius ******/
-		/****** md5 signature: a7dbde136b0aff6df13e784d945befee ******/
+		/****** md5 signature: 398a9614a5e885a486845668431f2da9 ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "
 Parameters
@@ -5247,21 +5201,21 @@ E: TopoDS_Edge
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the radius if the fillet is constant all along the edge E.
 ") Radius;
-		Standard_Real Radius(const TopoDS_Edge & E);
+		double Radius(const TopoDS_Edge & E);
 
 		/****** ChFiDS_FilSpine::Reset ******/
-		/****** md5 signature: e8db21712db75c0ab3a6d44938480832 ******/
+		/****** md5 signature: 241d0d1cac116ce917a39aed931277cb ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
 ----------
-AllData: bool (optional, default to Standard_False)
+AllData: bool (optional, default to false)
 
 Return
 -------
@@ -5271,15 +5225,15 @@ Description
 -----------
 No available documentation.
 ") Reset;
-		virtual void Reset(const Standard_Boolean AllData = Standard_False);
+		void Reset(const bool AllData = false);
 
 		/****** ChFiDS_FilSpine::SetRadius ******/
-		/****** md5 signature: 91641ed1cc49aed497341c2960fe1ef2 ******/
+		/****** md5 signature: 7b55786418268e67777d80c2948dc4bb ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
+Radius: double
 E: TopoDS_Edge
 
 Return
@@ -5290,15 +5244,15 @@ Description
 -----------
 initializes the constant vector on edge E.
 ") SetRadius;
-		void SetRadius(const Standard_Real Radius, const TopoDS_Edge & E);
+		void SetRadius(const double Radius, const TopoDS_Edge & E);
 
 		/****** ChFiDS_FilSpine::SetRadius ******/
-		/****** md5 signature: 0b731947b724fee5a279be1cdface2f5 ******/
+		/****** md5 signature: 48c975486c35c27c3b5115ea3dd8528d ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
+Radius: double
 V: TopoDS_Vertex
 
 Return
@@ -5309,10 +5263,10 @@ Description
 -----------
 initializes the vector on Vertex V.
 ") SetRadius;
-		void SetRadius(const Standard_Real Radius, const TopoDS_Vertex & V);
+		void SetRadius(const double Radius, const TopoDS_Vertex & V);
 
 		/****** ChFiDS_FilSpine::SetRadius ******/
-		/****** md5 signature: c46a36f7aea3dca4657dbb13bc50b145 ******/
+		/****** md5 signature: 314cb004ed4a0e1fc6f9c8d57568e2a0 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
@@ -5328,15 +5282,15 @@ Description
 -----------
 initializes the vector on the point of parameter W.
 ") SetRadius;
-		void SetRadius(const gp_XY & UandR, const Standard_Integer IinC);
+		void SetRadius(const gp_XY & UandR, const int IinC);
 
 		/****** ChFiDS_FilSpine::SetRadius ******/
-		/****** md5 signature: 021f3150e83db7a660562352251b37b0 ******/
+		/****** md5 signature: 09837d8d7c15cdc696d2bc10c3316421 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
+Radius: double
 
 Return
 -------
@@ -5346,10 +5300,10 @@ Description
 -----------
 initializes the constant vector on all spine.
 ") SetRadius;
-		void SetRadius(const Standard_Real Radius);
+		void SetRadius(const double Radius);
 
 		/****** ChFiDS_FilSpine::SetRadius ******/
-		/****** md5 signature: 99c895e6b68282335620180e915bf49e ******/
+		/****** md5 signature: 40d29f6ca9160fb3fd88b0f904db1bb2 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
@@ -5365,7 +5319,7 @@ Description
 -----------
 initializes the rule of evolution on all spine.
 ") SetRadius;
-		void SetRadius(const opencascade::handle<Law_Function> & C, const Standard_Integer IinC);
+		void SetRadius(const opencascade::handle<Law_Function> & C, const int IinC);
 
 		/****** ChFiDS_FilSpine::UnSetRadius ******/
 		/****** md5 signature: 5be1b8d2f909f7cad1be8a39d04d1ce1 ******/
@@ -5416,26 +5370,26 @@ resets the vector on Vertex V.
 
 /* harray1 classes */
 
-class ChFiDS_SecHArray1 : public ChFiDS_SecArray1, public Standard_Transient {
+class ChFiDS_SecHArray1 : public NCollection_Array1<ChFiDS_CircSection>, public Standard_Transient {
   public:
     ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
-    ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const ChFiDS_SecArray1::value_type& theValue);
-    ChFiDS_SecHArray1(const ChFiDS_SecArray1& theOther);
-    const ChFiDS_SecArray1& Array1();
-    ChFiDS_SecArray1& ChangeArray1();
+    ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<ChFiDS_CircSection>::value_type& theValue);
+    ChFiDS_SecHArray1(const NCollection_Array1<ChFiDS_CircSection>& theOther);
+    const NCollection_Array1<ChFiDS_CircSection>& Array1();
+    NCollection_Array1<ChFiDS_CircSection>& ChangeArray1();
 };
 %make_alias(ChFiDS_SecHArray1)
 
 /* harray2 classes */
 /* hsequence classes */
-class ChFiDS_HData : public ChFiDS_SequenceOfSurfData, public Standard_Transient {
+class ChFiDS_HData : public NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>, public Standard_Transient {
   public:
     ChFiDS_HData();
-    ChFiDS_HData(const ChFiDS_SequenceOfSurfData& theOther);
-    const ChFiDS_SequenceOfSurfData& Sequence();
-    void Append (const ChFiDS_SequenceOfSurfData::value_type& theItem);
-    void Append (ChFiDS_SequenceOfSurfData& theSequence);
-    ChFiDS_SequenceOfSurfData& ChangeSequence();
+    ChFiDS_HData(const NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& theOther);
+    const NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& theSequence);
+    NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& ChangeSequence();
 };
 %make_alias(ChFiDS_HData)
 

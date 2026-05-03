@@ -51,7 +51,6 @@ using namespace std;
 #include<Resource_module.hxx>
 #include<TopoDS_module.hxx>
 #include<BRepTools_module.hxx>
-#include<TopTools_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopAbs_module.hxx>
@@ -66,6 +65,7 @@ using namespace std;
 #include<Geom_module.hxx>
 #include<TopLoc_module.hxx>
 #include<ShapeExtend_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -78,7 +78,6 @@ using namespace std;
 %import Resource.i
 %import TopoDS.i
 %import BRepTools.i
-%import TopTools.i
 %import ShapeExtend.i
 %import GeomAbs.i
 %import TopAbs.i
@@ -190,12 +189,12 @@ Last = Operation.Last
 /* end python proxy for enums */
 
 		/****** ShapeProcess::FindOperator ******/
-		/****** md5 signature: ac666265198f26dac6234760a5de3179 ******/
+		/****** md5 signature: 582d32d40f814e2d2dc2838da6f137da ******/
 		%feature("compactdefaultargs") FindOperator;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 op: ShapeProcess_Operator
 
 Return
@@ -206,16 +205,16 @@ Description
 -----------
 Finds operator by its name.
 ") FindOperator;
-		static Standard_Boolean FindOperator(Standard_CString name, opencascade::handle<ShapeProcess_Operator> & op);
+		static bool FindOperator(const char * const name, opencascade::handle<ShapeProcess_Operator> & op);
 
 		/****** ShapeProcess::Perform ******/
-		/****** md5 signature: b09a663248f0a938268494641ee9386a ******/
+		/****** md5 signature: bd9227f7da2bc4b2aea43cd8021da712 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 context: ShapeProcess_Context
-seq: str
+seq: char *
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -226,10 +225,10 @@ Description
 -----------
 Performs a specified sequence of operators on Context Resource file and other data should be already loaded to Context (including description of sequence seq).
 ") Perform;
-		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, Standard_CString seq, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool Perform(const opencascade::handle<ShapeProcess_Context> & context, const char * const seq, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeProcess::Perform ******/
-		/****** md5 signature: 1a9b7124b83f1109d58f5a7bb67b2dc2 ******/
+		/****** md5 signature: a7769e2c78f915dc2426ea11ff41ed91 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -250,15 +249,15 @@ Parameter theOperations Bitset of operations to perform.
 Parameter theProgress Progress indicator. 
 Return: true if at least one operation was performed, false otherwise.
 ") Perform;
-		static Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & theContext, bitset<Operation::Last + 1 > theOperations, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool Perform(const opencascade::handle<ShapeProcess_Context> & theContext, bitset<Operation::Last + 1 > theOperations, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeProcess::RegisterOperator ******/
-		/****** md5 signature: f3fc4533ca3193906e102f361e526b9e ******/
+		/****** md5 signature: e34de108c65eef6d2fa4ce4dd366d1b0 ******/
 		%feature("compactdefaultargs") RegisterOperator;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 op: ShapeProcess_Operator
 
 Return
@@ -269,7 +268,7 @@ Description
 -----------
 Registers operator to make it visible for Performer.
 ") RegisterOperator;
-		static Standard_Boolean RegisterOperator(Standard_CString name, const opencascade::handle<ShapeProcess_Operator> & op);
+		static bool RegisterOperator(const char * const name, const opencascade::handle<ShapeProcess_Operator> & op);
 
 		/****** ShapeProcess::ToOperationFlag ******/
 		/****** md5 signature: fc2c7e06a6ec1c89c6f54a912f7afaef ******/
@@ -319,13 +318,13 @@ Creates an empty tool.
 		 ShapeProcess_Context();
 
 		/****** ShapeProcess_Context::ShapeProcess_Context ******/
-		/****** md5 signature: 11c95383da3f2b0444e62f214ea97e61 ******/
+		/****** md5 signature: c9a79efeb3c0fcacada2170e8a19ac6d ******/
 		%feature("compactdefaultargs") ShapeProcess_Context;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
-scope: str (optional, default to "")
+file: char *
+scope: char * (optional, default to "")
 
 Return
 -------
@@ -335,15 +334,15 @@ Description
 -----------
 Creates a new tool and initialises by name of resource file and (if specified) starting scope Calls method Init().
 ") ShapeProcess_Context;
-		 ShapeProcess_Context(Standard_CString file, Standard_CString scope = "");
+		 ShapeProcess_Context(const char * const file, const char * const scope = "");
 
 		/****** ShapeProcess_Context::BooleanVal ******/
-		/****** md5 signature: 9ef6eb8d9ad5133cb1a4c75139909634 ******/
+		/****** md5 signature: 89267d997c64bdfbf76152a38227ac3c ******/
 		%feature("compactdefaultargs") BooleanVal;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 def: bool
 
 Return
@@ -354,15 +353,15 @@ Description
 -----------
 No available documentation.
 ") BooleanVal;
-		Standard_Boolean BooleanVal(Standard_CString param, const Standard_Boolean def);
+		bool BooleanVal(const char * const param, const bool def);
 
 		/****** ShapeProcess_Context::GetBoolean ******/
-		/****** md5 signature: 9df27916e333b4d27bedc4c44beaf1d4 ******/
+		/****** md5 signature: 4e9a46ec80b7344bc38b443502b161dd ******/
 		%feature("compactdefaultargs") GetBoolean;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 
 Return
 -------
@@ -372,15 +371,15 @@ Description
 -----------
 No available documentation.
 ") GetBoolean;
-		Standard_Boolean GetBoolean(Standard_CString param, Standard_Boolean &OutValue);
+		bool GetBoolean(const char * const param, Standard_Boolean &OutValue);
 
 		/****** ShapeProcess_Context::GetInteger ******/
-		/****** md5 signature: f7b7ac81028a2992ab387f7d40982c83 ******/
+		/****** md5 signature: 6f315f07a24813f158ab4c8d0b8d4cbf ******/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 
 Return
 -------
@@ -390,33 +389,33 @@ Description
 -----------
 No available documentation.
 ") GetInteger;
-		Standard_Boolean GetInteger(Standard_CString param, Standard_Integer &OutValue);
+		bool GetInteger(const char * const param, Standard_Integer &OutValue);
 
 		/****** ShapeProcess_Context::GetReal ******/
-		/****** md5 signature: f76f4f5bd096be97f6395d4ae2b0c881 ******/
+		/****** md5 signature: eeea3b55115d4499ff0c894da9023650 ******/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 
 Return
 -------
-val: float
+val: double
 
 Description
 -----------
 No available documentation.
 ") GetReal;
-		Standard_Boolean GetReal(Standard_CString param, Standard_Real &OutValue);
+		bool GetReal(const char * const param, Standard_Real &OutValue);
 
 		/****** ShapeProcess_Context::GetString ******/
-		/****** md5 signature: d1aa90ddcb8f0c6991ce0ba3f0def1c1 ******/
+		/****** md5 signature: 7d572accd0bfec7521877a457c9233ee ******/
 		%feature("compactdefaultargs") GetString;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 val: str
 
 Return
@@ -427,16 +426,16 @@ Description
 -----------
 Get value of parameter as being of specific type Returns False if parameter is not defined or has a wrong type.
 ") GetString;
-		Standard_Boolean GetString(Standard_CString param, TCollection_AsciiString & val);
+		bool GetString(const char * const param, TCollection_AsciiString & val);
 
 		/****** ShapeProcess_Context::Init ******/
-		/****** md5 signature: 847da2713ad977e0b2dcccc69df0b25c ******/
+		/****** md5 signature: 38075dbf824c9714839ccb3d0cf6e7dc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
-scope: str (optional, default to "")
+file: char *
+scope: char * (optional, default to "")
 
 Return
 -------
@@ -446,15 +445,15 @@ Description
 -----------
 Initialises a tool by loading resource file and (if specified) sets starting scope Returns False if resource file not found.
 ") Init;
-		Standard_Boolean Init(Standard_CString file, Standard_CString scope = "");
+		bool Init(const char * const file, const char * const scope = "");
 
 		/****** ShapeProcess_Context::IntegerVal ******/
-		/****** md5 signature: 9d0714ed8df23981995ae835d1b115f2 ******/
+		/****** md5 signature: 4a089119d260c111e7c0caa4670a4bb8 ******/
 		%feature("compactdefaultargs") IntegerVal;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 def: int
 
 Return
@@ -465,15 +464,15 @@ Description
 -----------
 No available documentation.
 ") IntegerVal;
-		Standard_Integer IntegerVal(Standard_CString param, const Standard_Integer def);
+		int IntegerVal(const char * const param, const int def);
 
 		/****** ShapeProcess_Context::IsParamSet ******/
-		/****** md5 signature: b7b37179e228d9c93cbc70f5f2a1f388 ******/
+		/****** md5 signature: 87df701d7a5fdf8027b4149549f2447c ******/
 		%feature("compactdefaultargs") IsParamSet;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 
 Return
 -------
@@ -483,15 +482,15 @@ Description
 -----------
 Returns True if parameter is defined in the resource file.
 ") IsParamSet;
-		Standard_Boolean IsParamSet(Standard_CString param);
+		bool IsParamSet(const char * const param);
 
 		/****** ShapeProcess_Context::LoadResourceManager ******/
-		/****** md5 signature: e91c46eb5bef823da15ad18b28716741 ******/
+		/****** md5 signature: 83946b8e58a4f5c7d8499f37a19aab1d ******/
 		%feature("compactdefaultargs") LoadResourceManager;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
+file: char *
 
 Return
 -------
@@ -501,7 +500,7 @@ Description
 -----------
 Loading Resource_Manager object if this object not equal internal static Resource_Manager object or internal static Resource_Manager object is null.
 ") LoadResourceManager;
-		opencascade::handle<Resource_Manager> LoadResourceManager(Standard_CString file);
+		opencascade::handle<Resource_Manager> LoadResourceManager(const char * const file);
 
 		/****** ShapeProcess_Context::Messenger ******/
 		/****** md5 signature: c51845cdafadb143338935f519a3d7c7 ******/
@@ -517,23 +516,23 @@ Returns Messenger used for outputting messages.
 		opencascade::handle<Message_Messenger> Messenger();
 
 		/****** ShapeProcess_Context::RealVal ******/
-		/****** md5 signature: b3e5c67f2dd7912ff4b94cd089eeda0a ******/
+		/****** md5 signature: 9d281460d071377fdeebc29332b3aa54 ******/
 		%feature("compactdefaultargs") RealVal;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
-def: float
+param: char *
+def: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") RealVal;
-		Standard_Real RealVal(Standard_CString param, const Standard_Real def);
+		double RealVal(const char * const param, const double def);
 
 		/****** ShapeProcess_Context::ResourceManager ******/
 		/****** md5 signature: 6cc7683a80ec93119c306087ce89d4fc ******/
@@ -567,12 +566,12 @@ Sets Messenger used for outputting messages.
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
 		/****** ShapeProcess_Context::SetScope ******/
-		/****** md5 signature: 8ee5ae53e9b457435d5d63fa00ffc340 ******/
+		/****** md5 signature: a77b0d95ce8f2b26c1ab1796a2643e4e ******/
 		%feature("compactdefaultargs") SetScope;
 		%feature("autodoc", "
 Parameters
 ----------
-scope: str
+scope: char *
 
 Return
 -------
@@ -582,10 +581,10 @@ Description
 -----------
 Set a new (sub)scope.
 ") SetScope;
-		void SetScope(Standard_CString scope);
+		void SetScope(const char * const scope);
 
 		/****** ShapeProcess_Context::SetTraceLevel ******/
-		/****** md5 signature: b2d3fab409a6e2832ea6fb56a22812c1 ******/
+		/****** md5 signature: e0ab11a718ad5e49cf71db2e29fdf588 ******/
 		%feature("compactdefaultargs") SetTraceLevel;
 		%feature("autodoc", "
 Parameters
@@ -600,29 +599,29 @@ Description
 -----------
 Sets trace level used for outputting messages - 0: no trace at all - 1: errors - 2: errors and warnings - 3: all messages Default is 1: Errors traced.
 ") SetTraceLevel;
-		void SetTraceLevel(const Standard_Integer tracelev);
+		void SetTraceLevel(const int tracelev);
 
 		/****** ShapeProcess_Context::StringVal ******/
-		/****** md5 signature: ec376c06c836704e6cd2528dafcf8254 ******/
+		/****** md5 signature: ad83dfe687a1e4e0e37ebede537cad68 ******/
 		%feature("compactdefaultargs") StringVal;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
-def: str
+param: char *
+def: char *
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Get value of parameter as being of specific type If parameter is not defined or does not have expected type, returns default value as specified.
 ") StringVal;
-		Standard_CString StringVal(Standard_CString param, Standard_CString def);
+		const char * StringVal(const char * const param, const char * const def);
 
 		/****** ShapeProcess_Context::TraceLevel ******/
-		/****** md5 signature: 71a5f63811c28c261ef1f9e77d8b2618 ******/
+		/****** md5 signature: e1d3ff50d5bef880ca750eed35db1e8e ******/
 		%feature("compactdefaultargs") TraceLevel;
 		%feature("autodoc", "Return
 -------
@@ -632,7 +631,7 @@ Description
 -----------
 Returns trace level used for outputting messages.
 ") TraceLevel;
-		Standard_Integer TraceLevel();
+		int TraceLevel();
 
 		/****** ShapeProcess_Context::UnSetScope ******/
 		/****** md5 signature: 0d739e53be5f4f434204591261654f70 ******/
@@ -664,7 +663,7 @@ Go out of current scope.
 class ShapeProcess_OperLibrary {
 	public:
 		/****** ShapeProcess_OperLibrary::ApplyModifier ******/
-		/****** md5 signature: b322162cc954d340e91de4550fc0742f ******/
+		/****** md5 signature: 7139b1f7f548b70a2a331aa6258e0d9e ******/
 		%feature("compactdefaultargs") ApplyModifier;
 		%feature("autodoc", "
 Parameters
@@ -672,9 +671,9 @@ Parameters
 S: TopoDS_Shape
 context: ShapeProcess_ShapeContext
 M: BRepTools_Modification
-map: TopTools_DataMapOfShapeShape
-msg: ShapeExtend_MsgRegistrator (optional, default to 0)
-theMutableInput: bool (optional, default to Standard_False)
+map: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+msg: ShapeExtend_MsgRegistrator (optional, default to nullptr)
+theMutableInput: bool (optional, default to false)
 
 Return
 -------
@@ -684,7 +683,7 @@ Description
 -----------
 Applies BRepTools_Modification to a shape, taking into account sharing of components of compounds. if theMutableInput vat is set to true then input shape S can be modified during the modification process.
 ") ApplyModifier;
-		static TopoDS_Shape ApplyModifier(const TopoDS_Shape & S, const opencascade::handle<ShapeProcess_ShapeContext> & context, const opencascade::handle<BRepTools_Modification> & M, TopTools_DataMapOfShapeShape & map, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = 0, Standard_Boolean theMutableInput = Standard_False);
+		static TopoDS_Shape ApplyModifier(const TopoDS_Shape & S, const opencascade::handle<ShapeProcess_ShapeContext> & context, const opencascade::handle<BRepTools_Modification> & M, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & map, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr, bool theMutableInput = false);
 
 		/****** ShapeProcess_OperLibrary::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -715,7 +714,7 @@ Registers all the operators.
 class ShapeProcess_Operator : public Standard_Transient {
 	public:
 		/****** ShapeProcess_Operator::Perform ******/
-		/****** md5 signature: b2410fe629ca4604fd2f4736b7846dc2 ******/
+		/****** md5 signature: 7b28d5baa10915f6230064b92ffac108 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -731,7 +730,7 @@ Description
 -----------
 Performs operation and eventually records changes in the context.
 ") Perform;
-		virtual Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Perform(const opencascade::handle<ShapeProcess_Context> & context, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -750,13 +749,13 @@ Performs operation and eventually records changes in the context.
 class ShapeProcess_ShapeContext : public ShapeProcess_Context {
 	public:
 		/****** ShapeProcess_ShapeContext::ShapeProcess_ShapeContext ******/
-		/****** md5 signature: 20f4e66b475119e7c804f3036fb6c3b6 ******/
+		/****** md5 signature: 3729cd6af9e8fb162b92b4c90a3f64fd ******/
 		%feature("compactdefaultargs") ShapeProcess_ShapeContext;
 		%feature("autodoc", "
 Parameters
 ----------
-file: str
-seq: str (optional, default to "")
+file: char *
+seq: char * (optional, default to "")
 
 Return
 -------
@@ -766,17 +765,17 @@ Description
 -----------
 No available documentation.
 ") ShapeProcess_ShapeContext;
-		 ShapeProcess_ShapeContext(Standard_CString file, Standard_CString seq = "");
+		 ShapeProcess_ShapeContext(const char * const file, const char * const seq = "");
 
 		/****** ShapeProcess_ShapeContext::ShapeProcess_ShapeContext ******/
-		/****** md5 signature: bbe323f78f09a408b3fe5639953403da ******/
+		/****** md5 signature: b3a4efca54894192fb043ba37c04e534 ******/
 		%feature("compactdefaultargs") ShapeProcess_ShapeContext;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-file: str
-seq: str (optional, default to "")
+file: char *
+seq: char * (optional, default to "")
 
 Return
 -------
@@ -786,7 +785,7 @@ Description
 -----------
 Initializes a tool by resource file and shape to be processed.
 ") ShapeProcess_ShapeContext;
-		 ShapeProcess_ShapeContext(const TopoDS_Shape & S, Standard_CString file, Standard_CString seq = "");
+		 ShapeProcess_ShapeContext(const TopoDS_Shape & S, const char * const file, const char * const seq = "");
 
 		/****** ShapeProcess_ShapeContext::AddMessage ******/
 		/****** md5 signature: d6c4b099fe68ccec72d5d85c1d0b829f ******/
@@ -809,12 +808,12 @@ Record a message for shape S Shape S should be one of subshapes of original shap
 		void AddMessage(const TopoDS_Shape & S, const Message_Msg & msg, const Message_Gravity gravity = Message_Warning);
 
 		/****** ShapeProcess_ShapeContext::ContinuityVal ******/
-		/****** md5 signature: b777d734b7118a1cd0601529d462f08e ******/
+		/****** md5 signature: 6ab94cd310e99f11d4e6e01ad19ad734 ******/
 		%feature("compactdefaultargs") ContinuityVal;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 def: GeomAbs_Shape
 
 Return
@@ -825,15 +824,15 @@ Description
 -----------
 Get value of parameter as being of the type GeomAbs_Shape If parameter is not defined or does not have expected type, returns default value as specified.
 ") ContinuityVal;
-		GeomAbs_Shape ContinuityVal(Standard_CString param, const GeomAbs_Shape def);
+		GeomAbs_Shape ContinuityVal(const char * const param, const GeomAbs_Shape def);
 
 		/****** ShapeProcess_ShapeContext::GetContinuity ******/
-		/****** md5 signature: 8156d1ea5c38e69794d6923a701e0552 ******/
+		/****** md5 signature: 1afbfeb033133aef45b0b58b512626f3 ******/
 		%feature("compactdefaultargs") GetContinuity;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str
+param: char *
 
 Return
 -------
@@ -843,7 +842,7 @@ Description
 -----------
 Get value of parameter as being of the type GeomAbs_Shape Returns False if parameter is not defined or has a wrong type.
 ") GetContinuity;
-		Standard_Boolean GetContinuity(Standard_CString param, GeomAbs_Shape &OutValue);
+		bool GetContinuity(const char * const param, GeomAbs_Shape &OutValue);
 
 		/****** ShapeProcess_ShapeContext::GetDetalisation ******/
 		/****** md5 signature: 39c7fd043c5ef7a11d722274e748b546 ******/
@@ -877,7 +876,7 @@ Initializes tool by a new shape and clears all results.
 		void Init(const TopoDS_Shape & S);
 
 		/****** ShapeProcess_ShapeContext::IsNonManifold ******/
-		/****** md5 signature: 85615c859bdc55645bc1d336aa403598 ******/
+		/****** md5 signature: ba60ab3392e477866d51e486b6aa83cf ******/
 		%feature("compactdefaultargs") IsNonManifold;
 		%feature("autodoc", "Return
 -------
@@ -887,20 +886,20 @@ Description
 -----------
 Get NonManifold flag.
 ") IsNonManifold;
-		Standard_Boolean IsNonManifold();
+		bool IsNonManifold();
 
 		/****** ShapeProcess_ShapeContext::Map ******/
-		/****** md5 signature: f3544fddbdbe445b92ed0b96e5dc0e82 ******/
+		/****** md5 signature: b34ea465b2355c04a32cf93b0f47fc3f ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TopTools_DataMapOfShapeShape
+NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 Returns map of replacements shape -> shape This map is not recursive.
 ") Map;
-		const TopTools_DataMapOfShapeShape & Map();
+		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> Map();
 
 		/****** ShapeProcess_ShapeContext::Messages ******/
 		/****** md5 signature: 4bcb959a43c79d763ed04d57cd2f32ff ******/
@@ -942,13 +941,13 @@ Prints statistics on Shape Processing onto the current Messenger.
 		void PrintStatistics();
 
 		/****** ShapeProcess_ShapeContext::RecordModification ******/
-		/****** md5 signature: 5910cf7b53b64b7f6eb689e3ad5e4130 ******/
+		/****** md5 signature: 44f955e9884eda852166bf3f118443db ******/
 		%feature("compactdefaultargs") RecordModification;
 		%feature("autodoc", "
 Parameters
 ----------
-repl: TopTools_DataMapOfShapeShape
-msg: ShapeExtend_MsgRegistrator (optional, default to 0)
+repl: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+msg: ShapeExtend_MsgRegistrator (optional, default to nullptr)
 
 Return
 -------
@@ -958,7 +957,7 @@ Description
 -----------
 No available documentation.
 ") RecordModification;
-		void RecordModification(const TopTools_DataMapOfShapeShape & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = 0);
+		void RecordModification(const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr);
 
 		/****** ShapeProcess_ShapeContext::RecordModification ******/
 		/****** md5 signature: 7003d8786e0ab31160304d31b2f0ffe5 ******/
@@ -998,14 +997,14 @@ No available documentation.
 		void RecordModification(const opencascade::handle<ShapeBuild_ReShape> & repl);
 
 		/****** ShapeProcess_ShapeContext::RecordModification ******/
-		/****** md5 signature: a6e67ee56c4448930fb9467c96f1f088 ******/
+		/****** md5 signature: ae03188fb733fc66e1574c800f115d03 ******/
 		%feature("compactdefaultargs") RecordModification;
 		%feature("autodoc", "
 Parameters
 ----------
 sh: TopoDS_Shape
 repl: BRepTools_Modifier
-msg: ShapeExtend_MsgRegistrator (optional, default to 0)
+msg: ShapeExtend_MsgRegistrator (optional, default to nullptr)
 
 Return
 -------
@@ -1015,7 +1014,7 @@ Description
 -----------
 Records modifications and resets result accordingly NOTE: modification of resulting shape should be explicitly defined in the maps along with modifications of subshapes //! In the last function, sh is the shape on which Modifier was run. It can be different from the whole shape, but in that case result as a whole should be reset later either by call to SetResult(), or by another call to RecordModification() which contains mapping of current result to a new one explicitly.
 ") RecordModification;
-		void RecordModification(const TopoDS_Shape & sh, const BRepTools_Modifier & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = 0);
+		void RecordModification(const TopoDS_Shape & sh, const BRepTools_Modifier & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr);
 
 		/****** ShapeProcess_ShapeContext::Result ******/
 		/****** md5 signature: 64e8e20a963b00a422945949bd4e1549 ******/
@@ -1049,7 +1048,7 @@ No available documentation.
 		void SetDetalisation(const TopAbs_ShapeEnum level);
 
 		/****** ShapeProcess_ShapeContext::SetNonManifold ******/
-		/****** md5 signature: db259f4c5acea89a0f836fc005f1b3b3 ******/
+		/****** md5 signature: 758ac000160848435c059499390bb557 ******/
 		%feature("compactdefaultargs") SetNonManifold;
 		%feature("autodoc", "
 Parameters
@@ -1064,7 +1063,7 @@ Description
 -----------
 Set NonManifold flag.
 ") SetNonManifold;
-		void SetNonManifold(Standard_Boolean theNonManifold);
+		void SetNonManifold(bool theNonManifold);
 
 		/****** ShapeProcess_ShapeContext::SetResult ******/
 		/****** md5 signature: 53ecd78f2e971f6e061f01fa79870f7f ******/
@@ -1132,7 +1131,7 @@ Creates operator with implementation defined as OperFunc (static function).
 		 ShapeProcess_UOperator(const ShapeProcess_OperFunc func);
 
 		/****** ShapeProcess_UOperator::Perform ******/
-		/****** md5 signature: 24c3bd22390455c26b649fc0127bc193 ******/
+		/****** md5 signature: 8b6bbd194a9b377589c4752249a84bee ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1148,7 +1147,7 @@ Description
 -----------
 Performs operation and records changes in the context.
 ") Perform;
-		virtual Standard_Boolean Perform(const opencascade::handle<ShapeProcess_Context> & context, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(const opencascade::handle<ShapeProcess_Context> & context, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

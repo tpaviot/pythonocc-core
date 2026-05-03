@@ -124,14 +124,14 @@ returns the current face.
 		const TopoDS_Face Face();
 
 		/****** BRepIntCurveSurface_Inter::Init ******/
-		/****** md5 signature: 07985eba3bf85498690ed01b37f51fca ******/
+		/****** md5 signature: 4c193549f8f89d7ec4f78bca468da43d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theCurve: GeomAdaptor_Curve
-theTol: float
+theTol: double
 
 Return
 -------
@@ -141,17 +141,17 @@ Description
 -----------
 Load the Shape, the curve and initialize the tolerance used for the classification.
 ") Init;
-		void Init(const TopoDS_Shape & theShape, const GeomAdaptor_Curve & theCurve, const Standard_Real theTol);
+		void Init(const TopoDS_Shape & theShape, const GeomAdaptor_Curve & theCurve, const double theTol);
 
 		/****** BRepIntCurveSurface_Inter::Init ******/
-		/****** md5 signature: 3b1e312f54bb7607e78407ff166c1205 ******/
+		/****** md5 signature: dbfa49b9a1db7a38ed60acf690ff5351 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theLine: gp_Lin
-theTol: float
+theTol: double
 
 Return
 -------
@@ -161,7 +161,7 @@ Description
 -----------
 Load the Shape, the curve and initialize the tolerance used for the classification.
 ") Init;
-		void Init(const TopoDS_Shape & theShape, const gp_Lin & theLine, const Standard_Real theTol);
+		void Init(const TopoDS_Shape & theShape, const gp_Lin & theLine, const double theTol);
 
 		/****** BRepIntCurveSurface_Inter::Init ******/
 		/****** md5 signature: 520ca4890c4d0b4a44c85c9b44d9905c ******/
@@ -182,13 +182,13 @@ Method to find intersections of specified curve with loaded shape.
 		void Init(const GeomAdaptor_Curve & theCurve);
 
 		/****** BRepIntCurveSurface_Inter::Load ******/
-		/****** md5 signature: a747fed191518a6d90101ad47bb98e22 ******/
+		/****** md5 signature: 47adb766b615c8392f79dd00d219e77e ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theTol: float
+theTol: double
 
 Return
 -------
@@ -198,10 +198,10 @@ Description
 -----------
 Load the Shape, and initialize the tolerance used for the classification.
 ") Load;
-		void Load(const TopoDS_Shape & theShape, const Standard_Real theTol);
+		void Load(const TopoDS_Shape & theShape, const double theTol);
 
 		/****** BRepIntCurveSurface_Inter::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -211,7 +211,7 @@ Description
 -----------
 returns True if there is a current face.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BRepIntCurveSurface_Inter::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -279,43 +279,43 @@ returns the transition of the line on the surface (IN or OUT or UNKNOWN).
 		IntCurveSurface_TransitionOnCurve Transition();
 
 		/****** BRepIntCurveSurface_Inter::U ******/
-		/****** md5 signature: dd41b21b6ce05c48c2d8d002663816e1 ******/
+		/****** md5 signature: 24a52b75fd4611a4a916df4a2ae4ce79 ******/
 		%feature("compactdefaultargs") U;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the U parameter of the current point on the current face.
 ") U;
-		Standard_Real U();
+		double U();
 
 		/****** BRepIntCurveSurface_Inter::V ******/
-		/****** md5 signature: a561db1f9ebb0e926d3862b2e88ce187 ******/
+		/****** md5 signature: 9cf199b5c48f75fe3b18269f74bd944d ******/
 		%feature("compactdefaultargs") V;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the V parameter of the current point on the current face.
 ") V;
-		Standard_Real V();
+		double V();
 
 		/****** BRepIntCurveSurface_Inter::W ******/
-		/****** md5 signature: dde24677dd63b48ccacea2fe8006eed7 ******/
+		/****** md5 signature: cbc50f6628b29f2a86ad0521bdf9bc53 ******/
 		%feature("compactdefaultargs") W;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the parameter of the current point on the curve.
 ") W;
-		Standard_Real W();
+		double W();
 
 };
 

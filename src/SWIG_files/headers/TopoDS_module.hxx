@@ -30,8 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDS_FrozenShape.hxx>
 #include<TopoDS_HShape.hxx>
 #include<TopoDS_Iterator.hxx>
-#include<TopoDS_ListIteratorOfListOfShape.hxx>
-#include<TopoDS_ListOfShape.hxx>
 #include<TopoDS_LockedShape.hxx>
 #include<TopoDS_Shape.hxx>
 #include<TopoDS_Shell.hxx>

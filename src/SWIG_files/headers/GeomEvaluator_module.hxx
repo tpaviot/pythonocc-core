@@ -19,11 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define GEOMEVALUATOR_HXX
 
 
-#include<GeomEvaluator_Curve.hxx>
-#include<GeomEvaluator_OffsetCurve.hxx>
-#include<GeomEvaluator_OffsetSurface.hxx>
-#include<GeomEvaluator_Surface.hxx>
-#include<GeomEvaluator_SurfaceOfExtrusion.hxx>
-#include<GeomEvaluator_SurfaceOfRevolution.hxx>
 
 #endif // GEOMEVALUATOR_HXX

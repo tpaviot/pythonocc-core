@@ -45,10 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_locope.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
-#include<TColgp_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TColGeom_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
 #include<TColStd_module.hxx>
@@ -74,10 +71,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_locope.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
-%import TColgp.i
-%import TopTools.i
 %import TopAbs.i
-%import TColGeom.i
 %import gp.i
 %import Geom.i
 
@@ -115,6 +109,8 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,gp_Pnt,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,gp_Pnt,TopTools_ShapeMapHasher>::KeyValues;
 %template(LocOpe_DataMapOfShapePnt) NCollection_DataMap<TopoDS_Shape,gp_Pnt,TopTools_ShapeMapHasher>;
 %template(LocOpe_SequenceOfCirc) NCollection_Sequence<gp_Circ>;
 
@@ -157,7 +153,7 @@ typedef NCollection_Sequence<LocOpe_PntFace> LocOpe_SequenceOfPntFace;
 class LocOpe {
 	public:
 		/****** LocOpe::Closed ******/
-		/****** md5 signature: fbb157484e330feceec7d488110ae1e4 ******/
+		/****** md5 signature: d7c2377f578d275ab699900e3474f3d7 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -171,12 +167,12 @@ bool
 
 Description
 -----------
-Returns Standard_True when the wire <W> is closed on the face <OnF>.
+Returns true when the wire <W> is closed on the face <OnF>.
 ") Closed;
-		static Standard_Boolean Closed(const TopoDS_Wire & W, const TopoDS_Face & OnF);
+		static bool Closed(const TopoDS_Wire & W, const TopoDS_Face & OnF);
 
 		/****** LocOpe::Closed ******/
-		/****** md5 signature: 2669c9687e0732c0038f16d1daf4d6a2 ******/
+		/****** md5 signature: 1991b0564eb645808b8cbf36375c8866 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -190,18 +186,18 @@ bool
 
 Description
 -----------
-Returns Standard_True when the edge <E> is closed on the face <OnF>.
+Returns true when the edge <E> is closed on the face <OnF>.
 ") Closed;
-		static Standard_Boolean Closed(const TopoDS_Edge & E, const TopoDS_Face & OnF);
+		static bool Closed(const TopoDS_Edge & E, const TopoDS_Face & OnF);
 
 		/****** LocOpe::SampleEdges ******/
-		/****** md5 signature: f1154ae22c369e9497c31a5a83612489 ******/
+		/****** md5 signature: 2ce5cdc73a2ff7a08367472fc563a245 ******/
 		%feature("compactdefaultargs") SampleEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Pt: TColgp_SequenceOfPnt
+Pt: NCollection_Sequence<gp_Pnt>
 
 Return
 -------
@@ -211,10 +207,10 @@ Description
 -----------
 No available documentation.
 ") SampleEdges;
-		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
+		static void SampleEdges(const TopoDS_Shape & S, NCollection_Sequence<gp_Pnt> & Pt);
 
 		/****** LocOpe::TgtFaces ******/
-		/****** md5 signature: c906e89846aea6959f05edaa2974e4bd ******/
+		/****** md5 signature: 0a93567d8dbaff47a02b4a8ef41a0fe0 ******/
 		%feature("compactdefaultargs") TgtFaces;
 		%feature("autodoc", "
 Parameters
@@ -229,9 +225,9 @@ bool
 
 Description
 -----------
-Returns Standard_True when the faces are tangent.
+Returns true when the faces are tangent.
 ") TgtFaces;
-		static Standard_Boolean TgtFaces(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2);
+		static bool TgtFaces(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
 };
 
@@ -261,12 +257,12 @@ No available documentation.
 		 LocOpe_BuildShape();
 
 		/****** LocOpe_BuildShape::LocOpe_BuildShape ******/
-		/****** md5 signature: 292d904c875e5cb94eb3da4e102f5625 ******/
+		/****** md5 signature: d8c764d1113d9ba6bb61f543df0c5c49 ******/
 		%feature("compactdefaultargs") LocOpe_BuildShape;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -276,15 +272,15 @@ Description
 -----------
 Builds shape(s) from the list <L>. Uses only the faces of <L>.
 ") LocOpe_BuildShape;
-		 LocOpe_BuildShape(const TopTools_ListOfShape & L);
+		 LocOpe_BuildShape(const NCollection_List<TopoDS_Shape> & L);
 
 		/****** LocOpe_BuildShape::Perform ******/
-		/****** md5 signature: aef5bdb5986ea65197c9e51e771dc9fa ******/
+		/****** md5 signature: b270647b13c6414b2c9a30cdcf09419a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -294,7 +290,7 @@ Description
 -----------
 Builds shape(s) from the list <L>. Uses only the faces of <L>.
 ") Perform;
-		void Perform(const TopTools_ListOfShape & L);
+		void Perform(const NCollection_List<TopoDS_Shape> & L);
 
 		/****** LocOpe_BuildShape::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -337,12 +333,12 @@ No available documentation.
 		 LocOpe_BuildWires();
 
 		/****** LocOpe_BuildWires::LocOpe_BuildWires ******/
-		/****** md5 signature: c84cb440017a86449afe8570398493c3 ******/
+		/****** md5 signature: cc777b15d6822698a3b99f6eaa54af2a ******/
 		%feature("compactdefaultargs") LocOpe_BuildWires;
 		%feature("autodoc", "
 Parameters
 ----------
-Ledges: TopTools_ListOfShape
+Ledges: NCollection_List<TopoDS_Shape>
 PW: LocOpe_WiresOnShape
 
 Return
@@ -353,10 +349,10 @@ Description
 -----------
 No available documentation.
 ") LocOpe_BuildWires;
-		 LocOpe_BuildWires(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
+		 LocOpe_BuildWires(const NCollection_List<TopoDS_Shape> & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
 		/****** LocOpe_BuildWires::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -366,15 +362,15 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_BuildWires::Perform ******/
-		/****** md5 signature: 614ea950b6600d6429bebd9def612a4e ******/
+		/****** md5 signature: 16e47df1e01c40694ae4f6dc7a11d5bc ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Ledges: TopTools_ListOfShape
+Ledges: NCollection_List<TopoDS_Shape>
 PW: LocOpe_WiresOnShape
 
 Return
@@ -385,20 +381,20 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
+		void Perform(const NCollection_List<TopoDS_Shape> & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
 		/****** LocOpe_BuildWires::Result ******/
-		/****** md5 signature: 681704f874a846c02474e624abdd199e ******/
+		/****** md5 signature: 83e504274481e6f00be7aae49621d422 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Result;
-		const TopTools_ListOfShape & Result();
+		const NCollection_List<TopoDS_Shape> Result();
 
 };
 
@@ -477,7 +473,7 @@ Performs the intersection between <Ax1 and <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** LocOpe_CSIntersector::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -485,19 +481,19 @@ bool
 
 Description
 -----------
-Returns <Standard_True> if the intersection has been done.
+Returns <true> if the intersection has been done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_CSIntersector::LocalizeAfter ******/
-		/****** md5 signature: 0c047f3521a889ad3beace61675cb16c ******/
+		/****** md5 signature: 2781d84352d68d7c468e35684c7297f2 ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-From: float
-Tol: float
+From: double
+Tol: double
 
 Return
 -------
@@ -507,19 +503,19 @@ IndTo: int
 
 Description
 -----------
-On the element of range <I>, searches the first intersection point located after the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
+On the element of range <I>, searches the first intersection point located after the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <false>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeAfter(const int I, const double From, const double Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::LocalizeAfter ******/
-		/****** md5 signature: d56de202f543156481760d3d927eea66 ******/
+		/****** md5 signature: 27e8b3f2f63ec74537c671e5b17771fc ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
 FromInd: int
-Tol: float
+Tol: double
 
 Return
 -------
@@ -529,19 +525,19 @@ IndTo: int
 
 Description
 -----------
-On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
+On the element of range <I>, searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <false>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeAfter(const int I, const int FromInd, const double Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::LocalizeBefore ******/
-		/****** md5 signature: 5b2b6de66ba5a81aeee8506f68cfc270 ******/
+		/****** md5 signature: 86c777f036ae438d128725bc69d4b350 ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
-From: float
-Tol: float
+From: double
+Tol: double
 
 Return
 -------
@@ -551,19 +547,19 @@ IndTo: int
 
 Description
 -----------
-On the element of range <I>, searches the first intersection point located before the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
+On the element of range <I>, searches the first intersection point located before the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <false>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeBefore(const int I, const double From, const double Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::LocalizeBefore ******/
-		/****** md5 signature: 89f05e176ad1cd9828188d9a6ada9149 ******/
+		/****** md5 signature: a70b72cb26c5ec78466138f744018795 ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 I: int
 FromInd: int
-Tol: float
+Tol: double
 
 Return
 -------
@@ -573,12 +569,12 @@ IndTo: int
 
 Description
 -----------
-On the element of range <I>, searches the first intersection point located before the index <FromInd> ( <= FromInd -1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <Standard_False>.
+On the element of range <I>, searches the first intersection point located before the index <FromInd> (<= FromInd -1), which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). <Tol> is used to determine if 2 parameters are equal. //! Otherwise, returns <false>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeBefore(const int I, const int FromInd, const double Tol, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CSIntersector::NbPoints ******/
-		/****** md5 signature: 8d71e01fa7b21bd925ab1ef4bd70145e ******/
+		/****** md5 signature: fdefc715355f14c2eaf6464a6af5a9bb ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "
 Parameters
@@ -593,15 +589,15 @@ Description
 -----------
 Returns the number of intersection point on the element of range <I>.
 ") NbPoints;
-		Standard_Integer NbPoints(const Standard_Integer I);
+		int NbPoints(const int I);
 
 		/****** LocOpe_CSIntersector::Perform ******/
-		/****** md5 signature: 54d68fc86781272bd4fc9950f77e7f8f ******/
+		/****** md5 signature: 189c92a5029cc595eaa2b0a59f152b70 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Slin: LocOpe_SequenceOfLin
+Slin: NCollection_Sequence<gp_Lin>
 
 Return
 -------
@@ -611,15 +607,15 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const LocOpe_SequenceOfLin & Slin);
+		void Perform(const NCollection_Sequence<gp_Lin> & Slin);
 
 		/****** LocOpe_CSIntersector::Perform ******/
-		/****** md5 signature: 1e965e9e0424adbdc49d9f0eb8d86799 ******/
+		/****** md5 signature: 75427f6a997b85e616ff1ee9d5946e8a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Scir: LocOpe_SequenceOfCirc
+Scir: NCollection_Sequence<gp_Circ>
 
 Return
 -------
@@ -629,15 +625,15 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const LocOpe_SequenceOfCirc & Scir);
+		void Perform(const NCollection_Sequence<gp_Circ> & Scir);
 
 		/****** LocOpe_CSIntersector::Perform ******/
-		/****** md5 signature: bcd495517b0442eb41ba4df47bb16c1e ******/
+		/****** md5 signature: 155f16cfeeffd209e065bc04d56be3dd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Scur: TColGeom_SequenceOfCurve
+Scur: Geom_Curve
 
 Return
 -------
@@ -647,10 +643,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const TColGeom_SequenceOfCurve & Scur);
+		void Perform(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & Scur);
 
 		/****** LocOpe_CSIntersector::Point ******/
-		/****** md5 signature: be9b7393a058f951546484423e8f5511 ******/
+		/****** md5 signature: 0c3c4b16e4f7e34feeb2fba0e382aa8c ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -666,7 +662,7 @@ Description
 -----------
 Returns the intersection point of range <Index> on element of range <I>. The points are sorted in increasing order of parameter along the axis.
 ") Point;
-		const LocOpe_PntFace & Point(const Standard_Integer I, const Standard_Integer Index);
+		const LocOpe_PntFace & Point(const int I, const int Index);
 
 };
 
@@ -729,7 +725,7 @@ None
 
 Description
 -----------
-Creates and performs yte intersection between <C> and <S>.
+Creates and performs the intersection between <C> and <S>.
 ") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector(const gp_Circ & C, const TopoDS_Shape & S);
 
@@ -772,7 +768,7 @@ Performs the intersection between <Ax1 and <S>.
 		void Init(const gp_Circ & C, const TopoDS_Shape & S);
 
 		/****** LocOpe_CurveShapeIntersector::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -780,17 +776,17 @@ bool
 
 Description
 -----------
-Returns <Standard_True> if the intersection has been done.
+Returns <true> if the intersection has been done.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeAfter ******/
-		/****** md5 signature: db4c67a77f192de37c747de6a6aed7d3 ******/
+		/****** md5 signature: 6a4f76dde0d7d8faf1c729828ad61b09 ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
 ----------
-From: float
+From: double
 
 Return
 -------
@@ -800,12 +796,12 @@ IndTo: int
 
 Description
 -----------
-Searches the first intersection point located after the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
+Searches the first intersection point located after the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <false>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Real From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeAfter(const double From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeAfter ******/
-		/****** md5 signature: dc5b7987079415874eaa183c6149c405 ******/
+		/****** md5 signature: 20dca8d7140e89b594f1d8858e2e2622 ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
@@ -820,17 +816,17 @@ IndTo: int
 
 Description
 -----------
-Searches the first intersection point located after the index <FromInd> ( >= FromInd + 1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
+Searches the first intersection point located after the index <FromInd> (>= FromInd + 1), which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point. (IndFrom <= IndTo). //! Otherwise, returns <false>.
 ") LocalizeAfter;
-		Standard_Boolean LocalizeAfter(const Standard_Integer FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeAfter(const int FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeBefore ******/
-		/****** md5 signature: fbf6caaf11561e5474c6e8bcbfa6392a ******/
+		/****** md5 signature: 3c362f47c3303d651d28db9d0dc5dcda ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
 ----------
-From: float
+From: double
 
 Return
 -------
@@ -840,12 +836,12 @@ IndTo: int
 
 Description
 -----------
-Searches the first intersection point located before the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
+Searches the first intersection point located before the parameter <From>, which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <false>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Real From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeBefore(const double From, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::LocalizeBefore ******/
-		/****** md5 signature: 977b8e8fd7ae8fde8152e2d971922b09 ******/
+		/****** md5 signature: bbfc613e5469e7ddb15de2aada860ca5 ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
@@ -860,12 +856,12 @@ IndTo: int
 
 Description
 -----------
-Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), which orientation is not TopAbs_EXTERNAL. If found, returns <Standard_True>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <Standard_False>.
+Searches the first intersection point located before the index <FromInd> ( <= FromInd -1), which orientation is not TopAbs_EXTERNAL. If found, returns <true>. <Or> contains the orientation of the point, <IndFrom> and <IndTo> represents the interval of index in the sequence of intersection point corresponding to the point (IndFrom <= IndTo). //! Otherwise, returns <false>.
 ") LocalizeBefore;
-		Standard_Boolean LocalizeBefore(const Standard_Integer FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool LocalizeBefore(const int FromInd, TopAbs_Orientation &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** LocOpe_CurveShapeIntersector::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -875,10 +871,10 @@ Description
 -----------
 Returns the number of intersection point.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** LocOpe_CurveShapeIntersector::Point ******/
-		/****** md5 signature: 18d4bf115bf073ea4a2498ffabdab770 ******/
+		/****** md5 signature: b44b09d8da413116ab464799b694acda ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -893,7 +889,7 @@ Description
 -----------
 Returns the intersection point of range <Index>. The points are sorted in increasing order of parameter along the axis.
 ") Point;
-		const LocOpe_PntFace & Point(const Standard_Integer Index);
+		const LocOpe_PntFace & Point(const int Index);
 
 };
 
@@ -910,15 +906,15 @@ Returns the intersection point of range <Index>. The points are sorted in increa
 class LocOpe_DPrism {
 	public:
 		/****** LocOpe_DPrism::LocOpe_DPrism ******/
-		/****** md5 signature: 58c05f5bb67aae28e1d395cddb81eb58 ******/
+		/****** md5 signature: dacdca50edc0fd1fc66859032e53ff8c ******/
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", "
 Parameters
 ----------
 Spine: TopoDS_Face
-Height1: float
-Height2: float
-Angle: float
+Height1: double
+Height2: double
+Angle: double
 
 Return
 -------
@@ -928,17 +924,17 @@ Description
 -----------
 No available documentation.
 ") LocOpe_DPrism;
-		 LocOpe_DPrism(const TopoDS_Face & Spine, const Standard_Real Height1, const Standard_Real Height2, const Standard_Real Angle);
+		 LocOpe_DPrism(const TopoDS_Face & Spine, const double Height1, const double Height2, const double Angle);
 
 		/****** LocOpe_DPrism::LocOpe_DPrism ******/
-		/****** md5 signature: 94b73c39f3776b4d086b62f127b6771e ******/
+		/****** md5 signature: f39fc7da8bec97127e0cf2cc6293cae3 ******/
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", "
 Parameters
 ----------
 Spine: TopoDS_Face
-Height: float
-Angle: float
+Height: double
+Angle: double
 
 Return
 -------
@@ -948,7 +944,7 @@ Description
 -----------
 No available documentation.
 ") LocOpe_DPrism;
-		 LocOpe_DPrism(const TopoDS_Face & Spine, const Standard_Real Height, const Standard_Real Angle);
+		 LocOpe_DPrism(const TopoDS_Face & Spine, const double Height, const double Angle);
 
 		/****** LocOpe_DPrism::BarycCurve ******/
 		/****** md5 signature: 84f06532e4d5bbe2363bba52b4d91200 ******/
@@ -964,12 +960,12 @@ No available documentation.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** LocOpe_DPrism::Curves ******/
-		/****** md5 signature: 3cd8ae8d636ea132b7feab04844c473e ******/
+		/****** md5 signature: 2bc5dc27fc029256991027a0d8ed6fa5 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-SCurves: TColGeom_SequenceOfCurve
+SCurves: Geom_Curve
 
 Return
 -------
@@ -979,7 +975,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(TColGeom_SequenceOfCurve & SCurves);
+		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & SCurves);
 
 		/****** LocOpe_DPrism::FirstShape ******/
 		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
@@ -995,7 +991,7 @@ No available documentation.
 		const TopoDS_Shape FirstShape();
 
 		/****** LocOpe_DPrism::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1005,7 +1001,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_DPrism::LastShape ******/
 		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
@@ -1047,7 +1043,7 @@ No available documentation.
 		const TopoDS_Shape Shape();
 
 		/****** LocOpe_DPrism::Shapes ******/
-		/****** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ******/
+		/****** md5 signature: 6893c0a8043f0c4a7bec2afcb318259f ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -1056,13 +1052,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_DPrism::Spine ******/
 		/****** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ******/
@@ -1163,7 +1159,7 @@ No available documentation.
 		void InitIterator();
 
 		/****** LocOpe_FindEdges::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1173,7 +1169,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** LocOpe_FindEdges::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1280,7 +1276,7 @@ No available documentation.
 		void Init();
 
 		/****** LocOpe_FindEdgesInFace::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1290,7 +1286,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** LocOpe_FindEdgesInFace::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1376,30 +1372,30 @@ Returns the face created by the edge <E>. If none, must return a null shape.
 		virtual TopoDS_Face Generated(const TopoDS_Edge & E);
 
 		/****** LocOpe_GeneratedShape::GeneratingEdges ******/
-		/****** md5 signature: 86d79bf42e19a8928d504fa3eb0518fb ******/
+		/****** md5 signature: 0e2250d836aeae0c114d38878fef969c ******/
 		%feature("compactdefaultargs") GeneratingEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") GeneratingEdges;
-		virtual const TopTools_ListOfShape & GeneratingEdges();
+		virtual const NCollection_List<TopoDS_Shape> GeneratingEdges();
 
 		/****** LocOpe_GeneratedShape::OrientedFaces ******/
-		/****** md5 signature: 4ac50ba921eaec682bb022c4c72c3f73 ******/
+		/****** md5 signature: 2f0ad793faf07fd02ee98c37edc09272 ******/
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of correctly oriented generated faces.
 ") OrientedFaces;
-		virtual const TopTools_ListOfShape & OrientedFaces();
+		virtual const NCollection_List<TopoDS_Shape> OrientedFaces();
 
 };
 
@@ -1449,7 +1445,7 @@ Creates the algorithm on the shape <S>.
 		 LocOpe_Generator(const TopoDS_Shape & S);
 
 		/****** LocOpe_Generator::DescendantFace ******/
-		/****** md5 signature: 30ca8cffd4d1287532f4a07b95211e9e ******/
+		/****** md5 signature: 373f05d6b05045666ad08a7970186a95 ******/
 		%feature("compactdefaultargs") DescendantFace;
 		%feature("autodoc", "
 Parameters
@@ -1458,13 +1454,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
 ") DescendantFace;
-		const TopTools_ListOfShape & DescendantFace(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> DescendantFace(const TopoDS_Face & F);
 
 		/****** LocOpe_Generator::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -1485,7 +1481,7 @@ Initializes the algorithm on the shape <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** LocOpe_Generator::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1495,7 +1491,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_Generator::Perform ******/
 		/****** md5 signature: fcb599904c10f6cd1e4c4ba45080c4f5 ******/
@@ -1639,7 +1635,7 @@ No available documentation.
 		void Bind(const TopoDS_Edge & Enew, const TopoDS_Edge & Ebase);
 
 		/****** LocOpe_Gluer::DescendantFaces ******/
-		/****** md5 signature: c46a5914c3b94b6137edf6b04681854b ******/
+		/****** md5 signature: 8fcd4f80b33f6d7adf5d907cbaf76ef2 ******/
 		%feature("compactdefaultargs") DescendantFaces;
 		%feature("autodoc", "
 Parameters
@@ -1648,26 +1644,26 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") DescendantFaces;
-		const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> DescendantFaces(const TopoDS_Face & F);
 
 		/****** LocOpe_Gluer::Edges ******/
-		/****** md5 signature: 12cb468babe503b836d4bfcfd0341963 ******/
+		/****** md5 signature: 037aaf7464b521eb3427cc0fdaf891f0 ******/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Edges;
-		const TopTools_ListOfShape & Edges();
+		const NCollection_List<TopoDS_Shape> Edges();
 
 		/****** LocOpe_Gluer::GluedShape ******/
 		/****** md5 signature: cc05062c19ffec36edea50e2f74757fb ******/
@@ -1702,7 +1698,7 @@ No available documentation.
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Snew);
 
 		/****** LocOpe_Gluer::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1712,7 +1708,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_Gluer::OpeType ******/
 		/****** md5 signature: 6301740c99fde6f602c33a48a205b637 ******/
@@ -1754,17 +1750,17 @@ No available documentation.
 		const TopoDS_Shape ResultingShape();
 
 		/****** LocOpe_Gluer::TgtEdges ******/
-		/****** md5 signature: 2c3d33bfb9d502b29d86c6dafd2350e0 ******/
+		/****** md5 signature: 4625c2d2cf027a1f9f8defe365dcab16 ******/
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") TgtEdges;
-		const TopTools_ListOfShape & TgtEdges();
+		const NCollection_List<TopoDS_Shape> TgtEdges();
 
 };
 
@@ -1919,7 +1915,7 @@ No available documentation.
 		const TopoDS_Shape Shape();
 
 		/****** LocOpe_LinearForm::Shapes ******/
-		/****** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ******/
+		/****** md5 signature: 6893c0a8043f0c4a7bec2afcb318259f ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -1928,13 +1924,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
 
 };
 
@@ -1983,22 +1979,22 @@ No available documentation.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** LocOpe_Pipe::Curves ******/
-		/****** md5 signature: 1257c66269c3591394f3b4e0a9f964c4 ******/
+		/****** md5 signature: 1de5a627f1308f523495196c80d8a2ba ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-Spt: TColgp_SequenceOfPnt
+Spt: NCollection_Sequence<gp_Pnt>
 
 Return
 -------
-TColGeom_SequenceOfCurve
+NCollection_Sequence<opencascade::handle<Geom_Curve>>
 
 Description
 -----------
 No available documentation.
 ") Curves;
-		TColGeom_SequenceOfCurve Curves(const TColgp_SequenceOfPnt & Spt);
+		const NCollection_Sequence<opencascade::handle<Geom_Curve>> & Curves(const NCollection_Sequence<gp_Pnt> & Spt);
 
 		/****** LocOpe_Pipe::FirstShape ******/
 		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
@@ -2053,7 +2049,7 @@ No available documentation.
 		const TopoDS_Shape Shape();
 
 		/****** LocOpe_Pipe::Shapes ******/
-		/****** md5 signature: 78f7811a365f84338b71e3baefa770bd ******/
+		/****** md5 signature: 7b68a8263b90c81c34dd91561aad6dca ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -2062,13 +2058,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_Pipe::Spine ******/
 		/****** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ******/
@@ -2111,7 +2107,7 @@ Empty constructor. Useful only for the list.
 		 LocOpe_PntFace();
 
 		/****** LocOpe_PntFace::LocOpe_PntFace ******/
-		/****** md5 signature: ea86175f30e9af52a111a51286aaae17 ******/
+		/****** md5 signature: 83f811faa24ae3fa402214a42e0efb3d ******/
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "
 Parameters
@@ -2119,9 +2115,9 @@ Parameters
 P: gp_Pnt
 F: TopoDS_Face
 Or: TopAbs_Orientation
-Param: float
-UPar: float
-VPar: float
+Param: double
+UPar: double
+VPar: double
 
 Return
 -------
@@ -2131,7 +2127,7 @@ Description
 -----------
 No available documentation.
 ") LocOpe_PntFace;
-		 LocOpe_PntFace(const gp_Pnt & P, const TopoDS_Face & F, const TopAbs_Orientation Or, const Standard_Real Param, const Standard_Real UPar, const Standard_Real VPar);
+		 LocOpe_PntFace(const gp_Pnt & P, const TopoDS_Face & F, const TopAbs_Orientation Or, const double Param, const double UPar, const double VPar);
 
 		/****** LocOpe_PntFace::ChangeOrientation ******/
 		/****** md5 signature: 395518e4d56710f4afb539b195cfdc3c ******/
@@ -2173,17 +2169,17 @@ No available documentation.
 		TopAbs_Orientation Orientation();
 
 		/****** LocOpe_PntFace::Parameter ******/
-		/****** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ******/
+		/****** md5 signature: f2f0d3a4c48532483b401ae3d2d5c5fb ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** LocOpe_PntFace::Pnt ******/
 		/****** md5 signature: cb508877c7fa83c676a7983e5eeb1a5e ******/
@@ -2199,30 +2195,30 @@ No available documentation.
 		const gp_Pnt Pnt();
 
 		/****** LocOpe_PntFace::UParameter ******/
-		/****** md5 signature: 2cfa7266169b92bb41b1ad8de865ac2d ******/
+		/****** md5 signature: 18620388b11f326f3dc578ff687ec7ed ******/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UParameter;
-		Standard_Real UParameter();
+		double UParameter();
 
 		/****** LocOpe_PntFace::VParameter ******/
-		/****** md5 signature: 67c421cab90e3dfea268bc11f638dc72 ******/
+		/****** md5 signature: de1f6e83463dcefe43d02da05541b023 ******/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VParameter;
-		Standard_Real VParameter();
+		double VParameter();
 
 };
 
@@ -2304,12 +2300,12 @@ No available documentation.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** LocOpe_Prism::Curves ******/
-		/****** md5 signature: 3cd8ae8d636ea132b7feab04844c473e ******/
+		/****** md5 signature: 2bc5dc27fc029256991027a0d8ed6fa5 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-SCurves: TColGeom_SequenceOfCurve
+SCurves: Geom_Curve
 
 Return
 -------
@@ -2319,7 +2315,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(TColGeom_SequenceOfCurve & SCurves);
+		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & SCurves);
 
 		/****** LocOpe_Prism::FirstShape ******/
 		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
@@ -2400,7 +2396,7 @@ No available documentation.
 		const TopoDS_Shape Shape();
 
 		/****** LocOpe_Prism::Shapes ******/
-		/****** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ******/
+		/****** md5 signature: 6893c0a8043f0c4a7bec2afcb318259f ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -2409,13 +2405,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
 
 };
 
@@ -2438,7 +2434,7 @@ No available documentation.
 class LocOpe_SplitDrafts {
 	public:
 		/****** LocOpe_SplitDrafts::LocOpe_SplitDrafts ******/
-		/****** md5 signature: 2ee8be10ba301fc967707fa630016f82 ******/
+		/****** md5 signature: 51a1cb9e479948f52d3f0a9f7f2002c6 ******/
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "Return
 -------
@@ -2487,7 +2483,7 @@ Initializes the algorithm with the shape <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** LocOpe_SplitDrafts::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2495,9 +2491,9 @@ bool
 
 Description
 -----------
-Returns <Standard_True> if the modification has been successfully performed.
+Returns <true> if the modification has been successfully performed.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_SplitDrafts::OriginalShape ******/
 		/****** md5 signature: 0c1425ae3411e433ee33975a98ab8edc ******/
@@ -2513,7 +2509,7 @@ No available documentation.
 		const TopoDS_Shape OriginalShape();
 
 		/****** LocOpe_SplitDrafts::Perform ******/
-		/****** md5 signature: 06049251e5058c5d93cb1e4c850648e3 ******/
+		/****** md5 signature: e5aaaca34e2aa20d7da2128aa69aa47e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2522,12 +2518,12 @@ F: TopoDS_Face
 W: TopoDS_Wire
 Extractg: gp_Dir
 NPlg: gp_Pln
-Angleg: float
+Angleg: double
 Extractd: gp_Dir
 NPld: gp_Pln
-Angled: float
-ModifyLeft: bool (optional, default to Standard_True)
-ModifyRight: bool (optional, default to Standard_True)
+Angled: double
+ModifyLeft: bool (optional, default to true)
+ModifyRight: bool (optional, default to true)
 
 Return
 -------
@@ -2535,12 +2531,12 @@ None
 
 Description
 -----------
-Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on both parts of the wire. <Extractg>, <Nplg>, <Angleg> define the arguments for the left part of the wire. <Extractd>, <Npld>, <Angled> define the arguments for the right part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle. If <ModifyLeft> is set to <Standard_False>, no draft angle is applied to the left part of the wire. If <ModifyRight> is set to <Standard_False>,no draft angle is applied to the right part of the wire.
+Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on both parts of the wire. <Extractg>, <Nplg>, <Angleg> define the arguments for the left part of the wire. <Extractd>, <Npld>, <Angled> define the arguments for the right part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle. If <ModifyLeft> is set to <false>, no draft angle is applied to the left part of the wire. If <ModifyRight> is set to <false>,no draft angle is applied to the right part of the wire.
 ") Perform;
-		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extractg, const gp_Pln & NPlg, const Standard_Real Angleg, const gp_Dir & Extractd, const gp_Pln & NPld, const Standard_Real Angled, const Standard_Boolean ModifyLeft = Standard_True, const Standard_Boolean ModifyRight = Standard_True);
+		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extractg, const gp_Pln & NPlg, const double Angleg, const gp_Dir & Extractd, const gp_Pln & NPld, const double Angled, const bool ModifyLeft = true, const bool ModifyRight = true);
 
 		/****** LocOpe_SplitDrafts::Perform ******/
-		/****** md5 signature: 33119ee8fef1a08344058cd4112ff127 ******/
+		/****** md5 signature: c7b5553b5f2726288a926e06bbe40e13 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2549,7 +2545,7 @@ F: TopoDS_Face
 W: TopoDS_Wire
 Extract: gp_Dir
 NPl: gp_Pln
-Angle: float
+Angle: double
 
 Return
 -------
@@ -2559,7 +2555,7 @@ Description
 -----------
 Splits the face <F> of the former given shape with the wire <W>. The wire is assumed to lie on the face. Puts a draft angle on the left part of the wire. The draft angle is measured with the direction <Extract>. <Npl> defines the neutral plane (points belonging to the neutral plane are not modified). <Angle> is the value of the draft angle.
 ") Perform;
-		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extract, const gp_Pln & NPl, const Standard_Real Angle);
+		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extract, const gp_Pln & NPl, const double Angle);
 
 		/****** LocOpe_SplitDrafts::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -2575,7 +2571,7 @@ Returns the modified shape.
 		const TopoDS_Shape Shape();
 
 		/****** LocOpe_SplitDrafts::ShapesFromShape ******/
-		/****** md5 signature: 9b19997d48fe09caab448d7d2a15b8e6 ******/
+		/****** md5 signature: 83b8c3a5e0b21a7b31cde09d7ad2951a ******/
 		%feature("compactdefaultargs") ShapesFromShape;
 		%feature("autodoc", "
 Parameters
@@ -2584,13 +2580,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Manages the descendant shapes.
 ") ShapesFromShape;
-		const TopTools_ListOfShape & ShapesFromShape(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> ShapesFromShape(const TopoDS_Shape & S);
 
 };
 
@@ -2638,13 +2634,13 @@ Creates the process with the shape <S>.
 		 LocOpe_SplitShape(const TopoDS_Shape & S);
 
 		/****** LocOpe_SplitShape::Add ******/
-		/****** md5 signature: f83a740d583d75ef073857245678fcf7 ******/
+		/****** md5 signature: 4ee9b6caa65a8ede075d50530a0f438b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 V: TopoDS_Vertex
-P: float
+P: double
 E: TopoDS_Edge
 
 Return
@@ -2655,10 +2651,10 @@ Description
 -----------
 Adds the vertex <V> on the edge <E>, at parameter <P>.
 ") Add;
-		void Add(const TopoDS_Vertex & V, const Standard_Real P, const TopoDS_Edge & E);
+		void Add(const TopoDS_Vertex & V, const double P, const TopoDS_Edge & E);
 
 		/****** LocOpe_SplitShape::Add ******/
-		/****** md5 signature: a033629ccbdbc371707d5c76ce6135fb ******/
+		/****** md5 signature: d82c28773ec361c9e175654b50107242 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2674,15 +2670,15 @@ Description
 -----------
 Adds the wire <W> on the face <F>.
 ") Add;
-		Standard_Boolean Add(const TopoDS_Wire & W, const TopoDS_Face & F);
+		bool Add(const TopoDS_Wire & W, const TopoDS_Face & F);
 
 		/****** LocOpe_SplitShape::Add ******/
-		/****** md5 signature: 53f90a2127879e94c7efb239b955201f ******/
+		/****** md5 signature: 64a4885f80c89cc68be9c479b59ba46f ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-Lwires: TopTools_ListOfShape
+Lwires: NCollection_List<TopoDS_Shape>
 F: TopoDS_Face
 
 Return
@@ -2693,10 +2689,10 @@ Description
 -----------
 Adds the list of wires <Lwires> on the face <F>.
 ") Add;
-		Standard_Boolean Add(const TopTools_ListOfShape & Lwires, const TopoDS_Face & F);
+		bool Add(const NCollection_List<TopoDS_Shape> & Lwires, const TopoDS_Face & F);
 
 		/****** LocOpe_SplitShape::CanSplit ******/
-		/****** md5 signature: 4e905e4aa3dc0a3d213d1c78ecb29068 ******/
+		/****** md5 signature: ab5acad19be48f50aed4b725f13c8f98 ******/
 		%feature("compactdefaultargs") CanSplit;
 		%feature("autodoc", "
 Parameters
@@ -2711,10 +2707,10 @@ Description
 -----------
 Tests if it is possible to split the edge <E>.
 ") CanSplit;
-		Standard_Boolean CanSplit(const TopoDS_Edge & E);
+		bool CanSplit(const TopoDS_Edge & E);
 
 		/****** LocOpe_SplitShape::DescendantShapes ******/
-		/****** md5 signature: b55237191d8494fe72efd8032d9163b8 ******/
+		/****** md5 signature: 872d543240621103e615d2c61b0a9a17 ******/
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "
 Parameters
@@ -2723,13 +2719,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
-		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> DescendantShapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_SplitShape::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2750,7 +2746,7 @@ Initializes the process on the shape <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** LocOpe_SplitShape::LeftOf ******/
-		/****** md5 signature: b7631372eb087b6699b45ed9bbbe5ca6 ******/
+		/****** md5 signature: 71fdc2dfd84f74fced44bb442394da2e ******/
 		%feature("compactdefaultargs") LeftOf;
 		%feature("autodoc", "
 Parameters
@@ -2760,13 +2756,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the 'left' part defined by the wire <W> on the face <F>. The returned list of shape is in fact a list of faces. The face <F> is considered with its topological orientation in the original shape. <W> is considered with its orientation.
 ") LeftOf;
-		const TopTools_ListOfShape & LeftOf(const TopoDS_Wire & W, const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> LeftOf(const TopoDS_Wire & W, const TopoDS_Face & F);
 
 		/****** LocOpe_SplitShape::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -2827,7 +2823,7 @@ Creates the algorithm on the shape <S>.
 		 LocOpe_Spliter(const TopoDS_Shape & S);
 
 		/****** LocOpe_Spliter::DescendantShapes ******/
-		/****** md5 signature: b55237191d8494fe72efd8032d9163b8 ******/
+		/****** md5 signature: 872d543240621103e615d2c61b0a9a17 ******/
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "
 Parameters
@@ -2836,26 +2832,26 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
-		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> DescendantShapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_Spliter::DirectLeft ******/
-		/****** md5 signature: 3439933aeda7f1a1ec21dfaafbe0ab1a ******/
+		/****** md5 signature: 0dcdbf098f12ae717ee8e5124bb48c8d ******/
 		%feature("compactdefaultargs") DirectLeft;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the faces which are the left of the projected wires and which are.
 ") DirectLeft;
-		const TopTools_ListOfShape & DirectLeft();
+		const NCollection_List<TopoDS_Shape> DirectLeft();
 
 		/****** LocOpe_Spliter::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2876,7 +2872,7 @@ Initializes the algorithm on the shape <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** LocOpe_Spliter::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2886,20 +2882,20 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_Spliter::Left ******/
-		/****** md5 signature: 70ee7865256185190dd6eecfb1fc40f8 ******/
+		/****** md5 signature: be2f18492c53905055a91ad1bc70753b ******/
 		%feature("compactdefaultargs") Left;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...).
 ") Left;
-		const TopTools_ListOfShape & Left();
+		const NCollection_List<TopoDS_Shape> Left();
 
 		/****** LocOpe_Spliter::Perform ******/
 		/****** md5 signature: 81f184fa3b695b3f713141fe6156b7b1 ******/
@@ -2978,12 +2974,12 @@ No available documentation.
 		 LocOpe_WiresOnShape(const TopoDS_Shape & S);
 
 		/****** LocOpe_WiresOnShape::Add ******/
-		/****** md5 signature: a2f8855eb9d20716f921d30ba939fd6a ******/
+		/****** md5 signature: dc061856d6403e7ea77474558c0cb36c ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-theEdges: TopTools_SequenceOfShape
+theEdges: NCollection_Sequence<TopoDS_Shape>
 
 Return
 -------
@@ -2993,7 +2989,7 @@ Description
 -----------
 Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape.
 ") Add;
-		Standard_Boolean Add(const TopTools_SequenceOfShape & theEdges);
+		bool Add(const NCollection_Sequence<TopoDS_Shape> & theEdges);
 
 		/****** LocOpe_WiresOnShape::Bind ******/
 		/****** md5 signature: 4b8d37767a759e53f1ff5474f2d75938 ******/
@@ -3129,7 +3125,7 @@ No available documentation.
 		void InitEdgeIterator();
 
 		/****** LocOpe_WiresOnShape::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3139,10 +3135,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** LocOpe_WiresOnShape::IsFaceWithSection ******/
-		/****** md5 signature: 453c46f0c0bbd0df89a249832f09337b ******/
+		/****** md5 signature: f17269d9f49e8ebb8a03dc1e09f25e9f ******/
 		%feature("compactdefaultargs") IsFaceWithSection;
 		%feature("autodoc", "
 Parameters
@@ -3157,10 +3153,10 @@ Description
 -----------
 tells is the face to be split by section or not.
 ") IsFaceWithSection;
-		Standard_Boolean IsFaceWithSection(const TopoDS_Shape & aFace);
+		bool IsFaceWithSection(const TopoDS_Shape & aFace);
 
 		/****** LocOpe_WiresOnShape::MoreEdge ******/
-		/****** md5 signature: 809deb2c8c3dfedac2033850fc8cfdca ******/
+		/****** md5 signature: 1afdcdb10ae7dd8361c8d3d5f65dbeca ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -3170,7 +3166,7 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** LocOpe_WiresOnShape::NextEdge ******/
 		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
@@ -3186,7 +3182,7 @@ No available documentation.
 		void NextEdge();
 
 		/****** LocOpe_WiresOnShape::OnEdge ******/
-		/****** md5 signature: 29ad464e46d837d9fbaf500a7bbcf85f ******/
+		/****** md5 signature: 5441a07650d6afec90fb24bb110098ac ******/
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "
 Parameters
@@ -3199,12 +3195,12 @@ bool
 
 Description
 -----------
-If the current edge is projected on an edge, returns <Standard_True> and sets the value of <E>. Otherwise, returns <Standard_False>.
+If the current edge is projected on an edge, returns <true> and sets the value of <E>. Otherwise, returns <false>.
 ") OnEdge;
-		Standard_Boolean OnEdge(TopoDS_Edge & E);
+		bool OnEdge(TopoDS_Edge & E);
 
 		/****** LocOpe_WiresOnShape::OnEdge ******/
-		/****** md5 signature: 658640c00451cfa43ebdf8cb65627a29 ******/
+		/****** md5 signature: 5e25b76c1f82072b68297c77bee42900 ******/
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "
 Parameters
@@ -3214,16 +3210,16 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
+P: double
 
 Description
 -----------
-If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
+If the vertex <V> lies on an edge of the original shape, returns <true> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <false>.
 ") OnEdge;
-		Standard_Boolean OnEdge(const TopoDS_Vertex & V, TopoDS_Edge & E, Standard_Real &OutValue);
+		bool OnEdge(const TopoDS_Vertex & V, TopoDS_Edge & E, Standard_Real &OutValue);
 
 		/****** LocOpe_WiresOnShape::OnEdge ******/
-		/****** md5 signature: 1c14a6039267b7829c86af26279784a8 ******/
+		/****** md5 signature: 88d6ff79a33cfe35612580daded0a35e ******/
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "
 Parameters
@@ -3234,13 +3230,13 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
+P: double
 
 Description
 -----------
-If the vertex <V> lies on an edge of the original shape, returns <Standard_True> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <Standard_False>.
+If the vertex <V> lies on an edge of the original shape, returns <true> and sets the concerned edge in <E>, and the parameter on the edge in <P>. Else returns <false>.
 ") OnEdge;
-		Standard_Boolean OnEdge(const TopoDS_Vertex & V, const TopoDS_Edge & EdgeFrom, TopoDS_Edge & E, Standard_Real &OutValue);
+		bool OnEdge(const TopoDS_Vertex & V, const TopoDS_Edge & EdgeFrom, TopoDS_Edge & E, Standard_Real &OutValue);
 
 		/****** LocOpe_WiresOnShape::OnFace ******/
 		/****** md5 signature: a04a7e8fa6834141c5c1e4ec7a86b633 ******/
@@ -3256,7 +3252,7 @@ Returns the face of the shape on which the current edge is projected.
 		TopoDS_Face OnFace();
 
 		/****** LocOpe_WiresOnShape::OnVertex ******/
-		/****** md5 signature: 741d3a6ecd746d31c15e3efe97ef4827 ******/
+		/****** md5 signature: 19ea71daf171884730f6566d82ec962b ******/
 		%feature("compactdefaultargs") OnVertex;
 		%feature("autodoc", "
 Parameters
@@ -3272,10 +3268,10 @@ Description
 -----------
 No available documentation.
 ") OnVertex;
-		Standard_Boolean OnVertex(const TopoDS_Vertex & Vwire, TopoDS_Vertex & Vshape);
+		bool OnVertex(const TopoDS_Vertex & Vwire, TopoDS_Vertex & Vshape);
 
 		/****** LocOpe_WiresOnShape::SetCheckInterior ******/
-		/****** md5 signature: 2d00b58c59d6af210c84a7fdd261d94b ******/
+		/****** md5 signature: efb1f3d0d41242227a9413162dceab9f ******/
 		%feature("compactdefaultargs") SetCheckInterior;
 		%feature("autodoc", "
 Parameters
@@ -3290,7 +3286,7 @@ Description
 -----------
 Set the flag of check internal intersections default value is True (to check).
 ") SetCheckInterior;
-		void SetCheckInterior(const Standard_Boolean ToCheckInterior);
+		void SetCheckInterior(const bool ToCheckInterior);
 
 };
 
@@ -3340,7 +3336,7 @@ No available documentation.
 		 LocOpe_GluedShape(const TopoDS_Shape & S);
 
 		/****** LocOpe_GluedShape::Generated ******/
-		/****** md5 signature: 12fac5c9686aa58e81abe0e0278b5975 ******/
+		/****** md5 signature: fded8c242e236a015b82ce27456c3c53 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -3358,7 +3354,7 @@ Returns the edge created by the vertex <V>. If none, must return a null shape.
 		TopoDS_Edge Generated(const TopoDS_Vertex & V);
 
 		/****** LocOpe_GluedShape::Generated ******/
-		/****** md5 signature: 2f36cb95a1e983d92e93c5a30cf1e5f4 ******/
+		/****** md5 signature: d0e2dc623c2f0150a1e5687a30d2b6f5 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -3376,17 +3372,17 @@ Returns the face created by the edge <E>. If none, must return a null shape.
 		TopoDS_Face Generated(const TopoDS_Edge & E);
 
 		/****** LocOpe_GluedShape::GeneratingEdges ******/
-		/****** md5 signature: ee249c46969f861d6e0e4bc29ae4bfeb ******/
+		/****** md5 signature: fd6282804c49e2c2ad55082d4ce91edb ******/
 		%feature("compactdefaultargs") GeneratingEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") GeneratingEdges;
-		const TopTools_ListOfShape & GeneratingEdges();
+		const NCollection_List<TopoDS_Shape> GeneratingEdges();
 
 		/****** LocOpe_GluedShape::GlueOnFace ******/
 		/****** md5 signature: a4642afc420a44d60619fbf28fad5c55 ******/
@@ -3425,17 +3421,17 @@ No available documentation.
 		void Init(const TopoDS_Shape & S);
 
 		/****** LocOpe_GluedShape::OrientedFaces ******/
-		/****** md5 signature: daf89b2afb0d5ac79505728faeed1fe1 ******/
+		/****** md5 signature: e1789da10d12eef7b0a79f259570d8e4 ******/
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of correctly oriented generated faces.
 ") OrientedFaces;
-		const TopTools_ListOfShape & OrientedFaces();
+		const NCollection_List<TopoDS_Shape> OrientedFaces();
 
 };
 

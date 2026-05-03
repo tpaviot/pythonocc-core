@@ -50,10 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwobj.html"
 #include<RWMesh_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
-#include<TDF_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -102,10 +99,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwobj.html"
 %import RWMesh.i
 %import XCAFPrs.i
 %import TDocStd.i
-%import TDF.i
-%import TColStd.i
 %import TopoDS.i
-%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -158,12 +152,12 @@ RWObj_SubMeshReason_NewSmoothGroup = RWObj_SubMeshReason.RWObj_SubMeshReason_New
 class RWObj {
 	public:
 		/****** RWObj::ReadFile ******/
-		/****** md5 signature: 9db0a5dcbc0cfb32dbb5943d609412ad ******/
+		/****** md5 signature: 445be812663b481ba442bb0b3484fce5 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-theFile: str
+theFile: char *
 aProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -174,7 +168,7 @@ Description
 -----------
 Read specified OBJ file and returns its content as triangulation. In case of error, returns Null handle.
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(Standard_CString theFile, const Message_ProgressRange & aProgress = Message_ProgressRange());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * const theFile, const Message_ProgressRange & aProgress = Message_ProgressRange());
 
 };
 
@@ -249,15 +243,15 @@ Return default material definition to be used for nodes with only color defined.
 		const XCAFPrs_Style & DefaultStyle();
 
 		/****** RWObj_CafWriter::Perform ******/
-		/****** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ******/
+		/****** md5 signature: 4fe41c602875392c193863409f43c689 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRootLabels: TDF_LabelSequence
-theLabelFilter: TColStd_MapOfAsciiString *
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theRootLabels: NCollection_Sequence<TDF_Label>
+theLabelFilter: NCollection_Map<TCollection_AsciiString> *
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theProgress: Message_ProgressRange
 
 Return
@@ -274,16 +268,16 @@ Input parameter: theFileInfo map with file metadata to put into OBJ header secti
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRootLabels, const NCollection_Map<TCollection_AsciiString> * theLabelFilter, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_CafWriter::Perform ******/
-		/****** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ******/
+		/****** md5 signature: 9fa7d5982eff451b653a549335726dd7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theProgress: Message_ProgressRange
 
 Return
@@ -298,7 +292,7 @@ Input parameter: theFileInfo map with file metadata to put into glTF header sect
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_CafWriter::SetCoordinateSystemConverter ******/
 		/****** md5 signature: 8488d2b612c66076826cc33d2ac72536 ******/
@@ -354,7 +348,7 @@ Set default material definition to be used for nodes with only color defined.
 class RWObj_IShapeReceiver {
 	public:
 		/****** RWObj_IShapeReceiver::BindNamedShape ******/
-		/****** md5 signature: c4a7e1b6b51bf16257e0884d8678f1e6 ******/
+		/****** md5 signature: 1743855883766674350c9951091eba20 ******/
 		%feature("compactdefaultargs") BindNamedShape;
 		%feature("autodoc", "
 Parameters
@@ -375,7 +369,7 @@ Parameter theName shape name
 Parameter theMaterial shape material 
 Parameter theIsRootShape indicates that this is a root object (free shape).
 ") BindNamedShape;
-		virtual void BindNamedShape(const TopoDS_Shape & theShape, TCollection_AsciiString theName, const RWObj_Material * theMaterial, const Standard_Boolean theIsRootShape);
+		virtual void BindNamedShape(const TopoDS_Shape & theShape, TCollection_AsciiString theName, const RWObj_Material * theMaterial, const bool theIsRootShape);
 
 };
 
@@ -440,7 +434,7 @@ Main constructor.
 		 RWObj_ObjMaterialMap(TCollection_AsciiString theFile);
 
 		/****** RWObj_ObjMaterialMap::AddMaterial ******/
-		/****** md5 signature: a65de496eac4b0afca748cbe0920fca0 ******/
+		/****** md5 signature: 81afc3501733321410d332ee97989de7 ******/
 		%feature("compactdefaultargs") AddMaterial;
 		%feature("autodoc", "
 Parameters
@@ -455,10 +449,10 @@ Description
 -----------
 Add material.
 ") AddMaterial;
-		virtual TCollection_AsciiString AddMaterial(const XCAFPrs_Style & theStyle);
+		TCollection_AsciiString AddMaterial(const XCAFPrs_Style & theStyle);
 
 		/****** RWObj_ObjMaterialMap::DefineMaterial ******/
-		/****** md5 signature: 0d9f2bc2c43292ec61ca304ec31c1fa0 ******/
+		/****** md5 signature: 7bab7931e1e90e6dc54183ce82d50d73 ******/
 		%feature("compactdefaultargs") DefineMaterial;
 		%feature("autodoc", "
 Parameters
@@ -475,7 +469,7 @@ Description
 -----------
 Virtual method actually defining the material (e.g. export to the file).
 ") DefineMaterial;
-		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, TCollection_AsciiString theKey, TCollection_AsciiString theName);
+		void DefineMaterial(const XCAFPrs_Style & theStyle, TCollection_AsciiString theKey, TCollection_AsciiString theName);
 
 };
 
@@ -538,7 +532,7 @@ Correctly close the file.
 		bool Close();
 
 		/****** RWObj_ObjWriterContext::FlushFace ******/
-		/****** md5 signature: 4918a9b4883feed992536e8ba2dbd23f ******/
+		/****** md5 signature: 9a4df76ff138b0f5474c5e85cd70ce4f ******/
 		%feature("compactdefaultargs") FlushFace;
 		%feature("autodoc", "
 Parameters
@@ -553,7 +547,7 @@ Description
 -----------
 Increment indices shift.
 ") FlushFace;
-		void FlushFace(Standard_Integer theNbNodes);
+		void FlushFace(int theNbNodes);
 
 		/****** RWObj_ObjWriterContext::HasNormals ******/
 		/****** md5 signature: cebae9ec3e325d610c43710c6d20c302 ******/
@@ -667,7 +661,7 @@ Writing a group name.
 		bool WriteGroup(TCollection_AsciiString theValue);
 
 		/****** RWObj_ObjWriterContext::WriteHeader ******/
-		/****** md5 signature: 145306955b9203346c019851d530ffab ******/
+		/****** md5 signature: 2daff37776832f0ef2c824ddbc28a1c6 ******/
 		%feature("compactdefaultargs") WriteHeader;
 		%feature("autodoc", "
 Parameters
@@ -675,7 +669,7 @@ Parameters
 theNbNodes: int
 theNbElems: int
 theMatLib: str
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Return
 -------
@@ -685,15 +679,15 @@ Description
 -----------
 Write the header.
 ") WriteHeader;
-		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, TCollection_AsciiString theMatLib, const TColStd_IndexedDataMapOfStringString & theFileInfo);
+		bool WriteHeader(const int theNbNodes, const int theNbElems, TCollection_AsciiString theMatLib, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo);
 
 		/****** RWObj_ObjWriterContext::WriteNormal ******/
-		/****** md5 signature: e50c1b6f5ea1daef7e39690e78a55c3f ******/
+		/****** md5 signature: 7723912d6a8974e4328cf44ec9bd4e7f ******/
 		%feature("compactdefaultargs") WriteNormal;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Graphic3d_Vec3
+theValue: NCollection_Vec3<float>
 
 Return
 -------
@@ -703,15 +697,15 @@ Description
 -----------
 Writing a vector.
 ") WriteNormal;
-		bool WriteNormal(const Graphic3d_Vec3 & theValue);
+		bool WriteNormal(const NCollection_Vec3<float> & theValue);
 
 		/****** RWObj_ObjWriterContext::WriteQuad ******/
-		/****** md5 signature: 6ec1ecdd2b0fdcce6c29fc362c45dad1 ******/
+		/****** md5 signature: f35d5ea7c5c569033d689878bb35cb60 ******/
 		%feature("compactdefaultargs") WriteQuad;
 		%feature("autodoc", "
 Parameters
 ----------
-theQuad: Graphic3d_Vec4i
+theQuad: NCollection_Vec4<int>
 
 Return
 -------
@@ -721,15 +715,15 @@ Description
 -----------
 Writing a quad.
 ") WriteQuad;
-		bool WriteQuad(const Graphic3d_Vec4i & theQuad);
+		bool WriteQuad(const NCollection_Vec4<int> & theQuad);
 
 		/****** RWObj_ObjWriterContext::WriteTexCoord ******/
-		/****** md5 signature: f8fa5dcc72781a1705ad419b00eedb5a ******/
+		/****** md5 signature: 1eb452d6655b4889ea724e511e62c0df ******/
 		%feature("compactdefaultargs") WriteTexCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Graphic3d_Vec2
+theValue: NCollection_Vec2<float>
 
 Return
 -------
@@ -739,15 +733,15 @@ Description
 -----------
 Writing a vector.
 ") WriteTexCoord;
-		bool WriteTexCoord(const Graphic3d_Vec2 & theValue);
+		bool WriteTexCoord(const NCollection_Vec2<float> & theValue);
 
 		/****** RWObj_ObjWriterContext::WriteTriangle ******/
-		/****** md5 signature: 7386d86fd240dee0a67bac21ae95cc21 ******/
+		/****** md5 signature: 14f2cf71614f2b8036689d4a26421207 ******/
 		%feature("compactdefaultargs") WriteTriangle;
 		%feature("autodoc", "
 Parameters
 ----------
-theTri: Graphic3d_Vec3i
+theTri: NCollection_Vec3<int>
 
 Return
 -------
@@ -757,15 +751,15 @@ Description
 -----------
 Writing a triangle.
 ") WriteTriangle;
-		bool WriteTriangle(const Graphic3d_Vec3i & theTri);
+		bool WriteTriangle(const NCollection_Vec3<int> & theTri);
 
 		/****** RWObj_ObjWriterContext::WriteVertex ******/
-		/****** md5 signature: a036bc8f2676c9bd108f1b4aaa49033e ******/
+		/****** md5 signature: 40509172155d98b94fbea7ec549e3d8a ******/
 		%feature("compactdefaultargs") WriteVertex;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Graphic3d_Vec3
+theValue: NCollection_Vec3<float>
 
 Return
 -------
@@ -775,7 +769,7 @@ Description
 -----------
 Writing a vector.
 ") WriteVertex;
-		bool WriteVertex(const Graphic3d_Vec3 & theValue);
+		bool WriteVertex(const NCollection_Vec3<float> & theValue);
 
 };
 
@@ -821,7 +815,7 @@ Returns file comments (lines starting with # at the beginning of file).
 		const TCollection_AsciiString & FileComments();
 
 		/****** RWObj_Reader::IsSinglePrecision ******/
-		/****** md5 signature: 3d9bd168ea3086792839d0ab7bd5e36e ******/
+		/****** md5 signature: 279ee67107e8fc83a117c6833d90c859 ******/
 		%feature("compactdefaultargs") IsSinglePrecision;
 		%feature("autodoc", "Return
 -------
@@ -831,23 +825,23 @@ Description
 -----------
 Return single precision flag for reading vertex data (coordinates); False by default.
 ") IsSinglePrecision;
-		Standard_Boolean IsSinglePrecision();
+		bool IsSinglePrecision();
 
 		/****** RWObj_Reader::MemoryLimit ******/
-		/****** md5 signature: 497f9f79bb3dc4c92ac3499c3f934cca ******/
+		/****** md5 signature: fbffdd19587c514dbc99d45a8c50d2df ******/
 		%feature("compactdefaultargs") MemoryLimit;
 		%feature("autodoc", "Return
 -------
-Standard_Size
+size_t
 
 Description
 -----------
 Returns memory limit in bytes; -1 (no limit) by default.
 ") MemoryLimit;
-		Standard_Size MemoryLimit();
+		size_t MemoryLimit();
 
 		/****** RWObj_Reader::NbProbeElems ******/
-		/****** md5 signature: c59d60ae4f689662b396b03b87801ea5 ******/
+		/****** md5 signature: dff7f298419b22e4f5c33b9e1521a2c7 ******/
 		%feature("compactdefaultargs") NbProbeElems;
 		%feature("autodoc", "Return
 -------
@@ -857,10 +851,10 @@ Description
 -----------
 //!< number of probed polygon elements (of unknown size).
 ") NbProbeElems;
-		Standard_Integer NbProbeElems();
+		int NbProbeElems();
 
 		/****** RWObj_Reader::NbProbeNodes ******/
-		/****** md5 signature: a00db32de75db319aa32d1b94016db1a ******/
+		/****** md5 signature: b0e586213838629c4f7bd208bd71ff02 ******/
 		%feature("compactdefaultargs") NbProbeNodes;
 		%feature("autodoc", "Return
 -------
@@ -870,10 +864,10 @@ Description
 -----------
 Number of probed nodes.
 ") NbProbeNodes;
-		Standard_Integer NbProbeNodes();
+		int NbProbeNodes();
 
 		/****** RWObj_Reader::Probe ******/
-		/****** md5 signature: 26f3d0cdb02ea1bf9a52b60912c48df8 ******/
+		/****** md5 signature: f6bc0e8fa10a8642dff9f0f3dd39f0cc ******/
 		%feature("compactdefaultargs") Probe;
 		%feature("autodoc", "
 Parameters
@@ -893,10 +887,10 @@ Parameter theProgress progress indicator
 Return: True if success, False on error or user break. 
 See also: FileComments(), ExternalFiles(), NbProbeNodes(), NbProbeElems().
 ") Probe;
-		Standard_Boolean Probe(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+		bool Probe(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_Reader::Probe ******/
-		/****** md5 signature: 8376516956f14db4066de53fb560bbd8 ******/
+		/****** md5 signature: 85bedd4de2c583d2a960ba4dd7eeb6c4 ******/
 		%feature("compactdefaultargs") Probe;
 		%feature("autodoc", "
 Parameters
@@ -918,10 +912,10 @@ Parameter theProgress progress indicator
 Return: True if success, False on error or user break. 
 See also: FileComments(), ExternalFiles(), NbProbeNodes(), NbProbeElems().
 ") Probe;
-		Standard_Boolean Probe(std::istream & theStream, TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+		bool Probe(std::istream & theStream, TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_Reader::Read ******/
-		/****** md5 signature: 22d0a4b3b93a1e3452e7be9b291128a7 ******/
+		/****** md5 signature: da308cfa50f4b0762899bf1f8c549f64 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -937,10 +931,10 @@ Description
 -----------
 Open stream and pass it to Read method Returns true if success, false on error.
 ") Read;
-		Standard_Boolean Read(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+		bool Read(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_Reader::Read ******/
-		/****** md5 signature: fdd87a6a5d4e606e047cd74101908aae ******/
+		/****** md5 signature: 5adee410824d7ff3e9b5b5ca44e50cd9 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -957,15 +951,15 @@ Description
 -----------
 Reads data from OBJ file. Unicode paths can be given in UTF-8 encoding. Returns true if success, false on error or user break.
 ") Read;
-		Standard_Boolean Read(std::istream & theStream, TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+		bool Read(std::istream & theStream, TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_Reader::SetMemoryLimit ******/
-		/****** md5 signature: 6570682bb3b681c7b6ede732333556b3 ******/
+		/****** md5 signature: 1144a7ce6e0456e4829ee05b9a3ee348 ******/
 		%feature("compactdefaultargs") SetMemoryLimit;
 		%feature("autodoc", "
 Parameters
 ----------
-theMemLimit: Standard_Size
+theMemLimit: size_t
 
 Return
 -------
@@ -975,10 +969,10 @@ Description
 -----------
 Specify memory limit in bytes, so that import will be aborted by specified limit before memory allocation error occurs.
 ") SetMemoryLimit;
-		void SetMemoryLimit(Standard_Size theMemLimit);
+		void SetMemoryLimit(size_t theMemLimit);
 
 		/****** RWObj_Reader::SetSinglePrecision ******/
-		/****** md5 signature: 99984d661982e5c23a64361939c67a89 ******/
+		/****** md5 signature: e615d6599325d9b3930772af1f617a55 ******/
 		%feature("compactdefaultargs") SetSinglePrecision;
 		%feature("autodoc", "
 Parameters
@@ -993,7 +987,7 @@ Description
 -----------
 Setup single/double precision flag for reading vertex data (coordinates).
 ") SetSinglePrecision;
-		void SetSinglePrecision(Standard_Boolean theIsSinglePrecision);
+		void SetSinglePrecision(bool theIsSinglePrecision);
 
 		/****** RWObj_Reader::SetTransformation ******/
 		/****** md5 signature: e3e728f65ab2c16f510366aff5821cf5 ******/
@@ -1070,7 +1064,7 @@ Empty constructor.
 		 RWObj_CafReader();
 
 		/****** RWObj_CafReader::IsSinglePrecision ******/
-		/****** md5 signature: 3d9bd168ea3086792839d0ab7bd5e36e ******/
+		/****** md5 signature: 279ee67107e8fc83a117c6833d90c859 ******/
 		%feature("compactdefaultargs") IsSinglePrecision;
 		%feature("autodoc", "Return
 -------
@@ -1080,10 +1074,10 @@ Description
 -----------
 Return single precision flag for reading vertex data (coordinates); False by default.
 ") IsSinglePrecision;
-		Standard_Boolean IsSinglePrecision();
+		bool IsSinglePrecision();
 
 		/****** RWObj_CafReader::SetSinglePrecision ******/
-		/****** md5 signature: 99984d661982e5c23a64361939c67a89 ******/
+		/****** md5 signature: e615d6599325d9b3930772af1f617a55 ******/
 		%feature("compactdefaultargs") SetSinglePrecision;
 		%feature("autodoc", "
 Parameters
@@ -1098,7 +1092,7 @@ Description
 -----------
 Setup single/double precision flag for reading vertex data (coordinates).
 ") SetSinglePrecision;
-		void SetSinglePrecision(Standard_Boolean theIsSinglePrecision);
+		void SetSinglePrecision(bool theIsSinglePrecision);
 
 };
 
@@ -1156,7 +1150,7 @@ Return result shape.
 		TopoDS_Shape ResultShape();
 
 		/****** RWObj_TriangulationReader::SetCreateShapes ******/
-		/****** md5 signature: 4c73f709306991520386237767d81b43 ******/
+		/****** md5 signature: 40349a5ff9814a559a9847161cb1b54d ******/
 		%feature("compactdefaultargs") SetCreateShapes;
 		%feature("autodoc", "
 Parameters
@@ -1171,7 +1165,7 @@ Description
 -----------
 Set flag to create shapes.
 ") SetCreateShapes;
-		void SetCreateShapes(Standard_Boolean theToCreateShapes);
+		void SetCreateShapes(bool theToCreateShapes);
 
 		/****** RWObj_TriangulationReader::SetShapeReceiver ******/
 		/****** md5 signature: 66b62525eaf3c6d46991dcbfa30569e4 ******/

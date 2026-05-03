@@ -7,11 +7,9 @@ from OCC.Core.TCollection import *
 from OCC.Core.RWMesh import *
 from OCC.Core.XCAFPrs import *
 from OCC.Core.TDocStd import *
-from OCC.Core.TDF import *
-from OCC.Core.TColStd import *
 from OCC.Core.Message import *
-from OCC.Core.Graphic3d import *
 from OCC.Core.gp import *
+
 
 class RWPly_CafWriter(Standard_Transient):
     def __init__(self, theFile: str) -> None: ...
@@ -24,26 +22,8 @@ class RWPly_CafWriter(Standard_Transient):
     def HasPartId(self) -> bool: ...
     def HasTexCoords(self) -> bool: ...
     def IsDoublePrecision(self) -> bool: ...
-    @overload
-    def Perform(
-        self,
-        theDocument: TDocStd_Document,
-        theRootLabels: TDF_LabelSequence,
-        theLabelFilter: TColStd_MapOfAsciiString,
-        theFileInfo: TColStd_IndexedDataMapOfStringString,
-        theProgress: Message_ProgressRange,
-    ) -> bool: ...
-    @overload
-    def Perform(
-        self,
-        theDocument: TDocStd_Document,
-        theFileInfo: TColStd_IndexedDataMapOfStringString,
-        theProgress: Message_ProgressRange,
-    ) -> bool: ...
     def SetColors(self, theToWrite: bool) -> None: ...
-    def SetCoordinateSystemConverter(
-        self, theConverter: RWMesh_CoordinateSystemConverter
-    ) -> None: ...
+    def SetCoordinateSystemConverter(self, theConverter: RWMesh_CoordinateSystemConverter) -> None: ...
     def SetDefaultStyle(self, theStyle: XCAFPrs_Style) -> None: ...
     def SetDoublePrecision(self, theDoublePrec: bool) -> None: ...
     def SetFaceId(self, theSurfId: bool) -> None: ...
@@ -73,22 +53,8 @@ class RWPly_PlyWriterContext:
     def SetVertexOffset(self, theOffset: int) -> None: ...
     def SurfaceId(self) -> int: ...
     def VertexOffset(self) -> int: ...
-    def WriteHeader(
-        self,
-        theNbNodes: int,
-        theNbElems: int,
-        theFileInfo: TColStd_IndexedDataMapOfStringString,
-    ) -> bool: ...
-    def WriteQuad(self, theQuad: Graphic3d_Vec4i) -> bool: ...
-    def WriteTriangle(self, theTri: Graphic3d_Vec3i) -> bool: ...
-    def WriteVertex(
-        self,
-        thePoint: gp_Pnt,
-        theNorm: Graphic3d_Vec3,
-        theUV: Graphic3d_Vec2,
-        theColor: Graphic3d_Vec4ub,
-    ) -> bool: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

@@ -69,7 +69,6 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef FILE * FSD_BStream;
 typedef std::fstream FSD_FStream;
 /* end typedefs declaration */
 

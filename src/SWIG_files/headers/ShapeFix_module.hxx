@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<ShapeFix.hxx>
 #include<ShapeFix_ComposeShell.hxx>
-#include<ShapeFix_DataMapIteratorOfDataMapOfShapeBox2d.hxx>
 #include<ShapeFix_DataMapOfShapeBox2d.hxx>
 #include<ShapeFix_Edge.hxx>
 #include<ShapeFix_EdgeConnect.hxx>

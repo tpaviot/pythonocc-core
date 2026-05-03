@@ -160,12 +160,6 @@ from OCC.Core.Exception import *
 %wrap_handle(StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI)
 %wrap_handle(StepRepr_ShapeRepresentationRelationshipWithTransformation)
-%wrap_handle(StepRepr_HArray1OfMaterialPropertyRepresentation)
-%wrap_handle(StepRepr_HArray1OfPropertyDefinitionRepresentation)
-%wrap_handle(StepRepr_HArray1OfRepresentationItem)
-%wrap_handle(StepRepr_HArray1OfShapeAspect)
-%wrap_handle(StepRepr_HSequenceOfMaterialPropertyRepresentation)
-%wrap_handle(StepRepr_HSequenceOfRepresentationItem)
 /* end handles declaration */
 
 /* templates */
@@ -204,6 +198,12 @@ typedef NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresen
 typedef NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> StepRepr_Array1OfPropertyDefinitionRepresentation;
 typedef NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>> StepRepr_Array1OfRepresentationItem;
 typedef NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>> StepRepr_Array1OfShapeAspect;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> StepRepr_HArray1OfMaterialPropertyRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> StepRepr_HArray1OfPropertyDefinitionRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> StepRepr_HArray1OfRepresentationItem;
+typedef NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>> StepRepr_HArray1OfShapeAspect;
+typedef NCollection_HSequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> StepRepr_HSequenceOfMaterialPropertyRepresentation;
+typedef NCollection_HSequence<opencascade::handle<StepRepr_RepresentationItem>> StepRepr_HSequenceOfRepresentationItem;
 typedef NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> StepRepr_SequenceOfMaterialPropertyRepresentation;
 typedef NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>> StepRepr_SequenceOfRepresentationItem;
 /* end typedefs declaration */
@@ -401,7 +401,7 @@ Empty constructor.
 		 StepRepr_CharacterizedDefinition();
 
 		/****** StepRepr_CharacterizedDefinition::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -416,7 +416,7 @@ Description
 -----------
 Recognizes a kind of CharacterizedDefinition select type 1 -> CharacterizedObject from StepBasic 2 -> ProductDefinition from StepBasic 3 -> ProductDefinitionRelationship from StepBasic 4 -> ProductDefinitionShape from StepRepr 5 -> ShapeAspect from StepRepr 6 -> ShapeAspectRelationship from StepRepr 7 -> DocumentFile from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepRepr_CharacterizedDefinition::CharacterizedObject ******/
 		/****** md5 signature: e518475515030a2f9db7a2227e2fe8f9 ******/
@@ -647,7 +647,7 @@ Empty constructor.
 		 StepRepr_ConfigurationDesignItem();
 
 		/****** StepRepr_ConfigurationDesignItem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -662,7 +662,7 @@ Description
 -----------
 Recognizes a kind of ConfigurationDesignItem select type 1 -> ProductDefinition from StepBasic 2 -> ProductDefinitionFormation from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepRepr_ConfigurationDesignItem::ProductDefinition ******/
 		/****** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ******/
@@ -811,7 +811,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_ConfigurationItem::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -821,10 +821,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepRepr_ConfigurationItem::HasPurpose ******/
-		/****** md5 signature: fc79df10595a5b1bf4f69a30cc29bdf6 ******/
+		/****** md5 signature: ffee25ce836bd39755793ac7715052bd ******/
 		%feature("compactdefaultargs") HasPurpose;
 		%feature("autodoc", "Return
 -------
@@ -834,7 +834,7 @@ Description
 -----------
 Returns True if optional field Purpose is defined.
 ") HasPurpose;
-		Standard_Boolean HasPurpose();
+		bool HasPurpose();
 
 		/****** StepRepr_ConfigurationItem::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -850,7 +850,7 @@ Returns field Id.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepRepr_ConfigurationItem::Init ******/
-		/****** md5 signature: 2f8f18f631c0265a539dbfaa814f2b0e ******/
+		/****** md5 signature: b5d3f28247b5b7cb8599f0f159ff99a6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -871,7 +871,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_ProductConcept> & aItemConcept, const Standard_Boolean hasPurpose, const opencascade::handle<TCollection_HAsciiString> & aPurpose);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_ProductConcept> & aItemConcept, const bool hasPurpose, const opencascade::handle<TCollection_HAsciiString> & aPurpose);
 
 		/****** StepRepr_ConfigurationItem::ItemConcept ******/
 		/****** md5 signature: 25f9365ce93dc3997bde508d541df9e6 ******/
@@ -1045,27 +1045,27 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_DataEnvironment::Elements ******/
-		/****** md5 signature: aea4d1537edfd5bba28ddba1744d006e ******/
+		/****** md5 signature: 7038750e68bf5ac3946f89a46c50ec77 ******/
 		%feature("compactdefaultargs") Elements;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>>
 
 Description
 -----------
 Returns field Elements.
 ") Elements;
-		opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> Elements();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>> Elements();
 
 		/****** StepRepr_DataEnvironment::Init ******/
-		/****** md5 signature: c40b187bd4b7475ab2834baca4418ce9 ******/
+		/****** md5 signature: e7ccef714651e3cd4f852f3c8782eaa1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aElements: StepRepr_HArray1OfPropertyDefinitionRepresentation
+aElements: NCollection_HArray1<
 
 Return
 -------
@@ -1075,7 +1075,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> & aElements);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation> > > & aElements);
 
 		/****** StepRepr_DataEnvironment::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -1109,12 +1109,12 @@ Set field Description.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****** StepRepr_DataEnvironment::SetElements ******/
-		/****** md5 signature: 3441e62740acf358ba78a65412bbd722 ******/
+		/****** md5 signature: 44621120bb7936890d39722f308a9c83 ******/
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", "
 Parameters
 ----------
-Elements: StepRepr_HArray1OfPropertyDefinitionRepresentation
+Elements: NCollection_HArray1<
 
 Return
 -------
@@ -1124,7 +1124,7 @@ Description
 -----------
 Set field Elements.
 ") SetElements;
-		void SetElements(const opencascade::handle<StepRepr_HArray1OfPropertyDefinitionRepresentation> & Elements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation> > > & Elements);
 
 		/****** StepRepr_DataEnvironment::SetName ******/
 		/****** md5 signature: 1a85c1f4dd446039f14efe98df7aeb03 ******/
@@ -1297,7 +1297,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_ItemDefinedTransformation::HasDescription ******/
-		/****** md5 signature: 6792c1621c006761fed03425ebc22116 ******/
+		/****** md5 signature: d010225993bd0b0d0acd52b2612f57ac ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -1307,7 +1307,7 @@ Description
 -----------
 No available documentation.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepRepr_ItemDefinedTransformation::Init ******/
 		/****** md5 signature: 0e834570dec89c800ec534731b946b3a ******/
@@ -1594,7 +1594,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_ProductConcept::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -1604,7 +1604,7 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepRepr_ProductConcept::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -1620,7 +1620,7 @@ Returns field Id.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepRepr_ProductConcept::Init ******/
-		/****** md5 signature: d98bcba7d21f1e9827572d2e6f71f640 ******/
+		/****** md5 signature: 1ad38324d72fcd52b4073b9d85c734ef ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1639,7 +1639,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductConceptContext> & aMarketContext);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductConceptContext> & aMarketContext);
 
 		/****** StepRepr_ProductConcept::MarketContext ******/
 		/****** md5 signature: 9f90da3b6eeed1e681d59f478e320450 ******/
@@ -1824,7 +1824,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_PropertyDefinition::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -1834,10 +1834,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepRepr_PropertyDefinition::Init ******/
-		/****** md5 signature: 7f3bfb2ac3ec5fc661a0f7a811cc2791 ******/
+		/****** md5 signature: 91961fbfadf318fad5e1b4ee3c838309 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1855,7 +1855,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const StepRepr_CharacterizedDefinition & aDefinition);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const StepRepr_CharacterizedDefinition & aDefinition);
 
 		/****** StepRepr_PropertyDefinition::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -2251,13 +2251,13 @@ No available documentation.
 		opencascade::handle<StepRepr_RepresentationContext> ContextOfItems();
 
 		/****** StepRepr_Representation::Init ******/
-		/****** md5 signature: 627499e8f427903c12367baab279fd59 ******/
+		/****** md5 signature: 9977c2f18e62ee95bb4bb4554c9e76c9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-aItems: StepRepr_HArray1OfRepresentationItem
+aItems: NCollection_HArray1<
 aContextOfItems: StepRepr_RepresentationContext
 
 Return
@@ -2268,23 +2268,23 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aItems, const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aItems, const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
 
 		/****** StepRepr_Representation::Items ******/
-		/****** md5 signature: 98643c210b12e4be17aed588847824dd ******/
+		/****** md5 signature: 1969a52379a55d2325be4da943eb6bdb ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepRepr_HArray1OfRepresentationItem>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>
 
 Description
 -----------
 No available documentation.
 ") Items;
-		opencascade::handle<StepRepr_HArray1OfRepresentationItem> Items();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>> Items();
 
 		/****** StepRepr_Representation::ItemsValue ******/
-		/****** md5 signature: 62e4446b4eaba386b3cdf1be029a38a3 ******/
+		/****** md5 signature: 87c0a76710489dad9194b207ed070833 ******/
 		%feature("compactdefaultargs") ItemsValue;
 		%feature("autodoc", "
 Parameters
@@ -2299,7 +2299,7 @@ Description
 -----------
 No available documentation.
 ") ItemsValue;
-		opencascade::handle<StepRepr_RepresentationItem> ItemsValue(const Standard_Integer num);
+		opencascade::handle<StepRepr_RepresentationItem> ItemsValue(const int num);
 
 		/****** StepRepr_Representation::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -2315,7 +2315,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepRepr_Representation::NbItems ******/
-		/****** md5 signature: f3da46c6111cc4b112ff30aff83385d6 ******/
+		/****** md5 signature: 2b529efc4e5d8a11084d3f577abfb55b ******/
 		%feature("compactdefaultargs") NbItems;
 		%feature("autodoc", "Return
 -------
@@ -2325,7 +2325,7 @@ Description
 -----------
 No available documentation.
 ") NbItems;
-		Standard_Integer NbItems();
+		int NbItems();
 
 		/****** StepRepr_Representation::SetContextOfItems ******/
 		/****** md5 signature: fbb8169f75cbebc9398b0a80d2cd3beb ******/
@@ -2346,12 +2346,12 @@ No available documentation.
 		void SetContextOfItems(const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
 
 		/****** StepRepr_Representation::SetItems ******/
-		/****** md5 signature: 40f3e3541bd2da1c4b4d80ec3d5174fd ******/
+		/****** md5 signature: 4ccb6d5b055594644f9c07b343edfe4c ******/
 		%feature("compactdefaultargs") SetItems;
 		%feature("autodoc", "
 Parameters
 ----------
-aItems: StepRepr_HArray1OfRepresentationItem
+aItems: NCollection_HArray1<
 
 Return
 -------
@@ -2361,7 +2361,7 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aItems);
 
 		/****** StepRepr_Representation::SetName ******/
 		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
@@ -2787,7 +2787,7 @@ Empty constructor.
 		 StepRepr_RepresentationOrRepresentationReference();
 
 		/****** StepRepr_RepresentationOrRepresentationReference::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2802,7 +2802,7 @@ Description
 -----------
 Recognizes a kind of RepresentationOrRepresentationReference select type -- 1 -> Representation -- 2 -> RepresentationReference.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepRepr_RepresentationOrRepresentationReference::Representation ******/
 		/****** md5 signature: b68b8aa0615de130a54bdd2ee7c69058 ******/
@@ -2981,7 +2981,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_RepresentationRelationship::HasDescription ******/
-		/****** md5 signature: 083af65e5ebbf93f76d20e3d8763206e ******/
+		/****** md5 signature: 980f1fcb63dfef458527a0891b63ed2a ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -2991,7 +2991,7 @@ Description
 -----------
 No available documentation.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepRepr_RepresentationRelationship::Init ******/
 		/****** md5 signature: 148c2be5cfa53e5b136d44a9d5e3c232 ******/
@@ -3155,7 +3155,7 @@ Empty constructor.
 		 StepRepr_RepresentedDefinition();
 
 		/****** StepRepr_RepresentedDefinition::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3170,7 +3170,7 @@ Description
 -----------
 Recognizes a kind of RepresentedDefinition select type 1 -> GeneralProperty from StepBasic 2 -> PropertyDefinition from StepRepr 3 -> PropertyDefinitionRelationship from StepRepr 4 -> ShapeAspect from StepRepr 5 -> ShapeAspectRelationship from StepRepr 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepRepr_RepresentedDefinition::GeneralProperty ******/
 		/****** md5 signature: 644fc2281dcbe4ea457975f6595935d0 ******/
@@ -3452,7 +3452,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_ShapeAspectRelationship::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -3462,10 +3462,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepRepr_ShapeAspectRelationship::Init ******/
-		/****** md5 signature: 527c41c88cfe4f6d24a6a0678ed1b83e ******/
+		/****** md5 signature: 9da8dcd99da61bcca0f897a227db169a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3484,7 +3484,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_ShapeAspect> & aRelatingShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aRelatedShapeAspect);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepRepr_ShapeAspect> & aRelatingShapeAspect, const opencascade::handle<StepRepr_ShapeAspect> & aRelatedShapeAspect);
 
 		/****** StepRepr_ShapeAspectRelationship::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -3627,7 +3627,7 @@ Returns a ShapeDefinition SelectType.
 		 StepRepr_ShapeDefinition();
 
 		/****** StepRepr_ShapeDefinition::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3642,7 +3642,7 @@ Description
 -----------
 Recognizes a ShapeDefinition Kind Entity that is: 1 -> ProductDefinitionShape 2 -> ShapeAspect 3 -> ShapeAspectRelationship 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepRepr_ShapeDefinition::ProductDefinitionShape ******/
 		/****** md5 signature: b30663c40bd2822cf899d97bff9d9f32 ******/
@@ -3740,7 +3740,7 @@ Returns a Transformation SelectType.
 		 StepRepr_Transformation();
 
 		/****** StepRepr_Transformation::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3755,7 +3755,7 @@ Description
 -----------
 Recognizes a Transformation Kind Entity that is: 1 -> ItemDefinedTransformation 2 -> FunctionallyDefinedTransformation 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepRepr_Transformation::FunctionallyDefinedTransformation ******/
 		/****** md5 signature: 6406b059ed28a6f551d59c18c4e9caa2 ******/
@@ -3811,7 +3811,7 @@ Empty constructor.
 		 StepRepr_AssemblyComponentUsage();
 
 		/****** StepRepr_AssemblyComponentUsage::HasReferenceDesignator ******/
-		/****** md5 signature: 9a8965731acca81e6f70d595000dd8d7 ******/
+		/****** md5 signature: 29b3aaa5f9732c241518361f8fe103be ******/
 		%feature("compactdefaultargs") HasReferenceDesignator;
 		%feature("autodoc", "Return
 -------
@@ -3821,10 +3821,10 @@ Description
 -----------
 Returns True if optional field ReferenceDesignator is defined.
 ") HasReferenceDesignator;
-		Standard_Boolean HasReferenceDesignator();
+		bool HasReferenceDesignator();
 
 		/****** StepRepr_AssemblyComponentUsage::Init ******/
-		/****** md5 signature: 3f50b9f78be6c04cd1810769c2dc5d8f ******/
+		/****** md5 signature: 375d27bb1e7ca5a11e0111b40aa8a6ee ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3846,10 +3846,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aReferenceDesignator);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const bool hasReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aReferenceDesignator);
 
 		/****** StepRepr_AssemblyComponentUsage::Init ******/
-		/****** md5 signature: 0db59e8de9f915b20937e4ea3f16a887 ******/
+		/****** md5 signature: fa79e3e5062337520dbce7a29a171673 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3871,7 +3871,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aReferenceDesignator);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const bool hasReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aReferenceDesignator);
 
 		/****** StepRepr_AssemblyComponentUsage::ReferenceDesignator ******/
 		/****** md5 signature: 3f33fa46643916f54660af9ace9ee783 ******/
@@ -3934,7 +3934,7 @@ Returns a BooleanRepresentationItem.
 		 StepRepr_BooleanRepresentationItem();
 
 		/****** StepRepr_BooleanRepresentationItem::Init ******/
-		/****** md5 signature: 6a7222d2685c3d70e4f18fe4d13da71c ******/
+		/****** md5 signature: ec3efe261a7323ac270fcffe472e5ae5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3950,10 +3950,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Boolean theValue);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const bool theValue);
 
 		/****** StepRepr_BooleanRepresentationItem::SetValue ******/
-		/****** md5 signature: c15947db8f4c3ac9a4e790722adebad8 ******/
+		/****** md5 signature: 50fa2e6064c6e484913698b5dc9b75d0 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3968,10 +3968,10 @@ Description
 -----------
 No available documentation.
 ") SetValue;
-		void SetValue(const Standard_Boolean theValue);
+		void SetValue(const bool theValue);
 
 		/****** StepRepr_BooleanRepresentationItem::Value ******/
-		/****** md5 signature: ef17b191f201eb6049d354dba003460b ******/
+		/****** md5 signature: b10628b1a032cdb575b43d11ec24079d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3981,7 +3981,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value();
+		bool Value();
 
 };
 
@@ -4026,14 +4026,14 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepRepr_CharacterizedRepresentation::Init ******/
-		/****** md5 signature: 8c8beec0055e1bdcacac4c651c1459a5 ******/
+		/****** md5 signature: 4496aa30f9bdff7be69d5577bb44e35c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theItems: StepRepr_HArray1OfRepresentationItem
+theItems: NCollection_HArray1<
 theContextOfItems: StepRepr_RepresentationContext
 
 Return
@@ -4044,7 +4044,7 @@ Description
 -----------
 Returns a CharacterizedRepresentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
 		/****** StepRepr_CharacterizedRepresentation::SetDescription ******/
 		/****** md5 signature: b467a4923a6eae88022d3ef88d50bd20 ******/
@@ -4152,13 +4152,13 @@ No available documentation.
 		 StepRepr_CompoundRepresentationItem();
 
 		/****** StepRepr_CompoundRepresentationItem::Init ******/
-		/****** md5 signature: 0207af26d68998cbecff716d74fb6c21 ******/
+		/****** md5 signature: 6c5f3fd0c30cfbeab600ddd3206ada0c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
-item_element: StepRepr_HArray1OfRepresentationItem
+item_element: NCollection_HArray1<
 
 Return
 -------
@@ -4168,23 +4168,23 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & item_element);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & item_element);
 
 		/****** StepRepr_CompoundRepresentationItem::ItemElement ******/
-		/****** md5 signature: 3b036e99465091870d7ffbc06eecf21a ******/
+		/****** md5 signature: 696db934db45709c5d287630e43be1f3 ******/
 		%feature("compactdefaultargs") ItemElement;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepRepr_HArray1OfRepresentationItem>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>
 
 Description
 -----------
 No available documentation.
 ") ItemElement;
-		opencascade::handle<StepRepr_HArray1OfRepresentationItem> ItemElement();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>> ItemElement();
 
 		/****** StepRepr_CompoundRepresentationItem::ItemElementValue ******/
-		/****** md5 signature: 33efa7abc73652a485f3b432b7f5b73c ******/
+		/****** md5 signature: 59486b6ef8859e975eca388fe045b7da ******/
 		%feature("compactdefaultargs") ItemElementValue;
 		%feature("autodoc", "
 Parameters
@@ -4199,10 +4199,10 @@ Description
 -----------
 No available documentation.
 ") ItemElementValue;
-		opencascade::handle<StepRepr_RepresentationItem> ItemElementValue(const Standard_Integer num);
+		opencascade::handle<StepRepr_RepresentationItem> ItemElementValue(const int num);
 
 		/****** StepRepr_CompoundRepresentationItem::NbItemElement ******/
-		/****** md5 signature: c297bb315bbd175c5daaa0b61ca7effd ******/
+		/****** md5 signature: 60e845e1c6008f3edfafcbcb95702493 ******/
 		%feature("compactdefaultargs") NbItemElement;
 		%feature("autodoc", "Return
 -------
@@ -4212,15 +4212,15 @@ Description
 -----------
 No available documentation.
 ") NbItemElement;
-		Standard_Integer NbItemElement();
+		int NbItemElement();
 
 		/****** StepRepr_CompoundRepresentationItem::SetItemElement ******/
-		/****** md5 signature: 5329c3548b0d522d52bd7f8d969d950c ******/
+		/****** md5 signature: 9e9105a616cd415ee408762514ab1724 ******/
 		%feature("compactdefaultargs") SetItemElement;
 		%feature("autodoc", "
 Parameters
 ----------
-item_element: StepRepr_HArray1OfRepresentationItem
+item_element: NCollection_HArray1<
 
 Return
 -------
@@ -4230,10 +4230,10 @@ Description
 -----------
 No available documentation.
 ") SetItemElement;
-		void SetItemElement(const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & item_element);
+		void SetItemElement(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & item_element);
 
 		/****** StepRepr_CompoundRepresentationItem::SetItemElementValue ******/
-		/****** md5 signature: e7c7ae18e6a1cdef709535c771f1533f ******/
+		/****** md5 signature: e95f47d6967433704c792dee421efd2e ******/
 		%feature("compactdefaultargs") SetItemElementValue;
 		%feature("autodoc", "
 Parameters
@@ -4249,7 +4249,7 @@ Description
 -----------
 No available documentation.
 ") SetItemElementValue;
-		void SetItemElementValue(const Standard_Integer num, const opencascade::handle<StepRepr_RepresentationItem> & anelement);
+		void SetItemElementValue(const int num, const opencascade::handle<StepRepr_RepresentationItem> & anelement);
 
 };
 
@@ -4534,14 +4534,14 @@ Returns a GlobalUncertaintyAssignedContext.
 		 StepRepr_GlobalUncertaintyAssignedContext();
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::Init ******/
-		/****** md5 signature: 86784241f2256c21890b9dc4a2556ddf ******/
+		/****** md5 signature: dd00fa522c0496d21d3503378d655a98 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aContextIdentifier: TCollection_HAsciiString
 aContextType: TCollection_HAsciiString
-aUncertainty: StepBasic_HArray1OfUncertaintyMeasureWithUnit
+aUncertainty: NCollection_HArray1<
 
 Return
 -------
@@ -4551,10 +4551,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & aUncertainty);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> > > & aUncertainty);
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::NbUncertainty ******/
-		/****** md5 signature: bc672cddfac018558323036dccc4f0ec ******/
+		/****** md5 signature: 5a5209f9e06fb26886d8dfd427ce51aa ******/
 		%feature("compactdefaultargs") NbUncertainty;
 		%feature("autodoc", "Return
 -------
@@ -4564,15 +4564,15 @@ Description
 -----------
 No available documentation.
 ") NbUncertainty;
-		Standard_Integer NbUncertainty();
+		int NbUncertainty();
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::SetUncertainty ******/
-		/****** md5 signature: c054224ac25dbcf2b6152ad1aba77e7c ******/
+		/****** md5 signature: 5f797c92e17afb834eb6941fdcb7a11c ******/
 		%feature("compactdefaultargs") SetUncertainty;
 		%feature("autodoc", "
 Parameters
 ----------
-aUncertainty: StepBasic_HArray1OfUncertaintyMeasureWithUnit
+aUncertainty: NCollection_HArray1<
 
 Return
 -------
@@ -4582,23 +4582,23 @@ Description
 -----------
 No available documentation.
 ") SetUncertainty;
-		void SetUncertainty(const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & aUncertainty);
+		void SetUncertainty(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> > > & aUncertainty);
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::Uncertainty ******/
-		/****** md5 signature: 8ec020c7303861237c2895d6f2505dfe ******/
+		/****** md5 signature: c45420811079a2cb4224a341ce15554e ******/
 		%feature("compactdefaultargs") Uncertainty;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>>
 
 Description
 -----------
 No available documentation.
 ") Uncertainty;
-		opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> Uncertainty();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>> Uncertainty();
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::UncertaintyValue ******/
-		/****** md5 signature: ae72ac2820c2cd31e09d467cfe44ffc7 ******/
+		/****** md5 signature: acc281cc8717429bd70979b4a4c6b1b1 ******/
 		%feature("compactdefaultargs") UncertaintyValue;
 		%feature("autodoc", "
 Parameters
@@ -4613,7 +4613,7 @@ Description
 -----------
 No available documentation.
 ") UncertaintyValue;
-		opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> UncertaintyValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> UncertaintyValue(const int num);
 
 };
 
@@ -4645,14 +4645,14 @@ Returns a GlobalUnitAssignedContext.
 		 StepRepr_GlobalUnitAssignedContext();
 
 		/****** StepRepr_GlobalUnitAssignedContext::Init ******/
-		/****** md5 signature: d6874bfb6ce3351123033e0682a478b6 ******/
+		/****** md5 signature: 8104b3adda7eb54a7e6bc9c253a75960 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aContextIdentifier: TCollection_HAsciiString
 aContextType: TCollection_HAsciiString
-aUnits: StepBasic_HArray1OfNamedUnit
+aUnits: NCollection_HArray1<
 
 Return
 -------
@@ -4662,10 +4662,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
 
 		/****** StepRepr_GlobalUnitAssignedContext::NbUnits ******/
-		/****** md5 signature: 86bc891f14ee45cd28b37a18bf9c55a5 ******/
+		/****** md5 signature: 0869a1823c5478da0f6e93ff331d6fda ******/
 		%feature("compactdefaultargs") NbUnits;
 		%feature("autodoc", "Return
 -------
@@ -4675,15 +4675,15 @@ Description
 -----------
 No available documentation.
 ") NbUnits;
-		Standard_Integer NbUnits();
+		int NbUnits();
 
 		/****** StepRepr_GlobalUnitAssignedContext::SetUnits ******/
-		/****** md5 signature: eea45ef11a002984efb57090be89b405 ******/
+		/****** md5 signature: 337581e69f7bdcfcb983fc6ea95bb132 ******/
 		%feature("compactdefaultargs") SetUnits;
 		%feature("autodoc", "
 Parameters
 ----------
-aUnits: StepBasic_HArray1OfNamedUnit
+aUnits: NCollection_HArray1<
 
 Return
 -------
@@ -4693,23 +4693,23 @@ Description
 -----------
 No available documentation.
 ") SetUnits;
-		void SetUnits(const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
+		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
 
 		/****** StepRepr_GlobalUnitAssignedContext::Units ******/
-		/****** md5 signature: ab46f8b94daa775f5aae38fe2b8f85c4 ******/
+		/****** md5 signature: 15510344bbc0dccc14d821a7401432b6 ******/
 		%feature("compactdefaultargs") Units;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfNamedUnit>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>>
 
 Description
 -----------
 No available documentation.
 ") Units;
-		opencascade::handle<StepBasic_HArray1OfNamedUnit> Units();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>>> Units();
 
 		/****** StepRepr_GlobalUnitAssignedContext::UnitsValue ******/
-		/****** md5 signature: ae296669577f5a6856f8993a7c027227 ******/
+		/****** md5 signature: d991d0c7076b378cb884117fd23b60d6 ******/
 		%feature("compactdefaultargs") UnitsValue;
 		%feature("autodoc", "
 Parameters
@@ -4724,7 +4724,7 @@ Description
 -----------
 No available documentation.
 ") UnitsValue;
-		opencascade::handle<StepBasic_NamedUnit> UnitsValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_NamedUnit> UnitsValue(const int num);
 
 };
 
@@ -4756,7 +4756,7 @@ Returns a IntegerRepresentationItem.
 		 StepRepr_IntegerRepresentationItem();
 
 		/****** StepRepr_IntegerRepresentationItem::Init ******/
-		/****** md5 signature: 60afb828539833300b65168eee6aa04f ******/
+		/****** md5 signature: 980ac03d5a8ca7991ab586aae6f21e62 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4772,10 +4772,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Integer theValue);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const int theValue);
 
 		/****** StepRepr_IntegerRepresentationItem::SetValue ******/
-		/****** md5 signature: 2c273822c7e71fc10325805d4c4db935 ******/
+		/****** md5 signature: f7b5cb62647773b2fa1bfbf7519b96a3 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -4790,10 +4790,10 @@ Description
 -----------
 No available documentation.
 ") SetValue;
-		void SetValue(const Standard_Integer theValue);
+		void SetValue(const int theValue);
 
 		/****** StepRepr_IntegerRepresentationItem::Value ******/
-		/****** md5 signature: 46d5e48e8d40aa2967fce10400bd2b2b ******/
+		/****** md5 signature: 38412ff16c1ab141ee616e760710e221 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -4803,7 +4803,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Integer Value();
+		int Value();
 
 };
 
@@ -4835,7 +4835,7 @@ Empty constructor.
 		 StepRepr_MakeFromUsageOption();
 
 		/****** StepRepr_MakeFromUsageOption::Init ******/
-		/****** md5 signature: f5d5941e265f880e80d1562146e58d50 ******/
+		/****** md5 signature: 84f0155d1a39a4c7a9e9f4253158e09f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4848,7 +4848,7 @@ aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefin
 aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinition
 aRanking: int
 aRankingRationale: TCollection_HAsciiString
-aQuantity: StepBasic_MeasureWithUnit
+aQuantity: Standard_Transient
 
 Return
 -------
@@ -4858,10 +4858,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Integer aRanking, const opencascade::handle<TCollection_HAsciiString> & aRankingRationale, const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const int aRanking, const opencascade::handle<TCollection_HAsciiString> & aRankingRationale, const opencascade::handle<Standard_Transient> & aQuantity);
 
 		/****** StepRepr_MakeFromUsageOption::Init ******/
-		/****** md5 signature: 6b3d58d4c74c64fdb115752558a2897b ******/
+		/****** md5 signature: 7dd6b8d34ca084307d037457acb8b606 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4874,7 +4874,7 @@ aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefin
 aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinitionOrReference
 aRanking: int
 aRankingRationale: TCollection_HAsciiString
-aQuantity: StepBasic_MeasureWithUnit
+aQuantity: Standard_Transient
 
 Return
 -------
@@ -4884,23 +4884,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Integer aRanking, const opencascade::handle<TCollection_HAsciiString> & aRankingRationale, const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const int aRanking, const opencascade::handle<TCollection_HAsciiString> & aRankingRationale, const opencascade::handle<Standard_Transient> & aQuantity);
 
 		/****** StepRepr_MakeFromUsageOption::Quantity ******/
-		/****** md5 signature: 75eed7858cceaf85fb074fb63d42dfee ******/
+		/****** md5 signature: a88e9eed991966c6e095fcd12293e2ee ******/
 		%feature("compactdefaultargs") Quantity;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_MeasureWithUnit>
+opencascade::handle<Standard_Transient>
 
 Description
 -----------
 Returns field Quantity.
 ") Quantity;
-		opencascade::handle<StepBasic_MeasureWithUnit> Quantity();
+		opencascade::handle<Standard_Transient> Quantity();
 
 		/****** StepRepr_MakeFromUsageOption::Ranking ******/
-		/****** md5 signature: 492d8ae35fc8a11700ecaefbf3cbc069 ******/
+		/****** md5 signature: c77aee755e0fca091afefa181fc20e22 ******/
 		%feature("compactdefaultargs") Ranking;
 		%feature("autodoc", "Return
 -------
@@ -4910,7 +4910,7 @@ Description
 -----------
 Returns field Ranking.
 ") Ranking;
-		Standard_Integer Ranking();
+		int Ranking();
 
 		/****** StepRepr_MakeFromUsageOption::RankingRationale ******/
 		/****** md5 signature: 85594cb96873e51ff47274481040f7c7 ******/
@@ -4926,12 +4926,12 @@ Returns field RankingRationale.
 		opencascade::handle<TCollection_HAsciiString> RankingRationale();
 
 		/****** StepRepr_MakeFromUsageOption::SetQuantity ******/
-		/****** md5 signature: dad0dd6ffb53fc2aff91d0b0e1926f2d ******/
+		/****** md5 signature: d5e7291f8da06faef5437c6bb992f9d5 ******/
 		%feature("compactdefaultargs") SetQuantity;
 		%feature("autodoc", "
 Parameters
 ----------
-Quantity: StepBasic_MeasureWithUnit
+Quantity: Standard_Transient
 
 Return
 -------
@@ -4941,10 +4941,10 @@ Description
 -----------
 Set field Quantity.
 ") SetQuantity;
-		void SetQuantity(const opencascade::handle<StepBasic_MeasureWithUnit> & Quantity);
+		void SetQuantity(const opencascade::handle<Standard_Transient> & Quantity);
 
 		/****** StepRepr_MakeFromUsageOption::SetRanking ******/
-		/****** md5 signature: 3591bd9d4b391d8e467f9c5702c3b080 ******/
+		/****** md5 signature: 13047b7f95dff264ed99ab23e8d1c9bb ******/
 		%feature("compactdefaultargs") SetRanking;
 		%feature("autodoc", "
 Parameters
@@ -4959,7 +4959,7 @@ Description
 -----------
 Set field Ranking.
 ") SetRanking;
-		void SetRanking(const Standard_Integer Ranking);
+		void SetRanking(const int Ranking);
 
 		/****** StepRepr_MakeFromUsageOption::SetRankingRationale ******/
 		/****** md5 signature: fac3f99a3548099f24ee658ababda03b ******/
@@ -5396,13 +5396,13 @@ Returns a RealRepresentationItem.
 		 StepRepr_RealRepresentationItem();
 
 		/****** StepRepr_RealRepresentationItem::Init ******/
-		/****** md5 signature: b94780edbf351e7ff2f2b4a013763a92 ******/
+		/****** md5 signature: 9d4a2a8227a275ea896264ca9e7735da ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theValue: float
+theValue: double
 
 Return
 -------
@@ -5412,15 +5412,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const Standard_Real theValue);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const double theValue);
 
 		/****** StepRepr_RealRepresentationItem::SetValue ******/
-		/****** md5 signature: 00f545b803ec8605526c0f3fc87dfa67 ******/
+		/****** md5 signature: 1f2e86d93e21669d8456db128864d254 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -5430,20 +5430,20 @@ Description
 -----------
 No available documentation.
 ") SetValue;
-		void SetValue(const Standard_Real theValue);
+		void SetValue(const double theValue);
 
 		/****** StepRepr_RealRepresentationItem::Value ******/
-		/****** md5 signature: c39c133efac01c9bfb6299560d54008f ******/
+		/****** md5 signature: 2c29dd1ff973feaf78b021d3cff2fb34 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Real Value();
+		double Value();
 
 };
 
@@ -6036,7 +6036,7 @@ No available documentation.
 		 StepRepr_ParallelOffset();
 
 		/****** StepRepr_ParallelOffset::Init ******/
-		/****** md5 signature: 9eda71877f8da279711bfcd867dbe9c8 ******/
+		/****** md5 signature: 0ea0e66b5c4a2fe3556dcfa1f722f63e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6045,7 +6045,7 @@ theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 theOfShape: StepRepr_ProductDefinitionShape
 theProductDefinitional: StepData_Logical
-theOffset: StepBasic_MeasureWithUnit
+theOffset: Standard_Transient
 
 Return
 -------
@@ -6055,28 +6055,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const opencascade::handle<StepBasic_MeasureWithUnit> & theOffset);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const opencascade::handle<Standard_Transient> & theOffset);
 
 		/****** StepRepr_ParallelOffset::Offset ******/
-		/****** md5 signature: 1de5a42878f98c409cec3f7a0781f228 ******/
+		/****** md5 signature: 55234cddd847d7a636ee073745368c74 ******/
 		%feature("compactdefaultargs") Offset;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_MeasureWithUnit>
+opencascade::handle<Standard_Transient>
 
 Description
 -----------
 Returns field Offset.
 ") Offset;
-		opencascade::handle<StepBasic_MeasureWithUnit> Offset();
+		opencascade::handle<Standard_Transient> Offset();
 
 		/****** StepRepr_ParallelOffset::SetOffset ******/
-		/****** md5 signature: 97ba2a0595c70f3480663c82b2d6871c ******/
+		/****** md5 signature: 2ef225fb1b8d9e743075386f39e78013 ******/
 		%feature("compactdefaultargs") SetOffset;
 		%feature("autodoc", "
 Parameters
 ----------
-theOffset: StepBasic_MeasureWithUnit
+theOffset: Standard_Transient
 
 Return
 -------
@@ -6086,7 +6086,7 @@ Description
 -----------
 Set field Offset.
 ") SetOffset;
-		void SetOffset(const opencascade::handle<StepBasic_MeasureWithUnit> & theOffset);
+		void SetOffset(const opencascade::handle<Standard_Transient> & theOffset);
 
 };
 
@@ -6176,7 +6176,7 @@ Empty constructor.
 		 StepRepr_QuantifiedAssemblyComponentUsage();
 
 		/****** StepRepr_QuantifiedAssemblyComponentUsage::Init ******/
-		/****** md5 signature: a3e5f31a4ee7e96661cd7eca17cfd497 ******/
+		/****** md5 signature: 6780d8d38e378042bfab3e374a4c8b21 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6189,7 +6189,7 @@ aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefin
 aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinition
 hasAssemblyComponentUsage_ReferenceDesignator: bool
 aAssemblyComponentUsage_ReferenceDesignator: TCollection_HAsciiString
-aQuantity: StepBasic_MeasureWithUnit
+aQuantity: Standard_Transient
 
 Return
 -------
@@ -6199,10 +6199,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const bool hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<Standard_Transient> & aQuantity);
 
 		/****** StepRepr_QuantifiedAssemblyComponentUsage::Init ******/
-		/****** md5 signature: f622aff8f6b34a244f8533dc581d907d ******/
+		/****** md5 signature: 7032d453e1da80f21a9ab36ad3420bb5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6215,7 +6215,7 @@ aProductDefinitionRelationship_RelatingProductDefinition: StepBasic_ProductDefin
 aProductDefinitionRelationship_RelatedProductDefinition: StepBasic_ProductDefinitionOrReference
 hasAssemblyComponentUsage_ReferenceDesignator: bool
 aAssemblyComponentUsage_ReferenceDesignator: TCollection_HAsciiString
-aQuantity: StepBasic_MeasureWithUnit
+aQuantity: Standard_Transient
 
 Return
 -------
@@ -6225,28 +6225,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<StepBasic_MeasureWithUnit> & aQuantity);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const bool hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<Standard_Transient> & aQuantity);
 
 		/****** StepRepr_QuantifiedAssemblyComponentUsage::Quantity ******/
-		/****** md5 signature: 75eed7858cceaf85fb074fb63d42dfee ******/
+		/****** md5 signature: a88e9eed991966c6e095fcd12293e2ee ******/
 		%feature("compactdefaultargs") Quantity;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_MeasureWithUnit>
+opencascade::handle<Standard_Transient>
 
 Description
 -----------
 Returns field Quantity.
 ") Quantity;
-		opencascade::handle<StepBasic_MeasureWithUnit> Quantity();
+		opencascade::handle<Standard_Transient> Quantity();
 
 		/****** StepRepr_QuantifiedAssemblyComponentUsage::SetQuantity ******/
-		/****** md5 signature: dad0dd6ffb53fc2aff91d0b0e1926f2d ******/
+		/****** md5 signature: d5e7291f8da06faef5437c6bb992f9d5 ******/
 		%feature("compactdefaultargs") SetQuantity;
 		%feature("autodoc", "
 Parameters
 ----------
-Quantity: StepBasic_MeasureWithUnit
+Quantity: Standard_Transient
 
 Return
 -------
@@ -6256,7 +6256,7 @@ Description
 -----------
 Set field Quantity.
 ") SetQuantity;
-		void SetQuantity(const opencascade::handle<StepBasic_MeasureWithUnit> & Quantity);
+		void SetQuantity(const opencascade::handle<Standard_Transient> & Quantity);
 
 };
 
@@ -6493,7 +6493,7 @@ Empty constructor.
 		 StepRepr_SpecifiedHigherUsageOccurrence();
 
 		/****** StepRepr_SpecifiedHigherUsageOccurrence::Init ******/
-		/****** md5 signature: 39082104a4554f2fdae1adf98c5ff4dc ******/
+		/****** md5 signature: fdd7fa2de704d25f739dde01ad25f9bf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6517,10 +6517,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<StepRepr_AssemblyComponentUsage> & aUpperUsage, const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & aNextUsage);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aProductDefinitionRelationship_RelatedProductDefinition, const bool hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<StepRepr_AssemblyComponentUsage> & aUpperUsage, const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & aNextUsage);
 
 		/****** StepRepr_SpecifiedHigherUsageOccurrence::Init ******/
-		/****** md5 signature: b1a81b9215bb24232e75a49b5dfa10b8 ******/
+		/****** md5 signature: c8b1a859df8a63afea70971e51f1dd84 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6544,7 +6544,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const Standard_Boolean hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const Standard_Boolean hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<StepRepr_AssemblyComponentUsage> & aUpperUsage, const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & aNextUsage);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Id, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Name, const bool hasProductDefinitionRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & aProductDefinitionRelationship_Description, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aProductDefinitionRelationship_RelatedProductDefinition, const bool hasAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<TCollection_HAsciiString> & aAssemblyComponentUsage_ReferenceDesignator, const opencascade::handle<StepRepr_AssemblyComponentUsage> & aUpperUsage, const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & aNextUsage);
 
 		/****** StepRepr_SpecifiedHigherUsageOccurrence::NextUsage ******/
 		/****** md5 signature: 302aee25e9a0a52d40512f4cf28c968c ******/
@@ -6894,71 +6894,71 @@ class StepRepr_ReprItemAndMeasureWithUnitAndQRI:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class StepRepr_HArray1OfMaterialPropertyRepresentation : public StepRepr_Array1OfMaterialPropertyRepresentation, public Standard_Transient {
+class StepRepr_HArray1OfMaterialPropertyRepresentation : public NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>, public Standard_Transient {
   public:
     StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfMaterialPropertyRepresentation::value_type& theValue);
-    StepRepr_HArray1OfMaterialPropertyRepresentation(const StepRepr_Array1OfMaterialPropertyRepresentation& theOther);
-    const StepRepr_Array1OfMaterialPropertyRepresentation& Array1();
-    StepRepr_Array1OfMaterialPropertyRepresentation& ChangeArray1();
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>::value_type& theValue);
+    StepRepr_HArray1OfMaterialPropertyRepresentation(const NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& Array1();
+    NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
 
 
-class StepRepr_HArray1OfPropertyDefinitionRepresentation : public StepRepr_Array1OfPropertyDefinitionRepresentation, public Standard_Transient {
+class StepRepr_HArray1OfPropertyDefinitionRepresentation : public NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>, public Standard_Transient {
   public:
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfPropertyDefinitionRepresentation::value_type& theValue);
-    StepRepr_HArray1OfPropertyDefinitionRepresentation(const StepRepr_Array1OfPropertyDefinitionRepresentation& theOther);
-    const StepRepr_Array1OfPropertyDefinitionRepresentation& Array1();
-    StepRepr_Array1OfPropertyDefinitionRepresentation& ChangeArray1();
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>::value_type& theValue);
+    StepRepr_HArray1OfPropertyDefinitionRepresentation(const NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>& Array1();
+    NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
 
 
-class StepRepr_HArray1OfRepresentationItem : public StepRepr_Array1OfRepresentationItem, public Standard_Transient {
+class StepRepr_HArray1OfRepresentationItem : public NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>, public Standard_Transient {
   public:
     StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfRepresentationItem::value_type& theValue);
-    StepRepr_HArray1OfRepresentationItem(const StepRepr_Array1OfRepresentationItem& theOther);
-    const StepRepr_Array1OfRepresentationItem& Array1();
-    StepRepr_Array1OfRepresentationItem& ChangeArray1();
+    StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>::value_type& theValue);
+    StepRepr_HArray1OfRepresentationItem(const NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>& Array1();
+    NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfRepresentationItem)
 
 
-class StepRepr_HArray1OfShapeAspect : public StepRepr_Array1OfShapeAspect, public Standard_Transient {
+class StepRepr_HArray1OfShapeAspect : public NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>, public Standard_Transient {
   public:
     StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepRepr_Array1OfShapeAspect::value_type& theValue);
-    StepRepr_HArray1OfShapeAspect(const StepRepr_Array1OfShapeAspect& theOther);
-    const StepRepr_Array1OfShapeAspect& Array1();
-    StepRepr_Array1OfShapeAspect& ChangeArray1();
+    StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>::value_type& theValue);
+    StepRepr_HArray1OfShapeAspect(const NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>& Array1();
+    NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfShapeAspect)
 
 /* harray2 classes */
 /* hsequence classes */
-class StepRepr_HSequenceOfMaterialPropertyRepresentation : public StepRepr_SequenceOfMaterialPropertyRepresentation, public Standard_Transient {
+class StepRepr_HSequenceOfMaterialPropertyRepresentation : public NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>, public Standard_Transient {
   public:
     StepRepr_HSequenceOfMaterialPropertyRepresentation();
-    StepRepr_HSequenceOfMaterialPropertyRepresentation(const StepRepr_SequenceOfMaterialPropertyRepresentation& theOther);
-    const StepRepr_SequenceOfMaterialPropertyRepresentation& Sequence();
-    void Append (const StepRepr_SequenceOfMaterialPropertyRepresentation::value_type& theItem);
-    void Append (StepRepr_SequenceOfMaterialPropertyRepresentation& theSequence);
-    StepRepr_SequenceOfMaterialPropertyRepresentation& ChangeSequence();
+    StepRepr_HSequenceOfMaterialPropertyRepresentation(const NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& theOther);
+    const NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& theSequence);
+    NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
 
 
-class StepRepr_HSequenceOfRepresentationItem : public StepRepr_SequenceOfRepresentationItem, public Standard_Transient {
+class StepRepr_HSequenceOfRepresentationItem : public NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>, public Standard_Transient {
   public:
     StepRepr_HSequenceOfRepresentationItem();
-    StepRepr_HSequenceOfRepresentationItem(const StepRepr_SequenceOfRepresentationItem& theOther);
-    const StepRepr_SequenceOfRepresentationItem& Sequence();
-    void Append (const StepRepr_SequenceOfRepresentationItem::value_type& theItem);
-    void Append (StepRepr_SequenceOfRepresentationItem& theSequence);
-    StepRepr_SequenceOfRepresentationItem& ChangeSequence();
+    StepRepr_HSequenceOfRepresentationItem(const NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& theOther);
+    const NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& theSequence);
+    NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfRepresentationItem)
 

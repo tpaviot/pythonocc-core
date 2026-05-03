@@ -53,7 +53,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prs3d.html"
 #include<GeomAbs_module.hxx>
 #include<Aspect_module.hxx>
 #include<Quantity_module.hxx>
-#include<TColStd_module.hxx>
 #include<TShort_module.hxx>
 #include<TColQuantity_module.hxx>
 #include<Message_module.hxx>
@@ -90,7 +89,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prs3d.html"
 %import GeomAbs.i
 %import Aspect.i
 %import Quantity.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -429,18 +427,12 @@ Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = Prs3d_ListIteratorOfNListOfSequenceOfPnt(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
 
 /* typedefs */
-typedef Prs3d_NListOfSequenceOfPnt::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
+typedef NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>>::Iterator Prs3d_NListIteratorOfListOfSequenceOfPnt;
 typedef NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>> Prs3d_NListOfSequenceOfPnt;
 typedef Graphic3d_Structure Prs3d_Presentation;
 /* end typedefs declaration */
@@ -452,12 +444,12 @@ typedef Graphic3d_Structure Prs3d_Presentation;
 class Prs3d {
 	public:
 		/****** Prs3d::AddFreeEdges ******/
-		/****** md5 signature: 7ac34117f886744be821be34fbd08b8a ******/
+		/****** md5 signature: a3f232b882fa4061415e52320cdd3ae2 ******/
 		%feature("compactdefaultargs") AddFreeEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-theSegments: TColgp_SequenceOfPnt
+theSegments: NCollection_Sequence<gp_Pnt>
 thePolyTri: Poly_Triangulation
 theLocation: gp_Trsf
 
@@ -471,17 +463,17 @@ Add triangulation free edges into sequence of line segments. @param[out] theSegm
 Input parameter: thePolyTri triangulation to process 
 Input parameter: theLocation transformation to apply.
 ") AddFreeEdges;
-		static void AddFreeEdges(TColgp_SequenceOfPnt & theSegments, const opencascade::handle<Poly_Triangulation> & thePolyTri, const gp_Trsf & theLocation);
+		static void AddFreeEdges(NCollection_Sequence<gp_Pnt> & theSegments, const opencascade::handle<Poly_Triangulation> & thePolyTri, const gp_Trsf & theLocation);
 
 		/****** Prs3d::AddPrimitivesGroup ******/
-		/****** md5 signature: 54a23ed776ef73d4469f2189e47e27ac ******/
+		/****** md5 signature: 244aa1df73c730dabab155c321e05e0a ******/
 		%feature("compactdefaultargs") AddPrimitivesGroup;
 		%feature("autodoc", "
 Parameters
 ----------
 thePrs: Prs3d_Presentation
 theAspect: Prs3d_LineAspect
-thePolylines: Prs3d_NListOfSequenceOfPnt
+thePolylines: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -491,21 +483,21 @@ Description
 -----------
 Add primitives into new group in presentation and clear the list of polylines.
 ") AddPrimitivesGroup;
-		static void AddPrimitivesGroup(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_LineAspect> & theAspect, Prs3d_NListOfSequenceOfPnt & thePolylines);
+		static void AddPrimitivesGroup(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_LineAspect> & theAspect, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & thePolylines);
 
 		/****** Prs3d::GetDeflection ******/
-		/****** md5 signature: 80d3db84df62af62fba08c06cb9a8696 ******/
+		/****** md5 signature: fbe88177fbc15ec867a54420e78ae6ad ******/
 		%feature("compactdefaultargs") GetDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
-theBndMin: Graphic3d_Vec3d
-theBndMax: Graphic3d_Vec3d
-theDeviationCoefficient: float
+theBndMin: NCollection_Vec3<double>
+theBndMax: NCollection_Vec3<double>
+theDeviationCoefficient: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
@@ -515,21 +507,21 @@ Input parameter: theBndMax bounding box max corner
 Input parameter: theDeviationCoefficient relative deflection coefficient from Prs3d_Drawer::DeviationCoefficient() 
 Return: absolute deflection coefficient based on bounding box dimensions.
 ") GetDeflection;
-		static Standard_Real GetDeflection(const Graphic3d_Vec3d & theBndMin, const Graphic3d_Vec3d & theBndMax, const Standard_Real theDeviationCoefficient);
+		static double GetDeflection(const NCollection_Vec3<double> & theBndMin, const NCollection_Vec3<double> & theBndMax, const double theDeviationCoefficient);
 
 		/****** Prs3d::GetDeflection ******/
-		/****** md5 signature: b4ff60a90046a3353c924190b95ff7f7 ******/
+		/****** md5 signature: 97d4137905df55addd776a041a6db14d ******/
 		%feature("compactdefaultargs") GetDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
 theBndBox: Bnd_Box
-theDeviationCoefficient: float
-theMaximalChordialDeviation: float
+theDeviationCoefficient: double
+theMaximalChordialDeviation: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
@@ -539,38 +531,38 @@ Input parameter: theDeviationCoefficient relative deflection coefficient from Pr
 Input parameter: theMaximalChordialDeviation absolute deflection coefficient from Prs3d_Drawer::MaximalChordialDeviation() 
 Return: absolute deflection coefficient based on bounding box dimensions or theMaximalChordialDeviation if bounding box is Void or Infinite.
 ") GetDeflection;
-		static Standard_Real GetDeflection(const Bnd_Box & theBndBox, const Standard_Real theDeviationCoefficient, const Standard_Real theMaximalChordialDeviation);
+		static double GetDeflection(const Bnd_Box & theBndBox, const double theDeviationCoefficient, const double theMaximalChordialDeviation);
 
 		/****** Prs3d::MatchSegment ******/
-		/****** md5 signature: b54f261a95760df4573beed0ad5de6ee ******/
+		/****** md5 signature: 61b019774162aa39cdfce4b872ed8ce9 ******/
 		%feature("compactdefaultargs") MatchSegment;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-aDistance: float
+X: double
+Y: double
+Z: double
+aDistance: double
 p1: gp_Pnt
 p2: gp_Pnt
 
 Return
 -------
-dist: float
+dist: double
 
 Description
 -----------
 draws an arrow at a given location, with respect to a given direction.
 ") MatchSegment;
-		static Standard_Boolean MatchSegment(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const gp_Pnt & p1, const gp_Pnt & p2, Standard_Real &OutValue);
+		static bool MatchSegment(const double X, const double Y, const double Z, const double aDistance, const gp_Pnt & p1, const gp_Pnt & p2, Standard_Real &OutValue);
 
 		/****** Prs3d::PrimitivesFromPolylines ******/
-		/****** md5 signature: ac5afc7f1737d42c9e2e741f0693e3a3 ******/
+		/****** md5 signature: e604dfa2412b57b9152dc6382ac5f013 ******/
 		%feature("compactdefaultargs") PrimitivesFromPolylines;
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: Prs3d_NListOfSequenceOfPnt
+thePoints: NCollection_HSequence<gp_Pnt
 
 Return
 -------
@@ -582,7 +574,7 @@ Assembles array of primitives for sequence of polylines.
 Input parameter: thePoints the polylines sequence 
 Return: array of primitives.
 ") PrimitivesFromPolylines;
-		static opencascade::handle<Graphic3d_ArrayOfPrimitives> PrimitivesFromPolylines(const Prs3d_NListOfSequenceOfPnt & thePoints);
+		static opencascade::handle<Graphic3d_ArrayOfPrimitives> PrimitivesFromPolylines(const NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & thePoints);
 
 };
 
@@ -599,7 +591,7 @@ Return: array of primitives.
 class Prs3d_Arrow {
 	public:
 		/****** Prs3d_Arrow::Draw ******/
-		/****** md5 signature: 5fbe6d990a1917c27eed32163631c6db ******/
+		/****** md5 signature: af657134195e4053c24cfaa40174004f ******/
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "
 Parameters
@@ -607,8 +599,8 @@ Parameters
 theGroup: Graphic3d_Group
 theLocation: gp_Pnt
 theDirection: gp_Dir
-theAngle: float
-theLength: float
+theAngle: double
+theLength: double
 
 Return
 -------
@@ -623,18 +615,18 @@ Parameter theDirection direction of the arrow
 Parameter theAngle angle of opening of the arrow head 
 Parameter theLength length of the arrow (from the tip).
 ") Draw;
-		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const gp_Pnt & theLocation, const gp_Dir & theDirection, const Standard_Real theAngle, const Standard_Real theLength);
+		static void Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const gp_Pnt & theLocation, const gp_Dir & theDirection, const double theAngle, const double theLength);
 
 		/****** Prs3d_Arrow::DrawSegments ******/
-		/****** md5 signature: 732901be4cc19438764121766619db8b ******/
+		/****** md5 signature: a91c04bf8f63113472f28c7981de6266 ******/
 		%feature("compactdefaultargs") DrawSegments;
 		%feature("autodoc", "
 Parameters
 ----------
 theLocation: gp_Pnt
 theDir: gp_Dir
-theAngle: float
-theLength: float
+theAngle: double
+theLength: double
 theNbSegments: int
 
 Return
@@ -650,19 +642,19 @@ Parameter theAngle angle of opening of the arrow head
 Parameter theLength length of the arrow (from the tip) 
 Parameter theNbSegments count of points on polyline where location is connected.
 ") DrawSegments;
-		static opencascade::handle<Graphic3d_ArrayOfSegments> DrawSegments(const gp_Pnt & theLocation, const gp_Dir & theDir, const Standard_Real theAngle, const Standard_Real theLength, const Standard_Integer theNbSegments);
+		static opencascade::handle<Graphic3d_ArrayOfSegments> DrawSegments(const gp_Pnt & theLocation, const gp_Dir & theDir, const double theAngle, const double theLength, const int theNbSegments);
 
 		/****** Prs3d_Arrow::DrawShaded ******/
-		/****** md5 signature: 9fdd956294243401b7cdc39f8158504b ******/
+		/****** md5 signature: 85140bfbe1248bc2068972fe78497c02 ******/
 		%feature("compactdefaultargs") DrawShaded;
 		%feature("autodoc", "
 Parameters
 ----------
 theAxis: gp_Ax1
-theTubeRadius: float
-theAxisLength: float
-theConeRadius: float
-theConeLength: float
+theTubeRadius: double
+theAxisLength: double
+theConeRadius: double
+theConeLength: double
 theNbFacettes: int
 
 Return
@@ -679,7 +671,7 @@ Parameter theConeRadius cone radius (arrow tip)
 Parameter theConeLength cone length (arrow tip) 
 Parameter theNbFacettes tessellation quality for each part.
 ") DrawShaded;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> DrawShaded(const gp_Ax1 & theAxis, const Standard_Real theTubeRadius, const Standard_Real theAxisLength, const Standard_Real theConeRadius, const Standard_Real theConeLength, const Standard_Integer theNbFacettes);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> DrawShaded(const gp_Ax1 & theAxis, const double theTubeRadius, const double theAxisLength, const double theConeRadius, const double theConeLength, const int theNbFacettes);
 
 };
 
@@ -872,30 +864,30 @@ Returns own settings for the appearance of datums, settings from linked Drawer o
 		const opencascade::handle<Prs3d_DatumAspect> & DatumAspect();
 
 		/****** Prs3d_Drawer::DeviationAngle ******/
-		/****** md5 signature: 003652129c87707eb3add7448baffc41 ******/
+		/****** md5 signature: 4fe694e6c5adbb86b632b32bbfe70e0f ******/
 		%feature("compactdefaultargs") DeviationAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value for deviation angle in radians, 20 * M_PI / 180 by default.
 ") DeviationAngle;
-		Standard_Real DeviationAngle();
+		double DeviationAngle();
 
 		/****** Prs3d_Drawer::DeviationCoefficient ******/
-		/****** md5 signature: aa403b444ce189be03dbbfdaa044ed4e ******/
+		/****** md5 signature: 2a333fa3fdd9a3eae97d90cf54d7eb3d ******/
 		%feature("compactdefaultargs") DeviationCoefficient;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the deviation coefficient. Drawings of curves or patches are made with respect to a maximal chordal deviation. A Deviation coefficient is used in the shading display mode. The shape is seen decomposed into triangles. These are used to calculate reflection of light from the surface of the object. The triangles are formed from chords of the curves in the shape. The deviation coefficient gives the highest value of the angle with which a chord can deviate from a tangent to a curve. If this limit is reached, a new triangle is begun. This deviation is absolute and is set through the method: SetMaximalChordialDeviation. The default value is 0.001. In drawing shapes, however, you are allowed to ask for a relative deviation. This deviation will be: SizeOfObject * DeviationCoefficient.
 ") DeviationCoefficient;
-		Standard_Real DeviationCoefficient();
+		double DeviationCoefficient();
 
 		/****** Prs3d_Drawer::DimAngleDisplayUnits ******/
 		/****** md5 signature: f9adb2def91c97371f22f83b1b241154 ******/
@@ -976,7 +968,7 @@ Disables the DrawHiddenLine function.
 		void DisableDrawHiddenLine();
 
 		/****** Prs3d_Drawer::Discretisation ******/
-		/****** md5 signature: 00367d346ebf2ee8d05c61802962da5d ******/
+		/****** md5 signature: 8bb3af8faf72f99ef177ad3921a66a66 ******/
 		%feature("compactdefaultargs") Discretisation;
 		%feature("autodoc", "Return
 -------
@@ -986,10 +978,10 @@ Description
 -----------
 Returns the discretisation setting.
 ") Discretisation;
-		Standard_Integer Discretisation();
+		int Discretisation();
 
 		/****** Prs3d_Drawer::DrawHiddenLine ******/
-		/****** md5 signature: 372ddba1ff29bf8cd686ca27ede4bc2a ******/
+		/****** md5 signature: f101b8f6d639c91c9dfd43356964ef9e ******/
 		%feature("compactdefaultargs") DrawHiddenLine;
 		%feature("autodoc", "Return
 -------
@@ -997,9 +989,9 @@ bool
 
 Description
 -----------
-Returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
+Returns true if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 ") DrawHiddenLine;
-		Standard_Boolean DrawHiddenLine();
+		bool DrawHiddenLine();
 
 
         /****************** DumpJson ******************/
@@ -1049,7 +1041,7 @@ Returns own line aspect of face boundaries, settings from linked Drawer or NULL 
 		const opencascade::handle<Prs3d_LineAspect> & FaceBoundaryAspect();
 
 		/****** Prs3d_Drawer::FaceBoundaryDraw ******/
-		/****** md5 signature: 504f69657af5734e3fdac5963f26fbd8 ******/
+		/****** md5 signature: a9ee11e82b1aa12b8b9fb471af0522c6 ******/
 		%feature("compactdefaultargs") FaceBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -1059,7 +1051,7 @@ Description
 -----------
 Checks whether the face boundary drawing is enabled or not.
 ") FaceBoundaryDraw;
-		Standard_Boolean FaceBoundaryDraw();
+		bool FaceBoundaryDraw();
 
 		/****** Prs3d_Drawer::FaceBoundaryUpperContinuity ******/
 		/****** md5 signature: 4a0be6032fd2efa02c9dc8a216e023bd ******/
@@ -1088,7 +1080,7 @@ Returns own settings for presentation of free boundaries, settings from linked D
 		const opencascade::handle<Prs3d_LineAspect> & FreeBoundaryAspect();
 
 		/****** Prs3d_Drawer::FreeBoundaryDraw ******/
-		/****** md5 signature: a393914bb639c8fa5d8e810c31199151 ******/
+		/****** md5 signature: cec45e375d7b87606a9d5f9770b482d5 ******/
 		%feature("compactdefaultargs") FreeBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -1098,23 +1090,23 @@ Description
 -----------
 Returns True if the drawing of the free boundaries is enabled True is the default setting.
 ") FreeBoundaryDraw;
-		Standard_Boolean FreeBoundaryDraw();
+		bool FreeBoundaryDraw();
 
 		/****** Prs3d_Drawer::HLRAngle ******/
-		/****** md5 signature: 9b3b7971941820e9cc8d8638893d2a9d ******/
+		/****** md5 signature: ac3a8e382911336f6c15065ae2bf78b6 ******/
 		%feature("compactdefaultargs") HLRAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") HLRAngle;
-		Standard_Real HLRAngle();
+		double HLRAngle();
 
 		/****** Prs3d_Drawer::HasLink ******/
-		/****** md5 signature: e68aafea1bcdd6fec6e3f2f0de3f3c9f ******/
+		/****** md5 signature: f655aec6020c3cf641f3875ec7ec145e ******/
 		%feature("compactdefaultargs") HasLink;
 		%feature("autodoc", "Return
 -------
@@ -1124,10 +1116,10 @@ Description
 -----------
 Returns true if the current object has a link on the other drawer.
 ") HasLink;
-		Standard_Boolean HasLink();
+		bool HasLink();
 
 		/****** Prs3d_Drawer::HasOwnArrowAspect ******/
-		/****** md5 signature: c011ea9c5427f594bd39c812bb8eda05 ******/
+		/****** md5 signature: ba49fb4d48d9d7f32e5201db80be0877 ******/
 		%feature("compactdefaultargs") HasOwnArrowAspect;
 		%feature("autodoc", "Return
 -------
@@ -1137,10 +1129,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for arrow aspect that overrides the one in the link.
 ") HasOwnArrowAspect;
-		Standard_Boolean HasOwnArrowAspect();
+		bool HasOwnArrowAspect();
 
 		/****** Prs3d_Drawer::HasOwnDatumAspect ******/
-		/****** md5 signature: f4132615152b4b32121460820c67b0a9 ******/
+		/****** md5 signature: c76ee3e345534ad608bc35e9da590af2 ******/
 		%feature("compactdefaultargs") HasOwnDatumAspect;
 		%feature("autodoc", "Return
 -------
@@ -1150,10 +1142,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for datum aspect that overrides the one in the link.
 ") HasOwnDatumAspect;
-		Standard_Boolean HasOwnDatumAspect();
+		bool HasOwnDatumAspect();
 
 		/****** Prs3d_Drawer::HasOwnDeviationAngle ******/
-		/****** md5 signature: 9b350005642d36f5630be22438d1d286 ******/
+		/****** md5 signature: c318aaec14ee59c8df5f1225818483e7 ******/
 		%feature("compactdefaultargs") HasOwnDeviationAngle;
 		%feature("autodoc", "Return
 -------
@@ -1163,10 +1155,10 @@ Description
 -----------
 Returns true if there is a local setting for deviation angle in this framework for a specific interactive object.
 ") HasOwnDeviationAngle;
-		Standard_Boolean HasOwnDeviationAngle();
+		bool HasOwnDeviationAngle();
 
 		/****** Prs3d_Drawer::HasOwnDeviationCoefficient ******/
-		/****** md5 signature: 69a7467c388d4b4a9909917fbd44f546 ******/
+		/****** md5 signature: 3efd26f55ff5b1410dbe5fc46836fa98 ******/
 		%feature("compactdefaultargs") HasOwnDeviationCoefficient;
 		%feature("autodoc", "Return
 -------
@@ -1176,10 +1168,10 @@ Description
 -----------
 Returns true if there is a local setting for deviation coefficient in this framework for a specific interactive object.
 ") HasOwnDeviationCoefficient;
-		Standard_Boolean HasOwnDeviationCoefficient();
+		bool HasOwnDeviationCoefficient();
 
 		/****** Prs3d_Drawer::HasOwnDimAngleDisplayUnits ******/
-		/****** md5 signature: f7fc32bc901429d1e7a4757ef5a78138 ******/
+		/****** md5 signature: 23ac6b9b26854df96559a0ddb5b292d3 ******/
 		%feature("compactdefaultargs") HasOwnDimAngleDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -1189,10 +1181,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for angle units in which dimension presentation is displayed that overrides the one in the link.
 ") HasOwnDimAngleDisplayUnits;
-		Standard_Boolean HasOwnDimAngleDisplayUnits();
+		bool HasOwnDimAngleDisplayUnits();
 
 		/****** Prs3d_Drawer::HasOwnDimAngleModelUnits ******/
-		/****** md5 signature: fba8b1b78d226c95615ccab093f1e4a5 ******/
+		/****** md5 signature: 9c743dbd44dc1c900fc177f25251d941 ******/
 		%feature("compactdefaultargs") HasOwnDimAngleModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -1202,10 +1194,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for dimension angle model units that overrides the one in the link.
 ") HasOwnDimAngleModelUnits;
-		Standard_Boolean HasOwnDimAngleModelUnits();
+		bool HasOwnDimAngleModelUnits();
 
 		/****** Prs3d_Drawer::HasOwnDimLengthDisplayUnits ******/
-		/****** md5 signature: 9c0624f722802b21cdd767cc2c13f302 ******/
+		/****** md5 signature: a661d4aed9f1ef132408816a81e915ce ******/
 		%feature("compactdefaultargs") HasOwnDimLengthDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -1215,10 +1207,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for length units in which dimension presentation is displayed that overrides the one in the link.
 ") HasOwnDimLengthDisplayUnits;
-		Standard_Boolean HasOwnDimLengthDisplayUnits();
+		bool HasOwnDimLengthDisplayUnits();
 
 		/****** Prs3d_Drawer::HasOwnDimLengthModelUnits ******/
-		/****** md5 signature: 6e93fd2839d74603dc07b6642946a801 ******/
+		/****** md5 signature: 015221d0043705ecb03ad9ba3a44111b ******/
 		%feature("compactdefaultargs") HasOwnDimLengthModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -1228,10 +1220,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for dimension length model units that overrides the one in the link.
 ") HasOwnDimLengthModelUnits;
-		Standard_Boolean HasOwnDimLengthModelUnits();
+		bool HasOwnDimLengthModelUnits();
 
 		/****** Prs3d_Drawer::HasOwnDimensionAspect ******/
-		/****** md5 signature: 84b0dfe79cfde90b0d291c7ef1dac27c ******/
+		/****** md5 signature: c1f8d1748ec30f72185ed78f78cf36a1 ******/
 		%feature("compactdefaultargs") HasOwnDimensionAspect;
 		%feature("autodoc", "Return
 -------
@@ -1241,10 +1233,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for the appearance of dimensions that overrides the one in the link.
 ") HasOwnDimensionAspect;
-		Standard_Boolean HasOwnDimensionAspect();
+		bool HasOwnDimensionAspect();
 
 		/****** Prs3d_Drawer::HasOwnDiscretisation ******/
-		/****** md5 signature: 0ada183bb1fdc0e487877b0f053f13fc ******/
+		/****** md5 signature: c6c68164bdeef6867ab49dca12599d1a ******/
 		%feature("compactdefaultargs") HasOwnDiscretisation;
 		%feature("autodoc", "Return
 -------
@@ -1254,10 +1246,10 @@ Description
 -----------
 Returns true if the drawer has discretisation setting active.
 ") HasOwnDiscretisation;
-		Standard_Boolean HasOwnDiscretisation();
+		bool HasOwnDiscretisation();
 
 		/****** Prs3d_Drawer::HasOwnDrawHiddenLine ******/
-		/****** md5 signature: a834332d03c54b08a80e6b0612b72fab ******/
+		/****** md5 signature: dc1553d03e44a3d61ac99627efa4d2eb ******/
 		%feature("compactdefaultargs") HasOwnDrawHiddenLine;
 		%feature("autodoc", "Return
 -------
@@ -1267,10 +1259,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for 'draw hidden lines' flag that overrides the one in the link.
 ") HasOwnDrawHiddenLine;
-		Standard_Boolean HasOwnDrawHiddenLine();
+		bool HasOwnDrawHiddenLine();
 
 		/****** Prs3d_Drawer::HasOwnFaceBoundaryAspect ******/
-		/****** md5 signature: aaadddb85463caf3dc35972f48dcb050 ******/
+		/****** md5 signature: 1a7182cb10509fa371cf30bd338c1841 ******/
 		%feature("compactdefaultargs") HasOwnFaceBoundaryAspect;
 		%feature("autodoc", "Return
 -------
@@ -1280,10 +1272,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for face boundaries aspect that overrides the one in the link.
 ") HasOwnFaceBoundaryAspect;
-		Standard_Boolean HasOwnFaceBoundaryAspect();
+		bool HasOwnFaceBoundaryAspect();
 
 		/****** Prs3d_Drawer::HasOwnFaceBoundaryDraw ******/
-		/****** md5 signature: 64c465a96ac97f193be91c6c7bb9b1aa ******/
+		/****** md5 signature: cdbee001b86ba224f3358a3c249b1085 ******/
 		%feature("compactdefaultargs") HasOwnFaceBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -1293,10 +1285,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for 'draw face boundaries' flag that overrides the one in the link.
 ") HasOwnFaceBoundaryDraw;
-		Standard_Boolean HasOwnFaceBoundaryDraw();
+		bool HasOwnFaceBoundaryDraw();
 
 		/****** Prs3d_Drawer::HasOwnFaceBoundaryUpperContinuity ******/
-		/****** md5 signature: d894a48ea9b08dd1a31e7efd4c3323d2 ******/
+		/****** md5 signature: 2c344a602669aa8b1d1fe23ac2ba6889 ******/
 		%feature("compactdefaultargs") HasOwnFaceBoundaryUpperContinuity;
 		%feature("autodoc", "Return
 -------
@@ -1306,10 +1298,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for face boundaries upper edge continuity class that overrides the one in the link.
 ") HasOwnFaceBoundaryUpperContinuity;
-		Standard_Boolean HasOwnFaceBoundaryUpperContinuity();
+		bool HasOwnFaceBoundaryUpperContinuity();
 
 		/****** Prs3d_Drawer::HasOwnFreeBoundaryAspect ******/
-		/****** md5 signature: 1e1795900d912c8ce8a7147dc5b324e1 ******/
+		/****** md5 signature: 959dd2b6821b44487a792c16dc82b656 ******/
 		%feature("compactdefaultargs") HasOwnFreeBoundaryAspect;
 		%feature("autodoc", "Return
 -------
@@ -1319,10 +1311,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for free boundaries aspect that overrides the one in the link.
 ") HasOwnFreeBoundaryAspect;
-		Standard_Boolean HasOwnFreeBoundaryAspect();
+		bool HasOwnFreeBoundaryAspect();
 
 		/****** Prs3d_Drawer::HasOwnFreeBoundaryDraw ******/
-		/****** md5 signature: cfa100dc3a78f551e7609898899180c2 ******/
+		/****** md5 signature: 40bd1bedb01c10a39c2894d7aabcb1b1 ******/
 		%feature("compactdefaultargs") HasOwnFreeBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -1332,10 +1324,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for 'draw free boundaries' flag that overrides the one in the link.
 ") HasOwnFreeBoundaryDraw;
-		Standard_Boolean HasOwnFreeBoundaryDraw();
+		bool HasOwnFreeBoundaryDraw();
 
 		/****** Prs3d_Drawer::HasOwnHLRDeviationAngle ******/
-		/****** md5 signature: 992f156d7f0c52baf625365e1f7ddb89 ******/
+		/****** md5 signature: 7c7d8bf61defa91c40ddc9ec472c1a99 ******/
 		%feature("compactdefaultargs") HasOwnHLRDeviationAngle;
 		%feature("autodoc", "Return
 -------
@@ -1345,10 +1337,10 @@ Description
 -----------
 No available documentation.
 ") HasOwnHLRDeviationAngle;
-		Standard_Boolean HasOwnHLRDeviationAngle();
+		bool HasOwnHLRDeviationAngle();
 
 		/****** Prs3d_Drawer::HasOwnHiddenLineAspect ******/
-		/****** md5 signature: adef7b374e68f02486f2d77f549bd4cd ******/
+		/****** md5 signature: 5946538c64e3eed3f64c32cb9f3c8aab ******/
 		%feature("compactdefaultargs") HasOwnHiddenLineAspect;
 		%feature("autodoc", "Return
 -------
@@ -1358,10 +1350,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for hidden lines aspect that overrides the one in the link.
 ") HasOwnHiddenLineAspect;
-		Standard_Boolean HasOwnHiddenLineAspect();
+		bool HasOwnHiddenLineAspect();
 
 		/****** Prs3d_Drawer::HasOwnIsAutoTriangulation ******/
-		/****** md5 signature: 2aa38254d17044bc449b7dd389aa975d ******/
+		/****** md5 signature: d6e748c7a07212618c3c58354195c571 ******/
 		%feature("compactdefaultargs") HasOwnIsAutoTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1371,10 +1363,10 @@ Description
 -----------
 Returns true if the drawer has IsoOnPlane setting active.
 ") HasOwnIsAutoTriangulation;
-		Standard_Boolean HasOwnIsAutoTriangulation();
+		bool HasOwnIsAutoTriangulation();
 
 		/****** Prs3d_Drawer::HasOwnIsoOnPlane ******/
-		/****** md5 signature: e89e70de5761f604bf736fe54eca26f0 ******/
+		/****** md5 signature: 61292e9f03db66b07f632a3e658b61c5 ******/
 		%feature("compactdefaultargs") HasOwnIsoOnPlane;
 		%feature("autodoc", "Return
 -------
@@ -1384,10 +1376,10 @@ Description
 -----------
 Returns true if the drawer has IsoOnPlane setting active.
 ") HasOwnIsoOnPlane;
-		Standard_Boolean HasOwnIsoOnPlane();
+		bool HasOwnIsoOnPlane();
 
 		/****** Prs3d_Drawer::HasOwnIsoOnTriangulation ******/
-		/****** md5 signature: 9503833346d395f6291772bb348a95d0 ******/
+		/****** md5 signature: 1e36d33228432e12ed098b53ec633394 ******/
 		%feature("compactdefaultargs") HasOwnIsoOnTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1397,10 +1389,10 @@ Description
 -----------
 Returns true if the drawer has IsoOnTriangulation setting active.
 ") HasOwnIsoOnTriangulation;
-		Standard_Boolean HasOwnIsoOnTriangulation();
+		bool HasOwnIsoOnTriangulation();
 
 		/****** Prs3d_Drawer::HasOwnLineArrowDraw ******/
-		/****** md5 signature: 40f8824c5c7c4b9a8d0f5b29a3229b95 ******/
+		/****** md5 signature: c9e15ed87ebf53a85fef730bde80c581 ******/
 		%feature("compactdefaultargs") HasOwnLineArrowDraw;
 		%feature("autodoc", "Return
 -------
@@ -1410,10 +1402,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for 'draw arrow' flag that overrides the one in the link.
 ") HasOwnLineArrowDraw;
-		Standard_Boolean HasOwnLineArrowDraw();
+		bool HasOwnLineArrowDraw();
 
 		/****** Prs3d_Drawer::HasOwnLineAspect ******/
-		/****** md5 signature: e68a87286fb1f7ed2f244791e257ac29 ******/
+		/****** md5 signature: 749e02cb8a9c528460b89f3126e65aa0 ******/
 		%feature("compactdefaultargs") HasOwnLineAspect;
 		%feature("autodoc", "Return
 -------
@@ -1423,10 +1415,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for line aspect that overrides the one in the link.
 ") HasOwnLineAspect;
-		Standard_Boolean HasOwnLineAspect();
+		bool HasOwnLineAspect();
 
 		/****** Prs3d_Drawer::HasOwnMaximalChordialDeviation ******/
-		/****** md5 signature: 278e4d4c710235e9a05b8a9643333137 ******/
+		/****** md5 signature: fd57a56588609db3778cda92cd3d13cb ******/
 		%feature("compactdefaultargs") HasOwnMaximalChordialDeviation;
 		%feature("autodoc", "Return
 -------
@@ -1436,10 +1428,10 @@ Description
 -----------
 Returns true if the drawer has a maximal chordial deviation setting active.
 ") HasOwnMaximalChordialDeviation;
-		Standard_Boolean HasOwnMaximalChordialDeviation();
+		bool HasOwnMaximalChordialDeviation();
 
 		/****** Prs3d_Drawer::HasOwnMaximalParameterValue ******/
-		/****** md5 signature: a22dd168fb02864e2f3eeb41decbc247 ******/
+		/****** md5 signature: 5c87348764767d7847e59ad30d23becc ******/
 		%feature("compactdefaultargs") HasOwnMaximalParameterValue;
 		%feature("autodoc", "Return
 -------
@@ -1449,10 +1441,10 @@ Description
 -----------
 Returns true if the drawer has a maximum value allowed for the first and last parameters of an infinite curve setting active.
 ") HasOwnMaximalParameterValue;
-		Standard_Boolean HasOwnMaximalParameterValue();
+		bool HasOwnMaximalParameterValue();
 
 		/****** Prs3d_Drawer::HasOwnPlaneAspect ******/
-		/****** md5 signature: cedbd9993f542c454113bd6ddcfcd51d ******/
+		/****** md5 signature: e8346ab1735df0a3e19850e87d60a690 ******/
 		%feature("compactdefaultargs") HasOwnPlaneAspect;
 		%feature("autodoc", "Return
 -------
@@ -1462,10 +1454,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for plane aspect that overrides the one in the link.
 ") HasOwnPlaneAspect;
-		Standard_Boolean HasOwnPlaneAspect();
+		bool HasOwnPlaneAspect();
 
 		/****** Prs3d_Drawer::HasOwnPointAspect ******/
-		/****** md5 signature: 37bcf1c72011e86ffe4cfe34447ded6e ******/
+		/****** md5 signature: 73d261df2da43af2c8eafaa60ab1e3d4 ******/
 		%feature("compactdefaultargs") HasOwnPointAspect;
 		%feature("autodoc", "Return
 -------
@@ -1475,10 +1467,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for point aspect that overrides the one in the link.
 ") HasOwnPointAspect;
-		Standard_Boolean HasOwnPointAspect();
+		bool HasOwnPointAspect();
 
 		/****** Prs3d_Drawer::HasOwnSectionAspect ******/
-		/****** md5 signature: 10481bb7dbf9a791b339edf5fc0c3b9b ******/
+		/****** md5 signature: 83786c37804aeed8d2d06a09f80a67eb ******/
 		%feature("compactdefaultargs") HasOwnSectionAspect;
 		%feature("autodoc", "Return
 -------
@@ -1488,10 +1480,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for section aspect that overrides the one in the link.
 ") HasOwnSectionAspect;
-		Standard_Boolean HasOwnSectionAspect();
+		bool HasOwnSectionAspect();
 
 		/****** Prs3d_Drawer::HasOwnSeenLineAspect ******/
-		/****** md5 signature: 4874aabd41bc5b0a7be6588f0c8fadbd ******/
+		/****** md5 signature: f10923c6852434a0fc20f7d2269bee53 ******/
 		%feature("compactdefaultargs") HasOwnSeenLineAspect;
 		%feature("autodoc", "Return
 -------
@@ -1501,10 +1493,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for seen line aspect that overrides the one in the link.
 ") HasOwnSeenLineAspect;
-		Standard_Boolean HasOwnSeenLineAspect();
+		bool HasOwnSeenLineAspect();
 
 		/****** Prs3d_Drawer::HasOwnShadingAspect ******/
-		/****** md5 signature: 5fca701e7945f5f80195c231ab3d93f9 ******/
+		/****** md5 signature: a5dde922980c03318a8715f7d1addfd7 ******/
 		%feature("compactdefaultargs") HasOwnShadingAspect;
 		%feature("autodoc", "Return
 -------
@@ -1514,10 +1506,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for shading aspect that overrides the one in the link.
 ") HasOwnShadingAspect;
-		Standard_Boolean HasOwnShadingAspect();
+		bool HasOwnShadingAspect();
 
 		/****** Prs3d_Drawer::HasOwnTextAspect ******/
-		/****** md5 signature: e969a4e857354af2ca581bd7e356d6d2 ******/
+		/****** md5 signature: 5ca0c7c7e0f5c8712ac90d1a22620aa5 ******/
 		%feature("compactdefaultargs") HasOwnTextAspect;
 		%feature("autodoc", "Return
 -------
@@ -1527,10 +1519,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for text aspect that overrides the one in the link.
 ") HasOwnTextAspect;
-		Standard_Boolean HasOwnTextAspect();
+		bool HasOwnTextAspect();
 
 		/****** Prs3d_Drawer::HasOwnTypeOfDeflection ******/
-		/****** md5 signature: e5c5b7da81a019a2aeb3df6de1100be1 ******/
+		/****** md5 signature: 31543bcb7ea5fdf952b15825c33857b1 ******/
 		%feature("compactdefaultargs") HasOwnTypeOfDeflection;
 		%feature("autodoc", "Return
 -------
@@ -1540,10 +1532,10 @@ Description
 -----------
 Returns true if the drawer has a type of deflection setting active.
 ") HasOwnTypeOfDeflection;
-		Standard_Boolean HasOwnTypeOfDeflection();
+		bool HasOwnTypeOfDeflection();
 
 		/****** Prs3d_Drawer::HasOwnTypeOfHLR ******/
-		/****** md5 signature: 4ef83acd86eeb31e3c391672dbf00a8e ******/
+		/****** md5 signature: 7b0e67b94ff4225e9b8792bc50df3a23 ******/
 		%feature("compactdefaultargs") HasOwnTypeOfHLR;
 		%feature("autodoc", "Return
 -------
@@ -1553,10 +1545,10 @@ Description
 -----------
 Returns true if the type of HLR is not equal to Prs3d_TOH_NotSet.
 ") HasOwnTypeOfHLR;
-		Standard_Boolean HasOwnTypeOfHLR();
+		bool HasOwnTypeOfHLR();
 
 		/****** Prs3d_Drawer::HasOwnUIsoAspect ******/
-		/****** md5 signature: ea8d708dbd873ba9943b88da3d561f62 ******/
+		/****** md5 signature: 9f4f36555a5ca9dec4ea509f93011d7f ******/
 		%feature("compactdefaultargs") HasOwnUIsoAspect;
 		%feature("autodoc", "Return
 -------
@@ -1566,10 +1558,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for UIso aspect that overrides the one in the link.
 ") HasOwnUIsoAspect;
-		Standard_Boolean HasOwnUIsoAspect();
+		bool HasOwnUIsoAspect();
 
 		/****** Prs3d_Drawer::HasOwnUnFreeBoundaryAspect ******/
-		/****** md5 signature: 9d82217707975ddc59976f65a5b28123 ******/
+		/****** md5 signature: 5538d841c2c6b84089e238241a84a7e9 ******/
 		%feature("compactdefaultargs") HasOwnUnFreeBoundaryAspect;
 		%feature("autodoc", "Return
 -------
@@ -1579,10 +1571,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for unfree boundaries aspect that overrides the one in the link.
 ") HasOwnUnFreeBoundaryAspect;
-		Standard_Boolean HasOwnUnFreeBoundaryAspect();
+		bool HasOwnUnFreeBoundaryAspect();
 
 		/****** Prs3d_Drawer::HasOwnUnFreeBoundaryDraw ******/
-		/****** md5 signature: d038acbe860ec3a5704a6aff2ced38b4 ******/
+		/****** md5 signature: c8c8cd944493db6130f1ecd94d00b605 ******/
 		%feature("compactdefaultargs") HasOwnUnFreeBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -1592,10 +1584,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for 'draw shared boundaries' flag that overrides the one in the link.
 ") HasOwnUnFreeBoundaryDraw;
-		Standard_Boolean HasOwnUnFreeBoundaryDraw();
+		bool HasOwnUnFreeBoundaryDraw();
 
 		/****** Prs3d_Drawer::HasOwnVIsoAspect ******/
-		/****** md5 signature: bc569455ddd94fa9758e8d35afc46578 ******/
+		/****** md5 signature: 73991fef23e89eef46a13362e5b365a3 ******/
 		%feature("compactdefaultargs") HasOwnVIsoAspect;
 		%feature("autodoc", "Return
 -------
@@ -1605,10 +1597,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for VIso aspect that overrides the one in the link.
 ") HasOwnVIsoAspect;
-		Standard_Boolean HasOwnVIsoAspect();
+		bool HasOwnVIsoAspect();
 
 		/****** Prs3d_Drawer::HasOwnVectorAspect ******/
-		/****** md5 signature: e139738a9c217b3a4ac0811b9ed2df2b ******/
+		/****** md5 signature: 502b94abfed82159a8a093f98c72e66d ******/
 		%feature("compactdefaultargs") HasOwnVectorAspect;
 		%feature("autodoc", "Return
 -------
@@ -1618,10 +1610,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for vector aspect that overrides the one in the link.
 ") HasOwnVectorAspect;
-		Standard_Boolean HasOwnVectorAspect();
+		bool HasOwnVectorAspect();
 
 		/****** Prs3d_Drawer::HasOwnVertexDrawMode ******/
-		/****** md5 signature: 98e1b0684c2f2c8da67af2674348d511 ******/
+		/****** md5 signature: 8621a5e90937082fcb32cc013a772ef1 ******/
 		%feature("compactdefaultargs") HasOwnVertexDrawMode;
 		%feature("autodoc", "Return
 -------
@@ -1631,10 +1623,10 @@ Description
 -----------
 Returns true if the vertex draw mode is not equal to <b>Prs3d_VDM_Inherited</b>. This means that individual vertex draw mode value (i.e. not inherited from the global drawer) is used for a specific interactive object.
 ") HasOwnVertexDrawMode;
-		Standard_Boolean HasOwnVertexDrawMode();
+		bool HasOwnVertexDrawMode();
 
 		/****** Prs3d_Drawer::HasOwnWireAspect ******/
-		/****** md5 signature: 58b07c8af58b81856955e87109b86d41 ******/
+		/****** md5 signature: 8afad48152ae279b162f9f58227996fb ******/
 		%feature("compactdefaultargs") HasOwnWireAspect;
 		%feature("autodoc", "Return
 -------
@@ -1644,10 +1636,10 @@ Description
 -----------
 Returns true if the drawer has its own attribute for wire aspect that overrides the one in the link.
 ") HasOwnWireAspect;
-		Standard_Boolean HasOwnWireAspect();
+		bool HasOwnWireAspect();
 
 		/****** Prs3d_Drawer::HasOwnWireDraw ******/
-		/****** md5 signature: e815b23df6a36dce832d5e51a5dfc189 ******/
+		/****** md5 signature: c7cf6752effc14d4399e62e907957897 ******/
 		%feature("compactdefaultargs") HasOwnWireDraw;
 		%feature("autodoc", "Return
 -------
@@ -1657,7 +1649,7 @@ Description
 -----------
 Returns true if the drawer has its own attribute for 'draw wires' flag that overrides the one in the link.
 ") HasOwnWireDraw;
-		Standard_Boolean HasOwnWireDraw();
+		bool HasOwnWireDraw();
 
 		/****** Prs3d_Drawer::HiddenLineAspect ******/
 		/****** md5 signature: d6e22a29aab321c9beaf4361c0c42ae0 ******/
@@ -1673,7 +1665,7 @@ Returns own settings for hidden line aspects, settings from linked Drawer or NUL
 		const opencascade::handle<Prs3d_LineAspect> & HiddenLineAspect();
 
 		/****** Prs3d_Drawer::IsAutoTriangulation ******/
-		/****** md5 signature: d295575fe0ff15a8c5a95c84145a7993 ******/
+		/****** md5 signature: c801c650feefa87674487eab9a682ddb ******/
 		%feature("compactdefaultargs") IsAutoTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1683,10 +1675,10 @@ Description
 -----------
 Returns True if automatic triangulation is enabled.
 ") IsAutoTriangulation;
-		Standard_Boolean IsAutoTriangulation();
+		bool IsAutoTriangulation();
 
 		/****** Prs3d_Drawer::IsoOnPlane ******/
-		/****** md5 signature: 725ae5fc83d7314e8a35910b73791b5a ******/
+		/****** md5 signature: bf0d1722489788824ecc7c4c4a3c49c0 ******/
 		%feature("compactdefaultargs") IsoOnPlane;
 		%feature("autodoc", "Return
 -------
@@ -1696,10 +1688,10 @@ Description
 -----------
 Returns True if the drawing of isos on planes is enabled.
 ") IsoOnPlane;
-		Standard_Boolean IsoOnPlane();
+		bool IsoOnPlane();
 
 		/****** Prs3d_Drawer::IsoOnTriangulation ******/
-		/****** md5 signature: 86d0a4f726e225c8973eb7c232be52f2 ******/
+		/****** md5 signature: 6e249f26b384cfb03474a3f50adc52c5 ******/
 		%feature("compactdefaultargs") IsoOnTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1709,10 +1701,10 @@ Description
 -----------
 Returns True if the drawing of isos on triangulation is enabled.
 ") IsoOnTriangulation;
-		Standard_Boolean IsoOnTriangulation();
+		bool IsoOnTriangulation();
 
 		/****** Prs3d_Drawer::LineArrowDraw ******/
-		/****** md5 signature: d37afa843e41bf77d2295841924733a5 ******/
+		/****** md5 signature: 8aa55d77438ce64185dc47e8df6a239d ******/
 		%feature("compactdefaultargs") LineArrowDraw;
 		%feature("autodoc", "Return
 -------
@@ -1722,7 +1714,7 @@ Description
 -----------
 Returns True if drawing an arrow at the end of each edge is enabled and False otherwise (the default).
 ") LineArrowDraw;
-		Standard_Boolean LineArrowDraw();
+		bool LineArrowDraw();
 
 		/****** Prs3d_Drawer::LineAspect ******/
 		/****** md5 signature: fcc623ed837f4e3e85d4e27b8d17160a ******/
@@ -1769,30 +1761,30 @@ Sets theDrawer as a link to which the current object references.
 		void Link(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** Prs3d_Drawer::MaximalChordialDeviation ******/
-		/****** md5 signature: 1d43ee640bc87c33eb91c301526bbda9 ******/
+		/****** md5 signature: 28323a5cb4124808fcfe251580c37be0 ******/
 		%feature("compactdefaultargs") MaximalChordialDeviation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the maximal chordal deviation. The default value is 0.0001. Drawings of curves or patches are made with respect to an absolute maximal chordal deviation.
 ") MaximalChordialDeviation;
-		Standard_Real MaximalChordialDeviation();
+		double MaximalChordialDeviation();
 
 		/****** Prs3d_Drawer::MaximalParameterValue ******/
-		/****** md5 signature: 6712bac42bcc154a7695aba5612939fa ******/
+		/****** md5 signature: 7bae3f5356a944231c9081044d5318b0 ******/
 		%feature("compactdefaultargs") MaximalParameterValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Sets the maximum value allowed for the first and last parameters of an infinite curve. By default, this value is 500000.
 ") MaximalParameterValue;
-		Standard_Real MaximalParameterValue();
+		double MaximalParameterValue();
 
 		/****** Prs3d_Drawer::PlaneAspect ******/
 		/****** md5 signature: 5860cc597653e9aeb633d2f0fe7a3a7e ******/
@@ -1821,43 +1813,43 @@ Returns own point aspect setting, settings from linked Drawer or NULL if neither
 		const opencascade::handle<Prs3d_PointAspect> & PointAspect();
 
 		/****** Prs3d_Drawer::PreviousDeviationAngle ******/
-		/****** md5 signature: e85ed7ba2c56cca9b0e1456a6b71d7d0 ******/
+		/****** md5 signature: a86034f36200f798d405642edd0773ef ******/
 		%feature("compactdefaultargs") PreviousDeviationAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the previous deviation angle.
 ") PreviousDeviationAngle;
-		Standard_Real PreviousDeviationAngle();
+		double PreviousDeviationAngle();
 
 		/****** Prs3d_Drawer::PreviousDeviationCoefficient ******/
-		/****** md5 signature: dd7dbf3ec23aaefa9df4097e8ef5c0e5 ******/
+		/****** md5 signature: a2350b70d39b0c0d1298909acf2003ed ******/
 		%feature("compactdefaultargs") PreviousDeviationCoefficient;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Saves the previous value used for the chordal deviation coefficient.
 ") PreviousDeviationCoefficient;
-		Standard_Real PreviousDeviationCoefficient();
+		double PreviousDeviationCoefficient();
 
 		/****** Prs3d_Drawer::PreviousHLRDeviationAngle ******/
-		/****** md5 signature: 82e7d8a97345e9ce23b5ce94343001fa ******/
+		/****** md5 signature: 94c83b1699445fc8201a5bdc38be9929 ******/
 		%feature("compactdefaultargs") PreviousHLRDeviationAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") PreviousHLRDeviationAngle;
-		Standard_Real PreviousHLRDeviationAngle();
+		double PreviousHLRDeviationAngle();
 
 		/****** Prs3d_Drawer::SectionAspect ******/
 		/****** md5 signature: 26f929946082f9b18d8262f33b33f118 ******/
@@ -1904,7 +1896,7 @@ Sets the parameter theAspect for display attributes of arrows.
 		void SetArrowAspect(const opencascade::handle<Prs3d_ArrowAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetAutoTriangulation ******/
-		/****** md5 signature: 097ff08c0977b327c2162db8dc679c98 ******/
+		/****** md5 signature: 76e7feb78101d74ab8c407ff2049f84a ******/
 		%feature("compactdefaultargs") SetAutoTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -1919,7 +1911,7 @@ Description
 -----------
 Sets IsAutoTriangulated on or off by setting the parameter theIsEnabled to true or false. If this flag is True automatic re-triangulation with deflection-check logic will be applied. Else this feature will be disable and triangulation is expected to be computed by application itself and no shading presentation at all if unavailable.
 ") SetAutoTriangulation;
-		void SetAutoTriangulation(const Standard_Boolean theIsEnabled);
+		void SetAutoTriangulation(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetDatumAspect ******/
 		/****** md5 signature: 4647d9dc3797dd067dbf2dfe686ab369 ******/
@@ -1940,12 +1932,12 @@ Sets the modality theAspect for the display of datums.
 		void SetDatumAspect(const opencascade::handle<Prs3d_DatumAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetDeviationAngle ******/
-		/****** md5 signature: 6ca67bdbcd53d4506d39fd47bf3c03db ******/
+		/****** md5 signature: e34fa353a0aaa391f717e07f1f241825 ******/
 		%feature("compactdefaultargs") SetDeviationAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theAngle: float
+theAngle: double
 
 Return
 -------
@@ -1953,9 +1945,9 @@ None
 
 Description
 -----------
-Sets the deviation angle theAngle. Also sets the hasOwnDeviationAngle flag to Standard_True, and myPreviousDeviationAngle.
+Sets the deviation angle theAngle. Also sets the hasOwnDeviationAngle flag to true, and myPreviousDeviationAngle.
 ") SetDeviationAngle;
-		void SetDeviationAngle(const Standard_Real theAngle);
+		void SetDeviationAngle(const double theAngle);
 
 		/****** Prs3d_Drawer::SetDeviationAngle ******/
 		/****** md5 signature: 9bdb5f10031ccd09c439fbc45ff4df32 ******/
@@ -1971,12 +1963,12 @@ Resets HasOwnDeviationAngle() flag, e.g. undoes previous SetDeviationAngle().
 		void SetDeviationAngle();
 
 		/****** Prs3d_Drawer::SetDeviationCoefficient ******/
-		/****** md5 signature: c876cabde5740c4ce35b0db72a481d97 ******/
+		/****** md5 signature: 3949b9a71bd7a25111a81ff437e951a2 ******/
 		%feature("compactdefaultargs") SetDeviationCoefficient;
 		%feature("autodoc", "
 Parameters
 ----------
-theCoefficient: float
+theCoefficient: double
 
 Return
 -------
@@ -1984,9 +1976,9 @@ None
 
 Description
 -----------
-Sets the deviation coefficient theCoefficient. Also sets the hasOwnDeviationCoefficient flag to Standard_True and myPreviousDeviationCoefficient.
+Sets the deviation coefficient theCoefficient. Also sets the hasOwnDeviationCoefficient flag to true and myPreviousDeviationCoefficient.
 ") SetDeviationCoefficient;
-		void SetDeviationCoefficient(const Standard_Real theCoefficient);
+		void SetDeviationCoefficient(const double theCoefficient);
 
 		/****** Prs3d_Drawer::SetDeviationCoefficient ******/
 		/****** md5 signature: 755d6894d3ae7cb400d463653d96c593 ******/
@@ -2092,7 +2084,7 @@ Sets the settings for the appearance of dimensions. The method sets aspect owned
 		void SetDimensionAspect(const opencascade::handle<Prs3d_DimensionAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetDiscretisation ******/
-		/****** md5 signature: 4361b5c3f1e3b5111800c4ea836567ea ******/
+		/****** md5 signature: 7387e73f1e2ea81f1921f5545330a43c ******/
 		%feature("compactdefaultargs") SetDiscretisation;
 		%feature("autodoc", "
 Parameters
@@ -2107,7 +2099,7 @@ Description
 -----------
 Sets the discretisation parameter theValue.
 ") SetDiscretisation;
-		void SetDiscretisation(const Standard_Integer theValue);
+		void SetDiscretisation(const int theValue);
 
 		/****** Prs3d_Drawer::SetFaceBoundaryAspect ******/
 		/****** md5 signature: 804ad972596fdd35ecb093f15856c7bb ******/
@@ -2128,7 +2120,7 @@ Sets line aspect for face boundaries. The method sets line aspect owned by the d
 		void SetFaceBoundaryAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetFaceBoundaryDraw ******/
-		/****** md5 signature: 0b7c11ee9c4d92584f0e7456f7a347a5 ******/
+		/****** md5 signature: fc1947b8b8905c55fb11b1a2f6fd32b6 ******/
 		%feature("compactdefaultargs") SetFaceBoundaryDraw;
 		%feature("autodoc", "
 Parameters
@@ -2143,7 +2135,7 @@ Description
 -----------
 Enables or disables face boundary drawing for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
 ") SetFaceBoundaryDraw;
-		void SetFaceBoundaryDraw(const Standard_Boolean theIsEnabled);
+		void SetFaceBoundaryDraw(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetFaceBoundaryUpperContinuity ******/
 		/****** md5 signature: b2dc14181b073a972926abae505ae5ce ******/
@@ -2182,7 +2174,7 @@ Sets the parameter theAspect for the display of free boundaries. The method sets
 		void SetFreeBoundaryAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetFreeBoundaryDraw ******/
-		/****** md5 signature: 357a2afadd44ce4fa5eb830caf568739 ******/
+		/****** md5 signature: 39ce8847046e1445cebd22ac9ff2c340 ******/
 		%feature("compactdefaultargs") SetFreeBoundaryDraw;
 		%feature("autodoc", "
 Parameters
@@ -2197,15 +2189,15 @@ Description
 -----------
 Enables or disables drawing of free boundaries for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the free boundaries should be drawn or not.
 ") SetFreeBoundaryDraw;
-		void SetFreeBoundaryDraw(const Standard_Boolean theIsEnabled);
+		void SetFreeBoundaryDraw(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetHLRAngle ******/
-		/****** md5 signature: 76fda7a04861224b0871f98ee167394b ******/
+		/****** md5 signature: 466e034a671415b9740c83c8fda989af ******/
 		%feature("compactdefaultargs") SetHLRAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theAngle: float
+theAngle: double
 
 Return
 -------
@@ -2215,7 +2207,7 @@ Description
 -----------
 No available documentation.
 ") SetHLRAngle;
-		void SetHLRAngle(const Standard_Real theAngle);
+		void SetHLRAngle(const double theAngle);
 
 		/****** Prs3d_Drawer::SetHLRAngle ******/
 		/****** md5 signature: 2e26deb79c9f12fded05a5d3f3274d8d ******/
@@ -2249,7 +2241,7 @@ Sets the parameter theAspect for the display of hidden lines in hidden line remo
 		void SetHiddenLineAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetIsoOnPlane ******/
-		/****** md5 signature: 877d0513af2869807847d91ca78cd157 ******/
+		/****** md5 signature: 5a5cf3282d0b895f67efb38f9ea1859d ******/
 		%feature("compactdefaultargs") SetIsoOnPlane;
 		%feature("autodoc", "
 Parameters
@@ -2264,10 +2256,10 @@ Description
 -----------
 Sets IsoOnPlane on or off by setting the parameter theIsEnabled to true or false.
 ") SetIsoOnPlane;
-		void SetIsoOnPlane(const Standard_Boolean theIsEnabled);
+		void SetIsoOnPlane(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetIsoOnTriangulation ******/
-		/****** md5 signature: 18d15c009ac1ef0cd00031a4866a34de ******/
+		/****** md5 signature: 65f925ea320611ba0d1554e9e77d70f8 ******/
 		%feature("compactdefaultargs") SetIsoOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -2282,10 +2274,10 @@ Description
 -----------
 Enables or disables isolines on triangulation by setting the parameter theIsEnabled to true or false.
 ") SetIsoOnTriangulation;
-		void SetIsoOnTriangulation(const Standard_Boolean theToEnable);
+		void SetIsoOnTriangulation(const bool theToEnable);
 
 		/****** Prs3d_Drawer::SetLineArrowDraw ******/
-		/****** md5 signature: 1ccad4d1b8e1bf8a7d688b21eb115dc5 ******/
+		/****** md5 signature: 9cf6365bcd76890f880118d8fc2136a2 ******/
 		%feature("compactdefaultargs") SetLineArrowDraw;
 		%feature("autodoc", "
 Parameters
@@ -2300,7 +2292,7 @@ Description
 -----------
 Enables the drawing of an arrow at the end of each line. By default the arrows are not drawn.
 ") SetLineArrowDraw;
-		void SetLineArrowDraw(const Standard_Boolean theIsEnabled);
+		void SetLineArrowDraw(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetLineAspect ******/
 		/****** md5 signature: edeacff48ba26eb953ac27ee5da1b9dd ******/
@@ -2339,12 +2331,12 @@ Sets theDrawer as a link to which the current object references.
 		void SetLink(const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** Prs3d_Drawer::SetMaximalChordialDeviation ******/
-		/****** md5 signature: 432b23f0ed55ddc741078b7674cf10e8 ******/
+		/****** md5 signature: 0c36df29feb27cee8cd1dc9158e668ba ******/
 		%feature("compactdefaultargs") SetMaximalChordialDeviation;
 		%feature("autodoc", "
 Parameters
 ----------
-theChordialDeviation: float
+theChordialDeviation: double
 
 Return
 -------
@@ -2354,15 +2346,15 @@ Description
 -----------
 Defines the maximal chordial deviation when drawing any curve. Even if the type of deviation is set to TOD_Relative, this value is used by: Prs3d_DeflectionCurve Prs3d_WFDeflectionSurface Prs3d_WFDeflectionRestrictedFace.
 ") SetMaximalChordialDeviation;
-		void SetMaximalChordialDeviation(const Standard_Real theChordialDeviation);
+		void SetMaximalChordialDeviation(const double theChordialDeviation);
 
 		/****** Prs3d_Drawer::SetMaximalParameterValue ******/
-		/****** md5 signature: aa314594e57535d77970bac6f2f02a1d ******/
+		/****** md5 signature: c13040391f15930b5db3479e65ebe57c ******/
 		%feature("compactdefaultargs") SetMaximalParameterValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -2372,10 +2364,10 @@ Description
 -----------
 Defines the maximum value allowed for the first and last parameters of an infinite curve.
 ") SetMaximalParameterValue;
-		void SetMaximalParameterValue(const Standard_Real theValue);
+		void SetMaximalParameterValue(const double theValue);
 
 		/****** Prs3d_Drawer::SetOwnDatumAspects ******/
-		/****** md5 signature: 8932f1aefe0746057b59cd498ae76d61 ******/
+		/****** md5 signature: e0adda89c77ccb8eafd03e0c37cf18c6 ******/
 		%feature("compactdefaultargs") SetOwnDatumAspects;
 		%feature("autodoc", "
 Parameters
@@ -2390,10 +2382,10 @@ Description
 -----------
 Sets own line aspects for datums. Returns False if own line for datums are already set.
 ") SetOwnDatumAspects;
-		Standard_Boolean SetOwnDatumAspects(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
+		bool SetOwnDatumAspects(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****** Prs3d_Drawer::SetOwnLineAspects ******/
-		/****** md5 signature: e66409de321081b5ec44a17dddcf0e3d ******/
+		/****** md5 signature: 1df0be25e64108755f633916fd04df29 ******/
 		%feature("compactdefaultargs") SetOwnLineAspects;
 		%feature("autodoc", "
 Parameters
@@ -2408,7 +2400,7 @@ Description
 -----------
 Sets own line aspects, which are single U and single V gray75 solid isolines (::UIsoAspect(), ::VIsoAspect()), red wire (::WireAspect()), yellow line (::LineAspect()), yellow seen line (::SeenLineAspect()), dashed yellow hidden line (::HiddenLineAspect()), green free boundary (::FreeBoundaryAspect()), yellow unfree boundary (::UnFreeBoundaryAspect()). Returns False if own line aspect are already set.
 ") SetOwnLineAspects;
-		Standard_Boolean SetOwnLineAspects(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
+		bool SetOwnLineAspects(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****** Prs3d_Drawer::SetPlaneAspect ******/
 		/****** md5 signature: f22d1aee7c3703b9676dab2ac3cf0178 ******/
@@ -2634,7 +2626,7 @@ Sets the parameter theAspect for the display of shared boundaries. The method se
 		void SetUnFreeBoundaryAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetUnFreeBoundaryDraw ******/
-		/****** md5 signature: bc18bdedb6e7b4bc8ac8c8bd71694ee7 ******/
+		/****** md5 signature: 148de28ebde724c81bba5e2ce7d21367 ******/
 		%feature("compactdefaultargs") SetUnFreeBoundaryDraw;
 		%feature("autodoc", "
 Parameters
@@ -2649,7 +2641,7 @@ Description
 -----------
 Enables or disables drawing of shared boundaries for shading presentations. The method sets drawing flag owned by the drawer that will be used during visualization instead of the one set in link. theIsEnabled is a boolean flag indicating whether the shared boundaries should be drawn or not.
 ") SetUnFreeBoundaryDraw;
-		void SetUnFreeBoundaryDraw(const Standard_Boolean theIsEnabled);
+		void SetUnFreeBoundaryDraw(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetVIsoAspect ******/
 		/****** md5 signature: 911f2c0ee7deff12cef662388c471713 ******/
@@ -2724,7 +2716,7 @@ Sets the parameter theAspect for display of wires.
 		void SetWireAspect(const opencascade::handle<Prs3d_LineAspect> & theAspect);
 
 		/****** Prs3d_Drawer::SetWireDraw ******/
-		/****** md5 signature: 790eadb30c226a3d894f25120859429c ******/
+		/****** md5 signature: c897d3d814d4826c85223d9fc5e2fb2e ******/
 		%feature("compactdefaultargs") SetWireDraw;
 		%feature("autodoc", "
 Parameters
@@ -2739,7 +2731,7 @@ Description
 -----------
 Sets WireDraw on or off by setting the parameter theIsEnabled to true or false.
 ") SetWireDraw;
-		void SetWireDraw(const Standard_Boolean theIsEnabled);
+		void SetWireDraw(const bool theIsEnabled);
 
 		/****** Prs3d_Drawer::SetupOwnDefaults ******/
 		/****** md5 signature: bdd5eb74b80039b116be4559fe1ee121 ******/
@@ -2755,7 +2747,7 @@ Setup all own aspects with default values.
 		void SetupOwnDefaults();
 
 		/****** Prs3d_Drawer::SetupOwnFaceBoundaryAspect ******/
-		/****** md5 signature: 56de0be3b702e67c26bd56574e01fd6d ******/
+		/****** md5 signature: 715e65ad52f0f01c6f38601380f2d292 ******/
 		%feature("compactdefaultargs") SetupOwnFaceBoundaryAspect;
 		%feature("autodoc", "
 Parameters
@@ -2770,10 +2762,10 @@ Description
 -----------
 Sets own face boundary aspect, which is a black solid line by default. Returns False if the drawer already has its own attribute for face boundary aspect.
 ") SetupOwnFaceBoundaryAspect;
-		Standard_Boolean SetupOwnFaceBoundaryAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
+		bool SetupOwnFaceBoundaryAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****** Prs3d_Drawer::SetupOwnPointAspect ******/
-		/****** md5 signature: d1c0bbfa9dfec0450774acf4ca54dad3 ******/
+		/****** md5 signature: d098e35e0e3ce66c73d3bab5365dd821 ******/
 		%feature("compactdefaultargs") SetupOwnPointAspect;
 		%feature("autodoc", "
 Parameters
@@ -2788,10 +2780,10 @@ Description
 -----------
 Sets own point aspect, which is a yellow Aspect_TOM_PLUS marker by default. Returns False if the drawer already has its own attribute for point aspect.
 ") SetupOwnPointAspect;
-		Standard_Boolean SetupOwnPointAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
+		bool SetupOwnPointAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****** Prs3d_Drawer::SetupOwnShadingAspect ******/
-		/****** md5 signature: f23c7b598ed27ffb9a83c13b44836ee0 ******/
+		/****** md5 signature: b5cb762dbe4d808a5809746bbad4a58e ******/
 		%feature("compactdefaultargs") SetupOwnShadingAspect;
 		%feature("autodoc", "
 Parameters
@@ -2806,7 +2798,7 @@ Description
 -----------
 Sets own shading aspect, which is Graphic3d_NameOfMaterial_Brass material by default. Returns False if the drawer already has its own attribute for shading aspect.
 ") SetupOwnShadingAspect;
-		Standard_Boolean SetupOwnShadingAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
+		bool SetupOwnShadingAspect(const opencascade::handle<Prs3d_Drawer> & theDefaults = opencascade::handle<Prs3d_Drawer>());
 
 		/****** Prs3d_Drawer::ShadingAspect ******/
 		/****** md5 signature: d658a34c620283ed10ba0f5964949287 ******/
@@ -2887,7 +2879,7 @@ Returns own settings for shared boundary line aspects, settings from linked Draw
 		const opencascade::handle<Prs3d_LineAspect> & UnFreeBoundaryAspect();
 
 		/****** Prs3d_Drawer::UnFreeBoundaryDraw ******/
-		/****** md5 signature: 4a9edda2cf498d8275abdb7dcc6bb228 ******/
+		/****** md5 signature: 4041ac4b0d05b4623405ec247da84d73 ******/
 		%feature("compactdefaultargs") UnFreeBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -2897,7 +2889,7 @@ Description
 -----------
 Returns True if the drawing of the shared boundaries is enabled. True is the default setting.
 ") UnFreeBoundaryDraw;
-		Standard_Boolean UnFreeBoundaryDraw();
+		bool UnFreeBoundaryDraw();
 
 		/****** Prs3d_Drawer::UnsetFaceBoundaryUpperContinuity ******/
 		/****** md5 signature: 641f0514b548bedcfbfe8eb2901f3d60 ******/
@@ -3212,7 +3204,7 @@ Returns own wire aspect settings, settings from linked Drawer or NULL if neither
 		const opencascade::handle<Prs3d_LineAspect> & WireAspect();
 
 		/****** Prs3d_Drawer::WireDraw ******/
-		/****** md5 signature: 5d9e30c499e2ac3def846a0a7f29f5a7 ******/
+		/****** md5 signature: 61f4512c69389d1c292dabe9e564b641 ******/
 		%feature("compactdefaultargs") WireDraw;
 		%feature("autodoc", "Return
 -------
@@ -3222,7 +3214,7 @@ Description
 -----------
 Returns True if the drawing of the wire is enabled.
 ") WireDraw;
-		Standard_Boolean WireDraw();
+		bool WireDraw();
 
 };
 
@@ -3238,59 +3230,6 @@ Returns True if the drawing of the wire is enabled.
 /********************
 * class Prs3d_Point *
 ********************/
-class Prs3d_Point {
-	public:
-		/****** Prs3d_Point::Add ******/
-		/****** md5 signature: 62ed47f03b18eddca6a01d991a8d5fb6 ******/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "
-Parameters
-----------
-thePrs: Prs3d_Presentation
-thePoint: AnyPoint
-theDrawer: Prs3d_Drawer
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePrs, const AnyPoint & thePoint, const opencascade::handle<Prs3d_Drawer> & theDrawer);
-
-		/****** Prs3d_Point::Match ******/
-		/****** md5 signature: 0b99a7d2ff1fac1a4a91e5728b1339c9 ******/
-		%feature("compactdefaultargs") Match;
-		%feature("autodoc", "
-Parameters
-----------
-thePoint: AnyPoint
-theX: float
-theY: float
-theZ: float
-theDistance: float
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") Match;
-		static Standard_Boolean Match(const AnyPoint & thePoint, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance);
-
-};
-
-
-%extend Prs3d_Point {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*********************************
 * class Prs3d_PresentationShadow *
 *********************************/
@@ -3316,7 +3255,7 @@ Constructs a shadow of existing presentation object.
 		 Prs3d_PresentationShadow(const opencascade::handle<Graphic3d_StructureManager> & theViewer, const opencascade::handle<Graphic3d_Structure> & thePrs);
 
 		/****** Prs3d_PresentationShadow::CalculateBoundBox ******/
-		/****** md5 signature: a6bde4513a3c46f9f4fb4761385ff10b ******/
+		/****** md5 signature: 24d0ff4cdf0c8918f94895bf1c3543cc ******/
 		%feature("compactdefaultargs") CalculateBoundBox;
 		%feature("autodoc", "Return
 -------
@@ -3326,7 +3265,7 @@ Description
 -----------
 Do nothing - axis-aligned bounding box should be initialized from parent structure.
 ") CalculateBoundBox;
-		virtual void CalculateBoundBox();
+		void CalculateBoundBox();
 
 
         /****************** DumpJson ******************/
@@ -3363,7 +3302,7 @@ Returns view affinity of the parent presentation.
 		const opencascade::handle<Graphic3d_ViewAffinity> & ParentAffinity();
 
 		/****** Prs3d_PresentationShadow::ParentId ******/
-		/****** md5 signature: c6149323d3f3c6f3e02c4be5b579c343 ******/
+		/****** md5 signature: 1b394eeea9086b2815c32479a6d24ae5 ******/
 		%feature("compactdefaultargs") ParentId;
 		%feature("autodoc", "Return
 -------
@@ -3373,7 +3312,7 @@ Description
 -----------
 Returns the id of the parent presentation.
 ") ParentId;
-		Standard_Integer ParentId();
+		int ParentId();
 
 };
 
@@ -3468,7 +3407,7 @@ Return: text to draw.
 		static opencascade::handle<Graphic3d_Text> Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, TCollection_ExtendedString theText, const gp_Pnt & theAttachmentPoint);
 
 		/****** Prs3d_Text::Draw ******/
-		/****** md5 signature: bffbe230252ee3e0d660a0f0a3cb5a41 ******/
+		/****** md5 signature: f9099a403d131478a0d7112b31b513ca ******/
 		%feature("compactdefaultargs") Draw;
 		%feature("autodoc", "
 Parameters
@@ -3477,7 +3416,7 @@ theGroup: Graphic3d_Group
 theAspect: Prs3d_TextAspect
 theText: str
 theOrientation: gp_Ax2
-theHasOwnAnchor: bool (optional, default to Standard_True)
+theHasOwnAnchor: bool (optional, default to true)
 
 Return
 -------
@@ -3493,7 +3432,7 @@ Parameter theOrientation location and orientation specified in the model 3D spac
 Parameter theHasOwnAnchor 
 Return: text to draw.
 ") Draw;
-		static opencascade::handle<Graphic3d_Text> Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, TCollection_ExtendedString theText, const gp_Ax2 & theOrientation, const Standard_Boolean theHasOwnAnchor = Standard_True);
+		static opencascade::handle<Graphic3d_Text> Draw(const opencascade::handle<Graphic3d_Group> & theGroup, const opencascade::handle<Prs3d_TextAspect> & theAspect, TCollection_ExtendedString theText, const gp_Ax2 & theOrientation, const bool theHasOwnAnchor = true);
 
 };
 
@@ -3587,13 +3526,12 @@ None
 
 Description
 -----------
-Generate primitives for 3D quadric surface presentation. @param[out] theArray generated array of triangles @param[out] theTriangulation generated triangulation 
-Input parameter: theTrsf optional transformation to apply.
+No available documentation.
 ") FillArray;
 		void FillArray(opencascade::handle<Graphic3d_ArrayOfTriangles> & theArray, opencascade::handle<Poly_Triangulation> & theTriangulation, const gp_Trsf & theTrsf);
 
 		/****** Prs3d_ToolQuadric::TrianglesNb ******/
-		/****** md5 signature: 8b7c815b2ac2556d491b7b49576cd32d ******/
+		/****** md5 signature: e7a5175f9aef8ae06d92d4fb1bc9cb15 ******/
 		%feature("compactdefaultargs") TrianglesNb;
 		%feature("autodoc", "
 Parameters
@@ -3609,10 +3547,10 @@ Description
 -----------
 Return number of triangles for presentation with the given params.
 ") TrianglesNb;
-		static Standard_Integer TrianglesNb(const Standard_Integer theSlicesNb, const Standard_Integer theStacksNb);
+		static int TrianglesNb(const int theSlicesNb, const int theStacksNb);
 
 		/****** Prs3d_ToolQuadric::TrianglesNb ******/
-		/****** md5 signature: 79e9c94384c6f9eca1682b3bd078e884 ******/
+		/****** md5 signature: 3224af4e927315a640670970a29a8eb1 ******/
 		%feature("compactdefaultargs") TrianglesNb;
 		%feature("autodoc", "Return
 -------
@@ -3622,17 +3560,17 @@ Description
 -----------
 Return number of triangles in generated presentation.
 ") TrianglesNb;
-		Standard_Integer TrianglesNb();
+		int TrianglesNb();
 
 		/****** Prs3d_ToolQuadric::VerticesNb ******/
-		/****** md5 signature: 1326b929d9932628a0c679a5777a5b6c ******/
+		/****** md5 signature: 75e1363d00d65f15715b34438e96b2e7 ******/
 		%feature("compactdefaultargs") VerticesNb;
 		%feature("autodoc", "
 Parameters
 ----------
 theSlicesNb: int
 theStacksNb: int
-theIsIndexed: bool (optional, default to Standard_True)
+theIsIndexed: bool (optional, default to true)
 
 Return
 -------
@@ -3642,10 +3580,10 @@ Description
 -----------
 Return number of vertices for presentation with the given params.
 ") VerticesNb;
-		static Standard_Integer VerticesNb(const Standard_Integer theSlicesNb, const Standard_Integer theStacksNb, const Standard_Boolean theIsIndexed = Standard_True);
+		static int VerticesNb(const int theSlicesNb, const int theStacksNb, const bool theIsIndexed = true);
 
 		/****** Prs3d_ToolQuadric::VerticesNb ******/
-		/****** md5 signature: 2f242abab1be940c103aeca916c73e88 ******/
+		/****** md5 signature: 5586950e8c1ea604f72979f8114aab43 ******/
 		%feature("compactdefaultargs") VerticesNb;
 		%feature("autodoc", "
 Parameters
@@ -3660,7 +3598,7 @@ Description
 -----------
 Return number of vertices in generated presentation.
 ") VerticesNb;
-		Standard_Integer VerticesNb(bool theIsIndexed = true);
+		int VerticesNb(bool theIsIndexed = true);
 
 };
 
@@ -3690,13 +3628,13 @@ Constructs an empty framework for displaying arrows in representations of length
 		 Prs3d_ArrowAspect();
 
 		/****** Prs3d_ArrowAspect::Prs3d_ArrowAspect ******/
-		/****** md5 signature: fdb610b367c968bba1e1232c8ab58c06 ******/
+		/****** md5 signature: 83e1c7230b9c9cab84997286759557e1 ******/
 		%feature("compactdefaultargs") Prs3d_ArrowAspect;
 		%feature("autodoc", "
 Parameters
 ----------
-anAngle: float
-aLength: float
+anAngle: double
+aLength: double
 
 Return
 -------
@@ -3706,7 +3644,7 @@ Description
 -----------
 Constructs a framework to display an arrow with a shaft of the length aLength and having a head with sides at the angle anAngle from each other.
 ") Prs3d_ArrowAspect;
-		 Prs3d_ArrowAspect(const Standard_Real anAngle, const Standard_Real aLength);
+		 Prs3d_ArrowAspect(const double anAngle, const double aLength);
 
 		/****** Prs3d_ArrowAspect::Prs3d_ArrowAspect ******/
 		/****** md5 signature: 47ec9f21d50f8b3bf4ced85a1384c980 ******/
@@ -3727,17 +3665,17 @@ No available documentation.
 		 Prs3d_ArrowAspect(const opencascade::handle<Graphic3d_AspectLine3d> & theAspect);
 
 		/****** Prs3d_ArrowAspect::Angle ******/
-		/****** md5 signature: 2e7a91a67b1745bc9ecd36bc3650ed68 ******/
+		/****** md5 signature: 38aa389a84e64daaf9f12a8184465316 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the current value of the angle used when drawing an arrow.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** Prs3d_ArrowAspect::Aspect ******/
 		/****** md5 signature: 658e539c0394175cfd3aa70cb073ba78 ******/
@@ -3787,25 +3725,25 @@ Returns True when the Arrow Zoomable is on; True by default.
 		bool IsZoomable();
 
 		/****** Prs3d_ArrowAspect::Length ******/
-		/****** md5 signature: 1d863a710d06afea5559458878200357 ******/
+		/****** md5 signature: 0abaa7b760145b0781c3a3e68f0af715 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the current value of the length used when drawing an arrow.
 ") Length;
-		Standard_Real Length();
+		double Length();
 
 		/****** Prs3d_ArrowAspect::SetAngle ******/
-		/****** md5 signature: eb58abb1f2735255b52070d752bb180a ******/
+		/****** md5 signature: 18f8ccf115a753efce515c140dec2db6 ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-anAngle: float
+anAngle: double
 
 Return
 -------
@@ -3815,7 +3753,7 @@ Description
 -----------
 defines the angle of the arrows.
 ") SetAngle;
-		void SetAngle(const Standard_Real anAngle);
+		void SetAngle(const double anAngle);
 
 		/****** Prs3d_ArrowAspect::SetAspect ******/
 		/****** md5 signature: 56753271c32070a7f0d3996502dbd4eb ******/
@@ -3854,12 +3792,12 @@ No available documentation.
 		void SetColor(const Quantity_Color & theColor);
 
 		/****** Prs3d_ArrowAspect::SetLength ******/
-		/****** md5 signature: 49e1954d3eb0ee1dbf03153254bfe462 ******/
+		/****** md5 signature: 8a243c68178844c622f0de29de1e8a3b ******/
 		%feature("compactdefaultargs") SetLength;
 		%feature("autodoc", "
 Parameters
 ----------
-theLength: float
+theLength: double
 
 Return
 -------
@@ -3869,7 +3807,7 @@ Description
 -----------
 Defines the length of the arrows.
 ") SetLength;
-		void SetLength(const Standard_Real theLength);
+		void SetLength(const double theLength);
 
 		/****** Prs3d_ArrowAspect::SetZoomable ******/
 		/****** md5 signature: 97ffe04fce7ef540e2fce9a76dd33eaa ******/
@@ -4111,7 +4049,7 @@ Returns type of arrow for a type of axis.
 		static Prs3d_DatumParts ArrowPartForAxis(Prs3d_DatumParts thePart);
 
 		/****** Prs3d_DatumAspect::Attribute ******/
-		/****** md5 signature: d7ca7bee3d949bb4cd8c2c3c07920d6e ******/
+		/****** md5 signature: 5a5b55e354a861ae5f9fb39a13a6ba0b ******/
 		%feature("compactdefaultargs") Attribute;
 		%feature("autodoc", "
 Parameters
@@ -4120,16 +4058,16 @@ theType: Prs3d_DatumAttribute
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the attribute of the datum type.
 ") Attribute;
-		Standard_Real Attribute(Prs3d_DatumAttribute theType);
+		double Attribute(Prs3d_DatumAttribute theType);
 
 		/****** Prs3d_DatumAspect::AxisLength ******/
-		/****** md5 signature: 78fdae0390bbc7bf04978fb62d2c6a4b ******/
+		/****** md5 signature: 048277c56e1b0de6f9afad613f82a937 ******/
 		%feature("compactdefaultargs") AxisLength;
 		%feature("autodoc", "
 Parameters
@@ -4138,13 +4076,13 @@ thePart: Prs3d_DatumParts
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the length of the displayed first axis.
 ") AxisLength;
-		Standard_Real AxisLength(Prs3d_DatumParts thePart);
+		double AxisLength(Prs3d_DatumParts thePart);
 
 		/****** Prs3d_DatumAspect::CopyAspectsFrom ******/
 		/****** md5 signature: ec90d65075dc1aad3151ac0b5a24cb1b ******/
@@ -4178,7 +4116,7 @@ Returns axes used in the datum aspect.
 		Prs3d_DatumAxes DatumAxes();
 
 		/****** Prs3d_DatumAspect::DrawDatumPart ******/
-		/****** md5 signature: 589c4fbc66e194b032a506fb72d2943b ******/
+		/****** md5 signature: ff7670b8008f49e547c7f30626041b07 ******/
 		%feature("compactdefaultargs") DrawDatumPart;
 		%feature("autodoc", "
 Parameters
@@ -4193,7 +4131,7 @@ Description
 -----------
 Returns true if the given part is used in axes of aspect.
 ") DrawDatumPart;
-		Standard_Boolean DrawDatumPart(Prs3d_DatumParts thePart);
+		bool DrawDatumPart(Prs3d_DatumParts thePart);
 
 
         /****************** DumpJson ******************/
@@ -4266,13 +4204,13 @@ Sets the arrow aspect of presentation.
 		void SetArrowAspect(const opencascade::handle<Prs3d_ArrowAspect> & theAspect);
 
 		/****** Prs3d_DatumAspect::SetAttribute ******/
-		/****** md5 signature: addb95d2429f8a93b0aa29cc41d7d7c3 ******/
+		/****** md5 signature: f750f0140fc5d90ff138d9e43f6e7f95 ******/
 		%feature("compactdefaultargs") SetAttribute;
 		%feature("autodoc", "
 Parameters
 ----------
 theType: Prs3d_DatumAttribute
-theValue: float
+theValue: double
 
 Return
 -------
@@ -4282,17 +4220,17 @@ Description
 -----------
 Sets the attribute of the datum type.
 ") SetAttribute;
-		void SetAttribute(Prs3d_DatumAttribute theType, const Standard_Real theValue);
+		void SetAttribute(Prs3d_DatumAttribute theType, const double theValue);
 
 		/****** Prs3d_DatumAspect::SetAxisLength ******/
-		/****** md5 signature: 368cf5f58e7c88156ee1613e1838afa1 ******/
+		/****** md5 signature: e38064c732dc789d8a31a2eeefd5a80a ******/
 		%feature("compactdefaultargs") SetAxisLength;
 		%feature("autodoc", "
 Parameters
 ----------
-theL1: float
-theL2: float
-theL3: float
+theL1: double
+theL2: double
+theL3: double
 
 Return
 -------
@@ -4302,10 +4240,10 @@ Description
 -----------
 Sets the lengths of the three axes.
 ") SetAxisLength;
-		void SetAxisLength(Standard_Real theL1, Standard_Real theL2, Standard_Real theL3);
+		void SetAxisLength(double theL1, double theL2, double theL3);
 
 		/****** Prs3d_DatumAspect::SetDrawArrows ******/
-		/****** md5 signature: 77144cbf3c12e0f52352851c91f67a12 ******/
+		/****** md5 signature: 3a21b81136103e4559301be76f06c19d ******/
 		%feature("compactdefaultargs") SetDrawArrows;
 		%feature("autodoc", "
 Parameters
@@ -4320,7 +4258,7 @@ Description
 -----------
 Sets option to draw or not arrows for axes.
 ") SetDrawArrows;
-		void SetDrawArrows(Standard_Boolean theToDraw);
+		void SetDrawArrows(bool theToDraw);
 
 		/****** Prs3d_DatumAspect::SetDrawDatumAxes ******/
 		/****** md5 signature: 60ca5c83f384aa6188d8ce4043d65437 ******/
@@ -4341,7 +4279,7 @@ Sets the axes used in the datum aspect.
 		void SetDrawDatumAxes(Prs3d_DatumAxes theType);
 
 		/****** Prs3d_DatumAspect::SetDrawLabels ******/
-		/****** md5 signature: e034ff7bc5e70c3493e6a993aa989169 ******/
+		/****** md5 signature: 2e910da883350c5b5c6f207f9df27d22 ******/
 		%feature("compactdefaultargs") SetDrawLabels;
 		%feature("autodoc", "
 Parameters
@@ -4356,7 +4294,7 @@ Description
 -----------
 Sets option to draw or not to draw text labels for axes.
 ") SetDrawLabels;
-		void SetDrawLabels(Standard_Boolean theToDraw);
+		void SetDrawLabels(bool theToDraw);
 
 		/****** Prs3d_DatumAspect::SetPointAspect ******/
 		/****** md5 signature: 94b301114933fbb123df3ae8775512cc ******/
@@ -4395,7 +4333,7 @@ Sets text attributes for rendering labels.
 		void SetTextAspect(const opencascade::handle<Prs3d_TextAspect> & theTextAspect);
 
 		/****** Prs3d_DatumAspect::SetToDrawLabels ******/
-		/****** md5 signature: 01b84536290f88c0f6c2733c7bfb4076 ******/
+		/****** md5 signature: 0f2c610f2a2b33217e5a0ff53deaf18b ******/
 		%feature("compactdefaultargs") SetToDrawLabels;
 		%feature("autodoc", "
 Parameters
@@ -4410,7 +4348,7 @@ Description
 -----------
 No available documentation.
 ") SetToDrawLabels;
-		void SetToDrawLabels(Standard_Boolean theToDraw);
+		void SetToDrawLabels(bool theToDraw);
 
 		/****** Prs3d_DatumAspect::ShadingAspect ******/
 		/****** md5 signature: 0e02ad2657728f8fa670dd55189d1518 ******/
@@ -4462,7 +4400,7 @@ No available documentation.
 		const opencascade::handle<Prs3d_TextAspect> & TextAspect();
 
 		/****** Prs3d_DatumAspect::ToDrawArrows ******/
-		/****** md5 signature: 7fd3cfe7831ebb75887b42f1c3721e82 ******/
+		/****** md5 signature: c0d6febbbfb4a26701e134a2c03aa860 ******/
 		%feature("compactdefaultargs") ToDrawArrows;
 		%feature("autodoc", "Return
 -------
@@ -4472,10 +4410,10 @@ Description
 -----------
 Return: true if axes arrows are drawn; True by default.
 ") ToDrawArrows;
-		Standard_Boolean ToDrawArrows();
+		bool ToDrawArrows();
 
 		/****** Prs3d_DatumAspect::ToDrawLabels ******/
-		/****** md5 signature: e96476e7cdea51d0791faaa945b8761b ******/
+		/****** md5 signature: 2c15f170b34ee507af3441cb89b10c1c ******/
 		%feature("compactdefaultargs") ToDrawLabels;
 		%feature("autodoc", "Return
 -------
@@ -4485,7 +4423,7 @@ Description
 -----------
 Return: true if axes labels are drawn; True by default.
 ") ToDrawLabels;
-		Standard_Boolean ToDrawLabels();
+		bool ToDrawLabels();
 
 };
 
@@ -4543,17 +4481,17 @@ Gets orientation of arrows (external or internal).
 		Prs3d_DimensionArrowOrientation ArrowOrientation();
 
 		/****** Prs3d_DimensionAspect::ArrowTailSize ******/
-		/****** md5 signature: 8555ac26347823eb4d6bb4cef26824d4 ******/
+		/****** md5 signature: 98814294bfd7f8a746c684e07c7a917d ******/
 		%feature("compactdefaultargs") ArrowTailSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns arrow tail size.
 ") ArrowTailSize;
-		Standard_Real ArrowTailSize();
+		double ArrowTailSize();
 
 
         /****************** DumpJson ******************/
@@ -4577,20 +4515,20 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Prs3d_DimensionAspect::ExtensionSize ******/
-		/****** md5 signature: 876d08434cb9c896916a7933c4b53809 ******/
+		/****** md5 signature: 0f7bb5ce4001ddc71b18a28574ef6db5 ******/
 		%feature("compactdefaultargs") ExtensionSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns extension size.
 ") ExtensionSize;
-		Standard_Real ExtensionSize();
+		double ExtensionSize();
 
 		/****** Prs3d_DimensionAspect::IsArrows3d ******/
-		/****** md5 signature: f61af83d91c92e9bc34305443832f5b0 ******/
+		/****** md5 signature: 691bdb33c249349dfbc7949d3dd21237 ******/
 		%feature("compactdefaultargs") IsArrows3d;
 		%feature("autodoc", "Return
 -------
@@ -4600,10 +4538,10 @@ Description
 -----------
 Gets type of arrows.
 ") IsArrows3d;
-		Standard_Boolean IsArrows3d();
+		bool IsArrows3d();
 
 		/****** Prs3d_DimensionAspect::IsText3d ******/
-		/****** md5 signature: 4abdeea26e7a341e46ba908ea0dece0f ******/
+		/****** md5 signature: 3c3cf46d89b96ec8d3cf408b710dd22c ******/
 		%feature("compactdefaultargs") IsText3d;
 		%feature("autodoc", "Return
 -------
@@ -4613,10 +4551,10 @@ Description
 -----------
 Check if text for dimension label is 3d.
 ") IsText3d;
-		Standard_Boolean IsText3d();
+		bool IsText3d();
 
 		/****** Prs3d_DimensionAspect::IsTextShaded ******/
-		/****** md5 signature: 1c534a4e07128c68ced7aacfe72bf3f9 ******/
+		/****** md5 signature: 3c8972e9d30f5b0ffaf0cbb480ad4081 ******/
 		%feature("compactdefaultargs") IsTextShaded;
 		%feature("autodoc", "Return
 -------
@@ -4626,10 +4564,10 @@ Description
 -----------
 Check if 3d text for dimension label is shaded.
 ") IsTextShaded;
-		Standard_Boolean IsTextShaded();
+		bool IsTextShaded();
 
 		/****** Prs3d_DimensionAspect::IsUnitsDisplayed ******/
-		/****** md5 signature: 472a67e20dfe083be2b13ca1e61837d2 ******/
+		/****** md5 signature: 858afb5b6dcf261edf28f125aa57c406 ******/
 		%feature("compactdefaultargs") IsUnitsDisplayed;
 		%feature("autodoc", "Return
 -------
@@ -4639,7 +4577,7 @@ Description
 -----------
 Shows if Units are to be displayed along with dimension value.
 ") IsUnitsDisplayed;
-		Standard_Boolean IsUnitsDisplayed();
+		bool IsUnitsDisplayed();
 
 		/****** Prs3d_DimensionAspect::LineAspect ******/
 		/****** md5 signature: 927a4415098fa84b4a5920c8e43e39c2 ******/
@@ -4655,7 +4593,7 @@ Returns the settings for the display of lines used in presentation of dimensions
 		const opencascade::handle<Prs3d_LineAspect> & LineAspect();
 
 		/****** Prs3d_DimensionAspect::MakeArrows3d ******/
-		/****** md5 signature: 825771bc33ebe567091de5f6b4d2d339 ******/
+		/****** md5 signature: 0328593a5da24ea2d680c1a7be23b4a9 ******/
 		%feature("compactdefaultargs") MakeArrows3d;
 		%feature("autodoc", "
 Parameters
@@ -4670,10 +4608,10 @@ Description
 -----------
 Sets type of arrows.
 ") MakeArrows3d;
-		void MakeArrows3d(const Standard_Boolean theIsArrows3d);
+		void MakeArrows3d(const bool theIsArrows3d);
 
 		/****** Prs3d_DimensionAspect::MakeText3d ******/
-		/****** md5 signature: 0ef0b6cf172d280c59d9cc614719f340 ******/
+		/****** md5 signature: a0aaeab536049e442bcd03494213a7f4 ******/
 		%feature("compactdefaultargs") MakeText3d;
 		%feature("autodoc", "
 Parameters
@@ -4688,10 +4626,10 @@ Description
 -----------
 Sets type of text.
 ") MakeText3d;
-		void MakeText3d(const Standard_Boolean isText3d);
+		void MakeText3d(const bool isText3d);
 
 		/****** Prs3d_DimensionAspect::MakeTextShaded ******/
-		/****** md5 signature: 0fb1b973fa5159b97cf84937bc389706 ******/
+		/****** md5 signature: 02c5437ea34988d48d357849443aa2ed ******/
 		%feature("compactdefaultargs") MakeTextShaded;
 		%feature("autodoc", "
 Parameters
@@ -4706,10 +4644,10 @@ Description
 -----------
 Turns on/off text shading for 3d text.
 ") MakeTextShaded;
-		void MakeTextShaded(const Standard_Boolean theIsTextShaded);
+		void MakeTextShaded(const bool theIsTextShaded);
 
 		/****** Prs3d_DimensionAspect::MakeUnitsDisplayed ******/
-		/****** md5 signature: 65ce3eaad48ff3c494eb3af4a295d192 ******/
+		/****** md5 signature: 4046744e7f63ebc79f336d8c7f86e6c9 ******/
 		%feature("compactdefaultargs") MakeUnitsDisplayed;
 		%feature("autodoc", "
 Parameters
@@ -4724,7 +4662,7 @@ Description
 -----------
 Specifies whether the units string should be displayed along with value label or not.
 ") MakeUnitsDisplayed;
-		void MakeUnitsDisplayed(const Standard_Boolean theIsDisplayed);
+		void MakeUnitsDisplayed(const bool theIsDisplayed);
 
 		/****** Prs3d_DimensionAspect::SetArrowAspect ******/
 		/****** md5 signature: 0a1adde0b720014d803adbe7c86e169d ******/
@@ -4763,12 +4701,12 @@ Sets orientation of arrows (external or internal). By default orientation is cho
 		void SetArrowOrientation(const Prs3d_DimensionArrowOrientation theArrowOrient);
 
 		/****** Prs3d_DimensionAspect::SetArrowTailSize ******/
-		/****** md5 signature: 6f712cbd4312444c74fb341820f5e475 ******/
+		/****** md5 signature: 45b8cb8153ea2cda7abf8fab3b543f3f ******/
 		%feature("compactdefaultargs") SetArrowTailSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -4778,7 +4716,7 @@ Description
 -----------
 Set size for arrow tail (extension without text).
 ") SetArrowTailSize;
-		void SetArrowTailSize(const Standard_Real theSize);
+		void SetArrowTailSize(const double theSize);
 
 		/****** Prs3d_DimensionAspect::SetCommonColor ******/
 		/****** md5 signature: c36f70a5dca65f5552c2b1f4e32740d3 ******/
@@ -4799,12 +4737,12 @@ Sets the same color for all parts of dimension: lines, arrows and text.
 		void SetCommonColor(const Quantity_Color & theColor);
 
 		/****** Prs3d_DimensionAspect::SetExtensionSize ******/
-		/****** md5 signature: 147385e01f844b6be32f7db9aa7116ec ******/
+		/****** md5 signature: cc430c0500c837677f4b16fa3b01f377 ******/
 		%feature("compactdefaultargs") SetExtensionSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -4814,7 +4752,7 @@ Description
 -----------
 Sets extension size.
 ") SetExtensionSize;
-		void SetExtensionSize(const Standard_Real theSize);
+		void SetExtensionSize(const double theSize);
 
 		/****** Prs3d_DimensionAspect::SetLineAspect ******/
 		/****** md5 signature: edeacff48ba26eb953ac27ee5da1b9dd ******/
@@ -4902,7 +4840,7 @@ None
 
 Description
 -----------
-Sets 'sprintf'-syntax format for formatting dimension value labels.
+Sets 'Sprintf'-syntax format for formatting dimension value labels.
 ") SetValueStringFormat;
 		void SetValueStringFormat(TCollection_AsciiString theFormat);
 
@@ -4975,14 +4913,14 @@ Returns format.
 class Prs3d_LineAspect : public Prs3d_BasicAspect {
 	public:
 		/****** Prs3d_LineAspect::Prs3d_LineAspect ******/
-		/****** md5 signature: 89e8a7892b119d2cd7c4096f62812e91 ******/
+		/****** md5 signature: 3f4c0cb7a36f22efe4366c0609589b79 ******/
 		%feature("compactdefaultargs") Prs3d_LineAspect;
 		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 theType: Aspect_TypeOfLine
-theWidth: float
+theWidth: double
 
 Return
 -------
@@ -4992,7 +4930,7 @@ Description
 -----------
 Constructs a framework for line aspect defined by - the color aColor - the type of line aType and - the line thickness aWidth. Type of line refers to whether the line is solid or dotted, for example.
 ") Prs3d_LineAspect;
-		 Prs3d_LineAspect(const Quantity_Color & theColor, const Aspect_TypeOfLine theType, const Standard_Real theWidth);
+		 Prs3d_LineAspect(const Quantity_Color & theColor, const Aspect_TypeOfLine theType, const double theWidth);
 
 		/****** Prs3d_LineAspect::Prs3d_LineAspect ******/
 		/****** md5 signature: 0927d9715b5f7a178665974ee6006b1b ******/
@@ -5101,12 +5039,12 @@ Sets the type of line defined at the time of construction. This could, for examp
 		void SetTypeOfLine(const Aspect_TypeOfLine theType);
 
 		/****** Prs3d_LineAspect::SetWidth ******/
-		/****** md5 signature: a388bd43f011bc773d8da404945719b5 ******/
+		/****** md5 signature: dca96455ca545124c2c49422e4d8c257 ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
 ----------
-theWidth: float
+theWidth: double
 
 Return
 -------
@@ -5116,7 +5054,7 @@ Description
 -----------
 Sets the line width defined at the time of construction. Default value: 1.
 ") SetWidth;
-		void SetWidth(const Standard_Real theWidth);
+		void SetWidth(const double theWidth);
 
 };
 
@@ -5161,46 +5099,46 @@ Returns the settings for displaying an arrow.
 		const opencascade::handle<Prs3d_LineAspect> & ArrowAspect();
 
 		/****** Prs3d_PlaneAspect::ArrowsAngle ******/
-		/****** md5 signature: bdee51ccaa26f85344bf4a999c7524f5 ******/
+		/****** md5 signature: cbb6bf9f75c1b18137371866a7ef70c6 ******/
 		%feature("compactdefaultargs") ArrowsAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the angle of the arrowhead used in the display of arrows involved in the presentation of planes.
 ") ArrowsAngle;
-		Standard_Real ArrowsAngle();
+		double ArrowsAngle();
 
 		/****** Prs3d_PlaneAspect::ArrowsLength ******/
-		/****** md5 signature: 836101e02503de37c81f271e2eced819 ******/
+		/****** md5 signature: 66eccde0acdf9fc9b6c8e652490b1975 ******/
 		%feature("compactdefaultargs") ArrowsLength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the length of the arrow shaft used in the display of arrows.
 ") ArrowsLength;
-		Standard_Real ArrowsLength();
+		double ArrowsLength();
 
 		/****** Prs3d_PlaneAspect::ArrowsSize ******/
-		/****** md5 signature: 0214be7b615b35899c0612da8cfa855d ******/
+		/****** md5 signature: 797e825e7ba3bbd5cbfc9348487e6ccf ******/
 		%feature("compactdefaultargs") ArrowsSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the size of arrows used in the display of planes.
 ") ArrowsSize;
-		Standard_Real ArrowsSize();
+		double ArrowsSize();
 
 		/****** Prs3d_PlaneAspect::DisplayCenterArrow ******/
-		/****** md5 signature: 1fb436095464335ec78de5386dcc5429 ******/
+		/****** md5 signature: 8e8ee17d870bf0d57e1ac4565cb83235 ******/
 		%feature("compactdefaultargs") DisplayCenterArrow;
 		%feature("autodoc", "Return
 -------
@@ -5210,10 +5148,10 @@ Description
 -----------
 Returns true if the display of center arrows is allowed.
 ") DisplayCenterArrow;
-		Standard_Boolean DisplayCenterArrow();
+		bool DisplayCenterArrow();
 
 		/****** Prs3d_PlaneAspect::DisplayEdges ******/
-		/****** md5 signature: 2fd6a00bac4cd81ac82d3cc0a8a4c080 ******/
+		/****** md5 signature: 073fbfbd851fe14999bcfffca178b7d8 ******/
 		%feature("compactdefaultargs") DisplayEdges;
 		%feature("autodoc", "Return
 -------
@@ -5223,10 +5161,10 @@ Description
 -----------
 No available documentation.
 ") DisplayEdges;
-		Standard_Boolean DisplayEdges();
+		bool DisplayEdges();
 
 		/****** Prs3d_PlaneAspect::DisplayEdgesArrows ******/
-		/****** md5 signature: b0498ea7a969981d6f9dd53af9f90fca ******/
+		/****** md5 signature: 7ad5b9fefce4ee6b43a09a3bedce9f46 ******/
 		%feature("compactdefaultargs") DisplayEdgesArrows;
 		%feature("autodoc", "Return
 -------
@@ -5236,10 +5174,10 @@ Description
 -----------
 Returns true if the display of edge arrows is allowed.
 ") DisplayEdgesArrows;
-		Standard_Boolean DisplayEdgesArrows();
+		bool DisplayEdgesArrows();
 
 		/****** Prs3d_PlaneAspect::DisplayIso ******/
-		/****** md5 signature: 11917be0b220fa13cc0cd6a1f36d7ee3 ******/
+		/****** md5 signature: d29723d42f15215b36e76236703c230b ******/
 		%feature("compactdefaultargs") DisplayIso;
 		%feature("autodoc", "Return
 -------
@@ -5249,7 +5187,7 @@ Description
 -----------
 Returns true if the display of isoparameters is allowed.
 ") DisplayIso;
-		Standard_Boolean DisplayIso();
+		bool DisplayIso();
 
 
         /****************** DumpJson ******************/
@@ -5299,51 +5237,51 @@ Returns the attributes of displayed isoparameters involved in the presentation o
 		const opencascade::handle<Prs3d_LineAspect> & IsoAspect();
 
 		/****** Prs3d_PlaneAspect::IsoDistance ******/
-		/****** md5 signature: 5dd6ae35b7e8d7aaeb1d12487ce5c534 ******/
+		/****** md5 signature: 0443bf80ae9bf1eb0d884b1363214e00 ******/
 		%feature("compactdefaultargs") IsoDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the distance between isoparameters used in the display of planes.
 ") IsoDistance;
-		Standard_Real IsoDistance();
+		double IsoDistance();
 
 		/****** Prs3d_PlaneAspect::PlaneXLength ******/
-		/****** md5 signature: 0ebee457fb0057620ba1071f8a557f59 ******/
+		/****** md5 signature: f774d3ff374bac89b5c8ba5bea5fa6c3 ******/
 		%feature("compactdefaultargs") PlaneXLength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the length of the x axis used in the display of planes.
 ") PlaneXLength;
-		Standard_Real PlaneXLength();
+		double PlaneXLength();
 
 		/****** Prs3d_PlaneAspect::PlaneYLength ******/
-		/****** md5 signature: 92f20b79f985e08e22abb894369bb9d5 ******/
+		/****** md5 signature: 307d9a6bf06d29f8473a571f679ba5e4 ******/
 		%feature("compactdefaultargs") PlaneYLength;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the length of the y axis used in the display of planes.
 ") PlaneYLength;
-		Standard_Real PlaneYLength();
+		double PlaneYLength();
 
 		/****** Prs3d_PlaneAspect::SetArrowsAngle ******/
-		/****** md5 signature: 81a299b629366fc787a03cf3c0addc7c ******/
+		/****** md5 signature: 3fee78a5ba58cbb703b7d0a31674c5b0 ******/
 		%feature("compactdefaultargs") SetArrowsAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theAngle: float
+theAngle: double
 
 Return
 -------
@@ -5353,15 +5291,15 @@ Description
 -----------
 Sets the angle of the arrowhead used in the display of arrows involved in the presentation of planes.
 ") SetArrowsAngle;
-		void SetArrowsAngle(const Standard_Real theAngle);
+		void SetArrowsAngle(const double theAngle);
 
 		/****** Prs3d_PlaneAspect::SetArrowsLength ******/
-		/****** md5 signature: ca40ac1a3c3df178050aad5bc0d07e17 ******/
+		/****** md5 signature: 25eea05c76116335af77856b3a5facf7 ******/
 		%feature("compactdefaultargs") SetArrowsLength;
 		%feature("autodoc", "
 Parameters
 ----------
-theLength: float
+theLength: double
 
 Return
 -------
@@ -5371,15 +5309,15 @@ Description
 -----------
 No available documentation.
 ") SetArrowsLength;
-		void SetArrowsLength(const Standard_Real theLength);
+		void SetArrowsLength(const double theLength);
 
 		/****** Prs3d_PlaneAspect::SetArrowsSize ******/
-		/****** md5 signature: 9b9cec88c84a3be7c103fc1f8ca81f5c ******/
+		/****** md5 signature: e561bc771b763bebf379e474725b0730 ******/
 		%feature("compactdefaultargs") SetArrowsSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -5389,10 +5327,10 @@ Description
 -----------
 Sets the angle of the arrowhead used in the display of planes.
 ") SetArrowsSize;
-		void SetArrowsSize(const Standard_Real theSize);
+		void SetArrowsSize(const double theSize);
 
 		/****** Prs3d_PlaneAspect::SetDisplayCenterArrow ******/
-		/****** md5 signature: 565cfca1cbb382aeb22c48a18cc9d000 ******/
+		/****** md5 signature: be20d54b288ee0019ca158489f9ca55b ******/
 		%feature("compactdefaultargs") SetDisplayCenterArrow;
 		%feature("autodoc", "
 Parameters
@@ -5407,10 +5345,10 @@ Description
 -----------
 Sets the display attributes defined in DisplayCenterArrow to active.
 ") SetDisplayCenterArrow;
-		void SetDisplayCenterArrow(const Standard_Boolean theToDraw);
+		void SetDisplayCenterArrow(const bool theToDraw);
 
 		/****** Prs3d_PlaneAspect::SetDisplayEdges ******/
-		/****** md5 signature: 4aa2e1362476fe44fe3ce8047262cf32 ******/
+		/****** md5 signature: 44104da38369d5b9db05eb5c04a087c6 ******/
 		%feature("compactdefaultargs") SetDisplayEdges;
 		%feature("autodoc", "
 Parameters
@@ -5425,10 +5363,10 @@ Description
 -----------
 No available documentation.
 ") SetDisplayEdges;
-		void SetDisplayEdges(const Standard_Boolean theToDraw);
+		void SetDisplayEdges(const bool theToDraw);
 
 		/****** Prs3d_PlaneAspect::SetDisplayEdgesArrows ******/
-		/****** md5 signature: 0bb86419876cc07708f6c1513b841778 ******/
+		/****** md5 signature: 0ce34158e115b8d7b8f7c0ef50f031e1 ******/
 		%feature("compactdefaultargs") SetDisplayEdgesArrows;
 		%feature("autodoc", "
 Parameters
@@ -5443,10 +5381,10 @@ Description
 -----------
 Sets the display attributes defined in DisplayEdgesArrows to active.
 ") SetDisplayEdgesArrows;
-		void SetDisplayEdgesArrows(const Standard_Boolean theToDraw);
+		void SetDisplayEdgesArrows(const bool theToDraw);
 
 		/****** Prs3d_PlaneAspect::SetDisplayIso ******/
-		/****** md5 signature: 6a70f549b1851e6a0e6288f10d110dbc ******/
+		/****** md5 signature: 93b54dc04e5900cae9f920ae28801819 ******/
 		%feature("compactdefaultargs") SetDisplayIso;
 		%feature("autodoc", "
 Parameters
@@ -5461,15 +5399,15 @@ Description
 -----------
 Sets the display attributes defined in DisplayIso to active.
 ") SetDisplayIso;
-		void SetDisplayIso(const Standard_Boolean theToDraw);
+		void SetDisplayIso(const bool theToDraw);
 
 		/****** Prs3d_PlaneAspect::SetIsoDistance ******/
-		/****** md5 signature: 067b7f8b79ddcf1d22fd4f26aeef95b7 ******/
+		/****** md5 signature: 1ad28e65f68fc5267edb71dcef5a619e ******/
 		%feature("compactdefaultargs") SetIsoDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-theL: float
+theL: double
 
 Return
 -------
@@ -5479,16 +5417,16 @@ Description
 -----------
 Sets the distance L between isoparameters used in the display of planes.
 ") SetIsoDistance;
-		void SetIsoDistance(const Standard_Real theL);
+		void SetIsoDistance(const double theL);
 
 		/****** Prs3d_PlaneAspect::SetPlaneLength ******/
-		/****** md5 signature: f16164e91ce1683213487473d9edee00 ******/
+		/****** md5 signature: 3cd4db64e87153f20f3207a9c07fad07 ******/
 		%feature("compactdefaultargs") SetPlaneLength;
 		%feature("autodoc", "
 Parameters
 ----------
-theLX: float
-theLY: float
+theLX: double
+theLY: double
 
 Return
 -------
@@ -5498,7 +5436,7 @@ Description
 -----------
 No available documentation.
 ") SetPlaneLength;
-		void SetPlaneLength(const Standard_Real theLX, const Standard_Real theLY);
+		void SetPlaneLength(const double theLX, const double theLY);
 
 };
 
@@ -5517,14 +5455,14 @@ No available documentation.
 class Prs3d_PointAspect : public Prs3d_BasicAspect {
 	public:
 		/****** Prs3d_PointAspect::Prs3d_PointAspect ******/
-		/****** md5 signature: 56f6a323546bcbaeda1938b1b532613c ******/
+		/****** md5 signature: 72183ff87601b75b4271545ead2902c2 ******/
 		%feature("compactdefaultargs") Prs3d_PointAspect;
 		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfMarker
 theColor: Quantity_Color
-theScale: float
+theScale: double
 
 Return
 -------
@@ -5534,10 +5472,10 @@ Description
 -----------
 No available documentation.
 ") Prs3d_PointAspect;
-		 Prs3d_PointAspect(const Aspect_TypeOfMarker theType, const Quantity_Color & theColor, const Standard_Real theScale);
+		 Prs3d_PointAspect(const Aspect_TypeOfMarker theType, const Quantity_Color & theColor, const double theScale);
 
 		/****** Prs3d_PointAspect::Prs3d_PointAspect ******/
-		/****** md5 signature: 5bca70665a644bdd45c0abb1e025d96f ******/
+		/****** md5 signature: d420bb4b00147b901114a7a5703de5d6 ******/
 		%feature("compactdefaultargs") Prs3d_PointAspect;
 		%feature("autodoc", "
 Parameters
@@ -5545,7 +5483,7 @@ Parameters
 theColor: Quantity_Color
 theWidth: int
 theHeight: int
-theTexture: TColStd_HArray1OfByte
+theTexture: NCollection_HArray1<uint8_t
 
 Return
 -------
@@ -5555,7 +5493,7 @@ Description
 -----------
 Defines the user defined marker point.
 ") Prs3d_PointAspect;
-		 Prs3d_PointAspect(const Quantity_Color & theColor, const Standard_Integer theWidth, const Standard_Integer theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTexture);
+		 Prs3d_PointAspect(const Quantity_Color & theColor, const int theWidth, const int theHeight, const opencascade::handle<NCollection_HArray1<uint8_t> > & theTexture);
 
 		/****** Prs3d_PointAspect::Prs3d_PointAspect ******/
 		/****** md5 signature: 5e221962e2590f7f3a9470ca4c69750a ******/
@@ -5623,7 +5561,7 @@ Returns marker's texture.
 		const opencascade::handle<Graphic3d_MarkerImage> & GetTexture();
 
 		/****** Prs3d_PointAspect::GetTextureSize ******/
-		/****** md5 signature: 1863448b7396bf35afa6e88b3181a485 ******/
+		/****** md5 signature: 5ac7ff258c7c1f3bea04f4b210ccbb61 ******/
 		%feature("compactdefaultargs") GetTextureSize;
 		%feature("autodoc", "
 Parameters
@@ -5677,12 +5615,12 @@ defines the color to be used when drawing a point. Default value: Quantity_NOC_Y
 		void SetColor(const Quantity_Color & theColor);
 
 		/****** Prs3d_PointAspect::SetScale ******/
-		/****** md5 signature: 85c1419c4c5459593a06ce585a34394d ******/
+		/****** md5 signature: f03e0b150cf827a9c371719a495ebff6 ******/
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "
 Parameters
 ----------
-theScale: float
+theScale: double
 
 Return
 -------
@@ -5692,7 +5630,7 @@ Description
 -----------
 defines the size of the marker used when drawing a point. Default value: 1.
 ") SetScale;
-		void SetScale(const Standard_Real theScale);
+		void SetScale(const double theScale);
 
 		/****** Prs3d_PointAspect::SetTypeOfMarker ******/
 		/****** md5 signature: be39bcc2898f7c9dd0438ff7bc2dcd9b ******/
@@ -5886,12 +5824,12 @@ Change the polygons material aspect.
 		void SetMaterial(const Graphic3d_MaterialAspect & aMaterial, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
 
 		/****** Prs3d_ShadingAspect::SetTransparency ******/
-		/****** md5 signature: 4ff15759dcf949cd3e818917c15b9459 ******/
+		/****** md5 signature: 9860cfbf3becca63f48f45f2a1019a80 ******/
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", "
 Parameters
 ----------
-aValue: float
+aValue: double
 aModel: Aspect_TypeOfFacingModel (optional, default to Aspect_TOFM_BOTH_SIDE)
 
 Return
@@ -5902,10 +5840,10 @@ Description
 -----------
 Change the polygons transparency value. Warning: aValue must be in the range 0,1. 0 is the default (NO transparent).
 ") SetTransparency;
-		void SetTransparency(const Standard_Real aValue, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
+		void SetTransparency(const double aValue, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
 
 		/****** Prs3d_ShadingAspect::Transparency ******/
-		/****** md5 signature: f11c84451e1571f76cb27f2a24dfcac3 ******/
+		/****** md5 signature: 5507ef614c5cd83cbb13f3e5920cbf86 ******/
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "
 Parameters
@@ -5914,13 +5852,13 @@ aModel: Aspect_TypeOfFacingModel (optional, default to Aspect_TOFM_FRONT_SIDE)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the polygons transparency value.
 ") Transparency;
-		Standard_Real Transparency(const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
+		double Transparency(const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
 
 };
 
@@ -5970,17 +5908,17 @@ No available documentation.
 		 Prs3d_TextAspect(const opencascade::handle<Graphic3d_AspectText3d> & theAspect);
 
 		/****** Prs3d_TextAspect::Angle ******/
-		/****** md5 signature: 2e7a91a67b1745bc9ecd36bc3650ed68 ******/
+		/****** md5 signature: 38aa389a84e64daaf9f12a8184465316 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the angle.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** Prs3d_TextAspect::Aspect ******/
 		/****** md5 signature: f1838eaa82eb3030f8e2c594c3f7547e ******/
@@ -6017,17 +5955,17 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** Prs3d_TextAspect::Height ******/
-		/****** md5 signature: e5e3c5b90c971d7ac0e43c341f82b9e0 ******/
+		/****** md5 signature: 9c46d00747f4ed1daa12e35fc861dfad ******/
 		%feature("compactdefaultargs") Height;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the height of the text box.
 ") Height;
-		Standard_Real Height();
+		double Height();
 
 		/****** Prs3d_TextAspect::HorizontalJustification ******/
 		/****** md5 signature: 5a4fffadc6e767f23cf6c215227c4b32 ******/
@@ -6056,12 +5994,12 @@ Returns the orientation of the text. Text can be displayed in the following dire
 		Graphic3d_TextPath Orientation();
 
 		/****** Prs3d_TextAspect::SetAngle ******/
-		/****** md5 signature: 76a49ca25a7aa0cf5ba05b3c533fe78e ******/
+		/****** md5 signature: e785312fe18bcd9a7632ff8b78ce5a0f ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theAngle: float
+theAngle: double
 
 Return
 -------
@@ -6071,7 +6009,7 @@ Description
 -----------
 Sets the angle.
 ") SetAngle;
-		void SetAngle(const Standard_Real theAngle);
+		void SetAngle(const double theAngle);
 
 		/****** Prs3d_TextAspect::SetAspect ******/
 		/****** md5 signature: de716cb17919b9d72659f26039b080ed ******/
@@ -6110,12 +6048,12 @@ Sets the color of the type used in text display.
 		void SetColor(const Quantity_Color & theColor);
 
 		/****** Prs3d_TextAspect::SetFont ******/
-		/****** md5 signature: 61d12f4a548c85ea1d3fd6a76e34b6f6 ******/
+		/****** md5 signature: d38c457f50bed74122e3b6ca83fd8740 ******/
 		%feature("compactdefaultargs") SetFont;
 		%feature("autodoc", "
 Parameters
 ----------
-theFont: str
+theFont: char *
 
 Return
 -------
@@ -6125,15 +6063,15 @@ Description
 -----------
 Sets the font used in text display.
 ") SetFont;
-		void SetFont(Standard_CString theFont);
+		void SetFont(const char * const theFont);
 
 		/****** Prs3d_TextAspect::SetHeight ******/
-		/****** md5 signature: 052437153b834706be1197300ee007be ******/
+		/****** md5 signature: f3116cd026907650cdd2ee8e7c1e1bb5 ******/
 		%feature("compactdefaultargs") SetHeight;
 		%feature("autodoc", "
 Parameters
 ----------
-theHeight: float
+theHeight: double
 
 Return
 -------
@@ -6143,7 +6081,7 @@ Description
 -----------
 Sets the height of the text.
 ") SetHeight;
-		void SetHeight(const Standard_Real theHeight);
+		void SetHeight(const double theHeight);
 
 		/****** Prs3d_TextAspect::SetHorizontalJustification ******/
 		/****** md5 signature: d13a7ed85e481556617d406511c20750 ******/
@@ -6229,14 +6167,14 @@ Returns the vertical alignment of the text. The range of values includes: - norm
 class Prs3d_ToolCylinder : public Prs3d_ToolQuadric {
 	public:
 		/****** Prs3d_ToolCylinder::Prs3d_ToolCylinder ******/
-		/****** md5 signature: a0078429be42ebfbc0c4d2d7cd2a64c1 ******/
+		/****** md5 signature: 0cc3a238460683c801ee36d48aea54cc ******/
 		%feature("compactdefaultargs") Prs3d_ToolCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6253,17 +6191,17 @@ Input parameter: theHeight cylinder height
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolCylinder;
-		 Prs3d_ToolCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolCylinder::Create ******/
-		/****** md5 signature: 13768f849e92213eb84bca75772c907d ******/
+		/****** md5 signature: 4fa95ba01d1f9ffe86cd9b73886c14ff ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6283,7 +6221,7 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theBottomRad, const double theTopRad, const double theHeight, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 };
 
@@ -6300,13 +6238,13 @@ Return: generated triangulation.
 class Prs3d_ToolDisk : public Prs3d_ToolQuadric {
 	public:
 		/****** Prs3d_ToolDisk::Prs3d_ToolDisk ******/
-		/****** md5 signature: 5106660590090ab9bf0b6e40023ae2c4 ******/
+		/****** md5 signature: df115afe91010272af47da84663ccc4e ******/
 		%feature("compactdefaultargs") Prs3d_ToolDisk;
 		%feature("autodoc", "
 Parameters
 ----------
-theInnerRadius: float
-theOuterRadius: float
+theInnerRadius: double
+theOuterRadius: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6322,16 +6260,16 @@ Input parameter: theOuterRadius outer disk radius
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolDisk;
-		 Prs3d_ToolDisk(const Standard_Real theInnerRadius, const Standard_Real theOuterRadius, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolDisk(const double theInnerRadius, const double theOuterRadius, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolDisk::Create ******/
-		/****** md5 signature: 5ecf369558d3c3c5b58970d367036258 ******/
+		/****** md5 signature: c132156e74de53fc89d4bd4be2af4d54 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theInnerRadius: float
-theOuterRadius: float
+theInnerRadius: double
+theOuterRadius: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6350,16 +6288,16 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theInnerRadius, const Standard_Real theOuterRadius, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theInnerRadius, const double theOuterRadius, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 		/****** Prs3d_ToolDisk::SetAngleRange ******/
-		/****** md5 signature: 8cba406fe6dc42c10e17d05c4656eda9 ******/
+		/****** md5 signature: 4305f707d888ee85a1de64e76f0d38a3 ******/
 		%feature("compactdefaultargs") SetAngleRange;
 		%feature("autodoc", "
 Parameters
 ----------
-theStartAngle: float
-theEndAngle: float
+theStartAngle: double
+theEndAngle: double
 
 Return
 -------
@@ -6371,7 +6309,7 @@ Set angle range in radians [0, 2*PI] by default.
 Input parameter: theStartAngle Start angle in counter clockwise order 
 Input parameter: theEndAngle End angle in counter clockwise order.
 ") SetAngleRange;
-		void SetAngleRange(Standard_Real theStartAngle, Standard_Real theEndAngle);
+		void SetAngleRange(double theStartAngle, double theEndAngle);
 
 };
 
@@ -6388,12 +6326,12 @@ Input parameter: theEndAngle End angle in counter clockwise order.
 class Prs3d_ToolSector : public Prs3d_ToolQuadric {
 	public:
 		/****** Prs3d_ToolSector::Prs3d_ToolSector ******/
-		/****** md5 signature: 077e30551d2b7fff0a377a40b6504a0f ******/
+		/****** md5 signature: c2974f4847e3e9b4f96333fc2739594e ******/
 		%feature("compactdefaultargs") Prs3d_ToolSector;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6408,15 +6346,15 @@ Input parameter: theRadius sector radius
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolSector;
-		 Prs3d_ToolSector(const Standard_Real theRadius, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolSector(const double theRadius, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolSector::Create ******/
-		/****** md5 signature: f383fdd95c4d52d12685500a764da048 ******/
+		/****** md5 signature: 84008dee6c469c208a132547399ea915 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6434,7 +6372,7 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theRadius, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theRadius, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 };
 
@@ -6451,12 +6389,12 @@ Return: generated triangulation.
 class Prs3d_ToolSphere : public Prs3d_ToolQuadric {
 	public:
 		/****** Prs3d_ToolSphere::Prs3d_ToolSphere ******/
-		/****** md5 signature: 512c4ee62ddac02d40e1d19c91dfd749 ******/
+		/****** md5 signature: 1b7c23b9b0cfbea5f5889a159b57c163 ******/
 		%feature("compactdefaultargs") Prs3d_ToolSphere;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6471,15 +6409,15 @@ Input parameter: theRadius sphere radius
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolSphere;
-		 Prs3d_ToolSphere(const Standard_Real theRadius, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolSphere(const double theRadius, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolSphere::Create ******/
-		/****** md5 signature: f383fdd95c4d52d12685500a764da048 ******/
+		/****** md5 signature: 84008dee6c469c208a132547399ea915 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6497,7 +6435,7 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theRadius, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theRadius, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 };
 
@@ -6514,13 +6452,13 @@ Return: generated triangulation.
 class Prs3d_ToolTorus : public Prs3d_ToolQuadric {
 	public:
 		/****** Prs3d_ToolTorus::Prs3d_ToolTorus ******/
-		/****** md5 signature: 8a652d1c1c7e4d1a50eee4b129851dbc ******/
+		/****** md5 signature: d031a9fdce22b400c52a709c5fd67afa ******/
 		%feature("compactdefaultargs") Prs3d_ToolTorus;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
+theMajorRad: double
+theMinorRad: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6536,17 +6474,17 @@ Input parameter: theMinorRad radius of the pipe
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolTorus;
-		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolTorus(const double theMajorRad, const double theMinorRad, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolTorus::Prs3d_ToolTorus ******/
-		/****** md5 signature: 2accee27f8defef2bfbc627df25e1f15 ******/
+		/****** md5 signature: 981d0df3fe7b4a624b29d37c46e05bab ******/
 		%feature("compactdefaultargs") Prs3d_ToolTorus;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
-theAngle: float
+theMajorRad: double
+theMinorRad: double
+theAngle: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6563,18 +6501,18 @@ Input parameter: theAngle angle to create a torus pipe segment
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolTorus;
-		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolTorus(const double theMajorRad, const double theMinorRad, const double theAngle, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolTorus::Prs3d_ToolTorus ******/
-		/****** md5 signature: 7993686707597a46b2d0f4ec645c5d95 ******/
+		/****** md5 signature: 571a9c8d8bf41fba693a53c765df093f ******/
 		%feature("compactdefaultargs") Prs3d_ToolTorus;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
-theAngle1: float
-theAngle2: float
+theMajorRad: double
+theMinorRad: double
+theAngle1: double
+theAngle2: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6592,19 +6530,19 @@ Input parameter: theAngle2 second angle to create a torus ring segment
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolTorus;
-		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolTorus(const double theMajorRad, const double theMinorRad, const double theAngle1, const double theAngle2, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolTorus::Prs3d_ToolTorus ******/
-		/****** md5 signature: 71ca9f767c504cae9394d92ff59f012b ******/
+		/****** md5 signature: d653db28cf6327cfc0f67d35817d5afe ******/
 		%feature("compactdefaultargs") Prs3d_ToolTorus;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
-theAngle1: float
-theAngle2: float
-theAngle: float
+theMajorRad: double
+theMinorRad: double
+theAngle1: double
+theAngle2: double
+theAngle: double
 theNbSlices: int
 theNbStacks: int
 
@@ -6623,16 +6561,16 @@ Input parameter: theAngle angle to create a torus pipe segment
 Input parameter: theNbSlices number of slices within U parameter 
 Input parameter: theNbStacks number of stacks within V parameter.
 ") Prs3d_ToolTorus;
-		 Prs3d_ToolTorus(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks);
+		 Prs3d_ToolTorus(const double theMajorRad, const double theMinorRad, const double theAngle1, const double theAngle2, const double theAngle, const int theNbSlices, const int theNbStacks);
 
 		/****** Prs3d_ToolTorus::Create ******/
-		/****** md5 signature: 07e9f2ec71b87fc6919fefde93de32fa ******/
+		/****** md5 signature: 4ef85c5575dae35b34f586b601cf81b9 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
+theMajorRad: double
+theMinorRad: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6651,17 +6589,17 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theMajorRad, const double theMinorRad, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 		/****** Prs3d_ToolTorus::Create ******/
-		/****** md5 signature: 3348019fdf3fab6b27a846084af219b5 ******/
+		/****** md5 signature: 2fa827a5a6668843898155de80ee17a1 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
-theAngle: float
+theMajorRad: double
+theMinorRad: double
+theAngle: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6681,18 +6619,18 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theMajorRad, const double theMinorRad, const double theAngle, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 		/****** Prs3d_ToolTorus::Create ******/
-		/****** md5 signature: b40020a7ec87651ff79ed79b9036743d ******/
+		/****** md5 signature: b87fd69da9b4d02265160f2b3a06c680 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
-theAngle1: float
-theAngle2: float
+theMajorRad: double
+theMinorRad: double
+theAngle1: double
+theAngle2: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6713,19 +6651,19 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theMajorRad, const double theMinorRad, const double theAngle1, const double theAngle2, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 		/****** Prs3d_ToolTorus::Create ******/
-		/****** md5 signature: 0197847161c119b751c8a39e51506651 ******/
+		/****** md5 signature: 1309e579dfb07b7bf1a533dc16d9936e ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
-theMajorRad: float
-theMinorRad: float
-theAngle1: float
-theAngle2: float
-theAngle: float
+theMajorRad: double
+theMinorRad: double
+theAngle1: double
+theAngle2: double
+theAngle: double
 theNbSlices: int
 theNbStacks: int
 theTrsf: gp_Trsf
@@ -6747,7 +6685,7 @@ Input parameter: theNbStacks number of stacks within V parameter
 Input parameter: theTrsf optional transformation to apply 
 Return: generated triangulation.
 ") Create;
-		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const Standard_Real theMajorRad, const Standard_Real theMinorRad, const Standard_Real theAngle1, const Standard_Real theAngle2, const Standard_Real theAngle, const Standard_Integer theNbSlices, const Standard_Integer theNbStacks, const gp_Trsf & theTrsf);
+		static opencascade::handle<Graphic3d_ArrayOfTriangles> Create(const double theMajorRad, const double theMinorRad, const double theAngle1, const double theAngle2, const double theAngle, const int theNbSlices, const int theNbStacks, const gp_Trsf & theTrsf);
 
 };
 
@@ -6764,14 +6702,14 @@ Return: generated triangulation.
 class Prs3d_IsoAspect : public Prs3d_LineAspect {
 	public:
 		/****** Prs3d_IsoAspect::Prs3d_IsoAspect ******/
-		/****** md5 signature: 20cefbd9d7de79b5d91df215a7381425 ******/
+		/****** md5 signature: 236c6bbd8b6fb98fb546801f101f90da ******/
 		%feature("compactdefaultargs") Prs3d_IsoAspect;
 		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 theType: Aspect_TypeOfLine
-theWidth: float
+theWidth: double
 theNumber: int
 
 Return
@@ -6782,10 +6720,10 @@ Description
 -----------
 Constructs a framework to define display attributes of isoparameters. These include: - the color attribute aColor - the type of line aType - the width value aWidth - aNumber, the number of isoparameters to be displayed.
 ") Prs3d_IsoAspect;
-		 Prs3d_IsoAspect(const Quantity_Color & theColor, const Aspect_TypeOfLine theType, const Standard_Real theWidth, const Standard_Integer theNumber);
+		 Prs3d_IsoAspect(const Quantity_Color & theColor, const Aspect_TypeOfLine theType, const double theWidth, const int theNumber);
 
 		/****** Prs3d_IsoAspect::Number ******/
-		/****** md5 signature: 783fc82a0927a26fa0826e4fe2a7ebe6 ******/
+		/****** md5 signature: 8667679df9843e89b14f08cd277c3e2d ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -6795,10 +6733,10 @@ Description
 -----------
 returns the number of U or V isoparametric curves drawn for a single face.
 ") Number;
-		Standard_Integer Number();
+		int Number();
 
 		/****** Prs3d_IsoAspect::SetNumber ******/
-		/****** md5 signature: c8bd8ca751df6f1dad0f528a62fe2912 ******/
+		/****** md5 signature: df699161db14d539bc7e1c6c1f6dd104 ******/
 		%feature("compactdefaultargs") SetNumber;
 		%feature("autodoc", "
 Parameters
@@ -6813,7 +6751,7 @@ Description
 -----------
 defines the number of U or V isoparametric curves to be drawn for a single face. Default value: 10.
 ") SetNumber;
-		void SetNumber(const Standard_Integer theNumber);
+		void SetNumber(const int theNumber);
 
 };
 
@@ -6878,14 +6816,6 @@ def Prs3d_Arrow_DrawSegments(*args):
 @deprecated
 def Prs3d_Arrow_DrawShaded(*args):
 	return Prs3d_Arrow.DrawShaded(*args)
-
-@deprecated
-def Prs3d_Point_Add(*args):
-	return Prs3d_Point.Add(*args)
-
-@deprecated
-def Prs3d_Point_Match(*args):
-	return Prs3d_Point.Match(*args)
 
 @deprecated
 def Prs3d_Root_CurrentGroup(*args):

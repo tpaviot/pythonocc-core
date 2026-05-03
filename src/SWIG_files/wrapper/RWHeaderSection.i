@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwheadersection.h
 #include<Interface_module.hxx>
 #include<HeaderSection_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
@@ -64,7 +63,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwheadersection.h
 %import Interface.i
 %import HeaderSection.i
 %import TCollection.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -80,8 +78,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(RWHeaderSection_GeneralModule)
-%wrap_handle(RWHeaderSection_ReadWriteModule)
 /* end handles declaration */
 
 /* templates */
@@ -137,7 +133,7 @@ Creates a GeneralModule.
 		 RWHeaderSection_GeneralModule();
 
 		/****** RWHeaderSection_GeneralModule::CheckCase ******/
-		/****** md5 signature: d232fb3d35ada68a901b85a0af289c46 ******/
+		/****** md5 signature: d1c7ba6add9212b48bcbb631196567e9 ******/
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "
 Parameters
@@ -155,10 +151,10 @@ Description
 -----------
 Specific Checking of an Entity <ent>.
 ") CheckCase;
-		void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
+		void CheckCase(const int CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
 		/****** RWHeaderSection_GeneralModule::CopyCase ******/
-		/****** md5 signature: 13c34a46cee20a3c1fc929ba0a39372a ******/
+		/****** md5 signature: fc38f8790e575e509f035b0523c81b6a ******/
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "
 Parameters
@@ -176,10 +172,10 @@ Description
 -----------
 Specific Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. Use method Transferred from CopyTool to work.
 ") CopyCase;
-		void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
+		void CopyCase(const int CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
 		/****** RWHeaderSection_GeneralModule::FillSharedCase ******/
-		/****** md5 signature: 7bbac4d621ea60d6990c803dbf4b2897 ******/
+		/****** md5 signature: a1af00a8f137f9d8747366c144a8316d ******/
 		%feature("compactdefaultargs") FillSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -196,10 +192,10 @@ Description
 -----------
 Specific filling of the list of Entities shared by an Entity <ent>, according to a Case Number <CN> (provided by HeaderSection Protocol).
 ") FillSharedCase;
-		void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
+		void FillSharedCase(const int CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
 		/****** RWHeaderSection_GeneralModule::NewVoid ******/
-		/****** md5 signature: 4fde8c90ab404df0bdf27545a8f246ee ******/
+		/****** md5 signature: a969c9380b4d99ab29040270c13cfeb6 ******/
 		%feature("compactdefaultargs") NewVoid;
 		%feature("autodoc", "
 Parameters
@@ -215,12 +211,10 @@ Description
 -----------
 No available documentation.
 ") NewVoid;
-		Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & ent);
+		bool NewVoid(const int CN, opencascade::handle<Standard_Transient> & ent);
 
 };
 
-
-%make_alias(RWHeaderSection_GeneralModule)
 
 %extend RWHeaderSection_GeneralModule {
 	%pythoncode {
@@ -247,7 +241,7 @@ No available documentation.
 		 RWHeaderSection_RWFileDescription();
 
 		/****** RWHeaderSection_RWFileDescription::ReadStep ******/
-		/****** md5 signature: 33afa598f63ba99ba2bb752ac4277d01 ******/
+		/****** md5 signature: 326439c41fea015a964e4e298b8e0252 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -265,7 +259,7 @@ Description
 -----------
 No available documentation.
 ") ReadStep;
-		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<HeaderSection_FileDescription> & ent);
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<HeaderSection_FileDescription> & ent);
 
 		/****** RWHeaderSection_RWFileDescription::WriteStep ******/
 		/****** md5 signature: 468e591fa335fc44eceb9a2961427875 ******/
@@ -314,7 +308,7 @@ No available documentation.
 		 RWHeaderSection_RWFileName();
 
 		/****** RWHeaderSection_RWFileName::ReadStep ******/
-		/****** md5 signature: 85b0806316890e59952f3929057fec6f ******/
+		/****** md5 signature: d9db254e5351bfb9e7dfbf94e203e2bb ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -332,7 +326,7 @@ Description
 -----------
 No available documentation.
 ") ReadStep;
-		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<HeaderSection_FileName> & ent);
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<HeaderSection_FileName> & ent);
 
 		/****** RWHeaderSection_RWFileName::WriteStep ******/
 		/****** md5 signature: cacf8ce2b056b3baedb3a297466e89d7 ******/
@@ -381,7 +375,7 @@ No available documentation.
 		 RWHeaderSection_RWFileSchema();
 
 		/****** RWHeaderSection_RWFileSchema::ReadStep ******/
-		/****** md5 signature: e93eb0f98723ddf85062911b95595ba7 ******/
+		/****** md5 signature: b7036ffc105271c76f193f4a511df697 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -399,7 +393,7 @@ Description
 -----------
 No available documentation.
 ") ReadStep;
-		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<HeaderSection_FileSchema> & ent);
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<HeaderSection_FileSchema> & ent);
 
 		/****** RWHeaderSection_RWFileSchema::WriteStep ******/
 		/****** md5 signature: 8166e08f5f6f3378f43fd604f7df8b7c ******/
@@ -448,7 +442,7 @@ No available documentation.
 		 RWHeaderSection_ReadWriteModule();
 
 		/****** RWHeaderSection_ReadWriteModule::CaseStep ******/
-		/****** md5 signature: 2cca48c277ff54a418bb5762c7cc5d5f ******/
+		/****** md5 signature: 284d17620d8dc80f0d7741b5789f8024 ******/
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "
 Parameters
@@ -463,15 +457,15 @@ Description
 -----------
 associates a positive Case Number to each type of HeaderSection entity, given as a String defined in the EXPRESS form.
 ") CaseStep;
-		Standard_Integer CaseStep(TCollection_AsciiString atype);
+		int CaseStep(TCollection_AsciiString atype);
 
 		/****** RWHeaderSection_ReadWriteModule::CaseStep ******/
-		/****** md5 signature: 440149e7ecd34289be9e6811f7462a4e ******/
+		/****** md5 signature: 76bd8af8111c189c7dcfc0591d934bc4 ******/
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "
 Parameters
 ----------
-types: TColStd_SequenceOfAsciiString
+types: NCollection_Sequence<TCollection_AsciiString>
 
 Return
 -------
@@ -481,10 +475,10 @@ Description
 -----------
 associates a positive Case Number to each type of HeaderSection Complex entity, given as a String defined in the EXPRESS form.
 ") CaseStep;
-		virtual Standard_Integer CaseStep(const TColStd_SequenceOfAsciiString & types);
+		int CaseStep(const NCollection_Sequence<TCollection_AsciiString> & types);
 
 		/****** RWHeaderSection_ReadWriteModule::IsComplex ******/
-		/****** md5 signature: dd0bb2c37bc5d3007282207d4a702414 ******/
+		/****** md5 signature: 4ded93fc1cf7b4339f7fba22c29d50e9 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "
 Parameters
@@ -499,10 +493,10 @@ Description
 -----------
 returns True if the Case Number corresponds to a Complex Type.
 ") IsComplex;
-		virtual Standard_Boolean IsComplex(const Standard_Integer CN);
+		bool IsComplex(const int CN);
 
 		/****** RWHeaderSection_ReadWriteModule::ReadStep ******/
-		/****** md5 signature: 17295e7bfa85126c873c41a911b14793 ******/
+		/****** md5 signature: 8c4e2a75fd0aa539bafe1f02d5c21a95 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -521,10 +515,10 @@ Description
 -----------
 No available documentation.
 ") ReadStep;
-		void ReadStep(const Standard_Integer CN, const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
+		void ReadStep(const int CN, const opencascade::handle<StepData_StepReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** RWHeaderSection_ReadWriteModule::StepType ******/
-		/****** md5 signature: 6b290c84399e25c2a64848396c483fc8 ******/
+		/****** md5 signature: 3b96bf09bb682cb18550d64bc23df208 ******/
 		%feature("compactdefaultargs") StepType;
 		%feature("autodoc", "
 Parameters
@@ -533,16 +527,16 @@ CN: int
 
 Return
 -------
-TCollection_AsciiString
+std::string_view
 
 Description
 -----------
 returns a StepType (defined in EXPRESS form which belongs to a Type of Entity, identified by its CaseNumber determined by Protocol.
 ") StepType;
-		const TCollection_AsciiString & StepType(const Standard_Integer CN);
+		const std::string_view & StepType(const int CN);
 
 		/****** RWHeaderSection_ReadWriteModule::WriteStep ******/
-		/****** md5 signature: a2c3b5b5327d581382bef5e4442c834e ******/
+		/****** md5 signature: 1e1c50107e184f9972af370c63bcc1cf ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -559,12 +553,10 @@ Description
 -----------
 No available documentation.
 ") WriteStep;
-		void WriteStep(const Standard_Integer CN, StepData_StepWriter & SW, const opencascade::handle<Standard_Transient> & ent);
+		void WriteStep(const int CN, StepData_StepWriter & SW, const opencascade::handle<Standard_Transient> & ent);
 
 };
 
-
-%make_alias(RWHeaderSection_ReadWriteModule)
 
 %extend RWHeaderSection_ReadWriteModule {
 	%pythoncode {

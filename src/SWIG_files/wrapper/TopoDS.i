@@ -101,13 +101,13 @@ from OCC.Core.Exception import *
 class TopoDS_AlertAttribute : public Message_AttributeStream {
 	public:
 		/****** TopoDS_AlertAttribute::TopoDS_AlertAttribute ******/
-		/****** md5 signature: e19fe6951fa45f2892842acdec08d481 ******/
+		/****** md5 signature: 178ae742ac7e2e3140253718bf1ed4e8 ******/
 		%feature("compactdefaultargs") TopoDS_AlertAttribute;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theName: str (optional, default to TCollection_AsciiString())
+theName: str (optional, default to TCollection_AsciiString::EmptyString())
 
 Return
 -------
@@ -117,7 +117,7 @@ Description
 -----------
 Constructor with shape argument.
 ") TopoDS_AlertAttribute;
-		 TopoDS_AlertAttribute(const TopoDS_Shape & theShape, TCollection_AsciiString theName = TCollection_AsciiString());
+		 TopoDS_AlertAttribute(const TopoDS_Shape & theShape, TCollection_AsciiString theName = TCollection_AsciiString::EmptyString());
 
 
         /****************** DumpJson ******************/
@@ -220,7 +220,7 @@ Returns contained shape.
 		const TopoDS_Shape GetShape();
 
 		/****** TopoDS_AlertWithShape::Merge ******/
-		/****** md5 signature: 35843034c2fcb7185666677c75445acd ******/
+		/****** md5 signature: dfb47b009836e4916c8a13cadbd5fe63 ******/
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "
 Parameters
@@ -235,7 +235,7 @@ Description
 -----------
 Returns false.
 ") Merge;
-		virtual Standard_Boolean Merge(const opencascade::handle<Message_Alert> & theTarget);
+		bool Merge(const opencascade::handle<Message_Alert> & theTarget);
 
 		/****** TopoDS_AlertWithShape::SetShape ******/
 		/****** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ******/
@@ -256,7 +256,7 @@ Sets the shape.
 		void SetShape(const TopoDS_Shape & theShape);
 
 		/****** TopoDS_AlertWithShape::SupportsMerge ******/
-		/****** md5 signature: 45abe0601cddac599cb8c2c1cbfefd85 ******/
+		/****** md5 signature: dd48e8f0812d510329f32f116fd11f10 ******/
 		%feature("compactdefaultargs") SupportsMerge;
 		%feature("autodoc", "Return
 -------
@@ -266,7 +266,7 @@ Description
 -----------
 Returns false.
 ") SupportsMerge;
-		virtual Standard_Boolean SupportsMerge();
+		bool SupportsMerge();
 
 };
 
@@ -531,14 +531,14 @@ Creates an empty Iterator.
 		 TopoDS_Iterator();
 
 		/****** TopoDS_Iterator::TopoDS_Iterator ******/
-		/****** md5 signature: 5140035e418f481a1a1b464798561ee9 ******/
+		/****** md5 signature: 1c8003caaa1b229ab33dbaf93117c56c ******/
 		%feature("compactdefaultargs") TopoDS_Iterator;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-cumOri: bool (optional, default to Standard_True)
-cumLoc: bool (optional, default to Standard_True)
+cumOri: bool (optional, default to true)
+cumLoc: bool (optional, default to true)
 
 Return
 -------
@@ -548,17 +548,17 @@ Description
 -----------
 Creates an Iterator on <S> sub-shapes. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") TopoDS_Iterator;
-		 TopoDS_Iterator(const TopoDS_Shape & S, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
+		 TopoDS_Iterator(const TopoDS_Shape & S, const bool cumOri = true, const bool cumLoc = true);
 
 		/****** TopoDS_Iterator::Initialize ******/
-		/****** md5 signature: eae51e6c922353320397faf3e14bdc47 ******/
+		/****** md5 signature: e13e492a9c5517dd8873e464658a700b ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-cumOri: bool (optional, default to Standard_True)
-cumLoc: bool (optional, default to Standard_True)
+cumOri: bool (optional, default to true)
+cumLoc: bool (optional, default to true)
 
 Return
 -------
@@ -568,10 +568,10 @@ Description
 -----------
 Initializes this iterator with shape S. Note: - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") Initialize;
-		void Initialize(const TopoDS_Shape & S, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
+		void Initialize(const TopoDS_Shape & S, const bool cumOri = true, const bool cumLoc = true);
 
 		/****** TopoDS_Iterator::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -581,7 +581,7 @@ Description
 -----------
 Returns true if there is another sub-shape in the shape which this iterator is scanning.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopoDS_Iterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -608,6 +608,32 @@ Description
 Returns the current sub-shape in the shape which this iterator is scanning. Exceptions Standard_NoSuchObject if there is no current sub-shape.
 ") Value;
 		const TopoDS_Shape Value();
+
+		/****** TopoDS_Iterator::begin ******/
+		/****** md5 signature: a5c0563aa1ed050fd64476f76717f2b0 ******/
+		%feature("compactdefaultargs") begin;
+		%feature("autodoc", "Return
+-------
+NCollection_ForwardRangeIterator<TopoDS_Iterator >
+
+Description
+-----------
+Returns an STL-compatible iterator for range-based for loops. @warning Do not call Next() or Initialize() externally during range-for iteration.
+") begin;
+		NCollection_ForwardRangeIterator<TopoDS_Iterator > begin();
+
+		/****** TopoDS_Iterator::end ******/
+		/****** md5 signature: 4edef9faa595e2b9527109cc32e6ec32 ******/
+		%feature("compactdefaultargs") end;
+		%feature("autodoc", "Return
+-------
+NCollection_ForwardRangeSentinel
+
+Description
+-----------
+Returns a sentinel marking the end of iteration.
+") end;
+		NCollection_ForwardRangeSentinel end();
 
 };
 
@@ -639,7 +665,7 @@ Creates a NULL Shape referring to nothing.
 		 TopoDS_Shape();
 
 		/****** TopoDS_Shape::Checked ******/
-		/****** md5 signature: a8b84838b155e0f2c75ceed32947100e ******/
+		/****** md5 signature: 2c07882d02c6f5f348eefaae3fa68bd2 ******/
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "Return
 -------
@@ -649,10 +675,10 @@ Description
 -----------
 Returns the checked flag.
 ") Checked;
-		Standard_Boolean Checked();
+		bool Checked();
 
 		/****** TopoDS_Shape::Checked ******/
-		/****** md5 signature: 6f7fe475bfb2ebdcad97ddf64dd0534c ******/
+		/****** md5 signature: 445e74a4869cd672458c716080dbd7db ******/
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "
 Parameters
@@ -667,10 +693,10 @@ Description
 -----------
 Sets the checked flag.
 ") Checked;
-		void Checked(Standard_Boolean theIsChecked);
+		void Checked(bool theIsChecked);
 
 		/****** TopoDS_Shape::Closed ******/
-		/****** md5 signature: f94551c898fe323903f1d14861bbe901 ******/
+		/****** md5 signature: 8fa7f82a3a97ae7fb9544764f500c779 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -680,10 +706,10 @@ Description
 -----------
 Returns the closedness flag.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** TopoDS_Shape::Closed ******/
-		/****** md5 signature: ff8619fc236f7435a92bdca9a0d16193 ******/
+		/****** md5 signature: 1c41094cb4439db74691d2405f4d2170 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -698,7 +724,7 @@ Description
 -----------
 Sets the closedness flag.
 ") Closed;
-		void Closed(Standard_Boolean theIsClosed);
+		void Closed(bool theIsClosed);
 
 		/****** TopoDS_Shape::Complement ******/
 		/****** md5 signature: 5445a2200c21648250c6106947f9d63d ******/
@@ -763,7 +789,7 @@ Returns a shape similar to <self> with the orientation composed with theOrient, 
 		TopoDS_Shape Composed(TopAbs_Orientation theOrient);
 
 		/****** TopoDS_Shape::Convex ******/
-		/****** md5 signature: efe9b0c153a7f00d69634882071b034b ******/
+		/****** md5 signature: ef2f35807a4db500da6f2e059899cd78 ******/
 		%feature("compactdefaultargs") Convex;
 		%feature("autodoc", "Return
 -------
@@ -773,10 +799,10 @@ Description
 -----------
 Returns the convexness flag.
 ") Convex;
-		Standard_Boolean Convex();
+		bool Convex();
 
 		/****** TopoDS_Shape::Convex ******/
-		/****** md5 signature: 2680b89fa5162759d8c7800c264f8f42 ******/
+		/****** md5 signature: 353d14580425f500fb7f35e700022b41 ******/
 		%feature("compactdefaultargs") Convex;
 		%feature("autodoc", "
 Parameters
@@ -791,7 +817,7 @@ Description
 -----------
 Sets the convexness flag.
 ") Convex;
-		void Convex(Standard_Boolean theIsConvex);
+		void Convex(bool theIsConvex);
 
 
         /****************** DumpJson ******************/
@@ -841,7 +867,7 @@ Replace <self> by a new Shape with the same Orientation and Location and a new T
 		void EmptyCopy();
 
 		/****** TopoDS_Shape::Free ******/
-		/****** md5 signature: 0f8a4dc099aac04a52ab47593952a756 ******/
+		/****** md5 signature: f8b5cf875d8d242721aa3ec2dccd77b6 ******/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "Return
 -------
@@ -851,10 +877,10 @@ Description
 -----------
 Returns the free flag.
 ") Free;
-		Standard_Boolean Free();
+		bool Free();
 
 		/****** TopoDS_Shape::Free ******/
-		/****** md5 signature: fd04bdf9a77ff277e8a9c89a73733eba ******/
+		/****** md5 signature: e2160350a0744a99e1d82856d10b85d7 ******/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "
 Parameters
@@ -869,10 +895,10 @@ Description
 -----------
 Sets the free flag.
 ") Free;
-		void Free(Standard_Boolean theIsFree);
+		void Free(bool theIsFree);
 
 		/****** TopoDS_Shape::Infinite ******/
-		/****** md5 signature: 9f918e9fa7267ec7961ed78dd974f109 ******/
+		/****** md5 signature: 51036c1453a784ba0e353b843511fcfb ******/
 		%feature("compactdefaultargs") Infinite;
 		%feature("autodoc", "Return
 -------
@@ -882,10 +908,10 @@ Description
 -----------
 Returns the infinity flag.
 ") Infinite;
-		Standard_Boolean Infinite();
+		bool Infinite();
 
 		/****** TopoDS_Shape::Infinite ******/
-		/****** md5 signature: a2693ee14462a14ca45ed7b01f364159 ******/
+		/****** md5 signature: 7a7b249a9a512d73a3fa519626d593ab ******/
 		%feature("compactdefaultargs") Infinite;
 		%feature("autodoc", "
 Parameters
@@ -900,10 +926,10 @@ Description
 -----------
 Sets the infinity flag.
 ") Infinite;
-		void Infinite(Standard_Boolean theIsInfinite);
+		void Infinite(bool theIsInfinite);
 
 		/****** TopoDS_Shape::IsEqual ******/
-		/****** md5 signature: 9fcaa9df016676d3d7591d1fe151db2f ******/
+		/****** md5 signature: 175e2d1eb4d5fe227d1b8a0baa88036e ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -918,10 +944,10 @@ Description
 -----------
 Returns True if two shapes are equal, i.e. if they share the same TShape with the same Locations and Orientations.
 ") IsEqual;
-		Standard_Boolean IsEqual(const TopoDS_Shape & theOther);
+		bool IsEqual(const TopoDS_Shape & theOther);
 
 		/****** TopoDS_Shape::IsNotEqual ******/
-		/****** md5 signature: 1b49814ef251363cd9a95492cfdef6a8 ******/
+		/****** md5 signature: 18f52453c018314fb5180de924067d4d ******/
 		%feature("compactdefaultargs") IsNotEqual;
 		%feature("autodoc", "
 Parameters
@@ -936,10 +962,10 @@ Description
 -----------
 Negation of the IsEqual method.
 ") IsNotEqual;
-		Standard_Boolean IsNotEqual(const TopoDS_Shape & theOther);
+		bool IsNotEqual(const TopoDS_Shape & theOther);
 
 		/****** TopoDS_Shape::IsNull ******/
-		/****** md5 signature: a86f99f80f18afba475b30f6c686c6c8 ******/
+		/****** md5 signature: 0e28000fb6577df25ba1040393f4ad2e ******/
 		%feature("compactdefaultargs") IsNull;
 		%feature("autodoc", "Return
 -------
@@ -949,10 +975,10 @@ Description
 -----------
 Returns true if this shape is null. In other words, it references no underlying shape with the potential to be given a location and an orientation.
 ") IsNull;
-		Standard_Boolean IsNull();
+		bool IsNull();
 
 		/****** TopoDS_Shape::IsPartner ******/
-		/****** md5 signature: 4a5dce39f42efa7247850500468bd032 ******/
+		/****** md5 signature: 35596e99fe3d938282c74743c0ceef19 ******/
 		%feature("compactdefaultargs") IsPartner;
 		%feature("autodoc", "
 Parameters
@@ -967,10 +993,10 @@ Description
 -----------
 Returns True if two shapes are partners, i.e. if they share the same TShape. Locations and Orientations may differ.
 ") IsPartner;
-		Standard_Boolean IsPartner(const TopoDS_Shape & theOther);
+		bool IsPartner(const TopoDS_Shape & theOther);
 
 		/****** TopoDS_Shape::IsSame ******/
-		/****** md5 signature: ab65e9443b90d3a756824c7228ce0bb9 ******/
+		/****** md5 signature: bd63b8d24f7ca784ee360468237f79aa ******/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "
 Parameters
@@ -985,16 +1011,16 @@ Description
 -----------
 Returns True if two shapes are same, i.e. if they share the same TShape with the same Locations. Orientations may differ.
 ") IsSame;
-		Standard_Boolean IsSame(const TopoDS_Shape & theOther);
+		bool IsSame(const TopoDS_Shape & theOther);
 
 		/****** TopoDS_Shape::Located ******/
-		/****** md5 signature: 8ef42edc60c357e41b80cae67c6dcda1 ******/
+		/****** md5 signature: bc74ae155ac8b15d390d2f27dfc2f6eb ******/
 		%feature("compactdefaultargs") Located;
 		%feature("autodoc", "
 Parameters
 ----------
 theLoc: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_False)
+theRaiseExc: bool (optional, default to false)
 
 Return
 -------
@@ -1007,7 +1033,7 @@ Parameter theLoc the new local coordinate system.
 Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative. 
 Return: the located shape.
 ") Located;
-		TopoDS_Shape Located(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_False);
+		TopoDS_Shape Located(const TopLoc_Location & theLoc, const bool theRaiseExc = false);
 
 		/****** TopoDS_Shape::Location ******/
 		/****** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ******/
@@ -1023,13 +1049,13 @@ Returns the shape local coordinate system.
 		const TopLoc_Location & Location();
 
 		/****** TopoDS_Shape::Location ******/
-		/****** md5 signature: 463805b1fab502689e296230f94e53a5 ******/
+		/****** md5 signature: 379fba3ccd684238a683e7938ca3d27f ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
 ----------
 theLoc: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_False)
+theRaiseExc: bool (optional, default to false)
 
 Return
 -------
@@ -1041,10 +1067,10 @@ Sets the shape local coordinate system.
 Parameter theLoc the new local coordinate system. 
 Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative.
 ") Location;
-		void Location(const TopLoc_Location & theLoc, const Standard_Boolean theRaiseExc = Standard_False);
+		void Location(const TopLoc_Location & theLoc, const bool theRaiseExc = false);
 
 		/****** TopoDS_Shape::Locked ******/
-		/****** md5 signature: a47aa902e0d0df6fdbe782c3c7f2d1b5 ******/
+		/****** md5 signature: 7fad94d5537ac9eaaa4e37520eb10d6d ******/
 		%feature("compactdefaultargs") Locked;
 		%feature("autodoc", "Return
 -------
@@ -1054,10 +1080,10 @@ Description
 -----------
 Returns the locked flag.
 ") Locked;
-		Standard_Boolean Locked();
+		bool Locked();
 
 		/****** TopoDS_Shape::Locked ******/
-		/****** md5 signature: e4e0d1f6c3d0b8b33754ee4ca7b4ca88 ******/
+		/****** md5 signature: d1f2646bc1ad9b693571185a24e067e1 ******/
 		%feature("compactdefaultargs") Locked;
 		%feature("autodoc", "
 Parameters
@@ -1072,10 +1098,10 @@ Description
 -----------
 Sets the locked flag.
 ") Locked;
-		void Locked(Standard_Boolean theIsLocked);
+		void Locked(bool theIsLocked);
 
 		/****** TopoDS_Shape::Modified ******/
-		/****** md5 signature: 23f96a9ab7f36b9d00a752024e065b1e ******/
+		/****** md5 signature: 53f993bce6466d3bdaef2a58a829e904 ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "Return
 -------
@@ -1085,10 +1111,10 @@ Description
 -----------
 Returns the modification flag.
 ") Modified;
-		Standard_Boolean Modified();
+		bool Modified();
 
 		/****** TopoDS_Shape::Modified ******/
-		/****** md5 signature: 03454af83e34288052522e1c873bb443 ******/
+		/****** md5 signature: ed56e916f56a20484895d8d9f7d36c1f ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1103,16 +1129,16 @@ Description
 -----------
 Sets the modification flag.
 ") Modified;
-		void Modified(Standard_Boolean theIsModified);
+		void Modified(bool theIsModified);
 
 		/****** TopoDS_Shape::Move ******/
-		/****** md5 signature: 6b8a6067d69809a7e1a338e57303b45c ******/
+		/****** md5 signature: bcca2f6c01fbe5ae025c41a208024f5a ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_False)
+theRaiseExc: bool (optional, default to false)
 
 Return
 -------
@@ -1124,16 +1150,16 @@ Multiplies the Shape location by thePosition.
 Parameter thePosition the transformation to apply. 
 Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative.
 ") Move;
-		void Move(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_False);
+		void Move(const TopLoc_Location & thePosition, const bool theRaiseExc = false);
 
 		/****** TopoDS_Shape::Moved ******/
-		/****** md5 signature: ad19479b4be0d785dd4bb892860d9615 ******/
+		/****** md5 signature: 46cf176ca88a300bb6ede36aafd5ed1f ******/
 		%feature("compactdefaultargs") Moved;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: TopLoc_Location
-theRaiseExc: bool (optional, default to Standard_False)
+theRaiseExc: bool (optional, default to false)
 
 Return
 -------
@@ -1146,10 +1172,10 @@ Parameter thePosition the transformation to apply.
 Parameter theRaiseExc flag to raise exception in case of transformation with scale or negative. 
 Return: the moved shape.
 ") Moved;
-		TopoDS_Shape Moved(const TopLoc_Location & thePosition, const Standard_Boolean theRaiseExc = Standard_False);
+		TopoDS_Shape Moved(const TopLoc_Location & thePosition, const bool theRaiseExc = false);
 
 		/****** TopoDS_Shape::NbChildren ******/
-		/****** md5 signature: 112820d06ee986e20c4479ba5bfe3404 ******/
+		/****** md5 signature: da06f528cc1e528cd5eabc1b0eed4bdc ******/
 		%feature("compactdefaultargs") NbChildren;
 		%feature("autodoc", "Return
 -------
@@ -1160,7 +1186,7 @@ Description
 Returns the number of direct sub-shapes (children). 
 See also: TopoDS_Iterator for accessing sub-shapes.
 ") NbChildren;
-		Standard_Integer NbChildren();
+		int NbChildren();
 
 		/****** TopoDS_Shape::Nullify ******/
 		/****** md5 signature: bf958a8fb495dbcd033238b0232a20bc ******/
@@ -1176,7 +1202,7 @@ Destroys the reference to the underlying shape stored in this shape. As a result
 		void Nullify();
 
 		/****** TopoDS_Shape::Orientable ******/
-		/****** md5 signature: a4c7ff5e7b547070b53b5622df6b7763 ******/
+		/****** md5 signature: d101ce3bd26437ccc4f71dba7dd1f656 ******/
 		%feature("compactdefaultargs") Orientable;
 		%feature("autodoc", "Return
 -------
@@ -1186,10 +1212,10 @@ Description
 -----------
 Returns the orientability flag.
 ") Orientable;
-		Standard_Boolean Orientable();
+		bool Orientable();
 
 		/****** TopoDS_Shape::Orientable ******/
-		/****** md5 signature: 53dfd63caccd3cd09b3be20b223481d7 ******/
+		/****** md5 signature: 458561f7e4e695a4dccc1397eb778d84 ******/
 		%feature("compactdefaultargs") Orientable;
 		%feature("autodoc", "
 Parameters
@@ -1204,7 +1230,7 @@ Description
 -----------
 Sets the orientability flag.
 ") Orientable;
-		void Orientable(const Standard_Boolean theIsOrientable);
+		void Orientable(const bool theIsOrientable);
 
 		/****** TopoDS_Shape::Orientation ******/
 		/****** md5 signature: 03010048da537511bfd11160d3c898dc ******/
@@ -1334,9 +1360,10 @@ No available documentation.
 }
 %pythoncode {
 def __ne__(self, right):
-    if not isinstance(right, TopoDS_Shape):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
         return True
-    return self.__ne_wrapper__(right)
 }
 
 %extend{
@@ -1347,9 +1374,10 @@ def __ne__(self, right):
 }
 %pythoncode {
 def __eq__(self, right):
-    if not isinstance(right, TopoDS_Shape):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
         return False
-    return self.__eq_wrapper__(right)
 }
 };
 
@@ -1387,8 +1415,54 @@ def __eq__(self, right):
 %nodefaultctor TopoDS_TShape;
 class TopoDS_TShape : public Standard_Transient {
 	public:
+/* public enums */
+enum BitLayout {
+	Bits_ShapeType_Mask = 15,
+	Bits_ShapeType_Shift = 0,
+	Bit_Free = 16,
+	Bit_Modified = 32,
+	Bit_Checked = 64,
+	Bit_Orientable = 128,
+	Bit_Closed = 256,
+	Bit_Infinite = 512,
+	Bit_Convex = 1024,
+	Bit_Locked = 2048,
+	Bits_Reserved = 61440,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class BitLayout(IntEnum):
+	Bits_ShapeType_Mask = 15
+	Bits_ShapeType_Shift = 0
+	Bit_Free = 16
+	Bit_Modified = 32
+	Bit_Checked = 64
+	Bit_Orientable = 128
+	Bit_Closed = 256
+	Bit_Infinite = 512
+	Bit_Convex = 1024
+	Bit_Locked = 2048
+	Bits_Reserved = 61440
+Bits_ShapeType_Mask = BitLayout.Bits_ShapeType_Mask
+Bits_ShapeType_Shift = BitLayout.Bits_ShapeType_Shift
+Bit_Free = BitLayout.Bit_Free
+Bit_Modified = BitLayout.Bit_Modified
+Bit_Checked = BitLayout.Bit_Checked
+Bit_Orientable = BitLayout.Bit_Orientable
+Bit_Closed = BitLayout.Bit_Closed
+Bit_Infinite = BitLayout.Bit_Infinite
+Bit_Convex = BitLayout.Bit_Convex
+Bit_Locked = BitLayout.Bit_Locked
+Bits_Reserved = BitLayout.Bits_Reserved
+};
+/* end python proxy for enums */
+
 		/****** TopoDS_TShape::Checked ******/
-		/****** md5 signature: a8b84838b155e0f2c75ceed32947100e ******/
+		/****** md5 signature: 2c07882d02c6f5f348eefaae3fa68bd2 ******/
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "Return
 -------
@@ -1398,10 +1472,10 @@ Description
 -----------
 Returns the checked flag.
 ") Checked;
-		Standard_Boolean Checked();
+		bool Checked();
 
 		/****** TopoDS_TShape::Checked ******/
-		/****** md5 signature: 6f7fe475bfb2ebdcad97ddf64dd0534c ******/
+		/****** md5 signature: 445e74a4869cd672458c716080dbd7db ******/
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "
 Parameters
@@ -1416,10 +1490,10 @@ Description
 -----------
 Sets the checked flag.
 ") Checked;
-		void Checked(Standard_Boolean theIsChecked);
+		void Checked(bool theIsChecked);
 
 		/****** TopoDS_TShape::Closed ******/
-		/****** md5 signature: f94551c898fe323903f1d14861bbe901 ******/
+		/****** md5 signature: 8fa7f82a3a97ae7fb9544764f500c779 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -1429,10 +1503,10 @@ Description
 -----------
 Returns the closedness flag.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** TopoDS_TShape::Closed ******/
-		/****** md5 signature: ff8619fc236f7435a92bdca9a0d16193 ******/
+		/****** md5 signature: 1c41094cb4439db74691d2405f4d2170 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -1447,10 +1521,10 @@ Description
 -----------
 Sets the closedness flag.
 ") Closed;
-		void Closed(Standard_Boolean theIsClosed);
+		void Closed(bool theIsClosed);
 
 		/****** TopoDS_TShape::Convex ******/
-		/****** md5 signature: efe9b0c153a7f00d69634882071b034b ******/
+		/****** md5 signature: ef2f35807a4db500da6f2e059899cd78 ******/
 		%feature("compactdefaultargs") Convex;
 		%feature("autodoc", "Return
 -------
@@ -1460,10 +1534,10 @@ Description
 -----------
 Returns the convexness flag.
 ") Convex;
-		Standard_Boolean Convex();
+		bool Convex();
 
 		/****** TopoDS_TShape::Convex ******/
-		/****** md5 signature: 2680b89fa5162759d8c7800c264f8f42 ******/
+		/****** md5 signature: 353d14580425f500fb7f35e700022b41 ******/
 		%feature("compactdefaultargs") Convex;
 		%feature("autodoc", "
 Parameters
@@ -1478,7 +1552,7 @@ Description
 -----------
 Sets the convexness flag.
 ") Convex;
-		void Convex(Standard_Boolean theIsConvex);
+		void Convex(bool theIsConvex);
 
 
         /****************** DumpJson ******************/
@@ -1515,7 +1589,7 @@ Returns a copy of the TShape with no sub-shapes.
 		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
 
 		/****** TopoDS_TShape::Free ******/
-		/****** md5 signature: 0f8a4dc099aac04a52ab47593952a756 ******/
+		/****** md5 signature: f8b5cf875d8d242721aa3ec2dccd77b6 ******/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "Return
 -------
@@ -1525,10 +1599,10 @@ Description
 -----------
 Returns the free flag.
 ") Free;
-		Standard_Boolean Free();
+		bool Free();
 
 		/****** TopoDS_TShape::Free ******/
-		/****** md5 signature: fd04bdf9a77ff277e8a9c89a73733eba ******/
+		/****** md5 signature: e2160350a0744a99e1d82856d10b85d7 ******/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "
 Parameters
@@ -1543,10 +1617,10 @@ Description
 -----------
 Sets the free flag.
 ") Free;
-		void Free(Standard_Boolean theIsFree);
+		void Free(bool theIsFree);
 
 		/****** TopoDS_TShape::Infinite ******/
-		/****** md5 signature: 9f918e9fa7267ec7961ed78dd974f109 ******/
+		/****** md5 signature: 51036c1453a784ba0e353b843511fcfb ******/
 		%feature("compactdefaultargs") Infinite;
 		%feature("autodoc", "Return
 -------
@@ -1556,10 +1630,10 @@ Description
 -----------
 Returns the infinity flag.
 ") Infinite;
-		Standard_Boolean Infinite();
+		bool Infinite();
 
 		/****** TopoDS_TShape::Infinite ******/
-		/****** md5 signature: a2693ee14462a14ca45ed7b01f364159 ******/
+		/****** md5 signature: 7a7b249a9a512d73a3fa519626d593ab ******/
 		%feature("compactdefaultargs") Infinite;
 		%feature("autodoc", "
 Parameters
@@ -1574,10 +1648,10 @@ Description
 -----------
 Sets the infinity flag.
 ") Infinite;
-		void Infinite(Standard_Boolean theIsInfinite);
+		void Infinite(bool theIsInfinite);
 
 		/****** TopoDS_TShape::Locked ******/
-		/****** md5 signature: a47aa902e0d0df6fdbe782c3c7f2d1b5 ******/
+		/****** md5 signature: 7fad94d5537ac9eaaa4e37520eb10d6d ******/
 		%feature("compactdefaultargs") Locked;
 		%feature("autodoc", "Return
 -------
@@ -1587,10 +1661,10 @@ Description
 -----------
 Returns the locked flag.
 ") Locked;
-		Standard_Boolean Locked();
+		bool Locked();
 
 		/****** TopoDS_TShape::Locked ******/
-		/****** md5 signature: e4e0d1f6c3d0b8b33754ee4ca7b4ca88 ******/
+		/****** md5 signature: d1f2646bc1ad9b693571185a24e067e1 ******/
 		%feature("compactdefaultargs") Locked;
 		%feature("autodoc", "
 Parameters
@@ -1605,10 +1679,10 @@ Description
 -----------
 Sets the locked flag.
 ") Locked;
-		void Locked(Standard_Boolean theIsLocked);
+		void Locked(bool theIsLocked);
 
 		/****** TopoDS_TShape::Modified ******/
-		/****** md5 signature: 23f96a9ab7f36b9d00a752024e065b1e ******/
+		/****** md5 signature: 53f993bce6466d3bdaef2a58a829e904 ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "Return
 -------
@@ -1618,10 +1692,10 @@ Description
 -----------
 Returns the modification flag.
 ") Modified;
-		Standard_Boolean Modified();
+		bool Modified();
 
 		/****** TopoDS_TShape::Modified ******/
-		/****** md5 signature: 03454af83e34288052522e1c873bb443 ******/
+		/****** md5 signature: ed56e916f56a20484895d8d9f7d36c1f ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1636,10 +1710,10 @@ Description
 -----------
 Sets the modification flag.
 ") Modified;
-		void Modified(Standard_Boolean theIsModified);
+		void Modified(bool theIsModified);
 
 		/****** TopoDS_TShape::NbChildren ******/
-		/****** md5 signature: 112820d06ee986e20c4479ba5bfe3404 ******/
+		/****** md5 signature: da06f528cc1e528cd5eabc1b0eed4bdc ******/
 		%feature("compactdefaultargs") NbChildren;
 		%feature("autodoc", "Return
 -------
@@ -1650,10 +1724,10 @@ Description
 Returns the number of direct sub-shapes (children). 
 See also: TopoDS_Iterator for accessing sub-shapes.
 ") NbChildren;
-		Standard_Integer NbChildren();
+		int NbChildren();
 
 		/****** TopoDS_TShape::Orientable ******/
-		/****** md5 signature: a4c7ff5e7b547070b53b5622df6b7763 ******/
+		/****** md5 signature: d101ce3bd26437ccc4f71dba7dd1f656 ******/
 		%feature("compactdefaultargs") Orientable;
 		%feature("autodoc", "Return
 -------
@@ -1663,10 +1737,10 @@ Description
 -----------
 Returns the orientability flag.
 ") Orientable;
-		Standard_Boolean Orientable();
+		bool Orientable();
 
 		/****** TopoDS_TShape::Orientable ******/
-		/****** md5 signature: 85ab9cd6de8af23c76a0b0e4dc4b2ac2 ******/
+		/****** md5 signature: 77ee69d3f6da93e3ee34994bfa4e2277 ******/
 		%feature("compactdefaultargs") Orientable;
 		%feature("autodoc", "
 Parameters
@@ -1681,10 +1755,10 @@ Description
 -----------
 Sets the orientability flag.
 ") Orientable;
-		void Orientable(Standard_Boolean theIsOrientable);
+		void Orientable(bool theIsOrientable);
 
 		/****** TopoDS_TShape::ShapeType ******/
-		/****** md5 signature: bc3cf16d2be321cde120394409d92805 ******/
+		/****** md5 signature: 785120710559c16ce1f4c926b5d434aa ******/
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "Return
 -------
@@ -1692,9 +1766,9 @@ TopAbs_ShapeEnum
 
 Description
 -----------
-Returns the type as a term of the ShapeEnum enum: VERTEX, EDGE, WIRE, FACE, ....
+Returns the type as a term of the ShapeEnum enum: VERTEX, EDGE, WIRE, FACE, SHELL, SOLID, COMPSOLID, COMPOUND. The type is embedded in the lower 4 bits of the state.
 ") ShapeType;
-		virtual TopAbs_ShapeEnum ShapeType();
+		TopAbs_ShapeEnum ShapeType();
 
 };
 
@@ -1740,7 +1814,7 @@ Returns the type as a term of the ShapeEnum enum: VERTEX, EDGE, WIRE, FACE, ....
 class TopoDS_CompSolid : public TopoDS_Shape {
 	public:
 		/****** TopoDS_CompSolid::TopoDS_CompSolid ******/
-		/****** md5 signature: 4e70b1dcdd85f3c4a5879f40c5c14bf3 ******/
+		/****** md5 signature: e9e76d886036416fb17c51d7f5ee3e85 ******/
 		%feature("compactdefaultargs") TopoDS_CompSolid;
 		%feature("autodoc", "Return
 -------
@@ -1767,7 +1841,7 @@ Constructs an Undefined CompSolid.
 class TopoDS_Compound : public TopoDS_Shape {
 	public:
 		/****** TopoDS_Compound::TopoDS_Compound ******/
-		/****** md5 signature: 62e9eeb255aba3f819f1225fe00186c5 ******/
+		/****** md5 signature: 29479cd498d9f2806bd78e1034a7107d ******/
 		%feature("compactdefaultargs") TopoDS_Compound;
 		%feature("autodoc", "Return
 -------
@@ -1794,7 +1868,7 @@ Constructs an Undefined Compound.
 class TopoDS_Edge : public TopoDS_Shape {
 	public:
 		/****** TopoDS_Edge::TopoDS_Edge ******/
-		/****** md5 signature: 9416e6e6aa14e71109ceb91046f13c31 ******/
+		/****** md5 signature: f0fae5c3c808d0873347a3993b3cfbcb ******/
 		%feature("compactdefaultargs") TopoDS_Edge;
 		%feature("autodoc", "Return
 -------
@@ -1821,7 +1895,7 @@ Undefined Edge.
 class TopoDS_Face : public TopoDS_Shape {
 	public:
 		/****** TopoDS_Face::TopoDS_Face ******/
-		/****** md5 signature: c7ffccf9e49ec92b2a176332a9b1d12e ******/
+		/****** md5 signature: f0657bc91b7eb95e3643fbf8d467146e ******/
 		%feature("compactdefaultargs") TopoDS_Face;
 		%feature("autodoc", "Return
 -------
@@ -1848,7 +1922,7 @@ Undefined Face.
 class TopoDS_Shell : public TopoDS_Shape {
 	public:
 		/****** TopoDS_Shell::TopoDS_Shell ******/
-		/****** md5 signature: e86f38971b810d1bc2e49dcbd1f86083 ******/
+		/****** md5 signature: fa0bf31cd871bd5f2ade34a6ae12570b ******/
 		%feature("compactdefaultargs") TopoDS_Shell;
 		%feature("autodoc", "Return
 -------
@@ -1875,7 +1949,7 @@ Constructs an Undefined Shell.
 class TopoDS_Solid : public TopoDS_Shape {
 	public:
 		/****** TopoDS_Solid::TopoDS_Solid ******/
-		/****** md5 signature: aef7a16add6d43f5c6e263c45c82e991 ******/
+		/****** md5 signature: 026914168a023817cbbdf1ee0ebb897e ******/
 		%feature("compactdefaultargs") TopoDS_Solid;
 		%feature("autodoc", "Return
 -------
@@ -1915,7 +1989,7 @@ Creates an empty TCompSolid.
 		 TopoDS_TCompSolid();
 
 		/****** TopoDS_TCompSolid::EmptyCopy ******/
-		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -1926,19 +2000,6 @@ Description
 Returns an empty TCompSolid.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
-
-		/****** TopoDS_TCompSolid::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-returns COMPSOLID.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
 
 };
 
@@ -1970,7 +2031,7 @@ Creates an empty TCompound.
 		 TopoDS_TCompound();
 
 		/****** TopoDS_TCompound::EmptyCopy ******/
-		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -1981,19 +2042,6 @@ Description
 Returns an empty TCompound.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
-
-		/****** TopoDS_TCompound::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-Returns COMPOUND.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
 
 };
 
@@ -2012,18 +2060,18 @@ Returns COMPOUND.
 %nodefaultctor TopoDS_TEdge;
 class TopoDS_TEdge : public TopoDS_TShape {
 	public:
-		/****** TopoDS_TEdge::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
+		/****** TopoDS_TEdge::EmptyCopy ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
+		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
-TopAbs_ShapeEnum
+opencascade::handle<TopoDS_TShape>
 
 Description
 -----------
-Returns EDGE.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
+Returns an empty TEdge.
+") EmptyCopy;
+		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
 };
 
@@ -2055,7 +2103,7 @@ Creates an empty TFace.
 		 TopoDS_TFace();
 
 		/****** TopoDS_TFace::EmptyCopy ******/
-		/****** md5 signature: 3d9756f12a98e8eef17d86b0c132771f ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2065,20 +2113,7 @@ Description
 -----------
 Returns an empty TFace.
 ") EmptyCopy;
-		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
-
-		/****** TopoDS_TFace::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-returns FACE.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
+		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
 };
 
@@ -2110,7 +2145,7 @@ Creates an empty TShell.
 		 TopoDS_TShell();
 
 		/****** TopoDS_TShell::EmptyCopy ******/
-		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2121,19 +2156,6 @@ Description
 Returns an empty TShell.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
-
-		/****** TopoDS_TShell::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-Returns SHELL.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
 
 };
 
@@ -2165,7 +2187,7 @@ Creates an empty TSolid.
 		 TopoDS_TSolid();
 
 		/****** TopoDS_TSolid::EmptyCopy ******/
-		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2176,19 +2198,6 @@ Description
 Returns an empty TSolid.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
-
-		/****** TopoDS_TSolid::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-returns SOLID.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
 
 };
 
@@ -2207,19 +2216,6 @@ returns SOLID.
 %nodefaultctor TopoDS_TVertex;
 class TopoDS_TVertex : public TopoDS_TShape {
 	public:
-		/****** TopoDS_TVertex::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-Returns VERTEX.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
-
 };
 
 
@@ -2250,7 +2246,7 @@ Creates an empty TWire.
 		 TopoDS_TWire();
 
 		/****** TopoDS_TWire::EmptyCopy ******/
-		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
+		/****** md5 signature: 4efe27e8f9e1b2193e247b39035abef8 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2261,19 +2257,6 @@ Description
 Returns an empty TWire.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
-
-		/****** TopoDS_TWire::ShapeType ******/
-		/****** md5 signature: faceece8da45e6450f36fc31be8b3c6a ******/
-		%feature("compactdefaultargs") ShapeType;
-		%feature("autodoc", "Return
--------
-TopAbs_ShapeEnum
-
-Description
------------
-Returns WIRE.
-") ShapeType;
-		TopAbs_ShapeEnum ShapeType();
 
 };
 
@@ -2294,7 +2277,7 @@ class TopoDS_Vertex : public TopoDS_Shape {
 		%feature("autodoc", "1");
 		TopoDS_Vertex(const TopoDS_Vertex arg0);
 		/****** TopoDS_Vertex::TopoDS_Vertex ******/
-		/****** md5 signature: a529b84382b7576bf953dad316a4b27f ******/
+		/****** md5 signature: c4fe255b3e40f621a1ba4f74e8502f1f ******/
 		%feature("compactdefaultargs") TopoDS_Vertex;
 		%feature("autodoc", "Return
 -------
@@ -2321,7 +2304,7 @@ Undefined Vertex.
 class TopoDS_Wire : public TopoDS_Shape {
 	public:
 		/****** TopoDS_Wire::TopoDS_Wire ******/
-		/****** md5 signature: 5bad3ab78b3030254c7036e91e02efc6 ******/
+		/****** md5 signature: 10ae0691166c9ef1902e406871060a03 ******/
 		%feature("compactdefaultargs") TopoDS_Wire;
 		%feature("autodoc", "Return
 -------

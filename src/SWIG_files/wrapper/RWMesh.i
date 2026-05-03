@@ -48,10 +48,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwmesh.html"
 #include<TCollection_module.hxx>
 #include<TDocStd_module.hxx>
 #include<gp_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TopoDS_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<Image_module.hxx>
 #include<Quantity_module.hxx>
@@ -77,6 +75,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwmesh.html"
 #include<SelectMgr_module.hxx>
 #include<PCDM_module.hxx>
 #include<TShort_module.hxx>
+#include<Graphic3d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -88,10 +87,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwmesh.html"
 %import TCollection.i
 %import TDocStd.i
 %import gp.i
-%import TColStd.i
 %import Message.i
 %import TopoDS.i
-%import Graphic3d.i
 %import XCAFPrs.i
 %import Image.i
 %import Quantity.i
@@ -183,11 +180,9 @@ RWMesh_NameFormat_ProductAndInstanceAndOcaf = RWMesh_NameFormat.RWMesh_NameForma
 /* end handles declaration */
 
 /* templates */
-%template(RWMesh_NodeAttributeMap) NCollection_DataMap<TopoDS_Shape,RWMesh_NodeAttributes,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TopoDS_Shape, RWMesh_NodeAttributes, TopTools_ShapeMapHasher> RWMesh_NodeAttributeMap;
 /* end typedefs declaration */
 
 /***************
@@ -293,7 +288,7 @@ Return the list of complementary files - external references (textures, data, et
 		const NCollection_IndexedMap<TCollection_AsciiString> & ExternalFiles();
 
 		/****** RWMesh_CafReader::ExtraStatus ******/
-		/****** md5 signature: 4be6e997d4880e0ab8cc27428c8f0f54 ******/
+		/****** md5 signature: c6cb1e1a17350f03fc572be27ff2bcd2 ******/
 		%feature("compactdefaultargs") ExtraStatus;
 		%feature("autodoc", "Return
 -------
@@ -304,7 +299,7 @@ Description
 Return extended status flags. 
 See also: RWMesh_CafReaderStatusEx enumeration.
 ") ExtraStatus;
-		Standard_Integer ExtraStatus();
+		int ExtraStatus();
 
 		/****** RWMesh_CafReader::FileCoordinateSystem ******/
 		/****** md5 signature: d72ac3620d44fe58451d339df9438e6a ******/
@@ -320,20 +315,20 @@ Return file origin coordinate system; can be UNDEFINED, which means no conversio
 		const gp_Ax3 FileCoordinateSystem();
 
 		/****** RWMesh_CafReader::FileLengthUnit ******/
-		/****** md5 signature: 14fd56cee1352d70dddb846bfcfdde08 ******/
+		/****** md5 signature: 69623e66ab576237e3deb78c9232fda2 ******/
 		%feature("compactdefaultargs") FileLengthUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return the length unit to convert from while reading the file, defined as scale factor for m (meters). Can be undefined (-1.0) if file format is unitless.
 ") FileLengthUnit;
-		Standard_Real FileLengthUnit();
+		double FileLengthUnit();
 
 		/****** RWMesh_CafReader::HasFileCoordinateSystem ******/
-		/****** md5 signature: da4cd60661aeb88dd4b9cedc5dc152b0 ******/
+		/****** md5 signature: 241b9a7765877b3a77d995565c8f4307 ******/
 		%feature("compactdefaultargs") HasFileCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -343,10 +338,10 @@ Description
 -----------
 Return True if file origin coordinate system has been defined.
 ") HasFileCoordinateSystem;
-		Standard_Boolean HasFileCoordinateSystem();
+		bool HasFileCoordinateSystem();
 
 		/****** RWMesh_CafReader::HasSystemCoordinateSystem ******/
-		/****** md5 signature: b112fe205acda6f2c67c5b6f44fb07f7 ******/
+		/****** md5 signature: b35e4a78a922c5f967f5ca9533501cd1 ******/
 		%feature("compactdefaultargs") HasSystemCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -356,10 +351,10 @@ Description
 -----------
 Return True if system coordinate system has been defined; False by default.
 ") HasSystemCoordinateSystem;
-		Standard_Boolean HasSystemCoordinateSystem();
+		bool HasSystemCoordinateSystem();
 
 		/****** RWMesh_CafReader::MemoryLimitMiB ******/
-		/****** md5 signature: 253eb601a59ae112d72316a149f20351 ******/
+		/****** md5 signature: ef683e2b54c28fa83e20ddc72500160c ******/
 		%feature("compactdefaultargs") MemoryLimitMiB;
 		%feature("autodoc", "Return
 -------
@@ -369,20 +364,20 @@ Description
 -----------
 Return memory usage limit in MiB, -1 by default which means no limit.
 ") MemoryLimitMiB;
-		Standard_Integer MemoryLimitMiB();
+		int MemoryLimitMiB();
 
 		/****** RWMesh_CafReader::Metadata ******/
-		/****** md5 signature: e788e4dbc1ee17e53751666b1c7a1403 ******/
+		/****** md5 signature: 6d5e574915076e887d2a87077e35b33a ******/
 		%feature("compactdefaultargs") Metadata;
 		%feature("autodoc", "Return
 -------
-TColStd_IndexedDataMapOfStringString
+NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Description
 -----------
 Return metadata map.
 ") Metadata;
-		const TColStd_IndexedDataMapOfStringString & Metadata();
+		const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & Metadata();
 
 		/****** RWMesh_CafReader::Perform ******/
 		/****** md5 signature: fb9d26fc55229f4ce3ada0d70bce287b ******/
@@ -424,7 +419,7 @@ Read the data from specified file.
 		bool Perform(std::istream & theStream, const Message_ProgressRange & theProgress, TCollection_AsciiString theFile = "");
 
 		/****** RWMesh_CafReader::ProbeHeader ******/
-		/****** md5 signature: 62d0d942adff0fd3f5d25c775b2e2dde ******/
+		/****** md5 signature: ed3558cf6dad3332f897f54e7f9aafff ******/
 		%feature("compactdefaultargs") ProbeHeader;
 		%feature("autodoc", "
 Parameters
@@ -440,10 +435,10 @@ Description
 -----------
 Open stream and pass it to ProbeHeader method.
 ") ProbeHeader;
-		Standard_Boolean ProbeHeader(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool ProbeHeader(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWMesh_CafReader::ProbeHeader ******/
-		/****** md5 signature: 2c51efd9dc4fbfa64c12b5e56a4545c2 ******/
+		/****** md5 signature: 7129c5064bf9dd25990d60adb262b8f9 ******/
 		%feature("compactdefaultargs") ProbeHeader;
 		%feature("autodoc", "
 Parameters
@@ -460,7 +455,7 @@ Description
 -----------
 Read the header data from specified file without reading entire model. The main purpose is collecting metadata and external references - for copying model into a new location, for example. Can be NOT implemented (unsupported by format / reader).
 ") ProbeHeader;
-		Standard_Boolean ProbeHeader(std::istream & theStream, TCollection_AsciiString theFile = "", const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool ProbeHeader(std::istream & theStream, TCollection_AsciiString theFile = "", const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWMesh_CafReader::RootPrefix ******/
 		/****** md5 signature: 23690698ed70038f8be604f633be3713 ******/
@@ -548,12 +543,12 @@ Set (override) file origin coordinate system to perform conversion during read.
 		void SetFileCoordinateSystem(RWMesh_CoordinateSystem theCS);
 
 		/****** RWMesh_CafReader::SetFileLengthUnit ******/
-		/****** md5 signature: 24dc22ac228a82196016ff9b95bad737 ******/
+		/****** md5 signature: 3f520ff3033f14cd8029caae52cc94f2 ******/
 		%feature("compactdefaultargs") SetFileLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnits: float
+theUnits: double
 
 Return
 -------
@@ -563,10 +558,10 @@ Description
 -----------
 Set (override) file length units to convert from while reading the file, defined as scale factor for m (meters).
 ") SetFileLengthUnit;
-		void SetFileLengthUnit(Standard_Real theUnits);
+		void SetFileLengthUnit(double theUnits);
 
 		/****** RWMesh_CafReader::SetFillIncompleteDocument ******/
-		/****** md5 signature: c6d0115c05694466da17a9288ba319c3 ******/
+		/****** md5 signature: 34366829a692285bac912c3ce4c3d6cd ******/
 		%feature("compactdefaultargs") SetFillIncompleteDocument;
 		%feature("autodoc", "
 Parameters
@@ -581,10 +576,10 @@ Description
 -----------
 Set flag allowing partially read file content to be put into the XDE document.
 ") SetFillIncompleteDocument;
-		void SetFillIncompleteDocument(Standard_Boolean theToFillIncomplete);
+		void SetFillIncompleteDocument(bool theToFillIncomplete);
 
 		/****** RWMesh_CafReader::SetMemoryLimitMiB ******/
-		/****** md5 signature: 8047ea1bc715ccac147f78824b0ea73a ******/
+		/****** md5 signature: ccff5353bda3e934ec24c37243281513 ******/
 		%feature("compactdefaultargs") SetMemoryLimitMiB;
 		%feature("autodoc", "
 Parameters
@@ -599,7 +594,7 @@ Description
 -----------
 Set memory usage limit in MiB; can be ignored by reader implementation!.
 ") SetMemoryLimitMiB;
-		void SetMemoryLimitMiB(Standard_Integer theLimitMiB);
+		void SetMemoryLimitMiB(int theLimitMiB);
 
 		/****** RWMesh_CafReader::SetRootPrefix ******/
 		/****** md5 signature: 657f534b70513a001e6c397bdb5a0325 ******/
@@ -656,12 +651,12 @@ Set system origin coordinate system to perform conversion into during read.
 		void SetSystemCoordinateSystem(RWMesh_CoordinateSystem theCS);
 
 		/****** RWMesh_CafReader::SetSystemLengthUnit ******/
-		/****** md5 signature: 5f3c8fb3e46edd8048ef8a61eaf32fed ******/
+		/****** md5 signature: 120534797eb54cdefcc1ad5b3255c962 ******/
 		%feature("compactdefaultargs") SetSystemLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnits: float
+theUnits: double
 
 Return
 -------
@@ -671,7 +666,7 @@ Description
 -----------
 Set system length units to convert into while reading the file, defined as scale factor for m (meters).
 ") SetSystemLengthUnit;
-		void SetSystemLengthUnit(Standard_Real theUnits);
+		void SetSystemLengthUnit(double theUnits);
 
 		/****** RWMesh_CafReader::SingleShape ******/
 		/****** md5 signature: 3346c14111103ab685485d1080bf09aa ******/
@@ -700,20 +695,20 @@ Return system coordinate system; UNDEFINED by default, which means that no conve
 		const gp_Ax3 SystemCoordinateSystem();
 
 		/****** RWMesh_CafReader::SystemLengthUnit ******/
-		/****** md5 signature: 649d8789931f8f7ac327c46ab7779ce6 ******/
+		/****** md5 signature: 8841ea66d595f7cf1f13f1eb6d19f378 ******/
 		%feature("compactdefaultargs") SystemLengthUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return the length unit to convert into while reading the file, defined as scale factor for m (meters); -1.0 by default, which means that NO conversion will be applied.
 ") SystemLengthUnit;
-		Standard_Real SystemLengthUnit();
+		double SystemLengthUnit();
 
 		/****** RWMesh_CafReader::ToFillIncompleteDocument ******/
-		/****** md5 signature: cecf92317828330259cbb2f292c7318f ******/
+		/****** md5 signature: 4676fbf660be3a7b27c65f39b033553c ******/
 		%feature("compactdefaultargs") ToFillIncompleteDocument;
 		%feature("autodoc", "Return
 -------
@@ -724,7 +719,7 @@ Description
 Flag indicating if partially read file content should be put into the XDE document, True by default. //! Partial read means unexpected end of file, critical parsing syntax errors in the middle of file, or reached memory limit indicated by performMesh() returning False. Partial read allows importing a model even in case of formal reading failure, so that it will be up to user to decide if processed data has any value. //! In case of partial read (performMesh() returns False, but there are some data that could be put into document), Perform() will return True and result flag will have failure bit set. 
 See also: MemoryLimitMiB(), ExtraStatus().
 ") ToFillIncompleteDocument;
-		Standard_Boolean ToFillIncompleteDocument();
+		bool ToFillIncompleteDocument();
 
 };
 
@@ -756,7 +751,7 @@ Empty constructor.
 		 RWMesh_CoordinateSystemConverter();
 
 		/****** RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem ******/
-		/****** md5 signature: 74c9b0dd8f1c4c5d552747fc4d3ea778 ******/
+		/****** md5 signature: 4225e54243633d122569d23d483d6532 ******/
 		%feature("compactdefaultargs") HasInputCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -766,10 +761,10 @@ Description
 -----------
 Return True if source coordinate system has been set; False by default.
 ") HasInputCoordinateSystem;
-		Standard_Boolean HasInputCoordinateSystem();
+		bool HasInputCoordinateSystem();
 
 		/****** RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem ******/
-		/****** md5 signature: 504c950bf18befad9824436f1fe538e0 ******/
+		/****** md5 signature: b93b9282392c0c7f99748d18c9daeab1 ******/
 		%feature("compactdefaultargs") HasOutputCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -779,18 +774,18 @@ Description
 -----------
 Return True if destination coordinate system has been set; False by default.
 ") HasOutputCoordinateSystem;
-		Standard_Boolean HasOutputCoordinateSystem();
+		bool HasOutputCoordinateSystem();
 
 		/****** RWMesh_CoordinateSystemConverter::Init ******/
-		/****** md5 signature: 2d7f0ece7e5684e591c591cd3a988934 ******/
+		/****** md5 signature: 905ac8981d1e1c41dad4c004d8437f97 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theInputSystem: gp_Ax3
-theInputLengthUnit: float
+theInputLengthUnit: double
 theOutputSystem: gp_Ax3
-theOutputLengthUnit: float
+theOutputLengthUnit: double
 
 Return
 -------
@@ -800,7 +795,7 @@ Description
 -----------
 Initialize transformation.
 ") Init;
-		void Init(const gp_Ax3 & theInputSystem, Standard_Real theInputLengthUnit, const gp_Ax3 & theOutputSystem, Standard_Real theOutputLengthUnit);
+		void Init(const gp_Ax3 & theInputSystem, double theInputLengthUnit, const gp_Ax3 & theOutputSystem, double theOutputLengthUnit);
 
 		/****** RWMesh_CoordinateSystemConverter::InputCoordinateSystem ******/
 		/****** md5 signature: 3f7a2866294a453a53ad901a303d263e ******/
@@ -816,20 +811,20 @@ Source coordinate system; UNDEFINED by default.
 		const gp_Ax3 InputCoordinateSystem();
 
 		/****** RWMesh_CoordinateSystemConverter::InputLengthUnit ******/
-		/****** md5 signature: e32c18515dffaccbac8950fe43b8f4fa ******/
+		/****** md5 signature: ae7ac9b7ed13eb91155f75f641299a6e ******/
 		%feature("compactdefaultargs") InputLengthUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return source length units, defined as scale factor to m (meters). -1.0 by default, which means that NO conversion will be applied (regardless output length unit).
 ") InputLengthUnit;
-		Standard_Real InputLengthUnit();
+		double InputLengthUnit();
 
 		/****** RWMesh_CoordinateSystemConverter::IsEmpty ******/
-		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
+		/****** md5 signature: 70a41d5fe65955a28167088305fc6991 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -839,7 +834,7 @@ Description
 -----------
 Return True if there is no transformation (target and current coordinates systems are same).
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** RWMesh_CoordinateSystemConverter::OutputCoordinateSystem ******/
 		/****** md5 signature: 68af1e5a34cda818e1f3588e3a079334 ******/
@@ -855,17 +850,17 @@ Destination coordinate system; UNDEFINED by default.
 		const gp_Ax3 OutputCoordinateSystem();
 
 		/****** RWMesh_CoordinateSystemConverter::OutputLengthUnit ******/
-		/****** md5 signature: 0ae119c03ebef2a4d3b8df1aaeb82d1e ******/
+		/****** md5 signature: 8e9d00cfdc0765f70e637b00f5a68493 ******/
 		%feature("compactdefaultargs") OutputLengthUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return destination length units, defined as scale factor to m (meters). -1.0 by default, which means that NO conversion will be applied (regardless input length unit).
 ") OutputLengthUnit;
-		Standard_Real OutputLengthUnit();
+		double OutputLengthUnit();
 
 		/****** RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem ******/
 		/****** md5 signature: db01175e9c17f68ee81a4c63910ceefc ******/
@@ -904,12 +899,12 @@ Set source coordinate system.
 		void SetInputCoordinateSystem(RWMesh_CoordinateSystem theSysFrom);
 
 		/****** RWMesh_CoordinateSystemConverter::SetInputLengthUnit ******/
-		/****** md5 signature: 8e0d5c594e5311f5a551042dec14a259 ******/
+		/****** md5 signature: 746764e2382eb92b323e7d0be8ad5c8f ******/
 		%feature("compactdefaultargs") SetInputLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theInputScale: float
+theInputScale: double
 
 Return
 -------
@@ -919,7 +914,7 @@ Description
 -----------
 Set source length units as scale factor to m (meters).
 ") SetInputLengthUnit;
-		void SetInputLengthUnit(Standard_Real theInputScale);
+		void SetInputLengthUnit(double theInputScale);
 
 		/****** RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem ******/
 		/****** md5 signature: de7d4cbdce52865d84d9834d06c3af01 ******/
@@ -958,12 +953,12 @@ Set destination coordinate system.
 		void SetOutputCoordinateSystem(RWMesh_CoordinateSystem theSysTo);
 
 		/****** RWMesh_CoordinateSystemConverter::SetOutputLengthUnit ******/
-		/****** md5 signature: 9f51cf7920399e3b32715de9cc52e029 ******/
+		/****** md5 signature: 5258349109e84d76697fc6e926ebc0f0 ******/
 		%feature("compactdefaultargs") SetOutputLengthUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theOutputScale: float
+theOutputScale: double
 
 Return
 -------
@@ -973,7 +968,7 @@ Description
 -----------
 Set destination length units as scale factor to m (meters).
 ") SetOutputLengthUnit;
-		void SetOutputLengthUnit(Standard_Real theOutputScale);
+		void SetOutputLengthUnit(double theOutputScale);
 
 		/****** RWMesh_CoordinateSystemConverter::StandardCoordinateSystem ******/
 		/****** md5 signature: 21c5c69c0733e85d1bbad7241f970870 ******/
@@ -994,12 +989,12 @@ Return a standard coordinate system definition.
 		static gp_Ax3 StandardCoordinateSystem(RWMesh_CoordinateSystem theSys);
 
 		/****** RWMesh_CoordinateSystemConverter::TransformNormal ******/
-		/****** md5 signature: 717ef79ac0a987c4ab6a07db418749d1 ******/
+		/****** md5 signature: e89c22a005c892600c5aa2e11f4b689f ******/
 		%feature("compactdefaultargs") TransformNormal;
 		%feature("autodoc", "
 Parameters
 ----------
-theNorm: Graphic3d_Vec3
+theNorm: NCollection_Vec3<float>
 
 Return
 -------
@@ -1009,7 +1004,7 @@ Description
 -----------
 Transform normal (e.g. exclude translation/scale part of transformation).
 ") TransformNormal;
-		void TransformNormal(Graphic3d_Vec3 & theNorm);
+		void TransformNormal(NCollection_Vec3<float> & theNorm);
 
 		/****** RWMesh_CoordinateSystemConverter::TransformPosition ******/
 		/****** md5 signature: 54a90bf495fe9cc8bc5bd66216c1c8df ******/
@@ -1242,7 +1237,7 @@ Return shape color.
 		const Quantity_ColorRGBA & Color();
 
 		/****** RWMesh_ShapeIterator::ElemLower ******/
-		/****** md5 signature: 1b94274407d81b29e54618b1e6a126ff ******/
+		/****** md5 signature: fef9b1682a1d664ea8417cb4ca825f1b ******/
 		%feature("compactdefaultargs") ElemLower;
 		%feature("autodoc", "Return
 -------
@@ -1252,10 +1247,10 @@ Description
 -----------
 Lower element index in current triangulation.
 ") ElemLower;
-		virtual Standard_Integer ElemLower();
+		virtual int ElemLower();
 
 		/****** RWMesh_ShapeIterator::ElemUpper ******/
-		/****** md5 signature: cda1e2a7235fddd78c035789b3577116 ******/
+		/****** md5 signature: 3cbf21b4e79917acb22e4c564c75d520 ******/
 		%feature("compactdefaultargs") ElemUpper;
 		%feature("autodoc", "Return
 -------
@@ -1265,7 +1260,7 @@ Description
 -----------
 Upper element index in current triangulation.
 ") ElemUpper;
-		virtual Standard_Integer ElemUpper();
+		virtual int ElemUpper();
 
 		/****** RWMesh_ShapeIterator::ExploredShape ******/
 		/****** md5 signature: c8a47d07240c1a2b5ff731be2f859ced ******/
@@ -1320,7 +1315,7 @@ Return true if iterator points to the valid triangulation.
 		virtual bool More();
 
 		/****** RWMesh_ShapeIterator::NbNodes ******/
-		/****** md5 signature: 5907943d11496d21efdf8d6c0b11152f ******/
+		/****** md5 signature: 7e6634d47cbe7b0f4f98093e91514004 ******/
 		%feature("compactdefaultargs") NbNodes;
 		%feature("autodoc", "Return
 -------
@@ -1330,7 +1325,7 @@ Description
 -----------
 Return number of nodes for the current shape.
 ") NbNodes;
-		virtual Standard_Integer NbNodes();
+		virtual int NbNodes();
 
 		/****** RWMesh_ShapeIterator::Next ******/
 		/****** md5 signature: eed509007172061211966fad6d4bcc1a ******/
@@ -1346,7 +1341,7 @@ Find next value.
 		virtual void Next();
 
 		/****** RWMesh_ShapeIterator::NodeLower ******/
-		/****** md5 signature: a745a8fbc5081d59510a6071d2a8a596 ******/
+		/****** md5 signature: 761c1bf757106ad034d0069c410da694 ******/
 		%feature("compactdefaultargs") NodeLower;
 		%feature("autodoc", "Return
 -------
@@ -1356,10 +1351,10 @@ Description
 -----------
 Lower node index in current shape.
 ") NodeLower;
-		virtual Standard_Integer NodeLower();
+		virtual int NodeLower();
 
 		/****** RWMesh_ShapeIterator::NodeTransformed ******/
-		/****** md5 signature: 81f4327259dabdfc72b3bb97674f28b1 ******/
+		/****** md5 signature: e7606e7f875f55f0efd3b9e382c7f91e ******/
 		%feature("compactdefaultargs") NodeTransformed;
 		%feature("autodoc", "
 Parameters
@@ -1374,10 +1369,10 @@ Description
 -----------
 Return the node with specified index with applied transformation.
 ") NodeTransformed;
-		gp_Pnt NodeTransformed(const Standard_Integer theNode);
+		gp_Pnt NodeTransformed(const int theNode);
 
 		/****** RWMesh_ShapeIterator::NodeUpper ******/
-		/****** md5 signature: a1bb0e86d4530e18e136c8577044d2fe ******/
+		/****** md5 signature: 2f74b868bc3837e1fccd663616f51528 ******/
 		%feature("compactdefaultargs") NodeUpper;
 		%feature("autodoc", "Return
 -------
@@ -1387,7 +1382,7 @@ Description
 -----------
 Upper node index in current shape.
 ") NodeUpper;
-		virtual Standard_Integer NodeUpper();
+		virtual int NodeUpper();
 
 		/****** RWMesh_ShapeIterator::Shape ******/
 		/****** md5 signature: 92d25ecd473e1580d08407c03fee60ae ******/
@@ -1558,7 +1553,7 @@ Sets file name for reporting issues.
 		void SetFileName(TCollection_AsciiString theFileName);
 
 		/****** RWMesh_TriangulationReader::SetToPrintDebugMessages ******/
-		/****** md5 signature: dcbcbd79fdeab4f6976a1573fd9e5905 ******/
+		/****** md5 signature: 7cb0c5857c767ca824e44b9e83a8c089 ******/
 		%feature("compactdefaultargs") SetToPrintDebugMessages;
 		%feature("autodoc", "
 Parameters
@@ -1573,10 +1568,10 @@ Description
 -----------
 Sets flag to print debug information.
 ") SetToPrintDebugMessages;
-		void SetToPrintDebugMessages(const Standard_Boolean theToPrint);
+		void SetToPrintDebugMessages(const bool theToPrint);
 
 		/****** RWMesh_TriangulationReader::SetToSkipDegenerates ******/
-		/****** md5 signature: 8f2eee3a91d34501a755dd28a3a30824 ******/
+		/****** md5 signature: 2a686e06db7dea59660253988c9d240d ******/
 		%feature("compactdefaultargs") SetToSkipDegenerates;
 		%feature("autodoc", "
 Parameters
@@ -1591,7 +1586,7 @@ Description
 -----------
 Sets flag to skip degenerated triangles during mesh loading (only indexes will be checked).
 ") SetToSkipDegenerates;
-		void SetToSkipDegenerates(const Standard_Boolean theToSkip);
+		void SetToSkipDegenerates(const bool theToSkip);
 
 		/****** RWMesh_TriangulationReader::StartStatistic ******/
 		/****** md5 signature: a4bdfbb69ed74092a59b8aa233aedc5d ******/
@@ -1620,7 +1615,7 @@ Stops and nullify internal object that accumulates nodes/triangles statistic dur
 		void StopStatistic();
 
 		/****** RWMesh_TriangulationReader::ToPrintDebugMessages ******/
-		/****** md5 signature: 1ba8100a86ab6979545a37ba8507ce50 ******/
+		/****** md5 signature: 807c07787e3c5595045ec8c134e0077e ******/
 		%feature("compactdefaultargs") ToPrintDebugMessages;
 		%feature("autodoc", "Return
 -------
@@ -1630,10 +1625,10 @@ Description
 -----------
 Returns True if additional debug information should be print.
 ") ToPrintDebugMessages;
-		Standard_Boolean ToPrintDebugMessages();
+		bool ToPrintDebugMessages();
 
 		/****** RWMesh_TriangulationReader::ToSkipDegenerates ******/
-		/****** md5 signature: 845530fc6fd2f6c43fcb01ed299e2914 ******/
+		/****** md5 signature: a6f59fd55cac7dae46fa218de501707e ******/
 		%feature("compactdefaultargs") ToSkipDegenerates;
 		%feature("autodoc", "Return
 -------
@@ -1643,7 +1638,7 @@ Description
 -----------
 Returns True if degenerated triangles should be skipped during mesh loading (only indexes will be checked).
 ") ToSkipDegenerates;
-		Standard_Boolean ToSkipDegenerates();
+		bool ToSkipDegenerates();
 
 };
 
@@ -1674,21 +1669,21 @@ Constructor.
 ") RWMesh_TriangulationSource;
 		 RWMesh_TriangulationSource();
 
+		/****** RWMesh_TriangulationSource::ChangeDegeneratedTriNb ******/
+		/****** md5 signature: 6bde61438e8ed313a31e63dcfc6ebb25 ******/
+		%feature("compactdefaultargs") ChangeDegeneratedTriNb;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetChangeDegeneratedTriNb() {
-            return (Standard_Integer) $self->ChangeDegeneratedTriNb();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetChangeDegeneratedTriNb(Standard_Integer value) {
-            $self->ChangeDegeneratedTriNb()=value;
-            }
-        };
+Description
+-----------
+Gets access to number of degenerated triangles to collect them during data reading.
+") ChangeDegeneratedTriNb;
+		int & ChangeDegeneratedTriNb();
+
 		/****** RWMesh_TriangulationSource::DegeneratedTriNb ******/
-		/****** md5 signature: 2a1611183102606c75dc3b897f8870c1 ******/
+		/****** md5 signature: 817ad01e87195e9653ebf0f1e21f3662 ******/
 		%feature("compactdefaultargs") DegeneratedTriNb;
 		%feature("autodoc", "Return
 -------
@@ -1698,10 +1693,10 @@ Description
 -----------
 Returns number of degenerated triangles collected during data reading. Used for debug statistic purpose.
 ") DegeneratedTriNb;
-		Standard_Integer DegeneratedTriNb();
+		int DegeneratedTriNb();
 
 		/****** RWMesh_TriangulationSource::Edge ******/
-		/****** md5 signature: 30b7abc0bac6b2eca6ff6401b3245d11 ******/
+		/****** md5 signature: 1677982b59c886f3ce5de2a63613b421 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -1718,10 +1713,10 @@ Returns edge at the given index.
 Input parameter: theIndex edge index within [1, NbEdges()] range 
 Return: edge node indices, with each node defined within [1, NbNodes()] range.
 ") Edge;
-		Standard_Integer Edge(Standard_Integer theIndex);
+		int Edge(int theIndex);
 
 		/****** RWMesh_TriangulationSource::HasGeometry ******/
-		/****** md5 signature: 21b6a7b12e0900a6dd35c929545a10c0 ******/
+		/****** md5 signature: f3256d802f2a90fb591d441bddfff2fb ******/
 		%feature("compactdefaultargs") HasGeometry;
 		%feature("autodoc", "Return
 -------
@@ -1731,10 +1726,10 @@ Description
 -----------
 Returns True if triangulation has some geometry.
 ") HasGeometry;
-		virtual Standard_Boolean HasGeometry();
+		bool HasGeometry();
 
 		/****** RWMesh_TriangulationSource::InternalEdges ******/
-		/****** md5 signature: e6d1250df13e19360d68822dd5704653 ******/
+		/****** md5 signature: 9699902a5f783debb73f33d1d3df6436 ******/
 		%feature("compactdefaultargs") InternalEdges;
 		%feature("autodoc", "Return
 -------
@@ -1744,10 +1739,10 @@ Description
 -----------
 Returns an internal array of edges. Edge()/SetEdge() should be used instead in portable code.
 ") InternalEdges;
-		NCollection_Array1<Standard_Integer> & InternalEdges();
+		NCollection_Array1<int> & InternalEdges();
 
 		/****** RWMesh_TriangulationSource::NbDeferredNodes ******/
-		/****** md5 signature: d15a5896fc85a8c93365e1d85513fbb0 ******/
+		/****** md5 signature: 5bba066efcec585abb275dc94692fea3 ******/
 		%feature("compactdefaultargs") NbDeferredNodes;
 		%feature("autodoc", "Return
 -------
@@ -1757,10 +1752,10 @@ Description
 -----------
 Returns number of nodes for deferred loading. Note: this is estimated values defined in object header, which might be different from actually loaded values (due to broken header or extra mesh processing). Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
 ") NbDeferredNodes;
-		virtual Standard_Integer NbDeferredNodes();
+		int NbDeferredNodes();
 
 		/****** RWMesh_TriangulationSource::NbDeferredTriangles ******/
-		/****** md5 signature: 8c345ed875feecf632ebb9c62ff9481f ******/
+		/****** md5 signature: cd28f043dd3714232ac4a56672d6e591 ******/
 		%feature("compactdefaultargs") NbDeferredTriangles;
 		%feature("autodoc", "Return
 -------
@@ -1770,10 +1765,10 @@ Description
 -----------
 Returns number of triangles for deferred loading. Note: this is estimated values defined in object header, which might be different from actually loaded values (due to broken header or extra mesh processing). Always check triangulation size of actually loaded data in code to avoid out-of-range issues.
 ") NbDeferredTriangles;
-		virtual Standard_Integer NbDeferredTriangles();
+		int NbDeferredTriangles();
 
 		/****** RWMesh_TriangulationSource::NbEdges ******/
-		/****** md5 signature: 31924aa1f5b2c848f6f0ca402e060038 ******/
+		/****** md5 signature: 54a1d338afeb2b34e693b9eb0a27ecb6 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -1783,7 +1778,7 @@ Description
 -----------
 Returns the number of edges for this triangulation.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** RWMesh_TriangulationSource::Reader ******/
 		/****** md5 signature: 6ae7cdc70d1eaea13f56fb1f778f493a ******/
@@ -1799,7 +1794,7 @@ Returns reader allowing to read data from the buffer.
 		const opencascade::handle<RWMesh_TriangulationReader> & Reader();
 
 		/****** RWMesh_TriangulationSource::ResizeEdges ******/
-		/****** md5 signature: ba4d4c0de1cadf877c04a0b4e4286646 ******/
+		/****** md5 signature: 4f8a574def99368bab9576fda5181f3c ******/
 		%feature("compactdefaultargs") ResizeEdges;
 		%feature("autodoc", "
 Parameters
@@ -1817,10 +1812,10 @@ Method resizing an internal array of triangles.
 Input parameter: theNbTriangles new number of triangles 
 Input parameter: theToCopyOld copy old triangles into the new array.
 ") ResizeEdges;
-		void ResizeEdges(Standard_Integer theNbEdges, Standard_Boolean theToCopyOld);
+		void ResizeEdges(int theNbEdges, bool theToCopyOld);
 
 		/****** RWMesh_TriangulationSource::SetEdge ******/
-		/****** md5 signature: 96bada08f67208fa8a620f01dd98ac09 ******/
+		/****** md5 signature: 938e96b3bf0ddd979be3240444158bdb ******/
 		%feature("compactdefaultargs") SetEdge;
 		%feature("autodoc", "
 Parameters
@@ -1838,10 +1833,10 @@ Sets an edge.
 Input parameter: theIndex edge index within [1, NbEdges()] range 
 Input parameter: theEdge edge node indices, with each node defined within [1, NbNodes()] range.
 ") SetEdge;
-		void SetEdge(Standard_Integer theIndex, Standard_Integer theEdge);
+		void SetEdge(int theIndex, int theEdge);
 
 		/****** RWMesh_TriangulationSource::SetNbDeferredNodes ******/
-		/****** md5 signature: 613e9c73fcbbe299958e31da2d3bf9b1 ******/
+		/****** md5 signature: 4e0ebf7c6802df33665df3256c0ff065 ******/
 		%feature("compactdefaultargs") SetNbDeferredNodes;
 		%feature("autodoc", "
 Parameters
@@ -1856,10 +1851,10 @@ Description
 -----------
 Sets number of nodes for deferred loading.
 ") SetNbDeferredNodes;
-		void SetNbDeferredNodes(const Standard_Integer theNbNodes);
+		void SetNbDeferredNodes(const int theNbNodes);
 
 		/****** RWMesh_TriangulationSource::SetNbDeferredTriangles ******/
-		/****** md5 signature: 4c754aa29da9094529581631690e3ff2 ******/
+		/****** md5 signature: d20f15a466179d09e6d33a3cad8e3ebb ******/
 		%feature("compactdefaultargs") SetNbDeferredTriangles;
 		%feature("autodoc", "
 Parameters
@@ -1874,7 +1869,7 @@ Description
 -----------
 Sets number of triangles for deferred loading.
 ") SetNbDeferredTriangles;
-		void SetNbDeferredTriangles(const Standard_Integer theNbTris);
+		void SetNbDeferredTriangles(const int theNbTris);
 
 		/****** RWMesh_TriangulationSource::SetReader ******/
 		/****** md5 signature: 9528188554fe70d155ea3d7fb58dcd0f ******/
@@ -1911,7 +1906,7 @@ Sets reader allowing to read data from the buffer.
 class RWMesh_EdgeIterator : public RWMesh_ShapeIterator {
 	public:
 		/****** RWMesh_EdgeIterator::RWMesh_EdgeIterator ******/
-		/****** md5 signature: fc09a00b010e99aa4618492b4a5af24b ******/
+		/****** md5 signature: 912870a1f56e31e246b8ba6a5cab7489 ******/
 		%feature("compactdefaultargs") RWMesh_EdgeIterator;
 		%feature("autodoc", "
 Parameters
@@ -1933,7 +1928,7 @@ Input parameter: theLocation The location of the shape.
 Input parameter: theToMapColors Flag to indicate if colors should be mapped. 
 Input parameter: theStyle The style of the shape.
 ") RWMesh_EdgeIterator;
-		 RWMesh_EdgeIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const Standard_Boolean theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
+		 RWMesh_EdgeIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const bool theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
 		/****** RWMesh_EdgeIterator::RWMesh_EdgeIterator ******/
 		/****** md5 signature: a1755e14795713296674bb289cef3359 ******/
@@ -1970,7 +1965,7 @@ Return current edge.
 		const TopoDS_Edge Edge();
 
 		/****** RWMesh_EdgeIterator::ElemLower ******/
-		/****** md5 signature: ac69501e19a0031363cfb834e6ef85e3 ******/
+		/****** md5 signature: b446e39aabb4b5a3316256d274db1034 ******/
 		%feature("compactdefaultargs") ElemLower;
 		%feature("autodoc", "Return
 -------
@@ -1980,10 +1975,10 @@ Description
 -----------
 Lower element index in current triangulation.
 ") ElemLower;
-		Standard_Integer ElemLower();
+		int ElemLower();
 
 		/****** RWMesh_EdgeIterator::ElemUpper ******/
-		/****** md5 signature: e013f226a62df5f46ac42ff99fe77aa5 ******/
+		/****** md5 signature: 89716181c6a17d47959722474f6ebeb9 ******/
 		%feature("compactdefaultargs") ElemUpper;
 		%feature("autodoc", "Return
 -------
@@ -1993,10 +1988,10 @@ Description
 -----------
 Upper element index in current triangulation.
 ") ElemUpper;
-		Standard_Integer ElemUpper();
+		int ElemUpper();
 
 		/****** RWMesh_EdgeIterator::IsEmpty ******/
-		/****** md5 signature: fcea9e2c7fadbc4451dad1a4e26a226e ******/
+		/****** md5 signature: 6f7da23c8b925426c4850b3bf938cddf ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2009,7 +2004,7 @@ Return true if geometry data is defined.
 		bool IsEmpty();
 
 		/****** RWMesh_EdgeIterator::More ******/
-		/****** md5 signature: 7068b42d7e26840d91e66bdebc6e70e2 ******/
+		/****** md5 signature: eb6fb64d8976d5ca7f592e3e5d243013 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2022,7 +2017,7 @@ Return true if iterator points to the valid triangulation.
 		bool More();
 
 		/****** RWMesh_EdgeIterator::NbNodes ******/
-		/****** md5 signature: 93fafeff0582303a7a8474ff0276095d ******/
+		/****** md5 signature: 1b365a81af2cd963c6797ec8ea3db840 ******/
 		%feature("compactdefaultargs") NbNodes;
 		%feature("autodoc", "Return
 -------
@@ -2032,10 +2027,10 @@ Description
 -----------
 Return number of nodes for the current edge.
 ") NbNodes;
-		Standard_Integer NbNodes();
+		int NbNodes();
 
 		/****** RWMesh_EdgeIterator::Next ******/
-		/****** md5 signature: a905a8dfa1a150902436848624e0cb08 ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -2048,7 +2043,7 @@ Find next value.
 		void Next();
 
 		/****** RWMesh_EdgeIterator::NodeLower ******/
-		/****** md5 signature: 73ebcbdc2aaa48d106969f7739560283 ******/
+		/****** md5 signature: c1a40e1214a3ad04749c920469f2f7a3 ******/
 		%feature("compactdefaultargs") NodeLower;
 		%feature("autodoc", "Return
 -------
@@ -2058,10 +2053,10 @@ Description
 -----------
 Lower node index in current triangulation.
 ") NodeLower;
-		Standard_Integer NodeLower();
+		int NodeLower();
 
 		/****** RWMesh_EdgeIterator::NodeUpper ******/
-		/****** md5 signature: c91e11c7618d147c620cf2f51a9a0b49 ******/
+		/****** md5 signature: 4132c284ac645cc53fd44a8c3ff3479b ******/
 		%feature("compactdefaultargs") NodeUpper;
 		%feature("autodoc", "Return
 -------
@@ -2071,7 +2066,7 @@ Description
 -----------
 Upper node index in current triangulation.
 ") NodeUpper;
-		Standard_Integer NodeUpper();
+		int NodeUpper();
 
 		/****** RWMesh_EdgeIterator::Polygon3D ******/
 		/****** md5 signature: eef7f9b5c2989862932549cf5224cf04 ******/
@@ -2087,7 +2082,7 @@ Return current edge data.
 		const opencascade::handle<Poly_Polygon3D> & Polygon3D();
 
 		/****** RWMesh_EdgeIterator::Shape ******/
-		/****** md5 signature: 83d1ae7b8f6ade8e3949aaf82c8395b5 ******/
+		/****** md5 signature: 62e5f1c3b3dcfd441e19b721ec6d9de4 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2100,7 +2095,7 @@ Return current edge.
 		const TopoDS_Shape Shape();
 
 		/****** RWMesh_EdgeIterator::node ******/
-		/****** md5 signature: d95044de7eb552670cadad57100a51ff ******/
+		/****** md5 signature: 37c0a45e5b7c392a969a9a5cf20cffd8 ******/
 		%feature("compactdefaultargs") node;
 		%feature("autodoc", "
 Parameters
@@ -2115,7 +2110,7 @@ Description
 -----------
 Return the node with specified index with applied transformation.
 ") node;
-		gp_Pnt node(const Standard_Integer theNode);
+		gp_Pnt node(const int theNode);
 
 };
 
@@ -2132,7 +2127,7 @@ Return the node with specified index with applied transformation.
 class RWMesh_FaceIterator : public RWMesh_ShapeIterator {
 	public:
 		/****** RWMesh_FaceIterator::RWMesh_FaceIterator ******/
-		/****** md5 signature: 9550d252cfb1a226d1292d60d8012ca5 ******/
+		/****** md5 signature: 0e970f7562dff27477f10f9380ef2274 ******/
 		%feature("compactdefaultargs") RWMesh_FaceIterator;
 		%feature("autodoc", "
 Parameters
@@ -2154,7 +2149,7 @@ Input parameter: theLocation Location of the face
 Input parameter: theToMapColors Flag to indicate if colors should be mapped 
 Input parameter: theStyle Style information for the face.
 ") RWMesh_FaceIterator;
-		 RWMesh_FaceIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const Standard_Boolean theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
+		 RWMesh_FaceIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const bool theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
 		/****** RWMesh_FaceIterator::RWMesh_FaceIterator ******/
 		/****** md5 signature: 57b47bb450205e96f4feb877a8606d43 ******/
@@ -2178,7 +2173,7 @@ Input parameter: theStyle Style information for the face.
 		 RWMesh_FaceIterator(const TopoDS_Shape & theShape, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
 		/****** RWMesh_FaceIterator::ElemLower ******/
-		/****** md5 signature: ac69501e19a0031363cfb834e6ef85e3 ******/
+		/****** md5 signature: b446e39aabb4b5a3316256d274db1034 ******/
 		%feature("compactdefaultargs") ElemLower;
 		%feature("autodoc", "Return
 -------
@@ -2188,10 +2183,10 @@ Description
 -----------
 Lower element index in current triangulation.
 ") ElemLower;
-		Standard_Integer ElemLower();
+		int ElemLower();
 
 		/****** RWMesh_FaceIterator::ElemUpper ******/
-		/****** md5 signature: e013f226a62df5f46ac42ff99fe77aa5 ******/
+		/****** md5 signature: 89716181c6a17d47959722474f6ebeb9 ******/
 		%feature("compactdefaultargs") ElemUpper;
 		%feature("autodoc", "Return
 -------
@@ -2201,7 +2196,7 @@ Description
 -----------
 Upper element index in current triangulation.
 ") ElemUpper;
-		Standard_Integer ElemUpper();
+		int ElemUpper();
 
 		/****** RWMesh_FaceIterator::Face ******/
 		/****** md5 signature: 95406b8d0d556c0537e0768c48713f21 ******/
@@ -2282,7 +2277,7 @@ Return true if triangulation has defined normals.
 		bool HasTexCoords();
 
 		/****** RWMesh_FaceIterator::IsEmpty ******/
-		/****** md5 signature: fcea9e2c7fadbc4451dad1a4e26a226e ******/
+		/****** md5 signature: 6f7da23c8b925426c4850b3bf938cddf ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2308,7 +2303,7 @@ Return true if mesh data is defined.
 		bool IsEmptyMesh();
 
 		/****** RWMesh_FaceIterator::More ******/
-		/****** md5 signature: 7068b42d7e26840d91e66bdebc6e70e2 ******/
+		/****** md5 signature: eb6fb64d8976d5ca7f592e3e5d243013 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2321,7 +2316,7 @@ Return true if iterator points to the valid triangulation.
 		bool More();
 
 		/****** RWMesh_FaceIterator::NbNodes ******/
-		/****** md5 signature: 93fafeff0582303a7a8474ff0276095d ******/
+		/****** md5 signature: 1b365a81af2cd963c6797ec8ea3db840 ******/
 		%feature("compactdefaultargs") NbNodes;
 		%feature("autodoc", "Return
 -------
@@ -2331,10 +2326,10 @@ Description
 -----------
 Return number of nodes for the current face.
 ") NbNodes;
-		Standard_Integer NbNodes();
+		int NbNodes();
 
 		/****** RWMesh_FaceIterator::NbTriangles ******/
-		/****** md5 signature: 192b02c351e0888abe52f9e1c6139918 ******/
+		/****** md5 signature: 8be473b517976772689037e4f5f1db7e ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "Return
 -------
@@ -2344,10 +2339,10 @@ Description
 -----------
 Return number of elements of specific type for the current face.
 ") NbTriangles;
-		Standard_Integer NbTriangles();
+		int NbTriangles();
 
 		/****** RWMesh_FaceIterator::Next ******/
-		/****** md5 signature: a905a8dfa1a150902436848624e0cb08 ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -2360,7 +2355,7 @@ Find next value.
 		void Next();
 
 		/****** RWMesh_FaceIterator::NodeLower ******/
-		/****** md5 signature: 73ebcbdc2aaa48d106969f7739560283 ******/
+		/****** md5 signature: c1a40e1214a3ad04749c920469f2f7a3 ******/
 		%feature("compactdefaultargs") NodeLower;
 		%feature("autodoc", "Return
 -------
@@ -2370,10 +2365,10 @@ Description
 -----------
 Lower node index in current triangulation.
 ") NodeLower;
-		Standard_Integer NodeLower();
+		int NodeLower();
 
 		/****** RWMesh_FaceIterator::NodeTexCoord ******/
-		/****** md5 signature: 80a58af4175663e02d8df9465dceee98 ******/
+		/****** md5 signature: 2f0f04b0a57deacef96907ec00a94a51 ******/
 		%feature("compactdefaultargs") NodeTexCoord;
 		%feature("autodoc", "
 Parameters
@@ -2388,10 +2383,10 @@ Description
 -----------
 Return texture coordinates for the node.
 ") NodeTexCoord;
-		gp_Pnt2d NodeTexCoord(const Standard_Integer theNode);
+		gp_Pnt2d NodeTexCoord(const int theNode);
 
 		/****** RWMesh_FaceIterator::NodeUpper ******/
-		/****** md5 signature: c91e11c7618d147c620cf2f51a9a0b49 ******/
+		/****** md5 signature: 4132c284ac645cc53fd44a8c3ff3479b ******/
 		%feature("compactdefaultargs") NodeUpper;
 		%feature("autodoc", "Return
 -------
@@ -2401,10 +2396,10 @@ Description
 -----------
 Upper node index in current triangulation.
 ") NodeUpper;
-		Standard_Integer NodeUpper();
+		int NodeUpper();
 
 		/****** RWMesh_FaceIterator::NormalTransformed ******/
-		/****** md5 signature: 74bb2de6b86a11ea27e4a0cd18412b1e ******/
+		/****** md5 signature: bd3672fbf4a6114f9cf5db22cc1be907 ******/
 		%feature("compactdefaultargs") NormalTransformed;
 		%feature("autodoc", "
 Parameters
@@ -2419,10 +2414,10 @@ Description
 -----------
 Return normal at specified node index with face transformation applied and face orientation applied.
 ") NormalTransformed;
-		gp_Dir NormalTransformed(Standard_Integer theNode);
+		gp_Dir NormalTransformed(int theNode);
 
 		/****** RWMesh_FaceIterator::Shape ******/
-		/****** md5 signature: 83d1ae7b8f6ade8e3949aaf82c8395b5 ******/
+		/****** md5 signature: 62e5f1c3b3dcfd441e19b721ec6d9de4 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2435,7 +2430,7 @@ Return current face.
 		const TopoDS_Shape Shape();
 
 		/****** RWMesh_FaceIterator::TriangleOriented ******/
-		/****** md5 signature: 3e3ba0379e88457ac6cf61dd23f25b99 ******/
+		/****** md5 signature: 51ad534052c3e64529b8822d592d177a ******/
 		%feature("compactdefaultargs") TriangleOriented;
 		%feature("autodoc", "
 Parameters
@@ -2450,7 +2445,7 @@ Description
 -----------
 Return triangle with specified index with applied Face orientation.
 ") TriangleOriented;
-		Poly_Triangle TriangleOriented(Standard_Integer theElemIndex);
+		Poly_Triangle TriangleOriented(int theElemIndex);
 
 		/****** RWMesh_FaceIterator::Triangulation ******/
 		/****** md5 signature: 640157cb50c1198f3e4d8cfb1696811e ******/
@@ -2466,7 +2461,7 @@ Return current face triangulation.
 		const opencascade::handle<Poly_Triangulation> & Triangulation();
 
 		/****** RWMesh_FaceIterator::node ******/
-		/****** md5 signature: d95044de7eb552670cadad57100a51ff ******/
+		/****** md5 signature: 37c0a45e5b7c392a969a9a5cf20cffd8 ******/
 		%feature("compactdefaultargs") node;
 		%feature("autodoc", "
 Parameters
@@ -2481,10 +2476,10 @@ Description
 -----------
 Return the node with specified index with applied transformation.
 ") node;
-		gp_Pnt node(const Standard_Integer theNode);
+		gp_Pnt node(const int theNode);
 
 		/****** RWMesh_FaceIterator::normal ******/
-		/****** md5 signature: 38d3d2a1d856561177d7de28baaf5870 ******/
+		/****** md5 signature: a30eb69d171329ead27a2bab00e81057 ******/
 		%feature("compactdefaultargs") normal;
 		%feature("autodoc", "
 Parameters
@@ -2499,10 +2494,10 @@ Description
 -----------
 Return normal at specified node index without face transformation applied.
 ") normal;
-		gp_Dir normal(Standard_Integer theNode);
+		gp_Dir normal(int theNode);
 
 		/****** RWMesh_FaceIterator::triangle ******/
-		/****** md5 signature: 3bb468df958d9e6f86f96995f199fc13 ******/
+		/****** md5 signature: cfe78d40d042fcb6f9025fd9dae91765 ******/
 		%feature("compactdefaultargs") triangle;
 		%feature("autodoc", "
 Parameters
@@ -2517,7 +2512,7 @@ Description
 -----------
 Return triangle with specified index.
 ") triangle;
-		Poly_Triangle triangle(Standard_Integer theElemIndex);
+		Poly_Triangle triangle(int theElemIndex);
 
 };
 
@@ -2534,7 +2529,7 @@ Return triangle with specified index.
 class RWMesh_VertexIterator : public RWMesh_ShapeIterator {
 	public:
 		/****** RWMesh_VertexIterator::RWMesh_VertexIterator ******/
-		/****** md5 signature: ffb3b34bb4080c44bc190596f87c868a ******/
+		/****** md5 signature: 8ed69c3fa76e7ec253b4a57ac29aef05 ******/
 		%feature("compactdefaultargs") RWMesh_VertexIterator;
 		%feature("autodoc", "
 Parameters
@@ -2556,7 +2551,7 @@ Input parameter: theLocation The location of the shape.
 Input parameter: theToMapColors Flag to indicate if colors should be mapped. 
 Input parameter: theStyle The style of the shape.
 ") RWMesh_VertexIterator;
-		 RWMesh_VertexIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const Standard_Boolean theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
+		 RWMesh_VertexIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const bool theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
 		/****** RWMesh_VertexIterator::RWMesh_VertexIterator ******/
 		/****** md5 signature: eadff2969068894c40b29b80dd07cad5 ******/
@@ -2580,7 +2575,7 @@ Input parameter: theStyle The style of the shape.
 		 RWMesh_VertexIterator(const TopoDS_Shape & theShape, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
 		/****** RWMesh_VertexIterator::ElemLower ******/
-		/****** md5 signature: ac69501e19a0031363cfb834e6ef85e3 ******/
+		/****** md5 signature: b446e39aabb4b5a3316256d274db1034 ******/
 		%feature("compactdefaultargs") ElemLower;
 		%feature("autodoc", "Return
 -------
@@ -2590,10 +2585,10 @@ Description
 -----------
 Lower element index in current triangulation.
 ") ElemLower;
-		Standard_Integer ElemLower();
+		int ElemLower();
 
 		/****** RWMesh_VertexIterator::ElemUpper ******/
-		/****** md5 signature: e013f226a62df5f46ac42ff99fe77aa5 ******/
+		/****** md5 signature: 89716181c6a17d47959722474f6ebeb9 ******/
 		%feature("compactdefaultargs") ElemUpper;
 		%feature("autodoc", "Return
 -------
@@ -2603,10 +2598,10 @@ Description
 -----------
 Upper element index in current triangulation.
 ") ElemUpper;
-		Standard_Integer ElemUpper();
+		int ElemUpper();
 
 		/****** RWMesh_VertexIterator::IsEmpty ******/
-		/****** md5 signature: fcea9e2c7fadbc4451dad1a4e26a226e ******/
+		/****** md5 signature: 6f7da23c8b925426c4850b3bf938cddf ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2619,7 +2614,7 @@ Return true if geometry data is defined.
 		bool IsEmpty();
 
 		/****** RWMesh_VertexIterator::More ******/
-		/****** md5 signature: 7068b42d7e26840d91e66bdebc6e70e2 ******/
+		/****** md5 signature: eb6fb64d8976d5ca7f592e3e5d243013 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2632,7 +2627,7 @@ Return true if iterator points to the valid triangulation.
 		bool More();
 
 		/****** RWMesh_VertexIterator::NbNodes ******/
-		/****** md5 signature: 93fafeff0582303a7a8474ff0276095d ******/
+		/****** md5 signature: 1b365a81af2cd963c6797ec8ea3db840 ******/
 		%feature("compactdefaultargs") NbNodes;
 		%feature("autodoc", "Return
 -------
@@ -2642,10 +2637,10 @@ Description
 -----------
 Return number of nodes for the current edge.
 ") NbNodes;
-		Standard_Integer NbNodes();
+		int NbNodes();
 
 		/****** RWMesh_VertexIterator::Next ******/
-		/****** md5 signature: a905a8dfa1a150902436848624e0cb08 ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -2658,7 +2653,7 @@ Find next value.
 		void Next();
 
 		/****** RWMesh_VertexIterator::NodeLower ******/
-		/****** md5 signature: 73ebcbdc2aaa48d106969f7739560283 ******/
+		/****** md5 signature: c1a40e1214a3ad04749c920469f2f7a3 ******/
 		%feature("compactdefaultargs") NodeLower;
 		%feature("autodoc", "Return
 -------
@@ -2668,10 +2663,10 @@ Description
 -----------
 Lower node index in current triangulation.
 ") NodeLower;
-		Standard_Integer NodeLower();
+		int NodeLower();
 
 		/****** RWMesh_VertexIterator::NodeUpper ******/
-		/****** md5 signature: c91e11c7618d147c620cf2f51a9a0b49 ******/
+		/****** md5 signature: 4132c284ac645cc53fd44a8c3ff3479b ******/
 		%feature("compactdefaultargs") NodeUpper;
 		%feature("autodoc", "Return
 -------
@@ -2681,7 +2676,7 @@ Description
 -----------
 Upper node index in current triangulation.
 ") NodeUpper;
-		Standard_Integer NodeUpper();
+		int NodeUpper();
 
 		/****** RWMesh_VertexIterator::Point ******/
 		/****** md5 signature: 4e742d9ca138939180edee86d3b37a8f ******/
@@ -2697,7 +2692,7 @@ Return current vertex data.
 		const gp_Pnt Point();
 
 		/****** RWMesh_VertexIterator::Shape ******/
-		/****** md5 signature: 83d1ae7b8f6ade8e3949aaf82c8395b5 ******/
+		/****** md5 signature: 62e5f1c3b3dcfd441e19b721ec6d9de4 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2723,12 +2718,12 @@ Return current edge.
 		const TopoDS_Vertex Vertex();
 
 		/****** RWMesh_VertexIterator::node ******/
-		/****** md5 signature: d007284cc4f08a2bcdc3cf7c8abb0219 ******/
+		/****** md5 signature: 71d6bc6b899353156b5c576722c2c353 ******/
 		%feature("compactdefaultargs") node;
 		%feature("autodoc", "
 Parameters
 ----------
-Standard_Integer: 
+: int
 
 Return
 -------
@@ -2738,7 +2733,7 @@ Description
 -----------
 Return the node with specified index with applied transformation.
 ") node;
-		gp_Pnt node(const Standard_Integer);
+		gp_Pnt node(const int );
 
 };
 

@@ -173,7 +173,11 @@ Resource_GB = Resource_FormatType.Resource_GB
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TCollection_AsciiString,TCollection_AsciiString>::Items;
+%ignore NCollection_DataMap<TCollection_AsciiString,TCollection_AsciiString>::KeyValues;
 %template(Resource_DataMapOfAsciiStringAsciiString) NCollection_DataMap<TCollection_AsciiString,TCollection_AsciiString>;
+%ignore NCollection_DataMap<TCollection_AsciiString,TCollection_ExtendedString>::Items;
+%ignore NCollection_DataMap<TCollection_AsciiString,TCollection_ExtendedString>::KeyValues;
 %template(Resource_DataMapOfAsciiStringExtendedString) NCollection_DataMap<TCollection_AsciiString,TCollection_ExtendedString>;
 /* end templates declaration */
 
@@ -203,7 +207,7 @@ No available documentation.
 		 Resource_LexicalCompare();
 
 		/****** Resource_LexicalCompare::IsLower ******/
-		/****** md5 signature: 18ef6ebb123c53ca5a6b5e0e6e18c888 ******/
+		/****** md5 signature: 5d1c99ed9a83e5244aec9691e97acd15 ******/
 		%feature("compactdefaultargs") IsLower;
 		%feature("autodoc", "
 Parameters
@@ -219,7 +223,7 @@ Description
 -----------
 Returns True if <Left> is lower than <Right>.
 ") IsLower;
-		Standard_Boolean IsLower(TCollection_AsciiString Left, TCollection_AsciiString Right);
+		bool IsLower(TCollection_AsciiString Left, TCollection_AsciiString Right);
 
 };
 
@@ -236,13 +240,13 @@ Returns True if <Left> is lower than <Right>.
 class Resource_Manager : public Standard_Transient {
 	public:
 		/****** Resource_Manager::Resource_Manager ******/
-		/****** md5 signature: 2c3dc4ee36f9982ef8c27d548accdc18 ******/
+		/****** md5 signature: 90ede6bc7c51eae00bd76ec2a26325b2 ******/
 		%feature("compactdefaultargs") Resource_Manager;
 		%feature("autodoc", "
 Parameters
 ----------
-aName: str
-Verbose: bool (optional, default to Standard_False)
+aName: char *
+Verbose: bool (optional, default to false)
 
 Return
 -------
@@ -252,7 +256,7 @@ Description
 -----------
 Create a Resource manager. Attempts to find the two following files: $CSF_`aName`Defaults/aName $CSF_`aName`UserDefaults/aName and load them respectively into a reference and a user resource structure. //! If CSF_ResourceVerbose defined, seeked files will be printed. //! FILE SYNTAX The syntax of a resource file is a sequence of resource lines terminated by newline characters or end of file. The syntax of an individual resource line is:.
 ") Resource_Manager;
-		 Resource_Manager(Standard_CString aName, const Standard_Boolean Verbose = Standard_False);
+		 Resource_Manager(const char * const aName, const bool Verbose = false);
 
 		/****** Resource_Manager::Resource_Manager ******/
 		/****** md5 signature: 94a9bf1e751906a5d5dd7b470590375c ******/
@@ -268,7 +272,7 @@ Create an empty Resource manager.
 		 Resource_Manager();
 
 		/****** Resource_Manager::Resource_Manager ******/
-		/****** md5 signature: 1f6d540d565637ee2761b199541d8d4f ******/
+		/****** md5 signature: 5a99a864481ed5c1c8635fa73dd03d2a ******/
 		%feature("compactdefaultargs") Resource_Manager;
 		%feature("autodoc", "
 Parameters
@@ -276,7 +280,7 @@ Parameters
 theName: str
 theDefaultsDirectory: str
 theUserDefaultsDirectory: str
-theIsVerbose: bool (optional, default to Standard_False)
+theIsVerbose: bool (optional, default to false)
 
 Return
 -------
@@ -290,33 +294,33 @@ Input parameter: theDefaultsDirectory default folder for looking description fil
 Input parameter: theUserDefaultsDirectory user folder for looking description file 
 Input parameter: theIsVerbose print verbose messages.
 ") Resource_Manager;
-		 Resource_Manager(TCollection_AsciiString theName, TCollection_AsciiString theDefaultsDirectory, TCollection_AsciiString theUserDefaultsDirectory, const Standard_Boolean theIsVerbose = Standard_False);
+		 Resource_Manager(TCollection_AsciiString theName, TCollection_AsciiString theDefaultsDirectory, TCollection_AsciiString theUserDefaultsDirectory, const bool theIsVerbose = false);
 
 		/****** Resource_Manager::ExtValue ******/
-		/****** md5 signature: eacb0ae55d7f76df617e14be66e1f1b0 ******/
+		/****** md5 signature: 1cf9f8324a00f078533bf5a84368f3a7 ******/
 		%feature("compactdefaultargs") ExtValue;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
+aResourceName: char *
 
 Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 Gets the value of an ExtString resource according to its instance and its type.
 ") ExtValue;
-		virtual Standard_ExtString ExtValue(Standard_CString aResourceName);
+		virtual const char16_t * ExtValue(const char * const aResourceName);
 
 		/****** Resource_Manager::Find ******/
-		/****** md5 signature: ad646ce41630b595ea3f002fe0683f59 ******/
+		/****** md5 signature: 751b567440b1f6396b974c3857cbbef8 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
 ----------
-aResource: str
+aResource: char *
 
 Return
 -------
@@ -326,10 +330,10 @@ Description
 -----------
 returns True if the Resource does exist.
 ") Find;
-		Standard_Boolean Find(Standard_CString aResource);
+		bool Find(const char * const aResource);
 
 		/****** Resource_Manager::Find ******/
-		/****** md5 signature: 294981535cdceb04223d5675a243c4c7 ******/
+		/****** md5 signature: 53ee3de7ebfb2317b295e5d186d9a97f ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -345,34 +349,34 @@ Description
 -----------
 returns True if the Resource does exist.
 ") Find;
-		Standard_Boolean Find(TCollection_AsciiString theResource, TCollection_AsciiString & theValue);
+		bool Find(TCollection_AsciiString theResource, TCollection_AsciiString & theValue);
 
 		/****** Resource_Manager::GetMap ******/
-		/****** md5 signature: 0a184cd99b151391a734472d41136b3b ******/
+		/****** md5 signature: 4c2222c68101ee6b91f36d953c513ad1 ******/
 		%feature("compactdefaultargs") GetMap;
 		%feature("autodoc", "
 Parameters
 ----------
-theRefMap: bool (optional, default to Standard_True)
+theRefMap: bool (optional, default to true)
 
 Return
 -------
-Resource_DataMapOfAsciiStringAsciiString
+NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Description
 -----------
 Returns internal Ref or User map with parameters.
 ") GetMap;
-		Resource_DataMapOfAsciiStringAsciiString & GetMap(Standard_Boolean theRefMap = Standard_True);
+		NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> & GetMap(bool theRefMap = true);
 
 		/****** Resource_Manager::GetResourcePath ******/
-		/****** md5 signature: e37f4ebfe1a5c28a696f168d5c81f4e2 ******/
+		/****** md5 signature: 8ec97b0941774f1af532b6ba84db294f ******/
 		%feature("compactdefaultargs") GetResourcePath;
 		%feature("autodoc", "
 Parameters
 ----------
 aPath: str
-aName: str
+aName: char *
 isUserDefaults: bool
 
 Return
@@ -383,15 +387,15 @@ Description
 -----------
 Gets the resource file full path by its name. If corresponding environment variable is not set or file doesn't exist returns empty string.
 ") GetResourcePath;
-		static void GetResourcePath(TCollection_AsciiString & aPath, Standard_CString aName, const Standard_Boolean isUserDefaults);
+		static void GetResourcePath(TCollection_AsciiString & aPath, const char * const aName, const bool isUserDefaults);
 
 		/****** Resource_Manager::Integer ******/
-		/****** md5 signature: 459f06c743be8fcf9fa4e5326394951e ******/
+		/****** md5 signature: 584194d9400123264ada4afa76af3f72 ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
+aResourceName: char *
 
 Return
 -------
@@ -401,10 +405,10 @@ Description
 -----------
 Gets the value of an integer resource according to its instance and its type.
 ") Integer;
-		virtual Standard_Integer Integer(Standard_CString aResourceName);
+		virtual int Integer(const char * const aResourceName);
 
 		/****** Resource_Manager::IsInitialized ******/
-		/****** md5 signature: 5dd1a91f52c88ae79187c35d4cdaba30 ******/
+		/****** md5 signature: 01666b35dc0d7af2bf9583d3f531f49b ******/
 		%feature("compactdefaultargs") IsInitialized;
 		%feature("autodoc", "Return
 -------
@@ -414,28 +418,28 @@ Description
 -----------
 Returns true if Resource have been found.
 ") IsInitialized;
-		Standard_Boolean IsInitialized();
+		bool IsInitialized();
 
 		/****** Resource_Manager::Real ******/
-		/****** md5 signature: b6af1db9d303b345bf398c6e044f1093 ******/
+		/****** md5 signature: 485c1977420585efc0a814bef9157457 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
+aResourceName: char *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Gets the value of a real resource according to its instance and its type.
 ") Real;
-		virtual Standard_Real Real(Standard_CString aResourceName);
+		virtual double Real(const char * const aResourceName);
 
 		/****** Resource_Manager::Save ******/
-		/****** md5 signature: c46b0608963cc711253d0dc474525a23 ******/
+		/****** md5 signature: f996f97fb2396128ff775e679d1f393d ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -445,15 +449,15 @@ Description
 -----------
 Save the user resource structure in the specified file. Creates the file if it does not exist.
 ") Save;
-		Standard_Boolean Save();
+		bool Save();
 
 		/****** Resource_Manager::SetResource ******/
-		/****** md5 signature: 5cee39e81388e9738fbd5ea60762445e ******/
+		/****** md5 signature: e67914e473ef1dea1b7777ffc24df903 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
+aResourceName: char *
 aValue: int
 
 Return
@@ -464,16 +468,16 @@ Description
 -----------
 Sets the new value of an integer resource. If the resource does not exist, it is created.
 ") SetResource;
-		virtual void SetResource(Standard_CString aResourceName, const Standard_Integer aValue);
+		virtual void SetResource(const char * const aResourceName, const int aValue);
 
 		/****** Resource_Manager::SetResource ******/
-		/****** md5 signature: 5adf64f7de0821b4e2982633edbf9ea2 ******/
+		/****** md5 signature: 2fd2985326d4dba3a59a1871238d9822 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
-aValue: float
+aResourceName: char *
+aValue: double
 
 Return
 -------
@@ -483,16 +487,16 @@ Description
 -----------
 Sets the new value of a real resource. If the resource does not exist, it is created.
 ") SetResource;
-		virtual void SetResource(Standard_CString aResourceName, const Standard_Real aValue);
+		virtual void SetResource(const char * const aResourceName, const double aValue);
 
 		/****** Resource_Manager::SetResource ******/
-		/****** md5 signature: 8beffa88923a65f02524a44eab47c796 ******/
+		/****** md5 signature: adb01a8eb6820dff2b6da6768f8e9cb5 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
-aValue: str
+aResourceName: char *
+aValue: char *
 
 Return
 -------
@@ -502,16 +506,16 @@ Description
 -----------
 Sets the new value of an CString resource. If the resource does not exist, it is created.
 ") SetResource;
-		virtual void SetResource(Standard_CString aResourceName, Standard_CString aValue);
+		virtual void SetResource(const char * const aResourceName, const char * const aValue);
 
 		/****** Resource_Manager::SetResource ******/
-		/****** md5 signature: c3adf5010bcf4e1022068e87a43da2c6 ******/
+		/****** md5 signature: c304b62ef341ad3812fda92963eed794 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
-aValue: Standard_ExtString
+aResourceName: char *
+aValue: char16_t *
 
 Return
 -------
@@ -521,25 +525,25 @@ Description
 -----------
 Sets the new value of an ExtString resource. If the resource does not exist, it is created.
 ") SetResource;
-		virtual void SetResource(Standard_CString aResourceName, const Standard_ExtString aValue);
+		virtual void SetResource(const char * const aResourceName, const char16_t * const aValue);
 
 		/****** Resource_Manager::Value ******/
-		/****** md5 signature: 704eea869ed3ea373c063217f10964ef ******/
+		/****** md5 signature: fd3c3ee796f2f1f8e284f0c6b2048c88 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-aResourceName: str
+aResourceName: char *
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Gets the value of a CString resource according to its instance and its type.
 ") Value;
-		virtual Standard_CString Value(Standard_CString aResourceName);
+		virtual const char * Value(const char * const aResourceName);
 
 };
 
@@ -558,12 +562,12 @@ Gets the value of a CString resource according to its instance and its type.
 class Resource_Unicode {
 	public:
 		/****** Resource_Unicode::ConvertBig5ToUnicode ******/
-		/****** md5 signature: 4168524e0213960fd803d4807ed33f90 ******/
+		/****** md5 signature: eb43bf8a781206553406661c057ebf92 ******/
 		%feature("compactdefaultargs") ConvertBig5ToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
-fromstr: str
+fromstr: char *
 tostr: str
 
 Return
@@ -574,15 +578,15 @@ Description
 -----------
 Converts non-ASCII CString <fromstr> in Big5 format to Unicode ExtendedString <tostr>.
 ") ConvertBig5ToUnicode;
-		static Standard_Boolean ConvertBig5ToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
+		static bool ConvertBig5ToUnicode(const char * const fromstr, TCollection_ExtendedString & tostr);
 
 		/****** Resource_Unicode::ConvertEUCToUnicode ******/
-		/****** md5 signature: a47f65202dbb4ad94609e631aefd3e71 ******/
+		/****** md5 signature: f088b80a867f96c7b93d95c57c43e58d ******/
 		%feature("compactdefaultargs") ConvertEUCToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
-fromstr: str
+fromstr: char *
 tostr: str
 
 Return
@@ -593,15 +597,15 @@ Description
 -----------
 Converts non-ASCII CString <fromstr> in EUC format to Unicode ExtendedString <tostr>.
 ") ConvertEUCToUnicode;
-		static void ConvertEUCToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
+		static void ConvertEUCToUnicode(const char * const fromstr, TCollection_ExtendedString & tostr);
 
 		/****** Resource_Unicode::ConvertFormatToUnicode ******/
-		/****** md5 signature: 092af2a29361b36b8f1d60b684d8e660 ******/
+		/****** md5 signature: 2f2f55b73b5e1248eff9a863309cc34a ******/
 		%feature("compactdefaultargs") ConvertFormatToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
-theFromStr: str
+theFromStr: char *
 theToStr: str
 
 Return
@@ -612,16 +616,16 @@ Description
 -----------
 Converts the non-ASCII C string (as specified by GetFormat()) to the Unicode string of extended characters.
 ") ConvertFormatToUnicode;
-		static void ConvertFormatToUnicode(Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
+		static void ConvertFormatToUnicode(const char * const theFromStr, TCollection_ExtendedString & theToStr);
 
 		/****** Resource_Unicode::ConvertFormatToUnicode ******/
-		/****** md5 signature: 1a39a61476a07a6c419d95aa2f936c87 ******/
+		/****** md5 signature: 93d219b8f4444f39d9c255402c21b70f ******/
 		%feature("compactdefaultargs") ConvertFormatToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
 theFormat: Resource_FormatType
-theFromStr: str
+theFromStr: char *
 theToStr: str
 
 Return
@@ -634,15 +638,15 @@ Converts the non-ASCII C string in specified format to the Unicode string of ext
 Input parameter: theFormat source encoding 
 Input parameter: theFromStr text to convert @param[out] theToStr destination string.
 ") ConvertFormatToUnicode;
-		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
+		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, const char * const theFromStr, TCollection_ExtendedString & theToStr);
 
 		/****** Resource_Unicode::ConvertGBKToUnicode ******/
-		/****** md5 signature: 55ed525176f6d874f96d41764a2499d6 ******/
+		/****** md5 signature: ff4b19d1fae883ca3c58f7cedec724eb ******/
 		%feature("compactdefaultargs") ConvertGBKToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
-fromstr: str
+fromstr: char *
 tostr: str
 
 Return
@@ -653,15 +657,15 @@ Description
 -----------
 Converts non-ASCII CString <fromstr> in GBK format to Unicode ExtendedString <tostr>.
 ") ConvertGBKToUnicode;
-		static Standard_Boolean ConvertGBKToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
+		static bool ConvertGBKToUnicode(const char * const fromstr, TCollection_ExtendedString & tostr);
 
 		/****** Resource_Unicode::ConvertGBToUnicode ******/
-		/****** md5 signature: a22cad6ea4c1a1e6cd398d067edaa57c ******/
+		/****** md5 signature: be543e43bbba4087e08b0b8a72fe98bd ******/
 		%feature("compactdefaultargs") ConvertGBToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
-fromstr: str
+fromstr: char *
 tostr: str
 
 Return
@@ -672,15 +676,15 @@ Description
 -----------
 Converts non-ASCII CString <fromstr> in GB format to Unicode ExtendedString <tostr>.
 ") ConvertGBToUnicode;
-		static void ConvertGBToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
+		static void ConvertGBToUnicode(const char * const fromstr, TCollection_ExtendedString & tostr);
 
 		/****** Resource_Unicode::ConvertSJISToUnicode ******/
-		/****** md5 signature: 3e6f135c27c0b105b7e7e224b4376205 ******/
+		/****** md5 signature: e299a80c148610969d8622d62c2a8a3f ******/
 		%feature("compactdefaultargs") ConvertSJISToUnicode;
 		%feature("autodoc", "
 Parameters
 ----------
-fromstr: str
+fromstr: char *
 tostr: str
 
 Return
@@ -691,10 +695,10 @@ Description
 -----------
 Converts non-ASCII CString <fromstr> in SJIS format to Unicode ExtendedString <tostr>.
 ") ConvertSJISToUnicode;
-		static void ConvertSJISToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
+		static void ConvertSJISToUnicode(const char * const fromstr, TCollection_ExtendedString & tostr);
 
 		/****** Resource_Unicode::ConvertUnicodeToANSI ******/
-		/****** md5 signature: becd4b24e1324dac8a09502a0f3b35e3 ******/
+		/****** md5 signature: b8883fc14f176d4333fa1b8c29fae3af ******/
 		%feature("compactdefaultargs") ConvertUnicodeToANSI;
 		%feature("autodoc", "
 Parameters
@@ -711,10 +715,10 @@ Description
 -----------
 Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in ANSI format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToANSI;
-		static Standard_Boolean ConvertUnicodeToANSI(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static bool ConvertUnicodeToANSI(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const int maxsize);
 
 		/****** Resource_Unicode::ConvertUnicodeToEUC ******/
-		/****** md5 signature: 3de0636677422237545faabc4b82044a ******/
+		/****** md5 signature: f04835cab34878404c251c1c3b6c21a4 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToEUC;
 		%feature("autodoc", "
 Parameters
@@ -731,10 +735,10 @@ Description
 -----------
 Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in EUC format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToEUC;
-		static Standard_Boolean ConvertUnicodeToEUC(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static bool ConvertUnicodeToEUC(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const int maxsize);
 
 		/****** Resource_Unicode::ConvertUnicodeToFormat ******/
-		/****** md5 signature: 8743e70c9c2a155ce180b78c36c04a71 ******/
+		/****** md5 signature: fd8c2be912705d0d6182a59ff54d93f0 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToFormat;
 		%feature("autodoc", "
 Parameters
@@ -755,10 +759,10 @@ Input parameter: theFormat destination encoding
 Input parameter: theFromStr text to convert @param[out] theToStr destination buffer 
 Input parameter: theMaxSize destination buffer length.
 ") ConvertUnicodeToFormat;
-		static Standard_Boolean ConvertUnicodeToFormat(const Resource_FormatType theFormat, TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
+		static bool ConvertUnicodeToFormat(const Resource_FormatType theFormat, TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const int theMaxSize);
 
 		/****** Resource_Unicode::ConvertUnicodeToFormat ******/
-		/****** md5 signature: 3a0226ee9a6304b9f55b4674dccd26dc ******/
+		/****** md5 signature: 55d66aa57c53dc4180711caa3b05a9a8 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToFormat;
 		%feature("autodoc", "
 Parameters
@@ -777,10 +781,10 @@ Converts the Unicode string of extended characters to the non-ASCII string accor
 Input parameter: theFromStr text to convert @param[out] theToStr destination buffer 
 Input parameter: theMaxSize destination buffer length.
 ") ConvertUnicodeToFormat;
-		static Standard_Boolean ConvertUnicodeToFormat(TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
+		static bool ConvertUnicodeToFormat(TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const int theMaxSize);
 
 		/****** Resource_Unicode::ConvertUnicodeToGB ******/
-		/****** md5 signature: e92423028aa69f039e50fc871d72daf2 ******/
+		/****** md5 signature: eaa9512b9e24f2b8251a8e82073fa65d ******/
 		%feature("compactdefaultargs") ConvertUnicodeToGB;
 		%feature("autodoc", "
 Parameters
@@ -797,10 +801,10 @@ Description
 -----------
 Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in GB format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToGB;
-		static Standard_Boolean ConvertUnicodeToGB(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static bool ConvertUnicodeToGB(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const int maxsize);
 
 		/****** Resource_Unicode::ConvertUnicodeToSJIS ******/
-		/****** md5 signature: 405eb61d326bd40b62e69514a5638a62 ******/
+		/****** md5 signature: 01a91c1ebccc636797d6d5a4b42eb351 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToSJIS;
 		%feature("autodoc", "
 Parameters
@@ -817,7 +821,7 @@ Description
 -----------
 Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in SJIS format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToSJIS;
-		static Standard_Boolean ConvertUnicodeToSJIS(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
+		static bool ConvertUnicodeToSJIS(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const int maxsize);
 
 		/****** Resource_Unicode::GetFormat ******/
 		/****** md5 signature: b7f0b16e429d16aced2ecaaf3804dc38 ******/

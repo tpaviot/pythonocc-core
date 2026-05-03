@@ -47,11 +47,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepbuild.h
 #include<TopoDS_module.hxx>
 #include<TopOpeBRepDS_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopOpeBRepTool_module.hxx>
 #include<gp_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<Geom_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Bnd_module.hxx>
@@ -77,11 +75,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepbuild.h
 %import TopoDS.i
 %import TopOpeBRepDS.i
 %import TopAbs.i
-%import TopTools.i
 %import TopOpeBRepTool.i
 %import gp.i
 %import TCollection.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -117,7 +113,13 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape) NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::Contained;
 %template(TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>;
 %template(TopOpeBRepBuild_ListIteratorOfListOfListOfLoop) NCollection_TListIterator<TopOpeBRepBuild_ListOfLoop>;
 %template(TopOpeBRepBuild_ListIteratorOfListOfLoop) NCollection_TListIterator<opencascade::handle<TopOpeBRepBuild_Loop>>;
@@ -129,12 +131,6 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TopOpeBRepBuild_ListIteratorOfListOfListOfLoop(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TopOpeBRepBuild_ListOfLoop) NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>>;
@@ -143,12 +139,6 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TopOpeBRepBuild_ListIteratorOfListOfLoop(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TopOpeBRepBuild_ListOfPave) NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave>>;
@@ -157,12 +147,6 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TopOpeBRepBuild_ListIteratorOfListOfPave(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(TopOpeBRepBuild_ListOfShapeListOfShape) NCollection_List<TopOpeBRepBuild_ShapeListOfShape>;
@@ -171,12 +155,6 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
@@ -193,9 +171,6 @@ typedef NCollection_List<TopOpeBRepBuild_ListOfLoop> TopOpeBRepBuild_ListOfListO
 typedef NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>> TopOpeBRepBuild_ListOfLoop;
 typedef NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave>> TopOpeBRepBuild_ListOfPave;
 typedef NCollection_List<TopOpeBRepBuild_ShapeListOfShape> TopOpeBRepBuild_ListOfShapeListOfShape;
-typedef TopOpeBRepBuild_Builder * TopOpeBRepBuild_PBuilder;
-typedef TopOpeBRepBuild_GTopo * TopOpeBRepBuild_PGTopo;
-typedef TopOpeBRepBuild_WireEdgeSet * TopOpeBRepBuild_PWireEdgeSet;
 /* end typedefs declaration */
 
 /************************************
@@ -217,14 +192,14 @@ No available documentation.
 		 TopOpeBRepBuild_AreaBuilder();
 
 		/****** TopOpeBRepBuild_AreaBuilder::TopOpeBRepBuild_AreaBuilder ******/
-		/****** md5 signature: 9243fc64bdcbf9c9a77499279feb4fab ******/
+		/****** md5 signature: c04765c45f5e7af5daf6c336c3033cea ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_AreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -234,19 +209,19 @@ Description
 -----------
 Creates a AreaBuilder to build the areas on the shapes described by <LS> using the classifier <LC>.
 ") TopOpeBRepBuild_AreaBuilder;
-		 TopOpeBRepBuild_AreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_AreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_AreaBuilder::ADD_LISTOFLoop_TO_LISTOFLoop ******/
-		/****** md5 signature: 0f728224a023b7bc5f9ab1535bc6d7d6 ******/
+		/****** md5 signature: fff80896510fddb94b9e3d31d6331aaa ******/
 		%feature("compactdefaultargs") ADD_LISTOFLoop_TO_LISTOFLoop;
 		%feature("autodoc", "
 Parameters
 ----------
-LOL1: TopOpeBRepBuild_ListOfLoop
-LOL2: TopOpeBRepBuild_ListOfLoop
-s: Standard_Address (optional, default to NULL)
-s1: Standard_Address (optional, default to NULL)
-s2: Standard_Address (optional, default to NULL)
+LOL1: TopOpeBRepBuild_Loop
+LOL2: TopOpeBRepBuild_Loop
+s: void * (optional, default to nullptr)
+s1: void * (optional, default to nullptr)
+s2: void * (optional, default to nullptr)
 
 Return
 -------
@@ -256,17 +231,17 @@ Description
 -----------
 No available documentation.
 ") ADD_LISTOFLoop_TO_LISTOFLoop;
-		virtual void ADD_LISTOFLoop_TO_LISTOFLoop(TopOpeBRepBuild_ListOfLoop & LOL1, TopOpeBRepBuild_ListOfLoop & LOL2, const Standard_Address s = NULL, const Standard_Address s1 = NULL, const Standard_Address s2 = NULL);
+		virtual void ADD_LISTOFLoop_TO_LISTOFLoop(NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL1, NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL2, void * const s = nullptr, void * const s1 = nullptr, void * const s2 = nullptr);
 
 		/****** TopOpeBRepBuild_AreaBuilder::ADD_Loop_TO_LISTOFLoop ******/
-		/****** md5 signature: 7f801d930c422151abf595d5516e3acd ******/
+		/****** md5 signature: ea1788c38c5b1017ae065cd7a2a8f2cc ******/
 		%feature("compactdefaultargs") ADD_Loop_TO_LISTOFLoop;
 		%feature("autodoc", "
 Parameters
 ----------
 L: TopOpeBRepBuild_Loop
-LOL: TopOpeBRepBuild_ListOfLoop
-s: Standard_Address (optional, default to NULL)
+LOL: TopOpeBRepBuild_Loop
+s: void * (optional, default to nullptr)
 
 Return
 -------
@@ -276,10 +251,10 @@ Description
 -----------
 No available documentation.
 ") ADD_Loop_TO_LISTOFLoop;
-		virtual void ADD_Loop_TO_LISTOFLoop(const opencascade::handle<TopOpeBRepBuild_Loop> & L, TopOpeBRepBuild_ListOfLoop & LOL, const Standard_Address s = NULL);
+		virtual void ADD_Loop_TO_LISTOFLoop(const opencascade::handle<TopOpeBRepBuild_Loop> & L, NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL, void * const s = nullptr);
 
 		/****** TopOpeBRepBuild_AreaBuilder::InitArea ******/
-		/****** md5 signature: 808fca6b296002dbd2d60a31c8878dff ******/
+		/****** md5 signature: 6e55c8e440759d6e5084173b004a49f0 ******/
 		%feature("compactdefaultargs") InitArea;
 		%feature("autodoc", "Return
 -------
@@ -289,17 +264,17 @@ Description
 -----------
 Initialize iteration on areas.
 ") InitArea;
-		Standard_Integer InitArea();
+		int InitArea();
 
 		/****** TopOpeBRepBuild_AreaBuilder::InitAreaBuilder ******/
-		/****** md5 signature: 1f04d5d8338c472f785404953f26b155 ******/
+		/****** md5 signature: b9cb5ebc9ed651afea56368b1c2ea48c ******/
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -309,10 +284,10 @@ Description
 -----------
 Sets a AreaBuilder to find the areas on the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
-		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_AreaBuilder::InitLoop ******/
-		/****** md5 signature: 34a70edd8a84c951b9005f85ed115fa1 ******/
+		/****** md5 signature: 977b7fa943f565a35b832e18a991603c ******/
 		%feature("compactdefaultargs") InitLoop;
 		%feature("autodoc", "Return
 -------
@@ -322,7 +297,7 @@ Description
 -----------
 Initialize iteration on loops of current Area.
 ") InitLoop;
-		Standard_Integer InitLoop();
+		int InitLoop();
 
 		/****** TopOpeBRepBuild_AreaBuilder::Loop ******/
 		/****** md5 signature: e5eaa5279c90b5c8a2825b1e3e9c39f3 ******/
@@ -338,7 +313,7 @@ Returns the current Loop in the current area.
 		const opencascade::handle<TopOpeBRepBuild_Loop> & Loop();
 
 		/****** TopOpeBRepBuild_AreaBuilder::MoreArea ******/
-		/****** md5 signature: 3197b46bada833503eb57c5b5d1da3ea ******/
+		/****** md5 signature: 89b63f829c2180ad2067cc533c8aa683 ******/
 		%feature("compactdefaultargs") MoreArea;
 		%feature("autodoc", "Return
 -------
@@ -348,10 +323,10 @@ Description
 -----------
 No available documentation.
 ") MoreArea;
-		Standard_Boolean MoreArea();
+		bool MoreArea();
 
 		/****** TopOpeBRepBuild_AreaBuilder::MoreLoop ******/
-		/****** md5 signature: 2fc4967f73643c49f8cdf85b9ea9e6ef ******/
+		/****** md5 signature: 1d09652cbf16e916a8b2933556364b9b ******/
 		%feature("compactdefaultargs") MoreLoop;
 		%feature("autodoc", "Return
 -------
@@ -361,7 +336,7 @@ Description
 -----------
 No available documentation.
 ") MoreLoop;
-		Standard_Boolean MoreLoop();
+		bool MoreLoop();
 
 		/****** TopOpeBRepBuild_AreaBuilder::NextArea ******/
 		/****** md5 signature: f05125373cb5bdf4fd14c1f424e6a6c9 ******/
@@ -390,14 +365,14 @@ No available documentation.
 		void NextLoop();
 
 		/****** TopOpeBRepBuild_AreaBuilder::REM_Loop_FROM_LISTOFLoop ******/
-		/****** md5 signature: 1527beb0e780057f4148e949b36faf57 ******/
+		/****** md5 signature: 4852ac7a1859329482e25264eb11421e ******/
 		%feature("compactdefaultargs") REM_Loop_FROM_LISTOFLoop;
 		%feature("autodoc", "
 Parameters
 ----------
-ITLOL: TopOpeBRepBuild_ListIteratorOfListOfLoop
-LOL: TopOpeBRepBuild_ListOfLoop
-s: Standard_Address (optional, default to NULL)
+ITLOL: TopOpeBRepBuild_Loop
+LOL: TopOpeBRepBuild_Loop
+s: void * (optional, default to nullptr)
 
 Return
 -------
@@ -407,7 +382,7 @@ Description
 -----------
 No available documentation.
 ") REM_Loop_FROM_LISTOFLoop;
-		virtual void REM_Loop_FROM_LISTOFLoop(TopOpeBRepBuild_ListIteratorOfListOfLoop & ITLOL, TopOpeBRepBuild_ListOfLoop & LOL, const Standard_Address s = NULL);
+		virtual void REM_Loop_FROM_LISTOFLoop(NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> >::Iterator & ITLOL, NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL, void * const s = nullptr);
 
 };
 
@@ -455,7 +430,7 @@ No available documentation.
 		 TopOpeBRepBuild_BlockBuilder(TopOpeBRepBuild_ShapeSet & SS);
 
 		/****** TopOpeBRepBuild_BlockBuilder::AddElement ******/
-		/****** md5 signature: 5138601942697aa3bedd55e14478a01b ******/
+		/****** md5 signature: 5fe9d7753cdd27373e9ee919b30da27b ******/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "
 Parameters
@@ -470,7 +445,7 @@ Description
 -----------
 No available documentation.
 ") AddElement;
-		Standard_Integer AddElement(const TopoDS_Shape & S);
+		int AddElement(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_BlockBuilder::BlockIterator ******/
 		/****** md5 signature: fd27df20c0300f63d4375379caeab86e ******/
@@ -486,7 +461,7 @@ No available documentation.
 		TopOpeBRepBuild_BlockIterator BlockIterator();
 
 		/****** TopOpeBRepBuild_BlockBuilder::CurrentBlockIsRegular ******/
-		/****** md5 signature: 199f929b6682223271aa2ba5e57c4474 ******/
+		/****** md5 signature: fd738ff2213a4eb12219e2ad0da6893b ******/
 		%feature("compactdefaultargs") CurrentBlockIsRegular;
 		%feature("autodoc", "Return
 -------
@@ -496,7 +471,7 @@ Description
 -----------
 No available documentation.
 ") CurrentBlockIsRegular;
-		Standard_Boolean CurrentBlockIsRegular();
+		bool CurrentBlockIsRegular();
 
 		/****** TopOpeBRepBuild_BlockBuilder::Element ******/
 		/****** md5 signature: 0a9acaa1578577926615c3f44302366b ******/
@@ -517,7 +492,7 @@ Returns the current element of <BI>.
 		const TopoDS_Shape Element(const TopOpeBRepBuild_BlockIterator & BI);
 
 		/****** TopOpeBRepBuild_BlockBuilder::Element ******/
-		/****** md5 signature: 646f7897f4abe50abf9bbbfd3baa3865 ******/
+		/****** md5 signature: 93c9039b3cf02881bf8feaf4b4d3b97c ******/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "
 Parameters
@@ -532,10 +507,10 @@ Description
 -----------
 No available documentation.
 ") Element;
-		const TopoDS_Shape Element(const Standard_Integer I);
+		const TopoDS_Shape Element(const int I);
 
 		/****** TopOpeBRepBuild_BlockBuilder::Element ******/
-		/****** md5 signature: 7d9ff5544871b85b3dd1a066bb8cd87d ******/
+		/****** md5 signature: 8339911510eddfbd55c68d3a1dfbbd96 ******/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "
 Parameters
@@ -550,10 +525,10 @@ Description
 -----------
 No available documentation.
 ") Element;
-		Standard_Integer Element(const TopoDS_Shape & S);
+		int Element(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_BlockBuilder::ElementIsValid ******/
-		/****** md5 signature: 6bc339a51ecc7e64764893b15fc7b1b3 ******/
+		/****** md5 signature: eb912420bc61fcf504169f6fb743547b ******/
 		%feature("compactdefaultargs") ElementIsValid;
 		%feature("autodoc", "
 Parameters
@@ -568,10 +543,10 @@ Description
 -----------
 No available documentation.
 ") ElementIsValid;
-		Standard_Boolean ElementIsValid(const TopOpeBRepBuild_BlockIterator & BI);
+		bool ElementIsValid(const TopOpeBRepBuild_BlockIterator & BI);
 
 		/****** TopOpeBRepBuild_BlockBuilder::ElementIsValid ******/
-		/****** md5 signature: 414d470c2a2958ddc78f78f40dde3846 ******/
+		/****** md5 signature: 42717babdcc500be623d1aa2d6431c2c ******/
 		%feature("compactdefaultargs") ElementIsValid;
 		%feature("autodoc", "
 Parameters
@@ -586,7 +561,7 @@ Description
 -----------
 No available documentation.
 ") ElementIsValid;
-		Standard_Boolean ElementIsValid(const Standard_Integer I);
+		bool ElementIsValid(const int I);
 
 		/****** TopOpeBRepBuild_BlockBuilder::InitBlock ******/
 		/****** md5 signature: f0c2404669f8c44fd2edfb1e9d87f90e ******/
@@ -620,7 +595,7 @@ No available documentation.
 		void MakeBlock(TopOpeBRepBuild_ShapeSet & SS);
 
 		/****** TopOpeBRepBuild_BlockBuilder::MoreBlock ******/
-		/****** md5 signature: aaf846a2437f6611eb7efe7a785cce73 ******/
+		/****** md5 signature: 1df2361996ea08d4148be9542a775fc8 ******/
 		%feature("compactdefaultargs") MoreBlock;
 		%feature("autodoc", "Return
 -------
@@ -630,7 +605,7 @@ Description
 -----------
 No available documentation.
 ") MoreBlock;
-		Standard_Boolean MoreBlock();
+		bool MoreBlock();
 
 		/****** TopOpeBRepBuild_BlockBuilder::NextBlock ******/
 		/****** md5 signature: b92660971dbaee8b274d09e60cf8a5bb ******/
@@ -646,7 +621,7 @@ No available documentation.
 		void NextBlock();
 
 		/****** TopOpeBRepBuild_BlockBuilder::SetValid ******/
-		/****** md5 signature: f1a4fa9bfd750bc5a97bbbc70c3e53c5 ******/
+		/****** md5 signature: 5eea033d8f92023e2b0168c610a04e30 ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -662,10 +637,10 @@ Description
 -----------
 No available documentation.
 ") SetValid;
-		void SetValid(const TopOpeBRepBuild_BlockIterator & BI, const Standard_Boolean isvalid);
+		void SetValid(const TopOpeBRepBuild_BlockIterator & BI, const bool isvalid);
 
 		/****** TopOpeBRepBuild_BlockBuilder::SetValid ******/
-		/****** md5 signature: cc42093d71af6e9ea6813a9f9438708c ******/
+		/****** md5 signature: 70234ddb3ad8415f83cf525a64e014f2 ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -681,7 +656,7 @@ Description
 -----------
 No available documentation.
 ") SetValid;
-		void SetValid(const Standard_Integer I, const Standard_Boolean isvalid);
+		void SetValid(const int I, const bool isvalid);
 
 };
 
@@ -711,7 +686,7 @@ No available documentation.
 		 TopOpeBRepBuild_BlockIterator();
 
 		/****** TopOpeBRepBuild_BlockIterator::TopOpeBRepBuild_BlockIterator ******/
-		/****** md5 signature: 7ce90da34bf0f9b315b74d3ed7a8c184 ******/
+		/****** md5 signature: 4ba2920749d94d519e2baf39839ccbb2 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_BlockIterator;
 		%feature("autodoc", "
 Parameters
@@ -727,10 +702,10 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepBuild_BlockIterator;
-		 TopOpeBRepBuild_BlockIterator(const Standard_Integer Lower, const Standard_Integer Upper);
+		 TopOpeBRepBuild_BlockIterator(const int Lower, const int Upper);
 
 		/****** TopOpeBRepBuild_BlockIterator::Extent ******/
-		/****** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ******/
+		/****** md5 signature: 1c9a99c4f72ae2188a5b950ee752d850 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -740,7 +715,7 @@ Description
 -----------
 No available documentation.
 ") Extent;
-		Standard_Integer Extent();
+		int Extent();
 
 		/****** TopOpeBRepBuild_BlockIterator::Initialize ******/
 		/****** md5 signature: 4c9930c75acb9044902a1f8388d68e73 ******/
@@ -756,7 +731,7 @@ No available documentation.
 		void Initialize();
 
 		/****** TopOpeBRepBuild_BlockIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -766,7 +741,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepBuild_BlockIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -782,7 +757,7 @@ No available documentation.
 		void Next();
 
 		/****** TopOpeBRepBuild_BlockIterator::Value ******/
-		/****** md5 signature: c6d99989077b92200f0377d8b792ba0b ******/
+		/****** md5 signature: c627cada3dfed5ccab6c1f1ff49fb87f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -792,7 +767,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Integer Value();
+		int Value();
 
 };
 
@@ -908,7 +883,7 @@ No available documentation.
 		TopOpeBRepDS_BuildTool & ChangeBuildTool();
 
 		/****** TopOpeBRepBuild_Builder::ChangeClassify ******/
-		/****** md5 signature: a5aae6074b664252bffcb2a758139706 ******/
+		/****** md5 signature: 9276434fa673871dbedd0466f1fd5326 ******/
 		%feature("compactdefaultargs") ChangeClassify;
 		%feature("autodoc", "
 Parameters
@@ -923,10 +898,10 @@ Description
 -----------
 No available documentation.
 ") ChangeClassify;
-		void ChangeClassify(const Standard_Boolean B);
+		void ChangeClassify(const bool B);
 
 		/****** TopOpeBRepBuild_Builder::ChangeMSplit ******/
-		/****** md5 signature: 0cd8e5c34504ef3505f88682bb4c0045 ******/
+		/****** md5 signature: d4771fbe1beb0346d61c376e12a43b65 ******/
 		%feature("compactdefaultargs") ChangeMSplit;
 		%feature("autodoc", "
 Parameters
@@ -935,16 +910,16 @@ s: TopAbs_State
 
 Return
 -------
-TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") ChangeMSplit;
-		TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & ChangeMSplit(const TopAbs_State s);
+		NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> ChangeMSplit(const TopAbs_State s);
 
 		/****** TopOpeBRepBuild_Builder::ChangeSplit ******/
-		/****** md5 signature: edd6d887a880c834367d466790bef748 ******/
+		/****** md5 signature: 2eb63da324e7d202ce2271e4945cc0b3 ******/
 		%feature("compactdefaultargs") ChangeSplit;
 		%feature("autodoc", "
 Parameters
@@ -954,16 +929,16 @@ TB: TopAbs_State
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a ref.on the list of shapes connected to <S> as <TB> split parts of <S>. Mark <S> as split in <TB> parts.
 ") ChangeSplit;
-		TopTools_ListOfShape & ChangeSplit(const TopoDS_Shape & S, const TopAbs_State TB);
+		NCollection_List<TopoDS_Shape> ChangeSplit(const TopoDS_Shape & S, const TopAbs_State TB);
 
 		/****** TopOpeBRepBuild_Builder::Classify ******/
-		/****** md5 signature: 4db5d89b6f433f57d3e991b304cafec2 ******/
+		/****** md5 signature: 22aea0e94c83736c0940aaa5699fce12 ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "Return
 -------
@@ -973,7 +948,7 @@ Description
 -----------
 No available documentation.
 ") Classify;
-		Standard_Boolean Classify();
+		bool Classify();
 
 		/****** TopOpeBRepBuild_Builder::Clear ******/
 		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
@@ -1002,13 +977,13 @@ No available documentation.
 		void ClearMaps();
 
 		/****** TopOpeBRepBuild_Builder::Contains ******/
-		/****** md5 signature: c51b73a3c98ea4548fbbc45282acd899 ******/
+		/****** md5 signature: 619c1ca39b78f8343cda6de00685fc53 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1018,7 +993,7 @@ Description
 -----------
 No available documentation.
 ") Contains;
-		static Standard_Boolean Contains(const TopoDS_Shape & S, const TopTools_ListOfShape & L);
+		static bool Contains(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::DataStructure ******/
 		/****** md5 signature: c5d3d5af4f8db2375e9c48f16eb16363 ******/
@@ -1047,14 +1022,14 @@ No available documentation.
 		void End();
 
 		/****** TopOpeBRepBuild_Builder::FillOnPatches ******/
-		/****** md5 signature: 9caa5991b902eb3c4a7ba1f57d656a05 ******/
+		/****** md5 signature: 0dcf807551c78f542923ce9fa9c481de ******/
 		%feature("compactdefaultargs") FillOnPatches;
 		%feature("autodoc", "
 Parameters
 ----------
-anEdgesON: TopTools_ListOfShape
+anEdgesON: NCollection_List<TopoDS_Shape>
 aBaseFace: TopoDS_Shape
-avoidMap: TopTools_IndexedMapOfOrientedShape
+avoidMap: NCollection_IndexedMap<TopoDS_Shape>
 
 Return
 -------
@@ -1064,17 +1039,17 @@ Description
 -----------
 No available documentation.
 ") FillOnPatches;
-		void FillOnPatches(const TopTools_ListOfShape & anEdgesON, const TopoDS_Shape & aBaseFace, const TopTools_IndexedMapOfOrientedShape & avoidMap);
+		void FillOnPatches(const NCollection_List<TopoDS_Shape> & anEdgesON, const TopoDS_Shape & aBaseFace, const NCollection_IndexedMap<TopoDS_Shape> & avoidMap);
 
 		/****** TopOpeBRepBuild_Builder::FillSecEdgeAncestorMap ******/
-		/****** md5 signature: 7f23f1de287ee408ba99e69609a73e17 ******/
+		/****** md5 signature: b4dd2d4a1f605337ba10d6ec3e0f732f ******/
 		%feature("compactdefaultargs") FillSecEdgeAncestorMap;
 		%feature("autodoc", "
 Parameters
 ----------
 aShapeRank: int
-aMapON: TopTools_MapOfShape
-anAncMap: TopTools_DataMapOfShapeShape
+aMapON: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+anAncMap: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1084,10 +1059,10 @@ Description
 -----------
 Fills anAncMap with pairs (edge,ancestor edge) for each split from the map aMapON for the shape object identified by ShapeRank.
 ") FillSecEdgeAncestorMap;
-		void FillSecEdgeAncestorMap(const Standard_Integer aShapeRank, const TopTools_MapOfShape & aMapON, TopTools_DataMapOfShapeShape & anAncMap);
+		void FillSecEdgeAncestorMap(const int aShapeRank, const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapON, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & anAncMap);
 
 		/****** TopOpeBRepBuild_Builder::FindFacesTouchingEdge ******/
-		/****** md5 signature: 4d02ec9008d82896bf2b6b669f00530c ******/
+		/****** md5 signature: f43e25c235130c5cf227a066b53a270e ******/
 		%feature("compactdefaultargs") FindFacesTouchingEdge;
 		%feature("autodoc", "
 Parameters
@@ -1095,7 +1070,7 @@ Parameters
 aFace: TopoDS_Shape
 anEdge: TopoDS_Shape
 aShRank: int
-aFaces: TopTools_ListOfShape
+aFaces: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1105,10 +1080,10 @@ Description
 -----------
 No available documentation.
 ") FindFacesTouchingEdge;
-		void FindFacesTouchingEdge(const TopoDS_Shape & aFace, const TopoDS_Shape & anEdge, const Standard_Integer aShRank, TopTools_ListOfShape & aFaces);
+		void FindFacesTouchingEdge(const TopoDS_Shape & aFace, const TopoDS_Shape & anEdge, const int aShRank, NCollection_List<TopoDS_Shape> & aFaces);
 
 		/****** TopOpeBRepBuild_Builder::FindIsKPart ******/
-		/****** md5 signature: 2b66da5dd456618adc73ed47b3fcd637 ******/
+		/****** md5 signature: db06608b5ad7e57c9d97c38cf43b8d7f ******/
 		%feature("compactdefaultargs") FindIsKPart;
 		%feature("autodoc", "Return
 -------
@@ -1118,16 +1093,16 @@ Description
 -----------
 No available documentation.
 ") FindIsKPart;
-		Standard_Integer FindIsKPart();
+		int FindIsKPart();
 
 		/****** TopOpeBRepBuild_Builder::FindSameDomain ******/
-		/****** md5 signature: f23cff66b3e3c2705367318a0ba22be6 ******/
+		/****** md5 signature: 067c36f79d7f4a6162f686b3d9df42b1 ******/
 		%feature("compactdefaultargs") FindSameDomain;
 		%feature("autodoc", "
 Parameters
 ----------
-L1: TopTools_ListOfShape
-L2: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
+L2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1137,16 +1112,16 @@ Description
 -----------
 No available documentation.
 ") FindSameDomain;
-		void FindSameDomain(TopTools_ListOfShape & L1, TopTools_ListOfShape & L2);
+		void FindSameDomain(NCollection_List<TopoDS_Shape> & L1, NCollection_List<TopoDS_Shape> & L2);
 
 		/****** TopOpeBRepBuild_Builder::FindSameDomainSameOrientation ******/
-		/****** md5 signature: 320b1588ee71d57919e4f4607dba8362 ******/
+		/****** md5 signature: cab9c8a5287255799df2b0634fdadcad ******/
 		%feature("compactdefaultargs") FindSameDomainSameOrientation;
 		%feature("autodoc", "
 Parameters
 ----------
-LSO: TopTools_ListOfShape
-LDO: TopTools_ListOfShape
+LSO: NCollection_List<TopoDS_Shape>
+LDO: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1156,17 +1131,17 @@ Description
 -----------
 No available documentation.
 ") FindSameDomainSameOrientation;
-		void FindSameDomainSameOrientation(TopTools_ListOfShape & LSO, TopTools_ListOfShape & LDO);
+		void FindSameDomainSameOrientation(NCollection_List<TopoDS_Shape> & LSO, NCollection_List<TopoDS_Shape> & LDO);
 
 		/****** TopOpeBRepBuild_Builder::FindSameRank ******/
-		/****** md5 signature: 429913c3c11cd7676d660bde12f01596 ******/
+		/****** md5 signature: bf94dc3852e32316700b79b1c6427b72 ******/
 		%feature("compactdefaultargs") FindSameRank;
 		%feature("autodoc", "
 Parameters
 ----------
-L1: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
 R: int
-L2: TopTools_ListOfShape
+L2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1176,7 +1151,7 @@ Description
 -----------
 No available documentation.
 ") FindSameRank;
-		void FindSameRank(const TopTools_ListOfShape & L1, const Standard_Integer R, TopTools_ListOfShape & L2);
+		void FindSameRank(const NCollection_List<TopoDS_Shape> & L1, const int R, NCollection_List<TopoDS_Shape> & L2);
 
 		/****** TopOpeBRepBuild_Builder::GClearMaps ******/
 		/****** md5 signature: 7d0a1671079bfaeb1de7b98195821892 ******/
@@ -1192,13 +1167,13 @@ No available documentation.
 		void GClearMaps();
 
 		/****** TopOpeBRepBuild_Builder::GContains ******/
-		/****** md5 signature: 46cc7d6803662cf00cc3d0818f07f41a ******/
+		/****** md5 signature: 2822eaf38af7295b244dbe95fa579215 ******/
 		%feature("compactdefaultargs") GContains;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1208,18 +1183,18 @@ Description
 -----------
 No available documentation.
 ") GContains;
-		static Standard_Boolean GContains(const TopoDS_Shape & S, const TopTools_ListOfShape & L);
+		static bool GContains(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::GCopyList ******/
-		/****** md5 signature: b06ac36cd3f32d5fa8b448cf983d9d15 ******/
+		/****** md5 signature: 49b1243765c757d8044593157e95c7f9 ******/
 		%feature("compactdefaultargs") GCopyList;
 		%feature("autodoc", "
 Parameters
 ----------
-Lin: TopTools_ListOfShape
+Lin: NCollection_List<TopoDS_Shape>
 i1: int
 i2: int
-Lou: TopTools_ListOfShape
+Lou: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1229,16 +1204,16 @@ Description
 -----------
 No available documentation.
 ") GCopyList;
-		static void GCopyList(const TopTools_ListOfShape & Lin, const Standard_Integer i1, const Standard_Integer i2, TopTools_ListOfShape & Lou);
+		static void GCopyList(const NCollection_List<TopoDS_Shape> & Lin, const int i1, const int i2, NCollection_List<TopoDS_Shape> & Lou);
 
 		/****** TopOpeBRepBuild_Builder::GCopyList ******/
-		/****** md5 signature: e2960e8ce90f3207afd4562badb4cf92 ******/
+		/****** md5 signature: f61e5df18995c0ed408a111707f87868 ******/
 		%feature("compactdefaultargs") GCopyList;
 		%feature("autodoc", "
 Parameters
 ----------
-Lin: TopTools_ListOfShape
-Lou: TopTools_ListOfShape
+Lin: NCollection_List<TopoDS_Shape>
+Lou: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1248,17 +1223,17 @@ Description
 -----------
 No available documentation.
 ") GCopyList;
-		static void GCopyList(const TopTools_ListOfShape & Lin, TopTools_ListOfShape & Lou);
+		static void GCopyList(const NCollection_List<TopoDS_Shape> & Lin, NCollection_List<TopoDS_Shape> & Lou);
 
 		/****** TopOpeBRepBuild_Builder::GEDBUMakeEdges ******/
-		/****** md5 signature: 2d508fae94eba8834c31c576b73c98d4 ******/
+		/****** md5 signature: 527ab0862827de7aec469de9ab44c102 ******/
 		%feature("compactdefaultargs") GEDBUMakeEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 EF: TopoDS_Shape
 EDBU: TopOpeBRepBuild_EdgeBuilder
-LOE: TopTools_ListOfShape
+LOE: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1268,18 +1243,18 @@ Description
 -----------
 No available documentation.
 ") GEDBUMakeEdges;
-		void GEDBUMakeEdges(const TopoDS_Shape & EF, TopOpeBRepBuild_EdgeBuilder & EDBU, TopTools_ListOfShape & LOE);
+		void GEDBUMakeEdges(const TopoDS_Shape & EF, TopOpeBRepBuild_EdgeBuilder & EDBU, NCollection_List<TopoDS_Shape> & LOE);
 
 		/****** TopOpeBRepBuild_Builder::GFABUMakeFaces ******/
-		/****** md5 signature: b02ec1c30b5cae76aa0cdd61546395aa ******/
+		/****** md5 signature: 2bba94aa744845412a2bc16beaf04daa ******/
 		%feature("compactdefaultargs") GFABUMakeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 FF: TopoDS_Shape
 FABU: TopOpeBRepBuild_FaceBuilder
-LOF: TopTools_ListOfShape
-MWisOld: TopTools_DataMapOfShapeInteger
+LOF: NCollection_List<TopoDS_Shape>
+MWisOld: NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -1289,7 +1264,7 @@ Description
 -----------
 No available documentation.
 ") GFABUMakeFaces;
-		void GFABUMakeFaces(const TopoDS_Shape & FF, TopOpeBRepBuild_FaceBuilder & FABU, TopTools_ListOfShape & LOF, TopTools_DataMapOfShapeInteger & MWisOld);
+		void GFABUMakeFaces(const TopoDS_Shape & FF, TopOpeBRepBuild_FaceBuilder & FABU, NCollection_List<TopoDS_Shape> & LOF, NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher> & MWisOld);
 
 		/****** TopOpeBRepBuild_Builder::GFillCurveTopologyWES ******/
 		/****** md5 signature: ae6642415017c216585dc55ae9111141 ******/
@@ -1332,13 +1307,13 @@ No available documentation.
 		void GFillCurveTopologyWES(const TopOpeBRepDS_CurveIterator & IT, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GFillEdgePVS ******/
-		/****** md5 signature: 634c5abe6df70f24dbd8c7f0c7bcd9da ******/
+		/****** md5 signature: 2a00b290b054ba98415f1b6baa2b437a ******/
 		%feature("compactdefaultargs") GFillEdgePVS;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
-LE2: TopTools_ListOfShape
+LE2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 PVS: TopOpeBRepBuild_PaveSet
 
@@ -1350,16 +1325,16 @@ Description
 -----------
 No available documentation.
 ") GFillEdgePVS;
-		void GFillEdgePVS(const TopoDS_Shape & E, const TopTools_ListOfShape & LE2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_PaveSet & PVS);
+		void GFillEdgePVS(const TopoDS_Shape & E, const NCollection_List<TopoDS_Shape> & LE2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_PaveSet & PVS);
 
 		/****** TopOpeBRepBuild_Builder::GFillEdgeWES ******/
-		/****** md5 signature: fd1147d0934a90ed5e2dcf2e7b684b69 ******/
+		/****** md5 signature: 0ebf7daf09f8ae68d7b61b768a17cbe8 ******/
 		%feature("compactdefaultargs") GFillEdgeWES;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
-LF2: TopTools_ListOfShape
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -1371,16 +1346,16 @@ Description
 -----------
 No available documentation.
 ") GFillEdgeWES;
-		void GFillEdgeWES(const TopoDS_Shape & E, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillEdgeWES(const TopoDS_Shape & E, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GFillEdgesPVS ******/
-		/****** md5 signature: ab03af6f2a1c5eb53836966cf3a3001e ******/
+		/****** md5 signature: e001a6d8b81d8cd7706d0b9213296840 ******/
 		%feature("compactdefaultargs") GFillEdgesPVS;
 		%feature("autodoc", "
 Parameters
 ----------
-LE1: TopTools_ListOfShape
-LE2: TopTools_ListOfShape
+LE1: NCollection_List<TopoDS_Shape>
+LE2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 PVS: TopOpeBRepBuild_PaveSet
 
@@ -1392,16 +1367,16 @@ Description
 -----------
 No available documentation.
 ") GFillEdgesPVS;
-		void GFillEdgesPVS(const TopTools_ListOfShape & LE1, const TopTools_ListOfShape & LE2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_PaveSet & PVS);
+		void GFillEdgesPVS(const NCollection_List<TopoDS_Shape> & LE1, const NCollection_List<TopoDS_Shape> & LE2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_PaveSet & PVS);
 
 		/****** TopOpeBRepBuild_Builder::GFillFaceSFS ******/
-		/****** md5 signature: 556643c5ae94f766be559e160a55cc16 ******/
+		/****** md5 signature: 7fecd61be72bbe222fbea7b6f8143c07 ******/
 		%feature("compactdefaultargs") GFillFaceSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -1413,16 +1388,16 @@ Description
 -----------
 No available documentation.
 ") GFillFaceSFS;
-		void GFillFaceSFS(const TopoDS_Shape & F1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GFillFaceSFS(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GFillFaceWES ******/
-		/****** md5 signature: 9ca8810fb1baf6fdfa97310b137824ae ******/
+		/****** md5 signature: e36684a3c106875828e1ce089be92d32 ******/
 		%feature("compactdefaultargs") GFillFaceWES;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
-LF2: TopTools_ListOfShape
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -1434,16 +1409,16 @@ Description
 -----------
 No available documentation.
 ") GFillFaceWES;
-		void GFillFaceWES(const TopoDS_Shape & F, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillFaceWES(const TopoDS_Shape & F, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GFillFacesWES ******/
-		/****** md5 signature: c7829748f5779a4a52bfbd6d9f5b01d9 ******/
+		/****** md5 signature: 1e53a6cbd627f4bc9ee41c57331e3f15 ******/
 		%feature("compactdefaultargs") GFillFacesWES;
 		%feature("autodoc", "
 Parameters
 ----------
-LF1: TopTools_ListOfShape
-LF2: TopTools_ListOfShape
+LF1: NCollection_List<TopoDS_Shape>
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -1455,16 +1430,16 @@ Description
 -----------
 No available documentation.
 ") GFillFacesWES;
-		void GFillFacesWES(const TopTools_ListOfShape & LF1, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillFacesWES(const NCollection_List<TopoDS_Shape> & LF1, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GFillFacesWESK ******/
-		/****** md5 signature: ff4c115a720653fe43326186e72861e5 ******/
+		/****** md5 signature: 4cc247343f38cf86761907276921006f ******/
 		%feature("compactdefaultargs") GFillFacesWESK;
 		%feature("autodoc", "
 Parameters
 ----------
-LF1: TopTools_ListOfShape
-LF2: TopTools_ListOfShape
+LF1: NCollection_List<TopoDS_Shape>
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 K: int
@@ -1477,17 +1452,17 @@ Description
 -----------
 No available documentation.
 ") GFillFacesWESK;
-		void GFillFacesWESK(const TopTools_ListOfShape & LF1, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES, const Standard_Integer K);
+		void GFillFacesWESK(const NCollection_List<TopoDS_Shape> & LF1, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES, const int K);
 
 		/****** TopOpeBRepBuild_Builder::GFillFacesWESMakeFaces ******/
-		/****** md5 signature: 795fb99591f790a052a8b4a67ef05423 ******/
+		/****** md5 signature: 528b9328d63482cd24c7756cdd602ad6 ******/
 		%feature("compactdefaultargs") GFillFacesWESMakeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-LF1: TopTools_ListOfShape
-LF2: TopTools_ListOfShape
-LSO: TopTools_ListOfShape
+LF1: NCollection_List<TopoDS_Shape>
+LF2: NCollection_List<TopoDS_Shape>
+LSO: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 
 Return
@@ -1498,17 +1473,17 @@ Description
 -----------
 No available documentation.
 ") GFillFacesWESMakeFaces;
-		void GFillFacesWESMakeFaces(const TopTools_ListOfShape & LF1, const TopTools_ListOfShape & LF2, const TopTools_ListOfShape & LSO, const TopOpeBRepBuild_GTopo & G);
+		void GFillFacesWESMakeFaces(const NCollection_List<TopoDS_Shape> & LF1, const NCollection_List<TopoDS_Shape> & LF2, const NCollection_List<TopoDS_Shape> & LSO, const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_Builder::GFillONPartsWES ******/
-		/****** md5 signature: 9b12b39ea245e6874fcb1709b9bce305 ******/
+		/****** md5 signature: c25bf75e58712521dcbc12868b9e04f3 ******/
 		%feature("compactdefaultargs") GFillONPartsWES;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
 G: TopOpeBRepBuild_GTopo
-LSclass: TopTools_ListOfShape
+LSclass: NCollection_List<TopoDS_Shape>
 WES: TopOpeBRepBuild_WireEdgeSet
 
 Return
@@ -1519,7 +1494,7 @@ Description
 -----------
 No available documentation.
 ") GFillONPartsWES;
-		void GFillONPartsWES(const TopoDS_Shape & F, const TopOpeBRepBuild_GTopo & G, const TopTools_ListOfShape & LSclass, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillONPartsWES(const TopoDS_Shape & F, const TopOpeBRepBuild_GTopo & G, const NCollection_List<TopoDS_Shape> & LSclass, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GFillPointTopologyPVS ******/
 		/****** md5 signature: 00c325991f266de203dfe864e34d835b ******/
@@ -1563,13 +1538,13 @@ No available documentation.
 		void GFillPointTopologyPVS(const TopoDS_Shape & E, const TopOpeBRepDS_PointIterator & IT, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_PaveSet & PVS);
 
 		/****** TopOpeBRepBuild_Builder::GFillShellSFS ******/
-		/****** md5 signature: 8c871168f4d07f3042cf5e83f853c6ee ******/
+		/****** md5 signature: 1bd7ab2d8256ea26ea77a80a72c31461 ******/
 		%feature("compactdefaultargs") GFillShellSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 SH1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -1581,16 +1556,16 @@ Description
 -----------
 No available documentation.
 ") GFillShellSFS;
-		virtual void GFillShellSFS(const TopoDS_Shape & SH1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		virtual void GFillShellSFS(const TopoDS_Shape & SH1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GFillSolidSFS ******/
-		/****** md5 signature: 0e807efbe5f0fb9efb5a90e8b027fda3 ******/
+		/****** md5 signature: 34f7f48a5b56e2e34c279c73b10986f3 ******/
 		%feature("compactdefaultargs") GFillSolidSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 SO1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -1602,16 +1577,16 @@ Description
 -----------
 No available documentation.
 ") GFillSolidSFS;
-		virtual void GFillSolidSFS(const TopoDS_Shape & SO1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		virtual void GFillSolidSFS(const TopoDS_Shape & SO1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GFillSolidsSFS ******/
-		/****** md5 signature: 7986135ef4ea4d87af654c5a1700cf56 ******/
+		/****** md5 signature: 4d38e429c90a5d4266e887f89e28e6c2 ******/
 		%feature("compactdefaultargs") GFillSolidsSFS;
 		%feature("autodoc", "
 Parameters
 ----------
-LSO1: TopTools_ListOfShape
-LSO2: TopTools_ListOfShape
+LSO1: NCollection_List<TopoDS_Shape>
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -1623,7 +1598,7 @@ Description
 -----------
 No available documentation.
 ") GFillSolidsSFS;
-		void GFillSolidsSFS(const TopTools_ListOfShape & LSO1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GFillSolidsSFS(const NCollection_List<TopoDS_Shape> & LSO1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GFillSurfaceTopologySFS ******/
 		/****** md5 signature: 93637eed413d6909c90ac82bad8c8ddb ******/
@@ -1666,13 +1641,13 @@ No available documentation.
 		void GFillSurfaceTopologySFS(const TopOpeBRepDS_SurfaceIterator & IT, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GFillWireWES ******/
-		/****** md5 signature: 3fb6de1a48bf6c55f86e3818f04365ec ******/
+		/****** md5 signature: b2d05fff5ae7241aac0f407ee7b8025d ******/
 		%feature("compactdefaultargs") GFillWireWES;
 		%feature("autodoc", "
 Parameters
 ----------
 W: TopoDS_Shape
-LF2: TopTools_ListOfShape
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -1684,17 +1659,17 @@ Description
 -----------
 No available documentation.
 ") GFillWireWES;
-		void GFillWireWES(const TopoDS_Shape & W, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillWireWES(const TopoDS_Shape & W, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GFindSamDom ******/
-		/****** md5 signature: af7d2bf2ceac84acbfd2f8d1edbf0a62 ******/
+		/****** md5 signature: 9d90c1f5163033dd3db833192264be73 ******/
 		%feature("compactdefaultargs") GFindSamDom;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-L1: TopTools_ListOfShape
-L2: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
+L2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1704,16 +1679,16 @@ Description
 -----------
 No available documentation.
 ") GFindSamDom;
-		void GFindSamDom(const TopoDS_Shape & S, TopTools_ListOfShape & L1, TopTools_ListOfShape & L2);
+		void GFindSamDom(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & L1, NCollection_List<TopoDS_Shape> & L2);
 
 		/****** TopOpeBRepBuild_Builder::GFindSamDom ******/
-		/****** md5 signature: ba5488e7697e59f33a0fa7d8d881f80c ******/
+		/****** md5 signature: 1eba3901a554cc2e1c28a38b3194f84b ******/
 		%feature("compactdefaultargs") GFindSamDom;
 		%feature("autodoc", "
 Parameters
 ----------
-L1: TopTools_ListOfShape
-L2: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
+L2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1723,17 +1698,17 @@ Description
 -----------
 No available documentation.
 ") GFindSamDom;
-		void GFindSamDom(TopTools_ListOfShape & L1, TopTools_ListOfShape & L2);
+		void GFindSamDom(NCollection_List<TopoDS_Shape> & L1, NCollection_List<TopoDS_Shape> & L2);
 
 		/****** TopOpeBRepBuild_Builder::GFindSamDomSODO ******/
-		/****** md5 signature: f417eb4612804a0a77c70959899e8997 ******/
+		/****** md5 signature: 408cdbc0794c50d8b8b5ed622a625253 ******/
 		%feature("compactdefaultargs") GFindSamDomSODO;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LSO: TopTools_ListOfShape
-LDO: TopTools_ListOfShape
+LSO: NCollection_List<TopoDS_Shape>
+LDO: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1743,16 +1718,16 @@ Description
 -----------
 No available documentation.
 ") GFindSamDomSODO;
-		void GFindSamDomSODO(const TopoDS_Shape & S, TopTools_ListOfShape & LSO, TopTools_ListOfShape & LDO);
+		void GFindSamDomSODO(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LSO, NCollection_List<TopoDS_Shape> & LDO);
 
 		/****** TopOpeBRepBuild_Builder::GFindSamDomSODO ******/
-		/****** md5 signature: df64d32fd466f3d1173dc6e7aa708d31 ******/
+		/****** md5 signature: 36651507de027ade89827d4abc464ebb ******/
 		%feature("compactdefaultargs") GFindSamDomSODO;
 		%feature("autodoc", "
 Parameters
 ----------
-LSO: TopTools_ListOfShape
-LDO: TopTools_ListOfShape
+LSO: NCollection_List<TopoDS_Shape>
+LDO: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1762,17 +1737,17 @@ Description
 -----------
 No available documentation.
 ") GFindSamDomSODO;
-		void GFindSamDomSODO(TopTools_ListOfShape & LSO, TopTools_ListOfShape & LDO);
+		void GFindSamDomSODO(NCollection_List<TopoDS_Shape> & LSO, NCollection_List<TopoDS_Shape> & LDO);
 
 		/****** TopOpeBRepBuild_Builder::GFindSameRank ******/
-		/****** md5 signature: bf10ceb58a6f2483d4c0ce84fbed0d89 ******/
+		/****** md5 signature: d23a696c97892bf5aaf3f311767e0508 ******/
 		%feature("compactdefaultargs") GFindSameRank;
 		%feature("autodoc", "
 Parameters
 ----------
-L1: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
 R: int
-L2: TopTools_ListOfShape
+L2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1782,10 +1757,10 @@ Description
 -----------
 No available documentation.
 ") GFindSameRank;
-		void GFindSameRank(const TopTools_ListOfShape & L1, const Standard_Integer R, TopTools_ListOfShape & L2);
+		void GFindSameRank(const NCollection_List<TopoDS_Shape> & L1, const int R, NCollection_List<TopoDS_Shape> & L2);
 
 		/****** TopOpeBRepBuild_Builder::GIsShapeOf ******/
-		/****** md5 signature: 65b1f470122d44340803f13c9c21611c ******/
+		/****** md5 signature: 75f37e47b5d46901e16db368e08f4789 ******/
 		%feature("compactdefaultargs") GIsShapeOf;
 		%feature("autodoc", "
 Parameters
@@ -1801,16 +1776,16 @@ Description
 -----------
 No available documentation.
 ") GIsShapeOf;
-		Standard_Boolean GIsShapeOf(const TopoDS_Shape & S, const Standard_Integer I12);
+		bool GIsShapeOf(const TopoDS_Shape & S, const int I12);
 
 		/****** TopOpeBRepBuild_Builder::GKeepShape ******/
-		/****** md5 signature: b415d5c6da215f4878f9307b8b39c375 ******/
+		/****** md5 signature: 6287583e1d12840c2b1f50aa53c3924a ******/
 		%feature("compactdefaultargs") GKeepShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Lref: TopTools_ListOfShape
+Lref: NCollection_List<TopoDS_Shape>
 T: TopAbs_State
 
 Return
@@ -1821,16 +1796,16 @@ Description
 -----------
 No available documentation.
 ") GKeepShape;
-		Standard_Boolean GKeepShape(const TopoDS_Shape & S, const TopTools_ListOfShape & Lref, const TopAbs_State T);
+		bool GKeepShape(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & Lref, const TopAbs_State T);
 
 		/****** TopOpeBRepBuild_Builder::GKeepShape1 ******/
-		/****** md5 signature: 5dc090b1ec14d0a083a1a17d0e58324a ******/
+		/****** md5 signature: cb12b2b10f6da81d7aabffdff0eb2f83 ******/
 		%feature("compactdefaultargs") GKeepShape1;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Lref: TopTools_ListOfShape
+Lref: NCollection_List<TopoDS_Shape>
 T: TopAbs_State
 
 Return
@@ -1841,19 +1816,19 @@ Description
 -----------
 return True if S is classified <T> / Lref shapes.
 ") GKeepShape1;
-		Standard_Boolean GKeepShape1(const TopoDS_Shape & S, const TopTools_ListOfShape & Lref, const TopAbs_State T, TopAbs_State &OutValue);
+		bool GKeepShape1(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & Lref, const TopAbs_State T, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::GKeepShapes ******/
-		/****** md5 signature: d7615d0c7d4afa2e48a8e2f64c8a8673 ******/
+		/****** md5 signature: 3a0ec35b9ac7b6f659a7f3f1210b2093 ******/
 		%feature("compactdefaultargs") GKeepShapes;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Lref: TopTools_ListOfShape
+Lref: NCollection_List<TopoDS_Shape>
 T: TopAbs_State
-Lin: TopTools_ListOfShape
-Lou: TopTools_ListOfShape
+Lin: NCollection_List<TopoDS_Shape>
+Lou: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -1863,7 +1838,7 @@ Description
 -----------
 add to Lou the shapes of Lin classified <T> / Lref shapes. Lou is not cleared. (S is a dummy trace argument).
 ") GKeepShapes;
-		void GKeepShapes(const TopoDS_Shape & S, const TopTools_ListOfShape & Lref, const TopAbs_State T, const TopTools_ListOfShape & Lin, TopTools_ListOfShape & Lou);
+		void GKeepShapes(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & Lref, const TopAbs_State T, const NCollection_List<TopoDS_Shape> & Lin, NCollection_List<TopoDS_Shape> & Lou);
 
 		/****** TopOpeBRepBuild_Builder::GMapShapes ******/
 		/****** md5 signature: 44ee55cccd1f2351430fc6c01a780ed0 ******/
@@ -1905,13 +1880,13 @@ No available documentation.
 		void GMergeEdgeWES(const TopoDS_Shape & E, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GMergeEdges ******/
-		/****** md5 signature: adce7aa3e7bb67fe80c20378909044c4 ******/
+		/****** md5 signature: 64861988a847c3795558ebe5ea4fc371 ******/
 		%feature("compactdefaultargs") GMergeEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-LE1: TopTools_ListOfShape
-LE2: TopTools_ListOfShape
+LE1: NCollection_List<TopoDS_Shape>
+LE2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 
 Return
@@ -1922,7 +1897,7 @@ Description
 -----------
 No available documentation.
 ") GMergeEdges;
-		void GMergeEdges(const TopTools_ListOfShape & LE1, const TopTools_ListOfShape & LE2, const TopOpeBRepBuild_GTopo & G);
+		void GMergeEdges(const NCollection_List<TopoDS_Shape> & LE1, const NCollection_List<TopoDS_Shape> & LE2, const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_Builder::GMergeFaceSFS ******/
 		/****** md5 signature: d5d3648aa42cd86a44acaab0e55b8c1a ******/
@@ -1945,13 +1920,13 @@ No available documentation.
 		void GMergeFaceSFS(const TopoDS_Shape & F, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GMergeFaces ******/
-		/****** md5 signature: 71fc21d27bece995f5bc30f6acb7fbde ******/
+		/****** md5 signature: eefcc3df84a794bed645c660121fc977 ******/
 		%feature("compactdefaultargs") GMergeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-LF1: TopTools_ListOfShape
-LF2: TopTools_ListOfShape
+LF1: NCollection_List<TopoDS_Shape>
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 
 Return
@@ -1962,16 +1937,16 @@ Description
 -----------
 No available documentation.
 ") GMergeFaces;
-		void GMergeFaces(const TopTools_ListOfShape & LF1, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G);
+		void GMergeFaces(const NCollection_List<TopoDS_Shape> & LF1, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_Builder::GMergeSolids ******/
-		/****** md5 signature: 0cc3e18b3dbf191a704ebcd3d72ccece ******/
+		/****** md5 signature: 1bd390c213acfdf2f6809ff44ecbae4b ******/
 		%feature("compactdefaultargs") GMergeSolids;
 		%feature("autodoc", "
 Parameters
 ----------
-LSO1: TopTools_ListOfShape
-LSO2: TopTools_ListOfShape
+LSO1: NCollection_List<TopoDS_Shape>
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 
 Return
@@ -1982,17 +1957,17 @@ Description
 -----------
 No available documentation.
 ") GMergeSolids;
-		void GMergeSolids(const TopTools_ListOfShape & LSO1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G);
+		void GMergeSolids(const NCollection_List<TopoDS_Shape> & LSO1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_Builder::GPVSMakeEdges ******/
-		/****** md5 signature: e13fee7dea779779b8dd50ed1b254f70 ******/
+		/****** md5 signature: eb3f937080dae972cfc4ec233b58a1cb ******/
 		%feature("compactdefaultargs") GPVSMakeEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 EF: TopoDS_Shape
 PVS: TopOpeBRepBuild_PaveSet
-LOE: TopTools_ListOfShape
+LOE: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2002,10 +1977,10 @@ Description
 -----------
 No available documentation.
 ") GPVSMakeEdges;
-		void GPVSMakeEdges(const TopoDS_Shape & EF, TopOpeBRepBuild_PaveSet & PVS, TopTools_ListOfShape & LOE);
+		void GPVSMakeEdges(const TopoDS_Shape & EF, TopOpeBRepBuild_PaveSet & PVS, NCollection_List<TopoDS_Shape> & LOE);
 
 		/****** TopOpeBRepBuild_Builder::GParamOnReference ******/
-		/****** md5 signature: 9847fbb030b2aee5abc523b359584894 ******/
+		/****** md5 signature: 2e0c78b5eb444ed3fd8a408dee9e53d2 ******/
 		%feature("compactdefaultargs") GParamOnReference;
 		%feature("autodoc", "
 Parameters
@@ -2015,23 +1990,23 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
+P: double
 
 Description
 -----------
 No available documentation.
 ") GParamOnReference;
-		Standard_Boolean GParamOnReference(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue);
+		bool GParamOnReference(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::GSFSMakeSolids ******/
-		/****** md5 signature: db1d056e5bece47d27ca83d676adb94e ******/
+		/****** md5 signature: 031354c24419fa93429304be8098c564 ******/
 		%feature("compactdefaultargs") GSFSMakeSolids;
 		%feature("autodoc", "
 Parameters
 ----------
 SOF: TopoDS_Shape
 SFS: TopOpeBRepBuild_ShellFaceSet
-LOSO: TopTools_ListOfShape
+LOSO: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2041,17 +2016,17 @@ Description
 -----------
 No available documentation.
 ") GSFSMakeSolids;
-		void GSFSMakeSolids(const TopoDS_Shape & SOF, TopOpeBRepBuild_ShellFaceSet & SFS, TopTools_ListOfShape & LOSO);
+		void GSFSMakeSolids(const TopoDS_Shape & SOF, TopOpeBRepBuild_ShellFaceSet & SFS, NCollection_List<TopoDS_Shape> & LOSO);
 
 		/****** TopOpeBRepBuild_Builder::GSOBUMakeSolids ******/
-		/****** md5 signature: ba8db62caccdc4eee36ba51b08df60ab ******/
+		/****** md5 signature: 5a014108c6abc23615a0ba533e922792 ******/
 		%feature("compactdefaultargs") GSOBUMakeSolids;
 		%feature("autodoc", "
 Parameters
 ----------
 SOF: TopoDS_Shape
 SOBU: TopOpeBRepBuild_SolidBuilder
-LOSO: TopTools_ListOfShape
+LOSO: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2061,10 +2036,10 @@ Description
 -----------
 No available documentation.
 ") GSOBUMakeSolids;
-		void GSOBUMakeSolids(const TopoDS_Shape & SOF, TopOpeBRepBuild_SolidBuilder & SOBU, TopTools_ListOfShape & LOSO);
+		void GSOBUMakeSolids(const TopoDS_Shape & SOF, TopOpeBRepBuild_SolidBuilder & SOBU, NCollection_List<TopoDS_Shape> & LOSO);
 
 		/****** TopOpeBRepBuild_Builder::GShapeRank ******/
-		/****** md5 signature: 50e58ef919305987be74b047315f558b ******/
+		/****** md5 signature: 3aac5258e88c5cf4239265696b9c70bb ******/
 		%feature("compactdefaultargs") GShapeRank;
 		%feature("autodoc", "
 Parameters
@@ -2079,17 +2054,17 @@ Description
 -----------
 No available documentation.
 ") GShapeRank;
-		Standard_Integer GShapeRank(const TopoDS_Shape & S);
+		int GShapeRank(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::GSplitEdge ******/
-		/****** md5 signature: 8bedb809ac8a6f90c33de9e5495d1f84 ******/
+		/****** md5 signature: 60cc0618e9261e9770dec21cf66993ea ******/
 		%feature("compactdefaultargs") GSplitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
 G: TopOpeBRepBuild_GTopo
-LSclass: TopTools_ListOfShape
+LSclass: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2099,16 +2074,16 @@ Description
 -----------
 No available documentation.
 ") GSplitEdge;
-		void GSplitEdge(const TopoDS_Shape & E, const TopOpeBRepBuild_GTopo & G, const TopTools_ListOfShape & LSclass);
+		void GSplitEdge(const TopoDS_Shape & E, const TopOpeBRepBuild_GTopo & G, const NCollection_List<TopoDS_Shape> & LSclass);
 
 		/****** TopOpeBRepBuild_Builder::GSplitEdgeWES ******/
-		/****** md5 signature: 5827cd13a06bac9d9c5c3fb242006875 ******/
+		/****** md5 signature: 1af600445a1f78072a8abaab2b759042 ******/
 		%feature("compactdefaultargs") GSplitEdgeWES;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
-LF2: TopTools_ListOfShape
+LF2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -2120,17 +2095,17 @@ Description
 -----------
 No available documentation.
 ") GSplitEdgeWES;
-		void GSplitEdgeWES(const TopoDS_Shape & E, const TopTools_ListOfShape & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GSplitEdgeWES(const TopoDS_Shape & E, const NCollection_List<TopoDS_Shape> & LF2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder::GSplitFace ******/
-		/****** md5 signature: d42148f219db69b6ef8e7ac16c38a88a ******/
+		/****** md5 signature: 6a836ff722657ad38194533310ab7d20 ******/
 		%feature("compactdefaultargs") GSplitFace;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
 G: TopOpeBRepBuild_GTopo
-LSclass: TopTools_ListOfShape
+LSclass: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2140,16 +2115,16 @@ Description
 -----------
 No available documentation.
 ") GSplitFace;
-		void GSplitFace(const TopoDS_Shape & F, const TopOpeBRepBuild_GTopo & G, const TopTools_ListOfShape & LSclass);
+		void GSplitFace(const TopoDS_Shape & F, const TopOpeBRepBuild_GTopo & G, const NCollection_List<TopoDS_Shape> & LSclass);
 
 		/****** TopOpeBRepBuild_Builder::GSplitFaceSFS ******/
-		/****** md5 signature: 1d247a4e2475afb1cf801db0ff601e15 ******/
+		/****** md5 signature: d4d0deefa2c06eae870c95833d372fd6 ******/
 		%feature("compactdefaultargs") GSplitFaceSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LSclass: TopTools_ListOfShape
+LSclass: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -2161,10 +2136,10 @@ Description
 -----------
 No available documentation.
 ") GSplitFaceSFS;
-		void GSplitFaceSFS(const TopoDS_Shape & F1, const TopTools_ListOfShape & LSclass, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GSplitFaceSFS(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LSclass, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder::GTakeCommonOfDiff ******/
-		/****** md5 signature: 5f4fe6cce2285553c8581988a4778c4b ******/
+		/****** md5 signature: 981561b856928c26ab3983da1f5acb12 ******/
 		%feature("compactdefaultargs") GTakeCommonOfDiff;
 		%feature("autodoc", "
 Parameters
@@ -2179,10 +2154,10 @@ Description
 -----------
 No available documentation.
 ") GTakeCommonOfDiff;
-		static Standard_Boolean GTakeCommonOfDiff(const TopOpeBRepBuild_GTopo & G);
+		static bool GTakeCommonOfDiff(const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_Builder::GTakeCommonOfSame ******/
-		/****** md5 signature: 1560b9b686284883b2c68bf589db4aa6 ******/
+		/****** md5 signature: 15ecad1f50ec7cb71476dc3c4acc7749 ******/
 		%feature("compactdefaultargs") GTakeCommonOfSame;
 		%feature("autodoc", "
 Parameters
@@ -2197,10 +2172,10 @@ Description
 -----------
 No available documentation.
 ") GTakeCommonOfSame;
-		static Standard_Boolean GTakeCommonOfSame(const TopOpeBRepBuild_GTopo & G);
+		static bool GTakeCommonOfSame(const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_Builder::GToMerge ******/
-		/****** md5 signature: 2a6bce4f6bb6f85fb0033f3a27aa7994 ******/
+		/****** md5 signature: 741ab5e43dcfd2020193d2b297eb459e ******/
 		%feature("compactdefaultargs") GToMerge;
 		%feature("autodoc", "
 Parameters
@@ -2215,10 +2190,10 @@ Description
 -----------
 No available documentation.
 ") GToMerge;
-		Standard_Boolean GToMerge(const TopoDS_Shape & S);
+		bool GToMerge(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::GToSplit ******/
-		/****** md5 signature: de96f70b42f624b5908be956d220a4c6 ******/
+		/****** md5 signature: a206dcc345e6b976afd88fa01980d4ac ******/
 		%feature("compactdefaultargs") GToSplit;
 		%feature("autodoc", "
 Parameters
@@ -2234,17 +2209,17 @@ Description
 -----------
 No available documentation.
 ") GToSplit;
-		Standard_Boolean GToSplit(const TopoDS_Shape & S, const TopAbs_State TB);
+		bool GToSplit(const TopoDS_Shape & S, const TopAbs_State TB);
 
 		/****** TopOpeBRepBuild_Builder::GWESMakeFaces ******/
-		/****** md5 signature: f8e71e0228a1905ac04f8e3a9ab05f1e ******/
+		/****** md5 signature: 69933900bbbcc0f2889dbae61f42b035 ******/
 		%feature("compactdefaultargs") GWESMakeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 FF: TopoDS_Shape
 WES: TopOpeBRepBuild_WireEdgeSet
-LOF: TopTools_ListOfShape
+LOF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2254,10 +2229,10 @@ Description
 -----------
 No available documentation.
 ") GWESMakeFaces;
-		virtual void GWESMakeFaces(const TopoDS_Shape & FF, TopOpeBRepBuild_WireEdgeSet & WES, TopTools_ListOfShape & LOF);
+		virtual void GWESMakeFaces(const TopoDS_Shape & FF, TopOpeBRepBuild_WireEdgeSet & WES, NCollection_List<TopoDS_Shape> & LOF);
 
 		/****** TopOpeBRepBuild_Builder::GcheckNBOUNDS ******/
-		/****** md5 signature: 0c398179d54225dbf7f39289ac59dd49 ******/
+		/****** md5 signature: e0c71a6034f948ea269a09f89c3fbaf3 ******/
 		%feature("compactdefaultargs") GcheckNBOUNDS;
 		%feature("autodoc", "
 Parameters
@@ -2272,7 +2247,7 @@ Description
 -----------
 No available documentation.
 ") GcheckNBOUNDS;
-		static Standard_Boolean GcheckNBOUNDS(const TopoDS_Shape & E);
+		static bool GcheckNBOUNDS(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_Builder::GdumpEDBU ******/
 		/****** md5 signature: 28397c3153ddcc7446585594598b119d ******/
@@ -2293,13 +2268,13 @@ No available documentation.
 		void GdumpEDBU(TopOpeBRepBuild_EdgeBuilder & EB);
 
 		/****** TopOpeBRepBuild_Builder::GdumpEDG ******/
-		/****** md5 signature: be64a9f73152b4673817b4eb4ae93ac3 ******/
+		/****** md5 signature: a45138a34910627c8fdd1b688d7a8465 ******/
 		%feature("compactdefaultargs") GdumpEDG;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-str: Standard_Address (optional, default to NULL)
+str: void * (optional, default to nullptr)
 
 Return
 -------
@@ -2309,17 +2284,17 @@ Description
 -----------
 No available documentation.
 ") GdumpEDG;
-		void GdumpEDG(const TopoDS_Shape & S, const Standard_Address str = NULL);
+		void GdumpEDG(const TopoDS_Shape & S, void * const str = nullptr);
 
 		/****** TopOpeBRepBuild_Builder::GdumpEDGVER ******/
-		/****** md5 signature: 2dfe06e9c8a8e600a174f310a7b53225 ******/
+		/****** md5 signature: 67bf466aba8bafc852ad5f513fbe7475 ******/
 		%feature("compactdefaultargs") GdumpEDGVER;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
 V: TopoDS_Shape
-str: Standard_Address (optional, default to NULL)
+str: void * (optional, default to nullptr)
 
 Return
 -------
@@ -2329,7 +2304,7 @@ Description
 -----------
 No available documentation.
 ") GdumpEDGVER;
-		void GdumpEDGVER(const TopoDS_Shape & E, const TopoDS_Shape & V, const Standard_Address str = NULL);
+		void GdumpEDGVER(const TopoDS_Shape & E, const TopoDS_Shape & V, void * const str = nullptr);
 
 		/****** TopOpeBRepBuild_Builder::GdumpEXP ******/
 		/****** md5 signature: dadc89986f33462511f8e7b7dbb93260 ******/
@@ -2368,12 +2343,12 @@ No available documentation.
 		void GdumpFABU(TopOpeBRepBuild_FaceBuilder & FB);
 
 		/****** TopOpeBRepBuild_Builder::GdumpLS ******/
-		/****** md5 signature: de4e9a197255890473eaead8932bd5dc ******/
+		/****** md5 signature: cd1ae18564a358e63f245c751f6a4da6 ******/
 		%feature("compactdefaultargs") GdumpLS;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2383,16 +2358,16 @@ Description
 -----------
 No available documentation.
 ") GdumpLS;
-		void GdumpLS(const TopTools_ListOfShape & L);
+		void GdumpLS(const NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::GdumpORIPARPNT ******/
-		/****** md5 signature: 310a0dc837467436a52e5998225e87cc ******/
+		/****** md5 signature: 66fc8790cf6e13a13131dce956fd9f10 ******/
 		%feature("compactdefaultargs") GdumpORIPARPNT;
 		%feature("autodoc", "
 Parameters
 ----------
 o: TopAbs_Orientation
-p: float
+p: double
 Pnt: gp_Pnt
 
 Return
@@ -2403,7 +2378,7 @@ Description
 -----------
 No available documentation.
 ") GdumpORIPARPNT;
-		static void GdumpORIPARPNT(const TopAbs_Orientation o, const Standard_Real p, const gp_Pnt & Pnt);
+		static void GdumpORIPARPNT(const TopAbs_Orientation o, const double p, const gp_Pnt & Pnt);
 
 		/****** TopOpeBRepBuild_Builder::GdumpPNT ******/
 		/****** md5 signature: b2e7b611534f1c09c9a5a7bdba7bfbc9 ******/
@@ -2424,13 +2399,13 @@ No available documentation.
 		static void GdumpPNT(const gp_Pnt & P);
 
 		/****** TopOpeBRepBuild_Builder::GdumpSAMDOM ******/
-		/****** md5 signature: acb66af2050b03703523e7e9213a6fb2 ******/
+		/****** md5 signature: 116319ec581b326810280644921f67dd ******/
 		%feature("compactdefaultargs") GdumpSAMDOM;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
-str: Standard_Address (optional, default to NULL)
+L: NCollection_List<TopoDS_Shape>
+str: void * (optional, default to nullptr)
 
 Return
 -------
@@ -2440,16 +2415,16 @@ Description
 -----------
 No available documentation.
 ") GdumpSAMDOM;
-		void GdumpSAMDOM(const TopTools_ListOfShape & L, const Standard_Address str = NULL);
+		void GdumpSAMDOM(const NCollection_List<TopoDS_Shape> & L, void * const str = nullptr);
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHA ******/
-		/****** md5 signature: b33d08b145193c94207fe09507eada96 ******/
+		/****** md5 signature: 291053d47370dd34347df65dede1d9ea ******/
 		%feature("compactdefaultargs") GdumpSHA;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-str: Standard_Address (optional, default to NULL)
+str: void * (optional, default to nullptr)
 
 Return
 -------
@@ -2459,16 +2434,16 @@ Description
 -----------
 No available documentation.
 ") GdumpSHA;
-		void GdumpSHA(const TopoDS_Shape & S, const Standard_Address str = NULL);
+		void GdumpSHA(const TopoDS_Shape & S, void * const str = nullptr);
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHAORI ******/
-		/****** md5 signature: 6f3c2425cba350675820a6c4c45f6562 ******/
+		/****** md5 signature: ab28e8a1b5f06ac29453eeb26176d5c4 ******/
 		%feature("compactdefaultargs") GdumpSHAORI;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-str: Standard_Address (optional, default to NULL)
+str: void * (optional, default to nullptr)
 
 Return
 -------
@@ -2478,16 +2453,16 @@ Description
 -----------
 No available documentation.
 ") GdumpSHAORI;
-		void GdumpSHAORI(const TopoDS_Shape & S, const Standard_Address str = NULL);
+		void GdumpSHAORI(const TopoDS_Shape & S, void * const str = nullptr);
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHAORIGEO ******/
-		/****** md5 signature: 0cb32bf12ccde4731ec83fc7f9952eb0 ******/
+		/****** md5 signature: 15c482163404c67fb5b222e5ef4c69bc ******/
 		%feature("compactdefaultargs") GdumpSHAORIGEO;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-str: Standard_Address (optional, default to NULL)
+str: void * (optional, default to nullptr)
 
 Return
 -------
@@ -2497,10 +2472,10 @@ Description
 -----------
 No available documentation.
 ") GdumpSHAORIGEO;
-		void GdumpSHAORIGEO(const TopoDS_Shape & S, const Standard_Address str = NULL);
+		void GdumpSHAORIGEO(const TopoDS_Shape & S, void * const str = nullptr);
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHASETindex ******/
-		/****** md5 signature: ab9c9976c1b5e245e09a906764fc6658 ******/
+		/****** md5 signature: b18b53093f4cc6d38aec03f5c58ab0f0 ******/
 		%feature("compactdefaultargs") GdumpSHASETindex;
 		%feature("autodoc", "Return
 -------
@@ -2510,7 +2485,7 @@ Description
 -----------
 No available documentation.
 ") GdumpSHASETindex;
-		Standard_Integer GdumpSHASETindex();
+		int GdumpSHASETindex();
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHASETreset ******/
 		/****** md5 signature: 858d9a6d70c3592e32b403720974577a ******/
@@ -2526,7 +2501,7 @@ No available documentation.
 		void GdumpSHASETreset();
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHASTA ******/
-		/****** md5 signature: c4d757293a5ba76159677ecddd5aa885 ******/
+		/****** md5 signature: 3a10cbdc21f3058d34b8bbc351a8ce3a ******/
 		%feature("compactdefaultargs") GdumpSHASTA;
 		%feature("autodoc", "
 Parameters
@@ -2544,7 +2519,7 @@ Description
 -----------
 No available documentation.
 ") GdumpSHASTA;
-		void GdumpSHASTA(const Standard_Integer iS, const TopAbs_State T, TCollection_AsciiString a = "", TCollection_AsciiString b = "");
+		void GdumpSHASTA(const int iS, const TopAbs_State T, TCollection_AsciiString a = "", TCollection_AsciiString b = "");
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHASTA ******/
 		/****** md5 signature: cad20edf8bfe449486276d27f8ff1f74 ******/
@@ -2568,7 +2543,7 @@ No available documentation.
 		void GdumpSHASTA(const TopoDS_Shape & S, const TopAbs_State T, TCollection_AsciiString a = "", TCollection_AsciiString b = "");
 
 		/****** TopOpeBRepBuild_Builder::GdumpSHASTA ******/
-		/****** md5 signature: ad5d444f38fc9076eb7fc932b55a4d7e ******/
+		/****** md5 signature: b8baaaa5ed12dbda0175436287656a3f ******/
 		%feature("compactdefaultargs") GdumpSHASTA;
 		%feature("autodoc", "
 Parameters
@@ -2588,7 +2563,7 @@ Description
 -----------
 No available documentation.
 ") GdumpSHASTA;
-		void GdumpSHASTA(const Standard_Integer iS, const TopAbs_State T, const TopOpeBRepBuild_ShapeSet & SS, TCollection_AsciiString a = "", TCollection_AsciiString b = "", TCollection_AsciiString c = "\n");
+		void GdumpSHASTA(const int iS, const TopAbs_State T, const TopOpeBRepBuild_ShapeSet & SS, TCollection_AsciiString a = "", TCollection_AsciiString b = "", TCollection_AsciiString c = "\n");
 
 		/****** TopOpeBRepBuild_Builder::GdumpSOBU ******/
 		/****** md5 signature: 1aea67b9789dcd3f2eb7ecd482cf35ab ******/
@@ -2609,7 +2584,7 @@ No available documentation.
 		void GdumpSOBU(TopOpeBRepBuild_SolidBuilder & SB);
 
 		/****** TopOpeBRepBuild_Builder::GtraceSPS ******/
-		/****** md5 signature: 92757d6dff5423fef37bd0894b9edf49 ******/
+		/****** md5 signature: 6c2391447912540a9c424aa01e8b81ba ******/
 		%feature("compactdefaultargs") GtraceSPS;
 		%feature("autodoc", "
 Parameters
@@ -2624,10 +2599,10 @@ Description
 -----------
 No available documentation.
 ") GtraceSPS;
-		Standard_Boolean GtraceSPS(const Standard_Integer iS);
+		bool GtraceSPS(const int iS);
 
 		/****** TopOpeBRepBuild_Builder::GtraceSPS ******/
-		/****** md5 signature: db026a5f008a1d15637fe4cc6fc8d480 ******/
+		/****** md5 signature: cf593a6d6190c95c4e845de338f2a023 ******/
 		%feature("compactdefaultargs") GtraceSPS;
 		%feature("autodoc", "
 Parameters
@@ -2643,10 +2618,10 @@ Description
 -----------
 No available documentation.
 ") GtraceSPS;
-		Standard_Boolean GtraceSPS(const Standard_Integer iS, const Standard_Integer jS);
+		bool GtraceSPS(const int iS, const int jS);
 
 		/****** TopOpeBRepBuild_Builder::GtraceSPS ******/
-		/****** md5 signature: ca16f93d7573c1cd0fc6a8803842691c ******/
+		/****** md5 signature: d7211736311cc54e6c55a6b45dea071f ******/
 		%feature("compactdefaultargs") GtraceSPS;
 		%feature("autodoc", "
 Parameters
@@ -2661,10 +2636,10 @@ Description
 -----------
 No available documentation.
 ") GtraceSPS;
-		Standard_Boolean GtraceSPS(const TopoDS_Shape & S);
+		bool GtraceSPS(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::GtraceSPS ******/
-		/****** md5 signature: b4c5095f7fd4f7aa8a990e5298793b74 ******/
+		/****** md5 signature: 528f28b4183af50565adb19453eccf1f ******/
 		%feature("compactdefaultargs") GtraceSPS;
 		%feature("autodoc", "
 Parameters
@@ -2679,7 +2654,7 @@ Description
 -----------
 No available documentation.
 ") GtraceSPS;
-		Standard_Boolean GtraceSPS(const TopoDS_Shape & S, Standard_Integer &OutValue);
+		bool GtraceSPS(const TopoDS_Shape & S, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::InitSection ******/
 		/****** md5 signature: f27058639d6e6094640ca4c517e04af9 ******/
@@ -2695,7 +2670,7 @@ No available documentation.
 		void InitSection();
 
 		/****** TopOpeBRepBuild_Builder::IsKPart ******/
-		/****** md5 signature: 2a118469af84419ccc334be36f278760 ******/
+		/****** md5 signature: 3f53c1f314824fc6dc2aed1888adb38e ******/
 		%feature("compactdefaultargs") IsKPart;
 		%feature("autodoc", "Return
 -------
@@ -2705,10 +2680,10 @@ Description
 -----------
 No available documentation.
 ") IsKPart;
-		Standard_Integer IsKPart();
+		int IsKPart();
 
 		/****** TopOpeBRepBuild_Builder::IsMerged ******/
-		/****** md5 signature: e95e0cd9df579ea79e71291eca94cb86 ******/
+		/****** md5 signature: b12a7b8b3a19664bfb97cb280a24aeac ******/
 		%feature("compactdefaultargs") IsMerged;
 		%feature("autodoc", "
 Parameters
@@ -2724,10 +2699,10 @@ Description
 -----------
 Returns True if the shape <S> has been merged.
 ") IsMerged;
-		Standard_Boolean IsMerged(const TopoDS_Shape & S, const TopAbs_State TB);
+		bool IsMerged(const TopoDS_Shape & S, const TopAbs_State TB);
 
 		/****** TopOpeBRepBuild_Builder::IsShapeOf ******/
-		/****** md5 signature: c83e3173dda8efa6809111274786f775 ******/
+		/****** md5 signature: 154c92b28702493e2cd3ff803aed23e0 ******/
 		%feature("compactdefaultargs") IsShapeOf;
 		%feature("autodoc", "
 Parameters
@@ -2743,10 +2718,10 @@ Description
 -----------
 No available documentation.
 ") IsShapeOf;
-		Standard_Boolean IsShapeOf(const TopoDS_Shape & S, const Standard_Integer I12);
+		bool IsShapeOf(const TopoDS_Shape & S, const int I12);
 
 		/****** TopOpeBRepBuild_Builder::IsSplit ******/
-		/****** md5 signature: ca7c85e2edb6ca3a93ce5dd55cc86736 ******/
+		/****** md5 signature: 93f2a0d4c7c0d9b8657dcafb8355abae ******/
 		%feature("compactdefaultargs") IsSplit;
 		%feature("autodoc", "
 Parameters
@@ -2762,7 +2737,7 @@ Description
 -----------
 Returns True if the shape <S> has been split.
 ") IsSplit;
-		Standard_Boolean IsSplit(const TopoDS_Shape & S, const TopAbs_State TB);
+		bool IsSplit(const TopoDS_Shape & S, const TopAbs_State TB);
 
 		/****** TopOpeBRepBuild_Builder::KPClearMaps ******/
 		/****** md5 signature: 1d528f7666001e87151255777251419c ******/
@@ -2778,13 +2753,13 @@ No available documentation.
 		void KPClearMaps();
 
 		/****** TopOpeBRepBuild_Builder::KPContains ******/
-		/****** md5 signature: b2444b0c0e92be55ec65eef787df5d2d ******/
+		/****** md5 signature: 1ea0d74e5676d00263ac2d2fc03804cc ******/
 		%feature("compactdefaultargs") KPContains;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2794,16 +2769,16 @@ Description
 -----------
 No available documentation.
 ") KPContains;
-		static Standard_Boolean KPContains(const TopoDS_Shape & S, const TopTools_ListOfShape & L);
+		static bool KPContains(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::KPSameDomain ******/
-		/****** md5 signature: bfcd89079bf508ca4b9b3ae2293870f0 ******/
+		/****** md5 signature: ef737dd14998c9dc23971a088b8daa62 ******/
 		%feature("compactdefaultargs") KPSameDomain;
 		%feature("autodoc", "
 Parameters
 ----------
-L1: TopTools_ListOfShape
-L2: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
+L2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2813,16 +2788,16 @@ Description
 -----------
 No available documentation.
 ") KPSameDomain;
-		void KPSameDomain(TopTools_ListOfShape & L1, TopTools_ListOfShape & L2);
+		void KPSameDomain(NCollection_List<TopoDS_Shape> & L1, NCollection_List<TopoDS_Shape> & L2);
 
 		/****** TopOpeBRepBuild_Builder::KPclasSS ******/
-		/****** md5 signature: 2050d409f4732118c79abb4715e36b77 ******/
+		/****** md5 signature: b6ec387bdd9a8d63314f72c8b16af3b8 ******/
 		%feature("compactdefaultargs") KPclasSS;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: TopoDS_Shape
-exceptLS1: TopTools_ListOfShape
+exceptLS1: NCollection_List<TopoDS_Shape>
 S2: TopoDS_Shape
 
 Return
@@ -2833,7 +2808,7 @@ Description
 -----------
 No available documentation.
 ") KPclasSS;
-		TopAbs_State KPclasSS(const TopoDS_Shape & S1, const TopTools_ListOfShape & exceptLS1, const TopoDS_Shape & S2);
+		TopAbs_State KPclasSS(const TopoDS_Shape & S1, const NCollection_List<TopoDS_Shape> & exceptLS1, const TopoDS_Shape & S2);
 
 		/****** TopOpeBRepBuild_Builder::KPclasSS ******/
 		/****** md5 signature: d57f31fbfddcb0cc64704b29cb6b06d6 ******/
@@ -2914,7 +2889,7 @@ No available documentation.
 		void KPclassFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPisdisj ******/
-		/****** md5 signature: 1b0e050b16c6b351717414369d193c2c ******/
+		/****** md5 signature: eb7b31a8a2f83192408a1783ef3ffc2d ******/
 		%feature("compactdefaultargs") KPisdisj;
 		%feature("autodoc", "Return
 -------
@@ -2924,10 +2899,10 @@ Description
 -----------
 No available documentation.
 ") KPisdisj;
-		Standard_Integer KPisdisj();
+		int KPisdisj();
 
 		/****** TopOpeBRepBuild_Builder::KPisdisjanalyse ******/
-		/****** md5 signature: 03e58c864fd67c4fcc7ca3151eb2b4cc ******/
+		/****** md5 signature: 40d90487be19fe332fc9cf464668955c ******/
 		%feature("compactdefaultargs") KPisdisjanalyse;
 		%feature("autodoc", "
 Parameters
@@ -2948,7 +2923,7 @@ No available documentation.
 		void KPisdisjanalyse(const TopAbs_State ST1, const TopAbs_State ST2, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPisdisjsh ******/
-		/****** md5 signature: d4061792d8a757bb091eb9f43b79dd60 ******/
+		/****** md5 signature: 0b0f765216601d4c5123d627353dc4c8 ******/
 		%feature("compactdefaultargs") KPisdisjsh;
 		%feature("autodoc", "
 Parameters
@@ -2963,10 +2938,10 @@ Description
 -----------
 No available documentation.
 ") KPisdisjsh;
-		Standard_Integer KPisdisjsh(const TopoDS_Shape & S);
+		int KPisdisjsh(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::KPisfafa ******/
-		/****** md5 signature: a3158d48bd477b814785ecf8a2f8d7f3 ******/
+		/****** md5 signature: f31fe4c8bb2508743b8523c81d6416ad ******/
 		%feature("compactdefaultargs") KPisfafa;
 		%feature("autodoc", "Return
 -------
@@ -2976,10 +2951,10 @@ Description
 -----------
 No available documentation.
 ") KPisfafa;
-		Standard_Integer KPisfafa();
+		int KPisfafa();
 
 		/****** TopOpeBRepBuild_Builder::KPisfafash ******/
-		/****** md5 signature: f3709ba46be0dfa755f4e7f7c40f8ecb ******/
+		/****** md5 signature: 786c07c3d0f89da40880b98242805c0d ******/
 		%feature("compactdefaultargs") KPisfafash;
 		%feature("autodoc", "
 Parameters
@@ -2994,10 +2969,10 @@ Description
 -----------
 No available documentation.
 ") KPisfafash;
-		Standard_Integer KPisfafash(const TopoDS_Shape & S);
+		int KPisfafash(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::KPiskole ******/
-		/****** md5 signature: a928b3effc324e72a45790c46c3f0f8b ******/
+		/****** md5 signature: f2f7bdc52646f55b4bd673efe8b4980a ******/
 		%feature("compactdefaultargs") KPiskole;
 		%feature("autodoc", "Return
 -------
@@ -3007,10 +2982,10 @@ Description
 -----------
 No available documentation.
 ") KPiskole;
-		Standard_Integer KPiskole();
+		int KPiskole();
 
 		/****** TopOpeBRepBuild_Builder::KPiskoleFF ******/
-		/****** md5 signature: 849724dcc3a886f5830ac15c48eeb3a0 ******/
+		/****** md5 signature: 190657a2e21c713c32ddb102f8e9c6e6 ******/
 		%feature("compactdefaultargs") KPiskoleFF;
 		%feature("autodoc", "
 Parameters
@@ -3027,10 +3002,10 @@ Description
 -----------
 No available documentation.
 ") KPiskoleFF;
-		Standard_Boolean KPiskoleFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State &OutValue, TopAbs_State &OutValue);
+		bool KPiskoleFF(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPiskoleanalyse ******/
-		/****** md5 signature: 34c79a8fadaeffdca85f891fb32e8a62 ******/
+		/****** md5 signature: bcf4108d46c29c82183467cf0e9ba1ba ******/
 		%feature("compactdefaultargs") KPiskoleanalyse;
 		%feature("autodoc", "
 Parameters
@@ -3053,14 +3028,14 @@ No available documentation.
 		void KPiskoleanalyse(const TopAbs_State FT1, const TopAbs_State FT2, const TopAbs_State ST1, const TopAbs_State ST2, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPiskolesh ******/
-		/****** md5 signature: 1c257091174f9b7e3167ee608e6f4ae9 ******/
+		/****** md5 signature: 7ba76495ddaf3c5f15814c897aec78fd ******/
 		%feature("compactdefaultargs") KPiskolesh;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LS: TopTools_ListOfShape
-LF: TopTools_ListOfShape
+LS: NCollection_List<TopoDS_Shape>
+LF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3070,10 +3045,10 @@ Description
 -----------
 No available documentation.
 ") KPiskolesh;
-		Standard_Boolean KPiskolesh(const TopoDS_Shape & S, TopTools_ListOfShape & LS, TopTools_ListOfShape & LF);
+		bool KPiskolesh(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LS, NCollection_List<TopoDS_Shape> & LF);
 
 		/****** TopOpeBRepBuild_Builder::KPiskoletge ******/
-		/****** md5 signature: daef198dc839e6affc338345f2705e0f ******/
+		/****** md5 signature: 4ac061eb967b4104354c81b930856235 ******/
 		%feature("compactdefaultargs") KPiskoletge;
 		%feature("autodoc", "Return
 -------
@@ -3083,10 +3058,10 @@ Description
 -----------
 No available documentation.
 ") KPiskoletge;
-		Standard_Integer KPiskoletge();
+		int KPiskoletge();
 
 		/****** TopOpeBRepBuild_Builder::KPiskoletgeanalyse ******/
-		/****** md5 signature: 333d436c1ad1bd990b516b2c21008d71 ******/
+		/****** md5 signature: 54008042c83a77254c78a3cf161a2e38 ******/
 		%feature("compactdefaultargs") KPiskoletgeanalyse;
 		%feature("autodoc", "
 Parameters
@@ -3106,14 +3081,14 @@ No available documentation.
 		void KPiskoletgeanalyse(const TopOpeBRepDS_Config Conf, const TopAbs_State ST1, const TopAbs_State ST2, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_Builder::KPiskoletgesh ******/
-		/****** md5 signature: bc420fd5d707b57eb059ed141954d81f ******/
+		/****** md5 signature: cce8e402d46c8b2114d3608248013d4a ******/
 		%feature("compactdefaultargs") KPiskoletgesh;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LS: TopTools_ListOfShape
-LF: TopTools_ListOfShape
+LS: NCollection_List<TopoDS_Shape>
+LF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3123,10 +3098,10 @@ Description
 -----------
 No available documentation.
 ") KPiskoletgesh;
-		Standard_Boolean KPiskoletgesh(const TopoDS_Shape & S, TopTools_ListOfShape & LS, TopTools_ListOfShape & LF);
+		bool KPiskoletgesh(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LS, NCollection_List<TopoDS_Shape> & LF);
 
 		/****** TopOpeBRepBuild_Builder::KPissoso ******/
-		/****** md5 signature: 5705deb511462891db635b35473cd054 ******/
+		/****** md5 signature: ab59bdfa5583c46a75e2360b539c838e ******/
 		%feature("compactdefaultargs") KPissoso;
 		%feature("autodoc", "Return
 -------
@@ -3136,10 +3111,10 @@ Description
 -----------
 No available documentation.
 ") KPissoso;
-		Standard_Integer KPissoso();
+		int KPissoso();
 
 		/****** TopOpeBRepBuild_Builder::KPissososh ******/
-		/****** md5 signature: 00e17e74eb933171e8f806344bc7bba4 ******/
+		/****** md5 signature: b96199de581984afdcf39bb6bac92862 ******/
 		%feature("compactdefaultargs") KPissososh;
 		%feature("autodoc", "
 Parameters
@@ -3154,17 +3129,17 @@ Description
 -----------
 No available documentation.
 ") KPissososh;
-		Standard_Integer KPissososh(const TopoDS_Shape & S);
+		int KPissososh(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::KPlhg ******/
-		/****** md5 signature: e56dfd8a4b90b0b37c5090efe9540555 ******/
+		/****** md5 signature: 599541210df11fa4de838fe9c1fb6bd5 ******/
 		%feature("compactdefaultargs") KPlhg;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 T: TopAbs_ShapeEnum
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3174,10 +3149,10 @@ Description
 -----------
 No available documentation.
 ") KPlhg;
-		Standard_Integer KPlhg(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_ListOfShape & L);
+		int KPlhg(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::KPlhg ******/
-		/****** md5 signature: c4eb046fa57db797b9bc5c7a4c35b228 ******/
+		/****** md5 signature: ed32b444d3354d0eb3bea213cea36270 ******/
 		%feature("compactdefaultargs") KPlhg;
 		%feature("autodoc", "
 Parameters
@@ -3193,17 +3168,17 @@ Description
 -----------
 No available documentation.
 ") KPlhg;
-		Standard_Integer KPlhg(const TopoDS_Shape & S, const TopAbs_ShapeEnum T);
+		int KPlhg(const TopoDS_Shape & S, const TopAbs_ShapeEnum T);
 
 		/****** TopOpeBRepBuild_Builder::KPlhsd ******/
-		/****** md5 signature: 15b550983c01807a1bff45cf5332a6cd ******/
+		/****** md5 signature: 3bd2322232ea472658d2154eed46a9e8 ******/
 		%feature("compactdefaultargs") KPlhsd;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 T: TopAbs_ShapeEnum
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3213,10 +3188,10 @@ Description
 -----------
 No available documentation.
 ") KPlhsd;
-		Standard_Integer KPlhsd(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_ListOfShape & L);
+		int KPlhsd(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::KPlhsd ******/
-		/****** md5 signature: f78fc734ae7b36dc0b57c55b5e2dcffc ******/
+		/****** md5 signature: 7630b1233110e3a42a433c8802368375 ******/
 		%feature("compactdefaultargs") KPlhsd;
 		%feature("autodoc", "
 Parameters
@@ -3232,17 +3207,17 @@ Description
 -----------
 No available documentation.
 ") KPlhsd;
-		Standard_Integer KPlhsd(const TopoDS_Shape & S, const TopAbs_ShapeEnum T);
+		int KPlhsd(const TopoDS_Shape & S, const TopAbs_ShapeEnum T);
 
 		/****** TopOpeBRepBuild_Builder::KPls ******/
-		/****** md5 signature: fa1e5dc8dcd60ed5c185ce381e3b7007 ******/
+		/****** md5 signature: 44211b94e2b6ec12d8ef6cb0c7cc96bd ******/
 		%feature("compactdefaultargs") KPls;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 T: TopAbs_ShapeEnum
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3252,10 +3227,10 @@ Description
 -----------
 No available documentation.
 ") KPls;
-		static Standard_Integer KPls(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_ListOfShape & L);
+		static int KPls(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::KPls ******/
-		/****** md5 signature: 01ba7bb99f4eedf2755d8a5307603e8e ******/
+		/****** md5 signature: 178fa501f9cac3b79c0e429f4fb9636e ******/
 		%feature("compactdefaultargs") KPls;
 		%feature("autodoc", "
 Parameters
@@ -3271,16 +3246,16 @@ Description
 -----------
 No available documentation.
 ") KPls;
-		static Standard_Integer KPls(const TopoDS_Shape & S, const TopAbs_ShapeEnum T);
+		static int KPls(const TopoDS_Shape & S, const TopAbs_ShapeEnum T);
 
 		/****** TopOpeBRepBuild_Builder::KPmakeface ******/
-		/****** md5 signature: 641b91d6c3acef07eb29c11e995aa13c ******/
+		/****** md5 signature: 7ba424d9e6065b6faa56a36883d218e1 ******/
 		%feature("compactdefaultargs") KPmakeface;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LF2: TopTools_ListOfShape
+LF2: NCollection_List<TopoDS_Shape>
 T1: TopAbs_State
 T2: TopAbs_State
 R1: bool
@@ -3294,10 +3269,10 @@ Description
 -----------
 No available documentation.
 ") KPmakeface;
-		TopoDS_Shape KPmakeface(const TopoDS_Shape & F1, const TopTools_ListOfShape & LF2, const TopAbs_State T1, const TopAbs_State T2, const Standard_Boolean R1, const Standard_Boolean R2);
+		TopoDS_Shape KPmakeface(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LF2, const TopAbs_State T1, const TopAbs_State T2, const bool R1, const bool R2);
 
 		/****** TopOpeBRepBuild_Builder::KPreturn ******/
-		/****** md5 signature: 64df81b258de3a87c7e99fa1cf0cb2c4 ******/
+		/****** md5 signature: 77337cc8ebfed70d1a55e1934c6466f2 ******/
 		%feature("compactdefaultargs") KPreturn;
 		%feature("autodoc", "
 Parameters
@@ -3312,16 +3287,16 @@ Description
 -----------
 No available documentation.
 ") KPreturn;
-		static Standard_Integer KPreturn(const Standard_Integer KP);
+		static int KPreturn(const int KP);
 
 		/****** TopOpeBRepBuild_Builder::KeepShape ******/
-		/****** md5 signature: 03c9b6a32bc6f6c55381fff005d6ba71 ******/
+		/****** md5 signature: 55a86492ea4c0727b2223b2bfe8812ca ******/
 		%feature("compactdefaultargs") KeepShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LS: TopTools_ListOfShape
+LS: NCollection_List<TopoDS_Shape>
 T: TopAbs_State
 
 Return
@@ -3332,10 +3307,10 @@ Description
 -----------
 No available documentation.
 ") KeepShape;
-		Standard_Boolean KeepShape(const TopoDS_Shape & S, const TopTools_ListOfShape & LS, const TopAbs_State T);
+		bool KeepShape(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & LS, const TopAbs_State T);
 
 		/****** TopOpeBRepBuild_Builder::MSplit ******/
-		/****** md5 signature: 5d2d1c0bded80985eddecfe9b505d55e ******/
+		/****** md5 signature: 1bdfdc4f03895934ddc99f1c21529f82 ******/
 		%feature("compactdefaultargs") MSplit;
 		%feature("autodoc", "
 Parameters
@@ -3344,23 +3319,23 @@ s: TopAbs_State
 
 Return
 -------
-TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State
+NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") MSplit;
-		const TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State & MSplit(const TopAbs_State s);
+		const NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> MSplit(const TopAbs_State s);
 
 		/****** TopOpeBRepBuild_Builder::MakeEdges ******/
-		/****** md5 signature: 2919d80aff6f69dbb6977326748590b3 ******/
+		/****** md5 signature: 5953c55031c0671d386f9c796750e364 ******/
 		%feature("compactdefaultargs") MakeEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
 B: TopOpeBRepBuild_EdgeBuilder
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3370,17 +3345,17 @@ Description
 -----------
 No available documentation.
 ") MakeEdges;
-		void MakeEdges(const TopoDS_Shape & E, TopOpeBRepBuild_EdgeBuilder & B, TopTools_ListOfShape & L);
+		void MakeEdges(const TopoDS_Shape & E, TopOpeBRepBuild_EdgeBuilder & B, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::MakeFaces ******/
-		/****** md5 signature: 3aba84be5590527decc78fc8d110ac80 ******/
+		/****** md5 signature: 57abf40bb1d56ca74765d00f5f62bef7 ******/
 		%feature("compactdefaultargs") MakeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
 B: TopOpeBRepBuild_FaceBuilder
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3390,16 +3365,16 @@ Description
 -----------
 No available documentation.
 ") MakeFaces;
-		void MakeFaces(const TopoDS_Shape & F, TopOpeBRepBuild_FaceBuilder & B, TopTools_ListOfShape & L);
+		void MakeFaces(const TopoDS_Shape & F, TopOpeBRepBuild_FaceBuilder & B, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::MakeShells ******/
-		/****** md5 signature: 1942877220dd27e307124153b15e928a ******/
+		/****** md5 signature: b506e01089aa44ec0a265b92031d05d6 ******/
 		%feature("compactdefaultargs") MakeShells;
 		%feature("autodoc", "
 Parameters
 ----------
 B: TopOpeBRepBuild_SolidBuilder
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3409,16 +3384,16 @@ Description
 -----------
 No available documentation.
 ") MakeShells;
-		void MakeShells(TopOpeBRepBuild_SolidBuilder & B, TopTools_ListOfShape & L);
+		void MakeShells(TopOpeBRepBuild_SolidBuilder & B, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::MakeSolids ******/
-		/****** md5 signature: 31fb67a0ffe0c5553e39c9505d981d3c ******/
+		/****** md5 signature: dd8e21dbd023439d0992c546d1a17620 ******/
 		%feature("compactdefaultargs") MakeSolids;
 		%feature("autodoc", "
 Parameters
 ----------
 B: TopOpeBRepBuild_SolidBuilder
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3428,7 +3403,7 @@ Description
 -----------
 No available documentation.
 ") MakeSolids;
-		void MakeSolids(TopOpeBRepBuild_SolidBuilder & B, TopTools_ListOfShape & L);
+		void MakeSolids(TopOpeBRepBuild_SolidBuilder & B, NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::MapShapes ******/
 		/****** md5 signature: e9d3fcdd2a8a024ad795f312ab0fad1d ******/
@@ -3450,18 +3425,18 @@ No available documentation.
 		void MapShapes(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****** TopOpeBRepBuild_Builder::MergeEdges ******/
-		/****** md5 signature: 952be977f0e0dd8bdea0d200eddaf660 ******/
+		/****** md5 signature: c2d8826faaab9fe3fa7df7d0a077bba7 ******/
 		%feature("compactdefaultargs") MergeEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-L1: TopTools_ListOfShape
+L1: NCollection_List<TopoDS_Shape>
 TB1: TopAbs_State
-L2: TopTools_ListOfShape
+L2: NCollection_List<TopoDS_Shape>
 TB2: TopAbs_State
-onA: bool (optional, default to Standard_False)
-onB: bool (optional, default to Standard_False)
-onAB: bool (optional, default to Standard_False)
+onA: bool (optional, default to false)
+onB: bool (optional, default to false)
+onAB: bool (optional, default to false)
 
 Return
 -------
@@ -3471,21 +3446,21 @@ Description
 -----------
 Merges the two edges <S1> and <S2> keeping the parts in each edge of states <TB1> and <TB2>. Booleans onA, onB, onAB indicate whether parts of edges found as state ON respectively on first, second, and both shapes must be (or not) built.
 ") MergeEdges;
-		void MergeEdges(const TopTools_ListOfShape & L1, const TopAbs_State TB1, const TopTools_ListOfShape & L2, const TopAbs_State TB2, const Standard_Boolean onA = Standard_False, const Standard_Boolean onB = Standard_False, const Standard_Boolean onAB = Standard_False);
+		void MergeEdges(const NCollection_List<TopoDS_Shape> & L1, const TopAbs_State TB1, const NCollection_List<TopoDS_Shape> & L2, const TopAbs_State TB2, const bool onA = false, const bool onB = false, const bool onAB = false);
 
 		/****** TopOpeBRepBuild_Builder::MergeFaces ******/
-		/****** md5 signature: d221fad9b6eaf9fc8362cb84e1523a32 ******/
+		/****** md5 signature: 8cf4068bc2741e7e6beb10dc14789d7a ******/
 		%feature("compactdefaultargs") MergeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-S1: TopTools_ListOfShape
+S1: NCollection_List<TopoDS_Shape>
 TB1: TopAbs_State
-S2: TopTools_ListOfShape
+S2: NCollection_List<TopoDS_Shape>
 TB2: TopAbs_State
-onA: bool (optional, default to Standard_False)
-onB: bool (optional, default to Standard_False)
-onAB: bool (optional, default to Standard_False)
+onA: bool (optional, default to false)
+onB: bool (optional, default to false)
+onAB: bool (optional, default to false)
 
 Return
 -------
@@ -3495,7 +3470,7 @@ Description
 -----------
 Merges the two faces <S1> and <S2> keeping the parts in each face of states <TB1> and <TB2>.
 ") MergeFaces;
-		void MergeFaces(const TopTools_ListOfShape & S1, const TopAbs_State TB1, const TopTools_ListOfShape & S2, const TopAbs_State TB2, const Standard_Boolean onA = Standard_False, const Standard_Boolean onB = Standard_False, const Standard_Boolean onAB = Standard_False);
+		void MergeFaces(const NCollection_List<TopoDS_Shape> & S1, const TopAbs_State TB1, const NCollection_List<TopoDS_Shape> & S2, const TopAbs_State TB2, const bool onA = false, const bool onB = false, const bool onAB = false);
 
 		/****** TopOpeBRepBuild_Builder::MergeKPart ******/
 		/****** md5 signature: 84113157513a352ebae25f2922b94101 ******/
@@ -3656,7 +3631,7 @@ Merges the two solids <S1> and <S2> keeping the parts in each solid of states <T
 		void MergeSolids(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
 		/****** TopOpeBRepBuild_Builder::Merged ******/
-		/****** md5 signature: 7bdc189bc9a47f67fd9f80cdcb63b4f7 ******/
+		/****** md5 signature: 4724ee301d458253fdc2b556d484d458 ******/
 		%feature("compactdefaultargs") Merged;
 		%feature("autodoc", "
 Parameters
@@ -3666,16 +3641,16 @@ TB: TopAbs_State
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the merged parts <TB> of shape <S>.
 ") Merged;
-		const TopTools_ListOfShape & Merged(const TopoDS_Shape & S, const TopAbs_State TB);
+		const NCollection_List<TopoDS_Shape> Merged(const TopoDS_Shape & S, const TopAbs_State TB);
 
 		/****** TopOpeBRepBuild_Builder::NewEdges ******/
-		/****** md5 signature: 179c09660233c56ae429549db3ff7400 ******/
+		/****** md5 signature: 9ec982f5f3014b1590bdac140184735d ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "
 Parameters
@@ -3684,16 +3659,16 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the edges created on curve <I>.
 ") NewEdges;
-		const TopTools_ListOfShape & NewEdges(const Standard_Integer I);
+		const NCollection_List<TopoDS_Shape> NewEdges(const int I);
 
 		/****** TopOpeBRepBuild_Builder::NewFaces ******/
-		/****** md5 signature: a980596ca1d4b7e52b84de8438a49893 ******/
+		/****** md5 signature: 96a08f871c044c95bf0a5b942b6f1d59 ******/
 		%feature("compactdefaultargs") NewFaces;
 		%feature("autodoc", "
 Parameters
@@ -3702,16 +3677,16 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the faces created on surface <I>.
 ") NewFaces;
-		const TopTools_ListOfShape & NewFaces(const Standard_Integer I);
+		const NCollection_List<TopoDS_Shape> NewFaces(const int I);
 
 		/****** TopOpeBRepBuild_Builder::NewVertex ******/
-		/****** md5 signature: 151c4ed04d2f822e39225390e7212a98 ******/
+		/****** md5 signature: 22041e3bce7e66de68d0cb74a55b4197 ******/
 		%feature("compactdefaultargs") NewVertex;
 		%feature("autodoc", "
 Parameters
@@ -3726,10 +3701,10 @@ Description
 -----------
 Returns the vertex created on point <I>.
 ") NewVertex;
-		const TopoDS_Shape NewVertex(const Standard_Integer I);
+		const TopoDS_Shape NewVertex(const int I);
 
 		/****** TopOpeBRepBuild_Builder::Opec12 ******/
-		/****** md5 signature: 268c6547389375f1b09e75b513a86e85 ******/
+		/****** md5 signature: 7a2ab10746925a05c57be66568fbfd9b ******/
 		%feature("compactdefaultargs") Opec12;
 		%feature("autodoc", "Return
 -------
@@ -3739,10 +3714,10 @@ Description
 -----------
 No available documentation.
 ") Opec12;
-		Standard_Boolean Opec12();
+		bool Opec12();
 
 		/****** TopOpeBRepBuild_Builder::Opec21 ******/
-		/****** md5 signature: bc5f86386a18ddc164a0ac60f8200c38 ******/
+		/****** md5 signature: 89c65690d1c0d6fea8f4221dd2c685c6 ******/
 		%feature("compactdefaultargs") Opec21;
 		%feature("autodoc", "Return
 -------
@@ -3752,10 +3727,10 @@ Description
 -----------
 No available documentation.
 ") Opec21;
-		Standard_Boolean Opec21();
+		bool Opec21();
 
 		/****** TopOpeBRepBuild_Builder::Opecom ******/
-		/****** md5 signature: 053a40c54e1cc0bb8faf488fd0c329d3 ******/
+		/****** md5 signature: f3d3a762acf55571047670b439fc9242 ******/
 		%feature("compactdefaultargs") Opecom;
 		%feature("autodoc", "Return
 -------
@@ -3765,10 +3740,10 @@ Description
 -----------
 No available documentation.
 ") Opecom;
-		Standard_Boolean Opecom();
+		bool Opecom();
 
 		/****** TopOpeBRepBuild_Builder::Opefus ******/
-		/****** md5 signature: 01bbbe4f2590f9090747ded4821c32ab ******/
+		/****** md5 signature: 5b970ec1e90525d3924912b5143a5643 ******/
 		%feature("compactdefaultargs") Opefus;
 		%feature("autodoc", "Return
 -------
@@ -3778,10 +3753,10 @@ Description
 -----------
 No available documentation.
 ") Opefus;
-		Standard_Boolean Opefus();
+		bool Opefus();
 
 		/****** TopOpeBRepBuild_Builder::Orient ******/
-		/****** md5 signature: cb4f1770d33b623a1e0a7c8ab1005122 ******/
+		/****** md5 signature: e8803556526ce8cc880697267b247876 ******/
 		%feature("compactdefaultargs") Orient;
 		%feature("autodoc", "
 Parameters
@@ -3797,7 +3772,7 @@ Description
 -----------
 No available documentation.
 ") Orient;
-		static TopAbs_Orientation Orient(const TopAbs_Orientation O, const Standard_Boolean R);
+		static TopAbs_Orientation Orient(const TopAbs_Orientation O, const bool R);
 
 		/****** TopOpeBRepBuild_Builder::Perform ******/
 		/****** md5 signature: 737fd9d01d459b713f34117ae5b4b0ed ******/
@@ -3928,14 +3903,14 @@ No available documentation.
 		static void PrintSur(const TopoDS_Face & F);
 
 		/****** TopOpeBRepBuild_Builder::RegularizeFace ******/
-		/****** md5 signature: 998970fbafc244d622da1abef353b9e8 ******/
+		/****** md5 signature: 886b88d6af337f60aa6c8c1a87314331 ******/
 		%feature("compactdefaultargs") RegularizeFace;
 		%feature("autodoc", "
 Parameters
 ----------
 FF: TopoDS_Shape
 newFace: TopoDS_Shape
-LOF: TopTools_ListOfShape
+LOF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3945,17 +3920,17 @@ Description
 -----------
 No available documentation.
 ") RegularizeFace;
-		void RegularizeFace(const TopoDS_Shape & FF, const TopoDS_Shape & newFace, TopTools_ListOfShape & LOF);
+		void RegularizeFace(const TopoDS_Shape & FF, const TopoDS_Shape & newFace, NCollection_List<TopoDS_Shape> & LOF);
 
 		/****** TopOpeBRepBuild_Builder::RegularizeFaces ******/
-		/****** md5 signature: ed456bd66f616fd3827a7c87e7cc0081 ******/
+		/****** md5 signature: fbd71a72a7637a7917336ca0dcff56af ******/
 		%feature("compactdefaultargs") RegularizeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 FF: TopoDS_Shape
-lnewFace: TopTools_ListOfShape
-LOF: TopTools_ListOfShape
+lnewFace: NCollection_List<TopoDS_Shape>
+LOF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3965,17 +3940,17 @@ Description
 -----------
 No available documentation.
 ") RegularizeFaces;
-		void RegularizeFaces(const TopoDS_Shape & FF, const TopTools_ListOfShape & lnewFace, TopTools_ListOfShape & LOF);
+		void RegularizeFaces(const TopoDS_Shape & FF, const NCollection_List<TopoDS_Shape> & lnewFace, NCollection_List<TopoDS_Shape> & LOF);
 
 		/****** TopOpeBRepBuild_Builder::RegularizeSolid ******/
-		/****** md5 signature: a8f5113cbcb25b3ea747baaec8806865 ******/
+		/****** md5 signature: d1386c2d82b1d9bfac895454969cbec2 ******/
 		%feature("compactdefaultargs") RegularizeSolid;
 		%feature("autodoc", "
 Parameters
 ----------
 SS: TopoDS_Shape
 newSolid: TopoDS_Shape
-LOS: TopTools_ListOfShape
+LOS: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -3985,17 +3960,17 @@ Description
 -----------
 No available documentation.
 ") RegularizeSolid;
-		void RegularizeSolid(const TopoDS_Shape & SS, const TopoDS_Shape & newSolid, TopTools_ListOfShape & LOS);
+		void RegularizeSolid(const TopoDS_Shape & SS, const TopoDS_Shape & newSolid, NCollection_List<TopoDS_Shape> & LOS);
 
 		/****** TopOpeBRepBuild_Builder::RegularizeSolids ******/
-		/****** md5 signature: 023b4cabd85d5988aebafc464c8ebb7f ******/
+		/****** md5 signature: 4cb5180b5f0ac3855f82975d4ace0543 ******/
 		%feature("compactdefaultargs") RegularizeSolids;
 		%feature("autodoc", "
 Parameters
 ----------
 SS: TopoDS_Shape
-lnewSolid: TopTools_ListOfShape
-LOS: TopTools_ListOfShape
+lnewSolid: NCollection_List<TopoDS_Shape>
+LOS: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -4005,10 +3980,10 @@ Description
 -----------
 No available documentation.
 ") RegularizeSolids;
-		void RegularizeSolids(const TopoDS_Shape & SS, const TopTools_ListOfShape & lnewSolid, TopTools_ListOfShape & LOS);
+		void RegularizeSolids(const TopoDS_Shape & SS, const NCollection_List<TopoDS_Shape> & lnewSolid, NCollection_List<TopoDS_Shape> & LOS);
 
 		/****** TopOpeBRepBuild_Builder::Reverse ******/
-		/****** md5 signature: bb5ff2749921861d58ed428984771825 ******/
+		/****** md5 signature: bb1b267c45d23ad39c5df46239434fc3 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -4024,15 +3999,15 @@ Description
 -----------
 No available documentation.
 ") Reverse;
-		static Standard_Boolean Reverse(const TopAbs_State T1, const TopAbs_State T2);
+		static bool Reverse(const TopAbs_State T1, const TopAbs_State T2);
 
 		/****** TopOpeBRepBuild_Builder::Section ******/
-		/****** md5 signature: f246cee73f016b23543f940f4eeec761 ******/
+		/****** md5 signature: dbcc312fba60937e8cc4963c696181f6 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -4042,28 +4017,28 @@ Description
 -----------
 return all section edges.
 ") Section;
-		void Section(TopTools_ListOfShape & L);
+		void Section(NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::Section ******/
-		/****** md5 signature: d6808b5660c9276aa346c459a52c09df ******/
+		/****** md5 signature: de29fcbd54cc3d269c973a6e4f3c1c51 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Section;
-		const TopTools_ListOfShape & Section();
+		const NCollection_List<TopoDS_Shape> Section();
 
 		/****** TopOpeBRepBuild_Builder::SectionCurves ******/
-		/****** md5 signature: 609e96865644fd25b811e3f638af3810 ******/
+		/****** md5 signature: 5b1747f0a3da0a539d08ee5d4d40ee6b ******/
 		%feature("compactdefaultargs") SectionCurves;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -4073,15 +4048,15 @@ Description
 -----------
 return the section edges built on new curves.
 ") SectionCurves;
-		void SectionCurves(TopTools_ListOfShape & L);
+		void SectionCurves(NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::SectionEdges ******/
-		/****** md5 signature: 67c9ac40edc1da8c41e99b6f365dd67d ******/
+		/****** md5 signature: e3ace9c0808d97715282427fd7ff6c15 ******/
 		%feature("compactdefaultargs") SectionEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -4091,16 +4066,16 @@ Description
 -----------
 return the parts of edges found ON the boundary of the two arguments S1,S2 of Perform().
 ") SectionEdges;
-		void SectionEdges(TopTools_ListOfShape & L);
+		void SectionEdges(NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_Builder::ShapePosition ******/
-		/****** md5 signature: 64e62dd569044425ed11cef3de95a5a1 ******/
+		/****** md5 signature: 5fee5a87af657946e4b180601b884508 ******/
 		%feature("compactdefaultargs") ShapePosition;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-LS: TopTools_ListOfShape
+LS: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -4110,10 +4085,10 @@ Description
 -----------
 No available documentation.
 ") ShapePosition;
-		TopAbs_State ShapePosition(const TopoDS_Shape & S, const TopTools_ListOfShape & LS);
+		TopAbs_State ShapePosition(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & LS);
 
 		/****** TopOpeBRepBuild_Builder::ShapeRank ******/
-		/****** md5 signature: 292bc0735bd8e9c20f74537febe0f59e ******/
+		/****** md5 signature: ab8b803eab89958f17acf3c508685b3b ******/
 		%feature("compactdefaultargs") ShapeRank;
 		%feature("autodoc", "
 Parameters
@@ -4128,7 +4103,7 @@ Description
 -----------
 No available documentation.
 ") ShapeRank;
-		Standard_Integer ShapeRank(const TopoDS_Shape & S);
+		int ShapeRank(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_Builder::SplitEvisoONperiodicF ******/
 		/****** md5 signature: cd44d893a3de98a88f8af3ec39ba6e36 ******/
@@ -4175,7 +4150,7 @@ create parts ON solid of section edges.
 		void SplitSectionEdges();
 
 		/****** TopOpeBRepBuild_Builder::Splits ******/
-		/****** md5 signature: 8397a9c8f778283e3e39933da779c78f ******/
+		/****** md5 signature: 90cf6ed590c619273895a6aee9ef33a8 ******/
 		%feature("compactdefaultargs") Splits;
 		%feature("autodoc", "
 Parameters
@@ -4185,13 +4160,13 @@ TB: TopAbs_State
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the split parts <TB> of shape <S>.
 ") Splits;
-		const TopTools_ListOfShape & Splits(const TopoDS_Shape & S, const TopAbs_State TB);
+		const NCollection_List<TopoDS_Shape> Splits(const TopoDS_Shape & S, const TopAbs_State TB);
 
 		/****** TopOpeBRepBuild_Builder::StringState ******/
 		/****** md5 signature: bc9ced969562a9a7d1b7ddcf0d9105f2 ******/
@@ -4279,7 +4254,7 @@ No available documentation.
 		 TopOpeBRepBuild_BuilderON(const TopOpeBRepBuild_PBuilder & PB, const TopoDS_Shape & F, const TopOpeBRepBuild_PGTopo & PG, const TopOpeBRepTool_Plos & PLSclass, const TopOpeBRepBuild_PWireEdgeSet & PWES);
 
 		/****** TopOpeBRepBuild_BuilderON::GFillONCheckI ******/
-		/****** md5 signature: 98e2bdc7f8443b1a2e1fee4bfb3583ea ******/
+		/****** md5 signature: b2574dae8022beaf64726bf69dccd7f9 ******/
 		%feature("compactdefaultargs") GFillONCheckI;
 		%feature("autodoc", "
 Parameters
@@ -4294,7 +4269,7 @@ Description
 -----------
 No available documentation.
 ") GFillONCheckI;
-		Standard_Boolean GFillONCheckI(const opencascade::handle<TopOpeBRepDS_Interference> & I);
+		bool GFillONCheckI(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
 		/****** TopOpeBRepBuild_BuilderON::GFillONParts2dWES2 ******/
 		/****** md5 signature: 129b9dfe1de8b2aabf2590f4bf0e9a83 ******/
@@ -4424,14 +4399,14 @@ No available documentation.
 		 TopOpeBRepBuild_CorrectFace2d();
 
 		/****** TopOpeBRepBuild_CorrectFace2d::TopOpeBRepBuild_CorrectFace2d ******/
-		/****** md5 signature: 38ceefb3575429981c491960db36a3a6 ******/
+		/****** md5 signature: ed5796031d97c626b035e0acd2384b62 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_CorrectFace2d;
 		%feature("autodoc", "
 Parameters
 ----------
 aFace: TopoDS_Face
-anAvoidMap: TopTools_IndexedMapOfOrientedShape
-aMap: TopTools_IndexedDataMapOfShapeShape
+anAvoidMap: NCollection_IndexedMap<TopoDS_Shape>
+aMap: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4441,16 +4416,16 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepBuild_CorrectFace2d;
-		 TopOpeBRepBuild_CorrectFace2d(const TopoDS_Face & aFace, const TopTools_IndexedMapOfOrientedShape & anAvoidMap, TopTools_IndexedDataMapOfShapeShape & aMap);
+		 TopOpeBRepBuild_CorrectFace2d(const TopoDS_Face & aFace, const NCollection_IndexedMap<TopoDS_Shape> & anAvoidMap, NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & aMap);
 
 		/****** TopOpeBRepBuild_CorrectFace2d::CheckList ******/
-		/****** md5 signature: 4ff224b9603092fb88ff527e700fea48 ******/
+		/****** md5 signature: c6ae6edb7d333a7921ca5712531544b9 ******/
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", "
 Parameters
 ----------
 aFace: TopoDS_Face
-aHeadList: TopTools_ListOfShape
+aHeadList: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -4460,7 +4435,7 @@ Description
 -----------
 No available documentation.
 ") CheckList;
-		static void CheckList(const TopoDS_Face & aFace, TopTools_ListOfShape & aHeadList);
+		static void CheckList(const TopoDS_Face & aFace, NCollection_List<TopoDS_Shape> & aHeadList);
 
 		/****** TopOpeBRepBuild_CorrectFace2d::CorrectedFace ******/
 		/****** md5 signature: 7357b459c86fa687044bc53b4eb86956 ******/
@@ -4476,7 +4451,7 @@ No available documentation.
 		const TopoDS_Face CorrectedFace();
 
 		/****** TopOpeBRepBuild_CorrectFace2d::ErrorStatus ******/
-		/****** md5 signature: c2b5079ef2f8e1a943b7beedcff9e105 ******/
+		/****** md5 signature: 13481d2945af376391a643c48d6d5825 ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -4486,7 +4461,7 @@ Description
 -----------
 No available documentation.
 ") ErrorStatus;
-		Standard_Integer ErrorStatus();
+		int ErrorStatus();
 
 		/****** TopOpeBRepBuild_CorrectFace2d::Face ******/
 		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
@@ -4523,7 +4498,7 @@ No available documentation.
 		static void GetP2dFL(const TopoDS_Face & aFace, const TopoDS_Edge & anEdge, gp_Pnt2d & P2dF, gp_Pnt2d & P2dL);
 
 		/****** TopOpeBRepBuild_CorrectFace2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4533,20 +4508,20 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** TopOpeBRepBuild_CorrectFace2d::MapOfTrans2dInfo ******/
-		/****** md5 signature: 7d548c5fbb00baafd381f2175bd7d1b9 ******/
+		/****** md5 signature: 002163a1ebd643630c42b8e336a05b3f ******/
 		%feature("compactdefaultargs") MapOfTrans2dInfo;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedDataMapOfShapeShape
+NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") MapOfTrans2dInfo;
-		TopTools_IndexedDataMapOfShapeShape & MapOfTrans2dInfo();
+		NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> MapOfTrans2dInfo();
 
 		/****** TopOpeBRepBuild_CorrectFace2d::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -4562,12 +4537,12 @@ No available documentation.
 		void Perform();
 
 		/****** TopOpeBRepBuild_CorrectFace2d::SetMapOfTrans2dInfo ******/
-		/****** md5 signature: 3c1552b59499a267d846553640dd7cc6 ******/
+		/****** md5 signature: f2fb4b0bbc26b5501ccb3bdd563a98c1 ******/
 		%feature("compactdefaultargs") SetMapOfTrans2dInfo;
 		%feature("autodoc", "
 Parameters
 ----------
-aMap: TopTools_IndexedDataMapOfShapeShape
+aMap: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4577,7 +4552,7 @@ Description
 -----------
 No available documentation.
 ") SetMapOfTrans2dInfo;
-		void SetMapOfTrans2dInfo(TopTools_IndexedDataMapOfShapeShape & aMap);
+		void SetMapOfTrans2dInfo(NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & aMap);
 
 };
 
@@ -4607,14 +4582,14 @@ No available documentation.
 		 TopOpeBRepBuild_FaceBuilder();
 
 		/****** TopOpeBRepBuild_FaceBuilder::TopOpeBRepBuild_FaceBuilder ******/
-		/****** md5 signature: 972727f7a388059928fb168bfb9a56b1 ******/
+		/****** md5 signature: d6c9137f10c0ad6a9b1d536a8719793d ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_FaceBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 ES: TopOpeBRepBuild_WireEdgeSet
 F: TopoDS_Shape
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -4624,10 +4599,10 @@ Description
 -----------
 Create a FaceBuilder to build the faces on the shapes (wires, blocks of edge) described by <LS>.
 ") TopOpeBRepBuild_FaceBuilder;
-		 TopOpeBRepBuild_FaceBuilder(TopOpeBRepBuild_WireEdgeSet & ES, const TopoDS_Shape & F, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_FaceBuilder(TopOpeBRepBuild_WireEdgeSet & ES, const TopoDS_Shape & F, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_FaceBuilder::AddEdgeWire ******/
-		/****** md5 signature: 930936d9fca54b6e7718e7d9e6ee1ea8 ******/
+		/****** md5 signature: f39164c782ad457de53b0141d4eb0278 ******/
 		%feature("compactdefaultargs") AddEdgeWire;
 		%feature("autodoc", "
 Parameters
@@ -4643,16 +4618,16 @@ Description
 -----------
 No available documentation.
 ") AddEdgeWire;
-		Standard_Integer AddEdgeWire(const TopoDS_Shape & E, TopoDS_Shape & W);
+		int AddEdgeWire(const TopoDS_Shape & E, TopoDS_Shape & W);
 
 		/****** TopOpeBRepBuild_FaceBuilder::CorrectGclosedWire ******/
-		/****** md5 signature: 8ba05cba805c9cc3f074bef3706738f0 ******/
+		/****** md5 signature: 9de2a123ce123a037be03f7093952b34 ******/
 		%feature("compactdefaultargs") CorrectGclosedWire;
 		%feature("autodoc", "
 Parameters
 ----------
-mapVVref: TopTools_IndexedDataMapOfShapeShape
-mapVon1Edge: TopTools_IndexedDataMapOfShapeShape
+mapVVref: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+mapVon1Edge: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4662,15 +4637,15 @@ Description
 -----------
 Using the given maps, change the topology of the 3d-closed wires, in order to get closed wires.
 ") CorrectGclosedWire;
-		void CorrectGclosedWire(const TopTools_IndexedDataMapOfShapeShape & mapVVref, const TopTools_IndexedDataMapOfShapeShape & mapVon1Edge);
+		void CorrectGclosedWire(const NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapVVref, const NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapVon1Edge);
 
 		/****** TopOpeBRepBuild_FaceBuilder::DetectPseudoInternalEdge ******/
-		/****** md5 signature: 67730e054697369f0fbc13383710a0de ******/
+		/****** md5 signature: c41a644cfc6708164ba946f258e93f8d ******/
 		%feature("compactdefaultargs") DetectPseudoInternalEdge;
 		%feature("autodoc", "
 Parameters
 ----------
-mapE: TopTools_IndexedMapOfShape
+mapE: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4680,16 +4655,16 @@ Description
 -----------
 Removes edges appearing twice (FORWARD,REVERSED) with a bounding vertex not connected to any other edge. mapE contains edges found. modifies myBlockBuilder.
 ") DetectPseudoInternalEdge;
-		void DetectPseudoInternalEdge(TopTools_IndexedMapOfShape & mapE);
+		void DetectPseudoInternalEdge(NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & mapE);
 
 		/****** TopOpeBRepBuild_FaceBuilder::DetectUnclosedWire ******/
-		/****** md5 signature: 24fb4792ef17e86cedb1a6ee7dcde55a ******/
+		/****** md5 signature: 521215cbde6fae31dd528ec692d7bf45 ******/
 		%feature("compactdefaultargs") DetectUnclosedWire;
 		%feature("autodoc", "
 Parameters
 ----------
-mapVVsameG: TopTools_IndexedDataMapOfShapeShape
-mapVon1Edge: TopTools_IndexedDataMapOfShapeShape
+mapVVsameG: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+mapVon1Edge: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -4699,7 +4674,7 @@ Description
 -----------
 Removes are non 3d-closed wires. Fills up maps <mapVVsameG> and <mapVon1Edge>, in order to correct 3d-closed but unclosed (topologic connexity) wires. modifies myBlockBuilder.
 ") DetectUnclosedWire;
-		void DetectUnclosedWire(TopTools_IndexedDataMapOfShapeShape & mapVVsameG, TopTools_IndexedDataMapOfShapeShape & mapVon1Edge);
+		void DetectUnclosedWire(NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapVVsameG, NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapVon1Edge);
 
 		/****** TopOpeBRepBuild_FaceBuilder::Edge ******/
 		/****** md5 signature: 736edb396456a570eb4c4e39335bdcb0 ******/
@@ -4715,7 +4690,7 @@ Returns current new edge of current new wire.
 		const TopoDS_Shape Edge();
 
 		/****** TopOpeBRepBuild_FaceBuilder::EdgeConnexity ******/
-		/****** md5 signature: e2b25a341e7e0bd86a6e4fe07b4f09a5 ******/
+		/****** md5 signature: 3cc5fa8ef1e1e74aa1ea3d680b0e6d60 ******/
 		%feature("compactdefaultargs") EdgeConnexity;
 		%feature("autodoc", "
 Parameters
@@ -4730,7 +4705,7 @@ Description
 -----------
 No available documentation.
 ") EdgeConnexity;
-		Standard_Integer EdgeConnexity(const TopoDS_Shape & E);
+		int EdgeConnexity(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_FaceBuilder::Face ******/
 		/****** md5 signature: 9c9430f314f7a67219d35de85b5a42a5 ******/
@@ -4759,7 +4734,7 @@ Iterates on myBlockIterator until finding a valid element.
 		void FindNextValidElement();
 
 		/****** TopOpeBRepBuild_FaceBuilder::InitEdge ******/
-		/****** md5 signature: 07ffd00dda09cc88ab0689563e4db0bc ******/
+		/****** md5 signature: 4ffafd5d7903af73bf81cf5c49102c1c ******/
 		%feature("compactdefaultargs") InitEdge;
 		%feature("autodoc", "Return
 -------
@@ -4769,10 +4744,10 @@ Description
 -----------
 No available documentation.
 ") InitEdge;
-		Standard_Integer InitEdge();
+		int InitEdge();
 
 		/****** TopOpeBRepBuild_FaceBuilder::InitFace ******/
-		/****** md5 signature: 5ccd5edeaa7f45aeb42ebfd241061344 ******/
+		/****** md5 signature: f7d658980d48b1f34106c03b05d30566 ******/
 		%feature("compactdefaultargs") InitFace;
 		%feature("autodoc", "Return
 -------
@@ -4782,10 +4757,10 @@ Description
 -----------
 No available documentation.
 ") InitFace;
-		Standard_Integer InitFace();
+		int InitFace();
 
 		/****** TopOpeBRepBuild_FaceBuilder::InitFaceBuilder ******/
-		/****** md5 signature: bbd1fabf5da938e0451fd428cbf0f83c ******/
+		/****** md5 signature: 3de4373e76d74ac8d4afc4bd8947912a ******/
 		%feature("compactdefaultargs") InitFaceBuilder;
 		%feature("autodoc", "
 Parameters
@@ -4802,10 +4777,10 @@ Description
 -----------
 No available documentation.
 ") InitFaceBuilder;
-		void InitFaceBuilder(TopOpeBRepBuild_WireEdgeSet & ES, const TopoDS_Shape & F, const Standard_Boolean ForceClass);
+		void InitFaceBuilder(TopOpeBRepBuild_WireEdgeSet & ES, const TopoDS_Shape & F, const bool ForceClass);
 
 		/****** TopOpeBRepBuild_FaceBuilder::InitWire ******/
-		/****** md5 signature: a00546cadc031d2b0a9f1e5a47bc1419 ******/
+		/****** md5 signature: 8ee444964484761e992eacd423b7c1a6 ******/
 		%feature("compactdefaultargs") InitWire;
 		%feature("autodoc", "Return
 -------
@@ -4815,10 +4790,10 @@ Description
 -----------
 No available documentation.
 ") InitWire;
-		Standard_Integer InitWire();
+		int InitWire();
 
 		/****** TopOpeBRepBuild_FaceBuilder::IsOldWire ******/
-		/****** md5 signature: 1521223693e136a77675b429f60285dd ******/
+		/****** md5 signature: cb84b89e4acd7eb2d1203c3a80f96ba7 ******/
 		%feature("compactdefaultargs") IsOldWire;
 		%feature("autodoc", "Return
 -------
@@ -4828,10 +4803,10 @@ Description
 -----------
 No available documentation.
 ") IsOldWire;
-		Standard_Boolean IsOldWire();
+		bool IsOldWire();
 
 		/****** TopOpeBRepBuild_FaceBuilder::MoreEdge ******/
-		/****** md5 signature: 3deabda73e93b20e8a72f2f0ebea4e02 ******/
+		/****** md5 signature: 6ad80ac0d66dad5013f4fe4cff20c934 ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -4841,10 +4816,10 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** TopOpeBRepBuild_FaceBuilder::MoreFace ******/
-		/****** md5 signature: 9ce280b3ff0f94e82bd4ccb635ad91a7 ******/
+		/****** md5 signature: bff7dacb9d14d55afd6f709576086160 ******/
 		%feature("compactdefaultargs") MoreFace;
 		%feature("autodoc", "Return
 -------
@@ -4854,10 +4829,10 @@ Description
 -----------
 No available documentation.
 ") MoreFace;
-		Standard_Boolean MoreFace();
+		bool MoreFace();
 
 		/****** TopOpeBRepBuild_FaceBuilder::MoreWire ******/
-		/****** md5 signature: 3e395c540f4c6c109e2a8394d1728645 ******/
+		/****** md5 signature: 33e57650f873a7add69878ed9f775310 ******/
 		%feature("compactdefaultargs") MoreWire;
 		%feature("autodoc", "Return
 -------
@@ -4867,7 +4842,7 @@ Description
 -----------
 No available documentation.
 ") MoreWire;
-		Standard_Boolean MoreWire();
+		bool MoreWire();
 
 		/****** TopOpeBRepBuild_FaceBuilder::NextEdge ******/
 		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
@@ -4949,13 +4924,13 @@ No available documentation.
 		 TopOpeBRepBuild_FuseFace();
 
 		/****** TopOpeBRepBuild_FuseFace::TopOpeBRepBuild_FuseFace ******/
-		/****** md5 signature: 1d1347af1e67e1eb2f036ee42aace0c3 ******/
+		/****** md5 signature: 808af97ae4e398dc9a2b4a99866b00a4 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_FuseFace;
 		%feature("autodoc", "
 Parameters
 ----------
-LIF: TopTools_ListOfShape
-LRF: TopTools_ListOfShape
+LIF: NCollection_List<TopoDS_Shape>
+LRF: NCollection_List<TopoDS_Shape>
 CXM: int
 
 Return
@@ -4966,7 +4941,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepBuild_FuseFace;
-		 TopOpeBRepBuild_FuseFace(const TopTools_ListOfShape & LIF, const TopTools_ListOfShape & LRF, const Standard_Integer CXM);
+		 TopOpeBRepBuild_FuseFace(const NCollection_List<TopoDS_Shape> & LIF, const NCollection_List<TopoDS_Shape> & LRF, const int CXM);
 
 		/****** TopOpeBRepBuild_FuseFace::ClearEdge ******/
 		/****** md5 signature: dbef4a0c908b7dfedc92dad3e8fa4166 ******/
@@ -4995,13 +4970,13 @@ No available documentation.
 		void ClearVertex();
 
 		/****** TopOpeBRepBuild_FuseFace::Init ******/
-		/****** md5 signature: 3ab2d1d6510508a975935cfc02f2a9e6 ******/
+		/****** md5 signature: 578726fde3dad1afdca072ee051e77c9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-LIF: TopTools_ListOfShape
-LRF: TopTools_ListOfShape
+LIF: NCollection_List<TopoDS_Shape>
+LRF: NCollection_List<TopoDS_Shape>
 CXM: int
 
 Return
@@ -5012,10 +4987,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopTools_ListOfShape & LIF, const TopTools_ListOfShape & LRF, const Standard_Integer CXM);
+		void Init(const NCollection_List<TopoDS_Shape> & LIF, const NCollection_List<TopoDS_Shape> & LRF, const int CXM);
 
 		/****** TopOpeBRepBuild_FuseFace::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5025,10 +5000,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** TopOpeBRepBuild_FuseFace::IsModified ******/
-		/****** md5 signature: 9c75f71ece8c473c12f072739ddc9f63 ******/
+		/****** md5 signature: 20a841c48b5ecb63ab1563022bd76327 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "Return
 -------
@@ -5038,98 +5013,98 @@ Description
 -----------
 No available documentation.
 ") IsModified;
-		Standard_Boolean IsModified();
+		bool IsModified();
 
 		/****** TopOpeBRepBuild_FuseFace::LExternEdge ******/
-		/****** md5 signature: d520f8b56159e72ebabf207cd3732ec1 ******/
+		/****** md5 signature: 4c1d1ca0012b714f19dbc317460c895f ******/
 		%feature("compactdefaultargs") LExternEdge;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LExternEdge;
-		const TopTools_ListOfShape & LExternEdge();
+		const NCollection_List<TopoDS_Shape> LExternEdge();
 
 		/****** TopOpeBRepBuild_FuseFace::LExternVertex ******/
-		/****** md5 signature: d70820bd86d74f6deeea1f8e2940536f ******/
+		/****** md5 signature: 0c9f7455ca685895891c450fff11602e ******/
 		%feature("compactdefaultargs") LExternVertex;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LExternVertex;
-		const TopTools_ListOfShape & LExternVertex();
+		const NCollection_List<TopoDS_Shape> LExternVertex();
 
 		/****** TopOpeBRepBuild_FuseFace::LFuseFace ******/
-		/****** md5 signature: 93d3b6df16912050b3763e9c2bdf4851 ******/
+		/****** md5 signature: 3eb68dd307149c6bd448b037f0024d74 ******/
 		%feature("compactdefaultargs") LFuseFace;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LFuseFace;
-		const TopTools_ListOfShape & LFuseFace();
+		const NCollection_List<TopoDS_Shape> LFuseFace();
 
 		/****** TopOpeBRepBuild_FuseFace::LInternEdge ******/
-		/****** md5 signature: e5bac6648c8398b4d769fe8817b91fb7 ******/
+		/****** md5 signature: dbe1d71948e9f57352799e61f50dea4f ******/
 		%feature("compactdefaultargs") LInternEdge;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LInternEdge;
-		const TopTools_ListOfShape & LInternEdge();
+		const NCollection_List<TopoDS_Shape> LInternEdge();
 
 		/****** TopOpeBRepBuild_FuseFace::LInternVertex ******/
-		/****** md5 signature: d9039c3a70dcd98643ec5d2a7c370cfc ******/
+		/****** md5 signature: 813a5d739524bb9a98c7045d3e785872 ******/
 		%feature("compactdefaultargs") LInternVertex;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LInternVertex;
-		const TopTools_ListOfShape & LInternVertex();
+		const NCollection_List<TopoDS_Shape> LInternVertex();
 
 		/****** TopOpeBRepBuild_FuseFace::LModifEdge ******/
-		/****** md5 signature: 887f0e22514e5f8b2b3bc45ce22d6924 ******/
+		/****** md5 signature: 762cfcc06dbf4c28175c40a7624b3c64 ******/
 		%feature("compactdefaultargs") LModifEdge;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LModifEdge;
-		const TopTools_ListOfShape & LModifEdge();
+		const NCollection_List<TopoDS_Shape> LModifEdge();
 
 		/****** TopOpeBRepBuild_FuseFace::LModifVertex ******/
-		/****** md5 signature: 021f8f77a3f02418722c038284e4c8b4 ******/
+		/****** md5 signature: 799e4c6e1d4c7d567547656463a23410 ******/
 		%feature("compactdefaultargs") LModifVertex;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") LModifVertex;
-		const TopTools_ListOfShape & LModifVertex();
+		const NCollection_List<TopoDS_Shape> LModifVertex();
 
 		/****** TopOpeBRepBuild_FuseFace::PerformEdge ******/
 		/****** md5 signature: 56629cb1b52d14f9a2daa66f7719477a ******/
@@ -5269,7 +5244,7 @@ No available documentation.
 		void Init(const TopOpeBRepBuild_GTopo & G);
 
 		/****** TopOpeBRepBuild_GIter::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -5279,7 +5254,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopOpeBRepBuild_GIter::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -5524,7 +5499,7 @@ No available documentation.
 		 TopOpeBRepBuild_GTopo();
 
 		/****** TopOpeBRepBuild_GTopo::TopOpeBRepBuild_GTopo ******/
-		/****** md5 signature: bc42607302826705d0b102eeadc56de2 ******/
+		/****** md5 signature: 22e78bd530c717ad6fed69669d8f0a9a ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_GTopo;
 		%feature("autodoc", "
 Parameters
@@ -5551,7 +5526,7 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepBuild_GTopo;
-		 TopOpeBRepBuild_GTopo(const Standard_Boolean II, const Standard_Boolean IN, const Standard_Boolean IO, const Standard_Boolean NI, const Standard_Boolean NN, const Standard_Boolean NO, const Standard_Boolean OI, const Standard_Boolean ON, const Standard_Boolean OO, const TopAbs_ShapeEnum t1, const TopAbs_ShapeEnum t2, const TopOpeBRepDS_Config C1, const TopOpeBRepDS_Config C2);
+		 TopOpeBRepBuild_GTopo(const bool II, const bool IN, const bool IO, const bool NI, const bool NN, const bool NO, const bool OI, const bool ON, const bool OO, const TopAbs_ShapeEnum t1, const TopAbs_ShapeEnum t2, const TopOpeBRepDS_Config C1, const TopOpeBRepDS_Config C2);
 
 		/****** TopOpeBRepBuild_GTopo::ChangeConfig ******/
 		/****** md5 signature: 55b5ae6cba23650cf9cba49d45c0be6d ******/
@@ -5592,7 +5567,7 @@ No available documentation.
 		void ChangeType(const TopAbs_ShapeEnum t1, const TopAbs_ShapeEnum t2);
 
 		/****** TopOpeBRepBuild_GTopo::ChangeValue ******/
-		/****** md5 signature: b3c3757c9d2cd11cf4499e0c8b41dc14 ******/
+		/****** md5 signature: 39126b72af80830e3aa073a829a5b658 ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -5609,10 +5584,10 @@ Description
 -----------
 No available documentation.
 ") ChangeValue;
-		void ChangeValue(const Standard_Integer i1, const Standard_Integer i2, const Standard_Boolean b);
+		void ChangeValue(const int i1, const int i2, const bool b);
 
 		/****** TopOpeBRepBuild_GTopo::ChangeValue ******/
-		/****** md5 signature: b914c9ac099cb848353f0399bacfc4c8 ******/
+		/****** md5 signature: b5ec5410407f2a832f39dd7bf2ce340b ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -5629,7 +5604,7 @@ Description
 -----------
 No available documentation.
 ") ChangeValue;
-		void ChangeValue(const TopAbs_State s1, const TopAbs_State s2, const Standard_Boolean b);
+		void ChangeValue(const TopAbs_State s1, const TopAbs_State s2, const bool b);
 
 		/****** TopOpeBRepBuild_GTopo::Config1 ******/
 		/****** md5 signature: d6bdb88b5c25e150d56a96c1cd0b6f7e ******/
@@ -5671,12 +5646,12 @@ No available documentation.
 		TopOpeBRepBuild_GTopo CopyPermuted();
 
 		/****** TopOpeBRepBuild_GTopo::Dump ******/
-		/****** md5 signature: 8c9af92dbb883764baa3ebb3e5b82f7c ******/
+		/****** md5 signature: 4db960682eea21d4432cbe5240bcb03e ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
 ----------
-s: Standard_Address (optional, default to NULL)
+s: void * (optional, default to nullptr)
 
 Return
 -------
@@ -5686,10 +5661,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual void Dump(std::ostream &OutValue, const Standard_Address s = NULL);
+		virtual void Dump(std::ostream &OutValue, void * const s = nullptr);
 
 		/****** TopOpeBRepBuild_GTopo::DumpSSB ******/
-		/****** md5 signature: f191eecc210b5827d05e7cd4594ead98 ******/
+		/****** md5 signature: dc351fb541cd1e4cb1a154a6d1136901 ******/
 		%feature("compactdefaultargs") DumpSSB;
 		%feature("autodoc", "
 Parameters
@@ -5706,7 +5681,7 @@ Description
 -----------
 No available documentation.
 ") DumpSSB;
-		static void DumpSSB(std::ostream &OutValue, const TopAbs_State s1, const TopAbs_State s2, const Standard_Boolean b);
+		static void DumpSSB(std::ostream &OutValue, const TopAbs_State s1, const TopAbs_State s2, const bool b);
 
 		/****** TopOpeBRepBuild_GTopo::DumpType ******/
 		/****** md5 signature: 958d66f716a6ca18d4ec9ac299b310e2 ******/
@@ -5745,7 +5720,7 @@ No available documentation.
 		void DumpVal(std::ostream &OutValue, const TopAbs_State s1, const TopAbs_State s2);
 
 		/****** TopOpeBRepBuild_GTopo::GIndex ******/
-		/****** md5 signature: 139dc2b2cf616d5e5205293f4637e677 ******/
+		/****** md5 signature: 3e929986cdf308f39beeb3c7df43fef4 ******/
 		%feature("compactdefaultargs") GIndex;
 		%feature("autodoc", "
 Parameters
@@ -5760,10 +5735,10 @@ Description
 -----------
 No available documentation.
 ") GIndex;
-		Standard_Integer GIndex(const TopAbs_State S);
+		int GIndex(const TopAbs_State S);
 
 		/****** TopOpeBRepBuild_GTopo::GState ******/
-		/****** md5 signature: d507e1b22ce648b493d4e2c23498ae74 ******/
+		/****** md5 signature: 7674c965dc991f254de064ede95ad57c ******/
 		%feature("compactdefaultargs") GState;
 		%feature("autodoc", "
 Parameters
@@ -5778,10 +5753,10 @@ Description
 -----------
 No available documentation.
 ") GState;
-		TopAbs_State GState(const Standard_Integer I);
+		TopAbs_State GState(const int I);
 
 		/****** TopOpeBRepBuild_GTopo::Index ******/
-		/****** md5 signature: 05425477b633eee8d01debea3ee3c150 ******/
+		/****** md5 signature: 6740ebff082841ca909d2f85d6daadc2 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -5797,10 +5772,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		void Index(const Standard_Integer II, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void Index(const int II, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_GTopo::IsToReverse1 ******/
-		/****** md5 signature: b34cbee9202a98b4388caba35468ccae ******/
+		/****** md5 signature: 1f652bfd67b753ffc87f702323b31484 ******/
 		%feature("compactdefaultargs") IsToReverse1;
 		%feature("autodoc", "Return
 -------
@@ -5810,10 +5785,10 @@ Description
 -----------
 No available documentation.
 ") IsToReverse1;
-		Standard_Boolean IsToReverse1();
+		bool IsToReverse1();
 
 		/****** TopOpeBRepBuild_GTopo::IsToReverse2 ******/
-		/****** md5 signature: e19b83ad9ce47713046bf8c0d6b88a42 ******/
+		/****** md5 signature: 988a633c85cebd2ff0443e47ff83a1f1 ******/
 		%feature("compactdefaultargs") IsToReverse2;
 		%feature("autodoc", "Return
 -------
@@ -5823,7 +5798,7 @@ Description
 -----------
 No available documentation.
 ") IsToReverse2;
-		Standard_Boolean IsToReverse2();
+		bool IsToReverse2();
 
 		/****** TopOpeBRepBuild_GTopo::Reset ******/
 		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
@@ -5839,7 +5814,7 @@ No available documentation.
 		void Reset();
 
 		/****** TopOpeBRepBuild_GTopo::Reverse ******/
-		/****** md5 signature: f19cd0298ea10fb1ffed610ba2473b46 ******/
+		/****** md5 signature: 6c288f9b62966d1069d30219e51887a5 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -5849,10 +5824,10 @@ Description
 -----------
 No available documentation.
 ") Reverse;
-		Standard_Boolean Reverse();
+		bool Reverse();
 
 		/****** TopOpeBRepBuild_GTopo::Set ******/
-		/****** md5 signature: 1eb5139c3c13c9ee6f55221189d5a61d ******/
+		/****** md5 signature: 963e06a202a08d7b4bf9f35c847ae373 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5875,10 +5850,10 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Boolean II, const Standard_Boolean IN, const Standard_Boolean IO, const Standard_Boolean NI, const Standard_Boolean NN, const Standard_Boolean NO, const Standard_Boolean OI, const Standard_Boolean ON, const Standard_Boolean OO);
+		void Set(const bool II, const bool IN, const bool IO, const bool NI, const bool NN, const bool NO, const bool OI, const bool ON, const bool OO);
 
 		/****** TopOpeBRepBuild_GTopo::SetReverse ******/
-		/****** md5 signature: ac9a6ca181d5b4bfa5691fc119c26cc2 ******/
+		/****** md5 signature: aca571f167b9b1449f27873d0de8d4f1 ******/
 		%feature("compactdefaultargs") SetReverse;
 		%feature("autodoc", "
 Parameters
@@ -5893,7 +5868,7 @@ Description
 -----------
 No available documentation.
 ") SetReverse;
-		void SetReverse(const Standard_Boolean rev);
+		void SetReverse(const bool rev);
 
 		/****** TopOpeBRepBuild_GTopo::StatesON ******/
 		/****** md5 signature: e33d4816eb157a2c15a70772cb8691e2 ******/
@@ -5932,7 +5907,7 @@ No available documentation.
 		void Type(TopAbs_ShapeEnum &OutValue, TopAbs_ShapeEnum &OutValue);
 
 		/****** TopOpeBRepBuild_GTopo::Value ******/
-		/****** md5 signature: b540e3f24fd7559697bc1e352720e2a3 ******/
+		/****** md5 signature: 124d8b0da7f767525a36d507dd789992 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5948,10 +5923,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const TopAbs_State s1, const TopAbs_State s2);
+		bool Value(const TopAbs_State s1, const TopAbs_State s2);
 
 		/****** TopOpeBRepBuild_GTopo::Value ******/
-		/****** md5 signature: 51e0bee32bbeca558543f4379daea9e4 ******/
+		/****** md5 signature: 81fda4fd6ac28ee873a7b70f3087dd83 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5967,10 +5942,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const Standard_Integer I1, const Standard_Integer I2);
+		bool Value(const int I1, const int I2);
 
 		/****** TopOpeBRepBuild_GTopo::Value ******/
-		/****** md5 signature: bab97e558269b8b45b97aa307a8bd97c ******/
+		/****** md5 signature: 01f482df7e2b46ba5672a7a968a7f571 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5985,7 +5960,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const Standard_Integer II);
+		bool Value(const int II);
 
 };
 
@@ -6059,7 +6034,7 @@ No available documentation.
 		TopOpeBRepBuild_Builder & ChangeBuilder();
 
 		/****** TopOpeBRepBuild_HBuilder::ChangeNewEdges ******/
-		/****** md5 signature: 24fbbb7f955fea89043bb83eca2a9717 ******/
+		/****** md5 signature: 7f4303b5367efe135b0647b5c62b25b0 ******/
 		%feature("compactdefaultargs") ChangeNewEdges;
 		%feature("autodoc", "
 Parameters
@@ -6068,13 +6043,13 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the edges created on curve <I>.
 ") ChangeNewEdges;
-		TopTools_ListOfShape & ChangeNewEdges(const Standard_Integer I);
+		NCollection_List<TopoDS_Shape> ChangeNewEdges(const int I);
 
 		/****** TopOpeBRepBuild_HBuilder::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -6116,7 +6091,7 @@ returns the DS handled by this builder.
 		opencascade::handle<TopOpeBRepDS_HDataStructure> DataStructure();
 
 		/****** TopOpeBRepBuild_HBuilder::EdgeCurveAncestors ******/
-		/****** md5 signature: 5e9edf4b24ffd8613debed35f8ead0bb ******/
+		/****** md5 signature: ab3c18493d0bec27907964e0f88bdf36 ******/
 		%feature("compactdefaultargs") EdgeCurveAncestors;
 		%feature("autodoc", "
 Parameters
@@ -6133,19 +6108,19 @@ Description
 -----------
 search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on an intersection curve. returns True if F1,F2 have been valued. returns False if E is not a section edge built on intersection curve IC.
 ") EdgeCurveAncestors;
-		Standard_Boolean EdgeCurveAncestors(const TopoDS_Shape & E, TopoDS_Shape & F1, TopoDS_Shape & F2, Standard_Integer &OutValue);
+		bool EdgeCurveAncestors(const TopoDS_Shape & E, TopoDS_Shape & F1, TopoDS_Shape & F2, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_HBuilder::EdgeSectionAncestors ******/
-		/****** md5 signature: e2c91c74becf0432ad708c98d403dc94 ******/
+		/****** md5 signature: 9ce55a3fc52d699b16100b962c993bc3 ******/
 		%feature("compactdefaultargs") EdgeSectionAncestors;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Shape
-LF1: TopTools_ListOfShape
-LF2: TopTools_ListOfShape
-LE1: TopTools_ListOfShape
-LE2: TopTools_ListOfShape
+LF1: NCollection_List<TopoDS_Shape>
+LF2: NCollection_List<TopoDS_Shape>
+LE1: NCollection_List<TopoDS_Shape>
+LE2: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -6153,12 +6128,12 @@ bool
 
 Description
 -----------
-search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on at least one edge . returns True if F1,F2 have been valued. returns False if E is not a section edge built on at least one edge of S1 and/or S2. LE1,LE2 are edges of S1,S2 which common part is edge E. LE1 or LE2 may be empty() but not both.
+search for the couple of face F1,F2 (from arguments of supra Perform(S1,S2,HDS)) method which intersection gives section edge E built on at least one edge. returns True if F1,F2 have been valued. returns False if E is not a section edge built on at least one edge of S1 and/or S2. LE1,LE2 are edges of S1,S2 which common part is edge E. LE1 or LE2 may be empty() but not both.
 ") EdgeSectionAncestors;
-		Standard_Boolean EdgeSectionAncestors(const TopoDS_Shape & E, TopTools_ListOfShape & LF1, TopTools_ListOfShape & LF2, TopTools_ListOfShape & LE1, TopTools_ListOfShape & LE2);
+		bool EdgeSectionAncestors(const TopoDS_Shape & E, NCollection_List<TopoDS_Shape> & LF1, NCollection_List<TopoDS_Shape> & LF2, NCollection_List<TopoDS_Shape> & LE1, NCollection_List<TopoDS_Shape> & LE2);
 
 		/****** TopOpeBRepBuild_HBuilder::GetDSCurveFromSectEdge ******/
-		/****** md5 signature: 85b52fb22de7e38bb1ce4013c0559d97 ******/
+		/****** md5 signature: bd05bc971bc5185fe7b309a2fac19738 ******/
 		%feature("compactdefaultargs") GetDSCurveFromSectEdge;
 		%feature("autodoc", "
 Parameters
@@ -6173,10 +6148,10 @@ Description
 -----------
 No available documentation.
 ") GetDSCurveFromSectEdge;
-		Standard_Integer GetDSCurveFromSectEdge(const TopoDS_Shape & SectEdge);
+		int GetDSCurveFromSectEdge(const TopoDS_Shape & SectEdge);
 
 		/****** TopOpeBRepBuild_HBuilder::GetDSEdgeFromSectEdge ******/
-		/****** md5 signature: 7d5760ef2d37f9bf40a31723933aef40 ******/
+		/****** md5 signature: addfdd9ed1ccf9ca207fe45495fdcf89 ******/
 		%feature("compactdefaultargs") GetDSEdgeFromSectEdge;
 		%feature("autodoc", "
 Parameters
@@ -6192,10 +6167,10 @@ Description
 -----------
 No available documentation.
 ") GetDSEdgeFromSectEdge;
-		Standard_Integer GetDSEdgeFromSectEdge(const TopoDS_Shape & E, const Standard_Integer rank);
+		int GetDSEdgeFromSectEdge(const TopoDS_Shape & E, const int rank);
 
 		/****** TopOpeBRepBuild_HBuilder::GetDSFaceFromDSCurve ******/
-		/****** md5 signature: 6398e46beb43dcb7ef994842413d9e74 ******/
+		/****** md5 signature: 4db427058dc3084f173c46716e7b9c8b ******/
 		%feature("compactdefaultargs") GetDSFaceFromDSCurve;
 		%feature("autodoc", "
 Parameters
@@ -6211,10 +6186,10 @@ Description
 -----------
 No available documentation.
 ") GetDSFaceFromDSCurve;
-		Standard_Integer GetDSFaceFromDSCurve(const Standard_Integer indexCur, const Standard_Integer rank);
+		int GetDSFaceFromDSCurve(const int indexCur, const int rank);
 
 		/****** TopOpeBRepBuild_HBuilder::GetDSFaceFromDSEdge ******/
-		/****** md5 signature: 7d920de72aa673c39273d79dc0b88c7b ******/
+		/****** md5 signature: a962da98d2a4a7b207c8849c157ebbb1 ******/
 		%feature("compactdefaultargs") GetDSFaceFromDSEdge;
 		%feature("autodoc", "
 Parameters
@@ -6224,16 +6199,16 @@ rank: int
 
 Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 No available documentation.
 ") GetDSFaceFromDSEdge;
-		TColStd_ListOfInteger & GetDSFaceFromDSEdge(const Standard_Integer indexEdg, const Standard_Integer rank);
+		NCollection_List<int> & GetDSFaceFromDSEdge(const int indexEdg, const int rank);
 
 		/****** TopOpeBRepBuild_HBuilder::GetDSPointFromNewVertex ******/
-		/****** md5 signature: b5eb2341390865d0e383b8e13745b1bf ******/
+		/****** md5 signature: 35073b889ed09bb772e102ee75693fb1 ******/
 		%feature("compactdefaultargs") GetDSPointFromNewVertex;
 		%feature("autodoc", "
 Parameters
@@ -6248,10 +6223,10 @@ Description
 -----------
 No available documentation.
 ") GetDSPointFromNewVertex;
-		Standard_Integer GetDSPointFromNewVertex(const TopoDS_Shape & NewVert);
+		int GetDSPointFromNewVertex(const TopoDS_Shape & NewVert);
 
 		/****** TopOpeBRepBuild_HBuilder::InitExtendedSectionDS ******/
-		/****** md5 signature: b3e82110db1a002054cbcf596dfbc837 ******/
+		/****** md5 signature: c8f8791d3e3eb320c2f652ffa23f1533 ******/
 		%feature("compactdefaultargs") InitExtendedSectionDS;
 		%feature("autodoc", "
 Parameters
@@ -6266,10 +6241,10 @@ Description
 -----------
 No available documentation.
 ") InitExtendedSectionDS;
-		void InitExtendedSectionDS(const Standard_Integer k = 3);
+		void InitExtendedSectionDS(const int k = 3);
 
 		/****** TopOpeBRepBuild_HBuilder::InitSection ******/
-		/****** md5 signature: f822babf751016272aad50e4d220f5ea ******/
+		/****** md5 signature: ac6683a9d8543835cf7d41f167b7ee23 ******/
 		%feature("compactdefaultargs") InitSection;
 		%feature("autodoc", "
 Parameters
@@ -6284,10 +6259,10 @@ Description
 -----------
 No available documentation.
 ") InitSection;
-		void InitSection(const Standard_Integer k = 3);
+		void InitSection(const int k = 3);
 
 		/****** TopOpeBRepBuild_HBuilder::IsKPart ******/
-		/****** md5 signature: 7d539b64e4a4d593d9f8d0b73d6fd635 ******/
+		/****** md5 signature: c29b47b6ba7b2650c3c57b9a89e7a847 ******/
 		%feature("compactdefaultargs") IsKPart;
 		%feature("autodoc", "Return
 -------
@@ -6297,10 +6272,10 @@ Description
 -----------
 Returns 0 is standard operation, != 0 if particular case.
 ") IsKPart;
-		Standard_Integer IsKPart();
+		int IsKPart();
 
 		/****** TopOpeBRepBuild_HBuilder::IsMerged ******/
-		/****** md5 signature: 858a082dbdb44d34f2c3122338c615a2 ******/
+		/****** md5 signature: a0812fd5703287c15de14ba0cf954cbd ******/
 		%feature("compactdefaultargs") IsMerged;
 		%feature("autodoc", "
 Parameters
@@ -6316,10 +6291,10 @@ Description
 -----------
 Returns True if the shape <S> has been merged.
 ") IsMerged;
-		Standard_Boolean IsMerged(const TopoDS_Shape & S, const TopAbs_State ToBuild);
+		bool IsMerged(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
 		/****** TopOpeBRepBuild_HBuilder::IsSplit ******/
-		/****** md5 signature: acf7884b561006ec090062f3d96cbdfd ******/
+		/****** md5 signature: 1c41d25538e744a270bc89e2aed3ee6a ******/
 		%feature("compactdefaultargs") IsSplit;
 		%feature("autodoc", "
 Parameters
@@ -6335,7 +6310,7 @@ Description
 -----------
 Returns True if the shape <S> has been split.
 ") IsSplit;
-		Standard_Boolean IsSplit(const TopoDS_Shape & S, const TopAbs_State ToBuild);
+		bool IsSplit(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
 		/****** TopOpeBRepBuild_HBuilder::MergeKPart ******/
 		/****** md5 signature: c5fda5909055a56871433a38fd623adb ******/
@@ -6418,7 +6393,7 @@ Merges the two solids <S1> and <S2> keeping the parts in each solid of states <T
 		void MergeSolids(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
 		/****** TopOpeBRepBuild_HBuilder::Merged ******/
-		/****** md5 signature: 5c0e56fe667dc50fee7311d6ee9408f7 ******/
+		/****** md5 signature: 1864c8ae010bb2078b42410bdf1d2bc1 ******/
 		%feature("compactdefaultargs") Merged;
 		%feature("autodoc", "
 Parameters
@@ -6428,16 +6403,16 @@ ToBuild: TopAbs_State
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the merged parts <ToBuild> of shape <S>.
 ") Merged;
-		const TopTools_ListOfShape & Merged(const TopoDS_Shape & S, const TopAbs_State ToBuild);
+		const NCollection_List<TopoDS_Shape> Merged(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
 		/****** TopOpeBRepBuild_HBuilder::MoreSection ******/
-		/****** md5 signature: 31ef6857806c3db53f082158d428e76b ******/
+		/****** md5 signature: 4cbf6bad03842a67747339a1cb0aa03a ******/
 		%feature("compactdefaultargs") MoreSection;
 		%feature("autodoc", "Return
 -------
@@ -6447,10 +6422,10 @@ Description
 -----------
 No available documentation.
 ") MoreSection;
-		Standard_Boolean MoreSection();
+		bool MoreSection();
 
 		/****** TopOpeBRepBuild_HBuilder::NewEdges ******/
-		/****** md5 signature: 179c09660233c56ae429549db3ff7400 ******/
+		/****** md5 signature: 9ec982f5f3014b1590bdac140184735d ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "
 Parameters
@@ -6459,16 +6434,16 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the edges created on curve <I>.
 ") NewEdges;
-		const TopTools_ListOfShape & NewEdges(const Standard_Integer I);
+		const NCollection_List<TopoDS_Shape> NewEdges(const int I);
 
 		/****** TopOpeBRepBuild_HBuilder::NewFaces ******/
-		/****** md5 signature: a980596ca1d4b7e52b84de8438a49893 ******/
+		/****** md5 signature: 96a08f871c044c95bf0a5b942b6f1d59 ******/
 		%feature("compactdefaultargs") NewFaces;
 		%feature("autodoc", "
 Parameters
@@ -6477,16 +6452,16 @@ I: int
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the faces created on surface <I>.
 ") NewFaces;
-		const TopTools_ListOfShape & NewFaces(const Standard_Integer I);
+		const NCollection_List<TopoDS_Shape> NewFaces(const int I);
 
 		/****** TopOpeBRepBuild_HBuilder::NewVertex ******/
-		/****** md5 signature: 151c4ed04d2f822e39225390e7212a98 ******/
+		/****** md5 signature: 22041e3bce7e66de68d0cb74a55b4197 ******/
 		%feature("compactdefaultargs") NewVertex;
 		%feature("autodoc", "
 Parameters
@@ -6501,7 +6476,7 @@ Description
 -----------
 Returns the vertex created on point <I>.
 ") NewVertex;
-		const TopoDS_Shape NewVertex(const Standard_Integer I);
+		const TopoDS_Shape NewVertex(const int I);
 
 		/****** TopOpeBRepBuild_HBuilder::NextSection ******/
 		/****** md5 signature: 43c27ad5f4227c4f31a1669f9df81a20 ******/
@@ -6555,20 +6530,20 @@ Same as previous + evaluates if an operation performed on shapes S1,S2 is a part
 		void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****** TopOpeBRepBuild_HBuilder::Section ******/
-		/****** md5 signature: d6808b5660c9276aa346c459a52c09df ******/
+		/****** md5 signature: de29fcbd54cc3d269c973a6e4f3c1c51 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Section;
-		const TopTools_ListOfShape & Section();
+		const NCollection_List<TopoDS_Shape> Section();
 
 		/****** TopOpeBRepBuild_HBuilder::Splits ******/
-		/****** md5 signature: ea2be644a14946c6b65d2930b297a6ca ******/
+		/****** md5 signature: ecea27f245d698e307a1abbd0f220221 ******/
 		%feature("compactdefaultargs") Splits;
 		%feature("autodoc", "
 Parameters
@@ -6578,13 +6553,13 @@ ToBuild: TopAbs_State
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the split parts <ToBuild> of shape <S>.
 ") Splits;
-		const TopTools_ListOfShape & Splits(const TopoDS_Shape & S, const TopAbs_State ToBuild);
+		const NCollection_List<TopoDS_Shape> Splits(const TopoDS_Shape & S, const TopAbs_State ToBuild);
 
 };
 
@@ -6665,7 +6640,7 @@ No available documentation.
 		virtual void Dump();
 
 		/****** TopOpeBRepBuild_Loop::IsShape ******/
-		/****** md5 signature: 8eb3ceac5fd0323d4df58a0604f59141 ******/
+		/****** md5 signature: 59e03c162f361e2f4f44a567c5f17d88 ******/
 		%feature("compactdefaultargs") IsShape;
 		%feature("autodoc", "Return
 -------
@@ -6675,7 +6650,7 @@ Description
 -----------
 No available documentation.
 ") IsShape;
-		virtual Standard_Boolean IsShape();
+		virtual bool IsShape();
 
 		/****** TopOpeBRepBuild_Loop::Shape ******/
 		/****** md5 signature: 337d0a309daba4934b247f345f1078fd ******/
@@ -6754,17 +6729,17 @@ No available documentation.
 		 TopOpeBRepBuild_LoopSet();
 
 		/****** TopOpeBRepBuild_LoopSet::ChangeListOfLoop ******/
-		/****** md5 signature: ce1fa4aeb54a18519d4bbe913aeeb5eb ******/
+		/****** md5 signature: 5aa9b460b50ff2b9db4092df61e6905f ******/
 		%feature("compactdefaultargs") ChangeListOfLoop;
 		%feature("autodoc", "Return
 -------
-TopOpeBRepBuild_ListOfLoop
+NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>>
 
 Description
 -----------
 No available documentation.
 ") ChangeListOfLoop;
-		TopOpeBRepBuild_ListOfLoop & ChangeListOfLoop();
+		NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>> & ChangeListOfLoop();
 
 		/****** TopOpeBRepBuild_LoopSet::InitLoop ******/
 		/****** md5 signature: a4df8a77ba2719bab7c447a81e3a1574 ******/
@@ -6793,7 +6768,7 @@ No available documentation.
 		virtual opencascade::handle<TopOpeBRepBuild_Loop> Loop();
 
 		/****** TopOpeBRepBuild_LoopSet::MoreLoop ******/
-		/****** md5 signature: e5e0d7ea835c9794e64c37698a66ba8b ******/
+		/****** md5 signature: 0f9ba6ebb2c9d32de2d7ce66275c4d2d ******/
 		%feature("compactdefaultargs") MoreLoop;
 		%feature("autodoc", "Return
 -------
@@ -6803,7 +6778,7 @@ Description
 -----------
 No available documentation.
 ") MoreLoop;
-		virtual Standard_Boolean MoreLoop();
+		virtual bool MoreLoop();
 
 		/****** TopOpeBRepBuild_LoopSet::NextLoop ******/
 		/****** md5 signature: d99b3deb5badef1842f96552e38bc9a4 ******/
@@ -6864,13 +6839,13 @@ No available documentation.
 		 TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShapeListOfShape::TopOpeBRepBuild_ShapeListOfShape ******/
-		/****** md5 signature: 73a51e79da9638a63d33626d34f51997 ******/
+		/****** md5 signature: 874b69bcf3075cdc8c07237ada2ecd62 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShapeListOfShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -6880,20 +6855,20 @@ Description
 -----------
 No available documentation.
 ") TopOpeBRepBuild_ShapeListOfShape;
-		 TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape & S, const TopTools_ListOfShape & L);
+		 TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & L);
 
 		/****** TopOpeBRepBuild_ShapeListOfShape::ChangeList ******/
-		/****** md5 signature: 927c82612e8db4f53a52c292eac277bf ******/
+		/****** md5 signature: cbc513114dab617d234a66c2a7a0e9f1 ******/
 		%feature("compactdefaultargs") ChangeList;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeList;
-		TopTools_ListOfShape & ChangeList();
+		NCollection_List<TopoDS_Shape> ChangeList();
 
 		/****** TopOpeBRepBuild_ShapeListOfShape::ChangeShape ******/
 		/****** md5 signature: 465c12175fb924e02c35f2de6caf5b49 ******/
@@ -6909,17 +6884,17 @@ No available documentation.
 		TopoDS_Shape ChangeShape();
 
 		/****** TopOpeBRepBuild_ShapeListOfShape::List ******/
-		/****** md5 signature: cc162aad0d1c12f449760720eff4e228 ******/
+		/****** md5 signature: 25c7d72b52d4ce0a2cf693b3dde1f6ac ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") List;
-		const TopTools_ListOfShape & List();
+		const NCollection_List<TopoDS_Shape> List();
 
 		/****** TopOpeBRepBuild_ShapeListOfShape::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -6949,13 +6924,13 @@ No available documentation.
 class TopOpeBRepBuild_ShapeSet {
 	public:
 		/****** TopOpeBRepBuild_ShapeSet::TopOpeBRepBuild_ShapeSet ******/
-		/****** md5 signature: 8cac23cad0c430403128bc6dd52b342a ******/
+		/****** md5 signature: 63f2608f9ad3bb50e1afcdd21f41e6cc ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShapeSet;
 		%feature("autodoc", "
 Parameters
 ----------
 SubShapeType: TopAbs_ShapeEnum
-checkshape: bool (optional, default to Standard_True)
+checkshape: bool (optional, default to true)
 
 Return
 -------
@@ -6965,7 +6940,7 @@ Description
 -----------
 Creates a ShapeSet in order to build shapes connected by <SubShapeType> shapes. <checkshape>:check (or not) the shapes, startelements, elements added.
 ") TopOpeBRepBuild_ShapeSet;
-		 TopOpeBRepBuild_ShapeSet(const TopAbs_ShapeEnum SubShapeType, const Standard_Boolean checkshape = Standard_True);
+		 TopOpeBRepBuild_ShapeSet(const TopAbs_ShapeEnum SubShapeType, const bool checkshape = true);
 
 		/****** TopOpeBRepBuild_ShapeSet::AddElement ******/
 		/****** md5 signature: a0c83dd931e5b348d22c96fc7e34b0be ******/
@@ -7022,20 +6997,20 @@ Description
 		virtual void AddStartElement(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShapeSet::ChangeStartShapes ******/
-		/****** md5 signature: c10364be3af9e4ba91c965ae5b9fbb48 ******/
+		/****** md5 signature: ee94f0d1072abc13f19e14ddca9e8839 ******/
 		%feature("compactdefaultargs") ChangeStartShapes;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeStartShapes;
-		TopTools_ListOfShape & ChangeStartShapes();
+		NCollection_List<TopoDS_Shape> ChangeStartShapes();
 
 		/****** TopOpeBRepBuild_ShapeSet::CheckShape ******/
-		/****** md5 signature: 461c9759e29765eca640f151dbae9d66 ******/
+		/****** md5 signature: ab7ce023faa137329caa469a34afff21 ******/
 		%feature("compactdefaultargs") CheckShape;
 		%feature("autodoc", "
 Parameters
@@ -7050,10 +7025,10 @@ Description
 -----------
 No available documentation.
 ") CheckShape;
-		void CheckShape(const Standard_Boolean checkshape);
+		void CheckShape(const bool checkshape);
 
 		/****** TopOpeBRepBuild_ShapeSet::CheckShape ******/
-		/****** md5 signature: fcac9468eb05529e5e4952bad5c986b2 ******/
+		/****** md5 signature: 12b47b49675e9ae5a222c6c0e3bbe84d ******/
 		%feature("compactdefaultargs") CheckShape;
 		%feature("autodoc", "Return
 -------
@@ -7063,16 +7038,16 @@ Description
 -----------
 No available documentation.
 ") CheckShape;
-		Standard_Boolean CheckShape();
+		bool CheckShape();
 
 		/****** TopOpeBRepBuild_ShapeSet::CheckShape ******/
-		/****** md5 signature: 2608e837f5be1a2a46550ed224bfa9eb ******/
+		/****** md5 signature: e1165fabfdf925fbd133a5323da89d79 ******/
 		%feature("compactdefaultargs") CheckShape;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-checkgeom: bool (optional, default to Standard_False)
+checkgeom: bool (optional, default to false)
 
 Return
 -------
@@ -7082,7 +7057,7 @@ Description
 -----------
 No available documentation.
 ") CheckShape;
-		Standard_Boolean CheckShape(const TopoDS_Shape & S, const Standard_Boolean checkgeom = Standard_False);
+		bool CheckShape(const TopoDS_Shape & S, const bool checkgeom = false);
 
 		/****** TopOpeBRepBuild_ShapeSet::DEBName ******/
 		/****** md5 signature: 5e2926cd2a4caba9b436420af088c28e ******/
@@ -7116,7 +7091,7 @@ No available documentation.
 		const TCollection_AsciiString & DEBName();
 
 		/****** TopOpeBRepBuild_ShapeSet::DEBNumber ******/
-		/****** md5 signature: 2a906c667a5fd97a5580c80472018611 ******/
+		/****** md5 signature: a24fb50c68b3d689759bc37c453b91dc ******/
 		%feature("compactdefaultargs") DEBNumber;
 		%feature("autodoc", "
 Parameters
@@ -7131,10 +7106,10 @@ Description
 -----------
 No available documentation.
 ") DEBNumber;
-		void DEBNumber(const Standard_Integer I);
+		void DEBNumber(const int I);
 
 		/****** TopOpeBRepBuild_ShapeSet::DEBNumber ******/
-		/****** md5 signature: bf0881903128002059823140365b2ef9 ******/
+		/****** md5 signature: 50dff59f518b2433ca64af17b5308abc ******/
 		%feature("compactdefaultargs") DEBNumber;
 		%feature("autodoc", "Return
 -------
@@ -7144,7 +7119,7 @@ Description
 -----------
 No available documentation.
 ") DEBNumber;
-		Standard_Integer DEBNumber();
+		int DEBNumber();
 
 		/****** TopOpeBRepBuild_ShapeSet::DumpBB ******/
 		/****** md5 signature: eb911931adf297046e3668db5b0bd70c ******/
@@ -7160,7 +7135,7 @@ No available documentation.
 		virtual void DumpBB();
 
 		/****** TopOpeBRepBuild_ShapeSet::DumpCheck ******/
-		/****** md5 signature: a08a701cbae28cab87a77d32a92880ac ******/
+		/****** md5 signature: 049c19f70d6799bcafe6b85b239a3ba6 ******/
 		%feature("compactdefaultargs") DumpCheck;
 		%feature("autodoc", "
 Parameters
@@ -7177,7 +7152,7 @@ Description
 -----------
 No available documentation.
 ") DumpCheck;
-		void DumpCheck(std::ostream &OutValue, TCollection_AsciiString str, const TopoDS_Shape & S, const Standard_Boolean chk);
+		void DumpCheck(std::ostream &OutValue, TCollection_AsciiString str, const TopoDS_Shape & S, const bool chk);
 
 		/****** TopOpeBRepBuild_ShapeSet::DumpName ******/
 		/****** md5 signature: e73ae5ec230cf0b21dee0ddf6cc25888 ******/
@@ -7268,7 +7243,7 @@ No available documentation.
 		void InitStartElements();
 
 		/****** TopOpeBRepBuild_ShapeSet::MakeNeighboursList ******/
-		/****** md5 signature: ba275a0df860337ef714aabbdb773c42 ******/
+		/****** md5 signature: f595d6ca3f7965749f70022ca0ea583a ******/
 		%feature("compactdefaultargs") MakeNeighboursList;
 		%feature("autodoc", "
 Parameters
@@ -7278,16 +7253,16 @@ V: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") MakeNeighboursList;
-		virtual const TopTools_ListOfShape & MakeNeighboursList(const TopoDS_Shape & E, const TopoDS_Shape & V);
+		virtual const NCollection_List<TopoDS_Shape> MakeNeighboursList(const TopoDS_Shape & E, const TopoDS_Shape & V);
 
 		/****** TopOpeBRepBuild_ShapeSet::MaxNumberSubShape ******/
-		/****** md5 signature: 39936ab208ea601537f3741361126ad2 ******/
+		/****** md5 signature: ddfcef19d67b93056540712bea42f236 ******/
 		%feature("compactdefaultargs") MaxNumberSubShape;
 		%feature("autodoc", "
 Parameters
@@ -7302,10 +7277,10 @@ Description
 -----------
 No available documentation.
 ") MaxNumberSubShape;
-		Standard_Integer MaxNumberSubShape(const TopoDS_Shape & Shape);
+		int MaxNumberSubShape(const TopoDS_Shape & Shape);
 
 		/****** TopOpeBRepBuild_ShapeSet::MoreNeighbours ******/
-		/****** md5 signature: 720945ae0a73511c76486bac94c2d412 ******/
+		/****** md5 signature: ace2ff5b924936657d24fb26abd4155b ******/
 		%feature("compactdefaultargs") MoreNeighbours;
 		%feature("autodoc", "Return
 -------
@@ -7315,10 +7290,10 @@ Description
 -----------
 No available documentation.
 ") MoreNeighbours;
-		Standard_Boolean MoreNeighbours();
+		bool MoreNeighbours();
 
 		/****** TopOpeBRepBuild_ShapeSet::MoreShapes ******/
-		/****** md5 signature: 3d47f71adfef1ff96a784095945ed044 ******/
+		/****** md5 signature: 6d6bfff865ecc79a4addc4ca200bcbdc ******/
 		%feature("compactdefaultargs") MoreShapes;
 		%feature("autodoc", "Return
 -------
@@ -7328,10 +7303,10 @@ Description
 -----------
 No available documentation.
 ") MoreShapes;
-		Standard_Boolean MoreShapes();
+		bool MoreShapes();
 
 		/****** TopOpeBRepBuild_ShapeSet::MoreStartElements ******/
-		/****** md5 signature: 97cd23c1aeded90304f9af2d294da3bb ******/
+		/****** md5 signature: fa6b242adfda7bd84f237f099d1da1f6 ******/
 		%feature("compactdefaultargs") MoreStartElements;
 		%feature("autodoc", "Return
 -------
@@ -7341,7 +7316,7 @@ Description
 -----------
 No available documentation.
 ") MoreStartElements;
-		Standard_Boolean MoreStartElements();
+		bool MoreStartElements();
 
 		/****** TopOpeBRepBuild_ShapeSet::Neighbour ******/
 		/****** md5 signature: 58db2ce92796f96724d4caf28e03dabd ******/
@@ -7416,12 +7391,12 @@ No available documentation.
 		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShapeSet::SName ******/
-		/****** md5 signature: aae50302d53b33cbeb1c320b118dd208 ******/
+		/****** md5 signature: 028d4f667a4a1c0fee87263e71ac4ed8 ******/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TopTools_ListOfShape
+S: NCollection_List<TopoDS_Shape>
 sb: str (optional, default to "")
 sa: str (optional, default to "")
 
@@ -7433,7 +7408,7 @@ Description
 -----------
 No available documentation.
 ") SName;
-		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		virtual TCollection_AsciiString SName(const NCollection_List<TopoDS_Shape> & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShapeSet::SNameori ******/
 		/****** md5 signature: 38c70945225dd056fbf42066df8d01f7 ******/
@@ -7456,12 +7431,12 @@ No available documentation.
 		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShapeSet::SNameori ******/
-		/****** md5 signature: e4676f5575125dd0147b7098e8a6d83e ******/
+		/****** md5 signature: 7e3150722ab19986d05808ad9e3334db ******/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TopTools_ListOfShape
+S: NCollection_List<TopoDS_Shape>
 sb: str (optional, default to "")
 sa: str (optional, default to "")
 
@@ -7473,7 +7448,7 @@ Description
 -----------
 No available documentation.
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		virtual TCollection_AsciiString SNameori(const NCollection_List<TopoDS_Shape> & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShapeSet::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -7502,17 +7477,17 @@ No available documentation.
 		const TopoDS_Shape StartElement();
 
 		/****** TopOpeBRepBuild_ShapeSet::StartElements ******/
-		/****** md5 signature: 4df71127781e1f235af21a1e6e23cfbe ******/
+		/****** md5 signature: 8affdda449171035a3b1e1ddba936aa5 ******/
 		%feature("compactdefaultargs") StartElements;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 return a reference on myStartShapes.
 ") StartElements;
-		const TopTools_ListOfShape & StartElements();
+		const NCollection_List<TopoDS_Shape> StartElements();
 
 };
 
@@ -7573,13 +7548,13 @@ No available documentation.
 		void Init();
 
 		/****** TopOpeBRepBuild_ShellToSolid::MakeSolids ******/
-		/****** md5 signature: 21e2e0d94d3e8642730310fafa826ec3 ******/
+		/****** md5 signature: 59a8ac21c897e186144dac7245cb3269 ******/
 		%feature("compactdefaultargs") MakeSolids;
 		%feature("autodoc", "
 Parameters
 ----------
 So: TopoDS_Solid
-LSo: TopTools_ListOfShape
+LSo: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -7589,7 +7564,7 @@ Description
 -----------
 No available documentation.
 ") MakeSolids;
-		void MakeSolids(const TopoDS_Solid & So, TopTools_ListOfShape & LSo);
+		void MakeSolids(const TopoDS_Solid & So, NCollection_List<TopoDS_Shape> & LSo);
 
 };
 
@@ -7619,13 +7594,13 @@ No available documentation.
 		 TopOpeBRepBuild_SolidBuilder();
 
 		/****** TopOpeBRepBuild_SolidBuilder::TopOpeBRepBuild_SolidBuilder ******/
-		/****** md5 signature: c3d5d08be1728f7e26f00fdb2dc94db4 ******/
+		/****** md5 signature: 713160a18c1efed54fd96efb32f08074 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_SolidBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 FS: TopOpeBRepBuild_ShellFaceSet
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -7635,7 +7610,7 @@ Description
 -----------
 Create a SolidBuilder to build the areas on the shapes (shells, blocks of faces) described by <LS>.
 ") TopOpeBRepBuild_SolidBuilder;
-		 TopOpeBRepBuild_SolidBuilder(TopOpeBRepBuild_ShellFaceSet & FS, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_SolidBuilder(TopOpeBRepBuild_ShellFaceSet & FS, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_SolidBuilder::Face ******/
 		/****** md5 signature: 9c9430f314f7a67219d35de85b5a42a5 ******/
@@ -7651,7 +7626,7 @@ Returns current new face of current new shell.
 		const TopoDS_Shape Face();
 
 		/****** TopOpeBRepBuild_SolidBuilder::InitFace ******/
-		/****** md5 signature: 5ccd5edeaa7f45aeb42ebfd241061344 ******/
+		/****** md5 signature: f7d658980d48b1f34106c03b05d30566 ******/
 		%feature("compactdefaultargs") InitFace;
 		%feature("autodoc", "Return
 -------
@@ -7661,10 +7636,10 @@ Description
 -----------
 No available documentation.
 ") InitFace;
-		Standard_Integer InitFace();
+		int InitFace();
 
 		/****** TopOpeBRepBuild_SolidBuilder::InitShell ******/
-		/****** md5 signature: 4ededd2a0112b3ad7c46ad1ec236171e ******/
+		/****** md5 signature: 85b17fab55f16a9ab053bddebe95f734 ******/
 		%feature("compactdefaultargs") InitShell;
 		%feature("autodoc", "Return
 -------
@@ -7674,10 +7649,10 @@ Description
 -----------
 No available documentation.
 ") InitShell;
-		Standard_Integer InitShell();
+		int InitShell();
 
 		/****** TopOpeBRepBuild_SolidBuilder::InitSolid ******/
-		/****** md5 signature: 98da71bfec721d5f7ce0c4f8e02b2ff4 ******/
+		/****** md5 signature: b5c9b1b539aa56f6dd95ab393281c463 ******/
 		%feature("compactdefaultargs") InitSolid;
 		%feature("autodoc", "Return
 -------
@@ -7687,10 +7662,10 @@ Description
 -----------
 No available documentation.
 ") InitSolid;
-		Standard_Integer InitSolid();
+		int InitSolid();
 
 		/****** TopOpeBRepBuild_SolidBuilder::InitSolidBuilder ******/
-		/****** md5 signature: e9fb6d56c4831e268527e52426370fe6 ******/
+		/****** md5 signature: 34f16619423a9e5ee3b166d0f7f83114 ******/
 		%feature("compactdefaultargs") InitSolidBuilder;
 		%feature("autodoc", "
 Parameters
@@ -7706,10 +7681,10 @@ Description
 -----------
 No available documentation.
 ") InitSolidBuilder;
-		void InitSolidBuilder(TopOpeBRepBuild_ShellFaceSet & FS, const Standard_Boolean ForceClass);
+		void InitSolidBuilder(TopOpeBRepBuild_ShellFaceSet & FS, const bool ForceClass);
 
 		/****** TopOpeBRepBuild_SolidBuilder::IsOldShell ******/
-		/****** md5 signature: ad4035745a6a73d7dbdfd07fd0c23cfc ******/
+		/****** md5 signature: 5ad2985e0625a2834f6862a84cdb6bdb ******/
 		%feature("compactdefaultargs") IsOldShell;
 		%feature("autodoc", "Return
 -------
@@ -7719,10 +7694,10 @@ Description
 -----------
 No available documentation.
 ") IsOldShell;
-		Standard_Boolean IsOldShell();
+		bool IsOldShell();
 
 		/****** TopOpeBRepBuild_SolidBuilder::MoreFace ******/
-		/****** md5 signature: 9ce280b3ff0f94e82bd4ccb635ad91a7 ******/
+		/****** md5 signature: bff7dacb9d14d55afd6f709576086160 ******/
 		%feature("compactdefaultargs") MoreFace;
 		%feature("autodoc", "Return
 -------
@@ -7732,10 +7707,10 @@ Description
 -----------
 No available documentation.
 ") MoreFace;
-		Standard_Boolean MoreFace();
+		bool MoreFace();
 
 		/****** TopOpeBRepBuild_SolidBuilder::MoreShell ******/
-		/****** md5 signature: 9123faff7480a9cd91e7d3a7625f4cdb ******/
+		/****** md5 signature: c58d1a5522c7d62e59763f1b09775cef ******/
 		%feature("compactdefaultargs") MoreShell;
 		%feature("autodoc", "Return
 -------
@@ -7745,10 +7720,10 @@ Description
 -----------
 No available documentation.
 ") MoreShell;
-		Standard_Boolean MoreShell();
+		bool MoreShell();
 
 		/****** TopOpeBRepBuild_SolidBuilder::MoreSolid ******/
-		/****** md5 signature: 5ee3bbd33c116381ecefd1329f583d7b ******/
+		/****** md5 signature: d676750eea343fe115ff6727af0175d2 ******/
 		%feature("compactdefaultargs") MoreSolid;
 		%feature("autodoc", "Return
 -------
@@ -7758,7 +7733,7 @@ Description
 -----------
 No available documentation.
 ") MoreSolid;
-		Standard_Boolean MoreSolid();
+		bool MoreSolid();
 
 		/****** TopOpeBRepBuild_SolidBuilder::NextFace ******/
 		/****** md5 signature: 33ae62d7d15ec80966f0219be1a267db ******/
@@ -7827,7 +7802,7 @@ Returns current shell This shell may be: * an old shell OldShell(), which has no
 class TopOpeBRepBuild_Tools {
 	public:
 		/****** TopOpeBRepBuild_Tools::CheckFaceClosed2d ******/
-		/****** md5 signature: 0e75b5d7973ce3491011235a2dfacdde ******/
+		/****** md5 signature: 58bd20b085acfa0c0e1ad48e6366a3b7 ******/
 		%feature("compactdefaultargs") CheckFaceClosed2d;
 		%feature("autodoc", "
 Parameters
@@ -7842,16 +7817,16 @@ Description
 -----------
 Checks if <theFace> has the properly closed in 2D boundary(ies).
 ") CheckFaceClosed2d;
-		static Standard_Boolean CheckFaceClosed2d(const TopoDS_Face & theFace);
+		static bool CheckFaceClosed2d(const TopoDS_Face & theFace);
 
 		/****** TopOpeBRepBuild_Tools::CorrectCurveOnSurface ******/
-		/****** md5 signature: 6905c91646d7e9a0f42d85b6b5057819 ******/
+		/****** md5 signature: 337521ff2d221bb205ad074bf3de67c3 ******/
 		%feature("compactdefaultargs") CorrectCurveOnSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 aS: TopoDS_Shape
-aTolMax: float (optional, default to 0.0001)
+aTolMax: double (optional, default to 0.0001)
 
 Return
 -------
@@ -7861,18 +7836,18 @@ Description
 -----------
 No available documentation.
 ") CorrectCurveOnSurface;
-		static void CorrectCurveOnSurface(const TopoDS_Shape & aS, const Standard_Real aTolMax = 0.0001);
+		static void CorrectCurveOnSurface(const TopoDS_Shape & aS, const double aTolMax = 0.0001);
 
 		/****** TopOpeBRepBuild_Tools::CorrectFace2d ******/
-		/****** md5 signature: 206f599953928f496dc8cf6c49d3a7c7 ******/
+		/****** md5 signature: 4abb20ca1d2b3c1d5ad7f83a56692e5b ******/
 		%feature("compactdefaultargs") CorrectFace2d;
 		%feature("autodoc", "
 Parameters
 ----------
 oldFace: TopoDS_Shape
 corrFace: TopoDS_Shape
-aSourceShapes: TopTools_IndexedMapOfOrientedShape
-aMapOfCorrect2dEdges: TopTools_IndexedDataMapOfShapeShape
+aSourceShapes: NCollection_IndexedMap<TopoDS_Shape>
+aMapOfCorrect2dEdges: NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -7880,18 +7855,18 @@ None
 
 Description
 -----------
-test if UV representation of <oldFace> is good (i.e. face is closed in 2d). if face is not closed , this method will try to close such face and will return corrected edges in the <aMapOfCorrect2dEdges>. Parameter <aSourceShapes> used to fix the edge (or wires) which should be correct (Corrector used it as a start shapes). NOTE: Parameter corrFace doesn't mean anything. If you want to use this method , rebuild resulting face after by yourself using corrected edges.
+test if UV representation of <oldFace> is good (i.e. face is closed in 2d). if face is not closed, this method will try to close such face and will return corrected edges in the <aMapOfCorrect2dEdges>. Parameter <aSourceShapes> used to fix the edge (or wires) which should be correct (Corrector used it as a start shapes). NOTE: Parameter corrFace doesn't mean anything. If you want to use this method, rebuild resulting face after by yourself using corrected edges.
 ") CorrectFace2d;
-		static void CorrectFace2d(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace, const TopTools_IndexedMapOfOrientedShape & aSourceShapes, TopTools_IndexedDataMapOfShapeShape & aMapOfCorrect2dEdges);
+		static void CorrectFace2d(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace, const NCollection_IndexedMap<TopoDS_Shape> & aSourceShapes, NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & aMapOfCorrect2dEdges);
 
 		/****** TopOpeBRepBuild_Tools::CorrectPointOnCurve ******/
-		/****** md5 signature: c1db9f6028b3ca834df782031511b27b ******/
+		/****** md5 signature: f3178046829c5ee9c97699610766d33b ******/
 		%feature("compactdefaultargs") CorrectPointOnCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 aS: TopoDS_Shape
-aTolMax: float (optional, default to 0.0001)
+aTolMax: double (optional, default to 0.0001)
 
 Return
 -------
@@ -7901,16 +7876,16 @@ Description
 -----------
 No available documentation.
 ") CorrectPointOnCurve;
-		static void CorrectPointOnCurve(const TopoDS_Shape & aS, const Standard_Real aTolMax = 0.0001);
+		static void CorrectPointOnCurve(const TopoDS_Shape & aS, const double aTolMax = 0.0001);
 
 		/****** TopOpeBRepBuild_Tools::CorrectTolerances ******/
-		/****** md5 signature: b3a964efbabb9889af0ab8060a0feb04 ******/
+		/****** md5 signature: 2b56d8d1521772732b25bd1792559b43 ******/
 		%feature("compactdefaultargs") CorrectTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
 aS: TopoDS_Shape
-aTolMax: float (optional, default to 0.0001)
+aTolMax: double (optional, default to 0.0001)
 
 Return
 -------
@@ -7920,10 +7895,10 @@ Description
 -----------
 No available documentation.
 ") CorrectTolerances;
-		static void CorrectTolerances(const TopoDS_Shape & aS, const Standard_Real aTolMax = 0.0001);
+		static void CorrectTolerances(const TopoDS_Shape & aS, const double aTolMax = 0.0001);
 
 		/****** TopOpeBRepBuild_Tools::FindState ******/
-		/****** md5 signature: d0be414c9abba9a9b4a6f4d083e61924 ******/
+		/****** md5 signature: 0e76f7bf2323ab7fab1491e82e92e2ba ******/
 		%feature("compactdefaultargs") FindState;
 		%feature("autodoc", "
 Parameters
@@ -7931,9 +7906,9 @@ Parameters
 aVertex: TopoDS_Shape
 aState: TopAbs_State
 aShapeEnum: TopAbs_ShapeEnum
-aMapVertexEdges: TopTools_IndexedDataMapOfShapeListOfShape
-aMapProcessedVertices: TopTools_MapOfShape
-aMapVs: TopOpeBRepDS_DataMapOfShapeState
+aMapVertexEdges: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+aMapProcessedVertices: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+aMapVs: NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -7943,19 +7918,19 @@ Description
 -----------
 No available documentation.
 ") FindState;
-		static void FindState(const TopoDS_Shape & aVertex, const TopAbs_State aState, const TopAbs_ShapeEnum aShapeEnum, const TopTools_IndexedDataMapOfShapeListOfShape & aMapVertexEdges, TopTools_MapOfShape & aMapProcessedVertices, TopOpeBRepDS_DataMapOfShapeState & aMapVs);
+		static void FindState(const TopoDS_Shape & aVertex, const TopAbs_State aState, const TopAbs_ShapeEnum aShapeEnum, const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & aMapVertexEdges, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapProcessedVertices, NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> & aMapVs);
 
 		/****** TopOpeBRepBuild_Tools::FindState1 ******/
-		/****** md5 signature: e7b49f353a8b9b5a44b6980a914f9203 ******/
+		/****** md5 signature: 02abea97e4a022c9f9f84aecadd34421 ******/
 		%feature("compactdefaultargs") FindState1;
 		%feature("autodoc", "
 Parameters
 ----------
 anEdge: TopoDS_Shape
 aState: TopAbs_State
-aMapEdgesFaces: TopTools_IndexedDataMapOfShapeListOfShape
-aMapProcessedVertices: TopTools_MapOfShape
-aMapVs: TopOpeBRepDS_DataMapOfShapeState
+aMapEdgesFaces: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+aMapProcessedVertices: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+aMapVs: NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -7965,19 +7940,19 @@ Description
 -----------
 No available documentation.
 ") FindState1;
-		static void FindState1(const TopoDS_Shape & anEdge, const TopAbs_State aState, const TopTools_IndexedDataMapOfShapeListOfShape & aMapEdgesFaces, TopTools_MapOfShape & aMapProcessedVertices, TopOpeBRepDS_DataMapOfShapeState & aMapVs);
+		static void FindState1(const TopoDS_Shape & anEdge, const TopAbs_State aState, const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & aMapEdgesFaces, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapProcessedVertices, NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> & aMapVs);
 
 		/****** TopOpeBRepBuild_Tools::FindState2 ******/
-		/****** md5 signature: 012be84ed6597538d3bcce0fe30880a2 ******/
+		/****** md5 signature: 342a5964ba2b385561d5c0f06a0f554f ******/
 		%feature("compactdefaultargs") FindState2;
 		%feature("autodoc", "
 Parameters
 ----------
 anEdge: TopoDS_Shape
 aState: TopAbs_State
-aMapEdgesFaces: TopTools_IndexedDataMapOfShapeListOfShape
-aMapProcessedEdges: TopTools_MapOfShape
-aMapVs: TopOpeBRepDS_DataMapOfShapeState
+aMapEdgesFaces: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+aMapProcessedEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+aMapVs: NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -7987,18 +7962,18 @@ Description
 -----------
 No available documentation.
 ") FindState2;
-		static void FindState2(const TopoDS_Shape & anEdge, const TopAbs_State aState, const TopTools_IndexedDataMapOfShapeListOfShape & aMapEdgesFaces, TopTools_MapOfShape & aMapProcessedEdges, TopOpeBRepDS_DataMapOfShapeState & aMapVs);
+		static void FindState2(const TopoDS_Shape & anEdge, const TopAbs_State aState, const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & aMapEdgesFaces, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapProcessedEdges, NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> & aMapVs);
 
 		/****** TopOpeBRepBuild_Tools::FindStateThroughVertex ******/
-		/****** md5 signature: 999d9435114cb35519cae290b653e843 ******/
+		/****** md5 signature: fb56004abd1d62ba7f2cf4c2293946de ******/
 		%feature("compactdefaultargs") FindStateThroughVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
 aShapeClassifier: TopOpeBRepTool_ShapeClassifier
-aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
-anAvoidSubshMap: TopTools_MapOfShape
+aMapOfShapeWithState: NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher>
+anAvoidSubshMap: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -8008,17 +7983,17 @@ Description
 -----------
 No available documentation.
 ") FindStateThroughVertex;
-		static TopAbs_State FindStateThroughVertex(const TopoDS_Shape & aShape, TopOpeBRepTool_ShapeClassifier & aShapeClassifier, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState, const TopTools_MapOfShape & anAvoidSubshMap);
+		static TopAbs_State FindStateThroughVertex(const TopoDS_Shape & aShape, TopOpeBRepTool_ShapeClassifier & aShapeClassifier, NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> & aMapOfShapeWithState, const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & anAvoidSubshMap);
 
 		/****** TopOpeBRepBuild_Tools::GetAdjacentFace ******/
-		/****** md5 signature: 79467950ed91570880da889ce1c93776 ******/
+		/****** md5 signature: b97bea36a28b3a8dc4f5fd82cae5cbac ******/
 		%feature("compactdefaultargs") GetAdjacentFace;
 		%feature("autodoc", "
 Parameters
 ----------
 aFaceObj: TopoDS_Shape
 anEObj: TopoDS_Shape
-anEdgeFaceMap: TopTools_IndexedDataMapOfShapeListOfShape
+anEdgeFaceMap: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
 anAdjFaceObj: TopoDS_Shape
 
 Return
@@ -8029,7 +8004,7 @@ Description
 -----------
 No available documentation.
 ") GetAdjacentFace;
-		static Standard_Boolean GetAdjacentFace(const TopoDS_Shape & aFaceObj, const TopoDS_Shape & anEObj, const TopTools_IndexedDataMapOfShapeListOfShape & anEdgeFaceMap, TopoDS_Shape & anAdjFaceObj);
+		static bool GetAdjacentFace(const TopoDS_Shape & aFaceObj, const TopoDS_Shape & anEObj, const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & anEdgeFaceMap, TopoDS_Shape & anAdjFaceObj);
 
 		/****** TopOpeBRepBuild_Tools::GetNormalInNearestPoint ******/
 		/****** md5 signature: 2de9145b3d4393a457510776ac33fd9a ******/
@@ -8072,7 +8047,7 @@ No available documentation.
 		static void GetNormalToFaceOnEdge(const TopoDS_Face & aFObj, const TopoDS_Edge & anEdgeObj, gp_Vec & aDirNormal);
 
 		/****** TopOpeBRepBuild_Tools::GetTangentToEdge ******/
-		/****** md5 signature: 7dddfdf93830884fe3c389409356b027 ******/
+		/****** md5 signature: 9958555b8aa7ef36a31b5eb669ad0e29 ******/
 		%feature("compactdefaultargs") GetTangentToEdge;
 		%feature("autodoc", "
 Parameters
@@ -8088,10 +8063,10 @@ Description
 -----------
 No available documentation.
 ") GetTangentToEdge;
-		static Standard_Boolean GetTangentToEdge(const TopoDS_Edge & anEdgeObj, gp_Vec & aTangent);
+		static bool GetTangentToEdge(const TopoDS_Edge & anEdgeObj, gp_Vec & aTangent);
 
 		/****** TopOpeBRepBuild_Tools::GetTangentToEdgeEdge ******/
-		/****** md5 signature: 7adac84e7084afe44380091fb1d5c9b8 ******/
+		/****** md5 signature: 5d8e059ace86450d6d58f899fa6fa385 ******/
 		%feature("compactdefaultargs") GetTangentToEdgeEdge;
 		%feature("autodoc", "
 Parameters
@@ -8109,10 +8084,10 @@ Description
 -----------
 No available documentation.
 ") GetTangentToEdgeEdge;
-		static Standard_Boolean GetTangentToEdgeEdge(const TopoDS_Face & aFObj, const TopoDS_Edge & anEdgeObj, const TopoDS_Edge & aOriEObj, gp_Vec & aTangent);
+		static bool GetTangentToEdgeEdge(const TopoDS_Face & aFObj, const TopoDS_Edge & anEdgeObj, const TopoDS_Edge & aOriEObj, gp_Vec & aTangent);
 
 		/****** TopOpeBRepBuild_Tools::IsDegEdgesTheSame ******/
-		/****** md5 signature: 5141734277d11308b456723f708348ed ******/
+		/****** md5 signature: e90bcbd5813806acede31dc12f7a7a31 ******/
 		%feature("compactdefaultargs") IsDegEdgesTheSame;
 		%feature("autodoc", "
 Parameters
@@ -8128,7 +8103,7 @@ Description
 -----------
 No available documentation.
 ") IsDegEdgesTheSame;
-		static Standard_Boolean IsDegEdgesTheSame(const TopoDS_Shape & anE1, const TopoDS_Shape & anE2);
+		static bool IsDegEdgesTheSame(const TopoDS_Shape & anE1, const TopoDS_Shape & anE2);
 
 		/****** TopOpeBRepBuild_Tools::NormalizeFace ******/
 		/****** md5 signature: 4fbabeb25073ee18ab15ff5a131e6e4b ******/
@@ -8150,18 +8125,18 @@ test if <oldFace> does not contain INTERNAL or EXTERNAL edges and remove such ed
 		static void NormalizeFace(const TopoDS_Shape & oldFace, TopoDS_Shape & corrFace);
 
 		/****** TopOpeBRepBuild_Tools::PropagateState ******/
-		/****** md5 signature: e70fffbd99c4570113cbcfab33706e0e ******/
+		/****** md5 signature: 1f0fe1f543058030b2ecffd4aa5658a4 ******/
 		%feature("compactdefaultargs") PropagateState;
 		%feature("autodoc", "
 Parameters
 ----------
-aSplEdgesState: TopOpeBRepDS_DataMapOfShapeState
-anEdgesToRestMap: TopTools_IndexedMapOfShape
+aSplEdgesState: NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher>
+anEdgesToRestMap: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 aShapeEnum1: TopAbs_ShapeEnum
 aShapeEnum2: TopAbs_ShapeEnum
 aShapeClassifier: TopOpeBRepTool_ShapeClassifier
-aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
-anUnkStateShapes: TopTools_MapOfShape
+aMapOfShapeWithState: NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher>
+anUnkStateShapes: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -8171,16 +8146,16 @@ Description
 -----------
 No available documentation.
 ") PropagateState;
-		static void PropagateState(const TopOpeBRepDS_DataMapOfShapeState & aSplEdgesState, const TopTools_IndexedMapOfShape & anEdgesToRestMap, const TopAbs_ShapeEnum aShapeEnum1, const TopAbs_ShapeEnum aShapeEnum2, TopOpeBRepTool_ShapeClassifier & aShapeClassifier, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState, const TopTools_MapOfShape & anUnkStateShapes);
+		static void PropagateState(const NCollection_DataMap<TopoDS_Shape, TopAbs_State, TopTools_ShapeMapHasher> & aSplEdgesState, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & anEdgesToRestMap, const TopAbs_ShapeEnum aShapeEnum1, const TopAbs_ShapeEnum aShapeEnum2, TopOpeBRepTool_ShapeClassifier & aShapeClassifier, NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> & aMapOfShapeWithState, const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & anUnkStateShapes);
 
 		/****** TopOpeBRepBuild_Tools::PropagateStateForWires ******/
-		/****** md5 signature: 9a328a726bee73304b00b3827ac0ae33 ******/
+		/****** md5 signature: 7a73840f9fa14375d652dbb72f6a65e4 ******/
 		%feature("compactdefaultargs") PropagateStateForWires;
 		%feature("autodoc", "
 Parameters
 ----------
-aFacesToRestMap: TopTools_IndexedMapOfShape
-aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
+aFacesToRestMap: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+aMapOfShapeWithState: NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -8190,17 +8165,17 @@ Description
 -----------
 No available documentation.
 ") PropagateStateForWires;
-		static void PropagateStateForWires(const TopTools_IndexedMapOfShape & aFacesToRestMap, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState);
+		static void PropagateStateForWires(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & aFacesToRestMap, NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> & aMapOfShapeWithState);
 
 		/****** TopOpeBRepBuild_Tools::SpreadStateToChild ******/
-		/****** md5 signature: 7337bd429b7c4dd60dc75af962ea54ac ******/
+		/****** md5 signature: be25d10d574a60ecca3b6d6afef282e2 ******/
 		%feature("compactdefaultargs") SpreadStateToChild;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
 aState: TopAbs_State
-aMapOfShapeWithState: TopOpeBRepDS_IndexedDataMapOfShapeWithState
+aMapOfShapeWithState: NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -8210,7 +8185,7 @@ Description
 -----------
 No available documentation.
 ") SpreadStateToChild;
-		static void SpreadStateToChild(const TopoDS_Shape & aShape, const TopAbs_State aState, TopOpeBRepDS_IndexedDataMapOfShapeWithState & aMapOfShapeWithState);
+		static void SpreadStateToChild(const TopoDS_Shape & aShape, const TopAbs_State aState, NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeWithState, TopTools_ShapeMapHasher> & aMapOfShapeWithState);
 
 		/****** TopOpeBRepBuild_Tools::UpdateEdgeOnFace ******/
 		/****** md5 signature: 0d1af09a3eb8715da0da9ee1af537b49 ******/
@@ -8228,7 +8203,7 @@ None
 
 Description
 -----------
-recompute PCurve of the edge on the NewFace.
+Recompute PCurve of the edge on the NewFace.
 ") UpdateEdgeOnFace;
 		static void UpdateEdgeOnFace(const TopoDS_Edge & aEdgeToUpdate, const TopoDS_Face & OldFace, const TopoDS_Face & NewFace);
 
@@ -8248,7 +8223,7 @@ None
 
 Description
 -----------
-recompute PCurves of the closing (SIM , with 2 PCurves) edge on the NewFace.
+Recompute PCurves of the closing (SIM, with 2 PCurves) edge on the NewFace.
 ") UpdateEdgeOnPeriodicalFace;
 		static void UpdateEdgeOnPeriodicalFace(const TopoDS_Edge & aEdgeToUpdate, const TopoDS_Face & OldFace, const TopoDS_Face & NewFace);
 
@@ -8287,12 +8262,12 @@ Recompute PCurves of the all edges from the wire on the <toFace>.
 class TopOpeBRepBuild_Tools2d {
 	public:
 		/****** TopOpeBRepBuild_Tools2d::DumpMapOfShapeVertexInfo ******/
-		/****** md5 signature: d62adccf063e5baea2644fba23faf778 ******/
+		/****** md5 signature: e17851642a601726f636668627c643ad ******/
 		%feature("compactdefaultargs") DumpMapOfShapeVertexInfo;
 		%feature("autodoc", "
 Parameters
 ----------
-aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
+aMap: NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepBuild_VertexInfo, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -8302,16 +8277,16 @@ Description
 -----------
 No available documentation.
 ") DumpMapOfShapeVertexInfo;
-		static void DumpMapOfShapeVertexInfo(const TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & aMap);
+		static void DumpMapOfShapeVertexInfo(const NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepBuild_VertexInfo, TopTools_ShapeMapHasher> & aMap);
 
 		/****** TopOpeBRepBuild_Tools2d::MakeMapOfShapeVertexInfo ******/
-		/****** md5 signature: 830b53a76a432b6e238eb7d9597fed7c ******/
+		/****** md5 signature: 3f4d7c8a3b9f0f6b9c6d53aa77883cd8 ******/
 		%feature("compactdefaultargs") MakeMapOfShapeVertexInfo;
 		%feature("autodoc", "
 Parameters
 ----------
 aWire: TopoDS_Wire
-aMap: TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo
+aMap: NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepBuild_VertexInfo, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -8321,16 +8296,16 @@ Description
 -----------
 No available documentation.
 ") MakeMapOfShapeVertexInfo;
-		static void MakeMapOfShapeVertexInfo(const TopoDS_Wire & aWire, TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo & aMap);
+		static void MakeMapOfShapeVertexInfo(const TopoDS_Wire & aWire, NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepBuild_VertexInfo, TopTools_ShapeMapHasher> & aMap);
 
 		/****** TopOpeBRepBuild_Tools2d::Path ******/
-		/****** md5 signature: 4d443cc93ca769d1c089f1ea7d030f6c ******/
+		/****** md5 signature: a749385e2d7fb0c5f96ca4a2e2ce783b ******/
 		%feature("compactdefaultargs") Path;
 		%feature("autodoc", "
 Parameters
 ----------
 aWire: TopoDS_Wire
-aResList: TopTools_ListOfShape
+aResList: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -8340,7 +8315,7 @@ Description
 -----------
 No available documentation.
 ") Path;
-		static void Path(const TopoDS_Wire & aWire, TopTools_ListOfShape & aResList);
+		static void Path(const TopoDS_Wire & aWire, NCollection_List<TopoDS_Shape> & aResList);
 
 };
 
@@ -8424,17 +8399,17 @@ No available documentation.
 		void AppendPassed(const TopoDS_Edge & anE);
 
 		/****** TopOpeBRepBuild_VertexInfo::ChangeEdgesOut ******/
-		/****** md5 signature: f693a86b9204ddfaa5e7a2fc87d67feb ******/
+		/****** md5 signature: b0f51d4b5bccafbe61393919b8c349e7 ******/
 		%feature("compactdefaultargs") ChangeEdgesOut;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfOrientedShape
+NCollection_IndexedMap<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeEdgesOut;
-		TopTools_IndexedMapOfOrientedShape & ChangeEdgesOut();
+		NCollection_IndexedMap<TopoDS_Shape> ChangeEdgesOut();
 
 		/****** TopOpeBRepBuild_VertexInfo::CurrentOut ******/
 		/****** md5 signature: a060894e8825e40a1faca922a5ca0772 ******/
@@ -8463,33 +8438,33 @@ No available documentation.
 		void Dump();
 
 		/****** TopOpeBRepBuild_VertexInfo::EdgesIn ******/
-		/****** md5 signature: a22df5f7efb0930ed8e78478e4843791 ******/
+		/****** md5 signature: d7957d65971892e7449e4387a97ff8df ******/
 		%feature("compactdefaultargs") EdgesIn;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfOrientedShape
+NCollection_IndexedMap<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") EdgesIn;
-		const TopTools_IndexedMapOfOrientedShape & EdgesIn();
+		const NCollection_IndexedMap<TopoDS_Shape> EdgesIn();
 
 		/****** TopOpeBRepBuild_VertexInfo::EdgesOut ******/
-		/****** md5 signature: 8a73d68345cb827140bf9b062c32613d ******/
+		/****** md5 signature: 10364abf525dfd7c3568b9e6e4fe498a ******/
 		%feature("compactdefaultargs") EdgesOut;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfOrientedShape
+NCollection_IndexedMap<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") EdgesOut;
-		const TopTools_IndexedMapOfOrientedShape & EdgesOut();
+		const NCollection_IndexedMap<TopoDS_Shape> EdgesOut();
 
 		/****** TopOpeBRepBuild_VertexInfo::FoundOut ******/
-		/****** md5 signature: b8c39522998889dce19214cb041a807c ******/
+		/****** md5 signature: c983fed976888782585426bad9809194 ******/
 		%feature("compactdefaultargs") FoundOut;
 		%feature("autodoc", "Return
 -------
@@ -8499,23 +8474,23 @@ Description
 -----------
 No available documentation.
 ") FoundOut;
-		Standard_Integer FoundOut();
+		int FoundOut();
 
 		/****** TopOpeBRepBuild_VertexInfo::ListPassed ******/
-		/****** md5 signature: 805adaea35119f2d1a4a3133e12c5055 ******/
+		/****** md5 signature: dbe91a313833122c2f4a0cb637ab7f0c ******/
 		%feature("compactdefaultargs") ListPassed;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ListPassed;
-		const TopTools_ListOfShape & ListPassed();
+		const NCollection_List<TopoDS_Shape> ListPassed();
 
 		/****** TopOpeBRepBuild_VertexInfo::NbCases ******/
-		/****** md5 signature: dadf008e17192a9c13d80c5487f28b41 ******/
+		/****** md5 signature: 5884266ea4876b23782561f076e4c977 ******/
 		%feature("compactdefaultargs") NbCases;
 		%feature("autodoc", "Return
 -------
@@ -8525,15 +8500,15 @@ Description
 -----------
 No available documentation.
 ") NbCases;
-		Standard_Integer NbCases();
+		int NbCases();
 
 		/****** TopOpeBRepBuild_VertexInfo::Prepare ******/
-		/****** md5 signature: d56ab4c07334edf2527815cd62813bbc ******/
+		/****** md5 signature: 5d46b755acb18d7183c890e82cb23ab2 ******/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "
 Parameters
 ----------
-aL: TopTools_ListOfShape
+aL: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -8543,7 +8518,7 @@ Description
 -----------
 No available documentation.
 ") Prepare;
-		void Prepare(const TopTools_ListOfShape & aL);
+		void Prepare(const NCollection_List<TopoDS_Shape> & aL);
 
 		/****** TopOpeBRepBuild_VertexInfo::RemovePassed ******/
 		/****** md5 signature: 795e0b26ead769e8637abe035a752173 ******/
@@ -8577,7 +8552,7 @@ No available documentation.
 		void SetCurrentIn(const TopoDS_Edge & anE);
 
 		/****** TopOpeBRepBuild_VertexInfo::SetSmart ******/
-		/****** md5 signature: 94b0106071625f2fb1a2b69a06af6603 ******/
+		/****** md5 signature: 13019e0d6ed5550458bb4d963c88f435 ******/
 		%feature("compactdefaultargs") SetSmart;
 		%feature("autodoc", "
 Parameters
@@ -8592,7 +8567,7 @@ Description
 -----------
 No available documentation.
 ") SetSmart;
-		void SetSmart(const Standard_Boolean aFlag);
+		void SetSmart(const bool aFlag);
 
 		/****** TopOpeBRepBuild_VertexInfo::SetVertex ******/
 		/****** md5 signature: 9085895b4fbc0ab8ea8c037e0f93a293 ******/
@@ -8613,7 +8588,7 @@ No available documentation.
 		void SetVertex(const TopoDS_Vertex & aV);
 
 		/****** TopOpeBRepBuild_VertexInfo::Smart ******/
-		/****** md5 signature: e469db07f570975f92b2e6c63df5ac91 ******/
+		/****** md5 signature: df8750ae905ebfeb0e7df5f79d09f245 ******/
 		%feature("compactdefaultargs") Smart;
 		%feature("autodoc", "Return
 -------
@@ -8623,7 +8598,7 @@ Description
 -----------
 No available documentation.
 ") Smart;
-		Standard_Boolean Smart();
+		bool Smart();
 
 		/****** TopOpeBRepBuild_VertexInfo::Vertex ******/
 		/****** md5 signature: 84212ff79cd7d64cd0ebfa6f17214e90 ******/
@@ -8697,13 +8672,13 @@ No available documentation.
 		void Init();
 
 		/****** TopOpeBRepBuild_WireToFace::MakeFaces ******/
-		/****** md5 signature: 113bf019a6bd6242a1483cbc24621b3a ******/
+		/****** md5 signature: d15917b34b9fc3878206667806c79bcf ******/
 		%feature("compactdefaultargs") MakeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-LF: TopTools_ListOfShape
+LF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -8713,7 +8688,7 @@ Description
 -----------
 No available documentation.
 ") MakeFaces;
-		void MakeFaces(const TopoDS_Face & F, TopTools_ListOfShape & LF);
+		void MakeFaces(const TopoDS_Face & F, NCollection_List<TopoDS_Shape> & LF);
 
 };
 
@@ -8743,14 +8718,14 @@ No available documentation.
 		 TopOpeBRepBuild_Area1dBuilder();
 
 		/****** TopOpeBRepBuild_Area1dBuilder::TopOpeBRepBuild_Area1dBuilder ******/
-		/****** md5 signature: 472d79f21ebc378f4aee21b8a98acb39 ******/
+		/****** md5 signature: f5640f8d28c63ddd910551f2fb4de420 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Area1dBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_PaveSet
 LC: TopOpeBRepBuild_PaveClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -8760,19 +8735,19 @@ Description
 -----------
 Creates a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") TopOpeBRepBuild_Area1dBuilder;
-		 TopOpeBRepBuild_Area1dBuilder(TopOpeBRepBuild_PaveSet & LS, TopOpeBRepBuild_PaveClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_Area1dBuilder(TopOpeBRepBuild_PaveSet & LS, TopOpeBRepBuild_PaveClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_Area1dBuilder::ADD_LISTOFLoop_TO_LISTOFLoop ******/
-		/****** md5 signature: cce2bfb0b28db6ed3c34ecd764f6a94b ******/
+		/****** md5 signature: e68661bc2bff622807b3febb8bc64421 ******/
 		%feature("compactdefaultargs") ADD_LISTOFLoop_TO_LISTOFLoop;
 		%feature("autodoc", "
 Parameters
 ----------
-LOL1: TopOpeBRepBuild_ListOfLoop
-LOL2: TopOpeBRepBuild_ListOfLoop
-s: Standard_Address (optional, default to NULL)
-s1: Standard_Address (optional, default to NULL)
-s2: Standard_Address (optional, default to NULL)
+LOL1: TopOpeBRepBuild_Loop
+LOL2: TopOpeBRepBuild_Loop
+s: void * (optional, default to nullptr)
+s1: void * (optional, default to nullptr)
+s2: void * (optional, default to nullptr)
 
 Return
 -------
@@ -8782,17 +8757,17 @@ Description
 -----------
 No available documentation.
 ") ADD_LISTOFLoop_TO_LISTOFLoop;
-		virtual void ADD_LISTOFLoop_TO_LISTOFLoop(TopOpeBRepBuild_ListOfLoop & LOL1, TopOpeBRepBuild_ListOfLoop & LOL2, const Standard_Address s = NULL, const Standard_Address s1 = NULL, const Standard_Address s2 = NULL);
+		void ADD_LISTOFLoop_TO_LISTOFLoop(NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL1, NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL2, void * const s = nullptr, void * const s1 = nullptr, void * const s2 = nullptr);
 
 		/****** TopOpeBRepBuild_Area1dBuilder::ADD_Loop_TO_LISTOFLoop ******/
-		/****** md5 signature: 5f93e158a9ec4859e4f5a7250d715fc0 ******/
+		/****** md5 signature: 8771fc8132f0f06fca6e7b34d59348c2 ******/
 		%feature("compactdefaultargs") ADD_Loop_TO_LISTOFLoop;
 		%feature("autodoc", "
 Parameters
 ----------
 L: TopOpeBRepBuild_Loop
-LOL: TopOpeBRepBuild_ListOfLoop
-s: Standard_Address (optional, default to NULL)
+LOL: TopOpeBRepBuild_Loop
+s: void * (optional, default to nullptr)
 
 Return
 -------
@@ -8802,15 +8777,15 @@ Description
 -----------
 No available documentation.
 ") ADD_Loop_TO_LISTOFLoop;
-		virtual void ADD_Loop_TO_LISTOFLoop(const opencascade::handle<TopOpeBRepBuild_Loop> & L, TopOpeBRepBuild_ListOfLoop & LOL, const Standard_Address s = NULL);
+		void ADD_Loop_TO_LISTOFLoop(const opencascade::handle<TopOpeBRepBuild_Loop> & L, NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL, void * const s = nullptr);
 
 		/****** TopOpeBRepBuild_Area1dBuilder::DumpList ******/
-		/****** md5 signature: e9d72d364cc193cbca306597b01d0f13 ******/
+		/****** md5 signature: 5ee29eb0a17d3c125e2ace08acc23a1c ******/
 		%feature("compactdefaultargs") DumpList;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopOpeBRepBuild_ListOfLoop
+L: TopOpeBRepBuild_Loop
 
 Return
 -------
@@ -8820,17 +8795,17 @@ Description
 -----------
 No available documentation.
 ") DumpList;
-		static void DumpList(const TopOpeBRepBuild_ListOfLoop & L);
+		static void DumpList(const NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & L);
 
 		/****** TopOpeBRepBuild_Area1dBuilder::InitAreaBuilder ******/
-		/****** md5 signature: 8c7aad7e5f4f2a4b357109939fbb8dfa ******/
+		/****** md5 signature: 7213ff5fa0be3b9010f85732fa6a77f2 ******/
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -8840,17 +8815,17 @@ Description
 -----------
 Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
-		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_Area1dBuilder::REM_Loop_FROM_LISTOFLoop ******/
-		/****** md5 signature: 1776b470d008a97797c02d461f264154 ******/
+		/****** md5 signature: 04517bd4e0ae5be078e0f72d70b9d564 ******/
 		%feature("compactdefaultargs") REM_Loop_FROM_LISTOFLoop;
 		%feature("autodoc", "
 Parameters
 ----------
-ITLOL: TopOpeBRepBuild_ListIteratorOfListOfLoop
-LOL: TopOpeBRepBuild_ListOfLoop
-s: Standard_Address (optional, default to NULL)
+ITLOL: TopOpeBRepBuild_Loop
+LOL: TopOpeBRepBuild_Loop
+s: void * (optional, default to nullptr)
 
 Return
 -------
@@ -8860,7 +8835,7 @@ Description
 -----------
 No available documentation.
 ") REM_Loop_FROM_LISTOFLoop;
-		virtual void REM_Loop_FROM_LISTOFLoop(TopOpeBRepBuild_ListIteratorOfListOfLoop & ITLOL, TopOpeBRepBuild_ListOfLoop & LOL, const Standard_Address s = NULL);
+		void REM_Loop_FROM_LISTOFLoop(NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> >::Iterator & ITLOL, NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop> > & LOL, void * const s = nullptr);
 
 };
 
@@ -8890,14 +8865,14 @@ No available documentation.
 		 TopOpeBRepBuild_Area2dBuilder();
 
 		/****** TopOpeBRepBuild_Area2dBuilder::TopOpeBRepBuild_Area2dBuilder ******/
-		/****** md5 signature: 1cb9d29575e614536a44e1c903ed89df ******/
+		/****** md5 signature: 9527f71f53a1a3016f59fd5a45412a65 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Area2dBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -8907,17 +8882,17 @@ Description
 -----------
 Creates a Area2dBuilder to build faces on the (wires,blocks of edge) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_Area2dBuilder;
-		 TopOpeBRepBuild_Area2dBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_Area2dBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_Area2dBuilder::InitAreaBuilder ******/
-		/****** md5 signature: 8c7aad7e5f4f2a4b357109939fbb8dfa ******/
+		/****** md5 signature: 7213ff5fa0be3b9010f85732fa6a77f2 ******/
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -8927,7 +8902,7 @@ Description
 -----------
 Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
-		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 };
 
@@ -8957,14 +8932,14 @@ No available documentation.
 		 TopOpeBRepBuild_Area3dBuilder();
 
 		/****** TopOpeBRepBuild_Area3dBuilder::TopOpeBRepBuild_Area3dBuilder ******/
-		/****** md5 signature: a280a0b3d09cb8711116bc09853ce2ff ******/
+		/****** md5 signature: d05214ff2fe4b1a34ecf8e7e7b010fd3 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Area3dBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -8974,17 +8949,17 @@ Description
 -----------
 Creates a Area3dBuilder to build Solids on the (shells,blocks of face) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_Area3dBuilder;
-		 TopOpeBRepBuild_Area3dBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_Area3dBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_Area3dBuilder::InitAreaBuilder ******/
-		/****** md5 signature: 8c7aad7e5f4f2a4b357109939fbb8dfa ******/
+		/****** md5 signature: 7213ff5fa0be3b9010f85732fa6a77f2 ******/
 		%feature("compactdefaultargs") InitAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -8994,7 +8969,7 @@ Description
 -----------
 Sets a Area1dBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") InitAreaBuilder;
-		virtual void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		void InitAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 };
 
@@ -9029,7 +9004,7 @@ No available documentation.
 		 TopOpeBRepBuild_Builder1(const TopOpeBRepDS_BuildTool & BT);
 
 		/****** TopOpeBRepBuild_Builder1::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -9039,10 +9014,10 @@ Description
 -----------
 Removes all splits and merges already performed. Does NOT clear the handled DS (except ShapeWithStatesMaps).
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** TopOpeBRepBuild_Builder1::CorrectResult2d ******/
-		/****** md5 signature: 645d1dac440271c467d83b71012f7698 ******/
+		/****** md5 signature: 9e93f1062f85453c2ced638b386213be ******/
 		%feature("compactdefaultargs") CorrectResult2d;
 		%feature("autodoc", "
 Parameters
@@ -9057,16 +9032,16 @@ Description
 -----------
 No available documentation.
 ") CorrectResult2d;
-		Standard_Integer CorrectResult2d(TopoDS_Shape & aResult);
+		int CorrectResult2d(TopoDS_Shape & aResult);
 
 		/****** TopOpeBRepBuild_Builder1::GFillEdgeNotSameDomWES ******/
-		/****** md5 signature: 556dc0ad0eaa64b0a2eb21e31b97d4da ******/
+		/****** md5 signature: 87abcfc0efcf110e1d5b0a3940389f91 ******/
 		%feature("compactdefaultargs") GFillEdgeNotSameDomWES;
 		%feature("autodoc", "
 Parameters
 ----------
 E1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9078,16 +9053,16 @@ Description
 -----------
 No available documentation.
 ") GFillEdgeNotSameDomWES;
-		void GFillEdgeNotSameDomWES(const TopoDS_Shape & E1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillEdgeNotSameDomWES(const TopoDS_Shape & E1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::GFillEdgeSameDomWES ******/
-		/****** md5 signature: f6fe3136ee571d8dccfc3197b686ae61 ******/
+		/****** md5 signature: c9446c5f1279566800454fb3f030aede ******/
 		%feature("compactdefaultargs") GFillEdgeSameDomWES;
 		%feature("autodoc", "
 Parameters
 ----------
 E1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9099,16 +9074,16 @@ Description
 -----------
 No available documentation.
 ") GFillEdgeSameDomWES;
-		void GFillEdgeSameDomWES(const TopoDS_Shape & E1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillEdgeSameDomWES(const TopoDS_Shape & E1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::GFillFaceNotSameDomSFS ******/
-		/****** md5 signature: bc7d540d0c624d1d59aec97c19cce9a6 ******/
+		/****** md5 signature: ac54cbec91b623ff179acf76124729f9 ******/
 		%feature("compactdefaultargs") GFillFaceNotSameDomSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -9120,16 +9095,16 @@ Description
 -----------
 No available documentation.
 ") GFillFaceNotSameDomSFS;
-		void GFillFaceNotSameDomSFS(const TopoDS_Shape & F1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GFillFaceNotSameDomSFS(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder1::GFillFaceNotSameDomWES ******/
-		/****** md5 signature: dc742f072a6ea8c32195c0d83c0ed981 ******/
+		/****** md5 signature: dcb782ae6feb2b109d86970016c539f7 ******/
 		%feature("compactdefaultargs") GFillFaceNotSameDomWES;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9141,16 +9116,16 @@ Description
 -----------
 No available documentation.
 ") GFillFaceNotSameDomWES;
-		void GFillFaceNotSameDomWES(const TopoDS_Shape & F1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillFaceNotSameDomWES(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::GFillFaceSameDomSFS ******/
-		/****** md5 signature: 771ac3553c5297c08d3ff1f69e92d152 ******/
+		/****** md5 signature: 7c92214b5dc8e94c903100461e4e6353 ******/
 		%feature("compactdefaultargs") GFillFaceSameDomSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -9162,16 +9137,16 @@ Description
 -----------
 No available documentation.
 ") GFillFaceSameDomSFS;
-		void GFillFaceSameDomSFS(const TopoDS_Shape & F1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GFillFaceSameDomSFS(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder1::GFillFaceSameDomWES ******/
-		/****** md5 signature: 9528d965c1a6631cce1b62a509121c53 ******/
+		/****** md5 signature: 284793ec0188251a245e053d0091d5bb ******/
 		%feature("compactdefaultargs") GFillFaceSameDomWES;
 		%feature("autodoc", "
 Parameters
 ----------
 F1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9183,16 +9158,16 @@ Description
 -----------
 No available documentation.
 ") GFillFaceSameDomWES;
-		void GFillFaceSameDomWES(const TopoDS_Shape & F1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillFaceSameDomWES(const TopoDS_Shape & F1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::GFillShellSFS ******/
-		/****** md5 signature: 6829a6c02f53fba72e6c51b5f8b4e091 ******/
+		/****** md5 signature: 433b4d7165470afecce45b1fd42a1250 ******/
 		%feature("compactdefaultargs") GFillShellSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 SH1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -9204,16 +9179,16 @@ Description
 -----------
 No available documentation.
 ") GFillShellSFS;
-		virtual void GFillShellSFS(const TopoDS_Shape & SH1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GFillShellSFS(const TopoDS_Shape & SH1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder1::GFillSolidSFS ******/
-		/****** md5 signature: 6433de7a2c74ee5812488b8cae67ca10 ******/
+		/****** md5 signature: 344ea37bed5584cb8ecdd9ab830c817f ******/
 		%feature("compactdefaultargs") GFillSolidSFS;
 		%feature("autodoc", "
 Parameters
 ----------
 SO1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 SFS: TopOpeBRepBuild_ShellFaceSet
 
@@ -9225,16 +9200,16 @@ Description
 -----------
 No available documentation.
 ") GFillSolidSFS;
-		virtual void GFillSolidSFS(const TopoDS_Shape & SO1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
+		void GFillSolidSFS(const TopoDS_Shape & SO1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_ShellFaceSet & SFS);
 
 		/****** TopOpeBRepBuild_Builder1::GFillWireNotSameDomWES ******/
-		/****** md5 signature: 3eec9760a22ba496207d37d836afd4a8 ******/
+		/****** md5 signature: 816a5ced4fd51a63ef5e309179ccd366 ******/
 		%feature("compactdefaultargs") GFillWireNotSameDomWES;
 		%feature("autodoc", "
 Parameters
 ----------
 W1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9246,16 +9221,16 @@ Description
 -----------
 No available documentation.
 ") GFillWireNotSameDomWES;
-		void GFillWireNotSameDomWES(const TopoDS_Shape & W1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillWireNotSameDomWES(const TopoDS_Shape & W1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::GFillWireSameDomWES ******/
-		/****** md5 signature: c6ca20e24a3971713ddb09cf63bc01dc ******/
+		/****** md5 signature: e04c6124e6a3262f99b7c97245c83809 ******/
 		%feature("compactdefaultargs") GFillWireSameDomWES;
 		%feature("autodoc", "
 Parameters
 ----------
 W1: TopoDS_Shape
-LSO2: TopTools_ListOfShape
+LSO2: NCollection_List<TopoDS_Shape>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9267,17 +9242,17 @@ Description
 -----------
 No available documentation.
 ") GFillWireSameDomWES;
-		void GFillWireSameDomWES(const TopoDS_Shape & W1, const TopTools_ListOfShape & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void GFillWireSameDomWES(const TopoDS_Shape & W1, const NCollection_List<TopoDS_Shape> & LSO2, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::GWESMakeFaces ******/
-		/****** md5 signature: abfe2371d1cb6f9c8b15417bda121393 ******/
+		/****** md5 signature: be072ac7e1c2adf17f6f714012183b88 ******/
 		%feature("compactdefaultargs") GWESMakeFaces;
 		%feature("autodoc", "
 Parameters
 ----------
 FF: TopoDS_Shape
 WES: TopOpeBRepBuild_WireEdgeSet
-LOF: TopTools_ListOfShape
+LOF: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -9287,10 +9262,10 @@ Description
 -----------
 No available documentation.
 ") GWESMakeFaces;
-		virtual void GWESMakeFaces(const TopoDS_Shape & FF, TopOpeBRepBuild_WireEdgeSet & WES, TopTools_ListOfShape & LOF);
+		void GWESMakeFaces(const TopoDS_Shape & FF, TopOpeBRepBuild_WireEdgeSet & WES, NCollection_List<TopoDS_Shape> & LOF);
 
 		/****** TopOpeBRepBuild_Builder1::MergeKPart ******/
-		/****** md5 signature: 70af060183df6c4bd7c3388fbba1eb38 ******/
+		/****** md5 signature: 37ebddf29308e95bf109b4c48de75491 ******/
 		%feature("compactdefaultargs") MergeKPart;
 		%feature("autodoc", "Return
 -------
@@ -9300,10 +9275,10 @@ Description
 -----------
 No available documentation.
 ") MergeKPart;
-		virtual void MergeKPart();
+		void MergeKPart();
 
 		/****** TopOpeBRepBuild_Builder1::MergeKPart ******/
-		/****** md5 signature: d27699f93b9ba1973fbf7d8ce8b05ce5 ******/
+		/****** md5 signature: ee1f2ac543860ba470366f47678f2eb6 ******/
 		%feature("compactdefaultargs") MergeKPart;
 		%feature("autodoc", "
 Parameters
@@ -9319,10 +9294,10 @@ Description
 -----------
 No available documentation.
 ") MergeKPart;
-		virtual void MergeKPart(const TopAbs_State TB1, const TopAbs_State TB2);
+		void MergeKPart(const TopAbs_State TB1, const TopAbs_State TB2);
 
 		/****** TopOpeBRepBuild_Builder1::Perform ******/
-		/****** md5 signature: e4b167b8287d05c97ea333f88905dbee ******/
+		/****** md5 signature: 87c6cefe67bc5be42d9d84ef2f8c255e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -9337,10 +9312,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		virtual void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
+		void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
 		/****** TopOpeBRepBuild_Builder1::Perform ******/
-		/****** md5 signature: 2dea56f1f6d2cee871965c98424ca999 ******/
+		/****** md5 signature: f973cd996d1a2f74455d09987f67b74c ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -9357,16 +9332,16 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		virtual void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
+		void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****** TopOpeBRepBuild_Builder1::PerformONParts ******/
-		/****** md5 signature: 37dd525c9986fe42972c9b8c426cc012 ******/
+		/****** md5 signature: 029b4607ddef58404a63c1cf690fdf78 ******/
 		%feature("compactdefaultargs") PerformONParts;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
-SDfaces: TopTools_IndexedMapOfShape
+SDfaces: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 G: TopOpeBRepBuild_GTopo
 WES: TopOpeBRepBuild_WireEdgeSet
 
@@ -9378,10 +9353,10 @@ Description
 -----------
 No available documentation.
 ") PerformONParts;
-		void PerformONParts(const TopoDS_Shape & F, const TopTools_IndexedMapOfShape & SDfaces, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
+		void PerformONParts(const TopoDS_Shape & F, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & SDfaces, const TopOpeBRepBuild_GTopo & G, TopOpeBRepBuild_WireEdgeSet & WES);
 
 		/****** TopOpeBRepBuild_Builder1::PerformPieceIn2D ******/
-		/****** md5 signature: 24484486c3e11c2ceede45c45b34066e ******/
+		/****** md5 signature: 891921666bc5466271471950740614d8 ******/
 		%feature("compactdefaultargs") PerformPieceIn2D;
 		%feature("autodoc", "
 Parameters
@@ -9403,7 +9378,7 @@ No available documentation.
 		void PerformPieceIn2D(const TopoDS_Edge & aPieceToPerform, const TopoDS_Edge & aOriginalEdge, const TopoDS_Face & edgeFace, const TopoDS_Face & toFace, const TopOpeBRepBuild_GTopo & G, Standard_Boolean &OutValue);
 
 		/****** TopOpeBRepBuild_Builder1::PerformPieceOn2D ******/
-		/****** md5 signature: cfb631f3035dbbcd1f108f498f908e85 ******/
+		/****** md5 signature: a1b000589ded4a1d352f75f2de41d998 ******/
 		%feature("compactdefaultargs") PerformPieceOn2D;
 		%feature("autodoc", "
 Parameters
@@ -9411,9 +9386,9 @@ Parameters
 aPieceObj: TopoDS_Shape
 aFaceObj: TopoDS_Shape
 aEdgeObj: TopoDS_Shape
-aListOfPieces: TopTools_ListOfShape
-aListOfFaces: TopTools_ListOfShape
-aListOfPiecesOut2d: TopTools_ListOfShape
+aListOfPieces: NCollection_List<TopoDS_Shape>
+aListOfFaces: NCollection_List<TopoDS_Shape>
+aListOfPiecesOut2d: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -9423,18 +9398,18 @@ Description
 -----------
 No available documentation.
 ") PerformPieceOn2D;
-		Standard_Integer PerformPieceOn2D(const TopoDS_Shape & aPieceObj, const TopoDS_Shape & aFaceObj, const TopoDS_Shape & aEdgeObj, TopTools_ListOfShape & aListOfPieces, TopTools_ListOfShape & aListOfFaces, TopTools_ListOfShape & aListOfPiecesOut2d);
+		int PerformPieceOn2D(const TopoDS_Shape & aPieceObj, const TopoDS_Shape & aFaceObj, const TopoDS_Shape & aEdgeObj, NCollection_List<TopoDS_Shape> & aListOfPieces, NCollection_List<TopoDS_Shape> & aListOfFaces, NCollection_List<TopoDS_Shape> & aListOfPiecesOut2d);
 
 		/****** TopOpeBRepBuild_Builder1::TwoPiecesON ******/
-		/****** md5 signature: 8777c83a6aa6e0d4953f3f8bde3af8da ******/
+		/****** md5 signature: 2a41e4db21938d2b8ce4d49e049293bc ******/
 		%feature("compactdefaultargs") TwoPiecesON;
 		%feature("autodoc", "
 Parameters
 ----------
-aSeq: TopTools_SequenceOfShape
-aListOfPieces: TopTools_ListOfShape
-aListOfFaces: TopTools_ListOfShape
-aListOfPiecesOut2d: TopTools_ListOfShape
+aSeq: NCollection_Sequence<TopoDS_Shape>
+aListOfPieces: NCollection_List<TopoDS_Shape>
+aListOfFaces: NCollection_List<TopoDS_Shape>
+aListOfPiecesOut2d: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -9444,7 +9419,7 @@ Description
 -----------
 No available documentation.
 ") TwoPiecesON;
-		Standard_Integer TwoPiecesON(const TopTools_SequenceOfShape & aSeq, TopTools_ListOfShape & aListOfPieces, TopTools_ListOfShape & aListOfFaces, TopTools_ListOfShape & aListOfPiecesOut2d);
+		int TwoPiecesON(const NCollection_Sequence<TopoDS_Shape> & aSeq, NCollection_List<TopoDS_Shape> & aListOfPieces, NCollection_List<TopoDS_Shape> & aListOfFaces, NCollection_List<TopoDS_Shape> & aListOfPiecesOut2d);
 
 };
 
@@ -9466,7 +9441,7 @@ No available documentation.
 class TopOpeBRepBuild_CompositeClassifier : public TopOpeBRepBuild_LoopClassifier {
 	public:
 		/****** TopOpeBRepBuild_CompositeClassifier::Compare ******/
-		/****** md5 signature: ca2b365fd2720fd9e2ed093e173bef92 ******/
+		/****** md5 signature: 0913c23095e6757cd112f945bf759079 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -9482,10 +9457,10 @@ Description
 -----------
 No available documentation.
 ") Compare;
-		virtual TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
+		TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
 		/****** TopOpeBRepBuild_CompositeClassifier::CompareElement ******/
-		/****** md5 signature: b306ffc04e91669ecc429350dbcccea4 ******/
+		/****** md5 signature: 5a3755e0b9123b52d6fa14bcc8cf1545 ******/
 		%feature("compactdefaultargs") CompareElement;
 		%feature("autodoc", "
 Parameters
@@ -9500,7 +9475,7 @@ Description
 -----------
 Add element <E> in the set of elements used in classification. Returns False if the element <E> has been already added to the set of elements, otherwise returns True.
 ") CompareElement;
-		virtual Standard_Boolean CompareElement(const TopoDS_Shape & E);
+		virtual bool CompareElement(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_CompositeClassifier::CompareElementToShape ******/
 		/****** md5 signature: bd5d7b75f82d8019008ec5c9aa72c3f6 ******/
@@ -9604,13 +9579,13 @@ Returns state of classification of 2D point, defined by ResetElement, with the c
 class TopOpeBRepBuild_Pave : public TopOpeBRepBuild_Loop {
 	public:
 		/****** TopOpeBRepBuild_Pave::TopOpeBRepBuild_Pave ******/
-		/****** md5 signature: 6fad9681efbcdfb8bed1844b6a8545bd ******/
+		/****** md5 signature: 671e6dbe935aa5b2545f7209359fe6d6 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_Pave;
 		%feature("autodoc", "
 Parameters
 ----------
 V: TopoDS_Shape
-P: float
+P: double
 bound: bool
 
 Return
@@ -9621,7 +9596,7 @@ Description
 -----------
 V = vertex, P = parameter of vertex <V> bound = True if <V> is an old vertex bound = False if <V> is a new vertex.
 ") TopOpeBRepBuild_Pave;
-		 TopOpeBRepBuild_Pave(const TopoDS_Shape & V, const Standard_Real P, const Standard_Boolean bound);
+		 TopOpeBRepBuild_Pave(const TopoDS_Shape & V, const double P, const bool bound);
 
 		/****** TopOpeBRepBuild_Pave::ChangeVertex ******/
 		/****** md5 signature: 118bc92b60bb2a4e67149d3849444bf0 ******/
@@ -9637,7 +9612,7 @@ No available documentation.
 		TopoDS_Shape ChangeVertex();
 
 		/****** TopOpeBRepBuild_Pave::Dump ******/
-		/****** md5 signature: 0122bc94dff7b9dabc6bcac8a9f7fc02 ******/
+		/****** md5 signature: 1e8267eb1be0e9cb1f766e2160451c4e ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "Return
 -------
@@ -9647,10 +9622,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		virtual void Dump();
+		void Dump();
 
 		/****** TopOpeBRepBuild_Pave::HasSameDomain ******/
-		/****** md5 signature: 7207d58c7520a24b5061660fedcd5541 ******/
+		/****** md5 signature: 1c0c17dd4966f91f9faf956e25a364d8 ******/
 		%feature("compactdefaultargs") HasSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -9665,10 +9640,10 @@ Description
 -----------
 No available documentation.
 ") HasSameDomain;
-		void HasSameDomain(const Standard_Boolean b);
+		void HasSameDomain(const bool b);
 
 		/****** TopOpeBRepBuild_Pave::HasSameDomain ******/
-		/****** md5 signature: 68549b32d844d9239066fd74202bf104 ******/
+		/****** md5 signature: 1487b788f10ee8bd04e490dc33a59105 ******/
 		%feature("compactdefaultargs") HasSameDomain;
 		%feature("autodoc", "Return
 -------
@@ -9678,7 +9653,7 @@ Description
 -----------
 No available documentation.
 ") HasSameDomain;
-		Standard_Boolean HasSameDomain();
+		bool HasSameDomain();
 
 		/****** TopOpeBRepBuild_Pave::InterferenceType ******/
 		/****** md5 signature: 6af8508bed73354b450a7f29fd330a6e ******/
@@ -9694,7 +9669,7 @@ No available documentation.
 		TopOpeBRepDS_Kind & InterferenceType();
 
 		/****** TopOpeBRepBuild_Pave::IsShape ******/
-		/****** md5 signature: eb502d25fcc43c87d67c669dfdc822a6 ******/
+		/****** md5 signature: 9b1effbbb89f8789fd21f7cb548e8795 ******/
 		%feature("compactdefaultargs") IsShape;
 		%feature("autodoc", "Return
 -------
@@ -9704,28 +9679,28 @@ Description
 -----------
 No available documentation.
 ") IsShape;
-		virtual Standard_Boolean IsShape();
+		bool IsShape();
 
 		/****** TopOpeBRepBuild_Pave::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** TopOpeBRepBuild_Pave::Parameter ******/
-		/****** md5 signature: d48e33dbbc7159622c8478305cf66c96 ******/
+		/****** md5 signature: ce8855cc897e0a034c59ea8a5d9d7a11 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
-Par: float
+Par: double
 
 Return
 -------
@@ -9735,7 +9710,7 @@ Description
 -----------
 No available documentation.
 ") Parameter;
-		void Parameter(const Standard_Real Par);
+		void Parameter(const double Par);
 
 		/****** TopOpeBRepBuild_Pave::SameDomain ******/
 		/****** md5 signature: ad991614a675b8a392bd5bdce16986c6 ******/
@@ -9769,7 +9744,7 @@ No available documentation.
 		const TopoDS_Shape SameDomain();
 
 		/****** TopOpeBRepBuild_Pave::Shape ******/
-		/****** md5 signature: 4c53ed19ee4f622b00adfb8349b3ab9d ******/
+		/****** md5 signature: 71e6d84d92e216ab483e94eb877d856e ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -9779,7 +9754,7 @@ Description
 -----------
 No available documentation.
 ") Shape;
-		virtual const TopoDS_Shape Shape();
+		const TopoDS_Shape Shape();
 
 		/****** TopOpeBRepBuild_Pave::Vertex ******/
 		/****** md5 signature: 4b1334c642d4415d88330a5fa6216463 ******/
@@ -9829,16 +9804,16 @@ Create a Pave classifier to compare vertices on edge <E>.
 		 TopOpeBRepBuild_PaveClassifier(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_PaveClassifier::AdjustCase ******/
-		/****** md5 signature: 9f91a66734a96094285b64df28a5b90e ******/
+		/****** md5 signature: b400558b72ba81771162811225f1e423 ******/
 		%feature("compactdefaultargs") AdjustCase;
 		%feature("autodoc", "
 Parameters
 ----------
-p1: float
+p1: double
 o: TopAbs_Orientation
-first: float
-period: float
-tol: float
+first: double
+period: double
+tol: double
 
 Return
 -------
@@ -9848,10 +9823,10 @@ Description
 -----------
 No available documentation.
 ") AdjustCase;
-		static Standard_Real AdjustCase(const Standard_Real p1, const TopAbs_Orientation o, const Standard_Real first, const Standard_Real period, const Standard_Real tol, Standard_Integer &OutValue);
+		static double AdjustCase(const double p1, const TopAbs_Orientation o, const double first, const double period, const double tol, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepBuild_PaveClassifier::ClosedVertices ******/
-		/****** md5 signature: 0dc4b2a655fd07d935e1f6e0014021be ******/
+		/****** md5 signature: 8cf9686115ef0a08029a3a144d44a58e ******/
 		%feature("compactdefaultargs") ClosedVertices;
 		%feature("autodoc", "
 Parameters
@@ -9866,10 +9841,10 @@ Description
 -----------
 No available documentation.
 ") ClosedVertices;
-		void ClosedVertices(const Standard_Boolean B);
+		void ClosedVertices(const bool B);
 
 		/****** TopOpeBRepBuild_PaveClassifier::Compare ******/
-		/****** md5 signature: 99a2ab1ce45df50cf5fc86747778b3af ******/
+		/****** md5 signature: 0913c23095e6757cd112f945bf759079 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -9888,12 +9863,12 @@ Returns state of vertex <L1> compared with <L2>.
 		TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
 		/****** TopOpeBRepBuild_PaveClassifier::SetFirstParameter ******/
-		/****** md5 signature: 97cd631fff0005c549c005d59f9b13ae ******/
+		/****** md5 signature: 5ac66927cf172f47bbf2d29fddbfc969 ******/
 		%feature("compactdefaultargs") SetFirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -9903,7 +9878,7 @@ Description
 -----------
 No available documentation.
 ") SetFirstParameter;
-		void SetFirstParameter(const Standard_Real P);
+		void SetFirstParameter(const double P);
 
 };
 
@@ -9956,7 +9931,7 @@ Add <PV> in the Pave set.
 		void Append(const opencascade::handle<TopOpeBRepBuild_Pave> & PV);
 
 		/****** TopOpeBRepBuild_PaveSet::ClosedVertices ******/
-		/****** md5 signature: 854f6d9c481bae71dd6fa8e13e3bbfb3 ******/
+		/****** md5 signature: aeed398fae83faae81a408c55989c339 ******/
 		%feature("compactdefaultargs") ClosedVertices;
 		%feature("autodoc", "Return
 -------
@@ -9966,7 +9941,7 @@ Description
 -----------
 No available documentation.
 ") ClosedVertices;
-		Standard_Boolean ClosedVertices();
+		bool ClosedVertices();
 
 		/****** TopOpeBRepBuild_PaveSet::Edge ******/
 		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
@@ -9982,20 +9957,20 @@ No available documentation.
 		const TopoDS_Edge Edge();
 
 		/****** TopOpeBRepBuild_PaveSet::EqualParameters ******/
-		/****** md5 signature: 1842977beac3bee2013490aa8405412b ******/
+		/****** md5 signature: c7c03bcd8e3d1589938049cea21f45bb ******/
 		%feature("compactdefaultargs") EqualParameters;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") EqualParameters;
-		Standard_Real EqualParameters();
+		double EqualParameters();
 
 		/****** TopOpeBRepBuild_PaveSet::HasEqualParameters ******/
-		/****** md5 signature: 7a51836935303c49fca0c9b00174e02d ******/
+		/****** md5 signature: 9a16d47b798f01d3cc8b958ee18f5fc9 ******/
 		%feature("compactdefaultargs") HasEqualParameters;
 		%feature("autodoc", "Return
 -------
@@ -10005,10 +9980,10 @@ Description
 -----------
 No available documentation.
 ") HasEqualParameters;
-		Standard_Boolean HasEqualParameters();
+		bool HasEqualParameters();
 
 		/****** TopOpeBRepBuild_PaveSet::InitLoop ******/
-		/****** md5 signature: 9aada3105d553aa39264d7709b1ac322 ******/
+		/****** md5 signature: 05749d31c6c0af0b3635495be7f7b61d ******/
 		%feature("compactdefaultargs") InitLoop;
 		%feature("autodoc", "Return
 -------
@@ -10018,10 +9993,10 @@ Description
 -----------
 No available documentation.
 ") InitLoop;
-		virtual void InitLoop();
+		void InitLoop();
 
 		/****** TopOpeBRepBuild_PaveSet::Loop ******/
-		/****** md5 signature: 615eb1a481912b47ebf79c852b7294cb ******/
+		/****** md5 signature: f3e21b30fe17905c8577c3b4fd3a59eb ******/
 		%feature("compactdefaultargs") Loop;
 		%feature("autodoc", "Return
 -------
@@ -10031,10 +10006,10 @@ Description
 -----------
 No available documentation.
 ") Loop;
-		virtual opencascade::handle<TopOpeBRepBuild_Loop> Loop();
+		opencascade::handle<TopOpeBRepBuild_Loop> Loop();
 
 		/****** TopOpeBRepBuild_PaveSet::MoreLoop ******/
-		/****** md5 signature: 69bd496933748dc2d37e0ef38dfe5eb9 ******/
+		/****** md5 signature: 696f33be6f5b5c5c212ffae17c40eaca ******/
 		%feature("compactdefaultargs") MoreLoop;
 		%feature("autodoc", "Return
 -------
@@ -10044,10 +10019,10 @@ Description
 -----------
 No available documentation.
 ") MoreLoop;
-		virtual Standard_Boolean MoreLoop();
+		bool MoreLoop();
 
 		/****** TopOpeBRepBuild_PaveSet::NextLoop ******/
-		/****** md5 signature: 1424666d4c451507cc72b55836dce0cf ******/
+		/****** md5 signature: 7ce7cc7a1cd593c4a8fc19ad6d548abc ******/
 		%feature("compactdefaultargs") NextLoop;
 		%feature("autodoc", "Return
 -------
@@ -10057,10 +10032,10 @@ Description
 -----------
 No available documentation.
 ") NextLoop;
-		virtual void NextLoop();
+		void NextLoop();
 
 		/****** TopOpeBRepBuild_PaveSet::RemovePV ******/
-		/****** md5 signature: a83a93f2e04a0d12fddc2216ea904b6f ******/
+		/****** md5 signature: 36d1cdcef53f2b2a242f8ad0f1daad2a ******/
 		%feature("compactdefaultargs") RemovePV;
 		%feature("autodoc", "
 Parameters
@@ -10075,16 +10050,16 @@ Description
 -----------
 No available documentation.
 ") RemovePV;
-		void RemovePV(const Standard_Boolean B);
+		void RemovePV(const bool B);
 
 		/****** TopOpeBRepBuild_PaveSet::SortPave ******/
-		/****** md5 signature: 00ad8a48882788445fcf122554ce7700 ******/
+		/****** md5 signature: a9797ee80932abd43ab34321aa1f2059 ******/
 		%feature("compactdefaultargs") SortPave;
 		%feature("autodoc", "
 Parameters
 ----------
-Lin: TopOpeBRepBuild_ListOfPave
-Lout: TopOpeBRepBuild_ListOfPave
+Lin: TopOpeBRepBuild_Pave
+Lout: TopOpeBRepBuild_Pave
 
 Return
 -------
@@ -10094,7 +10069,7 @@ Description
 -----------
 No available documentation.
 ") SortPave;
-		static void SortPave(const TopOpeBRepBuild_ListOfPave & Lin, TopOpeBRepBuild_ListOfPave & Lout);
+		static void SortPave(const NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave> > & Lin, NCollection_List<opencascade::handle<TopOpeBRepBuild_Pave> > & Lout);
 
 };
 
@@ -10124,13 +10099,13 @@ Creates a ShellFaceSet to build blocks of faces connected by edges.
 		 TopOpeBRepBuild_ShellFaceSet();
 
 		/****** TopOpeBRepBuild_ShellFaceSet::TopOpeBRepBuild_ShellFaceSet ******/
-		/****** md5 signature: 9cfb16deac6442dc78179585f0e82019 ******/
+		/****** md5 signature: ecdb53523977fc9b1519df1760df2e0b ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_ShellFaceSet;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Addr: Standard_Address (optional, default to NULL)
+Addr: void * (optional, default to nullptr)
 
 Return
 -------
@@ -10140,10 +10115,10 @@ Description
 -----------
 Creates a ShellFaceSet to build blocks of faces connected by edges.
 ") TopOpeBRepBuild_ShellFaceSet;
-		 TopOpeBRepBuild_ShellFaceSet(const TopoDS_Shape & S, const Standard_Address Addr = NULL);
+		 TopOpeBRepBuild_ShellFaceSet(const TopoDS_Shape & S, void * const Addr = nullptr);
 
 		/****** TopOpeBRepBuild_ShellFaceSet::AddElement ******/
-		/****** md5 signature: c0fd7b9ad7268cebbd92d15ddcc6f276 ******/
+		/****** md5 signature: 4173e6749dc1d30d8928504c8fd2e3bf ******/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "
 Parameters
@@ -10158,10 +10133,10 @@ Description
 -----------
 No available documentation.
 ") AddElement;
-		virtual void AddElement(const TopoDS_Shape & S);
+		void AddElement(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShellFaceSet::AddShape ******/
-		/****** md5 signature: c8bb56d3b44db84675e80800af165998 ******/
+		/****** md5 signature: d2d1a4c725fba5b08dcce08dbce9cd1b ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -10176,10 +10151,10 @@ Description
 -----------
 No available documentation.
 ") AddShape;
-		virtual void AddShape(const TopoDS_Shape & S);
+		void AddShape(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShellFaceSet::AddStartElement ******/
-		/****** md5 signature: 0f01e210fb7a175f660a12f4c0c9c395 ******/
+		/****** md5 signature: 9812d6d256f4dddf0365139f56e912e8 ******/
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", "
 Parameters
@@ -10194,10 +10169,10 @@ Description
 -----------
 No available documentation.
 ") AddStartElement;
-		virtual void AddStartElement(const TopoDS_Shape & S);
+		void AddStartElement(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShellFaceSet::DumpSS ******/
-		/****** md5 signature: 6402ba15bdfcafa3cb26f476267e90da ******/
+		/****** md5 signature: 6b12b24c9d7c230330c420fe6dc3dcf4 ******/
 		%feature("compactdefaultargs") DumpSS;
 		%feature("autodoc", "Return
 -------
@@ -10207,10 +10182,10 @@ Description
 -----------
 No available documentation.
 ") DumpSS;
-		virtual void DumpSS();
+		void DumpSS();
 
 		/****** TopOpeBRepBuild_ShellFaceSet::SName ******/
-		/****** md5 signature: 5f80868d1c4c398e024d63f986d494cc ******/
+		/****** md5 signature: 88e13ce91de76e2556cb8f5d110c48af ******/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", "
 Parameters
@@ -10227,15 +10202,15 @@ Description
 -----------
 No available documentation.
 ") SName;
-		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShellFaceSet::SName ******/
-		/****** md5 signature: 439aa61e703e5a53a45918a05c2d0318 ******/
+		/****** md5 signature: 1b69a1e1c040b2482d2954472e6f1d93 ******/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TopTools_ListOfShape
+S: NCollection_List<TopoDS_Shape>
 sb: str (optional, default to "")
 sa: str (optional, default to "")
 
@@ -10247,10 +10222,10 @@ Description
 -----------
 No available documentation.
 ") SName;
-		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SName(const NCollection_List<TopoDS_Shape> & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShellFaceSet::SNameori ******/
-		/****** md5 signature: 13d091dc5a1df5e5b76408b1cf7882ab ******/
+		/****** md5 signature: 06a1fb89f0664aa913edd3cb9bdb96f0 ******/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", "
 Parameters
@@ -10267,15 +10242,15 @@ Description
 -----------
 No available documentation.
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShellFaceSet::SNameori ******/
-		/****** md5 signature: 5a9c43c224cad506161a5139631efdf6 ******/
+		/****** md5 signature: 40dc465fbb2c2088dbd7c4aeeb4f0bf7 ******/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TopTools_ListOfShape
+S: NCollection_List<TopoDS_Shape>
 sb: str (optional, default to "")
 sa: str (optional, default to "")
 
@@ -10287,7 +10262,7 @@ Description
 -----------
 No available documentation.
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SNameori(const NCollection_List<TopoDS_Shape> & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_ShellFaceSet::Solid ******/
 		/****** md5 signature: 0e70c03e20bb23e014ac5417ea4abe26 ******/
@@ -10317,13 +10292,13 @@ No available documentation.
 class TopOpeBRepBuild_WireEdgeSet : public TopOpeBRepBuild_ShapeSet {
 	public:
 		/****** TopOpeBRepBuild_WireEdgeSet::TopOpeBRepBuild_WireEdgeSet ******/
-		/****** md5 signature: 9e72944cc17474a662be59b12653b74e ******/
+		/****** md5 signature: 3eab48c86e44ebbefe40c21e9812efa9 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_WireEdgeSet;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Shape
-Addr: Standard_Address (optional, default to NULL)
+Addr: void * (optional, default to nullptr)
 
 Return
 -------
@@ -10333,10 +10308,10 @@ Description
 -----------
 Creates a WireEdgeSet to build edges connected by vertices on face F. Edges of the WireEdgeSet must have a representation on surface of face F.
 ") TopOpeBRepBuild_WireEdgeSet;
-		 TopOpeBRepBuild_WireEdgeSet(const TopoDS_Shape & F, const Standard_Address Addr = NULL);
+		 TopOpeBRepBuild_WireEdgeSet(const TopoDS_Shape & F, void * const Addr = nullptr);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::AddElement ******/
-		/****** md5 signature: c0fd7b9ad7268cebbd92d15ddcc6f276 ******/
+		/****** md5 signature: 4173e6749dc1d30d8928504c8fd2e3bf ******/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "
 Parameters
@@ -10351,10 +10326,10 @@ Description
 -----------
 No available documentation.
 ") AddElement;
-		virtual void AddElement(const TopoDS_Shape & S);
+		void AddElement(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::AddShape ******/
-		/****** md5 signature: c8bb56d3b44db84675e80800af165998 ******/
+		/****** md5 signature: d2d1a4c725fba5b08dcce08dbce9cd1b ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -10369,10 +10344,10 @@ Description
 -----------
 No available documentation.
 ") AddShape;
-		virtual void AddShape(const TopoDS_Shape & S);
+		void AddShape(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::AddStartElement ******/
-		/****** md5 signature: 0f01e210fb7a175f660a12f4c0c9c395 ******/
+		/****** md5 signature: 9812d6d256f4dddf0365139f56e912e8 ******/
 		%feature("compactdefaultargs") AddStartElement;
 		%feature("autodoc", "
 Parameters
@@ -10387,10 +10362,10 @@ Description
 -----------
 No available documentation.
 ") AddStartElement;
-		virtual void AddStartElement(const TopoDS_Shape & S);
+		void AddStartElement(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::DumpSS ******/
-		/****** md5 signature: 6402ba15bdfcafa3cb26f476267e90da ******/
+		/****** md5 signature: 6b12b24c9d7c230330c420fe6dc3dcf4 ******/
 		%feature("compactdefaultargs") DumpSS;
 		%feature("autodoc", "Return
 -------
@@ -10400,7 +10375,7 @@ Description
 -----------
 No available documentation.
 ") DumpSS;
-		virtual void DumpSS();
+		void DumpSS();
 
 		/****** TopOpeBRepBuild_WireEdgeSet::Face ******/
 		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
@@ -10416,7 +10391,7 @@ value of field myFace.
 		const TopoDS_Face Face();
 
 		/****** TopOpeBRepBuild_WireEdgeSet::FindNeighbours ******/
-		/****** md5 signature: 9c6e1802ff5feb36028534b42d4f4a96 ******/
+		/****** md5 signature: e16ca4df2298c21bc5d2a3de912e61c4 ******/
 		%feature("compactdefaultargs") FindNeighbours;
 		%feature("autodoc", "Return
 -------
@@ -10426,10 +10401,10 @@ Description
 -----------
 Build the list of neighbour edges of edge myCurrentShape Initialize iterator of neighbour edges to edge myCurrentShape.
 ") FindNeighbours;
-		virtual void FindNeighbours();
+		void FindNeighbours();
 
 		/****** TopOpeBRepBuild_WireEdgeSet::InitNeighbours ******/
-		/****** md5 signature: 08041087a2fe82df6310461976fa7fbc ******/
+		/****** md5 signature: 163b448e9e2319364dae9a593b864879 ******/
 		%feature("compactdefaultargs") InitNeighbours;
 		%feature("autodoc", "
 Parameters
@@ -10444,10 +10419,10 @@ Description
 -----------
 No available documentation.
 ") InitNeighbours;
-		virtual void InitNeighbours(const TopoDS_Shape & E);
+		void InitNeighbours(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::IsUVISO ******/
-		/****** md5 signature: c62241f095fc6393c07cfca1ce3a6a5b ******/
+		/****** md5 signature: 139129f9a519b792ef0af9d8dd082e04 ******/
 		%feature("compactdefaultargs") IsUVISO;
 		%feature("autodoc", "
 Parameters
@@ -10467,7 +10442,7 @@ No available documentation.
 		static void IsUVISO(const TopoDS_Edge & E, const TopoDS_Face & F, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::MakeNeighboursList ******/
-		/****** md5 signature: 76e7c89107969695f3dd5f4055661445 ******/
+		/****** md5 signature: 81130c096d40dcebb1574255e33feb9d ******/
 		%feature("compactdefaultargs") MakeNeighboursList;
 		%feature("autodoc", "
 Parameters
@@ -10477,16 +10452,16 @@ V: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") MakeNeighboursList;
-		virtual const TopTools_ListOfShape & MakeNeighboursList(const TopoDS_Shape & E, const TopoDS_Shape & V);
+		const NCollection_List<TopoDS_Shape> MakeNeighboursList(const TopoDS_Shape & E, const TopoDS_Shape & V);
 
 		/****** TopOpeBRepBuild_WireEdgeSet::SName ******/
-		/****** md5 signature: 5f80868d1c4c398e024d63f986d494cc ******/
+		/****** md5 signature: 88e13ce91de76e2556cb8f5d110c48af ******/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", "
 Parameters
@@ -10503,15 +10478,15 @@ Description
 -----------
 No available documentation.
 ") SName;
-		virtual TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SName(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_WireEdgeSet::SName ******/
-		/****** md5 signature: 439aa61e703e5a53a45918a05c2d0318 ******/
+		/****** md5 signature: 1b69a1e1c040b2482d2954472e6f1d93 ******/
 		%feature("compactdefaultargs") SName;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TopTools_ListOfShape
+S: NCollection_List<TopoDS_Shape>
 sb: str (optional, default to "")
 sa: str (optional, default to "")
 
@@ -10523,10 +10498,10 @@ Description
 -----------
 No available documentation.
 ") SName;
-		virtual TCollection_AsciiString SName(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SName(const NCollection_List<TopoDS_Shape> & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_WireEdgeSet::SNameori ******/
-		/****** md5 signature: 13d091dc5a1df5e5b76408b1cf7882ab ******/
+		/****** md5 signature: 06a1fb89f0664aa913edd3cb9bdb96f0 ******/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", "
 Parameters
@@ -10543,15 +10518,15 @@ Description
 -----------
 No available documentation.
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SNameori(const TopoDS_Shape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 		/****** TopOpeBRepBuild_WireEdgeSet::SNameori ******/
-		/****** md5 signature: 5a9c43c224cad506161a5139631efdf6 ******/
+		/****** md5 signature: 40dc465fbb2c2088dbd7c4aeeb4f0bf7 ******/
 		%feature("compactdefaultargs") SNameori;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TopTools_ListOfShape
+S: NCollection_List<TopoDS_Shape>
 sb: str (optional, default to "")
 sa: str (optional, default to "")
 
@@ -10563,7 +10538,7 @@ Description
 -----------
 No available documentation.
 ") SNameori;
-		virtual TCollection_AsciiString SNameori(const TopTools_ListOfShape & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
+		TCollection_AsciiString SNameori(const NCollection_List<TopoDS_Shape> & S, TCollection_AsciiString sb = "", TCollection_AsciiString sa = "");
 
 };
 
@@ -10593,14 +10568,14 @@ No available documentation.
 		 TopOpeBRepBuild_EdgeBuilder();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::TopOpeBRepBuild_EdgeBuilder ******/
-		/****** md5 signature: 23fa9971f5c00aede542244c5a2a487c ******/
+		/****** md5 signature: e59a57c4fd27df384f3cc6afdb0322e9 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_EdgeBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_PaveSet
 LC: TopOpeBRepBuild_PaveClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -10610,7 +10585,7 @@ Description
 -----------
 Creates a EdgeBuilder to find the areas of the shapes described by <LS> using the classifier <LC>.
 ") TopOpeBRepBuild_EdgeBuilder;
-		 TopOpeBRepBuild_EdgeBuilder(TopOpeBRepBuild_PaveSet & LS, TopOpeBRepBuild_PaveClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_EdgeBuilder(TopOpeBRepBuild_PaveSet & LS, TopOpeBRepBuild_PaveClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_EdgeBuilder::InitEdge ******/
 		/****** md5 signature: 13e3d303d78cdf9134a0106c465fdb17 ******/
@@ -10626,14 +10601,14 @@ No available documentation.
 		void InitEdge();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::InitEdgeBuilder ******/
-		/****** md5 signature: feab14ae0eb34263c1597ab51e270453 ******/
+		/****** md5 signature: dae6c2bcd6fe201e2bba8961735b4b26 ******/
 		%feature("compactdefaultargs") InitEdgeBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -10643,7 +10618,7 @@ Description
 -----------
 No available documentation.
 ") InitEdgeBuilder;
-		void InitEdgeBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		void InitEdgeBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_EdgeBuilder::InitVertex ******/
 		/****** md5 signature: 12fa7b14d7e7f4c6f0e753d97f3e91ab ******/
@@ -10659,7 +10634,7 @@ No available documentation.
 		void InitVertex();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::MoreEdge ******/
-		/****** md5 signature: 3deabda73e93b20e8a72f2f0ebea4e02 ******/
+		/****** md5 signature: 6ad80ac0d66dad5013f4fe4cff20c934 ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -10669,10 +10644,10 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::MoreVertex ******/
-		/****** md5 signature: a83eb0d708855c09e405b7e894d8577e ******/
+		/****** md5 signature: 73bec1e3a9592b7ee376cebfedb62bcf ******/
 		%feature("compactdefaultargs") MoreVertex;
 		%feature("autodoc", "Return
 -------
@@ -10682,7 +10657,7 @@ Description
 -----------
 No available documentation.
 ") MoreVertex;
-		Standard_Boolean MoreVertex();
+		bool MoreVertex();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::NextEdge ******/
 		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
@@ -10711,17 +10686,17 @@ No available documentation.
 		void NextVertex();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** TopOpeBRepBuild_EdgeBuilder::Vertex ******/
 		/****** md5 signature: 4b1334c642d4415d88330a5fa6216463 ******/
@@ -10764,14 +10739,14 @@ No available documentation.
 		 TopOpeBRepBuild_FaceAreaBuilder();
 
 		/****** TopOpeBRepBuild_FaceAreaBuilder::TopOpeBRepBuild_FaceAreaBuilder ******/
-		/****** md5 signature: aae85d4fb51ab8b033369bdcc2ce897c ******/
+		/****** md5 signature: 2b716a87b0dcc847cfc6c51c10b19423 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_FaceAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -10781,17 +10756,17 @@ Description
 -----------
 Creates a FaceAreaBuilder to build faces on the (wires,blocks of edge) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_FaceAreaBuilder;
-		 TopOpeBRepBuild_FaceAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_FaceAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_FaceAreaBuilder::InitFaceAreaBuilder ******/
-		/****** md5 signature: 4c2406552a92f8db15e0db3231a07d69 ******/
+		/****** md5 signature: 01a334023aaaeda40b6ec5c34950cf9f ******/
 		%feature("compactdefaultargs") InitFaceAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -10801,7 +10776,7 @@ Description
 -----------
 No available documentation.
 ") InitFaceAreaBuilder;
-		void InitFaceAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		void InitFaceAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 };
 
@@ -10849,7 +10824,7 @@ No available documentation.
 		void Clear();
 
 		/****** TopOpeBRepBuild_ShellFaceClassifier::CompareElement ******/
-		/****** md5 signature: ba1c176c416a3ec4b766e16ebcc74d2a ******/
+		/****** md5 signature: 8c80a4bbfde0d686ea9b5de5135812c8 ******/
 		%feature("compactdefaultargs") CompareElement;
 		%feature("autodoc", "
 Parameters
@@ -10864,10 +10839,10 @@ Description
 -----------
 Add the face <F> in the set of faces used in 3D point classification. Returns False if the face <F> has been already added to the set of faces, otherwise returns True.
 ") CompareElement;
-		Standard_Boolean CompareElement(const TopoDS_Shape & F);
+		bool CompareElement(const TopoDS_Shape & F);
 
 		/****** TopOpeBRepBuild_ShellFaceClassifier::CompareElementToShape ******/
-		/****** md5 signature: fcde046c10c59d90fd65d4ff20dcda53 ******/
+		/****** md5 signature: 0700a9c6f3bdd91c4c83451d84225d78 ******/
 		%feature("compactdefaultargs") CompareElementToShape;
 		%feature("autodoc", "
 Parameters
@@ -10886,7 +10861,7 @@ classify face <F> with shell <S>.
 		TopAbs_State CompareElementToShape(const TopoDS_Shape & F, const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShellFaceClassifier::CompareShapes ******/
-		/****** md5 signature: da0bd451b348820112f4020c95c6891e ******/
+		/****** md5 signature: b81b0a02c114db766004bad2e239ab69 ******/
 		%feature("compactdefaultargs") CompareShapes;
 		%feature("autodoc", "
 Parameters
@@ -10905,7 +10880,7 @@ classify shell <B1> with shell <B2>.
 		TopAbs_State CompareShapes(const TopoDS_Shape & B1, const TopoDS_Shape & B2);
 
 		/****** TopOpeBRepBuild_ShellFaceClassifier::ResetElement ******/
-		/****** md5 signature: ea9ba08a968ee72e66bd20e4dda95a5b ******/
+		/****** md5 signature: 38635a54b2d41a6b3509eee1b21f7bb7 ******/
 		%feature("compactdefaultargs") ResetElement;
 		%feature("autodoc", "
 Parameters
@@ -10923,7 +10898,7 @@ prepare classification involving face <F> define 3D point (later used in Compare
 		void ResetElement(const TopoDS_Shape & F);
 
 		/****** TopOpeBRepBuild_ShellFaceClassifier::ResetShape ******/
-		/****** md5 signature: 284a4c5e760adb7fa5d4bbdce6df9059 ******/
+		/****** md5 signature: c35b6684d1b1500ed0ef1e690886b6df ******/
 		%feature("compactdefaultargs") ResetShape;
 		%feature("autodoc", "
 Parameters
@@ -10941,7 +10916,7 @@ prepare classification involving shell <S> calls ResetElement on first face of <
 		void ResetShape(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepBuild_ShellFaceClassifier::State ******/
-		/****** md5 signature: 913355dbb99a92aa0aba1549eebd504d ******/
+		/****** md5 signature: 8d4e3a462b151f1591c5e1f3cee67ce9 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -10981,14 +10956,14 @@ No available documentation.
 		 TopOpeBRepBuild_SolidAreaBuilder();
 
 		/****** TopOpeBRepBuild_SolidAreaBuilder::TopOpeBRepBuild_SolidAreaBuilder ******/
-		/****** md5 signature: b6d207c7bf97feaee3dda1d33f127577 ******/
+		/****** md5 signature: 305878ca9583a67bd958ca5867c0b348 ******/
 		%feature("compactdefaultargs") TopOpeBRepBuild_SolidAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -10998,17 +10973,17 @@ Description
 -----------
 Creates a SolidAreaBuilder to build Solids on the (shells,blocks of face) of <LS>, using the classifier <LC>.
 ") TopOpeBRepBuild_SolidAreaBuilder;
-		 TopOpeBRepBuild_SolidAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		 TopOpeBRepBuild_SolidAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 		/****** TopOpeBRepBuild_SolidAreaBuilder::InitSolidAreaBuilder ******/
-		/****** md5 signature: 1fe349a5f143a74a39ca0c4d4b94b628 ******/
+		/****** md5 signature: 9df399889038c10e37958dc573d86f46 ******/
 		%feature("compactdefaultargs") InitSolidAreaBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 LS: TopOpeBRepBuild_LoopSet
 LC: TopOpeBRepBuild_LoopClassifier
-ForceClass: bool (optional, default to Standard_False)
+ForceClass: bool (optional, default to false)
 
 Return
 -------
@@ -11018,7 +10993,7 @@ Description
 -----------
 No available documentation.
 ") InitSolidAreaBuilder;
-		void InitSolidAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const Standard_Boolean ForceClass = Standard_False);
+		void InitSolidAreaBuilder(TopOpeBRepBuild_LoopSet & LS, TopOpeBRepBuild_LoopClassifier & LC, const bool ForceClass = false);
 
 };
 
@@ -11054,7 +11029,7 @@ Creates a classifier on edge <F>. Used to compare edges and wires on the edge <F
 		 TopOpeBRepBuild_WireEdgeClassifier(const TopoDS_Shape & F, const TopOpeBRepBuild_BlockBuilder & BB);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::Compare ******/
-		/****** md5 signature: ca2b365fd2720fd9e2ed093e173bef92 ******/
+		/****** md5 signature: 0913c23095e6757cd112f945bf759079 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -11070,10 +11045,10 @@ Description
 -----------
 No available documentation.
 ") Compare;
-		virtual TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
+		TopAbs_State Compare(const opencascade::handle<TopOpeBRepBuild_Loop> & L1, const opencascade::handle<TopOpeBRepBuild_Loop> & L2);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::CompareElement ******/
-		/****** md5 signature: 56c158550cc802d6ac998ecc10f83a15 ******/
+		/****** md5 signature: 4e1dbb8606cbfccf50ba2f139e96b3dd ******/
 		%feature("compactdefaultargs") CompareElement;
 		%feature("autodoc", "
 Parameters
@@ -11088,10 +11063,10 @@ Description
 -----------
 Add the edge <E> in the set of edges used in 2D point classification.
 ") CompareElement;
-		Standard_Boolean CompareElement(const TopoDS_Shape & E);
+		bool CompareElement(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::CompareElementToShape ******/
-		/****** md5 signature: 82e26bb3950222156821b04e65f27daf ******/
+		/****** md5 signature: f3a29eecc73cc1ff4fd81e08c9dc68cd ******/
 		%feature("compactdefaultargs") CompareElementToShape;
 		%feature("autodoc", "
 Parameters
@@ -11110,7 +11085,7 @@ classify edge <E> with wire <B>.
 		TopAbs_State CompareElementToShape(const TopoDS_Shape & E, const TopoDS_Shape & B);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::CompareShapes ******/
-		/****** md5 signature: e3b41838badeb7de538db8664a47f82b ******/
+		/****** md5 signature: b81b0a02c114db766004bad2e239ab69 ******/
 		%feature("compactdefaultargs") CompareShapes;
 		%feature("autodoc", "
 Parameters
@@ -11147,7 +11122,7 @@ No available documentation.
 		TopoDS_Shape LoopToShape(const opencascade::handle<TopOpeBRepBuild_Loop> & L);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::ResetElement ******/
-		/****** md5 signature: 617b6654710f522258ec4f817674e58d ******/
+		/****** md5 signature: 5b22f3ef9126d9d65da5f3beff5f2077 ******/
 		%feature("compactdefaultargs") ResetElement;
 		%feature("autodoc", "
 Parameters
@@ -11165,7 +11140,7 @@ prepare classification involving edge <E> define 2D point (later used in Compare
 		void ResetElement(const TopoDS_Shape & E);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::ResetShape ******/
-		/****** md5 signature: 1129a8c8129825f675e4ed602276d080 ******/
+		/****** md5 signature: ec877f5b929fb0490b74fe2ed0160243 ******/
 		%feature("compactdefaultargs") ResetShape;
 		%feature("autodoc", "
 Parameters
@@ -11183,7 +11158,7 @@ prepare classification involving wire <B> calls ResetElement on first edge of <B
 		void ResetShape(const TopoDS_Shape & B);
 
 		/****** TopOpeBRepBuild_WireEdgeClassifier::State ******/
-		/****** md5 signature: 111684c5fa36f56d9acfe2227477d711 ******/
+		/****** md5 signature: 8d4e3a462b151f1591c5e1f3cee67ce9 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------

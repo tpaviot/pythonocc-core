@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptopadaptor.ht
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
@@ -64,7 +63,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptopadaptor.ht
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import TopoDS.i
 %import gp.i
 %import TopAbs.i
@@ -91,13 +89,14 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,BRepTopAdaptor_Tool,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,BRepTopAdaptor_Tool,TopTools_ShapeMapHasher>::KeyValues;
 %template(BRepTopAdaptor_MapOfShapeTool) NCollection_DataMap<TopoDS_Shape,BRepTopAdaptor_Tool,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher>::Iterator BRepTopAdaptor_DataMapIteratorOfMapOfShapeTool;
 typedef NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher> BRepTopAdaptor_MapOfShapeTool;
-typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 /* end typedefs declaration */
 
 /********************************
@@ -106,13 +105,13 @@ typedef TColStd_SequenceOfAddress BRepTopAdaptor_SeqOfPtr;
 class BRepTopAdaptor_FClass2d {
 	public:
 		/****** BRepTopAdaptor_FClass2d::BRepTopAdaptor_FClass2d ******/
-		/****** md5 signature: a4ce3a90c05c77932758932c03e7b960 ******/
+		/****** md5 signature: 3fae67e24363d9c60c07304f6a9dc752 ******/
 		%feature("compactdefaultargs") BRepTopAdaptor_FClass2d;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-Tol: float
+Tol: double
 
 Return
 -------
@@ -122,7 +121,7 @@ Description
 -----------
 No available documentation.
 ") BRepTopAdaptor_FClass2d;
-		 BRepTopAdaptor_FClass2d(const TopoDS_Face & F, const Standard_Real Tol);
+		 BRepTopAdaptor_FClass2d(const TopoDS_Face & F, const double Tol);
 
 		/****** BRepTopAdaptor_FClass2d::Copy ******/
 		/****** md5 signature: efc7d008bfae308e21078aca0811254c ******/
@@ -156,13 +155,13 @@ No available documentation.
 		void Destroy();
 
 		/****** BRepTopAdaptor_FClass2d::Perform ******/
-		/****** md5 signature: 403774510e6e0c4bd249a27908ad88fd ******/
+		/****** md5 signature: cdb3c5a039795a6fac8973a573e41750 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Puv: gp_Pnt2d
-RecadreOnPeriodic: bool (optional, default to Standard_True)
+RecadreOnPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -172,7 +171,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		TopAbs_State Perform(const gp_Pnt2d & Puv, const Standard_Boolean RecadreOnPeriodic = Standard_True);
+		TopAbs_State Perform(const gp_Pnt2d & Puv, const bool RecadreOnPeriodic = true);
 
 		/****** BRepTopAdaptor_FClass2d::PerformInfinitePoint ******/
 		/****** md5 signature: 372e31f938f00ae741d3664c08c086b5 ******/
@@ -188,14 +187,14 @@ No available documentation.
 		TopAbs_State PerformInfinitePoint();
 
 		/****** BRepTopAdaptor_FClass2d::TestOnRestriction ******/
-		/****** md5 signature: 6c77262c5fd5c2462a11220de78e70e9 ******/
+		/****** md5 signature: 909781cdd20af89cef190ae54ec1dfef ******/
 		%feature("compactdefaultargs") TestOnRestriction;
 		%feature("autodoc", "
 Parameters
 ----------
 Puv: gp_Pnt2d
-Tol: float
-RecadreOnPeriodic: bool (optional, default to Standard_True)
+Tol: double
+RecadreOnPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -203,9 +202,9 @@ TopAbs_State
 
 Description
 -----------
-Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use . see the code for more details).
+Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use. see the code for more details).
 ") TestOnRestriction;
-		TopAbs_State TestOnRestriction(const gp_Pnt2d & Puv, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True);
+		TopAbs_State TestOnRestriction(const gp_Pnt2d & Puv, const double Tol, const bool RecadreOnPeriodic = true);
 
 };
 
@@ -241,7 +240,7 @@ No available documentation.
 		 BRepTopAdaptor_HVertex(const TopoDS_Vertex & Vtx, const opencascade::handle<BRepAdaptor_Curve2d> & Curve);
 
 		/****** BRepTopAdaptor_HVertex::ChangeVertex ******/
-		/****** md5 signature: 656bb17afe52454f9a05f1376056a6f2 ******/
+		/****** md5 signature: d024b91a23e89f21ebe612259435c2f1 ******/
 		%feature("compactdefaultargs") ChangeVertex;
 		%feature("autodoc", "Return
 -------
@@ -254,7 +253,7 @@ No available documentation.
 		TopoDS_Vertex ChangeVertex();
 
 		/****** BRepTopAdaptor_HVertex::IsSame ******/
-		/****** md5 signature: f2a9a396e56097829ed82cdf7f82bd65 ******/
+		/****** md5 signature: 3ee98016ddacc9e25865a0ea02a4751d ******/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "
 Parameters
@@ -269,10 +268,10 @@ Description
 -----------
 No available documentation.
 ") IsSame;
-		virtual Standard_Boolean IsSame(const opencascade::handle<Adaptor3d_HVertex> & Other);
+		bool IsSame(const opencascade::handle<Adaptor3d_HVertex> & Other);
 
 		/****** BRepTopAdaptor_HVertex::Orientation ******/
-		/****** md5 signature: b943e1badc1c2450950702cc0e44d65d ******/
+		/****** md5 signature: 2fa987db5a1c189d78c582e106bac418 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -282,10 +281,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		virtual TopAbs_Orientation Orientation();
+		TopAbs_Orientation Orientation();
 
 		/****** BRepTopAdaptor_HVertex::Parameter ******/
-		/****** md5 signature: 7946c860c156c882efbe28718cc8bb1f ******/
+		/****** md5 signature: a2d44357a37b162d08eb8cc561009af7 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -294,16 +293,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		virtual Standard_Real Parameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		double Parameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** BRepTopAdaptor_HVertex::Resolution ******/
-		/****** md5 signature: a164413bb7ed733cd7b505fea3e66eed ******/
+		/****** md5 signature: 25f32e257ea6aff2e2171cd59aa729df ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -312,16 +311,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Parametric resolution (2d).
 ") Resolution;
-		virtual Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		double Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** BRepTopAdaptor_HVertex::Value ******/
-		/****** md5 signature: 554738eb7febee95dce3c7ca7bc631d6 ******/
+		/****** md5 signature: 34d316b542c8df085bfe5a9385388368 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -331,10 +330,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		virtual gp_Pnt2d Value();
+		gp_Pnt2d Value();
 
 		/****** BRepTopAdaptor_HVertex::Vertex ******/
-		/****** md5 signature: 84212ff79cd7d64cd0ebfa6f17214e90 ******/
+		/****** md5 signature: f6b9d30df043abdbae2c9dffcc672395 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "Return
 -------
@@ -376,13 +375,13 @@ No available documentation.
 		 BRepTopAdaptor_Tool();
 
 		/****** BRepTopAdaptor_Tool::BRepTopAdaptor_Tool ******/
-		/****** md5 signature: b1c7d0803f25616e45e53f7ee3ec33c3 ******/
+		/****** md5 signature: 99db79d982fc887139cf620b7a339451 ******/
 		%feature("compactdefaultargs") BRepTopAdaptor_Tool;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-Tol2d: float
+Tol2d: double
 
 Return
 -------
@@ -392,16 +391,16 @@ Description
 -----------
 No available documentation.
 ") BRepTopAdaptor_Tool;
-		 BRepTopAdaptor_Tool(const TopoDS_Face & F, const Standard_Real Tol2d);
+		 BRepTopAdaptor_Tool(const TopoDS_Face & F, const double Tol2d);
 
 		/****** BRepTopAdaptor_Tool::BRepTopAdaptor_Tool ******/
-		/****** md5 signature: a513e74acf6cfe0783456be96ccc60c9 ******/
+		/****** md5 signature: 037b1fa0230726f1609974324d2a61a3 ******/
 		%feature("compactdefaultargs") BRepTopAdaptor_Tool;
 		%feature("autodoc", "
 Parameters
 ----------
 Surface: Adaptor3d_Surface
-Tol2d: float
+Tol2d: double
 
 Return
 -------
@@ -411,7 +410,7 @@ Description
 -----------
 No available documentation.
 ") BRepTopAdaptor_Tool;
-		 BRepTopAdaptor_Tool(const opencascade::handle<Adaptor3d_Surface> & Surface, const Standard_Real Tol2d);
+		 BRepTopAdaptor_Tool(const opencascade::handle<Adaptor3d_Surface> & Surface, const double Tol2d);
 
 		/****** BRepTopAdaptor_Tool::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -453,13 +452,13 @@ No available documentation.
 		opencascade::handle<BRepTopAdaptor_TopolTool> GetTopolTool();
 
 		/****** BRepTopAdaptor_Tool::Init ******/
-		/****** md5 signature: 5bec524469c25172c545bf8ac42938a6 ******/
+		/****** md5 signature: ed522c3b9d79e364670b96af361b66a6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-Tol2d: float
+Tol2d: double
 
 Return
 -------
@@ -469,16 +468,16 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Face & F, const Standard_Real Tol2d);
+		void Init(const TopoDS_Face & F, const double Tol2d);
 
 		/****** BRepTopAdaptor_Tool::Init ******/
-		/****** md5 signature: 6237b6ed41260a567f87d98e1986dbbe ******/
+		/****** md5 signature: d9dcf14aabfe7b38c9e71a68f8528da8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 Surface: Adaptor3d_Surface
-Tol2d: float
+Tol2d: double
 
 Return
 -------
@@ -488,7 +487,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Adaptor3d_Surface> & Surface, const Standard_Real Tol2d);
+		void Init(const opencascade::handle<Adaptor3d_Surface> & Surface, const double Tol2d);
 
 		/****** BRepTopAdaptor_Tool::SetTopolTool ******/
 		/****** md5 signature: 3bffbb5885a2ed968b12bd808603632f ******/
@@ -554,14 +553,14 @@ No available documentation.
 		 BRepTopAdaptor_TopolTool(const opencascade::handle<Adaptor3d_Surface> & Surface);
 
 		/****** BRepTopAdaptor_TopolTool::Classify ******/
-		/****** md5 signature: a7bbbaec3e65fcebf225d366fb51ee9a ******/
+		/****** md5 signature: 55c350b6e08b6ac62bf53f212a45e34c ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "
 Parameters
 ----------
 P2d: gp_Pnt2d
-Tol: float
-RecadreOnPeriodic: bool (optional, default to Standard_True)
+Tol: double
+RecadreOnPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -571,10 +570,10 @@ Description
 -----------
 No available documentation.
 ") Classify;
-		virtual TopAbs_State Classify(const gp_Pnt2d & P2d, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True);
+		TopAbs_State Classify(const gp_Pnt2d & P2d, const double Tol, const bool RecadreOnPeriodic = true);
 
 		/****** BRepTopAdaptor_TopolTool::ComputeSamplePoints ******/
-		/****** md5 signature: 940d159b31fac83590ed8721227cec02 ******/
+		/****** md5 signature: 1fa105aa64ba9bca92e753c7f09817c9 ******/
 		%feature("compactdefaultargs") ComputeSamplePoints;
 		%feature("autodoc", "Return
 -------
@@ -584,7 +583,7 @@ Description
 -----------
 No available documentation.
 ") ComputeSamplePoints;
-		virtual void ComputeSamplePoints();
+		void ComputeSamplePoints();
 
 		/****** BRepTopAdaptor_TopolTool::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -600,7 +599,7 @@ No available documentation.
 		void Destroy();
 
 		/****** BRepTopAdaptor_TopolTool::DomainIsInfinite ******/
-		/****** md5 signature: 20f793796242ffe67750f39c7f6cb147 ******/
+		/****** md5 signature: 9bcb7e376667381af854747a59061834 ******/
 		%feature("compactdefaultargs") DomainIsInfinite;
 		%feature("autodoc", "Return
 -------
@@ -610,23 +609,23 @@ Description
 -----------
 No available documentation.
 ") DomainIsInfinite;
-		virtual Standard_Boolean DomainIsInfinite();
+		bool DomainIsInfinite();
 
 		/****** BRepTopAdaptor_TopolTool::Edge ******/
-		/****** md5 signature: 6967230b5b5db55425e95b1692b26f70 ******/
+		/****** md5 signature: 4be84cbbce9a45facacd149b9c714293 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 No available documentation.
 ") Edge;
-		virtual Standard_Address Edge();
+		void * Edge();
 
 		/****** BRepTopAdaptor_TopolTool::Has3d ******/
-		/****** md5 signature: ebbbfa66b9e47ba91b38a042ef3df5e9 ******/
+		/****** md5 signature: 1893db2877a337c8a9454e9ec0e07c39 ******/
 		%feature("compactdefaultargs") Has3d;
 		%feature("autodoc", "Return
 -------
@@ -636,10 +635,10 @@ Description
 -----------
 answers if arcs and vertices may have 3d representations, so that we could use Tol3d and Pnt methods.
 ") Has3d;
-		virtual Standard_Boolean Has3d();
+		bool Has3d();
 
 		/****** BRepTopAdaptor_TopolTool::Init ******/
-		/****** md5 signature: c4c556a6328bedec1d8a123a7f91b797 ******/
+		/****** md5 signature: c6dbf0d99d706ac50fb0b6c62ce47ad1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -649,10 +648,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		virtual void Init();
+		void Init();
 
 		/****** BRepTopAdaptor_TopolTool::InitVertexIterator ******/
-		/****** md5 signature: 47f3e7aba8ec0b8bbcee04b21e73023c ******/
+		/****** md5 signature: c67a916df1e4a1c1a9824bc4b18ada47 ******/
 		%feature("compactdefaultargs") InitVertexIterator;
 		%feature("autodoc", "Return
 -------
@@ -662,10 +661,10 @@ Description
 -----------
 No available documentation.
 ") InitVertexIterator;
-		virtual void InitVertexIterator();
+		void InitVertexIterator();
 
 		/****** BRepTopAdaptor_TopolTool::Initialize ******/
-		/****** md5 signature: c1406d3f37ede5ce5f7bca787b95af63 ******/
+		/****** md5 signature: 5f193f51f8e20831a5bbcf374ee967ad ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Return
 -------
@@ -675,10 +674,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		virtual void Initialize();
+		void Initialize();
 
 		/****** BRepTopAdaptor_TopolTool::Initialize ******/
-		/****** md5 signature: 305d623733409be1d8fbf4ab26ddf2d5 ******/
+		/****** md5 signature: 9816d1f77afc629fc78b8597916117a7 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -693,10 +692,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		virtual void Initialize(const opencascade::handle<Adaptor3d_Surface> & S);
+		void Initialize(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** BRepTopAdaptor_TopolTool::Initialize ******/
-		/****** md5 signature: a7c35bee18e0399050a6e43b1c80eded ******/
+		/****** md5 signature: 11b83b45b0e08285332869daeaa8f49c ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -711,17 +710,17 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		virtual void Initialize(const opencascade::handle<Adaptor2d_Curve2d> & Curve);
+		void Initialize(const opencascade::handle<Adaptor2d_Curve2d> & Curve);
 
 		/****** BRepTopAdaptor_TopolTool::IsThePointOn ******/
-		/****** md5 signature: a8af42c0c4037ab93f856b0272aaeeac ******/
+		/****** md5 signature: b1284cc729b004f9a3c7dfe3c24fd02b ******/
 		%feature("compactdefaultargs") IsThePointOn;
 		%feature("autodoc", "
 Parameters
 ----------
 P2d: gp_Pnt2d
-Tol: float
-RecadreOnPeriodic: bool (optional, default to Standard_True)
+Tol: double
+RecadreOnPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -731,10 +730,10 @@ Description
 -----------
 see the code for specifications).
 ") IsThePointOn;
-		virtual Standard_Boolean IsThePointOn(const gp_Pnt2d & P2d, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True);
+		bool IsThePointOn(const gp_Pnt2d & P2d, const double Tol, const bool RecadreOnPeriodic = true);
 
 		/****** BRepTopAdaptor_TopolTool::More ******/
-		/****** md5 signature: bda1e82f93f14763348ea8e5cf741569 ******/
+		/****** md5 signature: 0e8ffada362265379ac9c707dc04b7fe ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -744,10 +743,10 @@ Description
 -----------
 No available documentation.
 ") More;
-		virtual Standard_Boolean More();
+		bool More();
 
 		/****** BRepTopAdaptor_TopolTool::MoreVertex ******/
-		/****** md5 signature: 6742f4bff9005368b8f6a53f0e30838a ******/
+		/****** md5 signature: 2a2e4d2af43180c20a1897fe2f1fd41b ******/
 		%feature("compactdefaultargs") MoreVertex;
 		%feature("autodoc", "Return
 -------
@@ -757,10 +756,10 @@ Description
 -----------
 No available documentation.
 ") MoreVertex;
-		virtual Standard_Boolean MoreVertex();
+		bool MoreVertex();
 
 		/****** BRepTopAdaptor_TopolTool::NbSamples ******/
-		/****** md5 signature: cd99f1dfd0ef40a4d961f9638d39e555 ******/
+		/****** md5 signature: 46d1b96e57bb8811cdba7e702a282a06 ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "Return
 -------
@@ -770,10 +769,10 @@ Description
 -----------
 compute the sample-points for the intersections algorithms.
 ") NbSamples;
-		virtual Standard_Integer NbSamples();
+		int NbSamples();
 
 		/****** BRepTopAdaptor_TopolTool::NbSamplesU ******/
-		/****** md5 signature: 9402b5b7fe65eb10df77f3437e175357 ******/
+		/****** md5 signature: 35d7ce0d38afcaacbe9a2e5dc3334537 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "Return
 -------
@@ -783,10 +782,10 @@ Description
 -----------
 compute the sample-points for the intersections algorithms.
 ") NbSamplesU;
-		virtual Standard_Integer NbSamplesU();
+		int NbSamplesU();
 
 		/****** BRepTopAdaptor_TopolTool::NbSamplesV ******/
-		/****** md5 signature: d6f9b32ddea97452b8d6f7035907d24a ******/
+		/****** md5 signature: 480adcf30874bc7740b0cf4cb0985056 ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "Return
 -------
@@ -796,10 +795,10 @@ Description
 -----------
 compute the sample-points for the intersections algorithms.
 ") NbSamplesV;
-		virtual Standard_Integer NbSamplesV();
+		int NbSamplesV();
 
 		/****** BRepTopAdaptor_TopolTool::Next ******/
-		/****** md5 signature: b63ea944a01b0e386a7cb8b02e8cfefd ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -809,10 +808,10 @@ Description
 -----------
 No available documentation.
 ") Next;
-		virtual void Next();
+		void Next();
 
 		/****** BRepTopAdaptor_TopolTool::NextVertex ******/
-		/****** md5 signature: fc0d0c2b80a2501fa63795a7b7c92e53 ******/
+		/****** md5 signature: 62fac1544b9c03af53d3598d2b742295 ******/
 		%feature("compactdefaultargs") NextVertex;
 		%feature("autodoc", "Return
 -------
@@ -822,10 +821,10 @@ Description
 -----------
 No available documentation.
 ") NextVertex;
-		virtual void NextVertex();
+		void NextVertex();
 
 		/****** BRepTopAdaptor_TopolTool::Orientation ******/
-		/****** md5 signature: 0735971c665e1d16dd72730276bafb3b ******/
+		/****** md5 signature: b928cca53eb713074009ae83b52cd2a4 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -840,10 +839,10 @@ Description
 -----------
 If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 ") Orientation;
-		virtual TopAbs_Orientation Orientation(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		TopAbs_Orientation Orientation(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** BRepTopAdaptor_TopolTool::Orientation ******/
-		/****** md5 signature: 1e1d1ced6b52c356f59b839a0952b3b6 ******/
+		/****** md5 signature: d7faffcaf81acc70893394ccf242867f ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -858,10 +857,10 @@ Description
 -----------
 If the function returns the orientation of the arc. If the orientation is FORWARD or REVERSED, the arc is a 'real' limit of the surface. If the orientation is INTERNAL or EXTERNAL, the arc is considered as an arc on the surface.
 ") Orientation;
-		virtual TopAbs_Orientation Orientation(const opencascade::handle<Adaptor3d_HVertex> & C);
+		TopAbs_Orientation Orientation(const opencascade::handle<Adaptor3d_HVertex> & C);
 
 		/****** BRepTopAdaptor_TopolTool::Pnt ******/
-		/****** md5 signature: 07c48c1ccc9352adfa820bedabe41ab1 ******/
+		/****** md5 signature: ccd5842b2e3f05020816e48b44fca11d ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
@@ -876,10 +875,10 @@ Description
 -----------
 returns 3d point of the vertex V.
 ") Pnt;
-		virtual gp_Pnt Pnt(const opencascade::handle<Adaptor3d_HVertex> & V);
+		gp_Pnt Pnt(const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****** BRepTopAdaptor_TopolTool::SamplePoint ******/
-		/****** md5 signature: bc5c941f9b59752a7a36373d9a170420 ******/
+		/****** md5 signature: 96359df3b40ddced07e0cdd815611111 ******/
 		%feature("compactdefaultargs") SamplePoint;
 		%feature("autodoc", "
 Parameters
@@ -896,10 +895,10 @@ Description
 -----------
 No available documentation.
 ") SamplePoint;
-		virtual void SamplePoint(const Standard_Integer Index, gp_Pnt2d & P2d, gp_Pnt & P3d);
+		void SamplePoint(const int Index, gp_Pnt2d & P2d, gp_Pnt & P3d);
 
 		/****** BRepTopAdaptor_TopolTool::Tol3d ******/
-		/****** md5 signature: f820189d20028993788ef5efc7f9ea0f ******/
+		/****** md5 signature: a608f1ec58a0a2f23bc650fb6a80e9bf ******/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "
 Parameters
@@ -908,16 +907,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns 3d tolerance of the arc C.
 ") Tol3d;
-		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		double Tol3d(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** BRepTopAdaptor_TopolTool::Tol3d ******/
-		/****** md5 signature: 36153ba1d394ad94701849f935fac318 ******/
+		/****** md5 signature: a9f2c1b55a481d79fd38f9920c791b10 ******/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "
 Parameters
@@ -926,16 +925,16 @@ V: Adaptor3d_HVertex
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns 3d tolerance of the vertex V.
 ") Tol3d;
-		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor3d_HVertex> & V);
+		double Tol3d(const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****** BRepTopAdaptor_TopolTool::Value ******/
-		/****** md5 signature: d434368cfe93892ae89893f79cf67479 ******/
+		/****** md5 signature: 459b24b48553142ae26e933809eec96b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -945,10 +944,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		virtual opencascade::handle<Adaptor2d_Curve2d> Value();
+		opencascade::handle<Adaptor2d_Curve2d> Value();
 
 		/****** BRepTopAdaptor_TopolTool::Vertex ******/
-		/****** md5 signature: 6c366dfe7165527233236e7fbb6bdce6 ******/
+		/****** md5 signature: 3233158bd82db4b7631ab6c1d0523a21 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "Return
 -------
@@ -958,7 +957,7 @@ Description
 -----------
 No available documentation.
 ") Vertex;
-		virtual opencascade::handle<Adaptor3d_HVertex> Vertex();
+		opencascade::handle<Adaptor3d_HVertex> Vertex();
 
 };
 
@@ -976,5 +975,4 @@ No available documentation.
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-BRepTopAdaptor_SeqOfPtr=OCC.Core.TColStd.TColStd_SequenceOfAddress
 }

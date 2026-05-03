@@ -49,6 +49,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomtools.html"
 #include<Message_module.hxx>
 #include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
+#include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -144,7 +146,7 @@ Dumps the Curve on the stream.
 		static void Dump(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue);
 
 		/****** GeomTools::GetReal ******/
-		/****** md5 signature: c50fd53b89ec2e186f253d0a770a36c5 ******/
+		/****** md5 signature: 59a2a7050092a80a73a9d56b44ced284 ******/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "
 Parameters
@@ -153,11 +155,11 @@ IS: str
 
 Return
 -------
-theValue: float
+theValue: double
 
 Description
 -----------
-Reads the Standard_Real value from the stream. Zero is read in case of error.
+Reads the double value from the stream. Zero is read in case of error.
 ") GetReal;
 		static void GetReal(std::istream & IS, Standard_Real &OutValue);
 
@@ -331,7 +333,7 @@ Returns an empty set of Curves.
 		 GeomTools_Curve2dSet();
 
 		/****** GeomTools_Curve2dSet::Add ******/
-		/****** md5 signature: 947264273ed6b5c72eac1f308b1f2487 ******/
+		/****** md5 signature: 7b5529147fa639cb09c2b19e17dfef22 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -346,7 +348,7 @@ Description
 -----------
 Incorporate a new Curve in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const opencascade::handle<Geom2d_Curve> & C);
+		int Add(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** GeomTools_Curve2dSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -362,7 +364,7 @@ Clears the content of the set.
 		void Clear();
 
 		/****** GeomTools_Curve2dSet::Curve2d ******/
-		/****** md5 signature: aca04b75893a006fca996d6d157d858d ******/
+		/****** md5 signature: ac1faa40fbecd6c896493e09cac0733b ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -377,7 +379,7 @@ Description
 -----------
 Returns the Curve of index <I>.
 ") Curve2d;
-		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer I);
+		opencascade::handle<Geom2d_Curve> Curve2d(const int I);
 
 		/****** GeomTools_Curve2dSet::Dump ******/
 		/****** md5 signature: e60d722f65a7811be636699da7600e78 ******/
@@ -397,7 +399,7 @@ Dumps the content of me on the stream <OS>.
 		void Dump(std::ostream &OutValue);
 
 		/****** GeomTools_Curve2dSet::Index ******/
-		/****** md5 signature: e1559320ddf80ce0263d324c781a3407 ******/
+		/****** md5 signature: f71ed5f2ca1ab45364174d69a1004651 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -412,16 +414,16 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<Geom2d_Curve> & C);
+		int Index(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** GeomTools_Curve2dSet::PrintCurve2d ******/
-		/****** md5 signature: ffcee85cd663bb79253e2d08e26c9b19 ******/
+		/****** md5 signature: 42bb8141bd635045ca1b8fe3b57875a2 ******/
 		%feature("compactdefaultargs") PrintCurve2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
-compact: bool (optional, default to Standard_False)
+compact: bool (optional, default to false)
 
 Return
 -------
@@ -431,7 +433,7 @@ Description
 -----------
 Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 ") PrintCurve2d;
-		static void PrintCurve2d(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
+		static void PrintCurve2d(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue, const bool compact = false);
 
 		/****** GeomTools_Curve2dSet::Read ******/
 		/****** md5 signature: e5ce096318e6663d7e9f744e8d66b70b ******/
@@ -516,7 +518,7 @@ Returns an empty set of Curves.
 		 GeomTools_CurveSet();
 
 		/****** GeomTools_CurveSet::Add ******/
-		/****** md5 signature: 4548eacacd2a36c829559b37d6b57411 ******/
+		/****** md5 signature: 8faf055453407b82e5edede2e89d6b34 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -531,7 +533,7 @@ Description
 -----------
 Incorporate a new Curve in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const opencascade::handle<Geom_Curve> & C);
+		int Add(const opencascade::handle<Geom_Curve> & C);
 
 		/****** GeomTools_CurveSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -547,7 +549,7 @@ Clears the content of the set.
 		void Clear();
 
 		/****** GeomTools_CurveSet::Curve ******/
-		/****** md5 signature: 3509a433898cb7510761da8b37eedb3b ******/
+		/****** md5 signature: d33c0931ecf996d482bcfb88bfe04928 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -562,7 +564,7 @@ Description
 -----------
 Returns the Curve of index <I>.
 ") Curve;
-		opencascade::handle<Geom_Curve> Curve(const Standard_Integer I);
+		opencascade::handle<Geom_Curve> Curve(const int I);
 
 		/****** GeomTools_CurveSet::Dump ******/
 		/****** md5 signature: e60d722f65a7811be636699da7600e78 ******/
@@ -582,7 +584,7 @@ Dumps the content of me on the stream <OS>.
 		void Dump(std::ostream &OutValue);
 
 		/****** GeomTools_CurveSet::Index ******/
-		/****** md5 signature: c53cbf4d0efdfb90843e67e9b32c5252 ******/
+		/****** md5 signature: 1baaf4c3c2962c561b2c8009133d74f6 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -597,16 +599,16 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<Geom_Curve> & C);
+		int Index(const opencascade::handle<Geom_Curve> & C);
 
 		/****** GeomTools_CurveSet::PrintCurve ******/
-		/****** md5 signature: 9cb5308983a4ee0a89defb9c26e1cdb3 ******/
+		/****** md5 signature: cc878cc0a605eb04e7147f6fce334ae9 ******/
 		%feature("compactdefaultargs") PrintCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-compact: bool (optional, default to Standard_False)
+compact: bool (optional, default to false)
 
 Return
 -------
@@ -616,7 +618,7 @@ Description
 -----------
 Dumps the curve on the stream, if compact is True use the compact format that can be read back.
 ") PrintCurve;
-		static void PrintCurve(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
+		static void PrintCurve(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue, const bool compact = false);
 
 		/****** GeomTools_CurveSet::Read ******/
 		/****** md5 signature: e5ce096318e6663d7e9f744e8d66b70b ******/
@@ -633,7 +635,7 @@ None
 
 Description
 -----------
-Reads the content of me from the stream <IS>. me is first cleared.
+Reads the content of me from the stream <IS> me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -701,7 +703,7 @@ Returns an empty set of Surfaces.
 		 GeomTools_SurfaceSet();
 
 		/****** GeomTools_SurfaceSet::Add ******/
-		/****** md5 signature: 6108c9acf8995214a7cb8b8e5a0b937c ******/
+		/****** md5 signature: 372a7acded5452c654533a84e59a8847 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -716,7 +718,7 @@ Description
 -----------
 Incorporate a new Surface in the set and returns its index.
 ") Add;
-		Standard_Integer Add(const opencascade::handle<Geom_Surface> & S);
+		int Add(const opencascade::handle<Geom_Surface> & S);
 
 		/****** GeomTools_SurfaceSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -749,7 +751,7 @@ Dumps the content of me on the stream <OS>.
 		void Dump(std::ostream &OutValue);
 
 		/****** GeomTools_SurfaceSet::Index ******/
-		/****** md5 signature: 7fc50802d17ebd7c660284e6560fb7f6 ******/
+		/****** md5 signature: 16c0c2f2c4962a55dfed3c6e84e12c9a ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -764,16 +766,16 @@ Description
 -----------
 Returns the index of <L>.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<Geom_Surface> & S);
+		int Index(const opencascade::handle<Geom_Surface> & S);
 
 		/****** GeomTools_SurfaceSet::PrintSurface ******/
-		/****** md5 signature: f03cd58b0fc54c8e16b1b9c3619b768f ******/
+		/****** md5 signature: b5e76fb50900e889ce85f25febc1d0bc ******/
 		%feature("compactdefaultargs") PrintSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-compact: bool (optional, default to Standard_False)
+compact: bool (optional, default to false)
 
 Return
 -------
@@ -783,7 +785,7 @@ Description
 -----------
 Dumps the surface on the stream, if compact is True use the compact format that can be read back.
 ") PrintSurface;
-		static void PrintSurface(const opencascade::handle<Geom_Surface> & S, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
+		static void PrintSurface(const opencascade::handle<Geom_Surface> & S, std::ostream &OutValue, const bool compact = false);
 
 		/****** GeomTools_SurfaceSet::Read ******/
 		/****** md5 signature: e5ce096318e6663d7e9f744e8d66b70b ******/
@@ -823,7 +825,7 @@ Reads the surface from the stream. The surface is assumed to have been written w
 		static opencascade::handle<Geom_Surface> ReadSurface(std::istream & IS);
 
 		/****** GeomTools_SurfaceSet::Surface ******/
-		/****** md5 signature: f08a9f2a886e0a3933ae15a38f9b8dda ******/
+		/****** md5 signature: c8dcfe4df85c1847812c4a1ca1a64ead ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -838,7 +840,7 @@ Description
 -----------
 Returns the Surface of index <I>.
 ") Surface;
-		opencascade::handle<Geom_Surface> Surface(const Standard_Integer I);
+		opencascade::handle<Geom_Surface> Surface(const int I);
 
 		/****** GeomTools_SurfaceSet::Write ******/
 		/****** md5 signature: 6a95f1af9efa3b2eec48861a606241ee ******/
@@ -886,13 +888,13 @@ No available documentation.
 		 GeomTools_UndefinedTypeHandler();
 
 		/****** GeomTools_UndefinedTypeHandler::PrintCurve ******/
-		/****** md5 signature: 9229a0d70724577ea967874667e632bc ******/
+		/****** md5 signature: 9356cdfef50a6f99105bdd3afbc39fd7 ******/
 		%feature("compactdefaultargs") PrintCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-compact: bool (optional, default to Standard_False)
+compact: bool (optional, default to false)
 
 Return
 -------
@@ -902,16 +904,16 @@ Description
 -----------
 No available documentation.
 ") PrintCurve;
-		virtual void PrintCurve(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
+		virtual void PrintCurve(const opencascade::handle<Geom_Curve> & C, std::ostream &OutValue, const bool compact = false);
 
 		/****** GeomTools_UndefinedTypeHandler::PrintCurve2d ******/
-		/****** md5 signature: 7e257c476bf0d68e904e2daed78d6479 ******/
+		/****** md5 signature: d3949068fa98c72c4bd04f916fd2ca9d ******/
 		%feature("compactdefaultargs") PrintCurve2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
-compact: bool (optional, default to Standard_False)
+compact: bool (optional, default to false)
 
 Return
 -------
@@ -921,16 +923,16 @@ Description
 -----------
 No available documentation.
 ") PrintCurve2d;
-		virtual void PrintCurve2d(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
+		virtual void PrintCurve2d(const opencascade::handle<Geom2d_Curve> & C, std::ostream &OutValue, const bool compact = false);
 
 		/****** GeomTools_UndefinedTypeHandler::PrintSurface ******/
-		/****** md5 signature: 6b4c01c323e1d0fad05dea4d7e15f780 ******/
+		/****** md5 signature: 44bf2565d0fb4c97d0b6e151f5e6dfa4 ******/
 		%feature("compactdefaultargs") PrintSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-compact: bool (optional, default to Standard_False)
+compact: bool (optional, default to false)
 
 Return
 -------
@@ -940,10 +942,10 @@ Description
 -----------
 No available documentation.
 ") PrintSurface;
-		virtual void PrintSurface(const opencascade::handle<Geom_Surface> & S, std::ostream &OutValue, const Standard_Boolean compact = Standard_False);
+		virtual void PrintSurface(const opencascade::handle<Geom_Surface> & S, std::ostream &OutValue, const bool compact = false);
 
 		/****** GeomTools_UndefinedTypeHandler::ReadCurve ******/
-		/****** md5 signature: ec4aea4a5365adad6fc1b3ae7538554c ******/
+		/****** md5 signature: f7aea7f1d38b7fd8488a9700fbef2c2e ******/
 		%feature("compactdefaultargs") ReadCurve;
 		%feature("autodoc", "
 Parameters
@@ -960,10 +962,10 @@ Description
 -----------
 No available documentation.
 ") ReadCurve;
-		virtual Standard_IStream & ReadCurve(const Standard_Integer ctype, std::istream & IS, opencascade::handle<Geom_Curve> & C);
+		virtual Standard_IStream & ReadCurve(const int ctype, std::istream & IS, opencascade::handle<Geom_Curve> & C);
 
 		/****** GeomTools_UndefinedTypeHandler::ReadCurve2d ******/
-		/****** md5 signature: ad483c9803fa37d94a5a9dad7bf1987d ******/
+		/****** md5 signature: 6da645bada5267fc5f50e11bd7cef2c8 ******/
 		%feature("compactdefaultargs") ReadCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -980,10 +982,10 @@ Description
 -----------
 No available documentation.
 ") ReadCurve2d;
-		virtual Standard_IStream & ReadCurve2d(const Standard_Integer ctype, std::istream & IS, opencascade::handle<Geom2d_Curve> & C);
+		virtual Standard_IStream & ReadCurve2d(const int ctype, std::istream & IS, opencascade::handle<Geom2d_Curve> & C);
 
 		/****** GeomTools_UndefinedTypeHandler::ReadSurface ******/
-		/****** md5 signature: acd0062fe378bd76a7b522c9793520ec ******/
+		/****** md5 signature: 8381563f29fb0f9c9d98d93576c6e68b ******/
 		%feature("compactdefaultargs") ReadSurface;
 		%feature("autodoc", "
 Parameters
@@ -1000,7 +1002,7 @@ Description
 -----------
 No available documentation.
 ") ReadSurface;
-		virtual Standard_IStream & ReadSurface(const Standard_Integer ctype, std::istream & IS, opencascade::handle<Geom_Surface> & S);
+		virtual Standard_IStream & ReadSurface(const int ctype, std::istream & IS, opencascade::handle<Geom_Surface> & S);
 
 };
 

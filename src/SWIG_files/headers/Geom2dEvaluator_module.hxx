@@ -19,8 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define GEOM2DEVALUATOR_HXX
 
 
-#include<Geom2dEvaluator.hxx>
-#include<Geom2dEvaluator_Curve.hxx>
-#include<Geom2dEvaluator_OffsetCurve.hxx>
 
 #endif // GEOM2DEVALUATOR_HXX

@@ -54,7 +54,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 #include<ShapeConstruct_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TopTools_module.hxx>
 #include<TColGeom_module.hxx>
 #include<BRep_module.hxx>
 #include<TShort_module.hxx>
@@ -67,6 +66,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 #include<GeomAdaptor_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -84,7 +84,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 %import ShapeConstruct.i
 %import Geom2d.i
 %import TopAbs.i
-%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -116,6 +115,8 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,Bnd_Box2d,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,Bnd_Box2d,TopTools_ShapeMapHasher>::KeyValues;
 %template(ShapeFix_DataMapOfShapeBox2d) NCollection_DataMap<TopoDS_Shape,Bnd_Box2d,TopTools_ShapeMapHasher>;
 %template(ShapeFix_SequenceOfWireSegment) NCollection_Sequence<ShapeFix_WireSegment>;
 
@@ -140,13 +141,13 @@ typedef NCollection_Sequence<ShapeFix_WireSegment> ShapeFix_SequenceOfWireSegmen
 class ShapeFix {
 	public:
 		/****** ShapeFix::EncodeRegularity ******/
-		/****** md5 signature: fea2b7603f2731e09966cc6f7e072a6c ******/
+		/****** md5 signature: 4c142a557ac74671287c94780fcc45b7 ******/
 		%feature("compactdefaultargs") EncodeRegularity;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-tolang: float (optional, default to 1.0e-10)
+tolang: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -156,16 +157,16 @@ Description
 -----------
 Runs EncodeRegularity from BRepLib taking into account shared components of assemblies, so that each component is processed only once.
 ") EncodeRegularity;
-		static void EncodeRegularity(const TopoDS_Shape & shape, const Standard_Real tolang = 1.0e-10);
+		static void EncodeRegularity(const TopoDS_Shape & shape, const double tolang = 1.0e-10);
 
 		/****** ShapeFix::FixVertexPosition ******/
-		/****** md5 signature: c7ff7f9c8281a8b8d4fcf5c591c62849 ******/
+		/****** md5 signature: dfba54cc045dc813fc2ab591a7ad8001 ******/
 		%feature("compactdefaultargs") FixVertexPosition;
 		%feature("autodoc", "
 Parameters
 ----------
 theshape: TopoDS_Shape
-theTolerance: float
+theTolerance: double
 thecontext: ShapeBuild_ReShape
 
 Return
@@ -176,10 +177,10 @@ Description
 -----------
 Fix position of the vertices having tolerance more tnan specified one.;.
 ") FixVertexPosition;
-		static Standard_Boolean FixVertexPosition(TopoDS_Shape & theshape, const Standard_Real theTolerance, const opencascade::handle<ShapeBuild_ReShape> & thecontext);
+		static bool FixVertexPosition(TopoDS_Shape & theshape, const double theTolerance, const opencascade::handle<ShapeBuild_ReShape> & thecontext);
 
 		/****** ShapeFix::LeastEdgeSize ******/
-		/****** md5 signature: 5588951499ff9209556b6640a2ce4be3 ******/
+		/****** md5 signature: 1bfdc00ab1ecfb017198bd3e1fcb4256 ******/
 		%feature("compactdefaultargs") LeastEdgeSize;
 		%feature("autodoc", "
 Parameters
@@ -188,22 +189,22 @@ theshape: TopoDS_Shape
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Calculate size of least edge;.
 ") LeastEdgeSize;
-		static Standard_Real LeastEdgeSize(TopoDS_Shape & theshape);
+		static double LeastEdgeSize(TopoDS_Shape & theshape);
 
 		/****** ShapeFix::RemoveSmallEdges ******/
-		/****** md5 signature: 54afd3ebf858885994d0e58ff4338566 ******/
+		/****** md5 signature: 7931e22caca4cd7e06545d7160734d90 ******/
 		%feature("compactdefaultargs") RemoveSmallEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-Tolerance: float
+Tolerance: double
 context: ShapeBuild_ReShape
 
 Return
@@ -214,19 +215,19 @@ Description
 -----------
 Removes edges which are less than given tolerance from shape with help of ShapeFix_Wire::FixSmall().
 ") RemoveSmallEdges;
-		static TopoDS_Shape RemoveSmallEdges(TopoDS_Shape & shape, const Standard_Real Tolerance, opencascade::handle<ShapeBuild_ReShape> & context);
+		static TopoDS_Shape RemoveSmallEdges(TopoDS_Shape & shape, const double Tolerance, opencascade::handle<ShapeBuild_ReShape> & context);
 
 		/****** ShapeFix::SameParameter ******/
-		/****** md5 signature: d58e4bd65cc24b6e9bc71ab3092b1d59 ******/
+		/****** md5 signature: cc78110bdd800e9e6021b85252721380 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
 enforce: bool
-preci: float (optional, default to 0.0)
+preci: double (optional, default to 0.0)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-theMsgReg: ShapeExtend_BasicMsgRegistrator (optional, default to 0)
+theMsgReg: ShapeExtend_BasicMsgRegistrator (optional, default to nullptr)
 
 Return
 -------
@@ -236,7 +237,7 @@ Description
 -----------
 Runs SameParameter from BRepLib with these adaptations: <enforce> forces computations, else they are made only on Edges with flag SameParameter false <preci>, if not precised, is taken for each EDge as its own Tolerance Returns True when done, False if an exception has been raised In case of exception anyway, as many edges as possible have been processed. The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 ") SameParameter;
-		static Standard_Boolean SameParameter(const TopoDS_Shape & shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const Message_ProgressRange & theProgress = Message_ProgressRange(), const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & theMsgReg = 0);
+		static bool SameParameter(const TopoDS_Shape & shape, const bool enforce, const double preci = 0.0, const Message_ProgressRange & theProgress = Message_ProgressRange(), const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & theMsgReg = nullptr);
 
 };
 
@@ -266,7 +267,7 @@ Empty constructor.
 		 ShapeFix_Edge();
 
 		/****** ShapeFix_Edge::FixAddCurve3d ******/
-		/****** md5 signature: 17986ce720da4ac50894362099ba5a70 ******/
+		/****** md5 signature: f54937dc42d40ee14187b79f2b8187fa ******/
 		%feature("compactdefaultargs") FixAddCurve3d;
 		%feature("autodoc", "
 Parameters
@@ -281,10 +282,10 @@ Description
 -----------
 Tries to build 3d curve of the edge if missing Use: It is to be called after FixRemoveCurve3d (if removed) or in any case when edge can have no 3d curve Returns: True if 3d curve was added, else False Status: OK: 3d curve exists FAIL1: BRepLib::BuildCurve3d() has failed DONE1: 3d curve was added.
 ") FixAddCurve3d;
-		Standard_Boolean FixAddCurve3d(const TopoDS_Edge & edge);
+		bool FixAddCurve3d(const TopoDS_Edge & edge);
 
 		/****** ShapeFix_Edge::FixAddPCurve ******/
-		/****** md5 signature: a1422900457d4373f0ae3434fe69011b ******/
+		/****** md5 signature: e5ecaa0888fc1d990fe80d6859b69b9e ******/
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "
 Parameters
@@ -292,7 +293,7 @@ Parameters
 edge: TopoDS_Edge
 face: TopoDS_Face
 isSeam: bool
-prec: float (optional, default to 0.0)
+prec: double (optional, default to 0.0)
 
 Return
 -------
@@ -302,10 +303,10 @@ Description
 -----------
 See method below for information.
 ") FixAddPCurve;
-		Standard_Boolean FixAddPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face, const Standard_Boolean isSeam, const Standard_Real prec = 0.0);
+		bool FixAddPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face, const bool isSeam, const double prec = 0.0);
 
 		/****** ShapeFix_Edge::FixAddPCurve ******/
-		/****** md5 signature: 9e39861379c44f9cc6e6cd923bbabe81 ******/
+		/****** md5 signature: a95cc37157f3161dff1c003664b6404a ******/
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "
 Parameters
@@ -314,7 +315,7 @@ edge: TopoDS_Edge
 surface: Geom_Surface
 location: TopLoc_Location
 isSeam: bool
-prec: float (optional, default to 0.0)
+prec: double (optional, default to 0.0)
 
 Return
 -------
@@ -324,10 +325,10 @@ Description
 -----------
 See method below for information.
 ") FixAddPCurve;
-		Standard_Boolean FixAddPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Boolean isSeam, const Standard_Real prec = 0.0);
+		bool FixAddPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const bool isSeam, const double prec = 0.0);
 
 		/****** ShapeFix_Edge::FixAddPCurve ******/
-		/****** md5 signature: 81ae90a15e65240a8c267e272d2195cd ******/
+		/****** md5 signature: d5472e3c445e9edd7a2f4727a0480083 ******/
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "
 Parameters
@@ -336,7 +337,7 @@ edge: TopoDS_Edge
 face: TopoDS_Face
 isSeam: bool
 surfana: ShapeAnalysis_Surface
-prec: float (optional, default to 0.0)
+prec: double (optional, default to 0.0)
 
 Return
 -------
@@ -346,10 +347,10 @@ Description
 -----------
 See method below for information.
 ") FixAddPCurve;
-		Standard_Boolean FixAddPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face, const Standard_Boolean isSeam, const opencascade::handle<ShapeAnalysis_Surface> & surfana, const Standard_Real prec = 0.0);
+		bool FixAddPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face, const bool isSeam, const opencascade::handle<ShapeAnalysis_Surface> & surfana, const double prec = 0.0);
 
 		/****** ShapeFix_Edge::FixAddPCurve ******/
-		/****** md5 signature: 40d7c918a6d425a71a2298dc9d5a5a23 ******/
+		/****** md5 signature: f2c0fa6b06069faccb902a3cc5b8f5f4 ******/
 		%feature("compactdefaultargs") FixAddPCurve;
 		%feature("autodoc", "
 Parameters
@@ -359,7 +360,7 @@ surface: Geom_Surface
 location: TopLoc_Location
 isSeam: bool
 surfana: ShapeAnalysis_Surface
-prec: float (optional, default to 0.0)
+prec: double (optional, default to 0.0)
 
 Return
 -------
@@ -369,10 +370,10 @@ Description
 -----------
 Adds pcurve(s) of the edge if missing (by projecting 3d curve) Parameter isSeam indicates if the edge is a seam. The parameter <prec> defines the precision for calculations. If it is 0 (default), the tolerance of the edge is taken. Remark: This method is rather for internal use since it accepts parameter <surfana> for optimization of computations Use: It is to be called after FixRemovePCurve (if removed) or in any case when edge can have no pcurve Returns: True if pcurve was added, else False Status: OK: Pcurve exists FAIL1: No 3d curve FAIL2: fail during projecting DONE1: Pcurve was added DONE2: specific case of pcurve going through degenerated point on sphere encountered during projection (see class ShapeConstruct_ProjectCurveOnSurface for more info).
 ") FixAddPCurve;
-		Standard_Boolean FixAddPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Boolean isSeam, const opencascade::handle<ShapeAnalysis_Surface> & surfana, const Standard_Real prec = 0.0);
+		bool FixAddPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const bool isSeam, const opencascade::handle<ShapeAnalysis_Surface> & surfana, const double prec = 0.0);
 
 		/****** ShapeFix_Edge::FixRemoveCurve3d ******/
-		/****** md5 signature: 7bd251b4bbb540c3bb96047ac39ce441 ******/
+		/****** md5 signature: 109c54781700fe06f6a0f79ef040ad56 ******/
 		%feature("compactdefaultargs") FixRemoveCurve3d;
 		%feature("autodoc", "
 Parameters
@@ -387,10 +388,10 @@ Description
 -----------
 Removes 3d curve of the edge if it does not match the vertices Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no 3d curve, nothing done.
 ") FixRemoveCurve3d;
-		Standard_Boolean FixRemoveCurve3d(const TopoDS_Edge & edge);
+		bool FixRemoveCurve3d(const TopoDS_Edge & edge);
 
 		/****** ShapeFix_Edge::FixRemovePCurve ******/
-		/****** md5 signature: 1ed82394f56d81f9abf3639bfebed9b8 ******/
+		/****** md5 signature: 3d8b82987dd97a94eaaeb26ed2cf16f7 ******/
 		%feature("compactdefaultargs") FixRemovePCurve;
 		%feature("autodoc", "
 Parameters
@@ -406,10 +407,10 @@ Description
 -----------
 No available documentation.
 ") FixRemovePCurve;
-		Standard_Boolean FixRemovePCurve(const TopoDS_Edge & edge, const TopoDS_Face & face);
+		bool FixRemovePCurve(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
 		/****** ShapeFix_Edge::FixRemovePCurve ******/
-		/****** md5 signature: f864c3b82118943711b5bbc63f649010 ******/
+		/****** md5 signature: df92e950b4997005ed606df237e62330 ******/
 		%feature("compactdefaultargs") FixRemovePCurve;
 		%feature("autodoc", "
 Parameters
@@ -426,10 +427,10 @@ Description
 -----------
 Removes the pcurve(s) of the edge if it does not match the vertices Check is done Use: It is to be called when pcurve of an edge can be wrong (e.g., after import from IGES) Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no pcurve, nothing done.
 ") FixRemovePCurve;
-		Standard_Boolean FixRemovePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
+		bool FixRemovePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
 		/****** ShapeFix_Edge::FixReversed2d ******/
-		/****** md5 signature: 46ba9d544f0acefbd0c950d47989f69b ******/
+		/****** md5 signature: 13a2cc6d7192f341f57f1616f6becef5 ******/
 		%feature("compactdefaultargs") FixReversed2d;
 		%feature("autodoc", "
 Parameters
@@ -445,10 +446,10 @@ Description
 -----------
 No available documentation.
 ") FixReversed2d;
-		Standard_Boolean FixReversed2d(const TopoDS_Edge & edge, const TopoDS_Face & face);
+		bool FixReversed2d(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
 		/****** ShapeFix_Edge::FixReversed2d ******/
-		/****** md5 signature: 7597e7d41fe46b4bef689deb91cb2eae ******/
+		/****** md5 signature: 35e78f6ab2f004320b2d100f660449d8 ******/
 		%feature("compactdefaultargs") FixReversed2d;
 		%feature("autodoc", "
 Parameters
@@ -465,16 +466,16 @@ Description
 -----------
 Fixes edge if pcurve is directed opposite to 3d curve Check is done by call to the function ShapeAnalysis_Edge::CheckCurve3dWithPCurve() Warning: For seam edge this method will check and fix the pcurve in only one direction. Hence, it should be called twice for seam edge: once with edge orientation FORWARD and once with REVERSED. Returns: False if nothing done, True if reversed (status DONE) Status: OK - pcurve OK, nothing done FAIL1 - no pcurve FAIL2 - no 3d curve DONE1 - pcurve was reversed.
 ") FixReversed2d;
-		Standard_Boolean FixReversed2d(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
+		bool FixReversed2d(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
 		/****** ShapeFix_Edge::FixSameParameter ******/
-		/****** md5 signature: 85eced5adc6a9685ca17cb8245d872ae ******/
+		/****** md5 signature: 9859ef0595b6d60b520a897b21f79c93 ******/
 		%feature("compactdefaultargs") FixSameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-tolerance: float (optional, default to 0.0)
+tolerance: double (optional, default to 0.0)
 
 Return
 -------
@@ -484,17 +485,17 @@ Description
 -----------
 Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use: Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark: SameParameter flag is always set to True after this method Returns: True, if something done, else False Status: OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter).
 ") FixSameParameter;
-		Standard_Boolean FixSameParameter(const TopoDS_Edge & edge, const Standard_Real tolerance = 0.0);
+		bool FixSameParameter(const TopoDS_Edge & edge, const double tolerance = 0.0);
 
 		/****** ShapeFix_Edge::FixSameParameter ******/
-		/****** md5 signature: 5aefb13c3d1e95353582a0f801e680f9 ******/
+		/****** md5 signature: 5b1a1e878dc5986e192af75ff32863a4 ******/
 		%feature("compactdefaultargs") FixSameParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
 face: TopoDS_Face
-tolerance: float (optional, default to 0.0)
+tolerance: double (optional, default to 0.0)
 
 Return
 -------
@@ -504,10 +505,10 @@ Description
 -----------
 Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use: Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark: SameParameter flag is always set to True after this method Returns: True, if something done, else False Status: OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter).
 ") FixSameParameter;
-		Standard_Boolean FixSameParameter(const TopoDS_Edge & edge, const TopoDS_Face & face, const Standard_Real tolerance = 0.0);
+		bool FixSameParameter(const TopoDS_Edge & edge, const TopoDS_Face & face, const double tolerance = 0.0);
 
 		/****** ShapeFix_Edge::FixVertexTolerance ******/
-		/****** md5 signature: a626968c42c18892f4a6c83d23f8a488 ******/
+		/****** md5 signature: 30a9c47d8a5d02bd6b9ceb52b8d13147 ******/
 		%feature("compactdefaultargs") FixVertexTolerance;
 		%feature("autodoc", "
 Parameters
@@ -523,10 +524,10 @@ Description
 -----------
 No available documentation.
 ") FixVertexTolerance;
-		Standard_Boolean FixVertexTolerance(const TopoDS_Edge & edge, const TopoDS_Face & face);
+		bool FixVertexTolerance(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
 		/****** ShapeFix_Edge::FixVertexTolerance ******/
-		/****** md5 signature: dbd3a528a40746eacd169844d3ec6564 ******/
+		/****** md5 signature: 9504952c9fc473f7c71e0e7545a2ce51 ******/
 		%feature("compactdefaultargs") FixVertexTolerance;
 		%feature("autodoc", "
 Parameters
@@ -541,7 +542,7 @@ Description
 -----------
 Increases the tolerances of the edge vertices to comprise the ends of 3d curve and pcurve on the given face (first method) or all pcurves stored in an edge (second one) Returns: True, if tolerances have been increased, otherwise False Status: OK: the original tolerances have not been changed DONE1: the tolerance of first vertex has been increased DONE2: the tolerance of last vertex has been increased.
 ") FixVertexTolerance;
-		Standard_Boolean FixVertexTolerance(const TopoDS_Edge & edge);
+		bool FixVertexTolerance(const TopoDS_Edge & edge);
 
 		/****** ShapeFix_Edge::Projector ******/
 		/****** md5 signature: d7c337fc8423602b26620c0c4a1ed24a ******/
@@ -575,7 +576,7 @@ Sets context.
 		void SetContext(const opencascade::handle<ShapeBuild_ReShape> & context);
 
 		/****** ShapeFix_Edge::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -590,7 +591,7 @@ Description
 -----------
 Returns the status (in the form of True/False) of last Fix.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -735,12 +736,12 @@ No available documentation.
 		 ShapeFix_EdgeProjAux(const TopoDS_Face & F, const TopoDS_Edge & E);
 
 		/****** ShapeFix_EdgeProjAux::Compute ******/
-		/****** md5 signature: 101fd04c028b19056d70f3c0b7dc9422 ******/
+		/****** md5 signature: 173260076426e53d0dea8882bb6327ce ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -750,20 +751,20 @@ Description
 -----------
 No available documentation.
 ") Compute;
-		void Compute(const Standard_Real preci);
+		void Compute(const double preci);
 
 		/****** ShapeFix_EdgeProjAux::FirstParam ******/
-		/****** md5 signature: 5d66a8400e52b9f92dd399ea9b9289f6 ******/
+		/****** md5 signature: 1f3226b82eecd6b695724ad75500af6c ******/
 		%feature("compactdefaultargs") FirstParam;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParam;
-		Standard_Real FirstParam();
+		double FirstParam();
 
 		/****** ShapeFix_EdgeProjAux::Init ******/
 		/****** md5 signature: 246a9432c543ceed9ba47bf37f1257dc ******/
@@ -785,7 +786,7 @@ No available documentation.
 		void Init(const TopoDS_Face & F, const TopoDS_Edge & E);
 
 		/****** ShapeFix_EdgeProjAux::IsFirstDone ******/
-		/****** md5 signature: c3c894ef5fc56ac92ae52e13b557fe0e ******/
+		/****** md5 signature: eb37410c836fc74477388c68512f13c8 ******/
 		%feature("compactdefaultargs") IsFirstDone;
 		%feature("autodoc", "Return
 -------
@@ -795,10 +796,10 @@ Description
 -----------
 No available documentation.
 ") IsFirstDone;
-		Standard_Boolean IsFirstDone();
+		bool IsFirstDone();
 
 		/****** ShapeFix_EdgeProjAux::IsIso ******/
-		/****** md5 signature: f20fd2edeb722a138e08a79d2a567d64 ******/
+		/****** md5 signature: c79a2e3b53cfdc03102a09a9abdad8f9 ******/
 		%feature("compactdefaultargs") IsIso;
 		%feature("autodoc", "
 Parameters
@@ -813,10 +814,10 @@ Description
 -----------
 No available documentation.
 ") IsIso;
-		Standard_Boolean IsIso(const opencascade::handle<Geom2d_Curve> & C);
+		bool IsIso(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** ShapeFix_EdgeProjAux::IsLastDone ******/
-		/****** md5 signature: 7bc2397fd2f2be3c553cb9a5e5b31c9c ******/
+		/****** md5 signature: 78dc6556bf56e8ee05244448da0a843a ******/
 		%feature("compactdefaultargs") IsLastDone;
 		%feature("autodoc", "Return
 -------
@@ -826,20 +827,20 @@ Description
 -----------
 No available documentation.
 ") IsLastDone;
-		Standard_Boolean IsLastDone();
+		bool IsLastDone();
 
 		/****** ShapeFix_EdgeProjAux::LastParam ******/
-		/****** md5 signature: 89ccbe370bc9c707c591b9642c247785 ******/
+		/****** md5 signature: 98ef689a504b7f4e51087a60f3ac7e17 ******/
 		%feature("compactdefaultargs") LastParam;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParam;
-		Standard_Real LastParam();
+		double LastParam();
 
 };
 
@@ -871,7 +872,7 @@ No available documentation.
 		 ShapeFix_FaceConnect();
 
 		/****** ShapeFix_FaceConnect::Add ******/
-		/****** md5 signature: 1f1c60a49bb1b7e3c6990322a7db218d ******/
+		/****** md5 signature: 90be4f03f2e00b043c4772f78b85f6fc ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -887,17 +888,17 @@ Description
 -----------
 No available documentation.
 ") Add;
-		Standard_Boolean Add(const TopoDS_Face & aFirst, const TopoDS_Face & aSecond);
+		bool Add(const TopoDS_Face & aFirst, const TopoDS_Face & aSecond);
 
 		/****** ShapeFix_FaceConnect::Build ******/
-		/****** md5 signature: 5e789671d5b53a158f689d110fc5c599 ******/
+		/****** md5 signature: 781d6916ee013e008e3013c45a2b2c88 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
 ----------
 shell: TopoDS_Shell
-sewtoler: float
-fixtoler: float
+sewtoler: double
+fixtoler: double
 
 Return
 -------
@@ -907,7 +908,7 @@ Description
 -----------
 No available documentation.
 ") Build;
-		TopoDS_Shell Build(const TopoDS_Shell & shell, const Standard_Real sewtoler, const Standard_Real fixtoler);
+		TopoDS_Shell Build(const TopoDS_Shell & shell, const double sewtoler, const double fixtoler);
 
 		/****** ShapeFix_FaceConnect::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -950,14 +951,14 @@ Empty constructor.
 		 ShapeFix_FreeBounds();
 
 		/****** ShapeFix_FreeBounds::ShapeFix_FreeBounds ******/
-		/****** md5 signature: ccd1973813f83deec3de22c6d89c159e ******/
+		/****** md5 signature: 24573fa7c2607b024470e019c50c6415 ******/
 		%feature("compactdefaultargs") ShapeFix_FreeBounds;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-sewtoler: float
-closetoler: float
+sewtoler: double
+closetoler: double
 splitclosed: bool
 splitopen: bool
 
@@ -969,16 +970,16 @@ Description
 -----------
 Builds forecasting free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of faces. Tolerance <closetoler> should be greater than tolerance <sewtoler> used for initializing sewing analyzer, otherwise connection of open wires is not performed.
 ") ShapeFix_FreeBounds;
-		 ShapeFix_FreeBounds(const TopoDS_Shape & shape, const Standard_Real sewtoler, const Standard_Real closetoler, const Standard_Boolean splitclosed, const Standard_Boolean splitopen);
+		 ShapeFix_FreeBounds(const TopoDS_Shape & shape, const double sewtoler, const double closetoler, const bool splitclosed, const bool splitopen);
 
 		/****** ShapeFix_FreeBounds::ShapeFix_FreeBounds ******/
-		/****** md5 signature: 13ccb3bf9d728c9495f068d6cc26905f ******/
+		/****** md5 signature: 78a1cf1db71ff6faa7402cd2b55c46dc ******/
 		%feature("compactdefaultargs") ShapeFix_FreeBounds;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-closetoler: float
+closetoler: double
 splitclosed: bool
 splitopen: bool
 
@@ -990,7 +991,7 @@ Description
 -----------
 Builds actual free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of shells.
 ") ShapeFix_FreeBounds;
-		 ShapeFix_FreeBounds(const TopoDS_Shape & shape, const Standard_Real closetoler, const Standard_Boolean splitclosed, const Standard_Boolean splitopen);
+		 ShapeFix_FreeBounds(const TopoDS_Shape & shape, const double closetoler, const bool splitclosed, const bool splitopen);
 
 		/****** ShapeFix_FreeBounds::GetClosedWires ******/
 		/****** md5 signature: 90f975347145fad77d9189e1b9eb60f3 ******/
@@ -1046,14 +1047,14 @@ Returns modified source shape.
 class ShapeFix_IntersectionTool {
 	public:
 		/****** ShapeFix_IntersectionTool::ShapeFix_IntersectionTool ******/
-		/****** md5 signature: 1bdffc379964a023b91ac6c0132dc695 ******/
+		/****** md5 signature: fc03f726a80f182a2210035d46c91117 ******/
 		%feature("compactdefaultargs") ShapeFix_IntersectionTool;
 		%feature("autodoc", "
 Parameters
 ----------
 context: ShapeBuild_ReShape
-preci: float
-maxtol: float (optional, default to 1.0)
+preci: double
+maxtol: double (optional, default to 1.0)
 
 Return
 -------
@@ -1063,7 +1064,7 @@ Description
 -----------
 Constructor.
 ") ShapeFix_IntersectionTool;
-		 ShapeFix_IntersectionTool(const opencascade::handle<ShapeBuild_ReShape> & context, const Standard_Real preci, const Standard_Real maxtol = 1.0);
+		 ShapeFix_IntersectionTool(const opencascade::handle<ShapeBuild_ReShape> & context, const double preci, const double maxtol = 1.0);
 
 		/****** ShapeFix_IntersectionTool::Context ******/
 		/****** md5 signature: 89f59aaf74eb4221c2a98a0e91f389d7 ******/
@@ -1079,14 +1080,14 @@ Returns context.
 		opencascade::handle<ShapeBuild_ReShape> Context();
 
 		/****** ShapeFix_IntersectionTool::CutEdge ******/
-		/****** md5 signature: ae5cc6d60f5363b7e248b602fbcfc764 ******/
+		/****** md5 signature: 2b3a545c11487f69202fae0661f95772 ******/
 		%feature("compactdefaultargs") CutEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-pend: float
-cut: float
+pend: double
+cut: double
 face: TopoDS_Face
 
 Return
@@ -1097,10 +1098,10 @@ Description
 -----------
 Cut edge by parameters pend and cut.
 ") CutEdge;
-		Standard_Boolean CutEdge(const TopoDS_Edge & edge, const Standard_Real pend, const Standard_Real cut, const TopoDS_Face & face, Standard_Boolean &OutValue);
+		bool CutEdge(const TopoDS_Edge & edge, const double pend, const double cut, const TopoDS_Face & face, Standard_Boolean &OutValue);
 
 		/****** ShapeFix_IntersectionTool::FixIntersectingWires ******/
-		/****** md5 signature: d95915c7fd39aab99b5fd53f99ca7dcf ******/
+		/****** md5 signature: fba208cd6873e7212c36f5510651328f ******/
 		%feature("compactdefaultargs") FixIntersectingWires;
 		%feature("autodoc", "
 Parameters
@@ -1115,10 +1116,10 @@ Description
 -----------
 No available documentation.
 ") FixIntersectingWires;
-		Standard_Boolean FixIntersectingWires(TopoDS_Face & face);
+		bool FixIntersectingWires(TopoDS_Face & face);
 
 		/****** ShapeFix_IntersectionTool::FixSelfIntersectWire ******/
-		/****** md5 signature: 3e6197a1b211aa6dd7590593466f9b2a ******/
+		/****** md5 signature: 2bf08cb0f41e67554cc2224fdff67360 ******/
 		%feature("compactdefaultargs") FixSelfIntersectWire;
 		%feature("autodoc", "
 Parameters
@@ -1136,21 +1137,21 @@ Description
 -----------
 No available documentation.
 ") FixSelfIntersectWire;
-		Standard_Boolean FixSelfIntersectWire(opencascade::handle<ShapeExtend_WireData> & sewd, const TopoDS_Face & face, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool FixSelfIntersectWire(opencascade::handle<ShapeExtend_WireData> & sewd, const TopoDS_Face & face, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** ShapeFix_IntersectionTool::SplitEdge ******/
-		/****** md5 signature: faf85fd43715280470d01dee2e2c8759 ******/
+		/****** md5 signature: e1ff142a316644de7a90d5c7d9a19338 ******/
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-param: float
+param: double
 vert: TopoDS_Vertex
 face: TopoDS_Face
 newE1: TopoDS_Edge
 newE2: TopoDS_Edge
-preci: float
+preci: double
 
 Return
 -------
@@ -1160,7 +1161,7 @@ Description
 -----------
 Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj.
 ") SplitEdge;
-		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real param, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const Standard_Real preci);
+		bool SplitEdge(const TopoDS_Edge & edge, const double param, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const double preci);
 
 };
 
@@ -1203,48 +1204,48 @@ Returns context.
 		opencascade::handle<ShapeBuild_ReShape> Context();
 
 		/****** ShapeFix_Root::LimitTolerance ******/
-		/****** md5 signature: 1120a13b64b8d00fb9f9fc07e07ffa98 ******/
+		/****** md5 signature: 7853e4a6f09988ff18c714ab2dd1c7c5 ******/
 		%feature("compactdefaultargs") LimitTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-toler: float
+toler: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns tolerance limited by [myMinTol,myMaxTol].
 ") LimitTolerance;
-		Standard_Real LimitTolerance(const Standard_Real toler);
+		double LimitTolerance(const double toler);
 
 		/****** ShapeFix_Root::MaxTolerance ******/
-		/****** md5 signature: b0c09a40965fea8fc4d63c52a795d7fd ******/
+		/****** md5 signature: 42b12d569fc6c97ab3b734f04b37ec44 ******/
 		%feature("compactdefaultargs") MaxTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns maximal allowed tolerance.
 ") MaxTolerance;
-		Standard_Real MaxTolerance();
+		double MaxTolerance();
 
 		/****** ShapeFix_Root::MinTolerance ******/
-		/****** md5 signature: 2629547ec2afd3a7a2edaa268cbc0366 ******/
+		/****** md5 signature: df77f4a3b7576c4b27daf21be8de21c5 ******/
 		%feature("compactdefaultargs") MinTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns minimal allowed tolerance.
 ") MinTolerance;
-		Standard_Real MinTolerance();
+		double MinTolerance();
 
 		/****** ShapeFix_Root::MsgRegistrator ******/
 		/****** md5 signature: 75371a4ad2792d7881281f65d5c59c1b ******/
@@ -1260,17 +1261,17 @@ Returns message registrator.
 		opencascade::handle<ShapeExtend_BasicMsgRegistrator> MsgRegistrator();
 
 		/****** ShapeFix_Root::Precision ******/
-		/****** md5 signature: 34c7e39bd57a685873eea74fa4629747 ******/
+		/****** md5 signature: 619d4ae2a460550f8d9105bf9304b5d1 ******/
 		%feature("compactdefaultargs") Precision;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns basic precision value.
 ") Precision;
-		Standard_Real Precision();
+		double Precision();
 
 		/****** ShapeFix_Root::SendFail ******/
 		/****** md5 signature: 8cfa9a9f964baf3ffe1f3268529e308a ******/
@@ -1422,12 +1423,12 @@ Sets context.
 		virtual void SetContext(const opencascade::handle<ShapeBuild_ReShape> & context);
 
 		/****** ShapeFix_Root::SetMaxTolerance ******/
-		/****** md5 signature: 208a8e0dcd3c4d1e347c7176eff58d2b ******/
+		/****** md5 signature: 44e439556d89760be503c8d54f6d98b3 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -1437,15 +1438,15 @@ Description
 -----------
 Sets maximal allowed tolerance.
 ") SetMaxTolerance;
-		virtual void SetMaxTolerance(const Standard_Real maxtol);
+		virtual void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeFix_Root::SetMinTolerance ******/
-		/****** md5 signature: b5b624b2ff6f4be9adc4d57dfdc3a513 ******/
+		/****** md5 signature: 8a049d3490100831762f3492c969144b ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -1455,7 +1456,7 @@ Description
 -----------
 Sets minimal allowed tolerance.
 ") SetMinTolerance;
-		virtual void SetMinTolerance(const Standard_Real mintol);
+		virtual void SetMinTolerance(const double mintol);
 
 		/****** ShapeFix_Root::SetMsgRegistrator ******/
 		/****** md5 signature: 684cc840be09df59bc67d102aa6274f1 ******/
@@ -1476,12 +1477,12 @@ Sets message registrator.
 		virtual void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
 		/****** ShapeFix_Root::SetPrecision ******/
-		/****** md5 signature: 3ff50d53ee86715713f9361f674240d3 ******/
+		/****** md5 signature: 48dd4c74011794903c817ad8c980202b ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -1491,7 +1492,7 @@ Description
 -----------
 Sets basic precision value.
 ") SetPrecision;
-		virtual void SetPrecision(const Standard_Real preci);
+		virtual void SetPrecision(const double preci);
 
 };
 
@@ -1523,14 +1524,14 @@ No available documentation.
 		 ShapeFix_ShapeTolerance();
 
 		/****** ShapeFix_ShapeTolerance::LimitTolerance ******/
-		/****** md5 signature: d9fed03c1130a955e4d49618e7987006 ******/
+		/****** md5 signature: 8dfcaa5bf760885de303f36cba05b635 ******/
 		%feature("compactdefaultargs") LimitTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-tmin: float
-tmax: float (optional, default to 0.0)
+tmin: double
+tmax: double (optional, default to 0.0)
 styp: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
 
 Return
@@ -1541,16 +1542,16 @@ Description
 -----------
 Limits tolerances in a shape as follows: tmin = tmax -> as SetTolerance (forces) tmin = 0 -> maximum tolerance will be <tmax> tmax = 0 or not given (more generally, tmax < tmin) -> <tmax> ignored, minimum will be <tmin> else, maximum will be <max> and minimum will be <min> styp = VERTEX: only vertices are set styp = EDGE: only edges are set styp = FACE: only faces are set styp = WIRE: to have edges and their vertices set styp = other value: all (vertices,edges,faces) are set Returns True if at least one tolerance of the sub-shape has been modified.
 ") LimitTolerance;
-		Standard_Boolean LimitTolerance(const TopoDS_Shape & shape, const Standard_Real tmin, const Standard_Real tmax = 0.0, const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
+		bool LimitTolerance(const TopoDS_Shape & shape, const double tmin, const double tmax = 0.0, const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
 
 		/****** ShapeFix_ShapeTolerance::SetTolerance ******/
-		/****** md5 signature: 668e51e1df701aad06e61e72d110857a ******/
+		/****** md5 signature: 412bd08a4e6a9baee85eee210781aa3c ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-preci: float
+preci: double
 styp: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
 
 Return
@@ -1561,7 +1562,7 @@ Description
 -----------
 Sets (enforces) tolerances in a shape to the given value styp = VERTEX: only vertices are set styp = EDGE: only edges are set styp = FACE: only faces are set styp = WIRE: to have edges and their vertices set styp = other value: all (vertices,edges,faces) are set.
 ") SetTolerance;
-		void SetTolerance(const TopoDS_Shape & shape, const Standard_Real preci, const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
+		void SetTolerance(const TopoDS_Shape & shape, const double preci, const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
 
 };
 
@@ -1591,14 +1592,14 @@ Empty constructor.
 		 ShapeFix_SplitTool();
 
 		/****** ShapeFix_SplitTool::CutEdge ******/
-		/****** md5 signature: ae5cc6d60f5363b7e248b602fbcfc764 ******/
+		/****** md5 signature: 2b3a545c11487f69202fae0661f95772 ******/
 		%feature("compactdefaultargs") CutEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-pend: float
-cut: float
+pend: double
+cut: double
 face: TopoDS_Face
 
 Return
@@ -1609,22 +1610,22 @@ Description
 -----------
 Cut edge by parameters pend and cut.
 ") CutEdge;
-		Standard_Boolean CutEdge(const TopoDS_Edge & edge, const Standard_Real pend, const Standard_Real cut, const TopoDS_Face & face, Standard_Boolean &OutValue);
+		bool CutEdge(const TopoDS_Edge & edge, const double pend, const double cut, const TopoDS_Face & face, Standard_Boolean &OutValue);
 
 		/****** ShapeFix_SplitTool::SplitEdge ******/
-		/****** md5 signature: 4bd152bdd67a5f294c5da4ab381e8c42 ******/
+		/****** md5 signature: c8acc4e51e44a3c800f1703891ed9eab ******/
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-param: float
+param: double
 vert: TopoDS_Vertex
 face: TopoDS_Face
 newE1: TopoDS_Edge
 newE2: TopoDS_Edge
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Return
 -------
@@ -1634,23 +1635,23 @@ Description
 -----------
 Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj.
 ") SplitEdge;
-		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real param, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const Standard_Real tol3d, const Standard_Real tol2d);
+		bool SplitEdge(const TopoDS_Edge & edge, const double param, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const double tol3d, const double tol2d);
 
 		/****** ShapeFix_SplitTool::SplitEdge ******/
-		/****** md5 signature: 5a34faa237a000b667de279a4c7189ae ******/
+		/****** md5 signature: 209484c117f0835fa9d7e7d50c7d6072 ******/
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-param1: float
-param2: float
+param1: double
+param2: double
 vert: TopoDS_Vertex
 face: TopoDS_Face
 newE1: TopoDS_Edge
 newE2: TopoDS_Edge
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Return
 -------
@@ -1660,24 +1661,24 @@ Description
 -----------
 Split edge on two new edges using new vertex 'vert' and 'param1' and 'param2' - parameter for splitting and cutting The 'face' is necessary for pcurves and using TransferParameterProj.
 ") SplitEdge;
-		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real param1, const Standard_Real param2, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const Standard_Real tol3d, const Standard_Real tol2d);
+		bool SplitEdge(const TopoDS_Edge & edge, const double param1, const double param2, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const double tol3d, const double tol2d);
 
 		/****** ShapeFix_SplitTool::SplitEdge ******/
-		/****** md5 signature: c98c6fb65c11ba21498077d4ce5c7f38 ******/
+		/****** md5 signature: da25113ed335c095972cf839a0beed52 ******/
 		%feature("compactdefaultargs") SplitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-fp: float
+fp: double
 V1: TopoDS_Vertex
-lp: float
+lp: double
 V2: TopoDS_Vertex
 face: TopoDS_Face
-SeqE: TopTools_SequenceOfShape
+SeqE: NCollection_Sequence<TopoDS_Shape>
 context: ShapeBuild_ReShape
-tol3d: float
-tol2d: float
+tol3d: double
+tol2d: double
 
 Return
 -------
@@ -1687,7 +1688,7 @@ Description
 -----------
 Split edge on two new edges using two new vertex V1 and V2 and two parameters for splitting - fp and lp correspondingly The 'face' is necessary for pcurves and using TransferParameterProj aNum - number of edge in SeqE which corresponding to [fp,lp].
 ") SplitEdge;
-		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real fp, const TopoDS_Vertex & V1, const Standard_Real lp, const TopoDS_Vertex & V2, const TopoDS_Face & face, TopTools_SequenceOfShape & SeqE, Standard_Integer &OutValue, const opencascade::handle<ShapeBuild_ReShape> & context, const Standard_Real tol3d, const Standard_Real tol2d);
+		bool SplitEdge(const TopoDS_Edge & edge, const double fp, const TopoDS_Vertex & V1, const double lp, const TopoDS_Vertex & V2, const TopoDS_Face & face, NCollection_Sequence<TopoDS_Shape> & SeqE, Standard_Integer &OutValue, const opencascade::handle<ShapeBuild_ReShape> & context, const double tol3d, const double tol2d);
 
 };
 
@@ -1733,7 +1734,7 @@ returns internal analyzer.
 		const ShapeAnalysis_WireVertex & Analyzer();
 
 		/****** ShapeFix_WireVertex::Fix ******/
-		/****** md5 signature: 215a881227de7e9204532f8d2fd8d794 ******/
+		/****** md5 signature: 3eb4529017008d880a3fe303451d3949 ******/
 		%feature("compactdefaultargs") Fix;
 		%feature("autodoc", "Return
 -------
@@ -1743,10 +1744,10 @@ Description
 -----------
 Fixes all statuses except 'Disjoined', i.e. the cases in which a common value has been set, with or without changing parameters Returns the count of fixed vertices, 0 if none.
 ") Fix;
-		Standard_Integer Fix();
+		int Fix();
 
 		/****** ShapeFix_WireVertex::FixSame ******/
-		/****** md5 signature: f69350a87bca147160c45322ce6b6fa4 ******/
+		/****** md5 signature: 5ca58b73a2eb4c3a632942537998350c ******/
 		%feature("compactdefaultargs") FixSame;
 		%feature("autodoc", "Return
 -------
@@ -1756,16 +1757,16 @@ Description
 -----------
 Fixes 'Same' or 'Close' status (same vertex may be set, without changing parameters) Returns the count of fixed vertices, 0 if none.
 ") FixSame;
-		Standard_Integer FixSame();
+		int FixSame();
 
 		/****** ShapeFix_WireVertex::Init ******/
-		/****** md5 signature: ce6401735f705d8382645a726c79e907 ******/
+		/****** md5 signature: 5ebf3b271a3a11ad432d82eac9a6c12a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 wire: TopoDS_Wire
-preci: float
+preci: double
 
 Return
 -------
@@ -1775,16 +1776,16 @@ Description
 -----------
 Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis.
 ") Init;
-		void Init(const TopoDS_Wire & wire, const Standard_Real preci);
+		void Init(const TopoDS_Wire & wire, const double preci);
 
 		/****** ShapeFix_WireVertex::Init ******/
-		/****** md5 signature: f41161adfbe2d37d2f0f25b5965004df ******/
+		/****** md5 signature: a0c567e61049dd6e67302bf9323b083a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 sbwd: ShapeExtend_WireData
-preci: float
+preci: double
 
 Return
 -------
@@ -1794,7 +1795,7 @@ Description
 -----------
 Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis.
 ") Init;
-		void Init(const opencascade::handle<ShapeExtend_WireData> & sbwd, const Standard_Real preci);
+		void Init(const opencascade::handle<ShapeExtend_WireData> & sbwd, const double preci);
 
 		/****** ShapeFix_WireVertex::Init ******/
 		/****** md5 signature: 7d4943cc88255526a194903195389755 ******/
@@ -1867,27 +1868,27 @@ Creates empty tool.
 ") ShapeFix_ComposeShell;
 		 ShapeFix_ComposeShell();
 
+		/****** ShapeFix_ComposeShell::ClosedMode ******/
+		/****** md5 signature: d525e4f64b788e5fe74c6317179120b0 ******/
+		%feature("compactdefaultargs") ClosedMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetClosedMode() {
-            return (Standard_Boolean) $self->ClosedMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetClosedMode(Standard_Boolean value) {
-            $self->ClosedMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) flag for special 'closed' mode which forces ComposeShell to consider all pcurves on closed surface as modulo period. This can reduce reliability, but allows to deal with wires closed in 3d but open in 2d (missing seam) Default is False.
+") ClosedMode;
+		bool & ClosedMode();
+
 		/****** ShapeFix_ComposeShell::DispatchWires ******/
-		/****** md5 signature: da08bb92d1c47ca130e30848d84a83b3 ******/
+		/****** md5 signature: 112275afbe3444957fe41fcba2213ce5 ******/
 		%feature("compactdefaultargs") DispatchWires;
 		%feature("autodoc", "
 Parameters
 ----------
-faces: TopTools_SequenceOfShape
-wires: ShapeFix_SequenceOfWireSegment
+faces: NCollection_Sequence<TopoDS_Shape>
+wires: NCollection_Sequence<ShapeFix_WireSegment>
 
 Return
 -------
@@ -1897,7 +1898,7 @@ Description
 -----------
 Creates new faces from the set of (closed) wires. Each wire is put on corresponding patch in the composite surface, and all pcurves on the initial (pseudo)face are reassigned to that surface. If several wires are one inside another, single face is created.
 ") DispatchWires;
-		void DispatchWires(TopTools_SequenceOfShape & faces, ShapeFix_SequenceOfWireSegment & wires);
+		void DispatchWires(NCollection_Sequence<TopoDS_Shape> & faces, NCollection_Sequence<ShapeFix_WireSegment> & wires);
 
 		/****** ShapeFix_ComposeShell::GetTransferParamTool ******/
 		/****** md5 signature: b9e239d6f4c9de02af2a5cc4956eff51 ******/
@@ -1913,7 +1914,7 @@ Gets tool for transfer parameters from 3d to 2d and vice versa.
 		opencascade::handle<ShapeAnalysis_TransferParameters> GetTransferParamTool();
 
 		/****** ShapeFix_ComposeShell::Init ******/
-		/****** md5 signature: 7eb579e7aa3a05978fd870e7f72134a5 ******/
+		/****** md5 signature: faa987fea63423038dc4b98b4bdf49be ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1921,7 +1922,7 @@ Parameters
 Grid: ShapeExtend_CompositeSurface
 L: TopLoc_Location
 Face: TopoDS_Face
-Prec: float
+Prec: double
 
 Return
 -------
@@ -1931,10 +1932,10 @@ Description
 -----------
 Initializes with composite surface, face and precision. Here face defines both set of wires and way of getting pcurves. Precision is used (together with tolerance of edges) for handling subtle cases, such as tangential intersections.
 ") Init;
-		void Init(const opencascade::handle<ShapeExtend_CompositeSurface> & Grid, const TopLoc_Location & L, const TopoDS_Face & Face, const Standard_Real Prec);
+		void Init(const opencascade::handle<ShapeExtend_CompositeSurface> & Grid, const TopLoc_Location & L, const TopoDS_Face & Face, const double Prec);
 
 		/****** ShapeFix_ComposeShell::Perform ******/
-		/****** md5 signature: 13c494512ebd157b19de66d8b841f157 ******/
+		/****** md5 signature: 107e59197b0bbca4b641ec7127b7b2cd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -1944,7 +1945,7 @@ Description
 -----------
 Performs the work on already loaded data.
 ") Perform;
-		virtual Standard_Boolean Perform();
+		virtual bool Perform();
 
 		/****** ShapeFix_ComposeShell::Result ******/
 		/****** md5 signature: 64e8e20a963b00a422945949bd4e1549 ******/
@@ -1991,7 +1992,7 @@ Splits edges in the original shape by grid. This is a part of Perform() which do
 		void SplitEdges();
 
 		/****** ShapeFix_ComposeShell::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -2006,7 +2007,7 @@ Description
 -----------
 Queries status of last call to Perform() OK: nothing done (some kind of error) DONE1: splitting is done, at least one new face created DONE2: splitting is done, several new faces obtained FAIL1: misoriented wire encountered (handled) FAIL2: recoverable parity error FAIL3: edge with no pcurve on supporting face FAIL4: unrecoverable algorithm error (parity check).
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -2073,19 +2074,19 @@ Add a wire to current face using BRep_Builder. Wire is added without taking into
 ") Add;
 		void Add(const TopoDS_Wire & wire);
 
+		/****** ShapeFix_Face::AutoCorrectPrecisionMode ******/
+		/****** md5 signature: 1fe157f35da28f3e624281a5fb9e781c ******/
+		%feature("compactdefaultargs") AutoCorrectPrecisionMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetAutoCorrectPrecisionMode() {
-            return (Standard_Integer) $self->AutoCorrectPrecisionMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetAutoCorrectPrecisionMode(Standard_Integer value) {
-            $self->AutoCorrectPrecisionMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the auto-correct precision mode by default False.
+") AutoCorrectPrecisionMode;
+		int & AutoCorrectPrecisionMode();
+
 		/****** ShapeFix_Face::ClearModes ******/
 		/****** md5 signature: dacb0a374c08161f5c8f0805fdf25f2f ******/
 		%feature("compactdefaultargs") ClearModes;
@@ -2113,7 +2114,7 @@ Returns a face which corresponds to the current state Warning: The finally produ
 		TopoDS_Face Face();
 
 		/****** ShapeFix_Face::FixAddNaturalBound ******/
-		/****** md5 signature: 9b3ad075c02662990a9cfa0d4ac8ec0d ******/
+		/****** md5 signature: 50cab794be7d8693beccee7aeafc3511 ******/
 		%feature("compactdefaultargs") FixAddNaturalBound;
 		%feature("autodoc", "Return
 -------
@@ -2123,23 +2124,23 @@ Description
 -----------
 Adds natural boundary on face if it is missing. Two cases are supported: - face has no wires - face lies on geometrically double-closed surface (sphere or torus) and none of wires is left-oriented Returns True if natural boundary was added.
 ") FixAddNaturalBound;
-		Standard_Boolean FixAddNaturalBound();
+		bool FixAddNaturalBound();
 
+		/****** ShapeFix_Face::FixAddNaturalBoundMode ******/
+		/****** md5 signature: 18e4fdf289f8d6879bd26524fe22eab7 ******/
+		%feature("compactdefaultargs") FixAddNaturalBoundMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixAddNaturalBoundMode() {
-            return (Standard_Integer) $self->FixAddNaturalBoundMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixAddNaturalBoundMode(Standard_Integer value) {
-            $self->FixAddNaturalBoundMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the add natural bound mode. If true, natural boundary is added on faces that miss them. Default is False for faces with single wire (they are handled by FixOrientation in that case) and True for others.
+") FixAddNaturalBoundMode;
+		int & FixAddNaturalBoundMode();
+
 		/****** ShapeFix_Face::FixIntersectingWires ******/
-		/****** md5 signature: 983240c7ea46f94233cee9d79eb8ae2d ******/
+		/****** md5 signature: bc7d8b5ef9bead12edf2636d3d9defb9 ******/
 		%feature("compactdefaultargs") FixIntersectingWires;
 		%feature("autodoc", "Return
 -------
@@ -2149,28 +2150,28 @@ Description
 -----------
 Detects and fixes the special case when face has more than one wire and this wires have intersection point.
 ") FixIntersectingWires;
-		Standard_Boolean FixIntersectingWires();
+		bool FixIntersectingWires();
 
+		/****** ShapeFix_Face::FixIntersectingWiresMode ******/
+		/****** md5 signature: d389b52f049bfa93999b5ba2d0dc7447 ******/
+		%feature("compactdefaultargs") FixIntersectingWiresMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixIntersectingWiresMode() {
-            return (Standard_Integer) $self->FixIntersectingWiresMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixIntersectingWiresMode(Standard_Integer value) {
-            $self->FixIntersectingWiresMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the fix intersecting wires mode by default True.
+") FixIntersectingWiresMode;
+		int & FixIntersectingWiresMode();
+
 		/****** ShapeFix_Face::FixLoopWire ******/
-		/****** md5 signature: f97141bba35ff4c3a243e9711fbe3754 ******/
+		/****** md5 signature: 94dc57602e335844e616d88dee53c7b7 ******/
 		%feature("compactdefaultargs") FixLoopWire;
 		%feature("autodoc", "
 Parameters
 ----------
-aResWires: TopTools_SequenceOfShape
+aResWires: NCollection_Sequence<TopoDS_Shape>
 
 Return
 -------
@@ -2180,23 +2181,23 @@ Description
 -----------
 Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was split Status was set to value ShapeExtend_DONE6.
 ") FixLoopWire;
-		Standard_Boolean FixLoopWire(TopTools_SequenceOfShape & aResWires);
+		bool FixLoopWire(NCollection_Sequence<TopoDS_Shape> & aResWires);
 
+		/****** ShapeFix_Face::FixLoopWiresMode ******/
+		/****** md5 signature: d11be41f7c99a6b35ab54206da2acb52 ******/
+		%feature("compactdefaultargs") FixLoopWiresMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixLoopWiresMode() {
-            return (Standard_Integer) $self->FixLoopWiresMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixLoopWiresMode(Standard_Integer value) {
-            $self->FixLoopWiresMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the fix loop wires mode by default True.
+") FixLoopWiresMode;
+		int & FixLoopWiresMode();
+
 		/****** ShapeFix_Face::FixMissingSeam ******/
-		/****** md5 signature: 790dff73c7407407403ff6deff540a68 ******/
+		/****** md5 signature: 4997fd6c4a01a7a4522cae16cb8bf494 ******/
 		%feature("compactdefaultargs") FixMissingSeam;
 		%feature("autodoc", "Return
 -------
@@ -2206,23 +2207,23 @@ Description
 -----------
 Detects and fixes the special case when face on a closed surface is given by two wires closed in 3d but with gap in 2d. In that case it creates a new wire from the two, and adds a missing seam edge Returns True if missing seam was added.
 ") FixMissingSeam;
-		Standard_Boolean FixMissingSeam();
+		bool FixMissingSeam();
 
+		/****** ShapeFix_Face::FixMissingSeamMode ******/
+		/****** md5 signature: 3b6bc424411872458690a4b9e860a857 ******/
+		%feature("compactdefaultargs") FixMissingSeamMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixMissingSeamMode() {
-            return (Standard_Integer) $self->FixMissingSeamMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixMissingSeamMode(Standard_Integer value) {
-            $self->FixMissingSeamMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the fix missing seam mode, by default True. If True, tries to insert seam is missed.
+") FixMissingSeamMode;
+		int & FixMissingSeamMode();
+
 		/****** ShapeFix_Face::FixOrientation ******/
-		/****** md5 signature: e6de7f40106f8e198731665b92da549a ******/
+		/****** md5 signature: 5a2562894ad3e3ec9d63efc558bd04f2 ******/
 		%feature("compactdefaultargs") FixOrientation;
 		%feature("autodoc", "Return
 -------
@@ -2232,15 +2233,15 @@ Description
 -----------
 Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed.
 ") FixOrientation;
-		Standard_Boolean FixOrientation();
+		bool FixOrientation();
 
 		/****** ShapeFix_Face::FixOrientation ******/
-		/****** md5 signature: a1ac25beb4754ae8559a627184382387 ******/
+		/****** md5 signature: 2f1c6c25366bd1669b64e8f35d842c26 ******/
 		%feature("compactdefaultargs") FixOrientation;
 		%feature("autodoc", "
 Parameters
 ----------
-MapWires: TopTools_DataMapOfShapeListOfShape
+MapWires: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -2250,23 +2251,23 @@ Description
 -----------
 Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed OutWires return information about out wires + list of internal wires for each (for performing split face).
 ") FixOrientation;
-		Standard_Boolean FixOrientation(TopTools_DataMapOfShapeListOfShape & MapWires);
+		bool FixOrientation(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & MapWires);
 
+		/****** ShapeFix_Face::FixOrientationMode ******/
+		/****** md5 signature: 86bf9e63ce82b69990ae12b2931e2d9a ******/
+		%feature("compactdefaultargs") FixOrientationMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixOrientationMode() {
-            return (Standard_Integer) $self->FixOrientationMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixOrientationMode(Standard_Integer value) {
-            $self->FixOrientationMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the fix orientation mode, by default True. If True, wires oriented to border limited square.
+") FixOrientationMode;
+		int & FixOrientationMode();
+
 		/****** ShapeFix_Face::FixPeriodicDegenerated ******/
-		/****** md5 signature: 5867eb366738940d651b8f5a9b4794d5 ******/
+		/****** md5 signature: 3f8faf8699c47d9ff0399c14404e5174 ******/
 		%feature("compactdefaultargs") FixPeriodicDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -2276,23 +2277,23 @@ Description
 -----------
 Fixes topology for a specific case when face is composed by a single wire belting a periodic surface. In that case a degenerated edge is reconstructed in the degenerated pole of the surface. Initial wire gets consistent orientation. Must be used in couple and before FixMissingSeam routine.
 ") FixPeriodicDegenerated;
-		Standard_Boolean FixPeriodicDegenerated();
+		bool FixPeriodicDegenerated();
 
+		/****** ShapeFix_Face::FixPeriodicDegeneratedMode ******/
+		/****** md5 signature: 6d9ad4eb1d8bcb78007f2e8c75fe22e8 ******/
+		%feature("compactdefaultargs") FixPeriodicDegeneratedMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixPeriodicDegeneratedMode() {
-            return (Standard_Integer) $self->FixPeriodicDegeneratedMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixPeriodicDegeneratedMode(Standard_Integer value) {
-            $self->FixPeriodicDegeneratedMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the activation flag for periodic degenerated fix. False by default.
+") FixPeriodicDegeneratedMode;
+		int & FixPeriodicDegeneratedMode();
+
 		/****** ShapeFix_Face::FixSmallAreaWire ******/
-		/****** md5 signature: a6de3c9119ea607ad8a18a4fd619f0a3 ******/
+		/****** md5 signature: 596c2e57935cb3778f06b60626f26680 ******/
 		%feature("compactdefaultargs") FixSmallAreaWire;
 		%feature("autodoc", "
 Parameters
@@ -2307,28 +2308,28 @@ Description
 -----------
 Detects wires with small area (that is less than 100*Precision::PConfusion(). Removes these wires if they are internal. Returns: True if at least one small wire removed, False if does nothing.
 ") FixSmallAreaWire;
-		Standard_Boolean FixSmallAreaWire(const Standard_Boolean theIsRemoveSmallFace);
+		bool FixSmallAreaWire(const bool theIsRemoveSmallFace);
 
+		/****** ShapeFix_Face::FixSmallAreaWireMode ******/
+		/****** md5 signature: 520880c4c1e7526f09effce8c327847b ******/
+		%feature("compactdefaultargs") FixSmallAreaWireMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSmallAreaWireMode() {
-            return (Standard_Integer) $self->FixSmallAreaWireMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSmallAreaWireMode(Standard_Integer value) {
-            $self->FixSmallAreaWireMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the fix small area wire mode, by default False. If True, drops small wires.
+") FixSmallAreaWireMode;
+		int & FixSmallAreaWireMode();
+
 		/****** ShapeFix_Face::FixSplitFace ******/
-		/****** md5 signature: 29d930b1cb1b14cd74d337d45a6317f2 ******/
+		/****** md5 signature: d8a83d6645a5131c5dd035ea723dc472 ******/
 		%feature("compactdefaultargs") FixSplitFace;
 		%feature("autodoc", "
 Parameters
 ----------
-MapWires: TopTools_DataMapOfShapeListOfShape
+MapWires: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -2338,34 +2339,34 @@ Description
 -----------
 Split face if there are more than one out wire using inrormation after FixOrientation().
 ") FixSplitFace;
-		Standard_Boolean FixSplitFace(const TopTools_DataMapOfShapeListOfShape & MapWires);
+		bool FixSplitFace(const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & MapWires);
 
+		/****** ShapeFix_Face::FixSplitFaceMode ******/
+		/****** md5 signature: b9d2c8d15e9707d9c5a843480ba14360 ******/
+		%feature("compactdefaultargs") FixSplitFaceMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSplitFaceMode() {
-            return (Standard_Integer) $self->FixSplitFaceMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSplitFaceMode(Standard_Integer value) {
-            $self->FixSplitFaceMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the fix split face mode by default True.
+") FixSplitFaceMode;
+		int & FixSplitFaceMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixWireMode() {
-            return (Standard_Integer) $self->FixWireMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixWireMode(Standard_Integer value) {
-            $self->FixWireMode()=value;
-            }
-        };
+		/****** ShapeFix_Face::FixWireMode ******/
+		/****** md5 signature: 8a52fdb546a19336edc81cfe263d6e08 ******/
+		%feature("compactdefaultargs") FixWireMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Wire, by default True.
+") FixWireMode;
+		int & FixWireMode();
+
 		/****** ShapeFix_Face::FixWireTool ******/
 		/****** md5 signature: 0f06026c1e0aa8536ddc996f0ba4501a ******/
 		%feature("compactdefaultargs") FixWireTool;
@@ -2380,7 +2381,7 @@ Returns tool for fixing wires.
 		opencascade::handle<ShapeFix_Wire> FixWireTool();
 
 		/****** ShapeFix_Face::FixWiresTwoCoincEdges ******/
-		/****** md5 signature: 492754cb0a8c0497c5a444368d5499a8 ******/
+		/****** md5 signature: 470f9346b1c5c438e852b46fd7499e87 ******/
 		%feature("compactdefaultargs") FixWiresTwoCoincEdges;
 		%feature("autodoc", "Return
 -------
@@ -2390,7 +2391,7 @@ Description
 -----------
 If wire contains two coincidence edges it must be removed Queries on status after Perform().
 ") FixWiresTwoCoincEdges;
-		Standard_Boolean FixWiresTwoCoincEdges();
+		bool FixWiresTwoCoincEdges();
 
 		/****** ShapeFix_Face::Init ******/
 		/****** md5 signature: bf5e73c6f5e07feeee65de419942b9c7 ******/
@@ -2411,14 +2412,14 @@ Loads a whole face already created, with its wires, sense and location.
 		void Init(const TopoDS_Face & face);
 
 		/****** ShapeFix_Face::Init ******/
-		/****** md5 signature: 47e3368959c0039cc9c82604eff91ce2 ******/
+		/****** md5 signature: fb71620f9785af97356bf1d354070e85 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 surf: Geom_Surface
-preci: float
-fwd: bool (optional, default to Standard_True)
+preci: double
+fwd: bool (optional, default to true)
 
 Return
 -------
@@ -2428,17 +2429,17 @@ Description
 -----------
 Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False.
 ") Init;
-		void Init(const opencascade::handle<Geom_Surface> & surf, const Standard_Real preci, const Standard_Boolean fwd = Standard_True);
+		void Init(const opencascade::handle<Geom_Surface> & surf, const double preci, const bool fwd = true);
 
 		/****** ShapeFix_Face::Init ******/
-		/****** md5 signature: 36ab1cdacf4b3b9d1e6c160db943ee10 ******/
+		/****** md5 signature: 936671056fd650684d900e46a96cdb3a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 surf: ShapeAnalysis_Surface
-preci: float
-fwd: bool (optional, default to Standard_True)
+preci: double
+fwd: bool (optional, default to true)
 
 Return
 -------
@@ -2448,10 +2449,10 @@ Description
 -----------
 Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False.
 ") Init;
-		void Init(const opencascade::handle<ShapeAnalysis_Surface> & surf, const Standard_Real preci, const Standard_Boolean fwd = Standard_True);
+		void Init(const opencascade::handle<ShapeAnalysis_Surface> & surf, const double preci, const bool fwd = true);
 
 		/****** ShapeFix_Face::Perform ******/
-		/****** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ******/
+		/****** md5 signature: 836e5d294e107797e3a08ad4bfbbad29 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -2461,21 +2462,21 @@ Description
 -----------
 Performs all the fixes, depending on modes Function Status returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire.
 ") Perform;
-		Standard_Boolean Perform();
+		bool Perform();
 
+		/****** ShapeFix_Face::RemoveSmallAreaFaceMode ******/
+		/****** md5 signature: 276f316c7981191452b80a9559f41692 ******/
+		%feature("compactdefaultargs") RemoveSmallAreaFaceMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetRemoveSmallAreaFaceMode() {
-            return (Standard_Integer) $self->RemoveSmallAreaFaceMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetRemoveSmallAreaFaceMode(Standard_Integer value) {
-            $self->RemoveSmallAreaFaceMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the remove face with small area, by default False. If True, drops faces with small outer wires.
+") RemoveSmallAreaFaceMode;
+		int & RemoveSmallAreaFaceMode();
+
 		/****** ShapeFix_Face::Result ******/
 		/****** md5 signature: e7d296a4a4a5995509cb67e3ee28f5dc ******/
 		%feature("compactdefaultargs") Result;
@@ -2490,12 +2491,12 @@ Returns resulting shape (Face or Shell if split) To be used instead of Face() if
 		TopoDS_Shape Result();
 
 		/****** ShapeFix_Face::SetMaxTolerance ******/
-		/****** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ******/
+		/****** md5 signature: d4049d4b0d6f1aac10769ba029a4e638 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -2505,15 +2506,15 @@ Description
 -----------
 Sets maximal allowed tolerance (also to FixWireTool).
 ") SetMaxTolerance;
-		virtual void SetMaxTolerance(const Standard_Real maxtol);
+		void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeFix_Face::SetMinTolerance ******/
-		/****** md5 signature: 118b24db5991a9b12505b50713610933 ******/
+		/****** md5 signature: 8d93f49921a21f590a07a25b523da625 ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -2523,10 +2524,10 @@ Description
 -----------
 Sets minimal allowed tolerance (also to FixWireTool).
 ") SetMinTolerance;
-		virtual void SetMinTolerance(const Standard_Real mintol);
+		void SetMinTolerance(const double mintol);
 
 		/****** ShapeFix_Face::SetMsgRegistrator ******/
-		/****** md5 signature: 7d0124cc4910ea7f49d1899bae9f9445 ******/
+		/****** md5 signature: f258f9218a75996548e4fc2aee290a82 ******/
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "
 Parameters
@@ -2541,15 +2542,15 @@ Description
 -----------
 Sets message registrator.
 ") SetMsgRegistrator;
-		virtual void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
+		void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
 		/****** ShapeFix_Face::SetPrecision ******/
-		/****** md5 signature: 92d78323d62150cdb5c9a0f5c7cac931 ******/
+		/****** md5 signature: abd140f84c70b8416a47ddf34a4af5f4 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -2559,10 +2560,10 @@ Description
 -----------
 Sets basic precision value (also to FixWireTool).
 ") SetPrecision;
-		virtual void SetPrecision(const Standard_Real preci);
+		void SetPrecision(const double preci);
 
 		/****** ShapeFix_Face::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -2577,7 +2578,7 @@ Description
 -----------
 Returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_DONE8: face may be splited ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -2609,7 +2610,7 @@ No available documentation.
 		 ShapeFix_FixSmallFace();
 
 		/****** ShapeFix_FixSmallFace::ComputeSharedEdgeForStripFace ******/
-		/****** md5 signature: 4f8efb90c70897fe3b4e98c710d39ae1 ******/
+		/****** md5 signature: df6dea2388770543e1285b5381f48b01 ******/
 		%feature("compactdefaultargs") ComputeSharedEdgeForStripFace;
 		%feature("autodoc", "
 Parameters
@@ -2618,7 +2619,7 @@ F: TopoDS_Face
 E1: TopoDS_Edge
 E2: TopoDS_Edge
 F1: TopoDS_Face
-tol: float
+tol: double
 
 Return
 -------
@@ -2628,7 +2629,7 @@ Description
 -----------
 Compute average edge for strip face.
 ") ComputeSharedEdgeForStripFace;
-		TopoDS_Edge ComputeSharedEdgeForStripFace(const TopoDS_Face & F, const TopoDS_Edge & E1, const TopoDS_Edge & E2, const TopoDS_Face & F1, const Standard_Real tol);
+		TopoDS_Edge ComputeSharedEdgeForStripFace(const TopoDS_Face & F, const TopoDS_Edge & E1, const TopoDS_Edge & E2, const TopoDS_Face & F1, const double tol);
 
 		/****** ShapeFix_FixSmallFace::FixFace ******/
 		/****** md5 signature: 4b35b5a540a8001d3a226dac5e26a73f ******/
@@ -2649,7 +2650,7 @@ No available documentation.
 		TopoDS_Face FixFace(const TopoDS_Face & F);
 
 		/****** ShapeFix_FixSmallFace::FixPinFace ******/
-		/****** md5 signature: d0988d14330ff05e059cecc3df97bc51 ******/
+		/****** md5 signature: 7945b098bf4331785d4984895747e3b0 ******/
 		%feature("compactdefaultargs") FixPinFace;
 		%feature("autodoc", "
 Parameters
@@ -2664,7 +2665,7 @@ Description
 -----------
 No available documentation.
 ") FixPinFace;
-		Standard_Boolean FixPinFace(TopoDS_Face & F);
+		bool FixPinFace(TopoDS_Face & F);
 
 		/****** ShapeFix_FixSmallFace::FixShape ******/
 		/****** md5 signature: 44130b08f788133d21d1c73f557d186b ******/
@@ -2711,12 +2712,12 @@ Fixing case of spot face, if tol = -1 used local tolerance.
 		TopoDS_Shape FixSpotFace();
 
 		/****** ShapeFix_FixSmallFace::FixStripFace ******/
-		/****** md5 signature: fe2b6667af40ffe212e16d3b489bd5a4 ******/
+		/****** md5 signature: 9b6a11bad1a9d0eb8b4015ad803fb6bf ******/
 		%feature("compactdefaultargs") FixStripFace;
 		%feature("autodoc", "
 Parameters
 ----------
-wasdone: bool (optional, default to Standard_False)
+wasdone: bool (optional, default to false)
 
 Return
 -------
@@ -2726,7 +2727,7 @@ Description
 -----------
 Fixing case of strip face, if tol = -1 used local tolerance.
 ") FixStripFace;
-		TopoDS_Shape FixStripFace(const Standard_Boolean wasdone = Standard_False);
+		TopoDS_Shape FixStripFace(const bool wasdone = false);
 
 		/****** ShapeFix_FixSmallFace::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2760,7 +2761,7 @@ Fixing case of spot face.
 		void Perform();
 
 		/****** ShapeFix_FixSmallFace::RemoveFacesInCaseOfSpot ******/
-		/****** md5 signature: 24874cb9697cc888631c05af607617fb ******/
+		/****** md5 signature: 5007468dba4d85a610a9075176561110 ******/
 		%feature("compactdefaultargs") RemoveFacesInCaseOfSpot;
 		%feature("autodoc", "
 Parameters
@@ -2775,10 +2776,10 @@ Description
 -----------
 Remove spot face from compound.
 ") RemoveFacesInCaseOfSpot;
-		Standard_Boolean RemoveFacesInCaseOfSpot(const TopoDS_Face & F);
+		bool RemoveFacesInCaseOfSpot(const TopoDS_Face & F);
 
 		/****** ShapeFix_FixSmallFace::RemoveFacesInCaseOfStrip ******/
-		/****** md5 signature: cdf8dd702966acd98758c9b0e92a1ac4 ******/
+		/****** md5 signature: 293d0dc271ee23fd4127dcfa6275ef2e ******/
 		%feature("compactdefaultargs") RemoveFacesInCaseOfStrip;
 		%feature("autodoc", "
 Parameters
@@ -2793,10 +2794,10 @@ Description
 -----------
 Remove strip face from compound.
 ") RemoveFacesInCaseOfStrip;
-		Standard_Boolean RemoveFacesInCaseOfStrip(const TopoDS_Face & F);
+		bool RemoveFacesInCaseOfStrip(const TopoDS_Face & F);
 
 		/****** ShapeFix_FixSmallFace::ReplaceInCaseOfStrip ******/
-		/****** md5 signature: c353dc1670c5c727c2438bacc6051f2a ******/
+		/****** md5 signature: d9acbbd3703242ce786c3377053ed3ae ******/
 		%feature("compactdefaultargs") ReplaceInCaseOfStrip;
 		%feature("autodoc", "
 Parameters
@@ -2804,7 +2805,7 @@ Parameters
 F: TopoDS_Face
 E1: TopoDS_Edge
 E2: TopoDS_Edge
-tol: float
+tol: double
 
 Return
 -------
@@ -2814,16 +2815,16 @@ Description
 -----------
 Replace veretces and edges.
 ") ReplaceInCaseOfStrip;
-		Standard_Boolean ReplaceInCaseOfStrip(TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol);
+		bool ReplaceInCaseOfStrip(TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const double tol);
 
 		/****** ShapeFix_FixSmallFace::ReplaceVerticesInCaseOfSpot ******/
-		/****** md5 signature: 27951c435043974a0642bb877db67afa ******/
+		/****** md5 signature: 5db906f1f6d12ef6c10753221690c8f5 ******/
 		%feature("compactdefaultargs") ReplaceVerticesInCaseOfSpot;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-tol: float
+tol: double
 
 Return
 -------
@@ -2833,7 +2834,7 @@ Description
 -----------
 Compute average vertex and replacing vertices by new one.
 ") ReplaceVerticesInCaseOfSpot;
-		Standard_Boolean ReplaceVerticesInCaseOfSpot(TopoDS_Face & F, const Standard_Real tol);
+		bool ReplaceVerticesInCaseOfSpot(TopoDS_Face & F, const double tol);
 
 		/****** ShapeFix_FixSmallFace::Shape ******/
 		/****** md5 signature: 3bc559831c5959191e55bf80cdb0f8f7 ******/
@@ -2849,7 +2850,7 @@ No available documentation.
 		TopoDS_Shape Shape();
 
 		/****** ShapeFix_FixSmallFace::SplitOneFace ******/
-		/****** md5 signature: 544c7785899882621109f596c88b204b ******/
+		/****** md5 signature: e434574f5c9230729900d62e97e9ade6 ******/
 		%feature("compactdefaultargs") SplitOneFace;
 		%feature("autodoc", "
 Parameters
@@ -2865,7 +2866,7 @@ Description
 -----------
 Compute data for face splitting.
 ") SplitOneFace;
-		Standard_Boolean SplitOneFace(TopoDS_Face & F, TopoDS_Compound & theSplittedFaces);
+		bool SplitOneFace(TopoDS_Face & F, TopoDS_Compound & theSplittedFaces);
 
 };
 
@@ -2935,7 +2936,7 @@ Remove small solids from the given shape.
 		TopoDS_Shape Remove(const TopoDS_Shape & theShape, const opencascade::handle<ShapeBuild_ReShape> & theContext);
 
 		/****** ShapeFix_FixSmallSolid::SetFixMode ******/
-		/****** md5 signature: 912625cdaaf5e4928855a026288e41f8 ******/
+		/****** md5 signature: f540efd1025335d45e7007127160f26c ******/
 		%feature("compactdefaultargs") SetFixMode;
 		%feature("autodoc", "
 Parameters
@@ -2950,15 +2951,15 @@ Description
 -----------
 Set working mode for operator: - theMode = 0 use both WidthFactorThreshold and VolumeThreshold parameters - theMode = 1 use only WidthFactorThreshold parameter - theMode = 2 use only VolumeThreshold parameter.
 ") SetFixMode;
-		void SetFixMode(const Standard_Integer theMode);
+		void SetFixMode(const int theMode);
 
 		/****** ShapeFix_FixSmallSolid::SetVolumeThreshold ******/
-		/****** md5 signature: b73a7d17d3c4cd5295fa2d4601e16571 ******/
+		/****** md5 signature: df3c0f0ddde078e9ca4011248943c7e0 ******/
 		%feature("compactdefaultargs") SetVolumeThreshold;
 		%feature("autodoc", "
 Parameters
 ----------
-theThreshold: float (optional, default to -1.0)
+theThreshold: double (optional, default to -1.0)
 
 Return
 -------
@@ -2968,15 +2969,15 @@ Description
 -----------
 Set or clear volume threshold for small solids.
 ") SetVolumeThreshold;
-		void SetVolumeThreshold(const Standard_Real theThreshold = -1.0);
+		void SetVolumeThreshold(const double theThreshold = -1.0);
 
 		/****** ShapeFix_FixSmallSolid::SetWidthFactorThreshold ******/
-		/****** md5 signature: 291d5a1179edca204d7d47d940df7cdb ******/
+		/****** md5 signature: ac7c2a8f3536a3b81ccbd28f9c2e85f4 ******/
 		%feature("compactdefaultargs") SetWidthFactorThreshold;
 		%feature("autodoc", "
 Parameters
 ----------
-theThreshold: float (optional, default to -1.0)
+theThreshold: double (optional, default to -1.0)
 
 Return
 -------
@@ -2986,7 +2987,7 @@ Description
 -----------
 Set or clear width factor threshold for small solids.
 ") SetWidthFactorThreshold;
-		void SetWidthFactorThreshold(const Standard_Real theThreshold = -1.0);
+		void SetWidthFactorThreshold(const double theThreshold = -1.0);
 
 };
 
@@ -3061,58 +3062,58 @@ Returns tool for fixing faces.
 ") FixFaceTool;
 		opencascade::handle<ShapeFix_Face> FixFaceTool();
 
+		/****** ShapeFix_Shape::FixFreeFaceMode ******/
+		/****** md5 signature: 4572b87bcd8501f5ac5f59570173132b ******/
+		%feature("compactdefaultargs") FixFreeFaceMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixFreeFaceMode() {
-            return (Standard_Integer) $self->FixFreeFaceMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixFreeFaceMode(Standard_Integer value) {
-            $self->FixFreeFaceMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Face, by default True.
+") FixFreeFaceMode;
+		int & FixFreeFaceMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixFreeShellMode() {
-            return (Standard_Integer) $self->FixFreeShellMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixFreeShellMode(Standard_Integer value) {
-            $self->FixFreeShellMode()=value;
-            }
-        };
+		/****** ShapeFix_Shape::FixFreeShellMode ******/
+		/****** md5 signature: 9f90bcfdc6d95e770d7c48ed552c3fb3 ******/
+		%feature("compactdefaultargs") FixFreeShellMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixFreeWireMode() {
-            return (Standard_Integer) $self->FixFreeWireMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixFreeWireMode(Standard_Integer value) {
-            $self->FixFreeWireMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Shell, by default True.
+") FixFreeShellMode;
+		int & FixFreeShellMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSameParameterMode() {
-            return (Standard_Integer) $self->FixSameParameterMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSameParameterMode(Standard_Integer value) {
-            $self->FixSameParameterMode()=value;
-            }
-        };
+		/****** ShapeFix_Shape::FixFreeWireMode ******/
+		/****** md5 signature: 37f16e0785b2a99c0db074ea323d2e03 ******/
+		%feature("compactdefaultargs") FixFreeWireMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Wire, by default True.
+") FixFreeWireMode;
+		int & FixFreeWireMode();
+
+		/****** ShapeFix_Shape::FixSameParameterMode ******/
+		/****** md5 signature: 8967dbc7f7bdb1ed4cca3f7e9cad44b3 ******/
+		%feature("compactdefaultargs") FixSameParameterMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns (modifiable) the mode for applying ShapeFix::SameParameter after all fixes, by default True.
+") FixSameParameterMode;
+		int & FixSameParameterMode();
+
 		/****** ShapeFix_Shape::FixShellTool ******/
 		/****** md5 signature: cacf7f3f630c3a1f123d40c2897e1f9d ******/
 		%feature("compactdefaultargs") FixShellTool;
@@ -3126,19 +3127,19 @@ Returns tool for fixing shells.
 ") FixShellTool;
 		opencascade::handle<ShapeFix_Shell> FixShellTool();
 
+		/****** ShapeFix_Shape::FixSolidMode ******/
+		/****** md5 signature: e2953dfafb58b8df6c4f7c725b9227a2 ******/
+		%feature("compactdefaultargs") FixSolidMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSolidMode() {
-            return (Standard_Integer) $self->FixSolidMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSolidMode(Standard_Integer value) {
-            $self->FixSolidMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Solid, by default True.
+") FixSolidMode;
+		int & FixSolidMode();
+
 		/****** ShapeFix_Shape::FixSolidTool ******/
 		/****** md5 signature: e57644ad5d224591291ddd3c8a859f54 ******/
 		%feature("compactdefaultargs") FixSolidTool;
@@ -3152,32 +3153,32 @@ Returns tool for fixing solids.
 ") FixSolidTool;
 		opencascade::handle<ShapeFix_Solid> FixSolidTool();
 
+		/****** ShapeFix_Shape::FixVertexPositionMode ******/
+		/****** md5 signature: e57d9a62bbd2a7b642e3fd80767bab0f ******/
+		%feature("compactdefaultargs") FixVertexPositionMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixVertexPositionMode() {
-            return (Standard_Integer) $self->FixVertexPositionMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixVertexPositionMode(Standard_Integer value) {
-            $self->FixVertexPositionMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying ShapeFix::FixVertexPosition before all fixes, by default False.
+") FixVertexPositionMode;
+		int & FixVertexPositionMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixVertexTolMode() {
-            return (Standard_Integer) $self->FixVertexTolMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixVertexTolMode(Standard_Integer value) {
-            $self->FixVertexTolMode()=value;
-            }
-        };
+		/****** ShapeFix_Shape::FixVertexTolMode ******/
+		/****** md5 signature: d96cf375cfb71caf4edbc8d510c6a6a1 ******/
+		%feature("compactdefaultargs") FixVertexTolMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns (modifiable) the mode for fixing tolerances of vertices on whole shape after performing all fixes.
+") FixVertexTolMode;
+		int & FixVertexTolMode();
+
 		/****** ShapeFix_Shape::FixWireTool ******/
 		/****** md5 signature: bef1b4e55d9ac1091d5ad9f06a3a442b ******/
 		%feature("compactdefaultargs") FixWireTool;
@@ -3210,7 +3211,7 @@ Initislises by shape.
 		void Init(const TopoDS_Shape & shape);
 
 		/****** ShapeFix_Shape::Perform ******/
-		/****** md5 signature: 45d98bf17cbfac8e5ff71bed66663bbd ******/
+		/****** md5 signature: c6a6bb9da370c0c5e2ed1ca653c517d8 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3225,15 +3226,15 @@ Description
 -----------
 Iterates on sub- shape and performs fixes.
 ") Perform;
-		Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeFix_Shape::SetMaxTolerance ******/
-		/****** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ******/
+		/****** md5 signature: d4049d4b0d6f1aac10769ba029a4e638 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -3243,15 +3244,15 @@ Description
 -----------
 Sets maximal allowed tolerance (also to FixSolidTool).
 ") SetMaxTolerance;
-		virtual void SetMaxTolerance(const Standard_Real maxtol);
+		void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeFix_Shape::SetMinTolerance ******/
-		/****** md5 signature: 118b24db5991a9b12505b50713610933 ******/
+		/****** md5 signature: 8d93f49921a21f590a07a25b523da625 ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -3261,10 +3262,10 @@ Description
 -----------
 Sets minimal allowed tolerance (also to FixSolidTool).
 ") SetMinTolerance;
-		virtual void SetMinTolerance(const Standard_Real mintol);
+		void SetMinTolerance(const double mintol);
 
 		/****** ShapeFix_Shape::SetMsgRegistrator ******/
-		/****** md5 signature: 7d0124cc4910ea7f49d1899bae9f9445 ******/
+		/****** md5 signature: f258f9218a75996548e4fc2aee290a82 ******/
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "
 Parameters
@@ -3279,15 +3280,15 @@ Description
 -----------
 Sets message registrator.
 ") SetMsgRegistrator;
-		virtual void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
+		void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
 		/****** ShapeFix_Shape::SetPrecision ******/
-		/****** md5 signature: 92d78323d62150cdb5c9a0f5c7cac931 ******/
+		/****** md5 signature: abd140f84c70b8416a47ddf34a4af5f4 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -3297,7 +3298,7 @@ Description
 -----------
 Sets basic precision value (also to FixSolidTool).
 ") SetPrecision;
-		virtual void SetPrecision(const Standard_Real preci);
+		void SetPrecision(const double preci);
 
 		/****** ShapeFix_Shape::Shape ******/
 		/****** md5 signature: 3aece276415d56b8bd9afa5bf371db57 ******/
@@ -3313,7 +3314,7 @@ Returns resulting shape.
 		TopoDS_Shape Shape();
 
 		/****** ShapeFix_Shape::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -3328,7 +3329,7 @@ Description
 -----------
 Returns the status of the last Fix. This can be a combination of the following flags: ShapeExtend_DONE1: some free edges were fixed ShapeExtend_DONE2: some free wires were fixed ShapeExtend_DONE3: some free faces were fixed ShapeExtend_DONE4: some free shells were fixed ShapeExtend_DONE5: some free solids were fixed ShapeExtend_DONE6: shapes in compound(s) were fixed.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -3390,28 +3391,28 @@ Returns not oriented subset of faces.
 ") ErrorFaces;
 		TopoDS_Compound ErrorFaces();
 
+		/****** ShapeFix_Shell::FixFaceMode ******/
+		/****** md5 signature: f227085857f34ec5a80655f0e3b9d985 ******/
+		%feature("compactdefaultargs") FixFaceMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixFaceMode() {
-            return (Standard_Integer) $self->FixFaceMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixFaceMode(Standard_Integer value) {
-            $self->FixFaceMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Face, by default True.
+") FixFaceMode;
+		int & FixFaceMode();
+
 		/****** ShapeFix_Shell::FixFaceOrientation ******/
-		/****** md5 signature: ff34d366ae4848ab5f8277e68d81b0db ******/
+		/****** md5 signature: 41d1812249ca6d381868875414d4aa18 ******/
 		%feature("compactdefaultargs") FixFaceOrientation;
 		%feature("autodoc", "
 Parameters
 ----------
 shell: TopoDS_Shell
-isAccountMultiConex: bool (optional, default to Standard_True)
-NonManifold: bool (optional, default to Standard_False)
+isAccountMultiConex: bool (optional, default to true)
+NonManifold: bool (optional, default to false)
 
 Return
 -------
@@ -3419,9 +3420,9 @@ bool
 
 Description
 -----------
-Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neighbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes: isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to Standard_True, separate shells will be created in the cases of multiconnexity. If this mode is equal to Standard_False, one shell will be created without account of multiconnexity.By default - Standard_True; NonManifold - mode for creation of non-manifold shells. If this mode is equal to Standard_True one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to Standard_False only manifold shells will be created. By default - Standard_False.
+Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neighbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes: isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to true, separate shells will be created in the cases of multiconnexity. If this mode is equal to false, one shell will be created without account of multiconnexity.By default - true; NonManifold - mode for creation of non-manifold shells. If this mode is equal to true one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to false only manifold shells will be created. By default - false.
 ") FixFaceOrientation;
-		Standard_Boolean FixFaceOrientation(const TopoDS_Shell & shell, const Standard_Boolean isAccountMultiConex = Standard_True, const Standard_Boolean NonManifold = Standard_False);
+		bool FixFaceOrientation(const TopoDS_Shell & shell, const bool isAccountMultiConex = true, const bool NonManifold = false);
 
 		/****** ShapeFix_Shell::FixFaceTool ******/
 		/****** md5 signature: 428136b1e2cdf845f0e92b7dfc089c3d ******/
@@ -3436,19 +3437,19 @@ Returns tool for fixing faces.
 ") FixFaceTool;
 		opencascade::handle<ShapeFix_Face> FixFaceTool();
 
+		/****** ShapeFix_Shell::FixOrientationMode ******/
+		/****** md5 signature: 86bf9e63ce82b69990ae12b2931e2d9a ******/
+		%feature("compactdefaultargs") FixOrientationMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixOrientationMode() {
-            return (Standard_Integer) $self->FixOrientationMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixOrientationMode(Standard_Integer value) {
-            $self->FixOrientationMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying FixFaceOrientation, by default True.
+") FixOrientationMode;
+		int & FixOrientationMode();
+
 		/****** ShapeFix_Shell::Init ******/
 		/****** md5 signature: 16f5a3fe30686a2f12aa382ba9bcb9bc ******/
 		%feature("compactdefaultargs") Init;
@@ -3468,7 +3469,7 @@ Initializes by shell.
 		void Init(const TopoDS_Shell & shell);
 
 		/****** ShapeFix_Shell::NbShells ******/
-		/****** md5 signature: ae5cea2f4ee50541dc840582f5c8441d ******/
+		/****** md5 signature: 92ae0feca66e23a7b27bf3659e892253 ******/
 		%feature("compactdefaultargs") NbShells;
 		%feature("autodoc", "Return
 -------
@@ -3478,10 +3479,10 @@ Description
 -----------
 Returns Number of obtainrd shells;.
 ") NbShells;
-		Standard_Integer NbShells();
+		int NbShells();
 
 		/****** ShapeFix_Shell::Perform ******/
-		/****** md5 signature: 45d98bf17cbfac8e5ff71bed66663bbd ******/
+		/****** md5 signature: c6a6bb9da370c0c5e2ed1ca653c517d8 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3496,15 +3497,15 @@ Description
 -----------
 Iterates on subshapes and performs fixes (for each face calls ShapeFix_Face::Perform and then calls FixFaceOrientation). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 ") Perform;
-		Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeFix_Shell::SetMaxTolerance ******/
-		/****** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ******/
+		/****** md5 signature: d4049d4b0d6f1aac10769ba029a4e638 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -3514,15 +3515,15 @@ Description
 -----------
 Sets maximal allowed tolerance (also to FixWireTool).
 ") SetMaxTolerance;
-		virtual void SetMaxTolerance(const Standard_Real maxtol);
+		void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeFix_Shell::SetMinTolerance ******/
-		/****** md5 signature: 118b24db5991a9b12505b50713610933 ******/
+		/****** md5 signature: 8d93f49921a21f590a07a25b523da625 ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -3532,10 +3533,10 @@ Description
 -----------
 Sets minimal allowed tolerance (also to FixWireTool).
 ") SetMinTolerance;
-		virtual void SetMinTolerance(const Standard_Real mintol);
+		void SetMinTolerance(const double mintol);
 
 		/****** ShapeFix_Shell::SetMsgRegistrator ******/
-		/****** md5 signature: 7d0124cc4910ea7f49d1899bae9f9445 ******/
+		/****** md5 signature: f258f9218a75996548e4fc2aee290a82 ******/
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "
 Parameters
@@ -3550,10 +3551,10 @@ Description
 -----------
 Sets message registrator.
 ") SetMsgRegistrator;
-		virtual void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
+		void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
 		/****** ShapeFix_Shell::SetNonManifoldFlag ******/
-		/****** md5 signature: 5c84704b9604761920abf08a9634cafe ******/
+		/****** md5 signature: 120d26b19cdd78cd6ff20aafef4a10ba ******/
 		%feature("compactdefaultargs") SetNonManifoldFlag;
 		%feature("autodoc", "
 Parameters
@@ -3568,15 +3569,15 @@ Description
 -----------
 Sets NonManifold flag.
 ") SetNonManifoldFlag;
-		virtual void SetNonManifoldFlag(const Standard_Boolean isNonManifold);
+		virtual void SetNonManifoldFlag(const bool isNonManifold);
 
 		/****** ShapeFix_Shell::SetPrecision ******/
-		/****** md5 signature: 92d78323d62150cdb5c9a0f5c7cac931 ******/
+		/****** md5 signature: abd140f84c70b8416a47ddf34a4af5f4 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -3586,7 +3587,7 @@ Description
 -----------
 Sets basic precision value (also to FixWireTool).
 ") SetPrecision;
-		virtual void SetPrecision(const Standard_Real preci);
+		void SetPrecision(const double preci);
 
 		/****** ShapeFix_Shell::Shape ******/
 		/****** md5 signature: 3bc559831c5959191e55bf80cdb0f8f7 ******/
@@ -3615,7 +3616,7 @@ Returns fixed shell (or subset of oriented faces).
 		TopoDS_Shell Shell();
 
 		/****** ShapeFix_Shell::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -3630,7 +3631,7 @@ Description
 -----------
 Returns the status of the last Fix.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -3679,45 +3680,45 @@ Initializes by solid.
 ") ShapeFix_Solid;
 		 ShapeFix_Solid(const TopoDS_Solid & solid);
 
+		/****** ShapeFix_Solid::CreateOpenSolidMode ******/
+		/****** md5 signature: 357b78fd119b2a17048ba5056d93659d ******/
+		%feature("compactdefaultargs") CreateOpenSolidMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetCreateOpenSolidMode() {
-            return (Standard_Boolean) $self->CreateOpenSolidMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetCreateOpenSolidMode(Standard_Boolean value) {
-            $self->CreateOpenSolidMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for creation of solids. If mode myCreateOpenSolidMode is equal to true solids are created from open shells else solids are created from closed shells only. ShapeFix_Shell, by default False.
+") CreateOpenSolidMode;
+		bool & CreateOpenSolidMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixShellMode() {
-            return (Standard_Integer) $self->FixShellMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixShellMode(Standard_Integer value) {
-            $self->FixShellMode()=value;
-            }
-        };
+		/****** ShapeFix_Solid::FixShellMode ******/
+		/****** md5 signature: 860e14f49789b0b39558c4cf02688186 ******/
+		%feature("compactdefaultargs") FixShellMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixShellOrientationMode() {
-            return (Standard_Integer) $self->FixShellOrientationMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixShellOrientationMode(Standard_Integer value) {
-            $self->FixShellOrientationMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the mode for applying fixes of ShapeFix_Shell, by default True.
+") FixShellMode;
+		int & FixShellMode();
+
+		/****** ShapeFix_Solid::FixShellOrientationMode ******/
+		/****** md5 signature: 8d0147bba6de9c8656f05a662f1d2f59 ******/
+		%feature("compactdefaultargs") FixShellOrientationMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns (modifiable) the mode for applying analysis and fixes of orientation of shells in the solid; by default True.
+") FixShellOrientationMode;
+		int & FixShellOrientationMode();
+
 		/****** ShapeFix_Solid::FixShellTool ******/
 		/****** md5 signature: 6ba0e8439a28f3eb9566dba885f1ccc8 ******/
 		%feature("compactdefaultargs") FixShellTool;
@@ -3750,7 +3751,7 @@ Initializes by solid .
 		virtual void Init(const TopoDS_Solid & solid);
 
 		/****** ShapeFix_Solid::Perform ******/
-		/****** md5 signature: ff3db1b72ba196f3e152a69220347d68 ******/
+		/****** md5 signature: 86229bc8676ce94098c6f428ec42736e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3765,15 +3766,15 @@ Description
 -----------
 Iterates on shells and performs fixes (calls ShapeFix_Shell for each subshell). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 ") Perform;
-		virtual Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual bool Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeFix_Solid::SetMaxTolerance ******/
-		/****** md5 signature: b7cb625408a036b53cb8ef0bd1f74be7 ******/
+		/****** md5 signature: d4049d4b0d6f1aac10769ba029a4e638 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -3783,15 +3784,15 @@ Description
 -----------
 Sets maximal allowed tolerance (also to FixShellTool).
 ") SetMaxTolerance;
-		virtual void SetMaxTolerance(const Standard_Real maxtol);
+		void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeFix_Solid::SetMinTolerance ******/
-		/****** md5 signature: 118b24db5991a9b12505b50713610933 ******/
+		/****** md5 signature: 8d93f49921a21f590a07a25b523da625 ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -3801,10 +3802,10 @@ Description
 -----------
 Sets minimal allowed tolerance (also to FixShellTool).
 ") SetMinTolerance;
-		virtual void SetMinTolerance(const Standard_Real mintol);
+		void SetMinTolerance(const double mintol);
 
 		/****** ShapeFix_Solid::SetMsgRegistrator ******/
-		/****** md5 signature: 7d0124cc4910ea7f49d1899bae9f9445 ******/
+		/****** md5 signature: f258f9218a75996548e4fc2aee290a82 ******/
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "
 Parameters
@@ -3819,15 +3820,15 @@ Description
 -----------
 Sets message registrator.
 ") SetMsgRegistrator;
-		virtual void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
+		void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
 		/****** ShapeFix_Solid::SetPrecision ******/
-		/****** md5 signature: 92d78323d62150cdb5c9a0f5c7cac931 ******/
+		/****** md5 signature: abd140f84c70b8416a47ddf34a4af5f4 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -3837,7 +3838,7 @@ Description
 -----------
 Sets basic precision value (also to FixShellTool).
 ") SetPrecision;
-		virtual void SetPrecision(const Standard_Real preci);
+		void SetPrecision(const double preci);
 
 		/****** ShapeFix_Solid::Shape ******/
 		/****** md5 signature: 3bc559831c5959191e55bf80cdb0f8f7 ******/
@@ -3884,7 +3885,7 @@ Calls MakeSolid and orients the solid to be 'not infinite'.
 		TopoDS_Solid SolidFromShell(const TopoDS_Shell & shell);
 
 		/****** ShapeFix_Solid::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -3899,7 +3900,7 @@ Description
 -----------
 Returns the status of the last Fix.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -4004,14 +4005,14 @@ Empty Constructor, creates clear object with default flags.
 		 ShapeFix_Wire();
 
 		/****** ShapeFix_Wire::ShapeFix_Wire ******/
-		/****** md5 signature: 14a7e60b81f6ab68938dc84c502d2cc4 ******/
+		/****** md5 signature: bc97c2e024d7bee1566566bfbb49b6fe ******/
 		%feature("compactdefaultargs") ShapeFix_Wire;
 		%feature("autodoc", "
 Parameters
 ----------
 wire: TopoDS_Wire
 face: TopoDS_Face
-prec: float
+prec: double
 
 Return
 -------
@@ -4021,7 +4022,7 @@ Description
 -----------
 Create new object with default flags and prepare it for use (Loads analyzer with all the data for the wire and face).
 ") ShapeFix_Wire;
-		 ShapeFix_Wire(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real prec);
+		 ShapeFix_Wire(const TopoDS_Wire & wire, const TopoDS_Face & face, const double prec);
 
 		/****** ShapeFix_Wire::Analyzer ******/
 		/****** md5 signature: 8cf283646b5d59870660ef74b5c32df7 ******/
@@ -4062,19 +4063,19 @@ Clears all statuses.
 ") ClearStatuses;
 		void ClearStatuses();
 
+		/****** ShapeFix_Wire::ClosedWireMode ******/
+		/****** md5 signature: 6b82952699cc1a13e860e0608bf3e84f ******/
+		%feature("compactdefaultargs") ClosedWireMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetClosedWireMode() {
-            return (Standard_Boolean) $self->ClosedWireMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetClosedWireMode(Standard_Boolean value) {
-            $self->ClosedWireMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the flag which defines whether the wire is to be closed (by calling methods like FixDegenerated() and FixConnected() for last and first edges).
+") ClosedWireMode;
+		bool & ClosedWireMode();
+
 		/****** ShapeFix_Wire::Face ******/
 		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
 		%feature("compactdefaultargs") Face;
@@ -4088,39 +4089,39 @@ returns working face (Analyzer.Face()).
 ") Face;
 		const TopoDS_Face Face();
 
+		/****** ShapeFix_Wire::FixAddCurve3dMode ******/
+		/****** md5 signature: 1bef8f9d0f8995a218c02537c22faa5a ******/
+		%feature("compactdefaultargs") FixAddCurve3dMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixAddCurve3dMode() {
-            return (Standard_Integer) $self->FixAddCurve3dMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixAddCurve3dMode(Standard_Integer value) {
-            $self->FixAddCurve3dMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixAddCurve3dMode;
+		int & FixAddCurve3dMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixAddPCurveMode() {
-            return (Standard_Integer) $self->FixAddPCurveMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixAddPCurveMode(Standard_Integer value) {
-            $self->FixAddPCurveMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixAddPCurveMode ******/
+		/****** md5 signature: e0fe132b0095b26cbeaf7a965cc6bce5 ******/
+		%feature("compactdefaultargs") FixAddPCurveMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") FixAddPCurveMode;
+		int & FixAddPCurveMode();
+
 		/****** ShapeFix_Wire::FixClosed ******/
-		/****** md5 signature: 02594bcf14a153315678f8917f86a792 ******/
+		/****** md5 signature: 4f21bff867c537edea096eb1542b6483 ******/
 		%feature("compactdefaultargs") FixClosed;
 		%feature("autodoc", "
 Parameters
 ----------
-prec: float (optional, default to -1.0)
+prec: double (optional, default to -1.0)
 
 Return
 -------
@@ -4130,15 +4131,15 @@ Description
 -----------
 Fixes a wire to be well closed It performs FixConnected, FixDegenerated and FixLacking between last and first edges (independingly on flag ClosedMode and modes for these fixings) If <prec> is -1 then MaxTolerance() is taken.
 ") FixClosed;
-		Standard_Boolean FixClosed(const Standard_Real prec = -1.0);
+		bool FixClosed(const double prec = -1.0);
 
 		/****** ShapeFix_Wire::FixConnected ******/
-		/****** md5 signature: 620050ec3514c62fc46e51f19aa61ede ******/
+		/****** md5 signature: 792a6919f5f976ae560c8593975501c3 ******/
 		%feature("compactdefaultargs") FixConnected;
 		%feature("autodoc", "
 Parameters
 ----------
-prec: float (optional, default to -1.0)
+prec: double (optional, default to -1.0)
 
 Return
 -------
@@ -4148,16 +4149,16 @@ Description
 -----------
 Applies FixConnected(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True If <prec> is -1 then MaxTolerance() is taken.
 ") FixConnected;
-		Standard_Boolean FixConnected(const Standard_Real prec = -1.0);
+		bool FixConnected(const double prec = -1.0);
 
 		/****** ShapeFix_Wire::FixConnected ******/
-		/****** md5 signature: 7d709d2fdd3a7b3c1d87cdd42f7e46a7 ******/
+		/****** md5 signature: 8e4f2beeb89834da3f3d645e2f499ef3 ******/
 		%feature("compactdefaultargs") FixConnected;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-prec: float
+prec: double
 
 Return
 -------
@@ -4167,23 +4168,23 @@ Description
 -----------
 Fixes connected edges (preceding and current) Forces Vertices (end of preceding-begin of current) to be the same one Tests with starting preci or, if given greater, <prec> If <prec> is -1 then MaxTolerance() is taken.
 ") FixConnected;
-		Standard_Boolean FixConnected(const Standard_Integer num, const Standard_Real prec);
+		bool FixConnected(const int num, const double prec);
 
+		/****** ShapeFix_Wire::FixConnectedMode ******/
+		/****** md5 signature: 7d1b4f0193b21560e61c0d71cff62dcf ******/
+		%feature("compactdefaultargs") FixConnectedMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixConnectedMode() {
-            return (Standard_Integer) $self->FixConnectedMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixConnectedMode(Standard_Integer value) {
-            $self->FixConnectedMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixConnectedMode;
+		int & FixConnectedMode();
+
 		/****** ShapeFix_Wire::FixDegenerated ******/
-		/****** md5 signature: 0e6830293f607b5180f93add12a2dcf9 ******/
+		/****** md5 signature: 9bcffcdddcefb73be85adcf223704006 ******/
 		%feature("compactdefaultargs") FixDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -4193,10 +4194,10 @@ Description
 -----------
 Applies FixDegenerated(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True.
 ") FixDegenerated;
-		Standard_Boolean FixDegenerated();
+		bool FixDegenerated();
 
 		/****** ShapeFix_Wire::FixDegenerated ******/
-		/****** md5 signature: 1669c72627315d9bfb0b38c928c1edd1 ******/
+		/****** md5 signature: dba9d3d676f8e211fffce1af7b0fb9fc ******/
 		%feature("compactdefaultargs") FixDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4211,23 +4212,23 @@ Description
 -----------
 Fixes Degenerated Edge Checks an <num-th> edge or a point between <num>th-1 and <num>th edges for a singularity on a supporting surface. If singularity is detected, either adds new degenerated edge (before <num>th), or makes <num>th edge to be degenerated.
 ") FixDegenerated;
-		Standard_Boolean FixDegenerated(const Standard_Integer num);
+		bool FixDegenerated(const int num);
 
+		/****** ShapeFix_Wire::FixDegeneratedMode ******/
+		/****** md5 signature: cffb25bc6b13a74d7f20263554899664 ******/
+		%feature("compactdefaultargs") FixDegeneratedMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixDegeneratedMode() {
-            return (Standard_Integer) $self->FixDegeneratedMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixDegeneratedMode(Standard_Integer value) {
-            $self->FixDegeneratedMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixDegeneratedMode;
+		int & FixDegeneratedMode();
+
 		/****** ShapeFix_Wire::FixEdgeCurves ******/
-		/****** md5 signature: 1ce0789d07da358dc1e3fe6e739d31e3 ******/
+		/****** md5 signature: aa8a12085ed152e39f2e123ada52565f ******/
 		%feature("compactdefaultargs") FixEdgeCurves;
 		%feature("autodoc", "Return
 -------
@@ -4237,21 +4238,21 @@ Description
 -----------
 Groups the fixes dealing with 3d and pcurves of the edges. The order of the fixes and the default behaviour are: ShapeFix_Edge::FixReversed2d ShapeFix_Edge::FixRemovePCurve (only if forced) ShapeFix_Edge::FixAddPCurve ShapeFix_Edge::FixRemoveCurve3d (only if forced) ShapeFix_Edge::FixAddCurve3d FixSeam, FixShifted, ShapeFix_Edge::FixSameParameter.
 ") FixEdgeCurves;
-		Standard_Boolean FixEdgeCurves();
+		bool FixEdgeCurves();
 
+		/****** ShapeFix_Wire::FixEdgeCurvesMode ******/
+		/****** md5 signature: 5a81e71accd6e332d1f11351c45320fc ******/
+		%feature("compactdefaultargs") FixEdgeCurvesMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixEdgeCurvesMode() {
-            return (Standard_Integer) $self->FixEdgeCurvesMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixEdgeCurvesMode(Standard_Integer value) {
-            $self->FixEdgeCurvesMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixEdgeCurvesMode;
+		int & FixEdgeCurvesMode();
+
 		/****** ShapeFix_Wire::FixEdgeTool ******/
 		/****** md5 signature: 89a2d8636a7be4b25bc33761daf78b13 ******/
 		%feature("compactdefaultargs") FixEdgeTool;
@@ -4266,13 +4267,13 @@ Returns tool for fixing wires.
 		opencascade::handle<ShapeFix_Edge> FixEdgeTool();
 
 		/****** ShapeFix_Wire::FixGap2d ******/
-		/****** md5 signature: d86090ad17682ceff1fdd23b52aee4e4 ******/
+		/****** md5 signature: a761279c2d46196d60d7a6b8c759d031 ******/
 		%feature("compactdefaultargs") FixGap2d;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-convert: bool (optional, default to Standard_False)
+convert: bool (optional, default to false)
 
 Return
 -------
@@ -4282,16 +4283,16 @@ Description
 -----------
 Fixes gap between ends of pcurves on num-1 and num-th edges. myPrecision is used to detect the gap. If convert is True, converts pcurves to bsplines to bend.
 ") FixGap2d;
-		Standard_Boolean FixGap2d(const Standard_Integer num, const Standard_Boolean convert = Standard_False);
+		bool FixGap2d(const int num, const bool convert = false);
 
 		/****** ShapeFix_Wire::FixGap3d ******/
-		/****** md5 signature: 36bf4f6132101376fd247abbff4d6c66 ******/
+		/****** md5 signature: 225e7652a7eb268bffc4cd72aa866e2e ******/
 		%feature("compactdefaultargs") FixGap3d;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-convert: bool (optional, default to Standard_False)
+convert: bool (optional, default to false)
 
 Return
 -------
@@ -4301,10 +4302,10 @@ Description
 -----------
 Fixes gap between ends of 3d curves on num-1 and num-th edges. myPrecision is used to detect the gap. If convert is True, converts curves to bsplines to bend.
 ") FixGap3d;
-		Standard_Boolean FixGap3d(const Standard_Integer num, const Standard_Boolean convert = Standard_False);
+		bool FixGap3d(const int num, const bool convert = false);
 
 		/****** ShapeFix_Wire::FixGaps2d ******/
-		/****** md5 signature: ddd5b89bc803d51a89801ba2a4ff1762 ******/
+		/****** md5 signature: 4648c1a31ef5d1710e7257b0c8b40d06 ******/
 		%feature("compactdefaultargs") FixGaps2d;
 		%feature("autodoc", "Return
 -------
@@ -4314,23 +4315,23 @@ Description
 -----------
 Fixes gaps between ends of pcurves on adjacent edges myPrecision is used to detect the gaps.
 ") FixGaps2d;
-		Standard_Boolean FixGaps2d();
+		bool FixGaps2d();
 
+		/****** ShapeFix_Wire::FixGaps2dMode ******/
+		/****** md5 signature: f0e2db86f1b2b46d8fa0b2381bcb7779 ******/
+		%feature("compactdefaultargs") FixGaps2dMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixGaps2dMode() {
-            return (Standard_Integer) $self->FixGaps2dMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixGaps2dMode(Standard_Integer value) {
-            $self->FixGaps2dMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the flag for corresponding Fix..() method which defines whether this method will be called from the method APIFix(): -1 default 1 method will be called 0 method will not be called.
+") FixGaps2dMode;
+		int & FixGaps2dMode();
+
 		/****** ShapeFix_Wire::FixGaps3d ******/
-		/****** md5 signature: 6b4179fdad93d838515f4aa42801b0c4 ******/
+		/****** md5 signature: 7cd749f3d0c17a0b3dd78e26642923f4 ******/
 		%feature("compactdefaultargs") FixGaps3d;
 		%feature("autodoc", "Return
 -------
@@ -4340,54 +4341,54 @@ Description
 -----------
 Fixes gaps between ends of 3d curves on adjacent edges myPrecision is used to detect the gaps.
 ") FixGaps3d;
-		Standard_Boolean FixGaps3d();
+		bool FixGaps3d();
 
+		/****** ShapeFix_Wire::FixGaps3dMode ******/
+		/****** md5 signature: fc0ddac72b00ca52fa88a80be6b855ef ******/
+		%feature("compactdefaultargs") FixGaps3dMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixGaps3dMode() {
-            return (Standard_Integer) $self->FixGaps3dMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixGaps3dMode(Standard_Integer value) {
-            $self->FixGaps3dMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixGaps3dMode;
+		int & FixGaps3dMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetFixGapsByRangesMode() {
-            return (Standard_Boolean) $self->FixGapsByRangesMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixGapsByRangesMode(Standard_Boolean value) {
-            $self->FixGapsByRangesMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixGapsByRangesMode ******/
+		/****** md5 signature: 4e6e760d67ebe5b501f4b5f1e5f58115 ******/
+		%feature("compactdefaultargs") FixGapsByRangesMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixIntersectingEdgesMode() {
-            return (Standard_Integer) $self->FixIntersectingEdgesMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixIntersectingEdgesMode(Standard_Integer value) {
-            $self->FixIntersectingEdgesMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the flag which defines whether tool tries to fix gaps first by changing curves ranges (i.e. using intersection, extrema, projections) or not.
+") FixGapsByRangesMode;
+		bool & FixGapsByRangesMode();
+
+		/****** ShapeFix_Wire::FixIntersectingEdgesMode ******/
+		/****** md5 signature: 26390dd8bb776f3db1ae8c47db65973a ******/
+		%feature("compactdefaultargs") FixIntersectingEdgesMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") FixIntersectingEdgesMode;
+		int & FixIntersectingEdgesMode();
+
 		/****** ShapeFix_Wire::FixLacking ******/
-		/****** md5 signature: b75db5e25f0cf9f8dce6278ffab255b9 ******/
+		/****** md5 signature: 04671f7e31b3c202f87afe26193ec291 ******/
 		%feature("compactdefaultargs") FixLacking;
 		%feature("autodoc", "
 Parameters
 ----------
-force: bool (optional, default to Standard_False)
+force: bool (optional, default to false)
 
 Return
 -------
@@ -4397,16 +4398,16 @@ Description
 -----------
 Applies FixLacking(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True If <force> is False (default), test for connectness is done with precision of vertex between edges, else it is done with minimal value of vertex tolerance and Analyzer.Precision(). Hence, <force> will lead to inserting lacking edges in replacement of vertices which have big tolerances.
 ") FixLacking;
-		Standard_Boolean FixLacking(const Standard_Boolean force = Standard_False);
+		bool FixLacking(const bool force = false);
 
 		/****** ShapeFix_Wire::FixLacking ******/
-		/****** md5 signature: 3fd5850761e0820d4e36758773896433 ******/
+		/****** md5 signature: 67f65916a962ce6af931356b62cd005c ******/
 		%feature("compactdefaultargs") FixLacking;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-force: bool (optional, default to Standard_False)
+force: bool (optional, default to false)
 
 Return
 -------
@@ -4416,36 +4417,36 @@ Description
 -----------
 Fixes Lacking Edge Test if two adjucent edges are disconnected in 2d (while connected in 3d), and in that case either increase tolerance of the vertex or add a new edge (straight in 2d space), in order to close wire in 2d. Returns True if edge was added or tolerance was increased.
 ") FixLacking;
-		Standard_Boolean FixLacking(const Standard_Integer num, const Standard_Boolean force = Standard_False);
+		bool FixLacking(const int num, const bool force = false);
 
+		/****** ShapeFix_Wire::FixLackingMode ******/
+		/****** md5 signature: 81029c09c5d9b9ad47e8ccd93d8ed998 ******/
+		%feature("compactdefaultargs") FixLackingMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixLackingMode() {
-            return (Standard_Integer) $self->FixLackingMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixLackingMode(Standard_Integer value) {
-            $self->FixLackingMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixLackingMode;
+		int & FixLackingMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixNonAdjacentIntersectingEdgesMode() {
-            return (Standard_Integer) $self->FixNonAdjacentIntersectingEdgesMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixNonAdjacentIntersectingEdgesMode(Standard_Integer value) {
-            $self->FixNonAdjacentIntersectingEdgesMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixNonAdjacentIntersectingEdgesMode ******/
+		/****** md5 signature: 40c105e1455ab68b083eb8f65b92aafe ******/
+		%feature("compactdefaultargs") FixNonAdjacentIntersectingEdgesMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns (modifiable) the flag for corresponding Fix..() method which defines whether this method will be called from the corresponding Fix..() method of the public level: -1 default 1 method will be called 0 method will not be called.
+") FixNonAdjacentIntersectingEdgesMode;
+		int & FixNonAdjacentIntersectingEdgesMode();
+
 		/****** ShapeFix_Wire::FixNotchedEdges ******/
-		/****** md5 signature: 60073f14f9e9bca654a0dad251271fc0 ******/
+		/****** md5 signature: f5328b7a3739116e53bccc96bc33c928 ******/
 		%feature("compactdefaultargs") FixNotchedEdges;
 		%feature("autodoc", "Return
 -------
@@ -4455,54 +4456,54 @@ Description
 -----------
 No available documentation.
 ") FixNotchedEdges;
-		Standard_Boolean FixNotchedEdges();
+		bool FixNotchedEdges();
 
+		/****** ShapeFix_Wire::FixNotchedEdgesMode ******/
+		/****** md5 signature: f569fc077080dcd706c425125a3281a9 ******/
+		%feature("compactdefaultargs") FixNotchedEdgesMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixNotchedEdgesMode() {
-            return (Standard_Integer) $self->FixNotchedEdgesMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixNotchedEdgesMode(Standard_Integer value) {
-            $self->FixNotchedEdgesMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixNotchedEdgesMode;
+		int & FixNotchedEdgesMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixRemoveCurve3dMode() {
-            return (Standard_Integer) $self->FixRemoveCurve3dMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixRemoveCurve3dMode(Standard_Integer value) {
-            $self->FixRemoveCurve3dMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixRemoveCurve3dMode ******/
+		/****** md5 signature: 908ff62b336bb70f7b973d19d7d0a572 ******/
+		%feature("compactdefaultargs") FixRemoveCurve3dMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixRemovePCurveMode() {
-            return (Standard_Integer) $self->FixRemovePCurveMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixRemovePCurveMode(Standard_Integer value) {
-            $self->FixRemovePCurveMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixRemoveCurve3dMode;
+		int & FixRemoveCurve3dMode();
+
+		/****** ShapeFix_Wire::FixRemovePCurveMode ******/
+		/****** md5 signature: 2b6e794cebe710bd431817e26f3dd244 ******/
+		%feature("compactdefaultargs") FixRemovePCurveMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") FixRemovePCurveMode;
+		int & FixRemovePCurveMode();
+
 		/****** ShapeFix_Wire::FixReorder ******/
-		/****** md5 signature: 42e11344e450d54e565c85e591f410ab ******/
+		/****** md5 signature: 15a9554766f776bd5257c3d9e93073b7 ******/
 		%feature("compactdefaultargs") FixReorder;
 		%feature("autodoc", "
 Parameters
 ----------
-theModeBoth: bool (optional, default to Standard_False)
+theModeBoth: bool (optional, default to false)
 
 Return
 -------
@@ -4512,10 +4513,10 @@ Description
 -----------
 Performs an analysis and reorders edges in the wire using class WireOrder. Flag <theModeBoth> determines the use of miscible mode if necessary.
 ") FixReorder;
-		Standard_Boolean FixReorder(Standard_Boolean theModeBoth = Standard_False);
+		bool FixReorder(bool theModeBoth = false);
 
 		/****** ShapeFix_Wire::FixReorder ******/
-		/****** md5 signature: 714f0bb13d626a574d67d5b76557a0ae ******/
+		/****** md5 signature: 13cadb9944c226ed3cf9a07cc4fd7ec7 ******/
 		%feature("compactdefaultargs") FixReorder;
 		%feature("autodoc", "
 Parameters
@@ -4530,49 +4531,49 @@ Description
 -----------
 Reorder edges in the wire as determined by WireOrder that should be filled and computed before.
 ") FixReorder;
-		Standard_Boolean FixReorder(const ShapeAnalysis_WireOrder & wi);
+		bool FixReorder(const ShapeAnalysis_WireOrder & wi);
 
+		/****** ShapeFix_Wire::FixReorderMode ******/
+		/****** md5 signature: 72f5b92e6534842a3b95e973702425c2 ******/
+		%feature("compactdefaultargs") FixReorderMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixReorderMode() {
-            return (Standard_Integer) $self->FixReorderMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixReorderMode(Standard_Integer value) {
-            $self->FixReorderMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixReorderMode;
+		int & FixReorderMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixReversed2dMode() {
-            return (Standard_Integer) $self->FixReversed2dMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixReversed2dMode(Standard_Integer value) {
-            $self->FixReversed2dMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixReversed2dMode ******/
+		/****** md5 signature: 6ea1297ccfd4c2f069da99f0f8986bf5 ******/
+		%feature("compactdefaultargs") FixReversed2dMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSameParameterMode() {
-            return (Standard_Integer) $self->FixSameParameterMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSameParameterMode(Standard_Integer value) {
-            $self->FixSameParameterMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixReversed2dMode;
+		int & FixReversed2dMode();
+
+		/****** ShapeFix_Wire::FixSameParameterMode ******/
+		/****** md5 signature: 8967dbc7f7bdb1ed4cca3f7e9cad44b3 ******/
+		%feature("compactdefaultargs") FixSameParameterMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") FixSameParameterMode;
+		int & FixSameParameterMode();
+
 		/****** ShapeFix_Wire::FixSeam ******/
-		/****** md5 signature: 9d2db9b87a2ed87b34f56a3ddb6a7507 ******/
+		/****** md5 signature: ae27db772ddc75bbae611022b7192488 ******/
 		%feature("compactdefaultargs") FixSeam;
 		%feature("autodoc", "
 Parameters
@@ -4587,36 +4588,36 @@ Description
 -----------
 Fixes a seam edge A Seam edge has two pcurves, one for forward. one for reversed The forward pcurve must be set as first //! NOTE that correct order of pcurves in the seam edge depends on its orientation (i.e., on orientation of the wire, method of exploration of edges etc.). Since wire represented by the ShapeExtend_WireData is always forward (orientation is accounted by edges), it will work correct if: 1. Wire created from ShapeExtend_WireData with methods ShapeExtend_WireData::Wire..() is added into the FORWARD face (orientation can be applied later) 2. Wire is extracted from the face with orientation not composed with orientation of the face.
 ") FixSeam;
-		Standard_Boolean FixSeam(const Standard_Integer num);
+		bool FixSeam(const int num);
 
+		/****** ShapeFix_Wire::FixSeamMode ******/
+		/****** md5 signature: 2bd183b6828c023229487fd666adbf9b ******/
+		%feature("compactdefaultargs") FixSeamMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSeamMode() {
-            return (Standard_Integer) $self->FixSeamMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSeamMode(Standard_Integer value) {
-            $self->FixSeamMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixSeamMode;
+		int & FixSeamMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSelfIntersectingEdgeMode() {
-            return (Standard_Integer) $self->FixSelfIntersectingEdgeMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSelfIntersectingEdgeMode(Standard_Integer value) {
-            $self->FixSelfIntersectingEdgeMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixSelfIntersectingEdgeMode ******/
+		/****** md5 signature: 80f987c8aa605e0ffb6c6964ced750e2 ******/
+		%feature("compactdefaultargs") FixSelfIntersectingEdgeMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") FixSelfIntersectingEdgeMode;
+		int & FixSelfIntersectingEdgeMode();
+
 		/****** ShapeFix_Wire::FixSelfIntersection ******/
-		/****** md5 signature: 818d07d9b6641ec293d251eda902ca90 ******/
+		/****** md5 signature: c5f36da27df4b982f9024a7c96e72c85 ******/
 		%feature("compactdefaultargs") FixSelfIntersection;
 		%feature("autodoc", "Return
 -------
@@ -4626,23 +4627,23 @@ Description
 -----------
 Applies FixSelfIntersectingEdge(num) and FixIntersectingEdges(num) to all edges in the wire and FixIntersectingEdges(num1, num2) for all pairs num1 and num2 such that num2 >= num1 + 2 and removes wrong edges if any.
 ") FixSelfIntersection;
-		Standard_Boolean FixSelfIntersection();
+		bool FixSelfIntersection();
 
+		/****** ShapeFix_Wire::FixSelfIntersectionMode ******/
+		/****** md5 signature: b8ce68270ececaeac0a7990cf6463dcf ******/
+		%feature("compactdefaultargs") FixSelfIntersectionMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSelfIntersectionMode() {
-            return (Standard_Integer) $self->FixSelfIntersectionMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSelfIntersectionMode(Standard_Integer value) {
-            $self->FixSelfIntersectionMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixSelfIntersectionMode;
+		int & FixSelfIntersectionMode();
+
 		/****** ShapeFix_Wire::FixShifted ******/
-		/****** md5 signature: c4ce79a0df9317908ad7ea7f959d37d1 ******/
+		/****** md5 signature: 8d9ff0c99d661619cee9547f4669f26c ******/
 		%feature("compactdefaultargs") FixShifted;
 		%feature("autodoc", "Return
 -------
@@ -4652,29 +4653,29 @@ Description
 -----------
 Fixes edges which have pcurves shifted by whole parameter range on the closed surface (the case may occur if pcurve of edge was computed by projecting 3d curve, which goes along the seam). It compares each two consequent edges and tries to connect them if distance between ends is near to range of the surface. It also can detect and fix the case if all pcurves are connected, but lie out of parametric bounds of the surface. In addition to FixShifted from ShapeFix_Wire, more sophisticated check of degenerate points is performed, and special cases like sphere given by two meridians are treated.
 ") FixShifted;
-		Standard_Boolean FixShifted();
+		bool FixShifted();
 
+		/****** ShapeFix_Wire::FixShiftedMode ******/
+		/****** md5 signature: f474b5e54d65cad224d582360e112335 ******/
+		%feature("compactdefaultargs") FixShiftedMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixShiftedMode() {
-            return (Standard_Integer) $self->FixShiftedMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixShiftedMode(Standard_Integer value) {
-            $self->FixShiftedMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixShiftedMode;
+		int & FixShiftedMode();
+
 		/****** ShapeFix_Wire::FixSmall ******/
-		/****** md5 signature: 80edde92d44c84fa1bab38a19564acae ******/
+		/****** md5 signature: daf84810bf108bd0debdb941aa8b74c1 ******/
 		%feature("compactdefaultargs") FixSmall;
 		%feature("autodoc", "
 Parameters
 ----------
 lockvtx: bool
-precsmall: float (optional, default to 0.0)
+precsmall: double (optional, default to 0.0)
 
 Return
 -------
@@ -4684,17 +4685,17 @@ Description
 -----------
 Applies FixSmall(num) to all edges in the wire.
 ") FixSmall;
-		Standard_Integer FixSmall(const Standard_Boolean lockvtx, const Standard_Real precsmall = 0.0);
+		int FixSmall(const bool lockvtx, const double precsmall = 0.0);
 
 		/****** ShapeFix_Wire::FixSmall ******/
-		/****** md5 signature: 58abaa56305b1fe5b2efde18d1cf22ad ******/
+		/****** md5 signature: 6fe378a080fc80d0854b9b8e6908a70c ******/
 		%feature("compactdefaultargs") FixSmall;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 lockvtx: bool
-precsmall: float
+precsmall: double
 
 Return
 -------
@@ -4704,36 +4705,36 @@ Description
 -----------
 Fixes Null Length Edge to be removed If an Edge has Null Length (regarding preci, or <precsmall> - what is smaller), it should be removed It can be with no problem if its two vertices are the same Else, if lockvtx is False, it is removed and its end vertex is put on the preceding edge But if lockvtx is True, this edge must be kept ...
 ") FixSmall;
-		Standard_Boolean FixSmall(const Standard_Integer num, const Standard_Boolean lockvtx, const Standard_Real precsmall);
+		bool FixSmall(const int num, const bool lockvtx, const double precsmall);
 
+		/****** ShapeFix_Wire::FixSmallMode ******/
+		/****** md5 signature: cd00e4a007154936fd10423b4e0b098f ******/
+		%feature("compactdefaultargs") FixSmallMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixSmallMode() {
-            return (Standard_Integer) $self->FixSmallMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixSmallMode(Standard_Integer value) {
-            $self->FixSmallMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixSmallMode;
+		int & FixSmallMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixTailMode() {
-            return (Standard_Integer) $self->FixTailMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixTailMode(Standard_Integer value) {
-            $self->FixTailMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::FixTailMode ******/
+		/****** md5 signature: b06d4f1c4e7ab93278d94bcc6b68f6c5 ******/
+		%feature("compactdefaultargs") FixTailMode;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") FixTailMode;
+		int & FixTailMode();
+
 		/****** ShapeFix_Wire::FixTails ******/
-		/****** md5 signature: 025a27fb04abe9028ab260473d50c223 ******/
+		/****** md5 signature: 5602fde73e11676ad89309753c7fc220 ******/
 		%feature("compactdefaultargs") FixTails;
 		%feature("autodoc", "Return
 -------
@@ -4743,30 +4744,30 @@ Description
 -----------
 No available documentation.
 ") FixTails;
-		Standard_Boolean FixTails();
+		bool FixTails();
 
+		/****** ShapeFix_Wire::FixVertexToleranceMode ******/
+		/****** md5 signature: 3d03c1e90d26e582242718d25c992b71 ******/
+		%feature("compactdefaultargs") FixVertexToleranceMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetFixVertexToleranceMode() {
-            return (Standard_Integer) $self->FixVertexToleranceMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetFixVertexToleranceMode(Standard_Integer value) {
-            $self->FixVertexToleranceMode()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") FixVertexToleranceMode;
+		int & FixVertexToleranceMode();
+
 		/****** ShapeFix_Wire::Init ******/
-		/****** md5 signature: da988b40598522f685f7f9d7b47bdaa4 ******/
+		/****** md5 signature: ba52719c82cae7fafba5c7ab88e4a74a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 wire: TopoDS_Wire
 face: TopoDS_Face
-prec: float
+prec: double
 
 Return
 -------
@@ -4776,7 +4777,7 @@ Description
 -----------
 Load analyzer with all the data for the wire and face and drops all fixing statuses.
 ") Init;
-		void Init(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real prec);
+		void Init(const TopoDS_Wire & wire, const TopoDS_Face & face, const double prec);
 
 		/****** ShapeFix_Wire::Init ******/
 		/****** md5 signature: dcd292e408c7ae6f48c04414145d7558 ******/
@@ -4797,7 +4798,7 @@ Load analyzer with all the data already prepared and drops all fixing statuses I
 		void Init(const opencascade::handle<ShapeAnalysis_Wire> & saw);
 
 		/****** ShapeFix_Wire::IsLoaded ******/
-		/****** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ******/
+		/****** md5 signature: fc2ce1bc5ddcb407c056c0f8bbdeface ******/
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "Return
 -------
@@ -4807,10 +4808,10 @@ Description
 -----------
 Tells if the wire is loaded.
 ") IsLoaded;
-		Standard_Boolean IsLoaded();
+		bool IsLoaded();
 
 		/****** ShapeFix_Wire::IsReady ******/
-		/****** md5 signature: 68a96b040fc0b59848125a1a3ef33dcb ******/
+		/****** md5 signature: c55402f1e031fb2faa07c9375fee061b ******/
 		%feature("compactdefaultargs") IsReady;
 		%feature("autodoc", "Return
 -------
@@ -4820,10 +4821,10 @@ Description
 -----------
 Tells if the wire and face are loaded.
 ") IsReady;
-		Standard_Boolean IsReady();
+		bool IsReady();
 
 		/****** ShapeFix_Wire::LastFixStatus ******/
-		/****** md5 signature: a5b25a5fb32695c9e1c100e8f2249b5d ******/
+		/****** md5 signature: 4812e3335e759dacba0f3b0926ce749a ******/
 		%feature("compactdefaultargs") LastFixStatus;
 		%feature("autodoc", "
 Parameters
@@ -4838,7 +4839,7 @@ Description
 -----------
 Queries the status of last call to methods Fix... of advanced level For details see corresponding methods; universal statuses are: OK: problem not detected; nothing done DONE: problem was detected and successfully fixed FAIL: problem cannot be fixed.
 ") LastFixStatus;
-		Standard_Boolean LastFixStatus(const ShapeExtend_Status status);
+		bool LastFixStatus(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::Load ******/
 		/****** md5 signature: 2fdca06c20821b51a2c36237ba0af41b ******/
@@ -4876,47 +4877,47 @@ Load data for the wire, and drops all fixing statuses.
 ") Load;
 		void Load(const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
+		/****** ShapeFix_Wire::ModifyGeometryMode ******/
+		/****** md5 signature: 558958a2021c4ecae3d1c2025611ac49 ******/
+		%feature("compactdefaultargs") ModifyGeometryMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetModifyGeometryMode() {
-            return (Standard_Boolean) $self->ModifyGeometryMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetModifyGeometryMode(Standard_Boolean value) {
-            $self->ModifyGeometryMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the flag which defines whether the Fix..() methods are allowed to modify geometry of the edges and vertices.
+") ModifyGeometryMode;
+		bool & ModifyGeometryMode();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetModifyRemoveLoopMode() {
-            return (Standard_Integer) $self->ModifyRemoveLoopMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetModifyRemoveLoopMode(Standard_Integer value) {
-            $self->ModifyRemoveLoopMode()=value;
-            }
-        };
+		/****** ShapeFix_Wire::ModifyRemoveLoopMode ******/
+		/****** md5 signature: c75f75e7ac00ec7177bc2b8410344e7c ******/
+		%feature("compactdefaultargs") ModifyRemoveLoopMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetModifyTopologyMode() {
-            return (Standard_Boolean) $self->ModifyTopologyMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetModifyTopologyMode(Standard_Boolean value) {
-            $self->ModifyTopologyMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the flag which defines whether the Fix..() methods are allowed to modify RemoveLoop of the edges.
+") ModifyRemoveLoopMode;
+		int & ModifyRemoveLoopMode();
+
+		/****** ShapeFix_Wire::ModifyTopologyMode ******/
+		/****** md5 signature: 8d1f6fa2d099341fac17a8080a04340f ******/
+		%feature("compactdefaultargs") ModifyTopologyMode;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns (modifiable) the flag which defines whether it is allowed to modify topology of the wire during fixing (adding/removing edges etc.).
+") ModifyTopologyMode;
+		bool & ModifyTopologyMode();
+
 		/****** ShapeFix_Wire::NbEdges ******/
-		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
+		/****** md5 signature: f741965989565caaff095f09d2955db8 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -4926,10 +4927,10 @@ Description
 -----------
 returns number of edges in the working wire.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** ShapeFix_Wire::Perform ******/
-		/****** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ******/
+		/****** md5 signature: 836e5d294e107797e3a08ad4bfbbad29 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -4939,21 +4940,21 @@ Description
 -----------
 This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes //! The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered).
 ") Perform;
-		Standard_Boolean Perform();
+		bool Perform();
 
+		/****** ShapeFix_Wire::PreferencePCurveMode ******/
+		/****** md5 signature: 93057f8f14ac1ed03582c0a22b1a70c9 ******/
+		%feature("compactdefaultargs") PreferencePCurveMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetPreferencePCurveMode() {
-            return (Standard_Boolean) $self->PreferencePCurveMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetPreferencePCurveMode(Standard_Boolean value) {
-            $self->PreferencePCurveMode()=value;
-            }
-        };
+Description
+-----------
+Returns (modifiable) the flag which defines whether the 2d (True) representation of the wire is preferable over 3d one (in the case of ambiguity in FixEdgeCurves).
+") PreferencePCurveMode;
+		bool & PreferencePCurveMode();
+
 		/****** ShapeFix_Wire::SetFace ******/
 		/****** md5 signature: ad791c3e7afa47c0cda20c76d19a66b4 ******/
 		%feature("compactdefaultargs") SetFace;
@@ -4972,13 +4973,32 @@ Set working face for the wire.
 ") SetFace;
 		void SetFace(const TopoDS_Face & face);
 
+		/****** ShapeFix_Wire::SetFace ******/
+		/****** md5 signature: 963ef92469acffd9ffbff9603c45aff7 ******/
+		%feature("compactdefaultargs") SetFace;
+		%feature("autodoc", "
+Parameters
+----------
+theFace: TopoDS_Face
+theSurfaceAnalysis: ShapeAnalysis_Surface
+
+Return
+-------
+None
+
+Description
+-----------
+Set working face for the wire and surface analysis object.
+") SetFace;
+		void SetFace(const TopoDS_Face & theFace, const opencascade::handle<ShapeAnalysis_Surface> & theSurfaceAnalysis);
+
 		/****** ShapeFix_Wire::SetMaxTailAngle ******/
-		/****** md5 signature: 475a9e9041c1536c4dec5da71980b5b4 ******/
+		/****** md5 signature: 92d3e63b87875322a79219b710709e93 ******/
 		%feature("compactdefaultargs") SetMaxTailAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theMaxTailAngle: float
+theMaxTailAngle: double
 
 Return
 -------
@@ -4988,15 +5008,15 @@ Description
 -----------
 Sets the maximal allowed angle of the tails in radians.
 ") SetMaxTailAngle;
-		void SetMaxTailAngle(const Standard_Real theMaxTailAngle);
+		void SetMaxTailAngle(const double theMaxTailAngle);
 
 		/****** ShapeFix_Wire::SetMaxTailWidth ******/
-		/****** md5 signature: 03078458077b762299199552239f8a99 ******/
+		/****** md5 signature: 3468532afb476da8e313eff1b3a12618 ******/
 		%feature("compactdefaultargs") SetMaxTailWidth;
 		%feature("autodoc", "
 Parameters
 ----------
-theMaxTailWidth: float
+theMaxTailWidth: double
 
 Return
 -------
@@ -5006,15 +5026,15 @@ Description
 -----------
 Sets the maximal allowed width of the tails.
 ") SetMaxTailWidth;
-		void SetMaxTailWidth(const Standard_Real theMaxTailWidth);
+		void SetMaxTailWidth(const double theMaxTailWidth);
 
 		/****** ShapeFix_Wire::SetPrecision ******/
-		/****** md5 signature: 892928b1928c1eee74646dc9b35b2350 ******/
+		/****** md5 signature: de2479a9bd7c0016ebc1d0fbb938abf2 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-prec: float
+prec: double
 
 Return
 -------
@@ -5024,7 +5044,25 @@ Description
 -----------
 Set working precision (to root and to analyzer).
 ") SetPrecision;
-		virtual void SetPrecision(const Standard_Real prec);
+		void SetPrecision(const double prec);
+
+		/****** ShapeFix_Wire::SetSurface ******/
+		/****** md5 signature: c7dba3cd6c0b76225847bdfadee04fb7 ******/
+		%feature("compactdefaultargs") SetSurface;
+		%feature("autodoc", "
+Parameters
+----------
+theSurfaceAnalysis: ShapeAnalysis_Surface
+
+Return
+-------
+None
+
+Description
+-----------
+Set surface analysis for the wire.
+") SetSurface;
+		void SetSurface(const opencascade::handle<ShapeAnalysis_Surface> & theSurfaceAnalysis);
 
 		/****** ShapeFix_Wire::SetSurface ******/
 		/****** md5 signature: ef3c30882af3f3cdd5459f6b9a1a3525 ******/
@@ -5064,7 +5102,7 @@ Set surface for the wire.
 		void SetSurface(const opencascade::handle<Geom_Surface> & surf, const TopLoc_Location & loc);
 
 		/****** ShapeFix_Wire::StatusClosed ******/
-		/****** md5 signature: 397ec850ca398b7fd0a894a002d47198 ******/
+		/****** md5 signature: 25bafa024af2fc11cb27a8ac610a19b8 ******/
 		%feature("compactdefaultargs") StatusClosed;
 		%feature("autodoc", "
 Parameters
@@ -5079,10 +5117,10 @@ Description
 -----------
 No available documentation.
 ") StatusClosed;
-		Standard_Boolean StatusClosed(const ShapeExtend_Status status);
+		bool StatusClosed(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusConnected ******/
-		/****** md5 signature: 778e67ce9161a6c5b336734febb775f3 ******/
+		/****** md5 signature: c5ddd7de28534aec0c35ccd746c29747 ******/
 		%feature("compactdefaultargs") StatusConnected;
 		%feature("autodoc", "
 Parameters
@@ -5097,10 +5135,10 @@ Description
 -----------
 No available documentation.
 ") StatusConnected;
-		Standard_Boolean StatusConnected(const ShapeExtend_Status status);
+		bool StatusConnected(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusDegenerated ******/
-		/****** md5 signature: 83150213c249c7e49e122df8861b868c ******/
+		/****** md5 signature: 830f4427a84c562451f05c5d3c57d517 ******/
 		%feature("compactdefaultargs") StatusDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -5115,10 +5153,10 @@ Description
 -----------
 No available documentation.
 ") StatusDegenerated;
-		Standard_Boolean StatusDegenerated(const ShapeExtend_Status status);
+		bool StatusDegenerated(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusEdgeCurves ******/
-		/****** md5 signature: 7db5a16b2f75f1f3c8e3020d7471e69b ******/
+		/****** md5 signature: 5e3c87b202ce0097742113026303e254 ******/
 		%feature("compactdefaultargs") StatusEdgeCurves;
 		%feature("autodoc", "
 Parameters
@@ -5133,10 +5171,10 @@ Description
 -----------
 No available documentation.
 ") StatusEdgeCurves;
-		Standard_Boolean StatusEdgeCurves(const ShapeExtend_Status status);
+		bool StatusEdgeCurves(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusFixTails ******/
-		/****** md5 signature: ec7222dd1dad9993c8ebe67ae524ee10 ******/
+		/****** md5 signature: 9447734e7318d570d8a66449e0b097ae ******/
 		%feature("compactdefaultargs") StatusFixTails;
 		%feature("autodoc", "
 Parameters
@@ -5151,10 +5189,10 @@ Description
 -----------
 No available documentation.
 ") StatusFixTails;
-		Standard_Boolean StatusFixTails(const ShapeExtend_Status status);
+		bool StatusFixTails(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusGaps2d ******/
-		/****** md5 signature: 1f5eabaad5dc9661856b002b6e183eee ******/
+		/****** md5 signature: 69c52c08e3bca0fbf68a1f155c236295 ******/
 		%feature("compactdefaultargs") StatusGaps2d;
 		%feature("autodoc", "
 Parameters
@@ -5169,10 +5207,10 @@ Description
 -----------
 No available documentation.
 ") StatusGaps2d;
-		Standard_Boolean StatusGaps2d(const ShapeExtend_Status status);
+		bool StatusGaps2d(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusGaps3d ******/
-		/****** md5 signature: 825f4f566e8fba4e295cd4bec34c5c53 ******/
+		/****** md5 signature: 51c67c005b614b43ae947faa11825ef8 ******/
 		%feature("compactdefaultargs") StatusGaps3d;
 		%feature("autodoc", "
 Parameters
@@ -5187,10 +5225,10 @@ Description
 -----------
 No available documentation.
 ") StatusGaps3d;
-		Standard_Boolean StatusGaps3d(const ShapeExtend_Status status);
+		bool StatusGaps3d(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusLacking ******/
-		/****** md5 signature: 52ad411d37899450cdc3de41cf0e88fc ******/
+		/****** md5 signature: c84868dcf3f6380c07cf572efe82cd2b ******/
 		%feature("compactdefaultargs") StatusLacking;
 		%feature("autodoc", "
 Parameters
@@ -5205,10 +5243,10 @@ Description
 -----------
 No available documentation.
 ") StatusLacking;
-		Standard_Boolean StatusLacking(const ShapeExtend_Status status);
+		bool StatusLacking(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusNotches ******/
-		/****** md5 signature: 8605c9e6388e4a5a05457c6be7c03876 ******/
+		/****** md5 signature: 8bdaae911da2b6737814d0bdb768242c ******/
 		%feature("compactdefaultargs") StatusNotches;
 		%feature("autodoc", "
 Parameters
@@ -5223,10 +5261,10 @@ Description
 -----------
 No available documentation.
 ") StatusNotches;
-		Standard_Boolean StatusNotches(const ShapeExtend_Status status);
+		bool StatusNotches(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusRemovedSegment ******/
-		/****** md5 signature: 70675d4f6f1fd8791c8e40f92a56e97e ******/
+		/****** md5 signature: eb28ef7de9e5795fbc9e1b8231876c86 ******/
 		%feature("compactdefaultargs") StatusRemovedSegment;
 		%feature("autodoc", "Return
 -------
@@ -5236,10 +5274,10 @@ Description
 -----------
 Querying the status of performed API fixing procedures Each Status..() methods gives information about the last call to the corresponding Fix..() method of API level: OK: no problems detected; nothing done DONE: some problem(s) was(were) detected and successfully fixed FAIL: some problem(s) cannot be fixed.
 ") StatusRemovedSegment;
-		Standard_Boolean StatusRemovedSegment();
+		bool StatusRemovedSegment();
 
 		/****** ShapeFix_Wire::StatusReorder ******/
-		/****** md5 signature: 60ee52ad2ba83c2619f928bb00c25ae1 ******/
+		/****** md5 signature: 611643db6118be9e74411b054082c182 ******/
 		%feature("compactdefaultargs") StatusReorder;
 		%feature("autodoc", "
 Parameters
@@ -5254,10 +5292,10 @@ Description
 -----------
 No available documentation.
 ") StatusReorder;
-		Standard_Boolean StatusReorder(const ShapeExtend_Status status);
+		bool StatusReorder(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusSelfIntersection ******/
-		/****** md5 signature: bccc7d7d1b860f4aeb57ab0f15684134 ******/
+		/****** md5 signature: 524de3c8347db23980b2c217028e8006 ******/
 		%feature("compactdefaultargs") StatusSelfIntersection;
 		%feature("autodoc", "
 Parameters
@@ -5272,10 +5310,10 @@ Description
 -----------
 No available documentation.
 ") StatusSelfIntersection;
-		Standard_Boolean StatusSelfIntersection(const ShapeExtend_Status status);
+		bool StatusSelfIntersection(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::StatusSmall ******/
-		/****** md5 signature: 946de8888b815d7dc1018b04a0e6371a ******/
+		/****** md5 signature: 39864f93f64adc8bb8a7fbbc7ce24c9a ******/
 		%feature("compactdefaultargs") StatusSmall;
 		%feature("autodoc", "
 Parameters
@@ -5290,7 +5328,7 @@ Description
 -----------
 No available documentation.
 ") StatusSmall;
-		Standard_Boolean StatusSmall(const ShapeExtend_Status status);
+		bool StatusSmall(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wire::Wire ******/
 		/****** md5 signature: 2fe6e5f402158cff91e9020fddff92e6 ******/
@@ -5379,15 +5417,15 @@ No available documentation.
 		 ShapeFix_Wireframe(const TopoDS_Shape & shape);
 
 		/****** ShapeFix_Wireframe::CheckSmallEdges ******/
-		/****** md5 signature: 4c5ce2c0c383992f36a4a1feefb66041 ******/
+		/****** md5 signature: f2b11ca8af37d04c3830714ca4c3b230 ******/
 		%feature("compactdefaultargs") CheckSmallEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-theSmallEdges: TopTools_MapOfShape
-theEdgeToFaces: TopTools_DataMapOfShapeListOfShape
-theFaceWithSmall: TopTools_DataMapOfShapeListOfShape
-theMultyEdges: TopTools_MapOfShape
+theSmallEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theEdgeToFaces: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theFaceWithSmall: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theMultyEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -5397,7 +5435,7 @@ Description
 -----------
 Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps. Returns True if at least one small edge has been found.
 ") CheckSmallEdges;
-		Standard_Boolean CheckSmallEdges(TopTools_MapOfShape & theSmallEdges, TopTools_DataMapOfShapeListOfShape & theEdgeToFaces, TopTools_DataMapOfShapeListOfShape & theFaceWithSmall, TopTools_MapOfShape & theMultyEdges);
+		bool CheckSmallEdges(NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theSmallEdges, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theEdgeToFaces, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theFaceWithSmall, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theMultyEdges);
 
 		/****** ShapeFix_Wireframe::ClearStatuses ******/
 		/****** md5 signature: 8279d01a949362ea8fada8f9fd40957d ******/
@@ -5413,7 +5451,7 @@ Clears all statuses.
 		virtual void ClearStatuses();
 
 		/****** ShapeFix_Wireframe::FixSmallEdges ******/
-		/****** md5 signature: 050658591f9b62b8c507c8d4a85c8cf1 ******/
+		/****** md5 signature: e40f092eb632f265d86a4b5bf82669d1 ******/
 		%feature("compactdefaultargs") FixSmallEdges;
 		%feature("autodoc", "Return
 -------
@@ -5423,10 +5461,10 @@ Description
 -----------
 Fixes small edges in shape by merging adjacent edges If precision is 0.0, uses Precision::Confusion().
 ") FixSmallEdges;
-		Standard_Boolean FixSmallEdges();
+		bool FixSmallEdges();
 
 		/****** ShapeFix_Wireframe::FixWireGaps ******/
-		/****** md5 signature: ff6d8d5392d953c6896a081c0ef72ee6 ******/
+		/****** md5 signature: b52996f759138fe16a74da5acf04e20d ******/
 		%feature("compactdefaultargs") FixWireGaps;
 		%feature("autodoc", "Return
 -------
@@ -5436,20 +5474,20 @@ Description
 -----------
 Fixes gaps between ends of curves of adjacent edges (both 3d and pcurves) in wires If precision is 0.0, uses Precision::Confusion().
 ") FixWireGaps;
-		Standard_Boolean FixWireGaps();
+		bool FixWireGaps();
 
 		/****** ShapeFix_Wireframe::LimitAngle ******/
-		/****** md5 signature: 99518200b4b3977d7e1385612f859812 ******/
+		/****** md5 signature: 43d77f50b23701a03345021190258f43 ******/
 		%feature("compactdefaultargs") LimitAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Get limit angle for merging edges.
 ") LimitAngle;
-		Standard_Real LimitAngle();
+		double LimitAngle();
 
 		/****** ShapeFix_Wireframe::Load ******/
 		/****** md5 signature: 5e48307a99195c8c9f614df4cf55663d ******/
@@ -5470,17 +5508,17 @@ Loads a shape, resets statuses.
 		void Load(const TopoDS_Shape & shape);
 
 		/****** ShapeFix_Wireframe::MergeSmallEdges ******/
-		/****** md5 signature: 3ca0513fad246fe51dd3df3fdf5a8d0e ******/
+		/****** md5 signature: 970777846ae81b544af53e58e961d906 ******/
 		%feature("compactdefaultargs") MergeSmallEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-theSmallEdges: TopTools_MapOfShape
-theEdgeToFaces: TopTools_DataMapOfShapeListOfShape
-theFaceWithSmall: TopTools_DataMapOfShapeListOfShape
-theMultyEdges: TopTools_MapOfShape
-theModeDrop: bool (optional, default to Standard_False)
-theLimitAngle: float (optional, default to -1)
+theSmallEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theEdgeToFaces: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theFaceWithSmall: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theMultyEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theModeDrop: bool (optional, default to false)
+theLimitAngle: double (optional, default to -1)
 
 Return
 -------
@@ -5488,30 +5526,30 @@ bool
 
 Description
 -----------
-Auxiliary tool for FixSmallEdges which merges small edges. If theModeDrop is equal to Standard_True then small edges, which cannot be connected with adjacent edges are dropped. Otherwise they are kept. theLimitAngle specifies maximum allowed tangency discontinuity between adjacent edges. If theLimitAngle is equal to -1, this angle is not taken into account.
+Auxiliary tool for FixSmallEdges which merges small edges. If theModeDrop is equal to true then small edges, which cannot be connected with adjacent edges are dropped. Otherwise they are kept. theLimitAngle specifies maximum allowed tangency discontinuity between adjacent edges. If theLimitAngle is equal to -1, this angle is not taken into account.
 ") MergeSmallEdges;
-		Standard_Boolean MergeSmallEdges(TopTools_MapOfShape & theSmallEdges, TopTools_DataMapOfShapeListOfShape & theEdgeToFaces, TopTools_DataMapOfShapeListOfShape & theFaceWithSmall, TopTools_MapOfShape & theMultyEdges, const Standard_Boolean theModeDrop = Standard_False, const Standard_Real theLimitAngle = -1);
+		bool MergeSmallEdges(NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theSmallEdges, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theEdgeToFaces, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theFaceWithSmall, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theMultyEdges, const bool theModeDrop = false, const double theLimitAngle = -1);
 
+		/****** ShapeFix_Wireframe::ModeDropSmallEdges ******/
+		/****** md5 signature: 702387d14e9b5d0c815fcce2e6ddbf73 ******/
+		%feature("compactdefaultargs") ModeDropSmallEdges;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetModeDropSmallEdges() {
-            return (Standard_Boolean) $self->ModeDropSmallEdges();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetModeDropSmallEdges(Standard_Boolean value) {
-            $self->ModeDropSmallEdges()=value;
-            }
-        };
+Description
+-----------
+Returns mode managing removing small edges.
+") ModeDropSmallEdges;
+		bool & ModeDropSmallEdges();
+
 		/****** ShapeFix_Wireframe::SetLimitAngle ******/
-		/****** md5 signature: 5e6b433fe3714c0361eac7da11cdd579 ******/
+		/****** md5 signature: fac21b4ecb627542529e09ba7940a7a4 ******/
 		%feature("compactdefaultargs") SetLimitAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theLimitAngle: float
+theLimitAngle: double
 
 Return
 -------
@@ -5521,7 +5559,7 @@ Description
 -----------
 Set limit angle for merging edges.
 ") SetLimitAngle;
-		void SetLimitAngle(const Standard_Real theLimitAngle);
+		void SetLimitAngle(const double theLimitAngle);
 
 		/****** ShapeFix_Wireframe::Shape ******/
 		/****** md5 signature: 3bc559831c5959191e55bf80cdb0f8f7 ******/
@@ -5537,7 +5575,7 @@ No available documentation.
 		TopoDS_Shape Shape();
 
 		/****** ShapeFix_Wireframe::StatusSmallEdges ******/
-		/****** md5 signature: cacca60afaecf2ca57f95af46eb9f2fd ******/
+		/****** md5 signature: d13473cf0d5b328cacb2c7aff51a6f7d ******/
 		%feature("compactdefaultargs") StatusSmallEdges;
 		%feature("autodoc", "
 Parameters
@@ -5552,10 +5590,10 @@ Description
 -----------
 Decodes the status of the last FixSmallEdges. OK - No small edges were found DONE1 - Some small edges were fixed FAIL1 - Failed to fix some small edges.
 ") StatusSmallEdges;
-		Standard_Boolean StatusSmallEdges(const ShapeExtend_Status status);
+		bool StatusSmallEdges(const ShapeExtend_Status status);
 
 		/****** ShapeFix_Wireframe::StatusWireGaps ******/
-		/****** md5 signature: b3df4d3f79c1800697ae60d5bafc10f1 ******/
+		/****** md5 signature: 73a9ed91e7b63d31eabcfaa1ff7e4e82 ******/
 		%feature("compactdefaultargs") StatusWireGaps;
 		%feature("autodoc", "
 Parameters
@@ -5570,7 +5608,7 @@ Description
 -----------
 Decodes the status of the last FixWireGaps. OK - No gaps were found DONE1 - Some gaps in 3D were fixed DONE2 - Some gaps in 2D were fixed FAIL1 - Failed to fix some gaps in 3D FAIL2 - Failed to fix some gaps in 2D.
 ") StatusWireGaps;
-		Standard_Boolean StatusWireGaps(const ShapeExtend_Status status);
+		bool StatusWireGaps(const ShapeExtend_Status status);
 
 };
 

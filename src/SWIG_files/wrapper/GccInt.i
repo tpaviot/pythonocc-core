@@ -238,7 +238,7 @@ Constructs a bisecting curve whose geometry is the 2D circle Circ.
 		 GccInt_BCirc(const gp_Circ2d & Circ);
 
 		/****** GccInt_BCirc::ArcType ******/
-		/****** md5 signature: 9a5ddd020c90ebd33f4781d8a1292c29 ******/
+		/****** md5 signature: 62e22719541f2297d87918bdeb39f05f ******/
 		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "Return
 -------
@@ -251,7 +251,7 @@ Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.
 		GccInt_IType ArcType();
 
 		/****** GccInt_BCirc::Circle ******/
-		/****** md5 signature: 8ca5a3e19338cebd34f671ea84aabcbe ******/
+		/****** md5 signature: c57212f487cf777aef6ef0b0153393bf ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -261,7 +261,7 @@ Description
 -----------
 Returns a 2D circle which is the geometry of this bisecting curve.
 ") Circle;
-		virtual gp_Circ2d Circle();
+		gp_Circ2d Circle();
 
 };
 
@@ -298,7 +298,7 @@ Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
 		 GccInt_BElips(const gp_Elips2d & Ellipse);
 
 		/****** GccInt_BElips::ArcType ******/
-		/****** md5 signature: 9a5ddd020c90ebd33f4781d8a1292c29 ******/
+		/****** md5 signature: 62e22719541f2297d87918bdeb39f05f ******/
 		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "Return
 -------
@@ -311,7 +311,7 @@ Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.
 		GccInt_IType ArcType();
 
 		/****** GccInt_BElips::Ellipse ******/
-		/****** md5 signature: eb7f485d691f7cad1a5fcf5b0cf4e730 ******/
+		/****** md5 signature: 578557aedadd7b6c95c4b18a4591b27d ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -321,7 +321,7 @@ Description
 -----------
 Returns a 2D ellipse which is the geometry of this bisecting curve.
 ") Ellipse;
-		virtual gp_Elips2d Ellipse();
+		gp_Elips2d Ellipse();
 
 };
 
@@ -358,7 +358,7 @@ Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
 		 GccInt_BHyper(const gp_Hypr2d & Hyper);
 
 		/****** GccInt_BHyper::ArcType ******/
-		/****** md5 signature: 9a5ddd020c90ebd33f4781d8a1292c29 ******/
+		/****** md5 signature: 62e22719541f2297d87918bdeb39f05f ******/
 		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "Return
 -------
@@ -371,7 +371,7 @@ Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
 		GccInt_IType ArcType();
 
 		/****** GccInt_BHyper::Hyperbola ******/
-		/****** md5 signature: 17dde456f3c24d600767a534ae02bd6a ******/
+		/****** md5 signature: 76c8d95163d451200f916b4c08eee717 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -381,7 +381,7 @@ Description
 -----------
 Returns a 2D hyperbola which is the geometry of this bisecting curve.
 ") Hyperbola;
-		virtual gp_Hypr2d Hyperbola();
+		gp_Hypr2d Hyperbola();
 
 };
 
@@ -418,7 +418,7 @@ Constructs a bisecting line whose geometry is the 2D line Line.
 		 GccInt_BLine(const gp_Lin2d & Line);
 
 		/****** GccInt_BLine::ArcType ******/
-		/****** md5 signature: 9a5ddd020c90ebd33f4781d8a1292c29 ******/
+		/****** md5 signature: 62e22719541f2297d87918bdeb39f05f ******/
 		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "Return
 -------
@@ -431,7 +431,7 @@ Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
 		GccInt_IType ArcType();
 
 		/****** GccInt_BLine::Line ******/
-		/****** md5 signature: 34f5184ec712073b39d91fb7721078de ******/
+		/****** md5 signature: e6ff57a9b7126056447e1c0678038f9b ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -441,7 +441,7 @@ Description
 -----------
 Returns a 2D line which is the geometry of this bisecting line.
 ") Line;
-		virtual gp_Lin2d Line();
+		gp_Lin2d Line();
 
 };
 
@@ -478,7 +478,7 @@ Constructs a bisecting curve whose geometry is the 2D parabola Parab.
 		 GccInt_BParab(const gp_Parab2d & Parab);
 
 		/****** GccInt_BParab::ArcType ******/
-		/****** md5 signature: 9a5ddd020c90ebd33f4781d8a1292c29 ******/
+		/****** md5 signature: 62e22719541f2297d87918bdeb39f05f ******/
 		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "Return
 -------
@@ -491,7 +491,7 @@ Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.
 		GccInt_IType ArcType();
 
 		/****** GccInt_BParab::Parabola ******/
-		/****** md5 signature: 603e36f863c0dca079120d9c013f71fc ******/
+		/****** md5 signature: 22adbf7e85ee0cd0635ddfca26c2c71c ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -501,7 +501,7 @@ Description
 -----------
 Returns a 2D parabola which is the geometry of this bisecting curve.
 ") Parabola;
-		virtual gp_Parab2d Parabola();
+		gp_Parab2d Parabola();
 
 };
 
@@ -538,7 +538,7 @@ Constructs a bisecting object whose geometry is the 2D point Point.
 		 GccInt_BPoint(const gp_Pnt2d & Point);
 
 		/****** GccInt_BPoint::ArcType ******/
-		/****** md5 signature: 9a5ddd020c90ebd33f4781d8a1292c29 ******/
+		/****** md5 signature: 62e22719541f2297d87918bdeb39f05f ******/
 		%feature("compactdefaultargs") ArcType;
 		%feature("autodoc", "Return
 -------
@@ -551,7 +551,7 @@ Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.
 		GccInt_IType ArcType();
 
 		/****** GccInt_BPoint::Point ******/
-		/****** md5 signature: 2119788025a432d37e1e406e6ab1c7ab ******/
+		/****** md5 signature: 9cac26d57fbeced53adec37c16acd475 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
@@ -561,7 +561,7 @@ Description
 -----------
 Returns a 2D point which is the geometry of this bisecting object.
 ") Point;
-		virtual gp_Pnt2d Point();
+		gp_Pnt2d Point();
 
 };
 

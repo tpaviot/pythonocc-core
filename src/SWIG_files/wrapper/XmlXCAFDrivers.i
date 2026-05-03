@@ -80,8 +80,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(XmlXCAFDrivers_DocumentRetrievalDriver)
-%wrap_handle(XmlXCAFDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -160,7 +158,7 @@ No available documentation.
 		 XmlXCAFDrivers_DocumentRetrievalDriver();
 
 		/****** XmlXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
-		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
+		/****** md5 signature: 4934fc31e5a0bd7ec8e719be5dac0be5 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -175,12 +173,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
-
-%make_alias(XmlXCAFDrivers_DocumentRetrievalDriver)
 
 %extend XmlXCAFDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -212,7 +208,7 @@ No available documentation.
 		 XmlXCAFDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****** XmlXCAFDrivers_DocumentStorageDriver::AttributeDrivers ******/
-		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
+		/****** md5 signature: 4934fc31e5a0bd7ec8e719be5dac0be5 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -227,12 +223,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
-
-%make_alias(XmlXCAFDrivers_DocumentStorageDriver)
 
 %extend XmlXCAFDrivers_DocumentStorageDriver {
 	%pythoncode {

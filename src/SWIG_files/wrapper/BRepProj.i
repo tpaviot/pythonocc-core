@@ -152,7 +152,7 @@ Resets the iterator by resulting wires.
 		void Init();
 
 		/****** BRepProj_Projection::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -162,10 +162,10 @@ Description
 -----------
 returns False if the section failed.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepProj_Projection::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -175,7 +175,7 @@ Description
 -----------
 Returns True if there is a current result wire.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BRepProj_Projection::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/

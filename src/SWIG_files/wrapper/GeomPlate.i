@@ -46,10 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomplate.html"
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<gp_module.hxx>
-#include<TColgp_module.hxx>
 #include<Geom_module.hxx>
-#include<TColStd_module.hxx>
-#include<TColGeom2d_module.hxx>
 #include<Message_module.hxx>
 #include<Geom2d_module.hxx>
 #include<GeomLProp_module.hxx>
@@ -68,10 +65,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomplate.html"
 %import NCollection.i
 %import Adaptor3d.i
 %import gp.i
-%import TColgp.i
 %import Geom.i
-%import TColStd.i
-%import TColGeom2d.i
 %import Message.i
 %import Geom2d.i
 %import GeomLProp.i
@@ -98,10 +92,6 @@ from OCC.Core.Exception import *
 %wrap_handle(GeomPlate_CurveConstraint)
 %wrap_handle(GeomPlate_PointConstraint)
 %wrap_handle(GeomPlate_Surface)
-%wrap_handle(GeomPlate_HArray1OfHCurve)
-%wrap_handle(GeomPlate_HArray1OfSequenceOfReal)
-%wrap_handle(GeomPlate_HSequenceOfCurveConstraint)
-%wrap_handle(GeomPlate_HSequenceOfPointConstraint)
 /* end handles declaration */
 
 /* templates */
@@ -140,6 +130,10 @@ Array1ExtendIter(TColStd_SequenceOfReal)
 /* typedefs */
 typedef NCollection_Array1<opencascade::handle<Adaptor3d_Curve>> GeomPlate_Array1OfHCurve;
 typedef NCollection_Array1<TColStd_SequenceOfReal> GeomPlate_Array1OfSequenceOfReal;
+typedef NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>> GeomPlate_HArray1OfHCurve;
+typedef NCollection_HArray1<TColStd_SequenceOfReal> GeomPlate_HArray1OfSequenceOfReal;
+typedef NCollection_HSequence<opencascade::handle<GeomPlate_CurveConstraint>> GeomPlate_HSequenceOfCurveConstraint;
+typedef NCollection_HSequence<opencascade::handle<GeomPlate_PointConstraint>> GeomPlate_HSequenceOfPointConstraint;
 typedef NCollection_Sequence<GeomPlate_Aij> GeomPlate_SequenceOfAij;
 typedef NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>> GeomPlate_SequenceOfCurveConstraint;
 typedef NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>> GeomPlate_SequenceOfPointConstraint;
@@ -164,7 +158,7 @@ No available documentation.
 		 GeomPlate_Aij();
 
 		/****** GeomPlate_Aij::GeomPlate_Aij ******/
-		/****** md5 signature: b93f89839e60989bf7d76bde428aaf99 ******/
+		/****** md5 signature: c9e25ceee5568c8b87177aed8b35042a ******/
 		%feature("compactdefaultargs") GeomPlate_Aij;
 		%feature("autodoc", "
 Parameters
@@ -181,7 +175,7 @@ Description
 -----------
 No available documentation.
 ") GeomPlate_Aij;
-		 GeomPlate_Aij(const Standard_Integer anInd1, const Standard_Integer anInd2, const gp_Vec & aVec);
+		 GeomPlate_Aij(const int anInd1, const int anInd2, const gp_Vec & aVec);
 
 };
 
@@ -198,14 +192,14 @@ No available documentation.
 class GeomPlate_BuildAveragePlane {
 	public:
 		/****** GeomPlate_BuildAveragePlane::GeomPlate_BuildAveragePlane ******/
-		/****** md5 signature: f8e410af32a166197807dc932dfffd60 ******/
+		/****** md5 signature: a097aae860a9ecb35f3eb4d6e6fe3976 ******/
 		%feature("compactdefaultargs") GeomPlate_BuildAveragePlane;
 		%feature("autodoc", "
 Parameters
 ----------
-Pts: TColgp_HArray1OfPnt
+Pts: NCollection_HArray1<gp_Pnt
 NbBoundPoints: int
-Tol: float
+Tol: double
 POption: int
 NOption: int
 
@@ -217,16 +211,16 @@ Description
 -----------
 Tol is a Tolerance to make the difference between the result plane and the result line. if POption = 1: automatic parametrisation if POption = 2: parametrisation by eigen vectors if NOption = 1: the average plane is the inertial plane. if NOption = 2: the average plane is the plane of max. flux.
 ") GeomPlate_BuildAveragePlane;
-		 GeomPlate_BuildAveragePlane(const opencascade::handle<TColgp_HArray1OfPnt> & Pts, const Standard_Integer NbBoundPoints, const Standard_Real Tol, const Standard_Integer POption, const Standard_Integer NOption);
+		 GeomPlate_BuildAveragePlane(const opencascade::handle<NCollection_HArray1<gp_Pnt> > & Pts, const int NbBoundPoints, const double Tol, const int POption, const int NOption);
 
 		/****** GeomPlate_BuildAveragePlane::GeomPlate_BuildAveragePlane ******/
-		/****** md5 signature: a2409cdd1c0e5a1f0f5fa82d87468468 ******/
+		/****** md5 signature: 33b88277166df41462ffc194389f2f50 ******/
 		%feature("compactdefaultargs") GeomPlate_BuildAveragePlane;
 		%feature("autodoc", "
 Parameters
 ----------
-Normals: TColgp_SequenceOfVec
-Pts: TColgp_HArray1OfPnt
+Normals: NCollection_Sequence<gp_Vec>
+Pts: NCollection_HArray1<gp_Pnt
 
 Return
 -------
@@ -236,19 +230,19 @@ Description
 -----------
 Creates the plane from the 'best vector'.
 ") GeomPlate_BuildAveragePlane;
-		 GeomPlate_BuildAveragePlane(const TColgp_SequenceOfVec & Normals, const opencascade::handle<TColgp_HArray1OfPnt> & Pts);
+		 GeomPlate_BuildAveragePlane(const NCollection_Sequence<gp_Vec> & Normals, const opencascade::handle<NCollection_HArray1<gp_Pnt> > & Pts);
 
 		/****** GeomPlate_BuildAveragePlane::HalfSpace ******/
-		/****** md5 signature: 625320c63484bc3da49fd5d48829d7e9 ******/
+		/****** md5 signature: 22ac68b79b90417a670754da15e98531 ******/
 		%feature("compactdefaultargs") HalfSpace;
 		%feature("autodoc", "
 Parameters
 ----------
-NewNormals: TColgp_SequenceOfVec
-Normals: TColgp_SequenceOfVec
-Bset: GeomPlate_SequenceOfAij
-LinTol: float
-AngTol: float
+NewNormals: NCollection_Sequence<gp_Vec>
+Normals: NCollection_Sequence<gp_Vec>
+Bset: NCollection_Sequence<GeomPlate_Aij>
+LinTol: double
+AngTol: double
 
 Return
 -------
@@ -258,10 +252,10 @@ Description
 -----------
 No available documentation.
 ") HalfSpace;
-		static Standard_Boolean HalfSpace(const TColgp_SequenceOfVec & NewNormals, TColgp_SequenceOfVec & Normals, GeomPlate_SequenceOfAij & Bset, const Standard_Real LinTol, const Standard_Real AngTol);
+		static bool HalfSpace(const NCollection_Sequence<gp_Vec> & NewNormals, NCollection_Sequence<gp_Vec> & Normals, NCollection_Sequence<GeomPlate_Aij> & Bset, const double LinTol, const double AngTol);
 
 		/****** GeomPlate_BuildAveragePlane::IsLine ******/
-		/****** md5 signature: 51ad3b0e1f56ed6f328a7a7940918c54 ******/
+		/****** md5 signature: 772db688f2c7a31abda4c65348c839f4 ******/
 		%feature("compactdefaultargs") IsLine;
 		%feature("autodoc", "Return
 -------
@@ -271,10 +265,10 @@ Description
 -----------
 return OK if is a line.
 ") IsLine;
-		Standard_Boolean IsLine();
+		bool IsLine();
 
 		/****** GeomPlate_BuildAveragePlane::IsPlane ******/
-		/****** md5 signature: 66a5e8df3e3841a38fe0a90cbc042e0e ******/
+		/****** md5 signature: 6b609c9da2484955d7088879f7fc94b9 ******/
 		%feature("compactdefaultargs") IsPlane;
 		%feature("autodoc", "Return
 -------
@@ -284,7 +278,7 @@ Description
 -----------
 return OK if is a plane.
 ") IsPlane;
-		Standard_Boolean IsPlane();
+		bool IsPlane();
 
 		/****** GeomPlate_BuildAveragePlane::Line ******/
 		/****** md5 signature: 0527a3e42e1f653976ba08cd7db9b8e0 ******/
@@ -300,7 +294,7 @@ Return a Line when 2 eigenvalues are null.
 		opencascade::handle<Geom_Line> Line();
 
 		/****** GeomPlate_BuildAveragePlane::MinMaxBox ******/
-		/****** md5 signature: 626e558e1ac26b23212992e4d6955923 ******/
+		/****** md5 signature: 69f282c652c16323c0fdf20996796a34 ******/
 		%feature("compactdefaultargs") MinMaxBox;
 		%feature("autodoc", "
 Parameters
@@ -308,10 +302,10 @@ Parameters
 
 Return
 -------
-Umin: float
-Umax: float
-Vmin: float
-Vmax: float
+Umin: double
+Umax: double
+Vmin: double
+Vmax: double
 
 Description
 -----------
@@ -347,21 +341,21 @@ Return the average Plane.
 class GeomPlate_BuildPlateSurface {
 	public:
 		/****** GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface ******/
-		/****** md5 signature: 719055337247e2306cefda66734f315c ******/
+		/****** md5 signature: d1ff1a4a3b22500afa1204a7598ad3a1 ******/
 		%feature("compactdefaultargs") GeomPlate_BuildPlateSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-NPoints: TColStd_HArray1OfInteger
-TabCurve: GeomPlate_HArray1OfHCurve
-Tang: TColStd_HArray1OfInteger
+NPoints: NCollection_HArray1<int
+TabCurve: NCollection_HArray1<
+Tang: NCollection_HArray1<int
 Degree: int
 NbIter: int (optional, default to 3)
-Tol2d: float (optional, default to 0.00001)
-Tol3d: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
-Anisotropie: bool (optional, default to Standard_False)
+Tol2d: double (optional, default to 0.00001)
+Tol3d: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
+Anisotropie: bool (optional, default to false)
 
 Return
 -------
@@ -371,10 +365,10 @@ Description
 -----------
 Constructor compatible with the old version with this constructor the constraint are given in a Array of Curve on Surface The array NbPoints contains the number of points for each constraint. The Array Tang contains the order of constraint for each Constraint: The possible values for this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum number of iteration to optimise the number of points for resolution Degree is the degree of resolution for Plate Tol2d is the tolerance used to test if two points of different constraint are identical in the parametric space of the initial surface Tol3d is used to test if two identical points in the 2d space are identical in 3d space TolAng is used to compare the angle between normal of two identical points in the 2d space Raises ConstructionError;.
 ") GeomPlate_BuildPlateSurface;
-		 GeomPlate_BuildPlateSurface(const opencascade::handle<TColStd_HArray1OfInteger> & NPoints, const opencascade::handle<GeomPlate_HArray1OfHCurve> & TabCurve, const opencascade::handle<TColStd_HArray1OfInteger> & Tang, const Standard_Integer Degree, const Standard_Integer NbIter = 3, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Boolean Anisotropie = Standard_False);
+		 GeomPlate_BuildPlateSurface(const opencascade::handle<NCollection_HArray1<int> > & NPoints, const opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve> > > & TabCurve, const opencascade::handle<NCollection_HArray1<int> > & Tang, const int Degree, const int NbIter = 3, const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1, const bool Anisotropie = false);
 
 		/****** GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface ******/
-		/****** md5 signature: 9a58cafacbf3294f7787c5ccf9dedec8 ******/
+		/****** md5 signature: a42b39910535327857714573ee4cd4a5 ******/
 		%feature("compactdefaultargs") GeomPlate_BuildPlateSurface;
 		%feature("autodoc", "
 Parameters
@@ -383,11 +377,11 @@ Surf: Geom_Surface
 Degree: int (optional, default to 3)
 NbPtsOnCur: int (optional, default to 10)
 NbIter: int (optional, default to 3)
-Tol2d: float (optional, default to 0.00001)
-Tol3d: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
-Anisotropie: bool (optional, default to Standard_False)
+Tol2d: double (optional, default to 0.00001)
+Tol3d: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
+Anisotropie: bool (optional, default to false)
 
 Return
 -------
@@ -397,10 +391,10 @@ Description
 -----------
 No available documentation.
 ") GeomPlate_BuildPlateSurface;
-		 GeomPlate_BuildPlateSurface(const opencascade::handle<Geom_Surface> & Surf, const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 10, const Standard_Integer NbIter = 3, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Boolean Anisotropie = Standard_False);
+		 GeomPlate_BuildPlateSurface(const opencascade::handle<Geom_Surface> & Surf, const int Degree = 3, const int NbPtsOnCur = 10, const int NbIter = 3, const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1, const bool Anisotropie = false);
 
 		/****** GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface ******/
-		/****** md5 signature: 9e612aac4a64099f5a264f5f15055758 ******/
+		/****** md5 signature: 60db34a8dae2b69a5ef7b62a2f3db98a ******/
 		%feature("compactdefaultargs") GeomPlate_BuildPlateSurface;
 		%feature("autodoc", "
 Parameters
@@ -408,11 +402,11 @@ Parameters
 Degree: int (optional, default to 3)
 NbPtsOnCur: int (optional, default to 10)
 NbIter: int (optional, default to 3)
-Tol2d: float (optional, default to 0.00001)
-Tol3d: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
-Anisotropie: bool (optional, default to Standard_False)
+Tol2d: double (optional, default to 0.00001)
+Tol3d: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
+Anisotropie: bool (optional, default to false)
 
 Return
 -------
@@ -422,7 +416,7 @@ Description
 -----------
 Initializes the BuildPlateSurface framework for deforming plate surfaces using curve and point constraints. You use the first constructor if you have an initial surface to work with at construction time. If not, you use the second. You can add one later by using the method LoadInitSurface. If no initial surface is loaded, one will automatically be computed. The curve and point constraints will be defined by using the method Add. Before the call to the algorithm, the curve constraints will be transformed into sequences of discrete points. Each curve defined as a constraint will be given the value of NbPtsOnCur as the average number of points on it. Several arguments serve to improve performance of the algorithm. NbIter, for example, expresses the number of iterations allowed and is used to control the duration of computation. To optimize resolution, Degree will have the default value of 3. The surface generated must respect several tolerance values: - 2d tolerance given by Tol2d, with a default value of 0.00001 - 3d tolerance expressed by Tol3d, with a default value of 0.0001 - angular tolerance given by TolAng, with a default value of 0.01, defining the greatest angle allowed between the constraint and the target surface. Exceptions Standard_ConstructionError if NbIter is less than 1 or Degree is less than 3.
 ") GeomPlate_BuildPlateSurface;
-		 GeomPlate_BuildPlateSurface(const Standard_Integer Degree = 3, const Standard_Integer NbPtsOnCur = 10, const Standard_Integer NbIter = 3, const Standard_Real Tol2d = 0.00001, const Standard_Real Tol3d = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1, const Standard_Boolean Anisotropie = Standard_False);
+		 GeomPlate_BuildPlateSurface(const int Degree = 3, const int NbPtsOnCur = 10, const int NbIter = 3, const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1, const bool Anisotropie = false);
 
 		/****** GeomPlate_BuildPlateSurface::Add ******/
 		/****** md5 signature: 38731a3aa718b3fec2b48ae7946c4e8e ******/
@@ -461,7 +455,7 @@ Adds the point constraint cont.
 		void Add(const opencascade::handle<GeomPlate_PointConstraint> & Cont);
 
 		/****** GeomPlate_BuildPlateSurface::CurveConstraint ******/
-		/****** md5 signature: d2863a2f63213cbc5ba632a319b98ba5 ******/
+		/****** md5 signature: 60600d66576a0443e13c3f2e248fd49e ******/
 		%feature("compactdefaultargs") CurveConstraint;
 		%feature("autodoc", "
 Parameters
@@ -476,29 +470,29 @@ Description
 -----------
 returns the CurveConstraints of order order.
 ") CurveConstraint;
-		opencascade::handle<GeomPlate_CurveConstraint> CurveConstraint(const Standard_Integer order);
+		opencascade::handle<GeomPlate_CurveConstraint> CurveConstraint(const int order);
 
 		/****** GeomPlate_BuildPlateSurface::Curves2d ******/
-		/****** md5 signature: c016bbe6c4b5018c38c3fbc35d9a3916 ******/
+		/****** md5 signature: 4dc5b2a08363f6b4c01565e81b501538 ******/
 		%feature("compactdefaultargs") Curves2d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColGeom2d_HArray1OfCurve>
+opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>
 
 Description
 -----------
 Extracts the array of curves on the plate surface which correspond to the curve constraints set in Add.
 ") Curves2d;
-		opencascade::handle<TColGeom2d_HArray1OfCurve> Curves2d();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>> Curves2d();
 
 		/****** GeomPlate_BuildPlateSurface::Disc2dContour ******/
-		/****** md5 signature: 3f3a1bea1a2f795f4aac1d5028cede20 ******/
+		/****** md5 signature: a4f9a4f1fe33f6c2d8482073def73f52 ******/
 		%feature("compactdefaultargs") Disc2dContour;
 		%feature("autodoc", "
 Parameters
 ----------
 nbp: int
-Seq2d: TColgp_SequenceOfXY
+Seq2d: NCollection_Sequence<gp_XY>
 
 Return
 -------
@@ -508,17 +502,17 @@ Description
 -----------
 No available documentation.
 ") Disc2dContour;
-		void Disc2dContour(const Standard_Integer nbp, TColgp_SequenceOfXY & Seq2d);
+		void Disc2dContour(const int nbp, NCollection_Sequence<gp_XY> & Seq2d);
 
 		/****** GeomPlate_BuildPlateSurface::Disc3dContour ******/
-		/****** md5 signature: 67db8fdcfdf390a10d4af3f50f40e707 ******/
+		/****** md5 signature: 9c6933b1a0b021b6c83c17807fcc5e85 ******/
 		%feature("compactdefaultargs") Disc3dContour;
 		%feature("autodoc", "
 Parameters
 ----------
 nbp: int
 iordre: int
-Seq3d: TColgp_SequenceOfXYZ
+Seq3d: NCollection_Sequence<gp_XYZ>
 
 Return
 -------
@@ -528,23 +522,23 @@ Description
 -----------
 No available documentation.
 ") Disc3dContour;
-		void Disc3dContour(const Standard_Integer nbp, const Standard_Integer iordre, TColgp_SequenceOfXYZ & Seq3d);
+		void Disc3dContour(const int nbp, const int iordre, NCollection_Sequence<gp_XYZ> & Seq3d);
 
 		/****** GeomPlate_BuildPlateSurface::G0Error ******/
-		/****** md5 signature: ba177a9a7bac2d394577a179fd8040ef ******/
+		/****** md5 signature: 26eb7ac7e7e086c9d50aef459fbfc494 ******/
 		%feature("compactdefaultargs") G0Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the max distance between the result and the constraints.
 ") G0Error;
-		Standard_Real G0Error();
+		double G0Error();
 
 		/****** GeomPlate_BuildPlateSurface::G0Error ******/
-		/****** md5 signature: f99dce5527bffb3ecaa2d1093b4a3635 ******/
+		/****** md5 signature: ea82fba658102289e47be6340460e251 ******/
 		%feature("compactdefaultargs") G0Error;
 		%feature("autodoc", "
 Parameters
@@ -553,29 +547,29 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the max distance between the result and the constraint Index.
 ") G0Error;
-		Standard_Real G0Error(const Standard_Integer Index);
+		double G0Error(const int Index);
 
 		/****** GeomPlate_BuildPlateSurface::G1Error ******/
-		/****** md5 signature: 0a0e55267bc5572a38177b75a97dfedc ******/
+		/****** md5 signature: 08f961c041db3fae562606499fdd288a ******/
 		%feature("compactdefaultargs") G1Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the max angle between the result and the constraints.
 ") G1Error;
-		Standard_Real G1Error();
+		double G1Error();
 
 		/****** GeomPlate_BuildPlateSurface::G1Error ******/
-		/****** md5 signature: 0d786918d533628c34e845fd87da5a9b ******/
+		/****** md5 signature: 103532f19d83aceac2beb425fa280c25 ******/
 		%feature("compactdefaultargs") G1Error;
 		%feature("autodoc", "
 Parameters
@@ -584,29 +578,29 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the max angle between the result and the constraint Index.
 ") G1Error;
-		Standard_Real G1Error(const Standard_Integer Index);
+		double G1Error(const int Index);
 
 		/****** GeomPlate_BuildPlateSurface::G2Error ******/
-		/****** md5 signature: 0eac129a84e8ae945532a18ff833414e ******/
+		/****** md5 signature: eb154307507c3c72e5cef135c1e59efe ******/
 		%feature("compactdefaultargs") G2Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the max difference of curvature between the result and the constraints.
 ") G2Error;
-		Standard_Real G2Error();
+		double G2Error();
 
 		/****** GeomPlate_BuildPlateSurface::G2Error ******/
-		/****** md5 signature: 02032765271044476a9ce38570208342 ******/
+		/****** md5 signature: 3059ba7eb7ff114be17a14733c4b41dc ******/
 		%feature("compactdefaultargs") G2Error;
 		%feature("autodoc", "
 Parameters
@@ -615,13 +609,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the max difference of curvature between the result and the constraint Index.
 ") G2Error;
-		Standard_Real G2Error(const Standard_Integer Index);
+		double G2Error(const int Index);
 
 		/****** GeomPlate_BuildPlateSurface::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -637,7 +631,7 @@ Resets all constraints.
 		void Init();
 
 		/****** GeomPlate_BuildPlateSurface::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -647,7 +641,7 @@ Description
 -----------
 Tests whether computation of the plate has been completed.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** GeomPlate_BuildPlateSurface::LoadInitSurface ******/
 		/****** md5 signature: 242b03f070695dbfa5f639e0217f32a7 ******/
@@ -668,17 +662,17 @@ Loads the initial Surface.
 		void LoadInitSurface(const opencascade::handle<Geom_Surface> & Surf);
 
 		/****** GeomPlate_BuildPlateSurface::Order ******/
-		/****** md5 signature: 46ad82cbf039a28ad2e8b3e47277f1fc ******/
+		/****** md5 signature: b041275bdeb5bbcfdf587cc2112a7014 ******/
 		%feature("compactdefaultargs") Order;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Returns the order of the curves in the array returned by Curves2d. Computation changes this order. Consequently, this method returns the order of the curves prior to computation.
 ") Order;
-		opencascade::handle<TColStd_HArray1OfInteger> Order();
+		opencascade::handle<NCollection_HArray1<int>> Order();
 
 		/****** GeomPlate_BuildPlateSurface::Perform ******/
 		/****** md5 signature: d7fed22833997c4a8f7923f6a29bd664 ******/
@@ -699,7 +693,7 @@ Calls the algorithm and computes the plate surface using the loaded constraints.
 		void Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** GeomPlate_BuildPlateSurface::PointConstraint ******/
-		/****** md5 signature: fb64f566843365d8012cf3a6bac770bd ******/
+		/****** md5 signature: 81f759819e024ece74ddd8bdf95208a9 ******/
 		%feature("compactdefaultargs") PointConstraint;
 		%feature("autodoc", "
 Parameters
@@ -714,23 +708,23 @@ Description
 -----------
 returns the PointConstraint of order order.
 ") PointConstraint;
-		opencascade::handle<GeomPlate_PointConstraint> PointConstraint(const Standard_Integer order);
+		opencascade::handle<GeomPlate_PointConstraint> PointConstraint(const int order);
 
 		/****** GeomPlate_BuildPlateSurface::Sense ******/
-		/****** md5 signature: 8cfff544568a5ecc0c039bc023102a19 ******/
+		/****** md5 signature: be10829ed83cd109e05157091fc0433e ******/
 		%feature("compactdefaultargs") Sense;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfInteger>
+opencascade::handle<NCollection_HArray1<int>>
 
 Description
 -----------
 Allows you to ensure that the array of curves returned by Curves2d has the correct orientation. Returns the orientation of the curves in the array returned by Curves2d. Computation changes the orientation of these curves. Consequently, this method returns the orientation prior to computation.
 ") Sense;
-		opencascade::handle<TColStd_HArray1OfInteger> Sense();
+		opencascade::handle<NCollection_HArray1<int>> Sense();
 
 		/****** GeomPlate_BuildPlateSurface::SetNbBounds ******/
-		/****** md5 signature: 60c94d877ed49bf3ec90cdf5c37ce55b ******/
+		/****** md5 signature: e6d68a85ff99a90451c41799714f2f64 ******/
 		%feature("compactdefaultargs") SetNbBounds;
 		%feature("autodoc", "
 Parameters
@@ -745,7 +739,7 @@ Description
 -----------
 No available documentation.
 ") SetNbBounds;
-		void SetNbBounds(const Standard_Integer NbBounds);
+		void SetNbBounds(const int NbBounds);
 
 		/****** GeomPlate_BuildPlateSurface::SurfInit ******/
 		/****** md5 signature: f5f7681588f97bd50595e36576801deb ******/
@@ -801,7 +795,7 @@ Initializes an empty curve constraint object.
 		 GeomPlate_CurveConstraint();
 
 		/****** GeomPlate_CurveConstraint::GeomPlate_CurveConstraint ******/
-		/****** md5 signature: 401c58e34f2f2beea3aadc062461bd35 ******/
+		/****** md5 signature: 0e22960d208ecc00064eb37c48b0cf19 ******/
 		%feature("compactdefaultargs") GeomPlate_CurveConstraint;
 		%feature("autodoc", "
 Parameters
@@ -809,9 +803,9 @@ Parameters
 Boundary: Adaptor3d_Curve
 Order: int
 NPt: int (optional, default to 10)
-TolDist: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
+TolDist: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
 
 Return
 -------
@@ -821,7 +815,7 @@ Description
 -----------
 Create a constraint Order is the order of the constraint. The possible values for order are -1,0,1,2. Order i means constraints Gi Npt is the number of points associated with the constraint. TolDist is the maximum error to satisfy for G0 constraints TolAng is the maximum error to satisfy for G1 constraints TolCurv is the maximum error to satisfy for G2 constraints These errors can be replaced by laws of criterion. Raises ConstructionError if Order is not -1 , 0, 1, 2.
 ") GeomPlate_CurveConstraint;
-		 GeomPlate_CurveConstraint(const opencascade::handle<Adaptor3d_Curve> & Boundary, const Standard_Integer Order, const Standard_Integer NPt = 10, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
+		 GeomPlate_CurveConstraint(const opencascade::handle<Adaptor3d_Curve> & Boundary, const int Order, const int NPt = 10, const double TolDist = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1);
 
 		/****** GeomPlate_CurveConstraint::Curve2dOnSurf ******/
 		/****** md5 signature: 8c609bb48844258264c3cf92c31ed7f4 ******/
@@ -850,12 +844,12 @@ No available documentation.
 		opencascade::handle<Adaptor3d_Curve> Curve3d();
 
 		/****** GeomPlate_CurveConstraint::D0 ******/
-		/****** md5 signature: c5111ce8ff4abb74b6c4ba34040c62bb ******/
+		/****** md5 signature: d44fc8b79f74fec79a6c1299c0966002 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 
 Return
@@ -866,15 +860,15 @@ Description
 -----------
 No available documentation.
 ") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
+		void D0(const double U, gp_Pnt & P);
 
 		/****** GeomPlate_CurveConstraint::D1 ******/
-		/****** md5 signature: 858f158dffbf609a8dc7a05ce5ad141f ******/
+		/****** md5 signature: 069df515558d8b2024a9378012ea3d49 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -887,15 +881,15 @@ Description
 -----------
 No available documentation.
 ") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		void D1(const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** GeomPlate_CurveConstraint::D2 ******/
-		/****** md5 signature: 14adcb7732620f6a120ea7c371b6898e ******/
+		/****** md5 signature: 171c956d3643d48093cc77349fb6cb52 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -911,82 +905,82 @@ Description
 -----------
 No available documentation.
 ") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3, gp_Vec & V4, gp_Vec & V5);
+		void D2(const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3, gp_Vec & V4, gp_Vec & V5);
 
 		/****** GeomPlate_CurveConstraint::FirstParameter ******/
-		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
+		/****** md5 signature: 663a02fdcfecea2f8437f306e48dfc6b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** GeomPlate_CurveConstraint::G0Criterion ******/
-		/****** md5 signature: e9350f81ed4bb4c49730741e1a89659b ******/
+		/****** md5 signature: 80ad24301ff8647d06a625a15779b183 ******/
 		%feature("compactdefaultargs") G0Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the G0 criterion at the parametric point U on the curve. This is the greatest distance allowed between the constraint and the target surface at U.
 ") G0Criterion;
-		Standard_Real G0Criterion(const Standard_Real U);
+		double G0Criterion(const double U);
 
 		/****** GeomPlate_CurveConstraint::G1Criterion ******/
-		/****** md5 signature: adef69eebb64d91e9f543aae1cba8a30 ******/
+		/****** md5 signature: 0cc276d2dc45f57db58299ddce56f8a6 ******/
 		%feature("compactdefaultargs") G1Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the G1 criterion at the parametric point U on the curve. This is the greatest angle allowed between the constraint and the target surface at U. Raises ConstructionError if the curve is not on a surface.
 ") G1Criterion;
-		Standard_Real G1Criterion(const Standard_Real U);
+		double G1Criterion(const double U);
 
 		/****** GeomPlate_CurveConstraint::G2Criterion ******/
-		/****** md5 signature: b80df34f4a0ea24cd73e42bfb6988018 ******/
+		/****** md5 signature: 65dbd355988d60bf0cebfc478f82fd3e ******/
 		%feature("compactdefaultargs") G2Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the G2 criterion at the parametric point U on the curve. This is the greatest difference in curvature allowed between the constraint and the target surface at U. Raises ConstructionError if the curve is not on a surface.
 ") G2Criterion;
-		Standard_Real G2Criterion(const Standard_Real U);
+		double G2Criterion(const double U);
 
 		/****** GeomPlate_CurveConstraint::LPropSurf ******/
-		/****** md5 signature: 44f6b352a682f6000b7541e56935b13e ******/
+		/****** md5 signature: b6386d58ad556eba1b2ece4170cff95d ******/
 		%feature("compactdefaultargs") LPropSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -996,36 +990,36 @@ Description
 -----------
 No available documentation.
 ") LPropSurf;
-		GeomLProp_SLProps & LPropSurf(const Standard_Real U);
+		GeomLProp_SLProps & LPropSurf(const double U);
 
 		/****** GeomPlate_CurveConstraint::LastParameter ******/
-		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
+		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** GeomPlate_CurveConstraint::Length ******/
-		/****** md5 signature: 7a11021be5ff74a321b964da373ca8bd ******/
+		/****** md5 signature: afabe704e541a27500507f266f05913c ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Length;
-		Standard_Real Length();
+		double Length();
 
 		/****** GeomPlate_CurveConstraint::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1035,10 +1029,10 @@ Description
 -----------
 Returns the number of points on the curve used as a constraint. The default setting is 10. This parameter affects computation time, which increases by the cube of the number of points.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** GeomPlate_CurveConstraint::Order ******/
-		/****** md5 signature: 29e3c952f10c463fdb1b5e1c18c1d597 ******/
+		/****** md5 signature: f8203d17ff4236419ff00db5f6c14ffb ******/
 		%feature("compactdefaultargs") Order;
 		%feature("autodoc", "Return
 -------
@@ -1048,7 +1042,7 @@ Description
 -----------
 Returns the order of constraint, one of G0, G1 or G2.
 ") Order;
-		Standard_Integer Order();
+		int Order();
 
 		/****** GeomPlate_CurveConstraint::ProjectedCurve ******/
 		/****** md5 signature: 29a2a58b4c1684492940e001f45b28a1 ******/
@@ -1136,7 +1130,7 @@ No available documentation.
 		void SetG2Criterion(const opencascade::handle<Law_Function> & G2Crit);
 
 		/****** GeomPlate_CurveConstraint::SetNbPoints ******/
-		/****** md5 signature: 24cd83460573b8a5c77f14a746b45525 ******/
+		/****** md5 signature: 69f5515f042a01f2597a08ab914d8e4f ******/
 		%feature("compactdefaultargs") SetNbPoints;
 		%feature("autodoc", "
 Parameters
@@ -1151,10 +1145,10 @@ Description
 -----------
 Allows you to set the number of points on the curve constraint. The default setting is 10. This parameter affects computation time, which increases by the cube of the number of points.
 ") SetNbPoints;
-		void SetNbPoints(const Standard_Integer NewNb);
+		void SetNbPoints(const int NewNb);
 
 		/****** GeomPlate_CurveConstraint::SetOrder ******/
-		/****** md5 signature: e5c9a6282123051921f40d29e1dfc28a ******/
+		/****** md5 signature: 97cdc887c8ebf08faa34e00ed8a87e34 ******/
 		%feature("compactdefaultargs") SetOrder;
 		%feature("autodoc", "
 Parameters
@@ -1169,17 +1163,17 @@ Description
 -----------
 Allows you to set the order of continuity required for the constraints: G0, G1, and G2, controlled respectively by G0Criterion G1Criterion and G2Criterion.
 ") SetOrder;
-		void SetOrder(const Standard_Integer Order);
+		void SetOrder(const int Order);
 
 		/****** GeomPlate_CurveConstraint::SetProjectedCurve ******/
-		/****** md5 signature: 61ce53d83dd31188e0a868cc575a4394 ******/
+		/****** md5 signature: e8d6ecb964953768953c38e05d56f9a6 ******/
 		%feature("compactdefaultargs") SetProjectedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve2d: Adaptor2d_Curve2d
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 
 Return
 -------
@@ -1189,7 +1183,7 @@ Description
 -----------
 loads a 2d curve resulting from the normal projection of the curve on the initial surface.
 ") SetProjectedCurve;
-		void SetProjectedCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve2d, const Standard_Real TolU, const Standard_Real TolV);
+		void SetProjectedCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve2d, const double TolU, const double TolV);
 
 };
 
@@ -1208,18 +1202,18 @@ loads a 2d curve resulting from the normal projection of the curve on the initia
 class GeomPlate_MakeApprox {
 	public:
 		/****** GeomPlate_MakeApprox::GeomPlate_MakeApprox ******/
-		/****** md5 signature: c3559ac86fd20d649f9937675e3ec408 ******/
+		/****** md5 signature: 574ae5da73ae217046cae96bf3feeeb0 ******/
 		%feature("compactdefaultargs") GeomPlate_MakeApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SurfPlate: GeomPlate_Surface
 PlateCrit: AdvApp2Var_Criterion
-Tol3d: float
+Tol3d: double
 Nbmax: int
 dgmax: int
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C1)
-EnlargeCoeff: float (optional, default to 1.1)
+EnlargeCoeff: double (optional, default to 1.1)
 
 Return
 -------
@@ -1229,22 +1223,22 @@ Description
 -----------
 Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible the criterion CritPlate is satisfied if possible.
 ") GeomPlate_MakeApprox;
-		 GeomPlate_MakeApprox(const opencascade::handle<GeomPlate_Surface> & SurfPlate, const AdvApp2Var_Criterion & PlateCrit, const Standard_Real Tol3d, const Standard_Integer Nbmax, const Standard_Integer dgmax, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Real EnlargeCoeff = 1.1);
+		 GeomPlate_MakeApprox(const opencascade::handle<GeomPlate_Surface> & SurfPlate, const AdvApp2Var_Criterion & PlateCrit, const double Tol3d, const int Nbmax, const int dgmax, const GeomAbs_Shape Continuity = GeomAbs_C1, const double EnlargeCoeff = 1.1);
 
 		/****** GeomPlate_MakeApprox::GeomPlate_MakeApprox ******/
-		/****** md5 signature: 11dd85cc6ab536dfe14b6591af159b11 ******/
+		/****** md5 signature: 08c991455126af6a31acbfd01541f203 ******/
 		%feature("compactdefaultargs") GeomPlate_MakeApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 SurfPlate: GeomPlate_Surface
-Tol3d: float
+Tol3d: double
 Nbmax: int
 dgmax: int
-dmax: float
+dmax: double
 CritOrder: int (optional, default to 0)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C1)
-EnlargeCoeff: float (optional, default to 1.1)
+EnlargeCoeff: double (optional, default to 1.1)
 
 Return
 -------
@@ -1254,33 +1248,33 @@ Description
 -----------
 Converts SurfPlate into a Geom_BSplineSurface with n Bezier pieces (n<=Nbmax) of degree <= dgmax and an approximation error < Tol3d if possible if CritOrder = -1 , no criterion is used if CritOrder = 0 , a PlateG0Criterion is used with max value > 10*dmax if CritOrder = 1 , a PlateG1Criterion is used with max value > 10*dmax WARNING: for CritOrder = 0 or 1, only the constraints points of SurfPlate are used to evaluate the value of the criterion.
 ") GeomPlate_MakeApprox;
-		 GeomPlate_MakeApprox(const opencascade::handle<GeomPlate_Surface> & SurfPlate, const Standard_Real Tol3d, const Standard_Integer Nbmax, const Standard_Integer dgmax, const Standard_Real dmax, const Standard_Integer CritOrder = 0, const GeomAbs_Shape Continuity = GeomAbs_C1, const Standard_Real EnlargeCoeff = 1.1);
+		 GeomPlate_MakeApprox(const opencascade::handle<GeomPlate_Surface> & SurfPlate, const double Tol3d, const int Nbmax, const int dgmax, const double dmax, const int CritOrder = 0, const GeomAbs_Shape Continuity = GeomAbs_C1, const double EnlargeCoeff = 1.1);
 
 		/****** GeomPlate_MakeApprox::ApproxError ******/
-		/****** md5 signature: 2a3fbb0e410b6d24d6719a8a79285a23 ******/
+		/****** md5 signature: d4092ff85d6b1b0874b9f0ad4b271da0 ******/
 		%feature("compactdefaultargs") ApproxError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the error in computation of the approximation surface. This is the distance between the entire target BSpline surface and the entire original surface generated by BuildPlateSurface and converted by GeomPlate_Surface.
 ") ApproxError;
-		Standard_Real ApproxError();
+		double ApproxError();
 
 		/****** GeomPlate_MakeApprox::CriterionError ******/
-		/****** md5 signature: fe3d9195cbf00531a797a7c49841063a ******/
+		/****** md5 signature: 2755bd3c0b999c5b08cb27b3507a3db1 ******/
 		%feature("compactdefaultargs") CriterionError;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the criterion error in computation of the approximation surface. This is estimated relative to the curve and point constraints only.
 ") CriterionError;
-		Standard_Real CriterionError();
+		double CriterionError();
 
 		/****** GeomPlate_MakeApprox::Surface ******/
 		/****** md5 signature: 2f50ef783efd4092d3a11c39580e031f ******/
@@ -1310,14 +1304,14 @@ Returns the BSpline surface extracted from the GeomPlate_MakeApprox object.
 class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 	public:
 		/****** GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion ******/
-		/****** md5 signature: dbf6618e7b45035ca70a87e835a2ec01 ******/
+		/****** md5 signature: 6757547e7925362af764a1ed9fe10cb6 ******/
 		%feature("compactdefaultargs") GeomPlate_PlateG0Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-Data: TColgp_SequenceOfXY
-G0Data: TColgp_SequenceOfXYZ
-Maximum: float
+Data: NCollection_Sequence<gp_XY>
+G0Data: NCollection_Sequence<gp_XYZ>
+Maximum: double
 Type: AdvApp2Var_CriterionType (optional, default to AdvApp2Var_Absolute)
 Repart: AdvApp2Var_CriterionRepartition (optional, default to AdvApp2Var_Regular)
 
@@ -1329,10 +1323,10 @@ Description
 -----------
 No available documentation.
 ") GeomPlate_PlateG0Criterion;
-		 GeomPlate_PlateG0Criterion(const TColgp_SequenceOfXY & Data, const TColgp_SequenceOfXYZ & G0Data, const Standard_Real Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
+		 GeomPlate_PlateG0Criterion(const NCollection_Sequence<gp_XY> & Data, const NCollection_Sequence<gp_XYZ> & G0Data, const double Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
 
 		/****** GeomPlate_PlateG0Criterion::IsSatisfied ******/
-		/****** md5 signature: 36b58bb72cd51963a174f29bac551403 ******/
+		/****** md5 signature: 9007958412c11c7e5919879e24b5b219 ******/
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", "
 Parameters
@@ -1347,10 +1341,10 @@ Description
 -----------
 No available documentation.
 ") IsSatisfied;
-		virtual Standard_Boolean IsSatisfied(const AdvApp2Var_Patch & P);
+		bool IsSatisfied(const AdvApp2Var_Patch & P);
 
 		/****** GeomPlate_PlateG0Criterion::Value ******/
-		/****** md5 signature: 72ff1ddaefca7f5b0f2dce81eaa13cc5 ******/
+		/****** md5 signature: 07a4596dc97ec606d5b1c608d825895b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1366,7 +1360,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		virtual void Value(AdvApp2Var_Patch & P, const AdvApp2Var_Context & C);
+		void Value(AdvApp2Var_Patch & P, const AdvApp2Var_Context & C);
 
 };
 
@@ -1383,14 +1377,14 @@ No available documentation.
 class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 	public:
 		/****** GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion ******/
-		/****** md5 signature: aea3921133d20989a35e4ac7258b027f ******/
+		/****** md5 signature: 317ef3230b09aa8857d91f46d765a8be ******/
 		%feature("compactdefaultargs") GeomPlate_PlateG1Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-Data: TColgp_SequenceOfXY
-G1Data: TColgp_SequenceOfXYZ
-Maximum: float
+Data: NCollection_Sequence<gp_XY>
+G1Data: NCollection_Sequence<gp_XYZ>
+Maximum: double
 Type: AdvApp2Var_CriterionType (optional, default to AdvApp2Var_Absolute)
 Repart: AdvApp2Var_CriterionRepartition (optional, default to AdvApp2Var_Regular)
 
@@ -1402,10 +1396,10 @@ Description
 -----------
 No available documentation.
 ") GeomPlate_PlateG1Criterion;
-		 GeomPlate_PlateG1Criterion(const TColgp_SequenceOfXY & Data, const TColgp_SequenceOfXYZ & G1Data, const Standard_Real Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
+		 GeomPlate_PlateG1Criterion(const NCollection_Sequence<gp_XY> & Data, const NCollection_Sequence<gp_XYZ> & G1Data, const double Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
 
 		/****** GeomPlate_PlateG1Criterion::IsSatisfied ******/
-		/****** md5 signature: 36b58bb72cd51963a174f29bac551403 ******/
+		/****** md5 signature: 9007958412c11c7e5919879e24b5b219 ******/
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", "
 Parameters
@@ -1420,10 +1414,10 @@ Description
 -----------
 No available documentation.
 ") IsSatisfied;
-		virtual Standard_Boolean IsSatisfied(const AdvApp2Var_Patch & P);
+		bool IsSatisfied(const AdvApp2Var_Patch & P);
 
 		/****** GeomPlate_PlateG1Criterion::Value ******/
-		/****** md5 signature: 72ff1ddaefca7f5b0f2dce81eaa13cc5 ******/
+		/****** md5 signature: 07a4596dc97ec606d5b1c608d825895b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1439,7 +1433,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		virtual void Value(AdvApp2Var_Patch & P, const AdvApp2Var_Context & C);
+		void Value(AdvApp2Var_Patch & P, const AdvApp2Var_Context & C);
 
 };
 
@@ -1456,14 +1450,14 @@ No available documentation.
 class GeomPlate_PointConstraint : public Standard_Transient {
 	public:
 		/****** GeomPlate_PointConstraint::GeomPlate_PointConstraint ******/
-		/****** md5 signature: 0d9afe5ab86321593798b6c8a19a80c9 ******/
+		/****** md5 signature: d03d58e09793a1453518163c7a24e4a0 ******/
 		%feature("compactdefaultargs") GeomPlate_PointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
 Pt: gp_Pnt
 Order: int
-TolDist: float (optional, default to 0.0001)
+TolDist: double (optional, default to 0.0001)
 
 Return
 -------
@@ -1473,21 +1467,21 @@ Description
 -----------
 Constructs a point constraint object defined by Pt, a 3D point Order gives the order of constraint, one of: - -1 i.e. none, or 0 i.e.G0 when assigned to Pt - -1 i.e. none, 0 i.e. G0, 1 i.e. G1, 2 i.e. G2 when assigned to U, V and Surf. In this constructor, only TolDist is given. Distance tolerance represents the greatest distance allowed between the constraint and the target surface. Angular tolerance represents the largest angle allowed between the constraint and the target surface. Curvature tolerance represents the greatest difference in curvature allowed between the constraint and the target surface. Raises ConstructionError if Order is not 0 or -1.
 ") GeomPlate_PointConstraint;
-		 GeomPlate_PointConstraint(const gp_Pnt & Pt, const Standard_Integer Order, const Standard_Real TolDist = 0.0001);
+		 GeomPlate_PointConstraint(const gp_Pnt & Pt, const int Order, const double TolDist = 0.0001);
 
 		/****** GeomPlate_PointConstraint::GeomPlate_PointConstraint ******/
-		/****** md5 signature: ac001d7ea93d59930168cec3d03c7c5c ******/
+		/****** md5 signature: 39faecfb37f349d1c398f443d0b18511 ******/
 		%feature("compactdefaultargs") GeomPlate_PointConstraint;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Surf: Geom_Surface
 Order: int
-TolDist: float (optional, default to 0.0001)
-TolAng: float (optional, default to 0.01)
-TolCurv: float (optional, default to 0.1)
+TolDist: double (optional, default to 0.0001)
+TolAng: double (optional, default to 0.01)
+TolCurv: double (optional, default to 0.1)
 
 Return
 -------
@@ -1497,7 +1491,7 @@ Description
 -----------
 Constructs a point constraint object defined by the intersection point of U and V on the surface Surf. Order gives the order of constraint, one of: - -1 i.e. none, or 0 i.e.G0 when assigned to Pt - -1 i.e. none, 0 i.e. G0, 1 i.e. G1, 2 i.e. G2 when assigned to U, V and Surf. In this constructor the surface to be generated must respect several tolerance values only: - the distance tolerance TolDist - the angular tolerance TolAng - the curvature tolerance, TolCurv. Distance tolerance represents the greatest distance allowed between the constraint and the target surface. Angular tolerance represents the largest angle allowed between the constraint and the target surface. Curvature tolerance represents the greatest difference in curvature allowed between the constraint and the target surface.Creates a punctual constraint.
 ") GeomPlate_PointConstraint;
-		 GeomPlate_PointConstraint(const Standard_Real U, const Standard_Real V, const opencascade::handle<Geom_Surface> & Surf, const Standard_Integer Order, const Standard_Real TolDist = 0.0001, const Standard_Real TolAng = 0.01, const Standard_Real TolCurv = 0.1);
+		 GeomPlate_PointConstraint(const double U, const double V, const opencascade::handle<Geom_Surface> & Surf, const int Order, const double TolDist = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1);
 
 		/****** GeomPlate_PointConstraint::D0 ******/
 		/****** md5 signature: 08199c5cd3a9368c201379f7960011d9 ******/
@@ -1561,46 +1555,46 @@ No available documentation.
 		void D2(gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3, gp_Vec & V4, gp_Vec & V5);
 
 		/****** GeomPlate_PointConstraint::G0Criterion ******/
-		/****** md5 signature: 8656f472e7fdba4f071fbe4aaa7cf62a ******/
+		/****** md5 signature: fed75e57270ea58ea07f799f8de731e5 ******/
 		%feature("compactdefaultargs") G0Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the G0 criterion. This is the greatest distance allowed between the constraint and the target surface.
 ") G0Criterion;
-		Standard_Real G0Criterion();
+		double G0Criterion();
 
 		/****** GeomPlate_PointConstraint::G1Criterion ******/
-		/****** md5 signature: b9005724b99845fd3537d391fffd2e1d ******/
+		/****** md5 signature: 8bc0dba87b5c29fb1b7f470df7cba4df ******/
 		%feature("compactdefaultargs") G1Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the G1 criterion. This is the greatest angle allowed between the constraint and the target surface. Raises ConstructionError if the point is not on the surface.
 ") G1Criterion;
-		Standard_Real G1Criterion();
+		double G1Criterion();
 
 		/****** GeomPlate_PointConstraint::G2Criterion ******/
-		/****** md5 signature: 32df7c10d58b9000703fb0609ec508fb ******/
+		/****** md5 signature: 4e09f7e14aa79d117980b07dab577612 ******/
 		%feature("compactdefaultargs") G2Criterion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the G2 criterion. This is the greatest difference in curvature allowed between the constraint and the target surface. Raises ConstructionError if the point is not on the surface.
 ") G2Criterion;
-		Standard_Real G2Criterion();
+		double G2Criterion();
 
 		/****** GeomPlate_PointConstraint::HasPnt2dOnSurf ******/
-		/****** md5 signature: fbd2d51e12a2d88bfa609432cb2e669e ******/
+		/****** md5 signature: c52a113ae2d4e1d0d1e2742e0ad7f9a3 ******/
 		%feature("compactdefaultargs") HasPnt2dOnSurf;
 		%feature("autodoc", "Return
 -------
@@ -1610,7 +1604,7 @@ Description
 -----------
 No available documentation.
 ") HasPnt2dOnSurf;
-		Standard_Boolean HasPnt2dOnSurf();
+		bool HasPnt2dOnSurf();
 
 		/****** GeomPlate_PointConstraint::LPropSurf ******/
 		/****** md5 signature: ad4b23341cdf9a128c1f8dc8f59255c5 ******/
@@ -1626,7 +1620,7 @@ No available documentation.
 		GeomLProp_SLProps & LPropSurf();
 
 		/****** GeomPlate_PointConstraint::Order ******/
-		/****** md5 signature: 29e3c952f10c463fdb1b5e1c18c1d597 ******/
+		/****** md5 signature: f8203d17ff4236419ff00db5f6c14ffb ******/
 		%feature("compactdefaultargs") Order;
 		%feature("autodoc", "Return
 -------
@@ -1636,7 +1630,7 @@ Description
 -----------
 Returns the order of constraint: G0, G1, and G2, controlled respectively by G0Criterion G1Criterion and G2Criterion.
 ") Order;
-		Standard_Integer Order();
+		int Order();
 
 		/****** GeomPlate_PointConstraint::Pnt2dOnSurf ******/
 		/****** md5 signature: 09c83c1db3d333932aca0c51bbfdeb83 ******/
@@ -1652,12 +1646,12 @@ No available documentation.
 		gp_Pnt2d Pnt2dOnSurf();
 
 		/****** GeomPlate_PointConstraint::SetG0Criterion ******/
-		/****** md5 signature: b33d4653f6e437f1f3c360b2464460fe ******/
+		/****** md5 signature: fa49b05b61f1586b5779287e7c94e548 ******/
 		%feature("compactdefaultargs") SetG0Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolDist: float
+TolDist: double
 
 Return
 -------
@@ -1667,15 +1661,15 @@ Description
 -----------
 Allows you to set the G0 criterion. This is the law defining the greatest distance allowed between the constraint and the target surface. If this criterion is not set, {TolDist, the distance tolerance from the constructor, is used.
 ") SetG0Criterion;
-		void SetG0Criterion(const Standard_Real TolDist);
+		void SetG0Criterion(const double TolDist);
 
 		/****** GeomPlate_PointConstraint::SetG1Criterion ******/
-		/****** md5 signature: 38e46bce80668508c53652088fe310c0 ******/
+		/****** md5 signature: 3d6e9e5090484e360322d0fd20546874 ******/
 		%feature("compactdefaultargs") SetG1Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolAng: float
+TolAng: double
 
 Return
 -------
@@ -1685,15 +1679,15 @@ Description
 -----------
 Allows you to set the G1 criterion. This is the law defining the greatest angle allowed between the constraint and the target surface. If this criterion is not set, TolAng, the angular tolerance from the constructor, is used. Raises ConstructionError if the point is not on the surface.
 ") SetG1Criterion;
-		void SetG1Criterion(const Standard_Real TolAng);
+		void SetG1Criterion(const double TolAng);
 
 		/****** GeomPlate_PointConstraint::SetG2Criterion ******/
-		/****** md5 signature: cd8438932c050d7dc27a81304a0b1e4a ******/
+		/****** md5 signature: 2b2eb5b6cd6bb3c134c3d7aa2f24c0c3 ******/
 		%feature("compactdefaultargs") SetG2Criterion;
 		%feature("autodoc", "
 Parameters
 ----------
-TolCurv: float
+TolCurv: double
 
 Return
 -------
@@ -1703,10 +1697,10 @@ Description
 -----------
 Allows you to set the G2 criterion. This is the law defining the greatest difference in curvature allowed between the constraint and the target surface. If this criterion is not set, TolCurv, the curvature tolerance from the constructor, is used. Raises ConstructionError if the point is not on the surface.
 ") SetG2Criterion;
-		void SetG2Criterion(const Standard_Real TolCurv);
+		void SetG2Criterion(const double TolCurv);
 
 		/****** GeomPlate_PointConstraint::SetOrder ******/
-		/****** md5 signature: e5c9a6282123051921f40d29e1dfc28a ******/
+		/****** md5 signature: 97cdc887c8ebf08faa34e00ed8a87e34 ******/
 		%feature("compactdefaultargs") SetOrder;
 		%feature("autodoc", "
 Parameters
@@ -1721,7 +1715,7 @@ Description
 -----------
 No available documentation.
 ") SetOrder;
-		void SetOrder(const Standard_Integer Order);
+		void SetOrder(const int Order);
 
 		/****** GeomPlate_PointConstraint::SetPnt2dOnSurf ******/
 		/****** md5 signature: 51fcd360e040f75e6558e21bd6fd66dd ******/
@@ -1777,7 +1771,7 @@ No available documentation.
 		 GeomPlate_Surface(const opencascade::handle<Geom_Surface> & Surfinit, const Plate_Plate & Surfinter);
 
 		/****** GeomPlate_Surface::Bounds ******/
-		/****** md5 signature: bbc36976e796eedf3c69513e986f2adb ******/
+		/****** md5 signature: 7f1a4954e4b71238771f442fdca29c3c ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -1785,10 +1779,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -1810,12 +1804,12 @@ No available documentation.
 		opencascade::handle<Geom_Surface> CallSurfinit();
 
 		/****** GeomPlate_Surface::Constraints ******/
-		/****** md5 signature: 88a670186229c9cf80f58b8c1c1e6764 ******/
+		/****** md5 signature: ff5e211a86e6e4b42f8ad765b95d9b50 ******/
 		%feature("compactdefaultargs") Constraints;
 		%feature("autodoc", "
 Parameters
 ----------
-Seq: TColgp_SequenceOfXY
+Seq: NCollection_Sequence<gp_XY>
 
 Return
 -------
@@ -1825,10 +1819,10 @@ Description
 -----------
 No available documentation.
 ") Constraints;
-		void Constraints(TColgp_SequenceOfXY & Seq);
+		void Constraints(NCollection_Sequence<gp_XY> & Seq);
 
 		/****** GeomPlate_Surface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -1841,7 +1835,7 @@ Global Continuity of the surface in direction U and V: C0: only geometric contin
 		GeomAbs_Shape Continuity();
 
 		/****** GeomPlate_Surface::Copy ******/
-		/****** md5 signature: 1360a3e0ea51e38ae19c71fb8aa1c4e9 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -1853,110 +1847,90 @@ No available documentation.
 ") Copy;
 		opencascade::handle<Geom_Geometry> Copy();
 
-		/****** GeomPlate_Surface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
+		/****** GeomPlate_Surface::EvalD0 ******/
+		/****** md5 signature: 1046a8f73ae1a8fffe777fdefe071ada ******/
+		%feature("compactdefaultargs") EvalD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
+U: double
+V: double
 
 Return
 -------
-None
+gp_Pnt
 
 Description
 -----------
 Computes the point of parameter U,V on the surface. //! Raised only for an 'OffsetSurface' if it is not possible to compute the current point.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
 
-		/****** GeomPlate_Surface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
+		/****** GeomPlate_Surface::EvalD1 ******/
+		/****** md5 signature: c55b624ed921898185694d11b9c5628f ******/
+		%feature("compactdefaultargs") EvalD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
+U: double
+V: double
 
 Return
 -------
-None
+Geom_Surface::ResD1
 
 Description
 -----------
 Computes the point P and the first derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C1.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
 
-		/****** GeomPlate_Surface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
+		/****** GeomPlate_Surface::EvalD2 ******/
+		/****** md5 signature: f6a44e7aae3253ecad3ffd20b8d918e4 ******/
+		%feature("compactdefaultargs") EvalD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
+U: double
+V: double
 
 Return
 -------
-None
+Geom_Surface::ResD2
 
 Description
 -----------
 Computes the point P, the first and the second derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C2.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
 
-		/****** GeomPlate_Surface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
+		/****** GeomPlate_Surface::EvalD3 ******/
+		/****** md5 signature: a71e0c31958103799dbcac00589886e4 ******/
+		%feature("compactdefaultargs") EvalD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
+U: double
+V: double
 
 Return
 -------
-None
+Geom_Surface::ResD3
 
 Description
 -----------
 Computes the point P, the first,the second and the third derivatives in the directions U and V at this point. Raised if the continuity of the surface is not C2.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
 
-		/****** GeomPlate_Surface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
+		/****** GeomPlate_Surface::EvalDN ******/
+		/****** md5 signature: 1ef4fac99419b60efd50e8567b76b4d1 ******/
+		%feature("compactdefaultargs") EvalDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Nu: int
 Nv: int
 
@@ -1967,11 +1941,11 @@ gp_Vec
 Description
 -----------
 ---Purpose ; Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). //! Raised if the continuity of the surface is not CNu in the U direction or not CNv in the V direction. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
 
 		/****** GeomPlate_Surface::IsCNu ******/
-		/****** md5 signature: c9f9f7f6eb82d83e9ba43e721cffba8a ******/
+		/****** md5 signature: 2f1fcdee848f1e9a21e718a5b5c41401 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -1986,10 +1960,10 @@ Description
 -----------
 Returns the order of continuity of the surface in the U parametric direction. Raised if N < 0.
 ") IsCNu;
-		Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** GeomPlate_Surface::IsCNv ******/
-		/****** md5 signature: 0acb88d1ffd7eea46785f30d7fc5f85e ******/
+		/****** md5 signature: 3b3be48e3062f448d523572dfc48fb76 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -2004,10 +1978,10 @@ Description
 -----------
 Returns the order of continuity of the surface in the V parametric direction. Raised if N < 0.
 ") IsCNv;
-		Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** GeomPlate_Surface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: 91c191879c9b39e0c4f123772c17dbd2 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -2017,10 +1991,10 @@ Description
 -----------
 Is the surface closed in the parametric direction U ? Returns True if for each parameter V the distance between the point P (UFirst, V) and P (ULast, V) is lower or equal to Resolution from gp. UFirst and ULast are the parametric bounds in the U direction.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** GeomPlate_Surface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: 7236661160e2b4989ea98f769e60fafb ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2030,10 +2004,10 @@ Description
 -----------
 Is the parametrization of a surface periodic in the direction U ? It is possible only if the surface is closed in this parametric direction and if the following relation is satisfied: for each parameter V the distance between the point P (U, V) and the point P (U + T, V) is lower or equal to Resolution from package gp. T is the parametric period and must be a constant.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** GeomPlate_Surface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: b42d07343ce292533f9bd94d419cf3f6 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -2043,10 +2017,10 @@ Description
 -----------
 Is the surface closed in the parametric direction V ? Returns True if for each parameter U the distance between the point P (U, VFirst) and P (U, VLast) is lower or equal to Resolution from gp. VFirst and VLast are the parametric bounds in the V direction.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** GeomPlate_Surface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 0654a6d88753f46bfbed67995e913efa ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2056,10 +2030,10 @@ Description
 -----------
 Is the parametrization of a surface periodic in the direction U ? It is possible only if the surface is closed in this parametric direction and if the following relation is satisfied: for each parameter V the distance between the point P (U, V) and the point P (U + T, V) is lower or equal to Resolution from package gp. T is the parametric period and must be a constant.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** GeomPlate_Surface::ParametricTransformation ******/
-		/****** md5 signature: 019b69215b9dcafd8e9b0052b449ea05 ******/
+		/****** md5 signature: c1b9bb71a922fdd2d9e7566b666caf07 ******/
 		%feature("compactdefaultargs") ParametricTransformation;
 		%feature("autodoc", "
 Parameters
@@ -2074,10 +2048,10 @@ Description
 -----------
 Returns a 2d transformation used to find the new parameters of a point on the transformed surface. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are obtained by transforming U,V with the 2d transformation returned by @code me->ParametricTransformation(T) @endcode This method returns an identity transformation //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 ") ParametricTransformation;
-		virtual gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
+		gp_GTrsf2d ParametricTransformation(const gp_Trsf & T);
 
 		/****** GeomPlate_Surface::RealBounds ******/
-		/****** md5 signature: c6bfe002a66421759247a297ee799115 ******/
+		/****** md5 signature: a6473c17d484ecfdf19895865d10326c ******/
 		%feature("compactdefaultargs") RealBounds;
 		%feature("autodoc", "
 Parameters
@@ -2085,10 +2059,10 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
@@ -2097,15 +2071,15 @@ No available documentation.
 		void RealBounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** GeomPlate_Surface::SetBounds ******/
-		/****** md5 signature: f9b00539a5ee696f2b7b8724fb01c337 ******/
+		/****** md5 signature: d17f7a0970411c84146c4fc4be9a23fe ******/
 		%feature("compactdefaultargs") SetBounds;
 		%feature("autodoc", "
 Parameters
 ----------
-Umin: float
-Umax: float
-Vmin: float
-Vmax: float
+Umin: double
+Umax: double
+Vmin: double
+Vmax: double
 
 Return
 -------
@@ -2115,10 +2089,10 @@ Description
 -----------
 No available documentation.
 ") SetBounds;
-		void SetBounds(const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
+		void SetBounds(const double Umin, const double Umax, const double Vmin, const double Vmax);
 
 		/****** GeomPlate_Surface::Transform ******/
-		/****** md5 signature: b643be97d129c62226d788cd0501ced0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -2136,7 +2110,7 @@ Transformation of a geometric object. This transformation can be a translation, 
 		void Transform(const gp_Trsf & T);
 
 		/****** GeomPlate_Surface::TransformParameters ******/
-		/****** md5 signature: 2d9e8651399bacbb299466ac222a6ca8 ******/
+		/****** md5 signature: 1996c75cd1c0909e83a5582fc61cb9e7 ******/
 		%feature("compactdefaultargs") TransformParameters;
 		%feature("autodoc", "
 Parameters
@@ -2145,22 +2119,22 @@ T: gp_Trsf
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Computes the parameters on the transformed surface for the transform of the point of parameters U,V on <self>. @code me->Transformed(T)->Value(U',V') @endcode is the same point as @code me->Value(U,V).Transformed(T) @endcode Where U',V' are the new values of U,V after calling @code me->TransformParameters(U,V,T) @endcode This methods does not change <U> and <V> //! It can be redefined. For example on the Plane, Cylinder, Cone, Revolved and Extruded surfaces.
 ") TransformParameters;
-		virtual void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
+		void TransformParameters(Standard_Real &OutValue, Standard_Real &OutValue, const gp_Trsf & T);
 
 		/****** GeomPlate_Surface::UIso ******/
-		/****** md5 signature: f5e8cbc22e32c38f4dd05caadff59fee ******/
+		/****** md5 signature: d8a57b487d7cd48cf38f0c957e3249cf ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -2170,23 +2144,23 @@ Description
 -----------
 Computes the U isoparametric curve.
 ") UIso;
-		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** GeomPlate_Surface::UPeriod ******/
-		/****** md5 signature: 99929007fac43736aa36012893e9b882 ******/
+		/****** md5 signature: 0ac7288e2577dfedb94dacb3d9a60302 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the Uperiod. raises if the surface is not uperiodic.
 ") UPeriod;
-		virtual Standard_Real UPeriod();
+		double UPeriod();
 
 		/****** GeomPlate_Surface::UReverse ******/
-		/****** md5 signature: 31a376207d6b3f3c82d0cde57034e1f2 ******/
+		/****** md5 signature: a985506a01d4ef5da425c5f8327a341d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -2199,30 +2173,30 @@ Reverses the U direction of parametrization of <self>. The bounds of the surface
 		void UReverse();
 
 		/****** GeomPlate_Surface::UReversedParameter ******/
-		/****** md5 signature: 0071925b176316f0aaaf26f369ac410c ******/
+		/****** md5 signature: 05e3d33e6c2ca68b5a0e18b9bb568fd7 ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Ureversed surface for the point of parameter U on <self>. @code me->UReversed()->Value(me->UReversedParameter(U),V) @endcode is the same point as @code me->Value(U,V) @endcode.
 ") UReversedParameter;
-		Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** GeomPlate_Surface::VIso ******/
-		/****** md5 signature: ef8726fc193d6cf33f54c94b9ed952a5 ******/
+		/****** md5 signature: 3b15e0839a90a1a188d31a753e205519 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -2232,23 +2206,23 @@ Description
 -----------
 Computes the V isoparametric curve.
 ") VIso;
-		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** GeomPlate_Surface::VPeriod ******/
-		/****** md5 signature: 0b2fb065ece518694127e1e1eadebb25 ******/
+		/****** md5 signature: 59a61c3d75ffd436a26d1e119e233654 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the Vperiod. raises if the surface is not vperiodic.
 ") VPeriod;
-		virtual Standard_Real VPeriod();
+		double VPeriod();
 
 		/****** GeomPlate_Surface::VReverse ******/
-		/****** md5 signature: ca22d262a13cf236e9be77a884d19536 ******/
+		/****** md5 signature: f0b1c2d85d545f70e432fc3c0f035672 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -2261,22 +2235,22 @@ Reverses the V direction of parametrization of <self>. The bounds of the surface
 		void VReverse();
 
 		/****** GeomPlate_Surface::VReversedParameter ******/
-		/****** md5 signature: 92057d43e0e5ee078908582a4176343b ******/
+		/****** md5 signature: 9f09cbdc0d05c88de49b614a8ac2ef58 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the parameter on the Vreversed surface for the point of parameter V on <self>. @code me->VReversed()->Value(U,me->VReversedParameter(V)) @endcode is the same point as @code me->Value(U,V) @endcode.
 ") VReversedParameter;
-		Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 };
 
@@ -2291,49 +2265,49 @@ Return the parameter on the Vreversed surface for the point of parameter V on <s
 
 /* harray1 classes */
 
-class GeomPlate_HArray1OfHCurve : public GeomPlate_Array1OfHCurve, public Standard_Transient {
+class GeomPlate_HArray1OfHCurve : public NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>, public Standard_Transient {
   public:
     GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomPlate_Array1OfHCurve::value_type& theValue);
-    GeomPlate_HArray1OfHCurve(const GeomPlate_Array1OfHCurve& theOther);
-    const GeomPlate_Array1OfHCurve& Array1();
-    GeomPlate_Array1OfHCurve& ChangeArray1();
+    GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>::value_type& theValue);
+    GeomPlate_HArray1OfHCurve(const NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>& theOther);
+    const NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>& Array1();
+    NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>& ChangeArray1();
 };
 %make_alias(GeomPlate_HArray1OfHCurve)
 
 
-class GeomPlate_HArray1OfSequenceOfReal : public GeomPlate_Array1OfSequenceOfReal, public Standard_Transient {
+class GeomPlate_HArray1OfSequenceOfReal : public NCollection_Array1<TColStd_SequenceOfReal>, public Standard_Transient {
   public:
     GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const GeomPlate_Array1OfSequenceOfReal::value_type& theValue);
-    GeomPlate_HArray1OfSequenceOfReal(const GeomPlate_Array1OfSequenceOfReal& theOther);
-    const GeomPlate_Array1OfSequenceOfReal& Array1();
-    GeomPlate_Array1OfSequenceOfReal& ChangeArray1();
+    GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TColStd_SequenceOfReal>::value_type& theValue);
+    GeomPlate_HArray1OfSequenceOfReal(const NCollection_Array1<TColStd_SequenceOfReal>& theOther);
+    const NCollection_Array1<TColStd_SequenceOfReal>& Array1();
+    NCollection_Array1<TColStd_SequenceOfReal>& ChangeArray1();
 };
 %make_alias(GeomPlate_HArray1OfSequenceOfReal)
 
 /* harray2 classes */
 /* hsequence classes */
-class GeomPlate_HSequenceOfCurveConstraint : public GeomPlate_SequenceOfCurveConstraint, public Standard_Transient {
+class GeomPlate_HSequenceOfCurveConstraint : public NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>, public Standard_Transient {
   public:
     GeomPlate_HSequenceOfCurveConstraint();
-    GeomPlate_HSequenceOfCurveConstraint(const GeomPlate_SequenceOfCurveConstraint& theOther);
-    const GeomPlate_SequenceOfCurveConstraint& Sequence();
-    void Append (const GeomPlate_SequenceOfCurveConstraint::value_type& theItem);
-    void Append (GeomPlate_SequenceOfCurveConstraint& theSequence);
-    GeomPlate_SequenceOfCurveConstraint& ChangeSequence();
+    GeomPlate_HSequenceOfCurveConstraint(const NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& theOther);
+    const NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& theSequence);
+    NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfCurveConstraint)
 
 
-class GeomPlate_HSequenceOfPointConstraint : public GeomPlate_SequenceOfPointConstraint, public Standard_Transient {
+class GeomPlate_HSequenceOfPointConstraint : public NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>, public Standard_Transient {
   public:
     GeomPlate_HSequenceOfPointConstraint();
-    GeomPlate_HSequenceOfPointConstraint(const GeomPlate_SequenceOfPointConstraint& theOther);
-    const GeomPlate_SequenceOfPointConstraint& Sequence();
-    void Append (const GeomPlate_SequenceOfPointConstraint::value_type& theItem);
-    void Append (GeomPlate_SequenceOfPointConstraint& theSequence);
-    GeomPlate_SequenceOfPointConstraint& ChangeSequence();
+    GeomPlate_HSequenceOfPointConstraint(const NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& theOther);
+    const NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& theSequence);
+    NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfPointConstraint)
 

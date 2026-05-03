@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igestobrep.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<IGESData_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Transfer_module.hxx>
 #include<Interface_module.hxx>
@@ -79,7 +78,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igestobrep.html"
 %import Standard.i
 %import NCollection.i
 %import IGESData.i
-%import TColStd.i
 %import TopoDS.i
 %import Transfer.i
 %import Interface.i
@@ -104,7 +102,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(IGESToBRep_Actor)
 %wrap_handle(IGESToBRep_AlgoContainer)
 %wrap_handle(IGESToBRep_IGESBoundary)
 %wrap_handle(IGESToBRep_ToolContainer)
@@ -136,13 +133,13 @@ Returns default AlgoContainer.
 		static opencascade::handle<IGESToBRep_AlgoContainer> AlgoContainer();
 
 		/****** IGESToBRep::IGESCurveToSequenceOfIGESCurve ******/
-		/****** md5 signature: 65745dc7773939b6a54fc96657302a72 ******/
+		/****** md5 signature: 9c33018930adf4129753148fad23c719 ******/
 		%feature("compactdefaultargs") IGESCurveToSequenceOfIGESCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 curve: IGESData_IGESEntity
-sequence: TColStd_HSequenceOfTransient
+sequence: NCollection_HSequence<
 
 Return
 -------
@@ -152,7 +149,7 @@ Description
 -----------
 No available documentation.
 ") IGESCurveToSequenceOfIGESCurve;
-		static Standard_Integer IGESCurveToSequenceOfIGESCurve(const opencascade::handle<IGESData_IGESEntity> & curve, opencascade::handle<TColStd_HSequenceOfTransient> & sequence);
+		static int IGESCurveToSequenceOfIGESCurve(const opencascade::handle<IGESData_IGESEntity> & curve, opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & sequence);
 
 		/****** IGESToBRep::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -168,7 +165,7 @@ Creates and initializes default AlgoContainer.
 		static void Init();
 
 		/****** IGESToBRep::IsBRepEntity ******/
-		/****** md5 signature: 8c2bfa7b35a4b91f6ff083af713cb642 ******/
+		/****** md5 signature: 0e51de2e30905fb4809c847460b72f75 ******/
 		%feature("compactdefaultargs") IsBRepEntity;
 		%feature("autodoc", "
 Parameters
@@ -183,10 +180,10 @@ Description
 -----------
 Return True if the IGESEntity can be transferred by TransferBRepEntity. ex: VertexList, EdgeList, Loop, Face, Shell, Manifold Solid BRep Object from IGESSolid: 502, 504, 508, 510, 514, 186.
 ") IsBRepEntity;
-		static Standard_Boolean IsBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start);
+		static bool IsBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep::IsBasicCurve ******/
-		/****** md5 signature: 42ec9ba034e2ab3c6c5dfcfcccd225d2 ******/
+		/****** md5 signature: c2c5e17e797f64c3e0ce049e76612b8a ******/
 		%feature("compactdefaultargs") IsBasicCurve;
 		%feature("autodoc", "
 Parameters
@@ -201,10 +198,10 @@ Description
 -----------
 Return True if the IGESEntity can be transferred by TransferBasicCurve. ex: CircularArc, ConicArc, Line, CopiousData, BSplineCurve, SplineCurve... from IGESGeom: 104,110,112,126.
 ") IsBasicCurve;
-		static Standard_Boolean IsBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
+		static bool IsBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep::IsBasicSurface ******/
-		/****** md5 signature: d0dc8dd41529b6d3fef6c4adced6727d ******/
+		/****** md5 signature: 0aa75a99c740758e7d438d75d19b17a7 ******/
 		%feature("compactdefaultargs") IsBasicSurface;
 		%feature("autodoc", "
 Parameters
@@ -219,10 +216,10 @@ Description
 -----------
 Return True if the IGESEntity can be transferred by TransferBasicSurface. ex: BSplineSurface, SplineSurface... from IGESGeom: 114,128.
 ") IsBasicSurface;
-		static Standard_Boolean IsBasicSurface(const opencascade::handle<IGESData_IGESEntity> & start);
+		static bool IsBasicSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep::IsCurveAndSurface ******/
-		/****** md5 signature: b96b33689780417661991af3b76ddee1 ******/
+		/****** md5 signature: 8cef100d34d031e7d87206bd0063f62f ******/
 		%feature("compactdefaultargs") IsCurveAndSurface;
 		%feature("autodoc", "
 Parameters
@@ -237,10 +234,10 @@ Description
 -----------
 Return True if the IGESEntity can be transferred by TransferCurveAndSurface. ex: All IGESEntity from IGESGeom.
 ") IsCurveAndSurface;
-		static Standard_Boolean IsCurveAndSurface(const opencascade::handle<IGESData_IGESEntity> & start);
+		static bool IsCurveAndSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep::IsTopoCurve ******/
-		/****** md5 signature: 8beaa6c0e1d32256ba611244ed46c96d ******/
+		/****** md5 signature: 9d7cef5bffceae7a7edbf87d20cb6927 ******/
 		%feature("compactdefaultargs") IsTopoCurve;
 		%feature("autodoc", "
 Parameters
@@ -255,10 +252,10 @@ Description
 -----------
 Return True if the IGESEntity can be transferred by TransferTopoCurve. ex: all Curves from IGESGeom: all basic curves,102,130,142,144.
 ") IsTopoCurve;
-		static Standard_Boolean IsTopoCurve(const opencascade::handle<IGESData_IGESEntity> & start);
+		static bool IsTopoCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep::IsTopoSurface ******/
-		/****** md5 signature: 6eadf76f141e5e89c1e625ef86dd94cb ******/
+		/****** md5 signature: 93248af9d8183edeaeb838e94bae9d14 ******/
 		%feature("compactdefaultargs") IsTopoSurface;
 		%feature("autodoc", "
 Parameters
@@ -273,7 +270,7 @@ Description
 -----------
 Return True if the IGESEntity can be transferred by TransferTopoSurface. ex: All Surfaces from IGESGeom: all basic surfaces,108,118,120,122,141,143.
 ") IsTopoSurface;
-		static Standard_Boolean IsTopoSurface(const opencascade::handle<IGESData_IGESEntity> & start);
+		static bool IsTopoSurface(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep::SetAlgoContainer ******/
 		/****** md5 signature: f97a13ed458b61baca8078e20e31170c ******/
@@ -294,7 +291,7 @@ Sets default AlgoContainer.
 		static void SetAlgoContainer(const opencascade::handle<IGESToBRep_AlgoContainer> & aContainer);
 
 		/****** IGESToBRep::TransferPCurve ******/
-		/****** md5 signature: fb764b640f6c6dda11eb0c634662ae4b ******/
+		/****** md5 signature: 30d30765304a3f8005744b7af850857a ******/
 		%feature("compactdefaultargs") TransferPCurve;
 		%feature("autodoc", "
 Parameters
@@ -311,7 +308,7 @@ Description
 -----------
 No available documentation.
 ") TransferPCurve;
-		static Standard_Boolean TransferPCurve(const TopoDS_Edge & fromedge, const TopoDS_Edge & toedge, const TopoDS_Face & face);
+		static bool TransferPCurve(const TopoDS_Edge & fromedge, const TopoDS_Edge & toedge, const TopoDS_Face & face);
 
 };
 
@@ -341,7 +338,7 @@ No available documentation.
 		 IGESToBRep_Actor();
 
 		/****** IGESToBRep_Actor::GetContinuity ******/
-		/****** md5 signature: 0b4f25603c1871deb427d405a7545537 ******/
+		/****** md5 signature: 3dfc819820f96ec4d5cc5eb74f12d2c9 ******/
 		%feature("compactdefaultargs") GetContinuity;
 		%feature("autodoc", "Return
 -------
@@ -351,10 +348,10 @@ Description
 -----------
 Return 'thecontinuity'.
 ") GetContinuity;
-		Standard_Integer GetContinuity();
+		int GetContinuity();
 
 		/****** IGESToBRep_Actor::Recognize ******/
-		/****** md5 signature: b84cbd6b814e0bcf2e581fe12af7f160 ******/
+		/****** md5 signature: bcae82f639847fbe8e373aacd64b0811 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -369,10 +366,10 @@ Description
 -----------
 No available documentation.
 ") Recognize;
-		virtual Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & start);
+		bool Recognize(const opencascade::handle<Standard_Transient> & start);
 
 		/****** IGESToBRep_Actor::SetContinuity ******/
-		/****** md5 signature: 470be06f7898b7685d1961bc19ca6a82 ******/
+		/****** md5 signature: c078833fe61821c1a664226f19f2744d ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -387,7 +384,7 @@ Description
 -----------
 ---Purpose By default continuity = 0 if continuity = 1: try C1 if continuity = 2: try C2.
 ") SetContinuity;
-		void SetContinuity(const Standard_Integer continuity = 0);
+		void SetContinuity(const int continuity = 0);
 
 		/****** IGESToBRep_Actor::SetModel ******/
 		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
@@ -408,7 +405,7 @@ No available documentation.
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IGESToBRep_Actor::Transfer ******/
-		/****** md5 signature: e4303fa9409798bd20ec402569b65ae8 ******/
+		/****** md5 signature: 16f43cec6d8271b86ded98edf3beebd6 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -425,25 +422,23 @@ Description
 -----------
 No available documentation.
 ") Transfer;
-		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESToBRep_Actor::UsedTolerance ******/
-		/****** md5 signature: ff38c5c7287c4c23a2ef8bba63f8adbd ******/
+		/****** md5 signature: 7357e87c4a6f19e34cb7c14ef67362e1 ******/
 		%feature("compactdefaultargs") UsedTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the tolerance which was actually used, either from the file or from statics.
 ") UsedTolerance;
-		Standard_Real UsedTolerance();
+		double UsedTolerance();
 
 };
 
-
-%make_alias(IGESToBRep_Actor)
 
 %extend IGESToBRep_Actor {
 	%pythoncode {
@@ -530,14 +525,14 @@ Creates a tool CurveAndSurface ready to run, with epsilons set to 1.E-04, myMode
 		 IGESToBRep_CurveAndSurface();
 
 		/****** IGESToBRep_CurveAndSurface::IGESToBRep_CurveAndSurface ******/
-		/****** md5 signature: 3289f045564ae617fdf61d89466ccf9a ******/
+		/****** md5 signature: 632732360d8b67965cc391e85c3d452b ******/
 		%feature("compactdefaultargs") IGESToBRep_CurveAndSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
-epsGeom: float
-epsCoeff: float
+eps: double
+epsGeom: double
+epsCoeff: double
 mode: bool
 modeapprox: bool
 optimized: bool
@@ -550,7 +545,7 @@ Description
 -----------
 Creates a tool CurveAndSurface ready to run.
 ") IGESToBRep_CurveAndSurface;
-		 IGESToBRep_CurveAndSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+		 IGESToBRep_CurveAndSurface(const double eps, const double epsGeom, const double epsCoeff, const bool mode, const bool modeapprox, const bool optimized);
 
 		/****** IGESToBRep_CurveAndSurface::AddShapeResult ******/
 		/****** md5 signature: 275dfa4591cf41b9295dcebd1309477d ******/
@@ -567,12 +562,12 @@ None
 
 Description
 -----------
-set in 'myMap' the result of the transfer of the entity of the IGESEntity start ( type VertexList or EdgeList).
+set in 'myMap' the result of the transfer of the entity of the IGESEntity start (type VertexList or EdgeList).
 ") AddShapeResult;
 		void AddShapeResult(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Shape & result);
 
 		/****** IGESToBRep_CurveAndSurface::GetContinuity ******/
-		/****** md5 signature: 0b4f25603c1871deb427d405a7545537 ******/
+		/****** md5 signature: 3dfc819820f96ec4d5cc5eb74f12d2c9 ******/
 		%feature("compactdefaultargs") GetContinuity;
 		%feature("autodoc", "Return
 -------
@@ -582,75 +577,75 @@ Description
 -----------
 Returns the value of 'myContinuity'.
 ") GetContinuity;
-		Standard_Integer GetContinuity();
+		int GetContinuity();
 
 		/****** IGESToBRep_CurveAndSurface::GetEpsCoeff ******/
-		/****** md5 signature: c204a956b9d0d3cc698fcb30e25bdaa9 ******/
+		/****** md5 signature: 2768fe26b54a4a7450f30d4313fc7ed8 ******/
 		%feature("compactdefaultargs") GetEpsCoeff;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of 'myEpsCoeff'.
 ") GetEpsCoeff;
-		Standard_Real GetEpsCoeff();
+		double GetEpsCoeff();
 
 		/****** IGESToBRep_CurveAndSurface::GetEpsGeom ******/
-		/****** md5 signature: 9d8b1eb39afec6647761e73d0dd51496 ******/
+		/****** md5 signature: e7895d786fbbaed92202abb5b46b0d25 ******/
 		%feature("compactdefaultargs") GetEpsGeom;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of 'myEpsGeom'.
 ") GetEpsGeom;
-		Standard_Real GetEpsGeom();
+		double GetEpsGeom();
 
 		/****** IGESToBRep_CurveAndSurface::GetEpsilon ******/
-		/****** md5 signature: ba14a5e7d625b3badf7695ef1b2ba5c0 ******/
+		/****** md5 signature: 94394c68c9eaaeccef5a8fdcc06f8f31 ******/
 		%feature("compactdefaultargs") GetEpsilon;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of 'myEps'.
 ") GetEpsilon;
-		Standard_Real GetEpsilon();
+		double GetEpsilon();
 
 		/****** IGESToBRep_CurveAndSurface::GetMaxTol ******/
-		/****** md5 signature: 7fc3a4caa1b58b329366bc57a26784b9 ******/
+		/****** md5 signature: 25b1abcba2516931e32e28095472505b ******/
 		%feature("compactdefaultargs") GetMaxTol;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of 'myMaxTol'.
 ") GetMaxTol;
-		Standard_Real GetMaxTol();
+		double GetMaxTol();
 
 		/****** IGESToBRep_CurveAndSurface::GetMinTol ******/
-		/****** md5 signature: 43a94bcf9245d3d5ba9ccae07929c24f ******/
+		/****** md5 signature: d398173fea0919b41f4cfbd2d0bb1949 ******/
 		%feature("compactdefaultargs") GetMinTol;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of 'myMinTol'.
 ") GetMinTol;
-		Standard_Real GetMinTol();
+		double GetMinTol();
 
 		/****** IGESToBRep_CurveAndSurface::GetModeApprox ******/
-		/****** md5 signature: 57c1a60849ce01d412739423b3997463 ******/
+		/****** md5 signature: 55ccabc487c6e01ca54c015ff1c1aabd ******/
 		%feature("compactdefaultargs") GetModeApprox;
 		%feature("autodoc", "Return
 -------
@@ -660,10 +655,10 @@ Description
 -----------
 Returns the value of 'myModeApprox'.
 ") GetModeApprox;
-		Standard_Boolean GetModeApprox();
+		bool GetModeApprox();
 
 		/****** IGESToBRep_CurveAndSurface::GetModeTransfer ******/
-		/****** md5 signature: cae1417d18afbdb49419602577ed1b09 ******/
+		/****** md5 signature: 72194f17bf327efb54a0d2dcc09daec7 ******/
 		%feature("compactdefaultargs") GetModeTransfer;
 		%feature("autodoc", "Return
 -------
@@ -673,7 +668,7 @@ Description
 -----------
 Returns the value of 'myModeIsTopo'.
 ") GetModeTransfer;
-		Standard_Boolean GetModeTransfer();
+		bool GetModeTransfer();
 
 		/****** IGESToBRep_CurveAndSurface::GetModel ******/
 		/****** md5 signature: 903699a7f01ab7b92813659a6c19f871 ******/
@@ -689,7 +684,7 @@ Returns the value of 'myModel'.
 		opencascade::handle<IGESData_IGESModel> GetModel();
 
 		/****** IGESToBRep_CurveAndSurface::GetOptimized ******/
-		/****** md5 signature: 6cc15b4504712321a48092d75ef058cf ******/
+		/****** md5 signature: e8580acd9256d0a483b626e4d0293552 ******/
 		%feature("compactdefaultargs") GetOptimized;
 		%feature("autodoc", "Return
 -------
@@ -699,7 +694,7 @@ Description
 -----------
 Returns the value of 'myContIsOpti'.
 ") GetOptimized;
-		Standard_Boolean GetOptimized();
+		bool GetOptimized();
 
 		/****** IGESToBRep_CurveAndSurface::GetShapeResult ******/
 		/****** md5 signature: 2c0dddc40e78c0b007a111811f6ebae6 ******/
@@ -720,7 +715,7 @@ Returns the result of the transfer of the IGESEntity 'start' contained in 'myMap
 		TopoDS_Shape GetShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep_CurveAndSurface::GetShapeResult ******/
-		/****** md5 signature: 0ee811b8d4522d9c2d151ff707425b8d ******/
+		/****** md5 signature: 5fb64a3e55b538206ad6f94244ac2d17 ******/
 		%feature("compactdefaultargs") GetShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -736,10 +731,10 @@ Description
 -----------
 Returns the numth result of the IGESEntity start (type VertexList or EdgeList) in 'myMap'. (if NbShapeResult is not null).
 ") GetShapeResult;
-		TopoDS_Shape GetShapeResult(const opencascade::handle<IGESData_IGESEntity> & start, const Standard_Integer num);
+		TopoDS_Shape GetShapeResult(const opencascade::handle<IGESData_IGESEntity> & start, const int num);
 
 		/****** IGESToBRep_CurveAndSurface::GetSurfaceCurve ******/
-		/****** md5 signature: 245956d7f4e7d4a0983cc2b079dad792 ******/
+		/****** md5 signature: ff0ef2ddffa07508c200521911e40bce ******/
 		%feature("compactdefaultargs") GetSurfaceCurve;
 		%feature("autodoc", "Return
 -------
@@ -749,7 +744,7 @@ Description
 -----------
 Returns the value of 'mySurfaceCurve' 0 = value in file, 2 = keep 2d and compute 3d, 3 = keep 3d and compute 2d.
 ") GetSurfaceCurve;
-		Standard_Integer GetSurfaceCurve();
+		int GetSurfaceCurve();
 
 		/****** IGESToBRep_CurveAndSurface::GetTransferProcess ******/
 		/****** md5 signature: 484ad8a57f2aacc305eaf2d838f8a63f ******/
@@ -765,33 +760,33 @@ Returns the value of 'myMsgReg'.
 		opencascade::handle<Transfer_TransientProcess> GetTransferProcess();
 
 		/****** IGESToBRep_CurveAndSurface::GetUVResolution ******/
-		/****** md5 signature: 4c0bd69a9805b0fe0ef7c0cbf6764a46 ******/
+		/****** md5 signature: f316cf1eb339522994ba9b3a93f614d3 ******/
 		%feature("compactdefaultargs") GetUVResolution;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") GetUVResolution;
-		Standard_Real GetUVResolution();
+		double GetUVResolution();
 
 		/****** IGESToBRep_CurveAndSurface::GetUnitFactor ******/
-		/****** md5 signature: 1bd8c1322b189bf3e2c3314e8178ff2c ******/
+		/****** md5 signature: 37e511babaf3e5bd464fdeec519da3e7 ******/
 		%feature("compactdefaultargs") GetUnitFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of ' myUnitFactor'.
 ") GetUnitFactor;
-		Standard_Real GetUnitFactor();
+		double GetUnitFactor();
 
 		/****** IGESToBRep_CurveAndSurface::HasShapeResult ******/
-		/****** md5 signature: 9cf61c3441f129b9bcdd0863a06ddb72 ******/
+		/****** md5 signature: 805d9b82205dd17b07c3a162b9944f8a ******/
 		%feature("compactdefaultargs") HasShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -806,7 +801,7 @@ Description
 -----------
 Returns True if start was already treated and has a result in 'myMap' else returns False.
 ") HasShapeResult;
-		Standard_Boolean HasShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
+		bool HasShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep_CurveAndSurface::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -822,7 +817,7 @@ Initializes the field of the tool CurveAndSurface with default creating values.
 		void Init();
 
 		/****** IGESToBRep_CurveAndSurface::NbShapeResult ******/
-		/****** md5 signature: 4a28dd0824cbd970cbb0482ca2600d07 ******/
+		/****** md5 signature: aa749830627844c218f87e63e0f95d19 ******/
 		%feature("compactdefaultargs") NbShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -835,9 +830,9 @@ int
 
 Description
 -----------
-Returns the number of shapes results contained in 'myMap' for the IGESEntity start ( type VertexList or EdgeList).
+Returns the number of shapes results contained in 'myMap' for the IGESEntity start (type VertexList or EdgeList).
 ") NbShapeResult;
-		Standard_Integer NbShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
+		int NbShapeResult(const opencascade::handle<IGESData_IGESEntity> & start);
 
 		/****** IGESToBRep_CurveAndSurface::SendFail ******/
 		/****** md5 signature: d91bf8a921edee5188c0d2a21dcb288a ******/
@@ -897,7 +892,7 @@ Records a new Warning message.
 		void SendWarning(const opencascade::handle<IGESData_IGESEntity> & start, const Message_Msg & amsg);
 
 		/****** IGESToBRep_CurveAndSurface::SetContinuity ******/
-		/****** md5 signature: 9187b28bfccce807d514c1d431185e5d ******/
+		/****** md5 signature: ee0641d4e4c3b6297326b69cad216f36 ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -912,15 +907,15 @@ Description
 -----------
 Changes the value of 'myContinuity' if continuity = 0 do nothing else if continuity = 1 try C1 if continuity = 2 try C2.
 ") SetContinuity;
-		void SetContinuity(const Standard_Integer continuity);
+		void SetContinuity(const int continuity);
 
 		/****** IGESToBRep_CurveAndSurface::SetEpsCoeff ******/
-		/****** md5 signature: 0aadb35c43e5a4c71f14be3063a6efc3 ******/
+		/****** md5 signature: 655d889710ef6cefcf412250024e01c2 ******/
 		%feature("compactdefaultargs") SetEpsCoeff;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
+eps: double
 
 Return
 -------
@@ -930,15 +925,15 @@ Description
 -----------
 Changes the value of 'myEpsCoeff'.
 ") SetEpsCoeff;
-		void SetEpsCoeff(const Standard_Real eps);
+		void SetEpsCoeff(const double eps);
 
 		/****** IGESToBRep_CurveAndSurface::SetEpsGeom ******/
-		/****** md5 signature: cc2e4e8d49a550d708522faa66bb351d ******/
+		/****** md5 signature: c5d1f8b9645f576865e404cbdad8f9b8 ******/
 		%feature("compactdefaultargs") SetEpsGeom;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
+eps: double
 
 Return
 -------
@@ -948,15 +943,15 @@ Description
 -----------
 Changes the value of 'myEpsGeom'.
 ") SetEpsGeom;
-		void SetEpsGeom(const Standard_Real eps);
+		void SetEpsGeom(const double eps);
 
 		/****** IGESToBRep_CurveAndSurface::SetEpsilon ******/
-		/****** md5 signature: d7959f9ce73ddf6898c8522f4f76d8ee ******/
+		/****** md5 signature: c33fcd0ff2817135824e96b788665673 ******/
 		%feature("compactdefaultargs") SetEpsilon;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
+eps: double
 
 Return
 -------
@@ -966,15 +961,15 @@ Description
 -----------
 Changes the value of 'myEps'.
 ") SetEpsilon;
-		void SetEpsilon(const Standard_Real eps);
+		void SetEpsilon(const double eps);
 
 		/****** IGESToBRep_CurveAndSurface::SetMaxTol ******/
-		/****** md5 signature: 954fbf5be5bad9962916cfa44f9cf313 ******/
+		/****** md5 signature: 4e134414b847958943ce07cad4b1becc ******/
 		%feature("compactdefaultargs") SetMaxTol;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -984,15 +979,15 @@ Description
 -----------
 Changes the value of 'myMaxTol'.
 ") SetMaxTol;
-		void SetMaxTol(const Standard_Real maxtol);
+		void SetMaxTol(const double maxtol);
 
 		/****** IGESToBRep_CurveAndSurface::SetMinTol ******/
-		/****** md5 signature: d8e700e8230950a60d86d32faa489e7d ******/
+		/****** md5 signature: 07b7079ff25bd9a9f74c4949db032343 ******/
 		%feature("compactdefaultargs") SetMinTol;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -1002,10 +997,10 @@ Description
 -----------
 Changes the value of 'myMinTol'.
 ") SetMinTol;
-		void SetMinTol(const Standard_Real mintol);
+		void SetMinTol(const double mintol);
 
 		/****** IGESToBRep_CurveAndSurface::SetModeApprox ******/
-		/****** md5 signature: 7ef6d9de409347aa1041d0c1315e8421 ******/
+		/****** md5 signature: ec8f932204ccada7c729e44011d4ea2a ******/
 		%feature("compactdefaultargs") SetModeApprox;
 		%feature("autodoc", "
 Parameters
@@ -1020,10 +1015,10 @@ Description
 -----------
 Changes the value of 'myModeApprox'.
 ") SetModeApprox;
-		void SetModeApprox(const Standard_Boolean mode);
+		void SetModeApprox(const bool mode);
 
 		/****** IGESToBRep_CurveAndSurface::SetModeTransfer ******/
-		/****** md5 signature: a465a6656aef745cafcc53a1111ee4a7 ******/
+		/****** md5 signature: 8500c5171a5db51b9bd369088f474148 ******/
 		%feature("compactdefaultargs") SetModeTransfer;
 		%feature("autodoc", "
 Parameters
@@ -1038,7 +1033,7 @@ Description
 -----------
 Changes the value of 'myModeIsTopo'.
 ") SetModeTransfer;
-		void SetModeTransfer(const Standard_Boolean mode);
+		void SetModeTransfer(const bool mode);
 
 		/****** IGESToBRep_CurveAndSurface::SetModel ******/
 		/****** md5 signature: 57ee68a1eb65ee7bf7cf629e19bb0af7 ******/
@@ -1059,7 +1054,7 @@ Set the value of 'myModel'.
 		void SetModel(const opencascade::handle<IGESData_IGESModel> & model);
 
 		/****** IGESToBRep_CurveAndSurface::SetOptimized ******/
-		/****** md5 signature: 8a8e72b5ec5f0e419be7985230ab37fa ******/
+		/****** md5 signature: b293cc6f0d115db82a9219e7feb45ca1 ******/
 		%feature("compactdefaultargs") SetOptimized;
 		%feature("autodoc", "
 Parameters
@@ -1074,7 +1069,7 @@ Description
 -----------
 Changes the value of 'myContIsOpti'.
 ") SetOptimized;
-		void SetOptimized(const Standard_Boolean optimized);
+		void SetOptimized(const bool optimized);
 
 		/****** IGESToBRep_CurveAndSurface::SetShapeResult ******/
 		/****** md5 signature: 267d07a0f7a85d681f1f9d0bef937a08 ******/
@@ -1114,7 +1109,7 @@ No available documentation.
 		void SetSurface(const opencascade::handle<Geom_Surface> & theSurface);
 
 		/****** IGESToBRep_CurveAndSurface::SetSurfaceCurve ******/
-		/****** md5 signature: 0afd37178088d8096d3ea47598f1cb96 ******/
+		/****** md5 signature: db81d37f3fa42ebf94682acb58cafec8 ******/
 		%feature("compactdefaultargs") SetSurfaceCurve;
 		%feature("autodoc", "
 Parameters
@@ -1129,7 +1124,7 @@ Description
 -----------
 Changes the value of 'mySurfaceCurve'.
 ") SetSurfaceCurve;
-		void SetSurfaceCurve(const Standard_Integer ival);
+		void SetSurfaceCurve(const int ival);
 
 		/****** IGESToBRep_CurveAndSurface::SetTransferProcess ******/
 		/****** md5 signature: 45265907d5b7c14270813a8de762d306 ******/
@@ -1259,7 +1254,7 @@ Empty constructor.
 		 IGESToBRep_IGESBoundary(const IGESToBRep_CurveAndSurface & CS);
 
 		/****** IGESToBRep_IGESBoundary::Check ******/
-		/****** md5 signature: 027657193f5e5111dd7aeaf0088d6b9b ******/
+		/****** md5 signature: b7db716c682842b7d991ea4e2a1e396e ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -1277,10 +1272,10 @@ Description
 -----------
 Checks result of translation of IGES boundary entities (types 141, 142 or 508). Checks consistency of 2D and 3D representations and keeps only one if they are inconsistent. <result>: result of translation (returned by Transfer), <checkclosure>: False for 142 without parent 144 entity, otherwise True, <okCurve3d>, <okCurve2d>: those returned by Transfer.
 ") Check;
-		virtual void Check(const Standard_Boolean result, const Standard_Boolean checkclosure, const Standard_Boolean okCurve3d, const Standard_Boolean okCurve2d);
+		virtual void Check(const bool result, const bool checkclosure, const bool okCurve3d, const bool okCurve2d);
 
 		/****** IGESToBRep_IGESBoundary::Init ******/
-		/****** md5 signature: 148fc431c88cb36e40549c966cc1a5e5 ******/
+		/****** md5 signature: 9ca59e0ac06307f6e07f6fcb73ec4e08 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1289,7 +1284,7 @@ CS: IGESToBRep_CurveAndSurface
 entity: IGESData_IGESEntity
 face: TopoDS_Face
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 filepreference: int
 
 Return
@@ -1300,17 +1295,17 @@ Description
 -----------
 Inits the object with parameters common for all types of IGES boundaries. <CS>: object to be used for retrieving translation parameters and sending messages, <entity>: boundary entity to be processed, <face>, <trans>, <uFact>: as for IGESToBRep_TopoCurve <filepreference>: preferred representation (2 or 3) given in the IGES file.
 ") Init;
-		void Init(const IGESToBRep_CurveAndSurface & CS, const opencascade::handle<IGESData_IGESEntity> & entity, const TopoDS_Face & face, const gp_Trsf2d & trans, const Standard_Real uFact, const Standard_Integer filepreference);
+		void Init(const IGESToBRep_CurveAndSurface & CS, const opencascade::handle<IGESData_IGESEntity> & entity, const TopoDS_Face & face, const gp_Trsf2d & trans, const double uFact, const int filepreference);
 
 		/****** IGESToBRep_IGESBoundary::Transfer ******/
-		/****** md5 signature: 25557cd2dfa0962b0166f6d661b341b3 ******/
+		/****** md5 signature: 6336c8df9d643d2d186cd5ac2c4a87b4 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
 ----------
 curve3d: IGESData_IGESEntity
 toreverse3d: bool
-curves2d: IGESData_HArray1OfIGESEntity
+curves2d: NCollection_HArray1<
 number: int
 
 Return
@@ -1323,16 +1318,16 @@ Description
 -----------
 Translates 141 and 142 entities. Returns True if the curve has been successfully translated, otherwise returns False. <okCurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to True before first call), <curve3d>: model space curve for 142 and current model space curve for 141, <toreverse3d>: False for 142 and current orientation flag for 141, <curves2d>: 1 parameter space curve for 142 or list of them for current model space curves for 141, <number>: 1 for 142 and rank number of model space curve for 141.
 ") Transfer;
-		Standard_Boolean Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<IGESData_IGESEntity> & curve3d, const Standard_Boolean toreverse3d, const opencascade::handle<IGESData_HArray1OfIGESEntity> & curves2d, const Standard_Integer number);
+		bool Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<IGESData_IGESEntity> & curve3d, const bool toreverse3d, const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & curves2d, const int number);
 
 		/****** IGESToBRep_IGESBoundary::Transfer ******/
-		/****** md5 signature: 63bf6e1ebab45a7a19c876f2d6ef2e81 ******/
+		/****** md5 signature: 8ec18c86da4309a1540a44977b93a75e ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
 ----------
 curve3d: ShapeExtend_WireData
-curves2d: IGESData_HArray1OfIGESEntity
+curves2d: NCollection_HArray1<
 toreverse2d: bool
 number: int
 lsewd: ShapeExtend_WireData
@@ -1347,7 +1342,7 @@ Description
 -----------
 Translates 508 entity. Returns True if the curve has been successfully translated, otherwise returns False. Input object IGESBoundary must be created and initialized before. <okCurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to True before first call), <curve3d>: result of translation of current edge, <curves2d>: list of parameter space curves for edge, <toreverse2d>: orientation flag of current edge in respect to its model space curve, <number>: rank number of edge, <lsewd>: returns the result of translation of current edge.
 ") Transfer;
-		Standard_Boolean Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<ShapeExtend_WireData> & curve3d, const opencascade::handle<IGESData_HArray1OfIGESEntity> & curves2d, const Standard_Boolean toreverse2d, const Standard_Integer number, opencascade::handle<ShapeExtend_WireData> & lsewd);
+		bool Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<ShapeExtend_WireData> & curve3d, const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & curves2d, const bool toreverse2d, const int number, opencascade::handle<ShapeExtend_WireData> & lsewd);
 
 		/****** IGESToBRep_IGESBoundary::WireData ******/
 		/****** md5 signature: 8eebf0143620bf74880205da954b56c6 ******/
@@ -1431,7 +1426,7 @@ Returns 'theActor'.
 		opencascade::handle<IGESToBRep_Actor> Actor();
 
 		/****** IGESToBRep_Reader::Check ******/
-		/****** md5 signature: 7b14bce12a830fb5ee4559367746d91f ******/
+		/****** md5 signature: 6646fc1c0344eafb0335f972bbe99ae8 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -1446,7 +1441,7 @@ Description
 -----------
 Checks the IGES file that was loaded into memory. Displays error messages in the default message file if withprint is true. Returns True if no fail message was found and False if there was at least one fail message.
 ") Check;
-		Standard_Boolean Check(const Standard_Boolean withprint);
+		bool Check(const bool withprint);
 
 		/****** IGESToBRep_Reader::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -1490,7 +1485,7 @@ Return: The flags defining operations to be performed on shapes.
 		const ShapeProcess::OperationsFlags & GetShapeProcessFlags();
 
 		/****** IGESToBRep_Reader::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1500,15 +1495,15 @@ Description
 -----------
 Returns True if the LAST Transfer/TransferRoots was a success.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IGESToBRep_Reader::LoadFile ******/
-		/****** md5 signature: 5af3a407ab114cf12389b88dfb5d215e ******/
+		/****** md5 signature: 96dccb3efee74f845be086e3d289d9f4 ******/
 		%feature("compactdefaultargs") LoadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -1518,7 +1513,7 @@ Description
 -----------
 Loads a Model from a file.Returns 0 if success. returns 1 if the file could not be opened, returns -1 if an error occurred while the file was being loaded.
 ") LoadFile;
-		Standard_Integer LoadFile(Standard_CString filename);
+		int LoadFile(const char * const filename);
 
 		/****** IGESToBRep_Reader::Model ******/
 		/****** md5 signature: 4b3130e3b28afba6f0c58ab4875c4253 ******/
@@ -1534,7 +1529,7 @@ Returns the Model to be worked on.
 		opencascade::handle<IGESData_IGESModel> Model();
 
 		/****** IGESToBRep_Reader::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -1544,7 +1539,7 @@ Description
 -----------
 Returns the number of shapes produced by the translation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** IGESToBRep_Reader::OneShape ******/
 		/****** md5 signature: 1fc1610db08b4eec83d275771d406ea5 ******/
@@ -1674,7 +1669,7 @@ Allows to set an already defined TransientProcess (to be called after LoadFile o
 		void SetTransientProcess(const opencascade::handle<Transfer_TransientProcess> & TP);
 
 		/****** IGESToBRep_Reader::Shape ******/
-		/****** md5 signature: b325565d748ea0ef38fee9bdb447c4a9 ******/
+		/****** md5 signature: 6e6ae677c25a9ac8348a5f2da64b96ef ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1689,10 +1684,10 @@ Description
 -----------
 Returns the num the resulting shape in a translation operation.
 ") Shape;
-		TopoDS_Shape Shape(const Standard_Integer num = 1);
+		TopoDS_Shape Shape(const int num = 1);
 
 		/****** IGESToBRep_Reader::Transfer ******/
-		/****** md5 signature: aa24b2062db698881310d745b17c7dee ******/
+		/****** md5 signature: 38c9bf4bb5c3ce747661e4eeb19f6aa6 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -1708,15 +1703,15 @@ Description
 -----------
 Transfers an Entity given its rank in the Model (Root or not) Returns True if it is recognized as Geom-Topol. (But it can have failed: see IsDone).
 ") Transfer;
-		Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const int num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESToBRep_Reader::TransferRoots ******/
-		/****** md5 signature: ddc66dd5a50ae3a9ebd0f4a567a2d699 ******/
+		/****** md5 signature: edeb43f45acabe38535eee2be0117d92 ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
 ----------
-onlyvisible: bool (optional, default to Standard_True)
+onlyvisible: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1725,9 +1720,9 @@ None
 
 Description
 -----------
-Translates root entities in an IGES file. Standard_True is the default value and means that only visible root entities are translated. Standard_False translates all of the roots (visible and invisible).
+Translates root entities in an IGES file. true is the default value and means that only visible root entities are translated. false translates all of the roots (visible and invisible).
 ") TransferRoots;
-		void TransferRoots(const Standard_Boolean onlyvisible = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void TransferRoots(const bool onlyvisible = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESToBRep_Reader::TransientProcess ******/
 		/****** md5 signature: cda5aa33365159e82c6213003de44419 ******/
@@ -1743,17 +1738,17 @@ Returns the TransientProcess.
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
 		/****** IGESToBRep_Reader::UsedTolerance ******/
-		/****** md5 signature: ff38c5c7287c4c23a2ef8bba63f8adbd ******/
+		/****** md5 signature: 7357e87c4a6f19e34cb7c14ef67362e1 ******/
 		%feature("compactdefaultargs") UsedTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Tolerance which has been actually used, converted in millimeters (either that from File or that from Session, according the mode).
 ") UsedTolerance;
-		Standard_Real UsedTolerance();
+		double UsedTolerance();
 
 };
 
@@ -1843,14 +1838,14 @@ Creates a tool BRepEntity ready to run and sets its fields as CS's.
 		 IGESToBRep_BRepEntity(const IGESToBRep_CurveAndSurface & CS);
 
 		/****** IGESToBRep_BRepEntity::IGESToBRep_BRepEntity ******/
-		/****** md5 signature: 9263e28b27c52f61a248876fb4480b86 ******/
+		/****** md5 signature: db4f3ddaf4d8623237ab4f64956d4295 ******/
 		%feature("compactdefaultargs") IGESToBRep_BRepEntity;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
-epsGeom: float
-epsCoeff: float
+eps: double
+epsGeom: double
+epsCoeff: double
 mode: bool
 modeapprox: bool
 optimized: bool
@@ -1863,7 +1858,7 @@ Description
 -----------
 Creates a tool BRepEntity ready to run.
 ") IGESToBRep_BRepEntity;
-		 IGESToBRep_BRepEntity(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+		 IGESToBRep_BRepEntity(const double eps, const double epsGeom, const double epsCoeff, const bool mode, const bool modeapprox, const bool optimized);
 
 		/****** IGESToBRep_BRepEntity::TransferBRepEntity ******/
 		/****** md5 signature: eb1d0f38717858581983b0cd33ed2d11 ******/
@@ -1885,7 +1880,7 @@ Transfer the BRepEntity': Face, Shell or ManifoldSolid.
 		TopoDS_Shape TransferBRepEntity(const opencascade::handle<IGESData_IGESEntity> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESToBRep_BRepEntity::TransferEdge ******/
-		/****** md5 signature: 3b5e6a2863f17677c7e3f7184aeed45b ******/
+		/****** md5 signature: 97a9dd730ea1aa96ccde276d8db71a77 ******/
 		%feature("compactdefaultargs") TransferEdge;
 		%feature("autodoc", "
 Parameters
@@ -1901,7 +1896,7 @@ Description
 -----------
 Transfer the entity number 'index' of the EdgeList 'start'.
 ") TransferEdge;
-		TopoDS_Shape TransferEdge(const opencascade::handle<IGESSolid_EdgeList> & start, const Standard_Integer index);
+		TopoDS_Shape TransferEdge(const opencascade::handle<IGESSolid_EdgeList> & start, const int index);
 
 		/****** IGESToBRep_BRepEntity::TransferFace ******/
 		/****** md5 signature: b0851b2d63f2853ef5f04982570b18c8 ******/
@@ -1922,7 +1917,7 @@ Transfer the Face Entity.
 		TopoDS_Shape TransferFace(const opencascade::handle<IGESSolid_Face> & start);
 
 		/****** IGESToBRep_BRepEntity::TransferLoop ******/
-		/****** md5 signature: 70d8121d0dce3647362ac210d42a9813 ******/
+		/****** md5 signature: ad3d75029968d7328c76f03a07367ba0 ******/
 		%feature("compactdefaultargs") TransferLoop;
 		%feature("autodoc", "
 Parameters
@@ -1930,7 +1925,7 @@ Parameters
 start: IGESSolid_Loop
 Face: TopoDS_Face
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
@@ -1940,7 +1935,7 @@ Description
 -----------
 Transfer the Loop Entity.
 ") TransferLoop;
-		TopoDS_Shape TransferLoop(const opencascade::handle<IGESSolid_Loop> & start, const TopoDS_Face & Face, const gp_Trsf2d & trans, const Standard_Real uFact);
+		TopoDS_Shape TransferLoop(const opencascade::handle<IGESSolid_Loop> & start, const TopoDS_Face & Face, const gp_Trsf2d & trans, const double uFact);
 
 		/****** IGESToBRep_BRepEntity::TransferManifoldSolid ******/
 		/****** md5 signature: 67bda0475d406d16e7fe5d11404ad4ce ******/
@@ -1981,7 +1976,7 @@ Transfer the Shell Entity.
 		TopoDS_Shape TransferShell(const opencascade::handle<IGESSolid_Shell> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESToBRep_BRepEntity::TransferVertex ******/
-		/****** md5 signature: a93d4f312a0873203e823c7b4949940e ******/
+		/****** md5 signature: 340bb816a85316dd091088aa860c0734 ******/
 		%feature("compactdefaultargs") TransferVertex;
 		%feature("autodoc", "
 Parameters
@@ -1997,7 +1992,7 @@ Description
 -----------
 Transfer the entity number 'index' of the VertexList 'start'.
 ") TransferVertex;
-		TopoDS_Vertex TransferVertex(const opencascade::handle<IGESSolid_VertexList> & start, const Standard_Integer index);
+		TopoDS_Vertex TransferVertex(const opencascade::handle<IGESSolid_VertexList> & start, const int index);
 
 };
 
@@ -2045,14 +2040,14 @@ Creates a tool BasicCurve ready to run and sets its fields as CS's.
 		 IGESToBRep_BasicCurve(const IGESToBRep_CurveAndSurface & CS);
 
 		/****** IGESToBRep_BasicCurve::IGESToBRep_BasicCurve ******/
-		/****** md5 signature: bd02aac0862c60a651cc52850058c2c9 ******/
+		/****** md5 signature: ef59b13ad6f4f62909c93d931f4b6c2f ******/
 		%feature("compactdefaultargs") IGESToBRep_BasicCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
-epsGeom: float
-epsCoeff: float
+eps: double
+epsGeom: double
+epsCoeff: double
 mode: bool
 modeapprox: bool
 optimized: bool
@@ -2065,7 +2060,7 @@ Description
 -----------
 Creates a tool BasicCurve ready to run.
 ") IGESToBRep_BasicCurve;
-		 IGESToBRep_BasicCurve(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+		 IGESToBRep_BasicCurve(const double eps, const double epsGeom, const double epsCoeff, const bool mode, const bool modeapprox, const bool optimized);
 
 		/****** IGESToBRep_BasicCurve::Transfer2dBSplineCurve ******/
 		/****** md5 signature: 88875766cbf6aa0ea56b60f173e78a44 ******/
@@ -2099,7 +2094,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Transfert a IGESEntity which answer True to the member: IGESToBRep::IsBasicCurve(IGESEntity). The IGESEntity must be a curve UV and its associed TRSF must be planar .If this Entity could not be converted, this member returns a NullEntity.
+Transfert a IGESEntity which answer True to the member: IGESToBRep::IsBasicCurve(IGESEntity). The IGESEntity must be a curve UV and its associed TRSF must be planar. If this Entity could not be converted, this member returns a NullEntity.
 ") Transfer2dBasicCurve;
 		opencascade::handle<Geom2d_Curve> Transfer2dBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -2225,7 +2220,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Transfert a IGESEntity which answer True to the member: IGESToBRep::IsBasicCurve(IGESEntity). If this Entity could not be converted, this member returns a NullEntity.
+Transfer a IGESEntity which answer True to the member: IGESToBRep::IsBasicCurve(IGESEntity). If this Entity could not be converted, this member returns a NullEntity.
 ") TransferBasicCurve;
 		opencascade::handle<Geom_Curve> TransferBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start);
 
@@ -2383,14 +2378,14 @@ Creates a tool BasicSurface ready to run and sets its fields as CS's.
 		 IGESToBRep_BasicSurface(const IGESToBRep_CurveAndSurface & CS);
 
 		/****** IGESToBRep_BasicSurface::IGESToBRep_BasicSurface ******/
-		/****** md5 signature: d628b2c56c29aa46e003790cbdd5acc5 ******/
+		/****** md5 signature: c8a33cc525fba158553642686c5f37eb ******/
 		%feature("compactdefaultargs") IGESToBRep_BasicSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
-epsGeom: float
-epsCoeff: float
+eps: double
+epsGeom: double
+epsCoeff: double
 mode: bool
 modeapprox: bool
 optimized: bool
@@ -2403,7 +2398,7 @@ Description
 -----------
 Creates a tool BasicSurface ready to run.
 ") IGESToBRep_BasicSurface;
-		 IGESToBRep_BasicSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+		 IGESToBRep_BasicSurface(const double eps, const double epsGeom, const double epsCoeff, const bool mode, const bool modeapprox, const bool optimized);
 
 		/****** IGESToBRep_BasicSurface::TransferBSplineSurface ******/
 		/****** md5 signature: 6f986be59ffad8d912ca9bc145330b80 ******/
@@ -2613,14 +2608,14 @@ Creates a tool TopoCurve ready to run and sets its fields as CS's.
 		 IGESToBRep_TopoCurve(const IGESToBRep_TopoCurve & CS);
 
 		/****** IGESToBRep_TopoCurve::IGESToBRep_TopoCurve ******/
-		/****** md5 signature: 83267c32fead13b314685507e4cbbbcb ******/
+		/****** md5 signature: 5403e62f74e52730d0f55964d689f871 ******/
 		%feature("compactdefaultargs") IGESToBRep_TopoCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
-epsGeom: float
-epsCoeff: float
+eps: double
+epsGeom: double
+epsCoeff: double
 mode: bool
 modeapprox: bool
 optimized: bool
@@ -2633,7 +2628,7 @@ Description
 -----------
 Creates a tool TopoCurve ready to run.
 ") IGESToBRep_TopoCurve;
-		 IGESToBRep_TopoCurve(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+		 IGESToBRep_TopoCurve(const double eps, const double epsGeom, const double epsCoeff, const bool mode, const bool modeapprox, const bool optimized);
 
 		/****** IGESToBRep_TopoCurve::Approx2dBSplineCurve ******/
 		/****** md5 signature: 1fc20fa25774afe1a271c33f05538dd1 ******/
@@ -2672,7 +2667,7 @@ No available documentation.
 		void ApproxBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & start);
 
 		/****** IGESToBRep_TopoCurve::BadCase ******/
-		/****** md5 signature: 8bb65c1a2d4633080430d3288721789c ******/
+		/****** md5 signature: ee87ff179a8d5ad795a147d9dbd5511f ******/
 		%feature("compactdefaultargs") BadCase;
 		%feature("autodoc", "Return
 -------
@@ -2682,10 +2677,10 @@ Description
 -----------
 Returns TheBadCase flag.
 ") BadCase;
-		Standard_Boolean BadCase();
+		bool BadCase();
 
 		/****** IGESToBRep_TopoCurve::Curve ******/
-		/****** md5 signature: d316d2ea9db7b953425d17116942f382 ******/
+		/****** md5 signature: 8d9cf7b839413669a8ee4564e6e23b02 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -2700,10 +2695,10 @@ Description
 -----------
 Returns a Curve given its rank, by default the first one (null Curvee if out of range) in 'TheCurves'.
 ") Curve;
-		opencascade::handle<Geom_Curve> Curve(const Standard_Integer num = 1);
+		opencascade::handle<Geom_Curve> Curve(const int num = 1);
 
 		/****** IGESToBRep_TopoCurve::Curve2d ******/
-		/****** md5 signature: f26a67580b3de0aa28c74c8652e42a0d ******/
+		/****** md5 signature: 55938d30905d531f2a3411b4425272d5 ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -2718,10 +2713,10 @@ Description
 -----------
 Returns a Curve given its rank, by default the first one (null Curvee if out of range) in 'TheCurves2d'.
 ") Curve2d;
-		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer num = 1);
+		opencascade::handle<Geom2d_Curve> Curve2d(const int num = 1);
 
 		/****** IGESToBRep_TopoCurve::NbCurves ******/
-		/****** md5 signature: f7f6dbd981df076443155a5a87b5c223 ******/
+		/****** md5 signature: 99661be16aa6b87a1ba6043e7f8f9943 ******/
 		%feature("compactdefaultargs") NbCurves;
 		%feature("autodoc", "Return
 -------
@@ -2731,10 +2726,10 @@ Description
 -----------
 Returns the count of Curves in 'TheCurves'.
 ") NbCurves;
-		Standard_Integer NbCurves();
+		int NbCurves();
 
 		/****** IGESToBRep_TopoCurve::NbCurves2d ******/
-		/****** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ******/
+		/****** md5 signature: 79b9be5191f7ebac028616f16947a5cc ******/
 		%feature("compactdefaultargs") NbCurves2d;
 		%feature("autodoc", "Return
 -------
@@ -2744,10 +2739,10 @@ Description
 -----------
 Returns the count of Curves in 'TheCurves2d'.
 ") NbCurves2d;
-		Standard_Integer NbCurves2d();
+		int NbCurves2d();
 
 		/****** IGESToBRep_TopoCurve::SetBadCase ******/
-		/****** md5 signature: d69c1dd781117594f737163beb8e3622 ******/
+		/****** md5 signature: fb99dc0e4efffbdc564c4d8fbc220c48 ******/
 		%feature("compactdefaultargs") SetBadCase;
 		%feature("autodoc", "
 Parameters
@@ -2762,10 +2757,10 @@ Description
 -----------
 Sets TheBadCase flag.
 ") SetBadCase;
-		void SetBadCase(const Standard_Boolean value);
+		void SetBadCase(const bool value);
 
 		/****** IGESToBRep_TopoCurve::Transfer2dCompositeCurve ******/
-		/****** md5 signature: 50571025c2f9fba62d153fcb9ddb5daf ******/
+		/****** md5 signature: fe99d6591545d9e1ccdf0a74d8226174 ******/
 		%feature("compactdefaultargs") Transfer2dCompositeCurve;
 		%feature("autodoc", "
 Parameters
@@ -2773,7 +2768,7 @@ Parameters
 start: IGESGeom_CompositeCurve
 face: TopoDS_Face
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
@@ -2783,10 +2778,10 @@ Description
 -----------
 No available documentation.
 ") Transfer2dCompositeCurve;
-		TopoDS_Shape Transfer2dCompositeCurve(const opencascade::handle<IGESGeom_CompositeCurve> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const Standard_Real uFact);
+		TopoDS_Shape Transfer2dCompositeCurve(const opencascade::handle<IGESGeom_CompositeCurve> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const double uFact);
 
 		/****** IGESToBRep_TopoCurve::Transfer2dOffsetCurve ******/
-		/****** md5 signature: 9ea4c99db8c34571c2ef39a903cf73d7 ******/
+		/****** md5 signature: 39255d287565c8fd80cbe60ba26db874 ******/
 		%feature("compactdefaultargs") Transfer2dOffsetCurve;
 		%feature("autodoc", "
 Parameters
@@ -2794,7 +2789,7 @@ Parameters
 start: IGESGeom_OffsetCurve
 face: TopoDS_Face
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
@@ -2804,7 +2799,7 @@ Description
 -----------
 No available documentation.
 ") Transfer2dOffsetCurve;
-		TopoDS_Shape Transfer2dOffsetCurve(const opencascade::handle<IGESGeom_OffsetCurve> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const Standard_Real uFact);
+		TopoDS_Shape Transfer2dOffsetCurve(const opencascade::handle<IGESGeom_OffsetCurve> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const double uFact);
 
 		/****** IGESToBRep_TopoCurve::Transfer2dPoint ******/
 		/****** md5 signature: 8b6a02abc1ea12f9aac834fa5cfef25c ******/
@@ -2825,7 +2820,7 @@ No available documentation.
 		TopoDS_Vertex Transfer2dPoint(const opencascade::handle<IGESGeom_Point> & start);
 
 		/****** IGESToBRep_TopoCurve::Transfer2dTopoBasicCurve ******/
-		/****** md5 signature: f58ce375e1a9a395360ffc66a55dfbd7 ******/
+		/****** md5 signature: 591e04a1170997d42fe991ec66bce865 ******/
 		%feature("compactdefaultargs") Transfer2dTopoBasicCurve;
 		%feature("autodoc", "
 Parameters
@@ -2833,7 +2828,7 @@ Parameters
 start: IGESData_IGESEntity
 face: TopoDS_Face
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
@@ -2843,10 +2838,10 @@ Description
 -----------
 No available documentation.
 ") Transfer2dTopoBasicCurve;
-		TopoDS_Shape Transfer2dTopoBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const Standard_Real uFact);
+		TopoDS_Shape Transfer2dTopoBasicCurve(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const double uFact);
 
 		/****** IGESToBRep_TopoCurve::Transfer2dTopoCurve ******/
-		/****** md5 signature: cb3566ae78ebb9677e83501e8b4f2370 ******/
+		/****** md5 signature: 9d04955d2b403989d6755df61b980ddc ******/
 		%feature("compactdefaultargs") Transfer2dTopoCurve;
 		%feature("autodoc", "
 Parameters
@@ -2854,7 +2849,7 @@ Parameters
 start: IGESData_IGESEntity
 face: TopoDS_Face
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
@@ -2864,7 +2859,7 @@ Description
 -----------
 No available documentation.
 ") Transfer2dTopoCurve;
-		TopoDS_Shape Transfer2dTopoCurve(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const Standard_Real uFact);
+		TopoDS_Shape Transfer2dTopoCurve(const opencascade::handle<IGESData_IGESEntity> & start, const TopoDS_Face & face, const gp_Trsf2d & trans, const double uFact);
 
 		/****** IGESToBRep_TopoCurve::TransferBoundary ******/
 		/****** md5 signature: 87f81e705a30e13f19d5a656c2feb8d1 ******/
@@ -2885,7 +2880,7 @@ No available documentation.
 		TopoDS_Shape TransferBoundary(const opencascade::handle<IGESGeom_Boundary> & start);
 
 		/****** IGESToBRep_TopoCurve::TransferBoundaryOnFace ******/
-		/****** md5 signature: 86ea50d86504a76a142cb4b3d25690a5 ******/
+		/****** md5 signature: d4a7cdbcd1be2058515d3467b5609240 ******/
 		%feature("compactdefaultargs") TransferBoundaryOnFace;
 		%feature("autodoc", "
 Parameters
@@ -2893,7 +2888,7 @@ Parameters
 face: TopoDS_Face
 start: IGESGeom_Boundary
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
@@ -2903,7 +2898,7 @@ Description
 -----------
 Transfers a Boundary directly on a face to trim it.
 ") TransferBoundaryOnFace;
-		TopoDS_Shape TransferBoundaryOnFace(TopoDS_Face & face, const opencascade::handle<IGESGeom_Boundary> & start, const gp_Trsf2d & trans, const Standard_Real uFact);
+		TopoDS_Shape TransferBoundaryOnFace(TopoDS_Face & face, const opencascade::handle<IGESGeom_Boundary> & start, const gp_Trsf2d & trans, const double uFact);
 
 		/****** IGESToBRep_TopoCurve::TransferCompositeCurve ******/
 		/****** md5 signature: 02ea0f91402ea059120e0d790cec9c61 ******/
@@ -2924,7 +2919,7 @@ No available documentation.
 		TopoDS_Shape TransferCompositeCurve(const opencascade::handle<IGESGeom_CompositeCurve> & start);
 
 		/****** IGESToBRep_TopoCurve::TransferCurveOnFace ******/
-		/****** md5 signature: 8597142ab2de0e4f72aa727aac30c58f ******/
+		/****** md5 signature: 8ebdfc87c10d4656ff5ed3a23a8b03de ******/
 		%feature("compactdefaultargs") TransferCurveOnFace;
 		%feature("autodoc", "
 Parameters
@@ -2932,7 +2927,7 @@ Parameters
 face: TopoDS_Face
 start: IGESGeom_CurveOnSurface
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 IsCurv: bool
 
 Return
@@ -2943,7 +2938,7 @@ Description
 -----------
 Transfers a CurveOnSurface directly on a face to trim it. The CurveOnSurface have to be defined Outer or Inner.
 ") TransferCurveOnFace;
-		TopoDS_Shape TransferCurveOnFace(TopoDS_Face & face, const opencascade::handle<IGESGeom_CurveOnSurface> & start, const gp_Trsf2d & trans, const Standard_Real uFact, const Standard_Boolean IsCurv);
+		TopoDS_Shape TransferCurveOnFace(TopoDS_Face & face, const opencascade::handle<IGESGeom_CurveOnSurface> & start, const gp_Trsf2d & trans, const double uFact, const bool IsCurv);
 
 		/****** IGESToBRep_TopoCurve::TransferCurveOnSurface ******/
 		/****** md5 signature: 822da9dbb534bf8f993399d42a587c44 ******/
@@ -3081,14 +3076,14 @@ Creates a tool TopoSurface ready to run and sets its fields as CS's.
 		 IGESToBRep_TopoSurface(const IGESToBRep_CurveAndSurface & CS);
 
 		/****** IGESToBRep_TopoSurface::IGESToBRep_TopoSurface ******/
-		/****** md5 signature: a845555ae49db6f185495a4d4ba78aa0 ******/
+		/****** md5 signature: cab3838f402077cf42ee33bf5534cbfb ******/
 		%feature("compactdefaultargs") IGESToBRep_TopoSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-eps: float
-epsGeom: float
-epsCoeff: float
+eps: double
+epsGeom: double
+epsCoeff: double
 mode: bool
 modeapprox: bool
 optimized: bool
@@ -3101,10 +3096,10 @@ Description
 -----------
 Creates a tool TopoSurface ready to run.
 ") IGESToBRep_TopoSurface;
-		 IGESToBRep_TopoSurface(const Standard_Real eps, const Standard_Real epsGeom, const Standard_Real epsCoeff, const Standard_Boolean mode, const Standard_Boolean modeapprox, const Standard_Boolean optimized);
+		 IGESToBRep_TopoSurface(const double eps, const double epsGeom, const double epsCoeff, const bool mode, const bool modeapprox, const bool optimized);
 
 		/****** IGESToBRep_TopoSurface::ParamSurface ******/
-		/****** md5 signature: b3e4a7c92297ca8291587daef1260389 ******/
+		/****** md5 signature: 2bc1a527e590ba0e05471cf61191565c ******/
 		%feature("compactdefaultargs") ParamSurface;
 		%feature("autodoc", "
 Parameters
@@ -3114,7 +3109,7 @@ trans: gp_Trsf2d
 
 Return
 -------
-uFact: float
+uFact: double
 
 Description
 -----------

@@ -19,7 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define DEBREPCASCADE_HXX
 
 
-#include<DEBRepCascade_ConfigurationNode.hxx>
-#include<DEBRepCascade_Provider.hxx>
 
 #endif // DEBREPCASCADE_HXX
