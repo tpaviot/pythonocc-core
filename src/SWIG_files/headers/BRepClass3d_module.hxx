@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<BRepClass3d.hxx>
 #include<BRepClass3d_BndBoxTree.hxx>
-#include<BRepClass3d_DataMapIteratorOfMapOfInter.hxx>
 #include<BRepClass3d_Intersector3d.hxx>
 #include<BRepClass3d_MapOfInter.hxx>
 #include<BRepClass3d_SClassifier.hxx>

@@ -75,7 +75,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(AppStdL_Application)
 /* end handles declaration */
 
 /* templates */
@@ -111,22 +110,20 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** AppStdL_Application::ResourcesName ******/
-		/****** md5 signature: 93814b3160304ee63e9655e18518a289 ******/
+		/****** md5 signature: f28505356ea37c7b82c47cbf3266f2fa ******/
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 returns the file name which contains application resources.
 ") ResourcesName;
-		Standard_CString ResourcesName();
+		const char * ResourcesName();
 
 };
 
-
-%make_alias(AppStdL_Application)
 
 %extend AppStdL_Application {
 	%pythoncode {

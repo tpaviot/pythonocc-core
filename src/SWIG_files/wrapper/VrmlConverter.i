@@ -45,14 +45,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlconverter.htm
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
-#include<TColStd_module.hxx>
 #include<Aspect_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Vrml_module.hxx>
-#include<TopTools_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<Poly_module.hxx>
-#include<TColgp_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<Message_module.hxx>
 #include<Geom_module.hxx>
@@ -81,6 +78,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlconverter.htm
 #include<TDocStd_module.hxx>
 #include<XSControl_module.hxx>
 #include<DE_module.hxx>
+#include<Aspect_module.hxx>
+#include<Quantity_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -89,14 +88,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlconverter.htm
 %import Standard.i
 %import NCollection.i
 %import Adaptor3d.i
-%import TColStd.i
 %import Aspect.i
 %import TopoDS.i
 %import Vrml.i
-%import TopTools.i
 %import HLRAlgo.i
 %import Poly.i
-%import TColgp.i
 %import BRepAdaptor.i
 
 %pythoncode {
@@ -183,14 +179,14 @@ adds to the OStream the drawing of the curve aCurve. The aspect is defined by Li
 		static void Add(const Adaptor3d_Curve & aCurve, const opencascade::handle<VrmlConverter_Drawer> & aDrawer, std::ostream &OutValue);
 
 		/****** VrmlConverter_Curve::Add ******/
-		/****** md5 signature: 3196c4271392c6a3ad65b906ad2f2f95 ******/
+		/****** md5 signature: f0d508cd5402267f77598cf41c88e4a9 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 aDrawer: VrmlConverter_Drawer
 
 Return
@@ -201,17 +197,17 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 ") Add;
-		static void Add(const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<VrmlConverter_Drawer> & aDrawer, std::ostream &OutValue);
+		static void Add(const Adaptor3d_Curve & aCurve, const double U1, const double U2, const opencascade::handle<VrmlConverter_Drawer> & aDrawer, std::ostream &OutValue);
 
 		/****** VrmlConverter_Curve::Add ******/
-		/****** md5 signature: 4d8e1f226cc328fcdf9186ef585c5a61 ******/
+		/****** md5 signature: 5eade89a2abc86d13953c1ec0f6441f0 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 aNbPoints: int
 
 Return
@@ -222,7 +218,7 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aNbPoints defines number of points on one interval.
 ") Add;
-		static void Add(const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, std::ostream &OutValue, const Standard_Integer aNbPoints);
+		static void Add(const Adaptor3d_Curve & aCurve, const double U1, const double U2, std::ostream &OutValue, const int aNbPoints);
 
 };
 
@@ -258,14 +254,14 @@ adds to the OStream the drawing of the curve aCurve with respect to the maximal 
 		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_DeflectionCurve::Add ******/
-		/****** md5 signature: 39f475f2bc1fcbcd57f32d9efba5b2a0 ******/
+		/****** md5 signature: d19e580528a588cd640883e05619cba2 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 aDrawer: VrmlConverter_Drawer
 
 Return
@@ -276,17 +272,17 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation defined by the drawer aDrawer. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2.
 ") Add;
-		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
+		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const double U1, const double U2, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_DeflectionCurve::Add ******/
-		/****** md5 signature: 9eb6209c6c437e1de208c514bbc6c3bc ******/
+		/****** md5 signature: 92e5e022c4ca208a3aee9dad1e62d96d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-aDeflection: float
-aLimit: float
+aDeflection: double
+aLimit: double
 
 Return
 -------
@@ -296,16 +292,16 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect.
 ") Add;
-		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real aDeflection, const Standard_Real aLimit);
+		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const double aDeflection, const double aLimit);
 
 		/****** VrmlConverter_DeflectionCurve::Add ******/
-		/****** md5 signature: 970b94fef97d65ba55ddab3b8061c036 ******/
+		/****** md5 signature: c47630e8b453b923c31d7e4717ca7186 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-aDeflection: float
+aDeflection: double
 aDrawer: VrmlConverter_Drawer
 
 Return
@@ -316,18 +312,18 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect.
 ") Add;
-		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real aDeflection, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
+		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const double aDeflection, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_DeflectionCurve::Add ******/
-		/****** md5 signature: cfb82f5b167e71e8335c2fb562364aae ******/
+		/****** md5 signature: 3d86c1fdac9751658613a23fb8895713 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-U1: float
-U2: float
-aDeflection: float
+U1: double
+U2: double
+aDeflection: double
 
 Return
 -------
@@ -337,16 +333,16 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve with respect to the maximal chordial deviation aDeflection. The aspect is the current aspect The drawing will be limited between the points of parameter U1 and U2.
 ") Add;
-		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real aDeflection);
+		static void Add(std::ostream &OutValue, Adaptor3d_Curve & aCurve, const double U1, const double U2, const double aDeflection);
 
 		/****** VrmlConverter_DeflectionCurve::Add ******/
-		/****** md5 signature: ee27b5c0244974cd4e5e8d540e9f3dd4 ******/
+		/****** md5 signature: 4ecf00f4719be3562653b77c4e3eb09f ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-aParams: TColStd_HArray1OfReal
+aParams: NCollection_HArray1<double
 aNbNodes: int
 aDrawer: VrmlConverter_Drawer
 
@@ -358,7 +354,7 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve with the array of parameters to retrieve points on curve.
 ") Add;
-		static void Add(std::ostream &OutValue, const Adaptor3d_Curve & aCurve, const opencascade::handle<TColStd_HArray1OfReal> & aParams, const Standard_Integer aNbNodes, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
+		static void Add(std::ostream &OutValue, const Adaptor3d_Curve & aCurve, const opencascade::handle<NCollection_HArray1<double> > & aParams, const int aNbNodes, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 };
 
@@ -388,17 +384,17 @@ No available documentation.
 		 VrmlConverter_Drawer();
 
 		/****** VrmlConverter_Drawer::DeviationCoefficient ******/
-		/****** md5 signature: 9c4d7eea432c70a83c2882b4c26bcbec ******/
+		/****** md5 signature: 54d4031e0333dc15b72a5abfd0857347 ******/
 		%feature("compactdefaultargs") DeviationCoefficient;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DeviationCoefficient;
-		Standard_Real DeviationCoefficient();
+		double DeviationCoefficient();
 
 		/****** VrmlConverter_Drawer::DisableDrawHiddenLine ******/
 		/****** md5 signature: 641e43422c8b3be588dee379f3554611 ******/
@@ -409,12 +405,12 @@ None
 
 Description
 -----------
-sets DrawHiddenLine = Standard_False - the hidden lines are not drawn.
+sets DrawHiddenLine = false - the hidden lines are not drawn.
 ") DisableDrawHiddenLine;
 		void DisableDrawHiddenLine();
 
 		/****** VrmlConverter_Drawer::Discretisation ******/
-		/****** md5 signature: 18f9f6513037ffdf8c25c09bd0c0fcae ******/
+		/****** md5 signature: 7a003d77eaa603c7790136c0216af40d ******/
 		%feature("compactdefaultargs") Discretisation;
 		%feature("autodoc", "Return
 -------
@@ -424,10 +420,10 @@ Description
 -----------
 No available documentation.
 ") Discretisation;
-		Standard_Integer Discretisation();
+		int Discretisation();
 
 		/****** VrmlConverter_Drawer::DrawHiddenLine ******/
-		/****** md5 signature: ee867d8bc869aae190f7ad2dd51ea119 ******/
+		/****** md5 signature: 93a279ee3d98fce48f86ef4871fb576c ******/
 		%feature("compactdefaultargs") DrawHiddenLine;
 		%feature("autodoc", "Return
 -------
@@ -435,9 +431,9 @@ bool
 
 Description
 -----------
-returns Standard_True if the hidden lines are to be drawn. By default the hidden lines are not drawn.
+returns true if the hidden lines are to be drawn. By default the hidden lines are not drawn.
 ") DrawHiddenLine;
-		Standard_Boolean DrawHiddenLine();
+		bool DrawHiddenLine();
 
 		/****** VrmlConverter_Drawer::EnableDrawHiddenLine ******/
 		/****** md5 signature: 5cd9db795aefc1eee38a63bd3f8ef65f ******/
@@ -448,7 +444,7 @@ None
 
 Description
 -----------
-sets DrawHiddenLine = Standard_True - the hidden lines are drawn.
+sets DrawHiddenLine = true - the hidden lines are drawn.
 ") EnableDrawHiddenLine;
 		void EnableDrawHiddenLine();
 
@@ -466,7 +462,7 @@ The default values are the same default values from Vrml package. These attribut
 		opencascade::handle<VrmlConverter_LineAspect> FreeBoundaryAspect();
 
 		/****** VrmlConverter_Drawer::FreeBoundaryDraw ******/
-		/****** md5 signature: 11d22380fcd072305a34d7efb441c5fb ******/
+		/****** md5 signature: 7a5d1ae93e43f1037eff4d6a4a9fdb8e ******/
 		%feature("compactdefaultargs") FreeBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -476,7 +472,7 @@ Description
 -----------
 returns True if the drawing of the free boundaries is enabled.
 ") FreeBoundaryDraw;
-		Standard_Boolean FreeBoundaryDraw();
+		bool FreeBoundaryDraw();
 
 		/****** VrmlConverter_Drawer::HiddenLineAspect ******/
 		/****** md5 signature: 6cda2c10281e40668e3ce003bd403f7e ******/
@@ -492,7 +488,7 @@ returns LineAspect for the hidden lines. The default values are the same default
 		opencascade::handle<VrmlConverter_LineAspect> HiddenLineAspect();
 
 		/****** VrmlConverter_Drawer::IsoOnPlane ******/
-		/****** md5 signature: 2399069013e2297195a97f40a31fdec3 ******/
+		/****** md5 signature: 015c0994d8b48302840484a6b07346e4 ******/
 		%feature("compactdefaultargs") IsoOnPlane;
 		%feature("autodoc", "Return
 -------
@@ -502,7 +498,7 @@ Description
 -----------
 returns True if the drawing of isos on planes is enabled.
 ") IsoOnPlane;
-		Standard_Boolean IsoOnPlane();
+		bool IsoOnPlane();
 
 		/****** VrmlConverter_Drawer::LineAspect ******/
 		/****** md5 signature: 10d3b44cd6f35f1b32f4e4a53d2c93d1 ******/
@@ -518,30 +514,30 @@ The default values are the same default values from Vrml package.
 		opencascade::handle<VrmlConverter_LineAspect> LineAspect();
 
 		/****** VrmlConverter_Drawer::MaximalChordialDeviation ******/
-		/****** md5 signature: 3f1909519a6c78fd474f5dca47ef5d02 ******/
+		/****** md5 signature: f41f16ae5e340ac45b030dc0fb51fa13 ******/
 		%feature("compactdefaultargs") MaximalChordialDeviation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximal chordial deviation. Default value: 0.1.
 ") MaximalChordialDeviation;
-		Standard_Real MaximalChordialDeviation();
+		double MaximalChordialDeviation();
 
 		/****** VrmlConverter_Drawer::MaximalParameterValue ******/
-		/****** md5 signature: 8d1dc382de840a6984d9a64c4f5e4f43 ******/
+		/****** md5 signature: e6abab74065c980909bc993ce9ed0113 ******/
 		%feature("compactdefaultargs") MaximalParameterValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MaximalParameterValue;
-		Standard_Real MaximalParameterValue();
+		double MaximalParameterValue();
 
 		/****** VrmlConverter_Drawer::PointAspect ******/
 		/****** md5 signature: 517fba9690e71053b84281b228e53cbe ******/
@@ -570,12 +566,12 @@ returns LineAspect for the seen lines. The default values are the same default v
 		opencascade::handle<VrmlConverter_LineAspect> SeenLineAspect();
 
 		/****** VrmlConverter_Drawer::SetDeviationCoefficient ******/
-		/****** md5 signature: 27ff94a2731caf5da558c89ae5904057 ******/
+		/****** md5 signature: a747e312279c7b855c06c93b821c7e82 ******/
 		%feature("compactdefaultargs") SetDeviationCoefficient;
 		%feature("autodoc", "
 Parameters
 ----------
-aCoefficient: float
+aCoefficient: double
 
 Return
 -------
@@ -585,10 +581,10 @@ Description
 -----------
 default 0.001.
 ") SetDeviationCoefficient;
-		void SetDeviationCoefficient(const Standard_Real aCoefficient);
+		void SetDeviationCoefficient(const double aCoefficient);
 
 		/****** VrmlConverter_Drawer::SetDiscretisation ******/
-		/****** md5 signature: 41e5e45c319eeef85db796aa66efd30d ******/
+		/****** md5 signature: ed6e33ba14360b6a03e5028e4cbaa299 ******/
 		%feature("compactdefaultargs") SetDiscretisation;
 		%feature("autodoc", "
 Parameters
@@ -603,7 +599,7 @@ Description
 -----------
 default: 17 points. Defines the Discretisation (myNbPoints) when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape.
 ") SetDiscretisation;
-		void SetDiscretisation(const Standard_Integer d);
+		void SetDiscretisation(const int d);
 
 		/****** VrmlConverter_Drawer::SetFreeBoundaryAspect ******/
 		/****** md5 signature: b753c9dce0c96db18c0367b3f719d115 ******/
@@ -624,7 +620,7 @@ No available documentation.
 		void SetFreeBoundaryAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
 		/****** VrmlConverter_Drawer::SetFreeBoundaryDraw ******/
-		/****** md5 signature: a97de160d86b9b7b83ea15b3c8cf20ed ******/
+		/****** md5 signature: 25846a4849c1684b50f1e42dc4cb167d ******/
 		%feature("compactdefaultargs") SetFreeBoundaryDraw;
 		%feature("autodoc", "
 Parameters
@@ -639,7 +635,7 @@ Description
 -----------
 enables the drawing the free boundaries By default the free boundaries are drawn.
 ") SetFreeBoundaryDraw;
-		void SetFreeBoundaryDraw(const Standard_Boolean OnOff);
+		void SetFreeBoundaryDraw(const bool OnOff);
 
 		/****** VrmlConverter_Drawer::SetHiddenLineAspect ******/
 		/****** md5 signature: 55fb6635c53fe6af709bf68203c8ed07 ******/
@@ -660,7 +656,7 @@ sets LineAspect for the hidden lines.
 		void SetHiddenLineAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
 		/****** VrmlConverter_Drawer::SetIsoOnPlane ******/
-		/****** md5 signature: 8307865551cf7b68497b05bccdae6df0 ******/
+		/****** md5 signature: b07a17a0dc24f36fbaef7f4a3156982c ******/
 		%feature("compactdefaultargs") SetIsoOnPlane;
 		%feature("autodoc", "
 Parameters
@@ -675,7 +671,7 @@ Description
 -----------
 enables the drawing of isos on planes. By default there are no isos on planes.
 ") SetIsoOnPlane;
-		void SetIsoOnPlane(const Standard_Boolean OnOff);
+		void SetIsoOnPlane(const bool OnOff);
 
 		/****** VrmlConverter_Drawer::SetLineAspect ******/
 		/****** md5 signature: 5eb2900ea911f06c9e1609652af8a82c ******/
@@ -696,12 +692,12 @@ No available documentation.
 		void SetLineAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
 		/****** VrmlConverter_Drawer::SetMaximalChordialDeviation ******/
-		/****** md5 signature: cde9e0a8eebe4a5a1b478d9e9d920c32 ******/
+		/****** md5 signature: b740bf2c05596ab6cad775301486d72e ******/
 		%feature("compactdefaultargs") SetMaximalChordialDeviation;
 		%feature("autodoc", "
 Parameters
 ----------
-aChordialDeviation: float
+aChordialDeviation: double
 
 Return
 -------
@@ -711,15 +707,15 @@ Description
 -----------
 Defines the maximal chordial deviation when drawing any curve; If this value is one of the obvious parameters of methods, current value from Drawer won't be used. This value is used by: //! VrmlConverter_DeflectionCurve VrmlConverter_WFDeflectionRestrictedFace VrmlConverter_WFDeflectionShape.
 ") SetMaximalChordialDeviation;
-		void SetMaximalChordialDeviation(const Standard_Real aChordialDeviation);
+		void SetMaximalChordialDeviation(const double aChordialDeviation);
 
 		/****** VrmlConverter_Drawer::SetMaximalParameterValue ******/
-		/****** md5 signature: 419b5b036141a4299624009da39c0c9a ******/
+		/****** md5 signature: 2c771ff8acdf16710b5790aadcb4933f ******/
 		%feature("compactdefaultargs") SetMaximalParameterValue;
 		%feature("autodoc", "
 Parameters
 ----------
-Value: float
+Value: double
 
 Return
 -------
@@ -729,7 +725,7 @@ Description
 -----------
 defines the maximum value allowed for the first and last parameters of an infinite curve. Default value: 500. VrmlConverter_Curve VrmlConverter_WFRestrictedFace VrmlConverter_WFShape.
 ") SetMaximalParameterValue;
-		void SetMaximalParameterValue(const Standard_Real Value);
+		void SetMaximalParameterValue(const double Value);
 
 		/****** VrmlConverter_Drawer::SetPointAspect ******/
 		/****** md5 signature: 4fef72b3e3ed5a43e859117429fadc60 ******/
@@ -840,7 +836,7 @@ No available documentation.
 		void SetUnFreeBoundaryAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
 		/****** VrmlConverter_Drawer::SetUnFreeBoundaryDraw ******/
-		/****** md5 signature: a143dffaa4a3eb95e87033d19e793bb3 ******/
+		/****** md5 signature: 2df7278ef572157fc6a6f931d76b616b ******/
 		%feature("compactdefaultargs") SetUnFreeBoundaryDraw;
 		%feature("autodoc", "
 Parameters
@@ -855,7 +851,7 @@ Description
 -----------
 enables the drawing the unfree boundaries By default the unfree boundaries are drawn.
 ") SetUnFreeBoundaryDraw;
-		void SetUnFreeBoundaryDraw(const Standard_Boolean OnOff);
+		void SetUnFreeBoundaryDraw(const bool OnOff);
 
 		/****** VrmlConverter_Drawer::SetVIsoAspect ******/
 		/****** md5 signature: c47b1d9750c189ada6a4381144f9e6a6 ******/
@@ -894,7 +890,7 @@ No available documentation.
 		void SetWireAspect(const opencascade::handle<VrmlConverter_LineAspect> & anAspect);
 
 		/****** VrmlConverter_Drawer::SetWireDraw ******/
-		/****** md5 signature: c1f79da20ee06accf05441cb7cdbd87c ******/
+		/****** md5 signature: 8eaf30a6dc6a7e2db13f0ae693af8aa9 ******/
 		%feature("compactdefaultargs") SetWireDraw;
 		%feature("autodoc", "
 Parameters
@@ -909,7 +905,7 @@ Description
 -----------
 enables the drawing the wire By default the wire are drawn.
 ") SetWireDraw;
-		void SetWireDraw(const Standard_Boolean OnOff);
+		void SetWireDraw(const bool OnOff);
 
 		/****** VrmlConverter_Drawer::ShadingAspect ******/
 		/****** md5 signature: 5d0cf0274d76de1901c11b5f9428d705 ******/
@@ -964,7 +960,7 @@ The default values are the same default values from Vrml package. These attribut
 		opencascade::handle<VrmlConverter_LineAspect> UnFreeBoundaryAspect();
 
 		/****** VrmlConverter_Drawer::UnFreeBoundaryDraw ******/
-		/****** md5 signature: 5d96cc31379600a277a02c7762d6fdcf ******/
+		/****** md5 signature: 97d3c160d832f7c3084b202e707acce4 ******/
 		%feature("compactdefaultargs") UnFreeBoundaryDraw;
 		%feature("autodoc", "Return
 -------
@@ -974,7 +970,7 @@ Description
 -----------
 returns True if the drawing of the unfree boundaries is enabled.
 ") UnFreeBoundaryDraw;
-		Standard_Boolean UnFreeBoundaryDraw();
+		bool UnFreeBoundaryDraw();
 
 		/****** VrmlConverter_Drawer::VIsoAspect ******/
 		/****** md5 signature: cc5977cccf5921645af58a30c56dc8df ******/
@@ -1003,7 +999,7 @@ The default values are the same default values from Vrml package. These attribut
 		opencascade::handle<VrmlConverter_LineAspect> WireAspect();
 
 		/****** VrmlConverter_Drawer::WireDraw ******/
-		/****** md5 signature: 98b6c538363b2ed01de78110b802ce45 ******/
+		/****** md5 signature: fd5a8e6275a118fa311e373ea272187b ******/
 		%feature("compactdefaultargs") WireDraw;
 		%feature("autodoc", "Return
 -------
@@ -1013,7 +1009,7 @@ Description
 -----------
 returns True if the drawing of the wire is enabled.
 ") WireDraw;
-		Standard_Boolean WireDraw();
+		bool WireDraw();
 
 };
 
@@ -1079,7 +1075,7 @@ create a default LineAspect. Default value: HasMaterial = False - a line hasn't 
 		 VrmlConverter_LineAspect();
 
 		/****** VrmlConverter_LineAspect::VrmlConverter_LineAspect ******/
-		/****** md5 signature: 4c5521183a68c8d01e40f8ea856cea40 ******/
+		/****** md5 signature: a6575935091b8626c11f9e2683c811aa ******/
 		%feature("compactdefaultargs") VrmlConverter_LineAspect;
 		%feature("autodoc", "
 Parameters
@@ -1095,10 +1091,10 @@ Description
 -----------
 No available documentation.
 ") VrmlConverter_LineAspect;
-		 VrmlConverter_LineAspect(const opencascade::handle<Vrml_Material> & aMaterial, const Standard_Boolean OnOff);
+		 VrmlConverter_LineAspect(const opencascade::handle<Vrml_Material> & aMaterial, const bool OnOff);
 
 		/****** VrmlConverter_LineAspect::HasMaterial ******/
-		/****** md5 signature: 080a4ac510e7b99195dfb4b5407d4b43 ******/
+		/****** md5 signature: 4c21f7fb44749c4df8e6f9673d4be968 ******/
 		%feature("compactdefaultargs") HasMaterial;
 		%feature("autodoc", "Return
 -------
@@ -1108,7 +1104,7 @@ Description
 -----------
 returns True if the materials is writing into OStream.
 ") HasMaterial;
-		Standard_Boolean HasMaterial();
+		bool HasMaterial();
 
 		/****** VrmlConverter_LineAspect::Material ******/
 		/****** md5 signature: 03890e6f4263cede852805215c495859 ******/
@@ -1124,7 +1120,7 @@ No available documentation.
 		opencascade::handle<Vrml_Material> Material();
 
 		/****** VrmlConverter_LineAspect::SetHasMaterial ******/
-		/****** md5 signature: d47b97f4540a599bd8501ac45e6c5e60 ******/
+		/****** md5 signature: 6a5327907b8ef5ec9b53a58a20edb1c0 ******/
 		%feature("compactdefaultargs") SetHasMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1139,7 +1135,7 @@ Description
 -----------
 defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
 ") SetHasMaterial;
-		void SetHasMaterial(const Standard_Boolean OnOff);
+		void SetHasMaterial(const bool OnOff);
 
 		/****** VrmlConverter_LineAspect::SetMaterial ******/
 		/****** md5 signature: 64fb7ab89ab3467b311fe2c83f43263d ******/
@@ -1189,7 +1185,7 @@ create a default PointAspect. Default value: HasMaterial = False - a line hasn't
 		 VrmlConverter_PointAspect();
 
 		/****** VrmlConverter_PointAspect::VrmlConverter_PointAspect ******/
-		/****** md5 signature: fb2d5b763957fb90c987db37115ddec0 ******/
+		/****** md5 signature: abad93378a11f41e1c13464948b64e0f ******/
 		%feature("compactdefaultargs") VrmlConverter_PointAspect;
 		%feature("autodoc", "
 Parameters
@@ -1205,10 +1201,10 @@ Description
 -----------
 No available documentation.
 ") VrmlConverter_PointAspect;
-		 VrmlConverter_PointAspect(const opencascade::handle<Vrml_Material> & aMaterial, const Standard_Boolean OnOff);
+		 VrmlConverter_PointAspect(const opencascade::handle<Vrml_Material> & aMaterial, const bool OnOff);
 
 		/****** VrmlConverter_PointAspect::HasMaterial ******/
-		/****** md5 signature: 080a4ac510e7b99195dfb4b5407d4b43 ******/
+		/****** md5 signature: 4c21f7fb44749c4df8e6f9673d4be968 ******/
 		%feature("compactdefaultargs") HasMaterial;
 		%feature("autodoc", "Return
 -------
@@ -1218,7 +1214,7 @@ Description
 -----------
 returns True if the materials is writing into OStream.
 ") HasMaterial;
-		Standard_Boolean HasMaterial();
+		bool HasMaterial();
 
 		/****** VrmlConverter_PointAspect::Material ******/
 		/****** md5 signature: 03890e6f4263cede852805215c495859 ******/
@@ -1234,7 +1230,7 @@ No available documentation.
 		opencascade::handle<Vrml_Material> Material();
 
 		/****** VrmlConverter_PointAspect::SetHasMaterial ******/
-		/****** md5 signature: d47b97f4540a599bd8501ac45e6c5e60 ******/
+		/****** md5 signature: 6a5327907b8ef5ec9b53a58a20edb1c0 ******/
 		%feature("compactdefaultargs") SetHasMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1249,7 +1245,7 @@ Description
 -----------
 defines the necessary of writing own Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
 ") SetHasMaterial;
-		void SetHasMaterial(const Standard_Boolean OnOff);
+		void SetHasMaterial(const bool OnOff);
 
 		/****** VrmlConverter_PointAspect::SetMaterial ******/
 		/****** md5 signature: 64fb7ab89ab3467b311fe2c83f43263d ******/
@@ -1286,19 +1282,19 @@ No available documentation.
 class VrmlConverter_Projector : public Standard_Transient {
 	public:
 		/****** VrmlConverter_Projector::VrmlConverter_Projector ******/
-		/****** md5 signature: 3027816b30293e2ab542f0061b45dc27 ******/
+		/****** md5 signature: 5c60f006e4f27300c0d370c1326bfeca ******/
 		%feature("compactdefaultargs") VrmlConverter_Projector;
 		%feature("autodoc", "
 Parameters
 ----------
-Shapes: TopTools_Array1OfShape
-Focus: float
-DX: float
-DY: float
-DZ: float
-XUp: float
-YUp: float
-ZUp: float
+Shapes: NCollection_Array1<TopoDS_Shape>
+Focus: double
+DX: double
+DY: double
+DZ: double
+XUp: double
+YUp: double
+ZUp: double
 Camera: VrmlConverter_TypeOfCamera (optional, default to VrmlConverter_NoCamera)
 Light: VrmlConverter_TypeOfLight (optional, default to VrmlConverter_NoLight)
 
@@ -1310,7 +1306,7 @@ Description
 -----------
 No available documentation.
 ") VrmlConverter_Projector;
-		 VrmlConverter_Projector(const TopTools_Array1OfShape & Shapes, const Standard_Real Focus, const Standard_Real DX, const Standard_Real DY, const Standard_Real DZ, const Standard_Real XUp, const Standard_Real YUp, const Standard_Real ZUp, const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera, const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
+		 VrmlConverter_Projector(const NCollection_Array1<TopoDS_Shape> & Shapes, const double Focus, const double DX, const double DY, const double DZ, const double XUp, const double YUp, const double ZUp, const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera, const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
 
 		/****** VrmlConverter_Projector::Add ******/
 		/****** md5 signature: fe7a6c17a63ece511d1868bb0e2144ae ******/
@@ -1440,14 +1436,14 @@ No available documentation.
 		static void Add(std::ostream &OutValue, const TopoDS_Shape & aShape, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_ShadedShape::ComputeNormal ******/
-		/****** md5 signature: 94eb9e8b7db2c9db0658575ebc46926f ******/
+		/****** md5 signature: c982790f17db594d1b7340b16724cddc ******/
 		%feature("compactdefaultargs") ComputeNormal;
 		%feature("autodoc", "
 Parameters
 ----------
 aFace: TopoDS_Face
 pc: Poly_Connect
-Nor: TColgp_Array1OfDir
+Nor: NCollection_Array1<gp_Dir>
 
 Return
 -------
@@ -1457,7 +1453,7 @@ Description
 -----------
 No available documentation.
 ") ComputeNormal;
-		static void ComputeNormal(const TopoDS_Face & aFace, Poly_Connect & pc, TColgp_Array1OfDir & Nor);
+		static void ComputeNormal(const TopoDS_Face & aFace, Poly_Connect & pc, NCollection_Array1<gp_Dir> & Nor);
 
 };
 
@@ -1500,7 +1496,7 @@ No available documentation.
 		opencascade::handle<Vrml_Material> FrontMaterial();
 
 		/****** VrmlConverter_ShadingAspect::HasMaterial ******/
-		/****** md5 signature: 080a4ac510e7b99195dfb4b5407d4b43 ******/
+		/****** md5 signature: 4c21f7fb44749c4df8e6f9673d4be968 ******/
 		%feature("compactdefaultargs") HasMaterial;
 		%feature("autodoc", "Return
 -------
@@ -1510,10 +1506,10 @@ Description
 -----------
 returns True if the materials is writing into OStream.
 ") HasMaterial;
-		Standard_Boolean HasMaterial();
+		bool HasMaterial();
 
 		/****** VrmlConverter_ShadingAspect::HasNormals ******/
-		/****** md5 signature: 181f2084bd118d7033834a50e616fde5 ******/
+		/****** md5 signature: 7b85da4e15282189c4164fb085476fe7 ******/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Return
 -------
@@ -1523,7 +1519,7 @@ Description
 -----------
 returns True if the normals are calculating.
 ") HasNormals;
-		Standard_Boolean HasNormals();
+		bool HasNormals();
 
 		/****** VrmlConverter_ShadingAspect::SetFrontMaterial ******/
 		/****** md5 signature: 51ff40ccda9a7c5790c330959b5bf7a9 ******/
@@ -1544,7 +1540,7 @@ No available documentation.
 		void SetFrontMaterial(const opencascade::handle<Vrml_Material> & aMaterial);
 
 		/****** VrmlConverter_ShadingAspect::SetHasMaterial ******/
-		/****** md5 signature: d47b97f4540a599bd8501ac45e6c5e60 ******/
+		/****** md5 signature: 6a5327907b8ef5ec9b53a58a20edb1c0 ******/
 		%feature("compactdefaultargs") SetHasMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1559,10 +1555,10 @@ Description
 -----------
 defines necessary of writing Material from Vrml into output OStream. By default False - the material is not writing into OStream, True - the material is writing.
 ") SetHasMaterial;
-		void SetHasMaterial(const Standard_Boolean OnOff);
+		void SetHasMaterial(const bool OnOff);
 
 		/****** VrmlConverter_ShadingAspect::SetHasNormals ******/
-		/****** md5 signature: 14d1dce58b5b630563d8387ac84b635b ******/
+		/****** md5 signature: ecb3075cb13646c62b072e58572c9740 ******/
 		%feature("compactdefaultargs") SetHasNormals;
 		%feature("autodoc", "
 Parameters
@@ -1577,7 +1573,7 @@ Description
 -----------
 defines necessary of a calculation of normals for ShadedShape to more accurately display curved surfaces, pacticularly when smoooth or phong shading is used in VRML viewer. By default False - the normals are not calculated, True - the normals are calculated. Warning: If normals are calculated the resulting VRML file will be substantially lager.
 ") SetHasNormals;
-		void SetHasNormals(const Standard_Boolean OnOff);
+		void SetHasNormals(const bool OnOff);
 
 		/****** VrmlConverter_ShadingAspect::SetShapeHints ******/
 		/****** md5 signature: 493f980a22ee969eb2903a3fce507dd0 ******/
@@ -1646,7 +1642,7 @@ No available documentation.
 		static void Add(std::ostream &OutValue, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_WFDeflectionRestrictedFace::Add ******/
-		/****** md5 signature: 90da66cc4406b2e2f1bfc7074ed66a78 ******/
+		/****** md5 signature: 094b5b91259b3fe12ed406b61308dc51 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1654,7 +1650,7 @@ Parameters
 aFace: BRepAdaptor_Surface
 DrawUIso: bool
 DrawVIso: bool
-Deflection: float
+Deflection: double
 NBUiso: int
 NBViso: int
 aDrawer: VrmlConverter_Drawer
@@ -1667,7 +1663,7 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static void Add(std::ostream &OutValue, const opencascade::handle<BRepAdaptor_Surface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
+		static void Add(std::ostream &OutValue, const opencascade::handle<BRepAdaptor_Surface> & aFace, const bool DrawUIso, const bool DrawVIso, const double Deflection, const int NBUiso, const int NBViso, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_WFDeflectionRestrictedFace::AddUIso ******/
 		/****** md5 signature: 4aee442358ca971c2da6856dad976df1 ******/
@@ -1774,7 +1770,7 @@ No available documentation.
 		static void Add(std::ostream &OutValue, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_WFRestrictedFace::Add ******/
-		/****** md5 signature: b4d3ff4ee1870e7fad0600d75e3d4ecf ******/
+		/****** md5 signature: 9cb1242461907741cc3cdf62f54005a8 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1794,7 +1790,7 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static void Add(std::ostream &OutValue, const opencascade::handle<BRepAdaptor_Surface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
+		static void Add(std::ostream &OutValue, const opencascade::handle<BRepAdaptor_Surface> & aFace, const bool DrawUIso, const bool DrawVIso, const int NBUiso, const int NBViso, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 		/****** VrmlConverter_WFRestrictedFace::AddUIso ******/
 		/****** md5 signature: 4aee442358ca971c2da6856dad976df1 ******/
@@ -1895,7 +1891,7 @@ create a default IsoAspect. Default value: myNumber - 10.
 		 VrmlConverter_IsoAspect();
 
 		/****** VrmlConverter_IsoAspect::VrmlConverter_IsoAspect ******/
-		/****** md5 signature: 4f28b906a0c1712120192c48573ca260 ******/
+		/****** md5 signature: abb928e7205827502055d735ea98a768 ******/
 		%feature("compactdefaultargs") VrmlConverter_IsoAspect;
 		%feature("autodoc", "
 Parameters
@@ -1912,10 +1908,10 @@ Description
 -----------
 No available documentation.
 ") VrmlConverter_IsoAspect;
-		 VrmlConverter_IsoAspect(const opencascade::handle<Vrml_Material> & aMaterial, const Standard_Boolean OnOff, const Standard_Integer aNumber);
+		 VrmlConverter_IsoAspect(const opencascade::handle<Vrml_Material> & aMaterial, const bool OnOff, const int aNumber);
 
 		/****** VrmlConverter_IsoAspect::Number ******/
-		/****** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ******/
+		/****** md5 signature: 630c2fedd5680e328bd447673c7f6ee1 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -1925,10 +1921,10 @@ Description
 -----------
 returns the number of U or V isoparametric curves drawn for a single face.
 ") Number;
-		Standard_Integer Number();
+		int Number();
 
 		/****** VrmlConverter_IsoAspect::SetNumber ******/
-		/****** md5 signature: c030d4f4482676437e574e8c3f3bf68c ******/
+		/****** md5 signature: 6a61c5d122936598d261143eb0426462 ******/
 		%feature("compactdefaultargs") SetNumber;
 		%feature("autodoc", "
 Parameters
@@ -1943,7 +1939,7 @@ Description
 -----------
 No available documentation.
 ") SetNumber;
-		void SetNumber(const Standard_Integer aNumber);
+		void SetNumber(const int aNumber);
 
 };
 

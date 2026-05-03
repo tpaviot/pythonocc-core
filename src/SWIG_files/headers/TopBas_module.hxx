@@ -19,7 +19,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define TOPBAS_HXX
 
 
-#include<TopBas_ListIteratorOfListOfTestInterference.hxx>
 #include<TopBas_ListOfTestInterference.hxx>
 #include<TopBas_TestInterference.hxx>
 

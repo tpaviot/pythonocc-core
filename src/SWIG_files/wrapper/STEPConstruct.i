@@ -55,10 +55,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepconstruct.htm
 #include<StepGeom_module.hxx>
 #include<StepData_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
-#include<XSControl_module.hxx>
 #include<StepVisual_module.hxx>
 #include<Quantity_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<XSControl_module.hxx>
 #include<gp_module.hxx>
 #include<TopTools_module.hxx>
 #include<IFSelect_module.hxx>
@@ -75,6 +75,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepconstruct.htm
 #include<PCDM_module.hxx>
 #include<CDF_module.hxx>
 #include<DE_module.hxx>
+#include<Aspect_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Media_module.hxx>
+#include<TDataStd_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -93,10 +98,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepconstruct.htm
 %import StepGeom.i
 %import StepData.i
 %import TCollection.i
-%import TColStd.i
-%import XSControl.i
 %import StepVisual.i
 %import Quantity.i
+%import XCAFDoc.i
+%import XSControl.i
 %import gp.i
 
 %pythoncode {
@@ -116,7 +121,11 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Standard_Transient>>::Items;
+%ignore NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Standard_Transient>>::KeyValues;
 %template(STEPConstruct_DataMapOfAsciiStringTransient) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Standard_Transient>>;
+%ignore NCollection_DataMap<gp_Pnt,opencascade::handle<Standard_Transient>>::Items;
+%ignore NCollection_DataMap<gp_Pnt,opencascade::handle<Standard_Transient>>::KeyValues;
 %template(STEPConstruct_DataMapOfPointTransient) NCollection_DataMap<gp_Pnt,opencascade::handle<Standard_Transient>>;
 /* end templates declaration */
 
@@ -134,7 +143,7 @@ typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>> STE
 class STEPConstruct {
 	public:
 		/****** STEPConstruct::FindCDSR ******/
-		/****** md5 signature: df4f736080c1405cd8149af6842045a9 ******/
+		/****** md5 signature: 1281ad7cf641b63dd8f5481475e59323 ******/
 		%feature("compactdefaultargs") FindCDSR;
 		%feature("autodoc", "
 Parameters
@@ -151,7 +160,7 @@ Description
 -----------
 Find CDSR corresponding to the component in the specified assembly.
 ") FindCDSR;
-		static Standard_Boolean FindCDSR(const opencascade::handle<Transfer_Binder> & ComponentBinder, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & AssemblySDR, opencascade::handle<StepShape_ContextDependentShapeRepresentation> & ComponentCDSR);
+		static bool FindCDSR(const opencascade::handle<Transfer_Binder> & ComponentBinder, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & AssemblySDR, opencascade::handle<StepShape_ContextDependentShapeRepresentation> & ComponentCDSR);
 
 		/****** STEPConstruct::FindEntity ******/
 		/****** md5 signature: 864ce9b9c1ae0edf6f28a0c1b2e077f8 ******/
@@ -748,7 +757,7 @@ No available documentation.
 		 STEPConstruct_Assembly();
 
 		/****** STEPConstruct_Assembly::CheckSRRReversesNAUO ******/
-		/****** md5 signature: b0fa18785618f63fd8c99ab9527bdb0c ******/
+		/****** md5 signature: 669810824a849234d10771d679d4f192 ******/
 		%feature("compactdefaultargs") CheckSRRReversesNAUO;
 		%feature("autodoc", "
 Parameters
@@ -764,7 +773,7 @@ Description
 -----------
 Checks whether SRR's definition of assembly and component contradicts with NAUO definition or not, according to model schema (AP214 or AP203).
 ") CheckSRRReversesNAUO;
-		static Standard_Boolean CheckSRRReversesNAUO(const Interface_Graph & theGraph, const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR);
+		static bool CheckSRRReversesNAUO(const Interface_Graph & theGraph, const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR);
 
 		/****** STEPConstruct_Assembly::GetNAUO ******/
 		/****** md5 signature: 7b90e221fdc0670e5cb2da71fe791c94 ******/
@@ -799,6 +808,26 @@ Description
 Initialises with starting values Ax0: origin axis (typically, standard XYZ) Loc: location to which place the item Makes a MappedItem Resulting Value is returned by ItemValue.
 ") Init;
 		void Init(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & aSR, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR0, const opencascade::handle<StepGeom_Axis2Placement3d> & Ax0, const opencascade::handle<StepGeom_Axis2Placement3d> & Loc);
+
+		/****** STEPConstruct_Assembly::Init ******/
+		/****** md5 signature: a19af2145d15b1b1f89ee242f83892e1 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theSR: StepShape_ShapeDefinitionRepresentation
+theSDR0: StepShape_ShapeDefinitionRepresentation
+theTrsfOp: StepGeom_CartesianTransformationOperator3d
+
+Return
+-------
+None
+
+Description
+-----------
+Initialises with starting values theTrsfOp: local transformation to apply, may have scaling factor Makes a MappedItem Resulting Value is returned by ItemValue.
+") Init;
+		void Init(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & theSR, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & theSDR0, const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & theTrsfOp);
 
 		/****** STEPConstruct_Assembly::ItemLocation ******/
 		/****** md5 signature: 0632f06033b119941c450baebc8f4ad0 ******/
@@ -898,12 +927,12 @@ Returns tool which maintains context specific for AP203.
 		STEPConstruct_AP203Context & AP203Context();
 
 		/****** STEPConstruct_ContextTool::AddAPD ******/
-		/****** md5 signature: a67d05ca4ebe6d997b4368deaa146c7d ******/
+		/****** md5 signature: 108248717d5c4f0ac033348f9866a433 ******/
 		%feature("compactdefaultargs") AddAPD;
 		%feature("autodoc", "
 Parameters
 ----------
-enforce: bool (optional, default to Standard_False)
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -913,7 +942,7 @@ Description
 -----------
 No available documentation.
 ") AddAPD;
-		void AddAPD(const Standard_Boolean enforce = Standard_False);
+		void AddAPD(const bool enforce = false);
 
 		/****** STEPConstruct_ContextTool::GetACname ******/
 		/****** md5 signature: fa0e502f0d137b171700e26d62429bdd ******/
@@ -955,7 +984,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> GetACstatus();
 
 		/****** STEPConstruct_ContextTool::GetACyear ******/
-		/****** md5 signature: ffee3c003a0384e8ceac68cc91004ce2 ******/
+		/****** md5 signature: 8c07a1257f836c9a2ec1a0b2cca31d0b ******/
 		%feature("compactdefaultargs") GetACyear;
 		%feature("autodoc", "Return
 -------
@@ -965,7 +994,7 @@ Description
 -----------
 No available documentation.
 ") GetACyear;
-		Standard_Integer GetACyear();
+		int GetACyear();
 
 		/****** STEPConstruct_ContextTool::GetAPD ******/
 		/****** md5 signature: 95e9054d44407daae5eff76f05165a8c ******/
@@ -1007,7 +1036,7 @@ Generates a product name basing on write.step.product.name parameter and current
 		opencascade::handle<TCollection_HAsciiString> GetProductName();
 
 		/****** STEPConstruct_ContextTool::GetRootsForAssemblyLink ******/
-		/****** md5 signature: 6b7fbd9fa49372633d76e2cb9ba9f545 ******/
+		/****** md5 signature: a7c5ff8f08a6f9f1d6157e597fc13260 ******/
 		%feature("compactdefaultargs") GetRootsForAssemblyLink;
 		%feature("autodoc", "
 Parameters
@@ -1016,16 +1045,16 @@ assembly: STEPConstruct_Assembly
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Produces and returns a full list of root entities required for assembly link identified by assembly (including NAUO and CDSR).
 ") GetRootsForAssemblyLink;
-		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForAssemblyLink(const STEPConstruct_Assembly & assembly);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GetRootsForAssemblyLink(const STEPConstruct_Assembly & assembly);
 
 		/****** STEPConstruct_ContextTool::GetRootsForPart ******/
-		/****** md5 signature: 26375ec7e779b7f7b5512d7dbb0e5893 ******/
+		/****** md5 signature: 523531dd6068046f8f0a1a7698d9f8af ******/
 		%feature("compactdefaultargs") GetRootsForPart;
 		%feature("autodoc", "
 Parameters
@@ -1034,16 +1063,16 @@ SDRTool: STEPConstruct_Part
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Produces and returns a full list of root entities required for part identified by SDRTool (including SDR itself).
 ") GetRootsForPart;
-		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForPart(const STEPConstruct_Part & SDRTool);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GetRootsForPart(const STEPConstruct_Part & SDRTool);
 
 		/****** STEPConstruct_ContextTool::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -1053,10 +1082,10 @@ Description
 -----------
 Returns current index of assembly component on current level.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** STEPConstruct_ContextTool::IsAP203 ******/
-		/****** md5 signature: 8b315db44337734a8f0f9efec9410761 ******/
+		/****** md5 signature: f73745d22db85a305bed5d06e5ede1d0 ******/
 		%feature("compactdefaultargs") IsAP203;
 		%feature("autodoc", "Return
 -------
@@ -1066,10 +1095,10 @@ Description
 -----------
 Returns True if APD.schema_name is config_control_design.
 ") IsAP203;
-		Standard_Boolean IsAP203();
+		bool IsAP203();
 
 		/****** STEPConstruct_ContextTool::IsAP214 ******/
-		/****** md5 signature: 8d1b3925d3ac81f151facb84057cda3b ******/
+		/****** md5 signature: db4fb1f1064969865c1040ed05392290 ******/
 		%feature("compactdefaultargs") IsAP214;
 		%feature("autodoc", "Return
 -------
@@ -1079,10 +1108,10 @@ Description
 -----------
 Returns True if APD.schema_name is automotive_design.
 ") IsAP214;
-		Standard_Boolean IsAP214();
+		bool IsAP214();
 
 		/****** STEPConstruct_ContextTool::IsAP242 ******/
-		/****** md5 signature: 9bed2fca5abf26681a7b41957da9e535 ******/
+		/****** md5 signature: 0d1ba1ec72951372a8e5e62a42fb01ba ******/
 		%feature("compactdefaultargs") IsAP242;
 		%feature("autodoc", "Return
 -------
@@ -1092,10 +1121,10 @@ Description
 -----------
 Returns True if APD.schema_name is ap242_managed_model_based_3d_engineering.
 ") IsAP242;
-		Standard_Boolean IsAP242();
+		bool IsAP242();
 
 		/****** STEPConstruct_ContextTool::Level ******/
-		/****** md5 signature: 06f7279e938b54c0bc4a49915192a536 ******/
+		/****** md5 signature: 1c6749a8f4fa3c4b1ef506600d9abb66 ******/
 		%feature("compactdefaultargs") Level;
 		%feature("autodoc", "Return
 -------
@@ -1105,7 +1134,7 @@ Description
 -----------
 Returns current assembly level.
 ") Level;
-		Standard_Integer Level();
+		int Level();
 
 		/****** STEPConstruct_ContextTool::NextIndex ******/
 		/****** md5 signature: 37c249b2de63c7f1238e07e1f651137d ******/
@@ -1214,7 +1243,7 @@ No available documentation.
 		void SetACstatus(const opencascade::handle<TCollection_HAsciiString> & status);
 
 		/****** STEPConstruct_ContextTool::SetACyear ******/
-		/****** md5 signature: f858031d9c4d5fded97eaf943e734a0b ******/
+		/****** md5 signature: 4e1ce95e04151ba29d9bf98f69314af1 ******/
 		%feature("compactdefaultargs") SetACyear;
 		%feature("autodoc", "
 Parameters
@@ -1229,7 +1258,7 @@ Description
 -----------
 No available documentation.
 ") SetACyear;
-		void SetACyear(const Standard_Integer year);
+		void SetACyear(const int year);
 
 		/****** STEPConstruct_ContextTool::SetGlobalFactor ******/
 		/****** md5 signature: 5028f8e2221225ecea3206930d81e67f ******/
@@ -1250,7 +1279,7 @@ No available documentation.
 		void SetGlobalFactor(const StepData_Factors & theGlobalFactor);
 
 		/****** STEPConstruct_ContextTool::SetIndex ******/
-		/****** md5 signature: e532bcf6ded7ea35dd810f127d134732 ******/
+		/****** md5 signature: 7edef0d302d01facaf9a8e53324b9a6b ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -1265,10 +1294,10 @@ Description
 -----------
 Changes current index of assembly component on current level.
 ") SetIndex;
-		void SetIndex(const Standard_Integer ind);
+		void SetIndex(const int ind);
 
 		/****** STEPConstruct_ContextTool::SetLevel ******/
-		/****** md5 signature: 96086cf4262787a9b0e671fa4e9ed87d ******/
+		/****** md5 signature: 95a8e1bace0de82a19cc07256777ceed ******/
 		%feature("compactdefaultargs") SetLevel;
 		%feature("autodoc", "
 Parameters
@@ -1283,7 +1312,7 @@ Description
 -----------
 Changes current assembly level.
 ") SetLevel;
-		void SetLevel(const Standard_Integer lev);
+		void SetLevel(const int lev);
 
 		/****** STEPConstruct_ContextTool::SetModel ******/
 		/****** md5 signature: 3e50615c9ad790486b5ae0c21bfe2648 ******/
@@ -1357,7 +1386,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> ACapplication();
 
 		/****** STEPConstruct_Part::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1367,10 +1396,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** STEPConstruct_Part::MakeSDR ******/
-		/****** md5 signature: 97781b0e3545c0a0c5fda0a3f0af72a3 ******/
+		/****** md5 signature: e842046d08cfe8f91dae923008c38d1d ******/
 		%feature("compactdefaultargs") MakeSDR;
 		%feature("autodoc", "
 Parameters
@@ -1388,7 +1417,7 @@ Description
 -----------
 No available documentation.
 ") MakeSDR;
-		void MakeSDR(const opencascade::handle<StepShape_ShapeRepresentation> & aShape, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_ApplicationContext> & AC, opencascade::handle<StepData_StepModel> & theStepModel);
+		void MakeSDR(const opencascade::handle<StepShape_ShapeRepresentation> & aShape, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_ApplicationContext> & AC, const opencascade::handle<StepData_StepModel> & theStepModel);
 
 		/****** STEPConstruct_Part::PC ******/
 		/****** md5 signature: 4b00ee1014f481885d4ebd1bc2d9b97f ******/
@@ -1986,6 +2015,626 @@ No available documentation.
 	}
 };
 
+/******************************************
+* class STEPConstruct_RenderingProperties *
+******************************************/
+class STEPConstruct_RenderingProperties {
+	public:
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: 4cbf1a5c559ab9b44de259923465f930 ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Default constructor creating an empty rendering properties object.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties();
+
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: 6dfd0840a3f56fb6af9054c39eaa0804 ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theRenderingProperties: StepVisual_SurfaceStyleRenderingWithProperties
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor from STEP rendering properties entity. Extracts color, transparency, and other properties from the STEP entity. 
+Input parameter: theRenderingProperties rendering properties entity.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties(const opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> & theRenderingProperties);
+
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: 5a45a476716f189f3c81e447180a154a ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theRGBAColor: Quantity_ColorRGBA
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor from RGBA color. Creates rendering properties with the given color and transparency. 
+Input parameter: theRGBAColor color with transparency.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties(const Quantity_ColorRGBA & theRGBAColor);
+
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: 38080ca9fd41186ba57ec927d131eaad ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theColor: StepVisual_Colour
+theTransparency: double
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor from STEP color and transparency value. Creates rendering properties with the given color and transparency. 
+Input parameter: theColor color 
+Input parameter: theTransparency transparency value.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties(const opencascade::handle<StepVisual_Colour> & theColor, const double theTransparency);
+
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: c55bde23ffdb17fd45d4d8577a2ba3c1 ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterialCommon
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor from XCAFDoc_VisMaterialCommon. Creates rendering properties using material properties from the OCCT material. 
+Input parameter: theMaterial common visualization material properties.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties(const XCAFDoc_VisMaterialCommon & theMaterial);
+
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: 52c63dcc63a7c6883a821834feb23c62 ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterial
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor from XCAFDoc_VisMaterial. Creates rendering properties using material properties from the OCCT material. 
+Input parameter: theMaterial visualization material properties.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties(const opencascade::handle<XCAFDoc_VisMaterial> & theMaterial);
+
+		/****** STEPConstruct_RenderingProperties::STEPConstruct_RenderingProperties ******/
+		/****** md5 signature: d882478bdb8106c14d87fd6b4ac4a852 ******/
+		%feature("compactdefaultargs") STEPConstruct_RenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theSurfaceColor: Quantity_Color
+theTransparency: double (optional, default to 0.0)
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor from surface color, transparency, and rendering method. 
+Input parameter: theSurfaceColor surface color 
+Input parameter: theTransparency transparency value.
+") STEPConstruct_RenderingProperties;
+		 STEPConstruct_RenderingProperties(const Quantity_Color & theSurfaceColor, const double theTransparency = 0.0);
+
+		/****** STEPConstruct_RenderingProperties::AmbientReflectance ******/
+		/****** md5 signature: 70951726e18d9b458ffacd0c725b33c1 ******/
+		%feature("compactdefaultargs") AmbientReflectance;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns ambient reflectance value 
+Return: ambient reflectance value.
+") AmbientReflectance;
+		double AmbientReflectance();
+
+		/****** STEPConstruct_RenderingProperties::CreateRenderingProperties ******/
+		/****** md5 signature: a03391addb51f39a0b2e18f4e696cb2a ******/
+		%feature("compactdefaultargs") CreateRenderingProperties;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties>
+
+Description
+-----------
+Creates and returns rendering properties entity 
+Return: created rendering properties entity.
+") CreateRenderingProperties;
+		opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> CreateRenderingProperties();
+
+		/****** STEPConstruct_RenderingProperties::CreateRenderingProperties ******/
+		/****** md5 signature: ba9d514ccdc9fb06970c554a6d2fedaa ******/
+		%feature("compactdefaultargs") CreateRenderingProperties;
+		%feature("autodoc", "
+Parameters
+----------
+theRenderColour: StepVisual_Colour
+
+Return
+-------
+opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties>
+
+Description
+-----------
+Input parameter: theRenderColour color to be used for rendering 
+Return: created rendering properties entity.
+") CreateRenderingProperties;
+		opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> CreateRenderingProperties(const opencascade::handle<StepVisual_Colour> & theRenderColour);
+
+		/****** STEPConstruct_RenderingProperties::CreateXCAFMaterial ******/
+		/****** md5 signature: 4af78d9f2c512ba181cb615afab49c67 ******/
+		%feature("compactdefaultargs") CreateXCAFMaterial;
+		%feature("autodoc", "Return
+-------
+XCAFDoc_VisMaterialCommon
+
+Description
+-----------
+Creates and returns XCAF material entity 
+Return: created XCAF material entity.
+") CreateXCAFMaterial;
+		XCAFDoc_VisMaterialCommon CreateXCAFMaterial();
+
+		/****** STEPConstruct_RenderingProperties::DiffuseReflectance ******/
+		/****** md5 signature: 85e9bf2b3bac947067c8949f010739fb ******/
+		%feature("compactdefaultargs") DiffuseReflectance;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns diffuse reflectance value 
+Return: diffuse reflectance value.
+") DiffuseReflectance;
+		double DiffuseReflectance();
+
+		/****** STEPConstruct_RenderingProperties::GetRGBAColor ******/
+		/****** md5 signature: 7f1802e33703f770684838481eee945b ******/
+		%feature("compactdefaultargs") GetRGBAColor;
+		%feature("autodoc", "Return
+-------
+Quantity_ColorRGBA
+
+Description
+-----------
+Creates the ColorRGBA object from the current color and transparency 
+Return: ColorRGBA object.
+") GetRGBAColor;
+		Quantity_ColorRGBA GetRGBAColor();
+
+		/****** STEPConstruct_RenderingProperties::Init ******/
+		/****** md5 signature: f4aa59762521925a6088440c6b52b1af ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theRenderingProperties: StepVisual_SurfaceStyleRenderingWithProperties
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes from STEP rendering properties entity. Extracts color, transparency, and other properties from the STEP entity. 
+Input parameter: theRenderingProperties rendering properties entity.
+") Init;
+		void Init(const opencascade::handle<StepVisual_SurfaceStyleRenderingWithProperties> & theRenderingProperties);
+
+		/****** STEPConstruct_RenderingProperties::Init ******/
+		/****** md5 signature: 88b2f1ca2fe825e74a66ee600b8309c8 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theRGBAColor: Quantity_ColorRGBA
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes from RGBA color. 
+Input parameter: theRGBAColor color with transparency.
+") Init;
+		void Init(const Quantity_ColorRGBA & theRGBAColor);
+
+		/****** STEPConstruct_RenderingProperties::Init ******/
+		/****** md5 signature: 0c1ad9671695f07275235e5f07735d58 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theColor: StepVisual_Colour
+theTransparency: double
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes from STEP color and transparency value. 
+Input parameter: theColor STEP color entity 
+Input parameter: theTransparency transparency value.
+") Init;
+		void Init(const opencascade::handle<StepVisual_Colour> & theColor, const double theTransparency);
+
+		/****** STEPConstruct_RenderingProperties::Init ******/
+		/****** md5 signature: 4b7056a9f072d74fbbe063428bba147d ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterialCommon
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes from XCAFDoc_VisMaterialCommon. 
+Input parameter: theMaterial common visualization material properties.
+") Init;
+		void Init(const XCAFDoc_VisMaterialCommon & theMaterial);
+
+		/****** STEPConstruct_RenderingProperties::Init ******/
+		/****** md5 signature: c6eb02871bffc465a95d067d5aed7797 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theMaterial: XCAFDoc_VisMaterial
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes from XCAFDoc_VisMaterial. 
+Input parameter: theMaterial visualization material properties.
+") Init;
+		void Init(const opencascade::handle<XCAFDoc_VisMaterial> & theMaterial);
+
+		/****** STEPConstruct_RenderingProperties::Init ******/
+		/****** md5 signature: a2a6ebcf64300f7373a9710715e0be5e ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theSurfaceColor: Quantity_Color
+theTransparency: double (optional, default to 0.0)
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes from surface color, transparency and rendering method. 
+Input parameter: theSurfaceColor surface color 
+Input parameter: theTransparency transparency value.
+") Init;
+		void Init(const Quantity_Color & theSurfaceColor, const double theTransparency = 0.0);
+
+		/****** STEPConstruct_RenderingProperties::IsAmbientReflectanceDefined ******/
+		/****** md5 signature: 34ec523a3d9ee47d3fbc4eb52dd9ffb2 ******/
+		%feature("compactdefaultargs") IsAmbientReflectanceDefined;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether ambient reflectance is defined 
+Return: true if defined, false otherwise.
+") IsAmbientReflectanceDefined;
+		bool IsAmbientReflectanceDefined();
+
+		/****** STEPConstruct_RenderingProperties::IsDefined ******/
+		/****** md5 signature: b70d5071bbde3aa553369be83e08074a ******/
+		%feature("compactdefaultargs") IsDefined;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether the rendering properties are defined 
+Return: true if defined, false otherwise.
+") IsDefined;
+		bool IsDefined();
+
+		/****** STEPConstruct_RenderingProperties::IsDiffuseReflectanceDefined ******/
+		/****** md5 signature: 25d2dc30924bbdfeadf9b562a06e5c6a ******/
+		%feature("compactdefaultargs") IsDiffuseReflectanceDefined;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether diffuse reflectance is defined 
+Return: true if defined, false otherwise.
+") IsDiffuseReflectanceDefined;
+		bool IsDiffuseReflectanceDefined();
+
+		/****** STEPConstruct_RenderingProperties::IsMaterialConvertible ******/
+		/****** md5 signature: cb3be3927572dda41174c162cb1b3c08 ******/
+		%feature("compactdefaultargs") IsMaterialConvertible;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether material is convertible to STEP 
+Return: true if fully defined for conversion, false otherwise.
+") IsMaterialConvertible;
+		bool IsMaterialConvertible();
+
+		/****** STEPConstruct_RenderingProperties::IsSpecularColourDefined ******/
+		/****** md5 signature: 0b3a4c5355cc5a49172a5250886c2dc0 ******/
+		%feature("compactdefaultargs") IsSpecularColourDefined;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether specular color is defined 
+Return: true if defined, false otherwise.
+") IsSpecularColourDefined;
+		bool IsSpecularColourDefined();
+
+		/****** STEPConstruct_RenderingProperties::IsSpecularExponentDefined ******/
+		/****** md5 signature: 1b485e7e41db4492328f7256f0af2511 ******/
+		%feature("compactdefaultargs") IsSpecularExponentDefined;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether specular exponent is defined 
+Return: true if defined, false otherwise.
+") IsSpecularExponentDefined;
+		bool IsSpecularExponentDefined();
+
+		/****** STEPConstruct_RenderingProperties::IsSpecularReflectanceDefined ******/
+		/****** md5 signature: d14340413686a7bc303a70135a38f59c ******/
+		%feature("compactdefaultargs") IsSpecularReflectanceDefined;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns whether specular reflectance is defined 
+Return: true if defined, false otherwise.
+") IsSpecularReflectanceDefined;
+		bool IsSpecularReflectanceDefined();
+
+		/****** STEPConstruct_RenderingProperties::RenderingMethod ******/
+		/****** md5 signature: a9d97accc42368ab47fb1d2790da182e ******/
+		%feature("compactdefaultargs") RenderingMethod;
+		%feature("autodoc", "Return
+-------
+StepVisual_ShadingSurfaceMethod
+
+Description
+-----------
+Returns rendering method 
+Return: rendering method.
+") RenderingMethod;
+		StepVisual_ShadingSurfaceMethod RenderingMethod();
+
+		/****** STEPConstruct_RenderingProperties::SetAmbientAndDiffuseReflectance ******/
+		/****** md5 signature: bb392ac5ba55a2cd784c6d5d80beecab ******/
+		%feature("compactdefaultargs") SetAmbientAndDiffuseReflectance;
+		%feature("autodoc", "
+Parameters
+----------
+theAmbientReflectance: double
+theDiffuseReflectance: double
+
+Return
+-------
+None
+
+Description
+-----------
+Sets ambient and diffuse reflectance values 
+Input parameter: theAmbientReflectance ambient reflectance value 
+Input parameter: theDiffuseReflectance diffuse reflectance value.
+") SetAmbientAndDiffuseReflectance;
+		void SetAmbientAndDiffuseReflectance(const double theAmbientReflectance, const double theDiffuseReflectance);
+
+		/****** STEPConstruct_RenderingProperties::SetAmbientDiffuseAndSpecularReflectance ******/
+		/****** md5 signature: f74c6684508df82705f790c521375836 ******/
+		%feature("compactdefaultargs") SetAmbientDiffuseAndSpecularReflectance;
+		%feature("autodoc", "
+Parameters
+----------
+theAmbientReflectance: double
+theDiffuseReflectance: double
+theSpecularReflectance: double
+theSpecularExponent: double
+theSpecularColour: Quantity_Color
+
+Return
+-------
+None
+
+Description
+-----------
+Sets ambient, diffuse and specular reflectance values 
+Input parameter: theAmbientReflectance ambient reflectance value 
+Input parameter: theDiffuseReflectance diffuse reflectance value 
+Input parameter: theSpecularReflectance specular reflectance value 
+Input parameter: theSpecularExponent specular exponent value 
+Input parameter: theSpecularColour specular color.
+") SetAmbientDiffuseAndSpecularReflectance;
+		void SetAmbientDiffuseAndSpecularReflectance(const double theAmbientReflectance, const double theDiffuseReflectance, const double theSpecularReflectance, const double theSpecularExponent, const Quantity_Color & theSpecularColour);
+
+		/****** STEPConstruct_RenderingProperties::SetAmbientReflectance ******/
+		/****** md5 signature: aed6481acd8947adfde93f05cb7bb9cf ******/
+		%feature("compactdefaultargs") SetAmbientReflectance;
+		%feature("autodoc", "
+Parameters
+----------
+theAmbientReflectance: double
+
+Return
+-------
+None
+
+Description
+-----------
+Sets ambient reflectance value 
+Input parameter: theAmbientReflectance ambient reflectance value.
+") SetAmbientReflectance;
+		void SetAmbientReflectance(const double theAmbientReflectance);
+
+		/****** STEPConstruct_RenderingProperties::SetRenderingMethod ******/
+		/****** md5 signature: 2b4436db12624a13b862ea67c2f02821 ******/
+		%feature("compactdefaultargs") SetRenderingMethod;
+		%feature("autodoc", "
+Parameters
+----------
+theRenderingMethod: StepVisual_ShadingSurfaceMethod
+
+Return
+-------
+None
+
+Description
+-----------
+Sets rendering method 
+Input parameter: theRenderingMethod rendering method.
+") SetRenderingMethod;
+		void SetRenderingMethod(const StepVisual_ShadingSurfaceMethod theRenderingMethod);
+
+		/****** STEPConstruct_RenderingProperties::SpecularColour ******/
+		/****** md5 signature: d80417955c95a68c603d56dbc7ab8bd8 ******/
+		%feature("compactdefaultargs") SpecularColour;
+		%feature("autodoc", "Return
+-------
+Quantity_Color
+
+Description
+-----------
+Returns specular color 
+Return: specular color.
+") SpecularColour;
+		Quantity_Color SpecularColour();
+
+		/****** STEPConstruct_RenderingProperties::SpecularExponent ******/
+		/****** md5 signature: 960d5e9571ed6d5a2feae06b7ccaa955 ******/
+		%feature("compactdefaultargs") SpecularExponent;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns specular exponent value 
+Return: specular exponent value.
+") SpecularExponent;
+		double SpecularExponent();
+
+		/****** STEPConstruct_RenderingProperties::SpecularReflectance ******/
+		/****** md5 signature: 0ef056b84c0ae58e1a5b357064ec67b8 ******/
+		%feature("compactdefaultargs") SpecularReflectance;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns specular reflectance value 
+Return: specular reflectance value.
+") SpecularReflectance;
+		double SpecularReflectance();
+
+		/****** STEPConstruct_RenderingProperties::SurfaceColor ******/
+		/****** md5 signature: 56002ce4b7396dcff4fa08cf00dc697d ******/
+		%feature("compactdefaultargs") SurfaceColor;
+		%feature("autodoc", "Return
+-------
+Quantity_Color
+
+Description
+-----------
+Returns surface color 
+Return: surface color.
+") SurfaceColor;
+		Quantity_Color SurfaceColor();
+
+		/****** STEPConstruct_RenderingProperties::Transparency ******/
+		/****** md5 signature: cc0c8e0fb32ccfe784d26a0fc4cf44c8 ******/
+		%feature("compactdefaultargs") Transparency;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns transparency value 
+Return: transparency value.
+") Transparency;
+		double Transparency();
+
+};
+
+
+%extend STEPConstruct_RenderingProperties {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***************************
 * class STEPConstruct_Tool *
 ***************************/
@@ -2036,12 +2685,12 @@ Returns FinderProcess (writing; Null if not loaded).
 		const opencascade::handle<Transfer_FinderProcess> & FinderProcess();
 
 		/****** STEPConstruct_Tool::Graph ******/
-		/****** md5 signature: 602c8343faeb8d6533fd8cb29044d22d ******/
+		/****** md5 signature: af6e4a9812f6c4fed3a23f335378b72e ******/
 		%feature("compactdefaultargs") Graph;
 		%feature("autodoc", "
 Parameters
 ----------
-recompute: bool (optional, default to Standard_False)
+recompute: bool (optional, default to false)
 
 Return
 -------
@@ -2051,7 +2700,7 @@ Description
 -----------
 Returns current graph (recomputing if necessary).
 ") Graph;
-		const Interface_Graph & Graph(const Standard_Boolean recompute = Standard_False);
+		const Interface_Graph & Graph(const bool recompute = false);
 
 		/****** STEPConstruct_Tool::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
@@ -2120,7 +2769,7 @@ Creates empty tool.
 		 STEPConstruct_UnitContext();
 
 		/****** STEPConstruct_UnitContext::AreaDone ******/
-		/****** md5 signature: 7da71b8eaa4403795bb4b5f632d8e5dd ******/
+		/****** md5 signature: ce215a731f0b9128d6feb8ec84a860e1 ******/
 		%feature("compactdefaultargs") AreaDone;
 		%feature("autodoc", "Return
 -------
@@ -2130,23 +2779,23 @@ Description
 -----------
 Returns true if areaFactor is computed.
 ") AreaDone;
-		Standard_Boolean AreaDone();
+		bool AreaDone();
 
 		/****** STEPConstruct_UnitContext::AreaFactor ******/
-		/****** md5 signature: 4c7b44bc49bb7530d8f62e93a85647f8 ******/
+		/****** md5 signature: 19404bb21927402bcdb2391e393df722 ******/
 		%feature("compactdefaultargs") AreaFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the areaFactor.
 ") AreaFactor;
-		Standard_Real AreaFactor();
+		double AreaFactor();
 
 		/****** STEPConstruct_UnitContext::ComputeFactors ******/
-		/****** md5 signature: e3de9d0095f3a8e6e5926812aa2b9b21 ******/
+		/****** md5 signature: 563f279157c6766766126d7a0caa97b5 ******/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "
 Parameters
@@ -2160,12 +2809,12 @@ int
 
 Description
 -----------
-Computes the length, plane angle and solid angle conversion factor . Returns a status, 0 if OK.
+Computes the length, plane angle and solid angle conversion factor. Returns a status, 0 if OK.
 ") ComputeFactors;
-		Standard_Integer ComputeFactors(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext, const StepData_Factors & theLocalFactors = StepData_Factors());
+		int ComputeFactors(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_UnitContext::ComputeFactors ******/
-		/****** md5 signature: c0f59aa5ac3bd1efefcff27304b254d4 ******/
+		/****** md5 signature: 91aa6c37638e5d778c754731da4d3f5d ******/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "
 Parameters
@@ -2181,10 +2830,10 @@ Description
 -----------
 No available documentation.
 ") ComputeFactors;
-		Standard_Integer ComputeFactors(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const StepData_Factors & theLocalFactors = StepData_Factors());
+		int ComputeFactors(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_UnitContext::ComputeTolerance ******/
-		/****** md5 signature: 9a5806980a9e9e53879adea3026bf9a2 ******/
+		/****** md5 signature: 53a45a2194f590360239b1c458a59409 ******/
 		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2199,10 +2848,10 @@ Description
 -----------
 Computes the uncertainty value (for length).
 ") ComputeTolerance;
-		Standard_Integer ComputeTolerance(const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aContext);
+		int ComputeTolerance(const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aContext);
 
 		/****** STEPConstruct_UnitContext::ConvertSiPrefix ******/
-		/****** md5 signature: da1d7efb2a96f1799098b82e4aa16394 ******/
+		/****** md5 signature: 197b8e0e2c20c8f09ede9c44950d5cb9 ******/
 		%feature("compactdefaultargs") ConvertSiPrefix;
 		%feature("autodoc", "
 Parameters
@@ -2211,16 +2860,16 @@ aPrefix: StepBasic_SiPrefix
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Convert SI prefix defined by enumeration to corresponding real factor (e.g. 1e6 for mega).
 ") ConvertSiPrefix;
-		static Standard_Real ConvertSiPrefix(const StepBasic_SiPrefix aPrefix);
+		static double ConvertSiPrefix(const StepBasic_SiPrefix aPrefix);
 
 		/****** STEPConstruct_UnitContext::HasUncertainty ******/
-		/****** md5 signature: bca0444c506978be32efc6fd9ed4818f ******/
+		/****** md5 signature: fc9350890eb6be8120af8ee3c4ebdb5d ******/
 		%feature("compactdefaultargs") HasUncertainty;
 		%feature("autodoc", "Return
 -------
@@ -2230,15 +2879,15 @@ Description
 -----------
 Tells if a Uncertainty (for length) is recorded.
 ") HasUncertainty;
-		Standard_Boolean HasUncertainty();
+		bool HasUncertainty();
 
 		/****** STEPConstruct_UnitContext::Init ******/
-		/****** md5 signature: f77ccd8d8fd20c20822bd5b2de1d4f8e ******/
+		/****** md5 signature: 74a4ff6bb20cd0e6fda01d3a0f65d434 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol3d: float
+Tol3d: double
 theModel: StepData_StepModel
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
@@ -2250,10 +2899,10 @@ Description
 -----------
 Creates new context (units are MM and radians, uncertainty equal to Tol3d).
 ") Init;
-		void Init(const Standard_Real Tol3d, const opencascade::handle<StepData_StepModel> & theModel, const StepData_Factors & theLocalFactors = StepData_Factors());
+		void Init(const double Tol3d, const opencascade::handle<StepData_StepModel> & theModel, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_UnitContext::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2263,10 +2912,10 @@ Description
 -----------
 Returns True if Init was called successfully.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** STEPConstruct_UnitContext::LengthDone ******/
-		/****** md5 signature: 78dd228dbf5e3c84550b1acffff7bd32 ******/
+		/****** md5 signature: 7d820f9e0c8168d1098db1f322c7c0af ******/
 		%feature("compactdefaultargs") LengthDone;
 		%feature("autodoc", "Return
 -------
@@ -2276,23 +2925,23 @@ Description
 -----------
 Returns true if ComputeFactors has calculated a LengthFactor.
 ") LengthDone;
-		Standard_Boolean LengthDone();
+		bool LengthDone();
 
 		/****** STEPConstruct_UnitContext::LengthFactor ******/
-		/****** md5 signature: 15771254030d5d42fe1035afb35f49f8 ******/
+		/****** md5 signature: 1b284ce586610caeac599057e74cb7ff ******/
 		%feature("compactdefaultargs") LengthFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the lengthFactor.
 ") LengthFactor;
-		Standard_Real LengthFactor();
+		double LengthFactor();
 
 		/****** STEPConstruct_UnitContext::PlaneAngleDone ******/
-		/****** md5 signature: 45cb64bc9ea96042977f266a79a43cf7 ******/
+		/****** md5 signature: 4df44f1d5040fc4b02332d1ac5b38b1f ******/
 		%feature("compactdefaultargs") PlaneAngleDone;
 		%feature("autodoc", "Return
 -------
@@ -2302,23 +2951,23 @@ Description
 -----------
 Returns true if ComputeFactors has calculated a PlaneAngleFactor.
 ") PlaneAngleDone;
-		Standard_Boolean PlaneAngleDone();
+		bool PlaneAngleDone();
 
 		/****** STEPConstruct_UnitContext::PlaneAngleFactor ******/
-		/****** md5 signature: 24a746fdf36cb34234bfa6984c9c2721 ******/
+		/****** md5 signature: 14d51926d2ed0c93fcc15f3cb37b2929 ******/
 		%feature("compactdefaultargs") PlaneAngleFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the planeAngleFactor.
 ") PlaneAngleFactor;
-		Standard_Real PlaneAngleFactor();
+		double PlaneAngleFactor();
 
 		/****** STEPConstruct_UnitContext::SolidAngleDone ******/
-		/****** md5 signature: 713d553b89570e13b2907e214c3badb5 ******/
+		/****** md5 signature: a014b160be2490e3e33a38e6350e1f1e ******/
 		%feature("compactdefaultargs") SolidAngleDone;
 		%feature("autodoc", "Return
 -------
@@ -2328,23 +2977,23 @@ Description
 -----------
 Returns true if ComputeFactors has calculated a SolidAngleFactor.
 ") SolidAngleDone;
-		Standard_Boolean SolidAngleDone();
+		bool SolidAngleDone();
 
 		/****** STEPConstruct_UnitContext::SolidAngleFactor ******/
-		/****** md5 signature: 5c610c278e1133bf63025e97445bcd03 ******/
+		/****** md5 signature: a639790627747b4845cabbff578f7b75 ******/
 		%feature("compactdefaultargs") SolidAngleFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the solidAngleFactor.
 ") SolidAngleFactor;
-		Standard_Real SolidAngleFactor();
+		double SolidAngleFactor();
 
 		/****** STEPConstruct_UnitContext::StatusMessage ******/
-		/****** md5 signature: 33ed50ac872bb5339679b3dae94aff9a ******/
+		/****** md5 signature: 4ceb3c33ff000d9e065b60b49430e050 ******/
 		%feature("compactdefaultargs") StatusMessage;
 		%feature("autodoc", "
 Parameters
@@ -2353,26 +3002,26 @@ status: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns a message for a given status (0 - empty) This message can then be added as warning for transfer.
 ") StatusMessage;
-		Standard_CString StatusMessage(const Standard_Integer status);
+		const char * StatusMessage(const int status);
 
 		/****** STEPConstruct_UnitContext::Uncertainty ******/
-		/****** md5 signature: d91d2a9d8a7c9b921d9f843bf59b3624 ******/
+		/****** md5 signature: d702e6bb08d6244f48efdce2ef18567f ******/
 		%feature("compactdefaultargs") Uncertainty;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Uncertainty value (for length) It has been converted with LengthFactor.
 ") Uncertainty;
-		Standard_Real Uncertainty();
+		double Uncertainty();
 
 		/****** STEPConstruct_UnitContext::Value ******/
 		/****** md5 signature: 9b258d5466cd03ee82c1554d4030973a ******/
@@ -2388,7 +3037,7 @@ Returns context (or Null if not done).
 		opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> Value();
 
 		/****** STEPConstruct_UnitContext::VolumeDone ******/
-		/****** md5 signature: ed45f6bddcef6d7ac1a1f6940fc9c76d ******/
+		/****** md5 signature: b49dec06786f39da056f968a558ac01f ******/
 		%feature("compactdefaultargs") VolumeDone;
 		%feature("autodoc", "Return
 -------
@@ -2398,20 +3047,20 @@ Description
 -----------
 Returns true if volumeFactor is computed.
 ") VolumeDone;
-		Standard_Boolean VolumeDone();
+		bool VolumeDone();
 
 		/****** STEPConstruct_UnitContext::VolumeFactor ******/
-		/****** md5 signature: 27268b8792818ce4ca912befcd45a905 ******/
+		/****** md5 signature: a65ba6f929def57233d9bb466856dd7d ******/
 		%feature("compactdefaultargs") VolumeFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the volumeFactor.
 ") VolumeFactor;
-		Standard_Real VolumeFactor();
+		double VolumeFactor();
 
 };
 
@@ -2459,14 +3108,14 @@ Creates a tool and initializes it.
 		 STEPConstruct_ExternRefs(const opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** STEPConstruct_ExternRefs::AddExternRef ******/
-		/****** md5 signature: 4daa7d7a9c20a39da66c9c4347c646c2 ******/
+		/****** md5 signature: 28d1004edfaf24d071a0a6bd2ca367a4 ******/
 		%feature("compactdefaultargs") AddExternRef;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 PD: StepBasic_ProductDefinition
-format: str
+format: char *
 
 Return
 -------
@@ -2476,7 +3125,7 @@ Description
 -----------
 Create a new external reference with specified attributes attached to a given SDR <format> can be Null string, in that case this information is not written. Else, it can be 'STEP AP214' or 'STEP AP203' Returns index of a new extern ref.
 ") AddExternRef;
-		Standard_Integer AddExternRef(Standard_CString filename, const opencascade::handle<StepBasic_ProductDefinition> & PD, Standard_CString format);
+		int AddExternRef(const char * const filename, const opencascade::handle<StepBasic_ProductDefinition> & PD, const char * const format);
 
 		/****** STEPConstruct_ExternRefs::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2492,7 +3141,7 @@ Clears internal fields (list of defined extern refs).
 		void Clear();
 
 		/****** STEPConstruct_ExternRefs::DocFile ******/
-		/****** md5 signature: 4e5532dc567edd6c5cf39a25cda27d46 ******/
+		/****** md5 signature: f4696915d8752a5b442dae62400686f9 ******/
 		%feature("compactdefaultargs") DocFile;
 		%feature("autodoc", "
 Parameters
@@ -2507,10 +3156,10 @@ Description
 -----------
 Returns DocumentFile to which numth extern reference is associated. Returns Null if cannot be detected.
 ") DocFile;
-		opencascade::handle<StepBasic_DocumentFile> DocFile(const Standard_Integer num);
+		opencascade::handle<StepBasic_DocumentFile> DocFile(const int num);
 
 		/****** STEPConstruct_ExternRefs::FileName ******/
-		/****** md5 signature: 43c1d3f377c3a1849b8dd53db818414e ******/
+		/****** md5 signature: 49bf44b14f847ba89dad4727477b571d ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "
 Parameters
@@ -2519,16 +3168,16 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns filename for numth extern reference Returns Null if FileName is not defined or bad.
 ") FileName;
-		Standard_CString FileName(const Standard_Integer num);
+		const char * FileName(const int num);
 
 		/****** STEPConstruct_ExternRefs::Format ******/
-		/****** md5 signature: 600d3fed43f6e174acc9f0aff53e1d79 ******/
+		/****** md5 signature: bf69ae5b2d1549f3442f5c0bf5f4adeb ******/
 		%feature("compactdefaultargs") Format;
 		%feature("autodoc", "
 Parameters
@@ -2543,7 +3192,7 @@ Description
 -----------
 Returns format identification string for the extern document Returns Null handle if format is not defined.
 ") Format;
-		opencascade::handle<TCollection_HAsciiString> Format(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> Format(const int num);
 
 		/****** STEPConstruct_ExternRefs::GetAP214APD ******/
 		/****** md5 signature: e5d5c23db97ab47e38bfdbb1e8f208df ******/
@@ -2559,7 +3208,7 @@ Returns the ApplicationProtocolDefinition of the PDM schema NOTE: if not defined
 		opencascade::handle<StepBasic_ApplicationProtocolDefinition> GetAP214APD();
 
 		/****** STEPConstruct_ExternRefs::Init ******/
-		/****** md5 signature: a41268d32348bb8b355efce3731d2872 ******/
+		/****** md5 signature: 35c009f0bb66a209b4fd16f98bf3d766 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2574,10 +3223,10 @@ Description
 -----------
 Initializes tool; returns True if succeeded.
 ") Init;
-		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
+		bool Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** STEPConstruct_ExternRefs::LoadExternRefs ******/
-		/****** md5 signature: f4a2bfe61b7f4e24004a6d6eb81cd42f ******/
+		/****** md5 signature: 72c879569bd61b10de5d5f97cdfc452f ******/
 		%feature("compactdefaultargs") LoadExternRefs;
 		%feature("autodoc", "Return
 -------
@@ -2587,10 +3236,10 @@ Description
 -----------
 Searches current STEP model for external references and loads them to the internal data structures NOTE: does not clear data structures before loading.
 ") LoadExternRefs;
-		Standard_Boolean LoadExternRefs();
+		bool LoadExternRefs();
 
 		/****** STEPConstruct_ExternRefs::NbExternRefs ******/
-		/****** md5 signature: 4d108b9b54670b0a78dd4f28fa20e284 ******/
+		/****** md5 signature: 94e7d2d0603889b4436fb69247fd73b9 ******/
 		%feature("compactdefaultargs") NbExternRefs;
 		%feature("autodoc", "Return
 -------
@@ -2600,10 +3249,10 @@ Description
 -----------
 Returns number of defined extern references.
 ") NbExternRefs;
-		Standard_Integer NbExternRefs();
+		int NbExternRefs();
 
 		/****** STEPConstruct_ExternRefs::ProdDef ******/
-		/****** md5 signature: 6a8634b4bdac2f4a979a94ebdda69231 ******/
+		/****** md5 signature: cf1e95e7a266a128cd33540076fe31f3 ******/
 		%feature("compactdefaultargs") ProdDef;
 		%feature("autodoc", "
 Parameters
@@ -2618,7 +3267,7 @@ Description
 -----------
 Returns ProductDefinition to which numth extern reference is associated. Returns Null if cannot be detected or if extern reference is not associated to SDR in a proper way.
 ") ProdDef;
-		opencascade::handle<StepBasic_ProductDefinition> ProdDef(const Standard_Integer num);
+		opencascade::handle<StepBasic_ProductDefinition> ProdDef(const int num);
 
 		/****** STEPConstruct_ExternRefs::SetAP214APD ******/
 		/****** md5 signature: 1abd220d7483a71b39192e4aa4fb285f ******/
@@ -2639,7 +3288,7 @@ Set the ApplicationProtocolDefinition of the PDM schema.
 		void SetAP214APD(const opencascade::handle<StepBasic_ApplicationProtocolDefinition> & APD);
 
 		/****** STEPConstruct_ExternRefs::WriteExternRefs ******/
-		/****** md5 signature: d195629663bea3383eec4f63ca9e8938 ******/
+		/****** md5 signature: a72d6283cd4461c8de3257b09662599b ******/
 		%feature("compactdefaultargs") WriteExternRefs;
 		%feature("autodoc", "
 Parameters
@@ -2654,7 +3303,7 @@ Description
 -----------
 Adds all the currently defined external refs to the model Returns number of written extern refs.
 ") WriteExternRefs;
-		Standard_Integer WriteExternRefs(const Standard_Integer num);
+		int WriteExternRefs(const int num);
 
 		/****** STEPConstruct_ExternRefs::checkAP214Shared ******/
 		/****** md5 signature: 786641e067c12f9f54e3c4ebf017e83e ******/
@@ -2786,7 +3435,7 @@ Clears all defined styles and PSA sequence.
 		void ClearStyles();
 
 		/****** STEPConstruct_Styles::CreateMDGPR ******/
-		/****** md5 signature: e7a829061e38a38ebfd438078ef6d466 ******/
+		/****** md5 signature: 8f36f526da754c94c48f62f98c86695b ******/
 		%feature("compactdefaultargs") CreateMDGPR;
 		%feature("autodoc", "
 Parameters
@@ -2803,10 +3452,10 @@ Description
 -----------
 Create MDGPR, fill it with all the styles previously defined, and add it to the model.
 ") CreateMDGPR;
-		Standard_Boolean CreateMDGPR(const opencascade::handle<StepRepr_RepresentationContext> & Context, opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & MDGPR, opencascade::handle<StepData_StepModel> & theStepModel);
+		bool CreateMDGPR(const opencascade::handle<StepRepr_RepresentationContext> & Context, opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & MDGPR, opencascade::handle<StepData_StepModel> & theStepModel);
 
 		/****** STEPConstruct_Styles::CreateNAUOSRD ******/
-		/****** md5 signature: 2dc1e1e3a3196d80506df8dd27ab2f97 ******/
+		/****** md5 signature: 9efbbbcd43908964d51e3b9945b99ac0 ******/
 		%feature("compactdefaultargs") CreateNAUOSRD;
 		%feature("autodoc", "
 Parameters
@@ -2823,10 +3472,10 @@ Description
 -----------
 Create MDGPR, fill it with all the styles previously defined, and add it to the model IMPORTANT: <initPDS> must be null when use for NAUO colors <initPDS> initialised only for SHUO case.
 ") CreateNAUOSRD;
-		Standard_Boolean CreateNAUOSRD(const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR, const opencascade::handle<StepRepr_ProductDefinitionShape> & initPDS);
+		bool CreateNAUOSRD(const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepShape_ContextDependentShapeRepresentation> & CDSR, const opencascade::handle<StepRepr_ProductDefinitionShape> & initPDS);
 
 		/****** STEPConstruct_Styles::DecodeColor ******/
-		/****** md5 signature: e6ca5c55fd8058d3e8c5437c3a9c90c5 ******/
+		/****** md5 signature: 97998b45f650b9f2b161699cdb9a244c ******/
 		%feature("compactdefaultargs") DecodeColor;
 		%feature("autodoc", "
 Parameters
@@ -2842,7 +3491,7 @@ Description
 -----------
 Decodes STEP color and fills the Quantity_Color. Returns True if OK or False if color is not recognized.
 ") DecodeColor;
-		static Standard_Boolean DecodeColor(const opencascade::handle<StepVisual_Colour> & Colour, Quantity_Color & Col);
+		static bool DecodeColor(const opencascade::handle<StepVisual_Colour> & Colour, Quantity_Color & Col);
 
 		/****** STEPConstruct_Styles::EncodeColor ******/
 		/****** md5 signature: b8f7fe0b0b026d21e660b266032b3b13 ******/
@@ -2863,14 +3512,14 @@ Create STEP color entity by given Quantity_Color The analysis is performed for w
 		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col);
 
 		/****** STEPConstruct_Styles::EncodeColor ******/
-		/****** md5 signature: 5512546316147cd700d4eaee0951e2e8 ******/
+		/****** md5 signature: 16accf1dd0493d29da7a3a0676506c67 ******/
 		%feature("compactdefaultargs") EncodeColor;
 		%feature("autodoc", "
 Parameters
 ----------
 Col: Quantity_Color
-DPDCs: STEPConstruct_DataMapOfAsciiStringTransient
-ColRGBs: STEPConstruct_DataMapOfPointTransient
+DPDCs: Standard_Transient
+ColRGBs: Standard_Transient
 
 Return
 -------
@@ -2880,7 +3529,7 @@ Description
 -----------
 Create STEP color entity by given Quantity_Color The analysis is performed for whether the color corresponds to one of standard colors predefined in STEP. In that case, PredefinedColour entity is created instead of RGBColour.
 ") EncodeColor;
-		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col, STEPConstruct_DataMapOfAsciiStringTransient & DPDCs, STEPConstruct_DataMapOfPointTransient & ColRGBs);
+		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col, NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & DPDCs, NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient> > & ColRGBs);
 
 		/****** STEPConstruct_Styles::FindContext ******/
 		/****** md5 signature: 686534002fbf51b23e0002361011ca16 ******/
@@ -2920,7 +3569,7 @@ Returns a PresentationStyleAssignment entity which defines surface and curve col
 		opencascade::handle<StepVisual_PresentationStyleAssignment> GetColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & Col);
 
 		/****** STEPConstruct_Styles::GetColors ******/
-		/****** md5 signature: 1f0929b2e170b83d93ab61387da54beb ******/
+		/****** md5 signature: e51c06e51944b7488f4eba1d36379d44 ******/
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "
 Parameters
@@ -2929,21 +3578,20 @@ theStyle: StepVisual_StyledItem
 theSurfaceColour: StepVisual_Colour
 theBoundaryColour: StepVisual_Colour
 theCurveColour: StepVisual_Colour
-theRenderColour: StepVisual_Colour
+theRenderingProps: STEPConstruct_RenderingProperties
 
 Return
 -------
-theRenderTransparency: float
 theIsComponent: bool
 
 Description
 -----------
 Extract color definitions from the style entity For each type of color supported, result can be either NULL if it is not defined by that style, or last definition (if they are 1 or more).
 ") GetColors;
-		Standard_Boolean GetColors(const opencascade::handle<StepVisual_StyledItem> & theStyle, opencascade::handle<StepVisual_Colour> & theSurfaceColour, opencascade::handle<StepVisual_Colour> & theBoundaryColour, opencascade::handle<StepVisual_Colour> & theCurveColour, opencascade::handle<StepVisual_Colour> & theRenderColour, Standard_Real &OutValue, Standard_Boolean &OutValue);
+		bool GetColors(const opencascade::handle<StepVisual_StyledItem> & theStyle, opencascade::handle<StepVisual_Colour> & theSurfaceColour, opencascade::handle<StepVisual_Colour> & theBoundaryColour, opencascade::handle<StepVisual_Colour> & theCurveColour, STEPConstruct_RenderingProperties & theRenderingProps, Standard_Boolean &OutValue);
 
 		/****** STEPConstruct_Styles::Init ******/
-		/****** md5 signature: a41268d32348bb8b355efce3731d2872 ******/
+		/****** md5 signature: 35c009f0bb66a209b4fd16f98bf3d766 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2958,15 +3606,15 @@ Description
 -----------
 Initializes tool; returns True if succeeded.
 ") Init;
-		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
+		bool Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** STEPConstruct_Styles::LoadInvisStyles ******/
-		/****** md5 signature: 0e85b82c907be2deec7d1178e9b59af4 ******/
+		/****** md5 signature: c63afb1a8d7d92c7809aedc0995c0205 ******/
 		%feature("compactdefaultargs") LoadInvisStyles;
 		%feature("autodoc", "
 Parameters
 ----------
-InvSyles: TColStd_HSequenceOfTransient
+InvSyles: NCollection_HSequence<
 
 Return
 -------
@@ -2976,10 +3624,10 @@ Description
 -----------
 Searches the STEP model for the INISIBILITY entities (which bring styles) and fills out sequence of styles.
 ") LoadInvisStyles;
-		Standard_Boolean LoadInvisStyles(opencascade::handle<TColStd_HSequenceOfTransient> & InvSyles);
+		bool LoadInvisStyles(opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & InvSyles);
 
 		/****** STEPConstruct_Styles::LoadStyles ******/
-		/****** md5 signature: 7a3a805ebf468c04036b606dec93b856 ******/
+		/****** md5 signature: a80e408a6ed4d27089755a928642594d ******/
 		%feature("compactdefaultargs") LoadStyles;
 		%feature("autodoc", "Return
 -------
@@ -2989,10 +3637,10 @@ Description
 -----------
 Searches the STEP model for the MDGPR or DM entities (which bring styles) and fills sequence of styles.
 ") LoadStyles;
-		Standard_Boolean LoadStyles();
+		bool LoadStyles();
 
 		/****** STEPConstruct_Styles::MakeColorPSA ******/
-		/****** md5 signature: 5617667584c537d5ebe338c07636b9e9 ******/
+		/****** md5 signature: 574af768f2269da28e867c3464c9d67a ******/
 		%feature("compactdefaultargs") MakeColorPSA;
 		%feature("autodoc", "
 Parameters
@@ -3000,9 +3648,8 @@ Parameters
 item: StepRepr_RepresentationItem
 SurfCol: StepVisual_Colour
 CurveCol: StepVisual_Colour
-RenderCol: StepVisual_Colour
-RenderTransp: float
-isForNAUO: bool (optional, default to Standard_False)
+theRenderingProps: STEPConstruct_RenderingProperties
+isForNAUO: bool (optional, default to false)
 
 Return
 -------
@@ -3012,10 +3659,10 @@ Description
 -----------
 Create a PresentationStyleAssignment entity which defines two colors (for filling surfaces and curves) if isForNAUO true then returns PresentationStyleByContext.
 ") MakeColorPSA;
-		opencascade::handle<StepVisual_PresentationStyleAssignment> MakeColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & SurfCol, const opencascade::handle<StepVisual_Colour> & CurveCol, const opencascade::handle<StepVisual_Colour> & RenderCol, const Standard_Real RenderTransp, const Standard_Boolean isForNAUO = Standard_False);
+		opencascade::handle<StepVisual_PresentationStyleAssignment> MakeColorPSA(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepVisual_Colour> & SurfCol, const opencascade::handle<StepVisual_Colour> & CurveCol, const STEPConstruct_RenderingProperties & theRenderingProps, const bool isForNAUO = false);
 
 		/****** STEPConstruct_Styles::NbRootStyles ******/
-		/****** md5 signature: 4bb6a5a6f49e5abb7085f5ef57337a5a ******/
+		/****** md5 signature: 8aa0ad0751e38a089295da1799371f14 ******/
 		%feature("compactdefaultargs") NbRootStyles;
 		%feature("autodoc", "Return
 -------
@@ -3025,10 +3672,10 @@ Description
 -----------
 Returns number of override styles.
 ") NbRootStyles;
-		Standard_Integer NbRootStyles();
+		int NbRootStyles();
 
 		/****** STEPConstruct_Styles::NbStyles ******/
-		/****** md5 signature: 9f5fbd515247307ce70e63c6f585ddb7 ******/
+		/****** md5 signature: 97420cad9904f1e553d5bec514daf50b ******/
 		%feature("compactdefaultargs") NbStyles;
 		%feature("autodoc", "Return
 -------
@@ -3038,10 +3685,10 @@ Description
 -----------
 Returns number of defined styles.
 ") NbStyles;
-		Standard_Integer NbStyles();
+		int NbStyles();
 
 		/****** STEPConstruct_Styles::RootStyle ******/
-		/****** md5 signature: 97e67ad6592e4e36a6444e18652921fc ******/
+		/****** md5 signature: c48d3ae4fad9b9154a45367f53a20c99 ******/
 		%feature("compactdefaultargs") RootStyle;
 		%feature("autodoc", "
 Parameters
@@ -3056,10 +3703,10 @@ Description
 -----------
 Returns override style with given index.
 ") RootStyle;
-		opencascade::handle<StepVisual_StyledItem> RootStyle(const Standard_Integer i);
+		opencascade::handle<StepVisual_StyledItem> RootStyle(const int i);
 
 		/****** STEPConstruct_Styles::Style ******/
-		/****** md5 signature: e152f39ac13e328dca6d350a6f881da8 ******/
+		/****** md5 signature: 64d825625ce108e29fcadd24fbb4ad28 ******/
 		%feature("compactdefaultargs") Style;
 		%feature("autodoc", "
 Parameters
@@ -3074,7 +3721,7 @@ Description
 -----------
 Returns style with given index.
 ") Style;
-		opencascade::handle<StepVisual_StyledItem> Style(const Standard_Integer i);
+		opencascade::handle<StepVisual_StyledItem> Style(const int i);
 
 };
 
@@ -3122,13 +3769,13 @@ Creates a tool and loads it with worksession.
 		 STEPConstruct_ValidationProps(const opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** STEPConstruct_ValidationProps::AddArea ******/
-		/****** md5 signature: e2877fb15a0d3a6867b2e499eea4fb20 ******/
+		/****** md5 signature: 7900720216974fcdaf7a59628c93df50 ******/
 		%feature("compactdefaultargs") AddArea;
 		%feature("autodoc", "
 Parameters
 ----------
 Shape: TopoDS_Shape
-Area: float
+Area: double
 
 Return
 -------
@@ -3138,17 +3785,17 @@ Description
 -----------
 Adds surface area property for given shape (already mapped). Returns True if success, False in case of fail.
 ") AddArea;
-		Standard_Boolean AddArea(const TopoDS_Shape & Shape, const Standard_Real Area);
+		bool AddArea(const TopoDS_Shape & Shape, const double Area);
 
 		/****** STEPConstruct_ValidationProps::AddCentroid ******/
-		/****** md5 signature: 4119e375beefd95b330a2b11126ae0fa ******/
+		/****** md5 signature: c114fb9316c08ede15592ba5547dd021 ******/
 		%feature("compactdefaultargs") AddCentroid;
 		%feature("autodoc", "
 Parameters
 ----------
 Shape: TopoDS_Shape
 Pnt: gp_Pnt
-instance: bool (optional, default to Standard_False)
+instance: bool (optional, default to false)
 
 Return
 -------
@@ -3158,18 +3805,18 @@ Description
 -----------
 Adds centroid property for given shape (already mapped). Returns True if success, False in case of fail If instance is True, then centroid is assigned to an instance of component in assembly.
 ") AddCentroid;
-		Standard_Boolean AddCentroid(const TopoDS_Shape & Shape, const gp_Pnt & Pnt, const Standard_Boolean instance = Standard_False);
+		bool AddCentroid(const TopoDS_Shape & Shape, const gp_Pnt & Pnt, const bool instance = false);
 
 		/****** STEPConstruct_ValidationProps::AddProp ******/
-		/****** md5 signature: 5b991713bf2f3c13e85d72348d22e507 ******/
+		/****** md5 signature: 817e5dc04dbca9a07613fbaa5eaab0eb ******/
 		%feature("compactdefaultargs") AddProp;
 		%feature("autodoc", "
 Parameters
 ----------
 Shape: TopoDS_Shape
 Prop: StepRepr_RepresentationItem
-Descr: str
-instance: bool (optional, default to Standard_False)
+Descr: char *
+instance: bool (optional, default to false)
 
 Return
 -------
@@ -3179,10 +3826,10 @@ Description
 -----------
 General method for adding (writing) a validation property for shape which should be already mapped on writing itself. It uses FindTarget() to find target STEP entity resulting from given shape, and associated context Returns True if success, False in case of fail.
 ") AddProp;
-		Standard_Boolean AddProp(const TopoDS_Shape & Shape, const opencascade::handle<StepRepr_RepresentationItem> & Prop, Standard_CString Descr, const Standard_Boolean instance = Standard_False);
+		bool AddProp(const TopoDS_Shape & Shape, const opencascade::handle<StepRepr_RepresentationItem> & Prop, const char * const Descr, const bool instance = false);
 
 		/****** STEPConstruct_ValidationProps::AddProp ******/
-		/****** md5 signature: f72fb71cc97ec8abf9b1b1524386d515 ******/
+		/****** md5 signature: 3de9a7a80709048b11d1c420a6866d2b ******/
 		%feature("compactdefaultargs") AddProp;
 		%feature("autodoc", "
 Parameters
@@ -3190,7 +3837,7 @@ Parameters
 target: StepRepr_CharacterizedDefinition
 Context: StepRepr_RepresentationContext
 Prop: StepRepr_RepresentationItem
-Descr: str
+Descr: char *
 
 Return
 -------
@@ -3200,16 +3847,16 @@ Description
 -----------
 General method for adding (writing) a validation property for shape which should be already mapped on writing itself. It takes target and Context entities which correspond to shape Returns True if success, False in case of fail.
 ") AddProp;
-		Standard_Boolean AddProp(const StepRepr_CharacterizedDefinition & target, const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepRepr_RepresentationItem> & Prop, Standard_CString Descr);
+		bool AddProp(const StepRepr_CharacterizedDefinition & target, const opencascade::handle<StepRepr_RepresentationContext> & Context, const opencascade::handle<StepRepr_RepresentationItem> & Prop, const char * const Descr);
 
 		/****** STEPConstruct_ValidationProps::AddVolume ******/
-		/****** md5 signature: ce494cdd22f4586fedbbc19b590238d1 ******/
+		/****** md5 signature: b1a36c1e80ef7daa3b85cf031da3a5c1 ******/
 		%feature("compactdefaultargs") AddVolume;
 		%feature("autodoc", "
 Parameters
 ----------
 Shape: TopoDS_Shape
-Vol: float
+Vol: double
 
 Return
 -------
@@ -3219,10 +3866,10 @@ Description
 -----------
 Adds volume property for given shape (already mapped). Returns True if success, False in case of fail.
 ") AddVolume;
-		Standard_Boolean AddVolume(const TopoDS_Shape & Shape, const Standard_Real Vol);
+		bool AddVolume(const TopoDS_Shape & Shape, const double Vol);
 
 		/****** STEPConstruct_ValidationProps::FindTarget ******/
-		/****** md5 signature: 7d2e21f11abb38ad6cd418c4b0404080 ******/
+		/****** md5 signature: ac959aa52db64b25afeaba128d407fc9 ******/
 		%feature("compactdefaultargs") FindTarget;
 		%feature("autodoc", "
 Parameters
@@ -3230,7 +3877,7 @@ Parameters
 S: TopoDS_Shape
 target: StepRepr_CharacterizedDefinition
 Context: StepRepr_RepresentationContext
-instance: bool (optional, default to Standard_False)
+instance: bool (optional, default to false)
 
 Return
 -------
@@ -3240,7 +3887,7 @@ Description
 -----------
 Finds target STEP entity to which validation props should be assigned, and corresponding context, starting from shape Returns True if success, False in case of fail.
 ") FindTarget;
-		Standard_Boolean FindTarget(const TopoDS_Shape & S, StepRepr_CharacterizedDefinition & target, opencascade::handle<StepRepr_RepresentationContext> & Context, const Standard_Boolean instance = Standard_False);
+		bool FindTarget(const TopoDS_Shape & S, StepRepr_CharacterizedDefinition & target, opencascade::handle<StepRepr_RepresentationContext> & Context, const bool instance = false);
 
 		/****** STEPConstruct_ValidationProps::GetPropNAUO ******/
 		/****** md5 signature: 00f2ec9fa6dbab21c65468db734371e7 ******/
@@ -3279,7 +3926,7 @@ Returns SDR associated with given PpD or NULL if not found (when, try GetPropCDS
 		opencascade::handle<StepBasic_ProductDefinition> GetPropPD(const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
 		/****** STEPConstruct_ValidationProps::GetPropPnt ******/
-		/****** md5 signature: 2c0297d70aecdf76b1dde1e052f18407 ******/
+		/****** md5 signature: 1e24073b80ae1be966ef4e36a3d1a1ae ******/
 		%feature("compactdefaultargs") GetPropPnt;
 		%feature("autodoc", "
 Parameters
@@ -3297,10 +3944,10 @@ Description
 -----------
 Returns value of Centroid property (or False if it is not).
 ") GetPropPnt;
-		Standard_Boolean GetPropPnt(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepRepr_RepresentationContext> & Context, gp_Pnt & Pnt, const StepData_Factors & theLocalFactors = StepData_Factors());
+		bool GetPropPnt(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepRepr_RepresentationContext> & Context, gp_Pnt & Pnt, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_ValidationProps::GetPropReal ******/
-		/****** md5 signature: ceacc2ead40bd4542466c7f10e78e8fd ******/
+		/****** md5 signature: d13aaf5a27d36f06dc615a919ec7f5ff ******/
 		%feature("compactdefaultargs") GetPropReal;
 		%feature("autodoc", "
 Parameters
@@ -3310,14 +3957,14 @@ theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
-Val: float
+Val: double
 isArea: bool
 
 Description
 -----------
 Returns value of Real-Valued property (Area or Volume) If Property is neither Area nor Volume, returns False Else returns True and isArea indicates whether property is area or volume.
 ") GetPropReal;
-		Standard_Boolean GetPropReal(const opencascade::handle<StepRepr_RepresentationItem> & item, Standard_Real &OutValue, Standard_Boolean &OutValue, const StepData_Factors & theLocalFactors = StepData_Factors());
+		bool GetPropReal(const opencascade::handle<StepRepr_RepresentationItem> & item, Standard_Real &OutValue, Standard_Boolean &OutValue, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** STEPConstruct_ValidationProps::GetPropShape ******/
 		/****** md5 signature: 16026c6cc5e907b0af72d056c5f3be1c ******/
@@ -3356,7 +4003,7 @@ Returns Shape associated with given PpD or Null Shape if not found.
 		TopoDS_Shape GetPropShape(const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
 		/****** STEPConstruct_ValidationProps::Init ******/
-		/****** md5 signature: a41268d32348bb8b355efce3731d2872 ******/
+		/****** md5 signature: 35c009f0bb66a209b4fd16f98bf3d766 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3371,15 +4018,15 @@ Description
 -----------
 Load worksession; returns True if succeeded.
 ") Init;
-		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
+		bool Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** STEPConstruct_ValidationProps::LoadProps ******/
-		/****** md5 signature: e20b1850e2c4978e8838902ce428c954 ******/
+		/****** md5 signature: 8894156f36ee5ba14c5eaac7ca325f0c ******/
 		%feature("compactdefaultargs") LoadProps;
 		%feature("autodoc", "
 Parameters
 ----------
-seq: TColStd_SequenceOfTransient
+seq: Standard_Transient
 
 Return
 -------
@@ -3389,7 +4036,7 @@ Description
 -----------
 Searches for entities of the type PropertyDefinitionRepresentation in the model and fills the sequence by them.
 ") LoadProps;
-		Standard_Boolean LoadProps(TColStd_SequenceOfTransient & seq);
+		bool LoadProps(NCollection_Sequence<opencascade::handle<Standard_Transient> > & seq);
 
 		/****** STEPConstruct_ValidationProps::SetAssemblyShape ******/
 		/****** md5 signature: 2bea02eb53d21b8bd84a59fa21801c31 ******/

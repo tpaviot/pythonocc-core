@@ -23,7 +23,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopLoc_IndexedMapOfLocation.hxx>
 #include<TopLoc_ItemLocation.hxx>
 #include<TopLoc_Location.hxx>
-#include<TopLoc_MapIteratorOfMapOfLocation.hxx>
 #include<TopLoc_MapOfLocation.hxx>
 #include<TopLoc_SListNodeOfItemLocation.hxx>
 #include<TopLoc_SListOfItemLocation.hxx>

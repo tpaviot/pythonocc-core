@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_boptools.html"
 #include<IntTools_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -78,7 +77,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_boptools.html"
 %import IntTools.i
 %import gp.i
 %import TopAbs.i
-%import TopTools.i
 %import Message.i
 %import Geom.i
 %import Geom2d.i
@@ -101,19 +99,19 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape>::Items;
+%ignore NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape>::KeyValues;
+%ignore NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape>::IndexedItems;
+%ignore NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape>::Contained;
 %template(BOPTools_IndexedDataMapOfSetShape) NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape>;
+%template(BOPTools_ListIteratorOfListOfConnexityBlock) NCollection_TListIterator<BOPTools_ConnexityBlock>;
+%template(BOPTools_ListIteratorOfListOfCoupleOfShape) NCollection_TListIterator<BOPTools_CoupleOfShape>;
 %template(BOPTools_ListOfConnexityBlock) NCollection_List<BOPTools_ConnexityBlock>;
 
 %extend NCollection_List<BOPTools_ConnexityBlock> {
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = BOPTools_ListIteratorOfListOfConnexityBlock(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(BOPTools_ListOfCoupleOfShape) NCollection_List<BOPTools_CoupleOfShape>;
@@ -122,12 +120,6 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = BOPTools_ListIteratorOfListOfCoupleOfShape(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(BOPTools_MapOfSet) NCollection_Map<BOPTools_Set>;
@@ -135,17 +127,17 @@ from OCC.Core.Exception import *
 
 /* typedefs */
 typedef BOPTools_PairSelector<2> BOPTools_Box2dPairSelector;
-typedef BOPTools_BoxSet<Standard_Real, 2, Standard_Integer> BOPTools_Box2dTree;
+typedef BOPTools_BoxSet<double, 2, int> BOPTools_Box2dTree;
 typedef BOPTools_BoxSelector<2> BOPTools_Box2dTreeSelector;
 typedef BOPTools_PairSelector<3> BOPTools_BoxPairSelector;
-typedef BOPTools_BoxSet<Standard_Real, 3, Standard_Integer> BOPTools_BoxTree;
+typedef BOPTools_BoxSet<double, 3, int> BOPTools_BoxTree;
 typedef BOPTools_BoxSelector<3> BOPTools_BoxTreeSelector;
 typedef NCollection_IndexedDataMap<BOPTools_Set, TopoDS_Shape> BOPTools_IndexedDataMapOfSetShape;
-typedef BOPTools_ListOfConnexityBlock::Iterator BOPTools_ListIteratorOfListOfConnexityBlock;
-typedef BOPTools_ListOfCoupleOfShape::Iterator BOPTools_ListIteratorOfListOfCoupleOfShape;
+typedef NCollection_List<BOPTools_ConnexityBlock>::Iterator BOPTools_ListIteratorOfListOfConnexityBlock;
+typedef NCollection_List<BOPTools_CoupleOfShape>::Iterator BOPTools_ListIteratorOfListOfCoupleOfShape;
 typedef NCollection_List<BOPTools_ConnexityBlock> BOPTools_ListOfConnexityBlock;
 typedef NCollection_List<BOPTools_CoupleOfShape> BOPTools_ListOfCoupleOfShape;
-typedef BOPTools_MapOfSet::Iterator BOPTools_MapIteratorOfMapOfSet;
+typedef NCollection_Map<BOPTools_Set>::Iterator BOPTools_MapIteratorOfMapOfSet;
 typedef NCollection_Map<BOPTools_Set> BOPTools_MapOfSet;
 /* end typedefs declaration */
 
@@ -155,7 +147,7 @@ typedef NCollection_Map<BOPTools_Set> BOPTools_MapOfSet;
 class BOPTools_AlgoTools {
 	public:
 		/****** BOPTools_AlgoTools::AreFacesSameDomain ******/
-		/****** md5 signature: f19a161cde21c66b6d9731224fae68c3 ******/
+		/****** md5 signature: deb5c9115cdb4174a0d60bd6ee692c2d ******/
 		%feature("compactdefaultargs") AreFacesSameDomain;
 		%feature("autodoc", "
 Parameters
@@ -163,7 +155,7 @@ Parameters
 theF1: TopoDS_Face
 theF2: TopoDS_Face
 theContext: IntTools_Context
-theFuzz: float (optional, default to Precision::Confusion())
+theFuzz: double (optional, default to Precision::Confusion())
 
 Return
 -------
@@ -173,17 +165,17 @@ Description
 -----------
 Checking if the faces are coinciding Checks if the given faces are same-domain, i.e. coincide.
 ") AreFacesSameDomain;
-		static Standard_Boolean AreFacesSameDomain(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext, const Standard_Real theFuzz = Precision::Confusion());
+		static bool AreFacesSameDomain(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext, const double theFuzz = Precision::Confusion());
 
 		/****** BOPTools_AlgoTools::ComputeState ******/
-		/****** md5 signature: e1da6e0dddf6168f52e3a834aad1830a ******/
+		/****** md5 signature: 84cd93bbe82ee56d37a7eacbb24f1da0 ******/
 		%feature("compactdefaultargs") ComputeState;
 		%feature("autodoc", "
 Parameters
 ----------
 thePoint: gp_Pnt
 theSolid: TopoDS_Solid
-theTol: float
+theTol: double
 theContext: IntTools_Context
 
 Return
@@ -194,17 +186,17 @@ Description
 -----------
 Computes the 3-D state of the point thePoint toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
-		static TopAbs_State ComputeState(const gp_Pnt & thePoint, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
+		static TopAbs_State ComputeState(const gp_Pnt & thePoint, const TopoDS_Solid & theSolid, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::ComputeState ******/
-		/****** md5 signature: 0e8d68857685f81b632e860a849d408b ******/
+		/****** md5 signature: 0c42dfe1e5e1e51a007bdacced725b7f ******/
 		%feature("compactdefaultargs") ComputeState;
 		%feature("autodoc", "
 Parameters
 ----------
 theVertex: TopoDS_Vertex
 theSolid: TopoDS_Solid
-theTol: float
+theTol: double
 theContext: IntTools_Context
 
 Return
@@ -215,17 +207,17 @@ Description
 -----------
 Computes the 3-D state of the vertex theVertex toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
-		static TopAbs_State ComputeState(const TopoDS_Vertex & theVertex, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
+		static TopAbs_State ComputeState(const TopoDS_Vertex & theVertex, const TopoDS_Solid & theSolid, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::ComputeState ******/
-		/****** md5 signature: 07abb3cbea99ca44435f7dfed83dfdd6 ******/
+		/****** md5 signature: 87dc3798da1fddad269eff75271d8d70 ******/
 		%feature("compactdefaultargs") ComputeState;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
 theSolid: TopoDS_Solid
-theTol: float
+theTol: double
 theContext: IntTools_Context
 
 Return
@@ -236,18 +228,18 @@ Description
 -----------
 Computes the 3-D state of the edge theEdge toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
-		static TopAbs_State ComputeState(const TopoDS_Edge & theEdge, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
+		static TopAbs_State ComputeState(const TopoDS_Edge & theEdge, const TopoDS_Solid & theSolid, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::ComputeState ******/
-		/****** md5 signature: 613ab8d336b931c1067e3f19202d5361 ******/
+		/****** md5 signature: 945d86e76613143dfbb8ea8af11807d9 ******/
 		%feature("compactdefaultargs") ComputeState;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
 theSolid: TopoDS_Solid
-theTol: float
-theBounds: TopTools_IndexedMapOfShape
+theTol: double
+theBounds: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 theContext: IntTools_Context
 
 Return
@@ -258,17 +250,17 @@ Description
 -----------
 Computes the 3-D state of the face theFace toward solid theSolid. theTol - value of precision of computation theBounds - set of edges of <theSolid> to avoid theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
-		static TopAbs_State ComputeState(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, const Standard_Real theTol, const TopTools_IndexedMapOfShape & theBounds, const opencascade::handle<IntTools_Context> & theContext);
+		static TopAbs_State ComputeState(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, const double theTol, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theBounds, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::ComputeStateByOnePoint ******/
-		/****** md5 signature: b025f56a823a8059eb68e2b7f182fd84 ******/
+		/****** md5 signature: 13df6befa7c129923bc6cc44c36ca6ff ******/
 		%feature("compactdefaultargs") ComputeStateByOnePoint;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theSolid: TopoDS_Solid
-theTol: float
+theTol: double
 theContext: IntTools_Context
 
 Return
@@ -279,10 +271,10 @@ Description
 -----------
 Computes the 3-D state of the shape theShape toward solid theSolid. theTol - value of precision of computation theContext- cached geometrical tools Returns 3-D state.
 ") ComputeStateByOnePoint;
-		static TopAbs_State ComputeStateByOnePoint(const TopoDS_Shape & theShape, const TopoDS_Solid & theSolid, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
+		static TopAbs_State ComputeStateByOnePoint(const TopoDS_Shape & theShape, const TopoDS_Solid & theSolid, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::ComputeTolerance ******/
-		/****** md5 signature: 4fdfb1ebaaf4b76d31630b511de1fb0d ******/
+		/****** md5 signature: 90e54c05bb492655283c93bc1e65e968 ******/
 		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "
 Parameters
@@ -292,24 +284,24 @@ theEdge: TopoDS_Edge
 
 Return
 -------
-theMaxDist: float
-theMaxPar: float
+theMaxDist: double
+theMaxPar: double
 
 Description
 -----------
 Computes the necessary value of the tolerance for the edge.
 ") ComputeTolerance;
-		static Standard_Boolean ComputeTolerance(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
+		static bool ComputeTolerance(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BOPTools_AlgoTools::ComputeVV ******/
-		/****** md5 signature: ce3c2889c3813a71551b7079a9adab2b ******/
+		/****** md5 signature: 301e84b9dda94f74034a475efe7b7e67 ******/
 		%feature("compactdefaultargs") ComputeVV;
 		%feature("autodoc", "
 Parameters
 ----------
 theV: TopoDS_Vertex
 theP: gp_Pnt
-theTolP: float
+theTolP: double
 
 Return
 -------
@@ -319,17 +311,17 @@ Description
 -----------
 Intersects the vertex <theV1> with the point <theP> with tolerance <theTolP>. Returns the error status: - 0 - no error, meaning that the vertex intersects the point; - 1 - the distance between vertex and point is grater than the sum of tolerances.
 ") ComputeVV;
-		static Standard_Integer ComputeVV(const TopoDS_Vertex & theV, const gp_Pnt & theP, const Standard_Real theTolP);
+		static int ComputeVV(const TopoDS_Vertex & theV, const gp_Pnt & theP, const double theTolP);
 
 		/****** BOPTools_AlgoTools::ComputeVV ******/
-		/****** md5 signature: 1152c272803dc704f9b84852434b26e2 ******/
+		/****** md5 signature: 160fd121c9b5d32c4f08293e16df1346 ******/
 		%feature("compactdefaultargs") ComputeVV;
 		%feature("autodoc", "
 Parameters
 ----------
 theV1: TopoDS_Vertex
 theV2: TopoDS_Vertex
-theFuzz: float (optional, default to Precision::Confusion())
+theFuzz: double (optional, default to Precision::Confusion())
 
 Return
 -------
@@ -339,7 +331,7 @@ Description
 -----------
 Intersects the given vertices with given fuzzy value. Returns the error status: - 0 - no error, meaning that the vertices interferes with given tolerance; - 1 - the distance between vertices is grater than the sum of their tolerances.
 ") ComputeVV;
-		static Standard_Integer ComputeVV(const TopoDS_Vertex & theV1, const TopoDS_Vertex & theV2, const Standard_Real theFuzz = Precision::Confusion());
+		static int ComputeVV(const TopoDS_Vertex & theV1, const TopoDS_Vertex & theV2, const double theFuzz = Precision::Confusion());
 
 		/****** BOPTools_AlgoTools::CopyEdge ******/
 		/****** md5 signature: cb546e2ef298c5840b3996d97aa2246f ******/
@@ -360,15 +352,15 @@ Makes a copy of <theEdge> with vertices.
 		static TopoDS_Edge CopyEdge(const TopoDS_Edge & theEdge);
 
 		/****** BOPTools_AlgoTools::CorrectCurveOnSurface ******/
-		/****** md5 signature: 10e6eb9f4a96224371686f6c20ae90c0 ******/
+		/****** md5 signature: a4245c2ae7e703b408e04d92a41018bc ******/
 		%feature("compactdefaultargs") CorrectCurveOnSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: TopTools_IndexedMapOfShape
-theTolMax: float (optional, default to 0.0001)
-theRunParallel: bool (optional, default to Standard_False)
+theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theTolMax: double (optional, default to 0.0001)
+theRunParallel: bool (optional, default to false)
 
 Return
 -------
@@ -378,18 +370,18 @@ Description
 -----------
 Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_InvalidCurveOnSurface.
 ") CorrectCurveOnSurface;
-		static void CorrectCurveOnSurface(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
+		static void CorrectCurveOnSurface(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::CorrectPointOnCurve ******/
-		/****** md5 signature: dd25a290a42192e5b7e5e25d15a694ee ******/
+		/****** md5 signature: cdc9ba82b5a03fe4c8e422ab3a97a22f ******/
 		%feature("compactdefaultargs") CorrectPointOnCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: TopTools_IndexedMapOfShape
-theTolMax: float (optional, default to 0.0001)
-theRunParallel: bool (optional, default to Standard_False)
+theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theTolMax: double (optional, default to 0.0001)
+theRunParallel: bool (optional, default to false)
 
 Return
 -------
@@ -399,7 +391,7 @@ Description
 -----------
 Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_InvalidPointOnCurve.
 ") CorrectPointOnCurve;
-		static void CorrectPointOnCurve(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
+		static void CorrectPointOnCurve(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::CorrectRange ******/
 		/****** md5 signature: 1d43794148dcee778ea6198feb9555eb ******/
@@ -444,14 +436,14 @@ Correct shrunk range <aSR> taking into account 3D-curve resolution and correspon
 		static void CorrectRange(const TopoDS_Edge & aE, const TopoDS_Face & aF, const IntTools_Range & aSR, IntTools_Range & aNewSR);
 
 		/****** BOPTools_AlgoTools::CorrectShapeTolerances ******/
-		/****** md5 signature: 779ed39723dda01baad62e4986778cba ******/
+		/****** md5 signature: d2a0a1aebd4c3f19560656c0642b61bf ******/
 		%feature("compactdefaultargs") CorrectShapeTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: TopTools_IndexedMapOfShape
-theRunParallel: bool (optional, default to Standard_False)
+theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theRunParallel: bool (optional, default to false)
 
 Return
 -------
@@ -461,18 +453,18 @@ Description
 -----------
 Corrects tolerance values of the sub-shapes of the shape <theS> if needed.
 ") CorrectShapeTolerances;
-		static void CorrectShapeTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Boolean theRunParallel = Standard_False);
+		static void CorrectShapeTolerances(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::CorrectTolerances ******/
-		/****** md5 signature: 2fa2989532a10025b0282c9f0792a848 ******/
+		/****** md5 signature: 52d517e632140794f680e122c6617d8f ******/
 		%feature("compactdefaultargs") CorrectTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: TopTools_IndexedMapOfShape
-theTolMax: float (optional, default to 0.0001)
-theRunParallel: bool (optional, default to Standard_False)
+theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theTolMax: double (optional, default to 0.0001)
+theRunParallel: bool (optional, default to false)
 
 Return
 -------
@@ -482,23 +474,23 @@ Description
 -----------
 Provides valid values of tolerances for the shape <theS> <theTolMax> is max value of the tolerance that can be accepted for correction. If real value of the tolerance will be greater than <aTolMax>, the correction does not perform.
 ") CorrectTolerances;
-		static void CorrectTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const Standard_Real theTolMax = 0.0001, const Standard_Boolean theRunParallel = Standard_False);
+		static void CorrectTolerances(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::DTolerance ******/
-		/****** md5 signature: 075ca2e9d4910a8f1018c8adbac7e64d ******/
+		/****** md5 signature: 7b76ced701ea366f39cacbed1635644c ******/
 		%feature("compactdefaultargs") DTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Additional tolerance (delta tolerance) is used in Boolean Operations to ensure that the tolerance of new/old entities obtained by intersection of two shapes is slightly bigger than the actual distances to these shapes. It helps to avoid numerical instability which may occur when comparing distances and tolerances.
 ") DTolerance;
-		static Standard_Real DTolerance();
+		static double DTolerance();
 
 		/****** BOPTools_AlgoTools::Dimension ******/
-		/****** md5 signature: 348038e7dc0c04e091d0a280a71bd60d ******/
+		/****** md5 signature: 8c2f222ed5c0a5e8afd84e722af38b46 ******/
 		%feature("compactdefaultargs") Dimension;
 		%feature("autodoc", "
 Parameters
@@ -513,10 +505,10 @@ Description
 -----------
 Returns dimension of the shape <theS>. If the shape contains elements of different dimension, -1 is returned.
 ") Dimension;
-		static Standard_Integer Dimension(const TopoDS_Shape & theS);
+		static int Dimension(const TopoDS_Shape & theS);
 
 		/****** BOPTools_AlgoTools::Dimensions ******/
-		/****** md5 signature: 485029a60f5198c2ef6a429c06efcd81 ******/
+		/****** md5 signature: fc28a7dc881537e2d7cd336840bdb6f3 ******/
 		%feature("compactdefaultargs") Dimensions;
 		%feature("autodoc", "
 Parameters
@@ -535,7 +527,7 @@ Returns the min and max dimensions of the shape <theS>.
 		static void Dimensions(const TopoDS_Shape & theS, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BOPTools_AlgoTools::GetEdgeOff ******/
-		/****** md5 signature: f9ff0abb00c2f2593eff9881311221cd ******/
+		/****** md5 signature: 52f82ae9ee0d5d9a00c270160a28849b ******/
 		%feature("compactdefaultargs") GetEdgeOff;
 		%feature("autodoc", "
 Parameters
@@ -552,10 +544,10 @@ Description
 -----------
 Returns True if the face theFace contains the edge theEdge but with opposite orientation. If the method returns True theEdgeOff is the edge founded.
 ") GetEdgeOff;
-		static Standard_Boolean GetEdgeOff(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, TopoDS_Edge & theEdgeOff);
+		static bool GetEdgeOff(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, TopoDS_Edge & theEdgeOff);
 
 		/****** BOPTools_AlgoTools::GetEdgeOnFace ******/
-		/****** md5 signature: 0e11d8dc0b657d498bdb441974222906 ******/
+		/****** md5 signature: 8842ffab42fbae4b0832a59fa5e0c6a1 ******/
 		%feature("compactdefaultargs") GetEdgeOnFace;
 		%feature("autodoc", "
 Parameters
@@ -572,17 +564,17 @@ Description
 -----------
 For the face theFace gets the edge theEdgeOnF that is the same as theEdge Returns True if such edge exists Returns False if there is no such edge.
 ") GetEdgeOnFace;
-		static Standard_Boolean GetEdgeOnFace(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, TopoDS_Edge & theEdgeOnF);
+		static bool GetEdgeOnFace(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, TopoDS_Edge & theEdgeOnF);
 
 		/****** BOPTools_AlgoTools::GetFaceOff ******/
-		/****** md5 signature: 64851eed7f9e8632025e1105ca710a20 ******/
+		/****** md5 signature: fe84e2c99f594f6611b2ae270dd4f024 ******/
 		%feature("compactdefaultargs") GetFaceOff;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
 theFace: TopoDS_Face
-theLCEF: BOPTools_ListOfCoupleOfShape
+theLCEF: NCollection_List<BOPTools_CoupleOfShape>
 theFaceOff: TopoDS_Face
 theContext: IntTools_Context
 
@@ -594,10 +586,10 @@ Description
 -----------
 For the face theFace and its edge theEdge finds the face suitable to produce shell. theLCEF - set of faces to search. All faces from theLCEF must share edge theEdge.
 ") GetFaceOff;
-		static Standard_Boolean GetFaceOff(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, BOPTools_ListOfCoupleOfShape & theLCEF, TopoDS_Face & theFaceOff, const opencascade::handle<IntTools_Context> & theContext);
+		static bool GetFaceOff(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, NCollection_List<BOPTools_CoupleOfShape> & theLCEF, TopoDS_Face & theFaceOff, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::IsBlockInOnFace ******/
-		/****** md5 signature: 0a530195aed4f2f6869b608c9e8dbd2d ******/
+		/****** md5 signature: c04c97af6998115a74dedf4a739c1329 ******/
 		%feature("compactdefaultargs") IsBlockInOnFace;
 		%feature("autodoc", "
 Parameters
@@ -615,10 +607,10 @@ Description
 -----------
 Returns True if PaveBlock <aPB> lays on the face <aF>, i.e the <PB> is IN or ON in 2D of <aF>.
 ") IsBlockInOnFace;
-		static Standard_Boolean IsBlockInOnFace(const IntTools_Range & aShR, const TopoDS_Face & aF, const TopoDS_Edge & aE, const opencascade::handle<IntTools_Context> & aContext);
+		static bool IsBlockInOnFace(const IntTools_Range & aShR, const TopoDS_Face & aF, const TopoDS_Edge & aE, const opencascade::handle<IntTools_Context> & aContext);
 
 		/****** BOPTools_AlgoTools::IsHole ******/
-		/****** md5 signature: 16350fb929e278089d74b09ce926512b ******/
+		/****** md5 signature: e87c3a31ba372629964d2e38521f9b17 ******/
 		%feature("compactdefaultargs") IsHole;
 		%feature("autodoc", "
 Parameters
@@ -634,10 +626,10 @@ Description
 -----------
 Checks if the wire is a hole for the face.
 ") IsHole;
-		static Standard_Boolean IsHole(const TopoDS_Shape & theW, const TopoDS_Shape & theF);
+		static bool IsHole(const TopoDS_Shape & theW, const TopoDS_Shape & theF);
 
 		/****** BOPTools_AlgoTools::IsInternalFace ******/
-		/****** md5 signature: 158ceb98611c9190a402b54fc4233804 ******/
+		/****** md5 signature: 90abaa4cfa373e9e576603cce0d7d01a ******/
 		%feature("compactdefaultargs") IsInternalFace;
 		%feature("autodoc", "
 Parameters
@@ -656,17 +648,17 @@ Description
 -----------
 Returns True if the face theFace is inside of the couple of faces theFace1, theFace2. The faces theFace, theFace1, theFace2 must share the edge theEdge Return values: * 0 state is not IN * 1 state is IN * 2 state can not be found by the method of angles.
 ") IsInternalFace;
-		static Standard_Integer IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const opencascade::handle<IntTools_Context> & theContext);
+		static int IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::IsInternalFace ******/
-		/****** md5 signature: ef3d71c29b8862372e271068609aff5d ******/
+		/****** md5 signature: d6606ae9333be62a1cce9a7dc75276e9 ******/
 		%feature("compactdefaultargs") IsInternalFace;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
 theEdge: TopoDS_Edge
-theLF: TopTools_ListOfShape
+theLF: NCollection_List<TopoDS_Shape>
 theContext: IntTools_Context
 
 Return
@@ -675,20 +667,20 @@ int
 
 Description
 -----------
-Returns True if the face theFace is inside of the appropriate couple of faces (from the set theLF) . The faces of the set theLF and theFace must share the edge theEdge * 0 state is not IN * 1 state is IN * 2 state can not be found by the method of angles.
+Returns True if the face theFace is inside of the appropriate couple of faces (from the set theLF). The faces of the set theLF and theFace must share the edge theEdge * 0 state is not IN * 1 state is IN * 2 state can not be found by the method of angles.
 ") IsInternalFace;
-		static Standard_Integer IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, TopTools_ListOfShape & theLF, const opencascade::handle<IntTools_Context> & theContext);
+		static int IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, NCollection_List<TopoDS_Shape> & theLF, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::IsInternalFace ******/
-		/****** md5 signature: d0cf743dc3c8deca3bd05e2d6d3d3021 ******/
+		/****** md5 signature: bf9c6bb9b21acc2ec20ae3f756ca63e8 ******/
 		%feature("compactdefaultargs") IsInternalFace;
 		%feature("autodoc", "
 Parameters
 ----------
 theFace: TopoDS_Face
 theSolid: TopoDS_Solid
-theMEF: TopTools_IndexedDataMapOfShapeListOfShape
-theTol: float
+theMEF: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theTol: double
 theContext: IntTools_Context
 
 Return
@@ -699,10 +691,10 @@ Description
 -----------
 Returns True if the face theFace is inside the solid theSolid. theMEF - Map Edge/Faces for theSolid theTol - value of precision of computation theContext- cached geometrical tools.
 ") IsInternalFace;
-		static Standard_Boolean IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, TopTools_IndexedDataMapOfShapeListOfShape & theMEF, const Standard_Real theTol, const opencascade::handle<IntTools_Context> & theContext);
+		static bool IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theMEF, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::IsInvertedSolid ******/
-		/****** md5 signature: 1452a0a79b70e8f5fe2cd3c3e8f9b78a ******/
+		/****** md5 signature: 0800d5ee51ff506f32c2811e57a90510 ******/
 		%feature("compactdefaultargs") IsInvertedSolid;
 		%feature("autodoc", "
 Parameters
@@ -717,17 +709,17 @@ Description
 -----------
 Returns true if the solid <theSolid> is inverted.
 ") IsInvertedSolid;
-		static Standard_Boolean IsInvertedSolid(const TopoDS_Solid & theSolid);
+		static bool IsInvertedSolid(const TopoDS_Solid & theSolid);
 
 		/****** BOPTools_AlgoTools::IsMicroEdge ******/
-		/****** md5 signature: d73c5d5d7a5e25bd1a97838d4b7775dc ******/
+		/****** md5 signature: 62dd3fd4c1207afd372b1876678eb387 ******/
 		%feature("compactdefaultargs") IsMicroEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge: TopoDS_Edge
 theContext: IntTools_Context
-theCheckSplittable: bool (optional, default to Standard_True)
+theCheckSplittable: bool (optional, default to true)
 
 Return
 -------
@@ -737,10 +729,10 @@ Description
 -----------
 Checks if it is possible to compute shrunk range for the edge <aE> Flag <theCheckSplittable> defines whether to take into account the possibility to split the edge or not.
 ") IsMicroEdge;
-		static Standard_Boolean IsMicroEdge(const TopoDS_Edge & theEdge, const opencascade::handle<IntTools_Context> & theContext, const Standard_Boolean theCheckSplittable = Standard_True);
+		static bool IsMicroEdge(const TopoDS_Edge & theEdge, const opencascade::handle<IntTools_Context> & theContext, const bool theCheckSplittable = true);
 
 		/****** BOPTools_AlgoTools::IsOpenShell ******/
-		/****** md5 signature: a5c32af687e24a03aee16645b11f6a05 ******/
+		/****** md5 signature: 960a08b22d4af6ba77f4eaa90ce0eaf6 ******/
 		%feature("compactdefaultargs") IsOpenShell;
 		%feature("autodoc", "
 Parameters
@@ -755,10 +747,10 @@ Description
 -----------
 Returns true if the shell <theShell> is open.
 ") IsOpenShell;
-		static Standard_Boolean IsOpenShell(const TopoDS_Shell & theShell);
+		static bool IsOpenShell(const TopoDS_Shell & theShell);
 
 		/****** BOPTools_AlgoTools::IsSplitToReverse ******/
-		/****** md5 signature: 6dca305aeb7fd21e742843dd4184640f ******/
+		/****** md5 signature: ba04b387a4a5949813870d6b6a45470e ******/
 		%feature("compactdefaultargs") IsSplitToReverse;
 		%feature("autodoc", "
 Parameters
@@ -766,7 +758,7 @@ Parameters
 theSplit: TopoDS_Shape
 theShape: TopoDS_Shape
 theContext: IntTools_Context
-theError: int * (optional, default to NULL)
+theError: int * (optional, default to nullptr)
 
 Return
 -------
@@ -779,10 +771,10 @@ Input parameter: theSplit Split shape
 Input parameter: theShape Original shape 
 Input parameter: theContext cached geometrical tools @param[out] theError Error Status of the operation.
 ") IsSplitToReverse;
-		static Standard_Boolean IsSplitToReverse(const TopoDS_Shape & theSplit, const TopoDS_Shape & theShape, const opencascade::handle<IntTools_Context> & theContext, Standard_Integer * theError = NULL);
+		static bool IsSplitToReverse(const TopoDS_Shape & theSplit, const TopoDS_Shape & theShape, const opencascade::handle<IntTools_Context> & theContext, int * theError = nullptr);
 
 		/****** BOPTools_AlgoTools::IsSplitToReverse ******/
-		/****** md5 signature: a442a1278308b2eef20ed84d8ecc93fd ******/
+		/****** md5 signature: 520ab15762cdda50d375b5db23536495 ******/
 		%feature("compactdefaultargs") IsSplitToReverse;
 		%feature("autodoc", "
 Parameters
@@ -790,7 +782,7 @@ Parameters
 theSplit: TopoDS_Face
 theShape: TopoDS_Face
 theContext: IntTools_Context
-theError: int * (optional, default to NULL)
+theError: int * (optional, default to nullptr)
 
 Return
 -------
@@ -803,10 +795,10 @@ Input parameter: theSplit Split face
 Input parameter: theShape Original face 
 Input parameter: theContext cached geometrical tools @param[out] theError Error Status of the operation.
 ") IsSplitToReverse;
-		static Standard_Boolean IsSplitToReverse(const TopoDS_Face & theSplit, const TopoDS_Face & theShape, const opencascade::handle<IntTools_Context> & theContext, Standard_Integer * theError = NULL);
+		static bool IsSplitToReverse(const TopoDS_Face & theSplit, const TopoDS_Face & theShape, const opencascade::handle<IntTools_Context> & theContext, int * theError = nullptr);
 
 		/****** BOPTools_AlgoTools::IsSplitToReverse ******/
-		/****** md5 signature: db1c9d5e59695f6d3bb15e0065a0cb7c ******/
+		/****** md5 signature: 778e509ca4d887701efd565b4e153c24 ******/
 		%feature("compactdefaultargs") IsSplitToReverse;
 		%feature("autodoc", "
 Parameters
@@ -814,7 +806,7 @@ Parameters
 theSplit: TopoDS_Edge
 theShape: TopoDS_Edge
 theContext: IntTools_Context
-theError: int * (optional, default to NULL)
+theError: int * (optional, default to nullptr)
 
 Return
 -------
@@ -827,10 +819,10 @@ Input parameter: theSplit Split edge
 Input parameter: theShape Original edge 
 Input parameter: theContext cached geometrical tools @param[out] theError Error Status of the operation.
 ") IsSplitToReverse;
-		static Standard_Boolean IsSplitToReverse(const TopoDS_Edge & theSplit, const TopoDS_Edge & theShape, const opencascade::handle<IntTools_Context> & theContext, Standard_Integer * theError = NULL);
+		static bool IsSplitToReverse(const TopoDS_Edge & theSplit, const TopoDS_Edge & theShape, const opencascade::handle<IntTools_Context> & theContext, int * theError = nullptr);
 
 		/****** BOPTools_AlgoTools::IsSplitToReverseWithWarn ******/
-		/****** md5 signature: fbda1a9b6060691a6d3b9849776e0dd2 ******/
+		/****** md5 signature: 2323bb3df1187ef58bf04bca8c4d386d ******/
 		%feature("compactdefaultargs") IsSplitToReverseWithWarn;
 		%feature("autodoc", "
 Parameters
@@ -838,7 +830,7 @@ Parameters
 theSplit: TopoDS_Shape
 theShape: TopoDS_Shape
 theContext: IntTools_Context
-theReport: Message_Report (optional, default to NULL)
+theReport: Message_Report (optional, default to nullptr)
 
 Return
 -------
@@ -848,17 +840,17 @@ Description
 -----------
 Add-on for the *IsSplitToReverse()* to check for its errors and in case of any add the *BOPAlgo_AlertUnableToOrientTheShape* warning to the report.
 ") IsSplitToReverseWithWarn;
-		static Standard_Boolean IsSplitToReverseWithWarn(const TopoDS_Shape & theSplit, const TopoDS_Shape & theShape, const opencascade::handle<IntTools_Context> & theContext, const opencascade::handle<Message_Report> & theReport = NULL);
+		static bool IsSplitToReverseWithWarn(const TopoDS_Shape & theSplit, const TopoDS_Shape & theShape, const opencascade::handle<IntTools_Context> & theContext, const opencascade::handle<Message_Report> & theReport = nullptr);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlock ******/
-		/****** md5 signature: b7df8e82e607190cf7b0d31cdf0e2e3f ******/
+		/****** md5 signature: 70b02dc701f6445686569b1ae7f49dc9 ******/
 		%feature("compactdefaultargs") MakeConnexityBlock;
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: TopTools_ListOfShape
-theMapAvoid: TopTools_IndexedMapOfShape
-theLSCB: TopTools_ListOfShape
+theLS: NCollection_List<TopoDS_Shape>
+theMapAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theLSCB: NCollection_List<TopoDS_Shape>
 theAllocator: NCollection_BaseAllocator
 
 Return
@@ -869,10 +861,10 @@ Description
 -----------
 For the list of faces theLS build block theLSCB in terms of connexity by edges theMapAvoid - set of edges to avoid for the treatment.
 ") MakeConnexityBlock;
-		static void MakeConnexityBlock(TopTools_ListOfShape & theLS, TopTools_IndexedMapOfShape & theMapAvoid, TopTools_ListOfShape & theLSCB, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
+		static void MakeConnexityBlock(NCollection_List<TopoDS_Shape> & theLS, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapAvoid, NCollection_List<TopoDS_Shape> & theLSCB, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlocks ******/
-		/****** md5 signature: 1d845647893fe0ad8b655563e0e2896c ******/
+		/****** md5 signature: 1384520c901775ef49f428557aabfdf4 ******/
 		%feature("compactdefaultargs") MakeConnexityBlocks;
 		%feature("autodoc", "
 Parameters
@@ -880,7 +872,7 @@ Parameters
 theS: TopoDS_Shape
 theConnectionType: TopAbs_ShapeEnum
 theElementType: TopAbs_ShapeEnum
-theLCB: TopTools_ListOfShape
+theLCB: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -890,10 +882,10 @@ Description
 -----------
 For the compound <theS> builds the blocks (compounds) of elements of type <theElementType> connected through the shapes of the type <theConnectionType>. The blocks are stored into the list <theLCB>.
 ") MakeConnexityBlocks;
-		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, TopTools_ListOfShape & theLCB);
+		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<TopoDS_Shape> & theLCB);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlocks ******/
-		/****** md5 signature: b12c70a2c8443f1c36f9af9ba8b4ac80 ******/
+		/****** md5 signature: 1348a1b768a360184d17d68c2f17646d ******/
 		%feature("compactdefaultargs") MakeConnexityBlocks;
 		%feature("autodoc", "
 Parameters
@@ -901,8 +893,8 @@ Parameters
 theS: TopoDS_Shape
 theConnectionType: TopAbs_ShapeEnum
 theElementType: TopAbs_ShapeEnum
-theLCB: TopTools_ListOfListOfShape
-theConnectionMap: TopTools_IndexedDataMapOfShapeListOfShape
+theLCB: NCollection_List<NCollection_List<TopoDS_Shape> >
+theConnectionMap: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -912,18 +904,18 @@ Description
 -----------
 For the compound <theS> builds the blocks (compounds) of elements of type <theElementType> connected through the shapes of the type <theConnectionType>. The blocks are stored into the list of lists <theLCB>. Returns also the connection map <theConnectionMap>, filled during operation.
 ") MakeConnexityBlocks;
-		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, TopTools_ListOfListOfShape & theLCB, TopTools_IndexedDataMapOfShapeListOfShape & theConnectionMap);
+		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<NCollection_List<TopoDS_Shape> > & theLCB, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theConnectionMap);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlocks ******/
-		/****** md5 signature: bb4aea338b418a5a1c4628df310b8238 ******/
+		/****** md5 signature: bbc3e1a46a8b8e0b0d598696cf8051f6 ******/
 		%feature("compactdefaultargs") MakeConnexityBlocks;
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: TopTools_ListOfShape
+theLS: NCollection_List<TopoDS_Shape>
 theConnectionType: TopAbs_ShapeEnum
 theElementType: TopAbs_ShapeEnum
-theLCB: BOPTools_ListOfConnexityBlock
+theLCB: NCollection_List<BOPTools_ConnexityBlock>
 
 Return
 -------
@@ -933,7 +925,7 @@ Description
 -----------
 Makes connexity blocks of elements of the given type with the given type of the connecting elements. The blocks are checked on regularity (multi-connectivity) and stored to the list of blocks <theLCB>.
 ") MakeConnexityBlocks;
-		static void MakeConnexityBlocks(const TopTools_ListOfShape & theLS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, BOPTools_ListOfConnexityBlock & theLCB);
+		static void MakeConnexityBlocks(const NCollection_List<TopoDS_Shape> & theLS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<BOPTools_ConnexityBlock> & theLCB);
 
 		/****** BOPTools_AlgoTools::MakeContainer ******/
 		/****** md5 signature: d164053e2421f42b427ee6ca8c740ef3 ******/
@@ -955,17 +947,17 @@ Makes empty container of requested type.
 		static void MakeContainer(const TopAbs_ShapeEnum theType, TopoDS_Shape & theShape);
 
 		/****** BOPTools_AlgoTools::MakeEdge ******/
-		/****** md5 signature: b44b1e692b1f84e15ce8b2e982731375 ******/
+		/****** md5 signature: 4a142357404f026bd8f61b4fc2a02795 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: IntTools_Curve
 theV1: TopoDS_Vertex
-theT1: float
+theT1: double
 theV2: TopoDS_Vertex
-theT2: float
-theTolR3D: float
+theT2: double
+theTolR3D: double
 theE: TopoDS_Edge
 
 Return
@@ -976,16 +968,16 @@ Description
 -----------
 Makes the edge based on the given curve with given bounding vertices.
 ") MakeEdge;
-		static void MakeEdge(const IntTools_Curve & theCurve, const TopoDS_Vertex & theV1, const Standard_Real theT1, const TopoDS_Vertex & theV2, const Standard_Real theT2, const Standard_Real theTolR3D, TopoDS_Edge & theE);
+		static void MakeEdge(const IntTools_Curve & theCurve, const TopoDS_Vertex & theV1, const double theT1, const TopoDS_Vertex & theV2, const double theT2, const double theTolR3D, TopoDS_Edge & theE);
 
 		/****** BOPTools_AlgoTools::MakeNewVertex ******/
-		/****** md5 signature: 20aff0c1048b5c5c0a4a448e2877799c ******/
+		/****** md5 signature: fd7b66104f4792f7d155c30dbb1d7053 ******/
 		%feature("compactdefaultargs") MakeNewVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 aP1: gp_Pnt
-aTol: float
+aTol: double
 aNewVertex: TopoDS_Vertex
 
 Return
@@ -996,7 +988,7 @@ Description
 -----------
 Make a vertex using 3D-point <aP1> and 3D-tolerance value <aTol>.
 ") MakeNewVertex;
-		static void MakeNewVertex(const gp_Pnt & aP1, const Standard_Real aTol, TopoDS_Vertex & aNewVertex);
+		static void MakeNewVertex(const gp_Pnt & aP1, const double aTol, TopoDS_Vertex & aNewVertex);
 
 		/****** BOPTools_AlgoTools::MakeNewVertex ******/
 		/****** md5 signature: e8f9b3aed21c857920517234e2cb3d4c ******/
@@ -1019,15 +1011,15 @@ Make a vertex using couple of vertices <aV1, aV2>.
 		static void MakeNewVertex(const TopoDS_Vertex & aV1, const TopoDS_Vertex & aV2, TopoDS_Vertex & aNewVertex);
 
 		/****** BOPTools_AlgoTools::MakeNewVertex ******/
-		/****** md5 signature: 8b8a909912cc829455275d8c562e22a4 ******/
+		/****** md5 signature: 7605843368e5a065a03d4f5b51861e4a ******/
 		%feature("compactdefaultargs") MakeNewVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 aE1: TopoDS_Edge
-aP1: float
+aP1: double
 aE2: TopoDS_Edge
-aP2: float
+aP2: double
 aNewVertex: TopoDS_Vertex
 
 Return
@@ -1038,16 +1030,16 @@ Description
 -----------
 Make a vertex in place of intersection between two edges <aE1, aE2> with parameters <aP1, aP2>.
 ") MakeNewVertex;
-		static void MakeNewVertex(const TopoDS_Edge & aE1, const Standard_Real aP1, const TopoDS_Edge & aE2, const Standard_Real aP2, TopoDS_Vertex & aNewVertex);
+		static void MakeNewVertex(const TopoDS_Edge & aE1, const double aP1, const TopoDS_Edge & aE2, const double aP2, TopoDS_Vertex & aNewVertex);
 
 		/****** BOPTools_AlgoTools::MakeNewVertex ******/
-		/****** md5 signature: 12c18f3b7c437a6229e434be5765471e ******/
+		/****** md5 signature: b8c95e4cb586c271488849a0fae4dbc1 ******/
 		%feature("compactdefaultargs") MakeNewVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 aE1: TopoDS_Edge
-aP1: float
+aP1: double
 aF2: TopoDS_Face
 aNewVertex: TopoDS_Vertex
 
@@ -1059,10 +1051,10 @@ Description
 -----------
 Make a vertex in place of intersection between the edge <aE1> with parameter <aP1> and the face <aF2>.
 ") MakeNewVertex;
-		static void MakeNewVertex(const TopoDS_Edge & aE1, const Standard_Real aP1, const TopoDS_Face & aF2, TopoDS_Vertex & aNewVertex);
+		static void MakeNewVertex(const TopoDS_Edge & aE1, const double aP1, const TopoDS_Face & aF2, TopoDS_Vertex & aNewVertex);
 
 		/****** BOPTools_AlgoTools::MakePCurve ******/
-		/****** md5 signature: 8bbdbc99fd96168957f47b3153252374 ******/
+		/****** md5 signature: 7ac55ebc9fd224d4b9673d8b30868176 ******/
 		%feature("compactdefaultargs") MakePCurve;
 		%feature("autodoc", "
 Parameters
@@ -1083,19 +1075,19 @@ Description
 -----------
 Makes 2d curve of the edge <theE> on the faces <theF1> and <theF2>. <theContext> - storage for caching the geometrical tools.
 ") MakePCurve;
-		static void MakePCurve(const TopoDS_Edge & theE, const TopoDS_Face & theF1, const TopoDS_Face & theF2, const IntTools_Curve & theCurve, const Standard_Boolean thePC1, const Standard_Boolean thePC2, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void MakePCurve(const TopoDS_Edge & theE, const TopoDS_Face & theF1, const TopoDS_Face & theF2, const IntTools_Curve & theCurve, const bool thePC1, const bool thePC2, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools::MakeSectEdge ******/
-		/****** md5 signature: c8c6abde60f8f50c47ff89728e6814bd ******/
+		/****** md5 signature: 82c0a1c322e70a6ab9a415094ebb5d2b ******/
 		%feature("compactdefaultargs") MakeSectEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aIC: IntTools_Curve
 aV1: TopoDS_Vertex
-aP1: float
+aP1: double
 aV2: TopoDS_Vertex
-aP2: float
+aP2: double
 aNewEdge: TopoDS_Edge
 
 Return
@@ -1106,19 +1098,19 @@ Description
 -----------
 Make the edge from 3D-Curve <aIC> and two vertices <aV1,aV2> at parameters <aP1,aP2>.
 ") MakeSectEdge;
-		static void MakeSectEdge(const IntTools_Curve & aIC, const TopoDS_Vertex & aV1, const Standard_Real aP1, const TopoDS_Vertex & aV2, const Standard_Real aP2, TopoDS_Edge & aNewEdge);
+		static void MakeSectEdge(const IntTools_Curve & aIC, const TopoDS_Vertex & aV1, const double aP1, const TopoDS_Vertex & aV2, const double aP2, TopoDS_Edge & aNewEdge);
 
 		/****** BOPTools_AlgoTools::MakeSplitEdge ******/
-		/****** md5 signature: 0acf5ac7a732e796dbde53c34f933d47 ******/
+		/****** md5 signature: 32d5116aff6e41e9123c4e449ef96aab ******/
 		%feature("compactdefaultargs") MakeSplitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aE1: TopoDS_Edge
 aV1: TopoDS_Vertex
-aP1: float
+aP1: double
 aV2: TopoDS_Vertex
-aP2: float
+aP2: double
 aNewEdge: TopoDS_Edge
 
 Return
@@ -1129,15 +1121,15 @@ Description
 -----------
 Make the edge from base edge <aE1> and two vertices <aV1,aV2> at parameters <aP1,aP2>.
 ") MakeSplitEdge;
-		static void MakeSplitEdge(const TopoDS_Edge & aE1, const TopoDS_Vertex & aV1, const Standard_Real aP1, const TopoDS_Vertex & aV2, const Standard_Real aP2, TopoDS_Edge & aNewEdge);
+		static void MakeSplitEdge(const TopoDS_Edge & aE1, const TopoDS_Vertex & aV1, const double aP1, const TopoDS_Vertex & aV2, const double aP2, TopoDS_Edge & aNewEdge);
 
 		/****** BOPTools_AlgoTools::MakeVertex ******/
-		/****** md5 signature: c738caacf439f5a59ed8d30ee737580f ******/
+		/****** md5 signature: 3fbe46c9809ab3e8e4215c8c6c140082 ******/
 		%feature("compactdefaultargs") MakeVertex;
 		%feature("autodoc", "
 Parameters
 ----------
-theLV: TopTools_ListOfShape
+theLV: NCollection_List<TopoDS_Shape>
 theV: TopoDS_Vertex
 
 Return
@@ -1148,7 +1140,7 @@ Description
 -----------
 Makes the vertex in the middle of given vertices with the tolerance covering all tolerance spheres of vertices.
 ") MakeVertex;
-		static void MakeVertex(const TopTools_ListOfShape & theLV, TopoDS_Vertex & theV);
+		static void MakeVertex(const NCollection_List<TopoDS_Shape> & theLV, TopoDS_Vertex & theV);
 
 		/****** BOPTools_AlgoTools::OrientEdgesOnWire ******/
 		/****** md5 signature: 3119ef215b80e42dba9486eca423d427 ******/
@@ -1187,13 +1179,13 @@ Correctly orients faces on the shell.
 		static void OrientFacesOnShell(TopoDS_Shape & theShell);
 
 		/****** BOPTools_AlgoTools::PointOnEdge ******/
-		/****** md5 signature: efda6336f7826223dac800f528eaf90a ******/
+		/****** md5 signature: bfdaf8147eba6be4f311ee1cb6e4da25 ******/
 		%feature("compactdefaultargs") PointOnEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aEdge: TopoDS_Edge
-aPrm: float
+aPrm: double
 aP: gp_Pnt
 
 Return
@@ -1204,10 +1196,10 @@ Description
 -----------
 Compute a 3D-point on the edge <aEdge> at parameter <aPrm>.
 ") PointOnEdge;
-		static void PointOnEdge(const TopoDS_Edge & aEdge, const Standard_Real aPrm, gp_Pnt & aP);
+		static void PointOnEdge(const TopoDS_Edge & aEdge, const double aPrm, gp_Pnt & aP);
 
 		/****** BOPTools_AlgoTools::Sense ******/
-		/****** md5 signature: 76462cc1a9fbb8274cf2ed746aa1a8f5 ******/
+		/****** md5 signature: 073fa2e87b339db7db7f67f0ce0d0de6 ******/
 		%feature("compactdefaultargs") Sense;
 		%feature("autodoc", "
 Parameters
@@ -1224,17 +1216,17 @@ Description
 -----------
 Checks if the normals direction of the given faces computed near the shared edge coincide. Returns the status of operation: * 0 - in case of error (shared edge not found or directions are not collinear) * 1 - normal directions coincide; * -1 - normal directions are opposite.
 ") Sense;
-		static Standard_Integer Sense(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext);
+		static int Sense(const TopoDS_Face & theF1, const TopoDS_Face & theF2, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::TreatCompound ******/
-		/****** md5 signature: de5d3c86660c5bbcc7b54c5705952878 ******/
+		/****** md5 signature: 75027913a540b11d33550119ec929265 ******/
 		%feature("compactdefaultargs") TreatCompound;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theList: TopTools_ListOfShape
-theMap: TopTools_MapOfShape * (optional, default to NULL)
+theList: NCollection_List<TopoDS_Shape>
+theMap: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> * (optional, default to nullptr)
 
 Return
 -------
@@ -1244,16 +1236,16 @@ Description
 -----------
 Collects in the output list recursively all non-compound sub-shapes of the first level of the given shape theS. The optional map theMap is used to avoid the duplicates in the output list, so it will also contain all non-compound sub-shapes.
 ") TreatCompound;
-		static void TreatCompound(const TopoDS_Shape & theS, TopTools_ListOfShape & theList, TopTools_MapOfShape * theMap = NULL);
+		static void TreatCompound(const TopoDS_Shape & theS, NCollection_List<TopoDS_Shape> & theList, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> * theMap = nullptr);
 
 		/****** BOPTools_AlgoTools::UpdateVertex ******/
-		/****** md5 signature: 5e037b5f776c89b9ff812aeeecab575f ******/
+		/****** md5 signature: 302dfd27a25ab2460715984142b83b41 ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 aIC: IntTools_Curve
-aT: float
+aT: double
 aV: TopoDS_Vertex
 
 Return
@@ -1264,16 +1256,16 @@ Description
 -----------
 Update the tolerance value for vertex <aV> taking into account the fact that <aV> lays on the curve <aIC>.
 ") UpdateVertex;
-		static void UpdateVertex(const IntTools_Curve & aIC, const Standard_Real aT, const TopoDS_Vertex & aV);
+		static void UpdateVertex(const IntTools_Curve & aIC, const double aT, const TopoDS_Vertex & aV);
 
 		/****** BOPTools_AlgoTools::UpdateVertex ******/
-		/****** md5 signature: ab6e5c4eb33ee08a8d5d38547e7d4eae ******/
+		/****** md5 signature: ce04d890925d59c58f9fe158f7fb7a38 ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
-aT: float
+aT: double
 aV: TopoDS_Vertex
 
 Return
@@ -1284,7 +1276,7 @@ Description
 -----------
 Update the tolerance value for vertex <aV> taking into account the fact that <aV> lays on the edge <aE>.
 ") UpdateVertex;
-		static void UpdateVertex(const TopoDS_Edge & aE, const Standard_Real aT, const TopoDS_Vertex & aV);
+		static void UpdateVertex(const TopoDS_Edge & aE, const double aT, const TopoDS_Vertex & aV);
 
 		/****** BOPTools_AlgoTools::UpdateVertex ******/
 		/****** md5 signature: 72d4d1d8b5f8f681ed272bca91d39668 ******/
@@ -1342,14 +1334,14 @@ Adjust P-Curve <theC2D> (3D-curve <theC3D>) on surface of the face <theF>. <theC
 		static void AdjustPCurveOnFace(const TopoDS_Face & theF, const opencascade::handle<Geom_Curve> & theC3D, const opencascade::handle<Geom2d_Curve> & theC2D, opencascade::handle<Geom2d_Curve> & theC2DA, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::AdjustPCurveOnFace ******/
-		/****** md5 signature: 73b4d6c2d8ce8f742911e4b1bd3424f5 ******/
+		/****** md5 signature: 2f850a74761523a25838ba434924a3e6 ******/
 		%feature("compactdefaultargs") AdjustPCurveOnFace;
 		%feature("autodoc", "
 Parameters
 ----------
 theF: TopoDS_Face
-theFirst: float
-theLast: float
+theFirst: double
+theLast: double
 theC2D: Geom2d_Curve
 theC2DA: Geom2d_Curve
 theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_Context>())
@@ -1360,19 +1352,19 @@ None
 
 Description
 -----------
-Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> . [aT1, aT2] - range to adjust <theContext> - storage for caching the geometrical tools.
+Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF>. [aT1, aT2] - range to adjust <theContext> - storage for caching the geometrical tools.
 ") AdjustPCurveOnFace;
-		static void AdjustPCurveOnFace(const TopoDS_Face & theF, const Standard_Real theFirst, const Standard_Real theLast, const opencascade::handle<Geom2d_Curve> & theC2D, opencascade::handle<Geom2d_Curve> & theC2DA, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void AdjustPCurveOnFace(const TopoDS_Face & theF, const double theFirst, const double theLast, const opencascade::handle<Geom2d_Curve> & theC2D, opencascade::handle<Geom2d_Curve> & theC2DA, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::AdjustPCurveOnSurf ******/
-		/****** md5 signature: 9f66aa04ccc5fe5ab7f76a83eca55926 ******/
+		/****** md5 signature: 61c6a028ae5dc08c063f05f9bae1e660 ******/
 		%feature("compactdefaultargs") AdjustPCurveOnSurf;
 		%feature("autodoc", "
 Parameters
 ----------
 aF: BRepAdaptor_Surface
-aT1: float
-aT2: float
+aT1: double
+aT2: double
 aC2D: Geom2d_Curve
 aC2DA: Geom2d_Curve
 
@@ -1382,12 +1374,12 @@ None
 
 Description
 -----------
-Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF> . [aT1, aT2] - range to adjust.
+Adjust P-Curve <aC2D> (3D-curve <C3D>) on surface <aF>. [aT1, aT2] - range to adjust.
 ") AdjustPCurveOnSurf;
-		static void AdjustPCurveOnSurf(const BRepAdaptor_Surface & aF, const Standard_Real aT1, const Standard_Real aT2, const opencascade::handle<Geom2d_Curve> & aC2D, opencascade::handle<Geom2d_Curve> & aC2DA);
+		static void AdjustPCurveOnSurf(const BRepAdaptor_Surface & aF, const double aT1, const double aT2, const opencascade::handle<Geom2d_Curve> & aC2D, opencascade::handle<Geom2d_Curve> & aC2DA);
 
 		/****** BOPTools_AlgoTools2D::AttachExistingPCurve ******/
-		/****** md5 signature: d2c950c6e7103dd55a431f337bd524de ******/
+		/****** md5 signature: aa6729409e808f318c296c4e23b94576 ******/
 		%feature("compactdefaultargs") AttachExistingPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1405,7 +1397,7 @@ Description
 -----------
 Attach P-Curve from the edge <aEold> on surface <aF> to the edge <aEnew> Returns 0 in case of success.
 ") AttachExistingPCurve;
-		static Standard_Integer AttachExistingPCurve(const TopoDS_Edge & aEold, const TopoDS_Edge & aEnew, const TopoDS_Face & aF, const opencascade::handle<IntTools_Context> & aCtx);
+		static int AttachExistingPCurve(const TopoDS_Edge & aEold, const TopoDS_Edge & aEnew, const TopoDS_Face & aF, const opencascade::handle<IntTools_Context> & aCtx);
 
 		/****** BOPTools_AlgoTools2D::BuildPCurveForEdgeOnFace ******/
 		/****** md5 signature: 9d16532ebffa946107d9612c7596ff2e ******/
@@ -1428,7 +1420,7 @@ Compute P-Curve for the edge <aE> on the face <aF>. Raises exception Standard_Co
 		static void BuildPCurveForEdgeOnFace(const TopoDS_Edge & aE, const TopoDS_Face & aF, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::CurveOnSurface ******/
-		/****** md5 signature: df3a833e56d9d7562127ad18d8051975 ******/
+		/****** md5 signature: 7ad832ecc832095a6ecf2af7559a5bb7 ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1440,16 +1432,16 @@ theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_
 
 Return
 -------
-aToler: float
+aToler: double
 
 Description
 -----------
-Get P-Curve <aC> for the edge <aE> on surface <aF> . If the P-Curve does not exist, build it using Make2D(). [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm Make2D() fails. <theContext> - storage for caching the geometrical tools.
+Get P-Curve <aC> for the edge <aE> on surface <aF>. If the P-Curve does not exist, build it using Make2D(). [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm Make2D() fails. <theContext> - storage for caching the geometrical tools.
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::CurveOnSurface ******/
-		/****** md5 signature: e2898c58b122e827bd654617de4aca96 ******/
+		/****** md5 signature: 194fb75077ca571b4c3f2ea606e68aa0 ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1461,24 +1453,24 @@ theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_
 
 Return
 -------
-aFirst: float
-aLast: float
-aToler: float
+aFirst: double
+aLast: double
+aToler: double
 
 Description
 -----------
-Get P-Curve <aC> for the edge <aE> on surface <aF> . If the P-Curve does not exist, build it using Make2D(). [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm Make2D() fails. <theContext> - storage for caching the geometrical tools.
+Get P-Curve <aC> for the edge <aE> on surface <aF>. If the P-Curve does not exist, build it using Make2D(). [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm Make2D() fails. <theContext> - storage for caching the geometrical tools.
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::EdgeTangent ******/
-		/****** md5 signature: 5761815d648dad69375685b041b42424 ******/
+		/****** md5 signature: 45c9da13e4af3c9a6fd1ad133de75c38 ******/
 		%feature("compactdefaultargs") EdgeTangent;
 		%feature("autodoc", "
 Parameters
 ----------
 anE: TopoDS_Edge
-aT: float
+aT: double
 Tau: gp_Vec
 
 Return
@@ -1489,10 +1481,10 @@ Description
 -----------
 Compute tangent for the edge <aE> [in 3D] at parameter <aT>.
 ") EdgeTangent;
-		static Standard_Boolean EdgeTangent(const TopoDS_Edge & anE, const Standard_Real aT, gp_Vec & Tau);
+		static bool EdgeTangent(const TopoDS_Edge & anE, const double aT, gp_Vec & Tau);
 
 		/****** BOPTools_AlgoTools2D::HasCurveOnSurface ******/
-		/****** md5 signature: 8b08ee63182b04e9348ee1f48c35a9f2 ******/
+		/****** md5 signature: d11a1228ec865139e49358d528f81b54 ******/
 		%feature("compactdefaultargs") HasCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1503,18 +1495,18 @@ aC: Geom2d_Curve
 
 Return
 -------
-aFirst: float
-aLast: float
-aToler: float
+aFirst: double
+aLast: double
+aToler: double
 
 Description
 -----------
-Returns True if the edge <aE> has P-Curve <aC> on surface <aF> . [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance If the P-Curve does not exist, aC.IsNull()=True.
+Returns True if the edge <aE> has P-Curve <aC> on surface <aF>. [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance If the P-Curve does not exist, aC.IsNull()=True.
 ") HasCurveOnSurface;
-		static Standard_Boolean HasCurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static bool HasCurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BOPTools_AlgoTools2D::HasCurveOnSurface ******/
-		/****** md5 signature: ed0b1e2b2daee6cab07c579768d15a31 ******/
+		/****** md5 signature: de1ea586d747a15c0259538a2f3ef799 ******/
 		%feature("compactdefaultargs") HasCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1528,31 +1520,31 @@ bool
 
 Description
 -----------
-Returns True if the edge <aE> has P-Curve <aC> on surface <aF> . If the P-Curve does not exist, aC.IsNull()=True.
+Returns True if the edge <aE> has P-Curve <aC> on surface <aF>. If the P-Curve does not exist, aC.IsNull()=True.
 ") HasCurveOnSurface;
-		static Standard_Boolean HasCurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF);
+		static bool HasCurveOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF);
 
 		/****** BOPTools_AlgoTools2D::IntermediatePoint ******/
-		/****** md5 signature: 8663f92679b0dc5e2760d0cb00974303 ******/
+		/****** md5 signature: 6de0e62284046529527ea806a88825a5 ******/
 		%feature("compactdefaultargs") IntermediatePoint;
 		%feature("autodoc", "
 Parameters
 ----------
-aFirst: float
-aLast: float
+aFirst: double
+aLast: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
-Compute intermediate value in between [aFirst, aLast] .
+Compute intermediate value in between [aFirst, aLast].
 ") IntermediatePoint;
-		static Standard_Real IntermediatePoint(const Standard_Real aFirst, const Standard_Real aLast);
+		static double IntermediatePoint(const double aFirst, const double aLast);
 
 		/****** BOPTools_AlgoTools2D::IntermediatePoint ******/
-		/****** md5 signature: ff96e71d7875046d3368a83dabf4302a ******/
+		/****** md5 signature: 157c550a38b74c139754f307ad9b09ea ******/
 		%feature("compactdefaultargs") IntermediatePoint;
 		%feature("autodoc", "
 Parameters
@@ -1561,16 +1553,16 @@ anE: TopoDS_Edge
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Compute intermediate value of parameter for the edge <anE>.
 ") IntermediatePoint;
-		static Standard_Real IntermediatePoint(const TopoDS_Edge & anE);
+		static double IntermediatePoint(const TopoDS_Edge & anE);
 
 		/****** BOPTools_AlgoTools2D::IsEdgeIsoline ******/
-		/****** md5 signature: f327241ed8b7983321061c77e81b5e58 ******/
+		/****** md5 signature: b766c2f9dfa2942b7fab10dfdf8e5019 ******/
 		%feature("compactdefaultargs") IsEdgeIsoline;
 		%feature("autodoc", "
 Parameters
@@ -1590,7 +1582,7 @@ Checks if CurveOnSurface of theE on theF matches with isoline of theF surface. S
 		static void IsEdgeIsoline(const TopoDS_Edge & theE, const TopoDS_Face & theF, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** BOPTools_AlgoTools2D::Make2D ******/
-		/****** md5 signature: 1cafd6dad2a417f7794802f509a42258 ******/
+		/****** md5 signature: 837db7b9023e00cdaf9398b9def3ac17 ******/
 		%feature("compactdefaultargs") Make2D;
 		%feature("autodoc", "
 Parameters
@@ -1602,18 +1594,18 @@ theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_
 
 Return
 -------
-aFirst: float
-aLast: float
-aToler: float
+aFirst: double
+aLast: double
+aToler: double
 
 Description
 -----------
-Make P-Curve <aC> for the edge <aE> on surface <aF> . [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm fails. <theContext> - storage for caching the geometrical tools.
+Make P-Curve <aC> for the edge <aE> on surface <aF>. [aFirst, aLast] - range of the P-Curve [aToler] - reached tolerance Raises exception Standard_ConstructionError if algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") Make2D;
 		static void Make2D(const TopoDS_Edge & aE, const TopoDS_Face & aF, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::MakePCurveOnFace ******/
-		/****** md5 signature: 83df2e5770a0a1e9e3908f45b8c8dd41 ******/
+		/****** md5 signature: 594dfea73b1986744791efd4862e447d ******/
 		%feature("compactdefaultargs") MakePCurveOnFace;
 		%feature("autodoc", "
 Parameters
@@ -1625,58 +1617,58 @@ theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_
 
 Return
 -------
-aToler: float
+aToler: double
 
 Description
 -----------
-Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
+Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF>. [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") MakePCurveOnFace;
 		static void MakePCurveOnFace(const TopoDS_Face & aF, const opencascade::handle<Geom_Curve> & C3D, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::MakePCurveOnFace ******/
-		/****** md5 signature: b2a78a17fdd321c29302db9d7ddcc9b0 ******/
+		/****** md5 signature: fe534cd74cef0b3e8834afe3cd25b1a2 ******/
 		%feature("compactdefaultargs") MakePCurveOnFace;
 		%feature("autodoc", "
 Parameters
 ----------
 aF: TopoDS_Face
 C3D: Geom_Curve
-aT1: float
-aT2: float
+aT1: double
+aT2: double
 aC: Geom2d_Curve
 theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_Context>())
 
 Return
 -------
-aToler: float
+aToler: double
 
 Description
 -----------
-Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF> . [aT1, aT2] - range to build [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
+Make P-Curve <aC> for the 3D-curve <C3D> on surface <aF>. [aT1, aT2] - range to build [aToler] - reached tolerance Raises exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") MakePCurveOnFace;
-		static void MakePCurveOnFace(const TopoDS_Face & aF, const opencascade::handle<Geom_Curve> & C3D, const Standard_Real aT1, const Standard_Real aT2, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void MakePCurveOnFace(const TopoDS_Face & aF, const opencascade::handle<Geom_Curve> & C3D, const double aT1, const double aT2, opencascade::handle<Geom2d_Curve> & aC, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools2D::PointOnSurface ******/
-		/****** md5 signature: 610be3c3edd48240bdf3e793d5503e5a ******/
+		/****** md5 signature: 36763f8491044c69fff85e6cf41e4269 ******/
 		%feature("compactdefaultargs") PointOnSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
 aF: TopoDS_Face
-aT: float
+aT: double
 theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_Context>())
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 Compute surface parameters <U,V> of the face <aF> for the point from the edge <aE> at parameter <aT>. If <aE> has't pcurve on surface, algorithm tries to get it by projection and can raise exception Standard_ConstructionError if projection algorithm fails. <theContext> - storage for caching the geometrical tools.
 ") PointOnSurface;
-		static void PointOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void PointOnSurface(const TopoDS_Edge & aE, const TopoDS_Face & aF, const double aT, Standard_Real &OutValue, Standard_Real &OutValue, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 };
 
@@ -1697,7 +1689,7 @@ Compute surface parameters <U,V> of the face <aF> for the point from the edge <a
 class BOPTools_AlgoTools3D {
 	public:
 		/****** BOPTools_AlgoTools3D::DoSplitSEAMOnFace ******/
-		/****** md5 signature: 317e2c98140c02945abbec924936c1ea ******/
+		/****** md5 signature: a2f4d2edac98dbc45ae0013c2292d84f ******/
 		%feature("compactdefaultargs") DoSplitSEAMOnFace;
 		%feature("autodoc", "
 Parameters
@@ -1713,10 +1705,10 @@ Description
 -----------
 Makes the edge <theESplit> seam edge for the face <theFace> basing on the surface properties (U and V periods).
 ") DoSplitSEAMOnFace;
-		static Standard_Boolean DoSplitSEAMOnFace(const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
+		static bool DoSplitSEAMOnFace(const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
 
 		/****** BOPTools_AlgoTools3D::DoSplitSEAMOnFace ******/
-		/****** md5 signature: 9b4cff8cc35f1c3b3a0c4ca69663cf34 ******/
+		/****** md5 signature: 44ba4a7b75cf2c611cf71f987a053f19 ******/
 		%feature("compactdefaultargs") DoSplitSEAMOnFace;
 		%feature("autodoc", "
 Parameters
@@ -1733,17 +1725,17 @@ Description
 -----------
 Makes the split edge <theESplit> seam edge for the face <theFace> basing on the positions of 2d curves of the original edge <theEOrigin>.
 ") DoSplitSEAMOnFace;
-		static Standard_Boolean DoSplitSEAMOnFace(const TopoDS_Edge & theEOrigin, const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
+		static bool DoSplitSEAMOnFace(const TopoDS_Edge & theEOrigin, const TopoDS_Edge & theESplit, const TopoDS_Face & theFace);
 
 		/****** BOPTools_AlgoTools3D::GetApproxNormalToFaceOnEdge ******/
-		/****** md5 signature: 662a57a2b13e5b445fecdd7a9db5ba05 ******/
+		/****** md5 signature: f3c48eeed82e3d3df7cdb4b47fa17d5f ******/
 		%feature("compactdefaultargs") GetApproxNormalToFaceOnEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
 aF: TopoDS_Face
-aT: float
+aT: double
 aPx: gp_Pnt
 aD: gp_Dir
 theContext: IntTools_Context
@@ -1756,20 +1748,20 @@ Description
 -----------
 Computes normal to the face <aF> for the 3D-point that belongs to the edge <aE> at parameter <aT>. Output: aPx - the 3D-point where the normal computed aD - the normal; Warning: The normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); The point is computed using PointNearEdge function, with the shifting value BOPTools_AlgoTools3D::MinStepIn2d(), from the edge, but if this value is too big, the point will be computed using Hatcher (PointInFace function). Returns True in case of success.
 ") GetApproxNormalToFaceOnEdge;
-		static Standard_Boolean GetApproxNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, gp_Pnt & aPx, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext);
+		static bool GetApproxNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const double aT, gp_Pnt & aPx, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::GetApproxNormalToFaceOnEdge ******/
-		/****** md5 signature: 432a5d217f2c92976bd3836d59ae3126 ******/
+		/****** md5 signature: a1f65ff162f26984cfd04e393d2b82c8 ******/
 		%feature("compactdefaultargs") GetApproxNormalToFaceOnEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theE: TopoDS_Edge
 theF: TopoDS_Face
-aT: float
+aT: double
 aP: gp_Pnt
 aDNF: gp_Dir
-aDt2D: float
+aDt2D: double
 
 Return
 -------
@@ -1779,18 +1771,18 @@ Description
 -----------
 Computes normal to the face <aF> for the 3D-point that belongs to the edge <aE> at parameter <aT>. Output: aPx - the 3D-point where the normal computed aD - the normal; Warning: The normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); The point is computed using PointNearEdge function with the shifting value <aDt2D> from the edge; No checks on this value will be done. Returns True in case of success.
 ") GetApproxNormalToFaceOnEdge;
-		static Standard_Boolean GetApproxNormalToFaceOnEdge(const TopoDS_Edge & theE, const TopoDS_Face & theF, const Standard_Real aT, gp_Pnt & aP, gp_Dir & aDNF, const Standard_Real aDt2D);
+		static bool GetApproxNormalToFaceOnEdge(const TopoDS_Edge & theE, const TopoDS_Face & theF, const double aT, gp_Pnt & aP, gp_Dir & aDNF, const double aDt2D);
 
 		/****** BOPTools_AlgoTools3D::GetApproxNormalToFaceOnEdge ******/
-		/****** md5 signature: 0d7e453d668ffaef04017e672ebf7cd8 ******/
+		/****** md5 signature: 8be43312e64bffe1ad9650b8b137ea6a ******/
 		%feature("compactdefaultargs") GetApproxNormalToFaceOnEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theE: TopoDS_Edge
 theF: TopoDS_Face
-aT: float
-aDt2D: float
+aT: double
+aDt2D: double
 aP: gp_Pnt
 aDNF: gp_Dir
 theContext: IntTools_Context
@@ -1803,17 +1795,17 @@ Description
 -----------
 Computes normal to the face <aF> for the 3D-point that belongs to the edge <aE> at parameter <aT>. Output: aPx - the 3D-point where the normal computed aD - the normal; Warning: The normal is computed not exactly in the point on the edge, but in point that is near to the edge towards to the face material (so, we'll have approx. normal); The point is computed using PointNearEdge function with the shifting value <aDt2D> from the edge, but if this value is too big the point will be computed using Hatcher (PointInFace function). Returns True in case of success.
 ") GetApproxNormalToFaceOnEdge;
-		static Standard_Boolean GetApproxNormalToFaceOnEdge(const TopoDS_Edge & theE, const TopoDS_Face & theF, const Standard_Real aT, const Standard_Real aDt2D, gp_Pnt & aP, gp_Dir & aDNF, const opencascade::handle<IntTools_Context> & theContext);
+		static bool GetApproxNormalToFaceOnEdge(const TopoDS_Edge & theE, const TopoDS_Face & theF, const double aT, const double aDt2D, gp_Pnt & aP, gp_Dir & aDNF, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::GetNormalToFaceOnEdge ******/
-		/****** md5 signature: bf95002b59a88f422052872860bf9ba3 ******/
+		/****** md5 signature: 53c7dbc8b0d66bf4f6350f39646cc120 ******/
 		%feature("compactdefaultargs") GetNormalToFaceOnEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
 aF: TopoDS_Face
-aT: float
+aT: double
 aD: gp_Dir
 theContext: IntTools_Context (optional, default to opencascade::handle<IntTools_Context>())
 
@@ -1825,7 +1817,7 @@ Description
 -----------
 Computes normal to the face <aF> for the point on the edge <aE> at parameter <aT>. <theContext> - storage for caching the geometrical tools.
 ") GetNormalToFaceOnEdge;
-		static void GetNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void GetNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const double aT, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools3D::GetNormalToFaceOnEdge ******/
 		/****** md5 signature: caac691e172913bbc6951d237d25e02e ******/
@@ -1849,14 +1841,14 @@ Computes normal to the face <aF> for the point on the edge <aE> at arbitrary int
 		static void GetNormalToFaceOnEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, gp_Dir & aD, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPTools_AlgoTools3D::GetNormalToSurface ******/
-		/****** md5 signature: fadf018537fa0db50dedc46448844d75 ******/
+		/****** md5 signature: 2ce446ecb08b5fabe4c3d91d83ce28d6 ******/
 		%feature("compactdefaultargs") GetNormalToSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 aS: Geom_Surface
-U: float
-V: float
+U: double
+V: double
 aD: gp_Dir
 
 Return
@@ -1867,10 +1859,10 @@ Description
 -----------
 Compute normal <aD> to surface <aS> in point (U,V) Returns True if directions aD1U, aD1V coincide.
 ") GetNormalToSurface;
-		static Standard_Boolean GetNormalToSurface(const opencascade::handle<Geom_Surface> & aS, const Standard_Real U, const Standard_Real V, gp_Dir & aD);
+		static bool GetNormalToSurface(const opencascade::handle<Geom_Surface> & aS, const double U, const double V, gp_Dir & aD);
 
 		/****** BOPTools_AlgoTools3D::IsEmptyShape ******/
-		/****** md5 signature: 705d0cbf3a767fb030ed3d0273652728 ******/
+		/****** md5 signature: b287f8ddc7f7110927899971c559af94 ******/
 		%feature("compactdefaultargs") IsEmptyShape;
 		%feature("autodoc", "
 Parameters
@@ -1885,20 +1877,20 @@ Description
 -----------
 Returns True if the shape <aS> does not contain geometry information (e.g. empty compound).
 ") IsEmptyShape;
-		static Standard_Boolean IsEmptyShape(const TopoDS_Shape & aS);
+		static bool IsEmptyShape(const TopoDS_Shape & aS);
 
 		/****** BOPTools_AlgoTools3D::MinStepIn2d ******/
-		/****** md5 signature: 55bfd12f091895ccbedf8983db301515 ******/
+		/****** md5 signature: 3910c995a2c50a8df45de563fff1a020 ******/
 		%feature("compactdefaultargs") MinStepIn2d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns simple step value that is used in 2D-computations = 1.e-5.
 ") MinStepIn2d;
-		static Standard_Real MinStepIn2d();
+		static double MinStepIn2d();
 
 		/****** BOPTools_AlgoTools3D::OrientEdgeOnFace ******/
 		/****** md5 signature: c79b989ebff1b81ac9c1c0872fb48dd0 ******/
@@ -1921,7 +1913,7 @@ Get the edge <aER> from the face <aF> that is the same as the edge <aE>.
 		static void OrientEdgeOnFace(const TopoDS_Edge & aE, const TopoDS_Face & aF, TopoDS_Edge & aER);
 
 		/****** BOPTools_AlgoTools3D::PointInFace ******/
-		/****** md5 signature: fb4d80b0c5e7b54dd7e9e3700bdd62ef ******/
+		/****** md5 signature: 7ebd9310873d85b402b7c4856f93613b ******/
 		%feature("compactdefaultargs") PointInFace;
 		%feature("autodoc", "
 Parameters
@@ -1939,18 +1931,18 @@ Description
 -----------
 Computes arbitrary point <theP> inside the face <theF>. <theP2D> - 2D representation of <theP> on the surface of <theF> Returns 0 in case of success.
 ") PointInFace;
-		static Standard_Integer PointInFace(const TopoDS_Face & theF, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext);
+		static int PointInFace(const TopoDS_Face & theF, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::PointInFace ******/
-		/****** md5 signature: d8a07bb3206e54319a435f003dc62fb0 ******/
+		/****** md5 signature: 2e600453045ab36bbb04bbc4c6a78c32 ******/
 		%feature("compactdefaultargs") PointInFace;
 		%feature("autodoc", "
 Parameters
 ----------
 theF: TopoDS_Face
 theE: TopoDS_Edge
-theT: float
-theDt2D: float
+theT: double
+theDt2D: double
 theP: gp_Pnt
 theP2D: gp_Pnt2d
 theContext: IntTools_Context
@@ -1963,10 +1955,10 @@ Description
 -----------
 Computes a point <theP> inside the face <theF> using starting point taken by the parameter <theT> from the 2d curve of the edge <theE> on the face <theF> in the direction perpendicular to the tangent vector of the 2d curve of the edge. The point will be distanced on <theDt2D> from the 2d curve. <theP2D> - 2D representation of <theP> on the surface of <theF> Returns 0 in case of success.
 ") PointInFace;
-		static Standard_Integer PointInFace(const TopoDS_Face & theF, const TopoDS_Edge & theE, const Standard_Real theT, const Standard_Real theDt2D, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext);
+		static int PointInFace(const TopoDS_Face & theF, const TopoDS_Edge & theE, const double theT, const double theDt2D, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::PointInFace ******/
-		/****** md5 signature: 37f6b0b13b751b088ca1668abf11cab7 ******/
+		/****** md5 signature: d3811ac87ad6b6b1cb2d76336e4accd5 ******/
 		%feature("compactdefaultargs") PointInFace;
 		%feature("autodoc", "
 Parameters
@@ -1976,7 +1968,7 @@ theL: Geom2d_Curve
 theP: gp_Pnt
 theP2D: gp_Pnt2d
 theContext: IntTools_Context
-theDt2D: float (optional, default to 0.0)
+theDt2D: double (optional, default to 0.0)
 
 Return
 -------
@@ -1986,18 +1978,18 @@ Description
 -----------
 Computes a point <theP> inside the face <theF> using the line <theL> so that 2D point <theP2D>, 2D representation of <theP> on the surface of <theF>, lies on that line. Returns 0 in case of success.
 ") PointInFace;
-		static Standard_Integer PointInFace(const TopoDS_Face & theF, const opencascade::handle<Geom2d_Curve> & theL, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext, const Standard_Real theDt2D = 0.0);
+		static int PointInFace(const TopoDS_Face & theF, const opencascade::handle<Geom2d_Curve> & theL, gp_Pnt & theP, gp_Pnt2d & theP2D, const opencascade::handle<IntTools_Context> & theContext, const double theDt2D = 0.0);
 
 		/****** BOPTools_AlgoTools3D::PointNearEdge ******/
-		/****** md5 signature: 28ea360f1c859e12be4170d223ae64b7 ******/
+		/****** md5 signature: 61038c4a7f6855b46f5ab8fd9edbf900 ******/
 		%feature("compactdefaultargs") PointNearEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
 aF: TopoDS_Face
-aT: float
-aDt2D: float
+aT: double
+aDt2D: double
 aP2D: gp_Pnt2d
 aPx: gp_Pnt
 theContext: IntTools_Context
@@ -2010,18 +2002,18 @@ Description
 -----------
 Compute the point <aPx>, (<aP2D>) that is near to the edge <aE> at parameter <aT> towards to the material of the face <aF>. The value of shifting in 2D is <aDt2D> If the value of shifting is too big the point will be computed using Hatcher (PointInFace function). Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>; 2 - the computed point is out of the face.
 ") PointNearEdge;
-		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, const Standard_Real aDt2D, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
+		static int PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const double aT, const double aDt2D, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::PointNearEdge ******/
-		/****** md5 signature: 8c4c6748c97e44ce957c2b8614e0029f ******/
+		/****** md5 signature: 2f86cb820d526d8daf86245caaecae8a ******/
 		%feature("compactdefaultargs") PointNearEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
 aF: TopoDS_Face
-aT: float
-aDt2D: float
+aT: double
+aDt2D: double
 aP2D: gp_Pnt2d
 aPx: gp_Pnt
 
@@ -2033,17 +2025,17 @@ Description
 -----------
 Compute the point <aPx>, (<aP2D>) that is near to the edge <aE> at parameter <aT> towards to the material of the face <aF>. The value of shifting in 2D is <aDt2D>. No checks on this value will be done. Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>.
 ") PointNearEdge;
-		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, const Standard_Real aDt2D, gp_Pnt2d & aP2D, gp_Pnt & aPx);
+		static int PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const double aT, const double aDt2D, gp_Pnt2d & aP2D, gp_Pnt & aPx);
 
 		/****** BOPTools_AlgoTools3D::PointNearEdge ******/
-		/****** md5 signature: e53caafb25c5b51491bf62af17f56817 ******/
+		/****** md5 signature: 184a4fe7f8e6cbd66e5e731de6b82081 ******/
 		%feature("compactdefaultargs") PointNearEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 aE: TopoDS_Edge
 aF: TopoDS_Face
-aT: float
+aT: double
 aP2D: gp_Pnt2d
 aPx: gp_Pnt
 theContext: IntTools_Context
@@ -2056,10 +2048,10 @@ Description
 -----------
 Computes the point <aPx>, (<aP2D>) that is near to the edge <aE> at parameter <aT> towards to the material of the face <aF>. The value of shifting in 2D is dt2D=BOPTools_AlgoTools3D::MinStepIn2d() If the value of shifting is too big the point will be computed using Hatcher (PointInFace function). Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>; 2 - the computed point is out of the face.
 ") PointNearEdge;
-		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const Standard_Real aT, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
+		static int PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, const double aT, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::PointNearEdge ******/
-		/****** md5 signature: 35029e745729034983dcaed868cd05a8 ******/
+		/****** md5 signature: 86185ddcdf2e21e80c133c535887733f ******/
 		%feature("compactdefaultargs") PointNearEdge;
 		%feature("autodoc", "
 Parameters
@@ -2078,10 +2070,10 @@ Description
 -----------
 Compute the point <aPx>, (<aP2D>) that is near to the edge <aE> at arbitrary parameter towards to the material of the face <aF>. The value of shifting in 2D is dt2D=BOPTools_AlgoTools3D::MinStepIn2d(). If the value of shifting is too big the point will be computed using Hatcher (PointInFace function). Returns error status: 0 - in case of success; 1 - <aE> does not have 2d curve on the face <aF>; 2 - the computed point is out of the face.
 ") PointNearEdge;
-		static Standard_Integer PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
+		static int PointNearEdge(const TopoDS_Edge & aE, const TopoDS_Face & aF, gp_Pnt2d & aP2D, gp_Pnt & aPx, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools3D::SenseFlag ******/
-		/****** md5 signature: 6c19a30f29c48dda7851cfdc81d48708 ******/
+		/****** md5 signature: c3afa190b4ef86bdf5f8f451ed144783 ******/
 		%feature("compactdefaultargs") SenseFlag;
 		%feature("autodoc", "
 Parameters
@@ -2097,7 +2089,7 @@ Description
 -----------
 Returns 1 if scalar product aNF1* aNF2>0. Returns 0 if directions aNF1 aNF2 coincide Returns -1 if scalar product aNF1* aNF2<0.
 ") SenseFlag;
-		static Standard_Integer SenseFlag(const gp_Dir & aNF1, const gp_Dir & aNF2);
+		static int SenseFlag(const gp_Dir & aNF1, const gp_Dir & aNF2);
 
 };
 
@@ -2151,33 +2143,33 @@ No available documentation.
 		 BOPTools_ConnexityBlock(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPTools_ConnexityBlock::ChangeLoops ******/
-		/****** md5 signature: 97af80f62f92c5a560ebfd3d94268f4c ******/
+		/****** md5 signature: 14f52ac998b9cf2202c0e2916c7924cd ******/
 		%feature("compactdefaultargs") ChangeLoops;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeLoops;
-		TopTools_ListOfShape & ChangeLoops();
+		NCollection_List<TopoDS_Shape> ChangeLoops();
 
 		/****** BOPTools_ConnexityBlock::ChangeShapes ******/
-		/****** md5 signature: 47d36ad0f18ffdedc957b231f37208f9 ******/
+		/****** md5 signature: ef78ffba6b513d0f6d6595cfd3a278c4 ******/
 		%feature("compactdefaultargs") ChangeShapes;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") ChangeShapes;
-		TopTools_ListOfShape & ChangeShapes();
+		NCollection_List<TopoDS_Shape> ChangeShapes();
 
 		/****** BOPTools_ConnexityBlock::IsRegular ******/
-		/****** md5 signature: 3d038b1e31cde956ec93c56a127b2088 ******/
+		/****** md5 signature: 5c2b2dd1f03601f7418ebcb10f6737d0 ******/
 		%feature("compactdefaultargs") IsRegular;
 		%feature("autodoc", "Return
 -------
@@ -2187,23 +2179,23 @@ Description
 -----------
 No available documentation.
 ") IsRegular;
-		Standard_Boolean IsRegular();
+		bool IsRegular();
 
 		/****** BOPTools_ConnexityBlock::Loops ******/
-		/****** md5 signature: 28c8d70c5f0b2679616b2e020052a004 ******/
+		/****** md5 signature: 906348aee354bcba6262f302d6f94b85 ******/
 		%feature("compactdefaultargs") Loops;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Loops;
-		const TopTools_ListOfShape & Loops();
+		const NCollection_List<TopoDS_Shape> Loops();
 
 		/****** BOPTools_ConnexityBlock::SetRegular ******/
-		/****** md5 signature: 2164d1b536b9c0958859434dc620596f ******/
+		/****** md5 signature: 37bdd721f4ace6b4f1f17f764a89f121 ******/
 		%feature("compactdefaultargs") SetRegular;
 		%feature("autodoc", "
 Parameters
@@ -2218,20 +2210,20 @@ Description
 -----------
 No available documentation.
 ") SetRegular;
-		void SetRegular(const Standard_Boolean theFlag);
+		void SetRegular(const bool theFlag);
 
 		/****** BOPTools_ConnexityBlock::Shapes ******/
-		/****** md5 signature: 2884193c58152e0cda5e99b2900fdc8e ******/
+		/****** md5 signature: dcc9fb3797b3fd8183a75c7bc6f77ab4 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const TopTools_ListOfShape & Shapes();
+		const NCollection_List<TopoDS_Shape> Shapes();
 
 };
 
@@ -2248,7 +2240,7 @@ No available documentation.
 class BOPTools_CoupleOfShape {
 	public:
 		/****** BOPTools_CoupleOfShape::BOPTools_CoupleOfShape ******/
-		/****** md5 signature: a463423d837c3e973864801ded1eb0ed ******/
+		/****** md5 signature: aab8f2e10a1b0125d4f155bb4252d125 ******/
 		%feature("compactdefaultargs") BOPTools_CoupleOfShape;
 		%feature("autodoc", "Return
 -------
@@ -2442,7 +2434,7 @@ No available documentation.
 		size_t GetSum();
 
 		/****** BOPTools_Set::IsEqual ******/
-		/****** md5 signature: 474281f165027d105331737daa2a5ea2 ******/
+		/****** md5 signature: 28ac2d11159ea09db3810ac76fd7101d ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -2457,10 +2449,10 @@ Description
 -----------
 No available documentation.
 ") IsEqual;
-		Standard_Boolean IsEqual(const BOPTools_Set & aOther);
+		bool IsEqual(const BOPTools_Set & aOther);
 
 		/****** BOPTools_Set::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -2470,7 +2462,7 @@ Description
 -----------
 No available documentation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** BOPTools_Set::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/

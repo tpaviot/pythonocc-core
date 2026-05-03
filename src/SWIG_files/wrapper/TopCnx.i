@@ -97,15 +97,15 @@ Creates an empty algorithm.
 		 TopCnx_EdgeFaceTransition();
 
 		/****** TopCnx_EdgeFaceTransition::AddInterference ******/
-		/****** md5 signature: 65f7e21e78a92b664019e6880e4b200c ******/
+		/****** md5 signature: cfe3e5ea3e02b26a7fd7d1cb4ab16253 ******/
 		%feature("compactdefaultargs") AddInterference;
 		%feature("autodoc", "
 Parameters
 ----------
-Tole: float
+Tole: double
 Tang: gp_Dir
 Norm: gp_Dir
-Curv: float
+Curv: double
 Or: TopAbs_Orientation
 Tr: TopAbs_Orientation
 BTr: TopAbs_Orientation
@@ -118,7 +118,7 @@ Description
 -----------
 Add a curve element to the boundary. Or is the orientation of the interference on the boundary curve. Tr is the transition of the interference. BTr is the boundary transition of the interference.
 ") AddInterference;
-		void AddInterference(const Standard_Real Tole, const gp_Dir & Tang, const gp_Dir & Norm, const Standard_Real Curv, const TopAbs_Orientation Or, const TopAbs_Orientation Tr, const TopAbs_Orientation BTr);
+		void AddInterference(const double Tole, const gp_Dir & Tang, const gp_Dir & Norm, const double Curv, const TopAbs_Orientation Or, const TopAbs_Orientation Tr, const TopAbs_Orientation BTr);
 
 		/****** TopCnx_EdgeFaceTransition::BoundaryTransition ******/
 		/****** md5 signature: 74f690bd95102dfac559cd0dc3a25347 ******/
@@ -134,14 +134,14 @@ Returns the current cumulated BoundaryTransition.
 		TopAbs_Orientation BoundaryTransition();
 
 		/****** TopCnx_EdgeFaceTransition::Reset ******/
-		/****** md5 signature: 41688a7deec782701e541aa14a291d6c ******/
+		/****** md5 signature: f2c747c64bb6fb82c3f30d2a3a53b777 ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
 ----------
 Tgt: gp_Dir
 Norm: gp_Dir
-Curv: float
+Curv: double
 
 Return
 -------
@@ -151,7 +151,7 @@ Description
 -----------
 Initialize the algorithm with the local description of the edge.
 ") Reset;
-		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const Standard_Real Curv);
+		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const double Curv);
 
 		/****** TopCnx_EdgeFaceTransition::Reset ******/
 		/****** md5 signature: 477dbad6632871c94ebb699631f93444 ******/

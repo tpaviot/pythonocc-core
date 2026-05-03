@@ -46,9 +46,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepfea.html"
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
 #include<StepData_module.hxx>
-#include<TColStd_module.hxx>
-#include<StepElement_module.hxx>
 #include<StepBasic_module.hxx>
+#include<StepElement_module.hxx>
 #include<StepRepr_module.hxx>
 #include<StepGeom_module.hxx>
 #include<Message_module.hxx>
@@ -67,9 +66,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepfea.html"
 %import NCollection.i
 %import TCollection.i
 %import StepData.i
-%import TColStd.i
-%import StepElement.i
 %import StepBasic.i
+%import StepElement.i
 %import StepRepr.i
 %import StepGeom.i
 
@@ -156,66 +154,13 @@ StepFEA_Unspecified = StepFEA_UnspecifiedValue.StepFEA_Unspecified
 %wrap_handle(StepFEA_CurveElementEndRelease)
 %wrap_handle(StepFEA_CurveElementInterval)
 %wrap_handle(StepFEA_CurveElementLocation)
-%wrap_handle(StepFEA_DegreeOfFreedomMember)
 %wrap_handle(StepFEA_ElementGeometricRelationship)
-%wrap_handle(StepFEA_ElementRepresentation)
-%wrap_handle(StepFEA_FeaAxis2Placement3d)
 %wrap_handle(StepFEA_FeaCurveSectionGeometricRelationship)
-%wrap_handle(StepFEA_FeaGroup)
-%wrap_handle(StepFEA_FeaMaterialPropertyRepresentation)
-%wrap_handle(StepFEA_FeaMaterialPropertyRepresentationItem)
-%wrap_handle(StepFEA_FeaModel)
-%wrap_handle(StepFEA_FeaModelDefinition)
-%wrap_handle(StepFEA_FeaParametricPoint)
-%wrap_handle(StepFEA_FeaRepresentationItem)
 %wrap_handle(StepFEA_FeaSurfaceSectionGeometricRelationship)
 %wrap_handle(StepFEA_FreedomAndCoefficient)
 %wrap_handle(StepFEA_FreedomsList)
-%wrap_handle(StepFEA_NodeDefinition)
-%wrap_handle(StepFEA_NodeRepresentation)
-%wrap_handle(StepFEA_NodeSet)
-%wrap_handle(StepFEA_SymmetricTensor23dMember)
-%wrap_handle(StepFEA_SymmetricTensor43dMember)
-%wrap_handle(StepFEA_AlignedCurve3dElementCoordinateSystem)
-%wrap_handle(StepFEA_AlignedSurface3dElementCoordinateSystem)
-%wrap_handle(StepFEA_ArbitraryVolume3dElementCoordinateSystem)
-%wrap_handle(StepFEA_ConstantSurface3dElementCoordinateSystem)
-%wrap_handle(StepFEA_Curve3dElementRepresentation)
 %wrap_handle(StepFEA_CurveElementIntervalConstant)
 %wrap_handle(StepFEA_CurveElementIntervalLinearlyVarying)
-%wrap_handle(StepFEA_DummyNode)
-%wrap_handle(StepFEA_ElementGroup)
-%wrap_handle(StepFEA_FeaAreaDensity)
-%wrap_handle(StepFEA_FeaLinearElasticity)
-%wrap_handle(StepFEA_FeaMassDensity)
-%wrap_handle(StepFEA_FeaModel3d)
-%wrap_handle(StepFEA_FeaMoistureAbsorption)
-%wrap_handle(StepFEA_FeaSecantCoefficientOfLinearThermalExpansion)
-%wrap_handle(StepFEA_FeaShellBendingStiffness)
-%wrap_handle(StepFEA_FeaShellMembraneBendingCouplingStiffness)
-%wrap_handle(StepFEA_FeaShellMembraneStiffness)
-%wrap_handle(StepFEA_FeaShellShearStiffness)
-%wrap_handle(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion)
-%wrap_handle(StepFEA_GeometricNode)
-%wrap_handle(StepFEA_Node)
-%wrap_handle(StepFEA_NodeGroup)
-%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateDirection)
-%wrap_handle(StepFEA_ParametricCurve3dElementCoordinateSystem)
-%wrap_handle(StepFEA_ParametricSurface3dElementCoordinateSystem)
-%wrap_handle(StepFEA_Surface3dElementRepresentation)
-%wrap_handle(StepFEA_Volume3dElementRepresentation)
-%wrap_handle(StepFEA_NodeWithSolutionCoordinateSystem)
-%wrap_handle(StepFEA_NodeWithVector)
-%wrap_handle(StepFEA_HArray1OfCurveElementEndOffset)
-%wrap_handle(StepFEA_HArray1OfCurveElementEndRelease)
-%wrap_handle(StepFEA_HArray1OfCurveElementInterval)
-%wrap_handle(StepFEA_HArray1OfDegreeOfFreedom)
-%wrap_handle(StepFEA_HArray1OfElementRepresentation)
-%wrap_handle(StepFEA_HArray1OfNodeRepresentation)
-%wrap_handle(StepFEA_HSequenceOfCurve3dElementProperty)
-%wrap_handle(StepFEA_HSequenceOfElementGeometricRelationship)
-%wrap_handle(StepFEA_HSequenceOfElementRepresentation)
-%wrap_handle(StepFEA_HSequenceOfNodeRepresentation)
 /* end handles declaration */
 
 /* templates */
@@ -278,6 +223,16 @@ typedef NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>> St
 typedef NCollection_Array1<StepFEA_DegreeOfFreedom> StepFEA_Array1OfDegreeOfFreedom;
 typedef NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>> StepFEA_Array1OfElementRepresentation;
 typedef NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>> StepFEA_Array1OfNodeRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>> StepFEA_HArray1OfCurveElementEndOffset;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>> StepFEA_HArray1OfCurveElementEndRelease;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>> StepFEA_HArray1OfCurveElementInterval;
+typedef NCollection_HArray1<StepFEA_DegreeOfFreedom> StepFEA_HArray1OfDegreeOfFreedom;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>> StepFEA_HArray1OfElementRepresentation;
+typedef NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>> StepFEA_HArray1OfNodeRepresentation;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_Curve3dElementProperty>> StepFEA_HSequenceOfCurve3dElementProperty;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>> StepFEA_HSequenceOfElementGeometricRelationship;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>> StepFEA_HSequenceOfElementRepresentation;
+typedef NCollection_HSequence<opencascade::handle<StepFEA_NodeRepresentation>> StepFEA_HSequenceOfNodeRepresentation;
 typedef NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>> StepFEA_SequenceOfCurve3dElementProperty;
 typedef NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>> StepFEA_SequenceOfElementGeometricRelationship;
 typedef NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>> StepFEA_SequenceOfElementRepresentation;
@@ -316,42 +271,42 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepFEA_Curve3dElementProperty::EndOffsets ******/
-		/****** md5 signature: 3226dcfd4d3241f393fefbc1624456d0 ******/
+		/****** md5 signature: 45b3880d653e8b036b452797472d6e6a ******/
 		%feature("compactdefaultargs") EndOffsets;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>>
 
 Description
 -----------
 Returns field EndOffsets.
 ") EndOffsets;
-		opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> EndOffsets();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset>>> EndOffsets();
 
 		/****** StepFEA_Curve3dElementProperty::EndReleases ******/
-		/****** md5 signature: 0f0b5fbc787e3529df4dda93f270d0ac ******/
+		/****** md5 signature: 5ade57cd78aa2121022011e2c9c34037 ******/
 		%feature("compactdefaultargs") EndReleases;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>>
 
 Description
 -----------
 Returns field EndReleases.
 ") EndReleases;
-		opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> EndReleases();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease>>> EndReleases();
 
 		/****** StepFEA_Curve3dElementProperty::Init ******/
-		/****** md5 signature: e9ef3a6e6bc03c04a8b18ceb93a5b677 ******/
+		/****** md5 signature: 52214a4ea4790205c2ed75391b791e87 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aPropertyId: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aIntervalDefinitions: StepFEA_HArray1OfCurveElementInterval
-aEndOffsets: StepFEA_HArray1OfCurveElementEndOffset
-aEndReleases: StepFEA_HArray1OfCurveElementEndRelease
+aIntervalDefinitions: NCollection_HArray1<
+aEndOffsets: NCollection_HArray1<
+aEndReleases: NCollection_HArray1<
 
 Return
 -------
@@ -361,20 +316,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aPropertyId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepFEA_HArray1OfCurveElementInterval> & aIntervalDefinitions, const opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> & aEndOffsets, const opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> & aEndReleases);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aPropertyId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval> > > & aIntervalDefinitions, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset> > > & aEndOffsets, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease> > > & aEndReleases);
 
 		/****** StepFEA_Curve3dElementProperty::IntervalDefinitions ******/
-		/****** md5 signature: 0deffb82fb53a1571eb9b90c5a87dc31 ******/
+		/****** md5 signature: 0ae6ce19e41f311e0efc2b8fd3be875e ******/
 		%feature("compactdefaultargs") IntervalDefinitions;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfCurveElementInterval>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>>
 
 Description
 -----------
 Returns field IntervalDefinitions.
 ") IntervalDefinitions;
-		opencascade::handle<StepFEA_HArray1OfCurveElementInterval> IntervalDefinitions();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval>>> IntervalDefinitions();
 
 		/****** StepFEA_Curve3dElementProperty::PropertyId ******/
 		/****** md5 signature: 4864667399554fed4d5fa9ae9070d731 ******/
@@ -408,12 +363,12 @@ Set field Description.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****** StepFEA_Curve3dElementProperty::SetEndOffsets ******/
-		/****** md5 signature: 6f7bca5774121244d6f5a3b2d732b562 ******/
+		/****** md5 signature: 6898a3e2957f984ddbd9bf1b2dbc1326 ******/
 		%feature("compactdefaultargs") SetEndOffsets;
 		%feature("autodoc", "
 Parameters
 ----------
-EndOffsets: StepFEA_HArray1OfCurveElementEndOffset
+EndOffsets: NCollection_HArray1<
 
 Return
 -------
@@ -423,15 +378,15 @@ Description
 -----------
 Set field EndOffsets.
 ") SetEndOffsets;
-		void SetEndOffsets(const opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> & EndOffsets);
+		void SetEndOffsets(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndOffset> > > & EndOffsets);
 
 		/****** StepFEA_Curve3dElementProperty::SetEndReleases ******/
-		/****** md5 signature: aea5b6ef6fca869efc35df2577210011 ******/
+		/****** md5 signature: 48be90e83f235d8484ccdd1290b67f23 ******/
 		%feature("compactdefaultargs") SetEndReleases;
 		%feature("autodoc", "
 Parameters
 ----------
-EndReleases: StepFEA_HArray1OfCurveElementEndRelease
+EndReleases: NCollection_HArray1<
 
 Return
 -------
@@ -441,15 +396,15 @@ Description
 -----------
 Set field EndReleases.
 ") SetEndReleases;
-		void SetEndReleases(const opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> & EndReleases);
+		void SetEndReleases(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementEndRelease> > > & EndReleases);
 
 		/****** StepFEA_Curve3dElementProperty::SetIntervalDefinitions ******/
-		/****** md5 signature: b3c6e2bbc25898e60711854129223e91 ******/
+		/****** md5 signature: f5d8fbfd31d33c5f1197150c28199901 ******/
 		%feature("compactdefaultargs") SetIntervalDefinitions;
 		%feature("autodoc", "
 Parameters
 ----------
-IntervalDefinitions: StepFEA_HArray1OfCurveElementInterval
+IntervalDefinitions: NCollection_HArray1<
 
 Return
 -------
@@ -459,7 +414,7 @@ Description
 -----------
 Set field IntervalDefinitions.
 ") SetIntervalDefinitions;
-		void SetIntervalDefinitions(const opencascade::handle<StepFEA_HArray1OfCurveElementInterval> & IntervalDefinitions);
+		void SetIntervalDefinitions(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_CurveElementInterval> > > & IntervalDefinitions);
 
 		/****** StepFEA_Curve3dElementProperty::SetPropertyId ******/
 		/****** md5 signature: 24eb0454213ca7d7517eb5464cb641c2 ******/
@@ -522,7 +477,7 @@ Returns Value as AlignedCurve3dElementCoordinateSystem (or Null if another type)
 		opencascade::handle<StepFEA_AlignedCurve3dElementCoordinateSystem> AlignedCurve3dElementCoordinateSystem();
 
 		/****** StepFEA_CurveElementEndCoordinateSystem::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -537,7 +492,7 @@ Description
 -----------
 Recognizes a kind of CurveElementEndCoordinateSystem select type 1 -> FeaAxis2Placement3d from StepFEA 2 -> AlignedCurve3dElementCoordinateSystem from StepFEA 3 -> ParametricCurve3dElementCoordinateSystem from StepFEA 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepFEA_CurveElementEndCoordinateSystem::FeaAxis2Placement3d ******/
 		/****** md5 signature: 6e20b07cd00a56527509acdf7a7dc4bc ******/
@@ -606,13 +561,13 @@ Returns field CoordinateSystem.
 		StepFEA_CurveElementEndCoordinateSystem CoordinateSystem();
 
 		/****** StepFEA_CurveElementEndOffset::Init ******/
-		/****** md5 signature: fc25bb179247e1de1d0fe7eae3fc3264 ******/
+		/****** md5 signature: 8094a34c276ff3451ef91ac2889780eb ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aCoordinateSystem: StepFEA_CurveElementEndCoordinateSystem
-aOffsetVector: TColStd_HArray1OfReal
+aOffsetVector: NCollection_HArray1<double
 
 Return
 -------
@@ -622,20 +577,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const StepFEA_CurveElementEndCoordinateSystem & aCoordinateSystem, const opencascade::handle<TColStd_HArray1OfReal> & aOffsetVector);
+		void Init(const StepFEA_CurveElementEndCoordinateSystem & aCoordinateSystem, const opencascade::handle<NCollection_HArray1<double> > & aOffsetVector);
 
 		/****** StepFEA_CurveElementEndOffset::OffsetVector ******/
-		/****** md5 signature: 410675bd8edab75f21d0f3e8156c2d47 ******/
+		/****** md5 signature: 2eeb9bbaa31e44e9c46e0435c38853d2 ******/
 		%feature("compactdefaultargs") OffsetVector;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns field OffsetVector.
 ") OffsetVector;
-		opencascade::handle<TColStd_HArray1OfReal> OffsetVector();
+		opencascade::handle<NCollection_HArray1<double>> OffsetVector();
 
 		/****** StepFEA_CurveElementEndOffset::SetCoordinateSystem ******/
 		/****** md5 signature: 0721bc23fb691d653426546c5cb5ef5f ******/
@@ -656,12 +611,12 @@ Set field CoordinateSystem.
 		void SetCoordinateSystem(const StepFEA_CurveElementEndCoordinateSystem & CoordinateSystem);
 
 		/****** StepFEA_CurveElementEndOffset::SetOffsetVector ******/
-		/****** md5 signature: 4cef76644e28345238f5db748f083351 ******/
+		/****** md5 signature: 02f974b2f1e2617dd59414dc668919d0 ******/
 		%feature("compactdefaultargs") SetOffsetVector;
 		%feature("autodoc", "
 Parameters
 ----------
-OffsetVector: TColStd_HArray1OfReal
+OffsetVector: NCollection_HArray1<double
 
 Return
 -------
@@ -671,7 +626,7 @@ Description
 -----------
 Set field OffsetVector.
 ") SetOffsetVector;
-		void SetOffsetVector(const opencascade::handle<TColStd_HArray1OfReal> & OffsetVector);
+		void SetOffsetVector(const opencascade::handle<NCollection_HArray1<double> > & OffsetVector);
 
 };
 
@@ -716,13 +671,13 @@ Returns field CoordinateSystem.
 		StepFEA_CurveElementEndCoordinateSystem CoordinateSystem();
 
 		/****** StepFEA_CurveElementEndRelease::Init ******/
-		/****** md5 signature: fd61e127fca190868a6abd9e8d9bb2a2 ******/
+		/****** md5 signature: 4a8fb9faa2c5a5e6cd2bfb512116a223 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aCoordinateSystem: StepFEA_CurveElementEndCoordinateSystem
-aReleases: StepElement_HArray1OfCurveElementEndReleasePacket
+aReleases: NCollection_HArray1<
 
 Return
 -------
@@ -732,20 +687,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const StepFEA_CurveElementEndCoordinateSystem & aCoordinateSystem, const opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> & aReleases);
+		void Init(const StepFEA_CurveElementEndCoordinateSystem & aCoordinateSystem, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket> > > & aReleases);
 
 		/****** StepFEA_CurveElementEndRelease::Releases ******/
-		/****** md5 signature: a9a60f66fcbdd62028fb36d6af2c5a73 ******/
+		/****** md5 signature: b875550cee58cf0e2d04500b3e2d72bb ******/
 		%feature("compactdefaultargs") Releases;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>>
 
 Description
 -----------
 Returns field Releases.
 ") Releases;
-		opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> Releases();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>> Releases();
 
 		/****** StepFEA_CurveElementEndRelease::SetCoordinateSystem ******/
 		/****** md5 signature: 0721bc23fb691d653426546c5cb5ef5f ******/
@@ -766,12 +721,12 @@ Set field CoordinateSystem.
 		void SetCoordinateSystem(const StepFEA_CurveElementEndCoordinateSystem & CoordinateSystem);
 
 		/****** StepFEA_CurveElementEndRelease::SetReleases ******/
-		/****** md5 signature: eb22d52d963d0d2763f4ce0f4deae0c2 ******/
+		/****** md5 signature: af30ceab3ce225db01ababb1e7644b49 ******/
 		%feature("compactdefaultargs") SetReleases;
 		%feature("autodoc", "
 Parameters
 ----------
-Releases: StepElement_HArray1OfCurveElementEndReleasePacket
+Releases: NCollection_HArray1<
 
 Return
 -------
@@ -781,7 +736,7 @@ Description
 -----------
 Set field Releases.
 ") SetReleases;
-		void SetReleases(const opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> & Releases);
+		void SetReleases(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementEndReleasePacket> > > & Releases);
 
 };
 
@@ -1014,7 +969,7 @@ Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type).
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedDegreeOfFreedom();
 
 		/****** StepFEA_DegreeOfFreedom::CaseMem ******/
-		/****** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ******/
+		/****** md5 signature: 3996721cbe1f7f39efa83f015b4146fa ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -1029,10 +984,10 @@ Description
 -----------
 Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else.
 ") CaseMem;
-		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
+		int CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****** StepFEA_DegreeOfFreedom::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1047,7 +1002,7 @@ Description
 -----------
 Recognizes a kind of CurveElementFreedom select type return 0.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepFEA_DegreeOfFreedom::EnumeratedDegreeOfFreedom ******/
 		/****** md5 signature: dd1de6166d7f0663deb4fc2ceda36c56 ******/
@@ -1063,7 +1018,7 @@ Returns Value as EnumeratedDegreeOfFreedom (or Null if another type).
 		StepFEA_EnumeratedDegreeOfFreedom EnumeratedDegreeOfFreedom();
 
 		/****** StepFEA_DegreeOfFreedom::NewMember ******/
-		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
+		/****** md5 signature: 4dce57062553ca704dad3d58f4286daa ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -1073,7 +1028,7 @@ Description
 -----------
 Returns a new select member the type CurveElementFreedomMember.
 ") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember();
+		opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****** StepFEA_DegreeOfFreedom::SetApplicationDefinedDegreeOfFreedom ******/
 		/****** md5 signature: 5befbf4bc7a536042078023a85fb19e3 ******/
@@ -1139,7 +1094,7 @@ Empty constructor.
 		 StepFEA_DegreeOfFreedomMember();
 
 		/****** StepFEA_DegreeOfFreedomMember::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -1149,15 +1104,15 @@ Description
 -----------
 Returns True if has name.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepFEA_DegreeOfFreedomMember::Matches ******/
-		/****** md5 signature: 926675035b73f94f6faae7b81ca23022 ******/
+		/****** md5 signature: 5669ec2104723ad7c0a5d6d02fd217ed ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -1167,28 +1122,28 @@ Description
 -----------
 Tells if the name of a SelectMember matches a given one;.
 ") Matches;
-		virtual Standard_Boolean Matches(Standard_CString name);
+		bool Matches(const char * const name);
 
 		/****** StepFEA_DegreeOfFreedomMember::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns set name.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepFEA_DegreeOfFreedomMember::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -1198,12 +1153,10 @@ Description
 -----------
 Set name.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 };
 
-
-%make_alias(StepFEA_DegreeOfFreedomMember)
 
 %extend StepFEA_DegreeOfFreedomMember {
 	%pythoncode {
@@ -1372,7 +1325,7 @@ Empty constructor.
 		 StepFEA_ElementOrElementGroup();
 
 		/****** StepFEA_ElementOrElementGroup::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1387,7 +1340,7 @@ Description
 -----------
 Recognizes a kind of ElementOrElementGroup select type 1 -> ElementRepresentation from StepFEA 2 -> ElementGroup from StepFEA 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepFEA_ElementOrElementGroup::ElementGroup ******/
 		/****** md5 signature: 6b09d9597476edf1d012ade9e92323c7 ******/
@@ -1443,15 +1396,15 @@ Empty constructor.
 		 StepFEA_ElementRepresentation();
 
 		/****** StepFEA_ElementRepresentation::Init ******/
-		/****** md5 signature: 9765af58765f7a43fd4b2bc06c74d6b8 ******/
+		/****** md5 signature: 55552f55b245df5888e994dfb2408aa7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentation_Name: TCollection_HAsciiString
-aRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+aRepresentation_Items: NCollection_HArray1<
 aRepresentation_ContextOfItems: StepRepr_RepresentationContext
-aNodeList: StepFEA_HArray1OfNodeRepresentation
+aNodeList: NCollection_HArray1<
 
 Return
 -------
@@ -1461,28 +1414,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aNodeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & aNodeList);
 
 		/****** StepFEA_ElementRepresentation::NodeList ******/
-		/****** md5 signature: aebc33584d3f41632eee431f0d8ce136 ******/
+		/****** md5 signature: e87352abdcaf4f412b15a9cabe76f9e2 ******/
 		%feature("compactdefaultargs") NodeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>
 
 Description
 -----------
 Returns field NodeList.
 ") NodeList;
-		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> NodeList();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>> NodeList();
 
 		/****** StepFEA_ElementRepresentation::SetNodeList ******/
-		/****** md5 signature: b31399b855585cbb87b624ee9e33c1ca ******/
+		/****** md5 signature: 909fe0b859001b13a03fe526ee8a756b ******/
 		%feature("compactdefaultargs") SetNodeList;
 		%feature("autodoc", "
 Parameters
 ----------
-NodeList: StepFEA_HArray1OfNodeRepresentation
+NodeList: NCollection_HArray1<
 
 Return
 -------
@@ -1492,12 +1445,10 @@ Description
 -----------
 Set field NodeList.
 ") SetNodeList;
-		void SetNodeList(const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & NodeList);
+		void SetNodeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & NodeList);
 
 };
 
-
-%make_alias(StepFEA_ElementRepresentation)
 
 %extend StepFEA_ElementRepresentation {
 	%pythoncode {
@@ -1537,7 +1488,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepFEA_FeaAxis2Placement3d::Init ******/
-		/****** md5 signature: f36188d95da622532853fd8f84ce5d3f ******/
+		/****** md5 signature: f97aac23e6d770861518c0e0613657fa ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1559,7 +1510,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepGeom_CartesianPoint> & aPlacement_Location, const Standard_Boolean hasAxis2Placement3d_Axis, const opencascade::handle<StepGeom_Direction> & aAxis2Placement3d_Axis, const Standard_Boolean hasAxis2Placement3d_RefDirection, const opencascade::handle<StepGeom_Direction> & aAxis2Placement3d_RefDirection, const StepFEA_CoordinateSystemType aSystemType, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepGeom_CartesianPoint> & aPlacement_Location, const bool hasAxis2Placement3d_Axis, const opencascade::handle<StepGeom_Direction> & aAxis2Placement3d_Axis, const bool hasAxis2Placement3d_RefDirection, const opencascade::handle<StepGeom_Direction> & aAxis2Placement3d_RefDirection, const StepFEA_CoordinateSystemType aSystemType, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepFEA_FeaAxis2Placement3d::SetDescription ******/
 		/****** md5 signature: 11ff45bab13c9c85c44619d6c4501da8 ******/
@@ -1612,8 +1563,6 @@ Returns field SystemType.
 
 };
 
-
-%make_alias(StepFEA_FeaAxis2Placement3d)
 
 %extend StepFEA_FeaAxis2Placement3d {
 	%pythoncode {
@@ -1803,8 +1752,6 @@ Set field ModelRef.
 };
 
 
-%make_alias(StepFEA_FeaGroup)
-
 %extend StepFEA_FeaGroup {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1832,8 +1779,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepFEA_FeaMaterialPropertyRepresentation)
-
 %extend StepFEA_FeaMaterialPropertyRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1860,8 +1805,6 @@ Empty constructor.
 
 };
 
-
-%make_alias(StepFEA_FeaMaterialPropertyRepresentationItem)
 
 %extend StepFEA_FeaMaterialPropertyRepresentationItem {
 	%pythoncode {
@@ -1927,16 +1870,16 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepFEA_FeaModel::Init ******/
-		/****** md5 signature: 40354018c2242768e4382f13f47fdd85 ******/
+		/****** md5 signature: 02bcde69fe9de7dee587f1debab80bba ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentation_Name: TCollection_HAsciiString
-aRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+aRepresentation_Items: NCollection_HArray1<
 aRepresentation_ContextOfItems: StepRepr_RepresentationContext
 aCreatingSoftware: TCollection_HAsciiString
-aIntendedAnalysisCode: TColStd_HArray1OfAsciiString
+aIntendedAnalysisCode: NCollection_HArray1<TCollection_AsciiString
 aDescription: TCollection_HAsciiString
 aAnalysisType: TCollection_HAsciiString
 
@@ -1948,20 +1891,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<TCollection_HAsciiString> & aCreatingSoftware, const opencascade::handle<TColStd_HArray1OfAsciiString> & aIntendedAnalysisCode, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<TCollection_HAsciiString> & aAnalysisType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<TCollection_HAsciiString> & aCreatingSoftware, const opencascade::handle<NCollection_HArray1<TCollection_AsciiString> > & aIntendedAnalysisCode, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<TCollection_HAsciiString> & aAnalysisType);
 
 		/****** StepFEA_FeaModel::IntendedAnalysisCode ******/
-		/****** md5 signature: b876deca4ff3144dff91b7c160dfb700 ******/
+		/****** md5 signature: 7552d0bf08e0fa6bfa0b67a6b9d270f8 ******/
 		%feature("compactdefaultargs") IntendedAnalysisCode;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfAsciiString>
+opencascade::handle<NCollection_HArray1<TCollection_AsciiString>>
 
 Description
 -----------
 Returns field IntendedAnalysisCode.
 ") IntendedAnalysisCode;
-		opencascade::handle<TColStd_HArray1OfAsciiString> IntendedAnalysisCode();
+		opencascade::handle<NCollection_HArray1<TCollection_AsciiString>> IntendedAnalysisCode();
 
 		/****** StepFEA_FeaModel::SetAnalysisType ******/
 		/****** md5 signature: 282ac51345b486c6089e9b3028e07375 ******/
@@ -2018,12 +1961,12 @@ Set field Description.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
 		/****** StepFEA_FeaModel::SetIntendedAnalysisCode ******/
-		/****** md5 signature: 2adf9c4c5d9dbf7b11b374d648e86a15 ******/
+		/****** md5 signature: 908637de31fc75a6cca959c741509142 ******/
 		%feature("compactdefaultargs") SetIntendedAnalysisCode;
 		%feature("autodoc", "
 Parameters
 ----------
-IntendedAnalysisCode: TColStd_HArray1OfAsciiString
+IntendedAnalysisCode: NCollection_HArray1<TCollection_AsciiString
 
 Return
 -------
@@ -2033,12 +1976,10 @@ Description
 -----------
 Set field IntendedAnalysisCode.
 ") SetIntendedAnalysisCode;
-		void SetIntendedAnalysisCode(const opencascade::handle<TColStd_HArray1OfAsciiString> & IntendedAnalysisCode);
+		void SetIntendedAnalysisCode(const opencascade::handle<NCollection_HArray1<TCollection_AsciiString> > & IntendedAnalysisCode);
 
 };
 
-
-%make_alias(StepFEA_FeaModel)
 
 %extend StepFEA_FeaModel {
 	%pythoncode {
@@ -2067,8 +2008,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepFEA_FeaModelDefinition)
-
 %extend StepFEA_FeaModelDefinition {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2094,26 +2033,26 @@ Empty constructor.
 		 StepFEA_FeaParametricPoint();
 
 		/****** StepFEA_FeaParametricPoint::Coordinates ******/
-		/****** md5 signature: 44a2ea0d78b9f0cc257a20935c1d21b3 ******/
+		/****** md5 signature: 37051b9ecf9354611a9269142deb8fec ******/
 		%feature("compactdefaultargs") Coordinates;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns field Coordinates.
 ") Coordinates;
-		opencascade::handle<TColStd_HArray1OfReal> Coordinates();
+		opencascade::handle<NCollection_HArray1<double>> Coordinates();
 
 		/****** StepFEA_FeaParametricPoint::Init ******/
-		/****** md5 signature: b4d1c72b254cb89d39e73ab4a2c2794a ******/
+		/****** md5 signature: 0cd0704bbf8be352f40da29cf245112d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aCoordinates: TColStd_HArray1OfReal
+aCoordinates: NCollection_HArray1<double
 
 Return
 -------
@@ -2123,15 +2062,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<TColStd_HArray1OfReal> & aCoordinates);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<double> > & aCoordinates);
 
 		/****** StepFEA_FeaParametricPoint::SetCoordinates ******/
-		/****** md5 signature: 373ea7300545bce672f1d1c1c267e182 ******/
+		/****** md5 signature: ca9993be868661aafc29cf3d6c150a34 ******/
 		%feature("compactdefaultargs") SetCoordinates;
 		%feature("autodoc", "
 Parameters
 ----------
-Coordinates: TColStd_HArray1OfReal
+Coordinates: NCollection_HArray1<double
 
 Return
 -------
@@ -2141,12 +2080,10 @@ Description
 -----------
 Set field Coordinates.
 ") SetCoordinates;
-		void SetCoordinates(const opencascade::handle<TColStd_HArray1OfReal> & Coordinates);
+		void SetCoordinates(const opencascade::handle<NCollection_HArray1<double> > & Coordinates);
 
 };
 
-
-%make_alias(StepFEA_FeaParametricPoint)
 
 %extend StepFEA_FeaParametricPoint {
 	%pythoncode {
@@ -2174,8 +2111,6 @@ Empty constructor.
 
 };
 
-
-%make_alias(StepFEA_FeaRepresentationItem)
 
 %extend StepFEA_FeaRepresentationItem {
 	%pythoncode {
@@ -2422,25 +2357,25 @@ Empty constructor.
 		 StepFEA_FreedomsList();
 
 		/****** StepFEA_FreedomsList::Freedoms ******/
-		/****** md5 signature: 49a0990ebe57f8fc5be6eb57fd3d4787 ******/
+		/****** md5 signature: bf93c83e35905205ed06808bd6af58b4 ******/
 		%feature("compactdefaultargs") Freedoms;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom>
+opencascade::handle<NCollection_HArray1<StepFEA_DegreeOfFreedom>>
 
 Description
 -----------
 Returns field Freedoms.
 ") Freedoms;
-		opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> Freedoms();
+		opencascade::handle<NCollection_HArray1<StepFEA_DegreeOfFreedom>> Freedoms();
 
 		/****** StepFEA_FreedomsList::Init ******/
-		/****** md5 signature: 4fc3faa229b7f5d307c6077cd00f6acd ******/
+		/****** md5 signature: a0d9a11fbe94dec7aa4338deac02cc11 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aFreedoms: StepFEA_HArray1OfDegreeOfFreedom
+aFreedoms: NCollection_HArray1<StepFEA_DegreeOfFreedom
 
 Return
 -------
@@ -2450,15 +2385,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> & aFreedoms);
+		void Init(const opencascade::handle<NCollection_HArray1<StepFEA_DegreeOfFreedom> > & aFreedoms);
 
 		/****** StepFEA_FreedomsList::SetFreedoms ******/
-		/****** md5 signature: 14b443dec11baaa6e729ae1aea8a900b ******/
+		/****** md5 signature: b682e48e28162ae9e6d2570b789a1a8e ******/
 		%feature("compactdefaultargs") SetFreedoms;
 		%feature("autodoc", "
 Parameters
 ----------
-Freedoms: StepFEA_HArray1OfDegreeOfFreedom
+Freedoms: NCollection_HArray1<StepFEA_DegreeOfFreedom
 
 Return
 -------
@@ -2468,7 +2403,7 @@ Description
 -----------
 Set field Freedoms.
 ") SetFreedoms;
-		void SetFreedoms(const opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> & Freedoms);
+		void SetFreedoms(const opencascade::handle<NCollection_HArray1<StepFEA_DegreeOfFreedom> > & Freedoms);
 
 };
 
@@ -2502,8 +2437,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepFEA_NodeDefinition)
-
 %extend StepFEA_NodeDefinition {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2529,13 +2462,13 @@ Empty constructor.
 		 StepFEA_NodeRepresentation();
 
 		/****** StepFEA_NodeRepresentation::Init ******/
-		/****** md5 signature: 80a74a084367634bb8be5e3eb9a159d3 ******/
+		/****** md5 signature: 56e1dc06a3f80b72f96eb37a5ebdc809 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentation_Name: TCollection_HAsciiString
-aRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+aRepresentation_Items: NCollection_HArray1<
 aRepresentation_ContextOfItems: StepRepr_RepresentationContext
 aModelRef: StepFEA_FeaModel
 
@@ -2547,7 +2480,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<StepFEA_FeaModel> & aModelRef);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<StepFEA_FeaModel> & aModelRef);
 
 		/****** StepFEA_NodeRepresentation::ModelRef ******/
 		/****** md5 signature: 7c456eca97f01da8f37fdaf738a476d8 ******/
@@ -2583,8 +2516,6 @@ Set field ModelRef.
 };
 
 
-%make_alias(StepFEA_NodeRepresentation)
-
 %extend StepFEA_NodeRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2610,13 +2541,13 @@ Empty constructor.
 		 StepFEA_NodeSet();
 
 		/****** StepFEA_NodeSet::Init ******/
-		/****** md5 signature: 1c1e288126447f0bae60a4495b7fd864 ******/
+		/****** md5 signature: a522a92431376bd82574b04c0bf26ef8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aNodes: StepFEA_HArray1OfNodeRepresentation
+aNodes: NCollection_HArray1<
 
 Return
 -------
@@ -2626,28 +2557,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aNodes);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & aNodes);
 
 		/****** StepFEA_NodeSet::Nodes ******/
-		/****** md5 signature: 481dfe329e415e43ffa39c24840aa086 ******/
+		/****** md5 signature: ab224a6985c6e7da347deac28b459098 ******/
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>
 
 Description
 -----------
 Returns field Nodes.
 ") Nodes;
-		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> Nodes();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>> Nodes();
 
 		/****** StepFEA_NodeSet::SetNodes ******/
-		/****** md5 signature: d91f98e9b19dce0d990e0fc877dbb9f0 ******/
+		/****** md5 signature: c15379d1b3ccb2a8ec1146b02ae9e045 ******/
 		%feature("compactdefaultargs") SetNodes;
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: StepFEA_HArray1OfNodeRepresentation
+Nodes: NCollection_HArray1<
 
 Return
 -------
@@ -2657,12 +2588,10 @@ Description
 -----------
 Set field Nodes.
 ") SetNodes;
-		void SetNodes(const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & Nodes);
+		void SetNodes(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & Nodes);
 
 };
 
-
-%make_alias(StepFEA_NodeSet)
 
 %extend StepFEA_NodeSet {
 	%pythoncode {
@@ -2689,20 +2618,20 @@ Empty constructor.
 		 StepFEA_SymmetricTensor22d();
 
 		/****** StepFEA_SymmetricTensor22d::AnisotropicSymmetricTensor22d ******/
-		/****** md5 signature: c8737641a805875df5a0cab40e284c75 ******/
+		/****** md5 signature: 4810b39799270c3e32e4b02d6f3df933 ******/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor22d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as AnisotropicSymmetricTensor22d (or Null if another type).
 ") AnisotropicSymmetricTensor22d;
-		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor22d();
+		opencascade::handle<NCollection_HArray1<double>> AnisotropicSymmetricTensor22d();
 
 		/****** StepFEA_SymmetricTensor22d::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2717,7 +2646,7 @@ Description
 -----------
 Recognizes a kind of SymmetricTensor22d select type 1 -> HArray1OfReal from TColStd 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -2747,20 +2676,20 @@ Empty constructor.
 		 StepFEA_SymmetricTensor23d();
 
 		/****** StepFEA_SymmetricTensor23d::AnisotropicSymmetricTensor23d ******/
-		/****** md5 signature: 00e533416c2e7620b0fcc77c26020a45 ******/
+		/****** md5 signature: cff9933e38c52f84c8a6fc5c3b8b2b97 ******/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor23d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as AnisotropicSymmetricTensor23d (or Null if another type).
 ") AnisotropicSymmetricTensor23d;
-		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor23d();
+		opencascade::handle<NCollection_HArray1<double>> AnisotropicSymmetricTensor23d();
 
 		/****** StepFEA_SymmetricTensor23d::CaseMem ******/
-		/****** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ******/
+		/****** md5 signature: 3996721cbe1f7f39efa83f015b4146fa ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -2775,10 +2704,10 @@ Description
 -----------
 Recognizes a items of select member SymmetricTensor23dMember 1 -> IsotropicSymmetricTensor23d 2 -> OrthotropicSymmetricTensor23d 3 -> AnisotropicSymmetricTensor23d 0 else.
 ") CaseMem;
-		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
+		int CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****** StepFEA_SymmetricTensor23d::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2793,23 +2722,23 @@ Description
 -----------
 Recognizes a kind of SymmetricTensor23d select type return 0.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepFEA_SymmetricTensor23d::IsotropicSymmetricTensor23d ******/
-		/****** md5 signature: 83420dcb027550bf001991caebc9c853 ******/
+		/****** md5 signature: fff1e19c51ca4981c6df96bac71f072e ******/
 		%feature("compactdefaultargs") IsotropicSymmetricTensor23d;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns Value as IsotropicSymmetricTensor23d (or Null if another type).
 ") IsotropicSymmetricTensor23d;
-		Standard_Real IsotropicSymmetricTensor23d();
+		double IsotropicSymmetricTensor23d();
 
 		/****** StepFEA_SymmetricTensor23d::NewMember ******/
-		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
+		/****** md5 signature: 4dce57062553ca704dad3d58f4286daa ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -2819,28 +2748,28 @@ Description
 -----------
 Returns a new select member the type SymmetricTensor23dMember.
 ") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember();
+		opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****** StepFEA_SymmetricTensor23d::OrthotropicSymmetricTensor23d ******/
-		/****** md5 signature: 6382f29ac1f364b69a9bb468ff1e2006 ******/
+		/****** md5 signature: b5b5018d744ed52a6b90c0f8a32f6d92 ******/
 		%feature("compactdefaultargs") OrthotropicSymmetricTensor23d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as OrthotropicSymmetricTensor23d (or Null if another type).
 ") OrthotropicSymmetricTensor23d;
-		opencascade::handle<TColStd_HArray1OfReal> OrthotropicSymmetricTensor23d();
+		opencascade::handle<NCollection_HArray1<double>> OrthotropicSymmetricTensor23d();
 
 		/****** StepFEA_SymmetricTensor23d::SetAnisotropicSymmetricTensor23d ******/
-		/****** md5 signature: e40c073b455c5732376b091cb8761634 ******/
+		/****** md5 signature: 1d1cc2b3f8ceda5f4cc263867683976c ******/
 		%feature("compactdefaultargs") SetAnisotropicSymmetricTensor23d;
 		%feature("autodoc", "
 Parameters
 ----------
-aVal: TColStd_HArray1OfReal
+aVal: NCollection_HArray1<double
 
 Return
 -------
@@ -2850,15 +2779,15 @@ Description
 -----------
 Set Value for AnisotropicSymmetricTensor23d.
 ") SetAnisotropicSymmetricTensor23d;
-		void SetAnisotropicSymmetricTensor23d(const opencascade::handle<TColStd_HArray1OfReal> & aVal);
+		void SetAnisotropicSymmetricTensor23d(const opencascade::handle<NCollection_HArray1<double> > & aVal);
 
 		/****** StepFEA_SymmetricTensor23d::SetIsotropicSymmetricTensor23d ******/
-		/****** md5 signature: 9a64a817ba73feb9252d4aa59cd9acd0 ******/
+		/****** md5 signature: fa01f1b0c9dd323710e20171c26fcb4b ******/
 		%feature("compactdefaultargs") SetIsotropicSymmetricTensor23d;
 		%feature("autodoc", "
 Parameters
 ----------
-aVal: float
+aVal: double
 
 Return
 -------
@@ -2868,15 +2797,15 @@ Description
 -----------
 Set Value for IsotropicSymmetricTensor23d.
 ") SetIsotropicSymmetricTensor23d;
-		void SetIsotropicSymmetricTensor23d(const Standard_Real aVal);
+		void SetIsotropicSymmetricTensor23d(const double aVal);
 
 		/****** StepFEA_SymmetricTensor23d::SetOrthotropicSymmetricTensor23d ******/
-		/****** md5 signature: 5e94e88fb5421e20b86bfb64aecb7d2d ******/
+		/****** md5 signature: 4f0b1e0bc58639739c065e499eb1f9b3 ******/
 		%feature("compactdefaultargs") SetOrthotropicSymmetricTensor23d;
 		%feature("autodoc", "
 Parameters
 ----------
-aVal: TColStd_HArray1OfReal
+aVal: NCollection_HArray1<double
 
 Return
 -------
@@ -2886,7 +2815,7 @@ Description
 -----------
 Set Value for OrthotropicSymmetricTensor23d.
 ") SetOrthotropicSymmetricTensor23d;
-		void SetOrthotropicSymmetricTensor23d(const opencascade::handle<TColStd_HArray1OfReal> & aVal);
+		void SetOrthotropicSymmetricTensor23d(const opencascade::handle<NCollection_HArray1<double> > & aVal);
 
 };
 
@@ -2916,7 +2845,7 @@ Empty constructor.
 		 StepFEA_SymmetricTensor23dMember();
 
 		/****** StepFEA_SymmetricTensor23dMember::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -2926,15 +2855,15 @@ Description
 -----------
 Returns True if has name.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepFEA_SymmetricTensor23dMember::Matches ******/
-		/****** md5 signature: 926675035b73f94f6faae7b81ca23022 ******/
+		/****** md5 signature: 5669ec2104723ad7c0a5d6d02fd217ed ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2944,28 +2873,28 @@ Description
 -----------
 Tells if the name of a SelectMember matches a given one;.
 ") Matches;
-		virtual Standard_Boolean Matches(Standard_CString name);
+		bool Matches(const char * const name);
 
 		/****** StepFEA_SymmetricTensor23dMember::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns set name.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepFEA_SymmetricTensor23dMember::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -2975,12 +2904,10 @@ Description
 -----------
 Set name.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 };
 
-
-%make_alias(StepFEA_SymmetricTensor23dMember)
 
 %extend StepFEA_SymmetricTensor23dMember {
 	%pythoncode {
@@ -3007,20 +2934,20 @@ Empty constructor.
 		 StepFEA_SymmetricTensor42d();
 
 		/****** StepFEA_SymmetricTensor42d::AnisotropicSymmetricTensor42d ******/
-		/****** md5 signature: 03de402b9c1011dd62cca1dc7d775153 ******/
+		/****** md5 signature: 4ea3d3cc193152ff03da90aa09cc9ddd ******/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor42d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as AnisotropicSymmetricTensor42d (or Null if another type).
 ") AnisotropicSymmetricTensor42d;
-		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor42d();
+		opencascade::handle<NCollection_HArray1<double>> AnisotropicSymmetricTensor42d();
 
 		/****** StepFEA_SymmetricTensor42d::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3035,7 +2962,7 @@ Description
 -----------
 Recognizes a kind of SymmetricTensor42d select type 1 -> HArray1OfReal from TColStd 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -3065,20 +2992,20 @@ Empty constructor.
 		 StepFEA_SymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::AnisotropicSymmetricTensor43d ******/
-		/****** md5 signature: 470e718b9d67f67eecc3ee0e244362de ******/
+		/****** md5 signature: 6c5ef333efd85c3345ccac5782ad3e4f ******/
 		%feature("compactdefaultargs") AnisotropicSymmetricTensor43d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as AnisotropicSymmetricTensor43d (or Null if another type).
 ") AnisotropicSymmetricTensor43d;
-		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor43d();
+		opencascade::handle<NCollection_HArray1<double>> AnisotropicSymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::CaseMem ******/
-		/****** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ******/
+		/****** md5 signature: 3996721cbe1f7f39efa83f015b4146fa ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -3093,10 +3020,10 @@ Description
 -----------
 Recognizes a items of select member CurveElementFreedomMember 1 -> AnisotropicSymmetricTensor43d 2 -> FeaIsotropicSymmetricTensor43d 3 -> FeaIsoOrthotropicSymmetricTensor43d 4 -> FeaTransverseIsotropicSymmetricTensor43d 5 -> FeaColumnNormalisedOrthotropicSymmetricTensor43d 6 -> FeaColumnNormalisedMonoclinicSymmetricTensor43d 0 else.
 ") CaseMem;
-		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
+		int CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****** StepFEA_SymmetricTensor43d::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -3111,75 +3038,75 @@ Description
 -----------
 return 0.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepFEA_SymmetricTensor43d::FeaColumnNormalisedMonoclinicSymmetricTensor43d ******/
-		/****** md5 signature: 3d0de2c3d1bc3d16ad76cb540b3b991b ******/
+		/****** md5 signature: e7075a572c297df7738d87a7cd4889dc ******/
 		%feature("compactdefaultargs") FeaColumnNormalisedMonoclinicSymmetricTensor43d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as FeaColumnNormalisedMonoclinicSymmetricTensor43d (or Null if another type).
 ") FeaColumnNormalisedMonoclinicSymmetricTensor43d;
-		opencascade::handle<TColStd_HArray1OfReal> FeaColumnNormalisedMonoclinicSymmetricTensor43d();
+		opencascade::handle<NCollection_HArray1<double>> FeaColumnNormalisedMonoclinicSymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::FeaColumnNormalisedOrthotropicSymmetricTensor43d ******/
-		/****** md5 signature: f4c71fd6965f2f2d868ba68f0bbe4613 ******/
+		/****** md5 signature: 5980623a1db3d2c04a3d9871d0a519a0 ******/
 		%feature("compactdefaultargs") FeaColumnNormalisedOrthotropicSymmetricTensor43d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as FeaColumnNormalisedOrthotropicSymmetricTensor43d (or Null if another type).
 ") FeaColumnNormalisedOrthotropicSymmetricTensor43d;
-		opencascade::handle<TColStd_HArray1OfReal> FeaColumnNormalisedOrthotropicSymmetricTensor43d();
+		opencascade::handle<NCollection_HArray1<double>> FeaColumnNormalisedOrthotropicSymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::FeaIsoOrthotropicSymmetricTensor43d ******/
-		/****** md5 signature: 15b787ce4ffce83231d4b721e6d71794 ******/
+		/****** md5 signature: bd73dc8f9f780051282533622e9b0936 ******/
 		%feature("compactdefaultargs") FeaIsoOrthotropicSymmetricTensor43d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as FeaIsoOrthotropicSymmetricTensor43d (or Null if another type).
 ") FeaIsoOrthotropicSymmetricTensor43d;
-		opencascade::handle<TColStd_HArray1OfReal> FeaIsoOrthotropicSymmetricTensor43d();
+		opencascade::handle<NCollection_HArray1<double>> FeaIsoOrthotropicSymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::FeaIsotropicSymmetricTensor43d ******/
-		/****** md5 signature: 5e40182c5184c6b22c7f565211f13286 ******/
+		/****** md5 signature: 039ba371bb25e2e289746a45354fc374 ******/
 		%feature("compactdefaultargs") FeaIsotropicSymmetricTensor43d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as FeaIsotropicSymmetricTensor43d (or Null if another type).
 ") FeaIsotropicSymmetricTensor43d;
-		opencascade::handle<TColStd_HArray1OfReal> FeaIsotropicSymmetricTensor43d();
+		opencascade::handle<NCollection_HArray1<double>> FeaIsotropicSymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::FeaTransverseIsotropicSymmetricTensor43d ******/
-		/****** md5 signature: db736e1f696952a446c03f921f7ce584 ******/
+		/****** md5 signature: 8360ffbbc6ec485b344e51d4b3a2e78c ******/
 		%feature("compactdefaultargs") FeaTransverseIsotropicSymmetricTensor43d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as FeaTransverseIsotropicSymmetricTensor43d (or Null if another type).
 ") FeaTransverseIsotropicSymmetricTensor43d;
-		opencascade::handle<TColStd_HArray1OfReal> FeaTransverseIsotropicSymmetricTensor43d();
+		opencascade::handle<NCollection_HArray1<double>> FeaTransverseIsotropicSymmetricTensor43d();
 
 		/****** StepFEA_SymmetricTensor43d::NewMember ******/
-		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
+		/****** md5 signature: 4dce57062553ca704dad3d58f4286daa ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -3189,7 +3116,7 @@ Description
 -----------
 No available documentation.
 ") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember();
+		opencascade::handle<StepData_SelectMember> NewMember();
 
 };
 
@@ -3223,7 +3150,7 @@ Empty constructor.
 		 StepFEA_SymmetricTensor43dMember();
 
 		/****** StepFEA_SymmetricTensor43dMember::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -3233,15 +3160,15 @@ Description
 -----------
 Returns True if has name.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepFEA_SymmetricTensor43dMember::Matches ******/
-		/****** md5 signature: 926675035b73f94f6faae7b81ca23022 ******/
+		/****** md5 signature: 5669ec2104723ad7c0a5d6d02fd217ed ******/
 		%feature("compactdefaultargs") Matches;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3251,28 +3178,28 @@ Description
 -----------
 Tells if the name of a SelectMember matches a given one;.
 ") Matches;
-		virtual Standard_Boolean Matches(Standard_CString name);
+		bool Matches(const char * const name);
 
 		/****** StepFEA_SymmetricTensor43dMember::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns set name.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepFEA_SymmetricTensor43dMember::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3282,12 +3209,10 @@ Description
 -----------
 Set name.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 };
 
-
-%make_alias(StepFEA_SymmetricTensor43dMember)
 
 %extend StepFEA_SymmetricTensor43dMember {
 	%pythoncode {
@@ -3366,8 +3291,6 @@ Set field CoordinateSystem.
 };
 
 
-%make_alias(StepFEA_AlignedCurve3dElementCoordinateSystem)
-
 %extend StepFEA_AlignedCurve3dElementCoordinateSystem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3444,8 +3367,6 @@ Set field CoordinateSystem.
 
 };
 
-
-%make_alias(StepFEA_AlignedSurface3dElementCoordinateSystem)
 
 %extend StepFEA_AlignedSurface3dElementCoordinateSystem {
 	%pythoncode {
@@ -3524,8 +3445,6 @@ Set field CoordinateSystem.
 };
 
 
-%make_alias(StepFEA_ArbitraryVolume3dElementCoordinateSystem)
-
 %extend StepFEA_ArbitraryVolume3dElementCoordinateSystem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3551,20 +3470,20 @@ Empty constructor.
 		 StepFEA_ConstantSurface3dElementCoordinateSystem();
 
 		/****** StepFEA_ConstantSurface3dElementCoordinateSystem::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field Angle.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** StepFEA_ConstantSurface3dElementCoordinateSystem::Axis ******/
-		/****** md5 signature: 8c835a38d257f157c4c499e54d099895 ******/
+		/****** md5 signature: 927436ca168baaa795779ef3831c25e8 ******/
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "Return
 -------
@@ -3574,17 +3493,17 @@ Description
 -----------
 Returns field Axis.
 ") Axis;
-		Standard_Integer Axis();
+		int Axis();
 
 		/****** StepFEA_ConstantSurface3dElementCoordinateSystem::Init ******/
-		/****** md5 signature: 8b71832374bcd7b3ed64bbf6e1497439 ******/
+		/****** md5 signature: 221c627c486a4c78f9262933c19fd943 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
 aAxis: int
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -3594,15 +3513,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const Standard_Integer aAxis, const Standard_Real aAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const int aAxis, const double aAngle);
 
 		/****** StepFEA_ConstantSurface3dElementCoordinateSystem::SetAngle ******/
-		/****** md5 signature: a0d60e2a1ea25c193dafa15194b0ab24 ******/
+		/****** md5 signature: ba2b03bf28ec10048167948ef997085a ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 
 Return
 -------
@@ -3612,10 +3531,10 @@ Description
 -----------
 Set field Angle.
 ") SetAngle;
-		void SetAngle(const Standard_Real Angle);
+		void SetAngle(const double Angle);
 
 		/****** StepFEA_ConstantSurface3dElementCoordinateSystem::SetAxis ******/
-		/****** md5 signature: 2fce638761516dcb6b748e7c34206f1c ******/
+		/****** md5 signature: 730c2ebe6791f3f0f5edf89c5e91a8dd ******/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "
 Parameters
@@ -3630,12 +3549,10 @@ Description
 -----------
 Set field Axis.
 ") SetAxis;
-		void SetAxis(const Standard_Integer Axis);
+		void SetAxis(const int Axis);
 
 };
 
-
-%make_alias(StepFEA_ConstantSurface3dElementCoordinateSystem)
 
 %extend StepFEA_ConstantSurface3dElementCoordinateSystem {
 	%pythoncode {
@@ -3675,15 +3592,15 @@ Returns field ElementDescriptor.
 		opencascade::handle<StepElement_Curve3dElementDescriptor> ElementDescriptor();
 
 		/****** StepFEA_Curve3dElementRepresentation::Init ******/
-		/****** md5 signature: f635ebc2c42d6f7bc4fe298211c408c9 ******/
+		/****** md5 signature: cc50f47b2a0813ff82a82ba0ab47e872 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentation_Name: TCollection_HAsciiString
-aRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+aRepresentation_Items: NCollection_HArray1<
 aRepresentation_ContextOfItems: StepRepr_RepresentationContext
-aElementRepresentation_NodeList: StepFEA_HArray1OfNodeRepresentation
+aElementRepresentation_NodeList: NCollection_HArray1<
 aModelRef: StepFEA_FeaModel3d
 aElementDescriptor: StepElement_Curve3dElementDescriptor
 aProperty: StepFEA_Curve3dElementProperty
@@ -3697,7 +3614,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aElementRepresentation_NodeList, const opencascade::handle<StepFEA_FeaModel3d> & aModelRef, const opencascade::handle<StepElement_Curve3dElementDescriptor> & aElementDescriptor, const opencascade::handle<StepFEA_Curve3dElementProperty> & aProperty, const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & aElementRepresentation_NodeList, const opencascade::handle<StepFEA_FeaModel3d> & aModelRef, const opencascade::handle<StepElement_Curve3dElementDescriptor> & aElementDescriptor, const opencascade::handle<StepFEA_Curve3dElementProperty> & aProperty, const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
 
 		/****** StepFEA_Curve3dElementRepresentation::Material ******/
 		/****** md5 signature: d6c4d9812dbdfac4cc3b5047d6625c8d ******/
@@ -3813,8 +3730,6 @@ Set field Property.
 };
 
 
-%make_alias(StepFEA_Curve3dElementRepresentation)
-
 %extend StepFEA_Curve3dElementRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3920,14 +3835,14 @@ Empty constructor.
 		 StepFEA_CurveElementIntervalLinearlyVarying();
 
 		/****** StepFEA_CurveElementIntervalLinearlyVarying::Init ******/
-		/****** md5 signature: 6354189f461f32ff686e7faa86df8210 ******/
+		/****** md5 signature: 71ee7571515252e3b5b2be2536143e8e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurveElementInterval_FinishPosition: StepFEA_CurveElementLocation
 aCurveElementInterval_EuAngles: StepBasic_EulerAngles
-aSections: StepElement_HArray1OfCurveElementSectionDefinition
+aSections: NCollection_HArray1<
 
 Return
 -------
@@ -3937,28 +3852,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepFEA_CurveElementLocation> & aCurveElementInterval_FinishPosition, const opencascade::handle<StepBasic_EulerAngles> & aCurveElementInterval_EuAngles, const opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> & aSections);
+		void Init(const opencascade::handle<StepFEA_CurveElementLocation> & aCurveElementInterval_FinishPosition, const opencascade::handle<StepBasic_EulerAngles> & aCurveElementInterval_EuAngles, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition> > > & aSections);
 
 		/****** StepFEA_CurveElementIntervalLinearlyVarying::Sections ******/
-		/****** md5 signature: cf65681a8c80fd6de59bb2c317825fc2 ******/
+		/****** md5 signature: 1b366c26eef43682d01ff3068ab08fdb ******/
 		%feature("compactdefaultargs") Sections;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>>
 
 Description
 -----------
 Returns field Sections.
 ") Sections;
-		opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> Sections();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition>>> Sections();
 
 		/****** StepFEA_CurveElementIntervalLinearlyVarying::SetSections ******/
-		/****** md5 signature: 2841d118c3e3dc6db822c18ee969beaf ******/
+		/****** md5 signature: 5fa8f17616687ca4949417ec0184abf8 ******/
 		%feature("compactdefaultargs") SetSections;
 		%feature("autodoc", "
 Parameters
 ----------
-Sections: StepElement_HArray1OfCurveElementSectionDefinition
+Sections: NCollection_HArray1<
 
 Return
 -------
@@ -3968,7 +3883,7 @@ Description
 -----------
 Set field Sections.
 ") SetSections;
-		void SetSections(const opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> & Sections);
+		void SetSections(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_CurveElementSectionDefinition> > > & Sections);
 
 };
 
@@ -4002,8 +3917,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepFEA_DummyNode)
-
 %extend StepFEA_DummyNode {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4029,20 +3942,20 @@ Empty constructor.
 		 StepFEA_ElementGroup();
 
 		/****** StepFEA_ElementGroup::Elements ******/
-		/****** md5 signature: 930fdfb5ef3683baf2d1505dd41190ca ******/
+		/****** md5 signature: 7f7a8d09eeaef761919db2cff95af7b8 ******/
 		%feature("compactdefaultargs") Elements;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfElementRepresentation>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>>
 
 Description
 -----------
 Returns field Elements.
 ") Elements;
-		opencascade::handle<StepFEA_HArray1OfElementRepresentation> Elements();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation>>> Elements();
 
 		/****** StepFEA_ElementGroup::Init ******/
-		/****** md5 signature: 2912e09dfb19adec2ae9dd6051d21bb8 ******/
+		/****** md5 signature: 787c62280eab433c75a5129cacf2411e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4050,7 +3963,7 @@ Parameters
 aGroup_Name: TCollection_HAsciiString
 aGroup_Description: TCollection_HAsciiString
 aFeaGroup_ModelRef: StepFEA_FeaModel
-aElements: StepFEA_HArray1OfElementRepresentation
+aElements: NCollection_HArray1<
 
 Return
 -------
@@ -4060,15 +3973,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aGroup_Name, const opencascade::handle<TCollection_HAsciiString> & aGroup_Description, const opencascade::handle<StepFEA_FeaModel> & aFeaGroup_ModelRef, const opencascade::handle<StepFEA_HArray1OfElementRepresentation> & aElements);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aGroup_Name, const opencascade::handle<TCollection_HAsciiString> & aGroup_Description, const opencascade::handle<StepFEA_FeaModel> & aFeaGroup_ModelRef, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation> > > & aElements);
 
 		/****** StepFEA_ElementGroup::SetElements ******/
-		/****** md5 signature: 9a2706a40fffabc639d0b74a209ad204 ******/
+		/****** md5 signature: 4cabab05471855602c0feb2f9ae9a949 ******/
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", "
 Parameters
 ----------
-Elements: StepFEA_HArray1OfElementRepresentation
+Elements: NCollection_HArray1<
 
 Return
 -------
@@ -4078,12 +3991,10 @@ Description
 -----------
 Set field Elements.
 ") SetElements;
-		void SetElements(const opencascade::handle<StepFEA_HArray1OfElementRepresentation> & Elements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_ElementRepresentation> > > & Elements);
 
 };
 
-
-%make_alias(StepFEA_ElementGroup)
 
 %extend StepFEA_ElementGroup {
 	%pythoncode {
@@ -4110,26 +4021,26 @@ Empty constructor.
 		 StepFEA_FeaAreaDensity();
 
 		/****** StepFEA_FeaAreaDensity::FeaConstant ******/
-		/****** md5 signature: 0a46bd475e120e5b92b1f9101c80c915 ******/
+		/****** md5 signature: 5b5550adb26d1bf6dcbf698347d12824 ******/
 		%feature("compactdefaultargs") FeaConstant;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field FeaConstant.
 ") FeaConstant;
-		Standard_Real FeaConstant();
+		double FeaConstant();
 
 		/****** StepFEA_FeaAreaDensity::Init ******/
-		/****** md5 signature: 42a90c6c44a5ab3ee5b755c471c842f8 ******/
+		/****** md5 signature: 53772067f1f162b5854bf0d5e9d444cf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aFeaConstant: float
+aFeaConstant: double
 
 Return
 -------
@@ -4139,15 +4050,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const Standard_Real aFeaConstant);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const double aFeaConstant);
 
 		/****** StepFEA_FeaAreaDensity::SetFeaConstant ******/
-		/****** md5 signature: 71eb81f7cb130ff77192594450ca8b54 ******/
+		/****** md5 signature: d89981632ece9204cb5c053aab57d6fa ******/
 		%feature("compactdefaultargs") SetFeaConstant;
 		%feature("autodoc", "
 Parameters
 ----------
-FeaConstant: float
+FeaConstant: double
 
 Return
 -------
@@ -4157,12 +4068,10 @@ Description
 -----------
 Set field FeaConstant.
 ") SetFeaConstant;
-		void SetFeaConstant(const Standard_Real FeaConstant);
+		void SetFeaConstant(const double FeaConstant);
 
 };
 
-
-%make_alias(StepFEA_FeaAreaDensity)
 
 %extend StepFEA_FeaAreaDensity {
 	%pythoncode {
@@ -4241,8 +4150,6 @@ Set field FeaConstants.
 };
 
 
-%make_alias(StepFEA_FeaLinearElasticity)
-
 %extend StepFEA_FeaLinearElasticity {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4268,26 +4175,26 @@ Empty constructor.
 		 StepFEA_FeaMassDensity();
 
 		/****** StepFEA_FeaMassDensity::FeaConstant ******/
-		/****** md5 signature: 0a46bd475e120e5b92b1f9101c80c915 ******/
+		/****** md5 signature: 5b5550adb26d1bf6dcbf698347d12824 ******/
 		%feature("compactdefaultargs") FeaConstant;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field FeaConstant.
 ") FeaConstant;
-		Standard_Real FeaConstant();
+		double FeaConstant();
 
 		/****** StepFEA_FeaMassDensity::Init ******/
-		/****** md5 signature: 42a90c6c44a5ab3ee5b755c471c842f8 ******/
+		/****** md5 signature: 53772067f1f162b5854bf0d5e9d444cf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
-aFeaConstant: float
+aFeaConstant: double
 
 Return
 -------
@@ -4297,15 +4204,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const Standard_Real aFeaConstant);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const double aFeaConstant);
 
 		/****** StepFEA_FeaMassDensity::SetFeaConstant ******/
-		/****** md5 signature: 71eb81f7cb130ff77192594450ca8b54 ******/
+		/****** md5 signature: d89981632ece9204cb5c053aab57d6fa ******/
 		%feature("compactdefaultargs") SetFeaConstant;
 		%feature("autodoc", "
 Parameters
 ----------
-FeaConstant: float
+FeaConstant: double
 
 Return
 -------
@@ -4315,12 +4222,10 @@ Description
 -----------
 Set field FeaConstant.
 ") SetFeaConstant;
-		void SetFeaConstant(const Standard_Real FeaConstant);
+		void SetFeaConstant(const double FeaConstant);
 
 };
 
-
-%make_alias(StepFEA_FeaMassDensity)
 
 %extend StepFEA_FeaMassDensity {
 	%pythoncode {
@@ -4348,8 +4253,6 @@ Empty constructor.
 
 };
 
-
-%make_alias(StepFEA_FeaModel3d)
 
 %extend StepFEA_FeaModel3d {
 	%pythoncode {
@@ -4428,8 +4331,6 @@ Set field FeaConstants.
 };
 
 
-%make_alias(StepFEA_FeaMoistureAbsorption)
-
 %extend StepFEA_FeaMoistureAbsorption {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4468,14 +4369,14 @@ Returns field FeaConstants.
 		StepFEA_SymmetricTensor23d FeaConstants();
 
 		/****** StepFEA_FeaSecantCoefficientOfLinearThermalExpansion::Init ******/
-		/****** md5 signature: b95492fa5d44ac834a9d2de519137869 ******/
+		/****** md5 signature: 07a9920c09d9b30c90f3f0a526579d81 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
 aFeaConstants: StepFEA_SymmetricTensor23d
-aReferenceTemperature: float
+aReferenceTemperature: double
 
 Return
 -------
@@ -4485,20 +4386,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const StepFEA_SymmetricTensor23d & aFeaConstants, const Standard_Real aReferenceTemperature);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const StepFEA_SymmetricTensor23d & aFeaConstants, const double aReferenceTemperature);
 
 		/****** StepFEA_FeaSecantCoefficientOfLinearThermalExpansion::ReferenceTemperature ******/
-		/****** md5 signature: d7c8f53ed724be61fdfa20eaa8ba9167 ******/
+		/****** md5 signature: 35cc65d4bb3e987c609979d06ca82d7a ******/
 		%feature("compactdefaultargs") ReferenceTemperature;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ReferenceTemperature.
 ") ReferenceTemperature;
-		Standard_Real ReferenceTemperature();
+		double ReferenceTemperature();
 
 		/****** StepFEA_FeaSecantCoefficientOfLinearThermalExpansion::SetFeaConstants ******/
 		/****** md5 signature: 68abf7c765a355e9868c983cb1c8c0e6 ******/
@@ -4519,12 +4420,12 @@ Set field FeaConstants.
 		void SetFeaConstants(const StepFEA_SymmetricTensor23d & FeaConstants);
 
 		/****** StepFEA_FeaSecantCoefficientOfLinearThermalExpansion::SetReferenceTemperature ******/
-		/****** md5 signature: 4e845c51f17d910dd15e28852d2ba448 ******/
+		/****** md5 signature: 85d7979294fd001f03416a88654f4222 ******/
 		%feature("compactdefaultargs") SetReferenceTemperature;
 		%feature("autodoc", "
 Parameters
 ----------
-ReferenceTemperature: float
+ReferenceTemperature: double
 
 Return
 -------
@@ -4534,12 +4435,10 @@ Description
 -----------
 Set field ReferenceTemperature.
 ") SetReferenceTemperature;
-		void SetReferenceTemperature(const Standard_Real ReferenceTemperature);
+		void SetReferenceTemperature(const double ReferenceTemperature);
 
 };
 
-
-%make_alias(StepFEA_FeaSecantCoefficientOfLinearThermalExpansion)
 
 %extend StepFEA_FeaSecantCoefficientOfLinearThermalExpansion {
 	%pythoncode {
@@ -4618,8 +4517,6 @@ Set field FeaConstants.
 };
 
 
-%make_alias(StepFEA_FeaShellBendingStiffness)
-
 %extend StepFEA_FeaShellBendingStiffness {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4696,8 +4593,6 @@ Set field FeaConstants.
 
 };
 
-
-%make_alias(StepFEA_FeaShellMembraneBendingCouplingStiffness)
 
 %extend StepFEA_FeaShellMembraneBendingCouplingStiffness {
 	%pythoncode {
@@ -4776,8 +4671,6 @@ Set field FeaConstants.
 };
 
 
-%make_alias(StepFEA_FeaShellMembraneStiffness)
-
 %extend StepFEA_FeaShellMembraneStiffness {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4854,8 +4747,6 @@ Set field FeaConstants.
 
 };
 
-
-%make_alias(StepFEA_FeaShellShearStiffness)
 
 %extend StepFEA_FeaShellShearStiffness {
 	%pythoncode {
@@ -4934,8 +4825,6 @@ Set field FeaConstants.
 };
 
 
-%make_alias(StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion)
-
 %extend StepFEA_FeaTangentialCoefficientOfLinearThermalExpansion {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4962,8 +4851,6 @@ Empty constructor.
 
 };
 
-
-%make_alias(StepFEA_GeometricNode)
 
 %extend StepFEA_GeometricNode {
 	%pythoncode {
@@ -4992,8 +4879,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepFEA_Node)
-
 %extend StepFEA_Node {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5019,7 +4904,7 @@ Empty constructor.
 		 StepFEA_NodeGroup();
 
 		/****** StepFEA_NodeGroup::Init ******/
-		/****** md5 signature: e7f976e16a2d1d00b1cab14846cb6f45 ******/
+		/****** md5 signature: 0b49a87d8b93bc049e9d3a67a0e5e135 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5027,7 +4912,7 @@ Parameters
 aGroup_Name: TCollection_HAsciiString
 aGroup_Description: TCollection_HAsciiString
 aFeaGroup_ModelRef: StepFEA_FeaModel
-aNodes: StepFEA_HArray1OfNodeRepresentation
+aNodes: NCollection_HArray1<
 
 Return
 -------
@@ -5037,28 +4922,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aGroup_Name, const opencascade::handle<TCollection_HAsciiString> & aGroup_Description, const opencascade::handle<StepFEA_FeaModel> & aFeaGroup_ModelRef, const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aNodes);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aGroup_Name, const opencascade::handle<TCollection_HAsciiString> & aGroup_Description, const opencascade::handle<StepFEA_FeaModel> & aFeaGroup_ModelRef, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & aNodes);
 
 		/****** StepFEA_NodeGroup::Nodes ******/
-		/****** md5 signature: 481dfe329e415e43ffa39c24840aa086 ******/
+		/****** md5 signature: ab224a6985c6e7da347deac28b459098 ******/
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>>
 
 Description
 -----------
 Returns field Nodes.
 ") Nodes;
-		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> Nodes();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation>>> Nodes();
 
 		/****** StepFEA_NodeGroup::SetNodes ******/
-		/****** md5 signature: d91f98e9b19dce0d990e0fc877dbb9f0 ******/
+		/****** md5 signature: c15379d1b3ccb2a8ec1146b02ae9e045 ******/
 		%feature("compactdefaultargs") SetNodes;
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: StepFEA_HArray1OfNodeRepresentation
+Nodes: NCollection_HArray1<
 
 Return
 -------
@@ -5068,12 +4953,10 @@ Description
 -----------
 Set field Nodes.
 ") SetNodes;
-		void SetNodes(const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & Nodes);
+		void SetNodes(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & Nodes);
 
 };
 
-
-%make_alias(StepFEA_NodeGroup)
 
 %extend StepFEA_NodeGroup {
 	%pythoncode {
@@ -5152,8 +5035,6 @@ Set field Orientation.
 };
 
 
-%make_alias(StepFEA_ParametricCurve3dElementCoordinateDirection)
-
 %extend StepFEA_ParametricCurve3dElementCoordinateDirection {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5231,8 +5112,6 @@ Set field Direction.
 };
 
 
-%make_alias(StepFEA_ParametricCurve3dElementCoordinateSystem)
-
 %extend StepFEA_ParametricCurve3dElementCoordinateSystem {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5258,20 +5137,20 @@ Empty constructor.
 		 StepFEA_ParametricSurface3dElementCoordinateSystem();
 
 		/****** StepFEA_ParametricSurface3dElementCoordinateSystem::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field Angle.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** StepFEA_ParametricSurface3dElementCoordinateSystem::Axis ******/
-		/****** md5 signature: 8c835a38d257f157c4c499e54d099895 ******/
+		/****** md5 signature: 927436ca168baaa795779ef3831c25e8 ******/
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "Return
 -------
@@ -5281,17 +5160,17 @@ Description
 -----------
 Returns field Axis.
 ") Axis;
-		Standard_Integer Axis();
+		int Axis();
 
 		/****** StepFEA_ParametricSurface3dElementCoordinateSystem::Init ******/
-		/****** md5 signature: 8b71832374bcd7b3ed64bbf6e1497439 ******/
+		/****** md5 signature: 221c627c486a4c78f9262933c19fd943 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentationItem_Name: TCollection_HAsciiString
 aAxis: int
-aAngle: float
+aAngle: double
 
 Return
 -------
@@ -5301,15 +5180,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const Standard_Integer aAxis, const Standard_Real aAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const int aAxis, const double aAngle);
 
 		/****** StepFEA_ParametricSurface3dElementCoordinateSystem::SetAngle ******/
-		/****** md5 signature: a0d60e2a1ea25c193dafa15194b0ab24 ******/
+		/****** md5 signature: ba2b03bf28ec10048167948ef997085a ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 
 Return
 -------
@@ -5319,10 +5198,10 @@ Description
 -----------
 Set field Angle.
 ") SetAngle;
-		void SetAngle(const Standard_Real Angle);
+		void SetAngle(const double Angle);
 
 		/****** StepFEA_ParametricSurface3dElementCoordinateSystem::SetAxis ******/
-		/****** md5 signature: 2fce638761516dcb6b748e7c34206f1c ******/
+		/****** md5 signature: 730c2ebe6791f3f0f5edf89c5e91a8dd ******/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "
 Parameters
@@ -5337,12 +5216,10 @@ Description
 -----------
 Set field Axis.
 ") SetAxis;
-		void SetAxis(const Standard_Integer Axis);
+		void SetAxis(const int Axis);
 
 };
 
-
-%make_alias(StepFEA_ParametricSurface3dElementCoordinateSystem)
 
 %extend StepFEA_ParametricSurface3dElementCoordinateSystem {
 	%pythoncode {
@@ -5382,15 +5259,15 @@ Returns field ElementDescriptor.
 		opencascade::handle<StepElement_Surface3dElementDescriptor> ElementDescriptor();
 
 		/****** StepFEA_Surface3dElementRepresentation::Init ******/
-		/****** md5 signature: f6611ef61b997946cdf6603fd888af6f ******/
+		/****** md5 signature: 712b084d4db6c31121a3b5b7d9d8b6c8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentation_Name: TCollection_HAsciiString
-aRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+aRepresentation_Items: NCollection_HArray1<
 aRepresentation_ContextOfItems: StepRepr_RepresentationContext
-aElementRepresentation_NodeList: StepFEA_HArray1OfNodeRepresentation
+aElementRepresentation_NodeList: NCollection_HArray1<
 aModelRef: StepFEA_FeaModel3d
 aElementDescriptor: StepElement_Surface3dElementDescriptor
 aProperty: StepElement_SurfaceElementProperty
@@ -5404,7 +5281,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aElementRepresentation_NodeList, const opencascade::handle<StepFEA_FeaModel3d> & aModelRef, const opencascade::handle<StepElement_Surface3dElementDescriptor> & aElementDescriptor, const opencascade::handle<StepElement_SurfaceElementProperty> & aProperty, const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & aElementRepresentation_NodeList, const opencascade::handle<StepFEA_FeaModel3d> & aModelRef, const opencascade::handle<StepElement_Surface3dElementDescriptor> & aElementDescriptor, const opencascade::handle<StepElement_SurfaceElementProperty> & aProperty, const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
 
 		/****** StepFEA_Surface3dElementRepresentation::Material ******/
 		/****** md5 signature: d6c4d9812dbdfac4cc3b5047d6625c8d ******/
@@ -5520,8 +5397,6 @@ Set field Property.
 };
 
 
-%make_alias(StepFEA_Surface3dElementRepresentation)
-
 %extend StepFEA_Surface3dElementRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5560,15 +5435,15 @@ Returns field ElementDescriptor.
 		opencascade::handle<StepElement_Volume3dElementDescriptor> ElementDescriptor();
 
 		/****** StepFEA_Volume3dElementRepresentation::Init ******/
-		/****** md5 signature: 42456ddb362a8999c5a16908e92a86f0 ******/
+		/****** md5 signature: 06621a1eb95b3f57ba2778a71d9cbbd6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aRepresentation_Name: TCollection_HAsciiString
-aRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+aRepresentation_Items: NCollection_HArray1<
 aRepresentation_ContextOfItems: StepRepr_RepresentationContext
-aElementRepresentation_NodeList: StepFEA_HArray1OfNodeRepresentation
+aElementRepresentation_NodeList: NCollection_HArray1<
 aModelRef: StepFEA_FeaModel3d
 aElementDescriptor: StepElement_Volume3dElementDescriptor
 aMaterial: StepElement_ElementMaterial
@@ -5581,7 +5456,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & aElementRepresentation_NodeList, const opencascade::handle<StepFEA_FeaModel3d> & aModelRef, const opencascade::handle<StepElement_Volume3dElementDescriptor> & aElementDescriptor, const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & aRepresentation_ContextOfItems, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepFEA_NodeRepresentation> > > & aElementRepresentation_NodeList, const opencascade::handle<StepFEA_FeaModel3d> & aModelRef, const opencascade::handle<StepElement_Volume3dElementDescriptor> & aElementDescriptor, const opencascade::handle<StepElement_ElementMaterial> & aMaterial);
 
 		/****** StepFEA_Volume3dElementRepresentation::Material ******/
 		/****** md5 signature: d6c4d9812dbdfac4cc3b5047d6625c8d ******/
@@ -5666,8 +5541,6 @@ Set field ModelRef.
 };
 
 
-%make_alias(StepFEA_Volume3dElementRepresentation)
-
 %extend StepFEA_Volume3dElementRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5694,8 +5567,6 @@ Empty constructor.
 
 };
 
-
-%make_alias(StepFEA_NodeWithSolutionCoordinateSystem)
 
 %extend StepFEA_NodeWithSolutionCoordinateSystem {
 	%pythoncode {
@@ -5724,8 +5595,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepFEA_NodeWithVector)
-
 %extend StepFEA_NodeWithVector {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5734,117 +5603,117 @@ Empty constructor.
 
 /* harray1 classes */
 
-class StepFEA_HArray1OfCurveElementEndOffset : public StepFEA_Array1OfCurveElementEndOffset, public Standard_Transient {
+class StepFEA_HArray1OfCurveElementEndOffset : public NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementEndOffset(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfCurveElementEndOffset(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfCurveElementEndOffset::value_type& theValue);
-    StepFEA_HArray1OfCurveElementEndOffset(const StepFEA_Array1OfCurveElementEndOffset& theOther);
-    const StepFEA_Array1OfCurveElementEndOffset& Array1();
-    StepFEA_Array1OfCurveElementEndOffset& ChangeArray1();
+    StepFEA_HArray1OfCurveElementEndOffset(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>::value_type& theValue);
+    StepFEA_HArray1OfCurveElementEndOffset(const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>& Array1();
+    NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfCurveElementEndOffset)
 
 
-class StepFEA_HArray1OfCurveElementEndRelease : public StepFEA_Array1OfCurveElementEndRelease, public Standard_Transient {
+class StepFEA_HArray1OfCurveElementEndRelease : public NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementEndRelease(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfCurveElementEndRelease(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfCurveElementEndRelease::value_type& theValue);
-    StepFEA_HArray1OfCurveElementEndRelease(const StepFEA_Array1OfCurveElementEndRelease& theOther);
-    const StepFEA_Array1OfCurveElementEndRelease& Array1();
-    StepFEA_Array1OfCurveElementEndRelease& ChangeArray1();
+    StepFEA_HArray1OfCurveElementEndRelease(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>::value_type& theValue);
+    StepFEA_HArray1OfCurveElementEndRelease(const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>& Array1();
+    NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfCurveElementEndRelease)
 
 
-class StepFEA_HArray1OfCurveElementInterval : public StepFEA_Array1OfCurveElementInterval, public Standard_Transient {
+class StepFEA_HArray1OfCurveElementInterval : public NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>, public Standard_Transient {
   public:
     StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfCurveElementInterval::value_type& theValue);
-    StepFEA_HArray1OfCurveElementInterval(const StepFEA_Array1OfCurveElementInterval& theOther);
-    const StepFEA_Array1OfCurveElementInterval& Array1();
-    StepFEA_Array1OfCurveElementInterval& ChangeArray1();
+    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>::value_type& theValue);
+    StepFEA_HArray1OfCurveElementInterval(const NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>& Array1();
+    NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfCurveElementInterval)
 
 
-class StepFEA_HArray1OfDegreeOfFreedom : public StepFEA_Array1OfDegreeOfFreedom, public Standard_Transient {
+class StepFEA_HArray1OfDegreeOfFreedom : public NCollection_Array1<StepFEA_DegreeOfFreedom>, public Standard_Transient {
   public:
     StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfDegreeOfFreedom::value_type& theValue);
-    StepFEA_HArray1OfDegreeOfFreedom(const StepFEA_Array1OfDegreeOfFreedom& theOther);
-    const StepFEA_Array1OfDegreeOfFreedom& Array1();
-    StepFEA_Array1OfDegreeOfFreedom& ChangeArray1();
+    StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepFEA_DegreeOfFreedom>::value_type& theValue);
+    StepFEA_HArray1OfDegreeOfFreedom(const NCollection_Array1<StepFEA_DegreeOfFreedom>& theOther);
+    const NCollection_Array1<StepFEA_DegreeOfFreedom>& Array1();
+    NCollection_Array1<StepFEA_DegreeOfFreedom>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfDegreeOfFreedom)
 
 
-class StepFEA_HArray1OfElementRepresentation : public StepFEA_Array1OfElementRepresentation, public Standard_Transient {
+class StepFEA_HArray1OfElementRepresentation : public NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>, public Standard_Transient {
   public:
     StepFEA_HArray1OfElementRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfElementRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfElementRepresentation::value_type& theValue);
-    StepFEA_HArray1OfElementRepresentation(const StepFEA_Array1OfElementRepresentation& theOther);
-    const StepFEA_Array1OfElementRepresentation& Array1();
-    StepFEA_Array1OfElementRepresentation& ChangeArray1();
+    StepFEA_HArray1OfElementRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>::value_type& theValue);
+    StepFEA_HArray1OfElementRepresentation(const NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>& Array1();
+    NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfElementRepresentation)
 
 
-class StepFEA_HArray1OfNodeRepresentation : public StepFEA_Array1OfNodeRepresentation, public Standard_Transient {
+class StepFEA_HArray1OfNodeRepresentation : public NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>, public Standard_Transient {
   public:
     StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfNodeRepresentation::value_type& theValue);
-    StepFEA_HArray1OfNodeRepresentation(const StepFEA_Array1OfNodeRepresentation& theOther);
-    const StepFEA_Array1OfNodeRepresentation& Array1();
-    StepFEA_Array1OfNodeRepresentation& ChangeArray1();
+    StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>::value_type& theValue);
+    StepFEA_HArray1OfNodeRepresentation(const NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>& Array1();
+    NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfNodeRepresentation)
 
 /* harray2 classes */
 /* hsequence classes */
-class StepFEA_HSequenceOfCurve3dElementProperty : public StepFEA_SequenceOfCurve3dElementProperty, public Standard_Transient {
+class StepFEA_HSequenceOfCurve3dElementProperty : public NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>, public Standard_Transient {
   public:
     StepFEA_HSequenceOfCurve3dElementProperty();
-    StepFEA_HSequenceOfCurve3dElementProperty(const StepFEA_SequenceOfCurve3dElementProperty& theOther);
-    const StepFEA_SequenceOfCurve3dElementProperty& Sequence();
-    void Append (const StepFEA_SequenceOfCurve3dElementProperty::value_type& theItem);
-    void Append (StepFEA_SequenceOfCurve3dElementProperty& theSequence);
-    StepFEA_SequenceOfCurve3dElementProperty& ChangeSequence();
+    StepFEA_HSequenceOfCurve3dElementProperty(const NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& theOther);
+    const NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& theSequence);
+    NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfCurve3dElementProperty)
 
 
-class StepFEA_HSequenceOfElementGeometricRelationship : public StepFEA_SequenceOfElementGeometricRelationship, public Standard_Transient {
+class StepFEA_HSequenceOfElementGeometricRelationship : public NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>, public Standard_Transient {
   public:
     StepFEA_HSequenceOfElementGeometricRelationship();
-    StepFEA_HSequenceOfElementGeometricRelationship(const StepFEA_SequenceOfElementGeometricRelationship& theOther);
-    const StepFEA_SequenceOfElementGeometricRelationship& Sequence();
-    void Append (const StepFEA_SequenceOfElementGeometricRelationship::value_type& theItem);
-    void Append (StepFEA_SequenceOfElementGeometricRelationship& theSequence);
-    StepFEA_SequenceOfElementGeometricRelationship& ChangeSequence();
+    StepFEA_HSequenceOfElementGeometricRelationship(const NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& theOther);
+    const NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& theSequence);
+    NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfElementGeometricRelationship)
 
 
-class StepFEA_HSequenceOfElementRepresentation : public StepFEA_SequenceOfElementRepresentation, public Standard_Transient {
+class StepFEA_HSequenceOfElementRepresentation : public NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>, public Standard_Transient {
   public:
     StepFEA_HSequenceOfElementRepresentation();
-    StepFEA_HSequenceOfElementRepresentation(const StepFEA_SequenceOfElementRepresentation& theOther);
-    const StepFEA_SequenceOfElementRepresentation& Sequence();
-    void Append (const StepFEA_SequenceOfElementRepresentation::value_type& theItem);
-    void Append (StepFEA_SequenceOfElementRepresentation& theSequence);
-    StepFEA_SequenceOfElementRepresentation& ChangeSequence();
+    StepFEA_HSequenceOfElementRepresentation(const NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& theOther);
+    const NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& theSequence);
+    NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfElementRepresentation)
 
 
-class StepFEA_HSequenceOfNodeRepresentation : public StepFEA_SequenceOfNodeRepresentation, public Standard_Transient {
+class StepFEA_HSequenceOfNodeRepresentation : public NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>, public Standard_Transient {
   public:
     StepFEA_HSequenceOfNodeRepresentation();
-    StepFEA_HSequenceOfNodeRepresentation(const StepFEA_SequenceOfNodeRepresentation& theOther);
-    const StepFEA_SequenceOfNodeRepresentation& Sequence();
-    void Append (const StepFEA_SequenceOfNodeRepresentation::value_type& theItem);
-    void Append (StepFEA_SequenceOfNodeRepresentation& theSequence);
-    StepFEA_SequenceOfNodeRepresentation& ChangeSequence();
+    StepFEA_HSequenceOfNodeRepresentation(const NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& theOther);
+    const NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& theSequence);
+    NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfNodeRepresentation)
 

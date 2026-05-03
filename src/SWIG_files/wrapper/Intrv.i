@@ -146,13 +146,13 @@ No available documentation.
 		 Intrv_Interval();
 
 		/****** Intrv_Interval::Intrv_Interval ******/
-		/****** md5 signature: 3673b33b4bbde60fc105ef0711659d29 ******/
+		/****** md5 signature: 192d2bc86ca0e7d69d0ba556fd35a1b4 ******/
 		%feature("compactdefaultargs") Intrv_Interval;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
-End: float
+Start: double
+End: double
 
 Return
 -------
@@ -162,17 +162,17 @@ Description
 -----------
 No available documentation.
 ") Intrv_Interval;
-		 Intrv_Interval(const Standard_Real Start, const Standard_Real End);
+		 Intrv_Interval(const double Start, const double End);
 
 		/****** Intrv_Interval::Intrv_Interval ******/
-		/****** md5 signature: 1cb5dba0db82fe9550ea330f07af1759 ******/
+		/****** md5 signature: f6a4c0a48f9b6e67c0131ef49e0b4fa2 ******/
 		%feature("compactdefaultargs") Intrv_Interval;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -183,10 +183,10 @@ Description
 -----------
 No available documentation.
 ") Intrv_Interval;
-		 Intrv_Interval(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
+		 Intrv_Interval(const double Start, const float TolStart, const double End, const float TolEnd);
 
 		/****** Intrv_Interval::Bounds ******/
-		/****** md5 signature: 891abb34b04a15a8931783d3c3440916 ******/
+		/****** md5 signature: 517a7b5969811a4375c082a21190b548 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -194,9 +194,9 @@ Parameters
 
 Return
 -------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Description
@@ -206,12 +206,12 @@ No available documentation.
 		void Bounds(Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
 
 		/****** Intrv_Interval::CutAtEnd ******/
-		/****** md5 signature: 016f363129bd1797c683a8d0f6c91793 ******/
+		/****** md5 signature: bb8aa1881aa1caabd0fe29c44337ef5d ******/
 		%feature("compactdefaultargs") CutAtEnd;
 		%feature("autodoc", "
 Parameters
 ----------
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -222,15 +222,15 @@ Description
 -----------
 <-----****+****  Old one **+**------> Tool for cutting <<< <<< <-----****+****  result.
 ") CutAtEnd;
-		void CutAtEnd(const Standard_Real End, const Standard_ShortReal TolEnd);
+		void CutAtEnd(const double End, const float TolEnd);
 
 		/****** Intrv_Interval::CutAtStart ******/
-		/****** md5 signature: b230d89b1ea891f35fb7591edf3e10ca ******/
+		/****** md5 signature: cbab180f1f5e1be731836cae9ec1cd3d ******/
 		%feature("compactdefaultargs") CutAtStart;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
 
 Return
@@ -241,28 +241,28 @@ Description
 -----------
 ****+****-----------> Old one <----------**+** Tool for cutting >>> >>> ****+****-----------> result.
 ") CutAtStart;
-		void CutAtStart(const Standard_Real Start, const Standard_ShortReal TolStart);
+		void CutAtStart(const double Start, const float TolStart);
 
 		/****** Intrv_Interval::End ******/
-		/****** md5 signature: 2be3dc76a1b5b647442c292ec6dd93e3 ******/
+		/****** md5 signature: 14f50ea44ab4607ed4b66a8c87b46b6c ******/
 		%feature("compactdefaultargs") End;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") End;
-		Standard_Real End();
+		double End();
 
 		/****** Intrv_Interval::FuseAtEnd ******/
-		/****** md5 signature: f45c70a3da084801256aa753e442ce89 ******/
+		/****** md5 signature: a8e756540dc74541cf2573e6d713b7c9 ******/
 		%feature("compactdefaultargs") FuseAtEnd;
 		%feature("autodoc", "
 Parameters
 ----------
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -273,15 +273,15 @@ Description
 -----------
 <---------------------****+**** Old one <-----------------**+**  New one to fuse >>> >>> <---------------------****+**** result.
 ") FuseAtEnd;
-		void FuseAtEnd(const Standard_Real End, const Standard_ShortReal TolEnd);
+		void FuseAtEnd(const double End, const float TolEnd);
 
 		/****** Intrv_Interval::FuseAtStart ******/
-		/****** md5 signature: 23ad6ee7ce2bfdcf69a06789a622cc7d ******/
+		/****** md5 signature: 5d1135faa510c6b56ad1520b43732cd9 ******/
 		%feature("compactdefaultargs") FuseAtStart;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
 
 Return
@@ -292,10 +292,10 @@ Description
 -----------
 ****+****--------------------> Old one ****+****------------------------> New one to fuse <<< <<< ****+****------------------------> result.
 ") FuseAtStart;
-		void FuseAtStart(const Standard_Real Start, const Standard_ShortReal TolStart);
+		void FuseAtStart(const double Start, const float TolStart);
 
 		/****** Intrv_Interval::IsAfter ******/
-		/****** md5 signature: 15efede7ef840b503c8c599701a17050 ******/
+		/****** md5 signature: f35d7ce1d1471567ec745578d44b6923 ******/
 		%feature("compactdefaultargs") IsAfter;
 		%feature("autodoc", "
 Parameters
@@ -310,10 +310,10 @@ Description
 -----------
 True if me is After Other **-----------**** me ***----------------**  Other.
 ") IsAfter;
-		Standard_Boolean IsAfter(const Intrv_Interval & Other);
+		bool IsAfter(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsBefore ******/
-		/****** md5 signature: cac693f4ba643a40db02bebb58a30eee ******/
+		/****** md5 signature: 031ad9fbc7b758d60b8f5b51b2ffbdc6 ******/
 		%feature("compactdefaultargs") IsBefore;
 		%feature("autodoc", "
 Parameters
@@ -328,10 +328,10 @@ Description
 -----------
 True if me is Before Other ***----------------**  me **-----------**** Other.
 ") IsBefore;
-		Standard_Boolean IsBefore(const Intrv_Interval & Other);
+		bool IsBefore(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsEnclosing ******/
-		/****** md5 signature: 3236b77fa5c340b28d1405358457ca41 ******/
+		/****** md5 signature: b31553538c00c827b5922c73c02ffc80 ******/
 		%feature("compactdefaultargs") IsEnclosing;
 		%feature("autodoc", "
 Parameters
@@ -346,10 +346,10 @@ Description
 -----------
 True if me is Enclosing Other ***----------------------------**** me ***------------------** Other.
 ") IsEnclosing;
-		Standard_Boolean IsEnclosing(const Intrv_Interval & Other);
+		bool IsEnclosing(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsInside ******/
-		/****** md5 signature: 051f8a2b719124d352598312c6cec8ad ******/
+		/****** md5 signature: 3a13e873ca29f7863c6d6bb9e050a6e4 ******/
 		%feature("compactdefaultargs") IsInside;
 		%feature("autodoc", "
 Parameters
@@ -364,10 +364,10 @@ Description
 -----------
 True if me is Inside Other **-----------****  me ***--------------------------**  Other.
 ") IsInside;
-		Standard_Boolean IsInside(const Intrv_Interval & Other);
+		bool IsInside(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsJustAfter ******/
-		/****** md5 signature: 10c4d1f99eb68de8d0bd2e7fa34e4f79 ******/
+		/****** md5 signature: 851e12b2efde5aea16855c284e9e61f1 ******/
 		%feature("compactdefaultargs") IsJustAfter;
 		%feature("autodoc", "
 Parameters
@@ -382,10 +382,10 @@ Description
 -----------
 True if me is just after Other ****-------****  me ***-----------**  Other.
 ") IsJustAfter;
-		Standard_Boolean IsJustAfter(const Intrv_Interval & Other);
+		bool IsJustAfter(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsJustBefore ******/
-		/****** md5 signature: 8fb5c54a872f6646238c379940a13c45 ******/
+		/****** md5 signature: bd1466556b48dd521bf198c70babe6fb ******/
 		%feature("compactdefaultargs") IsJustBefore;
 		%feature("autodoc", "
 Parameters
@@ -400,10 +400,10 @@ Description
 -----------
 True if me is just before Other ***--------****   me ***-----------** Other.
 ") IsJustBefore;
-		Standard_Boolean IsJustBefore(const Intrv_Interval & Other);
+		bool IsJustBefore(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsJustEnclosingAtEnd ******/
-		/****** md5 signature: 2d8c5266845cdc63b3edd3e247aa1ce1 ******/
+		/****** md5 signature: a428df5ee775e738dde3a642c6ede17c ******/
 		%feature("compactdefaultargs") IsJustEnclosingAtEnd;
 		%feature("autodoc", "
 Parameters
@@ -418,10 +418,10 @@ Description
 -----------
 True if me is just Enclosing Other at End ***----------------------------**** me ***-----------------****  Other.
 ") IsJustEnclosingAtEnd;
-		Standard_Boolean IsJustEnclosingAtEnd(const Intrv_Interval & Other);
+		bool IsJustEnclosingAtEnd(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsJustEnclosingAtStart ******/
-		/****** md5 signature: 7406c71c8b68a10c0a74cd3df1d49015 ******/
+		/****** md5 signature: 22daefe44196c8f8ca025039a845a615 ******/
 		%feature("compactdefaultargs") IsJustEnclosingAtStart;
 		%feature("autodoc", "
 Parameters
@@ -436,10 +436,10 @@ Description
 -----------
 True if me is just Enclosing Other at start ***---------------------------**** me ***------------------** Other.
 ") IsJustEnclosingAtStart;
-		Standard_Boolean IsJustEnclosingAtStart(const Intrv_Interval & Other);
+		bool IsJustEnclosingAtStart(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsJustOverlappingAtEnd ******/
-		/****** md5 signature: 6edf743e69c8c25097a558b2042e9878 ******/
+		/****** md5 signature: 8653edec9a6555aac700282ee0ead744 ******/
 		%feature("compactdefaultargs") IsJustOverlappingAtEnd;
 		%feature("autodoc", "
 Parameters
@@ -454,10 +454,10 @@ Description
 -----------
 True if me is just overlapping Other at end ***-----------*  me ***------------------------** Other.
 ") IsJustOverlappingAtEnd;
-		Standard_Boolean IsJustOverlappingAtEnd(const Intrv_Interval & Other);
+		bool IsJustOverlappingAtEnd(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsJustOverlappingAtStart ******/
-		/****** md5 signature: 53976ced8ef2bbdc1ff57ca774a2f1b3 ******/
+		/****** md5 signature: 5b89491a125cbab716746fbd7d99e6e7 ******/
 		%feature("compactdefaultargs") IsJustOverlappingAtStart;
 		%feature("autodoc", "
 Parameters
@@ -472,10 +472,10 @@ Description
 -----------
 True if me is just overlapping Other at start ***-----------***  me ***------------------------** Other.
 ") IsJustOverlappingAtStart;
-		Standard_Boolean IsJustOverlappingAtStart(const Intrv_Interval & Other);
+		bool IsJustOverlappingAtStart(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsOverlappingAtEnd ******/
-		/****** md5 signature: 148aedd16da51bf75cbfa6e0b6d360ab ******/
+		/****** md5 signature: 1a13de6fe4e032e09aeb30023d83bfc2 ******/
 		%feature("compactdefaultargs") IsOverlappingAtEnd;
 		%feature("autodoc", "
 Parameters
@@ -490,10 +490,10 @@ Description
 -----------
 True if me is overlapping Other at end ***-----------** me ***---------------***  Other.
 ") IsOverlappingAtEnd;
-		Standard_Boolean IsOverlappingAtEnd(const Intrv_Interval & Other);
+		bool IsOverlappingAtEnd(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsOverlappingAtStart ******/
-		/****** md5 signature: 91dc4cddd79f7690ee2f35ceac6d4e9c ******/
+		/****** md5 signature: efe3f70e69ef549c4b7cd02a823eb92e ******/
 		%feature("compactdefaultargs") IsOverlappingAtStart;
 		%feature("autodoc", "
 Parameters
@@ -508,10 +508,10 @@ Description
 -----------
 True if me is overlapping Other at start ***---------------***  me ***-----------** Other.
 ") IsOverlappingAtStart;
-		Standard_Boolean IsOverlappingAtStart(const Intrv_Interval & Other);
+		bool IsOverlappingAtStart(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::IsProbablyEmpty ******/
-		/****** md5 signature: f37bd5da2664f5887417aeba55f7d543 ******/
+		/****** md5 signature: 960e4c811233aa8a7264e85ebfa40547 ******/
 		%feature("compactdefaultargs") IsProbablyEmpty;
 		%feature("autodoc", "Return
 -------
@@ -521,10 +521,10 @@ Description
 -----------
 True if myStart+myTolStart > myEnd-myTolEnd or if myEnd+myTolEnd > myStart-myTolStart.
 ") IsProbablyEmpty;
-		Standard_Boolean IsProbablyEmpty();
+		bool IsProbablyEmpty();
 
 		/****** Intrv_Interval::IsSimilar ******/
-		/****** md5 signature: cf48d62ba6acc5986b1162c14628137b ******/
+		/****** md5 signature: 4c171a2731c1efc6b43ef5b3fa02a5d1 ******/
 		%feature("compactdefaultargs") IsSimilar;
 		%feature("autodoc", "
 Parameters
@@ -539,7 +539,7 @@ Description
 -----------
 True if me and Other have the same bounds *----------------***  me ***-----------------**  Other.
 ") IsSimilar;
-		Standard_Boolean IsSimilar(const Intrv_Interval & Other);
+		bool IsSimilar(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::Position ******/
 		/****** md5 signature: 23b3dced13e904e86be9a11b268d2a4d ******/
@@ -560,12 +560,12 @@ True if me is Before Other **-----------**** Other ***-----*   Before ***-------
 		Intrv_Position Position(const Intrv_Interval & Other);
 
 		/****** Intrv_Interval::SetEnd ******/
-		/****** md5 signature: a369402cbf509247465aad466c905c23 ******/
+		/****** md5 signature: 258d58121ba7381610c1f3c8536febc4 ******/
 		%feature("compactdefaultargs") SetEnd;
 		%feature("autodoc", "
 Parameters
 ----------
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -576,15 +576,15 @@ Description
 -----------
 No available documentation.
 ") SetEnd;
-		void SetEnd(const Standard_Real End, const Standard_ShortReal TolEnd);
+		void SetEnd(const double End, const float TolEnd);
 
 		/****** Intrv_Interval::SetStart ******/
-		/****** md5 signature: f854b17e8c6e6fc2e07c0e4ce9d3c29a ******/
+		/****** md5 signature: f97fedb50beed3e225748435cc6d38ee ******/
 		%feature("compactdefaultargs") SetStart;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
 
 Return
@@ -595,23 +595,23 @@ Description
 -----------
 No available documentation.
 ") SetStart;
-		void SetStart(const Standard_Real Start, const Standard_ShortReal TolStart);
+		void SetStart(const double Start, const float TolStart);
 
 		/****** Intrv_Interval::Start ******/
-		/****** md5 signature: 3435834d1b536f94af7747405588cfdd ******/
+		/****** md5 signature: 2ccaa09966dadabb655ba2c0f6f07f02 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Start;
-		Standard_Real Start();
+		double Start();
 
 		/****** Intrv_Interval::TolEnd ******/
-		/****** md5 signature: 0ba4e5e42f27ac97ac757f85ad4c5fb2 ******/
+		/****** md5 signature: ff9ae7a74ad8693460a8ef18c530458d ******/
 		%feature("compactdefaultargs") TolEnd;
 		%feature("autodoc", "Return
 -------
@@ -621,10 +621,10 @@ Description
 -----------
 No available documentation.
 ") TolEnd;
-		Standard_ShortReal TolEnd();
+		float TolEnd();
 
 		/****** Intrv_Interval::TolStart ******/
-		/****** md5 signature: 83b2da6f9993863c462fec9a2c7d8591 ******/
+		/****** md5 signature: 1deb621af8e3b3dbb2024a9373a80a37 ******/
 		%feature("compactdefaultargs") TolStart;
 		%feature("autodoc", "Return
 -------
@@ -634,7 +634,7 @@ Description
 -----------
 No available documentation.
 ") TolStart;
-		Standard_ShortReal TolStart();
+		float TolStart();
 
 };
 
@@ -718,7 +718,7 @@ Intersects the intervals with the intervals in the sequence <Tool>.
 		void Intersect(const Intrv_Intervals & Tool);
 
 		/****** Intrv_Intervals::NbIntervals ******/
-		/****** md5 signature: 64f54fde4d9752772b52d73d27261bcb ******/
+		/****** md5 signature: 487b014b9cd194c58d109502ca451d5e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -728,7 +728,7 @@ Description
 -----------
 No available documentation.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** Intrv_Intervals::Subtract ******/
 		/****** md5 signature: 84d450900772c0ab496765aa3b97e5e0 ******/
@@ -803,7 +803,7 @@ No available documentation.
 		void Unite(const Intrv_Intervals & Tool);
 
 		/****** Intrv_Intervals::Value ******/
-		/****** md5 signature: f71fcd7e5d1f4f7275e8da12794f644f ******/
+		/****** md5 signature: 3c8c1bb6f7513efff984f47eced98da8 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -818,7 +818,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		const Intrv_Interval & Value(const Standard_Integer Index);
+		const Intrv_Interval & Value(const int Index);
 
 		/****** Intrv_Intervals::XUnite ******/
 		/****** md5 signature: 1b9a7792b19b82175cf1ec256710edea ******/

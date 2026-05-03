@@ -20,8 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<RWPly_CafWriter.hxx>
-#include<RWPly_ConfigurationNode.hxx>
 #include<RWPly_PlyWriterContext.hxx>
-#include<RWPly_Provider.hxx>
 
 #endif // RWPLY_HXX

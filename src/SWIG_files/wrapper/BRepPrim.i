@@ -149,14 +149,14 @@ Creates from a Builder.
 		 BRepPrim_Builder(const BRep_Builder & B);
 
 		/****** BRepPrim_Builder::AddEdgeVertex ******/
-		/****** md5 signature: 6f53515e7cce4cf475d8fb8d1dc2d077 ******/
+		/****** md5 signature: c95b192d107d8067ed79e6aa14668c2e ******/
 		%feature("compactdefaultargs") AddEdgeVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
 V: TopoDS_Vertex
-P: float
+P: double
 direct: bool
 
 Return
@@ -167,18 +167,18 @@ Description
 -----------
 Adds the Vertex <V> in the Edge <E>. <P> is the parameter of the vertex on the edge. If direct is False the Vertex is reversed.
 ") AddEdgeVertex;
-		void AddEdgeVertex(TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real P, const Standard_Boolean direct);
+		void AddEdgeVertex(TopoDS_Edge & E, const TopoDS_Vertex & V, const double P, const bool direct);
 
 		/****** BRepPrim_Builder::AddEdgeVertex ******/
-		/****** md5 signature: e1f1f3259a33316b4b0620b5dc3101e6 ******/
+		/****** md5 signature: fb558442c25a959000834b2dcd2816d1 ******/
 		%feature("compactdefaultargs") AddEdgeVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
 V: TopoDS_Vertex
-P1: float
-P2: float
+P1: double
+P2: double
 
 Return
 -------
@@ -188,7 +188,7 @@ Description
 -----------
 Adds the Vertex <V> in the Edge <E>. <P1,P2> are the parameters of the vertex on the closed edge.
 ") AddEdgeVertex;
-		void AddEdgeVertex(TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real P1, const Standard_Real P2);
+		void AddEdgeVertex(TopoDS_Edge & E, const TopoDS_Vertex & V, const double P1, const double P2);
 
 		/****** BRepPrim_Builder::AddFaceWire ******/
 		/****** md5 signature: 2a83461df737a0f4a3acdaf75556ee0e ******/
@@ -229,7 +229,7 @@ Adds the Face <F> in the Shell <Sh>.
 		void AddShellFace(TopoDS_Shell & Sh, const TopoDS_Face & F);
 
 		/****** BRepPrim_Builder::AddWireEdge ******/
-		/****** md5 signature: 35ba979185bf17962e695e9244060701 ******/
+		/****** md5 signature: 44fa1e830dfa8d72b2377a0ae9dca6ae ******/
 		%feature("compactdefaultargs") AddWireEdge;
 		%feature("autodoc", "
 Parameters
@@ -246,7 +246,7 @@ Description
 -----------
 Adds the Edge <E> in the Wire <W>, if direct is False the Edge is reversed.
 ") AddWireEdge;
-		void AddWireEdge(TopoDS_Wire & W, const TopoDS_Edge & E, const Standard_Boolean direct);
+		void AddWireEdge(TopoDS_Wire & W, const TopoDS_Edge & E, const bool direct);
 
 		/****** BRepPrim_Builder::Builder ******/
 		/****** md5 signature: 0e400544facfe2a99c354fd61331d22b ******/
@@ -543,15 +543,15 @@ Sets the circle <C> to be the curve representing the edge <E> in the parametric 
 		void SetPCurve(TopoDS_Edge & E, const TopoDS_Face & F, const gp_Circ2d & C);
 
 		/****** BRepPrim_Builder::SetParameters ******/
-		/****** md5 signature: e5c2f16c6f9bf82902e3c5354144fd14 ******/
+		/****** md5 signature: c55f67da90b022cf750b9bff40295ad2 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
 V: TopoDS_Vertex
-P1: float
-P2: float
+P1: double
+P2: double
 
 Return
 -------
@@ -561,7 +561,7 @@ Description
 -----------
 <P1,P2> are the parameters of the vertex on the edge. The edge is a closed curve.
 ") SetParameters;
-		void SetParameters(TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real P1, const Standard_Real P2);
+		void SetParameters(TopoDS_Edge & E, const TopoDS_Vertex & V, const double P1, const double P2);
 
 };
 
@@ -610,17 +610,17 @@ No available documentation.
 		 BRepPrim_FaceBuilder(const BRep_Builder & B, const opencascade::handle<Geom_Surface> & S);
 
 		/****** BRepPrim_FaceBuilder::BRepPrim_FaceBuilder ******/
-		/****** md5 signature: 77807a8c6d982a6a0e34b40d3bba46a3 ******/
+		/****** md5 signature: ffbc8664e3c9dad4da1a860c9cd02707 ******/
 		%feature("compactdefaultargs") BRepPrim_FaceBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 B: BRep_Builder
 S: Geom_Surface
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -630,10 +630,10 @@ Description
 -----------
 No available documentation.
 ") BRepPrim_FaceBuilder;
-		 BRepPrim_FaceBuilder(const BRep_Builder & B, const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		 BRepPrim_FaceBuilder(const BRep_Builder & B, const opencascade::handle<Geom_Surface> & S, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepPrim_FaceBuilder::Edge ******/
-		/****** md5 signature: 42b39345502468321490e229b9ed050c ******/
+		/****** md5 signature: 33c5994565c956be70d2bbd413a6fd96 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -648,7 +648,7 @@ Description
 -----------
 Returns the edge of index <I> 1 - Edge VMin 2 - Edge UMax 3 - Edge VMax 4 - Edge UMin.
 ") Edge;
-		const TopoDS_Edge Edge(const Standard_Integer I);
+		const TopoDS_Edge Edge(const int I);
 
 		/****** BRepPrim_FaceBuilder::Face ******/
 		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
@@ -683,17 +683,17 @@ No available documentation.
 		void Init(const BRep_Builder & B, const opencascade::handle<Geom_Surface> & S);
 
 		/****** BRepPrim_FaceBuilder::Init ******/
-		/****** md5 signature: 26f1dc48d1dcbc23d88fc45d428255ae ******/
+		/****** md5 signature: 7fb7e417a6879e0e90024fb0e187d6f1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 B: BRep_Builder
 S: Geom_Surface
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -703,10 +703,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const BRep_Builder & B, const opencascade::handle<Geom_Surface> & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		void Init(const BRep_Builder & B, const opencascade::handle<Geom_Surface> & S, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepPrim_FaceBuilder::Vertex ******/
-		/****** md5 signature: 1cd4dfe5cbf55dbe74ca8c7dfb89999c ******/
+		/****** md5 signature: f421e6a1d8cdbc6ffccd54fadd0f2c9e ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -721,7 +721,7 @@ Description
 -----------
 Returns the vertex of index <I> 1 - Vertex UMin,VMin 2 - Vertex UMax,VMin 3 - Vertex UMax,VMax 4 - Vertex UMin,VMax.
 ") Vertex;
-		const TopoDS_Vertex Vertex(const Standard_Integer I);
+		const TopoDS_Vertex Vertex(const int I);
 
 };
 
@@ -751,16 +751,16 @@ Default constructor.
 		 BRepPrim_GWedge();
 
 		/****** BRepPrim_GWedge::BRepPrim_GWedge ******/
-		/****** md5 signature: e294f9bebd8cc9ff98c19af2e7410e35 ******/
+		/****** md5 signature: 28669ea825d95d228c5c0510a9e8691d ******/
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "
 Parameters
 ----------
 B: BRepPrim_Builder
 Axes: gp_Ax2
-dx: float
-dy: float
-dz: float
+dx: double
+dy: double
+dz: double
 
 Return
 -------
@@ -770,20 +770,20 @@ Description
 -----------
 Creates a GWedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive.
 ") BRepPrim_GWedge;
-		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
+		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const double dx, const double dy, const double dz);
 
 		/****** BRepPrim_GWedge::BRepPrim_GWedge ******/
-		/****** md5 signature: 847889616a632de9ce27e3dfe094bb46 ******/
+		/****** md5 signature: 85d74a63b5722539ed86475023b93cfb ******/
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "
 Parameters
 ----------
 B: BRepPrim_Builder
 Axes: gp_Ax2
-dx: float
-dy: float
-dz: float
-ltx: float
+dx: double
+dy: double
+dz: double
+ltx: double
 
 Return
 -------
@@ -793,26 +793,26 @@ Description
 -----------
 Creates a GWedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative.
 ") BRepPrim_GWedge;
-		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
+		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const double dx, const double dy, const double dz, const double ltx);
 
 		/****** BRepPrim_GWedge::BRepPrim_GWedge ******/
-		/****** md5 signature: d334fb521e652e32b1e6156305b9756c ******/
+		/****** md5 signature: 19eb7e4380c7fa82ca6621fd869bb711 ******/
 		%feature("compactdefaultargs") BRepPrim_GWedge;
 		%feature("autodoc", "
 Parameters
 ----------
 B: BRepPrim_Builder
 Axes: gp_Ax2
-xmin: float
-ymin: float
-zmin: float
-z2min: float
-x2min: float
-xmax: float
-ymax: float
-zmax: float
-z2max: float
-x2max: float
+xmin: double
+ymin: double
+zmin: double
+z2min: double
+x2min: double
+xmax: double
+ymax: double
+zmax: double
+z2max: double
+x2max: double
 
 Return
 -------
@@ -822,7 +822,7 @@ Description
 -----------
 Create a GWedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative.
 ") BRepPrim_GWedge;
-		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const Standard_Real xmin, const Standard_Real ymin, const Standard_Real zmin, const Standard_Real z2min, const Standard_Real x2min, const Standard_Real xmax, const Standard_Real ymax, const Standard_Real zmax, const Standard_Real z2max, const Standard_Real x2max);
+		 BRepPrim_GWedge(const BRepPrim_Builder & B, const gp_Ax2 & Axes, const double xmin, const double ymin, const double zmin, const double z2min, const double x2min, const double xmax, const double ymax, const double zmax, const double z2max, const double x2max);
 
 		/****** BRepPrim_GWedge::Axes ******/
 		/****** md5 signature: 5cce2f6c839d20c7e40bd43ff35d90ff ******/
@@ -893,137 +893,137 @@ Returns the Face of <self> located in <d1> direction.
 		const TopoDS_Face Face(const BRepPrim_Direction d1);
 
 		/****** BRepPrim_GWedge::GetX2Max ******/
-		/****** md5 signature: babbbfd397c1efdc258884663a21c99b ******/
+		/****** md5 signature: 87e31fcae212f49f838a242c39f0b285 ******/
 		%feature("compactdefaultargs") GetX2Max;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns X2Max value from <self>.
 ") GetX2Max;
-		Standard_Real GetX2Max();
+		double GetX2Max();
 
 		/****** BRepPrim_GWedge::GetX2Min ******/
-		/****** md5 signature: 0a40c3c9c54ec4e54fecd27b53aa2d96 ******/
+		/****** md5 signature: 9087ffc2907331144630a345c798fcb8 ******/
 		%feature("compactdefaultargs") GetX2Min;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns X2Min value from <self>.
 ") GetX2Min;
-		Standard_Real GetX2Min();
+		double GetX2Min();
 
 		/****** BRepPrim_GWedge::GetXMax ******/
-		/****** md5 signature: 89241f7ad0cd880ace7f0986ef5f9f69 ******/
+		/****** md5 signature: a505be33172b921c136fa12f41ab16ac ******/
 		%feature("compactdefaultargs") GetXMax;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns XMax value from <self>.
 ") GetXMax;
-		Standard_Real GetXMax();
+		double GetXMax();
 
 		/****** BRepPrim_GWedge::GetXMin ******/
-		/****** md5 signature: d7992ddefa160df5f96a2a3533191e53 ******/
+		/****** md5 signature: a4fe5af18cf67e4f1efa35fd8bd69899 ******/
 		%feature("compactdefaultargs") GetXMin;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns Xmin value from <self>.
 ") GetXMin;
-		Standard_Real GetXMin();
+		double GetXMin();
 
 		/****** BRepPrim_GWedge::GetYMax ******/
-		/****** md5 signature: 58f0cd3a82eb7ddb0b0b6801d800b912 ******/
+		/****** md5 signature: 5d9e1630a9216c2ee8b512099e75f5d9 ******/
 		%feature("compactdefaultargs") GetYMax;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns YMax value from <self>.
 ") GetYMax;
-		Standard_Real GetYMax();
+		double GetYMax();
 
 		/****** BRepPrim_GWedge::GetYMin ******/
-		/****** md5 signature: 229d1cfe7ce27ed168565ce63df04039 ******/
+		/****** md5 signature: 49c6c929c12167b9c98f5d34765a9648 ******/
 		%feature("compactdefaultargs") GetYMin;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns YMin value from <self>.
 ") GetYMin;
-		Standard_Real GetYMin();
+		double GetYMin();
 
 		/****** BRepPrim_GWedge::GetZ2Max ******/
-		/****** md5 signature: 3f6d0e8bc5842b300bcb476636139406 ******/
+		/****** md5 signature: c5b4d92ba6903b9bfa52589230657997 ******/
 		%feature("compactdefaultargs") GetZ2Max;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns Z2Max value from <self>.
 ") GetZ2Max;
-		Standard_Real GetZ2Max();
+		double GetZ2Max();
 
 		/****** BRepPrim_GWedge::GetZ2Min ******/
-		/****** md5 signature: abe08f96ee7133799469e33037af94cd ******/
+		/****** md5 signature: bca5111fe578046174f740c1f9a3572b ******/
 		%feature("compactdefaultargs") GetZ2Min;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns Z2Min value from <self>.
 ") GetZ2Min;
-		Standard_Real GetZ2Min();
+		double GetZ2Min();
 
 		/****** BRepPrim_GWedge::GetZMax ******/
-		/****** md5 signature: 32c33af83170b4d42ae02c8990ff8ea3 ******/
+		/****** md5 signature: 4afcace634b49aa1ab8344b242b9a342 ******/
 		%feature("compactdefaultargs") GetZMax;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns ZMax value from <self>.
 ") GetZMax;
-		Standard_Real GetZMax();
+		double GetZMax();
 
 		/****** BRepPrim_GWedge::GetZMin ******/
-		/****** md5 signature: a379616f1dee6c082c654e8c13891637 ******/
+		/****** md5 signature: 9aba774e0cf2c5807f7976ddd78b996c ******/
 		%feature("compactdefaultargs") GetZMin;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns ZMin value from <self>.
 ") GetZMin;
-		Standard_Real GetZMin();
+		double GetZMin();
 
 		/****** BRepPrim_GWedge::HasEdge ******/
-		/****** md5 signature: 7739a38be24eb46408b92e60b3ed5c86 ******/
+		/****** md5 signature: cd3565a3f925adddab72fdc14fc861d7 ******/
 		%feature("compactdefaultargs") HasEdge;
 		%feature("autodoc", "
 Parameters
@@ -1039,10 +1039,10 @@ Description
 -----------
 Returns True if <self> has an Edge in <d1><d2> direction.
 ") HasEdge;
-		Standard_Boolean HasEdge(const BRepPrim_Direction d1, const BRepPrim_Direction d2);
+		bool HasEdge(const BRepPrim_Direction d1, const BRepPrim_Direction d2);
 
 		/****** BRepPrim_GWedge::HasFace ******/
-		/****** md5 signature: c9d41b14ac628ba1e79756dffee9967d ******/
+		/****** md5 signature: 53ff762d3b5bd52c14f3bba8ed06d2b6 ******/
 		%feature("compactdefaultargs") HasFace;
 		%feature("autodoc", "
 Parameters
@@ -1057,10 +1057,10 @@ Description
 -----------
 Returns True if <self> has a Face in <d1> direction.
 ") HasFace;
-		Standard_Boolean HasFace(const BRepPrim_Direction d1);
+		bool HasFace(const BRepPrim_Direction d1);
 
 		/****** BRepPrim_GWedge::HasVertex ******/
-		/****** md5 signature: eaac55ce26adfcac0a4f2a1f65c03aa5 ******/
+		/****** md5 signature: 9be3b18ad0cfe454a89c8929b3ecaa59 ******/
 		%feature("compactdefaultargs") HasVertex;
 		%feature("autodoc", "
 Parameters
@@ -1077,10 +1077,10 @@ Description
 -----------
 Returns True if <self> has a Vertex in <d1><d2><d3> direction.
 ") HasVertex;
-		Standard_Boolean HasVertex(const BRepPrim_Direction d1, const BRepPrim_Direction d2, const BRepPrim_Direction d3);
+		bool HasVertex(const BRepPrim_Direction d1, const BRepPrim_Direction d2, const BRepPrim_Direction d3);
 
 		/****** BRepPrim_GWedge::HasWire ******/
-		/****** md5 signature: 48fdc8573de4d5206e01f01f3e2e88c6 ******/
+		/****** md5 signature: f374e1160d7b6a14cc535f965b6aebde ******/
 		%feature("compactdefaultargs") HasWire;
 		%feature("autodoc", "
 Parameters
@@ -1095,10 +1095,10 @@ Description
 -----------
 Returns True if <self> has a Wire in <d1> direction.
 ") HasWire;
-		Standard_Boolean HasWire(const BRepPrim_Direction d1);
+		bool HasWire(const BRepPrim_Direction d1);
 
 		/****** BRepPrim_GWedge::IsDegeneratedShape ******/
-		/****** md5 signature: bedacae663032f1f3a7887e26e731a50 ******/
+		/****** md5 signature: 2547a561287d19dc9769ed661773d6ae ******/
 		%feature("compactdefaultargs") IsDegeneratedShape;
 		%feature("autodoc", "Return
 -------
@@ -1109,10 +1109,10 @@ Description
 Checks a shape on degeneracy 
 Return: True if a shape is degenerated.
 ") IsDegeneratedShape;
-		Standard_Boolean IsDegeneratedShape();
+		bool IsDegeneratedShape();
 
 		/****** BRepPrim_GWedge::IsInfinite ******/
-		/****** md5 signature: 84e23051e341ae0e7b22f457a416c2bd ******/
+		/****** md5 signature: 6b1f2128a6a5657d9fdd6b0a5a9cdac9 ******/
 		%feature("compactdefaultargs") IsInfinite;
 		%feature("autodoc", "
 Parameters
@@ -1127,7 +1127,7 @@ Description
 -----------
 Returns True if <self> is open in <d1> direction.
 ") IsInfinite;
-		Standard_Boolean IsInfinite(const BRepPrim_Direction d1);
+		bool IsInfinite(const BRepPrim_Direction d1);
 
 		/****** BRepPrim_GWedge::Line ******/
 		/****** md5 signature: a1e5b46f6b4d553242cfea988954fad7 ******/
@@ -1271,25 +1271,25 @@ Returns the Wire of <self> located in <d1> direction.
 class BRepPrim_OneAxis {
 	public:
 		/****** BRepPrim_OneAxis::Angle ******/
-		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
+		/****** md5 signature: 2b9c11d59a1231fe171f8d4c440fc397 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Angle;
-		Standard_Real Angle();
+		double Angle();
 
 		/****** BRepPrim_OneAxis::Angle ******/
-		/****** md5 signature: 497ba1204f8a2afc37be082f6d813cb9 ******/
+		/****** md5 signature: 6c46f776fff6e725b585f92e58062712 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "
 Parameters
 ----------
-A: float
+A: double
 
 Return
 -------
@@ -1299,7 +1299,7 @@ Description
 -----------
 No available documentation.
 ") Angle;
-		void Angle(const Standard_Real A);
+		void Angle(const double A);
 
 		/****** BRepPrim_OneAxis::Axes ******/
 		/****** md5 signature: e675cba0965d216240eda82653f8ee1f ******/
@@ -1528,7 +1528,7 @@ Returns the Wire in the end face.
 		const TopoDS_Wire EndWire();
 
 		/****** BRepPrim_OneAxis::HasBottom ******/
-		/****** md5 signature: 67ebc11d924fceccdfa8e27bbbed4353 ******/
+		/****** md5 signature: 03502f6039b6d211809e8488982cc88b ******/
 		%feature("compactdefaultargs") HasBottom;
 		%feature("autodoc", "Return
 -------
@@ -1538,10 +1538,10 @@ Description
 -----------
 Returns True if there is a bottom face. //! That is neither: VMinInfinite() MeridianClosed() MeridianOnAxis(VMin).
 ") HasBottom;
-		virtual Standard_Boolean HasBottom();
+		virtual bool HasBottom();
 
 		/****** BRepPrim_OneAxis::HasSides ******/
-		/****** md5 signature: f5a003195b8808d511dd17deed132597 ******/
+		/****** md5 signature: e2dfddeddb523f55fcb92577bec629ae ******/
 		%feature("compactdefaultargs") HasSides;
 		%feature("autodoc", "Return
 -------
@@ -1551,10 +1551,10 @@ Description
 -----------
 Returns True if there are Start and End faces. //! That is: 2*PI - Angle > Precision::Angular().
 ") HasSides;
-		virtual Standard_Boolean HasSides();
+		virtual bool HasSides();
 
 		/****** BRepPrim_OneAxis::HasTop ******/
-		/****** md5 signature: 577e87a04211a53eddde29543f98f3af ******/
+		/****** md5 signature: 7ef22041960385ecaba990faf74d0fd7 ******/
 		%feature("compactdefaultargs") HasTop;
 		%feature("autodoc", "Return
 -------
@@ -1564,7 +1564,7 @@ Description
 -----------
 Returns True if there is a top face. //! That is neither: VMaxInfinite() MeridianClosed() MeridianOnAxis(VMax).
 ") HasTop;
-		virtual Standard_Boolean HasTop();
+		virtual bool HasTop();
 
 		/****** BRepPrim_OneAxis::LateralEndWire ******/
 		/****** md5 signature: 899f794d1a1347608997259354dd6495 ******/
@@ -1632,12 +1632,12 @@ Returns a face with no edges. The surface is the lateral surface with normals po
 		virtual TopoDS_Face MakeEmptyLateralFace();
 
 		/****** BRepPrim_OneAxis::MakeEmptyMeridianEdge ******/
-		/****** md5 signature: 630b1d866184613e5afe43bdb32460bf ******/
+		/****** md5 signature: f9977bd3def1cf74eb1119b470d05519 ******/
 		%feature("compactdefaultargs") MakeEmptyMeridianEdge;
 		%feature("autodoc", "
 Parameters
 ----------
-Ang: float
+Ang: double
 
 Return
 -------
@@ -1647,10 +1647,10 @@ Description
 -----------
 Returns an edge with a 3D curve made from the meridian in the XZ plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle.
 ") MakeEmptyMeridianEdge;
-		virtual TopoDS_Edge MakeEmptyMeridianEdge(const Standard_Real Ang);
+		virtual TopoDS_Edge MakeEmptyMeridianEdge(const double Ang);
 
 		/****** BRepPrim_OneAxis::MeridianClosed ******/
-		/****** md5 signature: edc1439a02d2c9f36d6ec41c028c36f7 ******/
+		/****** md5 signature: ef3434e5ba4eb54b455d5cfddf7fdd17 ******/
 		%feature("compactdefaultargs") MeridianClosed;
 		%feature("autodoc", "Return
 -------
@@ -1658,17 +1658,17 @@ bool
 
 Description
 -----------
-Returns True if the meridian is closed. Default implementation  is MeridianValue(VMin).IsEqual(MeridianValue(VMax), Precision::Confusion()).
+Returns True if the meridian is closed. Default implementation is: MeridianValue(VMin).IsEqual(MeridianValue(VMax), Precision::Confusion()).
 ") MeridianClosed;
-		virtual Standard_Boolean MeridianClosed();
+		virtual bool MeridianClosed();
 
 		/****** BRepPrim_OneAxis::MeridianOnAxis ******/
-		/****** md5 signature: c56871a41603e5716c9059ee2b162ce6 ******/
+		/****** md5 signature: fb066509bf3921288a4d0fcdd16d4e2e ******/
 		%feature("compactdefaultargs") MeridianOnAxis;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -1676,17 +1676,17 @@ bool
 
 Description
 -----------
-Returns True if the point of parameter <V> on the meridian is on the Axis. Default implementation is Abs(MeridianValue(V).X()) < Precision::Confusion().
+Returns True if the point of parameter <V> on the meridian is on the Axis. Default implementation is std::abs(MeridianValue(V).X()) < Precision::Confusion().
 ") MeridianOnAxis;
-		virtual Standard_Boolean MeridianOnAxis(const Standard_Real V);
+		virtual bool MeridianOnAxis(const double V);
 
 		/****** BRepPrim_OneAxis::MeridianValue ******/
-		/****** md5 signature: 77bae71d5a4543ab091837bcde019a30 ******/
+		/****** md5 signature: 6ba113938fdb39ad66412896117a16ca ******/
 		%feature("compactdefaultargs") MeridianValue;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -1696,15 +1696,15 @@ Description
 -----------
 Returns the meridian point at parameter <V> in the plane XZ.
 ") MeridianValue;
-		virtual gp_Pnt2d MeridianValue(const Standard_Real V);
+		virtual gp_Pnt2d MeridianValue(const double V);
 
 		/****** BRepPrim_OneAxis::SetMeridianOffset ******/
-		/****** md5 signature: 57d60f2bbffbd56cb78726ee7410c7a5 ******/
+		/****** md5 signature: 22a676e6d9e645f241144aab4c6305af ******/
 		%feature("compactdefaultargs") SetMeridianOffset;
 		%feature("autodoc", "
 Parameters
 ----------
-MeridianOffset: float (optional, default to 0)
+MeridianOffset: double (optional, default to 0)
 
 Return
 -------
@@ -1714,7 +1714,7 @@ Description
 -----------
 The MeridianOffset is added to the parameters on the meridian curve and to the V values of the pcurves. This is used for the sphere for example, to give a range on the meridian edge which is not VMin, VMax.
 ") SetMeridianOffset;
-		void SetMeridianOffset(const Standard_Real MeridianOffset = 0);
+		void SetMeridianOffset(const double MeridianOffset = 0);
 
 		/****** BRepPrim_OneAxis::SetMeridianPCurve ******/
 		/****** md5 signature: f204da19ac16bdfcd6a614a239776158 ******/
@@ -1879,25 +1879,25 @@ Returns the wire in the top face.
 		const TopoDS_Wire TopWire();
 
 		/****** BRepPrim_OneAxis::VMax ******/
-		/****** md5 signature: 6ba449f1673839cb57aa34cf35972dc8 ******/
+		/****** md5 signature: 5aec462957486c1234e88daafbe723c6 ******/
 		%feature("compactdefaultargs") VMax;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VMax;
-		Standard_Real VMax();
+		double VMax();
 
 		/****** BRepPrim_OneAxis::VMax ******/
-		/****** md5 signature: 4d2ece54a3dcfaa75034890d806456d6 ******/
+		/****** md5 signature: 18e2be15f7cbdf4e3ea360f660bab23f ******/
 		%feature("compactdefaultargs") VMax;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -1907,10 +1907,10 @@ Description
 -----------
 No available documentation.
 ") VMax;
-		void VMax(const Standard_Real V);
+		void VMax(const double V);
 
 		/****** BRepPrim_OneAxis::VMaxInfinite ******/
-		/****** md5 signature: bc5e6bf58b2b94b7629b77aba92be11a ******/
+		/****** md5 signature: bd13ff992ad5974cde435ab58da1c146 ******/
 		%feature("compactdefaultargs") VMaxInfinite;
 		%feature("autodoc", "Return
 -------
@@ -1920,28 +1920,28 @@ Description
 -----------
 Returns True if VMax is infinite. Default Precision::IsPositiveInfinite(VMax);.
 ") VMaxInfinite;
-		virtual Standard_Boolean VMaxInfinite();
+		virtual bool VMaxInfinite();
 
 		/****** BRepPrim_OneAxis::VMin ******/
-		/****** md5 signature: 040bbb0b02e9760bd9cc365baf132106 ******/
+		/****** md5 signature: 47ad0003af5b5991cabba5307b1a6170 ******/
 		%feature("compactdefaultargs") VMin;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VMin;
-		Standard_Real VMin();
+		double VMin();
 
 		/****** BRepPrim_OneAxis::VMin ******/
-		/****** md5 signature: 80c307fc99a90b90ba8114e32ab29e1c ******/
+		/****** md5 signature: a4a6a5f2493bf075b73ba387fe002395 ******/
 		%feature("compactdefaultargs") VMin;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -1951,10 +1951,10 @@ Description
 -----------
 No available documentation.
 ") VMin;
-		void VMin(const Standard_Real V);
+		void VMin(const double V);
 
 		/****** BRepPrim_OneAxis::VMinInfinite ******/
-		/****** md5 signature: 27a668d561b75d084aa96ca8eb0fdb0c ******/
+		/****** md5 signature: e8057724ae87e30ef5cf0eb66acb74cb ******/
 		%feature("compactdefaultargs") VMinInfinite;
 		%feature("autodoc", "Return
 -------
@@ -1964,7 +1964,7 @@ Description
 -----------
 Returns True if VMin is infinite. Default Precision::IsNegativeInfinite(VMax);.
 ") VMinInfinite;
-		virtual Standard_Boolean VMinInfinite();
+		virtual bool VMinInfinite();
 
 };
 
@@ -1981,14 +1981,14 @@ Returns True if VMin is infinite. Default Precision::IsNegativeInfinite(VMax);.
 class BRepPrim_Revolution : public BRepPrim_OneAxis {
 	public:
 		/****** BRepPrim_Revolution::BRepPrim_Revolution ******/
-		/****** md5 signature: 5b1b3e93df885b1a31c4614f6b9d1d95 ******/
+		/****** md5 signature: 8b35f5792590cf41e664c869ab56bb00 ******/
 		%feature("compactdefaultargs") BRepPrim_Revolution;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax2
-VMin: float
-VMax: float
+VMin: double
+VMax: double
 M: Geom_Curve
 PM: Geom2d_Curve
 
@@ -2000,10 +2000,10 @@ Description
 -----------
 Create a revolution body <M> is the meridian nd must be in the XZ plane of <A>. <PM> is the meridian in the XZ plane.
 ") BRepPrim_Revolution;
-		 BRepPrim_Revolution(const gp_Ax2 & A, const Standard_Real VMin, const Standard_Real VMax, const opencascade::handle<Geom_Curve> & M, const opencascade::handle<Geom2d_Curve> & PM);
+		 BRepPrim_Revolution(const gp_Ax2 & A, const double VMin, const double VMax, const opencascade::handle<Geom_Curve> & M, const opencascade::handle<Geom2d_Curve> & PM);
 
 		/****** BRepPrim_Revolution::MakeEmptyLateralFace ******/
-		/****** md5 signature: 738dd0904668b5ba6d89ecb17808ecaa ******/
+		/****** md5 signature: f204d2f24282d98015be63aa021688f8 ******/
 		%feature("compactdefaultargs") MakeEmptyLateralFace;
 		%feature("autodoc", "Return
 -------
@@ -2013,15 +2013,15 @@ Description
 -----------
 The surface normal should be directed towards the outside.
 ") MakeEmptyLateralFace;
-		virtual TopoDS_Face MakeEmptyLateralFace();
+		TopoDS_Face MakeEmptyLateralFace();
 
 		/****** BRepPrim_Revolution::MakeEmptyMeridianEdge ******/
-		/****** md5 signature: 4d215bd790df5e01ce96f5dbaa5d1db7 ******/
+		/****** md5 signature: 87c3cb33a243a8e46b9415296eacbe8a ******/
 		%feature("compactdefaultargs") MakeEmptyMeridianEdge;
 		%feature("autodoc", "
 Parameters
 ----------
-Ang: float
+Ang: double
 
 Return
 -------
@@ -2031,15 +2031,15 @@ Description
 -----------
 Returns an edge with a 3D curve made from the meridian in the XZ plane rotated by <Ang> around the Z-axis. Ang may be 0 or myAngle.
 ") MakeEmptyMeridianEdge;
-		virtual TopoDS_Edge MakeEmptyMeridianEdge(const Standard_Real Ang);
+		TopoDS_Edge MakeEmptyMeridianEdge(const double Ang);
 
 		/****** BRepPrim_Revolution::MeridianValue ******/
-		/****** md5 signature: 9d4d43f257bd22d9185c780792d00919 ******/
+		/****** md5 signature: 7493d16831aef40067db6bd995052f4c ******/
 		%feature("compactdefaultargs") MeridianValue;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -2049,10 +2049,10 @@ Description
 -----------
 Returns the meridian point at parameter <V> in the plane XZ.
 ") MeridianValue;
-		virtual gp_Pnt2d MeridianValue(const Standard_Real V);
+		gp_Pnt2d MeridianValue(const double V);
 
 		/****** BRepPrim_Revolution::SetMeridianPCurve ******/
-		/****** md5 signature: e37059cc6abb428a1b857783ea7e2db5 ******/
+		/****** md5 signature: e76cfd5e734e7a88b18745591e18ec61 ******/
 		%feature("compactdefaultargs") SetMeridianPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2068,7 +2068,7 @@ Description
 -----------
 Sets the parametric urve of the edge <E> in the face <F> to be the 2d representation of the meridian.
 ") SetMeridianPCurve;
-		virtual void SetMeridianPCurve(TopoDS_Edge & E, const TopoDS_Face & F);
+		void SetMeridianPCurve(TopoDS_Edge & E, const TopoDS_Face & F);
 
 };
 
@@ -2085,7 +2085,7 @@ Sets the parametric urve of the edge <E> in the face <F> to be the 2d representa
 class BRepPrim_Wedge : public BRepPrim_GWedge {
 	public:
 		/****** BRepPrim_Wedge::BRepPrim_Wedge ******/
-		/****** md5 signature: 273f01b42e689ba5af5064dc48d05f84 ******/
+		/****** md5 signature: 9f3fd552b58eab3202ada29b1fb97ec2 ******/
 		%feature("compactdefaultargs") BRepPrim_Wedge;
 		%feature("autodoc", "Return
 -------
@@ -2098,15 +2098,15 @@ Default constructor.
 		 BRepPrim_Wedge();
 
 		/****** BRepPrim_Wedge::BRepPrim_Wedge ******/
-		/****** md5 signature: 271e307dbdf1baea793184df8b5a17db ******/
+		/****** md5 signature: a30e227ce23d518bad74b2f2ca2b085f ******/
 		%feature("compactdefaultargs") BRepPrim_Wedge;
 		%feature("autodoc", "
 Parameters
 ----------
 Axes: gp_Ax2
-dx: float
-dy: float
-dz: float
+dx: double
+dy: double
+dz: double
 
 Return
 -------
@@ -2116,19 +2116,19 @@ Description
 -----------
 Creates a Wedge algorithm. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = XMin X2Max = XMax The result is a box dx,dy,dz should be positive.
 ") BRepPrim_Wedge;
-		 BRepPrim_Wedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz);
+		 BRepPrim_Wedge(const gp_Ax2 & Axes, const double dx, const double dy, const double dz);
 
 		/****** BRepPrim_Wedge::BRepPrim_Wedge ******/
-		/****** md5 signature: 540cdfd1a8a68594ffc6280824cadd02 ******/
+		/****** md5 signature: 1d05d3dab645de486e81164d6ffc2fc3 ******/
 		%feature("compactdefaultargs") BRepPrim_Wedge;
 		%feature("autodoc", "
 Parameters
 ----------
 Axes: gp_Ax2
-dx: float
-dy: float
-dz: float
-ltx: float
+dx: double
+dy: double
+dz: double
+ltx: double
 
 Return
 -------
@@ -2138,25 +2138,25 @@ Description
 -----------
 Creates a Wedge primitive. <Axes> is the axis system for the primitive. //! XMin, YMin, ZMin are set to 0 XMax, YMax, ZMax are set to dx, dy, dz Z2Min = ZMin Z2Max = ZMax X2Min = ltx X2Max = ltx The result is a STEP right angular wedge dx,dy,dz should be positive ltx should not be negative.
 ") BRepPrim_Wedge;
-		 BRepPrim_Wedge(const gp_Ax2 & Axes, const Standard_Real dx, const Standard_Real dy, const Standard_Real dz, const Standard_Real ltx);
+		 BRepPrim_Wedge(const gp_Ax2 & Axes, const double dx, const double dy, const double dz, const double ltx);
 
 		/****** BRepPrim_Wedge::BRepPrim_Wedge ******/
-		/****** md5 signature: c9d14cf56f80cb299d68a75d83cba983 ******/
+		/****** md5 signature: b700b7741ea0b13fa8efad11e7e39121 ******/
 		%feature("compactdefaultargs") BRepPrim_Wedge;
 		%feature("autodoc", "
 Parameters
 ----------
 Axes: gp_Ax2
-xmin: float
-ymin: float
-zmin: float
-z2min: float
-x2min: float
-xmax: float
-ymax: float
-zmax: float
-z2max: float
-x2max: float
+xmin: double
+ymin: double
+zmin: double
+z2min: double
+x2min: double
+xmax: double
+ymax: double
+zmax: double
+z2max: double
+x2max: double
 
 Return
 -------
@@ -2166,7 +2166,7 @@ Description
 -----------
 Create a Wedge primitive. <Axes> is the axis system for the primitive. //! all the fields are set to the corresponding value XYZMax - XYZMin should be positive ZX2Max - ZX2Min should not be negative.
 ") BRepPrim_Wedge;
-		 BRepPrim_Wedge(const gp_Ax2 & Axes, const Standard_Real xmin, const Standard_Real ymin, const Standard_Real zmin, const Standard_Real z2min, const Standard_Real x2min, const Standard_Real xmax, const Standard_Real ymax, const Standard_Real zmax, const Standard_Real z2max, const Standard_Real x2max);
+		 BRepPrim_Wedge(const gp_Ax2 & Axes, const double xmin, const double ymin, const double zmin, const double z2min, const double x2min, const double xmax, const double ymax, const double zmax, const double z2max, const double x2max);
 
 };
 
@@ -2183,15 +2183,15 @@ Create a Wedge primitive. <Axes> is the axis system for the primitive. //! all t
 class BRepPrim_Cone : public BRepPrim_Revolution {
 	public:
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: ff8d3b1ee270eff718ccc66335fc7cbc ******/
+		/****** md5 signature: 46bc2bc941fcfab4d6f9712b2c211cfc ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 Position: gp_Ax2
-Height: float
-Radius: float (optional, default to 0)
+Height: double
+Radius: double (optional, default to 0)
 
 Return
 -------
@@ -2201,15 +2201,15 @@ Description
 -----------
 the STEP definition Angle = semi-angle of the cone Position: the coordinate system Height: height of the cone. Radius: radius of truncated face at z = 0 //! The apex is on z < 0 //! Errors: Height < Resolution Angle < Resolution / Height Angle > PI/2 - Resolution / Height.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const Standard_Real Angle, const gp_Ax2 & Position, const Standard_Real Height, const Standard_Real Radius = 0);
+		 BRepPrim_Cone(const double Angle, const gp_Ax2 & Position, const double Height, const double Radius = 0);
 
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: c043b204d09754bd1015524e5a103d2a ******/
+		/****** md5 signature: df0e5adc91b55d759655b6d0d89078b2 ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 
 Return
 -------
@@ -2219,15 +2219,15 @@ Description
 -----------
 infinite cone at origin on Z negative.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const Standard_Real Angle);
+		 BRepPrim_Cone(const double Angle);
 
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: c0b45e6511e50885e9fcf84e237c5aa1 ******/
+		/****** md5 signature: 11b46804e3a448cbb89d36f8c1cd237a ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 Apex: gp_Pnt
 
 Return
@@ -2238,15 +2238,15 @@ Description
 -----------
 infinite cone at Apex on Z negative.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const Standard_Real Angle, const gp_Pnt & Apex);
+		 BRepPrim_Cone(const double Angle, const gp_Pnt & Apex);
 
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: 6f65f34c26695c819b590ce393be91ba ******/
+		/****** md5 signature: 02a5abbb8f7221b87c6af20bbcc15549 ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 Axes: gp_Ax2
 
 Return
@@ -2257,17 +2257,17 @@ Description
 -----------
 infinite cone with Axes.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const Standard_Real Angle, const gp_Ax2 & Axes);
+		 BRepPrim_Cone(const double Angle, const gp_Ax2 & Axes);
 
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: c4131a519320058db92d9b9b4a62b4e1 ******/
+		/****** md5 signature: d7461d19ddc38bfd3aebbc03297e38c4 ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
-R1: float
-R2: float
-H: float
+R1: double
+R2: double
+H: double
 
 Return
 -------
@@ -2275,20 +2275,20 @@ None
 
 Description
 -----------
-create a Cone at origin on Z axis, of height H, radius R1 at Z = 0, R2 at Z = H, X is the origin of angles. If R1 or R2 is 0 there is an apex. Otherwise, it is a truncated cone. //! Error: R1 and R2 < Resolution R1 or R2 negative Abs(R1-R2) < Resolution H < Resolution H negative.
+create a Cone at origin on Z axis, of height H, radius R1 at Z = 0, R2 at Z = H, X is the origin of angles. If R1 or R2 is 0 there is an apex. Otherwise, it is a truncated cone. //! Error: R1 and R2 < Resolution R1 or R2 negative std::abs(R1-R2) < Resolution H < Resolution H negative.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
+		 BRepPrim_Cone(const double R1, const double R2, const double H);
 
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: ba64b29b0668019a05dc949aab6770f7 ******/
+		/****** md5 signature: 54a685497a30e4d16c7106886c2e744c ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
 Center: gp_Pnt
-R1: float
-R2: float
-H: float
+R1: double
+R2: double
+H: double
 
 Return
 -------
@@ -2298,18 +2298,18 @@ Description
 -----------
 same as above but at a given point.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const gp_Pnt & Center, const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
+		 BRepPrim_Cone(const gp_Pnt & Center, const double R1, const double R2, const double H);
 
 		/****** BRepPrim_Cone::BRepPrim_Cone ******/
-		/****** md5 signature: a0f74a87d71dc02fbc406ad9fd16e941 ******/
+		/****** md5 signature: 619915661dc6dd72d67fa50a738008ac ******/
 		%feature("compactdefaultargs") BRepPrim_Cone;
 		%feature("autodoc", "
 Parameters
 ----------
 Axes: gp_Ax2
-R1: float
-R2: float
-H: float
+R1: double
+R2: double
+H: double
 
 Return
 -------
@@ -2319,10 +2319,10 @@ Description
 -----------
 same as above with given axes system.
 ") BRepPrim_Cone;
-		 BRepPrim_Cone(const gp_Ax2 & Axes, const Standard_Real R1, const Standard_Real R2, const Standard_Real H);
+		 BRepPrim_Cone(const gp_Ax2 & Axes, const double R1, const double R2, const double H);
 
 		/****** BRepPrim_Cone::MakeEmptyLateralFace ******/
-		/****** md5 signature: b5adc273756debb03c54f3ada5247082 ******/
+		/****** md5 signature: f204d2f24282d98015be63aa021688f8 ******/
 		%feature("compactdefaultargs") MakeEmptyLateralFace;
 		%feature("autodoc", "Return
 -------
@@ -2332,7 +2332,7 @@ Description
 -----------
 The surface normal should be directed towards the outside.
 ") MakeEmptyLateralFace;
-		virtual TopoDS_Face MakeEmptyLateralFace();
+		TopoDS_Face MakeEmptyLateralFace();
 
 };
 
@@ -2349,14 +2349,14 @@ The surface normal should be directed towards the outside.
 class BRepPrim_Cylinder : public BRepPrim_Revolution {
 	public:
 		/****** BRepPrim_Cylinder::BRepPrim_Cylinder ******/
-		/****** md5 signature: 2d8fc92ca4c80bbef73bb95de9c4fa4e ******/
+		/****** md5 signature: 0644493cf1a6d4cbae823c75af547418 ******/
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
 Position: gp_Ax2
-Radius: float
-Height: float
+Radius: double
+Height: double
 
 Return
 -------
@@ -2366,15 +2366,15 @@ Description
 -----------
 the STEP definition Position: center of a Face and Axis Radius: radius of cylinder Height: distance between faces on positive side //! Errors: Height < Resolution Radius < Resolution.
 ") BRepPrim_Cylinder;
-		 BRepPrim_Cylinder(const gp_Ax2 & Position, const Standard_Real Radius, const Standard_Real Height);
+		 BRepPrim_Cylinder(const gp_Ax2 & Position, const double Radius, const double Height);
 
 		/****** BRepPrim_Cylinder::BRepPrim_Cylinder ******/
-		/****** md5 signature: ecc1d1a7f9b1d641e94a9b2cbeaf6532 ******/
+		/****** md5 signature: cfa7d2d05e388ba2403cb3c62e151aaa ******/
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
+Radius: double
 
 Return
 -------
@@ -2384,16 +2384,16 @@ Description
 -----------
 infinite Cylinder at origin on Z negative.
 ") BRepPrim_Cylinder;
-		 BRepPrim_Cylinder(const Standard_Real Radius);
+		 BRepPrim_Cylinder(const double Radius);
 
 		/****** BRepPrim_Cylinder::BRepPrim_Cylinder ******/
-		/****** md5 signature: fb91e5b01da7587cf83484e8f6b4331b ******/
+		/****** md5 signature: ca6076f7b7ca6ad4c11411423831e2bc ******/
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
 Center: gp_Pnt
-Radius: float
+Radius: double
 
 Return
 -------
@@ -2403,16 +2403,16 @@ Description
 -----------
 infinite Cylinder at Center on Z negative.
 ") BRepPrim_Cylinder;
-		 BRepPrim_Cylinder(const gp_Pnt & Center, const Standard_Real Radius);
+		 BRepPrim_Cylinder(const gp_Pnt & Center, const double Radius);
 
 		/****** BRepPrim_Cylinder::BRepPrim_Cylinder ******/
-		/****** md5 signature: c6ae35bea3254cadd17db7280137bea7 ******/
+		/****** md5 signature: 06721c6bc43e48752bb4eeb82459a8de ******/
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
 Axes: gp_Ax2
-Radius: float
+Radius: double
 
 Return
 -------
@@ -2422,16 +2422,16 @@ Description
 -----------
 infinite Cylinder at Axes on Z negative.
 ") BRepPrim_Cylinder;
-		 BRepPrim_Cylinder(const gp_Ax2 & Axes, const Standard_Real Radius);
+		 BRepPrim_Cylinder(const gp_Ax2 & Axes, const double Radius);
 
 		/****** BRepPrim_Cylinder::BRepPrim_Cylinder ******/
-		/****** md5 signature: 70f6d404a95f20f5c7464246f08067a7 ******/
+		/****** md5 signature: 88f479baaf486a4f77c751b8a9ac830f ******/
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-R: float
-H: float
+R: double
+H: double
 
 Return
 -------
@@ -2441,17 +2441,17 @@ Description
 -----------
 create a Cylinder at origin on Z axis, of height H and radius R Error: Radius < Resolution H < Resolution H negative.
 ") BRepPrim_Cylinder;
-		 BRepPrim_Cylinder(const Standard_Real R, const Standard_Real H);
+		 BRepPrim_Cylinder(const double R, const double H);
 
 		/****** BRepPrim_Cylinder::BRepPrim_Cylinder ******/
-		/****** md5 signature: 6910efd5aeea5eed4574043c57b67161 ******/
+		/****** md5 signature: 1b6e04ed4c2cd8adb6ffec40cfbb625c ******/
 		%feature("compactdefaultargs") BRepPrim_Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
 Center: gp_Pnt
-R: float
-H: float
+R: double
+H: double
 
 Return
 -------
@@ -2461,10 +2461,10 @@ Description
 -----------
 same as above but at a given point.
 ") BRepPrim_Cylinder;
-		 BRepPrim_Cylinder(const gp_Pnt & Center, const Standard_Real R, const Standard_Real H);
+		 BRepPrim_Cylinder(const gp_Pnt & Center, const double R, const double H);
 
 		/****** BRepPrim_Cylinder::MakeEmptyLateralFace ******/
-		/****** md5 signature: b5adc273756debb03c54f3ada5247082 ******/
+		/****** md5 signature: f204d2f24282d98015be63aa021688f8 ******/
 		%feature("compactdefaultargs") MakeEmptyLateralFace;
 		%feature("autodoc", "Return
 -------
@@ -2474,7 +2474,7 @@ Description
 -----------
 The surface normal should be directed towards the outside.
 ") MakeEmptyLateralFace;
-		virtual TopoDS_Face MakeEmptyLateralFace();
+		TopoDS_Face MakeEmptyLateralFace();
 
 };
 
@@ -2491,12 +2491,12 @@ The surface normal should be directed towards the outside.
 class BRepPrim_Sphere : public BRepPrim_Revolution {
 	public:
 		/****** BRepPrim_Sphere::BRepPrim_Sphere ******/
-		/****** md5 signature: a69f71dc958ffcbd14404b395674a725 ******/
+		/****** md5 signature: 53f175421c06029825bc7c16157a22a2 ******/
 		%feature("compactdefaultargs") BRepPrim_Sphere;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
+Radius: double
 
 Return
 -------
@@ -2506,16 +2506,16 @@ Description
 -----------
 Creates a Sphere at origin with Radius. The axes of the sphere are the reference axes. An error is raised if the radius is < Resolution.
 ") BRepPrim_Sphere;
-		 BRepPrim_Sphere(const Standard_Real Radius);
+		 BRepPrim_Sphere(const double Radius);
 
 		/****** BRepPrim_Sphere::BRepPrim_Sphere ******/
-		/****** md5 signature: 40fe35bc704dd685fcd8f42947b874a9 ******/
+		/****** md5 signature: 30f8f8d49aa8a98a23178bd9bc95408e ******/
 		%feature("compactdefaultargs") BRepPrim_Sphere;
 		%feature("autodoc", "
 Parameters
 ----------
 Center: gp_Pnt
-Radius: float
+Radius: double
 
 Return
 -------
@@ -2525,16 +2525,16 @@ Description
 -----------
 Creates a Sphere with Center and Radius. Axes are the reference axes. This is the STEP constructor.
 ") BRepPrim_Sphere;
-		 BRepPrim_Sphere(const gp_Pnt & Center, const Standard_Real Radius);
+		 BRepPrim_Sphere(const gp_Pnt & Center, const double Radius);
 
 		/****** BRepPrim_Sphere::BRepPrim_Sphere ******/
-		/****** md5 signature: 7ff355f910ca0fd149e933f970dbb666 ******/
+		/****** md5 signature: 432efb7312c29155e2df2fcb5f4d472d ******/
 		%feature("compactdefaultargs") BRepPrim_Sphere;
 		%feature("autodoc", "
 Parameters
 ----------
 Axes: gp_Ax2
-Radius: float
+Radius: double
 
 Return
 -------
@@ -2544,10 +2544,10 @@ Description
 -----------
 Creates a sphere with given axes system.
 ") BRepPrim_Sphere;
-		 BRepPrim_Sphere(const gp_Ax2 & Axes, const Standard_Real Radius);
+		 BRepPrim_Sphere(const gp_Ax2 & Axes, const double Radius);
 
 		/****** BRepPrim_Sphere::MakeEmptyLateralFace ******/
-		/****** md5 signature: b5adc273756debb03c54f3ada5247082 ******/
+		/****** md5 signature: f204d2f24282d98015be63aa021688f8 ******/
 		%feature("compactdefaultargs") MakeEmptyLateralFace;
 		%feature("autodoc", "Return
 -------
@@ -2557,7 +2557,7 @@ Description
 -----------
 The surface normal should be directed towards the outside.
 ") MakeEmptyLateralFace;
-		virtual TopoDS_Face MakeEmptyLateralFace();
+		TopoDS_Face MakeEmptyLateralFace();
 
 };
 
@@ -2574,14 +2574,14 @@ The surface normal should be directed towards the outside.
 class BRepPrim_Torus : public BRepPrim_Revolution {
 	public:
 		/****** BRepPrim_Torus::BRepPrim_Torus ******/
-		/****** md5 signature: a73ba5d8cdf7a0859b5f42eec6316a19 ******/
+		/****** md5 signature: 2b5424a2e3c3a0f4ca20e330cc25c47e ******/
 		%feature("compactdefaultargs") BRepPrim_Torus;
 		%feature("autodoc", "
 Parameters
 ----------
 Position: gp_Ax2
-Major: float
-Minor: float
+Major: double
+Minor: double
 
 Return
 -------
@@ -2591,16 +2591,16 @@ Description
 -----------
 the STEP definition Position: center and axes Major, Minor: Radii //! Errors: Major < Resolution Minor < Resolution.
 ") BRepPrim_Torus;
-		 BRepPrim_Torus(const gp_Ax2 & Position, const Standard_Real Major, const Standard_Real Minor);
+		 BRepPrim_Torus(const gp_Ax2 & Position, const double Major, const double Minor);
 
 		/****** BRepPrim_Torus::BRepPrim_Torus ******/
-		/****** md5 signature: 96236fbf921e8d6d410e179a02cc89de ******/
+		/****** md5 signature: e08fd2f361bcbefa26ff040675ef92d5 ******/
 		%feature("compactdefaultargs") BRepPrim_Torus;
 		%feature("autodoc", "
 Parameters
 ----------
-Major: float
-Minor: float
+Major: double
+Minor: double
 
 Return
 -------
@@ -2610,17 +2610,17 @@ Description
 -----------
 Torus centered at origin.
 ") BRepPrim_Torus;
-		 BRepPrim_Torus(const Standard_Real Major, const Standard_Real Minor);
+		 BRepPrim_Torus(const double Major, const double Minor);
 
 		/****** BRepPrim_Torus::BRepPrim_Torus ******/
-		/****** md5 signature: e161468c8e037f5911e3faeb41308f3b ******/
+		/****** md5 signature: 355998e7bfcd09b1a45761ae24ccf9eb ******/
 		%feature("compactdefaultargs") BRepPrim_Torus;
 		%feature("autodoc", "
 Parameters
 ----------
 Center: gp_Pnt
-Major: float
-Minor: float
+Major: double
+Minor: double
 
 Return
 -------
@@ -2630,10 +2630,10 @@ Description
 -----------
 Torus at Center.
 ") BRepPrim_Torus;
-		 BRepPrim_Torus(const gp_Pnt & Center, const Standard_Real Major, const Standard_Real Minor);
+		 BRepPrim_Torus(const gp_Pnt & Center, const double Major, const double Minor);
 
 		/****** BRepPrim_Torus::MakeEmptyLateralFace ******/
-		/****** md5 signature: b5adc273756debb03c54f3ada5247082 ******/
+		/****** md5 signature: f204d2f24282d98015be63aa021688f8 ******/
 		%feature("compactdefaultargs") MakeEmptyLateralFace;
 		%feature("autodoc", "Return
 -------
@@ -2643,7 +2643,7 @@ Description
 -----------
 The surface normal should be directed towards the outside.
 ") MakeEmptyLateralFace;
-		virtual TopoDS_Face MakeEmptyLateralFace();
+		TopoDS_Face MakeEmptyLateralFace();
 
 };
 

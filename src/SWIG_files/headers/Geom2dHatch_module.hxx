@@ -20,8 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<Geom2dHatch_Classifier.hxx>
-#include<Geom2dHatch_DataMapIteratorOfHatchings.hxx>
-#include<Geom2dHatch_DataMapIteratorOfMapOfElements.hxx>
 #include<Geom2dHatch_Element.hxx>
 #include<Geom2dHatch_Elements.hxx>
 #include<Geom2dHatch_FClass2dOfClassifier.hxx>

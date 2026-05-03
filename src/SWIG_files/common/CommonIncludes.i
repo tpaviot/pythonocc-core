@@ -23,6 +23,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include cpointer.i
 %include carrays.i
 %include exception.i
+
+// occt-800: hide RTTI macros that SWIG does not understand
+// (DEFINE_STANDARD_HANDLE must NOT be hidden here, since SWIG needs to
+//  see it expand to declare opencascade::handle aliases for many classes)
+#define DEFINE_STANDARD_RTTI_INLINE(C1, C2)
+#define DEFINE_STANDARD_RTTIEXT(C1, C2)
 %include <python/std_array.i>
 %include <python/std_list.i>
 %include <python/std_string.i>

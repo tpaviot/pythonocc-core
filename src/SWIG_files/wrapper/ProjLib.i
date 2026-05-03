@@ -51,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_projlib.html"
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom_module.hxx>
-#include<TColStd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<math_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -70,7 +69,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_projlib.html"
 %import Adaptor2d.i
 %import GeomAbs.i
 %import Geom.i
-%import TColStd.i
 %import AppParCurves.i
 %import math.i
 %import GeomAdaptor.i
@@ -92,7 +90,6 @@ from OCC.Core.Exception import *
 %wrap_handle(ProjLib_CompProjectedCurve)
 %wrap_handle(ProjLib_ProjectOnPlane)
 %wrap_handle(ProjLib_ProjectedCurve)
-%wrap_handle(ProjLib_HSequenceOfHSequenceOfPnt)
 /* end handles declaration */
 
 /* templates */
@@ -109,6 +106,7 @@ from OCC.Core.Exception import *
 /* typedefs */
 typedef ProjLib_CompProjectedCurve ProjLib_HCompProjectedCurve;
 typedef ProjLib_ProjectedCurve ProjLib_HProjectedCurve;
+typedef NCollection_HSequence<opencascade::handle<TColgp_HSequenceOfPnt>> ProjLib_HSequenceOfHSequenceOfPnt;
 typedef NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> ProjLib_SequenceOfHSequenceOfPnt;
 /* end typedefs declaration */
 
@@ -119,7 +117,7 @@ typedef NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> ProjLib
 class ProjLib {
 	public:
 		/****** ProjLib::IsAnaSurf ******/
-		/****** md5 signature: 409f5415ecf911e71bada1348ae276b0 ******/
+		/****** md5 signature: 502c6d51dedb1a63ad0dae42e1368425 ******/
 		%feature("compactdefaultargs") IsAnaSurf;
 		%feature("autodoc", "
 Parameters
@@ -134,7 +132,7 @@ Description
 -----------
 Returns 'true' if surface is analytical, that is it can be Plane, Cylinder, Cone, Sphere, Torus. For all other types of surface method returns 'false'.
 ") IsAnaSurf;
-		static Standard_Boolean IsAnaSurf(const opencascade::handle<Adaptor3d_Surface> & theAS);
+		static bool IsAnaSurf(const opencascade::handle<Adaptor3d_Surface> & theAS);
 
 		/****** ProjLib::MakePCurveOfType ******/
 		/****** md5 signature: 874915f47cdfd90614a48c32012a43ce ******/
@@ -487,15 +485,15 @@ No available documentation.
 		 ProjLib_CompProjectedCurve();
 
 		/****** ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve ******/
-		/****** md5 signature: 08dd3c7edaea388012cc726f98f9e13e ******/
+		/****** md5 signature: f8131827de5d1bab47ca6aa83f007abc ******/
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
 C: Adaptor3d_Curve
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 
 Return
 -------
@@ -505,19 +503,19 @@ Description
 -----------
 try to find all solutions.
 ") ProjLib_CompProjectedCurve;
-		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real TolU, const Standard_Real TolV);
+		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const double TolU, const double TolV);
 
 		/****** ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve ******/
-		/****** md5 signature: a5db5b76fcdc305ab156c65c2cd559a9 ******/
+		/****** md5 signature: f7dddc602bbcd1696fb9b58e2be75f4b ******/
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
 C: Adaptor3d_Curve
-TolU: float
-TolV: float
-MaxDist: float
+TolU: double
+TolV: double
+MaxDist: double
 
 Return
 -------
@@ -527,18 +525,18 @@ Description
 -----------
 this constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then MaxDist. if MaxDist < 0 then algorithm works as above.
 ") ProjLib_CompProjectedCurve;
-		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real TolU, const Standard_Real TolV, const Standard_Real MaxDist);
+		 ProjLib_CompProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const double TolU, const double TolV, const double MaxDist);
 
 		/****** ProjLib_CompProjectedCurve::ProjLib_CompProjectedCurve ******/
-		/****** md5 signature: 05bb3bd54ea40e0e7af3be7d2c911359 ******/
+		/****** md5 signature: bf06be2fb3a52d524dce330cdc4d633b ******/
 		%feature("compactdefaultargs") ProjLib_CompProjectedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol3d: float
+Tol3d: double
 S: Adaptor3d_Surface
 C: Adaptor3d_Curve
-MaxDist: float (optional, default to -1.0)
+MaxDist: double (optional, default to -1.0)
 
 Return
 -------
@@ -548,10 +546,10 @@ Description
 -----------
 this constructor tries to optimize the search using the assumption that maximum distance between surface and curve less or equal then MaxDist. if MaxDist < 0 then algorithm try to find all solutions Tolerances of parameters are calculated automatically.
 ") ProjLib_CompProjectedCurve;
-		 ProjLib_CompProjectedCurve(const Standard_Real Tol3d, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real MaxDist = -1.0);
+		 ProjLib_CompProjectedCurve(const double Tol3d, const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const double MaxDist = -1.0);
 
 		/****** ProjLib_CompProjectedCurve::Bounds ******/
-		/****** md5 signature: 24282d415a0402b2ddb398db6e27be97 ******/
+		/****** md5 signature: 98e6cbde44f8509c5771556c85bb834e ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -560,17 +558,17 @@ Index: int
 
 Return
 -------
-Udeb: float
-Ufin: float
+Udeb: double
+Ufin: double
 
 Description
 -----------
 returns the bounds of the continuous part corresponding to Index.
 ") Bounds;
-		void Bounds(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Bounds(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ProjLib_CompProjectedCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -583,12 +581,12 @@ Returns the Continuity used in the approximation.
 		GeomAbs_Shape Continuity();
 
 		/****** ProjLib_CompProjectedCurve::D0 ******/
-		/****** md5 signature: 01a5234aae6db090351bac35b3718fd9 ******/
+		/****** md5 signature: 28006337a032f857e56ae70cba70f8c3 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 
 Return
@@ -599,15 +597,15 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
+		void D0(const double U, gp_Pnt2d & P);
 
 		/****** ProjLib_CompProjectedCurve::D1 ******/
-		/****** md5 signature: 79a293d0b91ab6d1359881075119fb56 ******/
+		/****** md5 signature: 5f53adf29b471206c7186b2aee007b00 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -619,15 +617,15 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		void D1(const double U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** ProjLib_CompProjectedCurve::D2 ******/
-		/****** md5 signature: acc8c0955596bb0bf809102736ad1124 ******/
+		/****** md5 signature: 159e151ac7b509d70da37104a08723f1 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -640,15 +638,15 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		void D2(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** ProjLib_CompProjectedCurve::DN ******/
-		/****** md5 signature: a05d2f76912764cef5ac7bb40ebda3d7 ******/
+		/****** md5 signature: ab59dc692256c89ec17f3f5c66c3a731 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 N: int
 
 Return
@@ -659,20 +657,20 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if N < 1. Raised if N > 2.
 ") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
+		gp_Vec2d DN(const double U, const int N);
 
 		/****** ProjLib_CompProjectedCurve::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the curve C which has a projection on S.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ProjLib_CompProjectedCurve::GetCurve ******/
 		/****** md5 signature: c4c186157bff8d4b55a9d0a19a63ce6d ******/
@@ -688,7 +686,7 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
 		/****** ProjLib_CompProjectedCurve::GetProj2d ******/
-		/****** md5 signature: 007fc2fbfc8771942194fc818ead51b5 ******/
+		/****** md5 signature: c5546299f8b5dfc05426baee6230221d ******/
 		%feature("compactdefaultargs") GetProj2d;
 		%feature("autodoc", "Return
 -------
@@ -698,10 +696,10 @@ Description
 -----------
 Returns the parameter, which defines necessity of only 2d results.
 ") GetProj2d;
-		Standard_Boolean GetProj2d();
+		bool GetProj2d();
 
 		/****** ProjLib_CompProjectedCurve::GetProj3d ******/
-		/****** md5 signature: 5bc1d8a6587b179d2045e5157c866850 ******/
+		/****** md5 signature: 0c62dbd881e8cbe25f25f9a8c7141c56 ******/
 		%feature("compactdefaultargs") GetProj3d;
 		%feature("autodoc", "Return
 -------
@@ -711,10 +709,10 @@ Description
 -----------
 Returns the parameter, which defines necessity of only 3d results.
 ") GetProj3d;
-		Standard_Boolean GetProj3d();
+		bool GetProj3d();
 
 		/****** ProjLib_CompProjectedCurve::GetResult2dC ******/
-		/****** md5 signature: 96d965765f63b3b91f4cb37112eaa771 ******/
+		/****** md5 signature: a753759705313eeed5185aeb0401fd28 ******/
 		%feature("compactdefaultargs") GetResult2dC;
 		%feature("autodoc", "
 Parameters
@@ -729,10 +727,10 @@ Description
 -----------
 Returns the resulting 2d-curve of projecting of the curve interval with number Index.
 ") GetResult2dC;
-		opencascade::handle<Geom2d_Curve> GetResult2dC(const Standard_Integer theIndex);
+		opencascade::handle<Geom2d_Curve> GetResult2dC(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetResult2dP ******/
-		/****** md5 signature: e5ed7efabb43e9a259abe437b09fea96 ******/
+		/****** md5 signature: d83d39ae87cbf3214603a4f70f623efc ******/
 		%feature("compactdefaultargs") GetResult2dP;
 		%feature("autodoc", "
 Parameters
@@ -747,10 +745,10 @@ Description
 -----------
 Returns the resulting 2d-point of projecting of the curve interval with number Index.
 ") GetResult2dP;
-		gp_Pnt2d GetResult2dP(const Standard_Integer theIndex);
+		gp_Pnt2d GetResult2dP(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetResult2dUApproxError ******/
-		/****** md5 signature: a7c2281b27a985837ed11d6494634c9b ******/
+		/****** md5 signature: d77fa279ec2a26ba0e0715d617fb17eb ******/
 		%feature("compactdefaultargs") GetResult2dUApproxError;
 		%feature("autodoc", "
 Parameters
@@ -759,16 +757,16 @@ theIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the error of approximation of U parameter 2d-curve as a result projecting of the curve interval with number Index.
 ") GetResult2dUApproxError;
-		Standard_Real GetResult2dUApproxError(const Standard_Integer theIndex);
+		double GetResult2dUApproxError(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetResult2dVApproxError ******/
-		/****** md5 signature: 11b8dbfbde6c5749f403bfd3f4bbd1a1 ******/
+		/****** md5 signature: db3d7fcd27090b7e614d37eb3304b64a ******/
 		%feature("compactdefaultargs") GetResult2dVApproxError;
 		%feature("autodoc", "
 Parameters
@@ -777,16 +775,16 @@ theIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the error of approximation of V parameter 2d-curve as a result projecting of the curve interval with number Index.
 ") GetResult2dVApproxError;
-		Standard_Real GetResult2dVApproxError(const Standard_Integer theIndex);
+		double GetResult2dVApproxError(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetResult3dApproxError ******/
-		/****** md5 signature: e2590f528d3ee217cdec7ce160b40731 ******/
+		/****** md5 signature: b27ea3f2bf726738042923d586a81070 ******/
 		%feature("compactdefaultargs") GetResult3dApproxError;
 		%feature("autodoc", "
 Parameters
@@ -795,16 +793,16 @@ theIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the error of approximation of 3d-curve as a result projecting of the curve interval with number Index.
 ") GetResult3dApproxError;
-		Standard_Real GetResult3dApproxError(const Standard_Integer theIndex);
+		double GetResult3dApproxError(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetResult3dC ******/
-		/****** md5 signature: 7a13a149ade3dc00f611c82fbdffb5d0 ******/
+		/****** md5 signature: 5fe4e2af26bf202a0bd8381e56f10b79 ******/
 		%feature("compactdefaultargs") GetResult3dC;
 		%feature("autodoc", "
 Parameters
@@ -819,10 +817,10 @@ Description
 -----------
 Returns the resulting 3d-curve of projecting of the curve interval with number Index.
 ") GetResult3dC;
-		opencascade::handle<Geom_Curve> GetResult3dC(const Standard_Integer theIndex);
+		opencascade::handle<Geom_Curve> GetResult3dC(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetResult3dP ******/
-		/****** md5 signature: 0e7d7f5de659e7d823081953d0527c61 ******/
+		/****** md5 signature: 8775afa61eb01484d7f22e3835deb829 ******/
 		%feature("compactdefaultargs") GetResult3dP;
 		%feature("autodoc", "
 Parameters
@@ -837,20 +835,20 @@ Description
 -----------
 Returns the resulting 3d-point of projecting of the curve interval with number Index.
 ") GetResult3dP;
-		gp_Pnt GetResult3dP(const Standard_Integer theIndex);
+		gp_Pnt GetResult3dP(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::GetSequence ******/
-		/****** md5 signature: e9bad1b71015b635dfab48628ac28803 ******/
+		/****** md5 signature: 79b5e4fd3ca7b36a2956613021030651 ******/
 		%feature("compactdefaultargs") GetSequence;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<ProjLib_HSequenceOfHSequenceOfPnt>
+opencascade::handle<NCollection_HSequence<opencascade::handle<NCollection_HSequence<gp_Pnt>>>>
 
 Description
 -----------
 No available documentation.
 ") GetSequence;
-		const opencascade::handle<ProjLib_HSequenceOfHSequenceOfPnt> & GetSequence();
+		const opencascade::handle<NCollection_HSequence<opencascade::handle<NCollection_HSequence<gp_Pnt>>>> GetSequence();
 
 		/****** ProjLib_CompProjectedCurve::GetSurface ******/
 		/****** md5 signature: 56dff0248d5d8fc9e2bd341c8dad1556 ******/
@@ -866,7 +864,7 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & GetSurface();
 
 		/****** ProjLib_CompProjectedCurve::GetTolerance ******/
-		/****** md5 signature: f8936a6db95965d7ff78da376cdea110 ******/
+		/****** md5 signature: ea3584626efd1d32cec72ccb401297ec ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -874,8 +872,8 @@ Parameters
 
 Return
 -------
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 
 Description
 -----------
@@ -884,7 +882,7 @@ No available documentation.
 		void GetTolerance(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ProjLib_CompProjectedCurve::GetType ******/
-		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
+		/****** md5 signature: 5a645f79981f2ae05742e39e35676600 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -910,12 +908,12 @@ computes a set of projected point and determine the continuous parts of the proj
 		void Init();
 
 		/****** ProjLib_CompProjectedCurve::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -926,10 +924,10 @@ Description
 -----------
 Returns the parameters corresponding to S discontinuities. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** ProjLib_CompProjectedCurve::IsSinglePnt ******/
-		/****** md5 signature: 70383fe20b1486dc33c916506522c29c ******/
+		/****** md5 signature: 2f66692f522981cb852053dc8a21bb9c ******/
 		%feature("compactdefaultargs") IsSinglePnt;
 		%feature("autodoc", "
 Parameters
@@ -945,10 +943,10 @@ Description
 -----------
 returns True if part of projection with number Index is a single point and writes its coordinates in P.
 ") IsSinglePnt;
-		Standard_Boolean IsSinglePnt(const Standard_Integer Index, gp_Pnt2d & P);
+		bool IsSinglePnt(const int Index, gp_Pnt2d & P);
 
 		/****** ProjLib_CompProjectedCurve::IsUIso ******/
-		/****** md5 signature: 0da8c4d53f3c9094e5e1b4e09fe114bf ******/
+		/****** md5 signature: d65feff595456c50a184cab83eb5a96d ******/
 		%feature("compactdefaultargs") IsUIso;
 		%feature("autodoc", "
 Parameters
@@ -957,16 +955,16 @@ Index: int
 
 Return
 -------
-U: float
+U: double
 
 Description
 -----------
 returns True if part of projection with number Index is an u-isoparametric curve of input surface.
 ") IsUIso;
-		Standard_Boolean IsUIso(const Standard_Integer Index, Standard_Real &OutValue);
+		bool IsUIso(const int Index, Standard_Real &OutValue);
 
 		/****** ProjLib_CompProjectedCurve::IsVIso ******/
-		/****** md5 signature: 6a215f05da42b246ea3bd3ec9c13a2bc ******/
+		/****** md5 signature: d90463f447de6109698a9db1fbcb39c4 ******/
 		%feature("compactdefaultargs") IsVIso;
 		%feature("autodoc", "
 Parameters
@@ -975,26 +973,26 @@ Index: int
 
 Return
 -------
-V: float
+V: double
 
 Description
 -----------
 returns True if part of projection with number Index is an v-isoparametric curve of input surface.
 ") IsVIso;
-		Standard_Boolean IsVIso(const Standard_Integer Index, Standard_Real &OutValue);
+		bool IsVIso(const int Index, Standard_Real &OutValue);
 
 		/****** ProjLib_CompProjectedCurve::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the curve C which has a projection on S.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ProjLib_CompProjectedCurve::Load ******/
 		/****** md5 signature: 5fdedc45f7f3e3286603c8152dd5d5ba ******/
@@ -1033,7 +1031,7 @@ Changes the curve.
 		void Load(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** ProjLib_CompProjectedCurve::MaxDistance ******/
-		/****** md5 signature: 2482e25dc8d2cba55f7f64c41a0160e5 ******/
+		/****** md5 signature: 9a68e162c2f0fec22c111643cac9ba9a ******/
 		%feature("compactdefaultargs") MaxDistance;
 		%feature("autodoc", "
 Parameters
@@ -1042,16 +1040,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the maximum distance between curve to project and surface.
 ") MaxDistance;
-		Standard_Real MaxDistance(const Standard_Integer Index);
+		double MaxDistance(const int Index);
 
 		/****** ProjLib_CompProjectedCurve::NbCurves ******/
-		/****** md5 signature: f7f6dbd981df076443155a5a87b5c223 ******/
+		/****** md5 signature: 99661be16aa6b87a1ba6043e7f8f9943 ******/
 		%feature("compactdefaultargs") NbCurves;
 		%feature("autodoc", "Return
 -------
@@ -1061,10 +1059,10 @@ Description
 -----------
 returns the number of continuous part of the projected curve.
 ") NbCurves;
-		Standard_Integer NbCurves();
+		int NbCurves();
 
 		/****** ProjLib_CompProjectedCurve::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1079,7 +1077,7 @@ Description
 -----------
 Returns the number of intervals which define an S continuous part of the projected curve.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** ProjLib_CompProjectedCurve::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -1095,7 +1093,7 @@ Performs projecting for given curve. If projecting uses approximation, approxima
 		void Perform();
 
 		/****** ProjLib_CompProjectedCurve::ResultIsPoint ******/
-		/****** md5 signature: 8df4055fdfa68a6f03a84be17417af04 ******/
+		/****** md5 signature: 14313b1d67ef130f372f981ad56eaded ******/
 		%feature("compactdefaultargs") ResultIsPoint;
 		%feature("autodoc", "
 Parameters
@@ -1110,7 +1108,7 @@ Description
 -----------
 Returns true if result of projecting of the curve interval with number Index is point.
 ") ResultIsPoint;
-		Standard_Boolean ResultIsPoint(const Standard_Integer theIndex);
+		bool ResultIsPoint(const int theIndex);
 
 		/****** ProjLib_CompProjectedCurve::SetContinuity ******/
 		/****** md5 signature: 473faebb309a058577820ec9b582e0f6 ******/
@@ -1131,7 +1129,7 @@ Set the parameter, which defines curve continuity. Default value is GeomAbs_C2;.
 		void SetContinuity(const GeomAbs_Shape theContinuity);
 
 		/****** ProjLib_CompProjectedCurve::SetMaxDegree ******/
-		/****** md5 signature: efc61408e3f0d1e41503836c049cbe18 ******/
+		/****** md5 signature: fd1f9bffa95201627a5a97c5cfe9aacc ******/
 		%feature("compactdefaultargs") SetMaxDegree;
 		%feature("autodoc", "
 Parameters
@@ -1146,10 +1144,10 @@ Description
 -----------
 Set max possible degree of result BSpline curve2d, which is got by approximation. If MaxDegree < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
 ") SetMaxDegree;
-		void SetMaxDegree(const Standard_Integer theMaxDegree);
+		void SetMaxDegree(const int theMaxDegree);
 
 		/****** ProjLib_CompProjectedCurve::SetMaxSeg ******/
-		/****** md5 signature: 66e7b336ed24a318e6679512ef71b3a7 ******/
+		/****** md5 signature: 3e9b113b3aa1a6b5e5f72bcc63c2a66f ******/
 		%feature("compactdefaultargs") SetMaxSeg;
 		%feature("autodoc", "
 Parameters
@@ -1164,10 +1162,10 @@ Description
 -----------
 Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If MaxSeg < 0, algorithm uses default value = 16.
 ") SetMaxSeg;
-		void SetMaxSeg(const Standard_Integer theMaxSeg);
+		void SetMaxSeg(const int theMaxSeg);
 
 		/****** ProjLib_CompProjectedCurve::SetProj2d ******/
-		/****** md5 signature: 7a320b8018cb550d84f2f2fcca0967e8 ******/
+		/****** md5 signature: c18e81b4b7334a82b6eaa122db395d0e ******/
 		%feature("compactdefaultargs") SetProj2d;
 		%feature("autodoc", "
 Parameters
@@ -1182,10 +1180,10 @@ Description
 -----------
 Set the parameter, which defines necessity of 2d results.
 ") SetProj2d;
-		void SetProj2d(const Standard_Boolean theProj2d);
+		void SetProj2d(const bool theProj2d);
 
 		/****** ProjLib_CompProjectedCurve::SetProj3d ******/
-		/****** md5 signature: 5c98f0f94ea5c0ea4efb0e680a4a9679 ******/
+		/****** md5 signature: 1b49511637a894b439d78d5d2df27698 ******/
 		%feature("compactdefaultargs") SetProj3d;
 		%feature("autodoc", "
 Parameters
@@ -1200,15 +1198,15 @@ Description
 -----------
 Set the parameter, which defines necessity of 3d results.
 ") SetProj3d;
-		void SetProj3d(const Standard_Boolean theProj3d);
+		void SetProj3d(const bool theProj3d);
 
 		/****** ProjLib_CompProjectedCurve::SetTol3d ******/
-		/****** md5 signature: e30512cadc319d04110248d2c13d0c2a ******/
+		/****** md5 signature: 37d036ebe2510c9106044e53963a9ce8 ******/
 		%feature("compactdefaultargs") SetTol3d;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol3d: float
+theTol3d: double
 
 Return
 -------
@@ -1218,10 +1216,10 @@ Description
 -----------
 Set the parameter, which defines 3d tolerance of approximation.
 ") SetTol3d;
-		void SetTol3d(const Standard_Real theTol3d);
+		void SetTol3d(const double theTol3d);
 
 		/****** ProjLib_CompProjectedCurve::ShallowCopy ******/
-		/****** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ******/
+		/****** md5 signature: 8a61349d8b017265b9f1e5017ac6a907 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -1231,17 +1229,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
+		opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 		/****** ProjLib_CompProjectedCurve::Trim ******/
-		/****** md5 signature: 8e64093bc793cc6590b82d43c4a17978 ******/
+		/****** md5 signature: d24b735057ac64d6246a76d3fba16bb0 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-FirstParam: float
-LastParam: float
-Tol: float
+FirstParam: double
+LastParam: double
+Tol: double
 
 Return
 -------
@@ -1251,15 +1249,15 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 2d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real FirstParam, const Standard_Real LastParam, const Standard_Real Tol);
+		opencascade::handle<Adaptor2d_Curve2d> Trim(const double FirstParam, const double LastParam, const double Tol);
 
 		/****** ProjLib_CompProjectedCurve::Value ******/
-		/****** md5 signature: 91dcf5c5229f25c64d3a714347090b29 ******/
+		/****** md5 signature: 287686c46f6da6400821b7738f682ad8 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -1269,7 +1267,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		gp_Pnt2d Value(const Standard_Real U);
+		gp_Pnt2d Value(const double U);
 
 };
 
@@ -1301,14 +1299,14 @@ Empty constructor, it only sets some initial values for class fields.
 		 ProjLib_ComputeApprox();
 
 		/****** ProjLib_ComputeApprox::ProjLib_ComputeApprox ******/
-		/****** md5 signature: 6e6bbb92eece37105f669d98cd6b1394 ******/
+		/****** md5 signature: 46caae42c1f00ebd9ce4f2a5d2830085 ******/
 		%feature("compactdefaultargs") ProjLib_ComputeApprox;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1318,7 +1316,7 @@ Description
 -----------
 <Tol> is the tolerance with which the approximation is performed. Other parameters for approximation have default values.
 ") ProjLib_ComputeApprox;
-		 ProjLib_ComputeApprox(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
+		 ProjLib_ComputeApprox(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const double Tol);
 
 		/****** ProjLib_ComputeApprox::BSpline ******/
 		/****** md5 signature: 990ef8e312bcecfd89dc4fcce5384c7d ******/
@@ -1384,7 +1382,7 @@ Set the parameter, which defines type of boundary condition between segments dur
 		void SetBndPnt(const AppParCurves_Constraint theBndPnt);
 
 		/****** ProjLib_ComputeApprox::SetDegree ******/
-		/****** md5 signature: ffcf5e6cbd874da2728e3f4a3cf72725 ******/
+		/****** md5 signature: b616028785a3744783350125fc10daf1 ******/
 		%feature("compactdefaultargs") SetDegree;
 		%feature("autodoc", "
 Parameters
@@ -1400,10 +1398,10 @@ Description
 -----------
 Set min and max possible degree of result BSpline curve2d, which is got by approximation. If theDegMin/Max < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
 ") SetDegree;
-		void SetDegree(const Standard_Integer theDegMin, const Standard_Integer theDegMax);
+		void SetDegree(const int theDegMin, const int theDegMax);
 
 		/****** ProjLib_ComputeApprox::SetMaxSegments ******/
-		/****** md5 signature: 649dded305ab339e1c7f2a819b32eedd ******/
+		/****** md5 signature: 5ffbce2bcee67b68e45c80186cc138d9 ******/
 		%feature("compactdefaultargs") SetMaxSegments;
 		%feature("autodoc", "
 Parameters
@@ -1418,15 +1416,15 @@ Description
 -----------
 Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
-		void SetMaxSegments(const Standard_Integer theMaxSegments);
+		void SetMaxSegments(const int theMaxSegments);
 
 		/****** ProjLib_ComputeApprox::SetTolerance ******/
-		/****** md5 signature: 7d5c8334324448b9b7e55a6a6128b57c ******/
+		/****** md5 signature: b02c47579a0a5003194df1ca82290f2c ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTolerance: float
+theTolerance: double
 
 Return
 -------
@@ -1436,20 +1434,20 @@ Description
 -----------
 Set tolerance of approximation. Default value is Precision::Confusion().
 ") SetTolerance;
-		void SetTolerance(const Standard_Real theTolerance);
+		void SetTolerance(const double theTolerance);
 
 		/****** ProjLib_ComputeApprox::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the reached Tolerance.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -1479,14 +1477,14 @@ Empty constructor, it only sets some initial values for class fields.
 		 ProjLib_ComputeApproxOnPolarSurface();
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface ******/
-		/****** md5 signature: d0490d2e8ad01483388efe6cd271814b ******/
+		/****** md5 signature: b7a2686cec5cdcc98acd116ecebcf411 ******/
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-Tol: float (optional, default to 1.0e-4)
+Tol: double (optional, default to 1.0e-4)
 
 Return
 -------
@@ -1496,10 +1494,10 @@ Description
 -----------
 Constructor, which performs projecting.
 ") ProjLib_ComputeApproxOnPolarSurface;
-		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol = 1.0e-4);
+		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const double Tol = 1.0e-4);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface ******/
-		/****** md5 signature: 26723c3f812147a3071b4f1a8310e739 ******/
+		/****** md5 signature: f1b94cfb7a57e1f2163cc189cee267a1 ******/
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "
 Parameters
@@ -1507,7 +1505,7 @@ Parameters
 InitCurve2d: Adaptor2d_Curve2d
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1517,10 +1515,10 @@ Description
 -----------
 Constructor, which performs projecting, using initial curve 2d InitCurve2d, which is any rough approximation of result curve. Parameter Tol is 3d tolerance of approximation.
 ") ProjLib_ComputeApproxOnPolarSurface;
-		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
+		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const double Tol);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::ProjLib_ComputeApproxOnPolarSurface ******/
-		/****** md5 signature: 302746a86975d11d0b69ccb9cfa8c8be ******/
+		/****** md5 signature: 247d4d2fa48daf2099b5c68b52268718 ******/
 		%feature("compactdefaultargs") ProjLib_ComputeApproxOnPolarSurface;
 		%feature("autodoc", "
 Parameters
@@ -1529,7 +1527,7 @@ InitCurve2d: Adaptor2d_Curve2d
 InitCurve2dBis: Adaptor2d_Curve2d
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1539,7 +1537,7 @@ Description
 -----------
 Constructor, which performs projecting, using two initial curves 2d: InitCurve2d and InitCurve2dBis that are any rough approximations of result curves. This constructor is used to get two pcurves for seem edge. Parameter Tol is 3d tolerance of approximation.
 ") ProjLib_ComputeApproxOnPolarSurface;
-		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2dBis, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
+		 ProjLib_ComputeApproxOnPolarSurface(const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2d, const opencascade::handle<Adaptor2d_Curve2d> & InitCurve2dBis, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Surface> & S, const double Tol);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::BSpline ******/
 		/****** md5 signature: 990ef8e312bcecfd89dc4fcce5384c7d ******/
@@ -1587,7 +1585,7 @@ Returns second 2d curve.
 		opencascade::handle<Geom2d_Curve> Curve2d();
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1597,7 +1595,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::Perform ******/
 		/****** md5 signature: 0c34f73535d2bab5ab08edde25a61f18 ******/
@@ -1677,7 +1675,7 @@ Set the parameter, which defines type of boundary condition between segments dur
 		void SetBndPnt(const AppParCurves_Constraint theBndPnt);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::SetDegree ******/
-		/****** md5 signature: ffcf5e6cbd874da2728e3f4a3cf72725 ******/
+		/****** md5 signature: b616028785a3744783350125fc10daf1 ******/
 		%feature("compactdefaultargs") SetDegree;
 		%feature("autodoc", "
 Parameters
@@ -1693,15 +1691,15 @@ Description
 -----------
 Set min and max possible degree of result BSpline curve2d, which is got by approximation. If theDegMin/Max < 0, algorithm uses values min = 2, max = 8.
 ") SetDegree;
-		void SetDegree(const Standard_Integer theDegMin, const Standard_Integer theDegMax);
+		void SetDegree(const int theDegMin, const int theDegMax);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::SetMaxDist ******/
-		/****** md5 signature: 42d3e5302e76e2f097ff4b175c4b2803 ******/
+		/****** md5 signature: f6d8305702fb9011ea5c3cd2b3476605 ******/
 		%feature("compactdefaultargs") SetMaxDist;
 		%feature("autodoc", "
 Parameters
 ----------
-theMaxDist: float
+theMaxDist: double
 
 Return
 -------
@@ -1711,10 +1709,10 @@ Description
 -----------
 Set the parameter, which defines maximal possible distance between projected curve and surface. It is used only for projecting on not analytical surfaces. If theMaxDist < 0, algorithm uses default value 100.*Tolerance. If real distance between curve and surface more then theMaxDist, algorithm stops working.
 ") SetMaxDist;
-		void SetMaxDist(const Standard_Real theMaxDist);
+		void SetMaxDist(const double theMaxDist);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::SetMaxSegments ******/
-		/****** md5 signature: 649dded305ab339e1c7f2a819b32eedd ******/
+		/****** md5 signature: 5ffbce2bcee67b68e45c80186cc138d9 ******/
 		%feature("compactdefaultargs") SetMaxSegments;
 		%feature("autodoc", "
 Parameters
@@ -1729,15 +1727,15 @@ Description
 -----------
 Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
-		void SetMaxSegments(const Standard_Integer theMaxSegments);
+		void SetMaxSegments(const int theMaxSegments);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::SetTolerance ******/
-		/****** md5 signature: 7d5c8334324448b9b7e55a6a6128b57c ******/
+		/****** md5 signature: b02c47579a0a5003194df1ca82290f2c ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTolerance: float
+theTolerance: double
 
 Return
 -------
@@ -1747,20 +1745,20 @@ Description
 -----------
 Set the tolerance used to project the curve on the surface. Default value is Precision::Approximation().
 ") SetTolerance;
-		void SetTolerance(const Standard_Real theTolerance);
+		void SetTolerance(const double theTolerance);
 
 		/****** ProjLib_ComputeApproxOnPolarSurface::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the reached Tolerance.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -1777,13 +1775,13 @@ returns the reached Tolerance.
 class ProjLib_PrjFunc : public math_FunctionSetWithDerivatives {
 	public:
 		/****** ProjLib_PrjFunc::ProjLib_PrjFunc ******/
-		/****** md5 signature: b8f566acf7a0e9e08415dab3f6e4da36 ******/
+		/****** md5 signature: 9c0d83deb4bf373a582976ead6706ad6 ******/
 		%feature("compactdefaultargs") ProjLib_PrjFunc;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve *
-FixVal: float
+FixVal: double
 S: Adaptor3d_Surface *
 Fix: int
 
@@ -1795,10 +1793,10 @@ Description
 -----------
 No available documentation.
 ") ProjLib_PrjFunc;
-		 ProjLib_PrjFunc(const Adaptor3d_Curve * C, const Standard_Real FixVal, const Adaptor3d_Surface * S, const Standard_Integer Fix);
+		 ProjLib_PrjFunc(const Adaptor3d_Curve * C, const double FixVal, const Adaptor3d_Surface * S, const int Fix);
 
 		/****** ProjLib_PrjFunc::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -1814,10 +1812,10 @@ Description
 -----------
 returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** ProjLib_PrjFunc::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -1827,10 +1825,10 @@ Description
 -----------
 returns the number of equations of the function.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** ProjLib_PrjFunc::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -1840,7 +1838,7 @@ Description
 -----------
 returns the number of variables of the function.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** ProjLib_PrjFunc::Solution ******/
 		/****** md5 signature: 8e8f6cfa580b1ef36024e535e8e73ad6 ******/
@@ -1856,7 +1854,7 @@ returns point on surface.
 		gp_Pnt2d Solution();
 
 		/****** ProjLib_PrjFunc::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1872,10 +1870,10 @@ Description
 -----------
 computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** ProjLib_PrjFunc::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -1892,7 +1890,7 @@ Description
 -----------
 returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -1909,7 +1907,7 @@ returns the values <F> of the functions and the derivatives <D> for the variable
 class ProjLib_PrjResolve {
 	public:
 		/****** ProjLib_PrjResolve::ProjLib_PrjResolve ******/
-		/****** md5 signature: 1bab33bfda3e63dc0e1c3c4ad3fb18fc ******/
+		/****** md5 signature: 93da950152add44db62f59dffc6fb0ef ******/
 		%feature("compactdefaultargs") ProjLib_PrjResolve;
 		%feature("autodoc", "
 Parameters
@@ -1926,10 +1924,10 @@ Description
 -----------
 No available documentation.
 ") ProjLib_PrjResolve;
-		 ProjLib_PrjResolve(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Integer Fix);
+		 ProjLib_PrjResolve(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const int Fix);
 
 		/****** ProjLib_PrjResolve::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1939,22 +1937,22 @@ Description
 -----------
 Returns True if the distance is found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** ProjLib_PrjResolve::Perform ******/
-		/****** md5 signature: 3e6c7ef4ff8082da8be8b1588435d3c7 ******/
+		/****** md5 signature: 2807cdd7c36189bfd04f8dc71727ade1 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-t: float
-U: float
-V: float
+t: double
+U: double
+V: double
 Tol: gp_Pnt2d
 Inf: gp_Pnt2d
 Sup: gp_Pnt2d
-FTol: float (optional, default to -1)
-StrictInside: bool (optional, default to Standard_False)
+FTol: double (optional, default to -1)
+StrictInside: bool (optional, default to false)
 
 Return
 -------
@@ -1964,7 +1962,7 @@ Description
 -----------
 Calculates the ort from C(t) to S with a close point. The close point is defined by the parameter values U0 and V0. The function F(u,v)=distance(S(u,v),C(t)) has an extremum when gradient(F)=0. The algorithm searches a zero near the close point.
 ") Perform;
-		void Perform(const Standard_Real t, const Standard_Real U, const Standard_Real V, const gp_Pnt2d & Tol, const gp_Pnt2d & Inf, const gp_Pnt2d & Sup, const Standard_Real FTol = -1, const Standard_Boolean StrictInside = Standard_False);
+		void Perform(const double t, const double U, const double V, const gp_Pnt2d & Tol, const gp_Pnt2d & Inf, const gp_Pnt2d & Sup, const double FTol = -1, const bool StrictInside = false);
 
 		/****** ProjLib_PrjResolve::Solution ******/
 		/****** md5 signature: 8e8f6cfa580b1ef36024e535e8e73ad6 ******/
@@ -2044,7 +2042,7 @@ The projection will be along the direction <D> on the plane defined by the Ax3 <
 		 ProjLib_ProjectOnPlane(const gp_Ax3 & Pl, const gp_Dir & D);
 
 		/****** ProjLib_ProjectOnPlane::BSpline ******/
-		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
+		/****** md5 signature: 7bed4aa4788773a8c748371dea2999b6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -2057,7 +2055,7 @@ Warning ! this will NOT make a copy of the BSpline Curve: If you want to modify 
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****** ProjLib_ProjectOnPlane::Bezier ******/
-		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
+		/****** md5 signature: 18c746ed347d210e28744f5b1c7eb527 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -2070,7 +2068,7 @@ Warning ! this will NOT make a copy of the Bezier Curve: If you want to modify t
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
 		/****** ProjLib_ProjectOnPlane::Circle ******/
-		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
+		/****** md5 signature: 7475f3d2915ecc09ceb3114f02b43080 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -2083,7 +2081,7 @@ No available documentation.
 		gp_Circ Circle();
 
 		/****** ProjLib_ProjectOnPlane::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -2095,109 +2093,8 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****** ProjLib_ProjectOnPlane::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** ProjLib_ProjectOnPlane::D1 ******/
-		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
-
-		/****** ProjLib_ProjectOnPlane::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** ProjLib_ProjectOnPlane::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** ProjLib_ProjectOnPlane::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** ProjLib_ProjectOnPlane::Degree ******/
-		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
+		/****** md5 signature: 6a99b61f429058b67ffcdab561815cfb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -2207,10 +2104,10 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** ProjLib_ProjectOnPlane::Ellipse ******/
-		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
+		/****** md5 signature: b7cf7020e3992d6d2378fd2118e8d198 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -2222,18 +2119,109 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
+		/****** ProjLib_ProjectOnPlane::EvalD0 ******/
+		/****** md5 signature: 534d5bf2fd8e92a6dcc7c1d53e829bc3 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter theU on the curve.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU);
+
+		/****** ProjLib_ProjectOnPlane::EvalD1 ******/
+		/****** md5 signature: 7afa7a9bd3f5047a6ef303b4732e48db ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Computes the point of parameter theU on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double theU);
+
+		/****** ProjLib_ProjectOnPlane::EvalD2 ******/
+		/****** md5 signature: bdf34f9b5fb078dabb16e072337b36b5 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point and the first and second derivatives at parameter theU. Raised if the continuity of the current interval is not C2.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double theU);
+
+		/****** ProjLib_ProjectOnPlane::EvalD3 ******/
+		/****** md5 signature: a6e2ea19f102d61c7a916bef9a895bcb ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point and the first, second and third derivatives at parameter theU. Raised if the continuity of the current interval is not C3.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double theU);
+
+		/****** ProjLib_ProjectOnPlane::EvalDN ******/
+		/****** md5 signature: 77005f048bbfcdbbddaf4af5a7b6cef4 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Returns the derivative of order theN at parameter theU. Raised if the continuity of the current interval is not CN. Raised if theN < 1.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const int theN);
+
 		/****** ProjLib_ProjectOnPlane::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ProjLib_ProjectOnPlane::GetCurve ******/
 		/****** md5 signature: c4c186157bff8d4b55a9d0a19a63ce6d ******/
@@ -2288,7 +2276,7 @@ No available documentation.
 		const opencascade::handle<GeomAdaptor_Curve> & GetResult();
 
 		/****** ProjLib_ProjectOnPlane::GetType ******/
-		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
+		/****** md5 signature: 5a645f79981f2ae05742e39e35676600 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -2301,7 +2289,7 @@ Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hy
 		GeomAbs_CurveType GetType();
 
 		/****** ProjLib_ProjectOnPlane::Hyperbola ******/
-		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
+		/****** md5 signature: 308d3b34f3aaba706261ba7e6cb1678e ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -2314,12 +2302,12 @@ No available documentation.
 		gp_Hypr Hyperbola();
 
 		/****** ProjLib_ProjectOnPlane::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2330,10 +2318,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** ProjLib_ProjectOnPlane::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -2343,10 +2331,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** ProjLib_ProjectOnPlane::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2356,10 +2344,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** ProjLib_ProjectOnPlane::IsRational ******/
-		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
+		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -2369,23 +2357,23 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** ProjLib_ProjectOnPlane::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ProjLib_ProjectOnPlane::Line ******/
-		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
+		/****** md5 signature: acdc8f5fc99e967530fe196307d05538 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -2398,14 +2386,14 @@ No available documentation.
 		gp_Lin Line();
 
 		/****** ProjLib_ProjectOnPlane::Load ******/
-		/****** md5 signature: 31a752f627fb0153cb1407e5c6490ff4 ******/
+		/****** md5 signature: e5caa473bb3fd589605e688af96fcb72 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Tolerance: float
-KeepParametrization: bool (optional, default to Standard_True)
+Tolerance: double
+KeepParametrization: bool (optional, default to true)
 
 Return
 -------
@@ -2415,10 +2403,10 @@ Description
 -----------
 Sets the Curve and perform the projection. if <KeepParametrization> is true, the parametrization of the Projected Curve <PC> will be the same as the parametrization of the initial curve <C>. It means: proj(C(u)) = PC(u) for each u. Otherwise, the parametrization may change.
 ") Load;
-		void Load(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tolerance, const Standard_Boolean KeepParametrization = Standard_True);
+		void Load(const opencascade::handle<Adaptor3d_Curve> & C, const double Tolerance, const bool KeepParametrization = true);
 
 		/****** ProjLib_ProjectOnPlane::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2433,10 +2421,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** ProjLib_ProjectOnPlane::NbKnots ******/
-		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
+		/****** md5 signature: d6bff4f2a244b781cf7c609ff1cddaf1 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -2446,10 +2434,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** ProjLib_ProjectOnPlane::NbPoles ******/
-		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
+		/****** md5 signature: bdb1092e5fcaeae9c85a332311d7f069 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -2459,10 +2447,10 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** ProjLib_ProjectOnPlane::Parabola ******/
-		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
+		/****** md5 signature: de70ebd3fa2d227512b9d0058ee94ca5 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -2475,38 +2463,38 @@ No available documentation.
 		gp_Parab Parabola();
 
 		/****** ProjLib_ProjectOnPlane::Period ******/
-		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** ProjLib_ProjectOnPlane::Resolution ******/
-		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
+		/****** md5 signature: 7cb383c1a004c01dc3f51b7088c4d899 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** ProjLib_ProjectOnPlane::ShallowCopy ******/
-		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
+		/****** md5 signature: 20e70b6ba2d95db55811b68454eb9003 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -2516,17 +2504,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+		opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****** ProjLib_ProjectOnPlane::Trim ******/
-		/****** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ******/
+		/****** md5 signature: 91538b497dfbccd564dbd54083e8e395 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2536,25 +2524,7 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
-
-		/****** ProjLib_ProjectOnPlane::Value ******/
-		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-gp_Pnt
-
-Description
------------
-Computes the point of parameter U on the curve.
-") Value;
-		gp_Pnt Value(const Standard_Real U);
+		opencascade::handle<Adaptor3d_Curve> Trim(const double First, const double Last, const double Tol);
 
 };
 
@@ -2617,7 +2587,7 @@ No available documentation.
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****** ProjLib_ProjectOnSurface::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2627,7 +2597,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -2698,14 +2668,14 @@ Constructor, which performs projecting. If projecting uses approximation, defaul
 		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** ProjLib_ProjectedCurve::ProjLib_ProjectedCurve ******/
-		/****** md5 signature: 3d9164c6323fdb2132df526d14e5ec72 ******/
+		/****** md5 signature: abbe5e2a98a8fa9419759217773cd832 ******/
 		%feature("compactdefaultargs") ProjLib_ProjectedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
 C: Adaptor3d_Curve
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2715,10 +2685,10 @@ Description
 -----------
 Constructor, which performs projecting. If projecting uses approximation, 3d tolerance is Tol, default parameters are used,.
 ") ProjLib_ProjectedCurve;
-		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tol);
+		 ProjLib_ProjectedCurve(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const double Tol);
 
 		/****** ProjLib_ProjectedCurve::BSpline ******/
-		/****** md5 signature: 9439c331c4f14f299277aa5a4ff16cec ******/
+		/****** md5 signature: c66055916af14afb8911637fc5e277d6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -2726,12 +2696,12 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Warning ! This will NOT make a copy of the BSpline Curve - If you want to modify the Curve please make a copy yourself Also it will NOT trim the surface to myFirst/Last.
+Warning! This will NOT make a copy of the BSpline Curve If you want to modify the Curve please make a copy yourself. Also it will NOT trim the surface to myFirst/Last.
 ") BSpline;
 		opencascade::handle<Geom2d_BSplineCurve> BSpline();
 
 		/****** ProjLib_ProjectedCurve::Bezier ******/
-		/****** md5 signature: cabcbe9e94c679dcfc142972b20ab60b ******/
+		/****** md5 signature: 9e5f9691bdf3aa713aceb92eb8809a74 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -2739,12 +2709,12 @@ opencascade::handle<Geom2d_BezierCurve>
 
 Description
 -----------
-Warning ! This will NOT make a copy of the -- Bezier Curve - If you want to modify -- the Curve please make a copy yourself -- Also it will NOT trim the surface to -- myFirst/Last.
+Warning! This will NOT make a copy of the Bezier Curve If you want to modify the Curve please make a copy yourself. Also it will NOT trim the surface to myFirst/Last.
 ") Bezier;
 		opencascade::handle<Geom2d_BezierCurve> Bezier();
 
 		/****** ProjLib_ProjectedCurve::Circle ******/
-		/****** md5 signature: 031880777795958cc554fa5739cb3a95 ******/
+		/****** md5 signature: c57212f487cf777aef6ef0b0153393bf ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -2757,7 +2727,7 @@ No available documentation.
 		gp_Circ2d Circle();
 
 		/****** ProjLib_ProjectedCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -2770,12 +2740,12 @@ No available documentation.
 		GeomAbs_Shape Continuity();
 
 		/****** ProjLib_ProjectedCurve::D0 ******/
-		/****** md5 signature: 01a5234aae6db090351bac35b3718fd9 ******/
+		/****** md5 signature: 28006337a032f857e56ae70cba70f8c3 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 
 Return
@@ -2786,15 +2756,15 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
+		void D0(const double U, gp_Pnt2d & P);
 
 		/****** ProjLib_ProjectedCurve::D1 ******/
-		/****** md5 signature: 79a293d0b91ab6d1359881075119fb56 ******/
+		/****** md5 signature: 5f53adf29b471206c7186b2aee007b00 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -2806,15 +2776,15 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		void D1(const double U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** ProjLib_ProjectedCurve::D2 ******/
-		/****** md5 signature: acc8c0955596bb0bf809102736ad1124 ******/
+		/****** md5 signature: 159e151ac7b509d70da37104a08723f1 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -2827,15 +2797,15 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		void D2(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** ProjLib_ProjectedCurve::D3 ******/
-		/****** md5 signature: 28315b7efe2f6c64fe9497aa5c5ddaf6 ******/
+		/****** md5 signature: a39fa2e7cc382a5fc150aec6eef34ec5 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -2849,15 +2819,15 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		void D3(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** ProjLib_ProjectedCurve::DN ******/
-		/****** md5 signature: a05d2f76912764cef5ac7bb40ebda3d7 ******/
+		/****** md5 signature: ab59dc692256c89ec17f3f5c66c3a731 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 N: int
 
 Return
@@ -2868,10 +2838,10 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
+		gp_Vec2d DN(const double U, const int N);
 
 		/****** ProjLib_ProjectedCurve::Degree ******/
-		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
+		/****** md5 signature: 6a99b61f429058b67ffcdab561815cfb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -2881,10 +2851,10 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** ProjLib_ProjectedCurve::Ellipse ******/
-		/****** md5 signature: 57e9088d9546fb79032102b676477b62 ******/
+		/****** md5 signature: 578557aedadd7b6c95c4b18a4591b27d ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -2897,17 +2867,17 @@ No available documentation.
 		gp_Elips2d Ellipse();
 
 		/****** ProjLib_ProjectedCurve::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ProjLib_ProjectedCurve::GetCurve ******/
 		/****** md5 signature: c4c186157bff8d4b55a9d0a19a63ce6d ******/
@@ -2936,20 +2906,20 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & GetSurface();
 
 		/****** ProjLib_ProjectedCurve::GetTolerance ******/
-		/****** md5 signature: 0b68579e68d60bdd102d14afab21387e ******/
+		/****** md5 signature: 20360866d6338eb8a4e50f80a4bf35d3 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns the tolerance reached if an approximation is Done.
 ") GetTolerance;
-		Standard_Real GetTolerance();
+		double GetTolerance();
 
 		/****** ProjLib_ProjectedCurve::GetType ******/
-		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
+		/****** md5 signature: 5a645f79981f2ae05742e39e35676600 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -2962,7 +2932,7 @@ Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hy
 		GeomAbs_CurveType GetType();
 
 		/****** ProjLib_ProjectedCurve::Hyperbola ******/
-		/****** md5 signature: 951e1971b5974627f011740e5c4c9ecb ******/
+		/****** md5 signature: 76c8d95163d451200f916b4c08eee717 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -2975,12 +2945,12 @@ No available documentation.
 		gp_Hypr2d Hyperbola();
 
 		/****** ProjLib_ProjectedCurve::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2991,10 +2961,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** ProjLib_ProjectedCurve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -3004,10 +2974,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** ProjLib_ProjectedCurve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -3017,10 +2987,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** ProjLib_ProjectedCurve::IsRational ******/
-		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
+		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -3030,23 +3000,23 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** ProjLib_ProjectedCurve::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ProjLib_ProjectedCurve::Line ******/
-		/****** md5 signature: d41344e9c3febf8a7347a9e78e837373 ******/
+		/****** md5 signature: e6ff57a9b7126056447e1c0678038f9b ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -3059,7 +3029,7 @@ No available documentation.
 		gp_Lin2d Line();
 
 		/****** ProjLib_ProjectedCurve::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -3074,10 +3044,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** ProjLib_ProjectedCurve::NbKnots ******/
-		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
+		/****** md5 signature: d6bff4f2a244b781cf7c609ff1cddaf1 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -3087,10 +3057,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** ProjLib_ProjectedCurve::NbPoles ******/
-		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
+		/****** md5 signature: bdb1092e5fcaeae9c85a332311d7f069 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -3100,10 +3070,10 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** ProjLib_ProjectedCurve::Parabola ******/
-		/****** md5 signature: 38729705f952495154cecf7cf9964648 ******/
+		/****** md5 signature: 22adbf7e85ee0cd0635ddfca26c2c71c ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -3134,35 +3104,35 @@ Performs projecting for given curve. If projecting uses approximation, approxima
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & C);
 
 		/****** ProjLib_ProjectedCurve::Period ******/
-		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** ProjLib_ProjectedCurve::Resolution ******/
-		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
+		/****** md5 signature: 7cb383c1a004c01dc3f51b7088c4d899 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** ProjLib_ProjectedCurve::SetBndPnt ******/
 		/****** md5 signature: 83e95ddb03e3f36471306d61ee8ca703 ******/
@@ -3183,7 +3153,7 @@ Set the parameter, which defines type of boundary condition between segments dur
 		void SetBndPnt(const AppParCurves_Constraint theBndPnt);
 
 		/****** ProjLib_ProjectedCurve::SetDegree ******/
-		/****** md5 signature: ffcf5e6cbd874da2728e3f4a3cf72725 ******/
+		/****** md5 signature: b616028785a3744783350125fc10daf1 ******/
 		%feature("compactdefaultargs") SetDegree;
 		%feature("autodoc", "
 Parameters
@@ -3199,15 +3169,15 @@ Description
 -----------
 Set min and max possible degree of result BSpline curve2d, which is got by approximation. If theDegMin/Max < 0, algorithm uses values that are chosen depending of types curve 3d and surface.
 ") SetDegree;
-		void SetDegree(const Standard_Integer theDegMin, const Standard_Integer theDegMax);
+		void SetDegree(const int theDegMin, const int theDegMax);
 
 		/****** ProjLib_ProjectedCurve::SetMaxDist ******/
-		/****** md5 signature: 42d3e5302e76e2f097ff4b175c4b2803 ******/
+		/****** md5 signature: f6d8305702fb9011ea5c3cd2b3476605 ******/
 		%feature("compactdefaultargs") SetMaxDist;
 		%feature("autodoc", "
 Parameters
 ----------
-theMaxDist: float
+theMaxDist: double
 
 Return
 -------
@@ -3217,10 +3187,10 @@ Description
 -----------
 Set the parameter, which degines maximal possible distance between projected curve and surface. It uses only for projecting on not analytical surfaces. If theMaxDist < 0, algorithm uses default value 100.*Tolerance. If real distance between curve and surface more then theMaxDist, algorithm stops working.
 ") SetMaxDist;
-		void SetMaxDist(const Standard_Real theMaxDist);
+		void SetMaxDist(const double theMaxDist);
 
 		/****** ProjLib_ProjectedCurve::SetMaxSegments ******/
-		/****** md5 signature: 649dded305ab339e1c7f2a819b32eedd ******/
+		/****** md5 signature: 5ffbce2bcee67b68e45c80186cc138d9 ******/
 		%feature("compactdefaultargs") SetMaxSegments;
 		%feature("autodoc", "
 Parameters
@@ -3235,10 +3205,10 @@ Description
 -----------
 Set the parameter, which defines maximal value of parametric intervals the projected curve can be cut for approximation. If theMaxSegments < 0, algorithm uses default value = 1000.
 ") SetMaxSegments;
-		void SetMaxSegments(const Standard_Integer theMaxSegments);
+		void SetMaxSegments(const int theMaxSegments);
 
 		/****** ProjLib_ProjectedCurve::ShallowCopy ******/
-		/****** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ******/
+		/****** md5 signature: 8a61349d8b017265b9f1e5017ac6a907 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -3248,17 +3218,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
+		opencascade::handle<Adaptor2d_Curve2d> ShallowCopy();
 
 		/****** ProjLib_ProjectedCurve::Trim ******/
-		/****** md5 signature: b5ce1c7f3b02aa6680da8e9ad704acc6 ******/
+		/****** md5 signature: 0abd427093454f28661226e589511811 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -3268,15 +3238,15 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor2d_Curve2d> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor2d_Curve2d> Trim(const double First, const double Last, const double Tol);
 
 		/****** ProjLib_ProjectedCurve::Value ******/
-		/****** md5 signature: 91dcf5c5229f25c64d3a714347090b29 ******/
+		/****** md5 signature: 287686c46f6da6400821b7738f682ad8 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -3286,7 +3256,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		gp_Pnt2d Value(const Standard_Real U);
+		gp_Pnt2d Value(const double U);
 
 };
 
@@ -3369,7 +3339,7 @@ None
 
 Description
 -----------
-Set isDone = Standard_True;.
+Set isDone = true;.
 ") Done;
 		void Done();
 
@@ -3413,7 +3383,7 @@ No available documentation.
 		const gp_Hypr2d Hyperbola();
 
 		/****** ProjLib_Projector::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3423,10 +3393,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** ProjLib_Projector::IsPeriodic ******/
-		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
+		/****** md5 signature: d36764d6f9b1283d23b2bfdabe28da79 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -3436,7 +3406,7 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** ProjLib_Projector::Line ******/
 		/****** md5 signature: 7beff572f0aed8d7624f49352434b697 ******/
@@ -3622,15 +3592,15 @@ No available documentation.
 		void SetType(const GeomAbs_CurveType Type);
 
 		/****** ProjLib_Projector::UFrame ******/
-		/****** md5 signature: 6be8a5e627feaa4a0582c6c70d304526 ******/
+		/****** md5 signature: 9f805abcb260c0d473d3a2c614c6e838 ******/
 		%feature("compactdefaultargs") UFrame;
 		%feature("autodoc", "
 Parameters
 ----------
-CFirst: float
-CLast: float
-UFirst: float
-Period: float
+CFirst: double
+CLast: double
+UFirst: double
+Period: double
 
 Return
 -------
@@ -3640,18 +3610,18 @@ Description
 -----------
 Translates the 2d curve to set the part of the curve [CFirst, CLast] in the range [ UFirst, UFirst + Period [.
 ") UFrame;
-		void UFrame(const Standard_Real CFirst, const Standard_Real CLast, const Standard_Real UFirst, const Standard_Real Period);
+		void UFrame(const double CFirst, const double CLast, const double UFirst, const double Period);
 
 		/****** ProjLib_Projector::VFrame ******/
-		/****** md5 signature: 909aff0356641e788f34769e1a980bc7 ******/
+		/****** md5 signature: 59c2446ebdd7737052e4f69610baa759 ******/
 		%feature("compactdefaultargs") VFrame;
 		%feature("autodoc", "
 Parameters
 ----------
-CFirst: float
-CLast: float
-VFirst: float
-Period: float
+CFirst: double
+CLast: double
+VFirst: double
+Period: double
 
 Return
 -------
@@ -3661,7 +3631,7 @@ Description
 -----------
 Translates the 2d curve to set the part of the curve [CFirst, CLast] in the range [ VFirst, VFirst + Period [.
 ") VFrame;
-		void VFrame(const Standard_Real CFirst, const Standard_Real CLast, const Standard_Real VFirst, const Standard_Real Period);
+		void VFrame(const double CFirst, const double CLast, const double VFirst, const double Period);
 
 };
 
@@ -3765,7 +3735,7 @@ No available documentation.
 		void Init(const gp_Cone & Co);
 
 		/****** ProjLib_Cone::Project ******/
-		/****** md5 signature: 4885fc811646ec2cdf7ac927e06e0c63 ******/
+		/****** md5 signature: a7ef521c676d2216b650f4482acf1104 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3780,10 +3750,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Lin & L);
+		void Project(const gp_Lin & L);
 
 		/****** ProjLib_Cone::Project ******/
-		/****** md5 signature: 6fbe1029080ce340da91ff8531b665f3 ******/
+		/****** md5 signature: 4194e2198e8d2eae83ceb4b735d3cc1f ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3798,10 +3768,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Circ & C);
+		void Project(const gp_Circ & C);
 
 		/****** ProjLib_Cone::Project ******/
-		/****** md5 signature: 14b36b707cac7782c568b50dfa48429a ******/
+		/****** md5 signature: eb497995efa013df361b2dbd0e762578 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3816,10 +3786,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Elips & E);
+		void Project(const gp_Elips & E);
 
 		/****** ProjLib_Cone::Project ******/
-		/****** md5 signature: 1804b2ebae0f4a73301c6766ae516cdd ******/
+		/****** md5 signature: d1949b56cf0487a91f4c923bc0f9e07a ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3834,10 +3804,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Parab & P);
+		void Project(const gp_Parab & P);
 
 		/****** ProjLib_Cone::Project ******/
-		/****** md5 signature: 5738fc67fc444aa25b8fbb52fc984455 ******/
+		/****** md5 signature: 666b93d57942026c9faefa672231e686 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3852,7 +3822,7 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Hypr & H);
+		void Project(const gp_Hypr & H);
 
 };
 
@@ -3975,7 +3945,7 @@ No available documentation.
 		void Init(const gp_Cylinder & Cyl);
 
 		/****** ProjLib_Cylinder::Project ******/
-		/****** md5 signature: 4885fc811646ec2cdf7ac927e06e0c63 ******/
+		/****** md5 signature: a7ef521c676d2216b650f4482acf1104 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3990,10 +3960,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Lin & L);
+		void Project(const gp_Lin & L);
 
 		/****** ProjLib_Cylinder::Project ******/
-		/****** md5 signature: 6fbe1029080ce340da91ff8531b665f3 ******/
+		/****** md5 signature: 4194e2198e8d2eae83ceb4b735d3cc1f ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4008,10 +3978,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Circ & C);
+		void Project(const gp_Circ & C);
 
 		/****** ProjLib_Cylinder::Project ******/
-		/****** md5 signature: 14b36b707cac7782c568b50dfa48429a ******/
+		/****** md5 signature: eb497995efa013df361b2dbd0e762578 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4026,10 +3996,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Elips & E);
+		void Project(const gp_Elips & E);
 
 		/****** ProjLib_Cylinder::Project ******/
-		/****** md5 signature: 1804b2ebae0f4a73301c6766ae516cdd ******/
+		/****** md5 signature: d1949b56cf0487a91f4c923bc0f9e07a ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4044,10 +4014,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Parab & P);
+		void Project(const gp_Parab & P);
 
 		/****** ProjLib_Cylinder::Project ******/
-		/****** md5 signature: 5738fc67fc444aa25b8fbb52fc984455 ******/
+		/****** md5 signature: 666b93d57942026c9faefa672231e686 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4062,7 +4032,7 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Hypr & H);
+		void Project(const gp_Hypr & H);
 
 };
 
@@ -4223,7 +4193,7 @@ No available documentation.
 		void Init(const gp_Pln & Pl);
 
 		/****** ProjLib_Plane::Project ******/
-		/****** md5 signature: 4885fc811646ec2cdf7ac927e06e0c63 ******/
+		/****** md5 signature: a7ef521c676d2216b650f4482acf1104 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4238,10 +4208,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Lin & L);
+		void Project(const gp_Lin & L);
 
 		/****** ProjLib_Plane::Project ******/
-		/****** md5 signature: 6fbe1029080ce340da91ff8531b665f3 ******/
+		/****** md5 signature: 4194e2198e8d2eae83ceb4b735d3cc1f ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4256,10 +4226,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Circ & C);
+		void Project(const gp_Circ & C);
 
 		/****** ProjLib_Plane::Project ******/
-		/****** md5 signature: 14b36b707cac7782c568b50dfa48429a ******/
+		/****** md5 signature: eb497995efa013df361b2dbd0e762578 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4274,10 +4244,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Elips & E);
+		void Project(const gp_Elips & E);
 
 		/****** ProjLib_Plane::Project ******/
-		/****** md5 signature: 1804b2ebae0f4a73301c6766ae516cdd ******/
+		/****** md5 signature: d1949b56cf0487a91f4c923bc0f9e07a ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4292,10 +4262,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Parab & P);
+		void Project(const gp_Parab & P);
 
 		/****** ProjLib_Plane::Project ******/
-		/****** md5 signature: 5738fc67fc444aa25b8fbb52fc984455 ******/
+		/****** md5 signature: 666b93d57942026c9faefa672231e686 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4310,7 +4280,7 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Hypr & H);
+		void Project(const gp_Hypr & H);
 
 };
 
@@ -4395,7 +4365,7 @@ No available documentation.
 		void Init(const gp_Sphere & Sp);
 
 		/****** ProjLib_Sphere::Project ******/
-		/****** md5 signature: 4885fc811646ec2cdf7ac927e06e0c63 ******/
+		/****** md5 signature: a7ef521c676d2216b650f4482acf1104 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4410,10 +4380,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Lin & L);
+		void Project(const gp_Lin & L);
 
 		/****** ProjLib_Sphere::Project ******/
-		/****** md5 signature: 6fbe1029080ce340da91ff8531b665f3 ******/
+		/****** md5 signature: 4194e2198e8d2eae83ceb4b735d3cc1f ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4428,10 +4398,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Circ & C);
+		void Project(const gp_Circ & C);
 
 		/****** ProjLib_Sphere::Project ******/
-		/****** md5 signature: 14b36b707cac7782c568b50dfa48429a ******/
+		/****** md5 signature: eb497995efa013df361b2dbd0e762578 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4446,10 +4416,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Elips & E);
+		void Project(const gp_Elips & E);
 
 		/****** ProjLib_Sphere::Project ******/
-		/****** md5 signature: 1804b2ebae0f4a73301c6766ae516cdd ******/
+		/****** md5 signature: d1949b56cf0487a91f4c923bc0f9e07a ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4464,10 +4434,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Parab & P);
+		void Project(const gp_Parab & P);
 
 		/****** ProjLib_Sphere::Project ******/
-		/****** md5 signature: 5738fc67fc444aa25b8fbb52fc984455 ******/
+		/****** md5 signature: 666b93d57942026c9faefa672231e686 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4482,15 +4452,15 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Hypr & H);
+		void Project(const gp_Hypr & H);
 
 		/****** ProjLib_Sphere::SetInBounds ******/
-		/****** md5 signature: e622abd4d460adf734da3fec4ac7a77d ******/
+		/****** md5 signature: 62b6cc9b11b1a32855cd2f32c9741789 ******/
 		%feature("compactdefaultargs") SetInBounds;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -4500,7 +4470,7 @@ Description
 -----------
 Set the point of parameter U on C in the natural restrictions of the sphere.
 ") SetInBounds;
-		void SetInBounds(const Standard_Real U);
+		void SetInBounds(const double U);
 
 };
 
@@ -4585,7 +4555,7 @@ No available documentation.
 		void Init(const gp_Torus & To);
 
 		/****** ProjLib_Torus::Project ******/
-		/****** md5 signature: 4885fc811646ec2cdf7ac927e06e0c63 ******/
+		/****** md5 signature: a7ef521c676d2216b650f4482acf1104 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4600,10 +4570,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Lin & L);
+		void Project(const gp_Lin & L);
 
 		/****** ProjLib_Torus::Project ******/
-		/****** md5 signature: 6fbe1029080ce340da91ff8531b665f3 ******/
+		/****** md5 signature: 4194e2198e8d2eae83ceb4b735d3cc1f ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4618,10 +4588,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Circ & C);
+		void Project(const gp_Circ & C);
 
 		/****** ProjLib_Torus::Project ******/
-		/****** md5 signature: 14b36b707cac7782c568b50dfa48429a ******/
+		/****** md5 signature: eb497995efa013df361b2dbd0e762578 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4636,10 +4606,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Elips & E);
+		void Project(const gp_Elips & E);
 
 		/****** ProjLib_Torus::Project ******/
-		/****** md5 signature: 1804b2ebae0f4a73301c6766ae516cdd ******/
+		/****** md5 signature: d1949b56cf0487a91f4c923bc0f9e07a ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4654,10 +4624,10 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Parab & P);
+		void Project(const gp_Parab & P);
 
 		/****** ProjLib_Torus::Project ******/
-		/****** md5 signature: 5738fc67fc444aa25b8fbb52fc984455 ******/
+		/****** md5 signature: 666b93d57942026c9faefa672231e686 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4672,7 +4642,7 @@ Description
 -----------
 No available documentation.
 ") Project;
-		virtual void Project(const gp_Hypr & H);
+		void Project(const gp_Hypr & H);
 
 };
 
@@ -4686,14 +4656,14 @@ No available documentation.
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class ProjLib_HSequenceOfHSequenceOfPnt : public ProjLib_SequenceOfHSequenceOfPnt, public Standard_Transient {
+class ProjLib_HSequenceOfHSequenceOfPnt : public NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>, public Standard_Transient {
   public:
     ProjLib_HSequenceOfHSequenceOfPnt();
-    ProjLib_HSequenceOfHSequenceOfPnt(const ProjLib_SequenceOfHSequenceOfPnt& theOther);
-    const ProjLib_SequenceOfHSequenceOfPnt& Sequence();
-    void Append (const ProjLib_SequenceOfHSequenceOfPnt::value_type& theItem);
-    void Append (ProjLib_SequenceOfHSequenceOfPnt& theSequence);
-    ProjLib_SequenceOfHSequenceOfPnt& ChangeSequence();
+    ProjLib_HSequenceOfHSequenceOfPnt(const NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& theOther);
+    const NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& theSequence);
+    NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& ChangeSequence();
 };
 %make_alias(ProjLib_HSequenceOfHSequenceOfPnt)
 

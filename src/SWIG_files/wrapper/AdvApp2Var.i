@@ -47,12 +47,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapp2var.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<AdvApprox_module.hxx>
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
-#include<TColgp_module.hxx>
 #include<PLib_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -62,12 +60,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapp2var.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import GeomAbs.i
 %import AdvApprox.i
 %import Geom.i
 %import gp.i
-%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -149,28 +145,6 @@ typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> AdvApp2Var_Se
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> AdvApp2Var_SequenceOfPatch;
 typedef NCollection_Sequence<AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> AdvApp2Var_Strip;
-typedef VOID C_f;
-typedef doublereal E_f;
-typedef VOID H_f;
-typedef union Multitype Multitype;
-typedef struct Namelist Namelist;
-typedef struct Vardesc Vardesc;
-typedef VOID Z_f;
-typedef char * address;
-typedef double doublereal;
-typedef long int flag;
-typedef long int ftnint;
-typedef long int ftnlen;
-typedef int integer;
-typedef char integer1;
-typedef long int logical;
-typedef char logical1;
-typedef long long longint;
-typedef float real;
-typedef short int shortint;
-typedef short int shortlogical;
-typedef unsigned long uinteger;
-typedef unsigned long long ulongint;
 /* end typedefs declaration */
 
 /***********************************
@@ -179,7 +153,7 @@ typedef unsigned long long ulongint;
 class AdvApp2Var_ApproxAFunc2Var {
 	public:
 		/****** AdvApp2Var_ApproxAFunc2Var::AdvApp2Var_ApproxAFunc2Var ******/
-		/****** md5 signature: 6379ab64b1b4c1e0c124bdc6f7c7f799 ******/
+		/****** md5 signature: fcfc865732e1d7f04c94fc16bb4fbfef ******/
 		%feature("compactdefaultargs") AdvApp2Var_ApproxAFunc2Var;
 		%feature("autodoc", "
 Parameters
@@ -187,16 +161,16 @@ Parameters
 Num1DSS: int
 Num2DSS: int
 Num3DSS: int
-OneDTol: TColStd_HArray1OfReal
-TwoDTol: TColStd_HArray1OfReal
-ThreeDTol: TColStd_HArray1OfReal
-OneDTolFr: TColStd_HArray2OfReal
-TwoDTolFr: TColStd_HArray2OfReal
-ThreeDTolFr: TColStd_HArray2OfReal
-FirstInU: float
-LastInU: float
-FirstInV: float
-LastInV: float
+OneDTol: NCollection_HArray1<double
+TwoDTol: NCollection_HArray1<double
+ThreeDTol: NCollection_HArray1<double
+OneDTolFr: NCollection_HArray2<double
+TwoDTolFr: NCollection_HArray2<double
+ThreeDTolFr: NCollection_HArray2<double
+FirstInU: double
+LastInU: double
+FirstInV: double
+LastInV: double
 FavorIso: GeomAbs_IsoType
 ContInU: GeomAbs_Shape
 ContInV: GeomAbs_Shape
@@ -216,10 +190,10 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_ApproxAFunc2Var;
-		 AdvApp2Var_ApproxAFunc2Var(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr, const Standard_Real FirstInU, const Standard_Real LastInU, const Standard_Real FirstInV, const Standard_Real LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const Standard_Integer PrecisCode, const Standard_Integer MaxDegInU, const Standard_Integer MaxDegInV, const Standard_Integer MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
+		 AdvApp2Var_ApproxAFunc2Var(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<NCollection_HArray1<double> > & OneDTol, const opencascade::handle<NCollection_HArray1<double> > & TwoDTol, const opencascade::handle<NCollection_HArray1<double> > & ThreeDTol, const opencascade::handle<NCollection_HArray2<double> > & OneDTolFr, const opencascade::handle<NCollection_HArray2<double> > & TwoDTolFr, const opencascade::handle<NCollection_HArray2<double> > & ThreeDTolFr, const double FirstInU, const double LastInU, const double FirstInV, const double LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const int PrecisCode, const int MaxDegInU, const int MaxDegInV, const int MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::AdvApp2Var_ApproxAFunc2Var ******/
-		/****** md5 signature: cb5f144bc0526b9241a11be61366792e ******/
+		/****** md5 signature: 8fefd392f9b73f8c4f49c482f0ec0197 ******/
 		%feature("compactdefaultargs") AdvApp2Var_ApproxAFunc2Var;
 		%feature("autodoc", "
 Parameters
@@ -227,16 +201,16 @@ Parameters
 Num1DSS: int
 Num2DSS: int
 Num3DSS: int
-OneDTol: TColStd_HArray1OfReal
-TwoDTol: TColStd_HArray1OfReal
-ThreeDTol: TColStd_HArray1OfReal
-OneDTolFr: TColStd_HArray2OfReal
-TwoDTolFr: TColStd_HArray2OfReal
-ThreeDTolFr: TColStd_HArray2OfReal
-FirstInU: float
-LastInU: float
-FirstInV: float
-LastInV: float
+OneDTol: NCollection_HArray1<double
+TwoDTol: NCollection_HArray1<double
+ThreeDTol: NCollection_HArray1<double
+OneDTolFr: NCollection_HArray2<double
+TwoDTolFr: NCollection_HArray2<double
+ThreeDTolFr: NCollection_HArray2<double
+FirstInU: double
+LastInU: double
+FirstInV: double
+LastInV: double
 FavorIso: GeomAbs_IsoType
 ContInU: GeomAbs_Shape
 ContInV: GeomAbs_Shape
@@ -257,10 +231,10 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_ApproxAFunc2Var;
-		 AdvApp2Var_ApproxAFunc2Var(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr, const Standard_Real FirstInU, const Standard_Real LastInU, const Standard_Real FirstInV, const Standard_Real LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const Standard_Integer PrecisCode, const Standard_Integer MaxDegInU, const Standard_Integer MaxDegInV, const Standard_Integer MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, const AdvApp2Var_Criterion & Crit, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
+		 AdvApp2Var_ApproxAFunc2Var(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<NCollection_HArray1<double> > & OneDTol, const opencascade::handle<NCollection_HArray1<double> > & TwoDTol, const opencascade::handle<NCollection_HArray1<double> > & ThreeDTol, const opencascade::handle<NCollection_HArray2<double> > & OneDTolFr, const opencascade::handle<NCollection_HArray2<double> > & TwoDTolFr, const opencascade::handle<NCollection_HArray2<double> > & ThreeDTolFr, const double FirstInU, const double LastInU, const double FirstInV, const double LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const int PrecisCode, const int MaxDegInU, const int MaxDegInV, const int MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, const AdvApp2Var_Criterion & Crit, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::AverageError ******/
-		/****** md5 signature: d3a5b5e32b36bc7e79202cfa1abaedbe ******/
+		/****** md5 signature: 2f6bf7ea0e0cfb3b392f43df654829e3 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -269,16 +243,16 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 returns the average errors.
 ") AverageError;
-		opencascade::handle<TColStd_HArray1OfReal> AverageError(const Standard_Integer Dimension);
+		opencascade::handle<NCollection_HArray1<double>> AverageError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::AverageError ******/
-		/****** md5 signature: b46c820432bcb3498c5c88e842dca097 ******/
+		/****** md5 signature: ed4d67908b569de9e3571c9f53547394 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -288,16 +262,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the average error of the BSplineSurface of range Index.
 ") AverageError;
-		Standard_Real AverageError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double AverageError(const int Dimension, const int Index);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::CritError ******/
-		/****** md5 signature: cfeaabf78ae9cebfb4b197eb333f93f2 ******/
+		/****** md5 signature: 5576a4d885b37c8a9826654feb83b09d ******/
 		%feature("compactdefaultargs") CritError;
 		%feature("autodoc", "
 Parameters
@@ -307,13 +281,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") CritError;
-		Standard_Real CritError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double CritError(const int Dimension, const int Index);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::Dump ******/
 		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
@@ -333,7 +307,7 @@ Prints on the stream 'o' information on the current state of the object.
 		void Dump(std::ostream &OutValue);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::HasResult ******/
-		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
+		/****** md5 signature: 708adea9b732f6b7393066c26f957b86 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -343,10 +317,10 @@ Description
 -----------
 True if the approximation did come out with a result that is not NECESSARELY within the required tolerance or a result that is not recognized with the wished continuities.
 ") HasResult;
-		Standard_Boolean HasResult();
+		bool HasResult();
 
 		/****** AdvApp2Var_ApproxAFunc2Var::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -356,10 +330,10 @@ Description
 -----------
 True if the approximation succeeded within the imposed tolerances and the wished continuities.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AdvApp2Var_ApproxAFunc2Var::MaxError ******/
-		/****** md5 signature: 65f67ba992f5651ddbda653be6688fd1 ******/
+		/****** md5 signature: ab9966d45e8ce7fa710ffb9f899f7a08 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -368,16 +342,16 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 returns the errors max.
 ") MaxError;
-		opencascade::handle<TColStd_HArray1OfReal> MaxError(const Standard_Integer Dimension);
+		opencascade::handle<NCollection_HArray1<double>> MaxError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::MaxError ******/
-		/****** md5 signature: 5025e53abdc4b5b4ec15e940b792a6ea ******/
+		/****** md5 signature: 61a4677e31f18ea56a128d2bb9e750a6 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -387,16 +361,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the error max of the BSplineSurface of range Index.
 ") MaxError;
-		Standard_Real MaxError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double MaxError(const int Dimension, const int Index);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::NumSubSpaces ******/
-		/****** md5 signature: 1f04f546c1efa091a0725c4b06bc8324 ******/
+		/****** md5 signature: 1c9032115985612a399c1ddcdf11e7ff ******/
 		%feature("compactdefaultargs") NumSubSpaces;
 		%feature("autodoc", "
 Parameters
@@ -411,10 +385,10 @@ Description
 -----------
 No available documentation.
 ") NumSubSpaces;
-		Standard_Integer NumSubSpaces(const Standard_Integer Dimension);
+		int NumSubSpaces(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::Surface ******/
-		/****** md5 signature: c06dcd87a2a0e19728e106a09c270879 ******/
+		/****** md5 signature: d7715fe40f77f0bd6483ef647d8ce179 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -429,10 +403,10 @@ Description
 -----------
 returns the BSplineSurface of range Index.
 ") Surface;
-		opencascade::handle<Geom_BSplineSurface> Surface(const Standard_Integer Index);
+		opencascade::handle<Geom_BSplineSurface> Surface(const int Index);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::UDegree ******/
-		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
+		/****** md5 signature: 82316803b09fa91a345f15577c8b3c82 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -442,10 +416,10 @@ Description
 -----------
 No available documentation.
 ") UDegree;
-		Standard_Integer UDegree();
+		int UDegree();
 
 		/****** AdvApp2Var_ApproxAFunc2Var::UFrontError ******/
-		/****** md5 signature: 0a65d91af85c1f21c459707f3707a4be ******/
+		/****** md5 signature: 429d2e4592958da983fa29d6fe76c20c ******/
 		%feature("compactdefaultargs") UFrontError;
 		%feature("autodoc", "
 Parameters
@@ -454,16 +428,16 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 returns the errors max on UFrontiers Warning: Dimension must be equal to 3.
 ") UFrontError;
-		opencascade::handle<TColStd_HArray1OfReal> UFrontError(const Standard_Integer Dimension);
+		opencascade::handle<NCollection_HArray1<double>> UFrontError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::UFrontError ******/
-		/****** md5 signature: 7013ba67bcdab606aa7a3dff1c57a4d9 ******/
+		/****** md5 signature: eb984df2156b3aeaae5f8902482d7a19 ******/
 		%feature("compactdefaultargs") UFrontError;
 		%feature("autodoc", "
 Parameters
@@ -473,16 +447,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the error max of the BSplineSurface of range Index on a UFrontier.
 ") UFrontError;
-		Standard_Real UFrontError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double UFrontError(const int Dimension, const int Index);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::VDegree ******/
-		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
+		/****** md5 signature: 10a01c94db483e5b8afe43596e767a03 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -492,10 +466,10 @@ Description
 -----------
 No available documentation.
 ") VDegree;
-		Standard_Integer VDegree();
+		int VDegree();
 
 		/****** AdvApp2Var_ApproxAFunc2Var::VFrontError ******/
-		/****** md5 signature: c67297c0cd6479a8b7b6ed44f0b54d22 ******/
+		/****** md5 signature: eb8759f2ca7816e554e545034e7bffbd ******/
 		%feature("compactdefaultargs") VFrontError;
 		%feature("autodoc", "
 Parameters
@@ -504,16 +478,16 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 returns the errors max on VFrontiers Warning: Dimension must be equal to 3.
 ") VFrontError;
-		opencascade::handle<TColStd_HArray1OfReal> VFrontError(const Standard_Integer Dimension);
+		opencascade::handle<NCollection_HArray1<double>> VFrontError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::VFrontError ******/
-		/****** md5 signature: 8dd750790f1ee2230900ab6006316f3f ******/
+		/****** md5 signature: db589fa08c8c83bc03290cfe5b063ac7 ******/
 		%feature("compactdefaultargs") VFrontError;
 		%feature("autodoc", "
 Parameters
@@ -523,13 +497,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the error max of the BSplineSurface of range Index on a VFrontier.
 ") VFrontError;
-		Standard_Real VFrontError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double VFrontError(const int Dimension, const int Index);
 
 };
 
@@ -546,14 +520,14 @@ returns the error max of the BSplineSurface of range Index on a VFrontier.
 class AdvApp2Var_ApproxF2var {
 	public:
 		/****** AdvApp2Var_ApproxF2var::mma1her_ ******/
-		/****** md5 signature: 340a71780d0d59f85eb5ef4e22592c91 ******/
+		/****** md5 signature: bc40155e8dc84f0e2c87faa9751be05a ******/
 		%feature("compactdefaultargs") mma1her_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: doublereal *
-: integer *
+: int *
+: double *
+: int *
 
 Return
 -------
@@ -563,26 +537,26 @@ Description
 -----------
 No available documentation.
 ") mma1her_;
-		static int mma1her_(const integer * , doublereal * , integer * );
+		static int mma1her_(const int * , double * , int * );
 
 		/****** AdvApp2Var_ApproxF2var::mma2ac1_ ******/
-		/****** md5 signature: 2cb2859fe6a263b9e735e90035090c4d ******/
+		/****** md5 signature: 27c98dbef816e8700cd5ae7fe7e790aa ******/
 		%feature("compactdefaultargs") mma2ac1_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: doublereal *
-: doublereal *
-: doublereal *
-: doublereal *
-: doublereal *
-: doublereal *
-: doublereal *
+: int *
+: int *
+: int *
+: int *
+: int *
+: double *
+: double *
+: double *
+: double *
+: double *
+: double *
+: double *
 
 Return
 -------
@@ -592,25 +566,25 @@ Description
 -----------
 No available documentation.
 ") mma2ac1_;
-		static int mma2ac1_(const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , const doublereal * , const doublereal * , const doublereal * , const doublereal * , const doublereal * , doublereal * );
+		static int mma2ac1_(const int * , const int * , const int * , const int * , const int * , const double * , const double * , const double * , const double * , const double * , const double * , double * );
 
 		/****** AdvApp2Var_ApproxF2var::mma2ac2_ ******/
-		/****** md5 signature: 3fc501ea89c6f69223da0748a5067c51 ******/
+		/****** md5 signature: 67f563c4429688045e6645c15d22553c ******/
 		%feature("compactdefaultargs") mma2ac2_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: doublereal *
-: integer *
-: doublereal *
-: doublereal *
-: doublereal *
+: int *
+: int *
+: int *
+: int *
+: int *
+: int *
+: double *
+: int *
+: double *
+: double *
+: double *
 
 Return
 -------
@@ -620,25 +594,25 @@ Description
 -----------
 No available documentation.
 ") mma2ac2_;
-		static int mma2ac2_(const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , const integer * , const doublereal * , const doublereal * , doublereal * );
+		static int mma2ac2_(const int * , const int * , const int * , const int * , const int * , const int * , const double * , const int * , const double * , const double * , double * );
 
 		/****** AdvApp2Var_ApproxF2var::mma2ac3_ ******/
-		/****** md5 signature: 2014e6f62c9c1b3f4638d01a4d1c8b84 ******/
+		/****** md5 signature: 0646fafd0848c734984336d0bd493efe ******/
 		%feature("compactdefaultargs") mma2ac3_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: doublereal *
-: integer *
-: doublereal *
-: doublereal *
-: doublereal *
+: int *
+: int *
+: int *
+: int *
+: int *
+: int *
+: double *
+: int *
+: double *
+: double *
+: double *
 
 Return
 -------
@@ -648,25 +622,25 @@ Description
 -----------
 No available documentation.
 ") mma2ac3_;
-		static int mma2ac3_(const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , const integer * , const doublereal * , const doublereal * , doublereal * );
+		static int mma2ac3_(const int * , const int * , const int * , const int * , const int * , const int * , const double * , const int * , const double * , const double * , double * );
 
 		/****** AdvApp2Var_ApproxF2var::mma2can_ ******/
-		/****** md5 signature: 6567d45f17981e806023a3f3d386ebd4 ******/
+		/****** md5 signature: e00d3f3260dcc61c94b2a5a83f98814c ******/
 		%feature("compactdefaultargs") mma2can_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: doublereal *
-: doublereal *
-: doublereal *
-: integer *
+: int *
+: int *
+: int *
+: int *
+: int *
+: int *
+: int *
+: double *
+: double *
+: double *
+: int *
 
 Return
 -------
@@ -676,38 +650,38 @@ Description
 -----------
 No available documentation.
 ") mma2can_;
-		static int mma2can_(const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , doublereal * , doublereal * , integer * );
+		static int mma2can_(const int * , const int * , const int * , const int * , const int * , const int * , const int * , const double * , double * , double * , int * );
 
 		/****** AdvApp2Var_ApproxF2var::mma2cdi_ ******/
-		/****** md5 signature: 6822f06275dfe10240eb63f63cb8154a ******/
+		/****** md5 signature: 0a9bec60115c8852d5ac7d73e4ec18d2 ******/
 		%feature("compactdefaultargs") mma2cdi_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-nbpntu: integer *
-urootl: doublereal *
-nbpntv: integer *
-vrootl: doublereal *
-iordru: integer *
-iordrv: integer *
-contr1: doublereal *
-contr2: doublereal *
-contr3: doublereal *
-contr4: doublereal *
-sotbu1: doublereal *
-sotbu2: doublereal *
-ditbu1: doublereal *
-ditbu2: doublereal *
-sotbv1: doublereal *
-sotbv2: doublereal *
-ditbv1: doublereal *
-ditbv2: doublereal *
-sosotb: doublereal *
-soditb: doublereal *
-disotb: doublereal *
-diditb: doublereal *
-iercod: integer *
+ndimen: int *
+nbpntu: int *
+urootl: double *
+nbpntv: int *
+vrootl: double *
+iordru: int *
+iordrv: int *
+contr1: double *
+contr2: double *
+contr3: double *
+contr4: double *
+sotbu1: double *
+sotbu2: double *
+ditbu1: double *
+ditbu2: double *
+sotbv1: double *
+sotbv2: double *
+ditbv1: double *
+ditbv2: double *
+sosotb: double *
+soditb: double *
+disotb: double *
+diditb: double *
+iercod: int *
 
 Return
 -------
@@ -717,40 +691,40 @@ Description
 -----------
 No available documentation.
 ") mma2cdi_;
-		static int mma2cdi_(integer * ndimen, integer * nbpntu, doublereal * urootl, integer * nbpntv, doublereal * vrootl, integer * iordru, integer * iordrv, doublereal * contr1, doublereal * contr2, doublereal * contr3, doublereal * contr4, doublereal * sotbu1, doublereal * sotbu2, doublereal * ditbu1, doublereal * ditbu2, doublereal * sotbv1, doublereal * sotbv2, doublereal * ditbv1, doublereal * ditbv2, doublereal * sosotb, doublereal * soditb, doublereal * disotb, doublereal * diditb, integer * iercod);
+		static int mma2cdi_(int * ndimen, int * nbpntu, double * urootl, int * nbpntv, double * vrootl, int * iordru, int * iordrv, double * contr1, double * contr2, double * contr3, double * contr4, double * sotbu1, double * sotbu2, double * ditbu1, double * ditbu2, double * sotbv1, double * sotbv2, double * ditbv1, double * ditbv2, double * sosotb, double * soditb, double * disotb, double * diditb, int * iercod);
 
 		/****** AdvApp2Var_ApproxF2var::mma2ce1_ ******/
-		/****** md5 signature: 425c3d53b101c9c0f002c96ad41e6fc3 ******/
+		/****** md5 signature: 5027b84e0acf3c20c538ea89d836e083 ******/
 		%feature("compactdefaultargs") mma2ce1_;
 		%feature("autodoc", "
 Parameters
 ----------
-numdec: integer *
-ndimen: integer *
-nbsesp: integer *
-ndimse: integer *
-ndminu: integer *
-ndminv: integer *
-ndguli: integer *
-ndgvli: integer *
-ndjacu: integer *
-ndjacv: integer *
-iordru: integer *
-iordrv: integer *
-nbpntu: integer *
-nbpntv: integer *
-epsapr: doublereal *
-sosotb: doublereal *
-disotb: doublereal *
-soditb: doublereal *
-diditb: doublereal *
-patjac: doublereal *
-errmax: doublereal *
-errmoy: doublereal *
-ndegpu: integer *
-ndegpv: integer *
-itydec: integer *
-iercod: integer *
+numdec: int *
+ndimen: int *
+nbsesp: int *
+ndimse: int *
+ndminu: int *
+ndminv: int *
+ndguli: int *
+ndgvli: int *
+ndjacu: int *
+ndjacv: int *
+iordru: int *
+iordrv: int *
+nbpntu: int *
+nbpntv: int *
+epsapr: double *
+sosotb: double *
+disotb: double *
+soditb: double *
+diditb: double *
+patjac: double *
+errmax: double *
+errmoy: double *
+ndegpu: int *
+ndegpv: int *
+itydec: int *
+iercod: int *
 
 Return
 -------
@@ -760,30 +734,30 @@ Description
 -----------
 No available documentation.
 ") mma2ce1_;
-		static int mma2ce1_(integer * numdec, integer * ndimen, integer * nbsesp, integer * ndimse, integer * ndminu, integer * ndminv, integer * ndguli, integer * ndgvli, integer * ndjacu, integer * ndjacv, integer * iordru, integer * iordrv, integer * nbpntu, integer * nbpntv, doublereal * epsapr, doublereal * sosotb, doublereal * disotb, doublereal * soditb, doublereal * diditb, doublereal * patjac, doublereal * errmax, doublereal * errmoy, integer * ndegpu, integer * ndegpv, integer * itydec, integer * iercod);
+		static int mma2ce1_(int * numdec, int * ndimen, int * nbsesp, int * ndimse, int * ndminu, int * ndminv, int * ndguli, int * ndgvli, int * ndjacu, int * ndjacv, int * iordru, int * iordrv, int * nbpntu, int * nbpntv, double * epsapr, double * sosotb, double * disotb, double * soditb, double * diditb, double * patjac, double * errmax, double * errmoy, int * ndegpu, int * ndegpv, int * itydec, int * iercod);
 
 		/****** AdvApp2Var_ApproxF2var::mma2ds1_ ******/
-		/****** md5 signature: a21bcf00d7cc3ec0c2e76dc7755429fe ******/
+		/****** md5 signature: 05911ccd4cd5fdf99a0af2f428a9c56e ******/
 		%feature("compactdefaultargs") mma2ds1_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-uintfn: doublereal *
-vintfn: doublereal *
+ndimen: int *
+uintfn: double *
+vintfn: double *
 foncnp: AdvApp2Var_EvaluatorFunc2Var
-nbpntu: integer *
-nbpntv: integer *
-urootb: doublereal *
-vrootb: doublereal *
-isofav: integer *
-sosotb: doublereal *
-disotb: doublereal *
-soditb: doublereal *
-diditb: doublereal *
-fpntab: doublereal *
-ttable: doublereal *
-iercod: integer *
+nbpntu: int *
+nbpntv: int *
+urootb: double *
+vrootb: double *
+isofav: int *
+sosotb: double *
+disotb: double *
+soditb: double *
+diditb: double *
+fpntab: double *
+ttable: double *
+iercod: int *
 
 Return
 -------
@@ -793,40 +767,40 @@ Description
 -----------
 No available documentation.
 ") mma2ds1_;
-		static int mma2ds1_(integer * ndimen, doublereal * uintfn, doublereal * vintfn, const AdvApp2Var_EvaluatorFunc2Var & foncnp, integer * nbpntu, integer * nbpntv, doublereal * urootb, doublereal * vrootb, integer * isofav, doublereal * sosotb, doublereal * disotb, doublereal * soditb, doublereal * diditb, doublereal * fpntab, doublereal * ttable, integer * iercod);
+		static int mma2ds1_(int * ndimen, double * uintfn, double * vintfn, const AdvApp2Var_EvaluatorFunc2Var & foncnp, int * nbpntu, int * nbpntv, double * urootb, double * vrootb, int * isofav, double * sosotb, double * disotb, double * soditb, double * diditb, double * fpntab, double * ttable, int * iercod);
 
 		/****** AdvApp2Var_ApproxF2var::mma2fnc_ ******/
-		/****** md5 signature: 18763f0e21666ad6ab99c64fb6dbb75d ******/
+		/****** md5 signature: 7e6ca9292bfc676fafcf749949b9ad69 ******/
 		%feature("compactdefaultargs") mma2fnc_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-nbsesp: integer *
-ndimse: integer *
-uvfonc: doublereal *
+ndimen: int *
+nbsesp: int *
+ndimse: int *
+uvfonc: double *
 foncnp: AdvApp2Var_EvaluatorFunc2Var
-tconst: doublereal *
-isofav: integer *
-nbroot: integer *
-rootlg: doublereal *
-iordre: integer *
-ideriv: integer *
-ndgjac: integer *
-nbcrmx: integer *
-ncflim: integer *
-epsapr: doublereal *
-ncoeff: integer *
-courbe: doublereal *
-nbcrbe: integer *
-somtab: doublereal *
-diftab: doublereal *
-contr1: doublereal *
-contr2: doublereal *
-tabdec: doublereal *
-errmax: doublereal *
-errmoy: doublereal *
-iercod: integer *
+tconst: double *
+isofav: int *
+nbroot: int *
+rootlg: double *
+iordre: int *
+ideriv: int *
+ndgjac: int *
+nbcrmx: int *
+ncflim: int *
+epsapr: double *
+ncoeff: int *
+courbe: double *
+nbcrbe: int *
+somtab: double *
+diftab: double *
+contr1: double *
+contr2: double *
+tabdec: double *
+errmax: double *
+errmoy: double *
+iercod: int *
 
 Return
 -------
@@ -836,29 +810,29 @@ Description
 -----------
 No available documentation.
 ") mma2fnc_;
-		static int mma2fnc_(integer * ndimen, integer * nbsesp, integer * ndimse, doublereal * uvfonc, const AdvApp2Var_EvaluatorFunc2Var & foncnp, doublereal * tconst, integer * isofav, integer * nbroot, doublereal * rootlg, integer * iordre, integer * ideriv, integer * ndgjac, integer * nbcrmx, integer * ncflim, doublereal * epsapr, integer * ncoeff, doublereal * courbe, integer * nbcrbe, doublereal * somtab, doublereal * diftab, doublereal * contr1, doublereal * contr2, doublereal * tabdec, doublereal * errmax, doublereal * errmoy, integer * iercod);
+		static int mma2fnc_(int * ndimen, int * nbsesp, int * ndimse, double * uvfonc, const AdvApp2Var_EvaluatorFunc2Var & foncnp, double * tconst, int * isofav, int * nbroot, double * rootlg, int * iordre, int * ideriv, int * ndgjac, int * nbcrmx, int * ncflim, double * epsapr, int * ncoeff, double * courbe, int * nbcrbe, double * somtab, double * diftab, double * contr1, double * contr2, double * tabdec, double * errmax, double * errmoy, int * iercod);
 
 		/****** AdvApp2Var_ApproxF2var::mma2fx6_ ******/
-		/****** md5 signature: 3e9466bd52c1a918c5d9e90482550972 ******/
+		/****** md5 signature: b26e10b53d814841d08dc54fa6655c8c ******/
 		%feature("compactdefaultargs") mma2fx6_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncfmxu: integer *
-ncfmxv: integer *
-ndimen: integer *
-nbsesp: integer *
-ndimse: integer *
-nbupat: integer *
-nbvpat: integer *
-iordru: integer *
-iordrv: integer *
-epsapr: doublereal *
-epsfro: doublereal *
-patcan: doublereal *
-errmax: doublereal *
-ncoefu: integer *
-ncoefv: integer *
+ncfmxu: int *
+ncfmxv: int *
+ndimen: int *
+nbsesp: int *
+ndimse: int *
+nbupat: int *
+nbvpat: int *
+iordru: int *
+iordrv: int *
+epsapr: double *
+epsfro: double *
+patcan: double *
+errmax: double *
+ncoefu: int *
+ncoefv: int *
 
 Return
 -------
@@ -868,17 +842,17 @@ Description
 -----------
 No available documentation.
 ") mma2fx6_;
-		static int mma2fx6_(integer * ncfmxu, integer * ncfmxv, integer * ndimen, integer * nbsesp, integer * ndimse, integer * nbupat, integer * nbvpat, integer * iordru, integer * iordrv, doublereal * epsapr, doublereal * epsfro, doublereal * patcan, doublereal * errmax, integer * ncoefu, integer * ncoefv);
+		static int mma2fx6_(int * ncfmxu, int * ncfmxv, int * ndimen, int * nbsesp, int * ndimse, int * nbupat, int * nbvpat, int * iordru, int * iordrv, double * epsapr, double * epsfro, double * patcan, double * errmax, int * ncoefu, int * ncoefv);
 
 		/****** AdvApp2Var_ApproxF2var::mma2jmx_ ******/
-		/****** md5 signature: 1d8a613ee6223c570e2deac14273a3d7 ******/
+		/****** md5 signature: 1600421c9fb4be71b47a5185f1bf5e1b ******/
 		%feature("compactdefaultargs") mma2jmx_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndgjac: integer *
-iordre: integer *
-xjacmx: doublereal *
+ndgjac: int *
+iordre: int *
+xjacmx: double *
 
 Return
 -------
@@ -888,18 +862,18 @@ Description
 -----------
 No available documentation.
 ") mma2jmx_;
-		static int mma2jmx_(integer * ndgjac, integer * iordre, doublereal * xjacmx);
+		static int mma2jmx_(int * ndgjac, int * iordre, double * xjacmx);
 
 		/****** AdvApp2Var_ApproxF2var::mma2roo_ ******/
-		/****** md5 signature: 2b9206bd8c653739680ae42d9246a3e2 ******/
+		/****** md5 signature: bac884df0c3c079a25f16d742dcac111 ******/
 		%feature("compactdefaultargs") mma2roo_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbpntu: integer *
-nbpntv: integer *
-urootl: doublereal *
-vrootl: doublereal *
+nbpntu: int *
+nbpntv: int *
+urootl: double *
+vrootl: double *
 
 Return
 -------
@@ -909,19 +883,19 @@ Description
 -----------
 No available documentation.
 ") mma2roo_;
-		static int mma2roo_(integer * nbpntu, integer * nbpntv, doublereal * urootl, doublereal * vrootl);
+		static int mma2roo_(int * nbpntu, int * nbpntv, double * urootl, double * vrootl);
 
 		/****** AdvApp2Var_ApproxF2var::mmapptt_ ******/
-		/****** md5 signature: df26bb1629da819cc478cf38ae76a65b ******/
+		/****** md5 signature: 0bd05d8fc8463e8bc8245f48caf46916 ******/
 		%feature("compactdefaultargs") mmapptt_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: doublereal *
-: integer *
+: int *
+: int *
+: int *
+: double *
+: int *
 
 Return
 -------
@@ -931,7 +905,7 @@ Description
 -----------
 No available documentation.
 ") mmapptt_;
-		static int mmapptt_(const integer * , const integer * , const integer * , doublereal * , integer * );
+		static int mmapptt_(const int * , const int * , const int * , double * , int * );
 
 };
 
@@ -961,7 +935,7 @@ No available documentation.
 		 AdvApp2Var_Context();
 
 		/****** AdvApp2Var_Context::AdvApp2Var_Context ******/
-		/****** md5 signature: 21cd87756d9328ae205fa641ee18a3e8 ******/
+		/****** md5 signature: 48171ef4fc9dd886cb3f039631007028 ******/
 		%feature("compactdefaultargs") AdvApp2Var_Context;
 		%feature("autodoc", "
 Parameters
@@ -975,12 +949,12 @@ iprecis: int
 nb1Dss: int
 nb2Dss: int
 nb3Dss: int
-tol1D: TColStd_HArray1OfReal
-tol2D: TColStd_HArray1OfReal
-tol3D: TColStd_HArray1OfReal
-tof1D: TColStd_HArray2OfReal
-tof2D: TColStd_HArray2OfReal
-tof3D: TColStd_HArray2OfReal
+tol1D: NCollection_HArray1<double
+tol2D: NCollection_HArray1<double
+tol3D: NCollection_HArray1<double
+tof1D: NCollection_HArray2<double
+tof2D: NCollection_HArray2<double
+tof3D: NCollection_HArray2<double
 
 Return
 -------
@@ -990,36 +964,36 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Context;
-		 AdvApp2Var_Context(const Standard_Integer ifav, const Standard_Integer iu, const Standard_Integer iv, const Standard_Integer nlimu, const Standard_Integer nlimv, const Standard_Integer iprecis, const Standard_Integer nb1Dss, const Standard_Integer nb2Dss, const Standard_Integer nb3Dss, const opencascade::handle<TColStd_HArray1OfReal> & tol1D, const opencascade::handle<TColStd_HArray1OfReal> & tol2D, const opencascade::handle<TColStd_HArray1OfReal> & tol3D, const opencascade::handle<TColStd_HArray2OfReal> & tof1D, const opencascade::handle<TColStd_HArray2OfReal> & tof2D, const opencascade::handle<TColStd_HArray2OfReal> & tof3D);
+		 AdvApp2Var_Context(const int ifav, const int iu, const int iv, const int nlimu, const int nlimv, const int iprecis, const int nb1Dss, const int nb2Dss, const int nb3Dss, const opencascade::handle<NCollection_HArray1<double> > & tol1D, const opencascade::handle<NCollection_HArray1<double> > & tol2D, const opencascade::handle<NCollection_HArray1<double> > & tol3D, const opencascade::handle<NCollection_HArray2<double> > & tof1D, const opencascade::handle<NCollection_HArray2<double> > & tof2D, const opencascade::handle<NCollection_HArray2<double> > & tof3D);
 
 		/****** AdvApp2Var_Context::CToler ******/
-		/****** md5 signature: 24bd3fb0eebd880254f8ac1ee89f8d89 ******/
+		/****** md5 signature: a9b49fb1378a576ee0797c5fb0aaacd6 ******/
 		%feature("compactdefaultargs") CToler;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfReal>
+opencascade::handle<NCollection_HArray2<double>>
 
 Description
 -----------
 No available documentation.
 ") CToler;
-		opencascade::handle<TColStd_HArray2OfReal> CToler();
+		opencascade::handle<NCollection_HArray2<double>> CToler();
 
 		/****** AdvApp2Var_Context::FToler ******/
-		/****** md5 signature: d5ab5676361cb292c8f03db44e65e0b8 ******/
+		/****** md5 signature: 14bb0bfb9e22c140b38385c2b6f0d4cd ******/
 		%feature("compactdefaultargs") FToler;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfReal>
+opencascade::handle<NCollection_HArray2<double>>
 
 Description
 -----------
 No available documentation.
 ") FToler;
-		opencascade::handle<TColStd_HArray2OfReal> FToler();
+		opencascade::handle<NCollection_HArray2<double>> FToler();
 
 		/****** AdvApp2Var_Context::FavorIso ******/
-		/****** md5 signature: c6d174e38329c613da300ca8a0f5d50f ******/
+		/****** md5 signature: bca98e62e2526dfd7c3b8e7410a2efbb ******/
 		%feature("compactdefaultargs") FavorIso;
 		%feature("autodoc", "Return
 -------
@@ -1029,23 +1003,23 @@ Description
 -----------
 No available documentation.
 ") FavorIso;
-		Standard_Integer FavorIso();
+		int FavorIso();
 
 		/****** AdvApp2Var_Context::IToler ******/
-		/****** md5 signature: 2d6a816890d9a18a597840c55f73f6fb ******/
+		/****** md5 signature: 601e9cc220da4e05e084f27b6c1a1396 ******/
 		%feature("compactdefaultargs") IToler;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") IToler;
-		opencascade::handle<TColStd_HArray1OfReal> IToler();
+		opencascade::handle<NCollection_HArray1<double>> IToler();
 
 		/****** AdvApp2Var_Context::TotalDimension ******/
-		/****** md5 signature: f052f99d2f000729ae53d6c6fee257cf ******/
+		/****** md5 signature: eb2eb2144359ee7f54e4a9a55b30922a ******/
 		%feature("compactdefaultargs") TotalDimension;
 		%feature("autodoc", "Return
 -------
@@ -1055,10 +1029,10 @@ Description
 -----------
 No available documentation.
 ") TotalDimension;
-		Standard_Integer TotalDimension();
+		int TotalDimension();
 
 		/****** AdvApp2Var_Context::TotalNumberSSP ******/
-		/****** md5 signature: faf2dd9e8595d670d21dc10f3c6a6913 ******/
+		/****** md5 signature: b57abaeed5cf7c9a66cc8813f41f03c9 ******/
 		%feature("compactdefaultargs") TotalNumberSSP;
 		%feature("autodoc", "Return
 -------
@@ -1068,23 +1042,23 @@ Description
 -----------
 No available documentation.
 ") TotalNumberSSP;
-		Standard_Integer TotalNumberSSP();
+		int TotalNumberSSP();
 
 		/****** AdvApp2Var_Context::UGauss ******/
-		/****** md5 signature: 9a6b5ace3b55823419bfede442d992cd ******/
+		/****** md5 signature: b73f881b679effea3bb8312c60b360a1 ******/
 		%feature("compactdefaultargs") UGauss;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") UGauss;
-		opencascade::handle<TColStd_HArray1OfReal> UGauss();
+		opencascade::handle<NCollection_HArray1<double>> UGauss();
 
 		/****** AdvApp2Var_Context::UJacDeg ******/
-		/****** md5 signature: 8044fad5cd7721e5b1833954c8c1f64c ******/
+		/****** md5 signature: 59cd530bb340f1d7331ad22ca073f97d ******/
 		%feature("compactdefaultargs") UJacDeg;
 		%feature("autodoc", "Return
 -------
@@ -1094,23 +1068,23 @@ Description
 -----------
 No available documentation.
 ") UJacDeg;
-		Standard_Integer UJacDeg();
+		int UJacDeg();
 
 		/****** AdvApp2Var_Context::UJacMax ******/
-		/****** md5 signature: c8c8acc46da154a394ae1ee532d52d75 ******/
+		/****** md5 signature: 7c10bd303958ca92c52a40188528a796 ******/
 		%feature("compactdefaultargs") UJacMax;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") UJacMax;
-		opencascade::handle<TColStd_HArray1OfReal> UJacMax();
+		opencascade::handle<NCollection_HArray1<double>> UJacMax();
 
 		/****** AdvApp2Var_Context::ULimit ******/
-		/****** md5 signature: 43d12bdc3dda11b989b8554e085d81f0 ******/
+		/****** md5 signature: 96ae4670ff57713efae1e12d608c0b97 ******/
 		%feature("compactdefaultargs") ULimit;
 		%feature("autodoc", "Return
 -------
@@ -1120,10 +1094,10 @@ Description
 -----------
 No available documentation.
 ") ULimit;
-		Standard_Integer ULimit();
+		int ULimit();
 
 		/****** AdvApp2Var_Context::UOrder ******/
-		/****** md5 signature: 3bb505464047fef2900b8b2c2896c41e ******/
+		/****** md5 signature: 506eb4cd965c491ed72c611f4394bbc9 ******/
 		%feature("compactdefaultargs") UOrder;
 		%feature("autodoc", "Return
 -------
@@ -1133,36 +1107,36 @@ Description
 -----------
 No available documentation.
 ") UOrder;
-		Standard_Integer UOrder();
+		int UOrder();
 
 		/****** AdvApp2Var_Context::URoots ******/
-		/****** md5 signature: 4c908ffe6bc2d725142f172a06cf0c1a ******/
+		/****** md5 signature: d5d762efcbd9987c3751ba73ad5bbfcc ******/
 		%feature("compactdefaultargs") URoots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") URoots;
-		opencascade::handle<TColStd_HArray1OfReal> URoots();
+		opencascade::handle<NCollection_HArray1<double>> URoots();
 
 		/****** AdvApp2Var_Context::VGauss ******/
-		/****** md5 signature: 66196d55762d9b1232b870bb36f21d59 ******/
+		/****** md5 signature: f1095f4fb01185055b07b72ce2122bbb ******/
 		%feature("compactdefaultargs") VGauss;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") VGauss;
-		opencascade::handle<TColStd_HArray1OfReal> VGauss();
+		opencascade::handle<NCollection_HArray1<double>> VGauss();
 
 		/****** AdvApp2Var_Context::VJacDeg ******/
-		/****** md5 signature: f9bfee79cd23f4af3716e80cf6ddba4a ******/
+		/****** md5 signature: 441e0ad1c4126a0ee6dc44641a6e7987 ******/
 		%feature("compactdefaultargs") VJacDeg;
 		%feature("autodoc", "Return
 -------
@@ -1172,23 +1146,23 @@ Description
 -----------
 No available documentation.
 ") VJacDeg;
-		Standard_Integer VJacDeg();
+		int VJacDeg();
 
 		/****** AdvApp2Var_Context::VJacMax ******/
-		/****** md5 signature: 78706a3e7697c048821f62c71af456df ******/
+		/****** md5 signature: c00c8bbf8b94285b3924c6e1cdecf102 ******/
 		%feature("compactdefaultargs") VJacMax;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") VJacMax;
-		opencascade::handle<TColStd_HArray1OfReal> VJacMax();
+		opencascade::handle<NCollection_HArray1<double>> VJacMax();
 
 		/****** AdvApp2Var_Context::VLimit ******/
-		/****** md5 signature: e8accebaf43ffe9314093c4a788410d4 ******/
+		/****** md5 signature: b3731c3ae1bb79dc44ec506f14aa2aaa ******/
 		%feature("compactdefaultargs") VLimit;
 		%feature("autodoc", "Return
 -------
@@ -1198,10 +1172,10 @@ Description
 -----------
 No available documentation.
 ") VLimit;
-		Standard_Integer VLimit();
+		int VLimit();
 
 		/****** AdvApp2Var_Context::VOrder ******/
-		/****** md5 signature: 704529177e651451c5029c517db99652 ******/
+		/****** md5 signature: 7d8c6b6b638dff0483d77f1fe58907bb ******/
 		%feature("compactdefaultargs") VOrder;
 		%feature("autodoc", "Return
 -------
@@ -1211,20 +1185,20 @@ Description
 -----------
 No available documentation.
 ") VOrder;
-		Standard_Integer VOrder();
+		int VOrder();
 
 		/****** AdvApp2Var_Context::VRoots ******/
-		/****** md5 signature: 54311a504719af5252d92bb212279e0e ******/
+		/****** md5 signature: 3bc80b6c847b85526bf5e47fc495de19 ******/
 		%feature("compactdefaultargs") VRoots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") VRoots;
-		opencascade::handle<TColStd_HArray1OfReal> VRoots();
+		opencascade::handle<NCollection_HArray1<double>> VRoots();
 
 };
 
@@ -1242,7 +1216,7 @@ No available documentation.
 class AdvApp2Var_Criterion {
 	public:
 		/****** AdvApp2Var_Criterion::IsSatisfied ******/
-		/****** md5 signature: 628e527776d280624d73fc40a69ddb25 ******/
+		/****** md5 signature: 592bfea2e82dce4941736e1f90e6e244 ******/
 		%feature("compactdefaultargs") IsSatisfied;
 		%feature("autodoc", "
 Parameters
@@ -1257,20 +1231,20 @@ Description
 -----------
 No available documentation.
 ") IsSatisfied;
-		virtual Standard_Boolean IsSatisfied(const AdvApp2Var_Patch & P);
+		virtual bool IsSatisfied(const AdvApp2Var_Patch & P);
 
 		/****** AdvApp2Var_Criterion::MaxValue ******/
-		/****** md5 signature: 90bad7204548ba76bfdb4dc2b65fa9de ******/
+		/****** md5 signature: bcb41cb2e4251afb78d7c7cdfd0d2e88 ******/
 		%feature("compactdefaultargs") MaxValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MaxValue;
-		Standard_Real MaxValue();
+		double MaxValue();
 
 		/****** AdvApp2Var_Criterion::Repartition ******/
 		/****** md5 signature: cff4f841f0657cd7a89a6b578a81602b ******/
@@ -1326,163 +1300,6 @@ No available documentation.
 	}
 };
 
-/************************
-* class AdvApp2Var_Data *
-************************/
-class AdvApp2Var_Data {
-	public:
-		/****** AdvApp2Var_Data::Getmaovpar ******/
-		/****** md5 signature: 8be6c57b8566deaa01e416a23bd10998 ******/
-		%feature("compactdefaultargs") Getmaovpar;
-		%feature("autodoc", "Return
--------
-maovpar_1_
-
-Description
------------
-No available documentation.
-") Getmaovpar;
-		static maovpar_1_ & Getmaovpar();
-
-		/****** AdvApp2Var_Data::Getmaovpch ******/
-		/****** md5 signature: 334543f940b9215443e5709331588bab ******/
-		%feature("compactdefaultargs") Getmaovpch;
-		%feature("autodoc", "Return
--------
-maovpch_1_
-
-Description
------------
-No available documentation.
-") Getmaovpch;
-		static maovpch_1_ & Getmaovpch();
-
-		/****** AdvApp2Var_Data::Getmdnombr ******/
-		/****** md5 signature: ac61a22aa001b1c0a5ee35b5c3602fd3 ******/
-		%feature("compactdefaultargs") Getmdnombr;
-		%feature("autodoc", "Return
--------
-mdnombr_1_
-
-Description
------------
-No available documentation.
-") Getmdnombr;
-		static mdnombr_1_ & Getmdnombr();
-
-		/****** AdvApp2Var_Data::Getminombr ******/
-		/****** md5 signature: e8d64195164353bb0d45e76471e1c166 ******/
-		%feature("compactdefaultargs") Getminombr;
-		%feature("autodoc", "Return
--------
-minombr_1_
-
-Description
------------
-No available documentation.
-") Getminombr;
-		static minombr_1_ & Getminombr();
-
-		/****** AdvApp2Var_Data::Getmlgdrtl ******/
-		/****** md5 signature: 91d40b6c00de974dbdc2bb896a280dcf ******/
-		%feature("compactdefaultargs") Getmlgdrtl;
-		%feature("autodoc", "Return
--------
-mlgdrtl_1_
-
-Description
------------
-No available documentation.
-") Getmlgdrtl;
-		static mlgdrtl_1_ & Getmlgdrtl();
-
-		/****** AdvApp2Var_Data::Getmmapgs0 ******/
-		/****** md5 signature: 79c6c799aa3e3857c5cf09c5affb7c09 ******/
-		%feature("compactdefaultargs") Getmmapgs0;
-		%feature("autodoc", "Return
--------
-mmapgs0_1_
-
-Description
------------
-No available documentation.
-") Getmmapgs0;
-		static mmapgs0_1_ & Getmmapgs0();
-
-		/****** AdvApp2Var_Data::Getmmapgs1 ******/
-		/****** md5 signature: 421c69fcd1506661b0c60d98977952bb ******/
-		%feature("compactdefaultargs") Getmmapgs1;
-		%feature("autodoc", "Return
--------
-mmapgs1_1_
-
-Description
------------
-No available documentation.
-") Getmmapgs1;
-		static mmapgs1_1_ & Getmmapgs1();
-
-		/****** AdvApp2Var_Data::Getmmapgs2 ******/
-		/****** md5 signature: cd17b54466c50e23724fb4ca4086c700 ******/
-		%feature("compactdefaultargs") Getmmapgs2;
-		%feature("autodoc", "Return
--------
-mmapgs2_1_
-
-Description
------------
-No available documentation.
-") Getmmapgs2;
-		static mmapgs2_1_ & Getmmapgs2();
-
-		/****** AdvApp2Var_Data::Getmmapgss ******/
-		/****** md5 signature: 2da5fe3a3d53bfd1ed26a2f7054305e0 ******/
-		%feature("compactdefaultargs") Getmmapgss;
-		%feature("autodoc", "Return
--------
-mmapgss_1_
-
-Description
------------
-No available documentation.
-") Getmmapgss;
-		static mmapgss_1_ & Getmmapgss();
-
-		/****** AdvApp2Var_Data::Getmmcmcnp ******/
-		/****** md5 signature: 7d0b6ef51dfee2c7e36ff733bfb092f1 ******/
-		%feature("compactdefaultargs") Getmmcmcnp;
-		%feature("autodoc", "Return
--------
-mmcmcnp_1_
-
-Description
------------
-No available documentation.
-") Getmmcmcnp;
-		static mmcmcnp_1_ & Getmmcmcnp();
-
-		/****** AdvApp2Var_Data::Getmmjcobi ******/
-		/****** md5 signature: 17e6be3fe538455810b1d4b422cf768d ******/
-		%feature("compactdefaultargs") Getmmjcobi;
-		%feature("autodoc", "Return
--------
-mmjcobi_1_
-
-Description
------------
-No available documentation.
-") Getmmjcobi;
-		static mmjcobi_1_ & Getmmjcobi();
-
-};
-
-
-%extend AdvApp2Var_Data {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*************************************
 * class AdvApp2Var_EvaluatorFunc2Var *
 *************************************/
@@ -1505,14 +1322,14 @@ No available documentation.
 		 AdvApp2Var_Framework();
 
 		/****** AdvApp2Var_Framework::AdvApp2Var_Framework ******/
-		/****** md5 signature: 960e0b78689457d0b96130210d6b1b29 ******/
+		/****** md5 signature: ebfb0cc60b71dfcf7c328ae42d62ca49 ******/
 		%feature("compactdefaultargs") AdvApp2Var_Framework;
 		%feature("autodoc", "
 Parameters
 ----------
-Frame: AdvApp2Var_SequenceOfNode
-UFrontier: AdvApp2Var_SequenceOfStrip
-VFrontier: AdvApp2Var_SequenceOfStrip
+Frame: AdvApp2Var_Node
+UFrontier: AdvApp2Var_Iso
+VFrontier: AdvApp2Var_Iso
 
 Return
 -------
@@ -1522,10 +1339,10 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Framework;
-		 AdvApp2Var_Framework(const AdvApp2Var_SequenceOfNode & Frame, const AdvApp2Var_SequenceOfStrip & UFrontier, const AdvApp2Var_SequenceOfStrip & VFrontier);
+		 AdvApp2Var_Framework(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Node> > & Frame, const NCollection_Sequence<NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso> > > & UFrontier, const NCollection_Sequence<NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso> > > & VFrontier);
 
 		/****** AdvApp2Var_Framework::ChangeIso ******/
-		/****** md5 signature: 3fec201f44a8293dfa569255b6814bbb ******/
+		/****** md5 signature: cb76fd10907ee4b73bbcf9054de94d45 ******/
 		%feature("compactdefaultargs") ChangeIso;
 		%feature("autodoc", "
 Parameters
@@ -1542,10 +1359,10 @@ Description
 -----------
 No available documentation.
 ") ChangeIso;
-		void ChangeIso(const Standard_Integer IndexIso, const Standard_Integer IndexStrip, const opencascade::handle<AdvApp2Var_Iso> & anIso);
+		void ChangeIso(const int IndexIso, const int IndexStrip, const opencascade::handle<AdvApp2Var_Iso> & anIso);
 
 		/****** AdvApp2Var_Framework::FirstNode ******/
-		/****** md5 signature: 7e2537d33d03d4ae88afbab57eff7727 ******/
+		/****** md5 signature: e70992e5265d7cbe2646a61e8445b182 ******/
 		%feature("compactdefaultargs") FirstNode;
 		%feature("autodoc", "
 Parameters
@@ -1562,10 +1379,10 @@ Description
 -----------
 No available documentation.
 ") FirstNode;
-		Standard_Integer FirstNode(const GeomAbs_IsoType Type, const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
+		int FirstNode(const GeomAbs_IsoType Type, const int IndexIso, const int IndexStrip);
 
 		/****** AdvApp2Var_Framework::FirstNotApprox ******/
-		/****** md5 signature: 227783178d7bb021aee9bed3eb70dd7f ******/
+		/****** md5 signature: e96ec88daee82e7cf775c8cae7653386 ******/
 		%feature("compactdefaultargs") FirstNotApprox;
 		%feature("autodoc", "
 Parameters
@@ -1583,14 +1400,14 @@ search the Index of the first Iso not approximated, if all Isos are approximated
 		opencascade::handle<AdvApp2Var_Iso> FirstNotApprox(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** AdvApp2Var_Framework::IsoU ******/
-		/****** md5 signature: e9d88953cce2797fb11a4e1b24499c34 ******/
+		/****** md5 signature: d7c3ced749c23f9d465df94ec07f5edc ******/
 		%feature("compactdefaultargs") IsoU;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V0: float
-V1: float
+U: double
+V0: double
+V1: double
 
 Return
 -------
@@ -1600,17 +1417,17 @@ Description
 -----------
 No available documentation.
 ") IsoU;
-		const AdvApp2Var_Iso & IsoU(const Standard_Real U, const Standard_Real V0, const Standard_Real V1);
+		const AdvApp2Var_Iso & IsoU(const double U, const double V0, const double V1);
 
 		/****** AdvApp2Var_Framework::IsoV ******/
-		/****** md5 signature: 359e34e6c22686add688faaa999793c8 ******/
+		/****** md5 signature: bd1ccf356d1409bc9024ab4cbc2bb7b0 ******/
 		%feature("compactdefaultargs") IsoV;
 		%feature("autodoc", "
 Parameters
 ----------
-U0: float
-U1: float
-V: float
+U0: double
+U1: double
+V: double
 
 Return
 -------
@@ -1620,10 +1437,10 @@ Description
 -----------
 No available documentation.
 ") IsoV;
-		const AdvApp2Var_Iso & IsoV(const Standard_Real U0, const Standard_Real U1, const Standard_Real V);
+		const AdvApp2Var_Iso & IsoV(const double U0, const double U1, const double V);
 
 		/****** AdvApp2Var_Framework::LastNode ******/
-		/****** md5 signature: c5ec3a09215187eaa4100a7b4686bdb3 ******/
+		/****** md5 signature: 7f26eb6c1619d03f5f9a2923b7385a59 ******/
 		%feature("compactdefaultargs") LastNode;
 		%feature("autodoc", "
 Parameters
@@ -1640,10 +1457,10 @@ Description
 -----------
 No available documentation.
 ") LastNode;
-		Standard_Integer LastNode(const GeomAbs_IsoType Type, const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
+		int LastNode(const GeomAbs_IsoType Type, const int IndexIso, const int IndexStrip);
 
 		/****** AdvApp2Var_Framework::Node ******/
-		/****** md5 signature: 1d29de45887544e302e72092c1d86599 ******/
+		/****** md5 signature: 60c4b71e85516f3b0c58d3d2c84c8e90 ******/
 		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "
 Parameters
@@ -1658,16 +1475,16 @@ Description
 -----------
 No available documentation.
 ") Node;
-		const opencascade::handle<AdvApp2Var_Node> & Node(const Standard_Integer IndexNode);
+		const opencascade::handle<AdvApp2Var_Node> & Node(const int IndexNode);
 
 		/****** AdvApp2Var_Framework::Node ******/
-		/****** md5 signature: c9d756687d8ab078da4b83b35aee2845 ******/
+		/****** md5 signature: 3c791f8b847adf258b2d51cd6230ce4c ******/
 		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 
 Return
 -------
@@ -1677,10 +1494,10 @@ Description
 -----------
 No available documentation.
 ") Node;
-		const opencascade::handle<AdvApp2Var_Node> & Node(const Standard_Real U, const Standard_Real V);
+		const opencascade::handle<AdvApp2Var_Node> & Node(const double U, const double V);
 
 		/****** AdvApp2Var_Framework::UEquation ******/
-		/****** md5 signature: eae095443123601e82f5e427f107c558 ******/
+		/****** md5 signature: a41e3146c52d97d92e4e4c84fe4b6df1 ******/
 		%feature("compactdefaultargs") UEquation;
 		%feature("autodoc", "
 Parameters
@@ -1690,21 +1507,21 @@ IndexStrip: int
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") UEquation;
-		const opencascade::handle<TColStd_HArray1OfReal> & UEquation(const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
+		const opencascade::handle<NCollection_HArray1<double>> & UEquation(const int IndexIso, const int IndexStrip);
 
 		/****** AdvApp2Var_Framework::UpdateInU ******/
-		/****** md5 signature: 6ceeb1ee9354cac6afc634b1d9c74e7c ******/
+		/****** md5 signature: ea19319ce9faa7d1deb1064607f98a7e ******/
 		%feature("compactdefaultargs") UpdateInU;
 		%feature("autodoc", "
 Parameters
 ----------
-CuttingValue: float
+CuttingValue: double
 
 Return
 -------
@@ -1714,15 +1531,15 @@ Description
 -----------
 No available documentation.
 ") UpdateInU;
-		void UpdateInU(const Standard_Real CuttingValue);
+		void UpdateInU(const double CuttingValue);
 
 		/****** AdvApp2Var_Framework::UpdateInV ******/
-		/****** md5 signature: c0f8535993a7fefff54e4fb95c170b72 ******/
+		/****** md5 signature: 06633d1c44e0865bb44110b693c69ae6 ******/
 		%feature("compactdefaultargs") UpdateInV;
 		%feature("autodoc", "
 Parameters
 ----------
-CuttingValue: float
+CuttingValue: double
 
 Return
 -------
@@ -1732,10 +1549,10 @@ Description
 -----------
 No available documentation.
 ") UpdateInV;
-		void UpdateInV(const Standard_Real CuttingValue);
+		void UpdateInV(const double CuttingValue);
 
 		/****** AdvApp2Var_Framework::VEquation ******/
-		/****** md5 signature: b409a4641e852e2861825c39dc2922c1 ******/
+		/****** md5 signature: ba67abead88627ba6217055106fe7cd7 ******/
 		%feature("compactdefaultargs") VEquation;
 		%feature("autodoc", "
 Parameters
@@ -1745,13 +1562,13 @@ IndexStrip: int
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") VEquation;
-		const opencascade::handle<TColStd_HArray1OfReal> & VEquation(const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
+		const opencascade::handle<NCollection_HArray1<double>> & VEquation(const int IndexIso, const int IndexStrip);
 
 };
 
@@ -1771,15 +1588,15 @@ No available documentation.
 class AdvApp2Var_MathBase {
 	public:
 		/****** AdvApp2Var_MathBase::mdsptpt_ ******/
-		/****** md5 signature: d0cc0c7502e5928d82f8b656b6dd1fa0 ******/
+		/****** md5 signature: 99f4ba7f2f6af77061927f31511deceb ******/
 		%feature("compactdefaultargs") mdsptpt_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-point1: doublereal *
-point2: doublereal *
-distan: doublereal *
+ndimen: int *
+point1: double *
+point2: double *
+distan: double *
 
 Return
 -------
@@ -1789,17 +1606,17 @@ Description
 -----------
 No available documentation.
 ") mdsptpt_;
-		static int mdsptpt_(integer * ndimen, doublereal * point1, doublereal * point2, doublereal * distan);
+		static int mdsptpt_(int * ndimen, double * point1, double * point2, double * distan);
 
 		/****** AdvApp2Var_MathBase::mmapcmp_ ******/
-		/****** md5 signature: ddc220b71480aa8b72622753a27c1a08 ******/
+		/****** md5 signature: 30a44258fd01a2a8678ddad138262a12 ******/
 		%feature("compactdefaultargs") mmapcmp_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
+: int *
+: int *
+: int *
 : double *
 : double *
 
@@ -1811,23 +1628,23 @@ Description
 -----------
 No available documentation.
 ") mmapcmp_;
-		static int mmapcmp_(integer * , integer * , integer * , double * , double * );
+		static int mmapcmp_(int * , int * , int * , double * , double * );
 
 		/****** AdvApp2Var_MathBase::mmaperx_ ******/
-		/****** md5 signature: 3e2559039cb3bda8c6d64ac866023ed5 ******/
+		/****** md5 signature: bcfde2eccd06d1df9dae278f3804d912 ******/
 		%feature("compactdefaultargs") mmaperx_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncofmx: integer *
-ndimen: integer *
-ncoeff: integer *
-iordre: integer *
-crvjac: doublereal *
-ncfnew: integer *
-ycvmax: doublereal *
-errmax: doublereal *
-iercod: integer *
+ncofmx: int *
+ndimen: int *
+ncoeff: int *
+iordre: int *
+crvjac: double *
+ncfnew: int *
+ycvmax: double *
+errmax: double *
+iercod: int *
 
 Return
 -------
@@ -1837,22 +1654,22 @@ Description
 -----------
 No available documentation.
 ") mmaperx_;
-		static int mmaperx_(integer * ncofmx, integer * ndimen, integer * ncoeff, integer * iordre, doublereal * crvjac, integer * ncfnew, doublereal * ycvmax, doublereal * errmax, integer * iercod);
+		static int mmaperx_(int * ncofmx, int * ndimen, int * ncoeff, int * iordre, double * crvjac, int * ncfnew, double * ycvmax, double * errmax, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmarcin_ ******/
-		/****** md5 signature: c26a2d31e50b2e630a193421191f8420 ******/
+		/****** md5 signature: 930be891cca5c9810a51f933bef3f567 ******/
 		%feature("compactdefaultargs") mmarcin_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimax: integer *
-ndim: integer *
-ncoeff: integer *
-crvold: doublereal *
-u0: doublereal *
-u1: doublereal *
-crvnew: doublereal *
-iercod: integer *
+ndimax: int *
+ndim: int *
+ncoeff: int *
+crvold: double *
+u0: double *
+u1: double *
+crvnew: double *
+iercod: int *
 
 Return
 -------
@@ -1862,18 +1679,18 @@ Description
 -----------
 No available documentation.
 ") mmarcin_;
-		static int mmarcin_(integer * ndimax, integer * ndim, integer * ncoeff, doublereal * crvold, doublereal * u0, doublereal * u1, doublereal * crvnew, integer * iercod);
+		static int mmarcin_(int * ndimax, int * ndim, int * ncoeff, double * crvold, double * u0, double * u1, double * crvnew, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmbulld_ ******/
-		/****** md5 signature: a6e5ee873b96338395e569d9e9188ef2 ******/
+		/****** md5 signature: a8cfc063dc2bac4cf8a367743ce73a83 ******/
 		%feature("compactdefaultargs") mmbulld_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbcoln: integer *
-nblign: integer *
-dtabtr: doublereal *
-numcle: integer *
+nbcoln: int *
+nblign: int *
+dtabtr: double *
+numcle: int *
 
 Return
 -------
@@ -1883,20 +1700,20 @@ Description
 -----------
 No available documentation.
 ") mmbulld_;
-		static int mmbulld_(integer * nbcoln, integer * nblign, doublereal * dtabtr, integer * numcle);
+		static int mmbulld_(int * nbcoln, int * nblign, double * dtabtr, int * numcle);
 
 		/****** AdvApp2Var_MathBase::mmcdriv_ ******/
-		/****** md5 signature: 44a825407cbe882facc2d5a6e2edfbbd ******/
+		/****** md5 signature: c518477f2b9031c5f65e0e5c51a7c74c ******/
 		%feature("compactdefaultargs") mmcdriv_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-ncoeff: integer *
-courbe: doublereal *
-ideriv: integer *
-ncofdv: integer *
-crvdrv: doublereal *
+ndimen: int *
+ncoeff: int *
+courbe: double *
+ideriv: int *
+ncofdv: int *
+crvdrv: double *
 
 Return
 -------
@@ -1906,24 +1723,24 @@ Description
 -----------
 No available documentation.
 ") mmcdriv_;
-		static int mmcdriv_(integer * ndimen, integer * ncoeff, doublereal * courbe, integer * ideriv, integer * ncofdv, doublereal * crvdrv);
+		static int mmcdriv_(int * ndimen, int * ncoeff, double * courbe, int * ideriv, int * ncofdv, double * crvdrv);
 
 		/****** AdvApp2Var_MathBase::mmcglc1_ ******/
-		/****** md5 signature: 1ced960f022f6bb9a52d4739071f227c ******/
+		/****** md5 signature: 8cdf7fa3ab66c2ff8174317e491e9f58 ******/
 		%feature("compactdefaultargs") mmcglc1_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimax: integer *
-ndimen: integer *
-ncoeff: integer *
-courbe: doublereal *
-tdebut: doublereal *
-tfinal: doublereal *
-epsiln: doublereal *
-xlongc: doublereal *
-erreur: doublereal *
-iercod: integer *
+ndimax: int *
+ndimen: int *
+ncoeff: int *
+courbe: double *
+tdebut: double *
+tfinal: double *
+epsiln: double *
+xlongc: double *
+erreur: double *
+iercod: int *
 
 Return
 -------
@@ -1933,22 +1750,22 @@ Description
 -----------
 No available documentation.
 ") mmcglc1_;
-		static int mmcglc1_(integer * ndimax, integer * ndimen, integer * ncoeff, doublereal * courbe, doublereal * tdebut, doublereal * tfinal, doublereal * epsiln, doublereal * xlongc, doublereal * erreur, integer * iercod);
+		static int mmcglc1_(int * ndimax, int * ndimen, int * ncoeff, double * courbe, double * tdebut, double * tfinal, double * epsiln, double * xlongc, double * erreur, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmcvctx_ ******/
-		/****** md5 signature: 5f90652ee7a4410f4c19f327eeb75459 ******/
+		/****** md5 signature: 828111983de0fdcdca91f66df8b0fcd5 ******/
 		%feature("compactdefaultargs") mmcvctx_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-ncofmx: integer *
-nderiv: integer *
-ctrtes: doublereal *
-crvres: doublereal *
-tabaux: doublereal *
-xmatri: doublereal *
-iercod: integer *
+ndimen: int *
+ncofmx: int *
+nderiv: int *
+ctrtes: double *
+crvres: double *
+tabaux: double *
+xmatri: double *
+iercod: int *
 
 Return
 -------
@@ -1958,19 +1775,19 @@ Description
 -----------
 No available documentation.
 ") mmcvctx_;
-		static int mmcvctx_(integer * ndimen, integer * ncofmx, integer * nderiv, doublereal * ctrtes, doublereal * crvres, doublereal * tabaux, doublereal * xmatri, integer * iercod);
+		static int mmcvctx_(int * ndimen, int * ncofmx, int * nderiv, double * ctrtes, double * crvres, double * tabaux, double * xmatri, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmcvinv_ ******/
-		/****** md5 signature: d83fa9f36dfce85985ef06a9963e1c45 ******/
+		/****** md5 signature: a9ae3ebebe974f07356bd916163fc810 ******/
 		%feature("compactdefaultargs") mmcvinv_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimax: integer *
-ncoef: integer *
-ndim: integer *
-curveo: doublereal *
-curve: doublereal *
+ndimax: int *
+ncoef: int *
+ndim: int *
+curveo: double *
+curve: double *
 
 Return
 -------
@@ -1980,20 +1797,20 @@ Description
 -----------
 No available documentation.
 ") mmcvinv_;
-		static int mmcvinv_(integer * ndimax, integer * ncoef, integer * ndim, doublereal * curveo, doublereal * curve);
+		static int mmcvinv_(int * ndimax, int * ncoef, int * ndim, double * curveo, double * curve);
 
 		/****** AdvApp2Var_MathBase::mmdrc11_ ******/
-		/****** md5 signature: a28ee8f5001caafb97564920bd3ce882 ******/
+		/****** md5 signature: 10e3f85b0a9ec4b436417455829e93c2 ******/
 		%feature("compactdefaultargs") mmdrc11_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: doublereal *
-: doublereal *
-: doublereal *
+: int *
+: int *
+: int *
+: double *
+: double *
+: double *
 
 Return
 -------
@@ -2003,20 +1820,20 @@ Description
 -----------
 No available documentation.
 ") mmdrc11_;
-		static int mmdrc11_(integer * , integer * , integer * , doublereal * , doublereal * , doublereal * );
+		static int mmdrc11_(int * , int * , int * , double * , double * , double * );
 
 		/****** AdvApp2Var_MathBase::mmdrvck_ ******/
-		/****** md5 signature: 525722fedd3aebf005d25056187dddf4 ******/
+		/****** md5 signature: 3d2d0a1a1304d5255008fb163e30a864 ******/
 		%feature("compactdefaultargs") mmdrvck_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncoeff: integer *
-ndimen: integer *
-courbe: doublereal *
-ideriv: integer *
-tparam: doublereal *
-pntcrb: doublereal *
+ncoeff: int *
+ndimen: int *
+courbe: double *
+ideriv: int *
+tparam: double *
+pntcrb: double *
 
 Return
 -------
@@ -2026,15 +1843,15 @@ Description
 -----------
 No available documentation.
 ") mmdrvck_;
-		static int mmdrvck_(integer * ncoeff, integer * ndimen, doublereal * courbe, integer * ideriv, doublereal * tparam, doublereal * pntcrb);
+		static int mmdrvck_(int * ncoeff, int * ndimen, double * courbe, int * ideriv, double * tparam, double * pntcrb);
 
 		/****** AdvApp2Var_MathBase::mmeps1_ ******/
-		/****** md5 signature: ab904ccf5f764d7370e8f091a5379338 ******/
+		/****** md5 signature: 06ebc05f790570e8bebd9d01bf6c8512 ******/
 		%feature("compactdefaultargs") mmeps1_;
 		%feature("autodoc", "
 Parameters
 ----------
-epsilo: doublereal *
+epsilo: double *
 
 Return
 -------
@@ -2044,22 +1861,22 @@ Description
 -----------
 No available documentation.
 ") mmeps1_;
-		static int mmeps1_(doublereal * epsilo);
+		static int mmeps1_(double * epsilo);
 
 		/****** AdvApp2Var_MathBase::mmfmca8_ ******/
-		/****** md5 signature: c9877e732829f9386b22d78cdded7be7 ******/
+		/****** md5 signature: 4f1d8456127a0f02ce3713c36d3de356 ******/
 		%feature("compactdefaultargs") mmfmca8_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-ncoefu: integer *
-ncoefv: integer *
-ndimax: integer *
-ncfumx: integer *
-ncfvmx: integer *
-tabini: doublereal *
-tabres: doublereal *
+ndimen: int *
+ncoefu: int *
+ncoefv: int *
+ndimax: int *
+ncfumx: int *
+ncfvmx: int *
+tabini: double *
+tabres: double *
 
 Return
 -------
@@ -2069,22 +1886,22 @@ Description
 -----------
 No available documentation.
 ") mmfmca8_;
-		static int mmfmca8_(const integer * ndimen, const integer * ncoefu, const integer * ncoefv, const integer * ndimax, const integer * ncfumx, const integer * ncfvmx, doublereal * tabini, doublereal * tabres);
+		static int mmfmca8_(const int * ndimen, const int * ncoefu, const int * ncoefv, const int * ndimax, const int * ncfumx, const int * ncfvmx, double * tabini, double * tabres);
 
 		/****** AdvApp2Var_MathBase::mmfmca9_ ******/
-		/****** md5 signature: cdef922fdd9cca02e97d563176bdee76 ******/
+		/****** md5 signature: 4e5804c9f790b352bfcc68c5655c3aa8 ******/
 		%feature("compactdefaultargs") mmfmca9_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: integer *
-: doublereal *
-: doublereal *
+: int *
+: int *
+: int *
+: int *
+: int *
+: int *
+: double *
+: double *
 
 Return
 -------
@@ -2094,25 +1911,25 @@ Description
 -----------
 No available documentation.
 ") mmfmca9_;
-		static int mmfmca9_(integer * , integer * , integer * , integer * , integer * , integer * , doublereal * , doublereal * );
+		static int mmfmca9_(int * , int * , int * , int * , int * , int * , double * , double * );
 
 		/****** AdvApp2Var_MathBase::mmfmcar_ ******/
-		/****** md5 signature: 2f3d1dabb652936348dd204ce98331a8 ******/
+		/****** md5 signature: 5c13325d7c675cc598883aa075b88d8c ******/
 		%feature("compactdefaultargs") mmfmcar_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-ncofmx: integer *
-ncoefu: integer *
-ncoefv: integer *
-patold: doublereal *
-upara1: doublereal *
-upara2: doublereal *
-vpara1: doublereal *
-vpara2: doublereal *
-patnew: doublereal *
-iercod: integer *
+ndimen: int *
+ncofmx: int *
+ncoefu: int *
+ncoefv: int *
+patold: double *
+upara1: double *
+upara2: double *
+vpara1: double *
+vpara2: double *
+patnew: double *
+iercod: int *
 
 Return
 -------
@@ -2122,23 +1939,23 @@ Description
 -----------
 No available documentation.
 ") mmfmcar_;
-		static int mmfmcar_(integer * ndimen, integer * ncofmx, integer * ncoefu, integer * ncoefv, doublereal * patold, doublereal * upara1, doublereal * upara2, doublereal * vpara1, doublereal * vpara2, doublereal * patnew, integer * iercod);
+		static int mmfmcar_(int * ndimen, int * ncofmx, int * ncoefu, int * ncoefv, double * patold, double * upara1, double * upara2, double * vpara1, double * vpara2, double * patnew, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmfmcb5_ ******/
-		/****** md5 signature: 56a81c8b6cc564145902ada0223ca749 ******/
+		/****** md5 signature: 14244cb5e07a156e201cb3ed7b738512 ******/
 		%feature("compactdefaultargs") mmfmcb5_;
 		%feature("autodoc", "
 Parameters
 ----------
-: integer *
-: integer *
-: integer *
-: doublereal *
-: integer *
-: integer *
-: integer *
-: doublereal *
-: integer *
+: int *
+: int *
+: int *
+: double *
+: int *
+: int *
+: int *
+: double *
+: int *
 
 Return
 -------
@@ -2148,23 +1965,23 @@ Description
 -----------
 No available documentation.
 ") mmfmcb5_;
-		static int mmfmcb5_(integer * , integer * , integer * , doublereal * , integer * , integer * , integer * , doublereal * , integer * );
+		static int mmfmcb5_(int * , int * , int * , double * , int * , int * , int * , double * , int * );
 
 		/****** AdvApp2Var_MathBase::mmfmtb1_ ******/
-		/****** md5 signature: 8a4ac823cf2bfaa5d0b3a5b23ce64fec ******/
+		/****** md5 signature: 39014ee424b8879f8abc3f92ecf49eb4 ******/
 		%feature("compactdefaultargs") mmfmtb1_;
 		%feature("autodoc", "
 Parameters
 ----------
-maxsz1: integer *
-table1: doublereal *
-isize1: integer *
-jsize1: integer *
-maxsz2: integer *
-table2: doublereal *
-isize2: integer *
-jsize2: integer *
-iercod: integer *
+maxsz1: int *
+table1: double *
+isize1: int *
+jsize1: int *
+maxsz2: int *
+table2: double *
+isize2: int *
+jsize2: int *
+iercod: int *
 
 Return
 -------
@@ -2174,23 +1991,23 @@ Description
 -----------
 No available documentation.
 ") mmfmtb1_;
-		static int mmfmtb1_(integer * maxsz1, doublereal * table1, integer * isize1, integer * jsize1, integer * maxsz2, doublereal * table2, integer * isize2, integer * jsize2, integer * iercod);
+		static int mmfmtb1_(int * maxsz1, double * table1, int * isize1, int * jsize1, int * maxsz2, double * table2, int * isize2, int * jsize2, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmhjcan_ ******/
-		/****** md5 signature: 446f4e5fc4471218506e9b511d9c6d33 ******/
+		/****** md5 signature: 3218598caa79d9fe49eed2bfb1983029 ******/
 		%feature("compactdefaultargs") mmhjcan_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-ncourb: integer *
-ncftab: integer *
-orcont: integer *
-ncflim: integer *
-tcbold: doublereal *
-tdecop: doublereal *
-tcbnew: doublereal *
-iercod: integer *
+ndimen: int *
+ncourb: int *
+ncftab: int *
+orcont: int *
+ncflim: int *
+tcbold: double *
+tdecop: double *
+tcbnew: double *
+iercod: int *
 
 Return
 -------
@@ -2200,22 +2017,22 @@ Description
 -----------
 No available documentation.
 ") mmhjcan_;
-		static int mmhjcan_(integer * ndimen, integer * ncourb, integer * ncftab, integer * orcont, integer * ncflim, doublereal * tcbold, doublereal * tdecop, doublereal * tcbnew, integer * iercod);
+		static int mmhjcan_(int * ndimen, int * ncourb, int * ncftab, int * orcont, int * ncflim, double * tcbold, double * tdecop, double * tcbnew, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mminltt_ ******/
-		/****** md5 signature: f6302a533cf8887921d63b52fd1db29d ******/
+		/****** md5 signature: ce2c2a663371be8a1b3296584571a5de ******/
 		%feature("compactdefaultargs") mminltt_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncolmx: integer *
-nlgnmx: integer *
-tabtri: doublereal *
-nbrcol: integer *
-nbrlgn: integer *
-ajoute: doublereal *
-epseg: doublereal *
-iercod: integer *
+ncolmx: int *
+nlgnmx: int *
+tabtri: double *
+nbrcol: int *
+nbrlgn: int *
+ajoute: double *
+epseg: double *
+iercod: int *
 
 Return
 -------
@@ -2225,18 +2042,18 @@ Description
 -----------
 No available documentation.
 ") mminltt_;
-		static int mminltt_(integer * ncolmx, integer * nlgnmx, doublereal * tabtri, integer * nbrcol, integer * nbrlgn, doublereal * ajoute, doublereal * epseg, integer * iercod);
+		static int mminltt_(int * ncolmx, int * nlgnmx, double * tabtri, int * nbrcol, int * nbrlgn, double * ajoute, double * epseg, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmjacan_ ******/
-		/****** md5 signature: 9434e56960effb3e5ef4b134391a328e ******/
+		/****** md5 signature: 9176012dc1e9d477e8e42b4ee022ce69 ******/
 		%feature("compactdefaultargs") mmjacan_;
 		%feature("autodoc", "
 Parameters
 ----------
-ideriv: integer *
-ndeg: integer *
-poljac: doublereal *
-polcan: doublereal *
+ideriv: int *
+ndeg: int *
+poljac: double *
+polcan: double *
 
 Return
 -------
@@ -2246,20 +2063,20 @@ Description
 -----------
 No available documentation.
 ") mmjacan_;
-		static int mmjacan_(const integer * ideriv, integer * ndeg, doublereal * poljac, doublereal * polcan);
+		static int mmjacan_(const int * ideriv, int * ndeg, double * poljac, double * polcan);
 
 		/****** AdvApp2Var_MathBase::mmjaccv_ ******/
-		/****** md5 signature: b65686bb9f09d9ff3a5414b37737b25f ******/
+		/****** md5 signature: bb6ab131b6ff709d8bb68715be26e59b ******/
 		%feature("compactdefaultargs") mmjaccv_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncoef: integer *
-ndim: integer *
-ider: integer *
-crvlgd: doublereal *
-polaux: doublereal *
-crvcan: doublereal *
+ncoef: int *
+ndim: int *
+ider: int *
+crvlgd: double *
+polaux: double *
+crvcan: double *
 
 Return
 -------
@@ -2269,20 +2086,20 @@ Description
 -----------
 No available documentation.
 ") mmjaccv_;
-		static int mmjaccv_(const integer * ncoef, const integer * ndim, const integer * ider, const doublereal * crvlgd, doublereal * polaux, doublereal * crvcan);
+		static int mmjaccv_(const int * ncoef, const int * ndim, const int * ider, const double * crvlgd, double * polaux, double * crvcan);
 
 		/****** AdvApp2Var_MathBase::mmmpocur_ ******/
-		/****** md5 signature: 74e6aabd8a9a0120f39cdca7f2a2ab4c ******/
+		/****** md5 signature: bc86f56efd8cb7764daff022a6f5d5f4 ******/
 		%feature("compactdefaultargs") mmmpocur_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncofmx: integer *
-ndim: integer *
-ndeg: integer *
-courbe: doublereal *
-tparam: doublereal *
-tabval: doublereal *
+ncofmx: int *
+ndim: int *
+ndeg: int *
+courbe: double *
+tparam: double *
+tabval: double *
 
 Return
 -------
@@ -2292,23 +2109,23 @@ Description
 -----------
 No available documentation.
 ") mmmpocur_;
-		static int mmmpocur_(integer * ncofmx, integer * ndim, integer * ndeg, doublereal * courbe, doublereal * tparam, doublereal * tabval);
+		static int mmmpocur_(int * ncofmx, int * ndim, int * ndeg, double * courbe, double * tparam, double * tabval);
 
 		/****** AdvApp2Var_MathBase::mmmrslwd_ ******/
-		/****** md5 signature: a95d2925ac37222049e9bf15d84c3cb5 ******/
+		/****** md5 signature: b76ffb81e9a92bd8d5be9dc8c01dbc54 ******/
 		%feature("compactdefaultargs") mmmrslwd_;
 		%feature("autodoc", "
 Parameters
 ----------
-normax: integer *
-nordre: integer *
-ndim: integer *
-amat: doublereal *
-bmat: doublereal *
-epspiv: doublereal *
-aaux: doublereal *
-xmat: doublereal *
-iercod: integer *
+normax: int *
+nordre: int *
+ndim: int *
+amat: double *
+bmat: double *
+epspiv: double *
+aaux: double *
+xmat: double *
+iercod: int *
 
 Return
 -------
@@ -2318,20 +2135,20 @@ Description
 -----------
 No available documentation.
 ") mmmrslwd_;
-		static int mmmrslwd_(integer * normax, integer * nordre, integer * ndim, doublereal * amat, doublereal * bmat, doublereal * epspiv, doublereal * aaux, doublereal * xmat, integer * iercod);
+		static int mmmrslwd_(int * normax, int * nordre, int * ndim, double * amat, double * bmat, double * epspiv, double * aaux, double * xmat, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmpobas_ ******/
-		/****** md5 signature: 7bc22d5de8ef6a29982a574e3973164e ******/
+		/****** md5 signature: c34ce7313c3d7a96d5d9c70005c50517 ******/
 		%feature("compactdefaultargs") mmpobas_;
 		%feature("autodoc", "
 Parameters
 ----------
-tparam: doublereal *
-iordre: integer *
-ncoeff: integer *
-nderiv: integer *
-valbas: doublereal *
-iercod: integer *
+tparam: double *
+iordre: int *
+ncoeff: int *
+nderiv: int *
+valbas: double *
+iercod: int *
 
 Return
 -------
@@ -2341,20 +2158,20 @@ Description
 -----------
 No available documentation.
 ") mmpobas_;
-		static int mmpobas_(doublereal * tparam, integer * iordre, integer * ncoeff, integer * nderiv, doublereal * valbas, integer * iercod);
+		static int mmpobas_(double * tparam, int * iordre, int * ncoeff, int * nderiv, double * valbas, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmpocrb_ ******/
-		/****** md5 signature: a12dcc0fd2ee502b557d028a01877b8d ******/
+		/****** md5 signature: 3b0eed4c5328380d6d92d20a82deaced ******/
 		%feature("compactdefaultargs") mmpocrb_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimax: integer *
-ncoeff: integer *
-courbe: doublereal *
-ndim: integer *
-tparam: doublereal *
-pntcrb: doublereal *
+ndimax: int *
+ncoeff: int *
+courbe: double *
+ndim: int *
+tparam: double *
+pntcrb: double *
 
 Return
 -------
@@ -2364,19 +2181,19 @@ Description
 -----------
 No available documentation.
 ") mmpocrb_;
-		static int mmpocrb_(integer * ndimax, integer * ncoeff, doublereal * courbe, integer * ndim, doublereal * tparam, doublereal * pntcrb);
+		static int mmpocrb_(int * ndimax, int * ncoeff, double * courbe, int * ndim, double * tparam, double * pntcrb);
 
 		/****** AdvApp2Var_MathBase::mmposui_ ******/
-		/****** md5 signature: 34280b75c6efa74cfc4d92b1604d7018 ******/
+		/****** md5 signature: 1188905453d803cdb0af4c56e82e831c ******/
 		%feature("compactdefaultargs") mmposui_;
 		%feature("autodoc", "
 Parameters
 ----------
-dimmat: integer *
-nistoc: integer *
-aposit: integer *
-posuiv: integer *
-iercod: integer *
+dimmat: int *
+nistoc: int *
+aposit: int *
+posuiv: int *
+iercod: int *
 
 Return
 -------
@@ -2386,30 +2203,30 @@ Description
 -----------
 No available documentation.
 ") mmposui_;
-		static int mmposui_(integer * dimmat, integer * nistoc, integer * aposit, integer * posuiv, integer * iercod);
+		static int mmposui_(int * dimmat, int * nistoc, int * aposit, int * posuiv, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmresol_ ******/
-		/****** md5 signature: 6a24def37f274fef1c72ffabb3fb8a78 ******/
+		/****** md5 signature: edc2966e0efdcc0e2075effde1243370 ******/
 		%feature("compactdefaultargs") mmresol_;
 		%feature("autodoc", "
 Parameters
 ----------
-hdimen: integer *
-gdimen: integer *
-hnstoc: integer *
-gnstoc: integer *
-mnstoc: integer *
-matsyh: doublereal *
-matsyg: doublereal *
-vecsyh: doublereal *
-vecsyg: doublereal *
-hposit: integer *
-hposui: integer *
-gposit: integer *
-mmposui: integer *
-mposit: integer *
-vecsol: doublereal *
-iercod: integer *
+hdimen: int *
+gdimen: int *
+hnstoc: int *
+gnstoc: int *
+mnstoc: int *
+matsyh: double *
+matsyg: double *
+vecsyh: double *
+vecsyg: double *
+hposit: int *
+hposui: int *
+gposit: int *
+mmposui: int *
+mposit: int *
+vecsol: double *
+iercod: int *
 
 Return
 -------
@@ -2419,16 +2236,16 @@ Description
 -----------
 No available documentation.
 ") mmresol_;
-		static int mmresol_(integer * hdimen, integer * gdimen, integer * hnstoc, integer * gnstoc, integer * mnstoc, doublereal * matsyh, doublereal * matsyg, doublereal * vecsyh, doublereal * vecsyg, integer * hposit, integer * hposui, integer * gposit, integer * mmposui, integer * mposit, doublereal * vecsol, integer * iercod);
+		static int mmresol_(int * hdimen, int * gdimen, int * hnstoc, int * gnstoc, int * mnstoc, double * matsyh, double * matsyg, double * vecsyh, double * vecsyg, int * hposit, int * hposui, int * gposit, int * mmposui, int * mposit, double * vecsol, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmrtptt_ ******/
-		/****** md5 signature: bf320f4ce6a9651125680601f69e4537 ******/
+		/****** md5 signature: 1c8382cfa0c886b95be01da8f9b77c7d ******/
 		%feature("compactdefaultargs") mmrtptt_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndglgd: integer *
-rtlegd: doublereal *
+ndglgd: int *
+rtlegd: double *
 
 Return
 -------
@@ -2438,21 +2255,21 @@ Description
 -----------
 No available documentation.
 ") mmrtptt_;
-		static int mmrtptt_(integer * ndglgd, doublereal * rtlegd);
+		static int mmrtptt_(int * ndglgd, double * rtlegd);
 
 		/****** AdvApp2Var_MathBase::mmsrre2_ ******/
-		/****** md5 signature: 11a570be7ee4b84e48a67aa8ec09f727 ******/
+		/****** md5 signature: 616ae1f34f26fb0ee2baa84b719b314a ******/
 		%feature("compactdefaultargs") mmsrre2_;
 		%feature("autodoc", "
 Parameters
 ----------
-tparam: doublereal *
-nbrval: integer *
-tablev: doublereal *
-epsil: doublereal *
-numint: integer *
-itypen: integer *
-iercod: integer *
+tparam: double *
+nbrval: int *
+tablev: double *
+epsil: double *
+numint: int *
+itypen: int *
+iercod: int *
 
 Return
 -------
@@ -2462,23 +2279,23 @@ Description
 -----------
 No available documentation.
 ") mmsrre2_;
-		static int mmsrre2_(doublereal * tparam, integer * nbrval, doublereal * tablev, doublereal * epsil, integer * numint, integer * itypen, integer * iercod);
+		static int mmsrre2_(double * tparam, int * nbrval, double * tablev, double * epsil, int * numint, int * itypen, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmtrpjj_ ******/
-		/****** md5 signature: 0569f5b50e1f2f007294ac92dcbfad1c ******/
+		/****** md5 signature: 97383d2c05d4bb94a417c6ca54f37f1f ******/
 		%feature("compactdefaultargs") mmtrpjj_;
 		%feature("autodoc", "
 Parameters
 ----------
-ncofmx: integer *
-ndimen: integer *
-ncoeff: integer *
-epsi3d: doublereal *
-iordre: integer *
-crvlgd: doublereal *
-ycvmax: doublereal *
-errmax: doublereal *
-ncfnew: integer *
+ncofmx: int *
+ndimen: int *
+ncoeff: int *
+epsi3d: double *
+iordre: int *
+crvlgd: double *
+ycvmax: double *
+errmax: double *
+ncfnew: int *
 
 Return
 -------
@@ -2488,19 +2305,19 @@ Description
 -----------
 No available documentation.
 ") mmtrpjj_;
-		static int mmtrpjj_(integer * ncofmx, integer * ndimen, integer * ncoeff, doublereal * epsi3d, integer * iordre, doublereal * crvlgd, doublereal * ycvmax, doublereal * errmax, integer * ncfnew);
+		static int mmtrpjj_(int * ncofmx, int * ndimen, int * ncoeff, double * epsi3d, int * iordre, double * crvlgd, double * ycvmax, double * errmax, int * ncfnew);
 
 		/****** AdvApp2Var_MathBase::mmunivt_ ******/
-		/****** md5 signature: 16381a0150e98e032a27d190626c862c ******/
+		/****** md5 signature: 90d0e6d6f04ff0b5a3289857e0851af1 ******/
 		%feature("compactdefaultargs") mmunivt_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-vector: doublereal *
-vecnrm: doublereal *
-epsiln: doublereal *
-iercod: integer *
+ndimen: int *
+vector: double *
+vecnrm: double *
+epsiln: double *
+iercod: int *
 
 Return
 -------
@@ -2510,15 +2327,15 @@ Description
 -----------
 No available documentation.
 ") mmunivt_;
-		static int mmunivt_(integer * ndimen, doublereal * vector, doublereal * vecnrm, doublereal * epsiln, integer * iercod);
+		static int mmunivt_(int * ndimen, double * vector, double * vecnrm, double * epsiln, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmveps3_ ******/
-		/****** md5 signature: 23174d833a81b088dd2fea3e5aa72ce3 ******/
+		/****** md5 signature: 4b0b80b4c9681cd0f2d8f26278764472 ******/
 		%feature("compactdefaultargs") mmveps3_;
 		%feature("autodoc", "
 Parameters
 ----------
-eps03: doublereal *
+eps03: double *
 
 Return
 -------
@@ -2528,18 +2345,18 @@ Description
 -----------
 No available documentation.
 ") mmveps3_;
-		static int mmveps3_(doublereal * eps03);
+		static int mmveps3_(double * eps03);
 
 		/****** AdvApp2Var_MathBase::mmvncol_ ******/
-		/****** md5 signature: 4f89cab0e4d7a63481dc99370fbc8fb2 ******/
+		/****** md5 signature: 776a593fcdf6df89b07924d3118d1a2b ******/
 		%feature("compactdefaultargs") mmvncol_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-vecin: doublereal *
-vecout: doublereal *
-iercod: integer *
+ndimen: int *
+vecin: double *
+vecout: double *
+iercod: int *
 
 Return
 -------
@@ -2549,20 +2366,20 @@ Description
 -----------
 No available documentation.
 ") mmvncol_;
-		static int mmvncol_(integer * ndimen, doublereal * vecin, doublereal * vecout, integer * iercod);
+		static int mmvncol_(int * ndimen, double * vecin, double * vecout, int * iercod);
 
 		/****** AdvApp2Var_MathBase::mmwprcs_ ******/
-		/****** md5 signature: 477d823794f68972576604130750f753 ******/
+		/****** md5 signature: c93cf997c99c3329a0c311f62d3add43 ******/
 		%feature("compactdefaultargs") mmwprcs_;
 		%feature("autodoc", "
 Parameters
 ----------
-: doublereal *
-: doublereal *
-: doublereal *
-: doublereal *
-: integer *
-: integer *
+: double *
+: double *
+: double *
+: double *
+: int *
+: int *
 
 Return
 -------
@@ -2572,38 +2389,38 @@ Description
 -----------
 No available documentation.
 ") mmwprcs_;
-		static void mmwprcs_(doublereal * , doublereal * , doublereal * , doublereal * , integer * , integer * );
+		static void mmwprcs_(double * , double * , double * , double * , int * , int * );
 
 		/****** AdvApp2Var_MathBase::msc_ ******/
-		/****** md5 signature: 3114f971d87dcb65a2ab7e6d240393b5 ******/
+		/****** md5 signature: cc1523f49ddb7c65ee958cd602f4c25b ******/
 		%feature("compactdefaultargs") msc_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-vecte1: doublereal *
-vecte2: doublereal *
+ndimen: int *
+vecte1: double *
+vecte2: double *
 
 Return
 -------
-doublereal
+double
 
 Description
 -----------
 No available documentation.
 ") msc_;
-		static doublereal msc_(integer * ndimen, doublereal * vecte1, doublereal * vecte2);
+		static double msc_(int * ndimen, double * vecte1, double * vecte2);
 
 		/****** AdvApp2Var_MathBase::mvsheld_ ******/
-		/****** md5 signature: 4ecbda11b378509d5fa7a83d2e283759 ******/
+		/****** md5 signature: 2fb3caf82333b3791258b069675471b7 ******/
 		%feature("compactdefaultargs") mvsheld_;
 		%feature("autodoc", "
 Parameters
 ----------
-n: integer *
-is: integer *
-dtab: doublereal *
-icle: integer *
+n: int *
+is: int *
+dtab: double *
+icle: int *
 
 Return
 -------
@@ -2613,45 +2430,45 @@ Description
 -----------
 No available documentation.
 ") mvsheld_;
-		static int mvsheld_(integer * n, integer * is, doublereal * dtab, integer * icle);
+		static int mvsheld_(int * n, int * is, double * dtab, int * icle);
 
 		/****** AdvApp2Var_MathBase::mzsnorm_ ******/
-		/****** md5 signature: cdbf39590da261aaf47c5ccd25c4da77 ******/
+		/****** md5 signature: 47f09e28421f3310f456efa493da71c8 ******/
 		%feature("compactdefaultargs") mzsnorm_;
 		%feature("autodoc", "
 Parameters
 ----------
-ndimen: integer *
-vecteu: doublereal *
+ndimen: int *
+vecteu: double *
 
 Return
 -------
-doublereal
+double
 
 Description
 -----------
 No available documentation.
 ") mzsnorm_;
-		static doublereal mzsnorm_(integer * ndimen, doublereal * vecteu);
+		static double mzsnorm_(int * ndimen, double * vecteu);
 
 		/****** AdvApp2Var_MathBase::pow__di ******/
-		/****** md5 signature: e4a7f433243cba4d130c7523c160c9cd ******/
+		/****** md5 signature: 10f0464639a5f2507f7f66611d0d308c ******/
 		%feature("compactdefaultargs") pow__di;
 		%feature("autodoc", "
 Parameters
 ----------
-x: doublereal *
-n: integer *
+x: double *
+n: int *
 
 Return
 -------
-doublereal
+double
 
 Description
 -----------
 No available documentation.
 ") pow__di;
-		static doublereal pow__di(doublereal * x, integer * n);
+		static double pow__di(double * x, int * n);
 
 };
 
@@ -2685,14 +2502,14 @@ No available documentation.
 		 AdvApp2Var_Network();
 
 		/****** AdvApp2Var_Network::AdvApp2Var_Network ******/
-		/****** md5 signature: 193c289f215945d46188eaeb35e19607 ******/
+		/****** md5 signature: a96fe6324d7a7f9f1786325f69a446fb ******/
 		%feature("compactdefaultargs") AdvApp2Var_Network;
 		%feature("autodoc", "
 Parameters
 ----------
-Net: AdvApp2Var_SequenceOfPatch
-TheU: TColStd_SequenceOfReal
-TheV: TColStd_SequenceOfReal
+Net: AdvApp2Var_Patch
+TheU: NCollection_Sequence<double>
+TheV: NCollection_Sequence<double>
 
 Return
 -------
@@ -2702,10 +2519,10 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Network;
-		 AdvApp2Var_Network(const AdvApp2Var_SequenceOfPatch & Net, const TColStd_SequenceOfReal & TheU, const TColStd_SequenceOfReal & TheV);
+		 AdvApp2Var_Network(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch> > & Net, const NCollection_Sequence<double> & TheU, const NCollection_Sequence<double> & TheV);
 
 		/****** AdvApp2Var_Network::ChangePatch ******/
-		/****** md5 signature: 49bf90b6471d1093efa33d9d67b1d5ff ******/
+		/****** md5 signature: 8777869a74e6cc79cfda0879af40109a ******/
 		%feature("compactdefaultargs") ChangePatch;
 		%feature("autodoc", "
 Parameters
@@ -2720,10 +2537,10 @@ Description
 -----------
 No available documentation.
 ") ChangePatch;
-		AdvApp2Var_Patch & ChangePatch(const Standard_Integer Index);
+		AdvApp2Var_Patch & ChangePatch(const int Index);
 
 		/****** AdvApp2Var_Network::FirstNotApprox ******/
-		/****** md5 signature: 71bb30feb26f00338924d16d7bd6d369 ******/
+		/****** md5 signature: f10c61c289ba21f2567a850e3ff8e8a9 ******/
 		%feature("compactdefaultargs") FirstNotApprox;
 		%feature("autodoc", "
 Parameters
@@ -2735,12 +2552,12 @@ Index: int
 
 Description
 -----------
-search the Index of the first Patch not approximated, if all Patches are approximated Standard_False is returned.
+search the Index of the first Patch not approximated, if all Patches are approximated false is returned.
 ") FirstNotApprox;
-		Standard_Boolean FirstNotApprox(Standard_Integer &OutValue);
+		bool FirstNotApprox(Standard_Integer &OutValue);
 
 		/****** AdvApp2Var_Network::NbPatch ******/
-		/****** md5 signature: e694837768b0b0d655ecd0758a2789f8 ******/
+		/****** md5 signature: e855bb5e925ff1a35cd785081d05af41 ******/
 		%feature("compactdefaultargs") NbPatch;
 		%feature("autodoc", "Return
 -------
@@ -2750,10 +2567,10 @@ Description
 -----------
 No available documentation.
 ") NbPatch;
-		Standard_Integer NbPatch();
+		int NbPatch();
 
 		/****** AdvApp2Var_Network::NbPatchInU ******/
-		/****** md5 signature: 3f35fc1ac6634939a320e7ad44a7f7a1 ******/
+		/****** md5 signature: 51dec3f7689e0d32e6506986d86bbbdd ******/
 		%feature("compactdefaultargs") NbPatchInU;
 		%feature("autodoc", "Return
 -------
@@ -2763,10 +2580,10 @@ Description
 -----------
 No available documentation.
 ") NbPatchInU;
-		Standard_Integer NbPatchInU();
+		int NbPatchInU();
 
 		/****** AdvApp2Var_Network::NbPatchInV ******/
-		/****** md5 signature: f81c6419ee7410e1e8c617bbe5c3f7ab ******/
+		/****** md5 signature: 4b9e84f413bb0388c5cc07d4e8eb9ca1 ******/
 		%feature("compactdefaultargs") NbPatchInV;
 		%feature("autodoc", "Return
 -------
@@ -2776,10 +2593,10 @@ Description
 -----------
 No available documentation.
 ") NbPatchInV;
-		Standard_Integer NbPatchInV();
+		int NbPatchInV();
 
 		/****** AdvApp2Var_Network::Patch ******/
-		/****** md5 signature: d7ebd409a545712c8a1fd621e1074507 ******/
+		/****** md5 signature: a1b9839e0f55e33f99ccfe66d2a475ec ******/
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "
 Parameters
@@ -2795,10 +2612,10 @@ Description
 -----------
 No available documentation.
 ") Patch;
-		const AdvApp2Var_Patch & Patch(const Standard_Integer UIndex, const Standard_Integer VIndex);
+		const AdvApp2Var_Patch & Patch(const int UIndex, const int VIndex);
 
 		/****** AdvApp2Var_Network::SameDegree ******/
-		/****** md5 signature: 7e217979ae78b3668d6f94e6a8ad1993 ******/
+		/****** md5 signature: 5221e853da7b2d3b79242942c1f48f39 ******/
 		%feature("compactdefaultargs") SameDegree;
 		%feature("autodoc", "
 Parameters
@@ -2815,10 +2632,10 @@ Description
 -----------
 No available documentation.
 ") SameDegree;
-		void SameDegree(const Standard_Integer iu, const Standard_Integer iv, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void SameDegree(const int iu, const int iv, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** AdvApp2Var_Network::UParameter ******/
-		/****** md5 signature: 71719dc788a69ec419550ca101145d24 ******/
+		/****** md5 signature: b3de19b3034c4c34dce3e27a388fe5d0 ******/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "
 Parameters
@@ -2827,21 +2644,21 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UParameter;
-		Standard_Real UParameter(const Standard_Integer Index);
+		double UParameter(const int Index);
 
 		/****** AdvApp2Var_Network::UpdateInU ******/
-		/****** md5 signature: 6ceeb1ee9354cac6afc634b1d9c74e7c ******/
+		/****** md5 signature: ea19319ce9faa7d1deb1064607f98a7e ******/
 		%feature("compactdefaultargs") UpdateInU;
 		%feature("autodoc", "
 Parameters
 ----------
-CuttingValue: float
+CuttingValue: double
 
 Return
 -------
@@ -2851,15 +2668,15 @@ Description
 -----------
 No available documentation.
 ") UpdateInU;
-		void UpdateInU(const Standard_Real CuttingValue);
+		void UpdateInU(const double CuttingValue);
 
 		/****** AdvApp2Var_Network::UpdateInV ******/
-		/****** md5 signature: c0f8535993a7fefff54e4fb95c170b72 ******/
+		/****** md5 signature: 06633d1c44e0865bb44110b693c69ae6 ******/
 		%feature("compactdefaultargs") UpdateInV;
 		%feature("autodoc", "
 Parameters
 ----------
-CuttingValue: float
+CuttingValue: double
 
 Return
 -------
@@ -2869,10 +2686,10 @@ Description
 -----------
 No available documentation.
 ") UpdateInV;
-		void UpdateInV(const Standard_Real CuttingValue);
+		void UpdateInV(const double CuttingValue);
 
 		/****** AdvApp2Var_Network::VParameter ******/
-		/****** md5 signature: 33aa4b550b26911e9a612085aed53f03 ******/
+		/****** md5 signature: 8ee4c07b3ed30c3da52af7f4385dad5d ******/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "
 Parameters
@@ -2881,13 +2698,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VParameter;
-		Standard_Real VParameter(const Standard_Integer Index);
+		double VParameter(const int Index);
 
 };
 
@@ -2917,7 +2734,7 @@ No available documentation.
 		 AdvApp2Var_Node();
 
 		/****** AdvApp2Var_Node::AdvApp2Var_Node ******/
-		/****** md5 signature: d2cda16fc3142332455215854e92a317 ******/
+		/****** md5 signature: f9ce7fb3950e932502411a5efb65ba58 ******/
 		%feature("compactdefaultargs") AdvApp2Var_Node;
 		%feature("autodoc", "
 Parameters
@@ -2933,10 +2750,10 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Node;
-		 AdvApp2Var_Node(const Standard_Integer iu, const Standard_Integer iv);
+		 AdvApp2Var_Node(const int iu, const int iv);
 
 		/****** AdvApp2Var_Node::AdvApp2Var_Node ******/
-		/****** md5 signature: 02101f67a99867a736cba2d1116fa5ee ******/
+		/****** md5 signature: 2f161ce1789b20bb5bfa72166c41086c ******/
 		%feature("compactdefaultargs") AdvApp2Var_Node;
 		%feature("autodoc", "
 Parameters
@@ -2953,7 +2770,7 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Node;
-		 AdvApp2Var_Node(const gp_XY & UV, const Standard_Integer iu, const Standard_Integer iv);
+		 AdvApp2Var_Node(const gp_XY & UV, const int iu, const int iv);
 
 		/****** AdvApp2Var_Node::Coord ******/
 		/****** md5 signature: 55c3583d2b85a3d85724dfd062f17fa4 ******/
@@ -2969,7 +2786,7 @@ Returns the coordinates (U,V) of the node.
 		const gp_XY Coord();
 
 		/****** AdvApp2Var_Node::Error ******/
-		/****** md5 signature: 4813a340da2d4e85dbd4db1c55725856 ******/
+		/****** md5 signature: 4d2d5d427e9f1e5fbd6195a8d8cd99f9 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -2979,16 +2796,16 @@ iv: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the error between F(U,V) and its approximation.
 ") Error;
-		Standard_Real Error(const Standard_Integer iu, const Standard_Integer iv);
+		double Error(const int iu, const int iv);
 
 		/****** AdvApp2Var_Node::Point ******/
-		/****** md5 signature: 749335184bea0e3e4adcaec95037b5c4 ******/
+		/****** md5 signature: 693351c0914cdfb228ef74ab753c646f ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -3004,16 +2821,16 @@ Description
 -----------
 returns the value F(U,V) or its derivates on the node (U,V).
 ") Point;
-		const gp_Pnt Point(const Standard_Integer iu, const Standard_Integer iv);
+		const gp_Pnt Point(const int iu, const int iv);
 
 		/****** AdvApp2Var_Node::SetCoord ******/
-		/****** md5 signature: 4e5a25b156489466ba1a9a9f348b2305 ******/
+		/****** md5 signature: 12ecc6718ce25db2075839c332af379d ******/
 		%feature("compactdefaultargs") SetCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-x1: float
-x2: float
+x1: double
+x2: double
 
 Return
 -------
@@ -3023,17 +2840,17 @@ Description
 -----------
 changes the coordinates (U,V) to (x1,x2).
 ") SetCoord;
-		void SetCoord(const Standard_Real x1, const Standard_Real x2);
+		void SetCoord(const double x1, const double x2);
 
 		/****** AdvApp2Var_Node::SetError ******/
-		/****** md5 signature: bdc80934791ff9f2bae407029b05b646 ******/
+		/****** md5 signature: 0d2ab373beb2c1443c9e72e65ea5ac53 ******/
 		%feature("compactdefaultargs") SetError;
 		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
-error: float
+error: double
 
 Return
 -------
@@ -3043,10 +2860,10 @@ Description
 -----------
 affects the error between F(U,V) and its approximation.
 ") SetError;
-		void SetError(const Standard_Integer iu, const Standard_Integer iv, const Standard_Real error);
+		void SetError(const int iu, const int iv, const double error);
 
 		/****** AdvApp2Var_Node::SetPoint ******/
-		/****** md5 signature: 76994ba669d4525ebd26c6236bb72440 ******/
+		/****** md5 signature: 8403f7e4bf7396378a7a3c5e426fbff0 ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
@@ -3063,10 +2880,10 @@ Description
 -----------
 affects the value F(U,V) or its derivates on the node (U,V).
 ") SetPoint;
-		void SetPoint(const Standard_Integer iu, const Standard_Integer iv, const gp_Pnt & Pt);
+		void SetPoint(const int iu, const int iv, const gp_Pnt & Pt);
 
 		/****** AdvApp2Var_Node::UOrder ******/
-		/****** md5 signature: 240f145a108dc3ebbbcea6f9c3c264fc ******/
+		/****** md5 signature: 6a598cc4d811ae3bd62d9f8cb8ee1158 ******/
 		%feature("compactdefaultargs") UOrder;
 		%feature("autodoc", "Return
 -------
@@ -3076,10 +2893,10 @@ Description
 -----------
 returns the continuity order in U of the node.
 ") UOrder;
-		Standard_Integer UOrder();
+		int UOrder();
 
 		/****** AdvApp2Var_Node::VOrder ******/
-		/****** md5 signature: bacd1acb31115deb5ae2d0800c99aadf ******/
+		/****** md5 signature: 5af1ae568e8d070e2a6da21db174bedd ******/
 		%feature("compactdefaultargs") VOrder;
 		%feature("autodoc", "Return
 -------
@@ -3089,7 +2906,7 @@ Description
 -----------
 returns the continuity order in V of the node.
 ") VOrder;
-		Standard_Integer VOrder();
+		int VOrder();
 
 };
 
@@ -3121,15 +2938,15 @@ No available documentation.
 		 AdvApp2Var_Patch();
 
 		/****** AdvApp2Var_Patch::AdvApp2Var_Patch ******/
-		/****** md5 signature: 009293243a6ed1ff77c648dd22d8cf3b ******/
+		/****** md5 signature: 76225ec27eca4a48fffc371b4862fc3f ******/
 		%feature("compactdefaultargs") AdvApp2Var_Patch;
 		%feature("autodoc", "
 Parameters
 ----------
-U0: float
-U1: float
-V0: float
-V1: float
+U0: double
+U1: double
+V0: double
+V1: double
 iu: int
 iv: int
 
@@ -3141,7 +2958,7 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Patch;
-		 AdvApp2Var_Patch(const Standard_Real U0, const Standard_Real U1, const Standard_Real V0, const Standard_Real V1, const Standard_Integer iu, const Standard_Integer iv);
+		 AdvApp2Var_Patch(const double U0, const double U1, const double V0, const double V1, const int iu, const int iv);
 
 		/****** AdvApp2Var_Patch::AddConstraints ******/
 		/****** md5 signature: abf03d99820fa7dc9c1dcf3e4036e911 ******/
@@ -3181,28 +2998,28 @@ No available documentation.
 		void AddErrors(const AdvApp2Var_Framework & Constraints);
 
 		/****** AdvApp2Var_Patch::AverageErrors ******/
-		/****** md5 signature: d8502ea596eaa24c6ddd3c29b947b322 ******/
+		/****** md5 signature: 36ce9209e949c4708372100373b7d4bc ******/
 		%feature("compactdefaultargs") AverageErrors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") AverageErrors;
-		opencascade::handle<TColStd_HArray1OfReal> AverageErrors();
+		opencascade::handle<NCollection_HArray1<double>> AverageErrors();
 
 		/****** AdvApp2Var_Patch::ChangeDomain ******/
-		/****** md5 signature: 2ac5144771fa2395ab4c3175f83f7fdd ******/
+		/****** md5 signature: 8874ec13e8c460de18ff2430b274bc80 ******/
 		%feature("compactdefaultargs") ChangeDomain;
 		%feature("autodoc", "
 Parameters
 ----------
-a: float
-b: float
-c: float
-d: float
+a: double
+b: double
+c: double
+d: double
 
 Return
 -------
@@ -3212,10 +3029,10 @@ Description
 -----------
 No available documentation.
 ") ChangeDomain;
-		void ChangeDomain(const Standard_Real a, const Standard_Real b, const Standard_Real c, const Standard_Real d);
+		void ChangeDomain(const double a, const double b, const double c, const double d);
 
 		/****** AdvApp2Var_Patch::ChangeNbCoeff ******/
-		/****** md5 signature: 802370e7ae3255f35692248af680e738 ******/
+		/****** md5 signature: 240c41aabe9d5c757453e691a1f6ed9b ******/
 		%feature("compactdefaultargs") ChangeNbCoeff;
 		%feature("autodoc", "
 Parameters
@@ -3231,10 +3048,10 @@ Description
 -----------
 No available documentation.
 ") ChangeNbCoeff;
-		void ChangeNbCoeff(const Standard_Integer NbCoeffU, const Standard_Integer NbCoeffV);
+		void ChangeNbCoeff(const int NbCoeffU, const int NbCoeffV);
 
 		/****** AdvApp2Var_Patch::Coefficients ******/
-		/****** md5 signature: e17d56434ae80ca1c852d61d7c3ca62a ******/
+		/****** md5 signature: f87e6379d7dbef95626b13ee3f67d9e6 ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
@@ -3244,29 +3061,29 @@ Conditions: AdvApp2Var_Context
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") Coefficients;
-		opencascade::handle<TColStd_HArray1OfReal> Coefficients(const Standard_Integer SSPIndex, const AdvApp2Var_Context & Conditions);
+		opencascade::handle<NCollection_HArray1<double>> Coefficients(const int SSPIndex, const AdvApp2Var_Context & Conditions);
 
 		/****** AdvApp2Var_Patch::CritValue ******/
-		/****** md5 signature: 23a54416c5dbe722901061f446e55cde ******/
+		/****** md5 signature: 26c513c2f190f5ec950cc46ebea9bd3d ******/
 		%feature("compactdefaultargs") CritValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") CritValue;
-		Standard_Real CritValue();
+		double CritValue();
 
 		/****** AdvApp2Var_Patch::CutSense ******/
-		/****** md5 signature: 992e37471b9e9d39f6176f987d7026a1 ******/
+		/****** md5 signature: c2b1f7a57d8e78d53efeea0c13b20ad9 ******/
 		%feature("compactdefaultargs") CutSense;
 		%feature("autodoc", "Return
 -------
@@ -3276,10 +3093,10 @@ Description
 -----------
 No available documentation.
 ") CutSense;
-		Standard_Integer CutSense();
+		int CutSense();
 
 		/****** AdvApp2Var_Patch::CutSense ******/
-		/****** md5 signature: 521a8a559c48f0a748d039ed8b373ff4 ******/
+		/****** md5 signature: f1d738194c25847327495041dc6b660a ******/
 		%feature("compactdefaultargs") CutSense;
 		%feature("autodoc", "
 Parameters
@@ -3295,7 +3112,7 @@ Description
 -----------
 No available documentation.
 ") CutSense;
-		Standard_Integer CutSense(const AdvApp2Var_Criterion & Crit, const Standard_Integer NumDec);
+		int CutSense(const AdvApp2Var_Criterion & Crit, const int NumDec);
 
 		/****** AdvApp2Var_Patch::Discretise ******/
 		/****** md5 signature: c6ff2fab99b0d1f461ae97d16b7121e3 ******/
@@ -3318,7 +3135,7 @@ No available documentation.
 		void Discretise(const AdvApp2Var_Context & Conditions, const AdvApp2Var_Framework & Constraints, const AdvApp2Var_EvaluatorFunc2Var & func);
 
 		/****** AdvApp2Var_Patch::HasResult ******/
-		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
+		/****** md5 signature: 708adea9b732f6b7393066c26f957b86 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -3328,10 +3145,10 @@ Description
 -----------
 No available documentation.
 ") HasResult;
-		Standard_Boolean HasResult();
+		bool HasResult();
 
 		/****** AdvApp2Var_Patch::IsApproximated ******/
-		/****** md5 signature: 7c34eaf99169909b82e07df22d055afb ******/
+		/****** md5 signature: f9d78180b289ed12c3c5123e8653c6ac ******/
 		%feature("compactdefaultargs") IsApproximated;
 		%feature("autodoc", "Return
 -------
@@ -3341,10 +3158,10 @@ Description
 -----------
 No available documentation.
 ") IsApproximated;
-		Standard_Boolean IsApproximated();
+		bool IsApproximated();
 
 		/****** AdvApp2Var_Patch::IsDiscretised ******/
-		/****** md5 signature: 47baa977dd394ace9e32cb703e3423fb ******/
+		/****** md5 signature: 06c41703ab80be83df138f763c3db243 ******/
 		%feature("compactdefaultargs") IsDiscretised;
 		%feature("autodoc", "Return
 -------
@@ -3354,23 +3171,23 @@ Description
 -----------
 No available documentation.
 ") IsDiscretised;
-		Standard_Boolean IsDiscretised();
+		bool IsDiscretised();
 
 		/****** AdvApp2Var_Patch::IsoErrors ******/
-		/****** md5 signature: 8ea111f68143778d4a8973276e928d0b ******/
+		/****** md5 signature: ad16cf88f00b6723b3a176e13fa4ac77 ******/
 		%feature("compactdefaultargs") IsoErrors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfReal>
+opencascade::handle<NCollection_HArray2<double>>
 
 Description
 -----------
 No available documentation.
 ") IsoErrors;
-		opencascade::handle<TColStd_HArray2OfReal> IsoErrors();
+		opencascade::handle<NCollection_HArray2<double>> IsoErrors();
 
 		/****** AdvApp2Var_Patch::MakeApprox ******/
-		/****** md5 signature: 276a3e9cd61d2de916908db5672bd9b2 ******/
+		/****** md5 signature: a16912f8e3be775de02093e3fbfffea1 ******/
 		%feature("compactdefaultargs") MakeApprox;
 		%feature("autodoc", "
 Parameters
@@ -3387,23 +3204,23 @@ Description
 -----------
 No available documentation.
 ") MakeApprox;
-		void MakeApprox(const AdvApp2Var_Context & Conditions, const AdvApp2Var_Framework & Constraints, const Standard_Integer NumDec);
+		void MakeApprox(const AdvApp2Var_Context & Conditions, const AdvApp2Var_Framework & Constraints, const int NumDec);
 
 		/****** AdvApp2Var_Patch::MaxErrors ******/
-		/****** md5 signature: 2c31ae61bc19ac28b8afc8aaffbdb3d7 ******/
+		/****** md5 signature: 735497f4661ac6a814b5e41a2b1defed ******/
 		%feature("compactdefaultargs") MaxErrors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") MaxErrors;
-		opencascade::handle<TColStd_HArray1OfReal> MaxErrors();
+		opencascade::handle<NCollection_HArray1<double>> MaxErrors();
 
 		/****** AdvApp2Var_Patch::NbCoeffInU ******/
-		/****** md5 signature: 69cd17080302de88c9d27eb417982d70 ******/
+		/****** md5 signature: 185957825194353a06a658d8c1042fec ******/
 		%feature("compactdefaultargs") NbCoeffInU;
 		%feature("autodoc", "Return
 -------
@@ -3413,10 +3230,10 @@ Description
 -----------
 No available documentation.
 ") NbCoeffInU;
-		Standard_Integer NbCoeffInU();
+		int NbCoeffInU();
 
 		/****** AdvApp2Var_Patch::NbCoeffInV ******/
-		/****** md5 signature: 5fdc9c87479a6f2cd28f37494a151db7 ******/
+		/****** md5 signature: 26a9814f65d8baf5c62222e25a9b35ed ******/
 		%feature("compactdefaultargs") NbCoeffInV;
 		%feature("autodoc", "Return
 -------
@@ -3426,7 +3243,7 @@ Description
 -----------
 No available documentation.
 ") NbCoeffInV;
-		Standard_Integer NbCoeffInV();
+		int NbCoeffInV();
 
 		/****** AdvApp2Var_Patch::OverwriteApprox ******/
 		/****** md5 signature: 498eeb5383c32fe019241a25212632dc ******/
@@ -3442,7 +3259,7 @@ No available documentation.
 		void OverwriteApprox();
 
 		/****** AdvApp2Var_Patch::Poles ******/
-		/****** md5 signature: a678e8da8145f8a2e18659df95598b78 ******/
+		/****** md5 signature: a83fce725ea81ac29fe69b8e68144ea0 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
@@ -3452,13 +3269,13 @@ Conditions: AdvApp2Var_Context
 
 Return
 -------
-opencascade::handle<TColgp_HArray2OfPnt>
+opencascade::handle<NCollection_HArray2<gp_Pnt>>
 
 Description
 -----------
 No available documentation.
 ") Poles;
-		opencascade::handle<TColgp_HArray2OfPnt> Poles(const Standard_Integer SSPIndex, const AdvApp2Var_Context & Conditions);
+		opencascade::handle<NCollection_HArray2<gp_Pnt>> Poles(const int SSPIndex, const AdvApp2Var_Context & Conditions);
 
 		/****** AdvApp2Var_Patch::ResetApprox ******/
 		/****** md5 signature: 95158c4db01998815f8d16a93f8762e3 ******/
@@ -3474,12 +3291,12 @@ No available documentation.
 		void ResetApprox();
 
 		/****** AdvApp2Var_Patch::SetCritValue ******/
-		/****** md5 signature: fa8644c9d9151b6fc16f33d9ba06eb43 ******/
+		/****** md5 signature: baa49c91233aa4ba1970d9b53f91ae03 ******/
 		%feature("compactdefaultargs") SetCritValue;
 		%feature("autodoc", "
 Parameters
 ----------
-dist: float
+dist: double
 
 Return
 -------
@@ -3489,36 +3306,36 @@ Description
 -----------
 No available documentation.
 ") SetCritValue;
-		void SetCritValue(const Standard_Real dist);
+		void SetCritValue(const double dist);
 
 		/****** AdvApp2Var_Patch::U0 ******/
-		/****** md5 signature: 339bb715a75de7a8b4555f6a339ebd10 ******/
+		/****** md5 signature: 95ecde208467da41aba7298f13d1de1b ******/
 		%feature("compactdefaultargs") U0;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") U0;
-		Standard_Real U0();
+		double U0();
 
 		/****** AdvApp2Var_Patch::U1 ******/
-		/****** md5 signature: dc11e0157513dfb2ced295d3b3c19ebf ******/
+		/****** md5 signature: 070c473a14c10a26b7ab54c5fbc40e8d ******/
 		%feature("compactdefaultargs") U1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") U1;
-		Standard_Real U1();
+		double U1();
 
 		/****** AdvApp2Var_Patch::UOrder ******/
-		/****** md5 signature: 3bb505464047fef2900b8b2c2896c41e ******/
+		/****** md5 signature: 506eb4cd965c491ed72c611f4394bbc9 ******/
 		%feature("compactdefaultargs") UOrder;
 		%feature("autodoc", "Return
 -------
@@ -3528,36 +3345,36 @@ Description
 -----------
 No available documentation.
 ") UOrder;
-		Standard_Integer UOrder();
+		int UOrder();
 
 		/****** AdvApp2Var_Patch::V0 ******/
-		/****** md5 signature: 00b73901144f5edffff220d5d949eac1 ******/
+		/****** md5 signature: 88e978f9e67a30d07e8a385680131951 ******/
 		%feature("compactdefaultargs") V0;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") V0;
-		Standard_Real V0();
+		double V0();
 
 		/****** AdvApp2Var_Patch::V1 ******/
-		/****** md5 signature: 4690fe5b6fc46d61802a6f0d508c99e5 ******/
+		/****** md5 signature: c5f7a687b57e1de44b0be2372cc617fd ******/
 		%feature("compactdefaultargs") V1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") V1;
-		Standard_Real V1();
+		double V1();
 
 		/****** AdvApp2Var_Patch::VOrder ******/
-		/****** md5 signature: 704529177e651451c5029c517db99652 ******/
+		/****** md5 signature: 7d8c6b6b638dff0483d77f1fe58907bb ******/
 		%feature("compactdefaultargs") VOrder;
 		%feature("autodoc", "Return
 -------
@@ -3567,7 +3384,7 @@ Description
 -----------
 No available documentation.
 ") VOrder;
-		Standard_Integer VOrder();
+		int VOrder();
 
 };
 
@@ -3599,32 +3416,6 @@ No available documentation.
 ") AdvApp2Var_SysBase;
 		 AdvApp2Var_SysBase();
 
-		/****** AdvApp2Var_SysBase::do__fio ******/
-		/****** md5 signature: 2cf3b2f76e4397a39b6b26f1f24587d6 ******/
-		%feature("compactdefaultargs") do__fio;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-No available documentation.
-") do__fio;
-		static int do__fio();
-
-		/****** AdvApp2Var_SysBase::do__lio ******/
-		/****** md5 signature: 1aad0eab41f21d50ea885ddaf41bd76b ******/
-		%feature("compactdefaultargs") do__lio;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-No available documentation.
-") do__lio;
-		static int do__lio();
-
 		/****** AdvApp2Var_SysBase::macinit_ ******/
 		/****** md5 signature: b882f9f2083ffeb7a4d047c8c9eed173 ******/
 		%feature("compactdefaultargs") macinit_;
@@ -3645,16 +3436,16 @@ No available documentation.
 		static int macinit_(int * , int * );
 
 		/****** AdvApp2Var_SysBase::macrai4_ ******/
-		/****** md5 signature: 0b82b8932cd90447e9719c6d0ea6770e ******/
+		/****** md5 signature: 8a39c8ae0355e66f70d13f345c6a3166 ******/
 		%feature("compactdefaultargs") macrai4_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbelem: integer *
-maxelm: integer *
-itablo: integer *
+nbelem: int *
+maxelm: int *
+itablo: int *
 iofset: intptr_t *
-iercod: integer *
+iercod: int *
 
 Return
 -------
@@ -3664,19 +3455,19 @@ Description
 -----------
 No available documentation.
 ") macrai4_;
-		int macrai4_(integer * nbelem, integer * maxelm, integer * itablo, intptr_t * iofset, integer * iercod);
+		int macrai4_(int * nbelem, int * maxelm, int * itablo, intptr_t * iofset, int * iercod);
 
 		/****** AdvApp2Var_SysBase::macrar8_ ******/
-		/****** md5 signature: 0fe325ba06bc2bb7a2a56adaadaef79f ******/
+		/****** md5 signature: 4f3ea01823a5227478697b69e4c5fe61 ******/
 		%feature("compactdefaultargs") macrar8_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbelem: integer *
-maxelm: integer *
-xtablo: doublereal *
+nbelem: int *
+maxelm: int *
+xtablo: double *
 iofset: intptr_t *
-iercod: integer *
+iercod: int *
 
 Return
 -------
@@ -3686,19 +3477,19 @@ Description
 -----------
 No available documentation.
 ") macrar8_;
-		int macrar8_(integer * nbelem, integer * maxelm, doublereal * xtablo, intptr_t * iofset, integer * iercod);
+		int macrar8_(int * nbelem, int * maxelm, double * xtablo, intptr_t * iofset, int * iercod);
 
 		/****** AdvApp2Var_SysBase::macrdi4_ ******/
-		/****** md5 signature: adbf9dc4998d49cdeb9ec904ae5369d9 ******/
+		/****** md5 signature: c0bc5aff59cf6928a340139ddda17607 ******/
 		%feature("compactdefaultargs") macrdi4_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbelem: integer *
-maxelm: integer *
-itablo: integer *
+nbelem: int *
+maxelm: int *
+itablo: int *
 iofset: intptr_t *
-iercod: integer *
+iercod: int *
 
 Return
 -------
@@ -3708,19 +3499,19 @@ Description
 -----------
 No available documentation.
 ") macrdi4_;
-		int macrdi4_(integer * nbelem, integer * maxelm, integer * itablo, intptr_t * iofset, integer * iercod);
+		int macrdi4_(int * nbelem, int * maxelm, int * itablo, intptr_t * iofset, int * iercod);
 
 		/****** AdvApp2Var_SysBase::macrdr8_ ******/
-		/****** md5 signature: 59c1de640359cc81a9ba0b28ba054a45 ******/
+		/****** md5 signature: 5e531d9ff66ec0bbe2aafc165cbe72fc ******/
 		%feature("compactdefaultargs") macrdr8_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbelem: integer *
-maxelm: integer *
-xtablo: doublereal *
+nbelem: int *
+maxelm: int *
+xtablo: double *
 iofset: intptr_t *
-iercod: integer *
+iercod: int *
 
 Return
 -------
@@ -3730,17 +3521,17 @@ Description
 -----------
 No available documentation.
 ") macrdr8_;
-		int macrdr8_(integer * nbelem, integer * maxelm, doublereal * xtablo, intptr_t * iofset, integer * iercod);
+		int macrdr8_(int * nbelem, int * maxelm, double * xtablo, intptr_t * iofset, int * iercod);
 
 		/****** AdvApp2Var_SysBase::maermsg_ ******/
-		/****** md5 signature: 3521f6514eb56f1d2efe552ec8bb7ef0 ******/
+		/****** md5 signature: 05454a85096d4391cf019aa142a33873 ******/
 		%feature("compactdefaultargs") maermsg_;
 		%feature("autodoc", "
 Parameters
 ----------
 cnompg: char *
-icoder: integer *
-cnompg_len: ftnlen
+icoder: int *
+cnompg_len: long
 
 Return
 -------
@@ -3750,7 +3541,7 @@ Description
 -----------
 No available documentation.
 ") maermsg_;
-		static int maermsg_(const char * cnompg, integer * icoder, ftnlen cnompg_len);
+		static int maermsg_(const char * cnompg, int * icoder, long cnompg_len);
 
 		/****** AdvApp2Var_SysBase::mainial_ ******/
 		/****** md5 signature: 22a172c01af47b94bac0122c7c454091 ******/
@@ -3766,14 +3557,14 @@ No available documentation.
 		int mainial_();
 
 		/****** AdvApp2Var_SysBase::maitbr8_ ******/
-		/****** md5 signature: b9cb20c149f17c408909c17bd7b8ed49 ******/
+		/****** md5 signature: 782ec8be6d4fa715ffbb0484188f5135 ******/
 		%feature("compactdefaultargs") maitbr8_;
 		%feature("autodoc", "
 Parameters
 ----------
-itaill: integer *
-xtab: doublereal *
-xval: doublereal *
+itaill: int *
+xtab: double *
+xval: double *
 
 Return
 -------
@@ -3783,15 +3574,15 @@ Description
 -----------
 No available documentation.
 ") maitbr8_;
-		static int maitbr8_(integer * itaill, doublereal * xtab, doublereal * xval);
+		static int maitbr8_(int * itaill, double * xtab, double * xval);
 
 		/****** AdvApp2Var_SysBase::maovsr8_ ******/
-		/****** md5 signature: 4ed73ca13a51d2c0e3c314b21da45c12 ******/
+		/****** md5 signature: 6fca0801fb38b39f53ac4899666aa7b0 ******/
 		%feature("compactdefaultargs") maovsr8_;
 		%feature("autodoc", "
 Parameters
 ----------
-ivalcs: integer *
+ivalcs: int *
 
 Return
 -------
@@ -3801,19 +3592,19 @@ Description
 -----------
 No available documentation.
 ") maovsr8_;
-		static int maovsr8_(integer * ivalcs);
+		static int maovsr8_(int * ivalcs);
 
 		/****** AdvApp2Var_SysBase::mcrdelt_ ******/
-		/****** md5 signature: 819c57c0f692a59c62677eb50adb81a4 ******/
+		/****** md5 signature: e947dae46c47f4f091c74e2882c08438 ******/
 		%feature("compactdefaultargs") mcrdelt_;
 		%feature("autodoc", "
 Parameters
 ----------
-iunit: integer *
-isize: integer *
+iunit: int *
+isize: int *
 t: void *
 iofset: intptr_t *
-iercod: integer *
+iercod: int *
 
 Return
 -------
@@ -3823,15 +3614,15 @@ Description
 -----------
 No available documentation.
 ") mcrdelt_;
-		int mcrdelt_(integer * iunit, integer * isize, void * t, intptr_t * iofset, integer * iercod);
+		int mcrdelt_(int * iunit, int * isize, void * t, intptr_t * iofset, int * iercod);
 
 		/****** AdvApp2Var_SysBase::mcrfill_ ******/
-		/****** md5 signature: be4b67960201d9ced29ceedc9f961ab3 ******/
+		/****** md5 signature: e868d474dcc031180cb815e4a4eeb79e ******/
 		%feature("compactdefaultargs") mcrfill_;
 		%feature("autodoc", "
 Parameters
 ----------
-size: integer *
+size: int *
 tin: void *
 tout: void *
 
@@ -3843,19 +3634,19 @@ Description
 -----------
 No available documentation.
 ") mcrfill_;
-		static int mcrfill_(integer * size, void * tin, void * tout);
+		static int mcrfill_(int * size, void * tin, void * tout);
 
 		/****** AdvApp2Var_SysBase::mcrrqst_ ******/
-		/****** md5 signature: 4679deece1dda86417c4beb0334c93cb ******/
+		/****** md5 signature: 5054d1e6d572d91bc7eddf89c0712b11 ******/
 		%feature("compactdefaultargs") mcrrqst_;
 		%feature("autodoc", "
 Parameters
 ----------
-iunit: integer *
-isize: integer *
+iunit: int *
+isize: int *
 t: void *
 iofset: intptr_t *
-iercod: integer *
+iercod: int *
 
 Return
 -------
@@ -3865,16 +3656,16 @@ Description
 -----------
 No available documentation.
 ") mcrrqst_;
-		int mcrrqst_(integer * iunit, integer * isize, void * t, intptr_t * iofset, integer * iercod);
+		int mcrrqst_(int * iunit, int * isize, void * t, intptr_t * iofset, int * iercod);
 
 		/****** AdvApp2Var_SysBase::mgenmsg_ ******/
-		/****** md5 signature: 1b59b230a367abddf3b9cd6a99b39487 ******/
+		/****** md5 signature: e5aa78aa9aa2e41d09e4949ac64e3c5b ******/
 		%feature("compactdefaultargs") mgenmsg_;
 		%feature("autodoc", "
 Parameters
 ----------
 nomprg: char *
-nomprg_len: ftnlen
+nomprg_len: long
 
 Return
 -------
@@ -3884,16 +3675,16 @@ Description
 -----------
 No available documentation.
 ") mgenmsg_;
-		static int mgenmsg_(const char * nomprg, ftnlen nomprg_len);
+		static int mgenmsg_(const char * nomprg, long nomprg_len);
 
 		/****** AdvApp2Var_SysBase::mgsomsg_ ******/
-		/****** md5 signature: 31f3734e692045616afd66e3f8757450 ******/
+		/****** md5 signature: 0cf14f0ee66d1cfb3f579cf7e91fec1d ******/
 		%feature("compactdefaultargs") mgsomsg_;
 		%feature("autodoc", "
 Parameters
 ----------
 nomprg: char *
-nomprg_len: ftnlen
+nomprg_len: long
 
 Return
 -------
@@ -3903,15 +3694,15 @@ Description
 -----------
 No available documentation.
 ") mgsomsg_;
-		static int mgsomsg_(const char * nomprg, ftnlen nomprg_len);
+		static int mgsomsg_(const char * nomprg, long nomprg_len);
 
 		/****** AdvApp2Var_SysBase::miraz_ ******/
-		/****** md5 signature: 24a2a1e4b8fd6828d77f5010fa9d9f7f ******/
+		/****** md5 signature: 3ab6d01e654ff409018da68cb1f58b27 ******/
 		%feature("compactdefaultargs") miraz_;
 		%feature("autodoc", "
 Parameters
 ----------
-taille: integer *
+taille: int *
 adt: void *
 
 Return
@@ -3922,30 +3713,30 @@ Description
 -----------
 No available documentation.
 ") miraz_;
-		static void miraz_(integer * taille, void * adt);
+		static void miraz_(int * taille, void * adt);
 
 		/****** AdvApp2Var_SysBase::mnfndeb_ ******/
-		/****** md5 signature: e206e56e1443aff338ea92ec4b50fe55 ******/
+		/****** md5 signature: 4870de2bb6fb4ee113f7d071794b6785 ******/
 		%feature("compactdefaultargs") mnfndeb_;
 		%feature("autodoc", "Return
 -------
-integer
+int
 
 Description
 -----------
 No available documentation.
 ") mnfndeb_;
-		static integer mnfndeb_();
+		static int mnfndeb_();
 
 		/****** AdvApp2Var_SysBase::msifill_ ******/
-		/****** md5 signature: b3303f70cf7f1647dd193e2d74bb0381 ******/
+		/****** md5 signature: 97e81a8cf83e737788eb9654d19c9d49 ******/
 		%feature("compactdefaultargs") msifill_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbintg: integer *
-ivecin: integer *
-ivecou: integer *
+nbintg: int *
+ivecin: int *
+ivecou: int *
 
 Return
 -------
@@ -3955,17 +3746,17 @@ Description
 -----------
 No available documentation.
 ") msifill_;
-		static int msifill_(integer * nbintg, integer * ivecin, integer * ivecou);
+		static int msifill_(int * nbintg, int * ivecin, int * ivecou);
 
 		/****** AdvApp2Var_SysBase::msrfill_ ******/
-		/****** md5 signature: 4da81a3e2f58e8e272de26cef456ca5c ******/
+		/****** md5 signature: 9c680eb13d24a2983dc09a9d8c0e975d ******/
 		%feature("compactdefaultargs") msrfill_;
 		%feature("autodoc", "
 Parameters
 ----------
-nbreel: integer *
-vecent: doublereal *
-vecsor: doublereal *
+nbreel: int *
+vecent: double *
+vecsor: double *
 
 Return
 -------
@@ -3975,16 +3766,16 @@ Description
 -----------
 No available documentation.
 ") msrfill_;
-		static int msrfill_(integer * nbreel, doublereal * vecent, doublereal * vecsor);
+		static int msrfill_(int * nbreel, double * vecent, double * vecsor);
 
 		/****** AdvApp2Var_SysBase::mswrdbg_ ******/
-		/****** md5 signature: b893a114fc87aec8b4d99925d2ba32a0 ******/
+		/****** md5 signature: bd9d3a2e01061e912f035c4ecd3608be ******/
 		%feature("compactdefaultargs") mswrdbg_;
 		%feature("autodoc", "
 Parameters
 ----------
 ctexte: char *
-ctexte_len: ftnlen
+ctexte_len: long
 
 Return
 -------
@@ -3994,15 +3785,15 @@ Description
 -----------
 No available documentation.
 ") mswrdbg_;
-		static int mswrdbg_(const char * ctexte, ftnlen ctexte_len);
+		static int mswrdbg_(const char * ctexte, long ctexte_len);
 
 		/****** AdvApp2Var_SysBase::mvriraz_ ******/
-		/****** md5 signature: 50aaf265d23e4b6465b101662340699b ******/
+		/****** md5 signature: 90596b4a7eb7cde1ab32119f9f17b40f ******/
 		%feature("compactdefaultargs") mvriraz_;
 		%feature("autodoc", "
 Parameters
 ----------
-taille: integer *
+taille: int *
 adt: void *
 
 Return
@@ -4013,7 +3804,7 @@ Description
 -----------
 No available documentation.
 ") mvriraz_;
-		static void mvriraz_(integer * taille, void * adt);
+		static void mvriraz_(int * taille, void * adt);
 
 };
 
@@ -4024,72 +3815,6 @@ No available documentation.
 	}
 };
 
-/******************
-* class Multitype *
-******************/
-/*****************
-* class Namelist *
-*****************/
-/****************
-* class Vardesc *
-****************/
-/**************
-* class alist *
-**************/
-/***************
-* class cilist *
-***************/
-/***************
-* class cllist *
-***************/
-/****************
-* class complex *
-****************/
-/**********************
-* class doublecomplex *
-**********************/
-/****************
-* class icilist *
-****************/
-/***************
-* class inlist *
-***************/
-/*******************
-* class maovpar_1_ *
-*******************/
-/*******************
-* class maovpch_1_ *
-*******************/
-/*******************
-* class mdnombr_1_ *
-*******************/
-/*******************
-* class minombr_1_ *
-*******************/
-/*******************
-* class mlgdrtl_1_ *
-*******************/
-/*******************
-* class mmapgs0_1_ *
-*******************/
-/*******************
-* class mmapgs1_1_ *
-*******************/
-/*******************
-* class mmapgs2_1_ *
-*******************/
-/*******************
-* class mmapgss_1_ *
-*******************/
-/*******************
-* class mmcmcnp_1_ *
-*******************/
-/*******************
-* class mmjcobi_1_ *
-*******************/
-/**************
-* class olist *
-**************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -4107,51 +3832,4 @@ class AdvApp2Var_Iso:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-}
-/* deprecated methods */
-%pythoncode {
-@deprecated
-def AdvApp2Var_Data_Getmaovpar(*args):
-	return AdvApp2Var_Data.Getmaovpar(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmaovpch(*args):
-	return AdvApp2Var_Data.Getmaovpch(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmdnombr(*args):
-	return AdvApp2Var_Data.Getmdnombr(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getminombr(*args):
-	return AdvApp2Var_Data.Getminombr(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmlgdrtl(*args):
-	return AdvApp2Var_Data.Getmlgdrtl(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmmapgs0(*args):
-	return AdvApp2Var_Data.Getmmapgs0(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmmapgs1(*args):
-	return AdvApp2Var_Data.Getmmapgs1(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmmapgs2(*args):
-	return AdvApp2Var_Data.Getmmapgs2(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmmapgss(*args):
-	return AdvApp2Var_Data.Getmmapgss(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmmcmcnp(*args):
-	return AdvApp2Var_Data.Getmmcmcnp(*args)
-
-@deprecated
-def AdvApp2Var_Data_Getmmjcobi(*args):
-	return AdvApp2Var_Data.Getmmjcobi(*args)
-
 }

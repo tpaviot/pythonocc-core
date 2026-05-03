@@ -87,13 +87,13 @@ from OCC.Core.Exception import *
 class StlAPI {
 	public:
 		/****** StlAPI::Read ******/
-		/****** md5 signature: 04193a3dd7bc184e35d71f6296bb4160 ******/
+		/****** md5 signature: 42e66c335f834945534d9e7cd2d8cd1b ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-aFile: str
+aFile: char *
 
 Return
 -------
@@ -101,19 +101,19 @@ bool
 
 Description
 -----------
-Legacy interface. Read STL file and create a shape composed of triangular faces, one per facet. This approach is very inefficient, especially for large files. Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
+No available documentation.
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString aFile);
+		static bool Read(TopoDS_Shape & theShape, const char * const aFile);
 
 		/****** StlAPI::Write ******/
-		/****** md5 signature: 6440898486e448da078517629383a97a ******/
+		/****** md5 signature: cfc32a923ee4c1f93df84656c783aa21 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: str
-theAsciiMode: bool (optional, default to Standard_True)
+theFile: char *
+theAsciiMode: bool (optional, default to true)
 
 Return
 -------
@@ -123,7 +123,7 @@ Description
 -----------
 Convert and write shape to STL format. File is written in binary if aAsciiMode is False otherwise it is written in Ascii (by default).
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theAsciiMode = Standard_True);
+		static bool Write(const TopoDS_Shape & theShape, const char * const theFile, const bool theAsciiMode = true);
 
 };
 
@@ -140,13 +140,13 @@ Convert and write shape to STL format. File is written in binary if aAsciiMode i
 class StlAPI_Reader {
 	public:
 		/****** StlAPI_Reader::Read ******/
-		/****** md5 signature: 7175fc9409b969fddd6af571d4af05e4 ******/
+		/****** md5 signature: cb259df7f7ca8f5ca9c8082c877afacb ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFileName: str
+theFileName: char *
 
 Return
 -------
@@ -157,7 +157,29 @@ Description
 Reads STL file to the TopoDS_Shape (each triangle is converted to the face). 
 Return: True if reading is successful.
 ") Read;
-		Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFileName);
+		bool Read(TopoDS_Shape & theShape, const char * const theFileName);
+
+		/****** StlAPI_Reader::Read ******/
+		/****** md5 signature: 246d752b624b547d938dda5546115d23 ******/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+theStream: str
+
+Return
+-------
+bool
+
+Description
+-----------
+Reads STL data from stream to the TopoDS_Shape (each triangle is converted to the face). 
+Parameter theShape result shape 
+Parameter theStream stream to read from 
+Return: True if reading is successful.
+") Read;
+		bool Read(TopoDS_Shape & theShape, std::istream & theStream);
 
 };
 
@@ -186,27 +208,27 @@ Creates a writer object with default parameters: ASCIIMode.
 ") StlAPI_Writer;
 		 StlAPI_Writer();
 
+		/****** StlAPI_Writer::ASCIIMode ******/
+		/****** md5 signature: b627f8569e1049e1da213f459b93be92 ******/
+		%feature("compactdefaultargs") ASCIIMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetASCIIMode() {
-            return (Standard_Boolean) $self->ASCIIMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetASCIIMode(Standard_Boolean value) {
-            $self->ASCIIMode()=value;
-            }
-        };
+Description
+-----------
+Returns the address to the flag defining the mode for writing the file. This address may be used to either read or change the flag. If the mode returns True (default value) the generated file is an ASCII file. If the mode returns False, the generated file is a binary file.
+") ASCIIMode;
+		bool & ASCIIMode();
+
 		/****** StlAPI_Writer::Write ******/
-		/****** md5 signature: 2af1d9f86c5642907de91a1eb03fe67f ******/
+		/****** md5 signature: bc699fe565b1c4d37508ec187f3e0ca3 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFileName: str
+theFileName: char *
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -217,7 +239,26 @@ Description
 -----------
 Converts a given shape to STL format and writes it to file with a given filename. eturn the error state.
 ") Write;
-		Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Write(const TopoDS_Shape & theShape, const char * const theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** StlAPI_Writer::Write ******/
+		/****** md5 signature: 0d47b2947d3012a8ff9c39ef5914bf71 ******/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Converts a given shape to STL format and writes it to the specified stream. eturn the error state.
+") Write;
+		bool Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

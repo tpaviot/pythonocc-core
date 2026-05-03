@@ -22,10 +22,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Bnd_Array1OfBox.hxx>
 #include<Bnd_Array1OfBox2d.hxx>
 #include<Bnd_Array1OfSphere.hxx>
-#include<Bnd_B2d.hxx>
-#include<Bnd_B2f.hxx>
-#include<Bnd_B3d.hxx>
-#include<Bnd_B3f.hxx>
+#include<Bnd_B2.hxx>
+#include<Bnd_B3.hxx>
 #include<Bnd_BoundSortBox.hxx>
 #include<Bnd_Box.hxx>
 #include<Bnd_Box2d.hxx>

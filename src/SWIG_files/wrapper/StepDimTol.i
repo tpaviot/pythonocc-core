@@ -300,24 +300,14 @@ StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(StepDimTol_CommonDatum)
-%wrap_handle(StepDimTol_Datum)
-%wrap_handle(StepDimTol_DatumFeature)
 %wrap_handle(StepDimTol_DatumReference)
 %wrap_handle(StepDimTol_DatumReferenceModifierWithValue)
-%wrap_handle(StepDimTol_DatumSystem)
-%wrap_handle(StepDimTol_DatumTarget)
-%wrap_handle(StepDimTol_GeneralDatumReference)
 %wrap_handle(StepDimTol_GeometricTolerance)
 %wrap_handle(StepDimTol_GeometricToleranceRelationship)
 %wrap_handle(StepDimTol_RunoutZoneOrientation)
-%wrap_handle(StepDimTol_SimpleDatumReferenceModifierMember)
-%wrap_handle(StepDimTol_ToleranceZone)
 %wrap_handle(StepDimTol_ToleranceZoneDefinition)
 %wrap_handle(StepDimTol_ToleranceZoneForm)
 %wrap_handle(StepDimTol_CylindricityTolerance)
-%wrap_handle(StepDimTol_DatumReferenceCompartment)
-%wrap_handle(StepDimTol_DatumReferenceElement)
 %wrap_handle(StepDimTol_FlatnessTolerance)
 %wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRef)
 %wrap_handle(StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod)
@@ -329,7 +319,6 @@ StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_
 %wrap_handle(StepDimTol_LineProfileTolerance)
 %wrap_handle(StepDimTol_ModifiedGeometricTolerance)
 %wrap_handle(StepDimTol_NonUniformZoneDefinition)
-%wrap_handle(StepDimTol_PlacedDatumTargetFeature)
 %wrap_handle(StepDimTol_PositionTolerance)
 %wrap_handle(StepDimTol_ProjectedZoneDefinition)
 %wrap_handle(StepDimTol_RoundnessTolerance)
@@ -350,13 +339,6 @@ StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_
 %wrap_handle(StepDimTol_PerpendicularityTolerance)
 %wrap_handle(StepDimTol_SymmetryTolerance)
 %wrap_handle(StepDimTol_TotalRunoutTolerance)
-%wrap_handle(StepDimTol_HArray1OfDatumReference)
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
-%wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
-%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
-%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
 /* end handles declaration */
 
 /* templates */
@@ -388,6 +370,13 @@ typedef NCollection_Array1<StepDimTol_DatumReferenceModifier> StepDimTol_Array1O
 typedef NCollection_Array1<StepDimTol_DatumSystemOrReference> StepDimTol_Array1OfDatumSystemOrReference;
 typedef NCollection_Array1<StepDimTol_GeometricToleranceModifier> StepDimTol_Array1OfGeometricToleranceModifier;
 typedef NCollection_Array1<StepDimTol_ToleranceZoneTarget> StepDimTol_Array1OfToleranceZoneTarget;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>> StepDimTol_HArray1OfDatumReference;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>> StepDimTol_HArray1OfDatumReferenceCompartment;
+typedef NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>> StepDimTol_HArray1OfDatumReferenceElement;
+typedef NCollection_HArray1<StepDimTol_DatumReferenceModifier> StepDimTol_HArray1OfDatumReferenceModifier;
+typedef NCollection_HArray1<StepDimTol_DatumSystemOrReference> StepDimTol_HArray1OfDatumSystemOrReference;
+typedef NCollection_HArray1<StepDimTol_GeometricToleranceModifier> StepDimTol_HArray1OfGeometricToleranceModifier;
+typedef NCollection_HArray1<StepDimTol_ToleranceZoneTarget> StepDimTol_HArray1OfToleranceZoneTarget;
 /* end typedefs declaration */
 
 /*******************************
@@ -467,8 +456,6 @@ Set data for supertype Datum.
 
 };
 
-
-%make_alias(StepDimTol_CommonDatum)
 
 %extend StepDimTol_CommonDatum {
 	%pythoncode {
@@ -550,8 +537,6 @@ Set field Identification.
 };
 
 
-%make_alias(StepDimTol_Datum)
-
 %extend StepDimTol_Datum {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -579,8 +564,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepDimTol_DatumFeature)
-
 %extend StepDimTol_DatumFeature {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -606,7 +589,7 @@ Returns a DatumOrCommonDatum select type.
 		 StepDimTol_DatumOrCommonDatum();
 
 		/****** StepDimTol_DatumOrCommonDatum::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -621,20 +604,20 @@ Description
 -----------
 Recognizes a DatumOrCommonDatum Kind Entity that is: 1 -> Datum 2 -> CommonDatumList 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepDimTol_DatumOrCommonDatum::CommonDatumList ******/
-		/****** md5 signature: 50f2633c3aa6765c14d7fe517a68760b ******/
+		/****** md5 signature: 321160ed5dfe68a0a38c84b5a5fc3aba ******/
 		%feature("compactdefaultargs") CommonDatumList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumReferenceElement>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>>
 
 Description
 -----------
 returns Value as a CommonDatumList (Null if another type).
 ") CommonDatumList;
-		opencascade::handle<StepDimTol_HArray1OfDatumReferenceElement> CommonDatumList();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceElement>>> CommonDatumList();
 
 		/****** StepDimTol_DatumOrCommonDatum::Datum ******/
 		/****** md5 signature: b5ccd542859a254d860a7d4bdb9674b8 ******/
@@ -677,7 +660,7 @@ Empty constructor.
 		 StepDimTol_DatumReference();
 
 		/****** StepDimTol_DatumReference::Init ******/
-		/****** md5 signature: 74e77c116f948c54fe8f17a20f29fbe4 ******/
+		/****** md5 signature: d0aad1b3526b214a2c70546c2d002a1c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -693,10 +676,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const Standard_Integer thePrecedence, const opencascade::handle<StepDimTol_Datum> & theReferencedDatum);
+		void Init(const int thePrecedence, const opencascade::handle<StepDimTol_Datum> & theReferencedDatum);
 
 		/****** StepDimTol_DatumReference::Precedence ******/
-		/****** md5 signature: 0e821eba8b09b433d0d4114d07b4ca19 ******/
+		/****** md5 signature: b6895d74ea4cab51c15e96ada314f3d7 ******/
 		%feature("compactdefaultargs") Precedence;
 		%feature("autodoc", "Return
 -------
@@ -706,7 +689,7 @@ Description
 -----------
 Returns field Precedence.
 ") Precedence;
-		Standard_Integer Precedence();
+		int Precedence();
 
 		/****** StepDimTol_DatumReference::ReferencedDatum ******/
 		/****** md5 signature: 496840bcd038318afe36cad891eff6e1 ******/
@@ -722,7 +705,7 @@ Returns field ReferencedDatum.
 		opencascade::handle<StepDimTol_Datum> ReferencedDatum();
 
 		/****** StepDimTol_DatumReference::SetPrecedence ******/
-		/****** md5 signature: d7528dfc5532376290fe4813f1e42240 ******/
+		/****** md5 signature: 018a4e76a1d912ff5b2aa3dbbd5a1ebc ******/
 		%feature("compactdefaultargs") SetPrecedence;
 		%feature("autodoc", "
 Parameters
@@ -737,7 +720,7 @@ Description
 -----------
 Set field Precedence.
 ") SetPrecedence;
-		void SetPrecedence(const Standard_Integer thePrecedence);
+		void SetPrecedence(const int thePrecedence);
 
 		/****** StepDimTol_DatumReference::SetReferencedDatum ******/
 		/****** md5 signature: 5e6fb5b78ae352c6af96a123dc53b0f3 ******/
@@ -787,7 +770,7 @@ Returns a DatumReferenceModifier select type.
 		 StepDimTol_DatumReferenceModifier();
 
 		/****** StepDimTol_DatumReferenceModifier::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -802,7 +785,7 @@ Description
 -----------
 Recognizes a DatumReferenceModifier Kind Entity that is: 1 -> DatumReferenceModifierWithValue 2 -> SimpleDatumReferenceModifierMember 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepDimTol_DatumReferenceModifier::DatumReferenceModifierWithValue ******/
 		/****** md5 signature: fd1ece65a7468fcf126d94d121105a45 ******/
@@ -968,20 +951,20 @@ Empty constructor.
 		 StepDimTol_DatumSystem();
 
 		/****** StepDimTol_DatumSystem::Constituents ******/
-		/****** md5 signature: 603c6d3f036e8dbf744632e60ffbbe95 ******/
+		/****** md5 signature: 5b595043aed02c334b4522da52cbd86b ******/
 		%feature("compactdefaultargs") Constituents;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>>
 
 Description
 -----------
 Returns field Constituents.
 ") Constituents;
-		opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> Constituents();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>> Constituents();
 
 		/****** StepDimTol_DatumSystem::ConstituentsValue ******/
-		/****** md5 signature: 98a90152edbe4f2ec67d87304e6bf0da ******/
+		/****** md5 signature: 46f138174678494f8a053a074eda16de ******/
 		%feature("compactdefaultargs") ConstituentsValue;
 		%feature("autodoc", "
 Parameters
@@ -996,10 +979,10 @@ Description
 -----------
 Returns Constituents with the given number.
 ") ConstituentsValue;
-		opencascade::handle<StepDimTol_DatumReferenceCompartment> ConstituentsValue(const Standard_Integer num);
+		opencascade::handle<StepDimTol_DatumReferenceCompartment> ConstituentsValue(const int num);
 
 		/****** StepDimTol_DatumSystem::ConstituentsValue ******/
-		/****** md5 signature: a8ca9b5b4f738cfe48f14dcd39df8ee6 ******/
+		/****** md5 signature: 286d338606e611238b662df93070031b ******/
 		%feature("compactdefaultargs") ConstituentsValue;
 		%feature("autodoc", "
 Parameters
@@ -1015,10 +998,10 @@ Description
 -----------
 Sets Constituents with given number.
 ") ConstituentsValue;
-		void ConstituentsValue(const Standard_Integer num, const opencascade::handle<StepDimTol_DatumReferenceCompartment> & theItem);
+		void ConstituentsValue(const int num, const opencascade::handle<StepDimTol_DatumReferenceCompartment> & theItem);
 
 		/****** StepDimTol_DatumSystem::Init ******/
-		/****** md5 signature: 85fbd700167ff957979bb3c12656af2d ******/
+		/****** md5 signature: 063d0b35bb2765143c62023aafcd7bfc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1027,7 +1010,7 @@ theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 theOfShape: StepRepr_ProductDefinitionShape
 theProductDefinitional: StepData_Logical
-theConstituents: StepDimTol_HArray1OfDatumReferenceCompartment
+theConstituents: NCollection_HArray1<
 
 Return
 -------
@@ -1037,10 +1020,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> & theConstituents);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment> > > & theConstituents);
 
 		/****** StepDimTol_DatumSystem::NbConstituents ******/
-		/****** md5 signature: 7e0a32a473debb309b4368936c470615 ******/
+		/****** md5 signature: ba19496334dfd294da4fc7ae06f7376d ******/
 		%feature("compactdefaultargs") NbConstituents;
 		%feature("autodoc", "Return
 -------
@@ -1050,15 +1033,15 @@ Description
 -----------
 Returns number of Constituents.
 ") NbConstituents;
-		Standard_Integer NbConstituents();
+		int NbConstituents();
 
 		/****** StepDimTol_DatumSystem::SetConstituents ******/
-		/****** md5 signature: 3a6bb4e5df9bdc44c5a4a22a25487d80 ******/
+		/****** md5 signature: 0d1277891f994340058ea5cfc410a1a0 ******/
 		%feature("compactdefaultargs") SetConstituents;
 		%feature("autodoc", "
 Parameters
 ----------
-theConstituents: StepDimTol_HArray1OfDatumReferenceCompartment
+theConstituents: NCollection_HArray1<
 
 Return
 -------
@@ -1068,12 +1051,10 @@ Description
 -----------
 Set field Constituents.
 ") SetConstituents;
-		void SetConstituents(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> & theConstituents);
+		void SetConstituents(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReferenceCompartment> > > & theConstituents);
 
 };
 
-
-%make_alias(StepDimTol_DatumSystem)
 
 %extend StepDimTol_DatumSystem {
 	%pythoncode {
@@ -1100,7 +1081,7 @@ Returns a DatumSystemOrReference select type.
 		 StepDimTol_DatumSystemOrReference();
 
 		/****** StepDimTol_DatumSystemOrReference::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1115,7 +1096,7 @@ Description
 -----------
 Recognizes a DatumSystemOrReference Kind Entity that is: 1 -> DatumSystem 2 -> DatumReference 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepDimTol_DatumSystemOrReference::DatumReference ******/
 		/****** md5 signature: 1c43b6d592b7ea6a628c66c6a0b6d7af ******/
@@ -1226,8 +1207,6 @@ Returns field TargetId.
 };
 
 
-%make_alias(StepDimTol_DatumTarget)
-
 %extend StepDimTol_DatumTarget {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1266,7 +1245,7 @@ Returns field Base.
 		StepDimTol_DatumOrCommonDatum Base();
 
 		/****** StepDimTol_GeneralDatumReference::HasModifiers ******/
-		/****** md5 signature: 6b878e7f71c1776a334d6641401b1705 ******/
+		/****** md5 signature: 657bf6206c1c35e1381da3956bafcdaf ******/
 		%feature("compactdefaultargs") HasModifiers;
 		%feature("autodoc", "Return
 -------
@@ -1276,10 +1255,10 @@ Description
 -----------
 Indicates is field Modifiers exist.
 ") HasModifiers;
-		Standard_Boolean HasModifiers();
+		bool HasModifiers();
 
 		/****** StepDimTol_GeneralDatumReference::Init ******/
-		/****** md5 signature: a83f1b028fde8bf4e158b9044d147fcb ******/
+		/****** md5 signature: 2a7355d6e4a4bbed02eefce94a56cfa7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1290,7 +1269,7 @@ theOfShape: StepRepr_ProductDefinitionShape
 theProductDefinitional: StepData_Logical
 theBase: StepDimTol_DatumOrCommonDatum
 theHasModifiers: bool
-theModifiers: StepDimTol_HArray1OfDatumReferenceModifier
+theModifiers: NCollection_HArray1<StepDimTol_DatumReferenceModifier
 
 Return
 -------
@@ -1300,23 +1279,23 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const StepDimTol_DatumOrCommonDatum & theBase, const Standard_Boolean theHasModifiers, const opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> & theModifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const StepDimTol_DatumOrCommonDatum & theBase, const bool theHasModifiers, const opencascade::handle<NCollection_HArray1<StepDimTol_DatumReferenceModifier> > & theModifiers);
 
 		/****** StepDimTol_GeneralDatumReference::Modifiers ******/
-		/****** md5 signature: 0a92725a19badf2c8bdb144ef87d54cb ******/
+		/****** md5 signature: d8731482e8acadea21248cda92760c60 ******/
 		%feature("compactdefaultargs") Modifiers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>
+opencascade::handle<NCollection_HArray1<StepDimTol_DatumReferenceModifier>>
 
 Description
 -----------
 Returns field Modifiers.
 ") Modifiers;
-		opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> Modifiers();
+		opencascade::handle<NCollection_HArray1<StepDimTol_DatumReferenceModifier>> Modifiers();
 
 		/****** StepDimTol_GeneralDatumReference::ModifiersValue ******/
-		/****** md5 signature: be75d7d5af47a0dd03d46d1472603bd7 ******/
+		/****** md5 signature: 3ae112bcccbba1918fd8eb268a6af543 ******/
 		%feature("compactdefaultargs") ModifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -1331,10 +1310,10 @@ Description
 -----------
 Returns Modifiers with the given number.
 ") ModifiersValue;
-		StepDimTol_DatumReferenceModifier ModifiersValue(const Standard_Integer theNum);
+		StepDimTol_DatumReferenceModifier ModifiersValue(const int theNum);
 
 		/****** StepDimTol_GeneralDatumReference::ModifiersValue ******/
-		/****** md5 signature: 343049fab7d440fa757e02b776469762 ******/
+		/****** md5 signature: 4413aebff39cb5bc7b2ee14b00b7e1bf ******/
 		%feature("compactdefaultargs") ModifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -1350,10 +1329,10 @@ Description
 -----------
 Sets Modifiers with given number.
 ") ModifiersValue;
-		void ModifiersValue(const Standard_Integer theNum, const StepDimTol_DatumReferenceModifier & theItem);
+		void ModifiersValue(const int theNum, const StepDimTol_DatumReferenceModifier & theItem);
 
 		/****** StepDimTol_GeneralDatumReference::NbModifiers ******/
-		/****** md5 signature: 1cbfb9180169154c165f1c4fedd82ad9 ******/
+		/****** md5 signature: cea3b1812dfc55a5718273529d695609 ******/
 		%feature("compactdefaultargs") NbModifiers;
 		%feature("autodoc", "Return
 -------
@@ -1363,7 +1342,7 @@ Description
 -----------
 Returns number of Modifiers.
 ") NbModifiers;
-		Standard_Integer NbModifiers();
+		int NbModifiers();
 
 		/****** StepDimTol_GeneralDatumReference::SetBase ******/
 		/****** md5 signature: dac13489b0dfceabb8613c41ae9fc7bd ******/
@@ -1384,12 +1363,12 @@ Set field Base.
 		void SetBase(const StepDimTol_DatumOrCommonDatum & theBase);
 
 		/****** StepDimTol_GeneralDatumReference::SetModifiers ******/
-		/****** md5 signature: 36dced0f8695541a3658d1bee4f32f19 ******/
+		/****** md5 signature: 759515d78242837833ed7090c6699983 ******/
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "
 Parameters
 ----------
-theModifiers: StepDimTol_HArray1OfDatumReferenceModifier
+theModifiers: NCollection_HArray1<StepDimTol_DatumReferenceModifier
 
 Return
 -------
@@ -1399,12 +1378,10 @@ Description
 -----------
 Set field Modifiers.
 ") SetModifiers;
-		void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> & theModifiers);
+		void SetModifiers(const opencascade::handle<NCollection_HArray1<StepDimTol_DatumReferenceModifier> > & theModifiers);
 
 };
 
-
-%make_alias(StepDimTol_GeneralDatumReference)
 
 %extend StepDimTol_GeneralDatumReference {
 	%pythoncode {
@@ -1444,14 +1421,14 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepDimTol_GeometricTolerance::Init ******/
-		/****** md5 signature: 2d504fbe80196e1732625187e4aa4800 ******/
+		/****** md5 signature: 0fb0bd56d0305388cb2e65eb1ed6f130 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 
 Return
@@ -1462,17 +1439,17 @@ Description
 -----------
 Initialize all fields (own and inherited) AP214.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect);
 
 		/****** StepDimTol_GeometricTolerance::Init ******/
-		/****** md5 signature: 3f7401e5777af8d4a334d6d5ba9f25a6 ******/
+		/****** md5 signature: 735382ec9857c44f6f4988925973fedd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 
 Return
@@ -1483,20 +1460,20 @@ Description
 -----------
 Initialize all fields (own and inherited) AP242.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect);
 
 		/****** StepDimTol_GeometricTolerance::Magnitude ******/
-		/****** md5 signature: 85d6c408b9b2bcb184217172ef454b05 ******/
+		/****** md5 signature: 1428209055a3451b6ac22533bd7a723c ******/
 		%feature("compactdefaultargs") Magnitude;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_MeasureWithUnit>
+opencascade::handle<Standard_Transient>
 
 Description
 -----------
 Returns field Magnitude.
 ") Magnitude;
-		opencascade::handle<StepBasic_MeasureWithUnit> Magnitude();
+		opencascade::handle<Standard_Transient> Magnitude();
 
 		/****** StepDimTol_GeometricTolerance::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -1530,12 +1507,12 @@ Set field Description.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****** StepDimTol_GeometricTolerance::SetMagnitude ******/
-		/****** md5 signature: 3c0fefc2c55c073474706761e78f5326 ******/
+		/****** md5 signature: ae0cd21c875994cc900edc671d9c80cc ******/
 		%feature("compactdefaultargs") SetMagnitude;
 		%feature("autodoc", "
 Parameters
 ----------
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 
 Return
 -------
@@ -1545,7 +1522,7 @@ Description
 -----------
 Set field Magnitude.
 ") SetMagnitude;
-		void SetMagnitude(const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude);
+		void SetMagnitude(const opencascade::handle<Standard_Transient> & theMagnitude);
 
 		/****** StepDimTol_GeometricTolerance::SetName ******/
 		/****** md5 signature: a74c500474873878f514b4e36e03588d ******/
@@ -1818,7 +1795,7 @@ Returns a GeometricToleranceTarget select type.
 		 StepDimTol_GeometricToleranceTarget();
 
 		/****** StepDimTol_GeometricToleranceTarget::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1833,7 +1810,7 @@ Description
 -----------
 Recognizes a GeometricToleranceTarget Kind Entity that is: 1 -> DimensionalLocation 2 -> DimensionalSize 3 -> ProductDefinitionShape 4 -> ShapeAspect 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepDimTol_GeometricToleranceTarget::DimensionalLocation ******/
 		/****** md5 signature: 9f4321c54d42036b4fc910a64a234600 ******/
@@ -1993,7 +1970,7 @@ Empty constructor.
 		 StepDimTol_ShapeToleranceSelect();
 
 		/****** StepDimTol_ShapeToleranceSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2008,7 +1985,7 @@ Description
 -----------
 Recognizes a kind of ShapeToleranceSelect select type 1 -> GeometricTolerance from StepDimTol 2 -> PlusMinusTolerance from StepShape 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepDimTol_ShapeToleranceSelect::GeometricTolerance ******/
 		/****** md5 signature: e590dafae3b1364da15d0f21b2cf4d32 ******/
@@ -2064,20 +2041,20 @@ No available documentation.
 		 StepDimTol_SimpleDatumReferenceModifierMember();
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::EnumText ******/
-		/****** md5 signature: a63e2e811ad86b44e1eb67e1ce00ea65 ******/
+		/****** md5 signature: 87fbaffd80c8fa4d76c26544ce1197f7 ******/
 		%feature("compactdefaultargs") EnumText;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") EnumText;
-		virtual Standard_CString EnumText();
+		const char * EnumText();
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::HasName ******/
-		/****** md5 signature: 454c871a85ff9e9d126353d7d8ebe205 ******/
+		/****** md5 signature: bd4b315f6f18a622c3bb84e9a6a133ce ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -2087,10 +2064,10 @@ Description
 -----------
 No available documentation.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::Kind ******/
-		/****** md5 signature: 68423d7a619b16473db8e5cece0b7d32 ******/
+		/****** md5 signature: 42ae9b06920f935350eb38434723dded ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "Return
 -------
@@ -2100,29 +2077,29 @@ Description
 -----------
 No available documentation.
 ") Kind;
-		Standard_Integer Kind();
+		int Kind();
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::Name ******/
-		/****** md5 signature: 06f88ef4dbb86ad142e1fa4f6645d0a3 ******/
+		/****** md5 signature: 19718bc4bb388d5a1a916f8e4ff42243 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::SetEnumText ******/
-		/****** md5 signature: b2fa2c708967006363f06f147171c7a7 ******/
+		/****** md5 signature: 0e8cc72552245d37177c56972370085a ******/
 		%feature("compactdefaultargs") SetEnumText;
 		%feature("autodoc", "
 Parameters
 ----------
 theValue: int
-theText: str
+theText: char *
 
 Return
 -------
@@ -2132,15 +2109,15 @@ Description
 -----------
 No available documentation.
 ") SetEnumText;
-		virtual void SetEnumText(const Standard_Integer theValue, Standard_CString theText);
+		void SetEnumText(const int theValue, const char * const theText);
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::SetName ******/
-		/****** md5 signature: c0fb4b116d47426ff8c83f0fba90c9d0 ******/
+		/****** md5 signature: 6e2722badfd64d55b14c15921c94cda5 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-Standard_CString: 
+const: char *
 
 Return
 -------
@@ -2150,7 +2127,7 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual Standard_Boolean SetName(const Standard_CString);
+		bool SetName(const char * const);
 
 		/****** StepDimTol_SimpleDatumReferenceModifierMember::SetValue ******/
 		/****** md5 signature: 7d981ce38fda014c9603da361f0e52dc ******/
@@ -2186,8 +2163,6 @@ No available documentation.
 };
 
 
-%make_alias(StepDimTol_SimpleDatumReferenceModifierMember)
-
 %extend StepDimTol_SimpleDatumReferenceModifierMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2213,20 +2188,20 @@ Empty constructor.
 		 StepDimTol_ToleranceZone();
 
 		/****** StepDimTol_ToleranceZone::DefiningTolerance ******/
-		/****** md5 signature: 99dc7aa56abafcfb1a06c4349d9f67ac ******/
+		/****** md5 signature: e4f4cf1e01214d5ee5823011e9dcb3c7 ******/
 		%feature("compactdefaultargs") DefiningTolerance;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget>
+opencascade::handle<NCollection_HArray1<StepDimTol_ToleranceZoneTarget>>
 
 Description
 -----------
 Returns field DefiningTolerance.
 ") DefiningTolerance;
-		opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> DefiningTolerance();
+		opencascade::handle<NCollection_HArray1<StepDimTol_ToleranceZoneTarget>> DefiningTolerance();
 
 		/****** StepDimTol_ToleranceZone::DefiningToleranceValue ******/
-		/****** md5 signature: 380d01d85ee8b08008192f2c3fd6fdc8 ******/
+		/****** md5 signature: e780ed7f9823351f686fdab1974a6c26 ******/
 		%feature("compactdefaultargs") DefiningToleranceValue;
 		%feature("autodoc", "
 Parameters
@@ -2241,7 +2216,7 @@ Description
 -----------
 Returns Defining Tolerance with the given number.
 ") DefiningToleranceValue;
-		StepDimTol_ToleranceZoneTarget DefiningToleranceValue(const Standard_Integer theNum);
+		StepDimTol_ToleranceZoneTarget DefiningToleranceValue(const int theNum);
 
 		/****** StepDimTol_ToleranceZone::Form ******/
 		/****** md5 signature: 2d742834282a6991d68afa5b50c1be8f ******/
@@ -2257,7 +2232,7 @@ Returns field Form.
 		opencascade::handle<StepDimTol_ToleranceZoneForm> Form();
 
 		/****** StepDimTol_ToleranceZone::Init ******/
-		/****** md5 signature: c1e50354d7e87eb51fe7bee751ebe1a2 ******/
+		/****** md5 signature: b7dbac285332a20130a140780b9d3b5a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2266,7 +2241,7 @@ theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 theOfShape: StepRepr_ProductDefinitionShape
 theProductDefinitional: StepData_Logical
-theDefiningTolerance: StepDimTol_HArray1OfToleranceZoneTarget
+theDefiningTolerance: NCollection_HArray1<StepDimTol_ToleranceZoneTarget
 theForm: StepDimTol_ToleranceZoneForm
 
 Return
@@ -2277,10 +2252,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> & theDefiningTolerance, const opencascade::handle<StepDimTol_ToleranceZoneForm> & theForm);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepRepr_ProductDefinitionShape> & theOfShape, const StepData_Logical theProductDefinitional, const opencascade::handle<NCollection_HArray1<StepDimTol_ToleranceZoneTarget> > & theDefiningTolerance, const opencascade::handle<StepDimTol_ToleranceZoneForm> & theForm);
 
 		/****** StepDimTol_ToleranceZone::NbDefiningTolerances ******/
-		/****** md5 signature: d831e0468095eb4089a6406c7db5fbc7 ******/
+		/****** md5 signature: bafe16c42a21a2da0e90c8599688da71 ******/
 		%feature("compactdefaultargs") NbDefiningTolerances;
 		%feature("autodoc", "Return
 -------
@@ -2290,15 +2265,15 @@ Description
 -----------
 Returns number of Defining Tolerances.
 ") NbDefiningTolerances;
-		Standard_Integer NbDefiningTolerances();
+		int NbDefiningTolerances();
 
 		/****** StepDimTol_ToleranceZone::SetDefiningTolerance ******/
-		/****** md5 signature: bd490bccf679cccd7f668817adff5e51 ******/
+		/****** md5 signature: ff8a9b8c3407e723d82ca4e4c06a01a9 ******/
 		%feature("compactdefaultargs") SetDefiningTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theDefiningTolerance: StepDimTol_HArray1OfToleranceZoneTarget
+theDefiningTolerance: NCollection_HArray1<StepDimTol_ToleranceZoneTarget
 
 Return
 -------
@@ -2308,10 +2283,10 @@ Description
 -----------
 Set field DefiningTolerance.
 ") SetDefiningTolerance;
-		void SetDefiningTolerance(const opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> & theDefiningTolerance);
+		void SetDefiningTolerance(const opencascade::handle<NCollection_HArray1<StepDimTol_ToleranceZoneTarget> > & theDefiningTolerance);
 
 		/****** StepDimTol_ToleranceZone::SetDefiningToleranceValue ******/
-		/****** md5 signature: 0185fe37cda17da176310361d026e5cc ******/
+		/****** md5 signature: 1bb6945760eb5d25a1ddaebb3d1c51ad ******/
 		%feature("compactdefaultargs") SetDefiningToleranceValue;
 		%feature("autodoc", "
 Parameters
@@ -2327,7 +2302,7 @@ Description
 -----------
 Sets Defining Tolerance with given number.
 ") SetDefiningToleranceValue;
-		void SetDefiningToleranceValue(const Standard_Integer theNum, const StepDimTol_ToleranceZoneTarget & theItem);
+		void SetDefiningToleranceValue(const int theNum, const StepDimTol_ToleranceZoneTarget & theItem);
 
 		/****** StepDimTol_ToleranceZone::SetForm ******/
 		/****** md5 signature: f18d904127cff65de4ae70fb17e8039d ******/
@@ -2349,8 +2324,6 @@ Set field Form.
 
 };
 
-
-%make_alias(StepDimTol_ToleranceZone)
 
 %extend StepDimTol_ToleranceZone {
 	%pythoncode {
@@ -2377,20 +2350,20 @@ Empty constructor.
 		 StepDimTol_ToleranceZoneDefinition();
 
 		/****** StepDimTol_ToleranceZoneDefinition::Boundaries ******/
-		/****** md5 signature: 645fc5a402ade427f3a3b37500686209 ******/
+		/****** md5 signature: c48d2c6d69af8fb3d90831202583013b ******/
 		%feature("compactdefaultargs") Boundaries;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepRepr_HArray1OfShapeAspect>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>>
 
 Description
 -----------
 Returns field Boundaries.
 ") Boundaries;
-		opencascade::handle<StepRepr_HArray1OfShapeAspect> Boundaries();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect>>> Boundaries();
 
 		/****** StepDimTol_ToleranceZoneDefinition::BoundariesValue ******/
-		/****** md5 signature: e9c4a4ba31767a03e0505b3021b58041 ******/
+		/****** md5 signature: 86bd0888c033cb7a31aed7766aef18b6 ******/
 		%feature("compactdefaultargs") BoundariesValue;
 		%feature("autodoc", "
 Parameters
@@ -2405,16 +2378,16 @@ Description
 -----------
 Returns Boundaries with the given number.
 ") BoundariesValue;
-		opencascade::handle<StepRepr_ShapeAspect> BoundariesValue(const Standard_Integer theNum);
+		opencascade::handle<StepRepr_ShapeAspect> BoundariesValue(const int theNum);
 
 		/****** StepDimTol_ToleranceZoneDefinition::Init ******/
-		/****** md5 signature: ebb8228f7f868938b39df7d5c3519731 ******/
+		/****** md5 signature: 9016a0b3dfc6651d7bc9da522e364119 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theZone: StepDimTol_ToleranceZone
-theBoundaries: StepRepr_HArray1OfShapeAspect
+theBoundaries: NCollection_HArray1<
 
 Return
 -------
@@ -2424,10 +2397,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepDimTol_ToleranceZone> & theZone, const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries);
+		void Init(const opencascade::handle<StepDimTol_ToleranceZone> & theZone, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect> > > & theBoundaries);
 
 		/****** StepDimTol_ToleranceZoneDefinition::NbBoundaries ******/
-		/****** md5 signature: 8f123fd883cd1f78c23e8784f3e27460 ******/
+		/****** md5 signature: cbba53a00d8055fdcdc07d6c598df2b1 ******/
 		%feature("compactdefaultargs") NbBoundaries;
 		%feature("autodoc", "Return
 -------
@@ -2437,15 +2410,15 @@ Description
 -----------
 Returns number of Boundaries.
 ") NbBoundaries;
-		Standard_Integer NbBoundaries();
+		int NbBoundaries();
 
 		/****** StepDimTol_ToleranceZoneDefinition::SetBoundaries ******/
-		/****** md5 signature: a01aa98a902dfd4978214ffb087b4a46 ******/
+		/****** md5 signature: 8a33fbd92aac3a5644f8981ca4da88a8 ******/
 		%feature("compactdefaultargs") SetBoundaries;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoundaries: StepRepr_HArray1OfShapeAspect
+theBoundaries: NCollection_HArray1<
 
 Return
 -------
@@ -2455,10 +2428,10 @@ Description
 -----------
 Set field Boundaries.
 ") SetBoundaries;
-		void SetBoundaries(const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries);
+		void SetBoundaries(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect> > > & theBoundaries);
 
 		/****** StepDimTol_ToleranceZoneDefinition::SetBoundariesValue ******/
-		/****** md5 signature: de4217b221ddc7bd3a68fc8059fb6054 ******/
+		/****** md5 signature: 88782db89b9871931a222a9b0a64da78 ******/
 		%feature("compactdefaultargs") SetBoundariesValue;
 		%feature("autodoc", "
 Parameters
@@ -2474,7 +2447,7 @@ Description
 -----------
 Sets Boundaries with given number.
 ") SetBoundariesValue;
-		void SetBoundariesValue(const Standard_Integer theNum, const opencascade::handle<StepRepr_ShapeAspect> & theItem);
+		void SetBoundariesValue(const int theNum, const opencascade::handle<StepRepr_ShapeAspect> & theItem);
 
 		/****** StepDimTol_ToleranceZoneDefinition::SetZone ******/
 		/****** md5 signature: d7fc3d46d963bc3a2008101ad05c4220 ******/
@@ -2615,7 +2588,7 @@ Returns a ToleranceZoneTarget select type.
 		 StepDimTol_ToleranceZoneTarget();
 
 		/****** StepDimTol_ToleranceZoneTarget::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2630,7 +2603,7 @@ Description
 -----------
 Recognizes a ToleranceZoneTarget Kind Entity that is: 1 -> DimensionalLocation 2 -> DimensionalSize 3 -> GeometricTolerance 4 -> GeneralDatumReference 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepDimTol_ToleranceZoneTarget::DimensionalLocation ******/
 		/****** md5 signature: 9f4321c54d42036b4fc910a64a234600 ******/
@@ -2743,8 +2716,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepDimTol_DatumReferenceCompartment)
-
 %extend StepDimTol_DatumReferenceCompartment {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2771,8 +2742,6 @@ Empty constructor.
 
 };
 
-
-%make_alias(StepDimTol_DatumReferenceElement)
 
 %extend StepDimTol_DatumReferenceElement {
 	%pythoncode {
@@ -2854,14 +2823,14 @@ No available documentation.
 		StepDimTol_GeometricToleranceType GetToleranceType();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRef::Init ******/
-		/****** md5 signature: db15f1b97fa9bf080a3d371bc46eb6da ******/
+		/****** md5 signature: 1f18a4c93575ee914afeb71075cbeace ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 theType: StepDimTol_GeometricToleranceType
@@ -2874,17 +2843,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRef::Init ******/
-		/****** md5 signature: 97ea13e2b3b31475098827e908fc43bb ******/
+		/****** md5 signature: 7fbe4bfc0474b2e6da27865c28956921 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 theType: StepDimTol_GeometricToleranceType
@@ -2897,7 +2866,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRef::SetGeometricToleranceType ******/
 		/****** md5 signature: 8350d9d6da4a5bff83d70cee5cbc7cfe ******/
@@ -3004,14 +2973,14 @@ No available documentation.
 		StepDimTol_GeometricToleranceType GetToleranceType();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::Init ******/
-		/****** md5 signature: a8a4f720cd04b4304c7e74a7be72489e ******/
+		/****** md5 signature: 3e557c6e3749eebfc59d5cc79404bcd9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 theGTWM: StepDimTol_GeometricToleranceWithModifiers
@@ -3025,17 +2994,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::Init ******/
-		/****** md5 signature: 5212b0c2c6d5993acd962eb2833ecd78 ******/
+		/****** md5 signature: a7069f51670c7e61335d64b5b7fc28a1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 aGTWM: StepDimTol_GeometricToleranceWithModifiers
@@ -3049,7 +3018,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMod::SetGeometricToleranceType ******/
 		/****** md5 signature: 8350d9d6da4a5bff83d70cee5cbc7cfe ******/
@@ -3174,14 +3143,14 @@ No available documentation.
 		opencascade::handle<StepDimTol_PositionTolerance> GetPositionTolerance();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::Init ******/
-		/****** md5 signature: 74af2cd7fb1d7b947b1d46f0aa41d77c ******/
+		/****** md5 signature: c071478d3d7eb052603e769c2b34bb9f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepRepr_ShapeAspect
 aGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 aMGT: StepDimTol_ModifiedGeometricTolerance
@@ -3194,17 +3163,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & aMGT);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & aMGT);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::Init ******/
-		/****** md5 signature: 32e8a837682227f3de9b0345bbde4776 ******/
+		/****** md5 signature: 42f3673bf76962d1651ff6be5919be27 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 aMGT: StepDimTol_ModifiedGeometricTolerance
@@ -3217,7 +3186,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & aMGT);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_ModifiedGeometricTolerance> & aMGT);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndModGeoTolAndPosTol::SetGeometricToleranceWithDatumReference ******/
 		/****** md5 signature: 4e61966346e539e8717f5c190104d2f5 ******/
@@ -3329,14 +3298,14 @@ No available documentation.
 		StepDimTol_GeometricToleranceType GetToleranceType();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthMod::Init ******/
-		/****** md5 signature: 50bb06f99fd5252697550077f2192a11 ******/
+		/****** md5 signature: 0a634e6ef0d2053ee3ccd239c463a452 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theGTWM: StepDimTol_GeometricToleranceWithModifiers
 theType: StepDimTol_GeometricToleranceType
@@ -3349,17 +3318,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthMod::Init ******/
-		/****** md5 signature: 691c64eb9897fe4899f2b6b423e2f850 ******/
+		/****** md5 signature: 3306d36f9d1039bb8e1112748020bdbc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWM: StepDimTol_GeometricToleranceWithModifiers
 theType: StepDimTol_GeometricToleranceType
@@ -3372,7 +3341,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthMod::SetGeometricToleranceType ******/
 		/****** md5 signature: 8350d9d6da4a5bff83d70cee5cbc7cfe ******/
@@ -3440,42 +3409,42 @@ Empty constructor.
 		 StepDimTol_GeometricToleranceWithDatumReference();
 
 		/****** StepDimTol_GeometricToleranceWithDatumReference::DatumSystem ******/
-		/****** md5 signature: e0be067ac08274412f07c8cd350d74dd ******/
+		/****** md5 signature: 1bb0e9ce29402b07f194c86688d00fa9 ******/
 		%feature("compactdefaultargs") DatumSystem;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumReference>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>>
 
 Description
 -----------
 Returns field DatumSystem AP214.
 ") DatumSystem;
-		opencascade::handle<StepDimTol_HArray1OfDatumReference> DatumSystem();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference>>> DatumSystem();
 
 		/****** StepDimTol_GeometricToleranceWithDatumReference::DatumSystemAP242 ******/
-		/****** md5 signature: bd26cad3bcf09630ce7db2ddb425376f ******/
+		/****** md5 signature: 7ed86ae8afc4a6c55b1c49f3917d761a ******/
 		%feature("compactdefaultargs") DatumSystemAP242;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference>
+opencascade::handle<NCollection_HArray1<StepDimTol_DatumSystemOrReference>>
 
 Description
 -----------
 Returns field DatumSystem AP242.
 ") DatumSystemAP242;
-		opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference> DatumSystemAP242();
+		opencascade::handle<NCollection_HArray1<StepDimTol_DatumSystemOrReference>> DatumSystemAP242();
 
 		/****** StepDimTol_GeometricToleranceWithDatumReference::Init ******/
-		/****** md5 signature: a1dcbe0dd01123c2578f421b267f0a3e ******/
+		/****** md5 signature: 433a1d14c1cae4318a9ac989d53901e6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theGeometricTolerance_Name: TCollection_HAsciiString
 theGeometricTolerance_Description: TCollection_HAsciiString
-theGeometricTolerance_Magnitude: StepBasic_MeasureWithUnit
+theGeometricTolerance_Magnitude: Standard_Transient
 theGeometricTolerance_TolerancedShapeAspect: StepRepr_ShapeAspect
-theDatumSystem: StepDimTol_HArray1OfDatumReference
+theDatumSystem: NCollection_HArray1<
 
 Return
 -------
@@ -3485,19 +3454,19 @@ Description
 -----------
 Initialize all fields (own and inherited) AP214.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const opencascade::handle<StepRepr_ShapeAspect> & theGeometricTolerance_TolerancedShapeAspect, const opencascade::handle<StepDimTol_HArray1OfDatumReference> & theDatumSystem);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<Standard_Transient> & theGeometricTolerance_Magnitude, const opencascade::handle<StepRepr_ShapeAspect> & theGeometricTolerance_TolerancedShapeAspect, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference> > > & theDatumSystem);
 
 		/****** StepDimTol_GeometricToleranceWithDatumReference::Init ******/
-		/****** md5 signature: 6e2591c175474f098e1b7d7cfb19b97e ******/
+		/****** md5 signature: 402ef3b1d0f67ce8257fb67b51ec5ee4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theGeometricTolerance_Name: TCollection_HAsciiString
 theGeometricTolerance_Description: TCollection_HAsciiString
-theGeometricTolerance_Magnitude: StepBasic_MeasureWithUnit
+theGeometricTolerance_Magnitude: Standard_Transient
 theGeometricTolerance_TolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
-theDatumSystem: StepDimTol_HArray1OfDatumSystemOrReference
+theDatumSystem: NCollection_HArray1<StepDimTol_DatumSystemOrReference
 
 Return
 -------
@@ -3507,15 +3476,15 @@ Description
 -----------
 Initialize all fields (own and inherited) AP242.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const StepDimTol_GeometricToleranceTarget & theGeometricTolerance_TolerancedShapeAspect, const opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference> & theDatumSystem);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<Standard_Transient> & theGeometricTolerance_Magnitude, const StepDimTol_GeometricToleranceTarget & theGeometricTolerance_TolerancedShapeAspect, const opencascade::handle<NCollection_HArray1<StepDimTol_DatumSystemOrReference> > & theDatumSystem);
 
 		/****** StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem ******/
-		/****** md5 signature: 940fbccc8db16e777cc714b30038b9df ******/
+		/****** md5 signature: 62e80fdead4c9bca2b042459ec6390b5 ******/
 		%feature("compactdefaultargs") SetDatumSystem;
 		%feature("autodoc", "
 Parameters
 ----------
-theDatumSystem: StepDimTol_HArray1OfDatumReference
+theDatumSystem: NCollection_HArray1<
 
 Return
 -------
@@ -3525,15 +3494,15 @@ Description
 -----------
 Set field DatumSystem AP214.
 ") SetDatumSystem;
-		void SetDatumSystem(const opencascade::handle<StepDimTol_HArray1OfDatumReference> & theDatumSystem);
+		void SetDatumSystem(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepDimTol_DatumReference> > > & theDatumSystem);
 
 		/****** StepDimTol_GeometricToleranceWithDatumReference::SetDatumSystem ******/
-		/****** md5 signature: beae3592249a9847119978bdc4ef76a7 ******/
+		/****** md5 signature: bc5a074cf825e1a795a7558f76c63695 ******/
 		%feature("compactdefaultargs") SetDatumSystem;
 		%feature("autodoc", "
 Parameters
 ----------
-theDatumSystem: StepDimTol_HArray1OfDatumSystemOrReference
+theDatumSystem: NCollection_HArray1<StepDimTol_DatumSystemOrReference
 
 Return
 -------
@@ -3543,7 +3512,7 @@ Description
 -----------
 Set field DatumSystem AP242.
 ") SetDatumSystem;
-		void SetDatumSystem(const opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference> & theDatumSystem);
+		void SetDatumSystem(const opencascade::handle<NCollection_HArray1<StepDimTol_DatumSystemOrReference> > & theDatumSystem);
 
 };
 
@@ -3575,14 +3544,14 @@ Empty constructor.
 		 StepDimTol_GeometricToleranceWithDefinedUnit();
 
 		/****** StepDimTol_GeometricToleranceWithDefinedUnit::Init ******/
-		/****** md5 signature: aca4114abd1243d273f34e6cdc26ed4e ******/
+		/****** md5 signature: e3db23dc9baa73b381b56cfa5edd8e0b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theUnitSize: StepBasic_LengthMeasureWithUnit
 
@@ -3594,17 +3563,17 @@ Description
 -----------
 Initialize all fields (own and inherited) AP214.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
 		/****** StepDimTol_GeometricToleranceWithDefinedUnit::Init ******/
-		/****** md5 signature: c4ca9d47f05af7a2a3032b4bd0a4171e ******/
+		/****** md5 signature: fe1f447edf8c606361982a3d5a64e8d0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 theUnitSize: StepBasic_LengthMeasureWithUnit
 
@@ -3616,7 +3585,7 @@ Description
 -----------
 Initialize all fields (own and inherited) AP242.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
 		/****** StepDimTol_GeometricToleranceWithDefinedUnit::SetUnitSize ******/
 		/****** md5 signature: 17b7e0b60ee3517bcf510aade40b374b ******/
@@ -3679,16 +3648,16 @@ Empty constructor.
 		 StepDimTol_GeometricToleranceWithModifiers();
 
 		/****** StepDimTol_GeometricToleranceWithModifiers::Init ******/
-		/****** md5 signature: 50afbad8d96b2d7cf932277b9fd9cf5a ******/
+		/****** md5 signature: 5555d5d91ff6e30c2510be7473fab6dd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
-theModifiers: StepDimTol_HArray1OfGeometricToleranceModifier
+theModifiers: NCollection_HArray1<StepDimTol_GeometricToleranceModifier
 
 Return
 -------
@@ -3698,10 +3667,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> & theModifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<NCollection_HArray1<StepDimTol_GeometricToleranceModifier> > & theModifiers);
 
 		/****** StepDimTol_GeometricToleranceWithModifiers::ModifierValue ******/
-		/****** md5 signature: a93574564a8584642f006ae4f97e9d7d ******/
+		/****** md5 signature: f4ae4b4138287bcf9d9e8a293d0122ff ******/
 		%feature("compactdefaultargs") ModifierValue;
 		%feature("autodoc", "
 Parameters
@@ -3716,23 +3685,23 @@ Description
 -----------
 Returns modifier with the given number.
 ") ModifierValue;
-		StepDimTol_GeometricToleranceModifier ModifierValue(const Standard_Integer theNum);
+		StepDimTol_GeometricToleranceModifier ModifierValue(const int theNum);
 
 		/****** StepDimTol_GeometricToleranceWithModifiers::Modifiers ******/
-		/****** md5 signature: 6286db818b55f86219dc8ce29564fe4f ******/
+		/****** md5 signature: bab5084b74ec3e9f89548e44354a45fa ******/
 		%feature("compactdefaultargs") Modifiers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier>
+opencascade::handle<NCollection_HArray1<StepDimTol_GeometricToleranceModifier>>
 
 Description
 -----------
 Returns field Modifiers.
 ") Modifiers;
-		opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> Modifiers();
+		opencascade::handle<NCollection_HArray1<StepDimTol_GeometricToleranceModifier>> Modifiers();
 
 		/****** StepDimTol_GeometricToleranceWithModifiers::NbModifiers ******/
-		/****** md5 signature: 1cbfb9180169154c165f1c4fedd82ad9 ******/
+		/****** md5 signature: cea3b1812dfc55a5718273529d695609 ******/
 		%feature("compactdefaultargs") NbModifiers;
 		%feature("autodoc", "Return
 -------
@@ -3742,10 +3711,10 @@ Description
 -----------
 Returns number of modifiers.
 ") NbModifiers;
-		Standard_Integer NbModifiers();
+		int NbModifiers();
 
 		/****** StepDimTol_GeometricToleranceWithModifiers::SetModifierValue ******/
-		/****** md5 signature: 5b9f7d48d3afb5fe52c19e3047094e84 ******/
+		/****** md5 signature: af891aea99eac8c5d29d81c00549ec16 ******/
 		%feature("compactdefaultargs") SetModifierValue;
 		%feature("autodoc", "
 Parameters
@@ -3761,15 +3730,15 @@ Description
 -----------
 Sets modifier with given number.
 ") SetModifierValue;
-		void SetModifierValue(const Standard_Integer theNum, const StepDimTol_GeometricToleranceModifier theItem);
+		void SetModifierValue(const int theNum, const StepDimTol_GeometricToleranceModifier theItem);
 
 		/****** StepDimTol_GeometricToleranceWithModifiers::SetModifiers ******/
-		/****** md5 signature: feee0f5bad7156814085c204d0ebf2fa ******/
+		/****** md5 signature: fe8d45a03399cd094eb60c07c423b713 ******/
 		%feature("compactdefaultargs") SetModifiers;
 		%feature("autodoc", "
 Parameters
 ----------
-theModifiers: StepDimTol_HArray1OfGeometricToleranceModifier
+theModifiers: NCollection_HArray1<StepDimTol_GeometricToleranceModifier
 
 Return
 -------
@@ -3779,7 +3748,7 @@ Description
 -----------
 Set field Modifiers.
 ") SetModifiers;
-		void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> & theModifiers);
+		void SetModifiers(const opencascade::handle<NCollection_HArray1<StepDimTol_GeometricToleranceModifier> > & theModifiers);
 
 };
 
@@ -3840,14 +3809,14 @@ Empty constructor.
 		 StepDimTol_ModifiedGeometricTolerance();
 
 		/****** StepDimTol_ModifiedGeometricTolerance::Init ******/
-		/****** md5 signature: 6306d8ee583620a397ac99996e8ec319 ******/
+		/****** md5 signature: c9066612505e20b93bfe5a9e99b87081 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theGeometricTolerance_Name: TCollection_HAsciiString
 theGeometricTolerance_Description: TCollection_HAsciiString
-theGeometricTolerance_Magnitude: StepBasic_MeasureWithUnit
+theGeometricTolerance_Magnitude: Standard_Transient
 theGeometricTolerance_TolerancedShapeAspect: StepRepr_ShapeAspect
 theModifier: StepDimTol_LimitCondition
 
@@ -3859,17 +3828,17 @@ Description
 -----------
 Initialize all fields (own and inherited) AP214.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const opencascade::handle<StepRepr_ShapeAspect> & theGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition theModifier);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<Standard_Transient> & theGeometricTolerance_Magnitude, const opencascade::handle<StepRepr_ShapeAspect> & theGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition theModifier);
 
 		/****** StepDimTol_ModifiedGeometricTolerance::Init ******/
-		/****** md5 signature: 5371e740b94e8e4d5fc8ae34d78ab189 ******/
+		/****** md5 signature: d87ba2f2c6701c20085a91d67d34dc39 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theGeometricTolerance_Name: TCollection_HAsciiString
 theGeometricTolerance_Description: TCollection_HAsciiString
-theGeometricTolerance_Magnitude: StepBasic_MeasureWithUnit
+theGeometricTolerance_Magnitude: Standard_Transient
 theGeometricTolerance_TolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 theModifier: StepDimTol_LimitCondition
 
@@ -3881,7 +3850,7 @@ Description
 -----------
 Initialize all fields (own and inherited) AP242.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const StepDimTol_GeometricToleranceTarget & theGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition theModifier);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<Standard_Transient> & theGeometricTolerance_Magnitude, const StepDimTol_GeometricToleranceTarget & theGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition theModifier);
 
 		/****** StepDimTol_ModifiedGeometricTolerance::Modifier ******/
 		/****** md5 signature: 20df8477b8adc460f32800e14001f968 ******/
@@ -3975,8 +3944,6 @@ Empty constructor.
 };
 
 
-%make_alias(StepDimTol_PlacedDatumTargetFeature)
-
 %extend StepDimTol_PlacedDatumTargetFeature {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4031,13 +3998,13 @@ Empty constructor.
 		 StepDimTol_ProjectedZoneDefinition();
 
 		/****** StepDimTol_ProjectedZoneDefinition::Init ******/
-		/****** md5 signature: 6d4c289426755543b1179dd9d3ceda86 ******/
+		/****** md5 signature: 6bebecf510e47c40e1f6805d2f8ab8cf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theZone: StepDimTol_ToleranceZone
-theBoundaries: StepRepr_HArray1OfShapeAspect
+theBoundaries: NCollection_HArray1<
 theProjectionEnd: StepRepr_ShapeAspect
 theProjectionLength: StepBasic_LengthMeasureWithUnit
 
@@ -4049,7 +4016,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepDimTol_ToleranceZone> & theZone, const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries, const opencascade::handle<StepRepr_ShapeAspect> & theProjectionEnd, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theProjectionLength);
+		void Init(const opencascade::handle<StepDimTol_ToleranceZone> & theZone, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect> > > & theBoundaries, const opencascade::handle<StepRepr_ShapeAspect> & theProjectionEnd, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theProjectionLength);
 
 		/****** StepDimTol_ProjectedZoneDefinition::ProjectionEnd ******/
 		/****** md5 signature: 282e8d9d1a4edefe16841f9447ff0602 ******/
@@ -4172,13 +4139,13 @@ Empty constructor.
 		 StepDimTol_RunoutZoneDefinition();
 
 		/****** StepDimTol_RunoutZoneDefinition::Init ******/
-		/****** md5 signature: 9215e68a460975364a366957f5f77c03 ******/
+		/****** md5 signature: a6b76c1903373066dd2e257126aaaa4e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theZone: StepDimTol_ToleranceZone
-theBoundaries: StepRepr_HArray1OfShapeAspect
+theBoundaries: NCollection_HArray1<
 theOrientation: StepDimTol_RunoutZoneOrientation
 
 Return
@@ -4189,7 +4156,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepDimTol_ToleranceZone> & theZone, const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries, const opencascade::handle<StepDimTol_RunoutZoneOrientation> & theOrientation);
+		void Init(const opencascade::handle<StepDimTol_ToleranceZone> & theZone, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_ShapeAspect> > > & theBoundaries, const opencascade::handle<StepDimTol_RunoutZoneOrientation> & theOrientation);
 
 		/****** StepDimTol_RunoutZoneDefinition::Orientation ******/
 		/****** md5 signature: c5b25e9bff4cf5738e8902000935f564 ******/
@@ -4323,14 +4290,14 @@ Returns field Displacement.
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> Displacement();
 
 		/****** StepDimTol_UnequallyDisposedGeometricTolerance::Init ******/
-		/****** md5 signature: 20f92bd7a2186d2e9166bb57346d712d ******/
+		/****** md5 signature: 97abdead00f86be1762a13da8668f094 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 theDisplacement: StepBasic_LengthMeasureWithUnit
 
@@ -4342,7 +4309,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theDisplacement);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theDisplacement);
 
 		/****** StepDimTol_UnequallyDisposedGeometricTolerance::SetDisplacement ******/
 		/****** md5 signature: a1fb1b44a4e91e16881749519d1e7127 ******/
@@ -4521,14 +4488,14 @@ No available documentation.
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> GetMaxTolerance();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::Init ******/
-		/****** md5 signature: b7cd711d36fa0c6c1c5adad5faa90dbc ******/
+		/****** md5 signature: 716c1f81c22c9dfba84d1a83a495f830 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 theGTWM: StepDimTol_GeometricToleranceWithModifiers
@@ -4543,17 +4510,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::Init ******/
-		/****** md5 signature: 947955a61b0191095c21aea003638114 ******/
+		/****** md5 signature: e124e7c800a1ef7dd000c2a365f04651 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 aGTWM: StepDimTol_GeometricToleranceWithModifiers
@@ -4568,10 +4535,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndGeoTolWthMaxTol::SetMaxTolerance ******/
-		/****** md5 signature: 68b0455fe65047836523ed4233e314ae ******/
+		/****** md5 signature: 1bc7119d9ffe5ec3d256909fde0d8246 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4586,7 +4553,7 @@ Description
 -----------
 No available documentation.
 ") SetMaxTolerance;
-		void SetMaxTolerance(opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
+		void SetMaxTolerance(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
 
 };
 
@@ -4631,14 +4598,14 @@ No available documentation.
 		opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> GetUnequallyDisposedGeometricTolerance();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::Init ******/
-		/****** md5 signature: fafa8191d22e8911f4e9bb802fbbe294 ******/
+		/****** md5 signature: a0258116fb1438509dc4c003e5830436 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 theType: StepDimTol_GeometricToleranceType
@@ -4652,17 +4619,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const StepDimTol_GeometricToleranceType theType, const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & theUDGT);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & theGTWDR, const StepDimTol_GeometricToleranceType theType, const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & theUDGT);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::Init ******/
-		/****** md5 signature: b4b0b06811663f3488293384663aadbe ******/
+		/****** md5 signature: 71603386ae3cf9f663422fcce694fe45 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWDR: StepDimTol_GeometricToleranceWithDatumReference
 theType: StepDimTol_GeometricToleranceType
@@ -4676,7 +4643,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const StepDimTol_GeometricToleranceType theType, const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & theUDGT);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithDatumReference> & aGTWDR, const StepDimTol_GeometricToleranceType theType, const opencascade::handle<StepDimTol_UnequallyDisposedGeometricTolerance> & theUDGT);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthDatRefAndUneqDisGeoTol::SetUnequallyDisposedGeometricTolerance ******/
 		/****** md5 signature: 00b86acaf28544b98eed16a6d1c1e3e0 ******/
@@ -4739,14 +4706,14 @@ No available documentation.
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> GetMaxTolerance();
 
 		/****** StepDimTol_GeoTolAndGeoTolWthMaxTol::Init ******/
-		/****** md5 signature: 57af504a837853cb45d399427161ba76 ******/
+		/****** md5 signature: 51333075489e436cb71b95f3a8ee3fc3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepRepr_ShapeAspect
 theGTWM: StepDimTol_GeometricToleranceWithModifiers
 theMaxTol: StepBasic_LengthMeasureWithUnit
@@ -4760,17 +4727,17 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & theGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthMaxTol::Init ******/
-		/****** md5 signature: ab9566f4a0d25e2fcca0e142c362d2fb ******/
+		/****** md5 signature: ff92c71835699af95d6b301f3f9a905c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aMagnitude: StepBasic_MeasureWithUnit
+aMagnitude: Standard_Transient
 aTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 aGTWM: StepDimTol_GeometricToleranceWithModifiers
 theMaxTol: StepBasic_LengthMeasureWithUnit
@@ -4784,10 +4751,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<Standard_Transient> & aMagnitude, const StepDimTol_GeometricToleranceTarget & aTolerancedShapeAspect, const opencascade::handle<StepDimTol_GeometricToleranceWithModifiers> & aGTWM, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol, const StepDimTol_GeometricToleranceType theType);
 
 		/****** StepDimTol_GeoTolAndGeoTolWthMaxTol::SetMaxTolerance ******/
-		/****** md5 signature: 68b0455fe65047836523ed4233e314ae ******/
+		/****** md5 signature: 1bc7119d9ffe5ec3d256909fde0d8246 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4802,7 +4769,7 @@ Description
 -----------
 No available documentation.
 ") SetMaxTolerance;
-		void SetMaxTolerance(opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
+		void SetMaxTolerance(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaxTol);
 
 };
 
@@ -4847,7 +4814,7 @@ Returns field AreaType.
 		StepDimTol_AreaUnitType AreaType();
 
 		/****** StepDimTol_GeometricToleranceWithDefinedAreaUnit::HasSecondUnitSize ******/
-		/****** md5 signature: cfb1a0ebc66fdc4fe8bb892ccf734e1c ******/
+		/****** md5 signature: a885dea77674d29c209bd9561ca5af7f ******/
 		%feature("compactdefaultargs") HasSecondUnitSize;
 		%feature("autodoc", "Return
 -------
@@ -4857,17 +4824,17 @@ Description
 -----------
 Indicates if SecondUnitSize field exist.
 ") HasSecondUnitSize;
-		Standard_Boolean HasSecondUnitSize();
+		bool HasSecondUnitSize();
 
 		/****** StepDimTol_GeometricToleranceWithDefinedAreaUnit::Init ******/
-		/****** md5 signature: 1cbb2d4b4060f14485541c03ec4b5bd2 ******/
+		/****** md5 signature: 84447a613f77dbe7bd1dc66899d6e159 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
 theUnitSize: StepBasic_LengthMeasureWithUnit
 theAreaType: StepDimTol_AreaUnitType
@@ -4882,7 +4849,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize, const StepDimTol_AreaUnitType theAreaType, const Standard_Boolean theHasSecondUnitSize, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theSecondUnitSize);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize, const StepDimTol_AreaUnitType theAreaType, const bool theHasSecondUnitSize, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theSecondUnitSize);
 
 		/****** StepDimTol_GeometricToleranceWithDefinedAreaUnit::SecondUnitSize ******/
 		/****** md5 signature: 30f9d8c27757afa6662a89b63c0a8785 ******/
@@ -4963,16 +4930,16 @@ Empty constructor.
 		 StepDimTol_GeometricToleranceWithMaximumTolerance();
 
 		/****** StepDimTol_GeometricToleranceWithMaximumTolerance::Init ******/
-		/****** md5 signature: 0bbfb3585ce631351b57b4e13326ac18 ******/
+		/****** md5 signature: c2f9d4c235b718bc88c99954f1c099d1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
-theMagnitude: StepBasic_MeasureWithUnit
+theMagnitude: Standard_Transient
 theTolerancedShapeAspect: StepDimTol_GeometricToleranceTarget
-theModifiers: StepDimTol_HArray1OfGeometricToleranceModifier
+theModifiers: NCollection_HArray1<StepDimTol_GeometricToleranceModifier
 theUnitSize: StepBasic_LengthMeasureWithUnit
 
 Return
@@ -4983,7 +4950,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> & theModifiers, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<Standard_Transient> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<NCollection_HArray1<StepDimTol_GeometricToleranceModifier> > & theModifiers, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
 		/****** StepDimTol_GeometricToleranceWithMaximumTolerance::MaximumUpperTolerance ******/
 		/****** md5 signature: c6d5b9d150449ad00ea030ff59edf365 ******/
@@ -5145,79 +5112,79 @@ Empty constructor.
 
 /* harray1 classes */
 
-class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumReference, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReference : public NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReference::value_type& theValue);
-    StepDimTol_HArray1OfDatumReference(const StepDimTol_Array1OfDatumReference& theOther);
-    const StepDimTol_Array1OfDatumReference& Array1();
-    StepDimTol_Array1OfDatumReference& ChangeArray1();
+    StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>::value_type& theValue);
+    StepDimTol_HArray1OfDatumReference(const NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>& Array1();
+    NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReference)
 
 
-class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceCompartment : public NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceCompartment::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceCompartment(const StepDimTol_Array1OfDatumReferenceCompartment& theOther);
-    const StepDimTol_Array1OfDatumReferenceCompartment& Array1();
-    StepDimTol_Array1OfDatumReferenceCompartment& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceCompartment(const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>& Array1();
+    NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
 
 
-class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceElement : public NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceElement::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceElement(const StepDimTol_Array1OfDatumReferenceElement& theOther);
-    const StepDimTol_Array1OfDatumReferenceElement& Array1();
-    StepDimTol_Array1OfDatumReferenceElement& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceElement(const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>& Array1();
+    NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceElement)
 
 
-class StepDimTol_HArray1OfDatumReferenceModifier : public StepDimTol_Array1OfDatumReferenceModifier, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceModifier : public NCollection_Array1<StepDimTol_DatumReferenceModifier>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceModifier::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceModifier(const StepDimTol_Array1OfDatumReferenceModifier& theOther);
-    const StepDimTol_Array1OfDatumReferenceModifier& Array1();
-    StepDimTol_Array1OfDatumReferenceModifier& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_DatumReferenceModifier>::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceModifier(const NCollection_Array1<StepDimTol_DatumReferenceModifier>& theOther);
+    const NCollection_Array1<StepDimTol_DatumReferenceModifier>& Array1();
+    NCollection_Array1<StepDimTol_DatumReferenceModifier>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
 
 
-class StepDimTol_HArray1OfDatumSystemOrReference : public StepDimTol_Array1OfDatumSystemOrReference, public Standard_Transient {
+class StepDimTol_HArray1OfDatumSystemOrReference : public NCollection_Array1<StepDimTol_DatumSystemOrReference>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumSystemOrReference::value_type& theValue);
-    StepDimTol_HArray1OfDatumSystemOrReference(const StepDimTol_Array1OfDatumSystemOrReference& theOther);
-    const StepDimTol_Array1OfDatumSystemOrReference& Array1();
-    StepDimTol_Array1OfDatumSystemOrReference& ChangeArray1();
+    StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_DatumSystemOrReference>::value_type& theValue);
+    StepDimTol_HArray1OfDatumSystemOrReference(const NCollection_Array1<StepDimTol_DatumSystemOrReference>& theOther);
+    const NCollection_Array1<StepDimTol_DatumSystemOrReference>& Array1();
+    NCollection_Array1<StepDimTol_DatumSystemOrReference>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
 
 
-class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
+class StepDimTol_HArray1OfGeometricToleranceModifier : public NCollection_Array1<StepDimTol_GeometricToleranceModifier>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const StepDimTol_Array1OfGeometricToleranceModifier& theOther);
-    const StepDimTol_Array1OfGeometricToleranceModifier& Array1();
-    StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
+    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_GeometricToleranceModifier>::value_type& theValue);
+    StepDimTol_HArray1OfGeometricToleranceModifier(const NCollection_Array1<StepDimTol_GeometricToleranceModifier>& theOther);
+    const NCollection_Array1<StepDimTol_GeometricToleranceModifier>& Array1();
+    NCollection_Array1<StepDimTol_GeometricToleranceModifier>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
 
 
-class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+class StepDimTol_HArray1OfToleranceZoneTarget : public NCollection_Array1<StepDimTol_ToleranceZoneTarget>, public Standard_Transient {
   public:
     StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
-    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
-    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
-    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_ToleranceZoneTarget>::value_type& theValue);
+    StepDimTol_HArray1OfToleranceZoneTarget(const NCollection_Array1<StepDimTol_ToleranceZoneTarget>& theOther);
+    const NCollection_Array1<StepDimTol_ToleranceZoneTarget>& Array1();
+    NCollection_Array1<StepDimTol_ToleranceZoneTarget>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
 

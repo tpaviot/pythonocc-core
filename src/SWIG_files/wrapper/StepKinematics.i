@@ -49,7 +49,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepkinematics.ht
 #include<TCollection_module.hxx>
 #include<StepGeom_module.hxx>
 #include<StepData_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<StepGeom_module.hxx>
@@ -70,7 +69,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepkinematics.ht
 %import TCollection.i
 %import StepGeom.i
 %import StepData.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -104,86 +102,6 @@ StepKinematics_adNotActuated = StepKinematics_ActuatedDirection.StepKinematics_a
 
 /* handles */
 %wrap_handle(StepKinematics_ContextDependentKinematicLinkRepresentation)
-%wrap_handle(StepKinematics_KinematicJoint)
-%wrap_handle(StepKinematics_KinematicLink)
-%wrap_handle(StepKinematics_KinematicLinkRepresentation)
-%wrap_handle(StepKinematics_KinematicLinkRepresentationAssociation)
-%wrap_handle(StepKinematics_KinematicPair)
-%wrap_handle(StepKinematics_KinematicPropertyDefinitionRepresentation)
-%wrap_handle(StepKinematics_KinematicTopologyDirectedStructure)
-%wrap_handle(StepKinematics_KinematicTopologyNetworkStructure)
-%wrap_handle(StepKinematics_KinematicTopologyStructure)
-%wrap_handle(StepKinematics_MechanismRepresentation)
-%wrap_handle(StepKinematics_MechanismStateRepresentation)
-%wrap_handle(StepKinematics_OrientedJoint)
-%wrap_handle(StepKinematics_PairRepresentationRelationship)
-%wrap_handle(StepKinematics_PairValue)
-%wrap_handle(StepKinematics_ProductDefinitionKinematics)
-%wrap_handle(StepKinematics_ProductDefinitionRelationshipKinematics)
-%wrap_handle(StepKinematics_RotationAboutDirection)
-%wrap_handle(StepKinematics_ActuatedKinPairAndOrderKinPair)
-%wrap_handle(StepKinematics_ActuatedKinematicPair)
-%wrap_handle(StepKinematics_CylindricalPairValue)
-%wrap_handle(StepKinematics_GearPairValue)
-%wrap_handle(StepKinematics_HighOrderKinematicPair)
-%wrap_handle(StepKinematics_KinematicPropertyMechanismRepresentation)
-%wrap_handle(StepKinematics_LinearFlexibleLinkRepresentation)
-%wrap_handle(StepKinematics_LowOrderKinematicPair)
-%wrap_handle(StepKinematics_LowOrderKinematicPairValue)
-%wrap_handle(StepKinematics_LowOrderKinematicPairWithMotionCoupling)
-%wrap_handle(StepKinematics_PlanarPairValue)
-%wrap_handle(StepKinematics_PointOnPlanarCurvePairValue)
-%wrap_handle(StepKinematics_PointOnSurfacePairValue)
-%wrap_handle(StepKinematics_PrismaticPairValue)
-%wrap_handle(StepKinematics_RackAndPinionPairValue)
-%wrap_handle(StepKinematics_RevolutePairValue)
-%wrap_handle(StepKinematics_RigidLinkRepresentation)
-%wrap_handle(StepKinematics_RollingCurvePairValue)
-%wrap_handle(StepKinematics_RollingSurfacePairValue)
-%wrap_handle(StepKinematics_ScrewPairValue)
-%wrap_handle(StepKinematics_SlidingCurvePairValue)
-%wrap_handle(StepKinematics_SlidingSurfacePairValue)
-%wrap_handle(StepKinematics_SphericalPairValue)
-%wrap_handle(StepKinematics_UnconstrainedPairValue)
-%wrap_handle(StepKinematics_UniversalPairValue)
-%wrap_handle(StepKinematics_CylindricalPair)
-%wrap_handle(StepKinematics_FullyConstrainedPair)
-%wrap_handle(StepKinematics_GearPair)
-%wrap_handle(StepKinematics_LinearFlexibleAndPinionPair)
-%wrap_handle(StepKinematics_LinearFlexibleAndPlanarCurvePair)
-%wrap_handle(StepKinematics_LowOrderKinematicPairWithRange)
-%wrap_handle(StepKinematics_PlanarCurvePair)
-%wrap_handle(StepKinematics_PlanarPair)
-%wrap_handle(StepKinematics_PointOnPlanarCurvePair)
-%wrap_handle(StepKinematics_PointOnSurfacePair)
-%wrap_handle(StepKinematics_PrismaticPair)
-%wrap_handle(StepKinematics_RackAndPinionPair)
-%wrap_handle(StepKinematics_RevolutePair)
-%wrap_handle(StepKinematics_ScrewPair)
-%wrap_handle(StepKinematics_SphericalPair)
-%wrap_handle(StepKinematics_SphericalPairWithPin)
-%wrap_handle(StepKinematics_SurfacePair)
-%wrap_handle(StepKinematics_UnconstrainedPair)
-%wrap_handle(StepKinematics_UniversalPair)
-%wrap_handle(StepKinematics_CylindricalPairWithRange)
-%wrap_handle(StepKinematics_GearPairWithRange)
-%wrap_handle(StepKinematics_HomokineticPair)
-%wrap_handle(StepKinematics_PlanarCurvePairRange)
-%wrap_handle(StepKinematics_PlanarPairWithRange)
-%wrap_handle(StepKinematics_PointOnPlanarCurvePairWithRange)
-%wrap_handle(StepKinematics_PointOnSurfacePairWithRange)
-%wrap_handle(StepKinematics_PrismaticPairWithRange)
-%wrap_handle(StepKinematics_RackAndPinionPairWithRange)
-%wrap_handle(StepKinematics_RevolutePairWithRange)
-%wrap_handle(StepKinematics_RollingCurvePair)
-%wrap_handle(StepKinematics_RollingSurfacePair)
-%wrap_handle(StepKinematics_ScrewPairWithRange)
-%wrap_handle(StepKinematics_SlidingCurvePair)
-%wrap_handle(StepKinematics_SlidingSurfacePair)
-%wrap_handle(StepKinematics_SphericalPairWithPinAndRange)
-%wrap_handle(StepKinematics_SphericalPairWithRange)
-%wrap_handle(StepKinematics_SurfacePairWithRange)
-%wrap_handle(StepKinematics_UniversalPairWithRange)
 /* end handles declaration */
 
 /* templates */
@@ -323,8 +241,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_KinematicJoint)
-
 %extend StepKinematics_KinematicJoint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -352,8 +268,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_KinematicLink)
-
 %extend StepKinematics_KinematicLink {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -379,13 +293,13 @@ default constructor.
 		 StepKinematics_KinematicLinkRepresentation();
 
 		/****** StepKinematics_KinematicLinkRepresentation::Init ******/
-		/****** md5 signature: b306696f2f93c8b0084e8f60b447ff7d ******/
+		/****** md5 signature: 7f99115a47d2dbf3f43d075ccdcd156b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentation_Name: TCollection_HAsciiString
-theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+theRepresentation_Items: NCollection_HArray1<
 theRepresentation_ContextOfItems: StepRepr_RepresentationContext
 theRepresentedLink: StepKinematics_KinematicLink
 
@@ -397,7 +311,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicLink> & theRepresentedLink);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicLink> & theRepresentedLink);
 
 		/****** StepKinematics_KinematicLinkRepresentation::RepresentedLink ******/
 		/****** md5 signature: de6c35595b3640206535a9be7e9d6835 ******/
@@ -433,8 +347,6 @@ Sets field RepresentedLink.
 };
 
 
-%make_alias(StepKinematics_KinematicLinkRepresentation)
-
 %extend StepKinematics_KinematicLinkRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -462,8 +374,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_KinematicLinkRepresentationAssociation)
-
 %extend StepKinematics_KinematicLinkRepresentationAssociation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -489,7 +399,7 @@ default constructor.
 		 StepKinematics_KinematicPair();
 
 		/****** StepKinematics_KinematicPair::Init ******/
-		/****** md5 signature: 6cb70cdc5c87dbaec236f1f1e1a6acbc ******/
+		/****** md5 signature: c36ba177ec575d4cdbf0429ad43b1ca5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -510,7 +420,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theJoint);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theJoint);
 
 		/****** StepKinematics_KinematicPair::ItemDefinedTransformation ******/
 		/****** md5 signature: 1ecfef967c45a22eea8d75f88475bd67 ******/
@@ -577,8 +487,6 @@ Sets field Joint.
 };
 
 
-%make_alias(StepKinematics_KinematicPair)
-
 %extend StepKinematics_KinematicPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -606,8 +514,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_KinematicPropertyDefinitionRepresentation)
-
 %extend StepKinematics_KinematicPropertyDefinitionRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -633,13 +539,13 @@ default constructor.
 		 StepKinematics_KinematicTopologyDirectedStructure();
 
 		/****** StepKinematics_KinematicTopologyDirectedStructure::Init ******/
-		/****** md5 signature: 4c96fcc935067c197b0a34649f803bbd ******/
+		/****** md5 signature: 8bd9ea0e8c764f3ef7127877cfe49785 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentation_Name: TCollection_HAsciiString
-theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+theRepresentation_Items: NCollection_HArray1<
 theRepresentation_ContextOfItems: StepRepr_RepresentationContext
 theParent: StepKinematics_KinematicTopologyStructure
 
@@ -651,7 +557,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
 
 		/****** StepKinematics_KinematicTopologyDirectedStructure::Parent ******/
 		/****** md5 signature: 7e9d5155e4e641596ce641fe8a5914e1 ******/
@@ -687,8 +593,6 @@ Sets field Parent.
 };
 
 
-%make_alias(StepKinematics_KinematicTopologyDirectedStructure)
-
 %extend StepKinematics_KinematicTopologyDirectedStructure {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -714,13 +618,13 @@ default constructor.
 		 StepKinematics_KinematicTopologyNetworkStructure();
 
 		/****** StepKinematics_KinematicTopologyNetworkStructure::Init ******/
-		/****** md5 signature: 4c96fcc935067c197b0a34649f803bbd ******/
+		/****** md5 signature: 8bd9ea0e8c764f3ef7127877cfe49785 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentation_Name: TCollection_HAsciiString
-theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+theRepresentation_Items: NCollection_HArray1<
 theRepresentation_ContextOfItems: StepRepr_RepresentationContext
 theParent: StepKinematics_KinematicTopologyStructure
 
@@ -732,7 +636,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
 
 		/****** StepKinematics_KinematicTopologyNetworkStructure::Parent ******/
 		/****** md5 signature: 7e9d5155e4e641596ce641fe8a5914e1 ******/
@@ -768,8 +672,6 @@ Sets field Parent.
 };
 
 
-%make_alias(StepKinematics_KinematicTopologyNetworkStructure)
-
 %extend StepKinematics_KinematicTopologyNetworkStructure {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -795,7 +697,7 @@ Empty constructor.
 		 StepKinematics_KinematicTopologyRepresentationSelect();
 
 		/****** StepKinematics_KinematicTopologyRepresentationSelect::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -810,7 +712,7 @@ Description
 -----------
 Recognizes a kind of KinematicTopologyRepresentationSelect select type -- 1 -> KinematicTopologyDirectedStructure -- 2 -> KinematicTopologyNetworkStructure -- 3 -> KinematicTopologyStructure.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepKinematics_KinematicTopologyRepresentationSelect::KinematicTopologyDirectedStructure ******/
 		/****** md5 signature: f059e783c310dfcd8744f89b9c69c043 ******/
@@ -881,8 +783,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_KinematicTopologyStructure)
-
 %extend StepKinematics_KinematicTopologyStructure {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -908,13 +808,13 @@ default constructor.
 		 StepKinematics_MechanismRepresentation();
 
 		/****** StepKinematics_MechanismRepresentation::Init ******/
-		/****** md5 signature: f17df17fa57b69052554ca5cae19e048 ******/
+		/****** md5 signature: 1d122354753496ade34cfd3d9dd82382 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentation_Name: TCollection_HAsciiString
-theRepresentation_Items: StepRepr_HArray1OfRepresentationItem
+theRepresentation_Items: NCollection_HArray1<
 theRepresentation_ContextOfItems: StepRepr_RepresentationContext
 theRepresentedTopology: StepKinematics_KinematicTopologyRepresentationSelect
 
@@ -926,7 +826,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const StepKinematics_KinematicTopologyRepresentationSelect & theRepresentedTopology);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const StepKinematics_KinematicTopologyRepresentationSelect & theRepresentedTopology);
 
 		/****** StepKinematics_MechanismRepresentation::RepresentedTopology ******/
 		/****** md5 signature: d7649991f36b2e011cd22c8a30ed3fea ******/
@@ -962,8 +862,6 @@ Sets field RepresentedTopology.
 };
 
 
-%make_alias(StepKinematics_MechanismRepresentation)
-
 %extend StepKinematics_MechanismRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -989,13 +887,13 @@ Returns a MechanismStateRepresentation.
 		 StepKinematics_MechanismStateRepresentation();
 
 		/****** StepKinematics_MechanismStateRepresentation::Init ******/
-		/****** md5 signature: 4d6f91977a44ba4ad09ee7f29e62af53 ******/
+		/****** md5 signature: a7bc94f9d7287f7c2c735e5965133548 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theItems: StepRepr_HArray1OfRepresentationItem
+theItems: NCollection_HArray1<
 theContextOfItems: StepRepr_RepresentationContext
 theMechanism: StepKinematics_MechanismRepresentation
 
@@ -1007,7 +905,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation> & theMechanism);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation> & theMechanism);
 
 		/****** StepKinematics_MechanismStateRepresentation::Mechanism ******/
 		/****** md5 signature: 08cdf7021078a7d81a012290f38d9d95 ******/
@@ -1043,8 +941,6 @@ No available documentation.
 };
 
 
-%make_alias(StepKinematics_MechanismStateRepresentation)
-
 %extend StepKinematics_MechanismStateRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1072,8 +968,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_OrientedJoint)
-
 %extend StepKinematics_OrientedJoint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1099,7 +993,7 @@ default constructor.
 		 StepKinematics_PairRepresentationRelationship();
 
 		/****** StepKinematics_PairRepresentationRelationship::Init ******/
-		/****** md5 signature: 271c9f7c04dd398902a990f55fdc22ad ******/
+		/****** md5 signature: 2ff56cc54016a353c0753e4fbbed329c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1120,7 +1014,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theRepresentationRelationship_Name, const Standard_Boolean hasRepresentationRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & theRepresentationRelationship_Description, const StepRepr_RepresentationOrRepresentationReference & theRepresentationRelationship_Rep1, const StepRepr_RepresentationOrRepresentationReference & theRepresentationRelationship_Rep2, const StepRepr_Transformation & theRepresentationRelationshipWithTransformation_TransformationOperator);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theRepresentationRelationship_Name, const bool hasRepresentationRelationship_Description, const opencascade::handle<TCollection_HAsciiString> & theRepresentationRelationship_Description, const StepRepr_RepresentationOrRepresentationReference & theRepresentationRelationship_Rep1, const StepRepr_RepresentationOrRepresentationReference & theRepresentationRelationship_Rep2, const StepRepr_Transformation & theRepresentationRelationshipWithTransformation_TransformationOperator);
 
 		/****** StepKinematics_PairRepresentationRelationship::RepresentationRelationshipWithTransformation ******/
 		/****** md5 signature: 1dd95ee62d38b1f54c88a5987d608621 ******/
@@ -1155,8 +1049,6 @@ Sets data for supertype RepresentationRelationshipWithTransformation.
 
 };
 
-
-%make_alias(StepKinematics_PairRepresentationRelationship)
 
 %extend StepKinematics_PairRepresentationRelationship {
 	%pythoncode {
@@ -1235,8 +1127,6 @@ Sets field AppliesToPair.
 };
 
 
-%make_alias(StepKinematics_PairValue)
-
 %extend StepKinematics_PairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1264,8 +1154,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_ProductDefinitionKinematics)
-
 %extend StepKinematics_ProductDefinitionKinematics {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1292,8 +1180,6 @@ default constructor.
 
 };
 
-
-%make_alias(StepKinematics_ProductDefinitionRelationshipKinematics)
 
 %extend StepKinematics_ProductDefinitionRelationshipKinematics {
 	%pythoncode {
@@ -1333,7 +1219,7 @@ Returns Value as Axis2Placement3d (or Null if another type).
 		opencascade::handle<StepGeom_Axis2Placement3d> Axis2Placement3d();
 
 		/****** StepKinematics_RigidPlacement::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1348,7 +1234,7 @@ Description
 -----------
 Recognizes a kind of RigidPlacement select type -- 1 -> Axis2Placement3d -- 2 -> SuParameters.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepKinematics_RigidPlacement::SuParameters ******/
 		/****** md5 signature: 16eca4dd904e95921e4ff048caeea8e3 ******/
@@ -1404,14 +1290,14 @@ Returns field DirectionOfAxis.
 		opencascade::handle<StepGeom_Direction> DirectionOfAxis();
 
 		/****** StepKinematics_RotationAboutDirection::Init ******/
-		/****** md5 signature: 2522463ccf9fd6261ffef69ad4400ceb ******/
+		/****** md5 signature: 7ccb8a82e158576480426ae4214302f5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 theDirectionOfAxis: StepGeom_Direction
-theRotationAngle: float
+theRotationAngle: double
 
 Return
 -------
@@ -1421,20 +1307,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepGeom_Direction> & theDirectionOfAxis, const Standard_Real theRotationAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepGeom_Direction> & theDirectionOfAxis, const double theRotationAngle);
 
 		/****** StepKinematics_RotationAboutDirection::RotationAngle ******/
-		/****** md5 signature: a0e05e147c18550a43c1eaae52b815fd ******/
+		/****** md5 signature: 57b804377e9262f0b8d6ec720d870acc ******/
 		%feature("compactdefaultargs") RotationAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field RotationAngle.
 ") RotationAngle;
-		Standard_Real RotationAngle();
+		double RotationAngle();
 
 		/****** StepKinematics_RotationAboutDirection::SetDirectionOfAxis ******/
 		/****** md5 signature: 713071843d6d679a154e255dd944ce85 ******/
@@ -1455,12 +1341,12 @@ Sets field DirectionOfAxis.
 		void SetDirectionOfAxis(const opencascade::handle<StepGeom_Direction> & theDirectionOfAxis);
 
 		/****** StepKinematics_RotationAboutDirection::SetRotationAngle ******/
-		/****** md5 signature: 0ad2cbf06a21fe8ac11f265f33c7f6c6 ******/
+		/****** md5 signature: 984fa9bc371aed8602522adfe87a00b9 ******/
 		%feature("compactdefaultargs") SetRotationAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theRotationAngle: float
+theRotationAngle: double
 
 Return
 -------
@@ -1470,12 +1356,10 @@ Description
 -----------
 Sets field RotationAngle.
 ") SetRotationAngle;
-		void SetRotationAngle(const Standard_Real theRotationAngle);
+		void SetRotationAngle(const double theRotationAngle);
 
 };
 
-
-%make_alias(StepKinematics_RotationAboutDirection)
 
 %extend StepKinematics_RotationAboutDirection {
 	%pythoncode {
@@ -1502,7 +1386,7 @@ Empty constructor.
 		 StepKinematics_SpatialRotation();
 
 		/****** StepKinematics_SpatialRotation::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1517,7 +1401,7 @@ Description
 -----------
 Recognizes a kind of SpatialRotation select type -- 1 -> RotationAboutDirection -- 2 -> YprRotation.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepKinematics_SpatialRotation::RotationAboutDirection ******/
 		/****** md5 signature: f3f49b0f97e36f341e3361f2759d4807 ******/
@@ -1533,17 +1417,17 @@ Returns Value as RotationAboutDirection (or Null if another type).
 		opencascade::handle<StepKinematics_RotationAboutDirection> RotationAboutDirection();
 
 		/****** StepKinematics_SpatialRotation::YprRotation ******/
-		/****** md5 signature: 64920e51d6da69e569c2096eb7e6f9b4 ******/
+		/****** md5 signature: db68d36dae35ba5e29e95a961942b7fe ******/
 		%feature("compactdefaultargs") YprRotation;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns Value as YprRotation (or Null if another type).
 ") YprRotation;
-		opencascade::handle<TColStd_HArray1OfReal> YprRotation();
+		opencascade::handle<NCollection_HArray1<double>> YprRotation();
 
 };
 
@@ -1573,7 +1457,7 @@ Empty constructor.
 		 StepKinematics_SphericalPairSelect();
 
 		/****** StepKinematics_SphericalPairSelect::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1588,7 +1472,7 @@ Description
 -----------
 Recognizes a kind of SphericalPairSelect select type -- 1 -> SphericalPair -- 2 -> SphericalPairWithPin.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepKinematics_SphericalPairSelect::SphericalPair ******/
 		/****** md5 signature: 689bab421d51aa31efa7f49d52355ce5 ******/
@@ -1670,7 +1554,7 @@ No available documentation.
 		opencascade::handle<StepKinematics_KinematicPair> GetOrderKinematicPair();
 
 		/****** StepKinematics_ActuatedKinPairAndOrderKinPair::Init ******/
-		/****** md5 signature: ad8e2fd2fa1db5508edfdab6995742f8 ******/
+		/****** md5 signature: eb23f08988123684f75d5d02373b15f7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1693,7 +1577,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theJoint, const opencascade::handle<StepKinematics_ActuatedKinematicPair> & theActuatedKinematicPair, const opencascade::handle<StepKinematics_KinematicPair> & theOrderKinematicPair);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theJoint, const opencascade::handle<StepKinematics_ActuatedKinematicPair> & theActuatedKinematicPair, const opencascade::handle<StepKinematics_KinematicPair> & theOrderKinematicPair);
 
 		/****** StepKinematics_ActuatedKinPairAndOrderKinPair::SetActuatedKinematicPair ******/
 		/****** md5 signature: 7e1b5f8c414756af159227790993c3f1 ******/
@@ -1734,8 +1618,6 @@ No available documentation.
 };
 
 
-%make_alias(StepKinematics_ActuatedKinPairAndOrderKinPair)
-
 %extend StepKinematics_ActuatedKinPairAndOrderKinPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1761,7 +1643,7 @@ default constructor.
 		 StepKinematics_ActuatedKinematicPair();
 
 		/****** StepKinematics_ActuatedKinematicPair::HasRX ******/
-		/****** md5 signature: 37f8f5981ed76330b1de17d219499786 ******/
+		/****** md5 signature: 8da31ce8b7e857a9fa2f5986031eb5ea ******/
 		%feature("compactdefaultargs") HasRX;
 		%feature("autodoc", "Return
 -------
@@ -1771,10 +1653,10 @@ Description
 -----------
 Returns True if optional field RX is defined.
 ") HasRX;
-		Standard_Boolean HasRX();
+		bool HasRX();
 
 		/****** StepKinematics_ActuatedKinematicPair::HasRY ******/
-		/****** md5 signature: 5aa7f8726187c7713dc67c424d832e5b ******/
+		/****** md5 signature: 585ed0a25d300a2eee5bd26b461d0b46 ******/
 		%feature("compactdefaultargs") HasRY;
 		%feature("autodoc", "Return
 -------
@@ -1784,10 +1666,10 @@ Description
 -----------
 Returns True if optional field RY is defined.
 ") HasRY;
-		Standard_Boolean HasRY();
+		bool HasRY();
 
 		/****** StepKinematics_ActuatedKinematicPair::HasRZ ******/
-		/****** md5 signature: f3f9e8d2dd5c4ce4ac39887ca5af728d ******/
+		/****** md5 signature: 27bb43ebb06254c61c63998f0b8c7b18 ******/
 		%feature("compactdefaultargs") HasRZ;
 		%feature("autodoc", "Return
 -------
@@ -1797,10 +1679,10 @@ Description
 -----------
 Returns True if optional field RZ is defined.
 ") HasRZ;
-		Standard_Boolean HasRZ();
+		bool HasRZ();
 
 		/****** StepKinematics_ActuatedKinematicPair::HasTX ******/
-		/****** md5 signature: 70819953aa268cc5d76d619cd3333036 ******/
+		/****** md5 signature: 0ca1b6537e6f9039133e0b4f11b61c1e ******/
 		%feature("compactdefaultargs") HasTX;
 		%feature("autodoc", "Return
 -------
@@ -1810,10 +1692,10 @@ Description
 -----------
 Returns True if optional field TX is defined.
 ") HasTX;
-		Standard_Boolean HasTX();
+		bool HasTX();
 
 		/****** StepKinematics_ActuatedKinematicPair::HasTY ******/
-		/****** md5 signature: bf66211635992dd512f875c78428685e ******/
+		/****** md5 signature: dd37f30fa17787a7de2b078153706d2b ******/
 		%feature("compactdefaultargs") HasTY;
 		%feature("autodoc", "Return
 -------
@@ -1823,10 +1705,10 @@ Description
 -----------
 Returns True if optional field TY is defined.
 ") HasTY;
-		Standard_Boolean HasTY();
+		bool HasTY();
 
 		/****** StepKinematics_ActuatedKinematicPair::HasTZ ******/
-		/****** md5 signature: 2688a6a01f17fad374a175aa98ec6dee ******/
+		/****** md5 signature: 74767d266c5f08e42c764582b5ebadc0 ******/
 		%feature("compactdefaultargs") HasTZ;
 		%feature("autodoc", "Return
 -------
@@ -1836,10 +1718,10 @@ Description
 -----------
 Returns True if optional field TZ is defined.
 ") HasTZ;
-		Standard_Boolean HasTZ();
+		bool HasTZ();
 
 		/****** StepKinematics_ActuatedKinematicPair::Init ******/
-		/****** md5 signature: c1604c3e83fe4994705c822c47353158 ******/
+		/****** md5 signature: 3d168b1de2551142cb7b9b4dd84a365f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1872,7 +1754,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean hasTX, const StepKinematics_ActuatedDirection theTX, const Standard_Boolean hasTY, const StepKinematics_ActuatedDirection theTY, const Standard_Boolean hasTZ, const StepKinematics_ActuatedDirection theTZ, const Standard_Boolean hasRX, const StepKinematics_ActuatedDirection theRX, const Standard_Boolean hasRY, const StepKinematics_ActuatedDirection theRY, const Standard_Boolean hasRZ, const StepKinematics_ActuatedDirection theRZ);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool hasTX, const StepKinematics_ActuatedDirection theTX, const bool hasTY, const StepKinematics_ActuatedDirection theTY, const bool hasTZ, const StepKinematics_ActuatedDirection theTZ, const bool hasRX, const StepKinematics_ActuatedDirection theRX, const bool hasRY, const StepKinematics_ActuatedDirection theRY, const bool hasRZ, const StepKinematics_ActuatedDirection theRZ);
 
 		/****** StepKinematics_ActuatedKinematicPair::RX ******/
 		/****** md5 signature: d5c65d32604d8aee61311cd5f83ae0d6 ******/
@@ -2063,8 +1945,6 @@ Returns field TZ.
 };
 
 
-%make_alias(StepKinematics_ActuatedKinematicPair)
-
 %extend StepKinematics_ActuatedKinematicPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2090,41 +1970,41 @@ default constructor.
 		 StepKinematics_CylindricalPairValue();
 
 		/****** StepKinematics_CylindricalPairValue::ActualRotation ******/
-		/****** md5 signature: 30e9003df2dadd466d63b6d544fb4f7d ******/
+		/****** md5 signature: f25f5770219b708a8eeac3d18093537f ******/
 		%feature("compactdefaultargs") ActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation.
 ") ActualRotation;
-		Standard_Real ActualRotation();
+		double ActualRotation();
 
 		/****** StepKinematics_CylindricalPairValue::ActualTranslation ******/
-		/****** md5 signature: 6f06104e4052b692ebc9e4ea03ad6ac4 ******/
+		/****** md5 signature: baea39c02c08d532acc85ec0457d567c ******/
 		%feature("compactdefaultargs") ActualTranslation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslation.
 ") ActualTranslation;
-		Standard_Real ActualTranslation();
+		double ActualTranslation();
 
 		/****** StepKinematics_CylindricalPairValue::Init ******/
-		/****** md5 signature: 27da9948efcb34aabd26cb2e756805ce ******/
+		/****** md5 signature: f98def3f97f04363d43b386ad3c4090d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualTranslation: float
-theActualRotation: float
+theActualTranslation: double
+theActualRotation: double
 
 Return
 -------
@@ -2134,15 +2014,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualTranslation, const Standard_Real theActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualTranslation, const double theActualRotation);
 
 		/****** StepKinematics_CylindricalPairValue::SetActualRotation ******/
-		/****** md5 signature: 770befc82d15c08b0b7b1dc4fb5e70e7 ******/
+		/****** md5 signature: 88469d64f7595872fdaf5549069d8641 ******/
 		%feature("compactdefaultargs") SetActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -2152,15 +2032,15 @@ Description
 -----------
 Sets field ActualRotation.
 ") SetActualRotation;
-		void SetActualRotation(const Standard_Real theActualRotation);
+		void SetActualRotation(const double theActualRotation);
 
 		/****** StepKinematics_CylindricalPairValue::SetActualTranslation ******/
-		/****** md5 signature: 42a58dfc1fc4c0d908fb057639c64055 ******/
+		/****** md5 signature: 61a492eaa835762cc1601d7b472171a0 ******/
 		%feature("compactdefaultargs") SetActualTranslation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslation: float
+theActualTranslation: double
 
 Return
 -------
@@ -2170,12 +2050,10 @@ Description
 -----------
 Sets field ActualTranslation.
 ") SetActualTranslation;
-		void SetActualTranslation(const Standard_Real theActualTranslation);
+		void SetActualTranslation(const double theActualTranslation);
 
 };
 
-
-%make_alias(StepKinematics_CylindricalPairValue)
 
 %extend StepKinematics_CylindricalPairValue {
 	%pythoncode {
@@ -2202,27 +2080,27 @@ default constructor.
 		 StepKinematics_GearPairValue();
 
 		/****** StepKinematics_GearPairValue::ActualRotation1 ******/
-		/****** md5 signature: 6aea4bfc8c425b4ab7b6f0f7a6e60c57 ******/
+		/****** md5 signature: 6ad3cb1cc1ed30fc2fee4ff338a0ea47 ******/
 		%feature("compactdefaultargs") ActualRotation1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation1.
 ") ActualRotation1;
-		Standard_Real ActualRotation1();
+		double ActualRotation1();
 
 		/****** StepKinematics_GearPairValue::Init ******/
-		/****** md5 signature: 7d97850c814f0195369c191809fa263d ******/
+		/****** md5 signature: 260c90bdfd93fafe9a64f2ab2dcc7b36 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualRotation1: float
+theActualRotation1: double
 
 Return
 -------
@@ -2232,15 +2110,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualRotation1);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualRotation1);
 
 		/****** StepKinematics_GearPairValue::SetActualRotation1 ******/
-		/****** md5 signature: 7713c601b6eb8f0dd4968f997f5daf3f ******/
+		/****** md5 signature: b727e04ddbca9f4ac18a211e972b0208 ******/
 		%feature("compactdefaultargs") SetActualRotation1;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation1: float
+theActualRotation1: double
 
 Return
 -------
@@ -2250,12 +2128,10 @@ Description
 -----------
 Sets field ActualRotation1.
 ") SetActualRotation1;
-		void SetActualRotation1(const Standard_Real theActualRotation1);
+		void SetActualRotation1(const double theActualRotation1);
 
 };
 
-
-%make_alias(StepKinematics_GearPairValue)
 
 %extend StepKinematics_GearPairValue {
 	%pythoncode {
@@ -2283,8 +2159,6 @@ default constructor.
 
 };
 
-
-%make_alias(StepKinematics_HighOrderKinematicPair)
 
 %extend StepKinematics_HighOrderKinematicPair {
 	%pythoncode {
@@ -2364,8 +2238,6 @@ Sets field Base.
 };
 
 
-%make_alias(StepKinematics_KinematicPropertyMechanismRepresentation)
-
 %extend StepKinematics_KinematicPropertyMechanismRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2393,8 +2265,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_LinearFlexibleLinkRepresentation)
-
 %extend StepKinematics_LinearFlexibleLinkRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2420,7 +2290,7 @@ default constructor.
 		 StepKinematics_LowOrderKinematicPair();
 
 		/****** StepKinematics_LowOrderKinematicPair::Init ******/
-		/****** md5 signature: fe1b0cf24568071ce22f54951096397c ******/
+		/****** md5 signature: 574022940b5b5634adc6bcdcf7eeb0e3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2447,10 +2317,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theTX, const Standard_Boolean theTY, const Standard_Boolean theTZ, const Standard_Boolean theRX, const Standard_Boolean theRY, const Standard_Boolean theRZ);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theTX, const bool theTY, const bool theTZ, const bool theRX, const bool theRY, const bool theRZ);
 
 		/****** StepKinematics_LowOrderKinematicPair::RX ******/
-		/****** md5 signature: 78795f2ff190af3f1001538cd95406c9 ******/
+		/****** md5 signature: 0f1faeeb909d16219219fda39a1eeb68 ******/
 		%feature("compactdefaultargs") RX;
 		%feature("autodoc", "Return
 -------
@@ -2460,10 +2330,10 @@ Description
 -----------
 Returns field RX.
 ") RX;
-		Standard_Boolean RX();
+		bool RX();
 
 		/****** StepKinematics_LowOrderKinematicPair::RY ******/
-		/****** md5 signature: b82792a8284c6604d4ed223511744c06 ******/
+		/****** md5 signature: 128eccc06c59044b1c6f9fb162c83f94 ******/
 		%feature("compactdefaultargs") RY;
 		%feature("autodoc", "Return
 -------
@@ -2473,10 +2343,10 @@ Description
 -----------
 Returns field RY.
 ") RY;
-		Standard_Boolean RY();
+		bool RY();
 
 		/****** StepKinematics_LowOrderKinematicPair::RZ ******/
-		/****** md5 signature: 84f3f3be164a100854178b9f23f57aaf ******/
+		/****** md5 signature: 9973ebd7554137c25a54b8973a5d0fa5 ******/
 		%feature("compactdefaultargs") RZ;
 		%feature("autodoc", "Return
 -------
@@ -2486,10 +2356,10 @@ Description
 -----------
 Returns field RZ.
 ") RZ;
-		Standard_Boolean RZ();
+		bool RZ();
 
 		/****** StepKinematics_LowOrderKinematicPair::SetRX ******/
-		/****** md5 signature: 6df7dff2db6c1664969e7d6740b45d45 ******/
+		/****** md5 signature: 1cbd8149234e213fe0f8d271dde24f20 ******/
 		%feature("compactdefaultargs") SetRX;
 		%feature("autodoc", "
 Parameters
@@ -2504,10 +2374,10 @@ Description
 -----------
 Sets field RX.
 ") SetRX;
-		void SetRX(const Standard_Boolean theRX);
+		void SetRX(const bool theRX);
 
 		/****** StepKinematics_LowOrderKinematicPair::SetRY ******/
-		/****** md5 signature: c78f829fe2f2657279f970ba91934f00 ******/
+		/****** md5 signature: fbe4573f7b8b53cadfbab9d9a462d3cc ******/
 		%feature("compactdefaultargs") SetRY;
 		%feature("autodoc", "
 Parameters
@@ -2522,10 +2392,10 @@ Description
 -----------
 Sets field RY.
 ") SetRY;
-		void SetRY(const Standard_Boolean theRY);
+		void SetRY(const bool theRY);
 
 		/****** StepKinematics_LowOrderKinematicPair::SetRZ ******/
-		/****** md5 signature: a22054b188a4d7b0c3ced39049b418d4 ******/
+		/****** md5 signature: 9c5c34823e4bea4bae1263ad089c05ff ******/
 		%feature("compactdefaultargs") SetRZ;
 		%feature("autodoc", "
 Parameters
@@ -2540,10 +2410,10 @@ Description
 -----------
 Sets field RZ.
 ") SetRZ;
-		void SetRZ(const Standard_Boolean theRZ);
+		void SetRZ(const bool theRZ);
 
 		/****** StepKinematics_LowOrderKinematicPair::SetTX ******/
-		/****** md5 signature: 454e3fcf39b6267a60d3dd8ce225e17e ******/
+		/****** md5 signature: d904492544a92394221c79ad537f5848 ******/
 		%feature("compactdefaultargs") SetTX;
 		%feature("autodoc", "
 Parameters
@@ -2558,10 +2428,10 @@ Description
 -----------
 Sets field TX.
 ") SetTX;
-		void SetTX(const Standard_Boolean theTX);
+		void SetTX(const bool theTX);
 
 		/****** StepKinematics_LowOrderKinematicPair::SetTY ******/
-		/****** md5 signature: 72c951a6495f5885e201c00d9f61df40 ******/
+		/****** md5 signature: 00524b110eda93b4dc8709d9b56e81f3 ******/
 		%feature("compactdefaultargs") SetTY;
 		%feature("autodoc", "
 Parameters
@@ -2576,10 +2446,10 @@ Description
 -----------
 Sets field TY.
 ") SetTY;
-		void SetTY(const Standard_Boolean theTY);
+		void SetTY(const bool theTY);
 
 		/****** StepKinematics_LowOrderKinematicPair::SetTZ ******/
-		/****** md5 signature: ee629e0d1a16d348e4e6a6d7cc8a9bbc ******/
+		/****** md5 signature: 295c4804c56a87f1f5e662f0e6e2ecbb ******/
 		%feature("compactdefaultargs") SetTZ;
 		%feature("autodoc", "
 Parameters
@@ -2594,10 +2464,10 @@ Description
 -----------
 Sets field TZ.
 ") SetTZ;
-		void SetTZ(const Standard_Boolean theTZ);
+		void SetTZ(const bool theTZ);
 
 		/****** StepKinematics_LowOrderKinematicPair::TX ******/
-		/****** md5 signature: 5a13c606a9a083343d8543c5bffc10d6 ******/
+		/****** md5 signature: a63456af5e978ba78537c7e1cc728419 ******/
 		%feature("compactdefaultargs") TX;
 		%feature("autodoc", "Return
 -------
@@ -2607,10 +2477,10 @@ Description
 -----------
 Returns field TX.
 ") TX;
-		Standard_Boolean TX();
+		bool TX();
 
 		/****** StepKinematics_LowOrderKinematicPair::TY ******/
-		/****** md5 signature: c034f6b36d0071a2f4195e134c4547b0 ******/
+		/****** md5 signature: 287fb3aba9fb316fc841e2190cc570ce ******/
 		%feature("compactdefaultargs") TY;
 		%feature("autodoc", "Return
 -------
@@ -2620,10 +2490,10 @@ Description
 -----------
 Returns field TY.
 ") TY;
-		Standard_Boolean TY();
+		bool TY();
 
 		/****** StepKinematics_LowOrderKinematicPair::TZ ******/
-		/****** md5 signature: 051384b4e6563d39c3d07bc8e3c87803 ******/
+		/****** md5 signature: d619894b9f9ecce8520b257b8ce955d8 ******/
 		%feature("compactdefaultargs") TZ;
 		%feature("autodoc", "Return
 -------
@@ -2633,12 +2503,10 @@ Description
 -----------
 Returns field TZ.
 ") TZ;
-		Standard_Boolean TZ();
+		bool TZ();
 
 };
 
-
-%make_alias(StepKinematics_LowOrderKinematicPair)
 
 %extend StepKinematics_LowOrderKinematicPair {
 	%pythoncode {
@@ -2665,97 +2533,97 @@ default constructor.
 		 StepKinematics_LowOrderKinematicPairValue();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::ActualRotationX ******/
-		/****** md5 signature: 902965a56b51a7445534e15f594a2987 ******/
+		/****** md5 signature: 09b7ecaf1723b5f3e8bccf90a3f17077 ******/
 		%feature("compactdefaultargs") ActualRotationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotationX.
 ") ActualRotationX;
-		Standard_Real ActualRotationX();
+		double ActualRotationX();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::ActualRotationY ******/
-		/****** md5 signature: a70e5f2aa798acf10c0e28cacdc0c824 ******/
+		/****** md5 signature: 42ac839154211788d39a59d461c23b10 ******/
 		%feature("compactdefaultargs") ActualRotationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotationY.
 ") ActualRotationY;
-		Standard_Real ActualRotationY();
+		double ActualRotationY();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::ActualRotationZ ******/
-		/****** md5 signature: 0cf88f1b323266fd161c63b70750ce63 ******/
+		/****** md5 signature: d30ba3a4112ebc6ce863349e86aebbc2 ******/
 		%feature("compactdefaultargs") ActualRotationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotationZ.
 ") ActualRotationZ;
-		Standard_Real ActualRotationZ();
+		double ActualRotationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::ActualTranslationX ******/
-		/****** md5 signature: 6ac9984f4666e90a828688cac483b950 ******/
+		/****** md5 signature: 7d1557aec88c53a19a215161278b0b36 ******/
 		%feature("compactdefaultargs") ActualTranslationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslationX.
 ") ActualTranslationX;
-		Standard_Real ActualTranslationX();
+		double ActualTranslationX();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::ActualTranslationY ******/
-		/****** md5 signature: a071f4946a682a653d3b42397598abc2 ******/
+		/****** md5 signature: c2e977c9e58ec7ae4929642c6fe1c44c ******/
 		%feature("compactdefaultargs") ActualTranslationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslationY.
 ") ActualTranslationY;
-		Standard_Real ActualTranslationY();
+		double ActualTranslationY();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::ActualTranslationZ ******/
-		/****** md5 signature: 2c55336eca0a2d3e395bd45061dbbd11 ******/
+		/****** md5 signature: bc4110a02aed142c03bf79f946b8f764 ******/
 		%feature("compactdefaultargs") ActualTranslationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslationZ.
 ") ActualTranslationZ;
-		Standard_Real ActualTranslationZ();
+		double ActualTranslationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairValue::Init ******/
-		/****** md5 signature: c3a65772c76d50a0e5f554a4a9b8ddd1 ******/
+		/****** md5 signature: b86b0aed3a965bc37027a840b487ae03 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualTranslationX: float
-theActualTranslationY: float
-theActualTranslationZ: float
-theActualRotationX: float
-theActualRotationY: float
-theActualRotationZ: float
+theActualTranslationX: double
+theActualTranslationY: double
+theActualTranslationZ: double
+theActualRotationX: double
+theActualRotationY: double
+theActualRotationZ: double
 
 Return
 -------
@@ -2765,15 +2633,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualTranslationX, const Standard_Real theActualTranslationY, const Standard_Real theActualTranslationZ, const Standard_Real theActualRotationX, const Standard_Real theActualRotationY, const Standard_Real theActualRotationZ);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualTranslationX, const double theActualTranslationY, const double theActualTranslationZ, const double theActualRotationX, const double theActualRotationY, const double theActualRotationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairValue::SetActualRotationX ******/
-		/****** md5 signature: fe19439665932898af40ffd50275e3d4 ******/
+		/****** md5 signature: 42b3e92a744db83420019f9b1c9178e2 ******/
 		%feature("compactdefaultargs") SetActualRotationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotationX: float
+theActualRotationX: double
 
 Return
 -------
@@ -2783,15 +2651,15 @@ Description
 -----------
 Sets field ActualRotationX.
 ") SetActualRotationX;
-		void SetActualRotationX(const Standard_Real theActualRotationX);
+		void SetActualRotationX(const double theActualRotationX);
 
 		/****** StepKinematics_LowOrderKinematicPairValue::SetActualRotationY ******/
-		/****** md5 signature: a2b4b483fb15e283435ee9c0efef06dd ******/
+		/****** md5 signature: d39525ce2e4509fea199002902c6f2c9 ******/
 		%feature("compactdefaultargs") SetActualRotationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotationY: float
+theActualRotationY: double
 
 Return
 -------
@@ -2801,15 +2669,15 @@ Description
 -----------
 Sets field ActualRotationY.
 ") SetActualRotationY;
-		void SetActualRotationY(const Standard_Real theActualRotationY);
+		void SetActualRotationY(const double theActualRotationY);
 
 		/****** StepKinematics_LowOrderKinematicPairValue::SetActualRotationZ ******/
-		/****** md5 signature: d54e6bc435e290d4cd8f545a3d0cfe25 ******/
+		/****** md5 signature: d2a9739c54c7acefeb5e2d4bae344a77 ******/
 		%feature("compactdefaultargs") SetActualRotationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotationZ: float
+theActualRotationZ: double
 
 Return
 -------
@@ -2819,15 +2687,15 @@ Description
 -----------
 Sets field ActualRotationZ.
 ") SetActualRotationZ;
-		void SetActualRotationZ(const Standard_Real theActualRotationZ);
+		void SetActualRotationZ(const double theActualRotationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairValue::SetActualTranslationX ******/
-		/****** md5 signature: c4647b7c5c64a94976fa395251c18bb5 ******/
+		/****** md5 signature: 800aa87976ca048f7ea474095656b01c ******/
 		%feature("compactdefaultargs") SetActualTranslationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslationX: float
+theActualTranslationX: double
 
 Return
 -------
@@ -2837,15 +2705,15 @@ Description
 -----------
 Sets field ActualTranslationX.
 ") SetActualTranslationX;
-		void SetActualTranslationX(const Standard_Real theActualTranslationX);
+		void SetActualTranslationX(const double theActualTranslationX);
 
 		/****** StepKinematics_LowOrderKinematicPairValue::SetActualTranslationY ******/
-		/****** md5 signature: b7e97b62a34e6739a94ddb6b67f0dc03 ******/
+		/****** md5 signature: b83adb59c46fe6ace52d5a24614745d0 ******/
 		%feature("compactdefaultargs") SetActualTranslationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslationY: float
+theActualTranslationY: double
 
 Return
 -------
@@ -2855,15 +2723,15 @@ Description
 -----------
 Sets field ActualTranslationY.
 ") SetActualTranslationY;
-		void SetActualTranslationY(const Standard_Real theActualTranslationY);
+		void SetActualTranslationY(const double theActualTranslationY);
 
 		/****** StepKinematics_LowOrderKinematicPairValue::SetActualTranslationZ ******/
-		/****** md5 signature: 90504056d1a8aa333027c236050d69d0 ******/
+		/****** md5 signature: 9c9ab23d50dbfa10997df0b8d015aaea ******/
 		%feature("compactdefaultargs") SetActualTranslationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslationZ: float
+theActualTranslationZ: double
 
 Return
 -------
@@ -2873,12 +2741,10 @@ Description
 -----------
 Sets field ActualTranslationZ.
 ") SetActualTranslationZ;
-		void SetActualTranslationZ(const Standard_Real theActualTranslationZ);
+		void SetActualTranslationZ(const double theActualTranslationZ);
 
 };
 
-
-%make_alias(StepKinematics_LowOrderKinematicPairValue)
 
 %extend StepKinematics_LowOrderKinematicPairValue {
 	%pythoncode {
@@ -2907,8 +2773,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_LowOrderKinematicPairWithMotionCoupling)
-
 %extend StepKinematics_LowOrderKinematicPairWithMotionCoupling {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2934,55 +2798,55 @@ default constructor.
 		 StepKinematics_PlanarPairValue();
 
 		/****** StepKinematics_PlanarPairValue::ActualRotation ******/
-		/****** md5 signature: 30e9003df2dadd466d63b6d544fb4f7d ******/
+		/****** md5 signature: f25f5770219b708a8eeac3d18093537f ******/
 		%feature("compactdefaultargs") ActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation.
 ") ActualRotation;
-		Standard_Real ActualRotation();
+		double ActualRotation();
 
 		/****** StepKinematics_PlanarPairValue::ActualTranslationX ******/
-		/****** md5 signature: 6ac9984f4666e90a828688cac483b950 ******/
+		/****** md5 signature: 7d1557aec88c53a19a215161278b0b36 ******/
 		%feature("compactdefaultargs") ActualTranslationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslationX.
 ") ActualTranslationX;
-		Standard_Real ActualTranslationX();
+		double ActualTranslationX();
 
 		/****** StepKinematics_PlanarPairValue::ActualTranslationY ******/
-		/****** md5 signature: a071f4946a682a653d3b42397598abc2 ******/
+		/****** md5 signature: c2e977c9e58ec7ae4929642c6fe1c44c ******/
 		%feature("compactdefaultargs") ActualTranslationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslationY.
 ") ActualTranslationY;
-		Standard_Real ActualTranslationY();
+		double ActualTranslationY();
 
 		/****** StepKinematics_PlanarPairValue::Init ******/
-		/****** md5 signature: a51019251071569668080055c58a8bdb ******/
+		/****** md5 signature: de31a63a1aac52703694b155f73b3bec ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualRotation: float
-theActualTranslationX: float
-theActualTranslationY: float
+theActualRotation: double
+theActualTranslationX: double
+theActualTranslationY: double
 
 Return
 -------
@@ -2992,15 +2856,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualRotation, const Standard_Real theActualTranslationX, const Standard_Real theActualTranslationY);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualRotation, const double theActualTranslationX, const double theActualTranslationY);
 
 		/****** StepKinematics_PlanarPairValue::SetActualRotation ******/
-		/****** md5 signature: 770befc82d15c08b0b7b1dc4fb5e70e7 ******/
+		/****** md5 signature: 88469d64f7595872fdaf5549069d8641 ******/
 		%feature("compactdefaultargs") SetActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3010,15 +2874,15 @@ Description
 -----------
 Sets field ActualRotation.
 ") SetActualRotation;
-		void SetActualRotation(const Standard_Real theActualRotation);
+		void SetActualRotation(const double theActualRotation);
 
 		/****** StepKinematics_PlanarPairValue::SetActualTranslationX ******/
-		/****** md5 signature: c4647b7c5c64a94976fa395251c18bb5 ******/
+		/****** md5 signature: 800aa87976ca048f7ea474095656b01c ******/
 		%feature("compactdefaultargs") SetActualTranslationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslationX: float
+theActualTranslationX: double
 
 Return
 -------
@@ -3028,15 +2892,15 @@ Description
 -----------
 Sets field ActualTranslationX.
 ") SetActualTranslationX;
-		void SetActualTranslationX(const Standard_Real theActualTranslationX);
+		void SetActualTranslationX(const double theActualTranslationX);
 
 		/****** StepKinematics_PlanarPairValue::SetActualTranslationY ******/
-		/****** md5 signature: b7e97b62a34e6739a94ddb6b67f0dc03 ******/
+		/****** md5 signature: b83adb59c46fe6ace52d5a24614745d0 ******/
 		%feature("compactdefaultargs") SetActualTranslationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslationY: float
+theActualTranslationY: double
 
 Return
 -------
@@ -3046,12 +2910,10 @@ Description
 -----------
 Sets field ActualTranslationY.
 ") SetActualTranslationY;
-		void SetActualTranslationY(const Standard_Real theActualTranslationY);
+		void SetActualTranslationY(const double theActualTranslationY);
 
 };
 
-
-%make_alias(StepKinematics_PlanarPairValue)
 
 %extend StepKinematics_PlanarPairValue {
 	%pythoncode {
@@ -3163,8 +3025,6 @@ Sets field InputOrientation.
 };
 
 
-%make_alias(StepKinematics_PointOnPlanarCurvePairValue)
-
 %extend StepKinematics_PointOnPlanarCurvePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3275,8 +3135,6 @@ Sets field InputOrientation.
 };
 
 
-%make_alias(StepKinematics_PointOnSurfacePairValue)
-
 %extend StepKinematics_PointOnSurfacePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3302,27 +3160,27 @@ default constructor.
 		 StepKinematics_PrismaticPairValue();
 
 		/****** StepKinematics_PrismaticPairValue::ActualTranslation ******/
-		/****** md5 signature: 6f06104e4052b692ebc9e4ea03ad6ac4 ******/
+		/****** md5 signature: baea39c02c08d532acc85ec0457d567c ******/
 		%feature("compactdefaultargs") ActualTranslation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualTranslation.
 ") ActualTranslation;
-		Standard_Real ActualTranslation();
+		double ActualTranslation();
 
 		/****** StepKinematics_PrismaticPairValue::Init ******/
-		/****** md5 signature: 97d4bfc5c0cf49b9883d8d07b3611700 ******/
+		/****** md5 signature: 45df7be3c169eac7280680fec2c14536 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualTranslation: float
+theActualTranslation: double
 
 Return
 -------
@@ -3332,15 +3190,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualTranslation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualTranslation);
 
 		/****** StepKinematics_PrismaticPairValue::SetActualTranslation ******/
-		/****** md5 signature: 42a58dfc1fc4c0d908fb057639c64055 ******/
+		/****** md5 signature: 61a492eaa835762cc1601d7b472171a0 ******/
 		%feature("compactdefaultargs") SetActualTranslation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualTranslation: float
+theActualTranslation: double
 
 Return
 -------
@@ -3350,12 +3208,10 @@ Description
 -----------
 Sets field ActualTranslation.
 ") SetActualTranslation;
-		void SetActualTranslation(const Standard_Real theActualTranslation);
+		void SetActualTranslation(const double theActualTranslation);
 
 };
 
-
-%make_alias(StepKinematics_PrismaticPairValue)
 
 %extend StepKinematics_PrismaticPairValue {
 	%pythoncode {
@@ -3382,27 +3238,27 @@ default constructor.
 		 StepKinematics_RackAndPinionPairValue();
 
 		/****** StepKinematics_RackAndPinionPairValue::ActualDisplacement ******/
-		/****** md5 signature: 9822afabcb0e1d043beecf96ce2c4160 ******/
+		/****** md5 signature: da977c049addae50a8d9538b822af00a ******/
 		%feature("compactdefaultargs") ActualDisplacement;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualDisplacement.
 ") ActualDisplacement;
-		Standard_Real ActualDisplacement();
+		double ActualDisplacement();
 
 		/****** StepKinematics_RackAndPinionPairValue::Init ******/
-		/****** md5 signature: 5218a23a1ba3e5ea4ee6c331836238e1 ******/
+		/****** md5 signature: c453eb764648defa152340a487a38158 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualDisplacement: float
+theActualDisplacement: double
 
 Return
 -------
@@ -3412,15 +3268,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualDisplacement);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualDisplacement);
 
 		/****** StepKinematics_RackAndPinionPairValue::SetActualDisplacement ******/
-		/****** md5 signature: 901b2a5b592ec5950b42322d17c4b9c0 ******/
+		/****** md5 signature: b06c912db5fbdc15fbeed229bd5d3be1 ******/
 		%feature("compactdefaultargs") SetActualDisplacement;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualDisplacement: float
+theActualDisplacement: double
 
 Return
 -------
@@ -3430,12 +3286,10 @@ Description
 -----------
 Sets field ActualDisplacement.
 ") SetActualDisplacement;
-		void SetActualDisplacement(const Standard_Real theActualDisplacement);
+		void SetActualDisplacement(const double theActualDisplacement);
 
 };
 
-
-%make_alias(StepKinematics_RackAndPinionPairValue)
 
 %extend StepKinematics_RackAndPinionPairValue {
 	%pythoncode {
@@ -3462,27 +3316,27 @@ default constructor.
 		 StepKinematics_RevolutePairValue();
 
 		/****** StepKinematics_RevolutePairValue::ActualRotation ******/
-		/****** md5 signature: 30e9003df2dadd466d63b6d544fb4f7d ******/
+		/****** md5 signature: f25f5770219b708a8eeac3d18093537f ******/
 		%feature("compactdefaultargs") ActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation.
 ") ActualRotation;
-		Standard_Real ActualRotation();
+		double ActualRotation();
 
 		/****** StepKinematics_RevolutePairValue::Init ******/
-		/****** md5 signature: 299e75865a1206ec88ce1960074d83ac ******/
+		/****** md5 signature: 2d0d9db6f07e3125a6b8524b1ba7de25 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3492,15 +3346,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualRotation);
 
 		/****** StepKinematics_RevolutePairValue::SetActualRotation ******/
-		/****** md5 signature: 770befc82d15c08b0b7b1dc4fb5e70e7 ******/
+		/****** md5 signature: 88469d64f7595872fdaf5549069d8641 ******/
 		%feature("compactdefaultargs") SetActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3510,12 +3364,10 @@ Description
 -----------
 Sets field ActualRotation.
 ") SetActualRotation;
-		void SetActualRotation(const Standard_Real theActualRotation);
+		void SetActualRotation(const double theActualRotation);
 
 };
 
-
-%make_alias(StepKinematics_RevolutePairValue)
 
 %extend StepKinematics_RevolutePairValue {
 	%pythoncode {
@@ -3543,8 +3395,6 @@ default constructor.
 
 };
 
-
-%make_alias(StepKinematics_RigidLinkRepresentation)
 
 %extend StepKinematics_RigidLinkRepresentation {
 	%pythoncode {
@@ -3624,8 +3474,6 @@ Sets field ActualPointOnCurve1.
 };
 
 
-%make_alias(StepKinematics_RollingCurvePairValue)
-
 %extend StepKinematics_RollingCurvePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3664,20 +3512,20 @@ Returns field ActualPointOnSurface.
 		opencascade::handle<StepGeom_PointOnSurface> ActualPointOnSurface();
 
 		/****** StepKinematics_RollingSurfacePairValue::ActualRotation ******/
-		/****** md5 signature: 30e9003df2dadd466d63b6d544fb4f7d ******/
+		/****** md5 signature: f25f5770219b708a8eeac3d18093537f ******/
 		%feature("compactdefaultargs") ActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation.
 ") ActualRotation;
-		Standard_Real ActualRotation();
+		double ActualRotation();
 
 		/****** StepKinematics_RollingSurfacePairValue::Init ******/
-		/****** md5 signature: 1aaf353e6f00aa10d5345d308051aba7 ******/
+		/****** md5 signature: 2fc92bf3f1b8c9bdebb92cba3a769442 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3685,7 +3533,7 @@ Parameters
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
 theActualPointOnSurface: StepGeom_PointOnSurface
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3695,7 +3543,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface, const Standard_Real theActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface, const double theActualRotation);
 
 		/****** StepKinematics_RollingSurfacePairValue::SetActualPointOnSurface ******/
 		/****** md5 signature: c7bd90fa0259485bb69c5208032b8176 ******/
@@ -3716,12 +3564,12 @@ Sets field ActualPointOnSurface.
 		void SetActualPointOnSurface(const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface);
 
 		/****** StepKinematics_RollingSurfacePairValue::SetActualRotation ******/
-		/****** md5 signature: 770befc82d15c08b0b7b1dc4fb5e70e7 ******/
+		/****** md5 signature: 88469d64f7595872fdaf5549069d8641 ******/
 		%feature("compactdefaultargs") SetActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3731,12 +3579,10 @@ Description
 -----------
 Sets field ActualRotation.
 ") SetActualRotation;
-		void SetActualRotation(const Standard_Real theActualRotation);
+		void SetActualRotation(const double theActualRotation);
 
 };
 
-
-%make_alias(StepKinematics_RollingSurfacePairValue)
 
 %extend StepKinematics_RollingSurfacePairValue {
 	%pythoncode {
@@ -3763,27 +3609,27 @@ default constructor.
 		 StepKinematics_ScrewPairValue();
 
 		/****** StepKinematics_ScrewPairValue::ActualRotation ******/
-		/****** md5 signature: 30e9003df2dadd466d63b6d544fb4f7d ******/
+		/****** md5 signature: f25f5770219b708a8eeac3d18093537f ******/
 		%feature("compactdefaultargs") ActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation.
 ") ActualRotation;
-		Standard_Real ActualRotation();
+		double ActualRotation();
 
 		/****** StepKinematics_ScrewPairValue::Init ******/
-		/****** md5 signature: 299e75865a1206ec88ce1960074d83ac ******/
+		/****** md5 signature: 2d0d9db6f07e3125a6b8524b1ba7de25 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3793,15 +3639,15 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theActualRotation);
 
 		/****** StepKinematics_ScrewPairValue::SetActualRotation ******/
-		/****** md5 signature: 770befc82d15c08b0b7b1dc4fb5e70e7 ******/
+		/****** md5 signature: 88469d64f7595872fdaf5549069d8641 ******/
 		%feature("compactdefaultargs") SetActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -3811,12 +3657,10 @@ Description
 -----------
 Sets field ActualRotation.
 ") SetActualRotation;
-		void SetActualRotation(const Standard_Real theActualRotation);
+		void SetActualRotation(const double theActualRotation);
 
 };
 
-
-%make_alias(StepKinematics_ScrewPairValue)
 
 %extend StepKinematics_ScrewPairValue {
 	%pythoncode {
@@ -3928,8 +3772,6 @@ Sets field ActualPointOnCurve2.
 };
 
 
-%make_alias(StepKinematics_SlidingCurvePairValue)
-
 %extend StepKinematics_SlidingCurvePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3981,20 +3823,20 @@ Returns field ActualPointOnSurface2.
 		opencascade::handle<StepGeom_PointOnSurface> ActualPointOnSurface2();
 
 		/****** StepKinematics_SlidingSurfacePairValue::ActualRotation ******/
-		/****** md5 signature: 30e9003df2dadd466d63b6d544fb4f7d ******/
+		/****** md5 signature: f25f5770219b708a8eeac3d18093537f ******/
 		%feature("compactdefaultargs") ActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field ActualRotation.
 ") ActualRotation;
-		Standard_Real ActualRotation();
+		double ActualRotation();
 
 		/****** StepKinematics_SlidingSurfacePairValue::Init ******/
-		/****** md5 signature: 5f0fb1355cd1d84df755a9fd108d2dae ******/
+		/****** md5 signature: f10087d44780338de7a92f10ac7daae0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4003,7 +3845,7 @@ theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
 theActualPointOnSurface1: StepGeom_PointOnSurface
 theActualPointOnSurface2: StepGeom_PointOnSurface
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -4013,7 +3855,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface1, const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface2, const Standard_Real theActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface1, const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface2, const double theActualRotation);
 
 		/****** StepKinematics_SlidingSurfacePairValue::SetActualPointOnSurface1 ******/
 		/****** md5 signature: c1c1a93da181bfcc383953b12aae5097 ******/
@@ -4052,12 +3894,12 @@ Sets field ActualPointOnSurface2.
 		void SetActualPointOnSurface2(const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface2);
 
 		/****** StepKinematics_SlidingSurfacePairValue::SetActualRotation ******/
-		/****** md5 signature: 770befc82d15c08b0b7b1dc4fb5e70e7 ******/
+		/****** md5 signature: 88469d64f7595872fdaf5549069d8641 ******/
 		%feature("compactdefaultargs") SetActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theActualRotation: float
+theActualRotation: double
 
 Return
 -------
@@ -4067,12 +3909,10 @@ Description
 -----------
 Sets field ActualRotation.
 ") SetActualRotation;
-		void SetActualRotation(const Standard_Real theActualRotation);
+		void SetActualRotation(const double theActualRotation);
 
 };
 
-
-%make_alias(StepKinematics_SlidingSurfacePairValue)
 
 %extend StepKinematics_SlidingSurfacePairValue {
 	%pythoncode {
@@ -4152,8 +3992,6 @@ Sets field InputOrientation.
 };
 
 
-%make_alias(StepKinematics_SphericalPairValue)
-
 %extend StepKinematics_SphericalPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4232,8 +4070,6 @@ Sets field ActualPlacement.
 };
 
 
-%make_alias(StepKinematics_UnconstrainedPairValue)
-
 %extend StepKinematics_UnconstrainedPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4259,28 +4095,28 @@ default constructor.
 		 StepKinematics_UniversalPairValue();
 
 		/****** StepKinematics_UniversalPairValue::FirstRotationAngle ******/
-		/****** md5 signature: 8a3b0ae88ec339540af2d7d84748efa7 ******/
+		/****** md5 signature: 2d9ded356d1ba25b282516f00deddb47 ******/
 		%feature("compactdefaultargs") FirstRotationAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field FirstRotationAngle.
 ") FirstRotationAngle;
-		Standard_Real FirstRotationAngle();
+		double FirstRotationAngle();
 
 		/****** StepKinematics_UniversalPairValue::Init ******/
-		/****** md5 signature: bfcd3d912dd313776cc400e92493574f ******/
+		/****** md5 signature: e47194e0f75fc9a2f3ee0f1b52a76f9f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theRepresentationItem_Name: TCollection_HAsciiString
 thePairValue_AppliesToPair: StepKinematics_KinematicPair
-theFirstRotationAngle: float
-theSecondRotationAngle: float
+theFirstRotationAngle: double
+theSecondRotationAngle: double
 
 Return
 -------
@@ -4290,28 +4126,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const Standard_Real theFirstRotationAngle, const Standard_Real theSecondRotationAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepKinematics_KinematicPair> & thePairValue_AppliesToPair, const double theFirstRotationAngle, const double theSecondRotationAngle);
 
 		/****** StepKinematics_UniversalPairValue::SecondRotationAngle ******/
-		/****** md5 signature: afb45d14b396702061a5f58c38024af6 ******/
+		/****** md5 signature: 6ac70e46139c461dbc040d688ad72122 ******/
 		%feature("compactdefaultargs") SecondRotationAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field SecondRotationAngle.
 ") SecondRotationAngle;
-		Standard_Real SecondRotationAngle();
+		double SecondRotationAngle();
 
 		/****** StepKinematics_UniversalPairValue::SetFirstRotationAngle ******/
-		/****** md5 signature: 13dfc914903578af9afe62b6d66d7a55 ******/
+		/****** md5 signature: 1fcc5f789925d2e5d262eb2e16d13da4 ******/
 		%feature("compactdefaultargs") SetFirstRotationAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theFirstRotationAngle: float
+theFirstRotationAngle: double
 
 Return
 -------
@@ -4321,15 +4157,15 @@ Description
 -----------
 Sets field FirstRotationAngle.
 ") SetFirstRotationAngle;
-		void SetFirstRotationAngle(const Standard_Real theFirstRotationAngle);
+		void SetFirstRotationAngle(const double theFirstRotationAngle);
 
 		/****** StepKinematics_UniversalPairValue::SetSecondRotationAngle ******/
-		/****** md5 signature: 3a7d01f9da3ffd34848b493d19a187b4 ******/
+		/****** md5 signature: ecd3d14850da1702395f664dfdd97621 ******/
 		%feature("compactdefaultargs") SetSecondRotationAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theSecondRotationAngle: float
+theSecondRotationAngle: double
 
 Return
 -------
@@ -4339,12 +4175,10 @@ Description
 -----------
 Sets field SecondRotationAngle.
 ") SetSecondRotationAngle;
-		void SetSecondRotationAngle(const Standard_Real theSecondRotationAngle);
+		void SetSecondRotationAngle(const double theSecondRotationAngle);
 
 };
 
-
-%make_alias(StepKinematics_UniversalPairValue)
 
 %extend StepKinematics_UniversalPairValue {
 	%pythoncode {
@@ -4373,8 +4207,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_CylindricalPair)
-
 %extend StepKinematics_CylindricalPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4402,8 +4234,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_FullyConstrainedPair)
-
 %extend StepKinematics_FullyConstrainedPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4429,46 +4259,46 @@ default constructor.
 		 StepKinematics_GearPair();
 
 		/****** StepKinematics_GearPair::Bevel ******/
-		/****** md5 signature: 1ff31e0e37d1e4ea39bb4ed9c6beee27 ******/
+		/****** md5 signature: 69dd9fd309dce89974b435b3a35c92eb ******/
 		%feature("compactdefaultargs") Bevel;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field Bevel.
 ") Bevel;
-		Standard_Real Bevel();
+		double Bevel();
 
 		/****** StepKinematics_GearPair::GearRatio ******/
-		/****** md5 signature: 5759ee215f2e2d1f5b5d4c9d3122da8f ******/
+		/****** md5 signature: 94f498957c3d9edb78bbd07ebe5a746c ******/
 		%feature("compactdefaultargs") GearRatio;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field GearRatio.
 ") GearRatio;
-		Standard_Real GearRatio();
+		double GearRatio();
 
 		/****** StepKinematics_GearPair::HelicalAngle ******/
-		/****** md5 signature: 8ae31944750357cb6401503aab2f6343 ******/
+		/****** md5 signature: ccd2e9334a0ee7a8ff0124c65a5b5a56 ******/
 		%feature("compactdefaultargs") HelicalAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field HelicalAngle.
 ") HelicalAngle;
-		Standard_Real HelicalAngle();
+		double HelicalAngle();
 
 		/****** StepKinematics_GearPair::Init ******/
-		/****** md5 signature: 854f2c2bbcd43d30a3976b173428bf76 ******/
+		/****** md5 signature: 74fd0e237da728cd10bb8f4e08be9d40 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4480,11 +4310,11 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-theRadiusFirstLink: float
-theRadiusSecondLink: float
-theBevel: float
-theHelicalAngle: float
-theGearRatio: float
+theRadiusFirstLink: double
+theRadiusSecondLink: double
+theBevel: double
+theHelicalAngle: double
+theGearRatio: double
 
 Return
 -------
@@ -4494,41 +4324,41 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real theRadiusFirstLink, const Standard_Real theRadiusSecondLink, const Standard_Real theBevel, const Standard_Real theHelicalAngle, const Standard_Real theGearRatio);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double theRadiusFirstLink, const double theRadiusSecondLink, const double theBevel, const double theHelicalAngle, const double theGearRatio);
 
 		/****** StepKinematics_GearPair::RadiusFirstLink ******/
-		/****** md5 signature: b03c0d19f83a5da43ed4ee3c5cc39e78 ******/
+		/****** md5 signature: 4bfc730a854f8775901edc68fa37ef22 ******/
 		%feature("compactdefaultargs") RadiusFirstLink;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field RadiusFirstLink.
 ") RadiusFirstLink;
-		Standard_Real RadiusFirstLink();
+		double RadiusFirstLink();
 
 		/****** StepKinematics_GearPair::RadiusSecondLink ******/
-		/****** md5 signature: 6fb8154978d19a8658333775cc96cbb1 ******/
+		/****** md5 signature: 499e381837a2a0bba2f89f24d6f21d71 ******/
 		%feature("compactdefaultargs") RadiusSecondLink;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field RadiusSecondLink.
 ") RadiusSecondLink;
-		Standard_Real RadiusSecondLink();
+		double RadiusSecondLink();
 
 		/****** StepKinematics_GearPair::SetBevel ******/
-		/****** md5 signature: 7982385c4ff0b367cdc62b893322a344 ******/
+		/****** md5 signature: 8326b50c5633f17cdcfa2ae5410bfabd ******/
 		%feature("compactdefaultargs") SetBevel;
 		%feature("autodoc", "
 Parameters
 ----------
-theBevel: float
+theBevel: double
 
 Return
 -------
@@ -4538,15 +4368,15 @@ Description
 -----------
 Sets field Bevel.
 ") SetBevel;
-		void SetBevel(const Standard_Real theBevel);
+		void SetBevel(const double theBevel);
 
 		/****** StepKinematics_GearPair::SetGearRatio ******/
-		/****** md5 signature: eb663fba64ffe82bbcf1f2a3d3a46059 ******/
+		/****** md5 signature: 2cb61c2f6c745fd47ce06e91c662ecae ******/
 		%feature("compactdefaultargs") SetGearRatio;
 		%feature("autodoc", "
 Parameters
 ----------
-theGearRatio: float
+theGearRatio: double
 
 Return
 -------
@@ -4556,15 +4386,15 @@ Description
 -----------
 Sets field GearRatio.
 ") SetGearRatio;
-		void SetGearRatio(const Standard_Real theGearRatio);
+		void SetGearRatio(const double theGearRatio);
 
 		/****** StepKinematics_GearPair::SetHelicalAngle ******/
-		/****** md5 signature: aa2ee7a14a099eec065586836849e498 ******/
+		/****** md5 signature: b2b972bd023053b250bdd57f4d6a11a9 ******/
 		%feature("compactdefaultargs") SetHelicalAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theHelicalAngle: float
+theHelicalAngle: double
 
 Return
 -------
@@ -4574,15 +4404,15 @@ Description
 -----------
 Sets field HelicalAngle.
 ") SetHelicalAngle;
-		void SetHelicalAngle(const Standard_Real theHelicalAngle);
+		void SetHelicalAngle(const double theHelicalAngle);
 
 		/****** StepKinematics_GearPair::SetRadiusFirstLink ******/
-		/****** md5 signature: 59fc9016ee1b5e70b3c2de518c7ecfe8 ******/
+		/****** md5 signature: f548d942777892c323b36f1683a20cb1 ******/
 		%feature("compactdefaultargs") SetRadiusFirstLink;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadiusFirstLink: float
+theRadiusFirstLink: double
 
 Return
 -------
@@ -4592,15 +4422,15 @@ Description
 -----------
 Sets field RadiusFirstLink.
 ") SetRadiusFirstLink;
-		void SetRadiusFirstLink(const Standard_Real theRadiusFirstLink);
+		void SetRadiusFirstLink(const double theRadiusFirstLink);
 
 		/****** StepKinematics_GearPair::SetRadiusSecondLink ******/
-		/****** md5 signature: 272c98b0e105da7aa9071a79cd204a42 ******/
+		/****** md5 signature: b46624c8ebb84c16b2869ca11490500c ******/
 		%feature("compactdefaultargs") SetRadiusSecondLink;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadiusSecondLink: float
+theRadiusSecondLink: double
 
 Return
 -------
@@ -4610,12 +4440,10 @@ Description
 -----------
 Sets field RadiusSecondLink.
 ") SetRadiusSecondLink;
-		void SetRadiusSecondLink(const Standard_Real theRadiusSecondLink);
+		void SetRadiusSecondLink(const double theRadiusSecondLink);
 
 };
 
-
-%make_alias(StepKinematics_GearPair)
 
 %extend StepKinematics_GearPair {
 	%pythoncode {
@@ -4642,7 +4470,7 @@ default constructor.
 		 StepKinematics_LinearFlexibleAndPinionPair();
 
 		/****** StepKinematics_LinearFlexibleAndPinionPair::Init ******/
-		/****** md5 signature: e6f2a770b9795ae7e98cf88befcf1ed3 ******/
+		/****** md5 signature: 5a236383dfad252820be39274b56345a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4654,7 +4482,7 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-thePinionRadius: float
+thePinionRadius: double
 
 Return
 -------
@@ -4664,28 +4492,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real thePinionRadius);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double thePinionRadius);
 
 		/****** StepKinematics_LinearFlexibleAndPinionPair::PinionRadius ******/
-		/****** md5 signature: 2d1fcf7676fb9a4dbe2dd3a393133c16 ******/
+		/****** md5 signature: 550106a6ab8d49ed8d6b5ff01b66cfe9 ******/
 		%feature("compactdefaultargs") PinionRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field PinionRadius.
 ") PinionRadius;
-		Standard_Real PinionRadius();
+		double PinionRadius();
 
 		/****** StepKinematics_LinearFlexibleAndPinionPair::SetPinionRadius ******/
-		/****** md5 signature: 63dc2cb6d56f5b5351e674090957bf1f ******/
+		/****** md5 signature: f3285a9eca1831b7581379fa7163d6a5 ******/
 		%feature("compactdefaultargs") SetPinionRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-thePinionRadius: float
+thePinionRadius: double
 
 Return
 -------
@@ -4695,12 +4523,10 @@ Description
 -----------
 Sets field PinionRadius.
 ") SetPinionRadius;
-		void SetPinionRadius(const Standard_Real thePinionRadius);
+		void SetPinionRadius(const double thePinionRadius);
 
 };
 
-
-%make_alias(StepKinematics_LinearFlexibleAndPinionPair)
 
 %extend StepKinematics_LinearFlexibleAndPinionPair {
 	%pythoncode {
@@ -4727,7 +4553,7 @@ default constructor.
 		 StepKinematics_LinearFlexibleAndPlanarCurvePair();
 
 		/****** StepKinematics_LinearFlexibleAndPlanarCurvePair::Init ******/
-		/****** md5 signature: 7ee6eb9a88fd6ddfabbd67dbb1cd30fc ******/
+		/****** md5 signature: a04b1638460698d82d804670114a14c0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4750,10 +4576,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePairCurve, const Standard_Boolean theOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePairCurve, const bool theOrientation);
 
 		/****** StepKinematics_LinearFlexibleAndPlanarCurvePair::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -4763,7 +4589,7 @@ Description
 -----------
 Returns field Orientation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepKinematics_LinearFlexibleAndPlanarCurvePair::PairCurve ******/
 		/****** md5 signature: 134d93ea7dbcb6acd77121e5a0c370cb ******/
@@ -4779,7 +4605,7 @@ Returns field PairCurve.
 		opencascade::handle<StepGeom_Curve> PairCurve();
 
 		/****** StepKinematics_LinearFlexibleAndPlanarCurvePair::SetOrientation ******/
-		/****** md5 signature: 9610e39fc7ba754c602a10825afabd05 ******/
+		/****** md5 signature: 83f173e1b21848cd0edd6e25cd60b62e ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -4794,7 +4620,7 @@ Description
 -----------
 Sets field Orientation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean theOrientation);
+		void SetOrientation(const bool theOrientation);
 
 		/****** StepKinematics_LinearFlexibleAndPlanarCurvePair::SetPairCurve ******/
 		/****** md5 signature: c7703b05cf8a69dded5fc125ad8540a1 ******/
@@ -4816,8 +4642,6 @@ Sets field PairCurve.
 
 };
 
-
-%make_alias(StepKinematics_LinearFlexibleAndPlanarCurvePair)
 
 %extend StepKinematics_LinearFlexibleAndPlanarCurvePair {
 	%pythoncode {
@@ -4844,7 +4668,7 @@ default constructor.
 		 StepKinematics_LowOrderKinematicPairWithRange();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasLowerLimitActualRotationX ******/
-		/****** md5 signature: 35907d772d67c4d23a6eea14a706c61d ******/
+		/****** md5 signature: b09915520f4721e787047cef6f217290 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotationX;
 		%feature("autodoc", "Return
 -------
@@ -4854,10 +4678,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotationX is defined.
 ") HasLowerLimitActualRotationX;
-		Standard_Boolean HasLowerLimitActualRotationX();
+		bool HasLowerLimitActualRotationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasLowerLimitActualRotationY ******/
-		/****** md5 signature: 56a78634ce9a43b436f8e7df337ffba5 ******/
+		/****** md5 signature: cfc2ea28d32241fc6bf23dca1cb99653 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotationY;
 		%feature("autodoc", "Return
 -------
@@ -4867,10 +4691,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotationY is defined.
 ") HasLowerLimitActualRotationY;
-		Standard_Boolean HasLowerLimitActualRotationY();
+		bool HasLowerLimitActualRotationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasLowerLimitActualRotationZ ******/
-		/****** md5 signature: 5a64c3517924ef91f47f9236c58be0e6 ******/
+		/****** md5 signature: f07ddb20bde96ea84a79d26aff1e112b ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotationZ;
 		%feature("autodoc", "Return
 -------
@@ -4880,10 +4704,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotationZ is defined.
 ") HasLowerLimitActualRotationZ;
-		Standard_Boolean HasLowerLimitActualRotationZ();
+		bool HasLowerLimitActualRotationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasLowerLimitActualTranslationX ******/
-		/****** md5 signature: 84750c5a60573c63366b414bfb1ea469 ******/
+		/****** md5 signature: 44c6a2431c8b0e6f7c4cc167a839e8f5 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
@@ -4893,10 +4717,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslationX is defined.
 ") HasLowerLimitActualTranslationX;
-		Standard_Boolean HasLowerLimitActualTranslationX();
+		bool HasLowerLimitActualTranslationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasLowerLimitActualTranslationY ******/
-		/****** md5 signature: d48cec851c95860b788b6b9ccb5aee66 ******/
+		/****** md5 signature: 40ee3e7fe931c67d64787db7e7eca2c6 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
@@ -4906,10 +4730,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslationY is defined.
 ") HasLowerLimitActualTranslationY;
-		Standard_Boolean HasLowerLimitActualTranslationY();
+		bool HasLowerLimitActualTranslationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasLowerLimitActualTranslationZ ******/
-		/****** md5 signature: b6dcc1217f400c5f8a9755e463563adb ******/
+		/****** md5 signature: 26f4c618e9e2deadccce363c2cddd4c5 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslationZ;
 		%feature("autodoc", "Return
 -------
@@ -4919,10 +4743,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslationZ is defined.
 ") HasLowerLimitActualTranslationZ;
-		Standard_Boolean HasLowerLimitActualTranslationZ();
+		bool HasLowerLimitActualTranslationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasUpperLimitActualRotationX ******/
-		/****** md5 signature: 7ab704748fa962c838059b8446b2445d ******/
+		/****** md5 signature: 4ac9c42645ab9530bf313c9c1bcc1330 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotationX;
 		%feature("autodoc", "Return
 -------
@@ -4932,10 +4756,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotationX is defined.
 ") HasUpperLimitActualRotationX;
-		Standard_Boolean HasUpperLimitActualRotationX();
+		bool HasUpperLimitActualRotationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasUpperLimitActualRotationY ******/
-		/****** md5 signature: 5e69d16f3b402b17851c463efd455d76 ******/
+		/****** md5 signature: 6ac87288fec3a985779723949cd49b87 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotationY;
 		%feature("autodoc", "Return
 -------
@@ -4945,10 +4769,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotationY is defined.
 ") HasUpperLimitActualRotationY;
-		Standard_Boolean HasUpperLimitActualRotationY();
+		bool HasUpperLimitActualRotationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasUpperLimitActualRotationZ ******/
-		/****** md5 signature: 83e3bc44b3f2f017a2e2401e2d2867d2 ******/
+		/****** md5 signature: a3d9bb466958e8584bb058cdeff5efb5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotationZ;
 		%feature("autodoc", "Return
 -------
@@ -4958,10 +4782,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotationZ is defined.
 ") HasUpperLimitActualRotationZ;
-		Standard_Boolean HasUpperLimitActualRotationZ();
+		bool HasUpperLimitActualRotationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasUpperLimitActualTranslationX ******/
-		/****** md5 signature: 06b365134561f1ac12bece58783cea2b ******/
+		/****** md5 signature: 35fbb83566ac6691f70d253066866aa8 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
@@ -4971,10 +4795,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslationX is defined.
 ") HasUpperLimitActualTranslationX;
-		Standard_Boolean HasUpperLimitActualTranslationX();
+		bool HasUpperLimitActualTranslationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasUpperLimitActualTranslationY ******/
-		/****** md5 signature: d33d9f218a7ad05ca4e66cf7dee2feac ******/
+		/****** md5 signature: 4acb9f7eff10d5533fc354a1ab9b31f5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
@@ -4984,10 +4808,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslationY is defined.
 ") HasUpperLimitActualTranslationY;
-		Standard_Boolean HasUpperLimitActualTranslationY();
+		bool HasUpperLimitActualTranslationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::HasUpperLimitActualTranslationZ ******/
-		/****** md5 signature: 186e9d07d94ed267a17621af50d559fb ******/
+		/****** md5 signature: e32f390789f72ecfc2159685bd1c58e9 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslationZ;
 		%feature("autodoc", "Return
 -------
@@ -4997,10 +4821,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslationZ is defined.
 ") HasUpperLimitActualTranslationZ;
-		Standard_Boolean HasUpperLimitActualTranslationZ();
+		bool HasUpperLimitActualTranslationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::Init ******/
-		/****** md5 signature: 0ea1465a58f571103a32cab2156e2787 ******/
+		/****** md5 signature: 5bd089ecc82d3541c01921ecd6a8f725 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5019,29 +4843,29 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitActualRotationX: bool
-theLowerLimitActualRotationX: float
+theLowerLimitActualRotationX: double
 hasUpperLimitActualRotationX: bool
-theUpperLimitActualRotationX: float
+theUpperLimitActualRotationX: double
 hasLowerLimitActualRotationY: bool
-theLowerLimitActualRotationY: float
+theLowerLimitActualRotationY: double
 hasUpperLimitActualRotationY: bool
-theUpperLimitActualRotationY: float
+theUpperLimitActualRotationY: double
 hasLowerLimitActualRotationZ: bool
-theLowerLimitActualRotationZ: float
+theLowerLimitActualRotationZ: double
 hasUpperLimitActualRotationZ: bool
-theUpperLimitActualRotationZ: float
+theUpperLimitActualRotationZ: double
 hasLowerLimitActualTranslationX: bool
-theLowerLimitActualTranslationX: float
+theLowerLimitActualTranslationX: double
 hasUpperLimitActualTranslationX: bool
-theUpperLimitActualTranslationX: float
+theUpperLimitActualTranslationX: double
 hasLowerLimitActualTranslationY: bool
-theLowerLimitActualTranslationY: float
+theLowerLimitActualTranslationY: double
 hasUpperLimitActualTranslationY: bool
-theUpperLimitActualTranslationY: float
+theUpperLimitActualTranslationY: double
 hasLowerLimitActualTranslationZ: bool
-theLowerLimitActualTranslationZ: float
+theLowerLimitActualTranslationZ: double
 hasUpperLimitActualTranslationZ: bool
-theUpperLimitActualTranslationZ: float
+theUpperLimitActualTranslationZ: double
 
 Return
 -------
@@ -5051,93 +4875,93 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitActualRotationX, const Standard_Real theLowerLimitActualRotationX, const Standard_Boolean hasUpperLimitActualRotationX, const Standard_Real theUpperLimitActualRotationX, const Standard_Boolean hasLowerLimitActualRotationY, const Standard_Real theLowerLimitActualRotationY, const Standard_Boolean hasUpperLimitActualRotationY, const Standard_Real theUpperLimitActualRotationY, const Standard_Boolean hasLowerLimitActualRotationZ, const Standard_Real theLowerLimitActualRotationZ, const Standard_Boolean hasUpperLimitActualRotationZ, const Standard_Real theUpperLimitActualRotationZ, const Standard_Boolean hasLowerLimitActualTranslationX, const Standard_Real theLowerLimitActualTranslationX, const Standard_Boolean hasUpperLimitActualTranslationX, const Standard_Real theUpperLimitActualTranslationX, const Standard_Boolean hasLowerLimitActualTranslationY, const Standard_Real theLowerLimitActualTranslationY, const Standard_Boolean hasUpperLimitActualTranslationY, const Standard_Real theUpperLimitActualTranslationY, const Standard_Boolean hasLowerLimitActualTranslationZ, const Standard_Real theLowerLimitActualTranslationZ, const Standard_Boolean hasUpperLimitActualTranslationZ, const Standard_Real theUpperLimitActualTranslationZ);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitActualRotationX, const double theLowerLimitActualRotationX, const bool hasUpperLimitActualRotationX, const double theUpperLimitActualRotationX, const bool hasLowerLimitActualRotationY, const double theLowerLimitActualRotationY, const bool hasUpperLimitActualRotationY, const double theUpperLimitActualRotationY, const bool hasLowerLimitActualRotationZ, const double theLowerLimitActualRotationZ, const bool hasUpperLimitActualRotationZ, const double theUpperLimitActualRotationZ, const bool hasLowerLimitActualTranslationX, const double theLowerLimitActualTranslationX, const bool hasUpperLimitActualTranslationX, const double theUpperLimitActualTranslationX, const bool hasLowerLimitActualTranslationY, const double theLowerLimitActualTranslationY, const bool hasUpperLimitActualTranslationY, const double theUpperLimitActualTranslationY, const bool hasLowerLimitActualTranslationZ, const double theLowerLimitActualTranslationZ, const bool hasUpperLimitActualTranslationZ, const double theUpperLimitActualTranslationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::LowerLimitActualRotationX ******/
-		/****** md5 signature: 8b97b5a9254d7ebd82f16d3e22b21cc7 ******/
+		/****** md5 signature: fd22d0ca6414bd032fa6e20240cb36da ******/
 		%feature("compactdefaultargs") LowerLimitActualRotationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotationX.
 ") LowerLimitActualRotationX;
-		Standard_Real LowerLimitActualRotationX();
+		double LowerLimitActualRotationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::LowerLimitActualRotationY ******/
-		/****** md5 signature: 0103cc7c9948e44ec7ac6f89fca27d87 ******/
+		/****** md5 signature: b16b1a42a59a56949d2e558d12f0f2ed ******/
 		%feature("compactdefaultargs") LowerLimitActualRotationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotationY.
 ") LowerLimitActualRotationY;
-		Standard_Real LowerLimitActualRotationY();
+		double LowerLimitActualRotationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::LowerLimitActualRotationZ ******/
-		/****** md5 signature: 47944b6b97dc3fc9d94dda1ba631281e ******/
+		/****** md5 signature: 3bd1909259f0a9d17843714ee6b519ea ******/
 		%feature("compactdefaultargs") LowerLimitActualRotationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotationZ.
 ") LowerLimitActualRotationZ;
-		Standard_Real LowerLimitActualRotationZ();
+		double LowerLimitActualRotationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::LowerLimitActualTranslationX ******/
-		/****** md5 signature: c6efa30a0704d2540db52de4d5c9d233 ******/
+		/****** md5 signature: eb3ad8d32d878ee38dbcfea09147b4cd ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslationX.
 ") LowerLimitActualTranslationX;
-		Standard_Real LowerLimitActualTranslationX();
+		double LowerLimitActualTranslationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::LowerLimitActualTranslationY ******/
-		/****** md5 signature: 1df934faf95c599b869632babf805c13 ******/
+		/****** md5 signature: 33720fa3c7554285fde0b08a9d724a3f ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslationY.
 ") LowerLimitActualTranslationY;
-		Standard_Real LowerLimitActualTranslationY();
+		double LowerLimitActualTranslationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::LowerLimitActualTranslationZ ******/
-		/****** md5 signature: 0bf6684e57c67a4031672c48ba39dbee ******/
+		/****** md5 signature: 75542c55601c1fcb971ec03d2e5443d5 ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslationZ.
 ") LowerLimitActualTranslationZ;
-		Standard_Real LowerLimitActualTranslationZ();
+		double LowerLimitActualTranslationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetLowerLimitActualRotationX ******/
-		/****** md5 signature: fa703f1415a142e3e5666de185585c78 ******/
+		/****** md5 signature: e6fd5c8fe8546356e4733042375b38d4 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotationX: float
+theLowerLimitActualRotationX: double
 
 Return
 -------
@@ -5147,15 +4971,15 @@ Description
 -----------
 Sets field LowerLimitActualRotationX.
 ") SetLowerLimitActualRotationX;
-		void SetLowerLimitActualRotationX(const Standard_Real theLowerLimitActualRotationX);
+		void SetLowerLimitActualRotationX(const double theLowerLimitActualRotationX);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetLowerLimitActualRotationY ******/
-		/****** md5 signature: 53dffe4e6a00f55ab531cf0f19b326a0 ******/
+		/****** md5 signature: 417603baf644664604a075fd5ece59aa ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotationY: float
+theLowerLimitActualRotationY: double
 
 Return
 -------
@@ -5165,15 +4989,15 @@ Description
 -----------
 Sets field LowerLimitActualRotationY.
 ") SetLowerLimitActualRotationY;
-		void SetLowerLimitActualRotationY(const Standard_Real theLowerLimitActualRotationY);
+		void SetLowerLimitActualRotationY(const double theLowerLimitActualRotationY);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetLowerLimitActualRotationZ ******/
-		/****** md5 signature: c47644d4fe5b6b949709d344a3039443 ******/
+		/****** md5 signature: 673c8113a39a01b4417695e34d973578 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotationZ: float
+theLowerLimitActualRotationZ: double
 
 Return
 -------
@@ -5183,15 +5007,15 @@ Description
 -----------
 Sets field LowerLimitActualRotationZ.
 ") SetLowerLimitActualRotationZ;
-		void SetLowerLimitActualRotationZ(const Standard_Real theLowerLimitActualRotationZ);
+		void SetLowerLimitActualRotationZ(const double theLowerLimitActualRotationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetLowerLimitActualTranslationX ******/
-		/****** md5 signature: fadf9b10ce37cb78cf5c01aece75d7e0 ******/
+		/****** md5 signature: 8a0c13504786bc731fef6f9c5480fc21 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslationX: float
+theLowerLimitActualTranslationX: double
 
 Return
 -------
@@ -5201,15 +5025,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslationX.
 ") SetLowerLimitActualTranslationX;
-		void SetLowerLimitActualTranslationX(const Standard_Real theLowerLimitActualTranslationX);
+		void SetLowerLimitActualTranslationX(const double theLowerLimitActualTranslationX);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetLowerLimitActualTranslationY ******/
-		/****** md5 signature: b561083e96b17f20c1be6e3daebea5e3 ******/
+		/****** md5 signature: 0691fd67fd3f365501a664e48d0d255c ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslationY: float
+theLowerLimitActualTranslationY: double
 
 Return
 -------
@@ -5219,15 +5043,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslationY.
 ") SetLowerLimitActualTranslationY;
-		void SetLowerLimitActualTranslationY(const Standard_Real theLowerLimitActualTranslationY);
+		void SetLowerLimitActualTranslationY(const double theLowerLimitActualTranslationY);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetLowerLimitActualTranslationZ ******/
-		/****** md5 signature: 67bf7eb991d28413fd34829a119ac922 ******/
+		/****** md5 signature: 4fa59d6496da8fbb334ec3da340bdb87 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslationZ: float
+theLowerLimitActualTranslationZ: double
 
 Return
 -------
@@ -5237,15 +5061,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslationZ.
 ") SetLowerLimitActualTranslationZ;
-		void SetLowerLimitActualTranslationZ(const Standard_Real theLowerLimitActualTranslationZ);
+		void SetLowerLimitActualTranslationZ(const double theLowerLimitActualTranslationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetUpperLimitActualRotationX ******/
-		/****** md5 signature: 2be386c21c19487c4445e5ddbd753cfc ******/
+		/****** md5 signature: eca7a3b862cc7412b3109e16658e1f02 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotationX: float
+theUpperLimitActualRotationX: double
 
 Return
 -------
@@ -5255,15 +5079,15 @@ Description
 -----------
 Sets field UpperLimitActualRotationX.
 ") SetUpperLimitActualRotationX;
-		void SetUpperLimitActualRotationX(const Standard_Real theUpperLimitActualRotationX);
+		void SetUpperLimitActualRotationX(const double theUpperLimitActualRotationX);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetUpperLimitActualRotationY ******/
-		/****** md5 signature: 0207e7f4d0a2d7b4c088c6816c9e0718 ******/
+		/****** md5 signature: 210cbaab82e717f5628b7cad261ba4ab ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotationY: float
+theUpperLimitActualRotationY: double
 
 Return
 -------
@@ -5273,15 +5097,15 @@ Description
 -----------
 Sets field UpperLimitActualRotationY.
 ") SetUpperLimitActualRotationY;
-		void SetUpperLimitActualRotationY(const Standard_Real theUpperLimitActualRotationY);
+		void SetUpperLimitActualRotationY(const double theUpperLimitActualRotationY);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetUpperLimitActualRotationZ ******/
-		/****** md5 signature: 6fb2a5805ae9504f74d02e3ebc8433b6 ******/
+		/****** md5 signature: 52c874efef7b3b89c528da380a10898c ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotationZ: float
+theUpperLimitActualRotationZ: double
 
 Return
 -------
@@ -5291,15 +5115,15 @@ Description
 -----------
 Sets field UpperLimitActualRotationZ.
 ") SetUpperLimitActualRotationZ;
-		void SetUpperLimitActualRotationZ(const Standard_Real theUpperLimitActualRotationZ);
+		void SetUpperLimitActualRotationZ(const double theUpperLimitActualRotationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetUpperLimitActualTranslationX ******/
-		/****** md5 signature: ed987558115e6efffde9954562e07f6a ******/
+		/****** md5 signature: efa9028eccc6ecaf8ecbe3166cf0bce0 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslationX: float
+theUpperLimitActualTranslationX: double
 
 Return
 -------
@@ -5309,15 +5133,15 @@ Description
 -----------
 Sets field UpperLimitActualTranslationX.
 ") SetUpperLimitActualTranslationX;
-		void SetUpperLimitActualTranslationX(const Standard_Real theUpperLimitActualTranslationX);
+		void SetUpperLimitActualTranslationX(const double theUpperLimitActualTranslationX);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetUpperLimitActualTranslationY ******/
-		/****** md5 signature: 31b1518a07a02d6b35ee04f3612701c6 ******/
+		/****** md5 signature: 2de31ff4c54c58df9674ae443507758a ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslationY: float
+theUpperLimitActualTranslationY: double
 
 Return
 -------
@@ -5327,15 +5151,15 @@ Description
 -----------
 Sets field UpperLimitActualTranslationY.
 ") SetUpperLimitActualTranslationY;
-		void SetUpperLimitActualTranslationY(const Standard_Real theUpperLimitActualTranslationY);
+		void SetUpperLimitActualTranslationY(const double theUpperLimitActualTranslationY);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::SetUpperLimitActualTranslationZ ******/
-		/****** md5 signature: 87ceaed892cfb91b51dbc48b13cb4430 ******/
+		/****** md5 signature: d1580846697522e467c9ca26bf138cb3 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslationZ;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslationZ: float
+theUpperLimitActualTranslationZ: double
 
 Return
 -------
@@ -5345,90 +5169,88 @@ Description
 -----------
 Sets field UpperLimitActualTranslationZ.
 ") SetUpperLimitActualTranslationZ;
-		void SetUpperLimitActualTranslationZ(const Standard_Real theUpperLimitActualTranslationZ);
+		void SetUpperLimitActualTranslationZ(const double theUpperLimitActualTranslationZ);
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::UpperLimitActualRotationX ******/
-		/****** md5 signature: 3363db57c2020a7dfcae6696efb56dfe ******/
+		/****** md5 signature: 05115b9eeee3660b018b3726e74f187f ******/
 		%feature("compactdefaultargs") UpperLimitActualRotationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotationX.
 ") UpperLimitActualRotationX;
-		Standard_Real UpperLimitActualRotationX();
+		double UpperLimitActualRotationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::UpperLimitActualRotationY ******/
-		/****** md5 signature: 464e865e00fcceb537326a95ab28dcce ******/
+		/****** md5 signature: e33a788c5acfb0b0227029e9f7bbb77f ******/
 		%feature("compactdefaultargs") UpperLimitActualRotationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotationY.
 ") UpperLimitActualRotationY;
-		Standard_Real UpperLimitActualRotationY();
+		double UpperLimitActualRotationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::UpperLimitActualRotationZ ******/
-		/****** md5 signature: eccfe47eef21ce3734bb97688c94d011 ******/
+		/****** md5 signature: 40483d1efd04b662b9070f0cb530db97 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotationZ.
 ") UpperLimitActualRotationZ;
-		Standard_Real UpperLimitActualRotationZ();
+		double UpperLimitActualRotationZ();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::UpperLimitActualTranslationX ******/
-		/****** md5 signature: 61bb76275073270aef2851a409bef7d4 ******/
+		/****** md5 signature: 2ff564f20c26a3d66364dffc3aa9da01 ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslationX.
 ") UpperLimitActualTranslationX;
-		Standard_Real UpperLimitActualTranslationX();
+		double UpperLimitActualTranslationX();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::UpperLimitActualTranslationY ******/
-		/****** md5 signature: ab619622e872a6d4172114a8078d98bc ******/
+		/****** md5 signature: 3efb048838cc6591530c486b4fc396c5 ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslationY.
 ") UpperLimitActualTranslationY;
-		Standard_Real UpperLimitActualTranslationY();
+		double UpperLimitActualTranslationY();
 
 		/****** StepKinematics_LowOrderKinematicPairWithRange::UpperLimitActualTranslationZ ******/
-		/****** md5 signature: 3a0ecbf076227028ae15fad3c0baf6bf ******/
+		/****** md5 signature: e4e31dc404f03e7bf1b64f8e3c164ebe ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslationZ;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslationZ.
 ") UpperLimitActualTranslationZ;
-		Standard_Real UpperLimitActualTranslationZ();
+		double UpperLimitActualTranslationZ();
 
 };
 
-
-%make_alias(StepKinematics_LowOrderKinematicPairWithRange)
 
 %extend StepKinematics_LowOrderKinematicPairWithRange {
 	%pythoncode {
@@ -5481,7 +5303,7 @@ Returns field Curve2.
 		opencascade::handle<StepGeom_Curve> Curve2();
 
 		/****** StepKinematics_PlanarCurvePair::Init ******/
-		/****** md5 signature: e78fbd760b4a911f9a650c536077a623 ******/
+		/****** md5 signature: 24ad54e890bab6977c61c16fcce1b123 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5505,10 +5327,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & theCurve1, const opencascade::handle<StepGeom_Curve> & theCurve2, const Standard_Boolean theOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & theCurve1, const opencascade::handle<StepGeom_Curve> & theCurve2, const bool theOrientation);
 
 		/****** StepKinematics_PlanarCurvePair::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -5518,7 +5340,7 @@ Description
 -----------
 Returns field Orientation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepKinematics_PlanarCurvePair::SetCurve1 ******/
 		/****** md5 signature: d6f88e0f5ff12b588810345845fa51af ******/
@@ -5557,7 +5379,7 @@ Sets field Curve2.
 		void SetCurve2(const opencascade::handle<StepGeom_Curve> & theCurve2);
 
 		/****** StepKinematics_PlanarCurvePair::SetOrientation ******/
-		/****** md5 signature: 9610e39fc7ba754c602a10825afabd05 ******/
+		/****** md5 signature: 83f173e1b21848cd0edd6e25cd60b62e ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -5572,12 +5394,10 @@ Description
 -----------
 Sets field Orientation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean theOrientation);
+		void SetOrientation(const bool theOrientation);
 
 };
 
-
-%make_alias(StepKinematics_PlanarCurvePair)
 
 %extend StepKinematics_PlanarCurvePair {
 	%pythoncode {
@@ -5606,8 +5426,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_PlanarPair)
-
 %extend StepKinematics_PlanarPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5633,7 +5451,7 @@ default constructor.
 		 StepKinematics_PointOnPlanarCurvePair();
 
 		/****** StepKinematics_PointOnPlanarCurvePair::Init ******/
-		/****** md5 signature: 7ee6eb9a88fd6ddfabbd67dbb1cd30fc ******/
+		/****** md5 signature: a04b1638460698d82d804670114a14c0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5656,10 +5474,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePairCurve, const Standard_Boolean theOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePairCurve, const bool theOrientation);
 
 		/****** StepKinematics_PointOnPlanarCurvePair::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -5669,7 +5487,7 @@ Description
 -----------
 Returns field Orientation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepKinematics_PointOnPlanarCurvePair::PairCurve ******/
 		/****** md5 signature: 134d93ea7dbcb6acd77121e5a0c370cb ******/
@@ -5685,7 +5503,7 @@ Returns field PairCurve.
 		opencascade::handle<StepGeom_Curve> PairCurve();
 
 		/****** StepKinematics_PointOnPlanarCurvePair::SetOrientation ******/
-		/****** md5 signature: 9610e39fc7ba754c602a10825afabd05 ******/
+		/****** md5 signature: 83f173e1b21848cd0edd6e25cd60b62e ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -5700,7 +5518,7 @@ Description
 -----------
 Sets field Orientation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean theOrientation);
+		void SetOrientation(const bool theOrientation);
 
 		/****** StepKinematics_PointOnPlanarCurvePair::SetPairCurve ******/
 		/****** md5 signature: c7703b05cf8a69dded5fc125ad8540a1 ******/
@@ -5722,8 +5540,6 @@ Sets field PairCurve.
 
 };
 
-
-%make_alias(StepKinematics_PointOnPlanarCurvePair)
 
 %extend StepKinematics_PointOnPlanarCurvePair {
 	%pythoncode {
@@ -5750,7 +5566,7 @@ default constructor.
 		 StepKinematics_PointOnSurfacePair();
 
 		/****** StepKinematics_PointOnSurfacePair::Init ******/
-		/****** md5 signature: 9add4a2d514254841a848b42ab070f54 ******/
+		/****** md5 signature: f7f25e003e484e8b9973f2259f44599f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5772,7 +5588,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & thePairSurface);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & thePairSurface);
 
 		/****** StepKinematics_PointOnSurfacePair::PairSurface ******/
 		/****** md5 signature: d5f228320e13c1711af3fa6469cac537 ******/
@@ -5808,8 +5624,6 @@ Sets field PairSurface.
 };
 
 
-%make_alias(StepKinematics_PointOnSurfacePair)
-
 %extend StepKinematics_PointOnSurfacePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5837,8 +5651,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_PrismaticPair)
-
 %extend StepKinematics_PrismaticPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5864,7 +5676,7 @@ default constructor.
 		 StepKinematics_RackAndPinionPair();
 
 		/****** StepKinematics_RackAndPinionPair::Init ******/
-		/****** md5 signature: e6f2a770b9795ae7e98cf88befcf1ed3 ******/
+		/****** md5 signature: 5a236383dfad252820be39274b56345a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5876,7 +5688,7 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-thePinionRadius: float
+thePinionRadius: double
 
 Return
 -------
@@ -5886,28 +5698,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real thePinionRadius);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double thePinionRadius);
 
 		/****** StepKinematics_RackAndPinionPair::PinionRadius ******/
-		/****** md5 signature: 2d1fcf7676fb9a4dbe2dd3a393133c16 ******/
+		/****** md5 signature: 550106a6ab8d49ed8d6b5ff01b66cfe9 ******/
 		%feature("compactdefaultargs") PinionRadius;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field PinionRadius.
 ") PinionRadius;
-		Standard_Real PinionRadius();
+		double PinionRadius();
 
 		/****** StepKinematics_RackAndPinionPair::SetPinionRadius ******/
-		/****** md5 signature: 63dc2cb6d56f5b5351e674090957bf1f ******/
+		/****** md5 signature: f3285a9eca1831b7581379fa7163d6a5 ******/
 		%feature("compactdefaultargs") SetPinionRadius;
 		%feature("autodoc", "
 Parameters
 ----------
-thePinionRadius: float
+thePinionRadius: double
 
 Return
 -------
@@ -5917,12 +5729,10 @@ Description
 -----------
 Sets field PinionRadius.
 ") SetPinionRadius;
-		void SetPinionRadius(const Standard_Real thePinionRadius);
+		void SetPinionRadius(const double thePinionRadius);
 
 };
 
-
-%make_alias(StepKinematics_RackAndPinionPair)
 
 %extend StepKinematics_RackAndPinionPair {
 	%pythoncode {
@@ -5951,8 +5761,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_RevolutePair)
-
 %extend StepKinematics_RevolutePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5978,7 +5786,7 @@ default constructor.
 		 StepKinematics_ScrewPair();
 
 		/****** StepKinematics_ScrewPair::Init ******/
-		/****** md5 signature: 0bf6b47185be3a2fc2f190df9cd47b8d ******/
+		/****** md5 signature: e6c60d242b628ae3f25f56cc1c52438d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5990,7 +5798,7 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-thePitch: float
+thePitch: double
 
 Return
 -------
@@ -6000,28 +5808,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real thePitch);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double thePitch);
 
 		/****** StepKinematics_ScrewPair::Pitch ******/
-		/****** md5 signature: 8ec062ae5f947c54018c0e68f0905096 ******/
+		/****** md5 signature: 0021de1ddd2f36404cc1bc602e8a1d97 ******/
 		%feature("compactdefaultargs") Pitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field Pitch.
 ") Pitch;
-		Standard_Real Pitch();
+		double Pitch();
 
 		/****** StepKinematics_ScrewPair::SetPitch ******/
-		/****** md5 signature: 46ae8dd2c567d0891d54371bfe791c0f ******/
+		/****** md5 signature: 7b4b8742dbd8b6a7c2ca6f02224634a7 ******/
 		%feature("compactdefaultargs") SetPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-thePitch: float
+thePitch: double
 
 Return
 -------
@@ -6031,12 +5839,10 @@ Description
 -----------
 Sets field Pitch.
 ") SetPitch;
-		void SetPitch(const Standard_Real thePitch);
+		void SetPitch(const double thePitch);
 
 };
 
-
-%make_alias(StepKinematics_ScrewPair)
 
 %extend StepKinematics_ScrewPair {
 	%pythoncode {
@@ -6065,8 +5871,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_SphericalPair)
-
 %extend StepKinematics_SphericalPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6094,8 +5898,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_SphericalPairWithPin)
-
 %extend StepKinematics_SphericalPairWithPin {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6121,7 +5923,7 @@ default constructor.
 		 StepKinematics_SurfacePair();
 
 		/****** StepKinematics_SurfacePair::Init ******/
-		/****** md5 signature: 3051d7e4cbb649d74dbee2e04b2dd3c2 ******/
+		/****** md5 signature: 8052c38fae76b1d1dee0b3c2982d90d8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6145,10 +5947,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & theSurface1, const opencascade::handle<StepGeom_Surface> & theSurface2, const Standard_Boolean theOrientation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & theSurface1, const opencascade::handle<StepGeom_Surface> & theSurface2, const bool theOrientation);
 
 		/****** StepKinematics_SurfacePair::Orientation ******/
-		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
+		/****** md5 signature: f7c8bc405e9c9ac9fe1f41805829040c ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -6158,10 +5960,10 @@ Description
 -----------
 Returns field Orientation.
 ") Orientation;
-		Standard_Boolean Orientation();
+		bool Orientation();
 
 		/****** StepKinematics_SurfacePair::SetOrientation ******/
-		/****** md5 signature: 9610e39fc7ba754c602a10825afabd05 ******/
+		/****** md5 signature: 83f173e1b21848cd0edd6e25cd60b62e ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -6176,7 +5978,7 @@ Description
 -----------
 Sets field Orientation.
 ") SetOrientation;
-		void SetOrientation(const Standard_Boolean theOrientation);
+		void SetOrientation(const bool theOrientation);
 
 		/****** StepKinematics_SurfacePair::SetSurface1 ******/
 		/****** md5 signature: 4b6ea8ec750c5606e715c278eba6e37a ******/
@@ -6243,8 +6045,6 @@ Returns field Surface2.
 };
 
 
-%make_alias(StepKinematics_SurfacePair)
-
 %extend StepKinematics_SurfacePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6272,8 +6072,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_UnconstrainedPair)
-
 %extend StepKinematics_UnconstrainedPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6299,7 +6097,7 @@ default constructor.
 		 StepKinematics_UniversalPair();
 
 		/****** StepKinematics_UniversalPair::HasInputSkewAngle ******/
-		/****** md5 signature: 8022159ffa20aa2ddf1515695ee4e461 ******/
+		/****** md5 signature: d77a00b847fcd886be1c882fbf220b86 ******/
 		%feature("compactdefaultargs") HasInputSkewAngle;
 		%feature("autodoc", "Return
 -------
@@ -6309,10 +6107,10 @@ Description
 -----------
 Returns True if optional field InputSkewAngle is defined.
 ") HasInputSkewAngle;
-		Standard_Boolean HasInputSkewAngle();
+		bool HasInputSkewAngle();
 
 		/****** StepKinematics_UniversalPair::Init ******/
-		/****** md5 signature: 6a375b329b2e8923fac6b9d069b26795 ******/
+		/****** md5 signature: 980909d253847c0d8a8969569351bba1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6331,7 +6129,7 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasInputSkewAngle: bool
-theInputSkewAngle: float
+theInputSkewAngle: double
 
 Return
 -------
@@ -6341,28 +6139,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasInputSkewAngle, const Standard_Real theInputSkewAngle);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasInputSkewAngle, const double theInputSkewAngle);
 
 		/****** StepKinematics_UniversalPair::InputSkewAngle ******/
-		/****** md5 signature: 88e7b17106f56d4b80dc1e9beccc7228 ******/
+		/****** md5 signature: 5feab4f21d07d6c9c24f05c3b7d7a618 ******/
 		%feature("compactdefaultargs") InputSkewAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field InputSkewAngle.
 ") InputSkewAngle;
-		Standard_Real InputSkewAngle();
+		double InputSkewAngle();
 
 		/****** StepKinematics_UniversalPair::SetInputSkewAngle ******/
-		/****** md5 signature: e248596be177cd936d007f22db56ea84 ******/
+		/****** md5 signature: 1ac8f67c28a5a4fac712baa249e9567c ******/
 		%feature("compactdefaultargs") SetInputSkewAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-theInputSkewAngle: float
+theInputSkewAngle: double
 
 Return
 -------
@@ -6372,12 +6170,10 @@ Description
 -----------
 Sets field InputSkewAngle.
 ") SetInputSkewAngle;
-		void SetInputSkewAngle(const Standard_Real theInputSkewAngle);
+		void SetInputSkewAngle(const double theInputSkewAngle);
 
 };
 
-
-%make_alias(StepKinematics_UniversalPair)
 
 %extend StepKinematics_UniversalPair {
 	%pythoncode {
@@ -6404,7 +6200,7 @@ default constructor.
 		 StepKinematics_CylindricalPairWithRange();
 
 		/****** StepKinematics_CylindricalPairWithRange::HasLowerLimitActualRotation ******/
-		/****** md5 signature: e0eabf1d75b84dc61065385143e77e72 ******/
+		/****** md5 signature: 9b40ef4d811e858876d345f940d9308d ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -6414,10 +6210,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
-		Standard_Boolean HasLowerLimitActualRotation();
+		bool HasLowerLimitActualRotation();
 
 		/****** StepKinematics_CylindricalPairWithRange::HasLowerLimitActualTranslation ******/
-		/****** md5 signature: 1a289a26b8ae2f88cb1f123cde1aba54 ******/
+		/****** md5 signature: f8ce097e57b4016e1150c788d801a65e ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
@@ -6427,10 +6223,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslation is defined.
 ") HasLowerLimitActualTranslation;
-		Standard_Boolean HasLowerLimitActualTranslation();
+		bool HasLowerLimitActualTranslation();
 
 		/****** StepKinematics_CylindricalPairWithRange::HasUpperLimitActualRotation ******/
-		/****** md5 signature: ee7a165ac58a511590471aeded6017a3 ******/
+		/****** md5 signature: 7517dce8b477eb9f38355f00b58abdf5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -6440,10 +6236,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
-		Standard_Boolean HasUpperLimitActualRotation();
+		bool HasUpperLimitActualRotation();
 
 		/****** StepKinematics_CylindricalPairWithRange::HasUpperLimitActualTranslation ******/
-		/****** md5 signature: cdf598668fd5fd5829ed3088c3d514f7 ******/
+		/****** md5 signature: 1b551d1aa1bd40ba65c81d394c0f63a3 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
@@ -6453,10 +6249,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslation is defined.
 ") HasUpperLimitActualTranslation;
-		Standard_Boolean HasUpperLimitActualTranslation();
+		bool HasUpperLimitActualTranslation();
 
 		/****** StepKinematics_CylindricalPairWithRange::Init ******/
-		/****** md5 signature: a2f7fbe52a4e5f87689eb98240a18f80 ******/
+		/****** md5 signature: 5f04ace48f4ace62b2f7432f2ae337fc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6475,13 +6271,13 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitActualTranslation: bool
-theLowerLimitActualTranslation: float
+theLowerLimitActualTranslation: double
 hasUpperLimitActualTranslation: bool
-theUpperLimitActualTranslation: float
+theUpperLimitActualTranslation: double
 hasLowerLimitActualRotation: bool
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 hasUpperLimitActualRotation: bool
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -6491,41 +6287,41 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitActualTranslation, const Standard_Real theLowerLimitActualTranslation, const Standard_Boolean hasUpperLimitActualTranslation, const Standard_Real theUpperLimitActualTranslation, const Standard_Boolean hasLowerLimitActualRotation, const Standard_Real theLowerLimitActualRotation, const Standard_Boolean hasUpperLimitActualRotation, const Standard_Real theUpperLimitActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitActualTranslation, const double theLowerLimitActualTranslation, const bool hasUpperLimitActualTranslation, const double theUpperLimitActualTranslation, const bool hasLowerLimitActualRotation, const double theLowerLimitActualRotation, const bool hasUpperLimitActualRotation, const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_CylindricalPairWithRange::LowerLimitActualRotation ******/
-		/****** md5 signature: 55bbdb3a328206d6d00815bb43b23ff8 ******/
+		/****** md5 signature: 750f030b56d0246174629d8de2795657 ******/
 		%feature("compactdefaultargs") LowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
-		Standard_Real LowerLimitActualRotation();
+		double LowerLimitActualRotation();
 
 		/****** StepKinematics_CylindricalPairWithRange::LowerLimitActualTranslation ******/
-		/****** md5 signature: 97ee57a369ca7daed593022f79b99ab2 ******/
+		/****** md5 signature: 861526b9c684a27676c3aa72c1fd4e90 ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslation.
 ") LowerLimitActualTranslation;
-		Standard_Real LowerLimitActualTranslation();
+		double LowerLimitActualTranslation();
 
 		/****** StepKinematics_CylindricalPairWithRange::SetLowerLimitActualRotation ******/
-		/****** md5 signature: 73a00046a1364069734e82d7c22e794c ******/
+		/****** md5 signature: 70f1515555184a7396c24823a25ea752 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 
 Return
 -------
@@ -6535,15 +6331,15 @@ Description
 -----------
 Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
-		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
+		void SetLowerLimitActualRotation(const double theLowerLimitActualRotation);
 
 		/****** StepKinematics_CylindricalPairWithRange::SetLowerLimitActualTranslation ******/
-		/****** md5 signature: a1716b6d6f0ea33b5c0faa34bc2f5a0e ******/
+		/****** md5 signature: 829940fae49f1c2a1df6726c6259fd5c ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslation: float
+theLowerLimitActualTranslation: double
 
 Return
 -------
@@ -6553,15 +6349,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslation.
 ") SetLowerLimitActualTranslation;
-		void SetLowerLimitActualTranslation(const Standard_Real theLowerLimitActualTranslation);
+		void SetLowerLimitActualTranslation(const double theLowerLimitActualTranslation);
 
 		/****** StepKinematics_CylindricalPairWithRange::SetUpperLimitActualRotation ******/
-		/****** md5 signature: 34c9a0a444827c9157f0a3f1f15a0cf1 ******/
+		/****** md5 signature: 14bfde518bb812ed770905cb2005aba3 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -6571,15 +6367,15 @@ Description
 -----------
 Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
-		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
+		void SetUpperLimitActualRotation(const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_CylindricalPairWithRange::SetUpperLimitActualTranslation ******/
-		/****** md5 signature: fc6e218ec907595a913caec2e23a014c ******/
+		/****** md5 signature: ccff13f29abf96c5b9d3b62c0b5a42a4 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslation: float
+theUpperLimitActualTranslation: double
 
 Return
 -------
@@ -6589,38 +6385,36 @@ Description
 -----------
 Sets field UpperLimitActualTranslation.
 ") SetUpperLimitActualTranslation;
-		void SetUpperLimitActualTranslation(const Standard_Real theUpperLimitActualTranslation);
+		void SetUpperLimitActualTranslation(const double theUpperLimitActualTranslation);
 
 		/****** StepKinematics_CylindricalPairWithRange::UpperLimitActualRotation ******/
-		/****** md5 signature: e46843824e59bbabdebb3131db45b06a ******/
+		/****** md5 signature: 0110541df2ed6cb73390dbd871578ac5 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
-		Standard_Real UpperLimitActualRotation();
+		double UpperLimitActualRotation();
 
 		/****** StepKinematics_CylindricalPairWithRange::UpperLimitActualTranslation ******/
-		/****** md5 signature: 684275e4d7ba2daf91a796102cd97460 ******/
+		/****** md5 signature: 6cf51e7de416661f4cbd1795b697f8c1 ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslation.
 ") UpperLimitActualTranslation;
-		Standard_Real UpperLimitActualTranslation();
+		double UpperLimitActualTranslation();
 
 };
 
-
-%make_alias(StepKinematics_CylindricalPairWithRange)
 
 %extend StepKinematics_CylindricalPairWithRange {
 	%pythoncode {
@@ -6647,7 +6441,7 @@ default constructor.
 		 StepKinematics_GearPairWithRange();
 
 		/****** StepKinematics_GearPairWithRange::HasLowerLimitActualRotation1 ******/
-		/****** md5 signature: 796005112f85369ff64928393448c9e5 ******/
+		/****** md5 signature: 308f2c1f6fee93a420c404a27634e1e9 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotation1;
 		%feature("autodoc", "Return
 -------
@@ -6657,10 +6451,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotation1 is defined.
 ") HasLowerLimitActualRotation1;
-		Standard_Boolean HasLowerLimitActualRotation1();
+		bool HasLowerLimitActualRotation1();
 
 		/****** StepKinematics_GearPairWithRange::HasUpperLimitActualRotation1 ******/
-		/****** md5 signature: 506884180cf15076523e42475f80785c ******/
+		/****** md5 signature: 6c1dcd707f898e249230c30de8066399 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotation1;
 		%feature("autodoc", "Return
 -------
@@ -6670,10 +6464,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotation1 is defined.
 ") HasUpperLimitActualRotation1;
-		Standard_Boolean HasUpperLimitActualRotation1();
+		bool HasUpperLimitActualRotation1();
 
 		/****** StepKinematics_GearPairWithRange::Init ******/
-		/****** md5 signature: 9ef54c5935ca666cefadbd1c26219084 ******/
+		/****** md5 signature: b32706342c9029270e478d7a3451e08d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6685,15 +6479,15 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-theGearPair_RadiusFirstLink: float
-theGearPair_RadiusSecondLink: float
-theGearPair_Bevel: float
-theGearPair_HelicalAngle: float
-theGearPair_GearRatio: float
+theGearPair_RadiusFirstLink: double
+theGearPair_RadiusSecondLink: double
+theGearPair_Bevel: double
+theGearPair_HelicalAngle: double
+theGearPair_GearRatio: double
 hasLowerLimitActualRotation1: bool
-theLowerLimitActualRotation1: float
+theLowerLimitActualRotation1: double
 hasUpperLimitActualRotation1: bool
-theUpperLimitActualRotation1: float
+theUpperLimitActualRotation1: double
 
 Return
 -------
@@ -6703,28 +6497,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real theGearPair_RadiusFirstLink, const Standard_Real theGearPair_RadiusSecondLink, const Standard_Real theGearPair_Bevel, const Standard_Real theGearPair_HelicalAngle, const Standard_Real theGearPair_GearRatio, const Standard_Boolean hasLowerLimitActualRotation1, const Standard_Real theLowerLimitActualRotation1, const Standard_Boolean hasUpperLimitActualRotation1, const Standard_Real theUpperLimitActualRotation1);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double theGearPair_RadiusFirstLink, const double theGearPair_RadiusSecondLink, const double theGearPair_Bevel, const double theGearPair_HelicalAngle, const double theGearPair_GearRatio, const bool hasLowerLimitActualRotation1, const double theLowerLimitActualRotation1, const bool hasUpperLimitActualRotation1, const double theUpperLimitActualRotation1);
 
 		/****** StepKinematics_GearPairWithRange::LowerLimitActualRotation1 ******/
-		/****** md5 signature: 18fce592cc48e113045d23e470b8a2b8 ******/
+		/****** md5 signature: a7fc26c6efdcfcb384cf442824fcd1c9 ******/
 		%feature("compactdefaultargs") LowerLimitActualRotation1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotation1.
 ") LowerLimitActualRotation1;
-		Standard_Real LowerLimitActualRotation1();
+		double LowerLimitActualRotation1();
 
 		/****** StepKinematics_GearPairWithRange::SetLowerLimitActualRotation1 ******/
-		/****** md5 signature: 0bc9ec161681dd997298e3015c69dc58 ******/
+		/****** md5 signature: a58a2ddf6c08776e8d253fea5d8f7eb5 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotation1;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotation1: float
+theLowerLimitActualRotation1: double
 
 Return
 -------
@@ -6734,15 +6528,15 @@ Description
 -----------
 Sets field LowerLimitActualRotation1.
 ") SetLowerLimitActualRotation1;
-		void SetLowerLimitActualRotation1(const Standard_Real theLowerLimitActualRotation1);
+		void SetLowerLimitActualRotation1(const double theLowerLimitActualRotation1);
 
 		/****** StepKinematics_GearPairWithRange::SetUpperLimitActualRotation1 ******/
-		/****** md5 signature: 2a02df5aee5c611dbbacaa501012b049 ******/
+		/****** md5 signature: 9d39988985e750913c6ef7f7a3251846 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotation1;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotation1: float
+theUpperLimitActualRotation1: double
 
 Return
 -------
@@ -6752,25 +6546,23 @@ Description
 -----------
 Sets field UpperLimitActualRotation1.
 ") SetUpperLimitActualRotation1;
-		void SetUpperLimitActualRotation1(const Standard_Real theUpperLimitActualRotation1);
+		void SetUpperLimitActualRotation1(const double theUpperLimitActualRotation1);
 
 		/****** StepKinematics_GearPairWithRange::UpperLimitActualRotation1 ******/
-		/****** md5 signature: 4364c320aa3d7c5740fb6532b95ef4a8 ******/
+		/****** md5 signature: 99f7d8694ed82f8faacd14d87b3be4f6 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotation1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotation1.
 ") UpperLimitActualRotation1;
-		Standard_Real UpperLimitActualRotation1();
+		double UpperLimitActualRotation1();
 
 };
 
-
-%make_alias(StepKinematics_GearPairWithRange)
 
 %extend StepKinematics_GearPairWithRange {
 	%pythoncode {
@@ -6799,8 +6591,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_HomokineticPair)
-
 %extend StepKinematics_HomokineticPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6826,7 +6616,7 @@ default constructor.
 		 StepKinematics_PlanarCurvePairRange();
 
 		/****** StepKinematics_PlanarCurvePairRange::Init ******/
-		/****** md5 signature: 5dc5dbe37acc034b7a304837ef9964f9 ******/
+		/****** md5 signature: e4d252c6da6d6bea557acc5cb772bec6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6852,7 +6642,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePlanarCurvePair_Curve1, const opencascade::handle<StepGeom_Curve> & thePlanarCurvePair_Curve2, const Standard_Boolean thePlanarCurvePair_Orientation, const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnCurve1, const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnCurve2);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePlanarCurvePair_Curve1, const opencascade::handle<StepGeom_Curve> & thePlanarCurvePair_Curve2, const bool thePlanarCurvePair_Orientation, const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnCurve1, const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnCurve2);
 
 		/****** StepKinematics_PlanarCurvePairRange::RangeOnCurve1 ******/
 		/****** md5 signature: 9792fa718ce95e0bfd0ea2b5210c43b1 ******/
@@ -6919,8 +6709,6 @@ Sets field RangeOnCurve2.
 };
 
 
-%make_alias(StepKinematics_PlanarCurvePairRange)
-
 %extend StepKinematics_PlanarCurvePairRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6946,7 +6734,7 @@ default constructor.
 		 StepKinematics_PlanarPairWithRange();
 
 		/****** StepKinematics_PlanarPairWithRange::HasLowerLimitActualRotation ******/
-		/****** md5 signature: e0eabf1d75b84dc61065385143e77e72 ******/
+		/****** md5 signature: 9b40ef4d811e858876d345f940d9308d ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -6956,10 +6744,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
-		Standard_Boolean HasLowerLimitActualRotation();
+		bool HasLowerLimitActualRotation();
 
 		/****** StepKinematics_PlanarPairWithRange::HasLowerLimitActualTranslationX ******/
-		/****** md5 signature: 84750c5a60573c63366b414bfb1ea469 ******/
+		/****** md5 signature: 44c6a2431c8b0e6f7c4cc167a839e8f5 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
@@ -6969,10 +6757,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslationX is defined.
 ") HasLowerLimitActualTranslationX;
-		Standard_Boolean HasLowerLimitActualTranslationX();
+		bool HasLowerLimitActualTranslationX();
 
 		/****** StepKinematics_PlanarPairWithRange::HasLowerLimitActualTranslationY ******/
-		/****** md5 signature: d48cec851c95860b788b6b9ccb5aee66 ******/
+		/****** md5 signature: 40ee3e7fe931c67d64787db7e7eca2c6 ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
@@ -6982,10 +6770,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslationY is defined.
 ") HasLowerLimitActualTranslationY;
-		Standard_Boolean HasLowerLimitActualTranslationY();
+		bool HasLowerLimitActualTranslationY();
 
 		/****** StepKinematics_PlanarPairWithRange::HasUpperLimitActualRotation ******/
-		/****** md5 signature: ee7a165ac58a511590471aeded6017a3 ******/
+		/****** md5 signature: 7517dce8b477eb9f38355f00b58abdf5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -6995,10 +6783,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
-		Standard_Boolean HasUpperLimitActualRotation();
+		bool HasUpperLimitActualRotation();
 
 		/****** StepKinematics_PlanarPairWithRange::HasUpperLimitActualTranslationX ******/
-		/****** md5 signature: 06b365134561f1ac12bece58783cea2b ******/
+		/****** md5 signature: 35fbb83566ac6691f70d253066866aa8 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
@@ -7008,10 +6796,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslationX is defined.
 ") HasUpperLimitActualTranslationX;
-		Standard_Boolean HasUpperLimitActualTranslationX();
+		bool HasUpperLimitActualTranslationX();
 
 		/****** StepKinematics_PlanarPairWithRange::HasUpperLimitActualTranslationY ******/
-		/****** md5 signature: d33d9f218a7ad05ca4e66cf7dee2feac ******/
+		/****** md5 signature: 4acb9f7eff10d5533fc354a1ab9b31f5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
@@ -7021,10 +6809,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslationY is defined.
 ") HasUpperLimitActualTranslationY;
-		Standard_Boolean HasUpperLimitActualTranslationY();
+		bool HasUpperLimitActualTranslationY();
 
 		/****** StepKinematics_PlanarPairWithRange::Init ******/
-		/****** md5 signature: 502b10b1b240684b27823f68acc4e5cf ******/
+		/****** md5 signature: 8f92190da3b7461460d6de0ffab3805e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7043,17 +6831,17 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitActualRotation: bool
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 hasUpperLimitActualRotation: bool
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 hasLowerLimitActualTranslationX: bool
-theLowerLimitActualTranslationX: float
+theLowerLimitActualTranslationX: double
 hasUpperLimitActualTranslationX: bool
-theUpperLimitActualTranslationX: float
+theUpperLimitActualTranslationX: double
 hasLowerLimitActualTranslationY: bool
-theLowerLimitActualTranslationY: float
+theLowerLimitActualTranslationY: double
 hasUpperLimitActualTranslationY: bool
-theUpperLimitActualTranslationY: float
+theUpperLimitActualTranslationY: double
 
 Return
 -------
@@ -7063,54 +6851,54 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitActualRotation, const Standard_Real theLowerLimitActualRotation, const Standard_Boolean hasUpperLimitActualRotation, const Standard_Real theUpperLimitActualRotation, const Standard_Boolean hasLowerLimitActualTranslationX, const Standard_Real theLowerLimitActualTranslationX, const Standard_Boolean hasUpperLimitActualTranslationX, const Standard_Real theUpperLimitActualTranslationX, const Standard_Boolean hasLowerLimitActualTranslationY, const Standard_Real theLowerLimitActualTranslationY, const Standard_Boolean hasUpperLimitActualTranslationY, const Standard_Real theUpperLimitActualTranslationY);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitActualRotation, const double theLowerLimitActualRotation, const bool hasUpperLimitActualRotation, const double theUpperLimitActualRotation, const bool hasLowerLimitActualTranslationX, const double theLowerLimitActualTranslationX, const bool hasUpperLimitActualTranslationX, const double theUpperLimitActualTranslationX, const bool hasLowerLimitActualTranslationY, const double theLowerLimitActualTranslationY, const bool hasUpperLimitActualTranslationY, const double theUpperLimitActualTranslationY);
 
 		/****** StepKinematics_PlanarPairWithRange::LowerLimitActualRotation ******/
-		/****** md5 signature: 55bbdb3a328206d6d00815bb43b23ff8 ******/
+		/****** md5 signature: 750f030b56d0246174629d8de2795657 ******/
 		%feature("compactdefaultargs") LowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
-		Standard_Real LowerLimitActualRotation();
+		double LowerLimitActualRotation();
 
 		/****** StepKinematics_PlanarPairWithRange::LowerLimitActualTranslationX ******/
-		/****** md5 signature: c6efa30a0704d2540db52de4d5c9d233 ******/
+		/****** md5 signature: eb3ad8d32d878ee38dbcfea09147b4cd ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslationX.
 ") LowerLimitActualTranslationX;
-		Standard_Real LowerLimitActualTranslationX();
+		double LowerLimitActualTranslationX();
 
 		/****** StepKinematics_PlanarPairWithRange::LowerLimitActualTranslationY ******/
-		/****** md5 signature: 1df934faf95c599b869632babf805c13 ******/
+		/****** md5 signature: 33720fa3c7554285fde0b08a9d724a3f ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslationY.
 ") LowerLimitActualTranslationY;
-		Standard_Real LowerLimitActualTranslationY();
+		double LowerLimitActualTranslationY();
 
 		/****** StepKinematics_PlanarPairWithRange::SetLowerLimitActualRotation ******/
-		/****** md5 signature: 73a00046a1364069734e82d7c22e794c ******/
+		/****** md5 signature: 70f1515555184a7396c24823a25ea752 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 
 Return
 -------
@@ -7120,15 +6908,15 @@ Description
 -----------
 Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
-		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
+		void SetLowerLimitActualRotation(const double theLowerLimitActualRotation);
 
 		/****** StepKinematics_PlanarPairWithRange::SetLowerLimitActualTranslationX ******/
-		/****** md5 signature: fadf9b10ce37cb78cf5c01aece75d7e0 ******/
+		/****** md5 signature: 8a0c13504786bc731fef6f9c5480fc21 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslationX: float
+theLowerLimitActualTranslationX: double
 
 Return
 -------
@@ -7138,15 +6926,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslationX.
 ") SetLowerLimitActualTranslationX;
-		void SetLowerLimitActualTranslationX(const Standard_Real theLowerLimitActualTranslationX);
+		void SetLowerLimitActualTranslationX(const double theLowerLimitActualTranslationX);
 
 		/****** StepKinematics_PlanarPairWithRange::SetLowerLimitActualTranslationY ******/
-		/****** md5 signature: b561083e96b17f20c1be6e3daebea5e3 ******/
+		/****** md5 signature: 0691fd67fd3f365501a664e48d0d255c ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslationY: float
+theLowerLimitActualTranslationY: double
 
 Return
 -------
@@ -7156,15 +6944,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslationY.
 ") SetLowerLimitActualTranslationY;
-		void SetLowerLimitActualTranslationY(const Standard_Real theLowerLimitActualTranslationY);
+		void SetLowerLimitActualTranslationY(const double theLowerLimitActualTranslationY);
 
 		/****** StepKinematics_PlanarPairWithRange::SetUpperLimitActualRotation ******/
-		/****** md5 signature: 34c9a0a444827c9157f0a3f1f15a0cf1 ******/
+		/****** md5 signature: 14bfde518bb812ed770905cb2005aba3 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -7174,15 +6962,15 @@ Description
 -----------
 Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
-		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
+		void SetUpperLimitActualRotation(const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_PlanarPairWithRange::SetUpperLimitActualTranslationX ******/
-		/****** md5 signature: ed987558115e6efffde9954562e07f6a ******/
+		/****** md5 signature: efa9028eccc6ecaf8ecbe3166cf0bce0 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslationX;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslationX: float
+theUpperLimitActualTranslationX: double
 
 Return
 -------
@@ -7192,15 +6980,15 @@ Description
 -----------
 Sets field UpperLimitActualTranslationX.
 ") SetUpperLimitActualTranslationX;
-		void SetUpperLimitActualTranslationX(const Standard_Real theUpperLimitActualTranslationX);
+		void SetUpperLimitActualTranslationX(const double theUpperLimitActualTranslationX);
 
 		/****** StepKinematics_PlanarPairWithRange::SetUpperLimitActualTranslationY ******/
-		/****** md5 signature: 31b1518a07a02d6b35ee04f3612701c6 ******/
+		/****** md5 signature: 2de31ff4c54c58df9674ae443507758a ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslationY;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslationY: float
+theUpperLimitActualTranslationY: double
 
 Return
 -------
@@ -7210,51 +6998,49 @@ Description
 -----------
 Sets field UpperLimitActualTranslationY.
 ") SetUpperLimitActualTranslationY;
-		void SetUpperLimitActualTranslationY(const Standard_Real theUpperLimitActualTranslationY);
+		void SetUpperLimitActualTranslationY(const double theUpperLimitActualTranslationY);
 
 		/****** StepKinematics_PlanarPairWithRange::UpperLimitActualRotation ******/
-		/****** md5 signature: e46843824e59bbabdebb3131db45b06a ******/
+		/****** md5 signature: 0110541df2ed6cb73390dbd871578ac5 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
-		Standard_Real UpperLimitActualRotation();
+		double UpperLimitActualRotation();
 
 		/****** StepKinematics_PlanarPairWithRange::UpperLimitActualTranslationX ******/
-		/****** md5 signature: 61bb76275073270aef2851a409bef7d4 ******/
+		/****** md5 signature: 2ff564f20c26a3d66364dffc3aa9da01 ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslationX;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslationX.
 ") UpperLimitActualTranslationX;
-		Standard_Real UpperLimitActualTranslationX();
+		double UpperLimitActualTranslationX();
 
 		/****** StepKinematics_PlanarPairWithRange::UpperLimitActualTranslationY ******/
-		/****** md5 signature: ab619622e872a6d4172114a8078d98bc ******/
+		/****** md5 signature: 3efb048838cc6591530c486b4fc396c5 ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslationY;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslationY.
 ") UpperLimitActualTranslationY;
-		Standard_Real UpperLimitActualTranslationY();
+		double UpperLimitActualTranslationY();
 
 };
 
-
-%make_alias(StepKinematics_PlanarPairWithRange)
 
 %extend StepKinematics_PlanarPairWithRange {
 	%pythoncode {
@@ -7281,7 +7067,7 @@ default constructor.
 		 StepKinematics_PointOnPlanarCurvePairWithRange();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::HasLowerLimitPitch ******/
-		/****** md5 signature: 8b18659ce9678f62818eee7f06ee7a0a ******/
+		/****** md5 signature: 6d43ed7cbc282f1f36e1abcceac8b9a3 ******/
 		%feature("compactdefaultargs") HasLowerLimitPitch;
 		%feature("autodoc", "Return
 -------
@@ -7291,10 +7077,10 @@ Description
 -----------
 Returns True if optional field LowerLimitPitch is defined.
 ") HasLowerLimitPitch;
-		Standard_Boolean HasLowerLimitPitch();
+		bool HasLowerLimitPitch();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::HasLowerLimitRoll ******/
-		/****** md5 signature: 3d818a00c0f3a06f41717b1eac48086e ******/
+		/****** md5 signature: ca5faa9822f310a70436e725fc12a0f3 ******/
 		%feature("compactdefaultargs") HasLowerLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -7304,10 +7090,10 @@ Description
 -----------
 Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
-		Standard_Boolean HasLowerLimitRoll();
+		bool HasLowerLimitRoll();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::HasLowerLimitYaw ******/
-		/****** md5 signature: 63c43ea96e633188eef51474a06f5060 ******/
+		/****** md5 signature: 219463b70b798e1f47adba6ad95d9904 ******/
 		%feature("compactdefaultargs") HasLowerLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -7317,10 +7103,10 @@ Description
 -----------
 Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
-		Standard_Boolean HasLowerLimitYaw();
+		bool HasLowerLimitYaw();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::HasUpperLimitPitch ******/
-		/****** md5 signature: 91d59bb3ebb845da29b7387b3f9cd51c ******/
+		/****** md5 signature: 2118ce82483ae961ae68af18c65cd53f ******/
 		%feature("compactdefaultargs") HasUpperLimitPitch;
 		%feature("autodoc", "Return
 -------
@@ -7330,10 +7116,10 @@ Description
 -----------
 Returns True if optional field UpperLimitPitch is defined.
 ") HasUpperLimitPitch;
-		Standard_Boolean HasUpperLimitPitch();
+		bool HasUpperLimitPitch();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::HasUpperLimitRoll ******/
-		/****** md5 signature: 565197097405f036b4fe8eae784ed2ed ******/
+		/****** md5 signature: a8c65abdf50e8071fcc7aea0b5d64804 ******/
 		%feature("compactdefaultargs") HasUpperLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -7343,10 +7129,10 @@ Description
 -----------
 Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
-		Standard_Boolean HasUpperLimitRoll();
+		bool HasUpperLimitRoll();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::HasUpperLimitYaw ******/
-		/****** md5 signature: 151b5eee38c02004ecea0c616e1f2a4f ******/
+		/****** md5 signature: 42f8a46fe93adc270a7151e696fd787a ******/
 		%feature("compactdefaultargs") HasUpperLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -7356,10 +7142,10 @@ Description
 -----------
 Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
-		Standard_Boolean HasUpperLimitYaw();
+		bool HasUpperLimitYaw();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::Init ******/
-		/****** md5 signature: 910f8d5abdcbf7aa1c32a00d51f0011a ******/
+		/****** md5 signature: 886d508d736723989326784f2ae5df0f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7375,17 +7161,17 @@ thePointOnPlanarCurvePair_PairCurve: StepGeom_Curve
 thePointOnPlanarCurvePair_Orientation: bool
 theRangeOnPairCurve: StepGeom_TrimmedCurve
 hasLowerLimitYaw: bool
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 hasUpperLimitYaw: bool
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 hasLowerLimitPitch: bool
-theLowerLimitPitch: float
+theLowerLimitPitch: double
 hasUpperLimitPitch: bool
-theUpperLimitPitch: float
+theUpperLimitPitch: double
 hasLowerLimitRoll: bool
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 hasUpperLimitRoll: bool
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -7395,46 +7181,46 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePointOnPlanarCurvePair_PairCurve, const Standard_Boolean thePointOnPlanarCurvePair_Orientation, const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnPairCurve, const Standard_Boolean hasLowerLimitYaw, const Standard_Real theLowerLimitYaw, const Standard_Boolean hasUpperLimitYaw, const Standard_Real theUpperLimitYaw, const Standard_Boolean hasLowerLimitPitch, const Standard_Real theLowerLimitPitch, const Standard_Boolean hasUpperLimitPitch, const Standard_Real theUpperLimitPitch, const Standard_Boolean hasLowerLimitRoll, const Standard_Real theLowerLimitRoll, const Standard_Boolean hasUpperLimitRoll, const Standard_Real theUpperLimitRoll);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Curve> & thePointOnPlanarCurvePair_PairCurve, const bool thePointOnPlanarCurvePair_Orientation, const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnPairCurve, const bool hasLowerLimitYaw, const double theLowerLimitYaw, const bool hasUpperLimitYaw, const double theUpperLimitYaw, const bool hasLowerLimitPitch, const double theLowerLimitPitch, const bool hasUpperLimitPitch, const double theUpperLimitPitch, const bool hasLowerLimitRoll, const double theLowerLimitRoll, const bool hasUpperLimitRoll, const double theUpperLimitRoll);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::LowerLimitPitch ******/
-		/****** md5 signature: c4b1ede87f1f5e786a2a213f7a2b1771 ******/
+		/****** md5 signature: 9448d6046b8a72af2b4a0636bf0c069c ******/
 		%feature("compactdefaultargs") LowerLimitPitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitPitch.
 ") LowerLimitPitch;
-		Standard_Real LowerLimitPitch();
+		double LowerLimitPitch();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::LowerLimitRoll ******/
-		/****** md5 signature: 56e926a470380b8e6c281787e1927e28 ******/
+		/****** md5 signature: 71fbf50091a7bb49c13041b8ae9f2b0e ******/
 		%feature("compactdefaultargs") LowerLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitRoll.
 ") LowerLimitRoll;
-		Standard_Real LowerLimitRoll();
+		double LowerLimitRoll();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::LowerLimitYaw ******/
-		/****** md5 signature: 1dce8bd2b95cff7711561282e141791a ******/
+		/****** md5 signature: 7794d2f5c79683c2b16a6c397a4fe9e1 ******/
 		%feature("compactdefaultargs") LowerLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitYaw.
 ") LowerLimitYaw;
-		Standard_Real LowerLimitYaw();
+		double LowerLimitYaw();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::RangeOnPairCurve ******/
 		/****** md5 signature: 872b6e35bb8da21a24f909cf5aa5efec ******/
@@ -7450,12 +7236,12 @@ Returns field RangeOnPairCurve.
 		opencascade::handle<StepGeom_TrimmedCurve> RangeOnPairCurve();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetLowerLimitPitch ******/
-		/****** md5 signature: 226af1b3d7113bfbf8a46883ed4ce8a7 ******/
+		/****** md5 signature: dc9c0ff5c77d05942a6cbe8a0467ee1f ******/
 		%feature("compactdefaultargs") SetLowerLimitPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitPitch: float
+theLowerLimitPitch: double
 
 Return
 -------
@@ -7465,15 +7251,15 @@ Description
 -----------
 Sets field LowerLimitPitch.
 ") SetLowerLimitPitch;
-		void SetLowerLimitPitch(const Standard_Real theLowerLimitPitch);
+		void SetLowerLimitPitch(const double theLowerLimitPitch);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetLowerLimitRoll ******/
-		/****** md5 signature: 48f497a897c25c671444584112ba1459 ******/
+		/****** md5 signature: 2ef9f49685d52fffae39e5c5df9de000 ******/
 		%feature("compactdefaultargs") SetLowerLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 
 Return
 -------
@@ -7483,15 +7269,15 @@ Description
 -----------
 Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
-		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
+		void SetLowerLimitRoll(const double theLowerLimitRoll);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetLowerLimitYaw ******/
-		/****** md5 signature: 8d53161ff89e24ffa2bd42e4d9ee936c ******/
+		/****** md5 signature: 14e2ac5bd88b6ecd40ca06b6ec0a6d01 ******/
 		%feature("compactdefaultargs") SetLowerLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 
 Return
 -------
@@ -7501,7 +7287,7 @@ Description
 -----------
 Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
-		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
+		void SetLowerLimitYaw(const double theLowerLimitYaw);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetRangeOnPairCurve ******/
 		/****** md5 signature: f42eb8247af6525f8a1a9f810c6a5443 ******/
@@ -7522,12 +7308,12 @@ Sets field RangeOnPairCurve.
 		void SetRangeOnPairCurve(const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnPairCurve);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetUpperLimitPitch ******/
-		/****** md5 signature: a654c41da7ce0f8115500636f4947de7 ******/
+		/****** md5 signature: 74b41ae2e5b5c82f55d6d466be6ad41e ******/
 		%feature("compactdefaultargs") SetUpperLimitPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitPitch: float
+theUpperLimitPitch: double
 
 Return
 -------
@@ -7537,15 +7323,15 @@ Description
 -----------
 Sets field UpperLimitPitch.
 ") SetUpperLimitPitch;
-		void SetUpperLimitPitch(const Standard_Real theUpperLimitPitch);
+		void SetUpperLimitPitch(const double theUpperLimitPitch);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetUpperLimitRoll ******/
-		/****** md5 signature: 0a060f3d676198d94d03a00d4262172e ******/
+		/****** md5 signature: 3ce2b2db008923451005c1b6e1d9f2e8 ******/
 		%feature("compactdefaultargs") SetUpperLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -7555,15 +7341,15 @@ Description
 -----------
 Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
-		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
+		void SetUpperLimitRoll(const double theUpperLimitRoll);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::SetUpperLimitYaw ******/
-		/****** md5 signature: 695c5ef505a77eeba54996a8d5c580ee ******/
+		/****** md5 signature: ee3f15a0330535670700456654ca0ce1 ******/
 		%feature("compactdefaultargs") SetUpperLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 
 Return
 -------
@@ -7573,51 +7359,49 @@ Description
 -----------
 Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
-		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
+		void SetUpperLimitYaw(const double theUpperLimitYaw);
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::UpperLimitPitch ******/
-		/****** md5 signature: a2846ce39fee003441a2c466ea66a91c ******/
+		/****** md5 signature: 3c2d01afb0297abb175851be91c80d50 ******/
 		%feature("compactdefaultargs") UpperLimitPitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitPitch.
 ") UpperLimitPitch;
-		Standard_Real UpperLimitPitch();
+		double UpperLimitPitch();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::UpperLimitRoll ******/
-		/****** md5 signature: f71b7c98e0c4e906603284ef75b8ad54 ******/
+		/****** md5 signature: 82141a03599bd38023d3aa8d1ebb76e3 ******/
 		%feature("compactdefaultargs") UpperLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitRoll.
 ") UpperLimitRoll;
-		Standard_Real UpperLimitRoll();
+		double UpperLimitRoll();
 
 		/****** StepKinematics_PointOnPlanarCurvePairWithRange::UpperLimitYaw ******/
-		/****** md5 signature: 6f932cabcf42e2ce982be3d873a6ba3d ******/
+		/****** md5 signature: 12ad342e4668152baaf51178f6ceb979 ******/
 		%feature("compactdefaultargs") UpperLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitYaw.
 ") UpperLimitYaw;
-		Standard_Real UpperLimitYaw();
+		double UpperLimitYaw();
 
 };
 
-
-%make_alias(StepKinematics_PointOnPlanarCurvePairWithRange)
 
 %extend StepKinematics_PointOnPlanarCurvePairWithRange {
 	%pythoncode {
@@ -7644,7 +7428,7 @@ default constructor.
 		 StepKinematics_PointOnSurfacePairWithRange();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::HasLowerLimitPitch ******/
-		/****** md5 signature: 8b18659ce9678f62818eee7f06ee7a0a ******/
+		/****** md5 signature: 6d43ed7cbc282f1f36e1abcceac8b9a3 ******/
 		%feature("compactdefaultargs") HasLowerLimitPitch;
 		%feature("autodoc", "Return
 -------
@@ -7654,10 +7438,10 @@ Description
 -----------
 Returns True if optional field LowerLimitPitch is defined.
 ") HasLowerLimitPitch;
-		Standard_Boolean HasLowerLimitPitch();
+		bool HasLowerLimitPitch();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::HasLowerLimitRoll ******/
-		/****** md5 signature: 3d818a00c0f3a06f41717b1eac48086e ******/
+		/****** md5 signature: ca5faa9822f310a70436e725fc12a0f3 ******/
 		%feature("compactdefaultargs") HasLowerLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -7667,10 +7451,10 @@ Description
 -----------
 Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
-		Standard_Boolean HasLowerLimitRoll();
+		bool HasLowerLimitRoll();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::HasLowerLimitYaw ******/
-		/****** md5 signature: 63c43ea96e633188eef51474a06f5060 ******/
+		/****** md5 signature: 219463b70b798e1f47adba6ad95d9904 ******/
 		%feature("compactdefaultargs") HasLowerLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -7680,10 +7464,10 @@ Description
 -----------
 Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
-		Standard_Boolean HasLowerLimitYaw();
+		bool HasLowerLimitYaw();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::HasUpperLimitPitch ******/
-		/****** md5 signature: 91d59bb3ebb845da29b7387b3f9cd51c ******/
+		/****** md5 signature: 2118ce82483ae961ae68af18c65cd53f ******/
 		%feature("compactdefaultargs") HasUpperLimitPitch;
 		%feature("autodoc", "Return
 -------
@@ -7693,10 +7477,10 @@ Description
 -----------
 Returns True if optional field UpperLimitPitch is defined.
 ") HasUpperLimitPitch;
-		Standard_Boolean HasUpperLimitPitch();
+		bool HasUpperLimitPitch();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::HasUpperLimitRoll ******/
-		/****** md5 signature: 565197097405f036b4fe8eae784ed2ed ******/
+		/****** md5 signature: a8c65abdf50e8071fcc7aea0b5d64804 ******/
 		%feature("compactdefaultargs") HasUpperLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -7706,10 +7490,10 @@ Description
 -----------
 Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
-		Standard_Boolean HasUpperLimitRoll();
+		bool HasUpperLimitRoll();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::HasUpperLimitYaw ******/
-		/****** md5 signature: 151b5eee38c02004ecea0c616e1f2a4f ******/
+		/****** md5 signature: 42f8a46fe93adc270a7151e696fd787a ******/
 		%feature("compactdefaultargs") HasUpperLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -7719,10 +7503,10 @@ Description
 -----------
 Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
-		Standard_Boolean HasUpperLimitYaw();
+		bool HasUpperLimitYaw();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::Init ******/
-		/****** md5 signature: f8d3541b115a5142f31b6d6dc0ba7dca ******/
+		/****** md5 signature: 5da361f5b8897b2c087ac65deb0463b7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7737,17 +7521,17 @@ theKinematicPair_Joint: StepKinematics_KinematicJoint
 thePointOnSurfacePair_PairSurface: StepGeom_Surface
 theRangeOnPairSurface: StepGeom_RectangularTrimmedSurface
 hasLowerLimitYaw: bool
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 hasUpperLimitYaw: bool
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 hasLowerLimitPitch: bool
-theLowerLimitPitch: float
+theLowerLimitPitch: double
 hasUpperLimitPitch: bool
-theUpperLimitPitch: float
+theUpperLimitPitch: double
 hasLowerLimitRoll: bool
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 hasUpperLimitRoll: bool
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -7757,46 +7541,46 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & thePointOnSurfacePair_PairSurface, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnPairSurface, const Standard_Boolean hasLowerLimitYaw, const Standard_Real theLowerLimitYaw, const Standard_Boolean hasUpperLimitYaw, const Standard_Real theUpperLimitYaw, const Standard_Boolean hasLowerLimitPitch, const Standard_Real theLowerLimitPitch, const Standard_Boolean hasUpperLimitPitch, const Standard_Real theUpperLimitPitch, const Standard_Boolean hasLowerLimitRoll, const Standard_Real theLowerLimitRoll, const Standard_Boolean hasUpperLimitRoll, const Standard_Real theUpperLimitRoll);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & thePointOnSurfacePair_PairSurface, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnPairSurface, const bool hasLowerLimitYaw, const double theLowerLimitYaw, const bool hasUpperLimitYaw, const double theUpperLimitYaw, const bool hasLowerLimitPitch, const double theLowerLimitPitch, const bool hasUpperLimitPitch, const double theUpperLimitPitch, const bool hasLowerLimitRoll, const double theLowerLimitRoll, const bool hasUpperLimitRoll, const double theUpperLimitRoll);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::LowerLimitPitch ******/
-		/****** md5 signature: c4b1ede87f1f5e786a2a213f7a2b1771 ******/
+		/****** md5 signature: 9448d6046b8a72af2b4a0636bf0c069c ******/
 		%feature("compactdefaultargs") LowerLimitPitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitPitch.
 ") LowerLimitPitch;
-		Standard_Real LowerLimitPitch();
+		double LowerLimitPitch();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::LowerLimitRoll ******/
-		/****** md5 signature: 56e926a470380b8e6c281787e1927e28 ******/
+		/****** md5 signature: 71fbf50091a7bb49c13041b8ae9f2b0e ******/
 		%feature("compactdefaultargs") LowerLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitRoll.
 ") LowerLimitRoll;
-		Standard_Real LowerLimitRoll();
+		double LowerLimitRoll();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::LowerLimitYaw ******/
-		/****** md5 signature: 1dce8bd2b95cff7711561282e141791a ******/
+		/****** md5 signature: 7794d2f5c79683c2b16a6c397a4fe9e1 ******/
 		%feature("compactdefaultargs") LowerLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitYaw.
 ") LowerLimitYaw;
-		Standard_Real LowerLimitYaw();
+		double LowerLimitYaw();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::RangeOnPairSurface ******/
 		/****** md5 signature: 844927162fe7aa8ee4ebaa90456fdc6c ******/
@@ -7812,12 +7596,12 @@ Returns field RangeOnPairSurface.
 		opencascade::handle<StepGeom_RectangularTrimmedSurface> RangeOnPairSurface();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetLowerLimitPitch ******/
-		/****** md5 signature: 226af1b3d7113bfbf8a46883ed4ce8a7 ******/
+		/****** md5 signature: dc9c0ff5c77d05942a6cbe8a0467ee1f ******/
 		%feature("compactdefaultargs") SetLowerLimitPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitPitch: float
+theLowerLimitPitch: double
 
 Return
 -------
@@ -7827,15 +7611,15 @@ Description
 -----------
 Sets field LowerLimitPitch.
 ") SetLowerLimitPitch;
-		void SetLowerLimitPitch(const Standard_Real theLowerLimitPitch);
+		void SetLowerLimitPitch(const double theLowerLimitPitch);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetLowerLimitRoll ******/
-		/****** md5 signature: 48f497a897c25c671444584112ba1459 ******/
+		/****** md5 signature: 2ef9f49685d52fffae39e5c5df9de000 ******/
 		%feature("compactdefaultargs") SetLowerLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 
 Return
 -------
@@ -7845,15 +7629,15 @@ Description
 -----------
 Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
-		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
+		void SetLowerLimitRoll(const double theLowerLimitRoll);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetLowerLimitYaw ******/
-		/****** md5 signature: 8d53161ff89e24ffa2bd42e4d9ee936c ******/
+		/****** md5 signature: 14e2ac5bd88b6ecd40ca06b6ec0a6d01 ******/
 		%feature("compactdefaultargs") SetLowerLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 
 Return
 -------
@@ -7863,7 +7647,7 @@ Description
 -----------
 Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
-		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
+		void SetLowerLimitYaw(const double theLowerLimitYaw);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetRangeOnPairSurface ******/
 		/****** md5 signature: 529acc47b4019828d8590651f4e45ac9 ******/
@@ -7884,12 +7668,12 @@ Sets field RangeOnPairSurface.
 		void SetRangeOnPairSurface(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnPairSurface);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetUpperLimitPitch ******/
-		/****** md5 signature: a654c41da7ce0f8115500636f4947de7 ******/
+		/****** md5 signature: 74b41ae2e5b5c82f55d6d466be6ad41e ******/
 		%feature("compactdefaultargs") SetUpperLimitPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitPitch: float
+theUpperLimitPitch: double
 
 Return
 -------
@@ -7899,15 +7683,15 @@ Description
 -----------
 Sets field UpperLimitPitch.
 ") SetUpperLimitPitch;
-		void SetUpperLimitPitch(const Standard_Real theUpperLimitPitch);
+		void SetUpperLimitPitch(const double theUpperLimitPitch);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetUpperLimitRoll ******/
-		/****** md5 signature: 0a060f3d676198d94d03a00d4262172e ******/
+		/****** md5 signature: 3ce2b2db008923451005c1b6e1d9f2e8 ******/
 		%feature("compactdefaultargs") SetUpperLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -7917,15 +7701,15 @@ Description
 -----------
 Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
-		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
+		void SetUpperLimitRoll(const double theUpperLimitRoll);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::SetUpperLimitYaw ******/
-		/****** md5 signature: 695c5ef505a77eeba54996a8d5c580ee ******/
+		/****** md5 signature: ee3f15a0330535670700456654ca0ce1 ******/
 		%feature("compactdefaultargs") SetUpperLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 
 Return
 -------
@@ -7935,51 +7719,49 @@ Description
 -----------
 Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
-		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
+		void SetUpperLimitYaw(const double theUpperLimitYaw);
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::UpperLimitPitch ******/
-		/****** md5 signature: a2846ce39fee003441a2c466ea66a91c ******/
+		/****** md5 signature: 3c2d01afb0297abb175851be91c80d50 ******/
 		%feature("compactdefaultargs") UpperLimitPitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitPitch.
 ") UpperLimitPitch;
-		Standard_Real UpperLimitPitch();
+		double UpperLimitPitch();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::UpperLimitRoll ******/
-		/****** md5 signature: f71b7c98e0c4e906603284ef75b8ad54 ******/
+		/****** md5 signature: 82141a03599bd38023d3aa8d1ebb76e3 ******/
 		%feature("compactdefaultargs") UpperLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitRoll.
 ") UpperLimitRoll;
-		Standard_Real UpperLimitRoll();
+		double UpperLimitRoll();
 
 		/****** StepKinematics_PointOnSurfacePairWithRange::UpperLimitYaw ******/
-		/****** md5 signature: 6f932cabcf42e2ce982be3d873a6ba3d ******/
+		/****** md5 signature: 12ad342e4668152baaf51178f6ceb979 ******/
 		%feature("compactdefaultargs") UpperLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitYaw.
 ") UpperLimitYaw;
-		Standard_Real UpperLimitYaw();
+		double UpperLimitYaw();
 
 };
 
-
-%make_alias(StepKinematics_PointOnSurfacePairWithRange)
 
 %extend StepKinematics_PointOnSurfacePairWithRange {
 	%pythoncode {
@@ -8006,7 +7788,7 @@ default constructor.
 		 StepKinematics_PrismaticPairWithRange();
 
 		/****** StepKinematics_PrismaticPairWithRange::HasLowerLimitActualTranslation ******/
-		/****** md5 signature: 1a289a26b8ae2f88cb1f123cde1aba54 ******/
+		/****** md5 signature: f8ce097e57b4016e1150c788d801a65e ******/
 		%feature("compactdefaultargs") HasLowerLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
@@ -8016,10 +7798,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualTranslation is defined.
 ") HasLowerLimitActualTranslation;
-		Standard_Boolean HasLowerLimitActualTranslation();
+		bool HasLowerLimitActualTranslation();
 
 		/****** StepKinematics_PrismaticPairWithRange::HasUpperLimitActualTranslation ******/
-		/****** md5 signature: cdf598668fd5fd5829ed3088c3d514f7 ******/
+		/****** md5 signature: 1b551d1aa1bd40ba65c81d394c0f63a3 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
@@ -8029,10 +7811,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualTranslation is defined.
 ") HasUpperLimitActualTranslation;
-		Standard_Boolean HasUpperLimitActualTranslation();
+		bool HasUpperLimitActualTranslation();
 
 		/****** StepKinematics_PrismaticPairWithRange::Init ******/
-		/****** md5 signature: f1544e2f94e58b4265a082b419364a96 ******/
+		/****** md5 signature: 860e0a678073b4ecf6964d36ecc2ea37 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8051,9 +7833,9 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitActualTranslation: bool
-theLowerLimitActualTranslation: float
+theLowerLimitActualTranslation: double
 hasUpperLimitActualTranslation: bool
-theUpperLimitActualTranslation: float
+theUpperLimitActualTranslation: double
 
 Return
 -------
@@ -8063,28 +7845,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitActualTranslation, const Standard_Real theLowerLimitActualTranslation, const Standard_Boolean hasUpperLimitActualTranslation, const Standard_Real theUpperLimitActualTranslation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitActualTranslation, const double theLowerLimitActualTranslation, const bool hasUpperLimitActualTranslation, const double theUpperLimitActualTranslation);
 
 		/****** StepKinematics_PrismaticPairWithRange::LowerLimitActualTranslation ******/
-		/****** md5 signature: 97ee57a369ca7daed593022f79b99ab2 ******/
+		/****** md5 signature: 861526b9c684a27676c3aa72c1fd4e90 ******/
 		%feature("compactdefaultargs") LowerLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualTranslation.
 ") LowerLimitActualTranslation;
-		Standard_Real LowerLimitActualTranslation();
+		double LowerLimitActualTranslation();
 
 		/****** StepKinematics_PrismaticPairWithRange::SetLowerLimitActualTranslation ******/
-		/****** md5 signature: a1716b6d6f0ea33b5c0faa34bc2f5a0e ******/
+		/****** md5 signature: 829940fae49f1c2a1df6726c6259fd5c ******/
 		%feature("compactdefaultargs") SetLowerLimitActualTranslation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualTranslation: float
+theLowerLimitActualTranslation: double
 
 Return
 -------
@@ -8094,15 +7876,15 @@ Description
 -----------
 Sets field LowerLimitActualTranslation.
 ") SetLowerLimitActualTranslation;
-		void SetLowerLimitActualTranslation(const Standard_Real theLowerLimitActualTranslation);
+		void SetLowerLimitActualTranslation(const double theLowerLimitActualTranslation);
 
 		/****** StepKinematics_PrismaticPairWithRange::SetUpperLimitActualTranslation ******/
-		/****** md5 signature: fc6e218ec907595a913caec2e23a014c ******/
+		/****** md5 signature: ccff13f29abf96c5b9d3b62c0b5a42a4 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualTranslation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualTranslation: float
+theUpperLimitActualTranslation: double
 
 Return
 -------
@@ -8112,25 +7894,23 @@ Description
 -----------
 Sets field UpperLimitActualTranslation.
 ") SetUpperLimitActualTranslation;
-		void SetUpperLimitActualTranslation(const Standard_Real theUpperLimitActualTranslation);
+		void SetUpperLimitActualTranslation(const double theUpperLimitActualTranslation);
 
 		/****** StepKinematics_PrismaticPairWithRange::UpperLimitActualTranslation ******/
-		/****** md5 signature: 684275e4d7ba2daf91a796102cd97460 ******/
+		/****** md5 signature: 6cf51e7de416661f4cbd1795b697f8c1 ******/
 		%feature("compactdefaultargs") UpperLimitActualTranslation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualTranslation.
 ") UpperLimitActualTranslation;
-		Standard_Real UpperLimitActualTranslation();
+		double UpperLimitActualTranslation();
 
 };
 
-
-%make_alias(StepKinematics_PrismaticPairWithRange)
 
 %extend StepKinematics_PrismaticPairWithRange {
 	%pythoncode {
@@ -8157,7 +7937,7 @@ default constructor.
 		 StepKinematics_RackAndPinionPairWithRange();
 
 		/****** StepKinematics_RackAndPinionPairWithRange::HasLowerLimitRackDisplacement ******/
-		/****** md5 signature: 27e164f6e7606c32d5c0835a24282386 ******/
+		/****** md5 signature: 7964ce6d8d96aea4ca6870d3c442a1de ******/
 		%feature("compactdefaultargs") HasLowerLimitRackDisplacement;
 		%feature("autodoc", "Return
 -------
@@ -8167,10 +7947,10 @@ Description
 -----------
 Returns True if optional field LowerLimitRackDisplacement is defined.
 ") HasLowerLimitRackDisplacement;
-		Standard_Boolean HasLowerLimitRackDisplacement();
+		bool HasLowerLimitRackDisplacement();
 
 		/****** StepKinematics_RackAndPinionPairWithRange::HasUpperLimitRackDisplacement ******/
-		/****** md5 signature: e8da229bff417dcee95c1872d8eb0da2 ******/
+		/****** md5 signature: d5c2f478f2ae88df11055c8469c15eeb ******/
 		%feature("compactdefaultargs") HasUpperLimitRackDisplacement;
 		%feature("autodoc", "Return
 -------
@@ -8180,10 +7960,10 @@ Description
 -----------
 Returns True if optional field UpperLimitRackDisplacement is defined.
 ") HasUpperLimitRackDisplacement;
-		Standard_Boolean HasUpperLimitRackDisplacement();
+		bool HasUpperLimitRackDisplacement();
 
 		/****** StepKinematics_RackAndPinionPairWithRange::Init ******/
-		/****** md5 signature: d793dbc601663c69cb1bd46a584ee957 ******/
+		/****** md5 signature: f4eb032b8d510748f55b5f0ddf20447e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8195,11 +7975,11 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-theRackAndPinionPair_PinionRadius: float
+theRackAndPinionPair_PinionRadius: double
 hasLowerLimitRackDisplacement: bool
-theLowerLimitRackDisplacement: float
+theLowerLimitRackDisplacement: double
 hasUpperLimitRackDisplacement: bool
-theUpperLimitRackDisplacement: float
+theUpperLimitRackDisplacement: double
 
 Return
 -------
@@ -8209,28 +7989,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real theRackAndPinionPair_PinionRadius, const Standard_Boolean hasLowerLimitRackDisplacement, const Standard_Real theLowerLimitRackDisplacement, const Standard_Boolean hasUpperLimitRackDisplacement, const Standard_Real theUpperLimitRackDisplacement);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double theRackAndPinionPair_PinionRadius, const bool hasLowerLimitRackDisplacement, const double theLowerLimitRackDisplacement, const bool hasUpperLimitRackDisplacement, const double theUpperLimitRackDisplacement);
 
 		/****** StepKinematics_RackAndPinionPairWithRange::LowerLimitRackDisplacement ******/
-		/****** md5 signature: 3c826a65a1ee76557d54ac1d15ca19dd ******/
+		/****** md5 signature: 5368e2657af1df82fd9832554718d7fa ******/
 		%feature("compactdefaultargs") LowerLimitRackDisplacement;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitRackDisplacement.
 ") LowerLimitRackDisplacement;
-		Standard_Real LowerLimitRackDisplacement();
+		double LowerLimitRackDisplacement();
 
 		/****** StepKinematics_RackAndPinionPairWithRange::SetLowerLimitRackDisplacement ******/
-		/****** md5 signature: 70ff480f5f816cd823223b3988b1ba6b ******/
+		/****** md5 signature: d4d7309e071a5e19443f04d626071ca8 ******/
 		%feature("compactdefaultargs") SetLowerLimitRackDisplacement;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitRackDisplacement: float
+theLowerLimitRackDisplacement: double
 
 Return
 -------
@@ -8240,15 +8020,15 @@ Description
 -----------
 Sets field LowerLimitRackDisplacement.
 ") SetLowerLimitRackDisplacement;
-		void SetLowerLimitRackDisplacement(const Standard_Real theLowerLimitRackDisplacement);
+		void SetLowerLimitRackDisplacement(const double theLowerLimitRackDisplacement);
 
 		/****** StepKinematics_RackAndPinionPairWithRange::SetUpperLimitRackDisplacement ******/
-		/****** md5 signature: 2a4adb3f00b6e6ac62e24a108e7f076b ******/
+		/****** md5 signature: f6a8e68a77ff624743d45838baad9298 ******/
 		%feature("compactdefaultargs") SetUpperLimitRackDisplacement;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitRackDisplacement: float
+theUpperLimitRackDisplacement: double
 
 Return
 -------
@@ -8258,25 +8038,23 @@ Description
 -----------
 Sets field UpperLimitRackDisplacement.
 ") SetUpperLimitRackDisplacement;
-		void SetUpperLimitRackDisplacement(const Standard_Real theUpperLimitRackDisplacement);
+		void SetUpperLimitRackDisplacement(const double theUpperLimitRackDisplacement);
 
 		/****** StepKinematics_RackAndPinionPairWithRange::UpperLimitRackDisplacement ******/
-		/****** md5 signature: d8bf48dafb6a1a8d42ed6038dfd827af ******/
+		/****** md5 signature: 3af3aed0e0842537ce7226e658d97389 ******/
 		%feature("compactdefaultargs") UpperLimitRackDisplacement;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitRackDisplacement.
 ") UpperLimitRackDisplacement;
-		Standard_Real UpperLimitRackDisplacement();
+		double UpperLimitRackDisplacement();
 
 };
 
-
-%make_alias(StepKinematics_RackAndPinionPairWithRange)
 
 %extend StepKinematics_RackAndPinionPairWithRange {
 	%pythoncode {
@@ -8303,7 +8081,7 @@ default constructor.
 		 StepKinematics_RevolutePairWithRange();
 
 		/****** StepKinematics_RevolutePairWithRange::HasLowerLimitActualRotation ******/
-		/****** md5 signature: e0eabf1d75b84dc61065385143e77e72 ******/
+		/****** md5 signature: 9b40ef4d811e858876d345f940d9308d ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -8313,10 +8091,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
-		Standard_Boolean HasLowerLimitActualRotation();
+		bool HasLowerLimitActualRotation();
 
 		/****** StepKinematics_RevolutePairWithRange::HasUpperLimitActualRotation ******/
-		/****** md5 signature: ee7a165ac58a511590471aeded6017a3 ******/
+		/****** md5 signature: 7517dce8b477eb9f38355f00b58abdf5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -8326,10 +8104,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
-		Standard_Boolean HasUpperLimitActualRotation();
+		bool HasUpperLimitActualRotation();
 
 		/****** StepKinematics_RevolutePairWithRange::Init ******/
-		/****** md5 signature: 40c7150176c2a71a869f27184a1e3e54 ******/
+		/****** md5 signature: 97d3e395659d4aecc168a312d67cbb92 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8348,9 +8126,9 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitActualRotation: bool
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 hasUpperLimitActualRotation: bool
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -8360,28 +8138,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitActualRotation, const Standard_Real theLowerLimitActualRotation, const Standard_Boolean hasUpperLimitActualRotation, const Standard_Real theUpperLimitActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitActualRotation, const double theLowerLimitActualRotation, const bool hasUpperLimitActualRotation, const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_RevolutePairWithRange::LowerLimitActualRotation ******/
-		/****** md5 signature: 55bbdb3a328206d6d00815bb43b23ff8 ******/
+		/****** md5 signature: 750f030b56d0246174629d8de2795657 ******/
 		%feature("compactdefaultargs") LowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
-		Standard_Real LowerLimitActualRotation();
+		double LowerLimitActualRotation();
 
 		/****** StepKinematics_RevolutePairWithRange::SetLowerLimitActualRotation ******/
-		/****** md5 signature: 73a00046a1364069734e82d7c22e794c ******/
+		/****** md5 signature: 70f1515555184a7396c24823a25ea752 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 
 Return
 -------
@@ -8391,15 +8169,15 @@ Description
 -----------
 Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
-		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
+		void SetLowerLimitActualRotation(const double theLowerLimitActualRotation);
 
 		/****** StepKinematics_RevolutePairWithRange::SetUpperLimitActualRotation ******/
-		/****** md5 signature: 34c9a0a444827c9157f0a3f1f15a0cf1 ******/
+		/****** md5 signature: 14bfde518bb812ed770905cb2005aba3 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -8409,25 +8187,23 @@ Description
 -----------
 Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
-		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
+		void SetUpperLimitActualRotation(const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_RevolutePairWithRange::UpperLimitActualRotation ******/
-		/****** md5 signature: e46843824e59bbabdebb3131db45b06a ******/
+		/****** md5 signature: 0110541df2ed6cb73390dbd871578ac5 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
-		Standard_Real UpperLimitActualRotation();
+		double UpperLimitActualRotation();
 
 };
 
-
-%make_alias(StepKinematics_RevolutePairWithRange)
 
 %extend StepKinematics_RevolutePairWithRange {
 	%pythoncode {
@@ -8456,8 +8232,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_RollingCurvePair)
-
 %extend StepKinematics_RollingCurvePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8485,8 +8259,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_RollingSurfacePair)
-
 %extend StepKinematics_RollingSurfacePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8512,7 +8284,7 @@ default constructor.
 		 StepKinematics_ScrewPairWithRange();
 
 		/****** StepKinematics_ScrewPairWithRange::HasLowerLimitActualRotation ******/
-		/****** md5 signature: e0eabf1d75b84dc61065385143e77e72 ******/
+		/****** md5 signature: 9b40ef4d811e858876d345f940d9308d ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -8522,10 +8294,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
-		Standard_Boolean HasLowerLimitActualRotation();
+		bool HasLowerLimitActualRotation();
 
 		/****** StepKinematics_ScrewPairWithRange::HasUpperLimitActualRotation ******/
-		/****** md5 signature: ee7a165ac58a511590471aeded6017a3 ******/
+		/****** md5 signature: 7517dce8b477eb9f38355f00b58abdf5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -8535,10 +8307,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
-		Standard_Boolean HasUpperLimitActualRotation();
+		bool HasUpperLimitActualRotation();
 
 		/****** StepKinematics_ScrewPairWithRange::Init ******/
-		/****** md5 signature: 70ae77781be5be30f5d0cf582820608d ******/
+		/****** md5 signature: 331be4c4bd23de870679a3010fe7f114 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8550,11 +8322,11 @@ theItemDefinedTransformation_Description: TCollection_HAsciiString
 theItemDefinedTransformation_TransformItem1: StepRepr_RepresentationItem
 theItemDefinedTransformation_TransformItem2: StepRepr_RepresentationItem
 theKinematicPair_Joint: StepKinematics_KinematicJoint
-theScrewPair_Pitch: float
+theScrewPair_Pitch: double
 hasLowerLimitActualRotation: bool
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 hasUpperLimitActualRotation: bool
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -8564,28 +8336,28 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Real theScrewPair_Pitch, const Standard_Boolean hasLowerLimitActualRotation, const Standard_Real theLowerLimitActualRotation, const Standard_Boolean hasUpperLimitActualRotation, const Standard_Real theUpperLimitActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const double theScrewPair_Pitch, const bool hasLowerLimitActualRotation, const double theLowerLimitActualRotation, const bool hasUpperLimitActualRotation, const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_ScrewPairWithRange::LowerLimitActualRotation ******/
-		/****** md5 signature: 55bbdb3a328206d6d00815bb43b23ff8 ******/
+		/****** md5 signature: 750f030b56d0246174629d8de2795657 ******/
 		%feature("compactdefaultargs") LowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
-		Standard_Real LowerLimitActualRotation();
+		double LowerLimitActualRotation();
 
 		/****** StepKinematics_ScrewPairWithRange::SetLowerLimitActualRotation ******/
-		/****** md5 signature: 73a00046a1364069734e82d7c22e794c ******/
+		/****** md5 signature: 70f1515555184a7396c24823a25ea752 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 
 Return
 -------
@@ -8595,15 +8367,15 @@ Description
 -----------
 Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
-		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
+		void SetLowerLimitActualRotation(const double theLowerLimitActualRotation);
 
 		/****** StepKinematics_ScrewPairWithRange::SetUpperLimitActualRotation ******/
-		/****** md5 signature: 34c9a0a444827c9157f0a3f1f15a0cf1 ******/
+		/****** md5 signature: 14bfde518bb812ed770905cb2005aba3 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -8613,25 +8385,23 @@ Description
 -----------
 Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
-		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
+		void SetUpperLimitActualRotation(const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_ScrewPairWithRange::UpperLimitActualRotation ******/
-		/****** md5 signature: e46843824e59bbabdebb3131db45b06a ******/
+		/****** md5 signature: 0110541df2ed6cb73390dbd871578ac5 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
-		Standard_Real UpperLimitActualRotation();
+		double UpperLimitActualRotation();
 
 };
 
-
-%make_alias(StepKinematics_ScrewPairWithRange)
 
 %extend StepKinematics_ScrewPairWithRange {
 	%pythoncode {
@@ -8660,8 +8430,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_SlidingCurvePair)
-
 %extend StepKinematics_SlidingCurvePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8689,8 +8457,6 @@ default constructor.
 };
 
 
-%make_alias(StepKinematics_SlidingSurfacePair)
-
 %extend StepKinematics_SlidingSurfacePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8716,7 +8482,7 @@ default constructor.
 		 StepKinematics_SphericalPairWithPinAndRange();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::HasLowerLimitRoll ******/
-		/****** md5 signature: 3d818a00c0f3a06f41717b1eac48086e ******/
+		/****** md5 signature: ca5faa9822f310a70436e725fc12a0f3 ******/
 		%feature("compactdefaultargs") HasLowerLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -8726,10 +8492,10 @@ Description
 -----------
 Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
-		Standard_Boolean HasLowerLimitRoll();
+		bool HasLowerLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::HasLowerLimitYaw ******/
-		/****** md5 signature: 63c43ea96e633188eef51474a06f5060 ******/
+		/****** md5 signature: 219463b70b798e1f47adba6ad95d9904 ******/
 		%feature("compactdefaultargs") HasLowerLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -8739,10 +8505,10 @@ Description
 -----------
 Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
-		Standard_Boolean HasLowerLimitYaw();
+		bool HasLowerLimitYaw();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::HasUpperLimitRoll ******/
-		/****** md5 signature: 565197097405f036b4fe8eae784ed2ed ******/
+		/****** md5 signature: a8c65abdf50e8071fcc7aea0b5d64804 ******/
 		%feature("compactdefaultargs") HasUpperLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -8752,10 +8518,10 @@ Description
 -----------
 Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
-		Standard_Boolean HasUpperLimitRoll();
+		bool HasUpperLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::HasUpperLimitYaw ******/
-		/****** md5 signature: 151b5eee38c02004ecea0c616e1f2a4f ******/
+		/****** md5 signature: 42f8a46fe93adc270a7151e696fd787a ******/
 		%feature("compactdefaultargs") HasUpperLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -8765,10 +8531,10 @@ Description
 -----------
 Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
-		Standard_Boolean HasUpperLimitYaw();
+		bool HasUpperLimitYaw();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::Init ******/
-		/****** md5 signature: eb9bff52495ba6f471d4c4e00e5c878d ******/
+		/****** md5 signature: 27b657d8dc0bcbbada4ecb54f0b9a534 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8787,13 +8553,13 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitYaw: bool
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 hasUpperLimitYaw: bool
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 hasLowerLimitRoll: bool
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 hasUpperLimitRoll: bool
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -8803,41 +8569,41 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitYaw, const Standard_Real theLowerLimitYaw, const Standard_Boolean hasUpperLimitYaw, const Standard_Real theUpperLimitYaw, const Standard_Boolean hasLowerLimitRoll, const Standard_Real theLowerLimitRoll, const Standard_Boolean hasUpperLimitRoll, const Standard_Real theUpperLimitRoll);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitYaw, const double theLowerLimitYaw, const bool hasUpperLimitYaw, const double theUpperLimitYaw, const bool hasLowerLimitRoll, const double theLowerLimitRoll, const bool hasUpperLimitRoll, const double theUpperLimitRoll);
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::LowerLimitRoll ******/
-		/****** md5 signature: 56e926a470380b8e6c281787e1927e28 ******/
+		/****** md5 signature: 71fbf50091a7bb49c13041b8ae9f2b0e ******/
 		%feature("compactdefaultargs") LowerLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitRoll.
 ") LowerLimitRoll;
-		Standard_Real LowerLimitRoll();
+		double LowerLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::LowerLimitYaw ******/
-		/****** md5 signature: 1dce8bd2b95cff7711561282e141791a ******/
+		/****** md5 signature: 7794d2f5c79683c2b16a6c397a4fe9e1 ******/
 		%feature("compactdefaultargs") LowerLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitYaw.
 ") LowerLimitYaw;
-		Standard_Real LowerLimitYaw();
+		double LowerLimitYaw();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::SetLowerLimitRoll ******/
-		/****** md5 signature: 48f497a897c25c671444584112ba1459 ******/
+		/****** md5 signature: 2ef9f49685d52fffae39e5c5df9de000 ******/
 		%feature("compactdefaultargs") SetLowerLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 
 Return
 -------
@@ -8847,15 +8613,15 @@ Description
 -----------
 Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
-		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
+		void SetLowerLimitRoll(const double theLowerLimitRoll);
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::SetLowerLimitYaw ******/
-		/****** md5 signature: 8d53161ff89e24ffa2bd42e4d9ee936c ******/
+		/****** md5 signature: 14e2ac5bd88b6ecd40ca06b6ec0a6d01 ******/
 		%feature("compactdefaultargs") SetLowerLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 
 Return
 -------
@@ -8865,15 +8631,15 @@ Description
 -----------
 Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
-		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
+		void SetLowerLimitYaw(const double theLowerLimitYaw);
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::SetUpperLimitRoll ******/
-		/****** md5 signature: 0a060f3d676198d94d03a00d4262172e ******/
+		/****** md5 signature: 3ce2b2db008923451005c1b6e1d9f2e8 ******/
 		%feature("compactdefaultargs") SetUpperLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -8883,15 +8649,15 @@ Description
 -----------
 Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
-		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
+		void SetUpperLimitRoll(const double theUpperLimitRoll);
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::SetUpperLimitYaw ******/
-		/****** md5 signature: 695c5ef505a77eeba54996a8d5c580ee ******/
+		/****** md5 signature: ee3f15a0330535670700456654ca0ce1 ******/
 		%feature("compactdefaultargs") SetUpperLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 
 Return
 -------
@@ -8901,38 +8667,36 @@ Description
 -----------
 Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
-		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
+		void SetUpperLimitYaw(const double theUpperLimitYaw);
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::UpperLimitRoll ******/
-		/****** md5 signature: f71b7c98e0c4e906603284ef75b8ad54 ******/
+		/****** md5 signature: 82141a03599bd38023d3aa8d1ebb76e3 ******/
 		%feature("compactdefaultargs") UpperLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitRoll.
 ") UpperLimitRoll;
-		Standard_Real UpperLimitRoll();
+		double UpperLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithPinAndRange::UpperLimitYaw ******/
-		/****** md5 signature: 6f932cabcf42e2ce982be3d873a6ba3d ******/
+		/****** md5 signature: 12ad342e4668152baaf51178f6ceb979 ******/
 		%feature("compactdefaultargs") UpperLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitYaw.
 ") UpperLimitYaw;
-		Standard_Real UpperLimitYaw();
+		double UpperLimitYaw();
 
 };
 
-
-%make_alias(StepKinematics_SphericalPairWithPinAndRange)
 
 %extend StepKinematics_SphericalPairWithPinAndRange {
 	%pythoncode {
@@ -8959,7 +8723,7 @@ default constructor.
 		 StepKinematics_SphericalPairWithRange();
 
 		/****** StepKinematics_SphericalPairWithRange::HasLowerLimitPitch ******/
-		/****** md5 signature: 8b18659ce9678f62818eee7f06ee7a0a ******/
+		/****** md5 signature: 6d43ed7cbc282f1f36e1abcceac8b9a3 ******/
 		%feature("compactdefaultargs") HasLowerLimitPitch;
 		%feature("autodoc", "Return
 -------
@@ -8969,10 +8733,10 @@ Description
 -----------
 Returns True if optional field LowerLimitPitch is defined.
 ") HasLowerLimitPitch;
-		Standard_Boolean HasLowerLimitPitch();
+		bool HasLowerLimitPitch();
 
 		/****** StepKinematics_SphericalPairWithRange::HasLowerLimitRoll ******/
-		/****** md5 signature: 3d818a00c0f3a06f41717b1eac48086e ******/
+		/****** md5 signature: ca5faa9822f310a70436e725fc12a0f3 ******/
 		%feature("compactdefaultargs") HasLowerLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -8982,10 +8746,10 @@ Description
 -----------
 Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
-		Standard_Boolean HasLowerLimitRoll();
+		bool HasLowerLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithRange::HasLowerLimitYaw ******/
-		/****** md5 signature: 63c43ea96e633188eef51474a06f5060 ******/
+		/****** md5 signature: 219463b70b798e1f47adba6ad95d9904 ******/
 		%feature("compactdefaultargs") HasLowerLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -8995,10 +8759,10 @@ Description
 -----------
 Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
-		Standard_Boolean HasLowerLimitYaw();
+		bool HasLowerLimitYaw();
 
 		/****** StepKinematics_SphericalPairWithRange::HasUpperLimitPitch ******/
-		/****** md5 signature: 91d59bb3ebb845da29b7387b3f9cd51c ******/
+		/****** md5 signature: 2118ce82483ae961ae68af18c65cd53f ******/
 		%feature("compactdefaultargs") HasUpperLimitPitch;
 		%feature("autodoc", "Return
 -------
@@ -9008,10 +8772,10 @@ Description
 -----------
 Returns True if optional field UpperLimitPitch is defined.
 ") HasUpperLimitPitch;
-		Standard_Boolean HasUpperLimitPitch();
+		bool HasUpperLimitPitch();
 
 		/****** StepKinematics_SphericalPairWithRange::HasUpperLimitRoll ******/
-		/****** md5 signature: 565197097405f036b4fe8eae784ed2ed ******/
+		/****** md5 signature: a8c65abdf50e8071fcc7aea0b5d64804 ******/
 		%feature("compactdefaultargs") HasUpperLimitRoll;
 		%feature("autodoc", "Return
 -------
@@ -9021,10 +8785,10 @@ Description
 -----------
 Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
-		Standard_Boolean HasUpperLimitRoll();
+		bool HasUpperLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithRange::HasUpperLimitYaw ******/
-		/****** md5 signature: 151b5eee38c02004ecea0c616e1f2a4f ******/
+		/****** md5 signature: 42f8a46fe93adc270a7151e696fd787a ******/
 		%feature("compactdefaultargs") HasUpperLimitYaw;
 		%feature("autodoc", "Return
 -------
@@ -9034,10 +8798,10 @@ Description
 -----------
 Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
-		Standard_Boolean HasUpperLimitYaw();
+		bool HasUpperLimitYaw();
 
 		/****** StepKinematics_SphericalPairWithRange::Init ******/
-		/****** md5 signature: 2db7d9ccaf828a10cd0cd9bd0140358f ******/
+		/****** md5 signature: 6119829217443e027b7abd9d987575c8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9056,17 +8820,17 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasLowerLimitYaw: bool
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 hasUpperLimitYaw: bool
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 hasLowerLimitPitch: bool
-theLowerLimitPitch: float
+theLowerLimitPitch: double
 hasUpperLimitPitch: bool
-theUpperLimitPitch: float
+theUpperLimitPitch: double
 hasLowerLimitRoll: bool
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 hasUpperLimitRoll: bool
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -9076,54 +8840,54 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasLowerLimitYaw, const Standard_Real theLowerLimitYaw, const Standard_Boolean hasUpperLimitYaw, const Standard_Real theUpperLimitYaw, const Standard_Boolean hasLowerLimitPitch, const Standard_Real theLowerLimitPitch, const Standard_Boolean hasUpperLimitPitch, const Standard_Real theUpperLimitPitch, const Standard_Boolean hasLowerLimitRoll, const Standard_Real theLowerLimitRoll, const Standard_Boolean hasUpperLimitRoll, const Standard_Real theUpperLimitRoll);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasLowerLimitYaw, const double theLowerLimitYaw, const bool hasUpperLimitYaw, const double theUpperLimitYaw, const bool hasLowerLimitPitch, const double theLowerLimitPitch, const bool hasUpperLimitPitch, const double theUpperLimitPitch, const bool hasLowerLimitRoll, const double theLowerLimitRoll, const bool hasUpperLimitRoll, const double theUpperLimitRoll);
 
 		/****** StepKinematics_SphericalPairWithRange::LowerLimitPitch ******/
-		/****** md5 signature: c4b1ede87f1f5e786a2a213f7a2b1771 ******/
+		/****** md5 signature: 9448d6046b8a72af2b4a0636bf0c069c ******/
 		%feature("compactdefaultargs") LowerLimitPitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitPitch.
 ") LowerLimitPitch;
-		Standard_Real LowerLimitPitch();
+		double LowerLimitPitch();
 
 		/****** StepKinematics_SphericalPairWithRange::LowerLimitRoll ******/
-		/****** md5 signature: 56e926a470380b8e6c281787e1927e28 ******/
+		/****** md5 signature: 71fbf50091a7bb49c13041b8ae9f2b0e ******/
 		%feature("compactdefaultargs") LowerLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitRoll.
 ") LowerLimitRoll;
-		Standard_Real LowerLimitRoll();
+		double LowerLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithRange::LowerLimitYaw ******/
-		/****** md5 signature: 1dce8bd2b95cff7711561282e141791a ******/
+		/****** md5 signature: 7794d2f5c79683c2b16a6c397a4fe9e1 ******/
 		%feature("compactdefaultargs") LowerLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitYaw.
 ") LowerLimitYaw;
-		Standard_Real LowerLimitYaw();
+		double LowerLimitYaw();
 
 		/****** StepKinematics_SphericalPairWithRange::SetLowerLimitPitch ******/
-		/****** md5 signature: 226af1b3d7113bfbf8a46883ed4ce8a7 ******/
+		/****** md5 signature: dc9c0ff5c77d05942a6cbe8a0467ee1f ******/
 		%feature("compactdefaultargs") SetLowerLimitPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitPitch: float
+theLowerLimitPitch: double
 
 Return
 -------
@@ -9133,15 +8897,15 @@ Description
 -----------
 Sets field LowerLimitPitch.
 ") SetLowerLimitPitch;
-		void SetLowerLimitPitch(const Standard_Real theLowerLimitPitch);
+		void SetLowerLimitPitch(const double theLowerLimitPitch);
 
 		/****** StepKinematics_SphericalPairWithRange::SetLowerLimitRoll ******/
-		/****** md5 signature: 48f497a897c25c671444584112ba1459 ******/
+		/****** md5 signature: 2ef9f49685d52fffae39e5c5df9de000 ******/
 		%feature("compactdefaultargs") SetLowerLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitRoll: float
+theLowerLimitRoll: double
 
 Return
 -------
@@ -9151,15 +8915,15 @@ Description
 -----------
 Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
-		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
+		void SetLowerLimitRoll(const double theLowerLimitRoll);
 
 		/****** StepKinematics_SphericalPairWithRange::SetLowerLimitYaw ******/
-		/****** md5 signature: 8d53161ff89e24ffa2bd42e4d9ee936c ******/
+		/****** md5 signature: 14e2ac5bd88b6ecd40ca06b6ec0a6d01 ******/
 		%feature("compactdefaultargs") SetLowerLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitYaw: float
+theLowerLimitYaw: double
 
 Return
 -------
@@ -9169,15 +8933,15 @@ Description
 -----------
 Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
-		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
+		void SetLowerLimitYaw(const double theLowerLimitYaw);
 
 		/****** StepKinematics_SphericalPairWithRange::SetUpperLimitPitch ******/
-		/****** md5 signature: a654c41da7ce0f8115500636f4947de7 ******/
+		/****** md5 signature: 74b41ae2e5b5c82f55d6d466be6ad41e ******/
 		%feature("compactdefaultargs") SetUpperLimitPitch;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitPitch: float
+theUpperLimitPitch: double
 
 Return
 -------
@@ -9187,15 +8951,15 @@ Description
 -----------
 Sets field UpperLimitPitch.
 ") SetUpperLimitPitch;
-		void SetUpperLimitPitch(const Standard_Real theUpperLimitPitch);
+		void SetUpperLimitPitch(const double theUpperLimitPitch);
 
 		/****** StepKinematics_SphericalPairWithRange::SetUpperLimitRoll ******/
-		/****** md5 signature: 0a060f3d676198d94d03a00d4262172e ******/
+		/****** md5 signature: 3ce2b2db008923451005c1b6e1d9f2e8 ******/
 		%feature("compactdefaultargs") SetUpperLimitRoll;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitRoll: float
+theUpperLimitRoll: double
 
 Return
 -------
@@ -9205,15 +8969,15 @@ Description
 -----------
 Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
-		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
+		void SetUpperLimitRoll(const double theUpperLimitRoll);
 
 		/****** StepKinematics_SphericalPairWithRange::SetUpperLimitYaw ******/
-		/****** md5 signature: 695c5ef505a77eeba54996a8d5c580ee ******/
+		/****** md5 signature: ee3f15a0330535670700456654ca0ce1 ******/
 		%feature("compactdefaultargs") SetUpperLimitYaw;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitYaw: float
+theUpperLimitYaw: double
 
 Return
 -------
@@ -9223,51 +8987,49 @@ Description
 -----------
 Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
-		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
+		void SetUpperLimitYaw(const double theUpperLimitYaw);
 
 		/****** StepKinematics_SphericalPairWithRange::UpperLimitPitch ******/
-		/****** md5 signature: a2846ce39fee003441a2c466ea66a91c ******/
+		/****** md5 signature: 3c2d01afb0297abb175851be91c80d50 ******/
 		%feature("compactdefaultargs") UpperLimitPitch;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitPitch.
 ") UpperLimitPitch;
-		Standard_Real UpperLimitPitch();
+		double UpperLimitPitch();
 
 		/****** StepKinematics_SphericalPairWithRange::UpperLimitRoll ******/
-		/****** md5 signature: f71b7c98e0c4e906603284ef75b8ad54 ******/
+		/****** md5 signature: 82141a03599bd38023d3aa8d1ebb76e3 ******/
 		%feature("compactdefaultargs") UpperLimitRoll;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitRoll.
 ") UpperLimitRoll;
-		Standard_Real UpperLimitRoll();
+		double UpperLimitRoll();
 
 		/****** StepKinematics_SphericalPairWithRange::UpperLimitYaw ******/
-		/****** md5 signature: 6f932cabcf42e2ce982be3d873a6ba3d ******/
+		/****** md5 signature: 12ad342e4668152baaf51178f6ceb979 ******/
 		%feature("compactdefaultargs") UpperLimitYaw;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitYaw.
 ") UpperLimitYaw;
-		Standard_Real UpperLimitYaw();
+		double UpperLimitYaw();
 
 };
 
-
-%make_alias(StepKinematics_SphericalPairWithRange)
 
 %extend StepKinematics_SphericalPairWithRange {
 	%pythoncode {
@@ -9294,7 +9056,7 @@ default constructor.
 		 StepKinematics_SurfacePairWithRange();
 
 		/****** StepKinematics_SurfacePairWithRange::HasLowerLimitActualRotation ******/
-		/****** md5 signature: e0eabf1d75b84dc61065385143e77e72 ******/
+		/****** md5 signature: 9b40ef4d811e858876d345f940d9308d ******/
 		%feature("compactdefaultargs") HasLowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -9304,10 +9066,10 @@ Description
 -----------
 Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
-		Standard_Boolean HasLowerLimitActualRotation();
+		bool HasLowerLimitActualRotation();
 
 		/****** StepKinematics_SurfacePairWithRange::HasUpperLimitActualRotation ******/
-		/****** md5 signature: ee7a165ac58a511590471aeded6017a3 ******/
+		/****** md5 signature: 7517dce8b477eb9f38355f00b58abdf5 ******/
 		%feature("compactdefaultargs") HasUpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
@@ -9317,10 +9079,10 @@ Description
 -----------
 Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
-		Standard_Boolean HasUpperLimitActualRotation();
+		bool HasUpperLimitActualRotation();
 
 		/****** StepKinematics_SurfacePairWithRange::Init ******/
-		/****** md5 signature: ff23628e2a4a31992fb1fb562251e1de ******/
+		/****** md5 signature: d7bac5b4193d8d558502f7e06d97c823 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9338,9 +9100,9 @@ theSurfacePair_Orientation: bool
 theRangeOnSurface1: StepGeom_RectangularTrimmedSurface
 theRangeOnSurface2: StepGeom_RectangularTrimmedSurface
 hasLowerLimitActualRotation: bool
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 hasUpperLimitActualRotation: bool
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -9350,20 +9112,20 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & theSurfacePair_Surface1, const opencascade::handle<StepGeom_Surface> & theSurfacePair_Surface2, const Standard_Boolean theSurfacePair_Orientation, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface1, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface2, const Standard_Boolean hasLowerLimitActualRotation, const Standard_Real theLowerLimitActualRotation, const Standard_Boolean hasUpperLimitActualRotation, const Standard_Real theUpperLimitActualRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const opencascade::handle<StepGeom_Surface> & theSurfacePair_Surface1, const opencascade::handle<StepGeom_Surface> & theSurfacePair_Surface2, const bool theSurfacePair_Orientation, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface1, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface2, const bool hasLowerLimitActualRotation, const double theLowerLimitActualRotation, const bool hasUpperLimitActualRotation, const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_SurfacePairWithRange::LowerLimitActualRotation ******/
-		/****** md5 signature: 55bbdb3a328206d6d00815bb43b23ff8 ******/
+		/****** md5 signature: 750f030b56d0246174629d8de2795657 ******/
 		%feature("compactdefaultargs") LowerLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
-		Standard_Real LowerLimitActualRotation();
+		double LowerLimitActualRotation();
 
 		/****** StepKinematics_SurfacePairWithRange::RangeOnSurface1 ******/
 		/****** md5 signature: 0ae008823cd38eac4d98f999364d53fa ******/
@@ -9392,12 +9154,12 @@ Returns field RangeOnSurface2.
 		opencascade::handle<StepGeom_RectangularTrimmedSurface> RangeOnSurface2();
 
 		/****** StepKinematics_SurfacePairWithRange::SetLowerLimitActualRotation ******/
-		/****** md5 signature: 73a00046a1364069734e82d7c22e794c ******/
+		/****** md5 signature: 70f1515555184a7396c24823a25ea752 ******/
 		%feature("compactdefaultargs") SetLowerLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitActualRotation: float
+theLowerLimitActualRotation: double
 
 Return
 -------
@@ -9407,7 +9169,7 @@ Description
 -----------
 Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
-		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
+		void SetLowerLimitActualRotation(const double theLowerLimitActualRotation);
 
 		/****** StepKinematics_SurfacePairWithRange::SetRangeOnSurface1 ******/
 		/****** md5 signature: 7786edccd7ba32e1d2a177f5abb0584b ******/
@@ -9446,12 +9208,12 @@ Sets field RangeOnSurface2.
 		void SetRangeOnSurface2(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface2);
 
 		/****** StepKinematics_SurfacePairWithRange::SetUpperLimitActualRotation ******/
-		/****** md5 signature: 34c9a0a444827c9157f0a3f1f15a0cf1 ******/
+		/****** md5 signature: 14bfde518bb812ed770905cb2005aba3 ******/
 		%feature("compactdefaultargs") SetUpperLimitActualRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitActualRotation: float
+theUpperLimitActualRotation: double
 
 Return
 -------
@@ -9461,25 +9223,23 @@ Description
 -----------
 Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
-		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
+		void SetUpperLimitActualRotation(const double theUpperLimitActualRotation);
 
 		/****** StepKinematics_SurfacePairWithRange::UpperLimitActualRotation ******/
-		/****** md5 signature: e46843824e59bbabdebb3131db45b06a ******/
+		/****** md5 signature: 0110541df2ed6cb73390dbd871578ac5 ******/
 		%feature("compactdefaultargs") UpperLimitActualRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
-		Standard_Real UpperLimitActualRotation();
+		double UpperLimitActualRotation();
 
 };
 
-
-%make_alias(StepKinematics_SurfacePairWithRange)
 
 %extend StepKinematics_SurfacePairWithRange {
 	%pythoncode {
@@ -9506,7 +9266,7 @@ default constructor.
 		 StepKinematics_UniversalPairWithRange();
 
 		/****** StepKinematics_UniversalPairWithRange::HasLowerLimitFirstRotation ******/
-		/****** md5 signature: 0f18df23961bad47d7584d08b224842c ******/
+		/****** md5 signature: 29bebf52830b4ba69cee1be785490034 ******/
 		%feature("compactdefaultargs") HasLowerLimitFirstRotation;
 		%feature("autodoc", "Return
 -------
@@ -9516,10 +9276,10 @@ Description
 -----------
 Returns True if optional field LowerLimitFirstRotation is defined.
 ") HasLowerLimitFirstRotation;
-		Standard_Boolean HasLowerLimitFirstRotation();
+		bool HasLowerLimitFirstRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::HasLowerLimitSecondRotation ******/
-		/****** md5 signature: c80fea2f65ec871445d2c5d79af0ddc4 ******/
+		/****** md5 signature: fed71306b6298e457065fbac270c7eed ******/
 		%feature("compactdefaultargs") HasLowerLimitSecondRotation;
 		%feature("autodoc", "Return
 -------
@@ -9529,10 +9289,10 @@ Description
 -----------
 Returns True if optional field LowerLimitSecondRotation is defined.
 ") HasLowerLimitSecondRotation;
-		Standard_Boolean HasLowerLimitSecondRotation();
+		bool HasLowerLimitSecondRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::HasUpperLimitFirstRotation ******/
-		/****** md5 signature: cc8ad0034379613c4bf9e18e243590ac ******/
+		/****** md5 signature: 561a4be62d9e6ee0f9f78d488548e017 ******/
 		%feature("compactdefaultargs") HasUpperLimitFirstRotation;
 		%feature("autodoc", "Return
 -------
@@ -9542,10 +9302,10 @@ Description
 -----------
 Returns True if optional field UpperLimitFirstRotation is defined.
 ") HasUpperLimitFirstRotation;
-		Standard_Boolean HasUpperLimitFirstRotation();
+		bool HasUpperLimitFirstRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::HasUpperLimitSecondRotation ******/
-		/****** md5 signature: f0c9eb4d75f97a564f19ab0db2bc26df ******/
+		/****** md5 signature: 74285667b35035c2d955297e69987a6f ******/
 		%feature("compactdefaultargs") HasUpperLimitSecondRotation;
 		%feature("autodoc", "Return
 -------
@@ -9555,10 +9315,10 @@ Description
 -----------
 Returns True if optional field UpperLimitSecondRotation is defined.
 ") HasUpperLimitSecondRotation;
-		Standard_Boolean HasUpperLimitSecondRotation();
+		bool HasUpperLimitSecondRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::Init ******/
-		/****** md5 signature: 9d17da45458cb3e21b560d6eb9581522 ******/
+		/****** md5 signature: 4626a7bf84cd41608bd876201088e540 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9577,15 +9337,15 @@ theLowOrderKinematicPair_RX: bool
 theLowOrderKinematicPair_RY: bool
 theLowOrderKinematicPair_RZ: bool
 hasUniversalPair_InputSkewAngle: bool
-theUniversalPair_InputSkewAngle: float
+theUniversalPair_InputSkewAngle: double
 hasLowerLimitFirstRotation: bool
-theLowerLimitFirstRotation: float
+theLowerLimitFirstRotation: double
 hasUpperLimitFirstRotation: bool
-theUpperLimitFirstRotation: float
+theUpperLimitFirstRotation: double
 hasLowerLimitSecondRotation: bool
-theLowerLimitSecondRotation: float
+theLowerLimitSecondRotation: double
 hasUpperLimitSecondRotation: bool
-theUpperLimitSecondRotation: float
+theUpperLimitSecondRotation: double
 
 Return
 -------
@@ -9595,41 +9355,41 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const Standard_Boolean hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const Standard_Boolean theLowOrderKinematicPair_TX, const Standard_Boolean theLowOrderKinematicPair_TY, const Standard_Boolean theLowOrderKinematicPair_TZ, const Standard_Boolean theLowOrderKinematicPair_RX, const Standard_Boolean theLowOrderKinematicPair_RY, const Standard_Boolean theLowOrderKinematicPair_RZ, const Standard_Boolean hasUniversalPair_InputSkewAngle, const Standard_Real theUniversalPair_InputSkewAngle, const Standard_Boolean hasLowerLimitFirstRotation, const Standard_Real theLowerLimitFirstRotation, const Standard_Boolean hasUpperLimitFirstRotation, const Standard_Real theUpperLimitFirstRotation, const Standard_Boolean hasLowerLimitSecondRotation, const Standard_Real theLowerLimitSecondRotation, const Standard_Boolean hasUpperLimitSecondRotation, const Standard_Real theUpperLimitSecondRotation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Name, const bool hasItemDefinedTransformation_Description, const opencascade::handle<TCollection_HAsciiString> & theItemDefinedTransformation_Description, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem1, const opencascade::handle<StepRepr_RepresentationItem> & theItemDefinedTransformation_TransformItem2, const opencascade::handle<StepKinematics_KinematicJoint> & theKinematicPair_Joint, const bool theLowOrderKinematicPair_TX, const bool theLowOrderKinematicPair_TY, const bool theLowOrderKinematicPair_TZ, const bool theLowOrderKinematicPair_RX, const bool theLowOrderKinematicPair_RY, const bool theLowOrderKinematicPair_RZ, const bool hasUniversalPair_InputSkewAngle, const double theUniversalPair_InputSkewAngle, const bool hasLowerLimitFirstRotation, const double theLowerLimitFirstRotation, const bool hasUpperLimitFirstRotation, const double theUpperLimitFirstRotation, const bool hasLowerLimitSecondRotation, const double theLowerLimitSecondRotation, const bool hasUpperLimitSecondRotation, const double theUpperLimitSecondRotation);
 
 		/****** StepKinematics_UniversalPairWithRange::LowerLimitFirstRotation ******/
-		/****** md5 signature: 3fe590bff56b404a11d0a1738e825c6a ******/
+		/****** md5 signature: b6661ca8dafdd17b4b1711bdad24a166 ******/
 		%feature("compactdefaultargs") LowerLimitFirstRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitFirstRotation.
 ") LowerLimitFirstRotation;
-		Standard_Real LowerLimitFirstRotation();
+		double LowerLimitFirstRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::LowerLimitSecondRotation ******/
-		/****** md5 signature: 285514fa4414fae50173200e71d7bc2f ******/
+		/****** md5 signature: 4bcbeb801f0ffed407b2d17edcecd65a ******/
 		%feature("compactdefaultargs") LowerLimitSecondRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field LowerLimitSecondRotation.
 ") LowerLimitSecondRotation;
-		Standard_Real LowerLimitSecondRotation();
+		double LowerLimitSecondRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::SetLowerLimitFirstRotation ******/
-		/****** md5 signature: 54866c1bb49a7a82ef96a46a2a08b570 ******/
+		/****** md5 signature: 87e7d3d9c9eae1bc9fce073b9baf6c25 ******/
 		%feature("compactdefaultargs") SetLowerLimitFirstRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitFirstRotation: float
+theLowerLimitFirstRotation: double
 
 Return
 -------
@@ -9639,15 +9399,15 @@ Description
 -----------
 Sets field LowerLimitFirstRotation.
 ") SetLowerLimitFirstRotation;
-		void SetLowerLimitFirstRotation(const Standard_Real theLowerLimitFirstRotation);
+		void SetLowerLimitFirstRotation(const double theLowerLimitFirstRotation);
 
 		/****** StepKinematics_UniversalPairWithRange::SetLowerLimitSecondRotation ******/
-		/****** md5 signature: 46654a79bed5be333918f21488883383 ******/
+		/****** md5 signature: 5b254854bafd6bd0f8361ebe1a764409 ******/
 		%feature("compactdefaultargs") SetLowerLimitSecondRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theLowerLimitSecondRotation: float
+theLowerLimitSecondRotation: double
 
 Return
 -------
@@ -9657,15 +9417,15 @@ Description
 -----------
 Sets field LowerLimitSecondRotation.
 ") SetLowerLimitSecondRotation;
-		void SetLowerLimitSecondRotation(const Standard_Real theLowerLimitSecondRotation);
+		void SetLowerLimitSecondRotation(const double theLowerLimitSecondRotation);
 
 		/****** StepKinematics_UniversalPairWithRange::SetUpperLimitFirstRotation ******/
-		/****** md5 signature: 183ff8b587748bbe0115e3447066c252 ******/
+		/****** md5 signature: 577102c1cd7b14aa434e4860fc92a39e ******/
 		%feature("compactdefaultargs") SetUpperLimitFirstRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitFirstRotation: float
+theUpperLimitFirstRotation: double
 
 Return
 -------
@@ -9675,15 +9435,15 @@ Description
 -----------
 Sets field UpperLimitFirstRotation.
 ") SetUpperLimitFirstRotation;
-		void SetUpperLimitFirstRotation(const Standard_Real theUpperLimitFirstRotation);
+		void SetUpperLimitFirstRotation(const double theUpperLimitFirstRotation);
 
 		/****** StepKinematics_UniversalPairWithRange::SetUpperLimitSecondRotation ******/
-		/****** md5 signature: 0e16eacb30addd6e490b2e7123f7a8d1 ******/
+		/****** md5 signature: 7218699bb7b39c77eb0f7f70879f9e79 ******/
 		%feature("compactdefaultargs") SetUpperLimitSecondRotation;
 		%feature("autodoc", "
 Parameters
 ----------
-theUpperLimitSecondRotation: float
+theUpperLimitSecondRotation: double
 
 Return
 -------
@@ -9693,38 +9453,36 @@ Description
 -----------
 Sets field UpperLimitSecondRotation.
 ") SetUpperLimitSecondRotation;
-		void SetUpperLimitSecondRotation(const Standard_Real theUpperLimitSecondRotation);
+		void SetUpperLimitSecondRotation(const double theUpperLimitSecondRotation);
 
 		/****** StepKinematics_UniversalPairWithRange::UpperLimitFirstRotation ******/
-		/****** md5 signature: a15c758fe0d7809f331d8176d92a3b04 ******/
+		/****** md5 signature: 34259fddda317e4896114ded1bb32de4 ******/
 		%feature("compactdefaultargs") UpperLimitFirstRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitFirstRotation.
 ") UpperLimitFirstRotation;
-		Standard_Real UpperLimitFirstRotation();
+		double UpperLimitFirstRotation();
 
 		/****** StepKinematics_UniversalPairWithRange::UpperLimitSecondRotation ******/
-		/****** md5 signature: 01eb8650de930cd57e61d9b43b649e8c ******/
+		/****** md5 signature: 1dde3687e65040c341b6b98f69aae8d2 ******/
 		%feature("compactdefaultargs") UpperLimitSecondRotation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns field UpperLimitSecondRotation.
 ") UpperLimitSecondRotation;
-		Standard_Real UpperLimitSecondRotation();
+		double UpperLimitSecondRotation();
 
 };
 
-
-%make_alias(StepKinematics_UniversalPairWithRange)
 
 %extend StepKinematics_UniversalPairWithRange {
 	%pythoncode {

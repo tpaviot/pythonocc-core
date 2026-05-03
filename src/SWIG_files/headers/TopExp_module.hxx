@@ -21,6 +21,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<TopExp.hxx>
 #include<TopExp_Explorer.hxx>
-#include<TopExp_Stack.hxx>
 
 #endif // TOPEXP_HXX

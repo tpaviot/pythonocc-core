@@ -52,7 +52,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpatch.html"
 #include<IntSurf_module.hxx>
 #include<Geom2d_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntAna_module.hxx>
 #include<Geom_module.hxx>
@@ -73,7 +72,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpatch.html"
 %import IntSurf.i
 %import Geom2d.i
 %import GeomAbs.i
-%import TColStd.i
 %import Bnd.i
 %import IntAna.i
 
@@ -210,7 +208,7 @@ typedef NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds> IntPatch_Sequenc
 class IntPatch_ALineToWLine {
 	public:
 		/****** IntPatch_ALineToWLine::IntPatch_ALineToWLine ******/
-		/****** md5 signature: 2f42631433ded37863a3c2e22963c3ab ******/
+		/****** md5 signature: 87d1f1fcb6ea732530fd1bd5fc44f31d ******/
 		%feature("compactdefaultargs") IntPatch_ALineToWLine;
 		%feature("autodoc", "
 Parameters
@@ -227,16 +225,16 @@ Description
 -----------
 Constructor.
 ") IntPatch_ALineToWLine;
-		 IntPatch_ALineToWLine(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Integer theNbPoints = 200);
+		 IntPatch_ALineToWLine(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const int theNbPoints = 200);
 
 		/****** IntPatch_ALineToWLine::MakeWLine ******/
-		/****** md5 signature: 6b47b07a444cb68ac061bd9dc0d6098b ******/
+		/****** md5 signature: f062bcbd1d605bff279a8df30247e297 ******/
 		%feature("compactdefaultargs") MakeWLine;
 		%feature("autodoc", "
 Parameters
 ----------
 aline: IntPatch_ALine
-theLines: IntPatch_SequenceOfLine
+theLines: IntPatch_Line
 
 Return
 -------
@@ -246,18 +244,18 @@ Description
 -----------
 Converts aline to the set of Walking-lines and adds them in theLines.
 ") MakeWLine;
-		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, IntPatch_SequenceOfLine & theLines);
+		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theLines);
 
 		/****** IntPatch_ALineToWLine::MakeWLine ******/
-		/****** md5 signature: 10f46e5d7e2085cbf19dde3ab0e3d1d7 ******/
+		/****** md5 signature: fd3a2c5687d1a93fe0e3f5253151ab1a ******/
 		%feature("compactdefaultargs") MakeWLine;
 		%feature("autodoc", "
 Parameters
 ----------
 aline: IntPatch_ALine
-paraminf: float
-paramsup: float
-theLines: IntPatch_SequenceOfLine
+paraminf: double
+paramsup: double
+theLines: IntPatch_Line
 
 Return
 -------
@@ -267,15 +265,15 @@ Description
 -----------
 Converts aline (limited by paraminf and paramsup) to the set of Walking-lines and adds them in theLines.
 ") MakeWLine;
-		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, const Standard_Real paraminf, const Standard_Real paramsup, IntPatch_SequenceOfLine & theLines);
+		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, const double paraminf, const double paramsup, NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theLines);
 
 		/****** IntPatch_ALineToWLine::SetTol3D ******/
-		/****** md5 signature: 880c2e2c72950aa6453ef901b91f71f5 ******/
+		/****** md5 signature: 5d857c1ad9fdbc857081f6a5ac8f9f1a ******/
 		%feature("compactdefaultargs") SetTol3D;
 		%feature("autodoc", "
 Parameters
 ----------
-aT: float
+aT: double
 
 Return
 -------
@@ -285,15 +283,15 @@ Description
 -----------
 No available documentation.
 ") SetTol3D;
-		void SetTol3D(const Standard_Real aT);
+		void SetTol3D(const double aT);
 
 		/****** IntPatch_ALineToWLine::SetTolOpenDomain ******/
-		/****** md5 signature: aa60c72e6f01340a2ea156680d570064 ******/
+		/****** md5 signature: 0ca430e774067f9c1ff6093f55e67f35 ******/
 		%feature("compactdefaultargs") SetTolOpenDomain;
 		%feature("autodoc", "
 Parameters
 ----------
-aT: float
+aT: double
 
 Return
 -------
@@ -303,15 +301,15 @@ Description
 -----------
 No available documentation.
 ") SetTolOpenDomain;
-		void SetTolOpenDomain(const Standard_Real aT);
+		void SetTolOpenDomain(const double aT);
 
 		/****** IntPatch_ALineToWLine::SetTolTransition ******/
-		/****** md5 signature: f8660409573cc8eb24509f9765e262c9 ******/
+		/****** md5 signature: 811fe2bf1f71769ed36fbd8ae75ddd23 ******/
 		%feature("compactdefaultargs") SetTolTransition;
 		%feature("autodoc", "
 Parameters
 ----------
-aT: float
+aT: double
 
 Return
 -------
@@ -321,46 +319,46 @@ Description
 -----------
 No available documentation.
 ") SetTolTransition;
-		void SetTolTransition(const Standard_Real aT);
+		void SetTolTransition(const double aT);
 
 		/****** IntPatch_ALineToWLine::Tol3D ******/
-		/****** md5 signature: 0c721fa385f74a0241e7db7704f9176b ******/
+		/****** md5 signature: cf50da21efbed6fecf997c2344f8a213 ******/
 		%feature("compactdefaultargs") Tol3D;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tol3D;
-		Standard_Real Tol3D();
+		double Tol3D();
 
 		/****** IntPatch_ALineToWLine::TolOpenDomain ******/
-		/****** md5 signature: 12e25334e78796bee366d6bf308a8b84 ******/
+		/****** md5 signature: e5929702f7ecaed1bbba7662e382449a ******/
 		%feature("compactdefaultargs") TolOpenDomain;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TolOpenDomain;
-		Standard_Real TolOpenDomain();
+		double TolOpenDomain();
 
 		/****** IntPatch_ALineToWLine::TolTransition ******/
-		/****** md5 signature: d6465ab9e0260f5ae5ec775eca328745 ******/
+		/****** md5 signature: 689aed7d120906e01df5356c21010164 ******/
 		%feature("compactdefaultargs") TolTransition;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TolTransition;
-		Standard_Real TolTransition();
+		double TolTransition();
 
 };
 
@@ -403,25 +401,25 @@ No available documentation.
 		const opencascade::handle<Adaptor2d_Curve2d> & Arc();
 
 		/****** IntPatch_ArcFunction::Derivative ******/
-		/****** md5 signature: 99d758c6c475cdb086620552a67d08e7 ******/
+		/****** md5 signature: 5b661e723f14c67a734d7bc68bb6cabf ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 No available documentation.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
+		bool Derivative(const double X, Standard_Real &OutValue);
 
 		/****** IntPatch_ArcFunction::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
+		/****** md5 signature: 476bd80c2b35cb038599a2aed9b23901 ******/
 		%feature("compactdefaultargs") GetStateNumber;
 		%feature("autodoc", "Return
 -------
@@ -431,7 +429,7 @@ Description
 -----------
 No available documentation.
 ") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
+		int GetStateNumber();
 
 		/****** IntPatch_ArcFunction::LastComputedPoint ******/
 		/****** md5 signature: 151ab65e948ef31dff9bbbd66f058a30 ******/
@@ -447,7 +445,7 @@ Returns the point, which has been computed while the last calling Value() method
 		const gp_Pnt LastComputedPoint();
 
 		/****** IntPatch_ArcFunction::NbSamples ******/
-		/****** md5 signature: 1e61299a12ab2ebed2590e1021ec4bae ******/
+		/****** md5 signature: 2fabaf64e989ab636a03df74249efff3 ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "Return
 -------
@@ -457,7 +455,7 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		Standard_Integer NbSamples();
+		int NbSamples();
 
 		/****** IntPatch_ArcFunction::Quadric ******/
 		/****** md5 signature: 412540fe449bd77bf89b8085f1fe1701 ******/
@@ -540,7 +538,7 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & Surface();
 
 		/****** IntPatch_ArcFunction::Valpoint ******/
-		/****** md5 signature: 3a2ceb97db1e39a13d0a9061e49cb920 ******/
+		/****** md5 signature: 99bddfd2a1889564e4bfb796166a1e65 ******/
 		%feature("compactdefaultargs") Valpoint;
 		%feature("autodoc", "
 Parameters
@@ -555,44 +553,44 @@ Description
 -----------
 No available documentation.
 ") Valpoint;
-		const gp_Pnt Valpoint(const Standard_Integer Index);
+		const gp_Pnt Valpoint(const int Index);
 
 		/****** IntPatch_ArcFunction::Value ******/
-		/****** md5 signature: af675141386b20e819be1017ca5afac2 ******/
+		/****** md5 signature: 2fdd0f48acb4882f76bbbe432a18ac3a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
+		bool Value(const double X, Standard_Real &OutValue);
 
 		/****** IntPatch_ArcFunction::Values ******/
-		/****** md5 signature: 3835d085291235e285cceabd6d1dd2b9 ******/
+		/****** md5 signature: 44ea1ebbd1c996779e93f28435817e28 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double X, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -655,7 +653,7 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface();
 
 		/****** IntPatch_CSFunction::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -671,10 +669,10 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** IntPatch_CSFunction::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -684,10 +682,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** IntPatch_CSFunction::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -697,7 +695,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** IntPatch_CSFunction::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -713,20 +711,20 @@ No available documentation.
 		const gp_Pnt Point();
 
 		/****** IntPatch_CSFunction::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** IntPatch_CSFunction::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -742,10 +740,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** IntPatch_CSFunction::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -762,7 +760,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -779,17 +777,17 @@ No available documentation.
 class IntPatch_CurvIntSurf {
 	public:
 		/****** IntPatch_CurvIntSurf::IntPatch_CurvIntSurf ******/
-		/****** md5 signature: eee762a61380ee26870107a7d7083331 ******/
+		/****** md5 signature: 81d075556cf5e01f4df98af832aba7db ******/
 		%feature("compactdefaultargs") IntPatch_CurvIntSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-W: float
+U: double
+V: double
+W: double
 F: IntPatch_CSFunction
-TolTangency: float
-MarginCoef: float (optional, default to 0.0)
+TolTangency: double
+MarginCoef: double (optional, default to 0.0)
 
 Return
 -------
@@ -799,16 +797,16 @@ Description
 -----------
 compute the solution point with the close point MarginCoef is the coefficient for extension of UV bounds. Ex., UFirst -= MarginCoef*(ULast-UFirst).
 ") IntPatch_CurvIntSurf;
-		 IntPatch_CurvIntSurf(const Standard_Real U, const Standard_Real V, const Standard_Real W, const IntPatch_CSFunction & F, const Standard_Real TolTangency, const Standard_Real MarginCoef = 0.0);
+		 IntPatch_CurvIntSurf(const double U, const double V, const double W, const IntPatch_CSFunction & F, const double TolTangency, const double MarginCoef = 0.0);
 
 		/****** IntPatch_CurvIntSurf::IntPatch_CurvIntSurf ******/
-		/****** md5 signature: 3882a9005a40ad3530a606e0414e642e ******/
+		/****** md5 signature: 3e8479644088d3a73b64ee723c86f58d ******/
 		%feature("compactdefaultargs") IntPatch_CurvIntSurf;
 		%feature("autodoc", "
 Parameters
 ----------
 F: IntPatch_CSFunction
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -818,7 +816,7 @@ Description
 -----------
 initialize the parameters to compute the solution.
 ") IntPatch_CurvIntSurf;
-		 IntPatch_CurvIntSurf(const IntPatch_CSFunction & F, const Standard_Real TolTangency);
+		 IntPatch_CurvIntSurf(const IntPatch_CSFunction & F, const double TolTangency);
 
 		/****** IntPatch_CurvIntSurf::Function ******/
 		/****** md5 signature: 14b4caa41fcc22a8994bca1ef859d9cb ******/
@@ -834,7 +832,7 @@ return the math function which is used to compute the intersection.
 		IntPatch_CSFunction & Function();
 
 		/****** IntPatch_CurvIntSurf::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -844,10 +842,10 @@ Description
 -----------
 Returns True if the creation completed without failure.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_CurvIntSurf::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -857,23 +855,23 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntPatch_CurvIntSurf::ParameterOnCurve ******/
-		/****** md5 signature: ac81682b4b1f0988f8f73835e37144bf ******/
+		/****** md5 signature: 57f5295e1d0243d744a43fcea3cf7388 ******/
 		%feature("compactdefaultargs") ParameterOnCurve;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParameterOnCurve;
-		Standard_Real ParameterOnCurve();
+		double ParameterOnCurve();
 
 		/****** IntPatch_CurvIntSurf::ParameterOnSurface ******/
-		/****** md5 signature: b1ff2b42bc6096157075c8f0a6c1b6a5 ******/
+		/****** md5 signature: 7f31eb7c473aecf695130da66c37cc8a ******/
 		%feature("compactdefaultargs") ParameterOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -881,8 +879,8 @@ Parameters
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -891,21 +889,21 @@ No available documentation.
 		void ParameterOnSurface(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_CurvIntSurf::Perform ******/
-		/****** md5 signature: 193bc13b7dd6d13fbf6a72a44d7ddd7b ******/
+		/****** md5 signature: 32414faba82bb6739429b692c1146008 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-W: float
+U: double
+V: double
+W: double
 Rsnld: math_FunctionSetRoot
-u0: float
-v0: float
-u1: float
-v1: float
-w0: float
-w1: float
+u0: double
+v0: double
+u1: double
+v1: double
+w0: double
+w1: double
 
 Return
 -------
@@ -915,7 +913,7 @@ Description
 -----------
 compute the solution it's possible to write to optimize: IntImp_IntCS inter(S1,C1,Toltangency) math_FunctionSetRoot rsnld(Inter.function()) while ...{ u=... v=... w=... inter.Perform(u,v,w,rsnld) } or IntImp_IntCS inter(Toltangency) inter.SetSurface(S); math_FunctionSetRoot rsnld(Inter.function()) while ...{ C=... inter.SetCurve(C); u=... v=... w=... inter.Perform(u,v,w,rsnld) }.
 ") Perform;
-		void Perform(const Standard_Real U, const Standard_Real V, const Standard_Real W, math_FunctionSetRoot & Rsnld, const Standard_Real u0, const Standard_Real v0, const Standard_Real u1, const Standard_Real v1, const Standard_Real w0, const Standard_Real w1);
+		void Perform(const double U, const double V, const double W, math_FunctionSetRoot & Rsnld, const double u0, const double v0, const double u1, const double v1, const double w0, const double w1);
 
 		/****** IntPatch_CurvIntSurf::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -1017,13 +1015,13 @@ No available documentation.
 		static GeomAbs_Shape Continuity(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::D0 ******/
-		/****** md5 signature: 54c6bd0c456279db2610c0ff0808eb84 ******/
+		/****** md5 signature: 647414f13617b3951aae630a40485c89 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U: float
+U: double
 P: gp_Pnt2d
 
 Return
@@ -1034,16 +1032,16 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P);
+		static void D0(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U, gp_Pnt2d & P);
 
 		/****** IntPatch_HCurve2dTool::D1 ******/
-		/****** md5 signature: 918bee38d3c31b02180315ab8bd4beb7 ******/
+		/****** md5 signature: 4cb67a5cf245485839e9a70d333c71a4 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U: float
+U: double
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -1055,16 +1053,16 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		static void D1(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** IntPatch_HCurve2dTool::D2 ******/
-		/****** md5 signature: d9e326efa98865a213fce49a3626a678 ******/
+		/****** md5 signature: 7c8af9f7178b95531f0269176827b3b6 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -1077,16 +1075,16 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** IntPatch_HCurve2dTool::D3 ******/
-		/****** md5 signature: 4951d7379750f8dbc9e426361fa2b365 ******/
+		/****** md5 signature: 0d5beba8194fcecf902b3af0a6115ccc ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -1100,16 +1098,16 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** IntPatch_HCurve2dTool::DN ******/
-		/****** md5 signature: edb6f0f7cc5bdd7864a248db788f4d84 ******/
+		/****** md5 signature: c6ea8b27aa6fb1aef473b0dca6417f7f ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U: float
+U: double
 N: int
 
 Return
@@ -1120,7 +1118,7 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec2d DN(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U, const int N);
 
 		/****** IntPatch_HCurve2dTool::Ellipse ******/
 		/****** md5 signature: 9ddecf68838c4598b17a43e7ee186e6e ******/
@@ -1141,7 +1139,7 @@ No available documentation.
 		static gp_Elips2d Ellipse(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::FirstParameter ******/
-		/****** md5 signature: a4d9a6241f0c3cafc57f60a68d9c9127 ******/
+		/****** md5 signature: ba7dcc17bbcf3ad13ca428fccb4ee295 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -1150,13 +1148,13 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static double FirstParameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::GetType ******/
 		/****** md5 signature: 29ec5067d7e913f214c553444ec99b6a ******/
@@ -1195,13 +1193,13 @@ No available documentation.
 		static gp_Hypr2d Hyperbola(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::Intervals ******/
-		/****** md5 signature: 7f25b6c48f712ccc9ec416d83eb97ef8 ******/
+		/****** md5 signature: f078f296545d3dd38144048dfca10469 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -1212,10 +1210,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** IntPatch_HCurve2dTool::IsClosed ******/
-		/****** md5 signature: e2e4c5d0ae21ac59c815ef761d7e7eb0 ******/
+		/****** md5 signature: 2e919d2de6d38bdb8500e5fc59dfa301 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -1230,10 +1228,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static bool IsClosed(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::IsPeriodic ******/
-		/****** md5 signature: 343c2522f84a0271d505fb5a7b6123ee ******/
+		/****** md5 signature: 758f5d32a3e81a7d0cac59086cea6b55 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1248,10 +1246,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static bool IsPeriodic(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::LastParameter ******/
-		/****** md5 signature: a84c73d5efee27b935b3bc64eba5e8ab ******/
+		/****** md5 signature: c3783a6df82a0f461b6597f54b9d3b85 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -1260,13 +1258,13 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static double LastParameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::Line ******/
 		/****** md5 signature: cc50bf5bbcfff1340d1951ad804f481d ******/
@@ -1287,7 +1285,7 @@ No available documentation.
 		static gp_Lin2d Line(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::NbIntervals ******/
-		/****** md5 signature: 296d2d406ae6365ab4187665e47f6beb ******/
+		/****** md5 signature: f892a17175c7690de7e2ba8d55659419 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1303,17 +1301,17 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const opencascade::handle<Adaptor2d_Curve2d> & C, const GeomAbs_Shape S);
+		static int NbIntervals(const opencascade::handle<Adaptor2d_Curve2d> & C, const GeomAbs_Shape S);
 
 		/****** IntPatch_HCurve2dTool::NbSamples ******/
-		/****** md5 signature: 4846c46ec026f7e5cf2080eb1601445a ******/
+		/****** md5 signature: 1f8960c481dbbc037f35e98ce7810cf6 ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U0: float
-U1: float
+U0: double
+U1: double
 
 Return
 -------
@@ -1323,7 +1321,7 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		static Standard_Integer NbSamples(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U0, const Standard_Real U1);
+		static int NbSamples(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U0, const double U1);
 
 		/****** IntPatch_HCurve2dTool::Parabola ******/
 		/****** md5 signature: 638d7ecde6dd9f67180eadf45347f22e ******/
@@ -1344,7 +1342,7 @@ No available documentation.
 		static gp_Parab2d Parabola(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::Period ******/
-		/****** md5 signature: 2a78d8fc20cccabaa0fb7d52397ae7ba ******/
+		/****** md5 signature: d675e32257b292584f21996f45e5f086 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
@@ -1353,41 +1351,41 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static double Period(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HCurve2dTool::Resolution ******/
-		/****** md5 signature: 1567f92dacdcdb24e1f4d21710c525e2 ******/
+		/****** md5 signature: cc00f63e5558970ed6d6f4b56109c915 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		static Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real R3d);
+		static double Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C, const double R3d);
 
 		/****** IntPatch_HCurve2dTool::Value ******/
-		/****** md5 signature: f88e121e984f9cbec46065eb86a1e379 ******/
+		/****** md5 signature: 7945b3785f38356578b9cc7bd81af491 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-U: float
+U: double
 
 Return
 -------
@@ -1397,7 +1395,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real U);
+		static gp_Pnt2d Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const double U);
 
 };
 
@@ -1427,7 +1425,7 @@ No available documentation.
 		 IntPatch_HInterTool();
 
 		/****** IntPatch_HInterTool::Bounds ******/
-		/****** md5 signature: 14979ddc3175e995d5548477ac5bcd4b ******/
+		/****** md5 signature: 07986cc0e0af847c43b39e0235c77229 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -1436,8 +1434,8 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-Ufirst: float
-Ulast: float
+Ufirst: double
+Ulast: double
 
 Description
 -----------
@@ -1446,7 +1444,7 @@ Returns the parametric limits on the arc C. These limits must be finite: they ar
 		static void Bounds(const opencascade::handle<Adaptor2d_Curve2d> & C, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_HInterTool::HasBeenSeen ******/
-		/****** md5 signature: 52a722c5d4a9984d26ad321cf3630b48 ******/
+		/****** md5 signature: 44bbf4fbff6c28b3475ddb0f3449c036 ******/
 		%feature("compactdefaultargs") HasBeenSeen;
 		%feature("autodoc", "
 Parameters
@@ -1461,10 +1459,10 @@ Description
 -----------
 Returns True if all the intersection point and edges are known on the Arc. The intersection point are given as vertices. The intersection edges are given as intervals between two vertices.
 ") HasBeenSeen;
-		static Standard_Boolean HasBeenSeen(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static bool HasBeenSeen(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HInterTool::HasFirstPoint ******/
-		/****** md5 signature: af276ff6ae83b4e53affd31093f8bfdc ******/
+		/****** md5 signature: 360ca3bc3b2f75f5e2f258b2876ce518 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -1480,10 +1478,10 @@ Description
 -----------
 Returns True when the segment of range Index is not open at the left side. In that case, IndFirst is the range in the list intersection points (see NbPoints) of the one which defines the left bound of the segment. Otherwise, the method has to return False, and IndFirst has no meaning.
 ") HasFirstPoint;
-		static Standard_Boolean HasFirstPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
+		static bool HasFirstPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const int Index, Standard_Integer &OutValue);
 
 		/****** IntPatch_HInterTool::HasLastPoint ******/
-		/****** md5 signature: a28a12263a39eecc4acc9708fdf256c7 ******/
+		/****** md5 signature: 91704bbc1a9ed32af7a65ea023df717b ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "
 Parameters
@@ -1499,10 +1497,10 @@ Description
 -----------
 Returns True when the segment of range Index is not open at the right side. In that case, IndLast is the range in the list intersection points (see NbPoints) of the one which defines the right bound of the segment. Otherwise, the method has to return False, and IndLast has no meaning.
 ") HasLastPoint;
-		static Standard_Boolean HasLastPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, Standard_Integer &OutValue);
+		static bool HasLastPoint(const opencascade::handle<Adaptor2d_Curve2d> & C, const int Index, Standard_Integer &OutValue);
 
 		/****** IntPatch_HInterTool::IsAllSolution ******/
-		/****** md5 signature: a0e5f5bbe827235fe1ddb52793e5eb42 ******/
+		/****** md5 signature: e7a3425bf7c6c5a502fec8afcc168f27 ******/
 		%feature("compactdefaultargs") IsAllSolution;
 		%feature("autodoc", "
 Parameters
@@ -1517,10 +1515,10 @@ Description
 -----------
 Returns True when the whole restriction is solution of the intersection problem.
 ") IsAllSolution;
-		static Standard_Boolean IsAllSolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static bool IsAllSolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HInterTool::IsVertex ******/
-		/****** md5 signature: ffecad0cdf7d56d3c7a670cde7e75bc2 ******/
+		/****** md5 signature: d6d7896c9b46a0a6b548ec3ad2a4cdcc ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -1536,10 +1534,10 @@ Description
 -----------
 Returns True if the intersection point of range Index corresponds with a vertex on the arc A.
 ") IsVertex;
-		static Standard_Boolean IsVertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index);
+		static bool IsVertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const int Index);
 
 		/****** IntPatch_HInterTool::NbPoints ******/
-		/****** md5 signature: 54aec07f3b6dd332421dfbc4dec3568c ******/
+		/****** md5 signature: c43cb411d56d25ce2289f3e953f120ca ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "
 Parameters
@@ -1554,10 +1552,10 @@ Description
 -----------
 Returns the number of intersection points on the arc A.
 ") NbPoints;
-		static Standard_Integer NbPoints(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static int NbPoints(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HInterTool::NbSamplePoints ******/
-		/****** md5 signature: 0e8230bae32bc82ea05cbafa64c2af61 ******/
+		/****** md5 signature: 41d1149d171870cea84c2e92a78e7f72 ******/
 		%feature("compactdefaultargs") NbSamplePoints;
 		%feature("autodoc", "
 Parameters
@@ -1572,10 +1570,10 @@ Description
 -----------
 No available documentation.
 ") NbSamplePoints;
-		Standard_Integer NbSamplePoints(const opencascade::handle<Adaptor3d_Surface> & S);
+		int NbSamplePoints(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** IntPatch_HInterTool::NbSamplesOnArc ******/
-		/****** md5 signature: 99a1330c1c671d353c2bee9fd23c27cc ******/
+		/****** md5 signature: 0b53e931233dc5eb5aa65c4f03845afa ******/
 		%feature("compactdefaultargs") NbSamplesOnArc;
 		%feature("autodoc", "
 Parameters
@@ -1590,17 +1588,17 @@ Description
 -----------
 returns the number of points which is used to make a sample on the arc. this number is a function of the Surface and the CurveOnSurface complexity.
 ") NbSamplesOnArc;
-		static Standard_Integer NbSamplesOnArc(const opencascade::handle<Adaptor2d_Curve2d> & A);
+		static int NbSamplesOnArc(const opencascade::handle<Adaptor2d_Curve2d> & A);
 
 		/****** IntPatch_HInterTool::NbSamplesU ******/
-		/****** md5 signature: 7ffe816252db97bdbf2950cea2ca2037 ******/
+		/****** md5 signature: 113907439d309bff36ab3cf1a00b7ae6 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
-u1: float
-u2: float
+u1: double
+u2: double
 
 Return
 -------
@@ -1610,17 +1608,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real u1, const Standard_Real u2);
+		static int NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S, const double u1, const double u2);
 
 		/****** IntPatch_HInterTool::NbSamplesV ******/
-		/****** md5 signature: 183861bdb84cb1597bd3a1324a097e8e ******/
+		/****** md5 signature: 42faef83bc52935522b9fdcc450fc180 ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
-v1: float
-v2: float
+v1: double
+v2: double
 
 Return
 -------
@@ -1630,10 +1628,10 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real v1, const Standard_Real v2);
+		static int NbSamplesV(const opencascade::handle<Adaptor3d_Surface> & S, const double v1, const double v2);
 
 		/****** IntPatch_HInterTool::NbSegments ******/
-		/****** md5 signature: 2689aa0fe05c64574e603c4eb512caa4 ******/
+		/****** md5 signature: 144290e30d5b239e3af183aa76065809 ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "
 Parameters
@@ -1648,10 +1646,10 @@ Description
 -----------
 returns the number of part of A solution of the of intersection problem.
 ") NbSegments;
-		static Standard_Integer NbSegments(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static int NbSegments(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HInterTool::Parameter ******/
-		/****** md5 signature: f5a937c546746bb35bafec928fdc442d ******/
+		/****** md5 signature: 6593de7f4de76920e836e4d4047f9327 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1661,16 +1659,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the vertex V on the arc A.
 ") Parameter;
-		static Standard_Real Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static double Parameter(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HInterTool::Project ******/
-		/****** md5 signature: b602a334ba1cfcdefae0bd304b479ee8 ******/
+		/****** md5 signature: de37e061758c52b426c6f7fc05237d2b ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -1681,16 +1679,16 @@ Ptproj: gp_Pnt2d
 
 Return
 -------
-Paramproj: float
+Paramproj: double
 
 Description
 -----------
-Projects the point P on the arc C. If the methods returns Standard_True, the projection is successful, and Paramproj is the parameter on the arc of the projected point, Ptproj is the projected Point. If the method returns Standard_False, Param proj and Ptproj are not significant.
+Projects the point P on the arc C. If the methods returns true, the projection is successful, and Paramproj is the parameter on the arc of the projected point, Ptproj is the projected Point. If the method returns false, Param proj and Ptproj are not significant.
 ") Project;
-		static Standard_Boolean Project(const opencascade::handle<Adaptor2d_Curve2d> & C, const gp_Pnt2d & P, Standard_Real &OutValue, gp_Pnt2d & Ptproj);
+		static bool Project(const opencascade::handle<Adaptor2d_Curve2d> & C, const gp_Pnt2d & P, Standard_Real &OutValue, gp_Pnt2d & Ptproj);
 
 		/****** IntPatch_HInterTool::SamplePoint ******/
-		/****** md5 signature: e5df4c7ba0cea61bfd2ea610530d7dbd ******/
+		/****** md5 signature: 10e2fc82f10a4b1c6c8d5c48f6567da1 ******/
 		%feature("compactdefaultargs") SamplePoint;
 		%feature("autodoc", "
 Parameters
@@ -1700,17 +1698,17 @@ Index: int
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 No available documentation.
 ") SamplePoint;
-		void SamplePoint(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void SamplePoint(const opencascade::handle<Adaptor3d_Surface> & S, const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_HInterTool::SingularOnUMax ******/
-		/****** md5 signature: d3ce7701aebe6c17d8a630ca024b7a67 ******/
+		/****** md5 signature: 4f54c43e05a022062f5dae59aa53b2a3 ******/
 		%feature("compactdefaultargs") SingularOnUMax;
 		%feature("autodoc", "
 Parameters
@@ -1725,10 +1723,10 @@ Description
 -----------
 No available documentation.
 ") SingularOnUMax;
-		static Standard_Boolean SingularOnUMax(const opencascade::handle<Adaptor3d_Surface> & S);
+		static bool SingularOnUMax(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** IntPatch_HInterTool::SingularOnUMin ******/
-		/****** md5 signature: d59a1ea9f83cedfe3b3c10bf7d368a33 ******/
+		/****** md5 signature: 4432145ebd8b7c72e21f91ef86429cd2 ******/
 		%feature("compactdefaultargs") SingularOnUMin;
 		%feature("autodoc", "
 Parameters
@@ -1743,10 +1741,10 @@ Description
 -----------
 No available documentation.
 ") SingularOnUMin;
-		static Standard_Boolean SingularOnUMin(const opencascade::handle<Adaptor3d_Surface> & S);
+		static bool SingularOnUMin(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** IntPatch_HInterTool::SingularOnVMax ******/
-		/****** md5 signature: 5f37482ceddffdf31349f166be64affd ******/
+		/****** md5 signature: a104bdbc9f32212518d1a88ba798b15b ******/
 		%feature("compactdefaultargs") SingularOnVMax;
 		%feature("autodoc", "
 Parameters
@@ -1761,10 +1759,10 @@ Description
 -----------
 No available documentation.
 ") SingularOnVMax;
-		static Standard_Boolean SingularOnVMax(const opencascade::handle<Adaptor3d_Surface> & S);
+		static bool SingularOnVMax(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** IntPatch_HInterTool::SingularOnVMin ******/
-		/****** md5 signature: 25ae497959e941075dff65a069de3c75 ******/
+		/****** md5 signature: 62f48f4556ef4706c851883d17d15447 ******/
 		%feature("compactdefaultargs") SingularOnVMin;
 		%feature("autodoc", "
 Parameters
@@ -1779,10 +1777,10 @@ Description
 -----------
 No available documentation.
 ") SingularOnVMin;
-		static Standard_Boolean SingularOnVMin(const opencascade::handle<Adaptor3d_Surface> & S);
+		static bool SingularOnVMin(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** IntPatch_HInterTool::Tolerance ******/
-		/****** md5 signature: 35f5531e9c358e20c7f5723f26e0a7ba ******/
+		/****** md5 signature: beb7b43970562219d76d014b4930500a ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -1792,16 +1790,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
-Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if Abs(parameter(Vertex) - parameter(OtherPnt))<= Tolerance, the points are 'merged'.
+Returns the parametric tolerance used to consider that the vertex and another point meet, i-e if std::abs(parameter(Vertex) - parameter(OtherPnt))<= Tolerance, the points are 'merged'.
 ") Tolerance;
-		static Standard_Real Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
+		static double Tolerance(const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** IntPatch_HInterTool::Value ******/
-		/****** md5 signature: ba54f1e0e4e6802571668cb2c0638480 ******/
+		/****** md5 signature: 72d5dd4b5c066803b5473cc3246c3937 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1812,17 +1810,17 @@ Pt: gp_Pnt
 
 Return
 -------
-Tol: float
-U: float
+Tol: double
+U: double
 
 Description
 -----------
 Returns the value (Pt), the tolerance (Tol), and the parameter (U) on the arc A , of the intersection point of range Index.
 ") Value;
-		static void Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, gp_Pnt & Pt, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Value(const opencascade::handle<Adaptor2d_Curve2d> & C, const int Index, gp_Pnt & Pt, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_HInterTool::Vertex ******/
-		/****** md5 signature: f58ee2175cbc1af1161d7220a9c11ff1 ******/
+		/****** md5 signature: a4c82e9cd894b1e9d2cd8b98c44bfb71 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -1839,7 +1837,7 @@ Description
 -----------
 When IsVertex returns True, this method returns the vertex on the arc A.
 ") Vertex;
-		static void Vertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Integer Index, opencascade::handle<Adaptor3d_HVertex> & V);
+		static void Vertex(const opencascade::handle<Adaptor2d_Curve2d> & C, const int Index, opencascade::handle<Adaptor3d_HVertex> & V);
 
 };
 
@@ -1891,7 +1889,7 @@ No available documentation.
 		 IntPatch_ImpImpIntersection();
 
 		/****** IntPatch_ImpImpIntersection::IntPatch_ImpImpIntersection ******/
-		/****** md5 signature: 03ac7a4946d10cf1316728228e8bd885 ******/
+		/****** md5 signature: cb7c47c355c0a6edecbd209450641eb2 ******/
 		%feature("compactdefaultargs") IntPatch_ImpImpIntersection;
 		%feature("autodoc", "
 Parameters
@@ -1900,9 +1898,9 @@ S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
-theIsReqToKeepRLine: bool (optional, default to Standard_False)
+TolArc: double
+TolTang: double
+theIsReqToKeepRLine: bool (optional, default to false)
 
 Return
 -------
@@ -1912,10 +1910,10 @@ Description
 -----------
 Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
 ") IntPatch_ImpImpIntersection;
-		 IntPatch_ImpImpIntersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean theIsReqToKeepRLine = Standard_False);
+		 IntPatch_ImpImpIntersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const bool theIsReqToKeepRLine = false);
 
 		/****** IntPatch_ImpImpIntersection::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1925,10 +1923,10 @@ Description
 -----------
 Returns True if the calculus was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_ImpImpIntersection::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1938,10 +1936,10 @@ Description
 -----------
 Returns true if the is no intersection.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntPatch_ImpImpIntersection::Line ******/
-		/****** md5 signature: 0f19f87d200154ef5932a127697b505b ******/
+		/****** md5 signature: 923de215ae03053b2e452a192ebdd240 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -1956,10 +1954,10 @@ Description
 -----------
 Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
-		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
+		const opencascade::handle<IntPatch_Line> & Line(const int Index);
 
 		/****** IntPatch_ImpImpIntersection::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -1969,10 +1967,10 @@ Description
 -----------
 Returns the number of intersection lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IntPatch_ImpImpIntersection::NbPnts ******/
-		/****** md5 signature: 11421df812eef5f47a644a70b75ab60a ******/
+		/****** md5 signature: 62ca8b9c803953d23e1f278d77f7b8f6 ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -1982,10 +1980,10 @@ Description
 -----------
 Returns the number of 'single' points.
 ") NbPnts;
-		Standard_Integer NbPnts();
+		int NbPnts();
 
 		/****** IntPatch_ImpImpIntersection::OppositeFaces ******/
-		/****** md5 signature: 1103bf0485006c89d11ed86313182eb1 ******/
+		/****** md5 signature: 73ee26fa1f688b9b5e962f87fc415d4c ******/
 		%feature("compactdefaultargs") OppositeFaces;
 		%feature("autodoc", "Return
 -------
@@ -1995,10 +1993,10 @@ Description
 -----------
 Returns True when the TangentFaces returns True and the normal vectors evaluated at a point on the first and the second surface are opposite. The exception DomainError is raised if TangentFaces returns False.
 ") OppositeFaces;
-		Standard_Boolean OppositeFaces();
+		bool OppositeFaces();
 
 		/****** IntPatch_ImpImpIntersection::Perform ******/
-		/****** md5 signature: 8daf2c0173ee7beeb6250f8c01e20567 ******/
+		/****** md5 signature: 63a4ead196c04001eb63c1f332ba9d68 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2007,9 +2005,9 @@ S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
-theIsReqToKeepRLine: bool (optional, default to Standard_False)
+TolArc: double
+TolTang: double
+theIsReqToKeepRLine: bool (optional, default to false)
 
 Return
 -------
@@ -2019,10 +2017,10 @@ Description
 -----------
 Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean theIsReqToKeepRLine = Standard_False);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const bool theIsReqToKeepRLine = false);
 
 		/****** IntPatch_ImpImpIntersection::Point ******/
-		/****** md5 signature: a380f33017a5aaa3320d09b1b9dc85e1 ******/
+		/****** md5 signature: d44a90010f7d4526516418bc03e31bcc ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2037,10 +2035,10 @@ Description
 -----------
 Returns the point of range Index. An exception is raised if Index<=0 or Index>NbPnt.
 ") Point;
-		const IntPatch_Point & Point(const Standard_Integer Index);
+		const IntPatch_Point & Point(const int Index);
 
 		/****** IntPatch_ImpImpIntersection::TangentFaces ******/
-		/****** md5 signature: 1bd0aa400de87da796d429cdd88c31ea ******/
+		/****** md5 signature: a3b282b2f15e5f2571f5a9e4b5225aac ******/
 		%feature("compactdefaultargs") TangentFaces;
 		%feature("autodoc", "Return
 -------
@@ -2050,7 +2048,7 @@ Description
 -----------
 Returns True if the two patches are considered as entirely tangent, i.e every restriction arc of one patch is inside the geometric base of the other patch.
 ") TangentFaces;
-		Standard_Boolean TangentFaces();
+		bool TangentFaces();
 
 };
 
@@ -2084,7 +2082,7 @@ No available documentation.
 		 IntPatch_ImpPrmIntersection();
 
 		/****** IntPatch_ImpPrmIntersection::IntPatch_ImpPrmIntersection ******/
-		/****** md5 signature: f6b18857420728a54f2881ebe6ac6acd ******/
+		/****** md5 signature: df0107259c72896aa7c3bbb9bca9d4a1 ******/
 		%feature("compactdefaultargs") IntPatch_ImpPrmIntersection;
 		%feature("autodoc", "
 Parameters
@@ -2093,10 +2091,10 @@ Surf1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 Surf2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
-Fleche: float
-Pas: float
+TolArc: double
+TolTang: double
+Fleche: double
+Pas: double
 
 Return
 -------
@@ -2106,10 +2104,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_ImpPrmIntersection;
-		 IntPatch_ImpPrmIntersection(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Real Fleche, const Standard_Real Pas);
+		 IntPatch_ImpPrmIntersection(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const double Fleche, const double Pas);
 
 		/****** IntPatch_ImpPrmIntersection::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2119,10 +2117,10 @@ Description
 -----------
 Returns true if the calculus was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_ImpPrmIntersection::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2132,10 +2130,10 @@ Description
 -----------
 Returns true if the is no intersection.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntPatch_ImpPrmIntersection::Line ******/
-		/****** md5 signature: 0f19f87d200154ef5932a127697b505b ******/
+		/****** md5 signature: 923de215ae03053b2e452a192ebdd240 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -2150,10 +2148,10 @@ Description
 -----------
 Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
-		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
+		const opencascade::handle<IntPatch_Line> & Line(const int Index);
 
 		/****** IntPatch_ImpPrmIntersection::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -2163,10 +2161,10 @@ Description
 -----------
 Returns the number of intersection lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IntPatch_ImpPrmIntersection::NbPnts ******/
-		/****** md5 signature: 11421df812eef5f47a644a70b75ab60a ******/
+		/****** md5 signature: 62ca8b9c803953d23e1f278d77f7b8f6 ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -2176,10 +2174,10 @@ Description
 -----------
 Returns the number of 'single' points.
 ") NbPnts;
-		Standard_Integer NbPnts();
+		int NbPnts();
 
 		/****** IntPatch_ImpPrmIntersection::Perform ******/
-		/****** md5 signature: b8c905aeb6dfe98e5d2ee6b901613b38 ******/
+		/****** md5 signature: 8f52ca7096fd795a69c3cfd1c06138de ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2188,10 +2186,10 @@ Surf1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 Surf2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
-Fleche: float
-Pas: float
+TolArc: double
+TolTang: double
+Fleche: double
+Pas: double
 
 Return
 -------
@@ -2201,10 +2199,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Real Fleche, const Standard_Real Pas);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const double Fleche, const double Pas);
 
 		/****** IntPatch_ImpPrmIntersection::Point ******/
-		/****** md5 signature: a380f33017a5aaa3320d09b1b9dc85e1 ******/
+		/****** md5 signature: d44a90010f7d4526516418bc03e31bcc ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2219,16 +2217,16 @@ Description
 -----------
 Returns the point of range Index. An exception is raised if Index<=0 or Index>NbPnt.
 ") Point;
-		const IntPatch_Point & Point(const Standard_Integer Index);
+		const IntPatch_Point & Point(const int Index);
 
 		/****** IntPatch_ImpPrmIntersection::SetStartPoint ******/
-		/****** md5 signature: 2f7695fecc55d8936b3b12959027e262 ******/
+		/****** md5 signature: 196485c26454dc3bf2be1b097859ad9e ******/
 		%feature("compactdefaultargs") SetStartPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 
 Return
 -------
@@ -2238,7 +2236,7 @@ Description
 -----------
 to search for solution from the given point.
 ") SetStartPoint;
-		void SetStartPoint(const Standard_Real U, const Standard_Real V);
+		void SetStartPoint(const double U, const double V);
 
 };
 
@@ -2369,7 +2367,7 @@ No available documentation.
 		 IntPatch_Intersection();
 
 		/****** IntPatch_Intersection::IntPatch_Intersection ******/
-		/****** md5 signature: 8cb955eb3bc846ae555e6ba075574dfc ******/
+		/****** md5 signature: 145e876aa88d3a41932c6b80d3722e96 ******/
 		%feature("compactdefaultargs") IntPatch_Intersection;
 		%feature("autodoc", "
 Parameters
@@ -2378,8 +2376,8 @@ S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
+TolArc: double
+TolTang: double
 
 Return
 -------
@@ -2389,18 +2387,18 @@ Description
 -----------
 No available documentation.
 ") IntPatch_Intersection;
-		 IntPatch_Intersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang);
+		 IntPatch_Intersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang);
 
 		/****** IntPatch_Intersection::IntPatch_Intersection ******/
-		/****** md5 signature: 44093133de38c447f56c4f2446535fbc ******/
+		/****** md5 signature: 02e535bf82d8236b41b1551014ed6ba6 ******/
 		%feature("compactdefaultargs") IntPatch_Intersection;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
+TolArc: double
+TolTang: double
 
 Return
 -------
@@ -2410,10 +2408,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_Intersection;
-		 IntPatch_Intersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const Standard_Real TolArc, const Standard_Real TolTang);
+		 IntPatch_Intersection(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const double TolArc, const double TolTang);
 
 		/****** IntPatch_Intersection::CheckSingularPoints ******/
-		/****** md5 signature: 82524fc63e41c5bd324fc8781eba7164 ******/
+		/****** md5 signature: 816089eacf0708f2a4d29534f23248d2 ******/
 		%feature("compactdefaultargs") CheckSingularPoints;
 		%feature("autodoc", "
 Parameters
@@ -2424,16 +2422,16 @@ theS2: Adaptor3d_Surface
 
 Return
 -------
-theDist: float
+theDist: double
 
 Description
 -----------
 Checks if surface theS1 has degenerated boundary (dS/du or dS/dv = 0) and calculates minimal distance between corresponding singular points and surface theS2 If singular point exists the method returns 'true' and stores minimal distance in theDist.
 ") CheckSingularPoints;
-		static Standard_Boolean CheckSingularPoints(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, Standard_Real &OutValue);
+		static bool CheckSingularPoints(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, Standard_Real &OutValue);
 
 		/****** IntPatch_Intersection::DefineUVMaxStep ******/
-		/****** md5 signature: f6a4ba92c83b751825d3a7abc18a44cc ******/
+		/****** md5 signature: 365c27cd23627bc475e9a96f78c43a46 ******/
 		%feature("compactdefaultargs") DefineUVMaxStep;
 		%feature("autodoc", "
 Parameters
@@ -2445,16 +2443,16 @@ theD2: Adaptor3d_TopolTool
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Calculates recommended value for myUVMaxStep depending on surfaces and their domains.
 ") DefineUVMaxStep;
-		static Standard_Real DefineUVMaxStep(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2);
+		static double DefineUVMaxStep(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2);
 
 		/****** IntPatch_Intersection::Dump ******/
-		/****** md5 signature: b8dcb65f3dda1a981da840cad536cd1b ******/
+		/****** md5 signature: 2822096f0de204e60e8d788d67811297 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2473,10 +2471,10 @@ Description
 -----------
 Dump of each result line. Mode for more accurate dumps.
 ") Dump;
-		void Dump(const Standard_Integer Mode, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2);
+		void Dump(const int Mode, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2);
 
 		/****** IntPatch_Intersection::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2486,10 +2484,10 @@ Description
 -----------
 Returns True if the calculus was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_Intersection::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2499,10 +2497,10 @@ Description
 -----------
 Returns true if the is no intersection.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntPatch_Intersection::Line ******/
-		/****** md5 signature: 0f19f87d200154ef5932a127697b505b ******/
+		/****** md5 signature: 923de215ae03053b2e452a192ebdd240 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -2517,10 +2515,10 @@ Description
 -----------
 Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
-		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
+		const opencascade::handle<IntPatch_Line> & Line(const int Index);
 
 		/****** IntPatch_Intersection::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -2530,10 +2528,10 @@ Description
 -----------
 Returns the number of intersection lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IntPatch_Intersection::NbPnts ******/
-		/****** md5 signature: 11421df812eef5f47a644a70b75ab60a ******/
+		/****** md5 signature: 62ca8b9c803953d23e1f278d77f7b8f6 ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -2543,10 +2541,10 @@ Description
 -----------
 Returns the number of 'single' points.
 ") NbPnts;
-		Standard_Integer NbPnts();
+		int NbPnts();
 
 		/****** IntPatch_Intersection::OppositeFaces ******/
-		/****** md5 signature: 1103bf0485006c89d11ed86313182eb1 ******/
+		/****** md5 signature: 73ee26fa1f688b9b5e962f87fc415d4c ******/
 		%feature("compactdefaultargs") OppositeFaces;
 		%feature("autodoc", "Return
 -------
@@ -2556,10 +2554,10 @@ Description
 -----------
 Returns True when the TangentFaces returns True and the normal vectors evaluated at a point on the first and the second surface are opposite. The exception DomainError is raised if TangentFaces returns False.
 ") OppositeFaces;
-		Standard_Boolean OppositeFaces();
+		bool OppositeFaces();
 
 		/****** IntPatch_Intersection::Perform ******/
-		/****** md5 signature: b269e7ee1d80b0a360103090a9937e8f ******/
+		/****** md5 signature: 232eb738c7163f3e429b6a947be70723 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2568,11 +2566,11 @@ S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
-isGeomInt: bool (optional, default to Standard_True)
-theIsReqToKeepRLine: bool (optional, default to Standard_False)
-theIsReqToPostWLProc: bool (optional, default to Standard_True)
+TolArc: double
+TolTang: double
+isGeomInt: bool (optional, default to true)
+theIsReqToKeepRLine: bool (optional, default to false)
+theIsReqToPostWLProc: bool (optional, default to true)
 
 Return
 -------
@@ -2582,10 +2580,10 @@ Description
 -----------
 Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided. Flag theIsReqToPostWLProc has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. If theIsReqToPostWLProc == False, then we will work with Walking-line obtained after intersection algorithm directly (without any post-processing).
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Boolean isGeomInt = Standard_True, const Standard_Boolean theIsReqToKeepRLine = Standard_False, const Standard_Boolean theIsReqToPostWLProc = Standard_True);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const bool isGeomInt = true, const bool theIsReqToKeepRLine = false, const bool theIsReqToPostWLProc = true);
 
 		/****** IntPatch_Intersection::Perform ******/
-		/****** md5 signature: 3f213f8ce247f43c16e4ac42a99c1683 ******/
+		/****** md5 signature: 849e272b23eb298f8df00e4df58b226e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2594,12 +2592,12 @@ S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
-LOfPnts: IntSurf_ListOfPntOn2S
-isGeomInt: bool (optional, default to Standard_True)
-theIsReqToKeepRLine: bool (optional, default to Standard_False)
-theIsReqToPostWLProc: bool (optional, default to Standard_True)
+TolArc: double
+TolTang: double
+LOfPnts: NCollection_List<IntSurf_PntOn2S>
+isGeomInt: bool (optional, default to true)
+theIsReqToKeepRLine: bool (optional, default to false)
+theIsReqToPostWLProc: bool (optional, default to true)
 
 Return
 -------
@@ -2607,12 +2605,12 @@ None
 
 Description
 -----------
-If isGeomInt == Standard_False, then method Param-Param intersection will be used. Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided. Flag theIsReqToPostWLProc has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. If theIsReqToPostWLProc == False, then we will work with Walking-line obtained after intersection algorithm directly (without any post-processing).
+If isGeomInt == false, then method Param-Param intersection will be used. Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. When intersection result returns IntPatch_RLine and another IntPatch_Line (not restriction) we (in case of theIsReqToKeepRLine==True) will always keep both lines even if they are coincided. Flag theIsReqToPostWLProc has been entered only for compatibility with TopOpeBRep package. It shall be deleted after deleting TopOpeBRep. If theIsReqToPostWLProc == False, then we will work with Walking-line obtained after intersection algorithm directly (without any post-processing).
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real TolArc, const Standard_Real TolTang, IntSurf_ListOfPntOn2S & LOfPnts, const Standard_Boolean isGeomInt = Standard_True, const Standard_Boolean theIsReqToKeepRLine = Standard_False, const Standard_Boolean theIsReqToPostWLProc = Standard_True);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, NCollection_List<IntSurf_PntOn2S> & LOfPnts, const bool isGeomInt = true, const bool theIsReqToKeepRLine = false, const bool theIsReqToPostWLProc = true);
 
 		/****** IntPatch_Intersection::Perform ******/
-		/****** md5 signature: a90fea01d3487c7f986a9eaa1dbaa115 ******/
+		/****** md5 signature: d9d4f1ed44916b182a18d5610a354049 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2621,12 +2619,12 @@ S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-U1: float
-V1: float
-U2: float
-V2: float
-TolArc: float
-TolTang: float
+U1: double
+V1: double
+U2: double
+V2: double
+TolArc: double
+TolTang: double
 
 Return
 -------
@@ -2636,18 +2634,18 @@ Description
 -----------
 Perform with start point.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real TolArc, const Standard_Real TolTang);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double U1, const double V1, const double U2, const double V2, const double TolArc, const double TolTang);
 
 		/****** IntPatch_Intersection::Perform ******/
-		/****** md5 signature: 2527f02f395cf07b204ccbcfa04ab9da ******/
+		/****** md5 signature: 7e1a2e2c570554d9216151393122feeb ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
-TolArc: float
-TolTang: float
+TolArc: double
+TolTang: double
 
 Return
 -------
@@ -2657,10 +2655,10 @@ Description
 -----------
 Uses for finding self-intersected surfaces.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const Standard_Real TolArc, const Standard_Real TolTang);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const double TolArc, const double TolTang);
 
 		/****** IntPatch_Intersection::Point ******/
-		/****** md5 signature: a380f33017a5aaa3320d09b1b9dc85e1 ******/
+		/****** md5 signature: d44a90010f7d4526516418bc03e31bcc ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2675,10 +2673,10 @@ Description
 -----------
 Returns the point of range Index. An exception is raised if Index<=0 or Index>NbPnt.
 ") Point;
-		const IntPatch_Point & Point(const Standard_Integer Index);
+		const IntPatch_Point & Point(const int Index);
 
 		/****** IntPatch_Intersection::PrepareSurfaces ******/
-		/****** md5 signature: 930cc378463b1ab18da60a0e1184a4b4 ******/
+		/****** md5 signature: ff36cb03cab9da40b391cee713ff1853 ******/
 		%feature("compactdefaultargs") PrepareSurfaces;
 		%feature("autodoc", "
 Parameters
@@ -2687,7 +2685,7 @@ theS1: Adaptor3d_Surface
 theD1: Adaptor3d_TopolTool
 theS2: Adaptor3d_Surface
 theD2: Adaptor3d_TopolTool
-Tol: float
+Tol: double
 theSeqHS1: Adaptor3d_Surface
 theSeqHS2: Adaptor3d_Surface
 
@@ -2699,31 +2697,31 @@ Description
 -----------
 Prepares surfaces for intersection.
 ") PrepareSurfaces;
-		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const Standard_Real Tol, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS1, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS2);
+		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const double Tol, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS1, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS2);
 
 		/****** IntPatch_Intersection::SequenceOfLine ******/
-		/****** md5 signature: 7663267a72cef685d6565935e73efb0a ******/
+		/****** md5 signature: 61088f9b1aab32b1f92e7fdcd44022ac ******/
 		%feature("compactdefaultargs") SequenceOfLine;
 		%feature("autodoc", "Return
 -------
-IntPatch_SequenceOfLine
+NCollection_Sequence<opencascade::handle<IntPatch_Line>>
 
 Description
 -----------
 No available documentation.
 ") SequenceOfLine;
-		const IntPatch_SequenceOfLine & SequenceOfLine();
+		const NCollection_Sequence<opencascade::handle<IntPatch_Line>> & SequenceOfLine();
 
 		/****** IntPatch_Intersection::SetTolerances ******/
-		/****** md5 signature: 8670d77050325f4c865f123b09128a08 ******/
+		/****** md5 signature: 5dc530c658b69a3fc50188a2501992cc ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
 ----------
-TolArc: float
-TolTang: float
-UVMaxStep: float
-Fleche: float
+TolArc: double
+TolTang: double
+UVMaxStep: double
+Fleche: double
 
 Return
 -------
@@ -2733,10 +2731,10 @@ Description
 -----------
 Set the tolerances used by the algorithms: --- Implicit - Parametric --- Parametric - Parametric --- Implicit - Implicit //! TolArc is used to compute the intersections between the restrictions of a surface and a walking line. //! TolTang is used to compute the points on a walking line, and in geometric algorithms. //! Fleche is a parameter used in the walking algorithms to provide small curvatures on a line. //! UVMaxStep is a parameter used in the walking algorithms to compute the distance between to points in their respective parametric spaces.
 ") SetTolerances;
-		void SetTolerances(const Standard_Real TolArc, const Standard_Real TolTang, const Standard_Real UVMaxStep, const Standard_Real Fleche);
+		void SetTolerances(const double TolArc, const double TolTang, const double UVMaxStep, const double Fleche);
 
 		/****** IntPatch_Intersection::TangentFaces ******/
-		/****** md5 signature: 1bd0aa400de87da796d429cdd88c31ea ******/
+		/****** md5 signature: a3b282b2f15e5f2571f5a9e4b5225aac ******/
 		%feature("compactdefaultargs") TangentFaces;
 		%feature("autodoc", "Return
 -------
@@ -2746,7 +2744,7 @@ Description
 -----------
 Returns True if the two patches are considered as entirely tangent, i-e every restriction arc of one patch is inside the geometric base of the other patch.
 ") TangentFaces;
-		Standard_Boolean TangentFaces();
+		bool TangentFaces();
 
 };
 
@@ -2777,7 +2775,7 @@ Returns the type of geometry 3d (Line, Circle, Parabola, Hyperbola, Ellipse, Ana
 		IntPatch_IType ArcType();
 
 		/****** IntPatch_Line::IsTangent ******/
-		/****** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ******/
+		/****** md5 signature: baca3d34e02c226d40f886fc1be3d673 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -2787,10 +2785,10 @@ Description
 -----------
 Returns True if the intersection is a line of tangency between the 2 patches.
 ") IsTangent;
-		Standard_Boolean IsTangent();
+		bool IsTangent();
 
 		/****** IntPatch_Line::IsUIsoOnS1 ******/
-		/****** md5 signature: 1aad8dcfd2c807aee9ae90657010709a ******/
+		/****** md5 signature: dd1a185ba7f6e079353bfdf2ed0427fb ******/
 		%feature("compactdefaultargs") IsUIsoOnS1;
 		%feature("autodoc", "Return
 -------
@@ -2800,10 +2798,10 @@ Description
 -----------
 Returns True if the intersection is a U isoparametric curve on the first patch.
 ") IsUIsoOnS1;
-		Standard_Boolean IsUIsoOnS1();
+		bool IsUIsoOnS1();
 
 		/****** IntPatch_Line::IsUIsoOnS2 ******/
-		/****** md5 signature: c53a03daf11a34ad64c7147e99af671f ******/
+		/****** md5 signature: 8c10edd97f7f9cc65f63671382c00c3e ******/
 		%feature("compactdefaultargs") IsUIsoOnS2;
 		%feature("autodoc", "Return
 -------
@@ -2813,10 +2811,10 @@ Description
 -----------
 Returns True if the intersection is a U isoparametric curve on the second patch.
 ") IsUIsoOnS2;
-		Standard_Boolean IsUIsoOnS2();
+		bool IsUIsoOnS2();
 
 		/****** IntPatch_Line::IsVIsoOnS1 ******/
-		/****** md5 signature: b7ebebcc5a2c9f24c052636dca3c8dfb ******/
+		/****** md5 signature: 4846ed6d2545875e513182d8b07eb1c2 ******/
 		%feature("compactdefaultargs") IsVIsoOnS1;
 		%feature("autodoc", "Return
 -------
@@ -2826,10 +2824,10 @@ Description
 -----------
 Returns True if the intersection is a V isoparametric curve on the first patch.
 ") IsVIsoOnS1;
-		Standard_Boolean IsVIsoOnS1();
+		bool IsVIsoOnS1();
 
 		/****** IntPatch_Line::IsVIsoOnS2 ******/
-		/****** md5 signature: 3cfd95d8a0b0b88a42724611ce1bb80f ******/
+		/****** md5 signature: 96f80ba33f873481c6c5755be35f9608 ******/
 		%feature("compactdefaultargs") IsVIsoOnS2;
 		%feature("autodoc", "Return
 -------
@@ -2839,10 +2837,10 @@ Description
 -----------
 Returns True if the intersection is a V isoparametric curve on the second patch.
 ") IsVIsoOnS2;
-		Standard_Boolean IsVIsoOnS2();
+		bool IsVIsoOnS2();
 
 		/****** IntPatch_Line::SetValue ******/
-		/****** md5 signature: 12fc0194bc89d950f208a974a1599707 ******/
+		/****** md5 signature: 2d9d5ccdf5bda8673781fce5363c885b ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2860,7 +2858,7 @@ Description
 -----------
 To set the values returned by IsUIsoS1,.... The default values are False.
 ") SetValue;
-		void SetValue(const Standard_Boolean Uiso1, const Standard_Boolean Viso1, const Standard_Boolean Uiso2, const Standard_Boolean Viso2);
+		void SetValue(const bool Uiso1, const bool Viso1, const bool Uiso2, const bool Viso2);
 
 		/****** IntPatch_Line::SituationS1 ******/
 		/****** md5 signature: af2d2dd713ae3b820482546cf4a82d7b ******/
@@ -2931,7 +2929,7 @@ Returns the type of the transition of the line for the second surface. The trans
 class IntPatch_LineConstructor {
 	public:
 		/****** IntPatch_LineConstructor::IntPatch_LineConstructor ******/
-		/****** md5 signature: d9260de2e6fb6254e056b6313ba23011 ******/
+		/****** md5 signature: 2beff296db457f4beafd60234b1ca8c6 ******/
 		%feature("compactdefaultargs") IntPatch_LineConstructor;
 		%feature("autodoc", "
 Parameters
@@ -2946,10 +2944,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_LineConstructor;
-		 IntPatch_LineConstructor(const Standard_Integer mode);
+		 IntPatch_LineConstructor(const int mode);
 
 		/****** IntPatch_LineConstructor::Line ******/
-		/****** md5 signature: a2403e2fa130e6fe0b80560f075cc3fd ******/
+		/****** md5 signature: 6175c62ca5f699bc60da2e4f2974fe90 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -2964,10 +2962,10 @@ Description
 -----------
 No available documentation.
 ") Line;
-		opencascade::handle<IntPatch_Line> Line(const Standard_Integer index);
+		opencascade::handle<IntPatch_Line> Line(const int index);
 
 		/****** IntPatch_LineConstructor::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -2977,21 +2975,21 @@ Description
 -----------
 No available documentation.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IntPatch_LineConstructor::Perform ******/
-		/****** md5 signature: 3ce959cc744a727f88718a272bc634d9 ******/
+		/****** md5 signature: 9d860fe80ef7ac010468613d301dab94 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-SL: IntPatch_SequenceOfLine
+SL: IntPatch_Line
 L: IntPatch_Line
 S1: Adaptor3d_Surface
 D1: Adaptor3d_TopolTool
 S2: Adaptor3d_Surface
 D2: Adaptor3d_TopolTool
-Tol: float
+Tol: double
 
 Return
 -------
@@ -3001,7 +2999,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const IntPatch_SequenceOfLine & SL, const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const Standard_Real Tol);
+		void Perform(const NCollection_Sequence<opencascade::handle<IntPatch_Line> > & SL, const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double Tol);
 
 };
 
@@ -3070,7 +3068,7 @@ No available documentation.
 		void Dump();
 
 		/****** IntPatch_Point::IsMultiple ******/
-		/****** md5 signature: d5ff9ea3f75ee3e6e0efda5814b9e44e ******/
+		/****** md5 signature: e6f05b42d0997d2397aa555711ac4e5c ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -3080,10 +3078,10 @@ Description
 -----------
 Returns True if the point belongs to several intersection lines.
 ") IsMultiple;
-		Standard_Boolean IsMultiple();
+		bool IsMultiple();
 
 		/****** IntPatch_Point::IsOnDomS1 ******/
-		/****** md5 signature: 73bb79eb09813ce2f78b4a234c9e417b ******/
+		/****** md5 signature: 5716e70cb829ee6b6e62e842eae4a431 ******/
 		%feature("compactdefaultargs") IsOnDomS1;
 		%feature("autodoc", "Return
 -------
@@ -3093,10 +3091,10 @@ Description
 -----------
 Returns True if the point is on a boundary of the domain of the first patch.
 ") IsOnDomS1;
-		Standard_Boolean IsOnDomS1();
+		bool IsOnDomS1();
 
 		/****** IntPatch_Point::IsOnDomS2 ******/
-		/****** md5 signature: 93e8adde96351fec102c7bd4f10efa11 ******/
+		/****** md5 signature: dffe252f7a8af6ac30918ab4d600561a ******/
 		%feature("compactdefaultargs") IsOnDomS2;
 		%feature("autodoc", "Return
 -------
@@ -3106,10 +3104,10 @@ Description
 -----------
 Returns True if the point is on a boundary of the domain of the second patch.
 ") IsOnDomS2;
-		Standard_Boolean IsOnDomS2();
+		bool IsOnDomS2();
 
 		/****** IntPatch_Point::IsTangencyPoint ******/
-		/****** md5 signature: a9c9faea523a7d80ff8416e04b887e70 ******/
+		/****** md5 signature: 5fdbbb5c5371416b1705c6e1255262ea ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -3119,10 +3117,10 @@ Description
 -----------
 Returns True if the Point is a tangency point between the surfaces. If the Point is on one of the domain (IsOnDomS1 returns True or IsOnDomS2 returns True), an exception is raised.
 ") IsTangencyPoint;
-		Standard_Boolean IsTangencyPoint();
+		bool IsTangencyPoint();
 
 		/****** IntPatch_Point::IsVertexOnS1 ******/
-		/****** md5 signature: f69812d2258e171cd6e9220af4bdf9a7 ******/
+		/****** md5 signature: 5f0c10f2e800d7608b66985e3e79da0b ******/
 		%feature("compactdefaultargs") IsVertexOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3132,10 +3130,10 @@ Description
 -----------
 Returns True if the point is a vertex on the initial restriction facet of the first surface.
 ") IsVertexOnS1;
-		Standard_Boolean IsVertexOnS1();
+		bool IsVertexOnS1();
 
 		/****** IntPatch_Point::IsVertexOnS2 ******/
-		/****** md5 signature: 2bca687752d3b31cff59a696d6463475 ******/
+		/****** md5 signature: 28f5feccffa440679b10cd1908e17564 ******/
 		%feature("compactdefaultargs") IsVertexOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3145,49 +3143,49 @@ Description
 -----------
 Returns True if the point is a vertex on the initial restriction facet of the first surface.
 ") IsVertexOnS2;
-		Standard_Boolean IsVertexOnS2();
+		bool IsVertexOnS2();
 
 		/****** IntPatch_Point::ParameterOnArc1 ******/
-		/****** md5 signature: fd3d8eb9ed7668171a21e22983def6f0 ******/
+		/****** md5 signature: 6f540c6fb388a6a58d2437a5f6d53a84 ******/
 		%feature("compactdefaultargs") ParameterOnArc1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the point on the arc returned by the method ArcOnS2. The exception DomainError is raised if IsOnDomS1 returns False.
 ") ParameterOnArc1;
-		Standard_Real ParameterOnArc1();
+		double ParameterOnArc1();
 
 		/****** IntPatch_Point::ParameterOnArc2 ******/
-		/****** md5 signature: aa992bbe43a517a3ff131f0c53ce4d8a ******/
+		/****** md5 signature: b47801f04102fc05ed78e380dcd38ba9 ******/
 		%feature("compactdefaultargs") ParameterOnArc2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the point on the arc returned by the method ArcOnS2. The exception DomainError is raised if IsOnDomS2 returns False.
 ") ParameterOnArc2;
-		Standard_Real ParameterOnArc2();
+		double ParameterOnArc2();
 
 		/****** IntPatch_Point::ParameterOnLine ******/
-		/****** md5 signature: 737a2a57e32e63a1ba587dea488e9583 ******/
+		/****** md5 signature: b224a4c205db840697545a0e986b265c ******/
 		%feature("compactdefaultargs") ParameterOnLine;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 This method returns the parameter of the point on the intersection line. If the points does not belong to an intersection line, the value returned does not have any sens.
 ") ParameterOnLine;
-		Standard_Real ParameterOnLine();
+		double ParameterOnLine();
 
 		/****** IntPatch_Point::Parameters ******/
-		/****** md5 signature: 30bdd599088f74dedd5979b152a07fd4 ******/
+		/****** md5 signature: 775e624bd9e3d27f6456633f332879c0 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -3195,10 +3193,10 @@ Parameters
 
 Return
 -------
-U1: float
-V1: float
-U2: float
-V2: float
+U1: double
+V1: double
+U2: double
+V2: double
 
 Description
 -----------
@@ -3207,7 +3205,7 @@ Returns the parameters on the first and on the second surface of the point.
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_Point::ParametersOnS1 ******/
-		/****** md5 signature: 64f6fb4c23b753a8ae110d855799d804 ******/
+		/****** md5 signature: 59457ab5c91a647afa2300f3b7b5566d ******/
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", "
 Parameters
@@ -3215,8 +3213,8 @@ Parameters
 
 Return
 -------
-U1: float
-V1: float
+U1: double
+V1: double
 
 Description
 -----------
@@ -3225,7 +3223,7 @@ Returns the parameters on the first surface of the point.
 		void ParametersOnS1(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_Point::ParametersOnS2 ******/
-		/****** md5 signature: a037f950d5c09fdf632c55b7efba040b ******/
+		/****** md5 signature: bf700fe3535c47a0e133a96e7f38d050 ******/
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", "
 Parameters
@@ -3233,8 +3231,8 @@ Parameters
 
 Return
 -------
-U2: float
-V2: float
+U2: double
+V2: double
 
 Description
 -----------
@@ -3269,14 +3267,14 @@ No available documentation.
 		void ReverseTransition();
 
 		/****** IntPatch_Point::SetArc ******/
-		/****** md5 signature: b35cf70b8135224173a7500e8bfb6d70 ******/
+		/****** md5 signature: 846ae6aa319873e55e024c71b4ee8e80 ******/
 		%feature("compactdefaultargs") SetArc;
 		%feature("autodoc", "
 Parameters
 ----------
 OnFirst: bool
 A: Adaptor2d_Curve2d
-Param: float
+Param: double
 TLine: IntSurf_Transition
 TArc: IntSurf_Transition
 
@@ -3288,10 +3286,10 @@ Description
 -----------
 Sets the values of a point which is on one of the domain, when both surfaces are implicit ones. If OnFirst is True, the point is on the domain of the first patch, otherwise the point is on the domain of the second surface.
 ") SetArc;
-		void SetArc(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
+		void SetArc(const bool OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & A, const double Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
 		/****** IntPatch_Point::SetMultiple ******/
-		/****** md5 signature: ba432831fdf3206e67c99f5a09c82c20 ******/
+		/****** md5 signature: da06196a1e0bdb10da858c84068496eb ******/
 		%feature("compactdefaultargs") SetMultiple;
 		%feature("autodoc", "
 Parameters
@@ -3306,15 +3304,15 @@ Description
 -----------
 Sets (or unsets) the point as a point on several intersection line.
 ") SetMultiple;
-		void SetMultiple(const Standard_Boolean IsMult);
+		void SetMultiple(const bool IsMult);
 
 		/****** IntPatch_Point::SetParameter ******/
-		/****** md5 signature: 9c20628bfb58eb45593287ce353000c6 ******/
+		/****** md5 signature: 7b443396772a23e080316b372682c8d1 ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-Para: float
+Para: double
 
 Return
 -------
@@ -3324,18 +3322,18 @@ Description
 -----------
 Set the value of the parameter on the intersection line.
 ") SetParameter;
-		void SetParameter(const Standard_Real Para);
+		void SetParameter(const double Para);
 
 		/****** IntPatch_Point::SetParameters ******/
-		/****** md5 signature: 755b8f6dd45d6eff6cc745c4eabd14f0 ******/
+		/****** md5 signature: 470f4f2fc7f9ac33bba0da6a65aed2d3 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-U1: float
-V1: float
-U2: float
-V2: float
+U1: double
+V1: double
+U2: double
+V2: double
 
 Return
 -------
@@ -3345,15 +3343,15 @@ Description
 -----------
 Sets the values of the parameters of the point on each surface.
 ") SetParameters;
-		void SetParameters(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2);
+		void SetParameters(const double U1, const double V1, const double U2, const double V2);
 
 		/****** IntPatch_Point::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
+		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -3363,16 +3361,16 @@ Description
 -----------
 No available documentation.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 		/****** IntPatch_Point::SetValue ******/
-		/****** md5 signature: e8dc59ed3fac2d4ba87ce4256618e8a0 ******/
+		/****** md5 signature: 64bf8733e2a396362e2141915e052df9 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
 Pt: gp_Pnt
-Tol: float
+Tol: double
 Tangent: bool
 
 Return
@@ -3383,7 +3381,7 @@ Description
 -----------
 Sets the values of a point which is on no domain, when both surfaces are implicit ones. If Tangent is True, the point is a point of tangency between the surfaces.
 ") SetValue;
-		void SetValue(const gp_Pnt & Pt, const Standard_Real Tol, const Standard_Boolean Tangent);
+		void SetValue(const gp_Pnt & Pt, const double Tol, const bool Tangent);
 
 		/****** IntPatch_Point::SetValue ******/
 		/****** md5 signature: 030ac1eb59faa7b90801ff6c52fc9800 ******/
@@ -3422,7 +3420,7 @@ Sets the value of <pt> member.
 		void SetValue(const IntSurf_PntOn2S & thePOn2S);
 
 		/****** IntPatch_Point::SetVertex ******/
-		/****** md5 signature: d6a1bcb9791834d88ec5b6eb34aa5dcf ******/
+		/****** md5 signature: e10d3f02fb66055a1a424939c52e1910 ******/
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", "
 Parameters
@@ -3438,20 +3436,20 @@ Description
 -----------
 Sets the values of a point which is a vertex on the initial facet of restriction of one of the surface. If OnFirst is True, the point is on the domain of the first patch, otherwise the point is on the domain of the second surface.
 ") SetVertex;
-		void SetVertex(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor3d_HVertex> & V);
+		void SetVertex(const bool OnFirst, const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****** IntPatch_Point::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 This method returns the fuzziness on the point.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** IntPatch_Point::TransitionLineArc1 ******/
 		/****** md5 signature: 3c2f51f861994ac2130670399f843948 ******/
@@ -3560,17 +3558,17 @@ Returns the information about the point when it is on the domain of the second p
 class IntPatch_Polygo : public Intf_Polygon2d {
 	public:
 		/****** IntPatch_Polygo::DeflectionOverEstimation ******/
-		/****** md5 signature: 43f4e747867c1147de91dcc2fd648827 ******/
+		/****** md5 signature: 1fad6591a4ff1f9e8e821a3a0670bc18 ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the tolerance of the polygon.
 ") DeflectionOverEstimation;
-		virtual Standard_Real DeflectionOverEstimation();
+		double DeflectionOverEstimation();
 
 		/****** IntPatch_Polygo::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -3586,20 +3584,20 @@ No available documentation.
 		void Dump();
 
 		/****** IntPatch_Polygo::Error ******/
-		/****** md5 signature: 585075c65a8681dedf24240dbb90f7f4 ******/
+		/****** md5 signature: f3b3a49fc8d62bae999fa8e058cfd9e1 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Error;
-		Standard_Real Error();
+		double Error();
 
 		/****** IntPatch_Polygo::NbPoints ******/
-		/****** md5 signature: f447cbc80238739e4af5e7bf8698afd4 ******/
+		/****** md5 signature: 994ae4497927dbaaf6ccd1518d05d51b ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -3609,10 +3607,10 @@ Description
 -----------
 No available documentation.
 ") NbPoints;
-		virtual Standard_Integer NbPoints();
+		virtual int NbPoints();
 
 		/****** IntPatch_Polygo::NbSegments ******/
-		/****** md5 signature: 3964cbfa1f20d4814234f7fc3d204bbb ******/
+		/****** md5 signature: dd047a9d60ac19f7e8995b778d22aba9 ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -3622,10 +3620,10 @@ Description
 -----------
 Returns the number of Segments in the polyline.
 ") NbSegments;
-		virtual Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** IntPatch_Polygo::Point ******/
-		/****** md5 signature: 3ab9edca994a69ca9424e287150bc2eb ******/
+		/****** md5 signature: 4a84dee4a16b1a49267238e5e959fba0 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -3640,10 +3638,10 @@ Description
 -----------
 No available documentation.
 ") Point;
-		virtual gp_Pnt2d Point(const Standard_Integer Index);
+		virtual gp_Pnt2d Point(const int Index);
 
 		/****** IntPatch_Polygo::Segment ******/
-		/****** md5 signature: 86ed8dcd5c63b8c7622186f373e5af81 ******/
+		/****** md5 signature: 492f28c821222ab2c8cda9dffc334375 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -3660,7 +3658,7 @@ Description
 -----------
 Returns the points of the segment <Index> in the Polygon.
 ") Segment;
-		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
+		void Segment(const int theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
 };
 
@@ -3698,7 +3696,7 @@ Give the bounding box of the Polyhedron.
 		static const Bnd_Box & Bounding(const IntPatch_Polyhedron & thePolyh);
 
 		/****** IntPatch_PolyhedronTool::ComponentsBounding ******/
-		/****** md5 signature: 3be44beddefd5df8ebca7137f8bc4df5 ******/
+		/****** md5 signature: 5c5fdb59e0d183bae8b02459034becfd ******/
 		%feature("compactdefaultargs") ComponentsBounding;
 		%feature("autodoc", "
 Parameters
@@ -3707,16 +3705,16 @@ thePolyh: IntPatch_Polyhedron
 
 Return
 -------
-opencascade::handle<Bnd_HArray1OfBox>
+opencascade::handle<NCollection_HArray1<Bnd_Box>>
 
 Description
 -----------
 Give the array of boxes. The box <n> corresponding to the triangle <n>.
 ") ComponentsBounding;
-		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding(const IntPatch_Polyhedron & thePolyh);
+		static const opencascade::handle<NCollection_HArray1<Bnd_Box>> & ComponentsBounding(const IntPatch_Polyhedron & thePolyh);
 
 		/****** IntPatch_PolyhedronTool::DeflectionOverEstimation ******/
-		/****** md5 signature: c343bf3337861a156b50bb1071bddd97 ******/
+		/****** md5 signature: 2cb962bc3660f88dff89dbcaff58e3fe ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
@@ -3725,16 +3723,16 @@ thePolyh: IntPatch_Polyhedron
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Give the tolerance of the polygon.
 ") DeflectionOverEstimation;
-		static Standard_Real DeflectionOverEstimation(const IntPatch_Polyhedron & thePolyh);
+		static double DeflectionOverEstimation(const IntPatch_Polyhedron & thePolyh);
 
 		/****** IntPatch_PolyhedronTool::NbTriangles ******/
-		/****** md5 signature: bc1f65765f28cccf3319726eaa730a95 ******/
+		/****** md5 signature: 95aa5805b4ab2225e9ac5da8fff84b73 ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "
 Parameters
@@ -3749,10 +3747,10 @@ Description
 -----------
 Give the number of triangles in this polyhedral surface.
 ") NbTriangles;
-		static Standard_Integer NbTriangles(const IntPatch_Polyhedron & thePolyh);
+		static int NbTriangles(const IntPatch_Polyhedron & thePolyh);
 
 		/****** IntPatch_PolyhedronTool::Point ******/
-		/****** md5 signature: 109f06f2e5b9dfa60d8906454215fca0 ******/
+		/****** md5 signature: bed928b8bf2b83d9b136d9ce42d71cf2 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -3768,10 +3766,10 @@ Description
 -----------
 Give the point of index i in the polyhedral surface.
 ") Point;
-		static const gp_Pnt Point(const IntPatch_Polyhedron & thePolyh, const Standard_Integer Index);
+		static const gp_Pnt Point(const IntPatch_Polyhedron & thePolyh, const int Index);
 
 		/****** IntPatch_PolyhedronTool::TriConnex ******/
-		/****** md5 signature: d9916b13eb8aa9e0d0f6bda2bcb34cbb ******/
+		/****** md5 signature: 724ae0255ffec98cb2af5ceb92ac4b0f ******/
 		%feature("compactdefaultargs") TriConnex;
 		%feature("autodoc", "
 Parameters
@@ -3790,10 +3788,10 @@ Description
 -----------
 Gives the address Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 ") TriConnex;
-		static Standard_Integer TriConnex(const IntPatch_Polyhedron & thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static int TriConnex(const IntPatch_Polyhedron & thePolyh, const int Triang, const int Pivot, const int Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** IntPatch_PolyhedronTool::Triangle ******/
-		/****** md5 signature: e7579fd54115d4e98a4349222adfe06d ******/
+		/****** md5 signature: c4df3e4bf39c7958646a916dbd57e6c5 ******/
 		%feature("compactdefaultargs") Triangle;
 		%feature("autodoc", "
 Parameters
@@ -3811,7 +3809,7 @@ Description
 -----------
 Give the indices of the 3 points of the triangle of address Index in the Polyhedron.
 ") Triangle;
-		static void Triangle(const IntPatch_Polyhedron & thePolyh, const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void Triangle(const IntPatch_Polyhedron & thePolyh, const int Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 };
 
@@ -3841,20 +3839,20 @@ Empty Constructor.
 		 IntPatch_PrmPrmIntersection();
 
 		/****** IntPatch_PrmPrmIntersection::CodeReject ******/
-		/****** md5 signature: 2eddbed03b0012efdbeaa323b24365a6 ******/
+		/****** md5 signature: 544016d31d1cbd34984f2abb90afc2a6 ******/
 		%feature("compactdefaultargs") CodeReject;
 		%feature("autodoc", "
 Parameters
 ----------
-x1: float
-y1: float
-z1: float
-x2: float
-y2: float
-z2: float
-x3: float
-y3: float
-z3: float
+x1: double
+y1: double
+z1: double
+x2: double
+y2: double
+z2: double
+x3: double
+y3: double
+z3: double
 
 Return
 -------
@@ -3864,10 +3862,10 @@ Description
 -----------
 No available documentation.
 ") CodeReject;
-		Standard_Integer CodeReject(const Standard_Real x1, const Standard_Real y1, const Standard_Real z1, const Standard_Real x2, const Standard_Real y2, const Standard_Real z2, const Standard_Real x3, const Standard_Real y3, const Standard_Real z3);
+		int CodeReject(const double x1, const double y1, const double z1, const double x2, const double y2, const double z2, const double x3, const double y3, const double z3);
 
 		/****** IntPatch_PrmPrmIntersection::DansGrille ******/
-		/****** md5 signature: 63fc7618edcef43ccb613725c0abf121 ******/
+		/****** md5 signature: e7ae2109b614f97a7800122442e35e87 ******/
 		%feature("compactdefaultargs") DansGrille;
 		%feature("autodoc", "
 Parameters
@@ -3882,10 +3880,10 @@ Description
 -----------
 No available documentation.
 ") DansGrille;
-		Standard_Integer DansGrille(const Standard_Integer t);
+		int DansGrille(const int t);
 
 		/****** IntPatch_PrmPrmIntersection::GrilleInteger ******/
-		/****** md5 signature: 6101cd196dae74940af7e5ba51962a3e ******/
+		/****** md5 signature: 9b50c0de71a32f3e8ab88569704a42dc ******/
 		%feature("compactdefaultargs") GrilleInteger;
 		%feature("autodoc", "
 Parameters
@@ -3902,10 +3900,10 @@ Description
 -----------
 No available documentation.
 ") GrilleInteger;
-		Standard_Integer GrilleInteger(const Standard_Integer ix, const Standard_Integer iy, const Standard_Integer iz);
+		int GrilleInteger(const int ix, const int iy, const int iz);
 
 		/****** IntPatch_PrmPrmIntersection::IntegerGrille ******/
-		/****** md5 signature: 7040ab40d31d200cf9a68de48f8e0e4f ******/
+		/****** md5 signature: f6c755570d6d426bdaed1428f04c7a20 ******/
 		%feature("compactdefaultargs") IntegerGrille;
 		%feature("autodoc", "
 Parameters
@@ -3922,10 +3920,10 @@ Description
 -----------
 No available documentation.
 ") IntegerGrille;
-		void IntegerGrille(const Standard_Integer t, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void IntegerGrille(const int t, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** IntPatch_PrmPrmIntersection::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3935,10 +3933,10 @@ Description
 -----------
 Returns true if the calculus was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_PrmPrmIntersection::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3948,10 +3946,10 @@ Description
 -----------
 Returns true if the is no intersection.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntPatch_PrmPrmIntersection::Line ******/
-		/****** md5 signature: 0f19f87d200154ef5932a127697b505b ******/
+		/****** md5 signature: 923de215ae03053b2e452a192ebdd240 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -3966,10 +3964,10 @@ Description
 -----------
 Returns the line of range Index. An exception is raised if Index<=0 or Index>NbLine.
 ") Line;
-		const opencascade::handle<IntPatch_Line> & Line(const Standard_Integer Index);
+		const opencascade::handle<IntPatch_Line> & Line(const int Index);
 
 		/****** IntPatch_PrmPrmIntersection::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -3979,10 +3977,10 @@ Description
 -----------
 Returns the number of intersection lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IntPatch_PrmPrmIntersection::NbPointsGrille ******/
-		/****** md5 signature: bc59d1c5f80d095cb3ac55a785ead7d6 ******/
+		/****** md5 signature: c2fb68d8552bedf35369e03fdc3994d0 ******/
 		%feature("compactdefaultargs") NbPointsGrille;
 		%feature("autodoc", "Return
 -------
@@ -3992,10 +3990,10 @@ Description
 -----------
 No available documentation.
 ") NbPointsGrille;
-		Standard_Integer NbPointsGrille();
+		int NbPointsGrille();
 
 		/****** IntPatch_PrmPrmIntersection::NewLine ******/
-		/****** md5 signature: 0d0c288fdd13a6a3a1c09201bf95a263 ******/
+		/****** md5 signature: 98110d3735c49320e25d446e427d0048 ******/
 		%feature("compactdefaultargs") NewLine;
 		%feature("autodoc", "
 Parameters
@@ -4015,10 +4013,10 @@ Description
 -----------
 Computes about <NbPoints> Intersection Points on the Line <IndexLine> between the Points of Index <LowPoint> and <HighPoint>. //! All the points of the line of index <IndexLine> with an index between <LowPoint> and <HighPoint> are in the returned line. New Points are inserted between existing points if those points are not too closed. //! An exception is raised if Index<=0 or Index>NbLine. or if IsDone returns False.
 ") NewLine;
-		opencascade::handle<IntPatch_Line> NewLine(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const Standard_Integer IndexLine, const Standard_Integer LowPoint, const Standard_Integer HighPoint, const Standard_Integer NbPoints);
+		opencascade::handle<IntPatch_Line> NewLine(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const int IndexLine, const int LowPoint, const int HighPoint, const int NbPoints);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 0d9200f0b25095571291a45a9c7403a2 ******/
+		/****** md5 signature: dc573727b7426c32189edb3bc7b18491 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4029,10 +4027,10 @@ Domain1: Adaptor3d_TopolTool
 Caro2: Adaptor3d_Surface
 Polyhedron2: IntPatch_Polyhedron
 Domain2: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
 
 Return
 -------
@@ -4042,10 +4040,10 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. Associated Polyhedrons <Polyhedron1> and <Polyhedron2> are given.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const IntPatch_Polyhedron & Polyhedron2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const IntPatch_Polyhedron & Polyhedron2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const double TolTangency, const double Epsilon, const double Deflection, const double Increment);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 7c74c9aaaafb20bfa5724b3dd1491869 ******/
+		/****** md5 signature: d5710765c843406ccb8f3cb303fd672c ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4053,10 +4051,10 @@ Parameters
 Caro1: Adaptor3d_Surface
 Polyhedron1: IntPatch_Polyhedron
 Domain1: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
 
 Return
 -------
@@ -4066,10 +4064,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const double TolTangency, const double Epsilon, const double Deflection, const double Increment);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: a95441f01743bd42dc32ec486f64850b ******/
+		/****** md5 signature: 411fc5c35930cd0f19e285375ad9bab7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4078,11 +4076,11 @@ Caro1: Adaptor3d_Surface
 Domain1: Adaptor3d_TopolTool
 Caro2: Adaptor3d_Surface
 Domain2: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
-ClearFlag: bool (optional, default to Standard_True)
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
+ClearFlag: bool (optional, default to true)
 
 Return
 -------
@@ -4092,10 +4090,10 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment, const Standard_Boolean ClearFlag = Standard_True);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const double TolTangency, const double Epsilon, const double Deflection, const double Increment, const bool ClearFlag = true);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 1d681c5285df25502789e22bc030d7b6 ******/
+		/****** md5 signature: 8bb4fda39521d8b76c2fffce659ec83b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4104,11 +4102,11 @@ Caro1: Adaptor3d_Surface
 Domain1: Adaptor3d_TopolTool
 Caro2: Adaptor3d_Surface
 Domain2: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
-ListOfPnts: IntSurf_ListOfPntOn2S
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
+ListOfPnts: NCollection_List<IntSurf_PntOn2S>
 
 Return
 -------
@@ -4118,10 +4116,10 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment, IntSurf_ListOfPntOn2S & ListOfPnts);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const double TolTangency, const double Epsilon, const double Deflection, const double Increment, NCollection_List<IntSurf_PntOn2S> & ListOfPnts);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 7671a04ed73f34934394c3c9667adea4 ******/
+		/****** md5 signature: 2463c76f2575e8c804e596f84dc4763f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4130,14 +4128,14 @@ Caro1: Adaptor3d_Surface
 Domain1: Adaptor3d_TopolTool
 Caro2: Adaptor3d_Surface
 Domain2: Adaptor3d_TopolTool
-U1: float
-V1: float
-U2: float
-V2: float
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
+U1: double
+V1: double
+U2: double
+V2: double
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
 
 Return
 -------
@@ -4147,20 +4145,20 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const double U1, const double V1, const double U2, const double V2, const double TolTangency, const double Epsilon, const double Deflection, const double Increment);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 3de3a2163094b14e56c1965bd94d3889 ******/
+		/****** md5 signature: 24dee9d2e0e2204c5925a2cc5359f696 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Caro1: Adaptor3d_Surface
 Domain1: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
 
 Return
 -------
@@ -4170,10 +4168,10 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. The method computes the polyhedron on each surface.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const double TolTangency, const double Epsilon, const double Deflection, const double Increment);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 1a44cb9c6eac192791cde5e27abf00ff ******/
+		/****** md5 signature: 363dfbf0fbd0b56c2cf7f87f1a0d9f15 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4183,10 +4181,10 @@ Domain1: Adaptor3d_TopolTool
 Caro2: Adaptor3d_Surface
 Polyhedron2: IntPatch_Polyhedron
 Domain2: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
 
 Return
 -------
@@ -4196,10 +4194,10 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. //! The polyhedron which approximates <Caro2>, <Polyhedron2> is given. The other one is computed.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const IntPatch_Polyhedron & Polyhedron2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const IntPatch_Polyhedron & Polyhedron2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const double TolTangency, const double Epsilon, const double Deflection, const double Increment);
 
 		/****** IntPatch_PrmPrmIntersection::Perform ******/
-		/****** md5 signature: 011ce5fc4af5d367de8a18aaf3292ac1 ******/
+		/****** md5 signature: 4a44ad6d5e5e5a200e40c6a5bcfa2792 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4209,10 +4207,10 @@ Polyhedron1: IntPatch_Polyhedron
 Domain1: Adaptor3d_TopolTool
 Caro2: Adaptor3d_Surface
 Domain2: Adaptor3d_TopolTool
-TolTangency: float
-Epsilon: float
-Deflection: float
-Increment: float
+TolTangency: double
+Epsilon: double
+Deflection: double
+Increment: double
 
 Return
 -------
@@ -4222,10 +4220,10 @@ Description
 -----------
 Performs the intersection between <Caro1> and <Caro2>. //! The polyhedron which approximates <Caro1>, <Polyhedron1> is given. The other one is computed.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const Standard_Real TolTangency, const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Increment);
+		void Perform(const opencascade::handle<Adaptor3d_Surface> & Caro1, const IntPatch_Polyhedron & Polyhedron1, const opencascade::handle<Adaptor3d_TopolTool> & Domain1, const opencascade::handle<Adaptor3d_Surface> & Caro2, const opencascade::handle<Adaptor3d_TopolTool> & Domain2, const double TolTangency, const double Epsilon, const double Deflection, const double Increment);
 
 		/****** IntPatch_PrmPrmIntersection::PointDepart ******/
-		/****** md5 signature: 6c8cb83ae36d684cea6c78729ba31477 ******/
+		/****** md5 signature: 3947bcbc9cf33defb38f35ba8bfc6cfa ******/
 		%feature("compactdefaultargs") PointDepart;
 		%feature("autodoc", "
 Parameters
@@ -4246,10 +4244,10 @@ Description
 -----------
 No available documentation.
 ") PointDepart;
-		void PointDepart(opencascade::handle<IntSurf_LineOn2S> & LineOn2S, const opencascade::handle<Adaptor3d_Surface> & S1, const Standard_Integer SU1, const Standard_Integer SV1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Integer SU2, const Standard_Integer SV2);
+		void PointDepart(opencascade::handle<IntSurf_LineOn2S> & LineOn2S, const opencascade::handle<Adaptor3d_Surface> & S1, const int SU1, const int SV1, const opencascade::handle<Adaptor3d_Surface> & S2, const int SU2, const int SV2);
 
 		/****** IntPatch_PrmPrmIntersection::Remplit ******/
-		/****** md5 signature: fbf915009d30635235aad52fdc09392b ******/
+		/****** md5 signature: aadbd6d9361eb54b2c7b4cdf98cb5c6c ******/
 		%feature("compactdefaultargs") Remplit;
 		%feature("autodoc", "
 Parameters
@@ -4267,10 +4265,10 @@ Description
 -----------
 No available documentation.
 ") Remplit;
-		void Remplit(const Standard_Integer a, const Standard_Integer b, const Standard_Integer c, IntPatch_PrmPrmIntersection_T3Bits & Map);
+		void Remplit(const int a, const int b, const int c, IntPatch_PrmPrmIntersection_T3Bits & Map);
 
 		/****** IntPatch_PrmPrmIntersection::RemplitLin ******/
-		/****** md5 signature: 10383209f342d5bdfa6a9e2f83be207e ******/
+		/****** md5 signature: 556aef20d0f71172e0fc984b893bcef2 ******/
 		%feature("compactdefaultargs") RemplitLin;
 		%feature("autodoc", "
 Parameters
@@ -4291,10 +4289,10 @@ Description
 -----------
 No available documentation.
 ") RemplitLin;
-		void RemplitLin(const Standard_Integer x1, const Standard_Integer y1, const Standard_Integer z1, const Standard_Integer x2, const Standard_Integer y2, const Standard_Integer z2, IntPatch_PrmPrmIntersection_T3Bits & Map);
+		void RemplitLin(const int x1, const int y1, const int z1, const int x2, const int y2, const int z2, IntPatch_PrmPrmIntersection_T3Bits & Map);
 
 		/****** IntPatch_PrmPrmIntersection::RemplitTri ******/
-		/****** md5 signature: c82dcb51cafb529d6032e747280eca0a ******/
+		/****** md5 signature: be31197cd400d1448590c086e129c06d ******/
 		%feature("compactdefaultargs") RemplitTri;
 		%feature("autodoc", "
 Parameters
@@ -4318,7 +4316,7 @@ Description
 -----------
 No available documentation.
 ") RemplitTri;
-		void RemplitTri(const Standard_Integer x1, const Standard_Integer y1, const Standard_Integer z1, const Standard_Integer x2, const Standard_Integer y2, const Standard_Integer z2, const Standard_Integer x3, const Standard_Integer y3, const Standard_Integer z3, IntPatch_PrmPrmIntersection_T3Bits & Map);
+		void RemplitTri(const int x1, const int y1, const int z1, const int x2, const int y2, const int z2, const int x3, const int y3, const int z3, IntPatch_PrmPrmIntersection_T3Bits & Map);
 
 };
 
@@ -4335,7 +4333,7 @@ No available documentation.
 class IntPatch_PrmPrmIntersection_T3Bits {
 	public:
 		/****** IntPatch_PrmPrmIntersection_T3Bits::IntPatch_PrmPrmIntersection_T3Bits ******/
-		/****** md5 signature: 1e59c69bab7a66c87344b2cef83f47ee ******/
+		/****** md5 signature: 254e905d40dc25b5c45d70a278aef413 ******/
 		%feature("compactdefaultargs") IntPatch_PrmPrmIntersection_T3Bits;
 		%feature("autodoc", "
 Parameters
@@ -4350,10 +4348,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_PrmPrmIntersection_T3Bits;
-		 IntPatch_PrmPrmIntersection_T3Bits(const Standard_Integer size);
+		 IntPatch_PrmPrmIntersection_T3Bits(const int size);
 
 		/****** IntPatch_PrmPrmIntersection_T3Bits::Add ******/
-		/****** md5 signature: 98a402f6290d04fce66e9880a2a7b7b2 ******/
+		/****** md5 signature: 9e27b06eb05666ff149428d29c4537e7 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4368,10 +4366,10 @@ Description
 -----------
 No available documentation.
 ") Add;
-		void Add(const Standard_Integer t);
+		void Add(const int t);
 
 		/****** IntPatch_PrmPrmIntersection_T3Bits::And ******/
-		/****** md5 signature: ec685a34548ff8895d0278e132c334bf ******/
+		/****** md5 signature: e8fab7ab3b06aa04701c5cb300c7dbc5 ******/
 		%feature("compactdefaultargs") And;
 		%feature("autodoc", "
 Parameters
@@ -4386,10 +4384,10 @@ Description
 -----------
 No available documentation.
 ") And;
-		Standard_Integer And(IntPatch_PrmPrmIntersection_T3Bits & Oth, Standard_Integer &OutValue);
+		int And(IntPatch_PrmPrmIntersection_T3Bits & Oth, Standard_Integer &OutValue);
 
 		/****** IntPatch_PrmPrmIntersection_T3Bits::Raz ******/
-		/****** md5 signature: 56a9b96c08122998b97c1ac996af72b6 ******/
+		/****** md5 signature: 6b85d5976258ebbb55c78a94aad6450e ******/
 		%feature("compactdefaultargs") Raz;
 		%feature("autodoc", "
 Parameters
@@ -4404,7 +4402,7 @@ Description
 -----------
 No available documentation.
 ") Raz;
-		void Raz(const Standard_Integer t);
+		void Raz(const int t);
 
 		/****** IntPatch_PrmPrmIntersection_T3Bits::ResetAnd ******/
 		/****** md5 signature: 54dfe31b09e5a3c02e8155e330083c1c ******/
@@ -4420,7 +4418,7 @@ No available documentation.
 		void ResetAnd();
 
 		/****** IntPatch_PrmPrmIntersection_T3Bits::Val ******/
-		/****** md5 signature: 34f3d3ac041e2803382c64f8c722c400 ******/
+		/****** md5 signature: e18a86e5b1313b12c1bdc2b08a7ed1d3 ******/
 		%feature("compactdefaultargs") Val;
 		%feature("autodoc", "
 Parameters
@@ -4435,7 +4433,7 @@ Description
 -----------
 No available documentation.
 ") Val;
-		Standard_Integer Val(const Standard_Integer t);
+		int Val(const int t);
 
 };
 
@@ -4452,7 +4450,7 @@ No available documentation.
 class IntPatch_RstInt {
 	public:
 		/****** IntPatch_RstInt::PutVertexOnLine ******/
-		/****** md5 signature: 231b47a86513b11ff9a7cc4a051a50ca ******/
+		/****** md5 signature: fed8f8ca071672c7635d41b35095dca7 ******/
 		%feature("compactdefaultargs") PutVertexOnLine;
 		%feature("autodoc", "
 Parameters
@@ -4462,7 +4460,7 @@ Surf: Adaptor3d_Surface
 Domain: Adaptor3d_TopolTool
 OtherSurf: Adaptor3d_Surface
 OnFirst: bool
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4472,7 +4470,7 @@ Description
 -----------
 No available documentation.
 ") PutVertexOnLine;
-		static void PutVertexOnLine(const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const opencascade::handle<Adaptor3d_Surface> & OtherSurf, const Standard_Boolean OnFirst, const Standard_Real Tol);
+		static void PutVertexOnLine(const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const opencascade::handle<Adaptor3d_Surface> & OtherSurf, const bool OnFirst, const double Tol);
 
 };
 
@@ -4489,7 +4487,7 @@ No available documentation.
 class IntPatch_SpecialPoints {
 	public:
 		/****** IntPatch_SpecialPoints::AddCrossUVIsoPoint ******/
-		/****** md5 signature: a319edea5078259423e23fd24fb3d186 ******/
+		/****** md5 signature: 20d9bd07fef0ee9770ec0cb8c1772fec ******/
 		%feature("compactdefaultargs") AddCrossUVIsoPoint;
 		%feature("autodoc", "
 Parameters
@@ -4497,9 +4495,9 @@ Parameters
 theQSurf: Adaptor3d_Surface
 thePSurf: Adaptor3d_Surface
 theRefPt: IntSurf_PntOn2S
-theTol3d: float
+theTol3d: double
 theAddedPoint: IntSurf_PntOn2S
-theIsReversed: bool (optional, default to Standard_False)
+theIsReversed: bool (optional, default to false)
 
 Return
 -------
@@ -4509,10 +4507,10 @@ Description
 -----------
 Adds the point defined as intersection of two isolines (U = 0 and V = 0) on theQSurf in theLine. theRefPt is used to correct adjusting parameters. If theIsReversed is True then theQSurf correspond to the second (otherwise, the first) surface while forming intersection point IntSurf_PntOn2S.
 ") AddCrossUVIsoPoint;
-		static Standard_Boolean AddCrossUVIsoPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const Standard_Real theTol3d, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False);
+		static bool AddCrossUVIsoPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const double theTol3d, IntSurf_PntOn2S & theAddedPoint, const bool theIsReversed = false);
 
 		/****** IntPatch_SpecialPoints::AddPointOnUorVIso ******/
-		/****** md5 signature: 6d7f1b0b3a8049412346caa7b5338111 ******/
+		/****** md5 signature: d1eb1d3db6baaf8ed9ee28e11929ac3c ******/
 		%feature("compactdefaultargs") AddPointOnUorVIso;
 		%feature("autodoc", "
 Parameters
@@ -4521,13 +4519,13 @@ theQSurf: Adaptor3d_Surface
 thePSurf: Adaptor3d_Surface
 theRefPt: IntSurf_PntOn2S
 theIsU: bool
-theIsoParameter: float
+theIsoParameter: double
 theToler: math_VectorBase<double >
 theInitPoint: math_VectorBase<double >
 theInfBound: math_VectorBase<double >
 theSupBound: math_VectorBase<double >
 theAddedPoint: IntSurf_PntOn2S
-theIsReversed: bool (optional, default to Standard_False)
+theIsReversed: bool (optional, default to false)
 
 Return
 -------
@@ -4537,10 +4535,10 @@ Description
 -----------
 Adds the point lain strictly in the isoline U = 0 or V = 0 of theQSurf, in theLine. theRefPt is used to correct adjusting parameters. If theIsReversed is True then theQSurf corresponds to the second (otherwise, the first) surface while forming intersection point IntSurf_PntOn2S. All math_Vector-objects must be filled as follows: [1] - U-parameter of thePSurf; [2] - V-parameter of thePSurf; [3] - U- (if V-isoline is considered) or V-parameter (if U-isoline is considered) of theQSurf.
 ") AddPointOnUorVIso;
-		static Standard_Boolean AddPointOnUorVIso(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const Standard_Boolean theIsU, const Standard_Real theIsoParameter, math_VectorBase<double > theToler, math_VectorBase<double > theInitPoint, math_VectorBase<double > theInfBound, math_VectorBase<double > theSupBound, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False);
+		static bool AddPointOnUorVIso(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const bool theIsU, const double theIsoParameter, math_VectorBase<double > theToler, math_VectorBase<double > theInitPoint, math_VectorBase<double > theInfBound, math_VectorBase<double > theSupBound, IntSurf_PntOn2S & theAddedPoint, const bool theIsReversed = false);
 
 		/****** IntPatch_SpecialPoints::AddSingularPole ******/
-		/****** md5 signature: 73120d8dbfbdfee3c4c757432a86b338 ******/
+		/****** md5 signature: b4e1b54a4c9e552c4eab0e35e5eb429e ******/
 		%feature("compactdefaultargs") AddSingularPole;
 		%feature("autodoc", "
 Parameters
@@ -4550,8 +4548,8 @@ thePSurf: Adaptor3d_Surface
 thePtIso: IntSurf_PntOn2S
 theVertex: IntPatch_Point
 theAddedPoint: IntSurf_PntOn2S
-theIsReversed: bool (optional, default to Standard_False)
-theIsReqRefCheck: bool (optional, default to Standard_False)
+theIsReversed: bool (optional, default to false)
+theIsReqRefCheck: bool (optional, default to false)
 
 Return
 -------
@@ -4561,18 +4559,18 @@ Description
 -----------
 Computes the pole of sphere to add it in the intersection line. Stores the result in theAddedPoint variable (does not add in the line). At that, cone and sphere (with singularity) must be set in theQSurf parameter. By default (if theIsReversed == False), theQSurf is the first surface of the Walking line. If it is not, theIsReversed parameter must be set to True. theIsReqRefCheck is True if and only if 3D-point of theRefPt must be pole or apex for check (e.g. if it is vertex). thePtIso is the reference point for obtaining isoline where must be placed the Apex/Pole. //! ATTENTION!!! theVertex must be initialized before calling the method .
 ") AddSingularPole;
-		static Standard_Boolean AddSingularPole(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & thePtIso, IntPatch_Point & theVertex, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False, const Standard_Boolean theIsReqRefCheck = Standard_False);
+		static bool AddSingularPole(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & thePtIso, IntPatch_Point & theVertex, IntSurf_PntOn2S & theAddedPoint, const bool theIsReversed = false, const bool theIsReqRefCheck = false);
 
 		/****** IntPatch_SpecialPoints::AdjustPointAndVertex ******/
-		/****** md5 signature: 96a980073d3c92eb4aeb14d968555344 ******/
+		/****** md5 signature: c25fa5c368c989ed4cfa2c02c4282ae5 ******/
 		%feature("compactdefaultargs") AdjustPointAndVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 theRefPoint: IntSurf_PntOn2S
-theArrPeriods: float
+theArrPeriods: double
 theNewPoint: IntSurf_PntOn2S
-theVertex: IntPatch_Point * (optional, default to 0)
+theVertex: IntPatch_Point * (optional, default to nullptr)
 
 Return
 -------
@@ -4582,10 +4580,10 @@ Description
 -----------
 Sets theNewPoint parameters in 2D-space the closest to theRefPoint with help of adding/subtracting corresponding periods. theArrPeriods must be filled as follows: {<U-period of 1st surface>, <V-period of 1st surface>, <U-period of 2nd surface>, <V-period of 2nd surface>}. If theVertex != 0 then its parameters will be filled as corresponding parameters of theNewPoint. //! ATTENTION!!! theNewPoint is not only Output parameter. It is Input/Output one. I.e. theNewPoint is reference point together with theRefPt.
 ") AdjustPointAndVertex;
-		static void AdjustPointAndVertex(const IntSurf_PntOn2S & theRefPoint, const Standard_Real theArrPeriods[4], IntSurf_PntOn2S & theNewPoint, IntPatch_Point * const theVertex = 0);
+		static void AdjustPointAndVertex(const IntSurf_PntOn2S & theRefPoint, const double theArrPeriods[4], IntSurf_PntOn2S & theNewPoint, IntPatch_Point * const theVertex = nullptr);
 
 		/****** IntPatch_SpecialPoints::ContinueAfterSpecialPoint ******/
-		/****** md5 signature: 6252d001f2605c004c9cc3c4c7f0001f ******/
+		/****** md5 signature: 3fda5374d88a91be3197fb73777e6c5d ******/
 		%feature("compactdefaultargs") ContinueAfterSpecialPoint;
 		%feature("autodoc", "
 Parameters
@@ -4594,9 +4592,9 @@ theQSurf: Adaptor3d_Surface
 thePSurf: Adaptor3d_Surface
 theRefPt: IntSurf_PntOn2S
 theSPType: IntPatch_SpecPntType
-theTol2D: float
+theTol2D: double
 theNewPoint: IntSurf_PntOn2S
-theIsReversed: bool (optional, default to Standard_False)
+theIsReversed: bool (optional, default to false)
 
 Return
 -------
@@ -4606,7 +4604,7 @@ Description
 -----------
 Special point has already been added in the line. Now, we need in correct prolongation of the line or in start new line. This function returns new point. //! ATTENTION!!! theNewPoint is not only Output parameter. It is Input/Output one. I.e. theNewPoint is reference point together with theRefPt.
 ") ContinueAfterSpecialPoint;
-		static Standard_Boolean ContinueAfterSpecialPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const IntPatch_SpecPntType theSPType, const Standard_Real theTol2D, IntSurf_PntOn2S & theNewPoint, const Standard_Boolean theIsReversed = Standard_False);
+		static bool ContinueAfterSpecialPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const IntPatch_SpecPntType theSPType, const double theTol2D, IntSurf_PntOn2S & theNewPoint, const bool theIsReversed = false);
 
 };
 
@@ -4623,12 +4621,12 @@ Special point has already been added in the line. Now, we need in correct prolon
 class IntPatch_TheIWLineOfTheIWalking : public Standard_Transient {
 	public:
 		/****** IntPatch_TheIWLineOfTheIWalking::IntPatch_TheIWLineOfTheIWalking ******/
-		/****** md5 signature: f30aa79b0d1c6bd12da4bab53a0ab6c8 ******/
+		/****** md5 signature: d6e992e52355d5e6f3ba3cc21778f507 ******/
 		%feature("compactdefaultargs") IntPatch_TheIWLineOfTheIWalking;
 		%feature("autodoc", "
 Parameters
 ----------
-theAllocator: IntSurf_Allocator (optional, default to 0)
+theAllocator: IntSurf_Allocator (optional, default to nullptr)
 
 Return
 -------
@@ -4638,10 +4636,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_TheIWLineOfTheIWalking;
-		 IntPatch_TheIWLineOfTheIWalking(const IntSurf_Allocator & theAllocator = 0);
+		 IntPatch_TheIWLineOfTheIWalking(const IntSurf_Allocator & theAllocator = nullptr);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddIndexPassing ******/
-		/****** md5 signature: 5211f3a2dbfeb4744c3451bde1b6a45c ******/
+		/****** md5 signature: bde76ddfc9fd3149d5e8a69fba3de18f ******/
 		%feature("compactdefaultargs") AddIndexPassing;
 		%feature("autodoc", "
 Parameters
@@ -4654,9 +4652,9 @@ None
 
 Description
 -----------
-associer a l 'indice du point sur la ligne l'indice du point passant dans l'iterateur de depart.
+associate the index of the point on the line with the index of the point passing through the starting iterator.
 ") AddIndexPassing;
-		void AddIndexPassing(const Standard_Integer Index);
+		void AddIndexPassing(const int Index);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddPoint ******/
 		/****** md5 signature: 806b6da489848ff70e42ef52b8d76d5c ******/
@@ -4677,7 +4675,7 @@ Add a point in the line.
 		void AddPoint(const IntSurf_PntOn2S & P);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddStatusFirst ******/
-		/****** md5 signature: 57c24fab44c44bc9f08fb80e64391777 ******/
+		/****** md5 signature: 309da47086c91d4b55ab9322713e46b6 ******/
 		%feature("compactdefaultargs") AddStatusFirst;
 		%feature("autodoc", "
 Parameters
@@ -4693,10 +4691,10 @@ Description
 -----------
 No available documentation.
 ") AddStatusFirst;
-		void AddStatusFirst(const Standard_Boolean Closed, const Standard_Boolean HasFirst);
+		void AddStatusFirst(const bool Closed, const bool HasFirst);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddStatusFirst ******/
-		/****** md5 signature: 3bcc39dd9b427e47834d54029a984cdb ******/
+		/****** md5 signature: 6a054410b270f07fdc8f55a488588f7b ******/
 		%feature("compactdefaultargs") AddStatusFirst;
 		%feature("autodoc", "
 Parameters
@@ -4714,10 +4712,10 @@ Description
 -----------
 No available documentation.
 ") AddStatusFirst;
-		void AddStatusFirst(const Standard_Boolean Closed, const Standard_Boolean HasLast, const Standard_Integer Index, const IntSurf_PathPoint & P);
+		void AddStatusFirst(const bool Closed, const bool HasLast, const int Index, const IntSurf_PathPoint & P);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddStatusFirstLast ******/
-		/****** md5 signature: 9b5b9adcff3655cf97dda89c630e8677 ******/
+		/****** md5 signature: fca87ad519cda1e6ce4b2785b71fefb5 ******/
 		%feature("compactdefaultargs") AddStatusFirstLast;
 		%feature("autodoc", "
 Parameters
@@ -4734,10 +4732,10 @@ Description
 -----------
 No available documentation.
 ") AddStatusFirstLast;
-		void AddStatusFirstLast(const Standard_Boolean Closed, const Standard_Boolean HasFirst, const Standard_Boolean HasLast);
+		void AddStatusFirstLast(const bool Closed, const bool HasFirst, const bool HasLast);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddStatusLast ******/
-		/****** md5 signature: 9df59b95ec4c6ad4a61e31770913147d ******/
+		/****** md5 signature: d4dad969f2ee054ae4f95897518310f1 ******/
 		%feature("compactdefaultargs") AddStatusLast;
 		%feature("autodoc", "
 Parameters
@@ -4752,10 +4750,10 @@ Description
 -----------
 No available documentation.
 ") AddStatusLast;
-		void AddStatusLast(const Standard_Boolean HasLast);
+		void AddStatusLast(const bool HasLast);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::AddStatusLast ******/
-		/****** md5 signature: 9af95226c154f17c39d5609cdec7266e ******/
+		/****** md5 signature: 2a3e07299ee2f37b5b1aba2b4ce3c8f2 ******/
 		%feature("compactdefaultargs") AddStatusLast;
 		%feature("autodoc", "
 Parameters
@@ -4772,10 +4770,10 @@ Description
 -----------
 No available documentation.
 ") AddStatusLast;
-		void AddStatusLast(const Standard_Boolean HasLast, const Standard_Integer Index, const IntSurf_PathPoint & P);
+		void AddStatusLast(const bool HasLast, const int Index, const IntSurf_PathPoint & P);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::Cut ******/
-		/****** md5 signature: f0e9f7dd0e1c0316cdc67bc759be51c9 ******/
+		/****** md5 signature: 45deb1b2d88847257c59414f67c20464 ******/
 		%feature("compactdefaultargs") Cut;
 		%feature("autodoc", "
 Parameters
@@ -4790,7 +4788,7 @@ Description
 -----------
 Cut the line at the point of rank Index.
 ") Cut;
-		void Cut(const Standard_Integer Index);
+		void Cut(const int Index);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::FirstPoint ******/
 		/****** md5 signature: e0c1dbe8c28165db2dbe2ecf721fcc02 ******/
@@ -4806,7 +4804,7 @@ Returns the first point of the line when it is a marching point. An exception is
 		const IntSurf_PathPoint & FirstPoint();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::FirstPointIndex ******/
-		/****** md5 signature: 286ccb2e16a94010c49f690b00f54ac3 ******/
+		/****** md5 signature: 3211170de320ab60c8ead46058ce918f ******/
 		%feature("compactdefaultargs") FirstPointIndex;
 		%feature("autodoc", "Return
 -------
@@ -4814,12 +4812,12 @@ int
 
 Description
 -----------
-Returns the Index of first point of the line when it is a marching point.This index is the index in the PointStartIterator. An exception is raised if HasFirstPoint returns False.
+Returns the Index of first point of the line when it is a marching point. This index is the index in the PointStartIterator. An exception is raised if HasFirstPoint returns False.
 ") FirstPointIndex;
-		Standard_Integer FirstPointIndex();
+		int FirstPointIndex();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::HasFirstPoint ******/
-		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
+		/****** md5 signature: 1bdb89cc339a420f24f2f400d73d6b54 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -4827,12 +4825,12 @@ bool
 
 Description
 -----------
-Returns True if the first point of the line is a marching point . when is HasFirstPoint==False ,the line begins on the natural bound of the surface.the line can be too long.
+Returns True if the first point of the line is a marching point. when HasFirstPoint==False the line begins on the natural bound of the surface. The line can be too long.
 ") HasFirstPoint;
-		Standard_Boolean HasFirstPoint();
+		bool HasFirstPoint();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::HasLastPoint ******/
-		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
+		/****** md5 signature: c85dac3d84a6b6ab2854e34ac0e4ffcb ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -4840,12 +4838,12 @@ bool
 
 Description
 -----------
-Returns True if the end point of the line is a marching point (Point from IntWS). when is HasFirstPoint==False ,the line ends on the natural bound of the surface.the line can be too long.
+Returns True if the end point of the line is a marching point (Point from IntWS). when HasFirstPoint==False the line ends on the natural bound of the surface. The line can be too long.
 ") HasLastPoint;
-		Standard_Boolean HasLastPoint();
+		bool HasLastPoint();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::IsClosed ******/
-		/****** md5 signature: 29709d02fadc9fcb79a766bc9679271b ******/
+		/****** md5 signature: 66fc0caa1853d24780b1d28b8296bc6c ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -4855,10 +4853,10 @@ Description
 -----------
 Returns True if the line is closed.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::IsTangentAtBegining ******/
-		/****** md5 signature: a56d1f9469c98eadc8b6f319bc216c7b ******/
+		/****** md5 signature: aa1e4a3a81269a17ab62d556ec9ab74c ******/
 		%feature("compactdefaultargs") IsTangentAtBegining;
 		%feature("autodoc", "Return
 -------
@@ -4868,10 +4866,10 @@ Description
 -----------
 No available documentation.
 ") IsTangentAtBegining;
-		Standard_Boolean IsTangentAtBegining();
+		bool IsTangentAtBegining();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::IsTangentAtEnd ******/
-		/****** md5 signature: 105311500b205bba41fd4ab317165070 ******/
+		/****** md5 signature: d693a46306cf177fc338d14663f0a3bb ******/
 		%feature("compactdefaultargs") IsTangentAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -4881,7 +4879,7 @@ Description
 -----------
 No available documentation.
 ") IsTangentAtEnd;
-		Standard_Boolean IsTangentAtEnd();
+		bool IsTangentAtEnd();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::LastPoint ******/
 		/****** md5 signature: 7876841b5cf564c633cdd87a1ac1e722 ******/
@@ -4897,7 +4895,7 @@ Returns the last point of the line when it is a marching point. An exception is 
 		const IntSurf_PathPoint & LastPoint();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::LastPointIndex ******/
-		/****** md5 signature: 03702a2b3ccf8f424cd597daef257efb ******/
+		/****** md5 signature: dd0232cbaf64f8bd52c0361e20f012bc ******/
 		%feature("compactdefaultargs") LastPointIndex;
 		%feature("autodoc", "Return
 -------
@@ -4905,9 +4903,9 @@ int
 
 Description
 -----------
-Returns the index of last point of the line when it is a marching point.This index is the index in the PointStartIterator. An exception is raised if HasLastPoint returns False.
+Returns the index of last point of the line when it is a marching point. This index is the index in the PointStartIterator. An exception is raised if HasLastPoint returns False.
 ") LastPointIndex;
-		Standard_Integer LastPointIndex();
+		int LastPointIndex();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::Line ******/
 		/****** md5 signature: d5c2cd917d9e773fdb8b23c68d6a1fdc ******/
@@ -4923,7 +4921,7 @@ Returns the LineOn2S contained in the walking line.
 		const opencascade::handle<IntSurf_LineOn2S> & Line();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::NbPassingPoint ******/
-		/****** md5 signature: d0f6265bbd27e7d9360e0b1105cff054 ******/
+		/****** md5 signature: d2e9c44670b445492d329e73bf77e957 ******/
 		%feature("compactdefaultargs") NbPassingPoint;
 		%feature("autodoc", "Return
 -------
@@ -4933,10 +4931,10 @@ Description
 -----------
 returns the number of points belonging to Pnts1 which are passing point.
 ") NbPassingPoint;
-		Standard_Integer NbPassingPoint();
+		int NbPassingPoint();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -4946,10 +4944,10 @@ Description
 -----------
 Returns the number of points of the line (including first point and end point: see HasLastPoint and HasFirstPoint).
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::PassingPoint ******/
-		/****** md5 signature: 1ecf07ef770669b4329e847aa98917ae ******/
+		/****** md5 signature: 622122aaed0a2c52208ace10effc53a8 ******/
 		%feature("compactdefaultargs") PassingPoint;
 		%feature("autodoc", "
 Parameters
@@ -4965,7 +4963,7 @@ Description
 -----------
 returns the index of the point belonging to the line which is associated to the passing point belonging to Pnts1 an exception is raised if Index > NbPassingPoint().
 ") PassingPoint;
-		void PassingPoint(const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void PassingPoint(const int Index, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::Reverse ******/
 		/****** md5 signature: b751d6874fc026e19a7a6cb37e9ac1b4 ******/
@@ -4981,7 +4979,7 @@ reverse the points in the line. Hasfirst, HasLast are kept.
 		void Reverse();
 
 		/****** IntPatch_TheIWLineOfTheIWalking::SetTangencyAtBegining ******/
-		/****** md5 signature: ea533706f2c44ba6eebb50b37aa11bce ******/
+		/****** md5 signature: a9c68eae26d6e2820e16af9bf963ea73 ******/
 		%feature("compactdefaultargs") SetTangencyAtBegining;
 		%feature("autodoc", "
 Parameters
@@ -4996,10 +4994,10 @@ Description
 -----------
 No available documentation.
 ") SetTangencyAtBegining;
-		void SetTangencyAtBegining(const Standard_Boolean IsTangent);
+		void SetTangencyAtBegining(const bool IsTangent);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::SetTangencyAtEnd ******/
-		/****** md5 signature: e69c7af21e7cb5c30f8431e2a8de655b ******/
+		/****** md5 signature: 019662b4a1e47ed938c27ea7648bdb82 ******/
 		%feature("compactdefaultargs") SetTangencyAtEnd;
 		%feature("autodoc", "
 Parameters
@@ -5014,10 +5012,10 @@ Description
 -----------
 No available documentation.
 ") SetTangencyAtEnd;
-		void SetTangencyAtEnd(const Standard_Boolean IsTangent);
+		void SetTangencyAtEnd(const bool IsTangent);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::SetTangentVector ******/
-		/****** md5 signature: 0e32ea065ed79437c3090e852108262e ******/
+		/****** md5 signature: 0e189218da5eed715cfc0089dc919714 ******/
 		%feature("compactdefaultargs") SetTangentVector;
 		%feature("autodoc", "
 Parameters
@@ -5033,10 +5031,10 @@ Description
 -----------
 No available documentation.
 ") SetTangentVector;
-		void SetTangentVector(const gp_Vec & V, const Standard_Integer Index);
+		void SetTangentVector(const gp_Vec & V, const int Index);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::TangentVector ******/
-		/****** md5 signature: e2d9d7aae22a66c0f8d3bfaf92d891c0 ******/
+		/****** md5 signature: fd80ff20b3f5a28424944277e711445e ******/
 		%feature("compactdefaultargs") TangentVector;
 		%feature("autodoc", "
 Parameters
@@ -5053,7 +5051,7 @@ No available documentation.
 		const gp_Vec TangentVector(Standard_Integer &OutValue);
 
 		/****** IntPatch_TheIWLineOfTheIWalking::Value ******/
-		/****** md5 signature: 8dd9e41f579d9d6e26d29bbd4f60e2b9 ******/
+		/****** md5 signature: 344ab61d440fab1850713aee8091a920 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5068,7 +5066,7 @@ Description
 -----------
 Returns the point of range Index. If index <= 0 or Index > NbPoints, an exception is raised.
 ") Value;
-		const IntSurf_PntOn2S & Value(const Standard_Integer Index);
+		const IntSurf_PntOn2S & Value(const int Index);
 
 };
 
@@ -5087,15 +5085,15 @@ Returns the point of range Index. If index <= 0 or Index > NbPoints, an exceptio
 class IntPatch_TheIWalking {
 	public:
 		/****** IntPatch_TheIWalking::IntPatch_TheIWalking ******/
-		/****** md5 signature: 6f94467f9684116584972e1e886af7fd ******/
+		/****** md5 signature: a9e20ace0d8427310e7cf54a1060fb0c ******/
 		%feature("compactdefaultargs") IntPatch_TheIWalking;
 		%feature("autodoc", "
 Parameters
 ----------
-Epsilon: float
-Deflection: float
-Step: float
-theToFillHoles: bool (optional, default to Standard_False)
+Epsilon: double
+Deflection: double
+Step: double
+theToFillHoles: bool (optional, default to false)
 
 Return
 -------
@@ -5105,10 +5103,10 @@ Description
 -----------
 Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. Step is the maximum increment admitted between two consecutive points (in 2d space). Epsilon is the tolerance beyond which 2 points are confused. theToFillHoles is the flag defining whether possible holes between resulting curves are filled or not in case of IntPatch walking theToFillHoles is False.
 ") IntPatch_TheIWalking;
-		 IntPatch_TheIWalking(const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Step, const Standard_Boolean theToFillHoles = Standard_False);
+		 IntPatch_TheIWalking(const double Epsilon, const double Deflection, const double Step, const bool theToFillHoles = false);
 
 		/****** IntPatch_TheIWalking::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5118,10 +5116,10 @@ Description
 -----------
 Returns true if the calculus was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_TheIWalking::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -5131,10 +5129,10 @@ Description
 -----------
 Returns the number of resulting polylines. An exception is raised if IsDone returns False.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** IntPatch_TheIWalking::NbSinglePnts ******/
-		/****** md5 signature: 8a33644475ee84e2750fa4624ebcf8c0 ******/
+		/****** md5 signature: f1b67cb30ffc42c2108869640ba5114a ******/
 		%feature("compactdefaultargs") NbSinglePnts;
 		%feature("autodoc", "Return
 -------
@@ -5144,19 +5142,19 @@ Description
 -----------
 Returns the number of points belonging to Pnts on which no line starts or ends. An exception is raised if IsDone returns False.
 ") NbSinglePnts;
-		Standard_Integer NbSinglePnts();
+		int NbSinglePnts();
 
 		/****** IntPatch_TheIWalking::Perform ******/
-		/****** md5 signature: 40fe650d607cd4b7d88a29bb07739141 ******/
+		/****** md5 signature: 00316a8362db69b1cf516edbbfd4334a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Pnts1: IntSurf_SequenceOfPathPoint
-Pnts2: IntSurf_SequenceOfInteriorPoint
+Pnts1: NCollection_Sequence<IntSurf_PathPoint>
+Pnts2: NCollection_Sequence<IntSurf_InteriorPoint>
 Func: IntPatch_TheSurfFunction
 S: Adaptor3d_Surface
-Reversed: bool (optional, default to Standard_False)
+Reversed: bool (optional, default to false)
 
 Return
 -------
@@ -5166,18 +5164,18 @@ Description
 -----------
 Searches a set of polylines starting on a point of Pnts1 or Pnts2. Each point on a resulting polyline verifies F(u,v)=0.
 ") Perform;
-		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, const IntSurf_SequenceOfInteriorPoint & Pnts2, IntPatch_TheSurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Boolean Reversed = Standard_False);
+		void Perform(const NCollection_Sequence<IntSurf_PathPoint> & Pnts1, const NCollection_Sequence<IntSurf_InteriorPoint> & Pnts2, IntPatch_TheSurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const bool Reversed = false);
 
 		/****** IntPatch_TheIWalking::Perform ******/
-		/****** md5 signature: 0171c85bf1c87c32db5515adeeba845f ******/
+		/****** md5 signature: cfa2d415a5e712724ef08ccafb095cd6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Pnts1: IntSurf_SequenceOfPathPoint
+Pnts1: NCollection_Sequence<IntSurf_PathPoint>
 Func: IntPatch_TheSurfFunction
 S: Adaptor3d_Surface
-Reversed: bool (optional, default to Standard_False)
+Reversed: bool (optional, default to false)
 
 Return
 -------
@@ -5187,17 +5185,17 @@ Description
 -----------
 Searches a set of polylines starting on a point of Pnts1. Each point on a resulting polyline verifies F(u,v)=0.
 ") Perform;
-		void Perform(const IntSurf_SequenceOfPathPoint & Pnts1, IntPatch_TheSurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Boolean Reversed = Standard_False);
+		void Perform(const NCollection_Sequence<IntSurf_PathPoint> & Pnts1, IntPatch_TheSurfFunction & Func, const opencascade::handle<Adaptor3d_Surface> & S, const bool Reversed = false);
 
 		/****** IntPatch_TheIWalking::SetTolerance ******/
-		/****** md5 signature: 081b0efb39976d786ea1e8e9992511b4 ******/
+		/****** md5 signature: 3564d886237339d2a77bbae8a62ca5a3 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Epsilon: float
-Deflection: float
-Step: float
+Epsilon: double
+Deflection: double
+Step: double
 
 Return
 -------
@@ -5207,10 +5205,10 @@ Description
 -----------
 Deflection is the maximum deflection admitted between two consecutive points on a resulting polyline. Step is the maximum increment admitted between two consecutive points (in 2d space). Epsilon is the tolerance beyond which 2 points are confused.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Epsilon, const Standard_Real Deflection, const Standard_Real Step);
+		void SetTolerance(const double Epsilon, const double Deflection, const double Step);
 
 		/****** IntPatch_TheIWalking::SinglePnt ******/
-		/****** md5 signature: 6dd92e40051e4e916aa83e976db4a997 ******/
+		/****** md5 signature: 0c2543cf594dde763111a0259b3536b6 ******/
 		%feature("compactdefaultargs") SinglePnt;
 		%feature("autodoc", "
 Parameters
@@ -5225,10 +5223,10 @@ Description
 -----------
 Returns the point of range Index . An exception is raised if IsDone returns False. An exception is raised if Index<=0 or Index > NbSinglePnts.
 ") SinglePnt;
-		const IntSurf_PathPoint & SinglePnt(const Standard_Integer Index);
+		const IntSurf_PathPoint & SinglePnt(const int Index);
 
 		/****** IntPatch_TheIWalking::Value ******/
-		/****** md5 signature: eaff6613753683678464590adc4e2ab3 ******/
+		/****** md5 signature: c2f7e3b0e68741374d74ddc195b7c8f7 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5243,7 +5241,7 @@ Description
 -----------
 Returns the polyline of range Index. An exception is raised if IsDone is False. An exception is raised if Index<=0 or Index>NbLines.
 ") Value;
-		const opencascade::handle<IntPatch_TheIWLineOfTheIWalking> & Value(const Standard_Integer Index);
+		const opencascade::handle<IntPatch_TheIWLineOfTheIWalking> & Value(const int Index);
 
 };
 
@@ -5273,16 +5271,16 @@ No available documentation.
 		 IntPatch_ThePathPointOfTheSOnBounds();
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::IntPatch_ThePathPointOfTheSOnBounds ******/
-		/****** md5 signature: 5f22f988780e8fe44f3b2edda6da02ef ******/
+		/****** md5 signature: f42621a2a16bf066e9fa338af1bc5908 ******/
 		%feature("compactdefaultargs") IntPatch_ThePathPointOfTheSOnBounds;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-Tol: float
+Tol: double
 V: Adaptor3d_HVertex
 A: Adaptor2d_Curve2d
-Parameter: float
+Parameter: double
 
 Return
 -------
@@ -5292,18 +5290,18 @@ Description
 -----------
 No available documentation.
 ") IntPatch_ThePathPointOfTheSOnBounds;
-		 IntPatch_ThePathPointOfTheSOnBounds(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
+		 IntPatch_ThePathPointOfTheSOnBounds(const gp_Pnt & P, const double Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A, const double Parameter);
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::IntPatch_ThePathPointOfTheSOnBounds ******/
-		/****** md5 signature: bf31864b4b9346e0320580a8f4cf891b ******/
+		/****** md5 signature: 48fca20af6ee805349043a1d3ea14c41 ******/
 		%feature("compactdefaultargs") IntPatch_ThePathPointOfTheSOnBounds;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-Tol: float
+Tol: double
 A: Adaptor2d_Curve2d
-Parameter: float
+Parameter: double
 
 Return
 -------
@@ -5313,7 +5311,7 @@ Description
 -----------
 No available documentation.
 ") IntPatch_ThePathPointOfTheSOnBounds;
-		 IntPatch_ThePathPointOfTheSOnBounds(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
+		 IntPatch_ThePathPointOfTheSOnBounds(const gp_Pnt & P, const double Tol, const opencascade::handle<Adaptor2d_Curve2d> & A, const double Parameter);
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::Arc ******/
 		/****** md5 signature: de8e47510fc50811ee5a3e0bc98029e6 ******/
@@ -5329,7 +5327,7 @@ No available documentation.
 		const opencascade::handle<Adaptor2d_Curve2d> & Arc();
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::IsNew ******/
-		/****** md5 signature: 3a3a8bc6ebd2fc2c25f224ff9e99af70 ******/
+		/****** md5 signature: 3e8db0e1293344166ca6cbedee1b961d ******/
 		%feature("compactdefaultargs") IsNew;
 		%feature("autodoc", "Return
 -------
@@ -5339,32 +5337,32 @@ Description
 -----------
 No available documentation.
 ") IsNew;
-		Standard_Boolean IsNew();
+		bool IsNew();
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::SetValue ******/
-		/****** md5 signature: 03dce41028774d848e3e96d2ef0ca499 ******/
+		/****** md5 signature: e66e8a8030b9c4660d70f69ad456de66 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-Tol: float
+Tol: double
 V: Adaptor3d_HVertex
 A: Adaptor2d_Curve2d
-Parameter: float
+Parameter: double
 
 Return
 -------
@@ -5374,18 +5372,18 @@ Description
 -----------
 No available documentation.
 ") SetValue;
-		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
+		void SetValue(const gp_Pnt & P, const double Tol, const opencascade::handle<Adaptor3d_HVertex> & V, const opencascade::handle<Adaptor2d_Curve2d> & A, const double Parameter);
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::SetValue ******/
-		/****** md5 signature: a4bb4cd1b8bb6bbe4fb31de340a9931c ******/
+		/****** md5 signature: c616187800f2bcef8f485c8ee2a3fda1 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-Tol: float
+Tol: double
 A: Adaptor2d_Curve2d
-Parameter: float
+Parameter: double
 
 Return
 -------
@@ -5395,20 +5393,20 @@ Description
 -----------
 No available documentation.
 ") SetValue;
-		void SetValue(const gp_Pnt & P, const Standard_Real Tol, const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Real Parameter);
+		void SetValue(const gp_Pnt & P, const double Tol, const opencascade::handle<Adaptor2d_Curve2d> & A, const double Parameter);
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** IntPatch_ThePathPointOfTheSOnBounds::Value ******/
 		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
@@ -5464,7 +5462,7 @@ Empty constructor.
 		 IntPatch_TheSOnBounds();
 
 		/****** IntPatch_TheSOnBounds::AllArcSolution ******/
-		/****** md5 signature: fd074d16584452fef4f16b506eae3de1 ******/
+		/****** md5 signature: 773a5663608490a1b934c2a55dfafaa2 ******/
 		%feature("compactdefaultargs") AllArcSolution;
 		%feature("autodoc", "Return
 -------
@@ -5474,10 +5472,10 @@ Description
 -----------
 Returns true if all arc of the Arcs are solution (inside the surface). An exception is raised if IsDone returns False.
 ") AllArcSolution;
-		Standard_Boolean AllArcSolution();
+		bool AllArcSolution();
 
 		/****** IntPatch_TheSOnBounds::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5487,10 +5485,10 @@ Description
 -----------
 Returns True if the calculus was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_TheSOnBounds::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -5500,10 +5498,10 @@ Description
 -----------
 Returns the number of resulting points. An exception is raised if IsDone returns False (NotDone).
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntPatch_TheSOnBounds::NbSegments ******/
-		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
+		/****** md5 signature: 9aee6c2253f8ba296b560fdee30e17ad ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -5513,19 +5511,19 @@ Description
 -----------
 Returns the number of the resulting segments. An exception is raised if IsDone returns False (NotDone).
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** IntPatch_TheSOnBounds::Perform ******/
-		/****** md5 signature: f1a389776ccbaa0d15b4ffb273c416d3 ******/
+		/****** md5 signature: 0fb5a19a5f618a8a4a97b689e304cd1b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 F: IntPatch_ArcFunction
 Domain: Adaptor3d_TopolTool
-TolBoundary: float
-TolTangency: float
-RecheckOnRegularity: bool (optional, default to Standard_False)
+TolBoundary: double
+TolTangency: double
+RecheckOnRegularity: bool (optional, default to false)
 
 Return
 -------
@@ -5535,10 +5533,10 @@ Description
 -----------
 Algorithm to find the points and parts of curves of Domain (domain of of restriction of a surface) which verify F = 0. TolBoundary defines if a curve is on Q. TolTangency defines if a point is on Q.
 ") Perform;
-		void Perform(IntPatch_ArcFunction & F, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const Standard_Real TolBoundary, const Standard_Real TolTangency, const Standard_Boolean RecheckOnRegularity = Standard_False);
+		void Perform(IntPatch_ArcFunction & F, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const double TolBoundary, const double TolTangency, const bool RecheckOnRegularity = false);
 
 		/****** IntPatch_TheSOnBounds::Point ******/
-		/****** md5 signature: ff9c6059b609788e3ae3b35c70d8a120 ******/
+		/****** md5 signature: e607756e209a929844054ac7e9597198 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -5553,10 +5551,10 @@ Description
 -----------
 Returns the resulting point of range Index. The exception NotDone is raised if IsDone() returns False. The exception OutOfRange is raised if Index <= 0 or Index > NbPoints.
 ") Point;
-		const IntPatch_ThePathPointOfTheSOnBounds & Point(const Standard_Integer Index);
+		const IntPatch_ThePathPointOfTheSOnBounds & Point(const int Index);
 
 		/****** IntPatch_TheSOnBounds::Segment ******/
-		/****** md5 signature: 582451d247e2ffd669ea7baa5a82f527 ******/
+		/****** md5 signature: cb1722479c05c35afce657e5329b3ca3 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -5571,7 +5569,7 @@ Description
 -----------
 Returns the resulting segment of range Index. The exception NotDone is raised if IsDone() returns False. The exception OutOfRange is raised if Index <= 0 or Index > NbPoints.
 ") Segment;
-		const IntPatch_TheSegmentOfTheSOnBounds & Segment(const Standard_Integer Index);
+		const IntPatch_TheSegmentOfTheSOnBounds & Segment(const int Index);
 
 };
 
@@ -5601,7 +5599,7 @@ No available documentation.
 		 IntPatch_TheSearchInside();
 
 		/****** IntPatch_TheSearchInside::IntPatch_TheSearchInside ******/
-		/****** md5 signature: 87893971a4666fabad1d2aeb00a43c8e ******/
+		/****** md5 signature: 327c9b0d0a00912c87cfe299bec233f1 ******/
 		%feature("compactdefaultargs") IntPatch_TheSearchInside;
 		%feature("autodoc", "
 Parameters
@@ -5609,7 +5607,7 @@ Parameters
 F: IntPatch_TheSurfFunction
 Surf: Adaptor3d_Surface
 T: Adaptor3d_TopolTool
-Epsilon: float
+Epsilon: double
 
 Return
 -------
@@ -5619,10 +5617,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_TheSearchInside;
-		 IntPatch_TheSearchInside(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
+		 IntPatch_TheSearchInside(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const double Epsilon);
 
 		/****** IntPatch_TheSearchInside::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5632,10 +5630,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntPatch_TheSearchInside::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -5645,10 +5643,10 @@ Description
 -----------
 Returns the number of points. The exception NotDone if raised if IsDone returns False.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntPatch_TheSearchInside::Perform ******/
-		/****** md5 signature: 7da10d84bc509179e35ba7d3e51c23a3 ******/
+		/****** md5 signature: 69fb684da369f2df353a4dffa05648a0 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -5656,7 +5654,7 @@ Parameters
 F: IntPatch_TheSurfFunction
 Surf: Adaptor3d_Surface
 T: Adaptor3d_TopolTool
-Epsilon: float
+Epsilon: double
 
 Return
 -------
@@ -5666,18 +5664,18 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const Standard_Real Epsilon);
+		void Perform(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & T, const double Epsilon);
 
 		/****** IntPatch_TheSearchInside::Perform ******/
-		/****** md5 signature: a3f915532ac931f167d00f9fbf0f6f3e ******/
+		/****** md5 signature: 4259e9c88d7a1acebcbda1bb1947a843 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 F: IntPatch_TheSurfFunction
 Surf: Adaptor3d_Surface
-UStart: float
-VStart: float
+UStart: double
+VStart: double
 
 Return
 -------
@@ -5687,10 +5685,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real UStart, const Standard_Real VStart);
+		void Perform(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const double UStart, const double VStart);
 
 		/****** IntPatch_TheSearchInside::Value ******/
-		/****** md5 signature: 32b603bd5d3112334230c3e7fbb789a7 ******/
+		/****** md5 signature: 53957a7cef022ac96aca4f6ccc589f73 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5705,7 +5703,7 @@ Description
 -----------
 Returns the point of range Index. The exception NotDone if raised if IsDone returns False. The exception OutOfRange if raised if Index <= 0 or Index > NbPoints.
 ") Value;
-		const IntSurf_InteriorPoint & Value(const Standard_Integer Index);
+		const IntSurf_InteriorPoint & Value(const int Index);
 
 };
 
@@ -5761,7 +5759,7 @@ Returns the first point.
 		const IntPatch_ThePathPointOfTheSOnBounds & FirstPoint();
 
 		/****** IntPatch_TheSegmentOfTheSOnBounds::HasFirstPoint ******/
-		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
+		/****** md5 signature: 1bdb89cc339a420f24f2f400d73d6b54 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -5771,10 +5769,10 @@ Description
 -----------
 Returns True if there is a vertex (ThePathPoint) defining the lowest valid parameter on the arc.
 ") HasFirstPoint;
-		Standard_Boolean HasFirstPoint();
+		bool HasFirstPoint();
 
 		/****** IntPatch_TheSegmentOfTheSOnBounds::HasLastPoint ******/
-		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
+		/****** md5 signature: c85dac3d84a6b6ab2854e34ac0e4ffcb ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -5784,7 +5782,7 @@ Description
 -----------
 Returns True if there is a vertex (ThePathPoint) defining the greatest valid parameter on the arc.
 ") HasLastPoint;
-		Standard_Boolean HasLastPoint();
+		bool HasLastPoint();
 
 		/****** IntPatch_TheSegmentOfTheSOnBounds::LastPoint ******/
 		/****** md5 signature: 8b2eedd3d014003b00e96501ee48e8db ******/
@@ -5800,7 +5798,7 @@ Returns the last point.
 		const IntPatch_ThePathPointOfTheSOnBounds & LastPoint();
 
 		/****** IntPatch_TheSegmentOfTheSOnBounds::SetLimitPoint ******/
-		/****** md5 signature: 5d976ff1fe4e523ed518edb448dc6859 ******/
+		/****** md5 signature: b15a875941166c1c7627758cd3f609fe ******/
 		%feature("compactdefaultargs") SetLimitPoint;
 		%feature("autodoc", "
 Parameters
@@ -5816,7 +5814,7 @@ Description
 -----------
 Defines the first point or the last point, depending on the value of the boolean First.
 ") SetLimitPoint;
-		void SetLimitPoint(const IntPatch_ThePathPointOfTheSOnBounds & V, const Standard_Boolean First);
+		void SetLimitPoint(const IntPatch_ThePathPointOfTheSOnBounds & V, const bool First);
 
 		/****** IntPatch_TheSegmentOfTheSOnBounds::SetValue ******/
 		/****** md5 signature: 53ce9238106071febf6db57a0ff8a99c ******/
@@ -5901,7 +5899,7 @@ No available documentation.
 		 IntPatch_TheSurfFunction(const IntSurf_Quadric & IS);
 
 		/****** IntPatch_TheSurfFunction::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -5917,7 +5915,7 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** IntPatch_TheSurfFunction::Direction2d ******/
 		/****** md5 signature: e46e583c3b745511fb8654831bfa19d7 ******/
@@ -5959,7 +5957,7 @@ No available documentation.
 		const IntSurf_Quadric & ISurface();
 
 		/****** IntPatch_TheSurfFunction::IsTangent ******/
-		/****** md5 signature: 52337431677eb50512a9391c1db95a81 ******/
+		/****** md5 signature: 57430bba54a67cd70f0eb7addde8c3c7 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -5969,10 +5967,10 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		Standard_Boolean IsTangent();
+		bool IsTangent();
 
 		/****** IntPatch_TheSurfFunction::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -5982,10 +5980,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** IntPatch_TheSurfFunction::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -5995,7 +5993,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** IntPatch_TheSurfFunction::PSurface ******/
 		/****** md5 signature: ba545ec7900073a2f2c5530d5104284d ******/
@@ -6024,17 +6022,17 @@ No available documentation.
 		const gp_Pnt Point();
 
 		/****** IntPatch_TheSurfFunction::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** IntPatch_TheSurfFunction::Set ******/
 		/****** md5 signature: 9ddb344b11924e5532d547145d17d9e5 ******/
@@ -6055,12 +6053,12 @@ No available documentation.
 		void Set(const opencascade::handle<Adaptor3d_Surface> & PS);
 
 		/****** IntPatch_TheSurfFunction::Set ******/
-		/****** md5 signature: 7e3e1092ebe5da1f71e965a1091893e3 ******/
+		/****** md5 signature: bf508c67cd63b5bb26c659d2af54ab81 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-Tolerance: float
+Tolerance: double
 
 Return
 -------
@@ -6070,7 +6068,7 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Real Tolerance);
+		void Set(const double Tolerance);
 
 		/****** IntPatch_TheSurfFunction::SetImplicitSurface ******/
 		/****** md5 signature: 0ad3b55688a2be8e3aa7ec9c9bcbd283 ******/
@@ -6091,20 +6089,20 @@ No available documentation.
 		void SetImplicitSurface(const IntSurf_Quadric & IS);
 
 		/****** IntPatch_TheSurfFunction::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-Returns the value Tol so that if Abs(Func.Root())<Tol the function is considered null.
+Returns the value Tol so that if std::abs(Func.Root())<Tol the function is considered null.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** IntPatch_TheSurfFunction::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6120,10 +6118,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** IntPatch_TheSurfFunction::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -6140,7 +6138,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -6179,16 +6177,16 @@ I Removes equal points (leave one of equal points) from theWLine and recompute v
 		static opencascade::handle<IntPatch_WLine> ComputePurgedWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theDom1, const opencascade::handle<Adaptor3d_TopolTool> & theDom2);
 
 		/****** IntPatch_WLineTool::ExtendTwoWLines ******/
-		/****** md5 signature: 372061cab2579d8a7ec5a10a5bae33ed ******/
+		/****** md5 signature: 62694954a2ee64a74435319f0a093518 ******/
 		%feature("compactdefaultargs") ExtendTwoWLines;
 		%feature("autodoc", "
 Parameters
 ----------
-theSlin: IntPatch_SequenceOfLine
+theSlin: IntPatch_Line
 theS1: Adaptor3d_Surface
 theS2: Adaptor3d_Surface
-theToler3D: float
-theArrPeriods: float *
+theToler3D: double
+theArrPeriods: double *
 theBoxS1: Bnd_Box2d
 theBoxS2: Bnd_Box2d
 theListOfCriticalPoints: NCollection_List<gp_Pnt>
@@ -6201,19 +6199,19 @@ Description
 -----------
 Extends every line from theSlin (if it is possible) to be started/finished in strictly determined point (in the place of joint of two lines). As result, some gaps between two lines will vanish. The Walking lines are supposed (algorithm will do nothing for not-Walking line) to be computed as a result of intersection. Both theS1 and theS2 must be quadrics. Other cases are not supported. theArrPeriods must be filled as follows (every value must not be negative; if the surface is not periodic the period must be equal to 0.0 strictly): {<U-period of 1st surface>, <V-period of 1st surface>, <U-period of 2nd surface>, <V-period of 2nd surface>}. theListOfCriticalPoints must contain 3D-points where joining is disabled.
 ") ExtendTwoWLines;
-		static void ExtendTwoWLines(IntPatch_SequenceOfLine & theSlin, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const Standard_Real theToler3D, const Standard_Real * const theArrPeriods, const Bnd_Box2d & theBoxS1, const Bnd_Box2d & theBoxS2, const NCollection_List<gp_Pnt> & theListOfCriticalPoints);
+		static void ExtendTwoWLines(NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theSlin, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const double theToler3D, const double * const theArrPeriods, const Bnd_Box2d & theBoxS1, const Bnd_Box2d & theBoxS2, const NCollection_List<gp_Pnt> & theListOfCriticalPoints);
 
 		/****** IntPatch_WLineTool::JoinWLines ******/
-		/****** md5 signature: 4222436c6469c078ffbed1ef478238db ******/
+		/****** md5 signature: c0c600fe82fa2608108cead09d37f455 ******/
 		%feature("compactdefaultargs") JoinWLines;
 		%feature("autodoc", "
 Parameters
 ----------
-theSlin: IntPatch_SequenceOfLine
-theSPnt: IntPatch_SequenceOfPoint
+theSlin: IntPatch_Line
+theSPnt: NCollection_Sequence<IntPatch_Point>
 theS1: Adaptor3d_Surface
 theS2: Adaptor3d_Surface
-theTol3D: float
+theTol3D: double
 
 Return
 -------
@@ -6223,7 +6221,7 @@ Description
 -----------
 Joins all WLines from theSlin to one if it is possible and records the result into theSlin again. Lines will be kept to be split if: a) they are separated (has no common points); b) resulted line (after joining) go through seam-edges or surface boundaries. //! In addition, if points in theSPnt lies at least in one of the line in theSlin, this point will be deleted.
 ") JoinWLines;
-		static void JoinWLines(IntPatch_SequenceOfLine & theSlin, IntPatch_SequenceOfPoint & theSPnt, opencascade::handle<Adaptor3d_Surface > theS1, opencascade::handle<Adaptor3d_Surface > theS2, const Standard_Real theTol3D);
+		static void JoinWLines(NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theSlin, NCollection_Sequence<IntPatch_Point> & theSPnt, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const double theTol3D);
 
 };
 
@@ -6240,7 +6238,7 @@ Joins all WLines from theSlin to one if it is possible and records the result in
 class IntPatch_ALine : public IntPatch_Line {
 	public:
 		/****** IntPatch_ALine::IntPatch_ALine ******/
-		/****** md5 signature: 9010f93f8c4e698d62bb7523b8820b85 ******/
+		/****** md5 signature: 7c8493a5073840fbdda6217a82eaf16e ******/
 		%feature("compactdefaultargs") IntPatch_ALine;
 		%feature("autodoc", "
 Parameters
@@ -6258,10 +6256,10 @@ Description
 -----------
 Creates an analytic intersection line when the transitions are In or Out.
 ") IntPatch_ALine;
-		 IntPatch_ALine(const IntAna_Curve & C, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_ALine(const IntAna_Curve & C, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_ALine::IntPatch_ALine ******/
-		/****** md5 signature: 571e66e0ef24dae21f5212d6d8ba5d14 ******/
+		/****** md5 signature: 415d9f423c917e27fdf8a1aadd034930 ******/
 		%feature("compactdefaultargs") IntPatch_ALine;
 		%feature("autodoc", "
 Parameters
@@ -6279,10 +6277,10 @@ Description
 -----------
 Creates an analytic intersection line when the transitions are Touch.
 ") IntPatch_ALine;
-		 IntPatch_ALine(const IntAna_Curve & C, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_ALine(const IntAna_Curve & C, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_ALine::IntPatch_ALine ******/
-		/****** md5 signature: 9b1b615709dab30b09144f781621aaff ******/
+		/****** md5 signature: 48b35b7b3fbf801665ed87b56e13fba3 ******/
 		%feature("compactdefaultargs") IntPatch_ALine;
 		%feature("autodoc", "
 Parameters
@@ -6298,7 +6296,7 @@ Description
 -----------
 Creates an analytic intersection line when the transitions are Undecided.
 ") IntPatch_ALine;
-		 IntPatch_ALine(const IntAna_Curve & C, const Standard_Boolean Tang);
+		 IntPatch_ALine(const IntAna_Curve & C, const bool Tang);
 
 		/****** IntPatch_ALine::AddVertex ******/
 		/****** md5 signature: 4576312baa80d87344c656c8730d3075 ******/
@@ -6319,7 +6317,7 @@ To add a vertex in the list.
 		void AddVertex(const IntPatch_Point & Pnt);
 
 		/****** IntPatch_ALine::ChangeVertex ******/
-		/****** md5 signature: 02d71b47e92bf61c55ec22617897065a ******/
+		/****** md5 signature: 7dd2afa58b42c6d558643dc3b3d3b385 ******/
 		%feature("compactdefaultargs") ChangeVertex;
 		%feature("autodoc", "
 Parameters
@@ -6334,15 +6332,15 @@ Description
 -----------
 Allows modifying the vertex with index theIndex on the line.
 ") ChangeVertex;
-		IntPatch_Point & ChangeVertex(const Standard_Integer theIndex);
+		IntPatch_Point & ChangeVertex(const int theIndex);
 
 		/****** IntPatch_ALine::ComputeVertexParameters ******/
-		/****** md5 signature: 77c91f07a2cb487df3310057933c84f5 ******/
+		/****** md5 signature: d40a83ea38985e04a786cc6a91935bcb ******/
 		%feature("compactdefaultargs") ComputeVertexParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -6352,7 +6350,7 @@ Description
 -----------
 Set the parameters of all the vertex on the line. if a vertex is already in the line, its parameter is modified else a new point in the line is inserted.
 ") ComputeVertexParameters;
-		void ComputeVertexParameters(const Standard_Real Tol);
+		void ComputeVertexParameters(const double Tol);
 
 		/****** IntPatch_ALine::Curve ******/
 		/****** md5 signature: 70d603d1367b2d334bdbbd7b0a4fd912 ******/
@@ -6368,12 +6366,12 @@ No available documentation.
 		IntAna_Curve Curve();
 
 		/****** IntPatch_ALine::D1 ******/
-		/****** md5 signature: ba74a6b24051c3de7f090b0e159de939 ******/
+		/****** md5 signature: faf7518b94fb652728e0f02fb2d528fc ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 Du: gp_Vec
 
@@ -6383,18 +6381,18 @@ bool
 
 Description
 -----------
-Returns Standard_True when the derivative at parameter U is defined on the analytic intersection line. In that case, Du is the derivative. Returns Standard_False when it is not possible to evaluate the derivative. In both cases, P is the point at parameter U on the intersection.
+Returns true when the derivative at parameter U is defined on the analytic intersection line. In that case, Du is the derivative. Returns false when it is not possible to evaluate the derivative. In both cases, P is the point at parameter U on the intersection.
 ") D1;
-		Standard_Boolean D1(const Standard_Real U, gp_Pnt & P, gp_Vec & Du);
+		bool D1(const double U, gp_Pnt & P, gp_Vec & Du);
 
 		/****** IntPatch_ALine::FindParameter ******/
-		/****** md5 signature: dab72e39e175512eaf3620eb76e16397 ******/
+		/****** md5 signature: 407de38cada1fec3ab9e565b56fb7e9e ******/
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-theParams: TColStd_ListOfReal
+theParams: NCollection_List<double>
 
 Return
 -------
@@ -6404,10 +6402,10 @@ Description
 -----------
 Tries to find the parameters of the point P on the curve. If the method returns False, the 'projection' is impossible. If the method returns True at least one parameter has been found. theParams is always sorted in ascending order.
 ") FindParameter;
-		void FindParameter(const gp_Pnt & P, TColStd_ListOfReal & theParams);
+		void FindParameter(const gp_Pnt & P, NCollection_List<double> & theParams);
 
 		/****** IntPatch_ALine::FirstParameter ******/
-		/****** md5 signature: 1cbadcff1f685cbfc099ecc8fcd9ea27 ******/
+		/****** md5 signature: 1c4003fb27d70ae40ab9684429360d97 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -6421,7 +6419,7 @@ Description
 -----------
 Returns the first parameter on the intersection line. If IsIncluded returns True, Value and D1 methods can be call with a parameter equal to FirstParameter. Otherwise, the parameter must be greater than FirstParameter.
 ") FirstParameter;
-		Standard_Real FirstParameter(Standard_Boolean &OutValue);
+		double FirstParameter(Standard_Boolean &OutValue);
 
 		/****** IntPatch_ALine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
@@ -6437,7 +6435,7 @@ Returns the IntPoint corresponding to the FirstPoint. An exception is raised whe
 		const IntPatch_Point & FirstPoint();
 
 		/****** IntPatch_ALine::HasFirstPoint ******/
-		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
+		/****** md5 signature: 1bdb89cc339a420f24f2f400d73d6b54 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -6447,10 +6445,10 @@ Description
 -----------
 Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
-		Standard_Boolean HasFirstPoint();
+		bool HasFirstPoint();
 
 		/****** IntPatch_ALine::HasLastPoint ******/
-		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
+		/****** md5 signature: c85dac3d84a6b6ab2854e34ac0e4ffcb ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -6460,10 +6458,10 @@ Description
 -----------
 Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
-		Standard_Boolean HasLastPoint();
+		bool HasLastPoint();
 
 		/****** IntPatch_ALine::LastParameter ******/
-		/****** md5 signature: 3ecbcdc3f6497c567ff2f9adb0493aed ******/
+		/****** md5 signature: 17701cfdd4e696be813bef84aff40354 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -6477,7 +6475,7 @@ Description
 -----------
 Returns the last parameter on the intersection line. If IsIncluded returns True, Value and D1 methods can be call with a parameter equal to LastParameter. Otherwise, the parameter must be less than LastParameter.
 ") LastParameter;
-		Standard_Real LastParameter(Standard_Boolean &OutValue);
+		double LastParameter(Standard_Boolean &OutValue);
 
 		/****** IntPatch_ALine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
@@ -6493,7 +6491,7 @@ Returns the IntPoint corresponding to the LastPoint. An exception is raised when
 		const IntPatch_Point & LastPoint();
 
 		/****** IntPatch_ALine::NbVertex ******/
-		/****** md5 signature: b2d226bac64a106c7941ef45ff4e07f1 ******/
+		/****** md5 signature: ca210f2c673146a756e686a1fba666cd ******/
 		%feature("compactdefaultargs") NbVertex;
 		%feature("autodoc", "Return
 -------
@@ -6503,10 +6501,10 @@ Description
 -----------
 No available documentation.
 ") NbVertex;
-		Standard_Integer NbVertex();
+		int NbVertex();
 
 		/****** IntPatch_ALine::Replace ******/
-		/****** md5 signature: 26f627e400d5ec4fd796489f34c68a92 ******/
+		/****** md5 signature: d93aae7d3c943860d8f122b7800ad6db ******/
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "
 Parameters
@@ -6522,10 +6520,10 @@ Description
 -----------
 Replaces the element of range Index in the list of points.
 ") Replace;
-		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
+		void Replace(const int Index, const IntPatch_Point & Pnt);
 
 		/****** IntPatch_ALine::SetFirstPoint ******/
-		/****** md5 signature: 25fa45b5d9bd6687fb9b3e0c731bb2c5 ******/
+		/****** md5 signature: 0e94198440d6157c3796ba6dc67188ce ******/
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -6540,10 +6538,10 @@ Description
 -----------
 No available documentation.
 ") SetFirstPoint;
-		void SetFirstPoint(const Standard_Integer IndFirst);
+		void SetFirstPoint(const int IndFirst);
 
 		/****** IntPatch_ALine::SetLastPoint ******/
-		/****** md5 signature: e92f18b207577df6b281f4b27f093c31 ******/
+		/****** md5 signature: 4408067aa39ef1fcb60f4d638662e849 ******/
 		%feature("compactdefaultargs") SetLastPoint;
 		%feature("autodoc", "
 Parameters
@@ -6558,15 +6556,15 @@ Description
 -----------
 No available documentation.
 ") SetLastPoint;
-		void SetLastPoint(const Standard_Integer IndLast);
+		void SetLastPoint(const int IndLast);
 
 		/****** IntPatch_ALine::Value ******/
-		/****** md5 signature: a9175f1b48e8e645db80a520f3e4e7b9 ******/
+		/****** md5 signature: 2544d971f0e6094fffbeed30c9e6372c ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -6576,10 +6574,10 @@ Description
 -----------
 Returns the point of parameter U on the analytic intersection line.
 ") Value;
-		gp_Pnt Value(const Standard_Real U);
+		gp_Pnt Value(const double U);
 
 		/****** IntPatch_ALine::Vertex ******/
-		/****** md5 signature: f9aa0b5079416f21b4a58d4398d2657e ******/
+		/****** md5 signature: 26780f23202c4ac23d80e88630aa27c5 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -6594,7 +6592,7 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") Vertex;
-		const IntPatch_Point & Vertex(const Standard_Integer Index);
+		const IntPatch_Point & Vertex(const int Index);
 
 };
 
@@ -6613,7 +6611,7 @@ Returns the vertex of range Index on the line.
 class IntPatch_GLine : public IntPatch_Line {
 	public:
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: cee0fcb79d8ec8c0385770c29c4b2931 ******/
+		/****** md5 signature: 0ba3dae96db119c2088ac4a96d06b7f2 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6631,10 +6629,10 @@ Description
 -----------
 Creates a Line as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Lin & L, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_GLine(const gp_Lin & L, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: d6edb6ee8ca225bcca4c0697bfc4208d ******/
+		/****** md5 signature: d74d90bd472ed26f2b5815bac990640c ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6652,10 +6650,10 @@ Description
 -----------
 Creates a Line as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Lin & L, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_GLine(const gp_Lin & L, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 63fa5a02a355e9f6a27245fa94bc6c1d ******/
+		/****** md5 signature: 50c571a4a713fd111bee6a68d14ebc7b ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6671,10 +6669,10 @@ Description
 -----------
 Creates a Line as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Lin & L, const Standard_Boolean Tang);
+		 IntPatch_GLine(const gp_Lin & L, const bool Tang);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 0300931498617ce1be00cbed11578735 ******/
+		/****** md5 signature: 9215fa7c664b5f600e740baf1be2719f ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6692,10 +6690,10 @@ Description
 -----------
 Creates a circle as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Circ & C, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_GLine(const gp_Circ & C, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 807601abc0604326fec764e246f8fa12 ******/
+		/****** md5 signature: 27c7c1f498c18f2f1ee8f83b59823839 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6713,10 +6711,10 @@ Description
 -----------
 Creates a circle as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Circ & C, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_GLine(const gp_Circ & C, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 69870093fcf25b4b4b2d8ec25eb6cea4 ******/
+		/****** md5 signature: c8d2248f599e65feb8142f49e8489968 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6732,10 +6730,10 @@ Description
 -----------
 Creates a circle as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Circ & C, const Standard_Boolean Tang);
+		 IntPatch_GLine(const gp_Circ & C, const bool Tang);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 2778cdac18226c2f39966574508f7e80 ******/
+		/****** md5 signature: 6043da92464b736bf695ecd85aee93b4 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6753,10 +6751,10 @@ Description
 -----------
 Creates an ellipse as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Elips & E, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_GLine(const gp_Elips & E, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 4af53faedffea99bf074576d3cb431d8 ******/
+		/****** md5 signature: 0353f2aa596bb943a88a5053d8c51e74 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6774,10 +6772,10 @@ Description
 -----------
 Creates an ellispe as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Elips & E, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_GLine(const gp_Elips & E, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 0826d594e29e4665070255413f6fd851 ******/
+		/****** md5 signature: a9cd22ef62d23fd2e9e8fdfc0f42dd9e ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6793,10 +6791,10 @@ Description
 -----------
 Creates an ellipse as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Elips & E, const Standard_Boolean Tang);
+		 IntPatch_GLine(const gp_Elips & E, const bool Tang);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: f0a5eb49cee40837a0487507ddf0eb94 ******/
+		/****** md5 signature: 189b1c935de9ff04ab400ca771663d25 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6814,10 +6812,10 @@ Description
 -----------
 Creates a parabola as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Parab & P, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_GLine(const gp_Parab & P, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: b381d5912911ecff277552d3e4f781af ******/
+		/****** md5 signature: ea9ebb62c683b6ccb45d6fc11237f3ea ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6835,10 +6833,10 @@ Description
 -----------
 Creates a parabola as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Parab & P, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_GLine(const gp_Parab & P, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: c456d7449b6cada23c52beaf2155c2fd ******/
+		/****** md5 signature: 8683f6e79d2662e9ca70d9b37f8cddf2 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6854,10 +6852,10 @@ Description
 -----------
 Creates a parabola as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Parab & P, const Standard_Boolean Tang);
+		 IntPatch_GLine(const gp_Parab & P, const bool Tang);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 374dd2610a878442d4661568daa57537 ******/
+		/****** md5 signature: 849107b6e1e3e08808125fa7d3bc8810 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6875,10 +6873,10 @@ Description
 -----------
 Creates an hyperbola as intersection line when the transitions are In or Out.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Hypr & H, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_GLine(const gp_Hypr & H, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: d02fb4628988052e518850db601c47f4 ******/
+		/****** md5 signature: 19d6d5d5634b9f9b3d6744e110428725 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6896,10 +6894,10 @@ Description
 -----------
 Creates an hyperbola as intersection line when the transitions are Touch.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Hypr & H, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_GLine(const gp_Hypr & H, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_GLine::IntPatch_GLine ******/
-		/****** md5 signature: 480cd4b5b8def2abfec686c81bb2d644 ******/
+		/****** md5 signature: 5507110523e03bd373f9c41efb521790 ******/
 		%feature("compactdefaultargs") IntPatch_GLine;
 		%feature("autodoc", "
 Parameters
@@ -6915,7 +6913,7 @@ Description
 -----------
 Creates an hyperbola as intersection line when the transitions are Undecided.
 ") IntPatch_GLine;
-		 IntPatch_GLine(const gp_Hypr & H, const Standard_Boolean Tang);
+		 IntPatch_GLine(const gp_Hypr & H, const bool Tang);
 
 		/****** IntPatch_GLine::AddVertex ******/
 		/****** md5 signature: 4576312baa80d87344c656c8730d3075 ******/
@@ -6949,12 +6947,12 @@ Returns the Circ from gp corresponding to the intersection when ArcType returns 
 		gp_Circ Circle();
 
 		/****** IntPatch_GLine::ComputeVertexParameters ******/
-		/****** md5 signature: 77c91f07a2cb487df3310057933c84f5 ******/
+		/****** md5 signature: d40a83ea38985e04a786cc6a91935bcb ******/
 		%feature("compactdefaultargs") ComputeVertexParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -6964,7 +6962,7 @@ Description
 -----------
 Set the parameters of all the vertex on the line. if a vertex is already in the line, its parameter is modified else a new point in the line is inserted.
 ") ComputeVertexParameters;
-		void ComputeVertexParameters(const Standard_Real Tol);
+		void ComputeVertexParameters(const double Tol);
 
 		/****** IntPatch_GLine::Ellipse ******/
 		/****** md5 signature: b6da2657e61960166cfe0f18dac79c1f ******/
@@ -6993,7 +6991,7 @@ Returns the IntPoint corresponding to the FirstPoint. An exception is raised whe
 		const IntPatch_Point & FirstPoint();
 
 		/****** IntPatch_GLine::HasFirstPoint ******/
-		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
+		/****** md5 signature: 1bdb89cc339a420f24f2f400d73d6b54 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -7003,10 +7001,10 @@ Description
 -----------
 Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
-		Standard_Boolean HasFirstPoint();
+		bool HasFirstPoint();
 
 		/****** IntPatch_GLine::HasLastPoint ******/
-		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
+		/****** md5 signature: c85dac3d84a6b6ab2854e34ac0e4ffcb ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -7016,7 +7014,7 @@ Description
 -----------
 Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
-		Standard_Boolean HasLastPoint();
+		bool HasLastPoint();
 
 		/****** IntPatch_GLine::Hyperbola ******/
 		/****** md5 signature: 766d3e1ddfb79a4ee7d6daea9d3565cd ******/
@@ -7058,7 +7056,7 @@ Returns the Lin from gp corresponding to the intersection when ArcType returns I
 		gp_Lin Line();
 
 		/****** IntPatch_GLine::NbVertex ******/
-		/****** md5 signature: b2d226bac64a106c7941ef45ff4e07f1 ******/
+		/****** md5 signature: ca210f2c673146a756e686a1fba666cd ******/
 		%feature("compactdefaultargs") NbVertex;
 		%feature("autodoc", "Return
 -------
@@ -7068,7 +7066,7 @@ Description
 -----------
 No available documentation.
 ") NbVertex;
-		Standard_Integer NbVertex();
+		int NbVertex();
 
 		/****** IntPatch_GLine::Parabola ******/
 		/****** md5 signature: 44bd09c360bea3d33e8c3aa19668649c ******/
@@ -7084,7 +7082,7 @@ Returns the Parab from gp corresponding to the intersection when ArcType returns
 		gp_Parab Parabola();
 
 		/****** IntPatch_GLine::Replace ******/
-		/****** md5 signature: 26f627e400d5ec4fd796489f34c68a92 ******/
+		/****** md5 signature: d93aae7d3c943860d8f122b7800ad6db ******/
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "
 Parameters
@@ -7100,10 +7098,10 @@ Description
 -----------
 To replace the element of range Index in the list of points.
 ") Replace;
-		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
+		void Replace(const int Index, const IntPatch_Point & Pnt);
 
 		/****** IntPatch_GLine::SetFirstPoint ******/
-		/****** md5 signature: 25fa45b5d9bd6687fb9b3e0c731bb2c5 ******/
+		/****** md5 signature: 0e94198440d6157c3796ba6dc67188ce ******/
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -7118,10 +7116,10 @@ Description
 -----------
 No available documentation.
 ") SetFirstPoint;
-		void SetFirstPoint(const Standard_Integer IndFirst);
+		void SetFirstPoint(const int IndFirst);
 
 		/****** IntPatch_GLine::SetLastPoint ******/
-		/****** md5 signature: e92f18b207577df6b281f4b27f093c31 ******/
+		/****** md5 signature: 4408067aa39ef1fcb60f4d638662e849 ******/
 		%feature("compactdefaultargs") SetLastPoint;
 		%feature("autodoc", "
 Parameters
@@ -7136,10 +7134,10 @@ Description
 -----------
 No available documentation.
 ") SetLastPoint;
-		void SetLastPoint(const Standard_Integer IndLast);
+		void SetLastPoint(const int IndLast);
 
 		/****** IntPatch_GLine::Vertex ******/
-		/****** md5 signature: f9aa0b5079416f21b4a58d4398d2657e ******/
+		/****** md5 signature: 26780f23202c4ac23d80e88630aa27c5 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -7154,7 +7152,7 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") Vertex;
-		const IntPatch_Point & Vertex(const Standard_Integer Index);
+		const IntPatch_Point & Vertex(const int Index);
 
 };
 
@@ -7174,13 +7172,13 @@ Returns the vertex of range Index on the line.
 class IntPatch_PointLine : public IntPatch_Line {
 	public:
 		/****** IntPatch_PointLine::AddVertex ******/
-		/****** md5 signature: 55529d1530ffb71aa077a7f37a458483 ******/
+		/****** md5 signature: 95994479ee2201161145fa81b567dd03 ******/
 		%feature("compactdefaultargs") AddVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 Pnt: IntPatch_Point
-theIsPrepend: bool (optional, default to Standard_False)
+theIsPrepend: bool (optional, default to false)
 
 Return
 -------
@@ -7190,10 +7188,10 @@ Description
 -----------
 Adds a vertex in the list. If theIsPrepend == True the new vertex will be added before the first element of vertices sequence. Otherwise, to the end of the sequence.
 ") AddVertex;
-		virtual void AddVertex(const IntPatch_Point & Pnt, const Standard_Boolean theIsPrepend = Standard_False);
+		virtual void AddVertex(const IntPatch_Point & Pnt, const bool theIsPrepend = false);
 
 		/****** IntPatch_PointLine::ChangeVertex ******/
-		/****** md5 signature: 0817fe5027f9e400d6b1cb56fa0520ec ******/
+		/****** md5 signature: 11806fd6581533a58d5da63d5976e98e ******/
 		%feature("compactdefaultargs") ChangeVertex;
 		%feature("autodoc", "
 Parameters
@@ -7208,7 +7206,7 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") ChangeVertex;
-		virtual IntPatch_Point & ChangeVertex(const Standard_Integer Index);
+		virtual IntPatch_Point & ChangeVertex(const int Index);
 
 		/****** IntPatch_PointLine::ClearVertexes ******/
 		/****** md5 signature: e553b210f8fd2c05d701b415328660d6 ******/
@@ -7224,7 +7222,7 @@ Removes vertices from the line.
 		virtual void ClearVertexes();
 
 		/****** IntPatch_PointLine::CurvatureRadiusOfIntersLine ******/
-		/****** md5 signature: 63cace9f55b02ed46e45f51c0a879a64 ******/
+		/****** md5 signature: fac43a1a2abbde50156c2a217f055607 ******/
 		%feature("compactdefaultargs") CurvatureRadiusOfIntersLine;
 		%feature("autodoc", "
 Parameters
@@ -7235,13 +7233,13 @@ theUVPoint: IntSurf_PntOn2S
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the radius of curvature of the intersection line in given point. Returns negative value if computation is not possible.
 ") CurvatureRadiusOfIntersLine;
-		static Standard_Real CurvatureRadiusOfIntersLine(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const IntSurf_PntOn2S & theUVPoint);
+		static double CurvatureRadiusOfIntersLine(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const IntSurf_PntOn2S & theUVPoint);
 
 		/****** IntPatch_PointLine::Curve ******/
 		/****** md5 signature: fd1c616d11a26155c96378983fd082eb ******/
@@ -7257,7 +7255,7 @@ Returns set of intersection points.
 		virtual opencascade::handle<IntSurf_LineOn2S> Curve();
 
 		/****** IntPatch_PointLine::IsOutBox ******/
-		/****** md5 signature: ac73c0eb3228f5b54eb6f00873ef9985 ******/
+		/****** md5 signature: eea38ff6b52395151e13bb68c662eaca ******/
 		%feature("compactdefaultargs") IsOutBox;
 		%feature("autodoc", "
 Parameters
@@ -7272,10 +7270,10 @@ Description
 -----------
 Returns True if P is out of the box built from 3D-points.
 ") IsOutBox;
-		virtual Standard_Boolean IsOutBox(const gp_Pnt & P);
+		virtual bool IsOutBox(const gp_Pnt & P);
 
 		/****** IntPatch_PointLine::IsOutSurf1Box ******/
-		/****** md5 signature: 6c738336718e5dceea69c92ad3423c6d ******/
+		/****** md5 signature: 10720ec353d7a002611f8e6b9338de29 ******/
 		%feature("compactdefaultargs") IsOutSurf1Box;
 		%feature("autodoc", "
 Parameters
@@ -7290,10 +7288,10 @@ Description
 -----------
 Returns True if P1 is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
-		virtual Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & P1);
+		virtual bool IsOutSurf1Box(const gp_Pnt2d & P1);
 
 		/****** IntPatch_PointLine::IsOutSurf2Box ******/
-		/****** md5 signature: efbf01679be78d99442a6da31833da91 ******/
+		/****** md5 signature: 7149e0650c6e04ee6d18cf44891893ff ******/
 		%feature("compactdefaultargs") IsOutSurf2Box;
 		%feature("autodoc", "
 Parameters
@@ -7308,10 +7306,10 @@ Description
 -----------
 Returns True if P2 is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
-		virtual Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & P2);
+		virtual bool IsOutSurf2Box(const gp_Pnt2d & P2);
 
 		/****** IntPatch_PointLine::NbPnts ******/
-		/****** md5 signature: c5514ce0e6327bd31ea1966935900a95 ******/
+		/****** md5 signature: 1e13a0afc41bd5310e07a9a013aad230 ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -7321,10 +7319,10 @@ Description
 -----------
 Returns the number of intersection points.
 ") NbPnts;
-		virtual Standard_Integer NbPnts();
+		virtual int NbPnts();
 
 		/****** IntPatch_PointLine::NbVertex ******/
-		/****** md5 signature: dc10ac56e6d323bf20c133e93ae395c2 ******/
+		/****** md5 signature: ba6d8ac301de4e7199e4e9e72c387d67 ******/
 		%feature("compactdefaultargs") NbVertex;
 		%feature("autodoc", "Return
 -------
@@ -7334,10 +7332,10 @@ Description
 -----------
 Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
-		virtual Standard_Integer NbVertex();
+		virtual int NbVertex();
 
 		/****** IntPatch_PointLine::Point ******/
-		/****** md5 signature: dc729d221ade3b0d9d552601988516c8 ******/
+		/****** md5 signature: 1b21342e542238a173288d6c6b5b9741 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7352,10 +7350,10 @@ Description
 -----------
 Returns the intersection point of range Index.
 ") Point;
-		virtual const IntSurf_PntOn2S & Point(const Standard_Integer Index);
+		virtual const IntSurf_PntOn2S & Point(const int Index);
 
 		/****** IntPatch_PointLine::RemoveVertex ******/
-		/****** md5 signature: 3022c4df19172007ce6a2e59e9384369 ******/
+		/****** md5 signature: 49762037f4a452b6c0a03f2ccd48fb63 ******/
 		%feature("compactdefaultargs") RemoveVertex;
 		%feature("autodoc", "
 Parameters
@@ -7370,10 +7368,10 @@ Description
 -----------
 Removes single vertex from the line.
 ") RemoveVertex;
-		virtual void RemoveVertex(const Standard_Integer theIndex);
+		virtual void RemoveVertex(const int theIndex);
 
 		/****** IntPatch_PointLine::Vertex ******/
-		/****** md5 signature: bd5ed6f12cf05dc5205d92f5b9da74da ******/
+		/****** md5 signature: 9f34ceb2b217e5bc5d2eaa75302c8c22 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -7388,7 +7386,7 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") Vertex;
-		virtual const IntPatch_Point & Vertex(const Standard_Integer Index);
+		virtual const IntPatch_Point & Vertex(const int Index);
 
 };
 
@@ -7407,15 +7405,15 @@ Returns the vertex of range Index on the line.
 class IntPatch_PolyArc : public IntPatch_Polygo {
 	public:
 		/****** IntPatch_PolyArc::IntPatch_PolyArc ******/
-		/****** md5 signature: 62e5cd5c939388a333bbd41ca63e5258 ******/
+		/****** md5 signature: d772d7659d3d1cb97a6f63ec1afba28b ******/
 		%feature("compactdefaultargs") IntPatch_PolyArc;
 		%feature("autodoc", "
 Parameters
 ----------
 A: Adaptor2d_Curve2d
 NbSample: int
-Pfirst: float
-Plast: float
+Pfirst: double
+Plast: double
 BoxOtherPolygon: Bnd_Box2d
 
 Return
@@ -7426,10 +7424,10 @@ Description
 -----------
 Creates the polygon of the arc A on the surface S. The arc is limited by the parameters Pfirst and Plast. None of these parameters can be infinite.
 ") IntPatch_PolyArc;
-		 IntPatch_PolyArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const Standard_Integer NbSample, const Standard_Real Pfirst, const Standard_Real Plast, const Bnd_Box2d & BoxOtherPolygon);
+		 IntPatch_PolyArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const int NbSample, const double Pfirst, const double Plast, const Bnd_Box2d & BoxOtherPolygon);
 
 		/****** IntPatch_PolyArc::Closed ******/
-		/****** md5 signature: d59fdedf4c3161ce15be68a68c704b63 ******/
+		/****** md5 signature: c04155dd3073fd226885281531bf073a ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -7439,10 +7437,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		virtual Standard_Boolean Closed();
+		bool Closed();
 
 		/****** IntPatch_PolyArc::NbPoints ******/
-		/****** md5 signature: 3e3d3343473673427df8cf1f8a38ad57 ******/
+		/****** md5 signature: 7e6a42e81535c58e72b9d86f94dfd1c7 ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -7452,10 +7450,10 @@ Description
 -----------
 No available documentation.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntPatch_PolyArc::Parameter ******/
-		/****** md5 signature: 82ceab80f2b18ab921fa91f907001d9f ******/
+		/****** md5 signature: bcd21197dacb6445c9784025e36f0a23 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -7464,16 +7462,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter(const Standard_Integer Index);
+		double Parameter(const int Index);
 
 		/****** IntPatch_PolyArc::Point ******/
-		/****** md5 signature: 4c06f92dbe0eb485c456f37c7e794ace ******/
+		/****** md5 signature: aeadb5408cca1faa0d521b744a017680 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7488,16 +7486,16 @@ Description
 -----------
 No available documentation.
 ") Point;
-		gp_Pnt2d Point(const Standard_Integer Index);
+		gp_Pnt2d Point(const int Index);
 
 		/****** IntPatch_PolyArc::SetOffset ******/
-		/****** md5 signature: 15728cf6068c3aed0a1524961cca7295 ******/
+		/****** md5 signature: d5e04fcfad171866b32e9d05933ba48b ******/
 		%feature("compactdefaultargs") SetOffset;
 		%feature("autodoc", "
 Parameters
 ----------
-OffsetX: float
-OffsetY: float
+OffsetX: double
+OffsetY: double
 
 Return
 -------
@@ -7507,7 +7505,7 @@ Description
 -----------
 No available documentation.
 ") SetOffset;
-		void SetOffset(const Standard_Real OffsetX, const Standard_Real OffsetY);
+		void SetOffset(const double OffsetX, const double OffsetY);
 
 };
 
@@ -7537,12 +7535,12 @@ No available documentation.
 		 IntPatch_PolyLine();
 
 		/****** IntPatch_PolyLine::IntPatch_PolyLine ******/
-		/****** md5 signature: acc134664e751cd2230d541e5f2b089f ******/
+		/****** md5 signature: 480d450cbc42e11cd6d752cf5ecf8269 ******/
 		%feature("compactdefaultargs") IntPatch_PolyLine;
 		%feature("autodoc", "
 Parameters
 ----------
-InitDefle: float
+InitDefle: double
 
 Return
 -------
@@ -7552,10 +7550,10 @@ Description
 -----------
 No available documentation.
 ") IntPatch_PolyLine;
-		 IntPatch_PolyLine(const Standard_Real InitDefle);
+		 IntPatch_PolyLine(const double InitDefle);
 
 		/****** IntPatch_PolyLine::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 7e6a42e81535c58e72b9d86f94dfd1c7 ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -7565,10 +7563,10 @@ Description
 -----------
 No available documentation.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntPatch_PolyLine::Point ******/
-		/****** md5 signature: dfa31b44e58975a6577c15284df2704c ******/
+		/****** md5 signature: aeadb5408cca1faa0d521b744a017680 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7583,7 +7581,7 @@ Description
 -----------
 No available documentation.
 ") Point;
-		gp_Pnt2d Point(const Standard_Integer Index);
+		gp_Pnt2d Point(const int Index);
 
 		/****** IntPatch_PolyLine::ResetError ******/
 		/****** md5 signature: 4d627cbc12d8ebadf8a1332c52bcc8f0 ******/
@@ -7599,7 +7597,7 @@ No available documentation.
 		void ResetError();
 
 		/****** IntPatch_PolyLine::SetRLine ******/
-		/****** md5 signature: f8272f934b6cf922209a3ba0d869d5b8 ******/
+		/****** md5 signature: 7d38ad2373f15ea39d31253620294a13 ******/
 		%feature("compactdefaultargs") SetRLine;
 		%feature("autodoc", "
 Parameters
@@ -7615,10 +7613,10 @@ Description
 -----------
 No available documentation.
 ") SetRLine;
-		void SetRLine(const Standard_Boolean OnFirst, const opencascade::handle<IntPatch_RLine> & Line);
+		void SetRLine(const bool OnFirst, const opencascade::handle<IntPatch_RLine> & Line);
 
 		/****** IntPatch_PolyLine::SetWLine ******/
-		/****** md5 signature: 220619f38a5eea001899d134cf1ba3a9 ******/
+		/****** md5 signature: f4149b89f2caad2477707e04d861bdb5 ******/
 		%feature("compactdefaultargs") SetWLine;
 		%feature("autodoc", "
 Parameters
@@ -7634,7 +7632,7 @@ Description
 -----------
 No available documentation.
 ") SetWLine;
-		void SetWLine(const Standard_Boolean OnFirst, const opencascade::handle<IntPatch_WLine> & Line);
+		void SetWLine(const bool OnFirst, const opencascade::handle<IntPatch_WLine> & Line);
 
 };
 
@@ -7651,7 +7649,7 @@ No available documentation.
 class IntPatch_RLine : public IntPatch_PointLine {
 	public:
 		/****** IntPatch_RLine::IntPatch_RLine ******/
-		/****** md5 signature: 10ffd30b1811e3763803d8518450f434 ******/
+		/****** md5 signature: 5f2f36998191bb19d35a852a36663ef8 ******/
 		%feature("compactdefaultargs") IntPatch_RLine;
 		%feature("autodoc", "
 Parameters
@@ -7668,10 +7666,10 @@ Description
 -----------
 Creates a restriction as an intersection line when the transitions are In or Out.
 ") IntPatch_RLine;
-		 IntPatch_RLine(const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_RLine(const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_RLine::IntPatch_RLine ******/
-		/****** md5 signature: 73a9c7999f491c62a065eb84477fd2e5 ******/
+		/****** md5 signature: 9800be5c4eb6fa02ef1e2f0a147c6fb7 ******/
 		%feature("compactdefaultargs") IntPatch_RLine;
 		%feature("autodoc", "
 Parameters
@@ -7688,10 +7686,10 @@ Description
 -----------
 Creates a restriction as an intersection line when the transitions are Touch.
 ") IntPatch_RLine;
-		 IntPatch_RLine(const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_RLine(const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_RLine::IntPatch_RLine ******/
-		/****** md5 signature: 0ef410c1b9df1d0e93a141c862f8ba14 ******/
+		/****** md5 signature: 069daf4566b26963e7fac4007f1e5f85 ******/
 		%feature("compactdefaultargs") IntPatch_RLine;
 		%feature("autodoc", "
 Parameters
@@ -7706,7 +7704,7 @@ Description
 -----------
 Creates a restriction as an intersection line when the transitions are Undecided.
 ") IntPatch_RLine;
-		 IntPatch_RLine(const Standard_Boolean Tang);
+		 IntPatch_RLine(const bool Tang);
 
 		/****** IntPatch_RLine::Add ******/
 		/****** md5 signature: 05c40b60e3b887503ab9a2852dc97f60 ******/
@@ -7727,13 +7725,13 @@ No available documentation.
 		void Add(const opencascade::handle<IntSurf_LineOn2S> & L);
 
 		/****** IntPatch_RLine::AddVertex ******/
-		/****** md5 signature: 7e2f16d636115984b93075ab7287900d ******/
+		/****** md5 signature: ee6fffee78acf3fbaa91b979c907b1ac ******/
 		%feature("compactdefaultargs") AddVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 Pnt: IntPatch_Point
-theIsPrepend: bool (optional, default to Standard_False)
+theIsPrepend: bool (optional, default to false)
 
 Return
 -------
@@ -7743,7 +7741,7 @@ Description
 -----------
 Adds a vertex in the list. If theIsPrepend == True the new vertex will be added before the first element of vertices sequence. Otherwise, to the end of the sequence.
 ") AddVertex;
-		virtual void AddVertex(const IntPatch_Point & Pnt, const Standard_Boolean theIsPrepend = Standard_False);
+		void AddVertex(const IntPatch_Point & Pnt, const bool theIsPrepend = false);
 
 		/****** IntPatch_RLine::ArcOnS1 ******/
 		/****** md5 signature: 85135db99004c68167f0f6d4c3e12e08 ******/
@@ -7772,7 +7770,7 @@ Returns the concerned arc.
 		const opencascade::handle<Adaptor2d_Curve2d> & ArcOnS2();
 
 		/****** IntPatch_RLine::ChangeVertex ******/
-		/****** md5 signature: 1e83b5d9880fcd9a98f2804dd7cb6fc4 ******/
+		/****** md5 signature: 0a372acda9ebb235078c62b62070dd28 ******/
 		%feature("compactdefaultargs") ChangeVertex;
 		%feature("autodoc", "
 Parameters
@@ -7787,10 +7785,10 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") ChangeVertex;
-		virtual IntPatch_Point & ChangeVertex(const Standard_Integer Index);
+		IntPatch_Point & ChangeVertex(const int Index);
 
 		/****** IntPatch_RLine::ClearVertexes ******/
-		/****** md5 signature: 8e37b31ec56631f461cdc4e1055bf6e1 ******/
+		/****** md5 signature: 2e33d7984431aaf11c808bc9b5deaa01 ******/
 		%feature("compactdefaultargs") ClearVertexes;
 		%feature("autodoc", "Return
 -------
@@ -7800,15 +7798,15 @@ Description
 -----------
 Removes vertices from the line (i.e. cleans svtx member).
 ") ClearVertexes;
-		virtual void ClearVertexes();
+		void ClearVertexes();
 
 		/****** IntPatch_RLine::ComputeVertexParameters ******/
-		/****** md5 signature: 77c91f07a2cb487df3310057933c84f5 ******/
+		/****** md5 signature: d40a83ea38985e04a786cc6a91935bcb ******/
 		%feature("compactdefaultargs") ComputeVertexParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7818,10 +7816,10 @@ Description
 -----------
 Set the parameters of all the vertex on the line. if a vertex is already in the line, its parameter is modified else a new point in the line is inserted.
 ") ComputeVertexParameters;
-		void ComputeVertexParameters(const Standard_Real Tol);
+		void ComputeVertexParameters(const double Tol);
 
 		/****** IntPatch_RLine::Curve ******/
-		/****** md5 signature: 00a2774cb5170e703dac6867fe8bb651 ******/
+		/****** md5 signature: 85daeba20c45cabca516c4174496617e ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -7831,10 +7829,10 @@ Description
 -----------
 Returns set of intersection points.
 ") Curve;
-		virtual opencascade::handle<IntSurf_LineOn2S> Curve();
+		opencascade::handle<IntSurf_LineOn2S> Curve();
 
 		/****** IntPatch_RLine::Dump ******/
-		/****** md5 signature: 02aaf609ae95c8e9a60f1190fb33839c ******/
+		/****** md5 signature: dfe4d625dc3ddddf57c55307bf300c5e ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -7849,7 +7847,7 @@ Description
 -----------
 if (theMode == 0) then prints the information about WLine if (theMode == 1) then prints the list of 3d-points if (theMode == 2) then prints the list of 2d-points on the 1st surface Otherwise, prints list of 2d-points on the 2nd surface.
 ") Dump;
-		void Dump(const Standard_Integer theMode);
+		void Dump(const int theMode);
 
 		/****** IntPatch_RLine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
@@ -7865,7 +7863,7 @@ Returns the IntPoint corresponding to the FirstPoint. An exception is raised whe
 		const IntPatch_Point & FirstPoint();
 
 		/****** IntPatch_RLine::HasFirstPoint ******/
-		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
+		/****** md5 signature: 1bdb89cc339a420f24f2f400d73d6b54 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -7875,10 +7873,10 @@ Description
 -----------
 Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
-		Standard_Boolean HasFirstPoint();
+		bool HasFirstPoint();
 
 		/****** IntPatch_RLine::HasLastPoint ******/
-		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
+		/****** md5 signature: c85dac3d84a6b6ab2854e34ac0e4ffcb ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -7888,10 +7886,10 @@ Description
 -----------
 Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
-		Standard_Boolean HasLastPoint();
+		bool HasLastPoint();
 
 		/****** IntPatch_RLine::HasPolygon ******/
-		/****** md5 signature: f1b288e08ae8f62501d19cd934eaf0fd ******/
+		/****** md5 signature: 1ec8090b773ab8214040b0060cc03aba ******/
 		%feature("compactdefaultargs") HasPolygon;
 		%feature("autodoc", "Return
 -------
@@ -7901,10 +7899,10 @@ Description
 -----------
 No available documentation.
 ") HasPolygon;
-		Standard_Boolean HasPolygon();
+		bool HasPolygon();
 
 		/****** IntPatch_RLine::IsArcOnS1 ******/
-		/****** md5 signature: 6119a53b08f37d3de8fd138a94e19614 ******/
+		/****** md5 signature: 540ae8bda868c3e09a644e17a3643e96 ******/
 		%feature("compactdefaultargs") IsArcOnS1;
 		%feature("autodoc", "Return
 -------
@@ -7914,10 +7912,10 @@ Description
 -----------
 Returns True if the intersection is on the domain of the first patch. Returns False if the intersection is on the domain of the second patch.
 ") IsArcOnS1;
-		Standard_Boolean IsArcOnS1();
+		bool IsArcOnS1();
 
 		/****** IntPatch_RLine::IsArcOnS2 ******/
-		/****** md5 signature: c3922ccd61d0375ac5bbd0780008d88d ******/
+		/****** md5 signature: a4fa90d27d64b6fab8caaf2f8fa33413 ******/
 		%feature("compactdefaultargs") IsArcOnS2;
 		%feature("autodoc", "Return
 -------
@@ -7927,10 +7925,10 @@ Description
 -----------
 Returns True if the intersection is on the domain of the first patch. Returns False if the intersection is on the domain of the second patch.
 ") IsArcOnS2;
-		Standard_Boolean IsArcOnS2();
+		bool IsArcOnS2();
 
 		/****** IntPatch_RLine::IsOutBox ******/
-		/****** md5 signature: 4f6fcc13a4ffbd4a01c7bb7bcbd958a3 ******/
+		/****** md5 signature: 949fc61ecd066adeb9e008aec99ef673 ******/
 		%feature("compactdefaultargs") IsOutBox;
 		%feature("autodoc", "
 Parameters
@@ -7945,10 +7943,10 @@ Description
 -----------
 Returns True if theP is out of the box built from 3D-points.
 ") IsOutBox;
-		virtual Standard_Boolean IsOutBox(const gp_Pnt & theP);
+		bool IsOutBox(const gp_Pnt & theP);
 
 		/****** IntPatch_RLine::IsOutSurf1Box ******/
-		/****** md5 signature: bc67542a32380859aa385c9f948a1fac ******/
+		/****** md5 signature: 7c7caabacfdc3226b0fa996750e53206 ******/
 		%feature("compactdefaultargs") IsOutSurf1Box;
 		%feature("autodoc", "
 Parameters
@@ -7963,10 +7961,10 @@ Description
 -----------
 Returns True if theP is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
-		virtual Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & theP);
+		bool IsOutSurf1Box(const gp_Pnt2d & theP);
 
 		/****** IntPatch_RLine::IsOutSurf2Box ******/
-		/****** md5 signature: 34129bd36f4bb2710c5de5bade625438 ******/
+		/****** md5 signature: 63789f5d77e40a37f199f29a1bda4c13 ******/
 		%feature("compactdefaultargs") IsOutSurf2Box;
 		%feature("autodoc", "
 Parameters
@@ -7981,7 +7979,7 @@ Description
 -----------
 Returns True if theP is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
-		virtual Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & theP);
+		bool IsOutSurf2Box(const gp_Pnt2d & theP);
 
 		/****** IntPatch_RLine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
@@ -7997,7 +7995,7 @@ Returns the IntPoint corresponding to the LastPoint. An exception is raised when
 		const IntPatch_Point & LastPoint();
 
 		/****** IntPatch_RLine::NbPnts ******/
-		/****** md5 signature: 9b3bac1b760e9cf6c2af2102c55fe59f ******/
+		/****** md5 signature: a152f3f36f93fb49026b157893ce8def ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -8007,10 +8005,10 @@ Description
 -----------
 Returns the number of intersection points.
 ") NbPnts;
-		virtual Standard_Integer NbPnts();
+		int NbPnts();
 
 		/****** IntPatch_RLine::NbVertex ******/
-		/****** md5 signature: 5245ca4f7f52f7737e0d09a36f7eb3f1 ******/
+		/****** md5 signature: ebaeb456af1f95a8ffda38b9a5b83ec3 ******/
 		%feature("compactdefaultargs") NbVertex;
 		%feature("autodoc", "Return
 -------
@@ -8020,10 +8018,10 @@ Description
 -----------
 Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
-		virtual Standard_Integer NbVertex();
+		int NbVertex();
 
 		/****** IntPatch_RLine::ParamOnS1 ******/
-		/****** md5 signature: 6999d11b074ba874b5b6add1b45db6be ******/
+		/****** md5 signature: c714310c58557c75aefd5f6fe6a8eecd ******/
 		%feature("compactdefaultargs") ParamOnS1;
 		%feature("autodoc", "
 Parameters
@@ -8031,8 +8029,8 @@ Parameters
 
 Return
 -------
-p1: float
-p2: float
+p1: double
+p2: double
 
 Description
 -----------
@@ -8041,7 +8039,7 @@ No available documentation.
 		void ParamOnS1(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_RLine::ParamOnS2 ******/
-		/****** md5 signature: 24623c711a2671ef020445e718fbe861 ******/
+		/****** md5 signature: d9038bf0962f3465c6534b61ebd5c11b ******/
 		%feature("compactdefaultargs") ParamOnS2;
 		%feature("autodoc", "
 Parameters
@@ -8049,8 +8047,8 @@ Parameters
 
 Return
 -------
-p1: float
-p2: float
+p1: double
+p2: double
 
 Description
 -----------
@@ -8059,7 +8057,7 @@ No available documentation.
 		void ParamOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntPatch_RLine::Point ******/
-		/****** md5 signature: 71a4eaea066ecd2781a45257516a1d34 ******/
+		/****** md5 signature: 3d2f6976d96d2bce360f4ef7869804d0 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -8074,10 +8072,10 @@ Description
 -----------
 Returns the intersection point of range Index.
 ") Point;
-		virtual const IntSurf_PntOn2S & Point(const Standard_Integer Index);
+		const IntSurf_PntOn2S & Point(const int Index);
 
 		/****** IntPatch_RLine::RemoveVertex ******/
-		/****** md5 signature: 72a5feba37233a6b75ea096f48e3e8a6 ******/
+		/****** md5 signature: 439b0c1c29b147d686783349d735f5b4 ******/
 		%feature("compactdefaultargs") RemoveVertex;
 		%feature("autodoc", "
 Parameters
@@ -8092,10 +8090,10 @@ Description
 -----------
 Removes single vertex from the line.
 ") RemoveVertex;
-		virtual void RemoveVertex(const Standard_Integer theIndex);
+		void RemoveVertex(const int theIndex);
 
 		/****** IntPatch_RLine::Replace ******/
-		/****** md5 signature: 26f627e400d5ec4fd796489f34c68a92 ******/
+		/****** md5 signature: d93aae7d3c943860d8f122b7800ad6db ******/
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "
 Parameters
@@ -8111,7 +8109,7 @@ Description
 -----------
 Replaces the element of range Index in the list of points.
 ") Replace;
-		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
+		void Replace(const int Index, const IntPatch_Point & Pnt);
 
 		/****** IntPatch_RLine::SetArcOnS1 ******/
 		/****** md5 signature: 16396892957c40b9d06bd8ad24545a99 ******/
@@ -8168,7 +8166,7 @@ No available documentation.
 		void SetCurve(const opencascade::handle<IntSurf_LineOn2S> & theNewCurve);
 
 		/****** IntPatch_RLine::SetFirstPoint ******/
-		/****** md5 signature: 25fa45b5d9bd6687fb9b3e0c731bb2c5 ******/
+		/****** md5 signature: 0e94198440d6157c3796ba6dc67188ce ******/
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -8183,10 +8181,10 @@ Description
 -----------
 No available documentation.
 ") SetFirstPoint;
-		void SetFirstPoint(const Standard_Integer IndFirst);
+		void SetFirstPoint(const int IndFirst);
 
 		/****** IntPatch_RLine::SetLastPoint ******/
-		/****** md5 signature: e92f18b207577df6b281f4b27f093c31 ******/
+		/****** md5 signature: 4408067aa39ef1fcb60f4d638662e849 ******/
 		%feature("compactdefaultargs") SetLastPoint;
 		%feature("autodoc", "
 Parameters
@@ -8201,10 +8199,10 @@ Description
 -----------
 No available documentation.
 ") SetLastPoint;
-		void SetLastPoint(const Standard_Integer IndLast);
+		void SetLastPoint(const int IndLast);
 
 		/****** IntPatch_RLine::SetPoint ******/
-		/****** md5 signature: 67660bb296fa310caa0347f4427366b9 ******/
+		/****** md5 signature: f9a8d26fd2582c682d948cc759cdd150 ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
@@ -8220,10 +8218,10 @@ Description
 -----------
 Set the Point of index <Index> in the LineOn2S.
 ") SetPoint;
-		void SetPoint(const Standard_Integer Index, const IntPatch_Point & Pnt);
+		void SetPoint(const int Index, const IntPatch_Point & Pnt);
 
 		/****** IntPatch_RLine::Vertex ******/
-		/****** md5 signature: b3fd41d3f11681ff4530174231f024bd ******/
+		/****** md5 signature: 6502a3e2a1998540a1e04f53605ba32d ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -8238,7 +8236,7 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") Vertex;
-		virtual const IntPatch_Point & Vertex(const Standard_Integer Index);
+		const IntPatch_Point & Vertex(const int Index);
 
 };
 
@@ -8290,7 +8288,7 @@ IntPatch_WLPrmPrm = IntPatch_WLType.IntPatch_WLPrmPrm
 /* end python proxy for enums */
 
 		/****** IntPatch_WLine::IntPatch_WLine ******/
-		/****** md5 signature: 18734a8ce1f3e284355493d9c1733d55 ******/
+		/****** md5 signature: 8ebbac66696ae44e38c88a10694f402e ******/
 		%feature("compactdefaultargs") IntPatch_WLine;
 		%feature("autodoc", "
 Parameters
@@ -8308,10 +8306,10 @@ Description
 -----------
 Creates a WLine as an intersection when the transitions are In or Out.
 ") IntPatch_WLine;
-		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const Standard_Boolean Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
+		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const bool Tang, const IntSurf_TypeTrans Trans1, const IntSurf_TypeTrans Trans2);
 
 		/****** IntPatch_WLine::IntPatch_WLine ******/
-		/****** md5 signature: 0ba69fcbd0ab83bd69c04103cdb3455d ******/
+		/****** md5 signature: 036bafcf8d07c8a7a3b7f8646f3b88d6 ******/
 		%feature("compactdefaultargs") IntPatch_WLine;
 		%feature("autodoc", "
 Parameters
@@ -8329,10 +8327,10 @@ Description
 -----------
 Creates a WLine as an intersection when the transitions are Touch.
 ") IntPatch_WLine;
-		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const Standard_Boolean Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
+		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const bool Tang, const IntSurf_Situation Situ1, const IntSurf_Situation Situ2);
 
 		/****** IntPatch_WLine::IntPatch_WLine ******/
-		/****** md5 signature: 336cdfde190a0d8c4b70167a260c0514 ******/
+		/****** md5 signature: c071eff87fb595cc918dfe3d430620f9 ******/
 		%feature("compactdefaultargs") IntPatch_WLine;
 		%feature("autodoc", "
 Parameters
@@ -8348,16 +8346,16 @@ Description
 -----------
 Creates a WLine as an intersection when the transitions are Undecided.
 ") IntPatch_WLine;
-		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const Standard_Boolean Tang);
+		 IntPatch_WLine(const opencascade::handle<IntSurf_LineOn2S> & Line, const bool Tang);
 
 		/****** IntPatch_WLine::AddVertex ******/
-		/****** md5 signature: 7e2f16d636115984b93075ab7287900d ******/
+		/****** md5 signature: ee6fffee78acf3fbaa91b979c907b1ac ******/
 		%feature("compactdefaultargs") AddVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 Pnt: IntPatch_Point
-theIsPrepend: bool (optional, default to Standard_False)
+theIsPrepend: bool (optional, default to false)
 
 Return
 -------
@@ -8367,10 +8365,10 @@ Description
 -----------
 Adds a vertex in the list. If theIsPrepend == True the new vertex will be added before the first element of vertices sequence. Otherwise, to the end of the sequence.
 ") AddVertex;
-		virtual void AddVertex(const IntPatch_Point & Pnt, const Standard_Boolean theIsPrepend = Standard_False);
+		void AddVertex(const IntPatch_Point & Pnt, const bool theIsPrepend = false);
 
 		/****** IntPatch_WLine::ChangeVertex ******/
-		/****** md5 signature: 1e83b5d9880fcd9a98f2804dd7cb6fc4 ******/
+		/****** md5 signature: 0a372acda9ebb235078c62b62070dd28 ******/
 		%feature("compactdefaultargs") ChangeVertex;
 		%feature("autodoc", "
 Parameters
@@ -8385,10 +8383,10 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") ChangeVertex;
-		virtual IntPatch_Point & ChangeVertex(const Standard_Integer Index);
+		IntPatch_Point & ChangeVertex(const int Index);
 
 		/****** IntPatch_WLine::ClearVertexes ******/
-		/****** md5 signature: a0144d82471d6551510ccf26edef3227 ******/
+		/****** md5 signature: 0ace2c887bad79cf38d8ceb1c2a36146 ******/
 		%feature("compactdefaultargs") ClearVertexes;
 		%feature("autodoc", "Return
 -------
@@ -8398,15 +8396,15 @@ Description
 -----------
 Removes vertices from the line (i.e. cleans svtx member).
 ") ClearVertexes;
-		virtual void ClearVertexes();
+		void ClearVertexes();
 
 		/****** IntPatch_WLine::ComputeVertexParameters ******/
-		/****** md5 signature: 77c91f07a2cb487df3310057933c84f5 ******/
+		/****** md5 signature: d40a83ea38985e04a786cc6a91935bcb ******/
 		%feature("compactdefaultargs") ComputeVertexParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -8416,10 +8414,10 @@ Description
 -----------
 Set the parameters of all the vertex on the line. if a vertex is already in the line, its parameter is modified else a new point in the line is inserted.
 ") ComputeVertexParameters;
-		void ComputeVertexParameters(const Standard_Real Tol);
+		void ComputeVertexParameters(const double Tol);
 
 		/****** IntPatch_WLine::Curve ******/
-		/****** md5 signature: 00a2774cb5170e703dac6867fe8bb651 ******/
+		/****** md5 signature: 85daeba20c45cabca516c4174496617e ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -8429,10 +8427,10 @@ Description
 -----------
 Returns set of intersection points.
 ") Curve;
-		virtual opencascade::handle<IntSurf_LineOn2S> Curve();
+		opencascade::handle<IntSurf_LineOn2S> Curve();
 
 		/****** IntPatch_WLine::Dump ******/
-		/****** md5 signature: 02aaf609ae95c8e9a60f1190fb33839c ******/
+		/****** md5 signature: dfe4d625dc3ddddf57c55307bf300c5e ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -8447,10 +8445,10 @@ Description
 -----------
 if (theMode == 0) then prints the information about WLine if (theMode == 1) then prints the list of 3d-points if (theMode == 2) then prints the list of 2d-points on the 1st surface Otherwise, prints list of 2d-points on the 2nd surface.
 ") Dump;
-		void Dump(const Standard_Integer theMode);
+		void Dump(const int theMode);
 
 		/****** IntPatch_WLine::EnablePurging ******/
-		/****** md5 signature: 8bca7b8764264010691efedf6d63c426 ******/
+		/****** md5 signature: 75e73573f3ffad2dddaeaad5e7f03f97 ******/
 		%feature("compactdefaultargs") EnablePurging;
 		%feature("autodoc", "
 Parameters
@@ -8465,7 +8463,7 @@ Description
 -----------
 Allows or forbids purging of existing WLine.
 ") EnablePurging;
-		void EnablePurging(const Standard_Boolean theIsEnabled);
+		void EnablePurging(const bool theIsEnabled);
 
 		/****** IntPatch_WLine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
@@ -8481,7 +8479,7 @@ Returns the Point corresponding to the FirstPoint.
 		const IntPatch_Point & FirstPoint();
 
 		/****** IntPatch_WLine::FirstPoint ******/
-		/****** md5 signature: 5bed348e2313cd3aea008f0896538065 ******/
+		/****** md5 signature: 13d7793c0f008eff9320e752c9efdb59 ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -8537,7 +8535,7 @@ Returns the way of <*this> creation.
 		IntPatch_WLine::IntPatch_WLType GetCreatingWay();
 
 		/****** IntPatch_WLine::HasArcOnS1 ******/
-		/****** md5 signature: 8868354e4f346cdb153201e572da56df ******/
+		/****** md5 signature: da15b2cb71ac127f4ecffa0c00178910 ******/
 		%feature("compactdefaultargs") HasArcOnS1;
 		%feature("autodoc", "Return
 -------
@@ -8547,10 +8545,10 @@ Description
 -----------
 No available documentation.
 ") HasArcOnS1;
-		Standard_Boolean HasArcOnS1();
+		bool HasArcOnS1();
 
 		/****** IntPatch_WLine::HasArcOnS2 ******/
-		/****** md5 signature: cc105f8269b52a95fe4b70d8c49705d4 ******/
+		/****** md5 signature: b6691088db3622b967762bb7bf8de311 ******/
 		%feature("compactdefaultargs") HasArcOnS2;
 		%feature("autodoc", "Return
 -------
@@ -8560,10 +8558,10 @@ Description
 -----------
 No available documentation.
 ") HasArcOnS2;
-		Standard_Boolean HasArcOnS2();
+		bool HasArcOnS2();
 
 		/****** IntPatch_WLine::HasFirstPoint ******/
-		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
+		/****** md5 signature: 1bdb89cc339a420f24f2f400d73d6b54 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -8573,10 +8571,10 @@ Description
 -----------
 Returns True if the line has a known First point. This point is given by the method FirstPoint().
 ") HasFirstPoint;
-		Standard_Boolean HasFirstPoint();
+		bool HasFirstPoint();
 
 		/****** IntPatch_WLine::HasLastPoint ******/
-		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
+		/****** md5 signature: c85dac3d84a6b6ab2854e34ac0e4ffcb ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -8586,10 +8584,10 @@ Description
 -----------
 Returns True if the line has a known Last point. This point is given by the method LastPoint().
 ") HasLastPoint;
-		Standard_Boolean HasLastPoint();
+		bool HasLastPoint();
 
 		/****** IntPatch_WLine::InsertVertexBefore ******/
-		/****** md5 signature: e97c0dec2d7b22854be265d964a2b4d3 ******/
+		/****** md5 signature: 6ce8db55d243769f23c6d507aed9ef1b ******/
 		%feature("compactdefaultargs") InsertVertexBefore;
 		%feature("autodoc", "
 Parameters
@@ -8605,10 +8603,10 @@ Description
 -----------
 No available documentation.
 ") InsertVertexBefore;
-		void InsertVertexBefore(const Standard_Integer theIndex, const IntPatch_Point & thePnt);
+		void InsertVertexBefore(const int theIndex, const IntPatch_Point & thePnt);
 
 		/****** IntPatch_WLine::IsOutBox ******/
-		/****** md5 signature: 860544030de6408c828004bbab030531 ******/
+		/****** md5 signature: 949fc61ecd066adeb9e008aec99ef673 ******/
 		%feature("compactdefaultargs") IsOutBox;
 		%feature("autodoc", "
 Parameters
@@ -8623,10 +8621,10 @@ Description
 -----------
 Returns True if theP is out of the box built from 3D-points.
 ") IsOutBox;
-		Standard_Boolean IsOutBox(const gp_Pnt & theP);
+		bool IsOutBox(const gp_Pnt & theP);
 
 		/****** IntPatch_WLine::IsOutSurf1Box ******/
-		/****** md5 signature: 51099a21ed98d5d18f27e5111981f7c6 ******/
+		/****** md5 signature: 7c7caabacfdc3226b0fa996750e53206 ******/
 		%feature("compactdefaultargs") IsOutSurf1Box;
 		%feature("autodoc", "
 Parameters
@@ -8641,10 +8639,10 @@ Description
 -----------
 Returns True if theP is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
-		Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & theP);
+		bool IsOutSurf1Box(const gp_Pnt2d & theP);
 
 		/****** IntPatch_WLine::IsOutSurf2Box ******/
-		/****** md5 signature: 05073c4f1a83d1988d2cd42479760f97 ******/
+		/****** md5 signature: 63789f5d77e40a37f199f29a1bda4c13 ******/
 		%feature("compactdefaultargs") IsOutSurf2Box;
 		%feature("autodoc", "
 Parameters
@@ -8659,10 +8657,10 @@ Description
 -----------
 Returns True if theP is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
-		Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & theP);
+		bool IsOutSurf2Box(const gp_Pnt2d & theP);
 
 		/****** IntPatch_WLine::IsPurgingAllowed ******/
-		/****** md5 signature: 81dfdd92b6d4ef244aa76db0fb30c050 ******/
+		/****** md5 signature: 816345fab9c4f26d47e6020ab4d045d4 ******/
 		%feature("compactdefaultargs") IsPurgingAllowed;
 		%feature("autodoc", "Return
 -------
@@ -8672,7 +8670,7 @@ Description
 -----------
 Returns True if purging is allowed or forbidden for existing WLine.
 ") IsPurgingAllowed;
-		Standard_Boolean IsPurgingAllowed();
+		bool IsPurgingAllowed();
 
 		/****** IntPatch_WLine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
@@ -8688,7 +8686,7 @@ Returns the Point corresponding to the LastPoint.
 		const IntPatch_Point & LastPoint();
 
 		/****** IntPatch_WLine::LastPoint ******/
-		/****** md5 signature: 0fc90016575e4e649bbc9e962943f393 ******/
+		/****** md5 signature: 34882b05b8e951bf19b4fad49669fbe8 ******/
 		%feature("compactdefaultargs") LastPoint;
 		%feature("autodoc", "
 Parameters
@@ -8705,7 +8703,7 @@ Returns the Point corresponding to the LastPoint. Indlast is the index of the la
 		const IntPatch_Point & LastPoint(Standard_Integer &OutValue);
 
 		/****** IntPatch_WLine::NbPnts ******/
-		/****** md5 signature: 9b3bac1b760e9cf6c2af2102c55fe59f ******/
+		/****** md5 signature: a152f3f36f93fb49026b157893ce8def ******/
 		%feature("compactdefaultargs") NbPnts;
 		%feature("autodoc", "Return
 -------
@@ -8715,10 +8713,10 @@ Description
 -----------
 Returns the number of intersection points.
 ") NbPnts;
-		virtual Standard_Integer NbPnts();
+		int NbPnts();
 
 		/****** IntPatch_WLine::NbVertex ******/
-		/****** md5 signature: 5245ca4f7f52f7737e0d09a36f7eb3f1 ******/
+		/****** md5 signature: ebaeb456af1f95a8ffda38b9a5b83ec3 ******/
 		%feature("compactdefaultargs") NbVertex;
 		%feature("autodoc", "Return
 -------
@@ -8728,10 +8726,10 @@ Description
 -----------
 Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
-		virtual Standard_Integer NbVertex();
+		int NbVertex();
 
 		/****** IntPatch_WLine::Point ******/
-		/****** md5 signature: 71a4eaea066ecd2781a45257516a1d34 ******/
+		/****** md5 signature: 3d2f6976d96d2bce360f4ef7869804d0 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -8746,10 +8744,10 @@ Description
 -----------
 Returns the intersection point of range Index.
 ") Point;
-		virtual const IntSurf_PntOn2S & Point(const Standard_Integer Index);
+		const IntSurf_PntOn2S & Point(const int Index);
 
 		/****** IntPatch_WLine::RemoveVertex ******/
-		/****** md5 signature: 72a5feba37233a6b75ea096f48e3e8a6 ******/
+		/****** md5 signature: 439b0c1c29b147d686783349d735f5b4 ******/
 		%feature("compactdefaultargs") RemoveVertex;
 		%feature("autodoc", "
 Parameters
@@ -8764,10 +8762,10 @@ Description
 -----------
 Removes single vertex from the line.
 ") RemoveVertex;
-		virtual void RemoveVertex(const Standard_Integer theIndex);
+		void RemoveVertex(const int theIndex);
 
 		/****** IntPatch_WLine::Replace ******/
-		/****** md5 signature: 26f627e400d5ec4fd796489f34c68a92 ******/
+		/****** md5 signature: d93aae7d3c943860d8f122b7800ad6db ******/
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "
 Parameters
@@ -8783,7 +8781,7 @@ Description
 -----------
 Replaces the element of range Index in the list of points. The exception OutOfRange is raised when Index <= 0 or Index > NbVertex.
 ") Replace;
-		void Replace(const Standard_Integer Index, const IntPatch_Point & Pnt);
+		void Replace(const int Index, const IntPatch_Point & Pnt);
 
 		/****** IntPatch_WLine::SetArcOnS1 ******/
 		/****** md5 signature: 16396892957c40b9d06bd8ad24545a99 ******/
@@ -8840,7 +8838,7 @@ Sets the info about the way of <*this> creation.
 		void SetCreatingWayInfo(IntPatch_WLType theAlgo);
 
 		/****** IntPatch_WLine::SetFirstPoint ******/
-		/****** md5 signature: 25fa45b5d9bd6687fb9b3e0c731bb2c5 ******/
+		/****** md5 signature: 0e94198440d6157c3796ba6dc67188ce ******/
 		%feature("compactdefaultargs") SetFirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -8855,10 +8853,10 @@ Description
 -----------
 No available documentation.
 ") SetFirstPoint;
-		void SetFirstPoint(const Standard_Integer IndFirst);
+		void SetFirstPoint(const int IndFirst);
 
 		/****** IntPatch_WLine::SetLastPoint ******/
-		/****** md5 signature: e92f18b207577df6b281f4b27f093c31 ******/
+		/****** md5 signature: 4408067aa39ef1fcb60f4d638662e849 ******/
 		%feature("compactdefaultargs") SetLastPoint;
 		%feature("autodoc", "
 Parameters
@@ -8873,18 +8871,18 @@ Description
 -----------
 No available documentation.
 ") SetLastPoint;
-		void SetLastPoint(const Standard_Integer IndLast);
+		void SetLastPoint(const int IndLast);
 
 		/****** IntPatch_WLine::SetPeriod ******/
-		/****** md5 signature: ea8b3179a3e6fe9ab48197c9976a9f69 ******/
+		/****** md5 signature: deeebcb1bc912698268489169e9ad752 ******/
 		%feature("compactdefaultargs") SetPeriod;
 		%feature("autodoc", "
 Parameters
 ----------
-pu1: float
-pv1: float
-pu2: float
-pv2: float
+pu1: double
+pv1: double
+pu2: double
+pv2: double
 
 Return
 -------
@@ -8894,10 +8892,10 @@ Description
 -----------
 No available documentation.
 ") SetPeriod;
-		void SetPeriod(const Standard_Real pu1, const Standard_Real pv1, const Standard_Real pu2, const Standard_Real pv2);
+		void SetPeriod(const double pu1, const double pv1, const double pu2, const double pv2);
 
 		/****** IntPatch_WLine::SetPoint ******/
-		/****** md5 signature: 67660bb296fa310caa0347f4427366b9 ******/
+		/****** md5 signature: f9a8d26fd2582c682d948cc759cdd150 ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
@@ -8913,62 +8911,62 @@ Description
 -----------
 Set the Point of index <Index> in the LineOn2S.
 ") SetPoint;
-		void SetPoint(const Standard_Integer Index, const IntPatch_Point & Pnt);
+		void SetPoint(const int Index, const IntPatch_Point & Pnt);
 
 		/****** IntPatch_WLine::U1Period ******/
-		/****** md5 signature: 0f11fe35eebd93b966dafbb618e73345 ******/
+		/****** md5 signature: 4ff1d2f5dedbdd0517f0951013a2aa70 ******/
 		%feature("compactdefaultargs") U1Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") U1Period;
-		Standard_Real U1Period();
+		double U1Period();
 
 		/****** IntPatch_WLine::U2Period ******/
-		/****** md5 signature: 2db7353eee7eba45b112cd724e5223b7 ******/
+		/****** md5 signature: 0418d5f235ec5c7298d81a80a84dd4a7 ******/
 		%feature("compactdefaultargs") U2Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") U2Period;
-		Standard_Real U2Period();
+		double U2Period();
 
 		/****** IntPatch_WLine::V1Period ******/
-		/****** md5 signature: 80acb106984e4803007c2f6bfed3c7c6 ******/
+		/****** md5 signature: 1d5c3b97ef57fd3e871dba52a671ee70 ******/
 		%feature("compactdefaultargs") V1Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") V1Period;
-		Standard_Real V1Period();
+		double V1Period();
 
 		/****** IntPatch_WLine::V2Period ******/
-		/****** md5 signature: 30686cd4c572466c5637c6cb316b7c8d ******/
+		/****** md5 signature: 5dffe70e1d174d26315f5b1f4ad3e7f6 ******/
 		%feature("compactdefaultargs") V2Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") V2Period;
-		Standard_Real V2Period();
+		double V2Period();
 
 		/****** IntPatch_WLine::Vertex ******/
-		/****** md5 signature: b3fd41d3f11681ff4530174231f024bd ******/
+		/****** md5 signature: 6502a3e2a1998540a1e04f53605ba32d ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -8983,7 +8981,7 @@ Description
 -----------
 Returns the vertex of range Index on the line.
 ") Vertex;
-		virtual const IntPatch_Point & Vertex(const Standard_Integer Index);
+		const IntPatch_Point & Vertex(const int Index);
 
 };
 

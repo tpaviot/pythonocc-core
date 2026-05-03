@@ -20,8 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<BRepMAT2d_BisectingLocus.hxx>
-#include<BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.hxx>
-#include<BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.hxx>
 #include<BRepMAT2d_DataMapOfBasicEltShape.hxx>
 #include<BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.hxx>
 #include<BRepMAT2d_Explorer.hxx>

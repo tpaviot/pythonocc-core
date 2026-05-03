@@ -91,58 +91,18 @@ MAT_Right = MAT_Side.MAT_Right
 /* end handles declaration */
 
 /* templates */
-%template(MAT_DataMapOfIntegerArc) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Arc>>;
-
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Arc>> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MAT_DataMapOfIntegerArc::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(MAT_DataMapOfIntegerBasicElt) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_BasicElt>>;
-
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_BasicElt>> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MAT_DataMapOfIntegerBasicElt::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(MAT_DataMapOfIntegerBisector) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Bisector>>;
-
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Bisector>> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MAT_DataMapOfIntegerBisector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(MAT_DataMapOfIntegerNode) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Node>>;
-
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Node>> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MAT_DataMapOfIntegerNode::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_Arc>>::Items;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_Arc>>::KeyValues;
+%template(MAT_DataMapOfIntegerArc) NCollection_DataMap<int,opencascade::handle<MAT_Arc>>;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>>::Items;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>>::KeyValues;
+%template(MAT_DataMapOfIntegerBasicElt) NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>>;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_Bisector>>::Items;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_Bisector>>::KeyValues;
+%template(MAT_DataMapOfIntegerBisector) NCollection_DataMap<int,opencascade::handle<MAT_Bisector>>;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_Node>>::Items;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT_Node>>::KeyValues;
+%template(MAT_DataMapOfIntegerNode) NCollection_DataMap<int,opencascade::handle<MAT_Node>>;
 %template(MAT_SequenceOfArc) NCollection_Sequence<opencascade::handle<MAT_Arc>>;
 
 %extend NCollection_Sequence<opencascade::handle<MAT_Arc>> {
@@ -162,14 +122,14 @@ MAT_Right = MAT_Side.MAT_Right
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Arc>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerArc;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_BasicElt>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Bisector>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBisector;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Node>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerNode;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Arc>> MAT_DataMapOfIntegerArc;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_BasicElt>> MAT_DataMapOfIntegerBasicElt;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Bisector>> MAT_DataMapOfIntegerBisector;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Node>> MAT_DataMapOfIntegerNode;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_Arc>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerArc;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_BasicElt>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_Bisector>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBisector;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_Node>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerNode;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_Arc>> MAT_DataMapOfIntegerArc;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_BasicElt>> MAT_DataMapOfIntegerBasicElt;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_Bisector>> MAT_DataMapOfIntegerBisector;
+typedef NCollection_DataMap<int, opencascade::handle<MAT_Node>> MAT_DataMapOfIntegerNode;
 typedef NCollection_Sequence<opencascade::handle<MAT_Arc>> MAT_SequenceOfArc;
 typedef NCollection_Sequence<opencascade::handle<MAT_BasicElt>> MAT_SequenceOfBasicElt;
 /* end typedefs declaration */
@@ -180,7 +140,7 @@ typedef NCollection_Sequence<opencascade::handle<MAT_BasicElt>> MAT_SequenceOfBa
 class MAT_Arc : public Standard_Transient {
 	public:
 		/****** MAT_Arc::MAT_Arc ******/
-		/****** md5 signature: d3206fbe009d9b95382c9a48fba00a39 ******/
+		/****** md5 signature: 932724bc65985e0e2808b1400ac00986 ******/
 		%feature("compactdefaultargs") MAT_Arc;
 		%feature("autodoc", "
 Parameters
@@ -198,7 +158,7 @@ Description
 -----------
 No available documentation.
 ") MAT_Arc;
-		 MAT_Arc(const Standard_Integer ArcIndex, const Standard_Integer GeomIndex, const opencascade::handle<MAT_BasicElt> & FirstElement, const opencascade::handle<MAT_BasicElt> & SecondElement);
+		 MAT_Arc(const int ArcIndex, const int GeomIndex, const opencascade::handle<MAT_BasicElt> & FirstElement, const opencascade::handle<MAT_BasicElt> & SecondElement);
 
 		/****** MAT_Arc::FirstElement ******/
 		/****** md5 signature: 85f5e03e44caefa2f19031581de5b5a5 ******/
@@ -227,7 +187,7 @@ Returns one Node extremity of <self>.
 		opencascade::handle<MAT_Node> FirstNode();
 
 		/****** MAT_Arc::GeomIndex ******/
-		/****** md5 signature: 75ab1e2933a328a4595c114f05273572 ******/
+		/****** md5 signature: f2ea28e837feb86d42732a20e7f4c597 ******/
 		%feature("compactdefaultargs") GeomIndex;
 		%feature("autodoc", "Return
 -------
@@ -237,10 +197,10 @@ Description
 -----------
 Returns the index associated of the geometric representation of <self>.
 ") GeomIndex;
-		Standard_Integer GeomIndex();
+		int GeomIndex();
 
 		/****** MAT_Arc::HasNeighbour ******/
-		/****** md5 signature: 3e981550ba669abb145da44df5109c0b ******/
+		/****** md5 signature: aa3165aef4dffda9178e47ac01fb48dd ******/
 		%feature("compactdefaultargs") HasNeighbour;
 		%feature("autodoc", "
 Parameters
@@ -256,10 +216,10 @@ Description
 -----------
 Returns True if there is an arc linked to the Node <aNode> located on the side <aSide> of <self>; if <aNode> is not on <self>.
 ") HasNeighbour;
-		Standard_Boolean HasNeighbour(const opencascade::handle<MAT_Node> & aNode, const MAT_Side aSide);
+		bool HasNeighbour(const opencascade::handle<MAT_Node> & aNode, const MAT_Side aSide);
 
 		/****** MAT_Arc::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -269,7 +229,7 @@ Description
 -----------
 Returns the index of <self> in Graph.theArcs.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** MAT_Arc::Neighbour ******/
 		/****** md5 signature: 6ab4ed254673a995ada0dbaed9392114 ******/
@@ -372,7 +332,7 @@ No available documentation.
 		void SetFirstNode(const opencascade::handle<MAT_Node> & aNode);
 
 		/****** MAT_Arc::SetGeomIndex ******/
-		/****** md5 signature: e9725eff02cf81b15556ce08a3187a45 ******/
+		/****** md5 signature: 9f232965050f9b406b5c5547c951aa64 ******/
 		%feature("compactdefaultargs") SetGeomIndex;
 		%feature("autodoc", "
 Parameters
@@ -387,10 +347,10 @@ Description
 -----------
 No available documentation.
 ") SetGeomIndex;
-		void SetGeomIndex(const Standard_Integer anInteger);
+		void SetGeomIndex(const int anInteger);
 
 		/****** MAT_Arc::SetIndex ******/
-		/****** md5 signature: 9296ef0981618ddef50a929d6665f2d8 ******/
+		/****** md5 signature: efb337093effdd99bb31e4a2feca8903 ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -405,7 +365,7 @@ Description
 -----------
 No available documentation.
 ") SetIndex;
-		void SetIndex(const Standard_Integer anInteger);
+		void SetIndex(const int anInteger);
 
 		/****** MAT_Arc::SetNeighbour ******/
 		/****** md5 signature: a7bb876e96af2d55cffb19a0e25ee34a ******/
@@ -517,7 +477,7 @@ An Arc has two Node, if <aNode> equals one Returns the other. //! if <aNode> is 
 class MAT_BasicElt : public Standard_Transient {
 	public:
 		/****** MAT_BasicElt::MAT_BasicElt ******/
-		/****** md5 signature: 1f8c44c064f108bb3ed1b3c0d41536a0 ******/
+		/****** md5 signature: 4019b856a587a754ea3b355a9da4dc24 ******/
 		%feature("compactdefaultargs") MAT_BasicElt;
 		%feature("autodoc", "
 Parameters
@@ -532,7 +492,7 @@ Description
 -----------
 Constructor, <anInteger> is the <index> of <self>.
 ") MAT_BasicElt;
-		 MAT_BasicElt(const Standard_Integer anInteger);
+		 MAT_BasicElt(const int anInteger);
 
 		/****** MAT_BasicElt::EndArc ******/
 		/****** md5 signature: b81b4c468709de095e46e724e5ae8333 ******/
@@ -548,7 +508,7 @@ Return <endArcLeft> or <endArcRight> corresponding to <aSide>.
 		opencascade::handle<MAT_Arc> EndArc();
 
 		/****** MAT_BasicElt::GeomIndex ******/
-		/****** md5 signature: 75ab1e2933a328a4595c114f05273572 ******/
+		/****** md5 signature: f2ea28e837feb86d42732a20e7f4c597 ******/
 		%feature("compactdefaultargs") GeomIndex;
 		%feature("autodoc", "Return
 -------
@@ -558,10 +518,10 @@ Description
 -----------
 Return the <GeomIndex> of <self>.
 ") GeomIndex;
-		Standard_Integer GeomIndex();
+		int GeomIndex();
 
 		/****** MAT_BasicElt::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -571,7 +531,7 @@ Description
 -----------
 Return the <index> of <self> in Graph.TheBasicElts.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** MAT_BasicElt::SetEndArc ******/
 		/****** md5 signature: cb9777edd3a82cbc7857a1613ef33d07 ******/
@@ -592,7 +552,7 @@ No available documentation.
 		void SetEndArc(const opencascade::handle<MAT_Arc> & anArc);
 
 		/****** MAT_BasicElt::SetGeomIndex ******/
-		/****** md5 signature: e9725eff02cf81b15556ce08a3187a45 ******/
+		/****** md5 signature: 9f232965050f9b406b5c5547c951aa64 ******/
 		%feature("compactdefaultargs") SetGeomIndex;
 		%feature("autodoc", "
 Parameters
@@ -607,10 +567,10 @@ Description
 -----------
 No available documentation.
 ") SetGeomIndex;
-		void SetGeomIndex(const Standard_Integer anInteger);
+		void SetGeomIndex(const int anInteger);
 
 		/****** MAT_BasicElt::SetIndex ******/
-		/****** md5 signature: 9296ef0981618ddef50a929d6665f2d8 ******/
+		/****** md5 signature: efb337093effdd99bb31e4a2feca8903 ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -625,7 +585,7 @@ Description
 -----------
 No available documentation.
 ") SetIndex;
-		void SetIndex(const Standard_Integer anInteger);
+		void SetIndex(const int anInteger);
 
 		/****** MAT_BasicElt::SetStartArc ******/
 		/****** md5 signature: cdbaae9631098b9cbee93770965f910c ******/
@@ -706,7 +666,7 @@ No available documentation.
 		void AddBisector(const opencascade::handle<MAT_Bisector> & abisector);
 
 		/****** MAT_Bisector::BisectorNumber ******/
-		/****** md5 signature: 09d6b027dec3942cf92c63a32ed241d0 ******/
+		/****** md5 signature: e4ec1000697d753317170c8e29ea5766 ******/
 		%feature("compactdefaultargs") BisectorNumber;
 		%feature("autodoc", "
 Parameters
@@ -721,10 +681,10 @@ Description
 -----------
 No available documentation.
 ") BisectorNumber;
-		void BisectorNumber(const Standard_Integer anumber);
+		void BisectorNumber(const int anumber);
 
 		/****** MAT_Bisector::BisectorNumber ******/
-		/****** md5 signature: 281081086bca6dc75149fb4fb1a143ac ******/
+		/****** md5 signature: c3db3c7665eb5cf9afa3302e6c7a88e1 ******/
 		%feature("compactdefaultargs") BisectorNumber;
 		%feature("autodoc", "Return
 -------
@@ -734,15 +694,15 @@ Description
 -----------
 No available documentation.
 ") BisectorNumber;
-		Standard_Integer BisectorNumber();
+		int BisectorNumber();
 
 		/****** MAT_Bisector::DistIssuePoint ******/
-		/****** md5 signature: e3e5006c1b9fab1f8a1bedaaffa6fb3e ******/
+		/****** md5 signature: dc6781cf239d3b1144a1ce8b2292c660 ******/
 		%feature("compactdefaultargs") DistIssuePoint;
 		%feature("autodoc", "
 Parameters
 ----------
-areal: float
+areal: double
 
 Return
 -------
@@ -752,23 +712,23 @@ Description
 -----------
 No available documentation.
 ") DistIssuePoint;
-		void DistIssuePoint(const Standard_Real areal);
+		void DistIssuePoint(const double areal);
 
 		/****** MAT_Bisector::DistIssuePoint ******/
-		/****** md5 signature: 94af4238d7f0dec22f06e993036044c0 ******/
+		/****** md5 signature: a4fffd05b6b2924f2c854beddd7cc6a8 ******/
 		%feature("compactdefaultargs") DistIssuePoint;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DistIssuePoint;
-		Standard_Real DistIssuePoint();
+		double DistIssuePoint();
 
 		/****** MAT_Bisector::Dump ******/
-		/****** md5 signature: 34be4d9f12ae70558c563310451f527a ******/
+		/****** md5 signature: 966e007ece23310393e329f5ad77af13 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -784,10 +744,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer ashift, const Standard_Integer alevel);
+		void Dump(const int ashift, const int alevel);
 
 		/****** MAT_Bisector::EndPoint ******/
-		/****** md5 signature: e12fcbaa168959458dbf44911c1a14a6 ******/
+		/****** md5 signature: 2732aee4f8f447a37d3358838bcf43d7 ******/
 		%feature("compactdefaultargs") EndPoint;
 		%feature("autodoc", "
 Parameters
@@ -802,10 +762,10 @@ Description
 -----------
 No available documentation.
 ") EndPoint;
-		void EndPoint(const Standard_Integer apoint);
+		void EndPoint(const int apoint);
 
 		/****** MAT_Bisector::EndPoint ******/
-		/****** md5 signature: a3bad375aec3108900c6a43ab78968e3 ******/
+		/****** md5 signature: 59b05eb99328956f0ff4c334923a67b6 ******/
 		%feature("compactdefaultargs") EndPoint;
 		%feature("autodoc", "Return
 -------
@@ -815,7 +775,7 @@ Description
 -----------
 No available documentation.
 ") EndPoint;
-		Standard_Integer EndPoint();
+		int EndPoint();
 
 		/****** MAT_Bisector::FirstBisector ******/
 		/****** md5 signature: 6a0a4aea60b0db98ebfd028b078a2e75 ******/
@@ -862,12 +822,12 @@ No available documentation.
 		opencascade::handle<MAT_Edge> FirstEdge();
 
 		/****** MAT_Bisector::FirstParameter ******/
-		/****** md5 signature: 9a8018bc679a9420f60343c0490ef46b ******/
+		/****** md5 signature: 1eaf712a55898a0fd0c26023cea64a92 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-aparameter: float
+aparameter: double
 
 Return
 -------
@@ -877,23 +837,23 @@ Description
 -----------
 No available documentation.
 ") FirstParameter;
-		void FirstParameter(const Standard_Real aparameter);
+		void FirstParameter(const double aparameter);
 
 		/****** MAT_Bisector::FirstParameter ******/
-		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
+		/****** md5 signature: 663a02fdcfecea2f8437f306e48dfc6b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** MAT_Bisector::FirstVector ******/
-		/****** md5 signature: 94c4013a4724436e52f18643b6f07896 ******/
+		/****** md5 signature: d8b9f3c5ffede56a15d40fc747c0b5b2 ******/
 		%feature("compactdefaultargs") FirstVector;
 		%feature("autodoc", "
 Parameters
@@ -908,10 +868,10 @@ Description
 -----------
 No available documentation.
 ") FirstVector;
-		void FirstVector(const Standard_Integer avector);
+		void FirstVector(const int avector);
 
 		/****** MAT_Bisector::FirstVector ******/
-		/****** md5 signature: a19a68af02464d9d7597a87a2c121a76 ******/
+		/****** md5 signature: 3d4bde89694ea1aebd159b86bd59fe61 ******/
 		%feature("compactdefaultargs") FirstVector;
 		%feature("autodoc", "Return
 -------
@@ -921,10 +881,10 @@ Description
 -----------
 No available documentation.
 ") FirstVector;
-		Standard_Integer FirstVector();
+		int FirstVector();
 
 		/****** MAT_Bisector::IndexNumber ******/
-		/****** md5 signature: 3ed32b6e776360a264e1a21468911734 ******/
+		/****** md5 signature: 8bd314a46f62aad8b21d0b600497da97 ******/
 		%feature("compactdefaultargs") IndexNumber;
 		%feature("autodoc", "
 Parameters
@@ -939,10 +899,10 @@ Description
 -----------
 No available documentation.
 ") IndexNumber;
-		void IndexNumber(const Standard_Integer anumber);
+		void IndexNumber(const int anumber);
 
 		/****** MAT_Bisector::IndexNumber ******/
-		/****** md5 signature: 310e530533450b4adffb62e106fbc8ec ******/
+		/****** md5 signature: cbc79bb7a2b05ce53230abba4e9d25bd ******/
 		%feature("compactdefaultargs") IndexNumber;
 		%feature("autodoc", "Return
 -------
@@ -952,10 +912,10 @@ Description
 -----------
 No available documentation.
 ") IndexNumber;
-		Standard_Integer IndexNumber();
+		int IndexNumber();
 
 		/****** MAT_Bisector::IssuePoint ******/
-		/****** md5 signature: 88569e83bdfe98148879543464c46eee ******/
+		/****** md5 signature: aa46da448e30eeb36ea06d2cb7daf5eb ******/
 		%feature("compactdefaultargs") IssuePoint;
 		%feature("autodoc", "
 Parameters
@@ -970,10 +930,10 @@ Description
 -----------
 No available documentation.
 ") IssuePoint;
-		void IssuePoint(const Standard_Integer apoint);
+		void IssuePoint(const int apoint);
 
 		/****** MAT_Bisector::IssuePoint ******/
-		/****** md5 signature: c5917a3475426533fa2c9b24fb2e9921 ******/
+		/****** md5 signature: ee90fba3a8d27c4259344a1a1f30ea76 ******/
 		%feature("compactdefaultargs") IssuePoint;
 		%feature("autodoc", "Return
 -------
@@ -983,7 +943,7 @@ Description
 -----------
 No available documentation.
 ") IssuePoint;
-		Standard_Integer IssuePoint();
+		int IssuePoint();
 
 		/****** MAT_Bisector::LastBisector ******/
 		/****** md5 signature: 8d2f00b1c47f5c12cafd060f730ea8af ******/
@@ -1043,12 +1003,12 @@ No available documentation.
 		opencascade::handle<MAT_Edge> SecondEdge();
 
 		/****** MAT_Bisector::SecondParameter ******/
-		/****** md5 signature: eaadc60ebcfd12fe19847498b765ac29 ******/
+		/****** md5 signature: 78a427e368c701d0e220316e2199b48e ******/
 		%feature("compactdefaultargs") SecondParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-aparameter: float
+aparameter: double
 
 Return
 -------
@@ -1058,23 +1018,23 @@ Description
 -----------
 No available documentation.
 ") SecondParameter;
-		void SecondParameter(const Standard_Real aparameter);
+		void SecondParameter(const double aparameter);
 
 		/****** MAT_Bisector::SecondParameter ******/
-		/****** md5 signature: f3439ad96dffddc852702ac7bf2cb4bb ******/
+		/****** md5 signature: d2d9c569d06ad9cc8c2fed9a0bfeea64 ******/
 		%feature("compactdefaultargs") SecondParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") SecondParameter;
-		Standard_Real SecondParameter();
+		double SecondParameter();
 
 		/****** MAT_Bisector::SecondVector ******/
-		/****** md5 signature: 5d5ee4e99d01771b1b32c6e6d515f7c4 ******/
+		/****** md5 signature: 2b5dc9a381900f43c365eb802da81aa0 ******/
 		%feature("compactdefaultargs") SecondVector;
 		%feature("autodoc", "
 Parameters
@@ -1089,10 +1049,10 @@ Description
 -----------
 No available documentation.
 ") SecondVector;
-		void SecondVector(const Standard_Integer avector);
+		void SecondVector(const int avector);
 
 		/****** MAT_Bisector::SecondVector ******/
-		/****** md5 signature: 0ef76da14ac5cbca4dc4d93c495a758d ******/
+		/****** md5 signature: 62db1bf9132826086bb8f98bc0c58b09 ******/
 		%feature("compactdefaultargs") SecondVector;
 		%feature("autodoc", "Return
 -------
@@ -1102,15 +1062,15 @@ Description
 -----------
 No available documentation.
 ") SecondVector;
-		Standard_Integer SecondVector();
+		int SecondVector();
 
 		/****** MAT_Bisector::Sense ******/
-		/****** md5 signature: 6fb43a0152cc52f33de589a55a7c60c0 ******/
+		/****** md5 signature: 3f72b9491381cda1f133ea0a7b037187 ******/
 		%feature("compactdefaultargs") Sense;
 		%feature("autodoc", "
 Parameters
 ----------
-asense: float
+asense: double
 
 Return
 -------
@@ -1120,20 +1080,20 @@ Description
 -----------
 No available documentation.
 ") Sense;
-		void Sense(const Standard_Real asense);
+		void Sense(const double asense);
 
 		/****** MAT_Bisector::Sense ******/
-		/****** md5 signature: c756786710e2cc2c23f20d0351ca88e4 ******/
+		/****** md5 signature: 81269482b285fc551a947cbbd7d6640b ******/
 		%feature("compactdefaultargs") Sense;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Sense;
-		Standard_Real Sense();
+		double Sense();
 
 };
 
@@ -1165,12 +1125,12 @@ No available documentation.
 		 MAT_Edge();
 
 		/****** MAT_Edge::Distance ******/
-		/****** md5 signature: 3ae0b9dfb95cca74bdd17827ec43670b ******/
+		/****** md5 signature: 88a0a76023cc524d009e464c5cbb8f6b ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
 ----------
-adistance: float
+adistance: double
 
 Return
 -------
@@ -1180,23 +1140,23 @@ Description
 -----------
 No available documentation.
 ") Distance;
-		void Distance(const Standard_Real adistance);
+		void Distance(const double adistance);
 
 		/****** MAT_Edge::Distance ******/
-		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
+		/****** md5 signature: 4132595ec8b1977b3cfc8920d72365c4 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Distance;
-		Standard_Real Distance();
+		double Distance();
 
 		/****** MAT_Edge::Dump ******/
-		/****** md5 signature: 34be4d9f12ae70558c563310451f527a ******/
+		/****** md5 signature: 966e007ece23310393e329f5ad77af13 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1212,10 +1172,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer ashift, const Standard_Integer alevel);
+		void Dump(const int ashift, const int alevel);
 
 		/****** MAT_Edge::EdgeNumber ******/
-		/****** md5 signature: bd91ac2a05ea29d47596e180da953aab ******/
+		/****** md5 signature: b574bb497d732eab010a99a197a5b27e ******/
 		%feature("compactdefaultargs") EdgeNumber;
 		%feature("autodoc", "
 Parameters
@@ -1230,10 +1190,10 @@ Description
 -----------
 No available documentation.
 ") EdgeNumber;
-		void EdgeNumber(const Standard_Integer anumber);
+		void EdgeNumber(const int anumber);
 
 		/****** MAT_Edge::EdgeNumber ******/
-		/****** md5 signature: eb9e7a0dc8a55b6376577d683feb50a9 ******/
+		/****** md5 signature: fc763b4dae15a0250ccc7865fd2aecc0 ******/
 		%feature("compactdefaultargs") EdgeNumber;
 		%feature("autodoc", "Return
 -------
@@ -1243,7 +1203,7 @@ Description
 -----------
 No available documentation.
 ") EdgeNumber;
-		Standard_Integer EdgeNumber();
+		int EdgeNumber();
 
 		/****** MAT_Edge::FirstBisector ******/
 		/****** md5 signature: 1263e63d26d7bb5f643ce6ac9acc57b6 ******/
@@ -1277,7 +1237,7 @@ No available documentation.
 		opencascade::handle<MAT_Bisector> FirstBisector();
 
 		/****** MAT_Edge::IntersectionPoint ******/
-		/****** md5 signature: 732c80277fba5d9e36d159d1de3e1813 ******/
+		/****** md5 signature: 76f51c7494659165396d9c1b778b9594 ******/
 		%feature("compactdefaultargs") IntersectionPoint;
 		%feature("autodoc", "
 Parameters
@@ -1292,10 +1252,10 @@ Description
 -----------
 No available documentation.
 ") IntersectionPoint;
-		void IntersectionPoint(const Standard_Integer apoint);
+		void IntersectionPoint(const int apoint);
 
 		/****** MAT_Edge::IntersectionPoint ******/
-		/****** md5 signature: 54fd7947375c0f8d02705efd7de973b7 ******/
+		/****** md5 signature: ac25b14699b81718cf92557d6e852f96 ******/
 		%feature("compactdefaultargs") IntersectionPoint;
 		%feature("autodoc", "Return
 -------
@@ -1305,7 +1265,7 @@ Description
 -----------
 No available documentation.
 ") IntersectionPoint;
-		Standard_Integer IntersectionPoint();
+		int IntersectionPoint();
 
 		/****** MAT_Edge::SecondBisector ******/
 		/****** md5 signature: d3dea24468ecbdd59867953344b09769 ******/
@@ -1368,7 +1328,7 @@ Empty constructor.
 		 MAT_Graph();
 
 		/****** MAT_Graph::Arc ******/
-		/****** md5 signature: 0e94d7b18a9967b59f8bc69d0262227d ******/
+		/****** md5 signature: 25bd58a66b8a2b04095efe3f235b11a4 ******/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "
 Parameters
@@ -1383,10 +1343,10 @@ Description
 -----------
 Return the Arc of index <Index> in <theArcs>.
 ") Arc;
-		opencascade::handle<MAT_Arc> Arc(const Standard_Integer Index);
+		opencascade::handle<MAT_Arc> Arc(const int Index);
 
 		/****** MAT_Graph::BasicElt ******/
-		/****** md5 signature: 1f08facde7cc7ca0fd4903a2bf2590da ******/
+		/****** md5 signature: 883e1a384b96fb4ba9ce92013e03ec6f ******/
 		%feature("compactdefaultargs") BasicElt;
 		%feature("autodoc", "
 Parameters
@@ -1401,10 +1361,10 @@ Description
 -----------
 Return the BasicElt of index <Index> in <theBasicElts>.
 ") BasicElt;
-		opencascade::handle<MAT_BasicElt> BasicElt(const Standard_Integer Index);
+		opencascade::handle<MAT_BasicElt> BasicElt(const int Index);
 
 		/****** MAT_Graph::ChangeBasicElt ******/
-		/****** md5 signature: 9c303c9e8b75698556375e476f11ad80 ******/
+		/****** md5 signature: b499c403294ef1a0f57cc8308cf321c8 ******/
 		%feature("compactdefaultargs") ChangeBasicElt;
 		%feature("autodoc", "
 Parameters
@@ -1419,15 +1379,15 @@ Description
 -----------
 No available documentation.
 ") ChangeBasicElt;
-		opencascade::handle<MAT_BasicElt> ChangeBasicElt(const Standard_Integer Index);
+		opencascade::handle<MAT_BasicElt> ChangeBasicElt(const int Index);
 
 		/****** MAT_Graph::ChangeBasicElts ******/
-		/****** md5 signature: 45b15276b256fa4fb02392c2a4eec683 ******/
+		/****** md5 signature: aef3ed542580b72aee60a07ab72bab33 ******/
 		%feature("compactdefaultargs") ChangeBasicElts;
 		%feature("autodoc", "
 Parameters
 ----------
-NewMap: MAT_DataMapOfIntegerBasicElt
+NewMap: MAT_BasicElt
 
 Return
 -------
@@ -1437,7 +1397,7 @@ Description
 -----------
 No available documentation.
 ") ChangeBasicElts;
-		void ChangeBasicElts(const MAT_DataMapOfIntegerBasicElt & NewMap);
+		void ChangeBasicElts(const NCollection_DataMap<int, opencascade::handle<MAT_BasicElt> > & NewMap);
 
 		/****** MAT_Graph::CompactArcs ******/
 		/****** md5 signature: 72a7920557248784ad886ab9fa212648 ******/
@@ -1466,7 +1426,7 @@ No available documentation.
 		void CompactNodes();
 
 		/****** MAT_Graph::FusionOfBasicElts ******/
-		/****** md5 signature: 638689c5771647cc22a350da0457bf47 ******/
+		/****** md5 signature: 56f517f3002d121c76a77b3976b6dcd3 ******/
 		%feature("compactdefaultargs") FusionOfBasicElts;
 		%feature("autodoc", "
 Parameters
@@ -1485,12 +1445,12 @@ GeomIndexArc4: int
 
 Description
 -----------
-Merge two BasicElts. The End of the BasicElt Elt1 of IndexElt1 becomes The End of the BasicElt Elt2 of IndexElt2. Elt2 is replaced in the arcs by Elt1, Elt2 is eliminated. //! <MergeArc1> is True if the fusion of the BasicElts => a fusion of two Arcs which separated the same elements. In this case <GeomIndexArc1> and <GeomIndexArc2> are the Geometric Index of this arcs. //! If the BasicElt corresponds to a close line , the StartArc and the EndArc of Elt1 can separate the same elements . In this case there is a fusion of this arcs, <MergeArc2> is true and <GeomIndexArc3> and <GeomIndexArc4> are the Geometric Index of this arcs.
+Merge two BasicElts. The End of the BasicElt Elt1 of IndexElt1 becomes The End of the BasicElt Elt2 of IndexElt2. Elt2 is replaced in the arcs by Elt1, Elt2 is eliminated. //! <MergeArc1> is True if the fusion of the BasicElts => a fusion of two Arcs which separated the same elements. In this case <GeomIndexArc1> and <GeomIndexArc2> are the Geometric Index of this arcs. //! If the BasicElt corresponds to a close line, the StartArc and the EndArc of Elt1 can separate the same elements. In this case there is a fusion of this arcs, <MergeArc2> is true and <GeomIndexArc3> and <GeomIndexArc4> are the Geometric Index of this arcs.
 ") FusionOfBasicElts;
-		void FusionOfBasicElts(const Standard_Integer IndexElt1, const Standard_Integer IndexElt2, Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void FusionOfBasicElts(const int IndexElt1, const int IndexElt2, Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** MAT_Graph::Node ******/
-		/****** md5 signature: f38b649a7d121651fd32b256cc2d101c ******/
+		/****** md5 signature: 57167eae9956d3e28bc1f9c775e6d61d ******/
 		%feature("compactdefaultargs") Node;
 		%feature("autodoc", "
 Parameters
@@ -1505,10 +1465,10 @@ Description
 -----------
 Return the Node of index <Index> in <theNodes>.
 ") Node;
-		opencascade::handle<MAT_Node> Node(const Standard_Integer Index);
+		opencascade::handle<MAT_Node> Node(const int Index);
 
 		/****** MAT_Graph::NumberOfArcs ******/
-		/****** md5 signature: 19c071f3281234be8385bb27a771f8d7 ******/
+		/****** md5 signature: 5c0bccfb0dddfd327cfcbc7f117a2247 ******/
 		%feature("compactdefaultargs") NumberOfArcs;
 		%feature("autodoc", "Return
 -------
@@ -1518,10 +1478,10 @@ Description
 -----------
 Return the number of arcs of <self>.
 ") NumberOfArcs;
-		Standard_Integer NumberOfArcs();
+		int NumberOfArcs();
 
 		/****** MAT_Graph::NumberOfBasicElts ******/
-		/****** md5 signature: a606eb9e6a2e88954e122eb04c6f87cb ******/
+		/****** md5 signature: f0be6a3df7b257ec6597f68c23bd80eb ******/
 		%feature("compactdefaultargs") NumberOfBasicElts;
 		%feature("autodoc", "Return
 -------
@@ -1531,10 +1491,10 @@ Description
 -----------
 Return the number of basic elements of <self>.
 ") NumberOfBasicElts;
-		Standard_Integer NumberOfBasicElts();
+		int NumberOfBasicElts();
 
 		/****** MAT_Graph::NumberOfInfiniteNodes ******/
-		/****** md5 signature: 4297643b0125d2cbae67f5cb0b5eef8a ******/
+		/****** md5 signature: 0658e78b74b07a06a0cc6be3e4929b8e ******/
 		%feature("compactdefaultargs") NumberOfInfiniteNodes;
 		%feature("autodoc", "Return
 -------
@@ -1544,10 +1504,10 @@ Description
 -----------
 Return the number of infinites nodes of <self>.
 ") NumberOfInfiniteNodes;
-		Standard_Integer NumberOfInfiniteNodes();
+		int NumberOfInfiniteNodes();
 
 		/****** MAT_Graph::NumberOfNodes ******/
-		/****** md5 signature: 11577890e2bc13345c8dfe96f3774315 ******/
+		/****** md5 signature: 7d7a62528ccdd8b8eeea7c46b0cc2d51 ******/
 		%feature("compactdefaultargs") NumberOfNodes;
 		%feature("autodoc", "Return
 -------
@@ -1557,10 +1517,10 @@ Description
 -----------
 Return the number of nodes of <self>.
 ") NumberOfNodes;
-		Standard_Integer NumberOfNodes();
+		int NumberOfNodes();
 
 		/****** MAT_Graph::Perform ******/
-		/****** md5 signature: 43a4f7df1254a20e61562ab83ad60052 ******/
+		/****** md5 signature: 88a387ad2c0bdc5e9d05c72699f75f3c ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1578,7 +1538,7 @@ Description
 -----------
 Construct <self> from the result of the method <CreateMat> of the class <MAT> from <MAT>. //! <SemiInfinite>: if some bisector are infinites. <TheRoots>: Set of the bisectors. <NbBasicElts>: Number of Basic Elements. <NbArcs>: Number of Arcs = Number of Bisectors.
 ") Perform;
-		void Perform(const Standard_Boolean SemiInfinite, const opencascade::handle<MAT_ListOfBisector> & TheRoots, const Standard_Integer NbBasicElts, const Standard_Integer NbArcs);
+		void Perform(const bool SemiInfinite, const opencascade::handle<MAT_ListOfBisector> & TheRoots, const int NbBasicElts, const int NbArcs);
 
 };
 
@@ -1628,7 +1588,7 @@ No available documentation.
 		void BackAdd(const opencascade::handle<MAT_Bisector> & anitem);
 
 		/****** MAT_ListOfBisector::Brackets ******/
-		/****** md5 signature: 6ab31b9b49bbd19fa6c31b575d6678d1 ******/
+		/****** md5 signature: 4227e8729915534d88e47c95d707b19d ******/
 		%feature("compactdefaultargs") Brackets;
 		%feature("autodoc", "
 Parameters
@@ -1643,7 +1603,7 @@ Description
 -----------
 No available documentation.
 ") Brackets;
-		opencascade::handle<MAT_Bisector> Brackets(const Standard_Integer anindex);
+		opencascade::handle<MAT_Bisector> Brackets(const int anindex);
 
 		/****** MAT_ListOfBisector::Current ******/
 		/****** md5 signature: 159937c2e6187be533f033f2f56b590f ******/
@@ -1677,7 +1637,7 @@ No available documentation.
 		void Current(const opencascade::handle<MAT_Bisector> & anitem);
 
 		/****** MAT_ListOfBisector::Dump ******/
-		/****** md5 signature: 467b3545138e672ad1fa81c231ba99bc ******/
+		/****** md5 signature: ad99cf8720e900d3a329324644690cec ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1693,7 +1653,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer ashift, const Standard_Integer alevel);
+		void Dump(const int ashift, const int alevel);
 
 		/****** MAT_ListOfBisector::First ******/
 		/****** md5 signature: 59f44b9359a423593f8c8e012b4d01ac ******/
@@ -1740,7 +1700,7 @@ No available documentation.
 		void FrontAdd(const opencascade::handle<MAT_Bisector> & anitem);
 
 		/****** MAT_ListOfBisector::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -1750,7 +1710,7 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** MAT_ListOfBisector::Init ******/
 		/****** md5 signature: 35dbfc8bb54417af374971f124bd8997 ******/
@@ -1771,7 +1731,7 @@ No available documentation.
 		void Init(const opencascade::handle<MAT_Bisector> & aniten);
 
 		/****** MAT_ListOfBisector::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1781,7 +1741,7 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** MAT_ListOfBisector::Last ******/
 		/****** md5 signature: 0e5c3db748783edeccd565d0b7958daf ******/
@@ -1859,7 +1819,7 @@ No available documentation.
 		void Loop();
 
 		/****** MAT_ListOfBisector::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1869,7 +1829,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** MAT_ListOfBisector::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1898,7 +1858,7 @@ No available documentation.
 		opencascade::handle<MAT_Bisector> NextItem();
 
 		/****** MAT_ListOfBisector::Number ******/
-		/****** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ******/
+		/****** md5 signature: 630c2fedd5680e328bd447673c7f6ee1 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -1908,7 +1868,7 @@ Description
 -----------
 No available documentation.
 ") Number;
-		Standard_Integer Number();
+		int Number();
 
 		/****** MAT_ListOfBisector::Permute ******/
 		/****** md5 signature: 0281dd20df55b302a94134545c64fb8f ******/
@@ -2010,7 +1970,7 @@ No available documentation.
 		void BackAdd(const opencascade::handle<MAT_Edge> & anitem);
 
 		/****** MAT_ListOfEdge::Brackets ******/
-		/****** md5 signature: f651483f1a4f406c7623b7097a88b657 ******/
+		/****** md5 signature: 8fbd399fd5d851eb26deb4d41aaf57e1 ******/
 		%feature("compactdefaultargs") Brackets;
 		%feature("autodoc", "
 Parameters
@@ -2025,7 +1985,7 @@ Description
 -----------
 No available documentation.
 ") Brackets;
-		opencascade::handle<MAT_Edge> Brackets(const Standard_Integer anindex);
+		opencascade::handle<MAT_Edge> Brackets(const int anindex);
 
 		/****** MAT_ListOfEdge::Current ******/
 		/****** md5 signature: 4a9a7bf500b63d2ddfe13bceed52f1ff ******/
@@ -2059,7 +2019,7 @@ No available documentation.
 		void Current(const opencascade::handle<MAT_Edge> & anitem);
 
 		/****** MAT_ListOfEdge::Dump ******/
-		/****** md5 signature: 467b3545138e672ad1fa81c231ba99bc ******/
+		/****** md5 signature: ad99cf8720e900d3a329324644690cec ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2075,7 +2035,7 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer ashift, const Standard_Integer alevel);
+		void Dump(const int ashift, const int alevel);
 
 		/****** MAT_ListOfEdge::First ******/
 		/****** md5 signature: 59f44b9359a423593f8c8e012b4d01ac ******/
@@ -2122,7 +2082,7 @@ No available documentation.
 		void FrontAdd(const opencascade::handle<MAT_Edge> & anitem);
 
 		/****** MAT_ListOfEdge::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -2132,7 +2092,7 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** MAT_ListOfEdge::Init ******/
 		/****** md5 signature: fb09a251208dda7c3c7e26970ce99385 ******/
@@ -2153,7 +2113,7 @@ No available documentation.
 		void Init(const opencascade::handle<MAT_Edge> & aniten);
 
 		/****** MAT_ListOfEdge::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2163,7 +2123,7 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** MAT_ListOfEdge::Last ******/
 		/****** md5 signature: 0e5c3db748783edeccd565d0b7958daf ******/
@@ -2241,7 +2201,7 @@ No available documentation.
 		void Loop();
 
 		/****** MAT_ListOfEdge::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2251,7 +2211,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** MAT_ListOfEdge::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -2280,7 +2240,7 @@ No available documentation.
 		opencascade::handle<MAT_Edge> NextItem();
 
 		/****** MAT_ListOfEdge::Number ******/
-		/****** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ******/
+		/****** md5 signature: 630c2fedd5680e328bd447673c7f6ee1 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -2290,7 +2250,7 @@ Description
 -----------
 No available documentation.
 ") Number;
-		Standard_Integer Number();
+		int Number();
 
 		/****** MAT_ListOfEdge::Permute ******/
 		/****** md5 signature: 0281dd20df55b302a94134545c64fb8f ******/
@@ -2361,14 +2321,14 @@ No available documentation.
 class MAT_Node : public Standard_Transient {
 	public:
 		/****** MAT_Node::MAT_Node ******/
-		/****** md5 signature: 4008f3832f7519d4f09ad0963334e97e ******/
+		/****** md5 signature: da3ef62ef3ddea2c59398e79ff36b8be ******/
 		%feature("compactdefaultargs") MAT_Node;
 		%feature("autodoc", "
 Parameters
 ----------
 GeomIndex: int
 LinkedArc: MAT_Arc
-Distance: float
+Distance: double
 
 Return
 -------
@@ -2378,23 +2338,23 @@ Description
 -----------
 No available documentation.
 ") MAT_Node;
-		 MAT_Node(const Standard_Integer GeomIndex, const opencascade::handle<MAT_Arc> & LinkedArc, const Standard_Real Distance);
+		 MAT_Node(const int GeomIndex, const opencascade::handle<MAT_Arc> & LinkedArc, const double Distance);
 
 		/****** MAT_Node::Distance ******/
-		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
+		/****** md5 signature: 4132595ec8b1977b3cfc8920d72365c4 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Distance;
-		Standard_Real Distance();
+		double Distance();
 
 		/****** MAT_Node::GeomIndex ******/
-		/****** md5 signature: 75ab1e2933a328a4595c114f05273572 ******/
+		/****** md5 signature: f2ea28e837feb86d42732a20e7f4c597 ******/
 		%feature("compactdefaultargs") GeomIndex;
 		%feature("autodoc", "Return
 -------
@@ -2404,10 +2364,10 @@ Description
 -----------
 Returns the index associated of the geometric representation of <self>.
 ") GeomIndex;
-		Standard_Integer GeomIndex();
+		int GeomIndex();
 
 		/****** MAT_Node::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -2417,10 +2377,10 @@ Description
 -----------
 Returns the index associated of the node.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** MAT_Node::Infinite ******/
-		/****** md5 signature: a09600d55a8e8ec8794e81ddde2ada71 ******/
+		/****** md5 signature: 163b39ee8e30b307b8bfe10035abc60c ******/
 		%feature("compactdefaultargs") Infinite;
 		%feature("autodoc", "Return
 -------
@@ -2430,15 +2390,15 @@ Description
 -----------
 Returns True if the distance of <self> is Infinite.
 ") Infinite;
-		Standard_Boolean Infinite();
+		bool Infinite();
 
 		/****** MAT_Node::LinkedArcs ******/
-		/****** md5 signature: 8c9a4ec2d65315db961ed412093b3463 ******/
+		/****** md5 signature: 03772d770eb7d2eaea47fada00f81803 ******/
 		%feature("compactdefaultargs") LinkedArcs;
 		%feature("autodoc", "
 Parameters
 ----------
-S: MAT_SequenceOfArc
+S: MAT_Arc
 
 Return
 -------
@@ -2448,15 +2408,15 @@ Description
 -----------
 Returns in <S> the Arcs linked to <self>.
 ") LinkedArcs;
-		void LinkedArcs(MAT_SequenceOfArc & S);
+		void LinkedArcs(NCollection_Sequence<opencascade::handle<MAT_Arc> > & S);
 
 		/****** MAT_Node::NearElts ******/
-		/****** md5 signature: 597f8ff8ea3e1e0afecdf37c4d3af6b1 ******/
+		/****** md5 signature: 341670ce7bf8f485465404febe50c7d8 ******/
 		%feature("compactdefaultargs") NearElts;
 		%feature("autodoc", "
 Parameters
 ----------
-S: MAT_SequenceOfBasicElt
+S: MAT_BasicElt
 
 Return
 -------
@@ -2466,10 +2426,10 @@ Description
 -----------
 Returns in <S> the BasicElts equidistant to <self>.
 ") NearElts;
-		void NearElts(MAT_SequenceOfBasicElt & S);
+		void NearElts(NCollection_Sequence<opencascade::handle<MAT_BasicElt> > & S);
 
 		/****** MAT_Node::OnBasicElt ******/
-		/****** md5 signature: eac0bcd6f6358794c7f60cbfeb0cab35 ******/
+		/****** md5 signature: 9a370752e722fe359a087a269e02eb1e ******/
 		%feature("compactdefaultargs") OnBasicElt;
 		%feature("autodoc", "Return
 -------
@@ -2479,10 +2439,10 @@ Description
 -----------
 Returns True if <self> belongs to the figure.
 ") OnBasicElt;
-		Standard_Boolean OnBasicElt();
+		bool OnBasicElt();
 
 		/****** MAT_Node::PendingNode ******/
-		/****** md5 signature: a2588d479fe9ed38380aee1542f810a8 ******/
+		/****** md5 signature: 6c9666dab3da6d0c3be560f74659c944 ******/
 		%feature("compactdefaultargs") PendingNode;
 		%feature("autodoc", "Return
 -------
@@ -2492,10 +2452,10 @@ Description
 -----------
 Returns True if <self> is a pending Node. (ie: the number of Arc Linked = 1).
 ") PendingNode;
-		Standard_Boolean PendingNode();
+		bool PendingNode();
 
 		/****** MAT_Node::SetIndex ******/
-		/****** md5 signature: 0876ee38f8335bd23a147905d6b9fa41 ******/
+		/****** md5 signature: b980e11cf7e355bc4fa7581ed5f4b3d3 ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -2510,7 +2470,7 @@ Description
 -----------
 Set the index associated of the node.
 ") SetIndex;
-		void SetIndex(const Standard_Integer anIndex);
+		void SetIndex(const int anIndex);
 
 		/****** MAT_Node::SetLinkedArc ******/
 		/****** md5 signature: 386b9f088408239f488a831ff8808b2b ******/
@@ -2884,7 +2844,7 @@ Compute the frontier of the Zone of proximity.
 		 MAT_Zone(const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
 		/****** MAT_Zone::ArcOnFrontier ******/
-		/****** md5 signature: 895ef2f967cb6f22379f0760e66af186 ******/
+		/****** md5 signature: fcc6fcf77987752f120e70954edda962 ******/
 		%feature("compactdefaultargs") ArcOnFrontier;
 		%feature("autodoc", "
 Parameters
@@ -2899,10 +2859,10 @@ Description
 -----------
 Return the Arc number <Index> on the frontier. of <self>.
 ") ArcOnFrontier;
-		opencascade::handle<MAT_Arc> ArcOnFrontier(const Standard_Integer Index);
+		opencascade::handle<MAT_Arc> ArcOnFrontier(const int Index);
 
 		/****** MAT_Zone::Limited ******/
-		/****** md5 signature: 5d723c22ad68dcae5fe215524cf5e124 ******/
+		/****** md5 signature: ef34a928b5265bf34471fcbefa30157a ******/
 		%feature("compactdefaultargs") Limited;
 		%feature("autodoc", "Return
 -------
@@ -2912,10 +2872,10 @@ Description
 -----------
 Return True if <self> is Limited.
 ") Limited;
-		Standard_Boolean Limited();
+		bool Limited();
 
 		/****** MAT_Zone::NoEmptyZone ******/
-		/****** md5 signature: 7356e2270f432409f152933ac3bf7a8d ******/
+		/****** md5 signature: f5c8d0dfd21df1253df85ba3de6bfb9c ******/
 		%feature("compactdefaultargs") NoEmptyZone;
 		%feature("autodoc", "Return
 -------
@@ -2925,10 +2885,10 @@ Description
 -----------
 Return True if <self> is not empty .
 ") NoEmptyZone;
-		Standard_Boolean NoEmptyZone();
+		bool NoEmptyZone();
 
 		/****** MAT_Zone::NumberOfArcs ******/
-		/****** md5 signature: 19c071f3281234be8385bb27a771f8d7 ******/
+		/****** md5 signature: 5c0bccfb0dddfd327cfcbc7f117a2247 ******/
 		%feature("compactdefaultargs") NumberOfArcs;
 		%feature("autodoc", "Return
 -------
@@ -2938,7 +2898,7 @@ Description
 -----------
 Return the number Of Arcs On the frontier of <self>.
 ") NumberOfArcs;
-		Standard_Integer NumberOfArcs();
+		int NumberOfArcs();
 
 		/****** MAT_Zone::Perform ******/
 		/****** md5 signature: 94139b27151e1c4e39a2c05a14c3c3a6 ******/

@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_lprop.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<GeomAbs_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -52,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_lprop.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import GeomAbs.i
 
 %pythoncode {
 from enum import IntEnum
@@ -116,54 +114,9 @@ LProp_Computed = LProp_Status.LProp_Computed
 typedef NCollection_Sequence<LProp_CIType> LProp_SequenceOfCIType;
 /* end typedefs declaration */
 
-/*****************************
-* class LProp_AnalyticCurInf *
-*****************************/
-class LProp_AnalyticCurInf {
-	public:
-		/****** LProp_AnalyticCurInf::LProp_AnalyticCurInf ******/
-		/****** md5 signature: 9de12ef8d5db0001e2fa7ce01e701e3c ******/
-		%feature("compactdefaultargs") LProp_AnalyticCurInf;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") LProp_AnalyticCurInf;
-		 LProp_AnalyticCurInf();
-
-		/****** LProp_AnalyticCurInf::Perform ******/
-		/****** md5 signature: 01f4e3cadaf6b2c8a8f2d693af66c125 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-T: GeomAbs_CurveType
-UFirst: float
-ULast: float
-Result: LProp_CurAndInf
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Perform;
-		void Perform(const GeomAbs_CurveType T, const Standard_Real UFirst, const Standard_Real ULast, LProp_CurAndInf & Result);
-
-};
-
-
-%extend LProp_AnalyticCurInf {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
+/*********************
+* class DirectAccess *
+*********************/
 /************************
 * class LProp_CurAndInf *
 ************************/
@@ -183,12 +136,12 @@ No available documentation.
 		 LProp_CurAndInf();
 
 		/****** LProp_CurAndInf::AddExtCur ******/
-		/****** md5 signature: 67bfbd091f41a325996083b02ceb306b ******/
+		/****** md5 signature: c4c1e59ad5812a97c70089a3763fbda7 ******/
 		%feature("compactdefaultargs") AddExtCur;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 IsMin: bool
 
 Return
@@ -199,15 +152,15 @@ Description
 -----------
 No available documentation.
 ") AddExtCur;
-		void AddExtCur(const Standard_Real Param, const Standard_Boolean IsMin);
+		void AddExtCur(const double Param, const bool IsMin);
 
 		/****** LProp_CurAndInf::AddInflection ******/
-		/****** md5 signature: 9bc91f7af843b6b7d866668e1cfda6c4 ******/
+		/****** md5 signature: 9383ef95751ef93aef79b01777d41578 ******/
 		%feature("compactdefaultargs") AddInflection;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
@@ -217,7 +170,7 @@ Description
 -----------
 No available documentation.
 ") AddInflection;
-		void AddInflection(const Standard_Real Param);
+		void AddInflection(const double Param);
 
 		/****** LProp_CurAndInf::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -233,7 +186,7 @@ No available documentation.
 		void Clear();
 
 		/****** LProp_CurAndInf::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -243,10 +196,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** LProp_CurAndInf::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -256,10 +209,10 @@ Description
 -----------
 Returns the number of points. The Points are stored to increasing parameter.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** LProp_CurAndInf::Parameter ******/
-		/****** md5 signature: 4c21efa46e26472b743cb69dd5cd7987 ******/
+		/****** md5 signature: bb135c0e557abe93caffd1756d3fc952 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -268,16 +221,16 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the Nth point. raises if N not in the range [1,NbPoints()].
 ") Parameter;
-		Standard_Real Parameter(const Standard_Integer N);
+		double Parameter(const int N);
 
 		/****** LProp_CurAndInf::Type ******/
-		/****** md5 signature: 8c342754ff31a2a8867996891924e0bb ******/
+		/****** md5 signature: 3f35607062b6088759735ec559d4de20 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "
 Parameters
@@ -292,7 +245,7 @@ Description
 -----------
 Returns - MinCur if the Nth parameter corresponds to a minimum of the radius of curvature. - MaxCur if the Nth parameter corresponds to a maximum of the radius of curvature. - Inflection if the parameter corresponds to a point of inflection. raises if N not in the range [1,NbPoints()].
 ") Type;
-		LProp_CIType Type(const Standard_Integer N);
+		LProp_CIType Type(const int N);
 
 };
 
@@ -303,6 +256,9 @@ Returns - MinCur if the Nth parameter corresponds to a minimum of the radius of 
 	}
 };
 
+/*******************
+* class ToolAccess *
+*******************/
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

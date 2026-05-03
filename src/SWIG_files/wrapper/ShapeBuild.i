@@ -134,7 +134,7 @@ Rebuilds a shape with substitution of some components Returns a Geom_Surface whi
 class ShapeBuild_Edge {
 	public:
 		/****** ShapeBuild_Edge::BuildCurve3d ******/
-		/****** md5 signature: b71a447f0e9234b04cd01c1d5fdad27b ******/
+		/****** md5 signature: d50761fbaf6b6abaacb3c876ba8f1816 ******/
 		%feature("compactdefaultargs") BuildCurve3d;
 		%feature("autodoc", "
 Parameters
@@ -149,16 +149,16 @@ Description
 -----------
 Calls BRepTools::BuildCurve3D.
 ") BuildCurve3d;
-		Standard_Boolean BuildCurve3d(const TopoDS_Edge & edge);
+		bool BuildCurve3d(const TopoDS_Edge & edge);
 
 		/****** ShapeBuild_Edge::Copy ******/
-		/****** md5 signature: 6acc1f216ee40fc49cbc082da9c35725 ******/
+		/****** md5 signature: 0377dc4d98bf4540c0101be0209eddd0 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-sharepcurves: bool (optional, default to Standard_True)
+sharepcurves: bool (optional, default to true)
 
 Return
 -------
@@ -168,7 +168,7 @@ Description
 -----------
 Make a copy of <edge> by call to CopyReplaceVertices() (i.e. construct new TEdge with the same pcurves and vertices). If <sharepcurves> is False, pcurves are also replaced by their copies with help of method CopyPCurves.
 ") Copy;
-		TopoDS_Edge Copy(const TopoDS_Edge & edge, const Standard_Boolean sharepcurves = Standard_True);
+		TopoDS_Edge Copy(const TopoDS_Edge & edge, const bool sharepcurves = true);
 
 		/****** ShapeBuild_Edge::CopyPCurves ******/
 		/****** md5 signature: 25f7a109de32430c6672825d5075da37 ******/
@@ -190,15 +190,15 @@ Makes a copy of pcurves from edge <fromedge> into edge <toedge>. Pcurves which a
 		void CopyPCurves(const TopoDS_Edge & toedge, const TopoDS_Edge & fromedge);
 
 		/****** ShapeBuild_Edge::CopyRanges ******/
-		/****** md5 signature: 771bf2b7126654a55a746498755ddceb ******/
+		/****** md5 signature: 2ff413c12d23579bc4a8238c45de2d23 ******/
 		%feature("compactdefaultargs") CopyRanges;
 		%feature("autodoc", "
 Parameters
 ----------
 toedge: TopoDS_Edge
 fromedge: TopoDS_Edge
-alpha: float (optional, default to 0)
-beta: float (optional, default to 1)
+alpha: double (optional, default to 0)
+beta: double (optional, default to 1)
 
 Return
 -------
@@ -208,7 +208,7 @@ Description
 -----------
 Copies ranges for curve3d and all common pcurves from edge <fromedge> into edge <toedge>.
 ") CopyRanges;
-		void CopyRanges(const TopoDS_Edge & toedge, const TopoDS_Edge & fromedge, const Standard_Real alpha = 0, const Standard_Real beta = 1);
+		void CopyRanges(const TopoDS_Edge & toedge, const TopoDS_Edge & fromedge, const double alpha = 0, const double beta = 1);
 
 		/****** ShapeBuild_Edge::CopyReplaceVertices ******/
 		/****** md5 signature: 3d5d12e2d1fda9c50f7aaae2f0610953 ******/
@@ -251,7 +251,7 @@ Makes edge with curve and location.
 		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom_Curve> & curve, const TopLoc_Location & L);
 
 		/****** ShapeBuild_Edge::MakeEdge ******/
-		/****** md5 signature: d4cdac56f8675391ab4f571abd67da65 ******/
+		/****** md5 signature: a3e43a8f3b45367639aa6062b15e369d ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -259,8 +259,8 @@ Parameters
 edge: TopoDS_Edge
 curve: Geom_Curve
 L: TopLoc_Location
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -270,7 +270,7 @@ Description
 -----------
 Makes edge with curve, location and range [p1, p2].
 ") MakeEdge;
-		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom_Curve> & curve, const TopLoc_Location & L, const Standard_Real p1, const Standard_Real p2);
+		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom_Curve> & curve, const TopLoc_Location & L, const double p1, const double p2);
 
 		/****** ShapeBuild_Edge::MakeEdge ******/
 		/****** md5 signature: 109d90ad9284a8640032afb7e98fabd1 ******/
@@ -293,7 +293,7 @@ Makes edge with pcurve and face.
 		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const TopoDS_Face & face);
 
 		/****** ShapeBuild_Edge::MakeEdge ******/
-		/****** md5 signature: 88e9aed13da38129c72a6dc41ddee75b ******/
+		/****** md5 signature: 5fbb0fc1c93d1bdfcaa2644ee2ddf565 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -301,8 +301,8 @@ Parameters
 edge: TopoDS_Edge
 pcurve: Geom2d_Curve
 face: TopoDS_Face
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -312,7 +312,7 @@ Description
 -----------
 Makes edge with pcurve, face and range [p1, p2].
 ") MakeEdge;
-		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const TopoDS_Face & face, const Standard_Real p1, const Standard_Real p2);
+		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const TopoDS_Face & face, const double p1, const double p2);
 
 		/****** ShapeBuild_Edge::MakeEdge ******/
 		/****** md5 signature: 554307a7f2511e208e591c34e55f51cc ******/
@@ -336,7 +336,7 @@ Makes edge with pcurve, surface and location.
 		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
 		/****** ShapeBuild_Edge::MakeEdge ******/
-		/****** md5 signature: 7976c2010dcf9efa9b0ec3996a9d0e0f ******/
+		/****** md5 signature: fe6691a940cd83191727960527060de7 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -345,8 +345,8 @@ edge: TopoDS_Edge
 pcurve: Geom2d_Curve
 S: Geom_Surface
 L: TopLoc_Location
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -356,10 +356,10 @@ Description
 -----------
 Makes edge with pcurve, surface, location and range [p1, p2].
 ") MakeEdge;
-		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real p1, const Standard_Real p2);
+		void MakeEdge(TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const double p1, const double p2);
 
 		/****** ShapeBuild_Edge::ReassignPCurve ******/
-		/****** md5 signature: eedcd30142f0ad4566d72eeb6adf4683 ******/
+		/****** md5 signature: b07b8fcac6dc23cf4f3390e0d76b29d6 ******/
 		%feature("compactdefaultargs") ReassignPCurve;
 		%feature("autodoc", "
 Parameters
@@ -376,7 +376,7 @@ Description
 -----------
 Reassign edge pcurve lying on face <old> to another face <sub>. If edge has two pcurves on <old> face, only one of them will be reassigned, and other will left alone. Similarly, if edge already had a pcurve on face <sub>, it will have two pcurves on it. Returns True if succeeded, False if no pcurve lying on <old> found.
 ") ReassignPCurve;
-		Standard_Boolean ReassignPCurve(const TopoDS_Edge & edge, const TopoDS_Face & old, const TopoDS_Face & sub);
+		bool ReassignPCurve(const TopoDS_Edge & edge, const TopoDS_Face & old, const TopoDS_Face & sub);
 
 		/****** ShapeBuild_Edge::RemoveCurve3d ******/
 		/****** md5 signature: 7b8d7623b7b24e340d8a01475f614ce6 ******/
@@ -475,14 +475,14 @@ Replace the PCurve in an Edge for the given Face In case if edge is seam, i.e. h
 		void ReplacePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom2d_Curve> & pcurve, const TopoDS_Face & face);
 
 		/****** ShapeBuild_Edge::SetRange3d ******/
-		/****** md5 signature: 0807ccb8f8adb5587984329cb315c2be ******/
+		/****** md5 signature: 3867b566c37c88b992f0f12ab187d55e ******/
 		%feature("compactdefaultargs") SetRange3d;
 		%feature("autodoc", "
 Parameters
 ----------
 edge: TopoDS_Edge
-first: float
-last: float
+first: double
+last: double
 
 Return
 -------
@@ -492,28 +492,28 @@ Description
 -----------
 Sets range on 3d curve only.
 ") SetRange3d;
-		void SetRange3d(const TopoDS_Edge & edge, const Standard_Real first, const Standard_Real last);
+		void SetRange3d(const TopoDS_Edge & edge, const double first, const double last);
 
 		/****** ShapeBuild_Edge::TransformPCurve ******/
-		/****** md5 signature: 988d463c51d5165a3d827e7cd66158e8 ******/
+		/****** md5 signature: 426c61df2058510cf7e84283e06fa418 ******/
 		%feature("compactdefaultargs") TransformPCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 pcurve: Geom2d_Curve
 trans: gp_Trsf2d
-uFact: float
+uFact: double
 
 Return
 -------
-aFirst: float
-aLast: float
+aFirst: double
+aLast: double
 
 Description
 -----------
 Transforms the PCurve with given matrix and affinity U factor.
 ") TransformPCurve;
-		opencascade::handle<Geom2d_Curve> TransformPCurve(const opencascade::handle<Geom2d_Curve> & pcurve, const gp_Trsf2d & trans, const Standard_Real uFact, Standard_Real &OutValue, Standard_Real &OutValue);
+		opencascade::handle<Geom2d_Curve> TransformPCurve(const opencascade::handle<Geom2d_Curve> & pcurve, const gp_Trsf2d & trans, const double uFact, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -543,7 +543,7 @@ Returns an empty Reshape.
 		 ShapeBuild_ReShape();
 
 		/****** ShapeBuild_ReShape::Apply ******/
-		/****** md5 signature: 12ba89fbea5e6ee53d81d4b37fbd9ef2 ******/
+		/****** md5 signature: 6ef8f9f387097d630f0f4b402cedf7a8 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -560,10 +560,10 @@ Description
 -----------
 Applies the substitutions requests to a shape //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and further exploring are done. ACTUALLY, NOT IMPLEMENTED BELOW TopAbs_FACE //! <buildmode> says how to do on a SOLID,SHELL ... if one of its sub-shapes has been changed: 0: at least one Replace or Remove -> COMPOUND, else as such 1: at least one Remove (Replace are ignored) -> COMPOUND 2: Replace and Remove are both ignored If Replace/Remove are ignored or absent, the result as same type as the starting shape.
 ") Apply;
-		virtual TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until, const Standard_Integer buildmode);
+		virtual TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until, const int buildmode);
 
 		/****** ShapeBuild_ReShape::Apply ******/
-		/****** md5 signature: 9fa21a223a211d6010aadfc1a9387cb1 ******/
+		/****** md5 signature: 0653041e9e194e63cf724e8334e16718 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -579,17 +579,17 @@ Description
 -----------
 Applies the substitutions requests to a shape. //! <until> gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and further exploring are done. //! NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
 ") Apply;
-		virtual TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until = TopAbs_SHAPE);
+		TopoDS_Shape Apply(const TopoDS_Shape & shape, const TopAbs_ShapeEnum until = TopAbs_SHAPE);
 
 		/****** ShapeBuild_ReShape::Status ******/
-		/****** md5 signature: 985ce37c5dc3d1c0dd4a10cb52f132ac ******/
+		/****** md5 signature: 2fa69cbfe4bcd324dd84f0fa921125eb ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
 newsh: TopoDS_Shape
-last: bool (optional, default to Standard_False)
+last: bool (optional, default to false)
 
 Return
 -------
@@ -599,10 +599,10 @@ Description
 -----------
 Returns a complete substitution status for a shape 0: not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 ") Status;
-		virtual Standard_Integer Status(const TopoDS_Shape & shape, TopoDS_Shape & newsh, const Standard_Boolean last = Standard_False);
+		int Status(const TopoDS_Shape & shape, TopoDS_Shape & newsh, const bool last = false);
 
 		/****** ShapeBuild_ReShape::Status ******/
-		/****** md5 signature: 99e3d5f98caf7305689b1d0bcc3d4886 ******/
+		/****** md5 signature: aab6d13ca9e1609820e9bcca52ac219f ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -617,7 +617,7 @@ Description
 -----------
 Queries the status of last call to Apply(shape,enum) OK: no (sub)shapes replaced or removed DONE1: source (starting) shape replaced DONE2: source (starting) shape removed DONE3: some subshapes replaced DONE4: some subshapes removed FAIL1: some replacements not done because of bad type of subshape.
 ") Status;
-		virtual Standard_Boolean Status(const ShapeExtend_Status status);
+		virtual bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -636,14 +636,14 @@ Queries the status of last call to Apply(shape,enum) OK: no (sub)shapes replaced
 class ShapeBuild_Vertex {
 	public:
 		/****** ShapeBuild_Vertex::CombineVertex ******/
-		/****** md5 signature: 4407a48668b1398c19e6849624256518 ******/
+		/****** md5 signature: b39f7c02b200a72e6a9c82af2b685cdd ******/
 		%feature("compactdefaultargs") CombineVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-tolFactor: float (optional, default to 1.0001)
+tolFactor: double (optional, default to 1.0001)
 
 Return
 -------
@@ -653,19 +653,19 @@ Description
 -----------
 Combines new vertex from two others. This new one is the smallest vertex which comprises both of the source vertices. The function takes into account the positions and tolerances of the source vertices. The tolerance of the new vertex will be equal to the minimal tolerance that is required to comprise source vertices multiplied by tolFactor (in order to avoid errors because of discreteness of calculations).
 ") CombineVertex;
-		TopoDS_Vertex CombineVertex(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const Standard_Real tolFactor = 1.0001);
+		TopoDS_Vertex CombineVertex(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2, const double tolFactor = 1.0001);
 
 		/****** ShapeBuild_Vertex::CombineVertex ******/
-		/****** md5 signature: 51f2a8e391a417018b98763c1d708317 ******/
+		/****** md5 signature: f262de088af432a73976195988ac2435 ******/
 		%feature("compactdefaultargs") CombineVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 pnt1: gp_Pnt
 pnt2: gp_Pnt
-tol1: float
-tol2: float
-tolFactor: float (optional, default to 1.0001)
+tol1: double
+tol2: double
+tolFactor: double (optional, default to 1.0001)
 
 Return
 -------
@@ -675,7 +675,7 @@ Description
 -----------
 The same function as above, except that it accepts two points and two tolerances instead of vertices.
 ") CombineVertex;
-		TopoDS_Vertex CombineVertex(const gp_Pnt & pnt1, const gp_Pnt & pnt2, const Standard_Real tol1, const Standard_Real tol2, const Standard_Real tolFactor = 1.0001);
+		TopoDS_Vertex CombineVertex(const gp_Pnt & pnt1, const gp_Pnt & pnt2, const double tol1, const double tol2, const double tolFactor = 1.0001);
 
 };
 

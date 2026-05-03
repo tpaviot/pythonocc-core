@@ -22,8 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TNaming.hxx>
 #include<TNaming_Builder.hxx>
 #include<TNaming_CopyShape.hxx>
-#include<TNaming_DataMapIteratorOfDataMapOfShapePtrRefShape.hxx>
-#include<TNaming_DataMapIteratorOfDataMapOfShapeShapesSet.hxx>
 #include<TNaming_DataMapOfShapePtrRefShape.hxx>
 #include<TNaming_DataMapOfShapeShapesSet.hxx>
 #include<TNaming_DeltaOnModification.hxx>
@@ -32,14 +30,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TNaming_Identifier.hxx>
 #include<TNaming_Iterator.hxx>
 #include<TNaming_IteratorOnShapesSet.hxx>
-#include<TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape.hxx>
-#include<TNaming_ListIteratorOfListOfMapOfShape.hxx>
-#include<TNaming_ListIteratorOfListOfNamedShape.hxx>
 #include<TNaming_ListOfIndexedDataMapOfShapeListOfShape.hxx>
 #include<TNaming_ListOfMapOfShape.hxx>
 #include<TNaming_ListOfNamedShape.hxx>
 #include<TNaming_Localizer.hxx>
-#include<TNaming_MapIteratorOfMapOfNamedShape.hxx>
 #include<TNaming_MapOfNamedShape.hxx>
 #include<TNaming_NCollections.hxx>
 #include<TNaming_Name.hxx>

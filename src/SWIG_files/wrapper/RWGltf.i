@@ -48,8 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwgltf.html"
 #include<TCollection_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
-#include<TDF_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Quantity_module.hxx>
 #include<Poly_module.hxx>
@@ -106,8 +104,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwgltf.html"
 %import TCollection.i
 %import XCAFPrs.i
 %import TDocStd.i
-%import TDF.i
-%import TColStd.i
 %import Message.i
 %import Quantity.i
 %import Poly.i
@@ -369,7 +365,6 @@ RWGltf_WriterTrsfFormat_TRS = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_TR
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Shared<NCollection_List<opencascade::handle<RWGltf_GltfFace>>> RWGltf_GltfFaceList;
 typedef rapidjson::Document::ValueType RWGltf_JsonValue;
 /* end typedefs declaration */
 
@@ -497,6 +492,24 @@ Set flag to ignore nodes without Geometry.
 ") SetSkipEmptyNodes;
 		void SetSkipEmptyNodes(bool theToSkip);
 
+		/****** RWGltf_CafReader::SetToApplyScale ******/
+		/****** md5 signature: ad3bf1bab2842e6850dab153d9497e89 ******/
+		%feature("compactdefaultargs") SetToApplyScale;
+		%feature("autodoc", "
+Parameters
+----------
+theToApplyScale: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set flag to apply non-uniform scaling directly to the triangulation (modify nodes). True by default. In case of False the average scale is applied to the transformation matrix.
+") SetToApplyScale;
+		void SetToApplyScale(bool theToApplyScale);
+
 		/****** RWGltf_CafReader::SetToKeepLateData ******/
 		/****** md5 signature: bf1347d776ae6167c6e96d6e182f1af6 ******/
 		%feature("compactdefaultargs") SetToKeepLateData;
@@ -516,7 +529,7 @@ Sets flag to keep information about deferred storage to load/unload data later.
 		void SetToKeepLateData(bool theToKeep);
 
 		/****** RWGltf_CafReader::SetToPrintDebugMessages ******/
-		/****** md5 signature: dcbcbd79fdeab4f6976a1573fd9e5905 ******/
+		/****** md5 signature: 7cb0c5857c767ca824e44b9e83a8c089 ******/
 		%feature("compactdefaultargs") SetToPrintDebugMessages;
 		%feature("autodoc", "
 Parameters
@@ -531,7 +544,7 @@ Description
 -----------
 Sets flag to print debug information.
 ") SetToPrintDebugMessages;
-		void SetToPrintDebugMessages(const Standard_Boolean theToPrint);
+		void SetToPrintDebugMessages(const bool theToPrint);
 
 		/****** RWGltf_CafReader::SetToSkipLateDataLoading ******/
 		/****** md5 signature: 69a6c7a7b6fdbd3dfbc1b2ba14c99da9 ******/
@@ -550,6 +563,19 @@ Description
 Sets flag to skip data loading.
 ") SetToSkipLateDataLoading;
 		void SetToSkipLateDataLoading(bool theToSkip);
+
+		/****** RWGltf_CafReader::ToApplyScale ******/
+		/****** md5 signature: 47f5d95f90bfe40110cfc63a2eb5ab8f ******/
+		%feature("compactdefaultargs") ToApplyScale;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if non-uniform scaling should be applied directly to the triangulation. False if the average scale should be applied to the transformation matrix.
+") ToApplyScale;
+		bool ToApplyScale();
 
 		/****** RWGltf_CafReader::ToKeepLateData ******/
 		/****** md5 signature: 2fd9c6b4aa6b4a6fcd0142c7db0dd364 ******/
@@ -660,7 +686,7 @@ class RWGltf_CafWriter : public Standard_Transient {
 		class RWGltf_StyledShape {};
 		class Hasher {};
 		/****** RWGltf_CafWriter::RWGltf_CafWriter ******/
-		/****** md5 signature: ff99e81d575a475273adc594a6a9069b ******/
+		/****** md5 signature: 70bc9d9c547fe880793d5f63bb230621 ******/
 		%feature("compactdefaultargs") RWGltf_CafWriter;
 		%feature("autodoc", "
 Parameters
@@ -678,7 +704,7 @@ Main constructor.
 Input parameter: theFile path to output glTF file 
 Input parameter: theIsBinary flag to write into binary glTF format (.glb).
 ") RWGltf_CafWriter;
-		 RWGltf_CafWriter(TCollection_AsciiString theFile, Standard_Boolean theIsBinary);
+		 RWGltf_CafWriter(TCollection_AsciiString theFile, bool theIsBinary);
 
 		/****** RWGltf_CafWriter::ChangeCoordinateSystemConverter ******/
 		/****** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ******/
@@ -785,15 +811,15 @@ Return name format for exporting Nodes; RWMesh_NameFormat_InstanceOrProduct by d
 		RWMesh_NameFormat NodeNameFormat();
 
 		/****** RWGltf_CafWriter::Perform ******/
-		/****** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ******/
+		/****** md5 signature: 4fe41c602875392c193863409f43c689 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRootLabels: TDF_LabelSequence
-theLabelFilter: TColStd_MapOfAsciiString *
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theRootLabels: NCollection_Sequence<TDF_Label>
+theLabelFilter: NCollection_Map<TCollection_AsciiString> *
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theProgress: Message_ProgressRange
 
 Return
@@ -810,16 +836,16 @@ Input parameter: theFileInfo map with file metadata to put into glTF header sect
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRootLabels, const NCollection_Map<TCollection_AsciiString> * theLabelFilter, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWGltf_CafWriter::Perform ******/
-		/****** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ******/
+		/****** md5 signature: 9fa7d5982eff451b653a549335726dd7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theProgress: Message_ProgressRange
 
 Return
@@ -834,7 +860,7 @@ Input parameter: theFileInfo map with file metadata to put into glTF header sect
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWGltf_CafWriter::SetCompressionParameters ******/
 		/****** md5 signature: f822f9c1b83a8bd720a91827f059b8c1 ******/
@@ -999,7 +1025,7 @@ Set flag to prefer keeping 16-bit indexes while merging face. Has effect only wi
 		void SetSplitIndices16(bool theToSplit);
 
 		/****** RWGltf_CafWriter::SetToEmbedTexturesInGlb ******/
-		/****** md5 signature: 3ebdf9ec402608f87c7a254baf5a2ed3 ******/
+		/****** md5 signature: 0c40afc501bbbea2c938eac74f06275e ******/
 		%feature("compactdefaultargs") SetToEmbedTexturesInGlb;
 		%feature("autodoc", "
 Parameters
@@ -1014,7 +1040,7 @@ Description
 -----------
 Set flag to write image textures into GLB file (binary gltf export).
 ") SetToEmbedTexturesInGlb;
-		void SetToEmbedTexturesInGlb(Standard_Boolean theToEmbedTexturesInGlb);
+		void SetToEmbedTexturesInGlb(bool theToEmbedTexturesInGlb);
 
 		/****** RWGltf_CafWriter::SetTransformationFormat ******/
 		/****** md5 signature: 9c5e4763a1df6fe364556ff7a71dcfa0 ******/
@@ -1035,7 +1061,7 @@ Set preferred transformation format for writing into glTF file.
 		void SetTransformationFormat(RWGltf_WriterTrsfFormat theFormat);
 
 		/****** RWGltf_CafWriter::ToEmbedTexturesInGlb ******/
-		/****** md5 signature: 929a783c967f4321720edabef49cbd9e ******/
+		/****** md5 signature: 85c26661c6c7b0ba10ebb8423a8432c8 ******/
 		%feature("compactdefaultargs") ToEmbedTexturesInGlb;
 		%feature("autodoc", "Return
 -------
@@ -1045,7 +1071,7 @@ Description
 -----------
 Return flag to write image textures into GLB file (binary gltf export); True by default. When set to False, texture images will be written as separate files. Has no effect on writing into non-binary format.
 ") ToEmbedTexturesInGlb;
-		Standard_Boolean ToEmbedTexturesInGlb();
+		bool ToEmbedTexturesInGlb();
 
 		/****** RWGltf_CafWriter::ToMergeFaces ******/
 		/****** md5 signature: 0d4ced3de8f6fb910d4ed5ea927a1a6a ******/
@@ -1289,7 +1315,7 @@ Return primitive array data elements.
 		const NCollection_Sequence<RWGltf_GltfPrimArrayData> & Data();
 
 		/****** RWGltf_GltfLatePrimitiveArray::HasDeferredData ******/
-		/****** md5 signature: 2e68cb99f0a96431d1e289930b5a3662 ******/
+		/****** md5 signature: 7b8fe1ecf07ce543ae3155b79ea55307 ******/
 		%feature("compactdefaultargs") HasDeferredData;
 		%feature("autodoc", "Return
 -------
@@ -1299,7 +1325,7 @@ Description
 -----------
 Return True if there is deferred storage and some triangulation data that can be loaded using LoadDeferredData().
 ") HasDeferredData;
-		virtual Standard_Boolean HasDeferredData();
+		bool HasDeferredData();
 
 		/****** RWGltf_GltfLatePrimitiveArray::HasStyle ******/
 		/****** md5 signature: 0269e4556c7e0b5145883ad478e02061 ******/
@@ -1479,7 +1505,7 @@ Set type of primitive array.
 class RWGltf_GltfMaterialMap : public RWMesh_MaterialMap {
 	public:
 		/****** RWGltf_GltfMaterialMap::RWGltf_GltfMaterialMap ******/
-		/****** md5 signature: 72d42c8ae7b75c180626db034ae283e4 ******/
+		/****** md5 signature: 1708e16f39cf5219913f24abac44da9c ******/
 		%feature("compactdefaultargs") RWGltf_GltfMaterialMap;
 		%feature("autodoc", "
 Parameters
@@ -1495,7 +1521,7 @@ Description
 -----------
 Main constructor.
 ") RWGltf_GltfMaterialMap;
-		 RWGltf_GltfMaterialMap(TCollection_AsciiString theFile, const Standard_Integer theDefSamplerId);
+		 RWGltf_GltfMaterialMap(TCollection_AsciiString theFile, const int theDefSamplerId);
 
 		/****** RWGltf_GltfMaterialMap::AddGlbImages ******/
 		/****** md5 signature: 8f702f135cd650ff90bbfd94f352532d ******/
@@ -1518,7 +1544,7 @@ Input parameter: theStyle material images to add.
 		void AddGlbImages(std::ostream &OutValue, const XCAFPrs_Style & theStyle);
 
 		/****** RWGltf_GltfMaterialMap::AddImages ******/
-		/****** md5 signature: 3aa5121db2a6a900aa23f78102a3d9de ******/
+		/****** md5 signature: 0fbca145310db62d0ec1a8398fb1bd48 ******/
 		%feature("compactdefaultargs") AddImages;
 		%feature("autodoc", "
 Parameters
@@ -1537,7 +1563,7 @@ Add material images in case of non-GLB file (an alternative to AddImagesToGlb() 
 		void AddImages(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
 
 		/****** RWGltf_GltfMaterialMap::AddMaterial ******/
-		/****** md5 signature: f00566a55f97100149cb0a32887c56e2 ******/
+		/****** md5 signature: eeca62b87a25ddfb24f771de7fa73ba1 ******/
 		%feature("compactdefaultargs") AddMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1556,7 +1582,7 @@ Add material.
 		void AddMaterial(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
 
 		/****** RWGltf_GltfMaterialMap::AddTextures ******/
-		/****** md5 signature: e7f7e21ca77d944a33d6f85cccc4fadf ******/
+		/****** md5 signature: f89d484ad04f97ce24acc6fe672f76df ******/
 		%feature("compactdefaultargs") AddTextures;
 		%feature("autodoc", "
 Parameters
@@ -1575,7 +1601,7 @@ Add material textures.
 		void AddTextures(RWGltf_GltfOStreamWriter * theWriter, const XCAFPrs_Style & theStyle, Standard_Boolean &OutValue);
 
 		/****** RWGltf_GltfMaterialMap::FlushGlbBufferViews ******/
-		/****** md5 signature: 6637f05a69ee314b2da8453cf1e79868 ******/
+		/****** md5 signature: 7b8fb87a2a142a3e718c2fce8634b7f7 ******/
 		%feature("compactdefaultargs") FlushGlbBufferViews;
 		%feature("autodoc", "
 Parameters
@@ -1591,7 +1617,7 @@ Description
 -----------
 Add bufferView's into RWGltf_GltfRootElement_BufferViews section with images collected by AddImagesToGlb().
 ") FlushGlbBufferViews;
-		void FlushGlbBufferViews(RWGltf_GltfOStreamWriter * theWriter, const Standard_Integer theBinDataBufferId, Standard_Integer &OutValue);
+		void FlushGlbBufferViews(RWGltf_GltfOStreamWriter * theWriter, const int theBinDataBufferId, Standard_Integer &OutValue);
 
 		/****** RWGltf_GltfMaterialMap::FlushGlbImages ******/
 		/****** md5 signature: 0b5d6da57d2a5e07a4250fe93451c613 ******/
@@ -1612,7 +1638,7 @@ Write RWGltf_GltfRootElement_Images section with images collected by AddImagesTo
 		void FlushGlbImages(RWGltf_GltfOStreamWriter * theWriter);
 
 		/****** RWGltf_GltfMaterialMap::NbImages ******/
-		/****** md5 signature: 287f9b24a015fc67da1fac6d39501fc7 ******/
+		/****** md5 signature: 8bafc2334840f6bb93e4f953cc7e2cb1 ******/
 		%feature("compactdefaultargs") NbImages;
 		%feature("autodoc", "Return
 -------
@@ -1622,10 +1648,10 @@ Description
 -----------
 Return extent of images map.
 ") NbImages;
-		Standard_Integer NbImages();
+		int NbImages();
 
 		/****** RWGltf_GltfMaterialMap::NbTextures ******/
-		/****** md5 signature: efcc0445631a819a279f5a21b5f29bcb ******/
+		/****** md5 signature: eb033b856d682ffddf42d7c8d45dc3d8 ******/
 		%feature("compactdefaultargs") NbTextures;
 		%feature("autodoc", "Return
 -------
@@ -1635,7 +1661,7 @@ Description
 -----------
 Return extent of textures map.
 ") NbTextures;
-		Standard_Integer NbTextures();
+		int NbTextures();
 
 		/****** RWGltf_GltfMaterialMap::baseColorTexture ******/
 		/****** md5 signature: dfff25579f1db3e6f1635a79761ecf6f ******/
@@ -1747,7 +1773,7 @@ No available documentation.
 class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode> {
 	public:
 		/****** RWGltf_GltfSceneNodeMap::RWGltf_GltfSceneNodeMap ******/
-		/****** md5 signature: 7eb6a53ba949dbdb457796ba63fb4a03 ******/
+		/****** md5 signature: a443fd32429ccf85f3e6c503ccc0ccaa ******/
 		%feature("compactdefaultargs") RWGltf_GltfSceneNodeMap;
 		%feature("autodoc", "Return
 -------
@@ -1760,7 +1786,7 @@ Empty constructor.
 		 RWGltf_GltfSceneNodeMap();
 
 		/****** RWGltf_GltfSceneNodeMap::FindIndex ******/
-		/****** md5 signature: 47457616668af339aa3d60c8b18b08d5 ******/
+		/****** md5 signature: 9e367577ee67f2b9e401be9bed15350c ******/
 		%feature("compactdefaultargs") FindIndex;
 		%feature("autodoc", "
 Parameters
@@ -1775,7 +1801,7 @@ Description
 -----------
 Find index from document node string identifier.
 ") FindIndex;
-		Standard_Integer FindIndex(TCollection_AsciiString theNodeId);
+		int FindIndex(TCollection_AsciiString theNodeId);
 
 };
 
@@ -1880,6 +1906,34 @@ Description
 Loads only primitive arrays saved as stream buffer (it is primarily glTF data encoded in base64 saved to temporary buffer during glTF file reading).
 ") LoadStreamData;
 		bool LoadStreamData(const opencascade::handle<RWMesh_TriangulationSource> & theSourceMesh, const opencascade::handle<Poly_Triangulation> & theDestMesh);
+
+		/****** RWGltf_TriangulationReader::ReadStream ******/
+		/****** md5 signature: d652b358d904aaeeb4f9ff61aed64c46 ******/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "
+Parameters
+----------
+theSourceMesh: RWGltf_GltfLatePrimitiveArray
+theDestMesh: Poly_Triangulation
+theStream: str
+theAccessor: RWGltf_GltfAccessor
+theType: RWGltf_GltfArrayType
+
+Return
+-------
+bool
+
+Description
+-----------
+Fills triangulation, lines and points data. 
+Parameter theSourceGltfMesh source glTF triangulation 
+Parameter theDestMesh triangulation to be modified 
+Parameter theStream input stream to read from 
+Parameter theAccessor buffer accessor 
+Parameter theType  array type 
+Return: False on error.
+") ReadStream;
+		bool ReadStream(const opencascade::handle<RWGltf_GltfLatePrimitiveArray> & theSourceMesh, const opencascade::handle<Poly_Triangulation> & theDestMesh, std::istream & theStream, const RWGltf_GltfAccessor & theAccessor, RWGltf_GltfArrayType theType);
 
 };
 

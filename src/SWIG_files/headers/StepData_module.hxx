@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<StepData.hxx>
 #include<StepData_Array1OfField.hxx>
-#include<StepData_ConfParameters.hxx>
 #include<StepData_DefaultGeneral.hxx>
 #include<StepData_Described.hxx>
 #include<StepData_ECDescr.hxx>

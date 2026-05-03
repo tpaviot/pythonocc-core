@@ -24,7 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XCAFDimTolObjects_DatumModifWithValue.hxx>
 #include<XCAFDimTolObjects_DatumModifiersSequence.hxx>
 #include<XCAFDimTolObjects_DatumObject.hxx>
-#include<XCAFDimTolObjects_DatumObjectSequence.hxx>
 #include<XCAFDimTolObjects_DatumSingleModif.hxx>
 #include<XCAFDimTolObjects_DatumTargetType.hxx>
 #include<XCAFDimTolObjects_DimensionFormVariance.hxx>
@@ -32,14 +31,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XCAFDimTolObjects_DimensionModif.hxx>
 #include<XCAFDimTolObjects_DimensionModifiersSequence.hxx>
 #include<XCAFDimTolObjects_DimensionObject.hxx>
-#include<XCAFDimTolObjects_DimensionObjectSequence.hxx>
 #include<XCAFDimTolObjects_DimensionQualifier.hxx>
 #include<XCAFDimTolObjects_DimensionType.hxx>
 #include<XCAFDimTolObjects_GeomToleranceMatReqModif.hxx>
 #include<XCAFDimTolObjects_GeomToleranceModif.hxx>
 #include<XCAFDimTolObjects_GeomToleranceModifiersSequence.hxx>
 #include<XCAFDimTolObjects_GeomToleranceObject.hxx>
-#include<XCAFDimTolObjects_GeomToleranceObjectSequence.hxx>
 #include<XCAFDimTolObjects_GeomToleranceType.hxx>
 #include<XCAFDimTolObjects_GeomToleranceTypeValue.hxx>
 #include<XCAFDimTolObjects_GeomToleranceZoneModif.hxx>

@@ -19,11 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define GEOM2DLPROP_HXX
 
 
-#include<Geom2dLProp_CLProps2d.hxx>
-#include<Geom2dLProp_CurAndInf2d.hxx>
-#include<Geom2dLProp_Curve2dTool.hxx>
-#include<Geom2dLProp_FuncCurExt.hxx>
-#include<Geom2dLProp_FuncCurNul.hxx>
-#include<Geom2dLProp_NumericCurInf2d.hxx>
 
 #endif // GEOM2DLPROP_HXX

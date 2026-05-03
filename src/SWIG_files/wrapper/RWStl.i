@@ -117,6 +117,26 @@ Read triangulation from an Ascii STL file In case of error, returns Null handle.
 ") ReadAscii;
 		static opencascade::handle<Poly_Triangulation> ReadAscii(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****** RWStl::ReadAsciiStream ******/
+		/****** md5 signature: df5114d215cb69b8828e151dcaece8e5 ******/
+		%feature("compactdefaultargs") ReadAsciiStream;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theMergeAngle: double (optional, default to M_PI/2.0)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+opencascade::handle<Poly_Triangulation>
+
+Description
+-----------
+Read triangulation from ASCII STL stream In case of error, returns Null handle.
+") ReadAsciiStream;
+		static opencascade::handle<Poly_Triangulation> ReadAsciiStream(std::istream & theStream, const double theMergeAngle = M_PI/2.0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 		/****** RWStl::ReadBinary ******/
 		/****** md5 signature: 715829aa852a6829b2792b5ff41018e6 ******/
 		%feature("compactdefaultargs") ReadBinary;
@@ -135,6 +155,26 @@ Description
 Read triangulation from a binary STL file In case of error, returns Null handle.
 ") ReadBinary;
 		static opencascade::handle<Poly_Triangulation> ReadBinary(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** RWStl::ReadBinaryStream ******/
+		/****** md5 signature: d94d56ed2cdf296707a2ca997b0ec2e1 ******/
+		%feature("compactdefaultargs") ReadBinaryStream;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theMergeAngle: double (optional, default to M_PI/2.0)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+opencascade::handle<Poly_Triangulation>
+
+Description
+-----------
+Read triangulation from binary STL stream In case of error, returns Null handle.
+") ReadBinaryStream;
+		static opencascade::handle<Poly_Triangulation> ReadBinaryStream(std::istream & theStream, const double theMergeAngle = M_PI/2.0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::ReadFile ******/
 		/****** md5 signature: 64c7a7ea1e7b324b70672cedadb30bca ******/
@@ -156,12 +196,12 @@ Read specified STL file and returns its content as triangulation. In case of err
 		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::ReadFile ******/
-		/****** md5 signature: 742addde06afd9d8130198556696e689 ******/
+		/****** md5 signature: 30ac16ed8f9a3bc9e611e8bf3218fe52 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-theFile: str
+theFile: char *
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -172,16 +212,16 @@ Description
 -----------
 Read specified STL file and returns its content as triangulation. In case of error, returns Null handle.
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(Standard_CString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * const theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::ReadFile ******/
-		/****** md5 signature: 752aa6341824937d3d7f5d58f0ca70e0 ******/
+		/****** md5 signature: 7914feca9ad0c10073884c16adb0f818 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-theFile: str
-theMergeAngle: float
+theFile: char *
+theMergeAngle: double
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -196,16 +236,16 @@ Input parameter: theMergeAngle maximum angle in radians between triangles to mer
 Input parameter: theProgress progress indicator 
 Return: result triangulation or NULL in case of error.
 ") ReadFile;
-		static opencascade::handle<Poly_Triangulation> ReadFile(Standard_CString theFile, const Standard_Real theMergeAngle, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static opencascade::handle<Poly_Triangulation> ReadFile(const char * const theFile, const double theMergeAngle, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::ReadFile ******/
-		/****** md5 signature: c6a3a71adb575f87eef05ec5d74e495a ******/
+		/****** md5 signature: e3dd057238e10e9129268d923dfff4da ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-theFile: str
-theMergeAngle: float
+theFile: char *
+theMergeAngle: double
 theTriangList: Poly_Triangulation
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -220,10 +260,30 @@ Input parameter: theFile file path to read
 Input parameter: theMergeAngle maximum angle in radians between triangles to merge equal nodes; M_PI/2 means ignore angle @param[out] theTriangList triangulation list for multi-domain case 
 Input parameter: theProgress progress indicator.
 ") ReadFile;
-		static void ReadFile(Standard_CString theFile, const Standard_Real theMergeAngle, NCollection_Sequence<opencascade::handle<Poly_Triangulation> > & theTriangList, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static void ReadFile(const char * const theFile, const double theMergeAngle, NCollection_Sequence<opencascade::handle<Poly_Triangulation> > & theTriangList, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** RWStl::ReadStream ******/
+		/****** md5 signature: 59fc68980f5876e52974817c37ad1076 ******/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theMergeAngle: double (optional, default to M_PI/2.0)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+opencascade::handle<Poly_Triangulation>
+
+Description
+-----------
+Read STL data from stream (auto-detects ASCII vs Binary) In case of error, returns Null handle.
+") ReadStream;
+		static opencascade::handle<Poly_Triangulation> ReadStream(std::istream & theStream, const double theMergeAngle = M_PI/2.0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::WriteAscii ******/
-		/****** md5 signature: 8cb39ba5b5c9e3b27f4e1ec1bd12de9c ******/
+		/****** md5 signature: 0b7bcde568e3cf995a2f68b08b61d967 ******/
 		%feature("compactdefaultargs") WriteAscii;
 		%feature("autodoc", "
 Parameters
@@ -240,10 +300,29 @@ Description
 -----------
 write the meshing in a file following the Ascii format of an STL file. Returns false if the cannot be opened;.
 ") WriteAscii;
-		static Standard_Boolean WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** RWStl::WriteAscii ******/
+		/****** md5 signature: e4fe51b24d7e0af8c273902ea84f2b9c ******/
+		%feature("compactdefaultargs") WriteAscii;
+		%feature("autodoc", "
+Parameters
+----------
+theMesh: Poly_Triangulation
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Write triangulation to ASCII STL stream.
+") WriteAscii;
+		static bool WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::WriteBinary ******/
-		/****** md5 signature: 3a7e5b47e0a20ed5065a6f3593a90ac4 ******/
+		/****** md5 signature: 339cb5ccd11286c5ff31f51593e7a6e5 ******/
 		%feature("compactdefaultargs") WriteBinary;
 		%feature("autodoc", "
 Parameters
@@ -260,7 +339,26 @@ Description
 -----------
 Write triangulation to binary STL file. binary format of an STL file. Returns false if the cannot be opened;.
 ") WriteBinary;
-		static Standard_Boolean WriteBinary(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool WriteBinary(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****** RWStl::WriteBinary ******/
+		/****** md5 signature: 299a60f2d06ae3e257c3c04279f8779a ******/
+		%feature("compactdefaultargs") WriteBinary;
+		%feature("autodoc", "
+Parameters
+----------
+theMesh: Poly_Triangulation
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Write triangulation to binary STL stream.
+") WriteBinary;
+		static bool WriteBinary(const opencascade::handle<Poly_Triangulation> & theMesh, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -295,12 +393,16 @@ def rwstl_ReadAscii(*args):
 	return rwstl.ReadAscii(*args)
 
 @deprecated
+def rwstl_ReadAsciiStream(*args):
+	return rwstl.ReadAsciiStream(*args)
+
+@deprecated
 def rwstl_ReadBinary(*args):
 	return rwstl.ReadBinary(*args)
 
 @deprecated
-def rwstl_ReadFile(*args):
-	return rwstl.ReadFile(*args)
+def rwstl_ReadBinaryStream(*args):
+	return rwstl.ReadBinaryStream(*args)
 
 @deprecated
 def rwstl_ReadFile(*args):
@@ -313,10 +415,26 @@ def rwstl_ReadFile(*args):
 @deprecated
 def rwstl_ReadFile(*args):
 	return rwstl.ReadFile(*args)
+
+@deprecated
+def rwstl_ReadFile(*args):
+	return rwstl.ReadFile(*args)
+
+@deprecated
+def rwstl_ReadStream(*args):
+	return rwstl.ReadStream(*args)
 
 @deprecated
 def rwstl_WriteAscii(*args):
 	return rwstl.WriteAscii(*args)
+
+@deprecated
+def rwstl_WriteAscii(*args):
+	return rwstl.WriteAscii(*args)
+
+@deprecated
+def rwstl_WriteBinary(*args):
+	return rwstl.WriteBinary(*args)
 
 @deprecated
 def rwstl_WriteBinary(*args):

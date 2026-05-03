@@ -31,18 +31,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepDS_CurveExplorer.hxx>
 #include<TopOpeBRepDS_CurveIterator.hxx>
 #include<TopOpeBRepDS_CurvePointInterference.hxx>
-#include<TopOpeBRepDS_DRAW.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfDataMapOfCheckStatus.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfDataMapOfIntegerListOfInterference.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceListOfInterference.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfDataMapOfInterferenceShape.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeListOfShapeOn1State.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfDataMapOfShapeState.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfMapOfCurve.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfMapOfIntegerShapeData.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfMapOfPoint.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfMapOfSurface.hxx>
-#include<TopOpeBRepDS_DataMapIteratorOfShapeSurface.hxx>
 #include<TopOpeBRepDS_DataMapOfCheckStatus.hxx>
 #include<TopOpeBRepDS_DataMapOfIntegerListOfInterference.hxx>
 #include<TopOpeBRepDS_DataMapOfInterferenceListOfInterference.hxx>
@@ -50,7 +38,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State.hxx>
 #include<TopOpeBRepDS_DataMapOfShapeState.hxx>
 #include<TopOpeBRepDS_DataStructure.hxx>
-#include<TopOpeBRepDS_DoubleMapIteratorOfDoubleMapOfIntegerShape.hxx>
 #include<TopOpeBRepDS_DoubleMapOfIntegerShape.hxx>
 #include<TopOpeBRepDS_Dumper.hxx>
 #include<TopOpeBRepDS_EIR.hxx>
@@ -74,7 +61,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepDS_InterferenceIterator.hxx>
 #include<TopOpeBRepDS_InterferenceTool.hxx>
 #include<TopOpeBRepDS_Kind.hxx>
-#include<TopOpeBRepDS_ListIteratorOfListOfInterference.hxx>
 #include<TopOpeBRepDS_ListOfInterference.hxx>
 #include<TopOpeBRepDS_ListOfShapeOn1State.hxx>
 #include<TopOpeBRepDS_MapOfCurve.hxx>

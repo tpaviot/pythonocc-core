@@ -44,15 +44,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<math_module.hxx>
-#include<Adaptor3d_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
+#include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAdaptor_module.hxx>
+#include<math_module.hxx>
 #include<Precision_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -62,15 +61,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import math.i
-%import Adaptor3d.i
 %import Adaptor2d.i
 %import Geom2d.i
 %import gp.i
 %import GeomAbs.i
-%import TColStd.i
+%import Adaptor3d.i
 %import Geom.i
 %import GeomAdaptor.i
+%import math.i
 
 %pythoncode {
 from enum import IntEnum
@@ -130,12 +128,6 @@ Extrema_ExtFlag_MINMAX = Extrema_ExtFlag.Extrema_ExtFlag_MINMAX
 /* handles */
 %wrap_handle(Extrema_ExtPExtS)
 %wrap_handle(Extrema_ExtPRevS)
-%wrap_handle(Extrema_HArray1OfPOnCurv)
-%wrap_handle(Extrema_HArray1OfPOnCurv2d)
-%wrap_handle(Extrema_HArray1OfPOnSurf)
-%wrap_handle(Extrema_HArray2OfPOnCurv)
-%wrap_handle(Extrema_HArray2OfPOnCurv2d)
-%wrap_handle(Extrema_HArray2OfPOnSurf)
 /* end handles declaration */
 
 /* templates */
@@ -172,8 +164,8 @@ Array1ExtendIter(Extrema_POnSurf)
         return self.Size()
     }
 };
-%template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller<Standard_Integer,Bnd_Sphere>;
-%template(Extrema_UBTreeOfSphere) NCollection_UBTree<Standard_Integer,Bnd_Sphere>;
+%template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller<int,Bnd_Sphere>;
+%template(Extrema_UBTreeOfSphere) NCollection_UBTree<int,Bnd_Sphere>;
 /* end templates declaration */
 
 /* typedefs */
@@ -184,623 +176,19 @@ typedef NCollection_Array2<Extrema_POnCurv> Extrema_Array2OfPOnCurv;
 typedef NCollection_Array2<Extrema_POnCurv2d> Extrema_Array2OfPOnCurv2d;
 typedef NCollection_Array2<Extrema_POnSurf> Extrema_Array2OfPOnSurf;
 typedef NCollection_Array2<Extrema_POnSurfParams> Extrema_Array2OfPOnSurfParams;
+typedef NCollection_HArray1<Extrema_POnCurv> Extrema_HArray1OfPOnCurv;
+typedef NCollection_HArray1<Extrema_POnCurv2d> Extrema_HArray1OfPOnCurv2d;
+typedef NCollection_HArray1<Extrema_POnSurf> Extrema_HArray1OfPOnSurf;
+typedef NCollection_HArray2<Extrema_POnCurv> Extrema_HArray2OfPOnCurv;
+typedef NCollection_HArray2<Extrema_POnCurv2d> Extrema_HArray2OfPOnCurv2d;
+typedef NCollection_HArray2<Extrema_POnSurf> Extrema_HArray2OfPOnSurf;
 typedef NCollection_Handle<Extrema_UBTreeOfSphere> Extrema_HUBTreeOfSphere;
 typedef NCollection_Sequence<Extrema_POnCurv> Extrema_SequenceOfPOnCurv;
 typedef NCollection_Sequence<Extrema_POnCurv2d> Extrema_SequenceOfPOnCurv2d;
 typedef NCollection_Sequence<Extrema_POnSurf> Extrema_SequenceOfPOnSurf;
-typedef NCollection_UBTreeFiller<Standard_Integer, Bnd_Sphere> Extrema_UBTreeFillerOfSphere;
-typedef NCollection_UBTree<Standard_Integer, Bnd_Sphere> Extrema_UBTreeOfSphere;
+typedef NCollection_UBTreeFiller<int, Bnd_Sphere> Extrema_UBTreeFillerOfSphere;
+typedef NCollection_UBTree<int, Bnd_Sphere> Extrema_UBTreeOfSphere;
 /* end typedefs declaration */
-
-/*******************************
-* class Extrema_CCLocFOfLocECC *
-*******************************/
-class Extrema_CCLocFOfLocECC : public math_FunctionSetWithDerivatives {
-	public:
-		/****** Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC ******/
-		/****** md5 signature: 09f07e8318a21d857c0522bf02f9cc94 ******/
-		%feature("compactdefaultargs") Extrema_CCLocFOfLocECC;
-		%feature("autodoc", "
-Parameters
-----------
-thetol: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_CCLocFOfLocECC;
-		 Extrema_CCLocFOfLocECC(const Standard_Real thetol = 1.0e-10);
-
-		/****** Extrema_CCLocFOfLocECC::Extrema_CCLocFOfLocECC ******/
-		/****** md5 signature: 090fe2e06cec13f50f51a29baf2ee8ce ******/
-		%feature("compactdefaultargs") Extrema_CCLocFOfLocECC;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor3d_Curve
-C2: Adaptor3d_Curve
-thetol: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_CCLocFOfLocECC;
-		 Extrema_CCLocFOfLocECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real thetol = 1.0e-10);
-
-		/****** Extrema_CCLocFOfLocECC::CurvePtr ******/
-		/****** md5 signature: 98417ecf956a56db97322adfa51c9321 ******/
-		%feature("compactdefaultargs") CurvePtr;
-		%feature("autodoc", "
-Parameters
-----------
-theRank: int
-
-Return
--------
-Standard_Address
-
-Description
------------
-Returns a pointer to the curve specified in the constructor or in SetCurve() method.
-") CurvePtr;
-		Standard_Address CurvePtr(const Standard_Integer theRank);
-
-		/****** Extrema_CCLocFOfLocECC::Derivatives ******/
-		/****** md5 signature: 1d38afd641c7de1e5982feb10f2b7ece ******/
-		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "
-Parameters
-----------
-UV: math_Vector
-DF: math_Matrix
-
-Return
--------
-bool
-
-Description
------------
-Calculate Fi'(U,V).
-") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
-
-		/****** Extrema_CCLocFOfLocECC::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_CCLocFOfLocECC::NbEquations ******/
-		/****** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ******/
-		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-No available documentation.
-") NbEquations;
-		virtual Standard_Integer NbEquations();
-
-		/****** Extrema_CCLocFOfLocECC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_CCLocFOfLocECC::NbVariables ******/
-		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
-		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-No available documentation.
-") NbVariables;
-		virtual Standard_Integer NbVariables();
-
-		/****** Extrema_CCLocFOfLocECC::Points ******/
-		/****** md5 signature: 3794ed44489c98c8247e475c96bba9a2 ******/
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-P1: Extrema_POnCurv
-P2: Extrema_POnCurv
-
-Return
--------
-None
-
-Description
------------
-Return the points of the Nth extreme distance.
-") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
-
-		/****** Extrema_CCLocFOfLocECC::SearchOfTolerance ******/
-		/****** md5 signature: 4552b046bde68eb9a19619f431484203 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-C: Standard_Address
-
-Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance(const Standard_Address C);
-
-		/****** Extrema_CCLocFOfLocECC::SetCurve ******/
-		/****** md5 signature: cf01dfc00c20cb696f12c0297a7cad73 ******/
-		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "
-Parameters
-----------
-theRank: int
-C1: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") SetCurve;
-		void SetCurve(const Standard_Integer theRank, const Adaptor3d_Curve & C1);
-
-		/****** Extrema_CCLocFOfLocECC::SetTolerance ******/
-		/****** md5 signature: 6e6be0760517a3f5431539a6e86d9f19 ******/
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-theTol: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") SetTolerance;
-		void SetTolerance(const Standard_Real theTol);
-
-		/****** Extrema_CCLocFOfLocECC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Return the value of the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_CCLocFOfLocECC::SubIntervalInitialize ******/
-		/****** md5 signature: 63a75b85c368de02a3ec6e6d8387c3d9 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: math_Vector
-theUlast: math_Vector
-
-Return
--------
-None
-
-Description
------------
-Determines of boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const math_Vector & theUfirst, const math_Vector & theUlast);
-
-		/****** Extrema_CCLocFOfLocECC::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns a tolerance specified in the constructor or in SetTolerance() method.
-") Tolerance;
-		Standard_Real Tolerance();
-
-		/****** Extrema_CCLocFOfLocECC::Value ******/
-		/****** md5 signature: 03c8e8d2d0c02825e7a78c74d4041f96 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-UV: math_Vector
-F: math_Vector
-
-Return
--------
-bool
-
-Description
------------
-Calculate Fi(U,V).
-") Value;
-		virtual Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
-
-		/****** Extrema_CCLocFOfLocECC::Values ******/
-		/****** md5 signature: aecc35a594e467ec2fc262dd639056f5 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-UV: math_Vector
-F: math_Vector
-DF: math_Matrix
-
-Return
--------
-bool
-
-Description
------------
-Calculate Fi(U,V) and Fi'(U,V).
-") Values;
-		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
-
-};
-
-
-%extend Extrema_CCLocFOfLocECC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************************
-* class Extrema_CCLocFOfLocECC2d *
-*********************************/
-class Extrema_CCLocFOfLocECC2d : public math_FunctionSetWithDerivatives {
-	public:
-		/****** Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d ******/
-		/****** md5 signature: e1f7f43c9b7b740af089fcb74aafe995 ******/
-		%feature("compactdefaultargs") Extrema_CCLocFOfLocECC2d;
-		%feature("autodoc", "
-Parameters
-----------
-thetol: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_CCLocFOfLocECC2d;
-		 Extrema_CCLocFOfLocECC2d(const Standard_Real thetol = 1.0e-10);
-
-		/****** Extrema_CCLocFOfLocECC2d::Extrema_CCLocFOfLocECC2d ******/
-		/****** md5 signature: e674268ba5666a0204c98410925aeeb8 ******/
-		%feature("compactdefaultargs") Extrema_CCLocFOfLocECC2d;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor2d_Curve2d
-C2: Adaptor2d_Curve2d
-thetol: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_CCLocFOfLocECC2d;
-		 Extrema_CCLocFOfLocECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real thetol = 1.0e-10);
-
-		/****** Extrema_CCLocFOfLocECC2d::CurvePtr ******/
-		/****** md5 signature: 98417ecf956a56db97322adfa51c9321 ******/
-		%feature("compactdefaultargs") CurvePtr;
-		%feature("autodoc", "
-Parameters
-----------
-theRank: int
-
-Return
--------
-Standard_Address
-
-Description
------------
-Returns a pointer to the curve specified in the constructor or in SetCurve() method.
-") CurvePtr;
-		Standard_Address CurvePtr(const Standard_Integer theRank);
-
-		/****** Extrema_CCLocFOfLocECC2d::Derivatives ******/
-		/****** md5 signature: 1d38afd641c7de1e5982feb10f2b7ece ******/
-		%feature("compactdefaultargs") Derivatives;
-		%feature("autodoc", "
-Parameters
-----------
-UV: math_Vector
-DF: math_Matrix
-
-Return
--------
-bool
-
-Description
------------
-Calculate Fi'(U,V).
-") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
-
-		/****** Extrema_CCLocFOfLocECC2d::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_CCLocFOfLocECC2d::NbEquations ******/
-		/****** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ******/
-		%feature("compactdefaultargs") NbEquations;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-No available documentation.
-") NbEquations;
-		virtual Standard_Integer NbEquations();
-
-		/****** Extrema_CCLocFOfLocECC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_CCLocFOfLocECC2d::NbVariables ******/
-		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
-		%feature("compactdefaultargs") NbVariables;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-No available documentation.
-") NbVariables;
-		virtual Standard_Integer NbVariables();
-
-		/****** Extrema_CCLocFOfLocECC2d::Points ******/
-		/****** md5 signature: b11c393bae576338fc3f288ecb955b49 ******/
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-P1: Extrema_POnCurv2d
-P2: Extrema_POnCurv2d
-
-Return
--------
-None
-
-Description
------------
-Return the points of the Nth extreme distance.
-") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
-
-		/****** Extrema_CCLocFOfLocECC2d::SearchOfTolerance ******/
-		/****** md5 signature: 4552b046bde68eb9a19619f431484203 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-C: Standard_Address
-
-Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance(const Standard_Address C);
-
-		/****** Extrema_CCLocFOfLocECC2d::SetCurve ******/
-		/****** md5 signature: 2374b0cbe8538923ca7a60014f115586 ******/
-		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "
-Parameters
-----------
-theRank: int
-C1: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") SetCurve;
-		void SetCurve(const Standard_Integer theRank, const Adaptor2d_Curve2d & C1);
-
-		/****** Extrema_CCLocFOfLocECC2d::SetTolerance ******/
-		/****** md5 signature: 6e6be0760517a3f5431539a6e86d9f19 ******/
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-theTol: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") SetTolerance;
-		void SetTolerance(const Standard_Real theTol);
-
-		/****** Extrema_CCLocFOfLocECC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Return the value of the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_CCLocFOfLocECC2d::SubIntervalInitialize ******/
-		/****** md5 signature: 63a75b85c368de02a3ec6e6d8387c3d9 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: math_Vector
-theUlast: math_Vector
-
-Return
--------
-None
-
-Description
------------
-Determines of boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const math_Vector & theUfirst, const math_Vector & theUlast);
-
-		/****** Extrema_CCLocFOfLocECC2d::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
-		%feature("compactdefaultargs") Tolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns a tolerance specified in the constructor or in SetTolerance() method.
-") Tolerance;
-		Standard_Real Tolerance();
-
-		/****** Extrema_CCLocFOfLocECC2d::Value ******/
-		/****** md5 signature: 03c8e8d2d0c02825e7a78c74d4041f96 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-UV: math_Vector
-F: math_Vector
-
-Return
--------
-bool
-
-Description
------------
-Calculate Fi(U,V).
-") Value;
-		virtual Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
-
-		/****** Extrema_CCLocFOfLocECC2d::Values ******/
-		/****** md5 signature: aecc35a594e467ec2fc262dd639056f5 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-UV: math_Vector
-F: math_Vector
-DF: math_Matrix
-
-Return
--------
-bool
-
-Description
------------
-Calculate Fi(U,V) and Fi'(U,V).
-") Values;
-		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
-
-};
-
-
-%extend Extrema_CCLocFOfLocECC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 
 /****************************
 * class Extrema_Curve2dTool *
@@ -808,12 +196,12 @@ Calculate Fi(U,V) and Fi'(U,V).
 class Extrema_Curve2dTool {
 	public:
 		/****** Extrema_Curve2dTool::BSpline ******/
-		/****** md5 signature: c8c4ab959a140651ece46dfbf0baafac ******/
+		/****** md5 signature: 5431742a44149d16630330c7ad9cbacb ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -823,15 +211,15 @@ Description
 -----------
 No available documentation.
 ") BSpline;
-		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const Adaptor2d_Curve2d & C);
+		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Bezier ******/
-		/****** md5 signature: 0cf64b1707a46a532700c7b7c5d83177 ******/
+		/****** md5 signature: 58c850cb969efb15a0dc7e84af7e1e2e ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -841,15 +229,15 @@ Description
 -----------
 No available documentation.
 ") Bezier;
-		static opencascade::handle<Geom2d_BezierCurve> Bezier(const Adaptor2d_Curve2d & C);
+		static opencascade::handle<Geom2d_BezierCurve> Bezier(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Circle ******/
-		/****** md5 signature: f83d3b524bcebc84f76bd577a264bd65 ******/
+		/****** md5 signature: 3ac2ed9edf1831f969a1b5c57c3fb7d3 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -859,15 +247,15 @@ Description
 -----------
 No available documentation.
 ") Circle;
-		static gp_Circ2d Circle(const Adaptor2d_Curve2d & C);
+		static gp_Circ2d Circle(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Continuity ******/
-		/****** md5 signature: 756de29da208da39a83d9e7bd6b260a6 ******/
+		/****** md5 signature: 44c1e79b0b4052535c51dab74ad90396 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -877,17 +265,17 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		static GeomAbs_Shape Continuity(const Adaptor2d_Curve2d & C);
+		static GeomAbs_Shape Continuity(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::D0 ******/
-		/****** md5 signature: 2b0f7c6e7628378c5466f63173da2848 ******/
+		/****** md5 signature: 41e8a625454aa00a6235cdb4479d572d ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U: float
-P: gp_Pnt2d
+theC: Adaptor2d_Curve2d
+theU: double
+theP: gp_Pnt2d
 
 Return
 -------
@@ -897,18 +285,18 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		static void D0(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P);
+		static void D0(const Adaptor2d_Curve2d & theC, const double theU, gp_Pnt2d & theP);
 
 		/****** Extrema_Curve2dTool::D1 ******/
-		/****** md5 signature: 49247c33066cbc5a32b2fb3a95ae0afc ******/
+		/****** md5 signature: d20665042aaa6dacd669acda80a1141b ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U: float
-P: gp_Pnt2d
-V: gp_Vec2d
+theC: Adaptor2d_Curve2d
+theU: double
+theP: gp_Pnt2d
+theV: gp_Vec2d
 
 Return
 -------
@@ -918,19 +306,19 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative.
 ") D1;
-		static void D1(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		static void D1(const Adaptor2d_Curve2d & theC, const double theU, gp_Pnt2d & theP, gp_Vec2d & theV);
 
 		/****** Extrema_Curve2dTool::D2 ******/
-		/****** md5 signature: b236b6fa3b804f10ec34110bccfb81c1 ******/
+		/****** md5 signature: f213753d2645c3aca9e8323bfe74ce0f ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
+theC: Adaptor2d_Curve2d
+theU: double
+theP: gp_Pnt2d
+theV1: gp_Vec2d
+theV2: gp_Vec2d
 
 Return
 -------
@@ -940,20 +328,20 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2.
 ") D2;
-		static void D2(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const Adaptor2d_Curve2d & theC, const double theU, gp_Pnt2d & theP, gp_Vec2d & theV1, gp_Vec2d & theV2);
 
 		/****** Extrema_Curve2dTool::D3 ******/
-		/****** md5 signature: 675beb36a10809a08c64d732d0ffe85f ******/
+		/****** md5 signature: 19d402983862ac2c4238e44a74f30a50 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-V3: gp_Vec2d
+theC: Adaptor2d_Curve2d
+theU: double
+theP: gp_Pnt2d
+theV1: gp_Vec2d
+theV2: gp_Vec2d
+theV3: gp_Vec2d
 
 Return
 -------
@@ -963,17 +351,17 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative.
 ") D3;
-		static void D3(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const Adaptor2d_Curve2d & theC, const double theU, gp_Pnt2d & theP, gp_Vec2d & theV1, gp_Vec2d & theV2, gp_Vec2d & theV3);
 
 		/****** Extrema_Curve2dTool::DN ******/
-		/****** md5 signature: 4678c9ac681caad59540990ee359a046 ******/
+		/****** md5 signature: 3193bb75845c0fa2be33ca78a1f9380f ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U: float
-N: int
+theC: Adaptor2d_Curve2d
+theU: double
+theN: int
 
 Return
 -------
@@ -983,33 +371,33 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N.
 ") DN;
-		static gp_Vec2d DN(const Adaptor2d_Curve2d & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec2d DN(const Adaptor2d_Curve2d & theC, const double theU, const int theN);
 
 		/****** Extrema_Curve2dTool::DeflCurvIntervals ******/
-		/****** md5 signature: d98fb15f92669c3bbd8c04f1a9fee06d ******/
+		/****** md5 signature: e493247d58ac6c756334f350a1d1ed83 ******/
 		%feature("compactdefaultargs") DeflCurvIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
-Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method. //!.
+Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method.
 ") DeflCurvIntervals;
-		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals(const Adaptor2d_Curve2d & C);
+		static opencascade::handle<NCollection_HArray1<double>> DeflCurvIntervals(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Degree ******/
-		/****** md5 signature: 9581ff0fc0c406a9427befca62ed1f81 ******/
+		/****** md5 signature: c8b1e8778c828e2bc2a32f188d86d508 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1019,15 +407,15 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		static Standard_Integer Degree(const Adaptor2d_Curve2d & C);
+		static int Degree(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Ellipse ******/
-		/****** md5 signature: 6b3d2146deb980d4d62eb8bafed2a0e1 ******/
+		/****** md5 signature: 80dbc78d870d3eebcbc39dd6773bb145 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1037,33 +425,33 @@ Description
 -----------
 No available documentation.
 ") Ellipse;
-		static gp_Elips2d Ellipse(const Adaptor2d_Curve2d & C);
+		static gp_Elips2d Ellipse(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::FirstParameter ******/
-		/****** md5 signature: 540078107c638c43eb2ce9ec567932d5 ******/
+		/****** md5 signature: 22a4ed2b262724359b1602b98c9782bb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const Adaptor2d_Curve2d & C);
+		static double FirstParameter(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::GetType ******/
-		/****** md5 signature: 3307087cce71727ba86c3994c56d1dfd ******/
+		/****** md5 signature: ab27c225e183294939ca9a6856824c03 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1073,15 +461,15 @@ Description
 -----------
 Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
-		static GeomAbs_CurveType GetType(const Adaptor2d_Curve2d & C);
+		static GeomAbs_CurveType GetType(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Hyperbola ******/
-		/****** md5 signature: d765efdcf68c3ccb564b090d516d2f0c ******/
+		/****** md5 signature: 31e361ce2e80d81ab6766618b3268c27 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1091,17 +479,17 @@ Description
 -----------
 No available documentation.
 ") Hyperbola;
-		static gp_Hypr2d Hyperbola(const Adaptor2d_Curve2d & C);
+		static gp_Hypr2d Hyperbola(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Intervals ******/
-		/****** md5 signature: b1e1a1a8c70f97665bbcc1237c06a6f1 ******/
+		/****** md5 signature: 98d7346280e1523f66d344b312761765 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-T: TColStd_Array1OfReal
-S: GeomAbs_Shape
+theC: Adaptor2d_Curve2d
+theT: NCollection_Array1<double>
+theS: GeomAbs_Shape
 
 Return
 -------
@@ -1111,15 +499,15 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>.
 ") Intervals;
-		static void Intervals(const Adaptor2d_Curve2d & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		static void Intervals(const Adaptor2d_Curve2d & theC, NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
 
 		/****** Extrema_Curve2dTool::IsClosed ******/
-		/****** md5 signature: af597bdc835691e612cee746b4bd3270 ******/
+		/****** md5 signature: f76f3d49135f8033305ba32127671472 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1129,15 +517,15 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const Adaptor2d_Curve2d & C);
+		static bool IsClosed(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::IsPeriodic ******/
-		/****** md5 signature: 24db6e315d488d0546766102053bb345 ******/
+		/****** md5 signature: 9edc31ea2ede83a392332e8d431a353e ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1147,15 +535,15 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const Adaptor2d_Curve2d & C);
+		static bool IsPeriodic(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::IsRational ******/
-		/****** md5 signature: b7a5237e91dc038400c02d702eb1f8a7 ******/
+		/****** md5 signature: f98583bc04d0263e0cfaaf4693ffb715 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1165,33 +553,33 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		static Standard_Boolean IsRational(const Adaptor2d_Curve2d & C);
+		static bool IsRational(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::LastParameter ******/
-		/****** md5 signature: b0abc948bceff30cc6ea9b7b21deb71b ******/
+		/****** md5 signature: da098caf6a04c3f0a4f946e1a3267d2c ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const Adaptor2d_Curve2d & C);
+		static double LastParameter(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Line ******/
-		/****** md5 signature: 2ed473b8b806549a67acbbb8f7054334 ******/
+		/****** md5 signature: a48056ca015c062264d881f755f4a207 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1201,16 +589,16 @@ Description
 -----------
 No available documentation.
 ") Line;
-		static gp_Lin2d Line(const Adaptor2d_Curve2d & C);
+		static gp_Lin2d Line(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::NbIntervals ******/
-		/****** md5 signature: e1f641c900ddcc6ebfcb0a34162a4afb ******/
+		/****** md5 signature: 0ead40caa0b98f4d0d185c841ef6c350 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-S: GeomAbs_Shape
+theC: Adaptor2d_Curve2d
+theS: GeomAbs_Shape
 
 Return
 -------
@@ -1220,15 +608,15 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const Adaptor2d_Curve2d & C, const GeomAbs_Shape S);
+		static int NbIntervals(const Adaptor2d_Curve2d & theC, const GeomAbs_Shape theS);
 
 		/****** Extrema_Curve2dTool::NbKnots ******/
-		/****** md5 signature: 37351d3297158df30ae272b9db01eb21 ******/
+		/****** md5 signature: de7a3218ed98f47754e4a39d298e5445 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1238,15 +626,15 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		static Standard_Integer NbKnots(const Adaptor2d_Curve2d & C);
+		static int NbKnots(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::NbPoles ******/
-		/****** md5 signature: fea21d4a9552d51c1cb56925fc498f25 ******/
+		/****** md5 signature: 27b6bac0822fbfa141717369515d0032 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1256,15 +644,15 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		static Standard_Integer NbPoles(const Adaptor2d_Curve2d & C);
+		static int NbPoles(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Parabola ******/
-		/****** md5 signature: 91ce2d6bffca5cc115a4e157ac689f40 ******/
+		/****** md5 signature: d95490d9d08d9414ce3067939bfb8b2a ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
@@ -1274,53 +662,53 @@ Description
 -----------
 No available documentation.
 ") Parabola;
-		static gp_Parab2d Parabola(const Adaptor2d_Curve2d & C);
+		static gp_Parab2d Parabola(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Period ******/
-		/****** md5 signature: 3aff9e7fed8d10f77180b7a8f565b0b4 ******/
+		/****** md5 signature: 901671952759f9147432eb0959c9c38f ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
+theC: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const Adaptor2d_Curve2d & C);
+		static double Period(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Resolution ******/
-		/****** md5 signature: 00a506daa8f861d461577823de6c7258 ******/
+		/****** md5 signature: 920c3adea9d8c2c4e156f40ba9acca4f ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-R3d: float
+theC: Adaptor2d_Curve2d
+theR3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		static Standard_Real Resolution(const Adaptor2d_Curve2d & C, const Standard_Real R3d);
+		static double Resolution(const Adaptor2d_Curve2d & theC, const double theR3d);
 
 		/****** Extrema_Curve2dTool::Value ******/
-		/****** md5 signature: 37d2c86e90009879ed2d64d1f3352009 ******/
+		/****** md5 signature: 8117a1a51314c8bd58884f2cd5f6a3ce ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor2d_Curve2d
-U: float
+theC: Adaptor2d_Curve2d
+theU: double
 
 Return
 -------
@@ -1330,7 +718,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		static gp_Pnt2d Value(const Adaptor2d_Curve2d & C, const Standard_Real U);
+		static gp_Pnt2d Value(const Adaptor2d_Curve2d & theC, const double theU);
 
 };
 
@@ -1347,12 +735,12 @@ Computes the point of parameter U on the curve.
 class Extrema_CurveTool {
 	public:
 		/****** Extrema_CurveTool::BSpline ******/
-		/****** md5 signature: 0c97f5be576526bd2daa9dec9dbdbefd ******/
+		/****** md5 signature: 1cc921c59ae8fc423d25220cf1887233 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1362,15 +750,15 @@ Description
 -----------
 No available documentation.
 ") BSpline;
-		static opencascade::handle<Geom_BSplineCurve> BSpline(const Adaptor3d_Curve & C);
+		static opencascade::handle<Geom_BSplineCurve> BSpline(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Bezier ******/
-		/****** md5 signature: 818858a1835fa105b6c3f6c15c796eed ******/
+		/****** md5 signature: d45dea8ac4703b8c7ae996b1191de5ee ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1380,15 +768,15 @@ Description
 -----------
 No available documentation.
 ") Bezier;
-		static opencascade::handle<Geom_BezierCurve> Bezier(const Adaptor3d_Curve & C);
+		static opencascade::handle<Geom_BezierCurve> Bezier(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Circle ******/
-		/****** md5 signature: 69b4a6562099293989c9032df5001e91 ******/
+		/****** md5 signature: a97b96aa6175159c2022490d397b2a78 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1398,15 +786,15 @@ Description
 -----------
 No available documentation.
 ") Circle;
-		static gp_Circ Circle(const Adaptor3d_Curve & C);
+		static gp_Circ Circle(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Continuity ******/
-		/****** md5 signature: 7e3ab45085c5f6763876998f88c878c5 ******/
+		/****** md5 signature: 34bc722375aff9ac9d2fdd67a4a72cb1 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1416,17 +804,17 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		static GeomAbs_Shape Continuity(const Adaptor3d_Curve & C);
+		static GeomAbs_Shape Continuity(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::D0 ******/
-		/****** md5 signature: bafe9e6acd4c5d61df1a191fd96c9541 ******/
+		/****** md5 signature: b406360f565c3e2795cfcfe6c9c54e7a ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-U: float
-P: gp_Pnt
+theC: Adaptor3d_Curve
+theU: double
+theP: gp_Pnt
 
 Return
 -------
@@ -1436,18 +824,18 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const Adaptor3d_Curve & C, const Standard_Real U, gp_Pnt & P);
+		static void D0(const Adaptor3d_Curve & theC, const double theU, gp_Pnt & theP);
 
 		/****** Extrema_CurveTool::D1 ******/
-		/****** md5 signature: fe354aa20e6dc4f07e87f863f08729f7 ******/
+		/****** md5 signature: cbcc939c65994275c0b03f836c05b2d6 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-U: float
-P: gp_Pnt
-V: gp_Vec
+theC: Adaptor3d_Curve
+theU: double
+theP: gp_Pnt
+theV: gp_Vec
 
 Return
 -------
@@ -1457,19 +845,19 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const Adaptor3d_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
+		static void D1(const Adaptor3d_Curve & theC, const double theU, gp_Pnt & theP, gp_Vec & theV);
 
 		/****** Extrema_CurveTool::D2 ******/
-		/****** md5 signature: 364d76815f0a3ff8c8c8acda8f073f20 ******/
+		/****** md5 signature: 276299957e8742f97e7a127b8ff44f66 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
+theC: Adaptor3d_Curve
+theU: double
+theP: gp_Pnt
+theV1: gp_Vec
+theV2: gp_Vec
 
 Return
 -------
@@ -1479,20 +867,20 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const Adaptor3d_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const Adaptor3d_Curve & theC, const double theU, gp_Pnt & theP, gp_Vec & theV1, gp_Vec & theV2);
 
 		/****** Extrema_CurveTool::D3 ******/
-		/****** md5 signature: fe4e9f030699b826155158b744eeede4 ******/
+		/****** md5 signature: 5039642884561412771c28e566a5e997 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
+theC: Adaptor3d_Curve
+theU: double
+theP: gp_Pnt
+theV1: gp_Vec
+theV2: gp_Vec
+theV3: gp_Vec
 
 Return
 -------
@@ -1502,17 +890,17 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const Adaptor3d_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const Adaptor3d_Curve & theC, const double theU, gp_Pnt & theP, gp_Vec & theV1, gp_Vec & theV2, gp_Vec & theV3);
 
 		/****** Extrema_CurveTool::DN ******/
-		/****** md5 signature: 43f589f46832d631a9b5b3dcd80b303c ******/
+		/****** md5 signature: 85e9d0b50dbb59b3f346153c0b1a03f5 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-U: float
-N: int
+theC: Adaptor3d_Curve
+theU: double
+theN: int
 
 Return
 -------
@@ -1522,33 +910,33 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Adaptor3d_Curve & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec DN(const Adaptor3d_Curve & theC, const double theU, const int theN);
 
 		/****** Extrema_CurveTool::DeflCurvIntervals ******/
-		/****** md5 signature: a4626f43eaff2e9612562e3bb29a67aa ******/
+		/****** md5 signature: 8a4b37018d398507f335d3de89d2cb9d ******/
 		%feature("compactdefaultargs") DeflCurvIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
-Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method. //!.
+Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method.
 ") DeflCurvIntervals;
-		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals(const Adaptor3d_Curve & C);
+		static opencascade::handle<NCollection_HArray1<double>> DeflCurvIntervals(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Degree ******/
-		/****** md5 signature: 4c8f00f81dc52f68c21806e707a3a7b9 ******/
+		/****** md5 signature: 88ef3028bafc455a0aea5e9c8bd42c5c ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1558,15 +946,15 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		static Standard_Integer Degree(const Adaptor3d_Curve & C);
+		static int Degree(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Ellipse ******/
-		/****** md5 signature: 921b94563d156d37bbb656506389cb01 ******/
+		/****** md5 signature: 11acf11cfd5dbc25631704b9c55632f2 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1576,33 +964,33 @@ Description
 -----------
 No available documentation.
 ") Ellipse;
-		static gp_Elips Ellipse(const Adaptor3d_Curve & C);
+		static gp_Elips Ellipse(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::FirstParameter ******/
-		/****** md5 signature: 6cea3f5c9c492795d465235a10707515 ******/
+		/****** md5 signature: 6314f47c9311744dac6172187268a377 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const Adaptor3d_Curve & C);
+		static double FirstParameter(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::GetType ******/
-		/****** md5 signature: 479ad1024af3da76cf1162450cb47079 ******/
+		/****** md5 signature: 268d13505633352c538e05932cf9aa80 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1612,15 +1000,15 @@ Description
 -----------
 No available documentation.
 ") GetType;
-		static GeomAbs_CurveType GetType(const Adaptor3d_Curve & C);
+		static GeomAbs_CurveType GetType(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Hyperbola ******/
-		/****** md5 signature: 1dd05079123580f2ca71a6f30ca02156 ******/
+		/****** md5 signature: ab890d364485cf501caf9279b4e0cca7 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1630,17 +1018,17 @@ Description
 -----------
 No available documentation.
 ") Hyperbola;
-		static gp_Hypr Hyperbola(const Adaptor3d_Curve & C);
+		static gp_Hypr Hyperbola(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Intervals ******/
-		/****** md5 signature: c59b411ed8f13aec3361e6336ed8b81f ******/
+		/****** md5 signature: 6245ce7616b3ac7e1a56dcd394c05101 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-T: TColStd_Array1OfReal
-S: GeomAbs_Shape
+theC: Adaptor3d_Curve
+theT: NCollection_Array1<double>
+theS: GeomAbs_Shape
 
 Return
 -------
@@ -1648,17 +1036,17 @@ None
 
 Description
 -----------
-Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(Adaptor3d_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		static void Intervals(Adaptor3d_Curve & theC, NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
 
 		/****** Extrema_CurveTool::IsPeriodic ******/
-		/****** md5 signature: d31f3b4c79afd1942bdd2c78fb2fb259 ******/
+		/****** md5 signature: fbfcd3dbd08e5fcb750662c78f6ee821 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1668,15 +1056,15 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const Adaptor3d_Curve & C);
+		static bool IsPeriodic(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::IsRational ******/
-		/****** md5 signature: 25abf33ff4df5410bf8f820a1547a5e0 ******/
+		/****** md5 signature: ab1980018c94f91c9a6e2debca23ee96 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1686,33 +1074,33 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		static Standard_Boolean IsRational(const Adaptor3d_Curve & C);
+		static bool IsRational(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::LastParameter ******/
-		/****** md5 signature: 2d16a1cb309605946ea3c6ea6342ebc3 ******/
+		/****** md5 signature: de26ff9ca0e854f1c33752b3e3038a07 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const Adaptor3d_Curve & C);
+		static double LastParameter(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Line ******/
-		/****** md5 signature: 1a7b33fceb2ec97542564608da5f590a ******/
+		/****** md5 signature: 5c8c0a5416ac71bbdcbd3787b02ce95e ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1722,16 +1110,16 @@ Description
 -----------
 No available documentation.
 ") Line;
-		static gp_Lin Line(const Adaptor3d_Curve & C);
+		static gp_Lin Line(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::NbIntervals ******/
-		/****** md5 signature: cf97edf44110186eab92181c085ae1f7 ******/
+		/****** md5 signature: 3ae6bd8fef100ae6500505f6abcc2d62 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-S: GeomAbs_Shape
+theC: Adaptor3d_Curve
+theS: GeomAbs_Shape
 
 Return
 -------
@@ -1741,15 +1129,15 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(Adaptor3d_Curve & C, const GeomAbs_Shape S);
+		static int NbIntervals(Adaptor3d_Curve & theC, const GeomAbs_Shape theS);
 
 		/****** Extrema_CurveTool::NbKnots ******/
-		/****** md5 signature: a42e66d711c34ebe3ab41b1a70f28759 ******/
+		/****** md5 signature: efbee7fb141c1be62913e733e49682db ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1759,15 +1147,15 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		static Standard_Integer NbKnots(const Adaptor3d_Curve & C);
+		static int NbKnots(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::NbPoles ******/
-		/****** md5 signature: 3ed8b75caa9bfe8c6840308a79b6a2d8 ******/
+		/****** md5 signature: b35a351faeae2715cd2ce29a3d4b68dd ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1777,15 +1165,15 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		static Standard_Integer NbPoles(const Adaptor3d_Curve & C);
+		static int NbPoles(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Parabola ******/
-		/****** md5 signature: 4462340c3f523d2746c330836fcf6c5c ******/
+		/****** md5 signature: 7c60a5496e264ef1a401eda73de32639 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
@@ -1795,53 +1183,53 @@ Description
 -----------
 No available documentation.
 ") Parabola;
-		static gp_Parab Parabola(const Adaptor3d_Curve & C);
+		static gp_Parab Parabola(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Period ******/
-		/****** md5 signature: bc233dfa3cea6c38ee569617bbb51465 ******/
+		/****** md5 signature: 3485959e85b5940f60f62609244208f4 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
+theC: Adaptor3d_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const Adaptor3d_Curve & C);
+		static double Period(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Resolution ******/
-		/****** md5 signature: a7f94e2f406fae25aaf1a3f45a6f3d9f ******/
+		/****** md5 signature: f4464ae4ddaf5c3f1eb4b842c6500781 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-R3d: float
+theC: Adaptor3d_Curve
+theR3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Resolution;
-		static Standard_Real Resolution(const Adaptor3d_Curve & C, const Standard_Real R3d);
+		static double Resolution(const Adaptor3d_Curve & theC, const double theR3d);
 
 		/****** Extrema_CurveTool::Value ******/
-		/****** md5 signature: 0488ad36e3eab18004f93749270bbdec ******/
+		/****** md5 signature: 028e95a3e226c2656bbe2406bb2e155c ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Adaptor3d_Curve
-U: float
+theC: Adaptor3d_Curve
+theU: double
 
 Return
 -------
@@ -1851,1910 +1239,12 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const Adaptor3d_Curve & C, const Standard_Real U);
+		static gp_Pnt Value(const Adaptor3d_Curve & theC, const double theU);
 
 };
 
 
 %extend Extrema_CurveTool {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************
-* class Extrema_ECC *
-********************/
-class Extrema_ECC {
-	public:
-		/****** Extrema_ECC::Extrema_ECC ******/
-		/****** md5 signature: f1d52defa9b50dd53f39dc64992c57fb ******/
-		%feature("compactdefaultargs") Extrema_ECC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
-") Extrema_ECC;
-		 Extrema_ECC();
-
-		/****** Extrema_ECC::Extrema_ECC ******/
-		/****** md5 signature: c8c401f587043bb48010e54044b8b10d ******/
-		%feature("compactdefaultargs") Extrema_ECC;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor3d_Curve
-C2: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
-") Extrema_ECC;
-		 Extrema_ECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2);
-
-		/****** Extrema_ECC::Extrema_ECC ******/
-		/****** md5 signature: 4d4fa8be0cc0769d1a7a82bbcda8a7d0 ******/
-		%feature("compactdefaultargs") Extrema_ECC;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor3d_Curve
-C2: Adaptor3d_Curve
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-
-Return
--------
-None
-
-Description
------------
-Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
-") Extrema_ECC;
-		 Extrema_ECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
-
-		/****** Extrema_ECC::GetSingleSolutionFlag ******/
-		/****** md5 signature: b28121e257a0efb9e2c6c13cf0ce823d ******/
-		%feature("compactdefaultargs") GetSingleSolutionFlag;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Get flag for single extrema computation. Works on parametric solver only.
-") GetSingleSolutionFlag;
-		Standard_Boolean GetSingleSolutionFlag();
-
-		/****** Extrema_ECC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_ECC::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
-		%feature("compactdefaultargs") IsParallel;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns state of myParallel flag.
-") IsParallel;
-		Standard_Boolean IsParallel();
-
-		/****** Extrema_ECC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_ECC::Perform ******/
-		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Performs calculations.
-") Perform;
-		void Perform();
-
-		/****** Extrema_ECC::Points ******/
-		/****** md5 signature: 3794ed44489c98c8247e475c96bba9a2 ******/
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-P1: Extrema_POnCurv
-P2: Extrema_POnCurv
-
-Return
--------
-None
-
-Description
------------
-Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
-") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
-
-		/****** Extrema_ECC::SetParams ******/
-		/****** md5 signature: ef14d1cd32f692d88e1fd4c3ca54a0fb ******/
-		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor3d_Curve
-C2: Adaptor3d_Curve
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-
-Return
--------
-None
-
-Description
------------
-Set params in case of empty constructor is usage.
-") SetParams;
-		void SetParams(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
-
-		/****** Extrema_ECC::SetSingleSolutionFlag ******/
-		/****** md5 signature: 7fa45b94e509fd90dd043f395439167b ******/
-		%feature("compactdefaultargs") SetSingleSolutionFlag;
-		%feature("autodoc", "
-Parameters
-----------
-theSingleSolutionFlag: bool
-
-Return
--------
-None
-
-Description
------------
-Set flag for single extrema computation. Works on parametric solver only.
-") SetSingleSolutionFlag;
-		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
-
-		/****** Extrema_ECC::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-Tol: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
-
-		/****** Extrema_ECC::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int (optional, default to 1)
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the Nth square extremum distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
-
-};
-
-
-%extend Extrema_ECC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************
-* class Extrema_ECC2d *
-**********************/
-class Extrema_ECC2d {
-	public:
-		/****** Extrema_ECC2d::Extrema_ECC2d ******/
-		/****** md5 signature: 4d25e00e56aacaff607db9accfe3c80c ******/
-		%feature("compactdefaultargs") Extrema_ECC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
-") Extrema_ECC2d;
-		 Extrema_ECC2d();
-
-		/****** Extrema_ECC2d::Extrema_ECC2d ******/
-		/****** md5 signature: 18ec7cc19510c225f86e12c62cee018b ******/
-		%feature("compactdefaultargs") Extrema_ECC2d;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor2d_Curve2d
-C2: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
-") Extrema_ECC2d;
-		 Extrema_ECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2);
-
-		/****** Extrema_ECC2d::Extrema_ECC2d ******/
-		/****** md5 signature: 7753d66a8f0966ab829d7285b21dc28c ******/
-		%feature("compactdefaultargs") Extrema_ECC2d;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor2d_Curve2d
-C2: Adaptor2d_Curve2d
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-
-Return
--------
-None
-
-Description
------------
-Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
-") Extrema_ECC2d;
-		 Extrema_ECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
-
-		/****** Extrema_ECC2d::GetSingleSolutionFlag ******/
-		/****** md5 signature: b28121e257a0efb9e2c6c13cf0ce823d ******/
-		%feature("compactdefaultargs") GetSingleSolutionFlag;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Get flag for single extrema computation. Works on parametric solver only.
-") GetSingleSolutionFlag;
-		Standard_Boolean GetSingleSolutionFlag();
-
-		/****** Extrema_ECC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_ECC2d::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
-		%feature("compactdefaultargs") IsParallel;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns state of myParallel flag.
-") IsParallel;
-		Standard_Boolean IsParallel();
-
-		/****** Extrema_ECC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_ECC2d::Perform ******/
-		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Performs calculations.
-") Perform;
-		void Perform();
-
-		/****** Extrema_ECC2d::Points ******/
-		/****** md5 signature: b11c393bae576338fc3f288ecb955b49 ******/
-		%feature("compactdefaultargs") Points;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-P1: Extrema_POnCurv2d
-P2: Extrema_POnCurv2d
-
-Return
--------
-None
-
-Description
------------
-Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
-") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
-
-		/****** Extrema_ECC2d::SetParams ******/
-		/****** md5 signature: c22ecde336403c4ef664a23c1a078cbc ******/
-		%feature("compactdefaultargs") SetParams;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor2d_Curve2d
-C2: Adaptor2d_Curve2d
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-
-Return
--------
-None
-
-Description
------------
-Set params in case of empty constructor is usage.
-") SetParams;
-		void SetParams(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
-
-		/****** Extrema_ECC2d::SetSingleSolutionFlag ******/
-		/****** md5 signature: 7fa45b94e509fd90dd043f395439167b ******/
-		%feature("compactdefaultargs") SetSingleSolutionFlag;
-		%feature("autodoc", "
-Parameters
-----------
-theSingleSolutionFlag: bool
-
-Return
--------
-None
-
-Description
------------
-Set flag for single extrema computation. Works on parametric solver only.
-") SetSingleSolutionFlag;
-		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
-
-		/****** Extrema_ECC2d::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
-		%feature("compactdefaultargs") SetTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-Tol: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
-
-		/****** Extrema_ECC2d::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int (optional, default to 1)
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the Nth square extremum distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
-
-};
-
-
-%extend Extrema_ECC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************
-* class Extrema_ELPCOfLocateExtPC *
-**********************************/
-class Extrema_ELPCOfLocateExtPC {
-	public:
-		/****** Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC ******/
-		/****** md5 signature: bb936d9df0f63ec27b8e8023e08cd843 ******/
-		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_ELPCOfLocateExtPC;
-		 Extrema_ELPCOfLocateExtPC();
-
-		/****** Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC ******/
-		/****** md5 signature: 5eb013e4fc68fcbf6f33585765f7e07d ******/
-		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ELPCOfLocateExtPC;
-		 Extrema_ELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ELPCOfLocateExtPC::Extrema_ELPCOfLocateExtPC ******/
-		/****** md5 signature: ead97d1e3f13344482279c11cf20d92f ******/
-		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ELPCOfLocateExtPC;
-		 Extrema_ELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ELPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: 6ac5bc3f72e0a8236c8f51c23167f9f5 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-initializes the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ELPCOfLocateExtPC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_ELPCOfLocateExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the <N>th extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_ELPCOfLocateExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_ELPCOfLocateExtPC::Perform ******/
-		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt & P);
-
-		/****** Extrema_ELPCOfLocateExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the point of the <N>th extremum distance.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_ELPCOfLocateExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the <N>th extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_ELPCOfLocateExtPC::TrimmedSquareDistances ******/
-		/****** md5 signature: 2e689901655c68a486db722f362ab27b ******/
-		%feature("compactdefaultargs") TrimmedSquareDistances;
-		%feature("autodoc", "
-Parameters
-----------
-P1: gp_Pnt
-P2: gp_Pnt
-
-Return
--------
-dist1: float
-dist2: float
-
-Description
------------
-if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
-") TrimmedSquareDistances;
-		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & P1, gp_Pnt & P2);
-
-};
-
-
-%extend Extrema_ELPCOfLocateExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************************
-* class Extrema_ELPCOfLocateExtPC2d *
-************************************/
-class Extrema_ELPCOfLocateExtPC2d {
-	public:
-		/****** Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d ******/
-		/****** md5 signature: 8f092e293eefb4dd4a9f9ca1c996abcb ******/
-		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_ELPCOfLocateExtPC2d;
-		 Extrema_ELPCOfLocateExtPC2d();
-
-		/****** Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d ******/
-		/****** md5 signature: ca7ed58355df77b568d0d2b8e4c4d3b5 ******/
-		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ELPCOfLocateExtPC2d;
-		 Extrema_ELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::Extrema_ELPCOfLocateExtPC2d ******/
-		/****** md5 signature: 9ae6c47d8acbe1e37a56bc7bb09b19cd ******/
-		%feature("compactdefaultargs") Extrema_ELPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ELPCOfLocateExtPC2d;
-		 Extrema_ELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: be89f8d1b5b5ecf504acd30e1f24f787 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-initializes the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_ELPCOfLocateExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the <N>th extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_ELPCOfLocateExtPC2d::Perform ******/
-		/****** md5 signature: 59fee48271d5ac79a6de2fe73317998c ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt2d & P);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the <N>th extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the <N>th extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_ELPCOfLocateExtPC2d::TrimmedSquareDistances ******/
-		/****** md5 signature: d92e1ba45ead5acc8c7f33976cfdf6e6 ******/
-		%feature("compactdefaultargs") TrimmedSquareDistances;
-		%feature("autodoc", "
-Parameters
-----------
-P1: gp_Pnt2d
-P2: gp_Pnt2d
-
-Return
--------
-dist1: float
-dist2: float
-
-Description
------------
-if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
-") TrimmedSquareDistances;
-		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & P1, gp_Pnt2d & P2);
-
-};
-
-
-%extend Extrema_ELPCOfLocateExtPC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***************************************
-* class Extrema_EPCOfELPCOfLocateExtPC *
-***************************************/
-class Extrema_EPCOfELPCOfLocateExtPC {
-	public:
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC ******/
-		/****** md5 signature: d031d7ce7ee4902c782ca863539576de ******/
-		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_EPCOfELPCOfLocateExtPC;
-		 Extrema_EPCOfELPCOfLocateExtPC();
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC ******/
-		/****** md5 signature: 909eda134dca8bd066edf6f295b1a9d2 ******/
-		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfELPCOfLocateExtPC;
-		 Extrema_EPCOfELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Extrema_EPCOfELPCOfLocateExtPC ******/
-		/****** md5 signature: a06ba847c93cff0df9b4ab69c43b3ea4 ******/
-		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfELPCOfLocateExtPC;
-		 Extrema_EPCOfELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: b8e83a64d3c33c8a4e28f4682b235bbb ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: bf3c9f855e71bda7dd32647a562411bf ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: 96ecca85f670f0aff9194161a9bd5dc1 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: bdcd99b58831999e0cacf879b57f7aca ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the Nth extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Perform ******/
-		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt & P);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the point of the Nth extremum distance.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the Nth extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-};
-
-
-%extend Extrema_EPCOfELPCOfLocateExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************************
-* class Extrema_EPCOfELPCOfLocateExtPC2d *
-*****************************************/
-class Extrema_EPCOfELPCOfLocateExtPC2d {
-	public:
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d ******/
-		/****** md5 signature: e673ff31f47b907e3142f38655a34ff0 ******/
-		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_EPCOfELPCOfLocateExtPC2d;
-		 Extrema_EPCOfELPCOfLocateExtPC2d();
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d ******/
-		/****** md5 signature: 8f3881b23e0058c54bf5de87961608df ******/
-		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfELPCOfLocateExtPC2d;
-		 Extrema_EPCOfELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Extrema_EPCOfELPCOfLocateExtPC2d ******/
-		/****** md5 signature: 2ff481b1955aaf32316f2eedc538cb2e ******/
-		%feature("compactdefaultargs") Extrema_EPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfELPCOfLocateExtPC2d;
-		 Extrema_EPCOfELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: 0c4d5ef0210a20d5cfdf67b6198c9095 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: 9e172761979bca888575dc8cff8ac8a9 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: 295b46cc3c15eb5116b8523fecaa122c ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: bdcd99b58831999e0cacf879b57f7aca ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the Nth extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Perform ******/
-		/****** md5 signature: 59fee48271d5ac79a6de2fe73317998c ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt2d & P);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the Nth extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_EPCOfELPCOfLocateExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the Nth extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-};
-
-
-%extend Extrema_EPCOfELPCOfLocateExtPC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***************************
-* class Extrema_EPCOfExtPC *
-***************************/
-class Extrema_EPCOfExtPC {
-	public:
-		/****** Extrema_EPCOfExtPC::Extrema_EPCOfExtPC ******/
-		/****** md5 signature: b7a31ac2e708fd73365a35020614ea0b ******/
-		%feature("compactdefaultargs") Extrema_EPCOfExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_EPCOfExtPC;
-		 Extrema_EPCOfExtPC();
-
-		/****** Extrema_EPCOfExtPC::Extrema_EPCOfExtPC ******/
-		/****** md5 signature: 48fc709c66fee1c004b2cc4dd1545dbc ******/
-		%feature("compactdefaultargs") Extrema_EPCOfExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfExtPC;
-		 Extrema_EPCOfExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC::Extrema_EPCOfExtPC ******/
-		/****** md5 signature: 592c802da1f9faf50937c805bbc4dec7 ******/
-		%feature("compactdefaultargs") Extrema_EPCOfExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfExtPC;
-		 Extrema_EPCOfExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC::Initialize ******/
-		/****** md5 signature: b8e83a64d3c33c8a4e28f4682b235bbb ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC::Initialize ******/
-		/****** md5 signature: bf3c9f855e71bda7dd32647a562411bf ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC::Initialize ******/
-		/****** md5 signature: 96ecca85f670f0aff9194161a9bd5dc1 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C);
-
-		/****** Extrema_EPCOfExtPC::Initialize ******/
-		/****** md5 signature: bdcd99b58831999e0cacf879b57f7aca ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_EPCOfExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the Nth extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_EPCOfExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_EPCOfExtPC::Perform ******/
-		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt & P);
-
-		/****** Extrema_EPCOfExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the point of the Nth extremum distance.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_EPCOfExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the Nth extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-};
-
-
-%extend Extrema_EPCOfExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************
-* class Extrema_EPCOfExtPC2d *
-*****************************/
-class Extrema_EPCOfExtPC2d {
-	public:
-		/****** Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d ******/
-		/****** md5 signature: dddcc49f98fdb65c7a826fe02135551c ******/
-		%feature("compactdefaultargs") Extrema_EPCOfExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_EPCOfExtPC2d;
-		 Extrema_EPCOfExtPC2d();
-
-		/****** Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d ******/
-		/****** md5 signature: e215bb58b06e418352ca7a41838988ff ******/
-		%feature("compactdefaultargs") Extrema_EPCOfExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfExtPC2d;
-		 Extrema_EPCOfExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC2d::Extrema_EPCOfExtPC2d ******/
-		/****** md5 signature: 180127b2ebbcb30f4366bc818c7a8176 ******/
-		%feature("compactdefaultargs") Extrema_EPCOfExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_EPCOfExtPC2d;
-		 Extrema_EPCOfExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC2d::Initialize ******/
-		/****** md5 signature: 0c4d5ef0210a20d5cfdf67b6198c9095 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-NbU: int
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC2d::Initialize ******/
-		/****** md5 signature: 9e172761979bca888575dc8cff8ac8a9 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC2d::Initialize ******/
-		/****** md5 signature: 295b46cc3c15eb5116b8523fecaa122c ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_EPCOfExtPC2d::Initialize ******/
-		/****** md5 signature: bdcd99b58831999e0cacf879b57f7aca ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-NbU: int
-Umin: float
-Usup: float
-TolU: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
-
-		/****** Extrema_EPCOfExtPC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_EPCOfExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the Nth extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_EPCOfExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_EPCOfExtPC2d::Perform ******/
-		/****** md5 signature: 59fee48271d5ac79a6de2fe73317998c ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt2d & P);
-
-		/****** Extrema_EPCOfExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the Nth extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_EPCOfExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the Nth extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-};
-
-
-%extend Extrema_EPCOfExtPC2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3766,13 +1256,13 @@ Returns the value of the Nth extremum square distance.
 class Extrema_ExtCC {
 	public:
 		/****** Extrema_ExtCC::Extrema_ExtCC ******/
-		/****** md5 signature: 1964fd38df4cd129bca5df76f4e60ede ******/
+		/****** md5 signature: 69ed626021f36093ab315d26a0156f7f ******/
 		%feature("compactdefaultargs") Extrema_ExtCC;
 		%feature("autodoc", "
 Parameters
 ----------
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -3782,18 +1272,18 @@ Description
 -----------
 No available documentation.
 ") Extrema_ExtCC;
-		 Extrema_ExtCC(const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		 Extrema_ExtCC(const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC::Extrema_ExtCC ******/
-		/****** md5 signature: d500180d0d13c2ef7c63d04c92f24379 ******/
+		/****** md5 signature: 5a21112901daeb96b6cc058c4913dd6b ******/
 		%feature("compactdefaultargs") Extrema_ExtCC;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor3d_Curve
 C2: Adaptor3d_Curve
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -3803,22 +1293,22 @@ Description
 -----------
 It calculates all the distances.
 ") Extrema_ExtCC;
-		 Extrema_ExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		 Extrema_ExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC::Extrema_ExtCC ******/
-		/****** md5 signature: 2d456c9708a30ed1803c42204eb75e6c ******/
+		/****** md5 signature: 0608e2190a876ae56146a50c58b22f6f ******/
 		%feature("compactdefaultargs") Extrema_ExtCC;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor3d_Curve
 C2: Adaptor3d_Curve
-U1: float
-U2: float
-V1: float
-V2: float
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+U1: double
+U2: double
+V1: double
+V2: double
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -3828,10 +1318,10 @@ Description
 -----------
 It calculates all the distances.
 ") Extrema_ExtCC;
-		 Extrema_ExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		 Extrema_ExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const double U1, const double U2, const double V1, const double V2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC::GetSingleSolutionFlag ******/
-		/****** md5 signature: b28121e257a0efb9e2c6c13cf0ce823d ******/
+		/****** md5 signature: 5d1c77c7a523a241b74128b38ef81a1c ******/
 		%feature("compactdefaultargs") GetSingleSolutionFlag;
 		%feature("autodoc", "Return
 -------
@@ -3841,18 +1331,18 @@ Description
 -----------
 Get flag for single extrema computation. Works on parametric solver only.
 ") GetSingleSolutionFlag;
-		Standard_Boolean GetSingleSolutionFlag();
+		bool GetSingleSolutionFlag();
 
 		/****** Extrema_ExtCC::Initialize ******/
-		/****** md5 signature: 33f5791b9afdaba1c00cac69bb0ae58a ******/
+		/****** md5 signature: 2a4a53dbfd3cf12cb8313e1cfe36e114 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor3d_Curve
 C2: Adaptor3d_Curve
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -3862,22 +1352,22 @@ Description
 -----------
 Initializes but does not perform algorithm.
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		void Initialize(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC::Initialize ******/
-		/****** md5 signature: 241a78b6a479e657dbee2350ce37c1ae ******/
+		/****** md5 signature: 74d8313d8f71744e4b7254936e60df41 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor3d_Curve
 C2: Adaptor3d_Curve
-U1: float
-U2: float
-V1: float
-V2: float
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+U1: double
+U2: double
+V1: double
+V2: double
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -3887,10 +1377,10 @@ Description
 -----------
 Initializes but does not perform algorithm.
 ") Initialize;
-		void Initialize(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		void Initialize(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const double U1, const double U2, const double V1, const double V2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3900,10 +1390,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtCC::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -3913,10 +1403,10 @@ Description
 -----------
 Returns True if the two curves are parallel.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtCC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -3926,7 +1416,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtCC::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -3942,7 +1432,7 @@ No available documentation.
 		void Perform();
 
 		/****** Extrema_ExtCC::Points ******/
-		/****** md5 signature: 3794ed44489c98c8247e475c96bba9a2 ******/
+		/****** md5 signature: bfa511058ea609926c07e72d6f996c85 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -3959,10 +1449,10 @@ Description
 -----------
 Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
+		void Points(const int N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
 		/****** Extrema_ExtCC::SetCurve ******/
-		/****** md5 signature: c05f6a94f7b94d5e89625aaec42d5687 ******/
+		/****** md5 signature: 9bb78b33ba2601f941c004a243fa1c6c ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -3978,18 +1468,18 @@ Description
 -----------
 No available documentation.
 ") SetCurve;
-		void SetCurve(const Standard_Integer theRank, const Adaptor3d_Curve & C);
+		void SetCurve(const int theRank, const Adaptor3d_Curve & C);
 
 		/****** Extrema_ExtCC::SetCurve ******/
-		/****** md5 signature: 025474c33b1e56b733db458edc65850f ******/
+		/****** md5 signature: b2d31afb6e1c07b2079342ceb9a55f96 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 C: Adaptor3d_Curve
-Uinf: float
-Usup: float
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -3999,17 +1489,17 @@ Description
 -----------
 No available documentation.
 ") SetCurve;
-		void SetCurve(const Standard_Integer theRank, const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup);
+		void SetCurve(const int theRank, const Adaptor3d_Curve & C, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtCC::SetRange ******/
-		/****** md5 signature: eff4fdd36b8c8eb75e6bc0772ea6313e ******/
+		/****** md5 signature: e0854173ae9b747a019e973c60d6c03f ******/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
-Uinf: float
-Usup: float
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -4019,10 +1509,10 @@ Description
 -----------
 No available documentation.
 ") SetRange;
-		void SetRange(const Standard_Integer theRank, const Standard_Real Uinf, const Standard_Real Usup);
+		void SetRange(const int theRank, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtCC::SetSingleSolutionFlag ******/
-		/****** md5 signature: 7fa45b94e509fd90dd043f395439167b ******/
+		/****** md5 signature: 103181d923f205c8a0ea7d9450218c43 ******/
 		%feature("compactdefaultargs") SetSingleSolutionFlag;
 		%feature("autodoc", "
 Parameters
@@ -4037,16 +1527,16 @@ Description
 -----------
 Set flag for single extrema computation. Works on parametric solver only.
 ") SetSingleSolutionFlag;
-		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
+		void SetSingleSolutionFlag(const bool theSingleSolutionFlag);
 
 		/****** Extrema_ExtCC::SetTolerance ******/
-		/****** md5 signature: 16e60849a33c96f08af47a45ccdfb221 ******/
+		/****** md5 signature: b1d82fafb6757a08880cdde678665b4b ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4056,10 +1546,10 @@ Description
 -----------
 No available documentation.
 ") SetTolerance;
-		void SetTolerance(const Standard_Integer theRank, const Standard_Real Tol);
+		void SetTolerance(const int theRank, const double Tol);
 
 		/****** Extrema_ExtCC::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
+		/****** md5 signature: 9aebb5df3f18bb9f6020d21a4e91b999 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -4068,16 +1558,16 @@ N: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
+		double SquareDistance(const int N = 1);
 
 		/****** Extrema_ExtCC::TrimmedSquareDistances ******/
-		/****** md5 signature: 4e321915bc6b3619a20bb8a4fec39fce ******/
+		/****** md5 signature: a0b2e07311146f31be6f8f46c6371a1a ******/
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "
 Parameters
@@ -4089,10 +1579,10 @@ P22: gp_Pnt
 
 Return
 -------
-dist11: float
-distP12: float
-distP21: float
-distP22: float
+dist11: double
+distP12: double
+distP21: double
+distP22: double
 
 Description
 -----------
@@ -4128,15 +1618,15 @@ No available documentation.
 		 Extrema_ExtCC2d();
 
 		/****** Extrema_ExtCC2d::Extrema_ExtCC2d ******/
-		/****** md5 signature: 4e71d2eebdbd2103a21286923c8a1ce0 ******/
+		/****** md5 signature: 325de96534c2b26eebb2d6b59439e78f ******/
 		%feature("compactdefaultargs") Extrema_ExtCC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor2d_Curve2d
 C2: Adaptor2d_Curve2d
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -4146,22 +1636,22 @@ Description
 -----------
 It calculates all the distances.
 ") Extrema_ExtCC2d;
-		 Extrema_ExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		 Extrema_ExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC2d::Extrema_ExtCC2d ******/
-		/****** md5 signature: fab5475c248d3f36cda068af9882ca40 ******/
+		/****** md5 signature: ce9e804ec777ed885e017060f4ebcf60 ******/
 		%feature("compactdefaultargs") Extrema_ExtCC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor2d_Curve2d
 C2: Adaptor2d_Curve2d
-U1: float
-U2: float
-V1: float
-V2: float
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+U1: double
+U2: double
+V1: double
+V2: double
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -4171,10 +1661,10 @@ Description
 -----------
 It calculates all the distances.
 ") Extrema_ExtCC2d;
-		 Extrema_ExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		 Extrema_ExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const double U1, const double U2, const double V1, const double V2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC2d::GetSingleSolutionFlag ******/
-		/****** md5 signature: b28121e257a0efb9e2c6c13cf0ce823d ******/
+		/****** md5 signature: 5d1c77c7a523a241b74128b38ef81a1c ******/
 		%feature("compactdefaultargs") GetSingleSolutionFlag;
 		%feature("autodoc", "Return
 -------
@@ -4184,19 +1674,19 @@ Description
 -----------
 Get flag for single extrema computation. Works on parametric solver only.
 ") GetSingleSolutionFlag;
-		Standard_Boolean GetSingleSolutionFlag();
+		bool GetSingleSolutionFlag();
 
 		/****** Extrema_ExtCC2d::Initialize ******/
-		/****** md5 signature: 664b6d4f23d9ca50ceb303478cf4c8f1 ******/
+		/****** md5 signature: 688613db3134a599a1cc7a7549332e71 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 C2: Adaptor2d_Curve2d
-V1: float
-V2: float
-TolC1: float (optional, default to 1.0e-10)
-TolC2: float (optional, default to 1.0e-10)
+V1: double
+V2: double
+TolC1: double (optional, default to 1.0e-10)
+TolC2: double (optional, default to 1.0e-10)
 
 Return
 -------
@@ -4206,10 +1696,10 @@ Description
 -----------
 initializes the fields.
 ") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C2, const Standard_Real V1, const Standard_Real V2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
+		void Initialize(const Adaptor2d_Curve2d & C2, const double V1, const double V2, const double TolC1 = 1.0e-10, const double TolC2 = 1.0e-10);
 
 		/****** Extrema_ExtCC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4219,10 +1709,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtCC2d::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -4232,10 +1722,10 @@ Description
 -----------
 Returns True if the two curves are parallel.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtCC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -4245,17 +1735,17 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtCC2d::Perform ******/
-		/****** md5 signature: 0b7a7e6da6760c9bc5a77ff28b7e53f6 ******/
+		/****** md5 signature: 1592c2c067dd95ad94b0435373190d5e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor2d_Curve2d
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
@@ -4265,10 +1755,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Adaptor2d_Curve2d & C1, const Standard_Real U1, const Standard_Real U2);
+		void Perform(const Adaptor2d_Curve2d & C1, const double U1, const double U2);
 
 		/****** Extrema_ExtCC2d::Points ******/
-		/****** md5 signature: b11c393bae576338fc3f288ecb955b49 ******/
+		/****** md5 signature: 0858a7ee8976b90e8852b9a897083022 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -4285,10 +1775,10 @@ Description
 -----------
 Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
+		void Points(const int N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
 		/****** Extrema_ExtCC2d::SetSingleSolutionFlag ******/
-		/****** md5 signature: 7fa45b94e509fd90dd043f395439167b ******/
+		/****** md5 signature: 103181d923f205c8a0ea7d9450218c43 ******/
 		%feature("compactdefaultargs") SetSingleSolutionFlag;
 		%feature("autodoc", "
 Parameters
@@ -4303,10 +1793,10 @@ Description
 -----------
 Set flag for single extrema computation. Works on parametric solver only.
 ") SetSingleSolutionFlag;
-		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
+		void SetSingleSolutionFlag(const bool theSingleSolutionFlag);
 
 		/****** Extrema_ExtCC2d::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
+		/****** md5 signature: 9aebb5df3f18bb9f6020d21a4e91b999 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -4315,16 +1805,16 @@ N: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
+		double SquareDistance(const int N = 1);
 
 		/****** Extrema_ExtCC2d::TrimmedSquareDistances ******/
-		/****** md5 signature: 5589d6016051b0d97cdeddc5557c860c ******/
+		/****** md5 signature: 84a98d5913f45fcdca2fa5ef46056830 ******/
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "
 Parameters
@@ -4336,10 +1826,10 @@ P22: gp_Pnt2d
 
 Return
 -------
-dist11: float
-distP12: float
-distP21: float
-distP22: float
+dist11: double
+distP12: double
+distP21: double
+distP22: double
 
 Description
 -----------
@@ -4375,15 +1865,15 @@ No available documentation.
 		 Extrema_ExtCS();
 
 		/****** Extrema_ExtCS::Extrema_ExtCS ******/
-		/****** md5 signature: a6635ef61a6412c3a4509df4cbb3bf78 ******/
+		/****** md5 signature: 5b1dd6904287e18efa970bf5e0e21953 ******/
 		%feature("compactdefaultargs") Extrema_ExtCS;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-TolC: float
-TolS: float
+TolC: double
+TolS: double
 
 Return
 -------
@@ -4393,24 +1883,24 @@ Description
 -----------
 It calculates all the distances between C and S.
 ") Extrema_ExtCS;
-		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real TolC, const Standard_Real TolS);
+		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const double TolC, const double TolS);
 
 		/****** Extrema_ExtCS::Extrema_ExtCS ******/
-		/****** md5 signature: 725ca4cb75ba4708abac64dd5588fea5 ******/
+		/****** md5 signature: c5a399f3e2ac1824a606894454631a9e ******/
 		%feature("compactdefaultargs") Extrema_ExtCS;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-UCinf: float
-UCsup: float
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-TolC: float
-TolS: float
+UCinf: double
+UCsup: double
+Uinf: double
+Usup: double
+Vinf: double
+Vsup: double
+TolC: double
+TolS: double
 
 Return
 -------
@@ -4420,17 +1910,17 @@ Description
 -----------
 It calculates all the distances between C and S. UCinf and UCmax are the start and end parameters of the curve.
 ") Extrema_ExtCS;
-		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real UCinf, const Standard_Real UCsup, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolC, const Standard_Real TolS);
+		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const double UCinf, const double UCsup, const double Uinf, const double Usup, const double Vinf, const double Vsup, const double TolC, const double TolS);
 
 		/****** Extrema_ExtCS::Initialize ******/
-		/****** md5 signature: e63b3f3f490bda228580d04568edb6b3 ******/
+		/****** md5 signature: 96e268b66756c4177b9b2b61b9afe06f ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
-TolC: float
-TolS: float
+TolC: double
+TolS: double
 
 Return
 -------
@@ -4440,21 +1930,21 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Real TolC, const Standard_Real TolS);
+		void Initialize(const Adaptor3d_Surface & S, const double TolC, const double TolS);
 
 		/****** Extrema_ExtCS::Initialize ******/
-		/****** md5 signature: 6ca083b40ba666c98208199a3aec58ff ******/
+		/****** md5 signature: b4d9d95e3658fde206d648c6b115a011 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-TolC: float
-TolS: float
+Uinf: double
+Usup: double
+Vinf: double
+Vsup: double
+TolC: double
+TolS: double
 
 Return
 -------
@@ -4464,10 +1954,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolC, const Standard_Real TolS);
+		void Initialize(const Adaptor3d_Surface & S, const double Uinf, const double Usup, const double Vinf, const double Vsup, const double TolC, const double TolS);
 
 		/****** Extrema_ExtCS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4477,10 +1967,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtCS::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -4490,10 +1980,10 @@ Description
 -----------
 Returns True if the curve is on a parallel surface.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtCS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -4503,17 +1993,17 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtCS::Perform ******/
-		/****** md5 signature: 0b6b261d405d9a2236021036de30e89c ******/
+		/****** md5 signature: 3c813e63e216ff3717ed2a54b19d254b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
-Uinf: float
-Usup: float
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -4523,10 +2013,10 @@ Description
 -----------
 Computes the distances. An exception is raised if the fields have not been initialized.
 ") Perform;
-		void Perform(const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const Adaptor3d_Curve & C, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtCS::Points ******/
-		/****** md5 signature: df68325eb2f306b7c0800a3dab036048 ******/
+		/****** md5 signature: 0a578e5eaa40acc31f072bdb957049c9 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -4543,10 +2033,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnSurf & P2);
+		void Points(const int N, Extrema_POnCurv & P1, Extrema_POnSurf & P2);
 
 		/****** Extrema_ExtCS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -4555,13 +2045,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -4591,14 +2081,14 @@ No available documentation.
 		 Extrema_ExtElC();
 
 		/****** Extrema_ExtElC::Extrema_ExtElC ******/
-		/****** md5 signature: 7b0656884d84c74368738eb61994ae0b ******/
+		/****** md5 signature: 4263497a19bb6f9fdfaba8982b7a571b ******/
 		%feature("compactdefaultargs") Extrema_ExtElC;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: gp_Lin
 C2: gp_Lin
-AngTol: float
+AngTol: double
 
 Return
 -------
@@ -4608,17 +2098,17 @@ Description
 -----------
 Calculates the distance between two lines. AngTol is used to test if the lines are parallel: Angle(C1,C2) < AngTol.
 ") Extrema_ExtElC;
-		 Extrema_ExtElC(const gp_Lin & C1, const gp_Lin & C2, const Standard_Real AngTol);
+		 Extrema_ExtElC(const gp_Lin & C1, const gp_Lin & C2, const double AngTol);
 
 		/****** Extrema_ExtElC::Extrema_ExtElC ******/
-		/****** md5 signature: 828691bd07be929d1a0d331c962a5189 ******/
+		/****** md5 signature: a5aa100076696f47f717749b44efa7e9 ******/
 		%feature("compactdefaultargs") Extrema_ExtElC;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: gp_Lin
 C2: gp_Circ
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4628,7 +2118,7 @@ Description
 -----------
 Calculates the distance between a line and a circle.
 ") Extrema_ExtElC;
-		 Extrema_ExtElC(const gp_Lin & C1, const gp_Circ & C2, const Standard_Real Tol);
+		 Extrema_ExtElC(const gp_Lin & C1, const gp_Circ & C2, const double Tol);
 
 		/****** Extrema_ExtElC::Extrema_ExtElC ******/
 		/****** md5 signature: 9fc2edc96231aa3d1ee6d30a8e95ad20 ******/
@@ -4707,7 +2197,7 @@ Calculates the distance between two circles. The circles can be parallel or iden
 		 Extrema_ExtElC(const gp_Circ & C1, const gp_Circ & C2);
 
 		/****** Extrema_ExtElC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4717,10 +2207,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtElC::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -4730,10 +2220,10 @@ Description
 -----------
 Returns True if the two curves are parallel.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtElC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -4743,10 +2233,10 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtElC::Points ******/
-		/****** md5 signature: 3794ed44489c98c8247e475c96bba9a2 ******/
+		/****** md5 signature: bfa511058ea609926c07e72d6f996c85 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -4763,10 +2253,10 @@ Description
 -----------
 Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
+		void Points(const int N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
 		/****** Extrema_ExtElC::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
+		/****** md5 signature: 9aebb5df3f18bb9f6020d21a4e91b999 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -4775,13 +2265,13 @@ N: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
+		double SquareDistance(const int N = 1);
 
 };
 
@@ -4811,14 +2301,14 @@ No available documentation.
 		 Extrema_ExtElC2d();
 
 		/****** Extrema_ExtElC2d::Extrema_ExtElC2d ******/
-		/****** md5 signature: 6dc9aa92330273f445223bbea89fd053 ******/
+		/****** md5 signature: ef89c8c02e025fd7020357898530d683 ******/
 		%feature("compactdefaultargs") Extrema_ExtElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: gp_Lin2d
 C2: gp_Lin2d
-AngTol: float
+AngTol: double
 
 Return
 -------
@@ -4828,17 +2318,17 @@ Description
 -----------
 Calculates the distance between two lines. AngTol is used to test if the lines are parallel: Angle(C1,C2) < AngTol.
 ") Extrema_ExtElC2d;
-		 Extrema_ExtElC2d(const gp_Lin2d & C1, const gp_Lin2d & C2, const Standard_Real AngTol);
+		 Extrema_ExtElC2d(const gp_Lin2d & C1, const gp_Lin2d & C2, const double AngTol);
 
 		/****** Extrema_ExtElC2d::Extrema_ExtElC2d ******/
-		/****** md5 signature: 255dafcf3a543a8e720c60b740b1789e ******/
+		/****** md5 signature: 5d04935d1a40ccd560b89c20b432dd2f ******/
 		%feature("compactdefaultargs") Extrema_ExtElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: gp_Lin2d
 C2: gp_Circ2d
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4848,7 +2338,7 @@ Description
 -----------
 Calculates the distance between a line and a circle.
 ") Extrema_ExtElC2d;
-		 Extrema_ExtElC2d(const gp_Lin2d & C1, const gp_Circ2d & C2, const Standard_Real Tol);
+		 Extrema_ExtElC2d(const gp_Lin2d & C1, const gp_Circ2d & C2, const double Tol);
 
 		/****** Extrema_ExtElC2d::Extrema_ExtElC2d ******/
 		/****** md5 signature: c5e7e832342f09b3e3f5af22bdc53d53 ******/
@@ -4984,7 +2474,7 @@ Calculates the distance between a circle and a parabola.
 		 Extrema_ExtElC2d(const gp_Circ2d & C1, const gp_Parab2d & C2);
 
 		/****** Extrema_ExtElC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4994,10 +2484,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtElC2d::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -5007,10 +2497,10 @@ Description
 -----------
 Returns True if the two curves are parallel.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtElC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -5020,10 +2510,10 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtElC2d::Points ******/
-		/****** md5 signature: b11c393bae576338fc3f288ecb955b49 ******/
+		/****** md5 signature: 0858a7ee8976b90e8852b9a897083022 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -5040,10 +2530,10 @@ Description
 -----------
 Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
+		void Points(const int N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
 		/****** Extrema_ExtElC2d::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
+		/****** md5 signature: 9aebb5df3f18bb9f6020d21a4e91b999 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -5052,13 +2542,13 @@ N: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
+		double SquareDistance(const int N = 1);
 
 };
 
@@ -5297,7 +2787,7 @@ Calculates the distances between a hyperbola and a plane.
 		 Extrema_ExtElCS(const gp_Hypr & C, const gp_Pln & S);
 
 		/****** Extrema_ExtElCS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5307,10 +2797,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtElCS::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -5320,10 +2810,10 @@ Description
 -----------
 Returns True if the curve is on a parallel surface.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtElCS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -5333,7 +2823,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtElCS::Perform ******/
 		/****** md5 signature: 53338ec9217fe501d1c94d408fbb526a ******/
@@ -5545,7 +3035,7 @@ No available documentation.
 		void Perform(const gp_Hypr & C, const gp_Pln & S);
 
 		/****** Extrema_ExtElCS::Points ******/
-		/****** md5 signature: df68325eb2f306b7c0800a3dab036048 ******/
+		/****** md5 signature: 0a578e5eaa40acc31f072bdb957049c9 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -5562,10 +3052,10 @@ Description
 -----------
 Returns the points of the Nth extremum distance. P1 is on the curve, P2 on the surface.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnSurf & P2);
+		void Points(const int N, Extrema_POnCurv & P1, Extrema_POnSurf & P2);
 
 		/****** Extrema_ExtElCS::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
+		/****** md5 signature: 9aebb5df3f18bb9f6020d21a4e91b999 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -5574,13 +3064,13 @@ N: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
+		double SquareDistance(const int N = 1);
 
 };
 
@@ -5724,7 +3214,7 @@ Calculates the distances between a sphere and a torus.
 		 Extrema_ExtElSS(const gp_Sphere & S1, const gp_Torus & S2);
 
 		/****** Extrema_ExtElSS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5734,10 +3224,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtElSS::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -5747,10 +3237,10 @@ Description
 -----------
 Returns True if the two surfaces are parallel.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtElSS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -5760,7 +3250,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtElSS::Perform ******/
 		/****** md5 signature: ce57f9a43effeb78e12cb61797bc6543 ******/
@@ -5877,7 +3367,7 @@ No available documentation.
 		void Perform(const gp_Sphere & S1, const gp_Torus & S2);
 
 		/****** Extrema_ExtElSS::Points ******/
-		/****** md5 signature: 3c61a440dae3b36da20a5cbbb58f55ce ******/
+		/****** md5 signature: 9262cd0fd0c25e9045f929bf930dd606 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -5894,10 +3384,10 @@ Description
 -----------
 Returns the points for the Nth resulting distance. P1 is on the first surface, P2 on the second one.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnSurf & P1, Extrema_POnSurf & P2);
+		void Points(const int N, Extrema_POnSurf & P1, Extrema_POnSurf & P2);
 
 		/****** Extrema_ExtElSS::SquareDistance ******/
-		/****** md5 signature: badb2a0561651254031917071ad28398 ******/
+		/****** md5 signature: 9aebb5df3f18bb9f6020d21a4e91b999 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -5906,434 +3396,18 @@ N: int (optional, default to 1)
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N = 1);
+		double SquareDistance(const int N = 1);
 
 };
 
 
 %extend Extrema_ExtElSS {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************
-* class Extrema_ExtPC *
-**********************/
-class Extrema_ExtPC {
-	public:
-		/****** Extrema_ExtPC::Extrema_ExtPC ******/
-		/****** md5 signature: be55a3dbd5dd51eefcef6fa83c40e5e0 ******/
-		%feature("compactdefaultargs") Extrema_ExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_ExtPC;
-		 Extrema_ExtPC();
-
-		/****** Extrema_ExtPC::Extrema_ExtPC ******/
-		/****** md5 signature: 80236a796df22a03cb53e858bdaf4dfe ******/
-		%feature("compactdefaultargs") Extrema_ExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ExtPC;
-		 Extrema_ExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ExtPC::Extrema_ExtPC ******/
-		/****** md5 signature: 67d047a0517c372399b96860078635d6 ******/
-		%feature("compactdefaultargs") Extrema_ExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ExtPC;
-		 Extrema_ExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ExtPC::Initialize ******/
-		/****** md5 signature: 6ac5bc3f72e0a8236c8f51c23167f9f5 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-initializes the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ExtPC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_ExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the <N>th extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_ExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_ExtPC::Perform ******/
-		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt & P);
-
-		/****** Extrema_ExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the point of the <N>th extremum distance.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_ExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the <N>th extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_ExtPC::TrimmedSquareDistances ******/
-		/****** md5 signature: 2e689901655c68a486db722f362ab27b ******/
-		%feature("compactdefaultargs") TrimmedSquareDistances;
-		%feature("autodoc", "
-Parameters
-----------
-P1: gp_Pnt
-P2: gp_Pnt
-
-Return
--------
-dist1: float
-dist2: float
-
-Description
------------
-if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
-") TrimmedSquareDistances;
-		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & P1, gp_Pnt & P2);
-
-};
-
-
-%extend Extrema_ExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class Extrema_ExtPC2d *
-************************/
-class Extrema_ExtPC2d {
-	public:
-		/****** Extrema_ExtPC2d::Extrema_ExtPC2d ******/
-		/****** md5 signature: 3ab8144e6c9a0668da028f2c4f7999da ******/
-		%feature("compactdefaultargs") Extrema_ExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_ExtPC2d;
-		 Extrema_ExtPC2d();
-
-		/****** Extrema_ExtPC2d::Extrema_ExtPC2d ******/
-		/****** md5 signature: 85453b0ec67e15ba150de917544e3938 ******/
-		%feature("compactdefaultargs") Extrema_ExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ExtPC2d;
-		 Extrema_ExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ExtPC2d::Extrema_ExtPC2d ******/
-		/****** md5 signature: b53ba77823cd004a73e74f43a6e53d26 ******/
-		%feature("compactdefaultargs") Extrema_ExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
-") Extrema_ExtPC2d;
-		 Extrema_ExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ExtPC2d::Initialize ******/
-		/****** md5 signature: be89f8d1b5b5ecf504acd30e1f24f787 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-Uinf: float
-Usup: float
-TolF: float (optional, default to 1.0e-10)
-
-Return
--------
-None
-
-Description
------------
-initializes the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
-
-		/****** Extrema_ExtPC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-True if the distances are found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_ExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Returns True if the <N>th extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_ExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the number of extremum distances.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_ExtPC2d::Perform ******/
-		/****** md5 signature: 59fee48271d5ac79a6de2fe73317998c ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt2d & P);
-
-		/****** Extrema_ExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the <N>th extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_ExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the value of the <N>th extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_ExtPC2d::TrimmedSquareDistances ******/
-		/****** md5 signature: d92e1ba45ead5acc8c7f33976cfdf6e6 ******/
-		%feature("compactdefaultargs") TrimmedSquareDistances;
-		%feature("autodoc", "
-Parameters
-----------
-P1: gp_Pnt2d
-P2: gp_Pnt2d
-
-Return
--------
-dist1: float
-dist2: float
-
-Description
------------
-if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
-") TrimmedSquareDistances;
-		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & P1, gp_Pnt2d & P2);
-
-};
-
-
-%extend Extrema_ExtPC2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6358,16 +3432,16 @@ No available documentation.
 		 Extrema_ExtPElC();
 
 		/****** Extrema_ExtPElC::Extrema_ExtPElC ******/
-		/****** md5 signature: 93bc73b76ab3778c58d80e8bf7e3bb4d ******/
+		/****** md5 signature: 1156ecd87c9d6306ae3c3ccb3b237cc6 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Lin
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6377,19 +3451,19 @@ Description
 -----------
 Calculates the extremum distance between the point P and the segment [Uinf,Usup] of the line C.
 ") Extrema_ExtPElC;
-		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Lin & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Lin & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Extrema_ExtPElC ******/
-		/****** md5 signature: 2421c1c1ea2d67e9e0c93039dc777852 ******/
+		/****** md5 signature: df288458512125c2560c3f6aeff2d6e1 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Circ
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6399,19 +3473,19 @@ Description
 -----------
 Calculates the 2 extremum distances between the point P and the segment [Uinf,Usup] of the circle C. Tol is used to determine if P is on the axis of the circle or if an extremum is on an endpoint of the segment. If P is on the axis of the circle, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC;
-		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Circ & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Circ & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Extrema_ExtPElC ******/
-		/****** md5 signature: 8aea1ee5525a05788869a67c6ce46ea8 ******/
+		/****** md5 signature: 28456734baac6c8a97b24053aeeb93fe ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Elips
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6421,19 +3495,19 @@ Description
 -----------
 Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the ellipse C. Tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. If P is on the axis of the ellipse, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC;
-		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Elips & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Elips & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Extrema_ExtPElC ******/
-		/****** md5 signature: a386b6b8b1b6010c6b9571009e5702e8 ******/
+		/****** md5 signature: 7d02e76b179522d231860f858e3d37b7 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Hypr
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6443,19 +3517,19 @@ Description
 -----------
 Calculates the extremum distances between the point P and the segment [Uinf,Usup] of the hyperbola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC;
-		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Hypr & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Hypr & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Extrema_ExtPElC ******/
-		/****** md5 signature: 80a4885fd6b9adb857b740213d44758f ******/
+		/****** md5 signature: 85ac52c6a9a3fb64b5afc8d09544e26f ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Parab
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6465,10 +3539,10 @@ Description
 -----------
 Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the parabola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC;
-		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Parab & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Parab & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6478,10 +3552,10 @@ Description
 -----------
 True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtPElC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
+		/****** md5 signature: 89550d4f3d6c9d0eb3eaa07222d96853 ******/
 		%feature("compactdefaultargs") IsMin;
 		%feature("autodoc", "
 Parameters
@@ -6496,10 +3570,10 @@ Description
 -----------
 Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
+		bool IsMin(const int N);
 
 		/****** Extrema_ExtPElC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -6509,19 +3583,19 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtPElC::Perform ******/
-		/****** md5 signature: 387f74370367df916d66e4969cf83798 ******/
+		/****** md5 signature: 86e59413eed5ac4ff20d6accf0a37f4d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Lin
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6531,19 +3605,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Lin & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt & P, const gp_Lin & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Perform ******/
-		/****** md5 signature: 1bae431d03488d75ec67609e8ae39f71 ******/
+		/****** md5 signature: 090c47965c8e52f51429728fcd404f97 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Circ
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6553,19 +3627,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Circ & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt & P, const gp_Circ & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Perform ******/
-		/****** md5 signature: dfda9ecf65388aa537f7eb877313d1b5 ******/
+		/****** md5 signature: 1a2eb201fe9b5687c6d82e25f546818b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Elips
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6575,19 +3649,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Elips & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt & P, const gp_Elips & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Perform ******/
-		/****** md5 signature: a1c7b2e90f211be41b1d0d58f47469f9 ******/
+		/****** md5 signature: 37ea38701249f1c4fda8d847bead4744 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Hypr
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6597,19 +3671,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Hypr & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt & P, const gp_Hypr & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Perform ******/
-		/****** md5 signature: dd4bc329117483ae226cb12423526181 ******/
+		/****** md5 signature: f7abee264f34a0b63b9586fbd57d62eb ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 C: gp_Parab
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6619,10 +3693,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Parab & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt & P, const gp_Parab & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
+		/****** md5 signature: 958d48738e82612b04072d79f68ca66f ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -6637,10 +3711,10 @@ Description
 -----------
 Returns the point of the Nth extremum distance.
 ") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
+		const Extrema_POnCurv & Point(const int N);
 
 		/****** Extrema_ExtPElC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -6649,13 +3723,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -6685,16 +3759,16 @@ No available documentation.
 		 Extrema_ExtPElC2d();
 
 		/****** Extrema_ExtPElC2d::Extrema_ExtPElC2d ******/
-		/****** md5 signature: b161287eb698efa6064f94bbbbffaf58 ******/
+		/****** md5 signature: 7c5653b4cb822d4190c2bc2ee8163850 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Lin2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6704,19 +3778,19 @@ Description
 -----------
 Calculates the extremum distance between the point P and the segment [Uinf,Usup] of the line L.
 ") Extrema_ExtPElC2d;
-		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Lin2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Lin2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Extrema_ExtPElC2d ******/
-		/****** md5 signature: 9dacd9abcd93cdfe7255d6d7fba7b46f ******/
+		/****** md5 signature: f0b1fa675ac7cbdc78b01a5a218ee751 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Circ2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6726,19 +3800,19 @@ Description
 -----------
 Calculates the 2 extremum distances between the point P and the segment [Uinf,Usup] of the circle C. Tol is used to determine if P is on the axis of the circle or if an extremum is on an endpoint of the segment. If P is on the axis of the circle, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC2d;
-		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Circ2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Circ2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Extrema_ExtPElC2d ******/
-		/****** md5 signature: 70b2bf1822d25a12a548d783db318ceb ******/
+		/****** md5 signature: 9274d2b7dd717dc936e5489da56e545e ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Elips2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6748,19 +3822,19 @@ Description
 -----------
 Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the ellipse C. Tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. If P is on the axis of the ellipse, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC2d;
-		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Elips2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Elips2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Extrema_ExtPElC2d ******/
-		/****** md5 signature: 29b968a8e96e7126b4e4e7831638c99d ******/
+		/****** md5 signature: f98cf514f92842353a0aa971ff04e712 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Hypr2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6770,19 +3844,19 @@ Description
 -----------
 Calculates the extremum distances between the point P and the segment [Uinf,Usup] of the hyperbola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC2d;
-		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Hypr2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Hypr2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Extrema_ExtPElC2d ******/
-		/****** md5 signature: 49b554ea2281bad6ee09f11e7c3a2eb8 ******/
+		/****** md5 signature: 73cf3904f5a9cc657d9c0137bd3a5490 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Parab2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6792,10 +3866,10 @@ Description
 -----------
 Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the parabola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC2d;
-		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Parab2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Parab2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6805,10 +3879,10 @@ Description
 -----------
 True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtPElC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
+		/****** md5 signature: 89550d4f3d6c9d0eb3eaa07222d96853 ******/
 		%feature("compactdefaultargs") IsMin;
 		%feature("autodoc", "
 Parameters
@@ -6823,10 +3897,10 @@ Description
 -----------
 Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
+		bool IsMin(const int N);
 
 		/****** Extrema_ExtPElC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -6836,19 +3910,19 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtPElC2d::Perform ******/
-		/****** md5 signature: 15068655d1fb63103f9947c13bc48e19 ******/
+		/****** md5 signature: a8f9c80e12b0dba790a660ce3b06ab26 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 L: gp_Lin2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6858,19 +3932,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt2d & P, const gp_Lin2d & L, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt2d & P, const gp_Lin2d & L, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Perform ******/
-		/****** md5 signature: b057d13e3535354f66df5aeca35ddf75 ******/
+		/****** md5 signature: 4ad8b14e618d648f0b9fc2dea285b90b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Circ2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6880,19 +3954,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt2d & P, const gp_Circ2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt2d & P, const gp_Circ2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Perform ******/
-		/****** md5 signature: 4ae408c4333b201bce092809c1e3a45f ******/
+		/****** md5 signature: e73768d2e5aa91f63e2328a28457e27d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Elips2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6902,19 +3976,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt2d & P, const gp_Elips2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt2d & P, const gp_Elips2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Perform ******/
-		/****** md5 signature: a41602c05f889da301cf87d99625406b ******/
+		/****** md5 signature: affe9121e0b4db9349fe6fa43fe1af2d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Hypr2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6924,19 +3998,19 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt2d & P, const gp_Hypr2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt2d & P, const gp_Hypr2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Perform ******/
-		/****** md5 signature: 5fd3d554a665d045f61c850b29da2283 ******/
+		/****** md5 signature: 3085bb55d39e582cec071fbb092857f0 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 C: gp_Parab2d
-Tol: float
-Uinf: float
-Usup: float
+Tol: double
+Uinf: double
+Usup: double
 
 Return
 -------
@@ -6946,10 +4020,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt2d & P, const gp_Parab2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
+		void Perform(const gp_Pnt2d & P, const gp_Parab2d & C, const double Tol, const double Uinf, const double Usup);
 
 		/****** Extrema_ExtPElC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
+		/****** md5 signature: e5ed9824585db5a84b974c877f2f3707 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -6964,10 +4038,10 @@ Description
 -----------
 Returns the point of the Nth extremum distance.
 ") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
+		const Extrema_POnCurv2d & Point(const int N);
 
 		/****** Extrema_ExtPElC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -6976,13 +4050,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -7012,14 +4086,14 @@ No available documentation.
 		 Extrema_ExtPElS();
 
 		/****** Extrema_ExtPElS::Extrema_ExtPElS ******/
-		/****** md5 signature: b7873961e78f0878b711346c01e324e2 ******/
+		/****** md5 signature: 8b33a8cbd3616dbdf084aa771e5e0da9 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Cylinder
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7029,17 +4103,17 @@ Description
 -----------
 It calculates all the distances between a point and a cylinder from gp. Tol is used to test if the point is on the axis.
 ") Extrema_ExtPElS;
-		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Cylinder & S, const Standard_Real Tol);
+		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Cylinder & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Extrema_ExtPElS ******/
-		/****** md5 signature: 7897974da8ba1a7a95e93262691e4525 ******/
+		/****** md5 signature: 47960ce6b79f84223a7ccf2fac8612cb ******/
 		%feature("compactdefaultargs") Extrema_ExtPElS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Pln
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7049,17 +4123,17 @@ Description
 -----------
 It calculates all the distances between a point and a plane from gp. Tol is used to test if the point is on the plane.
 ") Extrema_ExtPElS;
-		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Pln & S, const Standard_Real Tol);
+		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Pln & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Extrema_ExtPElS ******/
-		/****** md5 signature: 5d42604390c64ff068b315ae4c9277e8 ******/
+		/****** md5 signature: 037df7eaf13ab7998e6df887d322ee7e ******/
 		%feature("compactdefaultargs") Extrema_ExtPElS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7069,17 +4143,17 @@ Description
 -----------
 It calculates all the distances between a point and a cone from gp. Tol is used to test if the point is at the apex or on the axis.
 ") Extrema_ExtPElS;
-		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Cone & S, const Standard_Real Tol);
+		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Cone & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Extrema_ExtPElS ******/
-		/****** md5 signature: df9ed72ba021462671b3017fac129dbf ******/
+		/****** md5 signature: 6b9de1e9c32d61566c54d1ef9a6748ea ******/
 		%feature("compactdefaultargs") Extrema_ExtPElS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7089,17 +4163,17 @@ Description
 -----------
 It calculates all the distances between a point and a torus from gp. Tol is used to test if the point is on the axis.
 ") Extrema_ExtPElS;
-		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Torus & S, const Standard_Real Tol);
+		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Torus & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Extrema_ExtPElS ******/
-		/****** md5 signature: ac6b1eda3281b6d3ce81dd775a522041 ******/
+		/****** md5 signature: 0d9bb34d85dbd223a8da81cfbd16f939 ******/
 		%feature("compactdefaultargs") Extrema_ExtPElS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Sphere
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7109,10 +4183,10 @@ Description
 -----------
 It calculates all the distances between a point and a sphere from gp. Tol is used to test if the point is at the center.
 ") Extrema_ExtPElS;
-		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Sphere & S, const Standard_Real Tol);
+		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Sphere & S, const double Tol);
 
 		/****** Extrema_ExtPElS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7122,10 +4196,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtPElS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -7135,17 +4209,17 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtPElS::Perform ******/
-		/****** md5 signature: 7a9583898caece842785d1fbbb6a41c7 ******/
+		/****** md5 signature: d78466955fdc948676672f1d63e1926a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Cylinder
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7155,17 +4229,17 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Cylinder & S, const Standard_Real Tol);
+		void Perform(const gp_Pnt & P, const gp_Cylinder & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Perform ******/
-		/****** md5 signature: 182c5b84fd8e40b09851cc166b2cd45b ******/
+		/****** md5 signature: d5ad9abd6a6e2b56427d320251f01327 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Pln
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7175,17 +4249,17 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Pln & S, const Standard_Real Tol);
+		void Perform(const gp_Pnt & P, const gp_Pln & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Perform ******/
-		/****** md5 signature: bc41bf6c0844fea1e6ca23f55d184af9 ******/
+		/****** md5 signature: 7b4eeb8f9b06276a2fc5b8fc1275a405 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7195,17 +4269,17 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Cone & S, const Standard_Real Tol);
+		void Perform(const gp_Pnt & P, const gp_Cone & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Perform ******/
-		/****** md5 signature: 90fd6c44c396b1471c027903a8e071cc ******/
+		/****** md5 signature: 738fbcc7a52df79bfeda266839fa0f91 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7215,17 +4289,17 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Torus & S, const Standard_Real Tol);
+		void Perform(const gp_Pnt & P, const gp_Torus & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Perform ******/
-		/****** md5 signature: ed199a8178cb5ed834c60aa45f034ae9 ******/
+		/****** md5 signature: 468c0f4d078a8834b2ee794600184c44 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: gp_Sphere
-Tol: float
+Tol: double
 
 Return
 -------
@@ -7235,10 +4309,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Pnt & P, const gp_Sphere & S, const Standard_Real Tol);
+		void Perform(const gp_Pnt & P, const gp_Sphere & S, const double Tol);
 
 		/****** Extrema_ExtPElS::Point ******/
-		/****** md5 signature: a4fcffb60ef4a8c249128141ee062afa ******/
+		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7253,10 +4327,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Point;
-		const Extrema_POnSurf & Point(const Standard_Integer N);
+		const Extrema_POnSurf & Point(const int N);
 
 		/****** Extrema_ExtPElS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -7265,13 +4339,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -7301,19 +4375,19 @@ No available documentation.
 		 Extrema_ExtPExtS();
 
 		/****** Extrema_ExtPExtS::Extrema_ExtPExtS ******/
-		/****** md5 signature: 8390b68d70e936cf950fa530f03196c5 ******/
+		/****** md5 signature: 72726db263f38e9583cfccf539ce2d83 ******/
 		%feature("compactdefaultargs") Extrema_ExtPExtS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: GeomAdaptor_SurfaceOfLinearExtrusion
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-TolU: float
-TolV: float
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7323,18 +4397,18 @@ Description
 -----------
 It calculates all the distances between a point from gp and a Surface.
 ") Extrema_ExtPExtS;
-		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const double Umin, const double Usup, const double Vmin, const double Vsup, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPExtS::Extrema_ExtPExtS ******/
-		/****** md5 signature: 40ff9b6a45a9298edc4bc7b99b8b9323 ******/
+		/****** md5 signature: 00c58aee9db255758b71182853f34c61 ******/
 		%feature("compactdefaultargs") Extrema_ExtPExtS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: GeomAdaptor_SurfaceOfLinearExtrusion
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7344,21 +4418,21 @@ Description
 -----------
 It calculates all the distances between a point from gp and a Surface.
 ") Extrema_ExtPExtS;
-		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPExtS::Initialize ******/
-		/****** md5 signature: 2c188151ca29551136581ffad667e7ed ******/
+		/****** md5 signature: d13003070c12d6e4288279f2e74f953d ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S: GeomAdaptor_SurfaceOfLinearExtrusion
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-TolU: float
-TolV: float
+Uinf: double
+Usup: double
+Vinf: double
+Vsup: double
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7368,10 +4442,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Initialize;
-		void Initialize(const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const double Uinf, const double Usup, const double Vinf, const double Vsup, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPExtS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7381,10 +4455,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtPExtS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -7394,7 +4468,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtPExtS::Perform ******/
 		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
@@ -7415,7 +4489,7 @@ No available documentation.
 		void Perform(const gp_Pnt & P);
 
 		/****** Extrema_ExtPExtS::Point ******/
-		/****** md5 signature: a4fcffb60ef4a8c249128141ee062afa ******/
+		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7430,10 +4504,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Point;
-		const Extrema_POnSurf & Point(const Standard_Integer N);
+		const Extrema_POnSurf & Point(const int N);
 
 		/****** Extrema_ExtPExtS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -7442,13 +4516,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -7480,19 +4554,19 @@ No available documentation.
 		 Extrema_ExtPRevS();
 
 		/****** Extrema_ExtPRevS::Extrema_ExtPRevS ******/
-		/****** md5 signature: 1ac9435e6f9a8efe5739acf51bc42518 ******/
+		/****** md5 signature: 51de5a254257450a30e8736006458a64 ******/
 		%feature("compactdefaultargs") Extrema_ExtPRevS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: GeomAdaptor_SurfaceOfRevolution
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-TolU: float
-TolV: float
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7502,18 +4576,18 @@ Description
 -----------
 It calculates all the distances between a point from gp and a SurfacePtr from Adaptor3d.
 ") Extrema_ExtPRevS;
-		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const double Umin, const double Usup, const double Vmin, const double Vsup, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPRevS::Extrema_ExtPRevS ******/
-		/****** md5 signature: e5055c0383c605df1cfed351d87ac4e8 ******/
+		/****** md5 signature: c0590e1e73e731e2336fda7b146d13cc ******/
 		%feature("compactdefaultargs") Extrema_ExtPRevS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: GeomAdaptor_SurfaceOfRevolution
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7523,21 +4597,21 @@ Description
 -----------
 It calculates all the distances between a point from gp and a SurfacePtr from Adaptor3d.
 ") Extrema_ExtPRevS;
-		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real TolU, const Standard_Real TolV);
+		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPRevS::Initialize ******/
-		/****** md5 signature: 51cbb1f7b6fbef202ed05be3503ea920 ******/
+		/****** md5 signature: c40ccaa344992e3bd9d9b2cead7ac4d9 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S: GeomAdaptor_SurfaceOfRevolution
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-TolU: float
-TolV: float
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7547,10 +4621,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const double Umin, const double Usup, const double Vmin, const double Vsup, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPRevS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7560,10 +4634,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtPRevS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -7573,7 +4647,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtPRevS::Perform ******/
 		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
@@ -7594,7 +4668,7 @@ No available documentation.
 		void Perform(const gp_Pnt & P);
 
 		/****** Extrema_ExtPRevS::Point ******/
-		/****** md5 signature: a4fcffb60ef4a8c249128141ee062afa ******/
+		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7609,10 +4683,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Point;
-		const Extrema_POnSurf & Point(const Standard_Integer N);
+		const Extrema_POnSurf & Point(const int N);
 
 		/****** Extrema_ExtPRevS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -7621,13 +4695,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -7659,15 +4733,15 @@ No available documentation.
 		 Extrema_ExtPS();
 
 		/****** Extrema_ExtPS::Extrema_ExtPS ******/
-		/****** md5 signature: 442bc5c874228c2da454483d0c83a01c ******/
+		/****** md5 signature: 39de2f2f1a19322f19c1e6e50b955835 ******/
 		%feature("compactdefaultargs") Extrema_ExtPS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: Adaptor3d_Surface
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 F: Extrema_ExtFlag (optional, default to Extrema_ExtFlag_MINMAX)
 A: Extrema_ExtAlgo (optional, default to Extrema_ExtAlgo_Grad)
 
@@ -7679,22 +4753,22 @@ Description
 -----------
 It calculates all the distances. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_ExtPS;
-		 Extrema_ExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 Extrema_ExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const double TolU, const double TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
 		/****** Extrema_ExtPS::Extrema_ExtPS ******/
-		/****** md5 signature: ae9e0982c6eae0cab46c82b1f5f9b3f2 ******/
+		/****** md5 signature: 4864ea8fc72f7f76e4ff727bdfee2d74 ******/
 		%feature("compactdefaultargs") Extrema_ExtPS;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
 S: Adaptor3d_Surface
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-TolU: float
-TolV: float
+Uinf: double
+Usup: double
+Vinf: double
+Vsup: double
+TolU: double
+TolV: double
 F: Extrema_ExtFlag (optional, default to Extrema_ExtFlag_MINMAX)
 A: Extrema_ExtAlgo (optional, default to Extrema_ExtAlgo_Grad)
 
@@ -7706,21 +4780,21 @@ Description
 -----------
 It calculates all the distances. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_ExtPS;
-		 Extrema_ExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 Extrema_ExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const double Uinf, const double Usup, const double Vinf, const double Vsup, const double TolU, const double TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
 		/****** Extrema_ExtPS::Initialize ******/
-		/****** md5 signature: 85bf7622aa29bfb02f48b8238eb11094 ******/
+		/****** md5 signature: e08f2cee10f3ac8457bfdf1243295f94 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
-Uinf: float
-Usup: float
-Vinf: float
-Vsup: float
-TolU: float
-TolV: float
+Uinf: double
+Usup: double
+Vinf: double
+Vsup: double
+TolU: double
+TolV: double
 
 Return
 -------
@@ -7730,10 +4804,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const Adaptor3d_Surface & S, const double Uinf, const double Usup, const double Vinf, const double Vsup, const double TolU, const double TolV);
 
 		/****** Extrema_ExtPS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7743,10 +4817,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtPS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -7756,7 +4830,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtPS::Perform ******/
 		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
@@ -7777,7 +4851,7 @@ Computes the distances. An exception is raised if the fields have not been initi
 		void Perform(const gp_Pnt & P);
 
 		/****** Extrema_ExtPS::Point ******/
-		/****** md5 signature: a4fcffb60ef4a8c249128141ee062afa ******/
+		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7792,7 +4866,7 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Point;
-		const Extrema_POnSurf & Point(const Standard_Integer N);
+		const Extrema_POnSurf & Point(const int N);
 
 		/****** Extrema_ExtPS::SetAlgo ******/
 		/****** md5 signature: dcf7639630bf367993e8e7093ad161ed ******/
@@ -7831,7 +4905,7 @@ No available documentation.
 		void SetFlag(const Extrema_ExtFlag F);
 
 		/****** Extrema_ExtPS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -7840,16 +4914,16 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 		/****** Extrema_ExtPS::TrimmedSquareDistances ******/
-		/****** md5 signature: 89ae4993de907b460aded6b7f212f89e ******/
+		/****** md5 signature: 268187269f339b3db1f9f8e93ea96020 ******/
 		%feature("compactdefaultargs") TrimmedSquareDistances;
 		%feature("autodoc", "
 Parameters
@@ -7861,10 +4935,10 @@ PUlVl: gp_Pnt
 
 Return
 -------
-dUfVf: float
-dUfVl: float
-dUlVf: float
-dUlVl: float
+dUfVf: double
+dUfVl: double
+dUlVf: double
+dUlVl: double
 
 Description
 -----------
@@ -7900,15 +4974,15 @@ No available documentation.
 		 Extrema_ExtSS();
 
 		/****** Extrema_ExtSS::Extrema_ExtSS ******/
-		/****** md5 signature: d41df8248a9ed9aa1ac1f54913a328c1 ******/
+		/****** md5 signature: 7436da8b5057d9f38974456a8fe96604 ******/
 		%feature("compactdefaultargs") Extrema_ExtSS;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
-TolS1: float
-TolS2: float
+TolS1: double
+TolS2: double
 
 Return
 -------
@@ -7918,26 +4992,26 @@ Description
 -----------
 It calculates all the distances between S1 and S2.
 ") Extrema_ExtSS;
-		 Extrema_ExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real TolS1, const Standard_Real TolS2);
+		 Extrema_ExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const double TolS1, const double TolS2);
 
 		/****** Extrema_ExtSS::Extrema_ExtSS ******/
-		/****** md5 signature: 8a14608402b919fdeb8fbb14914f405f ******/
+		/****** md5 signature: 65b76dba87425096b415948ff546c189 ******/
 		%feature("compactdefaultargs") Extrema_ExtSS;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
-Uinf1: float
-Usup1: float
-Vinf1: float
-Vsup1: float
-Uinf2: float
-Usup2: float
-Vinf2: float
-Vsup2: float
-TolS1: float
-TolS2: float
+Uinf1: double
+Usup1: double
+Vinf1: double
+Vsup1: double
+Uinf2: double
+Usup2: double
+Vinf2: double
+Vsup2: double
+TolS1: double
+TolS2: double
 
 Return
 -------
@@ -7947,20 +5021,20 @@ Description
 -----------
 It calculates all the distances between S1 and S2.
 ") Extrema_ExtSS;
-		 Extrema_ExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real Uinf1, const Standard_Real Usup1, const Standard_Real Vinf1, const Standard_Real Vsup1, const Standard_Real Uinf2, const Standard_Real Usup2, const Standard_Real Vinf2, const Standard_Real Vsup2, const Standard_Real TolS1, const Standard_Real TolS2);
+		 Extrema_ExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const double Uinf1, const double Usup1, const double Vinf1, const double Vsup1, const double Uinf2, const double Usup2, const double Vinf2, const double Vsup2, const double TolS1, const double TolS2);
 
 		/****** Extrema_ExtSS::Initialize ******/
-		/****** md5 signature: ad2fa52e6ddd361c6252c886b8810ed6 ******/
+		/****** md5 signature: 70807120736ba636e5900298c7ad0141 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 S2: Adaptor3d_Surface
-Uinf2: float
-Usup2: float
-Vinf2: float
-Vsup2: float
-TolS1: float
+Uinf2: double
+Usup2: double
+Vinf2: double
+Vsup2: double
+TolS1: double
 
 Return
 -------
@@ -7970,10 +5044,10 @@ Description
 -----------
 Initializes the fields of the algorithm.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S2, const Standard_Real Uinf2, const Standard_Real Usup2, const Standard_Real Vinf2, const Standard_Real Vsup2, const Standard_Real TolS1);
+		void Initialize(const Adaptor3d_Surface & S2, const double Uinf2, const double Usup2, const double Vinf2, const double Vsup2, const double TolS1);
 
 		/****** Extrema_ExtSS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7983,10 +5057,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_ExtSS::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -7996,10 +5070,10 @@ Description
 -----------
 Returns True if the surfaces are parallel.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** Extrema_ExtSS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -8009,20 +5083,20 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_ExtSS::Perform ******/
-		/****** md5 signature: 615d1558f87698e4b2ee7b4aae202fd8 ******/
+		/****** md5 signature: f0fc2d8f5f2f72b4ff38069ae117c6b7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
-Uinf1: float
-Usup1: float
-Vinf1: float
-Vsup1: float
-TolS1: float
+Uinf1: double
+Usup1: double
+Vinf1: double
+Vsup1: double
+TolS1: double
 
 Return
 -------
@@ -8032,10 +5106,10 @@ Description
 -----------
 Computes the distances. An exception is raised if the fields have not been initialized.
 ") Perform;
-		void Perform(const Adaptor3d_Surface & S1, const Standard_Real Uinf1, const Standard_Real Usup1, const Standard_Real Vinf1, const Standard_Real Vsup1, const Standard_Real TolS1);
+		void Perform(const Adaptor3d_Surface & S1, const double Uinf1, const double Usup1, const double Vinf1, const double Vsup1, const double TolS1);
 
 		/****** Extrema_ExtSS::Points ******/
-		/****** md5 signature: 3c61a440dae3b36da20a5cbbb58f55ce ******/
+		/****** md5 signature: 9262cd0fd0c25e9045f929bf930dd606 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -8052,10 +5126,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Points;
-		void Points(const Standard_Integer N, Extrema_POnSurf & P1, Extrema_POnSurf & P2);
+		void Points(const int N, Extrema_POnSurf & P1, Extrema_POnSurf & P2);
 
 		/****** Extrema_ExtSS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -8064,13 +5138,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -8119,7 +5193,7 @@ No available documentation.
 		 Extrema_FuncExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S);
 
 		/****** Extrema_FuncExtCS::Derivatives ******/
-		/****** md5 signature: 1d38afd641c7de1e5982feb10f2b7ece ******/
+		/****** md5 signature: 2e85258267452dbe86e462db0a3a5832 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -8135,10 +5209,10 @@ Description
 -----------
 Calculation of Fi'(U,V).
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
+		bool Derivatives(const math_Vector & UV, math_Matrix & DF);
 
 		/****** Extrema_FuncExtCS::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
+		/****** md5 signature: 476bd80c2b35cb038599a2aed9b23901 ******/
 		%feature("compactdefaultargs") GetStateNumber;
 		%feature("autodoc", "Return
 -------
@@ -8148,7 +5222,7 @@ Description
 -----------
 Save the found extremum.
 ") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
+		int GetStateNumber();
 
 		/****** Extrema_FuncExtCS::Initialize ******/
 		/****** md5 signature: 2a333662de5748b61979b7e3164f3edb ******/
@@ -8170,7 +5244,7 @@ sets the field mysurf of the function.
 		void Initialize(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S);
 
 		/****** Extrema_FuncExtCS::NbEquations ******/
-		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -8180,10 +5254,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** Extrema_FuncExtCS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -8193,10 +5267,10 @@ Description
 -----------
 Return the number of found extrema.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_FuncExtCS::NbVariables ******/
-		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -8206,10 +5280,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_FuncExtCS::PointOnCurve ******/
-		/****** md5 signature: 443491513fb9009060a015999afb6712 ******/
+		/****** md5 signature: 369ffccbfa48b2ce26cd888f6dcbc746 ******/
 		%feature("compactdefaultargs") PointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -8224,10 +5298,10 @@ Description
 -----------
 Returns the Nth extremum on C.
 ") PointOnCurve;
-		const Extrema_POnCurv & PointOnCurve(const Standard_Integer N);
+		const Extrema_POnCurv & PointOnCurve(const int N);
 
 		/****** Extrema_FuncExtCS::PointOnSurface ******/
-		/****** md5 signature: 7f1d563227e3ab4a1d4a83ca5fcf610c ******/
+		/****** md5 signature: 93d630f93efa87211a309b812e634d11 ******/
 		%feature("compactdefaultargs") PointOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -8242,36 +5316,36 @@ Description
 -----------
 Return the Nth extremum on S.
 ") PointOnSurface;
-		const Extrema_POnSurf & PointOnSurface(const Standard_Integer N);
+		const Extrema_POnSurf & PointOnSurface(const int N);
 
 		/****** Extrema_FuncExtCS::PointsOnCurve ******/
-		/****** md5 signature: 602d5782674888b934bd4e2fd7fa5cdc ******/
+		/****** md5 signature: 6d2b7a55792d917a01eed7309e2845ea ******/
 		%feature("compactdefaultargs") PointsOnCurve;
 		%feature("autodoc", "Return
 -------
-Extrema_SequenceOfPOnCurv
+NCollection_Sequence<Extrema_POnCurv>
 
 Description
 -----------
 Change Sequence of PointOnCurv.
 ") PointsOnCurve;
-		Extrema_SequenceOfPOnCurv & PointsOnCurve();
+		NCollection_Sequence<Extrema_POnCurv> & PointsOnCurve();
 
 		/****** Extrema_FuncExtCS::PointsOnSurf ******/
-		/****** md5 signature: 3b5271d65309cd09fd6821dbda16b4be ******/
+		/****** md5 signature: 731da2aad90a662fb460aa51031f0e89 ******/
 		%feature("compactdefaultargs") PointsOnSurf;
 		%feature("autodoc", "Return
 -------
-Extrema_SequenceOfPOnSurf
+NCollection_Sequence<Extrema_POnSurf>
 
 Description
 -----------
 Change Sequence of PointOnSurf.
 ") PointsOnSurf;
-		Extrema_SequenceOfPOnSurf & PointsOnSurf();
+		NCollection_Sequence<Extrema_POnSurf> & PointsOnSurf();
 
 		/****** Extrema_FuncExtCS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -8280,29 +5354,29 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the value of the Nth distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 		/****** Extrema_FuncExtCS::SquareDistances ******/
-		/****** md5 signature: 87170c9dd06e828cc97a07a8cfa0edbb ******/
+		/****** md5 signature: d1db598d8ee069246c782256e9baaf0b ******/
 		%feature("compactdefaultargs") SquareDistances;
 		%feature("autodoc", "Return
 -------
-TColStd_SequenceOfReal
+NCollection_Sequence<double>
 
 Description
 -----------
 Change Sequence of SquareDistance.
 ") SquareDistances;
-		TColStd_SequenceOfReal & SquareDistances();
+		NCollection_Sequence<double> & SquareDistances();
 
 		/****** Extrema_FuncExtCS::Value ******/
-		/****** md5 signature: 4409f39f6024165e606b9b8f7db3892e ******/
+		/****** md5 signature: aae97e1be41ad26d9b2b682964a26bb0 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8318,10 +5392,10 @@ Description
 -----------
 Calculation of Fi(U,V).
 ") Value;
-		Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
+		bool Value(const math_Vector & UV, math_Vector & F);
 
 		/****** Extrema_FuncExtCS::Values ******/
-		/****** md5 signature: aecc35a594e467ec2fc262dd639056f5 ******/
+		/****** md5 signature: 0b388c40c6a304edf8e5511360fe16c9 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -8338,7 +5412,7 @@ Description
 -----------
 Calculation of Fi(U,V) and Fi'(U,V).
 ") Values;
-		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
+		bool Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
 };
 
@@ -8387,7 +5461,7 @@ No available documentation.
 		 Extrema_FuncExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2);
 
 		/****** Extrema_FuncExtSS::Derivatives ******/
-		/****** md5 signature: 1d38afd641c7de1e5982feb10f2b7ece ******/
+		/****** md5 signature: 2e85258267452dbe86e462db0a3a5832 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -8403,10 +5477,10 @@ Description
 -----------
 Calculate Fi'(U,V).
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
+		bool Derivatives(const math_Vector & UV, math_Matrix & DF);
 
 		/****** Extrema_FuncExtSS::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
+		/****** md5 signature: 476bd80c2b35cb038599a2aed9b23901 ******/
 		%feature("compactdefaultargs") GetStateNumber;
 		%feature("autodoc", "Return
 -------
@@ -8416,7 +5490,7 @@ Description
 -----------
 Save the found extremum.
 ") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
+		int GetStateNumber();
 
 		/****** Extrema_FuncExtSS::Initialize ******/
 		/****** md5 signature: bbf2a645e1835e618089044c53c8e997 ******/
@@ -8438,7 +5512,7 @@ sets the field mysurf of the function.
 		void Initialize(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2);
 
 		/****** Extrema_FuncExtSS::NbEquations ******/
-		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -8448,10 +5522,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** Extrema_FuncExtSS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -8461,10 +5535,10 @@ Description
 -----------
 Return the number of found extrema.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_FuncExtSS::NbVariables ******/
-		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -8474,10 +5548,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_FuncExtSS::PointOnS1 ******/
-		/****** md5 signature: 90624d213c63006128caeca879b24fcd ******/
+		/****** md5 signature: e15f4e253a9976810994c9aced22480d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "
 Parameters
@@ -8492,10 +5566,10 @@ Description
 -----------
 Return the Nth extremum on S1.
 ") PointOnS1;
-		const Extrema_POnSurf & PointOnS1(const Standard_Integer N);
+		const Extrema_POnSurf & PointOnS1(const int N);
 
 		/****** Extrema_FuncExtSS::PointOnS2 ******/
-		/****** md5 signature: 38764998c5ddd9ae02fdb7d76f18f157 ******/
+		/****** md5 signature: ecac6963ff2ed6aa5a624f032a59f066 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "
 Parameters
@@ -8510,10 +5584,10 @@ Description
 -----------
 Renvoie le Nieme extremum sur S2.
 ") PointOnS2;
-		const Extrema_POnSurf & PointOnS2(const Standard_Integer N);
+		const Extrema_POnSurf & PointOnS2(const int N);
 
 		/****** Extrema_FuncExtSS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -8522,16 +5596,16 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the value of the Nth distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 		/****** Extrema_FuncExtSS::Value ******/
-		/****** md5 signature: 4409f39f6024165e606b9b8f7db3892e ******/
+		/****** md5 signature: aae97e1be41ad26d9b2b682964a26bb0 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8547,10 +5621,10 @@ Description
 -----------
 Calculate Fi(U,V).
 ") Value;
-		Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
+		bool Value(const math_Vector & UV, math_Vector & F);
 
 		/****** Extrema_FuncExtSS::Values ******/
-		/****** md5 signature: aecc35a594e467ec2fc262dd639056f5 ******/
+		/****** md5 signature: 0b388c40c6a304edf8e5511360fe16c9 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -8567,7 +5641,7 @@ Description
 -----------
 Calculate Fi(U,V) and Fi'(U,V).
 ") Values;
-		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
+		bool Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
 };
 
@@ -8603,7 +5677,7 @@ Constructor.
 		 Extrema_FuncPSDist(const Adaptor3d_Surface & theS, const gp_Pnt & theP);
 
 		/****** Extrema_FuncPSDist::NbVariables ******/
-		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -8613,10 +5687,10 @@ Description
 -----------
 Number of variables.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_FuncPSDist::Value ******/
-		/****** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8625,13 +5699,13 @@ X: math_VectorBase<double >
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 Value.
 ") Value;
-		Standard_Boolean Value(math_VectorBase<double > X, Standard_Real &OutValue);
+		bool Value(math_VectorBase<double > X, Standard_Real &OutValue);
 
 };
 
@@ -8688,7 +5762,7 @@ No available documentation.
 		 Extrema_FuncPSNorm(const gp_Pnt & P, const Adaptor3d_Surface & S);
 
 		/****** Extrema_FuncPSNorm::Derivatives ******/
-		/****** md5 signature: 1d38afd641c7de1e5982feb10f2b7ece ******/
+		/****** md5 signature: 2e85258267452dbe86e462db0a3a5832 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -8704,10 +5778,10 @@ Description
 -----------
 Calculate Fi'(U,V).
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
+		bool Derivatives(const math_Vector & UV, math_Matrix & DF);
 
 		/****** Extrema_FuncPSNorm::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
+		/****** md5 signature: 476bd80c2b35cb038599a2aed9b23901 ******/
 		%feature("compactdefaultargs") GetStateNumber;
 		%feature("autodoc", "Return
 -------
@@ -8717,7 +5791,7 @@ Description
 -----------
 Save the found extremum.
 ") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
+		int GetStateNumber();
 
 		/****** Extrema_FuncPSNorm::Initialize ******/
 		/****** md5 signature: 17b5f42375df076d09bf3e8b29e98099 ******/
@@ -8738,7 +5812,7 @@ sets the field mysurf of the function.
 		void Initialize(const Adaptor3d_Surface & S);
 
 		/****** Extrema_FuncPSNorm::NbEquations ******/
-		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -8748,10 +5822,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** Extrema_FuncPSNorm::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -8761,10 +5835,10 @@ Description
 -----------
 Return the number of found extrema.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_FuncPSNorm::NbVariables ******/
-		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -8774,10 +5848,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_FuncPSNorm::Point ******/
-		/****** md5 signature: a4fcffb60ef4a8c249128141ee062afa ******/
+		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -8792,7 +5866,7 @@ Description
 -----------
 Returns the Nth extremum.
 ") Point;
-		const Extrema_POnSurf & Point(const Standard_Integer N);
+		const Extrema_POnSurf & Point(const int N);
 
 		/****** Extrema_FuncPSNorm::SetPoint ******/
 		/****** md5 signature: ad83fe26e12bb630222b6d2773210931 ******/
@@ -8813,7 +5887,7 @@ sets the field mysurf of the function.
 		void SetPoint(const gp_Pnt & P);
 
 		/****** Extrema_FuncPSNorm::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -8822,16 +5896,16 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Return the value of the Nth distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 		/****** Extrema_FuncPSNorm::Value ******/
-		/****** md5 signature: 4409f39f6024165e606b9b8f7db3892e ******/
+		/****** md5 signature: aae97e1be41ad26d9b2b682964a26bb0 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8847,10 +5921,10 @@ Description
 -----------
 Calculate Fi(U,V).
 ") Value;
-		Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
+		bool Value(const math_Vector & UV, math_Vector & F);
 
 		/****** Extrema_FuncPSNorm::Values ******/
-		/****** md5 signature: aecc35a594e467ec2fc262dd639056f5 ******/
+		/****** md5 signature: 0b388c40c6a304edf8e5511360fe16c9 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -8867,7 +5941,7 @@ Description
 -----------
 Calculate Fi(U,V) and Fi'(U,V).
 ") Values;
-		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
+		bool Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
 };
 
@@ -8878,6 +5952,161 @@ Calculate Fi(U,V) and Fi'(U,V).
 	}
 };
 
+/******************************
+* class Extrema_GCurveLocator *
+******************************/
+/***************************
+* class Extrema_GFuncExtCC *
+***************************/
+/***************************
+* class Extrema_GFuncExtPC *
+***************************/
+/************************
+* class Extrema_GGExtPC *
+************************/
+/**************************
+* class Extrema_GGenExtCC *
+**************************/
+/******************************************
+* class Extrema_GGenExtCC_PointsInspector *
+******************************************/
+class Extrema_GGenExtCC_PointsInspector {
+	public:
+typedef gp_XY Point;
+typedef gp_XY Target;
+		/****** Extrema_GGenExtCC_PointsInspector::Extrema_GGenExtCC_PointsInspector ******/
+		/****** md5 signature: 6158e7dd441b824332334934bc22303e ******/
+		%feature("compactdefaultargs") Extrema_GGenExtCC_PointsInspector;
+		%feature("autodoc", "
+Parameters
+----------
+theTol: double
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Extrema_GGenExtCC_PointsInspector;
+		 Extrema_GGenExtCC_PointsInspector(const double theTol);
+
+		/****** Extrema_GGenExtCC_PointsInspector::ClearFind ******/
+		/****** md5 signature: d3233e926bfa5f572fc774e5ca32a916 ******/
+		%feature("compactdefaultargs") ClearFind;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") ClearFind;
+		void ClearFind();
+
+		/****** Extrema_GGenExtCC_PointsInspector::Coord ******/
+		/****** md5 signature: 5eba5f8729bea7ab978c1279517b0fd3 ******/
+		%feature("compactdefaultargs") Coord;
+		%feature("autodoc", "
+Parameters
+----------
+i: int
+thePnt: Point
+
+Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") Coord;
+		static double Coord(int i, const Point & thePnt);
+
+		/****** Extrema_GGenExtCC_PointsInspector::Inspect ******/
+		/****** md5 signature: 074584af19a0dea3e02f68b2ceeea349 ******/
+		%feature("compactdefaultargs") Inspect;
+		%feature("autodoc", "
+Parameters
+----------
+theObject: Target
+
+Return
+-------
+NCollection_CellFilter_Action
+
+Description
+-----------
+No available documentation.
+") Inspect;
+		NCollection_CellFilter_Action Inspect(const Target & theObject);
+
+		/****** Extrema_GGenExtCC_PointsInspector::SetCurrent ******/
+		/****** md5 signature: 6407d5e869d5cf5fdebbc67e7aac392f ******/
+		%feature("compactdefaultargs") SetCurrent;
+		%feature("autodoc", "
+Parameters
+----------
+theCurPnt: gp_XY
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") SetCurrent;
+		void SetCurrent(const gp_XY & theCurPnt);
+
+		/****** Extrema_GGenExtCC_PointsInspector::Shift ******/
+		/****** md5 signature: a5c275ed1417a8e4b122622e7231a266 ******/
+		%feature("compactdefaultargs") Shift;
+		%feature("autodoc", "
+Parameters
+----------
+thePnt: Point
+theTol: double
+
+Return
+-------
+Point
+
+Description
+-----------
+No available documentation.
+") Shift;
+		static Point Shift(const Point & thePnt, double theTol);
+
+		/****** Extrema_GGenExtCC_PointsInspector::isFind ******/
+		/****** md5 signature: 91b3274458c5b8dec5a89dd2e915b128 ******/
+		%feature("compactdefaultargs") isFind;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") isFind;
+		bool isFind();
+
+};
+
+
+%extend Extrema_GGenExtCC_PointsInspector {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class Extrema_GGenExtPC *
+**************************/
+/*****************************
+* class Extrema_GLocateExtPC *
+*****************************/
 /*************************
 * class Extrema_GenExtCS *
 *************************/
@@ -8897,7 +6126,7 @@ Empty constructor.
 		 Extrema_GenExtCS();
 
 		/****** Extrema_GenExtCS::Extrema_GenExtCS ******/
-		/****** md5 signature: bba1c45ae7b3a767217c8ab190dca0fe ******/
+		/****** md5 signature: c7a7b9444843a102ee97b9b7eea755ac ******/
 		%feature("compactdefaultargs") Extrema_GenExtCS;
 		%feature("autodoc", "
 Parameters
@@ -8907,8 +6136,8 @@ S: Adaptor3d_Surface
 NbT: int
 NbU: int
 NbV: int
-Tol1: float
-Tol2: float
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -8918,10 +6147,10 @@ Description
 -----------
 It calculates all the distances. The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surfaces. NbU and NbV are used to locate the close points on the surface and NbT on the curve to find the zeros.
 ") Extrema_GenExtCS;
-		 Extrema_GenExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Integer NbT, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Tol1, const Standard_Real Tol2);
+		 Extrema_GenExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const int NbT, const int NbU, const int NbV, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenExtCS::Extrema_GenExtCS ******/
-		/****** md5 signature: 327c5ab7f1a3e9581157d19a9c2d2db1 ******/
+		/****** md5 signature: 5c4cca2b684b97923e8e1538b65b61cf ******/
 		%feature("compactdefaultargs") Extrema_GenExtCS;
 		%feature("autodoc", "
 Parameters
@@ -8931,14 +6160,14 @@ S: Adaptor3d_Surface
 NbT: int
 NbU: int
 NbV: int
-tmin: float
-tsup: float
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-Tol1: float
-Tol2: float
+tmin: double
+tsup: double
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -8948,10 +6177,10 @@ Description
 -----------
 It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbT,NbU and NbV are used to locate the close points to find the zeros.
 ") Extrema_GenExtCS;
-		 Extrema_GenExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Integer NbT, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real tmin, const Standard_Real tsup, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real Tol1, const Standard_Real Tol2);
+		 Extrema_GenExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const int NbT, const int NbU, const int NbV, const double tmin, const double tsup, const double Umin, const double Usup, const double Vmin, const double Vsup, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenExtCS::Initialize ******/
-		/****** md5 signature: 4a83bdcc87d7c0e853c8303703f95130 ******/
+		/****** md5 signature: 4a17ba49ccef8a78e0bc047f2de17401 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -8959,7 +6188,7 @@ Parameters
 S: Adaptor3d_Surface
 NbU: int
 NbV: int
-Tol2: float
+Tol2: double
 
 Return
 -------
@@ -8969,10 +6198,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Tol2);
+		void Initialize(const Adaptor3d_Surface & S, const int NbU, const int NbV, const double Tol2);
 
 		/****** Extrema_GenExtCS::Initialize ******/
-		/****** md5 signature: e8ea48bb5f9e12ba1dba0669be5fd2b8 ******/
+		/****** md5 signature: 3c08a5d52bfc124663fc9c7d224103d1 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -8980,11 +6209,11 @@ Parameters
 S: Adaptor3d_Surface
 NbU: int
 NbV: int
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-Tol2: float
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+Tol2: double
 
 Return
 -------
@@ -8994,10 +6223,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real Tol2);
+		void Initialize(const Adaptor3d_Surface & S, const int NbU, const int NbV, const double Umin, const double Usup, const double Vmin, const double Vsup, const double Tol2);
 
 		/****** Extrema_GenExtCS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -9007,10 +6236,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_GenExtCS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -9020,17 +6249,17 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_GenExtCS::Perform ******/
-		/****** md5 signature: b64949bae48db2bea954e43971d938bd ******/
+		/****** md5 signature: 71e9af28a1f8cc08ba9bae56621160d5 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 NbT: int
-Tol1: float
+Tol1: double
 
 Return
 -------
@@ -9040,19 +6269,19 @@ Description
 -----------
 the algorithm is done with S An exception is raised if the fields have not been initialized.
 ") Perform;
-		void Perform(const Adaptor3d_Curve & C, const Standard_Integer NbT, const Standard_Real Tol1);
+		void Perform(const Adaptor3d_Curve & C, const int NbT, const double Tol1);
 
 		/****** Extrema_GenExtCS::Perform ******/
-		/****** md5 signature: 7e6ef01ddb8cf6219f4430373c7ecf2a ******/
+		/****** md5 signature: e8d28526cb22e4dbf53ed16b58f5b67b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 NbT: int
-tmin: float
-tsup: float
-Tol1: float
+tmin: double
+tsup: double
+Tol1: double
 
 Return
 -------
@@ -9062,10 +6291,10 @@ Description
 -----------
 the algorithm is done with C An exception is raised if the fields have not been initialized.
 ") Perform;
-		void Perform(const Adaptor3d_Curve & C, const Standard_Integer NbT, const Standard_Real tmin, const Standard_Real tsup, const Standard_Real Tol1);
+		void Perform(const Adaptor3d_Curve & C, const int NbT, const double tmin, const double tsup, const double Tol1);
 
 		/****** Extrema_GenExtCS::PointOnCurve ******/
-		/****** md5 signature: 443491513fb9009060a015999afb6712 ******/
+		/****** md5 signature: 369ffccbfa48b2ce26cd888f6dcbc746 ******/
 		%feature("compactdefaultargs") PointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -9080,10 +6309,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") PointOnCurve;
-		const Extrema_POnCurv & PointOnCurve(const Standard_Integer N);
+		const Extrema_POnCurv & PointOnCurve(const int N);
 
 		/****** Extrema_GenExtCS::PointOnSurface ******/
-		/****** md5 signature: 7f1d563227e3ab4a1d4a83ca5fcf610c ******/
+		/****** md5 signature: 93d630f93efa87211a309b812e634d11 ******/
 		%feature("compactdefaultargs") PointOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -9098,10 +6327,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") PointOnSurface;
-		const Extrema_POnSurf & PointOnSurface(const Standard_Integer N);
+		const Extrema_POnSurf & PointOnSurface(const int N);
 
 		/****** Extrema_GenExtCS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -9110,13 +6339,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -9146,7 +6375,7 @@ Empty constructor.
 		 Extrema_GenExtPS();
 
 		/****** Extrema_GenExtPS::Extrema_GenExtPS ******/
-		/****** md5 signature: daed258cc828cde49776b51c85d4209e ******/
+		/****** md5 signature: 00202973acde387ec92d223ffb45e0cd ******/
 		%feature("compactdefaultargs") Extrema_GenExtPS;
 		%feature("autodoc", "
 Parameters
@@ -9155,8 +6384,8 @@ P: gp_Pnt
 S: Adaptor3d_Surface
 NbU: int
 NbV: int
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 F: Extrema_ExtFlag (optional, default to Extrema_ExtFlag_MINMAX)
 A: Extrema_ExtAlgo (optional, default to Extrema_ExtAlgo_Grad)
 
@@ -9168,10 +6397,10 @@ Description
 -----------
 It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_GenExtPS;
-		 Extrema_GenExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 Extrema_GenExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const int NbU, const int NbV, const double TolU, const double TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
 		/****** Extrema_GenExtPS::Extrema_GenExtPS ******/
-		/****** md5 signature: 9127ff28bfac5b4aee96e6256661db4d ******/
+		/****** md5 signature: 1a918760ede68229b253610c98cdf743 ******/
 		%feature("compactdefaultargs") Extrema_GenExtPS;
 		%feature("autodoc", "
 Parameters
@@ -9180,12 +6409,12 @@ P: gp_Pnt
 S: Adaptor3d_Surface
 NbU: int
 NbV: int
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-TolU: float
-TolV: float
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+TolU: double
+TolV: double
 F: Extrema_ExtFlag (optional, default to Extrema_ExtFlag_MINMAX)
 A: Extrema_ExtAlgo (optional, default to Extrema_ExtAlgo_Grad)
 
@@ -9197,10 +6426,10 @@ Description
 -----------
 It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_GenExtPS;
-		 Extrema_GenExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
+		 Extrema_GenExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const int NbU, const int NbV, const double Umin, const double Usup, const double Vmin, const double Vsup, const double TolU, const double TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
 		/****** Extrema_GenExtPS::Initialize ******/
-		/****** md5 signature: 3935e57ece45d8f4e70f4ad8a1ac7165 ******/
+		/****** md5 signature: e9211eb50022dd5fa409cf949a5755fc ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -9208,8 +6437,8 @@ Parameters
 S: Adaptor3d_Surface
 NbU: int
 NbV: int
-TolU: float
-TolV: float
+TolU: double
+TolV: double
 
 Return
 -------
@@ -9219,10 +6448,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const Adaptor3d_Surface & S, const int NbU, const int NbV, const double TolU, const double TolV);
 
 		/****** Extrema_GenExtPS::Initialize ******/
-		/****** md5 signature: af1484acd6b86f4299828f1bce51a25d ******/
+		/****** md5 signature: 5e189790f589a6318930e11d94b71ea7 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -9230,12 +6459,12 @@ Parameters
 S: Adaptor3d_Surface
 NbU: int
 NbV: int
-Umin: float
-Usup: float
-Vmin: float
-Vsup: float
-TolU: float
-TolV: float
+Umin: double
+Usup: double
+Vmin: double
+Vsup: double
+TolU: double
+TolV: double
 
 Return
 -------
@@ -9245,10 +6474,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
+		void Initialize(const Adaptor3d_Surface & S, const int NbU, const int NbV, const double Umin, const double Usup, const double Vmin, const double Vsup, const double TolU, const double TolV);
 
 		/****** Extrema_GenExtPS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -9258,10 +6487,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_GenExtPS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -9271,7 +6500,7 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_GenExtPS::Perform ******/
 		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
@@ -9292,7 +6521,7 @@ the algorithm is done with the point P. An exception is raised if the fields hav
 		void Perform(const gp_Pnt & P);
 
 		/****** Extrema_GenExtPS::Point ******/
-		/****** md5 signature: a4fcffb60ef4a8c249128141ee062afa ******/
+		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -9307,7 +6536,7 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") Point;
-		const Extrema_POnSurf & Point(const Standard_Integer N);
+		const Extrema_POnSurf & Point(const int N);
 
 		/****** Extrema_GenExtPS::SetAlgo ******/
 		/****** md5 signature: dcf7639630bf367993e8e7093ad161ed ******/
@@ -9346,7 +6575,7 @@ No available documentation.
 		void SetFlag(const Extrema_ExtFlag F);
 
 		/****** Extrema_GenExtPS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -9355,13 +6584,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -9391,7 +6620,7 @@ Empty constructor.
 		 Extrema_GenExtSS();
 
 		/****** Extrema_GenExtSS::Extrema_GenExtSS ******/
-		/****** md5 signature: 0360818ba5d986552ab9f07d2828956b ******/
+		/****** md5 signature: 0526805ad3b734946386115b40d8beab ******/
 		%feature("compactdefaultargs") Extrema_GenExtSS;
 		%feature("autodoc", "
 Parameters
@@ -9400,8 +6629,8 @@ S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
 NbU: int
 NbV: int
-Tol1: float
-Tol2: float
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -9411,10 +6640,10 @@ Description
 -----------
 It calculates all the distances. The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surfaces. NbU and NbV are used to locate the close points to find the zeros.
 ") Extrema_GenExtSS;
-		 Extrema_GenExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Tol1, const Standard_Real Tol2);
+		 Extrema_GenExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const int NbU, const int NbV, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenExtSS::Extrema_GenExtSS ******/
-		/****** md5 signature: c712f92876bba0c244979fbd6c3f61fe ******/
+		/****** md5 signature: bb0da0223da3eb0a98263f97bee346e3 ******/
 		%feature("compactdefaultargs") Extrema_GenExtSS;
 		%feature("autodoc", "
 Parameters
@@ -9423,16 +6652,16 @@ S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
 NbU: int
 NbV: int
-U1min: float
-U1sup: float
-V1min: float
-V1sup: float
-U2min: float
-U2sup: float
-V2min: float
-V2sup: float
-Tol1: float
-Tol2: float
+U1min: double
+U1sup: double
+V1min: double
+V1sup: double
+U2min: double
+U2sup: double
+V2min: double
+V2sup: double
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -9442,10 +6671,10 @@ Description
 -----------
 It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros.
 ") Extrema_GenExtSS;
-		 Extrema_GenExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real U1min, const Standard_Real U1sup, const Standard_Real V1min, const Standard_Real V1sup, const Standard_Real U2min, const Standard_Real U2sup, const Standard_Real V2min, const Standard_Real V2sup, const Standard_Real Tol1, const Standard_Real Tol2);
+		 Extrema_GenExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const int NbU, const int NbV, const double U1min, const double U1sup, const double V1min, const double V1sup, const double U2min, const double U2sup, const double V2min, const double V2sup, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenExtSS::Initialize ******/
-		/****** md5 signature: d2ac09f99de85d3f3d302c08172f91f5 ******/
+		/****** md5 signature: 907a53c96380f79aa3c79e44091886b5 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -9453,7 +6682,7 @@ Parameters
 S2: Adaptor3d_Surface
 NbU: int
 NbV: int
-Tol2: float
+Tol2: double
 
 Return
 -------
@@ -9463,10 +6692,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S2, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Tol2);
+		void Initialize(const Adaptor3d_Surface & S2, const int NbU, const int NbV, const double Tol2);
 
 		/****** Extrema_GenExtSS::Initialize ******/
-		/****** md5 signature: a2d550e02672d28690103ab17b8cf560 ******/
+		/****** md5 signature: 0b76a78780e4a1175182a366f397fbaa ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -9474,11 +6703,11 @@ Parameters
 S2: Adaptor3d_Surface
 NbU: int
 NbV: int
-U2min: float
-U2sup: float
-V2min: float
-V2sup: float
-Tol2: float
+U2min: double
+U2sup: double
+V2min: double
+V2sup: double
+Tol2: double
 
 Return
 -------
@@ -9488,10 +6717,10 @@ Description
 -----------
 No available documentation.
 ") Initialize;
-		void Initialize(const Adaptor3d_Surface & S2, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real U2min, const Standard_Real U2sup, const Standard_Real V2min, const Standard_Real V2sup, const Standard_Real Tol2);
+		void Initialize(const Adaptor3d_Surface & S2, const int NbU, const int NbV, const double U2min, const double U2sup, const double V2min, const double V2sup, const double Tol2);
 
 		/****** Extrema_GenExtSS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -9501,10 +6730,10 @@ Description
 -----------
 Returns True if the distances are found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_GenExtSS::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
+		/****** md5 signature: a89b8075893780b59ee0d9f6ba576df8 ******/
 		%feature("compactdefaultargs") NbExt;
 		%feature("autodoc", "Return
 -------
@@ -9514,16 +6743,16 @@ Description
 -----------
 Returns the number of extremum distances.
 ") NbExt;
-		Standard_Integer NbExt();
+		int NbExt();
 
 		/****** Extrema_GenExtSS::Perform ******/
-		/****** md5 signature: b4320d3a27d0ca1927f3609980ebcf1b ******/
+		/****** md5 signature: 9d961afeb49eaeba74986475de44b261 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
-Tol1: float
+Tol1: double
 
 Return
 -------
@@ -9533,20 +6762,20 @@ Description
 -----------
 the algorithm is done with S1 An exception is raised if the fields have not been initialized.
 ") Perform;
-		void Perform(const Adaptor3d_Surface & S1, const Standard_Real Tol1);
+		void Perform(const Adaptor3d_Surface & S1, const double Tol1);
 
 		/****** Extrema_GenExtSS::Perform ******/
-		/****** md5 signature: 3de6570d908fa60d889e1dc36aa1ca23 ******/
+		/****** md5 signature: 582e4c998a0d2b4f722bcb27a2db14ff ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
-U1min: float
-U1sup: float
-V1min: float
-V1sup: float
-Tol1: float
+U1min: double
+U1sup: double
+V1min: double
+V1sup: double
+Tol1: double
 
 Return
 -------
@@ -9556,10 +6785,10 @@ Description
 -----------
 the algorithm is done withS1 An exception is raised if the fields have not been initialized.
 ") Perform;
-		void Perform(const Adaptor3d_Surface & S1, const Standard_Real U1min, const Standard_Real U1sup, const Standard_Real V1min, const Standard_Real V1sup, const Standard_Real Tol1);
+		void Perform(const Adaptor3d_Surface & S1, const double U1min, const double U1sup, const double V1min, const double V1sup, const double Tol1);
 
 		/****** Extrema_GenExtSS::PointOnS1 ******/
-		/****** md5 signature: 90624d213c63006128caeca879b24fcd ******/
+		/****** md5 signature: e15f4e253a9976810994c9aced22480d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "
 Parameters
@@ -9574,10 +6803,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") PointOnS1;
-		const Extrema_POnSurf & PointOnS1(const Standard_Integer N);
+		const Extrema_POnSurf & PointOnS1(const int N);
 
 		/****** Extrema_GenExtSS::PointOnS2 ******/
-		/****** md5 signature: 38764998c5ddd9ae02fdb7d76f18f157 ******/
+		/****** md5 signature: ecac6963ff2ed6aa5a624f032a59f066 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "
 Parameters
@@ -9592,10 +6821,10 @@ Description
 -----------
 Returns the point of the Nth resulting distance.
 ") PointOnS2;
-		const Extrema_POnSurf & PointOnS2(const Standard_Integer N);
+		const Extrema_POnSurf & PointOnS2(const int N);
 
 		/****** Extrema_GenExtSS::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
+		/****** md5 signature: 45671dd8b89548cc9d5c988eae45f1a5 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -9604,13 +6833,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the Nth resulting square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
+		double SquareDistance(const int N);
 
 };
 
@@ -9621,6 +6850,9 @@ Returns the value of the Nth resulting square distance.
 	}
 };
 
+/*******************************
+* class Extrema_GenLocateExtCC *
+*******************************/
 /*******************************
 * class Extrema_GenLocateExtCS *
 *******************************/
@@ -9640,18 +6872,18 @@ No available documentation.
 		 Extrema_GenLocateExtCS();
 
 		/****** Extrema_GenLocateExtCS::Extrema_GenLocateExtCS ******/
-		/****** md5 signature: e4b395d8dfe4cac4c586cc73639a70bb ******/
+		/****** md5 signature: 35b967e50825dbd54140da3e435ee3b1 ******/
 		%feature("compactdefaultargs") Extrema_GenLocateExtCS;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-T: float
-U: float
-V: float
-Tol1: float
-Tol2: float
+T: double
+U: double
+V: double
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -9661,10 +6893,10 @@ Description
 -----------
 Calculates the distance with two close points. The close points are defined by the parameter values T for C and (U,V) for S. The function F(t,u,v)=distance(C(t),S(u,v)) has an extremun when gradient(F)=0. The algorithm searches a zero near the close points.
 ") Extrema_GenLocateExtCS;
-		 Extrema_GenLocateExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real T, const Standard_Real U, const Standard_Real V, const Standard_Real Tol1, const Standard_Real Tol2);
+		 Extrema_GenLocateExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const double T, const double U, const double V, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenLocateExtCS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -9674,21 +6906,21 @@ Description
 -----------
 Returns True if the distance is found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_GenLocateExtCS::Perform ******/
-		/****** md5 signature: be105fb152356ea7c716b2f46c5d1c6f ******/
+		/****** md5 signature: c4c060f7d49ff2185598af47df4fadd4 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve
 S: Adaptor3d_Surface
-T: float
-U: float
-V: float
-Tol1: float
-Tol2: float
+T: double
+U: double
+V: double
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -9698,7 +6930,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real T, const Standard_Real U, const Standard_Real V, const Standard_Real Tol1, const Standard_Real Tol2);
+		void Perform(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const double T, const double U, const double V, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenLocateExtCS::PointOnCurve ******/
 		/****** md5 signature: 12e75a03d4a94b00a001654daac03f2b ******/
@@ -9727,17 +6959,17 @@ Returns the point of the extremum distance on S.
 		const Extrema_POnSurf & PointOnSurface();
 
 		/****** Extrema_GenLocateExtCS::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
+		/****** md5 signature: 87eaf82a8e24cbc0c18c1f6edf383e79 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance();
+		double SquareDistance();
 
 };
 
@@ -9749,19 +6981,22 @@ Returns the value of the extremum square distance.
 };
 
 /*******************************
+* class Extrema_GenLocateExtPC *
+*******************************/
+/*******************************
 * class Extrema_GenLocateExtPS *
 *******************************/
 class Extrema_GenLocateExtPS {
 	public:
 		/****** Extrema_GenLocateExtPS::Extrema_GenLocateExtPS ******/
-		/****** md5 signature: c9c8d5943e8eebe4ebf77c504636c800 ******/
+		/****** md5 signature: 1208884e5f399efc4e9f31d320b3104b ******/
 		%feature("compactdefaultargs") Extrema_GenLocateExtPS;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: Adaptor3d_Surface
-theTolU: float (optional, default to Precision::PConfusion())
-theTolV: float (optional, default to Precision::PConfusion())
+theTolU: double (optional, default to Precision::PConfusion())
+theTolV: double (optional, default to Precision::PConfusion())
 
 Return
 -------
@@ -9771,10 +7006,10 @@ Description
 -----------
 Constructor.
 ") Extrema_GenLocateExtPS;
-		 Extrema_GenLocateExtPS(const Adaptor3d_Surface & theS, const Standard_Real theTolU = Precision::PConfusion(), const Standard_Real theTolV = Precision::PConfusion());
+		 Extrema_GenLocateExtPS(const Adaptor3d_Surface & theS, const double theTolU = Precision::PConfusion(), const double theTolV = Precision::PConfusion());
 
 		/****** Extrema_GenLocateExtPS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -9784,18 +7019,18 @@ Description
 -----------
 Returns True if the distance is found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_GenLocateExtPS::IsMinDist ******/
-		/****** md5 signature: 366fbadfb859c8db594bc4646bf37807 ******/
+		/****** md5 signature: 9362182d56ffd4d0371976da6e0ea6cb ******/
 		%feature("compactdefaultargs") IsMinDist;
 		%feature("autodoc", "
 Parameters
 ----------
 theP: gp_Pnt
 theS: Adaptor3d_Surface
-theU0: float
-theV0: float
+theU0: double
+theV0: double
 
 Return
 -------
@@ -9805,18 +7040,18 @@ Description
 -----------
 Returns True if UV point theU0, theV0 is point of local minimum of square distance between point theP and points theS(U, V), U, V are in small area around theU0, theV0.
 ") IsMinDist;
-		static Standard_Boolean IsMinDist(const gp_Pnt & theP, const Adaptor3d_Surface & theS, const Standard_Real theU0, const Standard_Real theV0);
+		static bool IsMinDist(const gp_Pnt & theP, const Adaptor3d_Surface & theS, const double theU0, const double theV0);
 
 		/****** Extrema_GenLocateExtPS::Perform ******/
-		/****** md5 signature: 1356c2657a2e0ea627880218a7af615f ******/
+		/****** md5 signature: 4e382ef647c2f46b4c23d5512ffae46d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theP: gp_Pnt
-theU0: float
-theV0: float
-isDistanceCriteria: bool (optional, default to Standard_False)
+theU0: double
+theV0: double
+isDistanceCriteria: bool (optional, default to false)
 
 Return
 -------
@@ -9826,7 +7061,7 @@ Description
 -----------
 Calculates the extrema between the point and the surface using a close point. The close point is defined by the parameter values theU0 and theV0. Type of the algorithm depends on the isDistanceCriteria flag. If flag value is false - normal projection criteria will be used. If flag value is true - distance criteria will be used.
 ") Perform;
-		void Perform(const gp_Pnt & theP, const Standard_Real theU0, const Standard_Real theV0, const Standard_Boolean isDistanceCriteria = Standard_False);
+		void Perform(const gp_Pnt & theP, const double theU0, const double theV0, const bool isDistanceCriteria = false);
 
 		/****** Extrema_GenLocateExtPS::Point ******/
 		/****** md5 signature: 495077ccedcb1863c9951b01a84a4bd1 ******/
@@ -9842,17 +7077,17 @@ Returns the point of the extremum distance.
 		const Extrema_POnSurf & Point();
 
 		/****** Extrema_GenLocateExtPS::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
+		/****** md5 signature: 87eaf82a8e24cbc0c18c1f6edf383e79 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance();
+		double SquareDistance();
 
 };
 
@@ -9882,19 +7117,19 @@ No available documentation.
 		 Extrema_GenLocateExtSS();
 
 		/****** Extrema_GenLocateExtSS::Extrema_GenLocateExtSS ******/
-		/****** md5 signature: ecd085c1d3d7d14e4947fbff65cc1cdf ******/
+		/****** md5 signature: 73756d301260f22eb34652af819e29f3 ******/
 		%feature("compactdefaultargs") Extrema_GenLocateExtSS;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
-U1: float
-V1: float
-U2: float
-V2: float
-Tol1: float
-Tol2: float
+U1: double
+V1: double
+U2: double
+V2: double
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -9904,10 +7139,10 @@ Description
 -----------
 Calculates the distance with two close points. The close points are defined by the parameter values (U1,V1) for S1 and (U2,V2) for S2. The function F(u1,v1,u2,v2)=distance(S1(u1,v1),S2(u2,v2)) has an extremun when gradient(F)=0. The algorithm searches a zero near the close points.
 ") Extrema_GenLocateExtSS;
-		 Extrema_GenLocateExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real Tol1, const Standard_Real Tol2);
+		 Extrema_GenLocateExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const double U1, const double V1, const double U2, const double V2, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenLocateExtSS::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -9917,22 +7152,22 @@ Description
 -----------
 Returns True if the distance is found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_GenLocateExtSS::Perform ******/
-		/****** md5 signature: cfe9cb870bc63c0d808034e1ebefe62b ******/
+		/****** md5 signature: 68c45a6680a5f25537378dd738191b70 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
-U1: float
-V1: float
-U2: float
-V2: float
-Tol1: float
-Tol2: float
+U1: double
+V1: double
+U2: double
+V2: double
+Tol1: double
+Tol2: double
 
 Return
 -------
@@ -9942,7 +7177,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real Tol1, const Standard_Real Tol2);
+		void Perform(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const double U1, const double V1, const double U2, const double V2, const double Tol1, const double Tol2);
 
 		/****** Extrema_GenLocateExtSS::PointOnS1 ******/
 		/****** md5 signature: a968c7bd12e452b2a800b3175543fbbd ******/
@@ -9971,17 +7206,17 @@ Returns the point of the extremum distance on S2.
 		const Extrema_POnSurf & PointOnS2();
 
 		/****** Extrema_GenLocateExtSS::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
+		/****** md5 signature: 87eaf82a8e24cbc0c18c1f6edf383e79 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance();
+		double SquareDistance();
 
 };
 
@@ -10036,7 +7271,7 @@ No available documentation.
 		 Extrema_GlobOptFuncCCC0(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2);
 
 		/****** Extrema_GlobOptFuncCCC0::NbVariables ******/
-		/****** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -10046,10 +7281,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_GlobOptFuncCCC0::Value ******/
-		/****** md5 signature: 22e87ab6030399152b72d08cc5e678ff ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10058,13 +7293,13 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 };
 
@@ -10119,7 +7354,7 @@ No available documentation.
 		 Extrema_GlobOptFuncCCC1(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2);
 
 		/****** Extrema_GlobOptFuncCCC1::Gradient ******/
-		/****** md5 signature: afb14635ff3747ce6e48aa62585027fc ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -10135,10 +7370,10 @@ Description
 -----------
 No available documentation.
 ") Gradient;
-		virtual Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** Extrema_GlobOptFuncCCC1::NbVariables ******/
-		/****** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -10148,10 +7383,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_GlobOptFuncCCC1::Value ******/
-		/****** md5 signature: 22e87ab6030399152b72d08cc5e678ff ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10160,16 +7395,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** Extrema_GlobOptFuncCCC1::Values ******/
-		/****** md5 signature: e2748a3160e1b3e6076f299cbf419f60 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -10179,13 +7414,13 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 };
 
@@ -10240,7 +7475,7 @@ No available documentation.
 		 Extrema_GlobOptFuncCCC2(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2);
 
 		/****** Extrema_GlobOptFuncCCC2::Gradient ******/
-		/****** md5 signature: afb14635ff3747ce6e48aa62585027fc ******/
+		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -10256,10 +7491,10 @@ Description
 -----------
 No available documentation.
 ") Gradient;
-		virtual Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
+		bool Gradient(const math_Vector & X, math_Vector & G);
 
 		/****** Extrema_GlobOptFuncCCC2::NbVariables ******/
-		/****** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -10269,10 +7504,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_GlobOptFuncCCC2::Value ******/
-		/****** md5 signature: 22e87ab6030399152b72d08cc5e678ff ******/
+		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10281,16 +7516,16 @@ X: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
+		bool Value(const math_Vector & X, Standard_Real &OutValue);
 
 		/****** Extrema_GlobOptFuncCCC2::Values ******/
-		/****** md5 signature: e2748a3160e1b3e6076f299cbf419f60 ******/
+		/****** md5 signature: 1d2f2dc1f7e41d65377516e5baf52f6e ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -10300,16 +7535,16 @@ G: math_Vector
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
 		/****** Extrema_GlobOptFuncCCC2::Values ******/
-		/****** md5 signature: 71c153f156506b8614d434a26bc9aaff ******/
+		/****** md5 signature: fdc9788aec6b67a119c9ff92adc65815 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -10320,13 +7555,13 @@ H: math_Matrix
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G, math_Matrix & H);
+		bool Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G, math_Matrix & H);
 
 };
 
@@ -10361,14 +7596,14 @@ Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCQu
 		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C);
 
 		/****** Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric ******/
-		/****** md5 signature: d7d61981913d1d4e7a277c4d649fe556 ******/
+		/****** md5 signature: 3eb668c68593b34beef76faa64ec5dda ******/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncCQuadric;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor3d_Curve *
-theTf: float
-theTl: float
+theTf: double
+theTl: double
 
 Return
 -------
@@ -10378,7 +7613,7 @@ Description
 -----------
 No available documentation.
 ") Extrema_GlobOptFuncCQuadric;
-		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C, const Standard_Real theTf, const Standard_Real theTl);
+		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C, const double theTf, const double theTl);
 
 		/****** Extrema_GlobOptFuncCQuadric::Extrema_GlobOptFuncCQuadric ******/
 		/****** md5 signature: fb48d40e095a7a0601592ff43956384b ******/
@@ -10400,16 +7635,16 @@ No available documentation.
 		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C, const Adaptor3d_Surface * S);
 
 		/****** Extrema_GlobOptFuncCQuadric::LoadQuad ******/
-		/****** md5 signature: b1296108bc605a6d73f7634315ac1035 ******/
+		/****** md5 signature: 0b87f67a07513ca35030f3bbc0fc2d5d ******/
 		%feature("compactdefaultargs") LoadQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface *
-theUf: float
-theUl: float
-theVf: float
-theVl: float
+theUf: double
+theUl: double
+theVf: double
+theVl: double
 
 Return
 -------
@@ -10419,10 +7654,10 @@ Description
 -----------
 No available documentation.
 ") LoadQuad;
-		void LoadQuad(const Adaptor3d_Surface * S, const Standard_Real theUf, const Standard_Real theUl, const Standard_Real theVf, const Standard_Real theVl);
+		void LoadQuad(const Adaptor3d_Surface * S, const double theUf, const double theUl, const double theVf, const double theVl);
 
 		/****** Extrema_GlobOptFuncCQuadric::NbVariables ******/
-		/****** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -10432,7 +7667,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_GlobOptFuncCQuadric::QuadricParameters ******/
 		/****** md5 signature: 0d6d1773b562190c9fe7c329ab0e0c67 ******/
@@ -10454,7 +7689,7 @@ Parameters of quadric for point on curve defined by theCT.
 		void QuadricParameters(const math_Vector & theCT, math_Vector & theUV);
 
 		/****** Extrema_GlobOptFuncCQuadric::Value ******/
-		/****** md5 signature: fb3656bc314c1cff1090e6eb65303c3a ******/
+		/****** md5 signature: 12bae1c59e852185b05b873789029b36 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10463,13 +7698,13 @@ theX: math_Vector
 
 Return
 -------
-theF: float
+theF: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & theX, Standard_Real &OutValue);
+		bool Value(const math_Vector & theX, Standard_Real &OutValue);
 
 };
 
@@ -10505,7 +7740,7 @@ Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCS.
 		 Extrema_GlobOptFuncCS(const Adaptor3d_Curve * C, const Adaptor3d_Surface * S);
 
 		/****** Extrema_GlobOptFuncCS::Gradient ******/
-		/****** md5 signature: 26c6a323173ad7afe76b93c684ea910c ******/
+		/****** md5 signature: 61a0abc763ab66682da321427121e4fa ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -10521,10 +7756,10 @@ Description
 -----------
 No available documentation.
 ") Gradient;
-		virtual Standard_Boolean Gradient(const math_Vector & theX, math_Vector & theG);
+		bool Gradient(const math_Vector & theX, math_Vector & theG);
 
 		/****** Extrema_GlobOptFuncCS::NbVariables ******/
-		/****** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -10534,10 +7769,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_GlobOptFuncCS::Value ******/
-		/****** md5 signature: fb3656bc314c1cff1090e6eb65303c3a ******/
+		/****** md5 signature: 12bae1c59e852185b05b873789029b36 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10546,16 +7781,16 @@ theX: math_Vector
 
 Return
 -------
-theF: float
+theF: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & theX, Standard_Real &OutValue);
+		bool Value(const math_Vector & theX, Standard_Real &OutValue);
 
 		/****** Extrema_GlobOptFuncCS::Values ******/
-		/****** md5 signature: 37f6d953c44cf76defcd3c5a888ec005 ******/
+		/****** md5 signature: 0dab7ce2699bd07352ce2e4659d3eb68 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -10565,16 +7800,16 @@ theG: math_Vector
 
 Return
 -------
-theF: float
+theF: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & theX, Standard_Real &OutValue, math_Vector & theG);
+		bool Values(const math_Vector & theX, Standard_Real &OutValue, math_Vector & theG);
 
 		/****** Extrema_GlobOptFuncCS::Values ******/
-		/****** md5 signature: b8b1e960aca0090037e8d83ff258eb98 ******/
+		/****** md5 signature: 4fd58d9f887225f1125e7b1ff71a6668 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -10585,13 +7820,13 @@ theH: math_Matrix
 
 Return
 -------
-theF: float
+theF: double
 
 Description
 -----------
 No available documentation.
 ") Values;
-		virtual Standard_Boolean Values(const math_Vector & theX, Standard_Real &OutValue, math_Vector & theG, math_Matrix & theH);
+		bool Values(const math_Vector & theX, Standard_Real &OutValue, math_Vector & theG, math_Matrix & theH);
 
 };
 
@@ -10645,16 +7880,16 @@ No available documentation.
 		 Extrema_GlobOptFuncConicS(const Adaptor3d_Surface * S);
 
 		/****** Extrema_GlobOptFuncConicS::Extrema_GlobOptFuncConicS ******/
-		/****** md5 signature: 2d1010427e12b5b7ddf1b64a90e1b6b8 ******/
+		/****** md5 signature: 5831ce33cfc82c020ccd09ceb0a8bddb ******/
 		%feature("compactdefaultargs") Extrema_GlobOptFuncConicS;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface *
-theUf: float
-theUl: float
-theVf: float
-theVl: float
+theUf: double
+theUl: double
+theVf: double
+theVl: double
 
 Return
 -------
@@ -10664,10 +7899,10 @@ Description
 -----------
 No available documentation.
 ") Extrema_GlobOptFuncConicS;
-		 Extrema_GlobOptFuncConicS(const Adaptor3d_Surface * S, const Standard_Real theUf, const Standard_Real theUl, const Standard_Real theVf, const Standard_Real theVl);
+		 Extrema_GlobOptFuncConicS(const Adaptor3d_Surface * S, const double theUf, const double theUl, const double theVf, const double theVl);
 
 		/****** Extrema_GlobOptFuncConicS::ConicParameter ******/
-		/****** md5 signature: ddde894a92baf5120f0b5896f8ff23d0 ******/
+		/****** md5 signature: 989543e4fabe1d0d046995861f884dc6 ******/
 		%feature("compactdefaultargs") ConicParameter;
 		%feature("autodoc", "
 Parameters
@@ -10676,23 +7911,23 @@ theUV: math_Vector
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Parameter of conic for point on surface defined by theUV.
 ") ConicParameter;
-		Standard_Real ConicParameter(const math_Vector & theUV);
+		double ConicParameter(const math_Vector & theUV);
 
 		/****** Extrema_GlobOptFuncConicS::LoadConic ******/
-		/****** md5 signature: 2a020f4c8e584a3dddabb791c247f871 ******/
+		/****** md5 signature: 6e2b37e9314110a434940f73c2cb85c7 ******/
 		%feature("compactdefaultargs") LoadConic;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Curve *
-theTf: float
-theTl: float
+theTf: double
+theTl: double
 
 Return
 -------
@@ -10702,10 +7937,10 @@ Description
 -----------
 No available documentation.
 ") LoadConic;
-		void LoadConic(const Adaptor3d_Curve * S, const Standard_Real theTf, const Standard_Real theTl);
+		void LoadConic(const Adaptor3d_Curve * S, const double theTf, const double theTl);
 
 		/****** Extrema_GlobOptFuncConicS::NbVariables ******/
-		/****** md5 signature: 922c68b9d7f8438f91dc9a997354b8f8 ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -10715,10 +7950,10 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		virtual Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** Extrema_GlobOptFuncConicS::Value ******/
-		/****** md5 signature: fb3656bc314c1cff1090e6eb65303c3a ******/
+		/****** md5 signature: 12bae1c59e852185b05b873789029b36 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10727,508 +7962,18 @@ theX: math_Vector
 
 Return
 -------
-theF: float
+theF: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const math_Vector & theX, Standard_Real &OutValue);
+		bool Value(const math_Vector & theX, Standard_Real &OutValue);
 
 };
 
 
 %extend Extrema_GlobOptFuncConicS {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***********************
-* class Extrema_LocECC *
-***********************/
-class Extrema_LocECC {
-	public:
-		/****** Extrema_LocECC::Extrema_LocECC ******/
-		/****** md5 signature: b7729509f3f5df86a49fc9bcf1ed4ca4 ******/
-		%feature("compactdefaultargs") Extrema_LocECC;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor3d_Curve
-C2: Adaptor3d_Curve
-U0: float
-V0: float
-TolU: float
-TolV: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
-") Extrema_LocECC;
-		 Extrema_LocECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
-
-		/****** Extrema_LocECC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_LocECC::Point ******/
-		/****** md5 signature: 7be28bf48146b84b5c9a78b62f7a11e6 ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-P1: Extrema_POnCurv
-P2: Extrema_POnCurv
-
-Return
--------
-None
-
-Description
------------
-Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
-") Point;
-		void Point(Extrema_POnCurv & P1, Extrema_POnCurv & P2);
-
-		/****** Extrema_LocECC::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend Extrema_LocECC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*************************
-* class Extrema_LocECC2d *
-*************************/
-class Extrema_LocECC2d {
-	public:
-		/****** Extrema_LocECC2d::Extrema_LocECC2d ******/
-		/****** md5 signature: 6498e5613a60c1f849de06e79134f45c ******/
-		%feature("compactdefaultargs") Extrema_LocECC2d;
-		%feature("autodoc", "
-Parameters
-----------
-C1: Adaptor2d_Curve2d
-C2: Adaptor2d_Curve2d
-U0: float
-V0: float
-TolU: float
-TolV: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
-") Extrema_LocECC2d;
-		 Extrema_LocECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
-
-		/****** Extrema_LocECC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_LocECC2d::Point ******/
-		/****** md5 signature: 22f957435cf6e3814ad63d5f9079e8df ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-P1: Extrema_POnCurv2d
-P2: Extrema_POnCurv2d
-
-Return
--------
-None
-
-Description
------------
-Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
-") Point;
-		void Point(Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
-
-		/****** Extrema_LocECC2d::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend Extrema_LocECC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************************
-* class Extrema_LocEPCOfLocateExtPC *
-************************************/
-class Extrema_LocEPCOfLocateExtPC {
-	public:
-		/****** Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC ******/
-		/****** md5 signature: 66f71ce2df9e8f2946e4972c6f72b590 ******/
-		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_LocEPCOfLocateExtPC;
-		 Extrema_LocEPCOfLocateExtPC();
-
-		/****** Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC ******/
-		/****** md5 signature: b7a86f687213d8fba59800755f030350 ******/
-		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-U0: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
-") Extrema_LocEPCOfLocateExtPC;
-		 Extrema_LocEPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real TolU);
-
-		/****** Extrema_LocEPCOfLocateExtPC::Extrema_LocEPCOfLocateExtPC ******/
-		/****** md5 signature: 6dbc9dd4faaee8fbc458b42a67c3818b ******/
-		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-U0: float
-Umin: float
-Usup: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
-") Extrema_LocEPCOfLocateExtPC;
-		 Extrema_LocEPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
-
-		/****** Extrema_LocEPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: b366bc0866e4c9bd91feeb2d622b9429 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-Umin: float
-Usup: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
-
-		/****** Extrema_LocEPCOfLocateExtPC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_LocEPCOfLocateExtPC::IsMin ******/
-		/****** md5 signature: 1c0b1dbd0d0c10c93cbf9fefce4bad3b ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin();
-
-		/****** Extrema_LocEPCOfLocateExtPC::Perform ******/
-		/****** md5 signature: 80dee1efa9a81900cc5a0ffc01b29939 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-U0: float
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt & P, const Standard_Real U0);
-
-		/****** Extrema_LocEPCOfLocateExtPC::Point ******/
-		/****** md5 signature: cbae88a409f01ccc40b5f6e748da8348 ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the point of the extremum distance.
-") Point;
-		const Extrema_POnCurv & Point();
-
-		/****** Extrema_LocEPCOfLocateExtPC::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend Extrema_LocEPCOfLocateExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**************************************
-* class Extrema_LocEPCOfLocateExtPC2d *
-**************************************/
-class Extrema_LocEPCOfLocateExtPC2d {
-	public:
-		/****** Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d ******/
-		/****** md5 signature: f96b86bdfae52ea044299c58e74051b8 ******/
-		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_LocEPCOfLocateExtPC2d;
-		 Extrema_LocEPCOfLocateExtPC2d();
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d ******/
-		/****** md5 signature: 879fbc456e9fc716f88079cbe4c20275 ******/
-		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-U0: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
-") Extrema_LocEPCOfLocateExtPC2d;
-		 Extrema_LocEPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real TolU);
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::Extrema_LocEPCOfLocateExtPC2d ******/
-		/****** md5 signature: 03740e511e912a1b646a373d0676107f ******/
-		%feature("compactdefaultargs") Extrema_LocEPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-U0: float
-Umin: float
-Usup: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
-") Extrema_LocEPCOfLocateExtPC2d;
-		 Extrema_LocEPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: 673c63ed8f08af5bcfdd5ced5f979463 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-Umin: float
-Usup: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::IsMin ******/
-		/****** md5 signature: 1c0b1dbd0d0c10c93cbf9fefce4bad3b ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin();
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::Perform ******/
-		/****** md5 signature: 572d96f228989fec803e5b8f273e32cd ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-U0: float
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt2d & P, const Standard_Real U0);
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::Point ******/
-		/****** md5 signature: 0b14be81c893f7916dafa40cecb53c69 ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point();
-
-		/****** Extrema_LocEPCOfLocateExtPC2d::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend Extrema_LocEPCOfLocateExtPC2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -11240,15 +7985,15 @@ Returns the value of the extremum square distance.
 class Extrema_LocateExtCC {
 	public:
 		/****** Extrema_LocateExtCC::Extrema_LocateExtCC ******/
-		/****** md5 signature: c5d4ad63f928f38bacb40f7e1b99f897 ******/
+		/****** md5 signature: 114ea6417661af52ba40c88f08fc2b10 ******/
 		%feature("compactdefaultargs") Extrema_LocateExtCC;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor3d_Curve
 C2: Adaptor3d_Curve
-U0: float
-V0: float
+U0: double
+V0: double
 
 Return
 -------
@@ -11258,10 +8003,10 @@ Description
 -----------
 Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
 ") Extrema_LocateExtCC;
-		 Extrema_LocateExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U0, const Standard_Real V0);
+		 Extrema_LocateExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const double U0, const double V0);
 
 		/****** Extrema_LocateExtCC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -11271,7 +8016,7 @@ Description
 -----------
 Returns True if the distance is found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_LocateExtCC::Point ******/
 		/****** md5 signature: 7be28bf48146b84b5c9a78b62f7a11e6 ******/
@@ -11293,17 +8038,17 @@ Returns the points of the extremum distance. P1 is on the first curve, P2 on the
 		void Point(Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
 		/****** Extrema_LocateExtCC::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
+		/****** md5 signature: 87eaf82a8e24cbc0c18c1f6edf383e79 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance();
+		double SquareDistance();
 
 };
 
@@ -11320,15 +8065,15 @@ Returns the value of the extremum square distance.
 class Extrema_LocateExtCC2d {
 	public:
 		/****** Extrema_LocateExtCC2d::Extrema_LocateExtCC2d ******/
-		/****** md5 signature: aeae2a9a17c936a1feeafeb2cf4c33c0 ******/
+		/****** md5 signature: 213ede6699af192c6f8dc867acda3bda ******/
 		%feature("compactdefaultargs") Extrema_LocateExtCC2d;
 		%feature("autodoc", "
 Parameters
 ----------
 C1: Adaptor2d_Curve2d
 C2: Adaptor2d_Curve2d
-U0: float
-V0: float
+U0: double
+V0: double
 
 Return
 -------
@@ -11338,10 +8083,10 @@ Description
 -----------
 Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
 ") Extrema_LocateExtCC2d;
-		 Extrema_LocateExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real U0, const Standard_Real V0);
+		 Extrema_LocateExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const double U0, const double V0);
 
 		/****** Extrema_LocateExtCC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -11351,7 +8096,7 @@ Description
 -----------
 Returns True if the distance is found.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Extrema_LocateExtCC2d::Point ******/
 		/****** md5 signature: 22f957435cf6e3814ad63d5f9079e8df ******/
@@ -11373,1842 +8118,22 @@ Returns the points of the extremum distance. P1 is on the first curve, P2 on the
 		void Point(Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
 		/****** Extrema_LocateExtCC2d::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
+		/****** md5 signature: 87eaf82a8e24cbc0c18c1f6edf383e79 ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the value of the extremum square distance.
 ") SquareDistance;
-		Standard_Real SquareDistance();
+		double SquareDistance();
 
 };
 
 
 %extend Extrema_LocateExtCC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class Extrema_LocateExtPC *
-****************************/
-class Extrema_LocateExtPC {
-	public:
-		/****** Extrema_LocateExtPC::Extrema_LocateExtPC ******/
-		/****** md5 signature: 7eb1e85b77c9c5c50f1db7e44f76ed63 ******/
-		%feature("compactdefaultargs") Extrema_LocateExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_LocateExtPC;
-		 Extrema_LocateExtPC();
-
-		/****** Extrema_LocateExtPC::Extrema_LocateExtPC ******/
-		/****** md5 signature: 1f82bfa9e68e569fd665333dc6cc52d7 ******/
-		%feature("compactdefaultargs") Extrema_LocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-U0: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
-") Extrema_LocateExtPC;
-		 Extrema_LocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real TolF);
-
-		/****** Extrema_LocateExtPC::Extrema_LocateExtPC ******/
-		/****** md5 signature: 562aab74aab68868fccddce757fa6257 ******/
-		%feature("compactdefaultargs") Extrema_LocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-U0: float
-Umin: float
-Usup: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
-") Extrema_LocateExtPC;
-		 Extrema_LocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
-
-		/****** Extrema_LocateExtPC::Initialize ******/
-		/****** md5 signature: 672c2fe8452184af0062847acc5e004d ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-Umin: float
-Usup: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
-
-		/****** Extrema_LocateExtPC::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_LocateExtPC::IsMin ******/
-		/****** md5 signature: 1c0b1dbd0d0c10c93cbf9fefce4bad3b ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin();
-
-		/****** Extrema_LocateExtPC::Perform ******/
-		/****** md5 signature: 80dee1efa9a81900cc5a0ffc01b29939 ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-U0: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Perform;
-		void Perform(const gp_Pnt & P, const Standard_Real U0);
-
-		/****** Extrema_LocateExtPC::Point ******/
-		/****** md5 signature: cbae88a409f01ccc40b5f6e748da8348 ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the point of the extremum distance.
-") Point;
-		const Extrema_POnCurv & Point();
-
-		/****** Extrema_LocateExtPC::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend Extrema_LocateExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class Extrema_LocateExtPC2d *
-******************************/
-class Extrema_LocateExtPC2d {
-	public:
-		/****** Extrema_LocateExtPC2d::Extrema_LocateExtPC2d ******/
-		/****** md5 signature: 6f5d46eb2a574ff5eff5a750dadcb13b ******/
-		%feature("compactdefaultargs") Extrema_LocateExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_LocateExtPC2d;
-		 Extrema_LocateExtPC2d();
-
-		/****** Extrema_LocateExtPC2d::Extrema_LocateExtPC2d ******/
-		/****** md5 signature: b4963ac0ef219fdc026e3860d56ab1ff ******/
-		%feature("compactdefaultargs") Extrema_LocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-U0: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
-") Extrema_LocateExtPC2d;
-		 Extrema_LocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real TolF);
-
-		/****** Extrema_LocateExtPC2d::Extrema_LocateExtPC2d ******/
-		/****** md5 signature: b92462651cc4a17c9d9664a4fc8748c0 ******/
-		%feature("compactdefaultargs") Extrema_LocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-U0: float
-Umin: float
-Usup: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
-") Extrema_LocateExtPC2d;
-		 Extrema_LocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
-
-		/****** Extrema_LocateExtPC2d::Initialize ******/
-		/****** md5 signature: c490b029df4e55930b61cb6254e04484 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-Umin: float
-Usup: float
-TolF: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
-
-		/****** Extrema_LocateExtPC2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** Extrema_LocateExtPC2d::IsMin ******/
-		/****** md5 signature: 1c0b1dbd0d0c10c93cbf9fefce4bad3b ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin();
-
-		/****** Extrema_LocateExtPC2d::Perform ******/
-		/****** md5 signature: 572d96f228989fec803e5b8f273e32cd ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-U0: float
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Perform;
-		void Perform(const gp_Pnt2d & P, const Standard_Real U0);
-
-		/****** Extrema_LocateExtPC2d::Point ******/
-		/****** md5 signature: 0b14be81c893f7916dafa40cecb53c69 ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point();
-
-		/****** Extrema_LocateExtPC2d::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend Extrema_LocateExtPC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************************
-* class Extrema_PCFOfEPCOfELPCOfLocateExtPC *
-********************************************/
-class Extrema_PCFOfEPCOfELPCOfLocateExtPC : public math_FunctionWithDerivative {
-	public:
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Extrema_PCFOfEPCOfELPCOfLocateExtPC ******/
-		/****** md5 signature: ede7b80994121dc61efd63baf98ea782 ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfELPCOfLocateExtPC;
-		 Extrema_PCFOfEPCOfELPCOfLocateExtPC();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Extrema_PCFOfEPCOfELPCOfLocateExtPC ******/
-		/****** md5 signature: 512f484f13df650a452c316f30d2b629 ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfELPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfELPCOfLocateExtPC;
-		 Extrema_PCFOfEPCOfELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: 96ecca85f670f0aff9194161a9bd5dc1 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::SetPoint ******/
-		/****** md5 signature: ad83fe26e12bb630222b6d2773210931 ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt & P);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend Extrema_PCFOfEPCOfELPCOfLocateExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************************
-* class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d *
-**********************************************/
-class Extrema_PCFOfEPCOfELPCOfLocateExtPC2d : public math_FunctionWithDerivative {
-	public:
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d ******/
-		/****** md5 signature: f48caab5be52a078e7f90582d9b9dee9 ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
-		 Extrema_PCFOfEPCOfELPCOfLocateExtPC2d();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d ******/
-		/****** md5 signature: dec1f8587bce8cd308827800fd89df3b ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
-		 Extrema_PCFOfEPCOfELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: 295b46cc3c15eb5116b8523fecaa122c ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SetPoint ******/
-		/****** md5 signature: 0ad85ba084f338225cb11e827425ab5f ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt2d & P);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfELPCOfLocateExtPC2d::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend Extrema_PCFOfEPCOfELPCOfLocateExtPC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************
-* class Extrema_PCFOfEPCOfExtPC *
-********************************/
-class Extrema_PCFOfEPCOfExtPC : public math_FunctionWithDerivative {
-	public:
-		/****** Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC ******/
-		/****** md5 signature: 0e2b6fe4341dc464005077b2eac0fbda ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfExtPC;
-		 Extrema_PCFOfEPCOfExtPC();
-
-		/****** Extrema_PCFOfEPCOfExtPC::Extrema_PCFOfEPCOfExtPC ******/
-		/****** md5 signature: 4c6b6b2bd19934a2cdb8b9ed141406a1 ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfExtPC;
-		 Extrema_PCFOfEPCOfExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C);
-
-		/****** Extrema_PCFOfEPCOfExtPC::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfExtPC::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_PCFOfEPCOfExtPC::Initialize ******/
-		/****** md5 signature: 96ecca85f670f0aff9194161a9bd5dc1 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C);
-
-		/****** Extrema_PCFOfEPCOfExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_PCFOfEPCOfExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfExtPC::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** Extrema_PCFOfEPCOfExtPC::SetPoint ******/
-		/****** md5 signature: ad83fe26e12bb630222b6d2773210931 ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt & P);
-
-		/****** Extrema_PCFOfEPCOfExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfExtPC::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** Extrema_PCFOfEPCOfExtPC::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfExtPC::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend Extrema_PCFOfEPCOfExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************
-* class Extrema_PCFOfEPCOfExtPC2d *
-**********************************/
-class Extrema_PCFOfEPCOfExtPC2d : public math_FunctionWithDerivative {
-	public:
-		/****** Extrema_PCFOfEPCOfExtPC2d::Extrema_PCFOfEPCOfExtPC2d ******/
-		/****** md5 signature: fb0bef4d3c9b63de9a04e4e3ac68ae30 ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfExtPC2d;
-		 Extrema_PCFOfEPCOfExtPC2d();
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::Extrema_PCFOfEPCOfExtPC2d ******/
-		/****** md5 signature: 542b619871e1d255c35bea98edf50c0a ******/
-		%feature("compactdefaultargs") Extrema_PCFOfEPCOfExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCFOfEPCOfExtPC2d;
-		 Extrema_PCFOfEPCOfExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::Initialize ******/
-		/****** md5 signature: 295b46cc3c15eb5116b8523fecaa122c ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::SetPoint ******/
-		/****** md5 signature: 0ad85ba084f338225cb11e827425ab5f ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt2d & P);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCFOfEPCOfExtPC2d::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend Extrema_PCFOfEPCOfExtPC2d {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************************
-* class Extrema_PCLocFOfLocEPCOfLocateExtPC *
-********************************************/
-class Extrema_PCLocFOfLocEPCOfLocateExtPC : public math_FunctionWithDerivative {
-	public:
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Extrema_PCLocFOfLocEPCOfLocateExtPC ******/
-		/****** md5 signature: 3ad596f7d25ef981146e2321fc0b516f ******/
-		%feature("compactdefaultargs") Extrema_PCLocFOfLocEPCOfLocateExtPC;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCLocFOfLocEPCOfLocateExtPC;
-		 Extrema_PCLocFOfLocEPCOfLocateExtPC();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Extrema_PCLocFOfLocEPCOfLocateExtPC ******/
-		/****** md5 signature: e78e54923ad931caf8e1fdd0fde5e43e ******/
-		%feature("compactdefaultargs") Extrema_PCLocFOfLocEPCOfLocateExtPC;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCLocFOfLocEPCOfLocateExtPC;
-		 Extrema_PCLocFOfLocEPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Initialize ******/
-		/****** md5 signature: 96ecca85f670f0aff9194161a9bd5dc1 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor3d_Curve
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Adaptor3d_Curve & C);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Point ******/
-		/****** md5 signature: 1a3c4a6f09c4cb823314eefe5165e75c ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv & Point(const Standard_Integer N);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::SetPoint ******/
-		/****** md5 signature: ad83fe26e12bb630222b6d2773210931 ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt & P);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend Extrema_PCLocFOfLocEPCOfLocateExtPC {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**********************************************
-* class Extrema_PCLocFOfLocEPCOfLocateExtPC2d *
-**********************************************/
-class Extrema_PCLocFOfLocEPCOfLocateExtPC2d : public math_FunctionWithDerivative {
-	public:
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Extrema_PCLocFOfLocEPCOfLocateExtPC2d ******/
-		/****** md5 signature: d7725c8d91a5bbff28ab4a7b952bd2b4 ******/
-		%feature("compactdefaultargs") Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
-		 Extrema_PCLocFOfLocEPCOfLocateExtPC2d();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Extrema_PCLocFOfLocEPCOfLocateExtPC2d ******/
-		/****** md5 signature: 31ac1d63745ee80d599024dcffff988f ******/
-		%feature("compactdefaultargs") Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
-		 Extrema_PCLocFOfLocEPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Initialize ******/
-		/****** md5 signature: 295b46cc3c15eb5116b8523fecaa122c ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Adaptor2d_Curve2d
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Adaptor2d_Curve2d & C);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SetPoint ******/
-		/****** md5 signature: 0ad85ba084f338225cb11e827425ab5f ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt2d & P);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** Extrema_PCLocFOfLocEPCOfLocateExtPC2d::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend Extrema_PCLocFOfLocEPCOfLocateExtPC2d {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -13220,7 +8145,7 @@ Calculation of F(U) and F'(U).
 class Extrema_POnCurv {
 	public:
 		/****** Extrema_POnCurv::Extrema_POnCurv ******/
-		/****** md5 signature: 52dfe5963e88211ea2076f961c70509e ******/
+		/****** md5 signature: 06f69e01b7ac3dab13e3fc05f946e31e ******/
 		%feature("compactdefaultargs") Extrema_POnCurv;
 		%feature("autodoc", "Return
 -------
@@ -13233,13 +8158,13 @@ Creation of an indefinite point on curve.
 		 Extrema_POnCurv();
 
 		/****** Extrema_POnCurv::Extrema_POnCurv ******/
-		/****** md5 signature: 9f696a7624ca87ff2628d33075aa7788 ******/
+		/****** md5 signature: 0d9fe1c6b59b1b7dc18a49e9ab40ff2a ******/
 		%feature("compactdefaultargs") Extrema_POnCurv;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
+theU: double
+theP: gp_Pnt
 
 Return
 -------
@@ -13249,29 +8174,29 @@ Description
 -----------
 Creation of a point on curve with a parameter value on the curve and a Pnt from gp.
 ") Extrema_POnCurv;
-		 Extrema_POnCurv(const Standard_Real U, const gp_Pnt & P);
+		 Extrema_POnCurv(const double theU, const gp_Pnt & theP);
 
 		/****** Extrema_POnCurv::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: f2f0d3a4c48532483b401ae3d2d5c5fb ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the curve.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Extrema_POnCurv::SetValues ******/
-		/****** md5 signature: aa1d99b2f7a5b5f72a235b82b7085127 ******/
+		/****** md5 signature: a090ad8451a2ac5768bb028734a1246f ******/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
+theU: double
+theP: gp_Pnt
 
 Return
 -------
@@ -13279,12 +8204,12 @@ None
 
 Description
 -----------
-sets the point and parameter values.
+Sets the point and parameter values.
 ") SetValues;
-		void SetValues(const Standard_Real U, const gp_Pnt & P);
+		void SetValues(const double theU, const gp_Pnt & theP);
 
 		/****** Extrema_POnCurv::Value ******/
-		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
+		/****** md5 signature: af4473e892277db4b6b647e7c05342c6 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -13311,7 +8236,7 @@ Returns the point.
 class Extrema_POnCurv2d {
 	public:
 		/****** Extrema_POnCurv2d::Extrema_POnCurv2d ******/
-		/****** md5 signature: a63d3ab900ee7945dc1885e5318b0b84 ******/
+		/****** md5 signature: 4c5f6f5dce5791fa2cdce03ebbebd933 ******/
 		%feature("compactdefaultargs") Extrema_POnCurv2d;
 		%feature("autodoc", "Return
 -------
@@ -13324,13 +8249,13 @@ Creation of an indefinite point on curve.
 		 Extrema_POnCurv2d();
 
 		/****** Extrema_POnCurv2d::Extrema_POnCurv2d ******/
-		/****** md5 signature: 847a375a1f0352b5a22d642679cccea7 ******/
+		/****** md5 signature: c32b15f0b51aed103ed639053efe9ab4 ******/
 		%feature("compactdefaultargs") Extrema_POnCurv2d;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt2d
+theU: double
+theP: gp_Pnt2d
 
 Return
 -------
@@ -13340,29 +8265,29 @@ Description
 -----------
 Creation of a point on curve with a parameter value on the curve and a Pnt from gp.
 ") Extrema_POnCurv2d;
-		 Extrema_POnCurv2d(const Standard_Real U, const gp_Pnt2d & P);
+		 Extrema_POnCurv2d(const double theU, const gp_Pnt2d & theP);
 
 		/****** Extrema_POnCurv2d::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: f2f0d3a4c48532483b401ae3d2d5c5fb ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the curve.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Extrema_POnCurv2d::SetValues ******/
-		/****** md5 signature: 73e81399e0b63647cfa08274d87156c6 ******/
+		/****** md5 signature: e3a53bbd3459f51fa89592354c1605ba ******/
 		%feature("compactdefaultargs") SetValues;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt2d
+theU: double
+theP: gp_Pnt2d
 
 Return
 -------
@@ -13370,12 +8295,12 @@ None
 
 Description
 -----------
-sets the point and parameter values.
+Sets the point and parameter values.
 ") SetValues;
-		void SetValues(const Standard_Real U, const gp_Pnt2d & P);
+		void SetValues(const double theU, const gp_Pnt2d & theP);
 
 		/****** Extrema_POnCurv2d::Value ******/
-		/****** md5 signature: 01b97600ad700e4edb97bc6008ad0c9b ******/
+		/****** md5 signature: 8834940406744488752f588b0a4b9d14 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -13402,7 +8327,7 @@ Returns the point.
 class Extrema_POnSurf {
 	public:
 		/****** Extrema_POnSurf::Extrema_POnSurf ******/
-		/****** md5 signature: 7a7f9a147e1d8046e0b166e28cee5944 ******/
+		/****** md5 signature: a14ababd0e49753065f54bf5fae4cb09 ******/
 		%feature("compactdefaultargs") Extrema_POnSurf;
 		%feature("autodoc", "Return
 -------
@@ -13415,14 +8340,14 @@ Creation of an indefinite point on surface.
 		 Extrema_POnSurf();
 
 		/****** Extrema_POnSurf::Extrema_POnSurf ******/
-		/****** md5 signature: 488489f3913a70f368881e2df8c7e89d ******/
+		/****** md5 signature: 12241b0c499b0331c0d19a66726b40a0 ******/
 		%feature("compactdefaultargs") Extrema_POnSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
+theU: double
+theV: double
+theP: gp_Pnt
 
 Return
 -------
@@ -13432,10 +8357,10 @@ Description
 -----------
 Creation of a point on surface with parameter values on the surface and a Pnt from gp.
 ") Extrema_POnSurf;
-		 Extrema_POnSurf(const Standard_Real U, const Standard_Real V, const gp_Pnt & P);
+		 Extrema_POnSurf(const double theU, const double theV, const gp_Pnt & theP);
 
 		/****** Extrema_POnSurf::Parameter ******/
-		/****** md5 signature: fcb6dca6c2af6b1cc54badf10520865d ******/
+		/****** md5 signature: de39ab610894e1ecb40f5f07c8971d62 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -13443,8 +8368,8 @@ Parameters
 
 Return
 -------
-U: float
-V: float
+theU: double
+theV: double
 
 Description
 -----------
@@ -13453,13 +8378,13 @@ Returns the parameter values on the surface.
 		void Parameter(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Extrema_POnSurf::SetParameters ******/
-		/****** md5 signature: 4c240a23953c1ca8e8b266568bf3fefa ******/
+		/****** md5 signature: 5e2a4fad408356ed8f101b4c81390724 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-theU: float
-theV: float
+theU: double
+theV: double
 thePnt: gp_Pnt
 
 Return
@@ -13470,10 +8395,10 @@ Description
 -----------
 Sets the params of current POnSurf instance. (e.g. to the point to be projected).
 ") SetParameters;
-		void SetParameters(const Standard_Real theU, const Standard_Real theV, const gp_Pnt & thePnt);
+		void SetParameters(const double theU, const double theV, const gp_Pnt & thePnt);
 
 		/****** Extrema_POnSurf::Value ******/
-		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
+		/****** md5 signature: af4473e892277db4b6b647e7c05342c6 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -13500,7 +8425,7 @@ Returns the 3d point.
 class Extrema_POnSurfParams : public Extrema_POnSurf {
 	public:
 		/****** Extrema_POnSurfParams::Extrema_POnSurfParams ******/
-		/****** md5 signature: 7ca8b3e55bb725a3ccd8bae5c2b7e034 ******/
+		/****** md5 signature: dff8771b7cb0d2448878447996998f98 ******/
 		%feature("compactdefaultargs") Extrema_POnSurfParams;
 		%feature("autodoc", "Return
 -------
@@ -13513,13 +8438,13 @@ empty constructor.
 		 Extrema_POnSurfParams();
 
 		/****** Extrema_POnSurfParams::Extrema_POnSurfParams ******/
-		/****** md5 signature: 7d6692954a90691fa2bfca78f894059c ******/
+		/****** md5 signature: 78a218a6e01de6bb568f073e9b0926b5 ******/
 		%feature("compactdefaultargs") Extrema_POnSurfParams;
 		%feature("autodoc", "
 Parameters
 ----------
-theU: float
-theV: float
+theU: double
+theV: double
 thePnt: gp_Pnt
 
 Return
@@ -13530,10 +8455,10 @@ Description
 -----------
 Creation of a point on surface with parameter values on the surface and a Pnt from gp.
 ") Extrema_POnSurfParams;
-		 Extrema_POnSurfParams(const Standard_Real theU, const Standard_Real theV, const gp_Pnt & thePnt);
+		 Extrema_POnSurfParams(const double theU, const double theV, const gp_Pnt & thePnt);
 
 		/****** Extrema_POnSurfParams::GetElementType ******/
-		/****** md5 signature: 190b208e8025f3833e36ff48d47966dd ******/
+		/****** md5 signature: 12fbd34755086e46bb8feea38f8d3205 ******/
 		%feature("compactdefaultargs") GetElementType;
 		%feature("autodoc", "Return
 -------
@@ -13546,7 +8471,7 @@ Query the element type on which this point is situated.
 		Extrema_ElementType GetElementType();
 
 		/****** Extrema_POnSurfParams::GetIndices ******/
-		/****** md5 signature: 02a37724aecaea94d73cc242dd683854 ******/
+		/****** md5 signature: 83b26ddf246d7ab0213d0351e8356ec9 ******/
 		%feature("compactdefaultargs") GetIndices;
 		%feature("autodoc", "
 Parameters
@@ -13564,20 +8489,20 @@ Query the U and V indices of an element that contains this point.
 		void GetIndices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** Extrema_POnSurfParams::GetSqrDistance ******/
-		/****** md5 signature: 5f9e48f078be4fe223ad9e4b4bb6c03f ******/
+		/****** md5 signature: 474049ccd6b6e21af7181eee09e47c0d ******/
 		%feature("compactdefaultargs") GetSqrDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Query the square distance from this point to another one.
 ") GetSqrDistance;
-		Standard_Real GetSqrDistance();
+		double GetSqrDistance();
 
 		/****** Extrema_POnSurfParams::SetElementType ******/
-		/****** md5 signature: 4318662b8606c94578706f86f16f78de ******/
+		/****** md5 signature: 0fb7b51ca9f2327e60a62794cd8bf49d ******/
 		%feature("compactdefaultargs") SetElementType;
 		%feature("autodoc", "
 Parameters
@@ -13595,7 +8520,7 @@ Sets the element type on which this point is situated.
 		void SetElementType(const Extrema_ElementType theElementType);
 
 		/****** Extrema_POnSurfParams::SetIndices ******/
-		/****** md5 signature: d6f7eb3492fda15b2bdfa3e6194846e6 ******/
+		/****** md5 signature: 1fc72f87a9e9c2a7e926442bdc90f2b8 ******/
 		%feature("compactdefaultargs") SetIndices;
 		%feature("autodoc", "
 Parameters
@@ -13611,15 +8536,15 @@ Description
 -----------
 Sets the U and V indices of an element that contains this point.
 ") SetIndices;
-		void SetIndices(const Standard_Integer theIndexU, const Standard_Integer theIndexV);
+		void SetIndices(const int theIndexU, const int theIndexV);
 
 		/****** Extrema_POnSurfParams::SetSqrDistance ******/
-		/****** md5 signature: f5a2aae4a6b8e482a18305426185cc47 ******/
+		/****** md5 signature: 9be5a1f4503493bf66e6a60e96adc700 ******/
 		%feature("compactdefaultargs") SetSqrDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-theSqrDistance: float
+theSqrDistance: double
 
 Return
 -------
@@ -13629,7 +8554,7 @@ Description
 -----------
 Sets the square distance from this point to another one (e.g. to the point to be projected).
 ") SetSqrDistance;
-		void SetSqrDistance(const Standard_Real theSqrDistance);
+		void SetSqrDistance(const double theSqrDistance);
 
 };
 
@@ -13642,74 +8567,74 @@ Sets the square distance from this point to another one (e.g. to the point to be
 
 /* harray1 classes */
 
-class Extrema_HArray1OfPOnCurv : public Extrema_Array1OfPOnCurv, public Standard_Transient {
+class Extrema_HArray1OfPOnCurv : public NCollection_Array1<Extrema_POnCurv>, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnCurv::value_type& theValue);
-    Extrema_HArray1OfPOnCurv(const Extrema_Array1OfPOnCurv& theOther);
-    const Extrema_Array1OfPOnCurv& Array1();
-    Extrema_Array1OfPOnCurv& ChangeArray1();
+    Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Extrema_POnCurv>::value_type& theValue);
+    Extrema_HArray1OfPOnCurv(const NCollection_Array1<Extrema_POnCurv>& theOther);
+    const NCollection_Array1<Extrema_POnCurv>& Array1();
+    NCollection_Array1<Extrema_POnCurv>& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnCurv)
 
 
-class Extrema_HArray1OfPOnCurv2d : public Extrema_Array1OfPOnCurv2d, public Standard_Transient {
+class Extrema_HArray1OfPOnCurv2d : public NCollection_Array1<Extrema_POnCurv2d>, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnCurv2d::value_type& theValue);
-    Extrema_HArray1OfPOnCurv2d(const Extrema_Array1OfPOnCurv2d& theOther);
-    const Extrema_Array1OfPOnCurv2d& Array1();
-    Extrema_Array1OfPOnCurv2d& ChangeArray1();
+    Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Extrema_POnCurv2d>::value_type& theValue);
+    Extrema_HArray1OfPOnCurv2d(const NCollection_Array1<Extrema_POnCurv2d>& theOther);
+    const NCollection_Array1<Extrema_POnCurv2d>& Array1();
+    NCollection_Array1<Extrema_POnCurv2d>& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnCurv2d)
 
 
-class Extrema_HArray1OfPOnSurf : public Extrema_Array1OfPOnSurf, public Standard_Transient {
+class Extrema_HArray1OfPOnSurf : public NCollection_Array1<Extrema_POnSurf>, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnSurf::value_type& theValue);
-    Extrema_HArray1OfPOnSurf(const Extrema_Array1OfPOnSurf& theOther);
-    const Extrema_Array1OfPOnSurf& Array1();
-    Extrema_Array1OfPOnSurf& ChangeArray1();
+    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Extrema_POnSurf>::value_type& theValue);
+    Extrema_HArray1OfPOnSurf(const NCollection_Array1<Extrema_POnSurf>& theOther);
+    const NCollection_Array1<Extrema_POnSurf>& Array1();
+    NCollection_Array1<Extrema_POnSurf>& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnSurf)
 
 /* harray2 classes */
-class Extrema_HArray2OfPOnCurv : public Extrema_Array2OfPOnCurv, public Standard_Transient {
+class Extrema_HArray2OfPOnCurv : public NCollection_Array2<Extrema_POnCurv>, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnCurv(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     Extrema_HArray2OfPOnCurv(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnCurv::value_type& theValue);
-    Extrema_HArray2OfPOnCurv(const Extrema_Array2OfPOnCurv& theOther);
-    const Extrema_Array2OfPOnCurv& Array2 ();
-    Extrema_Array2OfPOnCurv& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const NCollection_Array2<Extrema_POnCurv>::value_type& theValue);
+    Extrema_HArray2OfPOnCurv(const NCollection_Array2<Extrema_POnCurv>& theOther);
+    const NCollection_Array2<Extrema_POnCurv>& Array2 ();
+    NCollection_Array2<Extrema_POnCurv>& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnCurv)
 
 
-class Extrema_HArray2OfPOnCurv2d : public Extrema_Array2OfPOnCurv2d, public Standard_Transient {
+class Extrema_HArray2OfPOnCurv2d : public NCollection_Array2<Extrema_POnCurv2d>, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnCurv2d::value_type& theValue);
-    Extrema_HArray2OfPOnCurv2d(const Extrema_Array2OfPOnCurv2d& theOther);
-    const Extrema_Array2OfPOnCurv2d& Array2 ();
-    Extrema_Array2OfPOnCurv2d& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const NCollection_Array2<Extrema_POnCurv2d>::value_type& theValue);
+    Extrema_HArray2OfPOnCurv2d(const NCollection_Array2<Extrema_POnCurv2d>& theOther);
+    const NCollection_Array2<Extrema_POnCurv2d>& Array2 ();
+    NCollection_Array2<Extrema_POnCurv2d>& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnCurv2d)
 
 
-class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard_Transient {
+class Extrema_HArray2OfPOnSurf : public NCollection_Array2<Extrema_POnSurf>, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnSurf::value_type& theValue);
-    Extrema_HArray2OfPOnSurf(const Extrema_Array2OfPOnSurf& theOther);
-    const Extrema_Array2OfPOnSurf& Array2 ();
-    Extrema_Array2OfPOnSurf& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const NCollection_Array2<Extrema_POnSurf>::value_type& theValue);
+    Extrema_HArray2OfPOnSurf(const NCollection_Array2<Extrema_POnSurf>& theOther);
+    const NCollection_Array2<Extrema_POnSurf>& Array2 ();
+    NCollection_Array2<Extrema_POnSurf>& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnSurf)
 
@@ -13939,6 +8864,14 @@ def Extrema_CurveTool_Resolution(*args):
 @deprecated
 def Extrema_CurveTool_Value(*args):
 	return Extrema_CurveTool.Value(*args)
+
+@deprecated
+def Extrema_GGenExtCC_PointsInspector_Coord(*args):
+	return Extrema_GGenExtCC_PointsInspector.Coord(*args)
+
+@deprecated
+def Extrema_GGenExtCC_PointsInspector_Shift(*args):
+	return Extrema_GGenExtCC_PointsInspector.Shift(*args)
 
 @deprecated
 def Extrema_GenLocateExtPS_IsMinDist(*args):

@@ -56,31 +56,15 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum Standard_HandlerStatus {
-	Standard_HandlerVoid = 0,
-	Standard_HandlerJumped = 1,
-	Standard_HandlerProcessed = 2,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class Standard_HandlerStatus(IntEnum):
-	Standard_HandlerVoid = 0
-	Standard_HandlerJumped = 1
-	Standard_HandlerProcessed = 2
-Standard_HandlerVoid = Standard_HandlerStatus.Standard_HandlerVoid
-Standard_HandlerJumped = Standard_HandlerStatus.Standard_HandlerJumped
-Standard_HandlerProcessed = Standard_HandlerStatus.Standard_HandlerProcessed
 };
 /* end python proxy for enums */
 
 /* handles */
 %wrap_handle(Standard_Transient)
-%wrap_handle(Standard_Failure)
-%wrap_handle(Standard_OutOfMemory)
 %wrap_handle(Standard_Persistent)
 %wrap_handle(Standard_Type)
 /* end handles declaration */
@@ -89,27 +73,20 @@ Standard_HandlerProcessed = Standard_HandlerStatus.Standard_HandlerProcessed
 /* end templates declaration */
 
 /* typedefs */
-typedef void * Standard_Address;
 typedef bool Standard_Boolean;
-typedef unsigned char Standard_Byte;
-typedef const Standard_Character * Standard_CString;
+typedef uint8_t Standard_Byte;
 typedef char Standard_Character;
 typedef Standard_ErrorHandler::Callback Standard_ErrorHandlerCallback;
 typedef char16_t Standard_ExtCharacter;
-typedef const Standard_ExtCharacter * Standard_ExtString;
 typedef NCollection_Shared<Standard_Mutex> Standard_HMutex;
 typedef std::istream Standard_IStream;
 typedef int Standard_Integer;
 typedef std::ostream Standard_OStream;
-typedef Standard_Byte * Standard_PByte;
-typedef Standard_Character * Standard_PCharacter;
-typedef Standard_ErrorHandler * Standard_PErrorHandler;
-typedef Standard_ExtCharacter * Standard_PExtCharacter;
 typedef double Standard_Real;
 typedef std::stringstream Standard_SStream;
 typedef float Standard_ShortReal;
 typedef size_t Standard_Size;
-typedef Standard_Size Standard_ThreadId;
+typedef size_t Standard_ThreadId;
 typedef std::time_t Standard_Time;
 typedef unsigned int Standard_UInteger;
 typedef char16_t Standard_Utf16Char;
@@ -134,35 +111,35 @@ class Standard {
 /* end python proxy for enums */
 
 		/****** Standard::Allocate ******/
-		/****** md5 signature: 09eaa961b9be732030ff1c621353d016 ******/
+		/****** md5 signature: f215a5bb0ef9361a7d350ad280a8d984 ******/
 		%feature("compactdefaultargs") Allocate;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: Standard_Size
+theSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Allocates memory blocks theSize - bytes to allocate.
 ") Allocate;
-		static Standard_Address Allocate(const Standard_Size theSize);
+		static void * Allocate(const size_t theSize);
 
 		/****** Standard::AllocateAligned ******/
-		/****** md5 signature: a54b3a9a279a6d719651145508c0e4f9 ******/
+		/****** md5 signature: cce00071f662e852041ad1d02dd110a4 ******/
 		%feature("compactdefaultargs") AllocateAligned;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: Standard_Size
-theAlign: Standard_Size
+theSize: size_t
+theAlign: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
@@ -170,25 +147,25 @@ Allocates aligned memory blocks. Should be used with CPU instructions which requ
 Parameter theSize bytes to allocate 
 Parameter theAlign alignment in bytes.
 ") AllocateAligned;
-		static Standard_Address AllocateAligned(const Standard_Size theSize, const Standard_Size theAlign);
+		static void * AllocateAligned(const size_t theSize, const size_t theAlign);
 
 		/****** Standard::AllocateOptimal ******/
-		/****** md5 signature: 4c348d2bb50a6b904a6ae27173357a73 ******/
+		/****** md5 signature: 8ed8d94a75429163607322d4d3d05182 ******/
 		%feature("compactdefaultargs") AllocateOptimal;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: Standard_Size
+theSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Allocates memory blocks theSize - bytes to allocate.
 ") AllocateOptimal;
-		static Standard_Address AllocateOptimal(const Standard_Size theSize);
+		static void * AllocateOptimal(const size_t theSize);
 
 		/****** Standard::GetAllocatorType ******/
 		/****** md5 signature: e9a5a562f8900ba3133563f92652391b ******/
@@ -204,7 +181,7 @@ Returns default allocator type.
 		static Standard::AllocatorType GetAllocatorType();
 
 		/****** Standard::Purge ******/
-		/****** md5 signature: 964c9688a284e751f362d44404b428a8 ******/
+		/****** md5 signature: 6c69b0395cbf27d664ca5ee4af0844f3 ******/
 		%feature("compactdefaultargs") Purge;
 		%feature("autodoc", "Return
 -------
@@ -214,29 +191,29 @@ Description
 -----------
 Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
 ") Purge;
-		static Standard_Integer Purge();
+		static int Purge();
 
 		/****** Standard::Reallocate ******/
-		/****** md5 signature: 98508e78322bc56368b10399906f4ebe ******/
+		/****** md5 signature: 03a4cabba75d297b5521342cea517f41 ******/
 		%feature("compactdefaultargs") Reallocate;
 		%feature("autodoc", "
 Parameters
 ----------
-theStorage: Standard_Address
-theNewSize: Standard_Size
+theStorage: void *
+theNewSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Reallocates memory blocks theStorage - previously allocated memory block theNewSize - new size in bytes.
 ") Reallocate;
-		static Standard_Address Reallocate(const Standard_Address theStorage, const Standard_Size theNewSize);
+		static void * Reallocate(void * const theStorage, const size_t theNewSize);
 
 		/****** Standard::StackTrace ******/
-		/****** md5 signature: 11cdd0e88a61817ce1133c83a30be60d ******/
+		/****** md5 signature: 0012f3372a670cc870e94a55e4438df5 ******/
 		%feature("compactdefaultargs") StackTrace;
 		%feature("autodoc", "
 Parameters
@@ -244,7 +221,7 @@ Parameters
 theBuffer: char *
 theBufferSize: int
 theNbTraces: int
-theContext: void * (optional, default to NULL)
+theContext: void * (optional, default to nullptr)
 theNbTopSkip: int (optional, default to 0)
 
 Return
@@ -261,7 +238,7 @@ Input parameter: theContext optional platform-dependent frame context; in case o
 Input parameter: theNbTopSkip number of traces on top of the stack to skip 
 Return: True on success.
 ") StackTrace;
-		static Standard_Boolean StackTrace(char * theBuffer, const int theBufferSize, const int theNbTraces, void * theContext = NULL, const int theNbTopSkip = 0);
+		static bool StackTrace(char * theBuffer, const int theBufferSize, const int theNbTraces, void * theContext = nullptr, const int theNbTopSkip = 0);
 
 };
 
@@ -328,7 +305,7 @@ Parameter theSize length of pre-allocated buffer.
 		virtual void Init(const char * theBegin, const size_t theSize);
 
 		/****** Standard_ArrayStreamBuffer::xsgetn ******/
-		/****** md5 signature: 43f5fa4c48aa65a7cd3ea36417590549 ******/
+		/****** md5 signature: b267b647f4052c882d96b1f8c28965b8 ******/
 		%feature("compactdefaultargs") xsgetn;
 		%feature("autodoc", "
 Parameters
@@ -344,7 +321,7 @@ Description
 -----------
 Read a bunch of bytes at once.
 ") xsgetn;
-		virtual std::streamsize xsgetn(char * thePtr, std::streamsize theCount);
+		std::streamsize xsgetn(char * thePtr, std::streamsize theCount);
 
 };
 
@@ -375,12 +352,12 @@ class Standard_CStringHasher {
 class Standard_Condition {
 	public:
 		/****** Standard_Condition::Standard_Condition ******/
-		/****** md5 signature: 86edcc5ec0cdfb051f542bf2f8e73932 ******/
+		/****** md5 signature: 4cd571c0f0f7f8b799de87bf6d4f1c13 ******/
 		%feature("compactdefaultargs") Standard_Condition;
 		%feature("autodoc", "
 Parameters
 ----------
-theIsSet: bool
+theIsSet: bool (optional, default to false)
 
 Return
 -------
@@ -391,10 +368,10 @@ Description
 Default constructor. 
 Parameter theIsSet Initial flag state.
 ") Standard_Condition;
-		 Standard_Condition(bool theIsSet);
+		 Standard_Condition(bool theIsSet = false);
 
 		/****** Standard_Condition::Check ******/
-		/****** md5 signature: 57f3f5b4239bc567be06341ec16789c7 ******/
+		/****** md5 signature: 52fd734a22a046cbb88ae0ccca58aa9b ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "Return
 -------
@@ -408,7 +385,7 @@ Return: true if get event.
 		bool Check();
 
 		/****** Standard_Condition::CheckReset ******/
-		/****** md5 signature: 419d3cbf28fb47053f05bc50b9527979 ******/
+		/****** md5 signature: 049fae38b8da71f610d2c071fdeabaa3 ******/
 		%feature("compactdefaultargs") CheckReset;
 		%feature("autodoc", "Return
 -------
@@ -422,7 +399,7 @@ Return: true if event object was in signaling state.
 		bool CheckReset();
 
 		/****** Standard_Condition::Reset ******/
-		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
+		/****** md5 signature: e3081050d274769a1cd4a93969da94c6 ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Return
 -------
@@ -435,7 +412,7 @@ Reset event (unset signaling state).
 		void Reset();
 
 		/****** Standard_Condition::Set ******/
-		/****** md5 signature: 1a3156a57ac62c26f68fc9a5cc67a188 ******/
+		/****** md5 signature: 181b8e1b82ef7e9d890c3afdd6aa1cdc ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "Return
 -------
@@ -448,7 +425,7 @@ Set event into signaling state.
 		void Set();
 
 		/****** Standard_Condition::Wait ******/
-		/****** md5 signature: b28e324626a345ee084669a721e91972 ******/
+		/****** md5 signature: 023f5ce92e93d86d318568e61d652c61 ******/
 		%feature("compactdefaultargs") Wait;
 		%feature("autodoc", "Return
 -------
@@ -461,7 +438,7 @@ Wait for Event (infinity).
 		void Wait();
 
 		/****** Standard_Condition::Wait ******/
-		/****** md5 signature: e3db043148e08f258771ac9c5c11ece8 ******/
+		/****** md5 signature: 5096e594d3ade921d37cf10c5a28c1f8 ******/
 		%feature("compactdefaultargs") Wait;
 		%feature("autodoc", "
 Parameters
@@ -512,24 +489,6 @@ Create a ErrorHandler (to be used with try{}catch(){}). It uses the 'setjmp' and
 ") Standard_ErrorHandler;
 		 Standard_ErrorHandler();
 
-		/****** Standard_ErrorHandler::Catches ******/
-		/****** md5 signature: d365a924b1d2ee2e280fbe6bd7aa8ae8 ******/
-		%feature("compactdefaultargs") Catches;
-		%feature("autodoc", "
-Parameters
-----------
-aType: Standard_Type
-
-Return
--------
-bool
-
-Description
------------
-Returns 'True' if the caught exception has the same type or inherits from 'aType'.
-") Catches;
-		Standard_Boolean Catches(const opencascade::handle<Standard_Type> & aType);
-
 		/****** Standard_ErrorHandler::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
@@ -544,20 +503,20 @@ Unlinks and checks if there is a raised exception.
 		void Destroy();
 
 		/****** Standard_ErrorHandler::Error ******/
-		/****** md5 signature: df37f33da5398b885a804d72f01daa6e ******/
+		/****** md5 signature: bd573e87f5be1f5e40e6892a9e2654be ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<Standard_Failure>
+std::variant<std::monostate, OSD_SIGBUS, OSD_SIGHUP, OSD_SIGILL, OSD_SIGINT, OSD_SIGKILL, OSD_SIGQUIT, OSD_SIGSEGV, OSD_SIGSYS, OSD_Exception_ACCESS_VIOLATION, OSD_Exception_ARRAY_BOUNDS_EXCEEDED, OSD_Exception_ILLEGAL_INSTRUCTION, OSD_Exception_IN_PAGE_ERROR, OSD_Exception_INT_OVERFLOW, OSD_Exception_INVALID_DISPOSITION, OSD_Exception_NONCONTINUABLE_EXCEPTION, OSD_Exception_PRIV_INSTRUCTION, OSD_Exception_STACK_OVERFLOW, OSD_Exception_STATUS_NO_MEMORY, Standard_DivideByZero, Standard_NumericError, Standard_Overflow, Standard_ProgramError, Standard_Underflow >
 
 Description
 -----------
-Returns the current Error.
+Returns the current Error variant.
 ") Error;
-		opencascade::handle<Standard_Failure> Error();
+		std::variant<std::monostate, OSD_SIGBUS, OSD_SIGHUP, OSD_SIGILL, OSD_SIGINT, OSD_SIGKILL, OSD_SIGQUIT, OSD_SIGSEGV, OSD_SIGSYS, OSD_Exception_ACCESS_VIOLATION, OSD_Exception_ARRAY_BOUNDS_EXCEEDED, OSD_Exception_ILLEGAL_INSTRUCTION, OSD_Exception_IN_PAGE_ERROR, OSD_Exception_INT_OVERFLOW, OSD_Exception_INVALID_DISPOSITION, OSD_Exception_NONCONTINUABLE_EXCEPTION, OSD_Exception_PRIV_INSTRUCTION, OSD_Exception_STACK_OVERFLOW, OSD_Exception_STATUS_NO_MEMORY, Standard_DivideByZero, Standard_NumericError, Standard_Overflow, Standard_ProgramError, Standard_Underflow > Error();
 
 		/****** Standard_ErrorHandler::IsInTryBlock ******/
-		/****** md5 signature: c19793183a1c3a2e4ed9cccfe2984fd5 ******/
+		/****** md5 signature: d134f416b5d62a40034b55a0fa3019c4 ******/
 		%feature("compactdefaultargs") IsInTryBlock;
 		%feature("autodoc", "Return
 -------
@@ -567,33 +526,20 @@ Description
 -----------
 Test if the code is currently running in a try block.
 ") IsInTryBlock;
-		static Standard_Boolean IsInTryBlock();
+		static bool IsInTryBlock();
 
-		/****** Standard_ErrorHandler::LastCaughtError ******/
-		/****** md5 signature: ab9a6a78f95e9ef9c504fe10b3118b8c ******/
-		%feature("compactdefaultargs") LastCaughtError;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Standard_Failure>
-
-Description
------------
-Returns the caught exception.
-") LastCaughtError;
-		static opencascade::handle<Standard_Failure> LastCaughtError();
-
-		/****** Standard_ErrorHandler::Unlink ******/
-		/****** md5 signature: 292a8a7af4c9ec0d13d9cc55ed8c3f9b ******/
-		%feature("compactdefaultargs") Unlink;
+		/****** Standard_ErrorHandler::Raise ******/
+		/****** md5 signature: 0f1cc51fa426098c031419cb18fee3f7 ******/
+		%feature("compactdefaultargs") Raise;
 		%feature("autodoc", "Return
 -------
 None
 
 Description
 -----------
-Removes handler from the handlers list.
-") Unlink;
-		void Unlink();
+Throws C++ exception if exception object set, otherwise prints error and terminates program.
+") Raise;
+		void Raise();
 
 };
 
@@ -608,13 +554,199 @@ Removes handler from the handlers list.
 	}
 };
 
+/*************************
+* class Standard_Failure *
+*************************/
+class Standard_Failure : public std::exception {
+	public:
+		class StringRef {};
+		/****** Standard_Failure::Standard_Failure ******/
+		/****** md5 signature: 28eca828ed422c117208722fa40f1b8f ******/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates a status object of type 'Failure'.
+") Standard_Failure;
+		 Standard_Failure();
+
+		/****** Standard_Failure::Standard_Failure ******/
+		/****** md5 signature: 2fec42df706fe9963e3e15a91cbc89fe ******/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Standard_Failure
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor.
+") Standard_Failure;
+		 Standard_Failure(const Standard_Failure & theOther);
+
+		/****** Standard_Failure::Standard_Failure ******/
+		/****** md5 signature: 3e870e9918cd1a5707b1947b78e85498 ******/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "
+Parameters
+----------
+theMessage: char *
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a status object of type 'Failure' with message. 
+Input parameter: theMessage exception description.
+") Standard_Failure;
+		 Standard_Failure(const char * theMessage);
+
+		/****** Standard_Failure::Standard_Failure ******/
+		/****** md5 signature: c50ba94a18bbfde63f0af247ef99000b ******/
+		%feature("compactdefaultargs") Standard_Failure;
+		%feature("autodoc", "
+Parameters
+----------
+theMessage: char *
+theStackTrace: char *
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a status object of type 'Failure' with message and stack trace. 
+Input parameter: theMessage exception description 
+Input parameter: theStackTrace stack trace string.
+") Standard_Failure;
+		 Standard_Failure(const char * const theMessage, const char * const theStackTrace);
+
+		/****** Standard_Failure::DefaultStackTraceLength ******/
+		/****** md5 signature: fb8300be0c8d3f12660beeebe5a0b0af ******/
+		%feature("compactdefaultargs") DefaultStackTraceLength;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
+") DefaultStackTraceLength;
+		static int DefaultStackTraceLength();
+
+		/****** Standard_Failure::ExceptionType ******/
+		/****** md5 signature: a6b1a95fd2b6d7c6444b9886a5476af7 ******/
+		%feature("compactdefaultargs") ExceptionType;
+		%feature("autodoc", "Return
+-------
+char *
+
+Description
+-----------
+Returns the exception type name. Default implementation returns 'Standard_Failure'. Derived classes override this to return their own type name.
+") ExceptionType;
+		virtual const char * ExceptionType();
+
+		/****** Standard_Failure::GetMessageString ******/
+		/****** md5 signature: 8ddbb6aa38a930c7f332f9aa82ed7595 ******/
+		%feature("compactdefaultargs") GetMessageString;
+		%feature("autodoc", "Return
+-------
+char *
+
+Description
+-----------
+No available documentation.
+") GetMessageString;
+		const char * GetMessageString();
+
+		/****** Standard_Failure::GetStackString ******/
+		/****** md5 signature: d22606fcef057a25b2cf6db3446bb29d ******/
+		%feature("compactdefaultargs") GetStackString;
+		%feature("autodoc", "Return
+-------
+char *
+
+Description
+-----------
+Returns the stack trace string (empty string if not available).
+") GetStackString;
+		const char * GetStackString();
+
+		/****** Standard_Failure::Print ******/
+		/****** md5 signature: 938e58a4c905f64555b1dcca06400750 ******/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints on the stream @p theStream the exception name followed by the error message. //! Note: there is a short-cut @c operator<< (Standard_OStream&, const Standard_Failure&).
+") Print;
+		void Print(std::ostream &OutValue);
+
+		/****** Standard_Failure::SetDefaultStackTraceLength ******/
+		/****** md5 signature: 3b64a6a9d00bde23e3c90a566ccce983 ******/
+		%feature("compactdefaultargs") SetDefaultStackTraceLength;
+		%feature("autodoc", "
+Parameters
+----------
+theNbStackTraces: int
+
+Return
+-------
+None
+
+Description
+-----------
+Sets default length of stack trace to be captured by Standard_Failure constructor.
+") SetDefaultStackTraceLength;
+		static void SetDefaultStackTraceLength(int theNbStackTraces);
+
+		/****** Standard_Failure::what ******/
+		/****** md5 signature: ed49fda67beb49036c3f43cc26d18b0f ******/
+		%feature("compactdefaultargs") what;
+		%feature("autodoc", "Return
+-------
+char *
+
+Description
+-----------
+Returns error message (implements std::exception interface). Returns empty string '' if no message was set.
+") what;
+		const char * what();
+
+};
+
+
+%extend Standard_Failure {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**********************
 * class Standard_GUID *
 **********************/
 class Standard_GUID {
 	public:
 		/****** Standard_GUID::Standard_GUID ******/
-		/****** md5 signature: bd47278e877fa95d24363f9cfe93d187 ******/
+		/****** md5 signature: ae9fa3ec5af1f747bcf22b886486dcf8 ******/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", "Return
 -------
@@ -622,17 +754,17 @@ None
 
 Description
 -----------
-No available documentation.
+Creates a GUID with all zeros.
 ") Standard_GUID;
 		 Standard_GUID();
 
 		/****** Standard_GUID::Standard_GUID ******/
-		/****** md5 signature: 2a30bf614689d2f7c0743ebf3b02c695 ******/
+		/****** md5 signature: 8a97b4a08c6d1d26a56d4274a05e38c2 ******/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", "
 Parameters
 ----------
-aGuid: str
+aGuid: char *
 
 Return
 -------
@@ -642,15 +774,15 @@ Description
 -----------
 build a GUID from an ascii string with the following format: Length: 36 char '00000000-0000-0000-0000-000000000000'.
 ") Standard_GUID;
-		 Standard_GUID(Standard_CString aGuid);
+		 Standard_GUID(const char * const aGuid);
 
 		/****** Standard_GUID::Standard_GUID ******/
-		/****** md5 signature: 8d0d307d0173ec7d9a9c9cec3e471f21 ******/
+		/****** md5 signature: 64e237b6a19b58b23703e4fdba5f8b34 ******/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", "
 Parameters
 ----------
-aGuid: Standard_ExtString
+aGuid: char16_t *
 
 Return
 -------
@@ -660,24 +792,24 @@ Description
 -----------
 build a GUID from an unicode string with the following format: //! '00000000-0000-0000-0000-000000000000'.
 ") Standard_GUID;
-		 Standard_GUID(const Standard_ExtString aGuid);
+		 Standard_GUID(const char16_t * const aGuid);
 
 		/****** Standard_GUID::Standard_GUID ******/
-		/****** md5 signature: 90d08c9aedbdee233cfe2c752f75ab0d ******/
+		/****** md5 signature: 26f9499c268b9e94823ca391b4bcd15b ******/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", "
 Parameters
 ----------
 a32b: int
-a16b1: Standard_ExtCharacter
-a16b2: Standard_ExtCharacter
-a16b3: Standard_ExtCharacter
-a8b1: Standard_Byte
-a8b2: Standard_Byte
-a8b3: Standard_Byte
-a8b4: Standard_Byte
-a8b5: Standard_Byte
-a8b6: Standard_Byte
+a16b1: char16_t
+a16b2: char16_t
+a16b3: char16_t
+a8b1: uint8_t
+a8b2: uint8_t
+a8b3: uint8_t
+a8b4: uint8_t
+a8b5: uint8_t
+a8b6: uint8_t
 
 Return
 -------
@@ -685,17 +817,17 @@ None
 
 Description
 -----------
-No available documentation.
+Creates a GUID from the given components.
 ") Standard_GUID;
-		 Standard_GUID(const Standard_Integer a32b, const Standard_ExtCharacter a16b1, const Standard_ExtCharacter a16b2, const Standard_ExtCharacter a16b3, const Standard_Byte a8b1, const Standard_Byte a8b2, const Standard_Byte a8b3, const Standard_Byte a8b4, const Standard_Byte a8b5, const Standard_Byte a8b6);
+		 Standard_GUID(const int a32b, const char16_t a16b1, const char16_t a16b2, const char16_t a16b3, const uint8_t a8b1, const uint8_t a8b2, const uint8_t a8b3, const uint8_t a8b4, const uint8_t a8b5, const uint8_t a8b6);
 
 		/****** Standard_GUID::Standard_GUID ******/
-		/****** md5 signature: d84ec169f70d0973702e9dc75249d278 ******/
+		/****** md5 signature: 435a715dadffe482f0e9565123ee8d36 ******/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", "
 Parameters
 ----------
-aGuid: Standard_UUID
+theUUID: Standard_UUID
 
 Return
 -------
@@ -703,17 +835,17 @@ None
 
 Description
 -----------
-No available documentation.
+Creates a GUID from a Standard_UUID.
 ") Standard_GUID;
-		 Standard_GUID(const Standard_UUID & aGuid);
+		 Standard_GUID(const Standard_UUID & theUUID);
 
 		/****** Standard_GUID::Standard_GUID ******/
-		/****** md5 signature: e226b1f99a6fe2de676bd5062d0d32b1 ******/
+		/****** md5 signature: 911ebfe8fe23b5ec62c750eb0967b2e4 ******/
 		%feature("compactdefaultargs") Standard_GUID;
 		%feature("autodoc", "
 Parameters
 ----------
-aGuid: Standard_GUID
+theGuid: Standard_GUID
 
 Return
 -------
@@ -721,12 +853,12 @@ None
 
 Description
 -----------
-No available documentation.
+Copy constructor.
 ") Standard_GUID;
-		 Standard_GUID(const Standard_GUID & aGuid);
+		 Standard_GUID(const Standard_GUID & theGuid);
 
 		/****** Standard_GUID::Assign ******/
-		/****** md5 signature: 9df04502685554ebb980911332a1df4e ******/
+		/****** md5 signature: 9024eb2a242a2a3aefc3dad65607b5f7 ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -739,12 +871,12 @@ None
 
 Description
 -----------
-No available documentation.
+Assigns uid to this GUID.
 ") Assign;
 		void Assign(const Standard_GUID & uid);
 
 		/****** Standard_GUID::Assign ******/
-		/****** md5 signature: ff0c805d2db22ffcd6f2c8c6b5068bcd ******/
+		/****** md5 signature: 5bcdd94b0b22912e44ac51f2e664e8fd ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -757,17 +889,17 @@ None
 
 Description
 -----------
-No available documentation.
+Assigns uid to this GUID.
 ") Assign;
 		void Assign(const Standard_UUID & uid);
 
 		/****** Standard_GUID::CheckGUIDFormat ******/
-		/****** md5 signature: 2bc17afbd1c0c694e26a9eb83af8c0b3 ******/
+		/****** md5 signature: 05dba700f11029d7d6020b5af0c93967 ******/
 		%feature("compactdefaultargs") CheckGUIDFormat;
 		%feature("autodoc", "
 Parameters
 ----------
-aGuid: str
+aGuid: char *
 
 Return
 -------
@@ -777,10 +909,10 @@ Description
 -----------
 Check the format of a GUID string. It checks the size, the position of the '-' and the correct size of fields.
 ") CheckGUIDFormat;
-		static Standard_Boolean CheckGUIDFormat(Standard_CString aGuid);
+		static bool CheckGUIDFormat(const char * const aGuid);
 
 		/****** Standard_GUID::IsNotSame ******/
-		/****** md5 signature: 3b6791d861dce7aeca50422c5b579eb8 ******/
+		/****** md5 signature: 66158d3355a67bfdc643e7f7cdf4f981 ******/
 		%feature("compactdefaultargs") IsNotSame;
 		%feature("autodoc", "
 Parameters
@@ -793,12 +925,12 @@ bool
 
 Description
 -----------
-No available documentation.
+Returns true if this GUID is not equal to uid.
 ") IsNotSame;
-		Standard_Boolean IsNotSame(const Standard_GUID & uid);
+		bool IsNotSame(const Standard_GUID & uid);
 
 		/****** Standard_GUID::IsSame ******/
-		/****** md5 signature: 5c5e459d9a23ecee87186c559dacf95e ******/
+		/****** md5 signature: d1c73a319bfda7cb5af411e64bc6a58a ******/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "
 Parameters
@@ -811,9 +943,9 @@ bool
 
 Description
 -----------
-No available documentation.
+Returns true if this GUID is equal to uid.
 ") IsSame;
-		Standard_Boolean IsSame(const Standard_GUID & uid);
+		bool IsSame(const Standard_GUID & uid);
 
 		/****** Standard_GUID::ShallowDump ******/
 		/****** md5 signature: 81ee27b22dec06425d33dc871c4cc32d ******/
@@ -869,7 +1001,7 @@ translate the GUID into unicode string the aStrGuid is allocated by user. the gu
 		void ToExtString(const Standard_PExtCharacter aStrGuid);
 
 		/****** Standard_GUID::ToUUID ******/
-		/****** md5 signature: 66354e1a5c9d79fdbd62794717432b59 ******/
+		/****** md5 signature: 258542f0f734663c8d8d8704ff5cd299 ******/
 		%feature("compactdefaultargs") ToUUID;
 		%feature("autodoc", "Return
 -------
@@ -877,7 +1009,7 @@ Standard_UUID
 
 Description
 -----------
-No available documentation.
+Converts to Standard_UUID.
 ") ToUUID;
 		Standard_UUID ToUUID();
 
@@ -925,30 +1057,30 @@ def __eq__(self, right):
 class Standard_MMgrRoot {
 	public:
 		/****** Standard_MMgrRoot::Allocate ******/
-		/****** md5 signature: fe66f55781cceb44453222208f3803c7 ******/
+		/****** md5 signature: e237d4f1048747d6c3db2cf3b6306aa8 ******/
 		%feature("compactdefaultargs") Allocate;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: Standard_Size
+theSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Allocate specified number of bytes. The actually allocated space should be rounded up to double word size (4 bytes), as this is expected by implementation of some classes in OCC (e.g. TCollection_AsciiString).
 ") Allocate;
-		virtual Standard_Address Allocate(const Standard_Size theSize);
+		virtual void * Allocate(const size_t theSize);
 
 		/****** Standard_MMgrRoot::Free ******/
-		/****** md5 signature: 85275be82aa982bcfcbc80e4e601d70c ******/
+		/****** md5 signature: d17cccee7e037dcb69509037cc59ccba ******/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "
 Parameters
 ----------
-thePtr: Standard_Address
+thePtr: void *
 
 Return
 -------
@@ -958,15 +1090,15 @@ Description
 -----------
 Frees previously allocated memory at specified address.
 ") Free;
-		virtual void Free(Standard_Address thePtr);
+		virtual void Free(void * thePtr);
 
 		/****** Standard_MMgrRoot::Purge ******/
-		/****** md5 signature: a77f590fdbc3568f77c48d495eb164cd ******/
+		/****** md5 signature: e5d1513671c28424bb1f312963b8059f ******/
 		%feature("compactdefaultargs") Purge;
 		%feature("autodoc", "
 Parameters
 ----------
-isDestroyed: bool (optional, default to Standard_False)
+isDestroyed: bool (optional, default to false)
 
 Return
 -------
@@ -976,26 +1108,26 @@ Description
 -----------
 Purge internally cached unused memory blocks (if any) by releasing them to the operating system. Must return non-zero if some memory has been actually released, or zero otherwise. //! If option isDestroyed is True, this means that memory manager is not expected to be used any more; note however that in general case it is still possible to have calls to that instance of memory manager after this (e.g. to free memory of static objects in OCC). Thus this option should command the memory manager to release any cached memory to the system and not cache any more, but still remain operable... //! Default implementation does nothing and returns 0.
 ") Purge;
-		virtual Standard_Integer Purge(Standard_Boolean isDestroyed = Standard_False);
+		virtual int Purge(bool isDestroyed = false);
 
 		/****** Standard_MMgrRoot::Reallocate ******/
-		/****** md5 signature: d180b7947abfec2b6c8212f4b462e1ac ******/
+		/****** md5 signature: 51a2a941d1884f5d307b9795c5aafddb ******/
 		%feature("compactdefaultargs") Reallocate;
 		%feature("autodoc", "
 Parameters
 ----------
-thePtr: Standard_Address
-theSize: Standard_Size
+thePtr: void *
+theSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Reallocate previously allocated memory to contain at least theSize bytes. In case of success, new pointer is returned.
 ") Reallocate;
-		virtual Standard_Address Reallocate(Standard_Address thePtr, const Standard_Size theSize);
+		virtual void * Reallocate(void * thePtr, const size_t theSize);
 
 };
 
@@ -1018,30 +1150,6 @@ Reallocate previously allocated memory to contain at least theSize bytes. In cas
 /*************************************
 * class Standard_Static_Assert<true> *
 *************************************/
-class Standard_Static_Assert<true> {
-	public:
-		/****** Standard_Static_Assert<true>::assert_ok ******/
-		/****** md5 signature: 76fafa2a6a4264953b09f0791484ff39 ******/
-		%feature("compactdefaultargs") assert_ok;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") assert_ok;
-		static void assert_ok();
-
-};
-
-
-%extend Standard_Static_Assert<true> {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***************************
 * class Standard_Transient *
 ***************************/
@@ -1080,7 +1188,7 @@ Copy constructor -- does nothing.
 		 Standard_Transient(const Standard_Transient &);
 
 		/****** Standard_Transient::DecrementRefCounter ******/
-		/****** md5 signature: cffc0f5f216bbc1c29b2cc1acb246d17 ******/
+		/****** md5 signature: 365eb794a506eeaec90ec5196a51da00 ******/
 		%feature("compactdefaultargs") DecrementRefCounter;
 		%feature("autodoc", "Return
 -------
@@ -1088,9 +1196,9 @@ int
 
 Description
 -----------
-Decrements the reference counter of this object; returns the decremented value.
+Decrements the reference counter of this object; returns the decremented value. Uses release ordering for the decrement to ensure all writes to the object are visible before the count reaches zero. An acquire fence is added only when the count reaches zero, ensuring proper synchronization before deletion. This is more efficient than using acq_rel for every decrement.
 ") DecrementRefCounter;
-		Standard_Integer DecrementRefCounter();
+		int DecrementRefCounter();
 
 		/****** Standard_Transient::Delete ******/
 		/****** md5 signature: 1033f3d10272190e9265f60bb3fd5e6a ******/
@@ -1119,7 +1227,7 @@ Returns a type descriptor about this object.
 		virtual const opencascade::handle<Standard_Type> & DynamicType();
 
 		/****** Standard_Transient::GetRefCount ******/
-		/****** md5 signature: d203a7228b821c79144dcefd346a06e8 ******/
+		/****** md5 signature: a17cbf94056bce0ac5fe1cd78cc33afa ******/
 		%feature("compactdefaultargs") GetRefCount;
 		%feature("autodoc", "Return
 -------
@@ -1129,7 +1237,7 @@ Description
 -----------
 Get the reference counter of this object.
 ") GetRefCount;
-		Standard_Integer GetRefCount();
+		int GetRefCount();
 
 		/****** Standard_Transient::IncrementRefCounter ******/
 		/****** md5 signature: 750593e1aaf93d2c0f8c8d422e1418c2 ******/
@@ -1140,12 +1248,12 @@ None
 
 Description
 -----------
-Increments the reference counter of this object.
+Increments the reference counter of this object. Uses relaxed memory ordering since incrementing only requires atomicity, not synchronization with other memory operations.
 ") IncrementRefCounter;
 		void IncrementRefCounter();
 
 		/****** Standard_Transient::IsInstance ******/
-		/****** md5 signature: ada1e4c621e6203b9a4801e8acf1514f ******/
+		/****** md5 signature: f01c298d688e1ce9650cbc47e86dd320 ******/
 		%feature("compactdefaultargs") IsInstance;
 		%feature("autodoc", "
 Parameters
@@ -1160,15 +1268,15 @@ Description
 -----------
 Returns a true value if this is an instance of Type.
 ") IsInstance;
-		Standard_Boolean IsInstance(const opencascade::handle<Standard_Type> & theType);
+		bool IsInstance(const opencascade::handle<Standard_Type> & theType);
 
 		/****** Standard_Transient::IsInstance ******/
-		/****** md5 signature: 099597629477d4b8f8b1cb3258beea20 ******/
+		/****** md5 signature: c78c8220d0b3019ba975df5d2424dbcb ******/
 		%feature("compactdefaultargs") IsInstance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeName: str
+theTypeName: char *
 
 Return
 -------
@@ -1178,10 +1286,10 @@ Description
 -----------
 Returns a true value if this is an instance of TypeName.
 ") IsInstance;
-		Standard_Boolean IsInstance(Standard_CString theTypeName);
+		bool IsInstance(const char * const theTypeName);
 
 		/****** Standard_Transient::IsKind ******/
-		/****** md5 signature: 09e998fa3503d5957eaed7054ae2afcb ******/
+		/****** md5 signature: 4b7704973ee3493e70a2f82b3fbbd28c ******/
 		%feature("compactdefaultargs") IsKind;
 		%feature("autodoc", "
 Parameters
@@ -1196,15 +1304,15 @@ Description
 -----------
 Returns true if this is an instance of Type or an instance of any class that inherits from Type. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
 ") IsKind;
-		Standard_Boolean IsKind(const opencascade::handle<Standard_Type> & theType);
+		bool IsKind(const opencascade::handle<Standard_Type> & theType);
 
 		/****** Standard_Transient::IsKind ******/
-		/****** md5 signature: 58550aae76d5d8512087a99a5fcbee13 ******/
+		/****** md5 signature: b543d4485d4331b6d10666e6c9948308 ******/
 		%feature("compactdefaultargs") IsKind;
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeName: str
+theTypeName: char *
 
 Return
 -------
@@ -1214,7 +1322,7 @@ Description
 -----------
 Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
 ") IsKind;
-		Standard_Boolean IsKind(Standard_CString theTypeName);
+		bool IsKind(const char * const theTypeName);
 
 		/****** Standard_Transient::This ******/
 		/****** md5 signature: 369ed7e5c72c58d7742ea0f5afa5efdd ******/
@@ -1332,354 +1440,21 @@ class Standard_UUID {
 * class is_integer *
 *******************/
 /*************************
-* class Standard_Failure *
-*************************/
-class Standard_Failure : public Standard_Transient {
-	public:
-		class StringRef {};
-		/****** Standard_Failure::Standard_Failure ******/
-		/****** md5 signature: 28eca828ed422c117208722fa40f1b8f ******/
-		%feature("compactdefaultargs") Standard_Failure;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Creates a status object of type 'Failure'.
-") Standard_Failure;
-		 Standard_Failure();
-
-		/****** Standard_Failure::Standard_Failure ******/
-		/****** md5 signature: 40dc4b89af78d8e64d2a9c054dd7a60f ******/
-		%feature("compactdefaultargs") Standard_Failure;
-		%feature("autodoc", "
-Parameters
-----------
-f: Standard_Failure
-
-Return
--------
-None
-
-Description
------------
-Copy constructor.
-") Standard_Failure;
-		 Standard_Failure(const Standard_Failure & f);
-
-		/****** Standard_Failure::Standard_Failure ******/
-		/****** md5 signature: bfea0bc1601bd488834fb05fabb35682 ******/
-		%feature("compactdefaultargs") Standard_Failure;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: str
-
-Return
--------
-None
-
-Description
------------
-Creates a status object of type 'Failure'. 
-Input parameter: theDesc exception description.
-") Standard_Failure;
-		 Standard_Failure(Standard_CString theDesc);
-
-		/****** Standard_Failure::Standard_Failure ******/
-		/****** md5 signature: 598ccf8efeea31d62c1978fafbb81e3d ******/
-		%feature("compactdefaultargs") Standard_Failure;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: str
-theStackTrace: str
-
-Return
--------
-None
-
-Description
------------
-Creates a status object of type 'Failure' with stack trace. 
-Input parameter: theDesc exception description 
-Input parameter: theStackTrace associated stack trace.
-") Standard_Failure;
-		 Standard_Failure(Standard_CString theDesc, Standard_CString theStackTrace);
-
-		/****** Standard_Failure::DefaultStackTraceLength ******/
-		/****** md5 signature: 12c493f7dd93e3779bfe7abdb3051a3b ******/
-		%feature("compactdefaultargs") DefaultStackTraceLength;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
-") DefaultStackTraceLength;
-		static Standard_Integer DefaultStackTraceLength();
-
-		/****** Standard_Failure::GetMessageString ******/
-		/****** md5 signature: 6cf28bba781d197207e850c1ab1a1376 ******/
-		%feature("compactdefaultargs") GetMessageString;
-		%feature("autodoc", "Return
--------
-str
-
-Description
------------
-Returns error message.
-") GetMessageString;
-		virtual Standard_CString GetMessageString();
-
-		/****** Standard_Failure::GetStackString ******/
-		/****** md5 signature: 5581b971f0facf6f7621539967764486 ******/
-		%feature("compactdefaultargs") GetStackString;
-		%feature("autodoc", "Return
--------
-str
-
-Description
------------
-Returns the stack trace string.
-") GetStackString;
-		virtual Standard_CString GetStackString();
-
-		/****** Standard_Failure::Jump ******/
-		/****** md5 signature: e33ef5a1dbf8b90ad71d2447437ae607 ******/
-		%feature("compactdefaultargs") Jump;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Used to throw CASCADE exception from C signal handler. On platforms that do not allow throwing C++ exceptions from this handler (e.g. Linux), uses longjump to get to the current active signal handler, and only then is converted to C++ exception.
-") Jump;
-		void Jump();
-
-		/****** Standard_Failure::NewInstance ******/
-		/****** md5 signature: 8aca08fb5837ba2ac4dd2d68b9488c2c ******/
-		%feature("compactdefaultargs") NewInstance;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: str
-
-Return
--------
-opencascade::handle<Standard_Failure>
-
-Description
------------
-Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically.
-") NewInstance;
-		static opencascade::handle<Standard_Failure> NewInstance(Standard_CString theMessage);
-
-		/****** Standard_Failure::NewInstance ******/
-		/****** md5 signature: 47f811a9539bde6aaf8c4a9a851c69f7 ******/
-		%feature("compactdefaultargs") NewInstance;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: str
-theStackTrace: str
-
-Return
--------
-opencascade::handle<Standard_Failure>
-
-Description
------------
-Used to construct an instance of the exception object as a handle.
-") NewInstance;
-		static opencascade::handle<Standard_Failure> NewInstance(Standard_CString theMessage, Standard_CString theStackTrace);
-
-		/****** Standard_Failure::Print ******/
-		/****** md5 signature: 938e58a4c905f64555b1dcca06400750 ******/
-		%feature("compactdefaultargs") Print;
-		%feature("autodoc", "
-Parameters
-----------
-
-Return
--------
-theStream: Standard_OStream
-
-Description
------------
-Prints on the stream @p theStream the exception name followed by the error message. //! Note: there is a short-cut @c operator<< (Standard_OStream&, opencascade::handle<Standard_Failure>&).
-") Print;
-		void Print(std::ostream &OutValue);
-
-		/****** Standard_Failure::Raise ******/
-		/****** md5 signature: 91c037d4badacf1008e024b8b4afb779 ******/
-		%feature("compactdefaultargs") Raise;
-		%feature("autodoc", "
-Parameters
-----------
-aMessage: str (optional, default to "")
-
-Return
--------
-None
-
-Description
------------
-Raises an exception of type 'Failure' and associates an error message to it. The message can be printed in an exception handler.
-") Raise;
-		static void Raise(Standard_CString aMessage = "");
-
-		/****** Standard_Failure::Raise ******/
-		/****** md5 signature: 03c559f09da27928a7c59a30a5a6ce57 ******/
-		%feature("compactdefaultargs") Raise;
-		%feature("autodoc", "
-Parameters
-----------
-aReason: std::stringstream
-
-Return
--------
-None
-
-Description
------------
-Raises an exception of type 'Failure' and associates an error message to it. The message can be constructed at run-time.
-") Raise;
-		static void Raise(const std::stringstream & aReason);
-
-		/****** Standard_Failure::Reraise ******/
-		/****** md5 signature: 657c2a99b33e637f9ff1c137fe6e034b ******/
-		%feature("compactdefaultargs") Reraise;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") Reraise;
-		void Reraise();
-
-		/****** Standard_Failure::Reraise ******/
-		/****** md5 signature: fdb5d161a9b733854991a035221e32d5 ******/
-		%feature("compactdefaultargs") Reraise;
-		%feature("autodoc", "
-Parameters
-----------
-aMessage: str
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") Reraise;
-		void Reraise(Standard_CString aMessage);
-
-		/****** Standard_Failure::Reraise ******/
-		/****** md5 signature: 77af3b338ca71e96bbc8da8476367087 ******/
-		%feature("compactdefaultargs") Reraise;
-		%feature("autodoc", "
-Parameters
-----------
-aReason: std::stringstream
-
-Return
--------
-None
-
-Description
------------
-Reraises a caught exception and changes its error message.
-") Reraise;
-		void Reraise(const std::stringstream & aReason);
-
-		/****** Standard_Failure::SetDefaultStackTraceLength ******/
-		/****** md5 signature: 0a05375e4fbc3fd48e63e470f065603f ******/
-		%feature("compactdefaultargs") SetDefaultStackTraceLength;
-		%feature("autodoc", "
-Parameters
-----------
-theNbStackTraces: int
-
-Return
--------
-None
-
-Description
------------
-Sets default length of stack trace to be captured by Standard_Failure constructor.
-") SetDefaultStackTraceLength;
-		static void SetDefaultStackTraceLength(Standard_Integer theNbStackTraces);
-
-		/****** Standard_Failure::SetMessageString ******/
-		/****** md5 signature: b83b6b6b9d7cb98cd6a3d0dfaa1a4c66 ******/
-		%feature("compactdefaultargs") SetMessageString;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: str
-
-Return
--------
-None
-
-Description
------------
-Sets error message.
-") SetMessageString;
-		virtual void SetMessageString(Standard_CString theMessage);
-
-		/****** Standard_Failure::SetStackString ******/
-		/****** md5 signature: 0ac982cf92368c8ff9d3ab7dc330defa ******/
-		%feature("compactdefaultargs") SetStackString;
-		%feature("autodoc", "
-Parameters
-----------
-theStack: str
-
-Return
--------
-None
-
-Description
------------
-Sets the stack trace string.
-") SetStackString;
-		virtual void SetStackString(Standard_CString theStack);
-
-};
-
-
-%make_alias(Standard_Failure)
-
-%extend Standard_Failure {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*************************
 * class Standard_MMgrOpt *
 *************************/
 class Standard_MMgrOpt : public Standard_MMgrRoot {
 	public:
 		/****** Standard_MMgrOpt::Standard_MMgrOpt ******/
-		/****** md5 signature: ad66856cdf9de23e8fbf98fc4dd21bab ******/
+		/****** md5 signature: 398fa3be6d4f0921f64beaa5d582bef7 ******/
 		%feature("compactdefaultargs") Standard_MMgrOpt;
 		%feature("autodoc", "
 Parameters
 ----------
-aClear: bool (optional, default to Standard_True)
-aMMap: bool (optional, default to Standard_True)
-aCellSize: Standard_Size (optional, default to 200)
+aClear: bool (optional, default to true)
+aMMap: bool (optional, default to true)
+aCellSize: size_t (optional, default to 200)
 aNbPages: int (optional, default to 10000)
-aThreshold: Standard_Size (optional, default to 40000)
+aThreshold: size_t (optional, default to 40000)
 
 Return
 -------
@@ -1689,33 +1464,33 @@ Description
 -----------
 Constructor. If aClear is True, the allocated emmory will be nullified. For description of other parameters, see description of the class above.
 ") Standard_MMgrOpt;
-		 Standard_MMgrOpt(const Standard_Boolean aClear = Standard_True, const Standard_Boolean aMMap = Standard_True, const Standard_Size aCellSize = 200, const Standard_Integer aNbPages = 10000, const Standard_Size aThreshold = 40000);
+		 Standard_MMgrOpt(const bool aClear = true, const bool aMMap = true, const size_t aCellSize = 200, const int aNbPages = 10000, const size_t aThreshold = 40000);
 
 		/****** Standard_MMgrOpt::Allocate ******/
-		/****** md5 signature: 6442d3c642cfcdb40262dcd5e55ab759 ******/
+		/****** md5 signature: 2aae4ad4d4ab4a198d2f5d994643b19b ******/
 		%feature("compactdefaultargs") Allocate;
 		%feature("autodoc", "
 Parameters
 ----------
-aSize: Standard_Size
+aSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Allocate aSize bytes; see class description above.
 ") Allocate;
-		virtual Standard_Address Allocate(const Standard_Size aSize);
+		void * Allocate(const size_t aSize);
 
 		/****** Standard_MMgrOpt::Free ******/
-		/****** md5 signature: 99b92bf95d137ab3f4eb77330f696570 ******/
+		/****** md5 signature: 7af4e560a4221bb4d15e90bd25581702 ******/
 		%feature("compactdefaultargs") Free;
 		%feature("autodoc", "
 Parameters
 ----------
-thePtr: Standard_Address
+thePtr: void *
 
 Return
 -------
@@ -1725,10 +1500,10 @@ Description
 -----------
 Free previously allocated block. Note that block can not all blocks are released to the OS by this method (see class description).
 ") Free;
-		virtual void Free(Standard_Address thePtr);
+		void Free(void * thePtr);
 
 		/****** Standard_MMgrOpt::Purge ******/
-		/****** md5 signature: 2628a66a189bef68740b282a4c5473b1 ******/
+		/****** md5 signature: cecae19f6b12369cebefb42c6e2983d6 ******/
 		%feature("compactdefaultargs") Purge;
 		%feature("autodoc", "
 Parameters
@@ -1743,26 +1518,26 @@ Description
 -----------
 Release medium-sized blocks of memory in free lists to the system. Returns number of actually freed blocks.
 ") Purge;
-		virtual Standard_Integer Purge(Standard_Boolean isDestroyed);
+		int Purge(bool isDestroyed);
 
 		/****** Standard_MMgrOpt::Reallocate ******/
-		/****** md5 signature: 4f35659a2196551b32d4dfcffd290549 ******/
+		/****** md5 signature: ed56a3d7a972f19665c2e871e0f9f4f0 ******/
 		%feature("compactdefaultargs") Reallocate;
 		%feature("autodoc", "
 Parameters
 ----------
-thePtr: Standard_Address
-theSize: Standard_Size
+thePtr: void *
+theSize: size_t
 
 Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 Reallocate previously allocated aPtr to a new size; new address is returned. In case that aPtr is null, the function behaves exactly as Allocate.
 ") Reallocate;
-		virtual Standard_Address Reallocate(Standard_Address thePtr, const Standard_Size theSize);
+		void * Reallocate(void * thePtr, const size_t theSize);
 
 };
 
@@ -1786,12 +1561,12 @@ Reallocate previously allocated aPtr to a new size; new address is returned. In 
 class Standard_OutOfMemory : public Standard_ProgramError {
 	public:
 		/****** Standard_OutOfMemory::Standard_OutOfMemory ******/
-		/****** md5 signature: ff033c9386be238db1eeeae9cdd548be ******/
+		/****** md5 signature: 21384609791a44592993922aeb08a47b ******/
 		%feature("compactdefaultargs") Standard_OutOfMemory;
 		%feature("autodoc", "
 Parameters
 ----------
-theMessage: str (optional, default to 0)
+theMessage: char * (optional, default to nullptr)
 
 Return
 -------
@@ -1799,103 +1574,31 @@ None
 
 Description
 -----------
-Constructor is kept public for backward compatibility.
+Constructor is kept public for backward compatibility. 
+Parameter theMessage optional error message.
 ") Standard_OutOfMemory;
-		 Standard_OutOfMemory(Standard_CString theMessage = 0);
+		 Standard_OutOfMemory(const char * const theMessage = nullptr);
 
-		/****** Standard_OutOfMemory::GetMessageString ******/
-		/****** md5 signature: 363c8632ad9d571f22bc0c66e7debebf ******/
-		%feature("compactdefaultargs") GetMessageString;
+		/****** Standard_OutOfMemory::ExceptionType ******/
+		/****** md5 signature: 14f21a631675376c2776e5a0c4b1afd4 ******/
+		%feature("compactdefaultargs") ExceptionType;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
-Returns error message.
-") GetMessageString;
-		Standard_CString GetMessageString();
-
-		/****** Standard_OutOfMemory::NewInstance ******/
-		/****** md5 signature: c920a2e02bad464ffbe4c7662f3298ea ******/
-		%feature("compactdefaultargs") NewInstance;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: str (optional, default to "")
-
-Return
--------
-opencascade::handle<Standard_OutOfMemory>
-
-Description
------------
-Returns global instance of exception.
-") NewInstance;
-		static opencascade::handle<Standard_OutOfMemory> NewInstance(Standard_CString theMessage = "");
-
-		/****** Standard_OutOfMemory::NewInstance ******/
-		/****** md5 signature: 6c918de0ecdc1c640cd677eed73b0564 ******/
-		%feature("compactdefaultargs") NewInstance;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: str
-theStackTrace: str
-
-Return
--------
-opencascade::handle<Standard_OutOfMemory>
-
-Description
------------
-Returns global instance of exception.
-") NewInstance;
-		static opencascade::handle<Standard_OutOfMemory> NewInstance(Standard_CString theMessage, Standard_CString theStackTrace);
-
-		/****** Standard_OutOfMemory::Raise ******/
-		/****** md5 signature: 52297b82d875f5f61f56970e75bf80a5 ******/
-		%feature("compactdefaultargs") Raise;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: str (optional, default to "")
-
-Return
--------
-None
-
-Description
------------
-Raises exception with specified message string.
-") Raise;
-		static void Raise(Standard_CString theMessage = "");
-
-		/****** Standard_OutOfMemory::Raise ******/
-		/****** md5 signature: 978a21c380259eaa0fef27d74b086dae ******/
-		%feature("compactdefaultargs") Raise;
-		%feature("autodoc", "
-Parameters
-----------
-theMessage: std::stringstream
-
-Return
--------
-None
-
-Description
------------
-Raises exception with specified message string.
-") Raise;
-		static void Raise(std::stringstream & theMessage);
+Returns the exception type name.
+") ExceptionType;
+		const char * ExceptionType();
 
 		/****** Standard_OutOfMemory::SetMessageString ******/
-		/****** md5 signature: d5bbb32eb858a536bd5764be9d18926b ******/
+		/****** md5 signature: 73bcf3bc11e4acfe0da7adb99b51b2aa ******/
 		%feature("compactdefaultargs") SetMessageString;
 		%feature("autodoc", "
 Parameters
 ----------
-aMessage: str
+theMessage: char *
 
 Return
 -------
@@ -1903,14 +1606,26 @@ None
 
 Description
 -----------
-Sets error message.
+Sets error message. 
+Parameter theMessage error message (can be nullptr).
 ") SetMessageString;
-		void SetMessageString(Standard_CString aMessage);
+		void SetMessageString(const char * const theMessage);
+
+		/****** Standard_OutOfMemory::what ******/
+		/****** md5 signature: ed49fda67beb49036c3f43cc26d18b0f ******/
+		%feature("compactdefaultargs") what;
+		%feature("autodoc", "Return
+-------
+char *
+
+Description
+-----------
+Returns error message (implements std::exception interface).
+") what;
+		const char * what();
 
 };
 
-
-%make_alias(Standard_OutOfMemory)
 
 %extend Standard_OutOfMemory {
 	%pythoncode {
@@ -1936,19 +1651,19 @@ No available documentation.
 ") Standard_Persistent;
 		 Standard_Persistent();
 
+		/****** Standard_Persistent::TypeNum ******/
+		/****** md5 signature: ed89c0e1f49a9a4c35a8b1a392044112 ******/
+		%feature("compactdefaultargs") TypeNum;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetTypeNum() {
-            return (Standard_Integer) $self->TypeNum();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetTypeNum(Standard_Integer value) {
-            $self->TypeNum()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") TypeNum;
+		int & TypeNum();
+
 };
 
 
@@ -1967,17 +1682,17 @@ No available documentation.
 class Standard_Type : public Standard_Transient {
 	public:
 		/****** Standard_Type::Name ******/
-		/****** md5 signature: dbebb34a777ed2cce75639b98f8c3cbf ******/
+		/****** md5 signature: f8ddb87900ed20587ddc7fa88a0b0422 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the given name of the class type (get_type_name).
 ") Name;
-		Standard_CString Name();
+		const char * Name();
 
 		/****** Standard_Type::Parent ******/
 		/****** md5 signature: 4c52a6847edce109e140e2343296b76f ******/
@@ -2010,14 +1725,14 @@ Prints type (address of descriptor + name) to a stream.
 		void Print(std::ostream &OutValue);
 
 		/****** Standard_Type::Register ******/
-		/****** md5 signature: 47cbf72eb6b8d1175d67182ad31c3816 ******/
+		/****** md5 signature: a3b6c6cfcf83138052ef8de5282462e6 ******/
 		%feature("compactdefaultargs") Register;
 		%feature("autodoc", "
 Parameters
 ----------
 theInfo: std::type_info
 theName: char *
-theSize: Standard_Size
+theSize: size_t
 theParent: Standard_Type
 
 Return
@@ -2032,23 +1747,23 @@ Parameter theName name of the class to be stored in Name field
 Parameter theSize size of the class instance 
 Parameter theParent base class in the Transient hierarchy //! Note that this function is intended for use by STANDARD_RTTIEXT macros only.
 ") Register;
-		static Standard_Type * Register(const std::type_info & theInfo, const char * theName, Standard_Size theSize, const opencascade::handle<Standard_Type> & theParent);
+		static Standard_Type * Register(const std::type_info & theInfo, const char * theName, size_t theSize, const opencascade::handle<Standard_Type> & theParent);
 
 		/****** Standard_Type::Size ******/
-		/****** md5 signature: 84043604cd4d694d29fbe523f032e5d8 ******/
+		/****** md5 signature: cbd8471ac8e6ef120a405ad6c4ba90d1 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
-Standard_Size
+size_t
 
 Description
 -----------
 Returns the size of the class instance in bytes.
 ") Size;
-		Standard_Size Size();
+		size_t Size();
 
 		/****** Standard_Type::SubType ******/
-		/****** md5 signature: c3ab17d05fad515519faa56550ba2910 ******/
+		/****** md5 signature: 96215e29f9689f688889396c85f933cc ******/
 		%feature("compactdefaultargs") SubType;
 		%feature("autodoc", "
 Parameters
@@ -2063,15 +1778,15 @@ Description
 -----------
 Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
 ") SubType;
-		Standard_Boolean SubType(const opencascade::handle<Standard_Type> & theOther);
+		bool SubType(const opencascade::handle<Standard_Type> & theOther);
 
 		/****** Standard_Type::SubType ******/
-		/****** md5 signature: e4908284e5a25023425f29a02b92ebdc ******/
+		/****** md5 signature: 0b630b96635e52c7912e6c136bf69509 ******/
 		%feature("compactdefaultargs") SubType;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: str
+theOther: char *
 
 Return
 -------
@@ -2081,20 +1796,20 @@ Description
 -----------
 Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
 ") SubType;
-		Standard_Boolean SubType(Standard_CString theOther);
+		bool SubType(const char * const theOther);
 
 		/****** Standard_Type::SystemName ******/
-		/****** md5 signature: 3db3c1797a8dec854871c6caaa05c939 ******/
+		/****** md5 signature: dbf67a1e46414df86e6cf26f7e28f465 ******/
 		%feature("compactdefaultargs") SystemName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the system type name of the class (typeinfo.name).
 ") SystemName;
-		Standard_CString SystemName();
+		const char * SystemName();
 
 };
 
@@ -2180,52 +1895,16 @@ def Standard_ErrorHandler_IsInTryBlock(*args):
 	return Standard_ErrorHandler.IsInTryBlock(*args)
 
 @deprecated
-def Standard_ErrorHandler_LastCaughtError(*args):
-	return Standard_ErrorHandler.LastCaughtError(*args)
-
-@deprecated
-def Standard_GUID_CheckGUIDFormat(*args):
-	return Standard_GUID.CheckGUIDFormat(*args)
-
-@deprecated
 def Standard_Failure_DefaultStackTraceLength(*args):
 	return Standard_Failure.DefaultStackTraceLength(*args)
-
-@deprecated
-def Standard_Failure_NewInstance(*args):
-	return Standard_Failure.NewInstance(*args)
-
-@deprecated
-def Standard_Failure_NewInstance(*args):
-	return Standard_Failure.NewInstance(*args)
-
-@deprecated
-def Standard_Failure_Raise(*args):
-	return Standard_Failure.Raise(*args)
-
-@deprecated
-def Standard_Failure_Raise(*args):
-	return Standard_Failure.Raise(*args)
 
 @deprecated
 def Standard_Failure_SetDefaultStackTraceLength(*args):
 	return Standard_Failure.SetDefaultStackTraceLength(*args)
 
 @deprecated
-def Standard_OutOfMemory_NewInstance(*args):
-	return Standard_OutOfMemory.NewInstance(*args)
-
-@deprecated
-def Standard_OutOfMemory_NewInstance(*args):
-	return Standard_OutOfMemory.NewInstance(*args)
-
-@deprecated
-def Standard_OutOfMemory_Raise(*args):
-	return Standard_OutOfMemory.Raise(*args)
-
-@deprecated
-def Standard_OutOfMemory_Raise(*args):
-	return Standard_OutOfMemory.Raise(*args)
+def Standard_GUID_CheckGUIDFormat(*args):
+	return Standard_GUID.CheckGUIDFormat(*args)
 
 @deprecated
 def Standard_Type_Register(*args):

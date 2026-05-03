@@ -383,9 +383,6 @@ typedef pthread_t OSD_PThread;
 /*****************
 * class OSD_Host *
 *****************/
-/***********************
-* class OSD_MAllocHook *
-***********************/
 /********************
 * class OSD_MemInfo *
 ********************/
@@ -494,10 +491,6 @@ class OSD_Host:
 
 @classnotwrapped
 class OSD_LocalFileSystem:
-	pass
-
-@classnotwrapped
-class OSD_MAllocHook:
 	pass
 
 @classnotwrapped

@@ -46,7 +46,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi2d.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -58,7 +57,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi2d.html"
 %import NCollection.i
 %import TopoDS.i
 %import gp.i
-%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -133,7 +131,7 @@ ChFi2d_NotAuthorized = ChFi2d_ConstructionError.ChFi2d_NotAuthorized
 class ChFi2d {
 	public:
 		/****** ChFi2d::CommonVertex ******/
-		/****** md5 signature: 988ba28b6b8eed9cf889373017dc105e ******/
+		/****** md5 signature: b2d616acf18e92098bcc45a6ac915bdb ******/
 		%feature("compactdefaultargs") CommonVertex;
 		%feature("autodoc", "
 Parameters
@@ -150,7 +148,7 @@ Description
 -----------
 No available documentation.
 ") CommonVertex;
-		static Standard_Boolean CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
+		static bool CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
 
 		/****** ChFi2d::FindConnectedEdges ******/
 		/****** md5 signature: f30016be75d67e3942406dcd4bb2a68a ******/
@@ -279,12 +277,12 @@ Initializes the class by two edges.
 		void Init(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, const gp_Pln & thePlane);
 
 		/****** ChFi2d_AnaFilletAlgo::Perform ******/
-		/****** md5 signature: 296d0629ab2caa2b37bca9b5eca4a0fb ******/
+		/****** md5 signature: 0f4d4055ace945d94bd63fe55a9540ef ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-radius: float
+radius: double
 
 Return
 -------
@@ -294,7 +292,7 @@ Description
 -----------
 Calculates a fillet.
 ") Perform;
-		Standard_Boolean Perform(const Standard_Real radius);
+		bool Perform(const double radius);
 
 		/****** ChFi2d_AnaFilletAlgo::Result ******/
 		/****** md5 signature: 5744648d3de9eb104f52c7316465172c ******/
@@ -361,15 +359,15 @@ The face <F> can be build on a closed or an open wire.
 		 ChFi2d_Builder(const TopoDS_Face & F);
 
 		/****** ChFi2d_Builder::AddChamfer ******/
-		/****** md5 signature: 8ab56100a5f8fd93f4f3849863205ed2 ******/
+		/****** md5 signature: 42e494c55a6846ce97431b471aca6750 ******/
 		%feature("compactdefaultargs") AddChamfer;
 		%feature("autodoc", "
 Parameters
 ----------
 E1: TopoDS_Edge
 E2: TopoDS_Edge
-D1: float
-D2: float
+D1: double
+D2: double
 
 Return
 -------
@@ -379,18 +377,18 @@ Description
 -----------
 Add a chamfer on the wire between the two edges connected <E1> and <E2>. <AddChamfer> returns the chamfer edge. This edge has sense only if the status <status> is <IsDone>.
 ") AddChamfer;
-		TopoDS_Edge AddChamfer(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const Standard_Real D1, const Standard_Real D2);
+		TopoDS_Edge AddChamfer(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const double D1, const double D2);
 
 		/****** ChFi2d_Builder::AddChamfer ******/
-		/****** md5 signature: 08ba1f2a5a80f3f12155f274e5ccf476 ******/
+		/****** md5 signature: e954c3ee2da3fbde7b34714164e9d079 ******/
 		%feature("compactdefaultargs") AddChamfer;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
 V: TopoDS_Vertex
-D: float
-Ang: float
+D: double
+Ang: double
 
 Return
 -------
@@ -400,16 +398,16 @@ Description
 -----------
 Add a chamfer on the wire between the two edges connected to the vertex <V>. The chamfer will make an angle <Ang> with the edge <E>, and one of its extremities will be on <E> at distance <D>. The returned edge has sense only if the status <status> is <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
 ") AddChamfer;
-		TopoDS_Edge AddChamfer(const TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real D, const Standard_Real Ang);
+		TopoDS_Edge AddChamfer(const TopoDS_Edge & E, const TopoDS_Vertex & V, const double D, const double Ang);
 
 		/****** ChFi2d_Builder::AddFillet ******/
-		/****** md5 signature: 0537608457b4aa5c0d47332a8668ac27 ******/
+		/****** md5 signature: a84f2ecb37ce79fd9f012890b8a5db13 ******/
 		%feature("compactdefaultargs") AddFillet;
 		%feature("autodoc", "
 Parameters
 ----------
 V: TopoDS_Vertex
-Radius: float
+Radius: double
 
 Return
 -------
@@ -419,7 +417,7 @@ Description
 -----------
 Add a fillet of radius <Radius> on the wire between the two edges connected to the vertex <V>. <AddFillet> returns the fillet edge. The returned edge has sense only if the status <status> is <IsDone>.
 ") AddFillet;
-		TopoDS_Edge AddFillet(const TopoDS_Vertex & V, const Standard_Real Radius);
+		TopoDS_Edge AddFillet(const TopoDS_Vertex & V, const double Radius);
 
 		/****** ChFi2d_Builder::BasisEdge ******/
 		/****** md5 signature: c244b8627d4ba515112f85786021bf15 ******/
@@ -440,17 +438,17 @@ Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge
 		const TopoDS_Edge BasisEdge(const TopoDS_Edge & E);
 
 		/****** ChFi2d_Builder::ChamferEdges ******/
-		/****** md5 signature: 66edbe74780ce3ab689192aa27e7b595 ******/
+		/****** md5 signature: d035805a204108c266e9c5c5713d7853 ******/
 		%feature("compactdefaultargs") ChamferEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_SequenceOfShape
+NCollection_Sequence<TopoDS_Shape>
 
 Description
 -----------
 returns the list of new edges.
 ") ChamferEdges;
-		const TopTools_SequenceOfShape & ChamferEdges();
+		const NCollection_Sequence<TopoDS_Shape> ChamferEdges();
 
 		/****** ChFi2d_Builder::DescendantEdge ******/
 		/****** md5 signature: aeb8944df5eff8bc10450ec6f2cf0e76 ******/
@@ -471,20 +469,20 @@ returns the modified edge if <E> has descendant or <E> in the other case.
 		const TopoDS_Edge DescendantEdge(const TopoDS_Edge & E);
 
 		/****** ChFi2d_Builder::FilletEdges ******/
-		/****** md5 signature: 937d4c9906e8077f48db789584514415 ******/
+		/****** md5 signature: f48bb40e20f062fc2aa9d6328b83b716 ******/
 		%feature("compactdefaultargs") FilletEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_SequenceOfShape
+NCollection_Sequence<TopoDS_Shape>
 
 Description
 -----------
 returns the list of new edges.
 ") FilletEdges;
-		const TopTools_SequenceOfShape & FilletEdges();
+		const NCollection_Sequence<TopoDS_Shape> FilletEdges();
 
 		/****** ChFi2d_Builder::HasDescendant ******/
-		/****** md5 signature: 0541f95951f0773111d16c04ab78f51f ******/
+		/****** md5 signature: 365b4df1a18354984e8758587033cb70 ******/
 		%feature("compactdefaultargs") HasDescendant;
 		%feature("autodoc", "
 Parameters
@@ -499,7 +497,7 @@ Description
 -----------
 No available documentation.
 ") HasDescendant;
-		Standard_Boolean HasDescendant(const TopoDS_Edge & E);
+		bool HasDescendant(const TopoDS_Edge & E);
 
 		/****** ChFi2d_Builder::Init ******/
 		/****** md5 signature: a8dfaa68079e743e08190fe58d950a9a ******/
@@ -539,7 +537,7 @@ No available documentation.
 		void Init(const TopoDS_Face & RefFace, const TopoDS_Face & ModFace);
 
 		/****** ChFi2d_Builder::IsModified ******/
-		/****** md5 signature: 16d68e049352482fa8e513ef481ee475 ******/
+		/****** md5 signature: 0eea89845d0c71c59c5430a4d07e48c8 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -554,10 +552,10 @@ Description
 -----------
 No available documentation.
 ") IsModified;
-		Standard_Boolean IsModified(const TopoDS_Edge & E);
+		bool IsModified(const TopoDS_Edge & E);
 
 		/****** ChFi2d_Builder::ModifyChamfer ******/
-		/****** md5 signature: f4b34f1306057c0cc8ca5f84d6421d3a ******/
+		/****** md5 signature: 48770fe1b90a246f42a86504f6052639 ******/
 		%feature("compactdefaultargs") ModifyChamfer;
 		%feature("autodoc", "
 Parameters
@@ -565,8 +563,8 @@ Parameters
 Chamfer: TopoDS_Edge
 E1: TopoDS_Edge
 E2: TopoDS_Edge
-D1: float
-D2: float
+D1: double
+D2: double
 
 Return
 -------
@@ -576,18 +574,18 @@ Description
 -----------
 modify the chamfer <Chamfer> and returns the new chamfer edge. This edge as sense only if the status <status> is <IsDone>.
 ") ModifyChamfer;
-		TopoDS_Edge ModifyChamfer(const TopoDS_Edge & Chamfer, const TopoDS_Edge & E1, const TopoDS_Edge & E2, const Standard_Real D1, const Standard_Real D2);
+		TopoDS_Edge ModifyChamfer(const TopoDS_Edge & Chamfer, const TopoDS_Edge & E1, const TopoDS_Edge & E2, const double D1, const double D2);
 
 		/****** ChFi2d_Builder::ModifyChamfer ******/
-		/****** md5 signature: 5dc8140e76c07e7e78ad0bb92d51e1c8 ******/
+		/****** md5 signature: 88297be7ab4391875a8420e4f0462289 ******/
 		%feature("compactdefaultargs") ModifyChamfer;
 		%feature("autodoc", "
 Parameters
 ----------
 Chamfer: TopoDS_Edge
 E: TopoDS_Edge
-D: float
-Ang: float
+D: double
+Ang: double
 
 Return
 -------
@@ -597,16 +595,16 @@ Description
 -----------
 modify the chamfer <Chamfer> and returns the new chamfer edge. This edge as sense only if the status <status> is <IsDone>. Warning: The value of <Ang> must be expressed in Radian.
 ") ModifyChamfer;
-		TopoDS_Edge ModifyChamfer(const TopoDS_Edge & Chamfer, const TopoDS_Edge & E, const Standard_Real D, const Standard_Real Ang);
+		TopoDS_Edge ModifyChamfer(const TopoDS_Edge & Chamfer, const TopoDS_Edge & E, const double D, const double Ang);
 
 		/****** ChFi2d_Builder::ModifyFillet ******/
-		/****** md5 signature: 4ba37be14168b13373613def465683a2 ******/
+		/****** md5 signature: 310efa6f21b2095d8f0d06bbb6858c76 ******/
 		%feature("compactdefaultargs") ModifyFillet;
 		%feature("autodoc", "
 Parameters
 ----------
 Fillet: TopoDS_Edge
-Radius: float
+Radius: double
 
 Return
 -------
@@ -616,10 +614,10 @@ Description
 -----------
 modify the fillet radius and return the new fillet edge. this edge has sense only if the status <status> is <IsDone>.
 ") ModifyFillet;
-		TopoDS_Edge ModifyFillet(const TopoDS_Edge & Fillet, const Standard_Real Radius);
+		TopoDS_Edge ModifyFillet(const TopoDS_Edge & Fillet, const double Radius);
 
 		/****** ChFi2d_Builder::NbChamfer ******/
-		/****** md5 signature: 1531286606ef0261ac4850615d79f229 ******/
+		/****** md5 signature: da1616693b22233ebaa8e74f78c82b97 ******/
 		%feature("compactdefaultargs") NbChamfer;
 		%feature("autodoc", "Return
 -------
@@ -629,10 +627,10 @@ Description
 -----------
 No available documentation.
 ") NbChamfer;
-		Standard_Integer NbChamfer();
+		int NbChamfer();
 
 		/****** ChFi2d_Builder::NbFillet ******/
-		/****** md5 signature: 213e984e2e53209ba86769e63c780c6f ******/
+		/****** md5 signature: fa9a7e2ccec679d074641669f897d38b ******/
 		%feature("compactdefaultargs") NbFillet;
 		%feature("autodoc", "Return
 -------
@@ -642,7 +640,7 @@ Description
 -----------
 No available documentation.
 ") NbFillet;
-		Standard_Integer NbFillet();
+		int NbFillet();
 
 		/****** ChFi2d_Builder::RemoveChamfer ******/
 		/****** md5 signature: e2fe904642b9955c8a660d5a9fc1f9db ******/
@@ -808,7 +806,7 @@ Initializes the class by two linear edges.
 		void Init(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2);
 
 		/****** ChFi2d_ChamferAPI::Perform ******/
-		/****** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ******/
+		/****** md5 signature: 836e5d294e107797e3a08ad4bfbbad29 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -818,18 +816,18 @@ Description
 -----------
 Constructs a chamfer edge. Returns true if the edge is constructed.
 ") Perform;
-		Standard_Boolean Perform();
+		bool Perform();
 
 		/****** ChFi2d_ChamferAPI::Result ******/
-		/****** md5 signature: 6eae4611de5834ad67d8abd68f9a58f2 ******/
+		/****** md5 signature: 6282c6d72f7cd373c4c1a5356084f06a ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "
 Parameters
 ----------
 theEdge1: TopoDS_Edge
 theEdge2: TopoDS_Edge
-theLength1: float
-theLength2: float
+theLength1: double
+theLength2: double
 
 Return
 -------
@@ -839,7 +837,7 @@ Description
 -----------
 No available documentation.
 ") Result;
-		TopoDS_Edge Result(TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const Standard_Real theLength1, const Standard_Real theLength2);
+		TopoDS_Edge Result(TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const double theLength1, const double theLength2);
 
 };
 
@@ -947,7 +945,7 @@ Initializes a fillet algorithm: accepts two edges in a plane.
 		void Init(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, const gp_Pln & thePlane);
 
 		/****** ChFi2d_FilletAPI::NbResults ******/
-		/****** md5 signature: 1940d6bde20fdd8d7cc964038ca6aa79 ******/
+		/****** md5 signature: 9e75b2bd73bb3132530c8503546e0cd9 ******/
 		%feature("compactdefaultargs") NbResults;
 		%feature("autodoc", "
 Parameters
@@ -962,15 +960,15 @@ Description
 -----------
 Returns number of possible solutions. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") NbResults;
-		Standard_Integer NbResults(const gp_Pnt & thePoint);
+		int NbResults(const gp_Pnt & thePoint);
 
 		/****** ChFi2d_FilletAPI::Perform ******/
-		/****** md5 signature: 2b447cf377f0784629ef68c6d522b2f1 ******/
+		/****** md5 signature: 37c4680b4e880891fd01ca3b7f095e1d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 
 Return
 -------
@@ -980,10 +978,10 @@ Description
 -----------
 Constructs a fillet edge. Returns true if at least one result was found.
 ") Perform;
-		Standard_Boolean Perform(const Standard_Real theRadius);
+		bool Perform(const double theRadius);
 
 		/****** ChFi2d_FilletAPI::Result ******/
-		/****** md5 signature: 47609a9593530a1c197f05dabded44c9 ******/
+		/****** md5 signature: 5cb4e092eea192832e14ba8ee8b83b87 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "
 Parameters
@@ -1001,7 +999,7 @@ Description
 -----------
 Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thePoint> if iSolution == -1 <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") Result;
-		TopoDS_Edge Result(const gp_Pnt & thePoint, TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const Standard_Integer iSolution = -1);
+		TopoDS_Edge Result(const gp_Pnt & thePoint, TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const int iSolution = -1);
 
 };
 
@@ -1109,7 +1107,7 @@ Initializes a fillet algorithm: accepts two edges in a plane.
 		void Init(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, const gp_Pln & thePlane);
 
 		/****** ChFi2d_FilletAlgo::NbResults ******/
-		/****** md5 signature: 1940d6bde20fdd8d7cc964038ca6aa79 ******/
+		/****** md5 signature: 9e75b2bd73bb3132530c8503546e0cd9 ******/
 		%feature("compactdefaultargs") NbResults;
 		%feature("autodoc", "
 Parameters
@@ -1124,15 +1122,15 @@ Description
 -----------
 Returns number of possible solutions. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") NbResults;
-		Standard_Integer NbResults(const gp_Pnt & thePoint);
+		int NbResults(const gp_Pnt & thePoint);
 
 		/****** ChFi2d_FilletAlgo::Perform ******/
-		/****** md5 signature: 2b447cf377f0784629ef68c6d522b2f1 ******/
+		/****** md5 signature: 37c4680b4e880891fd01ca3b7f095e1d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 
 Return
 -------
@@ -1142,10 +1140,10 @@ Description
 -----------
 Constructs a fillet edge. Returns true, if at least one result was found.
 ") Perform;
-		Standard_Boolean Perform(const Standard_Real theRadius);
+		bool Perform(const double theRadius);
 
 		/****** ChFi2d_FilletAlgo::Result ******/
-		/****** md5 signature: 47609a9593530a1c197f05dabded44c9 ******/
+		/****** md5 signature: 5cb4e092eea192832e14ba8ee8b83b87 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "
 Parameters
@@ -1163,7 +1161,7 @@ Description
 -----------
 Returns result (fillet edge, modified edge1, modified edge2), nearest to the given point <thePoint> if iSolution == -1. <thePoint> chooses a particular fillet in case of several fillets may be constructed (for example, a circle intersecting a segment in 2 points). Put the intersecting (or common) point of the edges.
 ") Result;
-		TopoDS_Edge Result(const gp_Pnt & thePoint, TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const Standard_Integer iSolution = -1);
+		TopoDS_Edge Result(const gp_Pnt & thePoint, TopoDS_Edge & theEdge1, TopoDS_Edge & theEdge2, const int iSolution = -1);
 
 };
 

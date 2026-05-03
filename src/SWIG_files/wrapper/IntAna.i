@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intana.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
-#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -54,7 +53,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intana.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -115,12 +113,6 @@ IntAna_NoGeometricSolution = IntAna_ResultType.IntAna_NoGeometricSolution
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = IntAna_ListIteratorOfListOfCurve(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
@@ -149,12 +141,12 @@ Empty Constructor.
 		 IntAna_Curve();
 
 		/****** IntAna_Curve::D1u ******/
-		/****** md5 signature: adc6cf27bf3405c7aa615b2c8e09c345 ******/
+		/****** md5 signature: 565f5359253444e34404de1546709500 ******/
 		%feature("compactdefaultargs") D1u;
 		%feature("autodoc", "
 Parameters
 ----------
-Theta: float
+Theta: double
 P: gp_Pnt
 V: gp_Vec
 
@@ -166,10 +158,10 @@ Description
 -----------
 Returns the point and the first derivative at parameter Theta on the curve.
 ") D1u;
-		Standard_Boolean D1u(const Standard_Real Theta, gp_Pnt & P, gp_Vec & V);
+		bool D1u(const double Theta, gp_Pnt & P, gp_Vec & V);
 
 		/****** IntAna_Curve::Domain ******/
-		/****** md5 signature: 71155cc7e4359d3495fd35b68643b222 ******/
+		/****** md5 signature: 811e62574fb69f08b937076f1e49a60e ******/
 		%feature("compactdefaultargs") Domain;
 		%feature("autodoc", "
 Parameters
@@ -177,8 +169,8 @@ Parameters
 
 Return
 -------
-theFirst: float
-theLast: float
+theFirst: double
+theLast: double
 
 Description
 -----------
@@ -187,13 +179,13 @@ Returns the parametric domain of the curve.
 		void Domain(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntAna_Curve::FindParameter ******/
-		/****** md5 signature: dab72e39e175512eaf3620eb76e16397 ******/
+		/****** md5 signature: 407de38cada1fec3ab9e565b56fb7e9e ******/
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-theParams: TColStd_ListOfReal
+theParams: NCollection_List<double>
 
 Return
 -------
@@ -203,10 +195,10 @@ Description
 -----------
 Tries to find the parameter of the point P on the curve. If the method returns False, the 'projection' is impossible. If the method returns True at least one parameter has been found. theParams is always sorted in ascending order.
 ") FindParameter;
-		void FindParameter(const gp_Pnt & P, TColStd_ListOfReal & theParams);
+		void FindParameter(const gp_Pnt & P, NCollection_List<double> & theParams);
 
 		/****** IntAna_Curve::IsConstant ******/
-		/****** md5 signature: d04428c0cc470abb832fd48242d18c6c ******/
+		/****** md5 signature: 004cfe784b2152966984d86bf19ad8a1 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -216,10 +208,10 @@ Description
 -----------
 Returns True if the function is constant.
 ") IsConstant;
-		Standard_Boolean IsConstant();
+		bool IsConstant();
 
 		/****** IntAna_Curve::IsFirstOpen ******/
-		/****** md5 signature: cb52fd08cfdd62e428711cb1cbf63a79 ******/
+		/****** md5 signature: a7bf5103450395b78e139546d5a41ba7 ******/
 		%feature("compactdefaultargs") IsFirstOpen;
 		%feature("autodoc", "Return
 -------
@@ -229,10 +221,10 @@ Description
 -----------
 Returns True if the domain is open at the beginning.
 ") IsFirstOpen;
-		Standard_Boolean IsFirstOpen();
+		bool IsFirstOpen();
 
 		/****** IntAna_Curve::IsLastOpen ******/
-		/****** md5 signature: 18e9b3bfcd4c8c69e407292054770192 ******/
+		/****** md5 signature: e205422460fa454b1c48f61ba2c3835c ******/
 		%feature("compactdefaultargs") IsLastOpen;
 		%feature("autodoc", "Return
 -------
@@ -242,10 +234,10 @@ Description
 -----------
 Returns True if the domain is open at the end.
 ") IsLastOpen;
-		Standard_Boolean IsLastOpen();
+		bool IsLastOpen();
 
 		/****** IntAna_Curve::IsOpen ******/
-		/****** md5 signature: bdd2e1a97b3f8d14fccdfc3ccf008748 ******/
+		/****** md5 signature: 0c9790a385181e7469ddaf9bf17ff666 ******/
 		%feature("compactdefaultargs") IsOpen;
 		%feature("autodoc", "Return
 -------
@@ -255,28 +247,28 @@ Description
 -----------
 Returns True if the curve is not infinite at the last parameter or at the first parameter of the domain.
 ") IsOpen;
-		Standard_Boolean IsOpen();
+		bool IsOpen();
 
 		/****** IntAna_Curve::SetConeQuadValues ******/
-		/****** md5 signature: ff92b84e177dacf7d91461f5a2402783 ******/
+		/****** md5 signature: 1b98025e7fe62268af5c67018ce16fd6 ******/
 		%feature("compactdefaultargs") SetConeQuadValues;
 		%feature("autodoc", "
 Parameters
 ----------
 Cone: gp_Cone
-Qxx: float
-Qyy: float
-Qzz: float
-Qxy: float
-Qxz: float
-Qyz: float
-Qx: float
-Qy: float
-Qz: float
-Q1: float
-Tol: float
-DomInf: float
-DomSup: float
+Qxx: double
+Qyy: double
+Qzz: double
+Qxy: double
+Qxz: double
+Qyz: double
+Qx: double
+Qy: double
+Qz: double
+Q1: double
+Tol: double
+DomInf: double
+DomSup: double
 TwoZForATheta: bool
 ZIsPositive: bool
 
@@ -288,28 +280,28 @@ Description
 -----------
 Sets the parameters used to compute Points and Derivative on the curve.
 ") SetConeQuadValues;
-		void SetConeQuadValues(const gp_Cone & Cone, const Standard_Real Qxx, const Standard_Real Qyy, const Standard_Real Qzz, const Standard_Real Qxy, const Standard_Real Qxz, const Standard_Real Qyz, const Standard_Real Qx, const Standard_Real Qy, const Standard_Real Qz, const Standard_Real Q1, const Standard_Real Tol, const Standard_Real DomInf, const Standard_Real DomSup, const Standard_Boolean TwoZForATheta, const Standard_Boolean ZIsPositive);
+		void SetConeQuadValues(const gp_Cone & Cone, const double Qxx, const double Qyy, const double Qzz, const double Qxy, const double Qxz, const double Qyz, const double Qx, const double Qy, const double Qz, const double Q1, const double Tol, const double DomInf, const double DomSup, const bool TwoZForATheta, const bool ZIsPositive);
 
 		/****** IntAna_Curve::SetCylinderQuadValues ******/
-		/****** md5 signature: 3007250938a2c3dde2b0afd11f9d3935 ******/
+		/****** md5 signature: cac89448d6a937581aeca0bbab27a6db ******/
 		%feature("compactdefaultargs") SetCylinderQuadValues;
 		%feature("autodoc", "
 Parameters
 ----------
 Cylinder: gp_Cylinder
-Qxx: float
-Qyy: float
-Qzz: float
-Qxy: float
-Qxz: float
-Qyz: float
-Qx: float
-Qy: float
-Qz: float
-Q1: float
-Tol: float
-DomInf: float
-DomSup: float
+Qxx: double
+Qyy: double
+Qzz: double
+Qxy: double
+Qxz: double
+Qyz: double
+Qx: double
+Qy: double
+Qz: double
+Q1: double
+Tol: double
+DomInf: double
+DomSup: double
 TwoZForATheta: bool
 ZIsPositive: bool
 
@@ -321,16 +313,16 @@ Description
 -----------
 Sets the parameters used to compute Points and Derivative on the curve.
 ") SetCylinderQuadValues;
-		void SetCylinderQuadValues(const gp_Cylinder & Cylinder, const Standard_Real Qxx, const Standard_Real Qyy, const Standard_Real Qzz, const Standard_Real Qxy, const Standard_Real Qxz, const Standard_Real Qyz, const Standard_Real Qx, const Standard_Real Qy, const Standard_Real Qz, const Standard_Real Q1, const Standard_Real Tol, const Standard_Real DomInf, const Standard_Real DomSup, const Standard_Boolean TwoZForATheta, const Standard_Boolean ZIsPositive);
+		void SetCylinderQuadValues(const gp_Cylinder & Cylinder, const double Qxx, const double Qyy, const double Qzz, const double Qxy, const double Qxz, const double Qyz, const double Qx, const double Qy, const double Qz, const double Q1, const double Tol, const double DomInf, const double DomSup, const bool TwoZForATheta, const bool ZIsPositive);
 
 		/****** IntAna_Curve::SetDomain ******/
-		/****** md5 signature: 6e48d7eca8a8ab9e6b69eef070185309 ******/
+		/****** md5 signature: 750930d637779c3c92160f866428f205 ******/
 		%feature("compactdefaultargs") SetDomain;
 		%feature("autodoc", "
 Parameters
 ----------
-theFirst: float
-theLast: float
+theFirst: double
+theLast: double
 
 Return
 -------
@@ -340,10 +332,10 @@ Description
 -----------
 Trims this curve.
 ") SetDomain;
-		void SetDomain(const Standard_Real theFirst, const Standard_Real theLast);
+		void SetDomain(const double theFirst, const double theLast);
 
 		/****** IntAna_Curve::SetIsFirstOpen ******/
-		/****** md5 signature: 0610a2f545ec785de397e6b6f9a3ad03 ******/
+		/****** md5 signature: 3f03e538547b8d5d25d95c40b1110ca1 ******/
 		%feature("compactdefaultargs") SetIsFirstOpen;
 		%feature("autodoc", "
 Parameters
@@ -358,10 +350,10 @@ Description
 -----------
 If flag is True, the Curve is not defined at the first parameter of its domain.
 ") SetIsFirstOpen;
-		void SetIsFirstOpen(const Standard_Boolean Flag);
+		void SetIsFirstOpen(const bool Flag);
 
 		/****** IntAna_Curve::SetIsLastOpen ******/
-		/****** md5 signature: 3430b23cf1d91b257fb412a6a33bafb3 ******/
+		/****** md5 signature: 7eb9c30879eab1d402a714324a62c543 ******/
 		%feature("compactdefaultargs") SetIsLastOpen;
 		%feature("autodoc", "
 Parameters
@@ -376,15 +368,15 @@ Description
 -----------
 If flag is True, the Curve is not defined at the first parameter of its domain.
 ") SetIsLastOpen;
-		void SetIsLastOpen(const Standard_Boolean Flag);
+		void SetIsLastOpen(const bool Flag);
 
 		/****** IntAna_Curve::Value ******/
-		/****** md5 signature: 798c62cbb0ca4d521bfee97359040d7a ******/
+		/****** md5 signature: 27507730663e95a290ca2cb82d6cc1ab ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-Theta: float
+Theta: double
 
 Return
 -------
@@ -394,7 +386,7 @@ Description
 -----------
 Returns the point at parameter Theta on the curve.
 ") Value;
-		gp_Pnt Value(const Standard_Real Theta);
+		gp_Pnt Value(const double Theta);
 
 };
 
@@ -444,7 +436,7 @@ Determination of the intersection point between 3 planes.
 		 IntAna_Int3Pln(const gp_Pln & P1, const gp_Pln & P2, const gp_Pln & P3);
 
 		/****** IntAna_Int3Pln::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -454,10 +446,10 @@ Description
 -----------
 Returns True if the computation was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntAna_Int3Pln::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -467,7 +459,7 @@ Description
 -----------
 Returns True if there is no intersection POINT. If 2 planes are identical or parallel, IsEmpty will return True.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntAna_Int3Pln::Perform ******/
 		/****** md5 signature: 1948627fc337f9fab8d2212eb5075042 ******/
@@ -625,16 +617,16 @@ Creates the intersection between an hyperbola and a quadric.
 		 IntAna_IntConicQuad(const gp_Hypr & H, const IntAna_Quadric & Q);
 
 		/****** IntAna_IntConicQuad::IntAna_IntConicQuad ******/
-		/****** md5 signature: f24dd986f24e8a81856f6c4da4f43c1b ******/
+		/****** md5 signature: 98db20378a4fad8f972fe09db8d15d6a ******/
 		%feature("compactdefaultargs") IntAna_IntConicQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
 P: gp_Pln
-Tolang: float
-Tol: float (optional, default to 0)
-Len: float (optional, default to 0)
+Tolang: double
+Tol: double (optional, default to 0)
+Len: double (optional, default to 0)
 
 Return
 -------
@@ -644,18 +636,18 @@ Description
 -----------
 Intersection between a line and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to check the distance between line and plane on the distance <Len> from the origin of the line.
 ") IntAna_IntConicQuad;
-		 IntAna_IntConicQuad(const gp_Lin & L, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol = 0, const Standard_Real Len = 0);
+		 IntAna_IntConicQuad(const gp_Lin & L, const gp_Pln & P, const double Tolang, const double Tol = 0, const double Len = 0);
 
 		/****** IntAna_IntConicQuad::IntAna_IntConicQuad ******/
-		/****** md5 signature: b590728d110d0c01b502275c9e1663b1 ******/
+		/****** md5 signature: 05ee436aa7853bc1f145287b7cb00f37 ******/
 		%feature("compactdefaultargs") IntAna_IntConicQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ
 P: gp_Pln
-Tolang: float
-Tol: float
+Tolang: double
+Tol: double
 
 Return
 -------
@@ -665,18 +657,18 @@ Description
 -----------
 Intersection between a circle and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") IntAna_IntConicQuad;
-		 IntAna_IntConicQuad(const gp_Circ & C, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
+		 IntAna_IntConicQuad(const gp_Circ & C, const gp_Pln & P, const double Tolang, const double Tol);
 
 		/****** IntAna_IntConicQuad::IntAna_IntConicQuad ******/
-		/****** md5 signature: 6123dc971c0eb21282a4647100cddde0 ******/
+		/****** md5 signature: cb628a9035bec365f626bb2c8bc679cf ******/
 		%feature("compactdefaultargs") IntAna_IntConicQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 E: gp_Elips
 P: gp_Pln
-Tolang: float
-Tol: float
+Tolang: double
+Tol: double
 
 Return
 -------
@@ -686,17 +678,17 @@ Description
 -----------
 Intersection between an ellipse and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") IntAna_IntConicQuad;
-		 IntAna_IntConicQuad(const gp_Elips & E, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
+		 IntAna_IntConicQuad(const gp_Elips & E, const gp_Pln & P, const double Tolang, const double Tol);
 
 		/****** IntAna_IntConicQuad::IntAna_IntConicQuad ******/
-		/****** md5 signature: 273638263aa164d044a3302a6907cea7 ******/
+		/****** md5 signature: d4149f17c95ea0f6c3f98eb46b3aaa0a ******/
 		%feature("compactdefaultargs") IntAna_IntConicQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 Pb: gp_Parab
 P: gp_Pln
-Tolang: float
+Tolang: double
 
 Return
 -------
@@ -706,17 +698,17 @@ Description
 -----------
 Intersection between a parabola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") IntAna_IntConicQuad;
-		 IntAna_IntConicQuad(const gp_Parab & Pb, const gp_Pln & P, const Standard_Real Tolang);
+		 IntAna_IntConicQuad(const gp_Parab & Pb, const gp_Pln & P, const double Tolang);
 
 		/****** IntAna_IntConicQuad::IntAna_IntConicQuad ******/
-		/****** md5 signature: f58d09ef0c1804aaea97c5913176b480 ******/
+		/****** md5 signature: d3c7a19b5c95766c98f1e6746d3e1c32 ******/
 		%feature("compactdefaultargs") IntAna_IntConicQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 H: gp_Hypr
 P: gp_Pln
-Tolang: float
+Tolang: double
 
 Return
 -------
@@ -726,10 +718,10 @@ Description
 -----------
 Intersection between an hyperbola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") IntAna_IntConicQuad;
-		 IntAna_IntConicQuad(const gp_Hypr & H, const gp_Pln & P, const Standard_Real Tolang);
+		 IntAna_IntConicQuad(const gp_Hypr & H, const gp_Pln & P, const double Tolang);
 
 		/****** IntAna_IntConicQuad::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -739,10 +731,10 @@ Description
 -----------
 Returns True if the creation completed.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntAna_IntConicQuad::IsInQuadric ******/
-		/****** md5 signature: c14f29b6b3830c2712ea657db11b3b43 ******/
+		/****** md5 signature: 689a976f3f1b932576abf26dd657c236 ******/
 		%feature("compactdefaultargs") IsInQuadric;
 		%feature("autodoc", "Return
 -------
@@ -752,10 +744,10 @@ Description
 -----------
 Returns True if the conic is in the quadric.
 ") IsInQuadric;
-		Standard_Boolean IsInQuadric();
+		bool IsInQuadric();
 
 		/****** IntAna_IntConicQuad::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -765,10 +757,10 @@ Description
 -----------
 Returns True if the line is in a quadric which is parallel to the quadric.
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** IntAna_IntConicQuad::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -778,10 +770,10 @@ Description
 -----------
 Returns the number of intersection point.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntAna_IntConicQuad::ParamOnConic ******/
-		/****** md5 signature: 63ad5b66d1dd2134fb4c0a358d66d8d7 ******/
+		/****** md5 signature: 2d0cc1777a5d8f10c0ab1e2f55851c9a ******/
 		%feature("compactdefaultargs") ParamOnConic;
 		%feature("autodoc", "
 Parameters
@@ -790,13 +782,13 @@ N: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the line of the intersection point of range N.
 ") ParamOnConic;
-		Standard_Real ParamOnConic(const Standard_Integer N);
+		double ParamOnConic(const int N);
 
 		/****** IntAna_IntConicQuad::Perform ******/
 		/****** md5 signature: 919b55f5344c184938d2f227ec61e459 ******/
@@ -894,16 +886,16 @@ Intersects an hyperbola and a quadric.
 		void Perform(const gp_Hypr & H, const IntAna_Quadric & Q);
 
 		/****** IntAna_IntConicQuad::Perform ******/
-		/****** md5 signature: 1a237bda043cab9196baedffec8f2d12 ******/
+		/****** md5 signature: b4de598b8eb7238c99fbf5388e1ff817 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
 P: gp_Pln
-Tolang: float
-Tol: float (optional, default to 0)
-Len: float (optional, default to 0)
+Tolang: double
+Tol: double (optional, default to 0)
+Len: double (optional, default to 0)
 
 Return
 -------
@@ -913,18 +905,18 @@ Description
 -----------
 Intersects a line and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to check the distance between line and plane on the distance <Len> from the origin of the line.
 ") Perform;
-		void Perform(const gp_Lin & L, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol = 0, const Standard_Real Len = 0);
+		void Perform(const gp_Lin & L, const gp_Pln & P, const double Tolang, const double Tol = 0, const double Len = 0);
 
 		/****** IntAna_IntConicQuad::Perform ******/
-		/****** md5 signature: 170d3a465ef4795d792b29f01fd1e67c ******/
+		/****** md5 signature: e9df97f3602b5d95a86f7739d5609a54 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ
 P: gp_Pln
-Tolang: float
-Tol: float
+Tolang: double
+Tol: double
 
 Return
 -------
@@ -934,18 +926,18 @@ Description
 -----------
 Intersects a circle and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") Perform;
-		void Perform(const gp_Circ & C, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
+		void Perform(const gp_Circ & C, const gp_Pln & P, const double Tolang, const double Tol);
 
 		/****** IntAna_IntConicQuad::Perform ******/
-		/****** md5 signature: fcc77802988574d14fc0b824d7f0724d ******/
+		/****** md5 signature: 65cbcd84ad3aa068cb8c4e363bc27a39 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 E: gp_Elips
 P: gp_Pln
-Tolang: float
-Tol: float
+Tolang: double
+Tol: double
 
 Return
 -------
@@ -955,17 +947,17 @@ Description
 -----------
 Intersects an ellipse and a plane. Tolang is used to determine if the angle between two vectors is null. Tol is used to determine if a distance is null.
 ") Perform;
-		void Perform(const gp_Elips & E, const gp_Pln & P, const Standard_Real Tolang, const Standard_Real Tol);
+		void Perform(const gp_Elips & E, const gp_Pln & P, const double Tolang, const double Tol);
 
 		/****** IntAna_IntConicQuad::Perform ******/
-		/****** md5 signature: 065131a35e044bcc1b149a3e7a75e0b3 ******/
+		/****** md5 signature: a60f11cb6bc80c1fe1c7b5e8380a4d51 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Pb: gp_Parab
 P: gp_Pln
-Tolang: float
+Tolang: double
 
 Return
 -------
@@ -975,17 +967,17 @@ Description
 -----------
 Intersects a parabola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") Perform;
-		void Perform(const gp_Parab & Pb, const gp_Pln & P, const Standard_Real Tolang);
+		void Perform(const gp_Parab & Pb, const gp_Pln & P, const double Tolang);
 
 		/****** IntAna_IntConicQuad::Perform ******/
-		/****** md5 signature: eb1b6e971c3f6e429b2a048578ee4069 ******/
+		/****** md5 signature: 42422a2df5cb365f26497915c1125829 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 H: gp_Hypr
 P: gp_Pln
-Tolang: float
+Tolang: double
 
 Return
 -------
@@ -995,10 +987,10 @@ Description
 -----------
 Intersects an hyperbola and a plane. Tolang is used to determine if the angle between two vectors is null.
 ") Perform;
-		void Perform(const gp_Hypr & H, const gp_Pln & P, const Standard_Real Tolang);
+		void Perform(const gp_Hypr & H, const gp_Pln & P, const double Tolang);
 
 		/****** IntAna_IntConicQuad::Point ******/
-		/****** md5 signature: 595cfbeab8fd1be511fcaaba876ba661 ******/
+		/****** md5 signature: ba4281ac65e4ecb05e581c2514888269 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1013,7 +1005,7 @@ Description
 -----------
 Returns the point of range N.
 ") Point;
-		const gp_Pnt Point(const Standard_Integer N);
+		const gp_Pnt Point(const int N);
 
 };
 
@@ -1062,7 +1054,7 @@ Creates the intersection between a line and a torus.
 		 IntAna_IntLinTorus(const gp_Lin & L, const gp_Torus & T);
 
 		/****** IntAna_IntLinTorus::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1072,10 +1064,10 @@ Description
 -----------
 Returns True if the computation was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntAna_IntLinTorus::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1085,10 +1077,10 @@ Description
 -----------
 Returns the number of intersection points.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** IntAna_IntLinTorus::ParamOnLine ******/
-		/****** md5 signature: 34edc1255c86a7b78b4420fa34431cca ******/
+		/****** md5 signature: 1b7c26e40bf4a31fd32d5ce85afc7e02 ******/
 		%feature("compactdefaultargs") ParamOnLine;
 		%feature("autodoc", "
 Parameters
@@ -1097,16 +1089,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the line of the intersection point of range Index.
 ") ParamOnLine;
-		Standard_Real ParamOnLine(const Standard_Integer Index);
+		double ParamOnLine(const int Index);
 
 		/****** IntAna_IntLinTorus::ParamOnTorus ******/
-		/****** md5 signature: e3e86441b93a2da4ae44e244e45e326a ******/
+		/****** md5 signature: 876bcf2d0532aa1822b7f7f6ec3b22d3 ******/
 		%feature("compactdefaultargs") ParamOnTorus;
 		%feature("autodoc", "
 Parameters
@@ -1115,14 +1107,14 @@ Index: int
 
 Return
 -------
-FI: float
-THETA: float
+FI: double
+THETA: double
 
 Description
 -----------
 Returns the parameters on the torus of the intersection point of range Index.
 ") ParamOnTorus;
-		void ParamOnTorus(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void ParamOnTorus(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntAna_IntLinTorus::Perform ******/
 		/****** md5 signature: be16910a1bb708b70be20f1eb0c26997 ******/
@@ -1144,7 +1136,7 @@ Intersects a line and a torus.
 		void Perform(const gp_Lin & L, const gp_Torus & T);
 
 		/****** IntAna_IntLinTorus::Value ******/
-		/****** md5 signature: abb96b9735b376ec15f851295e30ba1c ******/
+		/****** md5 signature: f3cc28515c48ebb3ebe325913ea84bdf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1159,7 +1151,7 @@ Description
 -----------
 Returns the intersection point of range Index.
 ") Value;
-		const gp_Pnt Value(const Standard_Integer Index);
+		const gp_Pnt Value(const int Index);
 
 };
 
@@ -1189,14 +1181,14 @@ Empty Constructor.
 		 IntAna_IntQuadQuad();
 
 		/****** IntAna_IntQuadQuad::IntAna_IntQuadQuad ******/
-		/****** md5 signature: 9be03c467c0bde83febc120c4fa0f906 ******/
+		/****** md5 signature: 6da166008fb627a38575b30e7ec04e0c ******/
 		%feature("compactdefaultargs") IntAna_IntQuadQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cylinder
 Q: IntAna_Quadric
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1204,19 +1196,19 @@ None
 
 Description
 -----------
-Creates the intersection between a cylinder and a quadric . Tol est a definir plus precisemment.
+Creates the intersection between a cylinder and a quadric. Tol est a definir plus precisemment.
 ") IntAna_IntQuadQuad;
-		 IntAna_IntQuadQuad(const gp_Cylinder & C, const IntAna_Quadric & Q, const Standard_Real Tol);
+		 IntAna_IntQuadQuad(const gp_Cylinder & C, const IntAna_Quadric & Q, const double Tol);
 
 		/****** IntAna_IntQuadQuad::IntAna_IntQuadQuad ******/
-		/****** md5 signature: d3cfeedec864c6b46309d5a73f4a35be ******/
+		/****** md5 signature: c0e6783cc53b9324e51ac67a37a39bae ******/
 		%feature("compactdefaultargs") IntAna_IntQuadQuad;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cone
 Q: IntAna_Quadric
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1226,10 +1218,10 @@ Description
 -----------
 Creates the intersection between a cone and a quadric. Tol est a definir plus precisemment.
 ") IntAna_IntQuadQuad;
-		 IntAna_IntQuadQuad(const gp_Cone & C, const IntAna_Quadric & Q, const Standard_Real Tol);
+		 IntAna_IntQuadQuad(const gp_Cone & C, const IntAna_Quadric & Q, const double Tol);
 
 		/****** IntAna_IntQuadQuad::Curve ******/
-		/****** md5 signature: 7594cfd033c3876dea6a320e98301628 ******/
+		/****** md5 signature: bf16018e7289cbbdb7bb3d8dd8ab7892 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -1244,10 +1236,10 @@ Description
 -----------
 Returns the curve of range N.
 ") Curve;
-		IntAna_Curve Curve(const Standard_Integer N);
+		IntAna_Curve Curve(const int N);
 
 		/****** IntAna_IntQuadQuad::HasNextCurve ******/
-		/****** md5 signature: a7a1cf3c623e1f0a7533ded2abd35b22 ******/
+		/****** md5 signature: c242ab99fb17adac3307122ae012dc9b ******/
 		%feature("compactdefaultargs") HasNextCurve;
 		%feature("autodoc", "
 Parameters
@@ -1262,10 +1254,10 @@ Description
 -----------
 Returns True if the Curve I shares its last bound with another curve.
 ") HasNextCurve;
-		Standard_Boolean HasNextCurve(const Standard_Integer I);
+		bool HasNextCurve(const int I);
 
 		/****** IntAna_IntQuadQuad::HasPreviousCurve ******/
-		/****** md5 signature: d1511b80dcfe59f4f2d99cd4eb0b4617 ******/
+		/****** md5 signature: d718ecfdd0694342cc8b652d650193d8 ******/
 		%feature("compactdefaultargs") HasPreviousCurve;
 		%feature("autodoc", "
 Parameters
@@ -1280,10 +1272,10 @@ Description
 -----------
 Returns True if the Curve I shares its first bound with another curve.
 ") HasPreviousCurve;
-		Standard_Boolean HasPreviousCurve(const Standard_Integer I);
+		bool HasPreviousCurve(const int I);
 
 		/****** IntAna_IntQuadQuad::IdenticalElements ******/
-		/****** md5 signature: a9624e3d4423fe2affeb799176bb8c2b ******/
+		/****** md5 signature: 39f98348f556a7b58c7b4a84a940baee ******/
 		%feature("compactdefaultargs") IdenticalElements;
 		%feature("autodoc", "Return
 -------
@@ -1293,10 +1285,10 @@ Description
 -----------
 Returns True if the cylinder, the cone or the sphere is identical to the quadric.
 ") IdenticalElements;
-		Standard_Boolean IdenticalElements();
+		bool IdenticalElements();
 
 		/****** IntAna_IntQuadQuad::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1306,10 +1298,10 @@ Description
 -----------
 Returns True if the computation was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntAna_IntQuadQuad::NbCurve ******/
-		/****** md5 signature: a28f0d4b7dfa5166ce908feaf6bd9135 ******/
+		/****** md5 signature: 566ea73a881af200bf25067f6679c345 ******/
 		%feature("compactdefaultargs") NbCurve;
 		%feature("autodoc", "Return
 -------
@@ -1319,10 +1311,10 @@ Description
 -----------
 Returns the number of curves solution.
 ") NbCurve;
-		Standard_Integer NbCurve();
+		int NbCurve();
 
 		/****** IntAna_IntQuadQuad::NbPnt ******/
-		/****** md5 signature: 7493472b43e2ee7c4bd85784ca2a7eb4 ******/
+		/****** md5 signature: b0974aa225801ebe3ae9518f18a1fa98 ******/
 		%feature("compactdefaultargs") NbPnt;
 		%feature("autodoc", "Return
 -------
@@ -1332,10 +1324,10 @@ Description
 -----------
 Returns the number of contact point.
 ") NbPnt;
-		Standard_Integer NbPnt();
+		int NbPnt();
 
 		/****** IntAna_IntQuadQuad::NextCurve ******/
-		/****** md5 signature: 7a52d0c407d97447f22f315f2b7315d3 ******/
+		/****** md5 signature: 3b0688046703c6425b5179dbd3205d39 ******/
 		%feature("compactdefaultargs") NextCurve;
 		%feature("autodoc", "
 Parameters
@@ -1348,12 +1340,12 @@ theOpposite: bool
 
 Description
 -----------
-If HasNextCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If theOpposite == True , then the last parameter of the curve I, and the last parameter of the curve J give the same point. Else the last parameter of the curve I and the first parameter of the curve J are the same point.
+If HasNextCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If theOpposite == True, then the last parameter of the curve I, and the last parameter of the curve J give the same point. Else the last parameter of the curve I and the first parameter of the curve J are the same point.
 ") NextCurve;
-		Standard_Integer NextCurve(const Standard_Integer I, Standard_Boolean &OutValue);
+		int NextCurve(const int I, Standard_Boolean &OutValue);
 
 		/****** IntAna_IntQuadQuad::Parameters ******/
-		/****** md5 signature: 1a69ef9c9de63fa7c201d4948035bbbc ******/
+		/****** md5 signature: a2d6c1eeff9945c55fe4a4a6ca7e8df7 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1362,24 +1354,24 @@ N: int
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
-Returns the parameters on the 'explicit quadric' (i.e the cylinder or the cone, the first argument given to the constructor) of the point of range N.
+Returns the parameters on the 'explicit quadric' (i.e. the cylinder or the cone, the first argument given to the constructor) of the point of range N.
 ") Parameters;
-		void Parameters(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Parameters(const int N, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntAna_IntQuadQuad::Perform ******/
-		/****** md5 signature: 9c477a17a9284db8b183542ae303bef1 ******/
+		/****** md5 signature: 9862931abd58ebd4fa82ccf907abd6d6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cylinder
 Q: IntAna_Quadric
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1389,17 +1381,17 @@ Description
 -----------
 Intersects a cylinder and a quadric . Tol est a definir plus precisemment.
 ") Perform;
-		void Perform(const gp_Cylinder & C, const IntAna_Quadric & Q, const Standard_Real Tol);
+		void Perform(const gp_Cylinder & C, const IntAna_Quadric & Q, const double Tol);
 
 		/****** IntAna_IntQuadQuad::Perform ******/
-		/****** md5 signature: fb057b1cd99647e23bf81691b53f3656 ******/
+		/****** md5 signature: f9437e99d775e5c57bc0e9452ee3bab1 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Cone
 Q: IntAna_Quadric
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1409,10 +1401,10 @@ Description
 -----------
 Intersects a cone and a quadric. Tol est a definir plus precisemment.
 ") Perform;
-		void Perform(const gp_Cone & C, const IntAna_Quadric & Q, const Standard_Real Tol);
+		void Perform(const gp_Cone & C, const IntAna_Quadric & Q, const double Tol);
 
 		/****** IntAna_IntQuadQuad::Point ******/
-		/****** md5 signature: 595cfbeab8fd1be511fcaaba876ba661 ******/
+		/****** md5 signature: ba4281ac65e4ecb05e581c2514888269 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1427,10 +1419,10 @@ Description
 -----------
 Returns the point of range N.
 ") Point;
-		const gp_Pnt Point(const Standard_Integer N);
+		const gp_Pnt Point(const int N);
 
 		/****** IntAna_IntQuadQuad::PreviousCurve ******/
-		/****** md5 signature: af4a159c48c1a72897753c0037826720 ******/
+		/****** md5 signature: eb6a1916f48011410d2e10846c6eac67 ******/
 		%feature("compactdefaultargs") PreviousCurve;
 		%feature("autodoc", "
 Parameters
@@ -1443,9 +1435,9 @@ theOpposite: bool
 
 Description
 -----------
-if HasPreviousCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If theOpposite == True , then the first parameter of the curve I, and the first parameter of the curve J give the same point. Else the first parameter of the curve I and the last parameter of the curve J are the same point.
+if HasPreviousCurve(I) returns True, this function returns the Index J of the curve which has a common bound with the curve I. If theOpposite == True then the first parameter of the curve I, and the first parameter of the curve J give the same point. Else the first parameter of the curve I and the last parameter of the curve J are the same point.
 ") PreviousCurve;
-		Standard_Integer PreviousCurve(const Standard_Integer I, Standard_Boolean &OutValue);
+		int PreviousCurve(const int I, Standard_Boolean &OutValue);
 
 };
 
@@ -1475,15 +1467,15 @@ Empty constructor.
 		 IntAna_QuadQuadGeo();
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: 0f57a38f9c90f73d6e8e75f13101647d ******/
+		/****** md5 signature: 1099591d0fba13861f8bb2c9562bbb55 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 P1: gp_Pln
 P2: gp_Pln
-TolAng: float
-Tol: float
+TolAng: double
+Tol: double
 
 Return
 -------
@@ -1493,19 +1485,19 @@ Description
 -----------
 Creates the intersection between two planes. TolAng is the angular tolerance used to determine if the planes are parallel. Tol is the tolerance used to determine if the planes are identical (only when they are parallel).
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Pln & P1, const gp_Pln & P2, const Standard_Real TolAng, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Pln & P1, const gp_Pln & P2, const double TolAng, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: 14895c6eff3503be5bfc2011f25e6d9a ******/
+		/****** md5 signature: 84baf04bc126fb76fe338e788c7acf16 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
 C: gp_Cylinder
-Tolang: float
-Tol: float
-H: float (optional, default to 0)
+Tolang: double
+Tol: double
+H: double (optional, default to 0)
 
 Return
 -------
@@ -1515,7 +1507,7 @@ Description
 -----------
 Creates the intersection between a plane and a cylinder. TolAng is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. Tol is the tolerance used to determine if the result is a circle or an ellipse. If the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than Tol, the result will be the circle. H is the height of the cylinder <Cyl>. It is used to check whether the plane and cylinder are parallel.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Cylinder & C, const Standard_Real Tolang, const Standard_Real Tol, const Standard_Real H = 0);
+		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Cylinder & C, const double Tolang, const double Tol, const double H = 0);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
 		/****** md5 signature: 30aab2a48d7a784eb4cfdcc85965143b ******/
@@ -1537,15 +1529,15 @@ Creates the intersection between a plane and a sphere.
 		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Sphere & S);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: ebe6a1d29658f998c37f671a305570bc ******/
+		/****** md5 signature: 9b05d08be2d7f71fb9856d83853a8c94 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
 C: gp_Cone
-Tolang: float
-Tol: float
+Tolang: double
+Tol: double
 
 Return
 -------
@@ -1555,17 +1547,17 @@ Description
 -----------
 Creates the intersection between a plane and a cone. TolAng is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. Tol is the tolerance used to determine if the apex of the cone is in the plane.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Cone & C, const Standard_Real Tolang, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Pln & P, const gp_Cone & C, const double Tolang, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: 3ef735e50e41339dbdf1007eb63de85a ******/
+		/****** md5 signature: 3deb3a4f67a47f78a370018562760b6c ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl1: gp_Cylinder
 Cyl2: gp_Cylinder
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1575,17 +1567,17 @@ Description
 -----------
 Creates the intersection between two cylinders.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl1, const gp_Cylinder & Cyl2, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl1, const gp_Cylinder & Cyl2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: bc61b8c780670060cda560e9a9543256 ******/
+		/****** md5 signature: d3e6c1ff439f6551a792aec8a3817cf4 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl: gp_Cylinder
 Sph: gp_Sphere
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1595,17 +1587,17 @@ Description
 -----------
 Creates the intersection between a Cylinder and a Sphere.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Sphere & Sph, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Sphere & Sph, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: ba617c58d2bbe9aefc5ca37bf42d53bf ******/
+		/****** md5 signature: be616f4e07a0943bc957d396489af440 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl: gp_Cylinder
 Con: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1615,17 +1607,17 @@ Description
 -----------
 Creates the intersection between a Cylinder and a Cone.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Cone & Con, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Cone & Con, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: ef3a2feff86b5d020cbe38c885b0eb7b ******/
+		/****** md5 signature: 42e3c385501c1485d89429c4d8d224b1 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Sph1: gp_Sphere
 Sph2: gp_Sphere
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1635,17 +1627,17 @@ Description
 -----------
 Creates the intersection between two Spheres.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Sphere & Sph1, const gp_Sphere & Sph2, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Sphere & Sph1, const gp_Sphere & Sph2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: c899ef71b547bd2db47a92525a93d4e8 ******/
+		/****** md5 signature: 10238c714511b05e27088cbadfe5c478 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Sph: gp_Sphere
 Con: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1655,17 +1647,17 @@ Description
 -----------
 Creates the intersection between a Sphere and a Cone.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Sphere & Sph, const gp_Cone & Con, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Sphere & Sph, const gp_Cone & Con, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: 83c0e66baae701351794bdef3237d1c0 ******/
+		/****** md5 signature: f5d322d14033a96d89e510efd4885314 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Con1: gp_Cone
 Con2: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1675,17 +1667,17 @@ Description
 -----------
 Creates the intersection between two cones.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Cone & Con1, const gp_Cone & Con2, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Cone & Con1, const gp_Cone & Con2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: c75df91c18f3a3c576cfd0718237e421 ******/
+		/****** md5 signature: a80b751b718a0c9443642b7cc971fc13 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Pln: gp_Pln
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1695,17 +1687,17 @@ Description
 -----------
 Creates the intersection between plane and torus.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Pln & Pln, const gp_Torus & Tor, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Pln & Pln, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: f5ac6f131f5a59a873c78e730effc98f ******/
+		/****** md5 signature: 17326503ee98ae97f5643a5005dc8777 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl: gp_Cylinder
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1715,17 +1707,17 @@ Description
 -----------
 Creates the intersection between cylinder and torus.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Torus & Tor, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Cylinder & Cyl, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: e4e77874a454e3533ea55734015b9474 ******/
+		/****** md5 signature: 5174734581b895a2cf371257f9c717c8 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Con: gp_Cone
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1735,17 +1727,17 @@ Description
 -----------
 Creates the intersection between cone and torus.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Cone & Con, const gp_Torus & Tor, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Cone & Con, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: 97435d4d72d5795ad710cd68d360d41b ******/
+		/****** md5 signature: c92bd4eca428563ea31e1f25c1fbc5cc ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Sph: gp_Sphere
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1755,17 +1747,17 @@ Description
 -----------
 Creates the intersection between sphere and torus.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Sphere & Sph, const gp_Torus & Tor, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Sphere & Sph, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::IntAna_QuadQuadGeo ******/
-		/****** md5 signature: a10fe1606b42c6e442296cd2783bbcce ******/
+		/****** md5 signature: 1989ee3d4f3ad25acd870c786cfac6f8 ******/
 		%feature("compactdefaultargs") IntAna_QuadQuadGeo;
 		%feature("autodoc", "
 Parameters
 ----------
 Tor1: gp_Torus
 Tor2: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -1775,10 +1767,10 @@ Description
 -----------
 Creates the intersection between two toruses.
 ") IntAna_QuadQuadGeo;
-		 IntAna_QuadQuadGeo(const gp_Torus & Tor1, const gp_Torus & Tor2, const Standard_Real Tol);
+		 IntAna_QuadQuadGeo(const gp_Torus & Tor1, const gp_Torus & Tor2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Circle ******/
-		/****** md5 signature: 6835dcc9c83ca3b5e9f3cd92d154a477 ******/
+		/****** md5 signature: 74ff6d873add8ea203972d74f725e8f0 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "
 Parameters
@@ -1793,10 +1785,10 @@ Description
 -----------
 Returns the circle solution of range Num.
 ") Circle;
-		gp_Circ Circle(const Standard_Integer Num);
+		gp_Circ Circle(const int Num);
 
 		/****** IntAna_QuadQuadGeo::Ellipse ******/
-		/****** md5 signature: a1d5b9c0eb5054e5465d7cc2f0da837c ******/
+		/****** md5 signature: ef5338ab8b92b0687028a4e2d5894f95 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "
 Parameters
@@ -1811,10 +1803,10 @@ Description
 -----------
 Returns the ellipse solution of range Num.
 ") Ellipse;
-		gp_Elips Ellipse(const Standard_Integer Num);
+		gp_Elips Ellipse(const int Num);
 
 		/****** IntAna_QuadQuadGeo::HasCommonGen ******/
-		/****** md5 signature: e213c64bddbed59dd268fb4b9ccde843 ******/
+		/****** md5 signature: ee86bb0a6b49c40b6ca594c196dc669f ******/
 		%feature("compactdefaultargs") HasCommonGen;
 		%feature("autodoc", "Return
 -------
@@ -1824,10 +1816,10 @@ Description
 -----------
 No available documentation.
 ") HasCommonGen;
-		Standard_Boolean HasCommonGen();
+		bool HasCommonGen();
 
 		/****** IntAna_QuadQuadGeo::Hyperbola ******/
-		/****** md5 signature: ec3c224945b1f296553c636ef64a0a90 ******/
+		/****** md5 signature: 1e8bd47a28de9e8725b906b8cb72fdae ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "
 Parameters
@@ -1842,10 +1834,10 @@ Description
 -----------
 Returns the hyperbola solution of range Num.
 ") Hyperbola;
-		gp_Hypr Hyperbola(const Standard_Integer Num);
+		gp_Hypr Hyperbola(const int Num);
 
 		/****** IntAna_QuadQuadGeo::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1853,12 +1845,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if the computation was successful.
+Returns true if the computation was successful.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntAna_QuadQuadGeo::Line ******/
-		/****** md5 signature: fe5f3688face72a0a57d3e2dfe89fca0 ******/
+		/****** md5 signature: a811acfe6f11aa8e2df9b81a675d2193 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -1873,10 +1865,10 @@ Description
 -----------
 Returns the line solution of range Num.
 ") Line;
-		gp_Lin Line(const Standard_Integer Num);
+		gp_Lin Line(const int Num);
 
 		/****** IntAna_QuadQuadGeo::NbSolutions ******/
-		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
+		/****** md5 signature: 55162d50f2670468f6ab0d146e7a9b77 ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1886,7 +1878,7 @@ Description
 -----------
 Returns the number of intersections. The possible intersections are: - 1 point - 1 or 2 line(s) - 1 Point and 1 Line - 1 circle - 1 ellipse - 1 parabola - 1 or 2 hyperbola(s).
 ") NbSolutions;
-		Standard_Integer NbSolutions();
+		int NbSolutions();
 
 		/****** IntAna_QuadQuadGeo::PChar ******/
 		/****** md5 signature: 53f3ba5e9f0e905ceead008607d8102a ******/
@@ -1902,7 +1894,7 @@ No available documentation.
 		const gp_Pnt PChar();
 
 		/****** IntAna_QuadQuadGeo::Parabola ******/
-		/****** md5 signature: 9e9ba1da3f9b85c096c70a783f5e83e3 ******/
+		/****** md5 signature: db8bf6c71e9722a3d028c7a8a0da850d ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "
 Parameters
@@ -1917,18 +1909,18 @@ Description
 -----------
 Returns the parabola solution of range Num.
 ") Parabola;
-		gp_Parab Parabola(const Standard_Integer Num);
+		gp_Parab Parabola(const int Num);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 8f518f5df6f30e3156041faa56a7221a ******/
+		/****** md5 signature: be6482a137f20107e618f89164b67346 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P1: gp_Pln
 P2: gp_Pln
-TolAng: float
-Tol: float
+TolAng: double
+Tol: double
 
 Return
 -------
@@ -1938,19 +1930,19 @@ Description
 -----------
 Intersects two planes. TolAng is the angular tolerance used to determine if the planes are parallel. Tol is the tolerance used to determine if the planes are identical (only when they are parallel).
 ") Perform;
-		void Perform(const gp_Pln & P1, const gp_Pln & P2, const Standard_Real TolAng, const Standard_Real Tol);
+		void Perform(const gp_Pln & P1, const gp_Pln & P2, const double TolAng, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 64d4c35bd397f53cb1ec0ba840bd2dce ******/
+		/****** md5 signature: 0ae0bc9c31e2bcbaff090deceee996ce ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
 C: gp_Cylinder
-Tolang: float
-Tol: float
-H: float (optional, default to 0)
+Tolang: double
+Tol: double
+H: double (optional, default to 0)
 
 Return
 -------
@@ -1960,7 +1952,7 @@ Description
 -----------
 Intersects a plane and a cylinder. TolAng is the angular tolerance used to determine if the axis of the cylinder is parallel to the plane. Tol is the tolerance used to determine if the result is a circle or an ellipse. If the maximum distance between the ellipse solution and the circle centered at the ellipse center is less than Tol, the result will be the circle. H is the height of the cylinder <Cyl>. It is used to check whether the plane and cylinder are parallel.
 ") Perform;
-		void Perform(const gp_Pln & P, const gp_Cylinder & C, const Standard_Real Tolang, const Standard_Real Tol, const Standard_Real H = 0);
+		void Perform(const gp_Pln & P, const gp_Cylinder & C, const double Tolang, const double Tol, const double H = 0);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
 		/****** md5 signature: b006d6cde94524bd53c2b1a34c9b13de ******/
@@ -1982,15 +1974,15 @@ Intersects a plane and a sphere.
 		void Perform(const gp_Pln & P, const gp_Sphere & S);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 3ff57b4796a61bffaecf47022f3e209d ******/
+		/****** md5 signature: 86ee8607340924cb4e6b8a0432bb8b6f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
 C: gp_Cone
-Tolang: float
-Tol: float
+Tolang: double
+Tol: double
 
 Return
 -------
@@ -2000,17 +1992,17 @@ Description
 -----------
 Intersects a plane and a cone. TolAng is the angular tolerance used to determine if the axis of the cone is parallel or perpendicular to the plane, and if the generating line of the cone is parallel to the plane. Tol is the tolerance used to determine if the apex of the cone is in the plane.
 ") Perform;
-		void Perform(const gp_Pln & P, const gp_Cone & C, const Standard_Real Tolang, const Standard_Real Tol);
+		void Perform(const gp_Pln & P, const gp_Cone & C, const double Tolang, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 4e75c6968a817ac13a36a925828e3938 ******/
+		/****** md5 signature: 3a096d26bfaa88ebfef4a604eabd2d15 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl1: gp_Cylinder
 Cyl2: gp_Cylinder
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2020,17 +2012,17 @@ Description
 -----------
 Intersects two cylinders.
 ") Perform;
-		void Perform(const gp_Cylinder & Cyl1, const gp_Cylinder & Cyl2, const Standard_Real Tol);
+		void Perform(const gp_Cylinder & Cyl1, const gp_Cylinder & Cyl2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: bf17ed9552575adbec24e07d3e088066 ******/
+		/****** md5 signature: 3e67f859c6963c72005b467d1bdc6dd3 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl: gp_Cylinder
 Sph: gp_Sphere
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2040,17 +2032,17 @@ Description
 -----------
 Intersects a cylinder and a sphere.
 ") Perform;
-		void Perform(const gp_Cylinder & Cyl, const gp_Sphere & Sph, const Standard_Real Tol);
+		void Perform(const gp_Cylinder & Cyl, const gp_Sphere & Sph, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 0d303bb70a4fedada71b169193cb73d8 ******/
+		/****** md5 signature: 30cdb127df6b9cb778967a52431d4e63 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl: gp_Cylinder
 Con: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2060,17 +2052,17 @@ Description
 -----------
 Intersects a cylinder and a cone.
 ") Perform;
-		void Perform(const gp_Cylinder & Cyl, const gp_Cone & Con, const Standard_Real Tol);
+		void Perform(const gp_Cylinder & Cyl, const gp_Cone & Con, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 25f78a51815a588f59dd15e410013d08 ******/
+		/****** md5 signature: 14ed17617445128ba23fca1c358a8837 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Sph1: gp_Sphere
 Sph2: gp_Sphere
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2080,17 +2072,17 @@ Description
 -----------
 Intersects a two spheres.
 ") Perform;
-		void Perform(const gp_Sphere & Sph1, const gp_Sphere & Sph2, const Standard_Real Tol);
+		void Perform(const gp_Sphere & Sph1, const gp_Sphere & Sph2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 37c9b7bed7162fac8465195efc4cf8b0 ******/
+		/****** md5 signature: 932b299fcd49cf72c0979828b86d26fe ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Sph: gp_Sphere
 Con: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2100,17 +2092,17 @@ Description
 -----------
 Intersects a sphere and a cone.
 ") Perform;
-		void Perform(const gp_Sphere & Sph, const gp_Cone & Con, const Standard_Real Tol);
+		void Perform(const gp_Sphere & Sph, const gp_Cone & Con, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: f92e55aae9101abde58414244b2caa0e ******/
+		/****** md5 signature: 04d4605347c0eb7421681a9e0ba2748b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Con1: gp_Cone
 Con2: gp_Cone
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2120,17 +2112,17 @@ Description
 -----------
 Intersects two cones.
 ") Perform;
-		void Perform(const gp_Cone & Con1, const gp_Cone & Con2, const Standard_Real Tol);
+		void Perform(const gp_Cone & Con1, const gp_Cone & Con2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: b03d469930e3a63b57ddcb725989ca9d ******/
+		/****** md5 signature: b0a20de2affdd5a9c640bf36ad67e5f8 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Pln: gp_Pln
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2140,17 +2132,17 @@ Description
 -----------
 Intersects plane and torus.
 ") Perform;
-		void Perform(const gp_Pln & Pln, const gp_Torus & Tor, const Standard_Real Tol);
+		void Perform(const gp_Pln & Pln, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 7df06bf41f01c6a805c3d1841de8b5ec ******/
+		/****** md5 signature: a8b083a615a0906bc302287546a92ca4 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Cyl: gp_Cylinder
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2160,17 +2152,17 @@ Description
 -----------
 Intersects cylinder and torus.
 ") Perform;
-		void Perform(const gp_Cylinder & Cyl, const gp_Torus & Tor, const Standard_Real Tol);
+		void Perform(const gp_Cylinder & Cyl, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 17190a4b3e757e45cbc3332c0ea6e9db ******/
+		/****** md5 signature: 41dd04444779ba67030307c8265394bb ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Con: gp_Cone
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2180,17 +2172,17 @@ Description
 -----------
 Intersects cone and torus.
 ") Perform;
-		void Perform(const gp_Cone & Con, const gp_Torus & Tor, const Standard_Real Tol);
+		void Perform(const gp_Cone & Con, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: b41b678ccd242042e225d71463754709 ******/
+		/****** md5 signature: a4c312b3bf9461dc2f1fbff2fd603ba5 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Sph: gp_Sphere
 Tor: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2200,17 +2192,17 @@ Description
 -----------
 Intersects sphere and torus.
 ") Perform;
-		void Perform(const gp_Sphere & Sph, const gp_Torus & Tor, const Standard_Real Tol);
+		void Perform(const gp_Sphere & Sph, const gp_Torus & Tor, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Perform ******/
-		/****** md5 signature: 4612c46f38359ea92430ef3988478d80 ******/
+		/****** md5 signature: 563e978e6c20c6c1f1699508a42fb373 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Tor1: gp_Torus
 Tor2: gp_Torus
-Tol: float
+Tol: double
 
 Return
 -------
@@ -2220,10 +2212,10 @@ Description
 -----------
 Intersects two toruses.
 ") Perform;
-		void Perform(const gp_Torus & Tor1, const gp_Torus & Tor2, const Standard_Real Tol);
+		void Perform(const gp_Torus & Tor1, const gp_Torus & Tor2, const double Tol);
 
 		/****** IntAna_QuadQuadGeo::Point ******/
-		/****** md5 signature: 5d5510baae4ce2e82f1b8abe75b38989 ******/
+		/****** md5 signature: a0ee2a781a50bedc48a3a3ea66cec720 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2238,7 +2230,7 @@ Description
 -----------
 Returns the point solution of range Num.
 ") Point;
-		gp_Pnt Point(const Standard_Integer Num);
+		gp_Pnt Point(const int Num);
 
 		/****** IntAna_QuadQuadGeo::TypeInter ******/
 		/****** md5 signature: 6c797e50268c210a397edcda1fb8160b ******/
@@ -2353,7 +2345,7 @@ Creates a Quadric from a Cone.
 		 IntAna_Quadric(const gp_Cone & Cone);
 
 		/****** IntAna_Quadric::Coefficients ******/
-		/****** md5 signature: 7690ae519a3b3cafb5f52602edca6598 ******/
+		/****** md5 signature: dd6d543ca2ffa7ad76a4ea3fbf3a58f9 ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "
 Parameters
@@ -2361,16 +2353,16 @@ Parameters
 
 Return
 -------
-xCXX: float
-xCYY: float
-xCZZ: float
-xCXY: float
-xCXZ: float
-xCYZ: float
-xCX: float
-xCY: float
-xCZ: float
-xCCte: float
+xCXX: double
+xCYY: double
+xCZZ: double
+xCXY: double
+xCXZ: double
+xCYZ: double
+xCX: double
+xCY: double
+xCZ: double
+xCCte: double
 
 Description
 -----------
@@ -2379,7 +2371,7 @@ Returns the coefficients of the polynomial equation which define the quadric: xC
 		void Coefficients(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** IntAna_Quadric::NewCoefficients ******/
-		/****** md5 signature: a80d1e0a1527a6ec393b343fb5a875bf ******/
+		/****** md5 signature: 45a0e1ec0390a24b2fe7911264040c34 ******/
 		%feature("compactdefaultargs") NewCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -2388,16 +2380,16 @@ Axis: gp_Ax3
 
 Return
 -------
-xCXX: float
-xCYY: float
-xCZZ: float
-xCXY: float
-xCXZ: float
-xCYZ: float
-xCX: float
-xCY: float
-xCZ: float
-xCCte: float
+xCXX: double
+xCYY: double
+xCZZ: double
+xCXY: double
+xCXZ: double
+xCYZ: double
+xCX: double
+xCY: double
+xCZ: double
+xCCte: double
 
 Description
 -----------

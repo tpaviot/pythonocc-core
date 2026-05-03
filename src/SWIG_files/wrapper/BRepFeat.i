@@ -47,13 +47,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfeat.html"
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
-#include<TColgp_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BOPAlgo_module.hxx>
-#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
-#include<TColGeom_module.hxx>
 #include<LocOpe_module.hxx>
 #include<TopLoc_module.hxx>
 #include<BRepAdaptor_module.hxx>
@@ -76,6 +73,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfeat.html"
 #include<Bnd_module.hxx>
 #include<Poly_module.hxx>
 #include<IntCurvesFace_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -86,13 +84,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfeat.html"
 %import TopoDS.i
 %import gp.i
 %import Geom.i
-%import TColgp.i
 %import TopAbs.i
 %import BOPAlgo.i
-%import TopTools.i
 %import Message.i
 %import BRepBuilderAPI.i
-%import TColGeom.i
 %import LocOpe.i
 
 %pythoncode {
@@ -285,7 +280,7 @@ No available documentation.
 		static void FaceUntil(const TopoDS_Shape & S, TopoDS_Face & F);
 
 		/****** BRepFeat::IsInside ******/
-		/****** md5 signature: 63eaa8339348f969538073e9ce46d5b2 ******/
+		/****** md5 signature: 8123e9a01ae3865a51492fb1c33e98d1 ******/
 		%feature("compactdefaultargs") IsInside;
 		%feature("autodoc", "
 Parameters
@@ -301,10 +296,10 @@ Description
 -----------
 No available documentation.
 ") IsInside;
-		static Standard_Boolean IsInside(const TopoDS_Face & F1, const TopoDS_Face & F2);
+		static bool IsInside(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
 		/****** BRepFeat::ParametricBarycenter ******/
-		/****** md5 signature: cdd91b88ac72b66970d2700500d4e3cf ******/
+		/****** md5 signature: 5cb61a968b87f69b0801bad81872b799 ******/
 		%feature("compactdefaultargs") ParametricBarycenter;
 		%feature("autodoc", "
 Parameters
@@ -314,37 +309,37 @@ C: Geom_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParametricBarycenter;
-		static Standard_Real ParametricBarycenter(const TopoDS_Shape & S, const opencascade::handle<Geom_Curve> & C);
+		static double ParametricBarycenter(const TopoDS_Shape & S, const opencascade::handle<Geom_Curve> & C);
 
 		/****** BRepFeat::ParametricMinMax ******/
-		/****** md5 signature: 56d330cb4df86fc5c903ada4a5743fa7 ******/
+		/****** md5 signature: 60a2e742a3fd8c61135941a8018512e6 ******/
 		%feature("compactdefaultargs") ParametricMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 C: Geom_Curve
-Ori: bool (optional, default to Standard_False)
+Ori: bool (optional, default to false)
 
 Return
 -------
-prmin: float
-prmax: float
-prbmin: float
-prbmax: float
+prmin: double
+prmax: double
+prbmin: double
+prbmax: double
 flag: bool
 
 Description
 -----------
 Ori = True taking account the orientation.
 ") ParametricMinMax;
-		static void ParametricMinMax(const TopoDS_Shape & S, const opencascade::handle<Geom_Curve> & C, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue, const Standard_Boolean Ori = Standard_False);
+		static void ParametricMinMax(const TopoDS_Shape & S, const opencascade::handle<Geom_Curve> & C, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue, const bool Ori = false);
 
 		/****** BRepFeat::Print ******/
 		/****** md5 signature: a6852c8c0afb9e1a2f070d2ece4eddfa ******/
@@ -365,13 +360,13 @@ Prints the Error description of the State <St> as a String on the Stream <S> and
 		static Standard_OStream & Print(const BRepFeat_StatusError SE, std::ostream &OutValue);
 
 		/****** BRepFeat::SampleEdges ******/
-		/****** md5 signature: f1154ae22c369e9497c31a5a83612489 ******/
+		/****** md5 signature: 2ce5cdc73a2ff7a08367472fc563a245 ******/
 		%feature("compactdefaultargs") SampleEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-Pt: TColgp_SequenceOfPnt
+Pt: NCollection_Sequence<gp_Pnt>
 
 Return
 -------
@@ -381,7 +376,7 @@ Description
 -----------
 No available documentation.
 ") SampleEdges;
-		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
+		static void SampleEdges(const TopoDS_Shape & S, NCollection_Sequence<gp_Pnt> & Pt);
 
 		/****** BRepFeat::Tool ******/
 		/****** md5 signature: e034f31a8da64d381b1bc24eb325043a ******/
@@ -448,7 +443,7 @@ Collects the images of the object, that contains in the images of the tool.
 		void CheckSolidImages();
 
 		/****** BRepFeat_Builder::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -458,7 +453,7 @@ Description
 -----------
 Clears internal fields and arguments.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BRepFeat_Builder::FillRemoved ******/
 		/****** md5 signature: 1be497a0c9953c13eff3543c81a2ff52 ******/
@@ -474,13 +469,13 @@ Collects the removed parts of the tool into myRemoved map.
 		void FillRemoved();
 
 		/****** BRepFeat_Builder::FillRemoved ******/
-		/****** md5 signature: c816ecc7c07dc50e02f8c73fac35badb ******/
+		/****** md5 signature: de67028fa2dca0e3a9c5c38f33d1ccd4 ******/
 		%feature("compactdefaultargs") FillRemoved;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theM: TopTools_MapOfShape
+theM: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -490,7 +485,7 @@ Description
 -----------
 Adds the shape S and its sub-shapes into myRemoved map.
 ") FillRemoved;
-		void FillRemoved(const TopoDS_Shape & theS, TopTools_MapOfShape & theM);
+		void FillRemoved(const TopoDS_Shape & theS, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theM);
 
 		/****** BRepFeat_Builder::Init ******/
 		/****** md5 signature: e8c5d8680206212eeeecebd0f84dc5c5 ******/
@@ -548,12 +543,12 @@ Adds shape theS and all its sub-shapes into myShapes map.
 		void KeepPart(const TopoDS_Shape & theS);
 
 		/****** BRepFeat_Builder::KeepParts ******/
-		/****** md5 signature: 87c4cd5b43d1f9a01b576ee02f68e27d ******/
+		/****** md5 signature: 3ee77492daed2fe496a2aac2642d2d39 ******/
 		%feature("compactdefaultargs") KeepParts;
 		%feature("autodoc", "
 Parameters
 ----------
-theIm: TopTools_ListOfShape
+theIm: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -563,15 +558,15 @@ Description
 -----------
 Initializes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map.
 ") KeepParts;
-		void KeepParts(const TopTools_ListOfShape & theIm);
+		void KeepParts(const NCollection_List<TopoDS_Shape> & theIm);
 
 		/****** BRepFeat_Builder::PartsOfTool ******/
-		/****** md5 signature: 9044d67ce0e79270261d1a8e7d2ef480 ******/
+		/****** md5 signature: d1be5a19e117904ddd8832cd3bc4bf33 ******/
 		%feature("compactdefaultargs") PartsOfTool;
 		%feature("autodoc", "
 Parameters
 ----------
-theLT: TopTools_ListOfShape
+theLT: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -581,7 +576,7 @@ Description
 -----------
 Collects parts of the tool.
 ") PartsOfTool;
-		void PartsOfTool(TopTools_ListOfShape & theLT);
+		void PartsOfTool(NCollection_List<TopoDS_Shape> & theLT);
 
 		/****** BRepFeat_Builder::PerformResult ******/
 		/****** md5 signature: ad968597e719efbcf84e11e3ce8b1439 ******/
@@ -602,15 +597,15 @@ Main function to build the result of the local operation required.
 		void PerformResult(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepFeat_Builder::RebuildEdge ******/
-		/****** md5 signature: d7d24342c4440d5e9583f009a4320033 ******/
+		/****** md5 signature: 45c2742d309c3ff90e5e4097362e890f ******/
 		%feature("compactdefaultargs") RebuildEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 theE: TopoDS_Shape
 theF: TopoDS_Face
-theME: TopTools_MapOfShape
-aLEIm: TopTools_ListOfShape
+theME: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+aLEIm: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -620,7 +615,7 @@ Description
 -----------
 Rebuilds edges in accordance with the kept parts of the tool.
 ") RebuildEdge;
-		void RebuildEdge(const TopoDS_Shape & theE, const TopoDS_Face & theF, const TopTools_MapOfShape & theME, TopTools_ListOfShape & aLEIm);
+		void RebuildEdge(const TopoDS_Shape & theE, const TopoDS_Face & theF, const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theME, NCollection_List<TopoDS_Shape> & aLEIm);
 
 		/****** BRepFeat_Builder::RebuildFaces ******/
 		/****** md5 signature: a13f1f83a7ee0e9f7f7f1dfc7462f976 ******/
@@ -636,7 +631,7 @@ Rebuilds faces in accordance with the kept parts of the tool.
 		void RebuildFaces();
 
 		/****** BRepFeat_Builder::SetOperation ******/
-		/****** md5 signature: 89876d5f4747477c7452d0cea9eed11b ******/
+		/****** md5 signature: 0595750771d358d97ab46d02516a91a1 ******/
 		%feature("compactdefaultargs") SetOperation;
 		%feature("autodoc", "
 Parameters
@@ -651,10 +646,10 @@ Description
 -----------
 Sets the operation of local boolean operation. If theFuse = 0 than the operation is CUT, otherwise FUSE.
 ") SetOperation;
-		void SetOperation(const Standard_Integer theFuse);
+		void SetOperation(const int theFuse);
 
 		/****** BRepFeat_Builder::SetOperation ******/
-		/****** md5 signature: 8f486220b30ab20b482b117459ad7941 ******/
+		/****** md5 signature: d234007907251c6003c9d7c2a515680b ******/
 		%feature("compactdefaultargs") SetOperation;
 		%feature("autodoc", "
 Parameters
@@ -670,7 +665,7 @@ Description
 -----------
 Sets the operation of local boolean operation. If theFlag = True it means that no selection of parts of the tool is needed, t.e. no second part. In that case if theFuse = 0 than operation is COMMON, otherwise CUT21. If theFlag = False SetOperation(theFuse) function is called.
 ") SetOperation;
-		void SetOperation(const Standard_Integer theFuse, const Standard_Boolean theFlag);
+		void SetOperation(const int theFuse, const bool theFlag);
 
 };
 
@@ -727,12 +722,12 @@ No available documentation.
 		BRepFeat_StatusError CurrentStatusError();
 
 		/****** BRepFeat_Form::Curves ******/
-		/****** md5 signature: c90fd281c4f780878cf7fa2221d3f3a0 ******/
+		/****** md5 signature: edf2e70ce0041c54226b6fe36e5e9734 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TColGeom_SequenceOfCurve
+S: Geom_Curve
 
 Return
 -------
@@ -742,23 +737,23 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		virtual void Curves(TColGeom_SequenceOfCurve & S);
+		virtual void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
 
 		/****** BRepFeat_Form::FirstShape ******/
-		/****** md5 signature: 3308814aad8b5a3d6b7d0ad13d83c3f8 ******/
+		/****** md5 signature: c9bedc7df57b665d447c534ae0afce77 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes created at the bottom of the created form. It may be an empty list.
 ") FirstShape;
-		const TopTools_ListOfShape & FirstShape();
+		const NCollection_List<TopoDS_Shape> FirstShape();
 
 		/****** BRepFeat_Form::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -767,13 +762,13 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 returns a list of the created faces from the shape <S>.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepFeat_Form::GeneratedShapeValid ******/
 		/****** md5 signature: 63a556c0a5250c6b6acde4db96ea4c68 ******/
@@ -802,7 +797,7 @@ Initializes the topological construction if the glued face is present.
 		void GluedFacesValid();
 
 		/****** BRepFeat_Form::IsDeleted ******/
-		/****** md5 signature: 28be7c17a3b2776f59567554f488bbf5 ******/
+		/****** md5 signature: bccb9782bf72a0b11faae5cda38123ec ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -817,23 +812,23 @@ Description
 -----------
 No available documentation.
 ") IsDeleted;
-		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
+		bool IsDeleted(const TopoDS_Shape & S);
 
 		/****** BRepFeat_Form::LastShape ******/
-		/****** md5 signature: 420855638ec0220b6ca81d51c3a55b78 ******/
+		/****** md5 signature: fbab69e647739e7c9cd1123eb99b9c4b ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes created at the top of the created form. It may be an empty list.
 ") LastShape;
-		const TopTools_ListOfShape & LastShape();
+		const NCollection_List<TopoDS_Shape> LastShape();
 
 		/****** BRepFeat_Form::Modified ******/
-		/****** md5 signature: d47f6d180f47cfcfacc0413e7ca407b6 ******/
+		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -842,26 +837,26 @@ F: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 returns the list of generated Faces.
 ") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_Form::NewEdges ******/
-		/****** md5 signature: cdc7ef234fb9eb0a739ace74b44cca14 ******/
+		/****** md5 signature: 86593e867343002ba235ed58e9970c34 ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
 ") NewEdges;
-		const TopTools_ListOfShape & NewEdges();
+		const NCollection_List<TopoDS_Shape> NewEdges();
 
 		/****** BRepFeat_Form::PerfSelectionValid ******/
 		/****** md5 signature: e860c269c453c4afb0c3c359332fcefc ******/
@@ -916,17 +911,17 @@ Initializes the topological construction if the sketch face is present. If the s
 		void SketchFaceValid();
 
 		/****** BRepFeat_Form::TgtEdges ******/
-		/****** md5 signature: 2c3d33bfb9d502b29d86c6dafd2350e0 ******/
+		/****** md5 signature: 4625c2d2cf027a1f9f8defe365dcab16 ******/
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
 ") TgtEdges;
-		const TopTools_ListOfShape & TgtEdges();
+		const NCollection_List<TopoDS_Shape> TgtEdges();
 
 };
 
@@ -1026,7 +1021,7 @@ nforms other methods that the edge Enew in the new shape is the same as the edge
 		void Bind(const TopoDS_Edge & Enew, const TopoDS_Edge & Ebase);
 
 		/****** BRepFeat_Gluer::Build ******/
-		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1041,7 +1036,7 @@ Description
 -----------
 This is called by Shape(). It does nothing but may be redefined.
 ") Build;
-		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepFeat_Gluer::GluedShape ******/
 		/****** md5 signature: cc05062c19ffec36edea50e2f74757fb ******/
@@ -1076,7 +1071,7 @@ Initializes the new shape Snew and the basis shape Sbase for the local glueing o
 		void Init(const TopoDS_Shape & Snew, const TopoDS_Shape & Sbase);
 
 		/****** BRepFeat_Gluer::IsDeleted ******/
-		/****** md5 signature: 1a016772dc188bec4b890b93a447dc5d ******/
+		/****** md5 signature: 287418bb898b77dec0442680837578c0 ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -1089,12 +1084,12 @@ bool
 
 Description
 -----------
-returns the status of the Face after the shape creation.
+Returns the status of the Face after the shape creation.
 ") IsDeleted;
-		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & F);
+		bool IsDeleted(const TopoDS_Shape & F);
 
 		/****** BRepFeat_Gluer::Modified ******/
-		/****** md5 signature: d47f6d180f47cfcfacc0413e7ca407b6 ******/
+		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1103,13 +1098,13 @@ F: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
-returns the list of generated Faces.
+Returns the list of generated Faces.
 ") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_Gluer::OpeType ******/
 		/****** md5 signature: 6301740c99fde6f602c33a48a205b637 ******/
@@ -1140,15 +1135,15 @@ Determine which operation type to use glueing or sliding.
 class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 	public:
 		/****** BRepFeat_RibSlot::ChoiceOfFaces ******/
-		/****** md5 signature: 3d2f5131b0512cb094ab2a0a28933417 ******/
+		/****** md5 signature: 30307479de882361dd3b2f4ac1f89f34 ******/
 		%feature("compactdefaultargs") ChoiceOfFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-faces: TopTools_ListOfShape
+faces: NCollection_List<TopoDS_Shape>
 cc: Geom_Curve
-par: float
-bnd: float
+par: double
+bnd: double
 Pln: Geom_Plane
 
 Return
@@ -1159,7 +1154,7 @@ Description
 -----------
 No available documentation.
 ") ChoiceOfFaces;
-		static TopoDS_Face ChoiceOfFaces(TopTools_ListOfShape & faces, const opencascade::handle<Geom_Curve> & cc, const Standard_Real par, const Standard_Real bnd, const opencascade::handle<Geom_Plane> & Pln);
+		static TopoDS_Face ChoiceOfFaces(NCollection_List<TopoDS_Shape> & faces, const opencascade::handle<Geom_Curve> & cc, const double par, const double bnd, const opencascade::handle<Geom_Plane> & Pln);
 
 		/****** BRepFeat_RibSlot::CurrentStatusError ******/
 		/****** md5 signature: 5c642a7308522a33086b9a7dc347c71b ******/
@@ -1175,33 +1170,33 @@ No available documentation.
 		BRepFeat_StatusError CurrentStatusError();
 
 		/****** BRepFeat_RibSlot::FacesForDraft ******/
-		/****** md5 signature: bb294b3d28b2baf096a3677dfbc96070 ******/
+		/****** md5 signature: 2b2f5fb202fe407f45b6f1bd652787f3 ******/
 		%feature("compactdefaultargs") FacesForDraft;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of the limiting and glueing faces generated by the feature. These faces did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of a draft to a face. It may be an empty list. If a face has tangent edges, no draft is possible, and the tangent edges must subsequently be removed if you want to add a draft to the face.
 ") FacesForDraft;
-		const TopTools_ListOfShape & FacesForDraft();
+		const NCollection_List<TopoDS_Shape> FacesForDraft();
 
 		/****** BRepFeat_RibSlot::FirstShape ******/
-		/****** md5 signature: 3308814aad8b5a3d6b7d0ad13d83c3f8 ******/
+		/****** md5 signature: c9bedc7df57b665d447c534ae0afce77 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes created at the bottom of the created form. It may be an empty list.
 ") FirstShape;
-		const TopTools_ListOfShape & FirstShape();
+		const NCollection_List<TopoDS_Shape> FirstShape();
 
 		/****** BRepFeat_RibSlot::Generated ******/
-		/****** md5 signature: 12bed2c8d73d25dddf738c72a9352693 ******/
+		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1210,16 +1205,16 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
-Returns a list TopTools_ListOfShape of the faces S created in the shape.
+Returns a list NCollection_List<TopoDS_Shape> of the faces S created in the shape.
 ") Generated;
-		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
 
 		/****** BRepFeat_RibSlot::IntPar ******/
-		/****** md5 signature: 0532efa1b66eddb1b75d8854720d015d ******/
+		/****** md5 signature: 62640fbecfc930ffe1bfe3681e8dc87f ******/
 		%feature("compactdefaultargs") IntPar;
 		%feature("autodoc", "
 Parameters
@@ -1229,16 +1224,16 @@ P: gp_Pnt
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") IntPar;
-		static Standard_Real IntPar(const opencascade::handle<Geom_Curve> & C, const gp_Pnt & P);
+		static double IntPar(const opencascade::handle<Geom_Curve> & C, const gp_Pnt & P);
 
 		/****** BRepFeat_RibSlot::IsDeleted ******/
-		/****** md5 signature: 1a016772dc188bec4b890b93a447dc5d ******/
+		/****** md5 signature: 287418bb898b77dec0442680837578c0 ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -1253,23 +1248,23 @@ Description
 -----------
 Returns true if F a TopoDS_Shape of type edge or face has been deleted.
 ") IsDeleted;
-		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & F);
+		bool IsDeleted(const TopoDS_Shape & F);
 
 		/****** BRepFeat_RibSlot::LastShape ******/
-		/****** md5 signature: 420855638ec0220b6ca81d51c3a55b78 ******/
+		/****** md5 signature: fbab69e647739e7c9cd1123eb99b9c4b ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of shapes created at the top of the created form. It may be an empty list.
 ") LastShape;
-		const TopTools_ListOfShape & LastShape();
+		const NCollection_List<TopoDS_Shape> LastShape();
 
 		/****** BRepFeat_RibSlot::Modified ******/
-		/****** md5 signature: d47f6d180f47cfcfacc0413e7ca407b6 ******/
+		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1278,39 +1273,39 @@ F: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of generated Faces F. This list may be empty.
 ") Modified;
-		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_RibSlot::NewEdges ******/
-		/****** md5 signature: cdc7ef234fb9eb0a739ace74b44cca14 ******/
+		/****** md5 signature: 86593e867343002ba235ed58e9970c34 ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
 ") NewEdges;
-		const TopTools_ListOfShape & NewEdges();
+		const NCollection_List<TopoDS_Shape> NewEdges();
 
 		/****** BRepFeat_RibSlot::TgtEdges ******/
-		/****** md5 signature: 2c3d33bfb9d502b29d86c6dafd2350e0 ******/
+		/****** md5 signature: 4625c2d2cf027a1f9f8defe365dcab16 ******/
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
 ") TgtEdges;
-		const TopTools_ListOfShape & TgtEdges();
+		const NCollection_List<TopoDS_Shape> TgtEdges();
 
 };
 
@@ -1358,12 +1353,12 @@ Creates the process with the shape <S>.
 		 BRepFeat_SplitShape(const TopoDS_Shape & S);
 
 		/****** BRepFeat_SplitShape::Add ******/
-		/****** md5 signature: a2f8855eb9d20716f921d30ba939fd6a ******/
+		/****** md5 signature: dc061856d6403e7ea77474558c0cb36c ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-theEdges: TopTools_SequenceOfShape
+theEdges: NCollection_Sequence<TopoDS_Shape>
 
 Return
 -------
@@ -1373,7 +1368,7 @@ Description
 -----------
 Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape.
 ") Add;
-		Standard_Boolean Add(const TopTools_SequenceOfShape & theEdges);
+		bool Add(const NCollection_Sequence<TopoDS_Shape> & theEdges);
 
 		/****** BRepFeat_SplitShape::Add ******/
 		/****** md5 signature: 73487f98ab9ba9984904e685f5fae091 ******/
@@ -1452,7 +1447,7 @@ Adds the edge <E> on the existing edge <EOn>.
 		void Add(const TopoDS_Edge & E, const TopoDS_Edge & EOn);
 
 		/****** BRepFeat_SplitShape::Build ******/
-		/****** md5 signature: 6845a51502d14bd916482d98b6487bc6 ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1470,17 +1465,17 @@ Builds the cut and the resulting faces and edges as well.
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepFeat_SplitShape::DirectLeft ******/
-		/****** md5 signature: 3439933aeda7f1a1ec21dfaafbe0ab1a ******/
+		/****** md5 signature: 0dcdbf098f12ae717ee8e5124bb48c8d ******/
 		%feature("compactdefaultargs") DirectLeft;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the faces which are the left of the projected wires.
 ") DirectLeft;
-		const TopTools_ListOfShape & DirectLeft();
+		const NCollection_List<TopoDS_Shape> DirectLeft();
 
 		/****** BRepFeat_SplitShape::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -1501,7 +1496,7 @@ Initializes the process on the shape <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** BRepFeat_SplitShape::IsDeleted ******/
-		/****** md5 signature: 28be7c17a3b2776f59567554f488bbf5 ******/
+		/****** md5 signature: bccb9782bf72a0b11faae5cda38123ec ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -1516,23 +1511,23 @@ Description
 -----------
 Returns true if the shape has been deleted.
 ") IsDeleted;
-		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & S);
+		bool IsDeleted(const TopoDS_Shape & S);
 
 		/****** BRepFeat_SplitShape::Left ******/
-		/****** md5 signature: 70ee7865256185190dd6eecfb1fc40f8 ******/
+		/****** md5 signature: be2f18492c53905055a91ad1bc70753b ******/
 		%feature("compactdefaultargs") Left;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
-Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...). Raises NotDone if IsDone returns <Standard_False>.
+Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...). Raises NotDone if IsDone returns <false>.
 ") Left;
-		const TopTools_ListOfShape & Left();
+		const NCollection_List<TopoDS_Shape> Left();
 
 		/****** BRepFeat_SplitShape::Modified ******/
-		/****** md5 signature: d6a88f48819eaeb375ffa39db07ab939 ******/
+		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1541,29 +1536,29 @@ F: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of generated Faces.
 ") Modified;
-		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_SplitShape::Right ******/
-		/****** md5 signature: 2734ad1e91a0abfa780551bd587a1449 ******/
+		/****** md5 signature: da3e6dc85b561fc4dde07609854b7d14 ******/
 		%feature("compactdefaultargs") Right;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the faces of the 'right' part on the shape.
 ") Right;
-		const TopTools_ListOfShape & Right();
+		const NCollection_List<TopoDS_Shape> Right();
 
 		/****** BRepFeat_SplitShape::SetCheckInterior ******/
-		/****** md5 signature: 2d00b58c59d6af210c84a7fdd261d94b ******/
+		/****** md5 signature: efb1f3d0d41242227a9413162dceab9f ******/
 		%feature("compactdefaultargs") SetCheckInterior;
 		%feature("autodoc", "
 Parameters
@@ -1578,7 +1573,7 @@ Description
 -----------
 Set the flag of check internal intersections default value is True (to check).
 ") SetCheckInterior;
-		void SetCheckInterior(const Standard_Boolean ToCheckInterior);
+		void SetCheckInterior(const bool ToCheckInterior);
 
 };
 
@@ -1658,12 +1653,12 @@ Sets the shape and axis on which hole(s) will be performed.
 		void Init(const TopoDS_Shape & S, const gp_Ax1 & Axis);
 
 		/****** BRepFeat_MakeCylindricalHole::Perform ******/
-		/****** md5 signature: d29e853e573ef7e11a66ef3857a2c5cd ******/
+		/****** md5 signature: 5c72f46c27915c3859ed2a860c701545 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
+Radius: double
 
 Return
 -------
@@ -1673,18 +1668,18 @@ Description
 -----------
 Performs every hole of radius <Radius>. This command has the same effect as a cut operation with an infinite cylinder defined by the given axis and <Radius>.
 ") Perform;
-		void Perform(const Standard_Real Radius);
+		void Perform(const double Radius);
 
 		/****** BRepFeat_MakeCylindricalHole::Perform ******/
-		/****** md5 signature: 692010be9cefee836dc51667b7cdc333 ******/
+		/****** md5 signature: 06bd4e8475c6d5fb6b3372770ab80d92 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
-PFrom: float
-PTo: float
-WithControl: bool (optional, default to Standard_True)
+Radius: double
+PFrom: double
+PTo: double
+WithControl: bool (optional, default to true)
 
 Return
 -------
@@ -1692,19 +1687,19 @@ None
 
 Description
 -----------
-Performs every hole of radius <Radius> located between PFrom and PTo on the given axis. If <WithControl> is set to Standard_False no control are done on the resulting shape after the operation is performed.
+Performs every hole of radius <Radius> located between PFrom and PTo on the given axis. If <WithControl> is set to false no control are done on the resulting shape after the operation is performed.
 ") Perform;
-		void Perform(const Standard_Real Radius, const Standard_Real PFrom, const Standard_Real PTo, const Standard_Boolean WithControl = Standard_True);
+		void Perform(const double Radius, const double PFrom, const double PTo, const bool WithControl = true);
 
 		/****** BRepFeat_MakeCylindricalHole::PerformBlind ******/
-		/****** md5 signature: d6ad4465337920a7bace20f06cddf9a4 ******/
+		/****** md5 signature: 6cb17168db22561c20d555d085063615 ******/
 		%feature("compactdefaultargs") PerformBlind;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
-Length: float
-WithControl: bool (optional, default to Standard_True)
+Radius: double
+Length: double
+WithControl: bool (optional, default to true)
 
 Return
 -------
@@ -1712,18 +1707,18 @@ None
 
 Description
 -----------
-Performs a blind hole of radius <Radius> and length <Length>. The length is measured from the origin of the given axis. If <WithControl> is set to Standard_False no control are done after the operation is performed.
+Performs a blind hole of radius <Radius> and length <Length>. The length is measured from the origin of the given axis. If <WithControl> is set to false no control are done after the operation is performed.
 ") PerformBlind;
-		void PerformBlind(const Standard_Real Radius, const Standard_Real Length, const Standard_Boolean WithControl = Standard_True);
+		void PerformBlind(const double Radius, const double Length, const bool WithControl = true);
 
 		/****** BRepFeat_MakeCylindricalHole::PerformThruNext ******/
-		/****** md5 signature: 3c97de21db8ff53771e449f91c5b073b ******/
+		/****** md5 signature: 303a9e80393fdd0e8c6cfdfac9158ff7 ******/
 		%feature("compactdefaultargs") PerformThruNext;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
-WithControl: bool (optional, default to Standard_True)
+Radius: double
+WithControl: bool (optional, default to true)
 
 Return
 -------
@@ -1731,18 +1726,18 @@ None
 
 Description
 -----------
-Performs the first hole of radius <Radius>, in the direction of the defined axis. First hole signify first encountered after the origin of the axis. If <WithControl> is set to Standard_False no control are done on the resulting shape after the operation is performed.
+Performs the first hole of radius <Radius>, in the direction of the defined axis. First hole signify first encountered after the origin of the axis. If <WithControl> is set to false no control are done on the resulting shape after the operation is performed.
 ") PerformThruNext;
-		void PerformThruNext(const Standard_Real Radius, const Standard_Boolean WithControl = Standard_True);
+		void PerformThruNext(const double Radius, const bool WithControl = true);
 
 		/****** BRepFeat_MakeCylindricalHole::PerformUntilEnd ******/
-		/****** md5 signature: 66cdda3afb2a9ca35971dfed1fd5ab7d ******/
+		/****** md5 signature: e18580ec952465ec80f080761861c5f1 ******/
 		%feature("compactdefaultargs") PerformUntilEnd;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
-WithControl: bool (optional, default to Standard_True)
+Radius: double
+WithControl: bool (optional, default to true)
 
 Return
 -------
@@ -1750,9 +1745,9 @@ None
 
 Description
 -----------
-Performs every hole of radius <Radius> located after the origin of the given axis. If <WithControl> is set to Standard_False no control are done on the resulting shape after the operation is performed.
+Performs every hole of radius <Radius> located after the origin of the given axis. If <WithControl> is set to false no control are done on the resulting shape after the operation is performed.
 ") PerformUntilEnd;
-		void PerformUntilEnd(const Standard_Real Radius, const Standard_Boolean WithControl = Standard_True);
+		void PerformUntilEnd(const double Radius, const bool WithControl = true);
 
 		/****** BRepFeat_MakeCylindricalHole::Status ******/
 		/****** md5 signature: 6857f3614226fbbdaae5e244ae4256ba ******/
@@ -1782,7 +1777,7 @@ Returns the status after a hole is performed.
 class BRepFeat_MakeDPrism : public BRepFeat_Form {
 	public:
 		/****** BRepFeat_MakeDPrism::BRepFeat_MakeDPrism ******/
-		/****** md5 signature: ab28b5dd2f9cd5ff4235412c13babcfb ******/
+		/****** md5 signature: a4e65af9a20dff51c5b5cc96d296a793 ******/
 		%feature("compactdefaultargs") BRepFeat_MakeDPrism;
 		%feature("autodoc", "
 Parameters
@@ -1790,7 +1785,7 @@ Parameters
 Sbase: TopoDS_Shape
 Pbase: TopoDS_Face
 Skface: TopoDS_Face
-Angle: float
+Angle: double
 Fuse: int
 Modify: bool
 
@@ -1802,7 +1797,7 @@ Description
 -----------
 A face Pbase is selected in the shape Sbase to serve as the basis for the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Initializes the draft prism class.
 ") BRepFeat_MakeDPrism;
-		 BRepFeat_MakeDPrism(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		 BRepFeat_MakeDPrism(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const double Angle, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakeDPrism::BRepFeat_MakeDPrism ******/
 		/****** md5 signature: 72552317c20790f89347229a5f21c621 ******/
@@ -1837,7 +1832,7 @@ Indicates that the edge <E> will slide on the face <OnFace>. Raises Construction
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
 		/****** BRepFeat_MakeDPrism::BarycCurve ******/
-		/****** md5 signature: 66d2a457dbd580b676149c11f86ad8b1 ******/
+		/****** md5 signature: 7751f2bfa19aeb9a939abbcdec314e64 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -1850,7 +1845,7 @@ No available documentation.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** BRepFeat_MakeDPrism::BossEdges ******/
-		/****** md5 signature: b65728171e50e3a538f10d4a296bea46 ******/
+		/****** md5 signature: a2e3625f243eed785f369600bafa59ca ******/
 		%feature("compactdefaultargs") BossEdges;
 		%feature("autodoc", "
 Parameters
@@ -1865,15 +1860,15 @@ Description
 -----------
 Determination of TopEdges and LatEdges. sig = 1 -> TopEdges = FirstShape of the DPrism sig = 2 -> TOpEdges = LastShape of the DPrism.
 ") BossEdges;
-		void BossEdges(const Standard_Integer sig);
+		void BossEdges(const int sig);
 
 		/****** BRepFeat_MakeDPrism::Curves ******/
-		/****** md5 signature: 07f751f9dfafc7503dd439055f5b554f ******/
+		/****** md5 signature: 85a76a1749f6b6fed81a9669580f15eb ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TColGeom_SequenceOfCurve
+S: Geom_Curve
 
 Return
 -------
@@ -1883,10 +1878,10 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(TColGeom_SequenceOfCurve & S);
+		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
 
 		/****** BRepFeat_MakeDPrism::Init ******/
-		/****** md5 signature: 1c308bd80cbfde6bd9a04d2c26e4b328 ******/
+		/****** md5 signature: c33155d84a1245f86d179db325aec81d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1894,7 +1889,7 @@ Parameters
 Sbase: TopoDS_Shape
 Pbase: TopoDS_Face
 Skface: TopoDS_Face
-Angle: float
+Angle: double
 Fuse: int
 Modify: bool
 
@@ -1906,28 +1901,28 @@ Description
 -----------
 Initializes this algorithm for building draft prisms along surfaces. A face Pbase is selected in the basis shape Sbase to serve as the basis from the draft prism. The draft will be defined by the angle Angle and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") Init;
-		void Init(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const Standard_Real Angle, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		void Init(const TopoDS_Shape & Sbase, const TopoDS_Face & Pbase, const TopoDS_Face & Skface, const double Angle, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakeDPrism::LatEdges ******/
-		/****** md5 signature: 8a9db9ef1cd1c382e2f11897bd51d3ed ******/
+		/****** md5 signature: 952d0a19c4288a03828f812c057156ab ******/
 		%feature("compactdefaultargs") LatEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of TopoDS Edges of the bottom of the boss.
 ") LatEdges;
-		const TopTools_ListOfShape & LatEdges();
+		const NCollection_List<TopoDS_Shape> LatEdges();
 
 		/****** BRepFeat_MakeDPrism::Perform ******/
-		/****** md5 signature: 9d97b158b743926dc89782af13894b65 ******/
+		/****** md5 signature: 2474763ac9fc71c5fd80717db35c55ab ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Height: float
+Height: double
 
 Return
 -------
@@ -1937,7 +1932,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Standard_Real Height);
+		void Perform(const double Height);
 
 		/****** BRepFeat_MakeDPrism::Perform ******/
 		/****** md5 signature: 10b8c982858685e75beee187b373027e ******/
@@ -2021,13 +2016,13 @@ Realizes a semi-infinite prism, limited by the position of the prism base.
 		void PerformUntilEnd();
 
 		/****** BRepFeat_MakeDPrism::PerformUntilHeight ******/
-		/****** md5 signature: eb1cd9128736557f1abf6daa81bfbff4 ******/
+		/****** md5 signature: dbadfa3038da938c360f55705ebb6e5d ******/
 		%feature("compactdefaultargs") PerformUntilHeight;
 		%feature("autodoc", "
 Parameters
 ----------
 Until: TopoDS_Shape
-Height: float
+Height: double
 
 Return
 -------
@@ -2037,20 +2032,20 @@ Description
 -----------
 Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at which to stop generation of the prism feature.
 ") PerformUntilHeight;
-		void PerformUntilHeight(const TopoDS_Shape & Until, const Standard_Real Height);
+		void PerformUntilHeight(const TopoDS_Shape & Until, const double Height);
 
 		/****** BRepFeat_MakeDPrism::TopEdges ******/
-		/****** md5 signature: 2517b76b176957c99a729b7a6eb5838c ******/
+		/****** md5 signature: 603d06f381ca671e1d58f108fb63e22f ******/
 		%feature("compactdefaultargs") TopEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of TopoDS Edges of the top of the boss.
 ") TopEdges;
-		const TopTools_ListOfShape & TopEdges();
+		const NCollection_List<TopoDS_Shape> TopEdges();
 
 };
 
@@ -2080,7 +2075,7 @@ initializes the linear form class.
 		 BRepFeat_MakeLinearForm();
 
 		/****** BRepFeat_MakeLinearForm::BRepFeat_MakeLinearForm ******/
-		/****** md5 signature: c0ab9d4da64ce70e63532385bc1370ef ******/
+		/****** md5 signature: 0f4905a048142d551effd0fc41808468 ******/
 		%feature("compactdefaultargs") BRepFeat_MakeLinearForm;
 		%feature("autodoc", "
 Parameters
@@ -2101,7 +2096,7 @@ Description
 -----------
 contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. Direction and Direction1 give The vectors for defining the direction(s) in which thickness will be built up. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") BRepFeat_MakeLinearForm;
-		 BRepFeat_MakeLinearForm(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & P, const gp_Vec & Direction, const gp_Vec & Direction1, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		 BRepFeat_MakeLinearForm(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & P, const gp_Vec & Direction, const gp_Vec & Direction1, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakeLinearForm::Add ******/
 		/****** md5 signature: 1958ed6feaed653cc58352476d181b28 ******/
@@ -2123,7 +2118,7 @@ Indicates that the edge <E> will slide on the face <OnFace>. Raises Construction
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
 		/****** BRepFeat_MakeLinearForm::Init ******/
-		/****** md5 signature: c57fb37411988458f322160e1faeec9c ******/
+		/****** md5 signature: d32f3f761d84564ef0371a3aa6486af4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2144,7 +2139,7 @@ Description
 -----------
 Initializes this construction algorithm. A contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The vectors for defining the direction(s) in which thickness will be built up are given by Direction and Direction1. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") Init;
-		void Init(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & P, const gp_Vec & Direction, const gp_Vec & Direction1, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		void Init(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & P, const gp_Vec & Direction, const gp_Vec & Direction1, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakeLinearForm::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -2160,12 +2155,12 @@ Performs a prism from the wire to the plane along the basis shape Sbase. Reconst
 		void Perform();
 
 		/****** BRepFeat_MakeLinearForm::Propagate ******/
-		/****** md5 signature: adcdddff34ee701126f7caab0efa651f ******/
+		/****** md5 signature: eb529d4e90e0d16110860938aeaba7e4 ******/
 		%feature("compactdefaultargs") Propagate;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 F: TopoDS_Face
 FPoint: gp_Pnt
 LPoint: gp_Pnt
@@ -2178,7 +2173,7 @@ Description
 -----------
 No available documentation.
 ") Propagate;
-		Standard_Boolean Propagate(TopTools_ListOfShape & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
+		bool Propagate(NCollection_List<TopoDS_Shape> & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
 
 };
 
@@ -2212,7 +2207,7 @@ initializes the pipe class.
 		 BRepFeat_MakePipe();
 
 		/****** BRepFeat_MakePipe::BRepFeat_MakePipe ******/
-		/****** md5 signature: 9a729843666efd38155cd635e17174fc ******/
+		/****** md5 signature: b2b99099703d26822ca66b1666d34357 ******/
 		%feature("compactdefaultargs") BRepFeat_MakePipe;
 		%feature("autodoc", "
 Parameters
@@ -2232,7 +2227,7 @@ Description
 -----------
 A face Pbase is selected in the shape Sbase to serve as the basis for the pipe. It will be defined by the wire Spine. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") BRepFeat_MakePipe;
-		 BRepFeat_MakePipe(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const TopoDS_Wire & Spine, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		 BRepFeat_MakePipe(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const TopoDS_Wire & Spine, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakePipe::Add ******/
 		/****** md5 signature: 1958ed6feaed653cc58352476d181b28 ******/
@@ -2254,7 +2249,7 @@ Indicates that the edge <E> will slide on the face <OnFace>. Raises Construction
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
 		/****** BRepFeat_MakePipe::BarycCurve ******/
-		/****** md5 signature: 66d2a457dbd580b676149c11f86ad8b1 ******/
+		/****** md5 signature: 7751f2bfa19aeb9a939abbcdec314e64 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -2267,12 +2262,12 @@ No available documentation.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** BRepFeat_MakePipe::Curves ******/
-		/****** md5 signature: 07f751f9dfafc7503dd439055f5b554f ******/
+		/****** md5 signature: 85a76a1749f6b6fed81a9669580f15eb ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TColGeom_SequenceOfCurve
+S: Geom_Curve
 
 Return
 -------
@@ -2282,10 +2277,10 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(TColGeom_SequenceOfCurve & S);
+		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
 
 		/****** BRepFeat_MakePipe::Init ******/
-		/****** md5 signature: 13c3f77362b6067f1fbdd2ba1e92d958 ******/
+		/****** md5 signature: 76862028d3c54d0384e177c4c3ffef7c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2305,7 +2300,7 @@ Description
 -----------
 Initializes this algorithm for adding pipes to shapes. A face Pbase is selected in the shape Sbase to serve as the basis for the pipe. It will be defined by the wire Spine. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") Init;
-		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const TopoDS_Wire & Spine, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const TopoDS_Wire & Spine, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakePipe::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -2385,7 +2380,7 @@ Builds a prism by projecting a wire along the face of a shape. Initializes the p
 		 BRepFeat_MakePrism();
 
 		/****** BRepFeat_MakePrism::BRepFeat_MakePrism ******/
-		/****** md5 signature: 7db5164394edfcc899ebbd3bb688c3fc ******/
+		/****** md5 signature: d56dffac5e5a7907e4283307f66286b7 ******/
 		%feature("compactdefaultargs") BRepFeat_MakePrism;
 		%feature("autodoc", "
 Parameters
@@ -2405,7 +2400,7 @@ Description
 -----------
 Builds a prism by projecting a wire along the face of a shape. a face Pbase is selected in the shape Sbase to serve as the basis for the prism. The orientation of the prism will be defined by the vector Direction. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed. Exceptions Standard_ConstructionError if the face does not belong to the basis or the prism shape.
 ") BRepFeat_MakePrism;
-		 BRepFeat_MakePrism(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Dir & Direction, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		 BRepFeat_MakePrism(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Dir & Direction, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakePrism::Add ******/
 		/****** md5 signature: 1958ed6feaed653cc58352476d181b28 ******/
@@ -2427,7 +2422,7 @@ Indicates that the edge <E> will slide on the face <OnFace>. Raises Construction
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
 		/****** BRepFeat_MakePrism::BarycCurve ******/
-		/****** md5 signature: 66d2a457dbd580b676149c11f86ad8b1 ******/
+		/****** md5 signature: 7751f2bfa19aeb9a939abbcdec314e64 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -2440,12 +2435,12 @@ Generates a curve along the center of mass of the primitive.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** BRepFeat_MakePrism::Curves ******/
-		/****** md5 signature: 07f751f9dfafc7503dd439055f5b554f ******/
+		/****** md5 signature: 85a76a1749f6b6fed81a9669580f15eb ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TColGeom_SequenceOfCurve
+S: Geom_Curve
 
 Return
 -------
@@ -2455,10 +2450,10 @@ Description
 -----------
 Returns the list of curves S parallel to the axis of the prism.
 ") Curves;
-		void Curves(TColGeom_SequenceOfCurve & S);
+		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
 
 		/****** BRepFeat_MakePrism::Init ******/
-		/****** md5 signature: 27921e8866c46fd571e4916d337b0ff4 ******/
+		/****** md5 signature: 27c09a4d7a08fcc0281741cad3c3a3c8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2478,15 +2473,15 @@ Description
 -----------
 Initializes this algorithm for building prisms along surfaces. A face Pbase is selected in the shape Sbase to serve as the basis for the prism. The orientation of the prism will be defined by the vector Direction. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") Init;
-		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Dir & Direction, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Dir & Direction, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakePrism::Perform ******/
-		/****** md5 signature: 921dd6f91281e2488215eafa36261fe3 ******/
+		/****** md5 signature: 504bc83bd30bb05a97655ea75fb1e1ab ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Length: float
+Length: double
 
 Return
 -------
@@ -2496,7 +2491,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Standard_Real Length);
+		void Perform(const double Length);
 
 		/****** BRepFeat_MakePrism::Perform ******/
 		/****** md5 signature: 10b8c982858685e75beee187b373027e ******/
@@ -2580,13 +2575,13 @@ Realizes a semi-infinite prism, limited by the position of the prism base. All o
 		void PerformUntilEnd();
 
 		/****** BRepFeat_MakePrism::PerformUntilHeight ******/
-		/****** md5 signature: a7c4efe8d2b443f212d0783579b1403a ******/
+		/****** md5 signature: 09b4f9d2f2e9c8a981a3f14dbca5bd29 ******/
 		%feature("compactdefaultargs") PerformUntilHeight;
 		%feature("autodoc", "
 Parameters
 ----------
 Until: TopoDS_Shape
-Length: float
+Length: double
 
 Return
 -------
@@ -2596,7 +2591,7 @@ Description
 -----------
 Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Length at which to stop generation of the prism feature.
 ") PerformUntilHeight;
-		void PerformUntilHeight(const TopoDS_Shape & Until, const Standard_Real Length);
+		void PerformUntilHeight(const TopoDS_Shape & Until, const double Length);
 
 };
 
@@ -2626,7 +2621,7 @@ initializes the revolved shell class.
 		 BRepFeat_MakeRevol();
 
 		/****** BRepFeat_MakeRevol::BRepFeat_MakeRevol ******/
-		/****** md5 signature: 2b9607178edc298f7a78ff1d5cf30402 ******/
+		/****** md5 signature: dc007849e289a274bc53d67db6301d22 ******/
 		%feature("compactdefaultargs") BRepFeat_MakeRevol;
 		%feature("autodoc", "
 Parameters
@@ -2646,7 +2641,7 @@ Description
 -----------
 a face Pbase is selected in the shape Sbase to serve as the basis for the revolved shell. The revolution will be defined by the axis Axis and Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 - adding matter with Boolean fusion using the setting 1. The sketch face Skface serves to determine the type of operation. If it is inside the basis shape, a local operation such as glueing can be performed.
 ") BRepFeat_MakeRevol;
-		 BRepFeat_MakeRevol(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Ax1 & Axis, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		 BRepFeat_MakeRevol(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Ax1 & Axis, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakeRevol::Add ******/
 		/****** md5 signature: 1958ed6feaed653cc58352476d181b28 ******/
@@ -2668,7 +2663,7 @@ Indicates that the edge <E> will slide on the face <OnFace>. Raises Construction
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
 		/****** BRepFeat_MakeRevol::BarycCurve ******/
-		/****** md5 signature: 66d2a457dbd580b676149c11f86ad8b1 ******/
+		/****** md5 signature: 7751f2bfa19aeb9a939abbcdec314e64 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -2681,12 +2676,12 @@ No available documentation.
 		opencascade::handle<Geom_Curve> BarycCurve();
 
 		/****** BRepFeat_MakeRevol::Curves ******/
-		/****** md5 signature: 07f751f9dfafc7503dd439055f5b554f ******/
+		/****** md5 signature: 85a76a1749f6b6fed81a9669580f15eb ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
 ----------
-S: TColGeom_SequenceOfCurve
+S: Geom_Curve
 
 Return
 -------
@@ -2696,10 +2691,10 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(TColGeom_SequenceOfCurve & S);
+		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
 
 		/****** BRepFeat_MakeRevol::Init ******/
-		/****** md5 signature: 204ce292f4f566e4506694c7e7314a55 ******/
+		/****** md5 signature: 05f8f2c41d6ff03878d1d9df687ace7b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2719,15 +2714,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Ax1 & Axis, const Standard_Integer Fuse, const Standard_Boolean Modify);
+		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Pbase, const TopoDS_Face & Skface, const gp_Ax1 & Axis, const int Fuse, const bool Modify);
 
 		/****** BRepFeat_MakeRevol::Perform ******/
-		/****** md5 signature: 6a7a2ae149125c85eb43bdf43080f3fa ******/
+		/****** md5 signature: d8b2134004d2f94a5005a60ede14ad88 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 
 Return
 -------
@@ -2737,7 +2732,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Standard_Real Angle);
+		void Perform(const double Angle);
 
 		/****** BRepFeat_MakeRevol::Perform ******/
 		/****** md5 signature: 10b8c982858685e75beee187b373027e ******/
@@ -2790,13 +2785,13 @@ Builds an infinite shell. The infinite descendants will not be kept in the resul
 		void PerformThruAll();
 
 		/****** BRepFeat_MakeRevol::PerformUntilAngle ******/
-		/****** md5 signature: 1f41e4ebc99ac743b4e9d885ea6242a4 ******/
+		/****** md5 signature: ada203ac04c5bb2c2df46d4d122767d5 ******/
 		%feature("compactdefaultargs") PerformUntilAngle;
 		%feature("autodoc", "
 Parameters
 ----------
 Until: TopoDS_Shape
-Angle: float
+Angle: double
 
 Return
 -------
@@ -2806,7 +2801,7 @@ Description
 -----------
 Assigns both a limiting shape, Until from TopoDS_Shape, and an angle, Angle at which to stop generation of the revolved shell feature.
 ") PerformUntilAngle;
-		void PerformUntilAngle(const TopoDS_Shape & Until, const Standard_Real Angle);
+		void PerformUntilAngle(const TopoDS_Shape & Until, const double Angle);
 
 };
 
@@ -2836,7 +2831,7 @@ initializes the linear form class.
 		 BRepFeat_MakeRevolutionForm();
 
 		/****** BRepFeat_MakeRevolutionForm::BRepFeat_MakeRevolutionForm ******/
-		/****** md5 signature: ff82b0fdd2670104a2362ed0daefc10d ******/
+		/****** md5 signature: f8ac5afb024c3ddaf5310b7cfa6379dd ******/
 		%feature("compactdefaultargs") BRepFeat_MakeRevolutionForm;
 		%feature("autodoc", "
 Parameters
@@ -2845,8 +2840,8 @@ Sbase: TopoDS_Shape
 W: TopoDS_Wire
 Plane: Geom_Plane
 Axis: gp_Ax1
-Height1: float
-Height2: float
+Height1: double
+Height2: double
 Fuse: int
 
 Return
@@ -2857,7 +2852,7 @@ Description
 -----------
 a contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The axis Axis of the revolved surface in the basis shape defines the feature's axis of revolution. Height1 and Height2 may be used as limits to the construction of the feature. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") BRepFeat_MakeRevolutionForm;
-		 BRepFeat_MakeRevolutionForm(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & Plane, const gp_Ax1 & Axis, const Standard_Real Height1, const Standard_Real Height2, const Standard_Integer Fuse, Standard_Boolean &OutValue);
+		 BRepFeat_MakeRevolutionForm(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & Plane, const gp_Ax1 & Axis, const double Height1, const double Height2, const int Fuse, Standard_Boolean &OutValue);
 
 		/****** BRepFeat_MakeRevolutionForm::Add ******/
 		/****** md5 signature: 1958ed6feaed653cc58352476d181b28 ******/
@@ -2879,7 +2874,7 @@ Indicates that the edge <E> will slide on the face <OnFace>. Raises Construction
 		void Add(const TopoDS_Edge & E, const TopoDS_Face & OnFace);
 
 		/****** BRepFeat_MakeRevolutionForm::Init ******/
-		/****** md5 signature: 9ca78664b7e171890eaab6bc207dce08 ******/
+		/****** md5 signature: 93385c07c836821d4954e487b24a14d8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2888,8 +2883,8 @@ Sbase: TopoDS_Shape
 W: TopoDS_Wire
 Plane: Geom_Plane
 Axis: gp_Ax1
-Height1: float
-Height2: float
+Height1: double
+Height2: double
 Fuse: int
 
 Return
@@ -2900,7 +2895,7 @@ Description
 -----------
 Initializes this construction algorithm A contour W, a shape Sbase and a plane P are initialized to serve as the basic elements in the construction of the rib or groove. The axis Axis of the revolved surface in the basis shape defines the feature's axis of revolution. Height1 and Height2 may be used as limits to the construction of the feature. Fuse offers a choice between: - removing matter with a Boolean cut using the setting 0 in case of the groove - adding matter with Boolean fusion using the setting 1 in case of the rib.
 ") Init;
-		void Init(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & Plane, const gp_Ax1 & Axis, const Standard_Real Height1, const Standard_Real Height2, const Standard_Integer Fuse, Standard_Boolean &OutValue);
+		void Init(const TopoDS_Shape & Sbase, const TopoDS_Wire & W, const opencascade::handle<Geom_Plane> & Plane, const gp_Ax1 & Axis, const double Height1, const double Height2, const int Fuse, Standard_Boolean &OutValue);
 
 		/****** BRepFeat_MakeRevolutionForm::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -2916,12 +2911,12 @@ Performs a prism from the wire to the plane along the basis shape S. Reconstruct
 		void Perform();
 
 		/****** BRepFeat_MakeRevolutionForm::Propagate ******/
-		/****** md5 signature: adcdddff34ee701126f7caab0efa651f ******/
+		/****** md5 signature: eb529d4e90e0d16110860938aeaba7e4 ******/
 		%feature("compactdefaultargs") Propagate;
 		%feature("autodoc", "
 Parameters
 ----------
-L: TopTools_ListOfShape
+L: NCollection_List<TopoDS_Shape>
 F: TopoDS_Face
 FPoint: gp_Pnt
 LPoint: gp_Pnt
@@ -2934,7 +2929,7 @@ Description
 -----------
 No available documentation.
 ") Propagate;
-		Standard_Boolean Propagate(TopTools_ListOfShape & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
+		bool Propagate(NCollection_List<TopoDS_Shape> & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
 
 };
 

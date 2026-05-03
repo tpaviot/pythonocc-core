@@ -87,14 +87,14 @@ from OCC.Core.Exception import *
 class Hermit {
 	public:
 		/****** Hermit::Solution ******/
-		/****** md5 signature: 09f17358299a55b10621c9b761fd7966 ******/
+		/****** md5 signature: 71cfb3851a1980192a055943baae4d17 ******/
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom_BSplineCurve
-TolPoles: float (optional, default to 0.000001)
-TolKnots: float (optional, default to 0.000001)
+TolPoles: double (optional, default to 0.000001)
+TolKnots: double (optional, default to 0.000001)
 
 Return
 -------
@@ -104,17 +104,17 @@ Description
 -----------
 returns the correct spline a(u) which will be multiplicated with BS later.
 ") Solution;
-		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
+		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom_BSplineCurve> & BS, const double TolPoles = 0.000001, const double TolKnots = 0.000001);
 
 		/****** Hermit::Solution ******/
-		/****** md5 signature: 49129ffe8056f7bced41bcc0d1d841e1 ******/
+		/****** md5 signature: 87a9dedc802bf9f19cb3cb30457bae03 ******/
 		%feature("compactdefaultargs") Solution;
 		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-TolPoles: float (optional, default to 0.000001)
-TolKnots: float (optional, default to 0.000001)
+TolPoles: double (optional, default to 0.000001)
+TolKnots: double (optional, default to 0.000001)
 
 Return
 -------
@@ -124,28 +124,28 @@ Description
 -----------
 returns the correct spline a(u) which will be multiplicated with BS later.
 ") Solution;
-		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
+		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom2d_BSplineCurve> & BS, const double TolPoles = 0.000001, const double TolKnots = 0.000001);
 
 		/****** Hermit::Solutionbis ******/
-		/****** md5 signature: 3bce282eb0b1307dc53349f35dd12afa ******/
+		/****** md5 signature: 2c5b2fe2e935f56fd311566f00221014 ******/
 		%feature("compactdefaultargs") Solutionbis;
 		%feature("autodoc", "
 Parameters
 ----------
 BS: Geom_BSplineCurve
-TolPoles: float (optional, default to 0.000001)
-TolKnots: float (optional, default to 0.000001)
+TolPoles: double (optional, default to 0.000001)
+TolKnots: double (optional, default to 0.000001)
 
 Return
 -------
-Knotmin: float
-Knotmax: float
+Knotmin: double
+Knotmax: double
 
 Description
 -----------
 returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 ") Solutionbis;
-		static void Solutionbis(const opencascade::handle<Geom_BSplineCurve> & BS, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
+		static void Solutionbis(const opencascade::handle<Geom_BSplineCurve> & BS, Standard_Real &OutValue, Standard_Real &OutValue, const double TolPoles = 0.000001, const double TolKnots = 0.000001);
 
 };
 

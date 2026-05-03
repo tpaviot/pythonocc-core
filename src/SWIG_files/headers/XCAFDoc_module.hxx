@@ -32,7 +32,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XCAFDoc_Color.hxx>
 #include<XCAFDoc_ColorTool.hxx>
 #include<XCAFDoc_ColorType.hxx>
-#include<XCAFDoc_DataMapIteratorOfDataMapOfShapeLabel.hxx>
 #include<XCAFDoc_DataMapOfShapeLabel.hxx>
 #include<XCAFDoc_Datum.hxx>
 #include<XCAFDoc_DimTol.hxx>
@@ -42,7 +41,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<XCAFDoc_Editor.hxx>
 #include<XCAFDoc_GeomTolerance.hxx>
 #include<XCAFDoc_GraphNode.hxx>
-#include<XCAFDoc_GraphNodeSequence.hxx>
 #include<XCAFDoc_LayerTool.hxx>
 #include<XCAFDoc_LengthUnit.hxx>
 #include<XCAFDoc_Location.hxx>

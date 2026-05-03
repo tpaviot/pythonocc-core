@@ -127,14 +127,20 @@ enum  {
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(XCAFPrs_AISObject)
-%wrap_handle(XCAFPrs_Driver)
 %wrap_handle(XCAFPrs_Texture)
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<XCAFPrs_Style,TopoDS_Shape>::Items;
+%ignore NCollection_DataMap<XCAFPrs_Style,TopoDS_Shape>::KeyValues;
 %template(XCAFPrs_DataMapOfStyleShape) NCollection_DataMap<XCAFPrs_Style,TopoDS_Shape>;
+%ignore NCollection_DataMap<XCAFPrs_Style,opencascade::handle<Standard_Transient>>::Items;
+%ignore NCollection_DataMap<XCAFPrs_Style,opencascade::handle<Standard_Transient>>::KeyValues;
 %template(XCAFPrs_DataMapOfStyleTransient) NCollection_DataMap<XCAFPrs_Style,opencascade::handle<Standard_Transient>>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,XCAFPrs_Style,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,XCAFPrs_Style,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,XCAFPrs_Style,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,XCAFPrs_Style,TopTools_ShapeMapHasher>::Contained;
 %template(XCAFPrs_IndexedDataMapOfShapeStyle) NCollection_IndexedDataMap<TopoDS_Shape,XCAFPrs_Style,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
@@ -144,7 +150,7 @@ typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transien
 typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher>::Iterator XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle;
 typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape> XCAFPrs_DataMapOfStyleShape;
 typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>> XCAFPrs_DataMapOfStyleTransient;
-typedef Standard_Integer XCAFPrs_DocumentExplorerFlags;
+typedef int XCAFPrs_DocumentExplorerFlags;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher> XCAFPrs_IndexedDataMapOfShapeStyle;
 /* end typedefs declaration */
 
@@ -155,14 +161,14 @@ typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMa
 class XCAFPrs {
 	public:
 		/****** XCAFPrs::CollectStyleSettings ******/
-		/****** md5 signature: 7a262a4756e5937c27328da5edc3fabd ******/
+		/****** md5 signature: d55ea5b384d90c19f06b6cd01b44833c ******/
 		%feature("compactdefaultargs") CollectStyleSettings;
 		%feature("autodoc", "
 Parameters
 ----------
 L: TDF_Label
 loc: TopLoc_Location
-settings: XCAFPrs_IndexedDataMapOfShapeStyle
+settings: NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher>
 theLayerColor: Quantity_ColorRGBA (optional, default to Quantity_ColorRGBA(Quantity_NOC_WHITE))
 
 Return
@@ -173,10 +179,10 @@ Description
 -----------
 Collect styles defined for shape on label L and its components and subshapes and fills a map of shape - style correspondence The location <loc> is for internal use, it should be Null location for external call.
 ") CollectStyleSettings;
-		static void CollectStyleSettings(const TDF_Label & L, const TopLoc_Location & loc, XCAFPrs_IndexedDataMapOfShapeStyle & settings, const Quantity_ColorRGBA & theLayerColor = Quantity_ColorRGBA(Quantity_NOC_WHITE));
+		static void CollectStyleSettings(const TDF_Label & L, const TopLoc_Location & loc, NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher> & settings, const Quantity_ColorRGBA & theLayerColor = Quantity_ColorRGBA(Quantity_NOC_WHITE));
 
 		/****** XCAFPrs::GetViewNameMode ******/
-		/****** md5 signature: 00babb1f013f86f66ee15ee01531e437 ******/
+		/****** md5 signature: cf077d4444049b70c33b360a5373611f ******/
 		%feature("compactdefaultargs") GetViewNameMode;
 		%feature("autodoc", "Return
 -------
@@ -186,10 +192,10 @@ Description
 -----------
 No available documentation.
 ") GetViewNameMode;
-		static Standard_Boolean GetViewNameMode();
+		static bool GetViewNameMode();
 
 		/****** XCAFPrs::SetViewNameMode ******/
-		/****** md5 signature: 42d2caa5815110f47af30e5cb5a0c0d6 ******/
+		/****** md5 signature: 020fb45a4e01d35673c57aa04c762347 ******/
 		%feature("compactdefaultargs") SetViewNameMode;
 		%feature("autodoc", "
 Parameters
@@ -204,7 +210,7 @@ Description
 -----------
 Set ViewNameMode for indicate display names or not.
 ") SetViewNameMode;
-		static void SetViewNameMode(const Standard_Boolean viewNameMode);
+		static void SetViewNameMode(const bool viewNameMode);
 
 };
 
@@ -239,12 +245,12 @@ Creates an object to visualise the shape label.
 		 XCAFPrs_AISObject(const TDF_Label & theLabel);
 
 		/****** XCAFPrs_AISObject::DispatchStyles ******/
-		/****** md5 signature: 94e0ed354143041186c38dc4735f7b0d ******/
+		/****** md5 signature: 3d0ee8b51a52780015987d4acf2d446a ******/
 		%feature("compactdefaultargs") DispatchStyles;
 		%feature("autodoc", "
 Parameters
 ----------
-theToSyncStyles: bool (optional, default to Standard_False)
+theToSyncStyles: bool (optional, default to false)
 
 Return
 -------
@@ -255,7 +261,7 @@ Description
 Fetch the Shape from associated Label and fill the map of sub-shapes styles. By default, this method is called implicitly within first ::Compute(). Application might call this method explicitly to manipulate styles afterwards. 
 Parameter theToSyncStyles flag indicating if method ::Compute() should call this method again on first compute or re-compute.
 ") DispatchStyles;
-		virtual void DispatchStyles(const Standard_Boolean theToSyncStyles = Standard_False);
+		virtual void DispatchStyles(const bool theToSyncStyles = false);
 
 		/****** XCAFPrs_AISObject::GetLabel ******/
 		/****** md5 signature: cc78125194d6893ebcb2c586f4ec4787 ******/
@@ -289,7 +295,7 @@ Assign the label to this presentation (but does not mark it outdated with SetToU
 		void SetLabel(const TDF_Label & theLabel);
 
 		/****** XCAFPrs_AISObject::SetMaterial ******/
-		/****** md5 signature: 1fdce10ca979b439818a2f4eb876e6cc ******/
+		/****** md5 signature: 22a77ad704ae918cecfb61a3ab62f5cf ******/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "
 Parameters
@@ -304,12 +310,10 @@ Description
 -----------
 Sets the material aspect. This method assigns the new default material without overriding XDE styles. Re-computation of existing presentation is not required after calling this method.
 ") SetMaterial;
-		virtual void SetMaterial(const Graphic3d_MaterialAspect & theMaterial);
+		void SetMaterial(const Graphic3d_MaterialAspect & theMaterial);
 
 };
 
-
-%make_alias(XCAFPrs_AISObject)
 
 %extend XCAFPrs_AISObject {
 	%pythoncode {
@@ -359,13 +363,13 @@ Parameter theDefStyle default style for nodes with undefined style.
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****** XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer ******/
-		/****** md5 signature: 3a7cecc626d3723ed3253f4ffca51442 ******/
+		/****** md5 signature: b5ee98cb1910aa9f276df4620032bce5 ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRoots: TDF_LabelSequence
+theRoots: NCollection_Sequence<TDF_Label>
 theFlags: int
 theDefStyle: XCAFPrs_Style (optional, default to XCAFPrs_Style())
 
@@ -381,7 +385,7 @@ Parameter theRoots root labels to explore within specified document
 Parameter theFlags iteration flags 
 Parameter theDefStyle default style for nodes with undefined style.
 ") XCAFPrs_DocumentExplorer;
-		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****** XCAFPrs_DocumentExplorer::ChangeCurrent ******/
 		/****** md5 signature: d8575b117c3ddc102a80c8f34d2d5ff3 ******/
@@ -423,7 +427,7 @@ Return current position.
 		const XCAFPrs_DocumentNode & Current();
 
 		/****** XCAFPrs_DocumentExplorer::Current ******/
-		/****** md5 signature: efe0137b5d9a49ad6fe44f6c87e91380 ******/
+		/****** md5 signature: bb4449ccd7d57ffd3102a37fbeba6b08 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "
 Parameters
@@ -438,10 +442,10 @@ Description
 -----------
 Return current position within specified assembly depth.
 ") Current;
-		const XCAFPrs_DocumentNode & Current(Standard_Integer theDepth);
+		const XCAFPrs_DocumentNode & Current(int theDepth);
 
 		/****** XCAFPrs_DocumentExplorer::CurrentDepth ******/
-		/****** md5 signature: ec69b73ad734be8bbe2b41903c6bfb39 ******/
+		/****** md5 signature: 2d4cbf6cd22218034d782293ae58487f ******/
 		%feature("compactdefaultargs") CurrentDepth;
 		%feature("autodoc", "Return
 -------
@@ -451,7 +455,7 @@ Description
 -----------
 Return depth of the current node in hierarchy, starting from 0. Zero means Root label.
 ") CurrentDepth;
-		Standard_Integer CurrentDepth();
+		int CurrentDepth();
 
 		/****** XCAFPrs_DocumentExplorer::DefineChildId ******/
 		/****** md5 signature: 408d6adf19c4d2c6d062f1bce2dab794 ******/
@@ -563,13 +567,13 @@ Parameter theDefStyle default style for nodes with undefined style.
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_Label & theRoot, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****** XCAFPrs_DocumentExplorer::Init ******/
-		/****** md5 signature: 98f0800ab577cc74a88fca7a42e9982f ******/
+		/****** md5 signature: ddf773f75b38abb8faea269e23ba177a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRoots: TDF_LabelSequence
+theRoots: NCollection_Sequence<TDF_Label>
 theFlags: int
 theDefStyle: XCAFPrs_Style (optional, default to XCAFPrs_Style())
 
@@ -585,10 +589,10 @@ Parameter theRoots root labels to explore within specified document
 Parameter theFlags iteration flags 
 Parameter theDefStyle default style for nodes with undefined style.
 ") Init;
-		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****** XCAFPrs_DocumentExplorer::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -598,7 +602,7 @@ Description
 -----------
 Return True if iterator points to the valid node.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** XCAFPrs_DocumentExplorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -766,7 +770,7 @@ returns GUID of the driver.
 		static const Standard_GUID & GetID();
 
 		/****** XCAFPrs_Driver::Update ******/
-		/****** md5 signature: ec78618f91177554d26e45cdddd4ea50 ******/
+		/****** md5 signature: fad7d9fb6c97afccf3bc1dd5066064bd ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -782,12 +786,10 @@ Description
 -----------
 No available documentation.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & L, opencascade::handle<AIS_InteractiveObject> & ais);
+		bool Update(const TDF_Label & L, opencascade::handle<AIS_InteractiveObject> & ais);
 
 };
 
-
-%make_alias(XCAFPrs_Driver)
 
 %extend XCAFPrs_Driver {
 	%pythoncode {
@@ -887,7 +889,7 @@ Return surface color.
 		const Quantity_ColorRGBA & GetColorSurfRGBA();
 
 		/****** XCAFPrs_Style::IsEmpty ******/
-		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
+		/****** md5 signature: 70a41d5fe65955a28167088305fc6991 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -897,10 +899,10 @@ Description
 -----------
 Return True if style is empty - does not override any properties.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** XCAFPrs_Style::IsEqual ******/
-		/****** md5 signature: bc0bb14527a436f5e61f4f2840f337dd ******/
+		/****** md5 signature: 1d0d336092444e2bff04ccc141c67057 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -915,10 +917,10 @@ Description
 -----------
 Returns True if styles are the same Methods for using Style as key in maps.
 ") IsEqual;
-		Standard_Boolean IsEqual(const XCAFPrs_Style & theOther);
+		bool IsEqual(const XCAFPrs_Style & theOther);
 
 		/****** XCAFPrs_Style::IsSetColorCurv ******/
-		/****** md5 signature: 64313982bf697dffdbaa22ea5a964e21 ******/
+		/****** md5 signature: c8a1a15e2a5d80aafb311b9fbbb41c7a ******/
 		%feature("compactdefaultargs") IsSetColorCurv;
 		%feature("autodoc", "Return
 -------
@@ -928,10 +930,10 @@ Description
 -----------
 Return True if curve color has been defined.
 ") IsSetColorCurv;
-		Standard_Boolean IsSetColorCurv();
+		bool IsSetColorCurv();
 
 		/****** XCAFPrs_Style::IsSetColorSurf ******/
-		/****** md5 signature: d9778230338d66c28842ee9deaba02eb ******/
+		/****** md5 signature: e95250d7d01dba48b1452b5c9fc313dc ******/
 		%feature("compactdefaultargs") IsSetColorSurf;
 		%feature("autodoc", "Return
 -------
@@ -941,10 +943,10 @@ Description
 -----------
 Return True if surface color has been defined.
 ") IsSetColorSurf;
-		Standard_Boolean IsSetColorSurf();
+		bool IsSetColorSurf();
 
 		/****** XCAFPrs_Style::IsVisible ******/
-		/****** md5 signature: d2de178c6bd2985a6f06b17107c0b3e4 ******/
+		/****** md5 signature: 6d47e4fe91edc0d54b9a3b231c878799 ******/
 		%feature("compactdefaultargs") IsVisible;
 		%feature("autodoc", "Return
 -------
@@ -954,7 +956,7 @@ Description
 -----------
 Manage visibility.
 ") IsVisible;
-		Standard_Boolean IsVisible();
+		bool IsVisible();
 
 		/****** XCAFPrs_Style::Material ******/
 		/****** md5 signature: 88a9882f137bb7b5c54ec36089272083 ******/
@@ -1042,7 +1044,7 @@ Set material.
 		void SetMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMaterial);
 
 		/****** XCAFPrs_Style::SetVisibility ******/
-		/****** md5 signature: 71f6f1775dc0a92e7f83855c46ebf1b8 ******/
+		/****** md5 signature: 182d06f76540c9f9cf9f0aea77ac8ded ******/
 		%feature("compactdefaultargs") SetVisibility;
 		%feature("autodoc", "
 Parameters
@@ -1057,7 +1059,7 @@ Description
 -----------
 Assign visibility.
 ") SetVisibility;
-		void SetVisibility(const Standard_Boolean theVisibility);
+		void SetVisibility(const bool theVisibility);
 
 		/****** XCAFPrs_Style::UnSetColorCurv ******/
 		/****** md5 signature: 9be030dda02ca97eff5127a9e3cee728 ******/
@@ -1133,7 +1135,7 @@ Constructor.
 		 XCAFPrs_Texture(const opencascade::handle<Image_Texture> & theImageSource, const Graphic3d_TextureUnit theUnit);
 
 		/****** XCAFPrs_Texture::GetCompressedImage ******/
-		/****** md5 signature: bad0c95151f5a884e9dbc72217977538 ******/
+		/****** md5 signature: 14a9c3e2f4469a571f0f3a388ac8a744 ******/
 		%feature("compactdefaultargs") GetCompressedImage;
 		%feature("autodoc", "
 Parameters
@@ -1148,10 +1150,10 @@ Description
 -----------
 Image reader.
 ") GetCompressedImage;
-		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
+		opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****** XCAFPrs_Texture::GetImage ******/
-		/****** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ******/
+		/****** md5 signature: f3110abc861a9f81a571119022fa772d ******/
 		%feature("compactdefaultargs") GetImage;
 		%feature("autodoc", "
 Parameters
@@ -1166,7 +1168,7 @@ Description
 -----------
 Image reader.
 ") GetImage;
-		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
+		opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****** XCAFPrs_Texture::GetImageSource ******/
 		/****** md5 signature: c24f99a1f3e5bf7521b240aa232d6d28 ******/

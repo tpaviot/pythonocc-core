@@ -30,9 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ChFiDS_FilSpine.hxx>
 #include<ChFiDS_HData.hxx>
 #include<ChFiDS_IndexedDataMapOfVertexListOfStripe.hxx>
-#include<ChFiDS_ListIteratorOfListOfHElSpine.hxx>
-#include<ChFiDS_ListIteratorOfListOfStripe.hxx>
-#include<ChFiDS_ListIteratorOfRegularities.hxx>
 #include<ChFiDS_ListOfHElSpine.hxx>
 #include<ChFiDS_ListOfStripe.hxx>
 #include<ChFiDS_Map.hxx>

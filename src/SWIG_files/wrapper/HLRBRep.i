@@ -51,18 +51,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
-#include<TColgp_module.hxx>
 #include<IntRes2d_module.hxx>
 #include<Geom2d_module.hxx>
-#include<TopTools_module.hxx>
-#include<BRepTopAdaptor_module.hxx>
 #include<IntCurveSurface_module.hxx>
 #include<Bnd_module.hxx>
 #include<HLRTopoBRep_module.hxx>
 #include<math_module.hxx>
 #include<IntCurve_module.hxx>
-#include<Extrema_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Intf_module.hxx>
 #include<IntSurf_module.hxx>
@@ -87,18 +82,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 %import Geom.i
 %import gp.i
 %import GeomAbs.i
-%import TColStd.i
-%import TColgp.i
 %import IntRes2d.i
 %import Geom2d.i
-%import TopTools.i
-%import BRepTopAdaptor.i
 %import IntCurveSurface.i
 %import Bnd.i
 %import HLRTopoBRep.i
 %import math.i
 %import IntCurve.i
-%import Extrema.i
 %import Adaptor3d.i
 %import Intf.i
 %import IntSurf.i
@@ -162,12 +152,6 @@ Array1ExtendIter(HLRBRep_FaceData)
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = HLRBRep_ListIteratorOfListOfBPnt2D(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(HLRBRep_ListOfBPoint) NCollection_List<HLRBRep_BiPoint>;
@@ -176,12 +160,6 @@ Array1ExtendIter(HLRBRep_FaceData)
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = HLRBRep_ListIteratorOfListOfBPoint(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;
@@ -211,14 +189,14 @@ typedef NCollection_Sequence<HLRBRep_ShapeBounds> HLRBRep_SeqOfShapeBounds;
 class HLRBRep {
 	public:
 		/****** HLRBRep::MakeEdge ******/
-		/****** md5 signature: e591b23fabf95c4ab404ee0647c75a86 ******/
+		/****** md5 signature: 02cbaf33041162d3ec7af414b7af8bdf ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 ec: HLRBRep_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
@@ -228,17 +206,17 @@ Description
 -----------
 No available documentation.
 ") MakeEdge;
-		static TopoDS_Edge MakeEdge(const HLRBRep_Curve & ec, const Standard_Real U1, const Standard_Real U2);
+		static TopoDS_Edge MakeEdge(const HLRBRep_Curve & ec, const double U1, const double U2);
 
 		/****** HLRBRep::MakeEdge3d ******/
-		/****** md5 signature: 7c264ca0adc8ec18dc5eb00295b0e86d ******/
+		/****** md5 signature: 458a7580034654c8d098941eef1a2cfe ******/
 		%feature("compactdefaultargs") MakeEdge3d;
 		%feature("autodoc", "
 Parameters
 ----------
 ec: HLRBRep_Curve
-U1: float
-U2: float
+U1: double
+U2: double
 
 Return
 -------
@@ -248,26 +226,26 @@ Description
 -----------
 No available documentation.
 ") MakeEdge3d;
-		static TopoDS_Edge MakeEdge3d(const HLRBRep_Curve & ec, const Standard_Real U1, const Standard_Real U2);
+		static TopoDS_Edge MakeEdge3d(const HLRBRep_Curve & ec, const double U1, const double U2);
 
 		/****** HLRBRep::PolyHLRAngleAndDeflection ******/
-		/****** md5 signature: dca95dec52d4066f89646200d828aab1 ******/
+		/****** md5 signature: 12b02738b45763a6a6ff9bf61cf5a040 ******/
 		%feature("compactdefaultargs") PolyHLRAngleAndDeflection;
 		%feature("autodoc", "
 Parameters
 ----------
-InAngl: float
+InAngl: double
 
 Return
 -------
-OutAngl: float
-OutDefl: float
+OutAngl: double
+OutDefl: double
 
 Description
 -----------
 No available documentation.
 ") PolyHLRAngleAndDeflection;
-		static void PolyHLRAngleAndDeflection(const Standard_Real InAngl, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void PolyHLRAngleAndDeflection(const double InAngl, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -284,7 +262,7 @@ No available documentation.
 class HLRBRep_AreaLimit : public Standard_Transient {
 	public:
 		/****** HLRBRep_AreaLimit::HLRBRep_AreaLimit ******/
-		/****** md5 signature: e7be70ef1dbdd02981c8b22b0b3f35e2 ******/
+		/****** md5 signature: 54212fbf349d3b4342194a368dcdd613 ******/
 		%feature("compactdefaultargs") HLRBRep_AreaLimit;
 		%feature("autodoc", "
 Parameters
@@ -305,7 +283,7 @@ Description
 -----------
 The previous and next field are set to NULL.
 ") HLRBRep_AreaLimit;
-		 HLRBRep_AreaLimit(const HLRAlgo_Intersection & V, const Standard_Boolean Boundary, const Standard_Boolean Interference, const TopAbs_State StateBefore, const TopAbs_State StateAfter, const TopAbs_State EdgeBefore, const TopAbs_State EdgeAfter);
+		 HLRBRep_AreaLimit(const HLRAlgo_Intersection & V, const bool Boundary, const bool Interference, const TopAbs_State StateBefore, const TopAbs_State StateAfter, const TopAbs_State EdgeBefore, const TopAbs_State EdgeAfter);
 
 		/****** HLRBRep_AreaLimit::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -383,7 +361,7 @@ No available documentation.
 		TopAbs_State EdgeBefore();
 
 		/****** HLRBRep_AreaLimit::IsBoundary ******/
-		/****** md5 signature: 9d78e8db3d0caa05aa9a267c764c472e ******/
+		/****** md5 signature: e4571934dc233b1ff119256513384992 ******/
 		%feature("compactdefaultargs") IsBoundary;
 		%feature("autodoc", "Return
 -------
@@ -393,10 +371,10 @@ Description
 -----------
 No available documentation.
 ") IsBoundary;
-		Standard_Boolean IsBoundary();
+		bool IsBoundary();
 
 		/****** HLRBRep_AreaLimit::IsInterference ******/
-		/****** md5 signature: 70cfb7482a8242c7b6f97a307bb277ee ******/
+		/****** md5 signature: 1c7f51e2a202946534099b00ee6668f5 ******/
 		%feature("compactdefaultargs") IsInterference;
 		%feature("autodoc", "Return
 -------
@@ -406,7 +384,7 @@ Description
 -----------
 No available documentation.
 ") IsInterference;
-		Standard_Boolean IsInterference();
+		bool IsInterference();
 
 		/****** HLRBRep_AreaLimit::Next ******/
 		/****** md5 signature: 5c6a3048ebd638c072893b2b352d50d3 ******/
@@ -634,13 +612,13 @@ No available documentation.
 		static GeomAbs_Shape Continuity(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::D0 ******/
-		/****** md5 signature: c3da18ad8945aa1fa8ebb01e7d52aec7 ******/
+		/****** md5 signature: b35994698035f470e1acfda4da9e5f34 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U: float
+U: double
 P: gp_Pnt
 
 Return
@@ -651,16 +629,16 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		static void D0(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P);
+		static void D0(const BRepAdaptor_Curve & C, const double U, gp_Pnt & P);
 
 		/****** HLRBRep_BCurveTool::D1 ******/
-		/****** md5 signature: 8bc93f3c1bff851324423ed02edfb3e1 ******/
+		/****** md5 signature: f65d9a4455551061cafcd8839c1e8e76 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U: float
+U: double
 P: gp_Pnt
 V: gp_Vec
 
@@ -672,16 +650,16 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		static void D1(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
+		static void D1(const BRepAdaptor_Curve & C, const double U, gp_Pnt & P, gp_Vec & V);
 
 		/****** HLRBRep_BCurveTool::D2 ******/
-		/****** md5 signature: b2ec4e844fab19ed2485d22a8745268f ******/
+		/****** md5 signature: e069236d95cfcc6197d547048ab09cf7 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -694,16 +672,16 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		static void D2(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const BRepAdaptor_Curve & C, const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** HLRBRep_BCurveTool::D3 ******/
-		/****** md5 signature: 77f327d302e5c58bef64f7dabd80585e ******/
+		/****** md5 signature: 0e962f171995135475787492e88fb14c ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -717,16 +695,16 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		static void D3(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const BRepAdaptor_Curve & C, const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** HLRBRep_BCurveTool::DN ******/
-		/****** md5 signature: 894141b8c266b6c1fbfc460b3090e6da ******/
+		/****** md5 signature: f81239d13f54d957d772b21d2ffa6aff ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U: float
+U: double
 N: int
 
 Return
@@ -737,10 +715,10 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		static gp_Vec DN(const BRepAdaptor_Curve & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec DN(const BRepAdaptor_Curve & C, const double U, const int N);
 
 		/****** HLRBRep_BCurveTool::Degree ******/
-		/****** md5 signature: 52e82e702df5ffa25cc76bc95897f00a ******/
+		/****** md5 signature: 6da935808b28abefc9f94f2db97b43c8 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "
 Parameters
@@ -755,7 +733,7 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		static Standard_Integer Degree(const BRepAdaptor_Curve & C);
+		static int Degree(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::Ellipse ******/
 		/****** md5 signature: 71a2e5fcf431d07468fd52c7359140be ******/
@@ -776,7 +754,7 @@ No available documentation.
 		static gp_Elips Ellipse(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::FirstParameter ******/
-		/****** md5 signature: 1757779ac38cb6ed7a7fc48dc2248f69 ******/
+		/****** md5 signature: a921190cd233fea4fdaf8a9d5e9ba0ad ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -785,13 +763,13 @@ C: BRepAdaptor_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const BRepAdaptor_Curve & C);
+		static double FirstParameter(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::GetType ******/
 		/****** md5 signature: 31fa720443f4ab9e306493e70c80396d ******/
@@ -830,13 +808,13 @@ No available documentation.
 		static gp_Hypr Hyperbola(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::Intervals ******/
-		/****** md5 signature: f429463d75cd548af36c429f480bc438 ******/
+		/****** md5 signature: a31b9bb1dc00b01a10e06528e0e359c3 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -847,10 +825,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		static void Intervals(const BRepAdaptor_Curve & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** HLRBRep_BCurveTool::IsClosed ******/
-		/****** md5 signature: d99184f67fee887517aba38b86e74693 ******/
+		/****** md5 signature: c9743e180e75185eec7f6e077fa80626 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -865,10 +843,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const BRepAdaptor_Curve & C);
+		static bool IsClosed(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::IsPeriodic ******/
-		/****** md5 signature: 194751d0899ddeffcd2f9544f0fa0255 ******/
+		/****** md5 signature: f2322cfd305cc4c6ae2eed56958041e4 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -883,10 +861,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const BRepAdaptor_Curve & C);
+		static bool IsPeriodic(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::IsRational ******/
-		/****** md5 signature: c9c5d0c656fb44894939b4a60c4b6249 ******/
+		/****** md5 signature: 729288a9ff1d03be44d090411e2a4446 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "
 Parameters
@@ -901,10 +879,10 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		static Standard_Boolean IsRational(const BRepAdaptor_Curve & C);
+		static bool IsRational(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::LastParameter ******/
-		/****** md5 signature: e697bafb03d659fa87fd20dbec7f562b ******/
+		/****** md5 signature: 4de56dd4974681edb53fc4384c2df197 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -913,13 +891,13 @@ C: BRepAdaptor_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const BRepAdaptor_Curve & C);
+		static double LastParameter(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::Line ******/
 		/****** md5 signature: 2112d4fa4fd46aab85b2063d90b4cca7 ******/
@@ -940,7 +918,7 @@ No available documentation.
 		static gp_Lin Line(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::NbIntervals ******/
-		/****** md5 signature: c4391d4034556532fdf723807037192a ******/
+		/****** md5 signature: 390ea00267ddcfdaa05dea3652eb99a6 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -956,10 +934,10 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const BRepAdaptor_Curve & C, const GeomAbs_Shape S);
+		static int NbIntervals(const BRepAdaptor_Curve & C, const GeomAbs_Shape S);
 
 		/****** HLRBRep_BCurveTool::NbKnots ******/
-		/****** md5 signature: 8a333d639d0d4eb92125136dc3258061 ******/
+		/****** md5 signature: 47e8f3072b12706af81625ae33285948 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "
 Parameters
@@ -974,10 +952,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		static Standard_Integer NbKnots(const BRepAdaptor_Curve & C);
+		static int NbKnots(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::NbPoles ******/
-		/****** md5 signature: 6d7e633819b4f814ca00223438d295c4 ******/
+		/****** md5 signature: 91dd67a2c652cdebe6b6ef6c3a840201 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "
 Parameters
@@ -992,17 +970,17 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		static Standard_Integer NbPoles(const BRepAdaptor_Curve & C);
+		static int NbPoles(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::NbSamples ******/
-		/****** md5 signature: 08db67dee4bca7e396222c05f7fc54e9 ******/
+		/****** md5 signature: bfc7c1ac9de07749995decee4f3257c4 ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U0: float
-U1: float
+U0: double
+U1: double
 
 Return
 -------
@@ -1012,7 +990,7 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		static Standard_Integer NbSamples(const BRepAdaptor_Curve & C, const Standard_Real U0, const Standard_Real U1);
+		static int NbSamples(const BRepAdaptor_Curve & C, const double U0, const double U1);
 
 		/****** HLRBRep_BCurveTool::Parabola ******/
 		/****** md5 signature: fdbc46a61fb7fc963accfa5567aefdd3 ******/
@@ -1033,7 +1011,7 @@ No available documentation.
 		static gp_Parab Parabola(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::Period ******/
-		/****** md5 signature: 54e2bb7b341b5e9768d7e59aff136bbb ******/
+		/****** md5 signature: 46ef8698d4d5f09dd1bd5cd52a01a720 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
@@ -1042,22 +1020,22 @@ C: BRepAdaptor_Curve
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const BRepAdaptor_Curve & C);
+		static double Period(const BRepAdaptor_Curve & C);
 
 		/****** HLRBRep_BCurveTool::Poles ******/
-		/****** md5 signature: 12002c5f466ee084863dfdc9a28e4f3f ******/
+		/****** md5 signature: 0d15a58610f4a6f9992a74d517b0b56e ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: TColgp_Array1OfPnt
+T: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -1067,17 +1045,17 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		static void Poles(const BRepAdaptor_Curve & C, TColgp_Array1OfPnt & T);
+		static void Poles(const BRepAdaptor_Curve & C, NCollection_Array1<gp_Pnt> & T);
 
 		/****** HLRBRep_BCurveTool::PolesAndWeights ******/
-		/****** md5 signature: c103846c763c66bd878fada0e2d4bd94 ******/
+		/****** md5 signature: 4642a2df77806b299a089c1d9708425b ******/
 		%feature("compactdefaultargs") PolesAndWeights;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: TColgp_Array1OfPnt
-W: TColStd_Array1OfReal
+T: NCollection_Array1<gp_Pnt>
+W: NCollection_Array1<double>
 
 Return
 -------
@@ -1087,35 +1065,35 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		static void PolesAndWeights(const BRepAdaptor_Curve & C, TColgp_Array1OfPnt & T, TColStd_Array1OfReal & W);
+		static void PolesAndWeights(const BRepAdaptor_Curve & C, NCollection_Array1<gp_Pnt> & T, NCollection_Array1<double> & W);
 
 		/****** HLRBRep_BCurveTool::Resolution ******/
-		/****** md5 signature: 63fc446420be2fd68699d622a91ff91b ******/
+		/****** md5 signature: 8d1ff32cfbd3fd022cd36944eb214f13 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		static Standard_Real Resolution(const BRepAdaptor_Curve & C, const Standard_Real R3d);
+		static double Resolution(const BRepAdaptor_Curve & C, const double R3d);
 
 		/****** HLRBRep_BCurveTool::Value ******/
-		/****** md5 signature: 23b56266cc1e7b195b61ae726893d32f ******/
+		/****** md5 signature: d67c5b7f2895adcc19240fc5cdd383ff ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 C: BRepAdaptor_Curve
-U: float
+U: double
 
 Return
 -------
@@ -1125,7 +1103,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		static gp_Pnt Value(const BRepAdaptor_Curve & C, const Standard_Real U);
+		static gp_Pnt Value(const BRepAdaptor_Curve & C, const double U);
 
 };
 
@@ -1158,15 +1136,15 @@ No available documentation.
 		 HLRBRep_BiPnt2D();
 
 		/****** HLRBRep_BiPnt2D::HLRBRep_BiPnt2D ******/
-		/****** md5 signature: 7de8d55cb4ff4b525dc93e614657e18b ******/
+		/****** md5 signature: bf5e8a129b14aa2a0cf0103cfa6ac484 ******/
 		%feature("compactdefaultargs") HLRBRep_BiPnt2D;
 		%feature("autodoc", "
 Parameters
 ----------
-x1: float
-y1: float
-x2: float
-y2: float
+x1: double
+y1: double
+x2: double
+y2: double
 S: TopoDS_Shape
 reg1: bool
 regn: bool
@@ -1181,10 +1159,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_BiPnt2D;
-		 HLRBRep_BiPnt2D(const Standard_Real x1, const Standard_Real y1, const Standard_Real x2, const Standard_Real y2, const TopoDS_Shape & S, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
+		 HLRBRep_BiPnt2D(const double x1, const double y1, const double x2, const double y2, const TopoDS_Shape & S, const bool reg1, const bool regn, const bool outl, const bool intl);
 
 		/****** HLRBRep_BiPnt2D::HLRBRep_BiPnt2D ******/
-		/****** md5 signature: a614f22a1e85cb9e105bb92c0f4493b9 ******/
+		/****** md5 signature: 49f9e057e7f014acc20d98fa426041fb ******/
 		%feature("compactdefaultargs") HLRBRep_BiPnt2D;
 		%feature("autodoc", "
 Parameters
@@ -1205,10 +1183,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_BiPnt2D;
-		 HLRBRep_BiPnt2D(const gp_XY & thePoint1, const gp_XY & thePoint2, const TopoDS_Shape & S, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
+		 HLRBRep_BiPnt2D(const gp_XY & thePoint1, const gp_XY & thePoint2, const TopoDS_Shape & S, const bool reg1, const bool regn, const bool outl, const bool intl);
 
 		/****** HLRBRep_BiPnt2D::IntLine ******/
-		/****** md5 signature: 12d7cbbfcbf9b7024b633fb2f23f4627 ******/
+		/****** md5 signature: c9edcd05c0ec34762bc524e689d9f660 ******/
 		%feature("compactdefaultargs") IntLine;
 		%feature("autodoc", "Return
 -------
@@ -1218,10 +1196,10 @@ Description
 -----------
 No available documentation.
 ") IntLine;
-		Standard_Boolean IntLine();
+		bool IntLine();
 
 		/****** HLRBRep_BiPnt2D::IntLine ******/
-		/****** md5 signature: db1141c08b265a5a4892f7f723f2dd5f ******/
+		/****** md5 signature: f256923667b92d1083769dbd58725016 ******/
 		%feature("compactdefaultargs") IntLine;
 		%feature("autodoc", "
 Parameters
@@ -1236,10 +1214,10 @@ Description
 -----------
 No available documentation.
 ") IntLine;
-		void IntLine(const Standard_Boolean B);
+		void IntLine(const bool B);
 
 		/****** HLRBRep_BiPnt2D::OutLine ******/
-		/****** md5 signature: 5ca0f10eca0ab31cafc651fcdd487066 ******/
+		/****** md5 signature: 42477242ba91d27bc1eca8a82bfa084d ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "Return
 -------
@@ -1249,10 +1227,10 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		Standard_Boolean OutLine();
+		bool OutLine();
 
 		/****** HLRBRep_BiPnt2D::OutLine ******/
-		/****** md5 signature: b1713b4ae8c761b2d01b059d873779f4 ******/
+		/****** md5 signature: f28eafd4b7d27aa4a239d843dbdb30c1 ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "
 Parameters
@@ -1267,7 +1245,7 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		void OutLine(const Standard_Boolean B);
+		void OutLine(const bool B);
 
 		/****** HLRBRep_BiPnt2D::P1 ******/
 		/****** md5 signature: 1b12b3d4ce274b258fc80c09f73b8981 ******/
@@ -1296,7 +1274,7 @@ No available documentation.
 		const gp_Pnt2d P2();
 
 		/****** HLRBRep_BiPnt2D::Rg1Line ******/
-		/****** md5 signature: 909228d95e513182f5095879976686a6 ******/
+		/****** md5 signature: 2fe8ba46c5783bf24f6be03f02a12483 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "Return
 -------
@@ -1306,10 +1284,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		Standard_Boolean Rg1Line();
+		bool Rg1Line();
 
 		/****** HLRBRep_BiPnt2D::Rg1Line ******/
-		/****** md5 signature: 8664f6dc97a60a9616441f541a3d378e ******/
+		/****** md5 signature: 42a79575c6aef6c3cb7b530ee0aad078 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "
 Parameters
@@ -1324,10 +1302,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		void Rg1Line(const Standard_Boolean B);
+		void Rg1Line(const bool B);
 
 		/****** HLRBRep_BiPnt2D::RgNLine ******/
-		/****** md5 signature: 9048b7d28453594775a66644606d3856 ******/
+		/****** md5 signature: 4d91c982e83f116a8b076b5c72ecd8df ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "Return
 -------
@@ -1337,10 +1315,10 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		Standard_Boolean RgNLine();
+		bool RgNLine();
 
 		/****** HLRBRep_BiPnt2D::RgNLine ******/
-		/****** md5 signature: 15cd72eef01a3ba9cd0d52f504140d36 ******/
+		/****** md5 signature: f244442396bb29b5e7c9917acbcf1d62 ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "
 Parameters
@@ -1355,7 +1333,7 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		void RgNLine(const Standard_Boolean B);
+		void RgNLine(const bool B);
 
 		/****** HLRBRep_BiPnt2D::Shape ******/
 		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
@@ -1416,17 +1394,17 @@ No available documentation.
 		 HLRBRep_BiPoint();
 
 		/****** HLRBRep_BiPoint::HLRBRep_BiPoint ******/
-		/****** md5 signature: ebcb9699c5eff50e6efc4b93c8fc33b1 ******/
+		/****** md5 signature: 70a7b6c7ccd4eefe171e86cbb934f2d9 ******/
 		%feature("compactdefaultargs") HLRBRep_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-x1: float
-y1: float
-z1: float
-x2: float
-y2: float
-z2: float
+x1: double
+y1: double
+z1: double
+x2: double
+y2: double
+z2: double
 S: TopoDS_Shape
 reg1: bool
 regn: bool
@@ -1441,10 +1419,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_BiPoint;
-		 HLRBRep_BiPoint(const Standard_Real x1, const Standard_Real y1, const Standard_Real z1, const Standard_Real x2, const Standard_Real y2, const Standard_Real z2, const TopoDS_Shape & S, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
+		 HLRBRep_BiPoint(const double x1, const double y1, const double z1, const double x2, const double y2, const double z2, const TopoDS_Shape & S, const bool reg1, const bool regn, const bool outl, const bool intl);
 
 		/****** HLRBRep_BiPoint::IntLine ******/
-		/****** md5 signature: 12d7cbbfcbf9b7024b633fb2f23f4627 ******/
+		/****** md5 signature: c9edcd05c0ec34762bc524e689d9f660 ******/
 		%feature("compactdefaultargs") IntLine;
 		%feature("autodoc", "Return
 -------
@@ -1454,10 +1432,10 @@ Description
 -----------
 No available documentation.
 ") IntLine;
-		Standard_Boolean IntLine();
+		bool IntLine();
 
 		/****** HLRBRep_BiPoint::IntLine ******/
-		/****** md5 signature: db1141c08b265a5a4892f7f723f2dd5f ******/
+		/****** md5 signature: f256923667b92d1083769dbd58725016 ******/
 		%feature("compactdefaultargs") IntLine;
 		%feature("autodoc", "
 Parameters
@@ -1472,10 +1450,10 @@ Description
 -----------
 No available documentation.
 ") IntLine;
-		void IntLine(const Standard_Boolean B);
+		void IntLine(const bool B);
 
 		/****** HLRBRep_BiPoint::OutLine ******/
-		/****** md5 signature: 5ca0f10eca0ab31cafc651fcdd487066 ******/
+		/****** md5 signature: 42477242ba91d27bc1eca8a82bfa084d ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "Return
 -------
@@ -1485,10 +1463,10 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		Standard_Boolean OutLine();
+		bool OutLine();
 
 		/****** HLRBRep_BiPoint::OutLine ******/
-		/****** md5 signature: b1713b4ae8c761b2d01b059d873779f4 ******/
+		/****** md5 signature: f28eafd4b7d27aa4a239d843dbdb30c1 ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "
 Parameters
@@ -1503,7 +1481,7 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		void OutLine(const Standard_Boolean B);
+		void OutLine(const bool B);
 
 		/****** HLRBRep_BiPoint::P1 ******/
 		/****** md5 signature: 08246bf94221b70fda85865c49f42ef1 ******/
@@ -1532,7 +1510,7 @@ No available documentation.
 		const gp_Pnt P2();
 
 		/****** HLRBRep_BiPoint::Rg1Line ******/
-		/****** md5 signature: 909228d95e513182f5095879976686a6 ******/
+		/****** md5 signature: 2fe8ba46c5783bf24f6be03f02a12483 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "Return
 -------
@@ -1542,10 +1520,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		Standard_Boolean Rg1Line();
+		bool Rg1Line();
 
 		/****** HLRBRep_BiPoint::Rg1Line ******/
-		/****** md5 signature: 8664f6dc97a60a9616441f541a3d378e ******/
+		/****** md5 signature: 42a79575c6aef6c3cb7b530ee0aad078 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "
 Parameters
@@ -1560,10 +1538,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		void Rg1Line(const Standard_Boolean B);
+		void Rg1Line(const bool B);
 
 		/****** HLRBRep_BiPoint::RgNLine ******/
-		/****** md5 signature: 9048b7d28453594775a66644606d3856 ******/
+		/****** md5 signature: 4d91c982e83f116a8b076b5c72ecd8df ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "Return
 -------
@@ -1573,10 +1551,10 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		Standard_Boolean RgNLine();
+		bool RgNLine();
 
 		/****** HLRBRep_BiPoint::RgNLine ******/
-		/****** md5 signature: 15cd72eef01a3ba9cd0d52f504140d36 ******/
+		/****** md5 signature: f244442396bb29b5e7c9917acbcf1d62 ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "
 Parameters
@@ -1591,7 +1569,7 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		void RgNLine(const Standard_Boolean B);
+		void RgNLine(const bool B);
 
 		/****** HLRBRep_BiPoint::Shape ******/
 		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
@@ -1652,14 +1630,14 @@ Empty constructor.
 		 HLRBRep_CInter();
 
 		/****** HLRBRep_CInter::HLRBRep_CInter ******/
-		/****** md5 signature: 8aeca064bc4aec39e268cb59eeacecf1 ******/
+		/****** md5 signature: 753a4c043668406b0d4d5530163ec6bb ******/
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-TolConf: float
-Tol: float
+C: HLRBRep_CurvePtr
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1669,18 +1647,18 @@ Description
 -----------
 Self Intersection of a curve.
 ") HLRBRep_CInter;
-		 HLRBRep_CInter(const Standard_Address & C, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_CInter(const HLRBRep_CurvePtr & C, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::HLRBRep_CInter ******/
-		/****** md5 signature: f9d3b51e2abd4c9171599d9ca3bcc84e ******/
+		/****** md5 signature: fd3faa41891499498a4a628663deb6c8 ******/
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 D: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1690,18 +1668,18 @@ Description
 -----------
 Self Intersection of a curve with a domain.
 ") HLRBRep_CInter;
-		 HLRBRep_CInter(const Standard_Address & C, const IntRes2d_Domain & D, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_CInter(const HLRBRep_CurvePtr & C, const IntRes2d_Domain & D, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::HLRBRep_CInter ******/
-		/****** md5 signature: fa3264cb6400a364ff4e498fe1794e3e ******/
+		/****** md5 signature: a1cbc9536dff0c0c08487b2705606a22 ******/
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-C2: Standard_Address
-TolConf: float
-Tol: float
+C1: HLRBRep_CurvePtr
+C2: HLRBRep_CurvePtr
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1711,19 +1689,19 @@ Description
 -----------
 Intersection between 2 curves.
 ") HLRBRep_CInter;
-		 HLRBRep_CInter(const Standard_Address & C1, const Standard_Address & C2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_CInter(const HLRBRep_CurvePtr & C1, const HLRBRep_CurvePtr & C2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::HLRBRep_CInter ******/
-		/****** md5 signature: 5c301b77f7af16945f2926768b1a5bbc ******/
+		/****** md5 signature: 7f5e083e48dfdade771d0b51f0938572 ******/
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
+C1: HLRBRep_CurvePtr
 D1: IntRes2d_Domain
-C2: Standard_Address
-TolConf: float
-Tol: float
+C2: HLRBRep_CurvePtr
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1733,19 +1711,19 @@ Description
 -----------
 Intersection between 2 curves.
 ") HLRBRep_CInter;
-		 HLRBRep_CInter(const Standard_Address & C1, const IntRes2d_Domain & D1, const Standard_Address & C2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_CInter(const HLRBRep_CurvePtr & C1, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & C2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::HLRBRep_CInter ******/
-		/****** md5 signature: 7d3a3989b37b0e8898f57df53903be49 ******/
+		/****** md5 signature: f3b72083116258aaffd90c851b27e29e ******/
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-C2: Standard_Address
+C1: HLRBRep_CurvePtr
+C2: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1755,20 +1733,20 @@ Description
 -----------
 Intersection between 2 curves.
 ") HLRBRep_CInter;
-		 HLRBRep_CInter(const Standard_Address & C1, const Standard_Address & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_CInter(const HLRBRep_CurvePtr & C1, const HLRBRep_CurvePtr & C2, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::HLRBRep_CInter ******/
-		/****** md5 signature: f51d407d7df0e74e810746561629d7d8 ******/
+		/****** md5 signature: de7c55e95f04b3eadfdc828ad968f991 ******/
 		%feature("compactdefaultargs") HLRBRep_CInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
+C1: HLRBRep_CurvePtr
 D1: IntRes2d_Domain
-C2: Standard_Address
+C2: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1778,16 +1756,16 @@ Description
 -----------
 Intersection between 2 curves.
 ") HLRBRep_CInter;
-		 HLRBRep_CInter(const Standard_Address & C1, const IntRes2d_Domain & D1, const Standard_Address & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_CInter(const HLRBRep_CurvePtr & C1, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & C2, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::ComputeDomain ******/
-		/****** md5 signature: 3c697f1654eff7dabc7704497c8e7b94 ******/
+		/****** md5 signature: b0f060887e6c70bf3c91432139f66d7b ******/
 		%feature("compactdefaultargs") ComputeDomain;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-TolDomain: float
+C1: HLRBRep_CurvePtr
+TolDomain: double
 
 Return
 -------
@@ -1797,10 +1775,10 @@ Description
 -----------
 Create a domain from a curve.
 ") ComputeDomain;
-		IntRes2d_Domain ComputeDomain(const Standard_Address & C1, const Standard_Real TolDomain);
+		IntRes2d_Domain ComputeDomain(const HLRBRep_CurvePtr & C1, const double TolDomain);
 
 		/****** HLRBRep_CInter::GetMinNbSamples ******/
-		/****** md5 signature: 337038c4c6920a9f4b1d8efd60cf2219 ******/
+		/****** md5 signature: fd21667dcec0124f6dfae4103cb5ec2b ******/
 		%feature("compactdefaultargs") GetMinNbSamples;
 		%feature("autodoc", "Return
 -------
@@ -1810,20 +1788,20 @@ Description
 -----------
 No available documentation.
 ") GetMinNbSamples;
-		Standard_Integer GetMinNbSamples();
+		int GetMinNbSamples();
 
 		/****** HLRBRep_CInter::Perform ******/
-		/****** md5 signature: e605cb2068426fb82451d7c083111eab ******/
+		/****** md5 signature: 750f695a4069772b93981be4be9b80e1 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
+C1: HLRBRep_CurvePtr
 D1: IntRes2d_Domain
-C2: Standard_Address
+C2: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1833,18 +1811,18 @@ Description
 -----------
 Intersection between 2 curves.
 ") Perform;
-		void Perform(const Standard_Address & C1, const IntRes2d_Domain & D1, const Standard_Address & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & C1, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & C2, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::Perform ******/
-		/****** md5 signature: 0c0100dc2c5c7f1f96c9e7224dfa0205 ******/
+		/****** md5 signature: 3090834db8fce41cb32baa2244dfccbe ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-C2: Standard_Address
-TolConf: float
-Tol: float
+C1: HLRBRep_CurvePtr
+C2: HLRBRep_CurvePtr
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1854,18 +1832,18 @@ Description
 -----------
 Intersection between 2 curves.
 ") Perform;
-		void Perform(const Standard_Address & C1, const Standard_Address & C2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & C1, const HLRBRep_CurvePtr & C2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::Perform ******/
-		/****** md5 signature: 2c5742a6011dc5b9894110ef4a8eed32 ******/
+		/****** md5 signature: baf3b2bc66dbb3d49db662e6d89fd6ca ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
+C1: HLRBRep_CurvePtr
 D1: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1875,17 +1853,17 @@ Description
 -----------
 Intersection between 2 curves.
 ") Perform;
-		void Perform(const Standard_Address & C1, const IntRes2d_Domain & D1, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & C1, const IntRes2d_Domain & D1, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::Perform ******/
-		/****** md5 signature: 12f47e6c03dae71785fae4255205030b ******/
+		/****** md5 signature: 0d1c5946fca54fe494efd43c6b857d2e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-TolConf: float
-Tol: float
+C1: HLRBRep_CurvePtr
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1895,19 +1873,19 @@ Description
 -----------
 Intersection between 2 curves.
 ") Perform;
-		void Perform(const Standard_Address & C1, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & C1, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::Perform ******/
-		/****** md5 signature: 276d1fa59419189aca1404af4f7aa0f7 ******/
+		/****** md5 signature: af88dd9fccdc440c91192f81279dcfad ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
+C1: HLRBRep_CurvePtr
 D1: IntRes2d_Domain
-C2: Standard_Address
-TolConf: float
-Tol: float
+C2: HLRBRep_CurvePtr
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1917,19 +1895,19 @@ Description
 -----------
 Intersection between 2 curves.
 ") Perform;
-		void Perform(const Standard_Address & C1, const IntRes2d_Domain & D1, const Standard_Address & C2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & C1, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & C2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::Perform ******/
-		/****** md5 signature: c480cebfff37e04c2c51bdf97d545474 ******/
+		/****** md5 signature: 2e1dddc653fb50b897969b60e2adbd25 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-C2: Standard_Address
+C1: HLRBRep_CurvePtr
+C2: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -1939,10 +1917,10 @@ Description
 -----------
 Intersection between 2 curves.
 ") Perform;
-		void Perform(const Standard_Address & C1, const Standard_Address & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & C1, const HLRBRep_CurvePtr & C2, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_CInter::SetMinNbSamples ******/
-		/****** md5 signature: 32ce254ec9cb1151513557c7a8edb457 ******/
+		/****** md5 signature: 9d653919fbe121787c6b21a6579f45a2 ******/
 		%feature("compactdefaultargs") SetMinNbSamples;
 		%feature("autodoc", "
 Parameters
@@ -1957,254 +1935,12 @@ Description
 -----------
 Set / get minimum number of points in polygon intersection.
 ") SetMinNbSamples;
-		void SetMinNbSamples(const Standard_Integer theMinNbSamples);
+		void SetMinNbSamples(const int theMinNbSamples);
 
 };
 
 
 %extend HLRBRep_CInter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************
-* class HLRBRep_CLProps *
-************************/
-class HLRBRep_CLProps {
-	public:
-		/****** HLRBRep_CLProps::HLRBRep_CLProps ******/
-		/****** md5 signature: 399ace1f9418e160719ad20b2c45e758 ******/
-		%feature("compactdefaultargs") HLRBRep_CLProps;
-		%feature("autodoc", "
-Parameters
-----------
-C: HLRBRep_Curve *
-N: int
-Resolution: float
-
-Return
--------
-None
-
-Description
------------
-Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
-") HLRBRep_CLProps;
-		 HLRBRep_CLProps(const HLRBRep_Curve * & C, const Standard_Integer N, const Standard_Real Resolution);
-
-		/****** HLRBRep_CLProps::HLRBRep_CLProps ******/
-		/****** md5 signature: b2ed732e896f384f0f2bcff0c690289d ******/
-		%feature("compactdefaultargs") HLRBRep_CLProps;
-		%feature("autodoc", "
-Parameters
-----------
-C: HLRBRep_Curve *
-U: float
-N: int
-Resolution: float
-
-Return
--------
-None
-
-Description
------------
-Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
-") HLRBRep_CLProps;
-		 HLRBRep_CLProps(const HLRBRep_Curve * & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
-
-		/****** HLRBRep_CLProps::HLRBRep_CLProps ******/
-		/****** md5 signature: 073bdafcef583228bb61b2f5743095fe ******/
-		%feature("compactdefaultargs") HLRBRep_CLProps;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-Resolution: float
-
-Return
--------
-None
-
-Description
------------
-Same as previous constructor but here the parameter is set to the value <U> and the curve is set with SetCurve. the curve can have a empty constructor All the computations done will be related to <C> and <U> when the functions 'set' will be done.
-") HLRBRep_CLProps;
-		 HLRBRep_CLProps(const Standard_Integer N, const Standard_Real Resolution);
-
-		/****** HLRBRep_CLProps::CentreOfCurvature ******/
-		/****** md5 signature: 626d695d5de587ba5c831f0811118d8d ******/
-		%feature("compactdefaultargs") CentreOfCurvature;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-Returns the centre of curvature <P>.
-") CentreOfCurvature;
-		void CentreOfCurvature(gp_Pnt2d & P);
-
-		/****** HLRBRep_CLProps::Curvature ******/
-		/****** md5 signature: 4886f38d109c8344d719e9973cfea7e1 ******/
-		%feature("compactdefaultargs") Curvature;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the curvature.
-") Curvature;
-		Standard_Real Curvature();
-
-		/****** HLRBRep_CLProps::D1 ******/
-		/****** md5 signature: 400251dec252a18ea516927809341fa7 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "Return
--------
-gp_Vec2d
-
-Description
------------
-Returns the first derivative. The derivative is computed if it has not been yet.
-") D1;
-		const gp_Vec2d D1();
-
-		/****** HLRBRep_CLProps::D2 ******/
-		/****** md5 signature: 14a212b020ed6e6189286e37088e41e7 ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "Return
--------
-gp_Vec2d
-
-Description
------------
-Returns the second derivative. The derivative is computed if it has not been yet.
-") D2;
-		const gp_Vec2d D2();
-
-		/****** HLRBRep_CLProps::D3 ******/
-		/****** md5 signature: a13380eb2e77ee845c4ad05a4d86bd7b ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "Return
--------
-gp_Vec2d
-
-Description
------------
-Returns the third derivative. The derivative is computed if it has not been yet.
-") D3;
-		const gp_Vec2d D3();
-
-		/****** HLRBRep_CLProps::IsTangentDefined ******/
-		/****** md5 signature: 96b1d1e7ead0e227ec7d76f9ad798ae8 ******/
-		%feature("compactdefaultargs") IsTangentDefined;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the tangent is defined. For example, the tangent is not defined if the three first derivatives are all null.
-") IsTangentDefined;
-		Standard_Boolean IsTangentDefined();
-
-		/****** HLRBRep_CLProps::Normal ******/
-		/****** md5 signature: 4d525a8e066324f482e1de5d65bdd7c5 ******/
-		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "
-Parameters
-----------
-N: gp_Dir2d
-
-Return
--------
-None
-
-Description
------------
-Returns the normal direction <N>.
-") Normal;
-		void Normal(gp_Dir2d & N);
-
-		/****** HLRBRep_CLProps::SetCurve ******/
-		/****** md5 signature: da07409ce368cb5221f947ebff0385b2 ******/
-		%feature("compactdefaultargs") SetCurve;
-		%feature("autodoc", "
-Parameters
-----------
-C: HLRBRep_Curve *
-
-Return
--------
-None
-
-Description
------------
-Initializes the local properties of the curve for the new curve.
-") SetCurve;
-		void SetCurve(const HLRBRep_Curve * & C);
-
-		/****** HLRBRep_CLProps::SetParameter ******/
-		/****** md5 signature: 6d7d0a8f07175b76bb327cfdc33d2266 ******/
-		%feature("compactdefaultargs") SetParameter;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-None
-
-Description
------------
-Initializes the local properties of the curve for the parameter value <U>.
-") SetParameter;
-		void SetParameter(const Standard_Real U);
-
-		/****** HLRBRep_CLProps::Tangent ******/
-		/****** md5 signature: 2adaff97f5d84c22114b84a6e5def58d ******/
-		%feature("compactdefaultargs") Tangent;
-		%feature("autodoc", "
-Parameters
-----------
-D: gp_Dir2d
-
-Return
--------
-None
-
-Description
------------
-output the tangent direction <D>.
-") Tangent;
-		void Tangent(gp_Dir2d & D);
-
-		/****** HLRBRep_CLProps::Value ******/
-		/****** md5 signature: 01b97600ad700e4edb97bc6008ad0c9b ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Return
--------
-gp_Pnt2d
-
-Description
------------
-Returns the Point.
-") Value;
-		const gp_Pnt2d Value();
-
-};
-
-
-%extend HLRBRep_CLProps {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -2216,7 +1952,7 @@ Returns the Point.
 class HLRBRep_CLPropsATool {
 	public:
 		/****** HLRBRep_CLPropsATool::Continuity ******/
-		/****** md5 signature: 7f420247eac68a867f281f9781f3778d ******/
+		/****** md5 signature: d8a5fa9d7838757f3ea8354eabd3fd1a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -2229,18 +1965,18 @@ int
 
 Description
 -----------
-returns the order of continuity of the curve <C>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
+returns the order of continuity of the curve <C>. returns 1: first derivative only is computable. returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
 ") Continuity;
-		static Standard_Integer Continuity(const HLRBRep_Curve * A);
+		static int Continuity(const HLRBRep_Curve * A);
 
 		/****** HLRBRep_CLPropsATool::D1 ******/
-		/****** md5 signature: 2affccc0306e8c31f3afb59ee11e39ec ******/
+		/****** md5 signature: 1c0a6e76998104ff7a6ad0f54069291c ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 A: HLRBRep_Curve *
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 
@@ -2252,16 +1988,16 @@ Description
 -----------
 Computes the point <P> and first derivative <V1> of parameter <U> on the curve <C>.
 ") D1;
-		static void D1(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
+		static void D1(const HLRBRep_Curve * A, const double U, gp_Pnt2d & P, gp_Vec2d & V1);
 
 		/****** HLRBRep_CLPropsATool::D2 ******/
-		/****** md5 signature: ef03d4ea0914821edca3c5a3bfb8303a ******/
+		/****** md5 signature: bba033efe55437c7d7ba4ba59cd84e30 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 A: HLRBRep_Curve *
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -2274,16 +2010,16 @@ Description
 -----------
 Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the curve <C>.
 ") D2;
-		static void D2(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const HLRBRep_Curve * A, const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** HLRBRep_CLPropsATool::D3 ******/
-		/****** md5 signature: 26a3636f7317f599ad717fd785640591 ******/
+		/****** md5 signature: 23984aaf8e0c75457154a3912a489d3f ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 A: HLRBRep_Curve *
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -2297,10 +2033,10 @@ Description
 -----------
 Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the curve <C>.
 ") D3;
-		static void D3(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const HLRBRep_Curve * A, const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** HLRBRep_CLPropsATool::FirstParameter ******/
-		/****** md5 signature: 2ece17ae4157df8c8b654bc774ab4624 ******/
+		/****** md5 signature: 3512a5a187a28e91f94a1961b1012523 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -2309,16 +2045,16 @@ A: HLRBRep_Curve *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the first parameter bound of the curve.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const HLRBRep_Curve * A);
+		static double FirstParameter(const HLRBRep_Curve * A);
 
 		/****** HLRBRep_CLPropsATool::LastParameter ******/
-		/****** md5 signature: fc9fe85a11bd888680272df9015993f7 ******/
+		/****** md5 signature: c2fd6fa37e79742a49374c10da0cdbd0 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -2327,22 +2063,22 @@ A: HLRBRep_Curve *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the last parameter bound of the curve. FirstParameter must be less than LastParamenter.
 ") LastParameter;
-		static Standard_Real LastParameter(const HLRBRep_Curve * A);
+		static double LastParameter(const HLRBRep_Curve * A);
 
 		/****** HLRBRep_CLPropsATool::Value ******/
-		/****** md5 signature: 7f6215c66dcceff6cc4c7f2b8f016e3c ******/
+		/****** md5 signature: 967944baace8d02029e18e093678ddd9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 A: HLRBRep_Curve *
-U: float
+U: double
 P: gp_Pnt2d
 
 Return
@@ -2353,7 +2089,7 @@ Description
 -----------
 Computes the point <P> of parameter <U> on the Curve from HLRBRep <C>.
 ") Value;
-		static void Value(const HLRBRep_Curve * A, const Standard_Real U, gp_Pnt2d & P);
+		static void Value(const HLRBRep_Curve * A, const double U, gp_Pnt2d & P);
 
 };
 
@@ -2440,12 +2176,12 @@ Sets the 3D curve to be projected.
 		void Curve(const TopoDS_Edge & E);
 
 		/****** HLRBRep_Curve::D0 ******/
-		/****** md5 signature: c5111ce8ff4abb74b6c4ba34040c62bb ******/
+		/****** md5 signature: d44fc8b79f74fec79a6c1299c0966002 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 
 Return
@@ -2456,15 +2192,15 @@ Description
 -----------
 Computes the 3D point of parameter U on the curve.
 ") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
+		void D0(const double U, gp_Pnt & P);
 
 		/****** HLRBRep_Curve::D0 ******/
-		/****** md5 signature: 85d1e98e1313be6e4d71518a7016009f ******/
+		/****** md5 signature: 84a53c546460cdfb18006d071bc91bb3 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 
 Return
@@ -2475,15 +2211,15 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
+		void D0(const double U, gp_Pnt2d & P);
 
 		/****** HLRBRep_Curve::D1 ******/
-		/****** md5 signature: 1460fb893db73aba38f92f1893861fce ******/
+		/****** md5 signature: d19244fa24a36e163186f27b658fb38a ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt
 V: gp_Vec
 
@@ -2495,15 +2231,15 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative.
 ") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
+		void D1(const double U, gp_Pnt & P, gp_Vec & V);
 
 		/****** HLRBRep_Curve::D1 ******/
-		/****** md5 signature: 857bb09c503ab50c52904dfc4cdc1a50 ******/
+		/****** md5 signature: 48c43d05c08267ed29499f9f800a10f7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -2515,15 +2251,15 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		void D1(const double U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** HLRBRep_Curve::D2 ******/
-		/****** md5 signature: 8574226eb2474fe793edb28b9a188341 ******/
+		/****** md5 signature: 88c09fb237eeb094775e8973f548f176 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -2536,15 +2272,15 @@ Description
 -----------
 Raised if the continuity of the current interval is not C2.
 ") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		void D2(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** HLRBRep_Curve::D3 ******/
-		/****** md5 signature: 30bd0f2c5f6642dfece94c3612cd0e2f ******/
+		/****** md5 signature: aa71b4d4aec7c2fb22715bc2e3045b04 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -2558,15 +2294,15 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		void D3(const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** HLRBRep_Curve::DN ******/
-		/****** md5 signature: 0932075ca22fa86aeae3a5a4650fb0ff ******/
+		/****** md5 signature: ce0658955cf7ca6cb009d11c1a9081f7 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 N: int
 
 Return
@@ -2577,10 +2313,10 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
+		gp_Vec2d DN(const double U, const int N);
 
 		/****** HLRBRep_Curve::Degree ******/
-		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
+		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -2590,7 +2326,7 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** HLRBRep_Curve::Ellipse ******/
 		/****** md5 signature: 4d2fb3c954fc20d00e7fb670cc75b8c5 ******/
@@ -2606,17 +2342,17 @@ No available documentation.
 		gp_Elips2d Ellipse();
 
 		/****** HLRBRep_Curve::FirstParameter ******/
-		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
+		/****** md5 signature: 663a02fdcfecea2f8437f306e48dfc6b ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** HLRBRep_Curve::GetCurve ******/
 		/****** md5 signature: 7d94e917f4c49b684e552ce75cc9abb1 ******/
@@ -2658,12 +2394,12 @@ No available documentation.
 		gp_Hypr2d Hyperbola();
 
 		/****** HLRBRep_Curve::Intervals ******/
-		/****** md5 signature: c7a2f17df7514293a67a56baae0afb68 ******/
+		/****** md5 signature: e4977c3906016e087e932448dc6271e5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2674,10 +2410,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** HLRBRep_Curve::IsClosed ******/
-		/****** md5 signature: 29709d02fadc9fcb79a766bc9679271b ******/
+		/****** md5 signature: 66fc0caa1853d24780b1d28b8296bc6c ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -2687,10 +2423,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** HLRBRep_Curve::IsPeriodic ******/
-		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
+		/****** md5 signature: d36764d6f9b1283d23b2bfdabe28da79 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2700,10 +2436,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** HLRBRep_Curve::IsRational ******/
-		/****** md5 signature: fd4212ffa7bc30cde420e74a2c539434 ******/
+		/****** md5 signature: 2d134f58b1ac19806ba32cb72ce44772 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -2713,15 +2449,15 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** HLRBRep_Curve::Knots ******/
-		/****** md5 signature: 6ec7b1cc69f6d718a60017b92f325470 ******/
+		/****** md5 signature: 3afa22b3da08a0aed58b72fd3aa55c9f ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
 ----------
-kn: TColStd_Array1OfReal
+kn: NCollection_Array1<double>
 
 Return
 -------
@@ -2731,20 +2467,20 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(TColStd_Array1OfReal & kn);
+		void Knots(NCollection_Array1<double> & kn);
 
 		/****** HLRBRep_Curve::LastParameter ******/
-		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
+		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** HLRBRep_Curve::Line ******/
 		/****** md5 signature: 8f714dea9190d608a011f61fa588b4f4 ******/
@@ -2760,12 +2496,12 @@ No available documentation.
 		gp_Lin2d Line();
 
 		/****** HLRBRep_Curve::Multiplicities ******/
-		/****** md5 signature: 91f16d3446296cf815739601f36e1b4f ******/
+		/****** md5 signature: 032d01361c1675bd452af6e944010796 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
-mu: TColStd_Array1OfInteger
+mu: NCollection_Array1<int>
 
 Return
 -------
@@ -2775,10 +2511,10 @@ Description
 -----------
 No available documentation.
 ") Multiplicities;
-		void Multiplicities(TColStd_Array1OfInteger & mu);
+		void Multiplicities(NCollection_Array1<int> & mu);
 
 		/****** HLRBRep_Curve::NbIntervals ******/
-		/****** md5 signature: a9cec7e4e6cb5b355a27e6de1f3fc9d9 ******/
+		/****** md5 signature: a8ba1446e056c10b55516babe8124726 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2793,10 +2529,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** HLRBRep_Curve::NbKnots ******/
-		/****** md5 signature: ccda669299f8eba1ba0d3387af4c950e ******/
+		/****** md5 signature: 1d7f6bb61170b57fc8534832d22fab99 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -2806,10 +2542,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** HLRBRep_Curve::NbPoles ******/
-		/****** md5 signature: 9a7d6d5f8a21c5833786e951bce99604 ******/
+		/****** md5 signature: ec44b31f908a8be9d45ab84543b6e8d5 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -2819,7 +2555,7 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** HLRBRep_Curve::Parabola ******/
 		/****** md5 signature: b95e4eaba6ed0e103a45829a8ad74d91 ******/
@@ -2835,61 +2571,61 @@ No available documentation.
 		gp_Parab2d Parabola();
 
 		/****** HLRBRep_Curve::Parameter2d ******/
-		/****** md5 signature: a7d193182f9115c6e67ca000faffc353 ******/
+		/****** md5 signature: ec24c34a95c3e5c244272e55a0aa85d8 ******/
 		%feature("compactdefaultargs") Parameter2d;
 		%feature("autodoc", "
 Parameters
 ----------
-P3d: float
+P3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the 2d curve from the parameter on the 3d curve.
 ") Parameter2d;
-		Standard_Real Parameter2d(const Standard_Real P3d);
+		double Parameter2d(const double P3d);
 
 		/****** HLRBRep_Curve::Parameter3d ******/
-		/****** md5 signature: cdd6c8e0285fa1d302b3159a50de98c8 ******/
+		/****** md5 signature: cb4c8a2e8d5d31d044ef685297bd9338 ******/
 		%feature("compactdefaultargs") Parameter3d;
 		%feature("autodoc", "
 Parameters
 ----------
-P2d: float
+P2d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the 3d curve from the parameter on the 2d curve.
 ") Parameter3d;
-		Standard_Real Parameter3d(const Standard_Real P2d);
+		double Parameter3d(const double P2d);
 
 		/****** HLRBRep_Curve::Period ******/
-		/****** md5 signature: 0270204961d3b0052ffe029cbcdbacd9 ******/
+		/****** md5 signature: 46c44a3d0a70e4379c4de5440be6b09a ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** HLRBRep_Curve::Poles ******/
-		/****** md5 signature: d8d43060127b6f850ce0778e9da31e11 ******/
+		/****** md5 signature: 6543f5043f68da7f8af4e00bc4e83cdd ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
-TP: TColgp_Array1OfPnt2d
+TP: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -2899,16 +2635,16 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(TColgp_Array1OfPnt2d & TP);
+		void Poles(NCollection_Array1<gp_Pnt2d> & TP);
 
 		/****** HLRBRep_Curve::Poles ******/
-		/****** md5 signature: 0f404e0cd8b4eb95e29776c75d04fa62 ******/
+		/****** md5 signature: e2584a859a1af0e2a9b1dbeb83ee9676 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Geom_BSplineCurve
-TP: TColgp_Array1OfPnt2d
+TP: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -2918,16 +2654,16 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(const opencascade::handle<Geom_BSplineCurve> & aCurve, TColgp_Array1OfPnt2d & TP);
+		void Poles(const opencascade::handle<Geom_BSplineCurve> & aCurve, NCollection_Array1<gp_Pnt2d> & TP);
 
 		/****** HLRBRep_Curve::PolesAndWeights ******/
-		/****** md5 signature: a9bec1f6251c51689ebe9180ef9b86fd ******/
+		/****** md5 signature: 5353d3c5bd5899a90e860821f1a7a585 ******/
 		%feature("compactdefaultargs") PolesAndWeights;
 		%feature("autodoc", "
 Parameters
 ----------
-TP: TColgp_Array1OfPnt2d
-TW: TColStd_Array1OfReal
+TP: NCollection_Array1<gp_Pnt2d>
+TW: NCollection_Array1<double>
 
 Return
 -------
@@ -2937,17 +2673,17 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		void PolesAndWeights(TColgp_Array1OfPnt2d & TP, TColStd_Array1OfReal & TW);
+		void PolesAndWeights(NCollection_Array1<gp_Pnt2d> & TP, NCollection_Array1<double> & TW);
 
 		/****** HLRBRep_Curve::PolesAndWeights ******/
-		/****** md5 signature: 1ddc0ce09b4c6bb4a0ca2edd7d7f703a ******/
+		/****** md5 signature: c48b32a091e146e6b2e8848d1248c442 ******/
 		%feature("compactdefaultargs") PolesAndWeights;
 		%feature("autodoc", "
 Parameters
 ----------
 aCurve: Geom_BSplineCurve
-TP: TColgp_Array1OfPnt2d
-TW: TColStd_Array1OfReal
+TP: NCollection_Array1<gp_Pnt2d>
+TW: NCollection_Array1<double>
 
 Return
 -------
@@ -2957,7 +2693,7 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		void PolesAndWeights(const opencascade::handle<Geom_BSplineCurve> & aCurve, TColgp_Array1OfPnt2d & TP, TColStd_Array1OfReal & TW);
+		void PolesAndWeights(const opencascade::handle<Geom_BSplineCurve> & aCurve, NCollection_Array1<gp_Pnt2d> & TP, NCollection_Array1<double> & TW);
 
 		/****** HLRBRep_Curve::Projector ******/
 		/****** md5 signature: 410e9a0b959e6b25e2fe54ccebda5aa1 ******/
@@ -2978,25 +2714,25 @@ No available documentation.
 		void Projector(const HLRAlgo_Projector * Proj);
 
 		/****** HLRBRep_Curve::Resolution ******/
-		/****** md5 signature: 955dbc498c06516d62e17e1e8d38cba7 ******/
+		/****** md5 signature: 9e003da76059b4ae9d259081be3b319a ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** HLRBRep_Curve::Tangent ******/
-		/****** md5 signature: 34a3a88b37e77805b502c5bea027e3bb ******/
+		/****** md5 signature: 899d1d218e4b60b7649f14cfab407161 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -3013,53 +2749,53 @@ Description
 -----------
 Depending on <AtStart> computes the 2D point and tangent on the curve at sart (or at end). If the first derivative is null look after at start (or before at end) with the second derivative.
 ") Tangent;
-		void Tangent(const Standard_Boolean AtStart, gp_Pnt2d & P, gp_Dir2d & D);
+		void Tangent(const bool AtStart, gp_Pnt2d & P, gp_Dir2d & D);
 
 		/****** HLRBRep_Curve::Update ******/
-		/****** md5 signature: 41f3afa541b64cf099deddb1648a46f9 ******/
+		/****** md5 signature: c94cf0594b94aed4cf4f79d1d50b16ac ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
 ----------
-TotMin: float
-TotMax: float
+TotMin: double
+TotMax: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Update the minmax and the internal data.
 ") Update;
-		Standard_Real Update(Standard_Real TotMin[16], Standard_Real TotMax[16]);
+		double Update(double TotMin[16], double TotMax[16]);
 
 		/****** HLRBRep_Curve::UpdateMinMax ******/
-		/****** md5 signature: 211e01ed8fa6b28c2271ba3f6d64c4e9 ******/
+		/****** md5 signature: cf428e1cc823b81a27b8632ce5aac46a ******/
 		%feature("compactdefaultargs") UpdateMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
-TotMin: float
-TotMax: float
+TotMin: double
+TotMax: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Update the minmax returns tol for enlarge;.
 ") UpdateMinMax;
-		Standard_Real UpdateMinMax(Standard_Real TotMin[16], Standard_Real TotMax[16]);
+		double UpdateMinMax(double TotMin[16], double TotMax[16]);
 
 		/****** HLRBRep_Curve::Value ******/
-		/****** md5 signature: 1105e8ccba0b18e6fe7169aa8e376b83 ******/
+		/****** md5 signature: d81b6c54096547700b91b9c259aefa3c ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -3069,15 +2805,15 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		gp_Pnt2d Value(const Standard_Real U);
+		gp_Pnt2d Value(const double U);
 
 		/****** HLRBRep_Curve::Value3D ******/
-		/****** md5 signature: 187ff8a66e93e16bfe9f47212c7f0d91 ******/
+		/****** md5 signature: 5b33e153a3e333c25e74f4f62dda364d ******/
 		%feature("compactdefaultargs") Value3D;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -3087,25 +2823,25 @@ Description
 -----------
 Computes the 3D point of parameter U on the curve.
 ") Value3D;
-		gp_Pnt Value3D(const Standard_Real U);
+		gp_Pnt Value3D(const double U);
 
 		/****** HLRBRep_Curve::Z ******/
-		/****** md5 signature: 790deef5d3b9047eae218dd2026bdbcc ******/
+		/****** md5 signature: 795679f3a86979537c899081d99a7723 ******/
 		%feature("compactdefaultargs") Z;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Computes the Z coordinate of the point of parameter U on the curve in the viewing coordinate system.
 ") Z;
-		Standard_Real Z(const Standard_Real U);
+		double Z(const double U);
 
 };
 
@@ -3122,12 +2858,12 @@ Computes the Z coordinate of the point of parameter U on the curve in the viewin
 class HLRBRep_CurveTool {
 	public:
 		/****** HLRBRep_CurveTool::BSpline ******/
-		/****** md5 signature: 2177fa1d8976097e3319280506b1aa04 ******/
+		/****** md5 signature: 48cf428c5a3991e17ba296d82cd29fc2 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3137,15 +2873,15 @@ Description
 -----------
 No available documentation.
 ") BSpline;
-		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const Standard_Address C);
+		static opencascade::handle<Geom2d_BSplineCurve> BSpline(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Bezier ******/
-		/****** md5 signature: cfcba0a203d2de2d5e47740c57198852 ******/
+		/****** md5 signature: 90c432e875e7d3ff25d9a36c4dfa8ee7 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3155,15 +2891,15 @@ Description
 -----------
 No available documentation.
 ") Bezier;
-		static opencascade::handle<Geom2d_BezierCurve> Bezier(const Standard_Address C);
+		static opencascade::handle<Geom2d_BezierCurve> Bezier(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Circle ******/
-		/****** md5 signature: 36cdd8e90aa1604a62a27eecb1bbb6c8 ******/
+		/****** md5 signature: 5ccca221cb3eb0f994c13c1bfe961144 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3173,15 +2909,15 @@ Description
 -----------
 No available documentation.
 ") Circle;
-		static gp_Circ2d Circle(const Standard_Address C);
+		static gp_Circ2d Circle(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Continuity ******/
-		/****** md5 signature: 207911b924a3bd0bcd78d03ce40d3709 ******/
+		/****** md5 signature: 0d2ba274b60148a44ca11a0fad57a8c2 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3191,16 +2927,16 @@ Description
 -----------
 No available documentation.
 ") Continuity;
-		static GeomAbs_Shape Continuity(const Standard_Address C);
+		static GeomAbs_Shape Continuity(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::D0 ******/
-		/****** md5 signature: ba74b7e0fddaf63c3e24e1478d2cdc9f ******/
+		/****** md5 signature: ea3ee4d226b91cab12278ad6098ed93b ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U: float
+C: HLRBRep_CurvePtr
+U: double
 P: gp_Pnt2d
 
 Return
@@ -3211,16 +2947,16 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		static void D0(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P);
+		static void D0(const HLRBRep_CurvePtr C, const double U, gp_Pnt2d & P);
 
 		/****** HLRBRep_CurveTool::D1 ******/
-		/****** md5 signature: e354f413deaeac2c1cb2b5b536dbc88f ******/
+		/****** md5 signature: 7c448c6929a6ce289730f289a29fa619 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U: float
+C: HLRBRep_CurvePtr
+U: double
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -3232,16 +2968,16 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		static void D1(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
+		static void D1(const HLRBRep_CurvePtr C, const double U, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** HLRBRep_CurveTool::D2 ******/
-		/****** md5 signature: 2e4aa30e98316159f06a6b20c385ffe1 ******/
+		/****** md5 signature: 0629ad814f6c260e608367b1d531d781 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U: float
+C: HLRBRep_CurvePtr
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -3254,16 +2990,16 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		static void D2(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const HLRBRep_CurvePtr C, const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** HLRBRep_CurveTool::D3 ******/
-		/****** md5 signature: 8b716517fc6e7bcd2392ce31d62f1735 ******/
+		/****** md5 signature: 2b2fc286058ebca97663b678b2e9b491 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U: float
+C: HLRBRep_CurvePtr
+U: double
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -3277,16 +3013,16 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		static void D3(const Standard_Address C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const HLRBRep_CurvePtr C, const double U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** HLRBRep_CurveTool::DN ******/
-		/****** md5 signature: c7d96ebb86b9b90c0b816abbaf142325 ******/
+		/****** md5 signature: 5ca0e33626391025dcc8423df7a0c035 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U: float
+C: HLRBRep_CurvePtr
+U: double
 N: int
 
 Return
@@ -3297,15 +3033,15 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		static gp_Vec2d DN(const Standard_Address C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec2d DN(const HLRBRep_CurvePtr C, const double U, const int N);
 
 		/****** HLRBRep_CurveTool::Degree ******/
-		/****** md5 signature: 3340ce7d9ecc95fdf0b2f3e377aa96cd ******/
+		/****** md5 signature: 1483654dba220c337da427e695456928 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3315,15 +3051,15 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		static Standard_Integer Degree(const Standard_Address C);
+		static int Degree(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Ellipse ******/
-		/****** md5 signature: 68cae55eafb658a008939e6a3aa299ac ******/
+		/****** md5 signature: b23034b7a21a23eb3c58702d68d116c6 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3333,72 +3069,72 @@ Description
 -----------
 No available documentation.
 ") Ellipse;
-		static gp_Elips2d Ellipse(const Standard_Address C);
+		static gp_Elips2d Ellipse(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::EpsX ******/
-		/****** md5 signature: 004527eae5d36fde4532a52d6dc913b5 ******/
+		/****** md5 signature: b83df5fbb04ee19466f3970e3e2da398 ******/
 		%feature("compactdefaultargs") EpsX;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") EpsX;
-		static Standard_Real EpsX(const Standard_Address C);
+		static double EpsX(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::FirstParameter ******/
-		/****** md5 signature: c378718bb40d4e7b8252a7e45c378546 ******/
+		/****** md5 signature: 98090e22b8fb291b0da76ef82e3463e7 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const Standard_Address C);
+		static double FirstParameter(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::GetInterval ******/
-		/****** md5 signature: a9b8a823327d4a0fa07ea3033f787c20 ******/
+		/****** md5 signature: 4521a0981466a5375ccc73c03427bbce ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 Index: int
-Tab: TColStd_Array1OfReal
+Tab: NCollection_Array1<double>
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
 output the bounds of interval of index <Index> used if Type == Composite.
 ") GetInterval;
-		static void GetInterval(const Standard_Address C, const Standard_Integer Index, const TColStd_Array1OfReal & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void GetInterval(const HLRBRep_CurvePtr C, const int Index, const NCollection_Array1<double> & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** HLRBRep_CurveTool::GetType ******/
-		/****** md5 signature: 8b7383fa02616489c875ad03f598f733 ******/
+		/****** md5 signature: d524700e42afa8f5bfb332726b6d6c9b ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3408,15 +3144,15 @@ Description
 -----------
 Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
-		static GeomAbs_CurveType GetType(const Standard_Address C);
+		static GeomAbs_CurveType GetType(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Hyperbola ******/
-		/****** md5 signature: da632be57a5318e78f5d54bc53449506 ******/
+		/****** md5 signature: 83f92de389ce9e3f618ccf947942d6b3 ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3426,16 +3162,16 @@ Description
 -----------
 No available documentation.
 ") Hyperbola;
-		static gp_Hypr2d Hyperbola(const Standard_Address C);
+		static gp_Hypr2d Hyperbola(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Intervals ******/
-		/****** md5 signature: f4845d7a44f9b537c0b15d3febb0634f ******/
+		/****** md5 signature: ef3eb671433db1b9997b8d7ef124aaab ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-T: TColStd_Array1OfReal
+C: HLRBRep_CurvePtr
+T: NCollection_Array1<double>
 
 Return
 -------
@@ -3445,15 +3181,15 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const Standard_Address C, TColStd_Array1OfReal & T);
+		static void Intervals(const HLRBRep_CurvePtr C, NCollection_Array1<double> & T);
 
 		/****** HLRBRep_CurveTool::IsClosed ******/
-		/****** md5 signature: 2796a2d6021b66cbaedd1b0b2679bc7a ******/
+		/****** md5 signature: b50992c5abf2dfdbe4c1043f558515c1 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3463,15 +3199,15 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const Standard_Address C);
+		static bool IsClosed(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::IsPeriodic ******/
-		/****** md5 signature: 5e784f1b227a710aae72ff0aa23cda45 ******/
+		/****** md5 signature: a3ecf71ef5349e12d6a7f6ea0cda555f ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3481,33 +3217,33 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const Standard_Address C);
+		static bool IsPeriodic(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::LastParameter ******/
-		/****** md5 signature: 2591b07f11d11b23c8c3d864bfb25e96 ******/
+		/****** md5 signature: 1adf179694a1ee212b1b7809ea1383a6 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const Standard_Address C);
+		static double LastParameter(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Line ******/
-		/****** md5 signature: 82fe24c48846770fb82932e7b7f81980 ******/
+		/****** md5 signature: 80ed101e333af9693270d8a1c447711f ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3517,15 +3253,15 @@ Description
 -----------
 No available documentation.
 ") Line;
-		static gp_Lin2d Line(const Standard_Address C);
+		static gp_Lin2d Line(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::NbIntervals ******/
-		/****** md5 signature: 40109efd49108f15f718e2e81b5d56b1 ******/
+		/****** md5 signature: 7f110d9bb4ffbbc715cbba400cc722e2 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3535,17 +3271,17 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(myclass) >= <S>.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const Standard_Address C);
+		static int NbIntervals(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::NbSamples ******/
-		/****** md5 signature: dc471ec39b0d5e7315e53cbc91bccf0c ******/
+		/****** md5 signature: b64e41aa4af617798881b59caa7dc47d ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U0: float
-U1: float
+C: HLRBRep_CurvePtr
+U0: double
+U1: double
 
 Return
 -------
@@ -3555,15 +3291,15 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		static Standard_Integer NbSamples(const Standard_Address C, const Standard_Real U0, const Standard_Real U1);
+		static int NbSamples(const HLRBRep_CurvePtr C, const double U0, const double U1);
 
 		/****** HLRBRep_CurveTool::NbSamples ******/
-		/****** md5 signature: c727a432db531d6137f3e13ad423f60e ******/
+		/****** md5 signature: 0c2735a36cfcad2a9537e3092dbef5fa ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3573,15 +3309,15 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		static Standard_Integer NbSamples(const Standard_Address C);
+		static int NbSamples(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Parabola ******/
-		/****** md5 signature: 49af9ceba40c2767bc97ed2c78b8cd33 ******/
+		/****** md5 signature: 484e48738eebee30b6308bc66dffe9f8 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3591,52 +3327,52 @@ Description
 -----------
 No available documentation.
 ") Parabola;
-		static gp_Parab2d Parabola(const Standard_Address C);
+		static gp_Parab2d Parabola(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Period ******/
-		/****** md5 signature: c69c9ecb2f367b217305d34416f61427 ******/
+		/****** md5 signature: c7cb3a7f292aee7c7a5c3ec91d84dbf8 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const Standard_Address C);
+		static double Period(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Resolution ******/
-		/****** md5 signature: a1331491ee2e22f42b36979da3ae16a7 ******/
+		/****** md5 signature: 030350684f9102f3e2d3889e3652ccf9 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-R3d: float
+C: HLRBRep_CurvePtr
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		static Standard_Real Resolution(const Standard_Address C, const Standard_Real R3d);
+		static double Resolution(const HLRBRep_CurvePtr C, const double R3d);
 
 		/****** HLRBRep_CurveTool::TheType ******/
-		/****** md5 signature: 7d470bcc389e52b12d2d622cdcecbb3e ******/
+		/****** md5 signature: ed286c8397ae84cbfc135dd79e94a85b ******/
 		%feature("compactdefaultargs") TheType;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 
 Return
 -------
@@ -3646,16 +3382,16 @@ Description
 -----------
 Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") TheType;
-		static GeomAbs_CurveType TheType(const Standard_Address C);
+		static GeomAbs_CurveType TheType(const HLRBRep_CurvePtr C);
 
 		/****** HLRBRep_CurveTool::Value ******/
-		/****** md5 signature: f183fb2be73075bf12de9d5d961f26ae ******/
+		/****** md5 signature: 414a27afbb756b0bf2a7fba04d9df38f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
-U: float
+C: HLRBRep_CurvePtr
+U: double
 
 Return
 -------
@@ -3665,7 +3401,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		static gp_Pnt2d Value(const Standard_Address C, const Standard_Real U);
+		static gp_Pnt2d Value(const HLRBRep_CurvePtr C, const double U);
 
 };
 
@@ -3682,7 +3418,7 @@ Computes the point of parameter U on the curve.
 class HLRBRep_Data : public Standard_Transient {
 	public:
 		/****** HLRBRep_Data::HLRBRep_Data ******/
-		/****** md5 signature: 6bc92c8b89d989160c8deceff29720e2 ******/
+		/****** md5 signature: 2aa3dcfc948cefc35f2bb5c450d6b349 ******/
 		%feature("compactdefaultargs") HLRBRep_Data;
 		%feature("autodoc", "
 Parameters
@@ -3699,10 +3435,10 @@ Description
 -----------
 Create an empty data structure of <NV> vertices, <NE> edges and <NF> faces.
 ") HLRBRep_Data;
-		 HLRBRep_Data(const Standard_Integer NV, const Standard_Integer NE, const Standard_Integer NF);
+		 HLRBRep_Data(const int NV, const int NE, const int NF);
 
 		/****** HLRBRep_Data::AboveInterference ******/
-		/****** md5 signature: 729da64e83c2dfe8faf20cc7ce75f35d ******/
+		/****** md5 signature: 68020114fcc3e55d79dc86a6ab0c18eb ******/
 		%feature("compactdefaultargs") AboveInterference;
 		%feature("autodoc", "Return
 -------
@@ -3712,10 +3448,10 @@ Description
 -----------
 Returns True if the rejected interference is above the face.
 ") AboveInterference;
-		Standard_Boolean AboveInterference();
+		bool AboveInterference();
 
 		/****** HLRBRep_Data::Classify ******/
-		/****** md5 signature: ac770ab0ca5064b3acfa5defc06358e4 ******/
+		/****** md5 signature: 9d61b0cd0bd9809580baf4328241ac06 ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "
 Parameters
@@ -3723,7 +3459,7 @@ Parameters
 E: int
 ED: HLRBRep_EdgeData
 LevelFlag: bool
-param: float
+param: double
 
 Return
 -------
@@ -3733,10 +3469,10 @@ Description
 -----------
 Classification of an edge.
 ") Classify;
-		TopAbs_State Classify(const Standard_Integer E, const HLRBRep_EdgeData & ED, const Standard_Boolean LevelFlag, Standard_Integer &OutValue, const Standard_Real param);
+		TopAbs_State Classify(const int E, const HLRBRep_EdgeData & ED, const bool LevelFlag, Standard_Integer &OutValue, const double param);
 
 		/****** HLRBRep_Data::Compare ******/
-		/****** md5 signature: 40c293b2397e78ce5f9f71ed411f8d12 ******/
+		/****** md5 signature: defeb714fc3592d25018a49a5258ddea ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -3752,7 +3488,7 @@ Description
 -----------
 Returns the state of the Edge <ED> after classification.
 ") Compare;
-		TopAbs_State Compare(const Standard_Integer E, const HLRBRep_EdgeData & ED);
+		TopAbs_State Compare(const int E, const HLRBRep_EdgeData & ED);
 
 		/****** HLRBRep_Data::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -3768,20 +3504,20 @@ No available documentation.
 		void Destroy();
 
 		/****** HLRBRep_Data::EDataArray ******/
-		/****** md5 signature: 25075feea815b822c23adfa9385f5f5b ******/
+		/****** md5 signature: 3967fd7fa4611f0a451224ebca623643 ******/
 		%feature("compactdefaultargs") EDataArray;
 		%feature("autodoc", "Return
 -------
-HLRBRep_Array1OfEData
+NCollection_Array1<HLRBRep_EdgeData>
 
 Description
 -----------
 No available documentation.
 ") EDataArray;
-		HLRBRep_Array1OfEData & EDataArray();
+		NCollection_Array1<HLRBRep_EdgeData> & EDataArray();
 
 		/****** HLRBRep_Data::Edge ******/
-		/****** md5 signature: 76748ffd591f786c44105943fcd6acd5 ******/
+		/****** md5 signature: d6bcd55b8bae579e7b4b7931e982c5a2 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -3791,23 +3527,23 @@ Description
 -----------
 Returns the current Edge.
 ") Edge;
-		Standard_Integer Edge();
+		int Edge();
 
 		/****** HLRBRep_Data::EdgeMap ******/
-		/****** md5 signature: 458ef859c89a82a90fb9721a91e98744 ******/
+		/****** md5 signature: d6b5be9f774da77b92680157a4c86616 ******/
 		%feature("compactdefaultargs") EdgeMap;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfShape
+NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") EdgeMap;
-		TopTools_IndexedMapOfShape & EdgeMap();
+		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> EdgeMap();
 
 		/****** HLRBRep_Data::EdgeOfTheHidingFace ******/
-		/****** md5 signature: 2c9a7e020c7f9b78da9f9cae94f21f47 ******/
+		/****** md5 signature: 08213348ed94cfe4b060fbc09877a01d ******/
 		%feature("compactdefaultargs") EdgeOfTheHidingFace;
 		%feature("autodoc", "
 Parameters
@@ -3823,16 +3559,16 @@ Description
 -----------
 Returns the true if the Edge <ED> belongs to the Hiding Face.
 ") EdgeOfTheHidingFace;
-		Standard_Boolean EdgeOfTheHidingFace(const Standard_Integer E, const HLRBRep_EdgeData & ED);
+		bool EdgeOfTheHidingFace(const int E, const HLRBRep_EdgeData & ED);
 
 		/****** HLRBRep_Data::EdgeState ******/
-		/****** md5 signature: 6a557e52488b6aa228d4e523d232b0f6 ******/
+		/****** md5 signature: ddbc57929fb7a561c12e678d099b228c ******/
 		%feature("compactdefaultargs") EdgeState;
 		%feature("autodoc", "
 Parameters
 ----------
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -3843,43 +3579,43 @@ Description
 -----------
 Returns the local 3D state of the intersection between the current edge and the current face at the <p1> and <p2> parameters.
 ") EdgeState;
-		void EdgeState(const Standard_Real p1, const Standard_Real p2, TopAbs_State &OutValue, TopAbs_State &OutValue);
+		void EdgeState(const double p1, const double p2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** HLRBRep_Data::FDataArray ******/
-		/****** md5 signature: 8b996173cc67c06948a23a9f10e25897 ******/
+		/****** md5 signature: c4085eed8f6ba41ff924ad535f4b713a ******/
 		%feature("compactdefaultargs") FDataArray;
 		%feature("autodoc", "Return
 -------
-HLRBRep_Array1OfFData
+NCollection_Array1<HLRBRep_FaceData>
 
 Description
 -----------
 No available documentation.
 ") FDataArray;
-		HLRBRep_Array1OfFData & FDataArray();
+		NCollection_Array1<HLRBRep_FaceData> & FDataArray();
 
 		/****** HLRBRep_Data::FaceMap ******/
-		/****** md5 signature: e9b0badc08981c32de9df95c6482080a ******/
+		/****** md5 signature: 718d1cb996bc5d91553f48bd6252bde5 ******/
 		%feature("compactdefaultargs") FaceMap;
 		%feature("autodoc", "Return
 -------
-TopTools_IndexedMapOfShape
+NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 No available documentation.
 ") FaceMap;
-		TopTools_IndexedMapOfShape & FaceMap();
+		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> FaceMap();
 
 		/****** HLRBRep_Data::HidingStartLevel ******/
-		/****** md5 signature: 7e3d3f3673a4248ae2f8916145e5e485 ******/
+		/****** md5 signature: d7f1d2f08157d55975689e62e2cf5967 ******/
 		%feature("compactdefaultargs") HidingStartLevel;
 		%feature("autodoc", "
 Parameters
 ----------
 E: int
 ED: HLRBRep_EdgeData
-IL: HLRAlgo_InterferenceList
+IL: NCollection_List<HLRAlgo_Interference>
 
 Return
 -------
@@ -3889,10 +3625,10 @@ Description
 -----------
 Returns the number of levels of hiding face above the first point of the edge <ED>. The InterferenceList is given to compute far away of the Interferences and then come back.
 ") HidingStartLevel;
-		Standard_Integer HidingStartLevel(const Standard_Integer E, const HLRBRep_EdgeData & ED, const HLRAlgo_InterferenceList & IL);
+		int HidingStartLevel(const int E, const HLRBRep_EdgeData & ED, const NCollection_List<HLRAlgo_Interference> & IL);
 
 		/****** HLRBRep_Data::HidingTheFace ******/
-		/****** md5 signature: be771e494142bf25aecaa8cee703055c ******/
+		/****** md5 signature: 5f51bd8014fcc059a0a0d62ccbf46b47 ******/
 		%feature("compactdefaultargs") HidingTheFace;
 		%feature("autodoc", "Return
 -------
@@ -3902,10 +3638,10 @@ Description
 -----------
 Returns true if the current edge to be hidden belongs to the hiding face.
 ") HidingTheFace;
-		Standard_Boolean HidingTheFace();
+		bool HidingTheFace();
 
 		/****** HLRBRep_Data::InitBoundSort ******/
-		/****** md5 signature: c3adf1627084ad2b75f4590dcec45b41 ******/
+		/****** md5 signature: e54fafc8b98724745425c71c1026bbce ******/
 		%feature("compactdefaultargs") InitBoundSort;
 		%feature("autodoc", "
 Parameters
@@ -3922,16 +3658,16 @@ Description
 -----------
 to compare with only non rejected edges.
 ") InitBoundSort;
-		void InitBoundSort(const HLRAlgo_EdgesBlock::MinMaxIndices & MinMaxTot, const Standard_Integer e1, const Standard_Integer e2);
+		void InitBoundSort(const HLRAlgo_EdgesBlock::MinMaxIndices & MinMaxTot, const int e1, const int e2);
 
 		/****** HLRBRep_Data::InitEdge ******/
-		/****** md5 signature: e8118fa61516698f8563ec2ad6932b88 ******/
+		/****** md5 signature: 22ac47f660b696125a01700e2bae8113 ******/
 		%feature("compactdefaultargs") InitEdge;
 		%feature("autodoc", "
 Parameters
 ----------
 FI: int
-MST: BRepTopAdaptor_MapOfShapeTool
+MST: NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -3941,7 +3677,7 @@ Description
 -----------
 Begin an iteration only on visible Edges crossing the face number <FI>.
 ") InitEdge;
-		void InitEdge(const Standard_Integer FI, BRepTopAdaptor_MapOfShapeTool & MST);
+		void InitEdge(const int FI, NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher> & MST);
 
 		/****** HLRBRep_Data::InitInterference ******/
 		/****** md5 signature: a8142709484fb05b691d3f078c44b3e9 ******/
@@ -3970,7 +3706,7 @@ No available documentation.
 		HLRAlgo_Interference & Interference();
 
 		/****** HLRBRep_Data::IsBadFace ******/
-		/****** md5 signature: 4b415393f709cfd363a681a8fbed1894 ******/
+		/****** md5 signature: e6203df9e31aab3efab80295fddb4e6a ******/
 		%feature("compactdefaultargs") IsBadFace;
 		%feature("autodoc", "Return
 -------
@@ -3980,51 +3716,51 @@ Description
 -----------
 Returns true if the current face is bad.
 ") IsBadFace;
-		Standard_Boolean IsBadFace();
+		bool IsBadFace();
 
 		/****** HLRBRep_Data::LocalFEGeometry2D ******/
-		/****** md5 signature: c71d133254da871ffedb9630fa1f63b5 ******/
+		/****** md5 signature: 06feee72cc510138be07c8a62c799584 ******/
 		%feature("compactdefaultargs") LocalFEGeometry2D;
 		%feature("autodoc", "
 Parameters
 ----------
 FE: int
-Param: float
+Param: double
 Tg: gp_Dir2d
 Nm: gp_Dir2d
 
 Return
 -------
-Cu: float
+Cu: double
 
 Description
 -----------
 Returns the local description of the projection of the current FEdge at parameter <Param>.
 ") LocalFEGeometry2D;
-		void LocalFEGeometry2D(const Standard_Integer FE, const Standard_Real Param, gp_Dir2d & Tg, gp_Dir2d & Nm, Standard_Real &OutValue);
+		void LocalFEGeometry2D(const int FE, const double Param, gp_Dir2d & Tg, gp_Dir2d & Nm, Standard_Real &OutValue);
 
 		/****** HLRBRep_Data::LocalLEGeometry2D ******/
-		/****** md5 signature: 264541d78c870e607a2d2a3233d58c1e ******/
+		/****** md5 signature: 0aef25ab3d78dc6d3b85d2e08b5f57db ******/
 		%feature("compactdefaultargs") LocalLEGeometry2D;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 Tg: gp_Dir2d
 Nm: gp_Dir2d
 
 Return
 -------
-Cu: float
+Cu: double
 
 Description
 -----------
 Returns the local description of the projection of the current LEdge at parameter <Param>.
 ") LocalLEGeometry2D;
-		void LocalLEGeometry2D(const Standard_Real Param, gp_Dir2d & Tg, gp_Dir2d & Nm, Standard_Real &OutValue);
+		void LocalLEGeometry2D(const double Param, gp_Dir2d & Tg, gp_Dir2d & Nm, Standard_Real &OutValue);
 
 		/****** HLRBRep_Data::MoreEdge ******/
-		/****** md5 signature: 809deb2c8c3dfedac2033850fc8cfdca ******/
+		/****** md5 signature: 1afdcdb10ae7dd8361c8d3d5f65dbeca ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -4034,10 +3770,10 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** HLRBRep_Data::MoreInterference ******/
-		/****** md5 signature: 0a7175ba1cb74c0b701216179940703a ******/
+		/****** md5 signature: 894ab7b9cf73d5bf20087263670f0f94 ******/
 		%feature("compactdefaultargs") MoreInterference;
 		%feature("autodoc", "Return
 -------
@@ -4047,10 +3783,10 @@ Description
 -----------
 No available documentation.
 ") MoreInterference;
-		Standard_Boolean MoreInterference();
+		bool MoreInterference();
 
 		/****** HLRBRep_Data::NbEdges ******/
-		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
+		/****** md5 signature: f741965989565caaff095f09d2955db8 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -4060,10 +3796,10 @@ Description
 -----------
 No available documentation.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** HLRBRep_Data::NbFaces ******/
-		/****** md5 signature: 1f0fd1808c5306ae27c425978ee57bb5 ******/
+		/****** md5 signature: 33b7583f623284719e1609b133e125ad ******/
 		%feature("compactdefaultargs") NbFaces;
 		%feature("autodoc", "Return
 -------
@@ -4073,10 +3809,10 @@ Description
 -----------
 No available documentation.
 ") NbFaces;
-		Standard_Integer NbFaces();
+		int NbFaces();
 
 		/****** HLRBRep_Data::NbVertices ******/
-		/****** md5 signature: 435b05539d6b9d704dc04d9218f26996 ******/
+		/****** md5 signature: 859a4b3acdcc81718e66502bc37368ea ******/
 		%feature("compactdefaultargs") NbVertices;
 		%feature("autodoc", "Return
 -------
@@ -4086,15 +3822,15 @@ Description
 -----------
 No available documentation.
 ") NbVertices;
-		Standard_Integer NbVertices();
+		int NbVertices();
 
 		/****** HLRBRep_Data::NextEdge ******/
-		/****** md5 signature: 1c83cd09f8651c493848926e55f10cf0 ******/
+		/****** md5 signature: a4a1782d788b370d2917b3fc31c78a66 ******/
 		%feature("compactdefaultargs") NextEdge;
 		%feature("autodoc", "
 Parameters
 ----------
-skip: bool (optional, default to Standard_True)
+skip: bool (optional, default to true)
 
 Return
 -------
@@ -4104,7 +3840,7 @@ Description
 -----------
 No available documentation.
 ") NextEdge;
-		void NextEdge(const Standard_Boolean skip = Standard_True);
+		void NextEdge(const bool skip = true);
 
 		/****** HLRBRep_Data::NextInterference ******/
 		/****** md5 signature: 1369cf3e07019b312a7ce479ae0dc594 ******/
@@ -4133,7 +3869,7 @@ No available documentation.
 		HLRAlgo_Projector & Projector();
 
 		/****** HLRBRep_Data::RejectedInterference ******/
-		/****** md5 signature: 26992f35c0878dfc19b1aafa3f7d82e2 ******/
+		/****** md5 signature: 66089660e47dc1797adf7d83dec4b5f1 ******/
 		%feature("compactdefaultargs") RejectedInterference;
 		%feature("autodoc", "Return
 -------
@@ -4143,10 +3879,10 @@ Description
 -----------
 Returns True if the interference is rejected.
 ") RejectedInterference;
-		Standard_Boolean RejectedInterference();
+		bool RejectedInterference();
 
 		/****** HLRBRep_Data::SimplClassify ******/
-		/****** md5 signature: 55d1fd4787d6f9ea6b9011a26a063db8 ******/
+		/****** md5 signature: f5f18ac0e813337512c27f7763d30eb2 ******/
 		%feature("compactdefaultargs") SimplClassify;
 		%feature("autodoc", "
 Parameters
@@ -4154,8 +3890,8 @@ Parameters
 E: int
 ED: HLRBRep_EdgeData
 Nbp: int
-p1: float
-p2: float
+p1: double
+p2: double
 
 Return
 -------
@@ -4165,10 +3901,10 @@ Description
 -----------
 Simple classification of part of edge [p1, p2]. Returns OUT if at least 1 of Nbp points of edge is out; otherwise returns IN. It is used to check 'suspicion' hidden part of edge.
 ") SimplClassify;
-		TopAbs_State SimplClassify(const Standard_Integer E, const HLRBRep_EdgeData & ED, const Standard_Integer Nbp, const Standard_Real p1, const Standard_Real p2);
+		TopAbs_State SimplClassify(const int E, const HLRBRep_EdgeData & ED, const int Nbp, const double p1, const double p2);
 
 		/****** HLRBRep_Data::SimpleHidingFace ******/
-		/****** md5 signature: 56d2df81b8d7270deced365aa9db2ca6 ******/
+		/****** md5 signature: d5f204efd30a8ce24d3db7a32a10ff2a ******/
 		%feature("compactdefaultargs") SimpleHidingFace;
 		%feature("autodoc", "Return
 -------
@@ -4178,10 +3914,10 @@ Description
 -----------
 Returns true if the current hiding face is not an auto-intersected one.
 ") SimpleHidingFace;
-		Standard_Boolean SimpleHidingFace();
+		bool SimpleHidingFace();
 
 		/****** HLRBRep_Data::Tolerance ******/
-		/****** md5 signature: f92d18598761037d5d2e15a52adc608d ******/
+		/****** md5 signature: 19b9521e1cd14d74df514315dd8ef145 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -4196,10 +3932,10 @@ Description
 -----------
 Set the tolerance for the rejections during the exploration.
 ") Tolerance;
-		void Tolerance(const Standard_ShortReal tol);
+		void Tolerance(const float tol);
 
 		/****** HLRBRep_Data::Tolerance ******/
-		/****** md5 signature: 680c1c68cea56ee6a9513e808e1d379c ******/
+		/****** md5 signature: 27173cec126fd48cceae62b7a1012170 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -4209,7 +3945,7 @@ Description
 -----------
 returns the tolerance for the rejections during the exploration.
 ") Tolerance;
-		Standard_ShortReal Tolerance();
+		float Tolerance();
 
 		/****** HLRBRep_Data::Update ******/
 		/****** md5 signature: d7a49bc87b072ee91bdb1d6dfd85432d ******/
@@ -4230,7 +3966,7 @@ end of building of the Data and updating all the information linked to the proje
 		void Update(const HLRAlgo_Projector & P);
 
 		/****** HLRBRep_Data::Write ******/
-		/****** md5 signature: 6d1eb43f63124ce2993d9046adad8ea0 ******/
+		/****** md5 signature: 3bbceb5f6f67625b95cff61bd48bb0db ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -4248,7 +3984,7 @@ Description
 -----------
 Write <DS> in me with a translation of <dv>,<de>,<df>.
 ") Write;
-		void Write(const opencascade::handle<HLRBRep_Data> & DS, const Standard_Integer dv, const Standard_Integer de, const Standard_Integer df);
+		void Write(const opencascade::handle<HLRBRep_Data> & DS, const int dv, const int de, const int df);
 
 };
 
@@ -4355,7 +4091,7 @@ No available documentation.
 		void Destroy();
 
 		/****** HLRBRep_EdgeBuilder::HasArea ******/
-		/****** md5 signature: da4382613fc0ffeaa5e3c26fd20f2488 ******/
+		/****** md5 signature: 691cbd5bc72535ce4a91fac2f03e285f ******/
 		%feature("compactdefaultargs") HasArea;
 		%feature("autodoc", "Return
 -------
@@ -4365,7 +4101,7 @@ Description
 -----------
 Returns True if there is a current area.
 ") HasArea;
-		Standard_Boolean HasArea();
+		bool HasArea();
 
 		/****** HLRBRep_EdgeBuilder::InitAreas ******/
 		/****** md5 signature: 884f1ed2c596da582272e700f151d788 ******/
@@ -4381,7 +4117,7 @@ Initialize an iteration on the areas.
 		void InitAreas();
 
 		/****** HLRBRep_EdgeBuilder::IsBoundary ******/
-		/****** md5 signature: 9d78e8db3d0caa05aa9a267c764c472e ******/
+		/****** md5 signature: e4571934dc233b1ff119256513384992 ******/
 		%feature("compactdefaultargs") IsBoundary;
 		%feature("autodoc", "Return
 -------
@@ -4391,10 +4127,10 @@ Description
 -----------
 Returns True if the current vertex comes from the boundary of the edge.
 ") IsBoundary;
-		Standard_Boolean IsBoundary();
+		bool IsBoundary();
 
 		/****** HLRBRep_EdgeBuilder::IsInterference ******/
-		/****** md5 signature: 70cfb7482a8242c7b6f97a307bb277ee ******/
+		/****** md5 signature: 1c7f51e2a202946534099b00ee6668f5 ******/
 		%feature("compactdefaultargs") IsInterference;
 		%feature("autodoc", "Return
 -------
@@ -4404,7 +4140,7 @@ Description
 -----------
 Returns True if the current vertex was an interference.
 ") IsInterference;
-		Standard_Boolean IsInterference();
+		bool IsInterference();
 
 		/****** HLRBRep_EdgeBuilder::LeftLimit ******/
 		/****** md5 signature: dc7583eed3b1b2955e4155e3706d2cba ******/
@@ -4420,7 +4156,7 @@ Returns the AreaLimit beginning the current area. This is a NULL handle when the
 		opencascade::handle<HLRBRep_AreaLimit> LeftLimit();
 
 		/****** HLRBRep_EdgeBuilder::MoreEdges ******/
-		/****** md5 signature: ae9c44c48922d7def77564a0d6f2c592 ******/
+		/****** md5 signature: 5427e761ccb333be8c3787807b5804ee ******/
 		%feature("compactdefaultargs") MoreEdges;
 		%feature("autodoc", "Return
 -------
@@ -4430,10 +4166,10 @@ Description
 -----------
 Returns True if there are more new edges to build.
 ") MoreEdges;
-		Standard_Boolean MoreEdges();
+		bool MoreEdges();
 
 		/****** HLRBRep_EdgeBuilder::MoreVertices ******/
-		/****** md5 signature: 30eb28ce85d2d60a20b0a6612625139c ******/
+		/****** md5 signature: 83ca27360b528f6d463b672d75829d0a ******/
 		%feature("compactdefaultargs") MoreVertices;
 		%feature("autodoc", "Return
 -------
@@ -4443,7 +4179,7 @@ Description
 -----------
 True if there are more vertices in the current new edge.
 ") MoreVertices;
-		Standard_Boolean MoreVertices();
+		bool MoreVertices();
 
 		/****** HLRBRep_EdgeBuilder::NextArea ******/
 		/****** md5 signature: f05125373cb5bdf4fd14c1f424e6a6c9 ******/
@@ -4551,7 +4287,7 @@ No available documentation.
 		 HLRBRep_EdgeData();
 
 		/****** HLRBRep_EdgeData::AutoIntersectionDone ******/
-		/****** md5 signature: f3b63fa47326396193c02b762d672dde ******/
+		/****** md5 signature: 9bf425b9a626795fab2a4ebd7a5f8586 ******/
 		%feature("compactdefaultargs") AutoIntersectionDone;
 		%feature("autodoc", "Return
 -------
@@ -4561,10 +4297,10 @@ Description
 -----------
 No available documentation.
 ") AutoIntersectionDone;
-		Standard_Boolean AutoIntersectionDone();
+		bool AutoIntersectionDone();
 
 		/****** HLRBRep_EdgeData::AutoIntersectionDone ******/
-		/****** md5 signature: 983422aefd23fcb828c6a2a3715aa232 ******/
+		/****** md5 signature: 2664a3768a57245c2cece55449583416 ******/
 		%feature("compactdefaultargs") AutoIntersectionDone;
 		%feature("autodoc", "
 Parameters
@@ -4579,7 +4315,7 @@ Description
 -----------
 No available documentation.
 ") AutoIntersectionDone;
-		void AutoIntersectionDone(const Standard_Boolean B);
+		void AutoIntersectionDone(const bool B);
 
 		/****** HLRBRep_EdgeData::ChangeGeometry ******/
 		/****** md5 signature: 03555c45150a77119c9d706a589819de ******/
@@ -4608,7 +4344,7 @@ No available documentation.
 		HLRBRep_Curve * Curve();
 
 		/****** HLRBRep_EdgeData::CutAtEnd ******/
-		/****** md5 signature: 01fb1e4591022d7397a616fbc41983e3 ******/
+		/****** md5 signature: 6108ea0d3088b75ce5cd01316aa6a887 ******/
 		%feature("compactdefaultargs") CutAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -4618,10 +4354,10 @@ Description
 -----------
 No available documentation.
 ") CutAtEnd;
-		Standard_Boolean CutAtEnd();
+		bool CutAtEnd();
 
 		/****** HLRBRep_EdgeData::CutAtEnd ******/
-		/****** md5 signature: ad7dfc598a1f3af53e2a4329d7551916 ******/
+		/****** md5 signature: c8214bcaa6310ba32429ad4aeb241b69 ******/
 		%feature("compactdefaultargs") CutAtEnd;
 		%feature("autodoc", "
 Parameters
@@ -4636,10 +4372,10 @@ Description
 -----------
 No available documentation.
 ") CutAtEnd;
-		void CutAtEnd(const Standard_Boolean B);
+		void CutAtEnd(const bool B);
 
 		/****** HLRBRep_EdgeData::CutAtSta ******/
-		/****** md5 signature: 08af25db18add68ea7c756f2a4889334 ******/
+		/****** md5 signature: d4805c82c1ab30f808d0366c36b351ee ******/
 		%feature("compactdefaultargs") CutAtSta;
 		%feature("autodoc", "Return
 -------
@@ -4649,10 +4385,10 @@ Description
 -----------
 No available documentation.
 ") CutAtSta;
-		Standard_Boolean CutAtSta();
+		bool CutAtSta();
 
 		/****** HLRBRep_EdgeData::CutAtSta ******/
-		/****** md5 signature: 0cb5af0afa1d0e214f74b38d955b6cf2 ******/
+		/****** md5 signature: 06f5f15c14f2af193ff46a873bd919a6 ******/
 		%feature("compactdefaultargs") CutAtSta;
 		%feature("autodoc", "
 Parameters
@@ -4667,7 +4403,7 @@ Description
 -----------
 No available documentation.
 ") CutAtSta;
-		void CutAtSta(const Standard_Boolean B);
+		void CutAtSta(const bool B);
 
 		/****** HLRBRep_EdgeData::Geometry ******/
 		/****** md5 signature: 6133351b8e570d82263ecdcf25097ced ******/
@@ -4683,7 +4419,7 @@ No available documentation.
 		HLRBRep_Curve Geometry();
 
 		/****** HLRBRep_EdgeData::HideCount ******/
-		/****** md5 signature: 38d1acd9954e54785f99bc88211278f2 ******/
+		/****** md5 signature: 67ee3f9769d28728f42227867937e9c3 ******/
 		%feature("compactdefaultargs") HideCount;
 		%feature("autodoc", "Return
 -------
@@ -4693,10 +4429,10 @@ Description
 -----------
 No available documentation.
 ") HideCount;
-		Standard_Integer HideCount();
+		int HideCount();
 
 		/****** HLRBRep_EdgeData::HideCount ******/
-		/****** md5 signature: 10b94c2844285945763db1acb5c34ecb ******/
+		/****** md5 signature: bde702da73ed785264ef57dd6ec3c3ef ******/
 		%feature("compactdefaultargs") HideCount;
 		%feature("autodoc", "
 Parameters
@@ -4711,7 +4447,7 @@ Description
 -----------
 No available documentation.
 ") HideCount;
-		void HideCount(const Standard_Integer I);
+		void HideCount(const int I);
 
 		/****** HLRBRep_EdgeData::MinMax ******/
 		/****** md5 signature: b360e6f636632e8d4f24d53763098bae ******/
@@ -4727,7 +4463,7 @@ No available documentation.
 		HLRAlgo_EdgesBlock::MinMaxIndices & MinMax();
 
 		/****** HLRBRep_EdgeData::OutLVEnd ******/
-		/****** md5 signature: 25dcc2869b7e32596c628d2dd9a037d3 ******/
+		/****** md5 signature: a538e3527a9d89bf6370f613108db9f9 ******/
 		%feature("compactdefaultargs") OutLVEnd;
 		%feature("autodoc", "Return
 -------
@@ -4737,10 +4473,10 @@ Description
 -----------
 No available documentation.
 ") OutLVEnd;
-		Standard_Boolean OutLVEnd();
+		bool OutLVEnd();
 
 		/****** HLRBRep_EdgeData::OutLVEnd ******/
-		/****** md5 signature: f9e97e67d8fcfbd2864a843ec906e0c5 ******/
+		/****** md5 signature: 774f3e3fbc62ff37d4fd263eda73bd86 ******/
 		%feature("compactdefaultargs") OutLVEnd;
 		%feature("autodoc", "
 Parameters
@@ -4755,10 +4491,10 @@ Description
 -----------
 No available documentation.
 ") OutLVEnd;
-		void OutLVEnd(const Standard_Boolean B);
+		void OutLVEnd(const bool B);
 
 		/****** HLRBRep_EdgeData::OutLVSta ******/
-		/****** md5 signature: c1e726b151115aed2df3b99b1cb0ea82 ******/
+		/****** md5 signature: c29f51b5990997b571b3daeb9bf35239 ******/
 		%feature("compactdefaultargs") OutLVSta;
 		%feature("autodoc", "Return
 -------
@@ -4768,10 +4504,10 @@ Description
 -----------
 No available documentation.
 ") OutLVSta;
-		Standard_Boolean OutLVSta();
+		bool OutLVSta();
 
 		/****** HLRBRep_EdgeData::OutLVSta ******/
-		/****** md5 signature: 55b55bb6eea705979c3df5f974212b61 ******/
+		/****** md5 signature: 306a5abfe0968495095c5f2e79391905 ******/
 		%feature("compactdefaultargs") OutLVSta;
 		%feature("autodoc", "
 Parameters
@@ -4786,10 +4522,10 @@ Description
 -----------
 No available documentation.
 ") OutLVSta;
-		void OutLVSta(const Standard_Boolean B);
+		void OutLVSta(const bool B);
 
 		/****** HLRBRep_EdgeData::Rg1Line ******/
-		/****** md5 signature: e4a654ff2c0c228277da43801fa86146 ******/
+		/****** md5 signature: 3603b21f50284c828a3123456ea8453b ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "Return
 -------
@@ -4799,10 +4535,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		Standard_Boolean Rg1Line();
+		bool Rg1Line();
 
 		/****** HLRBRep_EdgeData::Rg1Line ******/
-		/****** md5 signature: 600e0f21d82c218c81d037c3147d4d93 ******/
+		/****** md5 signature: 9b6604bb70a374ebf00c30d6bb0f8be8 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "
 Parameters
@@ -4817,10 +4553,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		void Rg1Line(const Standard_Boolean B);
+		void Rg1Line(const bool B);
 
 		/****** HLRBRep_EdgeData::RgNLine ******/
-		/****** md5 signature: 9e05bc90bec583cf5ccc9b3bd0b8a5bd ******/
+		/****** md5 signature: de7907b7f6b0dfc014b9f60c5a4fb82e ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "Return
 -------
@@ -4830,10 +4566,10 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		Standard_Boolean RgNLine();
+		bool RgNLine();
 
 		/****** HLRBRep_EdgeData::RgNLine ******/
-		/****** md5 signature: 08a14a9a85e3a29ae0482f1db7c2399c ******/
+		/****** md5 signature: e25dc744a7cdb743593e8ae60c115782 ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "
 Parameters
@@ -4848,10 +4584,10 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		void RgNLine(const Standard_Boolean B);
+		void RgNLine(const bool B);
 
 		/****** HLRBRep_EdgeData::Selected ******/
-		/****** md5 signature: 5d74076148a32a2f44281b7de1236633 ******/
+		/****** md5 signature: 8641e0f09f52f1e2ed1b07fb3a8de9b1 ******/
 		%feature("compactdefaultargs") Selected;
 		%feature("autodoc", "Return
 -------
@@ -4861,10 +4597,10 @@ Description
 -----------
 No available documentation.
 ") Selected;
-		Standard_Boolean Selected();
+		bool Selected();
 
 		/****** HLRBRep_EdgeData::Selected ******/
-		/****** md5 signature: 8ff2b8ca05e344d8592cece668b6c014 ******/
+		/****** md5 signature: b9538ce37b46345d234100e61839d1aa ******/
 		%feature("compactdefaultargs") Selected;
 		%feature("autodoc", "
 Parameters
@@ -4879,10 +4615,10 @@ Description
 -----------
 No available documentation.
 ") Selected;
-		void Selected(const Standard_Boolean B);
+		void Selected(const bool B);
 
 		/****** HLRBRep_EdgeData::Set ******/
-		/****** md5 signature: 13485fc18eb4756f48ed929755f9053b ******/
+		/****** md5 signature: a3b991d85d602e71ec727f3fe16a9ae3 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4896,9 +4632,9 @@ Out1: bool
 Out2: bool
 Cut1: bool
 Cut2: bool
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -4909,10 +4645,10 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Boolean Reg1, const Standard_Boolean RegN, const TopoDS_Edge & EG, const Standard_Integer V1, const Standard_Integer V2, const Standard_Boolean Out1, const Standard_Boolean Out2, const Standard_Boolean Cut1, const Standard_Boolean Cut2, const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
+		void Set(const bool Reg1, const bool RegN, const TopoDS_Edge & EG, const int V1, const int V2, const bool Out1, const bool Out2, const bool Cut1, const bool Cut2, const double Start, const float TolStart, const double End, const float TolEnd);
 
 		/****** HLRBRep_EdgeData::Simple ******/
-		/****** md5 signature: a0bb1fd543e316c4cc1710184f1b8b69 ******/
+		/****** md5 signature: cb250ada3ae377bdde721bc10127e5c0 ******/
 		%feature("compactdefaultargs") Simple;
 		%feature("autodoc", "Return
 -------
@@ -4922,10 +4658,10 @@ Description
 -----------
 No available documentation.
 ") Simple;
-		Standard_Boolean Simple();
+		bool Simple();
 
 		/****** HLRBRep_EdgeData::Simple ******/
-		/****** md5 signature: d6f2f4300dde7ef65d46e0f966abe7b2 ******/
+		/****** md5 signature: a463babaa0601d384101f963702e5967 ******/
 		%feature("compactdefaultargs") Simple;
 		%feature("autodoc", "
 Parameters
@@ -4940,7 +4676,7 @@ Description
 -----------
 No available documentation.
 ") Simple;
-		void Simple(const Standard_Boolean B);
+		void Simple(const bool B);
 
 		/****** HLRBRep_EdgeData::Status ******/
 		/****** md5 signature: ea65a70412c80527ab2445f2a836ebe7 ******/
@@ -4956,7 +4692,7 @@ No available documentation.
 		HLRAlgo_EdgeStatus & Status();
 
 		/****** HLRBRep_EdgeData::Tolerance ******/
-		/****** md5 signature: 680c1c68cea56ee6a9513e808e1d379c ******/
+		/****** md5 signature: 27173cec126fd48cceae62b7a1012170 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -4966,7 +4702,7 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_ShortReal Tolerance();
+		float Tolerance();
 
 		/****** HLRBRep_EdgeData::UpdateMinMax ******/
 		/****** md5 signature: c563cf49ef5528b88530ee707872c5e6 ******/
@@ -4987,7 +4723,7 @@ No available documentation.
 		void UpdateMinMax(const HLRAlgo_EdgesBlock::MinMaxIndices & theTotMinMax);
 
 		/****** HLRBRep_EdgeData::Used ******/
-		/****** md5 signature: 1e74809d0229afc91578e082dbdc4788 ******/
+		/****** md5 signature: 0577abad9132069c233e605d98602a1e ******/
 		%feature("compactdefaultargs") Used;
 		%feature("autodoc", "Return
 -------
@@ -4997,10 +4733,10 @@ Description
 -----------
 No available documentation.
 ") Used;
-		Standard_Boolean Used();
+		bool Used();
 
 		/****** HLRBRep_EdgeData::Used ******/
-		/****** md5 signature: ab1dc51c46a3b5e205a3d680426cbea5 ******/
+		/****** md5 signature: c73a79a3540b18c0ba6cf9803a122473 ******/
 		%feature("compactdefaultargs") Used;
 		%feature("autodoc", "
 Parameters
@@ -5015,10 +4751,10 @@ Description
 -----------
 No available documentation.
 ") Used;
-		void Used(const Standard_Boolean B);
+		void Used(const bool B);
 
 		/****** HLRBRep_EdgeData::VEnd ******/
-		/****** md5 signature: c441f0596bebb8c97af23b402ad564c9 ******/
+		/****** md5 signature: 3632d7c300566dee958caae4a25a830e ******/
 		%feature("compactdefaultargs") VEnd;
 		%feature("autodoc", "Return
 -------
@@ -5028,10 +4764,10 @@ Description
 -----------
 No available documentation.
 ") VEnd;
-		Standard_Integer VEnd();
+		int VEnd();
 
 		/****** HLRBRep_EdgeData::VEnd ******/
-		/****** md5 signature: 9f6e9fea4e6eb67f667157819f9211bc ******/
+		/****** md5 signature: 8e863328fe625eb54672bf0afcb925ac ******/
 		%feature("compactdefaultargs") VEnd;
 		%feature("autodoc", "
 Parameters
@@ -5046,10 +4782,10 @@ Description
 -----------
 No available documentation.
 ") VEnd;
-		void VEnd(const Standard_Integer I);
+		void VEnd(const int I);
 
 		/****** HLRBRep_EdgeData::VSta ******/
-		/****** md5 signature: 4f139b76a77eb5b8c271c1fa4725ee96 ******/
+		/****** md5 signature: b561081e3d638d0187b39f53e1adb4f2 ******/
 		%feature("compactdefaultargs") VSta;
 		%feature("autodoc", "Return
 -------
@@ -5059,10 +4795,10 @@ Description
 -----------
 No available documentation.
 ") VSta;
-		Standard_Integer VSta();
+		int VSta();
 
 		/****** HLRBRep_EdgeData::VSta ******/
-		/****** md5 signature: 0fafdd1618cb7a0b9a19e6922ae939df ******/
+		/****** md5 signature: 5b4b677661312da6032c065477d96b07 ******/
 		%feature("compactdefaultargs") VSta;
 		%feature("autodoc", "
 Parameters
@@ -5077,10 +4813,10 @@ Description
 -----------
 No available documentation.
 ") VSta;
-		void VSta(const Standard_Integer I);
+		void VSta(const int I);
 
 		/****** HLRBRep_EdgeData::VerAtEnd ******/
-		/****** md5 signature: e6ba410a364ed56d113dbb098a9c7afd ******/
+		/****** md5 signature: 201e8da112c6a8aeaa27754b4dc4373e ******/
 		%feature("compactdefaultargs") VerAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -5090,10 +4826,10 @@ Description
 -----------
 No available documentation.
 ") VerAtEnd;
-		Standard_Boolean VerAtEnd();
+		bool VerAtEnd();
 
 		/****** HLRBRep_EdgeData::VerAtEnd ******/
-		/****** md5 signature: a570001d4af2dd002ea14ac3b8382d77 ******/
+		/****** md5 signature: 0731fb761b79b64ae6c840ea9bf05428 ******/
 		%feature("compactdefaultargs") VerAtEnd;
 		%feature("autodoc", "
 Parameters
@@ -5108,10 +4844,10 @@ Description
 -----------
 No available documentation.
 ") VerAtEnd;
-		void VerAtEnd(const Standard_Boolean B);
+		void VerAtEnd(const bool B);
 
 		/****** HLRBRep_EdgeData::VerAtSta ******/
-		/****** md5 signature: 0779bfe8c583daa1b143a492052ce152 ******/
+		/****** md5 signature: 9df0385bcb70dbb8dd7c017797eb0dce ******/
 		%feature("compactdefaultargs") VerAtSta;
 		%feature("autodoc", "Return
 -------
@@ -5121,10 +4857,10 @@ Description
 -----------
 No available documentation.
 ") VerAtSta;
-		Standard_Boolean VerAtSta();
+		bool VerAtSta();
 
 		/****** HLRBRep_EdgeData::VerAtSta ******/
-		/****** md5 signature: 6ba93591d3e77c7fb2aa0c129368d9f5 ******/
+		/****** md5 signature: 6f09ed57cf3609efb7e29694ed994775 ******/
 		%feature("compactdefaultargs") VerAtSta;
 		%feature("autodoc", "
 Parameters
@@ -5139,10 +4875,10 @@ Description
 -----------
 No available documentation.
 ") VerAtSta;
-		void VerAtSta(const Standard_Boolean B);
+		void VerAtSta(const bool B);
 
 		/****** HLRBRep_EdgeData::Vertical ******/
-		/****** md5 signature: ccf91eafdf77a07d66f4f7dcebc1b226 ******/
+		/****** md5 signature: 7b4649e49770fd1e8f259567304907fd ******/
 		%feature("compactdefaultargs") Vertical;
 		%feature("autodoc", "Return
 -------
@@ -5152,10 +4888,10 @@ Description
 -----------
 No available documentation.
 ") Vertical;
-		Standard_Boolean Vertical();
+		bool Vertical();
 
 		/****** HLRBRep_EdgeData::Vertical ******/
-		/****** md5 signature: 2a7d04df2946980475f98e3c45fcfb5b ******/
+		/****** md5 signature: 233dc3b0ac8e7d4261bcd6304c3f8c1d ******/
 		%feature("compactdefaultargs") Vertical;
 		%feature("autodoc", "
 Parameters
@@ -5170,7 +4906,7 @@ Description
 -----------
 No available documentation.
 ") Vertical;
-		void Vertical(const Standard_Boolean B);
+		void Vertical(const bool B);
 
 };
 
@@ -5187,46 +4923,46 @@ No available documentation.
 class HLRBRep_EdgeFaceTool {
 	public:
 		/****** HLRBRep_EdgeFaceTool::CurvatureValue ******/
-		/****** md5 signature: 2b5097b769ed2d6e0c11c0c1c9e80336 ******/
+		/****** md5 signature: 5888d332f0306704c0920ac75148392d ******/
 		%feature("compactdefaultargs") CurvatureValue;
 		%feature("autodoc", "
 Parameters
 ----------
-F: Standard_Address
-U: float
-V: float
+F: HLRBRep_SurfacePtr
+U: double
+V: double
 Tg: gp_Dir
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") CurvatureValue;
-		static Standard_Real CurvatureValue(const Standard_Address F, const Standard_Real U, const Standard_Real V, const gp_Dir & Tg);
+		static double CurvatureValue(const HLRBRep_SurfacePtr F, const double U, const double V, const gp_Dir & Tg);
 
 		/****** HLRBRep_EdgeFaceTool::UVPoint ******/
-		/****** md5 signature: 23f4c3826da4b29b41c138f0bcf3a0a2 ******/
+		/****** md5 signature: 92d0e08cf4766fb3cb6f6daa33b093dc ******/
 		%feature("compactdefaultargs") UVPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-Par: float
-E: Standard_Address
-F: Standard_Address
+Par: double
+E: HLRBRep_CurvePtr
+F: HLRBRep_SurfacePtr
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
 return True if U and V are found.
 ") UVPoint;
-		static Standard_Boolean UVPoint(const Standard_Real Par, const Standard_Address E, const Standard_Address F, Standard_Real &OutValue, Standard_Real &OutValue);
+		static bool UVPoint(const double Par, const HLRBRep_CurvePtr E, const HLRBRep_SurfacePtr F, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -5243,12 +4979,12 @@ return True if U and V are found.
 class HLRBRep_EdgeIList {
 	public:
 		/****** HLRBRep_EdgeIList::AddInterference ******/
-		/****** md5 signature: e1f0e33bc46e72a3beaf2bdbb9f48e3f ******/
+		/****** md5 signature: 7f9aad2a5268bc8b72d3bcbbbf46cac4 ******/
 		%feature("compactdefaultargs") AddInterference;
 		%feature("autodoc", "
 Parameters
 ----------
-IL: HLRAlgo_InterferenceList
+IL: NCollection_List<HLRAlgo_Interference>
 I: HLRAlgo_Interference
 T: HLRBRep_EdgeInterferenceTool
 
@@ -5260,15 +4996,15 @@ Description
 -----------
 Add the interference <I> to the list <IL>.
 ") AddInterference;
-		static void AddInterference(HLRAlgo_InterferenceList & IL, const HLRAlgo_Interference & I, const HLRBRep_EdgeInterferenceTool & T);
+		static void AddInterference(NCollection_List<HLRAlgo_Interference> & IL, const HLRAlgo_Interference & I, const HLRBRep_EdgeInterferenceTool & T);
 
 		/****** HLRBRep_EdgeIList::ProcessComplex ******/
-		/****** md5 signature: fb997f1670d30d67dd5593d4670f9b69 ******/
+		/****** md5 signature: 721123de42b7cfd7f3a2a0a62e5af96b ******/
 		%feature("compactdefaultargs") ProcessComplex;
 		%feature("autodoc", "
 Parameters
 ----------
-IL: HLRAlgo_InterferenceList
+IL: NCollection_List<HLRAlgo_Interference>
 T: HLRBRep_EdgeInterferenceTool
 
 Return
@@ -5279,7 +5015,7 @@ Description
 -----------
 Process complex transitions on the list IL.
 ") ProcessComplex;
-		static void ProcessComplex(HLRAlgo_InterferenceList & IL, const HLRBRep_EdgeInterferenceTool & T);
+		static void ProcessComplex(NCollection_List<HLRAlgo_Interference> & IL, const HLRBRep_EdgeInterferenceTool & T);
 
 };
 
@@ -5327,17 +5063,17 @@ No available documentation.
 		TopAbs_Orientation CurrentOrientation();
 
 		/****** HLRBRep_EdgeInterferenceTool::CurrentParameter ******/
-		/****** md5 signature: ab21fd9f12a344c39577c17eb014cdfa ******/
+		/****** md5 signature: 17c3d72eb0a530060cafe7a0ba61c46b ******/
 		%feature("compactdefaultargs") CurrentParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") CurrentParameter;
-		Standard_Real CurrentParameter();
+		double CurrentParameter();
 
 		/****** HLRBRep_EdgeInterferenceTool::CurrentVertex ******/
 		/****** md5 signature: adc69eba4081a42553cc0035dbebe4fc ******/
@@ -5353,24 +5089,24 @@ No available documentation.
 		const HLRAlgo_Intersection & CurrentVertex();
 
 		/****** HLRBRep_EdgeInterferenceTool::EdgeGeometry ******/
-		/****** md5 signature: c8f1cf53cd7649a821733f928fc566a1 ******/
+		/****** md5 signature: 704f7771703d87206256fbbd7b403cf2 ******/
 		%feature("compactdefaultargs") EdgeGeometry;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 Tgt: gp_Dir
 Nrm: gp_Dir
 
 Return
 -------
-Curv: float
+Curv: double
 
 Description
 -----------
 Returns local geometric description of the Edge at parameter <Para>. See method Reset of class EdgeFaceTransition from TopCnx for other arguments.
 ") EdgeGeometry;
-		void EdgeGeometry(const Standard_Real Param, gp_Dir & Tgt, gp_Dir & Nrm, Standard_Real &OutValue);
+		void EdgeGeometry(const double Param, gp_Dir & Tgt, gp_Dir & Nrm, Standard_Real &OutValue);
 
 		/****** HLRBRep_EdgeInterferenceTool::InitVertices ******/
 		/****** md5 signature: caeaea3f9845f6c8a1c237f8f1908aa4 ******/
@@ -5386,7 +5122,7 @@ No available documentation.
 		void InitVertices();
 
 		/****** HLRBRep_EdgeInterferenceTool::InterferenceBoundaryGeometry ******/
-		/****** md5 signature: 9084fbcedf4e8429930e7c969f91301c ******/
+		/****** md5 signature: bac0593b7c7654d80127f8f63e019472 ******/
 		%feature("compactdefaultargs") InterferenceBoundaryGeometry;
 		%feature("autodoc", "
 Parameters
@@ -5397,7 +5133,7 @@ Norm: gp_Dir
 
 Return
 -------
-Curv: float
+Curv: double
 
 Description
 -----------
@@ -5406,7 +5142,7 @@ Returns the geometry of the boundary at the interference <I>. See the AddInterfe
 		void InterferenceBoundaryGeometry(const HLRAlgo_Interference & I, gp_Dir & Tang, gp_Dir & Norm, Standard_Real &OutValue);
 
 		/****** HLRBRep_EdgeInterferenceTool::IsPeriodic ******/
-		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
+		/****** md5 signature: d36764d6f9b1283d23b2bfdabe28da79 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -5416,7 +5152,7 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** HLRBRep_EdgeInterferenceTool::LoadEdge ******/
 		/****** md5 signature: ed3f5a569bfc70a9fa74a468cb585b05 ******/
@@ -5432,7 +5168,7 @@ No available documentation.
 		void LoadEdge();
 
 		/****** HLRBRep_EdgeInterferenceTool::MoreVertices ******/
-		/****** md5 signature: 30eb28ce85d2d60a20b0a6612625139c ******/
+		/****** md5 signature: 83ca27360b528f6d463b672d75829d0a ******/
 		%feature("compactdefaultargs") MoreVertices;
 		%feature("autodoc", "Return
 -------
@@ -5442,7 +5178,7 @@ Description
 -----------
 No available documentation.
 ") MoreVertices;
-		Standard_Boolean MoreVertices();
+		bool MoreVertices();
 
 		/****** HLRBRep_EdgeInterferenceTool::NextVertex ******/
 		/****** md5 signature: c800122ce4f2c3bd5f52dba7f14e300c ******/
@@ -5458,7 +5194,7 @@ No available documentation.
 		void NextVertex();
 
 		/****** HLRBRep_EdgeInterferenceTool::ParameterOfInterference ******/
-		/****** md5 signature: 6eb987a2f2a6305e8405661daecd856d ******/
+		/****** md5 signature: ebb5a2fc6328a9ccf51a32e192c3431d ******/
 		%feature("compactdefaultargs") ParameterOfInterference;
 		%feature("autodoc", "
 Parameters
@@ -5467,16 +5203,16 @@ I: HLRAlgo_Interference
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParameterOfInterference;
-		Standard_Real ParameterOfInterference(const HLRAlgo_Interference & I);
+		double ParameterOfInterference(const HLRAlgo_Interference & I);
 
 		/****** HLRBRep_EdgeInterferenceTool::SameInterferences ******/
-		/****** md5 signature: 86d65de3c8387af864376688859f880f ******/
+		/****** md5 signature: 79a7a583a019588e8c997a4532af4b7e ******/
 		%feature("compactdefaultargs") SameInterferences;
 		%feature("autodoc", "
 Parameters
@@ -5492,10 +5228,10 @@ Description
 -----------
 True if the two interferences are on the same geometric locus.
 ") SameInterferences;
-		Standard_Boolean SameInterferences(const HLRAlgo_Interference & I1, const HLRAlgo_Interference & I2);
+		bool SameInterferences(const HLRAlgo_Interference & I1, const HLRAlgo_Interference & I2);
 
 		/****** HLRBRep_EdgeInterferenceTool::SameVertexAndInterference ******/
-		/****** md5 signature: aad472927c83f790d0d28912a327e01e ******/
+		/****** md5 signature: 27f2fe532e9c49e966735494e20c111f ******/
 		%feature("compactdefaultargs") SameVertexAndInterference;
 		%feature("autodoc", "
 Parameters
@@ -5510,7 +5246,7 @@ Description
 -----------
 True if the Interference and the current Vertex are on the same geometric locus.
 ") SameVertexAndInterference;
-		Standard_Boolean SameVertexAndInterference(const HLRAlgo_Interference & I);
+		bool SameVertexAndInterference(const HLRAlgo_Interference & I);
 
 };
 
@@ -5527,14 +5263,14 @@ True if the Interference and the current Vertex are on the same geometric locus.
 class HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 	public:
 		/****** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter ******/
-		/****** md5 signature: 8d9dadc5fc5f0348b08718fcf1dde2d6 ******/
+		/****** md5 signature: 529fdeeb2e59d1c13dcc4a84fee2615b ******/
 		%feature("compactdefaultargs") HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
-C1: Standard_Address
-C2: Standard_Address
-Tol: float
+C1: HLRBRep_CurvePtr
+C2: HLRBRep_CurvePtr
+Tol: double
 
 Return
 -------
@@ -5544,10 +5280,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
-		 HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter(const Standard_Address & C1, const Standard_Address & C2, const Standard_Real Tol);
+		 HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter(const HLRBRep_CurvePtr & C1, const HLRBRep_CurvePtr & C2, const double Tol);
 
 		/****** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::AnErrorOccurred ******/
-		/****** md5 signature: 7f72d28f1d64c3e0ff5b578209701958 ******/
+		/****** md5 signature: 7d94c3d5c515369c6ad5964d268d2351 ******/
 		%feature("compactdefaultargs") AnErrorOccurred;
 		%feature("autodoc", "Return
 -------
@@ -5557,10 +5293,10 @@ Description
 -----------
 No available documentation.
 ") AnErrorOccurred;
-		Standard_Boolean AnErrorOccurred();
+		bool AnErrorOccurred();
 
 		/****** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::NbRoots ******/
-		/****** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ******/
+		/****** md5 signature: fe443a1190b192943b5fddf45586a22a ******/
 		%feature("compactdefaultargs") NbRoots;
 		%feature("autodoc", "Return
 -------
@@ -5570,10 +5306,10 @@ Description
 -----------
 No available documentation.
 ") NbRoots;
-		Standard_Integer NbRoots();
+		int NbRoots();
 
 		/****** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform ******/
-		/****** md5 signature: f14997063acb35eeaf788acb1802c2a7 ******/
+		/****** md5 signature: 8666edd96369790c2c310bc4605ecfe7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -5585,8 +5321,8 @@ Return
 -------
 NumSegOn1: int
 NumSegOn2: int
-ParamOnSeg1: float
-ParamOnSeg2: float
+ParamOnSeg1: double
+ParamOnSeg2: double
 
 Description
 -----------
@@ -5595,17 +5331,17 @@ No available documentation.
 		void Perform(const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter & Poly1, const HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter & Poly2, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform ******/
-		/****** md5 signature: 95ca10966a8387b775958da0f1189e3d ******/
+		/****** md5 signature: b341aed1ff0668c7471621afc1e6ebee ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Uo: float
-Vo: float
-UInf: float
-VInf: float
-USup: float
-VSup: float
+Uo: double
+Vo: double
+UInf: double
+VInf: double
+USup: double
+VSup: double
 
 Return
 -------
@@ -5615,10 +5351,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Standard_Real Uo, const Standard_Real Vo, const Standard_Real UInf, const Standard_Real VInf, const Standard_Real USup, const Standard_Real VSup);
+		void Perform(const double Uo, const double Vo, const double UInf, const double VInf, const double USup, const double VSup);
 
 		/****** HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Roots ******/
-		/****** md5 signature: 8d4622811e04b4565f31efccbad15fef ******/
+		/****** md5 signature: 924b6eebb61ca2e1dfbab661d402f781 ******/
 		%feature("compactdefaultargs") Roots;
 		%feature("autodoc", "
 Parameters
@@ -5626,8 +5362,8 @@ Parameters
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -5663,7 +5399,7 @@ No available documentation.
 		 HLRBRep_FaceData();
 
 		/****** HLRBRep_FaceData::Back ******/
-		/****** md5 signature: cd9372718c7f8bdc9fcd8201e2f9203f ******/
+		/****** md5 signature: 68ade9c819314d37d675e9079550f22d ******/
 		%feature("compactdefaultargs") Back;
 		%feature("autodoc", "Return
 -------
@@ -5673,10 +5409,10 @@ Description
 -----------
 No available documentation.
 ") Back;
-		Standard_Boolean Back();
+		bool Back();
 
 		/****** HLRBRep_FaceData::Back ******/
-		/****** md5 signature: d047173ad5f3864fbb2d5299bb8c6b95 ******/
+		/****** md5 signature: 9eeef60dbc20e5026dc6b5d255f25543 ******/
 		%feature("compactdefaultargs") Back;
 		%feature("autodoc", "
 Parameters
@@ -5691,10 +5427,10 @@ Description
 -----------
 No available documentation.
 ") Back;
-		void Back(const Standard_Boolean B);
+		void Back(const bool B);
 
 		/****** HLRBRep_FaceData::Closed ******/
-		/****** md5 signature: 6964da666f9b5a80bedb32cfb1fdc0ba ******/
+		/****** md5 signature: 3af99e52b24f54eb2b999649fc18915a ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -5704,10 +5440,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** HLRBRep_FaceData::Closed ******/
-		/****** md5 signature: 94c08de7f5f8128010d9976e15db8efd ******/
+		/****** md5 signature: cfbc50578377d25b9987cac1a0f4885e ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -5722,10 +5458,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		void Closed(const Standard_Boolean B);
+		void Closed(const bool B);
 
 		/****** HLRBRep_FaceData::Cone ******/
-		/****** md5 signature: 81a444014a717545dd6a66b8774ccde3 ******/
+		/****** md5 signature: 9a553220c0981d81bd4eef68911c522f ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "Return
 -------
@@ -5735,10 +5471,10 @@ Description
 -----------
 No available documentation.
 ") Cone;
-		Standard_Boolean Cone();
+		bool Cone();
 
 		/****** HLRBRep_FaceData::Cone ******/
-		/****** md5 signature: eb710dad0aa3f142d633badb48a91b90 ******/
+		/****** md5 signature: f4df1f1a968b64ac392e4f3126a90852 ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "
 Parameters
@@ -5753,10 +5489,10 @@ Description
 -----------
 No available documentation.
 ") Cone;
-		void Cone(const Standard_Boolean B);
+		void Cone(const bool B);
 
 		/****** HLRBRep_FaceData::Cut ******/
-		/****** md5 signature: 69240458c77b35230fafc7c3af224c24 ******/
+		/****** md5 signature: aaa62f5beb32443418b6673158c64d45 ******/
 		%feature("compactdefaultargs") Cut;
 		%feature("autodoc", "Return
 -------
@@ -5766,10 +5502,10 @@ Description
 -----------
 No available documentation.
 ") Cut;
-		Standard_Boolean Cut();
+		bool Cut();
 
 		/****** HLRBRep_FaceData::Cut ******/
-		/****** md5 signature: fccdba7023ae16bcdab358aa191780d5 ******/
+		/****** md5 signature: a463451492cb5d985331ab7ef06b2820 ******/
 		%feature("compactdefaultargs") Cut;
 		%feature("autodoc", "
 Parameters
@@ -5784,10 +5520,10 @@ Description
 -----------
 No available documentation.
 ") Cut;
-		void Cut(const Standard_Boolean B);
+		void Cut(const bool B);
 
 		/****** HLRBRep_FaceData::Cylinder ******/
-		/****** md5 signature: f51a27d8676ee0e7ea069c4ce457cdc7 ******/
+		/****** md5 signature: 1e93fb6ea7dda7a2cd67511d3be9f801 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "Return
 -------
@@ -5797,10 +5533,10 @@ Description
 -----------
 No available documentation.
 ") Cylinder;
-		Standard_Boolean Cylinder();
+		bool Cylinder();
 
 		/****** HLRBRep_FaceData::Cylinder ******/
-		/****** md5 signature: 9d3a99bf7be96c92b5b1a8ceb92e5f9b ******/
+		/****** md5 signature: a5e6dedb90e91035c9798a35869448f2 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "
 Parameters
@@ -5815,7 +5551,7 @@ Description
 -----------
 No available documentation.
 ") Cylinder;
-		void Cylinder(const Standard_Boolean B);
+		void Cylinder(const bool B);
 
 		/****** HLRBRep_FaceData::Geometry ******/
 		/****** md5 signature: e80782a494064d296da9e48aa7b2075d ******/
@@ -5831,7 +5567,7 @@ No available documentation.
 		HLRBRep_Surface & Geometry();
 
 		/****** HLRBRep_FaceData::Hiding ******/
-		/****** md5 signature: bc42207e7cb8f65a46eef744c498e613 ******/
+		/****** md5 signature: 1ecaf9532c51f7586db9e63b215ba79e ******/
 		%feature("compactdefaultargs") Hiding;
 		%feature("autodoc", "Return
 -------
@@ -5841,10 +5577,10 @@ Description
 -----------
 No available documentation.
 ") Hiding;
-		Standard_Boolean Hiding();
+		bool Hiding();
 
 		/****** HLRBRep_FaceData::Hiding ******/
-		/****** md5 signature: 40db543b0765548de774883363c55a4b ******/
+		/****** md5 signature: 27a05e9856649a3097f9c9bdd349a146 ******/
 		%feature("compactdefaultargs") Hiding;
 		%feature("autodoc", "
 Parameters
@@ -5859,7 +5595,7 @@ Description
 -----------
 No available documentation.
 ") Hiding;
-		void Hiding(const Standard_Boolean B);
+		void Hiding(const bool B);
 
 		/****** HLRBRep_FaceData::Orientation ******/
 		/****** md5 signature: 328242fe19b1f80489d8169681ebc029 ******/
@@ -5893,7 +5629,7 @@ No available documentation.
 		void Orientation(const TopAbs_Orientation O);
 
 		/****** HLRBRep_FaceData::Plane ******/
-		/****** md5 signature: f121aaa25d867da488b72c7fc2c26685 ******/
+		/****** md5 signature: 4a9fa6d6b5f8a6a130a4083d7f091f07 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -5903,10 +5639,10 @@ Description
 -----------
 No available documentation.
 ") Plane;
-		Standard_Boolean Plane();
+		bool Plane();
 
 		/****** HLRBRep_FaceData::Plane ******/
-		/****** md5 signature: d2ffd027ae5f6a63ed8ea028fb27552b ******/
+		/****** md5 signature: 3cd4f3bfe181d34bd2adc1bc2a1b7f40 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "
 Parameters
@@ -5921,10 +5657,10 @@ Description
 -----------
 No available documentation.
 ") Plane;
-		void Plane(const Standard_Boolean B);
+		void Plane(const bool B);
 
 		/****** HLRBRep_FaceData::Selected ******/
-		/****** md5 signature: 5d74076148a32a2f44281b7de1236633 ******/
+		/****** md5 signature: 8641e0f09f52f1e2ed1b07fb3a8de9b1 ******/
 		%feature("compactdefaultargs") Selected;
 		%feature("autodoc", "Return
 -------
@@ -5934,10 +5670,10 @@ Description
 -----------
 No available documentation.
 ") Selected;
-		Standard_Boolean Selected();
+		bool Selected();
 
 		/****** HLRBRep_FaceData::Selected ******/
-		/****** md5 signature: 8ff2b8ca05e344d8592cece668b6c014 ******/
+		/****** md5 signature: b9538ce37b46345d234100e61839d1aa ******/
 		%feature("compactdefaultargs") Selected;
 		%feature("autodoc", "
 Parameters
@@ -5952,10 +5688,10 @@ Description
 -----------
 No available documentation.
 ") Selected;
-		void Selected(const Standard_Boolean B);
+		void Selected(const bool B);
 
 		/****** HLRBRep_FaceData::Set ******/
-		/****** md5 signature: 95a5cb236d441a5c67c18ce538f1e613 ******/
+		/****** md5 signature: df02a2f536f02a669daca45f0b3e1096 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5971,12 +5707,12 @@ None
 
 Description
 -----------
-<Or> is the orientation of the face. <Cl> is true if the face belongs to a closed volume. <NW> is the number of wires ( or block of edges ) of the face.
+<Or> is the orientation of the face. <Cl> is true if the face belongs to a closed volume. <NW> is the number of wires (or block of edges) of the face.
 ") Set;
-		void Set(const TopoDS_Face & FG, const TopAbs_Orientation Or, const Standard_Boolean Cl, const Standard_Integer NW);
+		void Set(const TopoDS_Face & FG, const TopAbs_Orientation Or, const bool Cl, const int NW);
 
 		/****** HLRBRep_FaceData::SetWEdge ******/
-		/****** md5 signature: d997dc34d3c54823fc5ab479d80f2e18 ******/
+		/****** md5 signature: b8d9a23d38a81e2318c8d0b9025c264f ******/
 		%feature("compactdefaultargs") SetWEdge;
 		%feature("autodoc", "
 Parameters
@@ -5998,10 +5734,10 @@ Description
 -----------
 Set the edge number <EWI> of the wire <WI>.
 ") SetWEdge;
-		void SetWEdge(const Standard_Integer WI, const Standard_Integer EWI, const Standard_Integer EI, const TopAbs_Orientation Or, const Standard_Boolean OutL, const Standard_Boolean Inte, const Standard_Boolean Dble, const Standard_Boolean IsoL);
+		void SetWEdge(const int WI, const int EWI, const int EI, const TopAbs_Orientation Or, const bool OutL, const bool Inte, const bool Dble, const bool IsoL);
 
 		/****** HLRBRep_FaceData::SetWire ******/
-		/****** md5 signature: 4a402606b93cd1bc65832d196131e55d ******/
+		/****** md5 signature: ffa67bbe52313b82d45d3dffff577cea ******/
 		%feature("compactdefaultargs") SetWire;
 		%feature("autodoc", "
 Parameters
@@ -6017,10 +5753,10 @@ Description
 -----------
 Set <NE> the number of edges of the wire number <WI>.
 ") SetWire;
-		void SetWire(const Standard_Integer WI, const Standard_Integer NE);
+		void SetWire(const int WI, const int NE);
 
 		/****** HLRBRep_FaceData::Side ******/
-		/****** md5 signature: b051c6b7c64d27374782556662de25d5 ******/
+		/****** md5 signature: f68f08cc98b638332cd82c350080942a ******/
 		%feature("compactdefaultargs") Side;
 		%feature("autodoc", "Return
 -------
@@ -6030,10 +5766,10 @@ Description
 -----------
 No available documentation.
 ") Side;
-		Standard_Boolean Side();
+		bool Side();
 
 		/****** HLRBRep_FaceData::Side ******/
-		/****** md5 signature: 99f9b3fb171c48f2f127cc8f20d48780 ******/
+		/****** md5 signature: 8687a0b1974d15dd9c8323de15903a22 ******/
 		%feature("compactdefaultargs") Side;
 		%feature("autodoc", "
 Parameters
@@ -6048,10 +5784,10 @@ Description
 -----------
 No available documentation.
 ") Side;
-		void Side(const Standard_Boolean B);
+		void Side(const bool B);
 
 		/****** HLRBRep_FaceData::Simple ******/
-		/****** md5 signature: a0bb1fd543e316c4cc1710184f1b8b69 ******/
+		/****** md5 signature: cb250ada3ae377bdde721bc10127e5c0 ******/
 		%feature("compactdefaultargs") Simple;
 		%feature("autodoc", "Return
 -------
@@ -6061,10 +5797,10 @@ Description
 -----------
 No available documentation.
 ") Simple;
-		Standard_Boolean Simple();
+		bool Simple();
 
 		/****** HLRBRep_FaceData::Simple ******/
-		/****** md5 signature: d6f2f4300dde7ef65d46e0f966abe7b2 ******/
+		/****** md5 signature: a463babaa0601d384101f963702e5967 ******/
 		%feature("compactdefaultargs") Simple;
 		%feature("autodoc", "
 Parameters
@@ -6079,28 +5815,28 @@ Description
 -----------
 No available documentation.
 ") Simple;
-		void Simple(const Standard_Boolean B);
+		void Simple(const bool B);
 
 		/****** HLRBRep_FaceData::Size ******/
-		/****** md5 signature: a8e9905382c3964d697ee929ccdb9562 ******/
+		/****** md5 signature: 06192572c9cdca54cf74477cdabdab63 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Size;
-		Standard_Real Size();
+		double Size();
 
 		/****** HLRBRep_FaceData::Size ******/
-		/****** md5 signature: caa33fcc13a2ff9ea4a95ab2ce3d5924 ******/
+		/****** md5 signature: 7b342acf50c406acd8d4b3190be1aa47 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "
 Parameters
 ----------
-S: float
+S: double
 
 Return
 -------
@@ -6110,10 +5846,10 @@ Description
 -----------
 No available documentation.
 ") Size;
-		void Size(const Standard_Real S);
+		void Size(const double S);
 
 		/****** HLRBRep_FaceData::Sphere ******/
-		/****** md5 signature: 3ffe70065a3d00e08533c52a615de711 ******/
+		/****** md5 signature: 07199349b6749e9326468d25ad829fab ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "Return
 -------
@@ -6123,10 +5859,10 @@ Description
 -----------
 No available documentation.
 ") Sphere;
-		Standard_Boolean Sphere();
+		bool Sphere();
 
 		/****** HLRBRep_FaceData::Sphere ******/
-		/****** md5 signature: f5e128a267ad828a88fd680ee392c612 ******/
+		/****** md5 signature: 1bffcd26540541dc6fbff25ecac847af ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "
 Parameters
@@ -6141,10 +5877,10 @@ Description
 -----------
 No available documentation.
 ") Sphere;
-		void Sphere(const Standard_Boolean B);
+		void Sphere(const bool B);
 
 		/****** HLRBRep_FaceData::Tolerance ******/
-		/****** md5 signature: 680c1c68cea56ee6a9513e808e1d379c ******/
+		/****** md5 signature: 27173cec126fd48cceae62b7a1012170 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -6154,10 +5890,10 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_ShortReal Tolerance();
+		float Tolerance();
 
 		/****** HLRBRep_FaceData::Torus ******/
-		/****** md5 signature: ce39c659a55decd69a2cee5678fbab44 ******/
+		/****** md5 signature: 896e22556fc0163213d2aa26958ab40f ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "Return
 -------
@@ -6167,10 +5903,10 @@ Description
 -----------
 No available documentation.
 ") Torus;
-		Standard_Boolean Torus();
+		bool Torus();
 
 		/****** HLRBRep_FaceData::Torus ******/
-		/****** md5 signature: 8e204a2bf186d8b8721f25f21de2b201 ******/
+		/****** md5 signature: ec68c54fcae6396146cfdaccb7f7cac3 ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "
 Parameters
@@ -6185,7 +5921,7 @@ Description
 -----------
 No available documentation.
 ") Torus;
-		void Torus(const Standard_Boolean B);
+		void Torus(const bool B);
 
 		/****** HLRBRep_FaceData::Wires ******/
 		/****** md5 signature: 5da1d69c9cd7d2017555f94806dbc1a7 ******/
@@ -6201,7 +5937,7 @@ No available documentation.
 		opencascade::handle<HLRAlgo_WiresBlock> & Wires();
 
 		/****** HLRBRep_FaceData::WithOutL ******/
-		/****** md5 signature: 3c66a94b1c7ee08e6b8a2fa066cc44d8 ******/
+		/****** md5 signature: dff74776078d395e0714a55e493644c1 ******/
 		%feature("compactdefaultargs") WithOutL;
 		%feature("autodoc", "Return
 -------
@@ -6211,10 +5947,10 @@ Description
 -----------
 No available documentation.
 ") WithOutL;
-		Standard_Boolean WithOutL();
+		bool WithOutL();
 
 		/****** HLRBRep_FaceData::WithOutL ******/
-		/****** md5 signature: ffb82d26c98b8aa27e9d131d2c49546a ******/
+		/****** md5 signature: dcfc2a64019a167b6450dca7a24f7716 ******/
 		%feature("compactdefaultargs") WithOutL;
 		%feature("autodoc", "
 Parameters
@@ -6229,7 +5965,7 @@ Description
 -----------
 No available documentation.
 ") WithOutL;
-		void WithOutL(const Standard_Boolean B);
+		void WithOutL(const bool B);
 
 };
 
@@ -6259,7 +5995,7 @@ No available documentation.
 		 HLRBRep_FaceIterator();
 
 		/****** HLRBRep_FaceIterator::BeginningOfWire ******/
-		/****** md5 signature: 08a80bf9673a0bb64c5402cb4f9c7371 ******/
+		/****** md5 signature: 15c11196c3b8289a35976a28fda2e313 ******/
 		%feature("compactdefaultargs") BeginningOfWire;
 		%feature("autodoc", "Return
 -------
@@ -6269,10 +6005,10 @@ Description
 -----------
 Returns True if the current edge is the first of a wire.
 ") BeginningOfWire;
-		Standard_Boolean BeginningOfWire();
+		bool BeginningOfWire();
 
 		/****** HLRBRep_FaceIterator::Double ******/
-		/****** md5 signature: 8e7b76dbe7d0d25634fd22872f1a9eab ******/
+		/****** md5 signature: 69769c2256d697551956eca1afcac58a ******/
 		%feature("compactdefaultargs") Double;
 		%feature("autodoc", "Return
 -------
@@ -6282,10 +6018,10 @@ Description
 -----------
 No available documentation.
 ") Double;
-		Standard_Boolean Double();
+		bool Double();
 
 		/****** HLRBRep_FaceIterator::Edge ******/
-		/****** md5 signature: 76748ffd591f786c44105943fcd6acd5 ******/
+		/****** md5 signature: d6bcd55b8bae579e7b4b7931e982c5a2 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -6295,10 +6031,10 @@ Description
 -----------
 No available documentation.
 ") Edge;
-		Standard_Integer Edge();
+		int Edge();
 
 		/****** HLRBRep_FaceIterator::EndOfWire ******/
-		/****** md5 signature: 98ac37dc8042863f016e7904eded0942 ******/
+		/****** md5 signature: 58ae75f4663a44da854de0e4dc2ca8b9 ******/
 		%feature("compactdefaultargs") EndOfWire;
 		%feature("autodoc", "Return
 -------
@@ -6308,7 +6044,7 @@ Description
 -----------
 Returns True if the current edge is the last of a wire.
 ") EndOfWire;
-		Standard_Boolean EndOfWire();
+		bool EndOfWire();
 
 		/****** HLRBRep_FaceIterator::InitEdge ******/
 		/****** md5 signature: 422d899fea8385aeaf65601ef58754cb ******/
@@ -6329,7 +6065,7 @@ Begin an exploration of the edges of the face <fd>.
 		void InitEdge(HLRBRep_FaceData & fd);
 
 		/****** HLRBRep_FaceIterator::Internal ******/
-		/****** md5 signature: 5ef23a8bb89a8c65384a3c52774e0041 ******/
+		/****** md5 signature: 8098632e5e6958c60a875b3e867984fd ******/
 		%feature("compactdefaultargs") Internal;
 		%feature("autodoc", "Return
 -------
@@ -6339,10 +6075,10 @@ Description
 -----------
 No available documentation.
 ") Internal;
-		Standard_Boolean Internal();
+		bool Internal();
 
 		/****** HLRBRep_FaceIterator::IsoLine ******/
-		/****** md5 signature: df815a00be6369dbaeff09d05445d1a0 ******/
+		/****** md5 signature: 6c55b76c8a9fda149eb041d21fe6e745 ******/
 		%feature("compactdefaultargs") IsoLine;
 		%feature("autodoc", "Return
 -------
@@ -6352,10 +6088,10 @@ Description
 -----------
 No available documentation.
 ") IsoLine;
-		Standard_Boolean IsoLine();
+		bool IsoLine();
 
 		/****** HLRBRep_FaceIterator::MoreEdge ******/
-		/****** md5 signature: 3deabda73e93b20e8a72f2f0ebea4e02 ******/
+		/****** md5 signature: 6ad80ac0d66dad5013f4fe4cff20c934 ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -6365,7 +6101,7 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** HLRBRep_FaceIterator::NextEdge ******/
 		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
@@ -6394,7 +6130,7 @@ No available documentation.
 		TopAbs_Orientation Orientation();
 
 		/****** HLRBRep_FaceIterator::OutLine ******/
-		/****** md5 signature: d122c0487489d9158e71cfc6be51302d ******/
+		/****** md5 signature: 5a2b30d4093f4f82558781e73ac9e2f1 ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "Return
 -------
@@ -6404,7 +6140,7 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		Standard_Boolean OutLine();
+		bool OutLine();
 
 		/****** HLRBRep_FaceIterator::SkipWire ******/
 		/****** md5 signature: 271db178bcbd81d9798133b29cce0b8c ******/
@@ -6465,7 +6201,7 @@ Constructs a framework for filtering the results of the HLRBRep_Algo algorithm, 
 		 HLRBRep_HLRToShape(const opencascade::handle<HLRBRep_Algo> & A);
 
 		/****** HLRBRep_HLRToShape::CompoundOfEdges ******/
-		/****** md5 signature: 71c887a277d9d5a40d5ebebcb54316c6 ******/
+		/****** md5 signature: daca2b39735f3c8a34e2b8c14cfa3a99 ******/
 		%feature("compactdefaultargs") CompoundOfEdges;
 		%feature("autodoc", "
 Parameters
@@ -6482,10 +6218,10 @@ Description
 -----------
 Returns compound of resulting edges of required type and visibility, taking into account the kind of space (2d or 3d).
 ") CompoundOfEdges;
-		TopoDS_Shape CompoundOfEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
+		TopoDS_Shape CompoundOfEdges(const HLRBRep_TypeOfResultingEdge type, const bool visible, const bool In3d);
 
 		/****** HLRBRep_HLRToShape::CompoundOfEdges ******/
-		/****** md5 signature: 6c46497bdf04eb2ad6fe50bbd4953e3b ******/
+		/****** md5 signature: 39eff87eee83e021a67472f4cebb19d6 ******/
 		%feature("compactdefaultargs") CompoundOfEdges;
 		%feature("autodoc", "
 Parameters
@@ -6503,7 +6239,7 @@ Description
 -----------
 For specified shape returns compound of resulting edges of required type and visibility, taking into account the kind of space (2d or 3d).
 ") CompoundOfEdges;
-		TopoDS_Shape CompoundOfEdges(const TopoDS_Shape & S, const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
+		TopoDS_Shape CompoundOfEdges(const TopoDS_Shape & S, const HLRBRep_TypeOfResultingEdge type, const bool visible, const bool In3d);
 
 		/****** HLRBRep_HLRToShape::HCompound ******/
 		/****** md5 signature: d34edae76e829f1ff2d89a8960cf3e12 ******/
@@ -6514,7 +6250,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden sharp edges (of C0-continuity).
 ") HCompound;
 		TopoDS_Shape HCompound();
 
@@ -6532,7 +6268,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden sharp edges (of C0-continuity) of specified shape.
 ") HCompound;
 		TopoDS_Shape HCompound(const TopoDS_Shape & S);
 
@@ -6545,7 +6281,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden isoparameters.
 ") IsoLineHCompound;
 		TopoDS_Shape IsoLineHCompound();
 
@@ -6563,7 +6299,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden isoparameters of specified shape.
 ") IsoLineHCompound;
 		TopoDS_Shape IsoLineHCompound(const TopoDS_Shape & S);
 
@@ -6576,7 +6312,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible isoparameters.
 ") IsoLineVCompound;
 		TopoDS_Shape IsoLineVCompound();
 
@@ -6594,7 +6330,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible isoparameters of specified shape.
 ") IsoLineVCompound;
 		TopoDS_Shape IsoLineVCompound(const TopoDS_Shape & S);
 
@@ -6607,7 +6343,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden outline edges ('silhouette').
 ") OutLineHCompound;
 		TopoDS_Shape OutLineHCompound();
 
@@ -6625,7 +6361,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden outline edges ('silhouette') of specified shape.
 ") OutLineHCompound;
 		TopoDS_Shape OutLineHCompound(const TopoDS_Shape & S);
 
@@ -6638,7 +6374,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible outline edges ('silhouette').
 ") OutLineVCompound;
 		TopoDS_Shape OutLineVCompound();
 
@@ -6656,7 +6392,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible outline edges ('silhouette') of specified shape.
 ") OutLineVCompound;
 		TopoDS_Shape OutLineVCompound(const TopoDS_Shape & S);
 
@@ -6669,7 +6405,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible outline edges ('silhouette').
 ") OutLineVCompound3d;
 		TopoDS_Shape OutLineVCompound3d();
 
@@ -6682,7 +6418,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden smooth edges (G1-continuity between two surfaces).
 ") Rg1LineHCompound;
 		TopoDS_Shape Rg1LineHCompound();
 
@@ -6700,7 +6436,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden smooth edges (G1-continuity between two surfaces) of specified shape.
 ") Rg1LineHCompound;
 		TopoDS_Shape Rg1LineHCompound(const TopoDS_Shape & S);
 
@@ -6713,7 +6449,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible smooth edges (G1-continuity between two surfaces).
 ") Rg1LineVCompound;
 		TopoDS_Shape Rg1LineVCompound();
 
@@ -6731,7 +6467,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible smooth edges (G1-continuity between two surfaces) of specified shape.
 ") Rg1LineVCompound;
 		TopoDS_Shape Rg1LineVCompound(const TopoDS_Shape & S);
 
@@ -6744,7 +6480,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden sewn edges (of CN-continuity on one surface).
 ") RgNLineHCompound;
 		TopoDS_Shape RgNLineHCompound();
 
@@ -6762,7 +6498,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return hidden sewn edges (of CN-continuity on one surface) of specified shape.
 ") RgNLineHCompound;
 		TopoDS_Shape RgNLineHCompound(const TopoDS_Shape & S);
 
@@ -6775,7 +6511,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible sewn edges (of CN-continuity on one surface).
 ") RgNLineVCompound;
 		TopoDS_Shape RgNLineVCompound();
 
@@ -6793,7 +6529,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible sewn edges (of CN-continuity on one surface) of specified shape.
 ") RgNLineVCompound;
 		TopoDS_Shape RgNLineVCompound(const TopoDS_Shape & S);
 
@@ -6806,7 +6542,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible sharp edges (of C0-continuity).
 ") VCompound;
 		TopoDS_Shape VCompound();
 
@@ -6824,7 +6560,7 @@ TopoDS_Shape
 
 Description
 -----------
-No available documentation.
+Return visible sharp edges (of C0-continuity) of specified shape.
 ") VCompound;
 		TopoDS_Shape VCompound(const TopoDS_Shape & S);
 
@@ -6861,13 +6597,13 @@ Creates a Hider processing the set of Edges and hiding faces described by <DS>. 
 		 HLRBRep_Hider(const opencascade::handle<HLRBRep_Data> & DS);
 
 		/****** HLRBRep_Hider::Hide ******/
-		/****** md5 signature: 767cf6aab6d1df52670f15b01ced6148 ******/
+		/****** md5 signature: 0e924ee0e7b44076b0fee93011548973 ******/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "
 Parameters
 ----------
 FI: int
-MST: BRepTopAdaptor_MapOfShapeTool
+MST: NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -6877,10 +6613,10 @@ Description
 -----------
 Removes from the edges, the parts hidden by the hiding face number <FI>.
 ") Hide;
-		void Hide(const Standard_Integer FI, BRepTopAdaptor_MapOfShapeTool & MST);
+		void Hide(const int FI, NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher> & MST);
 
 		/****** HLRBRep_Hider::OwnHiding ******/
-		/****** md5 signature: d7166ae9c760930cf296f9334e882a27 ******/
+		/****** md5 signature: 0a8283501a7d756e1a9a8912f53e43f9 ******/
 		%feature("compactdefaultargs") OwnHiding;
 		%feature("autodoc", "
 Parameters
@@ -6895,7 +6631,7 @@ Description
 -----------
 own hiding the side face number <FI>.
 ") OwnHiding;
-		void OwnHiding(const Standard_Integer FI);
+		void OwnHiding(const int FI);
 
 };
 
@@ -6925,17 +6661,17 @@ Empty constructor.
 		 HLRBRep_IntConicCurveOfCInter();
 
 		/****** HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter ******/
-		/****** md5 signature: f40a85f399c243c843b85844d0f6b8b9 ******/
+		/****** md5 signature: 17267dea134b591f2fe8263b97f75009 ******/
 		%feature("compactdefaultargs") HLRBRep_IntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -6945,20 +6681,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") HLRBRep_IntConicCurveOfCInter;
-		 HLRBRep_IntConicCurveOfCInter(const gp_Lin2d & L, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_IntConicCurveOfCInter(const gp_Lin2d & L, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter ******/
-		/****** md5 signature: bcff132257b5b6b8e97647cb8df2aab6 ******/
+		/****** md5 signature: b2eeaab9da78b6ae31c1fe7b279c206c ******/
 		%feature("compactdefaultargs") HLRBRep_IntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -6968,20 +6704,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") HLRBRep_IntConicCurveOfCInter;
-		 HLRBRep_IntConicCurveOfCInter(const gp_Circ2d & C, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_IntConicCurveOfCInter(const gp_Circ2d & C, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter ******/
-		/****** md5 signature: 8b5e64a296d5dc6b6d1066ca6d8fbce2 ******/
+		/****** md5 signature: 1e2f216d63539701f2eecc961fcfee0f ******/
 		%feature("compactdefaultargs") HLRBRep_IntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 E: gp_Elips2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -6991,20 +6727,20 @@ Description
 -----------
 Intersection between an ellipse and a parametric curve.
 ") HLRBRep_IntConicCurveOfCInter;
-		 HLRBRep_IntConicCurveOfCInter(const gp_Elips2d & E, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_IntConicCurveOfCInter(const gp_Elips2d & E, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter ******/
-		/****** md5 signature: e861aa6a3d91b183eb5833470d59b62f ******/
+		/****** md5 signature: 30606bca3b2fd3ac869bd0eb6927779d ******/
 		%feature("compactdefaultargs") HLRBRep_IntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 Prb: gp_Parab2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7014,20 +6750,20 @@ Description
 -----------
 Intersection between a parabola and a parametric curve.
 ") HLRBRep_IntConicCurveOfCInter;
-		 HLRBRep_IntConicCurveOfCInter(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_IntConicCurveOfCInter(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::HLRBRep_IntConicCurveOfCInter ******/
-		/****** md5 signature: ac48fa9113995fb36b0983ee7e4f6b08 ******/
+		/****** md5 signature: 75d8d3826166956094f33013b7a776d4 ******/
 		%feature("compactdefaultargs") HLRBRep_IntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 H: gp_Hypr2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7037,20 +6773,20 @@ Description
 -----------
 Intersection between the main branch of an hyperbola and a parametric curve.
 ") HLRBRep_IntConicCurveOfCInter;
-		 HLRBRep_IntConicCurveOfCInter(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_IntConicCurveOfCInter(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 256f0ab35aa34bea4dadb6bd5eb4a19c ******/
+		/****** md5 signature: f9b9eb3d8295f7a5235c4b961c512389 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7060,20 +6796,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") Perform;
-		void Perform(const gp_Lin2d & L, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Lin2d & L, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 08d385c076b409ee44899b99b87bce65 ******/
+		/****** md5 signature: 90c767a29faf1ed79b4fdbf08eca13e6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7083,20 +6819,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") Perform;
-		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: adcc3156cc7d9584606acdb0e8a9fcc3 ******/
+		/****** md5 signature: b930d935742441869f4e8decde900041 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 E: gp_Elips2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7106,20 +6842,20 @@ Description
 -----------
 Intersection between an ellipse and a parametric curve.
 ") Perform;
-		void Perform(const gp_Elips2d & E, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Elips2d & E, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 590908aa03a8133564eed84deecb5d15 ******/
+		/****** md5 signature: 1f9e13a8ffa1ec749a03fae729a1beb0 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Prb: gp_Parab2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7129,20 +6865,20 @@ Description
 -----------
 Intersection between a parabola and a parametric curve.
 ") Perform;
-		void Perform(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_IntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 71d5c9759e509bec96b20ad2637d7730 ******/
+		/****** md5 signature: fc249b74a03be399405216462aef799b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 H: gp_Hypr2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -7152,7 +6888,7 @@ Description
 -----------
 Intersection between the main branch of an hyperbola and a parametric curve.
 ") Perform;
-		void Perform(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 };
 
@@ -7182,13 +6918,13 @@ Empty Constructor.
 		 HLRBRep_InterCSurf();
 
 		/****** HLRBRep_InterCSurf::Perform ******/
-		/****** md5 signature: 775ee260cc06c85bb480d3123a3ecf42 ******/
+		/****** md5 signature: a9da5ca52e247d0d9b17bee876a69d82 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: gp_Lin
-Surface: Standard_Address
+theCurve: gp_Lin
+theSurface: HLRBRep_Surface *
 
 Return
 -------
@@ -7198,17 +6934,17 @@ Description
 -----------
 Compute the Intersection between the curve and the surface.
 ") Perform;
-		void Perform(const gp_Lin & Curve, const Standard_Address & Surface);
+		void Perform(const gp_Lin & theCurve, HLRBRep_Surface * theSurface);
 
 		/****** HLRBRep_InterCSurf::Perform ******/
-		/****** md5 signature: 63afc9c04fdbf464989b3f347e12cd03 ******/
+		/****** md5 signature: 4e3f018ea2710309667d042ee2d50619 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: gp_Lin
-Polygon: HLRBRep_ThePolygonOfInterCSurf
-Surface: Standard_Address
+theCurve: gp_Lin
+thePolygon: HLRBRep_ThePolygonOfInterCSurf
+theSurface: HLRBRep_Surface *
 
 Return
 -------
@@ -7216,20 +6952,20 @@ None
 
 Description
 -----------
-Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <thePolygon> is given.
 ") Perform;
-		void Perform(const gp_Lin & Curve, const HLRBRep_ThePolygonOfInterCSurf & Polygon, const Standard_Address & Surface);
+		void Perform(const gp_Lin & theCurve, const HLRBRep_ThePolygonOfInterCSurf & thePolygon, HLRBRep_Surface * theSurface);
 
 		/****** HLRBRep_InterCSurf::Perform ******/
-		/****** md5 signature: 0f2218ada737e9d8e5e92c928ff52b9a ******/
+		/****** md5 signature: 9d49ce4f072cb22871b3a58e6b5dbcc7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: gp_Lin
-ThePolygon: HLRBRep_ThePolygonOfInterCSurf
-Surface: Standard_Address
-Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf
+theCurve: gp_Lin
+thePolygon: HLRBRep_ThePolygonOfInterCSurf
+theSurface: HLRBRep_Surface *
+thePolyhedron: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
 -------
@@ -7237,21 +6973,21 @@ None
 
 Description
 -----------
-Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <thePolygon> is given. The Surface is also sampled and <thePolyhedron> is given.
 ") Perform;
-		void Perform(const gp_Lin & Curve, const HLRBRep_ThePolygonOfInterCSurf & ThePolygon, const Standard_Address & Surface, const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron);
+		void Perform(const gp_Lin & theCurve, const HLRBRep_ThePolygonOfInterCSurf & thePolygon, HLRBRep_Surface * theSurface, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyhedron);
 
 		/****** HLRBRep_InterCSurf::Perform ******/
-		/****** md5 signature: 68b3dab960f1f09b0471dccfe1db21d0 ******/
+		/****** md5 signature: 5dda4cd25d15953378c4e9b96506b892 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: gp_Lin
-ThePolygon: HLRBRep_ThePolygonOfInterCSurf
-Surface: Standard_Address
-Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf
-BndBSB: Bnd_BoundSortBox
+theCurve: gp_Lin
+thePolygon: HLRBRep_ThePolygonOfInterCSurf
+theSurface: HLRBRep_Surface *
+thePolyhedron: HLRBRep_ThePolyhedronOfInterCSurf
+theBndBSB: Bnd_BoundSortBox
 
 Return
 -------
@@ -7259,19 +6995,19 @@ None
 
 Description
 -----------
-Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <Polygon> is given. The Surface is also sampled and <Polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Curve is already sampled and its polygon: <thePolygon> is given. The Surface is also sampled and <thePolyhedron> is given.
 ") Perform;
-		void Perform(const gp_Lin & Curve, const HLRBRep_ThePolygonOfInterCSurf & ThePolygon, const Standard_Address & Surface, const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron, Bnd_BoundSortBox & BndBSB);
+		void Perform(const gp_Lin & theCurve, const HLRBRep_ThePolygonOfInterCSurf & thePolygon, HLRBRep_Surface * theSurface, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyhedron, Bnd_BoundSortBox & theBndBSB);
 
 		/****** HLRBRep_InterCSurf::Perform ******/
-		/****** md5 signature: f85573ee239fa0e6cd93ae6402d6a1da ******/
+		/****** md5 signature: 165ee0589d09008d817d92471330d7da ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: gp_Lin
-Surface: Standard_Address
-Polyhedron: HLRBRep_ThePolyhedronOfInterCSurf
+theCurve: gp_Lin
+theSurface: HLRBRep_Surface *
+thePolyhedron: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
 -------
@@ -7279,9 +7015,9 @@ None
 
 Description
 -----------
-Compute the Intersection between the curve and the surface. The Surface is already sampled and its polyhedron: <Polyhedron> is given.
+Compute the Intersection between the curve and the surface. The Surface is already sampled and its polyhedron: <thePolyhedron> is given.
 ") Perform;
-		void Perform(const gp_Lin & Curve, const Standard_Address & Surface, const HLRBRep_ThePolyhedronOfInterCSurf & Polyhedron);
+		void Perform(const gp_Lin & theCurve, HLRBRep_Surface * theSurface, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyhedron);
 
 };
 
@@ -7342,7 +7078,7 @@ No available documentation.
 		opencascade::handle<HLRBRep_Data> DataStructure();
 
 		/****** HLRBRep_InternalAlgo::Debug ******/
-		/****** md5 signature: 9ec00ae92bb9dabb0f3b92dbec69abd1 ******/
+		/****** md5 signature: 2f0fc838b443d4163ab857205f6593fe ******/
 		%feature("compactdefaultargs") Debug;
 		%feature("autodoc", "
 Parameters
@@ -7357,10 +7093,10 @@ Description
 -----------
 No available documentation.
 ") Debug;
-		void Debug(const Standard_Boolean deb);
+		void Debug(const bool deb);
 
 		/****** HLRBRep_InternalAlgo::Debug ******/
-		/****** md5 signature: c5ed4da64ffa88071867c0cccf683e9a ******/
+		/****** md5 signature: 2a394f87c5d1c01601d8692769752b4d ******/
 		%feature("compactdefaultargs") Debug;
 		%feature("autodoc", "Return
 -------
@@ -7370,7 +7106,7 @@ Description
 -----------
 No available documentation.
 ") Debug;
-		Standard_Boolean Debug();
+		bool Debug();
 
 		/****** HLRBRep_InternalAlgo::Hide ******/
 		/****** md5 signature: 58365d1b8e35bd4bc81d336d692c97a2 ******/
@@ -7386,7 +7122,7 @@ hide all the DataStructure.
 		void Hide();
 
 		/****** HLRBRep_InternalAlgo::Hide ******/
-		/****** md5 signature: a0a6c6a0560cf0a28cf6cf97b437befc ******/
+		/****** md5 signature: 9a53166c2cf3ec9f652dc0cd0ff7ab86 ******/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "
 Parameters
@@ -7401,10 +7137,10 @@ Description
 -----------
 hide the Shape <S> by itself.
 ") Hide;
-		void Hide(const Standard_Integer I);
+		void Hide(const int I);
 
 		/****** HLRBRep_InternalAlgo::Hide ******/
-		/****** md5 signature: 3c5421ad096f3eeb44be04fe7666b697 ******/
+		/****** md5 signature: ce9e4d51727da99787cd127293b2d58f ******/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "
 Parameters
@@ -7420,7 +7156,7 @@ Description
 -----------
 hide the Shape <S1> by the shape <S2>.
 ") Hide;
-		void Hide(const Standard_Integer I, const Standard_Integer J);
+		void Hide(const int I, const int J);
 
 		/****** HLRBRep_InternalAlgo::HideAll ******/
 		/****** md5 signature: 9cbad012d33c32d21b12759548798548 ******/
@@ -7436,7 +7172,7 @@ set to hide all the edges.
 		void HideAll();
 
 		/****** HLRBRep_InternalAlgo::HideAll ******/
-		/****** md5 signature: b44e1fcd67c90925d4234f31ef2d0b2e ******/
+		/****** md5 signature: 88c7bbf6cdc1a008675c0e3be93b08d1 ******/
 		%feature("compactdefaultargs") HideAll;
 		%feature("autodoc", "
 Parameters
@@ -7451,10 +7187,10 @@ Description
 -----------
 set to hide all the edges of the Shape <S>.
 ") HideAll;
-		void HideAll(const Standard_Integer I);
+		void HideAll(const int I);
 
 		/****** HLRBRep_InternalAlgo::Index ******/
-		/****** md5 signature: 187fdee228a294ce16137a07b47c9d85 ******/
+		/****** md5 signature: 7606b376025567288bd55f8d649cae5c ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -7469,7 +7205,7 @@ Description
 -----------
 return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 ") Index;
-		Standard_Integer Index(const opencascade::handle<HLRTopoBRep_OutLiner> & S);
+		int Index(const opencascade::handle<HLRTopoBRep_OutLiner> & S);
 
 		/****** HLRBRep_InternalAlgo::InitEdgeStatus ******/
 		/****** md5 signature: 40dcf121d9289a2bba9a47db317f4f0b ******/
@@ -7485,7 +7221,7 @@ init the status of the selected edges depending of the back faces of a closed sh
 		void InitEdgeStatus();
 
 		/****** HLRBRep_InternalAlgo::Load ******/
-		/****** md5 signature: e9bddba1b8406ebaefb01c237a9c4d1f ******/
+		/****** md5 signature: 905d3fa782feeefbb5ee6fd464f48f8a ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -7502,10 +7238,10 @@ Description
 -----------
 add the shape <S>.
 ") Load;
-		void Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const opencascade::handle<Standard_Transient> & SData, const Standard_Integer nbIso = 0);
+		void Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const opencascade::handle<Standard_Transient> & SData, const int nbIso = 0);
 
 		/****** HLRBRep_InternalAlgo::Load ******/
-		/****** md5 signature: 56eb0ffc589543fd9e6dd49a9e885782 ******/
+		/****** md5 signature: 7bb13ab74f4751ae2a759492ae314ac6 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -7521,10 +7257,10 @@ Description
 -----------
 add the shape <S>.
 ") Load;
-		void Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const Standard_Integer nbIso = 0);
+		void Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const int nbIso = 0);
 
 		/****** HLRBRep_InternalAlgo::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -7534,7 +7270,7 @@ Description
 -----------
 No available documentation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** HLRBRep_InternalAlgo::PartialHide ******/
 		/****** md5 signature: 5948a3f081b1bfebc097fd30ad7ee22c ******/
@@ -7581,7 +7317,7 @@ set the projector.
 		HLRAlgo_Projector & Projector();
 
 		/****** HLRBRep_InternalAlgo::Remove ******/
-		/****** md5 signature: e9cf861e645127938dcff0ea13bfa8c2 ******/
+		/****** md5 signature: 9539381babdabf9d42bd9b8bddb394a0 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -7596,7 +7332,7 @@ Description
 -----------
 remove the Shape of Index <I>.
 ") Remove;
-		void Remove(const Standard_Integer I);
+		void Remove(const int I);
 
 		/****** HLRBRep_InternalAlgo::Select ******/
 		/****** md5 signature: b841eec3ea2cd8cbedd47c93babbe626 ******/
@@ -7612,7 +7348,7 @@ select all the DataStructure.
 		void Select();
 
 		/****** HLRBRep_InternalAlgo::Select ******/
-		/****** md5 signature: 7492f53dfed6fd6b6cb147ee1f1a2612 ******/
+		/****** md5 signature: c04567a43a21d63cad0304a2cd791282 ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -7627,10 +7363,10 @@ Description
 -----------
 select only the Shape of index <I>.
 ") Select;
-		void Select(const Standard_Integer I);
+		void Select(const int I);
 
 		/****** HLRBRep_InternalAlgo::SelectEdge ******/
-		/****** md5 signature: 9d38d629011eae37cd5229c2ee061dc6 ******/
+		/****** md5 signature: 97a4660c639ec0b7f3109cc46a131e46 ******/
 		%feature("compactdefaultargs") SelectEdge;
 		%feature("autodoc", "
 Parameters
@@ -7645,10 +7381,10 @@ Description
 -----------
 select only the edges of the Shape <S>.
 ") SelectEdge;
-		void SelectEdge(const Standard_Integer I);
+		void SelectEdge(const int I);
 
 		/****** HLRBRep_InternalAlgo::SelectFace ******/
-		/****** md5 signature: 00a2dd2008480d52177b8336a23ac4b7 ******/
+		/****** md5 signature: 3bc107674e87e54fc958be4bb53d64a3 ******/
 		%feature("compactdefaultargs") SelectFace;
 		%feature("autodoc", "
 Parameters
@@ -7663,23 +7399,23 @@ Description
 -----------
 select only the faces of the Shape <S>.
 ") SelectFace;
-		void SelectFace(const Standard_Integer I);
+		void SelectFace(const int I);
 
 		/****** HLRBRep_InternalAlgo::SeqOfShapeBounds ******/
-		/****** md5 signature: 4e702d2f67476d94fa53ff151ba70dcb ******/
+		/****** md5 signature: d266c0f5077f9481a7e30c30072c56ca ******/
 		%feature("compactdefaultargs") SeqOfShapeBounds;
 		%feature("autodoc", "Return
 -------
-HLRBRep_SeqOfShapeBounds
+NCollection_Sequence<HLRBRep_ShapeBounds>
 
 Description
 -----------
 No available documentation.
 ") SeqOfShapeBounds;
-		HLRBRep_SeqOfShapeBounds & SeqOfShapeBounds();
+		NCollection_Sequence<HLRBRep_ShapeBounds> & SeqOfShapeBounds();
 
 		/****** HLRBRep_InternalAlgo::ShapeBounds ******/
-		/****** md5 signature: ac736476f628e1407978e327f1424b69 ******/
+		/****** md5 signature: 52c41f6dab6cee4fb3c3b1511de0ee60 ******/
 		%feature("compactdefaultargs") ShapeBounds;
 		%feature("autodoc", "
 Parameters
@@ -7694,10 +7430,10 @@ Description
 -----------
 No available documentation.
 ") ShapeBounds;
-		HLRBRep_ShapeBounds & ShapeBounds(const Standard_Integer I);
+		HLRBRep_ShapeBounds & ShapeBounds(const int I);
 
 		/****** HLRBRep_InternalAlgo::ShapeData ******/
-		/****** md5 signature: a3f40ee6d762d920739602e2de0add47 ******/
+		/****** md5 signature: b1a3be5cc325ec141199ef207f0e3f70 ******/
 		%feature("compactdefaultargs") ShapeData;
 		%feature("autodoc", "
 Parameters
@@ -7713,7 +7449,7 @@ Description
 -----------
 Change the Shape Data of the Shape of index <I>.
 ") ShapeData;
-		void ShapeData(const Standard_Integer I, const opencascade::handle<Standard_Transient> & SData);
+		void ShapeData(const int I, const opencascade::handle<Standard_Transient> & SData);
 
 		/****** HLRBRep_InternalAlgo::ShowAll ******/
 		/****** md5 signature: 16b8205837f09151db1f737d1a729fbd ******/
@@ -7729,7 +7465,7 @@ set to visible all the edges.
 		void ShowAll();
 
 		/****** HLRBRep_InternalAlgo::ShowAll ******/
-		/****** md5 signature: 3ad94b28582fe688b9ad08e822e403c1 ******/
+		/****** md5 signature: 6d532afb82ced58bed02d85951bb16ef ******/
 		%feature("compactdefaultargs") ShowAll;
 		%feature("autodoc", "
 Parameters
@@ -7744,7 +7480,7 @@ Description
 -----------
 set to visible all the edges of the Shape <S>.
 ") ShowAll;
-		void ShowAll(const Standard_Integer I);
+		void ShowAll(const int I);
 
 		/****** HLRBRep_InternalAlgo::Update ******/
 		/****** md5 signature: 997c8dd85f474bf26af99d1a07d6fa3f ******/
@@ -7789,7 +7525,7 @@ No available documentation.
 		 HLRBRep_Intersector();
 
 		/****** HLRBRep_Intersector::CSPoint ******/
-		/****** md5 signature: 3ad21118600f72be699184d19a93464b ******/
+		/****** md5 signature: 4345d0cf8c36342538c843867fe389fd ******/
 		%feature("compactdefaultargs") CSPoint;
 		%feature("autodoc", "
 Parameters
@@ -7804,10 +7540,10 @@ Description
 -----------
 No available documentation.
 ") CSPoint;
-		IntCurveSurface_IntersectionPoint CSPoint(const Standard_Integer N);
+		IntCurveSurface_IntersectionPoint CSPoint(const int N);
 
 		/****** HLRBRep_Intersector::CSSegment ******/
-		/****** md5 signature: cdcfb6a547ece08784f0bdf0d0732007 ******/
+		/****** md5 signature: c0094a5e2015880fc1ea947cbcdae3fb ******/
 		%feature("compactdefaultargs") CSSegment;
 		%feature("autodoc", "
 Parameters
@@ -7822,7 +7558,7 @@ Description
 -----------
 No available documentation.
 ") CSSegment;
-		IntCurveSurface_IntersectionSegment CSSegment(const Standard_Integer N);
+		IntCurveSurface_IntersectionSegment CSSegment(const int N);
 
 		/****** HLRBRep_Intersector::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -7838,7 +7574,7 @@ No available documentation.
 		void Destroy();
 
 		/****** HLRBRep_Intersector::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -7848,15 +7584,15 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** HLRBRep_Intersector::Load ******/
-		/****** md5 signature: 6e50e343ba82585300ed1664ff5ef0c0 ******/
+		/****** md5 signature: 41c5ef05698e84a4787a59995ef2d449 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
+theSurface: HLRBRep_Surface *
 
 Return
 -------
@@ -7866,10 +7602,10 @@ Description
 -----------
 No available documentation.
 ") Load;
-		void Load(Standard_Address & A);
+		void Load(HLRBRep_Surface * theSurface);
 
 		/****** HLRBRep_Intersector::NbPoints ******/
-		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
+		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -7879,10 +7615,10 @@ Description
 -----------
 No available documentation.
 ") NbPoints;
-		Standard_Integer NbPoints();
+		int NbPoints();
 
 		/****** HLRBRep_Intersector::NbSegments ******/
-		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
+		/****** md5 signature: 9aee6c2253f8ba296b560fdee30e17ad ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -7892,17 +7628,17 @@ Description
 -----------
 No available documentation.
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** HLRBRep_Intersector::Perform ******/
-		/****** md5 signature: ad6a57edaa391e06877cb1bee2bae6c2 ******/
+		/****** md5 signature: dc3ed99e5368f6bdf4d3549b6824d26f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-A1: Standard_Address
-da1: float
-db1: float
+theEdge1: HLRBRep_EdgeData *
+theDa1: double
+theDb1: double
 
 Return
 -------
@@ -7912,23 +7648,23 @@ Description
 -----------
 Performs the auto intersection of an edge. The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
 ") Perform;
-		void Perform(const Standard_Address A1, const Standard_Real da1, const Standard_Real db1);
+		void Perform(HLRBRep_EdgeData * theEdge1, const double theDa1, const double theDb1);
 
 		/****** HLRBRep_Intersector::Perform ******/
-		/****** md5 signature: 4f119c0498079f9f268caca23730d0d5 ******/
+		/****** md5 signature: b58982d2e6a2a7abe05a5a464ec13bf8 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-nA: int
-A1: Standard_Address
-da1: float
-db1: float
-nB: int
-A2: Standard_Address
-da2: float
-db2: float
-NoBound: bool
+theNA: int
+theEdge1: HLRBRep_EdgeData *
+theDa1: double
+theDb1: double
+theNB: int
+theEdge2: HLRBRep_EdgeData *
+theDa2: double
+theDb2: double
+theNoBound: bool
 
 Return
 -------
@@ -7938,16 +7674,16 @@ Description
 -----------
 Performs the intersection between the two edges. The edges domains are cut at start with da*(b-a) and at end with db*(b-a).
 ") Perform;
-		void Perform(const Standard_Integer nA, const Standard_Address A1, const Standard_Real da1, const Standard_Real db1, const Standard_Integer nB, const Standard_Address A2, const Standard_Real da2, const Standard_Real db2, const Standard_Boolean NoBound);
+		void Perform(const int theNA, HLRBRep_EdgeData * theEdge1, const double theDa1, const double theDb1, const int theNB, HLRBRep_EdgeData * theEdge2, const double theDa2, const double theDb2, const bool theNoBound);
 
 		/****** HLRBRep_Intersector::Perform ******/
-		/****** md5 signature: b97b7f841573c60a82a40f858de3f2b6 ******/
+		/****** md5 signature: db711b276ef26ded0a8f4d206a9f5576 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-L: gp_Lin
-P: float
+theL: gp_Lin
+theP: double
 
 Return
 -------
@@ -7957,10 +7693,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const gp_Lin & L, const Standard_Real P);
+		void Perform(const gp_Lin & theL, const double theP);
 
 		/****** HLRBRep_Intersector::Point ******/
-		/****** md5 signature: ab5be2f4faa8204905c7defafba7f249 ******/
+		/****** md5 signature: 2f59b4f0a1ef7de78ab232b1e95a2ce4 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -7975,10 +7711,10 @@ Description
 -----------
 No available documentation.
 ") Point;
-		const IntRes2d_IntersectionPoint & Point(const Standard_Integer N);
+		const IntRes2d_IntersectionPoint & Point(const int N);
 
 		/****** HLRBRep_Intersector::Segment ******/
-		/****** md5 signature: 423d5f868e6a816f02143de11c5f58dc ******/
+		/****** md5 signature: b1d4b7b120ed513838a14f8fe26feb70 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -7993,18 +7729,18 @@ Description
 -----------
 No available documentation.
 ") Segment;
-		const IntRes2d_IntersectionSegment & Segment(const Standard_Integer N);
+		const IntRes2d_IntersectionSegment & Segment(const int N);
 
 		/****** HLRBRep_Intersector::SimulateOnePoint ******/
-		/****** md5 signature: ea69fcdb586b8cc34be7b877311faab8 ******/
+		/****** md5 signature: f332b4e63774265cc7330af35e8f8059 ******/
 		%feature("compactdefaultargs") SimulateOnePoint;
 		%feature("autodoc", "
 Parameters
 ----------
-A1: Standard_Address
-U: float
-A2: Standard_Address
-V: float
+theEdge1: HLRBRep_EdgeData *
+theU: double
+theEdge2: HLRBRep_EdgeData *
+theV: double
 
 Return
 -------
@@ -8012,9 +7748,9 @@ None
 
 Description
 -----------
-Create a single IntersectionPoint (U on A1) (V on A2) The point is middle on both curves.
+Create a single IntersectionPoint (U on theEdge1) (V on theEdge2) The point is middle on both curves.
 ") SimulateOnePoint;
-		void SimulateOnePoint(const Standard_Address A1, const Standard_Real U, const Standard_Address A2, const Standard_Real V);
+		void SimulateOnePoint(HLRBRep_EdgeData * theEdge1, const double theU, HLRBRep_EdgeData * theEdge2, const double theV);
 
 };
 
@@ -8103,13 +7839,13 @@ No available documentation.
 		static GeomAbs_Shape Continuity(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::D0 ******/
-		/****** md5 signature: df50c8cb2a7a467049518446760283cc ******/
+		/****** md5 signature: 15df9c28d8128c922bf7a36701b66364 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U: float
+U: double
 P: gp_Pnt
 
 Return
@@ -8120,16 +7856,16 @@ Description
 -----------
 Computes the point of parameter U on the line.
 ") D0;
-		static void D0(const gp_Lin & C, const Standard_Real U, gp_Pnt & P);
+		static void D0(const gp_Lin & C, const double U, gp_Pnt & P);
 
 		/****** HLRBRep_LineTool::D1 ******/
-		/****** md5 signature: cc6578642642883233e657d067a50adc ******/
+		/****** md5 signature: db74f666d1a894fa3af046698f8eca9a ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U: float
+U: double
 P: gp_Pnt
 V: gp_Vec
 
@@ -8141,16 +7877,16 @@ Description
 -----------
 Computes the point of parameter U on the line with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		static void D1(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V);
+		static void D1(const gp_Lin & C, const double U, gp_Pnt & P, gp_Vec & V);
 
 		/****** HLRBRep_LineTool::D2 ******/
-		/****** md5 signature: b21e1d311e32a163d305e924e9cc0885 ******/
+		/****** md5 signature: 437180bf5c47be7be9e96841e1a1ebce ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -8163,16 +7899,16 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		static void D2(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const gp_Lin & C, const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** HLRBRep_LineTool::D3 ******/
-		/****** md5 signature: 7fe7498a6369a96f7db270009ab64a32 ******/
+		/****** md5 signature: d7076d9a8561b6c8b3319d871a607e54 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U: float
+U: double
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -8186,16 +7922,16 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		static void D3(const gp_Lin & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const gp_Lin & C, const double U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** HLRBRep_LineTool::DN ******/
-		/****** md5 signature: 72d3a77c487e68835c5a00c3ab93a892 ******/
+		/****** md5 signature: 372a8f4fe868a36984e319752d2aa7a0 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U: float
+U: double
 N: int
 
 Return
@@ -8206,10 +7942,10 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		static gp_Vec DN(const gp_Lin & C, const Standard_Real U, const Standard_Integer N);
+		static gp_Vec DN(const gp_Lin & C, const double U, const int N);
 
 		/****** HLRBRep_LineTool::Degree ******/
-		/****** md5 signature: ce823cd96f5087483be858368a6f9908 ******/
+		/****** md5 signature: 51172f06f295e98e429c9bf01bb2d012 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "
 Parameters
@@ -8224,7 +7960,7 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		static Standard_Integer Degree(const gp_Lin & C);
+		static int Degree(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::Ellipse ******/
 		/****** md5 signature: ce9419a8e7b21b2ec96fa8cff7c8042a ******/
@@ -8245,7 +7981,7 @@ No available documentation.
 		static gp_Elips Ellipse(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::FirstParameter ******/
-		/****** md5 signature: e64a464242bf01ff4625baedc30199a4 ******/
+		/****** md5 signature: a0309b2d1147d5c7b02406fb80bf17dd ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -8254,13 +7990,13 @@ C: gp_Lin
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		static Standard_Real FirstParameter(const gp_Lin & C);
+		static double FirstParameter(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::GetType ******/
 		/****** md5 signature: 0c6dded5c2195cb0e701212c2c2726ad ******/
@@ -8317,7 +8053,7 @@ No available documentation.
 		static GeomAbs_Shape IntervalContinuity(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::IntervalFirst ******/
-		/****** md5 signature: 883451ed66bc68dd9be59a74ab22a30c ******/
+		/****** md5 signature: ed23161794d90845417991fde1fd5531 ******/
 		%feature("compactdefaultargs") IntervalFirst;
 		%feature("autodoc", "
 Parameters
@@ -8326,16 +8062,16 @@ C: gp_Lin
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the current interval.
 ") IntervalFirst;
-		static Standard_Real IntervalFirst(const gp_Lin & C);
+		static double IntervalFirst(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::IntervalLast ******/
-		/****** md5 signature: b97048513f8df32c3d3fb9e943489920 ******/
+		/****** md5 signature: 864fb4494436e1f4fc8b7ca23bebe521 ******/
 		%feature("compactdefaultargs") IntervalLast;
 		%feature("autodoc", "
 Parameters
@@ -8344,22 +8080,22 @@ C: gp_Lin
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the current interval.
 ") IntervalLast;
-		static Standard_Real IntervalLast(const gp_Lin & C);
+		static double IntervalLast(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::Intervals ******/
-		/****** md5 signature: 3ffed521a9811d11176105e8ca08c7ff ******/
+		/****** md5 signature: 7893924a1ee3f1e75112530eadecc676 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 Sh: GeomAbs_Shape
 
 Return
@@ -8370,10 +8106,10 @@ Description
 -----------
 Sets the current working interval.
 ") Intervals;
-		static void Intervals(const gp_Lin & C, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
+		static void Intervals(const gp_Lin & C, NCollection_Array1<double> & T, const GeomAbs_Shape Sh);
 
 		/****** HLRBRep_LineTool::IsClosed ******/
-		/****** md5 signature: 05f48005588bc1ebffe9d50caafa7136 ******/
+		/****** md5 signature: dc05e9a8721aa554c027de22f2090e06 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -8388,10 +8124,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		static Standard_Boolean IsClosed(const gp_Lin & C);
+		static bool IsClosed(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::IsPeriodic ******/
-		/****** md5 signature: 94d16d951cc0c3cabf7ff3c01533e1b6 ******/
+		/****** md5 signature: 85e282cb03bd77101673ced1c012ae6e ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -8406,10 +8142,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		static Standard_Boolean IsPeriodic(const gp_Lin & C);
+		static bool IsPeriodic(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::IsRational ******/
-		/****** md5 signature: 4341e9f8b33ff321206e143a166499ce ******/
+		/****** md5 signature: 7055383f58f5c19f59a55327d8e8434b ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "
 Parameters
@@ -8424,17 +8160,17 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		static Standard_Boolean IsRational(const gp_Lin & C);
+		static bool IsRational(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::KnotsAndMultiplicities ******/
-		/****** md5 signature: c82d93d487930d28e784ded0f522d5db ******/
+		/****** md5 signature: eab27671f9dcda3152f79885b0413529 ******/
 		%feature("compactdefaultargs") KnotsAndMultiplicities;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-TK: TColStd_Array1OfReal
-TM: TColStd_Array1OfInteger
+TK: NCollection_Array1<double>
+TM: NCollection_Array1<int>
 
 Return
 -------
@@ -8444,10 +8180,10 @@ Description
 -----------
 No available documentation.
 ") KnotsAndMultiplicities;
-		static void KnotsAndMultiplicities(const gp_Lin & C, TColStd_Array1OfReal & TK, TColStd_Array1OfInteger & TM);
+		static void KnotsAndMultiplicities(const gp_Lin & C, NCollection_Array1<double> & TK, NCollection_Array1<int> & TM);
 
 		/****** HLRBRep_LineTool::LastParameter ******/
-		/****** md5 signature: e427d772ca3add3bd60c88cf78268e5c ******/
+		/****** md5 signature: 3aeb4991df69a85f4785a7b6c71308c3 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -8456,13 +8192,13 @@ C: gp_Lin
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		static Standard_Real LastParameter(const gp_Lin & C);
+		static double LastParameter(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::Line ******/
 		/****** md5 signature: cc6f80c77b35afffbc178831258eaf22 ******/
@@ -8483,7 +8219,7 @@ No available documentation.
 		static gp_Lin Line(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::NbIntervals ******/
-		/****** md5 signature: 5d500956a6a4ceb8bea94f685055c6df ******/
+		/****** md5 signature: 653497e5efc58d6044cbedb4c03b0dfc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -8499,10 +8235,10 @@ Description
 -----------
 If necessary, breaks the line in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
-		static Standard_Integer NbIntervals(const gp_Lin & C, const GeomAbs_Shape S);
+		static int NbIntervals(const gp_Lin & C, const GeomAbs_Shape S);
 
 		/****** HLRBRep_LineTool::NbKnots ******/
-		/****** md5 signature: ea1d08f7a8cc968c2fc1702e540e9860 ******/
+		/****** md5 signature: 8cdd099bf3afbcf627cb5902e29d8893 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "
 Parameters
@@ -8517,10 +8253,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		static Standard_Integer NbKnots(const gp_Lin & C);
+		static int NbKnots(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::NbPoles ******/
-		/****** md5 signature: c7c18240249e0a7b737616d551009059 ******/
+		/****** md5 signature: e7e36a71b856f6e189c4fe08b50a49bd ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "
 Parameters
@@ -8535,17 +8271,17 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		static Standard_Integer NbPoles(const gp_Lin & C);
+		static int NbPoles(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::NbSamples ******/
-		/****** md5 signature: 37e2cb5bf4aa983d77d4d9800d0ebcd8 ******/
+		/****** md5 signature: fed75124e9ebe36eae5ec4283519fabc ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U0: float
-U1: float
+U0: double
+U1: double
 
 Return
 -------
@@ -8555,7 +8291,7 @@ Description
 -----------
 No available documentation.
 ") NbSamples;
-		static Standard_Integer NbSamples(const gp_Lin & C, const Standard_Real U0, const Standard_Real U1);
+		static int NbSamples(const gp_Lin & C, const double U0, const double U1);
 
 		/****** HLRBRep_LineTool::Parabola ******/
 		/****** md5 signature: d4661779802cfffcc637a199c62580d9 ******/
@@ -8576,7 +8312,7 @@ No available documentation.
 		static gp_Parab Parabola(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::Period ******/
-		/****** md5 signature: da90dcf013c319e7a8d3053f5a74e336 ******/
+		/****** md5 signature: efbd179113fc04941a9a07161586733a ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "
 Parameters
@@ -8585,22 +8321,22 @@ C: gp_Lin
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		static Standard_Real Period(const gp_Lin & C);
+		static double Period(const gp_Lin & C);
 
 		/****** HLRBRep_LineTool::Poles ******/
-		/****** md5 signature: cecc681bf55705f50b5b8d89253de13a ******/
+		/****** md5 signature: 6e41eab4930964af9991c7c832c62d9e ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-TP: TColgp_Array1OfPnt
+TP: NCollection_Array1<gp_Pnt>
 
 Return
 -------
@@ -8610,17 +8346,17 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		static void Poles(const gp_Lin & C, TColgp_Array1OfPnt & TP);
+		static void Poles(const gp_Lin & C, NCollection_Array1<gp_Pnt> & TP);
 
 		/****** HLRBRep_LineTool::PolesAndWeights ******/
-		/****** md5 signature: 25eb83c010bf4036ccf71bbe36ec9bf8 ******/
+		/****** md5 signature: cec86be74047591bec6a87b12efef6ef ******/
 		%feature("compactdefaultargs") PolesAndWeights;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-TP: TColgp_Array1OfPnt
-TW: TColStd_Array1OfReal
+TP: NCollection_Array1<gp_Pnt>
+TW: NCollection_Array1<double>
 
 Return
 -------
@@ -8630,39 +8366,67 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		static void PolesAndWeights(const gp_Lin & C, TColgp_Array1OfPnt & TP, TColStd_Array1OfReal & TW);
+		static void PolesAndWeights(const gp_Lin & C, NCollection_Array1<gp_Pnt> & TP, NCollection_Array1<double> & TW);
 
 		/****** HLRBRep_LineTool::Resolution ******/
-		/****** md5 signature: 828e677117947b59cb33694658d42a33 ******/
+		/****** md5 signature: 7a10621c011cdc17a0084c1e3e8ca9f0 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		static Standard_Real Resolution(const gp_Lin & C, const Standard_Real R3d);
+		static double Resolution(const gp_Lin & C, const double R3d);
 
 		/****** HLRBRep_LineTool::SamplePars ******/
-		/****** md5 signature: 06cb58e77264b5dfa6e15c6a8b897b6d ******/
+		/****** md5 signature: cd8bbc1a1919e64a691e66781a06c839 ******/
 		%feature("compactdefaultargs") SamplePars;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U0: float
-U1: float
-Defl: float
+U0: double
+U1: double
+Defl: double
 NbMin: int
-Pars: TColStd_HArray1OfReal
+
+Return
+-------
+opencascade::handle<NCollection_HArray1<double>>
+
+Description
+-----------
+Returns sample parameters for the line within [U0, U1] range. 
+Input parameter: C the line 
+Input parameter: U0 start parameter 
+Input parameter: U1 end parameter 
+Input parameter: Defl deflection tolerance (unused for lines) 
+Input parameter: NbMin minimum number of sample points (unused for lines) 
+Return: array of 3 sample parameter values.
+") SamplePars;
+		static opencascade::handle<NCollection_HArray1<double>> SamplePars(const gp_Lin & C, const double U0, const double U1, const double Defl, const int NbMin);
+
+		/****** HLRBRep_LineTool::SamplePars ******/
+		/****** md5 signature: c52ef762d8145e48526371c8052826ef ******/
+		%feature("compactdefaultargs") SamplePars;
+		%feature("autodoc", "
+Parameters
+----------
+C: gp_Lin
+U0: double
+U1: double
+Defl: double
+NbMin: int
+Pars: NCollection_HArray1<double
 
 Return
 -------
@@ -8672,16 +8436,16 @@ Description
 -----------
 No available documentation.
 ") SamplePars;
-		static void SamplePars(const gp_Lin & C, const Standard_Real U0, const Standard_Real U1, const Standard_Real Defl, const Standard_Integer NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
+		static void SamplePars(const gp_Lin & C, const double U0, const double U1, const double Defl, const int NbMin, opencascade::handle<NCollection_HArray1<double> > & Pars);
 
 		/****** HLRBRep_LineTool::Value ******/
-		/****** md5 signature: 03bb47a1e9ef7b8bc9b7a7ce321e38ea ******/
+		/****** md5 signature: ed7ab0156a63a943cda6a002feed4445 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Lin
-U: float
+U: double
 
 Return
 -------
@@ -8691,7 +8455,7 @@ Description
 -----------
 Computes the point of parameter U on the line.
 ") Value;
-		static gp_Pnt Value(const gp_Lin & C, const Standard_Real U);
+		static gp_Pnt Value(const gp_Lin & C, const double U);
 
 };
 
@@ -8708,13 +8472,13 @@ Computes the point of parameter U on the line.
 class HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter : public math_FunctionWithDerivative {
 	public:
 		/****** HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter ******/
-		/****** md5 signature: 02de6cdd0d16aa29d41caaf2fdbeb8a4 ******/
+		/****** md5 signature: 4118b4b04fabd301063bbd8ddf88f967 ******/
 		%feature("compactdefaultargs") HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 IT: IntCurve_IConicTool
-PC: Standard_Address
+PC: HLRBRep_CurvePtr
 
 Return
 -------
@@ -8724,316 +8488,67 @@ Description
 -----------
 Constructor of the class.
 ") HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
-		 HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter(const IntCurve_IConicTool & IT, const Standard_Address & PC);
+		 HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter(const IntCurve_IConicTool & IT, const HLRBRep_CurvePtr & PC);
 
 		/****** HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Derivative ******/
-		/****** md5 signature: f61c873331fa555e182f1973e95f59da ******/
+		/****** md5 signature: 9056fc5f695c62612651effc85cb18ad ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 Computes the derivative of the previous function at parameter Param.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
+		bool Derivative(const double Param, Standard_Real &OutValue);
 
 		/****** HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Value ******/
-		/****** md5 signature: 96999dda9fe43560f6ec0c3dc2a0f930 ******/
+		/****** md5 signature: 92dd35931de1aecdc8277d063de13ec7 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 Computes the value of the signed distance between the implicit curve and the point at parameter Param on the parametrised curve.
 ") Value;
-		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
+		bool Value(const double Param, Standard_Real &OutValue);
 
 		/****** HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter::Values ******/
-		/****** md5 signature: 30b6c9e0ecc359e02c44e042b54e6b7c ******/
+		/****** md5 signature: 03dca4b59c48db2ee672dd2d7904db60 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 Computes the value and the derivative of the function.
 ") Values;
-		Standard_Boolean Values(const Standard_Real Param, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double Param, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
 
 %extend HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/************************************************************
-* class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter *
-************************************************************/
-class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter : public math_FunctionWithDerivative {
-	public:
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter ******/
-		/****** md5 signature: ef2b6c60ae2e7488efe1085e96dccd33 ******/
-		%feature("compactdefaultargs") HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
-		 HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter();
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter ******/
-		/****** md5 signature: 027be352b880a0d46127e59615fc982f ******/
-		%feature("compactdefaultargs") HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Standard_Address
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
-		 HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter(const gp_Pnt2d & P, const Standard_Address & C);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Derivative ******/
-		/****** md5 signature: 74e45b7ef1cb50395f459121235df2cd ******/
-		%feature("compactdefaultargs") Derivative;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-DF: float
-
-Description
------------
-Calculation of F'(U).
-") Derivative;
-		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::GetStateNumber ******/
-		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
-		%feature("compactdefaultargs") GetStateNumber;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Save the found extremum.
-") GetStateNumber;
-		virtual Standard_Integer GetStateNumber();
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Initialize ******/
-		/****** md5 signature: eea140d2a7c54343781978adcd2828b3 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Standard_Address
-
-Return
--------
-None
-
-Description
------------
-sets the field mycurve of the function.
-") Initialize;
-		void Initialize(const Standard_Address & C);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::IsMin ******/
-		/****** md5 signature: d296cefb075e9db02ee60a375c81a9f6 ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-bool
-
-Description
------------
-Shows if the Nth distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin(const Standard_Integer N);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::NbExt ******/
-		/****** md5 signature: 84ada636e4651cacf916eb056265a1d9 ******/
-		%feature("compactdefaultargs") NbExt;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Return the number of found extrema.
-") NbExt;
-		Standard_Integer NbExt();
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Point ******/
-		/****** md5 signature: 6123812027804044a54749cfa19bef5e ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the Nth extremum.
-") Point;
-		const Extrema_POnCurv2d & Point(const Standard_Integer N);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SearchOfTolerance ******/
-		/****** md5 signature: 73a2a1f7b776ed3aaadf205798ee8767 ******/
-		%feature("compactdefaultargs") SearchOfTolerance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
-") SearchOfTolerance;
-		Standard_Real SearchOfTolerance();
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SetPoint ******/
-		/****** md5 signature: 0ad85ba084f338225cb11e827425ab5f ******/
-		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-sets the field P of the function.
-") SetPoint;
-		void SetPoint(const gp_Pnt2d & P);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SquareDistance ******/
-		/****** md5 signature: 60ba620c5cb13d85d5cb6606695896ce ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-
-Return
--------
-float
-
-Description
------------
-Returns the Nth distance.
-") SquareDistance;
-		Standard_Real SquareDistance(const Standard_Integer N);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::SubIntervalInitialize ******/
-		/****** md5 signature: 424565e975e565ea668d16ca9ce728b5 ******/
-		%feature("compactdefaultargs") SubIntervalInitialize;
-		%feature("autodoc", "
-Parameters
-----------
-theUfirst: float
-theUlast: float
-
-Return
--------
-None
-
-Description
------------
-Determines boundaries of subinterval for find of root.
-") SubIntervalInitialize;
-		void SubIntervalInitialize(const Standard_Real theUfirst, const Standard_Real theUlast);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Value ******/
-		/****** md5 signature: e3462efa1edccfd4021bca61bc42d936 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-
-Description
------------
-Calculation of F(U).
-") Value;
-		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
-
-		/****** HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter::Values ******/
-		/****** md5 signature: a9de0e54fbbad71406954eb825560b84 ******/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-F: float
-DF: float
-
-Description
------------
-Calculation of F(U) and F'(U).
-") Values;
-		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
-
-};
-
-
-%extend HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -9107,7 +8622,7 @@ No available documentation.
 		const opencascade::handle<HLRAlgo_PolyAlgo> & Algo();
 
 		/****** HLRBRep_PolyAlgo::Debug ******/
-		/****** md5 signature: 69dc7ba9221c00c4012a027efb557742 ******/
+		/****** md5 signature: 75d264d81a6f5a05c3d2806f64b732f5 ******/
 		%feature("compactdefaultargs") Debug;
 		%feature("autodoc", "Return
 -------
@@ -9117,10 +8632,10 @@ Description
 -----------
 No available documentation.
 ") Debug;
-		Standard_Boolean Debug();
+		bool Debug();
 
 		/****** HLRBRep_PolyAlgo::Debug ******/
-		/****** md5 signature: 5a84295d1fdccd631752aed041f3c397 ******/
+		/****** md5 signature: 3bdc6dbc94a5da9f98ff84265f964d6f ******/
 		%feature("compactdefaultargs") Debug;
 		%feature("autodoc", "
 Parameters
@@ -9135,10 +8650,10 @@ Description
 -----------
 No available documentation.
 ") Debug;
-		void Debug(const Standard_Boolean theDebug);
+		void Debug(const bool theDebug);
 
 		/****** HLRBRep_PolyAlgo::Hide ******/
-		/****** md5 signature: 6909c92a5658f468316390940e7bea34 ******/
+		/****** md5 signature: 7b1a2dae0f3e5c57d145029c52818bd0 ******/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "
 Parameters
@@ -9160,7 +8675,7 @@ No available documentation.
 		HLRAlgo_BiPoint::PointsT & Hide(HLRAlgo_EdgeStatus & status, TopoDS_Shape & S, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** HLRBRep_PolyAlgo::Index ******/
-		/****** md5 signature: 9e94bb6d7b4221be4165f8639cd27d92 ******/
+		/****** md5 signature: 27bedbe3f62518ea8f5e80df9093520c ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -9175,7 +8690,7 @@ Description
 -----------
 return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 ") Index;
-		Standard_Integer Index(const TopoDS_Shape & S);
+		int Index(const TopoDS_Shape & S);
 
 		/****** HLRBRep_PolyAlgo::InitHide ******/
 		/****** md5 signature: 6d3a01e37a94e3705475c3d6870e3eb9 ******/
@@ -9222,7 +8737,7 @@ Loads the shape S into this framework. Warning S must have already been triangul
 		void Load(const TopoDS_Shape & theShape);
 
 		/****** HLRBRep_PolyAlgo::MoreHide ******/
-		/****** md5 signature: ee934ca6bfa0a4423c581ec95be0690b ******/
+		/****** md5 signature: 209e689301a035d18ddc46a73d4882f7 ******/
 		%feature("compactdefaultargs") MoreHide;
 		%feature("autodoc", "Return
 -------
@@ -9232,10 +8747,10 @@ Description
 -----------
 No available documentation.
 ") MoreHide;
-		Standard_Boolean MoreHide();
+		bool MoreHide();
 
 		/****** HLRBRep_PolyAlgo::MoreShow ******/
-		/****** md5 signature: 676e76c7f6a46e8688a744d734543b5e ******/
+		/****** md5 signature: 43df07479bdbac7168dbf918778d43e2 ******/
 		%feature("compactdefaultargs") MoreShow;
 		%feature("autodoc", "Return
 -------
@@ -9245,10 +8760,10 @@ Description
 -----------
 No available documentation.
 ") MoreShow;
-		Standard_Boolean MoreShow();
+		bool MoreShow();
 
 		/****** HLRBRep_PolyAlgo::NbShapes ******/
-		/****** md5 signature: c49f25449a07f6fd2b7c8d09e76ddf1b ******/
+		/****** md5 signature: 761cf24f04b8e6718c8673bd43d8905b ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -9258,7 +8773,7 @@ Description
 -----------
 No available documentation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** HLRBRep_PolyAlgo::NextHide ******/
 		/****** md5 signature: dcb66ac8288020d4ad437ebf60391a66 ******/
@@ -9336,7 +8851,7 @@ No available documentation.
 		void Projector(const HLRAlgo_Projector & theProj);
 
 		/****** HLRBRep_PolyAlgo::Remove ******/
-		/****** md5 signature: e9cf861e645127938dcff0ea13bfa8c2 ******/
+		/****** md5 signature: 9539381babdabf9d42bd9b8bddb394a0 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -9351,10 +8866,10 @@ Description
 -----------
 remove the Shape of Index <I>.
 ") Remove;
-		void Remove(const Standard_Integer I);
+		void Remove(const int I);
 
 		/****** HLRBRep_PolyAlgo::Shape ******/
-		/****** md5 signature: b38214dc52925d212203a446234e9de3 ******/
+		/****** md5 signature: 32947d86a74f52b4e3494fa013950291 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -9369,10 +8884,10 @@ Description
 -----------
 No available documentation.
 ") Shape;
-		TopoDS_Shape Shape(const Standard_Integer I);
+		TopoDS_Shape Shape(const int I);
 
 		/****** HLRBRep_PolyAlgo::Show ******/
-		/****** md5 signature: fcba02d084d4b66d814a22fc57955911 ******/
+		/****** md5 signature: d8b1c6828eede079f772743b3ebff1ca ******/
 		%feature("compactdefaultargs") Show;
 		%feature("autodoc", "
 Parameters
@@ -9393,25 +8908,25 @@ No available documentation.
 		HLRAlgo_BiPoint::PointsT & Show(TopoDS_Shape & S, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** HLRBRep_PolyAlgo::TolAngular ******/
-		/****** md5 signature: a0cac09d05df8a373bc57341a3bdbdac ******/
+		/****** md5 signature: 08fbab00fd4f488e392164e36068459a ******/
 		%feature("compactdefaultargs") TolAngular;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TolAngular;
-		Standard_Real TolAngular();
+		double TolAngular();
 
 		/****** HLRBRep_PolyAlgo::TolAngular ******/
-		/****** md5 signature: 4094ebd98e1eba0acbcd66ec1aaadfeb ******/
+		/****** md5 signature: 51d2385545cfee512301dc707cb7b32d ******/
 		%feature("compactdefaultargs") TolAngular;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -9421,28 +8936,28 @@ Description
 -----------
 No available documentation.
 ") TolAngular;
-		void TolAngular(const Standard_Real theTol);
+		void TolAngular(const double theTol);
 
 		/****** HLRBRep_PolyAlgo::TolCoef ******/
-		/****** md5 signature: d2fea73ed2426c0333fec48a4b3e7f07 ******/
+		/****** md5 signature: 4f3db66b4d9697f4e64b5863cda47c4b ******/
 		%feature("compactdefaultargs") TolCoef;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TolCoef;
-		Standard_Real TolCoef();
+		double TolCoef();
 
 		/****** HLRBRep_PolyAlgo::TolCoef ******/
-		/****** md5 signature: 481c30d8f4ead55eb016cae2e0c01d3c ******/
+		/****** md5 signature: d96c15079f4b3d9b009f68cbaa6b646b ******/
 		%feature("compactdefaultargs") TolCoef;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -9452,7 +8967,7 @@ Description
 -----------
 No available documentation.
 ") TolCoef;
-		void TolCoef(const Standard_Real theTol);
+		void TolCoef(const double theTol);
 
 		/****** HLRBRep_PolyAlgo::Update ******/
 		/****** md5 signature: 997c8dd85f474bf26af99d1a07d6fa3f ******/
@@ -9797,414 +9312,39 @@ No available documentation.
 	}
 };
 
-/************************
-* class HLRBRep_SLProps *
-************************/
-class HLRBRep_SLProps {
-	public:
-		/****** HLRBRep_SLProps::HLRBRep_SLProps ******/
-		/****** md5 signature: 78f0374b7b7eeb83b89b827d014ac753 ******/
-		%feature("compactdefaultargs") HLRBRep_SLProps;
-		%feature("autodoc", "
-Parameters
-----------
-S: Standard_Address
-U: float
-V: float
-N: int
-Resolution: float
-
-Return
--------
-None
-
-Description
------------
-Initializes the local properties of the surface <S> for the parameter values (<U>, <V>). The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, or 2). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
-") HLRBRep_SLProps;
-		 HLRBRep_SLProps(const Standard_Address & S, const Standard_Real U, const Standard_Real V, const Standard_Integer N, const Standard_Real Resolution);
-
-		/****** HLRBRep_SLProps::HLRBRep_SLProps ******/
-		/****** md5 signature: eb8aa57972d644a87d3e5fe72e6a204e ******/
-		%feature("compactdefaultargs") HLRBRep_SLProps;
-		%feature("autodoc", "
-Parameters
-----------
-S: Standard_Address
-N: int
-Resolution: float
-
-Return
--------
-None
-
-Description
------------
-idem as previous constructor but without setting the value of parameters <U> and <V>.
-") HLRBRep_SLProps;
-		 HLRBRep_SLProps(const Standard_Address & S, const Standard_Integer N, const Standard_Real Resolution);
-
-		/****** HLRBRep_SLProps::HLRBRep_SLProps ******/
-		/****** md5 signature: f5c3d071302aa2344a5432a3fdbf8bc0 ******/
-		%feature("compactdefaultargs") HLRBRep_SLProps;
-		%feature("autodoc", "
-Parameters
-----------
-N: int
-Resolution: float
-
-Return
--------
-None
-
-Description
------------
-idem as previous constructor but without setting the value of parameters <U> and <V> and the surface. the surface can have an empty constructor.
-") HLRBRep_SLProps;
-		 HLRBRep_SLProps(const Standard_Integer N, const Standard_Real Resolution);
-
-		/****** HLRBRep_SLProps::CurvatureDirections ******/
-		/****** md5 signature: dce4de0944d73f0923cc57f1cae010ce ******/
-		%feature("compactdefaultargs") CurvatureDirections;
-		%feature("autodoc", "
-Parameters
-----------
-MaxD: gp_Dir
-MinD: gp_Dir
-
-Return
--------
-None
-
-Description
------------
-Returns the direction of the maximum and minimum curvature <MaxD> and <MinD>.
-") CurvatureDirections;
-		void CurvatureDirections(gp_Dir & MaxD, gp_Dir & MinD);
-
-		/****** HLRBRep_SLProps::D1U ******/
-		/****** md5 signature: 7fcd61e774b6033eceefa61e3338377a ******/
-		%feature("compactdefaultargs") D1U;
-		%feature("autodoc", "Return
--------
-gp_Vec
-
-Description
------------
-Returns the first U derivative. The derivative is computed if it has not been yet.
-") D1U;
-		const gp_Vec D1U();
-
-		/****** HLRBRep_SLProps::D1V ******/
-		/****** md5 signature: ad864d52b93c95482f9a3644c7fe473c ******/
-		%feature("compactdefaultargs") D1V;
-		%feature("autodoc", "Return
--------
-gp_Vec
-
-Description
------------
-Returns the first V derivative. The derivative is computed if it has not been yet.
-") D1V;
-		const gp_Vec D1V();
-
-		/****** HLRBRep_SLProps::D2U ******/
-		/****** md5 signature: 0472ef4d94574816aeb47829a66bdbae ******/
-		%feature("compactdefaultargs") D2U;
-		%feature("autodoc", "Return
--------
-gp_Vec
-
-Description
------------
-Returns the second U derivatives The derivative is computed if it has not been yet.
-") D2U;
-		const gp_Vec D2U();
-
-		/****** HLRBRep_SLProps::D2V ******/
-		/****** md5 signature: c70c5cc9b31ef0a3470d3c29498b5305 ******/
-		%feature("compactdefaultargs") D2V;
-		%feature("autodoc", "Return
--------
-gp_Vec
-
-Description
------------
-Returns the second V derivative. The derivative is computed if it has not been yet.
-") D2V;
-		const gp_Vec D2V();
-
-		/****** HLRBRep_SLProps::DUV ******/
-		/****** md5 signature: 93a293abda31f525f2bff5034aabc11a ******/
-		%feature("compactdefaultargs") DUV;
-		%feature("autodoc", "Return
--------
-gp_Vec
-
-Description
------------
-Returns the second UV cross-derivative. The derivative is computed if it has not been yet.
-") DUV;
-		const gp_Vec DUV();
-
-		/****** HLRBRep_SLProps::GaussianCurvature ******/
-		/****** md5 signature: 6f1ed6a8aa49074ec45c7600ff9ed9ad ******/
-		%feature("compactdefaultargs") GaussianCurvature;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the Gaussian curvature.
-") GaussianCurvature;
-		Standard_Real GaussianCurvature();
-
-		/****** HLRBRep_SLProps::IsCurvatureDefined ******/
-		/****** md5 signature: 24d1c4dc0bb5e5b3cd3acab3d6b3723c ******/
-		%feature("compactdefaultargs") IsCurvatureDefined;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-returns True if the curvature is defined.
-") IsCurvatureDefined;
-		Standard_Boolean IsCurvatureDefined();
-
-		/****** HLRBRep_SLProps::IsNormalDefined ******/
-		/****** md5 signature: b4faa90626237a62ab1311b7cb7ad450 ******/
-		%feature("compactdefaultargs") IsNormalDefined;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Tells if the normal is defined.
-") IsNormalDefined;
-		Standard_Boolean IsNormalDefined();
-
-		/****** HLRBRep_SLProps::IsTangentUDefined ******/
-		/****** md5 signature: 92ed6ca4fade225cd5464af6490033b3 ******/
-		%feature("compactdefaultargs") IsTangentUDefined;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-returns True if the U tangent is defined. For example, the tangent is not defined if the two first U derivatives are null.
-") IsTangentUDefined;
-		Standard_Boolean IsTangentUDefined();
-
-		/****** HLRBRep_SLProps::IsTangentVDefined ******/
-		/****** md5 signature: 53c94c0bb0d39a933984467e0683397e ******/
-		%feature("compactdefaultargs") IsTangentVDefined;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-returns if the V tangent is defined. For example, the tangent is not defined if the two first V derivatives are null.
-") IsTangentVDefined;
-		Standard_Boolean IsTangentVDefined();
-
-		/****** HLRBRep_SLProps::IsUmbilic ******/
-		/****** md5 signature: a045467d1ec2cad50bd2dfbeab29b8fd ******/
-		%feature("compactdefaultargs") IsUmbilic;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-returns True if the point is umbilic (i.e. if the curvature is constant).
-") IsUmbilic;
-		Standard_Boolean IsUmbilic();
-
-		/****** HLRBRep_SLProps::MaxCurvature ******/
-		/****** md5 signature: 42c5b0c05da3040d5856fffc987ed742 ******/
-		%feature("compactdefaultargs") MaxCurvature;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the maximum curvature.
-") MaxCurvature;
-		Standard_Real MaxCurvature();
-
-		/****** HLRBRep_SLProps::MeanCurvature ******/
-		/****** md5 signature: 5c7a78b552e4ca890e50b485026f52f3 ******/
-		%feature("compactdefaultargs") MeanCurvature;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the mean curvature.
-") MeanCurvature;
-		Standard_Real MeanCurvature();
-
-		/****** HLRBRep_SLProps::MinCurvature ******/
-		/****** md5 signature: 9c5c8915c2ccf5b49a49ab2765ec946f ******/
-		%feature("compactdefaultargs") MinCurvature;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the minimum curvature.
-") MinCurvature;
-		Standard_Real MinCurvature();
-
-		/****** HLRBRep_SLProps::Normal ******/
-		/****** md5 signature: 24a2507aa20216689971a0ec1fd83f76 ******/
-		%feature("compactdefaultargs") Normal;
-		%feature("autodoc", "Return
--------
-gp_Dir
-
-Description
------------
-Returns the normal direction.
-") Normal;
-		const gp_Dir Normal();
-
-		/****** HLRBRep_SLProps::SetParameters ******/
-		/****** md5 signature: 766228d61435cf9eaba866b58733ed73 ******/
-		%feature("compactdefaultargs") SetParameters;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-
-Return
--------
-None
-
-Description
------------
-Initializes the local properties of the surface S for the new parameter values (<U>, <V>).
-") SetParameters;
-		void SetParameters(const Standard_Real U, const Standard_Real V);
-
-		/****** HLRBRep_SLProps::SetSurface ******/
-		/****** md5 signature: fdd17ffc74b005040cec1fe6f5cb6245 ******/
-		%feature("compactdefaultargs") SetSurface;
-		%feature("autodoc", "
-Parameters
-----------
-S: Standard_Address
-
-Return
--------
-None
-
-Description
------------
-Initializes the local properties of the surface S for the new surface.
-") SetSurface;
-		void SetSurface(const Standard_Address & S);
-
-		/****** HLRBRep_SLProps::TangentU ******/
-		/****** md5 signature: ff20f7d1d23e153974b932d55fa30a7f ******/
-		%feature("compactdefaultargs") TangentU;
-		%feature("autodoc", "
-Parameters
-----------
-D: gp_Dir
-
-Return
--------
-None
-
-Description
------------
-Returns the tangent direction <D> on the iso-V.
-") TangentU;
-		void TangentU(gp_Dir & D);
-
-		/****** HLRBRep_SLProps::TangentV ******/
-		/****** md5 signature: 8241dc858e42533746e4d61351ceccd4 ******/
-		%feature("compactdefaultargs") TangentV;
-		%feature("autodoc", "
-Parameters
-----------
-D: gp_Dir
-
-Return
--------
-None
-
-Description
------------
-Returns the tangent direction <D> on the iso-V.
-") TangentV;
-		void TangentV(gp_Dir & D);
-
-		/****** HLRBRep_SLProps::Value ******/
-		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Return
--------
-gp_Pnt
-
-Description
------------
-Returns the point.
-") Value;
-		const gp_Pnt Value();
-
-};
-
-
-%extend HLRBRep_SLProps {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*****************************
 * class HLRBRep_SLPropsATool *
 *****************************/
 class HLRBRep_SLPropsATool {
 	public:
 		/****** HLRBRep_SLPropsATool::Bounds ******/
-		/****** md5 signature: e8dfb084ac6c872071bbf7788de530dc ******/
+		/****** md5 signature: 42e2057f2f02553b9130859f4d773d6e ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
+A: HLRBRep_SurfacePtr
 
 Return
 -------
-U1: float
-V1: float
-U2: float
-V2: float
+U1: double
+V1: double
+U2: double
+V2: double
 
 Description
 -----------
 returns the bounds of the Surface.
 ") Bounds;
-		static void Bounds(const Standard_Address A, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Bounds(const HLRBRep_SurfacePtr A, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** HLRBRep_SLPropsATool::Continuity ******/
-		/****** md5 signature: d3733a3bc8f06c200ea6422cb6df16a3 ******/
+		/****** md5 signature: 099d5c5769ee29f4aede672f362e5b49 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
+A: HLRBRep_SurfacePtr
 
 Return
 -------
@@ -10214,17 +9354,17 @@ Description
 -----------
 returns the order of continuity of the Surface <A>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable.
 ") Continuity;
-		static Standard_Integer Continuity(const Standard_Address A);
+		static int Continuity(const HLRBRep_SurfacePtr A);
 
 		/****** HLRBRep_SLPropsATool::D1 ******/
-		/****** md5 signature: ab16415dfcd6c110739148d174a08916 ******/
+		/****** md5 signature: f1ee7f085487f3f1f5c09c9e5087fcae ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
-U: float
-V: float
+A: HLRBRep_SurfacePtr
+U: double
+V: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -10237,17 +9377,17 @@ Description
 -----------
 Computes the point <P> and first derivative <D1*> of parameter <U> and <V> on the Surface <A>.
 ") D1;
-		static void D1(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+		static void D1(const HLRBRep_SurfacePtr A, const double U, const double V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
 		/****** HLRBRep_SLPropsATool::D2 ******/
-		/****** md5 signature: 370c635cad04eda1fd2dd910286efcfc ******/
+		/****** md5 signature: 7b13eda14be67518f0af82f3152a8277 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
-U: float
-V: float
+A: HLRBRep_SurfacePtr
+U: double
+V: double
 P: gp_Pnt
 D1U: gp_Vec
 D1V: gp_Vec
@@ -10263,17 +9403,17 @@ Description
 -----------
 Computes the point <P>, the first derivative <D1*> and second derivative <D2*> of parameter <U> and <V> on the Surface <A>.
 ") D2;
-		static void D2(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
+		static void D2(const HLRBRep_SurfacePtr A, const double U, const double V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
 		/****** HLRBRep_SLPropsATool::DN ******/
-		/****** md5 signature: a73021e7fbb4baaa97773a3193a4bd2d ******/
+		/****** md5 signature: 8bf95a3cd0faedf658fb5669dde1dc76 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
-U: float
-V: float
+A: HLRBRep_SurfacePtr
+U: double
+V: double
 Nu: int
 Nv: int
 
@@ -10285,17 +9425,17 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Standard_Address A, const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const HLRBRep_SurfacePtr A, const double U, const double V, const int Nu, const int Nv);
 
 		/****** HLRBRep_SLPropsATool::Value ******/
-		/****** md5 signature: 8139ac0cd44cdaaedf457ca18eb5c577 ******/
+		/****** md5 signature: 9d0a77e212ce235095d04daad6a66a0d ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-A: Standard_Address
-U: float
-V: float
+A: HLRBRep_SurfacePtr
+U: double
+V: double
 P: gp_Pnt
 
 Return
@@ -10304,9 +9444,9 @@ None
 
 Description
 -----------
-Computes the point <P> of 	parameter <U> and <V> on the Surface <A>.
+Computes the point <P> of parameter <U> and <V> on the Surface <A>.
 ") Value;
-		static void Value(const Standard_Address A, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
+		static void Value(const HLRBRep_SurfacePtr A, const double U, const double V, gp_Pnt & P);
 
 };
 
@@ -10336,7 +9476,7 @@ No available documentation.
 		 HLRBRep_ShapeBounds();
 
 		/****** HLRBRep_ShapeBounds::HLRBRep_ShapeBounds ******/
-		/****** md5 signature: 0a8fad3a04895602a2a2eaf90593212e ******/
+		/****** md5 signature: 881e648863fd63215d5abda151335d8c ******/
 		%feature("compactdefaultargs") HLRBRep_ShapeBounds;
 		%feature("autodoc", "
 Parameters
@@ -10359,10 +9499,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ShapeBounds;
-		 HLRBRep_ShapeBounds(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const opencascade::handle<Standard_Transient> & SData, const Standard_Integer nbIso, const Standard_Integer V1, const Standard_Integer V2, const Standard_Integer E1, const Standard_Integer E2, const Standard_Integer F1, const Standard_Integer F2);
+		 HLRBRep_ShapeBounds(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const opencascade::handle<Standard_Transient> & SData, const int nbIso, const int V1, const int V2, const int E1, const int E2, const int F1, const int F2);
 
 		/****** HLRBRep_ShapeBounds::HLRBRep_ShapeBounds ******/
-		/****** md5 signature: 8f7396ab30415814fca95d7f235319fe ******/
+		/****** md5 signature: 0cc05cc30ff2d8f0dbaff4e232df8623 ******/
 		%feature("compactdefaultargs") HLRBRep_ShapeBounds;
 		%feature("autodoc", "
 Parameters
@@ -10384,10 +9524,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ShapeBounds;
-		 HLRBRep_ShapeBounds(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const Standard_Integer nbIso, const Standard_Integer V1, const Standard_Integer V2, const Standard_Integer E1, const Standard_Integer E2, const Standard_Integer F1, const Standard_Integer F2);
+		 HLRBRep_ShapeBounds(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const int nbIso, const int V1, const int V2, const int E1, const int E2, const int F1, const int F2);
 
 		/****** HLRBRep_ShapeBounds::Bounds ******/
-		/****** md5 signature: f60797aaa87b18ae8eee336740778b1b ******/
+		/****** md5 signature: 87b9356ee3941507b97b2c221d5cf1d5 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -10422,7 +9562,7 @@ No available documentation.
 		HLRAlgo_EdgesBlock::MinMaxIndices & MinMax();
 
 		/****** HLRBRep_ShapeBounds::NbOfIso ******/
-		/****** md5 signature: d6498e9f6e042d33d4a795499305cc6a ******/
+		/****** md5 signature: 3d695ce283f67d0f0ea5029d69e46645 ******/
 		%feature("compactdefaultargs") NbOfIso;
 		%feature("autodoc", "
 Parameters
@@ -10437,10 +9577,10 @@ Description
 -----------
 No available documentation.
 ") NbOfIso;
-		void NbOfIso(const Standard_Integer nbIso);
+		void NbOfIso(const int nbIso);
 
 		/****** HLRBRep_ShapeBounds::NbOfIso ******/
-		/****** md5 signature: 2501d827e295fdb15b2e4f0fdd55a1d1 ******/
+		/****** md5 signature: edfb23205008635510aa2730be3b34ff ******/
 		%feature("compactdefaultargs") NbOfIso;
 		%feature("autodoc", "Return
 -------
@@ -10450,7 +9590,7 @@ Description
 -----------
 No available documentation.
 ") NbOfIso;
-		Standard_Integer NbOfIso();
+		int NbOfIso();
 
 		/****** HLRBRep_ShapeBounds::Shape ******/
 		/****** md5 signature: c40d2651cf3439795c161bba801087bd ******/
@@ -10515,7 +9655,7 @@ No available documentation.
 		const opencascade::handle<Standard_Transient> & ShapeData();
 
 		/****** HLRBRep_ShapeBounds::Sizes ******/
-		/****** md5 signature: 6e03d1fb636ffd96e03886872ae43cbc ******/
+		/****** md5 signature: edcd3fe6f96538535c5b1305d0cfaed2 ******/
 		%feature("compactdefaultargs") Sizes;
 		%feature("autodoc", "
 Parameters
@@ -10534,7 +9674,7 @@ No available documentation.
 		void Sizes(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** HLRBRep_ShapeBounds::Translate ******/
-		/****** md5 signature: ad6e8ce71dff0ff74ad40c8a7677de8c ******/
+		/****** md5 signature: 821a160949e8b87822134700d057bfee ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
@@ -10551,7 +9691,7 @@ Description
 -----------
 No available documentation.
 ") Translate;
-		void Translate(const Standard_Integer NV, const Standard_Integer NE, const Standard_Integer NF);
+		void Translate(const int NV, const int NE, const int NF);
 
 		/****** HLRBRep_ShapeBounds::UpdateMinMax ******/
 		/****** md5 signature: c563cf49ef5528b88530ee707872c5e6 ******/
@@ -10586,14 +9726,14 @@ No available documentation.
 class HLRBRep_ShapeToHLR {
 	public:
 		/****** HLRBRep_ShapeToHLR::Load ******/
-		/****** md5 signature: 585d95ec184c2728ffe4987b5958a887 ******/
+		/****** md5 signature: fb35ec8dbc8ea448c10aa29eb290955a ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 S: HLRTopoBRep_OutLiner
 P: HLRAlgo_Projector
-MST: BRepTopAdaptor_MapOfShapeTool
+MST: NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher>
 nbIso: int (optional, default to 0)
 
 Return
@@ -10604,7 +9744,7 @@ Description
 -----------
 Creates a DataStructure containing the OutLiner <S> depending on the projector <P> and nbIso.
 ") Load;
-		static opencascade::handle<HLRBRep_Data> Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const HLRAlgo_Projector & P, BRepTopAdaptor_MapOfShapeTool & MST, const Standard_Integer nbIso = 0);
+		static opencascade::handle<HLRBRep_Data> Load(const opencascade::handle<HLRTopoBRep_OutLiner> & S, const HLRAlgo_Projector & P, NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher> & MST, const int nbIso = 0);
 
 };
 
@@ -10624,12 +9764,12 @@ Creates a DataStructure containing the OutLiner <S> depending on the projector <
 class HLRBRep_SurfaceTool {
 	public:
 		/****** HLRBRep_SurfaceTool::AxeOfRevolution ******/
-		/****** md5 signature: 774f6b487a9c91f2e3802b53c6f52934 ******/
+		/****** md5 signature: 64b8617709d83786c98e9752df39ef95 ******/
 		%feature("compactdefaultargs") AxeOfRevolution;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10639,15 +9779,15 @@ Description
 -----------
 No available documentation.
 ") AxeOfRevolution;
-		static gp_Ax1 AxeOfRevolution(const Standard_Address S);
+		static gp_Ax1 AxeOfRevolution(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::BSpline ******/
-		/****** md5 signature: 4695f4a3cad1aeda00bf7c7841037db8 ******/
+		/****** md5 signature: 50ce6de23c2b853497f8fb9da20289ef ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10657,15 +9797,15 @@ Description
 -----------
 No available documentation.
 ") BSpline;
-		static opencascade::handle<Geom_BSplineSurface> BSpline(const Standard_Address S);
+		static opencascade::handle<Geom_BSplineSurface> BSpline(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::BasisCurve ******/
-		/****** md5 signature: 800cb1ec50ed14042ffd84fb9d7f16fe ******/
+		/****** md5 signature: 3b3297432f2ca108cc3d315edafe2234 ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10675,15 +9815,15 @@ Description
 -----------
 No available documentation.
 ") BasisCurve;
-		static opencascade::handle<Adaptor3d_Curve> BasisCurve(const Standard_Address S);
+		static opencascade::handle<Adaptor3d_Curve> BasisCurve(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::BasisSurface ******/
-		/****** md5 signature: e90675a246e7d6d61a9ca69df68a8bde ******/
+		/****** md5 signature: 3c6f3645d71a8aff3689cfa690030ce3 ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10693,15 +9833,15 @@ Description
 -----------
 No available documentation.
 ") BasisSurface;
-		static opencascade::handle<Adaptor3d_Surface> BasisSurface(const Standard_Address S);
+		static opencascade::handle<Adaptor3d_Surface> BasisSurface(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::Bezier ******/
-		/****** md5 signature: 1b7883c3f8ccd14ba98ea3102b92482a ******/
+		/****** md5 signature: 921c3ccb60a3d8b816a21e394401d284 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10711,15 +9851,15 @@ Description
 -----------
 No available documentation.
 ") Bezier;
-		static opencascade::handle<Geom_BezierSurface> Bezier(const Standard_Address S);
+		static opencascade::handle<Geom_BezierSurface> Bezier(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::Cone ******/
-		/****** md5 signature: 9116ace92295c2b717b2e79fa73bf64b ******/
+		/****** md5 signature: cd37f4c63a63c68868a52aa071dc12c0 ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10729,15 +9869,15 @@ Description
 -----------
 No available documentation.
 ") Cone;
-		static gp_Cone Cone(const Standard_Address S);
+		static gp_Cone Cone(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::Cylinder ******/
-		/****** md5 signature: 319460b2f0a60310bde48833957a0a91 ******/
+		/****** md5 signature: 6bd4253579779627c4e08a34a1329b56 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10747,18 +9887,18 @@ Description
 -----------
 No available documentation.
 ") Cylinder;
-		static gp_Cylinder Cylinder(const Standard_Address S);
+		static gp_Cylinder Cylinder(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::D0 ******/
-		/****** md5 signature: 386213dc28ade2f890d2f5be1547aaa1 ******/
+		/****** md5 signature: efaac1f7aba7c4bb0998162b620f80d1 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u: float
-v: float
-P: gp_Pnt
+theSurf: HLRBRep_Surface *
+theU: double
+theV: double
+theP: gp_Pnt
 
 Return
 -------
@@ -10768,20 +9908,20 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P);
+		static void D0(const HLRBRep_Surface * theSurf, const double theU, const double theV, gp_Pnt & theP);
 
 		/****** HLRBRep_SurfaceTool::D1 ******/
-		/****** md5 signature: 579ba7f4726dfc0972727190519230ac ******/
+		/****** md5 signature: ba5f2ca80ca5c7564f996f31014f56c8 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u: float
-v: float
-P: gp_Pnt
-D1u: gp_Vec
-D1v: gp_Vec
+theSurf: HLRBRep_Surface *
+theU: double
+theV: double
+theP: gp_Pnt
+theD1U: gp_Vec
+theD1V: gp_Vec
 
 Return
 -------
@@ -10791,23 +9931,23 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1u, gp_Vec & D1v);
+		static void D1(const HLRBRep_Surface * theSurf, const double theU, const double theV, gp_Pnt & theP, gp_Vec & theD1U, gp_Vec & theD1V);
 
 		/****** HLRBRep_SurfaceTool::D2 ******/
-		/****** md5 signature: 7ecbecc48d83901accd97713f8d50de3 ******/
+		/****** md5 signature: d831dd1d8ee72538bc57ed2b0805aad2 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u: float
-v: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
+theSurf: HLRBRep_Surface *
+theU: double
+theV: double
+theP: gp_Pnt
+theD1U: gp_Vec
+theD1V: gp_Vec
+theD2U: gp_Vec
+theD2V: gp_Vec
+theD2UV: gp_Vec
 
 Return
 -------
@@ -10817,27 +9957,27 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+		static void D2(const HLRBRep_Surface * theSurf, const double theU, const double theV, gp_Pnt & theP, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
 		/****** HLRBRep_SurfaceTool::D3 ******/
-		/****** md5 signature: 0290e8d24b84bf13182c70eca72b3a89 ******/
+		/****** md5 signature: 58ac9a6dcd6a19ce7aeeec0b8e2a4975 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u: float
-v: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
+theSurf: HLRBRep_Surface *
+theU: double
+theV: double
+theP: gp_Pnt
+theD1U: gp_Vec
+theD1V: gp_Vec
+theD2U: gp_Vec
+theD2V: gp_Vec
+theD2UV: gp_Vec
+theD3U: gp_Vec
+theD3V: gp_Vec
+theD3UUV: gp_Vec
+theD3UVV: gp_Vec
 
 Return
 -------
@@ -10847,19 +9987,19 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const Standard_Address S, const Standard_Real u, const Standard_Real v, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+		static void D3(const HLRBRep_Surface * theSurf, const double theU, const double theV, gp_Pnt & theP, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
 		/****** HLRBRep_SurfaceTool::DN ******/
-		/****** md5 signature: b83a1f1078fa21e66749acd7ddb1bde1 ******/
+		/****** md5 signature: 070fc2b698c285e210937d34a601e05a ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u: float
-v: float
-Nu: int
-Nv: int
+theSurf: HLRBRep_Surface *
+theU: double
+theV: double
+theNu: int
+theNv: int
 
 Return
 -------
@@ -10869,15 +10009,15 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const Standard_Address S, const Standard_Real u, const Standard_Real v, const Standard_Integer Nu, const Standard_Integer Nv);
+		static gp_Vec DN(const HLRBRep_Surface * theSurf, const double theU, const double theV, const int theNu, const int theNv);
 
 		/****** HLRBRep_SurfaceTool::Direction ******/
-		/****** md5 signature: 792b1b8de9ba06c93f71fd5ec6831045 ******/
+		/****** md5 signature: 972831f054225eb167eb78a0f1924120 ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10887,51 +10027,51 @@ Description
 -----------
 No available documentation.
 ") Direction;
-		static gp_Dir Direction(const Standard_Address S);
+		static gp_Dir Direction(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::FirstUParameter ******/
-		/****** md5 signature: 6e04b137dab4c5b166945e605ab70ea8 ******/
+		/****** md5 signature: 7318ad3c5d634e22e9ac3e804df78687 ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		static Standard_Real FirstUParameter(const Standard_Address S);
+		static double FirstUParameter(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::FirstVParameter ******/
-		/****** md5 signature: 3adaefd96854190b632c757288696f54 ******/
+		/****** md5 signature: fa55dc29e2993fb7113ba8d09a37adea ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		static Standard_Real FirstVParameter(const Standard_Address S);
+		static double FirstVParameter(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::GetType ******/
-		/****** md5 signature: af7f71ef48b12d89bd1ccfb79f8b5cbb ******/
+		/****** md5 signature: 07544b3a1278c1a818ec185e5e4fbaae ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10941,15 +10081,15 @@ Description
 -----------
 No available documentation.
 ") GetType;
-		static GeomAbs_SurfaceType GetType(const Standard_Address S);
+		static GeomAbs_SurfaceType GetType(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::IsUClosed ******/
-		/****** md5 signature: 461ae9cbf9f4af5bb9698e7d522639ac ******/
+		/****** md5 signature: c99463f5dc474345efe147e5c3659fcb ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10959,15 +10099,15 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		static Standard_Boolean IsUClosed(const Standard_Address S);
+		static bool IsUClosed(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::IsUPeriodic ******/
-		/****** md5 signature: 8f734a7cfb3edf22adf9628add5a5891 ******/
+		/****** md5 signature: 365b2dee2b4246a8df6f8a01305fe343 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10977,15 +10117,15 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		static Standard_Boolean IsUPeriodic(const Standard_Address S);
+		static bool IsUPeriodic(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::IsVClosed ******/
-		/****** md5 signature: efa961c94006eb3089b0699bab1d0c1c ******/
+		/****** md5 signature: a8328f5347b212fa0adb8c8b7d6f1248 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -10995,15 +10135,15 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		static Standard_Boolean IsVClosed(const Standard_Address S);
+		static bool IsVClosed(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::IsVPeriodic ******/
-		/****** md5 signature: 7926aca9924f7fc7fbfcef3fe14aa396 ******/
+		/****** md5 signature: f3613eb1ef308d6297965f5eb10289c3 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -11013,51 +10153,51 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		static Standard_Boolean IsVPeriodic(const Standard_Address S);
+		static bool IsVPeriodic(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::LastUParameter ******/
-		/****** md5 signature: f2a9f5d3250a667370bf390e6ac0c08e ******/
+		/****** md5 signature: 29cc2d90858652279e929e582e4109c2 ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		static Standard_Real LastUParameter(const Standard_Address S);
+		static double LastUParameter(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::LastVParameter ******/
-		/****** md5 signature: b8355c68406b1dfc8be1d82e8b506bec ******/
+		/****** md5 signature: 77dcc1a7a11d1d397a4c1c173f6331c3 ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		static Standard_Real LastVParameter(const Standard_Address S);
+		static double LastVParameter(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::NbSamplesU ******/
-		/****** md5 signature: 8f1620b5617d2e63b048978c72d7fef8 ******/
+		/****** md5 signature: b636e30531eb5371a5629a645a5520dd ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -11067,17 +10207,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const Standard_Address S);
+		static int NbSamplesU(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::NbSamplesU ******/
-		/****** md5 signature: 11ce3cf3e58a1ce9f9ec6bb48af96ec2 ******/
+		/****** md5 signature: e5360fe3043774961408e153dae3762a ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u1: float
-u2: float
+theSurf: HLRBRep_Surface *
+theU1: double
+theU2: double
 
 Return
 -------
@@ -11087,15 +10227,15 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const Standard_Address S, const Standard_Real u1, const Standard_Real u2);
+		static int NbSamplesU(const HLRBRep_Surface * theSurf, const double theU1, const double theU2);
 
 		/****** HLRBRep_SurfaceTool::NbSamplesV ******/
-		/****** md5 signature: a82f5bd7b9e757284443d92588a08924 ******/
+		/****** md5 signature: d2a063c56592031d412bfec96959c66e ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -11105,17 +10245,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const Standard_Address S);
+		static int NbSamplesV(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::NbSamplesV ******/
-		/****** md5 signature: a2089a491614488d16ab97b5e5a07e56 ******/
+		/****** md5 signature: b2dd49f61dd5dd4283d5ee85baca1755 ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-v1: float
-v2: float
+theSurf: HLRBRep_Surface *
+theV1: double
+theV2: double
 
 Return
 -------
@@ -11125,16 +10265,16 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const Standard_Address S, const Standard_Real v1, const Standard_Real v2);
+		static int NbSamplesV(const HLRBRep_Surface * theSurf, const double theV1, const double theV2);
 
 		/****** HLRBRep_SurfaceTool::NbUIntervals ******/
-		/****** md5 signature: 5516eb3a8f3b210cf025639c7ec2f9a2 ******/
+		/****** md5 signature: 0f58b95be46dcaafce91267f9049d426 ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-Sh: GeomAbs_Shape
+theSurf: HLRBRep_Surface *
+theSh: GeomAbs_Shape
 
 Return
 -------
@@ -11144,16 +10284,16 @@ Description
 -----------
 No available documentation.
 ") NbUIntervals;
-		static Standard_Integer NbUIntervals(const Standard_Address S, const GeomAbs_Shape Sh);
+		static int NbUIntervals(const HLRBRep_Surface * theSurf, const GeomAbs_Shape theSh);
 
 		/****** HLRBRep_SurfaceTool::NbVIntervals ******/
-		/****** md5 signature: bd96f761c6f84259778f914d3f734f6c ******/
+		/****** md5 signature: 63ea31ce25477d835f1034ad9f4cdf73 ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-Sh: GeomAbs_Shape
+theSurf: HLRBRep_Surface *
+theSh: GeomAbs_Shape
 
 Return
 -------
@@ -11163,33 +10303,33 @@ Description
 -----------
 No available documentation.
 ") NbVIntervals;
-		static Standard_Integer NbVIntervals(const Standard_Address S, const GeomAbs_Shape Sh);
+		static int NbVIntervals(const HLRBRep_Surface * theSurf, const GeomAbs_Shape theSh);
 
 		/****** HLRBRep_SurfaceTool::OffsetValue ******/
-		/****** md5 signature: eded75293dc119057b8f7ff6121b5261 ******/
+		/****** md5 signature: cebc2cdb95141d215d4505bc7884e399 ******/
 		%feature("compactdefaultargs") OffsetValue;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") OffsetValue;
-		static Standard_Real OffsetValue(const Standard_Address S);
+		static double OffsetValue(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::Plane ******/
-		/****** md5 signature: 18aefb3d267fd8c0f21d3aa5d8154d4e ******/
+		/****** md5 signature: 11cb1b688b10b9c6eedb16b2eaaaf23a ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -11199,15 +10339,15 @@ Description
 -----------
 No available documentation.
 ") Plane;
-		static gp_Pln Plane(const Standard_Address S);
+		static gp_Pln Plane(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::Sphere ******/
-		/****** md5 signature: 01a724a2628bfa4e0cc9f87eefc4d73f ******/
+		/****** md5 signature: 3687b94f5a7466e828a5f12fc9fef2d0 ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -11217,15 +10357,15 @@ Description
 -----------
 No available documentation.
 ") Sphere;
-		static gp_Sphere Sphere(const Standard_Address S);
+		static gp_Sphere Sphere(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::Torus ******/
-		/****** md5 signature: 9f110fc52a07d36d19aefe5d2106d8fd ******/
+		/****** md5 signature: 43fcdae1693a90e2a7c85151838e79c5 ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
@@ -11235,17 +10375,17 @@ Description
 -----------
 No available documentation.
 ") Torus;
-		static gp_Torus Torus(const Standard_Address S);
+		static gp_Torus Torus(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::UIntervals ******/
-		/****** md5 signature: 85e0f7e1735591de2890181742678900 ******/
+		/****** md5 signature: 0796519821eda684a1b51b8b00b0194f ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-T: TColStd_Array1OfReal
-Sh: GeomAbs_Shape
+theSurf: HLRBRep_Surface *
+theT: NCollection_Array1<double>
+theSh: GeomAbs_Shape
 
 Return
 -------
@@ -11255,55 +10395,55 @@ Description
 -----------
 No available documentation.
 ") UIntervals;
-		static void UIntervals(const Standard_Address S, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
+		static void UIntervals(const HLRBRep_Surface * theSurf, NCollection_Array1<double> & theT, const GeomAbs_Shape theSh);
 
 		/****** HLRBRep_SurfaceTool::UPeriod ******/
-		/****** md5 signature: 819bb74d78e04bf0ec8b085a289b4293 ******/
+		/****** md5 signature: a7f468fc7b1c2a3a869640684ea3bc1b ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		static Standard_Real UPeriod(const Standard_Address S);
+		static double UPeriod(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::UResolution ******/
-		/****** md5 signature: 608a102cedd3f598f490045f31e2eff9 ******/
+		/****** md5 signature: a74b729d197cafe6c731b0e4792edf89 ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-R3d: float
+theSurf: HLRBRep_Surface *
+theR3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UResolution;
-		static Standard_Real UResolution(const Standard_Address S, const Standard_Real R3d);
+		static double UResolution(const HLRBRep_Surface * theSurf, const double theR3d);
 
 		/****** HLRBRep_SurfaceTool::UTrim ******/
-		/****** md5 signature: 85e441d9fff0bfb7cfe199a8ef2d2aec ******/
+		/****** md5 signature: de3402a2493d8623945bf35b0ebd7a6d ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-First: float
-Last: float
-Tol: float
+theSurf: HLRBRep_Surface *
+theFirst: double
+theLast: double
+theTol: double
 
 Return
 -------
@@ -11311,19 +10451,19 @@ opencascade::handle<Adaptor3d_Surface>
 
 Description
 -----------
-If <First> >= <Last>.
+If <theFirst> >= <theLast>.
 ") UTrim;
-		static opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		static opencascade::handle<Adaptor3d_Surface> UTrim(const HLRBRep_Surface * theSurf, const double theFirst, const double theLast, const double theTol);
 
 		/****** HLRBRep_SurfaceTool::VIntervals ******/
-		/****** md5 signature: 349fd1650c53bee88da5eb6085891c0c ******/
+		/****** md5 signature: cd5fd9ce3f665ecf7daf54a8e8b2d601 ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-T: TColStd_Array1OfReal
-Sh: GeomAbs_Shape
+theSurf: HLRBRep_Surface *
+theT: NCollection_Array1<double>
+theSh: GeomAbs_Shape
 
 Return
 -------
@@ -11333,55 +10473,55 @@ Description
 -----------
 No available documentation.
 ") VIntervals;
-		static void VIntervals(const Standard_Address S, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
+		static void VIntervals(const HLRBRep_Surface * theSurf, NCollection_Array1<double> & theT, const GeomAbs_Shape theSh);
 
 		/****** HLRBRep_SurfaceTool::VPeriod ******/
-		/****** md5 signature: 5789ce07d40fd8fe19da4683e9309241 ******/
+		/****** md5 signature: 31816d481b7868e6b63ed59171a0c538 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+theSurf: HLRBRep_Surface *
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		static Standard_Real VPeriod(const Standard_Address S);
+		static double VPeriod(const HLRBRep_Surface * theSurf);
 
 		/****** HLRBRep_SurfaceTool::VResolution ******/
-		/****** md5 signature: b9fa52c61fbc638529fb1c50121c1e16 ******/
+		/****** md5 signature: 8193ae4d5c14b592c227016f79f60743 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-R3d: float
+theSurf: HLRBRep_Surface *
+theR3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VResolution;
-		static Standard_Real VResolution(const Standard_Address S, const Standard_Real R3d);
+		static double VResolution(const HLRBRep_Surface * theSurf, const double theR3d);
 
 		/****** HLRBRep_SurfaceTool::VTrim ******/
-		/****** md5 signature: 9c95e57bce1c7a7d40af515009ac46f7 ******/
+		/****** md5 signature: 3666352f132e738e092a9e08325a0a97 ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-First: float
-Last: float
-Tol: float
+theSurf: HLRBRep_Surface *
+theFirst: double
+theLast: double
+theTol: double
 
 Return
 -------
@@ -11389,19 +10529,19 @@ opencascade::handle<Adaptor3d_Surface>
 
 Description
 -----------
-If <First> >= <Last>.
+If <theFirst> >= <theLast>.
 ") VTrim;
-		static opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Address S, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		static opencascade::handle<Adaptor3d_Surface> VTrim(const HLRBRep_Surface * theSurf, const double theFirst, const double theLast, const double theTol);
 
 		/****** HLRBRep_SurfaceTool::Value ******/
-		/****** md5 signature: 6dbf71d8deef85164fbe55f3e77b5728 ******/
+		/****** md5 signature: c7639710267406d823924755dce4e690 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
-u: float
-v: float
+theSurf: HLRBRep_Surface *
+theU: double
+theV: double
 
 Return
 -------
@@ -11411,7 +10551,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const Standard_Address S, const Standard_Real u, const Standard_Real v);
+		static gp_Pnt Value(const HLRBRep_Surface * theSurf, const double theU, const double theV);
 
 };
 
@@ -11428,12 +10568,12 @@ No available documentation.
 class HLRBRep_TheCSFunctionOfInterCSurf : public math_FunctionSetWithDerivatives {
 	public:
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::HLRBRep_TheCSFunctionOfInterCSurf ******/
-		/****** md5 signature: dddb49b0f671f145f07224822f44d8a3 ******/
+		/****** md5 signature: 9ecd9132105bf47e90238a1b705d6d8d ******/
 		%feature("compactdefaultargs") HLRBRep_TheCSFunctionOfInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+S: HLRBRep_Surface *
 C: gp_Lin
 
 Return
@@ -11444,7 +10584,7 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_TheCSFunctionOfInterCSurf;
-		 HLRBRep_TheCSFunctionOfInterCSurf(const Standard_Address & S, const gp_Lin & C);
+		 HLRBRep_TheCSFunctionOfInterCSurf(HLRBRep_Surface * const & S, const gp_Lin & C);
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::AuxillarCurve ******/
 		/****** md5 signature: 6a61ff41c44fd5e0d96a3296ffda6b5b ******/
@@ -11460,20 +10600,20 @@ No available documentation.
 		const gp_Lin AuxillarCurve();
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface ******/
-		/****** md5 signature: 87061916fb36bcf60a62cdc5d51b199e ******/
+		/****** md5 signature: 7c3292da60dfabaf50510bc580abac5f ******/
 		%feature("compactdefaultargs") AuxillarSurface;
 		%feature("autodoc", "Return
 -------
-Standard_Address
+HLRBRep_Surface *
 
 Description
 -----------
 No available documentation.
 ") AuxillarSurface;
-		const Standard_Address & AuxillarSurface();
+		HLRBRep_Surface * AuxillarSurface();
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -11489,10 +10629,10 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -11502,10 +10642,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -11515,7 +10655,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -11531,20 +10671,20 @@ No available documentation.
 		const gp_Pnt Point();
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -11560,10 +10700,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -11580,7 +10720,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -11591,22 +10731,19 @@ No available documentation.
 	}
 };
 
-/*****************************************************
-* class HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter *
-*****************************************************/
 /******************************************************************
 * class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter *
 ******************************************************************/
 class HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter : public math_FunctionSetWithDerivatives {
 	public:
 		/****** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter ******/
-		/****** md5 signature: dc489d8fc6afb00f97e01339a44990ef ******/
+		/****** md5 signature: 95355a31110e62ff66797b7e9113365b ******/
 		%feature("compactdefaultargs") HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
-curve1: Standard_Address
-curve2: Standard_Address
+curve1: HLRBRep_CurvePtr
+curve2: HLRBRep_CurvePtr
 
 Return
 -------
@@ -11616,10 +10753,10 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
-		 HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter(const Standard_Address & curve1, const Standard_Address & curve2);
+		 HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter(const HLRBRep_CurvePtr & curve1, const HLRBRep_CurvePtr & curve2);
 
 		/****** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -11635,10 +10772,10 @@ Description
 -----------
 returns the values <D> of the derivatives for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -11648,10 +10785,10 @@ Description
 -----------
 returns 2.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -11661,10 +10798,10 @@ Description
 -----------
 returns 2.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -11680,10 +10817,10 @@ Description
 -----------
 computes the values <F> of the Functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -11700,7 +10837,7 @@ Description
 -----------
 returns the values <F> of the functions and the derivatives <D> for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -11717,17 +10854,17 @@ returns the values <F> of the functions and the derivatives <D> for the variable
 class HLRBRep_TheExactInterCSurf {
 	public:
 		/****** HLRBRep_TheExactInterCSurf::HLRBRep_TheExactInterCSurf ******/
-		/****** md5 signature: 35027a872491f243347a98967181cab1 ******/
+		/****** md5 signature: 1d5935b63f3338cdca37e8c4c1d7d7e3 ******/
 		%feature("compactdefaultargs") HLRBRep_TheExactInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-W: float
+U: double
+V: double
+W: double
 F: HLRBRep_TheCSFunctionOfInterCSurf
-TolTangency: float
-MarginCoef: float (optional, default to 0.0)
+TolTangency: double
+MarginCoef: double (optional, default to 0.0)
 
 Return
 -------
@@ -11737,16 +10874,16 @@ Description
 -----------
 compute the solution point with the close point MarginCoef is the coefficient for extension of UV bounds. Ex., UFirst -= MarginCoef*(ULast-UFirst).
 ") HLRBRep_TheExactInterCSurf;
-		 HLRBRep_TheExactInterCSurf(const Standard_Real U, const Standard_Real V, const Standard_Real W, const HLRBRep_TheCSFunctionOfInterCSurf & F, const Standard_Real TolTangency, const Standard_Real MarginCoef = 0.0);
+		 HLRBRep_TheExactInterCSurf(const double U, const double V, const double W, const HLRBRep_TheCSFunctionOfInterCSurf & F, const double TolTangency, const double MarginCoef = 0.0);
 
 		/****** HLRBRep_TheExactInterCSurf::HLRBRep_TheExactInterCSurf ******/
-		/****** md5 signature: d179f3ee640105aa7eae2b41ac8aebf6 ******/
+		/****** md5 signature: 04638858767d53e6fb55fb6ebe5af067 ******/
 		%feature("compactdefaultargs") HLRBRep_TheExactInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
 F: HLRBRep_TheCSFunctionOfInterCSurf
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -11756,7 +10893,7 @@ Description
 -----------
 initialize the parameters to compute the solution.
 ") HLRBRep_TheExactInterCSurf;
-		 HLRBRep_TheExactInterCSurf(const HLRBRep_TheCSFunctionOfInterCSurf & F, const Standard_Real TolTangency);
+		 HLRBRep_TheExactInterCSurf(const HLRBRep_TheCSFunctionOfInterCSurf & F, const double TolTangency);
 
 		/****** HLRBRep_TheExactInterCSurf::Function ******/
 		/****** md5 signature: 42b19a18bcf6551f209a8f79f49f3a6e ******/
@@ -11772,7 +10909,7 @@ return the math function which is used to compute the intersection.
 		HLRBRep_TheCSFunctionOfInterCSurf & Function();
 
 		/****** HLRBRep_TheExactInterCSurf::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -11782,10 +10919,10 @@ Description
 -----------
 Returns True if the creation completed without failure.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** HLRBRep_TheExactInterCSurf::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -11795,23 +10932,23 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** HLRBRep_TheExactInterCSurf::ParameterOnCurve ******/
-		/****** md5 signature: ac81682b4b1f0988f8f73835e37144bf ******/
+		/****** md5 signature: 57f5295e1d0243d744a43fcea3cf7388 ******/
 		%feature("compactdefaultargs") ParameterOnCurve;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParameterOnCurve;
-		Standard_Real ParameterOnCurve();
+		double ParameterOnCurve();
 
 		/****** HLRBRep_TheExactInterCSurf::ParameterOnSurface ******/
-		/****** md5 signature: b1ff2b42bc6096157075c8f0a6c1b6a5 ******/
+		/****** md5 signature: 7f31eb7c473aecf695130da66c37cc8a ******/
 		%feature("compactdefaultargs") ParameterOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -11819,8 +10956,8 @@ Parameters
 
 Return
 -------
-U: float
-V: float
+U: double
+V: double
 
 Description
 -----------
@@ -11829,21 +10966,21 @@ No available documentation.
 		void ParameterOnSurface(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** HLRBRep_TheExactInterCSurf::Perform ******/
-		/****** md5 signature: 193bc13b7dd6d13fbf6a72a44d7ddd7b ******/
+		/****** md5 signature: 32414faba82bb6739429b692c1146008 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-W: float
+U: double
+V: double
+W: double
 Rsnld: math_FunctionSetRoot
-u0: float
-v0: float
-u1: float
-v1: float
-w0: float
-w1: float
+u0: double
+v0: double
+u1: double
+v1: double
+w0: double
+w1: double
 
 Return
 -------
@@ -11853,7 +10990,7 @@ Description
 -----------
 compute the solution it's possible to write to optimize: IntImp_IntCS inter(S1,C1,Toltangency) math_FunctionSetRoot rsnld(Inter.function()) while ...{ u=... v=... w=... inter.Perform(u,v,w,rsnld) } or IntImp_IntCS inter(Toltangency) inter.SetSurface(S); math_FunctionSetRoot rsnld(Inter.function()) while ...{ C=... inter.SetCurve(C); u=... v=... w=... inter.Perform(u,v,w,rsnld) }.
 ") Perform;
-		void Perform(const Standard_Real U, const Standard_Real V, const Standard_Real W, math_FunctionSetRoot & Rsnld, const Standard_Real u0, const Standard_Real v0, const Standard_Real u1, const Standard_Real v1, const Standard_Real w0, const Standard_Real w1);
+		void Perform(const double U, const double V, const double W, math_FunctionSetRoot & Rsnld, const double u0, const double v0, const double u1, const double v1, const double w0, const double w1);
 
 		/****** HLRBRep_TheExactInterCSurf::Point ******/
 		/****** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ******/
@@ -11896,17 +11033,17 @@ Empty constructor.
 		 HLRBRep_TheIntConicCurveOfCInter();
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter ******/
-		/****** md5 signature: c6177a09eb30648e1d6dc6a88b4c02b6 ******/
+		/****** md5 signature: a1eca9bbd3aeba1ef92e37ba2e62dff1 ******/
 		%feature("compactdefaultargs") HLRBRep_TheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -11916,20 +11053,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") HLRBRep_TheIntConicCurveOfCInter;
-		 HLRBRep_TheIntConicCurveOfCInter(const gp_Lin2d & L, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_TheIntConicCurveOfCInter(const gp_Lin2d & L, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter ******/
-		/****** md5 signature: 74e440ab552a6cacaa917310398ec74d ******/
+		/****** md5 signature: 2919538fbf923198aa471483659e5936 ******/
 		%feature("compactdefaultargs") HLRBRep_TheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -11939,20 +11076,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") HLRBRep_TheIntConicCurveOfCInter;
-		 HLRBRep_TheIntConicCurveOfCInter(const gp_Circ2d & C, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_TheIntConicCurveOfCInter(const gp_Circ2d & C, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter ******/
-		/****** md5 signature: 98fb253d56385e056e5ba58b09255c72 ******/
+		/****** md5 signature: 48b691918d1737b325e9cc91b33ab94e ******/
 		%feature("compactdefaultargs") HLRBRep_TheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 E: gp_Elips2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -11962,20 +11099,20 @@ Description
 -----------
 Intersection between an ellipse and a parametric curve.
 ") HLRBRep_TheIntConicCurveOfCInter;
-		 HLRBRep_TheIntConicCurveOfCInter(const gp_Elips2d & E, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_TheIntConicCurveOfCInter(const gp_Elips2d & E, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter ******/
-		/****** md5 signature: d7b24b192a879ef9e3731101880d3c41 ******/
+		/****** md5 signature: ebb96b2f7efed63be0a05a2c0778cdee ******/
 		%feature("compactdefaultargs") HLRBRep_TheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 Prb: gp_Parab2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -11985,20 +11122,20 @@ Description
 -----------
 Intersection between a parabola and a parametric curve.
 ") HLRBRep_TheIntConicCurveOfCInter;
-		 HLRBRep_TheIntConicCurveOfCInter(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_TheIntConicCurveOfCInter(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::HLRBRep_TheIntConicCurveOfCInter ******/
-		/****** md5 signature: 2fed0f0a7b09c728a424e068fe3d8d59 ******/
+		/****** md5 signature: 6e7d596ffde264daa60957f41d637679 ******/
 		%feature("compactdefaultargs") HLRBRep_TheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 H: gp_Hypr2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12008,20 +11145,20 @@ Description
 -----------
 Intersection between the main branch of an hyperbola and a parametric curve.
 ") HLRBRep_TheIntConicCurveOfCInter;
-		 HLRBRep_TheIntConicCurveOfCInter(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_TheIntConicCurveOfCInter(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 256f0ab35aa34bea4dadb6bd5eb4a19c ******/
+		/****** md5 signature: f9b9eb3d8295f7a5235c4b961c512389 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12031,20 +11168,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") Perform;
-		void Perform(const gp_Lin2d & L, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Lin2d & L, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 08d385c076b409ee44899b99b87bce65 ******/
+		/****** md5 signature: 90c767a29faf1ed79b4fdbf08eca13e6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12054,20 +11191,20 @@ Description
 -----------
 Intersection between a line and a parametric curve.
 ") Perform;
-		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Circ2d & C, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: adcc3156cc7d9584606acdb0e8a9fcc3 ******/
+		/****** md5 signature: b930d935742441869f4e8decde900041 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 E: gp_Elips2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12077,20 +11214,20 @@ Description
 -----------
 Intersection between an ellipse and a parametric curve.
 ") Perform;
-		void Perform(const gp_Elips2d & E, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Elips2d & E, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 590908aa03a8133564eed84deecb5d15 ******/
+		/****** md5 signature: 1f9e13a8ffa1ec749a03fae729a1beb0 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Prb: gp_Parab2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12100,20 +11237,20 @@ Description
 -----------
 Intersection between a parabola and a parametric curve.
 ") Perform;
-		void Perform(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Parab2d & Prb, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: 71d5c9759e509bec96b20ad2637d7730 ******/
+		/****** md5 signature: fc249b74a03be399405216462aef799b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 H: gp_Hypr2d
 D1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12123,7 +11260,7 @@ Description
 -----------
 Intersection between the main branch of an hyperbola and a parametric curve.
 ") Perform;
-		void Perform(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const Standard_Address & PCurve, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const gp_Hypr2d & H, const IntRes2d_Domain & D1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & D2, const double TolConf, const double Tol);
 
 };
 
@@ -12153,7 +11290,7 @@ No available documentation.
 		 HLRBRep_TheIntPCurvePCurveOfCInter();
 
 		/****** HLRBRep_TheIntPCurvePCurveOfCInter::GetMinNbSamples ******/
-		/****** md5 signature: 337038c4c6920a9f4b1d8efd60cf2219 ******/
+		/****** md5 signature: fd21667dcec0124f6dfae4103cb5ec2b ******/
 		%feature("compactdefaultargs") GetMinNbSamples;
 		%feature("autodoc", "Return
 -------
@@ -12163,20 +11300,20 @@ Description
 -----------
 No available documentation.
 ") GetMinNbSamples;
-		Standard_Integer GetMinNbSamples();
+		int GetMinNbSamples();
 
 		/****** HLRBRep_TheIntPCurvePCurveOfCInter::Perform ******/
-		/****** md5 signature: 75a6ce72bd7eec344eb77f6930bd4f54 ******/
+		/****** md5 signature: ba932bb5ddc96400d423b3dceec8c552 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve1: Standard_Address
+Curve1: HLRBRep_CurvePtr
 Domain1: IntRes2d_Domain
-Curve2: Standard_Address
+Curve2: HLRBRep_CurvePtr
 Domain2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12186,18 +11323,18 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Standard_Address & Curve1, const IntRes2d_Domain & Domain1, const Standard_Address & Curve2, const IntRes2d_Domain & Domain2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & Curve1, const IntRes2d_Domain & Domain1, const HLRBRep_CurvePtr & Curve2, const IntRes2d_Domain & Domain2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntPCurvePCurveOfCInter::Perform ******/
-		/****** md5 signature: 3444554241e0391406b55fc664c16052 ******/
+		/****** md5 signature: c317f607bdb816fe8c52660cfb42bbca ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve1: Standard_Address
+Curve1: HLRBRep_CurvePtr
 Domain1: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12207,10 +11344,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const Standard_Address & Curve1, const IntRes2d_Domain & Domain1, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const HLRBRep_CurvePtr & Curve1, const IntRes2d_Domain & Domain1, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntPCurvePCurveOfCInter::SetMinNbSamples ******/
-		/****** md5 signature: 32ce254ec9cb1151513557c7a8edb457 ******/
+		/****** md5 signature: 9d653919fbe121787c6b21a6579f45a2 ******/
 		%feature("compactdefaultargs") SetMinNbSamples;
 		%feature("autodoc", "
 Parameters
@@ -12225,7 +11362,7 @@ Description
 -----------
 Set / get minimum number of points in polygon for intersection.
 ") SetMinNbSamples;
-		void SetMinNbSamples(const Standard_Integer theMinNbSamples);
+		void SetMinNbSamples(const int theMinNbSamples);
 
 };
 
@@ -12293,12 +11430,12 @@ Constructs and computes an interference between the Straight Line and the Polyhe
 		 HLRBRep_TheInterferenceOfInterCSurf(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf ******/
-		/****** md5 signature: f49aa8c9c38c517bde626c32e17dfb4a ******/
+		/****** md5 signature: fd8d22e8452ff7586202a617a10d889d ******/
 		%feature("compactdefaultargs") HLRBRep_TheInterferenceOfInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
@@ -12309,7 +11446,7 @@ Description
 -----------
 Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
-		 HLRBRep_TheInterferenceOfInterCSurf(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		 HLRBRep_TheInterferenceOfInterCSurf(const NCollection_Array1<gp_Lin> & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf ******/
 		/****** md5 signature: e9abc3f8ffcb76b644777d8515a87180 ******/
@@ -12352,12 +11489,12 @@ Constructs and computes an interference between the Straight Line and the Polyhe
 		 HLRBRep_TheInterferenceOfInterCSurf(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::HLRBRep_TheInterferenceOfInterCSurf ******/
-		/****** md5 signature: 938875f7c5a892c7d600c3fc19abd9fd ******/
+		/****** md5 signature: 917f5a4beaa9d505515bac63ab83c024 ******/
 		%feature("compactdefaultargs") HLRBRep_TheInterferenceOfInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 theBoundSB: Bnd_BoundSortBox
 
@@ -12369,7 +11506,7 @@ Description
 -----------
 Constructs and computes an interference between the Straight Lines and the Polyhedron.
 ") HLRBRep_TheInterferenceOfInterCSurf;
-		 HLRBRep_TheInterferenceOfInterCSurf(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
+		 HLRBRep_TheInterferenceOfInterCSurf(const NCollection_Array1<gp_Lin> & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::Interference ******/
 		/****** md5 signature: 34220ab879293bb4da6b378528e1d8ae ******/
@@ -12449,12 +11586,12 @@ Computes an interference between the Straight Line and the Polyhedron.
 		void Perform(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::Perform ******/
-		/****** md5 signature: 6d6ce03fedf23875669997dba9551ac4 ******/
+		/****** md5 signature: 7eec749690920994154f41082d65b471 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
@@ -12465,7 +11602,7 @@ Description
 -----------
 Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
-		void Perform(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		void Perform(const NCollection_Array1<gp_Lin> & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::Perform ******/
 		/****** md5 signature: 9d72f3ea3d51d77277fd39ac981edc93 ******/
@@ -12508,12 +11645,12 @@ Computes an interference between the Straight Line and the Polyhedron.
 		void Perform(const gp_Lin & theLin, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 		/****** HLRBRep_TheInterferenceOfInterCSurf::Perform ******/
-		/****** md5 signature: 80f7c9a2729a5ff62423b11488230e9b ******/
+		/****** md5 signature: 57a327fbfc4d600694a81419f9154e08 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theLins: Intf_Array1OfLin
+theLins: NCollection_Array1<gp_Lin>
 thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 theBoundSB: Bnd_BoundSortBox
 
@@ -12525,7 +11662,7 @@ Description
 -----------
 Computes an interference between the Straight Lines and the Polyhedron.
 ") Perform;
-		void Perform(const Intf_Array1OfLin & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
+		void Perform(const NCollection_Array1<gp_Lin> & theLins, const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, Bnd_BoundSortBox & theBoundSB);
 
 };
 
@@ -12555,17 +11692,17 @@ Empty constructor.
 		 HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter();
 
 		/****** HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter ******/
-		/****** md5 signature: f63808ec2ccfe9b74a79fd5e8ffc37dc ******/
+		/****** md5 signature: de837fb956d0070631244b7e8234d6ae ******/
 		%feature("compactdefaultargs") HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
 ITool: IntCurve_IConicTool
 Dom1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 Dom2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12575,23 +11712,23 @@ Description
 -----------
 Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter;
-		 HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const Standard_Address & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
+		 HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & Dom2, const double TolConf, const double Tol);
 
 		/****** HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::And_Domaine_Objet1_Intersections ******/
-		/****** md5 signature: b25937465436483d60d73ecd96841b70 ******/
+		/****** md5 signature: e025235cf231763bc2b8b2c734c3a0d4 ******/
 		%feature("compactdefaultargs") And_Domaine_Objet1_Intersections;
 		%feature("autodoc", "
 Parameters
 ----------
 TheImpTool: IntCurve_IConicTool
-TheParCurve: Standard_Address
+TheParCurve: HLRBRep_CurvePtr
 TheImpCurveDomain: IntRes2d_Domain
 TheParCurveDomain: IntRes2d_Domain
-Inter2_And_Domain2: TColStd_Array1OfReal
-Inter1: TColStd_Array1OfReal
-Resultat1: TColStd_Array1OfReal
-Resultat2: TColStd_Array1OfReal
-EpsNul: float
+Inter2_And_Domain2: NCollection_Array1<double>
+Inter1: NCollection_Array1<double>
+Resultat1: NCollection_Array1<double>
+Resultat2: NCollection_Array1<double>
+EpsNul: double
 
 Return
 -------
@@ -12601,66 +11738,66 @@ Description
 -----------
 No available documentation.
 ") And_Domaine_Objet1_Intersections;
-		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const Standard_Address & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, TColStd_Array1OfReal & Inter2_And_Domain2, TColStd_Array1OfReal & Inter1, TColStd_Array1OfReal & Resultat1, TColStd_Array1OfReal & Resultat2, const Standard_Real EpsNul);
+		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const HLRBRep_CurvePtr & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, NCollection_Array1<double> & Inter2_And_Domain2, NCollection_Array1<double> & Inter1, NCollection_Array1<double> & Resultat1, NCollection_Array1<double> & Resultat2, const double EpsNul);
 
 		/****** HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU ******/
-		/****** md5 signature: 73bba458174e8964e7a800b1e6377c1f ******/
+		/****** md5 signature: eced76384d336c72043a92a8df1babc7 ******/
 		%feature("compactdefaultargs") FindU;
 		%feature("autodoc", "
 Parameters
 ----------
-parameter: float
+parameter: double
 point: gp_Pnt2d
-TheParCurev: Standard_Address
+TheParCurev: HLRBRep_CurvePtr
 TheImpTool: IntCurve_IConicTool
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FindU;
-		Standard_Real FindU(const Standard_Real parameter, gp_Pnt2d & point, const Standard_Address & TheParCurev, const IntCurve_IConicTool & TheImpTool);
+		double FindU(const double parameter, gp_Pnt2d & point, const HLRBRep_CurvePtr & TheParCurev, const IntCurve_IConicTool & TheImpTool);
 
 		/****** HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindV ******/
-		/****** md5 signature: 0086ec5c0d8c4e05c3fa4eb9c212c651 ******/
+		/****** md5 signature: e5cec4bfe333c5efae822e8cff770e63 ******/
 		%feature("compactdefaultargs") FindV;
 		%feature("autodoc", "
 Parameters
 ----------
-parameter: float
+parameter: double
 point: gp_Pnt2d
 TheImpTool: IntCurve_IConicTool
-ParCurve: Standard_Address
+ParCurve: HLRBRep_CurvePtr
 TheParCurveDomain: IntRes2d_Domain
-V0: float
-V1: float
-Tolerance: float
+V0: double
+V1: double
+Tolerance: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FindV;
-		Standard_Real FindV(const Standard_Real parameter, gp_Pnt2d & point, const IntCurve_IConicTool & TheImpTool, const Standard_Address & ParCurve, const IntRes2d_Domain & TheParCurveDomain, const Standard_Real V0, const Standard_Real V1, const Standard_Real Tolerance);
+		double FindV(const double parameter, gp_Pnt2d & point, const IntCurve_IConicTool & TheImpTool, const HLRBRep_CurvePtr & ParCurve, const IntRes2d_Domain & TheParCurveDomain, const double V0, const double V1, const double Tolerance);
 
 		/****** HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::Perform ******/
-		/****** md5 signature: e3bfb0880b36035ae94fd59907a3b653 ******/
+		/****** md5 signature: ed48772b1acea4dba44fa3af62b06a6d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 ITool: IntCurve_IConicTool
 Dom1: IntRes2d_Domain
-PCurve: Standard_Address
+PCurve: HLRBRep_CurvePtr
 Dom2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 
 Return
 -------
@@ -12670,175 +11807,12 @@ Description
 -----------
 Intersection between an implicit curve and a parametrised curve. The exception ConstructionError is raised if the domain of the parametrised curve does not verify HasFirstPoint and HasLastPoint return True.
 ") Perform;
-		void Perform(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const Standard_Address & PCurve, const IntRes2d_Domain & Dom2, const Standard_Real TolConf, const Standard_Real Tol);
+		void Perform(const IntCurve_IConicTool & ITool, const IntRes2d_Domain & Dom1, const HLRBRep_CurvePtr & PCurve, const IntRes2d_Domain & Dom2, const double TolConf, const double Tol);
 
 };
 
 
 %extend HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************************************
-* class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter *
-****************************************************/
-class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
-	public:
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ******/
-		/****** md5 signature: ddbc566b275baafc612d96b848ef7c5f ******/
-		%feature("compactdefaultargs") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-No available documentation.
-") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		 HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter();
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ******/
-		/****** md5 signature: 2404bc558ec12c49789c3598f94daa2b ******/
-		%feature("compactdefaultargs") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Standard_Address
-U0: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
-") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		 HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(const gp_Pnt2d & P, const Standard_Address & C, const Standard_Real U0, const Standard_Real TolU);
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter ******/
-		/****** md5 signature: e0698389ad945e5cff9fe9be0284beb7 ******/
-		%feature("compactdefaultargs") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-C: Standard_Address
-U0: float
-Umin: float
-Usup: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin and Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
-") HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
-		 HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter(const gp_Pnt2d & P, const Standard_Address & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Initialize ******/
-		/****** md5 signature: 80847cbf9c7c914995c1b28a4117b549 ******/
-		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "
-Parameters
-----------
-C: Standard_Address
-Umin: float
-Usup: float
-TolU: float
-
-Return
--------
-None
-
-Description
------------
-sets the fields of the algorithm.
-") Initialize;
-		void Initialize(const Standard_Address & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the distance is found.
-") IsDone;
-		Standard_Boolean IsDone();
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::IsMin ******/
-		/****** md5 signature: 1c0b1dbd0d0c10c93cbf9fefce4bad3b ******/
-		%feature("compactdefaultargs") IsMin;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns True if the extremum distance is a minimum.
-") IsMin;
-		Standard_Boolean IsMin();
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Perform ******/
-		/****** md5 signature: 572d96f228989fec803e5b8f273e32cd ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-P: gp_Pnt2d
-U0: float
-
-Return
--------
-None
-
-Description
------------
-the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
-") Perform;
-		void Perform(const gp_Pnt2d & P, const Standard_Real U0);
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::Point ******/
-		/****** md5 signature: 0b14be81c893f7916dafa40cecb53c69 ******/
-		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Return
--------
-Extrema_POnCurv2d
-
-Description
------------
-Returns the point of the extremum distance.
-") Point;
-		const Extrema_POnCurv2d & Point();
-
-		/****** HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter::SquareDistance ******/
-		/****** md5 signature: 2eba58521e0603c1ef0e683534b03956 ******/
-		%feature("compactdefaultargs") SquareDistance;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the extremum square distance.
-") SquareDistance;
-		Standard_Real SquareDistance();
-
-};
-
-
-%extend HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -12850,15 +11824,15 @@ Returns the value of the extremum square distance.
 class HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter : public Intf_Polygon2d {
 	public:
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter ******/
-		/****** md5 signature: 758922762309bc321e3ec267e54bd834 ******/
+		/****** md5 signature: b84bf1f89be49242636cff7074cfda18 ******/
 		%feature("compactdefaultargs") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: Standard_Address
+Curve: HLRBRep_CurvePtr
 NbPnt: int
 Domain: IntRes2d_Domain
-Tol: float
+Tol: double
 
 Return
 -------
@@ -12868,29 +11842,29 @@ Description
 -----------
 Compute a polygon on the domain of the curve.
 ") HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter;
-		 HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter(const Standard_Address & Curve, const Standard_Integer NbPnt, const IntRes2d_Domain & Domain, const Standard_Real Tol);
+		 HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter(const HLRBRep_CurvePtr & Curve, const int NbPnt, const IntRes2d_Domain & Domain, const double Tol);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ApproxParamOnCurve ******/
-		/****** md5 signature: ea6b1c4f19abd104ce26cf986e38bc0b ******/
+		/****** md5 signature: 520ca19aee00f08506bff5bce4928594 ******/
 		%feature("compactdefaultargs") ApproxParamOnCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-ParamOnLine: float
+ParamOnLine: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
-		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
+		double ApproxParamOnCurve(const int Index, const double ParamOnLine);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::AutoIntersectionIsPossible ******/
-		/****** md5 signature: 461afa84e474b507672077d4d358a741 ******/
+		/****** md5 signature: c0c30ede09ff6c71792ccade65941d74 ******/
 		%feature("compactdefaultargs") AutoIntersectionIsPossible;
 		%feature("autodoc", "Return
 -------
@@ -12900,20 +11874,20 @@ Description
 -----------
 No available documentation.
 ") AutoIntersectionIsPossible;
-		Standard_Boolean AutoIntersectionIsPossible();
+		bool AutoIntersectionIsPossible();
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::CalculRegion ******/
-		/****** md5 signature: 34769b0e402ed40fc1aa75180518eb35 ******/
+		/****** md5 signature: 2cbc0f90983b45c167b6b92efc5060b4 ******/
 		%feature("compactdefaultargs") CalculRegion;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
-y: float
-x1: float
-x2: float
-y1: float
-y2: float
+x: double
+y: double
+x1: double
+x2: double
+y1: double
+y2: double
 
 Return
 -------
@@ -12923,10 +11897,10 @@ Description
 -----------
 No available documentation.
 ") CalculRegion;
-		Standard_Integer CalculRegion(const Standard_Real x, const Standard_Real y, const Standard_Real x1, const Standard_Real x2, const Standard_Real y1, const Standard_Real y2);
+		int CalculRegion(const double x, const double y, const double x1, const double x2, const double y1, const double y2);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed ******/
-		/****** md5 signature: c5b0bafd47da29606481588a971270ce ******/
+		/****** md5 signature: 343c462cc9a130bb05f2dc37938d483b ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -12941,10 +11915,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		void Closed(const Standard_Boolean clos);
+		void Closed(const bool clos);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed ******/
-		/****** md5 signature: fb3b1ea0f3831f02fc7dc8ae66caac7b ******/
+		/****** md5 signature: 3092748280563d0fa6546c2fddc4b4a5 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -12954,15 +11928,15 @@ Description
 -----------
 Returns True if the polyline is closed.
 ") Closed;
-		virtual Standard_Boolean Closed();
+		bool Closed();
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::ComputeWithBox ******/
-		/****** md5 signature: 7d618b2066ef81b993e4f38bdebc62ca ******/
+		/****** md5 signature: 0368c6cad3bf4442c0657b77c256216d ******/
 		%feature("compactdefaultargs") ComputeWithBox;
 		%feature("autodoc", "
 Parameters
 ----------
-Curve: Standard_Address
+Curve: HLRBRep_CurvePtr
 OtherBox: Bnd_Box2d
 
 Return
@@ -12973,20 +11947,20 @@ Description
 -----------
 The current polygon is modified if most of the points of the polygon are outside the box <OtherBox>. In this situation, bounds are computed to build a polygon inside or near the OtherBox.
 ") ComputeWithBox;
-		void ComputeWithBox(const Standard_Address & Curve, const Bnd_Box2d & OtherBox);
+		void ComputeWithBox(const HLRBRep_CurvePtr & Curve, const Bnd_Box2d & OtherBox);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::DeflectionOverEstimation ******/
-		/****** md5 signature: 43f4e747867c1147de91dcc2fd648827 ******/
+		/****** md5 signature: 1fad6591a4ff1f9e8e821a3a0670bc18 ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DeflectionOverEstimation;
-		virtual Standard_Real DeflectionOverEstimation();
+		double DeflectionOverEstimation();
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -13002,20 +11976,20 @@ No available documentation.
 		void Dump();
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::InfParameter ******/
-		/****** md5 signature: 8559659cfaf88d25c04ace5dcdcbde32 ******/
+		/****** md5 signature: 7a45ea36426f6319ca9fdcc45fed2b64 ******/
 		%feature("compactdefaultargs") InfParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
-		Standard_Real InfParameter();
+		double InfParameter();
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::NbSegments ******/
-		/****** md5 signature: 3964cbfa1f20d4814234f7fc3d204bbb ******/
+		/****** md5 signature: dd047a9d60ac19f7e8995b778d22aba9 ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -13025,10 +11999,10 @@ Description
 -----------
 Give the number of Segments in the polyline.
 ") NbSegments;
-		virtual Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Segment ******/
-		/****** md5 signature: 86ed8dcd5c63b8c7622186f373e5af81 ******/
+		/****** md5 signature: 492f28c821222ab2c8cda9dffc334375 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -13045,15 +12019,15 @@ Description
 -----------
 Returns the points of the segment <Index> in the Polygon.
 ") Segment;
-		virtual void Segment(const Standard_Integer theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
+		void Segment(const int theIndex, gp_Pnt2d & theBegin, gp_Pnt2d & theEnd);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SetDeflectionOverEstimation ******/
-		/****** md5 signature: 310446258d4443a660c9cfe280519b05 ******/
+		/****** md5 signature: 7b7a5fb89a75e64dee0d34a28f8ad75a ******/
 		%feature("compactdefaultargs") SetDeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
+x: double
 
 Return
 -------
@@ -13063,20 +12037,20 @@ Description
 -----------
 No available documentation.
 ") SetDeflectionOverEstimation;
-		void SetDeflectionOverEstimation(const Standard_Real x);
+		void SetDeflectionOverEstimation(const double x);
 
 		/****** HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SupParameter ******/
-		/****** md5 signature: 67f72e7357fa61911c23a764d72614ea ******/
+		/****** md5 signature: 0badd8e202f44bc5962c793cc4fca7e8 ******/
 		%feature("compactdefaultargs") SupParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
-		Standard_Real SupParameter();
+		double SupParameter();
 
 };
 
@@ -13093,7 +12067,7 @@ Returns the parameter (On the curve) of the last point of the Polygon.
 class HLRBRep_ThePolygonOfInterCSurf {
 	public:
 		/****** HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf ******/
-		/****** md5 signature: 79543caa66f4a2eba12772466b930f36 ******/
+		/****** md5 signature: f14c0c7d63b72619a2694871b5f11215 ******/
 		%feature("compactdefaultargs") HLRBRep_ThePolygonOfInterCSurf;
 		%feature("autodoc", "
 Parameters
@@ -13109,17 +12083,17 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ThePolygonOfInterCSurf;
-		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const Standard_Integer NbPnt);
+		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const int NbPnt);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf ******/
-		/****** md5 signature: 66656965e7c4fb784af8d64fcd3b894f ******/
+		/****** md5 signature: 477412dbd6d6f239e7d0fca3276e60cf ******/
 		%feature("compactdefaultargs") HLRBRep_ThePolygonOfInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve: gp_Lin
-U1: float
-U2: float
+U1: double
+U2: double
 NbPnt: int
 
 Return
@@ -13130,16 +12104,16 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ThePolygonOfInterCSurf;
-		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const Standard_Real U1, const Standard_Real U2, const Standard_Integer NbPnt);
+		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const double U1, const double U2, const int NbPnt);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf ******/
-		/****** md5 signature: 61e91cda033e4acddf27b3672e799663 ******/
+		/****** md5 signature: 15a3993116a465134c3a76ce7a79a876 ******/
 		%feature("compactdefaultargs") HLRBRep_ThePolygonOfInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
 Curve: gp_Lin
-Upars: TColStd_Array1OfReal
+Upars: NCollection_Array1<double>
 
 Return
 -------
@@ -13149,29 +12123,29 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ThePolygonOfInterCSurf;
-		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const TColStd_Array1OfReal & Upars);
+		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const NCollection_Array1<double> & Upars);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::ApproxParamOnCurve ******/
-		/****** md5 signature: ea6b1c4f19abd104ce26cf986e38bc0b ******/
+		/****** md5 signature: 520ca19aee00f08506bff5bce4928594 ******/
 		%feature("compactdefaultargs") ApproxParamOnCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Index: int
-ParamOnLine: float
+ParamOnLine: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Give an approximation of the parameter on the curve according to the discretization of the Curve.
 ") ApproxParamOnCurve;
-		Standard_Real ApproxParamOnCurve(const Standard_Integer Index, const Standard_Real ParamOnLine);
+		double ApproxParamOnCurve(const int Index, const double ParamOnLine);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::BeginOfSeg ******/
-		/****** md5 signature: d9c773bc099d0d92cc222653e8226d5e ******/
+		/****** md5 signature: b5f0a31ca14db0a2f84ebff20a6aa499 ******/
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -13186,7 +12160,7 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") BeginOfSeg;
-		const gp_Pnt BeginOfSeg(const Standard_Integer theIndex);
+		const gp_Pnt BeginOfSeg(const int theIndex);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::Bounding ******/
 		/****** md5 signature: 54ccbf8f63f02bb43c2fc9c718922d78 ******/
@@ -13202,7 +12176,7 @@ Give the bounding box of the polygon.
 		const Bnd_Box & Bounding();
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::Closed ******/
-		/****** md5 signature: e853f3a0de69f6e7f92ebd8ac1362e0c ******/
+		/****** md5 signature: 81313c484636cef829aac0b752efb72e ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -13217,10 +12191,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		void Closed(const Standard_Boolean flag);
+		void Closed(const bool flag);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::Closed ******/
-		/****** md5 signature: f94551c898fe323903f1d14861bbe901 ******/
+		/****** md5 signature: 8fa7f82a3a97ae7fb9544764f500c779 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "Return
 -------
@@ -13230,20 +12204,20 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		Standard_Boolean Closed();
+		bool Closed();
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::DeflectionOverEstimation ******/
-		/****** md5 signature: b4c80a54735f171bb52e56c083257109 ******/
+		/****** md5 signature: 414fb811f991fcfbdeae5077c8f62bef ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DeflectionOverEstimation;
-		Standard_Real DeflectionOverEstimation();
+		double DeflectionOverEstimation();
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -13259,7 +12233,7 @@ No available documentation.
 		void Dump();
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::EndOfSeg ******/
-		/****** md5 signature: fa65a7dd84749b3192eff93d48f5b1d6 ******/
+		/****** md5 signature: dc55838f0a8bf871ed662c6fdbf445f0 ******/
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -13274,23 +12248,23 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") EndOfSeg;
-		const gp_Pnt EndOfSeg(const Standard_Integer theIndex);
+		const gp_Pnt EndOfSeg(const int theIndex);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::InfParameter ******/
-		/****** md5 signature: f596238a0398d517210e4fad0d4b84b2 ******/
+		/****** md5 signature: 5220389c34cc0aa1dc89c36017792ac2 ******/
 		%feature("compactdefaultargs") InfParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter (On the curve) of the first point of the Polygon.
 ") InfParameter;
-		Standard_Real InfParameter();
+		double InfParameter();
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::NbSegments ******/
-		/****** md5 signature: 9f8199ef0d5690074e4037e7feba62da ******/
+		/****** md5 signature: a484f4ef51493a5d103a692e844665ba ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -13300,15 +12274,15 @@ Description
 -----------
 Give the number of Segments in the polyline.
 ") NbSegments;
-		Standard_Integer NbSegments();
+		int NbSegments();
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::SetDeflectionOverEstimation ******/
-		/****** md5 signature: 872cf63726ece2c3b812a597bb60fe29 ******/
+		/****** md5 signature: 1dc358280ad6b7d445cb3da24d8ffaf3 ******/
 		%feature("compactdefaultargs") SetDeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
+x: double
 
 Return
 -------
@@ -13318,20 +12292,20 @@ Description
 -----------
 No available documentation.
 ") SetDeflectionOverEstimation;
-		void SetDeflectionOverEstimation(const Standard_Real x);
+		void SetDeflectionOverEstimation(const double x);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::SupParameter ******/
-		/****** md5 signature: 688f110f02a5711ae550904ec8e3220d ******/
+		/****** md5 signature: c9a151df103c425bae261f99509e51b2 ******/
 		%feature("compactdefaultargs") SupParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter (On the curve) of the last point of the Polygon.
 ") SupParameter;
-		Standard_Real SupParameter();
+		double SupParameter();
 
 };
 
@@ -13348,7 +12322,7 @@ Returns the parameter (On the curve) of the last point of the Polygon.
 class HLRBRep_ThePolygonToolOfInterCSurf {
 	public:
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::BeginOfSeg ******/
-		/****** md5 signature: 55407fea5ab9036d69b424d673e06dba ******/
+		/****** md5 signature: 0cc1b075aec06523f405d0325fb2d82c ******/
 		%feature("compactdefaultargs") BeginOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -13364,10 +12338,10 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") BeginOfSeg;
-		static const gp_Pnt BeginOfSeg(const HLRBRep_ThePolygonOfInterCSurf & thePolygon, const Standard_Integer Index);
+		static const gp_Pnt BeginOfSeg(const HLRBRep_ThePolygonOfInterCSurf & thePolygon, const int Index);
 
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::Bounding ******/
-		/****** md5 signature: a65a8cfe5e008ba3c420412aea532527 ******/
+		/****** md5 signature: bd4420175bf29f3a4de5a79c401aef69 ******/
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "
 Parameters
@@ -13385,7 +12359,7 @@ Give the bounding box of the polygon.
 		static const Bnd_Box & Bounding(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::Closed ******/
-		/****** md5 signature: 7974a746229283e640549ed6c6815362 ******/
+		/****** md5 signature: 2f3b3e56e6fd8c40f306d84715957426 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -13400,10 +12374,10 @@ Description
 -----------
 No available documentation.
 ") Closed;
-		static Standard_Boolean Closed(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
+		static bool Closed(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::DeflectionOverEstimation ******/
-		/****** md5 signature: 0bf744c4fcd18221f07d9a8c4f62cb20 ******/
+		/****** md5 signature: f39785b0db63f119cb5fa234c72b33c9 ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
@@ -13412,13 +12386,13 @@ thePolygon: HLRBRep_ThePolygonOfInterCSurf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") DeflectionOverEstimation;
-		static Standard_Real DeflectionOverEstimation(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
+		static double DeflectionOverEstimation(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::Dump ******/
 		/****** md5 signature: f89d69a95c39305c09d9e3ff050f23a9 ******/
@@ -13439,7 +12413,7 @@ No available documentation.
 		static void Dump(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::EndOfSeg ******/
-		/****** md5 signature: 6f3f05b0e8fd64c1200cd86095e4a588 ******/
+		/****** md5 signature: 163edc50ede46ab4e6a02cc993f063cb ******/
 		%feature("compactdefaultargs") EndOfSeg;
 		%feature("autodoc", "
 Parameters
@@ -13455,10 +12429,10 @@ Description
 -----------
 Give the point of range Index in the Polygon.
 ") EndOfSeg;
-		static const gp_Pnt EndOfSeg(const HLRBRep_ThePolygonOfInterCSurf & thePolygon, const Standard_Integer Index);
+		static const gp_Pnt EndOfSeg(const HLRBRep_ThePolygonOfInterCSurf & thePolygon, const int Index);
 
 		/****** HLRBRep_ThePolygonToolOfInterCSurf::NbSegments ******/
-		/****** md5 signature: d176c4bd90c786c126613286e532eae4 ******/
+		/****** md5 signature: c4b18f68099ff28f6b057cd7efe228f2 ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "
 Parameters
@@ -13473,7 +12447,7 @@ Description
 -----------
 No available documentation.
 ") NbSegments;
-		static Standard_Integer NbSegments(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
+		static int NbSegments(const HLRBRep_ThePolygonOfInterCSurf & thePolygon);
 
 };
 
@@ -13493,7 +12467,7 @@ No available documentation.
 class HLRBRep_ThePolyhedronToolOfInterCSurf {
 	public:
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::Bounding ******/
-		/****** md5 signature: dadf7ad2951be8c787a119fcb63ae887 ******/
+		/****** md5 signature: 079b8231d003b809a405ec805e811a2d ******/
 		%feature("compactdefaultargs") Bounding;
 		%feature("autodoc", "
 Parameters
@@ -13511,7 +12485,7 @@ Give the bounding box of the PolyhedronTool.
 		static const Bnd_Box & Bounding(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::ComponentsBounding ******/
-		/****** md5 signature: 5db00fc773feb22147eca6258b4688f6 ******/
+		/****** md5 signature: 903cf56ee81c8dfb40e274e1232d93be ******/
 		%feature("compactdefaultargs") ComponentsBounding;
 		%feature("autodoc", "
 Parameters
@@ -13520,16 +12494,16 @@ thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
 -------
-opencascade::handle<Bnd_HArray1OfBox>
+opencascade::handle<NCollection_HArray1<Bnd_Box>>
 
 Description
 -----------
 Give the array of boxes. The box <n> corresponding to the triangle <n>.
 ") ComponentsBounding;
-		static const opencascade::handle<Bnd_HArray1OfBox> & ComponentsBounding(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		static const opencascade::handle<NCollection_HArray1<Bnd_Box>> & ComponentsBounding(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::DeflectionOverEstimation ******/
-		/****** md5 signature: b23e8847ee8b23843b5cb969525baf23 ******/
+		/****** md5 signature: 7644aa1513e8f54d3733f922a92b2c5a ******/
 		%feature("compactdefaultargs") DeflectionOverEstimation;
 		%feature("autodoc", "
 Parameters
@@ -13538,13 +12512,13 @@ thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Give the tolerance of the polygon.
 ") DeflectionOverEstimation;
-		static Standard_Real DeflectionOverEstimation(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		static double DeflectionOverEstimation(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::Dump ******/
 		/****** md5 signature: 702ac1d12e6272a4d2ec3e61c1d32fbb ******/
@@ -13565,7 +12539,7 @@ No available documentation.
 		static void Dump(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::GetBorderDeflection ******/
-		/****** md5 signature: e6fbb19517eaae68e4d1fef6004cb753 ******/
+		/****** md5 signature: b3037db63f01648966d915d542278829 ******/
 		%feature("compactdefaultargs") GetBorderDeflection;
 		%feature("autodoc", "
 Parameters
@@ -13574,16 +12548,16 @@ thePolyh: HLRBRep_ThePolyhedronOfInterCSurf
 
 Return
 -------
-float
+double
 
 Description
 -----------
 This method returns a border deflection of the polyhedron.
 ") GetBorderDeflection;
-		static Standard_Real GetBorderDeflection(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		static double GetBorderDeflection(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::IsOnBound ******/
-		/****** md5 signature: 6c53cbb5e36d22da1872bca4c23234b5 ******/
+		/****** md5 signature: 1850315ce4e890fa2884785991646d6a ******/
 		%feature("compactdefaultargs") IsOnBound;
 		%feature("autodoc", "
 Parameters
@@ -13600,10 +12574,10 @@ Description
 -----------
 This method returns true if the edge based on points with indices Index1 and Index2 represents a boundary edge. It is necessary to take into account the boundary deflection for this edge.
 ") IsOnBound;
-		static Standard_Boolean IsOnBound(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Index1, const Standard_Integer Index2);
+		static bool IsOnBound(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const int Index1, const int Index2);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::NbTriangles ******/
-		/****** md5 signature: 8aae3d76f3218cae09710e3ea2158686 ******/
+		/****** md5 signature: f536bf30ca216a7ae1d86a048f83b532 ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "
 Parameters
@@ -13618,10 +12592,10 @@ Description
 -----------
 Give the number of triangles in this polyhedral surface.
 ") NbTriangles;
-		static Standard_Integer NbTriangles(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
+		static int NbTriangles(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::Point ******/
-		/****** md5 signature: 5674891cbaca4c7ce90a78a09fc4c54a ******/
+		/****** md5 signature: 4cd85babce542db081a0588b5b4aa998 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -13637,10 +12611,10 @@ Description
 -----------
 Give the point of index i in the polyhedral surface.
 ") Point;
-		static const gp_Pnt Point(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Index);
+		static const gp_Pnt Point(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const int Index);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::TriConnex ******/
-		/****** md5 signature: d041417e60bce37dbe8565dbf06d95a0 ******/
+		/****** md5 signature: 40bce82210649c0c3a95d3897118794a ******/
 		%feature("compactdefaultargs") TriConnex;
 		%feature("autodoc", "
 Parameters
@@ -13659,10 +12633,10 @@ Description
 -----------
 Give the address Tricon of the triangle connexe to the triangle of address Triang by the edge Pivot Pedge and the third point of this connexe triangle. When we are on a free edge TriCon==0 but the function return the value of the triangle in the other side of Pivot on the free edge. Used to turn around a vertex.
 ") TriConnex;
-		static Standard_Integer TriConnex(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Triang, const Standard_Integer Pivot, const Standard_Integer Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static int TriConnex(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const int Triang, const int Pivot, const int Pedge, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** HLRBRep_ThePolyhedronToolOfInterCSurf::Triangle ******/
-		/****** md5 signature: 422f3843c714b9be42ae9a1ee9b5b2e6 ******/
+		/****** md5 signature: 9b107b6b53bd8d1bde489d669e4dd1f3 ******/
 		%feature("compactdefaultargs") Triangle;
 		%feature("autodoc", "
 Parameters
@@ -13680,7 +12654,7 @@ Description
 -----------
 Give the indices of the 3 points of the triangle of address Index in the PolyhedronTool.
 ") Triangle;
-		static void Triangle(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void Triangle(const HLRBRep_ThePolyhedronOfInterCSurf & thePolyh, const int Index, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 };
 
@@ -13697,46 +12671,46 @@ Give the indices of the 3 points of the triangle of address Index in the Polyhed
 class HLRBRep_TheProjPCurOfCInter {
 	public:
 		/****** HLRBRep_TheProjPCurOfCInter::FindParameter ******/
-		/****** md5 signature: ece1816b3f28762e1d44b5aa074a236b ******/
+		/****** md5 signature: 74905bf035830eaf7962a4fa03be8e82 ******/
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 Pnt: gp_Pnt2d
-Tol: float
+Tol: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. In that case, no bounds are given. The research of the right parameter has to be made on the natural parametric domain of the curve.
 ") FindParameter;
-		static Standard_Real FindParameter(const Standard_Address & C, const gp_Pnt2d & Pnt, const Standard_Real Tol);
+		static double FindParameter(const HLRBRep_CurvePtr & C, const gp_Pnt2d & Pnt, const double Tol);
 
 		/****** HLRBRep_TheProjPCurOfCInter::FindParameter ******/
-		/****** md5 signature: 7a692a1a974abdb0d81ce6c269a9e2dc ******/
+		/****** md5 signature: 593526284e9953e7af9fea9baff4b0ad ******/
 		%feature("compactdefaultargs") FindParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-C: Standard_Address
+C: HLRBRep_CurvePtr
 Pnt: gp_Pnt2d
-LowParameter: float
-HighParameter: float
-Tol: float
+LowParameter: double
+HighParameter: double
+Tol: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter V of the point on the parametric curve corresponding to the Point Pnt. The Correspondence between Pnt and the point P(V) on the parametric curve must be coherent with the way of determination of the signed distance between a point and the implicit curve. Tol is the tolerance on the distance between a point and the parametrised curve. LowParameter and HighParameter give the boundaries of the interval in which the parameter certainly lies. These parameters are given to implement a more efficient algorithm. So, it is not necessary to check that the returned value verifies LowParameter <= Value <= HighParameter.
 ") FindParameter;
-		static Standard_Real FindParameter(const Standard_Address & C, const gp_Pnt2d & Pnt, const Standard_Real LowParameter, const Standard_Real HighParameter, const Standard_Real Tol);
+		static double FindParameter(const HLRBRep_CurvePtr & C, const gp_Pnt2d & Pnt, const double LowParameter, const double HighParameter, const double Tol);
 
 };
 
@@ -13753,12 +12727,12 @@ Returns the parameter V of the point on the parametric curve corresponding to th
 class HLRBRep_TheQuadCurvExactInterCSurf {
 	public:
 		/****** HLRBRep_TheQuadCurvExactInterCSurf::HLRBRep_TheQuadCurvExactInterCSurf ******/
-		/****** md5 signature: cbb3799ba29b24dbc7d64e6deede5e1b ******/
+		/****** md5 signature: c8ac28c84af9fbe57e57fa1792cc8e52 ******/
 		%feature("compactdefaultargs") HLRBRep_TheQuadCurvExactInterCSurf;
 		%feature("autodoc", "
 Parameters
 ----------
-S: Standard_Address
+S: HLRBRep_Surface *
 C: gp_Lin
 
 Return
@@ -13769,10 +12743,10 @@ Description
 -----------
 Provides the signed distance function: Q(w) and its first derivative dQ(w)/dw.
 ") HLRBRep_TheQuadCurvExactInterCSurf;
-		 HLRBRep_TheQuadCurvExactInterCSurf(const Standard_Address & S, const gp_Lin & C);
+		 HLRBRep_TheQuadCurvExactInterCSurf(HLRBRep_Surface * S, const gp_Lin & C);
 
 		/****** HLRBRep_TheQuadCurvExactInterCSurf::Intervals ******/
-		/****** md5 signature: a19f8bd23050233003b16b9179a07a15 ******/
+		/****** md5 signature: bdd6e5353d45148d8c089d86d60d9f07 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -13781,17 +12755,17 @@ Index: int
 
 Return
 -------
-U1: float
-U2: float
+U1: double
+U2: double
 
 Description
 -----------
 U1 and U2 are the parameters of a segment on the curve.
 ") Intervals;
-		void Intervals(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Intervals(const int Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** HLRBRep_TheQuadCurvExactInterCSurf::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -13801,10 +12775,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** HLRBRep_TheQuadCurvExactInterCSurf::NbIntervals ******/
-		/****** md5 signature: 64f54fde4d9752772b52d73d27261bcb ******/
+		/****** md5 signature: 487b014b9cd194c58d109502ca451d5e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -13814,10 +12788,10 @@ Description
 -----------
 No available documentation.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** HLRBRep_TheQuadCurvExactInterCSurf::NbRoots ******/
-		/****** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ******/
+		/****** md5 signature: fe443a1190b192943b5fddf45586a22a ******/
 		%feature("compactdefaultargs") NbRoots;
 		%feature("autodoc", "Return
 -------
@@ -13827,10 +12801,10 @@ Description
 -----------
 No available documentation.
 ") NbRoots;
-		Standard_Integer NbRoots();
+		int NbRoots();
 
 		/****** HLRBRep_TheQuadCurvExactInterCSurf::Root ******/
-		/****** md5 signature: 2e5be20bda2ce764c489750fb301f80e ******/
+		/****** md5 signature: 924d892bdccaf8b866e5773695c2abbb ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "
 Parameters
@@ -13839,13 +12813,13 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Root;
-		Standard_Real Root(const Standard_Integer Index);
+		double Root(const int Index);
 
 };
 
@@ -13881,59 +12855,59 @@ Create the function.
 		 HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf(const IntSurf_Quadric & Q, const gp_Lin & C);
 
 		/****** HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Derivative ******/
-		/****** md5 signature: f61c873331fa555e182f1973e95f59da ******/
+		/****** md5 signature: 9056fc5f695c62612651effc85cb18ad ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 Computes the derivative of the previous function at parameter Param. Derivative always returns True.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real Param, Standard_Real &OutValue);
+		bool Derivative(const double Param, Standard_Real &OutValue);
 
 		/****** HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Value ******/
-		/****** md5 signature: 96999dda9fe43560f6ec0c3dc2a0f930 ******/
+		/****** md5 signature: 92dd35931de1aecdc8277d063de13ec7 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 Computes the value of the signed distance between the implicit surface and the point at parameter Param on the parametrised curve. Value always returns True.
 ") Value;
-		Standard_Boolean Value(const Standard_Real Param, Standard_Real &OutValue);
+		bool Value(const double Param, Standard_Real &OutValue);
 
 		/****** HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf::Values ******/
-		/****** md5 signature: 30b6c9e0ecc359e02c44e042b54e6b7c ******/
+		/****** md5 signature: 03dca4b59c48db2ee672dd2d7904db60 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 Computes the value and the derivative of the function. returns True.
 ") Values;
-		Standard_Boolean Values(const Standard_Real Param, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double Param, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -13950,13 +12924,13 @@ Computes the value and the derivative of the function. returns True.
 class HLRBRep_VertexList {
 	public:
 		/****** HLRBRep_VertexList::HLRBRep_VertexList ******/
-		/****** md5 signature: 1088c64383a391d12d62657d4b5eba0e ******/
+		/****** md5 signature: 149964ddf0ef25797defa3871b4366d2 ******/
 		%feature("compactdefaultargs") HLRBRep_VertexList;
 		%feature("autodoc", "
 Parameters
 ----------
 T: HLRBRep_EdgeInterferenceTool
-I: HLRAlgo_ListIteratorOfInterferenceList
+I: NCollection_List<HLRAlgo_Interference >::Iterator
 
 Return
 -------
@@ -13966,7 +12940,7 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_VertexList;
-		 HLRBRep_VertexList(const HLRBRep_EdgeInterferenceTool & T, const HLRAlgo_ListIteratorOfInterferenceList & I);
+		 HLRBRep_VertexList(const HLRBRep_EdgeInterferenceTool & T, const NCollection_List<HLRAlgo_Interference >::Iterator & I);
 
 		/****** HLRBRep_VertexList::BoundaryTransition ******/
 		/****** md5 signature: 74f690bd95102dfac559cd0dc3a25347 ******/
@@ -13995,7 +12969,7 @@ Returns the current vertex.
 		const HLRAlgo_Intersection & Current();
 
 		/****** HLRBRep_VertexList::IsBoundary ******/
-		/****** md5 signature: 9d78e8db3d0caa05aa9a267c764c472e ******/
+		/****** md5 signature: e4571934dc233b1ff119256513384992 ******/
 		%feature("compactdefaultargs") IsBoundary;
 		%feature("autodoc", "Return
 -------
@@ -14005,10 +12979,10 @@ Description
 -----------
 Returns True if the current vertex is on the boundary of the edge.
 ") IsBoundary;
-		Standard_Boolean IsBoundary();
+		bool IsBoundary();
 
 		/****** HLRBRep_VertexList::IsInterference ******/
-		/****** md5 signature: 70cfb7482a8242c7b6f97a307bb277ee ******/
+		/****** md5 signature: 1c7f51e2a202946534099b00ee6668f5 ******/
 		%feature("compactdefaultargs") IsInterference;
 		%feature("autodoc", "Return
 -------
@@ -14018,10 +12992,10 @@ Description
 -----------
 Returns True if the current vertex is an interference.
 ") IsInterference;
-		Standard_Boolean IsInterference();
+		bool IsInterference();
 
 		/****** HLRBRep_VertexList::IsPeriodic ******/
-		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
+		/****** md5 signature: d36764d6f9b1283d23b2bfdabe28da79 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -14031,10 +13005,10 @@ Description
 -----------
 Returns True when the curve is periodic.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** HLRBRep_VertexList::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -14044,7 +13018,7 @@ Description
 -----------
 Returns True when there are more vertices.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** HLRBRep_VertexList::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -14131,7 +13105,7 @@ No available documentation.
 		 HLRBRep_Algo(const opencascade::handle<HLRBRep_Algo> & A);
 
 		/****** HLRBRep_Algo::Add ******/
-		/****** md5 signature: 6379c0d305ee414dfad782cb1da8368d ******/
+		/****** md5 signature: 31e49493aedb73f33bb94c9b5e8f5cf8 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -14148,10 +13122,10 @@ Description
 -----------
 add the Shape <S>.
 ") Add;
-		void Add(const TopoDS_Shape & S, const opencascade::handle<Standard_Transient> & SData, const Standard_Integer nbIso = 0);
+		void Add(const TopoDS_Shape & S, const opencascade::handle<Standard_Transient> & SData, const int nbIso = 0);
 
 		/****** HLRBRep_Algo::Add ******/
-		/****** md5 signature: 77b1d033995ab33411a6e2d6d031ec01 ******/
+		/****** md5 signature: 9d48633e9bb1d8af902c520f02873490 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -14167,10 +13141,10 @@ Description
 -----------
 Adds the shape S to this framework, and specifies the number of isoparameters nbiso desired in visualizing S. You may add as many shapes as you wish. Use the function Add once for each shape.
 ") Add;
-		void Add(const TopoDS_Shape & S, const Standard_Integer nbIso = 0);
+		void Add(const TopoDS_Shape & S, const int nbIso = 0);
 
 		/****** HLRBRep_Algo::Index ******/
-		/****** md5 signature: 608bba99c3bb7818dd553bf28d6b3a79 ******/
+		/****** md5 signature: 2139bdf884d3c0cf5f249928e8b38d94 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -14185,7 +13159,7 @@ Description
 -----------
 return the index of the Shape <S> and return 0 if the Shape <S> is not found.
 ") Index;
-		Standard_Integer Index(const TopoDS_Shape & S);
+		int Index(const TopoDS_Shape & S);
 
 		/****** HLRBRep_Algo::OutLinedShapeNullify ******/
 		/****** md5 signature: 038d68d7b4c4de233e55ad5d723e4ec9 ******/
@@ -14662,6 +13636,10 @@ def HLRBRep_LineTool_PolesAndWeights(*args):
 @deprecated
 def HLRBRep_LineTool_Resolution(*args):
 	return HLRBRep_LineTool.Resolution(*args)
+
+@deprecated
+def HLRBRep_LineTool_SamplePars(*args):
+	return HLRBRep_LineTool.SamplePars(*args)
 
 @deprecated
 def HLRBRep_LineTool_SamplePars(*args):

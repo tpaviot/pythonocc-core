@@ -130,17 +130,17 @@ No available documentation.
 		 XCAFView_Object(const opencascade::handle<XCAFView_Object> & theObj);
 
 		/****** XCAFView_Object::BackPlaneDistance ******/
-		/****** md5 signature: c1c25d1808cea203dfc63ffc325003b3 ******/
+		/****** md5 signature: 7148b5f863761651642e1ca9178d0a21 ******/
 		%feature("compactdefaultargs") BackPlaneDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") BackPlaneDistance;
-		Standard_Real BackPlaneDistance();
+		double BackPlaneDistance();
 
 		/****** XCAFView_Object::ClippingExpression ******/
 		/****** md5 signature: e45478706e1196e137725a20cefd9687 ******/
@@ -156,7 +156,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> ClippingExpression();
 
 		/****** XCAFView_Object::CreateGDTPoints ******/
-		/****** md5 signature: d124bf536f975261e19a6f1e118ac509 ******/
+		/****** md5 signature: 3585985071a93fbd303d83c0dab6688c ******/
 		%feature("compactdefaultargs") CreateGDTPoints;
 		%feature("autodoc", "
 Parameters
@@ -171,23 +171,23 @@ Description
 -----------
 No available documentation.
 ") CreateGDTPoints;
-		void CreateGDTPoints(const Standard_Integer theLenght);
+		void CreateGDTPoints(const int theLenght);
 
 		/****** XCAFView_Object::FrontPlaneDistance ******/
-		/****** md5 signature: 46b64b674ae4f0d138a3933e44b5a504 ******/
+		/****** md5 signature: ee28f1561fd6c442260a8018d1536d82 ******/
 		%feature("compactdefaultargs") FrontPlaneDistance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FrontPlaneDistance;
-		Standard_Real FrontPlaneDistance();
+		double FrontPlaneDistance();
 
 		/****** XCAFView_Object::GDTPoint ******/
-		/****** md5 signature: 07b7df86a4b242da9ab06a2f83eab29d ******/
+		/****** md5 signature: 967b48da8f0cc2d4f06a7b3d0e3245c3 ******/
 		%feature("compactdefaultargs") GDTPoint;
 		%feature("autodoc", "
 Parameters
@@ -202,10 +202,10 @@ Description
 -----------
 No available documentation.
 ") GDTPoint;
-		gp_Pnt GDTPoint(const Standard_Integer theIndex);
+		gp_Pnt GDTPoint(const int theIndex);
 
 		/****** XCAFView_Object::HasBackPlaneClipping ******/
-		/****** md5 signature: ecc9f51e5c54049b8180bc3d82fecd3c ******/
+		/****** md5 signature: 4c791c5f88ec6a0c9ecefb678505143f ******/
 		%feature("compactdefaultargs") HasBackPlaneClipping;
 		%feature("autodoc", "Return
 -------
@@ -215,10 +215,10 @@ Description
 -----------
 No available documentation.
 ") HasBackPlaneClipping;
-		Standard_Boolean HasBackPlaneClipping();
+		bool HasBackPlaneClipping();
 
 		/****** XCAFView_Object::HasFrontPlaneClipping ******/
-		/****** md5 signature: a3e22d2f9ba08e42c94401138774b26e ******/
+		/****** md5 signature: 7547768de939a2e5fa88f0ca1d8546dc ******/
 		%feature("compactdefaultargs") HasFrontPlaneClipping;
 		%feature("autodoc", "Return
 -------
@@ -228,10 +228,10 @@ Description
 -----------
 No available documentation.
 ") HasFrontPlaneClipping;
-		Standard_Boolean HasFrontPlaneClipping();
+		bool HasFrontPlaneClipping();
 
 		/****** XCAFView_Object::HasGDTPoints ******/
-		/****** md5 signature: 18e8604b8670eafae4689f3bcb664edb ******/
+		/****** md5 signature: feb3a16979ec6f0f19144136b0deb638 ******/
 		%feature("compactdefaultargs") HasGDTPoints;
 		%feature("autodoc", "Return
 -------
@@ -241,10 +241,10 @@ Description
 -----------
 No available documentation.
 ") HasGDTPoints;
-		Standard_Boolean HasGDTPoints();
+		bool HasGDTPoints();
 
 		/****** XCAFView_Object::HasViewVolumeSidesClipping ******/
-		/****** md5 signature: c6a4308226e4aae2e161c2fae714018a ******/
+		/****** md5 signature: 68a58a3687d3b6137e2129de674fcde4 ******/
 		%feature("compactdefaultargs") HasViewVolumeSidesClipping;
 		%feature("autodoc", "Return
 -------
@@ -254,7 +254,7 @@ Description
 -----------
 No available documentation.
 ") HasViewVolumeSidesClipping;
-		Standard_Boolean HasViewVolumeSidesClipping();
+		bool HasViewVolumeSidesClipping();
 
 		/****** XCAFView_Object::Name ******/
 		/****** md5 signature: a2f16cf431bd3ce387ff8e8fc2eeffe1 ******/
@@ -270,7 +270,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** XCAFView_Object::NbGDTPoints ******/
-		/****** md5 signature: a5494b7b540b3c6bd6cbbe02319a6eeb ******/
+		/****** md5 signature: 3a7a86701dcec1dec855c6284e770bd7 ******/
 		%feature("compactdefaultargs") NbGDTPoints;
 		%feature("autodoc", "Return
 -------
@@ -280,7 +280,7 @@ Description
 -----------
 No available documentation.
 ") NbGDTPoints;
-		Standard_Integer NbGDTPoints();
+		int NbGDTPoints();
 
 		/****** XCAFView_Object::ProjectionPoint ******/
 		/****** md5 signature: c85ce9f39d341a982dc7b405825f2581 ******/
@@ -296,12 +296,12 @@ No available documentation.
 		gp_Pnt ProjectionPoint();
 
 		/****** XCAFView_Object::SetBackPlaneDistance ******/
-		/****** md5 signature: 5e87ab6fe25726e46af15c428a6bd268 ******/
+		/****** md5 signature: d3ef63e4235a6420b8f74a808ce2d417 ******/
 		%feature("compactdefaultargs") SetBackPlaneDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-theDistance: float
+theDistance: double
 
 Return
 -------
@@ -311,7 +311,7 @@ Description
 -----------
 No available documentation.
 ") SetBackPlaneDistance;
-		void SetBackPlaneDistance(Standard_Real theDistance);
+		void SetBackPlaneDistance(double theDistance);
 
 		/****** XCAFView_Object::SetClippingExpression ******/
 		/****** md5 signature: b789225cb90d8555ec9c0d4ceb58f915 ******/
@@ -332,12 +332,12 @@ No available documentation.
 		void SetClippingExpression(opencascade::handle<TCollection_HAsciiString > theExpression);
 
 		/****** XCAFView_Object::SetFrontPlaneDistance ******/
-		/****** md5 signature: 443b1317d6f4077efa5428592305573d ******/
+		/****** md5 signature: 1adc1e1d8f8eb899e05dcf0f9a9a188d ******/
 		%feature("compactdefaultargs") SetFrontPlaneDistance;
 		%feature("autodoc", "
 Parameters
 ----------
-theDistance: float
+theDistance: double
 
 Return
 -------
@@ -347,10 +347,10 @@ Description
 -----------
 No available documentation.
 ") SetFrontPlaneDistance;
-		void SetFrontPlaneDistance(Standard_Real theDistance);
+		void SetFrontPlaneDistance(double theDistance);
 
 		/****** XCAFView_Object::SetGDTPoint ******/
-		/****** md5 signature: 3dee4280a8434a0d76707dbe5f8b7819 ******/
+		/****** md5 signature: b2af18edf946eeeb1cc265acb1f5441e ******/
 		%feature("compactdefaultargs") SetGDTPoint;
 		%feature("autodoc", "
 Parameters
@@ -366,7 +366,7 @@ Description
 -----------
 No available documentation.
 ") SetGDTPoint;
-		void SetGDTPoint(const Standard_Integer theIndex, const gp_Pnt & thePoint);
+		void SetGDTPoint(const int theIndex, const gp_Pnt & thePoint);
 
 		/****** XCAFView_Object::SetName ******/
 		/****** md5 signature: 5a1093e3141e426b70566411902bc345 ******/
@@ -459,7 +459,7 @@ No available documentation.
 		void SetViewDirection(const gp_Dir & theDirection);
 
 		/****** XCAFView_Object::SetViewVolumeSidesClipping ******/
-		/****** md5 signature: 8e109040f01baed9ca80d38d53a8743b ******/
+		/****** md5 signature: fa0f56910724cdeab5a9879d404337df ******/
 		%feature("compactdefaultargs") SetViewVolumeSidesClipping;
 		%feature("autodoc", "
 Parameters
@@ -474,15 +474,15 @@ Description
 -----------
 No available documentation.
 ") SetViewVolumeSidesClipping;
-		void SetViewVolumeSidesClipping(Standard_Boolean theViewVolumeSidesClipping);
+		void SetViewVolumeSidesClipping(bool theViewVolumeSidesClipping);
 
 		/****** XCAFView_Object::SetWindowHorizontalSize ******/
-		/****** md5 signature: 42c3fca900471278cb988aa4a0f4205d ******/
+		/****** md5 signature: eef94cdebdc8eda1416e9b18cc2d19f7 ******/
 		%feature("compactdefaultargs") SetWindowHorizontalSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -492,15 +492,15 @@ Description
 -----------
 No available documentation.
 ") SetWindowHorizontalSize;
-		void SetWindowHorizontalSize(Standard_Real theSize);
+		void SetWindowHorizontalSize(double theSize);
 
 		/****** XCAFView_Object::SetWindowVerticalSize ******/
-		/****** md5 signature: e0fc956b19454b156da6371c5775699b ******/
+		/****** md5 signature: 437f0adc0f9a5dc2c0afe12c186ae859 ******/
 		%feature("compactdefaultargs") SetWindowVerticalSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -510,15 +510,15 @@ Description
 -----------
 No available documentation.
 ") SetWindowVerticalSize;
-		void SetWindowVerticalSize(Standard_Real theSize);
+		void SetWindowVerticalSize(double theSize);
 
 		/****** XCAFView_Object::SetZoomFactor ******/
-		/****** md5 signature: 1b1c2f60b468087057daf9984dce5697 ******/
+		/****** md5 signature: 422c7b7c5a32ca0a56102e5da7be2e68 ******/
 		%feature("compactdefaultargs") SetZoomFactor;
 		%feature("autodoc", "
 Parameters
 ----------
-theZoomFactor: float
+theZoomFactor: double
 
 Return
 -------
@@ -528,7 +528,7 @@ Description
 -----------
 No available documentation.
 ") SetZoomFactor;
-		void SetZoomFactor(Standard_Real theZoomFactor);
+		void SetZoomFactor(double theZoomFactor);
 
 		/****** XCAFView_Object::Type ******/
 		/****** md5 signature: 32aa483fbc3733810fa598642ebbd7a6 ******/
@@ -596,43 +596,43 @@ No available documentation.
 		gp_Dir ViewDirection();
 
 		/****** XCAFView_Object::WindowHorizontalSize ******/
-		/****** md5 signature: 54afb51de6fb2f5b86db9ff4102ffbca ******/
+		/****** md5 signature: 291e22a884ebae42d869b5b3246e8162 ******/
 		%feature("compactdefaultargs") WindowHorizontalSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") WindowHorizontalSize;
-		Standard_Real WindowHorizontalSize();
+		double WindowHorizontalSize();
 
 		/****** XCAFView_Object::WindowVerticalSize ******/
-		/****** md5 signature: 5c230d606147b30d953d21382aadf8bf ******/
+		/****** md5 signature: 0e1cd6cc839cbb266fa314b1e0b5ea9a ******/
 		%feature("compactdefaultargs") WindowVerticalSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") WindowVerticalSize;
-		Standard_Real WindowVerticalSize();
+		double WindowVerticalSize();
 
 		/****** XCAFView_Object::ZoomFactor ******/
-		/****** md5 signature: b045662a2fb19f056c34656290eccae4 ******/
+		/****** md5 signature: 72108e802f11e6ec5a7ff36e77d257dd ******/
 		%feature("compactdefaultargs") ZoomFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ZoomFactor;
-		Standard_Real ZoomFactor();
+		double ZoomFactor();
 
 };
 

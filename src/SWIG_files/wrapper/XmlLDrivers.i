@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlldrivers.html"
 #include<PCDM_module.hxx>
 #include<CDM_module.hxx>
 #include<Storage_module.hxx>
+#include<Message_module.hxx>
 #include<Resource_module.hxx>
 #include<TDF_module.hxx>
 #include<CDF_module.hxx>
@@ -221,7 +222,7 @@ No available documentation.
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** XmlLDrivers_DocumentRetrievalDriver::Read ******/
-		/****** md5 signature: d00a6a8efb84379816422604bd70ebf9 ******/
+		/****** md5 signature: 884b498075b3d43f639bf812e1480b4d ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -240,10 +241,10 @@ Description
 -----------
 No available documentation.
 ") Read;
-		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** XmlLDrivers_DocumentRetrievalDriver::Read ******/
-		/****** md5 signature: 4a77300577377854b68d84da8ab8bdf0 ******/
+		/****** md5 signature: 832118b6dda8f7a976d2afbdf2a2b12a ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -263,7 +264,7 @@ Description
 -----------
 No available documentation.
 ") Read;
-		virtual void Read(std::istream & theIStream, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Read(std::istream & theIStream, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -318,7 +319,7 @@ No available documentation.
 		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** XmlLDrivers_DocumentStorageDriver::Write ******/
-		/****** md5 signature: 3ba5a4920118cfb01ca7cb6e94265c60 ******/
+		/****** md5 signature: 69a547e77ce587467ca6d7a568020f37 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -335,10 +336,10 @@ Description
 -----------
 No available documentation.
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** XmlLDrivers_DocumentStorageDriver::Write ******/
-		/****** md5 signature: 1593005190d18463c833b2c78ffb13a5 ******/
+		/****** md5 signature: fdad5cba7a4895609c31fa31d44e9eb7 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -354,7 +355,7 @@ Description
 -----------
 No available documentation.
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

@@ -119,7 +119,7 @@ Constructor.
 		 HLRAppli_ReflectLines(const TopoDS_Shape & aShape);
 
 		/****** HLRAppli_ReflectLines::GetCompoundOf3dEdges ******/
-		/****** md5 signature: 56814c9f5f74fb78cdeb6b9ce73f3eda ******/
+		/****** md5 signature: 4f4bff8188bb5248eb142f2190b1b6f0 ******/
 		%feature("compactdefaultargs") GetCompoundOf3dEdges;
 		%feature("autodoc", "
 Parameters
@@ -136,7 +136,7 @@ Description
 -----------
 returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
 ") GetCompoundOf3dEdges;
-		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
+		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const bool visible, const bool In3d);
 
 		/****** HLRAppli_ReflectLines::GetResult ******/
 		/****** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ******/
@@ -165,20 +165,20 @@ No available documentation.
 		void Perform();
 
 		/****** HLRAppli_ReflectLines::SetAxes ******/
-		/****** md5 signature: 4220cc44329eacefbd57c3d09a70953f ******/
+		/****** md5 signature: 871c065b48b1263f877e249febe8389d ******/
 		%feature("compactdefaultargs") SetAxes;
 		%feature("autodoc", "
 Parameters
 ----------
-Nx: float
-Ny: float
-Nz: float
-XAt: float
-YAt: float
-ZAt: float
-XUp: float
-YUp: float
-ZUp: float
+Nx: double
+Ny: double
+Nz: double
+XAt: double
+YAt: double
+ZAt: double
+XUp: double
+YUp: double
+ZUp: double
 
 Return
 -------
@@ -188,7 +188,7 @@ Description
 -----------
 Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 ") SetAxes;
-		void SetAxes(const Standard_Real Nx, const Standard_Real Ny, const Standard_Real Nz, const Standard_Real XAt, const Standard_Real YAt, const Standard_Real ZAt, const Standard_Real XUp, const Standard_Real YUp, const Standard_Real ZUp);
+		void SetAxes(const double Nx, const double Ny, const double Nz, const double XAt, const double YAt, const double ZAt, const double XUp, const double YUp, const double ZUp);
 
 };
 

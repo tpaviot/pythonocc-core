@@ -21,9 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<BRepOffset.hxx>
 #include<BRepOffset_Analyse.hxx>
-#include<BRepOffset_DataMapIteratorOfDataMapOfShapeListOfInterval.hxx>
-#include<BRepOffset_DataMapIteratorOfDataMapOfShapeMapOfShape.hxx>
-#include<BRepOffset_DataMapIteratorOfDataMapOfShapeOffset.hxx>
 #include<BRepOffset_DataMapOfShapeListOfInterval.hxx>
 #include<BRepOffset_DataMapOfShapeMapOfShape.hxx>
 #include<BRepOffset_DataMapOfShapeOffset.hxx>
@@ -31,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepOffset_Inter2d.hxx>
 #include<BRepOffset_Inter3d.hxx>
 #include<BRepOffset_Interval.hxx>
-#include<BRepOffset_ListIteratorOfListOfInterval.hxx>
 #include<BRepOffset_ListOfInterval.hxx>
 #include<BRepOffset_MakeLoops.hxx>
 #include<BRepOffset_MakeOffset.hxx>

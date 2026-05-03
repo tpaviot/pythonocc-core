@@ -194,12 +194,12 @@ Constructs a qualified circle so that the solution computed by a construction al
 		static GccEnt_QualifiedCirc Outside(const gp_Circ2d & Obj);
 
 		/****** GccEnt::PositionFromString ******/
-		/****** md5 signature: e2985af88fe658e2f60183dfd16121c5 ******/
+		/****** md5 signature: 5ec4b86db06a9506b0f6185aa77680aa ******/
 		%feature("compactdefaultargs") PositionFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-thePositionString: str
+thePositionString: char *
 
 Return
 -------
@@ -211,15 +211,15 @@ Returns the position from the given string identifier (using case-insensitive co
 Parameter thePositionString string identifier 
 Return: position or GccEnt_unqualified if string identifier is invalid.
 ") PositionFromString;
-		static GccEnt_Position PositionFromString(Standard_CString thePositionString);
+		static GccEnt_Position PositionFromString(const char * thePositionString);
 
 		/****** GccEnt::PositionFromString ******/
-		/****** md5 signature: abba1dd8002a1fb52e2f5e4bcffaf233 ******/
+		/****** md5 signature: 108f73480d329bc92349fb28de23f834 ******/
 		%feature("compactdefaultargs") PositionFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-thePositionString: str
+thePositionString: char *
 
 Return
 -------
@@ -232,10 +232,10 @@ Parameter thePositionString string identifier
 Parameter thePosition detected shape type 
 Return: True if string identifier is known.
 ") PositionFromString;
-		static Standard_Boolean PositionFromString(Standard_CString thePositionString, GccEnt_Position &OutValue);
+		static bool PositionFromString(const char * thePositionString, GccEnt_Position &OutValue);
 
 		/****** GccEnt::PositionToString ******/
-		/****** md5 signature: aa141e44eefa2445ec255edf68a240f8 ******/
+		/****** md5 signature: ff8a2a4a365a98460ac0d449673cf4ea ******/
 		%feature("compactdefaultargs") PositionToString;
 		%feature("autodoc", "
 Parameters
@@ -244,7 +244,7 @@ thePosition: GccEnt_Position
 
 Return
 -------
-str
+char *
 
 Description
 -----------
@@ -252,7 +252,7 @@ Returns the string name for a given position.
 Parameter thePosition position type 
 Return: string identifier from the list UNQUALIFIED ENCLOSING ENCLOSED OUTSIDE NOQUALIFIER.
 ") PositionToString;
-		static Standard_CString PositionToString(GccEnt_Position thePosition);
+		static const char * PositionToString(GccEnt_Position thePosition);
 
 		/****** GccEnt::Print ******/
 		/****** md5 signature: 068a92268570b76299d24afa3d55cb04 ******/
@@ -342,7 +342,7 @@ Constructs a qualified circle by assigning the qualifier Qualifier to the circle
 		 GccEnt_QualifiedCirc(const gp_Circ2d & Qualified, const GccEnt_Position Qualifier);
 
 		/****** GccEnt_QualifiedCirc::IsEnclosed ******/
-		/****** md5 signature: 45892abc71e6706d0123e0e4d633ba95 ******/
+		/****** md5 signature: ef26e2deb15a92ace2f64c92e97787b7 ******/
 		%feature("compactdefaultargs") IsEnclosed;
 		%feature("autodoc", "Return
 -------
@@ -352,10 +352,10 @@ Description
 -----------
 Returns true if the solution computed by a construction algorithm using this qualified circle is enclosed by the circle.
 ") IsEnclosed;
-		Standard_Boolean IsEnclosed();
+		bool IsEnclosed();
 
 		/****** GccEnt_QualifiedCirc::IsEnclosing ******/
-		/****** md5 signature: 2dee7352cea3c4cdf49bf45e40b9bb81 ******/
+		/****** md5 signature: 9e4997d6c35ccbe37e40929c148852e6 ******/
 		%feature("compactdefaultargs") IsEnclosing;
 		%feature("autodoc", "Return
 -------
@@ -365,10 +365,10 @@ Description
 -----------
 Returns true if the solution computed by a construction algorithm using this qualified circle encloses the circle.
 ") IsEnclosing;
-		Standard_Boolean IsEnclosing();
+		bool IsEnclosing();
 
 		/****** GccEnt_QualifiedCirc::IsOutside ******/
-		/****** md5 signature: eb4bed37983c817330f6fd1606071b40 ******/
+		/****** md5 signature: f10d4830bab55e135eafa51fff8b43bc ******/
 		%feature("compactdefaultargs") IsOutside;
 		%feature("autodoc", "Return
 -------
@@ -378,10 +378,10 @@ Description
 -----------
 Returns true if both the solution computed by a construction algorithm using this qualified circle and the circle are external to one another.
 ") IsOutside;
-		Standard_Boolean IsOutside();
+		bool IsOutside();
 
 		/****** GccEnt_QualifiedCirc::IsUnqualified ******/
-		/****** md5 signature: 120b56104ac838e1b5ac8da1aa14546c ******/
+		/****** md5 signature: 64ad1926e7a83fc1d36ac5f883984b24 ******/
 		%feature("compactdefaultargs") IsUnqualified;
 		%feature("autodoc", "Return
 -------
@@ -391,7 +391,7 @@ Description
 -----------
 Returns true if the Circ2d is Unqualified and false in the other cases.
 ") IsUnqualified;
-		Standard_Boolean IsUnqualified();
+		bool IsUnqualified();
 
 		/****** GccEnt_QualifiedCirc::Qualified ******/
 		/****** md5 signature: 6bd1544d27e5fbf78adae8bc691f55a4 ******/
@@ -453,7 +453,7 @@ Constructs a qualified line by assigning the qualifier Qualifier to the line Qua
 		 GccEnt_QualifiedLin(const gp_Lin2d & Qualified, const GccEnt_Position Qualifier);
 
 		/****** GccEnt_QualifiedLin::IsEnclosed ******/
-		/****** md5 signature: 45892abc71e6706d0123e0e4d633ba95 ******/
+		/****** md5 signature: ef26e2deb15a92ace2f64c92e97787b7 ******/
 		%feature("compactdefaultargs") IsEnclosed;
 		%feature("autodoc", "Return
 -------
@@ -463,10 +463,10 @@ Description
 -----------
 Returns true if the solution is Enclosed in the Lin2d and false in the other cases.
 ") IsEnclosed;
-		Standard_Boolean IsEnclosed();
+		bool IsEnclosed();
 
 		/****** GccEnt_QualifiedLin::IsOutside ******/
-		/****** md5 signature: eb4bed37983c817330f6fd1606071b40 ******/
+		/****** md5 signature: f10d4830bab55e135eafa51fff8b43bc ******/
 		%feature("compactdefaultargs") IsOutside;
 		%feature("autodoc", "Return
 -------
@@ -476,10 +476,10 @@ Description
 -----------
 Returns true if the solution is Outside the Lin2d and false in the other cases.
 ") IsOutside;
-		Standard_Boolean IsOutside();
+		bool IsOutside();
 
 		/****** GccEnt_QualifiedLin::IsUnqualified ******/
-		/****** md5 signature: 120b56104ac838e1b5ac8da1aa14546c ******/
+		/****** md5 signature: 64ad1926e7a83fc1d36ac5f883984b24 ******/
 		%feature("compactdefaultargs") IsUnqualified;
 		%feature("autodoc", "Return
 -------
@@ -489,7 +489,7 @@ Description
 -----------
 Returns true if the solution is unqualified and false in the other cases.
 ") IsUnqualified;
-		Standard_Boolean IsUnqualified();
+		bool IsUnqualified();
 
 		/****** GccEnt_QualifiedLin::Qualified ******/
 		/****** md5 signature: b405d75064c2d774c9b819791d4f2f59 ******/

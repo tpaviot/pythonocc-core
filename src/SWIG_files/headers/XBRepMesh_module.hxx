@@ -19,6 +19,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define XBREPMESH_HXX
 
 
-#include<XBRepMesh.hxx>
+#include<XBRepMesh_Factory.hxx>
 
 #endif // XBREPMESH_HXX

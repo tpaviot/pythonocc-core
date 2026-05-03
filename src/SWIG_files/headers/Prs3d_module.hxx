@@ -47,7 +47,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Prs3d_PresentationShadow.hxx>
 #include<Prs3d_Root.hxx>
 #include<Prs3d_ShadingAspect.hxx>
-#include<Prs3d_ShapeTool.hxx>
 #include<Prs3d_Text.hxx>
 #include<Prs3d_TextAspect.hxx>
 #include<Prs3d_ToolCylinder.hxx>

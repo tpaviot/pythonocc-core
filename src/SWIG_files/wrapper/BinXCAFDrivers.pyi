@@ -8,6 +8,7 @@ from OCC.Core.BinMDF import *
 from OCC.Core.TDocStd import *
 from OCC.Core.BinDrivers import *
 
+
 class binxcafdrivers:
     @staticmethod
     def AttributeDrivers(MsgDrv: Message_Messenger) -> BinMDF_ADriverTable: ...
@@ -18,16 +19,13 @@ class binxcafdrivers:
 
 class BinXCAFDrivers_DocumentRetrievalDriver(BinDrivers_DocumentRetrievalDriver):
     def __init__(self) -> None: ...
-    def AttributeDrivers(
-        self, theMsgDriver: Message_Messenger
-    ) -> BinMDF_ADriverTable: ...
+    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> BinMDF_ADriverTable: ...
 
 class BinXCAFDrivers_DocumentStorageDriver(BinDrivers_DocumentStorageDriver):
     def __init__(self) -> None: ...
-    def AttributeDrivers(
-        self, theMsgDriver: Message_Messenger
-    ) -> BinMDF_ADriverTable: ...
+    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> BinMDF_ADriverTable: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

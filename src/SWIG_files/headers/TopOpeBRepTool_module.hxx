@@ -27,14 +27,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepTool_CLASSI.hxx>
 #include<TopOpeBRepTool_CORRISO.hxx>
 #include<TopOpeBRepTool_CurveTool.hxx>
-#include<TopOpeBRepTool_DRAW.hxx>
-#include<TopOpeBRepTool_DataMapIteratorOfDataMapOfOrientedShapeC2DF.hxx>
-#include<TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeListOfC2DF.hxx>
-#include<TopOpeBRepTool_DataMapIteratorOfDataMapOfShapeface.hxx>
 #include<TopOpeBRepTool_DataMapOfOrientedShapeC2DF.hxx>
 #include<TopOpeBRepTool_DataMapOfShapeListOfC2DF.hxx>
 #include<TopOpeBRepTool_DataMapOfShapeface.hxx>
-#include<TopOpeBRepTool_EXPORT.hxx>
 #include<TopOpeBRepTool_FuseEdges.hxx>
 #include<TopOpeBRepTool_GEOMETRY.hxx>
 #include<TopOpeBRepTool_GeomTool.hxx>
@@ -44,7 +39,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepTool_IndexedDataMapOfShapeconnexity.hxx>
 #include<TopOpeBRepTool_IndexedDataMapOfSolidClassifier.hxx>
 #include<TopOpeBRepTool_KRO.hxx>
-#include<TopOpeBRepTool_ListIteratorOfListOfC2DF.hxx>
 #include<TopOpeBRepTool_ListOfC2DF.hxx>
 #include<TopOpeBRepTool_OutCurveType.hxx>
 #include<TopOpeBRepTool_PROJECT.hxx>
@@ -65,7 +59,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepTool_TOPOLOGY.hxx>
 #include<TopOpeBRepTool_box.hxx>
 #include<TopOpeBRepTool_connexity.hxx>
-#include<TopOpeBRepTool_define.hxx>
 #include<TopOpeBRepTool_defineG.hxx>
 #include<TopOpeBRepTool_face.hxx>
 #include<TopOpeBRepTool_makeTransition.hxx>

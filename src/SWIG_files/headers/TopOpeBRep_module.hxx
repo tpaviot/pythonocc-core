@@ -23,9 +23,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRep_Array1OfLineInter.hxx>
 #include<TopOpeBRep_Array1OfVPointInter.hxx>
 #include<TopOpeBRep_Bipoint.hxx>
-#include<TopOpeBRep_DRAW.hxx>
 #include<TopOpeBRep_DSFiller.hxx>
-#include<TopOpeBRep_DataMapIteratorOfDataMapOfTopolTool.hxx>
 #include<TopOpeBRep_DataMapOfTopolTool.hxx>
 #include<TopOpeBRep_EdgesFiller.hxx>
 #include<TopOpeBRep_EdgesIntersector.hxx>
@@ -41,7 +39,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRep_Hctxee2d.hxx>
 #include<TopOpeBRep_Hctxff2d.hxx>
 #include<TopOpeBRep_LineInter.hxx>
-#include<TopOpeBRep_ListIteratorOfListOfBipoint.hxx>
 #include<TopOpeBRep_ListOfBipoint.hxx>
 #include<TopOpeBRep_P2Dstatus.hxx>
 #include<TopOpeBRep_PEdgesIntersector.hxx>

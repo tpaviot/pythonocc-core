@@ -50,7 +50,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepap209.html"
 #include<StepBasic_module.hxx>
 #include<StepFEA_module.hxx>
 #include<StepRepr_module.hxx>
-#include<StepElement_module.hxx>
 #include<StepShape_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
@@ -75,6 +74,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepap209.html"
 #include<PCDM_module.hxx>
 #include<CDF_module.hxx>
 #include<DE_module.hxx>
+#include<Aspect_module.hxx>
+#include<Graphic3d_module.hxx>
+#include<Media_module.hxx>
+#include<StepElement_module.hxx>
+#include<TDataStd_module.hxx>
+#include<XCAFDimTolObjects_module.hxx>
+#include<XCAFDoc_module.hxx>
+#include<XCAFNoteObjects_module.hxx>
+#include<XCAFView_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -88,7 +97,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepap209.html"
 %import StepBasic.i
 %import StepFEA.i
 %import StepRepr.i
-%import StepElement.i
 %import StepShape.i
 
 %pythoncode {
@@ -163,7 +171,7 @@ Create AP203 structure from existing AP209 structure.
 		opencascade::handle<StepData_StepModel> CreateAP203Structure();
 
 		/****** StepAP209_Construct::CreateAdding203Entities ******/
-		/****** md5 signature: 16d487d4c0b00005c1f486f3c3168055 ******/
+		/****** md5 signature: fe6ad6218dc12a83d0358b6853ba08f3 ******/
 		%feature("compactdefaultargs") CreateAdding203Entities;
 		%feature("autodoc", "
 Parameters
@@ -179,10 +187,10 @@ Description
 -----------
 Create approval.. , date.. , time.. , person.. and organization.. entities for 203 structure.
 ") CreateAdding203Entities;
-		Standard_Boolean CreateAdding203Entities(const opencascade::handle<StepBasic_ProductDefinition> & PD, opencascade::handle<StepData_StepModel> & aModel);
+		bool CreateAdding203Entities(const opencascade::handle<StepBasic_ProductDefinition> & PD, opencascade::handle<StepData_StepModel> & aModel);
 
 		/****** StepAP209_Construct::CreateAddingEntities ******/
-		/****** md5 signature: 379899097279dcaaad6c25583d5ad322 ******/
+		/****** md5 signature: 82fa8c04dd232979aecb73571a239eff ******/
 		%feature("compactdefaultargs") CreateAddingEntities;
 		%feature("autodoc", "
 Parameters
@@ -197,10 +205,10 @@ Description
 -----------
 Create approval.. , date.. , time.. , person.. and organization.. entities for analysis structure.
 ") CreateAddingEntities;
-		Standard_Boolean CreateAddingEntities(const opencascade::handle<StepBasic_ProductDefinition> & AnaPD);
+		bool CreateAddingEntities(const opencascade::handle<StepBasic_ProductDefinition> & AnaPD);
 
 		/****** StepAP209_Construct::CreateAnalysStructure ******/
-		/****** md5 signature: 2a1fa63576e9f3f65c0c020012b2c9bf ******/
+		/****** md5 signature: 64a3893c56f2d4ff5d576a37134fe302 ******/
 		%feature("compactdefaultargs") CreateAnalysStructure;
 		%feature("autodoc", "
 Parameters
@@ -215,10 +223,10 @@ Description
 -----------
 Create empty structure for idealized_analysis_shape.
 ") CreateAnalysStructure;
-		Standard_Boolean CreateAnalysStructure(const opencascade::handle<StepBasic_Product> & Prod);
+		bool CreateAnalysStructure(const opencascade::handle<StepBasic_Product> & Prod);
 
 		/****** StepAP209_Construct::CreateFeaStructure ******/
-		/****** md5 signature: ad3da0a69c813807ea9008ad6a3bf20e ******/
+		/****** md5 signature: c29f50198cc6a546fbfbe988f49b93bb ******/
 		%feature("compactdefaultargs") CreateFeaStructure;
 		%feature("autodoc", "
 Parameters
@@ -233,7 +241,7 @@ Description
 -----------
 Create fea structure.
 ") CreateFeaStructure;
-		Standard_Boolean CreateFeaStructure(const opencascade::handle<StepBasic_Product> & Prod);
+		bool CreateFeaStructure(const opencascade::handle<StepBasic_Product> & Prod);
 
 		/****** StepAP209_Construct::FeaModel ******/
 		/****** md5 signature: 271a7fbfb305174123bc442e095c38de ******/
@@ -308,7 +316,7 @@ No available documentation.
 		opencascade::handle<StepFEA_FeaModel> FeaModel(const opencascade::handle<StepBasic_ProductDefinition> & PD);
 
 		/****** StepAP209_Construct::GetCurElemSection ******/
-		/****** md5 signature: 8793f65138268728a25836f15f5ec56b ******/
+		/****** md5 signature: c094cb034ec456c136f70e46d74587a2 ******/
 		%feature("compactdefaultargs") GetCurElemSection;
 		%feature("autodoc", "
 Parameters
@@ -317,42 +325,42 @@ ElemRepr: StepFEA_Curve3dElementRepresentation
 
 Return
 -------
-opencascade::handle<StepElement_HSequenceOfCurveElementSectionDefinition>
+opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>>
 
 Description
 -----------
 Getting list of curve_element_section_definitions for given element_representation.
 ") GetCurElemSection;
-		opencascade::handle<StepElement_HSequenceOfCurveElementSectionDefinition> GetCurElemSection(const opencascade::handle<StepFEA_Curve3dElementRepresentation> & ElemRepr);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>> GetCurElemSection(const opencascade::handle<StepFEA_Curve3dElementRepresentation> & ElemRepr);
 
 		/****** StepAP209_Construct::GetElemGeomRelat ******/
-		/****** md5 signature: 9738449537adf9d384dce098a07a38ce ******/
+		/****** md5 signature: 4b911c9402ac712e73f7e960696dbb16 ******/
 		%feature("compactdefaultargs") GetElemGeomRelat;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepFEA_HSequenceOfElementGeometricRelationship>
+opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>>
 
 Description
 -----------
 No available documentation.
 ") GetElemGeomRelat;
-		opencascade::handle<StepFEA_HSequenceOfElementGeometricRelationship> GetElemGeomRelat();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>> GetElemGeomRelat();
 
 		/****** StepAP209_Construct::GetElementMaterial ******/
-		/****** md5 signature: 7f853ea5550eeb8bf9673fca41433180 ******/
+		/****** md5 signature: 83174d7bd78439c48aceed3d2b435e6a ******/
 		%feature("compactdefaultargs") GetElementMaterial;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepElement_HSequenceOfElementMaterial>
+opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>>
 
 Description
 -----------
 No available documentation.
 ") GetElementMaterial;
-		opencascade::handle<StepElement_HSequenceOfElementMaterial> GetElementMaterial();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_ElementMaterial>>> GetElementMaterial();
 
 		/****** StepAP209_Construct::GetElements1D ******/
-		/****** md5 signature: 39dfd133982ccff88de6ce0b77c815ba ******/
+		/****** md5 signature: d734a918be4e1acde26e90eda73dc5c6 ******/
 		%feature("compactdefaultargs") GetElements1D;
 		%feature("autodoc", "
 Parameters
@@ -361,16 +369,16 @@ theFeaModel: StepFEA_FeaModel
 
 Return
 -------
-opencascade::handle<StepFEA_HSequenceOfElementRepresentation>
+opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>
 
 Description
 -----------
 No available documentation.
 ") GetElements1D;
-		opencascade::handle<StepFEA_HSequenceOfElementRepresentation> GetElements1D(const opencascade::handle<StepFEA_FeaModel> & theFeaModel);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>> GetElements1D(const opencascade::handle<StepFEA_FeaModel> & theFeaModel);
 
 		/****** StepAP209_Construct::GetElements2D ******/
-		/****** md5 signature: 1bed16a5ca827738c86d0cc795798719 ******/
+		/****** md5 signature: 5f22cf08035eed734c1678541bf60ef8 ******/
 		%feature("compactdefaultargs") GetElements2D;
 		%feature("autodoc", "
 Parameters
@@ -379,16 +387,16 @@ theFEAModel: StepFEA_FeaModel
 
 Return
 -------
-opencascade::handle<StepFEA_HSequenceOfElementRepresentation>
+opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>
 
 Description
 -----------
 No available documentation.
 ") GetElements2D;
-		opencascade::handle<StepFEA_HSequenceOfElementRepresentation> GetElements2D(const opencascade::handle<StepFEA_FeaModel> & theFEAModel);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>> GetElements2D(const opencascade::handle<StepFEA_FeaModel> & theFEAModel);
 
 		/****** StepAP209_Construct::GetElements3D ******/
-		/****** md5 signature: 872e1fc86cdc57f90bc4650733b568e4 ******/
+		/****** md5 signature: 93ae7cfdf6f6dce29b29623acdc5701d ******/
 		%feature("compactdefaultargs") GetElements3D;
 		%feature("autodoc", "
 Parameters
@@ -397,13 +405,13 @@ theFEAModel: StepFEA_FeaModel
 
 Return
 -------
-opencascade::handle<StepFEA_HSequenceOfElementRepresentation>
+opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>>
 
 Description
 -----------
 No available documentation.
 ") GetElements3D;
-		opencascade::handle<StepFEA_HSequenceOfElementRepresentation> GetElements3D(const opencascade::handle<StepFEA_FeaModel> & theFEAModel);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<StepFEA_ElementRepresentation>>> GetElements3D(const opencascade::handle<StepFEA_FeaModel> & theFEAModel);
 
 		/****** StepAP209_Construct::GetFeaAxis2Placement3d ******/
 		/****** md5 signature: 57f6170698a465f3900024109d196ade ******/
@@ -514,7 +522,7 @@ No available documentation.
 		opencascade::handle<StepShape_ShapeRepresentation> IdealShape(const opencascade::handle<StepRepr_ProductDefinitionShape> & PDS);
 
 		/****** StepAP209_Construct::Init ******/
-		/****** md5 signature: a41268d32348bb8b355efce3731d2872 ******/
+		/****** md5 signature: 35c009f0bb66a209b4fd16f98bf3d766 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -529,10 +537,10 @@ Description
 -----------
 Initializes tool; returns True if succeeded.
 ") Init;
-		Standard_Boolean Init(const opencascade::handle<XSControl_WorkSession> & WS);
+		bool Init(const opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** StepAP209_Construct::IsAnalys ******/
-		/****** md5 signature: 96201d035b5e6cfb633e102668f8beaa ******/
+		/****** md5 signature: 9335ca7ea0bc76704c698a1ea188cc84 ******/
 		%feature("compactdefaultargs") IsAnalys;
 		%feature("autodoc", "
 Parameters
@@ -547,10 +555,10 @@ Description
 -----------
 No available documentation.
 ") IsAnalys;
-		Standard_Boolean IsAnalys(const opencascade::handle<StepBasic_ProductDefinitionFormation> & PD);
+		bool IsAnalys(const opencascade::handle<StepBasic_ProductDefinitionFormation> & PD);
 
 		/****** StepAP209_Construct::IsDesing ******/
-		/****** md5 signature: 0acd5c43708107040bab82bea1fd3896 ******/
+		/****** md5 signature: 1d3f7cc75a0bcc14ee7e1736ed6a1db9 ******/
 		%feature("compactdefaultargs") IsDesing;
 		%feature("autodoc", "
 Parameters
@@ -565,7 +573,7 @@ Description
 -----------
 No available documentation.
 ") IsDesing;
-		Standard_Boolean IsDesing(const opencascade::handle<StepBasic_ProductDefinitionFormation> & PD);
+		bool IsDesing(const opencascade::handle<StepBasic_ProductDefinitionFormation> & PD);
 
 		/****** StepAP209_Construct::NominShape ******/
 		/****** md5 signature: 0520c15d7f2b54b3f8365d372679de43 ******/
@@ -604,7 +612,7 @@ No available documentation.
 		opencascade::handle<StepShape_ShapeRepresentation> NominShape(const opencascade::handle<StepBasic_ProductDefinitionFormation> & PDF);
 
 		/****** StepAP209_Construct::ReplaceCcDesingToApplied ******/
-		/****** md5 signature: 3871c374ec849b26e0d58ff0a726b27a ******/
+		/****** md5 signature: a7754c62e9e2d7b452e4bfa96a830087 ******/
 		%feature("compactdefaultargs") ReplaceCcDesingToApplied;
 		%feature("autodoc", "Return
 -------
@@ -614,7 +622,7 @@ Description
 -----------
 Put into model entities Applied... for AP209 instead of entities CcDesing... from AP203.
 ") ReplaceCcDesingToApplied;
-		Standard_Boolean ReplaceCcDesingToApplied();
+		bool ReplaceCcDesingToApplied();
 
 };
 

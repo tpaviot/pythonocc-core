@@ -51,7 +51,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_steptogeom.html"
 #include<gp_module.hxx>
 #include<StepKinematics_module.hxx>
 #include<StepRepr_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<StepShape_module.hxx>
 #include<StepBasic_module.hxx>
@@ -77,7 +76,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_steptogeom.html"
 %import gp.i
 %import StepKinematics.i
 %import StepRepr.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -884,7 +882,7 @@ No available documentation.
 		static opencascade::handle<Geom_ToroidalSurface> MakeToroidalSurface(const opencascade::handle<StepGeom_ToroidalSurface> & SS, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** StepToGeom::MakeTransformation2d ******/
-		/****** md5 signature: f3bad887c1a8435b2c6db65a02f2dc7c ******/
+		/****** md5 signature: 0671ef3a3f488481fbe74b64e90a47f5 ******/
 		%feature("compactdefaultargs") MakeTransformation2d;
 		%feature("autodoc", "
 Parameters
@@ -901,10 +899,10 @@ Description
 -----------
 No available documentation.
 ") MakeTransformation2d;
-		static Standard_Boolean MakeTransformation2d(const opencascade::handle<StepGeom_CartesianTransformationOperator2d> & SCTO, gp_Trsf2d & CT, const StepData_Factors & theLocalFactors = StepData_Factors());
+		static bool MakeTransformation2d(const opencascade::handle<StepGeom_CartesianTransformationOperator2d> & SCTO, gp_Trsf2d & CT, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** StepToGeom::MakeTransformation3d ******/
-		/****** md5 signature: 3a293a1c721b6708c63a689594098171 ******/
+		/****** md5 signature: 9a669df1d6fffcedd4f3a7a5299965bf ******/
 		%feature("compactdefaultargs") MakeTransformation3d;
 		%feature("autodoc", "
 Parameters
@@ -921,7 +919,7 @@ Description
 -----------
 No available documentation.
 ") MakeTransformation3d;
-		static Standard_Boolean MakeTransformation3d(const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & SCTO, gp_Trsf & CT, const StepData_Factors & theLocalFactors = StepData_Factors());
+		static bool MakeTransformation3d(const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & SCTO, gp_Trsf & CT, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** StepToGeom::MakeTrimmedCurve ******/
 		/****** md5 signature: 19a2d95943c65f12986aef9b6066f798 ******/
@@ -999,7 +997,7 @@ No available documentation.
 		static opencascade::handle<Geom2d_VectorWithMagnitude> MakeVectorWithMagnitude2d(const opencascade::handle<StepGeom_Vector> & SV);
 
 		/****** StepToGeom::MakeYprRotation ******/
-		/****** md5 signature: de9dc847a92c9949d29654e63b9eb686 ******/
+		/****** md5 signature: d460b78e6bfe2c020915d31322900c25 ******/
 		%feature("compactdefaultargs") MakeYprRotation;
 		%feature("autodoc", "
 Parameters
@@ -1009,13 +1007,13 @@ theCntxt: StepRepr_GlobalUnitAssignedContext
 
 Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 No available documentation.
 ") MakeYprRotation;
-		static opencascade::handle<TColStd_HArray1OfReal> MakeYprRotation(const StepKinematics_SpatialRotation & SR, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & theCntxt);
+		static opencascade::handle<NCollection_HArray1<double>> MakeYprRotation(const StepKinematics_SpatialRotation & SR, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & theCntxt);
 
 };
 

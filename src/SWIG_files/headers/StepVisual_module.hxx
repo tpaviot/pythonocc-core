@@ -162,6 +162,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_SurfaceStyleFillArea.hxx>
 #include<StepVisual_SurfaceStyleParameterLine.hxx>
 #include<StepVisual_SurfaceStyleReflectanceAmbient.hxx>
+#include<StepVisual_SurfaceStyleReflectanceAmbientDiffuse.hxx>
+#include<StepVisual_SurfaceStyleReflectanceAmbientDiffuseSpecular.hxx>
 #include<StepVisual_SurfaceStyleRendering.hxx>
 #include<StepVisual_SurfaceStyleRenderingWithProperties.hxx>
 #include<StepVisual_SurfaceStyleSegmentationCurve.hxx>

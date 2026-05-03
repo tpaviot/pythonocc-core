@@ -76,12 +76,6 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = FEmTool_ListIteratorOfListOfVectors(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(FEmTool_SeqOfLinConstr) NCollection_Sequence<FEmTool_ListOfVectors>;
@@ -96,6 +90,7 @@ from OCC.Core.Exception import *
 
 /* typedefs */
 typedef NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>> FEmTool_AssemblyTable;
+typedef NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger>> FEmTool_HAssemblyTable;
 typedef NCollection_List<opencascade::handle<TColStd_HArray1OfReal>>::Iterator FEmTool_ListIteratorOfListOfVectors;
 typedef NCollection_List<opencascade::handle<TColStd_HArray1OfReal>> FEmTool_ListOfVectors;
 typedef NCollection_Sequence<FEmTool_ListOfVectors> FEmTool_SeqOfLinConstr;
@@ -170,15 +165,15 @@ class FEmTool_SparseMatrix:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
-class FEmTool_HAssemblyTable : public FEmTool_AssemblyTable, public Standard_Transient {
+class FEmTool_HAssemblyTable : public NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>, public Standard_Transient {
   public:
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const FEmTool_AssemblyTable::value_type& theValue);
-    FEmTool_HAssemblyTable(const FEmTool_AssemblyTable& theOther);
-    const FEmTool_AssemblyTable& Array2 ();
-    FEmTool_AssemblyTable& ChangeArray2 (); 
+               const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>::value_type& theValue);
+    FEmTool_HAssemblyTable(const NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>& theOther);
+    const NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>& Array2 ();
+    NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>& ChangeArray2 (); 
 };
 %make_alias(FEmTool_HAssemblyTable)
 

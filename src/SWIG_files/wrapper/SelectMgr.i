@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 #include<gp_module.hxx>
 #include<Select3D_module.hxx>
 #include<SelectBasics_module.hxx>
-#include<TColgp_module.hxx>
 #include<PrsMgr_module.hxx>
 #include<Aspect_module.hxx>
 #include<Prs3d_module.hxx>
@@ -57,7 +56,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<BVH_module.hxx>
-#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<TopTools_module.hxx>
 #include<Message_module.hxx>
@@ -96,7 +94,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 %import gp.i
 %import Select3D.i
 %import SelectBasics.i
-%import TColgp.i
 %import PrsMgr.i
 %import Aspect.i
 %import Prs3d.i
@@ -105,7 +102,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 %import TopAbs.i
 %import Bnd.i
 %import BVH.i
-%import TColStd.i
 %import TCollection.i
 
 %pythoncode {
@@ -245,21 +241,11 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
 /* end handles declaration */
 
 /* templates */
-%template(SelectMgr_FrustumCache) NCollection_DataMap<Standard_Integer,SelectMgr_SelectingVolumeManager>;
-
-%extend NCollection_DataMap<Standard_Integer,SelectMgr_SelectingVolumeManager> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (SelectMgr_FrustumCache::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
+%ignore NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,SelectMgr_SortCriterion>::Items;
+%ignore NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,SelectMgr_SortCriterion>::KeyValues;
+%ignore NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,SelectMgr_SortCriterion>::IndexedItems;
+%ignore NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,SelectMgr_SortCriterion>::Contained;
 %template(SelectMgr_IndexedDataMapOfOwnerCriterion) NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>,SelectMgr_SortCriterion>;
-%template(SelectMgr_IndexedMapOfHSensitive) NCollection_IndexedMap<opencascade::handle<SelectMgr_SensitiveEntity>>;
 %template(SelectMgr_ListIteratorOfListOfFilter) NCollection_TListIterator<opencascade::handle<SelectMgr_Filter>>;
 %template(SelectMgr_ListOfFilter) NCollection_List<opencascade::handle<SelectMgr_Filter>>;
 
@@ -267,24 +253,9 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = SelectMgr_ListIteratorOfListOfFilter(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
-%template(SelectMgr_MapOfOwners) NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>,Standard_Integer>;
-%template(SelectMgr_Mat4) NCollection_Mat4<Standard_Real>;
-%template(SelectMgr_SequenceOfOwner) NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>>;
-
-%extend NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
+%template(SelectMgr_Mat4) NCollection_Mat4<double>;
 %template(SelectMgr_SequenceOfSelection) NCollection_Sequence<opencascade::handle<SelectMgr_Selection>>;
 
 %extend NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> {
@@ -293,25 +264,18 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
         return self.Size()
     }
 };
-%template(SelectMgr_Vec3) NCollection_Vec3<Standard_Real>;
-%template(SelectMgr_Vec4) NCollection_Vec4<Standard_Real>;
+%template(SelectMgr_Vec3) NCollection_Vec3<double>;
+%template(SelectMgr_Vec4) NCollection_Vec4<double>;
 /* end templates declaration */
 
 /* typedefs */
-typedef SelectMgr_EntityOwner SelectBasics_EntityOwner;
-typedef NCollection_DataMap<Standard_Integer, SelectMgr_SelectingVolumeManager> SelectMgr_FrustumCache;
 typedef NCollection_IndexedDataMap<opencascade::handle<SelectMgr_EntityOwner>, SelectMgr_SortCriterion> SelectMgr_IndexedDataMapOfOwnerCriterion;
-typedef NCollection_IndexedMap<opencascade::handle<SelectMgr_SensitiveEntity>> SelectMgr_IndexedMapOfHSensitive;
-typedef NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>>> SelectMgr_IndexedMapOfOwner;
 typedef NCollection_List<opencascade::handle<SelectMgr_Filter>>::Iterator SelectMgr_ListIteratorOfListOfFilter;
 typedef NCollection_List<opencascade::handle<SelectMgr_Filter>> SelectMgr_ListOfFilter;
-typedef NCollection_DataMap<opencascade::handle<SelectMgr_SelectableObject>, opencascade::handle<SelectMgr_SensitiveEntitySet>>::Iterator SelectMgr_MapOfObjectSensitivesIterator;
-typedef NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>, Standard_Integer> SelectMgr_MapOfOwners;
-typedef NCollection_Mat4<Standard_Real> SelectMgr_Mat4;
-typedef NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> SelectMgr_SequenceOfOwner;
+typedef NCollection_Mat4<double> SelectMgr_Mat4;
 typedef NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> SelectMgr_SequenceOfSelection;
-typedef NCollection_Vec3<Standard_Real> SelectMgr_Vec3;
-typedef NCollection_Vec4<Standard_Real> SelectMgr_Vec4;
+typedef NCollection_Vec3<double> SelectMgr_Vec3;
+typedef NCollection_Vec4<double> SelectMgr_Vec4;
 /* end typedefs declaration */
 
 /******************
@@ -358,7 +322,7 @@ class SelectMgr_BVHThreadPool : public Standard_Transient {
 		class BVHThread {};
 		class Sentry {};
 		/****** SelectMgr_BVHThreadPool::SelectMgr_BVHThreadPool ******/
-		/****** md5 signature: 889952e84af73e98ba9a37fe92adadac ******/
+		/****** md5 signature: afc76bf2adf77aefcbedd86cdc13198e ******/
 		%feature("compactdefaultargs") SelectMgr_BVHThreadPool;
 		%feature("autodoc", "
 Parameters
@@ -373,7 +337,7 @@ Description
 -----------
 Main constructor.
 ") SelectMgr_BVHThreadPool;
-		 SelectMgr_BVHThreadPool(Standard_Integer theNbThreads);
+		 SelectMgr_BVHThreadPool(int theNbThreads);
 
 		/****** SelectMgr_BVHThreadPool::AddEntity ******/
 		/****** md5 signature: 9d91f86811aba2ad0d46968725fccc5d ******/
@@ -495,12 +459,12 @@ Return: a copy of the frustum with the input builder assigned.
 		virtual opencascade::handle<SelectMgr_BaseIntersector> CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_BaseIntersector::DetectedPoint ******/
-		/****** md5 signature: 6c6688b42e6b7c576329ada82a48bca7 ******/
+		/****** md5 signature: 875635303d6194ba425add5963bb5e86 ******/
 		%feature("compactdefaultargs") DetectedPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-theDepth: float
+theDepth: double
 
 Return
 -------
@@ -510,10 +474,10 @@ Description
 -----------
 Calculates the point on a view ray that was detected during the run of selection algo by given depth. It makes sense only for intersectors built on a single point. This method returns infinite point for the base class.
 ") DetectedPoint;
-		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
+		virtual gp_Pnt DetectedPoint(const double theDepth);
 
 		/****** SelectMgr_BaseIntersector::DistToGeometryCenter ******/
-		/****** md5 signature: d05c069bc0dac1d0061914d9064f5c6b ******/
+		/****** md5 signature: cc9904cead15dbd465fee1700d359570 ******/
 		%feature("compactdefaultargs") DistToGeometryCenter;
 		%feature("autodoc", "
 Parameters
@@ -522,13 +486,13 @@ theCOG: gp_Pnt
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Measures distance between 3d projection of user-picked screen point and given point theCOG. It makes sense only for intersectors built on a single point. This method returns infinite value for the base class.
 ") DistToGeometryCenter;
-		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
+		virtual double DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
         /****************** DumpJson ******************/
@@ -591,12 +555,12 @@ Returns near point of intersector. This method returns zero point for the base c
 		virtual const gp_Pnt GetNearPnt();
 
 		/****** SelectMgr_BaseIntersector::GetPlanes ******/
-		/****** md5 signature: b90140b2ac0c4c0502829a7ff8252d2c ******/
+		/****** md5 signature: ac45d3b6c7cb7d28e5117b46f7734ea2 ******/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "
 Parameters
 ----------
-thePlaneEquations: NCollection_Vector<SelectMgr_Vec4>
+thePlaneEquations: NCollection_Vector<NCollection_Vec4<double> >
 
 Return
 -------
@@ -606,7 +570,7 @@ Description
 -----------
 Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector. This method only clears input vector for the base class.
 ") GetPlanes;
-		virtual void GetPlanes(NCollection_Vector<SelectMgr_Vec4> & thePlaneEquations);
+		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<double> > & thePlaneEquations);
 
 		/****** SelectMgr_BaseIntersector::GetSelectionType ******/
 		/****** md5 signature: 8a2f723381b539ff3ca96048a6b87ecc ******/
@@ -635,7 +599,7 @@ Returns direction ray of intersector. This method returns zero direction for the
 		virtual const gp_Dir GetViewRayDirection();
 
 		/****** SelectMgr_BaseIntersector::IsScalable ******/
-		/****** md5 signature: 9733a9bb15d124569350ae667909d84c ******/
+		/****** md5 signature: 10d9fd6f098b08a8d73c0558c0dc75db ******/
 		%feature("compactdefaultargs") IsScalable;
 		%feature("autodoc", "Return
 -------
@@ -645,16 +609,16 @@ Description
 -----------
 Checks if it is possible to scale this intersector.
 ") IsScalable;
-		virtual Standard_Boolean IsScalable();
+		virtual bool IsScalable();
 
 		/****** SelectMgr_BaseIntersector::OverlapsBox ******/
-		/****** md5 signature: b3d8e238997ac67fa00f862c71d8fb5e ******/
+		/****** md5 signature: 5995584c0ce0aa44f84986dcda0cab4d ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoxMin: SelectMgr_Vec3
-theBoxMax: SelectMgr_Vec3
+theBoxMin: NCollection_Vec3<double>
+theBoxMax: NCollection_Vec3<double>
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
 
@@ -666,17 +630,17 @@ Description
 -----------
 SAT intersection test between defined volume and given axis-aligned box.
 ") OverlapsBox;
-		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsBox(const NCollection_Vec3<double> & theBoxMin, const NCollection_Vec3<double> & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsBox ******/
-		/****** md5 signature: 3333b0eb5ae7761f543fe228c538ee5b ******/
+		/****** md5 signature: b423e9704130b7a5e6b668a7ee3b1d58 ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoxMin: SelectMgr_Vec3
-theBoxMax: SelectMgr_Vec3
-theInside: bool * (optional, default to NULL)
+theBoxMin: NCollection_Vec3<double>
+theBoxMax: NCollection_Vec3<double>
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -686,15 +650,15 @@ Description
 -----------
 Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
-		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
+		virtual bool OverlapsBox(const NCollection_Vec3<double> & theBoxMin, const NCollection_Vec3<double> & theBoxMax, bool * theInside = nullptr);
 
 		/****** SelectMgr_BaseIntersector::OverlapsCircle ******/
-		/****** md5 signature: 206bfdc4b7e301aeecd492ca5f0185bc ******/
+		/****** md5 signature: e23e47d2389e7b7a4486bafa3c44e0bc ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
+theBottomRad: double
 theTrsf: gp_Trsf
 theIsFilled: bool
 theClipRange: SelectMgr_ViewClipRange
@@ -708,18 +672,18 @@ Description
 -----------
 Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
-		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsCircle(const double theBottomRad, const gp_Trsf & theTrsf, const bool theIsFilled, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsCircle ******/
-		/****** md5 signature: 1abe9cc1d4846ca0fa394e455d2b1adf ******/
+		/****** md5 signature: 758a90ad48da9a73136aa329166f8c7b ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
+theBottomRad: double
 theTrsf: gp_Trsf
 theIsFilled: bool
-theInside: bool * (optional, default to NULL)
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -729,17 +693,17 @@ Description
 -----------
 Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
-		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
+		virtual bool OverlapsCircle(const double theBottomRad, const gp_Trsf & theTrsf, const bool theIsFilled, bool * theInside = nullptr);
 
 		/****** SelectMgr_BaseIntersector::OverlapsCylinder ******/
-		/****** md5 signature: 83169e4ace649687d3a32dae3d236230 ******/
+		/****** md5 signature: 793ee928eebde25142a6bc5519e0e659 ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theTrsf: gp_Trsf
 theIsHollow: bool
 theClipRange: SelectMgr_ViewClipRange
@@ -753,20 +717,20 @@ Description
 -----------
 Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const gp_Trsf & theTrsf, const bool theIsHollow, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsCylinder ******/
-		/****** md5 signature: 4ee34537f7f0591987b1ee29ed104939 ******/
+		/****** md5 signature: 3e5c9ccc11e6c2a342b0f1b1e585586d ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theTrsf: gp_Trsf
 theIsHollow: bool
-theInside: bool * (optional, default to NULL)
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -776,10 +740,10 @@ Description
 -----------
 Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
+		virtual bool OverlapsCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const gp_Trsf & theTrsf, const bool theIsHollow, bool * theInside = nullptr);
 
 		/****** SelectMgr_BaseIntersector::OverlapsPoint ******/
-		/****** md5 signature: ca285b43cc259fcb46ff477678762dba ******/
+		/****** md5 signature: 2302992fa14bab9ed8e92f74bf84e2c9 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -796,10 +760,10 @@ Description
 -----------
 Intersection test between defined volume and given point.
 ") OverlapsPoint;
-		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsPoint(const gp_Pnt & thePnt, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsPoint ******/
-		/****** md5 signature: 7d294e46b6d94e1ca91f519f8b1d482d ******/
+		/****** md5 signature: 1ff40d008959bb5bc93ef8c1296923d5 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -814,15 +778,15 @@ Description
 -----------
 Intersection test between defined volume and given point Does not perform depth calculation, so this method is defined as helper function for inclusion test. Therefore, its implementation makes sense only for rectangular frustum with box selection mode activated.
 ") OverlapsPoint;
-		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
+		virtual bool OverlapsPoint(const gp_Pnt & thePnt);
 
 		/****** SelectMgr_BaseIntersector::OverlapsPolygon ******/
-		/****** md5 signature: ea879fc06a4c6f6d0a789b21bf9e01f2 ******/
+		/****** md5 signature: 9b51cf8adf07206f21940eb7722568b5 ******/
 		%feature("compactdefaultargs") OverlapsPolygon;
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPnts: TColgp_Array1OfPnt
+theArrayOfPnts: NCollection_Array1<gp_Pnt>
 theSensType: Select3D_TypeOfSensitivity
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
@@ -835,10 +799,10 @@ Description
 -----------
 SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
-		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsSegment ******/
-		/****** md5 signature: d402778adf591662c5989dc838ac2ca6 ******/
+		/****** md5 signature: 633be89ae83b1f9cb2c666022fc26a58 ******/
 		%feature("compactdefaultargs") OverlapsSegment;
 		%feature("autodoc", "
 Parameters
@@ -856,17 +820,17 @@ Description
 -----------
 Checks if line segment overlaps selecting frustum.
 ") OverlapsSegment;
-		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsSphere ******/
-		/****** md5 signature: 32b443cedf236c938f70d5163436b508 ******/
+		/****** md5 signature: 7f55133be800617ca4cba7509ac1f6c5 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
-theInside: bool * (optional, default to NULL)
+theRadius: double
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -876,16 +840,16 @@ Description
 -----------
 Returns true if selecting volume is overlapped by sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
-		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+		virtual bool OverlapsSphere(const gp_Pnt & theCenter, const double theRadius, bool * theInside = nullptr);
 
 		/****** SelectMgr_BaseIntersector::OverlapsSphere ******/
-		/****** md5 signature: 37997e5cd3caaa032de4ff44a63381ed ******/
+		/****** md5 signature: 235e6b8229dea1e1e43bdda0fc53f873 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
+theRadius: double
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
 
@@ -897,10 +861,10 @@ Description
 -----------
 Returns true if selecting volume is overlapped by sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
-		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsSphere(const gp_Pnt & theCenter, const double theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsTriangle ******/
-		/****** md5 signature: fc92c4fa04dc601ad98f7ee32291b96f ******/
+		/****** md5 signature: 1f8e889f62d55e05846e14c08fdc9980 ******/
 		%feature("compactdefaultargs") OverlapsTriangle;
 		%feature("autodoc", "
 Parameters
@@ -920,22 +884,22 @@ Description
 -----------
 SAT intersection test between defined volume and given triangle. The test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 ") OverlapsTriangle;
-		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::RayCircleIntersection ******/
-		/****** md5 signature: f7b27a6fdbfbae7f8fe47003f5b5b2d0 ******/
+		/****** md5 signature: 3c3813b99e827a3789f005e18b09bae2 ******/
 		%feature("compactdefaultargs") RayCircleIntersection;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theLoc: gp_Pnt
 theRayDir: gp_Dir
 theIsFilled: bool
 
 Return
 -------
-theTime: float
+theTime: double
 
 Description
 -----------
@@ -945,25 +909,25 @@ Input parameter: theLoc the location of the ray
 Input parameter: theRayDir the ray direction 
 Input parameter: theIsFilled true if it's a circle, false if it's a circle outline @param[out] theTime the intersection.
 ") RayCircleIntersection;
-		virtual Standard_Boolean RayCircleIntersection(const Standard_Real theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, const Standard_Boolean theIsFilled, Standard_Real &OutValue);
+		virtual bool RayCircleIntersection(const double theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, const bool theIsFilled, Standard_Real &OutValue);
 
 		/****** SelectMgr_BaseIntersector::RayCylinderIntersection ******/
-		/****** md5 signature: a23256a28d344ff902f092dac0bec76a ******/
+		/****** md5 signature: 2b9b2b33d6e754b28b18dad8bef5e44f ******/
 		%feature("compactdefaultargs") RayCylinderIntersection;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRadius: float
-theTopRadius: float
-theHeight: float
+theBottomRadius: double
+theTopRadius: double
+theHeight: double
 theLoc: gp_Pnt
 theRayDir: gp_Dir
 theIsHollow: bool
 
 Return
 -------
-theTimeEnter: float
-theTimeLeave: float
+theTimeEnter: double
+theTimeLeave: double
 
 Description
 -----------
@@ -975,32 +939,32 @@ Input parameter: theLoc the location of the ray
 Input parameter: theRayDir the ray direction 
 Input parameter: theIsHollow true if the cylinder is hollow @param[out] theTimeEnter the entering the intersection @param[out] theTimeLeave the leaving the intersection.
 ") RayCylinderIntersection;
-		virtual Standard_Boolean RayCylinderIntersection(const Standard_Real theBottomRadius, const Standard_Real theTopRadius, const Standard_Real theHeight, const gp_Pnt & theLoc, const gp_Dir & theRayDir, const Standard_Boolean theIsHollow, Standard_Real &OutValue, Standard_Real &OutValue);
+		virtual bool RayCylinderIntersection(const double theBottomRadius, const double theTopRadius, const double theHeight, const gp_Pnt & theLoc, const gp_Dir & theRayDir, const bool theIsHollow, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** SelectMgr_BaseIntersector::RaySphereIntersection ******/
-		/****** md5 signature: a447f92c1a753c60f95dacf06134d88f ******/
+		/****** md5 signature: fee0d61af7b3ed05d562e1b067816446 ******/
 		%feature("compactdefaultargs") RaySphereIntersection;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
+theRadius: double
 theLoc: gp_Pnt
 theRayDir: gp_Dir
 
 Return
 -------
-theTimeEnter: float
-theTimeLeave: float
+theTimeEnter: double
+theTimeLeave: double
 
 Description
 -----------
 Checks whether the ray that starts at the point theLoc and directs with the direction theRayDir intersects with the sphere with center at theCenter and radius TheRadius.
 ") RaySphereIntersection;
-		virtual Standard_Boolean RaySphereIntersection(const gp_Pnt & theCenter, const Standard_Real theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, Standard_Real &OutValue, Standard_Real &OutValue);
+		virtual bool RaySphereIntersection(const gp_Pnt & theCenter, const double theRadius, const gp_Pnt & theLoc, const gp_Dir & theRayDir, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** SelectMgr_BaseIntersector::ScaleAndTransform ******/
-		/****** md5 signature: 03f05921987bcd766b276d57220bf861 ******/
+		/****** md5 signature: 7ee3edb891fdb1cd752220d7d37cc0fb ******/
 		%feature("compactdefaultargs") ScaleAndTransform;
 		%feature("autodoc", "
 Parameters
@@ -1021,7 +985,7 @@ Input parameter: theTrsf transformation for new intersector or gp_Identity if un
 Input parameter: theBuilder an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch; could be NULL if reconstruction is not expected furthermore 
 Return: a copy of the frustum resized according to the scale factor given and transforms it using the matrix given.
 ") ScaleAndTransform;
-		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const int theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_BaseIntersector::SetCamera ******/
 		/****** md5 signature: f2614c926a92a0a375328573f4288898 ******/
@@ -1042,7 +1006,7 @@ Saves camera definition.
 		virtual void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****** SelectMgr_BaseIntersector::SetPixelTolerance ******/
-		/****** md5 signature: ca5a8a26205f52e8a3a279a36ba509e4 ******/
+		/****** md5 signature: a5165cef7d870fa68dfd648d08ea0907 ******/
 		%feature("compactdefaultargs") SetPixelTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1057,18 +1021,18 @@ Description
 -----------
 Sets pixel tolerance. It makes sense only for scalable intersectors (built on a single point). This method does nothing for the base class.
 ") SetPixelTolerance;
-		virtual void SetPixelTolerance(const Standard_Integer theTol);
+		virtual void SetPixelTolerance(const int theTol);
 
 		/****** SelectMgr_BaseIntersector::SetViewport ******/
-		/****** md5 signature: 35321000dbfc7f82f14ef5defb456d2f ******/
+		/****** md5 signature: 1d6d3428b08188c7ddea683acd4bf79f ******/
 		%feature("compactdefaultargs") SetViewport;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theWidth: float
-theHeight: float
+theX: double
+theY: double
+theWidth: double
+theHeight: double
 
 Return
 -------
@@ -1078,10 +1042,10 @@ Description
 -----------
 Sets viewport parameters. This method does nothing for the base class.
 ") SetViewport;
-		virtual void SetViewport(const Standard_Real theX, const Standard_Real theY, const Standard_Real theWidth, const Standard_Real theHeight);
+		virtual void SetViewport(const double theX, const double theY, const double theWidth, const double theHeight);
 
 		/****** SelectMgr_BaseIntersector::SetWindowSize ******/
-		/****** md5 signature: d28d2507e21d13e97ddcec9b2c59cbb2 ******/
+		/****** md5 signature: fdc8fda163668851af44b3aea9432cd1 ******/
 		%feature("compactdefaultargs") SetWindowSize;
 		%feature("autodoc", "
 Parameters
@@ -1097,10 +1061,10 @@ Description
 -----------
 Sets current window size. This method does nothing for the base class.
 ") SetWindowSize;
-		virtual void SetWindowSize(const Standard_Integer theWidth, const Standard_Integer theHeight);
+		virtual void SetWindowSize(const int theWidth, const int theHeight);
 
 		/****** SelectMgr_BaseIntersector::WindowSize ******/
-		/****** md5 signature: 6027bd72564d44492379be31be79c1f6 ******/
+		/****** md5 signature: 69b00f34d0a77ffe9af65de392cf385b ******/
 		%feature("compactdefaultargs") WindowSize;
 		%feature("autodoc", "
 Parameters
@@ -1134,7 +1098,7 @@ Returns current window size. This method doesn't set any output values for the b
 class SelectMgr_EntityOwner : public Standard_Transient {
 	public:
 		/****** SelectMgr_EntityOwner::SelectMgr_EntityOwner ******/
-		/****** md5 signature: 35168c30f579c463b76f662a6c83bb98 ******/
+		/****** md5 signature: 3a56814918653adce27ae55128b44b1b ******/
 		%feature("compactdefaultargs") SelectMgr_EntityOwner;
 		%feature("autodoc", "
 Parameters
@@ -1149,10 +1113,10 @@ Description
 -----------
 Initializes the selection priority aPriority.
 ") SelectMgr_EntityOwner;
-		 SelectMgr_EntityOwner(const Standard_Integer aPriority = 0);
+		 SelectMgr_EntityOwner(const int aPriority = 0);
 
 		/****** SelectMgr_EntityOwner::SelectMgr_EntityOwner ******/
-		/****** md5 signature: 49230bdc1e89f7028e9f12f710ed7815 ******/
+		/****** md5 signature: a6439102949c1b6611c3e43040e17eb8 ******/
 		%feature("compactdefaultargs") SelectMgr_EntityOwner;
 		%feature("autodoc", "
 Parameters
@@ -1168,10 +1132,10 @@ Description
 -----------
 Constructs a framework with the selectable object anSO being attributed the selection priority aPriority.
 ") SelectMgr_EntityOwner;
-		 SelectMgr_EntityOwner(const opencascade::handle<SelectMgr_SelectableObject> & aSO, const Standard_Integer aPriority = 0);
+		 SelectMgr_EntityOwner(const opencascade::handle<SelectMgr_SelectableObject> & aSO, const int aPriority = 0);
 
 		/****** SelectMgr_EntityOwner::SelectMgr_EntityOwner ******/
-		/****** md5 signature: 963caefd0a499900c1583ec550ee8e1f ******/
+		/****** md5 signature: 8d6f103711ab1f4d8f79b12547f6d864 ******/
 		%feature("compactdefaultargs") SelectMgr_EntityOwner;
 		%feature("autodoc", "
 Parameters
@@ -1187,10 +1151,10 @@ Description
 -----------
 Constructs a framework from existing one anSO being attributed the selection priority aPriority.
 ") SelectMgr_EntityOwner;
-		 SelectMgr_EntityOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Standard_Integer aPriority = 0);
+		 SelectMgr_EntityOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const int aPriority = 0);
 
 		/****** SelectMgr_EntityOwner::Clear ******/
-		/****** md5 signature: d5969540eab52130ef3a242724a4b637 ******/
+		/****** md5 signature: 301979fade7c16ac0201f3c0c8a0aeef ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -1206,10 +1170,10 @@ Description
 -----------
 Clears the owners matching the value of the selection mode aMode from the presentation manager object aPM.
 ") Clear;
-		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const Standard_Integer theMode = 0);
+		virtual void Clear(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const int theMode = 0);
 
 		/****** SelectMgr_EntityOwner::ComesFromDecomposition ******/
-		/****** md5 signature: 6889a701c50209599d441be5b1dd1509 ******/
+		/****** md5 signature: fc36ec3cae485bcb40d8f2cf8df42e2b ******/
 		%feature("compactdefaultargs") ComesFromDecomposition;
 		%feature("autodoc", "Return
 -------
@@ -1219,7 +1183,7 @@ Description
 -----------
 Returns True if this owner points to a part of object and False for entire object.
 ") ComesFromDecomposition;
-		Standard_Boolean ComesFromDecomposition();
+		bool ComesFromDecomposition();
 
 
         /****************** DumpJson ******************/
@@ -1243,12 +1207,12 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_EntityOwner::HandleMouseClick ******/
-		/****** md5 signature: add80052ddbdb459ce100ea351ce9701 ******/
+		/****** md5 signature: c02c1c39d73ba289fb7ce69248ae0bd5 ******/
 		%feature("compactdefaultargs") HandleMouseClick;
 		%feature("autodoc", "
 Parameters
 ----------
-thePoint: Graphic3d_Vec2i
+thePoint: NCollection_Vec2<int>
 theButton: Aspect_VKeyMouse
 theModifiers: Aspect_VKeyFlags
 theIsDoubleClick: bool
@@ -1264,12 +1228,12 @@ Parameter thePoint mouse cursor position
 Parameter theButton clicked button 
 Parameter theModifiers key modifiers 
 Parameter theIsDoubleClick flag indicating double mouse click 
-Return: True if object handled click.
+Return: True if object handled click For all selection schemes, allowing to select an object, it's available.
 ") HandleMouseClick;
-		virtual Standard_Boolean HandleMouseClick(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsDoubleClick);
+		virtual bool HandleMouseClick(const NCollection_Vec2<int> & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsDoubleClick);
 
 		/****** SelectMgr_EntityOwner::HasLocation ******/
-		/****** md5 signature: 570d972f6c1bbb3a38c176a3dd7778ef ******/
+		/****** md5 signature: 45899d72379b0dfb2df8d4f90be93909 ******/
 		%feature("compactdefaultargs") HasLocation;
 		%feature("autodoc", "Return
 -------
@@ -1279,10 +1243,10 @@ Description
 -----------
 Returns True if selectable has transformation.
 ") HasLocation;
-		virtual Standard_Boolean HasLocation();
+		virtual bool HasLocation();
 
 		/****** SelectMgr_EntityOwner::HasSelectable ******/
-		/****** md5 signature: f14bd3f82c22c452db3e0247d683264e ******/
+		/****** md5 signature: e7765fe6cdd6a52683747ab4a1aa28b9 ******/
 		%feature("compactdefaultargs") HasSelectable;
 		%feature("autodoc", "Return
 -------
@@ -1292,10 +1256,10 @@ Description
 -----------
 Returns true if there is a selectable object to serve as an owner.
 ") HasSelectable;
-		Standard_Boolean HasSelectable();
+		bool HasSelectable();
 
 		/****** SelectMgr_EntityOwner::HilightWithColor ******/
-		/****** md5 signature: 87de798bf932a923cf132ba96810aaa6 ******/
+		/****** md5 signature: 3bd267b4834f55ce8337aab7393145e2 ******/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "
 Parameters
@@ -1312,10 +1276,10 @@ Description
 -----------
 Highlights selectable object's presentation with display mode in presentation manager with given highlight style. Also a check for auto-highlight is performed - if selectable object manages highlighting on its own, execution will be passed to SelectMgr_SelectableObject::HilightOwnerWithColor method.
 ") HilightWithColor;
-		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode = 0);
+		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const opencascade::handle<Prs3d_Drawer> & theStyle, const int theMode = 0);
 
 		/****** SelectMgr_EntityOwner::IsAutoHilight ******/
-		/****** md5 signature: 57ad8a813588ecd393319c64b612a682 ******/
+		/****** md5 signature: 0b4c5bacd9f4abc895dcd1d8d96b2cf0 ******/
 		%feature("compactdefaultargs") IsAutoHilight;
 		%feature("autodoc", "Return
 -------
@@ -1325,10 +1289,10 @@ Description
 -----------
 if owner is not auto hilighted, for group contains many such owners will be called one method HilightSelected of SelectableObject.
 ") IsAutoHilight;
-		virtual Standard_Boolean IsAutoHilight();
+		virtual bool IsAutoHilight();
 
 		/****** SelectMgr_EntityOwner::IsForcedHilight ******/
-		/****** md5 signature: e492510bd7de6d5d862a5155125b20af ******/
+		/****** md5 signature: 9daca6ead2db4a5b7a27e6f8cbca6f0c ******/
 		%feature("compactdefaultargs") IsForcedHilight;
 		%feature("autodoc", "Return
 -------
@@ -1338,10 +1302,10 @@ Description
 -----------
 if this method returns True the owner will always call method Hilight for SelectableObject when the owner is detected. By default it always return False.
 ") IsForcedHilight;
-		virtual Standard_Boolean IsForcedHilight();
+		virtual bool IsForcedHilight();
 
 		/****** SelectMgr_EntityOwner::IsHilighted ******/
-		/****** md5 signature: c2a9996f63892a7491634f477b938b73 ******/
+		/****** md5 signature: e5e0b37a21a271e58679409aadbd42e6 ******/
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "
 Parameters
@@ -1357,10 +1321,10 @@ Description
 -----------
 Returns true if the presentation manager highlights selections corresponding to the selection mode.
 ") IsHilighted;
-		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const Standard_Integer theMode = 0);
+		virtual bool IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const int theMode = 0);
 
 		/****** SelectMgr_EntityOwner::IsSameSelectable ******/
-		/****** md5 signature: 1bb45ad41a756386595dad93200478e4 ******/
+		/****** md5 signature: 9832c28836747fbe170ee87ed29ca32b ******/
 		%feature("compactdefaultargs") IsSameSelectable;
 		%feature("autodoc", "
 Parameters
@@ -1375,10 +1339,10 @@ Description
 -----------
 Returns true if pointer to selectable object of this owner is equal to the given one.
 ") IsSameSelectable;
-		Standard_Boolean IsSameSelectable(const opencascade::handle<SelectMgr_SelectableObject> & theOther);
+		bool IsSameSelectable(const opencascade::handle<SelectMgr_SelectableObject> & theOther);
 
 		/****** SelectMgr_EntityOwner::IsSelected ******/
-		/****** md5 signature: 949447744d8f6a94eaf4d4702b6e976e ******/
+		/****** md5 signature: 8c2788305f5fbf48466fd8fd905291cd ******/
 		%feature("compactdefaultargs") IsSelected;
 		%feature("autodoc", "Return
 -------
@@ -1386,9 +1350,9 @@ bool
 
 Description
 -----------
-Return: Standard_True if the owner is selected.
+Return: true if the owner is selected.
 ") IsSelected;
-		Standard_Boolean IsSelected();
+		bool IsSelected();
 
 		/****** SelectMgr_EntityOwner::Location ******/
 		/****** md5 signature: e9a3bfb3f4a14a9bfddfb515790cf3eb ******/
@@ -1404,7 +1368,7 @@ Returns transformation of selectable.
 		virtual TopLoc_Location Location();
 
 		/****** SelectMgr_EntityOwner::Priority ******/
-		/****** md5 signature: 29598227ed02533258ae1cec0309a089 ******/
+		/****** md5 signature: daa723407e734ef224c4badf0a45ec78 ******/
 		%feature("compactdefaultargs") Priority;
 		%feature("autodoc", "Return
 -------
@@ -1414,7 +1378,7 @@ Description
 -----------
 Return selection priority (within range [0-9]) for results with the same depth; 0 by default. Example - selection of shapes: the owners are selectable objects (presentations) a user can give vertex priority [3], edges [2] faces [1] shape [0], so that if during selection one vertex one edge and one face are simultaneously detected, the vertex will only be hilighted.
 ") Priority;
-		Standard_Integer Priority();
+		int Priority();
 
 		/****** SelectMgr_EntityOwner::Selectable ******/
 		/****** md5 signature: 1129a474cddb2058eec6858748c2e93e ******/
@@ -1448,7 +1412,7 @@ No available documentation.
 		void Set(const opencascade::handle<SelectMgr_SelectableObject> & theSelObj);
 
 		/****** SelectMgr_EntityOwner::Set ******/
-		/****** md5 signature: 564f8abfa67cc280ba647fed234e9d47 ******/
+		/****** md5 signature: c64562bab47fdb967b904d14caefb403 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1463,10 +1427,10 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Integer thePriority);
+		void Set(const int thePriority);
 
 		/****** SelectMgr_EntityOwner::SetComesFromDecomposition ******/
-		/****** md5 signature: 1f91b108a62300af0000a6a7d35e4ae4 ******/
+		/****** md5 signature: 20910a23e3efa30e4114bd6cbc83508d ******/
 		%feature("compactdefaultargs") SetComesFromDecomposition;
 		%feature("autodoc", "
 Parameters
@@ -1481,7 +1445,7 @@ Description
 -----------
 Sets flag indicating this owner points to a part of object (True) or to entire object (False).
 ") SetComesFromDecomposition;
-		void SetComesFromDecomposition(const Standard_Boolean theIsFromDecomposition);
+		void SetComesFromDecomposition(const bool theIsFromDecomposition);
 
 		/****** SelectMgr_EntityOwner::SetLocation ******/
 		/****** md5 signature: dd06d202f1158d966018e729323ed547 ******/
@@ -1502,7 +1466,7 @@ Change owner location (callback for handling change of location of selectable ob
 		virtual void SetLocation(const TopLoc_Location & theLocation);
 
 		/****** SelectMgr_EntityOwner::SetPriority ******/
-		/****** md5 signature: 5a3925a66ebc3ef4e73998b083d530f0 ******/
+		/****** md5 signature: 9d934f2976d17f33c72a10b5352b1924 ******/
 		%feature("compactdefaultargs") SetPriority;
 		%feature("autodoc", "
 Parameters
@@ -1517,7 +1481,7 @@ Description
 -----------
 Sets the selectable priority of the owner within range [0-9].
 ") SetPriority;
-		void SetPriority(Standard_Integer thePriority);
+		void SetPriority(int thePriority);
 
 		/****** SelectMgr_EntityOwner::SetSelectable ******/
 		/****** md5 signature: e52841913b79e2faa76a838b7d71be1e ******/
@@ -1538,7 +1502,7 @@ Sets the selectable object.
 		virtual void SetSelectable(const opencascade::handle<SelectMgr_SelectableObject> & theSelObj);
 
 		/****** SelectMgr_EntityOwner::SetSelected ******/
-		/****** md5 signature: 72905a85c59ef2eff422043539e45a2f ******/
+		/****** md5 signature: 3dca24e59c0774525df0ede03091662a ******/
 		%feature("compactdefaultargs") SetSelected;
 		%feature("autodoc", "
 Parameters
@@ -1554,7 +1518,7 @@ Description
 Set the state of the owner. 
 Input parameter: theIsSelected shows if owner is selected.
 ") SetSelected;
-		void SetSelected(const Standard_Boolean theIsSelected);
+		void SetSelected(const bool theIsSelected);
 
 		/****** SelectMgr_EntityOwner::SetZLayer ******/
 		/****** md5 signature: 097fb5f9f23c2585b930c488f4f747a6 ******/
@@ -1575,7 +1539,7 @@ Set Z layer ID and update all presentations.
 		virtual void SetZLayer(int theLayerId);
 
 		/****** SelectMgr_EntityOwner::State ******/
-		/****** md5 signature: cbcf7744d9e5fcb1ad5d29c138e1a232 ******/
+		/****** md5 signature: cbf328205d1b1baa81d40d89d002012f ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -1585,10 +1549,10 @@ Description
 -----------
 No available documentation.
 ") State;
-		Standard_Integer State();
+		int State();
 
 		/****** SelectMgr_EntityOwner::State ******/
-		/****** md5 signature: 51fdbf7fc9500926f62a89a3197e7573 ******/
+		/****** md5 signature: d8ceb42f502c96cb12d490a02b08b2ee ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "
 Parameters
@@ -1603,10 +1567,10 @@ Description
 -----------
 Set the state of the owner. The method is deprecated. Use SetSelected() instead.
 ") State;
-		void State(const Standard_Integer theStatus);
+		void State(const int theStatus);
 
 		/****** SelectMgr_EntityOwner::Unhilight ******/
-		/****** md5 signature: 9c4c49a0201108c6e27232bac86bc1b7 ******/
+		/****** md5 signature: e24ee9bf6793bb900f96f810dcd3e053 ******/
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "
 Parameters
@@ -1624,10 +1588,10 @@ Removes highlighting from the owner of a detected selectable object in the prese
 Parameter thePrsMgr presentation manager 
 Parameter theMode obsolete argument for compatibility, should be ignored by implementations.
 ") Unhilight;
-		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const Standard_Integer theMode = 0);
+		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const int theMode = 0);
 
 		/****** SelectMgr_EntityOwner::UpdateHighlightTrsf ******/
-		/****** md5 signature: 07c213110f2fd76110957bf075cb3ba6 ******/
+		/****** md5 signature: bd6f5579a8609eef36c294e65f200b4d ******/
 		%feature("compactdefaultargs") UpdateHighlightTrsf;
 		%feature("autodoc", "
 Parameters
@@ -1644,7 +1608,7 @@ Description
 -----------
 Implements immediate application of location transformation of parent object to dynamic highlight structure.
 ") UpdateHighlightTrsf;
-		virtual void UpdateHighlightTrsf(const opencascade::handle<V3d_Viewer> & theViewer, const opencascade::handle<PrsMgr_PresentationManager> & theManager, const Standard_Integer theDispMode);
+		virtual void UpdateHighlightTrsf(const opencascade::handle<V3d_Viewer> & theViewer, const opencascade::handle<PrsMgr_PresentationManager> & theManager, const int theDispMode);
 
 };
 
@@ -1668,7 +1632,7 @@ Implements immediate application of location transformation of parent object to 
 class SelectMgr_Filter : public Standard_Transient {
 	public:
 		/****** SelectMgr_Filter::ActsOn ******/
-		/****** md5 signature: 407a8b9f2b0dbde254a1972ae65281ce ******/
+		/****** md5 signature: fcba32741341d7b72fe810b45f91ec9f ******/
 		%feature("compactdefaultargs") ActsOn;
 		%feature("autodoc", "
 Parameters
@@ -1683,10 +1647,10 @@ Description
 -----------
 Returns true in an AIS local context, if this filter operates on a type of subshape defined in a filter class inheriting this framework. This function completes IsOk in an AIS local context.
 ") ActsOn;
-		virtual Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode);
+		virtual bool ActsOn(const TopAbs_ShapeEnum aStandardMode);
 
 		/****** SelectMgr_Filter::IsOk ******/
-		/****** md5 signature: 51f35075b94a4376cf4141b785d2a894 ******/
+		/****** md5 signature: f394062005db726c5c8a7a017fedac3e ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -1699,9 +1663,9 @@ bool
 
 Description
 -----------
-Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. When an object is detected by the mouse - in AIS, this is done through a context selector - its owner is passed to the filter as an argument. If the object returns Standard_True, it is kept; if not, it is rejected. If you are creating a filter class inheriting this framework, and the daughter class is to be used in an AIS local context, you will need to implement the virtual function ActsOn.
+Indicates that the selected Interactive Object passes the filter. The owner, anObj, can be either direct or user. A direct owner is the corresponding construction element, whereas a user is the compound shape of which the entity forms a part. When an object is detected by the mouse - in AIS, this is done through a context selector - its owner is passed to the filter as an argument. If the object returns true, it is kept; if not, it is rejected. If you are creating a filter class inheriting this framework, and the daughter class is to be used in an AIS local context, you will need to implement the virtual function ActsOn.
 ") IsOk;
-		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anObj);
+		virtual bool IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anObj);
 
 };
 
@@ -1759,14 +1723,14 @@ No available documentation.
 		void InvalidateViewport();
 
 		/****** SelectMgr_FrustumBuilder::ProjectPntOnViewPlane ******/
-		/****** md5 signature: b57ec803227d022418a9752b363651c8 ******/
+		/****** md5 signature: 1e7ef54bd1569a2ebb173b2c53a72e32 ******/
 		%feature("compactdefaultargs") ProjectPntOnViewPlane;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
+theX: double
+theY: double
+theZ: double
 
 Return
 -------
@@ -1776,7 +1740,7 @@ Description
 -----------
 Projects 2d screen point onto view frustum plane: theZ = 0 - near plane, theZ = 1 - far plane.
 ") ProjectPntOnViewPlane;
-		gp_Pnt ProjectPntOnViewPlane(const Standard_Real & theX, const Standard_Real & theY, const Standard_Real & theZ);
+		gp_Pnt ProjectPntOnViewPlane(const double & theX, const double & theY, const double & theZ);
 
 		/****** SelectMgr_FrustumBuilder::SetCamera ******/
 		/****** md5 signature: feb4846a043de91d4d1b29714dfe3b70 ******/
@@ -1797,15 +1761,15 @@ Stores current camera.
 		void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****** SelectMgr_FrustumBuilder::SetViewport ******/
-		/****** md5 signature: 8a132d12573d3301f6dc1103aa3c5d06 ******/
+		/****** md5 signature: 6434315586423ecd16144dba46f5869b ******/
 		%feature("compactdefaultargs") SetViewport;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theWidth: float
-theHeight: float
+theX: double
+theY: double
+theWidth: double
+theHeight: double
 
 Return
 -------
@@ -1815,10 +1779,10 @@ Description
 -----------
 Stores current viewport coordinates.
 ") SetViewport;
-		void SetViewport(const Standard_Real theX, const Standard_Real theY, const Standard_Real theWidth, const Standard_Real theHeight);
+		void SetViewport(const double theX, const double theY, const double theWidth, const double theHeight);
 
 		/****** SelectMgr_FrustumBuilder::SetWindowSize ******/
-		/****** md5 signature: 8f5369c74a4835dacda32c89cfdc6f2a ******/
+		/****** md5 signature: 893fec2368bfa674a6aeb725241927cf ******/
 		%feature("compactdefaultargs") SetWindowSize;
 		%feature("autodoc", "
 Parameters
@@ -1834,29 +1798,29 @@ Description
 -----------
 Stores current window width and height.
 ") SetWindowSize;
-		void SetWindowSize(const Standard_Integer theWidth, const Standard_Integer theHeight);
+		void SetWindowSize(const int theWidth, const int theHeight);
 
 		/****** SelectMgr_FrustumBuilder::SignedPlanePntDist ******/
-		/****** md5 signature: 197b23e7016adf49f5250381a86e2bc7 ******/
+		/****** md5 signature: 9c21126ddf614cdcd8e839ae3bbe0ca5 ******/
 		%feature("compactdefaultargs") SignedPlanePntDist;
 		%feature("autodoc", "
 Parameters
 ----------
-theEq: SelectMgr_Vec3
-thePnt: SelectMgr_Vec3
+theEq: NCollection_Vec3<double>
+thePnt: NCollection_Vec3<double>
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Calculates signed distance between plane with equation theEq and point thePnt.
 ") SignedPlanePntDist;
-		Standard_Real SignedPlanePntDist(const SelectMgr_Vec3 & theEq, const SelectMgr_Vec3 & thePnt);
+		double SignedPlanePntDist(const NCollection_Vec3<double> & theEq, const NCollection_Vec3<double> & thePnt);
 
 		/****** SelectMgr_FrustumBuilder::WindowSize ******/
-		/****** md5 signature: b6b9e026658a5426a88d46691f9f9543 ******/
+		/****** md5 signature: 99f8426008f1e97982312e7c169dd5b6 ******/
 		%feature("compactdefaultargs") WindowSize;
 		%feature("autodoc", "
 Parameters
@@ -1891,7 +1855,7 @@ No available documentation.
 class SelectMgr_SelectableObject : public PrsMgr_PresentableObject {
 	public:
 		/****** SelectMgr_SelectableObject::AcceptShapeDecomposition ******/
-		/****** md5 signature: e91796345b7fc54f8d0048f595a2ed30 ******/
+		/****** md5 signature: 8f48600362678b5c3f110d3ffa30c66b ******/
 		%feature("compactdefaultargs") AcceptShapeDecomposition;
 		%feature("autodoc", "Return
 -------
@@ -1901,10 +1865,10 @@ Description
 -----------
 Informs the graphic context that the interactive Object may be decomposed into sub-shapes for dynamic selection. The most used Interactive Object is AIS_Shape.
 ") AcceptShapeDecomposition;
-		virtual Standard_Boolean AcceptShapeDecomposition();
+		virtual bool AcceptShapeDecomposition();
 
 		/****** SelectMgr_SelectableObject::AddSelection ******/
-		/****** md5 signature: cac436c748f6c092baaa6c3df83291a7 ******/
+		/****** md5 signature: fb07545444d5e44dc16dc45ab94cc6bd ******/
 		%feature("compactdefaultargs") AddSelection;
 		%feature("autodoc", "
 Parameters
@@ -1920,15 +1884,15 @@ Description
 -----------
 Adds the selection aSelection with the selection mode index aMode to this framework.
 ") AddSelection;
-		void AddSelection(const opencascade::handle<SelectMgr_Selection> & aSelection, const Standard_Integer aMode);
+		void AddSelection(const opencascade::handle<SelectMgr_Selection> & aSelection, const int aMode);
 
 		/****** SelectMgr_SelectableObject::BndBoxOfSelected ******/
-		/****** md5 signature: 443f93b07a9907ef337840cc8b4ae9ed ******/
+		/****** md5 signature: d0e07ad11101d0b614026b805c6c7976 ******/
 		%feature("compactdefaultargs") BndBoxOfSelected;
 		%feature("autodoc", "
 Parameters
 ----------
-theOwners: SelectMgr_IndexedMapOfOwner
+theOwners: NCollection_Shared<NCollection_IndexedMap<
 
 Return
 -------
@@ -1938,7 +1902,7 @@ Description
 -----------
 Returns a bounding box of sensitive entities with the owners given if they are a part of activated selection.
 ") BndBoxOfSelected;
-		Bnd_Box BndBoxOfSelected(const opencascade::handle<SelectMgr_IndexedMapOfOwner> & theOwners);
+		Bnd_Box BndBoxOfSelected(const opencascade::handle<NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner> > > > & theOwners);
 
 		/****** SelectMgr_SelectableObject::ClearDynamicHighlight ******/
 		/****** md5 signature: d0352ce4e2dd5f23d593337c0a535955 ******/
@@ -1972,12 +1936,12 @@ Method which clear all selected owners belonging to this selectable object ( for
 		virtual void ClearSelected();
 
 		/****** SelectMgr_SelectableObject::ClearSelections ******/
-		/****** md5 signature: 44c3292e3b886615f6924e9b2367fc77 ******/
+		/****** md5 signature: b5fbe9a5af2a8fe9d300c757cc0ff937 ******/
 		%feature("compactdefaultargs") ClearSelections;
 		%feature("autodoc", "
 Parameters
 ----------
-update: bool (optional, default to Standard_False)
+update: bool (optional, default to false)
 
 Return
 -------
@@ -1987,10 +1951,10 @@ Description
 -----------
 Empties all the selections in the SelectableObject <update> parameter defines whether all object's selections should be flagged for further update or not. This improved method can be used to recompute an object's selection (without redisplaying the object completely) when some selection mode is activated not for the first time.
 ") ClearSelections;
-		void ClearSelections(const Standard_Boolean update = Standard_False);
+		void ClearSelections(const bool update = false);
 
 		/****** SelectMgr_SelectableObject::ComputeSelection ******/
-		/****** md5 signature: 8d0bfeee3da226e839feb2c670764fef ******/
+		/****** md5 signature: 724035803a92fba187c142041dc19836 ******/
 		%feature("compactdefaultargs") ComputeSelection;
 		%feature("autodoc", "
 Parameters
@@ -2008,7 +1972,7 @@ Computes sensitive primitives for the given selection mode - key interface metho
 Parameter theSelection selection to fill 
 Parameter theMode selection mode to create sensitive primitives.
 ") ComputeSelection;
-		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Integer theMode);
+		virtual void ComputeSelection(const opencascade::handle<SelectMgr_Selection> & theSelection, const int theMode);
 
 
         /****************** DumpJson ******************/
@@ -2032,7 +1996,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_SelectableObject::ErasePresentations ******/
-		/****** md5 signature: 1ca7dc31012600af9ffc1ee563cb7a3d ******/
+		/****** md5 signature: 47207c882d9145552331be073a7ce9d3 ******/
 		%feature("compactdefaultargs") ErasePresentations;
 		%feature("autodoc", "
 Parameters
@@ -2047,7 +2011,7 @@ Description
 -----------
 Removes presentations returned by GetHilightPresentation() and GetSelectPresentation().
 ") ErasePresentations;
-		virtual void ErasePresentations(Standard_Boolean theToRemove);
+		virtual void ErasePresentations(bool theToRemove);
 
 		/****** SelectMgr_SelectableObject::GetAssemblyOwner ******/
 		/****** md5 signature: 900d00bb218b878c5876856e4f4dd9c9 ******/
@@ -2116,7 +2080,7 @@ Returns the owner of mode for selection of object as a whole.
 		virtual opencascade::handle<SelectMgr_EntityOwner> GlobalSelOwner();
 
 		/****** SelectMgr_SelectableObject::GlobalSelectionMode ******/
-		/****** md5 signature: b62d625b048f2bad09afcaf87f73c7b5 ******/
+		/****** md5 signature: 5b75cad9bb2d4ff0ce4f09f02eef1f93 ******/
 		%feature("compactdefaultargs") GlobalSelectionMode;
 		%feature("autodoc", "Return
 -------
@@ -2126,10 +2090,10 @@ Description
 -----------
 Returns the mode for selection of object as a whole; 0 by default.
 ") GlobalSelectionMode;
-		Standard_Integer GlobalSelectionMode();
+		int GlobalSelectionMode();
 
 		/****** SelectMgr_SelectableObject::HasSelection ******/
-		/****** md5 signature: 7e69da611555aafed675e49f59e44aae ******/
+		/****** md5 signature: fe44dcb5a31abaca838ec638f2a45b37 ******/
 		%feature("compactdefaultargs") HasSelection;
 		%feature("autodoc", "
 Parameters
@@ -2144,7 +2108,7 @@ Description
 -----------
 Returns true if a selection corresponding to the selection mode theMode was computed for this object.
 ") HasSelection;
-		Standard_Boolean HasSelection(const Standard_Integer theMode);
+		bool HasSelection(const int theMode);
 
 		/****** SelectMgr_SelectableObject::HilightOwnerWithColor ******/
 		/****** md5 signature: 32e4307dcba2e0851cedfe1c57a6fe79 ******/
@@ -2162,18 +2126,18 @@ None
 
 Description
 -----------
-Method which hilight an owner belonging to this selectable object ( for fast presentation draw ).
+Method which hilight an owner belonging to this selectable object (for fast presentation draw).
 ") HilightOwnerWithColor;
 		virtual void HilightOwnerWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const opencascade::handle<SelectMgr_EntityOwner> & theOwner);
 
 		/****** SelectMgr_SelectableObject::HilightSelected ******/
-		/****** md5 signature: f94c01d8d1821db083be9af276986e33 ******/
+		/****** md5 signature: b869fffba71ee9c4719475fa2437b6f3 ******/
 		%feature("compactdefaultargs") HilightSelected;
 		%feature("autodoc", "
 Parameters
 ----------
 thePrsMgr: PrsMgr_PresentationManager
-theSeq: SelectMgr_SequenceOfOwner
+theSeq: SelectMgr_EntityOwner
 
 Return
 -------
@@ -2183,10 +2147,10 @@ Description
 -----------
 Method which draws selected owners ( for fast presentation draw ).
 ") HilightSelected;
-		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const SelectMgr_SequenceOfOwner & theSeq);
+		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner> > & theSeq);
 
 		/****** SelectMgr_SelectableObject::IsAutoHilight ******/
-		/****** md5 signature: 57ad8a813588ecd393319c64b612a682 ******/
+		/****** md5 signature: 0b4c5bacd9f4abc895dcd1d8d96b2cf0 ******/
 		%feature("compactdefaultargs") IsAutoHilight;
 		%feature("autodoc", "Return
 -------
@@ -2196,7 +2160,7 @@ Description
 -----------
 If returns True, the old mechanism for highlighting selected objects is used (HilightSelected Method may be empty). If returns False, the HilightSelected method will be fully responsible for highlighting selected entity owners belonging to this selectable object.
 ") IsAutoHilight;
-		virtual Standard_Boolean IsAutoHilight();
+		virtual bool IsAutoHilight();
 
 		/****** SelectMgr_SelectableObject::RecomputePrimitives ******/
 		/****** md5 signature: 7bd2e52f5f2cfac7f6ff872dd5ea905f ******/
@@ -2212,7 +2176,7 @@ Re-computes the sensitive primitives for all modes. IMPORTANT: Do not use this m
 		void RecomputePrimitives();
 
 		/****** SelectMgr_SelectableObject::RecomputePrimitives ******/
-		/****** md5 signature: 993e0181ff78c9354c78b4324e89d177 ******/
+		/****** md5 signature: cbd46ba90a22bec108c90a2da059b654 ******/
 		%feature("compactdefaultargs") RecomputePrimitives;
 		%feature("autodoc", "
 Parameters
@@ -2227,10 +2191,10 @@ Description
 -----------
 Re-computes the sensitive primitives which correspond to the <theMode>th selection mode. IMPORTANT: Do not use this method to update selection primitives except implementing custom selection manager! selection manager! This method does not take into account necessary BVH updates, but may invalidate the pointers it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
 ") RecomputePrimitives;
-		void RecomputePrimitives(const Standard_Integer theMode);
+		void RecomputePrimitives(const int theMode);
 
 		/****** SelectMgr_SelectableObject::ResetTransformation ******/
-		/****** md5 signature: d978328fb77e88b2f8f47675588dbd84 ******/
+		/****** md5 signature: d26877d3cd615239457490b332a63bcb ******/
 		%feature("compactdefaultargs") ResetTransformation;
 		%feature("autodoc", "Return
 -------
@@ -2243,7 +2207,7 @@ No available documentation.
 		void ResetTransformation();
 
 		/****** SelectMgr_SelectableObject::Selection ******/
-		/****** md5 signature: a2a4e40226667fb0b77f24a46a478797 ******/
+		/****** md5 signature: fe1ffc5a827426e7bbd18fd7d3528782 ******/
 		%feature("compactdefaultargs") Selection;
 		%feature("autodoc", "
 Parameters
@@ -2258,23 +2222,23 @@ Description
 -----------
 Returns the selection having specified selection mode or NULL.
 ") Selection;
-		const opencascade::handle<SelectMgr_Selection> & Selection(const Standard_Integer theMode);
+		const opencascade::handle<SelectMgr_Selection> & Selection(const int theMode);
 
 		/****** SelectMgr_SelectableObject::Selections ******/
-		/****** md5 signature: 413e1776ab243e15ff928a23847812cf ******/
+		/****** md5 signature: 857f6fda3d774e3442cc2fe4ac5c1663 ******/
 		%feature("compactdefaultargs") Selections;
 		%feature("autodoc", "Return
 -------
-SelectMgr_SequenceOfSelection
+NCollection_Sequence<opencascade::handle<SelectMgr_Selection>>
 
 Description
 -----------
 Return the sequence of selections.
 ") Selections;
-		const SelectMgr_SequenceOfSelection & Selections();
+		const NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> & Selections();
 
 		/****** SelectMgr_SelectableObject::SetAssemblyOwner ******/
-		/****** md5 signature: 663f1306acce95f2b2821e2f2d0c0996 ******/
+		/****** md5 signature: f6a159bb40bb3b9d2853b8c4212a0ef0 ******/
 		%feature("compactdefaultargs") SetAssemblyOwner;
 		%feature("autodoc", "
 Parameters
@@ -2290,10 +2254,10 @@ Description
 -----------
 Sets common entity owner for assembly sensitive object entities.
 ") SetAssemblyOwner;
-		void SetAssemblyOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const Standard_Integer theMode = -1);
+		void SetAssemblyOwner(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const int theMode = -1);
 
 		/****** SelectMgr_SelectableObject::SetAutoHilight ******/
-		/****** md5 signature: 4e6ead318d652bf286a0ac61daa1670d ******/
+		/****** md5 signature: 50366ca76aa12a866d05d22e2bbc8485 ******/
 		%feature("compactdefaultargs") SetAutoHilight;
 		%feature("autodoc", "
 Parameters
@@ -2308,10 +2272,10 @@ Description
 -----------
 Set AutoHilight property to true or false.
 ") SetAutoHilight;
-		virtual void SetAutoHilight(const Standard_Boolean theAutoHilight);
+		virtual void SetAutoHilight(const bool theAutoHilight);
 
 		/****** SelectMgr_SelectableObject::SetZLayer ******/
-		/****** md5 signature: d310515d289158ffbf4d4de5b7ae68aa ******/
+		/****** md5 signature: 7d86852b704e871035c21b004fee430e ******/
 		%feature("compactdefaultargs") SetZLayer;
 		%feature("autodoc", "
 Parameters
@@ -2326,10 +2290,10 @@ Description
 -----------
 Set Z layer ID and update all presentations of the selectable object. The layers mechanism allows drawing objects in higher layers in overlay of objects in lower layers.
 ") SetZLayer;
-		virtual void SetZLayer(int theLayerId);
+		void SetZLayer(int theLayerId);
 
 		/****** SelectMgr_SelectableObject::UpdateSelection ******/
-		/****** md5 signature: 14cfc18078e541b47973a9e8aa6256f9 ******/
+		/****** md5 signature: 936fa5a58868abe84e1b550652e94dca ******/
 		%feature("compactdefaultargs") UpdateSelection;
 		%feature("autodoc", "
 Parameters
@@ -2344,10 +2308,10 @@ Description
 -----------
 Sets update status FULL to selections of the object. Must be used as the only method of UpdateSelection from outer classes to prevent BVH structures from being outdated.
 ") UpdateSelection;
-		void UpdateSelection(const Standard_Integer theMode = -1);
+		void UpdateSelection(const int theMode = -1);
 
 		/****** SelectMgr_SelectableObject::UpdateTransformation ******/
-		/****** md5 signature: 9663287750e621d117128f238516c453 ******/
+		/****** md5 signature: 9a2e534d4c630ee99e8569e461eb0023 ******/
 		%feature("compactdefaultargs") UpdateTransformation;
 		%feature("autodoc", "Return
 -------
@@ -2357,7 +2321,7 @@ Description
 -----------
 Recomputes the location of the selection aSelection.
 ") UpdateTransformation;
-		virtual void UpdateTransformation();
+		void UpdateTransformation();
 
 		/****** SelectMgr_SelectableObject::UpdateTransformations ******/
 		/****** md5 signature: d665fe0a491bfbd565adb55b2ded1bc9 ******/
@@ -2439,7 +2403,7 @@ Creates new empty objects set and initializes BVH tree builders for each subset.
 		 SelectMgr_SelectableObjectSet();
 
 		/****** SelectMgr_SelectableObjectSet::Append ******/
-		/****** md5 signature: d4ae1cd7ff5ae331cbc8478e22f2b054 ******/
+		/****** md5 signature: 55b8e09e34a1a94adde1dbbfb4009c9e ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -2455,10 +2419,10 @@ Description
 Adds the new selectable object to the set. The selectable object is placed into one of the predefined subsets depending on its persistence type. After adding an object, this method marks the corresponding BVH tree for rebuild. 
 Return: true if selectable object is added, otherwise returns false (selectable object is already in the set).
 ") Append;
-		Standard_Boolean Append(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
+		bool Append(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_SelectableObjectSet::BVH ******/
-		/****** md5 signature: c3375b42ee73cb25b0751e5122f7ae72 ******/
+		/****** md5 signature: a032d841d25efa4fa602a7ae138ed928 ******/
 		%feature("compactdefaultargs") BVH;
 		%feature("autodoc", "
 Parameters
@@ -2467,13 +2431,13 @@ theSubset: BVHSubset
 
 Return
 -------
-opencascade::handle<BVH_Tree<float, 3>>
+opencascade::handle<BVH_Tree<double, 3>>
 
 Description
 -----------
 Returns computed BVH for the theSubset given.
 ") BVH;
-		const opencascade::handle<BVH_Tree<Standard_Real, 3>> & BVH(BVHSubset theSubset);
+		const opencascade::handle<BVH_Tree<double, 3>> & BVH(BVHSubset theSubset);
 
 		/****** SelectMgr_SelectableObjectSet::ChangeSubset ******/
 		/****** md5 signature: cbec19f3893244976644826379ec6795 ******/
@@ -2494,7 +2458,7 @@ Performs necessary updates when object's persistence types changes. This method 
 		void ChangeSubset(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_SelectableObjectSet::Contains ******/
-		/****** md5 signature: c1f9a600c1e0fefbd7b5415244e3f42a ******/
+		/****** md5 signature: f1f0ec327e5a23fb14f1d530e8d21efd ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -2509,7 +2473,7 @@ Description
 -----------
 Returns true if this objects set contains theObject given.
 ") Contains;
-		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
+		bool Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 
         /****************** DumpJson ******************/
@@ -2533,7 +2497,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_SelectableObjectSet::GetObjectById ******/
-		/****** md5 signature: 319a1ac965d889d963a38ef514f73d63 ******/
+		/****** md5 signature: f6f61c5efb2817161c62bb439e5d33bf ******/
 		%feature("compactdefaultargs") GetObjectById;
 		%feature("autodoc", "
 Parameters
@@ -2549,10 +2513,10 @@ Description
 -----------
 Returns object from subset theSubset by theIndex given. The method allows to get selectable object referred by the index of an element of the subset's BVH tree.
 ") GetObjectById;
-		const opencascade::handle<SelectMgr_SelectableObject> & GetObjectById(BVHSubset theSubset, const Standard_Integer theIndex);
+		const opencascade::handle<SelectMgr_SelectableObject> & GetObjectById(BVHSubset theSubset, const int theIndex);
 
 		/****** SelectMgr_SelectableObjectSet::IsEmpty ******/
-		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
+		/****** md5 signature: 70a41d5fe65955a28167088305fc6991 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2562,10 +2526,10 @@ Description
 -----------
 Returns true if the object set does not contain any selectable objects.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** SelectMgr_SelectableObjectSet::IsEmpty ******/
-		/****** md5 signature: 2d7141d3da6354df6cf3d6cf009cdabd ******/
+		/****** md5 signature: aa3304fcedd640c1d7e7f188f3aaf620 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "
 Parameters
@@ -2580,7 +2544,7 @@ Description
 -----------
 Returns true if the specified object subset is empty.
 ") IsEmpty;
-		Standard_Boolean IsEmpty(BVHSubset theSubset);
+		bool IsEmpty(BVHSubset theSubset);
 
 		/****** SelectMgr_SelectableObjectSet::MarkDirty ******/
 		/****** md5 signature: 37381481e073d0bb85d53a543d2b10a1 ******/
@@ -2596,7 +2560,7 @@ Marks every BVH subset for update.
 		void MarkDirty();
 
 		/****** SelectMgr_SelectableObjectSet::Remove ******/
-		/****** md5 signature: 38409779e63904bdbcb8289aacd622e4 ******/
+		/****** md5 signature: 17d31b3aa329e5f75faad58fb1791656 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -2612,16 +2576,16 @@ Description
 Removes the selectable object from the set. The selectable object is removed from the subset it has been placed into. After removing an object, this method marks the corresponding BVH tree for rebuild. 
 Return: true if selectable object is removed, otherwise returns false (selectable object is not in the set).
 ") Remove;
-		Standard_Boolean Remove(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
+		bool Remove(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_SelectableObjectSet::UpdateBVH ******/
-		/****** md5 signature: 8a4c543113d4a23f5fbc275c1d261940 ******/
+		/****** md5 signature: 44525ff74dab71226011f052d6ac08e5 ******/
 		%feature("compactdefaultargs") UpdateBVH;
 		%feature("autodoc", "
 Parameters
 ----------
 theCam: Graphic3d_Camera
-theWinSize: Graphic3d_Vec2i
+theWinSize: NCollection_Vec2<int>
 
 Return
 -------
@@ -2631,7 +2595,7 @@ Description
 -----------
 Updates outdated BVH trees and remembers the last state of the camera view-projection matrices and viewport (window) dimensions.
 ") UpdateBVH;
-		void UpdateBVH(const opencascade::handle<Graphic3d_Camera> & theCam, const Graphic3d_Vec2i & theWinSize);
+		void UpdateBVH(const opencascade::handle<Graphic3d_Camera> & theCam, const NCollection_Vec2<int> & theWinSize);
 
 };
 
@@ -2674,7 +2638,7 @@ Returns active selecting volume that was built during last run of OCCT selection
 		const opencascade::handle<SelectMgr_BaseIntersector> & ActiveVolume();
 
 		/****** SelectMgr_SelectingVolumeManager::AllowOverlapDetection ******/
-		/****** md5 signature: 835f65572d504a5580a4fc1007d46f5c ******/
+		/****** md5 signature: 19545399d9a9832a305273e52c4ed2fb ******/
 		%feature("compactdefaultargs") AllowOverlapDetection;
 		%feature("autodoc", "
 Parameters
@@ -2689,7 +2653,7 @@ Description
 -----------
 If theIsToAllow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
 ") AllowOverlapDetection;
-		virtual void AllowOverlapDetection(const Standard_Boolean theIsToAllow);
+		virtual void AllowOverlapDetection(const bool theIsToAllow);
 
 		/****** SelectMgr_SelectingVolumeManager::BuildSelectingVolume ******/
 		/****** md5 signature: 8d111d8f578ec131aa6dd52ce1a06500 ******/
@@ -2742,12 +2706,12 @@ No available documentation.
 		void BuildSelectingVolume(const gp_Pnt2d & theMinPt, const gp_Pnt2d & theMaxPt);
 
 		/****** SelectMgr_SelectingVolumeManager::BuildSelectingVolume ******/
-		/****** md5 signature: 0b768a2e513c26decf9d0f6a27302911 ******/
+		/****** md5 signature: a4a7cd4bacc8cdf6b65aad7669ef89fa ******/
 		%feature("compactdefaultargs") BuildSelectingVolume;
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: TColgp_Array1OfPnt2d
+thePoints: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -2757,7 +2721,7 @@ Description
 -----------
 No available documentation.
 ") BuildSelectingVolume;
-		void BuildSelectingVolume(const TColgp_Array1OfPnt2d & thePoints);
+		void BuildSelectingVolume(const NCollection_Array1<gp_Pnt2d> & thePoints);
 
 		/****** SelectMgr_SelectingVolumeManager::Camera ******/
 		/****** md5 signature: e0e8d00ee700afb9ca88da977e8b5747 ******/
@@ -2791,12 +2755,12 @@ Returns a copy of the selecting volume manager and its active frustum re-constru
 		virtual SelectMgr_SelectingVolumeManager CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_SelectingVolumeManager::DetectedPoint ******/
-		/****** md5 signature: f5119614d059d473f2e98823f778528f ******/
+		/****** md5 signature: fbd4a38baa50c48a3265b6e2806e3d68 ******/
 		%feature("compactdefaultargs") DetectedPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-theDepth: float
+theDepth: double
 
 Return
 -------
@@ -2806,10 +2770,10 @@ Description
 -----------
 Calculates the point on a view ray that was detected during the run of selection algo by given depth. Throws exception if active selection type is not Point.
 ") DetectedPoint;
-		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
+		gp_Pnt DetectedPoint(const double theDepth);
 
 		/****** SelectMgr_SelectingVolumeManager::DistToGeometryCenter ******/
-		/****** md5 signature: ef4883136b3d59dc96190e78632a000d ******/
+		/****** md5 signature: 221e331c0c6bbab729e487478612b76f ******/
 		%feature("compactdefaultargs") DistToGeometryCenter;
 		%feature("autodoc", "
 Parameters
@@ -2818,13 +2782,13 @@ theCOG: gp_Pnt
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Measures distance between 3d projection of user-picked screen point and given point theCOG.
 ") DistToGeometryCenter;
-		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
+		double DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
         /****************** DumpJson ******************/
@@ -2848,7 +2812,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_SelectingVolumeManager::GetActiveSelectionType ******/
-		/****** md5 signature: 6be7281ca743652d206dad6a0c6f5952 ******/
+		/****** md5 signature: f465d9600a61bbc89705b899396de136 ******/
 		%feature("compactdefaultargs") GetActiveSelectionType;
 		%feature("autodoc", "Return
 -------
@@ -2858,10 +2822,10 @@ Description
 -----------
 No available documentation.
 ") GetActiveSelectionType;
-		virtual Standard_Integer GetActiveSelectionType();
+		int GetActiveSelectionType();
 
 		/****** SelectMgr_SelectingVolumeManager::GetFarPickedPnt ******/
-		/****** md5 signature: 2ffbc3246baa8ae88d6d155b2475b10c ******/
+		/****** md5 signature: 62507f3ed6ac4288023936d85d4f4dda ******/
 		%feature("compactdefaultargs") GetFarPickedPnt;
 		%feature("autodoc", "Return
 -------
@@ -2871,10 +2835,10 @@ Description
 -----------
 Valid only for point and rectangular selection. Returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto far view frustum plane.
 ") GetFarPickedPnt;
-		virtual gp_Pnt GetFarPickedPnt();
+		gp_Pnt GetFarPickedPnt();
 
 		/****** SelectMgr_SelectingVolumeManager::GetMousePosition ******/
-		/****** md5 signature: dcc0cc032f698db0f9d95560a7ad20f9 ******/
+		/****** md5 signature: 30ca0c392dd17660bd5c2f3d39b8af3c ******/
 		%feature("compactdefaultargs") GetMousePosition;
 		%feature("autodoc", "Return
 -------
@@ -2885,10 +2849,10 @@ Description
 Returns mouse coordinates for Point selection mode. 
 Return: infinite point in case of unsupport of mouse position for this active selection volume.
 ") GetMousePosition;
-		virtual gp_Pnt2d GetMousePosition();
+		gp_Pnt2d GetMousePosition();
 
 		/****** SelectMgr_SelectingVolumeManager::GetNearPickedPnt ******/
-		/****** md5 signature: d103f12e1b34a4596056c78f0c8a540b ******/
+		/****** md5 signature: 738c63da4b41512ad7337e1bdd59320d ******/
 		%feature("compactdefaultargs") GetNearPickedPnt;
 		%feature("autodoc", "Return
 -------
@@ -2898,15 +2862,15 @@ Description
 -----------
 Valid only for point and rectangular selection. Returns projection of 2d mouse picked point or projection of center of 2d rectangle (for point and rectangular selection correspondingly) onto near view frustum plane.
 ") GetNearPickedPnt;
-		virtual gp_Pnt GetNearPickedPnt();
+		gp_Pnt GetNearPickedPnt();
 
 		/****** SelectMgr_SelectingVolumeManager::GetPlanes ******/
-		/****** md5 signature: 6ca80f788783698f67ff4f449d84c80c ******/
+		/****** md5 signature: a57d88686bceb86bb58f4a8edb58b4d2 ******/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "
 Parameters
 ----------
-thePlaneEquations: NCollection_Vector<SelectMgr_Vec4>
+thePlaneEquations: NCollection_Vector<NCollection_Vec4<double> >
 
 Return
 -------
@@ -2916,7 +2880,7 @@ Description
 -----------
 Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector.
 ") GetPlanes;
-		virtual void GetPlanes(NCollection_Vector<SelectMgr_Vec4> & thePlaneEquations);
+		void GetPlanes(NCollection_Vector<NCollection_Vec4<double> > & thePlaneEquations);
 
 		/****** SelectMgr_SelectingVolumeManager::GetVertices ******/
 		/****** md5 signature: 97f9768e715df9214ec06c43990766fc ******/
@@ -2932,7 +2896,7 @@ A set of helper functions that return rectangular selecting frustum data.
 		const gp_Pnt * GetVertices();
 
 		/****** SelectMgr_SelectingVolumeManager::GetViewRayDirection ******/
-		/****** md5 signature: 21f31209db824731d7acac6bf2abae83 ******/
+		/****** md5 signature: 232ece5329e68d4c353aa3a0cd3ddcb2 ******/
 		%feature("compactdefaultargs") GetViewRayDirection;
 		%feature("autodoc", "Return
 -------
@@ -2942,7 +2906,7 @@ Description
 -----------
 Valid only for point and rectangular selection. Returns view ray direction.
 ") GetViewRayDirection;
-		virtual gp_Dir GetViewRayDirection();
+		gp_Dir GetViewRayDirection();
 
 		/****** SelectMgr_SelectingVolumeManager::InitAxisSelectingVolume ******/
 		/****** md5 signature: 26109159d24d5be10c951c3c439d4af1 ******/
@@ -3000,12 +2964,12 @@ Creates, initializes and activates rectangular selecting frustum for point selec
 		void InitPointSelectingVolume(const gp_Pnt2d & thePoint);
 
 		/****** SelectMgr_SelectingVolumeManager::InitPolylineSelectingVolume ******/
-		/****** md5 signature: 91b0266302c5afb5d62b7b293bb285dc ******/
+		/****** md5 signature: f755d32597af5e9cb4cd2648c6f52ec9 ******/
 		%feature("compactdefaultargs") InitPolylineSelectingVolume;
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: TColgp_Array1OfPnt2d
+thePoints: NCollection_Array1<gp_Pnt2d>
 
 Return
 -------
@@ -3015,7 +2979,7 @@ Description
 -----------
 Creates, initializes and activates set of triangular selecting frustums for polyline selection.
 ") InitPolylineSelectingVolume;
-		void InitPolylineSelectingVolume(const TColgp_Array1OfPnt2d & thePoints);
+		void InitPolylineSelectingVolume(const NCollection_Array1<gp_Pnt2d> & thePoints);
 
 		/****** SelectMgr_SelectingVolumeManager::InitSelectingVolume ******/
 		/****** md5 signature: a70f6f4650e5b257e6e7420cd2ae830d ******/
@@ -3036,7 +3000,7 @@ Sets as active the custom selecting volume.
 		void InitSelectingVolume(const opencascade::handle<SelectMgr_BaseIntersector> & theVolume);
 
 		/****** SelectMgr_SelectingVolumeManager::IsOverlapAllowed ******/
-		/****** md5 signature: 7d8f9be9184a75e442465114e308659f ******/
+		/****** md5 signature: 22f1259ec610422bdbd16f5aa9ce686f ******/
 		%feature("compactdefaultargs") IsOverlapAllowed;
 		%feature("autodoc", "Return
 -------
@@ -3046,10 +3010,10 @@ Description
 -----------
 No available documentation.
 ") IsOverlapAllowed;
-		virtual Standard_Boolean IsOverlapAllowed();
+		bool IsOverlapAllowed();
 
 		/****** SelectMgr_SelectingVolumeManager::IsScalableActiveVolume ******/
-		/****** md5 signature: cec63286df013390f8db8e217254c9db ******/
+		/****** md5 signature: 314a0b2c32c5d66db71369789edce046 ******/
 		%feature("compactdefaultargs") IsScalableActiveVolume;
 		%feature("autodoc", "Return
 -------
@@ -3059,7 +3023,7 @@ Description
 -----------
 Checks if it is possible to scale current active selecting volume.
 ") IsScalableActiveVolume;
-		virtual Standard_Boolean IsScalableActiveVolume();
+		bool IsScalableActiveVolume();
 
 		/****** SelectMgr_SelectingVolumeManager::ObjectClipping ******/
 		/****** md5 signature: f6c35522166321d4f812458a964f18cf ******/
@@ -3075,13 +3039,13 @@ Return object clipping planes.
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ObjectClipping();
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsBox ******/
-		/****** md5 signature: 4b7c5cc7fac549e880a63ba09353ab83 ******/
+		/****** md5 signature: 9d0525c52d355591a9b568c55a77648a ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoxMin: SelectMgr_Vec3
-theBoxMax: SelectMgr_Vec3
+theBoxMin: NCollection_Vec3<double>
+theBoxMax: NCollection_Vec3<double>
 thePickResult: SelectBasics_PickResult
 
 Return
@@ -3092,17 +3056,17 @@ Description
 -----------
 SAT intersection test between defined volume and given axis-aligned box.
 ") OverlapsBox;
-		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, SelectBasics_PickResult & thePickResult);
+		bool OverlapsBox(const NCollection_Vec3<double> & theBoxMin, const NCollection_Vec3<double> & theBoxMax, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsBox ******/
-		/****** md5 signature: 4811ebe00d4b1a89d64ffa793d81cfd8 ******/
+		/****** md5 signature: 5b67b30efeac51e03f3450448b09caad ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoxMin: SelectMgr_Vec3
-theBoxMax: SelectMgr_Vec3
-theInside: bool * (optional, default to NULL)
+theBoxMin: NCollection_Vec3<double>
+theBoxMax: NCollection_Vec3<double>
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -3112,15 +3076,15 @@ Description
 -----------
 Returns true if selecting volume is overlapped by axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
-		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside = NULL);
+		bool OverlapsBox(const NCollection_Vec3<double> & theBoxMin, const NCollection_Vec3<double> & theBoxMax, bool * theInside = nullptr);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsCircle ******/
-		/****** md5 signature: a5e8b2ad3dd509a0ad4372aec7d3aede ******/
+		/****** md5 signature: 9cc6440d0d0285c8ccfad002b9114ae3 ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
+theBottomRad: double
 theTrsf: gp_Trsf
 theIsFilled: bool
 thePickResult: SelectBasics_PickResult
@@ -3133,18 +3097,18 @@ Description
 -----------
 Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
-		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, SelectBasics_PickResult & thePickResult);
+		bool OverlapsCircle(const double theBottomRad, const gp_Trsf & theTrsf, const bool theIsFilled, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsCircle ******/
-		/****** md5 signature: cb1ebbe468321c3e49cdbee05abcc353 ******/
+		/****** md5 signature: c4987de440fcb843109b225348241749 ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
+theBottomRad: double
 theTrsf: gp_Trsf
 theIsFilled: bool
-theInside: bool * (optional, default to NULL)
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -3154,17 +3118,17 @@ Description
 -----------
 Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
-		virtual Standard_Boolean OverlapsCircle(const Standard_Real theBottomRad, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
+		bool OverlapsCircle(const double theBottomRad, const gp_Trsf & theTrsf, const bool theIsFilled, bool * theInside = nullptr);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsCylinder ******/
-		/****** md5 signature: d903d498b12867fd555a989bc565b71a ******/
+		/****** md5 signature: ab68d47ebc5161815e697b376b950153 ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theTrsf: gp_Trsf
 theIsHollow: bool
 thePickResult: SelectBasics_PickResult
@@ -3177,20 +3141,20 @@ Description
 -----------
 Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, SelectBasics_PickResult & thePickResult);
+		bool OverlapsCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const gp_Trsf & theTrsf, const bool theIsHollow, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsCylinder ******/
-		/****** md5 signature: bbb4061ebe4835347b55e7c89fef0fcc ******/
+		/****** md5 signature: 3a0cf391a62309adf4fd039dfd8c44cc ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theTrsf: gp_Trsf
 theIsHollow: bool
-theInside: bool * (optional, default to NULL)
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -3200,10 +3164,10 @@ Description
 -----------
 Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
+		bool OverlapsCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const gp_Trsf & theTrsf, const bool theIsHollow, bool * theInside = nullptr);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsPoint ******/
-		/****** md5 signature: dc4b85981b0c33d2a566ec628898624d ******/
+		/****** md5 signature: 1b8056b07dab16dfca240c2ec47f02c4 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -3219,10 +3183,10 @@ Description
 -----------
 Intersection test between defined volume and given point.
 ") OverlapsPoint;
-		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
+		bool OverlapsPoint(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsPoint ******/
-		/****** md5 signature: d7b37b52b3a018e10f4074a808688275 ******/
+		/****** md5 signature: 30729f6e4505f9092d160d85812a66f4 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -3237,15 +3201,15 @@ Description
 -----------
 Intersection test between defined volume and given point.
 ") OverlapsPoint;
-		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
+		bool OverlapsPoint(const gp_Pnt & thePnt);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsPolygon ******/
-		/****** md5 signature: 191ac64a95f79df4fa49ccb283f0714b ******/
+		/****** md5 signature: 8861d5d40cdd2306d8b8c4f0aedc85bc ******/
 		%feature("compactdefaultargs") OverlapsPolygon;
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPts: TColgp_Array1OfPnt
+theArrayOfPts: NCollection_Array1<gp_Pnt>
 theSensType: int
 thePickResult: SelectBasics_PickResult
 
@@ -3257,10 +3221,10 @@ Description
 -----------
 SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
-		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+		bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsSegment ******/
-		/****** md5 signature: 9facfbdce7f5efd87b89a4104b49953f ******/
+		/****** md5 signature: b88508ccd7f14a7b4d1fd53099018d3f ******/
 		%feature("compactdefaultargs") OverlapsSegment;
 		%feature("autodoc", "
 Parameters
@@ -3277,16 +3241,16 @@ Description
 -----------
 Checks if line segment overlaps selecting frustum.
 ") OverlapsSegment;
-		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, SelectBasics_PickResult & thePickResult);
+		bool OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsSphere ******/
-		/****** md5 signature: e847078d05a6a0ce1e7e3f093c489ddb ******/
+		/****** md5 signature: 6cdac13d812815de1547308c86a24337 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
+theRadius: double
 thePickResult: SelectBasics_PickResult
 
 Return
@@ -3297,17 +3261,17 @@ Description
 -----------
 Intersection test between defined volume and given sphere.
 ") OverlapsSphere;
-		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, SelectBasics_PickResult & thePickResult);
+		bool OverlapsSphere(const gp_Pnt & theCenter, const double theRadius, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsSphere ******/
-		/****** md5 signature: 2b7a70713e1032389098753ec8495331 ******/
+		/****** md5 signature: 7ade39630120d4203a19ff852f9eb4a1 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
-theInside: bool * (optional, default to NULL)
+theRadius: double
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -3317,10 +3281,10 @@ Description
 -----------
 Intersection test between defined volume and given sphere.
 ") OverlapsSphere;
-		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+		bool OverlapsSphere(const gp_Pnt & theCenter, const double theRadius, bool * theInside = nullptr);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsTriangle ******/
-		/****** md5 signature: 638ac865012392274d476eb994ef2dfc ******/
+		/****** md5 signature: 7eee83ecf03f6f7125002e4340c40d50 ******/
 		%feature("compactdefaultargs") OverlapsTriangle;
 		%feature("autodoc", "
 Parameters
@@ -3339,10 +3303,10 @@ Description
 -----------
 SAT intersection test between defined volume and given triangle. The test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 ") OverlapsTriangle;
-		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
+		bool OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, int theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::ScaleAndTransform ******/
-		/****** md5 signature: 52c642a3c1880fb8abb130dbb36a0aff ******/
+		/****** md5 signature: 9e795074aed64800b0cfa0e285928933 ******/
 		%feature("compactdefaultargs") ScaleAndTransform;
 		%feature("autodoc", "
 Parameters
@@ -3359,7 +3323,7 @@ Description
 -----------
 IMPORTANT: Scaling makes sense only for frustum built on a single point! Note that this method does not perform any checks on type of the frustum. //! Returns a copy of the frustum resized according to the scale factor given and transforms it using the matrix given. There are no default parameters, but in case if: - transformation only is needed: @theScaleFactor must be initialized as any negative value; - scale only is needed: @theTrsf must be set to gp_Identity. Builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. Can be null if reconstruction is not expected furthermore.
 ") ScaleAndTransform;
-		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+		virtual SelectMgr_SelectingVolumeManager ScaleAndTransform(const int theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_SelectingVolumeManager::SetCamera ******/
 		/****** md5 signature: feb4846a043de91d4d1b29714dfe3b70 ******/
@@ -3380,7 +3344,7 @@ Updates camera projection and orientation matrices in all selecting volumes Note
 		void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****** SelectMgr_SelectingVolumeManager::SetPixelTolerance ******/
-		/****** md5 signature: fda084bdc0d0a8e945d1f4e82a500297 ******/
+		/****** md5 signature: 24210d7a6ede443c7b9b7e1465a29b37 ******/
 		%feature("compactdefaultargs") SetPixelTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3395,7 +3359,7 @@ Description
 -----------
 Updates pixel tolerance in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetPixelTolerance;
-		void SetPixelTolerance(const Standard_Integer theTolerance);
+		void SetPixelTolerance(const int theTolerance);
 
 		/****** SelectMgr_SelectingVolumeManager::SetViewClipRanges ******/
 		/****** md5 signature: 93d9d36012f3af07e2014408dc48db5e ******/
@@ -3457,15 +3421,15 @@ Copy clipping planes from another volume manager.
 		void SetViewClipping(const SelectMgr_SelectingVolumeManager & theOther);
 
 		/****** SelectMgr_SelectingVolumeManager::SetViewport ******/
-		/****** md5 signature: 8a132d12573d3301f6dc1103aa3c5d06 ******/
+		/****** md5 signature: 6434315586423ecd16144dba46f5869b ******/
 		%feature("compactdefaultargs") SetViewport;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theWidth: float
-theHeight: float
+theX: double
+theY: double
+theWidth: double
+theHeight: double
 
 Return
 -------
@@ -3475,10 +3439,10 @@ Description
 -----------
 Updates viewport in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetViewport;
-		void SetViewport(const Standard_Real theX, const Standard_Real theY, const Standard_Real theWidth, const Standard_Real theHeight);
+		void SetViewport(const double theX, const double theY, const double theWidth, const double theHeight);
 
 		/****** SelectMgr_SelectingVolumeManager::SetWindowSize ******/
-		/****** md5 signature: 8f5369c74a4835dacda32c89cfdc6f2a ******/
+		/****** md5 signature: 893fec2368bfa674a6aeb725241927cf ******/
 		%feature("compactdefaultargs") SetWindowSize;
 		%feature("autodoc", "
 Parameters
@@ -3494,7 +3458,7 @@ Description
 -----------
 Updates window size in all selecting volumes Note: this method should be called after selection volume building else exception will be thrown.
 ") SetWindowSize;
-		void SetWindowSize(const Standard_Integer theWidth, const Standard_Integer theHeight);
+		void SetWindowSize(const int theWidth, const int theHeight);
 
 		/****** SelectMgr_SelectingVolumeManager::ViewClipRanges ******/
 		/****** md5 signature: 4220e845cb705bc0e9750141f885c41f ******/
@@ -3523,7 +3487,7 @@ Return view clipping planes.
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ViewClipping();
 
 		/****** SelectMgr_SelectingVolumeManager::WindowSize ******/
-		/****** md5 signature: b6b9e026658a5426a88d46691f9f9543 ******/
+		/****** md5 signature: 99f8426008f1e97982312e7c169dd5b6 ******/
 		%feature("compactdefaultargs") WindowSize;
 		%feature("autodoc", "
 Parameters
@@ -3555,7 +3519,7 @@ Returns window size.
 class SelectMgr_Selection : public Standard_Transient {
 	public:
 		/****** SelectMgr_Selection::SelectMgr_Selection ******/
-		/****** md5 signature: 9ac3ca045be3031d968cd042caaac23f ******/
+		/****** md5 signature: e799c84d0b3efec1ab5681a6c14f3dea ******/
 		%feature("compactdefaultargs") SelectMgr_Selection;
 		%feature("autodoc", "
 Parameters
@@ -3570,7 +3534,7 @@ Description
 -----------
 Constructs a selection object defined by the selection mode IdMode. The default setting 0 is the selection mode for a shape in its entirety.
 ") SelectMgr_Selection;
-		 SelectMgr_Selection(const Standard_Integer theModeIdx = 0);
+		 SelectMgr_Selection(const int theModeIdx = 0);
 
 		/****** SelectMgr_Selection::Add ******/
 		/****** md5 signature: 71a26d66d0f562b3cb53c9a86dd02409 ******/
@@ -3690,7 +3654,7 @@ Returns status of selection.
 		SelectMgr_StateOfSelection GetSelectionState();
 
 		/****** SelectMgr_Selection::IsEmpty ******/
-		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
+		/****** md5 signature: 70a41d5fe65955a28167088305fc6991 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3700,10 +3664,10 @@ Description
 -----------
 returns true if no sensitive entity is stored.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** SelectMgr_Selection::Mode ******/
-		/****** md5 signature: b35445cddc9deccdf8a4cb5a0f8a439b ******/
+		/****** md5 signature: 09d98ebbe6bcf8e23b5b0e49c47a4193 ******/
 		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "Return
 -------
@@ -3713,10 +3677,10 @@ Description
 -----------
 returns the selection mode represented by this selection.
 ") Mode;
-		Standard_Integer Mode();
+		int Mode();
 
 		/****** SelectMgr_Selection::Sensitivity ******/
-		/****** md5 signature: 894e656cca525e78bf786c9f7c8e748c ******/
+		/****** md5 signature: f9511b97108fb128eb71305a872019ba ******/
 		%feature("compactdefaultargs") Sensitivity;
 		%feature("autodoc", "Return
 -------
@@ -3726,7 +3690,7 @@ Description
 -----------
 Returns sensitivity of the selection.
 ") Sensitivity;
-		Standard_Integer Sensitivity();
+		int Sensitivity();
 
 		/****** SelectMgr_Selection::SetSelectionState ******/
 		/****** md5 signature: 52315cee0ff9f6ef54aa507592384dcb ******/
@@ -3747,7 +3711,7 @@ Sets status of selection.
 		void SetSelectionState(const SelectMgr_StateOfSelection theState);
 
 		/****** SelectMgr_Selection::SetSensitivity ******/
-		/****** md5 signature: f2ec8e66d8f4652f3773fe91d3990c07 ******/
+		/****** md5 signature: edccbc0aaf78b83de286347758251d54 ******/
 		%feature("compactdefaultargs") SetSensitivity;
 		%feature("autodoc", "
 Parameters
@@ -3762,7 +3726,7 @@ Description
 -----------
 Changes sensitivity of the selection and all its entities to the given value. IMPORTANT: This method does not update any outer selection structures, so for proper updates use SelectMgr_SelectionManager::SetSelectionSensitivity method.
 ") SetSensitivity;
-		void SetSensitivity(const Standard_Integer theNewSens);
+		void SetSensitivity(const int theNewSens);
 
 		/****** SelectMgr_Selection::UpdateBVHStatus ******/
 		/****** md5 signature: 625f0bf1e7f890f4f4f356ca8beab0d9 ******/
@@ -3831,7 +3795,7 @@ No available documentation.
 class SelectMgr_SelectionImageFiller : public Standard_Transient {
 	public:
 		/****** SelectMgr_SelectionImageFiller::Fill ******/
-		/****** md5 signature: ac33eb3f0186edc584f4a3ec924c4232 ******/
+		/****** md5 signature: 5faa5d2abf90aee3c83da10f44369e4e ******/
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "
 Parameters
@@ -3848,7 +3812,7 @@ Description
 -----------
 Fill pixel at specified position.
 ") Fill;
-		virtual void Fill(const Standard_Integer theCol, const Standard_Integer theRow, const Standard_Integer thePicked);
+		virtual void Fill(const int theCol, const int theRow, const int thePicked);
 
 		/****** SelectMgr_SelectionImageFiller::Flush ******/
 		/****** md5 signature: 0b647fbdc1be587b83fd253c3c168f73 ******/
@@ -3902,7 +3866,7 @@ Constructs an empty selection manager object.
 		 SelectMgr_SelectionManager(const opencascade::handle<SelectMgr_ViewerSelector> & theSelector);
 
 		/****** SelectMgr_SelectionManager::Activate ******/
-		/****** md5 signature: 37a9576e90f83c38812f4f39f0f7470d ******/
+		/****** md5 signature: 1498448a38dc406b6b56e3259a22ef49 ******/
 		%feature("compactdefaultargs") Activate;
 		%feature("autodoc", "
 Parameters
@@ -3918,10 +3882,10 @@ Description
 -----------
 Activates the selection mode theMode in the selector theSelector for the selectable object anObject. By default, theMode is equal to 0. If theSelector is set to default (NULL), the selection with the mode theMode will be activated in all the viewers available.
 ") Activate;
-		void Activate(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = 0);
+		void Activate(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const int theMode = 0);
 
 		/****** SelectMgr_SelectionManager::ClearSelectionStructures ******/
-		/****** md5 signature: ebfea862f43b96343951ec99b7fdaf01 ******/
+		/****** md5 signature: 38f10661498b9ca75057d780d9c3c08b ******/
 		%feature("compactdefaultargs") ClearSelectionStructures;
 		%feature("autodoc", "
 Parameters
@@ -3937,10 +3901,10 @@ Description
 -----------
 Removes sensitive entities from all viewer selectors after method Clear() was called to the selection they belonged to or it was recomputed somehow.
 ") ClearSelectionStructures;
-		void ClearSelectionStructures(const opencascade::handle<SelectMgr_SelectableObject> & theObj, const Standard_Integer theMode = -1);
+		void ClearSelectionStructures(const opencascade::handle<SelectMgr_SelectableObject> & theObj, const int theMode = -1);
 
 		/****** SelectMgr_SelectionManager::Contains ******/
-		/****** md5 signature: 78a3e6bbff753619951717c11cf591d9 ******/
+		/****** md5 signature: f74bb921121a90d333b23922af840f66 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -3955,10 +3919,10 @@ Description
 -----------
 Returns true if the manager contains the selectable object theObject.
 ") Contains;
-		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
+		bool Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_SelectionManager::Deactivate ******/
-		/****** md5 signature: d5b2c3b0bad1d008ddd47b0f6bf05482 ******/
+		/****** md5 signature: 0f9ac49f33ce45e48caa790b400bb04f ******/
 		%feature("compactdefaultargs") Deactivate;
 		%feature("autodoc", "
 Parameters
@@ -3974,10 +3938,10 @@ Description
 -----------
 Deactivates mode theMode of theObject in theSelector. If theMode value is set to default (-1), all active selection modes will be deactivated. Likewise, if theSelector value is set to default (NULL), theMode will be deactivated in all viewer selectors.
 ") Deactivate;
-		void Deactivate(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = -1);
+		void Deactivate(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const int theMode = -1);
 
 		/****** SelectMgr_SelectionManager::IsActivated ******/
-		/****** md5 signature: 7740a684256eb944801d8f6eb45d6b6e ******/
+		/****** md5 signature: 8e4f2b571a4304b9517213bcfa77eb3f ******/
 		%feature("compactdefaultargs") IsActivated;
 		%feature("autodoc", "
 Parameters
@@ -3993,10 +3957,10 @@ Description
 -----------
 Returns true if the selection with theMode is active for the selectable object theObject and selector theSelector. If all parameters are set to default values, it returns it there is any active selection in any known viewer selector for object theObject.
 ") IsActivated;
-		Standard_Boolean IsActivated(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = -1);
+		bool IsActivated(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const int theMode = -1);
 
 		/****** SelectMgr_SelectionManager::Load ******/
-		/****** md5 signature: e6b1abe0ec87c3850182d093010bd2a9 ******/
+		/****** md5 signature: dea13f29369f17f96e9e5c106fa51356 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -4012,16 +3976,16 @@ Description
 -----------
 Loads and computes selection mode theMode (if it is not equal to -1) in global context and adds selectable object to BVH tree. If the object theObject has an already calculated selection with mode theMode and it was removed, the selection will be recalculated.
 ") Load;
-		void Load(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode = -1);
+		void Load(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const int theMode = -1);
 
 		/****** SelectMgr_SelectionManager::RecomputeSelection ******/
-		/****** md5 signature: e300f8385906c722b92102da39866740 ******/
+		/****** md5 signature: 5addc7aa1a1a5701f6e8a6099896997f ******/
 		%feature("compactdefaultargs") RecomputeSelection;
 		%feature("autodoc", "
 Parameters
 ----------
 theObject: SelectMgr_SelectableObject
-theIsForce: bool (optional, default to Standard_False)
+theIsForce: bool (optional, default to false)
 theMode: int (optional, default to -1)
 
 Return
@@ -4032,7 +3996,7 @@ Description
 -----------
 Recomputes activated selections of theObject for all known viewer selectors according to theMode specified. If theMode is set to default (-1), then all activated selections will be recomputed. If theIsForce is set to true, then selection mode theMode for object theObject will be recomputed regardless of its activation status.
 ") RecomputeSelection;
-		void RecomputeSelection(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Boolean theIsForce = Standard_False, const Standard_Integer theMode = -1);
+		void RecomputeSelection(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const bool theIsForce = false, const int theMode = -1);
 
 		/****** SelectMgr_SelectionManager::Remove ******/
 		/****** md5 signature: 5c3ed8204b6dc5eb677f6f9a648ae5af ******/
@@ -4053,7 +4017,7 @@ Removes selectable object theObject from all viewer selectors it was added to pr
 		void Remove(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_SelectionManager::RestoreSelectionStructures ******/
-		/****** md5 signature: 36d61c341ed8fda882c98e9c56dffe4b ******/
+		/****** md5 signature: b5cdb29c174500c8ec43746990d6e60a ******/
 		%feature("compactdefaultargs") RestoreSelectionStructures;
 		%feature("autodoc", "
 Parameters
@@ -4069,7 +4033,7 @@ Description
 -----------
 Re-adds newly calculated sensitive entities of recomputed selection defined by mode theMode to all viewer selectors contained that selection.
 ") RestoreSelectionStructures;
-		void RestoreSelectionStructures(const opencascade::handle<SelectMgr_SelectableObject> & theObj, const Standard_Integer theMode = -1);
+		void RestoreSelectionStructures(const opencascade::handle<SelectMgr_SelectableObject> & theObj, const int theMode = -1);
 
 		/****** SelectMgr_SelectionManager::Selector ******/
 		/****** md5 signature: e8522c885bf82402a0d8d84a7ddb20d4 ******/
@@ -4085,7 +4049,7 @@ Return the Selector.
 		const opencascade::handle<SelectMgr_ViewerSelector> & Selector();
 
 		/****** SelectMgr_SelectionManager::SetSelectionSensitivity ******/
-		/****** md5 signature: 96fed071fae2e728644acb87b701b105 ******/
+		/****** md5 signature: 5e721c18aa5a88446bc7df3e7c1ad0fc ******/
 		%feature("compactdefaultargs") SetSelectionSensitivity;
 		%feature("autodoc", "
 Parameters
@@ -4102,7 +4066,7 @@ Description
 -----------
 Allows to manage sensitivity of a particular selection of interactive object theObject and changes previous sensitivity value of all sensitive entities in selection with theMode to the given theNewSensitivity.
 ") SetSelectionSensitivity;
-		void SetSelectionSensitivity(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode, const Standard_Integer theNewSens);
+		void SetSelectionSensitivity(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const int theMode, const int theNewSens);
 
 		/****** SelectMgr_SelectionManager::SetUpdateMode ******/
 		/****** md5 signature: 217adbac30d2e6e8e02226954bf1cf79 ******/
@@ -4124,7 +4088,7 @@ Sets type of update of all selections of theObject to the given theType.
 		void SetUpdateMode(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const SelectMgr_TypeOfUpdate theType);
 
 		/****** SelectMgr_SelectionManager::SetUpdateMode ******/
-		/****** md5 signature: 03c8b733d6c03b59708a515b2907828a ******/
+		/****** md5 signature: d4a6283fe4b6c17e07245b8b85e85070 ******/
 		%feature("compactdefaultargs") SetUpdateMode;
 		%feature("autodoc", "
 Parameters
@@ -4141,16 +4105,16 @@ Description
 -----------
 Sets type of update of selection with theMode of theObject to the given theType.
 ") SetUpdateMode;
-		void SetUpdateMode(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Integer theMode, const SelectMgr_TypeOfUpdate theType);
+		void SetUpdateMode(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const int theMode, const SelectMgr_TypeOfUpdate theType);
 
 		/****** SelectMgr_SelectionManager::Update ******/
-		/****** md5 signature: 343dab128743b4328530093d30198fd7 ******/
+		/****** md5 signature: add7598b222e204a986030b9def934dd ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
 ----------
 theObject: SelectMgr_SelectableObject
-theIsForce: bool (optional, default to Standard_True)
+theIsForce: bool (optional, default to true)
 
 Return
 -------
@@ -4160,7 +4124,7 @@ Description
 -----------
 Updates all selections of theObject in all viewer selectors according to its current update status. If theIsForce is set to true, the call is equal to recomputation.
 ") Update;
-		void Update(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Boolean theIsForce = Standard_True);
+		void Update(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const bool theIsForce = true);
 
 		/****** SelectMgr_SelectionManager::UpdateSelection ******/
 		/****** md5 signature: 90140c94519afc73ed5d79551b57949f ******/
@@ -4262,7 +4226,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_SensitiveEntity::IsActiveForSelection ******/
-		/****** md5 signature: 3187ce5cffb320503d698db8ebb12ce6 ******/
+		/****** md5 signature: 946d67adfa57b9f56fc2792cb7c40fa0 ******/
 		%feature("compactdefaultargs") IsActiveForSelection;
 		%feature("autodoc", "Return
 -------
@@ -4272,7 +4236,7 @@ Description
 -----------
 Returns true if this entity belongs to the active selection mode of parent object.
 ") IsActiveForSelection;
-		Standard_Boolean IsActiveForSelection();
+		bool IsActiveForSelection();
 
 		/****** SelectMgr_SensitiveEntity::ResetSelectionActiveStatus ******/
 		/****** md5 signature: 402136f369578fcfbf1be5ee51c22a53 ******/
@@ -4371,7 +4335,7 @@ Adds every entity of selection theSelection to the set and marks BVH tree for re
 		void Append(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
 		/****** SelectMgr_SensitiveEntitySet::Box ******/
-		/****** md5 signature: 22c3eb5645e6347dd0035e626594efa9 ******/
+		/****** md5 signature: de1109f1341fdbd23b9b340b83f4c66b ******/
 		%feature("compactdefaultargs") Box;
 		%feature("autodoc", "
 Parameters
@@ -4386,10 +4350,10 @@ Description
 -----------
 Returns bounding box of entity with index theIdx.
 ") Box;
-		virtual Select3D_BndBox3d Box(const Standard_Integer theIndex);
+		Select3D_BndBox3d Box(const int theIndex);
 
 		/****** SelectMgr_SensitiveEntitySet::Center ******/
-		/****** md5 signature: 48de7c6a76513e5acf63fc9dd37f0c0a ******/
+		/****** md5 signature: e1de2d1f4b9b0e292d065694299e03dd ******/
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "
 Parameters
@@ -4399,16 +4363,16 @@ theAxis: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns geometry center of sensitive entity index theIdx along the given axis theAxis.
 ") Center;
-		virtual Standard_Real Center(const Standard_Integer theIndex, const Standard_Integer theAxis);
+		double Center(const int theIndex, const int theAxis);
 
 		/****** SelectMgr_SensitiveEntitySet::GetSensitiveById ******/
-		/****** md5 signature: 0ecedd38df9fbb4e470a13be1d749c50 ******/
+		/****** md5 signature: d397d5250b4efd241e19fb5f6ec13bbe ******/
 		%feature("compactdefaultargs") GetSensitiveById;
 		%feature("autodoc", "
 Parameters
@@ -4423,10 +4387,10 @@ Description
 -----------
 Returns the entity with index theIndex in the set.
 ") GetSensitiveById;
-		const opencascade::handle<SelectMgr_SensitiveEntity> & GetSensitiveById(const Standard_Integer theIndex);
+		const opencascade::handle<SelectMgr_SensitiveEntity> & GetSensitiveById(const int theIndex);
 
 		/****** SelectMgr_SensitiveEntitySet::HasEntityWithPersistence ******/
-		/****** md5 signature: 881be9af2b4b9997aeaef6aa199c6613 ******/
+		/****** md5 signature: a6f2b916a10376f78a1771159a598d29 ******/
 		%feature("compactdefaultargs") HasEntityWithPersistence;
 		%feature("autodoc", "Return
 -------
@@ -4436,20 +4400,20 @@ Description
 -----------
 Returns map of entities.
 ") HasEntityWithPersistence;
-		Standard_Boolean HasEntityWithPersistence();
+		bool HasEntityWithPersistence();
 
 		/****** SelectMgr_SensitiveEntitySet::Owners ******/
-		/****** md5 signature: 70c8cbbe5355e413322d0ca24aff8221 ******/
+		/****** md5 signature: a3cf4fc8a1eba2fad744cc7f4de2dcdd ******/
 		%feature("compactdefaultargs") Owners;
 		%feature("autodoc", "Return
 -------
-SelectMgr_MapOfOwners
+NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>, int>
 
 Description
 -----------
 Returns map of owners.
 ") Owners;
-		const SelectMgr_MapOfOwners & Owners();
+		const NCollection_DataMap<opencascade::handle<SelectMgr_EntityOwner>, int> & Owners();
 
 		/****** SelectMgr_SensitiveEntitySet::Remove ******/
 		/****** md5 signature: a10f175ccd1487b6c7e3d1ea673a92cf ******/
@@ -4470,20 +4434,20 @@ Removes every entity of selection theSelection from the set and marks BVH tree f
 		void Remove(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
 		/****** SelectMgr_SensitiveEntitySet::Sensitives ******/
-		/****** md5 signature: 67c2bd61a84de23112cd1ec72645954f ******/
+		/****** md5 signature: fd0385fed6214863cadcb96ed616c61e ******/
 		%feature("compactdefaultargs") Sensitives;
 		%feature("autodoc", "Return
 -------
-SelectMgr_IndexedMapOfHSensitive
+NCollection_IndexedMap<opencascade::handle<SelectMgr_SensitiveEntity>>
 
 Description
 -----------
 Returns map of entities.
 ") Sensitives;
-		const SelectMgr_IndexedMapOfHSensitive & Sensitives();
+		const NCollection_IndexedMap<opencascade::handle<SelectMgr_SensitiveEntity>> & Sensitives();
 
 		/****** SelectMgr_SensitiveEntitySet::Size ******/
-		/****** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ******/
+		/****** md5 signature: 1813690848b6a5332bd4875ba3d8d381 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
@@ -4493,10 +4457,10 @@ Description
 -----------
 Returns the amount of entities.
 ") Size;
-		virtual Standard_Integer Size();
+		int Size();
 
 		/****** SelectMgr_SensitiveEntitySet::Swap ******/
-		/****** md5 signature: 4f3a1d9a66c5faf13938607dcfe6badf ******/
+		/****** md5 signature: 457a7645599fd5a96086a4098d4e94c5 ******/
 		%feature("compactdefaultargs") Swap;
 		%feature("autodoc", "
 Parameters
@@ -4512,7 +4476,7 @@ Description
 -----------
 Swaps items with indexes theIdx1 and theIdx2.
 ") Swap;
-		virtual void Swap(const Standard_Integer theIndex1, const Standard_Integer theIndex2);
+		void Swap(const int theIndex1, const int theIndex2);
 
 };
 
@@ -4605,7 +4569,7 @@ Sets tolerance values to -1.0.
 		 SelectMgr_ToleranceMap();
 
 		/****** SelectMgr_ToleranceMap::Add ******/
-		/****** md5 signature: 13e4d46ecc5d04d15ecf3e33fa0d0fb9 ******/
+		/****** md5 signature: 20cd389a61c38630374ed3933fda63da ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4620,10 +4584,10 @@ Description
 -----------
 Adds the value given to map, checks if the current tolerance value should be replaced by theTolerance.
 ") Add;
-		void Add(const Standard_Integer & theTolerance);
+		void Add(const int & theTolerance);
 
 		/****** SelectMgr_ToleranceMap::CustomTolerance ******/
-		/****** md5 signature: 80443541a6d32449a668e7ed1d7175c7 ******/
+		/****** md5 signature: b2000e99e4d5ef758a60528991047f6e ******/
 		%feature("compactdefaultargs") CustomTolerance;
 		%feature("autodoc", "Return
 -------
@@ -4633,10 +4597,10 @@ Description
 -----------
 Returns the value of custom tolerance regardless of it validity.
 ") CustomTolerance;
-		Standard_Integer CustomTolerance();
+		int CustomTolerance();
 
 		/****** SelectMgr_ToleranceMap::Decrement ******/
-		/****** md5 signature: 5c1f63b3f8f16be162652bae13c57bea ******/
+		/****** md5 signature: b20bfffe499859d3334b2fdb1878f898 ******/
 		%feature("compactdefaultargs") Decrement;
 		%feature("autodoc", "
 Parameters
@@ -4651,10 +4615,10 @@ Description
 -----------
 Decrements a counter of the tolerance given, checks if the current tolerance value should be recalculated.
 ") Decrement;
-		void Decrement(const Standard_Integer & theTolerance);
+		void Decrement(const int & theTolerance);
 
 		/****** SelectMgr_ToleranceMap::IsCustomTolSet ******/
-		/****** md5 signature: 6e50033a4f64950f8de6c305bf9ea757 ******/
+		/****** md5 signature: 74ec33d2c9ff53ebc06b6865624347b0 ******/
 		%feature("compactdefaultargs") IsCustomTolSet;
 		%feature("autodoc", "Return
 -------
@@ -4664,7 +4628,7 @@ Description
 -----------
 Returns true if custom tolerance value is greater than zero.
 ") IsCustomTolSet;
-		Standard_Boolean IsCustomTolSet();
+		bool IsCustomTolSet();
 
 		/****** SelectMgr_ToleranceMap::ResetDefaults ******/
 		/****** md5 signature: b0dbee72b4ad8d6a406672850505804e ******/
@@ -4680,7 +4644,7 @@ Unsets a custom tolerance and enables adaptive checks.
 		void ResetDefaults();
 
 		/****** SelectMgr_ToleranceMap::SetCustomTolerance ******/
-		/****** md5 signature: aee5cafe32c5f72bbbfba864b14d2d3b ******/
+		/****** md5 signature: 87ee1ebe282f6b947d654adae397f209 ******/
 		%feature("compactdefaultargs") SetCustomTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4695,10 +4659,10 @@ Description
 -----------
 Sets tolerance to the given one and disables adaptive checks.
 ") SetCustomTolerance;
-		void SetCustomTolerance(const Standard_Integer theTolerance);
+		void SetCustomTolerance(const int theTolerance);
 
 		/****** SelectMgr_ToleranceMap::Tolerance ******/
-		/****** md5 signature: 855cf5f31b30ac5d20a8b2c49d29d1b9 ******/
+		/****** md5 signature: f20225d22ca03acb691b894ae2f82648 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -4708,7 +4672,7 @@ Description
 -----------
 Returns a current tolerance that must be applied.
 ") Tolerance;
-		Standard_Integer Tolerance();
+		int Tolerance();
 
 };
 
@@ -4809,7 +4773,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_ViewClipRange::GetNearestDepth ******/
-		/****** md5 signature: a7d31c5d6b83b64f1f6f7f0def838d0f ******/
+		/****** md5 signature: fb04c4183d0e598a5d27532fff137b19 ******/
 		%feature("compactdefaultargs") GetNearestDepth;
 		%feature("autodoc", "
 Parameters
@@ -4818,21 +4782,21 @@ theRange: Bnd_Range
 
 Return
 -------
-theDepth: float
+theDepth: double
 
 Description
 -----------
 Calculates the min not clipped value from the range. Returns False if the whole range is clipped.
 ") GetNearestDepth;
-		Standard_Boolean GetNearestDepth(const Bnd_Range & theRange, Standard_Real &OutValue);
+		bool GetNearestDepth(const Bnd_Range & theRange, Standard_Real &OutValue);
 
 		/****** SelectMgr_ViewClipRange::IsClipped ******/
-		/****** md5 signature: 28a5904272062fde8c7fd50816e6a223 ******/
+		/****** md5 signature: 6416a97cb2aeae3a54b81ab227b8e059 ******/
 		%feature("compactdefaultargs") IsClipped;
 		%feature("autodoc", "
 Parameters
 ----------
-theDepth: float
+theDepth: double
 
 Return
 -------
@@ -4842,7 +4806,7 @@ Description
 -----------
 Check if the given depth is not within clipping range(s), e.g. True means depth is clipped.
 ") IsClipped;
-		Standard_Boolean IsClipped(const Standard_Real theDepth);
+		bool IsClipped(const double theDepth);
 
 		/****** SelectMgr_ViewClipRange::SetVoid ******/
 		/****** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ******/
@@ -4940,7 +4904,7 @@ Adds new selection to the object and builds its BVH tree.
 		void AddSelectionToObject(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const opencascade::handle<SelectMgr_Selection> & theSelection);
 
 		/****** SelectMgr_ViewerSelector::AllowOverlapDetection ******/
-		/****** md5 signature: 8ba9bf76b94978880f7a1365cdd5ce26 ******/
+		/****** md5 signature: 85377d1abe1645083155c2709ee853d1 ******/
 		%feature("compactdefaultargs") AllowOverlapDetection;
 		%feature("autodoc", "
 Parameters
@@ -4955,7 +4919,7 @@ Description
 -----------
 Is used for rectangular selection only If theIsToAllow is false, only fully included sensitives will be detected, otherwise the algorithm will mark both included and overlapped entities as matched.
 ") AllowOverlapDetection;
-		void AllowOverlapDetection(const Standard_Boolean theIsToAllow);
+		void AllowOverlapDetection(const bool theIsToAllow);
 
 		/****** SelectMgr_ViewerSelector::Clear ******/
 		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
@@ -5002,7 +4966,7 @@ No available documentation.
 		void ClearSensitive(const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::Contains ******/
-		/****** md5 signature: 78a3e6bbff753619951717c11cf591d9 ******/
+		/****** md5 signature: f74bb921121a90d333b23922af840f66 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -5017,10 +4981,10 @@ Description
 -----------
 No available documentation.
 ") Contains;
-		Standard_Boolean Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
+		bool Contains(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_ViewerSelector::CustomPixelTolerance ******/
-		/****** md5 signature: 9497c077b16b917b6f52ae9b3e06304e ******/
+		/****** md5 signature: 5d37b3a4dbe4f3b71d2de455fd6ccbb0 ******/
 		%feature("compactdefaultargs") CustomPixelTolerance;
 		%feature("autodoc", "Return
 -------
@@ -5030,20 +4994,20 @@ Description
 -----------
 Returns custom pixel tolerance value.
 ") CustomPixelTolerance;
-		Standard_Integer CustomPixelTolerance();
+		int CustomPixelTolerance();
 
 		/****** SelectMgr_ViewerSelector::DepthTolerance ******/
-		/****** md5 signature: 5eb30ecbeec79f777ddfc94a151880bd ******/
+		/****** md5 signature: 92b7fb6d8771d9cdcb07eb64670a936a ******/
 		%feature("compactdefaultargs") DepthTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return the tolerance for considering two entities having a similar depth (distance from eye to entity).
 ") DepthTolerance;
-		Standard_Real DepthTolerance();
+		double DepthTolerance();
 
 		/****** SelectMgr_ViewerSelector::DepthToleranceType ******/
 		/****** md5 signature: c380649fe7713e3a87bde2b284f953ae ******/
@@ -5077,7 +5041,7 @@ Displays sensitives in view <theView>.
 		void DisplaySensitive(const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::DisplaySensitive ******/
-		/****** md5 signature: b1201290956c96d7a296cb8583c59abe ******/
+		/****** md5 signature: 9124cbe972c0d7797baf567b296bae96 ******/
 		%feature("compactdefaultargs") DisplaySensitive;
 		%feature("autodoc", "
 Parameters
@@ -5085,7 +5049,7 @@ Parameters
 theSel: SelectMgr_Selection
 theTrsf: gp_Trsf
 theView: V3d_View
-theToClearOthers: bool (optional, default to Standard_True)
+theToClearOthers: bool (optional, default to true)
 
 Return
 -------
@@ -5095,7 +5059,7 @@ Description
 -----------
 No available documentation.
 ") DisplaySensitive;
-		void DisplaySensitive(const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theTrsf, const opencascade::handle<V3d_View> & theView, const Standard_Boolean theToClearOthers = Standard_True);
+		void DisplaySensitive(const opencascade::handle<SelectMgr_Selection> & theSel, const gp_Trsf & theTrsf, const opencascade::handle<V3d_View> & theView, const bool theToClearOthers = true);
 
 
         /****************** DumpJson ******************/
@@ -5145,7 +5109,7 @@ Returns instance of selecting volume manager of the viewer selector.
 		SelectMgr_SelectingVolumeManager & GetManager();
 
 		/****** SelectMgr_ViewerSelector::IsActive ******/
-		/****** md5 signature: d5470c10bdda5f0f4ab236e757f7b861 ******/
+		/****** md5 signature: 8294816c51c59dc7e89ad1ac8db3413d ******/
 		%feature("compactdefaultargs") IsActive;
 		%feature("autodoc", "
 Parameters
@@ -5161,10 +5125,10 @@ Description
 -----------
 Returns true if the selectable object aSelectableObject having the selection mode aMode is active in this selector.
 ") IsActive;
-		Standard_Boolean IsActive(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, const Standard_Integer theMode);
+		bool IsActive(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, const int theMode);
 
 		/****** SelectMgr_ViewerSelector::IsInside ******/
-		/****** md5 signature: 55a6f977e8d6d1e15f934601ea16a501 ******/
+		/****** md5 signature: c5f3bce64bf698d000ce58d395257f6e ******/
 		%feature("compactdefaultargs") IsInside;
 		%feature("autodoc", "
 Parameters
@@ -5180,16 +5144,16 @@ Description
 -----------
 Returns true if the selectable object aSelectableObject having the selection mode aMode is in this selector.
 ") IsInside;
-		Standard_Boolean IsInside(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, const Standard_Integer theMode);
+		bool IsInside(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, const int theMode);
 
 		/****** SelectMgr_ViewerSelector::Modes ******/
-		/****** md5 signature: ffb5cb9b5ef052e25bbb4dbef0237f18 ******/
+		/****** md5 signature: bdefa16da5561a4268c4cf2c2f210941 ******/
 		%feature("compactdefaultargs") Modes;
 		%feature("autodoc", "
 Parameters
 ----------
 theSelectableObject: SelectMgr_SelectableObject
-theModeList: TColStd_ListOfInteger
+theModeList: NCollection_List<int>
 theWantedState: SelectMgr_StateOfSelection (optional, default to SelectMgr_SOS_Any)
 
 Return
@@ -5200,7 +5164,7 @@ Description
 -----------
 Returns the list of selection modes ModeList found in this selector for the selectable object aSelectableObject. Returns true if aSelectableObject is referenced inside this selector; returns false if the object is not present in this selector.
 ") Modes;
-		Standard_Boolean Modes(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, TColStd_ListOfInteger & theModeList, const SelectMgr_StateOfSelection theWantedState = SelectMgr_SOS_Any);
+		bool Modes(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, NCollection_List<int> & theModeList, const SelectMgr_StateOfSelection theWantedState = SelectMgr_SOS_Any);
 
 		/****** SelectMgr_ViewerSelector::MoveSelectableObject ******/
 		/****** md5 signature: 5bdd1df0fce978279ec116396cbc6a68 ******/
@@ -5221,7 +5185,7 @@ Moves existing object from set of not transform persistence objects to set of tr
 		void MoveSelectableObject(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_ViewerSelector::NbPicked ******/
-		/****** md5 signature: 1e5922f7d7f8bb6d486a25fa1352cce7 ******/
+		/****** md5 signature: baabf19ece3e5bc10d9f01718167005a ******/
 		%feature("compactdefaultargs") NbPicked;
 		%feature("autodoc", "Return
 -------
@@ -5231,7 +5195,7 @@ Description
 -----------
 Returns the number of detected owners.
 ") NbPicked;
-		Standard_Integer NbPicked();
+		int NbPicked();
 
 		/****** SelectMgr_ViewerSelector::OnePicked ******/
 		/****** md5 signature: 06695973eb15f33aa731025f3b6253dc ******/
@@ -5247,7 +5211,7 @@ Returns the picked element with the highest priority, and which is the closest t
 		opencascade::handle<SelectMgr_EntityOwner> OnePicked();
 
 		/****** SelectMgr_ViewerSelector::Pick ******/
-		/****** md5 signature: 2bffaec90f889b1c8a589371f27c765d ******/
+		/****** md5 signature: badb146bfc15baed4e5c42ace53fab9c ******/
 		%feature("compactdefaultargs") Pick;
 		%feature("autodoc", "
 Parameters
@@ -5264,10 +5228,10 @@ Description
 -----------
 Picks the sensitive entity at the pixel coordinates of the mouse <theXPix> and <theYPix>. The selector looks for touched areas and owners.
 ") Pick;
-		void Pick(const Standard_Integer theXPix, const Standard_Integer theYPix, const opencascade::handle<V3d_View> & theView);
+		void Pick(const int theXPix, const int theYPix, const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::Pick ******/
-		/****** md5 signature: ac91d378236f4cd1507ea2ad52a93f76 ******/
+		/****** md5 signature: d52f109450c5659d71a535543214a4b0 ******/
 		%feature("compactdefaultargs") Pick;
 		%feature("autodoc", "
 Parameters
@@ -5286,15 +5250,15 @@ Description
 -----------
 Picks the sensitive entity according to the minimum and maximum pixel values <theXPMin>, <theYPMin>, <theXPMax> and <theYPMax> defining a 2D area for selection in the 3D view aView.
 ") Pick;
-		void Pick(const Standard_Integer theXPMin, const Standard_Integer theYPMin, const Standard_Integer theXPMax, const Standard_Integer theYPMax, const opencascade::handle<V3d_View> & theView);
+		void Pick(const int theXPMin, const int theYPMin, const int theXPMax, const int theYPMax, const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::Pick ******/
-		/****** md5 signature: d9dd319057f3def6d1d43685fa1cdf94 ******/
+		/****** md5 signature: 94ab51e70a79b8d246889633452cbf97 ******/
 		%feature("compactdefaultargs") Pick;
 		%feature("autodoc", "
 Parameters
 ----------
-thePolyline: TColgp_Array1OfPnt2d
+thePolyline: NCollection_Array1<gp_Pnt2d>
 theView: V3d_View
 
 Return
@@ -5305,7 +5269,7 @@ Description
 -----------
 pick action - input pixel values for polyline selection for selection.
 ") Pick;
-		void Pick(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView);
+		void Pick(const NCollection_Array1<gp_Pnt2d> & thePolyline, const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::Pick ******/
 		/****** md5 signature: 534c41acdf40cdc7534b926e77873ace ******/
@@ -5327,7 +5291,7 @@ Picks the sensitive entity according to the input axis. This is geometric inters
 		void Pick(const gp_Ax1 & theAxis, const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::Picked ******/
-		/****** md5 signature: 6760e33474c400a8d0afcacda0d075de ******/
+		/****** md5 signature: 40a802857475259c604c495ce1f898d3 ******/
 		%feature("compactdefaultargs") Picked;
 		%feature("autodoc", "
 Parameters
@@ -5343,10 +5307,10 @@ Description
 Returns the entity Owner for the object picked at specified position. 
 Parameter theRank rank of detected object within range 1...NbPicked().
 ") Picked;
-		opencascade::handle<SelectMgr_EntityOwner> Picked(const Standard_Integer theRank);
+		opencascade::handle<SelectMgr_EntityOwner> Picked(const int theRank);
 
 		/****** SelectMgr_ViewerSelector::PickedData ******/
-		/****** md5 signature: e84187de944a8ab2106eac0d67700a40 ******/
+		/****** md5 signature: 845a92e27d664a89ed080258efae96d7 ******/
 		%feature("compactdefaultargs") PickedData;
 		%feature("autodoc", "
 Parameters
@@ -5362,10 +5326,10 @@ Description
 Returns the Entity for the object picked at specified position. 
 Parameter theRank rank of detected object within range 1...NbPicked().
 ") PickedData;
-		const SelectMgr_SortCriterion & PickedData(const Standard_Integer theRank);
+		const SelectMgr_SortCriterion & PickedData(const int theRank);
 
 		/****** SelectMgr_ViewerSelector::PickedEntity ******/
-		/****** md5 signature: 1597acbfac8be91b18a0ddb95e10b3b7 ******/
+		/****** md5 signature: d34cc16de65372080fcafb73b1287453 ******/
 		%feature("compactdefaultargs") PickedEntity;
 		%feature("autodoc", "
 Parameters
@@ -5381,10 +5345,10 @@ Description
 Returns the Entity for the object picked at specified position. 
 Parameter theRank rank of detected object within range 1...NbPicked().
 ") PickedEntity;
-		const opencascade::handle<Select3D_SensitiveEntity> & PickedEntity(const Standard_Integer theRank);
+		const opencascade::handle<Select3D_SensitiveEntity> & PickedEntity(const int theRank);
 
 		/****** SelectMgr_ViewerSelector::PickedPoint ******/
-		/****** md5 signature: df6911ebee5f921057309eeaccd7991e ******/
+		/****** md5 signature: cf141401daa30babf112664217818d35 ******/
 		%feature("compactdefaultargs") PickedPoint;
 		%feature("autodoc", "
 Parameters
@@ -5400,10 +5364,10 @@ Description
 Returns the 3D point (intersection of picking axis with the object nearest to eye) for the object picked at specified position. 
 Parameter theRank rank of detected object within range 1...NbPicked().
 ") PickedPoint;
-		gp_Pnt PickedPoint(const Standard_Integer theRank);
+		gp_Pnt PickedPoint(const int theRank);
 
 		/****** SelectMgr_ViewerSelector::PixelTolerance ******/
-		/****** md5 signature: 5b865b201c1641a73b871f7bcdb1eeb9 ******/
+		/****** md5 signature: fefa8c8184b5b45efc1afb9c81df2978 ******/
 		%feature("compactdefaultargs") PixelTolerance;
 		%feature("autodoc", "Return
 -------
@@ -5413,7 +5377,7 @@ Description
 -----------
 Returns the largest pixel tolerance.
 ") PixelTolerance;
-		Standard_Integer PixelTolerance();
+		int PixelTolerance();
 
 		/****** SelectMgr_ViewerSelector::QueueBVHBuild ******/
 		/****** md5 signature: 896a0efab352ae61ee3ef99e1dfa8c9f ******/
@@ -5434,12 +5398,12 @@ Queues a sensitive entity to build its BVH.
 		void QueueBVHBuild(const opencascade::handle<Select3D_SensitiveEntity> & theEntity);
 
 		/****** SelectMgr_ViewerSelector::RebuildObjectsTree ******/
-		/****** md5 signature: 628a59a88256b2ec574763a4a2d8322a ******/
+		/****** md5 signature: ffd4cae938da44b9a9e5ca0dfc2fcf07 ******/
 		%feature("compactdefaultargs") RebuildObjectsTree;
 		%feature("autodoc", "
 Parameters
 ----------
-theIsForce: bool (optional, default to Standard_False)
+theIsForce: bool (optional, default to false)
 
 Return
 -------
@@ -5449,16 +5413,16 @@ Description
 -----------
 Marks BVH of selectable objects for rebuild. Parameter theIsForce set as true guarantees that 1st level BVH for the viewer selector will be rebuilt during this call.
 ") RebuildObjectsTree;
-		void RebuildObjectsTree(const Standard_Boolean theIsForce = Standard_False);
+		void RebuildObjectsTree(const bool theIsForce = false);
 
 		/****** SelectMgr_ViewerSelector::RebuildSensitivesTree ******/
-		/****** md5 signature: 819af8d1979424b3e6df844d4e61f2b2 ******/
+		/****** md5 signature: 83dd4d2f0e30adb6daa53b5e940b792e ******/
 		%feature("compactdefaultargs") RebuildSensitivesTree;
 		%feature("autodoc", "
 Parameters
 ----------
 theObject: SelectMgr_SelectableObject
-theIsForce: bool (optional, default to Standard_False)
+theIsForce: bool (optional, default to false)
 
 Return
 -------
@@ -5468,10 +5432,10 @@ Description
 -----------
 Marks BVH of sensitive entities of particular selectable object for rebuild. Parameter theIsForce set as true guarantees that 2nd level BVH for the object given will be rebuilt during this call.
 ") RebuildSensitivesTree;
-		void RebuildSensitivesTree(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const Standard_Boolean theIsForce = Standard_False);
+		void RebuildSensitivesTree(const opencascade::handle<SelectMgr_SelectableObject> & theObject, const bool theIsForce = false);
 
 		/****** SelectMgr_ViewerSelector::RemovePicked ******/
-		/****** md5 signature: 80184406bbb99da0f278fd26e116df67 ******/
+		/****** md5 signature: bb088b74c60ded34a6397255771a5760 ******/
 		%feature("compactdefaultargs") RemovePicked;
 		%feature("autodoc", "
 Parameters
@@ -5486,7 +5450,7 @@ Description
 -----------
 Remove picked entities associated with specified object.
 ") RemovePicked;
-		Standard_Boolean RemovePicked(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
+		bool RemovePicked(const opencascade::handle<SelectMgr_SelectableObject> & theObject);
 
 		/****** SelectMgr_ViewerSelector::RemoveSelectableObject ******/
 		/****** md5 signature: 1e8f196e9c9d6bf9be8ac2a00dec3498 ******/
@@ -5552,26 +5516,26 @@ Return map of selectable objects.
 		const SelectMgr_SelectableObjectSet & SelectableObjects();
 
 		/****** SelectMgr_ViewerSelector::Sensitivity ******/
-		/****** md5 signature: 6758039a5591c08f2d1e8b5cc5b25161 ******/
+		/****** md5 signature: a9285da13fdc695443bc389daba3e44e ******/
 		%feature("compactdefaultargs") Sensitivity;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the largest sensitivity of picking.
 ") Sensitivity;
-		Standard_Real Sensitivity();
+		double Sensitivity();
 
 		/****** SelectMgr_ViewerSelector::SetDepthTolerance ******/
-		/****** md5 signature: 7e4087788ba7c5cb05aecd7cf2807046 ******/
+		/****** md5 signature: e51696006960bb456ee964fc701bf28a ******/
 		%feature("compactdefaultargs") SetDepthTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
 theType: SelectMgr_TypeOfDepthTolerance
-theTolerance: float
+theTolerance: double
 
 Return
 -------
@@ -5583,7 +5547,7 @@ Set the tolerance for considering two entities having a similar depth (distance 
 Input parameter: theType type of tolerance value 
 Input parameter: theTolerance tolerance value in 3D scale (SelectMgr_TypeOfDepthTolerance_Uniform)  or in pixels (SelectMgr_TypeOfDepthTolerance_UniformPixels);  value is ignored in case of  SelectMgr_TypeOfDepthTolerance_SensitivityFactor.
 ") SetDepthTolerance;
-		void SetDepthTolerance(SelectMgr_TypeOfDepthTolerance theType, Standard_Real theTolerance);
+		void SetDepthTolerance(SelectMgr_TypeOfDepthTolerance theType, double theTolerance);
 
 		/****** SelectMgr_ViewerSelector::SetEntitySetBuilder ******/
 		/****** md5 signature: 09ee8498ee64bb589a0261fd9a7e5188 ******/
@@ -5622,7 +5586,7 @@ Set flag determining precedence of picked depth over entity priority in sorted r
 		void SetPickClosest(bool theToPreferClosest);
 
 		/****** SelectMgr_ViewerSelector::SetPixelTolerance ******/
-		/****** md5 signature: fda084bdc0d0a8e945d1f4e82a500297 ******/
+		/****** md5 signature: 24210d7a6ede443c7b9b7e1465a29b37 ******/
 		%feature("compactdefaultargs") SetPixelTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5637,10 +5601,10 @@ Description
 -----------
 Sets the pixel tolerance <theTolerance>.
 ") SetPixelTolerance;
-		void SetPixelTolerance(const Standard_Integer theTolerance);
+		void SetPixelTolerance(const int theTolerance);
 
 		/****** SelectMgr_ViewerSelector::SetToPrebuildBVH ******/
-		/****** md5 signature: a1a0e8f03c7f4b82aa7284578f0fb968 ******/
+		/****** md5 signature: 3e1929f41d7f02ba197a79f5d0f5d4bb ******/
 		%feature("compactdefaultargs") SetToPrebuildBVH;
 		%feature("autodoc", "
 Parameters
@@ -5656,7 +5620,7 @@ Description
 -----------
 Enables/disables building BVH for sensitives in separate threads.
 ") SetToPrebuildBVH;
-		void SetToPrebuildBVH(Standard_Boolean theToPrebuild, Standard_Integer theThreadsNum = -1);
+		void SetToPrebuildBVH(bool theToPrebuild, int theThreadsNum = -1);
 
 		/****** SelectMgr_ViewerSelector::SortResult ******/
 		/****** md5 signature: 0272cdf84299752febeb97ffe8d3c3e3 ******/
@@ -5721,7 +5685,7 @@ Return the flag determining precedence of picked depth (distance from eye to ent
 		bool ToPickClosest();
 
 		/****** SelectMgr_ViewerSelector::ToPrebuildBVH ******/
-		/****** md5 signature: a5a6258c7c6a323d99d16797640eef14 ******/
+		/****** md5 signature: fe0fea495342e737fd124df253660dc8 ******/
 		%feature("compactdefaultargs") ToPrebuildBVH;
 		%feature("autodoc", "Return
 -------
@@ -5731,7 +5695,7 @@ Description
 -----------
 Returns True if building BVH for sensitives in separate threads is enabled.
 ") ToPrebuildBVH;
-		Standard_Boolean ToPrebuildBVH();
+		bool ToPrebuildBVH();
 
 		/****** SelectMgr_ViewerSelector::WaitForBVHBuild ******/
 		/****** md5 signature: 7e92f221a918ae1b9444d5e68a00db6b ******/
@@ -5780,7 +5744,7 @@ Empty constructor.
 		 SelectMgr_AxisIntersector();
 
 		/****** SelectMgr_AxisIntersector::Build ******/
-		/****** md5 signature: 5ad4569f96377eec0c61c7f10d7c7aa9 ******/
+		/****** md5 signature: fcf4aae95b6abc01f406b4629b3faaf7 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Return
 -------
@@ -5790,10 +5754,10 @@ Description
 -----------
 Builds axis according to internal parameters. NOTE: it should be called after Init() method.
 ") Build;
-		virtual void Build();
+		void Build();
 
 		/****** SelectMgr_AxisIntersector::CopyWithBuilder ******/
-		/****** md5 signature: 8bad58d05d1fae9bde4f830f89376dd8 ******/
+		/****** md5 signature: c7f565ebf750f1730685375930ed4421 ******/
 		%feature("compactdefaultargs") CopyWithBuilder;
 		%feature("autodoc", "
 Parameters
@@ -5808,15 +5772,15 @@ Description
 -----------
 Returns a copy of the intersector transformed using the builder configuration given. Builder is an argument that represents corresponding settings for re-constructing transformed frustum from scratch. In this class, builder is not used and theBuilder parameter is ignored.
 ") CopyWithBuilder;
-		virtual opencascade::handle<SelectMgr_BaseIntersector> CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+		opencascade::handle<SelectMgr_BaseIntersector> CopyWithBuilder(const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_AxisIntersector::DetectedPoint ******/
-		/****** md5 signature: f5119614d059d473f2e98823f778528f ******/
+		/****** md5 signature: fbd4a38baa50c48a3265b6e2806e3d68 ******/
 		%feature("compactdefaultargs") DetectedPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-theDepth: float
+theDepth: double
 
 Return
 -------
@@ -5826,10 +5790,10 @@ Description
 -----------
 Calculates the point on a axis ray that was detected during the run of selection algo by given depth.
 ") DetectedPoint;
-		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
+		gp_Pnt DetectedPoint(const double theDepth);
 
 		/****** SelectMgr_AxisIntersector::DistToGeometryCenter ******/
-		/****** md5 signature: ef4883136b3d59dc96190e78632a000d ******/
+		/****** md5 signature: 221e331c0c6bbab729e487478612b76f ******/
 		%feature("compactdefaultargs") DistToGeometryCenter;
 		%feature("autodoc", "
 Parameters
@@ -5838,13 +5802,13 @@ theCOG: gp_Pnt
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Measures distance between start axis point and given point theCOG.
 ") DistToGeometryCenter;
-		virtual Standard_Real DistToGeometryCenter(const gp_Pnt & theCOG);
+		double DistToGeometryCenter(const gp_Pnt & theCOG);
 
 
         /****************** DumpJson ******************/
@@ -5868,7 +5832,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_AxisIntersector::GetFarPnt ******/
-		/****** md5 signature: 81facda4320b4fbe9ad4747e990428a7 ******/
+		/****** md5 signature: 3bf936b6a169d9fb9cb721536935b9a3 ******/
 		%feature("compactdefaultargs") GetFarPnt;
 		%feature("autodoc", "Return
 -------
@@ -5878,10 +5842,10 @@ Description
 -----------
 Returns far point along axis (infinite).
 ") GetFarPnt;
-		virtual const gp_Pnt GetFarPnt();
+		const gp_Pnt GetFarPnt();
 
 		/****** SelectMgr_AxisIntersector::GetNearPnt ******/
-		/****** md5 signature: 6547ed3e9b4a5b5d0053afdb73046a99 ******/
+		/****** md5 signature: 37634fe2d24c1472359d4da96fe554ab ******/
 		%feature("compactdefaultargs") GetNearPnt;
 		%feature("autodoc", "Return
 -------
@@ -5891,10 +5855,10 @@ Description
 -----------
 Returns near point along axis.
 ") GetNearPnt;
-		virtual const gp_Pnt GetNearPnt();
+		const gp_Pnt GetNearPnt();
 
 		/****** SelectMgr_AxisIntersector::GetViewRayDirection ******/
-		/****** md5 signature: 0d6910870801415274f5dddb9b21e975 ******/
+		/****** md5 signature: 0c32d9592b75756a646d1f330933f006 ******/
 		%feature("compactdefaultargs") GetViewRayDirection;
 		%feature("autodoc", "Return
 -------
@@ -5904,7 +5868,7 @@ Description
 -----------
 Returns axis direction.
 ") GetViewRayDirection;
-		virtual const gp_Dir GetViewRayDirection();
+		const gp_Dir GetViewRayDirection();
 
 		/****** SelectMgr_AxisIntersector::Init ******/
 		/****** md5 signature: b07bb18041c7d7fd236c285838ee6fee ******/
@@ -5925,7 +5889,7 @@ Initializes selecting axis according to the input one.
 		void Init(const gp_Ax1 & theAxis);
 
 		/****** SelectMgr_AxisIntersector::IsScalable ******/
-		/****** md5 signature: bafeca45d952fd05dab481f471cd565b ******/
+		/****** md5 signature: a7ba7a5505e27f4fe0c57ded1ee180b4 ******/
 		%feature("compactdefaultargs") IsScalable;
 		%feature("autodoc", "Return
 -------
@@ -5935,16 +5899,16 @@ Description
 -----------
 Returns False (not applicable to this volume).
 ") IsScalable;
-		virtual Standard_Boolean IsScalable();
+		bool IsScalable();
 
 		/****** SelectMgr_AxisIntersector::OverlapsBox ******/
-		/****** md5 signature: eb9dad6b797a0a0ff89c1d09f8cc2446 ******/
+		/****** md5 signature: 984b1887f96cb6370dc03b0dc1344afd ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoxMin: SelectMgr_Vec3
-theBoxMax: SelectMgr_Vec3
+theBoxMin: NCollection_Vec3<double>
+theBoxMax: NCollection_Vec3<double>
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
 
@@ -5956,16 +5920,16 @@ Description
 -----------
 Intersection test between defined axis and given axis-aligned box.
 ") OverlapsBox;
-		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsBox(const NCollection_Vec3<double> & theBoxMin, const NCollection_Vec3<double> & theBoxMax, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsBox ******/
-		/****** md5 signature: b59e9bf72467fe4ca0dfb9992d5bd028 ******/
+		/****** md5 signature: 2fe62ad9b0db456d60e0ff4220384634 ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
 ----------
-theBoxMin: SelectMgr_Vec3
-theBoxMax: SelectMgr_Vec3
+theBoxMin: NCollection_Vec3<double>
+theBoxMax: NCollection_Vec3<double>
 theInside: bool *
 
 Return
@@ -5976,15 +5940,15 @@ Description
 -----------
 Returns true if selecting axis intersects axis-aligned bounding box with minimum corner at point theMinPt and maximum at point theMaxPt.
 ") OverlapsBox;
-		virtual Standard_Boolean OverlapsBox(const SelectMgr_Vec3 & theBoxMin, const SelectMgr_Vec3 & theBoxMax, Standard_Boolean * theInside);
+		bool OverlapsBox(const NCollection_Vec3<double> & theBoxMin, const NCollection_Vec3<double> & theBoxMax, bool * theInside);
 
 		/****** SelectMgr_AxisIntersector::OverlapsCircle ******/
-		/****** md5 signature: 814051637e44a639641a820ff3119ad2 ******/
+		/****** md5 signature: eb68811d4d6812350fe1d68a4171f0dd ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theTrsf: gp_Trsf
 theIsFilled: bool
 theClipRange: SelectMgr_ViewClipRange
@@ -5998,18 +5962,18 @@ Description
 -----------
 Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
-		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsCircle(const double theRadius, const gp_Trsf & theTrsf, const bool theIsFilled, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsCircle ******/
-		/****** md5 signature: d08119aae480f7e2fcf7a2313f25068d ******/
+		/****** md5 signature: ea6ef3204061fab4e01a11653a700594 ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
 ----------
-theRadius: float
+theRadius: double
 theTrsf: gp_Trsf
 theIsFilled: bool
-theInside: bool * (optional, default to NULL)
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -6019,17 +5983,17 @@ Description
 -----------
 Returns true if selecting volume is overlapped by circle with radius theRadius, boolean theIsFilled and transformation to apply theTrsf. The position and orientation of the circle are specified via theTrsf transformation for gp::XOY() with center in gp::Origin().
 ") OverlapsCircle;
-		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
+		bool OverlapsCircle(const double theRadius, const gp_Trsf & theTrsf, const bool theIsFilled, bool * theInside = nullptr);
 
 		/****** SelectMgr_AxisIntersector::OverlapsCylinder ******/
-		/****** md5 signature: 76cfe5622cdf762f89f7a0fb711d6940 ******/
+		/****** md5 signature: dd5aa6149020b3feab759e87b85b81a1 ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theTrsf: gp_Trsf
 theIsHollow: bool
 theClipRange: SelectMgr_ViewClipRange
@@ -6043,20 +6007,20 @@ Description
 -----------
 Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const gp_Trsf & theTrsf, const bool theIsHollow, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsCylinder ******/
-		/****** md5 signature: bbb4061ebe4835347b55e7c89fef0fcc ******/
+		/****** md5 signature: 3a0cf391a62309adf4fd039dfd8c44cc ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
 ----------
-theBottomRad: float
-theTopRad: float
-theHeight: float
+theBottomRad: double
+theTopRad: double
+theHeight: double
 theTrsf: gp_Trsf
 theIsHollow: bool
-theInside: bool * (optional, default to NULL)
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -6066,10 +6030,10 @@ Description
 -----------
 Returns true if selecting volume is overlapped by cylinder (or cone) with radiuses theBottomRad and theTopRad, height theHeight and transformation to apply theTrsf.
 ") OverlapsCylinder;
-		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
+		bool OverlapsCylinder(const double theBottomRad, const double theTopRad, const double theHeight, const gp_Trsf & theTrsf, const bool theIsHollow, bool * theInside = nullptr);
 
 		/****** SelectMgr_AxisIntersector::OverlapsPoint ******/
-		/****** md5 signature: f5ec1da88416f5d768fc10e142d3a825 ******/
+		/****** md5 signature: 5b1dd09ae52dc32981f375d5d8b852f9 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -6086,10 +6050,10 @@ Description
 -----------
 Intersection test between defined axis and given point.
 ") OverlapsPoint;
-		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsPoint(const gp_Pnt & thePnt, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsPoint ******/
-		/****** md5 signature: d7b37b52b3a018e10f4074a808688275 ******/
+		/****** md5 signature: 30729f6e4505f9092d160d85812a66f4 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -6104,15 +6068,15 @@ Description
 -----------
 Intersection test between defined axis and given point.
 ") OverlapsPoint;
-		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
+		bool OverlapsPoint(const gp_Pnt & thePnt);
 
 		/****** SelectMgr_AxisIntersector::OverlapsPolygon ******/
-		/****** md5 signature: db9e490051fa1222da72a0503292bd60 ******/
+		/****** md5 signature: 1b84944994793f8ce2f616ccbbd40bac ******/
 		%feature("compactdefaultargs") OverlapsPolygon;
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPnts: TColgp_Array1OfPnt
+theArrayOfPnts: NCollection_Array1<gp_Pnt>
 theSensType: Select3D_TypeOfSensitivity
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
@@ -6125,10 +6089,10 @@ Description
 -----------
 Intersection test between defined axis and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
-		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsSegment ******/
-		/****** md5 signature: 8ca34a19e289d4f56d25f404f14353a2 ******/
+		/****** md5 signature: ad35693cd8297629b1a178a0f167ba75 ******/
 		%feature("compactdefaultargs") OverlapsSegment;
 		%feature("autodoc", "
 Parameters
@@ -6146,17 +6110,17 @@ Description
 -----------
 Checks if selecting axis intersects line segment.
 ") OverlapsSegment;
-		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsSegment(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsSphere ******/
-		/****** md5 signature: 2b7a70713e1032389098753ec8495331 ******/
+		/****** md5 signature: 7ade39630120d4203a19ff852f9eb4a1 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
-theInside: bool * (optional, default to NULL)
+theRadius: double
+theInside: bool * (optional, default to nullptr)
 
 Return
 -------
@@ -6166,16 +6130,16 @@ Description
 -----------
 Intersection test between defined axis and given sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
-		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
+		bool OverlapsSphere(const gp_Pnt & theCenter, const double theRadius, bool * theInside = nullptr);
 
 		/****** SelectMgr_AxisIntersector::OverlapsSphere ******/
-		/****** md5 signature: f08575f5df6e1b77c989dc6c099c2b39 ******/
+		/****** md5 signature: f0ccab89c48d2e4f362eaf355526f421 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
-theRadius: float
+theRadius: double
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
 
@@ -6187,10 +6151,10 @@ Description
 -----------
 Intersection test between defined axis and given sphere with center theCenter and radius theRadius.
 ") OverlapsSphere;
-		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsSphere(const gp_Pnt & theCenter, const double theRadius, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsTriangle ******/
-		/****** md5 signature: 98197f256a47bdbe43f4622e23bf7cd4 ******/
+		/****** md5 signature: 07e304ccfce5db66fdcf5735a079dde0 ******/
 		%feature("compactdefaultargs") OverlapsTriangle;
 		%feature("autodoc", "
 Parameters
@@ -6210,10 +6174,10 @@ Description
 -----------
 Intersection test between defined axis and given triangle. The test may be considered of interior part or boundary line defined by triangle vertices depending on given sensitivity type.
 ") OverlapsTriangle;
-		virtual Standard_Boolean OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsTriangle(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::ScaleAndTransform ******/
-		/****** md5 signature: a203fbfb62144f3225129b6829253952 ******/
+		/****** md5 signature: d350c21d3cf2947a0dd9fc00cbf2f6d4 ******/
 		%feature("compactdefaultargs") ScaleAndTransform;
 		%feature("autodoc", "
 Parameters
@@ -6230,10 +6194,10 @@ Description
 -----------
 IMPORTANT: Scaling doesn't make sense for this intersector. Returns a copy of the intersector transformed using the matrix given. Builder is an optional argument that represents corresponding settings for re-constructing transformed frustum from scratch. Can be null if reconstruction is not expected furthermore.
 ") ScaleAndTransform;
-		virtual opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const Standard_Integer theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
+		opencascade::handle<SelectMgr_BaseIntersector> ScaleAndTransform(const int theScaleFactor, const gp_GTrsf & theTrsf, const opencascade::handle<SelectMgr_FrustumBuilder> & theBuilder);
 
 		/****** SelectMgr_AxisIntersector::SetCamera ******/
-		/****** md5 signature: fb69f58b8ac85ce845a8857ed97739d9 ******/
+		/****** md5 signature: 01a793d116415141b3a74d9a661eb903 ******/
 		%feature("compactdefaultargs") SetCamera;
 		%feature("autodoc", "
 Parameters
@@ -6248,7 +6212,7 @@ Description
 -----------
 Saves camera definition. Do nothing for axis intersector (not applicable to this volume).
 ") SetCamera;
-		virtual void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
+		void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 };
 
@@ -6271,7 +6235,7 @@ Saves camera definition. Do nothing for axis intersector (not applicable to this
 class SelectMgr_CompositionFilter : public SelectMgr_Filter {
 	public:
 		/****** SelectMgr_CompositionFilter::ActsOn ******/
-		/****** md5 signature: 82ed0e718f9bead84301083a624d455d ******/
+		/****** md5 signature: ea42840da214bed2757ebf1ec413bad9 ******/
 		%feature("compactdefaultargs") ActsOn;
 		%feature("autodoc", "
 Parameters
@@ -6286,7 +6250,7 @@ Description
 -----------
 No available documentation.
 ") ActsOn;
-		virtual Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode);
+		bool ActsOn(const TopAbs_ShapeEnum aStandardMode);
 
 		/****** SelectMgr_CompositionFilter::Add ******/
 		/****** md5 signature: 3b329e3d0b8dfe710a9ec4b55242b939 ******/
@@ -6320,7 +6284,7 @@ Clears the filters used in this framework.
 		void Clear();
 
 		/****** SelectMgr_CompositionFilter::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -6330,10 +6294,10 @@ Description
 -----------
 Returns true if this framework is empty.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** SelectMgr_CompositionFilter::IsIn ******/
-		/****** md5 signature: bcb650ce8ef2a28332648c8155fc9140 ******/
+		/****** md5 signature: c6dbe0db75b67507ba3ba95fdec58ecb ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -6348,7 +6312,7 @@ Description
 -----------
 Returns true if the filter aFilter is in this framework.
 ") IsIn;
-		Standard_Boolean IsIn(const opencascade::handle<SelectMgr_Filter> & aFilter);
+		bool IsIn(const opencascade::handle<SelectMgr_Filter> & aFilter);
 
 		/****** SelectMgr_CompositionFilter::Remove ******/
 		/****** md5 signature: 997660465968b9e15e5a0b93f7971147 ******/
@@ -6369,17 +6333,17 @@ Removes the filter aFilter from this framework.
 		void Remove(const opencascade::handle<SelectMgr_Filter> & aFilter);
 
 		/****** SelectMgr_CompositionFilter::StoredFilters ******/
-		/****** md5 signature: 0ff7be41979ba25dcaba3d785745d646 ******/
+		/****** md5 signature: 5332af65b6ffd8b0c56e27c85fa447e0 ******/
 		%feature("compactdefaultargs") StoredFilters;
 		%feature("autodoc", "Return
 -------
-SelectMgr_ListOfFilter
+NCollection_List<opencascade::handle<SelectMgr_Filter>>
 
 Description
 -----------
 Returns the list of stored filters from this framework.
 ") StoredFilters;
-		const SelectMgr_ListOfFilter & StoredFilters();
+		const NCollection_List<opencascade::handle<SelectMgr_Filter>> & StoredFilters();
 
 };
 
@@ -6417,7 +6381,7 @@ Constructs an empty selection filter object for two or more types of entity.
 		 SelectMgr_AndFilter();
 
 		/****** SelectMgr_AndFilter::IsOk ******/
-		/****** md5 signature: 22a33e4e2022519dc44ef8862044fea0 ******/
+		/****** md5 signature: eeea6f6b4b7492f5eeac7be277a67559 ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -6432,7 +6396,7 @@ Description
 -----------
 No available documentation.
 ") IsOk;
-		Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
+		bool IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
 };
 
@@ -6483,7 +6447,7 @@ See also: SelectMgr_FilterType).
 		SelectMgr_FilterType FilterType();
 
 		/****** SelectMgr_AndOrFilter::IsOk ******/
-		/****** md5 signature: 463a95f434e18db7234e3535445a2c33 ******/
+		/****** md5 signature: a9cb7f28765d6e66cb0c11aebd2a168e ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -6498,15 +6462,15 @@ Description
 -----------
 Indicates that the selected Interactive Object passes the filter.
 ") IsOk;
-		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & theObj);
+		bool IsOk(const opencascade::handle<SelectMgr_EntityOwner> & theObj);
 
 		/****** SelectMgr_AndOrFilter::SetDisabledObjects ******/
-		/****** md5 signature: cc2c53c8fee7b059ac3f6d19a9d335dc ******/
+		/****** md5 signature: c910bebcb325cd015ac310b439cf37a9 ******/
 		%feature("compactdefaultargs") SetDisabledObjects;
 		%feature("autodoc", "
 Parameters
 ----------
-theObjects: Graphic3d_NMapOfTransient
+theObjects: NCollection_Shared<NCollection_Map< Standard_Transient *
 
 Return
 -------
@@ -6516,7 +6480,7 @@ Description
 -----------
 Disable selection of specified objects.
 ") SetDisabledObjects;
-		void SetDisabledObjects(const opencascade::handle<Graphic3d_NMapOfTransient> & theObjects);
+		void SetDisabledObjects(const opencascade::handle<NCollection_Shared<NCollection_Map<const Standard_Transient *> > > & theObjects);
 
 		/****** SelectMgr_AndOrFilter::SetFilterType ******/
 		/****** md5 signature: c4f32b4815b398cc3dcfa30b4c00ebdc ******/
@@ -6570,7 +6534,7 @@ Constructs an empty or selection filter.
 		 SelectMgr_OrFilter();
 
 		/****** SelectMgr_OrFilter::IsOk ******/
-		/****** md5 signature: 22a33e4e2022519dc44ef8862044fea0 ******/
+		/****** md5 signature: eeea6f6b4b7492f5eeac7be277a67559 ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -6585,7 +6549,7 @@ Description
 -----------
 No available documentation.
 ") IsOk;
-		Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
+		bool IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
 };
 
@@ -6630,7 +6594,6 @@ class SelectMgr_TriangularFrustumSet:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-SelectBasics_EntityOwner=SelectMgr_EntityOwner
 }
 /* deprecated methods */
 %pythoncode {

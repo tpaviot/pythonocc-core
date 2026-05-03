@@ -24,7 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<ShapeAnalysis_CanonicalRecognition.hxx>
 #include<ShapeAnalysis_CheckSmallFace.hxx>
 #include<ShapeAnalysis_Curve.hxx>
-#include<ShapeAnalysis_DataMapIteratorOfDataMapOfShapeListOfReal.hxx>
 #include<ShapeAnalysis_DataMapOfShapeListOfReal.hxx>
 #include<ShapeAnalysis_Edge.hxx>
 #include<ShapeAnalysis_FreeBoundData.hxx>

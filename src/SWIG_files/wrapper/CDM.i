@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cdm.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<Resource_module.hxx>
@@ -55,7 +54,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cdm.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import TCollection.i
 %import Message.i
 %import Resource.i
@@ -109,12 +107,6 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = CDM_ListIteratorOfListOfDocument(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(CDM_ListOfReferences) NCollection_List<opencascade::handle<CDM_Reference>>;
@@ -123,29 +115,22 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = CDM_ListIteratorOfListOfReferences(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(CDM_MapOfDocument) NCollection_Map<opencascade::handle<CDM_Document>>;
-%template(CDM_MetaDataLookUpTable) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<CDM_MetaData>>;
+%ignore NCollection_DataMap<TCollection_ExtendedString,int>::Items;
+%ignore NCollection_DataMap<TCollection_ExtendedString,int>::KeyValues;
+%template(CDM_NamesDirectory) NCollection_DataMap<TCollection_ExtendedString,int>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>>::Iterator CDM_DataMapIteratorOfMetaDataLookUpTable;
-typedef CDM_Document * CDM_DocumentPointer;
 typedef NCollection_List<opencascade::handle<CDM_Document>>::Iterator CDM_ListIteratorOfListOfDocument;
 typedef NCollection_List<opencascade::handle<CDM_Reference>>::Iterator CDM_ListIteratorOfListOfReferences;
 typedef NCollection_List<opencascade::handle<CDM_Document>> CDM_ListOfDocument;
 typedef NCollection_List<opencascade::handle<CDM_Reference>> CDM_ListOfReferences;
 typedef NCollection_Map<opencascade::handle<CDM_Document>>::Iterator CDM_MapIteratorOfMapOfDocument;
 typedef NCollection_Map<opencascade::handle<CDM_Document>> CDM_MapOfDocument;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>> CDM_MetaDataLookUpTable;
-typedef TColStd_DataMapOfStringInteger CDM_NamesDirectory;
+typedef NCollection_DataMap<TCollection_ExtendedString, int> CDM_NamesDirectory;
 /* end typedefs declaration */
 
 /************************
@@ -194,7 +179,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** CDM_Application::EndOfUpdate ******/
-		/****** md5 signature: 1300f7eaea13e12939c9e78edc2d7e82 ******/
+		/****** md5 signature: 3abcd1e9cc73072cc3dd2dcb664ca364 ******/
 		%feature("compactdefaultargs") EndOfUpdate;
 		%feature("autodoc", "
 Parameters
@@ -211,7 +196,7 @@ Description
 -----------
 this method is called after the update of a document. By default, writes in MessageDriver().
 ") EndOfUpdate;
-		virtual void EndOfUpdate(const opencascade::handle<CDM_Document> & aDocument, const Standard_Boolean theStatus, TCollection_ExtendedString ErrorString);
+		virtual void EndOfUpdate(const opencascade::handle<CDM_Document> & aDocument, const bool theStatus, TCollection_ExtendedString ErrorString);
 
 		/****** CDM_Application::MessageDriver ******/
 		/****** md5 signature: 9c7cdb55e9a82d7cef41788491b5a1ec ******/
@@ -227,17 +212,17 @@ Returns default messenger;.
 		virtual opencascade::handle<Message_Messenger> MessageDriver();
 
 		/****** CDM_Application::MetaDataLookUpTable ******/
-		/****** md5 signature: a73a07c624cf8f3d04f8c1775645863c ******/
+		/****** md5 signature: 38fcb6e191227b09af475a372e62f90e ******/
 		%feature("compactdefaultargs") MetaDataLookUpTable;
 		%feature("autodoc", "Return
 -------
-CDM_MetaDataLookUpTable
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>>
 
 Description
 -----------
 Returns MetaData LookUpTable.
 ") MetaDataLookUpTable;
-		virtual CDM_MetaDataLookUpTable & MetaDataLookUpTable();
+		virtual NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>> & MetaDataLookUpTable();
 
 		/****** CDM_Application::Name ******/
 		/****** md5 signature: 80292bf2fe0db1e304d129c2054da361 ******/
@@ -279,12 +264,12 @@ Returns the application version.
 		virtual TCollection_AsciiString Version();
 
 		/****** CDM_Application::Write ******/
-		/****** md5 signature: 53ecbdb2e873292857c5aac0b98f58b3 ******/
+		/****** md5 signature: 66e9fcf1a332e777ad83d2039f68a46f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
-aString: Standard_ExtString
+aString: char16_t *
 
 Return
 -------
@@ -294,7 +279,7 @@ Description
 -----------
 writes the string in the application MessagerDriver.
 ") Write;
-		void Write(const Standard_ExtString aString);
+		void Write(const char16_t * const aString);
 
 };
 
@@ -359,7 +344,7 @@ No available documentation.
 		CDM_CanCloseStatus CanClose();
 
 		/****** CDM_Document::CanCloseReference ******/
-		/****** md5 signature: 1140aead780f6c5f5344930b6e6db09b ******/
+		/****** md5 signature: 19705be703426fd77c1cf26a02a6e581 ******/
 		%feature("compactdefaultargs") CanCloseReference;
 		%feature("autodoc", "
 Parameters
@@ -373,9 +358,9 @@ bool
 
 Description
 -----------
-A referenced document may indicate through this virtual method that it does not allow the closing of aDocument which it references through the reference aReferenceIdentifier. By default returns Standard_True.
+A referenced document may indicate through this virtual method that it does not allow the closing of aDocument which it references through the reference aReferenceIdentifier. By default returns true.
 ") CanCloseReference;
-		virtual Standard_Boolean CanCloseReference(const opencascade::handle<CDM_Document> & aDocument, const Standard_Integer aReferenceIdentifier);
+		virtual bool CanCloseReference(const opencascade::handle<CDM_Document> & aDocument, const int aReferenceIdentifier);
 
 		/****** CDM_Document::Close ******/
 		/****** md5 signature: d50d7ba65c2beb3eb436584b5735f108 ******/
@@ -391,7 +376,7 @@ No available documentation.
 		void Close();
 
 		/****** CDM_Document::CloseReference ******/
-		/****** md5 signature: 6864eb1b746e4174e03f6398e4a62e45 ******/
+		/****** md5 signature: 12a4b0b3bb0f6a4e41199f024be20a27 ******/
 		%feature("compactdefaultargs") CloseReference;
 		%feature("autodoc", "
 Parameters
@@ -407,28 +392,28 @@ Description
 -----------
 A referenced document may update its internal data structure when {aDocument} which it references through the reference {aReferenceIdentifier} is being closed. By default this method does nothing.
 ") CloseReference;
-		virtual void CloseReference(const opencascade::handle<CDM_Document> & aDocument, const Standard_Integer aReferenceIdentifier);
+		virtual void CloseReference(const opencascade::handle<CDM_Document> & aDocument, const int aReferenceIdentifier);
 
 		/****** CDM_Document::Comment ******/
-		/****** md5 signature: da330a9b0b5e37badd51cb0b90f32906 ******/
+		/****** md5 signature: 7e29debb2d4de6d214a4a1ecae6866d0 ******/
 		%feature("compactdefaultargs") Comment;
 		%feature("autodoc", "Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 Returns the first of associated comments. By default the comment is an empty string.
 ") Comment;
-		Standard_ExtString Comment();
+		const char16_t * Comment();
 
 		/****** CDM_Document::Comments ******/
-		/****** md5 signature: d097d5458a50345161ad38ca79347c2b ******/
+		/****** md5 signature: b6fee9d18e0390a127256c152ad3c876 ******/
 		%feature("compactdefaultargs") Comments;
 		%feature("autodoc", "
 Parameters
 ----------
-aComments: TColStd_SequenceOfExtendedString
+aComments: NCollection_Sequence<TCollection_ExtendedString>
 
 Return
 -------
@@ -438,10 +423,10 @@ Description
 -----------
 returns the associated comments through <aComments>. Returns empty sequence if no comments are associated.
 ") Comments;
-		void Comments(TColStd_SequenceOfExtendedString & aComments);
+		void Comments(NCollection_Sequence<TCollection_ExtendedString> & aComments);
 
 		/****** CDM_Document::CopyReference ******/
-		/****** md5 signature: f5014e895ae3cfcd8f2a7732865706b9 ******/
+		/****** md5 signature: d28575d391d3d7291b475f242ff6db84 ******/
 		%feature("compactdefaultargs") CopyReference;
 		%feature("autodoc", "
 Parameters
@@ -457,10 +442,10 @@ Description
 -----------
 Copies a reference to this document. This method avoid retrieval of referenced document. The arguments are the original document and a valid reference identifier Returns the local identifier.
 ") CopyReference;
-		Standard_Integer CopyReference(const opencascade::handle<CDM_Document> & aFromDocument, const Standard_Integer aReferenceIdentifier);
+		int CopyReference(const opencascade::handle<CDM_Document> & aFromDocument, const int aReferenceIdentifier);
 
 		/****** CDM_Document::CreateReference ******/
-		/****** md5 signature: 70b61347a0dba1031a37a4d6a4f096fc ******/
+		/****** md5 signature: a13c93d3f1a692906a6a9057595fcc79 ******/
 		%feature("compactdefaultargs") CreateReference;
 		%feature("autodoc", "
 Parameters
@@ -475,10 +460,10 @@ Description
 -----------
 Creates a reference from this document to {anOtherDocument}. Returns a reference identifier. This reference identifier is unique in the document and will not be used for the next references, even after the storing of the document. If there is already a reference between the two documents, the reference is not created, but its reference identifier is returned.
 ") CreateReference;
-		Standard_Integer CreateReference(const opencascade::handle<CDM_Document> & anOtherDocument);
+		int CreateReference(const opencascade::handle<CDM_Document> & anOtherDocument);
 
 		/****** CDM_Document::CreateReference ******/
-		/****** md5 signature: 9a9061502dbb1319ebf6c20b8c206a40 ******/
+		/****** md5 signature: 23af19d70c6efd1c8949fb47fe8899c3 ******/
 		%feature("compactdefaultargs") CreateReference;
 		%feature("autodoc", "
 Parameters
@@ -497,10 +482,10 @@ Description
 -----------
 No available documentation.
 ") CreateReference;
-		void CreateReference(const opencascade::handle<CDM_MetaData> & aMetaData, const Standard_Integer aReferenceIdentifier, const opencascade::handle<CDM_Application> & anApplication, const Standard_Integer aToDocumentVersion, const Standard_Boolean UseStorageConfiguration);
+		void CreateReference(const opencascade::handle<CDM_MetaData> & aMetaData, const int aReferenceIdentifier, const opencascade::handle<CDM_Application> & anApplication, const int aToDocumentVersion, const bool UseStorageConfiguration);
 
 		/****** CDM_Document::CreateReference ******/
-		/****** md5 signature: 73155220bf15097893e98eeaa6c45625 ******/
+		/****** md5 signature: 00dd758a591802c2f4ac96e32dba349b ******/
 		%feature("compactdefaultargs") CreateReference;
 		%feature("autodoc", "
 Parameters
@@ -518,10 +503,10 @@ Description
 -----------
 No available documentation.
 ") CreateReference;
-		Standard_Integer CreateReference(const opencascade::handle<CDM_MetaData> & aMetaData, const opencascade::handle<CDM_Application> & anApplication, const Standard_Integer aDocumentVersion, const Standard_Boolean UseStorageConfiguration);
+		int CreateReference(const opencascade::handle<CDM_MetaData> & aMetaData, const opencascade::handle<CDM_Application> & anApplication, const int aDocumentVersion, const bool UseStorageConfiguration);
 
 		/****** CDM_Document::DeepReferences ******/
-		/****** md5 signature: e16f988328ffa73c1ca387730b2190fa ******/
+		/****** md5 signature: 3136b715d955b5e255957fcdc9be12dc ******/
 		%feature("compactdefaultargs") DeepReferences;
 		%feature("autodoc", "
 Parameters
@@ -536,7 +521,7 @@ Description
 -----------
 returns True is this document references aDocument;.
 ") DeepReferences;
-		Standard_Boolean DeepReferences(const opencascade::handle<CDM_Document> & aDocument);
+		bool DeepReferences(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDM_Document::Description ******/
 		/****** md5 signature: 4ea5e8b06a38637bc4a4e6f3a5b7d927 ******/
@@ -552,7 +537,7 @@ gets the `FileFormat`.Description resource.
 		TCollection_ExtendedString Description();
 
 		/****** CDM_Document::Document ******/
-		/****** md5 signature: 8eb99c67c36b1fb3f295093dbdfd69cc ******/
+		/****** md5 signature: 7c92c4efbcc1046a6cf5c41444fe8a87 ******/
 		%feature("compactdefaultargs") Document;
 		%feature("autodoc", "
 Parameters
@@ -567,7 +552,7 @@ Description
 -----------
 Returns the To Document of the reference identified by aReferenceIdentifier. If the ToDocument is stored and has not yet been retrieved, this method will retrieve it.
 ") Document;
-		opencascade::handle<CDM_Document> Document(const Standard_Integer aReferenceIdentifier);
+		opencascade::handle<CDM_Document> Document(const int aReferenceIdentifier);
 
 
         /****************** DumpJson ******************/
@@ -591,12 +576,12 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** CDM_Document::Extensions ******/
-		/****** md5 signature: 562af3bed83550e86f6e9f1cc27905e7 ******/
+		/****** md5 signature: 344a638003b8c4e26ff468b67fcd8d84 ******/
 		%feature("compactdefaultargs") Extensions;
 		%feature("autodoc", "
 Parameters
 ----------
-Extensions: TColStd_SequenceOfExtendedString
+Extensions: NCollection_Sequence<TCollection_ExtendedString>
 
 Return
 -------
@@ -606,7 +591,7 @@ Description
 -----------
 by default empties the extensions.
 ") Extensions;
-		virtual void Extensions(TColStd_SequenceOfExtendedString & Extensions);
+		virtual void Extensions(NCollection_Sequence<TCollection_ExtendedString> & Extensions);
 
 		/****** CDM_Document::FileExtension ******/
 		/****** md5 signature: dc32da120ea382590e37e02d5e00fb9e ******/
@@ -622,7 +607,7 @@ gets the Desktop.Domain.Application.`FileFormat`.FileExtension resource.
 		TCollection_ExtendedString FileExtension();
 
 		/****** CDM_Document::FindDescription ******/
-		/****** md5 signature: af3bb67c33b1f02d6f772909eee92676 ******/
+		/****** md5 signature: 29ae972dbb4878e11f051bba47485450 ******/
 		%feature("compactdefaultargs") FindDescription;
 		%feature("autodoc", "Return
 -------
@@ -632,10 +617,10 @@ Description
 -----------
 No available documentation.
 ") FindDescription;
-		Standard_Boolean FindDescription();
+		bool FindDescription();
 
 		/****** CDM_Document::FindFileExtension ******/
-		/****** md5 signature: 8f91e8289675fe02ffd3f710fad4831b ******/
+		/****** md5 signature: e46e145ee1343132d2b9e55c23ceeeb7 ******/
 		%feature("compactdefaultargs") FindFileExtension;
 		%feature("autodoc", "Return
 -------
@@ -645,7 +630,7 @@ Description
 -----------
 No available documentation.
 ") FindFileExtension;
-		Standard_Boolean FindFileExtension();
+		bool FindFileExtension();
 
 		/****** CDM_Document::Folder ******/
 		/****** md5 signature: 6e4f71ec7a138611fba2655a4d9e2a6c ******/
@@ -661,7 +646,7 @@ No available documentation.
 		TCollection_ExtendedString Folder();
 
 		/****** CDM_Document::FromReferencesNumber ******/
-		/****** md5 signature: 25816b3f96b43878489f4e6d996dc26a ******/
+		/****** md5 signature: 0e6d98f2df853cdfbac28bdd27416b6b ******/
 		%feature("compactdefaultargs") FromReferencesNumber;
 		%feature("autodoc", "Return
 -------
@@ -671,10 +656,10 @@ Description
 -----------
 returns the number of references having this document as To Document.
 ") FromReferencesNumber;
-		Standard_Integer FromReferencesNumber();
+		int FromReferencesNumber();
 
 		/****** CDM_Document::GetAlternativeDocument ******/
-		/****** md5 signature: 932a6b6d84c79c3da90d4ce47bf5554d ******/
+		/****** md5 signature: 8839c3f768f630f912058a2ebdeffb4e ******/
 		%feature("compactdefaultargs") GetAlternativeDocument;
 		%feature("autodoc", "
 Parameters
@@ -690,10 +675,10 @@ Description
 -----------
 This method can be redefined to extract another document in a different format. For example, to extract a Shape from an applicative document.
 ") GetAlternativeDocument;
-		virtual Standard_Boolean GetAlternativeDocument(TCollection_ExtendedString aFormat, opencascade::handle<CDM_Document> & anAlternativeDocument);
+		virtual bool GetAlternativeDocument(TCollection_ExtendedString aFormat, opencascade::handle<CDM_Document> & anAlternativeDocument);
 
 		/****** CDM_Document::HasRequestedFolder ******/
-		/****** md5 signature: da91e14ce6ae50fe9ebda6e45778d6fc ******/
+		/****** md5 signature: 7a2d001e51d1f3ddf0300dc77a6c0625 ******/
 		%feature("compactdefaultargs") HasRequestedFolder;
 		%feature("autodoc", "Return
 -------
@@ -703,10 +688,10 @@ Description
 -----------
 No available documentation.
 ") HasRequestedFolder;
-		Standard_Boolean HasRequestedFolder();
+		bool HasRequestedFolder();
 
 		/****** CDM_Document::HasRequestedPreviousVersion ******/
-		/****** md5 signature: 016d0ffafe8cf6beb45d2f56183bddfe ******/
+		/****** md5 signature: 575f86529bdc98c08ef8d9a8b44ab6df ******/
 		%feature("compactdefaultargs") HasRequestedPreviousVersion;
 		%feature("autodoc", "Return
 -------
@@ -716,10 +701,10 @@ Description
 -----------
 No available documentation.
 ") HasRequestedPreviousVersion;
-		Standard_Boolean HasRequestedPreviousVersion();
+		bool HasRequestedPreviousVersion();
 
 		/****** CDM_Document::IsInSession ******/
-		/****** md5 signature: 55aa5c1a1cd34e6b278620a607aed883 ******/
+		/****** md5 signature: c0ff9a059ae0c9abf6542e2425514f10 ******/
 		%feature("compactdefaultargs") IsInSession;
 		%feature("autodoc", "
 Parameters
@@ -734,10 +719,10 @@ Description
 -----------
 returns True if the To Document of the reference identified by aReferenceIdentifier is in session, False if it corresponds to a not yet retrieved document.
 ") IsInSession;
-		Standard_Boolean IsInSession(const Standard_Integer aReferenceIdentifier);
+		bool IsInSession(const int aReferenceIdentifier);
 
 		/****** CDM_Document::IsModified ******/
-		/****** md5 signature: 9c75f71ece8c473c12f072739ddc9f63 ******/
+		/****** md5 signature: 20a841c48b5ecb63ab1563022bd76327 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "Return
 -------
@@ -747,10 +732,10 @@ Description
 -----------
 returns true if the version is greater than the storage version.
 ") IsModified;
-		Standard_Boolean IsModified();
+		bool IsModified();
 
 		/****** CDM_Document::IsOpened ******/
-		/****** md5 signature: 523448479755dd859d720fcc78551e3d ******/
+		/****** md5 signature: 032d03c051abc8906198792895dd34c0 ******/
 		%feature("compactdefaultargs") IsOpened;
 		%feature("autodoc", "Return
 -------
@@ -760,10 +745,10 @@ Description
 -----------
 No available documentation.
 ") IsOpened;
-		Standard_Boolean IsOpened();
+		bool IsOpened();
 
 		/****** CDM_Document::IsOpened ******/
-		/****** md5 signature: 9876c2f350454b050aaab9f4f47c295b ******/
+		/****** md5 signature: 22809431ba09395993260ee387c7f5c5 ******/
 		%feature("compactdefaultargs") IsOpened;
 		%feature("autodoc", "
 Parameters
@@ -778,10 +763,10 @@ Description
 -----------
 returns true if the document corresponding to the given reference has been retrieved and opened. Otherwise returns false. This method does not retrieve the referenced document.
 ") IsOpened;
-		Standard_Boolean IsOpened(const Standard_Integer aReferenceIdentifier);
+		bool IsOpened(const int aReferenceIdentifier);
 
 		/****** CDM_Document::IsReadOnly ******/
-		/****** md5 signature: fa96cbb7774919470076f35f8b884f77 ******/
+		/****** md5 signature: f00f30f1ee84ee6ad831f785278dedf7 ******/
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "Return
 -------
@@ -791,10 +776,10 @@ Description
 -----------
 indicates that this document cannot be modified.
 ") IsReadOnly;
-		Standard_Boolean IsReadOnly();
+		bool IsReadOnly();
 
 		/****** CDM_Document::IsReadOnly ******/
-		/****** md5 signature: 4c358cefb201e05add20e7ea214cab46 ******/
+		/****** md5 signature: 265ffca623ae02ce1d9a4570e6113b72 ******/
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "
 Parameters
@@ -809,10 +794,10 @@ Description
 -----------
 indicates that the referenced document cannot be modified,.
 ") IsReadOnly;
-		Standard_Boolean IsReadOnly(const Standard_Integer aReferenceIdentifier);
+		bool IsReadOnly(const int aReferenceIdentifier);
 
 		/****** CDM_Document::IsStored ******/
-		/****** md5 signature: 2a9c914c3ea53a7b0112d3f96174940d ******/
+		/****** md5 signature: a9f021cdbcc569fffe03a05c50f4780f ******/
 		%feature("compactdefaultargs") IsStored;
 		%feature("autodoc", "
 Parameters
@@ -827,10 +812,10 @@ Description
 -----------
 returns True if the To Document of the reference identified by aReferenceIdentifier has already been stored, False otherwise.
 ") IsStored;
-		Standard_Boolean IsStored(const Standard_Integer aReferenceIdentifier);
+		bool IsStored(const int aReferenceIdentifier);
 
 		/****** CDM_Document::IsStored ******/
-		/****** md5 signature: 0accc82ecbcf65967dcdbcbc0b39163c ******/
+		/****** md5 signature: 50f45f1ea3dc0d91fb1ecc9b03467aa1 ******/
 		%feature("compactdefaultargs") IsStored;
 		%feature("autodoc", "Return
 -------
@@ -840,10 +825,10 @@ Description
 -----------
 No available documentation.
 ") IsStored;
-		Standard_Boolean IsStored();
+		bool IsStored();
 
 		/****** CDM_Document::IsUpToDate ******/
-		/****** md5 signature: 452911df138a97af1629dc6e74872cce ******/
+		/****** md5 signature: 4ab2d97c1c2fa436d74f32b1170ef660 ******/
 		%feature("compactdefaultargs") IsUpToDate;
 		%feature("autodoc", "
 Parameters
@@ -858,7 +843,7 @@ Description
 -----------
 returns true if the modification counter found in the given reference is equal to the actual modification counter of the To Document. This method is able to deal with a reference to a not retrieved document.
 ") IsUpToDate;
-		Standard_Boolean IsUpToDate(const Standard_Integer aReferenceIdentifier);
+		bool IsUpToDate(const int aReferenceIdentifier);
 
 		/****** CDM_Document::LoadResources ******/
 		/****** md5 signature: e42c9588671d5e90c5bd95f9735418c2 ******/
@@ -887,7 +872,7 @@ No available documentation.
 		opencascade::handle<CDM_MetaData> MetaData();
 
 		/****** CDM_Document::Modifications ******/
-		/****** md5 signature: 3724ba0881224cbd02f10fd6280917aa ******/
+		/****** md5 signature: 687a5e2b8cf540b80b1296524af7743b ******/
 		%feature("compactdefaultargs") Modifications;
 		%feature("autodoc", "Return
 -------
@@ -897,7 +882,7 @@ Description
 -----------
 returns the current modification counter.
 ") Modifications;
-		Standard_Integer Modifications();
+		int Modifications();
 
 		/****** CDM_Document::Modify ******/
 		/****** md5 signature: 44fbaa7237dd1010519534b2d6fc44f0 ******/
@@ -913,7 +898,7 @@ Indicates that this document has been modified. This method increments the modif
 		void Modify();
 
 		/****** CDM_Document::Name ******/
-		/****** md5 signature: c5a61ad170fbf4cb3eaba703b96b3427 ******/
+		/****** md5 signature: 7a17461ecd1bf9e0223a159d5bc01a49 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -928,7 +913,7 @@ Description
 -----------
 returns the name of the metadata of the To Document of the reference identified by aReferenceIdentifier.
 ") Name;
-		TCollection_ExtendedString Name(const Standard_Integer aReferenceIdentifier);
+		TCollection_ExtendedString Name(const int aReferenceIdentifier);
 
 		/****** CDM_Document::Open ******/
 		/****** md5 signature: f1ab173c076c622888436649c485a8d3 ******/
@@ -966,7 +951,7 @@ No available documentation.
 		Standard_OStream & Print(std::ostream &OutValue);
 
 		/****** CDM_Document::Reference ******/
-		/****** md5 signature: 8fb9128b48e5f8568694a49ff83331ff ******/
+		/****** md5 signature: 89e95abaf33d6c7d1ed7404b7f090041 ******/
 		%feature("compactdefaultargs") Reference;
 		%feature("autodoc", "
 Parameters
@@ -981,10 +966,10 @@ Description
 -----------
 No available documentation.
 ") Reference;
-		opencascade::handle<CDM_Reference> Reference(const Standard_Integer aReferenceIdentifier);
+		opencascade::handle<CDM_Reference> Reference(const int aReferenceIdentifier);
 
 		/****** CDM_Document::ReferenceCounter ******/
-		/****** md5 signature: 47d083a8fd4b8a72bd6f39ed448e103e ******/
+		/****** md5 signature: 5616fc3c73ab4de3fe46e4d7279bd971 ******/
 		%feature("compactdefaultargs") ReferenceCounter;
 		%feature("autodoc", "Return
 -------
@@ -994,7 +979,7 @@ Description
 -----------
 No available documentation.
 ") ReferenceCounter;
-		Standard_Integer ReferenceCounter();
+		int ReferenceCounter();
 
 		/****** CDM_Document::RemoveAllReferences ******/
 		/****** md5 signature: 6b9e122ba37998fb6a05a073acdd9b92 ******/
@@ -1010,7 +995,7 @@ Removes all references having this document for From Document.
 		void RemoveAllReferences();
 
 		/****** CDM_Document::RemoveReference ******/
-		/****** md5 signature: 4529742436960f07b87af71b701a2171 ******/
+		/****** md5 signature: 5a7c1b7d1b39c3ffb30e1b0faccd3a17 ******/
 		%feature("compactdefaultargs") RemoveReference;
 		%feature("autodoc", "
 Parameters
@@ -1025,7 +1010,7 @@ Description
 -----------
 Removes the reference between the From Document and the To Document identified by a reference identifier.
 ") RemoveReference;
-		void RemoveReference(const Standard_Integer aReferenceIdentifier);
+		void RemoveReference(const int aReferenceIdentifier);
 
 		/****** CDM_Document::RequestedComment ******/
 		/****** md5 signature: 2c8f0c5900e0c2cbeee3ca380fbc6985 ******/
@@ -1098,12 +1083,12 @@ associates a comment with this document.
 		void SetComment(TCollection_ExtendedString aComment);
 
 		/****** CDM_Document::SetComments ******/
-		/****** md5 signature: 9a6226c9c4e9d40c44b0c40fcfd457e5 ******/
+		/****** md5 signature: d99df2ea92859ad8db044272e2ad74bb ******/
 		%feature("compactdefaultargs") SetComments;
 		%feature("autodoc", "
 Parameters
 ----------
-aComments: TColStd_SequenceOfExtendedString
+aComments: NCollection_Sequence<TCollection_ExtendedString>
 
 Return
 -------
@@ -1113,7 +1098,7 @@ Description
 -----------
 associates a comments with this document.
 ") SetComments;
-		void SetComments(const TColStd_SequenceOfExtendedString & aComments);
+		void SetComments(const NCollection_Sequence<TCollection_ExtendedString> & aComments);
 
 		/****** CDM_Document::SetIsReadOnly ******/
 		/****** md5 signature: 9f4f8649234a1411f6086a147fb0f5ad ******/
@@ -1129,7 +1114,7 @@ No available documentation.
 		void SetIsReadOnly();
 
 		/****** CDM_Document::SetIsUpToDate ******/
-		/****** md5 signature: 4cf820e27e2c2ee1a5694cc34938d213 ******/
+		/****** md5 signature: b062b990c04323b6e1cabe53ffaa24fe ******/
 		%feature("compactdefaultargs") SetIsUpToDate;
 		%feature("autodoc", "
 Parameters
@@ -1144,7 +1129,7 @@ Description
 -----------
 Resets the modification counter in the given reference to the actual modification counter of its To Document. This method should be called after the application has updated this document.
 ") SetIsUpToDate;
-		void SetIsUpToDate(const Standard_Integer aReferenceIdentifier);
+		void SetIsUpToDate(const int aReferenceIdentifier);
 
 		/****** CDM_Document::SetMetaData ******/
 		/****** md5 signature: dc927976a3aa403aac8b90b594da511a ******/
@@ -1165,7 +1150,7 @@ associates database information to a document which has been stored. The name of
 		void SetMetaData(const opencascade::handle<CDM_MetaData> & aMetaData);
 
 		/****** CDM_Document::SetModifications ******/
-		/****** md5 signature: 1d8646a65052776ce5cd54b79be20e6b ******/
+		/****** md5 signature: 32f202716dcdc023badd0eae72fbd555 ******/
 		%feature("compactdefaultargs") SetModifications;
 		%feature("autodoc", "
 Parameters
@@ -1180,10 +1165,10 @@ Description
 -----------
 No available documentation.
 ") SetModifications;
-		void SetModifications(const Standard_Integer Modifications);
+		void SetModifications(const int Modifications);
 
 		/****** CDM_Document::SetReferenceCounter ******/
-		/****** md5 signature: 34d1c32056f0fedcd106c986c1fd8176 ******/
+		/****** md5 signature: abece96a1e1d1f9cbd4ce0290822a04e ******/
 		%feature("compactdefaultargs") SetReferenceCounter;
 		%feature("autodoc", "
 Parameters
@@ -1198,7 +1183,7 @@ Description
 -----------
 No available documentation.
 ") SetReferenceCounter;
-		void SetReferenceCounter(const Standard_Integer aReferenceCounter);
+		void SetReferenceCounter(const int aReferenceCounter);
 
 		/****** CDM_Document::SetRequestedComment ******/
 		/****** md5 signature: f34268b9079cda82757c3f2978722f10 ******/
@@ -1273,7 +1258,7 @@ No available documentation.
 		void SetRequestedPreviousVersion(TCollection_ExtendedString aPreviousVersion);
 
 		/****** CDM_Document::ShallowReferences ******/
-		/****** md5 signature: aa297a568fbd85c49d8f09dcb24692ae ******/
+		/****** md5 signature: dc8bef346b16a58c103dae2859fb9ead ******/
 		%feature("compactdefaultargs") ShallowReferences;
 		%feature("autodoc", "
 Parameters
@@ -1288,7 +1273,7 @@ Description
 -----------
 returns True is this document references aDocument;.
 ") ShallowReferences;
-		Standard_Boolean ShallowReferences(const opencascade::handle<CDM_Document> & aDocument);
+		bool ShallowReferences(const opencascade::handle<CDM_Document> & aDocument);
 
 		/****** CDM_Document::StorageFormat ******/
 		/****** md5 signature: 645330f0637961ced097e10cfe63d1a3 ******/
@@ -1304,7 +1289,7 @@ The Storage Format is the key which is used to determine in the application reso
 		virtual TCollection_ExtendedString StorageFormat();
 
 		/****** CDM_Document::StorageVersion ******/
-		/****** md5 signature: cfa5fceedf718765fa0109d82c3e0482 ******/
+		/****** md5 signature: 53cad72f215f0f529e03b71dd332b80c ******/
 		%feature("compactdefaultargs") StorageVersion;
 		%feature("autodoc", "Return
 -------
@@ -1314,10 +1299,10 @@ Description
 -----------
 returns the value of the modification counter at the time of storage. By default returns 0.
 ") StorageVersion;
-		Standard_Integer StorageVersion();
+		int StorageVersion();
 
 		/****** CDM_Document::ToReferencesNumber ******/
-		/****** md5 signature: 9ab7b7be8ebb8b32b4348f01bcfc580e ******/
+		/****** md5 signature: cd4ccbd5348c2ebf32b7b1233d5e9e95 ******/
 		%feature("compactdefaultargs") ToReferencesNumber;
 		%feature("autodoc", "Return
 -------
@@ -1327,7 +1312,7 @@ Description
 -----------
 returns the number of references having this document as From Document.
 ") ToReferencesNumber;
-		Standard_Integer ToReferencesNumber();
+		int ToReferencesNumber();
 
 		/****** CDM_Document::UnModify ******/
 		/****** md5 signature: 176026c3fd8351d101ca2563c78a92a8 ******/
@@ -1382,14 +1367,14 @@ No available documentation.
 		void UnsetRequestedPreviousVersion();
 
 		/****** CDM_Document::Update ******/
-		/****** md5 signature: 489e8b43103ceb1bedae872987b0cd2f ******/
+		/****** md5 signature: 5245ea15ffa876ffac6f786f48da4b99 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
 ----------
 aToDocument: CDM_Document
 aReferenceIdentifier: int
-aModifContext: Standard_Address
+aModifContext: void *
 
 Return
 -------
@@ -1399,10 +1384,10 @@ Description
 -----------
 The Update method will be called once for each reference, but it should not perform any computation, to avoid multiple computation of a same document.
 ") Update;
-		virtual void Update(const opencascade::handle<CDM_Document> & aToDocument, const Standard_Integer aReferenceIdentifier, const Standard_Address aModifContext);
+		virtual void Update(const opencascade::handle<CDM_Document> & aToDocument, const int aReferenceIdentifier, void * const aModifContext);
 
 		/****** CDM_Document::Update ******/
-		/****** md5 signature: 9fad82e8b94c706a007753d3361fc125 ******/
+		/****** md5 signature: 871c3a5c4289226c3444a59463640ad4 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -1417,7 +1402,7 @@ Description
 -----------
 This method Update will be called to signal the end of the modified references list. The document should be recomputed and UpdateFromDocuments should be called. Update should returns True in case of success, false otherwise. In case of Failure, additional information can be given in ErrorString.
 ") Update;
-		virtual Standard_Boolean Update(TCollection_ExtendedString & ErrorString);
+		virtual bool Update(TCollection_ExtendedString & ErrorString);
 
 		/****** CDM_Document::Update ******/
 		/****** md5 signature: 39b31f53ec35285afdd1d13bf1b04e26 ******/
@@ -1433,12 +1418,12 @@ the following method should be used instead: //! Update(me:mutable; ErrorString:
 		virtual void Update();
 
 		/****** CDM_Document::UpdateFromDocuments ******/
-		/****** md5 signature: 2007516be66761b05006844559207c16 ******/
+		/****** md5 signature: 23868bc77041d16961b80a37a82bbe5a ******/
 		%feature("compactdefaultargs") UpdateFromDocuments;
 		%feature("autodoc", "
 Parameters
 ----------
-aModifContext: Standard_Address
+aModifContext: void *
 
 Return
 -------
@@ -1446,9 +1431,9 @@ None
 
 Description
 -----------
-call virtual method Update on all referencing documents. This method keeps the list of the -- documents to process.It may be the starting of an update -- cycle. If not, the reentrant calls made by Update method (without argument) will append the referencing documents to the list and call the Update method (with arguments). Only the first call to UpdateFromDocuments generate call to Update().
+call virtual method Update on all referencing documents. This method keeps the list of the documents to process. It may be the starting of an update cycle. If not, the reentrant calls made by Update method (without argument) will append the referencing documents to the list and call the Update method (with arguments). Only the first call to UpdateFromDocuments generate call to Update().
 ") UpdateFromDocuments;
-		void UpdateFromDocuments(const Standard_Address aModifContext);
+		void UpdateFromDocuments(void * const aModifContext);
 
 };
 
@@ -1528,7 +1513,7 @@ returns the folder in which the meta-data has to be created or has to be found.
 		TCollection_ExtendedString Folder();
 
 		/****** CDM_MetaData::HasVersion ******/
-		/****** md5 signature: bb5780573c7c237fa50d67bc9fae80aa ******/
+		/****** md5 signature: 72d726a00122691ba038aaa0f68f3a4d ******/
 		%feature("compactdefaultargs") HasVersion;
 		%feature("autodoc", "Return
 -------
@@ -1538,10 +1523,10 @@ Description
 -----------
 indicates that the version has to be taken into account when searching the corresponding meta-data.
 ") HasVersion;
-		Standard_Boolean HasVersion();
+		bool HasVersion();
 
 		/****** CDM_MetaData::IsReadOnly ******/
-		/****** md5 signature: fa96cbb7774919470076f35f8b884f77 ******/
+		/****** md5 signature: f00f30f1ee84ee6ad831f785278dedf7 ******/
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "Return
 -------
@@ -1551,10 +1536,10 @@ Description
 -----------
 No available documentation.
 ") IsReadOnly;
-		Standard_Boolean IsReadOnly();
+		bool IsReadOnly();
 
 		/****** CDM_MetaData::IsRetrieved ******/
-		/****** md5 signature: 23effb2d4afa2a6e9b927e4ae98051f1 ******/
+		/****** md5 signature: 246335229ef956da958ee470cd63912d ******/
 		%feature("compactdefaultargs") IsRetrieved;
 		%feature("autodoc", "Return
 -------
@@ -1564,15 +1549,15 @@ Description
 -----------
 No available documentation.
 ") IsRetrieved;
-		Standard_Boolean IsRetrieved();
+		bool IsRetrieved();
 
 		/****** CDM_MetaData::LookUp ******/
-		/****** md5 signature: 264e1c1cc539b8fdedbde10237de56db ******/
+		/****** md5 signature: 05d9f21be7f110eee1cba5d8ec54d392 ******/
 		%feature("compactdefaultargs") LookUp;
 		%feature("autodoc", "
 Parameters
 ----------
-theLookUpTable: CDM_MetaDataLookUpTable
+theLookUpTable: CDM_MetaData
 aFolder: str
 aName: str
 aPath: str
@@ -1587,15 +1572,15 @@ Description
 -----------
 No available documentation.
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aFileName, const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData> > & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aFileName, const bool ReadOnly);
 
 		/****** CDM_MetaData::LookUp ******/
-		/****** md5 signature: 87e49a80556489bc1976c2417d858c6c ******/
+		/****** md5 signature: 1fcbf639e1d8fc98e1fb42d2c7956d8f ******/
 		%feature("compactdefaultargs") LookUp;
 		%feature("autodoc", "
 Parameters
 ----------
-theLookUpTable: CDM_MetaDataLookUpTable
+theLookUpTable: CDM_MetaData
 aFolder: str
 aName: str
 aPath: str
@@ -1611,7 +1596,7 @@ Description
 -----------
 No available documentation.
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(CDM_MetaDataLookUpTable & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aVersion, TCollection_ExtendedString aFileName, const Standard_Boolean ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData> > & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aVersion, TCollection_ExtendedString aFileName, const bool ReadOnly);
 
 		/****** CDM_MetaData::Name ******/
 		/****** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ******/
@@ -1726,7 +1711,7 @@ returns the version under which the meta-data has to be found. Warning: raises N
 class CDM_Reference : public Standard_Transient {
 	public:
 		/****** CDM_Reference::DocumentVersion ******/
-		/****** md5 signature: bf19019d65def7107fbf722b45605af2 ******/
+		/****** md5 signature: 675e05e8f271e443cd555d64e393f0e4 ******/
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "Return
 -------
@@ -1736,7 +1721,7 @@ Description
 -----------
 No available documentation.
 ") DocumentVersion;
-		Standard_Integer DocumentVersion();
+		int DocumentVersion();
 
 
         /****************** DumpJson ******************/
@@ -1773,7 +1758,7 @@ No available documentation.
 		opencascade::handle<CDM_Document> FromDocument();
 
 		/****** CDM_Reference::IsReadOnly ******/
-		/****** md5 signature: fa96cbb7774919470076f35f8b884f77 ******/
+		/****** md5 signature: f00f30f1ee84ee6ad831f785278dedf7 ******/
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "Return
 -------
@@ -1783,10 +1768,10 @@ Description
 -----------
 No available documentation.
 ") IsReadOnly;
-		Standard_Boolean IsReadOnly();
+		bool IsReadOnly();
 
 		/****** CDM_Reference::ReferenceIdentifier ******/
-		/****** md5 signature: 3aa5e98e8d6049efe315cf6d973322f8 ******/
+		/****** md5 signature: efc363e88a09ab9a0891ca07664c71ab ******/
 		%feature("compactdefaultargs") ReferenceIdentifier;
 		%feature("autodoc", "Return
 -------
@@ -1796,7 +1781,7 @@ Description
 -----------
 No available documentation.
 ") ReferenceIdentifier;
-		Standard_Integer ReferenceIdentifier();
+		int ReferenceIdentifier();
 
 		/****** CDM_Reference::ToDocument ******/
 		/****** md5 signature: 3cdc7a527106d97d66a66516fc680b2d ******/
@@ -1859,7 +1844,7 @@ No available documentation.
 		opencascade::handle<CDM_Document> Document();
 
 		/****** CDM_ReferenceIterator::DocumentVersion ******/
-		/****** md5 signature: bf19019d65def7107fbf722b45605af2 ******/
+		/****** md5 signature: 675e05e8f271e443cd555d64e393f0e4 ******/
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "Return
 -------
@@ -1869,10 +1854,10 @@ Description
 -----------
 returns the Document Version in the reference.
 ") DocumentVersion;
-		Standard_Integer DocumentVersion();
+		int DocumentVersion();
 
 		/****** CDM_ReferenceIterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1882,7 +1867,7 @@ Description
 -----------
 No available documentation.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** CDM_ReferenceIterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -1898,7 +1883,7 @@ No available documentation.
 		void Next();
 
 		/****** CDM_ReferenceIterator::ReferenceIdentifier ******/
-		/****** md5 signature: 0b6f1d6aeee20151c55bab21628d6c27 ******/
+		/****** md5 signature: c1d2e01be09a2d7c7ff7474ed2f44264 ******/
 		%feature("compactdefaultargs") ReferenceIdentifier;
 		%feature("autodoc", "Return
 -------
@@ -1908,7 +1893,7 @@ Description
 -----------
 No available documentation.
 ") ReferenceIdentifier;
-		Standard_Integer ReferenceIdentifier();
+		int ReferenceIdentifier();
 
 };
 
@@ -1924,7 +1909,6 @@ No available documentation.
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-CDM_NamesDirectory=OCC.Core.TColStd.TColStd_DataMapOfStringInteger
 }
 /* deprecated methods */
 %pythoncode {

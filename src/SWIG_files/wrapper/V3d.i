@@ -50,7 +50,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 #include<Aspect_module.hxx>
 #include<Prs3d_module.hxx>
 #include<TCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<Image_module.hxx>
 #include<TShort_module.hxx>
@@ -78,7 +77,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 %import Aspect.i
 %import Prs3d.i
 %import TCollection.i
-%import TColStd.i
 %import Bnd.i
 %import Image.i
 
@@ -300,41 +298,14 @@ V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = V3d_ListIteratorOfListOfLight(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
-    }
-};
-%template(V3d_ListOfView) NCollection_List<opencascade::handle<V3d_View>>;
-
-%extend NCollection_List<opencascade::handle<V3d_View>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-
-    def __iter__(self):
-        it = V3d_ListIteratorOfListOfView(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
 
 /* typedefs */
-typedef Handle_Graphic3d_CLight Handle_V3d_Light;
 typedef Graphic3d_CLight V3d_Light;
 typedef NCollection_List<opencascade::handle<Graphic3d_CLight>> V3d_ListOfLight;
-typedef V3d_ListOfLight::Iterator V3d_ListOfLightIterator;
-typedef NCollection_List<opencascade::handle<V3d_View>> V3d_ListOfView;
-typedef V3d_ListOfView::Iterator V3d_ListOfViewIterator;
-typedef Graphic3d_TypeOfBackfacingModel V3d_TypeOfBackfacingModel;
-typedef Graphic3d_TypeOfLightSource V3d_TypeOfLight;
-typedef Graphic3d_TypeOfShadingModel V3d_TypeOfShadingModel;
-typedef V3d_Viewer * V3d_ViewerPointer;
+typedef NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator V3d_ListOfLightIterator;
 /* end typedefs declaration */
 
 /************
@@ -344,20 +315,20 @@ typedef V3d_Viewer * V3d_ViewerPointer;
 class V3d {
 	public:
 		/****** V3d::ArrowOfRadius ******/
-		/****** md5 signature: 8ddc06fb0e722ac928195b2206ccf028 ******/
+		/****** md5 signature: ce0db135d3cb2c96ec041b1c193079ac ******/
 		%feature("compactdefaultargs") ArrowOfRadius;
 		%feature("autodoc", "
 Parameters
 ----------
 garrow: Graphic3d_Group
-X0: float
-Y0: float
-Z0: float
-DX: float
-DY: float
-DZ: float
-Alpha: float
-Lng: float
+X0: double
+Y0: double
+Z0: double
+DX: double
+DY: double
+DZ: double
+Alpha: double
+Lng: double
 
 Return
 -------
@@ -367,22 +338,22 @@ Description
 -----------
 Compute the graphic structure of arrow. X0,Y0,Z0: coordinate of the arrow. DX,DY,DZ: Direction of the arrow. Alpha: Angle of arrow. Lng: Length of arrow.
 ") ArrowOfRadius;
-		static void ArrowOfRadius(const opencascade::handle<Graphic3d_Group> & garrow, const Standard_Real X0, const Standard_Real Y0, const Standard_Real Z0, const Standard_Real DX, const Standard_Real DY, const Standard_Real DZ, const Standard_Real Alpha, const Standard_Real Lng);
+		static void ArrowOfRadius(const opencascade::handle<Graphic3d_Group> & garrow, const double X0, const double Y0, const double Z0, const double DX, const double DY, const double DZ, const double Alpha, const double Lng);
 
 		/****** V3d::CircleInPlane ******/
-		/****** md5 signature: 81f28238a0360e3e4b234fbafc05ada7 ******/
+		/****** md5 signature: 70cfb71a3eec20122a16f1ddad39a24d ******/
 		%feature("compactdefaultargs") CircleInPlane;
 		%feature("autodoc", "
 Parameters
 ----------
 gcircle: Graphic3d_Group
-X0: float
-Y0: float
-Z0: float
-VX: float
-VY: float
-VZ: float
-Radius: float
+X0: double
+Y0: double
+Z0: double
+VX: double
+VY: double
+VZ: double
+Radius: double
 
 Return
 -------
@@ -392,7 +363,7 @@ Description
 -----------
 Compute the graphic structure of circle. X0,Y0,Z0: Center of circle. VX,VY,VZ: Axis of circle. Radius: Radius of circle.
 ") CircleInPlane;
-		static void CircleInPlane(const opencascade::handle<Graphic3d_Group> & gcircle, const Standard_Real X0, const Standard_Real Y0, const Standard_Real Z0, const Standard_Real VX, const Standard_Real VY, const Standard_Real VZ, const Standard_Real Radius);
+		static void CircleInPlane(const opencascade::handle<Graphic3d_Group> & gcircle, const double X0, const double Y0, const double Z0, const double VX, const double VY, const double VZ, const double Radius);
 
 		/****** V3d::GetProjAxis ******/
 		/****** md5 signature: ff653ed0a2749aac4d9fc7a46f5eda14 ******/
@@ -432,12 +403,12 @@ No available documentation.
 		static void SwitchViewsinWindow(const opencascade::handle<V3d_View> & aPreviousView, const opencascade::handle<V3d_View> & aNextView);
 
 		/****** V3d::TypeOfOrientationFromString ******/
-		/****** md5 signature: 7ec9c0aeba08bec35b6ea6f180fb12c0 ******/
+		/****** md5 signature: 44e407faded4fffba7e6af61c6540bc5 ******/
 		%feature("compactdefaultargs") TypeOfOrientationFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeString: str
+theTypeString: char *
 
 Return
 -------
@@ -449,15 +420,15 @@ Returns the orientation type from the given string identifier (using case-insens
 Parameter theTypeString string identifier 
 Return: orientation type or V3d_TypeOfOrientation if string identifier is invalid.
 ") TypeOfOrientationFromString;
-		static V3d_TypeOfOrientation TypeOfOrientationFromString(Standard_CString theTypeString);
+		static V3d_TypeOfOrientation TypeOfOrientationFromString(const char * const theTypeString);
 
 		/****** V3d::TypeOfOrientationFromString ******/
-		/****** md5 signature: 6b78449f8330edf458cfd27636ffc2e3 ******/
+		/****** md5 signature: 1c5fcd873e4529680010fd51e5a25163 ******/
 		%feature("compactdefaultargs") TypeOfOrientationFromString;
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeString: str
+theTypeString: char *
 
 Return
 -------
@@ -470,10 +441,10 @@ Parameter theTypeString string identifier
 Parameter theType detected shape type 
 Return: True if string identifier is known.
 ") TypeOfOrientationFromString;
-		static Standard_Boolean TypeOfOrientationFromString(Standard_CString theTypeString, V3d_TypeOfOrientation &OutValue);
+		static bool TypeOfOrientationFromString(const char * const theTypeString, V3d_TypeOfOrientation &OutValue);
 
 		/****** V3d::TypeOfOrientationToString ******/
-		/****** md5 signature: 73659bdc699005210713bf8f9d6fab86 ******/
+		/****** md5 signature: 9c981184990021e765e8b9c297d855b8 ******/
 		%feature("compactdefaultargs") TypeOfOrientationToString;
 		%feature("autodoc", "
 Parameters
@@ -482,7 +453,7 @@ theType: V3d_TypeOfOrientation
 
 Return
 -------
-str
+char *
 
 Description
 -----------
@@ -490,7 +461,7 @@ Returns the string name for a given orientation type.
 Parameter theType orientation type 
 Return: string identifier from the list Xpos, Ypos, Zpos and others.
 ") TypeOfOrientationToString;
-		static Standard_CString TypeOfOrientationToString(V3d_TypeOfOrientation theType);
+		static const char * TypeOfOrientationToString(V3d_TypeOfOrientation theType);
 
 };
 
@@ -561,7 +532,7 @@ No available documentation.
 		 V3d_CircularGrid(const V3d_ViewerPointer & aViewer, const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****** V3d_CircularGrid::Display ******/
-		/****** md5 signature: 8281a554d1ac32b57d99a718ed554038 ******/
+		/****** md5 signature: 903842dd9d893c15b89378195682475b ******/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "Return
 -------
@@ -595,7 +566,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** V3d_CircularGrid::Erase ******/
-		/****** md5 signature: 683e92afcb4dd44bd3a5c6cd77cd44d8 ******/
+		/****** md5 signature: c44f5a88bcb1063bd29edf0cf29382ee ******/
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "Return
 -------
@@ -608,7 +579,7 @@ No available documentation.
 		void Erase();
 
 		/****** V3d_CircularGrid::GraphicValues ******/
-		/****** md5 signature: b1d4700bfff10f15a14cf8c74ab10261 ******/
+		/****** md5 signature: 13117da1f934ae6c9868fb4f62d59c79 ******/
 		%feature("compactdefaultargs") GraphicValues;
 		%feature("autodoc", "
 Parameters
@@ -616,8 +587,8 @@ Parameters
 
 Return
 -------
-Radius: float
-OffSet: float
+Radius: double
+OffSet: double
 
 Description
 -----------
@@ -626,7 +597,7 @@ No available documentation.
 		void GraphicValues(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_CircularGrid::IsDisplayed ******/
-		/****** md5 signature: 22924cd2b5318e241154a4a4dd3d4803 ******/
+		/****** md5 signature: 9306d606fef6b23ee5b5daa6f26cc3ec ******/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "Return
 -------
@@ -636,10 +607,10 @@ Description
 -----------
 No available documentation.
 ") IsDisplayed;
-		Standard_Boolean IsDisplayed();
+		bool IsDisplayed();
 
 		/****** V3d_CircularGrid::SetColors ******/
-		/****** md5 signature: 7534a16d8d9fbd9bbe68e656a4272ad7 ******/
+		/****** md5 signature: 22ee0f14344f4252a774c9671cbc34df ******/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "
 Parameters
@@ -658,13 +629,13 @@ No available documentation.
 		void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****** V3d_CircularGrid::SetGraphicValues ******/
-		/****** md5 signature: 014c9a5fb6d894577cb3746edb9bdc5b ******/
+		/****** md5 signature: 8736e89625f3e6bae13248a7be9dea36 ******/
 		%feature("compactdefaultargs") SetGraphicValues;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
-OffSet: float
+Radius: double
+OffSet: double
 
 Return
 -------
@@ -674,7 +645,7 @@ Description
 -----------
 No available documentation.
 ") SetGraphicValues;
-		void SetGraphicValues(const Standard_Real Radius, const Standard_Real OffSet);
+		void SetGraphicValues(const double Radius, const double OffSet);
 
 };
 
@@ -696,15 +667,15 @@ No available documentation.
 class V3d_Plane : public Standard_Transient {
 	public:
 		/****** V3d_Plane::V3d_Plane ******/
-		/****** md5 signature: 0312d266d9ef2810604382ef778c1f88 ******/
+		/****** md5 signature: 55f7101334ce9ee13d6ede87226ce29c ******/
 		%feature("compactdefaultargs") V3d_Plane;
 		%feature("autodoc", "
 Parameters
 ----------
-theA: float (optional, default to 0.0)
-theB: float (optional, default to 0.0)
-theC: float (optional, default to 1.0)
-theD: float (optional, default to 0.0)
+theA: double (optional, default to 0.0)
+theB: double (optional, default to 0.0)
+theC: double (optional, default to 1.0)
+theD: double (optional, default to 0.0)
 
 Return
 -------
@@ -714,7 +685,7 @@ Description
 -----------
 Creates a clipping plane from plane coefficients.
 ") V3d_Plane;
-		 V3d_Plane(const Standard_Real theA = 0.0, const Standard_Real theB = 0.0, const Standard_Real theC = 1.0, const Standard_Real theD = 0.0);
+		 V3d_Plane(const double theA = 0.0, const double theB = 0.0, const double theC = 1.0, const double theD = 0.0);
 
 		/****** V3d_Plane::ClipPlane ******/
 		/****** md5 signature: 726bceb71c5417a0c5b0cf697adf308e ******/
@@ -763,7 +734,7 @@ Erase the plane representation.
 		void Erase();
 
 		/****** V3d_Plane::IsDisplayed ******/
-		/****** md5 signature: 04882eded547dac4e4f59f67e903fed8 ******/
+		/****** md5 signature: e13849d6809fc79274538f37bcdcee34 ******/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "Return
 -------
@@ -773,10 +744,10 @@ Description
 -----------
 Returns True when the plane representation is displayed.
 ") IsDisplayed;
-		Standard_Boolean IsDisplayed();
+		bool IsDisplayed();
 
 		/****** V3d_Plane::Plane ******/
-		/****** md5 signature: 5a71d0a06c1c48da691d3ec3cdc8498e ******/
+		/****** md5 signature: f82218a3bdd58134410e7c42401ed9ab ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "
 Parameters
@@ -784,10 +755,10 @@ Parameters
 
 Return
 -------
-theA: float
-theB: float
-theC: float
-theD: float
+theA: double
+theB: double
+theC: double
+theD: double
 
 Description
 -----------
@@ -796,15 +767,15 @@ Returns the parameters of the plane.
 		void Plane(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_Plane::SetPlane ******/
-		/****** md5 signature: bc3101f33294b1ef9a720256755c12f9 ******/
+		/****** md5 signature: 02923f792602f4bd17801c16c65c8f91 ******/
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "
 Parameters
 ----------
-theA: float
-theB: float
-theC: float
-theD: float
+theA: double
+theB: double
+theC: double
+theD: double
 
 Return
 -------
@@ -814,7 +785,7 @@ Description
 -----------
 Change plane equation.
 ") SetPlane;
-		void SetPlane(const Standard_Real theA, const Standard_Real theB, const Standard_Real theC, const Standard_Real theD);
+		void SetPlane(const double theA, const double theB, const double theC, const double theD);
 
 };
 
@@ -870,7 +841,7 @@ No available documentation.
 		 V3d_RectangularGrid(const V3d_ViewerPointer & aViewer, const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****** V3d_RectangularGrid::Display ******/
-		/****** md5 signature: 869c346ea6117dea2e22059b972a14d6 ******/
+		/****** md5 signature: 903842dd9d893c15b89378195682475b ******/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "Return
 -------
@@ -880,7 +851,7 @@ Description
 -----------
 No available documentation.
 ") Display;
-		virtual void Display();
+		void Display();
 
 
         /****************** DumpJson ******************/
@@ -904,7 +875,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** V3d_RectangularGrid::Erase ******/
-		/****** md5 signature: 44e4f7cb90f37153ccbcbc58390450d3 ******/
+		/****** md5 signature: c44f5a88bcb1063bd29edf0cf29382ee ******/
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "Return
 -------
@@ -914,10 +885,10 @@ Description
 -----------
 No available documentation.
 ") Erase;
-		virtual void Erase();
+		void Erase();
 
 		/****** V3d_RectangularGrid::GraphicValues ******/
-		/****** md5 signature: be03824cdbf05cae65a43617bb8d97e3 ******/
+		/****** md5 signature: 061a0e31862430b1cf034c108226f4a2 ******/
 		%feature("compactdefaultargs") GraphicValues;
 		%feature("autodoc", "
 Parameters
@@ -925,9 +896,9 @@ Parameters
 
 Return
 -------
-XSize: float
-YSize: float
-OffSet: float
+XSize: double
+YSize: double
+OffSet: double
 
 Description
 -----------
@@ -936,7 +907,7 @@ No available documentation.
 		void GraphicValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_RectangularGrid::IsDisplayed ******/
-		/****** md5 signature: dcb0c9b5518fcc6a7adfe5c2cf2d06c3 ******/
+		/****** md5 signature: 9306d606fef6b23ee5b5daa6f26cc3ec ******/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "Return
 -------
@@ -946,10 +917,10 @@ Description
 -----------
 No available documentation.
 ") IsDisplayed;
-		virtual Standard_Boolean IsDisplayed();
+		bool IsDisplayed();
 
 		/****** V3d_RectangularGrid::SetColors ******/
-		/****** md5 signature: 9e45da8e1b80e60ef1ff0cde9ca414a8 ******/
+		/****** md5 signature: 22ee0f14344f4252a774c9671cbc34df ******/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "
 Parameters
@@ -965,17 +936,17 @@ Description
 -----------
 No available documentation.
 ") SetColors;
-		virtual void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
+		void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****** V3d_RectangularGrid::SetGraphicValues ******/
-		/****** md5 signature: 21412a7d5826b7b44f86e4c1355280ec ******/
+		/****** md5 signature: fbc151d69105806d5297c706fffd041a ******/
 		%feature("compactdefaultargs") SetGraphicValues;
 		%feature("autodoc", "
 Parameters
 ----------
-XSize: float
-YSize: float
-OffSet: float
+XSize: double
+YSize: double
+OffSet: double
 
 Return
 -------
@@ -985,7 +956,7 @@ Description
 -----------
 No available documentation.
 ") SetGraphicValues;
-		void SetGraphicValues(const Standard_Real XSize, const Standard_Real YSize, const Standard_Real OffSet);
+		void SetGraphicValues(const double XSize, const double YSize, const double OffSet);
 
 };
 
@@ -1037,17 +1008,17 @@ Return: shading aspect.
 		const opencascade::handle<Prs3d_ShadingAspect> & ArrowAspect(V3d_TypeOfAxe theAxis);
 
 		/****** V3d_Trihedron::ArrowDiameter ******/
-		/****** md5 signature: 8cf626b6e8e6be25604ce22c0e17f051 ******/
+		/****** md5 signature: 9af18fb67d342a1a48e360c2f9b58210 ******/
 		%feature("compactdefaultargs") ArrowDiameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return arrow diameter.
 ") ArrowDiameter;
-		Standard_Real ArrowDiameter();
+		double ArrowDiameter();
 
 		/****** V3d_Trihedron::Display ******/
 		/****** md5 signature: 42c2ef5e51bf295103c2f258b27a2422 ******/
@@ -1173,7 +1144,7 @@ Return: text aspect.
 		const opencascade::handle<Prs3d_TextAspect> & LabelAspect(V3d_TypeOfAxe theAxis);
 
 		/****** V3d_Trihedron::NbFacets ******/
-		/****** md5 signature: f0a78c1b1a92f4693779c9637ca3a493 ******/
+		/****** md5 signature: 6496a79061ed770783ab7a7f02298be3 ******/
 		%feature("compactdefaultargs") NbFacets;
 		%feature("autodoc", "Return
 -------
@@ -1183,7 +1154,7 @@ Description
 -----------
 Return number of facets for tessellation.
 ") NbFacets;
-		Standard_Integer NbFacets();
+		int NbFacets();
 
 		/****** V3d_Trihedron::OriginAspect ******/
 		/****** md5 signature: 81a6eb092b2a0e718e37986026d946c4 ******/
@@ -1199,25 +1170,25 @@ Return shading aspect of origin sphere.
 		const opencascade::handle<Prs3d_ShadingAspect> & OriginAspect();
 
 		/****** V3d_Trihedron::Scale ******/
-		/****** md5 signature: fff8b387c443c3e852a1bfc198a5a373 ******/
+		/****** md5 signature: 0692a776bbe69c585f3d8d4b86bd225b ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return scale factor.
 ") Scale;
-		Standard_Real Scale();
+		double Scale();
 
 		/****** V3d_Trihedron::SetArrowDiameter ******/
-		/****** md5 signature: 4c0619d2a8305d420bc1f36865af3099 ******/
+		/****** md5 signature: a0c2729091284d7b6eecd21dec71b84b ******/
 		%feature("compactdefaultargs") SetArrowDiameter;
 		%feature("autodoc", "
 Parameters
 ----------
-theDiam: float
+theDiam: double
 
 Return
 -------
@@ -1227,7 +1198,7 @@ Description
 -----------
 Setup the arrow diameter.
 ") SetArrowDiameter;
-		void SetArrowDiameter(const Standard_Real theDiam);
+		void SetArrowDiameter(const double theDiam);
 
 		/****** V3d_Trihedron::SetArrowsColor ******/
 		/****** md5 signature: 3947d4f96fefc9e2657dc0fdc9888373 ******/
@@ -1308,7 +1279,7 @@ Setup color of text labels.
 		void SetLabelsColor(const Quantity_Color & theColor);
 
 		/****** V3d_Trihedron::SetNbFacets ******/
-		/****** md5 signature: 5efbe53a806e2f2349d28a5ad826c749 ******/
+		/****** md5 signature: b80e6a85b9c0f850b5d7d24ef44dbe90 ******/
 		%feature("compactdefaultargs") SetNbFacets;
 		%feature("autodoc", "
 Parameters
@@ -1323,7 +1294,7 @@ Description
 -----------
 Setup the number of facets for tessellation.
 ") SetNbFacets;
-		void SetNbFacets(const Standard_Integer theNbFacets);
+		void SetNbFacets(const int theNbFacets);
 
 		/****** V3d_Trihedron::SetPosition ******/
 		/****** md5 signature: 800bcc8a066f1adf34c79426184d50c1 ******/
@@ -1344,12 +1315,12 @@ Setup the corner to draw the trihedron.
 		void SetPosition(const Aspect_TypeOfTriedronPosition thePosition);
 
 		/****** V3d_Trihedron::SetScale ******/
-		/****** md5 signature: 91bbbb1646dedfb8018b2c1849bc71ad ******/
+		/****** md5 signature: e4c4cdd9135da02c4042f9791681f0b2 ******/
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "
 Parameters
 ----------
-theScale: float
+theScale: double
 
 Return
 -------
@@ -1359,15 +1330,15 @@ Description
 -----------
 Setup the scale factor.
 ") SetScale;
-		void SetScale(const Standard_Real theScale);
+		void SetScale(const double theScale);
 
 		/****** V3d_Trihedron::SetSizeRatio ******/
-		/****** md5 signature: c04a64217473268454fb63fbf5499304 ******/
+		/****** md5 signature: 66a537c199fa210eb66bbc0722702758 ******/
 		%feature("compactdefaultargs") SetSizeRatio;
 		%feature("autodoc", "
 Parameters
 ----------
-theRatio: float
+theRatio: double
 
 Return
 -------
@@ -1377,10 +1348,10 @@ Description
 -----------
 Setup the size ratio factor.
 ") SetSizeRatio;
-		void SetSizeRatio(const Standard_Real theRatio);
+		void SetSizeRatio(const double theRatio);
 
 		/****** V3d_Trihedron::SetWireframe ******/
-		/****** md5 signature: 11febb98a3fceb574f5634008d3ccac4 ******/
+		/****** md5 signature: a9c9bb63726b392760aac9b84d3c0e4b ******/
 		%feature("compactdefaultargs") SetWireframe;
 		%feature("autodoc", "
 Parameters
@@ -1395,20 +1366,20 @@ Description
 -----------
 Switch wireframe / shaded trihedron.
 ") SetWireframe;
-		void SetWireframe(const Standard_Boolean theAsWireframe);
+		void SetWireframe(const bool theAsWireframe);
 
 		/****** V3d_Trihedron::SizeRatio ******/
-		/****** md5 signature: ecc16fdaec68cd0580ce5d85ea1f0908 ******/
+		/****** md5 signature: 9b8a2ba9d6beb67088bc44b4fd0e6548 ******/
 		%feature("compactdefaultargs") SizeRatio;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return size ratio factor.
 ") SizeRatio;
-		Standard_Real SizeRatio();
+		double SizeRatio();
 
 		/****** V3d_Trihedron::TransformPersistence ******/
 		/****** md5 signature: d358c515ebf5e1ead4666e4a5cd605ce ******/
@@ -1491,30 +1462,30 @@ No available documentation.
 		const opencascade::handle<V3d_Light> & ActiveLight();
 
 		/****** V3d_View::ActiveLightIterator ******/
-		/****** md5 signature: 6fa6e98274fc8d44abfc6ab8d93a027d ******/
+		/****** md5 signature: 861e579b57bbed0fdde0a3e25a20801b ******/
 		%feature("compactdefaultargs") ActiveLightIterator;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfLightIterator
+NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator
 
 Description
 -----------
 Return iterator for defined lights.
 ") ActiveLightIterator;
-		V3d_ListOfLightIterator ActiveLightIterator();
+		NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator ActiveLightIterator();
 
 		/****** V3d_View::ActiveLights ******/
-		/****** md5 signature: 046f4b2a5dbc3ae8d1d2b264382219be ******/
+		/****** md5 signature: a72d01c82d08918d30c496c97d18284d ******/
 		%feature("compactdefaultargs") ActiveLights;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfLight
+NCollection_List<opencascade::handle<Graphic3d_CLight>>
 
 Description
 -----------
 Returns a list of active lights.
 ") ActiveLights;
-		const V3d_ListOfLight & ActiveLights();
+		const NCollection_List<opencascade::handle<Graphic3d_CLight>> & ActiveLights();
 
 		/****** V3d_View::AddClipPlane ******/
 		/****** md5 signature: 9f3c54e7cba60e479ad5b0eee5e5228c ******/
@@ -1554,7 +1525,7 @@ Add subview to the list.
 		void AddSubview(const opencascade::handle<V3d_View> & theView);
 
 		/****** V3d_View::At ******/
-		/****** md5 signature: 5c17b55c9dc9e96e036d6f29354c6a9d ******/
+		/****** md5 signature: 4045d3f35b6f3b1dcb057598da7095b8 ******/
 		%feature("compactdefaultargs") At;
 		%feature("autodoc", "
 Parameters
@@ -1562,9 +1533,9 @@ Parameters
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -1586,7 +1557,7 @@ If automatic z-range fitting is turned on, adjusts Z-min and Z-max projection vo
 		void AutoZFit();
 
 		/****** V3d_View::AutoZFitMode ******/
-		/****** md5 signature: b57c0da0561c9b0b0778ef1710bb14c3 ******/
+		/****** md5 signature: 6365724d003c20b19065f4099d6a8d1f ******/
 		%feature("compactdefaultargs") AutoZFitMode;
 		%feature("autodoc", "Return
 -------
@@ -1596,23 +1567,23 @@ Description
 -----------
 returns True if automatic z-fit mode is turned on.
 ") AutoZFitMode;
-		Standard_Boolean AutoZFitMode();
+		bool AutoZFitMode();
 
 		/****** V3d_View::AutoZFitScaleFactor ******/
-		/****** md5 signature: 6257bed9c3571580a75e0ab98cd280b9 ******/
+		/****** md5 signature: 8e5df3750d3402a075d40a54cea317f1 ******/
 		%feature("compactdefaultargs") AutoZFitScaleFactor;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns scale factor parameter of automatic z-fit mode.
 ") AutoZFitScaleFactor;
-		Standard_Real AutoZFitScaleFactor();
+		double AutoZFitScaleFactor();
 
 		/****** V3d_View::AxialScale ******/
-		/****** md5 signature: a2b909a1a57dc5163dd4895ada91fd13 ******/
+		/****** md5 signature: 4e445e7df6bebb7e8b46e65d395a9c0b ******/
 		%feature("compactdefaultargs") AxialScale;
 		%feature("autodoc", "
 Parameters
@@ -1620,9 +1591,9 @@ Parameters
 
 Return
 -------
-Sx: float
-Sy: float
-Sz: float
+Sx: double
+Sy: double
+Sz: double
 
 Description
 -----------
@@ -1631,7 +1602,7 @@ Returns the current values of the anisotropic (axial) scale factors.
 		void AxialScale(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::AxialScale ******/
-		/****** md5 signature: bfb43dfcf2c6206f166042bdbcd4b471 ******/
+		/****** md5 signature: bfa817bb0b4ccb29370107feaf6a02bd ******/
 		%feature("compactdefaultargs") AxialScale;
 		%feature("autodoc", "
 Parameters
@@ -1648,7 +1619,7 @@ Description
 -----------
 Performs anisotropic scaling of <self> view along the given <Axis>. The scale factor is calculated on a basis of the mouse pointer displacement <Dx,Dy>. The calculated scale factor is then passed to SetAxialScale(Sx, Sy, Sz) method.
 ") AxialScale;
-		void AxialScale(const Standard_Integer Dx, const Standard_Integer Dy, const V3d_TypeOfAxe Axis);
+		void AxialScale(const int Dx, const int Dy, const V3d_TypeOfAxe Axis);
 
 		/****** V3d_View::BackFacingModel ******/
 		/****** md5 signature: f3593149121845487191e085f1d8af64 ******/
@@ -1664,7 +1635,7 @@ Returns current state of the back faces display; Graphic3d_TypeOfBackfacingModel
 		Graphic3d_TypeOfBackfacingModel BackFacingModel();
 
 		/****** V3d_View::BackgroundColor ******/
-		/****** md5 signature: 496c0a03dfb1fb7b8076d2c2846a387c ******/
+		/****** md5 signature: 659d73786bd9563eadb616fa91e3cd5e ******/
 		%feature("compactdefaultargs") BackgroundColor;
 		%feature("autodoc", "
 Parameters
@@ -1673,9 +1644,9 @@ Type: Quantity_TypeOfColor
 
 Return
 -------
-V1: float
-V2: float
-V3: float
+V1: double
+V2: double
+V3: double
 
 Description
 -----------
@@ -1737,12 +1708,12 @@ Returns reference to current rendering parameters and effect settings.
 		Graphic3d_RenderingParams & ChangeRenderingParams();
 
 		/****** V3d_View::ClearPBREnvironment ******/
-		/****** md5 signature: ceb898c642bc368ae8e055ac8a0fd7bd ******/
+		/****** md5 signature: ee556fdd219943dc1e4a2731a6491d26 ******/
 		%feature("compactdefaultargs") ClearPBREnvironment;
 		%feature("autodoc", "
 Parameters
 ----------
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -1752,7 +1723,7 @@ Description
 -----------
 Disables IBL from background cubemap; fills PBR specular probe and irradiance map with white color.
 ") ClearPBREnvironment;
-		void ClearPBREnvironment(Standard_Boolean theToUpdate = Standard_False);
+		void ClearPBREnvironment(bool theToUpdate = false);
 
 		/****** V3d_View::ClipPlanes ******/
 		/****** md5 signature: 4f5f037b2c152f9713991c9904ccf618 ******/
@@ -1769,7 +1740,7 @@ Return: sequence clip planes that have been set for the view.
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
 		/****** V3d_View::ComputedMode ******/
-		/****** md5 signature: 29bd402246d352389128afcb0486b75e ******/
+		/****** md5 signature: a9bfc1eebb1f3110dd5240f03f5de529 ******/
 		%feature("compactdefaultargs") ComputedMode;
 		%feature("autodoc", "Return
 -------
@@ -1779,10 +1750,10 @@ Description
 -----------
 Returns the computed HLR mode state.
 ") ComputedMode;
-		Standard_Boolean ComputedMode();
+		bool ComputedMode();
 
 		/****** V3d_View::Convert ******/
-		/****** md5 signature: a1d3281dca07164e571b608f5bc809b9 ******/
+		/****** md5 signature: f75961e57327fc1d758baf58d65bbb12 ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
@@ -1791,16 +1762,16 @@ Vp: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts the PIXEL value to a value in the projection plane.
 ") Convert;
-		Standard_Real Convert(const Standard_Integer Vp);
+		double Convert(const int Vp);
 
 		/****** V3d_View::Convert ******/
-		/****** md5 signature: d15381827f797863bf8e51d376bc16c1 ******/
+		/****** md5 signature: 5afc81aedcae08a870db19dbc642dbb4 ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
@@ -1810,22 +1781,22 @@ Yp: int
 
 Return
 -------
-Xv: float
-Yv: float
+Xv: double
+Yv: double
 
 Description
 -----------
 Converts the point PIXEL into a point projected in the reference frame of the projection plane.
 ") Convert;
-		void Convert(const Standard_Integer Xp, const Standard_Integer Yp, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Convert(const int Xp, const int Yp, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::Convert ******/
-		/****** md5 signature: 7dd2a2a1ea24d8db91f157ae69129241 ******/
+		/****** md5 signature: 912ec7751dd4879c359e2e9fd4735406 ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
 ----------
-Vv: float
+Vv: double
 
 Return
 -------
@@ -1835,16 +1806,16 @@ Description
 -----------
 Converts tha value of the projection plane into a PIXEL value.
 ") Convert;
-		Standard_Integer Convert(const Standard_Real Vv);
+		int Convert(const double Vv);
 
 		/****** V3d_View::Convert ******/
-		/****** md5 signature: 142cf6fe83017e2ab40a1b9b0fdfda91 ******/
+		/****** md5 signature: 8da1b0c9d4780a747ba0cf5b9ca5fce1 ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
 ----------
-Xv: float
-Yv: float
+Xv: double
+Yv: double
 
 Return
 -------
@@ -1855,10 +1826,10 @@ Description
 -----------
 Converts the point defined in the reference frame of the projection plane into a point PIXEL.
 ") Convert;
-		void Convert(const Standard_Real Xv, const Standard_Real Yv, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void Convert(const double Xv, const double Yv, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** V3d_View::Convert ******/
-		/****** md5 signature: 806b18b0f8f527526068db6c9b0f5582 ******/
+		/****** md5 signature: 0f09496db393b18f18211909230bb2f4 ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
@@ -1868,25 +1839,25 @@ Yp: int
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
 Converts the projected point into a point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector.
 ") Convert;
-		void Convert(const Standard_Integer Xp, const Standard_Integer Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Convert(const int Xp, const int Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::Convert ******/
-		/****** md5 signature: 7fdd5667208d15821960cc400f3df3ff ******/
+		/****** md5 signature: 1281d39cf1bc4cc0af895ec1289a2819 ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -1897,10 +1868,10 @@ Description
 -----------
 Projects the point defined in the reference frame of the view into the projected point in the associated window.
 ") Convert;
-		void Convert(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void Convert(const double X, const double Y, const double Z, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** V3d_View::ConvertToGrid ******/
-		/****** md5 signature: b151fec13ddce5ba9a39630169ddc420 ******/
+		/****** md5 signature: 800d202815386db671d85d70d9192537 ******/
 		%feature("compactdefaultargs") ConvertToGrid;
 		%feature("autodoc", "
 Parameters
@@ -1910,40 +1881,40 @@ Yp: int
 
 Return
 -------
-Xg: float
-Yg: float
-Zg: float
+Xg: double
+Yg: double
+Zg: double
 
 Description
 -----------
-Converts the projected point into the nearest grid point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and display the grid marker. Warning: When the grid is not active the result is identical to the above Convert() method. How to use: 1) Enable the grid echo display myViewer->SetGridEcho(Standard_True); 2) When application receive a move event: 2.1) Check if any object is detected if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) { 2.2) Check if the grid is active if( myViewer->Grid()->IsActive() ) { 2.3) Display the grid echo and gets the grid point myView->ConvertToGrid(x,y,X,Y,Z); myView->Viewer()->ShowGridEcho (myView, Graphic3d_Vertex (X,Y,Z)); myView->RedrawImmediate(); 2.4) Else this is the standard case } else myView->Convert(x,y,X,Y,Z);.
+Converts the projected point into the nearest grid point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and display the grid marker. Warning: When the grid is not active the result is identical to the above Convert() method. How to use: 1) Enable the grid echo display myViewer->SetGridEcho(true); 2) When application receive a move event: 2.1) Check if any object is detected if( myInteractiveContext->MoveTo(x,y) == AIS_SOD_Nothing ) { 2.2) Check if the grid is active if( myViewer->Grid()->IsActive() ) { 2.3) Display the grid echo and gets the grid point myView->ConvertToGrid(x,y,X,Y,Z); myView->Viewer()->ShowGridEcho (myView, Graphic3d_Vertex (X,Y,Z)); myView->RedrawImmediate(); 2.4) Else this is the standard case } else myView->Convert(x,y,X,Y,Z);.
 ") ConvertToGrid;
-		void ConvertToGrid(const Standard_Integer Xp, const Standard_Integer Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void ConvertToGrid(const int Xp, const int Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::ConvertToGrid ******/
-		/****** md5 signature: 02d7737206cedc19485c15cdcb8910bc ******/
+		/****** md5 signature: c9f66a5d2cc5f0d3338531b674669e4a ******/
 		%feature("compactdefaultargs") ConvertToGrid;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
-Xg: float
-Yg: float
-Zg: float
+Xg: double
+Yg: double
+Zg: double
 
 Description
 -----------
 Converts the point into the nearest grid point and display the grid marker.
 ") ConvertToGrid;
-		void ConvertToGrid(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void ConvertToGrid(const double X, const double Y, const double Z, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::ConvertWithProj ******/
-		/****** md5 signature: fdde209d2949440727be416aba98e504 ******/
+		/****** md5 signature: f7cf27d0af86692429d8c22f7a3404a6 ******/
 		%feature("compactdefaultargs") ConvertWithProj;
 		%feature("autodoc", "
 Parameters
@@ -1953,18 +1924,18 @@ Yp: int
 
 Return
 -------
-X: float
-Y: float
-Z: float
-Vx: float
-Vy: float
-Vz: float
+X: double
+Y: double
+Z: double
+Vx: double
+Vy: double
+Vz: double
 
 Description
 -----------
 Converts the projected point into a point in the reference frame of the view corresponding to the intersection with the projection plane of the eye/view point vector and returns the projection ray for further computations.
 ") ConvertWithProj;
-		void ConvertWithProj(const Standard_Integer Xp, const Standard_Integer Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void ConvertWithProj(const int Xp, const int Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::DefaultCamera ******/
 		/****** md5 signature: 3111186f8630eb9f3140ca00c449f778 ******/
@@ -1980,26 +1951,26 @@ Return default camera.
 		const opencascade::handle<Graphic3d_Camera> & DefaultCamera();
 
 		/****** V3d_View::Depth ******/
-		/****** md5 signature: de7560cf701656c85d7ea3c1f074fd03 ******/
+		/****** md5 signature: f37e2236448dd6d5b61209c188407c46 ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Distance between the Eye and View Point.
 ") Depth;
-		Standard_Real Depth();
+		double Depth();
 
 		/****** V3d_View::DepthFitAll ******/
-		/****** md5 signature: e2a749741927ce07ea7511bac6bbb622 ******/
+		/****** md5 signature: e1f74bb012cbe4ab8d9c2ca5b54b8fc2 ******/
 		%feature("compactdefaultargs") DepthFitAll;
 		%feature("autodoc", "
 Parameters
 ----------
-Aspect: float (optional, default to 0.01)
-Margin: float (optional, default to 0.01)
+Aspect: double (optional, default to 0.01)
+Margin: double (optional, default to 0.01)
 
 Return
 -------
@@ -2009,15 +1980,15 @@ Description
 -----------
 Adjusts the viewing volume so as not to clip the displayed objects by front and back and back clipping planes. Also sets depth value automatically depending on the calculated Z size and Aspect parameter. NOTE than the original XY size of the view is NOT modified .
 ") DepthFitAll;
-		void DepthFitAll(const Standard_Real Aspect = 0.01, const Standard_Real Margin = 0.01);
+		void DepthFitAll(const double Aspect = 0.01, const double Margin = 0.01);
 
 		/****** V3d_View::DiagnosticInformation ******/
-		/****** md5 signature: ade68be5c6f35c39dc63903b1a795539 ******/
+		/****** md5 signature: 7aeddd1d9243a6ace7ce68ccae67b874 ******/
 		%feature("compactdefaultargs") DiagnosticInformation;
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: TColStd_IndexedDataMapOfStringString
+theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theFlags: Graphic3d_DiagnosticInfo
 
 Return
@@ -2030,7 +2001,7 @@ Fill in the dictionary with diagnostic info. Should be called within rendering t
 Parameter theDict destination map for information 
 Parameter theFlags defines the information to be retrieved.
 ") DiagnosticInformation;
-		void DiagnosticInformation(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_DiagnosticInfo theFlags);
+		void DiagnosticInformation(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict, Graphic3d_DiagnosticInfo theFlags);
 
 		/****** V3d_View::DoMapping ******/
 		/****** md5 signature: 5cc5996ccdd8fab65b150d9b8e0bea7c ******/
@@ -2046,12 +2017,12 @@ Must be called when the window supporting the view is mapped or unmapped.
 		void DoMapping();
 
 		/****** V3d_View::Dump ******/
-		/****** md5 signature: 6ccb0e58501968ab58e63cdfa15db02d ******/
+		/****** md5 signature: 5e3af1bd36f7315947db45cb2bc84a66 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
 ----------
-theFile: str
+theFile: char *
 theBufferType: Graphic3d_BufferType (optional, default to Graphic3d_BT_RGB)
 
 Return
@@ -2065,7 +2036,7 @@ Parameter theFile destination image file (image format is determined by file ext
 Parameter theBufferType buffer to dump 
 Return: False when the dump has failed.
 ") Dump;
-		Standard_Boolean Dump(Standard_CString theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
+		bool Dump(const char * const theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
 
         /****************** DumpJson ******************/
@@ -2089,7 +2060,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** V3d_View::Eye ******/
-		/****** md5 signature: 214dc5004bc1554dbed9750aa9efa7b8 ******/
+		/****** md5 signature: 73fe07ee73f240971533609e2ad9d7cd ******/
 		%feature("compactdefaultargs") Eye;
 		%feature("autodoc", "
 Parameters
@@ -2097,9 +2068,9 @@ Parameters
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -2108,13 +2079,13 @@ Returns the position of the eye.
 		void Eye(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::FitAll ******/
-		/****** md5 signature: f975d988d1deb15b4c055158c6afc34b ******/
+		/****** md5 signature: 7f04fa0949397a6e4e52953c12b421a3 ******/
 		%feature("compactdefaultargs") FitAll;
 		%feature("autodoc", "
 Parameters
 ----------
-theMargin: float (optional, default to 0.01)
-theToUpdate: bool (optional, default to Standard_True)
+theMargin: double (optional, default to 0.01)
+theToUpdate: bool (optional, default to true)
 
 Return
 -------
@@ -2126,17 +2097,17 @@ Adjust view parameters to fit the displayed scene, respecting height / width rat
 Input parameter: theMargin the margin coefficient for view borders. 
 Input parameter: theToUpdate flag to perform view update.
 ") FitAll;
-		void FitAll(const Standard_Real theMargin = 0.01, const Standard_Boolean theToUpdate = Standard_True);
+		void FitAll(const double theMargin = 0.01, const bool theToUpdate = true);
 
 		/****** V3d_View::FitAll ******/
-		/****** md5 signature: f3e0a8d0b602d603245f18a69b439c19 ******/
+		/****** md5 signature: c199585ae5755422996b2e764c310415 ******/
 		%feature("compactdefaultargs") FitAll;
 		%feature("autodoc", "
 Parameters
 ----------
 theBox: Bnd_Box
-theMargin: float (optional, default to 0.01)
-theToUpdate: bool (optional, default to Standard_True)
+theMargin: double (optional, default to 0.01)
+theToUpdate: bool (optional, default to true)
 
 Return
 -------
@@ -2149,18 +2120,18 @@ Input parameter: theBox the custom bounding box to fit.
 Input parameter: theMargin the margin coefficient for view borders. 
 Input parameter: theToUpdate flag to perform view update.
 ") FitAll;
-		void FitAll(const Bnd_Box & theBox, const Standard_Real theMargin = 0.01, const Standard_Boolean theToUpdate = Standard_True);
+		void FitAll(const Bnd_Box & theBox, const double theMargin = 0.01, const bool theToUpdate = true);
 
 		/****** V3d_View::FitAll ******/
-		/****** md5 signature: cbf47697dc5067ba972e7e5e822fb525 ******/
+		/****** md5 signature: cef905e4e108dc2aed5c47ce5e54f58d ******/
 		%feature("compactdefaultargs") FitAll;
 		%feature("autodoc", "
 Parameters
 ----------
-theMinXv: float
-theMinYv: float
-theMaxXv: float
-theMaxYv: float
+theMinXv: double
+theMinYv: double
+theMaxXv: double
+theMaxYv: double
 
 Return
 -------
@@ -2170,19 +2141,19 @@ Description
 -----------
 Centers the defined projection window so that it occupies the maximum space while respecting the initial height/width ratio. NOTE than the original Z size of the view is NOT modified .
 ") FitAll;
-		void FitAll(const Standard_Real theMinXv, const Standard_Real theMinYv, const Standard_Real theMaxXv, const Standard_Real theMaxYv);
+		void FitAll(const double theMinXv, const double theMinYv, const double theMaxXv, const double theMaxYv);
 
 		/****** V3d_View::FitMinMax ******/
-		/****** md5 signature: 5a3793d719ff4c2f2d2836e76d9f55bc ******/
+		/****** md5 signature: 63a48cf661aaae2c0844daee747d19df ******/
 		%feature("compactdefaultargs") FitMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
 theBox: Bnd_Box
-theMargin: float
-theResolution: float (optional, default to 0.0)
-theToEnlargeIfLine: bool (optional, default to Standard_True)
+theMargin: double
+theResolution: double (optional, default to 0.0)
+theToEnlargeIfLine: bool (optional, default to true)
 
 Return
 -------
@@ -2198,10 +2169,10 @@ Input parameter: theResolution the minimum size of projection of bounding box in
 Input parameter: theToEnlargeIfLine when True - in cases when the whole bounding box projected into thin line going along Z-axis of screen,  the view plane is enlarged such thatwe see the whole line on  rotation, otherwise only the center of camera is adjusted. 
 Return: True if the fit all operation can be done.
 ") FitMinMax;
-		Standard_Boolean FitMinMax(const opencascade::handle<Graphic3d_Camera> & theCamera, const Bnd_Box & theBox, const Standard_Real theMargin, const Standard_Real theResolution = 0.0, const Standard_Boolean theToEnlargeIfLine = Standard_True);
+		bool FitMinMax(const opencascade::handle<Graphic3d_Camera> & theCamera, const Bnd_Box & theBox, const double theMargin, const double theResolution = 0.0, const bool theToEnlargeIfLine = true);
 
 		/****** V3d_View::FocalReferencePoint ******/
-		/****** md5 signature: b502bf5bf2976b52d491b11719633a5e ******/
+		/****** md5 signature: fd5476ee17f9c57194938e4a8e5410f8 ******/
 		%feature("compactdefaultargs") FocalReferencePoint;
 		%feature("autodoc", "
 Parameters
@@ -2209,9 +2180,9 @@ Parameters
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -2220,25 +2191,25 @@ Returns the position of point which emanating the projections.
 		void FocalReferencePoint(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::Focale ******/
-		/****** md5 signature: d09c94eba7c048c5f1e5bdc7ded6a95a ******/
+		/****** md5 signature: b4a048087880045823a2f774d5ef6028 ******/
 		%feature("compactdefaultargs") Focale;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the View Plane Distance for Perspective Views.
 ") Focale;
-		Standard_Real Focale();
+		double Focale();
 
 		/****** V3d_View::GeneratePBREnvironment ******/
-		/****** md5 signature: 275e4d88c4784bc5b0db60d561af11c8 ******/
+		/****** md5 signature: fb90eddae53e1d3bb638dedaf3614381 ******/
 		%feature("compactdefaultargs") GeneratePBREnvironment;
 		%feature("autodoc", "
 Parameters
 ----------
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -2248,7 +2219,7 @@ Description
 -----------
 Activates IBL from background cubemap.
 ") GeneratePBREnvironment;
-		void GeneratePBREnvironment(Standard_Boolean theToUpdate = Standard_False);
+		void GeneratePBREnvironment(bool theToUpdate = false);
 
 		/****** V3d_View::GetGraduatedTrihedron ******/
 		/****** md5 signature: 794e42c6b2c8242dbf3d37d05f637325 ******/
@@ -2340,7 +2311,7 @@ Returns the Objects number and the gravity center of ALL viewable points in the 
 		gp_Pnt GravityPoint();
 
 		/****** V3d_View::IfMoreLights ******/
-		/****** md5 signature: f43a715413579a7ba11da9f479d85caa ******/
+		/****** md5 signature: 8553a226a5b58ac6c406947c45590492 ******/
 		%feature("compactdefaultargs") IfMoreLights;
 		%feature("autodoc", "Return
 -------
@@ -2350,10 +2321,10 @@ Description
 -----------
 Returns True if One light more can be activated in this View.
 ") IfMoreLights;
-		Standard_Boolean IfMoreLights();
+		bool IfMoreLights();
 
 		/****** V3d_View::IfWindow ******/
-		/****** md5 signature: bf40a6fc869cb2eb0b91d5e1420b8857 ******/
+		/****** md5 signature: 8c389a5090ff8eb9f5db58c3e7abb2df ******/
 		%feature("compactdefaultargs") IfWindow;
 		%feature("autodoc", "Return
 -------
@@ -2363,7 +2334,7 @@ Description
 -----------
 Returns True if MyView is associated with a window .
 ") IfWindow;
-		Standard_Boolean IfWindow();
+		bool IfWindow();
 
 		/****** V3d_View::InitActiveLights ******/
 		/****** md5 signature: 96e937460d9e6ec0513824da2242388a ******/
@@ -2405,7 +2376,7 @@ Invalidates view content within immediate layer but does not redraw it.
 		void InvalidateImmediate();
 
 		/****** V3d_View::IsActiveLight ******/
-		/****** md5 signature: 1b7eecf8283a3900e6f00f48ff23eb43 ******/
+		/****** md5 signature: 2a897e9056f1af6735d8d8522a9ba05c ******/
 		%feature("compactdefaultargs") IsActiveLight;
 		%feature("autodoc", "
 Parameters
@@ -2420,10 +2391,10 @@ Description
 -----------
 Returns True when the light is active in this view.
 ") IsActiveLight;
-		Standard_Boolean IsActiveLight(const opencascade::handle<V3d_Light> & theLight);
+		bool IsActiveLight(const opencascade::handle<V3d_Light> & theLight);
 
 		/****** V3d_View::IsCullingEnabled ******/
-		/****** md5 signature: 3c3ff9bdad3b548d6f8e34a24098347a ******/
+		/****** md5 signature: d37855ebe12a17f317298e32e5bb6e71 ******/
 		%feature("compactdefaultargs") IsCullingEnabled;
 		%feature("autodoc", "Return
 -------
@@ -2433,10 +2404,10 @@ Description
 -----------
 Return: flag value of objects culling mechanism.
 ") IsCullingEnabled;
-		Standard_Boolean IsCullingEnabled();
+		bool IsCullingEnabled();
 
 		/****** V3d_View::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2446,10 +2417,10 @@ Description
 -----------
 Returns the status of the view regarding the displayed structures inside Returns True is The View is empty.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** V3d_View::IsImageBasedLighting ******/
-		/****** md5 signature: 8dbfce401659fd5ec60c2f81c736a1ca ******/
+		/****** md5 signature: 5ea8857896460e3a0b11cd94c00c3667 ******/
 		%feature("compactdefaultargs") IsImageBasedLighting;
 		%feature("autodoc", "Return
 -------
@@ -2459,10 +2430,10 @@ Description
 -----------
 Returns True if IBL (Image Based Lighting) from background cubemap is enabled.
 ") IsImageBasedLighting;
-		Standard_Boolean IsImageBasedLighting();
+		bool IsImageBasedLighting();
 
 		/****** V3d_View::IsInvalidated ******/
-		/****** md5 signature: ec866d0cff19cca721935f26d32ef8c3 ******/
+		/****** md5 signature: 668cd1d000a29671f0aad5a2a828d91e ******/
 		%feature("compactdefaultargs") IsInvalidated;
 		%feature("autodoc", "Return
 -------
@@ -2472,10 +2443,10 @@ Description
 -----------
 Returns true if cached view content has been invalidated.
 ") IsInvalidated;
-		Standard_Boolean IsInvalidated();
+		bool IsInvalidated();
 
 		/****** V3d_View::IsInvalidatedImmediate ******/
-		/****** md5 signature: 246e4ead0b5a5b9e57fb79c2142261e4 ******/
+		/****** md5 signature: 53484026ef57425304595dfcd03450e0 ******/
 		%feature("compactdefaultargs") IsInvalidatedImmediate;
 		%feature("autodoc", "Return
 -------
@@ -2485,7 +2456,7 @@ Description
 -----------
 Returns true if immediate layer content has been invalidated.
 ") IsInvalidatedImmediate;
-		Standard_Boolean IsInvalidatedImmediate();
+		bool IsInvalidatedImmediate();
 
 		/****** V3d_View::IsSubview ******/
 		/****** md5 signature: e4786984f763125a6b3ee9d1975a34eb ******/
@@ -2501,7 +2472,7 @@ Return True if this is a subview of another view.
 		bool IsSubview();
 
 		/****** V3d_View::LightLimit ******/
-		/****** md5 signature: b11a43a1516a029b988eec97675ac76a ******/
+		/****** md5 signature: fb2bfb57d0f094dafdc707b81846cc6e ******/
 		%feature("compactdefaultargs") LightLimit;
 		%feature("autodoc", "Return
 -------
@@ -2511,10 +2482,10 @@ Description
 -----------
 Returns the MAX number of light associated to the view.
 ") LightLimit;
-		Standard_Integer LightLimit();
+		int LightLimit();
 
 		/****** V3d_View::MoreActiveLights ******/
-		/****** md5 signature: 159743d840ad62ed3830acf9e90ae539 ******/
+		/****** md5 signature: e929945f5a032d18464bf153ef5f2836 ******/
 		%feature("compactdefaultargs") MoreActiveLights;
 		%feature("autodoc", "Return
 -------
@@ -2524,18 +2495,18 @@ Description
 -----------
 No available documentation.
 ") MoreActiveLights;
-		Standard_Boolean MoreActiveLights();
+		bool MoreActiveLights();
 
 		/****** V3d_View::Move ******/
-		/****** md5 signature: bfe8868b7ed23bccc6c6361fc9ab9ec9 ******/
+		/****** md5 signature: 6e1c4465f29f4bb08340ef50a8434fc3 ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
 ----------
-Dx: float
-Dy: float
-Dz: float
-Start: bool (optional, default to Standard_True)
+Dx: double
+Dy: double
+Dz: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -2543,19 +2514,19 @@ None
 
 Description
 -----------
-Movement of the eye parallel to the coordinate system of reference of the screen a distance relative to the initial position expressed by Start = Standard_True.
+Movement of the eye parallel to the coordinate system of reference of the screen a distance relative to the initial position expressed by Start = true.
 ") Move;
-		void Move(const Standard_Real Dx, const Standard_Real Dy, const Standard_Real Dz, const Standard_Boolean Start = Standard_True);
+		void Move(const double Dx, const double Dy, const double Dz, const bool Start = true);
 
 		/****** V3d_View::Move ******/
-		/****** md5 signature: 2a8a67b2e4fd50fad4ebd15f76512979 ******/
+		/****** md5 signature: 963fbed73d959d88e474c6a20869d023 ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
 ----------
 Axe: V3d_TypeOfAxe
-Length: float
-Start: bool (optional, default to Standard_True)
+Length: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -2563,18 +2534,18 @@ None
 
 Description
 -----------
-Movement of the eye parallel to one of the axes of the coordinate system of reference of the view a distance relative to the initial position expressed by Start = Standard_True.
+Movement of the eye parallel to one of the axes of the coordinate system of reference of the view a distance relative to the initial position expressed by Start = true.
 ") Move;
-		void Move(const V3d_TypeOfAxe Axe, const Standard_Real Length, const Standard_Boolean Start = Standard_True);
+		void Move(const V3d_TypeOfAxe Axe, const double Length, const bool Start = true);
 
 		/****** V3d_View::Move ******/
-		/****** md5 signature: aa69fe36271d81a3360019cc9df01e24 ******/
+		/****** md5 signature: 3e6516784bade972ec6acddcb18e4913 ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
 ----------
-Length: float
-Start: bool (optional, default to Standard_True)
+Length: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -2582,9 +2553,9 @@ None
 
 Description
 -----------
-Movement of the eye parllel to the current axis a distance relative to the initial position expressed by Start = Standard_True.
+Movement of the eye parllel to the current axis a distance relative to the initial position expressed by Start = true.
 ") Move;
-		void Move(const Standard_Real Length, const Standard_Boolean Start = Standard_True);
+		void Move(const double Length, const bool Start = true);
 
 		/****** V3d_View::MustBeResized ******/
 		/****** md5 signature: 6f5bcdd6dbbbbd1e8de0181e04dcdda7 ******/
@@ -2613,15 +2584,15 @@ No available documentation.
 		void NextActiveLights();
 
 		/****** V3d_View::Pan ******/
-		/****** md5 signature: 2f7f5bf76c9662c45037f98619403207 ******/
+		/****** md5 signature: 3a1c962309f1d16451c0637257324dc3 ******/
 		%feature("compactdefaultargs") Pan;
 		%feature("autodoc", "
 Parameters
 ----------
 theDXp: int
 theDYp: int
-theZoomFactor: float (optional, default to 1)
-theToStart: bool (optional, default to Standard_True)
+theZoomFactor: double (optional, default to 1)
+theToStart: bool (optional, default to true)
 
 Return
 -------
@@ -2635,18 +2606,18 @@ Input parameter: theDYp the relative panning on 'y' axis of view projection, in 
 Input parameter: theZoomFactor the zooming factor. 
 Input parameter: theToStart pass True when starting panning to remember view state prior to panning for relative arguments. Passing 0 for relative panning parameter should return view panning to initial state. Performs update of view.
 ") Pan;
-		void Pan(const Standard_Integer theDXp, const Standard_Integer theDYp, const Standard_Real theZoomFactor = 1, const Standard_Boolean theToStart = Standard_True);
+		void Pan(const int theDXp, const int theDYp, const double theZoomFactor = 1, const bool theToStart = true);
 
 		/****** V3d_View::Panning ******/
-		/****** md5 signature: 49d9ae1d50ae7bbb92e9baf7a23733c1 ******/
+		/****** md5 signature: 4cb26c2e1dfebed36b9806718241c15e ******/
 		%feature("compactdefaultargs") Panning;
 		%feature("autodoc", "
 Parameters
 ----------
-theDXv: float
-theDYv: float
-theZoomFactor: float (optional, default to 1)
-theToStart: bool (optional, default to Standard_True)
+theDXv: double
+theDYv: double
+theZoomFactor: double (optional, default to 1)
+theToStart: bool (optional, default to true)
 
 Return
 -------
@@ -2660,7 +2631,7 @@ Input parameter: theDYv the relative panning on 'y' axis of view projection, in 
 Input parameter: theZoomFactor the zooming factor. 
 Input parameter: theToStart pass True when starting panning to remember view state prior to panning for relative arguments. If panning is started, passing {0, 0} for {theDXv, theDYv} will return view to initial state. Performs update of view.
 ") Panning;
-		void Panning(const Standard_Real theDXv, const Standard_Real theDYv, const Standard_Real theZoomFactor = 1, const Standard_Boolean theToStart = Standard_True);
+		void Panning(const double theDXv, const double theDYv, const double theZoomFactor = 1, const bool theToStart = true);
 
 		/****** V3d_View::ParentView ******/
 		/****** md5 signature: 1fedb0f310727ce611da19aaba5cb0df ******/
@@ -2676,12 +2647,12 @@ Return parent View or NULL if this is not a subview.
 		V3d_View * ParentView();
 
 		/****** V3d_View::PickSubview ******/
-		/****** md5 signature: ae3284197a75c2e344a9fb46d3fc2c53 ******/
+		/****** md5 signature: ef5e211205738f5f3fb7b99c7fb19e08 ******/
 		%feature("compactdefaultargs") PickSubview;
 		%feature("autodoc", "
 Parameters
 ----------
-thePnt: Graphic3d_Vec2i
+thePnt: NCollection_Vec2<int>
 
 Return
 -------
@@ -2691,17 +2662,17 @@ Description
 -----------
 Pick subview from the given 2D point.
 ") PickSubview;
-		opencascade::handle<V3d_View> PickSubview(const Graphic3d_Vec2i & thePnt);
+		opencascade::handle<V3d_View> PickSubview(const NCollection_Vec2<int> & thePnt);
 
 		/****** V3d_View::Place ******/
-		/****** md5 signature: 8b79579dde4d0cdc166a71e9b2247f26 ******/
+		/****** md5 signature: 7705b7386e38a4872bc49d348a03e735 ******/
 		%feature("compactdefaultargs") Place;
 		%feature("autodoc", "
 Parameters
 ----------
 theXp: int
 theYp: int
-theZoomFactor: float (optional, default to 1)
+theZoomFactor: double (optional, default to 1)
 
 Return
 -------
@@ -2711,10 +2682,10 @@ Description
 -----------
 places the point of the view corresponding at the pixel position x,y at the center of the window and updates the view.
 ") Place;
-		void Place(const Standard_Integer theXp, const Standard_Integer theYp, const Standard_Real theZoomFactor = 1);
+		void Place(const int theXp, const int theYp, const double theZoomFactor = 1);
 
 		/****** V3d_View::PlaneLimit ******/
-		/****** md5 signature: 60ec8fb32171fff42258cb80cef67888 ******/
+		/****** md5 signature: bd4b6625ce71f1ebb5413b4f7c9ce80b ******/
 		%feature("compactdefaultargs") PlaneLimit;
 		%feature("autodoc", "Return
 -------
@@ -2724,10 +2695,10 @@ Description
 -----------
 Returns the MAX number of clipping planes associated to the view.
 ") PlaneLimit;
-		Standard_Integer PlaneLimit();
+		int PlaneLimit();
 
 		/****** V3d_View::Proj ******/
-		/****** md5 signature: a1a807294c0022302092b61e24ceaab5 ******/
+		/****** md5 signature: a74dbf6d51eb5878440531285dd86752 ******/
 		%feature("compactdefaultargs") Proj;
 		%feature("autodoc", "
 Parameters
@@ -2735,9 +2706,9 @@ Parameters
 
 Return
 -------
-Vx: float
-Vy: float
-Vz: float
+Vx: double
+Vy: double
+Vz: double
 
 Description
 -----------
@@ -2746,7 +2717,7 @@ Returns the projection vector.
 		void Proj(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::ProjReferenceAxe ******/
-		/****** md5 signature: 28f60e42b731f9b7748c5f667cf688cf ******/
+		/****** md5 signature: e849b3fcb678883a5a8bdbc687ce29fb ******/
 		%feature("compactdefaultargs") ProjReferenceAxe;
 		%feature("autodoc", "
 Parameters
@@ -2756,61 +2727,61 @@ Ypix: int
 
 Return
 -------
-XP: float
-YP: float
-ZP: float
-VX: float
-VY: float
-VZ: float
+XP: double
+YP: double
+ZP: double
+VX: double
+VY: double
+VZ: double
 
 Description
 -----------
 Returns the coordinate of the point (Xpix,Ypix) in the view (XP,YP,ZP), and the projection vector of the view passing by the point (for PerspectiveView).
 ") ProjReferenceAxe;
-		void ProjReferenceAxe(const Standard_Integer Xpix, const Standard_Integer Ypix, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void ProjReferenceAxe(const int Xpix, const int Ypix, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::Project ******/
-		/****** md5 signature: c1560b7b11ea11b43fa11d6796d84982 ******/
+		/****** md5 signature: 843ce6305cd29701d071725ef2befcf6 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
+theX: double
+theY: double
+theZ: double
 
 Return
 -------
-theXp: float
-theYp: float
+theXp: double
+theYp: double
 
 Description
 -----------
 Converts the point defined in the user space of the view to the projection plane at the depth relative to theZ.
 ") Project;
-		void Project(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Project(const double theX, const double theY, const double theZ, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::Project ******/
-		/****** md5 signature: ea216701af7b7d7e3a7e3741f1707328 ******/
+		/****** md5 signature: acf0b5414ce250f903380029b9fb8f78 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
 ----------
-theX: float
-theY: float
-theZ: float
+theX: double
+theY: double
+theZ: double
 
 Return
 -------
-theXp: float
-theYp: float
-theZp: float
+theXp: double
+theYp: double
+theZp: double
 
 Description
 -----------
 Converts the point defined in the user space of the view to the projection plane at the depth relative to theZ.
 ") Project;
-		void Project(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Project(const double theX, const double theY, const double theZ, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::Redraw ******/
 		/****** md5 signature: d79a17dc7691c4758660ab9ea8765cba ******/
@@ -2903,12 +2874,12 @@ See also: V3d_Viewer::DefaultRenderingParams().
 		const Graphic3d_RenderingParams & RenderingParams();
 
 		/****** V3d_View::Reset ******/
-		/****** md5 signature: 2ad89d69d035383548acf0fcb055a9d1 ******/
+		/****** md5 signature: dce89d2483781f940b14a9251a13be42 ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
 ----------
-theToUpdate: bool (optional, default to Standard_True)
+theToUpdate: bool (optional, default to true)
 
 Return
 -------
@@ -2918,7 +2889,7 @@ Description
 -----------
 Resets the centering and the orientation of the view.
 ") Reset;
-		void Reset(const Standard_Boolean theToUpdate = Standard_True);
+		void Reset(const bool theToUpdate = true);
 
 		/****** V3d_View::ResetViewMapping ******/
 		/****** md5 signature: 23069dec01b2a57a9aeda1c3be138f60 ******/
@@ -2947,15 +2918,15 @@ Resets the orientation of the view. Updates the view.
 		void ResetViewOrientation();
 
 		/****** V3d_View::Rotate ******/
-		/****** md5 signature: 37ac43ec8d8fdf73c4b0708da2c367c9 ******/
+		/****** md5 signature: 7ed6988f0046197815fe55d5c2b5bd60 ******/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "
 Parameters
 ----------
-Ax: float
-Ay: float
-Az: float
-Start: bool (optional, default to Standard_True)
+Ax: double
+Ay: double
+Az: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -2963,23 +2934,23 @@ None
 
 Description
 -----------
-Rotates the eye about the coordinate system of reference of the screen for which the origin is the view point of the projection, with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True Warning! raises BadValue from V3d If the eye, the view point, or the high point are aligned or confused.
+Rotates the eye about the coordinate system of reference of the screen for which the origin is the view point of the projection, with a relative angular value in RADIANS with respect to the initial position expressed by Start = true Warning! raises BadValue from V3d If the eye, the view point, or the high point are aligned or confused.
 ") Rotate;
-		void Rotate(const Standard_Real Ax, const Standard_Real Ay, const Standard_Real Az, const Standard_Boolean Start = Standard_True);
+		void Rotate(const double Ax, const double Ay, const double Az, const bool Start = true);
 
 		/****** V3d_View::Rotate ******/
-		/****** md5 signature: a8dd07c8f75821d1e2bbfbfe0279f86d ******/
+		/****** md5 signature: c8d83702c462fe0c8b5a99a6812777a9 ******/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "
 Parameters
 ----------
-Ax: float
-Ay: float
-Az: float
-X: float
-Y: float
-Z: float
-Start: bool (optional, default to Standard_True)
+Ax: double
+Ay: double
+Az: double
+X: double
+Y: double
+Z: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -2987,22 +2958,22 @@ None
 
 Description
 -----------
-Rotates the eye about the coordinate system of reference of the screen for which the origin is Gravity point {X,Y,Z}, with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True If the eye, the view point, or the high point are aligned or confused.
+Rotates the eye about the coordinate system of reference of the screen for which the origin is Gravity point {X,Y,Z}, with a relative angular value in RADIANS with respect to the initial position expressed by Start = true If the eye, the view point, or the high point are aligned or confused.
 ") Rotate;
-		void Rotate(const Standard_Real Ax, const Standard_Real Ay, const Standard_Real Az, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Boolean Start = Standard_True);
+		void Rotate(const double Ax, const double Ay, const double Az, const double X, const double Y, const double Z, const bool Start = true);
 
 		/****** V3d_View::Rotate ******/
-		/****** md5 signature: 1ca4c68b743a97ede65efaefd7467e64 ******/
+		/****** md5 signature: ef455d4768e6443772e2889a53d91020 ******/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "
 Parameters
 ----------
 Axe: V3d_TypeOfAxe
-Angle: float
-X: float
-Y: float
-Z: float
-Start: bool (optional, default to Standard_True)
+Angle: double
+X: double
+Y: double
+Z: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -3010,19 +2981,19 @@ None
 
 Description
 -----------
-Rotates the eye about one of the coordinate axes of of the view for which the origin is the Gravity point{X,Y,Z} with an relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
+Rotates the eye about one of the coordinate axes of of the view for which the origin is the Gravity point{X,Y,Z} with an relative angular value in RADIANS with respect to the initial position expressed by Start = true.
 ") Rotate;
-		void Rotate(const V3d_TypeOfAxe Axe, const Standard_Real Angle, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Boolean Start = Standard_True);
+		void Rotate(const V3d_TypeOfAxe Axe, const double Angle, const double X, const double Y, const double Z, const bool Start = true);
 
 		/****** V3d_View::Rotate ******/
-		/****** md5 signature: 1b8483bfbd971309de1de9f173ca987f ******/
+		/****** md5 signature: f1135fbd16ee1bd31db5d54023a4e021 ******/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "
 Parameters
 ----------
 Axe: V3d_TypeOfAxe
-Angle: float
-Start: bool (optional, default to Standard_True)
+Angle: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -3030,18 +3001,18 @@ None
 
 Description
 -----------
-Rotates the eye about one of the coordinate axes of of the view for which the origin is the view point of the projection with an relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
+Rotates the eye about one of the coordinate axes of of the view for which the origin is the view point of the projection with an relative angular value in RADIANS with respect to the initial position expressed by Start = true.
 ") Rotate;
-		void Rotate(const V3d_TypeOfAxe Axe, const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
+		void Rotate(const V3d_TypeOfAxe Axe, const double Angle, const bool Start = true);
 
 		/****** V3d_View::Rotate ******/
-		/****** md5 signature: 341432f896f476a8a798cf55be3fe4a7 ******/
+		/****** md5 signature: 6d7b882eb4e49074c900d60348b58f70 ******/
 		%feature("compactdefaultargs") Rotate;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
-Start: bool (optional, default to Standard_True)
+Angle: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -3049,12 +3020,12 @@ None
 
 Description
 -----------
-Rotates the eye around the current axis a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
+Rotates the eye around the current axis a relative angular value in RADIANS with respect to the initial position expressed by Start = true.
 ") Rotate;
-		void Rotate(const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
+		void Rotate(const double Angle, const bool Start = true);
 
 		/****** V3d_View::Rotation ******/
-		/****** md5 signature: 05a729a5eb6c2fdb0999c3616dec3613 ******/
+		/****** md5 signature: afb005062d7bf03a2593b53c19a6d985 ******/
 		%feature("compactdefaultargs") Rotation;
 		%feature("autodoc", "
 Parameters
@@ -3070,30 +3041,30 @@ Description
 -----------
 Continues the rotation of the view with an angle computed from the last and new mouse position <X,Y>.
 ") Rotation;
-		void Rotation(const Standard_Integer X, const Standard_Integer Y);
+		void Rotation(const int X, const int Y);
 
 		/****** V3d_View::Scale ******/
-		/****** md5 signature: 4c0fd48707c01e5a42b2a639ca08da30 ******/
+		/****** md5 signature: 61c9c74d8ec40780bdfa84588e6789a4 ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the current value of the zoom expressed with respect to SetViewMappingDefault().
 ") Scale;
-		Standard_Real Scale();
+		double Scale();
 
 		/****** V3d_View::SetAt ******/
-		/****** md5 signature: 720ff09ebfa72fd1bced6b13fb670b4c ******/
+		/****** md5 signature: d0bc7d92e32badd063d97d72b5a41097 ******/
 		%feature("compactdefaultargs") SetAt;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -3103,16 +3074,16 @@ Description
 -----------
 Defines the position of the view point.
 ") SetAt;
-		void SetAt(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		void SetAt(const double X, const double Y, const double Z);
 
 		/****** V3d_View::SetAutoZFitMode ******/
-		/****** md5 signature: 694f0e3240c97cee56f1da23059e80ec ******/
+		/****** md5 signature: 6a18bbbb779f55ef812fa87e8459a6b9 ******/
 		%feature("compactdefaultargs") SetAutoZFitMode;
 		%feature("autodoc", "
 Parameters
 ----------
 theIsOn: bool
-theScaleFactor: float (optional, default to 1.0)
+theScaleFactor: double (optional, default to 1.0)
 
 Return
 -------
@@ -3123,17 +3094,17 @@ Description
 Sets the automatic z-fit mode and its parameters. The auto z-fit has extra parameters which can controlled from application level to ensure that the size of viewing volume will be sufficiently large to cover the depth of unmanaged objects, for example, transformation persistent ones. 
 Input parameter: theScaleFactor the scale factor for Z-range. The range between Z-min, Z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. Program error exception is thrown if negative or zero value is passed.
 ") SetAutoZFitMode;
-		void SetAutoZFitMode(const Standard_Boolean theIsOn, const Standard_Real theScaleFactor = 1.0);
+		void SetAutoZFitMode(const bool theIsOn, const double theScaleFactor = 1.0);
 
 		/****** V3d_View::SetAxialScale ******/
-		/****** md5 signature: 148c5e2b6e7d5a5a413d17f39128a26e ******/
+		/****** md5 signature: 529ee8b62683123b067eb6c50ead34e9 ******/
 		%feature("compactdefaultargs") SetAxialScale;
 		%feature("autodoc", "
 Parameters
 ----------
-Sx: float
-Sy: float
-Sz: float
+Sx: double
+Sy: double
+Sz: double
 
 Return
 -------
@@ -3143,20 +3114,20 @@ Description
 -----------
 Sets anisotropic (axial) scale factors <Sx>, <Sy>, <Sz> for view <self>. Anisotropic scaling operation is performed through multiplying the current view orientation matrix by a scaling matrix: || Sx 0 0 0 || || 0 Sy 0 0 || || 0 0 Sz 0 || || 0 0 0 1 || Updates the view.
 ") SetAxialScale;
-		void SetAxialScale(const Standard_Real Sx, const Standard_Real Sy, const Standard_Real Sz);
+		void SetAxialScale(const double Sx, const double Sy, const double Sz);
 
 		/****** V3d_View::SetAxis ******/
-		/****** md5 signature: 94f04d722946b3d73aa71d7d5623cd07 ******/
+		/****** md5 signature: e02f560306ee0570145f6b767fa1012f ******/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
-Vx: float
-Vy: float
-Vz: float
+X: double
+Y: double
+Z: double
+Vx: double
+Vy: double
+Vz: double
 
 Return
 -------
@@ -3166,7 +3137,7 @@ Description
 -----------
 Definition of an axis from its origin and its orientation . This will be the current axis for rotations and movements. Warning! raises BadValue from V3d if the vector normal is NULL. .
 ") SetAxis;
-		void SetAxis(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real Vx, const Standard_Real Vy, const Standard_Real Vz);
+		void SetAxis(const double X, const double Y, const double Z, const double Vx, const double Vy, const double Vz);
 
 		/****** V3d_View::SetBackFacingModel ******/
 		/****** md5 signature: 56ed000419d4071d1041855cec2bbe5f ******/
@@ -3187,15 +3158,15 @@ Manages display of the back faces.
 		void SetBackFacingModel(const Graphic3d_TypeOfBackfacingModel theModel = Graphic3d_TypeOfBackfacingModel_Auto);
 
 		/****** V3d_View::SetBackgroundColor ******/
-		/****** md5 signature: b5a0d9f80a350764624098a365179a93 ******/
+		/****** md5 signature: 956fe50214f7c19972a3b4b8553d7cdf ******/
 		%feature("compactdefaultargs") SetBackgroundColor;
 		%feature("autodoc", "
 Parameters
 ----------
 theType: Quantity_TypeOfColor
-theV1: float
-theV2: float
-theV3: float
+theV1: double
+theV2: double
+theV3: double
 
 Return
 -------
@@ -3205,7 +3176,7 @@ Description
 -----------
 Defines the background color of the view by the color definition type and the three corresponding values.
 ") SetBackgroundColor;
-		void SetBackgroundColor(const Quantity_TypeOfColor theType, const Standard_Real theV1, const Standard_Real theV2, const Standard_Real theV3);
+		void SetBackgroundColor(const Quantity_TypeOfColor theType, const double theV1, const double theV2, const double theV3);
 
 		/****** V3d_View::SetBackgroundColor ******/
 		/****** md5 signature: 59e6dfdc828d6e477040bf2ce9f26aaf ******/
@@ -3226,14 +3197,14 @@ Defines the background color of the view.
 		void SetBackgroundColor(const Quantity_Color & theColor);
 
 		/****** V3d_View::SetBackgroundCubeMap ******/
-		/****** md5 signature: 2c70bfeaeff2462250acde85f96d119b ******/
+		/****** md5 signature: 6f61c609d12bb19cd3f2583db629d9a7 ******/
 		%feature("compactdefaultargs") SetBackgroundCubeMap;
 		%feature("autodoc", "
 Parameters
 ----------
 theCubeMap: Graphic3d_CubeMap
-theToUpdatePBREnv: bool (optional, default to Standard_True)
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdatePBREnv: bool (optional, default to true)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3245,17 +3216,17 @@ Sets environment cubemap as background.
 Parameter theCubeMap cubemap source to be set as background 
 Parameter theToUpdatePBREnv defines whether IBL maps will be generated or not (see 'GeneratePBREnvironment').
 ") SetBackgroundCubeMap;
-		void SetBackgroundCubeMap(const opencascade::handle<Graphic3d_CubeMap> & theCubeMap, Standard_Boolean theToUpdatePBREnv = Standard_True, Standard_Boolean theToUpdate = Standard_False);
+		void SetBackgroundCubeMap(const opencascade::handle<Graphic3d_CubeMap> & theCubeMap, bool theToUpdatePBREnv = true, bool theToUpdate = false);
 
 		/****** V3d_View::SetBackgroundImage ******/
-		/****** md5 signature: 56244ced11a568c705352f7992e3c593 ******/
+		/****** md5 signature: 13d78adf79bb8fc5e220bd1bb6f30a70 ******/
 		%feature("compactdefaultargs") SetBackgroundImage;
 		%feature("autodoc", "
 Parameters
 ----------
-theFileName: str
+theFileName: char *
 theFillStyle: Aspect_FillMethod (optional, default to Aspect_FM_CENTERED)
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3265,17 +3236,17 @@ Description
 -----------
 Defines the background texture of the view by supplying the texture image file name and fill method (centered by default).
 ") SetBackgroundImage;
-		void SetBackgroundImage(Standard_CString theFileName, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBackgroundImage(const char * const theFileName, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const bool theToUpdate = false);
 
 		/****** V3d_View::SetBackgroundImage ******/
-		/****** md5 signature: 4082281fe8d9c0c887d121ff7ee0f92c ******/
+		/****** md5 signature: 45ffefc669400f1e49569378b3dd3d5b ******/
 		%feature("compactdefaultargs") SetBackgroundImage;
 		%feature("autodoc", "
 Parameters
 ----------
 theTexture: Graphic3d_Texture2D
 theFillStyle: Aspect_FillMethod (optional, default to Aspect_FM_CENTERED)
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3285,16 +3256,16 @@ Description
 -----------
 Defines the background texture of the view by supplying the texture and fill method (centered by default).
 ") SetBackgroundImage;
-		void SetBackgroundImage(const opencascade::handle<Graphic3d_Texture2D> & theTexture, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBackgroundImage(const opencascade::handle<Graphic3d_Texture2D> & theTexture, const Aspect_FillMethod theFillStyle = Aspect_FM_CENTERED, const bool theToUpdate = false);
 
 		/****** V3d_View::SetBackgroundSkydome ******/
-		/****** md5 signature: 25ac38bc9b5749e5230aaefbd5f8cce1 ******/
+		/****** md5 signature: f2f294fa47467a4178d82ae6d591df42 ******/
 		%feature("compactdefaultargs") SetBackgroundSkydome;
 		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Aspect_SkydomeBackground
-theToUpdatePBREnv: bool (optional, default to Standard_True)
+theToUpdatePBREnv: bool (optional, default to true)
 
 Return
 -------
@@ -3306,10 +3277,10 @@ Sets skydome aspect
 Parameter theAspect cubemap generation parameters 
 Parameter theToUpdatePBREnv defines whether IBL maps will be generated or not.
 ") SetBackgroundSkydome;
-		void SetBackgroundSkydome(const Aspect_SkydomeBackground & theAspect, Standard_Boolean theToUpdatePBREnv = Standard_True);
+		void SetBackgroundSkydome(const Aspect_SkydomeBackground & theAspect, bool theToUpdatePBREnv = true);
 
 		/****** V3d_View::SetBgGradientColors ******/
-		/****** md5 signature: 3049343ce59ac7e41a044f16276d9ed3 ******/
+		/****** md5 signature: 4046515a76478bd1a24d04e51840f644 ******/
 		%feature("compactdefaultargs") SetBgGradientColors;
 		%feature("autodoc", "
 Parameters
@@ -3317,7 +3288,7 @@ Parameters
 theColor1: Quantity_Color
 theColor2: Quantity_Color
 theFillStyle: Aspect_GradientFillMethod (optional, default to Aspect_GradientFillMethod_Horizontal)
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3327,16 +3298,16 @@ Description
 -----------
 Defines the gradient background colors of the view by supplying the colors and the fill method (horizontal by default).
 ") SetBgGradientColors;
-		void SetBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GradientFillMethod_Horizontal, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GradientFillMethod_Horizontal, const bool theToUpdate = false);
 
 		/****** V3d_View::SetBgGradientStyle ******/
-		/****** md5 signature: 45ec7afa0094d85e0d4e8c7f3395a8f1 ******/
+		/****** md5 signature: 79363997ffde4948ab07b3ac38d10291 ******/
 		%feature("compactdefaultargs") SetBgGradientStyle;
 		%feature("autodoc", "
 Parameters
 ----------
 theMethod: Aspect_GradientFillMethod (optional, default to Aspect_GradientFillMethod_Horizontal)
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3346,16 +3317,16 @@ Description
 -----------
 Defines the gradient background fill method of the view.
 ") SetBgGradientStyle;
-		void SetBgGradientStyle(const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBgGradientStyle(const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal, const bool theToUpdate = false);
 
 		/****** V3d_View::SetBgImageStyle ******/
-		/****** md5 signature: b2cd58264970b84f205845e49cfab5e5 ******/
+		/****** md5 signature: e16680dd83488cb46830231f83a90884 ******/
 		%feature("compactdefaultargs") SetBgImageStyle;
 		%feature("autodoc", "
 Parameters
 ----------
 theFillStyle: Aspect_FillMethod
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3365,7 +3336,7 @@ Description
 -----------
 Defines the textured background fill method of the view.
 ") SetBgImageStyle;
-		void SetBgImageStyle(const Aspect_FillMethod theFillStyle, const Standard_Boolean theToUpdate = Standard_False);
+		void SetBgImageStyle(const Aspect_FillMethod theFillStyle, const bool theToUpdate = false);
 
 		/****** V3d_View::SetCamera ******/
 		/****** md5 signature: feb4846a043de91d4d1b29714dfe3b70 ******/
@@ -3386,7 +3357,7 @@ Change camera used by view.
 		void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****** V3d_View::SetCenter ******/
-		/****** md5 signature: edab316f8dd9ae9296f0af644eddcedd ******/
+		/****** md5 signature: 5980e7dd85edf10e6a607ab710c7d817 ******/
 		%feature("compactdefaultargs") SetCenter;
 		%feature("autodoc", "
 Parameters
@@ -3404,7 +3375,7 @@ Relocates center of screen to the point, determined by {Xp, Yp} pixel coordinate
 Input parameter: theXp the x coordinate. 
 Input parameter: theYp the y coordinate.
 ") SetCenter;
-		void SetCenter(const Standard_Integer theXp, const Standard_Integer theYp);
+		void SetCenter(const int theXp, const int theYp);
 
 		/****** V3d_View::SetClipPlanes ******/
 		/****** md5 signature: 3a7856a5edcaa36a5327770acfe803b0 ******/
@@ -3426,7 +3397,7 @@ Input parameter: thePlanes the clip planes to set.
 		void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
 		/****** V3d_View::SetComputedMode ******/
-		/****** md5 signature: 269d3bae92efe31d98d859df0012cf4d ******/
+		/****** md5 signature: 851f9c06d6d28976f6b7f55836cb791d ******/
 		%feature("compactdefaultargs") SetComputedMode;
 		%feature("autodoc", "
 Parameters
@@ -3441,15 +3412,15 @@ Description
 -----------
 Switches computed HLR mode in the view.
 ") SetComputedMode;
-		void SetComputedMode(const Standard_Boolean theMode);
+		void SetComputedMode(const bool theMode);
 
 		/****** V3d_View::SetDepth ******/
-		/****** md5 signature: d425c957b63eb5a47c2e5afbe949ecb8 ******/
+		/****** md5 signature: c8d026f974b3d64bdac976530437ac2d ******/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "
 Parameters
 ----------
-Depth: float
+Depth: double
 
 Return
 -------
@@ -3459,17 +3430,17 @@ Description
 -----------
 Defines the Depth of the eye from the view point without update the projection .
 ") SetDepth;
-		void SetDepth(const Standard_Real Depth);
+		void SetDepth(const double Depth);
 
 		/****** V3d_View::SetEye ******/
-		/****** md5 signature: 853c91c04ecdde43f9f722eb2123b162 ******/
+		/****** md5 signature: 018cf5c8a41e84d00d5a3785fcd59d06 ******/
 		%feature("compactdefaultargs") SetEye;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Return
 -------
@@ -3479,15 +3450,15 @@ Description
 -----------
 Defines the position of the eye..
 ") SetEye;
-		void SetEye(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
+		void SetEye(const double X, const double Y, const double Z);
 
 		/****** V3d_View::SetFocale ******/
-		/****** md5 signature: fd6951ff72f1057400a656a38e12591e ******/
+		/****** md5 signature: 3ccdc36c70a78ff38e9fed84a68576f4 ******/
 		%feature("compactdefaultargs") SetFocale;
 		%feature("autodoc", "
 Parameters
 ----------
-Focale: float
+Focale: double
 
 Return
 -------
@@ -3497,7 +3468,7 @@ Description
 -----------
 Change View Plane Distance for Perspective Views Warning! raises TypeMismatch from Standard if the view is not a perspective view.
 ") SetFocale;
-		void SetFocale(const Standard_Real Focale);
+		void SetFocale(const double Focale);
 
 		/****** V3d_View::SetFront ******/
 		/****** md5 signature: 0bead267cee2c0fd25d14d75a33a7e30 ******/
@@ -3513,7 +3484,7 @@ modify the Projection of the view perpendicularly to the privileged plane of the
 		void SetFront();
 
 		/****** V3d_View::SetFrustumCulling ******/
-		/****** md5 signature: cd3bc7120d3702ea29315dd0146d05f4 ******/
+		/****** md5 signature: 664d1b3eca96ef74998dea7e8413ae57 ******/
 		%feature("compactdefaultargs") SetFrustumCulling;
 		%feature("autodoc", "
 Parameters
@@ -3528,7 +3499,7 @@ Description
 -----------
 Turn on/off automatic culling of objects outside frustum (ON by default).
 ") SetFrustumCulling;
-		void SetFrustumCulling(Standard_Boolean theMode);
+		void SetFrustumCulling(bool theMode);
 
 		/****** V3d_View::SetGrid ******/
 		/****** md5 signature: 0ba6c21ecdc3dc75968a47b2df6a7f10 ******/
@@ -3550,7 +3521,7 @@ Defines or Updates the definition of the grid in <self>.
 		void SetGrid(const gp_Ax3 & aPlane, const opencascade::handle<Aspect_Grid> & aGrid);
 
 		/****** V3d_View::SetGridActivity ******/
-		/****** md5 signature: cd3125bb63d4526b365a7efc378bafea ******/
+		/****** md5 signature: 32209435dbfce2935cd0b4d9add6a1a0 ******/
 		%feature("compactdefaultargs") SetGridActivity;
 		%feature("autodoc", "
 Parameters
@@ -3565,16 +3536,16 @@ Description
 -----------
 Defines or Updates the activity of the grid in <self>.
 ") SetGridActivity;
-		void SetGridActivity(const Standard_Boolean aFlag);
+		void SetGridActivity(const bool aFlag);
 
 		/****** V3d_View::SetImageBasedLighting ******/
-		/****** md5 signature: 560b4eb4d03f5ccdff44b61c15156a72 ******/
+		/****** md5 signature: 221a19f2e80a28e24b34311a2822298b ******/
 		%feature("compactdefaultargs") SetImageBasedLighting;
 		%feature("autodoc", "
 Parameters
 ----------
 theToEnableIBL: bool
-theToUpdate: bool (optional, default to Standard_False)
+theToUpdate: bool (optional, default to false)
 
 Return
 -------
@@ -3586,10 +3557,10 @@ Enables or disables IBL (Image Based Lighting) from background cubemap. Has no e
 Input parameter: theToEnableIBL enable or disable IBL from background cubemap 
 Input parameter: theToUpdate redraw the view.
 ") SetImageBasedLighting;
-		void SetImageBasedLighting(Standard_Boolean theToEnableIBL, Standard_Boolean theToUpdate = Standard_False);
+		void SetImageBasedLighting(bool theToEnableIBL, bool theToUpdate = false);
 
 		/****** V3d_View::SetImmediateUpdate ******/
-		/****** md5 signature: b930e6c2cf96f1b5cd3b04092063cb66 ******/
+		/****** md5 signature: 98fc300ba8c29b1eaa538b3aa5cda0a7 ******/
 		%feature("compactdefaultargs") SetImmediateUpdate;
 		%feature("autodoc", "
 Parameters
@@ -3604,7 +3575,7 @@ Description
 -----------
 sets the immediate update mode and returns the previous one.
 ") SetImmediateUpdate;
-		Standard_Boolean SetImmediateUpdate(const Standard_Boolean theImmediateUpdate);
+		bool SetImmediateUpdate(const bool theImmediateUpdate);
 
 		/****** V3d_View::SetLightOff ******/
 		/****** md5 signature: 455cedd8ba3c305764630cd94d4a9d57 ******/
@@ -3669,7 +3640,7 @@ Activates all the lights defined in this view.
 		void SetLightOn();
 
 		/****** V3d_View::SetMagnify ******/
-		/****** md5 signature: 086f8ea9570231142c44b0f3ba3194cf ******/
+		/****** md5 signature: 2d7e06b674376917980c89c67f8e39ab ******/
 		%feature("compactdefaultargs") SetMagnify;
 		%feature("autodoc", "
 Parameters
@@ -3689,17 +3660,17 @@ Description
 -----------
 No available documentation.
 ") SetMagnify;
-		void SetMagnify(const opencascade::handle<Aspect_Window> & theWindow, const opencascade::handle<V3d_View> & thePreviousView, const Standard_Integer theX1, const Standard_Integer theY1, const Standard_Integer theX2, const Standard_Integer theY2);
+		void SetMagnify(const opencascade::handle<Aspect_Window> & theWindow, const opencascade::handle<V3d_View> & thePreviousView, const int theX1, const int theY1, const int theX2, const int theY2);
 
 		/****** V3d_View::SetProj ******/
-		/****** md5 signature: 26211bc22e4e16666a156f93f39342cd ******/
+		/****** md5 signature: 8372f64f6d1463bb32f31976069af2c5 ******/
 		%feature("compactdefaultargs") SetProj;
 		%feature("autodoc", "
 Parameters
 ----------
-Vx: float
-Vy: float
-Vz: float
+Vx: double
+Vy: double
+Vz: double
 
 Return
 -------
@@ -3709,16 +3680,16 @@ Description
 -----------
 Defines the orientation of the projection.
 ") SetProj;
-		void SetProj(const Standard_Real Vx, const Standard_Real Vy, const Standard_Real Vz);
+		void SetProj(const double Vx, const double Vy, const double Vz);
 
 		/****** V3d_View::SetProj ******/
-		/****** md5 signature: 7cab3829a1655bc373ac3398af7d8756 ******/
+		/****** md5 signature: 2ac7f2174791486429418196eb1cbefc ******/
 		%feature("compactdefaultargs") SetProj;
 		%feature("autodoc", "
 Parameters
 ----------
 theOrientation: V3d_TypeOfOrientation
-theIsYup: bool (optional, default to Standard_False)
+theIsYup: bool (optional, default to false)
 
 Return
 -------
@@ -3730,15 +3701,15 @@ Defines the orientation of the projection .
 Parameter theOrientation camera direction 
 Parameter theIsYup flag indicating Y-up (True) or Z-up (False) convention.
 ") SetProj;
-		void SetProj(const V3d_TypeOfOrientation theOrientation, const Standard_Boolean theIsYup = Standard_False);
+		void SetProj(const V3d_TypeOfOrientation theOrientation, const bool theIsYup = false);
 
 		/****** V3d_View::SetScale ******/
-		/****** md5 signature: 31aa804aa2f857f10bee711d83f73f9d ******/
+		/****** md5 signature: 30c41caefbdd8a226097ff4b076500a6 ******/
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "
 Parameters
 ----------
-Coef: float
+Coef: double
 
 Return
 -------
@@ -3748,7 +3719,7 @@ Description
 -----------
 Zooms the view by a factor relative to the value initialised by SetViewMappingDefault(). Updates the view.
 ") SetScale;
-		void SetScale(const Standard_Real Coef);
+		void SetScale(const double Coef);
 
 		/****** V3d_View::SetShadingModel ******/
 		/****** md5 signature: 126435b0809b0e46e5c779eaa28d91a9 ******/
@@ -3769,12 +3740,12 @@ Defines the shading model for the visualization.
 		void SetShadingModel(const Graphic3d_TypeOfShadingModel theShadingModel);
 
 		/****** V3d_View::SetSize ******/
-		/****** md5 signature: 93bdf33a4c6cf5665958dc490a88ba2b ******/
+		/****** md5 signature: c25a7fcafd7138252d9c590c2b143ab0 ******/
 		%feature("compactdefaultargs") SetSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -3784,7 +3755,7 @@ Description
 -----------
 Defines the view projection size in its maximum dimension, keeping the initial height/width ratio unchanged.
 ") SetSize;
-		void SetSize(const Standard_Real theSize);
+		void SetSize(const double theSize);
 
 		/****** V3d_View::SetTextureEnv ******/
 		/****** md5 signature: c8d500ab9ea731d5226a63daa46fcedd ******/
@@ -3805,12 +3776,12 @@ Sets the environment texture to use. No environment texture by default.
 		void SetTextureEnv(const opencascade::handle<Graphic3d_TextureEnv> & theTexture);
 
 		/****** V3d_View::SetTwist ******/
-		/****** md5 signature: 4d86e6456e0427b37d1df0b90e036cb5 ******/
+		/****** md5 signature: ef2efbf5ee40568323e1ec012151b3ec ******/
 		%feature("compactdefaultargs") SetTwist;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
+Angle: double
 
 Return
 -------
@@ -3820,17 +3791,17 @@ Description
 -----------
 Defines the angular position of the high point of the reference frame of the view with respect to the Y screen axis with an absolute angular value in RADIANS.
 ") SetTwist;
-		void SetTwist(const Standard_Real Angle);
+		void SetTwist(const double Angle);
 
 		/****** V3d_View::SetUp ******/
-		/****** md5 signature: 92ea0c4c6be9a3eab8ad195c3ce5ef3e ******/
+		/****** md5 signature: feed199205663ab2e91e7eb3ea06053f ******/
 		%feature("compactdefaultargs") SetUp;
 		%feature("autodoc", "
 Parameters
 ----------
-Vx: float
-Vy: float
-Vz: float
+Vx: double
+Vy: double
+Vz: double
 
 Return
 -------
@@ -3840,7 +3811,7 @@ Description
 -----------
 Defines the orientation of the high point.
 ") SetUp;
-		void SetUp(const Standard_Real Vx, const Standard_Real Vy, const Standard_Real Vz);
+		void SetUp(const double Vx, const double Vy, const double Vz);
 
 		/****** V3d_View::SetUp ******/
 		/****** md5 signature: 8517d74f5cc263ecfa5b2569a74730df ******/
@@ -3905,13 +3876,13 @@ Defines the visualization type in the view.
 		void SetVisualization(const V3d_TypeOfVisualization theType);
 
 		/****** V3d_View::SetWindow ******/
-		/****** md5 signature: 88542421f11e26bdd834c4f53a2bcc5d ******/
+		/****** md5 signature: 6e9b444d5203baedc2c0b9de1434d568 ******/
 		%feature("compactdefaultargs") SetWindow;
 		%feature("autodoc", "
 Parameters
 ----------
 theWindow: Aspect_Window
-theContext: Aspect_RenderingContext (optional, default to NULL)
+theContext: Aspect_RenderingContext (optional, default to nullptr)
 
 Return
 -------
@@ -3921,19 +3892,19 @@ Description
 -----------
 Activates the view in the specified Window If <aContext> is not NULL the graphic context is used to draw something in this view. Otherwise an internal graphic context is created. Warning: The view is centered and resized to preserve the height/width ratio of the window.
 ") SetWindow;
-		void SetWindow(const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext = NULL);
+		void SetWindow(const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext = nullptr);
 
 		/****** V3d_View::SetWindow ******/
-		/****** md5 signature: be3959fa21174d4532289a5d89b1b6fd ******/
+		/****** md5 signature: ae43c469eda7d1e9a9967410cab1e90c ******/
 		%feature("compactdefaultargs") SetWindow;
 		%feature("autodoc", "
 Parameters
 ----------
 theParentView: V3d_View
-theSize: Graphic3d_Vec2d
+theSize: NCollection_Vec2<double>
 theCorner: Aspect_TypeOfTriedronPosition (optional, default to Aspect_TOTP_LEFT_UPPER)
-theOffset: Graphic3d_Vec2d (optional, default to Graphic3d_Vec2d())
-theMargins: Graphic3d_Vec2i (optional, default to Graphic3d_Vec2i())
+theOffset: NCollection_Vec2<double> (optional, default to NCollection_Vec2<double>())
+theMargins: NCollection_Vec2<int> (optional, default to NCollection_Vec2<int>())
 
 Return
 -------
@@ -3948,15 +3919,15 @@ Input parameter: theCorner corner within parent view
 Input parameter: theOffset offset from the corner;  values >= 1 define offset in pixels,  values < 1.0 define offset as a fraction of parent view 
 Input parameter: theMargins subview margins in pixels //! Example: to split parent view horizontally into 2 subview, define one subview with Size=(0.5,1.0),Offset=(0.0,0.0), and 2nd with Size=(0.5,1.0),Offset=(5.0,0.0);.
 ") SetWindow;
-		void SetWindow(const opencascade::handle<V3d_View> & theParentView, const Graphic3d_Vec2d & theSize, Aspect_TypeOfTriedronPosition theCorner = Aspect_TOTP_LEFT_UPPER, const Graphic3d_Vec2d & theOffset = Graphic3d_Vec2d(), const Graphic3d_Vec2i & theMargins = Graphic3d_Vec2i());
+		void SetWindow(const opencascade::handle<V3d_View> & theParentView, const NCollection_Vec2<double> & theSize, Aspect_TypeOfTriedronPosition theCorner = Aspect_TOTP_LEFT_UPPER, const NCollection_Vec2<double> & theOffset = NCollection_Vec2<double>(), const NCollection_Vec2<int> & theMargins = NCollection_Vec2<int>());
 
 		/****** V3d_View::SetZSize ******/
-		/****** md5 signature: 7561e1378cbba3000055a4c19942c545 ******/
+		/****** md5 signature: 51345c49da80ba27708e6caf7ce4ff23 ******/
 		%feature("compactdefaultargs") SetZSize;
 		%feature("autodoc", "
 Parameters
 ----------
-SetZSize: float
+SetZSize: double
 
 Return
 -------
@@ -3966,16 +3937,16 @@ Description
 -----------
 Defines the Depth size of the view Front Plane will be set to Size/2. Back Plane will be set to -Size/2. Any Object located Above the Front Plane or behind the Back Plane will be Clipped . NOTE than the XY Size of the View is NOT modified .
 ") SetZSize;
-		void SetZSize(const Standard_Real SetZSize);
+		void SetZSize(const double SetZSize);
 
 		/****** V3d_View::SetZoom ******/
-		/****** md5 signature: bca05970b665fea8d5dba6189e5e776a ******/
+		/****** md5 signature: 5dbc558d0f9f7bb54ce88580cd174b03 ******/
 		%feature("compactdefaultargs") SetZoom;
 		%feature("autodoc", "
 Parameters
 ----------
-Coef: float
-Start: bool (optional, default to Standard_True)
+Coef: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -3983,9 +3954,9 @@ None
 
 Description
 -----------
-Zooms the view by a factor relative to the initial value expressed by Start = Standard_True Updates the view.
+Zooms the view by a factor relative to the initial value expressed by Start = true Updates the view.
 ") SetZoom;
-		void SetZoom(const Standard_Real Coef, const Standard_Boolean Start = Standard_True);
+		void SetZoom(const double Coef, const bool Start = true);
 
 		/****** V3d_View::ShadingModel ******/
 		/****** md5 signature: 79d21cf733a0311d63fb301f9c1a0521 ******/
@@ -4001,7 +3972,7 @@ Returns the current shading model; Graphic3d_TypeOfShadingModel_Phong by default
 		Graphic3d_TypeOfShadingModel ShadingModel();
 
 		/****** V3d_View::Size ******/
-		/****** md5 signature: f0670a765261a8b64388fbbd56bfa574 ******/
+		/****** md5 signature: 17134fcbc7bfb8a5fc5dd980ef2efeae ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "
 Parameters
@@ -4009,8 +3980,8 @@ Parameters
 
 Return
 -------
-Width: float
-Height: float
+Width: double
+Height: double
 
 Description
 -----------
@@ -4019,14 +3990,14 @@ Returns the height and width of the view.
 		void Size(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::StartRotation ******/
-		/****** md5 signature: 4e7b7c931641e3190c281fb4c327e49e ******/
+		/****** md5 signature: ad0f5f94a95e439e27162077578103e4 ******/
 		%feature("compactdefaultargs") StartRotation;
 		%feature("autodoc", "
 Parameters
 ----------
 X: int
 Y: int
-zRotationThreshold: float (optional, default to 0.0)
+zRotationThreshold: double (optional, default to 0.0)
 
 Return
 -------
@@ -4036,10 +4007,10 @@ Description
 -----------
 Begin the rotation of the view around the screen axis according to the mouse position <X,Y>. Warning: Enable rotation around the Z screen axis when <zRotationThreshold> factor is > 0 soon the distance from the start point and the center of the view is > (medium viewSize * <zRotationThreshold> ). Generally a value of 0.4 is usable to rotate around XY screen axis inside the circular threshold area and to rotate around Z screen axis outside this area.
 ") StartRotation;
-		void StartRotation(const Standard_Integer X, const Standard_Integer Y, const Standard_Real zRotationThreshold = 0.0);
+		void StartRotation(const int X, const int Y, const double zRotationThreshold = 0.0);
 
 		/****** V3d_View::StartZoomAtPoint ******/
-		/****** md5 signature: 64f3043ea094b3f7dec2f87e4696c552 ******/
+		/****** md5 signature: 5dfa8df9f5b2bd6c1b195680aeaf0697 ******/
 		%feature("compactdefaultargs") StartZoomAtPoint;
 		%feature("autodoc", "
 Parameters
@@ -4057,7 +4028,7 @@ Defines starting point for ZoomAtPoint view operation.
 Input parameter: theXp the x mouse coordinate, in pixels. 
 Input parameter: theYp the y mouse coordinate, in pixels.
 ") StartZoomAtPoint;
-		void StartZoomAtPoint(const Standard_Integer theXp, const Standard_Integer theYp);
+		void StartZoomAtPoint(const int theXp, const int theYp);
 
 		/****** V3d_View::StatisticInformation ******/
 		/****** md5 signature: 444dc7137469a967cc38cb224d06bebc ******/
@@ -4073,12 +4044,12 @@ Returns string with statistic performance info.
 		TCollection_AsciiString StatisticInformation();
 
 		/****** V3d_View::StatisticInformation ******/
-		/****** md5 signature: 54f56dd2c6701d6a6cca2a091f276074 ******/
+		/****** md5 signature: 0749c02f9de737c7def6b5872ae84427 ******/
 		%feature("compactdefaultargs") StatisticInformation;
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: TColStd_IndexedDataMapOfStringString
+theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Return
 -------
@@ -4088,7 +4059,7 @@ Description
 -----------
 Fills in the dictionary with statistic performance info.
 ") StatisticInformation;
-		void StatisticInformation(TColStd_IndexedDataMapOfStringString & theDict);
+		void StatisticInformation(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict);
 
 		/****** V3d_View::Subviews ******/
 		/****** md5 signature: d3114f4bfa64a1d5149acdd6e8abd3a2 ******/
@@ -4117,7 +4088,7 @@ No available documentation.
 		opencascade::handle<Graphic3d_TextureEnv> TextureEnv();
 
 		/****** V3d_View::ToPixMap ******/
-		/****** md5 signature: f4afbd441d7f56cecd854bf81405751d ******/
+		/****** md5 signature: fd172f6a7f6929877b033dbd9842078e ******/
 		%feature("compactdefaultargs") ToPixMap;
 		%feature("autodoc", "
 Parameters
@@ -4133,10 +4104,10 @@ Description
 -----------
 Dumps the full contents of the view to a pixmap with specified parameters. Internally this method calls Redraw() with an offscreen render buffer of requested target size (theWidth x theHeight), so that there is no need resizing a window control for making a dump of different size.
 ") ToPixMap;
-		Standard_Boolean ToPixMap(Image_PixMap & theImage, const V3d_ImageDumpOptions & theParams);
+		bool ToPixMap(Image_PixMap & theImage, const V3d_ImageDumpOptions & theParams);
 
 		/****** V3d_View::ToPixMap ******/
-		/****** md5 signature: c9edd8e3ab67e0e714fb16602687f0cf ******/
+		/****** md5 signature: bbcd9af3a74f79783a8f4b07791202a4 ******/
 		%feature("compactdefaultargs") ToPixMap;
 		%feature("autodoc", "
 Parameters
@@ -4145,11 +4116,11 @@ theImage: Image_PixMap
 theWidth: int
 theHeight: int
 theBufferType: Graphic3d_BufferType (optional, default to Graphic3d_BT_RGB)
-theToAdjustAspect: bool (optional, default to Standard_True)
+theToAdjustAspect: bool (optional, default to true)
 theTargetZLayerId: int (optional, default to Graphic3d_ZLayerId_BotOSD)
-theIsSingleLayer: int (optional, default to Standard_False)
+theIsSingleLayer: int (optional, default to false)
 theStereoOptions: V3d_StereoDumpOptions (optional, default to V3d_SDO_MONO)
-theLightName: str (optional, default to "")
+theLightName: char * (optional, default to "")
 
 Return
 -------
@@ -4165,18 +4136,18 @@ Parameter theBufferType type of the view buffer to dump (color / depth)
 Parameter theToAdjustAspect when true, active view aspect ratio will be overridden by (theWidth / theHeight) 
 Parameter theStereoOptions how to dump stereographic camera.
 ") ToPixMap;
-		Standard_Boolean ToPixMap(Image_PixMap & theImage, const Standard_Integer theWidth, const Standard_Integer theHeight, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB, const Standard_Boolean theToAdjustAspect = Standard_True, int theTargetZLayerId = Graphic3d_ZLayerId_BotOSD, const Standard_Integer theIsSingleLayer = Standard_False, const V3d_StereoDumpOptions theStereoOptions = V3d_SDO_MONO, Standard_CString theLightName = "");
+		bool ToPixMap(Image_PixMap & theImage, const int theWidth, const int theHeight, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB, const bool theToAdjustAspect = true, int theTargetZLayerId = Graphic3d_ZLayerId_BotOSD, const int theIsSingleLayer = false, const V3d_StereoDumpOptions theStereoOptions = V3d_SDO_MONO, const char * const theLightName = "");
 
 		/****** V3d_View::Translate ******/
-		/****** md5 signature: 6d30e9ad6e04686ac1e7e71d61abb03a ******/
+		/****** md5 signature: 247880ef16d024c34b9f972099e1f38a ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
 ----------
-Dx: float
-Dy: float
-Dz: float
-Start: bool (optional, default to Standard_True)
+Dx: double
+Dy: double
+Dz: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -4184,19 +4155,19 @@ None
 
 Description
 -----------
-Movement of the ye and the view point parallel to the frame of reference of the screen a distance relative to the initial position expressed by Start = Standard_True.
+Movement of the ye and the view point parallel to the frame of reference of the screen a distance relative to the initial position expressed by Start = true.
 ") Translate;
-		void Translate(const Standard_Real Dx, const Standard_Real Dy, const Standard_Real Dz, const Standard_Boolean Start = Standard_True);
+		void Translate(const double Dx, const double Dy, const double Dz, const bool Start = true);
 
 		/****** V3d_View::Translate ******/
-		/****** md5 signature: ad4691cf7ffabdbd8db6e15f796bb24e ******/
+		/****** md5 signature: fff2540b7cc362b74d7625667a3481eb ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
 ----------
 Axe: V3d_TypeOfAxe
-Length: float
-Start: bool (optional, default to Standard_True)
+Length: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -4204,18 +4175,18 @@ None
 
 Description
 -----------
-Movement of the eye and the view point parallel to one of the axes of the fame of reference of the view a distance relative to the initial position expressed by Start = Standard_True.
+Movement of the eye and the view point parallel to one of the axes of the fame of reference of the view a distance relative to the initial position expressed by Start = true.
 ") Translate;
-		void Translate(const V3d_TypeOfAxe Axe, const Standard_Real Length, const Standard_Boolean Start = Standard_True);
+		void Translate(const V3d_TypeOfAxe Axe, const double Length, const bool Start = true);
 
 		/****** V3d_View::Translate ******/
-		/****** md5 signature: 4177f5224cc5f4934f54108b17291c95 ******/
+		/****** md5 signature: 7978a31ea5cf4f34f086a4f796a71157 ******/
 		%feature("compactdefaultargs") Translate;
 		%feature("autodoc", "
 Parameters
 ----------
-Length: float
-Start: bool (optional, default to Standard_True)
+Length: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -4223,19 +4194,19 @@ None
 
 Description
 -----------
-Movement of the eye and view point parallel to the current axis a distance relative to the initial position expressed by Start = Standard_True.
+Movement of the eye and view point parallel to the current axis a distance relative to the initial position expressed by Start = true.
 ") Translate;
-		void Translate(const Standard_Real Length, const Standard_Boolean Start = Standard_True);
+		void Translate(const double Length, const bool Start = true);
 
 		/****** V3d_View::TriedronDisplay ******/
-		/****** md5 signature: de6e0013aa0bfad258971d8c8e0a30f4 ******/
+		/****** md5 signature: 6ac8dcbdb265df968c24dc7e0537a2c0 ******/
 		%feature("compactdefaultargs") TriedronDisplay;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: Aspect_TypeOfTriedronPosition (optional, default to Aspect_TOTP_CENTER)
 theColor: Quantity_Color (optional, default to Quantity_NOC_WHITE)
-theScale: float (optional, default to 0.02)
+theScale: double (optional, default to 0.02)
 theMode: V3d_TypeOfVisualization (optional, default to V3d_WIREFRAME)
 
 Return
@@ -4246,7 +4217,7 @@ Description
 -----------
 Display of the Triedron. Initialize position, color and length of Triedron axes. The scale is a percent of the window width.
 ") TriedronDisplay;
-		void TriedronDisplay(const Aspect_TypeOfTriedronPosition thePosition = Aspect_TOTP_CENTER, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Real theScale = 0.02, const V3d_TypeOfVisualization theMode = V3d_WIREFRAME);
+		void TriedronDisplay(const Aspect_TypeOfTriedronPosition thePosition = Aspect_TOTP_CENTER, const Quantity_Color & theColor = Quantity_NOC_WHITE, const double theScale = 0.02, const V3d_TypeOfVisualization theMode = V3d_WIREFRAME);
 
 		/****** V3d_View::TriedronErase ******/
 		/****** md5 signature: 7f853325fd9818c65ebfc933096dc3a3 ******/
@@ -4280,15 +4251,15 @@ Returns trihedron object.
 		const opencascade::handle<V3d_Trihedron> & Trihedron(bool theToCreate = true);
 
 		/****** V3d_View::Turn ******/
-		/****** md5 signature: caf9640300c113b68ec729c85a8d5ab2 ******/
+		/****** md5 signature: e7ab6fdab9e37435d70e9c91efd625e6 ******/
 		%feature("compactdefaultargs") Turn;
 		%feature("autodoc", "
 Parameters
 ----------
-Ax: float
-Ay: float
-Az: float
-Start: bool (optional, default to Standard_True)
+Ax: double
+Ay: double
+Az: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -4296,19 +4267,19 @@ None
 
 Description
 -----------
-Rotation of the view point around the frame of reference of the screen for which the origin is the eye of the projection with a relative angular value in RADIANS with respect to the initial position expressed by Start = Standard_True.
+Rotation of the view point around the frame of reference of the screen for which the origin is the eye of the projection with a relative angular value in RADIANS with respect to the initial position expressed by Start = true.
 ") Turn;
-		void Turn(const Standard_Real Ax, const Standard_Real Ay, const Standard_Real Az, const Standard_Boolean Start = Standard_True);
+		void Turn(const double Ax, const double Ay, const double Az, const bool Start = true);
 
 		/****** V3d_View::Turn ******/
-		/****** md5 signature: a4f7f9e8b15cd89400e2298af754124e ******/
+		/****** md5 signature: 5c390a5a8c5e8c6ba4e2aac1e5452b99 ******/
 		%feature("compactdefaultargs") Turn;
 		%feature("autodoc", "
 Parameters
 ----------
 Axe: V3d_TypeOfAxe
-Angle: float
-Start: bool (optional, default to Standard_True)
+Angle: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -4316,18 +4287,18 @@ None
 
 Description
 -----------
-Rotation of the view point around one of the axes of the frame of reference of the view for which the origin is the eye of the projection with an angular value in RADIANS relative to the initial position expressed by Start = Standard_True.
+Rotation of the view point around one of the axes of the frame of reference of the view for which the origin is the eye of the projection with an angular value in RADIANS relative to the initial position expressed by Start = true.
 ") Turn;
-		void Turn(const V3d_TypeOfAxe Axe, const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
+		void Turn(const V3d_TypeOfAxe Axe, const double Angle, const bool Start = true);
 
 		/****** V3d_View::Turn ******/
-		/****** md5 signature: 23315bda5a558e1ab562b502e66a6f9d ******/
+		/****** md5 signature: 7ade948523b3c7c7fbf0c93c6df6aa26 ******/
 		%feature("compactdefaultargs") Turn;
 		%feature("autodoc", "
 Parameters
 ----------
-Angle: float
-Start: bool (optional, default to Standard_True)
+Angle: double
+Start: bool (optional, default to true)
 
 Return
 -------
@@ -4335,22 +4306,22 @@ None
 
 Description
 -----------
-Rotation of the view point around the current axis an angular value in RADIANS relative to the initial position expressed by Start = Standard_True.
+Rotation of the view point around the current axis an angular value in RADIANS relative to the initial position expressed by Start = true.
 ") Turn;
-		void Turn(const Standard_Real Angle, const Standard_Boolean Start = Standard_True);
+		void Turn(const double Angle, const bool Start = true);
 
 		/****** V3d_View::Twist ******/
-		/****** md5 signature: 1a3b631044253a3065221b01e86cffef ******/
+		/****** md5 signature: 8c00f7b766b08268f759b1dc04a159c9 ******/
 		%feature("compactdefaultargs") Twist;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns in RADIANS the orientation of the view around the visual axis measured from the Y axis of the screen.
 ") Twist;
-		Standard_Real Twist();
+		double Twist();
 
 		/****** V3d_View::Type ******/
 		/****** md5 signature: ecff2c56954abf9f3e7f78498aaa58f7 ******/
@@ -4366,7 +4337,7 @@ Returns the Type of the View.
 		V3d_TypeOfView Type();
 
 		/****** V3d_View::Up ******/
-		/****** md5 signature: f3008a4c1208abfb3bc862299e03fbf5 ******/
+		/****** md5 signature: f40bd71add8c9591091aebb9ce6d1ebc ******/
 		%feature("compactdefaultargs") Up;
 		%feature("autodoc", "
 Parameters
@@ -4374,9 +4345,9 @@ Parameters
 
 Return
 -------
-Vx: float
-Vy: float
-Vz: float
+Vx: double
+Vy: double
+Vz: double
 
 Description
 -----------
@@ -4463,7 +4434,7 @@ Returns the Aspect Window associated with the view.
 		const opencascade::handle<Aspect_Window> & Window();
 
 		/****** V3d_View::WindowFit ******/
-		/****** md5 signature: bc0e61f0b1c48780a137921835842602 ******/
+		/****** md5 signature: 48ea1fff3682972136fb00558d1d8ff3 ******/
 		%feature("compactdefaultargs") WindowFit;
 		%feature("autodoc", "
 Parameters
@@ -4485,10 +4456,10 @@ Input parameter: theMinYp pixel coordinates of minimal corner on y screen axis.
 Input parameter: theMaxXp pixel coordinates of maximal corner on x screen axis. 
 Input parameter: theMaxYp pixel coordinates of maximal corner on y screen axis.
 ") WindowFit;
-		void WindowFit(const Standard_Integer theMinXp, const Standard_Integer theMinYp, const Standard_Integer theMaxXp, const Standard_Integer theMaxYp);
+		void WindowFit(const int theMinXp, const int theMinYp, const int theMaxXp, const int theMaxYp);
 
 		/****** V3d_View::WindowFitAll ******/
-		/****** md5 signature: 3905890f018873bb66593015cc92a925 ******/
+		/****** md5 signature: 983abe5a1cb157df9ed00cd5c0650248 ******/
 		%feature("compactdefaultargs") WindowFitAll;
 		%feature("autodoc", "
 Parameters
@@ -4506,10 +4477,10 @@ Description
 -----------
 idem than WindowFit.
 ") WindowFitAll;
-		void WindowFitAll(const Standard_Integer Xmin, const Standard_Integer Ymin, const Standard_Integer Xmax, const Standard_Integer Ymax);
+		void WindowFitAll(const int Xmin, const int Ymin, const int Xmax, const int Ymax);
 
 		/****** V3d_View::ZBufferTriedronSetup ******/
-		/****** md5 signature: 72ed537b5b2aa41ae23236fb0669c852 ******/
+		/****** md5 signature: 906b541ab01922b635a594ebe1626006 ******/
 		%feature("compactdefaultargs") ZBufferTriedronSetup;
 		%feature("autodoc", "
 Parameters
@@ -4517,8 +4488,8 @@ Parameters
 theXColor: Quantity_Color (optional, default to Quantity_NOC_RED)
 theYColor: Quantity_Color (optional, default to Quantity_NOC_GREEN)
 theZColor: Quantity_Color (optional, default to Quantity_NOC_BLUE1)
-theSizeRatio: float (optional, default to 0.8)
-theAxisDiametr: float (optional, default to 0.05)
+theSizeRatio: double (optional, default to 0.8)
+theAxisDiametr: double (optional, default to 0.05)
 theNbFacettes: int (optional, default to 12)
 
 Return
@@ -4529,15 +4500,15 @@ Description
 -----------
 Customization of the ZBUFFER Triedron. XColor,YColor,ZColor - colors of axis SizeRatio - ratio of decreasing of the trihedron size when its physical position comes out of the view AxisDiametr - diameter relatively to axis length NbFacettes - number of facets of cylinders and cones.
 ") ZBufferTriedronSetup;
-		void ZBufferTriedronSetup(const Quantity_Color & theXColor = Quantity_NOC_RED, const Quantity_Color & theYColor = Quantity_NOC_GREEN, const Quantity_Color & theZColor = Quantity_NOC_BLUE1, const Standard_Real theSizeRatio = 0.8, const Standard_Real theAxisDiametr = 0.05, const Standard_Integer theNbFacettes = 12);
+		void ZBufferTriedronSetup(const Quantity_Color & theXColor = Quantity_NOC_RED, const Quantity_Color & theYColor = Quantity_NOC_GREEN, const Quantity_Color & theZColor = Quantity_NOC_BLUE1, const double theSizeRatio = 0.8, const double theAxisDiametr = 0.05, const int theNbFacettes = 12);
 
 		/****** V3d_View::ZFitAll ******/
-		/****** md5 signature: dd238708d03b22848f6784d65aea3bce ******/
+		/****** md5 signature: 222d2aa5479f56bfd1c9c854cac98f4e ******/
 		%feature("compactdefaultargs") ZFitAll;
 		%feature("autodoc", "
 Parameters
 ----------
-theScaleFactor: float (optional, default to 1.0)
+theScaleFactor: double (optional, default to 1.0)
 
 Return
 -------
@@ -4547,23 +4518,23 @@ Description
 -----------
 Change Z-min and Z-max planes of projection volume to match the displayed objects.
 ") ZFitAll;
-		void ZFitAll(const Standard_Real theScaleFactor = 1.0);
+		void ZFitAll(const double theScaleFactor = 1.0);
 
 		/****** V3d_View::ZSize ******/
-		/****** md5 signature: 187d501555b38f4bbc375cc11cb950e2 ******/
+		/****** md5 signature: 0c3a528bd3a3bed451bc6056c37ebd71 ******/
 		%feature("compactdefaultargs") ZSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the Depth of the view .
 ") ZSize;
-		Standard_Real ZSize();
+		double ZSize();
 
 		/****** V3d_View::Zoom ******/
-		/****** md5 signature: cc8b0f46863bbab262b11b8d9fe526ba ******/
+		/****** md5 signature: 42d6f56169df1787eba136524f0a5754 ******/
 		%feature("compactdefaultargs") Zoom;
 		%feature("autodoc", "
 Parameters
@@ -4585,10 +4556,10 @@ Input parameter: theYp1 the y coordinate of first mouse position, in pixels.
 Input parameter: theXp2 the x coordinate of second mouse position, in pixels. 
 Input parameter: theYp2 the y coordinate of second mouse position, in pixels.
 ") Zoom;
-		void Zoom(const Standard_Integer theXp1, const Standard_Integer theYp1, const Standard_Integer theXp2, const Standard_Integer theYp2);
+		void Zoom(const int theXp1, const int theYp1, const int theXp2, const int theYp2);
 
 		/****** V3d_View::ZoomAtPoint ******/
-		/****** md5 signature: 90d152337c45e762ff38902f4a359765 ******/
+		/****** md5 signature: 92c39b5710242ac4a010fbfaf59242fd ******/
 		%feature("compactdefaultargs") ZoomAtPoint;
 		%feature("autodoc", "
 Parameters
@@ -4606,7 +4577,7 @@ Description
 -----------
 Zooms the model at a pixel defined by the method StartZoomAtPoint().
 ") ZoomAtPoint;
-		void ZoomAtPoint(const Standard_Integer theMouseStartX, const Standard_Integer theMouseStartY, const Standard_Integer theMouseEndX, const Standard_Integer theMouseEndY);
+		void ZoomAtPoint(const int theMouseStartX, const int theMouseStartY, const int theMouseEndX, const int theMouseEndY);
 
 };
 
@@ -4679,30 +4650,30 @@ No available documentation.
 		const opencascade::handle<V3d_Light> & ActiveLight();
 
 		/****** V3d_Viewer::ActiveLightIterator ******/
-		/****** md5 signature: 6fa6e98274fc8d44abfc6ab8d93a027d ******/
+		/****** md5 signature: 861e579b57bbed0fdde0a3e25a20801b ******/
 		%feature("compactdefaultargs") ActiveLightIterator;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfLightIterator
+NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator
 
 Description
 -----------
 Return an iterator for defined lights.
 ") ActiveLightIterator;
-		V3d_ListOfLightIterator ActiveLightIterator();
+		NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator ActiveLightIterator();
 
 		/****** V3d_Viewer::ActiveLights ******/
-		/****** md5 signature: 046f4b2a5dbc3ae8d1d2b264382219be ******/
+		/****** md5 signature: a72d01c82d08918d30c496c97d18284d ******/
 		%feature("compactdefaultargs") ActiveLights;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfLight
+NCollection_List<opencascade::handle<Graphic3d_CLight>>
 
 Description
 -----------
 Return a list of active lights.
 ") ActiveLights;
-		const V3d_ListOfLight & ActiveLights();
+		const NCollection_List<opencascade::handle<Graphic3d_CLight>> & ActiveLights();
 
 		/****** V3d_Viewer::ActiveView ******/
 		/****** md5 signature: 51c31c5b98d9861184e3beb9dd0957d2 ******/
@@ -4718,30 +4689,30 @@ No available documentation.
 		const opencascade::handle<V3d_View> & ActiveView();
 
 		/****** V3d_Viewer::ActiveViewIterator ******/
-		/****** md5 signature: 574b0283da51acbb6d87557a35440216 ******/
+		/****** md5 signature: 4e8194c333d357f578a1ee8734832684 ******/
 		%feature("compactdefaultargs") ActiveViewIterator;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfViewIterator
+NCollection_List<opencascade::handle<V3d_View>>::Iterator
 
 Description
 -----------
 Return an iterator for active views.
 ") ActiveViewIterator;
-		V3d_ListOfViewIterator ActiveViewIterator();
+		NCollection_List<opencascade::handle<V3d_View>>::Iterator ActiveViewIterator();
 
 		/****** V3d_Viewer::ActiveViews ******/
-		/****** md5 signature: c981bb535c895fc684f93f3f75e46627 ******/
+		/****** md5 signature: 717c14564982e1cf62ef71db7a89b1a3 ******/
 		%feature("compactdefaultargs") ActiveViews;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfView
+NCollection_List<opencascade::handle<V3d_View>>
 
 Description
 -----------
 Return a list of active views.
 ") ActiveViews;
-		const V3d_ListOfView & ActiveViews();
+		const NCollection_List<opencascade::handle<V3d_View>> & ActiveViews();
 
 		/****** V3d_Viewer::AddLight ******/
 		/****** md5 signature: a790b9b06a29d0522e8dcef07a2fd4b7 ******/
@@ -4762,7 +4733,7 @@ Adds Light in Sequence Of Lights.
 		void AddLight(const opencascade::handle<V3d_Light> & theLight);
 
 		/****** V3d_Viewer::AddZLayer ******/
-		/****** md5 signature: b68a07f8f7714627f3c19816e24e14dc ******/
+		/****** md5 signature: d7e7cba2367c958882629718914e9167 ******/
 		%feature("compactdefaultargs") AddZLayer;
 		%feature("autodoc", "
 Parameters
@@ -4780,10 +4751,10 @@ Add a new top-level Z layer to all managed views and get its ID as <theLayerId> 
 Input parameter: theSettings new layer settings 
 Return: False if the layer can not be created.
 ") AddZLayer;
-		Standard_Boolean AddZLayer(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
+		bool AddZLayer(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings = Graphic3d_ZLayerSettings());
 
 		/****** V3d_Viewer::CircularGridGraphicValues ******/
-		/****** md5 signature: 3a811e27e917fb82e31d5ce9ddafdb6b ******/
+		/****** md5 signature: 4d0998644dafe781e4b313ebad5e91e0 ******/
 		%feature("compactdefaultargs") CircularGridGraphicValues;
 		%feature("autodoc", "
 Parameters
@@ -4791,8 +4762,8 @@ Parameters
 
 Return
 -------
-theRadius: float
-theOffSet: float
+theRadius: double
+theOffSet: double
 
 Description
 -----------
@@ -4801,7 +4772,7 @@ Returns the location and the size of the grid.
 		void CircularGridGraphicValues(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_Viewer::CircularGridValues ******/
-		/****** md5 signature: e3702606faa489726fa3c267357a58a5 ******/
+		/****** md5 signature: f458cd62049bc67d75cdb19fa806a8af ******/
 		%feature("compactdefaultargs") CircularGridValues;
 		%feature("autodoc", "
 Parameters
@@ -4809,11 +4780,11 @@ Parameters
 
 Return
 -------
-theXOrigin: float
-theYOrigin: float
-theRadiusStep: float
+theXOrigin: double
+theYOrigin: double
+theRadiusStep: double
 theDivisionNumber: int
-theRotationAngle: float
+theRotationAngle: double
 
 Description
 -----------
@@ -4822,7 +4793,7 @@ Returns the definition of the circular grid.
 		void CircularGridValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_Viewer::ComputedMode ******/
-		/****** md5 signature: 47a490ca5aa934708fe6a7c8b60e9268 ******/
+		/****** md5 signature: bbb05b9d13c7a39361272819d6d33657 ******/
 		%feature("compactdefaultargs") ComputedMode;
 		%feature("autodoc", "Return
 -------
@@ -4832,7 +4803,7 @@ Description
 -----------
 returns true if the computed mode can be used.
 ") ComputedMode;
-		Standard_Boolean ComputedMode();
+		bool ComputedMode();
 
 		/****** V3d_Viewer::CreateView ******/
 		/****** md5 signature: a32865abef765684ea877fbd326497ff ******/
@@ -4893,7 +4864,7 @@ Returns the gradient background colour objects of the view.
 		void DefaultBgGradientColors(Quantity_Color & theColor1, Quantity_Color & theColor2);
 
 		/****** V3d_Viewer::DefaultComputedMode ******/
-		/****** md5 signature: d3c50e318cfcbb3fbf216a2966870f4f ******/
+		/****** md5 signature: e141351e7dbf20d21f44d1271aad50bc ******/
 		%feature("compactdefaultargs") DefaultComputedMode;
 		%feature("autodoc", "Return
 -------
@@ -4903,7 +4874,7 @@ Description
 -----------
 returns true if by default the computed mode must be used.
 ") DefaultComputedMode;
-		Standard_Boolean DefaultComputedMode();
+		bool DefaultComputedMode();
 
 		/****** V3d_Viewer::DefaultRenderingParams ******/
 		/****** md5 signature: 0d628909940f0fcdf3653e8e75ccea5c ******/
@@ -4958,17 +4929,17 @@ Returns the default Projection.
 		V3d_TypeOfOrientation DefaultViewProj();
 
 		/****** V3d_Viewer::DefaultViewSize ******/
-		/****** md5 signature: 8b5d67c5c8bd6ffbbf9099f47a14fc80 ******/
+		/****** md5 signature: 6ce71fe3961c34abcc379efa9e600095 ******/
 		%feature("compactdefaultargs") DefaultViewSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the default size of the view.
 ") DefaultViewSize;
-		Standard_Real DefaultViewSize();
+		double DefaultViewSize();
 
 		/****** V3d_Viewer::DefaultVisualization ******/
 		/****** md5 signature: 89fcbd31e3e47bcd5f2de7db627ccc84 ******/
@@ -4997,30 +4968,30 @@ No available documentation.
 		const opencascade::handle<V3d_Light> & DefinedLight();
 
 		/****** V3d_Viewer::DefinedLightIterator ******/
-		/****** md5 signature: eddeafaf0e73b1ef6846ff96f36f0722 ******/
+		/****** md5 signature: 21a974e20f23c9cd14df2e08e550fcb8 ******/
 		%feature("compactdefaultargs") DefinedLightIterator;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfLightIterator
+NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator
 
 Description
 -----------
 Return an iterator for defined lights.
 ") DefinedLightIterator;
-		V3d_ListOfLightIterator DefinedLightIterator();
+		NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator DefinedLightIterator();
 
 		/****** V3d_Viewer::DefinedLights ******/
-		/****** md5 signature: 6ff6dff9bd047e02b6d25d4675131815 ******/
+		/****** md5 signature: 71633e6922f040aad3b80db3ae3f4607 ******/
 		%feature("compactdefaultargs") DefinedLights;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfLight
+NCollection_List<opencascade::handle<Graphic3d_CLight>>
 
 Description
 -----------
 Return a list of defined lights.
 ") DefinedLights;
-		const V3d_ListOfLight & DefinedLights();
+		const NCollection_List<opencascade::handle<Graphic3d_CLight>> & DefinedLights();
 
 		/****** V3d_Viewer::DefinedView ******/
 		/****** md5 signature: be2c70401aec7849d2bf409cd59dbee2 ******/
@@ -5036,30 +5007,30 @@ No available documentation.
 		const opencascade::handle<V3d_View> & DefinedView();
 
 		/****** V3d_Viewer::DefinedViewIterator ******/
-		/****** md5 signature: ccf312ca450589f93a86c3c62efdbecc ******/
+		/****** md5 signature: 23f2fb78fbc9bad6a37939ce3fd0e039 ******/
 		%feature("compactdefaultargs") DefinedViewIterator;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfViewIterator
+NCollection_List<opencascade::handle<V3d_View>>::Iterator
 
 Description
 -----------
 Return an iterator for defined views.
 ") DefinedViewIterator;
-		V3d_ListOfViewIterator DefinedViewIterator();
+		NCollection_List<opencascade::handle<V3d_View>>::Iterator DefinedViewIterator();
 
 		/****** V3d_Viewer::DefinedViews ******/
-		/****** md5 signature: 65fda7f60c45c6d453f50537532ac174 ******/
+		/****** md5 signature: d21c5b54623091b0464798bcf6cceac1 ******/
 		%feature("compactdefaultargs") DefinedViews;
 		%feature("autodoc", "Return
 -------
-V3d_ListOfView
+NCollection_List<opencascade::handle<V3d_View>>
 
 Description
 -----------
 Return a list of defined views.
 ") DefinedViews;
-		const V3d_ListOfView & DefinedViews();
+		const NCollection_List<opencascade::handle<V3d_View>> & DefinedViews();
 
 		/****** V3d_Viewer::DelLight ******/
 		/****** md5 signature: 41c87090c1f691ab05530e33b3599aaa ******/
@@ -5080,13 +5051,13 @@ Delete Light in Sequence Of Lights.
 		void DelLight(const opencascade::handle<V3d_Light> & theLight);
 
 		/****** V3d_Viewer::DisplayPrivilegedPlane ******/
-		/****** md5 signature: 405f1e98b9f139ef3c5536006d112ef5 ******/
+		/****** md5 signature: cd347255f11f7c2fc494f29b5f8048a8 ******/
 		%feature("compactdefaultargs") DisplayPrivilegedPlane;
 		%feature("autodoc", "
 Parameters
 ----------
 theOnOff: bool
-theSize: float (optional, default to 1)
+theSize: double (optional, default to 1)
 
 Return
 -------
@@ -5096,7 +5067,7 @@ Description
 -----------
 No available documentation.
 ") DisplayPrivilegedPlane;
-		void DisplayPrivilegedPlane(const Standard_Boolean theOnOff, const Standard_Real theSize = 1);
+		void DisplayPrivilegedPlane(const bool theOnOff, const double theSize = 1);
 
 		/****** V3d_Viewer::Driver ******/
 		/****** md5 signature: 4f7ae644d3e0836700806ee745978120 ******/
@@ -5146,12 +5117,12 @@ Erase all Objects in All the views.
 		void Erase();
 
 		/****** V3d_Viewer::GetAllZLayers ******/
-		/****** md5 signature: 37cf193a9a832c92f8389f0a240a7894 ******/
+		/****** md5 signature: 4552ce56f5903de2718d437e5a3370f7 ******/
 		%feature("compactdefaultargs") GetAllZLayers;
 		%feature("autodoc", "
 Parameters
 ----------
-theLayerSeq: TColStd_SequenceOfInteger
+theLayerSeq: NCollection_Sequence<int>
 
 Return
 -------
@@ -5161,7 +5132,7 @@ Description
 -----------
 Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). The first layer ID in sequence is the default layer that can't be removed.
 ") GetAllZLayers;
-		void GetAllZLayers(TColStd_SequenceOfInteger & theLayerSeq);
+		void GetAllZLayers(NCollection_Sequence<int> & theLayerSeq);
 
 		/****** V3d_Viewer::GetGradientBackground ******/
 		/****** md5 signature: 0f4e8e838a0ee15372af6735b7472134 ******/
@@ -5227,7 +5198,7 @@ Returns the current grid draw mode defined in <self>.
 		Aspect_GridDrawMode GridDrawMode();
 
 		/****** V3d_Viewer::GridEcho ******/
-		/****** md5 signature: 1b69a303effcf89fe06726c625c4cc4c ******/
+		/****** md5 signature: e84889912e5039e0d99debc9eaa6945c ******/
 		%feature("compactdefaultargs") GridEcho;
 		%feature("autodoc", "Return
 -------
@@ -5237,7 +5208,7 @@ Description
 -----------
 Returns True when grid echo must be displayed at hit point.
 ") GridEcho;
-		Standard_Boolean GridEcho();
+		bool GridEcho();
 
 		/****** V3d_Viewer::GridType ******/
 		/****** md5 signature: 72f8fd3c464adaef4a56774e6ded87c4 ******/
@@ -5271,7 +5242,7 @@ Temporarily hide grid echo.
 		void HideGridEcho(const opencascade::handle<V3d_View> & theView);
 
 		/****** V3d_Viewer::IfMoreViews ******/
-		/****** md5 signature: d9e95d11fc8bbb3ead2a51876583845d ******/
+		/****** md5 signature: caaad745becc375e249ab19f42f35033 ******/
 		%feature("compactdefaultargs") IfMoreViews;
 		%feature("autodoc", "Return
 -------
@@ -5281,7 +5252,7 @@ Description
 -----------
 Returns True if One View more can be defined in this Viewer.
 ") IfMoreViews;
-		Standard_Boolean IfMoreViews();
+		bool IfMoreViews();
 
 		/****** V3d_Viewer::InitActiveLights ******/
 		/****** md5 signature: 96e937460d9e6ec0513824da2242388a ******/
@@ -5336,7 +5307,7 @@ No available documentation.
 		void InitDefinedViews();
 
 		/****** V3d_Viewer::InsertLayerAfter ******/
-		/****** md5 signature: cdb5f8a68553c8e85ea4b1393d7b6ef3 ******/
+		/****** md5 signature: 89f8cc83287344a169972478eca6dbc5 ******/
 		%feature("compactdefaultargs") InsertLayerAfter;
 		%feature("autodoc", "
 Parameters
@@ -5356,10 +5327,10 @@ Input parameter: theSettings new layer settings
 Input parameter: theLayerBefore id of layer to append new layer after 
 Return: False if the layer can not be created.
 ") InsertLayerAfter;
-		Standard_Boolean InsertLayerAfter(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
+		bool InsertLayerAfter(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
 
 		/****** V3d_Viewer::InsertLayerBefore ******/
-		/****** md5 signature: 3872bc120c665802f8ae7baae08f463c ******/
+		/****** md5 signature: 25381cc768164b91c9eb77ccb99e1176 ******/
 		%feature("compactdefaultargs") InsertLayerBefore;
 		%feature("autodoc", "
 Parameters
@@ -5379,7 +5350,7 @@ Input parameter: theSettings new layer settings
 Input parameter: theLayerAfter id of layer to append new layer before 
 Return: False if the layer can not be created.
 ") InsertLayerBefore;
-		Standard_Boolean InsertLayerBefore(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
+		bool InsertLayerBefore(Standard_Integer &OutValue, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
 
 		/****** V3d_Viewer::Invalidate ******/
 		/****** md5 signature: 0ab0e2c678e575a4d179bf46b4d4d469 ******/
@@ -5395,7 +5366,7 @@ Invalidates viewer content but does not redraw it.
 		void Invalidate();
 
 		/****** V3d_Viewer::IsActive ******/
-		/****** md5 signature: 619177a77eb0e03f8c6370d0e90fb199 ******/
+		/****** md5 signature: a3f3e99229ec5d369a83649ffce72e61 ******/
 		%feature("compactdefaultargs") IsActive;
 		%feature("autodoc", "Return
 -------
@@ -5403,12 +5374,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if a grid is activated in <self>.
+Returns true if a grid is activated in <self>.
 ") IsActive;
-		Standard_Boolean IsActive();
+		bool IsActive();
 
 		/****** V3d_Viewer::IsGlobalLight ******/
-		/****** md5 signature: 77d05c02fd1db57bf7e317a6f2ceae3a ******/
+		/****** md5 signature: deba562fda6d6b09a967a4df7ed4cc44 ******/
 		%feature("compactdefaultargs") IsGlobalLight;
 		%feature("autodoc", "
 Parameters
@@ -5423,10 +5394,10 @@ Description
 -----------
 No available documentation.
 ") IsGlobalLight;
-		Standard_Boolean IsGlobalLight(const opencascade::handle<V3d_Light> & TheLight);
+		bool IsGlobalLight(const opencascade::handle<V3d_Light> & TheLight);
 
 		/****** V3d_Viewer::IsGridActive ******/
-		/****** md5 signature: f6375ecefe9307a6299a7081489055bd ******/
+		/****** md5 signature: 04e208e408ffebd328965f7c7426f7a9 ******/
 		%feature("compactdefaultargs") IsGridActive;
 		%feature("autodoc", "Return
 -------
@@ -5434,12 +5405,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if a grid is activated in <self>.
+Returns true if a grid is activated in <self>.
 ") IsGridActive;
-		Standard_Boolean IsGridActive();
+		bool IsGridActive();
 
 		/****** V3d_Viewer::LastActiveView ******/
-		/****** md5 signature: be5a39647b88665478a02d7cd3674cb7 ******/
+		/****** md5 signature: f7e835b4075c09d2b3facafb20363622 ******/
 		%feature("compactdefaultargs") LastActiveView;
 		%feature("autodoc", "Return
 -------
@@ -5449,10 +5420,10 @@ Description
 -----------
 returns true if there is only one active view.
 ") LastActiveView;
-		Standard_Boolean LastActiveView();
+		bool LastActiveView();
 
 		/****** V3d_Viewer::MoreActiveLights ******/
-		/****** md5 signature: 159743d840ad62ed3830acf9e90ae539 ******/
+		/****** md5 signature: e929945f5a032d18464bf153ef5f2836 ******/
 		%feature("compactdefaultargs") MoreActiveLights;
 		%feature("autodoc", "Return
 -------
@@ -5462,10 +5433,10 @@ Description
 -----------
 No available documentation.
 ") MoreActiveLights;
-		Standard_Boolean MoreActiveLights();
+		bool MoreActiveLights();
 
 		/****** V3d_Viewer::MoreActiveViews ******/
-		/****** md5 signature: 59d67bac74721d905de58b553fe9996c ******/
+		/****** md5 signature: 9e914a29c7db5a07ce7b2693044f352d ******/
 		%feature("compactdefaultargs") MoreActiveViews;
 		%feature("autodoc", "Return
 -------
@@ -5475,10 +5446,10 @@ Description
 -----------
 No available documentation.
 ") MoreActiveViews;
-		Standard_Boolean MoreActiveViews();
+		bool MoreActiveViews();
 
 		/****** V3d_Viewer::MoreDefinedLights ******/
-		/****** md5 signature: de453e5d448bec792bce0fe4445da325 ******/
+		/****** md5 signature: 950aec62247c0dc04eb8c2a2cd1192b6 ******/
 		%feature("compactdefaultargs") MoreDefinedLights;
 		%feature("autodoc", "Return
 -------
@@ -5488,10 +5459,10 @@ Description
 -----------
 No available documentation.
 ") MoreDefinedLights;
-		Standard_Boolean MoreDefinedLights();
+		bool MoreDefinedLights();
 
 		/****** V3d_Viewer::MoreDefinedViews ******/
-		/****** md5 signature: 8307d307b155b516c3b1a54d7b96da53 ******/
+		/****** md5 signature: ea8258afff56d0c0639f3230a0d196c3 ******/
 		%feature("compactdefaultargs") MoreDefinedViews;
 		%feature("autodoc", "Return
 -------
@@ -5501,7 +5472,7 @@ Description
 -----------
 No available documentation.
 ") MoreDefinedViews;
-		Standard_Boolean MoreDefinedViews();
+		bool MoreDefinedViews();
 
 		/****** V3d_Viewer::NextActiveLights ******/
 		/****** md5 signature: 221700382f0fef8d1ac7d43635ea1bc5 ******/
@@ -5569,7 +5540,7 @@ No available documentation.
 		const gp_Ax3 PrivilegedPlane();
 
 		/****** V3d_Viewer::RectangularGridGraphicValues ******/
-		/****** md5 signature: dab8c1c46121d56f7c42d5007eda4bec ******/
+		/****** md5 signature: 8c3dc71ff9842fdef4c4fb86dc869b41 ******/
 		%feature("compactdefaultargs") RectangularGridGraphicValues;
 		%feature("autodoc", "
 Parameters
@@ -5577,9 +5548,9 @@ Parameters
 
 Return
 -------
-theXSize: float
-theYSize: float
-theOffSet: float
+theXSize: double
+theYSize: double
+theOffSet: double
 
 Description
 -----------
@@ -5588,7 +5559,7 @@ Returns the location and the size of the grid.
 		void RectangularGridGraphicValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_Viewer::RectangularGridValues ******/
-		/****** md5 signature: 4850ce10bfca161d0b0a538c3df788bc ******/
+		/****** md5 signature: 2ff30346db28a9889d804e724a8e79b0 ******/
 		%feature("compactdefaultargs") RectangularGridValues;
 		%feature("autodoc", "
 Parameters
@@ -5596,11 +5567,11 @@ Parameters
 
 Return
 -------
-theXOrigin: float
-theYOrigin: float
-theXStep: float
-theYStep: float
-theRotationAngle: float
+theXOrigin: double
+theYOrigin: double
+theXStep: double
+theYStep: double
+theRotationAngle: double
 
 Description
 -----------
@@ -5648,7 +5619,7 @@ Suppresses the Viewer.
 		void Remove();
 
 		/****** V3d_Viewer::RemoveZLayer ******/
-		/****** md5 signature: 1a28f0b7cdff8987fcb6dd2d11797a2b ******/
+		/****** md5 signature: 081f9d9f014f86439b5efc3a9c02bf9e ******/
 		%feature("compactdefaultargs") RemoveZLayer;
 		%feature("autodoc", "
 Parameters
@@ -5661,18 +5632,18 @@ bool
 
 Description
 -----------
-Remove Z layer with ID <theLayerId>. Method returns Standard_False if the layer can not be removed or doesn't exists. By default, there are always default bottom-level layer that can't be removed.
+Remove Z layer with ID <theLayerId>. Method returns false if the layer can not be removed or doesn't exists. By default, there are always default bottom-level layer that can't be removed.
 ") RemoveZLayer;
-		Standard_Boolean RemoveZLayer(int theLayerId);
+		bool RemoveZLayer(int theLayerId);
 
 		/****** V3d_Viewer::SetCircularGridGraphicValues ******/
-		/****** md5 signature: b67e0720f326efd720f20465738385e5 ******/
+		/****** md5 signature: d75f556d7475fc61f3f91adf9bae07a3 ******/
 		%feature("compactdefaultargs") SetCircularGridGraphicValues;
 		%feature("autodoc", "
 Parameters
 ----------
-Radius: float
-OffSet: float
+Radius: double
+OffSet: double
 
 Return
 -------
@@ -5682,19 +5653,19 @@ Description
 -----------
 Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
 ") SetCircularGridGraphicValues;
-		void SetCircularGridGraphicValues(const Standard_Real Radius, const Standard_Real OffSet);
+		void SetCircularGridGraphicValues(const double Radius, const double OffSet);
 
 		/****** V3d_Viewer::SetCircularGridValues ******/
-		/****** md5 signature: a18bcc242107e159b166d07e24c9ede7 ******/
+		/****** md5 signature: e5ce2b19a4d46d2f0c8ce7307156f5fc ******/
 		%feature("compactdefaultargs") SetCircularGridValues;
 		%feature("autodoc", "
 Parameters
 ----------
-XOrigin: float
-YOrigin: float
-RadiusStep: float
+XOrigin: double
+YOrigin: double
+RadiusStep: double
 DivisionNumber: int
-RotationAngle: float
+RotationAngle: double
 
 Return
 -------
@@ -5704,10 +5675,10 @@ Description
 -----------
 Sets the definition of the circular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <RadiusStep> defines the interval between 2 circles. <DivisionNumber> defines the section number of one half circle. <RotationAngle> defines the rotation angle of the grid.
 ") SetCircularGridValues;
-		void SetCircularGridValues(const Standard_Real XOrigin, const Standard_Real YOrigin, const Standard_Real RadiusStep, const Standard_Integer DivisionNumber, const Standard_Real RotationAngle);
+		void SetCircularGridValues(const double XOrigin, const double YOrigin, const double RadiusStep, const int DivisionNumber, const double RotationAngle);
 
 		/****** V3d_Viewer::SetComputedMode ******/
-		/****** md5 signature: 43253006c9d2e7ee262337de8f5a72b3 ******/
+		/****** md5 signature: 7ca62f63411b60c68ae0dabbcec8ac20 ******/
 		%feature("compactdefaultargs") SetComputedMode;
 		%feature("autodoc", "
 Parameters
@@ -5722,7 +5693,7 @@ Description
 -----------
 Set if the computed mode can be used.
 ") SetComputedMode;
-		void SetComputedMode(const Standard_Boolean theMode);
+		void SetComputedMode(const bool theMode);
 
 		/****** V3d_Viewer::SetDefaultBackgroundColor ******/
 		/****** md5 signature: 29f198cc43c26304a2fe19b0a4e5c4b3 ******/
@@ -5763,7 +5734,7 @@ Defines the default gradient background colours of views attached to the viewer 
 		void SetDefaultBgGradientColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theFillStyle = Aspect_GradientFillMethod_Horizontal);
 
 		/****** V3d_Viewer::SetDefaultComputedMode ******/
-		/****** md5 signature: c46a840bb2514935564839772e61e616 ******/
+		/****** md5 signature: 625981744a45ca311e961eb134c7ebcc ******/
 		%feature("compactdefaultargs") SetDefaultComputedMode;
 		%feature("autodoc", "
 Parameters
@@ -5778,7 +5749,7 @@ Description
 -----------
 Set if by default the computed mode must be used.
 ") SetDefaultComputedMode;
-		void SetDefaultComputedMode(const Standard_Boolean theMode);
+		void SetDefaultComputedMode(const bool theMode);
 
 		/****** V3d_Viewer::SetDefaultLights ******/
 		/****** md5 signature: b4a267b5dfce1e27f8107f3e4fa518ca ******/
@@ -5866,12 +5837,12 @@ Sets the default projection for creating views in the viewer.
 		void SetDefaultViewProj(const V3d_TypeOfOrientation theOrientation);
 
 		/****** V3d_Viewer::SetDefaultViewSize ******/
-		/****** md5 signature: d923eab190c632f0ff798b9c43517c47 ******/
+		/****** md5 signature: e7beee3ea47769ee9a817fc92f58604c ******/
 		%feature("compactdefaultargs") SetDefaultViewSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theSize: float
+theSize: double
 
 Return
 -------
@@ -5881,7 +5852,7 @@ Description
 -----------
 Gives a default size for the creation of views of the viewer.
 ") SetDefaultViewSize;
-		void SetDefaultViewSize(const Standard_Real theSize);
+		void SetDefaultViewSize(const double theSize);
 
 		/****** V3d_Viewer::SetDefaultVisualization ******/
 		/****** md5 signature: bccd9278c0b886d0c7b17c77f3c6c214 ******/
@@ -5902,12 +5873,12 @@ Gives the default visualization mode.
 		void SetDefaultVisualization(const V3d_TypeOfVisualization theType);
 
 		/****** V3d_Viewer::SetGridEcho ******/
-		/****** md5 signature: 705d6f6f11c80fa56180ba59c810633e ******/
+		/****** md5 signature: 2a4ecb6523aaa2fa707abf0f5c0cc914 ******/
 		%feature("compactdefaultargs") SetGridEcho;
 		%feature("autodoc", "
 Parameters
 ----------
-showGrid: bool (optional, default to Standard_True)
+showGrid: bool (optional, default to true)
 
 Return
 -------
@@ -5917,7 +5888,7 @@ Description
 -----------
 Show/Don't show grid echo to the hit point. If True,the grid echo will be shown at ConvertToGrid() time.
 ") SetGridEcho;
-		void SetGridEcho(const Standard_Boolean showGrid = Standard_True);
+		void SetGridEcho(const bool showGrid = true);
 
 		/****** V3d_Viewer::SetGridEcho ******/
 		/****** md5 signature: 6be327c84c0ec063c637061469c58526 ******/
@@ -6018,14 +5989,14 @@ No available documentation.
 		void SetPrivilegedPlane(const gp_Ax3 & thePlane);
 
 		/****** V3d_Viewer::SetRectangularGridGraphicValues ******/
-		/****** md5 signature: fb9211cf5c9af2162da6e9308ad8eac6 ******/
+		/****** md5 signature: 90e0592688105bc39a4826d2828b0f4f ******/
 		%feature("compactdefaultargs") SetRectangularGridGraphicValues;
 		%feature("autodoc", "
 Parameters
 ----------
-XSize: float
-YSize: float
-OffSet: float
+XSize: double
+YSize: double
+OffSet: double
 
 Return
 -------
@@ -6035,19 +6006,19 @@ Description
 -----------
 Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
 ") SetRectangularGridGraphicValues;
-		void SetRectangularGridGraphicValues(const Standard_Real XSize, const Standard_Real YSize, const Standard_Real OffSet);
+		void SetRectangularGridGraphicValues(const double XSize, const double YSize, const double OffSet);
 
 		/****** V3d_Viewer::SetRectangularGridValues ******/
-		/****** md5 signature: 97300a084d66505155684775481f80e9 ******/
+		/****** md5 signature: 38d5f8e9814e0428110ea14e7b3a0c0e ******/
 		%feature("compactdefaultargs") SetRectangularGridValues;
 		%feature("autodoc", "
 Parameters
 ----------
-XOrigin: float
-YOrigin: float
-XStep: float
-YStep: float
-RotationAngle: float
+XOrigin: double
+YOrigin: double
+XStep: double
+YStep: double
+RotationAngle: double
 
 Return
 -------
@@ -6057,7 +6028,7 @@ Description
 -----------
 Sets the definition of the rectangular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <XStep> defines the interval between 2 vertical lines. <YStep> defines the interval between 2 horizontal lines. <RotationAngle> defines the rotation angle of the grid.
 ") SetRectangularGridValues;
-		void SetRectangularGridValues(const Standard_Real XOrigin, const Standard_Real YOrigin, const Standard_Real XStep, const Standard_Real YStep, const Standard_Real RotationAngle);
+		void SetRectangularGridValues(const double XOrigin, const double YOrigin, const double XStep, const double YStep, const double RotationAngle);
 
 		/****** V3d_Viewer::SetViewOff ******/
 		/****** md5 signature: 1768aaae0afe897b5be0a8ca96ab5e6a ******/
@@ -6250,14 +6221,14 @@ Returns the settings of a single Z layer.
 class V3d_DirectionalLight : public V3d_PositionLight {
 	public:
 		/****** V3d_DirectionalLight::V3d_DirectionalLight ******/
-		/****** md5 signature: 0a7b98fd806efa175a6bd73f746c107d ******/
+		/****** md5 signature: 3bd0562fff43fcb89285e2916e4597da ******/
 		%feature("compactdefaultargs") V3d_DirectionalLight;
 		%feature("autodoc", "
 Parameters
 ----------
 theDirection: V3d_TypeOfOrientation (optional, default to V3d_XposYposZpos)
 theColor: Quantity_Color (optional, default to Quantity_NOC_WHITE)
-theIsHeadlight: bool (optional, default to Standard_False)
+theIsHeadlight: bool (optional, default to false)
 
 Return
 -------
@@ -6267,17 +6238,17 @@ Description
 -----------
 Creates a directional light source in the viewer.
 ") V3d_DirectionalLight;
-		 V3d_DirectionalLight(const V3d_TypeOfOrientation theDirection = V3d_XposYposZpos, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Boolean theIsHeadlight = Standard_False);
+		 V3d_DirectionalLight(const V3d_TypeOfOrientation theDirection = V3d_XposYposZpos, const Quantity_Color & theColor = Quantity_NOC_WHITE, const bool theIsHeadlight = false);
 
 		/****** V3d_DirectionalLight::V3d_DirectionalLight ******/
-		/****** md5 signature: a924d2e44febaa27eb11500ba941c454 ******/
+		/****** md5 signature: 856105d67d7c2f4f6e29259aec6991b5 ******/
 		%feature("compactdefaultargs") V3d_DirectionalLight;
 		%feature("autodoc", "
 Parameters
 ----------
 theDirection: gp_Dir
 theColor: Quantity_Color (optional, default to Quantity_NOC_WHITE)
-theIsHeadlight: bool (optional, default to Standard_False)
+theIsHeadlight: bool (optional, default to false)
 
 Return
 -------
@@ -6287,7 +6258,7 @@ Description
 -----------
 Creates a directional light source in the viewer.
 ") V3d_DirectionalLight;
-		 V3d_DirectionalLight(const gp_Dir & theDirection, const Quantity_Color & theColor = Quantity_NOC_WHITE, const Standard_Boolean theIsHeadlight = Standard_False);
+		 V3d_DirectionalLight(const gp_Dir & theDirection, const Quantity_Color & theColor = Quantity_NOC_WHITE, const bool theIsHeadlight = false);
 
 		/****** V3d_DirectionalLight::SetDirection ******/
 		/****** md5 signature: 68f1a2f19e61e004b66a3eaf73e51686 ******/
@@ -6441,9 +6412,6 @@ class V3d_ImageDumpOptions:
 /* class aliases */
 %pythoncode {
 V3d_Light=OCC.Core.Graphic3d.Graphic3d_CLight
-V3d_TypeOfBackfacingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfBackfacingModel
-V3d_TypeOfLight=OCC.Core.Graphic3d.Graphic3d_TypeOfLightSource
-V3d_TypeOfShadingModel=OCC.Core.Graphic3d.Graphic3d_TypeOfShadingModel
 }
 /* deprecated methods */
 %pythoncode {

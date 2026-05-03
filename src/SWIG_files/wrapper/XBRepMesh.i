@@ -44,8 +44,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xbrepmesh.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TopoDS_module.hxx>
 #include<BRepMesh_module.hxx>
+#include<TopoDS_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
 #include<Geom_module.hxx>
@@ -66,8 +66,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xbrepmesh.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TopoDS.i
 %import BRepMesh.i
+%import TopoDS.i
 
 %pythoncode {
 from enum import IntEnum
@@ -83,6 +83,7 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XBRepMesh_Factory)
 /* end handles declaration */
 
 /* templates */
@@ -91,37 +92,54 @@ from OCC.Core.Exception import *
 /* typedefs */
 /* end typedefs declaration */
 
-/******************
-* class XBRepMesh *
-******************/
-%rename(xbrepmesh) XBRepMesh;
-class XBRepMesh {
+/**************************
+* class XBRepMesh_Factory *
+**************************/
+class XBRepMesh_Factory : public BRepMesh_DiscretAlgoFactory {
 	public:
-		/****** XBRepMesh::Discret ******/
-		/****** md5 signature: 2d40e0c47db8d58631623439c9d30c12 ******/
-		%feature("compactdefaultargs") Discret;
+		/****** XBRepMesh_Factory::XBRepMesh_Factory ******/
+		/****** md5 signature: 2b2dcea85be6991491999b348876490e ******/
+		%feature("compactdefaultargs") XBRepMesh_Factory;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor. Registers this factory under the name 'XBRepMesh'.
+") XBRepMesh_Factory;
+		 XBRepMesh_Factory();
+
+		/****** XBRepMesh_Factory::CreateAlgorithm ******/
+		/****** md5 signature: e1b970da472d5716fb372949d240fb66 ******/
+		%feature("compactdefaultargs") CreateAlgorithm;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theDeflection: float
-theAngle: float
-theAlgo: BRepMesh_DiscretRoot *
+theLinDeflection: double
+theAngDeflection: double
 
 Return
 -------
-int
+opencascade::handle<BRepMesh_DiscretRoot>
 
 Description
 -----------
-No available documentation.
-") Discret;
-		static Standard_Integer Discret(const TopoDS_Shape & theShape, const Standard_Real theDeflection, const Standard_Real theAngle, BRepMesh_DiscretRoot * & theAlgo);
+Creates a new meshing algorithm instance. 
+Input parameter: theShape shape to be meshed 
+Input parameter: theLinDeflection linear deflection for meshing 
+Input parameter: theAngDeflection angular deflection for meshing 
+Return: new meshing algorithm instance.
+") CreateAlgorithm;
+		opencascade::handle<BRepMesh_DiscretRoot> CreateAlgorithm(const TopoDS_Shape & theShape, double theLinDeflection, double theAngDeflection);
 
 };
 
 
-%extend XBRepMesh {
+%make_alias(XBRepMesh_Factory)
+
+%extend XBRepMesh_Factory {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -132,11 +150,4 @@ No available documentation.
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-}
-/* deprecated methods */
-%pythoncode {
-@deprecated
-def xbrepmesh_Discret(*args):
-	return xbrepmesh.Discret(*args)
-
 }

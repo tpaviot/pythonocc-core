@@ -46,7 +46,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_media.html"
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
 #include<Image_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<Geom_module.hxx>
 #include<Bnd_module.hxx>
 #include<Quantity_module.hxx>
@@ -60,7 +59,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_media.html"
 %import NCollection.i
 %import TCollection.i
 %import Image.i
-%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -681,13 +679,13 @@ Return stream.
 		const AVStream & Stream(unsigned int theIndex);
 
 		/****** Media_FormatContext::StreamInfo ******/
-		/****** md5 signature: 073d34b357033222de40461c8985072f ******/
+		/****** md5 signature: 7ed5793a95781fad418f922e46d65b25 ******/
 		%feature("compactdefaultargs") StreamInfo;
 		%feature("autodoc", "
 Parameters
 ----------
 theIndex: unsigned int
-theCodecCtx: AVCodecContext * (optional, default to NULL)
+theCodecCtx: AVCodecContext * (optional, default to nullptr)
 
 Return
 -------
@@ -697,7 +695,7 @@ Description
 -----------
 Format stream info.
 ") StreamInfo;
-		TCollection_AsciiString StreamInfo(unsigned int theIndex, AVCodecContext * theCodecCtx = NULL);
+		TCollection_AsciiString StreamInfo(unsigned int theIndex, AVCodecContext * theCodecCtx = nullptr);
 
 		/****** Media_FormatContext::StreamSecondsToUnits ******/
 		/****** md5 signature: 9f9ec2a7d23ea77d0f339fce6f923478 ******/
@@ -1056,17 +1054,17 @@ Set presentation timestamp (PTS).
 		void SetPts(double thePts);
 
 		/****** Media_Frame::Size ******/
-		/****** md5 signature: e26a44473b1b232114c063872b4d3759 ******/
+		/****** md5 signature: fea4b8c97ff80a6fcf65ccf9fd279f14 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
-Graphic3d_Vec2i
+NCollection_Vec2<int >
 
 Description
 -----------
 Return image dimensions.
 ") Size;
-		Graphic3d_Vec2i Size();
+		NCollection_Vec2<int > Size();
 
 		/****** Media_Frame::SizeX ******/
 		/****** md5 signature: 41f5d5b44df3f549b54065fb1a105dc0 ******/
@@ -1467,7 +1465,7 @@ Input parameter: theMaxSize when positive - downscales image to specified size.
 		static bool DumpFirstFrame(TCollection_AsciiString theSrcVideo, TCollection_AsciiString theOutImage, TCollection_AsciiString & theMediaInfo, int theMaxSize = 0);
 
 		/****** Media_PlayerContext::Pause ******/
-		/****** md5 signature: 29dbaa6814dab6226a053621aee10839 ******/
+		/****** md5 signature: cb33e31713040ec14a20bffed4984198 ******/
 		%feature("compactdefaultargs") Pause;
 		%feature("autodoc", "Return
 -------
@@ -1480,7 +1478,7 @@ Pause playback.
 		void Pause();
 
 		/****** Media_PlayerContext::PlayPause ******/
-		/****** md5 signature: 958bd11bf49c945a931b80948eb2c8b7 ******/
+		/****** md5 signature: b4a7947b46501fbeea019b546d1c0117 ******/
 		%feature("compactdefaultargs") PlayPause;
 		%feature("autodoc", "
 Parameters
@@ -1489,8 +1487,8 @@ Parameters
 Return
 -------
 theIsPaused: bool
-theProgress: float
-theDuration: float
+theProgress: double
+theDuration: double
 
 Description
 -----------
@@ -1499,7 +1497,7 @@ Pause/Pause playback depending on the current state.
 		void PlayPause(Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Media_PlayerContext::PlaybackState ******/
-		/****** md5 signature: 51293a2ab0a7e31ac1fc726c2c5db223 ******/
+		/****** md5 signature: e47bac0c1bf897b8e12ee77e5b8068e9 ******/
 		%feature("compactdefaultargs") PlaybackState;
 		%feature("autodoc", "
 Parameters
@@ -1508,8 +1506,8 @@ Parameters
 Return
 -------
 theIsPaused: bool
-theProgress: float
-theDuration: float
+theProgress: double
+theDuration: double
 
 Description
 -----------
@@ -1518,7 +1516,7 @@ Return playback state.
 		void PlaybackState(Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Media_PlayerContext::Resume ******/
-		/****** md5 signature: d1c1a5e700e6ae906ad11b9e234d5a5e ******/
+		/****** md5 signature: 5a67e3e5ebe46d851d8bba8f57966146 ******/
 		%feature("compactdefaultargs") Resume;
 		%feature("autodoc", "Return
 -------
@@ -1531,12 +1529,12 @@ Resume playback.
 		void Resume();
 
 		/****** Media_PlayerContext::Seek ******/
-		/****** md5 signature: b9c5db7780a20262df94218b3da1d4ef ******/
+		/****** md5 signature: 0b670dd4b4644bf1cd026a0832341235 ******/
 		%feature("compactdefaultargs") Seek;
 		%feature("autodoc", "
 Parameters
 ----------
-thePosSec: float
+thePosSec: double
 
 Return
 -------
@@ -1546,7 +1544,7 @@ Description
 -----------
 Seek to specified position.
 ") Seek;
-		void Seek(Standard_Real thePosSec);
+		void Seek(double thePosSec);
 
 		/****** Media_PlayerContext::SetForceRgb ******/
 		/****** md5 signature: ec16f04277608d5ca16ee11a2e038a7a ******/
@@ -1567,7 +1565,7 @@ Set if queue requires RGB pixel format or can handle also YUV pixel format.
 		void SetForceRgb(bool theToForce);
 
 		/****** Media_PlayerContext::SetInput ******/
-		/****** md5 signature: 4202281f73f5f04197952f31be48acaa ******/
+		/****** md5 signature: be671bf363f4d01da0acfe790cc09a71 ******/
 		%feature("compactdefaultargs") SetInput;
 		%feature("autodoc", "
 Parameters
@@ -1583,7 +1581,7 @@ Description
 -----------
 Set new input for playback.
 ") SetInput;
-		void SetInput(TCollection_AsciiString theInputPath, Standard_Boolean theToWait);
+		void SetInput(TCollection_AsciiString theInputPath, bool theToWait);
 
 		/****** Media_PlayerContext::ToForceRgb ******/
 		/****** md5 signature: 5f21d38bf7884162a0a8027e30c0c524 ******/
@@ -1647,14 +1645,14 @@ Convert one frame to another.
 		bool Convert(const opencascade::handle<Media_Frame> & theSrc, const opencascade::handle<Media_Frame> & theRes);
 
 		/****** Media_Scaler::Init ******/
-		/****** md5 signature: bed7e181f77765cc04d6dc7c4b0c169e ******/
+		/****** md5 signature: d93f44170f3c6409acf62d663e2340de ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-theSrcDims: Graphic3d_Vec2i
+theSrcDims: NCollection_Vec2<int>
 theSrcFormat: int
-theResDims: Graphic3d_Vec2i
+theResDims: NCollection_Vec2<int>
 theResFormat: int
 
 Return
@@ -1669,7 +1667,7 @@ Parameter theSrcFormat pixel format (AVPixelFormat) of input frame
 Parameter theResDims dimensions of destination frame 
 Parameter theResFormat pixel format (AVPixelFormat) of destination frame.
 ") Init;
-		bool Init(const Graphic3d_Vec2i & theSrcDims, int theSrcFormat, const Graphic3d_Vec2i & theResDims, int theResFormat);
+		bool Init(const NCollection_Vec2<int> & theSrcDims, int theSrcFormat, const NCollection_Vec2<int> & theResDims, int theResFormat);
 
 		/****** Media_Scaler::IsValid ******/
 		/****** md5 signature: 735088818cf24ebe0ebc7005a507da69 ******/
@@ -1727,20 +1725,20 @@ Empty constructor.
 		 Media_Timer();
 
 		/****** Media_Timer::ElapsedTime ******/
-		/****** md5 signature: 70206d58970896f6b73a519322e3cb27 ******/
+		/****** md5 signature: 28f2a1f1b712e0e5fb18dfda48c1dc8e ******/
 		%feature("compactdefaultargs") ElapsedTime;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return elapsed time in seconds.
 ") ElapsedTime;
-		Standard_Real ElapsedTime();
+		double ElapsedTime();
 
 		/****** Media_Timer::IsStarted ******/
-		/****** md5 signature: 7873d62c6270d07d4b00b96df3c37ce9 ******/
+		/****** md5 signature: cd0838e9ed3397dd6ad2a5aea30b94ac ******/
 		%feature("compactdefaultargs") IsStarted;
 		%feature("autodoc", "Return
 -------
@@ -1750,7 +1748,7 @@ Description
 -----------
 Return true if timer has been started.
 ") IsStarted;
-		Standard_Boolean IsStarted();
+		bool IsStarted();
 
 		/****** Media_Timer::Pause ******/
 		/****** md5 signature: cb33e31713040ec14a20bffed4984198 ******/
@@ -1766,25 +1764,25 @@ Pause the timer.
 		void Pause();
 
 		/****** Media_Timer::PlaybackSpeed ******/
-		/****** md5 signature: 57b3c104badbb2d03df54cc0e8568d2b ******/
+		/****** md5 signature: fb102017d3831e2cb71b443ff818ba13 ******/
 		%feature("compactdefaultargs") PlaybackSpeed;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return playback speed coefficient (1.0 means normal speed).
 ") PlaybackSpeed;
-		Standard_Real PlaybackSpeed();
+		double PlaybackSpeed();
 
 		/****** Media_Timer::Seek ******/
-		/****** md5 signature: b3acf1e2aa31e74799994399d25609a1 ******/
+		/****** md5 signature: 3bc2b0b2f39b5322391b4858481594cf ******/
 		%feature("compactdefaultargs") Seek;
 		%feature("autodoc", "
 Parameters
 ----------
-theTime: float
+theTime: double
 
 Return
 -------
@@ -1794,15 +1792,15 @@ Description
 -----------
 Seek the timer to specified position.
 ") Seek;
-		void Seek(const Standard_Real theTime);
+		void Seek(const double theTime);
 
 		/****** Media_Timer::SetPlaybackSpeed ******/
-		/****** md5 signature: 2fcf09d284cf9236c6a398721aa758cf ******/
+		/****** md5 signature: 97c69f8134e06737f15031a0f8bc4a0b ******/
 		%feature("compactdefaultargs") SetPlaybackSpeed;
 		%feature("autodoc", "
 Parameters
 ----------
-theSpeed: float
+theSpeed: double
 
 Return
 -------
@@ -1812,7 +1810,7 @@ Description
 -----------
 Setup playback speed coefficient.
 ") SetPlaybackSpeed;
-		void SetPlaybackSpeed(const Standard_Real theSpeed);
+		void SetPlaybackSpeed(const double theSpeed);
 
 		/****** Media_Timer::Start ******/
 		/****** md5 signature: 4d03a8d97f47d1d3454f953eb54cb197 ******/

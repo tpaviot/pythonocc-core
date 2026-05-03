@@ -125,6 +125,8 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<Standard_GUID,opencascade::handle<TPrsStd_Driver>>::Items;
+%ignore NCollection_DataMap<Standard_GUID,opencascade::handle<TPrsStd_Driver>>::KeyValues;
 %template(TPrsStd_DataMapOfGUIDDriver) NCollection_DataMap<Standard_GUID,opencascade::handle<TPrsStd_Driver>>;
 /* end templates declaration */
 
@@ -152,13 +154,13 @@ No available documentation.
 		 TPrsStd_AISPresentation();
 
 		/****** TPrsStd_AISPresentation::AddSelectionMode ******/
-		/****** md5 signature: 2f3915cde2340bc54ca93c55af007d81 ******/
+		/****** md5 signature: 93f8db4a16ce5f33ce56141d19c3a2c3 ******/
 		%feature("compactdefaultargs") AddSelectionMode;
 		%feature("autodoc", "
 Parameters
 ----------
 theSelectionMode: int
-theTransaction: bool (optional, default to Standard_True)
+theTransaction: bool (optional, default to true)
 
 Return
 -------
@@ -168,10 +170,10 @@ Description
 -----------
 No available documentation.
 ") AddSelectionMode;
-		void AddSelectionMode(const Standard_Integer theSelectionMode, const Standard_Boolean theTransaction = Standard_True);
+		void AddSelectionMode(const int theSelectionMode, const bool theTransaction = true);
 
 		/****** TPrsStd_AISPresentation::AfterAddition ******/
-		/****** md5 signature: b31825498767e26fb4d69f77ab94108b ******/
+		/****** md5 signature: 677f303b9af6a36d9152349a9ea5b00e ******/
 		%feature("compactdefaultargs") AfterAddition;
 		%feature("autodoc", "Return
 -------
@@ -181,10 +183,10 @@ Description
 -----------
 No available documentation.
 ") AfterAddition;
-		virtual void AfterAddition();
+		void AfterAddition();
 
 		/****** TPrsStd_AISPresentation::AfterResume ******/
-		/****** md5 signature: 1d4195e9b512e0fcd0e4fad379210118 ******/
+		/****** md5 signature: 725997b4942a96537f8067a0c4d51cec ******/
 		%feature("compactdefaultargs") AfterResume;
 		%feature("autodoc", "Return
 -------
@@ -194,16 +196,16 @@ Description
 -----------
 No available documentation.
 ") AfterResume;
-		virtual void AfterResume();
+		void AfterResume();
 
 		/****** TPrsStd_AISPresentation::AfterUndo ******/
-		/****** md5 signature: 6a782c706f1e9291f121f77d889ed576 ******/
+		/****** md5 signature: 1c658357444dc4e0bd0f4b66ab6d7e3c ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -213,10 +215,10 @@ Description
 -----------
 update AIS viewer according to delta.
 ") AfterUndo;
-		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TPrsStd_AISPresentation::BackupCopy ******/
-		/****** md5 signature: c0c9b77233d223451ec9a7e1bc2427c7 ******/
+		/****** md5 signature: 37a7ca5257c3a9e95a9390edd8c74378 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -226,10 +228,10 @@ Description
 -----------
 No available documentation.
 ") BackupCopy;
-		virtual opencascade::handle<TDF_Attribute> BackupCopy();
+		opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****** TPrsStd_AISPresentation::BeforeForget ******/
-		/****** md5 signature: e5a78fffddf9fa82f6f158acce858991 ******/
+		/****** md5 signature: 62cb9500c708360c96952b8784c42662 ******/
 		%feature("compactdefaultargs") BeforeForget;
 		%feature("autodoc", "Return
 -------
@@ -239,10 +241,10 @@ Description
 -----------
 No available documentation.
 ") BeforeForget;
-		virtual void BeforeForget();
+		void BeforeForget();
 
 		/****** TPrsStd_AISPresentation::BeforeRemoval ******/
-		/****** md5 signature: fb87f8354fd142d1ab3d9cd55ada4556 ******/
+		/****** md5 signature: 0f64ecdecef86a02045a45cc05d670d1 ******/
 		%feature("compactdefaultargs") BeforeRemoval;
 		%feature("autodoc", "Return
 -------
@@ -252,16 +254,16 @@ Description
 -----------
 No available documentation.
 ") BeforeRemoval;
-		virtual void BeforeRemoval();
+		void BeforeRemoval();
 
 		/****** TPrsStd_AISPresentation::BeforeUndo ******/
-		/****** md5 signature: d409c3f1c759e5fb3727056dd12910e7 ******/
+		/****** md5 signature: 4022cd53002aaa4282f3bc50d4d2b7c9 ******/
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 anAttDelta: TDF_AttributeDelta
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -271,7 +273,7 @@ Description
 -----------
 No available documentation.
 ") BeforeUndo;
-		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
+		bool BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
 		/****** TPrsStd_AISPresentation::Color ******/
 		/****** md5 signature: 2e6350e3294b0d2b2e58bb8ded204984 ******/
@@ -287,12 +289,12 @@ No available documentation.
 		Quantity_NameOfColor Color();
 
 		/****** TPrsStd_AISPresentation::Display ******/
-		/****** md5 signature: 6d06b4a5445d280b65ed6ad92eb536f5 ******/
+		/****** md5 signature: 7ab074aaf348ba845b584c30bba39769 ******/
 		%feature("compactdefaultargs") Display;
 		%feature("autodoc", "
 Parameters
 ----------
-update: bool (optional, default to Standard_False)
+update: bool (optional, default to false)
 
 Return
 -------
@@ -302,7 +304,7 @@ Description
 -----------
 Display presentation of object in AIS viewer. If <update> = True then AISObject is recomputed and all the visualization settings are applied.
 ") Display;
-		void Display(const Standard_Boolean update = Standard_False);
+		void Display(const bool update = false);
 
 
         /****************** DumpJson ******************/
@@ -326,12 +328,12 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TPrsStd_AISPresentation::Erase ******/
-		/****** md5 signature: 78dc6861a924b64ddfaf44a115f8387a ******/
+		/****** md5 signature: be1428cabf5122d04914e98b64777464 ******/
 		%feature("compactdefaultargs") Erase;
 		%feature("autodoc", "
 Parameters
 ----------
-remove: bool (optional, default to Standard_False)
+remove: bool (optional, default to false)
 
 Return
 -------
@@ -341,7 +343,7 @@ Description
 -----------
 Removes the presentation of this AIS presentation attribute from the TPrsStd_AISViewer. If remove is true, this AIS presentation attribute is removed from the interactive context.
 ") Erase;
-		void Erase(const Standard_Boolean remove = Standard_False);
+		void Erase(const bool remove = false);
 
 		/****** TPrsStd_AISPresentation::GetAIS ******/
 		/****** md5 signature: 923710b2c231db1bed7611daa65c993d ******/
@@ -383,7 +385,7 @@ Returns the GUID for TPrsStd_AISPresentation attributes.
 		static const Standard_GUID & GetID();
 
 		/****** TPrsStd_AISPresentation::GetNbSelectionModes ******/
-		/****** md5 signature: eb4c6588e6d12a452658a67633c2de5c ******/
+		/****** md5 signature: 99a39738238e4e23ef3a12766ba03ee4 ******/
 		%feature("compactdefaultargs") GetNbSelectionModes;
 		%feature("autodoc", "Return
 -------
@@ -393,10 +395,10 @@ Description
 -----------
 Returns selection mode(s) of the attribute. It starts with 1 .. GetNbSelectionModes().
 ") GetNbSelectionModes;
-		Standard_Integer GetNbSelectionModes();
+		int GetNbSelectionModes();
 
 		/****** TPrsStd_AISPresentation::HasOwnColor ******/
-		/****** md5 signature: 85391f94ad8ed41de9ce9852009b8711 ******/
+		/****** md5 signature: f303300f0264bf37055acb1e9fb7a2c2 ******/
 		%feature("compactdefaultargs") HasOwnColor;
 		%feature("autodoc", "Return
 -------
@@ -406,10 +408,10 @@ Description
 -----------
 Returns true if this presentation attribute already has a color setting.
 ") HasOwnColor;
-		Standard_Boolean HasOwnColor();
+		bool HasOwnColor();
 
 		/****** TPrsStd_AISPresentation::HasOwnMaterial ******/
-		/****** md5 signature: 8effeb2715386f4facabb7e016d6f914 ******/
+		/****** md5 signature: 8b5caa1f734d1508e3e2629c0a75f8d5 ******/
 		%feature("compactdefaultargs") HasOwnMaterial;
 		%feature("autodoc", "Return
 -------
@@ -419,10 +421,10 @@ Description
 -----------
 Returns true if this presentation attribute already has a material setting.
 ") HasOwnMaterial;
-		Standard_Boolean HasOwnMaterial();
+		bool HasOwnMaterial();
 
 		/****** TPrsStd_AISPresentation::HasOwnMode ******/
-		/****** md5 signature: db54ff723646ecb3cccdfb673c54283e ******/
+		/****** md5 signature: 5fb7d03e8183a31fbf9e9f252e858666 ******/
 		%feature("compactdefaultargs") HasOwnMode;
 		%feature("autodoc", "Return
 -------
@@ -432,10 +434,10 @@ Description
 -----------
 No available documentation.
 ") HasOwnMode;
-		Standard_Boolean HasOwnMode();
+		bool HasOwnMode();
 
 		/****** TPrsStd_AISPresentation::HasOwnSelectionMode ******/
-		/****** md5 signature: ca04b4e9e4c94e4c0b6ce42053c9e30a ******/
+		/****** md5 signature: b7f3a7c9a0a1e03ab92ae4d194d7664e ******/
 		%feature("compactdefaultargs") HasOwnSelectionMode;
 		%feature("autodoc", "Return
 -------
@@ -445,10 +447,10 @@ Description
 -----------
 No available documentation.
 ") HasOwnSelectionMode;
-		Standard_Boolean HasOwnSelectionMode();
+		bool HasOwnSelectionMode();
 
 		/****** TPrsStd_AISPresentation::HasOwnTransparency ******/
-		/****** md5 signature: 518151389a72b3ced0d8dc79dc662dca ******/
+		/****** md5 signature: ff6189613aa25f291c98038cd6d052ec ******/
 		%feature("compactdefaultargs") HasOwnTransparency;
 		%feature("autodoc", "Return
 -------
@@ -458,10 +460,10 @@ Description
 -----------
 Returns true if this presentation attribute already has a transparency setting.
 ") HasOwnTransparency;
-		Standard_Boolean HasOwnTransparency();
+		bool HasOwnTransparency();
 
 		/****** TPrsStd_AISPresentation::HasOwnWidth ******/
-		/****** md5 signature: 76ebaa4394d15efba17d3ac7ce584080 ******/
+		/****** md5 signature: 38ab6940dfd75ba85e859f8a625bdcbd ******/
 		%feature("compactdefaultargs") HasOwnWidth;
 		%feature("autodoc", "Return
 -------
@@ -471,10 +473,10 @@ Description
 -----------
 Returns true if this presentation attribute already has a width setting.
 ") HasOwnWidth;
-		Standard_Boolean HasOwnWidth();
+		bool HasOwnWidth();
 
 		/****** TPrsStd_AISPresentation::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -487,7 +489,7 @@ No available documentation.
 		const Standard_GUID & ID();
 
 		/****** TPrsStd_AISPresentation::IsDisplayed ******/
-		/****** md5 signature: 04882eded547dac4e4f59f67e903fed8 ******/
+		/****** md5 signature: e13849d6809fc79274538f37bcdcee34 ******/
 		%feature("compactdefaultargs") IsDisplayed;
 		%feature("autodoc", "Return
 -------
@@ -497,7 +499,7 @@ Description
 -----------
 Returns true if this AIS presentation attribute is displayed.
 ") IsDisplayed;
-		Standard_Boolean IsDisplayed();
+		bool IsDisplayed();
 
 		/****** TPrsStd_AISPresentation::Material ******/
 		/****** md5 signature: e50de5463c04095852f62d559d0d6104 ******/
@@ -513,7 +515,7 @@ Returns the material setting for this presentation attribute.
 		Graphic3d_NameOfMaterial Material();
 
 		/****** TPrsStd_AISPresentation::Mode ******/
-		/****** md5 signature: d1320a8f2b0a14003883efd9407c24ac ******/
+		/****** md5 signature: d5d38b16c9c176c269e106cc4f03f640 ******/
 		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "Return
 -------
@@ -523,10 +525,10 @@ Description
 -----------
 No available documentation.
 ") Mode;
-		Standard_Integer Mode();
+		int Mode();
 
 		/****** TPrsStd_AISPresentation::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -539,7 +541,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TPrsStd_AISPresentation::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -558,7 +560,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TPrsStd_AISPresentation::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -576,7 +578,7 @@ No available documentation.
 		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
 		/****** TPrsStd_AISPresentation::SelectionMode ******/
-		/****** md5 signature: eaeec5c5007ba0b6cda5dcd31d7352bb ******/
+		/****** md5 signature: cfd3bc9d26b1f29e3b6bd48ec0a922c4 ******/
 		%feature("compactdefaultargs") SelectionMode;
 		%feature("autodoc", "
 Parameters
@@ -591,7 +593,7 @@ Description
 -----------
 No available documentation.
 ") SelectionMode;
-		Standard_Integer SelectionMode(const int index = 1);
+		int SelectionMode(const int index = 1);
 
 		/****** TPrsStd_AISPresentation::Set ******/
 		/****** md5 signature: e5bd657a5fc71e829c278aed1e315025 ******/
@@ -649,7 +651,7 @@ Sets the color aColor for this presentation attribute.
 		void SetColor(const Quantity_NameOfColor aColor);
 
 		/****** TPrsStd_AISPresentation::SetDisplayed ******/
-		/****** md5 signature: ed9aca4e9e7635ee7c2d8ea755cda117 ******/
+		/****** md5 signature: d95b07cf41e2cb0672270496d51bcd41 ******/
 		%feature("compactdefaultargs") SetDisplayed;
 		%feature("autodoc", "
 Parameters
@@ -664,7 +666,7 @@ Description
 -----------
 No available documentation.
 ") SetDisplayed;
-		void SetDisplayed(const Standard_Boolean B);
+		void SetDisplayed(const bool B);
 
 		/****** TPrsStd_AISPresentation::SetDriverGUID ******/
 		/****** md5 signature: 07186d86451e9b1ad5ad4848dd63f1dc ******/
@@ -703,7 +705,7 @@ Sets the material aName for this presentation attribute.
 		void SetMaterial(const Graphic3d_NameOfMaterial aName);
 
 		/****** TPrsStd_AISPresentation::SetMode ******/
-		/****** md5 signature: fca52190dcdc18b7bad2a81829b4e979 ******/
+		/****** md5 signature: c1ad76d6ebccc46b32426f09aefa3bcd ******/
 		%feature("compactdefaultargs") SetMode;
 		%feature("autodoc", "
 Parameters
@@ -718,16 +720,16 @@ Description
 -----------
 No available documentation.
 ") SetMode;
-		void SetMode(const Standard_Integer theMode);
+		void SetMode(const int theMode);
 
 		/****** TPrsStd_AISPresentation::SetSelectionMode ******/
-		/****** md5 signature: 96f14deb237436f152baf69a8590e0a7 ******/
+		/****** md5 signature: 6b9b56ded1508c59a43f641e25f62159 ******/
 		%feature("compactdefaultargs") SetSelectionMode;
 		%feature("autodoc", "
 Parameters
 ----------
 theSelectionMode: int
-theTransaction: bool (optional, default to Standard_True)
+theTransaction: bool (optional, default to true)
 
 Return
 -------
@@ -737,15 +739,15 @@ Description
 -----------
 Sets selection mode. If 'theTransaction' flag is OFF, modification of the attribute doesn't influence the transaction mechanism (the attribute doesn't participate in undo/redo because of this modification). Certainly, if any other data of the attribute is modified (display mode, color, ...), the attribute will be included into undo/redo.
 ") SetSelectionMode;
-		void SetSelectionMode(const Standard_Integer theSelectionMode, const Standard_Boolean theTransaction = Standard_True);
+		void SetSelectionMode(const int theSelectionMode, const bool theTransaction = true);
 
 		/****** TPrsStd_AISPresentation::SetTransparency ******/
-		/****** md5 signature: 60afac74b4b44a393595c4974eed3bd5 ******/
+		/****** md5 signature: b254bc92199fcd55cf9c2daf96d3649e ******/
 		%feature("compactdefaultargs") SetTransparency;
 		%feature("autodoc", "
 Parameters
 ----------
-aValue: float (optional, default to 0.6)
+aValue: double (optional, default to 0.6)
 
 Return
 -------
@@ -755,15 +757,15 @@ Description
 -----------
 Sets the transparency value aValue for this presentation attribute. This value is 0.6 by default.
 ") SetTransparency;
-		void SetTransparency(const Standard_Real aValue = 0.6);
+		void SetTransparency(const double aValue = 0.6);
 
 		/****** TPrsStd_AISPresentation::SetWidth ******/
-		/****** md5 signature: 241a01ddb40e85ceaaa56807348390c6 ******/
+		/****** md5 signature: ee0607ebb5cc5d325397bde68a8580c0 ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
 ----------
-aWidth: float
+aWidth: double
 
 Return
 -------
@@ -773,20 +775,20 @@ Description
 -----------
 Sets the width aWidth for this presentation attribute.
 ") SetWidth;
-		void SetWidth(const Standard_Real aWidth);
+		void SetWidth(const double aWidth);
 
 		/****** TPrsStd_AISPresentation::Transparency ******/
-		/****** md5 signature: 395111f5ce5a38f6b8d6009c7b6b1222 ******/
+		/****** md5 signature: 080317bfb744c0d6d6d612bb6c05010b ******/
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Transparency;
-		Standard_Real Transparency();
+		double Transparency();
 
 		/****** TPrsStd_AISPresentation::Unset ******/
 		/****** md5 signature: 921291f6c49c0cffc7e0244b1e63638f ******/
@@ -898,17 +900,17 @@ Recompute presentation of object and apply the visualization settings.
 		void Update();
 
 		/****** TPrsStd_AISPresentation::Width ******/
-		/****** md5 signature: e40fe8cb5cdcf41ad2ab06ede13e859b ******/
+		/****** md5 signature: 1fd4c6d3d33fbd8b282f769785a59bae ******/
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Width;
-		Standard_Real Width();
+		double Width();
 
 };
 
@@ -961,7 +963,7 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** TPrsStd_AISViewer::Find ******/
-		/****** md5 signature: 2c8b00fbc5f1685461f851faec89f5be ******/
+		/****** md5 signature: c2267931947f7bf8c8e35ae801ee14f1 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -977,10 +979,10 @@ Description
 -----------
 Finds the viewer attribute at the label access, the root of the data framework. Calling this function can be used to initialize an AIS viewer.
 ") Find;
-		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<TPrsStd_AISViewer> & A);
+		static bool Find(const TDF_Label & acces, opencascade::handle<TPrsStd_AISViewer> & A);
 
 		/****** TPrsStd_AISViewer::Find ******/
-		/****** md5 signature: b4a13f9a06a9968425273402b35608c8 ******/
+		/****** md5 signature: 56bc6185c30180200687dad393afe9d5 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -996,10 +998,10 @@ Description
 -----------
 No available documentation.
 ") Find;
-		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<AIS_InteractiveContext> & IC);
+		static bool Find(const TDF_Label & acces, opencascade::handle<AIS_InteractiveContext> & IC);
 
 		/****** TPrsStd_AISViewer::Find ******/
-		/****** md5 signature: 5e4585e095e2394e16d994227041d449 ******/
+		/****** md5 signature: acd6dd81050ec23bc951a44ab0d626ee ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -1015,7 +1017,7 @@ Description
 -----------
 No available documentation.
 ") Find;
-		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<V3d_Viewer> & V);
+		static bool Find(const TDF_Label & acces, opencascade::handle<V3d_Viewer> & V);
 
 		/****** TPrsStd_AISViewer::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -1044,7 +1046,7 @@ Returns the interactive context in this attribute.
 		opencascade::handle<AIS_InteractiveContext> GetInteractiveContext();
 
 		/****** TPrsStd_AISViewer::Has ******/
-		/****** md5 signature: 50ae6e2d0e5e7cf8d8a39bf93358e95e ******/
+		/****** md5 signature: 4be26c703c22566df918a80d7bc3bd8a ******/
 		%feature("compactdefaultargs") Has;
 		%feature("autodoc", "
 Parameters
@@ -1059,10 +1061,10 @@ Description
 -----------
 returns True if there is an AISViewer attribute in <acces> Data Framework.
 ") Has;
-		static Standard_Boolean Has(const TDF_Label & acces);
+		static bool Has(const TDF_Label & acces);
 
 		/****** TPrsStd_AISViewer::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -1113,7 +1115,7 @@ create and set an AISAttribute at root label. The interactive context is build. 
 		static opencascade::handle<TPrsStd_AISViewer> New(const TDF_Label & acces, const opencascade::handle<V3d_Viewer> & viewer);
 
 		/****** TPrsStd_AISViewer::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1126,7 +1128,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TPrsStd_AISViewer::Paste ******/
-		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -1145,7 +1147,7 @@ No available documentation.
 		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
 		/****** TPrsStd_AISViewer::Restore ******/
-		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -1228,6 +1230,26 @@ Updates the viewer at the label access. access is the root of the data framework
 class TPrsStd_ConstraintTools {
 	public:
 		/****** TPrsStd_ConstraintTools::ComputeAngle ******/
+		/****** md5 signature: 2772720771c6260493a91325cb3502a9 ******/
+		%feature("compactdefaultargs") ComputeAngle;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes an angle dimension presentation for the given constraint. 
+Input parameter: aConst the angle constraint 
+Return: interactive object representing the angle, or null handle on failure.
+") ComputeAngle;
+		static opencascade::handle<AIS_InteractiveObject> ComputeAngle(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeAngle ******/
 		/****** md5 signature: 78aa13c1ad8a8486e8b2a370e6c361a6 ******/
 		%feature("compactdefaultargs") ComputeAngle;
 		%feature("autodoc", "
@@ -1245,6 +1267,26 @@ Description
 No available documentation.
 ") ComputeAngle;
 		static void ComputeAngle(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeAngleForOneFace ******/
+		/****** md5 signature: 71e96f26b9b2d53ff1f0609040cc7682 ******/
+		%feature("compactdefaultargs") ComputeAngleForOneFace;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes an angle dimension presentation for a single-face constraint. 
+Input parameter: aConst the angle constraint on one face 
+Return: interactive object representing the angle, or null handle on failure.
+") ComputeAngleForOneFace;
+		static opencascade::handle<AIS_InteractiveObject> ComputeAngleForOneFace(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeAngleForOneFace ******/
 		/****** md5 signature: 389c39ec61b9f39e4b98ad323e439f43 ******/
@@ -1266,6 +1308,26 @@ No available documentation.
 		static void ComputeAngleForOneFace(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeCoincident ******/
+		/****** md5 signature: 8c5d46537b367afc0a7ca87935a30f28 ******/
+		%feature("compactdefaultargs") ComputeCoincident;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a coincident relation presentation for the given constraint. 
+Input parameter: aConst the coincident constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeCoincident;
+		static opencascade::handle<AIS_InteractiveObject> ComputeCoincident(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeCoincident ******/
 		/****** md5 signature: e7e3c79d03c694ce175db3acd71aa4fd ******/
 		%feature("compactdefaultargs") ComputeCoincident;
 		%feature("autodoc", "
@@ -1283,6 +1345,26 @@ Description
 No available documentation.
 ") ComputeCoincident;
 		static void ComputeCoincident(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeConcentric ******/
+		/****** md5 signature: f4cc71d0af8156d02b2c60cdb178127d ******/
+		%feature("compactdefaultargs") ComputeConcentric;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a concentric relation presentation for the given constraint. 
+Input parameter: aConst the concentric constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeConcentric;
+		static opencascade::handle<AIS_InteractiveObject> ComputeConcentric(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeConcentric ******/
 		/****** md5 signature: 50ac981b69ba6d86c79188283640c178 ******/
@@ -1304,6 +1386,26 @@ No available documentation.
 		static void ComputeConcentric(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeDiameter ******/
+		/****** md5 signature: 428071178686d78be8fce086df27f1f9 ******/
+		%feature("compactdefaultargs") ComputeDiameter;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a diameter dimension presentation for the given constraint. 
+Input parameter: aConst the diameter constraint 
+Return: interactive object representing the diameter, or null handle on failure.
+") ComputeDiameter;
+		static opencascade::handle<AIS_InteractiveObject> ComputeDiameter(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeDiameter ******/
 		/****** md5 signature: 2c7ef4df9648dc8d053e147dc96684d6 ******/
 		%feature("compactdefaultargs") ComputeDiameter;
 		%feature("autodoc", "
@@ -1321,6 +1423,26 @@ Description
 No available documentation.
 ") ComputeDiameter;
 		static void ComputeDiameter(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeDistance ******/
+		/****** md5 signature: 25975f75c8a22b7dc9f22c5ab2687fa7 ******/
+		%feature("compactdefaultargs") ComputeDistance;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a distance dimension presentation for the given constraint. 
+Input parameter: aConst the distance constraint 
+Return: interactive object representing the distance, or null handle on failure.
+") ComputeDistance;
+		static opencascade::handle<AIS_InteractiveObject> ComputeDistance(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeDistance ******/
 		/****** md5 signature: ad6ab79cfaf180785a401e5b8ba6f9aa ******/
@@ -1342,6 +1464,26 @@ No available documentation.
 		static void ComputeDistance(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeEqualDistance ******/
+		/****** md5 signature: 147757d0fc2baa31a61f824ff09cc237 ******/
+		%feature("compactdefaultargs") ComputeEqualDistance;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes an equal distance relation presentation for the given constraint. 
+Input parameter: aConst the equal distance constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeEqualDistance;
+		static opencascade::handle<AIS_InteractiveObject> ComputeEqualDistance(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeEqualDistance ******/
 		/****** md5 signature: 27f1689ae9f7240dbb9a8211335f5bc3 ******/
 		%feature("compactdefaultargs") ComputeEqualDistance;
 		%feature("autodoc", "
@@ -1359,6 +1501,26 @@ Description
 No available documentation.
 ") ComputeEqualDistance;
 		static void ComputeEqualDistance(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeEqualRadius ******/
+		/****** md5 signature: bd8853f11b14edce0cf9428db08b578e ******/
+		%feature("compactdefaultargs") ComputeEqualRadius;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes an equal radius relation presentation for the given constraint. 
+Input parameter: aConst the equal radius constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeEqualRadius;
+		static opencascade::handle<AIS_InteractiveObject> ComputeEqualRadius(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeEqualRadius ******/
 		/****** md5 signature: a7fd75d4ab37c60f45d84f86a985d82e ******/
@@ -1380,6 +1542,26 @@ No available documentation.
 		static void ComputeEqualRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeFix ******/
+		/****** md5 signature: 8a93ef15bbd9655820238e00b4ab6521 ******/
+		%feature("compactdefaultargs") ComputeFix;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a fix constraint presentation for the given constraint. 
+Input parameter: aConst the fix constraint 
+Return: interactive object representing the constraint, or null handle on failure.
+") ComputeFix;
+		static opencascade::handle<AIS_InteractiveObject> ComputeFix(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeFix ******/
 		/****** md5 signature: 26f9484851b8d8c2852b2b0eaa269448 ******/
 		%feature("compactdefaultargs") ComputeFix;
 		%feature("autodoc", "
@@ -1397,6 +1579,26 @@ Description
 No available documentation.
 ") ComputeFix;
 		static void ComputeFix(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeMaxRadius ******/
+		/****** md5 signature: 7ad7378af661b64d01c118b73740f060 ******/
+		%feature("compactdefaultargs") ComputeMaxRadius;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a major radius dimension presentation for the given constraint. 
+Input parameter: aConst the major radius constraint 
+Return: interactive object representing the major radius, or null handle on failure.
+") ComputeMaxRadius;
+		static opencascade::handle<AIS_InteractiveObject> ComputeMaxRadius(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeMaxRadius ******/
 		/****** md5 signature: 374a09a359d2e5e8cb7398cd28b64b67 ******/
@@ -1418,6 +1620,26 @@ No available documentation.
 		static void ComputeMaxRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeMidPoint ******/
+		/****** md5 signature: 6013440c857b26c3343a1d4f09233d13 ******/
+		%feature("compactdefaultargs") ComputeMidPoint;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a midpoint relation presentation for the given constraint. 
+Input parameter: aConst the midpoint constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeMidPoint;
+		static opencascade::handle<AIS_InteractiveObject> ComputeMidPoint(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeMidPoint ******/
 		/****** md5 signature: abb98b5c86c5028b6388964c0184d631 ******/
 		%feature("compactdefaultargs") ComputeMidPoint;
 		%feature("autodoc", "
@@ -1435,6 +1657,26 @@ Description
 No available documentation.
 ") ComputeMidPoint;
 		static void ComputeMidPoint(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeMinRadius ******/
+		/****** md5 signature: 2dacc1bf99ef621f48d5f640163eeb4e ******/
+		%feature("compactdefaultargs") ComputeMinRadius;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a minor radius dimension presentation for the given constraint. 
+Input parameter: aConst the minor radius constraint 
+Return: interactive object representing the minor radius, or null handle on failure.
+") ComputeMinRadius;
+		static opencascade::handle<AIS_InteractiveObject> ComputeMinRadius(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeMinRadius ******/
 		/****** md5 signature: fbc35f7cd6283b42623340183d2b8fdc ******/
@@ -1456,6 +1698,26 @@ No available documentation.
 		static void ComputeMinRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeOffset ******/
+		/****** md5 signature: da9a1abac1b6490ddff74908ef83932d ******/
+		%feature("compactdefaultargs") ComputeOffset;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes an offset relation presentation for the given constraint. 
+Input parameter: aConst the offset constraint 
+Return: interactive object representing the offset, or null handle on failure.
+") ComputeOffset;
+		static opencascade::handle<AIS_InteractiveObject> ComputeOffset(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeOffset ******/
 		/****** md5 signature: d3432bd11953785874a0d8b8e3ad3090 ******/
 		%feature("compactdefaultargs") ComputeOffset;
 		%feature("autodoc", "
@@ -1473,6 +1735,26 @@ Description
 No available documentation.
 ") ComputeOffset;
 		static void ComputeOffset(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeOthers ******/
+		/****** md5 signature: a44465cc3afc65abca94ee1305d7717c ******/
+		%feature("compactdefaultargs") ComputeOthers;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a presentation for constraint types not handled by specific methods. 
+Input parameter: aConst the constraint 
+Return: interactive object representing the constraint, or null handle on failure.
+") ComputeOthers;
+		static opencascade::handle<AIS_InteractiveObject> ComputeOthers(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeOthers ******/
 		/****** md5 signature: 58eb8518a5df09ad2da6c523694b61a3 ******/
@@ -1494,6 +1776,26 @@ No available documentation.
 		static void ComputeOthers(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeParallel ******/
+		/****** md5 signature: 53259d71b56800b580b2d61edad92c24 ******/
+		%feature("compactdefaultargs") ComputeParallel;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a parallel relation presentation for the given constraint. 
+Input parameter: aConst the parallel constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeParallel;
+		static opencascade::handle<AIS_InteractiveObject> ComputeParallel(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeParallel ******/
 		/****** md5 signature: c3a1d78b8cce5f8e1b511c89b7026256 ******/
 		%feature("compactdefaultargs") ComputeParallel;
 		%feature("autodoc", "
@@ -1511,6 +1813,26 @@ Description
 No available documentation.
 ") ComputeParallel;
 		static void ComputeParallel(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputePerpendicular ******/
+		/****** md5 signature: 0f815bbdde5df4bf4e8846e7d90768e1 ******/
+		%feature("compactdefaultargs") ComputePerpendicular;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a perpendicular relation presentation for the given constraint. 
+Input parameter: aConst the perpendicular constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputePerpendicular;
+		static opencascade::handle<AIS_InteractiveObject> ComputePerpendicular(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputePerpendicular ******/
 		/****** md5 signature: 172b7582be96e38ec6b71661768da3e9 ******/
@@ -1532,6 +1854,26 @@ No available documentation.
 		static void ComputePerpendicular(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputePlacement ******/
+		/****** md5 signature: c1be8354247bc9ea283e76869ac654a5 ******/
+		%feature("compactdefaultargs") ComputePlacement;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a placement relation presentation for the given constraint. 
+Input parameter: aConst the placement constraint 
+Return: interactive object representing the placement, or null handle on failure.
+") ComputePlacement;
+		static opencascade::handle<AIS_InteractiveObject> ComputePlacement(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputePlacement ******/
 		/****** md5 signature: 0f15d1dc460b4835f9c7df007df876c7 ******/
 		%feature("compactdefaultargs") ComputePlacement;
 		%feature("autodoc", "
@@ -1549,6 +1891,26 @@ Description
 No available documentation.
 ") ComputePlacement;
 		static void ComputePlacement(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeRadius ******/
+		/****** md5 signature: f065b89cfc33a0143fda9b712f00d6f4 ******/
+		%feature("compactdefaultargs") ComputeRadius;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a radius dimension presentation for the given constraint. 
+Input parameter: aConst the radius constraint 
+Return: interactive object representing the radius, or null handle on failure.
+") ComputeRadius;
+		static opencascade::handle<AIS_InteractiveObject> ComputeRadius(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeRadius ******/
 		/****** md5 signature: 5ca94076ee1f7b8028195830daa24fbb ******/
@@ -1570,6 +1932,26 @@ No available documentation.
 		static void ComputeRadius(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeRound ******/
+		/****** md5 signature: df92446c557f85a82bd449e341b27a50 ******/
+		%feature("compactdefaultargs") ComputeRound;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a round (fillet) relation presentation for the given constraint. 
+Input parameter: aConst the round constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeRound;
+		static opencascade::handle<AIS_InteractiveObject> ComputeRound(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeRound ******/
 		/****** md5 signature: 71bc32e420d344172b15e2c0ec9329ed ******/
 		%feature("compactdefaultargs") ComputeRound;
 		%feature("autodoc", "
@@ -1587,6 +1969,26 @@ Description
 No available documentation.
 ") ComputeRound;
 		static void ComputeRound(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
+
+		/****** TPrsStd_ConstraintTools::ComputeSymmetry ******/
+		/****** md5 signature: 47547c35ecda3aee7bbc88849d7f280d ******/
+		%feature("compactdefaultargs") ComputeSymmetry;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a symmetry relation presentation for the given constraint. 
+Input parameter: aConst the symmetry constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeSymmetry;
+		static opencascade::handle<AIS_InteractiveObject> ComputeSymmetry(const opencascade::handle<TDataXtd_Constraint> & aConst);
 
 		/****** TPrsStd_ConstraintTools::ComputeSymmetry ******/
 		/****** md5 signature: 42eaef94a5b35e9daccb9965e0426d1d ******/
@@ -1608,6 +2010,26 @@ No available documentation.
 		static void ComputeSymmetry(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeTangent ******/
+		/****** md5 signature: 08d75ecaa3d8b0183d4f886fe128c709 ******/
+		%feature("compactdefaultargs") ComputeTangent;
+		%feature("autodoc", "
+Parameters
+----------
+aConst: TDataXtd_Constraint
+
+Return
+-------
+opencascade::handle<AIS_InteractiveObject>
+
+Description
+-----------
+Computes a tangent relation presentation for the given constraint. 
+Input parameter: aConst the tangent constraint 
+Return: interactive object representing the relation, or null handle on failure.
+") ComputeTangent;
+		static opencascade::handle<AIS_InteractiveObject> ComputeTangent(const opencascade::handle<TDataXtd_Constraint> & aConst);
+
+		/****** TPrsStd_ConstraintTools::ComputeTangent ******/
 		/****** md5 signature: 21be43c81a841be3bb1136b94f215e70 ******/
 		%feature("compactdefaultargs") ComputeTangent;
 		%feature("autodoc", "
@@ -1627,7 +2049,7 @@ No available documentation.
 		static void ComputeTangent(const opencascade::handle<TDataXtd_Constraint> & aConst, opencascade::handle<AIS_InteractiveObject> & anAIS);
 
 		/****** TPrsStd_ConstraintTools::ComputeTextAndValue ******/
-		/****** md5 signature: 0c43116aea6ab0f468267e73e2e15e52 ******/
+		/****** md5 signature: e0c6d2fde9d3c5132f71fdea94c628de ******/
 		%feature("compactdefaultargs") ComputeTextAndValue;
 		%feature("autodoc", "
 Parameters
@@ -1638,13 +2060,13 @@ anIsAngle: bool
 
 Return
 -------
-aValue: float
+aValue: double
 
 Description
 -----------
 No available documentation.
 ") ComputeTextAndValue;
-		static void ComputeTextAndValue(const opencascade::handle<TDataXtd_Constraint> & aConst, Standard_Real &OutValue, TCollection_ExtendedString & aText, const Standard_Boolean anIsAngle);
+		static void ComputeTextAndValue(const opencascade::handle<TDataXtd_Constraint> & aConst, Standard_Real &OutValue, TCollection_ExtendedString & aText, const bool anIsAngle);
 
 		/****** TPrsStd_ConstraintTools::UpdateOnlyValue ******/
 		/****** md5 signature: 441dd794ab0d41cca58389eb5551e4e1 ******/
@@ -1681,7 +2103,7 @@ No available documentation.
 class TPrsStd_Driver : public Standard_Transient {
 	public:
 		/****** TPrsStd_Driver::Update ******/
-		/****** md5 signature: 720e2b3214e2c09b74b7b798929d7b2d ******/
+		/****** md5 signature: 7868e5011b04f0342d55b95768c059c9 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -1697,7 +2119,7 @@ Description
 -----------
 Updates the interactive object ais with information found on the attributes associated with the label L.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & L, opencascade::handle<AIS_InteractiveObject> & ais);
+		virtual bool Update(const TDF_Label & L, opencascade::handle<AIS_InteractiveObject> & ais);
 
 };
 
@@ -1729,7 +2151,7 @@ Default constructor.
 		 TPrsStd_DriverTable();
 
 		/****** TPrsStd_DriverTable::AddDriver ******/
-		/****** md5 signature: 57e848877c1d0ed6597591e008e61fa4 ******/
+		/****** md5 signature: 2ab53bd13aa4d824cb9b06ddaec85847 ******/
 		%feature("compactdefaultargs") AddDriver;
 		%feature("autodoc", "
 Parameters
@@ -1745,7 +2167,7 @@ Description
 -----------
 Returns true if the driver has been added successfully to the driver table.
 ") AddDriver;
-		Standard_Boolean AddDriver(const Standard_GUID & guid, const opencascade::handle<TPrsStd_Driver> & driver);
+		bool AddDriver(const Standard_GUID & guid, const opencascade::handle<TPrsStd_Driver> & driver);
 
 		/****** TPrsStd_DriverTable::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -1761,7 +2183,7 @@ Removes all drivers. Returns true if the driver has been removed successfully. I
 		void Clear();
 
 		/****** TPrsStd_DriverTable::FindDriver ******/
-		/****** md5 signature: 4e7ae7b98710978e1e2171f74063de42 ******/
+		/****** md5 signature: 51f236f3a7a28b12736ba95d630e2aca ******/
 		%feature("compactdefaultargs") FindDriver;
 		%feature("autodoc", "
 Parameters
@@ -1777,7 +2199,7 @@ Description
 -----------
 Returns true if the driver was found.
 ") FindDriver;
-		Standard_Boolean FindDriver(const Standard_GUID & guid, opencascade::handle<TPrsStd_Driver> & driver);
+		bool FindDriver(const Standard_GUID & guid, opencascade::handle<TPrsStd_Driver> & driver);
 
 		/****** TPrsStd_DriverTable::Get ******/
 		/****** md5 signature: 4be723023d932da875065f65ed8d27cd ******/
@@ -1806,7 +2228,7 @@ Fills the table with standard drivers.
 		void InitStandardDrivers();
 
 		/****** TPrsStd_DriverTable::RemoveDriver ******/
-		/****** md5 signature: 8877282d0bd047f322a30e981554f7e7 ******/
+		/****** md5 signature: d834e0a7bc48bfc7a501e2250cf58956 ******/
 		%feature("compactdefaultargs") RemoveDriver;
 		%feature("autodoc", "
 Parameters
@@ -1821,7 +2243,7 @@ Description
 -----------
 Removes a driver with the given GUID. Returns true if the driver has been removed successfully.
 ") RemoveDriver;
-		Standard_Boolean RemoveDriver(const Standard_GUID & guid);
+		bool RemoveDriver(const Standard_GUID & guid);
 
 };
 
@@ -1853,7 +2275,7 @@ Constructs an empty axis driver.
 		 TPrsStd_AxisDriver();
 
 		/****** TPrsStd_AxisDriver::Update ******/
-		/****** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ******/
+		/****** md5 signature: f21a406cfed5e6efa9471b32889e0a50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -1869,7 +2291,7 @@ Description
 -----------
 Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
+		bool Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
 };
 
@@ -1901,7 +2323,7 @@ Constructs an empty constraint driver.
 		 TPrsStd_ConstraintDriver();
 
 		/****** TPrsStd_ConstraintDriver::Update ******/
-		/****** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ******/
+		/****** md5 signature: f21a406cfed5e6efa9471b32889e0a50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -1917,7 +2339,7 @@ Description
 -----------
 Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
+		bool Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
 };
 
@@ -1949,7 +2371,7 @@ Constructs an empty geometry driver.
 		 TPrsStd_GeometryDriver();
 
 		/****** TPrsStd_GeometryDriver::Update ******/
-		/****** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ******/
+		/****** md5 signature: f21a406cfed5e6efa9471b32889e0a50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -1965,7 +2387,7 @@ Description
 -----------
 Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
+		bool Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
 };
 
@@ -1997,7 +2419,7 @@ Constructs an empty named shape driver.
 		 TPrsStd_NamedShapeDriver();
 
 		/****** TPrsStd_NamedShapeDriver::Update ******/
-		/****** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ******/
+		/****** md5 signature: f21a406cfed5e6efa9471b32889e0a50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2013,7 +2435,7 @@ Description
 -----------
 Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
+		bool Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
 };
 
@@ -2045,7 +2467,7 @@ Constructs an empty plane driver.
 		 TPrsStd_PlaneDriver();
 
 		/****** TPrsStd_PlaneDriver::Update ******/
-		/****** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ******/
+		/****** md5 signature: f21a406cfed5e6efa9471b32889e0a50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2061,7 +2483,7 @@ Description
 -----------
 Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
+		bool Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
 };
 
@@ -2093,7 +2515,7 @@ Constructs an empty point driver.
 		 TPrsStd_PointDriver();
 
 		/****** TPrsStd_PointDriver::Update ******/
-		/****** md5 signature: a11e01f0b3cebd7e8f78a1af4a13714a ******/
+		/****** md5 signature: f21a406cfed5e6efa9471b32889e0a50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2109,7 +2531,7 @@ Description
 -----------
 Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
-		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
+		bool Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
 };
 
@@ -2183,8 +2605,20 @@ def TPrsStd_ConstraintTools_ComputeAngle(*args):
 	return TPrsStd_ConstraintTools.ComputeAngle(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputeAngle(*args):
+	return TPrsStd_ConstraintTools.ComputeAngle(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputeAngleForOneFace(*args):
 	return TPrsStd_ConstraintTools.ComputeAngleForOneFace(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeAngleForOneFace(*args):
+	return TPrsStd_ConstraintTools.ComputeAngleForOneFace(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeCoincident(*args):
+	return TPrsStd_ConstraintTools.ComputeCoincident(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeCoincident(*args):
@@ -2195,8 +2629,20 @@ def TPrsStd_ConstraintTools_ComputeConcentric(*args):
 	return TPrsStd_ConstraintTools.ComputeConcentric(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputeConcentric(*args):
+	return TPrsStd_ConstraintTools.ComputeConcentric(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputeDiameter(*args):
 	return TPrsStd_ConstraintTools.ComputeDiameter(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeDiameter(*args):
+	return TPrsStd_ConstraintTools.ComputeDiameter(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeDistance(*args):
+	return TPrsStd_ConstraintTools.ComputeDistance(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeDistance(*args):
@@ -2207,8 +2653,20 @@ def TPrsStd_ConstraintTools_ComputeEqualDistance(*args):
 	return TPrsStd_ConstraintTools.ComputeEqualDistance(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputeEqualDistance(*args):
+	return TPrsStd_ConstraintTools.ComputeEqualDistance(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputeEqualRadius(*args):
 	return TPrsStd_ConstraintTools.ComputeEqualRadius(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeEqualRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeEqualRadius(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeFix(*args):
+	return TPrsStd_ConstraintTools.ComputeFix(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeFix(*args):
@@ -2219,8 +2677,20 @@ def TPrsStd_ConstraintTools_ComputeMaxRadius(*args):
 	return TPrsStd_ConstraintTools.ComputeMaxRadius(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputeMaxRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeMaxRadius(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputeMidPoint(*args):
 	return TPrsStd_ConstraintTools.ComputeMidPoint(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeMidPoint(*args):
+	return TPrsStd_ConstraintTools.ComputeMidPoint(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeMinRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeMinRadius(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeMinRadius(*args):
@@ -2231,8 +2701,20 @@ def TPrsStd_ConstraintTools_ComputeOffset(*args):
 	return TPrsStd_ConstraintTools.ComputeOffset(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputeOffset(*args):
+	return TPrsStd_ConstraintTools.ComputeOffset(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputeOthers(*args):
 	return TPrsStd_ConstraintTools.ComputeOthers(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeOthers(*args):
+	return TPrsStd_ConstraintTools.ComputeOthers(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeParallel(*args):
+	return TPrsStd_ConstraintTools.ComputeParallel(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeParallel(*args):
@@ -2243,8 +2725,20 @@ def TPrsStd_ConstraintTools_ComputePerpendicular(*args):
 	return TPrsStd_ConstraintTools.ComputePerpendicular(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputePerpendicular(*args):
+	return TPrsStd_ConstraintTools.ComputePerpendicular(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputePlacement(*args):
 	return TPrsStd_ConstraintTools.ComputePlacement(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputePlacement(*args):
+	return TPrsStd_ConstraintTools.ComputePlacement(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeRadius(*args):
+	return TPrsStd_ConstraintTools.ComputeRadius(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeRadius(*args):
@@ -2255,8 +2749,20 @@ def TPrsStd_ConstraintTools_ComputeRound(*args):
 	return TPrsStd_ConstraintTools.ComputeRound(*args)
 
 @deprecated
+def TPrsStd_ConstraintTools_ComputeRound(*args):
+	return TPrsStd_ConstraintTools.ComputeRound(*args)
+
+@deprecated
 def TPrsStd_ConstraintTools_ComputeSymmetry(*args):
 	return TPrsStd_ConstraintTools.ComputeSymmetry(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeSymmetry(*args):
+	return TPrsStd_ConstraintTools.ComputeSymmetry(*args)
+
+@deprecated
+def TPrsStd_ConstraintTools_ComputeTangent(*args):
+	return TPrsStd_ConstraintTools.ComputeTangent(*args)
 
 @deprecated
 def TPrsStd_ConstraintTools_ComputeTangent(*args):

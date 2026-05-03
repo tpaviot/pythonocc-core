@@ -1,4 +1,5 @@
 #include "MeshDataSource.h"
+#include <Poly_Array1OfTriangle.hxx>
 
 
 IMPLEMENT_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)

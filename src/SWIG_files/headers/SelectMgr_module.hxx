@@ -33,8 +33,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SelectMgr_Frustum.hxx>
 #include<SelectMgr_FrustumBuilder.hxx>
 #include<SelectMgr_IndexedDataMapOfOwnerCriterion.hxx>
-#include<SelectMgr_IndexedMapOfOwner.hxx>
-#include<SelectMgr_ListIteratorOfListOfFilter.hxx>
 #include<SelectMgr_ListOfFilter.hxx>
 #include<SelectMgr_OrFilter.hxx>
 #include<SelectMgr_PickingStrategy.hxx>
@@ -48,7 +46,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SelectMgr_SelectionType.hxx>
 #include<SelectMgr_SensitiveEntity.hxx>
 #include<SelectMgr_SensitiveEntitySet.hxx>
-#include<SelectMgr_SequenceOfOwner.hxx>
 #include<SelectMgr_SequenceOfSelection.hxx>
 #include<SelectMgr_SortCriterion.hxx>
 #include<SelectMgr_StateOfSelection.hxx>
@@ -61,6 +58,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<SelectMgr_VectorTypes.hxx>
 #include<SelectMgr_ViewClipRange.hxx>
 #include<SelectMgr_ViewerSelector.hxx>
-#include<SelectMgr_ViewerSelector3d.hxx>
 
 #endif // SELECTMGR_HXX

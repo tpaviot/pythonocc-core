@@ -22,10 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MoniTool_AttrList.hxx>
 #include<MoniTool_CaseData.hxx>
 #include<MoniTool_DataInfo.hxx>
-#include<MoniTool_DataMapIteratorOfDataMapOfShapeTransient.hxx>
-#include<MoniTool_DataMapIteratorOfDataMapOfTimer.hxx>
 #include<MoniTool_DataMapOfShapeTransient.hxx>
-#include<MoniTool_DataMapOfTimer.hxx>
 #include<MoniTool_Element.hxx>
 #include<MoniTool_HSequenceOfElement.hxx>
 #include<MoniTool_IndexedDataMapOfShapeTransient.hxx>

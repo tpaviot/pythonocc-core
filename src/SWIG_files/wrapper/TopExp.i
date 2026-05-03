@@ -46,7 +46,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topexp.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColgp_module.hxx>
@@ -58,7 +57,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topexp.html"
 %import NCollection.i
 %import TopoDS.i
 %import TopAbs.i
-%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -80,7 +78,6 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef TopoDS_Iterator * TopExp_Stack;
 /* end typedefs declaration */
 
 /***************
@@ -90,7 +87,7 @@ typedef TopoDS_Iterator * TopExp_Stack;
 class TopExp {
 	public:
 		/****** TopExp::CommonVertex ******/
-		/****** md5 signature: 988ba28b6b8eed9cf889373017dc105e ******/
+		/****** md5 signature: b2d616acf18e92098bcc45a6ac915bdb ******/
 		%feature("compactdefaultargs") CommonVertex;
 		%feature("autodoc", "
 Parameters
@@ -107,16 +104,16 @@ Description
 -----------
 Finds the vertex <V> common to the two edges <E1,E2>, returns True if this vertex exists. //! Warning: <V> has sense only if the value <True> is returned.
 ") CommonVertex;
-		static Standard_Boolean CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
+		static bool CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
 
 		/****** TopExp::FirstVertex ******/
-		/****** md5 signature: 1e3a778db1d24724585ef762df35b8da ******/
+		/****** md5 signature: a27cd0ee4cd6e22ffdec08f53c747cfb ******/
 		%feature("compactdefaultargs") FirstVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-CumOri: bool (optional, default to Standard_False)
+CumOri: bool (optional, default to false)
 
 Return
 -------
@@ -126,16 +123,16 @@ Description
 -----------
 Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True: taking account the edge orientation.
 ") FirstVertex;
-		static TopoDS_Vertex FirstVertex(const TopoDS_Edge & E, const Standard_Boolean CumOri = Standard_False);
+		static TopoDS_Vertex FirstVertex(const TopoDS_Edge & E, const bool CumOri = false);
 
 		/****** TopExp::LastVertex ******/
-		/****** md5 signature: 04fb60a9260731d34a4cd1067f86b9c3 ******/
+		/****** md5 signature: ecfcf6f0fe0dfd98e6de2b19e2419ef2 ******/
 		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
-CumOri: bool (optional, default to Standard_False)
+CumOri: bool (optional, default to false)
 
 Return
 -------
@@ -145,17 +142,17 @@ Description
 -----------
 Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True: taking account the edge orientation.
 ") LastVertex;
-		static TopoDS_Vertex LastVertex(const TopoDS_Edge & E, const Standard_Boolean CumOri = Standard_False);
+		static TopoDS_Vertex LastVertex(const TopoDS_Edge & E, const bool CumOri = false);
 
 		/****** TopExp::MapShapes ******/
-		/****** md5 signature: 60bc2b4e0c9273357852c8e9beffdff3 ******/
+		/****** md5 signature: 232f88a4353691c6ff7f42467efe181f ******/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 T: TopAbs_ShapeEnum
-M: TopTools_IndexedMapOfShape
+M: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -165,18 +162,18 @@ Description
 -----------
 Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. //! Warning: The map is not cleared at first.
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_IndexedMapOfShape & M);
+		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & M);
 
 		/****** TopExp::MapShapes ******/
-		/****** md5 signature: 8ad4c7fd7687fc41855cb624a1a10e23 ******/
+		/****** md5 signature: e87fceb10f122442ce7f316a2f651ed6 ******/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-M: TopTools_IndexedMapOfShape
-cumOri: bool (optional, default to Standard_True)
-cumLoc: bool (optional, default to Standard_True)
+M: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+cumOri: bool (optional, default to true)
+cumLoc: bool (optional, default to true)
 
 Return
 -------
@@ -186,18 +183,18 @@ Description
 -----------
 Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
+		static void MapShapes(const TopoDS_Shape & S, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & M, const bool cumOri = true, const bool cumLoc = true);
 
 		/****** TopExp::MapShapes ******/
-		/****** md5 signature: 59a69a04bbcca596c45fa1794e17b17f ******/
+		/****** md5 signature: 54461abff8970b5369a66b4b10cead24 ******/
 		%feature("compactdefaultargs") MapShapes;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-M: TopTools_MapOfShape
-cumOri: bool (optional, default to Standard_True)
-cumLoc: bool (optional, default to Standard_True)
+M: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+cumOri: bool (optional, default to true)
+cumLoc: bool (optional, default to true)
 
 Return
 -------
@@ -207,10 +204,10 @@ Description
 -----------
 Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
+		static void MapShapes(const TopoDS_Shape & S, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & M, const bool cumOri = true, const bool cumLoc = true);
 
 		/****** TopExp::MapShapesAndAncestors ******/
-		/****** md5 signature: fc7e7494ab1de4025c967815075492e6 ******/
+		/****** md5 signature: 04775f83ab3c092d3ef5a22177f3a2d7 ******/
 		%feature("compactdefaultargs") MapShapesAndAncestors;
 		%feature("autodoc", "
 Parameters
@@ -218,7 +215,7 @@ Parameters
 S: TopoDS_Shape
 TS: TopAbs_ShapeEnum
 TA: TopAbs_ShapeEnum
-M: TopTools_IndexedDataMapOfShapeListOfShape
+M: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -228,10 +225,10 @@ Description
 -----------
 Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all the ancestors of type <TA>. For example map all the edges and bind the list of faces. Warning: The map is not cleared at first.
 ") MapShapesAndAncestors;
-		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
+		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & M);
 
 		/****** TopExp::MapShapesAndUniqueAncestors ******/
-		/****** md5 signature: f94b9653fca47c3f0b754b8acac0dde2 ******/
+		/****** md5 signature: 5ad650b8dce752bf3f852cf0244504f1 ******/
 		%feature("compactdefaultargs") MapShapesAndUniqueAncestors;
 		%feature("autodoc", "
 Parameters
@@ -239,8 +236,8 @@ Parameters
 S: TopoDS_Shape
 TS: TopAbs_ShapeEnum
 TA: TopAbs_ShapeEnum
-M: TopTools_IndexedDataMapOfShapeListOfShape
-useOrientation: bool (optional, default to Standard_False)
+M: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+useOrientation: bool (optional, default to false)
 
 Return
 -------
@@ -250,10 +247,10 @@ Description
 -----------
 Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all unique ancestors of type <TA>. For example map all the edges and bind the list of faces. useOrientation = True: taking account the ancestor orientation Warning: The map is not cleared at first.
 ") MapShapesAndUniqueAncestors;
-		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M, const Standard_Boolean useOrientation = Standard_False);
+		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & M, const bool useOrientation = false);
 
 		/****** TopExp::Vertices ******/
-		/****** md5 signature: a72e80c884bcaa3dda22157f5840ea7b ******/
+		/****** md5 signature: 687235d5961956945ebea91caec3f037 ******/
 		%feature("compactdefaultargs") Vertices;
 		%feature("autodoc", "
 Parameters
@@ -261,7 +258,7 @@ Parameters
 E: TopoDS_Edge
 Vfirst: TopoDS_Vertex
 Vlast: TopoDS_Vertex
-CumOri: bool (optional, default to Standard_False)
+CumOri: bool (optional, default to false)
 
 Return
 -------
@@ -271,7 +268,7 @@ Description
 -----------
 Returns in Vfirst, Vlast the FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True: taking account the edge orientation.
 ") Vertices;
-		static void Vertices(const TopoDS_Edge & E, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast, const Standard_Boolean CumOri = Standard_False);
+		static void Vertices(const TopoDS_Edge & E, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast, const bool CumOri = false);
 
 		/****** TopExp::Vertices ******/
 		/****** md5 signature: 859807e2bbe069634fa97df162545baa ******/
@@ -308,7 +305,7 @@ Returns in Vfirst, Vlast the first and last vertices of the open wire <W>. May b
 class TopExp_Explorer {
 	public:
 		/****** TopExp_Explorer::TopExp_Explorer ******/
-		/****** md5 signature: 114ebc7b26413ef0fdc8ef82c2742207 ******/
+		/****** md5 signature: 3c2ab107cc05f62a0c3a770dcb1d6949 ******/
 		%feature("compactdefaultargs") TopExp_Explorer;
 		%feature("autodoc", "Return
 -------
@@ -349,12 +346,12 @@ None
 
 Description
 -----------
-Clears the content of the explorer. It will return False on More().
+Clears the content of the explorer.
 ") Clear;
 		void Clear();
 
 		/****** TopExp_Explorer::Current ******/
-		/****** md5 signature: b191bf677bf7b52144f20d0821ea8f06 ******/
+		/****** md5 signature: b1c5fbfd66df6b9beb0e243bbc91e1a9 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -362,12 +359,12 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
+Returns the current shape in the exploration.
 ") Current;
 		const TopoDS_Shape Current();
 
 		/****** TopExp_Explorer::Depth ******/
-		/****** md5 signature: c4b1854410c3a66cc10b6255dc50b8fa ******/
+		/****** md5 signature: 4b21bbdc4f77c2ab08adb592aa31ad1c ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
@@ -377,10 +374,10 @@ Description
 -----------
 Returns the current depth of the exploration. 0 is the shape to explore itself.
 ") Depth;
-		Standard_Integer Depth();
+		int Depth();
 
 		/****** TopExp_Explorer::ExploredShape ******/
-		/****** md5 signature: c8a47d07240c1a2b5ff731be2f859ced ******/
+		/****** md5 signature: 8c3be2cc14de692403f8ff6c25160102 ******/
 		%feature("compactdefaultargs") ExploredShape;
 		%feature("autodoc", "Return
 -------
@@ -413,7 +410,7 @@ Resets this explorer on the shape S. It is initialized to search the shape S, fo
 		void Init(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
 		/****** TopExp_Explorer::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 9e74877ec9fa81689f1de8f969e60d39 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -423,7 +420,7 @@ Description
 -----------
 Returns True if there are more shapes in the exploration.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopExp_Explorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -434,12 +431,12 @@ None
 
 Description
 -----------
-Moves to the next Shape in the exploration. Exceptions Standard_NoMoreObject if there are no more shapes to explore.
+Moves to the next Shape in the exploration.
 ") Next;
 		void Next();
 
 		/****** TopExp_Explorer::ReInit ******/
-		/****** md5 signature: fcda78d8b1268862e93fbb2cf6a2a652 ******/
+		/****** md5 signature: 923302b2f039ea37069791a099bcfb28 ******/
 		%feature("compactdefaultargs") ReInit;
 		%feature("autodoc", "Return
 -------
@@ -452,7 +449,7 @@ Reinitialize the exploration with the original arguments.
 		void ReInit();
 
 		/****** TopExp_Explorer::Value ******/
-		/****** md5 signature: ebbff234a3094c505e960926e0773ed1 ******/
+		/****** md5 signature: 6face30063fb4e00301749d9a7d6615b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -460,9 +457,35 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
+Returns the current shape in the exploration.
 ") Value;
 		const TopoDS_Shape Value();
+
+		/****** TopExp_Explorer::begin ******/
+		/****** md5 signature: a3db3837f23df2ff40eb5781202342f2 ******/
+		%feature("compactdefaultargs") begin;
+		%feature("autodoc", "Return
+-------
+NCollection_ForwardRangeIterator<TopExp_Explorer >
+
+Description
+-----------
+Returns an STL-compatible iterator for range-based for loops. @warning Do not call Next() or Init() externally during range-for iteration.
+") begin;
+		NCollection_ForwardRangeIterator<TopExp_Explorer > begin();
+
+		/****** TopExp_Explorer::end ******/
+		/****** md5 signature: 4edef9faa595e2b9527109cc32e6ec32 ******/
+		%feature("compactdefaultargs") end;
+		%feature("autodoc", "Return
+-------
+NCollection_ForwardRangeSentinel
+
+Description
+-----------
+Returns a sentinel marking the end of iteration.
+") end;
+		NCollection_ForwardRangeSentinel end();
 
 };
 

@@ -96,13 +96,13 @@ from OCC.Core.Exception import *
 class Bisector {
 	public:
 		/****** Bisector::IsConvex ******/
-		/****** md5 signature: 0ba18f6d8c98db36f20014c406307bc3 ******/
+		/****** md5 signature: ef1b51cd2f0bdb2f39ef5776bd234202 ******/
 		%feature("compactdefaultargs") IsConvex;
 		%feature("autodoc", "
 Parameters
 ----------
 Cu: Geom2d_Curve
-Sign: float
+Sign: double
 
 Return
 -------
@@ -112,7 +112,7 @@ Description
 -----------
 No available documentation.
 ") IsConvex;
-		static Standard_Boolean IsConvex(const opencascade::handle<Geom2d_Curve> & Cu, const Standard_Real Sign);
+		static bool IsConvex(const opencascade::handle<Geom2d_Curve> & Cu, const double Sign);
 
 };
 
@@ -155,7 +155,7 @@ Returns the Curve of <self>.
 		const opencascade::handle<Geom2d_TrimmedCurve> & ChangeValue();
 
 		/****** Bisector_Bisec::Perform ******/
-		/****** md5 signature: 984dc45433ffefb0966e208c47581a11 ******/
+		/****** md5 signature: 70fea80849d2cd56acb33dcd47d16670 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -165,10 +165,10 @@ Cu2: Geom2d_Curve
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
+Sense: double
 ajointype: GeomAbs_JoinType
-Tolerance: float
-oncurve: bool (optional, default to Standard_True)
+Tolerance: double
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -178,10 +178,10 @@ Description
 -----------
 Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const GeomAbs_JoinType ajointype, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const GeomAbs_JoinType ajointype, const double Tolerance, const bool oncurve = true);
 
 		/****** Bisector_Bisec::Perform ******/
-		/****** md5 signature: db93a55a64615589c218fc350bd5fc5b ******/
+		/****** md5 signature: 20f45a1530f2ab0b313c9c963fcff4c6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -191,9 +191,9 @@ Pnt: Geom2d_Point
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
-Tolerance: float
-oncurve: bool (optional, default to Standard_True)
+Sense: double
+Tolerance: double
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -203,10 +203,10 @@ Description
 -----------
 Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const opencascade::handle<Geom2d_Point> & Pnt, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const opencascade::handle<Geom2d_Point> & Pnt, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const double Tolerance, const bool oncurve = true);
 
 		/****** Bisector_Bisec::Perform ******/
-		/****** md5 signature: 4bc1957ebd7bba22e94551f1f80cb51e ******/
+		/****** md5 signature: b9236c163bc170a7b056320452f57dc2 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -216,9 +216,9 @@ Cu: Geom2d_Curve
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
-Tolerance: float
-oncurve: bool (optional, default to Standard_True)
+Sense: double
+Tolerance: double
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -228,10 +228,10 @@ Description
 -----------
 Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Point> & Pnt, const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Point> & Pnt, const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const double Tolerance, const bool oncurve = true);
 
 		/****** Bisector_Bisec::Perform ******/
-		/****** md5 signature: b02fc98be2a333e2fd00a9e617d3c1ab ******/
+		/****** md5 signature: 5261f4895bba68019db3e1ff26bd8bbe ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -241,9 +241,9 @@ Pnt2: Geom2d_Point
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
-Tolerance: float (optional, default to 0.0)
-oncurve: bool (optional, default to Standard_True)
+Sense: double
+Tolerance: double (optional, default to 0.0)
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -253,7 +253,7 @@ Description
 -----------
 Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Point> & Pnt1, const opencascade::handle<Geom2d_Point> & Pnt2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance = 0.0, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Point> & Pnt1, const opencascade::handle<Geom2d_Point> & Pnt2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const double Tolerance = 0.0, const bool oncurve = true);
 
 		/****** Bisector_Bisec::Value ******/
 		/****** md5 signature: c4acd9e5da9de118f672d33c6f39b3b0 ******/
@@ -284,7 +284,7 @@ Returns the Curve of <self>.
 class Bisector_Curve : public Geom2d_Curve {
 	public:
 		/****** Bisector_Curve::IntervalFirst ******/
-		/****** md5 signature: 2b1fbcfb5912e085014bff551ebfdd6c ******/
+		/****** md5 signature: 99655552b7b62c29e80f640aa19081ce ******/
 		%feature("compactdefaultargs") IntervalFirst;
 		%feature("autodoc", "
 Parameters
@@ -293,16 +293,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the current interval.
 ") IntervalFirst;
-		virtual Standard_Real IntervalFirst(const Standard_Integer Index);
+		virtual double IntervalFirst(const int Index);
 
 		/****** Bisector_Curve::IntervalLast ******/
-		/****** md5 signature: 8f41fb764bd83da682ac5f5e51609adc ******/
+		/****** md5 signature: 56d5c069007d30a03e949764a72e378f ******/
 		%feature("compactdefaultargs") IntervalLast;
 		%feature("autodoc", "
 Parameters
@@ -311,16 +311,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the current interval.
 ") IntervalLast;
-		virtual Standard_Real IntervalLast(const Standard_Integer Index);
+		virtual double IntervalLast(const int Index);
 
 		/****** Bisector_Curve::IsExtendAtEnd ******/
-		/****** md5 signature: fa46f2fc7438d2dbbba638e12e43145a ******/
+		/****** md5 signature: 8d9a64697ea335e8c2213dcc746aa6cb ******/
 		%feature("compactdefaultargs") IsExtendAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -330,10 +330,10 @@ Description
 -----------
 No available documentation.
 ") IsExtendAtEnd;
-		virtual Standard_Boolean IsExtendAtEnd();
+		virtual bool IsExtendAtEnd();
 
 		/****** Bisector_Curve::IsExtendAtStart ******/
-		/****** md5 signature: ff6f36b43fadbce1828324c35610c78a ******/
+		/****** md5 signature: ec8b34296bb245ae693d3da5449ef9e8 ******/
 		%feature("compactdefaultargs") IsExtendAtStart;
 		%feature("autodoc", "Return
 -------
@@ -343,10 +343,10 @@ Description
 -----------
 No available documentation.
 ") IsExtendAtStart;
-		virtual Standard_Boolean IsExtendAtStart();
+		virtual bool IsExtendAtStart();
 
 		/****** Bisector_Curve::NbIntervals ******/
-		/****** md5 signature: 7f7a34c736f32157e63c4165aa9e9fa0 ******/
+		/****** md5 signature: d3bf3d684887aead8770e729a42dcaf2 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -356,10 +356,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
-		virtual Standard_Integer NbIntervals();
+		virtual int NbIntervals();
 
 		/****** Bisector_Curve::Parameter ******/
-		/****** md5 signature: 5ff4365826d38eeef8b73494499ec484 ******/
+		/****** md5 signature: 2d52d0e66493fe9cd350f91c32316d8a ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -368,13 +368,13 @@ P: gp_Pnt2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		virtual Standard_Real Parameter(const gp_Pnt2d & P);
+		virtual double Parameter(const gp_Pnt2d & P);
 
 };
 
@@ -413,59 +413,59 @@ No available documentation.
 		 Bisector_FunctionH(const opencascade::handle<Geom2d_Curve> & C2, const gp_Pnt2d & P1, const gp_Vec2d & T1);
 
 		/****** Bisector_FunctionH::Derivative ******/
-		/****** md5 signature: 95e91729f1fb548d9a62f690b302c323 ******/
+		/****** md5 signature: 5b661e723f14c67a734d7bc68bb6cabf ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 No available documentation.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
+		bool Derivative(const double X, Standard_Real &OutValue);
 
 		/****** Bisector_FunctionH::Value ******/
-		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
+		/****** md5 signature: 2fdd0f48acb4882f76bbbe432a18ac3a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 Computes the values of the Functions for the variable <X>.
 ") Value;
-		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
+		bool Value(const double X, Standard_Real &OutValue);
 
 		/****** Bisector_FunctionH::Values ******/
-		/****** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ******/
+		/****** md5 signature: 44ea1ebbd1c996779e93f28435817e28 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 Returns the values of the functions and the derivatives for the variable <X>.
 ") Values;
-		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double X, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -515,22 +515,22 @@ No available documentation.
 		 Bisector_FunctionInter(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Bisector_Curve> & Bis1, const opencascade::handle<Bisector_Curve> & Bis2);
 
 		/****** Bisector_FunctionInter::Derivative ******/
-		/****** md5 signature: 95e91729f1fb548d9a62f690b302c323 ******/
+		/****** md5 signature: 5b661e723f14c67a734d7bc68bb6cabf ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 No available documentation.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
+		bool Derivative(const double X, Standard_Real &OutValue);
 
 		/****** Bisector_FunctionInter::Perform ******/
 		/****** md5 signature: 46929876b3eebbfdf786161335a7b2c9 ******/
@@ -553,41 +553,41 @@ No available documentation.
 		void Perform(const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Bisector_Curve> & Bis1, const opencascade::handle<Bisector_Curve> & Bis2);
 
 		/****** Bisector_FunctionInter::Value ******/
-		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
+		/****** md5 signature: 2fdd0f48acb4882f76bbbe432a18ac3a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 Computes the values of the Functions for the variable <X>.
 ") Value;
-		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
+		bool Value(const double X, Standard_Real &OutValue);
 
 		/****** Bisector_FunctionInter::Values ******/
-		/****** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ******/
+		/****** md5 signature: 44ea1ebbd1c996779e93f28435817e28 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 Returns the values of the functions and the derivatives for the variable <X>.
 ") Values;
-		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double X, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -617,7 +617,7 @@ No available documentation.
 		 Bisector_Inter();
 
 		/****** Bisector_Inter::Bisector_Inter ******/
-		/****** md5 signature: aaeff3d8c72f22edd80968b7ffad5355 ******/
+		/****** md5 signature: 9dee11125fdd245a200954f9a614f36f ******/
 		%feature("compactdefaultargs") Bisector_Inter;
 		%feature("autodoc", "
 Parameters
@@ -626,8 +626,8 @@ C1: Bisector_Bisec
 D1: IntRes2d_Domain
 C2: Bisector_Bisec
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 ComunElement: bool
 
 Return
@@ -638,10 +638,10 @@ Description
 -----------
 Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. <ComunElement> Has to be True. It Permits an optimization of the computation.
 ") Bisector_Inter;
-		 Bisector_Inter(const Bisector_Bisec & C1, const IntRes2d_Domain & D1, const Bisector_Bisec & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean ComunElement);
+		 Bisector_Inter(const Bisector_Bisec & C1, const IntRes2d_Domain & D1, const Bisector_Bisec & C2, const IntRes2d_Domain & D2, const double TolConf, const double Tol, const bool ComunElement);
 
 		/****** Bisector_Inter::Perform ******/
-		/****** md5 signature: ddbb1551e9c7cf37d31b930e3241d583 ******/
+		/****** md5 signature: 4a1f73534672cede01c1d4601629c0dc ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -650,8 +650,8 @@ C1: Bisector_Bisec
 D1: IntRes2d_Domain
 C2: Bisector_Bisec
 D2: IntRes2d_Domain
-TolConf: float
-Tol: float
+TolConf: double
+Tol: double
 ComunElement: bool
 
 Return
@@ -662,7 +662,7 @@ Description
 -----------
 Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. <ComunElement> Has to be True. It Permits an optimization of the computation.
 ") Perform;
-		void Perform(const Bisector_Bisec & C1, const IntRes2d_Domain & D1, const Bisector_Bisec & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean ComunElement);
+		void Perform(const Bisector_Bisec & C1, const IntRes2d_Domain & D1, const Bisector_Bisec & C2, const IntRes2d_Domain & D2, const double TolConf, const double Tol, const bool ComunElement);
 
 };
 
@@ -692,15 +692,15 @@ No available documentation.
 		 Bisector_PointOnBis();
 
 		/****** Bisector_PointOnBis::Bisector_PointOnBis ******/
-		/****** md5 signature: d20ced0f8cc3f3d622bc9e548bd213fe ******/
+		/****** md5 signature: 08905c373fdb669d3c8a363fbfad08e2 ******/
 		%feature("compactdefaultargs") Bisector_PointOnBis;
 		%feature("autodoc", "
 Parameters
 ----------
-Param1: float
-Param2: float
-ParamBis: float
-Distance: float
+Param1: double
+Param2: double
+ParamBis: double
+Distance: double
 Point: gp_Pnt2d
 
 Return
@@ -711,15 +711,15 @@ Description
 -----------
 No available documentation.
 ") Bisector_PointOnBis;
-		 Bisector_PointOnBis(const Standard_Real Param1, const Standard_Real Param2, const Standard_Real ParamBis, const Standard_Real Distance, const gp_Pnt2d & Point);
+		 Bisector_PointOnBis(const double Param1, const double Param2, const double ParamBis, const double Distance, const gp_Pnt2d & Point);
 
 		/****** Bisector_PointOnBis::Distance ******/
-		/****** md5 signature: 3d8e58dc0e28ccf0d2f126234669088c ******/
+		/****** md5 signature: 71b12f543bf97ed4cc0bf3009a2c1231 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
 ----------
-Distance: float
+Distance: double
 
 Return
 -------
@@ -729,20 +729,20 @@ Description
 -----------
 No available documentation.
 ") Distance;
-		void Distance(const Standard_Real Distance);
+		void Distance(const double Distance);
 
 		/****** Bisector_PointOnBis::Distance ******/
-		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
+		/****** md5 signature: 4132595ec8b1977b3cfc8920d72365c4 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Distance;
-		Standard_Real Distance();
+		double Distance();
 
 		/****** Bisector_PointOnBis::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -758,7 +758,7 @@ No available documentation.
 		void Dump();
 
 		/****** Bisector_PointOnBis::IsInfinite ******/
-		/****** md5 signature: c22d0728817de9ea8ad6f0a2d88a935b ******/
+		/****** md5 signature: 77e94d2cd49ded99066ba46acaf7cc76 ******/
 		%feature("compactdefaultargs") IsInfinite;
 		%feature("autodoc", "
 Parameters
@@ -773,10 +773,10 @@ Description
 -----------
 No available documentation.
 ") IsInfinite;
-		void IsInfinite(const Standard_Boolean Infinite);
+		void IsInfinite(const bool Infinite);
 
 		/****** Bisector_PointOnBis::IsInfinite ******/
-		/****** md5 signature: 800afae87f4e1f5e34cb9eb46c14c258 ******/
+		/****** md5 signature: 347147d43ae7004cb4238ce68cb49a93 ******/
 		%feature("compactdefaultargs") IsInfinite;
 		%feature("autodoc", "Return
 -------
@@ -786,15 +786,15 @@ Description
 -----------
 No available documentation.
 ") IsInfinite;
-		Standard_Boolean IsInfinite();
+		bool IsInfinite();
 
 		/****** Bisector_PointOnBis::ParamOnBis ******/
-		/****** md5 signature: 2a06a99e4b08f6296a85a2d8e73c5351 ******/
+		/****** md5 signature: 19c5810987b97e190e63b356cd5efa2c ******/
 		%feature("compactdefaultargs") ParamOnBis;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
@@ -804,28 +804,28 @@ Description
 -----------
 No available documentation.
 ") ParamOnBis;
-		void ParamOnBis(const Standard_Real Param);
+		void ParamOnBis(const double Param);
 
 		/****** Bisector_PointOnBis::ParamOnBis ******/
-		/****** md5 signature: f67c7c80951bdacb9684e5a4011ab759 ******/
+		/****** md5 signature: b8a8e85fa5ede397d5cbdf3432e1cec8 ******/
 		%feature("compactdefaultargs") ParamOnBis;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParamOnBis;
-		Standard_Real ParamOnBis();
+		double ParamOnBis();
 
 		/****** Bisector_PointOnBis::ParamOnC1 ******/
-		/****** md5 signature: 2db8bd05328faa84ee9d303902d8f2bf ******/
+		/****** md5 signature: 9c81231e3681f1bb571b85bfae1be125 ******/
 		%feature("compactdefaultargs") ParamOnC1;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
@@ -835,28 +835,28 @@ Description
 -----------
 No available documentation.
 ") ParamOnC1;
-		void ParamOnC1(const Standard_Real Param);
+		void ParamOnC1(const double Param);
 
 		/****** Bisector_PointOnBis::ParamOnC1 ******/
-		/****** md5 signature: b6583f639246f74ed76f20992798cf9c ******/
+		/****** md5 signature: 3d7de9d3dad89a823b588f053b3ba169 ******/
 		%feature("compactdefaultargs") ParamOnC1;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParamOnC1;
-		Standard_Real ParamOnC1();
+		double ParamOnC1();
 
 		/****** Bisector_PointOnBis::ParamOnC2 ******/
-		/****** md5 signature: 98783de9a7c5ee8d0931b4c5f4a1872d ******/
+		/****** md5 signature: 86e3836832a3d1eb167743f9802a50e8 ******/
 		%feature("compactdefaultargs") ParamOnC2;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: float
+Param: double
 
 Return
 -------
@@ -866,20 +866,20 @@ Description
 -----------
 No available documentation.
 ") ParamOnC2;
-		void ParamOnC2(const Standard_Real Param);
+		void ParamOnC2(const double Param);
 
 		/****** Bisector_PointOnBis::ParamOnC2 ******/
-		/****** md5 signature: e502fc8d8313c7e88bcc270cff52b4e8 ******/
+		/****** md5 signature: ae51f460c3d39c33b1a8a0b1f0803e25 ******/
 		%feature("compactdefaultargs") ParamOnC2;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParamOnC2;
-		Standard_Real ParamOnC2();
+		double ParamOnC2();
 
 		/****** Bisector_PointOnBis::Point ******/
 		/****** md5 signature: fe253a4fee17763769a3905b741f0819 ******/
@@ -971,12 +971,12 @@ No available documentation.
 		const Bisector_PointOnBis & First();
 
 		/****** Bisector_PolyBis::Interval ******/
-		/****** md5 signature: 74c2cabdf1ec19a1f24a392e69bb1d55 ******/
+		/****** md5 signature: 98891b3be011e0e035597d01f91dcca2 ******/
 		%feature("compactdefaultargs") Interval;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -986,10 +986,10 @@ Description
 -----------
 No available documentation.
 ") Interval;
-		Standard_Integer Interval(const Standard_Real U);
+		int Interval(const double U);
 
 		/****** Bisector_PolyBis::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -999,7 +999,7 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** Bisector_PolyBis::Last ******/
 		/****** md5 signature: 5e27620ceac300d8b92d02d6453ba01a ******/
@@ -1015,7 +1015,7 @@ No available documentation.
 		const Bisector_PointOnBis & Last();
 
 		/****** Bisector_PolyBis::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -1025,7 +1025,7 @@ Description
 -----------
 No available documentation.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** Bisector_PolyBis::Transform ******/
 		/****** md5 signature: dace16a29a39216c0dd584c6964e840b ******/
@@ -1046,7 +1046,7 @@ No available documentation.
 		void Transform(const gp_Trsf2d & T);
 
 		/****** Bisector_PolyBis::Value ******/
-		/****** md5 signature: 4f2d15b5fff36e44f78586db4357d093 ******/
+		/****** md5 signature: dcc03978ae4229c6d4e5dbb94d6d25ba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1061,7 +1061,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		const Bisector_PointOnBis & Value(const Standard_Integer Index);
+		const Bisector_PointOnBis & Value(const int Index);
 
 };
 
@@ -1091,7 +1091,7 @@ No available documentation.
 		 Bisector_BisecAna();
 
 		/****** Bisector_BisecAna::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -1104,7 +1104,7 @@ No available documentation.
 		GeomAbs_Shape Continuity();
 
 		/****** Bisector_BisecAna::Copy ******/
-		/****** md5 signature: e14f86fd39aef4f82b5296205cbd25eb ******/
+		/****** md5 signature: 357e0361ce7af4bdc756de6d7ba219d9 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -1116,109 +1116,8 @@ No available documentation.
 ") Copy;
 		opencascade::handle<Geom2d_Geometry> Copy();
 
-		/****** Bisector_BisecAna::D0 ******/
-		/****** md5 signature: 01a5234aae6db090351bac35b3718fd9 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
-
-		/****** Bisector_BisecAna::D1 ******/
-		/****** md5 signature: 78ab988905058ca54a64c0ab51a90e46 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
-
-		/****** Bisector_BisecAna::D2 ******/
-		/****** md5 signature: acc8c0955596bb0bf809102736ad1124 ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
-
-		/****** Bisector_BisecAna::D3 ******/
-		/****** md5 signature: 28315b7efe2f6c64fe9497aa5c5ddaf6 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-V3: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
-
-		/****** Bisector_BisecAna::DN ******/
-		/****** md5 signature: a05d2f76912764cef5ac7bb40ebda3d7 ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec2d
-
-Description
------------
-No available documentation.
-") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** Bisector_BisecAna::Dump ******/
-		/****** md5 signature: 23c1db28cacdaffb331052739c78df8b ******/
+		/****** md5 signature: 80020b5ebb73e4528ffd0899ab5418e2 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1234,20 +1133,111 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer Deep = 0, const Standard_Integer Offset = 0);
+		void Dump(const int Deep = 0, const int Offset = 0);
+
+		/****** Bisector_BisecAna::EvalD0 ******/
+		/****** md5 signature: 906c1954ad2c441a8d2d10327423eb22 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt2d
+
+Description
+-----------
+No available documentation.
+") EvalD0;
+		gp_Pnt2d EvalD0(const double U);
+
+		/****** Bisector_BisecAna::EvalD1 ******/
+		/****** md5 signature: 9411f79f4780b96d9e9fd540bc850db2 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD1
+
+Description
+-----------
+No available documentation.
+") EvalD1;
+		Geom2d_Curve::ResD1 EvalD1(const double U);
+
+		/****** Bisector_BisecAna::EvalD2 ******/
+		/****** md5 signature: 873d39bbe6726a825ce2692aa540639a ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD2
+
+Description
+-----------
+No available documentation.
+") EvalD2;
+		Geom2d_Curve::ResD2 EvalD2(const double U);
+
+		/****** Bisector_BisecAna::EvalD3 ******/
+		/****** md5 signature: 0ba3f739127d2d82fd4e9592e677c79f ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD3
+
+Description
+-----------
+No available documentation.
+") EvalD3;
+		Geom2d_Curve::ResD3 EvalD3(const double U);
+
+		/****** Bisector_BisecAna::EvalDN ******/
+		/****** md5 signature: 59d817433f8dda304d1c0b135cce1876 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec2d
+
+Description
+-----------
+No available documentation.
+") EvalDN;
+		gp_Vec2d EvalDN(const double U, const int N);
 
 		/****** Bisector_BisecAna::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Bisector_BisecAna::Geom2dCurve ******/
 		/****** md5 signature: abcd44f52397ef0bfa09dd48df49f2c6 ******/
@@ -1281,7 +1271,7 @@ No available documentation.
 		void Init(const opencascade::handle<Geom2d_TrimmedCurve> & bisector);
 
 		/****** Bisector_BisecAna::IntervalFirst ******/
-		/****** md5 signature: 26ceac01a62ec22c7e822fa07bd00ba8 ******/
+		/****** md5 signature: f758b97d76c39edfd490abe5c4b54053 ******/
 		%feature("compactdefaultargs") IntervalFirst;
 		%feature("autodoc", "
 Parameters
@@ -1290,16 +1280,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the current interval.
 ") IntervalFirst;
-		Standard_Real IntervalFirst(const Standard_Integer Index);
+		double IntervalFirst(const int Index);
 
 		/****** Bisector_BisecAna::IntervalLast ******/
-		/****** md5 signature: ac3f1afc626dcb57a8f90c42ab96a1a6 ******/
+		/****** md5 signature: d450818d2902f52b874c31871811c146 ******/
 		%feature("compactdefaultargs") IntervalLast;
 		%feature("autodoc", "
 Parameters
@@ -1308,16 +1298,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the current interval.
 ") IntervalLast;
-		Standard_Real IntervalLast(const Standard_Integer Index);
+		double IntervalLast(const int Index);
 
 		/****** Bisector_BisecAna::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 7148abeb948e78dbe081ec4edd4357f0 ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -1332,10 +1322,10 @@ Description
 -----------
 Returns the order of continuity of the curve. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Bisector_BisecAna::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -1345,10 +1335,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Bisector_BisecAna::IsExtendAtEnd ******/
-		/****** md5 signature: 726d1a23c6824c1f3df11fa9c8594123 ******/
+		/****** md5 signature: cbc5318cdb2ef3a576b63d79ef09cb2a ******/
 		%feature("compactdefaultargs") IsExtendAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -1358,10 +1348,10 @@ Description
 -----------
 No available documentation.
 ") IsExtendAtEnd;
-		Standard_Boolean IsExtendAtEnd();
+		bool IsExtendAtEnd();
 
 		/****** Bisector_BisecAna::IsExtendAtStart ******/
-		/****** md5 signature: eed6f2d113851eb819af3886c3a10ba0 ******/
+		/****** md5 signature: 32d0a6a20a5cb358cd05cfbca7d8f624 ******/
 		%feature("compactdefaultargs") IsExtendAtStart;
 		%feature("autodoc", "Return
 -------
@@ -1371,10 +1361,10 @@ Description
 -----------
 No available documentation.
 ") IsExtendAtStart;
-		Standard_Boolean IsExtendAtStart();
+		bool IsExtendAtStart();
 
 		/****** Bisector_BisecAna::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1384,23 +1374,23 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Bisector_BisecAna::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Bisector_BisecAna::NbIntervals ******/
-		/****** md5 signature: 2f9f3a515d8495f09df4987b6d0933b4 ******/
+		/****** md5 signature: 3a4cef1c1a259df13c4a400a83407531 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -1410,10 +1400,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** Bisector_BisecAna::Parameter ******/
-		/****** md5 signature: ca089b85d2f90fc99bae6c7f4cfeb9e5 ******/
+		/****** md5 signature: 626e16d27b509da60a1f611e7ce38a78 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1422,42 +1412,42 @@ P: gp_Pnt2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter(const gp_Pnt2d & P);
+		double Parameter(const gp_Pnt2d & P);
 
 		/****** Bisector_BisecAna::ParameterOfEndPoint ******/
-		/****** md5 signature: 2b155a85b659e36f13767bf9dd30f490 ******/
+		/****** md5 signature: 351e04155b9d286242bcaa2ba2b7cdef ******/
 		%feature("compactdefaultargs") ParameterOfEndPoint;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParameterOfEndPoint;
-		Standard_Real ParameterOfEndPoint();
+		double ParameterOfEndPoint();
 
 		/****** Bisector_BisecAna::ParameterOfStartPoint ******/
-		/****** md5 signature: 21ad3f21ab318a397dc77908c2cf36cb ******/
+		/****** md5 signature: e43be26d00b489a59cbab49a9336b65f ******/
 		%feature("compactdefaultargs") ParameterOfStartPoint;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ParameterOfStartPoint;
-		Standard_Real ParameterOfStartPoint();
+		double ParameterOfStartPoint();
 
 		/****** Bisector_BisecAna::Perform ******/
-		/****** md5 signature: fb60162720d8c50ac1c9de9627e7e5f9 ******/
+		/****** md5 signature: 52b7eb910fe6f5c43cffc8b9ac563fc3 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1467,10 +1457,10 @@ Cu2: Geom2d_Curve
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
+Sense: double
 jointype: GeomAbs_JoinType
-Tolerance: float
-oncurve: bool (optional, default to Standard_True)
+Tolerance: double
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -1480,10 +1470,10 @@ Description
 -----------
 Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const GeomAbs_JoinType jointype, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const GeomAbs_JoinType jointype, const double Tolerance, const bool oncurve = true);
 
 		/****** Bisector_BisecAna::Perform ******/
-		/****** md5 signature: db93a55a64615589c218fc350bd5fc5b ******/
+		/****** md5 signature: 20f45a1530f2ab0b313c9c963fcff4c6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1493,9 +1483,9 @@ Pnt: Geom2d_Point
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
-Tolerance: float
-oncurve: bool (optional, default to Standard_True)
+Sense: double
+Tolerance: double
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -1505,10 +1495,10 @@ Description
 -----------
 Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const opencascade::handle<Geom2d_Point> & Pnt, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const opencascade::handle<Geom2d_Point> & Pnt, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const double Tolerance, const bool oncurve = true);
 
 		/****** Bisector_BisecAna::Perform ******/
-		/****** md5 signature: 4bc1957ebd7bba22e94551f1f80cb51e ******/
+		/****** md5 signature: b9236c163bc170a7b056320452f57dc2 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1518,9 +1508,9 @@ Cu: Geom2d_Curve
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
-Tolerance: float
-oncurve: bool (optional, default to Standard_True)
+Sense: double
+Tolerance: double
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -1530,10 +1520,10 @@ Description
 -----------
 Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Point> & Pnt, const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Point> & Pnt, const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const double Tolerance, const bool oncurve = true);
 
 		/****** Bisector_BisecAna::Perform ******/
-		/****** md5 signature: b02fc98be2a333e2fd00a9e617d3c1ab ******/
+		/****** md5 signature: 5261f4895bba68019db3e1ff26bd8bbe ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1543,9 +1533,9 @@ Pnt2: Geom2d_Point
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
-Sense: float
-Tolerance: float (optional, default to 0.0)
-oncurve: bool (optional, default to Standard_True)
+Sense: double
+Tolerance: double (optional, default to 0.0)
+oncurve: bool (optional, default to true)
 
 Return
 -------
@@ -1555,10 +1545,10 @@ Description
 -----------
 Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Point> & Pnt1, const opencascade::handle<Geom2d_Point> & Pnt2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance = 0.0, const Standard_Boolean oncurve = Standard_True);
+		void Perform(const opencascade::handle<Geom2d_Point> & Pnt1, const opencascade::handle<Geom2d_Point> & Pnt2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const double Sense, const double Tolerance = 0.0, const bool oncurve = true);
 
 		/****** Bisector_BisecAna::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 061259e9a1d8313b86b97b8a1591d999 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -1571,22 +1561,22 @@ No available documentation.
 		void Reverse();
 
 		/****** Bisector_BisecAna::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: d1c5381c0a990adfec963bc4b96f0b60 ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Bisector_BisecAna::SetTrim ******/
 		/****** md5 signature: 7b91668841d99d4ce0903be5c9fe2ff8 ******/
@@ -1607,13 +1597,13 @@ Trim <self> by a domain defined by the curve <Cu>. This domain is the set of the
 		void SetTrim(const opencascade::handle<Geom2d_Curve> & Cu);
 
 		/****** Bisector_BisecAna::SetTrim ******/
-		/****** md5 signature: b905e29612c27e95bca2fd090f152e87 ******/
+		/****** md5 signature: f0d5986749f42812e2f1fd670aad29f0 ******/
 		%feature("compactdefaultargs") SetTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-uf: float
-ul: float
+uf: double
+ul: double
 
 Return
 -------
@@ -1623,10 +1613,10 @@ Description
 -----------
 Trim <self> by a domain defined by uf and ul.
 ") SetTrim;
-		void SetTrim(const Standard_Real uf, const Standard_Real ul);
+		void SetTrim(const double uf, const double ul);
 
 		/****** Bisector_BisecAna::Transform ******/
-		/****** md5 signature: 45c8e1b1d6196f6efcf8f7b40a0fb1f5 ******/
+		/****** md5 signature: c3e9d0cbb6ef2be1d446ca43c7e51616 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -1673,17 +1663,17 @@ No available documentation.
 		 Bisector_BisecCC();
 
 		/****** Bisector_BisecCC::Bisector_BisecCC ******/
-		/****** md5 signature: b7a10bfb46a2005b4bf2e5d04eb46d71 ******/
+		/****** md5 signature: c1972b51f45b20ffd0d560bf5a353fdb ******/
 		%feature("compactdefaultargs") Bisector_BisecCC;
 		%feature("autodoc", "
 Parameters
 ----------
 Cu1: Geom2d_Curve
 Cu2: Geom2d_Curve
-Side1: float
-Side2: float
+Side1: double
+Side2: double
 Origin: gp_Pnt2d
-DistMax: float (optional, default to 500)
+DistMax: double (optional, default to 500)
 
 Return
 -------
@@ -1693,7 +1683,7 @@ Description
 -----------
 Constructs the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Bisector_BisecCC;
-		 Bisector_BisecCC(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const Standard_Real Side1, const Standard_Real Side2, const gp_Pnt2d & Origin, const Standard_Real DistMax = 500);
+		 Bisector_BisecCC(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const double Side1, const double Side2, const gp_Pnt2d & Origin, const double DistMax = 500);
 
 		/****** Bisector_BisecCC::ChangeGuide ******/
 		/****** md5 signature: ac2e0495e4a0d40e5db2cbf3fc1a0d37 ******/
@@ -1709,7 +1699,7 @@ The parameter on <self> is linked to the parameter on the first curve. This meth
 		opencascade::handle<Bisector_BisecCC> ChangeGuide();
 
 		/****** Bisector_BisecCC::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -1722,7 +1712,7 @@ No available documentation.
 		GeomAbs_Shape Continuity();
 
 		/****** Bisector_BisecCC::Copy ******/
-		/****** md5 signature: e14f86fd39aef4f82b5296205cbd25eb ******/
+		/****** md5 signature: 357e0361ce7af4bdc756de6d7ba219d9 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -1735,7 +1725,7 @@ No available documentation.
 		opencascade::handle<Geom2d_Geometry> Copy();
 
 		/****** Bisector_BisecCC::Curve ******/
-		/****** md5 signature: 4f7582321d8b4bbdb047c27b823a49c6 ******/
+		/****** md5 signature: 34b09ddd189e72a82d3e222f6e62ab3b ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -1750,111 +1740,10 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		opencascade::handle<Geom2d_Curve> Curve(const Standard_Integer IndCurve);
-
-		/****** Bisector_BisecCC::D0 ******/
-		/****** md5 signature: 01a5234aae6db090351bac35b3718fd9 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
-
-		/****** Bisector_BisecCC::D1 ******/
-		/****** md5 signature: 79a293d0b91ab6d1359881075119fb56 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
-
-		/****** Bisector_BisecCC::D2 ******/
-		/****** md5 signature: acc8c0955596bb0bf809102736ad1124 ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
-
-		/****** Bisector_BisecCC::D3 ******/
-		/****** md5 signature: 28315b7efe2f6c64fe9497aa5c5ddaf6 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-V3: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
-
-		/****** Bisector_BisecCC::DN ******/
-		/****** md5 signature: a05d2f76912764cef5ac7bb40ebda3d7 ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec2d
-
-Description
------------
-No available documentation.
-") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
+		opencascade::handle<Geom2d_Curve> Curve(const int IndCurve);
 
 		/****** Bisector_BisecCC::Dump ******/
-		/****** md5 signature: 23c1db28cacdaffb331052739c78df8b ******/
+		/****** md5 signature: 80020b5ebb73e4528ffd0899ab5418e2 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1870,20 +1759,111 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer Deep = 0, const Standard_Integer Offset = 0);
+		void Dump(const int Deep = 0, const int Offset = 0);
+
+		/****** Bisector_BisecCC::EvalD0 ******/
+		/****** md5 signature: 906c1954ad2c441a8d2d10327423eb22 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt2d
+
+Description
+-----------
+No available documentation.
+") EvalD0;
+		gp_Pnt2d EvalD0(const double U);
+
+		/****** Bisector_BisecCC::EvalD1 ******/
+		/****** md5 signature: 9411f79f4780b96d9e9fd540bc850db2 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD1
+
+Description
+-----------
+No available documentation.
+") EvalD1;
+		Geom2d_Curve::ResD1 EvalD1(const double U);
+
+		/****** Bisector_BisecCC::EvalD2 ******/
+		/****** md5 signature: 873d39bbe6726a825ce2692aa540639a ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD2
+
+Description
+-----------
+No available documentation.
+") EvalD2;
+		Geom2d_Curve::ResD2 EvalD2(const double U);
+
+		/****** Bisector_BisecCC::EvalD3 ******/
+		/****** md5 signature: 0ba3f739127d2d82fd4e9592e677c79f ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD3
+
+Description
+-----------
+No available documentation.
+") EvalD3;
+		Geom2d_Curve::ResD3 EvalD3(const double U);
+
+		/****** Bisector_BisecCC::EvalDN ******/
+		/****** md5 signature: 59d817433f8dda304d1c0b135cce1876 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec2d
+
+Description
+-----------
+No available documentation.
+") EvalDN;
+		gp_Vec2d EvalDN(const double U, const int N);
 
 		/****** Bisector_BisecCC::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Bisector_BisecCC::IntervalContinuity ******/
 		/****** md5 signature: 4fe081a978745bbd0e32a19f5e1db952 ******/
@@ -1899,7 +1879,7 @@ No available documentation.
 		GeomAbs_Shape IntervalContinuity();
 
 		/****** Bisector_BisecCC::IntervalFirst ******/
-		/****** md5 signature: 26ceac01a62ec22c7e822fa07bd00ba8 ******/
+		/****** md5 signature: f758b97d76c39edfd490abe5c4b54053 ******/
 		%feature("compactdefaultargs") IntervalFirst;
 		%feature("autodoc", "
 Parameters
@@ -1908,16 +1888,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the current interval.
 ") IntervalFirst;
-		Standard_Real IntervalFirst(const Standard_Integer Index);
+		double IntervalFirst(const int Index);
 
 		/****** Bisector_BisecCC::IntervalLast ******/
-		/****** md5 signature: ac3f1afc626dcb57a8f90c42ab96a1a6 ******/
+		/****** md5 signature: d450818d2902f52b874c31871811c146 ******/
 		%feature("compactdefaultargs") IntervalLast;
 		%feature("autodoc", "
 Parameters
@@ -1926,16 +1906,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the current interval.
 ") IntervalLast;
-		Standard_Real IntervalLast(const Standard_Integer Index);
+		double IntervalLast(const int Index);
 
 		/****** Bisector_BisecCC::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 7148abeb948e78dbe081ec4edd4357f0 ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -1950,10 +1930,10 @@ Description
 -----------
 Returns the order of continuity of the curve. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Bisector_BisecCC::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -1963,10 +1943,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Bisector_BisecCC::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1976,10 +1956,10 @@ Description
 -----------
 No available documentation.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** Bisector_BisecCC::IsExtendAtEnd ******/
-		/****** md5 signature: 726d1a23c6824c1f3df11fa9c8594123 ******/
+		/****** md5 signature: cbc5318cdb2ef3a576b63d79ef09cb2a ******/
 		%feature("compactdefaultargs") IsExtendAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -1989,10 +1969,10 @@ Description
 -----------
 No available documentation.
 ") IsExtendAtEnd;
-		Standard_Boolean IsExtendAtEnd();
+		bool IsExtendAtEnd();
 
 		/****** Bisector_BisecCC::IsExtendAtStart ******/
-		/****** md5 signature: eed6f2d113851eb819af3886c3a10ba0 ******/
+		/****** md5 signature: 32d0a6a20a5cb358cd05cfbca7d8f624 ******/
 		%feature("compactdefaultargs") IsExtendAtStart;
 		%feature("autodoc", "Return
 -------
@@ -2002,10 +1982,10 @@ Description
 -----------
 No available documentation.
 ") IsExtendAtStart;
-		Standard_Boolean IsExtendAtStart();
+		bool IsExtendAtStart();
 
 		/****** Bisector_BisecCC::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2015,59 +1995,59 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Bisector_BisecCC::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Bisector_BisecCC::LinkBisCurve ******/
-		/****** md5 signature: 55ab0cec865e9ea9faed38185d303c1b ******/
+		/****** md5 signature: 380fc41e5c34b67d7744c7f5809964bb ******/
 		%feature("compactdefaultargs") LinkBisCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the curve1 of the projection of the point of parameter U on <self>.
 ") LinkBisCurve;
-		Standard_Real LinkBisCurve(const Standard_Real U);
+		double LinkBisCurve(const double U);
 
 		/****** Bisector_BisecCC::LinkCurveBis ******/
-		/****** md5 signature: b0393e62df20de8ab3e4695b6cecfbc2 ******/
+		/****** md5 signature: 71b368d0f37ae05ae071b164a263a522 ******/
 		%feature("compactdefaultargs") LinkCurveBis;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the reciproque of LinkBisCurve.
 ") LinkCurveBis;
-		Standard_Real LinkCurveBis(const Standard_Real U);
+		double LinkCurveBis(const double U);
 
 		/****** Bisector_BisecCC::NbIntervals ******/
-		/****** md5 signature: 2f9f3a515d8495f09df4987b6d0933b4 ******/
+		/****** md5 signature: 3a4cef1c1a259df13c4a400a83407531 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -2077,10 +2057,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** Bisector_BisecCC::Parameter ******/
-		/****** md5 signature: ca089b85d2f90fc99bae6c7f4cfeb9e5 ******/
+		/****** md5 signature: 626e16d27b509da60a1f611e7ce38a78 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2089,26 +2069,26 @@ P: gp_Pnt2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter(const gp_Pnt2d & P);
+		double Parameter(const gp_Pnt2d & P);
 
 		/****** Bisector_BisecCC::Perform ******/
-		/****** md5 signature: fae8efeaf20f5251b3bb2a78bdbbd0d6 ******/
+		/****** md5 signature: c3ba8b3264981b546d953b604ef28375 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Cu1: Geom2d_Curve
 Cu2: Geom2d_Curve
-Side1: float
-Side2: float
+Side1: double
+Side2: double
 Origin: gp_Pnt2d
-DistMax: float (optional, default to 500)
+DistMax: double (optional, default to 500)
 
 Return
 -------
@@ -2118,7 +2098,7 @@ Description
 -----------
 Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. //! <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const Standard_Real Side1, const Standard_Real Side2, const gp_Pnt2d & Origin, const Standard_Real DistMax = 500);
+		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const double Side1, const double Side2, const gp_Pnt2d & Origin, const double DistMax = 500);
 
 		/****** Bisector_BisecCC::Polygon ******/
 		/****** md5 signature: 0adc7dc97a83bfc84693e7af983e76d4 ******/
@@ -2134,7 +2114,7 @@ No available documentation.
 		const Bisector_PolyBis & Polygon();
 
 		/****** Bisector_BisecCC::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 061259e9a1d8313b86b97b8a1591d999 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -2147,25 +2127,25 @@ No available documentation.
 		void Reverse();
 
 		/****** Bisector_BisecCC::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: d1c5381c0a990adfec963bc4b96f0b60 ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Bisector_BisecCC::Transform ******/
-		/****** md5 signature: 45c8e1b1d6196f6efcf8f7b40a0fb1f5 ******/
+		/****** md5 signature: c3e9d0cbb6ef2be1d446ca43c7e51616 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -2183,44 +2163,44 @@ Transformation of a geometric object. This transformation can be a translation, 
 		void Transform(const gp_Trsf2d & T);
 
 		/****** Bisector_BisecCC::ValueAndDist ******/
-		/****** md5 signature: c1e89ac2312e0b68d9e854a27a72ebb0 ******/
+		/****** md5 signature: 9b342b5985b27e56a4c2034ea5260282 ******/
 		%feature("compactdefaultargs") ValueAndDist;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-U1: float
-U2: float
-Distance: float
+U1: double
+U2: double
+Distance: double
 
 Description
 -----------
 Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
 ") ValueAndDist;
-		gp_Pnt2d ValueAndDist(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		gp_Pnt2d ValueAndDist(const double U, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Bisector_BisecCC::ValueByInt ******/
-		/****** md5 signature: 887792daba949624653f20427d8b1fcd ******/
+		/****** md5 signature: 4a46baa5ec4d61812811285296689089 ******/
 		%feature("compactdefaultargs") ValueByInt;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-U1: float
-U2: float
-Distance: float
+U1: double
+U2: double
+Distance: double
 
 Description
 -----------
 Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
 ") ValueByInt;
-		gp_Pnt2d ValueByInt(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		gp_Pnt2d ValueByInt(const double U, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -2252,15 +2232,15 @@ No available documentation.
 		 Bisector_BisecPC();
 
 		/****** Bisector_BisecPC::Bisector_BisecPC ******/
-		/****** md5 signature: 1365427db49d7771559efb2b783b9495 ******/
+		/****** md5 signature: d0a18b799e0d88ec9f5d4c498f5d7278 ******/
 		%feature("compactdefaultargs") Bisector_BisecPC;
 		%feature("autodoc", "
 Parameters
 ----------
 Cu: Geom2d_Curve
 P: gp_Pnt2d
-Side: float
-DistMax: float (optional, default to 500)
+Side: double
+DistMax: double (optional, default to 500)
 
 Return
 -------
@@ -2270,19 +2250,19 @@ Description
 -----------
 Constructs the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Bisector_BisecPC;
-		 Bisector_BisecPC(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const Standard_Real Side, const Standard_Real DistMax = 500);
+		 Bisector_BisecPC(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const double Side, const double DistMax = 500);
 
 		/****** Bisector_BisecPC::Bisector_BisecPC ******/
-		/****** md5 signature: c4a1dc45924f741e58ac3ed6ac71fc88 ******/
+		/****** md5 signature: afdb8ed21562b269f8e7c4e70a51086f ******/
 		%feature("compactdefaultargs") Bisector_BisecPC;
 		%feature("autodoc", "
 Parameters
 ----------
 Cu: Geom2d_Curve
 P: gp_Pnt2d
-Side: float
-UMin: float
-UMax: float
+Side: double
+UMin: double
+UMax: double
 
 Return
 -------
@@ -2292,10 +2272,10 @@ Description
 -----------
 Constructs the bisector between the point <P> and the curve <Cu> Trimmed by <UMin> and <UMax> <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. Warning: the bisector is supposed all over defined between <UMin> and <UMax>.
 ") Bisector_BisecPC;
-		 Bisector_BisecPC(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const Standard_Real Side, const Standard_Real UMin, const Standard_Real UMax);
+		 Bisector_BisecPC(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const double Side, const double UMin, const double UMax);
 
 		/****** Bisector_BisecPC::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -2308,7 +2288,7 @@ No available documentation.
 		GeomAbs_Shape Continuity();
 
 		/****** Bisector_BisecPC::Copy ******/
-		/****** md5 signature: e14f86fd39aef4f82b5296205cbd25eb ******/
+		/****** md5 signature: 357e0361ce7af4bdc756de6d7ba219d9 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -2320,127 +2300,26 @@ No available documentation.
 ") Copy;
 		opencascade::handle<Geom2d_Geometry> Copy();
 
-		/****** Bisector_BisecPC::D0 ******/
-		/****** md5 signature: 01a5234aae6db090351bac35b3718fd9 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt2d & P);
-
-		/****** Bisector_BisecPC::D1 ******/
-		/****** md5 signature: 79a293d0b91ab6d1359881075119fb56 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
-
-		/****** Bisector_BisecPC::D2 ******/
-		/****** md5 signature: acc8c0955596bb0bf809102736ad1124 ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
-
-		/****** Bisector_BisecPC::D3 ******/
-		/****** md5 signature: 28315b7efe2f6c64fe9497aa5c5ddaf6 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt2d
-V1: gp_Vec2d
-V2: gp_Vec2d
-V3: gp_Vec2d
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
-
-		/****** Bisector_BisecPC::DN ******/
-		/****** md5 signature: a05d2f76912764cef5ac7bb40ebda3d7 ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec2d
-
-Description
------------
-No available documentation.
-") DN;
-		gp_Vec2d DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** Bisector_BisecPC::Distance ******/
-		/****** md5 signature: 2f53d099539d1d19d9f9030927d9cfd3 ******/
+		/****** md5 signature: 0c1036e505ef7d6a4a13f216e6a1450c ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the distance between the point of parameter U on <self> and my point or my curve.
 ") Distance;
-		Standard_Real Distance(const Standard_Real U);
+		double Distance(const double U);
 
 		/****** Bisector_BisecPC::Dump ******/
-		/****** md5 signature: 23c1db28cacdaffb331052739c78df8b ******/
+		/****** md5 signature: 80020b5ebb73e4528ffd0899ab5418e2 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2456,20 +2335,111 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const Standard_Integer Deep = 0, const Standard_Integer Offset = 0);
+		void Dump(const int Deep = 0, const int Offset = 0);
+
+		/****** Bisector_BisecPC::EvalD0 ******/
+		/****** md5 signature: 906c1954ad2c441a8d2d10327423eb22 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+gp_Pnt2d
+
+Description
+-----------
+No available documentation.
+") EvalD0;
+		gp_Pnt2d EvalD0(const double U);
+
+		/****** Bisector_BisecPC::EvalD1 ******/
+		/****** md5 signature: 9411f79f4780b96d9e9fd540bc850db2 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD1
+
+Description
+-----------
+No available documentation.
+") EvalD1;
+		Geom2d_Curve::ResD1 EvalD1(const double U);
+
+		/****** Bisector_BisecPC::EvalD2 ******/
+		/****** md5 signature: 873d39bbe6726a825ce2692aa540639a ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD2
+
+Description
+-----------
+No available documentation.
+") EvalD2;
+		Geom2d_Curve::ResD2 EvalD2(const double U);
+
+		/****** Bisector_BisecPC::EvalD3 ******/
+		/****** md5 signature: 0ba3f739127d2d82fd4e9592e677c79f ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+
+Return
+-------
+Geom2d_Curve::ResD3
+
+Description
+-----------
+No available documentation.
+") EvalD3;
+		Geom2d_Curve::ResD3 EvalD3(const double U);
+
+		/****** Bisector_BisecPC::EvalDN ******/
+		/****** md5 signature: 59d817433f8dda304d1c0b135cce1876 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+U: double
+N: int
+
+Return
+-------
+gp_Vec2d
+
+Description
+-----------
+No available documentation.
+") EvalDN;
+		gp_Vec2d EvalDN(const double U, const int N);
 
 		/****** Bisector_BisecPC::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Value of the first parameter.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Bisector_BisecPC::IntervalContinuity ******/
 		/****** md5 signature: 4fe081a978745bbd0e32a19f5e1db952 ******/
@@ -2485,7 +2455,7 @@ No available documentation.
 		GeomAbs_Shape IntervalContinuity();
 
 		/****** Bisector_BisecPC::IntervalFirst ******/
-		/****** md5 signature: 26ceac01a62ec22c7e822fa07bd00ba8 ******/
+		/****** md5 signature: f758b97d76c39edfd490abe5c4b54053 ******/
 		%feature("compactdefaultargs") IntervalFirst;
 		%feature("autodoc", "
 Parameters
@@ -2494,16 +2464,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of the current interval.
 ") IntervalFirst;
-		Standard_Real IntervalFirst(const Standard_Integer Index);
+		double IntervalFirst(const int Index);
 
 		/****** Bisector_BisecPC::IntervalLast ******/
-		/****** md5 signature: ac3f1afc626dcb57a8f90c42ab96a1a6 ******/
+		/****** md5 signature: d450818d2902f52b874c31871811c146 ******/
 		%feature("compactdefaultargs") IntervalLast;
 		%feature("autodoc", "
 Parameters
@@ -2512,16 +2482,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of the current interval.
 ") IntervalLast;
-		Standard_Real IntervalLast(const Standard_Integer Index);
+		double IntervalLast(const int Index);
 
 		/****** Bisector_BisecPC::IsCN ******/
-		/****** md5 signature: 73c2d9ecdd776a5227f0665f0702fcb3 ******/
+		/****** md5 signature: 7148abeb948e78dbe081ec4edd4357f0 ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -2536,10 +2506,10 @@ Description
 -----------
 Returns the order of continuity of the curve. Raised if N < 0.
 ") IsCN;
-		Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** Bisector_BisecPC::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -2549,10 +2519,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Bisector_BisecPC::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2562,10 +2532,10 @@ Description
 -----------
 Returns <True> if the bisector is empty.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** Bisector_BisecPC::IsExtendAtEnd ******/
-		/****** md5 signature: 726d1a23c6824c1f3df11fa9c8594123 ******/
+		/****** md5 signature: cbc5318cdb2ef3a576b63d79ef09cb2a ******/
 		%feature("compactdefaultargs") IsExtendAtEnd;
 		%feature("autodoc", "Return
 -------
@@ -2575,10 +2545,10 @@ Description
 -----------
 Returns True if the bisector is extended at end.
 ") IsExtendAtEnd;
-		Standard_Boolean IsExtendAtEnd();
+		bool IsExtendAtEnd();
 
 		/****** Bisector_BisecPC::IsExtendAtStart ******/
-		/****** md5 signature: eed6f2d113851eb819af3886c3a10ba0 ******/
+		/****** md5 signature: 32d0a6a20a5cb358cd05cfbca7d8f624 ******/
 		%feature("compactdefaultargs") IsExtendAtStart;
 		%feature("autodoc", "Return
 -------
@@ -2588,10 +2558,10 @@ Description
 -----------
 Returns True if the bisector is extended at start.
 ") IsExtendAtStart;
-		Standard_Boolean IsExtendAtStart();
+		bool IsExtendAtStart();
 
 		/****** Bisector_BisecPC::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2601,59 +2571,59 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Bisector_BisecPC::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Value of the last parameter.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Bisector_BisecPC::LinkBisCurve ******/
-		/****** md5 signature: 55ab0cec865e9ea9faed38185d303c1b ******/
+		/****** md5 signature: 380fc41e5c34b67d7744c7f5809964bb ******/
 		%feature("compactdefaultargs") LinkBisCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the curve1 of the projection of the point of parameter U on <self>.
 ") LinkBisCurve;
-		Standard_Real LinkBisCurve(const Standard_Real U);
+		double LinkBisCurve(const double U);
 
 		/****** Bisector_BisecPC::LinkCurveBis ******/
-		/****** md5 signature: b0393e62df20de8ab3e4695b6cecfbc2 ******/
+		/****** md5 signature: 71b368d0f37ae05ae071b164a263a522 ******/
 		%feature("compactdefaultargs") LinkCurveBis;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the reciproque of LinkBisCurve.
 ") LinkCurveBis;
-		Standard_Real LinkCurveBis(const Standard_Real U);
+		double LinkCurveBis(const double U);
 
 		/****** Bisector_BisecPC::NbIntervals ******/
-		/****** md5 signature: 2f9f3a515d8495f09df4987b6d0933b4 ******/
+		/****** md5 signature: 3a4cef1c1a259df13c4a400a83407531 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -2663,10 +2633,10 @@ Description
 -----------
 If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** Bisector_BisecPC::Parameter ******/
-		/****** md5 signature: ca089b85d2f90fc99bae6c7f4cfeb9e5 ******/
+		/****** md5 signature: 626e16d27b509da60a1f611e7ce38a78 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2675,24 +2645,24 @@ P: gp_Pnt2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on <self> corresponding to <P>.
 ") Parameter;
-		Standard_Real Parameter(const gp_Pnt2d & P);
+		double Parameter(const gp_Pnt2d & P);
 
 		/****** Bisector_BisecPC::Perform ******/
-		/****** md5 signature: 4f1397939b801b8c018eca1a300ed682 ******/
+		/****** md5 signature: 683fece077350b0b82077b8df599c507 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 Cu: Geom2d_Curve
 P: gp_Pnt2d
-Side: float
-DistMax: float (optional, default to 500)
+Side: double
+DistMax: double (optional, default to 500)
 
 Return
 -------
@@ -2702,10 +2672,10 @@ Description
 -----------
 Construct the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Perform;
-		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const Standard_Real Side, const Standard_Real DistMax = 500);
+		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const double Side, const double DistMax = 500);
 
 		/****** Bisector_BisecPC::Reverse ******/
-		/****** md5 signature: bff3d53d1cf0b268b7de85021a2bf3c4 ******/
+		/****** md5 signature: 061259e9a1d8313b86b97b8a1591d999 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -2718,25 +2688,25 @@ Changes the direction of parametrization of <self>. The orientation of the curve
 		void Reverse();
 
 		/****** Bisector_BisecPC::ReversedParameter ******/
-		/****** md5 signature: 382721d5a4ea752fecc12f03ab0de9a1 ******/
+		/****** md5 signature: d1c5381c0a990adfec963bc4b96f0b60 ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter on the reversed curve for the point of parameter U on <self>.
 ") ReversedParameter;
-		Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** Bisector_BisecPC::Transform ******/
-		/****** md5 signature: 45c8e1b1d6196f6efcf8f7b40a0fb1f5 ******/
+		/****** md5 signature: c3e9d0cbb6ef2be1d446ca43c7e51616 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters

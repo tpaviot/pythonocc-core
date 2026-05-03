@@ -49,7 +49,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_draft.html"
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<BRepTools_module.hxx>
-#include<TopTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<BRep_module.hxx>
@@ -57,6 +56,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_draft.html"
 #include<TShort_module.hxx>
 #include<Message_module.hxx>
 #include<Poly_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -69,7 +69,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_draft.html"
 %import Geom2d.i
 %import Geom.i
 %import BRepTools.i
-%import TopTools.i
 %import GeomAbs.i
 %import TopLoc.i
 
@@ -108,8 +107,20 @@ Draft_VertexRecomputation = Draft_ErrorStatus.Draft_VertexRecomputation
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_IndexedDataMap<TopoDS_Edge,Draft_EdgeInfo,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Edge,Draft_EdgeInfo,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Edge,Draft_EdgeInfo,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Edge,Draft_EdgeInfo,TopTools_ShapeMapHasher>::Contained;
 %template(Draft_IndexedDataMapOfEdgeEdgeInfo) NCollection_IndexedDataMap<TopoDS_Edge,Draft_EdgeInfo,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<TopoDS_Face,Draft_FaceInfo,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Face,Draft_FaceInfo,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Face,Draft_FaceInfo,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Face,Draft_FaceInfo,TopTools_ShapeMapHasher>::Contained;
 %template(Draft_IndexedDataMapOfFaceFaceInfo) NCollection_IndexedDataMap<TopoDS_Face,Draft_FaceInfo,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,Draft_VertexInfo,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,Draft_VertexInfo,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,Draft_VertexInfo,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Vertex,Draft_VertexInfo,TopTools_ShapeMapHasher>::Contained;
 %template(Draft_IndexedDataMapOfVertexVertexInfo) NCollection_IndexedDataMap<TopoDS_Vertex,Draft_VertexInfo,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
@@ -126,7 +137,7 @@ typedef NCollection_IndexedDataMap<TopoDS_Vertex, Draft_VertexInfo, TopTools_Sha
 class Draft {
 	public:
 		/****** Draft::Angle ******/
-		/****** md5 signature: 9c06be269f55f53a58d115e47c4bf6d4 ******/
+		/****** md5 signature: 070dbb1c25d5e97ffd563ebefdc5e891 ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "
 Parameters
@@ -136,13 +147,13 @@ Direction: gp_Dir
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the draft angle of the face <F> using the direction <Direction>. The method is valid for: - Plane faces, - Cylindrical or conical faces, when the direction of the axis of the surface is colinear with the direction. Otherwise, the exception DomainError is raised.
 ") Angle;
-		static Standard_Real Angle(const TopoDS_Face & F, const gp_Dir & Direction);
+		static double Angle(const TopoDS_Face & F, const gp_Dir & Direction);
 
 };
 
@@ -172,7 +183,7 @@ No available documentation.
 		 Draft_EdgeInfo();
 
 		/****** Draft_EdgeInfo::Draft_EdgeInfo ******/
-		/****** md5 signature: 32faf9b533f6634f32c06fc744729696 ******/
+		/****** md5 signature: c0b24f98c0f5dcf692e3af5f6b6e408b ******/
 		%feature("compactdefaultargs") Draft_EdgeInfo;
 		%feature("autodoc", "
 Parameters
@@ -187,7 +198,7 @@ Description
 -----------
 No available documentation.
 ") Draft_EdgeInfo;
-		 Draft_EdgeInfo(const Standard_Boolean HasNewGeometry);
+		 Draft_EdgeInfo(const bool HasNewGeometry);
 
 		/****** Draft_EdgeInfo::Add ******/
 		/****** md5 signature: 6a18239b90a20cc9cb60c404eb3bcb6e ******/
@@ -286,7 +297,7 @@ No available documentation.
 		const opencascade::handle<Geom_Curve> & Geometry();
 
 		/****** Draft_EdgeInfo::IsTangent ******/
-		/****** md5 signature: a19d139d03b1a16c5545791a57f0513c ******/
+		/****** md5 signature: 59d8b088819b94c517993bff6b73cf66 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "
 Parameters
@@ -301,10 +312,10 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		Standard_Boolean IsTangent(gp_Pnt & P);
+		bool IsTangent(gp_Pnt & P);
 
 		/****** Draft_EdgeInfo::NewGeometry ******/
-		/****** md5 signature: 737e33ae76e3be5f43dd03c59c3068fa ******/
+		/****** md5 signature: 0b142009cd9051402f702e4e02da3893 ******/
 		%feature("compactdefaultargs") NewGeometry;
 		%feature("autodoc", "Return
 -------
@@ -314,7 +325,7 @@ Description
 -----------
 No available documentation.
 ") NewGeometry;
-		Standard_Boolean NewGeometry();
+		bool NewGeometry();
 
 		/****** Draft_EdgeInfo::RootFace ******/
 		/****** md5 signature: 8ddaa1bb319cc46fc9731294149bd597 ******/
@@ -374,7 +385,7 @@ No available documentation.
 		const opencascade::handle<Geom2d_Curve> & SecondPC();
 
 		/****** Draft_EdgeInfo::SetNewGeometry ******/
-		/****** md5 signature: 074b98438d51c46dd5f6a30b1690133a ******/
+		/****** md5 signature: 476c47396dfad4d18ea04d7018c5aed9 ******/
 		%feature("compactdefaultargs") SetNewGeometry;
 		%feature("autodoc", "
 Parameters
@@ -389,7 +400,7 @@ Description
 -----------
 No available documentation.
 ") SetNewGeometry;
-		void SetNewGeometry(const Standard_Boolean NewGeom);
+		void SetNewGeometry(const bool NewGeom);
 
 		/****** Draft_EdgeInfo::Tangent ******/
 		/****** md5 signature: d59a769e05ec5e0c96c6f84def24f7e9 ******/
@@ -410,12 +421,12 @@ No available documentation.
 		void Tangent(const gp_Pnt & P);
 
 		/****** Draft_EdgeInfo::Tolerance ******/
-		/****** md5 signature: e925b87131cc380a2e6cb497cb7384fa ******/
+		/****** md5 signature: c1c7212071b7d95bf782fac6a420fcbb ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-tol: float
+tol: double
 
 Return
 -------
@@ -425,20 +436,20 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		void Tolerance(const Standard_Real tol);
+		void Tolerance(const double tol);
 
 		/****** Draft_EdgeInfo::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -468,7 +479,7 @@ No available documentation.
 		 Draft_FaceInfo();
 
 		/****** Draft_FaceInfo::Draft_FaceInfo ******/
-		/****** md5 signature: d3e40a7c43b56d2afb934b980f03dbb3 ******/
+		/****** md5 signature: 9212be0bdca60ddbf248dc32d0331a56 ******/
 		%feature("compactdefaultargs") Draft_FaceInfo;
 		%feature("autodoc", "
 Parameters
@@ -484,7 +495,7 @@ Description
 -----------
 No available documentation.
 ") Draft_FaceInfo;
-		 Draft_FaceInfo(const opencascade::handle<Geom_Surface> & S, const Standard_Boolean HasNewGeometry);
+		 Draft_FaceInfo(const opencascade::handle<Geom_Surface> & S, const bool HasNewGeometry);
 
 		/****** Draft_FaceInfo::Add ******/
 		/****** md5 signature: 6a18239b90a20cc9cb60c404eb3bcb6e ******/
@@ -570,7 +581,7 @@ No available documentation.
 		const opencascade::handle<Geom_Surface> & Geometry();
 
 		/****** Draft_FaceInfo::NewGeometry ******/
-		/****** md5 signature: 737e33ae76e3be5f43dd03c59c3068fa ******/
+		/****** md5 signature: 0b142009cd9051402f702e4e02da3893 ******/
 		%feature("compactdefaultargs") NewGeometry;
 		%feature("autodoc", "Return
 -------
@@ -580,7 +591,7 @@ Description
 -----------
 No available documentation.
 ") NewGeometry;
-		Standard_Boolean NewGeometry();
+		bool NewGeometry();
 
 		/****** Draft_FaceInfo::RootFace ******/
 		/****** md5 signature: 8ddaa1bb319cc46fc9731294149bd597 ******/
@@ -659,16 +670,16 @@ No available documentation.
 		 Draft_Modification(const TopoDS_Shape & S);
 
 		/****** Draft_Modification::Add ******/
-		/****** md5 signature: 27bb34ce100b2d99d741b10ebd3c13e3 ******/
+		/****** md5 signature: 4609ffa22c6d2e82f52800f76f472b3d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
 Direction: gp_Dir
-Angle: float
+Angle: double
 NeutralPlane: gp_Pln
-Flag: bool (optional, default to Standard_True)
+Flag: bool (optional, default to true)
 
 Return
 -------
@@ -678,7 +689,7 @@ Description
 -----------
 Adds the face F and propagates the draft modification to its neighbour faces if they are tangent. If an error occurs, will return False and ProblematicShape will return the 'bad' face.
 ") Add;
-		Standard_Boolean Add(const TopoDS_Face & F, const gp_Dir & Direction, const Standard_Real Angle, const gp_Pln & NeutralPlane, const Standard_Boolean Flag = Standard_True);
+		bool Add(const TopoDS_Face & F, const gp_Dir & Direction, const double Angle, const gp_Pln & NeutralPlane, const bool Flag = true);
 
 		/****** Draft_Modification::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -694,7 +705,7 @@ Resets on the same shape.
 		void Clear();
 
 		/****** Draft_Modification::ConnectedFaces ******/
-		/****** md5 signature: a4fc3d2c43b1adbbbe06cce811df08da ******/
+		/****** md5 signature: 4545b32be256b18f0c21e98bbde793d1 ******/
 		%feature("compactdefaultargs") ConnectedFaces;
 		%feature("autodoc", "
 Parameters
@@ -703,16 +714,16 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns all the faces which have been added together with the face <F>.
 ") ConnectedFaces;
-		const TopTools_ListOfShape & ConnectedFaces(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> ConnectedFaces(const TopoDS_Face & F);
 
 		/****** Draft_Modification::Continuity ******/
-		/****** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ******/
+		/****** md5 signature: d1e0a7e2e1d461e6b97ab64ce63033de ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -766,7 +777,7 @@ Changes the basis shape and resets.
 		void Init(const TopoDS_Shape & S);
 
 		/****** Draft_Modification::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -776,23 +787,23 @@ Description
 -----------
 Returns True if Perform has been successfully called. Otherwise more information can be obtained using the methods Error() and ProblematicShape().
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** Draft_Modification::ModifiedFaces ******/
-		/****** md5 signature: 73e8015abae16637419c4ff99016a307 ******/
+		/****** md5 signature: c65c58b1235c22a691a0f94a0a0fa280 ******/
 		%feature("compactdefaultargs") ModifiedFaces;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns all the faces on which a modification has been given.
 ") ModifiedFaces;
-		const TopTools_ListOfShape & ModifiedFaces();
+		const NCollection_List<TopoDS_Shape> ModifiedFaces();
 
 		/****** Draft_Modification::NewCurve ******/
-		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
+		/****** md5 signature: 039bf25957d908407657950d3c1e5d6a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -803,16 +814,16 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+Returns true if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns false, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
-		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
+		bool NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
 		/****** Draft_Modification::NewCurve2d ******/
-		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
+		/****** md5 signature: 19d697fda46737877bc989a89ef46152 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -825,16 +836,16 @@ C: Geom2d_Curve
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be useful.
+Returns true if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns false, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be useful.
 ") NewCurve2d;
-		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
+		bool NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
 		/****** Draft_Modification::NewParameter ******/
-		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
+		/****** md5 signature: 01206a81b5ddd931da808c7838d65daf ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -844,17 +855,17 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
-Tol: float
+P: double
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+Returns true if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns false, and <P>, <Tol> are not significant.
 ") NewParameter;
-		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Draft_Modification::NewPoint ******/
-		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
+		/****** md5 signature: a79eefd1fe066754dc9fbd2d3a2530a1 ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -864,16 +875,16 @@ P: gp_Pnt
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+Returns true if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns false, and <P>, <Tol> are not significant.
 ") NewPoint;
-		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
+		bool NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
 		/****** Draft_Modification::NewSurface ******/
-		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
+		/****** md5 signature: 05cac4f6dafa97d6624303004e85d749 ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -884,15 +895,15 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 RevWires: bool
 RevFace: bool
 
 Description
 -----------
-Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. Here it will be set to Standard_False. //! Otherwise, returns Standard_False, and <S>, <L>, <Tol> , <RevWires> ,<RevFace> are not significant.
+Returns true if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance.<RevWires> has to be set to true when the modification reverses the normal of the surface. (the wires have to be reversed). <RevFace> has to be set to true if the orientation of the modified face changes in the shells which contain it. Here it will be set to false. //! Otherwise, returns false, and <S>, <L>, <Tol> , <RevWires> ,<RevFace> are not significant.
 ") NewSurface;
-		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		bool NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** Draft_Modification::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -903,7 +914,7 @@ None
 
 Description
 -----------
-Performs the draft angle modification and sets the value returned by the method IsDone. If an error occurs, IsDone will return Standard_False, and an error status will be given by the method Error, and the shape on which the problem appeared will be given by ProblematicShape.
+Performs the draft angle modification and sets the value returned by the method IsDone. If an error occurs, IsDone will return false, and an error status will be given by the method Error, and the shape on which the problem appeared will be given by ProblematicShape.
 ") Perform;
 		void Perform();
 
@@ -934,7 +945,7 @@ None
 
 Description
 -----------
-Removes the face F and the neighbour faces if they are tangent. It will be necessary to call this method if the method Add returns Standard_False, to unset ProblematicFace.
+Removes the face F and the neighbour faces if they are tangent. It will be necessary to call this method if the method Add returns false, to unset ProblematicFace.
 ") Remove;
 		void Remove(const TopoDS_Face & F);
 
@@ -998,19 +1009,24 @@ No available documentation.
 ") ChangeGeometry;
 		gp_Pnt ChangeGeometry();
 
+		/****** Draft_VertexInfo::ChangeParameter ******/
+		/****** md5 signature: 316d83a6f85d302e9a2c6bb723d3f350 ******/
+		%feature("compactdefaultargs") ChangeParameter;
+		%feature("autodoc", "
+Parameters
+----------
+E: TopoDS_Edge
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetChangeParameter(const TopoDS_Edge & E) {
-            return (Standard_Real) $self->ChangeParameter(E);
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetChangeParameter(const TopoDS_Edge & E,Standard_Real value) {
-            $self->ChangeParameter(E)=value;
-            }
-        };
+Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") ChangeParameter;
+		double & ChangeParameter(const TopoDS_Edge & E);
+
 		/****** Draft_VertexInfo::Edge ******/
 		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
 		%feature("compactdefaultargs") Edge;
@@ -1051,7 +1067,7 @@ No available documentation.
 		void InitEdgeIterator();
 
 		/****** Draft_VertexInfo::MoreEdge ******/
-		/****** md5 signature: 3deabda73e93b20e8a72f2f0ebea4e02 ******/
+		/****** md5 signature: 6ad80ac0d66dad5013f4fe4cff20c934 ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -1061,7 +1077,7 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** Draft_VertexInfo::NextEdge ******/
 		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
@@ -1077,7 +1093,7 @@ No available documentation.
 		void NextEdge();
 
 		/****** Draft_VertexInfo::Parameter ******/
-		/****** md5 signature: 3f70b30d659d0fce4ed446c734d378ee ******/
+		/****** md5 signature: 1265fc454d0abd225100b7854ea564c4 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1086,13 +1102,13 @@ E: TopoDS_Edge
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter(const TopoDS_Edge & E);
+		double Parameter(const TopoDS_Edge & E);
 
 };
 

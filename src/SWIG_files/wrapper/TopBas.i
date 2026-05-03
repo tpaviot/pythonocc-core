@@ -79,12 +79,6 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = TopBas_ListIteratorOfListOfTestInterference(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
@@ -113,12 +107,12 @@ No available documentation.
 		 TopBas_TestInterference();
 
 		/****** TopBas_TestInterference::TopBas_TestInterference ******/
-		/****** md5 signature: 061045265274175b5f63816b64c27bda ******/
+		/****** md5 signature: fc5e26aa0712321a298a0ab889aaccc2 ******/
 		%feature("compactdefaultargs") TopBas_TestInterference;
 		%feature("autodoc", "
 Parameters
 ----------
-Inters: float
+Inters: double
 Bound: int
 Orient: TopAbs_Orientation
 Trans: TopAbs_Orientation
@@ -132,10 +126,10 @@ Description
 -----------
 No available documentation.
 ") TopBas_TestInterference;
-		 TopBas_TestInterference(const Standard_Real & Inters, const Standard_Integer & Bound, const TopAbs_Orientation Orient, const TopAbs_Orientation Trans, const TopAbs_Orientation BTrans);
+		 TopBas_TestInterference(const double & Inters, const int & Bound, const TopAbs_Orientation Orient, const TopAbs_Orientation Trans, const TopAbs_Orientation BTrans);
 
 		/****** TopBas_TestInterference::Boundary ******/
-		/****** md5 signature: ecae0f95113748e5b795787ee692f4c0 ******/
+		/****** md5 signature: 315c8def468ac2925ed81a970d1d3307 ******/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", "
 Parameters
@@ -150,10 +144,10 @@ Description
 -----------
 No available documentation.
 ") Boundary;
-		void Boundary(const Standard_Integer & B);
+		void Boundary(const int & B);
 
 		/****** TopBas_TestInterference::Boundary ******/
-		/****** md5 signature: acc72cfdb7b0883700c27aa7017b6785 ******/
+		/****** md5 signature: 64506df5152f80fc9437f47ce5b2ec87 ******/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", "Return
 -------
@@ -163,7 +157,7 @@ Description
 -----------
 No available documentation.
 ") Boundary;
-		const Standard_Integer & Boundary();
+		const int & Boundary();
 
 		/****** TopBas_TestInterference::BoundaryTransition ******/
 		/****** md5 signature: 91679118cf407fa213ebb9eb07832014 ******/
@@ -196,39 +190,39 @@ No available documentation.
 ") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition();
 
+		/****** TopBas_TestInterference::ChangeBoundary ******/
+		/****** md5 signature: 84839513932bf3ba89f33e1271b17682 ******/
+		%feature("compactdefaultargs") ChangeBoundary;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetChangeBoundary() {
-            return (Standard_Integer) $self->ChangeBoundary();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetChangeBoundary(Standard_Integer value) {
-            $self->ChangeBoundary()=value;
-            }
-        };
+Description
+-----------
+No available documentation.
+") ChangeBoundary;
+		int & ChangeBoundary();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetChangeIntersection() {
-            return (Standard_Real) $self->ChangeIntersection();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetChangeIntersection(Standard_Real value) {
-            $self->ChangeIntersection()=value;
-            }
-        };
+		/****** TopBas_TestInterference::ChangeIntersection ******/
+		/****** md5 signature: 5a4cddf542720cc66397eb254f4312f6 ******/
+		%feature("compactdefaultargs") ChangeIntersection;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") ChangeIntersection;
+		double & ChangeIntersection();
+
 		/****** TopBas_TestInterference::Intersection ******/
-		/****** md5 signature: c3dbdbf5d97cf229d568555db8710cff ******/
+		/****** md5 signature: ed7d9fb2d8bb260726121ea5e341a695 ******/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "
 Parameters
 ----------
-I: float
+I: double
 
 Return
 -------
@@ -238,20 +232,20 @@ Description
 -----------
 No available documentation.
 ") Intersection;
-		void Intersection(const Standard_Real & I);
+		void Intersection(const double & I);
 
 		/****** TopBas_TestInterference::Intersection ******/
-		/****** md5 signature: 7c98d12ea59d47ac6c13b08665a38692 ******/
+		/****** md5 signature: 3c3aef58e5ecb729cbce0ee31a939c9c ******/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Intersection;
-		const Standard_Real & Intersection();
+		const double & Intersection();
 
 		/****** TopBas_TestInterference::Orientation ******/
 		/****** md5 signature: 21772d27fe13757c215d17da49a64c59 ******/

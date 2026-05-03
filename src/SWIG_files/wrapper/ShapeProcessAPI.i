@@ -45,7 +45,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeprocessapi.h
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<ShapeProcess_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Message_module.hxx>
@@ -63,6 +62,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeprocessapi.h
 #include<Bnd_module.hxx>
 #include<Poly_module.hxx>
 #include<TColGeom_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -71,7 +71,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeprocessapi.h
 %import Standard.i
 %import NCollection.i
 %import ShapeProcess.i
-%import TopTools.i
 %import TopoDS.i
 %import TopAbs.i
 %import Message.i
@@ -104,13 +103,13 @@ from OCC.Core.Exception import *
 class ShapeProcessAPI_ApplySequence {
 	public:
 		/****** ShapeProcessAPI_ApplySequence::ShapeProcessAPI_ApplySequence ******/
-		/****** md5 signature: f5377d66263c9513eab7d2e2af5df61a ******/
+		/****** md5 signature: 44dd7792083f1a5cd08e1675d60a1427 ******/
 		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
 		%feature("autodoc", "
 Parameters
 ----------
-rscName: str
-seqName: str (optional, default to "")
+rscName: char *
+seqName: char * (optional, default to "")
 
 Return
 -------
@@ -120,7 +119,7 @@ Description
 -----------
 Creates an object and loads resource file and sequence of operators given by their names.
 ") ShapeProcessAPI_ApplySequence;
-		 ShapeProcessAPI_ApplySequence(Standard_CString rscName, Standard_CString seqName = "");
+		 ShapeProcessAPI_ApplySequence(const char * const rscName, const char * const seqName = "");
 
 		/****** ShapeProcessAPI_ApplySequence::ClearMap ******/
 		/****** md5 signature: 9356b49e3e18c060604ef62eda302963 ******/
@@ -149,26 +148,26 @@ Returns object for managing resource file and sequence of operators.
 		opencascade::handle<ShapeProcess_ShapeContext> & Context();
 
 		/****** ShapeProcessAPI_ApplySequence::Map ******/
-		/****** md5 signature: f3544fddbdbe445b92ed0b96e5dc0e82 ******/
+		/****** md5 signature: b34ea465b2355c04a32cf93b0f47fc3f ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-TopTools_DataMapOfShapeShape
+NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Description
 -----------
 Returns myMap with accumulated history.
 ") Map;
-		const TopTools_DataMapOfShapeShape & Map();
+		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> Map();
 
 		/****** ShapeProcessAPI_ApplySequence::PrepareShape ******/
-		/****** md5 signature: 27d62345063f43da2206e8a57a3eb6ef ******/
+		/****** md5 signature: 5fd8ba606488c145562825eb96e77e8c ******/
 		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-fillmap: bool (optional, default to Standard_False)
+fillmap: bool (optional, default to false)
 until: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -180,7 +179,7 @@ Description
 -----------
 Performs sequence of operators stored in myRsc. If <fillmap> is True adds history 'shape-shape' into myMap for shape and its subshapes until level <until> (included). If <until> is TopAbs_SHAPE, all the subshapes are considered.
 ") PrepareShape;
-		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const bool fillmap = false, const TopAbs_ShapeEnum until = TopAbs_SHAPE, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeProcessAPI_ApplySequence::PrintPreparationResult ******/
 		/****** md5 signature: 9f69281710e5ed4ccee63017708a3d97 ******/

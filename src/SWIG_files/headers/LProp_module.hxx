@@ -19,11 +19,13 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define LPROP_HXX
 
 
-#include<LProp_AnalyticCurInf.hxx>
 #include<LProp_BadContinuity.hxx>
 #include<LProp_CIType.hxx>
+#include<LProp_CLProps3d.hxx>
 #include<LProp_CurAndInf.hxx>
+#include<LProp_CurveUtils.hxx>
 #include<LProp_NotDefined.hxx>
+#include<LProp_SLProps3d.hxx>
 #include<LProp_SequenceOfCIType.hxx>
 #include<LProp_Status.hxx>
 

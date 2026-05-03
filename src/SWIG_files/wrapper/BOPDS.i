@@ -44,11 +44,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopds.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntTools_module.hxx>
 #include<TopoDS_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
 #include<IntTools_module.hxx>
@@ -84,11 +82,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopds.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import Bnd.i
 %import IntTools.i
 %import TopoDS.i
-%import TopTools.i
 %import TopAbs.i
 %import gp.i
 
@@ -111,52 +107,34 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(BOPDS_DataMapOfIntegerListOfPaveBlock) NCollection_DataMap<Standard_Integer,BOPDS_ListOfPaveBlock>;
-
-%extend NCollection_DataMap<Standard_Integer,BOPDS_ListOfPaveBlock> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (BOPDS_DataMapOfIntegerListOfPaveBlock::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
+%ignore NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>::Items;
+%ignore NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>::KeyValues;
 %template(BOPDS_DataMapOfPaveBlockListOfInteger) NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>;
-%template(BOPDS_DataMapOfPaveBlockListOfPaveBlock) NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,BOPDS_ListOfPaveBlock>;
+%ignore NCollection_DataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>::KeyValues;
 %template(BOPDS_DataMapOfShapeCoupleOfPaveBlocks) NCollection_DataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>::Items;
+%ignore NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>::KeyValues;
+%ignore NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>::IndexedItems;
+%ignore NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>::Contained;
 %template(BOPDS_IndexedDataMapOfPaveBlockListOfInteger) NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>;
-%template(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock) NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,BOPDS_ListOfPaveBlock>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>::Contained;
 %template(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks) NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>::Items;
+%ignore NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>::KeyValues;
+%ignore NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>::IndexedItems;
+%ignore NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>::Contained;
 %template(BOPDS_IndexedMapOfPaveBlock) NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>;
+%template(BOPDS_ListIteratorOfListOfPave) NCollection_TListIterator<BOPDS_Pave>;
 %template(BOPDS_ListOfPave) NCollection_List<BOPDS_Pave>;
 
 %extend NCollection_List<BOPDS_Pave> {
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = BOPDS_ListIteratorOfListOfPave(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
-    }
-};
-%template(BOPDS_ListOfPaveBlock) NCollection_List<opencascade::handle<BOPDS_PaveBlock>>;
-
-%extend NCollection_List<opencascade::handle<BOPDS_PaveBlock>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-
-    def __iter__(self):
-        it = BOPDS_ListIteratorOfListOfPaveBlock(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(BOPDS_MapOfCommonBlock) NCollection_Map<opencascade::handle<BOPDS_CommonBlock>>;
@@ -176,7 +154,6 @@ from OCC.Core.Exception import *
 %template(BOPDS_VectorOfInterfVV) NCollection_Vector<BOPDS_InterfVV>;
 %template(BOPDS_VectorOfInterfVZ) NCollection_Vector<BOPDS_InterfVZ>;
 %template(BOPDS_VectorOfInterfZZ) NCollection_Vector<BOPDS_InterfZZ>;
-%template(BOPDS_VectorOfListOfPaveBlock) NCollection_Vector<BOPDS_ListOfPaveBlock>;
 %template(BOPDS_VectorOfPair) NCollection_Vector<BOPDS_Pair>;
 %template(BOPDS_VectorOfPave) NCollection_Array1<BOPDS_Pave>;
 Array1ExtendIter(BOPDS_Pave)
@@ -187,33 +164,24 @@ Array1ExtendIter(BOPDS_Pave)
 /* end templates declaration */
 
 /* typedefs */
-typedef BOPDS_DataMapOfPaveBlockCommonBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock;
-typedef BOPDS_DataMapOfPaveBlockListOfInteger::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger;
-typedef BOPDS_DataMapOfPaveBlockListOfPaveBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock;
-typedef BOPDS_DataMapOfShapeCoupleOfPaveBlocks::Iterator BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_DataMap<Standard_Integer, BOPDS_ListOfPaveBlock> BOPDS_DataMapOfIntegerListOfPaveBlock;
+typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, opencascade::handle<BOPDS_CommonBlock>>::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockCommonBlock;
+typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger>::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger;
+typedef NCollection_DataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher>::Iterator BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks;
 typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger> BOPDS_DataMapOfPaveBlockListOfInteger;
-typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock> BOPDS_DataMapOfPaveBlockListOfPaveBlock;
 typedef NCollection_DataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_DataMapOfShapeCoupleOfPaveBlocks;
 typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
-typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock> BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks;
 typedef NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> BOPDS_IndexedMapOfPaveBlock;
-typedef BOPDS_ListOfPave::Iterator BOPDS_ListIteratorOfListOfPave;
-typedef BOPDS_ListOfPaveBlock::Iterator BOPDS_ListIteratorOfListOfPaveBlock;
+typedef NCollection_List<BOPDS_Pave>::Iterator BOPDS_ListIteratorOfListOfPave;
 typedef NCollection_List<BOPDS_Pave> BOPDS_ListOfPave;
-typedef NCollection_List<opencascade::handle<BOPDS_PaveBlock>> BOPDS_ListOfPaveBlock;
-typedef BOPDS_MapOfCommonBlock::Iterator BOPDS_MapIteratorOfMapOfCommonBlock;
-typedef BOPDS_MapOfPair::Iterator BOPDS_MapIteratorOfMapOfPair;
-typedef BOPDS_MapOfPave::Iterator BOPDS_MapIteratorOfMapOfPave;
-typedef BOPDS_MapOfPaveBlock::Iterator BOPDS_MapIteratorOfMapOfPaveBlock;
+typedef NCollection_Map<opencascade::handle<BOPDS_CommonBlock>>::Iterator BOPDS_MapIteratorOfMapOfCommonBlock;
+typedef NCollection_Map<BOPDS_Pair>::Iterator BOPDS_MapIteratorOfMapOfPair;
+typedef NCollection_Map<BOPDS_Pave>::Iterator BOPDS_MapIteratorOfMapOfPave;
+typedef NCollection_Map<opencascade::handle<BOPDS_PaveBlock>>::Iterator BOPDS_MapIteratorOfMapOfPaveBlock;
 typedef NCollection_Map<opencascade::handle<BOPDS_CommonBlock>> BOPDS_MapOfCommonBlock;
 typedef NCollection_Map<BOPDS_Pair> BOPDS_MapOfPair;
 typedef NCollection_Map<BOPDS_Pave> BOPDS_MapOfPave;
 typedef NCollection_Map<opencascade::handle<BOPDS_PaveBlock>> BOPDS_MapOfPaveBlock;
-typedef BOPDS_DS * BOPDS_PDS;
-typedef BOPDS_Iterator * BOPDS_PIterator;
-typedef BOPDS_IteratorSI * BOPDS_PIteratorSI;
 typedef NCollection_Vector<BOPDS_Curve> BOPDS_VectorOfCurve;
 typedef NCollection_Vector<BOPDS_FaceInfo> BOPDS_VectorOfFaceInfo;
 typedef NCollection_Vector<BOPDS_IndexRange> BOPDS_VectorOfIndexRange;
@@ -227,7 +195,6 @@ typedef NCollection_Vector<BOPDS_InterfVF> BOPDS_VectorOfInterfVF;
 typedef NCollection_Vector<BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
 typedef NCollection_Vector<BOPDS_InterfVZ> BOPDS_VectorOfInterfVZ;
 typedef NCollection_Vector<BOPDS_InterfZZ> BOPDS_VectorOfInterfZZ;
-typedef NCollection_Vector<BOPDS_ListOfPaveBlock> BOPDS_VectorOfListOfPaveBlock;
 typedef NCollection_Vector<BOPDS_Pair> BOPDS_VectorOfPair;
 typedef NCollection_Array1<BOPDS_Pave> BOPDS_VectorOfPave;
 typedef NCollection_Vector<BOPDS_Point> BOPDS_VectorOfPoint;
@@ -273,7 +240,7 @@ Parameter theAllocator the allocator to manage the memory.
 		 BOPDS_CommonBlock(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_CommonBlock::AddFace ******/
-		/****** md5 signature: 714848e0da983a50147a1a6fe5cc137f ******/
+		/****** md5 signature: 0c7f95de257d86018c7a48694633a3f7 ******/
 		%feature("compactdefaultargs") AddFace;
 		%feature("autodoc", "
 Parameters
@@ -288,7 +255,7 @@ Description
 -----------
 Modifier Adds the index of the face <aF> to the list of indices of faces of the common block.
 ") AddFace;
-		void AddFace(const Standard_Integer aF);
+		void AddFace(const int aF);
 
 		/****** BOPDS_CommonBlock::AddPaveBlock ******/
 		/****** md5 signature: 40476ddb9e36cdbcc5eee8010b97ab4c ******/
@@ -309,12 +276,12 @@ Modifier Adds the pave block <aPB> to the list of pave blocks of the common bloc
 		void AddPaveBlock(const opencascade::handle<BOPDS_PaveBlock> & aPB);
 
 		/****** BOPDS_CommonBlock::AppendFaces ******/
-		/****** md5 signature: 5ce63b846074664c228a675dcb45a458 ******/
+		/****** md5 signature: 993892b2292508c18687d3212335176c ******/
 		%feature("compactdefaultargs") AppendFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-aLF: TColStd_ListOfInteger
+aLF: NCollection_List<int>
 
 Return
 -------
@@ -324,10 +291,10 @@ Description
 -----------
 Modifier Appends the list of indices of faces <aLF> to the list of indices of faces of the common block (the input list is emptied).
 ") AppendFaces;
-		void AppendFaces(TColStd_ListOfInteger & aLF);
+		void AppendFaces(NCollection_List<int> & aLF);
 
 		/****** BOPDS_CommonBlock::Contains ******/
-		/****** md5 signature: 5b22a1e11ec5b4dc5629d25b7250f464 ******/
+		/****** md5 signature: 4b3272a694594675bae785a65b0903cf ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -342,10 +309,10 @@ Description
 -----------
 Query Returns true if the common block contains a pave block that is equal to <thePB>.
 ") Contains;
-		Standard_Boolean Contains(const opencascade::handle<BOPDS_PaveBlock> & thePB);
+		bool Contains(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
 		/****** BOPDS_CommonBlock::Contains ******/
-		/****** md5 signature: e176c1347c329fce1ef7d92975a35938 ******/
+		/****** md5 signature: 7508f77a27a5eb5b14da9f51e6c2fe78 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -360,7 +327,7 @@ Description
 -----------
 Query Returns true if the common block contains the face with index equal to <theF>.
 ") Contains;
-		Standard_Boolean Contains(const Standard_Integer theF);
+		bool Contains(const int theF);
 
 		/****** BOPDS_CommonBlock::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -376,7 +343,7 @@ No available documentation.
 		void Dump();
 
 		/****** BOPDS_CommonBlock::Edge ******/
-		/****** md5 signature: 76748ffd591f786c44105943fcd6acd5 ******/
+		/****** md5 signature: d6bcd55b8bae579e7b4b7931e982c5a2 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -386,23 +353,23 @@ Description
 -----------
 Selector Returns the index of the edge of all pave blocks of the common block.
 ") Edge;
-		Standard_Integer Edge();
+		int Edge();
 
 		/****** BOPDS_CommonBlock::Faces ******/
-		/****** md5 signature: f01cee5175506ebd45b83cb3b3b4131b ******/
+		/****** md5 signature: d007e435f64c696b2f689c0a336e57b2 ******/
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Selector Returns the list of indices of faces of the common block.
 ") Faces;
-		const TColStd_ListOfInteger & Faces();
+		const NCollection_List<int> & Faces();
 
 		/****** BOPDS_CommonBlock::IsPaveBlockOnEdge ******/
-		/****** md5 signature: 556c9b86abcb2e00fd4015462e486e3a ******/
+		/****** md5 signature: 2d57f1d25bca31907689f1231d430daf ******/
 		%feature("compactdefaultargs") IsPaveBlockOnEdge;
 		%feature("autodoc", "
 Parameters
@@ -417,10 +384,10 @@ Description
 -----------
 Query Returns true if the common block contains a pave block that belongs to the edge with index <theIx>.
 ") IsPaveBlockOnEdge;
-		Standard_Boolean IsPaveBlockOnEdge(const Standard_Integer theIndex);
+		bool IsPaveBlockOnEdge(const int theIndex);
 
 		/****** BOPDS_CommonBlock::IsPaveBlockOnFace ******/
-		/****** md5 signature: a763ade0791732f6be00ac3203ae8699 ******/
+		/****** md5 signature: 9a7cf29d761812db7c4f67f5ce0d01f4 ******/
 		%feature("compactdefaultargs") IsPaveBlockOnFace;
 		%feature("autodoc", "
 Parameters
@@ -435,7 +402,7 @@ Description
 -----------
 Query Returns true if the common block contains a pave block that belongs to the face with index <theIx>.
 ") IsPaveBlockOnFace;
-		Standard_Boolean IsPaveBlockOnFace(const Standard_Integer theIndex);
+		bool IsPaveBlockOnFace(const int theIndex);
 
 		/****** BOPDS_CommonBlock::PaveBlock1 ******/
 		/****** md5 signature: 38e85104f9e5048af41cb3d65ab07ee3 ******/
@@ -451,7 +418,7 @@ Selector Returns the first pave block of the common block.
 		const opencascade::handle<BOPDS_PaveBlock> & PaveBlock1();
 
 		/****** BOPDS_CommonBlock::PaveBlockOnEdge ******/
-		/****** md5 signature: f3596403b9d0aac976dafd133944bfec ******/
+		/****** md5 signature: 6a758f35c5409c46a843f111976bafab ******/
 		%feature("compactdefaultargs") PaveBlockOnEdge;
 		%feature("autodoc", "
 Parameters
@@ -466,23 +433,23 @@ Description
 -----------
 Selector Returns the pave block that belongs to the edge with index <theIx>.
 ") PaveBlockOnEdge;
-		opencascade::handle<BOPDS_PaveBlock> & PaveBlockOnEdge(const Standard_Integer theIndex);
+		opencascade::handle<BOPDS_PaveBlock> & PaveBlockOnEdge(const int theIndex);
 
 		/****** BOPDS_CommonBlock::PaveBlocks ******/
-		/****** md5 signature: 7d51c8e06f45b23721dd9a87453d2391 ******/
+		/****** md5 signature: 770f52828ce980217a9dd084b6a5a2c7 ******/
 		%feature("compactdefaultargs") PaveBlocks;
 		%feature("autodoc", "Return
 -------
-BOPDS_ListOfPaveBlock
+NCollection_List<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector Returns the list of pave blocks of the common block.
 ") PaveBlocks;
-		const BOPDS_ListOfPaveBlock & PaveBlocks();
+		const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocks();
 
 		/****** BOPDS_CommonBlock::SetEdge ******/
-		/****** md5 signature: e5f0cb270588385f5c43b443c7a3911e ******/
+		/****** md5 signature: 10ef0497a2e2e608e511c8bbe697c8a4 ******/
 		%feature("compactdefaultargs") SetEdge;
 		%feature("autodoc", "
 Parameters
@@ -497,15 +464,15 @@ Description
 -----------
 Modifier Assign the index <theEdge> as the edge index to all pave blocks of the common block.
 ") SetEdge;
-		void SetEdge(const Standard_Integer theEdge);
+		void SetEdge(const int theEdge);
 
 		/****** BOPDS_CommonBlock::SetFaces ******/
-		/****** md5 signature: df9d7d397e0a70d489fa65f29e832130 ******/
+		/****** md5 signature: 937340fca13e46123d3f4cbdea00a057 ******/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", "
 Parameters
 ----------
-aLF: TColStd_ListOfInteger
+aLF: NCollection_List<int>
 
 Return
 -------
@@ -515,15 +482,15 @@ Description
 -----------
 Modifier Sets the list of indices of faces <aLF> of the common block.
 ") SetFaces;
-		void SetFaces(const TColStd_ListOfInteger & aLF);
+		void SetFaces(const NCollection_List<int> & aLF);
 
 		/****** BOPDS_CommonBlock::SetPaveBlocks ******/
-		/****** md5 signature: 1b0483dad806e671b173313df9ef53b7 ******/
+		/****** md5 signature: 9ce14e8841ee61c82967a6fb7939fac5 ******/
 		%feature("compactdefaultargs") SetPaveBlocks;
 		%feature("autodoc", "
 Parameters
 ----------
-aLPB: BOPDS_ListOfPaveBlock
+aLPB: BOPDS_PaveBlock
 
 Return
 -------
@@ -533,7 +500,7 @@ Description
 -----------
 Modifier Sets the list of pave blocks for the common block.
 ") SetPaveBlocks;
-		void SetPaveBlocks(const BOPDS_ListOfPaveBlock & aLPB);
+		void SetPaveBlocks(const NCollection_List<opencascade::handle<BOPDS_PaveBlock> > & aLPB);
 
 		/****** BOPDS_CommonBlock::SetRealPaveBlock ******/
 		/****** md5 signature: bd90910404bf474e53d2306cbe0b543b ******/
@@ -554,12 +521,12 @@ Moves the pave blocks in the list to make the given pave block to be the first. 
 		void SetRealPaveBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
 		/****** BOPDS_CommonBlock::SetTolerance ******/
-		/****** md5 signature: 3d7576e44e771b252fc1783601ea4631 ******/
+		/****** md5 signature: 46723e0a5720b7717ac743274fef3d11 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -569,20 +536,20 @@ Description
 -----------
 Sets the tolerance for the common block.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real theTol);
+		void SetTolerance(const double theTol);
 
 		/****** BOPDS_CommonBlock::Tolerance ******/
-		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
+		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Return the tolerance of common block.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -609,7 +576,7 @@ None
 
 Description
 -----------
-/** * Constructor */.
+Default constructor.
 ") BOPDS_CoupleOfPaveBlocks;
 		 BOPDS_CoupleOfPaveBlocks();
 
@@ -628,14 +595,14 @@ None
 
 Description
 -----------
-/** * Constructor * 
-Parameter thePB1 * first pave block * 
-Parameter thePB2 * secondt pave block */.
+Constructor with two pave blocks. 
+Input parameter: thePB1 first pave block 
+Input parameter: thePB2 second pave block.
 ") BOPDS_CoupleOfPaveBlocks;
 		 BOPDS_CoupleOfPaveBlocks(const opencascade::handle<BOPDS_PaveBlock> & thePB1, const opencascade::handle<BOPDS_PaveBlock> & thePB2);
 
 		/****** BOPDS_CoupleOfPaveBlocks::Index ******/
-		/****** md5 signature: 0be2d384cf83d16771bb3f9c857c6326 ******/
+		/****** md5 signature: 4fc88a71a4ab819038de9a6160c989c2 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -643,13 +610,13 @@ int
 
 Description
 -----------
-/** * Returns the index * 
-Return: * index */.
+Returns the index. 
+Return: the index.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** BOPDS_CoupleOfPaveBlocks::IndexInterf ******/
-		/****** md5 signature: f53221f131b48fa86a70c5cca779b235 ******/
+		/****** md5 signature: 4d8f749dbb35bd7bad4be8b9ea655c71 ******/
 		%feature("compactdefaultargs") IndexInterf;
 		%feature("autodoc", "Return
 -------
@@ -657,10 +624,10 @@ int
 
 Description
 -----------
-/** * Returns the index of an interference * 
-Return: * index of an interference */.
+Returns the index of an interference. 
+Return: index of an interference.
 ") IndexInterf;
-		Standard_Integer IndexInterf();
+		int IndexInterf();
 
 		/****** BOPDS_CoupleOfPaveBlocks::PaveBlock1 ******/
 		/****** md5 signature: fbed016ee3e75bed6bbdc5dc7e5b9e3f ******/
@@ -671,8 +638,8 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-/** * Returns the first pave block * 
-Return: * the first pave block */.
+Returns the first pave block. 
+Return: handle to the first pave block.
 ") PaveBlock1;
 		const opencascade::handle<BOPDS_PaveBlock> & PaveBlock1();
 
@@ -685,8 +652,8 @@ opencascade::handle<BOPDS_PaveBlock>
 
 Description
 -----------
-/** * Returns the second pave block * 
-Return: * the second pave block */.
+Returns the second pave block. 
+Return: handle to the second pave block.
 ") PaveBlock2;
 		const opencascade::handle<BOPDS_PaveBlock> & PaveBlock2();
 
@@ -705,14 +672,12 @@ None
 
 Description
 -----------
-/** * Returns pave blocks * 
-Parameter thePB1 * the first pave block * 
-Parameter thePB2 * the second pave block */.
+No available documentation.
 ") PaveBlocks;
 		void PaveBlocks(opencascade::handle<BOPDS_PaveBlock> & thePB1, opencascade::handle<BOPDS_PaveBlock> & thePB2);
 
 		/****** BOPDS_CoupleOfPaveBlocks::SetIndex ******/
-		/****** md5 signature: 5d636b968374ec848f4cd1fad9815499 ******/
+		/****** md5 signature: 2a3e510c2a05e5583c001e169b9296fc ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -725,13 +690,13 @@ None
 
 Description
 -----------
-/** * Sets an index * 
-Parameter theIndex * index */.
+Sets the index. 
+Input parameter: theIndex the index.
 ") SetIndex;
-		void SetIndex(const Standard_Integer theIndex);
+		void SetIndex(const int theIndex);
 
 		/****** BOPDS_CoupleOfPaveBlocks::SetIndexInterf ******/
-		/****** md5 signature: d82912a5e6070d14fdaa4e4b53bfbf16 ******/
+		/****** md5 signature: 375fbfa362ebf9dfa870246243d2b5cb ******/
 		%feature("compactdefaultargs") SetIndexInterf;
 		%feature("autodoc", "
 Parameters
@@ -744,10 +709,10 @@ None
 
 Description
 -----------
-/** * Sets an index of an interference * 
-Parameter theIndex * index of an interference */.
+Sets the index of an interference. 
+Input parameter: theIndex index of an interference.
 ") SetIndexInterf;
-		void SetIndexInterf(const Standard_Integer theIndex);
+		void SetIndexInterf(const int theIndex);
 
 		/****** BOPDS_CoupleOfPaveBlocks::SetPaveBlock1 ******/
 		/****** md5 signature: acf4bc4664fb826b50250c087925e0d4 ******/
@@ -763,8 +728,8 @@ None
 
 Description
 -----------
-/** * Sets the first pave block * 
-Parameter thePB * the first pave block */.
+Sets the first pave block. 
+Input parameter: thePB the first pave block.
 ") SetPaveBlock1;
 		void SetPaveBlock1(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -782,8 +747,8 @@ None
 
 Description
 -----------
-/** * Sets the second pave block * 
-Parameter thePB * the second pave block */.
+Sets the second pave block. 
+Input parameter: thePB the second pave block.
 ") SetPaveBlock2;
 		void SetPaveBlock2(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
@@ -802,19 +767,19 @@ None
 
 Description
 -----------
-/** * Sets pave blocks * 
-Parameter thePB1 * first pave block * 
-Parameter thePB2 * secondt pave block */.
+Sets both pave blocks. 
+Input parameter: thePB1 first pave block 
+Input parameter: thePB2 second pave block.
 ") SetPaveBlocks;
 		void SetPaveBlocks(const opencascade::handle<BOPDS_PaveBlock> & thePB1, const opencascade::handle<BOPDS_PaveBlock> & thePB2);
 
 		/****** BOPDS_CoupleOfPaveBlocks::SetTolerance ******/
-		/****** md5 signature: 3d7576e44e771b252fc1783601ea4631 ******/
+		/****** md5 signature: 46723e0a5720b7717ac743274fef3d11 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -822,22 +787,24 @@ None
 
 Description
 -----------
-/** * Sets the tolerance associated with this couple */.
+Sets the tolerance associated with this couple. 
+Input parameter: theTol the tolerance value.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real theTol);
+		void SetTolerance(const double theTol);
 
 		/****** BOPDS_CoupleOfPaveBlocks::Tolerance ******/
-		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
+		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
-/** * Returns the tolerance associated with this couple */.
+Returns the tolerance associated with this couple. 
+Return: the tolerance value.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -925,30 +892,30 @@ Selector/Modifier Returns initial pave block of the curve.
 		opencascade::handle<BOPDS_PaveBlock> & ChangePaveBlock1();
 
 		/****** BOPDS_Curve::ChangePaveBlocks ******/
-		/****** md5 signature: 5a68e5768876becb3226e5b71004feeb ******/
+		/****** md5 signature: 983f0690def33098969090807810f4f9 ******/
 		%feature("compactdefaultargs") ChangePaveBlocks;
 		%feature("autodoc", "Return
 -------
-BOPDS_ListOfPaveBlock
+NCollection_List<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector/Modifier Returns the list of pave blocks of the curve.
 ") ChangePaveBlocks;
-		BOPDS_ListOfPaveBlock & ChangePaveBlocks();
+		NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocks();
 
 		/****** BOPDS_Curve::ChangeTechnoVertices ******/
-		/****** md5 signature: 4c2d6c6a355395f1703c558e7a77e79f ******/
+		/****** md5 signature: fa94b655a13f9bb7ec6e430633cc4e21 ******/
 		%feature("compactdefaultargs") ChangeTechnoVertices;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Selector/Modifier Returns list of indices of technologic vertices of the curve.
 ") ChangeTechnoVertices;
-		TColStd_ListOfInteger & ChangeTechnoVertices();
+		NCollection_List<int> & ChangeTechnoVertices();
 
 		/****** BOPDS_Curve::Curve ******/
 		/****** md5 signature: f601887c73fa6c5311bace5eeee9b758 ******/
@@ -964,7 +931,7 @@ Selector Returns the curve.
 		IntTools_Curve Curve();
 
 		/****** BOPDS_Curve::HasEdge ******/
-		/****** md5 signature: b29d7c6fb0d75a5501e02d3f7002ad41 ******/
+		/****** md5 signature: 1431a428535970b7a422dfbd1ed3d98e ******/
 		%feature("compactdefaultargs") HasEdge;
 		%feature("autodoc", "Return
 -------
@@ -974,7 +941,7 @@ Description
 -----------
 Query Returns true if at least one pave block of the curve has edge.
 ") HasEdge;
-		Standard_Boolean HasEdge();
+		bool HasEdge();
 
 		/****** BOPDS_Curve::InitPaveBlock1 ******/
 		/****** md5 signature: 9029705f3ca329328cf1b75de1922c4e ******/
@@ -990,17 +957,17 @@ Creates initial pave block of the curve.
 		void InitPaveBlock1();
 
 		/****** BOPDS_Curve::PaveBlocks ******/
-		/****** md5 signature: 7d51c8e06f45b23721dd9a87453d2391 ******/
+		/****** md5 signature: 770f52828ce980217a9dd084b6a5a2c7 ******/
 		%feature("compactdefaultargs") PaveBlocks;
 		%feature("autodoc", "Return
 -------
-BOPDS_ListOfPaveBlock
+NCollection_List<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector Returns the list of pave blocks of the curve.
 ") PaveBlocks;
-		const BOPDS_ListOfPaveBlock & PaveBlocks();
+		const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocks();
 
 		/****** BOPDS_Curve::SetBox ******/
 		/****** md5 signature: 08b5255d733c5c76b81013bedaa4c32d ******/
@@ -1039,12 +1006,12 @@ Modifier Sets the curve <theC>.
 		void SetCurve(const IntTools_Curve & theC);
 
 		/****** BOPDS_Curve::SetPaveBlocks ******/
-		/****** md5 signature: 396db1816ffe1d8df6fee2dd320f1385 ******/
+		/****** md5 signature: 4f3ec8b6c2dc10a70bfea179d24bbbc5 ******/
 		%feature("compactdefaultargs") SetPaveBlocks;
 		%feature("autodoc", "
 Parameters
 ----------
-theLPB: BOPDS_ListOfPaveBlock
+theLPB: BOPDS_PaveBlock
 
 Return
 -------
@@ -1054,15 +1021,15 @@ Description
 -----------
 No available documentation.
 ") SetPaveBlocks;
-		void SetPaveBlocks(const BOPDS_ListOfPaveBlock & theLPB);
+		void SetPaveBlocks(const NCollection_List<opencascade::handle<BOPDS_PaveBlock> > & theLPB);
 
 		/****** BOPDS_Curve::SetTolerance ******/
-		/****** md5 signature: 3d7576e44e771b252fc1783601ea4631 ******/
+		/****** md5 signature: 46723e0a5720b7717ac743274fef3d11 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theTol: float
+theTol: double
 
 Return
 -------
@@ -1072,46 +1039,46 @@ Description
 -----------
 Sets the tolerance for the curve.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real theTol);
+		void SetTolerance(const double theTol);
 
 		/****** BOPDS_Curve::TangentialTolerance ******/
-		/****** md5 signature: c1e785de724669f2f929496d8c904a9c ******/
+		/****** md5 signature: e60912ea3150be42bc4f243e7e5761c1 ******/
 		%feature("compactdefaultargs") TangentialTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the tangential tolerance of the curve.
 ") TangentialTolerance;
-		Standard_Real TangentialTolerance();
+		double TangentialTolerance();
 
 		/****** BOPDS_Curve::TechnoVertices ******/
-		/****** md5 signature: 9266b29efc3610cc962a9ba1b2063c66 ******/
+		/****** md5 signature: 02c88a8239566f9bc92dfda5184f4be5 ******/
 		%feature("compactdefaultargs") TechnoVertices;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Selector Returns list of indices of technologic vertices of the curve.
 ") TechnoVertices;
-		const TColStd_ListOfInteger & TechnoVertices();
+		const NCollection_List<int> & TechnoVertices();
 
 		/****** BOPDS_Curve::Tolerance ******/
-		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
+		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the tolerance of the curve.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 };
 
@@ -1160,7 +1127,7 @@ Parameter theAllocator the allocator to manage the memory.
 		 BOPDS_DS(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_DS::AddInterf ******/
-		/****** md5 signature: e208a2d1807b943e21900bd1a1bea9d8 ******/
+		/****** md5 signature: bc4ec165e80100bcfee66991b531cb52 ******/
 		%feature("compactdefaultargs") AddInterf;
 		%feature("autodoc", "
 Parameters
@@ -1176,10 +1143,10 @@ Description
 -----------
 Modifier Adds the information about an interference between shapes with indices theI1, theI2 to the summary table of interferences.
 ") AddInterf;
-		Standard_Boolean AddInterf(const Standard_Integer theI1, const Standard_Integer theI2);
+		bool AddInterf(const int theI1, const int theI2);
 
 		/****** BOPDS_DS::AddShapeSD ******/
-		/****** md5 signature: 72049a70b73d8f79599bac8aa8fdfd13 ******/
+		/****** md5 signature: 70ff03d5a932d061cf06ece56eba0062 ******/
 		%feature("compactdefaultargs") AddShapeSD;
 		%feature("autodoc", "
 Parameters
@@ -1195,7 +1162,7 @@ Description
 -----------
 Modifier Adds the information about same domain shapes with indices theIndex, theIndexSD.
 ") AddShapeSD;
-		void AddShapeSD(const Standard_Integer theIndex, const Standard_Integer theIndexSD);
+		void AddShapeSD(const int theIndex, const int theIndexSD);
 
 		/****** BOPDS_DS::Allocator ******/
 		/****** md5 signature: 16ec5fa9c8407823fdb0339c9f1d453e ******/
@@ -1211,13 +1178,13 @@ Selector.
 		const opencascade::handle<NCollection_BaseAllocator> & Allocator();
 
 		/****** BOPDS_DS::AloneVertices ******/
-		/****** md5 signature: c93385a5f28b91fac106100deb86f0d3 ******/
+		/****** md5 signature: 0a345227df77febb71b5c0ae7b8d0223 ******/
 		%feature("compactdefaultargs") AloneVertices;
 		%feature("autodoc", "
 Parameters
 ----------
-theF: int
-theLI: TColStd_ListOfInteger
+theFaceIndex: int
+theVertexList: NCollection_List<int>
 
 Return
 -------
@@ -1225,12 +1192,12 @@ None
 
 Description
 -----------
-Selector Returns the indices of alone vertices for the face with index theIndex.
+Selector Returns the indices of alone vertices for the face with index @p theFaceIndex.
 ") AloneVertices;
-		void AloneVertices(const Standard_Integer theF, TColStd_ListOfInteger & theLI);
+		void AloneVertices(const int theFaceIndex, NCollection_List<int> & theVertexList);
 
 		/****** BOPDS_DS::Append ******/
-		/****** md5 signature: 3e13f4e60ccb6615e6df53170490f097 ******/
+		/****** md5 signature: 8247691645497818952579581db4a2ba ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -1245,10 +1212,10 @@ Description
 -----------
 Modifier Appends the information about the shape [theSI] to the data structure Returns the index of theSI in the data structure.
 ") Append;
-		Standard_Integer Append(const BOPDS_ShapeInfo & theSI);
+		int Append(const BOPDS_ShapeInfo & theSI);
 
 		/****** BOPDS_DS::Append ******/
-		/****** md5 signature: 59ffffc8522871f8f1bfab4c318f3466 ******/
+		/****** md5 signature: 7cd18ff526f562e72d27648e77fd417f ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -1263,30 +1230,30 @@ Description
 -----------
 Modifier Appends the default information about the shape [theS] to the data structure Returns the index of theS in the data structure.
 ") Append;
-		Standard_Integer Append(const TopoDS_Shape & theS);
+		int Append(const TopoDS_Shape & theS);
 
 		/****** BOPDS_DS::Arguments ******/
-		/****** md5 signature: 80309a121493a4f5d1f74be6db70eb2e ******/
+		/****** md5 signature: b869ff9ffc90f441ebb6a2f7f843ce6a ******/
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Selector Returns the arguments of an operation.
 ") Arguments;
-		const TopTools_ListOfShape & Arguments();
+		const NCollection_List<TopoDS_Shape> Arguments();
 
 		/****** BOPDS_DS::BuildBndBoxSolid ******/
-		/****** md5 signature: ffe165738dd3059a8eebdf7686b24a4d ******/
+		/****** md5 signature: 97e2214a5b5b405ea8d6174f4b73e3f8 ******/
 		%feature("compactdefaultargs") BuildBndBoxSolid;
 		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theBox: Bnd_Box
-theCheckInverted: bool (optional, default to Standard_True)
+theCheckInverted: bool (optional, default to true)
 
 Return
 -------
@@ -1296,10 +1263,10 @@ Description
 -----------
 Computes bounding box <theBox> for the solid with DS-index <theIndex>. The flag <theCheckInverted> enables/disables the check of the solid for inverted status. By default the solids will be checked.
 ") BuildBndBoxSolid;
-		void BuildBndBoxSolid(const Standard_Integer theIndex, Bnd_Box & theBox, const Standard_Boolean theCheckInverted = Standard_True);
+		void BuildBndBoxSolid(const int theIndex, Bnd_Box & theBox, const bool theCheckInverted = true);
 
 		/****** BOPDS_DS::ChangeFaceInfo ******/
-		/****** md5 signature: 7172f9c4cd39086795416172658da4ba ******/
+		/****** md5 signature: 0c36b93f93aa85091a5447c21a303f44 ******/
 		%feature("compactdefaultargs") ChangeFaceInfo;
 		%feature("autodoc", "
 Parameters
@@ -1314,10 +1281,10 @@ Description
 -----------
 Selector/Modifier Returns the state of face with index theIndex.
 ") ChangeFaceInfo;
-		BOPDS_FaceInfo & ChangeFaceInfo(const Standard_Integer theIndex);
+		BOPDS_FaceInfo & ChangeFaceInfo(const int theIndex);
 
 		/****** BOPDS_DS::ChangePaveBlocks ******/
-		/****** md5 signature: 7299e5e8bc16bab9a322647e20d61b33 ******/
+		/****** md5 signature: ce2705f4c845d162e43a31439b7138e4 ******/
 		%feature("compactdefaultargs") ChangePaveBlocks;
 		%feature("autodoc", "
 Parameters
@@ -1326,29 +1293,29 @@ theIndex: int
 
 Return
 -------
-BOPDS_ListOfPaveBlock
+NCollection_List<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector/Modifier Returns the pave blocks for the shape with index theIndex.
 ") ChangePaveBlocks;
-		BOPDS_ListOfPaveBlock & ChangePaveBlocks(const Standard_Integer theIndex);
+		NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocks(const int theIndex);
 
 		/****** BOPDS_DS::ChangePaveBlocksPool ******/
-		/****** md5 signature: 399ec244864e962bdc9de51c041427ce ******/
+		/****** md5 signature: 47ad8ec3b0aac5f0ffc3cf68b62d90ac ******/
 		%feature("compactdefaultargs") ChangePaveBlocksPool;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfListOfPaveBlock
+NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>
 
 Description
 -----------
 Selector/Modifier Returns the information about pave blocks on source edges.
 ") ChangePaveBlocksPool;
-		BOPDS_VectorOfListOfPaveBlock & ChangePaveBlocksPool();
+		NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & ChangePaveBlocksPool();
 
 		/****** BOPDS_DS::ChangeShapeInfo ******/
-		/****** md5 signature: 69ac6739f4453660035cfffcfae56704 ******/
+		/****** md5 signature: cc6f62809d6e81d4621028ac8240dc36 ******/
 		%feature("compactdefaultargs") ChangeShapeInfo;
 		%feature("autodoc", "
 Parameters
@@ -1363,7 +1330,7 @@ Description
 -----------
 Selector/Modifier Returns the information about the shape with index theIndex.
 ") ChangeShapeInfo;
-		BOPDS_ShapeInfo & ChangeShapeInfo(const Standard_Integer theIndex);
+		BOPDS_ShapeInfo & ChangeShapeInfo(const int theIndex);
 
 		/****** BOPDS_DS::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -1410,7 +1377,7 @@ No available documentation.
 		void Dump();
 
 		/****** BOPDS_DS::FaceInfo ******/
-		/****** md5 signature: 6ec8ca3eb06b147f5132a85deff896dd ******/
+		/****** md5 signature: 9b8f8c046cc9fab776a1732fd9043988 ******/
 		%feature("compactdefaultargs") FaceInfo;
 		%feature("autodoc", "
 Parameters
@@ -1425,17 +1392,17 @@ Description
 -----------
 Selector Returns the state of face with index theIndex.
 ") FaceInfo;
-		const BOPDS_FaceInfo & FaceInfo(const Standard_Integer theIndex);
+		const BOPDS_FaceInfo & FaceInfo(const int theIndex);
 
 		/****** BOPDS_DS::FaceInfoIn ******/
-		/****** md5 signature: 1a244a93e8dfd09c6dfd80799a243c8c ******/
+		/****** md5 signature: e05ff80f57210a6cdf142290a653a2fd ******/
 		%feature("compactdefaultargs") FaceInfoIn;
 		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
-theMPB: BOPDS_IndexedMapOfPaveBlock
-theMVP: TColStd_MapOfInteger
+theMPB: BOPDS_PaveBlock
+theMVP: NCollection_Map<int>
 
 Return
 -------
@@ -1445,17 +1412,17 @@ Description
 -----------
 Selector Returns the state In [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoIn;
-		void FaceInfoIn(const Standard_Integer theIndex, BOPDS_IndexedMapOfPaveBlock & theMPB, TColStd_MapOfInteger & theMVP);
+		void FaceInfoIn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock> > & theMPB, NCollection_Map<int> & theMVP);
 
 		/****** BOPDS_DS::FaceInfoOn ******/
-		/****** md5 signature: 8476cfdb28e35410fbccff7d3fea188c ******/
+		/****** md5 signature: 98f0d5944e4a03f045f0cfb8e53928e5 ******/
 		%feature("compactdefaultargs") FaceInfoOn;
 		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
-theMPB: BOPDS_IndexedMapOfPaveBlock
-theMVP: TColStd_MapOfInteger
+theMPB: BOPDS_PaveBlock
+theMVP: NCollection_Map<int>
 
 Return
 -------
@@ -1465,23 +1432,41 @@ Description
 -----------
 Selector Returns the state On [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoOn;
-		void FaceInfoOn(const Standard_Integer theIndex, BOPDS_IndexedMapOfPaveBlock & theMPB, TColStd_MapOfInteger & theMVP);
+		void FaceInfoOn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock> > & theMPB, NCollection_Map<int> & theMVP);
 
 		/****** BOPDS_DS::FaceInfoPool ******/
-		/****** md5 signature: a6655407c6289d3016f98639683edc48 ******/
+		/****** md5 signature: 8961cf8a4951fd6e88dc15b3e0d6696c ******/
 		%feature("compactdefaultargs") FaceInfoPool;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfFaceInfo
+NCollection_Vector<BOPDS_FaceInfo>
 
 Description
 -----------
 Selector Returns the information about state of faces.
 ") FaceInfoPool;
-		const BOPDS_VectorOfFaceInfo & FaceInfoPool();
+		const NCollection_Vector<BOPDS_FaceInfo> & FaceInfoPool();
+
+		/****** BOPDS_DS::GetSameDomainIndex ******/
+		/****** md5 signature: 713c51ff0932a6e8a48c31d23af06a17 ******/
+		%feature("compactdefaultargs") GetSameDomainIndex;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+
+Return
+-------
+int
+
+Description
+-----------
+Returns the index of same domain shape for the shape with index @p theIndex. If there is no same domain shape, returns @p theIndex itself.
+") GetSameDomainIndex;
+		int GetSameDomainIndex(const int theIndex);
 
 		/****** BOPDS_DS::HasFaceInfo ******/
-		/****** md5 signature: 028f8f8ab3e7f0f2ed26c8c06cf455c2 ******/
+		/****** md5 signature: bff83ac5d4eeeb0f66281ea03c86bdf5 ******/
 		%feature("compactdefaultargs") HasFaceInfo;
 		%feature("autodoc", "
 Parameters
@@ -1496,10 +1481,10 @@ Description
 -----------
 Query Returns true if the shape with index theIndex has the information about state of face.
 ") HasFaceInfo;
-		Standard_Boolean HasFaceInfo(const Standard_Integer theIndex);
+		bool HasFaceInfo(const int theIndex);
 
 		/****** BOPDS_DS::HasInterf ******/
-		/****** md5 signature: 49283712d76e913ced59d7cd0e4cc6bf ******/
+		/****** md5 signature: d7c70f69c3597ac9604298979afcae79 ******/
 		%feature("compactdefaultargs") HasInterf;
 		%feature("autodoc", "
 Parameters
@@ -1514,10 +1499,10 @@ Description
 -----------
 Query Returns true if the shape with index theI is interferred.
 ") HasInterf;
-		Standard_Boolean HasInterf(const Standard_Integer theI);
+		bool HasInterf(const int theI);
 
 		/****** BOPDS_DS::HasInterf ******/
-		/****** md5 signature: 1d80e545b7d9a7723da7460ab8fc21ef ******/
+		/****** md5 signature: 3f5ec30d56a5060a520a9170acd8083a ******/
 		%feature("compactdefaultargs") HasInterf;
 		%feature("autodoc", "
 Parameters
@@ -1533,17 +1518,17 @@ Description
 -----------
 Query Returns true if the shapes with indices theI1, theI2 are interferred.
 ") HasInterf;
-		Standard_Boolean HasInterf(const Standard_Integer theI1, const Standard_Integer theI2);
+		bool HasInterf(const int theI1, const int theI2);
 
 		/****** BOPDS_DS::HasInterfShapeSubShapes ******/
-		/****** md5 signature: 0aa0734f4d409aa68bbb45efdedf95f0 ******/
+		/****** md5 signature: f164dec10b8a67528f2c430a0f3763f1 ******/
 		%feature("compactdefaultargs") HasInterfShapeSubShapes;
 		%feature("autodoc", "
 Parameters
 ----------
-theI1: int
-theI2: int
-theFlag: bool (optional, default to Standard_True)
+theIndex1: int
+theIndex2: int
+theAnyInterference: bool (optional, default to true)
 
 Return
 -------
@@ -1551,18 +1536,18 @@ bool
 
 Description
 -----------
-Query Returns true if the shape with index theI1 is interfered with any sub-shape of the shape with index theI2 (theFlag=true) all sub-shapes of the shape with index theI2 (theFlag=false).
+Query Returns true if the shape with index theIndex1 is interfered with any sub-shape of the shape with index theIndex2 (theAnyInterference=true) all sub-shapes of the shape with index theIndex2 (theAnyInterference=false).
 ") HasInterfShapeSubShapes;
-		Standard_Boolean HasInterfShapeSubShapes(const Standard_Integer theI1, const Standard_Integer theI2, const Standard_Boolean theFlag = Standard_True);
+		bool HasInterfShapeSubShapes(const int theIndex1, const int theIndex2, const bool theAnyInterference = true);
 
 		/****** BOPDS_DS::HasInterfSubShapes ******/
-		/****** md5 signature: 2ae27af80945e532df7c2bbd58f11cd7 ******/
+		/****** md5 signature: 05bfda56c938515e90bab773b1b60586 ******/
 		%feature("compactdefaultargs") HasInterfSubShapes;
 		%feature("autodoc", "
 Parameters
 ----------
-theI1: int
-theI2: int
+theIndex1: int
+theIndex2: int
 
 Return
 -------
@@ -1570,12 +1555,12 @@ bool
 
 Description
 -----------
-Query Returns true if the shapes with indices theI1, theI2 have interferred sub-shapes.
+Query Returns true if the shapes with indices theIndex1, theIndex2 have interferred sub-shapes.
 ") HasInterfSubShapes;
-		Standard_Boolean HasInterfSubShapes(const Standard_Integer theI1, const Standard_Integer theI2);
+		bool HasInterfSubShapes(const int theIndex1, const int theIndex2);
 
 		/****** BOPDS_DS::HasPaveBlocks ******/
-		/****** md5 signature: c7343602d13620a44b73bbe33d4d439a ******/
+		/****** md5 signature: 5621b8bd03e70601a327e710499dc475 ******/
 		%feature("compactdefaultargs") HasPaveBlocks;
 		%feature("autodoc", "
 Parameters
@@ -1590,10 +1575,10 @@ Description
 -----------
 Query Returns true if the shape with index theIndex has the information about pave blocks.
 ") HasPaveBlocks;
-		Standard_Boolean HasPaveBlocks(const Standard_Integer theIndex);
+		bool HasPaveBlocks(const int theIndex);
 
 		/****** BOPDS_DS::HasShapeSD ******/
-		/****** md5 signature: ae014300fee852ffc3e8e610f3a33ffb ******/
+		/****** md5 signature: 9705e5cb4a5fbc2d95356934940edbf9 ******/
 		%feature("compactdefaultargs") HasShapeSD;
 		%feature("autodoc", "
 Parameters
@@ -1608,10 +1593,10 @@ Description
 -----------
 Query Returns true if the shape with index theIndex has the same domain shape. In this case theIndexSD will contain the index of same domain shape found //! interferences.
 ") HasShapeSD;
-		Standard_Boolean HasShapeSD(const Standard_Integer theIndex, Standard_Integer &OutValue);
+		bool HasShapeSD(const int theIndex, Standard_Integer &OutValue);
 
 		/****** BOPDS_DS::Index ******/
-		/****** md5 signature: be10b23bfcf45be693e1699539996e8e ******/
+		/****** md5 signature: 431c28b00bdcd75b9a945a79cd3178dc ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -1626,15 +1611,15 @@ Description
 -----------
 Selector Returns the index of the shape theS.
 ") Index;
-		Standard_Integer Index(const TopoDS_Shape & theS);
+		int Index(const TopoDS_Shape & theS);
 
 		/****** BOPDS_DS::Init ******/
-		/****** md5 signature: 119c8bca63b257c5cda6219fd077dd01 ******/
+		/****** md5 signature: 14cdc4d6657e285ffe0969e5ed883437 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-theFuzz: float (optional, default to Precision::Confusion())
+theFuzz: double (optional, default to Precision::Confusion())
 
 Return
 -------
@@ -1644,10 +1629,10 @@ Description
 -----------
 Initializes the data structure for the arguments.
 ") Init;
-		void Init(const Standard_Real theFuzz = Precision::Confusion());
+		void Init(const double theFuzz = Precision::Confusion());
 
 		/****** BOPDS_DS::InitPaveBlocksForVertex ******/
-		/****** md5 signature: 15347613c57581b43dc354442cd1623d ******/
+		/****** md5 signature: 7008d1a0d6a6d3e120ec4c313cb04b05 ******/
 		%feature("compactdefaultargs") InitPaveBlocksForVertex;
 		%feature("autodoc", "
 Parameters
@@ -1662,153 +1647,153 @@ Description
 -----------
 No available documentation.
 ") InitPaveBlocksForVertex;
-		void InitPaveBlocksForVertex(const Standard_Integer theNV);
+		void InitPaveBlocksForVertex(const int theNV);
 
 		/****** BOPDS_DS::InterfEE ******/
-		/****** md5 signature: 72fd0c4ed5824128f64e718d30ed306a ******/
+		/****** md5 signature: 4622cd96c70124f07a910dbf48d0dc50 ******/
 		%feature("compactdefaultargs") InterfEE;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfEE
+NCollection_Vector<BOPDS_InterfEE>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Edge/Edge.
 ") InterfEE;
-		BOPDS_VectorOfInterfEE & InterfEE();
+		NCollection_Vector<BOPDS_InterfEE> & InterfEE();
 
 		/****** BOPDS_DS::InterfEF ******/
-		/****** md5 signature: 2c6d8233f65184e1dc6b78c515553cdb ******/
+		/****** md5 signature: 19cbe7e83e4aba38ac127127d0e5309b ******/
 		%feature("compactdefaultargs") InterfEF;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfEF
+NCollection_Vector<BOPDS_InterfEF>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Edge/Face.
 ") InterfEF;
-		BOPDS_VectorOfInterfEF & InterfEF();
+		NCollection_Vector<BOPDS_InterfEF> & InterfEF();
 
 		/****** BOPDS_DS::InterfEZ ******/
-		/****** md5 signature: b1d903cb21c241d05a7f78f0d0f825d4 ******/
+		/****** md5 signature: 017c127698c03157196147d9db3d150d ******/
 		%feature("compactdefaultargs") InterfEZ;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfEZ
+NCollection_Vector<BOPDS_InterfEZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Edge/Solid.
 ") InterfEZ;
-		BOPDS_VectorOfInterfEZ & InterfEZ();
+		NCollection_Vector<BOPDS_InterfEZ> & InterfEZ();
 
 		/****** BOPDS_DS::InterfFF ******/
-		/****** md5 signature: e0c2ceb6e3b7331819f3629b48f57e95 ******/
+		/****** md5 signature: cf6414da1b3ae4053361ac0a410a454d ******/
 		%feature("compactdefaultargs") InterfFF;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfFF
+NCollection_Vector<BOPDS_InterfFF>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Face/Face.
 ") InterfFF;
-		BOPDS_VectorOfInterfFF & InterfFF();
+		NCollection_Vector<BOPDS_InterfFF> & InterfFF();
 
 		/****** BOPDS_DS::InterfFZ ******/
-		/****** md5 signature: ed8406a231822c7e94c8e25d1c71b4a1 ******/
+		/****** md5 signature: dd6dabdbeb707e8ef04ed581b6d20b49 ******/
 		%feature("compactdefaultargs") InterfFZ;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfFZ
+NCollection_Vector<BOPDS_InterfFZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Face/Solid.
 ") InterfFZ;
-		BOPDS_VectorOfInterfFZ & InterfFZ();
+		NCollection_Vector<BOPDS_InterfFZ> & InterfFZ();
 
 		/****** BOPDS_DS::InterfVE ******/
-		/****** md5 signature: 1e8c1351166b78cd57dfd6252f8095fd ******/
+		/****** md5 signature: ff3e63455a5023aced24a299bc0ccf06 ******/
 		%feature("compactdefaultargs") InterfVE;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfVE
+NCollection_Vector<BOPDS_InterfVE>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Edge.
 ") InterfVE;
-		BOPDS_VectorOfInterfVE & InterfVE();
+		NCollection_Vector<BOPDS_InterfVE> & InterfVE();
 
 		/****** BOPDS_DS::InterfVF ******/
-		/****** md5 signature: a740dfccca2947945870f2853010ff59 ******/
+		/****** md5 signature: 42576a36bcd5a1565f4ff63cc3b1e38d ******/
 		%feature("compactdefaultargs") InterfVF;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfVF
+NCollection_Vector<BOPDS_InterfVF>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Face.
 ") InterfVF;
-		BOPDS_VectorOfInterfVF & InterfVF();
+		NCollection_Vector<BOPDS_InterfVF> & InterfVF();
 
 		/****** BOPDS_DS::InterfVV ******/
-		/****** md5 signature: de6bd3601d77ef5be33cc83e8c5b53f5 ******/
+		/****** md5 signature: f18180263cda53351be7c2fe3bc126f1 ******/
 		%feature("compactdefaultargs") InterfVV;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfVV
+NCollection_Vector<BOPDS_InterfVV>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Vertex.
 ") InterfVV;
-		BOPDS_VectorOfInterfVV & InterfVV();
+		NCollection_Vector<BOPDS_InterfVV> & InterfVV();
 
 		/****** BOPDS_DS::InterfVZ ******/
-		/****** md5 signature: 582789694d5f35487a86689d97253193 ******/
+		/****** md5 signature: 6b94361fb3e9d45df4fa855ba65809dd ******/
 		%feature("compactdefaultargs") InterfVZ;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfVZ
+NCollection_Vector<BOPDS_InterfVZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Solid.
 ") InterfVZ;
-		BOPDS_VectorOfInterfVZ & InterfVZ();
+		NCollection_Vector<BOPDS_InterfVZ> & InterfVZ();
 
 		/****** BOPDS_DS::InterfZZ ******/
-		/****** md5 signature: 6c404f4d7b0d8d898ff2b617987d701a ******/
+		/****** md5 signature: 2621f066ab3f631da67146494453c420 ******/
 		%feature("compactdefaultargs") InterfZZ;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfInterfZZ
+NCollection_Vector<BOPDS_InterfZZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Solid/Solid.
 ") InterfZZ;
-		BOPDS_VectorOfInterfZZ & InterfZZ();
+		NCollection_Vector<BOPDS_InterfZZ> & InterfZZ();
 
 		/****** BOPDS_DS::Interferences ******/
-		/****** md5 signature: 44bcb4cfcbd2e70afdb7ecdc2eb03075 ******/
+		/****** md5 signature: b3cf058c3fe2c6b826585598c99df3c2 ******/
 		%feature("compactdefaultargs") Interferences;
 		%feature("autodoc", "Return
 -------
-BOPDS_MapOfPair
+NCollection_Map<BOPDS_Pair>
 
 Description
 -----------
 Selector Returns the table of interferences //! debug.
 ") Interferences;
-		const BOPDS_MapOfPair & Interferences();
+		const NCollection_Map<BOPDS_Pair> & Interferences();
 
 		/****** BOPDS_DS::IsCommonBlock ******/
-		/****** md5 signature: b0dc02e6b02caac0c57f5134435bd806 ******/
+		/****** md5 signature: c3e93110c98cd0a12d49e20b7b0c28e1 ******/
 		%feature("compactdefaultargs") IsCommonBlock;
 		%feature("autodoc", "
 Parameters
@@ -1823,10 +1808,10 @@ Description
 -----------
 Query Returns true if the pave block is common block.
 ") IsCommonBlock;
-		Standard_Boolean IsCommonBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
+		bool IsCommonBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
 		/****** BOPDS_DS::IsCommonBlockOnEdge ******/
-		/****** md5 signature: 4275bd033086ef1a680a1b23c40e6cf9 ******/
+		/****** md5 signature: ce05185b5833895a0ce6b465b091ad8e ******/
 		%feature("compactdefaultargs") IsCommonBlockOnEdge;
 		%feature("autodoc", "
 Parameters
@@ -1841,10 +1826,10 @@ Description
 -----------
 Query Returns true if common block contains more then one pave block.
 ") IsCommonBlockOnEdge;
-		Standard_Boolean IsCommonBlockOnEdge(const opencascade::handle<BOPDS_PaveBlock> & thePB);
+		bool IsCommonBlockOnEdge(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
 		/****** BOPDS_DS::IsNewShape ******/
-		/****** md5 signature: 328a388f60ec661bb87b8eea2904a15a ******/
+		/****** md5 signature: 9b7eb21ecb8ab4b0fc491ab3d4c395b0 ******/
 		%feature("compactdefaultargs") IsNewShape;
 		%feature("autodoc", "
 Parameters
@@ -1859,16 +1844,16 @@ Description
 -----------
 Returns true if the shape of index 'i' is not the source shape/sub-shape.
 ") IsNewShape;
-		Standard_Boolean IsNewShape(const Standard_Integer theIndex);
+		bool IsNewShape(const int theIndex);
 
 		/****** BOPDS_DS::IsSubShape ******/
-		/****** md5 signature: 456551f926d05108170c1f9b73a108c8 ******/
+		/****** md5 signature: 44a5e0e9895b8dfba75eeeb56bf9b9d0 ******/
 		%feature("compactdefaultargs") IsSubShape;
 		%feature("autodoc", "
 Parameters
 ----------
-theI1: int
-theI2: int
+theCandidate: int
+theParent: int
 
 Return
 -------
@@ -1876,12 +1861,12 @@ bool
 
 Description
 -----------
-No available documentation.
+Returns true if the shape with index @p theCandidate is a sub-shape of the shape with index @p theParent.
 ") IsSubShape;
-		Standard_Boolean IsSubShape(const Standard_Integer theI1, const Standard_Integer theI2);
+		bool IsSubShape(const int theCandidate, const int theParent);
 
 		/****** BOPDS_DS::IsValidShrunkData ******/
-		/****** md5 signature: 673a61f557de33779fc6f80e66567e0b ******/
+		/****** md5 signature: 460c599f585e1b25733668e7335096c5 ******/
 		%feature("compactdefaultargs") IsValidShrunkData;
 		%feature("autodoc", "
 Parameters
@@ -1896,10 +1881,10 @@ Description
 -----------
 Checks if the existing shrunk data of the pave block is still valid. The shrunk data may become invalid if e.g. the vertices of the pave block have been replaced with the new one with bigger tolerances, or the tolerances of the existing vertices have been increased.
 ") IsValidShrunkData;
-		Standard_Boolean IsValidShrunkData(const opencascade::handle<BOPDS_PaveBlock> & thePB);
+		bool IsValidShrunkData(const opencascade::handle<BOPDS_PaveBlock> & thePB);
 
 		/****** BOPDS_DS::NbInterfTypes ******/
-		/****** md5 signature: b5f8cfff2549c73ab79b5d69be986141 ******/
+		/****** md5 signature: f6873f27659b4365b0670434312b9699 ******/
 		%feature("compactdefaultargs") NbInterfTypes;
 		%feature("autodoc", "Return
 -------
@@ -1909,10 +1894,10 @@ Description
 -----------
 Returns the number of types of the interferences.
 ") NbInterfTypes;
-		static Standard_Integer NbInterfTypes();
+		static int NbInterfTypes();
 
 		/****** BOPDS_DS::NbRanges ******/
-		/****** md5 signature: ab3e782a06903e5d503c4a552710a462 ******/
+		/****** md5 signature: d242d26274e9bc749aaba4024379164a ******/
 		%feature("compactdefaultargs") NbRanges;
 		%feature("autodoc", "Return
 -------
@@ -1922,10 +1907,10 @@ Description
 -----------
 Selector Returns the number of index ranges.
 ") NbRanges;
-		Standard_Integer NbRanges();
+		int NbRanges();
 
 		/****** BOPDS_DS::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -1935,10 +1920,10 @@ Description
 -----------
 Selector Returns the total number of shapes stored.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** BOPDS_DS::NbSourceShapes ******/
-		/****** md5 signature: 491dd42a7738616c75f8107b1175e48f ******/
+		/****** md5 signature: 22d2d7b581425ebcb11449c948d9f5cb ******/
 		%feature("compactdefaultargs") NbSourceShapes;
 		%feature("autodoc", "Return
 -------
@@ -1948,10 +1933,10 @@ Description
 -----------
 Selector Returns the total number of source shapes stored.
 ") NbSourceShapes;
-		Standard_Integer NbSourceShapes();
+		int NbSourceShapes();
 
 		/****** BOPDS_DS::PaveBlocks ******/
-		/****** md5 signature: 68dcf40aab903429d067a486b7121001 ******/
+		/****** md5 signature: 421206bb093a75e472e81bcfdc5fc589 ******/
 		%feature("compactdefaultargs") PaveBlocks;
 		%feature("autodoc", "
 Parameters
@@ -1960,35 +1945,35 @@ theIndex: int
 
 Return
 -------
-BOPDS_ListOfPaveBlock
+NCollection_List<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector Returns the pave blocks for the shape with index theIndex.
 ") PaveBlocks;
-		const BOPDS_ListOfPaveBlock & PaveBlocks(const Standard_Integer theIndex);
+		const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocks(const int theIndex);
 
 		/****** BOPDS_DS::PaveBlocksPool ******/
-		/****** md5 signature: 50b4ea760186198ca75f077153c0fbc8 ******/
+		/****** md5 signature: ab74c6e62d508fecb7fa16f6e60af44f ******/
 		%feature("compactdefaultargs") PaveBlocksPool;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfListOfPaveBlock
+NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>
 
 Description
 -----------
 Selector Returns the information about pave blocks on source edges.
 ") PaveBlocksPool;
-		const BOPDS_VectorOfListOfPaveBlock & PaveBlocksPool();
+		const NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & PaveBlocksPool();
 
 		/****** BOPDS_DS::Paves ******/
-		/****** md5 signature: 21e9e50b8600c1f1dae7bda888c3e95f ******/
+		/****** md5 signature: 5e26b5d981dc5a811609964299ab07c2 ******/
 		%feature("compactdefaultargs") Paves;
 		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
-theLP: BOPDS_ListOfPave
+theLP: NCollection_List<BOPDS_Pave>
 
 Return
 -------
@@ -1998,10 +1983,10 @@ Description
 -----------
 Fills theLP with sorted paves of the shape with index theIndex.
 ") Paves;
-		void Paves(const Standard_Integer theIndex, BOPDS_ListOfPave & theLP);
+		void Paves(const int theIndex, NCollection_List<BOPDS_Pave> & theLP);
 
 		/****** BOPDS_DS::Range ******/
-		/****** md5 signature: 5ca271758ebb00dc0b21c53b042f5bf2 ******/
+		/****** md5 signature: 157dcdbeea8a40a7d3dedb92a52078bc ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -2016,10 +2001,10 @@ Description
 -----------
 Selector Returns the index range 'i'.
 ") Range;
-		const BOPDS_IndexRange & Range(const Standard_Integer theIndex);
+		const BOPDS_IndexRange & Range(const int theIndex);
 
 		/****** BOPDS_DS::Rank ******/
-		/****** md5 signature: 9e6a20c7b89086372aecea71b8c88749 ******/
+		/****** md5 signature: 9576eb3cea045ac40148fa896eb2374b ******/
 		%feature("compactdefaultargs") Rank;
 		%feature("autodoc", "
 Parameters
@@ -2034,7 +2019,7 @@ Description
 -----------
 Selector Returns the rank of the shape of index 'i'.
 ") Rank;
-		Standard_Integer Rank(const Standard_Integer theIndex);
+		int Rank(const int theIndex);
 
 		/****** BOPDS_DS::RealPaveBlock ******/
 		/****** md5 signature: 4469a9d9a26892d7c107422010da714b ******/
@@ -2094,12 +2079,12 @@ Clears information about PaveBlocks for the untouched edges.
 		void ReleasePaveBlocks();
 
 		/****** BOPDS_DS::SetArguments ******/
-		/****** md5 signature: b894d6130aeeacff1dc8ed5150d56866 ******/
+		/****** md5 signature: d9943a8fd31780687d1220b9e0eb7924 ******/
 		%feature("compactdefaultargs") SetArguments;
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: TopTools_ListOfShape
+theLS: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2109,7 +2094,7 @@ Description
 -----------
 Modifier Sets the arguments [theLS] of an operation.
 ") SetArguments;
-		void SetArguments(const TopTools_ListOfShape & theLS);
+		void SetArguments(const NCollection_List<TopoDS_Shape> & theLS);
 
 		/****** BOPDS_DS::SetCommonBlock ******/
 		/****** md5 signature: e4c808b4502142fd887ea0b4a1ee2d11 ******/
@@ -2131,7 +2116,7 @@ Modifier Sets the common block <theCB>.
 		void SetCommonBlock(const opencascade::handle<BOPDS_PaveBlock> & thePB, const opencascade::handle<BOPDS_CommonBlock> & theCB);
 
 		/****** BOPDS_DS::Shape ******/
-		/****** md5 signature: 517eeba390a4935f1b8879270532daf0 ******/
+		/****** md5 signature: 8162a4975455d3eb15ce8aca97f43599 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -2146,10 +2131,10 @@ Description
 -----------
 Selector Returns the shape with index theIndex.
 ") Shape;
-		const TopoDS_Shape Shape(const Standard_Integer theIndex);
+		const TopoDS_Shape Shape(const int theIndex);
 
 		/****** BOPDS_DS::ShapeInfo ******/
-		/****** md5 signature: b283e86f09404b14ce48003218b1d95f ******/
+		/****** md5 signature: 3cc791a0774c5e3b72ffb984bf44865e ******/
 		%feature("compactdefaultargs") ShapeInfo;
 		%feature("autodoc", "
 Parameters
@@ -2164,30 +2149,30 @@ Description
 -----------
 Selector Returns the information about the shape with index theIndex.
 ") ShapeInfo;
-		const BOPDS_ShapeInfo & ShapeInfo(const Standard_Integer theIndex);
+		const BOPDS_ShapeInfo & ShapeInfo(const int theIndex);
 
 		/****** BOPDS_DS::ShapesSD ******/
-		/****** md5 signature: 527952a375cb69af338de9d02af00c94 ******/
+		/****** md5 signature: b699ea98c38928d791791e3cd2350d59 ******/
 		%feature("compactdefaultargs") ShapesSD;
 		%feature("autodoc", "Return
 -------
-TColStd_DataMapOfIntegerInteger
+NCollection_DataMap<int, int>
 
 Description
 -----------
 Selector Returns the collection same domain shapes.
 ") ShapesSD;
-		TColStd_DataMapOfIntegerInteger & ShapesSD();
+		NCollection_DataMap<int, int> & ShapesSD();
 
 		/****** BOPDS_DS::SharedEdges ******/
-		/****** md5 signature: 6bad9f50cf160f185b7036f3c972c789 ******/
+		/****** md5 signature: 3339feba3a05d0f5e4028a92962dd7db ******/
 		%feature("compactdefaultargs") SharedEdges;
 		%feature("autodoc", "
 Parameters
 ----------
-theF1: int
-theF2: int
-theLI: TColStd_ListOfInteger
+theFaceIndex1: int
+theFaceIndex2: int
+theEdgeList: NCollection_List<int>
 theAllocator: NCollection_BaseAllocator
 
 Return
@@ -2196,22 +2181,22 @@ None
 
 Description
 -----------
-Returns the indices of edges that are shared for the faces with indices theF1, theF2 //! same domain shapes.
+Returns the indices of edges that are shared for the faces with indices @p theFaceIndex1 and @p theFaceIndex2.
 ") SharedEdges;
-		void SharedEdges(const Standard_Integer theF1, const Standard_Integer theF2, TColStd_ListOfInteger & theLI, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
+		void SharedEdges(const int theFaceIndex1, const int theFaceIndex2, NCollection_List<int> & theEdgeList, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_DS::SubShapesOnIn ******/
-		/****** md5 signature: cece8015c92cb291b215b2d9d9ca7c48 ******/
+		/****** md5 signature: 368c299b2bd0ecda6dac38199d7ee03d ******/
 		%feature("compactdefaultargs") SubShapesOnIn;
 		%feature("autodoc", "
 Parameters
 ----------
-theNF1: int
-theNF2: int
-theMVOnIn: TColStd_MapOfInteger
-theMVCommon: TColStd_MapOfInteger
-thePBOnIn: BOPDS_IndexedMapOfPaveBlock
-theCommonPB: BOPDS_MapOfPaveBlock
+theFaceIndex1: int
+theFaceIndex2: int
+theMVOnIn: NCollection_Map<int>
+theMVCommon: NCollection_Map<int>
+thePBOnIn: BOPDS_PaveBlock
+theCommonPaveBlocks: BOPDS_PaveBlock
 
 Return
 -------
@@ -2220,21 +2205,23 @@ None
 Description
 -----------
 Returns information about ON/IN sub-shapes of the given faces. 
+Parameter theFaceIndex1 the index of the first face 
+Parameter theFaceIndex2 the index of the second face 
 Parameter theMVOnIn the indices of ON/IN vertices from both faces 
 Parameter theMVCommon the indices of common vertices for both faces 
 Parameter thePBOnIn all On/In pave blocks from both faces 
-Parameter theCommonPB the common pave blocks (that are shared by both faces).
+Parameter theCommonPaveBlocks the common pave blocks (that are shared by both faces).
 ") SubShapesOnIn;
-		void SubShapesOnIn(const Standard_Integer theNF1, const Standard_Integer theNF2, TColStd_MapOfInteger & theMVOnIn, TColStd_MapOfInteger & theMVCommon, BOPDS_IndexedMapOfPaveBlock & thePBOnIn, BOPDS_MapOfPaveBlock & theCommonPB);
+		void SubShapesOnIn(const int theFaceIndex1, const int theFaceIndex2, NCollection_Map<int> & theMVOnIn, NCollection_Map<int> & theMVCommon, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock> > & thePBOnIn, NCollection_Map<opencascade::handle<BOPDS_PaveBlock> > & theCommonPaveBlocks);
 
 		/****** BOPDS_DS::UpdateCommonBlock ******/
-		/****** md5 signature: b32849b579faa453d3ab01dfeb9151dc ******/
+		/****** md5 signature: 109f7ee85e3286f7205bef33e6b0b757 ******/
 		%feature("compactdefaultargs") UpdateCommonBlock;
 		%feature("autodoc", "
 Parameters
 ----------
 theCB: BOPDS_CommonBlock
-theFuzz: float
+theFuzz: double
 
 Return
 -------
@@ -2244,7 +2231,7 @@ Description
 -----------
 Update the common block theCB.
 ") UpdateCommonBlock;
-		void UpdateCommonBlock(const opencascade::handle<BOPDS_CommonBlock> & theCB, const Standard_Real theFuzz);
+		void UpdateCommonBlock(const opencascade::handle<BOPDS_CommonBlock> & theCB, const double theFuzz);
 
 		/****** BOPDS_DS::UpdateCommonBlockWithSDVertices ******/
 		/****** md5 signature: 7866c8568fa9b10af99ea0d52a1e7bd6 ******/
@@ -2265,7 +2252,7 @@ Update the pave block of the common block for all shapes in data structure.
 		void UpdateCommonBlockWithSDVertices(const opencascade::handle<BOPDS_CommonBlock> & theCB);
 
 		/****** BOPDS_DS::UpdateFaceInfoIn ******/
-		/****** md5 signature: d1f6faa8a56b9e04059de53cd23a3d3e ******/
+		/****** md5 signature: 4344bc2e3d81a03d13304992ef940350 ******/
 		%feature("compactdefaultargs") UpdateFaceInfoIn;
 		%feature("autodoc", "
 Parameters
@@ -2280,15 +2267,15 @@ Description
 -----------
 Update the state In of face with index theIndex.
 ") UpdateFaceInfoIn;
-		void UpdateFaceInfoIn(const Standard_Integer theIndex);
+		void UpdateFaceInfoIn(const int theIndex);
 
 		/****** BOPDS_DS::UpdateFaceInfoIn ******/
-		/****** md5 signature: 47926fbf15ea8dcc9ce09be605c96f01 ******/
+		/****** md5 signature: 9f23fdc653b235a6a606a6531e966e79 ******/
 		%feature("compactdefaultargs") UpdateFaceInfoIn;
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: TColStd_MapOfInteger
+theFaces: NCollection_Map<int>
 
 Return
 -------
@@ -2298,10 +2285,10 @@ Description
 -----------
 Update the state IN for all faces in the given map.
 ") UpdateFaceInfoIn;
-		void UpdateFaceInfoIn(const TColStd_MapOfInteger & theFaces);
+		void UpdateFaceInfoIn(const NCollection_Map<int> & theFaces);
 
 		/****** BOPDS_DS::UpdateFaceInfoOn ******/
-		/****** md5 signature: 22cf949c85b68e28fd0defaaa4cce57e ******/
+		/****** md5 signature: 508bd6c278ca3fbc04df53ae015f8ed2 ******/
 		%feature("compactdefaultargs") UpdateFaceInfoOn;
 		%feature("autodoc", "
 Parameters
@@ -2316,15 +2303,15 @@ Description
 -----------
 Update the state On of face with index theIndex.
 ") UpdateFaceInfoOn;
-		void UpdateFaceInfoOn(const Standard_Integer theIndex);
+		void UpdateFaceInfoOn(const int theIndex);
 
 		/****** BOPDS_DS::UpdateFaceInfoOn ******/
-		/****** md5 signature: 6da1f3a5aca4bb07a6f21a02a641463c ******/
+		/****** md5 signature: 4182dfe3febdf8a7fa31a63814d906b8 ******/
 		%feature("compactdefaultargs") UpdateFaceInfoOn;
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: TColStd_MapOfInteger
+theFaces: NCollection_Map<int>
 
 Return
 -------
@@ -2334,7 +2321,7 @@ Description
 -----------
 Update the state ON for all faces in the given map.
 ") UpdateFaceInfoOn;
-		void UpdateFaceInfoOn(const TColStd_MapOfInteger & theFaces);
+		void UpdateFaceInfoOn(const NCollection_Map<int> & theFaces);
 
 		/****** BOPDS_DS::UpdatePaveBlock ******/
 		/****** md5 signature: 973c8bac7cd25e5ce96fdadcf00095b9 ******/
@@ -2445,82 +2432,82 @@ Parameter theAllocator the allocator to manage the memory.
 		 BOPDS_FaceInfo(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_FaceInfo::ChangePaveBlocksIn ******/
-		/****** md5 signature: d4ec18f81c144198dbecd960b589646d ******/
+		/****** md5 signature: f80779465e98c5968b176b61d5b96262 ******/
 		%feature("compactdefaultargs") ChangePaveBlocksIn;
 		%feature("autodoc", "Return
 -------
-BOPDS_IndexedMapOfPaveBlock
+NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector/Modifier Returns the pave blocks of the face that have state In.
 ") ChangePaveBlocksIn;
-		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksIn();
+		NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocksIn();
 
 		/****** BOPDS_FaceInfo::ChangePaveBlocksOn ******/
-		/****** md5 signature: 90def9e02fcda3b9ebf87cebe3c18fe1 ******/
+		/****** md5 signature: a06d141a19c8caf5161671dbfc2563e0 ******/
 		%feature("compactdefaultargs") ChangePaveBlocksOn;
 		%feature("autodoc", "Return
 -------
-BOPDS_IndexedMapOfPaveBlock
+NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector/Modifier Returns the pave blocks of the face that have state On.
 ") ChangePaveBlocksOn;
-		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksOn();
+		NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocksOn();
 
 		/****** BOPDS_FaceInfo::ChangePaveBlocksSc ******/
-		/****** md5 signature: aa60dacd7c757139c1caac5022fd9507 ******/
+		/****** md5 signature: e9107dd7828655637f4bc116ba552428 ******/
 		%feature("compactdefaultargs") ChangePaveBlocksSc;
 		%feature("autodoc", "Return
 -------
-BOPDS_IndexedMapOfPaveBlock
+NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 No available documentation.
 ") ChangePaveBlocksSc;
-		BOPDS_IndexedMapOfPaveBlock & ChangePaveBlocksSc();
+		NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocksSc();
 
 		/****** BOPDS_FaceInfo::ChangeVerticesIn ******/
-		/****** md5 signature: a1f733653d918c0dfda07b61761078cd ******/
+		/****** md5 signature: fafa8103e916e13ae94702436c0036f9 ******/
 		%feature("compactdefaultargs") ChangeVerticesIn;
 		%feature("autodoc", "Return
 -------
-TColStd_MapOfInteger
+NCollection_Map<int>
 
 Description
 -----------
 Selector/Modifier Returns the list of indices for vertices of the face that have state In //! On.
 ") ChangeVerticesIn;
-		TColStd_MapOfInteger & ChangeVerticesIn();
+		NCollection_Map<int> & ChangeVerticesIn();
 
 		/****** BOPDS_FaceInfo::ChangeVerticesOn ******/
-		/****** md5 signature: 0a12e27e688f637bedea8ad74c0e05d2 ******/
+		/****** md5 signature: d18d42185703288808272f8539de979c ******/
 		%feature("compactdefaultargs") ChangeVerticesOn;
 		%feature("autodoc", "Return
 -------
-TColStd_MapOfInteger
+NCollection_Map<int>
 
 Description
 -----------
 Selector/Modifier Returns the list of indices for vertices of the face that have state On //! Sections.
 ") ChangeVerticesOn;
-		TColStd_MapOfInteger & ChangeVerticesOn();
+		NCollection_Map<int> & ChangeVerticesOn();
 
 		/****** BOPDS_FaceInfo::ChangeVerticesSc ******/
-		/****** md5 signature: 1f58d37b0d25660e9e7d3f4bf9d48ecb ******/
+		/****** md5 signature: 51d23f5bfc67d6d521e0f699312004d3 ******/
 		%feature("compactdefaultargs") ChangeVerticesSc;
 		%feature("autodoc", "Return
 -------
-TColStd_MapOfInteger
+NCollection_Map<int>
 
 Description
 -----------
 Selector/Modifier Returns the list of indices for section vertices of the face //! Others.
 ") ChangeVerticesSc;
-		TColStd_MapOfInteger & ChangeVerticesSc();
+		NCollection_Map<int> & ChangeVerticesSc();
 
 		/****** BOPDS_FaceInfo::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2536,7 +2523,7 @@ Clears the contents.
 		void Clear();
 
 		/****** BOPDS_FaceInfo::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -2546,49 +2533,49 @@ Description
 -----------
 Selector Returns the index of the face //! In.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** BOPDS_FaceInfo::PaveBlocksIn ******/
-		/****** md5 signature: 61287d2aeb3dd1d9dbce972f7cebee70 ******/
+		/****** md5 signature: 572a2c09e6a3bd1c62e5e6383ac4000c ******/
 		%feature("compactdefaultargs") PaveBlocksIn;
 		%feature("autodoc", "Return
 -------
-BOPDS_IndexedMapOfPaveBlock
+NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector Returns the pave blocks of the face that have state In.
 ") PaveBlocksIn;
-		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksIn();
+		const NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocksIn();
 
 		/****** BOPDS_FaceInfo::PaveBlocksOn ******/
-		/****** md5 signature: 17bd7d43663bc3af7acd3e789afb9726 ******/
+		/****** md5 signature: 119e0a08dcbd347389586e1d28271f54 ******/
 		%feature("compactdefaultargs") PaveBlocksOn;
 		%feature("autodoc", "Return
 -------
-BOPDS_IndexedMapOfPaveBlock
+NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector Returns the pave blocks of the face that have state On.
 ") PaveBlocksOn;
-		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksOn();
+		const NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocksOn();
 
 		/****** BOPDS_FaceInfo::PaveBlocksSc ******/
-		/****** md5 signature: 8832f11b747d5c9394d12acc32cbe3b2 ******/
+		/****** md5 signature: 9c9e9a14cb8c589c5217878001716702 ******/
 		%feature("compactdefaultargs") PaveBlocksSc;
 		%feature("autodoc", "Return
 -------
-BOPDS_IndexedMapOfPaveBlock
+NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>
 
 Description
 -----------
 Selector Returns the pave blocks of the face that are pave blocks of section edges.
 ") PaveBlocksSc;
-		const BOPDS_IndexedMapOfPaveBlock & PaveBlocksSc();
+		const NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocksSc();
 
 		/****** BOPDS_FaceInfo::SetIndex ******/
-		/****** md5 signature: 4dd534b2ead8c5c1524ec783c183f5c4 ******/
+		/****** md5 signature: 97a60aec116a0ebdaf8252c92fb7f440 ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -2603,46 +2590,46 @@ Description
 -----------
 Modifier Sets the index of the face <theI>.
 ") SetIndex;
-		void SetIndex(const Standard_Integer theI);
+		void SetIndex(const int theI);
 
 		/****** BOPDS_FaceInfo::VerticesIn ******/
-		/****** md5 signature: 362e2d28d22b892a3738b9c7a690e95a ******/
+		/****** md5 signature: a60b4b23fe17312c3dc5b90ece53bb01 ******/
 		%feature("compactdefaultargs") VerticesIn;
 		%feature("autodoc", "Return
 -------
-TColStd_MapOfInteger
+NCollection_Map<int>
 
 Description
 -----------
 Selector Returns the list of indices for vertices of the face that have state In.
 ") VerticesIn;
-		const TColStd_MapOfInteger & VerticesIn();
+		const NCollection_Map<int> & VerticesIn();
 
 		/****** BOPDS_FaceInfo::VerticesOn ******/
-		/****** md5 signature: c771e20b61ac134ac88806946a87ed16 ******/
+		/****** md5 signature: 706bcf9d4be328e966bb07d12f3b8b75 ******/
 		%feature("compactdefaultargs") VerticesOn;
 		%feature("autodoc", "Return
 -------
-TColStd_MapOfInteger
+NCollection_Map<int>
 
 Description
 -----------
 Selector Returns the list of indices for vertices of the face that have state On.
 ") VerticesOn;
-		const TColStd_MapOfInteger & VerticesOn();
+		const NCollection_Map<int> & VerticesOn();
 
 		/****** BOPDS_FaceInfo::VerticesSc ******/
-		/****** md5 signature: 38fefd7c99e35fc9b840686df0e2c151 ******/
+		/****** md5 signature: 271d7354ad4f592f1d72e9dbbc01e100 ******/
 		%feature("compactdefaultargs") VerticesSc;
 		%feature("autodoc", "Return
 -------
-TColStd_MapOfInteger
+NCollection_Map<int>
 
 Description
 -----------
 Selector Returns the list of indices for section vertices of the face.
 ") VerticesSc;
-		const TColStd_MapOfInteger & VerticesSc();
+		const NCollection_Map<int> & VerticesSc();
 
 };
 
@@ -2671,8 +2658,27 @@ Empty constructor.
 ") BOPDS_IndexRange;
 		 BOPDS_IndexRange();
 
+		/****** BOPDS_IndexRange::BOPDS_IndexRange ******/
+		/****** md5 signature: b4578665dcadb34c755d29debcb9eff0 ******/
+		%feature("compactdefaultargs") BOPDS_IndexRange;
+		%feature("autodoc", "
+Parameters
+----------
+theI1: int
+theI2: int
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor with initial indices.
+") BOPDS_IndexRange;
+		 BOPDS_IndexRange(const int theI1, const int theI2);
+
 		/****** BOPDS_IndexRange::Contains ******/
-		/****** md5 signature: de9f24e21b92884020c7cb857ce850c9 ******/
+		/****** md5 signature: b584eed1cfb119ecbfc18cb2ab69326c ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -2687,7 +2693,7 @@ Description
 -----------
 Query Returns true if the range contains <theIndex>.
 ") Contains;
-		Standard_Boolean Contains(const Standard_Integer theIndex);
+		bool Contains(const int theIndex);
 
 		/****** BOPDS_IndexRange::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -2703,7 +2709,7 @@ No available documentation.
 		void Dump();
 
 		/****** BOPDS_IndexRange::First ******/
-		/****** md5 signature: e9b9b55d0f95896826fc1a7c7b3fdf28 ******/
+		/****** md5 signature: 9976e21cdb70063ea164065ef482c38d ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
@@ -2713,10 +2719,10 @@ Description
 -----------
 Selector Returns the first index of the range.
 ") First;
-		Standard_Integer First();
+		int First();
 
 		/****** BOPDS_IndexRange::Indices ******/
-		/****** md5 signature: 1aace53eafd7d667008f722852898b9a ******/
+		/****** md5 signature: 8c2830b5e305d837e149e0e7a1566f82 ******/
 		%feature("compactdefaultargs") Indices;
 		%feature("autodoc", "
 Parameters
@@ -2734,7 +2740,7 @@ Selector Returns the first index of the range <theI1> Returns the second index o
 		void Indices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BOPDS_IndexRange::Last ******/
-		/****** md5 signature: b34ffc707f6352bb6f1f4c928c84e251 ******/
+		/****** md5 signature: 205142323c0fda3122bd3306b13c1b5e ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "Return
 -------
@@ -2744,10 +2750,10 @@ Description
 -----------
 Selector Returns the second index of the range.
 ") Last;
-		Standard_Integer Last();
+		int Last();
 
 		/****** BOPDS_IndexRange::SetFirst ******/
-		/****** md5 signature: c94ec2556faffb224a51e9a98299f9b0 ******/
+		/****** md5 signature: 3c6940d0420d0607ac4ef4deaa8348cb ******/
 		%feature("compactdefaultargs") SetFirst;
 		%feature("autodoc", "
 Parameters
@@ -2762,10 +2768,10 @@ Description
 -----------
 Modifier Sets the first index <theI1> of the range.
 ") SetFirst;
-		void SetFirst(const Standard_Integer theI1);
+		void SetFirst(const int theI1);
 
 		/****** BOPDS_IndexRange::SetIndices ******/
-		/****** md5 signature: 17bcbf84f32630b3982706ad9985593d ******/
+		/****** md5 signature: 867e6ef2944989890460ada7964b4a5d ******/
 		%feature("compactdefaultargs") SetIndices;
 		%feature("autodoc", "
 Parameters
@@ -2781,10 +2787,10 @@ Description
 -----------
 Modifier Sets the first index of the range <theI1> Sets the second index of the range <theI2>.
 ") SetIndices;
-		void SetIndices(const Standard_Integer theI1, const Standard_Integer theI2);
+		void SetIndices(const int theI1, const int theI2);
 
 		/****** BOPDS_IndexRange::SetLast ******/
-		/****** md5 signature: d221889926836d6791218229fbe20e40 ******/
+		/****** md5 signature: ba2bb50767bee15bba5ba7d2a7fb04da ******/
 		%feature("compactdefaultargs") SetLast;
 		%feature("autodoc", "
 Parameters
@@ -2799,7 +2805,7 @@ Description
 -----------
 Modifier Sets the second index <theI2> of the range.
 ") SetLast;
-		void SetLast(const Standard_Integer theI2);
+		void SetLast(const int theI2);
 
 };
 
@@ -2851,7 +2857,7 @@ Parameter theAllocator the allocator to manage the memory.
 		 BOPDS_Iterator(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_Iterator::BlockLength ******/
-		/****** md5 signature: c48a9343cc3ae4a238042d11b275a008 ******/
+		/****** md5 signature: eaaf7a4f672d286884bfd54d10cebdaa ******/
 		%feature("compactdefaultargs") BlockLength;
 		%feature("autodoc", "Return
 -------
@@ -2861,7 +2867,7 @@ Description
 -----------
 Returns the block length.
 ") BlockLength;
-		Standard_Integer BlockLength();
+		int BlockLength();
 
 		/****** BOPDS_Iterator::DS ******/
 		/****** md5 signature: 276afbb7db8ff236fa734c0f56c3dcb8 ******/
@@ -2877,7 +2883,7 @@ Selector Returns the data structure.
 		const BOPDS_DS & DS();
 
 		/****** BOPDS_Iterator::ExpectedLength ******/
-		/****** md5 signature: a3e8f5f279b8e7d7a447257012becee5 ******/
+		/****** md5 signature: 10c151e26e494617b29f5f71d175771c ******/
 		%feature("compactdefaultargs") ExpectedLength;
 		%feature("autodoc", "Return
 -------
@@ -2887,7 +2893,7 @@ Description
 -----------
 Returns the number of intersections founded.
 ") ExpectedLength;
-		Standard_Integer ExpectedLength();
+		int ExpectedLength();
 
 		/****** BOPDS_Iterator::Initialize ******/
 		/****** md5 signature: 7fb13a93a2b1f54b2e5a8d53cbc8474e ******/
@@ -2909,12 +2915,12 @@ Initializes the iterator theType1 - the first type of shape theType2 - the secon
 		void Initialize(const TopAbs_ShapeEnum theType1, const TopAbs_ShapeEnum theType2);
 
 		/****** BOPDS_Iterator::IntersectExt ******/
-		/****** md5 signature: 9d4c97d64751f482efc17b0e0a1e1b4e ******/
+		/****** md5 signature: 4676ba2914ff35c15ac0e1c43527ce57 ******/
 		%feature("compactdefaultargs") IntersectExt;
 		%feature("autodoc", "
 Parameters
 ----------
-theIndicies: TColStd_MapOfInteger
+theIndicies: NCollection_Map<int>
 
 Return
 -------
@@ -2924,10 +2930,10 @@ Description
 -----------
 Updates the tree of Bounding Boxes with increased boxes and intersects such elements with the tree.
 ") IntersectExt;
-		void IntersectExt(const TColStd_MapOfInteger & theIndicies);
+		void IntersectExt(const NCollection_Map<int> & theIndicies);
 
 		/****** BOPDS_Iterator::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2937,10 +2943,10 @@ Description
 -----------
 Returns true if still there are pairs of intersected shapes.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BOPDS_Iterator::NbExtInterfs ******/
-		/****** md5 signature: dfeacf68558221c9d70c06d649e6cdeb ******/
+		/****** md5 signature: e5f1ebd7f63371d665d69664a725decf ******/
 		%feature("compactdefaultargs") NbExtInterfs;
 		%feature("autodoc", "Return
 -------
@@ -2950,7 +2956,7 @@ Description
 -----------
 No available documentation.
 ") NbExtInterfs;
-		static Standard_Integer NbExtInterfs();
+		static int NbExtInterfs();
 
 		/****** BOPDS_Iterator::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -2966,14 +2972,14 @@ Moves iterations ahead.
 		void Next();
 
 		/****** BOPDS_Iterator::Prepare ******/
-		/****** md5 signature: 26ccd55174924d4ca54bbaad1979b27a ******/
+		/****** md5 signature: 5449c7d65cbb4faadc419955024e4187 ******/
 		%feature("compactdefaultargs") Prepare;
 		%feature("autodoc", "
 Parameters
 ----------
 theCtx: IntTools_Context (optional, default to opencascade::handle<IntTools_Context>())
-theCheckOBB: bool (optional, default to Standard_False)
-theFuzzyValue: float (optional, default to Precision::Confusion())
+theCheckOBB: bool (optional, default to false)
+theFuzzyValue: double (optional, default to Precision::Confusion())
 
 Return
 -------
@@ -2983,10 +2989,10 @@ Description
 -----------
 Perform the intersection algorithm and prepare the results to be used.
 ") Prepare;
-		virtual void Prepare(const opencascade::handle<IntTools_Context> & theCtx = opencascade::handle<IntTools_Context>(), const Standard_Boolean theCheckOBB = Standard_False, const Standard_Real theFuzzyValue = Precision::Confusion());
+		virtual void Prepare(const opencascade::handle<IntTools_Context> & theCtx = opencascade::handle<IntTools_Context>(), const bool theCheckOBB = false, const double theFuzzyValue = Precision::Confusion());
 
 		/****** BOPDS_Iterator::RunParallel ******/
-		/****** md5 signature: f5c0831f57ee3d1a6d238da5afdb5132 ******/
+		/****** md5 signature: 3486052155fd2562fcc738af989b0ddb ******/
 		%feature("compactdefaultargs") RunParallel;
 		%feature("autodoc", "Return
 -------
@@ -2996,7 +3002,7 @@ Description
 -----------
 Returns the flag of parallel processing.
 ") RunParallel;
-		Standard_Boolean RunParallel();
+		bool RunParallel();
 
 		/****** BOPDS_Iterator::SetDS ******/
 		/****** md5 signature: 7bd5ab1492cdf0ff6021812020f58396 ******/
@@ -3017,7 +3023,7 @@ Modifier Sets the data structure <pDS> to process.
 		void SetDS(const BOPDS_PDS & pDS);
 
 		/****** BOPDS_Iterator::SetRunParallel ******/
-		/****** md5 signature: 0a82d8fce1725e61203aa8606820455a ******/
+		/****** md5 signature: ff82086189ecc9966922324f1ee171dc ******/
 		%feature("compactdefaultargs") SetRunParallel;
 		%feature("autodoc", "
 Parameters
@@ -3032,10 +3038,10 @@ Description
 -----------
 Set the flag of parallel processing if <theFlag> is true the parallel processing is switched on if <theFlag> is false the parallel processing is switched off.
 ") SetRunParallel;
-		void SetRunParallel(const Standard_Boolean theFlag);
+		void SetRunParallel(const bool theFlag);
 
 		/****** BOPDS_Iterator::Value ******/
-		/****** md5 signature: e158a5c3b0133290b10886e826c5728a ******/
+		/****** md5 signature: 5ccfc0ac3b3b4c10c79203b7c68bc8f9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3080,7 +3086,7 @@ No available documentation.
 		 BOPDS_Pair();
 
 		/****** BOPDS_Pair::BOPDS_Pair ******/
-		/****** md5 signature: a80bf875fa78b42adb2f59e1eefedf94 ******/
+		/****** md5 signature: 3878200d81798af115e2c8ccb0695f27 ******/
 		%feature("compactdefaultargs") BOPDS_Pair;
 		%feature("autodoc", "
 Parameters
@@ -3096,10 +3102,10 @@ Description
 -----------
 No available documentation.
 ") BOPDS_Pair;
-		 BOPDS_Pair(const Standard_Integer theIndex1, const Standard_Integer theIndex2);
+		 BOPDS_Pair(const int theIndex1, const int theIndex2);
 
 		/****** BOPDS_Pair::Indices ******/
-		/****** md5 signature: fc670924ecc87d0f1a8c9d00f037ebe4 ******/
+		/****** md5 signature: f1b48f5f10fd57cf65d6af675652359c ******/
 		%feature("compactdefaultargs") Indices;
 		%feature("autodoc", "
 Parameters
@@ -3117,7 +3123,7 @@ Gets the indices.
 		void Indices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BOPDS_Pair::IsEqual ******/
-		/****** md5 signature: 2a26c85591699ee3a4cd3636721cf551 ******/
+		/****** md5 signature: 525dce6a9b0f2a30cedc76f9700d0b74 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -3132,10 +3138,10 @@ Description
 -----------
 Returns true if the Pair is equal to <the theOther>.
 ") IsEqual;
-		Standard_Boolean IsEqual(const BOPDS_Pair & theOther);
+		bool IsEqual(const BOPDS_Pair & theOther);
 
 		/****** BOPDS_Pair::SetIndices ******/
-		/****** md5 signature: 4a99b9589d6dfa574dfdd1dec8b330c1 ******/
+		/****** md5 signature: 0933def214b0c2db8e1dd88ed31e06f3 ******/
 		%feature("compactdefaultargs") SetIndices;
 		%feature("autodoc", "
 Parameters
@@ -3151,7 +3157,7 @@ Description
 -----------
 Sets the indices.
 ") SetIndices;
-		void SetIndices(const Standard_Integer theIndex1, const Standard_Integer theIndex2);
+		void SetIndices(const int theIndex1, const int theIndex2);
 
 
 %extend{
@@ -3194,8 +3200,27 @@ Empty constructor.
 ") BOPDS_Pave;
 		 BOPDS_Pave();
 
+		/****** BOPDS_Pave::BOPDS_Pave ******/
+		/****** md5 signature: 41df1be8f19207b1a81e9b596b671c23 ******/
+		%feature("compactdefaultargs") BOPDS_Pave;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+theParameter: double
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor with index and parameter.
+") BOPDS_Pave;
+		 BOPDS_Pave(const int theIndex, const double theParameter);
+
 		/****** BOPDS_Pave::Contents ******/
-		/****** md5 signature: 8d6c165389fbe2212946ff8887dce0d9 ******/
+		/****** md5 signature: e562e3d16f0c7cd461e9a8d76cb6bf86 ******/
 		%feature("compactdefaultargs") Contents;
 		%feature("autodoc", "
 Parameters
@@ -3204,7 +3229,7 @@ Parameters
 Return
 -------
 theIndex: int
-theParameter: float
+theParameter: double
 
 Description
 -----------
@@ -3226,7 +3251,7 @@ No available documentation.
 		void Dump();
 
 		/****** BOPDS_Pave::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -3236,10 +3261,10 @@ Description
 -----------
 Selector Returns the index of vertex.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** BOPDS_Pave::IsEqual ******/
-		/****** md5 signature: 0b129306f2f26156fa7470e2a273ce31 ******/
+		/****** md5 signature: 2d71b789110ed5802a8df260a004b21c ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -3252,12 +3277,12 @@ bool
 
 Description
 -----------
-Query Returns true if thr parameter od this is equal to the parameter of <theOther>.
+Query Returns true if the parameter of this is equal to the parameter of <theOther>.
 ") IsEqual;
-		Standard_Boolean IsEqual(const BOPDS_Pave & theOther);
+		bool IsEqual(const BOPDS_Pave & theOther);
 
 		/****** BOPDS_Pave::IsLess ******/
-		/****** md5 signature: f4ff1bf54e635febefa541366f89cb0c ******/
+		/****** md5 signature: 984631b80a1b8344397915f7c7cd11c3 ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -3270,25 +3295,25 @@ bool
 
 Description
 -----------
-Query Returns true if thr parameter od this is less than the parameter of <theOther>.
+Query Returns true if the parameter of this is less than the parameter of <theOther>.
 ") IsLess;
-		Standard_Boolean IsLess(const BOPDS_Pave & theOther);
+		bool IsLess(const BOPDS_Pave & theOther);
 
 		/****** BOPDS_Pave::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Selector Returns the parameter of vertex.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** BOPDS_Pave::SetIndex ******/
-		/****** md5 signature: 8837cdd415a0f5c290f45964b1b4e33b ******/
+		/****** md5 signature: 21592ec6eaa1cb4fc2285544b375c931 ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -3303,15 +3328,15 @@ Description
 -----------
 Modifier Sets the index of vertex <theIndex>.
 ") SetIndex;
-		void SetIndex(const Standard_Integer theIndex);
+		void SetIndex(const int theIndex);
 
 		/****** BOPDS_Pave::SetParameter ******/
-		/****** md5 signature: ddedd9344e341801e5774c5b9b817896 ******/
+		/****** md5 signature: 5f47a8985ca1472924cf8c45deca9769 ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-theParameter: float
+theParameter: double
 
 Return
 -------
@@ -3321,7 +3346,7 @@ Description
 -----------
 Modifier Sets the parameter of vertex <theParameter>.
 ") SetParameter;
-		void SetParameter(const Standard_Real theParameter);
+		void SetParameter(const double theParameter);
 
 
 %extend{
@@ -3420,26 +3445,26 @@ Modifier Appends extra pave <thePave>.
 		void AppendExtPave1(const BOPDS_Pave & thePave);
 
 		/****** BOPDS_PaveBlock::ChangeExtPaves ******/
-		/****** md5 signature: 0c4d0169ffc2ec36903d959a070780f8 ******/
+		/****** md5 signature: 1e5091f64869840217c9b08e75b40db1 ******/
 		%feature("compactdefaultargs") ChangeExtPaves;
 		%feature("autodoc", "Return
 -------
-BOPDS_ListOfPave
+NCollection_List<BOPDS_Pave>
 
 Description
 -----------
 Selector / Modifier Returns the extra paves.
 ") ChangeExtPaves;
-		BOPDS_ListOfPave & ChangeExtPaves();
+		NCollection_List<BOPDS_Pave> & ChangeExtPaves();
 
 		/****** BOPDS_PaveBlock::ContainsParameter ******/
-		/****** md5 signature: 41f6f8b947fed753bba44380a63f845a ******/
+		/****** md5 signature: 35b32aa8e10a091dc51f109751362566 ******/
 		%feature("compactdefaultargs") ContainsParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-thePrm: float
-theTol: float
+thePrm: double
+theTol: double
 
 Return
 -------
@@ -3449,7 +3474,7 @@ Description
 -----------
 Query Returns true if the extra paves contain the pave with given value of the parameter <thePrm> <theTol> - the value of the tolerance to compare <theInd> - index of the found pave.
 ") ContainsParameter;
-		Standard_Boolean ContainsParameter(const Standard_Real thePrm, const Standard_Real theTol, Standard_Integer &OutValue);
+		bool ContainsParameter(const double thePrm, const double theTol, Standard_Integer &OutValue);
 
 		/****** BOPDS_PaveBlock::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -3465,7 +3490,7 @@ No available documentation.
 		void Dump();
 
 		/****** BOPDS_PaveBlock::Edge ******/
-		/****** md5 signature: 76748ffd591f786c44105943fcd6acd5 ******/
+		/****** md5 signature: d6bcd55b8bae579e7b4b7931e982c5a2 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -3475,23 +3500,23 @@ Description
 -----------
 Selector Returns the index of edge of pave block.
 ") Edge;
-		Standard_Integer Edge();
+		int Edge();
 
 		/****** BOPDS_PaveBlock::ExtPaves ******/
-		/****** md5 signature: fa9428f7fcc4dc023ae946ab5a79308f ******/
+		/****** md5 signature: 54194bcd3880fb5f984ce73cb0cc8217 ******/
 		%feature("compactdefaultargs") ExtPaves;
 		%feature("autodoc", "Return
 -------
-BOPDS_ListOfPave
+NCollection_List<BOPDS_Pave>
 
 Description
 -----------
 Selector Returns the extra paves.
 ") ExtPaves;
-		const BOPDS_ListOfPave & ExtPaves();
+		const NCollection_List<BOPDS_Pave> & ExtPaves();
 
 		/****** BOPDS_PaveBlock::HasEdge ******/
-		/****** md5 signature: b29d7c6fb0d75a5501e02d3f7002ad41 ******/
+		/****** md5 signature: 1431a428535970b7a422dfbd1ed3d98e ******/
 		%feature("compactdefaultargs") HasEdge;
 		%feature("autodoc", "Return
 -------
@@ -3501,10 +3526,10 @@ Description
 -----------
 Query Returns true if the pave block has edge.
 ") HasEdge;
-		Standard_Boolean HasEdge();
+		bool HasEdge();
 
 		/****** BOPDS_PaveBlock::HasEdge ******/
-		/****** md5 signature: 67f2d989d5efe4b20f4f791ce92927e3 ******/
+		/****** md5 signature: f05bc8224e311580aa38db59cf97a0af ******/
 		%feature("compactdefaultargs") HasEdge;
 		%feature("autodoc", "
 Parameters
@@ -3518,10 +3543,10 @@ Description
 -----------
 Query Returns true if the pave block has edge Returns the index of edge <theEdge>.
 ") HasEdge;
-		Standard_Boolean HasEdge(Standard_Integer &OutValue);
+		bool HasEdge(Standard_Integer &OutValue);
 
 		/****** BOPDS_PaveBlock::HasSameBounds ******/
-		/****** md5 signature: 0bd326d2184cf7b6ef04ecc16a2ca955 ******/
+		/****** md5 signature: 587e60bf8c4199c22e06d3dc40f7ce84 ******/
 		%feature("compactdefaultargs") HasSameBounds;
 		%feature("autodoc", "
 Parameters
@@ -3536,10 +3561,10 @@ Description
 -----------
 Query Returns true if the pave block has pave indices that equal to the pave indices of the pave block <theOther>.
 ") HasSameBounds;
-		Standard_Boolean HasSameBounds(const opencascade::handle<BOPDS_PaveBlock> & theOther);
+		bool HasSameBounds(const opencascade::handle<BOPDS_PaveBlock> & theOther);
 
 		/****** BOPDS_PaveBlock::HasShrunkData ******/
-		/****** md5 signature: f5e0c4ec7e5718ef2f5bf9a86199c6ea ******/
+		/****** md5 signature: 4dfdd07737391715815b2f7f20ddc633 ******/
 		%feature("compactdefaultargs") HasShrunkData;
 		%feature("autodoc", "Return
 -------
@@ -3549,10 +3574,10 @@ Description
 -----------
 Query Returns true if the pave block contains the shrunk data.
 ") HasShrunkData;
-		Standard_Boolean HasShrunkData();
+		bool HasShrunkData();
 
 		/****** BOPDS_PaveBlock::Indices ******/
-		/****** md5 signature: 7ef0b06999c91021b91c1bdc4088cff4 ******/
+		/****** md5 signature: df4cc204bed9840373ae9c63675958cf ******/
 		%feature("compactdefaultargs") Indices;
 		%feature("autodoc", "
 Parameters
@@ -3570,7 +3595,7 @@ Selector Returns the pave indices <theIndex1,theIndex2> of the pave block.
 		void Indices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BOPDS_PaveBlock::IsSplitEdge ******/
-		/****** md5 signature: 07c70c92ad2a4b75b8028068f876898b ******/
+		/****** md5 signature: cd8d3074fb0dd04216300c5435d0e51d ******/
 		%feature("compactdefaultargs") IsSplitEdge;
 		%feature("autodoc", "Return
 -------
@@ -3580,10 +3605,10 @@ Description
 -----------
 Query Returns true if the edge is equal to the original edge of the pave block.
 ") IsSplitEdge;
-		Standard_Boolean IsSplitEdge();
+		bool IsSplitEdge();
 
 		/****** BOPDS_PaveBlock::IsSplittable ******/
-		/****** md5 signature: 4b9dd74e2aa42018fe83fe5063aa511b ******/
+		/****** md5 signature: f75584b28d17f2506c175be414303f2e ******/
 		%feature("compactdefaultargs") IsSplittable;
 		%feature("autodoc", "Return
 -------
@@ -3593,10 +3618,10 @@ Description
 -----------
 Query Returns False if the pave block has a too short shrunk range and cannot be split, otherwise returns True.
 ") IsSplittable;
-		Standard_Boolean IsSplittable();
+		bool IsSplittable();
 
 		/****** BOPDS_PaveBlock::IsToUpdate ******/
-		/****** md5 signature: c5adb7d93c3efa0160d1d2d2f63f8b65 ******/
+		/****** md5 signature: 4e6eb48aea41b0caf946cc2a72dc2325 ******/
 		%feature("compactdefaultargs") IsToUpdate;
 		%feature("autodoc", "Return
 -------
@@ -3606,10 +3631,10 @@ Description
 -----------
 Query Returns true if the pave block contains extra paves.
 ") IsToUpdate;
-		Standard_Boolean IsToUpdate();
+		bool IsToUpdate();
 
 		/****** BOPDS_PaveBlock::OriginalEdge ******/
-		/****** md5 signature: db9c8a87977e4eabaf100d8c65531a7f ******/
+		/****** md5 signature: c5a74a65f029ae14d71ec46f933e3f11 ******/
 		%feature("compactdefaultargs") OriginalEdge;
 		%feature("autodoc", "Return
 -------
@@ -3619,7 +3644,7 @@ Description
 -----------
 Selector Returns the index of original edge of pave block.
 ") OriginalEdge;
-		Standard_Integer OriginalEdge();
+		int OriginalEdge();
 
 		/****** BOPDS_PaveBlock::Pave1 ******/
 		/****** md5 signature: c069a811d2db1154789a8c26ef94db8d ******/
@@ -3648,7 +3673,7 @@ Selector Returns the second pave.
 		const BOPDS_Pave & Pave2();
 
 		/****** BOPDS_PaveBlock::Range ******/
-		/****** md5 signature: 8ddfe2340263927f7a7249797228e7e9 ******/
+		/****** md5 signature: 0263be984ee6a87580394839a3fbc3b5 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -3656,8 +3681,8 @@ Parameters
 
 Return
 -------
-theT1: float
-theT2: float
+theT1: double
+theT2: double
 
 Description
 -----------
@@ -3666,7 +3691,7 @@ Selector Returns the parametric range <theT1,theT2> of the pave block.
 		void Range(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BOPDS_PaveBlock::RemoveExtPave ******/
-		/****** md5 signature: 1912180e16de8e42d4618dd6241a8eee ******/
+		/****** md5 signature: 25e498a536c6ed2341a0d54f515641c0 ******/
 		%feature("compactdefaultargs") RemoveExtPave;
 		%feature("autodoc", "
 Parameters
@@ -3681,10 +3706,10 @@ Description
 -----------
 Modifier Removes a pave with the given vertex number from extra paves.
 ") RemoveExtPave;
-		void RemoveExtPave(const Standard_Integer theVertNum);
+		void RemoveExtPave(const int theVertNum);
 
 		/****** BOPDS_PaveBlock::SetEdge ******/
-		/****** md5 signature: e5f0cb270588385f5c43b443c7a3911e ******/
+		/****** md5 signature: 10ef0497a2e2e608e511c8bbe697c8a4 ******/
 		%feature("compactdefaultargs") SetEdge;
 		%feature("autodoc", "
 Parameters
@@ -3699,10 +3724,10 @@ Description
 -----------
 Modifier Sets the index of edge of pave block <theEdge>.
 ") SetEdge;
-		void SetEdge(const Standard_Integer theEdge);
+		void SetEdge(const int theEdge);
 
 		/****** BOPDS_PaveBlock::SetOriginalEdge ******/
-		/****** md5 signature: 3cf310bce40a48b55779ed2e0ae00c2b ******/
+		/****** md5 signature: 125508bd010141707a92dc423e7e8c26 ******/
 		%feature("compactdefaultargs") SetOriginalEdge;
 		%feature("autodoc", "
 Parameters
@@ -3717,7 +3742,7 @@ Description
 -----------
 Modifier Sets the index of original edge of the pave block <theEdge>.
 ") SetOriginalEdge;
-		void SetOriginalEdge(const Standard_Integer theEdge);
+		void SetOriginalEdge(const int theEdge);
 
 		/****** BOPDS_PaveBlock::SetPave1 ******/
 		/****** md5 signature: 0d77581426baec39e7889318dd23befc ******/
@@ -3756,13 +3781,13 @@ Modifier Sets the second pave <thePave>.
 		void SetPave2(const BOPDS_Pave & thePave);
 
 		/****** BOPDS_PaveBlock::SetShrunkData ******/
-		/****** md5 signature: 88b6ec09d6f99c638baa1bd4a5aad644 ******/
+		/****** md5 signature: f34669469a8b03a3a5e4d0d9ad309da6 ******/
 		%feature("compactdefaultargs") SetShrunkData;
 		%feature("autodoc", "
 Parameters
 ----------
-theTS1: float
-theTS2: float
+theTS1: double
+theTS2: double
 theBox: Bnd_Box
 theIsSplittable: bool
 
@@ -3774,10 +3799,10 @@ Description
 -----------
 Modifier Sets the shrunk data for the pave block <theTS1>, <theTS2> - shrunk range <theBox> - the bounding box <theIsSplittable> - defines whether the edge can be split.
 ") SetShrunkData;
-		void SetShrunkData(const Standard_Real theTS1, const Standard_Real theTS2, const Bnd_Box & theBox, const Standard_Boolean theIsSplittable);
+		void SetShrunkData(const double theTS1, const double theTS2, const Bnd_Box & theBox, const bool theIsSplittable);
 
 		/****** BOPDS_PaveBlock::ShrunkData ******/
-		/****** md5 signature: 6c493466ad5bb4913f72330dcfd83ff3 ******/
+		/****** md5 signature: 0ec4d23dc12b4c0554759f5a368cfdfe ******/
 		%feature("compactdefaultargs") ShrunkData;
 		%feature("autodoc", "
 Parameters
@@ -3786,8 +3811,8 @@ theBox: Bnd_Box
 
 Return
 -------
-theTS1: float
-theTS2: float
+theTS1: double
+theTS2: double
 theIsSplittable: bool
 
 Description
@@ -3797,13 +3822,13 @@ Selector Returns the shrunk data for the pave block <theTS1>, <theTS2> - shrunk 
 		void ShrunkData(Standard_Real &OutValue, Standard_Real &OutValue, Bnd_Box & theBox, Standard_Boolean &OutValue);
 
 		/****** BOPDS_PaveBlock::Update ******/
-		/****** md5 signature: 475ca3e15ec8cd26334eaa1c94f1d708 ******/
+		/****** md5 signature: 3ca5238bc25353199df9b576e2321407 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
 ----------
-theLPB: BOPDS_ListOfPaveBlock
-theFlag: bool (optional, default to Standard_True)
+theLPB: BOPDS_PaveBlock
+theFlag: bool (optional, default to true)
 
 Return
 -------
@@ -3811,9 +3836,9 @@ None
 
 Description
 -----------
-Modifier Updates the pave block. The extra paves are used to create new pave blocks <theLPB>. <theFlag> - if true, the first pave and the second pave are used to produce new pave blocks.
+Modifier Updates the pave block. The extra paves are used to create new pave blocks <theLPB>. <theFlag> - if true, the first and second pave are used to produce new pave blocks.
 ") Update;
-		void Update(BOPDS_ListOfPaveBlock & theLPB, const Standard_Boolean theFlag = Standard_True);
+		void Update(NCollection_List<opencascade::handle<BOPDS_PaveBlock> > & theLPB, const bool theFlag = true);
 
 };
 
@@ -3845,7 +3870,7 @@ Empty constructor.
 		 BOPDS_Point();
 
 		/****** BOPDS_Point::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -3855,7 +3880,7 @@ Description
 -----------
 Selector Returns index of the vertex.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** BOPDS_Point::Pnt ******/
 		/****** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ******/
@@ -3897,7 +3922,7 @@ Selector Returns 2D point on the second face <thePnt>.
 		const gp_Pnt2d Pnt2D2();
 
 		/****** BOPDS_Point::SetIndex ******/
-		/****** md5 signature: 8837cdd415a0f5c290f45964b1b4e33b ******/
+		/****** md5 signature: 21592ec6eaa1cb4fc2285544b375c931 ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -3912,7 +3937,7 @@ Description
 -----------
 Modifier Sets the index of the vertex <theIndex>.
 ") SetIndex;
-		void SetIndex(const Standard_Integer theIndex);
+		void SetIndex(const int theIndex);
 
 		/****** BOPDS_Point::SetPnt ******/
 		/****** md5 signature: 492367fdc36391270c6513bf1a403636 ******/
@@ -4041,17 +4066,17 @@ Selector/Modifier Returns the boundung box of the shape.
 		Bnd_Box & ChangeBox();
 
 		/****** BOPDS_ShapeInfo::ChangeSubShapes ******/
-		/****** md5 signature: cce46b8afe21405c1741f5b05cc2d1a2 ******/
+		/****** md5 signature: 010eeac626d28cc1835dbd11f902f045 ******/
 		%feature("compactdefaultargs") ChangeSubShapes;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Selector/ Modifier Returns the list of indices of sub-shapes.
 ") ChangeSubShapes;
-		TColStd_ListOfInteger & ChangeSubShapes();
+		NCollection_List<int> & ChangeSubShapes();
 
 		/****** BOPDS_ShapeInfo::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -4067,7 +4092,7 @@ No available documentation.
 		void Dump();
 
 		/****** BOPDS_ShapeInfo::Flag ******/
-		/****** md5 signature: a1e7ee9e0f6e3b4294449387a5faac0a ******/
+		/****** md5 signature: b9e2a9b45dfb38f69a1162f832901eec ******/
 		%feature("compactdefaultargs") Flag;
 		%feature("autodoc", "Return
 -------
@@ -4077,10 +4102,10 @@ Description
 -----------
 Returns the flag.
 ") Flag;
-		Standard_Integer Flag();
+		int Flag();
 
 		/****** BOPDS_ShapeInfo::HasBRep ******/
-		/****** md5 signature: 85aa9303d8033ef239112f1da1286317 ******/
+		/****** md5 signature: a4bcaf8e7e84a89828458c2da33e38c5 ******/
 		%feature("compactdefaultargs") HasBRep;
 		%feature("autodoc", "Return
 -------
@@ -4090,10 +4115,10 @@ Description
 -----------
 Query Returns true if the shape has boundary representation.
 ") HasBRep;
-		Standard_Boolean HasBRep();
+		bool HasBRep();
 
 		/****** BOPDS_ShapeInfo::HasFlag ******/
-		/****** md5 signature: bf337e3732a94daa45cff0e55a817078 ******/
+		/****** md5 signature: ff07820c92809899dda23174585cd2b8 ******/
 		%feature("compactdefaultargs") HasFlag;
 		%feature("autodoc", "Return
 -------
@@ -4103,10 +4128,10 @@ Description
 -----------
 Query Returns true if there is flag.
 ") HasFlag;
-		Standard_Boolean HasFlag();
+		bool HasFlag();
 
 		/****** BOPDS_ShapeInfo::HasFlag ******/
-		/****** md5 signature: d05bf372703d8850d2889fd2855f632f ******/
+		/****** md5 signature: e9209d746818412a7490417db28b9661 ******/
 		%feature("compactdefaultargs") HasFlag;
 		%feature("autodoc", "
 Parameters
@@ -4120,10 +4145,10 @@ Description
 -----------
 Query Returns true if there is flag. Returns the flag theFlag.
 ") HasFlag;
-		Standard_Boolean HasFlag(Standard_Integer &OutValue);
+		bool HasFlag(Standard_Integer &OutValue);
 
 		/****** BOPDS_ShapeInfo::HasReference ******/
-		/****** md5 signature: 9bac2006ec6742c943cf0d6ba833da5a ******/
+		/****** md5 signature: b0aab5f2d7570a900a458ba9ccc411a2 ******/
 		%feature("compactdefaultargs") HasReference;
 		%feature("autodoc", "Return
 -------
@@ -4133,10 +4158,10 @@ Description
 -----------
 No available documentation.
 ") HasReference;
-		Standard_Boolean HasReference();
+		bool HasReference();
 
 		/****** BOPDS_ShapeInfo::HasSubShape ******/
-		/****** md5 signature: 8c06b342a7f049675b14c3d60a4d3398 ******/
+		/****** md5 signature: c56bc629e7f48d85b7af0465f0b70b26 ******/
 		%feature("compactdefaultargs") HasSubShape;
 		%feature("autodoc", "
 Parameters
@@ -4151,10 +4176,10 @@ Description
 -----------
 Query Returns true if the shape has sub-shape with index theI.
 ") HasSubShape;
-		Standard_Boolean HasSubShape(const Standard_Integer theI);
+		bool HasSubShape(const int theI);
 
 		/****** BOPDS_ShapeInfo::IsInterfering ******/
-		/****** md5 signature: f2f0c5e2ad949621ff90565dc251f8c6 ******/
+		/****** md5 signature: 9652bd4e73fdf4c9f08c558571d3e6aa ******/
 		%feature("compactdefaultargs") IsInterfering;
 		%feature("autodoc", "Return
 -------
@@ -4164,10 +4189,10 @@ Description
 -----------
 Returns true if the shape can be participant of an interference //! Flag.
 ") IsInterfering;
-		Standard_Boolean IsInterfering();
+		bool IsInterfering();
 
 		/****** BOPDS_ShapeInfo::Reference ******/
-		/****** md5 signature: a49ae0cd48bab924bed904d2db0964c3 ******/
+		/****** md5 signature: f97da73ecef07e0c8d9574b25a5a2f49 ******/
 		%feature("compactdefaultargs") Reference;
 		%feature("autodoc", "Return
 -------
@@ -4177,7 +4202,7 @@ Description
 -----------
 Selector Returns the index of a reference information.
 ") Reference;
-		Standard_Integer Reference();
+		int Reference();
 
 		/****** BOPDS_ShapeInfo::SetBox ******/
 		/****** md5 signature: 08b5255d733c5c76b81013bedaa4c32d ******/
@@ -4198,7 +4223,7 @@ Modifier Sets the boundung box of the shape theBox.
 		void SetBox(const Bnd_Box & theBox);
 
 		/****** BOPDS_ShapeInfo::SetFlag ******/
-		/****** md5 signature: 356ab305ce6bb1c1a5cd5f8623e00c78 ******/
+		/****** md5 signature: faf5e2c60591b1e7163033d003ae9096 ******/
 		%feature("compactdefaultargs") SetFlag;
 		%feature("autodoc", "
 Parameters
@@ -4213,10 +4238,10 @@ Description
 -----------
 Modifier Sets the flag.
 ") SetFlag;
-		void SetFlag(const Standard_Integer theI);
+		void SetFlag(const int theI);
 
 		/****** BOPDS_ShapeInfo::SetReference ******/
-		/****** md5 signature: ead7289c6453b0e4a306c996b2f2eac6 ******/
+		/****** md5 signature: 112c45317f2bb8b11fa8e9c5256b07f7 ******/
 		%feature("compactdefaultargs") SetReference;
 		%feature("autodoc", "
 Parameters
@@ -4231,7 +4256,7 @@ Description
 -----------
 Modifier Sets the index of a reference information.
 ") SetReference;
-		void SetReference(const Standard_Integer theI);
+		void SetReference(const int theI);
 
 		/****** BOPDS_ShapeInfo::SetShape ******/
 		/****** md5 signature: ea8cd69f1842315314882342f4f38762 ******/
@@ -4296,17 +4321,17 @@ Selector Returns the type of shape.
 		TopAbs_ShapeEnum ShapeType();
 
 		/****** BOPDS_ShapeInfo::SubShapes ******/
-		/****** md5 signature: 014e993425abfc99dfc2d8c0874fb974 ******/
+		/****** md5 signature: f4e327b938249f1131c923d9a1fadfd7 ******/
 		%feature("compactdefaultargs") SubShapes;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Selector Returns the list of indices of sub-shapes.
 ") SubShapes;
-		const TColStd_ListOfInteger & SubShapes();
+		const NCollection_List<int> & SubShapes();
 
 };
 
@@ -4367,7 +4392,7 @@ Returns the data structure.
 		const BOPDS_DS & DS();
 
 		/****** BOPDS_SubIterator::ExpectedLength ******/
-		/****** md5 signature: fbd2b330f0e8a94b7bcf73bf50ddb532 ******/
+		/****** md5 signature: 6dcb389feaed64bbbfcb8ffff350b6f7 ******/
 		%feature("compactdefaultargs") ExpectedLength;
 		%feature("autodoc", "Return
 -------
@@ -4377,7 +4402,7 @@ Description
 -----------
 Returns the number of interfering pairs.
 ") ExpectedLength;
-		Standard_Integer ExpectedLength();
+		int ExpectedLength();
 
 		/****** BOPDS_SubIterator::Initialize ******/
 		/****** md5 signature: 4c9930c75acb9044902a1f8388d68e73 ******/
@@ -4393,7 +4418,7 @@ Initializes the iterator.
 		void Initialize();
 
 		/****** BOPDS_SubIterator::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -4403,7 +4428,7 @@ Description
 -----------
 Returns true if there are more pairs of intersected shapes.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BOPDS_SubIterator::Next ******/
 		/****** md5 signature: 1201a55f750036045cd397a65f07fc7d ******/
@@ -4450,12 +4475,12 @@ Sets the data structure <pDS> to process. It is used to access the shapes and th
 		void SetDS(const BOPDS_PDS & pDS);
 
 		/****** BOPDS_SubIterator::SetSubSet1 ******/
-		/****** md5 signature: 252136206a8ce77d68387c3e946bb471 ******/
+		/****** md5 signature: 6ee4c1693c7e332173606cb51cf5946a ******/
 		%feature("compactdefaultargs") SetSubSet1;
 		%feature("autodoc", "
 Parameters
 ----------
-theLI: TColStd_ListOfInteger
+theLI: NCollection_List<int>
 
 Return
 -------
@@ -4465,15 +4490,15 @@ Description
 -----------
 Sets the first set of indices <theLI> to process.
 ") SetSubSet1;
-		void SetSubSet1(const TColStd_ListOfInteger & theLI);
+		void SetSubSet1(const NCollection_List<int> & theLI);
 
 		/****** BOPDS_SubIterator::SetSubSet2 ******/
-		/****** md5 signature: 4f4e0b922e12e3fe4c09fa2634bef460 ******/
+		/****** md5 signature: 75d415ba5078073865c8d0fcd4d6e2fc ******/
 		%feature("compactdefaultargs") SetSubSet2;
 		%feature("autodoc", "
 Parameters
 ----------
-theLI: TColStd_ListOfInteger
+theLI: NCollection_List<int>
 
 Return
 -------
@@ -4483,36 +4508,36 @@ Description
 -----------
 Sets the second set of indices <theLI> to process.
 ") SetSubSet2;
-		void SetSubSet2(const TColStd_ListOfInteger & theLI);
+		void SetSubSet2(const NCollection_List<int> & theLI);
 
 		/****** BOPDS_SubIterator::SubSet1 ******/
-		/****** md5 signature: ab0c061163652bd3c7576cf1e5393ed8 ******/
+		/****** md5 signature: 97915776bc92a1f5dd0a804c9e63bcf9 ******/
 		%feature("compactdefaultargs") SubSet1;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Returns the first set of indices to process.
 ") SubSet1;
-		const TColStd_ListOfInteger & SubSet1();
+		const NCollection_List<int> & SubSet1();
 
 		/****** BOPDS_SubIterator::SubSet2 ******/
-		/****** md5 signature: acf1124456fc41a861be31a0aee3df0b ******/
+		/****** md5 signature: d6cdd8f53e14b0c5efcc1f9459cd451a ******/
 		%feature("compactdefaultargs") SubSet2;
 		%feature("autodoc", "Return
 -------
-TColStd_ListOfInteger
+NCollection_List<int>
 
 Description
 -----------
 Returns the second set of indices to process.
 ") SubSet2;
-		const TColStd_ListOfInteger & SubSet2();
+		const NCollection_List<int> & SubSet2();
 
 		/****** BOPDS_SubIterator::Value ******/
-		/****** md5 signature: e158a5c3b0133290b10886e826c5728a ******/
+		/****** md5 signature: 5ccfc0ac3b3b4c10c79203b7c68bc8f9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4544,7 +4569,7 @@ Returns indices (DS) of intersected shapes theIndex1 - the index of the first sh
 class BOPDS_Tools {
 	public:
 		/****** BOPDS_Tools::HasBRep ******/
-		/****** md5 signature: dc27ba68aac28e872e646f6627a870af ******/
+		/****** md5 signature: 6b8336aacefd882f8094170e547a1ff3 ******/
 		%feature("compactdefaultargs") HasBRep;
 		%feature("autodoc", "
 Parameters
@@ -4559,10 +4584,10 @@ Description
 -----------
 Returns true if the type <theT> correspond to a shape having boundary representation.
 ") HasBRep;
-		static Standard_Boolean HasBRep(const TopAbs_ShapeEnum theT);
+		static bool HasBRep(const TopAbs_ShapeEnum theT);
 
 		/****** BOPDS_Tools::IsInterfering ******/
-		/****** md5 signature: 114855a12e7685dc30b197df785d635d ******/
+		/****** md5 signature: 7961f311c0286528a85e02a87a656f47 ******/
 		%feature("compactdefaultargs") IsInterfering;
 		%feature("autodoc", "
 Parameters
@@ -4577,10 +4602,10 @@ Description
 -----------
 Returns true if the type <theT> can be participant of an interference.
 ") IsInterfering;
-		static Standard_Boolean IsInterfering(const TopAbs_ShapeEnum theT);
+		static bool IsInterfering(const TopAbs_ShapeEnum theT);
 
 		/****** BOPDS_Tools::TypeToInteger ******/
-		/****** md5 signature: 0ae15761533503a6aa960b1cf71c8fcd ******/
+		/****** md5 signature: 3331fcef80050d4973835b8ed7b00833 ******/
 		%feature("compactdefaultargs") TypeToInteger;
 		%feature("autodoc", "
 Parameters
@@ -4596,10 +4621,10 @@ Description
 -----------
 Converts the conmbination of two types of shape <theT1>,<theT2> to the one integer value, that is returned.
 ") TypeToInteger;
-		static Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT1, const TopAbs_ShapeEnum theT2);
+		static int TypeToInteger(const TopAbs_ShapeEnum theT1, const TopAbs_ShapeEnum theT2);
 
 		/****** BOPDS_Tools::TypeToInteger ******/
-		/****** md5 signature: 2ff94d4866c6c71e2ceb7a5e855100f3 ******/
+		/****** md5 signature: 5b59af9cf6f0cdb17e5d79da77166b10 ******/
 		%feature("compactdefaultargs") TypeToInteger;
 		%feature("autodoc", "
 Parameters
@@ -4614,7 +4639,7 @@ Description
 -----------
 Converts the type of shape <theT>, to integer value, that is returned.
 ") TypeToInteger;
-		static Standard_Integer TypeToInteger(const TopAbs_ShapeEnum theT);
+		static int TypeToInteger(const TopAbs_ShapeEnum theT);
 
 };
 
@@ -4637,7 +4662,7 @@ Converts the type of shape <theT>, to integer value, that is returned.
 class BOPDS_InterfEE : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfEE::BOPDS_InterfEE ******/
-		/****** md5 signature: 3a56ee86c80ca876a599958dcbb93de2 ******/
+		/****** md5 signature: 225ca9d7ce03a18b8754a778edfeb955 ******/
 		%feature("compactdefaultargs") BOPDS_InterfEE;
 		%feature("autodoc", "Return
 -------
@@ -4716,7 +4741,7 @@ Parameter theCP * common part */.
 class BOPDS_InterfEF : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfEF::BOPDS_InterfEF ******/
-		/****** md5 signature: db7b1db9510fdcd08228116450854f56 ******/
+		/****** md5 signature: 2adb58ab66bd34571d906a207b794ba2 ******/
 		%feature("compactdefaultargs") BOPDS_InterfEF;
 		%feature("autodoc", "Return
 -------
@@ -4795,7 +4820,7 @@ Parameter theCP * common part */.
 class BOPDS_InterfEZ : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfEZ::BOPDS_InterfEZ ******/
-		/****** md5 signature: 68a3e3081232b079fb3aa95b06499417 ******/
+		/****** md5 signature: d631ec337749c00812067a3aff8618a3 ******/
 		%feature("compactdefaultargs") BOPDS_InterfEZ;
 		%feature("autodoc", "Return
 -------
@@ -4854,49 +4879,49 @@ Description
 		 BOPDS_InterfFF();
 
 		/****** BOPDS_InterfFF::ChangeCurves ******/
-		/****** md5 signature: a137ee1b8aca0e0cd4aa63ad1bf53ac5 ******/
+		/****** md5 signature: 5d83c789d4c500c9f3970aa2488f214d ******/
 		%feature("compactdefaultargs") ChangeCurves;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfCurve
+NCollection_Vector<BOPDS_Curve>
 
 Description
 -----------
 /** * Selector/Modifier * Returns the intersection curves * 
 Return: * intersection curves */.
 ") ChangeCurves;
-		BOPDS_VectorOfCurve & ChangeCurves();
+		NCollection_Vector<BOPDS_Curve> & ChangeCurves();
 
 		/****** BOPDS_InterfFF::ChangePoints ******/
-		/****** md5 signature: 6d7e21a9831c13acb16202b5eb5069c2 ******/
+		/****** md5 signature: 184de52774b815ea59e677f947f9d0ca ******/
 		%feature("compactdefaultargs") ChangePoints;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfPoint
+NCollection_Vector<BOPDS_Point>
 
 Description
 -----------
 /** * Selector/Modifier * Returns the intersection points * 
 Return: * intersection points */.
 ") ChangePoints;
-		BOPDS_VectorOfPoint & ChangePoints();
+		NCollection_Vector<BOPDS_Point> & ChangePoints();
 
 		/****** BOPDS_InterfFF::Curves ******/
-		/****** md5 signature: a51a404fc40e0761a1ef97d4ce4eb86a ******/
+		/****** md5 signature: 9abace0bf0b2fd813ce1ed5d0a3f40b9 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfCurve
+NCollection_Vector<BOPDS_Curve>
 
 Description
 -----------
 /** * Selector * Returns the intersection curves * 
 Return: * intersection curves */.
 ") Curves;
-		BOPDS_VectorOfCurve Curves();
+		NCollection_Vector<BOPDS_Curve> Curves();
 
 		/****** BOPDS_InterfFF::Init ******/
-		/****** md5 signature: 4ef383c666596f906f9ce4d66071677d ******/
+		/****** md5 signature: 67cae55cef2e39fa32338808680a53f2 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4912,24 +4937,24 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer theNbCurves, const Standard_Integer theNbPoints);
+		void Init(const int theNbCurves, const int theNbPoints);
 
 		/****** BOPDS_InterfFF::Points ******/
-		/****** md5 signature: af3d274ccfb32eab08bf5e3c85cb2291 ******/
+		/****** md5 signature: 083905ee445dab15ae300905022d2def ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
-BOPDS_VectorOfPoint
+NCollection_Vector<BOPDS_Point>
 
 Description
 -----------
 /** * Selector * Returns the intersection points * 
 Return: * intersection points */.
 ") Points;
-		const BOPDS_VectorOfPoint & Points();
+		const NCollection_Vector<BOPDS_Point> & Points();
 
 		/****** BOPDS_InterfFF::SetTangentFaces ******/
-		/****** md5 signature: f40c479ada59173a3110087e189d0488 ******/
+		/****** md5 signature: a0d5aea1cb04f1f47cdb384bfec35f9e ******/
 		%feature("compactdefaultargs") SetTangentFaces;
 		%feature("autodoc", "
 Parameters
@@ -4945,10 +4970,10 @@ Description
 /** * Modifier * Sets the flag of whether the faces are tangent * 
 Parameter theFlag * the flag */.
 ") SetTangentFaces;
-		void SetTangentFaces(const Standard_Boolean theFlag);
+		void SetTangentFaces(const bool theFlag);
 
 		/****** BOPDS_InterfFF::TangentFaces ******/
-		/****** md5 signature: 44e511afda93e8aadb10ba4db293bb02 ******/
+		/****** md5 signature: b1c6f627579601163f2c18b095788995 ******/
 		%feature("compactdefaultargs") TangentFaces;
 		%feature("autodoc", "Return
 -------
@@ -4959,7 +4984,7 @@ Description
 /** * Selector * Returns the flag whether the faces are tangent * 
 Return: * the flag */.
 ") TangentFaces;
-		Standard_Boolean TangentFaces();
+		bool TangentFaces();
 
 };
 
@@ -4976,7 +5001,7 @@ Return: * the flag */.
 class BOPDS_InterfFZ : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfFZ::BOPDS_InterfFZ ******/
-		/****** md5 signature: e5c202a4fb5b68fc49a5668dc1d5fc67 ******/
+		/****** md5 signature: 9a8fd4e28c3c24ef7aac3b21a21c6b9f ******/
 		%feature("compactdefaultargs") BOPDS_InterfFZ;
 		%feature("autodoc", "Return
 -------
@@ -5054,26 +5079,26 @@ Parameter theAllocator * allocator to manage the memory */.
 		 BOPDS_InterfVE(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_InterfVE::Parameter ******/
-		/****** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ******/
+		/****** md5 signature: f2f0d3a4c48532483b401ae3d2d5c5fb ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 /** * Selector * Returrns the value of parameter * of the point of the vertex * on the curve of the edge * 
 Return: * value of parameter */.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** BOPDS_InterfVE::SetParameter ******/
-		/****** md5 signature: d089f68e9d85c0cc9947cf1853be9ad0 ******/
+		/****** md5 signature: 05e70c2a6fb1efa13fb25fdabc0c631c ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-theT: float
+theT: double
 
 Return
 -------
@@ -5084,7 +5109,7 @@ Description
 /** * Modifier * Sets the value of parameter * of the point of the vertex * on the curve of the edge * 
 Parameter theT * value of parameter */.
 ") SetParameter;
-		void SetParameter(const Standard_Real theT);
+		void SetParameter(const double theT);
 
 };
 
@@ -5133,13 +5158,13 @@ Parameter theAllocator * allocator to manage the memory */.
 		 BOPDS_InterfVF(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_InterfVF::SetUV ******/
-		/****** md5 signature: f05410086525668d6e7335c85692e807 ******/
+		/****** md5 signature: bc15c91300a23f5541f183f5fce775e4 ******/
 		%feature("compactdefaultargs") SetUV;
 		%feature("autodoc", "
 Parameters
 ----------
-theU: float
-theV: float
+theU: double
+theV: double
 
 Return
 -------
@@ -5151,10 +5176,10 @@ Description
 Parameter theU * value of U parameter * 
 Parameter theV * value of U parameter */.
 ") SetUV;
-		void SetUV(const Standard_Real theU, const Standard_Real theV);
+		void SetUV(const double theU, const double theV);
 
 		/****** BOPDS_InterfVF::UV ******/
-		/****** md5 signature: d5aee13da276e476ef2e46c0c4691734 ******/
+		/****** md5 signature: 72b5d3fd49931d1e11e866cdf4c9de6c ******/
 		%feature("compactdefaultargs") UV;
 		%feature("autodoc", "
 Parameters
@@ -5162,8 +5187,8 @@ Parameters
 
 Return
 -------
-theU: float
-theV: float
+theU: double
+theV: double
 
 Description
 -----------
@@ -5188,7 +5213,7 @@ Parameter theV * value of U parameter */.
 class BOPDS_InterfVV : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfVV::BOPDS_InterfVV ******/
-		/****** md5 signature: e630b4eef92ce00d9ba3c276b244a9d9 ******/
+		/****** md5 signature: 43902dd32743dc77250d0e4c695f831f ******/
 		%feature("compactdefaultargs") BOPDS_InterfVV;
 		%feature("autodoc", "Return
 -------
@@ -5234,7 +5259,7 @@ Parameter theAllocator * allocator to manage the memory */.
 class BOPDS_InterfVZ : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfVZ::BOPDS_InterfVZ ******/
-		/****** md5 signature: 96ec00ba8d018a2dbf0e43b26f1e2583 ******/
+		/****** md5 signature: 242f99ea01e62827cdff34c2be475eba ******/
 		%feature("compactdefaultargs") BOPDS_InterfVZ;
 		%feature("autodoc", "Return
 -------
@@ -5280,7 +5305,7 @@ Parameter theAllocator * allocator to manage the memory */.
 class BOPDS_InterfZZ : public BOPDS_Interf {
 	public:
 		/****** BOPDS_InterfZZ::BOPDS_InterfZZ ******/
-		/****** md5 signature: 113ab70d063043dabdc7028349eeea00 ******/
+		/****** md5 signature: c76704a4fc499329a2f7f4cb870d5174 ******/
 		%feature("compactdefaultargs") BOPDS_InterfZZ;
 		%feature("autodoc", "Return
 -------
@@ -5358,7 +5383,7 @@ Parameter theAllocator the allocator to manage the memory.
 		 BOPDS_IteratorSI(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_IteratorSI::UpdateByLevelOfCheck ******/
-		/****** md5 signature: da43b78370a700502adc2b5b947016f3 ******/
+		/****** md5 signature: f71946a518eb525aea05e1af04855f41 ******/
 		%feature("compactdefaultargs") UpdateByLevelOfCheck;
 		%feature("autodoc", "
 Parameters
@@ -5373,7 +5398,7 @@ Description
 -----------
 Updates the lists of possible intersections according to the value of <theLevel>. It defines which interferferences will be checked: 0 - only V/V; 1 - V/V and V/E; 2 - V/V, V/E and E/E; 3 - V/V, V/E, E/E and V/F; 4 - V/V, V/E, E/E, V/F and E/F; other - all interferences.
 ") UpdateByLevelOfCheck;
-		void UpdateByLevelOfCheck(const Standard_Integer theLevel);
+		void UpdateByLevelOfCheck(const int theLevel);
 
 };
 

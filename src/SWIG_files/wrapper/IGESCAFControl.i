@@ -121,7 +121,7 @@ from OCC.Core.Exception import *
 class IGESCAFControl {
 	public:
 		/****** IGESCAFControl::DecodeColor ******/
-		/****** md5 signature: 412697bd8d78fc5979403a70aef21561 ******/
+		/****** md5 signature: 5edecb464971cf53c455413682565ec3 ******/
 		%feature("compactdefaultargs") DecodeColor;
 		%feature("autodoc", "
 Parameters
@@ -136,10 +136,10 @@ Description
 -----------
 Provides a tool for writing IGES file Converts IGES color index to CASCADE color.
 ") DecodeColor;
-		static Quantity_Color DecodeColor(const Standard_Integer col);
+		static Quantity_Color DecodeColor(const int col);
 
 		/****** IGESCAFControl::EncodeColor ******/
-		/****** md5 signature: b104ced61ad034521f1117876167864c ******/
+		/****** md5 signature: f1c669bc7188cef6206805fa9638aed5 ******/
 		%feature("compactdefaultargs") EncodeColor;
 		%feature("autodoc", "
 Parameters
@@ -154,7 +154,7 @@ Description
 -----------
 Tries to Convert CASCADE color to IGES color index If no corresponding color defined in IGES, returns 0.
 ") EncodeColor;
-		static Standard_Integer EncodeColor(const Quantity_Color & col);
+		static int EncodeColor(const Quantity_Color & col);
 
 };
 
@@ -179,18 +179,18 @@ None
 
 Description
 -----------
-Creates a reader with an empty IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
+Creates a reader with an empty IGES model and sets ColorMode, LayerMode and NameMode to true.
 ") IGESCAFControl_Reader;
 		 IGESCAFControl_Reader();
 
 		/****** IGESCAFControl_Reader::IGESCAFControl_Reader ******/
-		/****** md5 signature: ed2325657273ea5f907b2a7d8ba9ffcc ******/
+		/****** md5 signature: bc2f1dabc58d5098260896e692846567 ******/
 		%feature("compactdefaultargs") IGESCAFControl_Reader;
 		%feature("autodoc", "
 Parameters
 ----------
 theWS: XSControl_WorkSession
-FromScratch: bool (optional, default to Standard_True)
+FromScratch: bool (optional, default to true)
 
 Return
 -------
@@ -200,10 +200,10 @@ Description
 -----------
 Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES.
 ") IGESCAFControl_Reader;
-		 IGESCAFControl_Reader(const opencascade::handle<XSControl_WorkSession> & theWS, const Standard_Boolean FromScratch = Standard_True);
+		 IGESCAFControl_Reader(const opencascade::handle<XSControl_WorkSession> & theWS, const bool FromScratch = true);
 
 		/****** IGESCAFControl_Reader::GetColorMode ******/
-		/****** md5 signature: cddb885e605f1794a5a6486023f65736 ******/
+		/****** md5 signature: 4d12dea091429eeedb4bf6c71b34f3d6 ******/
 		%feature("compactdefaultargs") GetColorMode;
 		%feature("autodoc", "Return
 -------
@@ -213,10 +213,10 @@ Description
 -----------
 No available documentation.
 ") GetColorMode;
-		Standard_Boolean GetColorMode();
+		bool GetColorMode();
 
 		/****** IGESCAFControl_Reader::GetLayerMode ******/
-		/****** md5 signature: b6b1458608d2429d13e63a07c0b392d8 ******/
+		/****** md5 signature: 58ee64d1f619e943de13f451cbd310a0 ******/
 		%feature("compactdefaultargs") GetLayerMode;
 		%feature("autodoc", "Return
 -------
@@ -226,10 +226,10 @@ Description
 -----------
 No available documentation.
 ") GetLayerMode;
-		Standard_Boolean GetLayerMode();
+		bool GetLayerMode();
 
 		/****** IGESCAFControl_Reader::GetNameMode ******/
-		/****** md5 signature: 1097f532a68b4625a0108cddc8366238 ******/
+		/****** md5 signature: bf2db5529449086fe5e7b5607565732f ******/
 		%feature("compactdefaultargs") GetNameMode;
 		%feature("autodoc", "Return
 -------
@@ -239,10 +239,10 @@ Description
 -----------
 No available documentation.
 ") GetNameMode;
-		Standard_Boolean GetNameMode();
+		bool GetNameMode();
 
 		/****** IGESCAFControl_Reader::Perform ******/
-		/****** md5 signature: cee56f371ea8e972dad6b23f2e3d3bd3 ******/
+		/****** md5 signature: a3d981542b3775ff1cc248c10a5516e9 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -259,15 +259,15 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		Standard_Boolean Perform(TCollection_AsciiString theFileName, const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(TCollection_AsciiString theFileName, const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Reader::Perform ******/
-		/****** md5 signature: 7404bc4c3b80e5147b5cfd67bfcd62d1 ******/
+		/****** md5 signature: 12d0af42c9ecaa1e1f52ccb4520f91ac ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theFileName: str
+theFileName: char *
 theDoc: TDocStd_Document
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -279,10 +279,10 @@ Description
 -----------
 Translate IGES file given by filename into the document Return True if succeeded, and False in case of fail.
 ") Perform;
-		Standard_Boolean Perform(Standard_CString theFileName, const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(const char * const theFileName, const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Reader::SetColorMode ******/
-		/****** md5 signature: 7026741e7d147d7065572beb98babc6e ******/
+		/****** md5 signature: eeb930c65d2dcf67f906702c018c6056 ******/
 		%feature("compactdefaultargs") SetColorMode;
 		%feature("autodoc", "
 Parameters
@@ -297,10 +297,10 @@ Description
 -----------
 Set ColorMode for indicate read Colors or not.
 ") SetColorMode;
-		void SetColorMode(const Standard_Boolean theMode);
+		void SetColorMode(const bool theMode);
 
 		/****** IGESCAFControl_Reader::SetLayerMode ******/
-		/****** md5 signature: 81f87cc05a87da11feacb0420dc37c4b ******/
+		/****** md5 signature: 807a22208fd801302e3a4900edff07ad ******/
 		%feature("compactdefaultargs") SetLayerMode;
 		%feature("autodoc", "
 Parameters
@@ -315,10 +315,10 @@ Description
 -----------
 Set LayerMode for indicate read Layers or not.
 ") SetLayerMode;
-		void SetLayerMode(const Standard_Boolean theMode);
+		void SetLayerMode(const bool theMode);
 
 		/****** IGESCAFControl_Reader::SetNameMode ******/
-		/****** md5 signature: a69a0615cbbe8af82773337e918a7087 ******/
+		/****** md5 signature: 1ccad2641d989eaf13e2d3e1a6bbe9cf ******/
 		%feature("compactdefaultargs") SetNameMode;
 		%feature("autodoc", "
 Parameters
@@ -333,10 +333,10 @@ Description
 -----------
 Set NameMode for indicate read Name or not.
 ") SetNameMode;
-		void SetNameMode(const Standard_Boolean theMode);
+		void SetNameMode(const bool theMode);
 
 		/****** IGESCAFControl_Reader::Transfer ******/
-		/****** md5 signature: df90f76568165a7e5bd8481bb89b6fc9 ******/
+		/****** md5 signature: 8fa3cacbcd7ccc0af4ebf341db653113 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -352,7 +352,7 @@ Description
 -----------
 Translates currently loaded IGES file into the document Returns True if succeeded, and False in case of fail.
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -377,18 +377,18 @@ None
 
 Description
 -----------
-Creates a writer with an empty IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
+Creates a writer with an empty IGES model and sets ColorMode, LayerMode and NameMode to true.
 ") IGESCAFControl_Writer;
 		 IGESCAFControl_Writer();
 
 		/****** IGESCAFControl_Writer::IGESCAFControl_Writer ******/
-		/****** md5 signature: 185eb49db43948a75dc15c0c48b3f1bc ******/
+		/****** md5 signature: 209a0903767655fc7024db384114c752 ******/
 		%feature("compactdefaultargs") IGESCAFControl_Writer;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: XSControl_WorkSession
-scratch: bool (optional, default to Standard_True)
+scratch: bool (optional, default to true)
 
 Return
 -------
@@ -398,16 +398,16 @@ Description
 -----------
 Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES.
 ") IGESCAFControl_Writer;
-		 IGESCAFControl_Writer(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
+		 IGESCAFControl_Writer(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
 		/****** IGESCAFControl_Writer::IGESCAFControl_Writer ******/
-		/****** md5 signature: 2137ed6437df5579966ff34bb02a88c7 ******/
+		/****** md5 signature: 38c9f5924cb504bc0228de6a476eecb0 ******/
 		%feature("compactdefaultargs") IGESCAFControl_Writer;
 		%feature("autodoc", "
 Parameters
 ----------
 theWS: XSControl_WorkSession
-theUnit: str
+theUnit: char *
 
 Return
 -------
@@ -417,10 +417,10 @@ Description
 -----------
 Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for IGES Sets target Unit for the writing process.
 ") IGESCAFControl_Writer;
-		 IGESCAFControl_Writer(const opencascade::handle<XSControl_WorkSession> & theWS, Standard_CString theUnit);
+		 IGESCAFControl_Writer(const opencascade::handle<XSControl_WorkSession> & theWS, const char * const theUnit);
 
 		/****** IGESCAFControl_Writer::GetColorMode ******/
-		/****** md5 signature: 010da6a8a0e8a61fdb607fd6faba2b56 ******/
+		/****** md5 signature: 47aafb243dc0cf537a98e98687d6f205 ******/
 		%feature("compactdefaultargs") GetColorMode;
 		%feature("autodoc", "Return
 -------
@@ -430,10 +430,10 @@ Description
 -----------
 No available documentation.
 ") GetColorMode;
-		Standard_Boolean GetColorMode();
+		bool GetColorMode();
 
 		/****** IGESCAFControl_Writer::GetLayerMode ******/
-		/****** md5 signature: d677385c303e067613f92bc738509727 ******/
+		/****** md5 signature: 1f81bf4f7295796afc74e524a82c2b3b ******/
 		%feature("compactdefaultargs") GetLayerMode;
 		%feature("autodoc", "Return
 -------
@@ -443,10 +443,10 @@ Description
 -----------
 No available documentation.
 ") GetLayerMode;
-		Standard_Boolean GetLayerMode();
+		bool GetLayerMode();
 
 		/****** IGESCAFControl_Writer::GetNameMode ******/
-		/****** md5 signature: 2dd32a893d6f5f4666ac3752ace2d12f ******/
+		/****** md5 signature: 6f8d1c342487171700ccc3fdc91f526b ******/
 		%feature("compactdefaultargs") GetNameMode;
 		%feature("autodoc", "Return
 -------
@@ -456,10 +456,10 @@ Description
 -----------
 No available documentation.
 ") GetNameMode;
-		Standard_Boolean GetNameMode();
+		bool GetNameMode();
 
 		/****** IGESCAFControl_Writer::Perform ******/
-		/****** md5 signature: 82a9ff51a493dfcaea368ecaef792fdb ******/
+		/****** md5 signature: 6c0731e4db61e5276e511b169b9728fc ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -476,16 +476,16 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, TCollection_AsciiString filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(const opencascade::handle<TDocStd_Document> & doc, TCollection_AsciiString filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Writer::Perform ******/
-		/****** md5 signature: 1ef00b1bd520cd3b05cc4f00e91c494d ******/
+		/****** md5 signature: 3b775fa7cc639f21d8961a503778246b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 doc: TDocStd_Document
-filename: str
+filename: char *
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -496,10 +496,10 @@ Description
 -----------
 Transfers a document and writes it to a IGES file Returns True if translation is OK.
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & doc, Standard_CString filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Perform(const opencascade::handle<TDocStd_Document> & doc, const char * const filename, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Writer::SetColorMode ******/
-		/****** md5 signature: e8d41838c31a9460a1c83d84b1f572a1 ******/
+		/****** md5 signature: 30e8b787409ddb6f7d8546dbc2ad7253 ******/
 		%feature("compactdefaultargs") SetColorMode;
 		%feature("autodoc", "
 Parameters
@@ -514,10 +514,10 @@ Description
 -----------
 Set ColorMode for indicate write Colors or not.
 ") SetColorMode;
-		void SetColorMode(const Standard_Boolean colormode);
+		void SetColorMode(const bool colormode);
 
 		/****** IGESCAFControl_Writer::SetLayerMode ******/
-		/****** md5 signature: 3ec21c8de4b114a83bb0b34cb3b98662 ******/
+		/****** md5 signature: 92c9452fe5fa66a3bfc6885c311f49b8 ******/
 		%feature("compactdefaultargs") SetLayerMode;
 		%feature("autodoc", "
 Parameters
@@ -532,10 +532,10 @@ Description
 -----------
 Set LayerMode for indicate write Layers or not.
 ") SetLayerMode;
-		void SetLayerMode(const Standard_Boolean layermode);
+		void SetLayerMode(const bool layermode);
 
 		/****** IGESCAFControl_Writer::SetNameMode ******/
-		/****** md5 signature: 43ccb5d3fb024d8191f251ee74d0f6ba ******/
+		/****** md5 signature: 1d94dc8e2546e21d290b9e471b582cde ******/
 		%feature("compactdefaultargs") SetNameMode;
 		%feature("autodoc", "
 Parameters
@@ -550,10 +550,10 @@ Description
 -----------
 Set NameMode for indicate write Name or not.
 ") SetNameMode;
-		void SetNameMode(const Standard_Boolean namemode);
+		void SetNameMode(const bool namemode);
 
 		/****** IGESCAFControl_Writer::Transfer ******/
-		/****** md5 signature: 31249612d40a7a08f4519552635fb88d ******/
+		/****** md5 signature: 5ab794241ab47932ed6daf0a674a15e3 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -569,15 +569,15 @@ Description
 -----------
 Transfers a document to a IGES model Returns True if translation is OK.
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Writer::Transfer ******/
-		/****** md5 signature: f3e872ca158bc684049cac94dc49b992 ******/
+		/****** md5 signature: 538e8cd33d4db90deaa9ebaf11adab73 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
 ----------
-labels: TDF_LabelSequence
+labels: NCollection_Sequence<TDF_Label>
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -588,10 +588,10 @@ Description
 -----------
 Transfers labels to a IGES model Returns True if translation is OK.
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_LabelSequence & labels, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const NCollection_Sequence<TDF_Label> & labels, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Writer::Transfer ******/
-		/****** md5 signature: 04ca4aafde66fce5eeebd12288b3c0bd ******/
+		/****** md5 signature: ca7b47ce1b5e362004eefb01c34a9039 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -607,7 +607,7 @@ Description
 -----------
 Transfers label to a IGES model Returns True if translation is OK.
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_Label & label, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const TDF_Label & label, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 

@@ -24,7 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDocStd_ApplicationDelta.hxx>
 #include<TDocStd_CompoundDelta.hxx>
 #include<TDocStd_Context.hxx>
-#include<TDocStd_DataMapIteratorOfLabelIDMapDataMap.hxx>
 #include<TDocStd_Document.hxx>
 #include<TDocStd_FormatVersion.hxx>
 #include<TDocStd_LabelIDMapDataMap.hxx>

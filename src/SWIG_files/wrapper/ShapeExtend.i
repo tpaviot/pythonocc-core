@@ -49,9 +49,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeextend.html"
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<gp_module.hxx>
-#include<TColGeom_module.hxx>
-#include<TColStd_module.hxx>
-#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TColgp_module.hxx>
 #include<TopLoc_module.hxx>
@@ -71,9 +68,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeextend.html"
 %import Geom.i
 %import GeomAbs.i
 %import gp.i
-%import TColGeom.i
-%import TColStd.i
-%import TopTools.i
 %import TopAbs.i
 
 %pythoncode {
@@ -174,7 +168,11 @@ ShapeExtend_FAIL = ShapeExtend_Status.ShapeExtend_FAIL
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,Message_ListOfMsg,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,Message_ListOfMsg,TopTools_ShapeMapHasher>::KeyValues;
 %template(ShapeExtend_DataMapOfShapeListOfMsg) NCollection_DataMap<TopoDS_Shape,Message_ListOfMsg,TopTools_ShapeMapHasher>;
+%ignore NCollection_DataMap<opencascade::handle<Standard_Transient>,Message_ListOfMsg>::Items;
+%ignore NCollection_DataMap<opencascade::handle<Standard_Transient>,Message_ListOfMsg>::KeyValues;
 %template(ShapeExtend_DataMapOfTransientListOfMsg) NCollection_DataMap<opencascade::handle<Standard_Transient>,Message_ListOfMsg>;
 /* end templates declaration */
 
@@ -192,7 +190,7 @@ typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_Lis
 class ShapeExtend {
 	public:
 		/****** ShapeExtend::DecodeStatus ******/
-		/****** md5 signature: dcd7ae9c9207387fafcd3d787644b189 ******/
+		/****** md5 signature: e95c27710790f8db82cc818d0a6bc7cc ******/
 		%feature("compactdefaultargs") DecodeStatus;
 		%feature("autodoc", "
 Parameters
@@ -208,10 +206,10 @@ Description
 -----------
 Tells if a bit flag contains bit corresponding to enumerated status.
 ") DecodeStatus;
-		static Standard_Boolean DecodeStatus(const Standard_Integer flag, const ShapeExtend_Status status);
+		static bool DecodeStatus(const int flag, const ShapeExtend_Status status);
 
 		/****** ShapeExtend::EncodeStatus ******/
-		/****** md5 signature: dd82b90b3fd2f1a7647f76ea7b12ba2b ******/
+		/****** md5 signature: e1b869c52b702ddc6596c29d8d544669 ******/
 		%feature("compactdefaultargs") EncodeStatus;
 		%feature("autodoc", "
 Parameters
@@ -226,7 +224,7 @@ Description
 -----------
 Encodes status (enumeration) to a bit flag.
 ") EncodeStatus;
-		static Standard_Integer EncodeStatus(const ShapeExtend_Status status);
+		static int EncodeStatus(const ShapeExtend_Status status);
 
 		/****** ShapeExtend::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -345,12 +343,12 @@ Calls Send method with Null Transient.
 class ShapeExtend_ComplexCurve : public Geom_Curve {
 	public:
 		/****** ShapeExtend_ComplexCurve::CheckConnectivity ******/
-		/****** md5 signature: d85fe1af866a15556de6f47884b5cdff ******/
+		/****** md5 signature: b761cfe135a0fb4678d3c6981b6d094c ******/
 		%feature("compactdefaultargs") CheckConnectivity;
 		%feature("autodoc", "
 Parameters
 ----------
-Preci: float
+Preci: double
 
 Return
 -------
@@ -360,10 +358,10 @@ Description
 -----------
 Checks geometrical connectivity of the curves, including closure (sets fields myClosed).
 ") CheckConnectivity;
-		Standard_Boolean CheckConnectivity(const Standard_Real Preci);
+		bool CheckConnectivity(const double Preci);
 
 		/****** ShapeExtend_ComplexCurve::Continuity ******/
-		/****** md5 signature: f3ed9d27f993b8051d8cf116b3837e8a ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -373,10 +371,10 @@ Description
 -----------
 Returns GeomAbs_C0.
 ") Continuity;
-		virtual GeomAbs_Shape Continuity();
+		GeomAbs_Shape Continuity();
 
 		/****** ShapeExtend_ComplexCurve::Curve ******/
-		/****** md5 signature: 8e6a949d985ee52fdc0a32db347f8bd4 ******/
+		/****** md5 signature: 4e45ce6487d3b0672dfa774934b88f2d ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -391,97 +389,87 @@ Description
 -----------
 Returns curve given by its index.
 ") Curve;
-		virtual const opencascade::handle<Geom_Curve> & Curve(const Standard_Integer index);
+		virtual const opencascade::handle<Geom_Curve> & Curve(const int index);
 
-		/****** ShapeExtend_ComplexCurve::D0 ******/
-		/****** md5 signature: 51907fc492adf822ddaa386ab89a6e16 ******/
-		%feature("compactdefaultargs") D0;
+		/****** ShapeExtend_ComplexCurve::EvalD0 ******/
+		/****** md5 signature: 7d2136079fd2b23e6a6640ff4aa95ab3 ******/
+		%feature("compactdefaultargs") EvalD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
+U: double
 
 Return
 -------
-None
+gp_Pnt
 
 Description
 -----------
 Returns point at parameter U. Finds appropriate curve and local parameter on it.
-") D0;
-		virtual void D0(const Standard_Real U, gp_Pnt & P);
+") EvalD0;
+		gp_Pnt EvalD0(const double U);
 
-		/****** ShapeExtend_ComplexCurve::D1 ******/
-		/****** md5 signature: 3172d2da7d491678c13781d50f333062 ******/
-		%feature("compactdefaultargs") D1;
+		/****** ShapeExtend_ComplexCurve::EvalD1 ******/
+		/****** md5 signature: 574852a1b0438f098fc992aa03cb4c71 ******/
+		%feature("compactdefaultargs") EvalD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
+U: double
 
 Return
 -------
-None
+Geom_Curve::ResD1
 
 Description
 -----------
 No available documentation.
-") D1;
-		virtual void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double U);
 
-		/****** ShapeExtend_ComplexCurve::D2 ******/
-		/****** md5 signature: 2b2df3653c3200a8f34857c6e4ebfddc ******/
-		%feature("compactdefaultargs") D2;
+		/****** ShapeExtend_ComplexCurve::EvalD2 ******/
+		/****** md5 signature: 728f16921036d1f252a453ed8bb97aa7 ******/
+		%feature("compactdefaultargs") EvalD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
+U: double
 
 Return
 -------
-None
+Geom_Curve::ResD2
 
 Description
 -----------
 No available documentation.
-") D2;
-		virtual void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double U);
 
-		/****** ShapeExtend_ComplexCurve::D3 ******/
-		/****** md5 signature: ef86b793d3bf42ef2cc02a4e60cd1d4f ******/
-		%feature("compactdefaultargs") D3;
+		/****** ShapeExtend_ComplexCurve::EvalD3 ******/
+		/****** md5 signature: f60a1e031ec27c55a8793878a1cd54b4 ******/
+		%feature("compactdefaultargs") EvalD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
+U: double
 
 Return
 -------
-None
+Geom_Curve::ResD3
 
 Description
 -----------
 No available documentation.
-") D3;
-		virtual void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double U);
 
-		/****** ShapeExtend_ComplexCurve::DN ******/
-		/****** md5 signature: 8b3730d9a5184b049d1fc2f5122d8644 ******/
-		%feature("compactdefaultargs") DN;
+		/****** ShapeExtend_ComplexCurve::EvalDN ******/
+		/****** md5 signature: abe0bfeb219108c8a83d6b4b914869e9 ******/
+		%feature("compactdefaultargs") EvalDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 N: int
 
 Return
@@ -491,24 +479,24 @@ gp_Vec
 Description
 -----------
 No available documentation.
-") DN;
-		virtual gp_Vec DN(const Standard_Real U, const Standard_Integer N);
+") EvalDN;
+		gp_Vec EvalDN(const double U, const int N);
 
 		/****** ShapeExtend_ComplexCurve::FirstParameter ******/
-		/****** md5 signature: 4764beb92499e70705c5628a20961327 ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns 0.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** ShapeExtend_ComplexCurve::GetScaleFactor ******/
-		/****** md5 signature: 98fe73645fe835ff75323eaf2264c340 ******/
+		/****** md5 signature: 26b7b7a77781f417493b5e5ad1351753 ******/
 		%feature("compactdefaultargs") GetScaleFactor;
 		%feature("autodoc", "
 Parameters
@@ -517,16 +505,16 @@ ind: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns scale factor for recomputing of deviatives.
 ") GetScaleFactor;
-		virtual Standard_Real GetScaleFactor(const Standard_Integer ind);
+		virtual double GetScaleFactor(const int ind);
 
 		/****** ShapeExtend_ComplexCurve::IsCN ******/
-		/****** md5 signature: 3c52d0a06cd90d9afee28536901289df ******/
+		/****** md5 signature: 7148abeb948e78dbe081ec4edd4357f0 ******/
 		%feature("compactdefaultargs") IsCN;
 		%feature("autodoc", "
 Parameters
@@ -541,10 +529,10 @@ Description
 -----------
 Returns False if N > 0.
 ") IsCN;
-		virtual Standard_Boolean IsCN(const Standard_Integer N);
+		bool IsCN(const int N);
 
 		/****** ShapeExtend_ComplexCurve::IsClosed ******/
-		/****** md5 signature: ee5341b93937df820c1211eb1ee92b91 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -554,10 +542,10 @@ Description
 -----------
 Returns True if the curve is closed.
 ") IsClosed;
-		virtual Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** ShapeExtend_ComplexCurve::IsPeriodic ******/
-		/****** md5 signature: 13a0a38f32e22e8a1ec5aa34cbf9bbea ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -567,60 +555,60 @@ Description
 -----------
 Returns False.
 ") IsPeriodic;
-		virtual Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** ShapeExtend_ComplexCurve::LastParameter ******/
-		/****** md5 signature: 51650ab8b3afb0a24f930d23afae31ca ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns 1.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** ShapeExtend_ComplexCurve::LocalToGlobal ******/
-		/****** md5 signature: 2e6dc5480ad6062633f20d7a31bf672c ******/
+		/****** md5 signature: 66603f7360706e0723acaf911d6fa065 ******/
 		%feature("compactdefaultargs") LocalToGlobal;
 		%feature("autodoc", "
 Parameters
 ----------
 index: int
-Ulocal: float
+Ulocal: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns global parameter for the whole curve according to the segment and local parameter on it.
 ") LocalToGlobal;
-		virtual Standard_Real LocalToGlobal(const Standard_Integer index, const Standard_Real Ulocal);
+		virtual double LocalToGlobal(const int index, const double Ulocal);
 
 		/****** ShapeExtend_ComplexCurve::LocateParameter ******/
-		/****** md5 signature: d22703cefaed9211fcf1e8faf34f4f2c ******/
+		/****** md5 signature: da910478867e50103727891bb2ce59b4 ******/
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-UOut: float
+UOut: double
 
 Description
 -----------
 Returns number of the curve for the given parameter U and local parameter UOut for the found curve.
 ") LocateParameter;
-		virtual Standard_Integer LocateParameter(const Standard_Real U, Standard_Real &OutValue);
+		virtual int LocateParameter(const double U, Standard_Real &OutValue);
 
 		/****** ShapeExtend_ComplexCurve::NbCurves ******/
-		/****** md5 signature: 00c615638a5abc467ec2c383544c5cf8 ******/
+		/****** md5 signature: 595b4261753bb66073c22d8391bc39a2 ******/
 		%feature("compactdefaultargs") NbCurves;
 		%feature("autodoc", "Return
 -------
@@ -630,28 +618,28 @@ Description
 -----------
 Returns number of curves.
 ") NbCurves;
-		virtual Standard_Integer NbCurves();
+		virtual int NbCurves();
 
 		/****** ShapeExtend_ComplexCurve::ReversedParameter ******/
-		/****** md5 signature: ba3bf42dda8156e076845171024e85fe ******/
+		/****** md5 signature: d1c5381c0a990adfec963bc4b96f0b60 ******/
 		%feature("compactdefaultargs") ReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns 1 - U.
 ") ReversedParameter;
-		virtual Standard_Real ReversedParameter(const Standard_Real U);
+		double ReversedParameter(const double U);
 
 		/****** ShapeExtend_ComplexCurve::Transform ******/
-		/****** md5 signature: 2de73a9941c00fb14731ec58602530d0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -666,7 +654,7 @@ Description
 -----------
 Applies transformation to each curve.
 ") Transform;
-		virtual void Transform(const gp_Trsf & T);
+		void Transform(const gp_Trsf & T);
 
 };
 
@@ -698,12 +686,12 @@ Empty constructor.
 		 ShapeExtend_CompositeSurface();
 
 		/****** ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface ******/
-		/****** md5 signature: 8c96b9d739e44d535b2912dd9708a855 ******/
+		/****** md5 signature: 7f6c00b6910c82f47b8f8360f22e33f3 ******/
 		%feature("compactdefaultargs") ShapeExtend_CompositeSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: TColGeom_HArray2OfSurface
+GridSurf: NCollection_HArray2<
 param: ShapeExtend_Parametrisation (optional, default to ShapeExtend_Natural)
 
 Return
@@ -714,17 +702,17 @@ Description
 -----------
 Initializes by a grid of surfaces (calls Init()).
 ") ShapeExtend_CompositeSurface;
-		 ShapeExtend_CompositeSurface(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
+		 ShapeExtend_CompositeSurface(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
 		/****** ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface ******/
-		/****** md5 signature: 20016c74871e6504488c039f12e5b0c4 ******/
+		/****** md5 signature: d8080ee2c250171ea0a74354bc5c480f ******/
 		%feature("compactdefaultargs") ShapeExtend_CompositeSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: TColGeom_HArray2OfSurface
-UJoints: TColStd_Array1OfReal
-VJoints: TColStd_Array1OfReal
+GridSurf: NCollection_HArray2<
+UJoints: NCollection_Array1<double>
+VJoints: NCollection_Array1<double>
 
 Return
 -------
@@ -734,10 +722,10 @@ Description
 -----------
 Initializes by a grid of surfaces (calls Init()).
 ") ShapeExtend_CompositeSurface;
-		 ShapeExtend_CompositeSurface(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const TColStd_Array1OfReal & UJoints, const TColStd_Array1OfReal & VJoints);
+		 ShapeExtend_CompositeSurface(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const NCollection_Array1<double> & UJoints, const NCollection_Array1<double> & VJoints);
 
 		/****** ShapeExtend_CompositeSurface::Bounds ******/
-		/****** md5 signature: 014e2123fd08667005a3b193c7391727 ******/
+		/****** md5 signature: 7f1a4954e4b71238771f442fdca29c3c ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -745,24 +733,24 @@ Parameters
 
 Return
 -------
-U1: float
-U2: float
-V1: float
-V2: float
+U1: double
+U2: double
+V1: double
+V2: double
 
 Description
 -----------
 Returns the parametric bounds of grid.
 ") Bounds;
-		virtual void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ShapeExtend_CompositeSurface::CheckConnectivity ******/
-		/****** md5 signature: 90bd67b493222d1086d791909b03b08d ******/
+		/****** md5 signature: 3f8dffd5219bd5b09159180001e91603 ******/
 		%feature("compactdefaultargs") CheckConnectivity;
 		%feature("autodoc", "
 Parameters
 ----------
-prec: float
+prec: double
 
 Return
 -------
@@ -772,7 +760,7 @@ Description
 -----------
 Checks geometrical connectivity of the patches, including closedness (sets fields muUClosed and myVClosed).
 ") CheckConnectivity;
-		Standard_Boolean CheckConnectivity(const Standard_Real prec);
+		bool CheckConnectivity(const double prec);
 
 		/****** ShapeExtend_CompositeSurface::ComputeJointValues ******/
 		/****** md5 signature: 770d71062e3f622ec20d9c8cc0ea7fed ******/
@@ -793,7 +781,7 @@ Computes Joint values according to parameter.
 		void ComputeJointValues(const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
 		/****** ShapeExtend_CompositeSurface::Continuity ******/
-		/****** md5 signature: f3ed9d27f993b8051d8cf116b3837e8a ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -803,10 +791,10 @@ Description
 -----------
 returns C0.
 ") Continuity;
-		virtual GeomAbs_Shape Continuity();
+		GeomAbs_Shape Continuity();
 
 		/****** ShapeExtend_CompositeSurface::Copy ******/
-		/****** md5 signature: cdab0a14009498bcf8d5047a3b653fd4 ******/
+		/****** md5 signature: 4931da9603d5b3bcede1c1210c5d8c3f ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -816,112 +804,92 @@ Description
 -----------
 Returns a copy of the surface.
 ") Copy;
-		virtual opencascade::handle<Geom_Geometry> Copy();
+		opencascade::handle<Geom_Geometry> Copy();
 
-		/****** ShapeExtend_CompositeSurface::D0 ******/
-		/****** md5 signature: d703743b1060efe5f30e6bb795ec7841 ******/
-		%feature("compactdefaultargs") D0;
+		/****** ShapeExtend_CompositeSurface::EvalD0 ******/
+		/****** md5 signature: 1046a8f73ae1a8fffe777fdefe071ada ******/
+		%feature("compactdefaultargs") EvalD0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
+U: double
+V: double
 
 Return
 -------
-None
+gp_Pnt
 
 Description
 -----------
 Computes the point of parameter U,V on the grid.
-") D0;
-		virtual void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
+") EvalD0;
+		gp_Pnt EvalD0(const double U, const double V);
 
-		/****** ShapeExtend_CompositeSurface::D1 ******/
-		/****** md5 signature: 040f0ebc2e2ebafab4ec5391c35a1846 ******/
-		%feature("compactdefaultargs") D1;
+		/****** ShapeExtend_CompositeSurface::EvalD1 ******/
+		/****** md5 signature: c55b624ed921898185694d11b9c5628f ******/
+		%feature("compactdefaultargs") EvalD1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
+U: double
+V: double
 
 Return
 -------
-None
+Geom_Surface::ResD1
 
 Description
 -----------
 Computes the point P and the first derivatives in the directions U and V at this point.
-") D1;
-		virtual void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double U, const double V);
 
-		/****** ShapeExtend_CompositeSurface::D2 ******/
-		/****** md5 signature: b8114c7d18571779e326d7acd07d497d ******/
-		%feature("compactdefaultargs") D2;
+		/****** ShapeExtend_CompositeSurface::EvalD2 ******/
+		/****** md5 signature: f6a44e7aae3253ecad3ffd20b8d918e4 ******/
+		%feature("compactdefaultargs") EvalD2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
+U: double
+V: double
 
 Return
 -------
-None
+Geom_Surface::ResD2
 
 Description
 -----------
 Computes the point P, the first and the second derivatives in the directions U and V at this point.
-") D2;
-		virtual void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double U, const double V);
 
-		/****** ShapeExtend_CompositeSurface::D3 ******/
-		/****** md5 signature: 2fcde2cdd09932f1564ea57c5e638207 ******/
-		%feature("compactdefaultargs") D3;
+		/****** ShapeExtend_CompositeSurface::EvalD3 ******/
+		/****** md5 signature: a71e0c31958103799dbcac00589886e4 ******/
+		%feature("compactdefaultargs") EvalD3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
+U: double
+V: double
 
 Return
 -------
-None
+Geom_Surface::ResD3
 
 Description
 -----------
 Computes the point P, the first,the second and the third derivatives in the directions U and V at this point.
-") D3;
-		virtual void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double U, const double V);
 
-		/****** ShapeExtend_CompositeSurface::DN ******/
-		/****** md5 signature: c8d8a3dca502cf9791f67c765422b492 ******/
-		%feature("compactdefaultargs") DN;
+		/****** ShapeExtend_CompositeSurface::EvalDN ******/
+		/****** md5 signature: 1ef4fac99419b60efd50e8567b76b4d1 ******/
+		%feature("compactdefaultargs") EvalDN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 Nu: int
 Nv: int
 
@@ -932,11 +900,11 @@ gp_Vec
 Description
 -----------
 Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V).
-") DN;
-		virtual gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
+") EvalDN;
+		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
 
 		/****** ShapeExtend_CompositeSurface::GlobalToLocal ******/
-		/****** md5 signature: 6030bdda51b0128dabdaf3900daca82f ******/
+		/****** md5 signature: 82d1abcb9fdcc3c28069ee8d57faf9f4 ******/
 		%feature("compactdefaultargs") GlobalToLocal;
 		%feature("autodoc", "
 Parameters
@@ -953,10 +921,10 @@ Description
 -----------
 Converts global parameters UV to local parameters uv on patch i,j.
 ") GlobalToLocal;
-		gp_Pnt2d GlobalToLocal(const Standard_Integer i, const Standard_Integer j, const gp_Pnt2d & UV);
+		gp_Pnt2d GlobalToLocal(const int i, const int j, const gp_Pnt2d & UV);
 
 		/****** ShapeExtend_CompositeSurface::GlobalToLocalTransformation ******/
-		/****** md5 signature: ed3b70490066b28c3fe080b72afd6ee2 ******/
+		/****** md5 signature: 5c721f24bad188537d48f6fceede7fb3 ******/
 		%feature("compactdefaultargs") GlobalToLocalTransformation;
 		%feature("autodoc", "
 Parameters
@@ -967,21 +935,21 @@ Trsf: gp_Trsf2d
 
 Return
 -------
-uFact: float
+uFact: double
 
 Description
 -----------
 Computes transformation operator and uFactor descrinbing affine transformation required to convert global parameters on composite surface to local parameters on patch (i,j): uv = ( uFactor, 1. ) X Trsf * UV; NOTE: Thus Trsf contains shift and scale by V, scale by U is stored in uFact. Returns True if transformation is not an identity.
 ") GlobalToLocalTransformation;
-		Standard_Boolean GlobalToLocalTransformation(const Standard_Integer i, const Standard_Integer j, Standard_Real &OutValue, gp_Trsf2d & Trsf);
+		bool GlobalToLocalTransformation(const int i, const int j, Standard_Real &OutValue, gp_Trsf2d & Trsf);
 
 		/****** ShapeExtend_CompositeSurface::Init ******/
-		/****** md5 signature: 50a4d0a2eb9d17b1169eb618b7089a39 ******/
+		/****** md5 signature: f2288c4c472850a31f4eeecce534b6ec ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: TColGeom_HArray2OfSurface
+GridSurf: NCollection_HArray2<
 param: ShapeExtend_Parametrisation (optional, default to ShapeExtend_Natural)
 
 Return
@@ -992,17 +960,17 @@ Description
 -----------
 Initializes by a grid of surfaces. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case. //! Last parameter defines how global parametrisation (joint values) will be computed: ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. ShapeExtend_Uniform: Ui = i-1, Vj = j-1 ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv.
 ") Init;
-		Standard_Boolean Init(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
+		bool Init(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
 		/****** ShapeExtend_CompositeSurface::Init ******/
-		/****** md5 signature: d76029a41a655e05acf78e2f267153c7 ******/
+		/****** md5 signature: 5fe393900a1833b20c7080664f276212 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: TColGeom_HArray2OfSurface
-UJoints: TColStd_Array1OfReal
-VJoints: TColStd_Array1OfReal
+GridSurf: NCollection_HArray2<
+UJoints: NCollection_Array1<double>
+VJoints: NCollection_Array1<double>
 
 Return
 -------
@@ -1012,10 +980,10 @@ Description
 -----------
 Initializes by a grid of surfaces with given global parametrisation defined by UJoints and VJoints arrays, each having length equal to number of patches in corresponding direction + 1. Global joint values should be sorted in increasing order. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case.
 ") Init;
-		Standard_Boolean Init(const opencascade::handle<TColGeom_HArray2OfSurface> & GridSurf, const TColStd_Array1OfReal & UJoints, const TColStd_Array1OfReal & VJoints);
+		bool Init(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const NCollection_Array1<double> & UJoints, const NCollection_Array1<double> & VJoints);
 
 		/****** ShapeExtend_CompositeSurface::IsCNu ******/
-		/****** md5 signature: 31b03fc1d509ad0976d7467a3bd394b7 ******/
+		/****** md5 signature: 2f1fcdee848f1e9a21e718a5b5c41401 ******/
 		%feature("compactdefaultargs") IsCNu;
 		%feature("autodoc", "
 Parameters
@@ -1030,10 +998,10 @@ Description
 -----------
 returns True if N <=0.
 ") IsCNu;
-		virtual Standard_Boolean IsCNu(const Standard_Integer N);
+		bool IsCNu(const int N);
 
 		/****** ShapeExtend_CompositeSurface::IsCNv ******/
-		/****** md5 signature: ae0b7938459cd292b5b4744525e5249a ******/
+		/****** md5 signature: 3b3be48e3062f448d523572dfc48fb76 ******/
 		%feature("compactdefaultargs") IsCNv;
 		%feature("autodoc", "
 Parameters
@@ -1048,10 +1016,10 @@ Description
 -----------
 returns True if N <=0.
 ") IsCNv;
-		virtual Standard_Boolean IsCNv(const Standard_Integer N);
+		bool IsCNv(const int N);
 
 		/****** ShapeExtend_CompositeSurface::IsUClosed ******/
-		/****** md5 signature: c240e3242256b185362f31b103803abe ******/
+		/****** md5 signature: 91c191879c9b39e0c4f123772c17dbd2 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -1061,10 +1029,10 @@ Description
 -----------
 Returns True if grid is closed in U direction (i.e. connected with Precision::Confusion).
 ") IsUClosed;
-		virtual Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** ShapeExtend_CompositeSurface::IsUPeriodic ******/
-		/****** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ******/
+		/****** md5 signature: 7236661160e2b4989ea98f769e60fafb ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1074,10 +1042,10 @@ Description
 -----------
 Returns False.
 ") IsUPeriodic;
-		virtual Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** ShapeExtend_CompositeSurface::IsVClosed ******/
-		/****** md5 signature: 5826a15e603eec763554a14db7394466 ******/
+		/****** md5 signature: b42d07343ce292533f9bd94d419cf3f6 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -1087,10 +1055,10 @@ Description
 -----------
 Returns True if grid is closed in V direction (i.e. connected with Precision::Confusion).
 ") IsVClosed;
-		virtual Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** ShapeExtend_CompositeSurface::IsVPeriodic ******/
-		/****** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ******/
+		/****** md5 signature: 0654a6d88753f46bfbed67995e913efa ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1100,10 +1068,10 @@ Description
 -----------
 Returns False.
 ") IsVPeriodic;
-		virtual Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** ShapeExtend_CompositeSurface::LocalToGlobal ******/
-		/****** md5 signature: 3886cd57f7bc5e69b8f70cfb75e749db ******/
+		/****** md5 signature: 492ea1b9c382b8ec795dd1b97ccc73aa ******/
 		%feature("compactdefaultargs") LocalToGlobal;
 		%feature("autodoc", "
 Parameters
@@ -1120,15 +1088,15 @@ Description
 -----------
 Converts local parameters uv on patch i,j to global parameters UV.
 ") LocalToGlobal;
-		gp_Pnt2d LocalToGlobal(const Standard_Integer i, const Standard_Integer j, const gp_Pnt2d & uv);
+		gp_Pnt2d LocalToGlobal(const int i, const int j, const gp_Pnt2d & uv);
 
 		/****** ShapeExtend_CompositeSurface::LocateUParameter ******/
-		/****** md5 signature: 0e9e5ebbf05b8a9aac81a0f4ae07db7d ******/
+		/****** md5 signature: 18d31a983ca66975941742d102ff0f83 ******/
 		%feature("compactdefaultargs") LocateUParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -1138,10 +1106,10 @@ Description
 -----------
 Returns number of col that contains given (global) parameter.
 ") LocateUParameter;
-		Standard_Integer LocateUParameter(const Standard_Real U);
+		int LocateUParameter(const double U);
 
 		/****** ShapeExtend_CompositeSurface::LocateUVPoint ******/
-		/****** md5 signature: e8f91d9fefe7790104c7fb51cec17207 ******/
+		/****** md5 signature: 77f97f902cc74fd932999ada902a1da4 ******/
 		%feature("compactdefaultargs") LocateUVPoint;
 		%feature("autodoc", "
 Parameters
@@ -1160,12 +1128,12 @@ Returns number of row and col of surface that contains given point.
 		void LocateUVPoint(const gp_Pnt2d & pnt, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** ShapeExtend_CompositeSurface::LocateVParameter ******/
-		/****** md5 signature: cc621d4473cd8781007a1a4ea808d2ce ******/
+		/****** md5 signature: c2eabe06a821ea813cdb93da91a2a245 ******/
 		%feature("compactdefaultargs") LocateVParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -1175,10 +1143,10 @@ Description
 -----------
 Returns number of row that contains given (global) parameter.
 ") LocateVParameter;
-		Standard_Integer LocateVParameter(const Standard_Real V);
+		int LocateVParameter(const double V);
 
 		/****** ShapeExtend_CompositeSurface::NbUPatches ******/
-		/****** md5 signature: 6b0ad1d8cd917ddafd65ec74fe6e89da ******/
+		/****** md5 signature: c3277061f278847e336ea5563aab05a0 ******/
 		%feature("compactdefaultargs") NbUPatches;
 		%feature("autodoc", "Return
 -------
@@ -1188,10 +1156,10 @@ Description
 -----------
 Returns number of patches in U direction.
 ") NbUPatches;
-		Standard_Integer NbUPatches();
+		int NbUPatches();
 
 		/****** ShapeExtend_CompositeSurface::NbVPatches ******/
-		/****** md5 signature: 90a9eb7fe715a81477e403cf8ccff1b9 ******/
+		/****** md5 signature: 32d47250a5cb3e96bb06b22d6dd9800e ******/
 		%feature("compactdefaultargs") NbVPatches;
 		%feature("autodoc", "Return
 -------
@@ -1201,10 +1169,10 @@ Description
 -----------
 Returns number of patches in V direction.
 ") NbVPatches;
-		Standard_Integer NbVPatches();
+		int NbVPatches();
 
 		/****** ShapeExtend_CompositeSurface::Patch ******/
-		/****** md5 signature: e8398d4fc47f1bbab96955c665a17669 ******/
+		/****** md5 signature: 8deb40c5cf5fe19650011f9765333963 ******/
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "
 Parameters
@@ -1220,16 +1188,16 @@ Description
 -----------
 Returns one surface patch.
 ") Patch;
-		const opencascade::handle<Geom_Surface> & Patch(const Standard_Integer i, const Standard_Integer j);
+		const opencascade::handle<Geom_Surface> & Patch(const int i, const int j);
 
 		/****** ShapeExtend_CompositeSurface::Patch ******/
-		/****** md5 signature: 38a7356d10e1ea2a1e6323260e074332 ******/
+		/****** md5 signature: 37392bd50678e2d98ddf742f1a28f883 ******/
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+U: double
+V: double
 
 Return
 -------
@@ -1239,7 +1207,7 @@ Description
 -----------
 Returns one surface patch that contains given (global) parameters.
 ") Patch;
-		const opencascade::handle<Geom_Surface> & Patch(const Standard_Real U, const Standard_Real V);
+		const opencascade::handle<Geom_Surface> & Patch(const double U, const double V);
 
 		/****** ShapeExtend_CompositeSurface::Patch ******/
 		/****** md5 signature: 9cc716a3abfc8ff89d7ba49df9c2bd7b ******/
@@ -1260,25 +1228,25 @@ Returns one surface patch that contains given point.
 		const opencascade::handle<Geom_Surface> & Patch(const gp_Pnt2d & pnt);
 
 		/****** ShapeExtend_CompositeSurface::Patches ******/
-		/****** md5 signature: dd509d4d087a753d8c88ea7c6932a3af ******/
+		/****** md5 signature: 505726c2472c4cd2a2a255c2621b8fcb ******/
 		%feature("compactdefaultargs") Patches;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColGeom_HArray2OfSurface>
+opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface>>>
 
 Description
 -----------
 Returns grid of surfaces.
 ") Patches;
-		const opencascade::handle<TColGeom_HArray2OfSurface> & Patches();
+		const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface>>> & Patches();
 
 		/****** ShapeExtend_CompositeSurface::SetUFirstValue ******/
-		/****** md5 signature: c48cd2c79d36589c8fb89696f77a9e92 ******/
+		/****** md5 signature: 522f4549b8a3e03f18102cec4540debe ******/
 		%feature("compactdefaultargs") SetUFirstValue;
 		%feature("autodoc", "
 Parameters
 ----------
-UFirst: float
+UFirst: double
 
 Return
 -------
@@ -1288,15 +1256,15 @@ Description
 -----------
 Changes starting value for global U parametrisation (all other joint values are shifted accordingly).
 ") SetUFirstValue;
-		void SetUFirstValue(const Standard_Real UFirst);
+		void SetUFirstValue(const double UFirst);
 
 		/****** ShapeExtend_CompositeSurface::SetUJointValues ******/
-		/****** md5 signature: 5caa1f14232e408186e29bb4d42f8318 ******/
+		/****** md5 signature: 10e1f2465be3ebc3bbb3da21834bf07c ******/
 		%feature("compactdefaultargs") SetUJointValues;
 		%feature("autodoc", "
 Parameters
 ----------
-UJoints: TColStd_Array1OfReal
+UJoints: NCollection_Array1<double>
 
 Return
 -------
@@ -1306,15 +1274,15 @@ Description
 -----------
 Sets the array of U values corresponding to joint points, which define global parametrisation of the surface. Number of values in array should be equal to NbUPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 ") SetUJointValues;
-		Standard_Boolean SetUJointValues(const TColStd_Array1OfReal & UJoints);
+		bool SetUJointValues(const NCollection_Array1<double> & UJoints);
 
 		/****** ShapeExtend_CompositeSurface::SetVFirstValue ******/
-		/****** md5 signature: 766cf79731af68776892a4c767ccf890 ******/
+		/****** md5 signature: 8e52e7654ebabe5b752c5aead6871a81 ******/
 		%feature("compactdefaultargs") SetVFirstValue;
 		%feature("autodoc", "
 Parameters
 ----------
-VFirst: float
+VFirst: double
 
 Return
 -------
@@ -1324,15 +1292,15 @@ Description
 -----------
 Changes starting value for global V parametrisation (all other joint values are shifted accordingly).
 ") SetVFirstValue;
-		void SetVFirstValue(const Standard_Real VFirst);
+		void SetVFirstValue(const double VFirst);
 
 		/****** ShapeExtend_CompositeSurface::SetVJointValues ******/
-		/****** md5 signature: 8f783a94d54b85b9113d4504ff6739a4 ******/
+		/****** md5 signature: 5fe7aed00af612c8c13be16c279bf3ea ******/
 		%feature("compactdefaultargs") SetVJointValues;
 		%feature("autodoc", "
 Parameters
 ----------
-VJoints: TColStd_Array1OfReal
+VJoints: NCollection_Array1<double>
 
 Return
 -------
@@ -1342,10 +1310,10 @@ Description
 -----------
 Sets the array of V values corresponding to joint points, which define global parametrisation of the surface Number of values in array should be equal to NbVPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 ") SetVJointValues;
-		Standard_Boolean SetVJointValues(const TColStd_Array1OfReal & VJoints);
+		bool SetVJointValues(const NCollection_Array1<double> & VJoints);
 
 		/****** ShapeExtend_CompositeSurface::Transform ******/
-		/****** md5 signature: 2de73a9941c00fb14731ec58602530d0 ******/
+		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -1360,35 +1328,35 @@ Description
 -----------
 Applies transformation to all the patches.
 ") Transform;
-		virtual void Transform(const gp_Trsf & T);
+		void Transform(const gp_Trsf & T);
 
 		/****** ShapeExtend_CompositeSurface::UGlobalToLocal ******/
-		/****** md5 signature: e38e93ba598af7f2e97366e473b49279 ******/
+		/****** md5 signature: 7a8900be6fb31279a975befea953b4ac ******/
 		%feature("compactdefaultargs") UGlobalToLocal;
 		%feature("autodoc", "
 Parameters
 ----------
 i: int
 j: int
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts global parameter U to local parameter u on patch i,j.
 ") UGlobalToLocal;
-		Standard_Real UGlobalToLocal(const Standard_Integer i, const Standard_Integer j, const Standard_Real U);
+		double UGlobalToLocal(const int i, const int j, const double U);
 
 		/****** ShapeExtend_CompositeSurface::UIso ******/
-		/****** md5 signature: a652d0cc6670b92301ba1f2ca72bb79a ******/
+		/****** md5 signature: d8a57b487d7cd48cf38f0c957e3249cf ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
@@ -1398,10 +1366,10 @@ Description
 -----------
 NOT IMPLEMENTED (returns Null curve).
 ") UIso;
-		virtual opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
+		opencascade::handle<Geom_Curve> UIso(const double U);
 
 		/****** ShapeExtend_CompositeSurface::UJointValue ******/
-		/****** md5 signature: 670e002b3e58c1b2e3b5fe638fbad6d8 ******/
+		/****** md5 signature: 49d64e544679b81eeb06fb56525e57e0 ******/
 		%feature("compactdefaultargs") UJointValue;
 		%feature("autodoc", "
 Parameters
@@ -1410,49 +1378,49 @@ i: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns i-th joint value in U direction (1-st is global Umin, (NbUPatches()+1)-th is global Umax on the composite surface).
 ") UJointValue;
-		Standard_Real UJointValue(const Standard_Integer i);
+		double UJointValue(const int i);
 
 		/****** ShapeExtend_CompositeSurface::UJointValues ******/
-		/****** md5 signature: 88cd76678e6a3978a860181ef45205d1 ******/
+		/****** md5 signature: d67157b455aaa75440fa200996a21e00 ******/
 		%feature("compactdefaultargs") UJointValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns the array of U values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
 ") UJointValues;
-		opencascade::handle<TColStd_HArray1OfReal> UJointValues();
+		opencascade::handle<NCollection_HArray1<double>> UJointValues();
 
 		/****** ShapeExtend_CompositeSurface::ULocalToGlobal ******/
-		/****** md5 signature: ac695bfa57d6979eaa1702e685fb4cc1 ******/
+		/****** md5 signature: 572b4ae20d1d5eda56ad76410e2ffc55 ******/
 		%feature("compactdefaultargs") ULocalToGlobal;
 		%feature("autodoc", "
 Parameters
 ----------
 i: int
 j: int
-u: float
+u: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts local parameter u on patch i,j to global parameter U.
 ") ULocalToGlobal;
-		Standard_Real ULocalToGlobal(const Standard_Integer i, const Standard_Integer j, const Standard_Real u);
+		double ULocalToGlobal(const int i, const int j, const double u);
 
 		/****** ShapeExtend_CompositeSurface::UReverse ******/
-		/****** md5 signature: d70147d3bce5fe1e36771349f34ded17 ******/
+		/****** md5 signature: a985506a01d4ef5da425c5f8327a341d ******/
 		%feature("compactdefaultargs") UReverse;
 		%feature("autodoc", "Return
 -------
@@ -1462,53 +1430,53 @@ Description
 -----------
 NOT IMPLEMENTED (does nothing).
 ") UReverse;
-		virtual void UReverse();
+		void UReverse();
 
 		/****** ShapeExtend_CompositeSurface::UReversedParameter ******/
-		/****** md5 signature: 455649ad8e72cb371c0686d0e771362f ******/
+		/****** md5 signature: 05e3d33e6c2ca68b5a0e18b9bb568fd7 ******/
 		%feature("compactdefaultargs") UReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+U: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns U.
 ") UReversedParameter;
-		virtual Standard_Real UReversedParameter(const Standard_Real U);
+		double UReversedParameter(const double U);
 
 		/****** ShapeExtend_CompositeSurface::VGlobalToLocal ******/
-		/****** md5 signature: 5b91fe4bcdda99113c51c9cabdf5fe8e ******/
+		/****** md5 signature: b8ddfdf8faa0f06ecebdae40bfc4cfca ******/
 		%feature("compactdefaultargs") VGlobalToLocal;
 		%feature("autodoc", "
 Parameters
 ----------
 i: int
 j: int
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts global parameter V to local parameter v on patch i,j.
 ") VGlobalToLocal;
-		Standard_Real VGlobalToLocal(const Standard_Integer i, const Standard_Integer j, const Standard_Real V);
+		double VGlobalToLocal(const int i, const int j, const double V);
 
 		/****** ShapeExtend_CompositeSurface::VIso ******/
-		/****** md5 signature: 7231943ddfe038bbb071bb6696d17d04 ******/
+		/****** md5 signature: 3b15e0839a90a1a188d31a753e205519 ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
@@ -1518,10 +1486,10 @@ Description
 -----------
 NOT IMPLEMENTED (returns Null curve).
 ") VIso;
-		virtual opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
+		opencascade::handle<Geom_Curve> VIso(const double V);
 
 		/****** ShapeExtend_CompositeSurface::VJointValue ******/
-		/****** md5 signature: 874819d969e6449276dc3255b5bd3d26 ******/
+		/****** md5 signature: e1c3c172ea03bcbe15455574fc0cc697 ******/
 		%feature("compactdefaultargs") VJointValue;
 		%feature("autodoc", "
 Parameters
@@ -1530,49 +1498,49 @@ j: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns j-th joint value in V direction (1-st is global Vmin, (NbVPatches()+1)-th is global Vmax on the composite surface).
 ") VJointValue;
-		Standard_Real VJointValue(const Standard_Integer j);
+		double VJointValue(const int j);
 
 		/****** ShapeExtend_CompositeSurface::VJointValues ******/
-		/****** md5 signature: 8f8c0cbddebed98ac769578d05d1ae5f ******/
+		/****** md5 signature: 9df0c7bd17e85598b3fc8229522b3837 ******/
 		%feature("compactdefaultargs") VJointValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray1OfReal>
+opencascade::handle<NCollection_HArray1<double>>
 
 Description
 -----------
 Returns the array of V values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
 ") VJointValues;
-		opencascade::handle<TColStd_HArray1OfReal> VJointValues();
+		opencascade::handle<NCollection_HArray1<double>> VJointValues();
 
 		/****** ShapeExtend_CompositeSurface::VLocalToGlobal ******/
-		/****** md5 signature: cada022c7dd8796ccab060600fdc6748 ******/
+		/****** md5 signature: 664be8f707c0c526bd402efb49c46757 ******/
 		%feature("compactdefaultargs") VLocalToGlobal;
 		%feature("autodoc", "
 Parameters
 ----------
 i: int
 j: int
-v: float
+v: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Converts local parameter v on patch i,j to global parameter V.
 ") VLocalToGlobal;
-		Standard_Real VLocalToGlobal(const Standard_Integer i, const Standard_Integer j, const Standard_Real v);
+		double VLocalToGlobal(const int i, const int j, const double v);
 
 		/****** ShapeExtend_CompositeSurface::VReverse ******/
-		/****** md5 signature: 60a0c07d53675378b2bcbe23d1e7e281 ******/
+		/****** md5 signature: f0b1c2d85d545f70e432fc3c0f035672 ******/
 		%feature("compactdefaultargs") VReverse;
 		%feature("autodoc", "Return
 -------
@@ -1582,25 +1550,25 @@ Description
 -----------
 NOT IMPLEMENTED (does nothing).
 ") VReverse;
-		virtual void VReverse();
+		void VReverse();
 
 		/****** ShapeExtend_CompositeSurface::VReversedParameter ******/
-		/****** md5 signature: 511e9f30bcc67915e6946bce79705b17 ******/
+		/****** md5 signature: 9f09cbdc0d05c88de49b614a8ac2ef58 ******/
 		%feature("compactdefaultargs") VReversedParameter;
 		%feature("autodoc", "
 Parameters
 ----------
-V: float
+V: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns V.
 ") VReversedParameter;
-		virtual Standard_Real VReversedParameter(const Standard_Real V);
+		double VReversedParameter(const double V);
 
 		/****** ShapeExtend_CompositeSurface::Value ******/
 		/****** md5 signature: 7c51fb21324189a4350d8fed0a35c374 ******/
@@ -1650,12 +1618,12 @@ Creates an object Explorer.
 		 ShapeExtend_Explorer();
 
 		/****** ShapeExtend_Explorer::CompoundFromSeq ******/
-		/****** md5 signature: 9c42e270bfcdddbf1929a557984f4fda ******/
+		/****** md5 signature: 27a84130a2840f58777945acde23bdfd ******/
 		%feature("compactdefaultargs") CompoundFromSeq;
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: TopTools_HSequenceOfShape
+seqval: NCollection_HSequence<TopoDS_Shape
 
 Return
 -------
@@ -1665,23 +1633,23 @@ Description
 -----------
 Converts a sequence of Shapes to a Compound.
 ") CompoundFromSeq;
-		TopoDS_Shape CompoundFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
+		TopoDS_Shape CompoundFromSeq(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqval);
 
 		/****** ShapeExtend_Explorer::DispatchList ******/
-		/****** md5 signature: 72677e95978b2702fc412b78c9d37ab8 ******/
+		/****** md5 signature: c4657ae48c42ba30c7b31defa2dfb5dc ******/
 		%feature("compactdefaultargs") DispatchList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TopTools_HSequenceOfShape
-vertices: TopTools_HSequenceOfShape
-edges: TopTools_HSequenceOfShape
-wires: TopTools_HSequenceOfShape
-faces: TopTools_HSequenceOfShape
-shells: TopTools_HSequenceOfShape
-solids: TopTools_HSequenceOfShape
-compsols: TopTools_HSequenceOfShape
-compounds: TopTools_HSequenceOfShape
+list: NCollection_HSequence<TopoDS_Shape
+vertices: NCollection_HSequence<TopoDS_Shape
+edges: NCollection_HSequence<TopoDS_Shape
+wires: NCollection_HSequence<TopoDS_Shape
+faces: NCollection_HSequence<TopoDS_Shape
+shells: NCollection_HSequence<TopoDS_Shape
+solids: NCollection_HSequence<TopoDS_Shape
+compsols: NCollection_HSequence<TopoDS_Shape
+compounds: NCollection_HSequence<TopoDS_Shape
 
 Return
 -------
@@ -1691,17 +1659,17 @@ Description
 -----------
 Dispatches starting list of shapes according to their type, to the appropriate resulting lists For each of these lists, if it is null, it is firstly created else, new items are appended to the already existing ones.
 ") DispatchList;
-		void DispatchList(const opencascade::handle<TopTools_HSequenceOfShape> & list, opencascade::handle<TopTools_HSequenceOfShape> & vertices, opencascade::handle<TopTools_HSequenceOfShape> & edges, opencascade::handle<TopTools_HSequenceOfShape> & wires, opencascade::handle<TopTools_HSequenceOfShape> & faces, opencascade::handle<TopTools_HSequenceOfShape> & shells, opencascade::handle<TopTools_HSequenceOfShape> & solids, opencascade::handle<TopTools_HSequenceOfShape> & compsols, opencascade::handle<TopTools_HSequenceOfShape> & compounds);
+		void DispatchList(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & list, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & vertices, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & edges, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & wires, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & faces, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & shells, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & solids, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & compsols, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & compounds);
 
 		/****** ShapeExtend_Explorer::ListFromSeq ******/
-		/****** md5 signature: 19b9a376fbcff81e41c6f52b68739b02 ******/
+		/****** md5 signature: a757258b68896377eb3515b65eeef68a ******/
 		%feature("compactdefaultargs") ListFromSeq;
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: TopTools_HSequenceOfShape
-lisval: TopTools_ListOfShape
-clear: bool (optional, default to Standard_True)
+seqval: NCollection_HSequence<TopoDS_Shape
+lisval: NCollection_List<TopoDS_Shape>
+clear: bool (optional, default to true)
 
 Return
 -------
@@ -1711,10 +1679,10 @@ Description
 -----------
 Converts a Sequence of Shapes to a List of Shapes <clear> if True (D), commands the list to start from scratch else, the list is cumulated.
 ") ListFromSeq;
-		void ListFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval, TopTools_ListOfShape & lisval, const Standard_Boolean clear = Standard_True);
+		void ListFromSeq(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqval, NCollection_List<TopoDS_Shape> & lisval, const bool clear = true);
 
 		/****** ShapeExtend_Explorer::SeqFromCompound ******/
-		/****** md5 signature: 560f0008fe1a70e46fcdb58b55e42287 ******/
+		/****** md5 signature: d9612d42e9f053876f56e66a70bf528a ******/
 		%feature("compactdefaultargs") SeqFromCompound;
 		%feature("autodoc", "
 Parameters
@@ -1724,34 +1692,34 @@ expcomp: bool
 
 Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Converts a Compound to a list of Shapes if <comp> is not a compound, the list contains only <comp> if <comp> is Null, the list is empty if <comp> is a Compound, its sub-shapes are put into the list then if <expcomp> is True, if a sub-shape is a Compound, it is not put to the list but its sub-shapes are (recursive).
 ") SeqFromCompound;
-		opencascade::handle<TopTools_HSequenceOfShape> SeqFromCompound(const TopoDS_Shape & comp, const Standard_Boolean expcomp);
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> SeqFromCompound(const TopoDS_Shape & comp, const bool expcomp);
 
 		/****** ShapeExtend_Explorer::SeqFromList ******/
-		/****** md5 signature: 5cfd1ced143892bb4d8f80f9a062c141 ******/
+		/****** md5 signature: 2bad836dc7e00bdf51d9b9b3cdccc627 ******/
 		%feature("compactdefaultargs") SeqFromList;
 		%feature("autodoc", "
 Parameters
 ----------
-lisval: TopTools_ListOfShape
+lisval: NCollection_List<TopoDS_Shape>
 
 Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Converts a List of Shapes to a Sequence of Shapes.
 ") SeqFromList;
-		opencascade::handle<TopTools_HSequenceOfShape> SeqFromList(const TopTools_ListOfShape & lisval);
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> SeqFromList(const NCollection_List<TopoDS_Shape> & lisval);
 
 		/****** ShapeExtend_Explorer::ShapeType ******/
-		/****** md5 signature: ab636bf5c0d2e486d53891e797ab3d6b ******/
+		/****** md5 signature: b5a1f3ccc175f4568637685b40d0ed30 ******/
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "
 Parameters
@@ -1767,10 +1735,10 @@ Description
 -----------
 Returns the type of a Shape: true type if <compound> is False If <compound> is True and <shape> is a Compound, iterates on its items. If all are of the same type, returns this type. Else, returns COMPOUND. If it is empty, returns SHAPE For a Null Shape, returns SHAPE.
 ") ShapeType;
-		TopAbs_ShapeEnum ShapeType(const TopoDS_Shape & shape, const Standard_Boolean compound);
+		TopAbs_ShapeEnum ShapeType(const TopoDS_Shape & shape, const bool compound);
 
 		/****** ShapeExtend_Explorer::SortedCompound ******/
-		/****** md5 signature: b55d0015285d0f23fb3c68ccb5f8f79e ******/
+		/****** md5 signature: 47ef4a3fddd5fa7c9493ab75d99d42c2 ******/
 		%feature("compactdefaultargs") SortedCompound;
 		%feature("autodoc", "
 Parameters
@@ -1788,7 +1756,7 @@ Description
 -----------
 Builds a COMPOUND from the given shape. It explores the shape level by level, according to the <explore> argument. If <explore> is False, only COMPOUND items are explored, else all items are. The following shapes are added to resulting compound: - shapes which comply to <type> - if <type> is WIRE, considers also free edges (and makes wires) - if <type> is SHELL, considers also free faces (and makes shells) If <compound> is True, gathers items in compounds which correspond to starting COMPOUND,SOLID or SHELL containers, or items directly contained in a Compound.
 ") SortedCompound;
-		TopoDS_Shape SortedCompound(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type, const Standard_Boolean explore, const Standard_Boolean compound);
+		TopoDS_Shape SortedCompound(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type, const bool explore, const bool compound);
 
 };
 
@@ -1818,14 +1786,14 @@ Empty constructor, creates empty wire with no edges.
 		 ShapeExtend_WireData();
 
 		/****** ShapeExtend_WireData::ShapeExtend_WireData ******/
-		/****** md5 signature: 5ab7d7363eb0015f9a3077be2505378f ******/
+		/****** md5 signature: dd53bd52e76409ed4d93a61e704f40d9 ******/
 		%feature("compactdefaultargs") ShapeExtend_WireData;
 		%feature("autodoc", "
 Parameters
 ----------
 wire: TopoDS_Wire
-chained: bool (optional, default to Standard_True)
-theManifoldMode: bool (optional, default to Standard_True)
+chained: bool (optional, default to true)
+theManifoldMode: bool (optional, default to true)
 
 Return
 -------
@@ -1835,10 +1803,10 @@ Description
 -----------
 Constructor initializing the data from TopoDS_Wire. Calls Init(wire,chained).
 ") ShapeExtend_WireData;
-		 ShapeExtend_WireData(const TopoDS_Wire & wire, const Standard_Boolean chained = Standard_True, const Standard_Boolean theManifoldMode = Standard_True);
+		 ShapeExtend_WireData(const TopoDS_Wire & wire, const bool chained = true, const bool theManifoldMode = true);
 
 		/****** ShapeExtend_WireData::Add ******/
-		/****** md5 signature: faf93e4bf33902e064c9e905990c8178 ******/
+		/****** md5 signature: 331da52d15cf20e4535395d7b41c22cf ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1854,10 +1822,10 @@ Description
 -----------
 Adds an edge to a wire, being defined (not yet ended) This is the plain, basic, function to add an edge <num> = 0 (D): Appends at end <num> = 1: Preprends at start else, Insert before <num> Remark: Null Edge is simply ignored.
 ") Add;
-		void Add(const TopoDS_Edge & edge, const Standard_Integer atnum = 0);
+		void Add(const TopoDS_Edge & edge, const int atnum = 0);
 
 		/****** ShapeExtend_WireData::Add ******/
-		/****** md5 signature: 191f73dffec406bc9d062ee4d1694d18 ******/
+		/****** md5 signature: cd4d7b1b99f586aae43d1c93fedd7fb8 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1873,10 +1841,10 @@ Description
 -----------
 Adds an entire wire, considered as a list of edges Remark: The wire is assumed to be ordered (TopoDS_Iterator is used).
 ") Add;
-		void Add(const TopoDS_Wire & wire, const Standard_Integer atnum = 0);
+		void Add(const TopoDS_Wire & wire, const int atnum = 0);
 
 		/****** ShapeExtend_WireData::Add ******/
-		/****** md5 signature: 1065156f604c62b8aba230c6c36abbcb ******/
+		/****** md5 signature: f6d37f9ad1d062b2092ecf84bae42391 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1892,10 +1860,10 @@ Description
 -----------
 Adds a wire in the form of WireData.
 ") Add;
-		void Add(const opencascade::handle<ShapeExtend_WireData> & wire, const Standard_Integer atnum = 0);
+		void Add(const opencascade::handle<ShapeExtend_WireData> & wire, const int atnum = 0);
 
 		/****** ShapeExtend_WireData::Add ******/
-		/****** md5 signature: 9e386334d6f0187e5100e94c42ac6004 ******/
+		/****** md5 signature: 4cb1d5d596e3aeb447d2d5eeb63ac6e3 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1911,10 +1879,10 @@ Description
 -----------
 Adds an edge or a wire invoking corresponding method Add.
 ") Add;
-		void Add(const TopoDS_Shape & shape, const Standard_Integer atnum = 0);
+		void Add(const TopoDS_Shape & shape, const int atnum = 0);
 
 		/****** ShapeExtend_WireData::AddOriented ******/
-		/****** md5 signature: ad811585ba1dd40a4670a0034d100af3 ******/
+		/****** md5 signature: 764ba560549724a8bbff83c7917fdeb2 ******/
 		%feature("compactdefaultargs") AddOriented;
 		%feature("autodoc", "
 Parameters
@@ -1930,10 +1898,10 @@ Description
 -----------
 Adds an edge to start or end of <self>, according to <mode> 0: at end, as direct 1: at end, as reversed 2: at start, as direct 3: at start, as reversed < 0: no adding.
 ") AddOriented;
-		void AddOriented(const TopoDS_Edge & edge, const Standard_Integer mode);
+		void AddOriented(const TopoDS_Edge & edge, const int mode);
 
 		/****** ShapeExtend_WireData::AddOriented ******/
-		/****** md5 signature: 6895a004b9d6ee471d85fd8d2a7b0824 ******/
+		/****** md5 signature: 601c6cd94d91c4d12f30c253bf65c78b ******/
 		%feature("compactdefaultargs") AddOriented;
 		%feature("autodoc", "
 Parameters
@@ -1949,10 +1917,10 @@ Description
 -----------
 Adds a wire to start or end of <self>, according to <mode> 0: at end, as direct 1: at end, as reversed 2: at start, as direct 3: at start, as reversed < 0: no adding.
 ") AddOriented;
-		void AddOriented(const TopoDS_Wire & wire, const Standard_Integer mode);
+		void AddOriented(const TopoDS_Wire & wire, const int mode);
 
 		/****** ShapeExtend_WireData::AddOriented ******/
-		/****** md5 signature: 097d2be7d234600f10ff3f2b85f0abae ******/
+		/****** md5 signature: 36616f045342ad747abf45e44d96c378 ******/
 		%feature("compactdefaultargs") AddOriented;
 		%feature("autodoc", "
 Parameters
@@ -1968,7 +1936,7 @@ Description
 -----------
 Adds an edge or a wire invoking corresponding method AddOriented.
 ") AddOriented;
-		void AddOriented(const TopoDS_Shape & shape, const Standard_Integer mode);
+		void AddOriented(const TopoDS_Shape & shape, const int mode);
 
 		/****** ShapeExtend_WireData::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -1984,12 +1952,12 @@ Clears data about Wire.
 		void Clear();
 
 		/****** ShapeExtend_WireData::ComputeSeams ******/
-		/****** md5 signature: ddb38259639359eb30a7142d9a753b11 ******/
+		/****** md5 signature: 7422f87bd26fef4942de66c6c20678ca ******/
 		%feature("compactdefaultargs") ComputeSeams;
 		%feature("autodoc", "
 Parameters
 ----------
-enforce: bool (optional, default to Standard_True)
+enforce: bool (optional, default to true)
 
 Return
 -------
@@ -1999,10 +1967,10 @@ Description
 -----------
 Computes the list of seam edges By default (direct call), computing is enforced For indirect call (from IsSeam) it is redone only if not yet already done or if the list of edges has changed Remark: A Seam Edge is an Edge present twice in the list, once as FORWARD and once as REVERSED Each sense has its own PCurve, the one for FORWARD must be set in first.
 ") ComputeSeams;
-		void ComputeSeams(const Standard_Boolean enforce = Standard_True);
+		void ComputeSeams(const bool enforce = true);
 
 		/****** ShapeExtend_WireData::Edge ******/
-		/****** md5 signature: 825841bc4e9a24f9987724fcade8ecd7 ******/
+		/****** md5 signature: 94efb4c91a253aa8f1ccf8b1009cbb01 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -2017,10 +1985,10 @@ Description
 -----------
 Returns <num>th Edge.
 ") Edge;
-		TopoDS_Edge Edge(const Standard_Integer num);
+		TopoDS_Edge Edge(const int num);
 
 		/****** ShapeExtend_WireData::Index ******/
-		/****** md5 signature: 22b90e0d6beeb4ce11ec9f240e4b2793 ******/
+		/****** md5 signature: b3faa1c2f5264fa64e373723c6009b46 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -2035,7 +2003,7 @@ Description
 -----------
 Returns the index of the edge If the edge is a seam the orientation is also checked Returns 0 if the edge is not found in the list.
 ") Index;
-		Standard_Integer Index(const TopoDS_Edge & edge);
+		int Index(const TopoDS_Edge & edge);
 
 		/****** ShapeExtend_WireData::Init ******/
 		/****** md5 signature: 70e65a481c83a045eaf89a13ad75120d ******/
@@ -2056,14 +2024,14 @@ Copies data from another WireData.
 		void Init(const opencascade::handle<ShapeExtend_WireData> & other);
 
 		/****** ShapeExtend_WireData::Init ******/
-		/****** md5 signature: a9e5faa7293c857497a7c93fe76d0f12 ******/
+		/****** md5 signature: 054cdb57a82030c3b451b1d169830d53 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 wire: TopoDS_Wire
-chained: bool (optional, default to Standard_True)
-theManifoldMode: bool (optional, default to Standard_True)
+chained: bool (optional, default to true)
+theManifoldMode: bool (optional, default to true)
 
 Return
 -------
@@ -2073,10 +2041,10 @@ Description
 -----------
 Loads an already existing wire If <chained> is True (default), edges are added in the sequence as they are explored by TopoDS_Iterator Else, if <chained> is False, wire is explored by BRepTools_WireExplorer and it is guaranteed that edges will be sequentially connected. Remark: In the latter case it can happen that not all edges will be found (because of limitations of BRepTools_WireExplorer for disconnected wires and wires with seam edges).
 ") Init;
-		Standard_Boolean Init(const TopoDS_Wire & wire, const Standard_Boolean chained = Standard_True, const Standard_Boolean theManifoldMode = Standard_True);
+		bool Init(const TopoDS_Wire & wire, const bool chained = true, const bool theManifoldMode = true);
 
 		/****** ShapeExtend_WireData::IsSeam ******/
-		/****** md5 signature: 3515b6ede46eab1ed4970d48841f2b6f ******/
+		/****** md5 signature: 04bd6a1201c377992dd77ea41a15e625 ******/
 		%feature("compactdefaultargs") IsSeam;
 		%feature("autodoc", "
 Parameters
@@ -2091,23 +2059,23 @@ Description
 -----------
 Tells if an Edge is seam (see ComputeSeams) An edge is considered as seam if it presents twice in the edge list, once as FORWARD and once as REVERSED.
 ") IsSeam;
-		Standard_Boolean IsSeam(const Standard_Integer num);
+		bool IsSeam(const int num);
 
+		/****** ShapeExtend_WireData::ManifoldMode ******/
+		/****** md5 signature: be26413551533594d9cb7ddaaa0c917d ******/
+		%feature("compactdefaultargs") ManifoldMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetManifoldMode() {
-            return (Standard_Boolean) $self->ManifoldMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetManifoldMode(Standard_Boolean value) {
-            $self->ManifoldMode()=value;
-            }
-        };
+Description
+-----------
+Returns mode defining manifold wire data or not. If manifold that nonmanifold edges will not be not consider during operations(previous behaviour) and they will be added only in result wire else non-manifold edges will consider during operations.
+") ManifoldMode;
+		bool & ManifoldMode();
+
 		/****** ShapeExtend_WireData::NbEdges ******/
-		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
+		/****** md5 signature: f741965989565caaff095f09d2955db8 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -2117,10 +2085,10 @@ Description
 -----------
 Returns the count of currently recorded edges.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** ShapeExtend_WireData::NbNonManifoldEdges ******/
-		/****** md5 signature: a61655ffca0f6ad461c5c34924fb2c09 ******/
+		/****** md5 signature: 5be4c6934c553eb20618177d0726db22 ******/
 		%feature("compactdefaultargs") NbNonManifoldEdges;
 		%feature("autodoc", "Return
 -------
@@ -2130,10 +2098,10 @@ Description
 -----------
 Returns the count of currently recorded non-manifold edges.
 ") NbNonManifoldEdges;
-		Standard_Integer NbNonManifoldEdges();
+		int NbNonManifoldEdges();
 
 		/****** ShapeExtend_WireData::NonmanifoldEdge ******/
-		/****** md5 signature: d94d5856bf592c5d821796b66ad40853 ******/
+		/****** md5 signature: 9d3cda627b738ee7b9dfbf6d8ecffa40 ******/
 		%feature("compactdefaultargs") NonmanifoldEdge;
 		%feature("autodoc", "
 Parameters
@@ -2148,23 +2116,23 @@ Description
 -----------
 Returns <num>th nonmanifold Edge.
 ") NonmanifoldEdge;
-		TopoDS_Edge NonmanifoldEdge(const Standard_Integer num);
+		TopoDS_Edge NonmanifoldEdge(const int num);
 
 		/****** ShapeExtend_WireData::NonmanifoldEdges ******/
-		/****** md5 signature: 89dbf7a1d2587fc3263f1d656fd4714f ******/
+		/****** md5 signature: e0bea35e428b94b7ed0f51d26c242581 ******/
 		%feature("compactdefaultargs") NonmanifoldEdges;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Returns sequence of non-manifold edges This sequence can be not empty if wire data set in manifold mode but initial wire has INTERNAL orientation or contains INTERNAL edges.
 ") NonmanifoldEdges;
-		opencascade::handle<TopTools_HSequenceOfShape> NonmanifoldEdges();
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> NonmanifoldEdges();
 
 		/****** ShapeExtend_WireData::Remove ******/
-		/****** md5 signature: 86d2494f11c5eef0ac12ae0f32b8af37 ******/
+		/****** md5 signature: d828786471a07b9ccd2a3c10e346fa07 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -2179,7 +2147,7 @@ Description
 -----------
 Removes an Edge, given its rank. By default removes the last edge.
 ") Remove;
-		void Remove(const Standard_Integer num = 0);
+		void Remove(const int num = 0);
 
 		/****** ShapeExtend_WireData::Reverse ******/
 		/****** md5 signature: b751d6874fc026e19a7a6cb37e9ac1b4 ******/
@@ -2213,7 +2181,7 @@ Reverses the sense of the list and the orientation of each Edge The face is nece
 		void Reverse(const TopoDS_Face & face);
 
 		/****** ShapeExtend_WireData::Set ******/
-		/****** md5 signature: ee9615ecf89e20480c45a3bf6f7c01ce ******/
+		/****** md5 signature: 635118c4ddb11282602dc016dccba634 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2229,7 +2197,7 @@ Description
 -----------
 Replaces an edge at the given rank number <num> with new one. Default is last edge (<num> = 0).
 ") Set;
-		void Set(const TopoDS_Edge & edge, const Standard_Integer num = 0);
+		void Set(const TopoDS_Edge & edge, const int num = 0);
 
 		/****** ShapeExtend_WireData::SetDegeneratedLast ******/
 		/****** md5 signature: 0041ff783654edafc0b6489d08204a08 ******/
@@ -2245,7 +2213,7 @@ When the wire contains at least one degenerated edge, sets it as last one Note: 
 		void SetDegeneratedLast();
 
 		/****** ShapeExtend_WireData::SetLast ******/
-		/****** md5 signature: a10b4f8d5f12d7d711a649451913cb53 ******/
+		/****** md5 signature: cdf86cd3f43d75d1e2177ea56b0012ac ******/
 		%feature("compactdefaultargs") SetLast;
 		%feature("autodoc", "
 Parameters
@@ -2260,7 +2228,7 @@ Description
 -----------
 Does a circular permutation in order to set <num>th edge last.
 ") SetLast;
-		void SetLast(const Standard_Integer num);
+		void SetLast(const int num);
 
 		/****** ShapeExtend_WireData::Wire ******/
 		/****** md5 signature: 2fe6e5f402158cff91e9020fddff92e6 ******/
@@ -2318,33 +2286,33 @@ Creates an object.
 		 ShapeExtend_MsgRegistrator();
 
 		/****** ShapeExtend_MsgRegistrator::MapShape ******/
-		/****** md5 signature: 7803eb7c8f00316fc4004f06def61ccf ******/
+		/****** md5 signature: 9b44b13412a9b601d30afb914f211d8a ******/
 		%feature("compactdefaultargs") MapShape;
 		%feature("autodoc", "Return
 -------
-ShapeExtend_DataMapOfShapeListOfMsg
+NCollection_DataMap<TopoDS_Shape, NCollection_List<Message_Msg>, TopTools_ShapeMapHasher>
 
 Description
 -----------
 Returns a Map of shapes and message list.
 ") MapShape;
-		const ShapeExtend_DataMapOfShapeListOfMsg & MapShape();
+		const NCollection_DataMap<TopoDS_Shape, NCollection_List<Message_Msg>, TopTools_ShapeMapHasher> MapShape();
 
 		/****** ShapeExtend_MsgRegistrator::MapTransient ******/
-		/****** md5 signature: 0c75be6df9953704a1705e6f28d377cc ******/
+		/****** md5 signature: 8011bc2c05e1d084c7c29a468a1320db ******/
 		%feature("compactdefaultargs") MapTransient;
 		%feature("autodoc", "Return
 -------
-ShapeExtend_DataMapOfTransientListOfMsg
+NCollection_DataMap<opencascade::handle<Standard_Transient>, NCollection_List<Message_Msg>>
 
 Description
 -----------
 Returns a Map of objects and message list.
 ") MapTransient;
-		const ShapeExtend_DataMapOfTransientListOfMsg & MapTransient();
+		const NCollection_DataMap<opencascade::handle<Standard_Transient>, NCollection_List<Message_Msg>> & MapTransient();
 
 		/****** ShapeExtend_MsgRegistrator::Send ******/
-		/****** md5 signature: b59503dc94dba826d8ba9e2c1cd171f0 ******/
+		/****** md5 signature: 5a8cee92945955fe13caf99ead33ffab ******/
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "
 Parameters
@@ -2361,10 +2329,10 @@ Description
 -----------
 Sends a message to be attached to the object. If the object is in the map then the message is added to the list, otherwise the object is firstly added to the map.
 ") Send;
-		virtual void Send(const opencascade::handle<Standard_Transient> & object, const Message_Msg & message, const Message_Gravity gravity);
+		void Send(const opencascade::handle<Standard_Transient> & object, const Message_Msg & message, const Message_Gravity gravity);
 
 		/****** ShapeExtend_MsgRegistrator::Send ******/
-		/****** md5 signature: 0c6eb362a61683b8209d804fa3d94cbf ******/
+		/****** md5 signature: b82b6f33ab8a4c4299d5578771c86b9d ******/
 		%feature("compactdefaultargs") Send;
 		%feature("autodoc", "
 Parameters
@@ -2381,7 +2349,7 @@ Description
 -----------
 Sends a message to be attached to the shape. If the shape is in the map then the message is added to the list, otherwise the shape is firstly added to the map.
 ") Send;
-		virtual void Send(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity);
+		void Send(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity);
 
 };
 

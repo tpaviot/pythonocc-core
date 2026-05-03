@@ -31,7 +31,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_CopyControl.hxx>
 #include<Interface_CopyMap.hxx>
 #include<Interface_CopyTool.hxx>
-#include<Interface_DataMapIteratorOfDataMapOfTransientInteger.hxx>
 #include<Interface_DataMapOfTransientInteger.hxx>
 #include<Interface_DataState.hxx>
 #include<Interface_EntityCluster.hxx>
@@ -59,7 +58,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_InterfaceModel.hxx>
 #include<Interface_LineBuffer.hxx>
 #include<Interface_MSG.hxx>
-#include<Interface_Macros.hxx>
 #include<Interface_NodeOfGeneralLib.hxx>
 #include<Interface_NodeOfReaderLib.hxx>
 #include<Interface_ParamList.hxx>

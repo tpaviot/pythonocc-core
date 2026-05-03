@@ -50,6 +50,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomFill_FunctionDraft.hxx>
 #include<GeomFill_FunctionGuide.hxx>
 #include<GeomFill_Generator.hxx>
+#include<GeomFill_Gordon.hxx>
+#include<GeomFill_GordonBuilder.hxx>
 #include<GeomFill_GuideTrihedronAC.hxx>
 #include<GeomFill_GuideTrihedronPlan.hxx>
 #include<GeomFill_HArray1OfLocationLaw.hxx>

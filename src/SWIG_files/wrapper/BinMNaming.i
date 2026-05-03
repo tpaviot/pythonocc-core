@@ -83,8 +83,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(BinMNaming_NamedShapeDriver)
-%wrap_handle(BinMNaming_NamingDriver)
 /* end handles declaration */
 
 /* templates */
@@ -164,7 +162,7 @@ Clear myShapeSet.
 		void Clear();
 
 		/****** BinMNaming_NamedShapeDriver::EnableQuickPart ******/
-		/****** md5 signature: cec3cd0b4a2a26b64dabfcaa2c58ee1c ******/
+		/****** md5 signature: cff8daf566931bac50f3d6a6968f58f3 ******/
 		%feature("compactdefaultargs") EnableQuickPart;
 		%feature("autodoc", "
 Parameters
@@ -179,7 +177,7 @@ Description
 -----------
 Sets the flag for quick part of the document access: shapes are stored in the attribute.
 ") EnableQuickPart;
-		void EnableQuickPart(const Standard_Boolean theValue);
+		void EnableQuickPart(const bool theValue);
 
 		/****** BinMNaming_NamedShapeDriver::GetShapesLocations ******/
 		/****** md5 signature: 9cd92ab397d1145dc380f0edef6fc008 ******/
@@ -195,7 +193,7 @@ get the shapes locations.
 		BinTools_LocationSet & GetShapesLocations();
 
 		/****** BinMNaming_NamedShapeDriver::IsQuickPart ******/
-		/****** md5 signature: 1b93209c8c5b5efc320465bf731b4acb ******/
+		/****** md5 signature: 85436ada30cec841c30b7474e7ea2432 ******/
 		%feature("compactdefaultargs") IsQuickPart;
 		%feature("autodoc", "Return
 -------
@@ -205,10 +203,10 @@ Description
 -----------
 Returns true if quick part of the document access is enabled: shapes are stored in the attribute.
 ") IsQuickPart;
-		Standard_Boolean IsQuickPart();
+		bool IsQuickPart();
 
 		/****** BinMNaming_NamedShapeDriver::IsWithNormals ******/
-		/****** md5 signature: 49f5baecd893691e08f163fb559d8b06 ******/
+		/****** md5 signature: c7acafa16493860e7c0a6bd60edea61c ******/
 		%feature("compactdefaultargs") IsWithNormals;
 		%feature("autodoc", "Return
 -------
@@ -218,10 +216,10 @@ Description
 -----------
 Return true if shape should be stored with triangulation normals.
 ") IsWithNormals;
-		Standard_Boolean IsWithNormals();
+		bool IsWithNormals();
 
 		/****** BinMNaming_NamedShapeDriver::IsWithTriangles ******/
-		/****** md5 signature: 2adacf1f8e5d4c926108b4db84751e9a ******/
+		/****** md5 signature: c31685fbc77b7c6389330903a3a6386f ******/
 		%feature("compactdefaultargs") IsWithTriangles;
 		%feature("autodoc", "Return
 -------
@@ -231,10 +229,10 @@ Description
 -----------
 Return true if shape should be stored with triangles.
 ") IsWithTriangles;
-		Standard_Boolean IsWithTriangles();
+		bool IsWithTriangles();
 
 		/****** BinMNaming_NamedShapeDriver::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -247,7 +245,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** BinMNaming_NamedShapeDriver::Paste ******/
-		/****** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ******/
+		/****** md5 signature: 32b49ae1c49643472e4ce889e46d08ee ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -264,17 +262,17 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
+		bool Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****** BinMNaming_NamedShapeDriver::Paste ******/
-		/****** md5 signature: 67b435110398ae49c79b33db64bbe228 ******/
+		/****** md5 signature: b4a5612f14dec93753f599f4c4e34fd2 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: BinObjMgt_SRelocationTable
+RelocTable: Standard_Transient
 
 Return
 -------
@@ -284,7 +282,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
 
 		/****** BinMNaming_NamedShapeDriver::ReadShapeSection ******/
 		/****** md5 signature: 66ff232ed5a17a346bcdcc9d0bc2b9ce ******/
@@ -306,7 +304,7 @@ Input the shapes from Bin Document file.
 		void ReadShapeSection(std::istream & theIS, const Message_ProgressRange & therange = Message_ProgressRange());
 
 		/****** BinMNaming_NamedShapeDriver::SetWithNormals ******/
-		/****** md5 signature: 2f7757cd59d0573f368c1b217c28b7f5 ******/
+		/****** md5 signature: f753ea1b0e287bd47e93689a525c8e1c ******/
 		%feature("compactdefaultargs") SetWithNormals;
 		%feature("autodoc", "
 Parameters
@@ -321,10 +319,10 @@ Description
 -----------
 set whether to store triangulation with normals.
 ") SetWithNormals;
-		void SetWithNormals(const Standard_Boolean isWithNormals);
+		void SetWithNormals(const bool isWithNormals);
 
 		/****** BinMNaming_NamedShapeDriver::SetWithTriangles ******/
-		/****** md5 signature: ac168a6a3fad4f9bcc30c8362a1cf0c6 ******/
+		/****** md5 signature: 64e820aad64183816e5114241e674dee ******/
 		%feature("compactdefaultargs") SetWithTriangles;
 		%feature("autodoc", "
 Parameters
@@ -339,10 +337,10 @@ Description
 -----------
 set whether to store triangulation.
 ") SetWithTriangles;
-		void SetWithTriangles(const Standard_Boolean isWithTriangles);
+		void SetWithTriangles(const bool isWithTriangles);
 
 		/****** BinMNaming_NamedShapeDriver::ShapeSet ******/
-		/****** md5 signature: 9b5007d7513ff5d1f7e764f2202870c2 ******/
+		/****** md5 signature: 0ed32d25c76a8e76b5ff3ece21168b74 ******/
 		%feature("compactdefaultargs") ShapeSet;
 		%feature("autodoc", "
 Parameters
@@ -357,10 +355,10 @@ Description
 -----------
 Returns shape-set of the needed type.
 ") ShapeSet;
-		BinTools_ShapeSetBase * ShapeSet(const Standard_Boolean theReading);
+		BinTools_ShapeSetBase * ShapeSet(const bool theReading);
 
 		/****** BinMNaming_NamedShapeDriver::WriteShapeSection ******/
-		/****** md5 signature: 257dfbc6e624d2b0bb9fa1de0712dd47 ******/
+		/****** md5 signature: e7b292a4026c959ca29570f54bc1b032 ******/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -376,12 +374,10 @@ Description
 -----------
 Output the shapes into Bin Document file.
 ") WriteShapeSection;
-		void WriteShapeSection(std::ostream &OutValue, const Standard_Integer theDocVer, const Message_ProgressRange & therange = Message_ProgressRange());
+		void WriteShapeSection(std::ostream &OutValue, const int theDocVer, const Message_ProgressRange & therange = Message_ProgressRange());
 
 };
 
-
-%make_alias(BinMNaming_NamedShapeDriver)
 
 %extend BinMNaming_NamedShapeDriver {
 	%pythoncode {
@@ -413,7 +409,7 @@ No available documentation.
 		 BinMNaming_NamingDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
 		/****** BinMNaming_NamingDriver::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -426,7 +422,7 @@ No available documentation.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** BinMNaming_NamingDriver::Paste ******/
-		/****** md5 signature: 3bca84cbb3164ee155cf7623ceb16244 ******/
+		/****** md5 signature: 32b49ae1c49643472e4ce889e46d08ee ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -443,17 +439,17 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
+		bool Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
 		/****** BinMNaming_NamingDriver::Paste ******/
-		/****** md5 signature: 67b435110398ae49c79b33db64bbe228 ******/
+		/****** md5 signature: b4a5612f14dec93753f599f4c4e34fd2 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: BinObjMgt_SRelocationTable
+RelocTable: Standard_Transient
 
 Return
 -------
@@ -463,12 +459,10 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
 
 };
 
-
-%make_alias(BinMNaming_NamingDriver)
 
 %extend BinMNaming_NamingDriver {
 	%pythoncode {

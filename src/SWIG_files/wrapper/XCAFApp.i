@@ -77,7 +77,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(XCAFApp_Application)
 /* end handles declaration */
 
 /* templates */
@@ -127,7 +126,7 @@ Initializes (for the first time) and returns the static object (XCAFApp_Applicat
 		static opencascade::handle<XCAFApp_Application> GetApplication();
 
 		/****** XCAFApp_Application::InitDocument ******/
-		/****** md5 signature: cb8b1250bf5bfec47bac72c3724adc69 ******/
+		/****** md5 signature: 66a04f8e4f397c3ef1986cf636cfc014 ******/
 		%feature("compactdefaultargs") InitDocument;
 		%feature("autodoc", "
 Parameters
@@ -142,25 +141,23 @@ Description
 -----------
 Set XCAFDoc_DocumentTool attribute.
 ") InitDocument;
-		virtual void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
+		void InitDocument(const opencascade::handle<CDM_Document> & aDoc);
 
 		/****** XCAFApp_Application::ResourcesName ******/
-		/****** md5 signature: 96f8731792cfcab6c0cf55cdc1a09a9b ******/
+		/****** md5 signature: f28505356ea37c7b82c47cbf3266f2fa ******/
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 methods from TDocStd_Application ================================.
 ") ResourcesName;
-		virtual Standard_CString ResourcesName();
+		const char * ResourcesName();
 
 };
 
-
-%make_alias(XCAFApp_Application)
 
 %extend XCAFApp_Application {
 	%pythoncode {

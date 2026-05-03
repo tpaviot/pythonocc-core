@@ -20,9 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<SelectBasics.hxx>
-#include<SelectBasics_EntityOwner.hxx>
 #include<SelectBasics_PickResult.hxx>
 #include<SelectBasics_SelectingVolumeManager.hxx>
-#include<SelectBasics_SensitiveEntity.hxx>
 
 #endif // SELECTBASICS_HXX

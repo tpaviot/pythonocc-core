@@ -47,7 +47,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intwalk.html"
 #include<math_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<IntImp_module.hxx>
-#include<TColStd_module.hxx>
 #include<gp_module.hxx>
 #include<IntSurf_module.hxx>
 #include<Geom_module.hxx>
@@ -65,7 +64,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intwalk.html"
 %import math.i
 %import Adaptor3d.i
 %import IntImp.i
-%import TColStd.i
 %import gp.i
 %import IntSurf.i
 
@@ -165,13 +163,13 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface2();
 
 		/****** IntWalk_TheFunctionOfTheInt2S::ComputeParameters ******/
-		/****** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ******/
+		/****** md5 signature: 1783678026f1f00e7bd2b3570378cdb6 ******/
 		%feature("compactdefaultargs") ComputeParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 ChoixIso: IntImp_ConstIsoparametric
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 UVap: math_Vector
 BornInf: math_Vector
 BornSup: math_Vector
@@ -185,10 +183,10 @@ Description
 -----------
 No available documentation.
 ") ComputeParameters;
-		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const TColStd_Array1OfReal & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
+		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const NCollection_Array1<double> & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Derivatives ******/
-		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
+		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -204,7 +202,7 @@ Description
 -----------
 No available documentation.
 ") Derivatives;
-		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
+		bool Derivatives(const math_Vector & X, math_Matrix & D);
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Direction ******/
 		/****** md5 signature: 7db1622a0b370b4453af0886bb5f840c ******/
@@ -246,13 +244,13 @@ No available documentation.
 		gp_Dir2d DirectionOnS2();
 
 		/****** IntWalk_TheFunctionOfTheInt2S::IsTangent ******/
-		/****** md5 signature: 9e73991f5144c0e218a14c453bc89c5f ******/
+		/****** md5 signature: 764eb67880e4e84c6807135e3e9a351c ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "
 Parameters
 ----------
 UVap: math_Vector
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 
 Return
 -------
@@ -262,10 +260,10 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		Standard_Boolean IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric &OutValue);
+		bool IsTangent(const math_Vector & UVap, NCollection_Array1<double> & Param, IntImp_ConstIsoparametric &OutValue);
 
 		/****** IntWalk_TheFunctionOfTheInt2S::NbEquations ******/
-		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
+		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -275,10 +273,10 @@ Description
 -----------
 No available documentation.
 ") NbEquations;
-		Standard_Integer NbEquations();
+		int NbEquations();
 
 		/****** IntWalk_TheFunctionOfTheInt2S::NbVariables ******/
-		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
+		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -288,7 +286,7 @@ Description
 -----------
 No available documentation.
 ") NbVariables;
-		Standard_Integer NbVariables();
+		int NbVariables();
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Point ******/
 		/****** md5 signature: aacd847206090cc43a493e5072f97000 ******/
@@ -304,20 +302,20 @@ No available documentation.
 		gp_Pnt Point();
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Root ******/
-		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
+		/****** md5 signature: 4cac472ec2e8bbc115a694c59e4b1b4e ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns somme des fi*fi.
 ") Root;
-		Standard_Real Root();
+		double Root();
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Value ******/
-		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
+		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -333,10 +331,10 @@ Description
 -----------
 No available documentation.
 ") Value;
-		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
+		bool Value(const math_Vector & X, math_Vector & F);
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Values ******/
-		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
+		/****** md5 signature: 4b9240a0e5cabe81bc6533f7aaa2df5f ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -353,7 +351,7 @@ Description
 -----------
 No available documentation.
 ") Values;
-		Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
+		bool Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
 };
 
@@ -370,15 +368,15 @@ No available documentation.
 class IntWalk_TheInt2S {
 	public:
 		/****** IntWalk_TheInt2S::IntWalk_TheInt2S ******/
-		/****** md5 signature: 1c4cc577e5086d81834c89e839f0d692 ******/
+		/****** md5 signature: c8a567b1401115929bc866bc72c0dc18 ******/
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -388,17 +386,17 @@ Description
 -----------
 compute the solution point with the close point.
 ") IntWalk_TheInt2S;
-		 IntWalk_TheInt2S(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
+		 IntWalk_TheInt2S(const NCollection_Array1<double> & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
 
 		/****** IntWalk_TheInt2S::IntWalk_TheInt2S ******/
-		/****** md5 signature: f2356976844250378d7966a9409a843c ******/
+		/****** md5 signature: ea7da6dd1a29d0e424dcfabcd8b19f0e ******/
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "
 Parameters
 ----------
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
-TolTangency: float
+TolTangency: double
 
 Return
 -------
@@ -408,7 +406,7 @@ Description
 -----------
 initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }.
 ") IntWalk_TheInt2S;
-		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
+		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
 
 		/****** IntWalk_TheInt2S::ChangePoint ******/
 		/****** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ******/
@@ -476,7 +474,7 @@ return the math function which is used to compute the intersection.
 		IntWalk_TheFunctionOfTheInt2S & Function();
 
 		/****** IntWalk_TheInt2S::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -486,10 +484,10 @@ Description
 -----------
 Returns True if the creation completed without failure.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntWalk_TheInt2S::IsEmpty ******/
-		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
+		/****** md5 signature: 03c43b1186186edcd7d757f16ac1f505 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -499,10 +497,10 @@ Description
 -----------
 Returns True when there is no solution to the problem.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** IntWalk_TheInt2S::IsTangent ******/
-		/****** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ******/
+		/****** md5 signature: baca3d34e02c226d40f886fc1be3d673 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -512,15 +510,15 @@ Description
 -----------
 Returns True if the surfaces are tangent at the intersection point.
 ") IsTangent;
-		Standard_Boolean IsTangent();
+		bool IsTangent();
 
 		/****** IntWalk_TheInt2S::Perform ******/
-		/****** md5 signature: ba19d26576d52e0e2824307d3171f0bf ******/
+		/****** md5 signature: d659bc97d56b1d57957cfd897c4e043b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 Rsnld: math_FunctionSetRoot
 
 Return
@@ -531,15 +529,15 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld);
+		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld);
 
 		/****** IntWalk_TheInt2S::Perform ******/
-		/****** md5 signature: 01d0aa4ed60a8ef13ed05d29863bed35 ******/
+		/****** md5 signature: ba4d806ab7c094897017f5371cb7c643 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Param: TColStd_Array1OfReal
+Param: NCollection_Array1<double>
 Rsnld: math_FunctionSetRoot
 ChoixIso: IntImp_ConstIsoparametric
 
@@ -551,7 +549,7 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
+		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
 		/****** IntWalk_TheInt2S::Point ******/
 		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/

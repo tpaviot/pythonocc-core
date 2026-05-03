@@ -94,8 +94,6 @@ BinLDrivers_ENDLABEL = BinLDrivers_Marker.BinLDrivers_ENDLABEL
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(BinLDrivers_DocumentRetrievalDriver)
-%wrap_handle(BinLDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -212,7 +210,7 @@ No available documentation.
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** BinLDrivers_DocumentRetrievalDriver::Read ******/
-		/****** md5 signature: f7b8bb13afb113e0cba89338b8e12a06 ******/
+		/****** md5 signature: ad7bd5f547d92c581c7180c8337ba38a ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -231,10 +229,10 @@ Description
 -----------
 retrieves the content of the file into a new Document.
 ") Read;
-		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BinLDrivers_DocumentRetrievalDriver::Read ******/
-		/****** md5 signature: 771be11c877b12fef9f44e77dfdf48ba ******/
+		/****** md5 signature: fd75f9cca341d5d048be7ae07c44494e ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -254,12 +252,10 @@ Description
 -----------
 No available documentation.
 ") Read;
-		virtual void Read(std::istream & theIStream, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void Read(std::istream & theIStream, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
-
-%make_alias(BinLDrivers_DocumentRetrievalDriver)
 
 %extend BinLDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -286,7 +282,7 @@ Empty constructor.
 		 BinLDrivers_DocumentSection();
 
 		/****** BinLDrivers_DocumentSection::BinLDrivers_DocumentSection ******/
-		/****** md5 signature: 5df5ec4768b7b05db6c9bd02b54b7460 ******/
+		/****** md5 signature: 925c819651114cad88d2e2860faa5270 ******/
 		%feature("compactdefaultargs") BinLDrivers_DocumentSection;
 		%feature("autodoc", "
 Parameters
@@ -302,10 +298,10 @@ Description
 -----------
 Constructor.
 ") BinLDrivers_DocumentSection;
-		 BinLDrivers_DocumentSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead);
+		 BinLDrivers_DocumentSection(TCollection_AsciiString theName, const bool isPostRead);
 
 		/****** BinLDrivers_DocumentSection::IsPostRead ******/
-		/****** md5 signature: f46b74fd06908e5a3c055dc46ad8d664 ******/
+		/****** md5 signature: 8fb5a66e68b056d47622c78ddf7f33a9 ******/
 		%feature("compactdefaultargs") IsPostRead;
 		%feature("autodoc", "Return
 -------
@@ -315,7 +311,7 @@ Description
 -----------
 Query the status: if the Section should be read after OCAF; False means that the Section is read before starting to read OCAF data.
 ") IsPostRead;
-		Standard_Boolean IsPostRead();
+		bool IsPostRead();
 
 		/****** BinLDrivers_DocumentSection::Length ******/
 		/****** md5 signature: a276bfb2e4981ebb39eafe742d6a95f4 ******/
@@ -357,7 +353,7 @@ Query the offset of the section in the persistent file.
 		uint64_t Offset();
 
 		/****** BinLDrivers_DocumentSection::ReadTOC ******/
-		/****** md5 signature: 6d892ade1242a16e99246162955f59d3 ******/
+		/****** md5 signature: 9ced40bf06a0b602f3828f204ebbdb8f ******/
 		%feature("compactdefaultargs") ReadTOC;
 		%feature("autodoc", "
 Parameters
@@ -374,7 +370,7 @@ Description
 -----------
 Fill a DocumentSection instance from the data that are read from TOC. Returns false in case of the stream reading problem.
 ") ReadTOC;
-		static Standard_Boolean ReadTOC(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const TDocStd_FormatVersion theDocFormatVersion);
+		static bool ReadTOC(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const TDocStd_FormatVersion theDocFormatVersion);
 
 		/****** BinLDrivers_DocumentSection::SetLength ******/
 		/****** md5 signature: 9c89e70c52c75c8f071a4a8b0807f508 ******/
@@ -477,13 +473,13 @@ Constructor.
 		 BinLDrivers_DocumentStorageDriver();
 
 		/****** BinLDrivers_DocumentStorageDriver::AddSection ******/
-		/****** md5 signature: e2d4b6520ba2b320f1fcf33087c443c7 ******/
+		/****** md5 signature: 277a3a094c10e612f471dd7b98524317 ******/
 		%feature("compactdefaultargs") AddSection;
 		%feature("autodoc", "
 Parameters
 ----------
 theName: str
-isPostRead: bool (optional, default to Standard_True)
+isPostRead: bool (optional, default to true)
 
 Return
 -------
@@ -493,7 +489,7 @@ Description
 -----------
 Create a section that should be written after the OCAF data.
 ") AddSection;
-		void AddSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead = Standard_True);
+		void AddSection(TCollection_AsciiString theName, const bool isPostRead = true);
 
 		/****** BinLDrivers_DocumentStorageDriver::AttributeDrivers ******/
 		/****** md5 signature: f05b53d6e03fc4c0b1a43a8f6b8dcd60 ******/
@@ -514,7 +510,7 @@ No available documentation.
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** BinLDrivers_DocumentStorageDriver::IsQuickPart ******/
-		/****** md5 signature: 6353ee4c7a025e5e9aa62fb9950e7e78 ******/
+		/****** md5 signature: eedb2c881aa70aade140a6861efab690 ******/
 		%feature("compactdefaultargs") IsQuickPart;
 		%feature("autodoc", "
 Parameters
@@ -529,10 +525,10 @@ Description
 -----------
 Return true if document should be stored in quick mode for partial reading.
 ") IsQuickPart;
-		Standard_Boolean IsQuickPart(const Standard_Integer theVersion);
+		bool IsQuickPart(const int theVersion);
 
 		/****** BinLDrivers_DocumentStorageDriver::Write ******/
-		/****** md5 signature: 3ba5a4920118cfb01ca7cb6e94265c60 ******/
+		/****** md5 signature: 69a547e77ce587467ca6d7a568020f37 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -549,10 +545,10 @@ Description
 -----------
 Write <theDocument> to the binary file <theFileName>.
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BinLDrivers_DocumentStorageDriver::Write ******/
-		/****** md5 signature: 1593005190d18463c833b2c78ffb13a5 ******/
+		/****** md5 signature: fdad5cba7a4895609c31fa31d44e9eb7 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -568,12 +564,10 @@ Description
 -----------
 Write <theDocument> to theOStream.
 ") Write;
-		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
-
-%make_alias(BinLDrivers_DocumentStorageDriver)
 
 %extend BinLDrivers_DocumentStorageDriver {
 	%pythoncode {

@@ -58,6 +58,8 @@
 #include<TCollection_module.hxx>
 #include<Prs3d_module.hxx>
 #include<Select3D_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopTools_module.hxx>
 %};
 
 %import Standard.i

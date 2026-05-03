@@ -52,7 +52,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<OSD_LoadMode.hxx>
 #include<OSD_LocalFileSystem.hxx>
 #include<OSD_LockType.hxx>
-#include<OSD_MAllocHook.hxx>
 #include<OSD_MemInfo.hxx>
 #include<OSD_OEMType.hxx>
 #include<OSD_OSDError.hxx>

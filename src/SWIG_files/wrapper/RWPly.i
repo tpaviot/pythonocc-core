@@ -48,10 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwply.html"
 #include<RWMesh_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
-#include<TDF_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<gp_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
@@ -101,10 +98,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwply.html"
 %import RWMesh.i
 %import XCAFPrs.i
 %import TDocStd.i
-%import TDF.i
-%import TColStd.i
 %import Message.i
-%import Graphic3d.i
 %import gp.i
 
 %pythoncode {
@@ -272,15 +266,15 @@ Return True if vertex position should be stored with double floating point preci
 		bool IsDoublePrecision();
 
 		/****** RWPly_CafWriter::Perform ******/
-		/****** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ******/
+		/****** md5 signature: 4fe41c602875392c193863409f43c689 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRootLabels: TDF_LabelSequence
-theLabelFilter: TColStd_MapOfAsciiString *
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theRootLabels: NCollection_Sequence<TDF_Label>
+theLabelFilter: NCollection_Map<TCollection_AsciiString> *
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theProgress: Message_ProgressRange
 
 Return
@@ -297,16 +291,16 @@ Input parameter: theFileInfo map with file metadata to put into PLY header secti
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRootLabels, const NCollection_Map<TCollection_AsciiString> * theLabelFilter, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWPly_CafWriter::Perform ******/
-		/****** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ******/
+		/****** md5 signature: 9fa7d5982eff451b653a549335726dd7 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDocument: TDocStd_Document
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 theProgress: Message_ProgressRange
 
 Return
@@ -321,7 +315,7 @@ Input parameter: theFileInfo map with file metadata to put into PLY header secti
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWPly_CafWriter::SetColors ******/
 		/****** md5 signature: ba154b7155d7a27211ce6b222d360537 ******/
@@ -594,7 +588,7 @@ Return True if file has been opened.
 		bool IsOpened();
 
 		/****** RWPly_PlyWriterContext::NbWrittenElements ******/
-		/****** md5 signature: ecc0b264e1a3bb8d301c86ecffb2c674 ******/
+		/****** md5 signature: c7e85502171d839b210cb62e6ffefd46 ******/
 		%feature("compactdefaultargs") NbWrittenElements;
 		%feature("autodoc", "Return
 -------
@@ -604,10 +598,10 @@ Description
 -----------
 Return number of written elements.
 ") NbWrittenElements;
-		Standard_Integer NbWrittenElements();
+		int NbWrittenElements();
 
 		/****** RWPly_PlyWriterContext::NbWrittenVertices ******/
-		/****** md5 signature: 458f3601ac5013f5a9e9bddd66fefbf5 ******/
+		/****** md5 signature: 9e629a6277bb0fe6dc6f0a0d6a18ffa9 ******/
 		%feature("compactdefaultargs") NbWrittenVertices;
 		%feature("autodoc", "Return
 -------
@@ -617,7 +611,7 @@ Description
 -----------
 Return number of written vertices.
 ") NbWrittenVertices;
-		Standard_Integer NbWrittenVertices();
+		int NbWrittenVertices();
 
 		/****** RWPly_PlyWriterContext::SetColors ******/
 		/****** md5 signature: ba154b7155d7a27211ce6b222d360537 ******/
@@ -692,7 +686,7 @@ Set if surface Id should be written as element attribute; False by default.
 		void SetSurfaceId(bool theSurfId);
 
 		/****** RWPly_PlyWriterContext::SetSurfaceId ******/
-		/****** md5 signature: ed8fc26aef086d397edb955a4204f8df ******/
+		/****** md5 signature: 27f379b52f1a367995f1058d1ce4840e ******/
 		%feature("compactdefaultargs") SetSurfaceId;
 		%feature("autodoc", "
 Parameters
@@ -707,7 +701,7 @@ Description
 -----------
 Set surface id to write with element.
 ") SetSurfaceId;
-		void SetSurfaceId(Standard_Integer theSurfId);
+		void SetSurfaceId(int theSurfId);
 
 		/****** RWPly_PlyWriterContext::SetTexCoords ******/
 		/****** md5 signature: 1ccc8f9785a944bcf850c64e7095429d ******/
@@ -728,7 +722,7 @@ Set if UV / texture coordinates should be written.
 		void SetTexCoords(const bool theHasTexCoords);
 
 		/****** RWPly_PlyWriterContext::SetVertexOffset ******/
-		/****** md5 signature: 5670959c498d4f9994771a46e7478e48 ******/
+		/****** md5 signature: bd05f20ae9ea2a7e0a3cc42edfc3a76f ******/
 		%feature("compactdefaultargs") SetVertexOffset;
 		%feature("autodoc", "
 Parameters
@@ -743,10 +737,10 @@ Description
 -----------
 Set vertex offset to be applied to element indices.
 ") SetVertexOffset;
-		void SetVertexOffset(Standard_Integer theOffset);
+		void SetVertexOffset(int theOffset);
 
 		/****** RWPly_PlyWriterContext::SurfaceId ******/
-		/****** md5 signature: ad3e324fc8217dd4e403e63f2070e2a3 ******/
+		/****** md5 signature: 4e8228602addf11d760c601b95828695 ******/
 		%feature("compactdefaultargs") SurfaceId;
 		%feature("autodoc", "Return
 -------
@@ -756,10 +750,10 @@ Description
 -----------
 Return surface id to write with element; 0 by default.
 ") SurfaceId;
-		Standard_Integer SurfaceId();
+		int SurfaceId();
 
 		/****** RWPly_PlyWriterContext::VertexOffset ******/
-		/****** md5 signature: 73942f395a32c5fba1ef0d292a102ade ******/
+		/****** md5 signature: e40b008c1abeaa13a6321a22bd99e50c ******/
 		%feature("compactdefaultargs") VertexOffset;
 		%feature("autodoc", "Return
 -------
@@ -769,17 +763,17 @@ Description
 -----------
 Return vertex offset to be applied to element indices; 0 by default.
 ") VertexOffset;
-		Standard_Integer VertexOffset();
+		int VertexOffset();
 
 		/****** RWPly_PlyWriterContext::WriteHeader ******/
-		/****** md5 signature: 69c697919712d5a86d0d3a637c7dfb3a ******/
+		/****** md5 signature: b3978a43e132252323ae18b1fd52891c ******/
 		%feature("compactdefaultargs") WriteHeader;
 		%feature("autodoc", "
 Parameters
 ----------
 theNbNodes: int
 theNbElems: int
-theFileInfo: TColStd_IndexedDataMapOfStringString
+theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Return
 -------
@@ -792,15 +786,15 @@ Input parameter: theNbNodes number of vertex nodes
 Input parameter: theNbElems number of mesh elements 
 Input parameter: theFileInfo optional comments.
 ") WriteHeader;
-		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, const TColStd_IndexedDataMapOfStringString & theFileInfo);
+		bool WriteHeader(const int theNbNodes, const int theNbElems, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo);
 
 		/****** RWPly_PlyWriterContext::WriteQuad ******/
-		/****** md5 signature: 6ec1ecdd2b0fdcce6c29fc362c45dad1 ******/
+		/****** md5 signature: f35d5ea7c5c569033d689878bb35cb60 ******/
 		%feature("compactdefaultargs") WriteQuad;
 		%feature("autodoc", "
 Parameters
 ----------
-theQuad: Graphic3d_Vec4i
+theQuad: NCollection_Vec4<int>
 
 Return
 -------
@@ -810,15 +804,15 @@ Description
 -----------
 Writing a quad.
 ") WriteQuad;
-		bool WriteQuad(const Graphic3d_Vec4i & theQuad);
+		bool WriteQuad(const NCollection_Vec4<int> & theQuad);
 
 		/****** RWPly_PlyWriterContext::WriteTriangle ******/
-		/****** md5 signature: 7386d86fd240dee0a67bac21ae95cc21 ******/
+		/****** md5 signature: 14f2cf71614f2b8036689d4a26421207 ******/
 		%feature("compactdefaultargs") WriteTriangle;
 		%feature("autodoc", "
 Parameters
 ----------
-theTri: Graphic3d_Vec3i
+theTri: NCollection_Vec3<int>
 
 Return
 -------
@@ -828,18 +822,18 @@ Description
 -----------
 Writing a triangle.
 ") WriteTriangle;
-		bool WriteTriangle(const Graphic3d_Vec3i & theTri);
+		bool WriteTriangle(const NCollection_Vec3<int> & theTri);
 
 		/****** RWPly_PlyWriterContext::WriteVertex ******/
-		/****** md5 signature: 7558b6ad6baeec647d11f7cdfc88e01f ******/
+		/****** md5 signature: 5c9353ee8883967988b83ee56408a65b ******/
 		%feature("compactdefaultargs") WriteVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 thePoint: gp_Pnt
-theNorm: Graphic3d_Vec3
-theUV: Graphic3d_Vec2
-theColor: Graphic3d_Vec4ub
+theNorm: NCollection_Vec3<float>
+theUV: NCollection_Vec2<float>
+theColor: NCollection_Vec4<uint8_t>
 
 Return
 -------
@@ -853,7 +847,7 @@ Input parameter: theNorm surface normal direction at the point
 Input parameter: theUV surface/texture UV coordinates 
 Input parameter: theColor RGB color values.
 ") WriteVertex;
-		bool WriteVertex(const gp_Pnt & thePoint, const Graphic3d_Vec3 & theNorm, const Graphic3d_Vec2 & theUV, const Graphic3d_Vec4ub & theColor);
+		bool WriteVertex(const gp_Pnt & thePoint, const NCollection_Vec3<float> & theNorm, const NCollection_Vec2<float> & theUV, const NCollection_Vec4<uint8_t> & theColor);
 
 };
 

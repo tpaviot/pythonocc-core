@@ -46,13 +46,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Bnd_module.hxx>
-#include<TopTools_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<OSD_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BRep_module.hxx>
 #include<Message_module.hxx>
+#include<TopTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<gp_module.hxx>
@@ -68,13 +68,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 %import NCollection.i
 %import TopoDS.i
 %import Bnd.i
-%import TopTools.i
 %import Geom.i
 %import Geom2d.i
 %import OSD.i
 %import TopAbs.i
 %import BRep.i
 %import Message.i
+%import TopTools.i
 %import GeomAbs.i
 %import TopLoc.i
 %import gp.i
@@ -104,6 +104,8 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,TColgp_SequenceOfPnt2d,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TColgp_SequenceOfPnt2d,TopTools_ShapeMapHasher>::KeyValues;
 %template(BRepTools_MapOfVertexPnt2d) NCollection_DataMap<TopoDS_Shape,TColgp_SequenceOfPnt2d,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
@@ -119,7 +121,7 @@ typedef NCollection_DataMap<TopoDS_Shape, TColgp_SequenceOfPnt2d, TopTools_Shape
 class BRepTools {
 	public:
 		/****** BRepTools::ActivateTriangulation ******/
-		/****** md5 signature: 39a3be4a36dcd05759204a5ec0fdc5af ******/
+		/****** md5 signature: 16af19d683c6000e9a7a48351311a0ca ******/
 		%feature("compactdefaultargs") ActivateTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -140,7 +142,7 @@ Input parameter: theTriangulationIdx index defining what triangulation should be
 Input parameter: theToActivateStrictly flag to activate exactly triangulation with defined theTriangulationIdx index. In True case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. 
 Return: True if at least one active triangulation was changed.
 ") ActivateTriangulation;
-		static Standard_Boolean ActivateTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx, const Standard_Boolean theToActivateStrictly = false);
+		static bool ActivateTriangulation(const TopoDS_Shape & theShape, const int theTriangulationIdx, const bool theToActivateStrictly = false);
 
 		/****** BRepTools::AddUVBounds ******/
 		/****** md5 signature: 0f0b092c5bc0e661a6c685d5c94ea9dd ******/
@@ -202,13 +204,13 @@ Adds to the box <B> the bounding values of the edge in the parametric space of F
 		static void AddUVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Bnd_Box2d & B);
 
 		/****** BRepTools::CheckLocations ******/
-		/****** md5 signature: 1df4d13b8eb09af8c12c5590b0f17a8c ******/
+		/****** md5 signature: 5923d1e204916afbc60be1bd0d08a156 ******/
 		%feature("compactdefaultargs") CheckLocations;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theProblemShapes: TopTools_ListOfShape
+theProblemShapes: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -216,18 +218,18 @@ None
 
 Description
 -----------
-Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes.
+Check all locations of shape according criterium: aTrsf.IsNegative() || (std::abs(std::abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes.
 ") CheckLocations;
-		static void CheckLocations(const TopoDS_Shape & theS, TopTools_ListOfShape & theProblemShapes);
+		static void CheckLocations(const TopoDS_Shape & theS, NCollection_List<TopoDS_Shape> & theProblemShapes);
 
 		/****** BRepTools::Clean ******/
-		/****** md5 signature: e69d53fa65ed6662d92131db242c5024 ******/
+		/****** md5 signature: 82aa4b9b09f11f85f161cc7c4d8c50a1 ******/
 		%feature("compactdefaultargs") Clean;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theForce: bool (optional, default to Standard_False)
+theForce: bool (optional, default to false)
 
 Return
 -------
@@ -239,7 +241,7 @@ Removes all cached polygonal representation of the shape, i.e. the triangulation
 Input parameter: theShape the shape to clean 
 Input parameter: theForce allows removing all polygonal representations from the shape,  including polygons on triangulations irrelevant for the faces of the  given shape.
 ") Clean;
-		static void Clean(const TopoDS_Shape & theShape, const Standard_Boolean theForce = Standard_False);
+		static void Clean(const TopoDS_Shape & theShape, const bool theForce = false);
 
 		/****** BRepTools::CleanGeometry ******/
 		/****** md5 signature: ce6b6e89067b44b9c151c1e43c8e50e5 ******/
@@ -260,7 +262,7 @@ Removes geometry (curves and surfaces) from all edges and faces of the shape.
 		static void CleanGeometry(const TopoDS_Shape & theShape);
 
 		/****** BRepTools::Compare ******/
-		/****** md5 signature: d9864c743fdc9bb7b025a48b72edcbec ******/
+		/****** md5 signature: a5baf640e84c50e48be9b286e0cc994a ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -276,10 +278,10 @@ Description
 -----------
 Returns True if the distance between the two vertices is lower than their tolerance.
 ") Compare;
-		static Standard_Boolean Compare(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
+		static bool Compare(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
 		/****** BRepTools::Compare ******/
-		/****** md5 signature: ea251f6848a69bbeaf8009fee744c62d ******/
+		/****** md5 signature: 089cf59a13030619191c2bf4859a557f ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -295,10 +297,10 @@ Description
 -----------
 Returns True if the distance between the two edges is lower than their tolerance.
 ") Compare;
-		static Standard_Boolean Compare(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
+		static bool Compare(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
 		/****** BRepTools::DetectClosedness ******/
-		/****** md5 signature: 6f98ec688487f1becf2d69d2cb328f32 ******/
+		/****** md5 signature: c38559f58f28c932ff3baf4b616528d3 ******/
 		%feature("compactdefaultargs") DetectClosedness;
 		%feature("autodoc", "
 Parameters
@@ -335,7 +337,7 @@ Dumps the topological structure and the geometry of <Sh> on the stream <S>.
 		static void Dump(const TopoDS_Shape & Sh, std::ostream &OutValue);
 
 		/****** BRepTools::EvalAndUpdateTol ******/
-		/****** md5 signature: 16be652a9c224d56f94960b2cade0539 ******/
+		/****** md5 signature: 69ae1954f9655efcc5c4bfce20b3a1fb ******/
 		%feature("compactdefaultargs") EvalAndUpdateTol;
 		%feature("autodoc", "
 Parameters
@@ -344,21 +346,21 @@ theE: TopoDS_Edge
 theC3d: Geom_Curve
 theC2d: Geom2d_Curve
 theS: Geom_Surface
-theF: float
-theL: float
+theF: double
+theL: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Evals real tolerance of edge <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge.
 ") EvalAndUpdateTol;
-		static Standard_Real EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve> & theC2d, const opencascade::handle<Geom_Surface> & theS, const Standard_Real theF, const Standard_Real theL);
+		static double EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve> & theC2d, const opencascade::handle<Geom_Surface> & theS, const double theF, const double theL);
 
 		/****** BRepTools::IsReallyClosed ******/
-		/****** md5 signature: d361112f12ce86c3a572783eb22c3dcb ******/
+		/****** md5 signature: 23c87cb7b33c15d3c1c417a4f8232ccc ******/
 		%feature("compactdefaultargs") IsReallyClosed;
 		%feature("autodoc", "
 Parameters
@@ -374,10 +376,10 @@ Description
 -----------
 Verifies that the edge <E> is found two times on the face <F> before calling BRep_Tool::IsClosed.
 ") IsReallyClosed;
-		static Standard_Boolean IsReallyClosed(const TopoDS_Edge & E, const TopoDS_Face & F);
+		static bool IsReallyClosed(const TopoDS_Edge & E, const TopoDS_Face & F);
 
 		/****** BRepTools::LoadAllTriangulations ******/
-		/****** md5 signature: 1466fd44e74f80d49ab3905c6d611afa ******/
+		/****** md5 signature: 9000b1aaae7ccc20ef1e9ab3a892a318 ******/
 		%feature("compactdefaultargs") LoadAllTriangulations;
 		%feature("autodoc", "
 Parameters
@@ -396,17 +398,17 @@ Input parameter: theShape shape to load triangulations
 Input parameter: theFileSystem shared file system 
 Return: True if at least one triangulation is loaded.
 ") LoadAllTriangulations;
-		static Standard_Boolean LoadAllTriangulations(const TopoDS_Shape & theShape, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
+		static bool LoadAllTriangulations(const TopoDS_Shape & theShape, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
 		/****** BRepTools::LoadTriangulation ******/
-		/****** md5 signature: 2b46d2fac9cc1acb805e26246d213be8 ******/
+		/****** md5 signature: 5115eb0f41ab13859908d840cab1009d ******/
 		%feature("compactdefaultargs") LoadTriangulation;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theTriangulationIdx: int (optional, default to -1)
-theToSetAsActive: bool (optional, default to Standard_False)
+theToSetAsActive: bool (optional, default to false)
 theFileSystem: OSD_FileSystem (optional, default to opencascade::handle<OSD_FileSystem>())
 
 Return
@@ -422,16 +424,16 @@ Input parameter: theToSetAsActive flag to activate triangulation after its loadi
 Input parameter: theFileSystem shared file system 
 Return: True if at least one triangulation is loaded.
 ") LoadTriangulation;
-		static Standard_Boolean LoadTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx = -1, const Standard_Boolean theToSetAsActive = Standard_False, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
+		static bool LoadTriangulation(const TopoDS_Shape & theShape, const int theTriangulationIdx = -1, const bool theToSetAsActive = false, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
 		/****** BRepTools::Map3DEdges ******/
-		/****** md5 signature: affe8cc83d005936d51c3385b6fc5c16 ******/
+		/****** md5 signature: 6437785ff42c2059f3038829b75f28f2 ******/
 		%feature("compactdefaultargs") Map3DEdges;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
-M: TopTools_IndexedMapOfShape
+M: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
 
 Return
 -------
@@ -441,7 +443,7 @@ Description
 -----------
 Stores in the map <M> all the 3D topology edges of <S>.
 ") Map3DEdges;
-		static void Map3DEdges(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
+		static void Map3DEdges(const TopoDS_Shape & S, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & M);
 
 		/****** BRepTools::OriEdgeInFace ******/
 		/****** md5 signature: 87c7eb8c9c51ee951fa03577413800d5 ******/
@@ -458,7 +460,7 @@ TopAbs_Orientation
 
 Description
 -----------
-returns the cumul of the orientation of <Edge> and thc containing wire in <Face>.
+returns the cumul of the orientation of <Edge> and the containing wire in <Face>.
 ") OriEdgeInFace;
 		static TopAbs_Orientation OriEdgeInFace(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
@@ -502,13 +504,13 @@ Reads a Shape from <S> in returns it in <Sh>. <B> is used to build the shape.
 		static void Read(TopoDS_Shape & Sh, std::istream & S, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools::Read ******/
-		/****** md5 signature: 5e5d6e702af29b2284954f484072b531 ******/
+		/****** md5 signature: d533b6f2da367a5bc164c28c335812b4 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
 ----------
 Sh: TopoDS_Shape
-File: str
+File: char *
 B: BRep_Builder
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -520,16 +522,16 @@ Description
 -----------
 Reads a Shape from <File>, returns it in <Sh>. <B> is used to build the shape.
 ") Read;
-		static Standard_Boolean Read(TopoDS_Shape & Sh, Standard_CString File, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool Read(TopoDS_Shape & Sh, const char * const File, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools::RemoveInternals ******/
-		/****** md5 signature: fb7d53f36648eea1919fdf6c0fb177b1 ******/
+		/****** md5 signature: 7881ec711927202537ddfdfa7c3e094b ******/
 		%feature("compactdefaultargs") RemoveInternals;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: TopoDS_Shape
-theForce: bool (optional, default to Standard_False)
+theForce: bool (optional, default to false)
 
 Return
 -------
@@ -539,7 +541,7 @@ Description
 -----------
 Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
 ") RemoveInternals;
-		static void RemoveInternals(TopoDS_Shape & theS, const Standard_Boolean theForce = Standard_False);
+		static void RemoveInternals(TopoDS_Shape & theS, const bool theForce = false);
 
 		/****** BRepTools::RemoveUnusedPCurves ******/
 		/****** md5 signature: eda361bf0d5c24ff50f23619c0d11b07 ******/
@@ -560,14 +562,14 @@ Removes all the pcurves of the edges of <S> that refer to surfaces not belonging
 		static void RemoveUnusedPCurves(const TopoDS_Shape & S);
 
 		/****** BRepTools::Triangulation ******/
-		/****** md5 signature: 972fc5cfded2376997f1670bb657d434 ******/
+		/****** md5 signature: f6742f340d5daef973d8605b4d2d8e24 ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theLinDefl: float
-theToCheckFreeEdges: bool (optional, default to Standard_False)
+theLinDefl: double
+theToCheckFreeEdges: bool (optional, default to false)
 
 Return
 -------
@@ -581,10 +583,10 @@ Input parameter: theLinDefl maximum allowed linear deflection
 Input parameter: theToCheckFreeEdges if True, then free Edges are required to have 3D polygon 
 Return: False if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons.
 ") Triangulation;
-		static Standard_Boolean Triangulation(const TopoDS_Shape & theShape, const Standard_Real theLinDefl, const Standard_Boolean theToCheckFreeEdges = Standard_False);
+		static bool Triangulation(const TopoDS_Shape & theShape, const double theLinDefl, const bool theToCheckFreeEdges = false);
 
 		/****** BRepTools::UVBounds ******/
-		/****** md5 signature: 0269b57f10dffa44e1c436bbfecc00b6 ******/
+		/****** md5 signature: 453e1cc1f205557e607a4c460ba1edd2 ******/
 		%feature("compactdefaultargs") UVBounds;
 		%feature("autodoc", "
 Parameters
@@ -593,10 +595,10 @@ F: TopoDS_Face
 
 Return
 -------
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Description
 -----------
@@ -605,7 +607,7 @@ Returns in UMin, UMax, VMin, VMax the bounding values in the parametric space of
 		static void UVBounds(const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools::UVBounds ******/
-		/****** md5 signature: cf2651b439566177e86079e036f0f456 ******/
+		/****** md5 signature: 609b36d2e81ee7f0c1602a6ba39cdff1 ******/
 		%feature("compactdefaultargs") UVBounds;
 		%feature("autodoc", "
 Parameters
@@ -615,10 +617,10 @@ W: TopoDS_Wire
 
 Return
 -------
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Description
 -----------
@@ -627,7 +629,7 @@ Returns in UMin, UMax, VMin, VMax the bounding values of the wire in the paramet
 		static void UVBounds(const TopoDS_Face & F, const TopoDS_Wire & W, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools::UVBounds ******/
-		/****** md5 signature: 391e5b8ffac33b45d944cc1daf0ae4d7 ******/
+		/****** md5 signature: 2f39c776db713ee0aa92e652d5cc03bc ******/
 		%feature("compactdefaultargs") UVBounds;
 		%feature("autodoc", "
 Parameters
@@ -637,10 +639,10 @@ E: TopoDS_Edge
 
 Return
 -------
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Description
 -----------
@@ -649,7 +651,7 @@ Returns in UMin, UMax, VMin, VMax the bounding values of the edge in the paramet
 		static void UVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools::UnloadAllTriangulations ******/
-		/****** md5 signature: 8efc2f1bae963a37e143369fac101307 ******/
+		/****** md5 signature: c0409e19ac8f37d4f14601ff4b073d41 ******/
 		%feature("compactdefaultargs") UnloadAllTriangulations;
 		%feature("autodoc", "
 Parameters
@@ -666,10 +668,10 @@ Releases all available triangulations for each face of the shape if there is def
 Input parameter: theShape shape to unload triangulations 
 Return: True if at least one triangulation is unloaded.
 ") UnloadAllTriangulations;
-		static Standard_Boolean UnloadAllTriangulations(const TopoDS_Shape & theShape);
+		static bool UnloadAllTriangulations(const TopoDS_Shape & theShape);
 
 		/****** BRepTools::UnloadTriangulation ******/
-		/****** md5 signature: 4cba1ffb2b2a96847b88c3a4736d9bea ******/
+		/****** md5 signature: 27b735241ece67f0902c13c60f478daa ******/
 		%feature("compactdefaultargs") UnloadTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -688,7 +690,7 @@ Input parameter: theShape shape to unload triangulations
 Input parameter: theTriangulationIdx index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index 
 Return: True if at least one triangulation is unloaded.
 ") UnloadTriangulation;
-		static Standard_Boolean UnloadTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx = -1);
+		static bool UnloadTriangulation(const TopoDS_Shape & theShape, const int theTriangulationIdx = -1);
 
 		/****** BRepTools::Update ******/
 		/****** md5 signature: 7afb8b0a0ac818d408265e5c3ffb8146 ******/
@@ -893,7 +895,7 @@ Parameter theRange the range of progress indicator to fill in.
 		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools::Write ******/
-		/****** md5 signature: 9549ae676c065d5541189e667b74dffd ******/
+		/****** md5 signature: 30bc328f38720d8bec26cf2d6632b647 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -918,16 +920,16 @@ Input parameter: theWithNormals flag which specifies whether to save triangulati
 Input parameter: theVersion the TopTools format version 
 Parameter theProgress the range of progress indicator to fill in.
 ") Write;
-		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const bool theWithTriangles, const bool theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools::Write ******/
-		/****** md5 signature: 2b0742433c64d0c04f4d2d4d98afcfa2 ******/
+		/****** md5 signature: ce99e6f9102259400f5b1bde975c6334 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: str
+theFile: char *
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -941,16 +943,16 @@ Input parameter: theShape the shape to write
 Input parameter: theFile the path to file to output shape into 
 Parameter theProgress the range of progress indicator to fill in.
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool Write(const TopoDS_Shape & theShape, const char * const theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools::Write ******/
-		/****** md5 signature: 094fc04abd54fdb9dea8b811e19f6844 ******/
+		/****** md5 signature: aebdd3a08a98e48899e9a7cce545e83f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theFile: str
+theFile: char *
 theWithTriangles: bool
 theWithNormals: bool
 theVersion: TopTools_FormatVersion
@@ -970,7 +972,7 @@ Input parameter: theWithNormals flag which specifies whether to save triangulati
 Input parameter: theVersion the TopTools format version 
 Parameter theProgress the range of progress indicator to fill in.
 ") Write;
-		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static bool Write(const TopoDS_Shape & theShape, const char * const theFile, const bool theWithTriangles, const bool theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 
 %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
@@ -1040,7 +1042,7 @@ TRelationType_Modified = TRelationType.TRelationType_Modified
 /* end python proxy for enums */
 
 		/****** BRepTools_History::BRepTools_History ******/
-		/****** md5 signature: 4a35f50a2b6bb1bb1303ad7d8374073c ******/
+		/****** md5 signature: 292d53aeaf7cd890645e0915b2bf5415 ******/
 		%feature("compactdefaultargs") BRepTools_History;
 		%feature("autodoc", "Return
 -------
@@ -1121,7 +1123,7 @@ A method to dump a history Prints the brief description of the history into a st
 		void Dump(std::ostream &OutValue);
 
 		/****** BRepTools_History::Generated ******/
-		/****** md5 signature: 308ecbb5e9f94e72f26d5a5fd518be68 ******/
+		/****** md5 signature: e6ffa8f4968359627a4d4f067cf4fefa ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1130,16 +1132,16 @@ theInitial: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Methods to read the history. Returns all shapes generated from the shape.
 ") Generated;
-		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theInitial);
+		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & theInitial);
 
 		/****** BRepTools_History::HasGenerated ******/
-		/****** md5 signature: ff1185ae4caf1307e4399403e704df0a ******/
+		/****** md5 signature: 7fd3677661381d111f522bfe87258b83 ******/
 		%feature("compactdefaultargs") HasGenerated;
 		%feature("autodoc", "Return
 -------
@@ -1149,10 +1151,10 @@ Description
 -----------
 Returns 'true' if there any shapes with Generated elements present.
 ") HasGenerated;
-		Standard_Boolean HasGenerated();
+		bool HasGenerated();
 
 		/****** BRepTools_History::HasModified ******/
-		/****** md5 signature: 5aa09ad744ac71dd47a6ec381a33bc9b ******/
+		/****** md5 signature: 59a57280f79a37ba1b7e4331f6e4781f ******/
 		%feature("compactdefaultargs") HasModified;
 		%feature("autodoc", "Return
 -------
@@ -1162,10 +1164,10 @@ Description
 -----------
 Returns 'true' if there any Modified shapes present.
 ") HasModified;
-		Standard_Boolean HasModified();
+		bool HasModified();
 
 		/****** BRepTools_History::HasRemoved ******/
-		/****** md5 signature: 1f7754be1a6483911c8c9a17053ce192 ******/
+		/****** md5 signature: be8305acfe3a0848f4d93895ff00ff5a ******/
 		%feature("compactdefaultargs") HasRemoved;
 		%feature("autodoc", "Return
 -------
@@ -1175,10 +1177,10 @@ Description
 -----------
 Returns 'true' if there any removed shapes present.
 ") HasRemoved;
-		Standard_Boolean HasRemoved();
+		bool HasRemoved();
 
 		/****** BRepTools_History::IsRemoved ******/
-		/****** md5 signature: bc824baa664531040b00c34aff9af72f ******/
+		/****** md5 signature: cc2a4db2d8670a7a2bd8f95a00502741 ******/
 		%feature("compactdefaultargs") IsRemoved;
 		%feature("autodoc", "
 Parameters
@@ -1193,10 +1195,10 @@ Description
 -----------
 Returns 'true' if the shape is removed.
 ") IsRemoved;
-		Standard_Boolean IsRemoved(const TopoDS_Shape & theInitial);
+		bool IsRemoved(const TopoDS_Shape & theInitial);
 
 		/****** BRepTools_History::IsSupportedType ******/
-		/****** md5 signature: 3c207fad38f59a2d3b9937a047c347e9 ******/
+		/****** md5 signature: 5a935e18c197b3844cb5b47b94fb2802 ******/
 		%feature("compactdefaultargs") IsSupportedType;
 		%feature("autodoc", "
 Parameters
@@ -1211,7 +1213,7 @@ Description
 -----------
 Returns 'true' if the type of the shape is supported by the history.
 ") IsSupportedType;
-		static Standard_Boolean IsSupportedType(const TopoDS_Shape & theShape);
+		static bool IsSupportedType(const TopoDS_Shape & theShape);
 
 		/****** BRepTools_History::Merge ******/
 		/****** md5 signature: fb045f600989a1f096e90b81d587d65a ******/
@@ -1250,7 +1252,7 @@ Merges the next history to this history.
 		void Merge(const BRepTools_History & theHistory23);
 
 		/****** BRepTools_History::Modified ******/
-		/****** md5 signature: ea431397963162255277d1bdbac78ef8 ******/
+		/****** md5 signature: 78a1552e9e70162647e283416502ee8a ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -1259,13 +1261,13 @@ theInitial: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns all shapes modified from the shape.
 ") Modified;
-		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theInitial);
+		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & theInitial);
 
 		/****** BRepTools_History::Remove ******/
 		/****** md5 signature: a8343648976f365b1287e3131759ecb4 ******/
@@ -1364,7 +1366,7 @@ Returns the continuity of <NewE> between <NewF1> and <NewF2>. <NewE> is the new 
 		virtual GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
 		/****** BRepTools_Modification::NewCurve ******/
-		/****** md5 signature: e731ccfa98ea2d1f88ad9904cdb8580b ******/
+		/****** md5 signature: e549104deddaff0c065ff0cbe429703c ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -1375,16 +1377,16 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
 Returns true if the edge, E, has been modified. If the edge has been modified: - C is the new geometry associated with the edge, - L is its new location, and - Tol is the new tolerance. If the edge has not been modified, this function returns false, and the values of C, L and Tol are not significant.
 ") NewCurve;
-		virtual Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
+		virtual bool NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
 		/****** BRepTools_Modification::NewCurve2d ******/
-		/****** md5 signature: 0af12e9360877e2b67306368eb4ae813 ******/
+		/****** md5 signature: cb7e1bbe6ad7af5fb911e1364f837817 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -1397,16 +1399,16 @@ C: Geom2d_Curve
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
 Returns true if the edge, E, has a new curve on surface on the face, F. If a new curve exists: - C is the new geometry of the edge, - L is the new location, and - Tol is the new tolerance. NewE is the new edge created from E, and NewF is the new face created from F. If there is no new curve on the face, this function returns false, and the values of C, L and Tol are not significant.
 ") NewCurve2d;
-		virtual Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
+		virtual bool NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
 		/****** BRepTools_Modification::NewParameter ******/
-		/****** md5 signature: 0c5e9b0fefa1a6f700191b9504565426 ******/
+		/****** md5 signature: 2dd54a4ee7daf1ed2014a212aeefe5a2 ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -1416,17 +1418,17 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
-Tol: float
+P: double
+Tol: double
 
 Description
 -----------
 Returns true if the vertex V has a new parameter on the edge E. If a new parameter exists: - P is the parameter, and - Tol is the new tolerance. If there is no new parameter this function returns false, and the values of P and Tol are not significant.
 ") NewParameter;
-		virtual Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
+		virtual bool NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools_Modification::NewPoint ******/
-		/****** md5 signature: 2fb046cddcce6758637c814e34a55748 ******/
+		/****** md5 signature: bc2d3f77e1216d7d04c682f4296e7660 ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -1436,16 +1438,16 @@ P: gp_Pnt
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
 Returns true if the vertex V has been modified. If V has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
 ") NewPoint;
-		virtual Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
+		virtual bool NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
 		/****** BRepTools_Modification::NewPolygon ******/
-		/****** md5 signature: b0c2343155499ca0843ae489f5327afa ******/
+		/****** md5 signature: df6be9a522c84ec37d82e5b1d47f7038 ******/
 		%feature("compactdefaultargs") NewPolygon;
 		%feature("autodoc", "
 Parameters
@@ -1461,10 +1463,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - P is a new polygon.
 ") NewPolygon;
-		virtual Standard_Boolean NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
+		virtual bool NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
 
 		/****** BRepTools_Modification::NewPolygonOnTriangulation ******/
-		/****** md5 signature: 08792ffffa027e5d1a6d02cffa1e25ed ******/
+		/****** md5 signature: 60ec42e6c842508b7a445c3bb1ee2181 ******/
 		%feature("compactdefaultargs") NewPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -1481,10 +1483,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - P is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
-		virtual Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
+		virtual bool NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
 		/****** BRepTools_Modification::NewSurface ******/
-		/****** md5 signature: dd73e38c6b05808e5cd8b3f3a16d1622 ******/
+		/****** md5 signature: 83bb4a2d689de35826a66954db6a3699 ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -1495,7 +1497,7 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 RevWires: bool
 RevFace: bool
 
@@ -1503,10 +1505,10 @@ Description
 -----------
 Returns true if the face, F, has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. The flag, RevWires, is set to true when the modification reverses the normal of the surface, (i.e. the wires have to be reversed). The flag, RevFace, is set to true if the orientation of the modified face changes in the shells which contain it. If the face has not been modified this function returns false, and the values of S, L, Tol, RevWires and RevFace are not significant.
 ") NewSurface;
-		virtual Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		virtual bool NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** BRepTools_Modification::NewTriangulation ******/
-		/****** md5 signature: f0901b76e1a62f62904c45437e3ce1ec ******/
+		/****** md5 signature: bd670a27ba260ef672697182ada1616d ******/
 		%feature("compactdefaultargs") NewTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -1522,7 +1524,7 @@ Description
 -----------
 Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face.
 ") NewTriangulation;
-		virtual Standard_Boolean NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
+		virtual bool NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
 
 };
 
@@ -1543,12 +1545,12 @@ class BRepTools_Modifier {
 		class NewCurveInfo {};
 		class NewSurfaceInfo {};
 		/****** BRepTools_Modifier::BRepTools_Modifier ******/
-		/****** md5 signature: b7f2e5942eb530b143535b1aab4117b4 ******/
+		/****** md5 signature: c58b526fa5c25cb54277861f7cde4e7e ******/
 		%feature("compactdefaultargs") BRepTools_Modifier;
 		%feature("autodoc", "
 Parameters
 ----------
-theMutableInput: bool (optional, default to Standard_False)
+theMutableInput: bool (optional, default to false)
 
 Return
 -------
@@ -1558,7 +1560,7 @@ Description
 -----------
 Creates an empty Modifier.
 ") BRepTools_Modifier;
-		 BRepTools_Modifier(Standard_Boolean theMutableInput = Standard_False);
+		 BRepTools_Modifier(bool theMutableInput = false);
 
 		/****** BRepTools_Modifier::BRepTools_Modifier ******/
 		/****** md5 signature: 584542a473e07d531ee3f85adf59a3c0 ******/
@@ -1616,7 +1618,7 @@ Initializes the modifier with the shape <S>.
 		void Init(const TopoDS_Shape & S);
 
 		/****** BRepTools_Modifier::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1624,12 +1626,12 @@ bool
 
 Description
 -----------
-Returns Standard_True if the modification has been computed successfully.
+Returns true if the modification has been computed successfully.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepTools_Modifier::IsMutableInput ******/
-		/****** md5 signature: 2df16e5a957577cfce65832aa2d90512 ******/
+		/****** md5 signature: ad3b03c729fefbfdc12b6e6c3ea060ab ******/
 		%feature("compactdefaultargs") IsMutableInput;
 		%feature("autodoc", "Return
 -------
@@ -1639,7 +1641,7 @@ Description
 -----------
 Returns the current mutable input state.
 ") IsMutableInput;
-		Standard_Boolean IsMutableInput();
+		bool IsMutableInput();
 
 		/****** BRepTools_Modifier::ModifiedShape ******/
 		/****** md5 signature: 545825cbb62be8a9e387c35da6258fdd ******/
@@ -1679,7 +1681,7 @@ Performs the modifications described by <M>.
 		void Perform(const opencascade::handle<BRepTools_Modification> & M, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools_Modifier::SetMutableInput ******/
-		/****** md5 signature: 6c32097d8325b4484ad8639e59aae59a ******/
+		/****** md5 signature: 404746aa456685d93c7f96da25839a41 ******/
 		%feature("compactdefaultargs") SetMutableInput;
 		%feature("autodoc", "
 Parameters
@@ -1694,7 +1696,7 @@ Description
 -----------
 Sets the mutable input state If true then the input (original) shape can be modified during modification process.
 ") SetMutableInput;
-		void SetMutableInput(Standard_Boolean theMutableInput);
+		void SetMutableInput(bool theMutableInput);
 
 };
 
@@ -1737,7 +1739,7 @@ Returns shape with removed locations.
 		const TopoDS_Shape GetResult();
 
 		/****** BRepTools_PurgeLocations::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1747,10 +1749,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepTools_PurgeLocations::Perform ******/
-		/****** md5 signature: 786dd7c6d1fd4e873da2af6e25b6f283 ******/
+		/****** md5 signature: 2eafc0f5c18349a28158f70cb51b4f7d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1765,7 +1767,7 @@ Description
 -----------
 Removes all locations correspondingly to criterium from theShape.
 ") Perform;
-		Standard_Boolean Perform(const TopoDS_Shape & theShape);
+		bool Perform(const TopoDS_Shape & theShape);
 
 };
 
@@ -1873,7 +1875,7 @@ Returns the shape substituted to <S> in the Quilt.
 		const TopoDS_Shape Copy(const TopoDS_Shape & S);
 
 		/****** BRepTools_Quilt::IsCopied ******/
-		/****** md5 signature: 700aa9864844136ce24021c380aa2705 ******/
+		/****** md5 signature: 7b83775f142dc88c0533e36d8562aa9e ******/
 		%feature("compactdefaultargs") IsCopied;
 		%feature("autodoc", "
 Parameters
@@ -1888,7 +1890,7 @@ Description
 -----------
 Returns True if <S> has been copied (<S> is a vertex, an edge or a face).
 ") IsCopied;
-		Standard_Boolean IsCopied(const TopoDS_Shape & S);
+		bool IsCopied(const TopoDS_Shape & S);
 
 		/****** BRepTools_Quilt::Shells ******/
 		/****** md5 signature: 9d6052389d3b198b83d490121f90cf0d ******/
@@ -1964,13 +1966,13 @@ Clears all substitutions requests.
 		virtual void Clear();
 
 		/****** BRepTools_ReShape::CopyVertex ******/
-		/****** md5 signature: 838d38640335aa32a1ea9ebb59e57f7b ******/
+		/****** md5 signature: a68355dbe548158dca81e3fd6b29c1da ******/
 		%feature("compactdefaultargs") CopyVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 theV: TopoDS_Vertex
-theTol: float (optional, default to -1.0)
+theTol: double (optional, default to -1.0)
 
 Return
 -------
@@ -1980,17 +1982,17 @@ Description
 -----------
 Returns modified copy of vertex if original one is not recorded or returns modified original vertex otherwise.
 ") CopyVertex;
-		TopoDS_Vertex CopyVertex(const TopoDS_Vertex & theV, const Standard_Real theTol = -1.0);
+		TopoDS_Vertex CopyVertex(const TopoDS_Vertex & theV, const double theTol = -1.0);
 
 		/****** BRepTools_ReShape::CopyVertex ******/
-		/****** md5 signature: fdb0a72ad6a04ff2d668de1e997a5b36 ******/
+		/****** md5 signature: 444789b7c7e399c276e995b28c739acd ******/
 		%feature("compactdefaultargs") CopyVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 theV: TopoDS_Vertex
 theNewPos: gp_Pnt
-aTol: float
+aTol: double
 
 Return
 -------
@@ -2000,7 +2002,7 @@ Description
 -----------
 Returns modified copy of vertex if original one is not recorded or returns modified original vertex otherwise.
 ") CopyVertex;
-		TopoDS_Vertex CopyVertex(const TopoDS_Vertex & theV, const gp_Pnt & theNewPos, const Standard_Real aTol);
+		TopoDS_Vertex CopyVertex(const TopoDS_Vertex & theV, const gp_Pnt & theNewPos, const double aTol);
 
 		/****** BRepTools_ReShape::History ******/
 		/****** md5 signature: e896eaef669d2669cca4958a811f4ae5 ******/
@@ -2016,7 +2018,7 @@ Returns the history of the substituted shapes.
 		opencascade::handle<BRepTools_History> History();
 
 		/****** BRepTools_ReShape::IsNewShape ******/
-		/****** md5 signature: 8bc75716e49666835740977e4499fb70 ******/
+		/****** md5 signature: e8ad0a665212f2d1bd3011c75f74b1b0 ******/
 		%feature("compactdefaultargs") IsNewShape;
 		%feature("autodoc", "
 Parameters
@@ -2031,10 +2033,10 @@ Description
 -----------
 Checks if shape has been recorded by reshaper as a value.
 ") IsNewShape;
-		Standard_Boolean IsNewShape(const TopoDS_Shape & theShape);
+		bool IsNewShape(const TopoDS_Shape & theShape);
 
 		/****** BRepTools_ReShape::IsRecorded ******/
-		/****** md5 signature: c1ee5aa687f1d8b624ca216fb43759f0 ******/
+		/****** md5 signature: 607299bc3eb192b03ea2f352db207fc8 ******/
 		%feature("compactdefaultargs") IsRecorded;
 		%feature("autodoc", "
 Parameters
@@ -2049,10 +2051,10 @@ Description
 -----------
 Tells if a shape is recorded for Replace/Remove.
 ") IsRecorded;
-		virtual Standard_Boolean IsRecorded(const TopoDS_Shape & shape);
+		virtual bool IsRecorded(const TopoDS_Shape & shape);
 
 		/****** BRepTools_ReShape::ModeConsiderLocation ******/
-		/****** md5 signature: 39137eddab476802cb299ec6bc783168 ******/
+		/****** md5 signature: ffa58922d432477ee5463bc686164fb6 ******/
 		%feature("compactdefaultargs") ModeConsiderLocation;
 		%feature("autodoc", "Return
 -------
@@ -2062,7 +2064,7 @@ Description
 -----------
 Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes.
 ") ModeConsiderLocation;
-		virtual Standard_Boolean & ModeConsiderLocation();
+		virtual bool & ModeConsiderLocation();
 
 		/****** BRepTools_ReShape::Remove ******/
 		/****** md5 signature: 5e9c4c0797baa65786d2ea2540e5d010 ******/
@@ -2102,14 +2104,14 @@ Sets a request to Replace a Shape by a new one.
 		virtual void Replace(const TopoDS_Shape & shape, const TopoDS_Shape & newshape);
 
 		/****** BRepTools_ReShape::Status ******/
-		/****** md5 signature: ecedd5404c4720d2ba941edafa6ac006 ******/
+		/****** md5 signature: 0e6dc2009b45b7804ed304c9c7dd29dd ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
 newsh: TopoDS_Shape
-last: bool (optional, default to Standard_False)
+last: bool (optional, default to false)
 
 Return
 -------
@@ -2119,7 +2121,7 @@ Description
 -----------
 Returns a complete substitution status for a shape 0: not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 ") Status;
-		virtual Standard_Integer Status(const TopoDS_Shape & shape, TopoDS_Shape & newsh, const Standard_Boolean last = Standard_False);
+		virtual int Status(const TopoDS_Shape & shape, TopoDS_Shape & newsh, const bool last = false);
 
 		/****** BRepTools_ReShape::Value ******/
 		/****** md5 signature: 1e40f89fc51e3c423fbe545e07ca6a4f ******/
@@ -2156,13 +2158,13 @@ Returns the new value for an individual shape If not recorded, returns the origi
 class BRepTools_ShapeSet : public TopTools_ShapeSet {
 	public:
 		/****** BRepTools_ShapeSet::BRepTools_ShapeSet ******/
-		/****** md5 signature: 4d2cf984c56b6805e641ce99645be1bb ******/
+		/****** md5 signature: bf9b72face030420042c2124fe913a54 ******/
 		%feature("compactdefaultargs") BRepTools_ShapeSet;
 		%feature("autodoc", "
 Parameters
 ----------
-theWithTriangles: bool (optional, default to Standard_True)
-theWithNormals: bool (optional, default to Standard_False)
+theWithTriangles: bool (optional, default to true)
+theWithNormals: bool (optional, default to false)
 
 Return
 -------
@@ -2173,17 +2175,17 @@ Description
 Builds an empty ShapeSet. 
 Parameter theWithTriangles flag to write triangulation data.
 ") BRepTools_ShapeSet;
-		 BRepTools_ShapeSet(const Standard_Boolean theWithTriangles = Standard_True, const Standard_Boolean theWithNormals = Standard_False);
+		 BRepTools_ShapeSet(const bool theWithTriangles = true, const bool theWithNormals = false);
 
 		/****** BRepTools_ShapeSet::BRepTools_ShapeSet ******/
-		/****** md5 signature: b9669c92273c65400f84c106bd21ec2f ******/
+		/****** md5 signature: 480c7e3abfb50de7acc0c9d13be31a13 ******/
 		%feature("compactdefaultargs") BRepTools_ShapeSet;
 		%feature("autodoc", "
 Parameters
 ----------
 theBuilder: BRep_Builder
-theWithTriangles: bool (optional, default to Standard_True)
-theWithNormals: bool (optional, default to Standard_False)
+theWithTriangles: bool (optional, default to true)
+theWithNormals: bool (optional, default to false)
 
 Return
 -------
@@ -2194,10 +2196,10 @@ Description
 Builds an empty ShapeSet. 
 Parameter theWithTriangles flag to write triangulation data.
 ") BRepTools_ShapeSet;
-		 BRepTools_ShapeSet(const BRep_Builder & theBuilder, const Standard_Boolean theWithTriangles = Standard_True, const Standard_Boolean theWithNormals = Standard_False);
+		 BRepTools_ShapeSet(const BRep_Builder & theBuilder, const bool theWithTriangles = true, const bool theWithNormals = false);
 
 		/****** BRepTools_ShapeSet::AddGeometry ******/
-		/****** md5 signature: 31352593ecfcc12beb7b28447eee7b70 ******/
+		/****** md5 signature: d1f02900661d2210bf9a40700e408d16 ******/
 		%feature("compactdefaultargs") AddGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2212,10 +2214,10 @@ Description
 -----------
 Stores the geometry of <S>.
 ") AddGeometry;
-		virtual void AddGeometry(const TopoDS_Shape & S);
+		void AddGeometry(const TopoDS_Shape & S);
 
 		/****** BRepTools_ShapeSet::AddShapes ******/
-		/****** md5 signature: c04ea93dd727f553f9a7d57810d34b97 ******/
+		/****** md5 signature: 0b908d34f0ef7fc04609fd0f81e4b3e1 ******/
 		%feature("compactdefaultargs") AddShapes;
 		%feature("autodoc", "
 Parameters
@@ -2231,10 +2233,10 @@ Description
 -----------
 Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
 ") AddShapes;
-		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
+		void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
 		/****** BRepTools_ShapeSet::Check ******/
-		/****** md5 signature: 41cb0f904ceceb5af010cc64bc1f91df ******/
+		/****** md5 signature: 4fb9ee0641ac019bfb355538fbdb8830 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -2250,10 +2252,10 @@ Description
 -----------
 No available documentation.
 ") Check;
-		virtual void Check(const TopAbs_ShapeEnum T, TopoDS_Shape & S);
+		void Check(const TopAbs_ShapeEnum T, TopoDS_Shape & S);
 
 		/****** BRepTools_ShapeSet::Clear ******/
-		/****** md5 signature: f671931d03948860d0ead34afbe920aa ******/
+		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -2263,10 +2265,10 @@ Description
 -----------
 Clears the content of the set.
 ") Clear;
-		virtual void Clear();
+		void Clear();
 
 		/****** BRepTools_ShapeSet::DumpGeometry ******/
-		/****** md5 signature: 8a10297a2e0a44206d544cf3208c2ebd ******/
+		/****** md5 signature: f0049ed174ba4ecae3021cedfdd1d1c6 ******/
 		%feature("compactdefaultargs") DumpGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2280,10 +2282,10 @@ Description
 -----------
 Dumps the geometry of me on the stream <OS>.
 ") DumpGeometry;
-		virtual void DumpGeometry(std::ostream &OutValue);
+		void DumpGeometry(std::ostream &OutValue);
 
 		/****** BRepTools_ShapeSet::DumpGeometry ******/
-		/****** md5 signature: 441eb2169ad0b3222fe794ba8ea21d05 ******/
+		/****** md5 signature: 740e13cfabe3dec7979cdda298f1a814 ******/
 		%feature("compactdefaultargs") DumpGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2298,7 +2300,7 @@ Description
 -----------
 Dumps the geometry of <S> on the stream <OS>.
 ") DumpGeometry;
-		virtual void DumpGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
+		void DumpGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 
 		/****** BRepTools_ShapeSet::DumpPolygon3D ******/
 		/****** md5 signature: d71dc2828833ae37d1fdf2e355dbb1b6 ******/
@@ -2352,7 +2354,7 @@ Dumps the triangulation on the stream <OS>.
 		void DumpTriangulation(std::ostream &OutValue);
 
 		/****** BRepTools_ShapeSet::IsWithNormals ******/
-		/****** md5 signature: 49f5baecd893691e08f163fb559d8b06 ******/
+		/****** md5 signature: c7acafa16493860e7c0a6bd60edea61c ******/
 		%feature("compactdefaultargs") IsWithNormals;
 		%feature("autodoc", "Return
 -------
@@ -2362,10 +2364,10 @@ Description
 -----------
 Return true if shape should be stored triangulation with normals.
 ") IsWithNormals;
-		Standard_Boolean IsWithNormals();
+		bool IsWithNormals();
 
 		/****** BRepTools_ShapeSet::IsWithTriangles ******/
-		/****** md5 signature: 2adacf1f8e5d4c926108b4db84751e9a ******/
+		/****** md5 signature: c31685fbc77b7c6389330903a3a6386f ******/
 		%feature("compactdefaultargs") IsWithTriangles;
 		%feature("autodoc", "Return
 -------
@@ -2375,10 +2377,10 @@ Description
 -----------
 Return true if shape should be stored with triangles.
 ") IsWithTriangles;
-		Standard_Boolean IsWithTriangles();
+		bool IsWithTriangles();
 
 		/****** BRepTools_ShapeSet::ReadGeometry ******/
-		/****** md5 signature: 29982a86f8628bd19687b88946d88b2b ******/
+		/****** md5 signature: 6723db7c3d59d84ce52a9fad6eb7cf67 ******/
 		%feature("compactdefaultargs") ReadGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2394,10 +2396,10 @@ Description
 -----------
 Reads the geometry of me from the stream <IS>.
 ") ReadGeometry;
-		virtual void ReadGeometry(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void ReadGeometry(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools_ShapeSet::ReadGeometry ******/
-		/****** md5 signature: aec2489bee709d857b09eddd7a62d272 ******/
+		/****** md5 signature: bed6f5dd1650b64f2f905a4d4f442410 ******/
 		%feature("compactdefaultargs") ReadGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2414,7 +2416,7 @@ Description
 -----------
 Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
 ") ReadGeometry;
-		virtual void ReadGeometry(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
+		void ReadGeometry(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
 
 		/****** BRepTools_ShapeSet::ReadPolygon3D ******/
 		/****** md5 signature: e637370098b2bac74ea2ad781985457f ******/
@@ -2474,7 +2476,7 @@ Reads the triangulation of me from the stream <IS>.
 		void ReadTriangulation(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools_ShapeSet::SetWithNormals ******/
-		/****** md5 signature: 9f03f91e56766f46bd17d99a089a0a21 ******/
+		/****** md5 signature: 87699c87d5128dde6485c8bede47cae2 ******/
 		%feature("compactdefaultargs") SetWithNormals;
 		%feature("autodoc", "
 Parameters
@@ -2489,10 +2491,10 @@ Description
 -----------
 Define if shape will be stored triangulation with normals. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithNormals;
-		void SetWithNormals(const Standard_Boolean theWithNormals);
+		void SetWithNormals(const bool theWithNormals);
 
 		/****** BRepTools_ShapeSet::SetWithTriangles ******/
-		/****** md5 signature: 7b7f7b1dd0aaac0992d59e75b5df79e1 ******/
+		/****** md5 signature: 089286c3553f67f84fb9f893e41739b5 ******/
 		%feature("compactdefaultargs") SetWithTriangles;
 		%feature("autodoc", "
 Parameters
@@ -2507,10 +2509,10 @@ Description
 -----------
 Define if shape will be stored with triangles. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithTriangles;
-		void SetWithTriangles(const Standard_Boolean theWithTriangles);
+		void SetWithTriangles(const bool theWithTriangles);
 
 		/****** BRepTools_ShapeSet::WriteGeometry ******/
-		/****** md5 signature: 4f112c9f4ab0e11dc4ef39084df9e9d4 ******/
+		/****** md5 signature: a129ef741e6af1fa0e823110d05335ef ******/
 		%feature("compactdefaultargs") WriteGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2525,10 +2527,10 @@ Description
 -----------
 Writes the geometry of me on the stream <OS> in a format that can be read back by Read.
 ") WriteGeometry;
-		virtual void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools_ShapeSet::WriteGeometry ******/
-		/****** md5 signature: ce5d0a3d33cc100dd52fd3b965ea1743 ******/
+		/****** md5 signature: 0d6acc567ddd77a8c1b4ec4746cb5c40 ******/
 		%feature("compactdefaultargs") WriteGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2543,15 +2545,15 @@ Description
 -----------
 Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
 ") WriteGeometry;
-		virtual void WriteGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
+		void WriteGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 
 		/****** BRepTools_ShapeSet::WritePolygon3D ******/
-		/****** md5 signature: adec09c9b52ff86073162dcfc4f3bda4 ******/
+		/****** md5 signature: 95ed7ffb9d0c1f07229c80bd968fe40d ******/
 		%feature("compactdefaultargs") WritePolygon3D;
 		%feature("autodoc", "
 Parameters
 ----------
-Compact: bool (optional, default to Standard_True)
+Compact: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -2562,15 +2564,15 @@ Description
 -----------
 Writes the 3d polygons on the stream <OS> in a format that can be read back by Read.
 ") WritePolygon3D;
-		void WritePolygon3D(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void WritePolygon3D(std::ostream &OutValue, const bool Compact = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools_ShapeSet::WritePolygonOnTriangulation ******/
-		/****** md5 signature: b6577cbf6cdb2bc0baa774f88dfd3418 ******/
+		/****** md5 signature: 509bba33d7b660ef7c0d1b3f61076457 ******/
 		%feature("compactdefaultargs") WritePolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
 ----------
-Compact: bool (optional, default to Standard_True)
+Compact: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -2581,15 +2583,15 @@ Description
 -----------
 Writes the polygons on triangulation on the stream <OS> in a format that can be read back by Read.
 ") WritePolygonOnTriangulation;
-		void WritePolygonOnTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void WritePolygonOnTriangulation(std::ostream &OutValue, const bool Compact = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** BRepTools_ShapeSet::WriteTriangulation ******/
-		/****** md5 signature: 63a7d12f83f3bef281e1178d99ed272d ******/
+		/****** md5 signature: f59af89e9c708336597b3161e1939468 ******/
 		%feature("compactdefaultargs") WriteTriangulation;
 		%feature("autodoc", "
 Parameters
 ----------
-Compact: bool (optional, default to Standard_True)
+Compact: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -2600,7 +2602,7 @@ Description
 -----------
 Writes the triangulation on the stream <OS> in a format that can be read back by Read.
 ") WriteTriangulation;
-		void WriteTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void WriteTriangulation(std::ostream &OutValue, const bool Compact = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 
 %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
@@ -2692,7 +2694,7 @@ Reset all the fields.
 		void Clear();
 
 		/****** BRepTools_Substitution::Copy ******/
-		/****** md5 signature: 58a8930506a5b25067aaf63bebb04b61 ******/
+		/****** md5 signature: 8ed752ccb541e7b3d64fc024e80a6bee ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -2701,16 +2703,16 @@ S: TopoDS_Shape
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the set of shapes substituted to <S>.
 ") Copy;
-		const TopTools_ListOfShape & Copy(const TopoDS_Shape & S);
+		const NCollection_List<TopoDS_Shape> Copy(const TopoDS_Shape & S);
 
 		/****** BRepTools_Substitution::IsCopied ******/
-		/****** md5 signature: 700aa9864844136ce24021c380aa2705 ******/
+		/****** md5 signature: 7b83775f142dc88c0533e36d8562aa9e ******/
 		%feature("compactdefaultargs") IsCopied;
 		%feature("autodoc", "
 Parameters
@@ -2723,18 +2725,18 @@ bool
 
 Description
 -----------
-Returns True if <S> has been replaced .
+Returns True if <S> has been replaced.
 ") IsCopied;
-		Standard_Boolean IsCopied(const TopoDS_Shape & S);
+		bool IsCopied(const TopoDS_Shape & S);
 
 		/****** BRepTools_Substitution::Substitute ******/
-		/****** md5 signature: a4cbae62f6a963c3eab0e606e98de3c2 ******/
+		/****** md5 signature: 292a50724387eb029f4dfa82d4004ebd ******/
 		%feature("compactdefaultargs") Substitute;
 		%feature("autodoc", "
 Parameters
 ----------
 OldShape: TopoDS_Shape
-NewShapes: TopTools_ListOfShape
+NewShapes: NCollection_List<TopoDS_Shape>
 
 Return
 -------
@@ -2742,9 +2744,9 @@ None
 
 Description
 -----------
-<Oldshape> will be replaced by <NewShapes>. //! <NewShapes> can be empty , in this case <OldShape> will disparate from its ancestors. //! if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
+<Oldshape> will be replaced by <NewShapes>. //! <NewShapes> can be empty, in this case <OldShape> will disparate from its ancestors. //! if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
 ") Substitute;
-		void Substitute(const TopoDS_Shape & OldShape, const TopTools_ListOfShape & NewShapes);
+		void Substitute(const TopoDS_Shape & OldShape, const NCollection_List<TopoDS_Shape> & NewShapes);
 
 };
 
@@ -2887,17 +2889,17 @@ Initializes an exploration of the wire <W>. F is used to select the edge connect
 		void Init(const TopoDS_Wire & W, const TopoDS_Face & F);
 
 		/****** BRepTools_WireExplorer::Init ******/
-		/****** md5 signature: a0834e948e42cf446078176bb382a7e5 ******/
+		/****** md5 signature: 042fd40e0c6baea01eb34de6e941e494 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 W: TopoDS_Wire
 F: TopoDS_Face
-UMin: float
-UMax: float
-VMin: float
-VMax: float
+UMin: double
+UMax: double
+VMin: double
+VMax: double
 
 Return
 -------
@@ -2907,10 +2909,10 @@ Description
 -----------
 Initializes an exploration of the wire <W>. F is used to select the edge connected to the previous in the parametric representation of <F>. <UMIn>, <UMax>, <VMin>, <VMax> - the UV bounds of the face <F>.
 ") Init;
-		void Init(const TopoDS_Wire & W, const TopoDS_Face & F, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
+		void Init(const TopoDS_Wire & W, const TopoDS_Face & F, const double UMin, const double UMax, const double VMin, const double VMax);
 
 		/****** BRepTools_WireExplorer::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2920,7 +2922,7 @@ Description
 -----------
 Returns True if there is a current edge.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BRepTools_WireExplorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -2963,13 +2965,13 @@ Returns an Orientation for the current edge.
 class BRepTools_CopyModification : public BRepTools_Modification {
 	public:
 		/****** BRepTools_CopyModification::BRepTools_CopyModification ******/
-		/****** md5 signature: dc62d9d01ecf0817e4b2bc548f32af61 ******/
+		/****** md5 signature: c8ee794fc25cd2347f24f95b396fe983 ******/
 		%feature("compactdefaultargs") BRepTools_CopyModification;
 		%feature("autodoc", "
 Parameters
 ----------
-theCopyGeom: bool (optional, default to Standard_True)
-theCopyMesh: bool (optional, default to Standard_True)
+theCopyGeom: bool (optional, default to true)
+theCopyMesh: bool (optional, default to true)
 
 Return
 -------
@@ -2979,10 +2981,10 @@ Description
 -----------
 Constructor. \param[in] theCopyGeom indicates that the geometry (surfaces and curves) should be copied \param[in] theCopyMesh indicates that the triangulation should be copied.
 ") BRepTools_CopyModification;
-		 BRepTools_CopyModification(const Standard_Boolean theCopyGeom = Standard_True, const Standard_Boolean theCopyMesh = Standard_True);
+		 BRepTools_CopyModification(const bool theCopyGeom = true, const bool theCopyMesh = true);
 
 		/****** BRepTools_CopyModification::Continuity ******/
-		/****** md5 signature: 2c4d2ed85cbf31d94ccd5731f137e724 ******/
+		/****** md5 signature: f1156d0782640519f729b358fcc4db31 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -3005,7 +3007,7 @@ Returns the continuity of theNewEdge between theNewFace1 and theNewFace2. //! th
 		GeomAbs_Shape Continuity(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace1, const TopoDS_Face & theNewFace2);
 
 		/****** BRepTools_CopyModification::NewCurve ******/
-		/****** md5 signature: c3400f68c675ff3dd16614251d9da49c ******/
+		/****** md5 signature: 9ae258e9752331e1d45239c15a5e1144 ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -3016,16 +3018,16 @@ theLoc: TopLoc_Location
 
 Return
 -------
-theTol: float
+theTol: double
 
 Description
 -----------
 Returns true if theEdge has been modified. If the edge has been modified: - theCurve is the new geometric support of the edge, - theLoc is the new location, and - theTol is the new tolerance. If the edge has not been modified, this function returns false, and the values of theCurve, theLoc and theTol are not significant.
 ") NewCurve;
-		Standard_Boolean NewCurve(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, TopLoc_Location & theLoc, Standard_Real &OutValue);
+		bool NewCurve(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, TopLoc_Location & theLoc, Standard_Real &OutValue);
 
 		/****** BRepTools_CopyModification::NewCurve2d ******/
-		/****** md5 signature: 12d59de8232d43bec7de37a5392a1df4 ******/
+		/****** md5 signature: 9ab93da5271b22e1ecdfd18e25ad96d3 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -3038,16 +3040,16 @@ theCurve: Geom2d_Curve
 
 Return
 -------
-theTol: float
+theTol: double
 
 Description
 -----------
 Returns true if theEdge has a new curve on surface on theFace. If a new curve exists: - theCurve is the new geometric support of the edge, - theTol the new tolerance. If no new curve exists, this function returns false, and the values of theCurve and theTol are not significant.
 ") NewCurve2d;
-		Standard_Boolean NewCurve2d(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace, opencascade::handle<Geom2d_Curve> & theCurve, Standard_Real &OutValue);
+		bool NewCurve2d(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace, opencascade::handle<Geom2d_Curve> & theCurve, Standard_Real &OutValue);
 
 		/****** BRepTools_CopyModification::NewParameter ******/
-		/****** md5 signature: 54289ac8d83b6313663826ffc529a180 ******/
+		/****** md5 signature: c457e42cdf094c4123ee75125ca213f7 ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -3057,17 +3059,17 @@ theEdge: TopoDS_Edge
 
 Return
 -------
-thePnt: float
-theTol: float
+thePnt: double
+theTol: double
 
 Description
 -----------
 Returns true if theVertex has a new parameter on theEdge. If a new parameter exists: - thePnt is the parameter, and - theTol is the new tolerance. If no new parameter exists, this function returns false, and the values of thePnt and theTol are not significant.
 ") NewParameter;
-		Standard_Boolean NewParameter(const TopoDS_Vertex & theVertex, const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool NewParameter(const TopoDS_Vertex & theVertex, const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools_CopyModification::NewPoint ******/
-		/****** md5 signature: a51d29c30c50c9cb108e5c5ea9b12a8b ******/
+		/****** md5 signature: 4daeba4d3eeed425314d5167d6fa63d0 ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -3077,16 +3079,16 @@ thePnt: gp_Pnt
 
 Return
 -------
-theTol: float
+theTol: double
 
 Description
 -----------
 Returns true if theVertex has been modified. If the vertex has been modified: - thePnt is the new geometry of the vertex, and - theTol is the new tolerance. If the vertex has not been modified this function returns false, and the values of thePnt and theTol are not significant.
 ") NewPoint;
-		Standard_Boolean NewPoint(const TopoDS_Vertex & theVertex, gp_Pnt & thePnt, Standard_Real &OutValue);
+		bool NewPoint(const TopoDS_Vertex & theVertex, gp_Pnt & thePnt, Standard_Real &OutValue);
 
 		/****** BRepTools_CopyModification::NewPolygon ******/
-		/****** md5 signature: 4badeef9050bef8cef3639edbc9b0271 ******/
+		/****** md5 signature: 74c49add621bc78203cd17d39377e3f3 ******/
 		%feature("compactdefaultargs") NewPolygon;
 		%feature("autodoc", "
 Parameters
@@ -3102,10 +3104,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - thePoly is a new polygon.
 ") NewPolygon;
-		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
+		bool NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
 
 		/****** BRepTools_CopyModification::NewPolygonOnTriangulation ******/
-		/****** md5 signature: 362332d5c0a2020b059e4552360631f4 ******/
+		/****** md5 signature: cdbe16a090376f4e774995da05fba08a ******/
 		%feature("compactdefaultargs") NewPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3122,10 +3124,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - thePoly is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
-		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
+		bool NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
 
 		/****** BRepTools_CopyModification::NewSurface ******/
-		/****** md5 signature: 005f5309703e67a2221655e2f7ff6568 ******/
+		/****** md5 signature: ac479e48f9e982d75a2b0a1c10d27889 ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -3136,7 +3138,7 @@ theLoc: TopLoc_Location
 
 Return
 -------
-theTol: float
+theTol: double
 theRevWires: bool
 theRevFace: bool
 
@@ -3144,10 +3146,10 @@ Description
 -----------
 Returns true if theFace has been modified. If the face has been modified: - theSurf is the new geometry of the face, - theLoc is its new location, and - theTol is the new tolerance. theRevWires, theRevFace are always set to false, because the orientation is not changed.
 ") NewSurface;
-		Standard_Boolean NewSurface(const TopoDS_Face & theFace, opencascade::handle<Geom_Surface> & theSurf, TopLoc_Location & theLoc, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		bool NewSurface(const TopoDS_Face & theFace, opencascade::handle<Geom_Surface> & theSurf, TopLoc_Location & theLoc, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** BRepTools_CopyModification::NewTriangulation ******/
-		/****** md5 signature: c34f0504d87cfa075d0a16293a0a824a ******/
+		/****** md5 signature: 107268ef1bbe8044b1e6a279b7e1a358 ******/
 		%feature("compactdefaultargs") NewTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3163,7 +3165,7 @@ Description
 -----------
 Returns true if the face has been modified according to changed triangulation. If the face has been modified: - theTri is a new triangulation on the face.
 ") NewTriangulation;
-		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
+		bool NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
 
 };
 
@@ -3200,7 +3202,7 @@ No available documentation.
 		 BRepTools_GTrsfModification(const gp_GTrsf & T);
 
 		/****** BRepTools_GTrsfModification::Continuity ******/
-		/****** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ******/
+		/****** md5 signature: d1e0a7e2e1d461e6b97ab64ce63033de ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -3236,7 +3238,7 @@ Gives an access on the GTrsf.
 		gp_GTrsf GTrsf();
 
 		/****** BRepTools_GTrsfModification::NewCurve ******/
-		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
+		/****** md5 signature: 039bf25957d908407657950d3c1e5d6a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -3247,16 +3249,16 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+Returns true if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns false, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
-		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
+		bool NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
 		/****** BRepTools_GTrsfModification::NewCurve2d ******/
-		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
+		/****** md5 signature: 19d697fda46737877bc989a89ef46152 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -3269,16 +3271,16 @@ C: Geom2d_Curve
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+Returns true if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns false, and <C>, <L>, <Tol> are not significant.
 ") NewCurve2d;
-		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
+		bool NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
 		/****** BRepTools_GTrsfModification::NewParameter ******/
-		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
+		/****** md5 signature: 01206a81b5ddd931da808c7838d65daf ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -3288,17 +3290,17 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
-Tol: float
+P: double
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+Returns true if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns false, and <P>, <Tol> are not significant.
 ") NewParameter;
-		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools_GTrsfModification::NewPoint ******/
-		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
+		/****** md5 signature: a79eefd1fe066754dc9fbd2d3a2530a1 ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -3308,16 +3310,16 @@ P: gp_Pnt
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+Returns true if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns false, and <P>, <Tol> are not significant.
 ") NewPoint;
-		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
+		bool NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
 		/****** BRepTools_GTrsfModification::NewPolygon ******/
-		/****** md5 signature: 4badeef9050bef8cef3639edbc9b0271 ******/
+		/****** md5 signature: 74c49add621bc78203cd17d39377e3f3 ******/
 		%feature("compactdefaultargs") NewPolygon;
 		%feature("autodoc", "
 Parameters
@@ -3333,10 +3335,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - thePoly is a new polygon.
 ") NewPolygon;
-		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
+		bool NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
 
 		/****** BRepTools_GTrsfModification::NewPolygonOnTriangulation ******/
-		/****** md5 signature: 362332d5c0a2020b059e4552360631f4 ******/
+		/****** md5 signature: cdbe16a090376f4e774995da05fba08a ******/
 		%feature("compactdefaultargs") NewPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3353,10 +3355,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - thePoly is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
-		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
+		bool NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
 
 		/****** BRepTools_GTrsfModification::NewSurface ******/
-		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
+		/****** md5 signature: 05cac4f6dafa97d6624303004e85d749 ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -3367,18 +3369,18 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 RevWires: bool
 RevFace: bool
 
 Description
 -----------
-Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
+Returns true if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to true when the modification reverses the normal of the surface. (the wires have to be reversed). <RevFace> has to be set to true if the orientation of the modified face changes in the shells which contain it. Here, <RevFace> will return true if the - gp_Trsf is negative.
 ") NewSurface;
-		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		bool NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** BRepTools_GTrsfModification::NewTriangulation ******/
-		/****** md5 signature: c34f0504d87cfa075d0a16293a0a824a ******/
+		/****** md5 signature: 107268ef1bbe8044b1e6a279b7e1a358 ******/
 		%feature("compactdefaultargs") NewTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3394,7 +3396,7 @@ Description
 -----------
 Returns true if the face has been modified according to changed triangulation. If the face has been modified: - theTri is a new triangulation on the face.
 ") NewTriangulation;
-		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
+		bool NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
 
 };
 
@@ -3431,7 +3433,7 @@ No available documentation.
 		 BRepTools_TrsfModification(const gp_Trsf & T);
 
 		/****** BRepTools_TrsfModification::Continuity ******/
-		/****** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ******/
+		/****** md5 signature: d1e0a7e2e1d461e6b97ab64ce63033de ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -3453,21 +3455,21 @@ Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the 
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
+		/****** BRepTools_TrsfModification::IsCopyMesh ******/
+		/****** md5 signature: 4ca7b104421f5a9548cadff9d8608b54 ******/
+		%feature("compactdefaultargs") IsCopyMesh;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetIsCopyMesh() {
-            return (Standard_Boolean) $self->IsCopyMesh();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetIsCopyMesh(Standard_Boolean value) {
-            $self->IsCopyMesh()=value;
-            }
-        };
+Description
+-----------
+Sets a flag to indicate the need to copy mesh.
+") IsCopyMesh;
+		bool & IsCopyMesh();
+
 		/****** BRepTools_TrsfModification::NewCurve ******/
-		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
+		/****** md5 signature: 039bf25957d908407657950d3c1e5d6a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -3478,16 +3480,16 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
 Always returns true indicating that the edge E is always modified. - C is the new geometric support of the edge, - L is the new location, and - Tol is the new tolerance.
 ") NewCurve;
-		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
+		bool NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
 		/****** BRepTools_TrsfModification::NewCurve2d ******/
-		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
+		/****** md5 signature: 19d697fda46737877bc989a89ef46152 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -3500,16 +3502,16 @@ C: Geom2d_Curve
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
 Returns true if the edge E has a new curve on surface on the face F. If a new curve exists: - C is the new geometric support of the edge, - L is the new location, and - Tol the new tolerance. If no new curve exists, this function returns false, and the values of C, L and Tol are not significant.
 ") NewCurve2d;
-		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
+		bool NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
 		/****** BRepTools_TrsfModification::NewParameter ******/
-		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
+		/****** md5 signature: 01206a81b5ddd931da808c7838d65daf ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -3519,17 +3521,17 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
-Tol: float
+P: double
+Tol: double
 
 Description
 -----------
 Returns true if the Vertex V has a new parameter on the edge E. If a new parameter exists: - P is the parameter, and - Tol is the new tolerance. If no new parameter exists, this function returns false, and the values of P and Tol are not significant.
 ") NewParameter;
-		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools_TrsfModification::NewPoint ******/
-		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
+		/****** md5 signature: a79eefd1fe066754dc9fbd2d3a2530a1 ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -3539,16 +3541,16 @@ P: gp_Pnt
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
 Returns true if the vertex V has been modified. If the vertex has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
 ") NewPoint;
-		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
+		bool NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
 		/****** BRepTools_TrsfModification::NewPolygon ******/
-		/****** md5 signature: 7f7c60619bea4afc74b068fbbb3cfa88 ******/
+		/****** md5 signature: f0dd5f7afefbcf7bf4e456725b417248 ******/
 		%feature("compactdefaultargs") NewPolygon;
 		%feature("autodoc", "
 Parameters
@@ -3564,10 +3566,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - P is a new polygon.
 ") NewPolygon;
-		Standard_Boolean NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
+		bool NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
 
 		/****** BRepTools_TrsfModification::NewPolygonOnTriangulation ******/
-		/****** md5 signature: 3725a7293cb8d43db5ec36c08ebcc7d9 ******/
+		/****** md5 signature: cbc8b98149b6b52b4ed1f54f40fb7c7e ******/
 		%feature("compactdefaultargs") NewPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3584,10 +3586,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - P is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
-		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
+		bool NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
 		/****** BRepTools_TrsfModification::NewSurface ******/
-		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
+		/****** md5 signature: 05cac4f6dafa97d6624303004e85d749 ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -3598,7 +3600,7 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 RevWires: bool
 RevFace: bool
 
@@ -3606,10 +3608,10 @@ Description
 -----------
 Returns true if the face F has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. RevWires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). RevFace is set to true if the orientation of the modified face changes in the shells which contain it. For this class, RevFace returns true if the gp_Trsf associated with this modification is negative.
 ") NewSurface;
-		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		bool NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** BRepTools_TrsfModification::NewTriangulation ******/
-		/****** md5 signature: cdec58f103b48ecf1d9ad0fd3b8c73cc ******/
+		/****** md5 signature: 1462a9bae8c9b8149be873fb5a7cd76f ******/
 		%feature("compactdefaultargs") NewTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3625,7 +3627,7 @@ Description
 -----------
 Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face.
 ") NewTriangulation;
-		Standard_Boolean NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
+		bool NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
 
 		/****** BRepTools_TrsfModification::Trsf ******/
 		/****** md5 signature: 162ba6693c622bc37c4b2d05c6f93a56 ******/
@@ -3670,7 +3672,7 @@ No available documentation.
 		 BRepTools_NurbsConvertModification();
 
 		/****** BRepTools_NurbsConvertModification::Continuity ******/
-		/****** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ******/
+		/****** md5 signature: d1e0a7e2e1d461e6b97ab64ce63033de ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -3693,20 +3695,20 @@ Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the 
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
 		/****** BRepTools_NurbsConvertModification::GetUpdatedEdges ******/
-		/****** md5 signature: 98174620d3d94393e9e27b34a96f4740 ******/
+		/****** md5 signature: 4174b2fb7120a1debb23a7d4ae152931 ******/
 		%feature("compactdefaultargs") GetUpdatedEdges;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") GetUpdatedEdges;
-		const TopTools_ListOfShape & GetUpdatedEdges();
+		const NCollection_List<TopoDS_Shape> GetUpdatedEdges();
 
 		/****** BRepTools_NurbsConvertModification::NewCurve ******/
-		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
+		/****** md5 signature: 039bf25957d908407657950d3c1e5d6a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -3717,16 +3719,16 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+Returns true if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns false, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
-		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
+		bool NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
 		/****** BRepTools_NurbsConvertModification::NewCurve2d ******/
-		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
+		/****** md5 signature: 19d697fda46737877bc989a89ef46152 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -3739,16 +3741,16 @@ C: Geom2d_Curve
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
+Returns true if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns false, and <C>, <L>, <Tol> are not significant.
 ") NewCurve2d;
-		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
+		bool NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
 		/****** BRepTools_NurbsConvertModification::NewParameter ******/
-		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
+		/****** md5 signature: 01206a81b5ddd931da808c7838d65daf ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -3758,17 +3760,17 @@ E: TopoDS_Edge
 
 Return
 -------
-P: float
-Tol: float
+P: double
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+Returns true if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns false, and <P>, <Tol> are not significant.
 ") NewParameter;
-		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BRepTools_NurbsConvertModification::NewPoint ******/
-		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
+		/****** md5 signature: a79eefd1fe066754dc9fbd2d3a2530a1 ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -3778,16 +3780,16 @@ P: gp_Pnt
 
 Return
 -------
-Tol: float
+Tol: double
 
 Description
 -----------
-Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
+Returns true if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns false, and <P>, <Tol> are not significant.
 ") NewPoint;
-		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
+		bool NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
 		/****** BRepTools_NurbsConvertModification::NewPolygon ******/
-		/****** md5 signature: 4badeef9050bef8cef3639edbc9b0271 ******/
+		/****** md5 signature: 74c49add621bc78203cd17d39377e3f3 ******/
 		%feature("compactdefaultargs") NewPolygon;
 		%feature("autodoc", "
 Parameters
@@ -3803,10 +3805,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - thePoly is a new polygon.
 ") NewPolygon;
-		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
+		bool NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
 
 		/****** BRepTools_NurbsConvertModification::NewPolygonOnTriangulation ******/
-		/****** md5 signature: 362332d5c0a2020b059e4552360631f4 ******/
+		/****** md5 signature: cdbe16a090376f4e774995da05fba08a ******/
 		%feature("compactdefaultargs") NewPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3823,10 +3825,10 @@ Description
 -----------
 Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - thePoly is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
-		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
+		bool NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
 
 		/****** BRepTools_NurbsConvertModification::NewSurface ******/
-		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
+		/****** md5 signature: 05cac4f6dafa97d6624303004e85d749 ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -3837,18 +3839,18 @@ L: TopLoc_Location
 
 Return
 -------
-Tol: float
+Tol: double
 RevWires: bool
 RevFace: bool
 
 Description
 -----------
-Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
+Returns true if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to true when the modification reverses the normal of the surface. (the wires have to be reversed). <RevFace> has to be set to true if the orientation of the modified face changes in the shells which contain it. Here, <RevFace> will return true if the - gp_Trsf is negative.
 ") NewSurface;
-		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		bool NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** BRepTools_NurbsConvertModification::NewTriangulation ******/
-		/****** md5 signature: c34f0504d87cfa075d0a16293a0a824a ******/
+		/****** md5 signature: 107268ef1bbe8044b1e6a279b7e1a358 ******/
 		%feature("compactdefaultargs") NewTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3864,7 +3866,7 @@ Description
 -----------
 Returns true if the face has been modified according to changed triangulation. If the face has been modified: - theTri is a new triangulation on the face.
 ") NewTriangulation;
-		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
+		bool NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
 
 };
 

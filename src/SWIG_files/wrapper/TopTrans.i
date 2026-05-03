@@ -98,15 +98,15 @@ Create an empty Curve Transition.
 		 TopTrans_CurveTransition();
 
 		/****** TopTrans_CurveTransition::Compare ******/
-		/****** md5 signature: 48ade9961a1a3ca5e5ac483912ff1c85 ******/
+		/****** md5 signature: 6936c8a1297727674c8b74964802433d ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
 ----------
-Tole: float
+Tole: double
 Tang: gp_Dir
 Norm: gp_Dir
-Curv: float
+Curv: double
 S: TopAbs_Orientation
 Or: TopAbs_Orientation
 
@@ -118,17 +118,17 @@ Description
 -----------
 Add a curve element to the boundary. If Or is REVERSED the curve is before the intersection, else if Or is FORWARD the curv is after the intersection and if Or is INTERNAL the intersection is in the middle of the curv.
 ") Compare;
-		void Compare(const Standard_Real Tole, const gp_Dir & Tang, const gp_Dir & Norm, const Standard_Real Curv, const TopAbs_Orientation S, const TopAbs_Orientation Or);
+		void Compare(const double Tole, const gp_Dir & Tang, const gp_Dir & Norm, const double Curv, const TopAbs_Orientation S, const TopAbs_Orientation Or);
 
 		/****** TopTrans_CurveTransition::Reset ******/
-		/****** md5 signature: 41688a7deec782701e541aa14a291d6c ******/
+		/****** md5 signature: f2c747c64bb6fb82c3f30d2a3a53b777 ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
 ----------
 Tgt: gp_Dir
 Norm: gp_Dir
-Curv: float
+Curv: double
 
 Return
 -------
@@ -138,7 +138,7 @@ Description
 -----------
 Initialize a Transition with the local description of a Curve.
 ") Reset;
-		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const Standard_Real Curv);
+		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const double Curv);
 
 		/****** TopTrans_CurveTransition::Reset ******/
 		/****** md5 signature: 477dbad6632871c94ebb699631f93444 ******/
@@ -212,17 +212,17 @@ Create an empty Surface Transition.
 		 TopTrans_SurfaceTransition();
 
 		/****** TopTrans_SurfaceTransition::Compare ******/
-		/****** md5 signature: 538c5433b55a96d5b594a8b234a032e4 ******/
+		/****** md5 signature: 63b546289513e6ce8765cc4b03e03ad4 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
 ----------
-Tole: float
+Tole: double
 Norm: gp_Dir
 MaxD: gp_Dir
 MinD: gp_Dir
-MaxCurv: float
-MinCurv: float
+MaxCurv: double
+MinCurv: double
 S: TopAbs_Orientation
 O: TopAbs_Orientation
 
@@ -234,15 +234,15 @@ Description
 -----------
 Add a face element to the boundary. //! - S defines topological orientation for the face: S FORWARD means: along the intersection curve on the reference surface, transition states while crossing the face are OUT,IN. S REVERSED means states are IN,OUT. S INTERNAL means states are IN,IN. //! - O defines curve's position on face: O FORWARD means the face is before the intersection O REVERSED means the face is AFTER O INTERNAL means the curve intersection is in the face. PREQUESITORY: Norm oriented OUTSIDE 'geometric matter'.
 ") Compare;
-		void Compare(const Standard_Real Tole, const gp_Dir & Norm, const gp_Dir & MaxD, const gp_Dir & MinD, const Standard_Real MaxCurv, const Standard_Real MinCurv, const TopAbs_Orientation S, const TopAbs_Orientation O);
+		void Compare(const double Tole, const gp_Dir & Norm, const gp_Dir & MaxD, const gp_Dir & MinD, const double MaxCurv, const double MinCurv, const TopAbs_Orientation S, const TopAbs_Orientation O);
 
 		/****** TopTrans_SurfaceTransition::Compare ******/
-		/****** md5 signature: d313463c87e2df4be0babd6e22aa3746 ******/
+		/****** md5 signature: fb727c28fef76301696bb28896a93cc5 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
 ----------
-Tole: float
+Tole: double
 Norm: gp_Dir
 S: TopAbs_Orientation
 O: TopAbs_Orientation
@@ -255,7 +255,7 @@ Description
 -----------
 Add a plane or a cylindric face to the boundary.
 ") Compare;
-		void Compare(const Standard_Real Tole, const gp_Dir & Norm, const TopAbs_Orientation S, const TopAbs_Orientation O);
+		void Compare(const double Tole, const gp_Dir & Norm, const TopAbs_Orientation S, const TopAbs_Orientation O);
 
 		/****** TopTrans_SurfaceTransition::GetAfter ******/
 		/****** md5 signature: 58856f1840274abefcc406a5eba5b8fc ******/
@@ -294,7 +294,7 @@ No available documentation.
 		static TopAbs_State GetBefore(const TopAbs_Orientation Tran);
 
 		/****** TopTrans_SurfaceTransition::Reset ******/
-		/****** md5 signature: 8bcea749b87bd898ab0d396b7dea65c8 ******/
+		/****** md5 signature: 859ff9775adcedd2dce529ecc3fa431c ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
@@ -303,8 +303,8 @@ Tgt: gp_Dir
 Norm: gp_Dir
 MaxD: gp_Dir
 MinD: gp_Dir
-MaxCurv: float
-MinCurv: float
+MaxCurv: double
+MinCurv: double
 
 Return
 -------
@@ -314,7 +314,7 @@ Description
 -----------
 Initialize a Surface Transition with the local description of the intersection curve and of the reference surface. PREQUESITORY: Norm oriented OUTSIDE 'geometric matter'.
 ") Reset;
-		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const gp_Dir & MaxD, const gp_Dir & MinD, const Standard_Real MaxCurv, const Standard_Real MinCurv);
+		void Reset(const gp_Dir & Tgt, const gp_Dir & Norm, const gp_Dir & MaxD, const gp_Dir & MinD, const double MaxCurv, const double MinCurv);
 
 		/****** TopTrans_SurfaceTransition::Reset ******/
 		/****** md5 signature: 79c0d4553243636cc04f5789b11ef1dc ******/

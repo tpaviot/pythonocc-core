@@ -50,7 +50,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmat2d.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
 #include<Geom2d_module.hxx>
@@ -67,7 +66,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmat2d.html"
 %import Geom2d.i
 %import gp.i
 %import TopoDS.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -86,7 +84,11 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<opencascade::handle<MAT_BasicElt>,TopoDS_Shape>::Items;
+%ignore NCollection_DataMap<opencascade::handle<MAT_BasicElt>,TopoDS_Shape>::KeyValues;
 %template(BRepMAT2d_DataMapOfBasicEltShape) NCollection_DataMap<opencascade::handle<MAT_BasicElt>,TopoDS_Shape>;
+%ignore NCollection_DataMap<TopoDS_Shape,MAT_SequenceOfBasicElt,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,MAT_SequenceOfBasicElt,TopTools_ShapeMapHasher>::KeyValues;
 %template(BRepMAT2d_DataMapOfShapeSequenceOfBasicElt) NCollection_DataMap<TopoDS_Shape,MAT_SequenceOfBasicElt,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
@@ -116,7 +118,7 @@ No available documentation.
 		 BRepMAT2d_BisectingLocus();
 
 		/****** BRepMAT2d_BisectingLocus::BasicElt ******/
-		/****** md5 signature: 3d0067523ed5e0250793c967c6e6f2f8 ******/
+		/****** md5 signature: 289f2555193cd672c7196d7eac7dc408 ******/
 		%feature("compactdefaultargs") BasicElt;
 		%feature("autodoc", "
 Parameters
@@ -132,10 +134,10 @@ Description
 -----------
 Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted.
 ") BasicElt;
-		opencascade::handle<MAT_BasicElt> BasicElt(const Standard_Integer IndLine, const Standard_Integer Index);
+		opencascade::handle<MAT_BasicElt> BasicElt(const int IndLine, const int Index);
 
 		/****** BRepMAT2d_BisectingLocus::Compute ******/
-		/****** md5 signature: b86912005db7017db1b8639215ff1b3f ******/
+		/****** md5 signature: 57180f8a8e506f6b7c298cde75a572d4 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -144,7 +146,7 @@ anExplo: BRepMAT2d_Explorer
 LineIndex: int (optional, default to 1)
 aSide: MAT_Side (optional, default to MAT_Left)
 aJoinType: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -154,10 +156,10 @@ Description
 -----------
 Computation of the Bisector_Locus in a set of Lines defined in <anExplo>. The bisecting locus are computed on the side <aSide> from the line <LineIndex> in <anExplo>.
 ") Compute;
-		void Compute(BRepMAT2d_Explorer & anExplo, const Standard_Integer LineIndex = 1, const MAT_Side aSide = MAT_Left, const GeomAbs_JoinType aJoinType = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
+		void Compute(BRepMAT2d_Explorer & anExplo, const int LineIndex = 1, const MAT_Side aSide = MAT_Left, const GeomAbs_JoinType aJoinType = GeomAbs_Arc, const bool IsOpenResult = false);
 
 		/****** BRepMAT2d_BisectingLocus::GeomBis ******/
-		/****** md5 signature: fc928757a87c93f00c8941a3d64abfe5 ******/
+		/****** md5 signature: 14fe33539e05594f5d089aae926dbd3a ******/
 		%feature("compactdefaultargs") GeomBis;
 		%feature("autodoc", "
 Parameters
@@ -224,7 +226,7 @@ Returns <theGraph> of <self>.
 		opencascade::handle<MAT_Graph> Graph();
 
 		/****** BRepMAT2d_BisectingLocus::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -234,10 +236,10 @@ Description
 -----------
 Returns True if Compute has succeeded.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** BRepMAT2d_BisectingLocus::NumberOfContours ******/
-		/****** md5 signature: 466b646e5536f1219bac12e9b35bbe15 ******/
+		/****** md5 signature: b3e9010b04cd1e9d7a8e3250562cd0ab ******/
 		%feature("compactdefaultargs") NumberOfContours;
 		%feature("autodoc", "Return
 -------
@@ -247,10 +249,10 @@ Description
 -----------
 Returns the number of contours.
 ") NumberOfContours;
-		Standard_Integer NumberOfContours();
+		int NumberOfContours();
 
 		/****** BRepMAT2d_BisectingLocus::NumberOfElts ******/
-		/****** md5 signature: 99801e5526ee454661c76118ded5fb34 ******/
+		/****** md5 signature: ec6f5e9486e0133bbd6519f9678cab95 ******/
 		%feature("compactdefaultargs") NumberOfElts;
 		%feature("autodoc", "
 Parameters
@@ -265,10 +267,10 @@ Description
 -----------
 Returns the number of BasicElts on the line <IndLine>.
 ") NumberOfElts;
-		Standard_Integer NumberOfElts(const Standard_Integer IndLine);
+		int NumberOfElts(const int IndLine);
 
 		/****** BRepMAT2d_BisectingLocus::NumberOfSections ******/
-		/****** md5 signature: fb6c2648dc8f1b7e426fa3af236d1d9a ******/
+		/****** md5 signature: 40eb17d3f294d09e99c2499a6c67633c ******/
 		%feature("compactdefaultargs") NumberOfSections;
 		%feature("autodoc", "
 Parameters
@@ -284,7 +286,7 @@ Description
 -----------
 Returns the number of sections of a curve. this curve is the Indexth curve in the IndLineth contour given by anExplo.
 ") NumberOfSections;
-		Standard_Integer NumberOfSections(const Standard_Integer IndLine, const Standard_Integer Index);
+		int NumberOfSections(const int IndLine, const int Index);
 
 };
 
@@ -345,7 +347,7 @@ Clear the contents of <self>.
 		void Clear();
 
 		/****** BRepMAT2d_Explorer::Contour ******/
-		/****** md5 signature: 0abd7c353f6b45daa5e0b5bd0f6b7766 ******/
+		/****** md5 signature: c2d6703f10827ad647eeb1670c17f74d ******/
 		%feature("compactdefaultargs") Contour;
 		%feature("autodoc", "
 Parameters
@@ -354,29 +356,29 @@ IndexContour: int
 
 Return
 -------
-TColGeom2d_SequenceOfCurve
+NCollection_Sequence<opencascade::handle<Geom2d_Curve>>
 
 Description
 -----------
 No available documentation.
 ") Contour;
-		TColGeom2d_SequenceOfCurve Contour(const Standard_Integer IndexContour);
+		const NCollection_Sequence<opencascade::handle<Geom2d_Curve>> & Contour(const int IndexContour);
 
 		/****** BRepMAT2d_Explorer::GetIsClosed ******/
-		/****** md5 signature: fe2549f56b3cb80b5c2da5e5e50f62a0 ******/
+		/****** md5 signature: 62aa08df54af4b680b7d41bcaac9b956 ******/
 		%feature("compactdefaultargs") GetIsClosed;
 		%feature("autodoc", "Return
 -------
-TColStd_SequenceOfBoolean
+NCollection_Sequence<bool>
 
 Description
 -----------
 No available documentation.
 ") GetIsClosed;
-		const TColStd_SequenceOfBoolean & GetIsClosed();
+		const NCollection_Sequence<bool> & GetIsClosed();
 
 		/****** BRepMAT2d_Explorer::Init ******/
-		/****** md5 signature: 488a24dcd1db8a348e37bafc2ae6f6b7 ******/
+		/****** md5 signature: a031d59c13af49fe20bb3bfec920c7f9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -391,10 +393,10 @@ Description
 -----------
 Initialisation of an Iterator on the curves of the Contour number <IndexContour>.
 ") Init;
-		void Init(const Standard_Integer IndexContour);
+		void Init(const int IndexContour);
 
 		/****** BRepMAT2d_Explorer::IsModified ******/
-		/****** md5 signature: 54da3346406078b7c7a1e3bef5b4bfbf ******/
+		/****** md5 signature: 7f7e41e11c36dd4e819c74f196768105 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -409,7 +411,7 @@ Description
 -----------
 No available documentation.
 ") IsModified;
-		Standard_Boolean IsModified(const TopoDS_Shape & aShape);
+		bool IsModified(const TopoDS_Shape & aShape);
 
 		/****** BRepMAT2d_Explorer::ModifiedShape ******/
 		/****** md5 signature: 4cc3fd5d5aff0bcce310ec88a2345639 ******/
@@ -430,7 +432,7 @@ If the shape is not modified, returns the shape itself.
 		TopoDS_Shape ModifiedShape(const TopoDS_Shape & aShape);
 
 		/****** BRepMAT2d_Explorer::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -440,7 +442,7 @@ Description
 -----------
 Return False if there is no more curves on the Contour initialised by the method Init.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BRepMAT2d_Explorer::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -456,7 +458,7 @@ Move to the next curve of the current Contour.
 		void Next();
 
 		/****** BRepMAT2d_Explorer::NumberOfContours ******/
-		/****** md5 signature: 466b646e5536f1219bac12e9b35bbe15 ******/
+		/****** md5 signature: b3e9010b04cd1e9d7a8e3250562cd0ab ******/
 		%feature("compactdefaultargs") NumberOfContours;
 		%feature("autodoc", "Return
 -------
@@ -466,10 +468,10 @@ Description
 -----------
 Returns the Number of contours.
 ") NumberOfContours;
-		Standard_Integer NumberOfContours();
+		int NumberOfContours();
 
 		/****** BRepMAT2d_Explorer::NumberOfCurves ******/
-		/****** md5 signature: bbc17284909b7a04d80469d6df5d679d ******/
+		/****** md5 signature: 82a08ee49f0edfd55f06112fd67029ef ******/
 		%feature("compactdefaultargs") NumberOfCurves;
 		%feature("autodoc", "
 Parameters
@@ -484,7 +486,7 @@ Description
 -----------
 Returns the Number of Curves in the Contour number <IndexContour>.
 ") NumberOfCurves;
-		Standard_Integer NumberOfCurves(const Standard_Integer IndexContour);
+		int NumberOfCurves(const int IndexContour);
 
 		/****** BRepMAT2d_Explorer::Perform ******/
 		/****** md5 signature: c84f1304d8c6b6741bee2823ebd22589 ******/
@@ -613,7 +615,7 @@ Initialise the Iterator on <S> <S> is an edge or a vertex of the initial wire or
 		void Init(const TopoDS_Shape & S);
 
 		/****** BRepMAT2d_LinkTopoBilo::More ******/
-		/****** md5 signature: f2144011648ae849666b28430a27a0ea ******/
+		/****** md5 signature: 72440e10f19bd09dac0550f651b9d3a2 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -623,7 +625,7 @@ Description
 -----------
 Returns True if there is a current BasicElt.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** BRepMAT2d_LinkTopoBilo::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/

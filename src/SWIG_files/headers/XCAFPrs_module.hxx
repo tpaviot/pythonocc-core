@@ -21,9 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<XCAFPrs.hxx>
 #include<XCAFPrs_AISObject.hxx>
-#include<XCAFPrs_DataMapIteratorOfDataMapOfStyleShape.hxx>
-#include<XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient.hxx>
-#include<XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle.hxx>
 #include<XCAFPrs_DataMapOfStyleShape.hxx>
 #include<XCAFPrs_DataMapOfStyleTransient.hxx>
 #include<XCAFPrs_DocumentExplorer.hxx>

@@ -81,8 +81,6 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(STEPEdit_EditContext)
-%wrap_handle(STEPEdit_EditSDR)
 /* end handles declaration */
 
 /* templates */
@@ -203,7 +201,7 @@ No available documentation.
 		 STEPEdit_EditContext();
 
 		/****** STEPEdit_EditContext::Apply ******/
-		/****** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ******/
+		/****** md5 signature: 237672ec1da84109b9ea6f043145de35 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -220,10 +218,10 @@ Description
 -----------
 No available documentation.
 ") Apply;
-		Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** STEPEdit_EditContext::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -236,7 +234,7 @@ No available documentation.
 		TCollection_AsciiString Label();
 
 		/****** STEPEdit_EditContext::Load ******/
-		/****** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ******/
+		/****** md5 signature: f4e0bbd5e382865fe3b9f893311ac634 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -253,10 +251,10 @@ Description
 -----------
 No available documentation.
 ") Load;
-		Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** STEPEdit_EditContext::Recognize ******/
-		/****** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ******/
+		/****** md5 signature: 46498f540a370a7d0afd43a35f2e9bfa ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -271,10 +269,10 @@ Description
 -----------
 No available documentation.
 ") Recognize;
-		Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
+		bool Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
 		/****** STEPEdit_EditContext::StringValue ******/
-		/****** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ******/
+		/****** md5 signature: 8111b8adf2f25bfd021d0c036189e878 ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters
@@ -290,12 +288,10 @@ Description
 -----------
 No available documentation.
 ") StringValue;
-		opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
 
 };
 
-
-%make_alias(STEPEdit_EditContext)
 
 %extend STEPEdit_EditContext {
 	%pythoncode {
@@ -322,7 +318,7 @@ No available documentation.
 		 STEPEdit_EditSDR();
 
 		/****** STEPEdit_EditSDR::Apply ******/
-		/****** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ******/
+		/****** md5 signature: 237672ec1da84109b9ea6f043145de35 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -339,10 +335,10 @@ Description
 -----------
 No available documentation.
 ") Apply;
-		Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** STEPEdit_EditSDR::Label ******/
-		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
+		/****** md5 signature: 5d986661fada1e4c4766dca8672c16cf ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -355,7 +351,7 @@ No available documentation.
 		TCollection_AsciiString Label();
 
 		/****** STEPEdit_EditSDR::Load ******/
-		/****** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ******/
+		/****** md5 signature: f4e0bbd5e382865fe3b9f893311ac634 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -372,10 +368,10 @@ Description
 -----------
 No available documentation.
 ") Load;
-		Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** STEPEdit_EditSDR::Recognize ******/
-		/****** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ******/
+		/****** md5 signature: 46498f540a370a7d0afd43a35f2e9bfa ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -390,10 +386,10 @@ Description
 -----------
 No available documentation.
 ") Recognize;
-		Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
+		bool Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
 		/****** STEPEdit_EditSDR::StringValue ******/
-		/****** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ******/
+		/****** md5 signature: 8111b8adf2f25bfd021d0c036189e878 ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters
@@ -409,12 +405,10 @@ Description
 -----------
 No available documentation.
 ") StringValue;
-		opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
 
 };
 
-
-%make_alias(STEPEdit_EditSDR)
 
 %extend STEPEdit_EditSDR {
 	%pythoncode {

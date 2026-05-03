@@ -48,11 +48,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xscontrol.html"
 #include<TopoDS_module.hxx>
 #include<Transfer_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
-#include<TopTools_module.hxx>
 #include<DE_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -78,11 +76,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xscontrol.html"
 %import TopoDS.i
 %import Transfer.i
 %import TopAbs.i
-%import TColStd.i
 %import Interface.i
 %import TCollection.i
 %import Message.i
-%import TopTools.i
 %import DE.i
 %import Geom.i
 %import Geom2d.i
@@ -105,7 +101,6 @@ from OCC.Core.Exception import *
 %wrap_handle(XSControl_ConnectedShapes)
 %wrap_handle(XSControl_Controller)
 %wrap_handle(XSControl_SelectForTransfer)
-%wrap_handle(XSControl_SignTransferStatus)
 %wrap_handle(XSControl_TransferReader)
 %wrap_handle(XSControl_TransferWriter)
 %wrap_handle(XSControl_Vars)
@@ -206,7 +201,7 @@ Creates a Selection ConnectedShapes, which will work with the current TransferPr
 		 XSControl_ConnectedShapes(const opencascade::handle<XSControl_TransferReader> & TR);
 
 		/****** XSControl_ConnectedShapes::AdjacentEntities ******/
-		/****** md5 signature: 09409b3551d6d5001269c261ffdd3963 ******/
+		/****** md5 signature: 0d559d1c0e42fb770809cb25d0b40458 ******/
 		%feature("compactdefaultargs") AdjacentEntities;
 		%feature("autodoc", "
 Parameters
@@ -217,16 +212,16 @@ type: TopAbs_ShapeEnum
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 This functions considers a shape from a transfer and performs the search function explained above.
 ") AdjacentEntities;
-		static opencascade::handle<TColStd_HSequenceOfTransient> AdjacentEntities(const TopoDS_Shape & ashape, const opencascade::handle<Transfer_TransientProcess> & TP, const TopAbs_ShapeEnum type);
+		static opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> AdjacentEntities(const TopoDS_Shape & ashape, const opencascade::handle<Transfer_TransientProcess> & TP, const TopAbs_ShapeEnum type);
 
 		/****** XSControl_ConnectedShapes::Explore ******/
-		/****** md5 signature: 50c4444632fd853033919d1a382f1178 ******/
+		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
 		%feature("compactdefaultargs") Explore;
 		%feature("autodoc", "
 Parameters
@@ -244,10 +239,10 @@ Description
 -----------
 Explores an entity: entities from which are connected to that produced by this entity, including itself.
 ") Explore;
-		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
+		bool Explore(const int level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
 		/****** XSControl_ConnectedShapes::ExploreLabel ******/
-		/****** md5 signature: 6716492c1a431b7aec766a1b00353622 ******/
+		/****** md5 signature: 10f3fc34ecb4d7727b7e8682793b2341 ******/
 		%feature("compactdefaultargs") ExploreLabel;
 		%feature("autodoc", "Return
 -------
@@ -339,14 +334,14 @@ No available documentation.
 		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & AdaptorSession();
 
 		/****** XSControl_Controller::AddSessionItem ******/
-		/****** md5 signature: 4cfaec218ac7b15e930ba58b9fdfd337 ******/
+		/****** md5 signature: 278ffc00a0fc69b8d12bb2c8f38e4ba0 ******/
 		%feature("compactdefaultargs") AddSessionItem;
 		%feature("autodoc", "
 Parameters
 ----------
 theItem: Standard_Transient
-theName: str
-toApply: bool (optional, default to Standard_False)
+theName: char *
+toApply: bool (optional, default to false)
 
 Return
 -------
@@ -356,7 +351,7 @@ Description
 -----------
 Records a Session Item, to be added for customisation of the Work Session. It must have a specific name. <setapplied> is used if <item> is a GeneralModifier, to decide If set to true, <item> will be applied to the hook list 'send'. Else, it is not applied to any hook list. Remark: this method is to be called at Create time, the recorded items will be used by Customise Warning: if <name> conflicts, the last recorded item is kept.
 ") AddSessionItem;
-		void AddSessionItem(const opencascade::handle<Standard_Transient> & theItem, Standard_CString theName, const Standard_Boolean toApply = Standard_False);
+		void AddSessionItem(const opencascade::handle<Standard_Transient> & theItem, const char * const theName, const bool toApply = false);
 
 		/****** XSControl_Controller::AutoRecord ******/
 		/****** md5 signature: 1e12ceab21a1bbaa8139a52550ee2d9a ******/
@@ -390,13 +385,13 @@ Customises a WorkSession, by adding to it the recorded items (by AddSessionItem)
 		virtual void Customise(opencascade::handle<XSControl_WorkSession> & WS);
 
 		/****** XSControl_Controller::IsModeWrite ******/
-		/****** md5 signature: 1fc5903958df0acc16f9019b1f3dfcbb ******/
+		/****** md5 signature: 426a669d65903087307bd22086bb043d ******/
 		%feature("compactdefaultargs") IsModeWrite;
 		%feature("autodoc", "
 Parameters
 ----------
 modetrans: int
-shape: bool (optional, default to Standard_True)
+shape: bool (optional, default to true)
 
 Return
 -------
@@ -406,15 +401,15 @@ Description
 -----------
 Tells if a value of <modetrans> is a good value(within bounds) Actually only for shapes.
 ") IsModeWrite;
-		Standard_Boolean IsModeWrite(const Standard_Integer modetrans, const Standard_Boolean shape = Standard_True);
+		bool IsModeWrite(const int modetrans, const bool shape = true);
 
 		/****** XSControl_Controller::ModeWriteBounds ******/
-		/****** md5 signature: 0e59b8b854cfbc600b9e3c30645c6356 ******/
+		/****** md5 signature: 21f9eafff2eb555ec57d108acf77f93a ******/
 		%feature("compactdefaultargs") ModeWriteBounds;
 		%feature("autodoc", "
 Parameters
 ----------
-shape: bool (optional, default to Standard_True)
+shape: bool (optional, default to true)
 
 Return
 -------
@@ -425,44 +420,44 @@ Description
 -----------
 Returns recorded min and max values for modetrans (write) Actually only for shapes Returns True if bounds are set, False else (then, free value).
 ") ModeWriteBounds;
-		Standard_Boolean ModeWriteBounds(Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Boolean shape = Standard_True);
+		bool ModeWriteBounds(Standard_Integer &OutValue, Standard_Integer &OutValue, const bool shape = true);
 
 		/****** XSControl_Controller::ModeWriteHelp ******/
-		/****** md5 signature: 9f2161a8defa638c39dee42674b2c3ca ******/
+		/****** md5 signature: 1525ad4718695e062d8e86a2de1d95eb ******/
 		%feature("compactdefaultargs") ModeWriteHelp;
 		%feature("autodoc", "
 Parameters
 ----------
 modetrans: int
-shape: bool (optional, default to Standard_True)
+shape: bool (optional, default to true)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the help line recorded for a value of modetrans empty if help not defined or not within bounds or if values are free.
 ") ModeWriteHelp;
-		Standard_CString ModeWriteHelp(const Standard_Integer modetrans, const Standard_Boolean shape = Standard_True);
+		const char * ModeWriteHelp(const int modetrans, const bool shape = true);
 
 		/****** XSControl_Controller::Name ******/
-		/****** md5 signature: a614a2a031c0f6de75e5496e2bd2c8da ******/
+		/****** md5 signature: 66af563ad8de3a54fb909c7a9258fa66 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
 ----------
-rsc: bool (optional, default to Standard_False)
+rsc: bool (optional, default to false)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns a name, as given when initializing: rsc = False (D): True Name attached to the Norm (long name) rsc = True: Name of the resource set (i.e. short name).
 ") Name;
-		Standard_CString Name(const Standard_Boolean rsc = Standard_False);
+		const char * Name(const bool rsc = false);
 
 		/****** XSControl_Controller::NewModel ******/
 		/****** md5 signature: 0b1be90749007fa9c3aadc3c17bc79c8 ******/
@@ -491,7 +486,7 @@ Returns the Protocol attached to the Norm (from field).
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
 		/****** XSControl_Controller::RecognizeWriteShape ******/
-		/****** md5 signature: bf9c781492161c75e6ecd990309067e7 ******/
+		/****** md5 signature: 5cff33f10b9707fb6712dd6c7ec7cfb1 ******/
 		%feature("compactdefaultargs") RecognizeWriteShape;
 		%feature("autodoc", "
 Parameters
@@ -507,10 +502,10 @@ Description
 -----------
 Tells if a shape is valid for a transfer to a model Asks the ActorWrite (through a ShapeMapper).
 ") RecognizeWriteShape;
-		virtual Standard_Boolean RecognizeWriteShape(const TopoDS_Shape & shape, const Standard_Integer modetrans = 0);
+		virtual bool RecognizeWriteShape(const TopoDS_Shape & shape, const int modetrans = 0);
 
 		/****** XSControl_Controller::RecognizeWriteTransient ******/
-		/****** md5 signature: ab61fb056de5fe39183b10722cfdf45f ******/
+		/****** md5 signature: e272f1b75ac09817121a84eb6ea06ce7 ******/
 		%feature("compactdefaultargs") RecognizeWriteTransient;
 		%feature("autodoc", "
 Parameters
@@ -526,15 +521,15 @@ Description
 -----------
 Tells if <obj> (an application object) is a valid candidate for a transfer to a Model. By default, asks the ActorWrite if known (through a TransientMapper). Can be redefined.
 ") RecognizeWriteTransient;
-		virtual Standard_Boolean RecognizeWriteTransient(const opencascade::handle<Standard_Transient> & obj, const Standard_Integer modetrans = 0);
+		virtual bool RecognizeWriteTransient(const opencascade::handle<Standard_Transient> & obj, const int modetrans = 0);
 
 		/****** XSControl_Controller::Record ******/
-		/****** md5 signature: 82213ecee20989c7125a79ae5a889d65 ******/
+		/****** md5 signature: 7ca5edae2b2b1e1c303d2c5d0c40c129 ******/
 		%feature("compactdefaultargs") Record;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -544,15 +539,15 @@ Description
 -----------
 Records <self> in a general dictionary under a name Error if <name> already used for another one.
 ") Record;
-		void Record(Standard_CString name);
+		void Record(const char * const name);
 
 		/****** XSControl_Controller::Recorded ******/
-		/****** md5 signature: e7b0928c69a84934a61865297a1477f2 ******/
+		/****** md5 signature: 48de0853c3efccad876f4edc95b25871 ******/
 		%feature("compactdefaultargs") Recorded;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -562,15 +557,15 @@ Description
 -----------
 Returns the Controller attached to a given name Returns a Null Handle if <name> is unknown.
 ") Recorded;
-		static opencascade::handle<XSControl_Controller> Recorded(Standard_CString name);
+		static opencascade::handle<XSControl_Controller> Recorded(const char * const name);
 
 		/****** XSControl_Controller::SessionItem ******/
-		/****** md5 signature: 1008f7dfeac004b90b54003352227a07 ******/
+		/****** md5 signature: e8328397d8acbebf26d39b8dc1989a2f ******/
 		%feature("compactdefaultargs") SessionItem;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 
 Return
 -------
@@ -580,17 +575,17 @@ Description
 -----------
 Returns an item given its name to record in a Session If <name> is unknown, returns a Null Handle.
 ") SessionItem;
-		opencascade::handle<Standard_Transient> SessionItem(Standard_CString theName);
+		opencascade::handle<Standard_Transient> SessionItem(const char * const theName);
 
 		/****** XSControl_Controller::SetModeWrite ******/
-		/****** md5 signature: 256e35b925b3df022507f10889c59c8f ******/
+		/****** md5 signature: ecaa0449cdc6c9e5aced20d9f214bd58 ******/
 		%feature("compactdefaultargs") SetModeWrite;
 		%feature("autodoc", "
 Parameters
 ----------
 modemin: int
 modemax: int
-shape: bool (optional, default to Standard_True)
+shape: bool (optional, default to true)
 
 Return
 -------
@@ -600,17 +595,17 @@ Description
 -----------
 Sets minimum and maximum values for modetrans (write) Erases formerly recorded bounds and values Actually only for shape Then, for each value a little help can be attached.
 ") SetModeWrite;
-		void SetModeWrite(const Standard_Integer modemin, const Standard_Integer modemax, const Standard_Boolean shape = Standard_True);
+		void SetModeWrite(const int modemin, const int modemax, const bool shape = true);
 
 		/****** XSControl_Controller::SetModeWriteHelp ******/
-		/****** md5 signature: 7bfc54b589c5986d7309de43e74d86dd ******/
+		/****** md5 signature: 7d41d63c9d1efc2d5a8936d8a07f972d ******/
 		%feature("compactdefaultargs") SetModeWriteHelp;
 		%feature("autodoc", "
 Parameters
 ----------
 modetrans: int
-help: str
-shape: bool (optional, default to Standard_True)
+help: char *
+shape: bool (optional, default to true)
 
 Return
 -------
@@ -620,16 +615,16 @@ Description
 -----------
 Attaches a short line of help to a value of modetrans (write).
 ") SetModeWriteHelp;
-		void SetModeWriteHelp(const Standard_Integer modetrans, Standard_CString help, const Standard_Boolean shape = Standard_True);
+		void SetModeWriteHelp(const int modetrans, const char * const help, const bool shape = true);
 
 		/****** XSControl_Controller::SetNames ******/
-		/****** md5 signature: ade60fb8abd6821ca807fecdfd73838f ******/
+		/****** md5 signature: 047054877b2901fc06aaee76f2da4d09 ******/
 		%feature("compactdefaultargs") SetNames;
 		%feature("autodoc", "
 Parameters
 ----------
-theLongName: str
-theShortName: str
+theLongName: char *
+theShortName: char *
 
 Return
 -------
@@ -639,10 +634,10 @@ Description
 -----------
 Changes names if a name is empty, the formerly set one remains Remark: Does not call Record or AutoRecord.
 ") SetNames;
-		void SetNames(Standard_CString theLongName, Standard_CString theShortName);
+		void SetNames(const char * const theLongName, const char * const theShortName);
 
 		/****** XSControl_Controller::TransferWriteShape ******/
-		/****** md5 signature: a1087710e2fdfd6eb93794359a254234 ******/
+		/****** md5 signature: 2e967b6f642852834da6d1a6f0b2824d ******/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "
 Parameters
@@ -661,10 +656,10 @@ Description
 -----------
 Takes one Shape and transfers it to an InterfaceModel (already created, e.g. by NewModel) Default uses ActorWrite; can be redefined as necessary Returned value is a status, as follows: Done OK , Void: No Result , Fail: Fail (e.g. exception) Error: bad conditions , bad model or null model.
 ") TransferWriteShape;
-		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & shape, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const int modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Controller::TransferWriteTransient ******/
-		/****** md5 signature: efb5bc18dd2c257eaaab9cbc66271108 ******/
+		/****** md5 signature: aa983a57d32b2650b8651b5dc9f47ea2 ******/
 		%feature("compactdefaultargs") TransferWriteTransient;
 		%feature("autodoc", "
 Parameters
@@ -683,7 +678,7 @@ Description
 -----------
 Takes one Transient Object and transfers it to an InterfaceModel (already created, e.g. by NewModel) (result is recorded in the model by AddWithRefs) FP records produced results and checks //! Default uses ActorWrite; can be redefined as necessary Returned value is a status, as follows: 0 OK , 1 No Result , 2 Fail (e.g. exception raised) -1 bad conditions , -2 bad model or null model For type of object not recognized: should return 1.
 ") TransferWriteTransient;
-		virtual IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Standard_Transient> & obj, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual IFSelect_ReturnStatus TransferWriteTransient(const opencascade::handle<Standard_Transient> & obj, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model, const int modetrans = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Controller::WorkLibrary ******/
 		/****** md5 signature: 7c195930f9d0e8c986e2cba27b8d6ee4 ******/
@@ -715,15 +710,15 @@ Returns the WorkLibrary attached to the Norm. Remark that it has to be in phase 
 class XSControl_FuncShape {
 	public:
 		/****** XSControl_FuncShape::FileAndVar ******/
-		/****** md5 signature: f1b12c6210426021728b66b3f86d7a28 ******/
+		/****** md5 signature: 1fa8c5a8ead963093133c8f26789f900 ******/
 		%feature("compactdefaultargs") FileAndVar;
 		%feature("autodoc", "
 Parameters
 ----------
 session: XSControl_WorkSession
-file: str
-var: str
-def: str
+file: char *
+var: char *
+def: char *
 resfile: str
 resvar: str
 
@@ -735,7 +730,7 @@ Description
 -----------
 Analyses given file name and variable name, with a default name for variables. Returns resulting file name and variable name plus status 'file to read'(True) or 'already read'(False) In the latter case, empty resfile means no file available //! If <file> is null or empty or equates '.', considers Session and returned status is False Else, returns resfile = file and status is True If <var> is neither null nor empty, resvar = var Else, the root part of <resfile> is considered, if defined Else, <def> is taken.
 ") FileAndVar;
-		static Standard_Boolean FileAndVar(const opencascade::handle<XSControl_WorkSession> & session, Standard_CString file, Standard_CString var, Standard_CString def, TCollection_AsciiString & resfile, TCollection_AsciiString & resvar);
+		static bool FileAndVar(const opencascade::handle<XSControl_WorkSession> & session, const char * const file, const char * const var, const char * const def, TCollection_AsciiString & resfile, TCollection_AsciiString & resvar);
 
 		/****** XSControl_FuncShape::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -751,14 +746,14 @@ Defines and loads all functions which work on shapes for XSControl (as ActFunc).
 		static void Init();
 
 		/****** XSControl_FuncShape::MoreShapes ******/
-		/****** md5 signature: 64cec2253a48ad178a7f54924ed07fad ******/
+		/****** md5 signature: 600f5d3f0560e829c72550942ac2cf80 ******/
 		%feature("compactdefaultargs") MoreShapes;
 		%feature("autodoc", "
 Parameters
 ----------
 session: XSControl_WorkSession
-list: TopTools_HSequenceOfShape
-name: str
+list: NCollection_HSequence<TopoDS_Shape
+name: char *
 
 Return
 -------
@@ -768,7 +763,7 @@ Description
 -----------
 Analyses a name as designating Shapes from a Vars or from XSTEP transfer (last Transfer on Reading). <name> can be: '*': all the root shapes produced by last Transfer (Read) i.e. considers roots of the TransientProcess a name: a name of a variable DRAW //! Returns the count of designated Shapes. Their list is put in <list>. If <list> is null, it is firstly created. Then it is completed (Append without Clear) by the Shapes found Returns 0 if no Shape could be found.
 ") MoreShapes;
-		static Standard_Integer MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<TopTools_HSequenceOfShape> & list, Standard_CString name);
+		static int MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & list, const char * const name);
 
 };
 
@@ -825,12 +820,12 @@ Creates a Reader from scratch (creates an empty WorkSession) A WorkSession or a 
 		 XSControl_Reader();
 
 		/****** XSControl_Reader::XSControl_Reader ******/
-		/****** md5 signature: 1b278c24bc5ba36553315d7f34ac8b43 ******/
+		/****** md5 signature: 31128280f657110d3e5a362d4acb7f49 ******/
 		%feature("compactdefaultargs") XSControl_Reader;
 		%feature("autodoc", "
 Parameters
 ----------
-norm: str
+norm: char *
 
 Return
 -------
@@ -840,16 +835,16 @@ Description
 -----------
 Creates a Reader from scratch, with a norm name which identifies a Controller.
 ") XSControl_Reader;
-		 XSControl_Reader(Standard_CString norm);
+		 XSControl_Reader(const char * const norm);
 
 		/****** XSControl_Reader::XSControl_Reader ******/
-		/****** md5 signature: dde5d0249121e014a940df9f07c34b20 ******/
+		/****** md5 signature: e995bd69ae23f21fd9d43411b407f9ef ******/
 		%feature("compactdefaultargs") XSControl_Reader;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: XSControl_WorkSession
-scratch: bool (optional, default to Standard_True)
+scratch: bool (optional, default to true)
 
 Return
 -------
@@ -859,7 +854,7 @@ Description
 -----------
 Creates a Reader from an already existing Session, with a Controller already set Virtual destructor.
 ") XSControl_Reader;
-		 XSControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
+		 XSControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
 		/****** XSControl_Reader::ClearShapes ******/
 		/****** md5 signature: 052780fae74c03e43f332caaaaf6b2cc ******/
@@ -903,12 +898,12 @@ Return: Pair of values defining operations to be performed on shapes and a boole
 		const XSAlgo_ShapeProcessor::ProcessingFlags & GetShapeProcessFlags();
 
 		/****** XSControl_Reader::GetStatsTransfer ******/
-		/****** md5 signature: e1d5ca4b1efe1739fc37e88022ce93fd ******/
+		/****** md5 signature: d695c4c0a2c25a0661bf2a3ae3fba3c4 ******/
 		%feature("compactdefaultargs") GetStatsTransfer;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 
 Return
 -------
@@ -920,45 +915,45 @@ Description
 -----------
 Gives statistics about Transfer.
 ") GetStatsTransfer;
-		void GetStatsTransfer(const opencascade::handle<TColStd_HSequenceOfTransient> & list, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void GetStatsTransfer(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** XSControl_Reader::GiveList ******/
-		/****** md5 signature: 48cde5950be2c5c0783363940ad48d45 ******/
+		/****** md5 signature: 65dccbe924d10e2b99b809035c1c9a20 ******/
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "
 Parameters
 ----------
-first: str (optional, default to "")
-second: str (optional, default to "")
+first: char * (optional, default to "")
+second: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns a list of entities from the IGES or STEP file according to the following rules: - if first and second are empty strings, the whole file is selected. - if first is an entity number or label, the entity referred to is selected. - if first is a list of entity numbers/labels separated by commas, the entities referred to are selected, - if first is the name of a selection in the worksession and second is not defined, the list contains the standard output for that selection. - if first is the name of a selection and second is defined, the criterion defined by second is applied to the result of the first selection. A selection is an operator which computes a list of entities from a list given in input according to its type. If no list is specified, the selection computes its list of entities from the whole model. A selection can be: - A predefined selection (xst-transferrable-mode) - A filter based on a signature A Signature is an operator which returns a string from an entity according to its type. For example: - 'xst-type' (CDL) - 'iges-level' - 'step-type'. For example, if you wanted to select only the advanced_faces in a STEP file you would use the following code: Example Reader.GiveList('xst-transferrable-roots','step-type(ADVANCED_FACE)'); Warning If the value given to second is incorrect, it will simply be ignored.
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first = "", Standard_CString second = "");
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const char * const first = "", const char * const second = "");
 
 		/****** XSControl_Reader::GiveList ******/
-		/****** md5 signature: 05fdcf13ca9e417fad4d2b6ab10b4c43 ******/
+		/****** md5 signature: 4381879cc08347b7fd7c984394b88046 ******/
 		%feature("compactdefaultargs") GiveList;
 		%feature("autodoc", "
 Parameters
 ----------
-first: str
+first: char *
 ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Computes a List of entities from the model as follows <first> being a Selection, <ent> being an entity or a list of entities (as a HSequenceOfTransient): the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned.
 ") GiveList;
-		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first, const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const char * const first, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** XSControl_Reader::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
@@ -974,7 +969,7 @@ Returns the model. It can then be consulted (header, product).
 		opencascade::handle<Interface_InterfaceModel> Model();
 
 		/****** XSControl_Reader::NbRootsForTransfer ******/
-		/****** md5 signature: 50a9a876bd891ed944872afe5199e177 ******/
+		/****** md5 signature: 6c50d1a5e00da9d276aa5ad9bf3170f4 ******/
 		%feature("compactdefaultargs") NbRootsForTransfer;
 		%feature("autodoc", "Return
 -------
@@ -984,10 +979,10 @@ Description
 -----------
 Determines the list of root entities which are candidate for a transfer to a Shape, and returns the number of entities in the list.
 ") NbRootsForTransfer;
-		virtual Standard_Integer NbRootsForTransfer();
+		virtual int NbRootsForTransfer();
 
 		/****** XSControl_Reader::NbShapes ******/
-		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
+		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -997,7 +992,7 @@ Description
 -----------
 Returns the number of shapes produced by translation.
 ") NbShapes;
-		Standard_Integer NbShapes();
+		int NbShapes();
 
 		/****** XSControl_Reader::OneShape ******/
 		/****** md5 signature: 1fc1610db08b4eec83d275771d406ea5 ******/
@@ -1013,7 +1008,7 @@ Returns all of the results in a single shape which is: - a null shape if there a
 		TopoDS_Shape OneShape();
 
 		/****** XSControl_Reader::PrintCheckLoad ******/
-		/****** md5 signature: 39be9ee8d1dc305fcff3dc9ccaca7ff5 ******/
+		/****** md5 signature: 5f51a9285835ec954c1dabbfdd20284e ******/
 		%feature("compactdefaultargs") PrintCheckLoad;
 		%feature("autodoc", "
 Parameters
@@ -1029,10 +1024,10 @@ Description
 -----------
 Prints the check list attached to loaded data, on the Standard Trace File (starts at std::cout) All messages or fails only, according to <failsonly> mode = 0: per entity, prints messages mode = 1: per message, just gives count of entities per check mode = 2: also gives entity numbers.
 ") PrintCheckLoad;
-		void PrintCheckLoad(const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+		void PrintCheckLoad(const bool failsonly, const IFSelect_PrintCount mode);
 
 		/****** XSControl_Reader::PrintCheckLoad ******/
-		/****** md5 signature: ca487156a90b4b3b2c6320bc467c731d ******/
+		/****** md5 signature: 05858068c44834aeb32f89992056cde8 ******/
 		%feature("compactdefaultargs") PrintCheckLoad;
 		%feature("autodoc", "
 Parameters
@@ -1048,10 +1043,10 @@ Description
 -----------
 Prints the check list attached to loaded data.
 ") PrintCheckLoad;
-		void PrintCheckLoad(std::ostream &OutValue, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+		void PrintCheckLoad(std::ostream &OutValue, const bool failsonly, const IFSelect_PrintCount mode);
 
 		/****** XSControl_Reader::PrintCheckTransfer ******/
-		/****** md5 signature: 6750f68e6aed952f2529ea394507d25f ******/
+		/****** md5 signature: 539410bd549208b0d99be87ad594512f ******/
 		%feature("compactdefaultargs") PrintCheckTransfer;
 		%feature("autodoc", "
 Parameters
@@ -1067,10 +1062,10 @@ Description
 -----------
 Displays check results for the last translation of IGES or STEP entities to Open CASCADE entities. Only fail messages are displayed if failsonly is true. All messages are displayed if failsonly is false. mode determines the contents and the order of the messages according to the terms of the IFSelect_PrintCount enumeration.
 ") PrintCheckTransfer;
-		void PrintCheckTransfer(const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+		void PrintCheckTransfer(const bool failsonly, const IFSelect_PrintCount mode);
 
 		/****** XSControl_Reader::PrintCheckTransfer ******/
-		/****** md5 signature: 09d1abfff46e1d492cfc6662fd49988d ******/
+		/****** md5 signature: 64abcb2956b3f2d362cd901696dc6cca ******/
 		%feature("compactdefaultargs") PrintCheckTransfer;
 		%feature("autodoc", "
 Parameters
@@ -1086,10 +1081,10 @@ Description
 -----------
 Displays check results for the last translation of IGES or STEP entities to Open CASCADE entities.
 ") PrintCheckTransfer;
-		void PrintCheckTransfer(std::ostream &OutValue, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+		void PrintCheckTransfer(std::ostream &OutValue, const bool failsonly, const IFSelect_PrintCount mode);
 
 		/****** XSControl_Reader::PrintStatsTransfer ******/
-		/****** md5 signature: 148fec90ff7b063449e9624a36399cda ******/
+		/****** md5 signature: 65fd51353cdc73aaf5985224f25b6c9a ******/
 		%feature("compactdefaultargs") PrintStatsTransfer;
 		%feature("autodoc", "
 Parameters
@@ -1105,10 +1100,10 @@ Description
 -----------
 Displays the statistics for the last translation. what defines the kind of statistics that are displayed as follows: - 0 gives general statistics (number of translated roots, number of warnings, number of fail messages), - 1 gives root results, - 2 gives statistics for all checked entities, - 3 gives the list of translated entities, - 4 gives warning and fail messages, - 5 gives fail messages only. The use of mode depends on the value of what. If what is 0, mode is ignored. If what is 1, 2 or 3, mode defines the following: - 0 lists the numbers of IGES or STEP entities in the respective model - 1 gives the number, identifier, type and result type for each IGES or STEP entity and/or its status (fail, warning, etc.) - 2 gives maximum information for each IGES or STEP entity (i.e. checks) - 3 gives the number of entities per type of IGES or STEP entity - 4 gives the number of IGES or STEP entities per result type and/or status - 5 gives the number of pairs (IGES or STEP or result type and status) - 6 gives the number of pairs (IGES or STEP or result type and status) AND the list of entity numbers in the IGES or STEP model. If what is 4 or 5, mode defines the warning and fail messages as follows: - if mode is 0 all warnings and checks per entity are returned - if mode is 2 the list of entities per warning is returned. If mode is not set, only the list of all entities per warning is given.
 ") PrintStatsTransfer;
-		void PrintStatsTransfer(const Standard_Integer what, const Standard_Integer mode = 0);
+		void PrintStatsTransfer(const int what, const int mode = 0);
 
 		/****** XSControl_Reader::PrintStatsTransfer ******/
-		/****** md5 signature: fc32c8e9efabbaf8d728d672c3d2b5bb ******/
+		/****** md5 signature: e645b40da87a457f17df38393836874c ******/
 		%feature("compactdefaultargs") PrintStatsTransfer;
 		%feature("autodoc", "
 Parameters
@@ -1124,15 +1119,15 @@ Description
 -----------
 Displays the statistics for the last translation.
 ") PrintStatsTransfer;
-		void PrintStatsTransfer(std::ostream &OutValue, const Standard_Integer what, const Standard_Integer mode = 0);
+		void PrintStatsTransfer(std::ostream &OutValue, const int what, const int mode = 0);
 
 		/****** XSControl_Reader::ReadFile ******/
-		/****** md5 signature: 9bcb992176922214d5a97bb552525a68 ******/
+		/****** md5 signature: a53e5ad1575444aab999b9d0abc117b2 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -1142,15 +1137,15 @@ Description
 -----------
 Loads a file and returns the read status Zero for a Model which complies with the Controller.
 ") ReadFile;
-		virtual IFSelect_ReturnStatus ReadFile(Standard_CString filename);
+		virtual IFSelect_ReturnStatus ReadFile(const char * const filename);
 
 		/****** XSControl_Reader::ReadStream ******/
-		/****** md5 signature: aed7209903d9aa23c26d3f25b7956d06 ******/
+		/****** md5 signature: 757eef30551a8d07b51a7f60af26d396 ******/
 		%feature("compactdefaultargs") ReadStream;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 theIStream: str
 
 Return
@@ -1161,10 +1156,10 @@ Description
 -----------
 Loads a file from stream and returns the read status.
 ") ReadStream;
-		virtual IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
+		virtual IFSelect_ReturnStatus ReadStream(const char * const theName, std::istream & theIStream);
 
 		/****** XSControl_Reader::RootForTransfer ******/
-		/****** md5 signature: c2a76b8d96e252b5e6c8127f08dd357b ******/
+		/****** md5 signature: 16575a4a97d71f65c342b18e4424718b ******/
 		%feature("compactdefaultargs") RootForTransfer;
 		%feature("autodoc", "
 Parameters
@@ -1179,15 +1174,15 @@ Description
 -----------
 Returns an IGES or STEP root entity for translation. The entity is identified by its rank in a list.
 ") RootForTransfer;
-		opencascade::handle<Standard_Transient> RootForTransfer(const Standard_Integer num = 1);
+		opencascade::handle<Standard_Transient> RootForTransfer(const int num = 1);
 
 		/****** XSControl_Reader::SetNorm ******/
-		/****** md5 signature: b11f28b0f865ad413b98701b134b89de ******/
+		/****** md5 signature: dff893eab9798cebc2ec90693b2dd8d7 ******/
 		%feature("compactdefaultargs") SetNorm;
 		%feature("autodoc", "
 Parameters
 ----------
-norm: str
+norm: char *
 
 Return
 -------
@@ -1197,7 +1192,7 @@ Description
 -----------
 Sets a specific norm to <self> Returns True if done, False if <norm> is not available.
 ") SetNorm;
-		Standard_Boolean SetNorm(Standard_CString norm);
+		bool SetNorm(const char * const norm);
 
 		/****** XSControl_Reader::SetShapeFixParameters ******/
 		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
@@ -1278,13 +1273,13 @@ Parameter theFlags The flags defining operations to be performed on shapes.
 		void SetShapeProcessFlags(const ShapeProcess::OperationsFlags & theFlags);
 
 		/****** XSControl_Reader::SetWS ******/
-		/****** md5 signature: 74ebce3f94d695bdeb4915fb004d07d2 ******/
+		/****** md5 signature: e675abfcc47a61d413e625967e5d49a5 ******/
 		%feature("compactdefaultargs") SetWS;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: XSControl_WorkSession
-scratch: bool (optional, default to Standard_True)
+scratch: bool (optional, default to true)
 
 Return
 -------
@@ -1294,10 +1289,10 @@ Description
 -----------
 Sets a specific session to <self>.
 ") SetWS;
-		void SetWS(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
+		void SetWS(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
 		/****** XSControl_Reader::Shape ******/
-		/****** md5 signature: b325565d748ea0ef38fee9bdb447c4a9 ******/
+		/****** md5 signature: 6e6ae677c25a9ac8348a5f2da64b96ef ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1312,10 +1307,10 @@ Description
 -----------
 Returns the shape resulting from a translation and identified by the rank num. num equals 1 by default. In other words, the first shape resulting from the translation is returned.
 ") Shape;
-		TopoDS_Shape Shape(const Standard_Integer num = 1);
+		TopoDS_Shape Shape(const int num = 1);
 
 		/****** XSControl_Reader::TransferEntity ******/
-		/****** md5 signature: a61761ec2b4371c1cd95b155e879a9f5 ******/
+		/****** md5 signature: ca1f412f67824b5da78b4cfdeb8f8dac ******/
 		%feature("compactdefaultargs") TransferEntity;
 		%feature("autodoc", "
 Parameters
@@ -1331,15 +1326,15 @@ Description
 -----------
 Translates an IGES or STEP entity in the model. true is returned if a shape is produced; otherwise, false is returned.
 ") TransferEntity;
-		Standard_Boolean TransferEntity(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool TransferEntity(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Reader::TransferList ******/
-		/****** md5 signature: 2fe30c43488fd370e3a2ea9d29eb8e19 ******/
+		/****** md5 signature: 1c055deda981a374609fc6f65dc387df ******/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfTransient
+list: NCollection_HSequence<
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1350,10 +1345,10 @@ Description
 -----------
 Translates a list of entities. Returns the number of IGES or STEP entities that were successfully translated. The list can be produced with GiveList. Warning - This function does not clear the existing output shapes.
 ") TransferList;
-		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Reader::TransferOne ******/
-		/****** md5 signature: 5ca21e727f2cec59153b212824d1b2a4 ******/
+		/****** md5 signature: f6cb41a6696fd96fa766bc23d939e4fd ******/
 		%feature("compactdefaultargs") TransferOne;
 		%feature("autodoc", "
 Parameters
@@ -1369,10 +1364,10 @@ Description
 -----------
 Translates an IGES or STEP entity identified by the rank num in the model. false is returned if no shape is produced.
 ") TransferOne;
-		Standard_Boolean TransferOne(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool TransferOne(const int num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Reader::TransferOneRoot ******/
-		/****** md5 signature: 0762ab3715286d6c83ea56f2614a4210 ******/
+		/****** md5 signature: 6ff26923a2d42051608d7ad1f223a16e ******/
 		%feature("compactdefaultargs") TransferOneRoot;
 		%feature("autodoc", "
 Parameters
@@ -1388,10 +1383,10 @@ Description
 -----------
 Translates a root identified by the rank num in the model. false is returned if no shape is produced.
 ") TransferOneRoot;
-		Standard_Boolean TransferOneRoot(const Standard_Integer num = 1, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool TransferOneRoot(const int num = 1, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Reader::TransferRoots ******/
-		/****** md5 signature: 83eb98e38114ddbe608d9e72e46ea3a0 ******/
+		/****** md5 signature: 76395f2ef11063d65548b2f2fbf58d5e ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
@@ -1406,7 +1401,7 @@ Description
 -----------
 Translates all translatable roots and returns the number of successful translations. Warning - This function clears existing output shapes first.
 ") TransferRoots;
-		Standard_Integer TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Reader::WS ******/
 		/****** md5 signature: 4d866376b023ba3185e62899810cc121 ******/
@@ -1480,7 +1475,7 @@ Returns the Actor used as precised one. Returns a Null Handle for a creation fro
 		opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
 		/****** XSControl_SelectForTransfer::ExtractLabel ******/
-		/****** md5 signature: 04da44ccc1aaa5db6b559360d74d3853 ******/
+		/****** md5 signature: 9691d1c6d24b4e722314887ea1ee4452 ******/
 		%feature("compactdefaultargs") ExtractLabel;
 		%feature("autodoc", "Return
 -------
@@ -1542,7 +1537,7 @@ Sets a TransferReader to sort entities: it brings the Actor, which may change, w
 		void SetReader(const opencascade::handle<XSControl_TransferReader> & TR);
 
 		/****** XSControl_SelectForTransfer::Sort ******/
-		/****** md5 signature: 88b4690c932193f08237f487d1cf387b ******/
+		/****** md5 signature: 3ecc2fd812aaf0ff2da6a85af2cfb9f2 ******/
 		%feature("compactdefaultargs") Sort;
 		%feature("autodoc", "
 Parameters
@@ -1559,7 +1554,7 @@ Description
 -----------
 Returns True for an Entity which is recognized by the Actor, either the precised one, or the one defined by TransferReader.
 ") Sort;
-		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		bool Sort(const int rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
@@ -1671,7 +1666,7 @@ Sets a TransferReader to work.
 		void SetReader(const opencascade::handle<XSControl_TransferReader> & TR);
 
 		/****** XSControl_SignTransferStatus::Value ******/
-		/****** md5 signature: 4e85ac861c77ba955d20c48cb38639f7 ******/
+		/****** md5 signature: 5a5afde3bba2f0674f3051246f752061 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1681,18 +1676,16 @@ model: Interface_InterfaceModel
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the Signature for a Transient object, as its transfer status.
 ") Value;
-		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
+		const char * Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
 };
 
-
-%make_alias(XSControl_SignTransferStatus)
 
 %extend XSControl_SignTransferStatus {
 	%pythoncode {
@@ -1706,7 +1699,7 @@ Returns the Signature for a Transient object, as its transfer status.
 class XSControl_TransferReader : public Standard_Transient {
 	public:
 		/****** XSControl_TransferReader::XSControl_TransferReader ******/
-		/****** md5 signature: d196629f0cfdf876d23cc62e81a13197 ******/
+		/****** md5 signature: f22aa0c6d918429f04cf5f3cb8fe993d ******/
 		%feature("compactdefaultargs") XSControl_TransferReader;
 		%feature("autodoc", "Return
 -------
@@ -1732,7 +1725,7 @@ Returns the Actor, determined by the Controller, or if this one is unknown, dire
 		opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
 		/****** XSControl_TransferReader::BeginTransfer ******/
-		/****** md5 signature: 45b9be9b944a95886bf096a49eb0bf8e ******/
+		/****** md5 signature: 801cfd2af0c797c209e3f797f316b64f ******/
 		%feature("compactdefaultargs") BeginTransfer;
 		%feature("autodoc", "Return
 -------
@@ -1742,10 +1735,10 @@ Description
 -----------
 Defines a new TransferProcess for reading transfer Returns True if done, False if data are not properly defined (the Model, the Actor for Read).
 ") BeginTransfer;
-		Standard_Boolean BeginTransfer();
+		bool BeginTransfer();
 
 		/****** XSControl_TransferReader::CheckList ******/
-		/****** md5 signature: c2f87976868957726696fd3856e505ef ******/
+		/****** md5 signature: 5190719b3454511e787100c031e3dac8 ******/
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", "
 Parameters
@@ -1761,30 +1754,30 @@ Description
 -----------
 Returns the CheckList resulting from transferring <ent>, i.e. stored in its recorded form ResultFromModel (empty if transfer successful or not recorded ...) //! If <ent> is the Model, returns the complete cumulated check-list, <level> is ignored //! If <ent> is an entity of the Model, <level> applies as follows <level>: -1 for <ent> only, LAST transfer (TransientProcess) <level>: 0 for <ent> only (D) 1 for <ent> and its immediate subtransfers, if any 2 for <ent> and subtransferts at all levels.
 ") CheckList;
-		Interface_CheckIterator CheckList(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theLevel = 0);
+		Interface_CheckIterator CheckList(const opencascade::handle<Standard_Transient> & theEnt, const int theLevel = 0);
 
 		/****** XSControl_TransferReader::CheckedList ******/
-		/****** md5 signature: 8cccffcb6267b484c298f8f27148f0ea ******/
+		/****** md5 signature: 5e3e0a208226bc3c2d87bcca9ca7a566 ******/
 		%feature("compactdefaultargs") CheckedList;
 		%feature("autodoc", "
 Parameters
 ----------
 theEnt: Standard_Transient
 WithCheck: Interface_CheckStatus (optional, default to Interface_CheckAny)
-theResult: bool (optional, default to Standard_True)
+theResult: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of starting entities to which a given check status is attached, IN FINAL RESULTS <ent> can be an entity, or the model to query all entities Below, 'entities' are, either <ent> plus its sub-transferred, or all the entities of the model //! <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result>: if True, only entities with an attached result Remark: result True and check=0 will give an empty list.
 ") CheckedList;
-		opencascade::handle<TColStd_HSequenceOfTransient> CheckedList(const opencascade::handle<Standard_Transient> & theEnt, const Interface_CheckStatus WithCheck = Interface_CheckAny, const Standard_Boolean theResult = Standard_True);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> CheckedList(const opencascade::handle<Standard_Transient> & theEnt, const Interface_CheckStatus WithCheck = Interface_CheckAny, const bool theResult = true);
 
 		/****** XSControl_TransferReader::Clear ******/
-		/****** md5 signature: 0fc5de3e361f7d75f07cbd42429ea39e ******/
+		/****** md5 signature: 9680b1ccf859415093c2d22a770bbee9 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -1799,10 +1792,10 @@ Description
 -----------
 Clears data, according mode: -1 all 0 nothing done +1 final results +2 working data (model, context, transfer process).
 ") Clear;
-		void Clear(const Standard_Integer theMode);
+		void Clear(const int theMode);
 
 		/****** XSControl_TransferReader::ClearResult ******/
-		/****** md5 signature: 5bdf0f703cced31251a00d2b3bc9afa8 ******/
+		/****** md5 signature: a53fe243de1156e8bff53dbcad8dbf30 ******/
 		%feature("compactdefaultargs") ClearResult;
 		%feature("autodoc", "
 Parameters
@@ -1818,7 +1811,7 @@ Description
 -----------
 Clears recorded result for an entity, according mode <mode> = -1: true, complete, clearing (erasing result) <mode> >= 0: simple 'stripping', see ResultFromModel, in particular, 0 for simple internal strip, 10 for all but final result, 11 for all: just label, status and filename are kept Returns True when done, False if nothing was to clear.
 ") ClearResult;
-		Standard_Boolean ClearResult(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theMode);
+		bool ClearResult(const opencascade::handle<Standard_Transient> & theEnt, const int theMode);
 
 		/****** XSControl_TransferReader::Context ******/
 		/****** md5 signature: 2192f10621cbd30af6762c51d01c4896 ******/
@@ -1834,26 +1827,26 @@ Returns (modifiable) the whole definition of Context Rather for internal use (ex
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & Context();
 
 		/****** XSControl_TransferReader::EntitiesFromShapeList ******/
-		/****** md5 signature: 83388d3268ac9efa80b65d6114cc0656 ******/
+		/****** md5 signature: 98c2986b00b40c70926fe76aa4ba4c4e ******/
 		%feature("compactdefaultargs") EntitiesFromShapeList;
 		%feature("autodoc", "
 Parameters
 ----------
-theRes: TopTools_HSequenceOfShape
+theRes: NCollection_HSequence<TopoDS_Shape
 theMode: int (optional, default to 0)
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of entities from which some shapes were produced: it corresponds to a loop on EntityFromShapeResult, but is optimised.
 ") EntitiesFromShapeList;
-		opencascade::handle<TColStd_HSequenceOfTransient> EntitiesFromShapeList(const opencascade::handle<TopTools_HSequenceOfShape> & theRes, const Standard_Integer theMode = 0);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> EntitiesFromShapeList(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & theRes, const int theMode = 0);
 
 		/****** XSControl_TransferReader::EntityFromResult ******/
-		/****** md5 signature: 9966cc6cce3e3ddf217e30b42b64e541 ******/
+		/****** md5 signature: 78725ba6a6c061be96149acca8145aeb ******/
 		%feature("compactdefaultargs") EntityFromResult;
 		%feature("autodoc", "
 Parameters
@@ -1869,10 +1862,10 @@ Description
 -----------
 Returns an entity from which a given result was produced. If <mode> = 0 (D), searches in last root transfers If <mode> = 1, searches in last (root & sub) transfers If <mode> = 2, searches in root recorded results If <mode> = 3, searches in all (root & sub) recordeds <res> can be, either a transient object (result itself) or a binder. For a binder of shape, calls EntityFromShapeResult Returns a Null Handle if <res> not recorded.
 ") EntityFromResult;
-		opencascade::handle<Standard_Transient> EntityFromResult(const opencascade::handle<Standard_Transient> & theRes, const Standard_Integer theMode = 0);
+		opencascade::handle<Standard_Transient> EntityFromResult(const opencascade::handle<Standard_Transient> & theRes, const int theMode = 0);
 
 		/****** XSControl_TransferReader::EntityFromShapeResult ******/
-		/****** md5 signature: f74655131aba069e790b407d9b4e5bd2 ******/
+		/****** md5 signature: 2ce5e80288527c1a5e232ed0a4858328 ******/
 		%feature("compactdefaultargs") EntityFromShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -1888,23 +1881,23 @@ Description
 -----------
 Returns an entity from which a given shape result was produced Returns a Null Handle if <res> not recorded or not a Shape.
 ") EntityFromShapeResult;
-		opencascade::handle<Standard_Transient> EntityFromShapeResult(const TopoDS_Shape & theRes, const Standard_Integer theMode = 0);
+		opencascade::handle<Standard_Transient> EntityFromShapeResult(const TopoDS_Shape & theRes, const int theMode = 0);
 
 		/****** XSControl_TransferReader::FileName ******/
-		/****** md5 signature: d874246a35353c4bd05788da23930d39 ******/
+		/****** md5 signature: 1ea5b368420e11a254575da4259e4117 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Returns actual value of file name.
 ") FileName;
-		Standard_CString FileName();
+		const char * FileName();
 
 		/****** XSControl_TransferReader::FinalEntityLabel ******/
-		/****** md5 signature: b69bb15f15e6f82ae664a88db6ee06ce ******/
+		/****** md5 signature: 0b5e959cc6d9f6b0099cb1ec4efe0292 ******/
 		%feature("compactdefaultargs") FinalEntityLabel;
 		%feature("autodoc", "
 Parameters
@@ -1913,16 +1906,16 @@ theEnt: Standard_Transient
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the label attached to an entity recorded for final, or an empty string if not recorded.
 ") FinalEntityLabel;
-		Standard_CString FinalEntityLabel(const opencascade::handle<Standard_Transient> & theEnt);
+		const char * FinalEntityLabel(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::FinalEntityNumber ******/
-		/****** md5 signature: 3e2d0fafc06899f9afe7055b8cad793b ******/
+		/****** md5 signature: 3b4c98214ad63e23aeb271b28220658e ******/
 		%feature("compactdefaultargs") FinalEntityNumber;
 		%feature("autodoc", "
 Parameters
@@ -1937,7 +1930,7 @@ Description
 -----------
 Returns the number attached to the entity recorded for final, or zero if not recorded (looks in the ResultFromModel).
 ") FinalEntityNumber;
-		Standard_Integer FinalEntityNumber(const opencascade::handle<Standard_Transient> & theEnt);
+		int FinalEntityNumber(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::FinalResult ******/
 		/****** md5 signature: 429e43bd87413e71202b551aefc70959 ******/
@@ -1958,12 +1951,12 @@ Returns the final result recorded for an entity, as such.
 		opencascade::handle<Transfer_ResultFromModel> FinalResult(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::GetContext ******/
-		/****** md5 signature: a928652c8c5ed3faff31178baa4553a3 ******/
+		/****** md5 signature: 0e71568b694431419eba8d57157bf92d ******/
 		%feature("compactdefaultargs") GetContext;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 theType: Standard_Type
 theCtx: Standard_Transient
 
@@ -1975,10 +1968,10 @@ Description
 -----------
 Returns the Context attached to a name, if set and if it is Kind of the type, else a Null Handle Returns True if OK, False if no Context.
 ") GetContext;
-		Standard_Boolean GetContext(Standard_CString theName, const opencascade::handle<Standard_Type> & theType, opencascade::handle<Standard_Transient> & theCtx);
+		bool GetContext(const char * const theName, const opencascade::handle<Standard_Type> & theType, opencascade::handle<Standard_Transient> & theCtx);
 
 		/****** XSControl_TransferReader::HasChecks ******/
-		/****** md5 signature: 2b7042065eb7437ca9470c6f68798861 ******/
+		/****** md5 signature: 99195f106090ade49eb5d6c5f33a1508 ******/
 		%feature("compactdefaultargs") HasChecks;
 		%feature("autodoc", "
 Parameters
@@ -1994,10 +1987,10 @@ Description
 -----------
 Returns True if an entity (with a final result) has checks: - failsonly = False: any kind of check message - failsonly = True: fails only Returns False if <ent> is not recorded.
 ") HasChecks;
-		Standard_Boolean HasChecks(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Boolean FailsOnly);
+		bool HasChecks(const opencascade::handle<Standard_Transient> & theEnt, const bool FailsOnly);
 
 		/****** XSControl_TransferReader::HasResult ******/
-		/****** md5 signature: 5bc4f7165e8bf32577d609094faf715c ******/
+		/****** md5 signature: e5af435ef9f068ba15cd8d24f2f285f2 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "
 Parameters
@@ -2012,10 +2005,10 @@ Description
 -----------
 Returns True if a final result is recorded AND BRINGS AN EFFECTIVE RESULT (else, it brings only fail messages).
 ") HasResult;
-		Standard_Boolean HasResult(const opencascade::handle<Standard_Transient> & theEnt);
+		bool HasResult(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::IsMarked ******/
-		/****** md5 signature: d2c3793dc072a96ae5faba49254c6399 ******/
+		/****** md5 signature: b2799afc09c5a6e98f9a7008dc093843 ******/
 		%feature("compactdefaultargs") IsMarked;
 		%feature("autodoc", "
 Parameters
@@ -2030,10 +2023,10 @@ Description
 -----------
 Returns True if an entity has been asked for transfert, hence it is marked, as: Recorded (a computation has ran, with or without an effective result), or Skipped (case ignored).
 ") IsMarked;
-		Standard_Boolean IsMarked(const opencascade::handle<Standard_Transient> & theEnt);
+		bool IsMarked(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::IsRecorded ******/
-		/****** md5 signature: 7c44b4b03d05b9dce1047d6fe502f0e0 ******/
+		/****** md5 signature: 8d9f78e9d4b091c5240b29b41f7ecea1 ******/
 		%feature("compactdefaultargs") IsRecorded;
 		%feature("autodoc", "
 Parameters
@@ -2048,10 +2041,10 @@ Description
 -----------
 Returns True if a final result is recorded for an entity Remark that it can bring no effective result if transfer has completely failed (FinalResult brings only fail messages ...).
 ") IsRecorded;
-		Standard_Boolean IsRecorded(const opencascade::handle<Standard_Transient> & theEnt);
+		bool IsRecorded(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::IsSkipped ******/
-		/****** md5 signature: e7c03cee7d8670b6be35b9d94b861cec ******/
+		/****** md5 signature: 0580e4375b04a8f4565b706c1dff05d9 ******/
 		%feature("compactdefaultargs") IsSkipped;
 		%feature("autodoc", "
 Parameters
@@ -2066,7 +2059,7 @@ Description
 -----------
 Returns True if an entity is noted as skipped.
 ") IsSkipped;
-		Standard_Boolean IsSkipped(const opencascade::handle<Standard_Transient> & theEnt);
+		bool IsSkipped(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::LastCheckList ******/
 		/****** md5 signature: 98db2d023bd132f620c4e024a6c65c5a ******/
@@ -2082,7 +2075,7 @@ Returns the CheckList resulting from last TransferRead i.e. from TransientProces
 		Interface_CheckIterator LastCheckList();
 
 		/****** XSControl_TransferReader::LastTransferList ******/
-		/****** md5 signature: 255bd5a89b5da47c530b324fdd155480 ******/
+		/****** md5 signature: 170362fefb27905b7e60a697eef8b63b ******/
 		%feature("compactdefaultargs") LastTransferList;
 		%feature("autodoc", "
 Parameters
@@ -2091,13 +2084,13 @@ theRoots: bool
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of entities recorded as lastly transferred i.e. from TransientProcess itself, recorded from last Clear If <roots> is True , considers only roots of transfer If <roots> is False, considers all entities bound with result.
 ") LastTransferList;
-		opencascade::handle<TColStd_HSequenceOfTransient> LastTransferList(const Standard_Boolean theRoots);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> LastTransferList(const bool theRoots);
 
 		/****** XSControl_TransferReader::Model ******/
 		/****** md5 signature: e485d2c2a2cfa9af3cc655f00e076be4 ******/
@@ -2113,7 +2106,7 @@ Returns the currently set InterfaceModel.
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
 		/****** XSControl_TransferReader::PrintStats ******/
-		/****** md5 signature: 1c7ce9a7eeef2971ad247597c52d38d8 ******/
+		/****** md5 signature: d740391b76dcf531ebbc6defb384a772 ******/
 		%feature("compactdefaultargs") PrintStats;
 		%feature("autodoc", "
 Parameters
@@ -2129,16 +2122,16 @@ Description
 -----------
 Prints statistics on current Trace File, according <what> and <mode>. See PrintStatsProcess for details.
 ") PrintStats;
-		void PrintStats(std::ostream &OutValue, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
+		void PrintStats(std::ostream &OutValue, const int theWhat, const int theMode = 0);
 
 		/****** XSControl_TransferReader::PrintStatsOnList ******/
-		/****** md5 signature: 163b44563c2a8ec32944ebf6b8b54c19 ******/
+		/****** md5 signature: 4550a07970849212ca1d3ab179a5fb38 ******/
 		%feature("compactdefaultargs") PrintStatsOnList;
 		%feature("autodoc", "
 Parameters
 ----------
 theTP: Transfer_TransientProcess
-theList: TColStd_HSequenceOfTransient
+theList: NCollection_HSequence<
 theWhat: int
 theMode: int (optional, default to 0)
 
@@ -2150,10 +2143,10 @@ Description
 -----------
 Works as PrintStatsProcess, but displays data only on the entities which are in <list> (filter).
 ") PrintStatsOnList;
-		static void PrintStatsOnList(const opencascade::handle<Transfer_TransientProcess> & theTP, const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
+		static void PrintStatsOnList(const opencascade::handle<Transfer_TransientProcess> & theTP, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & theList, const int theWhat, const int theMode = 0);
 
 		/****** XSControl_TransferReader::PrintStatsProcess ******/
-		/****** md5 signature: 98ccee84665b07d53fee857c3620f46c ******/
+		/****** md5 signature: 3fd24702d34ffd7ca9ce8dcadb6396d0 ******/
 		%feature("compactdefaultargs") PrintStatsProcess;
 		%feature("autodoc", "
 Parameters
@@ -2170,10 +2163,10 @@ Description
 -----------
 This routines prints statistics about a TransientProcess It can be called, by a TransferReader, or isolately Prints are done on the default trace file <what> defines what kind of statistics are to be printed: 0: basic figures 1: root results 2: all recorded (roots, intermediate, checked entities) 3: abnormal records 4: check messages (warnings and fails) 5: fail messages //! <mode> is used according <what>: <what> = 0: <mode> is ignored <what> = 1,2,3: <mode> as follows: 0 (D): just lists numbers of concerned entities in the model 1: for each entity, gives number,label, type and result type and/or status (fail/warning...) 2: for each entity, gives maximal information (i.e. checks) 3: counts per type of starting entity (class type) 4: counts per result type and/or status 5: counts per couple (starting type / result type/status) 6: idem plus gives for each item, the list of numbers of entities in the starting model //! <what> = 4,5: modes relays on an enum PrintCount: 0 (D): ItemsByEntity (sequential list by entity) 1: CountByItem 2: ShortByItem (count + 5 first numbers) 3: ListByItem (count + entity numbers) 4: EntitiesByItem (count + entity numbers and labels).
 ") PrintStatsProcess;
-		static void PrintStatsProcess(const opencascade::handle<Transfer_TransientProcess> & theTP, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
+		static void PrintStatsProcess(const opencascade::handle<Transfer_TransientProcess> & theTP, const int theWhat, const int theMode = 0);
 
 		/****** XSControl_TransferReader::Recognize ******/
-		/****** md5 signature: 7ac38a536d6a830144755800fed05505 ******/
+		/****** md5 signature: d07e40570e4a058d39f0bfde0cf898f8 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -2188,10 +2181,10 @@ Description
 -----------
 Tells if an entity is recognized as a valid candidate for Transfer. Calls method Recognize from the Actor (if known).
 ") Recognize;
-		Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & theEnt);
+		bool Recognize(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::RecordResult ******/
-		/****** md5 signature: 140a5463891e1077f92ad1fff05143af ******/
+		/****** md5 signature: 8747bcff91b5eddcebc10cfa8f127b1f ******/
 		%feature("compactdefaultargs") RecordResult;
 		%feature("autodoc", "
 Parameters
@@ -2206,23 +2199,23 @@ Description
 -----------
 Records a final result of transferring an entity This result is recorded as a ResultFromModel, taken from the TransientProcess Returns True if a result is available, False else.
 ") RecordResult;
-		Standard_Boolean RecordResult(const opencascade::handle<Standard_Transient> & theEnt);
+		bool RecordResult(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::RecordedList ******/
-		/****** md5 signature: 69df4ce6aa6ddf3e857c86735c558f1d ******/
+		/****** md5 signature: 04ed8041afb0f2e346a85a936c77b039 ******/
 		%feature("compactdefaultargs") RecordedList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 Returns the list of entities to which a final result is attached (i.e. processed by RecordResult).
 ") RecordedList;
-		opencascade::handle<TColStd_HSequenceOfTransient> RecordedList();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> RecordedList();
 
 		/****** XSControl_TransferReader::ResultFromNumber ******/
-		/****** md5 signature: 485bb01fc509d5a2647c8297465ceea1 ******/
+		/****** md5 signature: 7f61a067169bdd9789dcaa92c2ef6ced ******/
 		%feature("compactdefaultargs") ResultFromNumber;
 		%feature("autodoc", "
 Parameters
@@ -2237,7 +2230,7 @@ Description
 -----------
 Returns the final result recorded for a NUMBER of entity (internal use). Null if out of range.
 ") ResultFromNumber;
-		opencascade::handle<Transfer_ResultFromModel> ResultFromNumber(const Standard_Integer theNum);
+		opencascade::handle<Transfer_ResultFromModel> ResultFromNumber(const int theNum);
 
 		/****** XSControl_TransferReader::SetActor ******/
 		/****** md5 signature: 7f2c954ef588b667224b188bc0e97ec3 ******/
@@ -2258,12 +2251,12 @@ Sets the Actor directly: this value will be used if the Controller is not set.
 		void SetActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & theActor);
 
 		/****** XSControl_TransferReader::SetContext ******/
-		/****** md5 signature: 160b84a68713fc880aa1b5e0cdd0f277 ******/
+		/****** md5 signature: f5462406adf292a27a8f604a871bf11f ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 theCtx: Standard_Transient
 
 Return
@@ -2274,7 +2267,7 @@ Description
 -----------
 Sets a Context: according to receiving appli, to be interpreted by the Actor.
 ") SetContext;
-		void SetContext(Standard_CString theName, const opencascade::handle<Standard_Transient> & theCtx);
+		void SetContext(const char * const theName, const opencascade::handle<Standard_Transient> & theCtx);
 
 		/****** XSControl_TransferReader::SetController ******/
 		/****** md5 signature: 288d2810c031f13ea60c18de24c3c86c ******/
@@ -2295,12 +2288,12 @@ Sets a Controller. It is required to generate the Actor. Elsewhere, the Actor mu
 		void SetController(const opencascade::handle<XSControl_Controller> & theControl);
 
 		/****** XSControl_TransferReader::SetFileName ******/
-		/****** md5 signature: 3469ac92815ae32c739c6c0d2abc2842 ******/
+		/****** md5 signature: e8dc5343a763141604bd390315ad522a ******/
 		%feature("compactdefaultargs") SetFileName;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 
 Return
 -------
@@ -2310,7 +2303,7 @@ Description
 -----------
 Sets a new value for (loaded) file name.
 ") SetFileName;
-		void SetFileName(Standard_CString theName);
+		void SetFileName(const char * const theName);
 
 		/****** XSControl_TransferReader::SetGraph ******/
 		/****** md5 signature: 003fda4710fad22243642415793d506b ******/
@@ -2385,7 +2378,7 @@ Returns the resulting object as a Shape Null Shape if no result or result not a 
 		TopoDS_Shape ShapeResult(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::ShapeResultList ******/
-		/****** md5 signature: 34a9b701885a19df4e47fd5e4d658dfc ******/
+		/****** md5 signature: d633fac26f4b5ac8af830bb76442767c ******/
 		%feature("compactdefaultargs") ShapeResultList;
 		%feature("autodoc", "
 Parameters
@@ -2394,16 +2387,16 @@ theRec: bool
 
 Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 Returns a list of result Shapes If <rec> is True , sees RecordedList If <rec> is False, sees LastTransferList (last ROOT transfers) For each one, if it is a Shape, it is cumulated to the list If no Shape is found, returns an empty Sequence.
 ") ShapeResultList;
-		const opencascade::handle<TopTools_HSequenceOfShape> & ShapeResultList(const Standard_Boolean theRec);
+		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> ShapeResultList(const bool theRec);
 
 		/****** XSControl_TransferReader::Skip ******/
-		/****** md5 signature: 46a7fdece4afcb0fa8c73e8c509ef729 ******/
+		/****** md5 signature: 0928fe9f404ffb6ce20ee4d090318f60 ******/
 		%feature("compactdefaultargs") Skip;
 		%feature("autodoc", "
 Parameters
@@ -2418,10 +2411,10 @@ Description
 -----------
 Note that an entity has been required for transfer but no result at all is available (typically: case not implemented) It is not an error, but it gives a specific status: Skipped Returns True if done, False if <ent> is not in starting model.
 ") Skip;
-		Standard_Boolean Skip(const opencascade::handle<Standard_Transient> & theEnt);
+		bool Skip(const opencascade::handle<Standard_Transient> & theEnt);
 
 		/****** XSControl_TransferReader::TransferClear ******/
-		/****** md5 signature: 0ff526a57b66ac0a91f4eec27ac49bfa ******/
+		/****** md5 signature: dc3bb26c4200c11a649723a0fac9eab6 ******/
 		%feature("compactdefaultargs") TransferClear;
 		%feature("autodoc", "
 Parameters
@@ -2437,16 +2430,16 @@ Description
 -----------
 Clears the results attached to an entity if <ents> equates the starting model, clears all results.
 ") TransferClear;
-		void TransferClear(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theLevel = 0);
+		void TransferClear(const opencascade::handle<Standard_Transient> & theEnt, const int theLevel = 0);
 
 		/****** XSControl_TransferReader::TransferList ******/
-		/****** md5 signature: 39770c9d3099552c2587ae06811ed0fb ******/
+		/****** md5 signature: fc9b6e99541aef738b342c0358daf0ae ******/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "
 Parameters
 ----------
-theList: TColStd_HSequenceOfTransient
-theRec: bool (optional, default to Standard_True)
+theList: NCollection_HSequence<
+theRec: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -2457,16 +2450,16 @@ Description
 -----------
 Commands the transfer on reading for a list of entities to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the results are recorded by RecordResult.
 ") TransferList;
-		Standard_Integer TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & theList, const Standard_Boolean theRec = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & theList, const bool theRec = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_TransferReader::TransferOne ******/
-		/****** md5 signature: c584819dd9b126bcab438697e731b566 ******/
+		/****** md5 signature: 568e1ca164071e0a6e8f78f5250d8636 ******/
 		%feature("compactdefaultargs") TransferOne;
 		%feature("autodoc", "
 Parameters
 ----------
 theEnt: Standard_Transient
-theRec: bool (optional, default to Standard_True)
+theRec: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -2477,10 +2470,10 @@ Description
 -----------
 Commands the transfer on reading for an entity to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the result is recorded by RecordResult.
 ") TransferOne;
-		Standard_Integer TransferOne(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Boolean theRec = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferOne(const opencascade::handle<Standard_Transient> & theEnt, const bool theRec = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_TransferReader::TransferRoots ******/
-		/****** md5 signature: d3c3a844862d45f4410d4148c8434742 ******/
+		/****** md5 signature: a6015ef3a4f025d40b460d234dbd5964 ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
@@ -2496,7 +2489,7 @@ Description
 -----------
 Transfers the content of the current Interface Model to data handled by Imagine, starting from its Roots (determined by the Graph <G>), using the selected Actor for Read Returns the count of performed root transfers (i.e. 0 if none) or -1 if no actor is defined.
 ") TransferRoots;
-		Standard_Integer TransferRoots(const Interface_Graph & theGraph, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferRoots(const Interface_Graph & theGraph, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_TransferReader::TransientProcess ******/
 		/****** md5 signature: c581697d9fdd28675207e919d05ae7c9 ******/
@@ -2572,7 +2565,7 @@ Returns the check-list of last transfer (write), i.e. the check-list currently r
 		Interface_CheckIterator CheckList();
 
 		/****** XSControl_TransferWriter::Clear ******/
-		/****** md5 signature: 0fc5de3e361f7d75f07cbd42429ea39e ******/
+		/****** md5 signature: 9680b1ccf859415093c2d22a770bbee9 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -2587,7 +2580,7 @@ Description
 -----------
 Clears recorded data according a mode 0 clears FinderProcess (results, checks) -1 create a new FinderProcess.
 ") Clear;
-		void Clear(const Standard_Integer theMode);
+		void Clear(const int theMode);
 
 		/****** XSControl_TransferWriter::Controller ******/
 		/****** md5 signature: a2ab19669057f52b70e72fb487074ee6 ******/
@@ -2616,7 +2609,7 @@ Returns the FinderProcess itself.
 		const opencascade::handle<Transfer_FinderProcess> & FinderProcess();
 
 		/****** XSControl_TransferWriter::PrintStats ******/
-		/****** md5 signature: 8bd41dfecd854fc8ff870fc204b89f8f ******/
+		/****** md5 signature: 172ea241d2d939c5b739ef3b8c59fc5a ******/
 		%feature("compactdefaultargs") PrintStats;
 		%feature("autodoc", "
 Parameters
@@ -2632,10 +2625,10 @@ Description
 -----------
 Prints statistics on current Trace File, according what,mode See PrintStatsProcess for details.
 ") PrintStats;
-		void PrintStats(const Standard_Integer theWhat, const Standard_Integer theMode = 0);
+		void PrintStats(const int theWhat, const int theMode = 0);
 
 		/****** XSControl_TransferWriter::RecognizeShape ******/
-		/****** md5 signature: 1f48fd8f9a4c11c732ae9a5618118f88 ******/
+		/****** md5 signature: c35984999c1d61d2fea6c35a9d693e5a ******/
 		%feature("compactdefaultargs") RecognizeShape;
 		%feature("autodoc", "
 Parameters
@@ -2650,10 +2643,10 @@ Description
 -----------
 Tells if a Shape is valid for a transfer to a model Asks the Controller (RecognizeWriteShape).
 ") RecognizeShape;
-		Standard_Boolean RecognizeShape(const TopoDS_Shape & theShape);
+		bool RecognizeShape(const TopoDS_Shape & theShape);
 
 		/****** XSControl_TransferWriter::RecognizeTransient ******/
-		/****** md5 signature: 2b8e7a67951e00a535c14ad88815161c ******/
+		/****** md5 signature: 45682ad412f568437dfce61e6cddf289 ******/
 		%feature("compactdefaultargs") RecognizeTransient;
 		%feature("autodoc", "
 Parameters
@@ -2668,7 +2661,7 @@ Description
 -----------
 Tells if a transient object (from an application) is a valid candidate for a transfer to a model Asks the Controller (RecognizeWriteTransient) If <obj> is a HShape, calls RecognizeShape.
 ") RecognizeTransient;
-		Standard_Boolean RecognizeTransient(const opencascade::handle<Standard_Transient> & theObj);
+		bool RecognizeTransient(const opencascade::handle<Standard_Transient> & theObj);
 
 		/****** XSControl_TransferWriter::ResultCheckList ******/
 		/****** md5 signature: 7cb46339c8706e2628e4fba9b5f6e250 ******/
@@ -2725,7 +2718,7 @@ Sets a new FinderProcess and forgets the former one.
 		void SetFinderProcess(const opencascade::handle<Transfer_FinderProcess> & theFP);
 
 		/****** XSControl_TransferWriter::SetTransferMode ******/
-		/****** md5 signature: f34971a6bf9f1f3b74f421bf761b7f00 ******/
+		/****** md5 signature: 3bf25d9d04c720bdbbe2e7795ba53451 ******/
 		%feature("compactdefaultargs") SetTransferMode;
 		%feature("autodoc", "
 Parameters
@@ -2740,10 +2733,10 @@ Description
 -----------
 Changes the Transfer Mode.
 ") SetTransferMode;
-		void SetTransferMode(const Standard_Integer theMode);
+		void SetTransferMode(const int theMode);
 
 		/****** XSControl_TransferWriter::TransferMode ******/
-		/****** md5 signature: 73602a039d76c3decd9df7593a3b80eb ******/
+		/****** md5 signature: 840b1221e276a56fc5d835c69b8355c3 ******/
 		%feature("compactdefaultargs") TransferMode;
 		%feature("autodoc", "Return
 -------
@@ -2753,7 +2746,7 @@ Description
 -----------
 Returns the current Transfer Mode (an Integer) It will be interpreted by the Controller to run Transfers This call form could be later replaced by more specific ones (parameters suited for each norm / transfer case).
 ") TransferMode;
-		Standard_Integer TransferMode();
+		int TransferMode();
 
 		/****** XSControl_TransferWriter::TransferWriteShape ******/
 		/****** md5 signature: f8d35c8811b8b7877bd856613dfb9e8e ******/
@@ -2825,13 +2818,13 @@ the only use of this, is to allow a frontal to get one distinct 'Utils' set per 
 		 XSControl_Utils();
 
 		/****** XSControl_Utils::AppendCStr ******/
-		/****** md5 signature: 6e3a97d130fd0aaf4d4548e30eac9e24 ******/
+		/****** md5 signature: b8ba74a1fa0ade7d4dc15c1cf8817d7a ******/
 		%feature("compactdefaultargs") AppendCStr;
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: TColStd_HSequenceOfHAsciiString
-strval: str
+seqval: NCollection_HSequence<
+strval: char *
 
 Return
 -------
@@ -2841,16 +2834,16 @@ Description
 -----------
 No available documentation.
 ") AppendCStr;
-		void AppendCStr(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & seqval, Standard_CString strval);
+		void AppendCStr(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & seqval, const char * const strval);
 
 		/****** XSControl_Utils::AppendEStr ******/
-		/****** md5 signature: 9934e3172203d6e27f9d10c78cd358ae ******/
+		/****** md5 signature: d1a3d7d9cc7b6a3906c7e403763d1fcb ******/
 		%feature("compactdefaultargs") AppendEStr;
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: TColStd_HSequenceOfHExtendedString
-strval: Standard_ExtString
+seqval: NCollection_HSequence<
+strval: char16_t *
 
 Return
 -------
@@ -2860,15 +2853,15 @@ Description
 -----------
 No available documentation.
 ") AppendEStr;
-		void AppendEStr(const opencascade::handle<TColStd_HSequenceOfHExtendedString> & seqval, const Standard_ExtString strval);
+		void AppendEStr(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString> > > & seqval, const char16_t * const strval);
 
 		/****** XSControl_Utils::AppendShape ******/
-		/****** md5 signature: 9148f939f8b2aff61c51b67d958b5e92 ******/
+		/****** md5 signature: 70cd5b9ac55186efb1f693f90023289b ******/
 		%feature("compactdefaultargs") AppendShape;
 		%feature("autodoc", "
 Parameters
 ----------
-seqv: TopTools_HSequenceOfShape
+seqv: NCollection_HSequence<TopoDS_Shape
 shape: TopoDS_Shape
 
 Return
@@ -2879,15 +2872,15 @@ Description
 -----------
 No available documentation.
 ") AppendShape;
-		void AppendShape(const opencascade::handle<TopTools_HSequenceOfShape> & seqv, const TopoDS_Shape & shape);
+		void AppendShape(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqv, const TopoDS_Shape & shape);
 
 		/****** XSControl_Utils::AppendTra ******/
-		/****** md5 signature: 59c160fce3b70fb5b83d7981544c45f4 ******/
+		/****** md5 signature: 271f823d2b0adf6d3af778c1771c4159 ******/
 		%feature("compactdefaultargs") AppendTra;
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: TColStd_HSequenceOfTransient
+seqval: NCollection_HSequence<
 traval: Standard_Transient
 
 Return
@@ -2898,7 +2891,7 @@ Description
 -----------
 No available documentation.
 ") AppendTra;
-		void AppendTra(const opencascade::handle<TColStd_HSequenceOfTransient> & seqval, const opencascade::handle<Standard_Transient> & traval);
+		void AppendTra(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & seqval, const opencascade::handle<Standard_Transient> & traval);
 
 		/****** XSControl_Utils::ArrToSeq ******/
 		/****** md5 signature: 4a24694daf778caba1ea7d2fd0a2bc1c ******/
@@ -2919,22 +2912,22 @@ No available documentation.
 		opencascade::handle<Standard_Transient> ArrToSeq(const opencascade::handle<Standard_Transient> & arr);
 
 		/****** XSControl_Utils::AsciiToExtended ******/
-		/****** md5 signature: 57f262f4865f4fa2d3c3e229d384e566 ******/
+		/****** md5 signature: 4d893affeb2439b869a7fa9f448c7f8e ******/
 		%feature("compactdefaultargs") AsciiToExtended;
 		%feature("autodoc", "
 Parameters
 ----------
-str: str
+str: char *
 
 Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 No available documentation.
 ") AsciiToExtended;
-		Standard_ExtString AsciiToExtended(Standard_CString str);
+		const char16_t * AsciiToExtended(const char * const str);
 
 		/****** XSControl_Utils::BinderShape ******/
 		/****** md5 signature: 1b884ed953b9de71d14d439713905b02 ******/
@@ -2955,7 +2948,7 @@ From a Transient, returns a Shape. In fact, recognizes ShapeBinder ShapeMapper a
 		TopoDS_Shape BinderShape(const opencascade::handle<Standard_Transient> & tr);
 
 		/****** XSControl_Utils::CStrValue ******/
-		/****** md5 signature: 4b7c7ff1ecf356720a489f2f11b0f453 ******/
+		/****** md5 signature: c40f1c2f86d70b91fcd3ea614b895c6c ******/
 		%feature("compactdefaultargs") CStrValue;
 		%feature("autodoc", "
 Parameters
@@ -2965,21 +2958,21 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") CStrValue;
-		Standard_CString CStrValue(const opencascade::handle<Standard_Transient> & list, const Standard_Integer num);
+		const char * CStrValue(const opencascade::handle<Standard_Transient> & list, const int num);
 
 		/****** XSControl_Utils::CompoundFromSeq ******/
-		/****** md5 signature: 9c42e270bfcdddbf1929a557984f4fda ******/
+		/****** md5 signature: 27a84130a2840f58777945acde23bdfd ******/
 		%feature("compactdefaultargs") CompoundFromSeq;
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: TopTools_HSequenceOfShape
+seqval: NCollection_HSequence<TopoDS_Shape
 
 Return
 -------
@@ -2989,10 +2982,10 @@ Description
 -----------
 Converts a list of Shapes to a Compound (a kind of Shape).
 ") CompoundFromSeq;
-		TopoDS_Shape CompoundFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
+		TopoDS_Shape CompoundFromSeq(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqval);
 
 		/****** XSControl_Utils::DateString ******/
-		/****** md5 signature: 06bb2d8331a757c1e706af724ee8467d ******/
+		/****** md5 signature: 4a9dabeefaca620bd560bd0af5c9e824 ******/
 		%feature("compactdefaultargs") DateString;
 		%feature("autodoc", "
 Parameters
@@ -3006,21 +2999,21 @@ ss: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") DateString;
-		Standard_CString DateString(const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss);
+		const char * DateString(const int yy, const int mm, const int dd, const int hh, const int mn, const int ss);
 
 		/****** XSControl_Utils::DateValues ******/
-		/****** md5 signature: 80cd43251686342d1c83d54472b57f24 ******/
+		/****** md5 signature: 4ee0678b350bcdc96e4e3787964036cc ******/
 		%feature("compactdefaultargs") DateValues;
 		%feature("autodoc", "
 Parameters
 ----------
-text: str
+text: char *
 
 Return
 -------
@@ -3035,10 +3028,10 @@ Description
 -----------
 No available documentation.
 ") DateValues;
-		void DateValues(Standard_CString text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void DateValues(const char * const text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** XSControl_Utils::EStrValue ******/
-		/****** md5 signature: 6160d687934a25fae20a4478d4a4ead9 ******/
+		/****** md5 signature: 536b73919a09c6e9b8196598bea21601 ******/
 		%feature("compactdefaultargs") EStrValue;
 		%feature("autodoc", "
 Parameters
@@ -3048,39 +3041,39 @@ num: int
 
 Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 No available documentation.
 ") EStrValue;
-		Standard_ExtString EStrValue(const opencascade::handle<Standard_Transient> & list, const Standard_Integer num);
+		const char16_t * EStrValue(const opencascade::handle<Standard_Transient> & list, const int num);
 
 		/****** XSControl_Utils::ExtendedToAscii ******/
-		/****** md5 signature: 8a0981510ba0ba08c3daafd5e7ba0492 ******/
+		/****** md5 signature: f066bb6ce83a5cad7b7e9ffdf34ff228 ******/
 		%feature("compactdefaultargs") ExtendedToAscii;
 		%feature("autodoc", "
 Parameters
 ----------
-str: Standard_ExtString
+str: char16_t *
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") ExtendedToAscii;
-		Standard_CString ExtendedToAscii(const Standard_ExtString str);
+		const char * ExtendedToAscii(const char16_t * const str);
 
 		/****** XSControl_Utils::IsAscii ******/
-		/****** md5 signature: 4d8b39ffb883d51a71e0f32b2eaaa10d ******/
+		/****** md5 signature: b079db52ad5ee9773ad063989735e1de ******/
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "
 Parameters
 ----------
-str: Standard_ExtString
+str: char16_t *
 
 Return
 -------
@@ -3090,10 +3083,10 @@ Description
 -----------
 No available documentation.
 ") IsAscii;
-		Standard_Boolean IsAscii(const Standard_ExtString str);
+		bool IsAscii(const char16_t * const str);
 
 		/****** XSControl_Utils::IsKind ******/
-		/****** md5 signature: 7732e0a29b74329984aeae68962b4acc ******/
+		/****** md5 signature: 6c6bf5d1b6ace4eae6f0eab989f31a5e ******/
 		%feature("compactdefaultargs") IsKind;
 		%feature("autodoc", "
 Parameters
@@ -3109,67 +3102,67 @@ Description
 -----------
 No available documentation.
 ") IsKind;
-		Standard_Boolean IsKind(const opencascade::handle<Standard_Transient> & item, const opencascade::handle<Standard_Type> & what);
+		bool IsKind(const opencascade::handle<Standard_Transient> & item, const opencascade::handle<Standard_Type> & what);
 
 		/****** XSControl_Utils::NewSeqCStr ******/
-		/****** md5 signature: 02eeec01644c04a031825be6a6c4e7a4 ******/
+		/****** md5 signature: 0a6a5b92ec9bae5053f323ec016008be ******/
 		%feature("compactdefaultargs") NewSeqCStr;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 No available documentation.
 ") NewSeqCStr;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> NewSeqCStr();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> NewSeqCStr();
 
 		/****** XSControl_Utils::NewSeqEStr ******/
-		/****** md5 signature: 98bc2beca96b37e1ca65c2018ea520d3 ******/
+		/****** md5 signature: 70ebe62842245e0d644d29efd26702a2 ******/
 		%feature("compactdefaultargs") NewSeqEStr;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHExtendedString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>
 
 Description
 -----------
 No available documentation.
 ") NewSeqEStr;
-		opencascade::handle<TColStd_HSequenceOfHExtendedString> NewSeqEStr();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>> NewSeqEStr();
 
 		/****** XSControl_Utils::NewSeqShape ******/
-		/****** md5 signature: 23e26f5e9fae6802506681d5987d1405 ******/
+		/****** md5 signature: bc970b5f46b6446d2de8397bec7dfb27 ******/
 		%feature("compactdefaultargs") NewSeqShape;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TopTools_HSequenceOfShape>
+opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
 
 Description
 -----------
 No available documentation.
 ") NewSeqShape;
-		opencascade::handle<TopTools_HSequenceOfShape> NewSeqShape();
+		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> NewSeqShape();
 
 		/****** XSControl_Utils::NewSeqTra ******/
-		/****** md5 signature: c1ef00c0466369cce178e244d57a80fd ******/
+		/****** md5 signature: b82e1b259b04c41980d3cdce5ca886ec ******/
 		%feature("compactdefaultargs") NewSeqTra;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfTransient>
+opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
 
 Description
 -----------
 No available documentation.
 ") NewSeqTra;
-		opencascade::handle<TColStd_HSequenceOfTransient> NewSeqTra();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> NewSeqTra();
 
 		/****** XSControl_Utils::SeqIntValue ******/
-		/****** md5 signature: 69ce7eb3032d08ef5cc3e1cc19fc0061 ******/
+		/****** md5 signature: 56de1c7281345497d601e46f1696c76a ******/
 		%feature("compactdefaultargs") SeqIntValue;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfInteger
+list: NCollection_HSequence<int
 num: int
 
 Return
@@ -3180,10 +3173,10 @@ Description
 -----------
 No available documentation.
 ") SeqIntValue;
-		Standard_Integer SeqIntValue(const opencascade::handle<TColStd_HSequenceOfInteger> & list, const Standard_Integer num);
+		int SeqIntValue(const opencascade::handle<NCollection_HSequence<int> > & list, const int num);
 
 		/****** XSControl_Utils::SeqLength ******/
-		/****** md5 signature: 44119ddec45d1e7d5f1cff385a4a4b32 ******/
+		/****** md5 signature: 6dc87a7a705d0ab5d4a84d5bcf67fe40 ******/
 		%feature("compactdefaultargs") SeqLength;
 		%feature("autodoc", "
 Parameters
@@ -3198,10 +3191,10 @@ Description
 -----------
 No available documentation.
 ") SeqLength;
-		Standard_Integer SeqLength(const opencascade::handle<Standard_Transient> & list);
+		int SeqLength(const opencascade::handle<Standard_Transient> & list);
 
 		/****** XSControl_Utils::SeqToArr ******/
-		/****** md5 signature: 550bf714b9ad83cb9c918865de149817 ******/
+		/****** md5 signature: cc50f4e2a654d0549cebbffb5adaf937 ******/
 		%feature("compactdefaultargs") SeqToArr;
 		%feature("autodoc", "
 Parameters
@@ -3217,16 +3210,16 @@ Description
 -----------
 No available documentation.
 ") SeqToArr;
-		opencascade::handle<Standard_Transient> SeqToArr(const opencascade::handle<Standard_Transient> & seq, const Standard_Integer first = 1);
+		opencascade::handle<Standard_Transient> SeqToArr(const opencascade::handle<Standard_Transient> & seq, const int first = 1);
 
 		/****** XSControl_Utils::ShapeBinder ******/
-		/****** md5 signature: b11cf575c90dcb1893515b0fe79b9f6b ******/
+		/****** md5 signature: 1fc576afbf597abf11acd991a93dd2d3 ******/
 		%feature("compactdefaultargs") ShapeBinder;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-hs: bool (optional, default to Standard_True)
+hs: bool (optional, default to true)
 
 Return
 -------
@@ -3236,10 +3229,10 @@ Description
 -----------
 Creates a Transient Object from a Shape: it is either a Binder (used by functions which require a Transient but can process a Shape, such as viewing functions) or a HShape (according to hs) Default is a HShape.
 ") ShapeBinder;
-		opencascade::handle<Standard_Transient> ShapeBinder(const TopoDS_Shape & shape, const Standard_Boolean hs = Standard_True);
+		opencascade::handle<Standard_Transient> ShapeBinder(const TopoDS_Shape & shape, const bool hs = true);
 
 		/****** XSControl_Utils::ShapeType ******/
-		/****** md5 signature: ab636bf5c0d2e486d53891e797ab3d6b ******/
+		/****** md5 signature: b5a1f3ccc175f4568637685b40d0ed30 ******/
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "
 Parameters
@@ -3255,15 +3248,15 @@ Description
 -----------
 Returns the type of a Shape: true type if <compound> is False If <compound> is True and <shape> is a Compound, iterates on its items. If all are of the same type, returns this type. Else, returns COMPOUND. If it is empty, returns SHAPE For a Null Shape, returns SHAPE.
 ") ShapeType;
-		TopAbs_ShapeEnum ShapeType(const TopoDS_Shape & shape, const Standard_Boolean compound);
+		TopAbs_ShapeEnum ShapeType(const TopoDS_Shape & shape, const bool compound);
 
 		/****** XSControl_Utils::ShapeValue ******/
-		/****** md5 signature: 1cde49799a716d33a6a34f896e8e9d8f ******/
+		/****** md5 signature: 3f323244731235c45594f5c822983cfa ******/
 		%feature("compactdefaultargs") ShapeValue;
 		%feature("autodoc", "
 Parameters
 ----------
-seqv: TopTools_HSequenceOfShape
+seqv: NCollection_HSequence<TopoDS_Shape
 num: int
 
 Return
@@ -3274,10 +3267,10 @@ Description
 -----------
 No available documentation.
 ") ShapeValue;
-		TopoDS_Shape ShapeValue(const opencascade::handle<TopTools_HSequenceOfShape> & seqv, const Standard_Integer num);
+		TopoDS_Shape ShapeValue(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqv, const int num);
 
 		/****** XSControl_Utils::SortedCompound ******/
-		/****** md5 signature: b55d0015285d0f23fb3c68ccb5f8f79e ******/
+		/****** md5 signature: 47ef4a3fddd5fa7c9493ab75d99d42c2 ******/
 		%feature("compactdefaultargs") SortedCompound;
 		%feature("autodoc", "
 Parameters
@@ -3295,15 +3288,15 @@ Description
 -----------
 From a Shape, builds a Compound as follows: explores it level by level If <explore> is False, only COMPOUND items. Else, all items Adds to the result, shapes which comply to <type> + if <type> is WIRE, considers free edges (and makes wires) + if <type> is SHELL, considers free faces (and makes shells) If <compound> is True, gathers items in compounds which correspond to starting COMPOUND,SOLID or SHELL containers, or items directly contained in a Compound.
 ") SortedCompound;
-		TopoDS_Shape SortedCompound(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type, const Standard_Boolean explore, const Standard_Boolean compound);
+		TopoDS_Shape SortedCompound(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type, const bool explore, const bool compound);
 
 		/****** XSControl_Utils::ToAString ******/
-		/****** md5 signature: 579c485821dcbf2e2c963016af5bc087 ******/
+		/****** md5 signature: 9631347693b394c0ec68fd5b094bb6da ******/
 		%feature("compactdefaultargs") ToAString;
 		%feature("autodoc", "
 Parameters
 ----------
-strcon: str
+strcon: char *
 
 Return
 -------
@@ -3313,10 +3306,10 @@ Description
 -----------
 No available documentation.
 ") ToAString;
-		TCollection_AsciiString ToAString(Standard_CString strcon);
+		TCollection_AsciiString ToAString(const char * const strcon);
 
 		/****** XSControl_Utils::ToCString ******/
-		/****** md5 signature: 3b3d42a4d7befd95fc7da813c3e180a7 ******/
+		/****** md5 signature: 1c385ff74ca99a3cbc17ff8b01743f1b ******/
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "
 Parameters
@@ -3325,16 +3318,16 @@ strval: TCollection_HAsciiString
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") ToCString;
-		Standard_CString ToCString(const opencascade::handle<TCollection_HAsciiString> & strval);
+		const char * ToCString(const opencascade::handle<TCollection_HAsciiString> & strval);
 
 		/****** XSControl_Utils::ToCString ******/
-		/****** md5 signature: 88caf2c381405fda99aa9c53fe594a55 ******/
+		/****** md5 signature: 4ea907d99a6c406f325efaff9de2daf7 ******/
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "
 Parameters
@@ -3343,16 +3336,16 @@ strval: str
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") ToCString;
-		Standard_CString ToCString(TCollection_AsciiString strval);
+		const char * ToCString(TCollection_AsciiString strval);
 
 		/****** XSControl_Utils::ToEString ******/
-		/****** md5 signature: 92d646c74275aa73981716c4bb3d5966 ******/
+		/****** md5 signature: 5803a40476baa6ebefced5e9dca8d4bc ******/
 		%feature("compactdefaultargs") ToEString;
 		%feature("autodoc", "
 Parameters
@@ -3361,16 +3354,16 @@ strval: TCollection_HExtendedString
 
 Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 No available documentation.
 ") ToEString;
-		Standard_ExtString ToEString(const opencascade::handle<TCollection_HExtendedString> & strval);
+		const char16_t * ToEString(const opencascade::handle<TCollection_HExtendedString> & strval);
 
 		/****** XSControl_Utils::ToEString ******/
-		/****** md5 signature: 4d68201f594f44c72ac75f60a954292f ******/
+		/****** md5 signature: 469570a4c56ebdfc3d7911b668e339b8 ******/
 		%feature("compactdefaultargs") ToEString;
 		%feature("autodoc", "
 Parameters
@@ -3379,21 +3372,21 @@ strval: str
 
 Return
 -------
-Standard_ExtString
+char16_t *
 
 Description
 -----------
 No available documentation.
 ") ToEString;
-		Standard_ExtString ToEString(TCollection_ExtendedString strval);
+		const char16_t * ToEString(TCollection_ExtendedString strval);
 
 		/****** XSControl_Utils::ToHString ******/
-		/****** md5 signature: 7b7d11344d2ddb25c7aca4ebcec91c98 ******/
+		/****** md5 signature: 289b9d831417ca1e3834ae449cafa2f6 ******/
 		%feature("compactdefaultargs") ToHString;
 		%feature("autodoc", "
 Parameters
 ----------
-strcon: str
+strcon: char *
 
 Return
 -------
@@ -3403,15 +3396,15 @@ Description
 -----------
 No available documentation.
 ") ToHString;
-		opencascade::handle<TCollection_HAsciiString> ToHString(Standard_CString strcon);
+		opencascade::handle<TCollection_HAsciiString> ToHString(const char * const strcon);
 
 		/****** XSControl_Utils::ToHString ******/
-		/****** md5 signature: 29cf32d289b49b94c85616a821a0be85 ******/
+		/****** md5 signature: 744dfc3fa752175c3cd1f9de04eed8d2 ******/
 		%feature("compactdefaultargs") ToHString;
 		%feature("autodoc", "
 Parameters
 ----------
-strcon: Standard_ExtString
+strcon: char16_t *
 
 Return
 -------
@@ -3421,15 +3414,15 @@ Description
 -----------
 No available documentation.
 ") ToHString;
-		opencascade::handle<TCollection_HExtendedString> ToHString(const Standard_ExtString strcon);
+		opencascade::handle<TCollection_HExtendedString> ToHString(const char16_t * const strcon);
 
 		/****** XSControl_Utils::ToXString ******/
-		/****** md5 signature: 7c3f09c2135ae7c014d28567534264cd ******/
+		/****** md5 signature: f70ce1338ea20e55cdb0e449d286c235 ******/
 		%feature("compactdefaultargs") ToXString;
 		%feature("autodoc", "
 Parameters
 ----------
-strcon: Standard_ExtString
+strcon: char16_t *
 
 Return
 -------
@@ -3439,10 +3432,10 @@ Description
 -----------
 No available documentation.
 ") ToXString;
-		TCollection_ExtendedString ToXString(const Standard_ExtString strcon);
+		TCollection_ExtendedString ToXString(const char16_t * const strcon);
 
 		/****** XSControl_Utils::TraValue ******/
-		/****** md5 signature: 005405a0ace916f3ba6bf9e6220041c1 ******/
+		/****** md5 signature: c674f013a8dd073d717ef143e828675d ******/
 		%feature("compactdefaultargs") TraValue;
 		%feature("autodoc", "
 Parameters
@@ -3458,15 +3451,15 @@ Description
 -----------
 No available documentation.
 ") TraValue;
-		opencascade::handle<Standard_Transient> TraValue(const opencascade::handle<Standard_Transient> & list, const Standard_Integer num);
+		opencascade::handle<Standard_Transient> TraValue(const opencascade::handle<Standard_Transient> & list, const int num);
 
 		/****** XSControl_Utils::TraceLine ******/
-		/****** md5 signature: 09e41c0832ee8e26e3b51bae02803480 ******/
+		/****** md5 signature: af03a85026737d5fa36abc7eed8f396f ******/
 		%feature("compactdefaultargs") TraceLine;
 		%feature("autodoc", "
 Parameters
 ----------
-line: str
+line: char *
 
 Return
 -------
@@ -3476,7 +3469,7 @@ Description
 -----------
 Just prints a line into the current Trace File. This allows to better characterise the various trace outputs, as desired.
 ") TraceLine;
-		void TraceLine(Standard_CString line);
+		void TraceLine(const char * const line);
 
 		/****** XSControl_Utils::TraceLines ******/
 		/****** md5 signature: 20cb718590610f63086ac24e0f2045c2 ******/
@@ -3497,23 +3490,23 @@ Just prints a line or a set of lines into the current Trace File. <lines> can be
 		void TraceLines(const opencascade::handle<Standard_Transient> & lines);
 
 		/****** XSControl_Utils::TypeName ******/
-		/****** md5 signature: 78ab1ca307bbb72decae7f9aa0377244 ******/
+		/****** md5 signature: 3243aebf25fe3036140cef35957b80ce ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "
 Parameters
 ----------
 item: Standard_Transient
-nopk: bool (optional, default to Standard_False)
+nopk: bool (optional, default to false)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of the dynamic type of an object, i.e.: If it is a Type, its Name If it is a object not a type, the Name of its DynamicType If it is Null, an empty string If <nopk> is False (D), gives complete name If <nopk> is True, returns class name without package.
 ") TypeName;
-		Standard_CString TypeName(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean nopk = Standard_False);
+		const char * TypeName(const opencascade::handle<Standard_Transient> & item, const bool nopk = false);
 
 };
 
@@ -3543,12 +3536,12 @@ No available documentation.
 		 XSControl_Vars();
 
 		/****** XSControl_Vars::Get ******/
-		/****** md5 signature: 44e0346a8ce96cf16458a6e2e74bac10 ******/
+		/****** md5 signature: b0b01692e9dce2b45e048ac4bc2ba88d ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3558,15 +3551,15 @@ Description
 -----------
 No available documentation.
 ") Get;
-		virtual opencascade::handle<Standard_Transient> Get(Standard_CString name);
+		virtual opencascade::handle<Standard_Transient> Get(const char * & name);
 
 		/****** XSControl_Vars::GetCurve ******/
-		/****** md5 signature: 599f63b9d3913ce0fc7886108c1a9673 ******/
+		/****** md5 signature: 58fd679e2c0cc4bf778fa2ef6223e779 ******/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3576,15 +3569,15 @@ Description
 -----------
 No available documentation.
 ") GetCurve;
-		virtual opencascade::handle<Geom_Curve> GetCurve(Standard_CString name);
+		virtual opencascade::handle<Geom_Curve> GetCurve(const char * & name);
 
 		/****** XSControl_Vars::GetCurve2d ******/
-		/****** md5 signature: e21c81bea4735f342ec556482c9688ec ******/
+		/****** md5 signature: 3460f03505cb616e17411c5e8b82b797 ******/
 		%feature("compactdefaultargs") GetCurve2d;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3594,15 +3587,15 @@ Description
 -----------
 No available documentation.
 ") GetCurve2d;
-		virtual opencascade::handle<Geom2d_Curve> GetCurve2d(Standard_CString name);
+		virtual opencascade::handle<Geom2d_Curve> GetCurve2d(const char * & name);
 
 		/****** XSControl_Vars::GetGeom ******/
-		/****** md5 signature: f21f0d65f6dfbbe40fbbd732496261d2 ******/
+		/****** md5 signature: 92cb3e5811631ea7bd88bca600181c70 ******/
 		%feature("compactdefaultargs") GetGeom;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3612,15 +3605,15 @@ Description
 -----------
 No available documentation.
 ") GetGeom;
-		virtual opencascade::handle<Geom_Geometry> GetGeom(Standard_CString name);
+		virtual opencascade::handle<Geom_Geometry> GetGeom(const char * & name);
 
 		/****** XSControl_Vars::GetPoint ******/
-		/****** md5 signature: 8e4b51e11fdfe0bfb7441e816dabce20 ******/
+		/****** md5 signature: dc88cecf46b97a79c56a5b27e7b4a0da ******/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 pnt: gp_Pnt
 
 Return
@@ -3631,15 +3624,15 @@ Description
 -----------
 No available documentation.
 ") GetPoint;
-		virtual Standard_Boolean GetPoint(Standard_CString name, gp_Pnt & pnt);
+		virtual bool GetPoint(const char * & name, gp_Pnt & pnt);
 
 		/****** XSControl_Vars::GetPoint2d ******/
-		/****** md5 signature: a582c7a95b992cb2d66a37a54d5ab3ff ******/
+		/****** md5 signature: a2a453c85ce9f25948c5a95de35b1957 ******/
 		%feature("compactdefaultargs") GetPoint2d;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 pnt: gp_Pnt2d
 
 Return
@@ -3650,15 +3643,15 @@ Description
 -----------
 No available documentation.
 ") GetPoint2d;
-		virtual Standard_Boolean GetPoint2d(Standard_CString name, gp_Pnt2d & pnt);
+		virtual bool GetPoint2d(const char * & name, gp_Pnt2d & pnt);
 
 		/****** XSControl_Vars::GetShape ******/
-		/****** md5 signature: 2957ff82e7c3b4fbc9b3efaa76a4308e ******/
+		/****** md5 signature: 9f6698560175058dbbb6fe641ce6a946 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3668,15 +3661,15 @@ Description
 -----------
 No available documentation.
 ") GetShape;
-		virtual TopoDS_Shape GetShape(Standard_CString name);
+		virtual TopoDS_Shape GetShape(const char * & name);
 
 		/****** XSControl_Vars::GetSurface ******/
-		/****** md5 signature: 68a8636c4fa5cb0089082aa3efacf371 ******/
+		/****** md5 signature: d58acaeb7cff2d989ff8182066052407 ******/
 		%feature("compactdefaultargs") GetSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -3686,15 +3679,15 @@ Description
 -----------
 No available documentation.
 ") GetSurface;
-		virtual opencascade::handle<Geom_Surface> GetSurface(Standard_CString name);
+		virtual opencascade::handle<Geom_Surface> GetSurface(const char * & name);
 
 		/****** XSControl_Vars::Set ******/
-		/****** md5 signature: 16d0a361edf7b31d7551d629d7eda692 ******/
+		/****** md5 signature: 2beedb1a5f1dc2d170f1d9bf8880c6d0 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 val: Standard_Transient
 
 Return
@@ -3705,15 +3698,15 @@ Description
 -----------
 No available documentation.
 ") Set;
-		virtual void Set(Standard_CString name, const opencascade::handle<Standard_Transient> & val);
+		virtual void Set(const char * const name, const opencascade::handle<Standard_Transient> & val);
 
 		/****** XSControl_Vars::SetPoint ******/
-		/****** md5 signature: 4d0f75b4ab64236e257eaaecfb5de79c ******/
+		/****** md5 signature: dc2dd0fe76e9e9decf2f8254dafdae5f ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 val: gp_Pnt
 
 Return
@@ -3724,15 +3717,15 @@ Description
 -----------
 No available documentation.
 ") SetPoint;
-		virtual void SetPoint(Standard_CString name, const gp_Pnt & val);
+		virtual void SetPoint(const char * const name, const gp_Pnt & val);
 
 		/****** XSControl_Vars::SetPoint2d ******/
-		/****** md5 signature: 49e75825f7ac5dd58f7d04184e5302af ******/
+		/****** md5 signature: ab66c50bd58cdae75e01bc725289b8ec ******/
 		%feature("compactdefaultargs") SetPoint2d;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 val: gp_Pnt2d
 
 Return
@@ -3743,15 +3736,15 @@ Description
 -----------
 No available documentation.
 ") SetPoint2d;
-		virtual void SetPoint2d(Standard_CString name, const gp_Pnt2d & val);
+		virtual void SetPoint2d(const char * const name, const gp_Pnt2d & val);
 
 		/****** XSControl_Vars::SetShape ******/
-		/****** md5 signature: eb81a1893f16847e142322a4c28cc4f0 ******/
+		/****** md5 signature: 25f8f001793e3cb739925dca08b085e1 ******/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 val: TopoDS_Shape
 
 Return
@@ -3762,7 +3755,7 @@ Description
 -----------
 No available documentation.
 ") SetShape;
-		virtual void SetShape(Standard_CString name, const TopoDS_Shape & val);
+		virtual void SetShape(const char * const name, const TopoDS_Shape & val);
 
 };
 
@@ -3807,7 +3800,7 @@ Clears the whole current Context (nullifies it).
 		void ClearContext();
 
 		/****** XSControl_WorkSession::ClearData ******/
-		/****** md5 signature: 081b9c9c9a829dcc63d88d60b3dc10bb ******/
+		/****** md5 signature: b3b3f96916237102b5a313a774c20c99 ******/
 		%feature("compactdefaultargs") ClearData;
 		%feature("autodoc", "
 Parameters
@@ -3822,7 +3815,7 @@ Description
 -----------
 In addition to basic ClearData, clears Transfer and Management for interactive use, for mode = 0,1,2 and over 4 Plus: mode = 5 to clear Transfers (both ways) only mode = 6 to clear enforced results mode = 7 to clear transfers, results.
 ") ClearData;
-		virtual void ClearData(const Standard_Integer theMode);
+		void ClearData(const int theMode);
 
 		/****** XSControl_WorkSession::Context ******/
 		/****** md5 signature: d5688196fd398cc8343bbd06a6d3a0ad ******/
@@ -3838,7 +3831,7 @@ Returns the current Context List, Null if not defined The Context is given to th
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> Context();
 
 		/****** XSControl_WorkSession::InitTransferReader ******/
-		/****** md5 signature: ed10d9fce1a711a68af788321fdb54fc ******/
+		/****** md5 signature: e49883db32d654def0c8dc966b7251e3 ******/
 		%feature("compactdefaultargs") InitTransferReader;
 		%feature("autodoc", "
 Parameters
@@ -3851,9 +3844,9 @@ None
 
 Description
 -----------
-Sets a Transfer Reader, by internal ways, according mode: 0 recreates it clear, 1 clears it (does not recreate) 2 aligns Roots of TransientProcess from final Results 3 aligns final Results from Roots of TransientProcess 4 begins a new transfer (by BeginTransfer) 5 recreates TransferReader then begins a new transfer.
+Sets a Transfer Reader, by internal ways, according mode: 0 recreates it clear 1 clears it (does not recreate) 2 aligns Roots of TransientProcess from final Results 3 aligns final Results from Roots of TransientProcess 4 begins a new transfer (by BeginTransfer) 5 recreates TransferReader then begins a new transfer.
 ") InitTransferReader;
-		void InitTransferReader(const Standard_Integer theMode);
+		void InitTransferReader(const int theMode);
 
 		/****** XSControl_WorkSession::MapReader ******/
 		/****** md5 signature: 56949b2c05cfb7746727a0c64e125442 ******/
@@ -3895,7 +3888,7 @@ Returns the norm controller itself.
 		const opencascade::handle<XSControl_Controller> & NormAdaptor();
 
 		/****** XSControl_WorkSession::PrintTransferStatus ******/
-		/****** md5 signature: 00bdb09211e1e6bb5ba474ef2dd4ac70 ******/
+		/****** md5 signature: 858a57f3a5f7ce1b421b6af50ae074fc ******/
 		%feature("compactdefaultargs") PrintTransferStatus;
 		%feature("autodoc", "
 Parameters
@@ -3911,10 +3904,10 @@ Description
 -----------
 Prints the transfer status of a transferred item, as being the Mapped n0 <num>, from MapWriter if <wri> is True, or from MapReader if <wri> is False Returns True when done, False else (i.e. num out of range).
 ") PrintTransferStatus;
-		Standard_Boolean PrintTransferStatus(const Standard_Integer theNum, const Standard_Boolean theWri, std::ostream &OutValue);
+		bool PrintTransferStatus(const int theNum, const bool theWri, std::ostream &OutValue);
 
 		/****** XSControl_WorkSession::Result ******/
-		/****** md5 signature: 648bf58b2605b71bf5b4112cce9715c1 ******/
+		/****** md5 signature: c52010bc83999e97740868aeda0412bf ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "
 Parameters
@@ -3930,15 +3923,15 @@ Description
 -----------
 Returns the result attached to a starting entity If <mode> = 0, returns Final Result If <mode> = 1, considers Last Result If <mode> = 2, considers Final, else if absent, Last returns it as Transient, if result is not transient returns the Binder <mode> = 10,11,12 idem but returns the Binder itself (if it is not, e.g. Shape, returns the Binder) <mode> = 20, returns the ResultFromModel.
 ") Result;
-		opencascade::handle<Standard_Transient> Result(const opencascade::handle<Standard_Transient> & theEnt, const Standard_Integer theMode);
+		opencascade::handle<Standard_Transient> Result(const opencascade::handle<Standard_Transient> & theEnt, const int theMode);
 
 		/****** XSControl_WorkSession::SelectNorm ******/
-		/****** md5 signature: 78e48aa95ac967e7205f759747170c4c ******/
+		/****** md5 signature: 70a817ee68627634845bd11ef5504363 ******/
 		%feature("compactdefaultargs") SelectNorm;
 		%feature("autodoc", "
 Parameters
 ----------
-theNormName: str
+theNormName: char *
 
 Return
 -------
@@ -3948,25 +3941,25 @@ Description
 -----------
 Selects a Norm defined by its name. A Norm is described and handled by a Controller Returns True if done, False if <normname> is unknown //! The current Profile for this Norm is taken.
 ") SelectNorm;
-		Standard_Boolean SelectNorm(Standard_CString theNormName);
+		bool SelectNorm(const char * const theNormName);
 
 		/****** XSControl_WorkSession::SelectedNorm ******/
-		/****** md5 signature: 69481250202915c86d557c39cca43930 ******/
+		/****** md5 signature: 3f5bf64e16a9775758e33dd7ced10a59 ******/
 		%feature("compactdefaultargs") SelectedNorm;
 		%feature("autodoc", "
 Parameters
 ----------
-theRsc: bool (optional, default to Standard_False)
+theRsc: bool (optional, default to false)
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns the name of the last Selected Norm. If none is defined, returns an empty string By default, returns the complete name of the norm If <rsc> is True, returns the short name used for resource.
 ") SelectedNorm;
-		Standard_CString SelectedNorm(const Standard_Boolean theRsc = Standard_False);
+		const char * SelectedNorm(const bool theRsc = false);
 
 		/****** XSControl_WorkSession::SetAllContext ******/
 		/****** md5 signature: 062ca6fabb8fcb6dfa4021d82f6bfafa ******/
@@ -4005,7 +3998,7 @@ Selects a Norm defined by its Controller itself.
 		void SetController(const opencascade::handle<XSControl_Controller> & theCtl);
 
 		/****** XSControl_WorkSession::SetMapReader ******/
-		/****** md5 signature: 15305959af6213befc6e923c624b029e ******/
+		/****** md5 signature: 46024919a06335a422887e6ae7d5518e ******/
 		%feature("compactdefaultargs") SetMapReader;
 		%feature("autodoc", "
 Parameters
@@ -4020,10 +4013,10 @@ Description
 -----------
 Changes the Map Reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) Returns True when done, False in case of bad definition, i.e. if Model from TP differs from that of Session.
 ") SetMapReader;
-		Standard_Boolean SetMapReader(const opencascade::handle<Transfer_TransientProcess> & theTP);
+		bool SetMapReader(const opencascade::handle<Transfer_TransientProcess> & theTP);
 
 		/****** XSControl_WorkSession::SetMapWriter ******/
-		/****** md5 signature: 969f072d71530560da24b6757937ada3 ******/
+		/****** md5 signature: d4edcc007ff29df1a00a7e99daaecba4 ******/
 		%feature("compactdefaultargs") SetMapWriter;
 		%feature("autodoc", "
 Parameters
@@ -4038,7 +4031,7 @@ Description
 -----------
 Changes the Map Reader, i.e. considers that the new one defines the relevant read results (forgets the former ones) Returns True when done, False if <FP> is Null.
 ") SetMapWriter;
-		Standard_Boolean SetMapWriter(const opencascade::handle<Transfer_FinderProcess> & theFP);
+		bool SetMapWriter(const opencascade::handle<Transfer_FinderProcess> & theFP);
 
 		/****** XSControl_WorkSession::SetTransferReader ******/
 		/****** md5 signature: 0e6d6ed3732ee9556f87e0a22c8db684 ******/
@@ -4077,7 +4070,7 @@ No available documentation.
 		void SetVars(const opencascade::handle<XSControl_Vars> & theVars);
 
 		/****** XSControl_WorkSession::TransferReadOne ******/
-		/****** md5 signature: 07136716cbdeb7ed7fabe4e3da6766d6 ******/
+		/****** md5 signature: 1c3d8474743e7e8d223db1413991477c ******/
 		%feature("compactdefaultargs") TransferReadOne;
 		%feature("autodoc", "
 Parameters
@@ -4093,10 +4086,10 @@ Description
 -----------
 Commands the transfer of, either one entity, or a list I.E. calls the TransferReader after having analysed <ents> It is cumulated from the last BeginTransfer <ents> is processed by GiveList, hence: - <ents> a Selection: its SelectionResult - <ents> a HSequenceOfTransient: this list - <ents> the Model: in this specific case, all the roots, with no cumulation of former transfers (TransferReadRoots).
 ") TransferReadOne;
-		Standard_Integer TransferReadOne(const opencascade::handle<Standard_Transient> & theEnts, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferReadOne(const opencascade::handle<Standard_Transient> & theEnts, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_WorkSession::TransferReadRoots ******/
-		/****** md5 signature: ace5b8c734fc21b5202f49b6ce1faff6 ******/
+		/****** md5 signature: 245adb1fb504fc9d76dab2f2599c369c ******/
 		%feature("compactdefaultargs") TransferReadRoots;
 		%feature("autodoc", "
 Parameters
@@ -4111,7 +4104,7 @@ Description
 -----------
 Commands the transfer of all the root entities of the model i.e. calls TransferRoot from the TransferReader with the Graph No cumulation with former calls to TransferReadOne.
 ") TransferReadRoots;
-		Standard_Integer TransferReadRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferReadRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_WorkSession::TransferReader ******/
 		/****** md5 signature: fb55bcdc028cfc40da9805fb3d48b6bb ******/
@@ -4140,13 +4133,13 @@ Returns the check-list of last transfer (write) It is recorded in the FinderProc
 		Interface_CheckIterator TransferWriteCheckList();
 
 		/****** XSControl_WorkSession::TransferWriteShape ******/
-		/****** md5 signature: dea408423004f7d98d47bcc8073284e9 ******/
+		/****** md5 signature: 22522bb2f17076486fdbb4579fd33cae ******/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
-theCompGraph: bool (optional, default to Standard_True)
+theCompGraph: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -4157,7 +4150,7 @@ Description
 -----------
 Transfers a Shape from CasCade to a model of current norm, according to the last call to SetModeWriteShape Returns status :Done if OK, Fail if error during transfer, Error if transfer badly initialised.
 ") TransferWriteShape;
-		IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & theShape, const Standard_Boolean theCompGraph = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		IFSelect_ReturnStatus TransferWriteShape(const TopoDS_Shape & theShape, const bool theCompGraph = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_WorkSession::TransferWriter ******/
 		/****** md5 signature: eb51fa8d64a383d09db0f0e2c51bd32e ******/
@@ -4215,12 +4208,12 @@ Creates a Writer from scratch.
 		 XSControl_Writer();
 
 		/****** XSControl_Writer::XSControl_Writer ******/
-		/****** md5 signature: 7512321fcaa103e58880fad1df266a83 ******/
+		/****** md5 signature: 3ba36c6ee5bceb401cfe0864b2d0c45a ******/
 		%feature("compactdefaultargs") XSControl_Writer;
 		%feature("autodoc", "
 Parameters
 ----------
-norm: str
+norm: char *
 
 Return
 -------
@@ -4230,16 +4223,16 @@ Description
 -----------
 Creates a Writer from scratch, with a norm name which identifie a Controller.
 ") XSControl_Writer;
-		 XSControl_Writer(Standard_CString norm);
+		 XSControl_Writer(const char * const norm);
 
 		/****** XSControl_Writer::XSControl_Writer ******/
-		/****** md5 signature: fdc5250052abb6411e52ae5355a1787a ******/
+		/****** md5 signature: d66a3b4fced2f8ded53c377fad088485 ******/
 		%feature("compactdefaultargs") XSControl_Writer;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: XSControl_WorkSession
-scratch: bool (optional, default to Standard_True)
+scratch: bool (optional, default to true)
 
 Return
 -------
@@ -4249,15 +4242,15 @@ Description
 -----------
 Creates a Writer from an already existing Session If <scratch> is True (D), clears already recorded data.
 ") XSControl_Writer;
-		 XSControl_Writer(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
+		 XSControl_Writer(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
 		/****** XSControl_Writer::Model ******/
-		/****** md5 signature: ab692cf6d45d428f60a2ede26b226382 ******/
+		/****** md5 signature: 35fc8ed8723592c5193992057b6c4121 ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "
 Parameters
 ----------
-newone: bool (optional, default to Standard_False)
+newone: bool (optional, default to false)
 
 Return
 -------
@@ -4267,10 +4260,10 @@ Description
 -----------
 Returns the produced model. Produces a new one if not yet done or if <newone> is True This method allows for instance to edit product or header data before writing.
 ") Model;
-		opencascade::handle<Interface_InterfaceModel> Model(const Standard_Boolean newone = Standard_False);
+		opencascade::handle<Interface_InterfaceModel> Model(const bool newone = false);
 
 		/****** XSControl_Writer::PrintStatsTransfer ******/
-		/****** md5 signature: 148fec90ff7b063449e9624a36399cda ******/
+		/****** md5 signature: 65fd51353cdc73aaf5985224f25b6c9a ******/
 		%feature("compactdefaultargs") PrintStatsTransfer;
 		%feature("autodoc", "
 Parameters
@@ -4286,15 +4279,15 @@ Description
 -----------
 Prints Statistics about Transfer.
 ") PrintStatsTransfer;
-		void PrintStatsTransfer(const Standard_Integer what, const Standard_Integer mode = 0);
+		void PrintStatsTransfer(const int what, const int mode = 0);
 
 		/****** XSControl_Writer::SetNorm ******/
-		/****** md5 signature: b11f28b0f865ad413b98701b134b89de ******/
+		/****** md5 signature: dff893eab9798cebc2ec90693b2dd8d7 ******/
 		%feature("compactdefaultargs") SetNorm;
 		%feature("autodoc", "
 Parameters
 ----------
-norm: str
+norm: char *
 
 Return
 -------
@@ -4304,16 +4297,16 @@ Description
 -----------
 Sets a specific norm to <self> Returns True if done, False if <norm> is not available.
 ") SetNorm;
-		Standard_Boolean SetNorm(Standard_CString norm);
+		bool SetNorm(const char * const norm);
 
 		/****** XSControl_Writer::SetWS ******/
-		/****** md5 signature: 74ebce3f94d695bdeb4915fb004d07d2 ******/
+		/****** md5 signature: e675abfcc47a61d413e625967e5d49a5 ******/
 		%feature("compactdefaultargs") SetWS;
 		%feature("autodoc", "
 Parameters
 ----------
 WS: XSControl_WorkSession
-scratch: bool (optional, default to Standard_True)
+scratch: bool (optional, default to true)
 
 Return
 -------
@@ -4323,10 +4316,10 @@ Description
 -----------
 Sets a specific session to <self>.
 ") SetWS;
-		void SetWS(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
+		void SetWS(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
 		/****** XSControl_Writer::TransferShape ******/
-		/****** md5 signature: 2fb0e8c5750985b5d30080e0c87152e4 ******/
+		/****** md5 signature: d124b6b608dd319a9ef2919ec7b4835d ******/
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", "
 Parameters
@@ -4343,7 +4336,7 @@ Description
 -----------
 Transfers a Shape according to the mode.
 ") TransferShape;
-		IFSelect_ReturnStatus TransferShape(const TopoDS_Shape & sh, const Standard_Integer mode = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		IFSelect_ReturnStatus TransferShape(const TopoDS_Shape & sh, const int mode = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Writer::WS ******/
 		/****** md5 signature: 4d866376b023ba3185e62899810cc121 ******/
@@ -4359,12 +4352,12 @@ Returns the session used in <self>.
 		opencascade::handle<XSControl_WorkSession> WS();
 
 		/****** XSControl_Writer::WriteFile ******/
-		/****** md5 signature: c443eb482eff3288f82d0142e04359c7 ******/
+		/****** md5 signature: 41c8ea74aa811ba8d8a27eb8de2d8099 ******/
 		%feature("compactdefaultargs") WriteFile;
 		%feature("autodoc", "
 Parameters
 ----------
-filename: str
+filename: char *
 
 Return
 -------
@@ -4374,7 +4367,7 @@ Description
 -----------
 Writes the produced model.
 ") WriteFile;
-		IFSelect_ReturnStatus WriteFile(Standard_CString filename);
+		IFSelect_ReturnStatus WriteFile(const char * const filename);
 
 };
 

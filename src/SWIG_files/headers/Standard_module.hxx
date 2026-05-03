@@ -45,12 +45,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Failure.hxx>
 #include<Standard_GUID.hxx>
 #include<Standard_Handle.hxx>
-#include<Standard_HandlerStatus.hxx>
 #include<Standard_HashUtils.hxx>
 #include<Standard_IStream.hxx>
 #include<Standard_ImmutableObject.hxx>
 #include<Standard_Integer.hxx>
-#include<Standard_JmpBuf.hxx>
 #include<Standard_LicenseError.hxx>
 #include<Standard_LicenseNotFound.hxx>
 #include<Standard_MMgrOpt.hxx>
@@ -71,10 +69,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Overflow.hxx>
 #include<Standard_PByte.hxx>
 #include<Standard_PCharacter.hxx>
-#include<Standard_PErrorHandler.hxx>
 #include<Standard_PExtCharacter.hxx>
 #include<Standard_Persistent.hxx>
-#include<Standard_PrimitiveTypes.hxx>
 #include<Standard_ProgramError.hxx>
 #include<Standard_RangeError.hxx>
 #include<Standard_ReadBuffer.hxx>
@@ -83,7 +79,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_SStream.hxx>
 #include<Standard_ShortReal.hxx>
 #include<Standard_Std.hxx>
-#include<Standard_Stream.hxx>
 #include<Standard_ThreadId.hxx>
 #include<Standard_Time.hxx>
 #include<Standard_Transient.hxx>

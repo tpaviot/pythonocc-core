@@ -44,7 +44,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binobjmgt.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<TDF_module.hxx>
 #include<Storage_module.hxx>
@@ -56,7 +55,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binobjmgt.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import TCollection.i
 %import TDF.i
 %import Storage.i
@@ -78,16 +76,15 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_IndexedMap<opencascade::handle<Standard_Transient>>::Items;
+%ignore NCollection_IndexedMap<opencascade::handle<Standard_Transient>>::KeyValues;
+%ignore NCollection_IndexedMap<opencascade::handle<Standard_Transient>>::IndexedItems;
+%ignore NCollection_IndexedMap<opencascade::handle<Standard_Transient>>::Contained;
+%template(BinObjMgt_SRelocationTable) NCollection_IndexedMap<opencascade::handle<Standard_Transient>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Byte * BinObjMgt_PByte;
-typedef Standard_Character * BinObjMgt_PChar;
-typedef Standard_ExtCharacter * BinObjMgt_PExtChar;
-typedef Standard_Integer * BinObjMgt_PInteger;
-typedef Standard_Real * BinObjMgt_PReal;
-typedef Standard_ShortReal * BinObjMgt_PShortReal;
-typedef TColStd_IndexedMapOfTransient BinObjMgt_SRelocationTable;
+typedef NCollection_IndexedMap<opencascade::handle<Standard_Transient>> BinObjMgt_SRelocationTable;
 /* end typedefs declaration */
 
 /*****************************
@@ -140,7 +137,7 @@ No available documentation.
 		const BinObjMgt_Persistent & GetAsciiString(TCollection_AsciiString & theValue);
 
 		/****** BinObjMgt_Persistent::GetBoolean ******/
-		/****** md5 signature: 017b44d2b1e1e364f2d0655ca1511d39 ******/
+		/****** md5 signature: 8236e2b3d1d2e81d79bbf15c1b96e283 ******/
 		%feature("compactdefaultargs") GetBoolean;
 		%feature("autodoc", "
 Parameters
@@ -157,12 +154,12 @@ No available documentation.
 		const BinObjMgt_Persistent & GetBoolean(Standard_Boolean &OutValue);
 
 		/****** BinObjMgt_Persistent::GetByte ******/
-		/****** md5 signature: 33f12c94796e4f97c4d8fcbf351c2ade ******/
+		/****** md5 signature: 72ef5329a5337e823cf7e46417083d94 ******/
 		%feature("compactdefaultargs") GetByte;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_Byte
+theValue: uint8_t
 
 Return
 -------
@@ -172,10 +169,10 @@ Description
 -----------
 No available documentation.
 ") GetByte;
-		const BinObjMgt_Persistent & GetByte(Standard_Byte & theValue);
+		const BinObjMgt_Persistent & GetByte(uint8_t & theValue);
 
 		/****** BinObjMgt_Persistent::GetByteArray ******/
-		/****** md5 signature: 256f305bf958185a4c71be137224d245 ******/
+		/****** md5 signature: a7caf59e0a6ca8ea4eb65c93959eee39 ******/
 		%feature("compactdefaultargs") GetByteArray;
 		%feature("autodoc", "
 Parameters
@@ -191,10 +188,10 @@ Description
 -----------
 Get C array of unsigned chars, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetByteArray;
-		const BinObjMgt_Persistent & GetByteArray(const BinObjMgt_PByte theArray, const Standard_Integer theLength);
+		const BinObjMgt_Persistent & GetByteArray(const BinObjMgt_PByte theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::GetCharArray ******/
-		/****** md5 signature: 79ca5122aff93a3a2c997f6f7be0e0c2 ******/
+		/****** md5 signature: fb8d143e8ace61b7e4447d85ad54eb5e ******/
 		%feature("compactdefaultargs") GetCharArray;
 		%feature("autodoc", "
 Parameters
@@ -210,15 +207,15 @@ Description
 -----------
 Get C array of char, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetCharArray;
-		const BinObjMgt_Persistent & GetCharArray(const BinObjMgt_PChar theArray, const Standard_Integer theLength);
+		const BinObjMgt_Persistent & GetCharArray(const BinObjMgt_PChar theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::GetCharacter ******/
-		/****** md5 signature: 9a6951856c69a871acc236822716d8b0 ******/
+		/****** md5 signature: 18078172f0898bc37a8ee924f75c737c ******/
 		%feature("compactdefaultargs") GetCharacter;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_Character
+theValue: char
 
 Return
 -------
@@ -228,10 +225,10 @@ Description
 -----------
 No available documentation.
 ") GetCharacter;
-		const BinObjMgt_Persistent & GetCharacter(Standard_Character & theValue);
+		const BinObjMgt_Persistent & GetCharacter(char & theValue);
 
 		/****** BinObjMgt_Persistent::GetExtCharArray ******/
-		/****** md5 signature: f7860228db7636124e625995fbcfe9d6 ******/
+		/****** md5 signature: 36dd01eca0c8f6479f59b02e17474e92 ******/
 		%feature("compactdefaultargs") GetExtCharArray;
 		%feature("autodoc", "
 Parameters
@@ -247,15 +244,15 @@ Description
 -----------
 Get C array of ExtCharacter, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetExtCharArray;
-		const BinObjMgt_Persistent & GetExtCharArray(const BinObjMgt_PExtChar theArray, const Standard_Integer theLength);
+		const BinObjMgt_Persistent & GetExtCharArray(const BinObjMgt_PExtChar theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::GetExtCharacter ******/
-		/****** md5 signature: 723f86ca19452bebb9f88b0b78d26826 ******/
+		/****** md5 signature: fa4065b9331bd79baef79ae3e534cf87 ******/
 		%feature("compactdefaultargs") GetExtCharacter;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_ExtCharacter
+theValue: char16_t
 
 Return
 -------
@@ -265,7 +262,7 @@ Description
 -----------
 No available documentation.
 ") GetExtCharacter;
-		const BinObjMgt_Persistent & GetExtCharacter(Standard_ExtCharacter & theValue);
+		const BinObjMgt_Persistent & GetExtCharacter(char16_t & theValue);
 
 		/****** BinObjMgt_Persistent::GetExtendedString ******/
 		/****** md5 signature: 0049c3c4fd7726b41c30e549da54cd2b ******/
@@ -317,7 +314,7 @@ Gets the stream for and enables direct reading.
 		Standard_IStream * GetIStream();
 
 		/****** BinObjMgt_Persistent::GetIntArray ******/
-		/****** md5 signature: 7c90fd62cbabd6cccece0887a773ce65 ******/
+		/****** md5 signature: 8306cc0459d3f6e9203afb3abc4e3cf4 ******/
 		%feature("compactdefaultargs") GetIntArray;
 		%feature("autodoc", "
 Parameters
@@ -333,10 +330,10 @@ Description
 -----------
 Get C array of int, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetIntArray;
-		const BinObjMgt_Persistent & GetIntArray(const BinObjMgt_PInteger theArray, const Standard_Integer theLength);
+		const BinObjMgt_Persistent & GetIntArray(const BinObjMgt_PInteger theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::GetInteger ******/
-		/****** md5 signature: a24d12c1aaeb5ed2ff5fd12501e0463f ******/
+		/****** md5 signature: 7430d05ed48c63aa41fb232c0aea4ecf ******/
 		%feature("compactdefaultargs") GetInteger;
 		%feature("autodoc", "
 Parameters
@@ -385,7 +382,7 @@ Gets the stream for and enables direct writing.
 		Standard_OStream * GetOStream();
 
 		/****** BinObjMgt_Persistent::GetReal ******/
-		/****** md5 signature: 65cbf27e92c882f039241743224d67d7 ******/
+		/****** md5 signature: 1406765206c23bfe257ca43ee6a85bfd ******/
 		%feature("compactdefaultargs") GetReal;
 		%feature("autodoc", "
 Parameters
@@ -393,7 +390,7 @@ Parameters
 
 Return
 -------
-theValue: float
+theValue: double
 
 Description
 -----------
@@ -402,7 +399,7 @@ No available documentation.
 		const BinObjMgt_Persistent & GetReal(Standard_Real &OutValue);
 
 		/****** BinObjMgt_Persistent::GetRealArray ******/
-		/****** md5 signature: 26dacf06164cc6d5d556170a1402de80 ******/
+		/****** md5 signature: ed96bbd878625bd971681f34413039d3 ******/
 		%feature("compactdefaultargs") GetRealArray;
 		%feature("autodoc", "
 Parameters
@@ -418,10 +415,10 @@ Description
 -----------
 Get C array of double, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetRealArray;
-		const BinObjMgt_Persistent & GetRealArray(const BinObjMgt_PReal theArray, const Standard_Integer theLength);
+		const BinObjMgt_Persistent & GetRealArray(const BinObjMgt_PReal theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::GetShortReal ******/
-		/****** md5 signature: bd5d8caa6f982b61af2fc041ca40021e ******/
+		/****** md5 signature: ffb70a068ade41495ae68829a4038be8 ******/
 		%feature("compactdefaultargs") GetShortReal;
 		%feature("autodoc", "
 Parameters
@@ -438,7 +435,7 @@ No available documentation.
 		const BinObjMgt_Persistent & GetShortReal(Standard_ShortReal &OutValue);
 
 		/****** BinObjMgt_Persistent::GetShortRealArray ******/
-		/****** md5 signature: 241f5c28d908b020dc86c79662d7f205 ******/
+		/****** md5 signature: 3a9247a5932a1251805f00f93ae0c1a8 ******/
 		%feature("compactdefaultargs") GetShortRealArray;
 		%feature("autodoc", "
 Parameters
@@ -454,10 +451,10 @@ Description
 -----------
 Get C array of float, theLength is the number of elements; theArray must point to a space enough to place theLength elements.
 ") GetShortRealArray;
-		const BinObjMgt_Persistent & GetShortRealArray(const BinObjMgt_PShortReal theArray, const Standard_Integer theLength);
+		const BinObjMgt_Persistent & GetShortRealArray(const BinObjMgt_PShortReal theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::Id ******/
-		/****** md5 signature: bad178b94960474569631e20c0ad1e69 ******/
+		/****** md5 signature: 897b87be47338bdfaa2575963f3b2cd7 ******/
 		%feature("compactdefaultargs") Id;
 		%feature("autodoc", "Return
 -------
@@ -467,7 +464,7 @@ Description
 -----------
 Returns the Id of the object.
 ") Id;
-		Standard_Integer Id();
+		int Id();
 
 		/****** BinObjMgt_Persistent::Init ******/
 		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
@@ -483,7 +480,7 @@ Initializes me to reuse again.
 		void Init();
 
 		/****** BinObjMgt_Persistent::IsDirect ******/
-		/****** md5 signature: b04590ab3394fe8ab96053fa1809efb5 ******/
+		/****** md5 signature: 1a55a9c2bfb9be0e7936c90b488edcb5 ******/
 		%feature("compactdefaultargs") IsDirect;
 		%feature("autodoc", "Return
 -------
@@ -493,10 +490,10 @@ Description
 -----------
 Returns true if after this record a direct writing to the stream is performed.
 ") IsDirect;
-		Standard_Boolean IsDirect();
+		bool IsDirect();
 
 		/****** BinObjMgt_Persistent::IsError ******/
-		/****** md5 signature: c52b85ee17e423925f2cd97bf6879614 ******/
+		/****** md5 signature: 4d6d2e047c45a9842373d0208432adf4 ******/
 		%feature("compactdefaultargs") IsError;
 		%feature("autodoc", "Return
 -------
@@ -506,10 +503,10 @@ Description
 -----------
 Indicates an error after Get methods or SetPosition.
 ") IsError;
-		Standard_Boolean IsError();
+		bool IsError();
 
 		/****** BinObjMgt_Persistent::IsOK ******/
-		/****** md5 signature: 8d4161ba0f81558df16789ba26c120df ******/
+		/****** md5 signature: bb3b89285f931392baab66568c7835f0 ******/
 		%feature("compactdefaultargs") IsOK;
 		%feature("autodoc", "Return
 -------
@@ -519,10 +516,10 @@ Description
 -----------
 Indicates a good state after Get methods or SetPosition.
 ") IsOK;
-		Standard_Boolean IsOK();
+		bool IsOK();
 
 		/****** BinObjMgt_Persistent::Length ******/
-		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
+		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -532,10 +529,10 @@ Description
 -----------
 Returns the length of data.
 ") Length;
-		Standard_Integer Length();
+		int Length();
 
 		/****** BinObjMgt_Persistent::Position ******/
-		/****** md5 signature: 69c461acfbfd763a2ac7352bf69b5a98 ******/
+		/****** md5 signature: f7f8c29be3a94498a0c040d9105b4ff1 ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Return
 -------
@@ -545,7 +542,7 @@ Description
 -----------
 Tells the current position for get/put.
 ") Position;
-		Standard_Integer Position();
+		int Position();
 
 		/****** BinObjMgt_Persistent::PutAsciiString ******/
 		/****** md5 signature: b82776b3ea812baa2246aaec57fef89a ******/
@@ -566,7 +563,7 @@ Offset in output buffer is word-aligned.
 		BinObjMgt_Persistent & PutAsciiString(TCollection_AsciiString theValue);
 
 		/****** BinObjMgt_Persistent::PutBoolean ******/
-		/****** md5 signature: 0bedf2debedf8187cd7303777159cfb0 ******/
+		/****** md5 signature: 21e97feee684b6aaa48daf15b05af5f5 ******/
 		%feature("compactdefaultargs") PutBoolean;
 		%feature("autodoc", "
 Parameters
@@ -581,15 +578,15 @@ Description
 -----------
 No available documentation.
 ") PutBoolean;
-		BinObjMgt_Persistent & PutBoolean(const Standard_Boolean theValue);
+		BinObjMgt_Persistent & PutBoolean(const bool theValue);
 
 		/****** BinObjMgt_Persistent::PutByte ******/
-		/****** md5 signature: a7ffb9565fc1746b445d2e1e6fe80a76 ******/
+		/****** md5 signature: c61a322469384272291aeaf7143c37cb ******/
 		%feature("compactdefaultargs") PutByte;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_Byte
+theValue: uint8_t
 
 Return
 -------
@@ -599,10 +596,10 @@ Description
 -----------
 No available documentation.
 ") PutByte;
-		BinObjMgt_Persistent & PutByte(const Standard_Byte theValue);
+		BinObjMgt_Persistent & PutByte(const uint8_t theValue);
 
 		/****** BinObjMgt_Persistent::PutByteArray ******/
-		/****** md5 signature: b839761b42376dd50808d1e1b2178287 ******/
+		/****** md5 signature: 758f3a8776718a1f8606581636303a81 ******/
 		%feature("compactdefaultargs") PutByteArray;
 		%feature("autodoc", "
 Parameters
@@ -618,15 +615,15 @@ Description
 -----------
 Put C array of unsigned chars, theLength is the number of elements.
 ") PutByteArray;
-		BinObjMgt_Persistent & PutByteArray(const BinObjMgt_PByte theArray, const Standard_Integer theLength);
+		BinObjMgt_Persistent & PutByteArray(const BinObjMgt_PByte theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::PutCString ******/
-		/****** md5 signature: 2c95420c567573daa6c5f49e89a10026 ******/
+		/****** md5 signature: be87f289b67ccd623fb68b5b03eaa6c7 ******/
 		%feature("compactdefaultargs") PutCString;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: str
+theValue: char *
 
 Return
 -------
@@ -636,10 +633,10 @@ Description
 -----------
 Offset in output buffer is not aligned.
 ") PutCString;
-		BinObjMgt_Persistent & PutCString(Standard_CString theValue);
+		BinObjMgt_Persistent & PutCString(const char * const theValue);
 
 		/****** BinObjMgt_Persistent::PutCharArray ******/
-		/****** md5 signature: 8048f0bf82735a8f2bf8b9ba58226a06 ******/
+		/****** md5 signature: 36938522b45286adb391c65ead022fc2 ******/
 		%feature("compactdefaultargs") PutCharArray;
 		%feature("autodoc", "
 Parameters
@@ -655,15 +652,15 @@ Description
 -----------
 Put C array of char, theLength is the number of elements.
 ") PutCharArray;
-		BinObjMgt_Persistent & PutCharArray(const BinObjMgt_PChar theArray, const Standard_Integer theLength);
+		BinObjMgt_Persistent & PutCharArray(const BinObjMgt_PChar theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::PutCharacter ******/
-		/****** md5 signature: 4249bad50a8d96095d2a8dc346f17b1e ******/
+		/****** md5 signature: fd19c36ebb77350ba45543f2a0637330 ******/
 		%feature("compactdefaultargs") PutCharacter;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_Character
+theValue: char
 
 Return
 -------
@@ -673,10 +670,10 @@ Description
 -----------
 No available documentation.
 ") PutCharacter;
-		BinObjMgt_Persistent & PutCharacter(const Standard_Character theValue);
+		BinObjMgt_Persistent & PutCharacter(const char theValue);
 
 		/****** BinObjMgt_Persistent::PutExtCharArray ******/
-		/****** md5 signature: e3d31877a31030af37baa10fa90842de ******/
+		/****** md5 signature: 72a95297108d9b3ced630dc087d8301a ******/
 		%feature("compactdefaultargs") PutExtCharArray;
 		%feature("autodoc", "
 Parameters
@@ -692,15 +689,15 @@ Description
 -----------
 Put C array of ExtCharacter, theLength is the number of elements.
 ") PutExtCharArray;
-		BinObjMgt_Persistent & PutExtCharArray(const BinObjMgt_PExtChar theArray, const Standard_Integer theLength);
+		BinObjMgt_Persistent & PutExtCharArray(const BinObjMgt_PExtChar theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::PutExtCharacter ******/
-		/****** md5 signature: bc0233ab11e956a117ba5e36c37438d8 ******/
+		/****** md5 signature: 0e507d6f0b8515338d22d138e3d2cac4 ******/
 		%feature("compactdefaultargs") PutExtCharacter;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: Standard_ExtCharacter
+theValue: char16_t
 
 Return
 -------
@@ -710,7 +707,7 @@ Description
 -----------
 No available documentation.
 ") PutExtCharacter;
-		BinObjMgt_Persistent & PutExtCharacter(const Standard_ExtCharacter theValue);
+		BinObjMgt_Persistent & PutExtCharacter(const char16_t theValue);
 
 		/****** BinObjMgt_Persistent::PutExtendedString ******/
 		/****** md5 signature: 23edf3a9eab8036e38f9dcdd343911fd ******/
@@ -749,7 +746,7 @@ No available documentation.
 		BinObjMgt_Persistent & PutGUID(const Standard_GUID & theValue);
 
 		/****** BinObjMgt_Persistent::PutIntArray ******/
-		/****** md5 signature: b6dc63543094b91b8d7b79c5b8bc10c3 ******/
+		/****** md5 signature: 69d5b788e1bbed5ad8536b1572503e41 ******/
 		%feature("compactdefaultargs") PutIntArray;
 		%feature("autodoc", "
 Parameters
@@ -765,10 +762,10 @@ Description
 -----------
 Put C array of int, theLength is the number of elements.
 ") PutIntArray;
-		BinObjMgt_Persistent & PutIntArray(const BinObjMgt_PInteger theArray, const Standard_Integer theLength);
+		BinObjMgt_Persistent & PutIntArray(const BinObjMgt_PInteger theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::PutInteger ******/
-		/****** md5 signature: ed6106c58bb494bb7c63451256d4bd3f ******/
+		/****** md5 signature: 0f2378a1a45e38bfcb41fa02bec08d44 ******/
 		%feature("compactdefaultargs") PutInteger;
 		%feature("autodoc", "
 Parameters
@@ -783,7 +780,7 @@ Description
 -----------
 No available documentation.
 ") PutInteger;
-		BinObjMgt_Persistent & PutInteger(const Standard_Integer theValue);
+		BinObjMgt_Persistent & PutInteger(const int theValue);
 
 		/****** BinObjMgt_Persistent::PutLabel ******/
 		/****** md5 signature: 517ef015d653478deb80807e77fe2dfd ******/
@@ -804,12 +801,12 @@ No available documentation.
 		BinObjMgt_Persistent & PutLabel(const TDF_Label & theValue);
 
 		/****** BinObjMgt_Persistent::PutReal ******/
-		/****** md5 signature: e94f1ed0ccbd7da7f57a44413aafc780 ******/
+		/****** md5 signature: 8fffafce1fca79c2b7fe3df95a1020d0 ******/
 		%feature("compactdefaultargs") PutReal;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -819,10 +816,10 @@ Description
 -----------
 No available documentation.
 ") PutReal;
-		BinObjMgt_Persistent & PutReal(const Standard_Real theValue);
+		BinObjMgt_Persistent & PutReal(const double theValue);
 
 		/****** BinObjMgt_Persistent::PutRealArray ******/
-		/****** md5 signature: 27b88a13da1818a4872989462343d5ad ******/
+		/****** md5 signature: d2e2693586fced41f0de5bf0d64b9d34 ******/
 		%feature("compactdefaultargs") PutRealArray;
 		%feature("autodoc", "
 Parameters
@@ -838,10 +835,10 @@ Description
 -----------
 Put C array of double, theLength is the number of elements.
 ") PutRealArray;
-		BinObjMgt_Persistent & PutRealArray(const BinObjMgt_PReal theArray, const Standard_Integer theLength);
+		BinObjMgt_Persistent & PutRealArray(const BinObjMgt_PReal theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::PutShortReal ******/
-		/****** md5 signature: 244084883945501ba96226d9b877943a ******/
+		/****** md5 signature: 92980e0b4c3a3fa8faa7a59bcd3277af ******/
 		%feature("compactdefaultargs") PutShortReal;
 		%feature("autodoc", "
 Parameters
@@ -856,10 +853,10 @@ Description
 -----------
 No available documentation.
 ") PutShortReal;
-		BinObjMgt_Persistent & PutShortReal(const Standard_ShortReal theValue);
+		BinObjMgt_Persistent & PutShortReal(const float theValue);
 
 		/****** BinObjMgt_Persistent::PutShortRealArray ******/
-		/****** md5 signature: bce365f2560da9a3752d6a28e6242c91 ******/
+		/****** md5 signature: 38c5ab76fa387dc5375941a05b904320 ******/
 		%feature("compactdefaultargs") PutShortRealArray;
 		%feature("autodoc", "
 Parameters
@@ -875,7 +872,7 @@ Description
 -----------
 Put C array of float, theLength is the number of elements.
 ") PutShortRealArray;
-		BinObjMgt_Persistent & PutShortRealArray(const BinObjMgt_PShortReal theArray, const Standard_Integer theLength);
+		BinObjMgt_Persistent & PutShortRealArray(const BinObjMgt_PShortReal theArray, const int theLength);
 
 		/****** BinObjMgt_Persistent::Read ******/
 		/****** md5 signature: 703e11a3fb46f18575a45a43966aa937 ******/
@@ -914,7 +911,7 @@ Sets the stream for direct reading.
 		void SetIStream(std::istream & theStream);
 
 		/****** BinObjMgt_Persistent::SetId ******/
-		/****** md5 signature: 3131e8337f46d2a085b133db913d7e12 ******/
+		/****** md5 signature: cdc25e46150635559cd191cf8705319e ******/
 		%feature("compactdefaultargs") SetId;
 		%feature("autodoc", "
 Parameters
@@ -929,7 +926,7 @@ Description
 -----------
 Sets the Id of the object.
 ") SetId;
-		void SetId(const Standard_Integer theId);
+		void SetId(const int theId);
 
 		/****** BinObjMgt_Persistent::SetOStream ******/
 		/****** md5 signature: 05ebcdbd2bdd64c5cb2e8dd9a9b0f378 ******/
@@ -949,7 +946,7 @@ Sets the stream for direct writing.
 		void SetOStream(std::ostream &OutValue);
 
 		/****** BinObjMgt_Persistent::SetPosition ******/
-		/****** md5 signature: 734a09cc1c2f91af755a362f6ac9dbb1 ******/
+		/****** md5 signature: 9a54ff3542da923093042df903419409 ******/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "
 Parameters
@@ -964,10 +961,10 @@ Description
 -----------
 Sets the current position for get/put. Resets an error state depending on the validity of thePos. Returns the new state (value of IsOK()).
 ") SetPosition;
-		Standard_Boolean SetPosition(const Standard_Integer thePos);
+		bool SetPosition(const int thePos);
 
 		/****** BinObjMgt_Persistent::SetTypeId ******/
-		/****** md5 signature: cf3acfd7b9bba1b066cb667c1086d194 ******/
+		/****** md5 signature: f9146de83e3e509b499749b721503a8e ******/
 		%feature("compactdefaultargs") SetTypeId;
 		%feature("autodoc", "
 Parameters
@@ -982,7 +979,7 @@ Description
 -----------
 Sets the Id of the type of the object.
 ") SetTypeId;
-		void SetTypeId(const Standard_Integer theId);
+		void SetTypeId(const int theId);
 
 		/****** BinObjMgt_Persistent::StreamStart ******/
 		/****** md5 signature: e0cf8d7c6c5cab9a0df41cc72760de1f ******/
@@ -1011,7 +1008,7 @@ Truncates the buffer by current position, i.e. updates mySize.
 		void Truncate();
 
 		/****** BinObjMgt_Persistent::TypeId ******/
-		/****** md5 signature: 52d3b80a7e4f56b46c3832619c011afe ******/
+		/****** md5 signature: b79134446b2cd271988ba97c1b344868 ******/
 		%feature("compactdefaultargs") TypeId;
 		%feature("autodoc", "Return
 -------
@@ -1021,15 +1018,15 @@ Description
 -----------
 Returns the Id of the type of the object.
 ") TypeId;
-		Standard_Integer TypeId();
+		int TypeId();
 
 		/****** BinObjMgt_Persistent::Write ******/
-		/****** md5 signature: 84710283a2afe6c7aea0d3158b3cf2ea ******/
+		/****** md5 signature: 03af028ccb16b4f5e37896c34daf799f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
 ----------
-theDirectStream: bool (optional, default to Standard_False)
+theDirectStream: bool (optional, default to false)
 
 Return
 -------
@@ -1039,7 +1036,7 @@ Description
 -----------
 Stores <self> to the stream. inline Standard_OStream& operator<< (Standard_OStream&, BinObjMgt_Persistent&) is also available. If theDirectStream is true, after this data the direct stream data is stored.
 ") Write;
-		Standard_OStream & Write(std::ostream &OutValue, const Standard_Boolean theDirectStream = Standard_False);
+		Standard_OStream & Write(std::ostream &OutValue, const bool theDirectStream = false);
 
 };
 
@@ -1056,15 +1053,15 @@ Stores <self> to the stream. inline Standard_OStream& operator<< (Standard_OStre
 /***********************************
 * class BinObjMgt_RRelocationTable *
 ***********************************/
-class BinObjMgt_RRelocationTable : public TColStd_DataMapOfIntegerTransient {
+class BinObjMgt_RRelocationTable : public NCollection_DataMap<int,opencascade::handle<Standard_Transient>> {
 	public:
 		/****** BinObjMgt_RRelocationTable::Clear ******/
-		/****** md5 signature: 9769dd3f09530d7a423c9cced022263b ******/
+		/****** md5 signature: 369cf7be96fc69902eb163ab218ae101 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
 ----------
-doReleaseMemory: bool (optional, default to Standard_True)
+doReleaseMemory: bool (optional, default to true)
 
 Return
 -------
@@ -1074,7 +1071,7 @@ Description
 -----------
 No available documentation.
 ") Clear;
-		void Clear(const Standard_Boolean doReleaseMemory = Standard_True);
+		void Clear(const bool doReleaseMemory = true);
 
 		/****** BinObjMgt_RRelocationTable::GetHeaderData ******/
 		/****** md5 signature: ce7373453eff48a8fcde9d5cb66f15d5 ******/
@@ -1130,5 +1127,4 @@ class BinObjMgt_Position:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-BinObjMgt_SRelocationTable=OCC.Core.TColStd.TColStd_IndexedMapOfTransient
 }

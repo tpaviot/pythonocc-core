@@ -19,9 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define LPROP3D_HXX
 
 
-#include<LProp3d_CLProps.hxx>
-#include<LProp3d_CurveTool.hxx>
-#include<LProp3d_SLProps.hxx>
-#include<LProp3d_SurfaceTool.hxx>
 
 #endif // LPROP3D_HXX

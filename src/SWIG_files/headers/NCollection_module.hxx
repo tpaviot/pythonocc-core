@@ -35,13 +35,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_DataMap.hxx>
 #include<NCollection_DefaultHasher.hxx>
 #include<NCollection_DefineAlloc.hxx>
-#include<NCollection_DefineHArray1.hxx>
-#include<NCollection_DefineHArray2.hxx>
-#include<NCollection_DefineHSequence.hxx>
 #include<NCollection_DefineHasher.hxx>
 #include<NCollection_DoubleMap.hxx>
 #include<NCollection_DynamicArray.hxx>
 #include<NCollection_EBTree.hxx>
+#include<NCollection_FlatDataMap.hxx>
+#include<NCollection_FlatMap.hxx>
 #include<NCollection_HArray1.hxx>
 #include<NCollection_HArray2.hxx>
 #include<NCollection_HSequence.hxx>
@@ -51,7 +50,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_IndexedDataMap.hxx>
 #include<NCollection_IndexedIterator.hxx>
 #include<NCollection_IndexedMap.hxx>
+#include<NCollection_ItemsView.hxx>
 #include<NCollection_Iterator.hxx>
+#include<NCollection_KDTree.hxx>
 #include<NCollection_Lerp.hxx>
 #include<NCollection_List.hxx>
 #include<NCollection_ListNode.hxx>
@@ -61,6 +62,10 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_Mat3.hxx>
 #include<NCollection_Mat4.hxx>
 #include<NCollection_OccAllocator.hxx>
+#include<NCollection_OrderedDataMap.hxx>
+#include<NCollection_OrderedMap.hxx>
+#include<NCollection_PackedMap.hxx>
+#include<NCollection_PackedMapAlgo.hxx>
 #include<NCollection_Primes.hxx>
 #include<NCollection_Sequence.hxx>
 #include<NCollection_Shared.hxx>
@@ -70,7 +75,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_String.hxx>
 #include<NCollection_TListIterator.hxx>
 #include<NCollection_TListNode.hxx>
-#include<NCollection_TypeDef.hxx>
 #include<NCollection_UBTree.hxx>
 #include<NCollection_UBTreeFiller.hxx>
 #include<NCollection_UtfIterator.hxx>

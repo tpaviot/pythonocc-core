@@ -169,7 +169,7 @@ Returns a tessellated annotation if specified.
 		const TopoDS_Shape GetPresentation();
 
 		/****** XCAFNoteObjects_NoteObject::HasPlane ******/
-		/****** md5 signature: 7cf03566771455c19f444d8a2236d65d ******/
+		/****** md5 signature: e18298330172220d6616cb690de3d5ad ******/
 		%feature("compactdefaultargs") HasPlane;
 		%feature("autodoc", "Return
 -------
@@ -179,10 +179,10 @@ Description
 -----------
 Returns True if plane is specified.
 ") HasPlane;
-		Standard_Boolean HasPlane();
+		bool HasPlane();
 
 		/****** XCAFNoteObjects_NoteObject::HasPoint ******/
-		/****** md5 signature: 8de3c013a7c1611c02e38dffb22d1c6b ******/
+		/****** md5 signature: 314e70d3c9f0b28261d75c0c6244be38 ******/
 		%feature("compactdefaultargs") HasPoint;
 		%feature("autodoc", "Return
 -------
@@ -192,10 +192,10 @@ Description
 -----------
 Returns True if the attachment point on the annotated object is specified.
 ") HasPoint;
-		Standard_Boolean HasPoint();
+		bool HasPoint();
 
 		/****** XCAFNoteObjects_NoteObject::HasPointText ******/
-		/****** md5 signature: 0bf2ec86538f2cbb875c1c0a8313563e ******/
+		/****** md5 signature: 9c1ccb443224aabd120f25f7d1330c3a ******/
 		%feature("compactdefaultargs") HasPointText;
 		%feature("autodoc", "Return
 -------
@@ -205,7 +205,7 @@ Description
 -----------
 Returns True if the text position is specified.
 ") HasPointText;
-		Standard_Boolean HasPointText();
+		bool HasPointText();
 
 		/****** XCAFNoteObjects_NoteObject::Reset ******/
 		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/

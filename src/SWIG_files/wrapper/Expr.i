@@ -69,12 +69,13 @@ from OCC.Core.Exception import *
 %template(Expr_Array1OfGeneralExpression) NCollection_Array1<opencascade::handle<Expr_GeneralExpression>>;
 Array1ExtendIter(opencascade::handle<Expr_GeneralExpression>)
 
-%template(Expr_Array1OfNamedUnknown) NCollection_Array1<opencascade::handle<Expr_NamedUnknown>>;
-Array1ExtendIter(opencascade::handle<Expr_NamedUnknown>)
-
 %template(Expr_Array1OfSingleRelation) NCollection_Array1<opencascade::handle<Expr_SingleRelation>>;
 Array1ExtendIter(opencascade::handle<Expr_SingleRelation>)
 
+%ignore NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>>::Items;
+%ignore NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>>::KeyValues;
+%ignore NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>>::IndexedItems;
+%ignore NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>>::Contained;
 %template(Expr_MapOfNamedUnknown) NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>>;
 %template(Expr_SequenceOfGeneralExpression) NCollection_Sequence<opencascade::handle<Expr_GeneralExpression>>;
 
@@ -96,7 +97,6 @@ Array1ExtendIter(opencascade::handle<Expr_SingleRelation>)
 
 /* typedefs */
 typedef NCollection_Array1<opencascade::handle<Expr_GeneralExpression>> Expr_Array1OfGeneralExpression;
-typedef NCollection_Array1<opencascade::handle<Expr_NamedUnknown>> Expr_Array1OfNamedUnknown;
 typedef NCollection_Array1<opencascade::handle<Expr_SingleRelation>> Expr_Array1OfSingleRelation;
 typedef NCollection_IndexedMap<opencascade::handle<Expr_NamedUnknown>> Expr_MapOfNamedUnknown;
 typedef NCollection_Sequence<opencascade::handle<Expr_GeneralExpression>> Expr_SequenceOfGeneralExpression;

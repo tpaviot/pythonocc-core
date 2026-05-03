@@ -66,6 +66,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* templates */
+%ignore NCollection_DataMap<TCollection_AsciiString,OSD_Function>::Items;
+%ignore NCollection_DataMap<TCollection_AsciiString,OSD_Function>::KeyValues;
 %template(Plugin_MapOfFunctions) NCollection_DataMap<TCollection_AsciiString,OSD_Function>;
 /* end templates declaration */
 

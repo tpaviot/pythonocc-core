@@ -5,6 +5,7 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.ShapeFix import *
 
+
 class shapealgo:
     @staticmethod
     def AlgoContainer() -> ShapeAlgo_AlgoContainer: ...
@@ -18,9 +19,10 @@ class ShapeAlgo_ToolContainer(Standard_Transient):
     def EdgeProjAux(self) -> ShapeFix_EdgeProjAux: ...
     def FixShape(self) -> ShapeFix_Shape: ...
 
-# classnotwrapped
+#classnotwrapped
 class ShapeAlgo_AlgoContainer: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

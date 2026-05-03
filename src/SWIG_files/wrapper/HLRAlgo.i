@@ -45,7 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlralgo.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopAbs_module.hxx>
-#include<TColgp_module.hxx>
+#include<Bnd_module.hxx>
 #include<gp_module.hxx>
 #include<gp_module.hxx>
 #include<TColgp_module.hxx>
@@ -56,7 +56,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlralgo.html"
 %import Standard.i
 %import NCollection.i
 %import TopAbs.i
-%import TColgp.i
+%import Bnd.i
 %import gp.i
 
 %pythoncode {
@@ -124,10 +124,6 @@ HLRAlgo_PolyMask_FMskFrBack = HLRAlgo_PolyMask.HLRAlgo_PolyMask_FMskFrBack
 %wrap_handle(HLRAlgo_PolyInternalNode)
 %wrap_handle(HLRAlgo_PolyShellData)
 %wrap_handle(HLRAlgo_WiresBlock)
-%wrap_handle(HLRAlgo_HArray1OfPHDat)
-%wrap_handle(HLRAlgo_HArray1OfPINod)
-%wrap_handle(HLRAlgo_HArray1OfPISeg)
-%wrap_handle(HLRAlgo_HArray1OfTData)
 /* end handles declaration */
 
 /* templates */
@@ -149,12 +145,6 @@ Array1ExtendIter(HLRAlgo_TriangleData)
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = HLRAlgo_ListIteratorOfInterferenceList(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 %template(HLRAlgo_ListIteratorOfInterferenceList) NCollection_TListIterator<HLRAlgo_Interference>;
@@ -165,12 +155,6 @@ Array1ExtendIter(HLRAlgo_TriangleData)
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = HLRAlgo_ListIteratorOfListOfBPoint(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
 /* end templates declaration */
@@ -180,6 +164,10 @@ typedef NCollection_Array1<HLRAlgo_PolyHidingData> HLRAlgo_Array1OfPHDat;
 typedef NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> HLRAlgo_Array1OfPINod;
 typedef NCollection_Array1<HLRAlgo_PolyInternalSegment> HLRAlgo_Array1OfPISeg;
 typedef NCollection_Array1<HLRAlgo_TriangleData> HLRAlgo_Array1OfTData;
+typedef NCollection_HArray1<HLRAlgo_PolyHidingData> HLRAlgo_HArray1OfPHDat;
+typedef NCollection_HArray1<opencascade::handle<HLRAlgo_PolyInternalNode>> HLRAlgo_HArray1OfPINod;
+typedef NCollection_HArray1<HLRAlgo_PolyInternalSegment> HLRAlgo_HArray1OfPISeg;
+typedef NCollection_HArray1<HLRAlgo_TriangleData> HLRAlgo_HArray1OfTData;
 typedef NCollection_List<HLRAlgo_Interference> HLRAlgo_InterferenceList;
 typedef NCollection_List<HLRAlgo_Interference>::Iterator HLRAlgo_ListIteratorOfInterferenceList;
 typedef NCollection_List<HLRAlgo_BiPoint>::Iterator HLRAlgo_ListIteratorOfListOfBPoint;
@@ -275,14 +263,14 @@ No available documentation.
 		static void EncodeMinMax(HLRAlgo_EdgesBlock::MinMaxIndices & Min, HLRAlgo_EdgesBlock::MinMaxIndices & Max, HLRAlgo_EdgesBlock::MinMaxIndices & MinMax);
 
 		/****** HLRAlgo::EnlargeMinMax ******/
-		/****** md5 signature: 5c2f922c83583828ccca699f2f5709f7 ******/
+		/****** md5 signature: b7acf0d6a18b400218f0adcf96380a0c ******/
 		%feature("compactdefaultargs") EnlargeMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
-tol: float
-Min: float
-Max: float
+tol: double
+Min: double
+Max: double
 
 Return
 -------
@@ -292,17 +280,17 @@ Description
 -----------
 No available documentation.
 ") EnlargeMinMax;
-		static void EnlargeMinMax(const Standard_Real tol, Standard_Real Min[16], Standard_Real Max[16]);
+		static void EnlargeMinMax(const double tol, double Min[16], double Max[16]);
 
 		/****** HLRAlgo::InitMinMax ******/
-		/****** md5 signature: 15536aa507f7e6592fd3ec5fbf8a33ed ******/
+		/****** md5 signature: 2bac3d22c3d13863f425c23379c2031c ******/
 		%feature("compactdefaultargs") InitMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
-Big: float
-Min: float
-Max: float
+Big: double
+Min: double
+Max: double
 
 Return
 -------
@@ -312,10 +300,10 @@ Description
 -----------
 No available documentation.
 ") InitMinMax;
-		static void InitMinMax(const Standard_Real Big, Standard_Real Min[16], Standard_Real Max[16]);
+		static void InitMinMax(const double Big, double Min[16], double Max[16]);
 
 		/****** HLRAlgo::SizeBox ******/
-		/****** md5 signature: d368bb25147f397318f1808363e40aa0 ******/
+		/****** md5 signature: 126eb29e273ed2fad4addd1ae3f2a535 ******/
 		%feature("compactdefaultargs") SizeBox;
 		%feature("autodoc", "
 Parameters
@@ -325,25 +313,25 @@ Max: HLRAlgo_EdgesBlock::MinMaxIndices
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") SizeBox;
-		static Standard_Real SizeBox(HLRAlgo_EdgesBlock::MinMaxIndices & Min, HLRAlgo_EdgesBlock::MinMaxIndices & Max);
+		static double SizeBox(HLRAlgo_EdgesBlock::MinMaxIndices & Min, HLRAlgo_EdgesBlock::MinMaxIndices & Max);
 
 		/****** HLRAlgo::UpdateMinMax ******/
-		/****** md5 signature: 5a55c8be19587ba156fc4a1ca38e890d ******/
+		/****** md5 signature: bd8d617dda77ec3c5776bb5c909fe807 ******/
 		%feature("compactdefaultargs") UpdateMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
-x: float
-y: float
-z: float
-Min: float
-Max: float
+x: double
+y: double
+z: double
+Min: double
+Max: double
 
 Return
 -------
@@ -353,7 +341,7 @@ Description
 -----------
 Iterator on the visible or hidden parts of an EdgeStatus.
 ") UpdateMinMax;
-		static void UpdateMinMax(const Standard_Real x, const Standard_Real y, const Standard_Real z, Standard_Real Min[16], Standard_Real Max[16]);
+		static void UpdateMinMax(const double x, const double y, const double z, double Min[16], double Max[16]);
 
 };
 
@@ -372,7 +360,7 @@ class HLRAlgo_BiPoint {
 		class IndicesT {};
 		class PointsT {};
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: e91d2b17c17c9f76ee0b8cf3d0db926d ******/
+		/****** md5 signature: 91aea238c574f0670b5110a680fc5e85 ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "Return
 -------
@@ -385,23 +373,23 @@ No available documentation.
 		 HLRAlgo_BiPoint();
 
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: f2c27a8027ad5c17fe60b999ef6e5911 ******/
+		/****** md5 signature: 07abb7e5d903eb1d8f688b12afd0ffb7 ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X1: float
-Y1: float
-Z1: float
-X2: float
-Y2: float
-Z2: float
-XT1: float
-YT1: float
-ZT1: float
-XT2: float
-YT2: float
-ZT2: float
+X1: double
+Y1: double
+Z1: double
+X2: double
+Y2: double
+Z2: double
+XT1: double
+YT1: double
+ZT1: double
+XT2: double
+YT2: double
+ZT2: double
 Index: int
 reg1: bool
 regn: bool
@@ -416,26 +404,26 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_BiPoint;
-		 HLRAlgo_BiPoint(const Standard_Real X1, const Standard_Real Y1, const Standard_Real Z1, const Standard_Real X2, const Standard_Real Y2, const Standard_Real Z2, const Standard_Real XT1, const Standard_Real YT1, const Standard_Real ZT1, const Standard_Real XT2, const Standard_Real YT2, const Standard_Real ZT2, const Standard_Integer Index, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
+		 HLRAlgo_BiPoint(const double X1, const double Y1, const double Z1, const double X2, const double Y2, const double Z2, const double XT1, const double YT1, const double ZT1, const double XT2, const double YT2, const double ZT2, const int Index, const bool reg1, const bool regn, const bool outl, const bool intl);
 
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: cd3de09eeb1071d3fa65a62d94e5795a ******/
+		/****** md5 signature: ac1367791e7eb14c120fb3c4854a1956 ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X1: float
-Y1: float
-Z1: float
-X2: float
-Y2: float
-Z2: float
-XT1: float
-YT1: float
-ZT1: float
-XT2: float
-YT2: float
-ZT2: float
+X1: double
+Y1: double
+Z1: double
+X2: double
+Y2: double
+Z2: double
+XT1: double
+YT1: double
+ZT1: double
+XT2: double
+YT2: double
+ZT2: double
 Index: int
 flag: int
 
@@ -447,26 +435,26 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_BiPoint;
-		 HLRAlgo_BiPoint(const Standard_Real X1, const Standard_Real Y1, const Standard_Real Z1, const Standard_Real X2, const Standard_Real Y2, const Standard_Real Z2, const Standard_Real XT1, const Standard_Real YT1, const Standard_Real ZT1, const Standard_Real XT2, const Standard_Real YT2, const Standard_Real ZT2, const Standard_Integer Index, const Standard_Integer flag);
+		 HLRAlgo_BiPoint(const double X1, const double Y1, const double Z1, const double X2, const double Y2, const double Z2, const double XT1, const double YT1, const double ZT1, const double XT2, const double YT2, const double ZT2, const int Index, const int flag);
 
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: edfad3b5a88b464913fe77ec62333903 ******/
+		/****** md5 signature: 71b3f56a371cef22e25b8b75bee902eb ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X1: float
-Y1: float
-Z1: float
-X2: float
-Y2: float
-Z2: float
-XT1: float
-YT1: float
-ZT1: float
-XT2: float
-YT2: float
-ZT2: float
+X1: double
+Y1: double
+Z1: double
+X2: double
+Y2: double
+Z2: double
+XT1: double
+YT1: double
+ZT1: double
+XT2: double
+YT2: double
+ZT2: double
 Index: int
 i1: int
 i1p1: int
@@ -484,26 +472,26 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_BiPoint;
-		 HLRAlgo_BiPoint(const Standard_Real X1, const Standard_Real Y1, const Standard_Real Z1, const Standard_Real X2, const Standard_Real Y2, const Standard_Real Z2, const Standard_Real XT1, const Standard_Real YT1, const Standard_Real ZT1, const Standard_Real XT2, const Standard_Real YT2, const Standard_Real ZT2, const Standard_Integer Index, const Standard_Integer i1, const Standard_Integer i1p1, const Standard_Integer i1p2, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
+		 HLRAlgo_BiPoint(const double X1, const double Y1, const double Z1, const double X2, const double Y2, const double Z2, const double XT1, const double YT1, const double ZT1, const double XT2, const double YT2, const double ZT2, const int Index, const int i1, const int i1p1, const int i1p2, const bool reg1, const bool regn, const bool outl, const bool intl);
 
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: b15157f5ad636d4bcdd717568948f374 ******/
+		/****** md5 signature: f655455753af2dfc110ea0285a685212 ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X1: float
-Y1: float
-Z1: float
-X2: float
-Y2: float
-Z2: float
-XT1: float
-YT1: float
-ZT1: float
-XT2: float
-YT2: float
-ZT2: float
+X1: double
+Y1: double
+Z1: double
+X2: double
+Y2: double
+Z2: double
+XT1: double
+YT1: double
+ZT1: double
+XT2: double
+YT2: double
+ZT2: double
 Index: int
 i1: int
 i1p1: int
@@ -518,26 +506,26 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_BiPoint;
-		 HLRAlgo_BiPoint(const Standard_Real X1, const Standard_Real Y1, const Standard_Real Z1, const Standard_Real X2, const Standard_Real Y2, const Standard_Real Z2, const Standard_Real XT1, const Standard_Real YT1, const Standard_Real ZT1, const Standard_Real XT2, const Standard_Real YT2, const Standard_Real ZT2, const Standard_Integer Index, const Standard_Integer i1, const Standard_Integer i1p1, const Standard_Integer i1p2, const Standard_Integer flag);
+		 HLRAlgo_BiPoint(const double X1, const double Y1, const double Z1, const double X2, const double Y2, const double Z2, const double XT1, const double YT1, const double ZT1, const double XT2, const double YT2, const double ZT2, const int Index, const int i1, const int i1p1, const int i1p2, const int flag);
 
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: 2925fb8b6167a0395245e205d5004995 ******/
+		/****** md5 signature: cbc782e2d20b3ea03a828aa63fef8ee8 ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X1: float
-Y1: float
-Z1: float
-X2: float
-Y2: float
-Z2: float
-XT1: float
-YT1: float
-ZT1: float
-XT2: float
-YT2: float
-ZT2: float
+X1: double
+Y1: double
+Z1: double
+X2: double
+Y2: double
+Z2: double
+XT1: double
+YT1: double
+ZT1: double
+XT2: double
+YT2: double
+ZT2: double
 Index: int
 i1: int
 i1p1: int
@@ -558,26 +546,26 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_BiPoint;
-		 HLRAlgo_BiPoint(const Standard_Real X1, const Standard_Real Y1, const Standard_Real Z1, const Standard_Real X2, const Standard_Real Y2, const Standard_Real Z2, const Standard_Real XT1, const Standard_Real YT1, const Standard_Real ZT1, const Standard_Real XT2, const Standard_Real YT2, const Standard_Real ZT2, const Standard_Integer Index, const Standard_Integer i1, const Standard_Integer i1p1, const Standard_Integer i1p2, const Standard_Integer i2, const Standard_Integer i2p1, const Standard_Integer i2p2, const Standard_Boolean reg1, const Standard_Boolean regn, const Standard_Boolean outl, const Standard_Boolean intl);
+		 HLRAlgo_BiPoint(const double X1, const double Y1, const double Z1, const double X2, const double Y2, const double Z2, const double XT1, const double YT1, const double ZT1, const double XT2, const double YT2, const double ZT2, const int Index, const int i1, const int i1p1, const int i1p2, const int i2, const int i2p1, const int i2p2, const bool reg1, const bool regn, const bool outl, const bool intl);
 
 		/****** HLRAlgo_BiPoint::HLRAlgo_BiPoint ******/
-		/****** md5 signature: 281c3fa75bed522309a2d1737a095fba ******/
+		/****** md5 signature: a9a5530f5346b601332bf17883180992 ******/
 		%feature("compactdefaultargs") HLRAlgo_BiPoint;
 		%feature("autodoc", "
 Parameters
 ----------
-X1: float
-Y1: float
-Z1: float
-X2: float
-Y2: float
-Z2: float
-XT1: float
-YT1: float
-ZT1: float
-XT2: float
-YT2: float
-ZT2: float
+X1: double
+Y1: double
+Z1: double
+X2: double
+Y2: double
+Z2: double
+XT1: double
+YT1: double
+ZT1: double
+XT2: double
+YT2: double
+ZT2: double
 Index: int
 i1: int
 i1p1: int
@@ -595,10 +583,10 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_BiPoint;
-		 HLRAlgo_BiPoint(const Standard_Real X1, const Standard_Real Y1, const Standard_Real Z1, const Standard_Real X2, const Standard_Real Y2, const Standard_Real Z2, const Standard_Real XT1, const Standard_Real YT1, const Standard_Real ZT1, const Standard_Real XT2, const Standard_Real YT2, const Standard_Real ZT2, const Standard_Integer Index, const Standard_Integer i1, const Standard_Integer i1p1, const Standard_Integer i1p2, const Standard_Integer i2, const Standard_Integer i2p1, const Standard_Integer i2p2, const Standard_Integer flag);
+		 HLRAlgo_BiPoint(const double X1, const double Y1, const double Z1, const double X2, const double Y2, const double Z2, const double XT1, const double YT1, const double ZT1, const double XT2, const double YT2, const double ZT2, const int Index, const int i1, const int i1p1, const int i1p2, const int i2, const int i2p1, const int i2p2, const int flag);
 
 		/****** HLRAlgo_BiPoint::Hidden ******/
-		/****** md5 signature: 07ca7eb361bfb4a9fb7b2173b2ca76f2 ******/
+		/****** md5 signature: 4a52f7e7fa2f144a4861edbf89396c4f ******/
 		%feature("compactdefaultargs") Hidden;
 		%feature("autodoc", "Return
 -------
@@ -608,10 +596,10 @@ Description
 -----------
 No available documentation.
 ") Hidden;
-		Standard_Boolean Hidden();
+		bool Hidden();
 
 		/****** HLRAlgo_BiPoint::Hidden ******/
-		/****** md5 signature: 8ab5f0256de33b7431e8f2b52a788fad ******/
+		/****** md5 signature: 628456a72e36ae958539bb80f24d36a5 ******/
 		%feature("compactdefaultargs") Hidden;
 		%feature("autodoc", "
 Parameters
@@ -626,10 +614,10 @@ Description
 -----------
 No available documentation.
 ") Hidden;
-		void Hidden(const Standard_Boolean B);
+		void Hidden(const bool B);
 
 		/****** HLRAlgo_BiPoint::IntLine ******/
-		/****** md5 signature: 12d7cbbfcbf9b7024b633fb2f23f4627 ******/
+		/****** md5 signature: c9edcd05c0ec34762bc524e689d9f660 ******/
 		%feature("compactdefaultargs") IntLine;
 		%feature("autodoc", "Return
 -------
@@ -639,10 +627,10 @@ Description
 -----------
 No available documentation.
 ") IntLine;
-		Standard_Boolean IntLine();
+		bool IntLine();
 
 		/****** HLRAlgo_BiPoint::IntLine ******/
-		/****** md5 signature: db1141c08b265a5a4892f7f723f2dd5f ******/
+		/****** md5 signature: f256923667b92d1083769dbd58725016 ******/
 		%feature("compactdefaultargs") IntLine;
 		%feature("autodoc", "
 Parameters
@@ -657,10 +645,10 @@ Description
 -----------
 No available documentation.
 ") IntLine;
-		void IntLine(const Standard_Boolean B);
+		void IntLine(const bool B);
 
 		/****** HLRAlgo_BiPoint::OutLine ******/
-		/****** md5 signature: 5ca0f10eca0ab31cafc651fcdd487066 ******/
+		/****** md5 signature: 42477242ba91d27bc1eca8a82bfa084d ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "Return
 -------
@@ -670,10 +658,10 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		Standard_Boolean OutLine();
+		bool OutLine();
 
 		/****** HLRAlgo_BiPoint::OutLine ******/
-		/****** md5 signature: b1713b4ae8c761b2d01b059d873779f4 ******/
+		/****** md5 signature: f28eafd4b7d27aa4a239d843dbdb30c1 ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "
 Parameters
@@ -688,10 +676,10 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		void OutLine(const Standard_Boolean B);
+		void OutLine(const bool B);
 
 		/****** HLRAlgo_BiPoint::Rg1Line ******/
-		/****** md5 signature: 909228d95e513182f5095879976686a6 ******/
+		/****** md5 signature: 2fe8ba46c5783bf24f6be03f02a12483 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "Return
 -------
@@ -701,10 +689,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		Standard_Boolean Rg1Line();
+		bool Rg1Line();
 
 		/****** HLRAlgo_BiPoint::Rg1Line ******/
-		/****** md5 signature: 8664f6dc97a60a9616441f541a3d378e ******/
+		/****** md5 signature: 42a79575c6aef6c3cb7b530ee0aad078 ******/
 		%feature("compactdefaultargs") Rg1Line;
 		%feature("autodoc", "
 Parameters
@@ -719,10 +707,10 @@ Description
 -----------
 No available documentation.
 ") Rg1Line;
-		void Rg1Line(const Standard_Boolean B);
+		void Rg1Line(const bool B);
 
 		/****** HLRAlgo_BiPoint::RgNLine ******/
-		/****** md5 signature: 9048b7d28453594775a66644606d3856 ******/
+		/****** md5 signature: 4d91c982e83f116a8b076b5c72ecd8df ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "Return
 -------
@@ -732,10 +720,10 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		Standard_Boolean RgNLine();
+		bool RgNLine();
 
 		/****** HLRAlgo_BiPoint::RgNLine ******/
-		/****** md5 signature: 15cd72eef01a3ba9cd0d52f504140d36 ******/
+		/****** md5 signature: f244442396bb29b5e7c9917acbcf1d62 ******/
 		%feature("compactdefaultargs") RgNLine;
 		%feature("autodoc", "
 Parameters
@@ -750,7 +738,7 @@ Description
 -----------
 No available documentation.
 ") RgNLine;
-		void RgNLine(const Standard_Boolean B);
+		void RgNLine(const bool B);
 
 };
 
@@ -788,13 +776,13 @@ No available documentation.
 		 HLRAlgo_Coincidence();
 
 		/****** HLRAlgo_Coincidence::Set2D ******/
-		/****** md5 signature: 5d464b150cf1323495a90b7c5956012b ******/
+		/****** md5 signature: 5cbc4e5388d2a1dcdad75b621c9a13ce ******/
 		%feature("compactdefaultargs") Set2D;
 		%feature("autodoc", "
 Parameters
 ----------
 FE: int
-Param: float
+Param: double
 
 Return
 -------
@@ -804,7 +792,7 @@ Description
 -----------
 No available documentation.
 ") Set2D;
-		void Set2D(const Standard_Integer FE, const Standard_Real Param);
+		void Set2D(const int FE, const double Param);
 
 		/****** HLRAlgo_Coincidence::SetState3D ******/
 		/****** md5 signature: 98648fa1b750de4495372d866bcef275 ******/
@@ -844,7 +832,7 @@ No available documentation.
 		void State3D(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** HLRAlgo_Coincidence::Value2D ******/
-		/****** md5 signature: 586a611fdcd63cd04637ed47ac03c68e ******/
+		/****** md5 signature: e4af4f8779bcb5a87856b8367246d4d3 ******/
 		%feature("compactdefaultargs") Value2D;
 		%feature("autodoc", "
 Parameters
@@ -853,7 +841,7 @@ Parameters
 Return
 -------
 FE: int
-Param: float
+Param: double
 
 Description
 -----------
@@ -889,7 +877,7 @@ Iterator on the visible or hidden parts of an edge.
 		 HLRAlgo_EdgeIterator();
 
 		/****** HLRAlgo_EdgeIterator::Hidden ******/
-		/****** md5 signature: cf24ee69879d62fbb2c9eeae038f0432 ******/
+		/****** md5 signature: bbde5c8b2fce1ec6571a17a4ad2f420e ******/
 		%feature("compactdefaultargs") Hidden;
 		%feature("autodoc", "
 Parameters
@@ -897,9 +885,9 @@ Parameters
 
 Return
 -------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Description
@@ -945,7 +933,7 @@ No available documentation.
 		void InitVisible(HLRAlgo_EdgeStatus & status);
 
 		/****** HLRAlgo_EdgeIterator::MoreHidden ******/
-		/****** md5 signature: 3b15b62a78bddb9bfa7464762d6947d6 ******/
+		/****** md5 signature: b1b35ce90b158cbbad012e8a7724583d ******/
 		%feature("compactdefaultargs") MoreHidden;
 		%feature("autodoc", "Return
 -------
@@ -955,10 +943,10 @@ Description
 -----------
 No available documentation.
 ") MoreHidden;
-		Standard_Boolean MoreHidden();
+		bool MoreHidden();
 
 		/****** HLRAlgo_EdgeIterator::MoreVisible ******/
-		/****** md5 signature: 7cca41fab7d11924952196a9afb1cb46 ******/
+		/****** md5 signature: 4ec4c68284a05299b93e00ede44db1af ******/
 		%feature("compactdefaultargs") MoreVisible;
 		%feature("autodoc", "Return
 -------
@@ -968,7 +956,7 @@ Description
 -----------
 No available documentation.
 ") MoreVisible;
-		Standard_Boolean MoreVisible();
+		bool MoreVisible();
 
 		/****** HLRAlgo_EdgeIterator::NextHidden ******/
 		/****** md5 signature: e264eab7635073c92511d973f449cac3 ******/
@@ -997,7 +985,7 @@ No available documentation.
 		void NextVisible();
 
 		/****** HLRAlgo_EdgeIterator::Visible ******/
-		/****** md5 signature: 620cbaee211eded4d2daab0691bb9055 ******/
+		/****** md5 signature: bc3e2ee3f919a9d155cd8742fa167c6d ******/
 		%feature("compactdefaultargs") Visible;
 		%feature("autodoc", "
 Parameters
@@ -1005,9 +993,9 @@ Parameters
 
 Return
 -------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Description
@@ -1044,14 +1032,14 @@ No available documentation.
 		 HLRAlgo_EdgeStatus();
 
 		/****** HLRAlgo_EdgeStatus::HLRAlgo_EdgeStatus ******/
-		/****** md5 signature: 80e5e01e766821f5d6f4b17c3912358d ******/
+		/****** md5 signature: a9158626ec8b31c14e3423617dd37b90 ******/
 		%feature("compactdefaultargs") HLRAlgo_EdgeStatus;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -1062,10 +1050,10 @@ Description
 -----------
 Creates a new EdgeStatus. Default visible. The Edge is bounded by the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>.
 ") HLRAlgo_EdgeStatus;
-		 HLRAlgo_EdgeStatus(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
+		 HLRAlgo_EdgeStatus(const double Start, const float TolStart, const double End, const float TolEnd);
 
 		/****** HLRAlgo_EdgeStatus::AllHidden ******/
-		/****** md5 signature: 427f4f374c4141a2e532cc839a2b03bf ******/
+		/****** md5 signature: df5c7dd2ff5c0b17a0883b1ff3ea85ea ******/
 		%feature("compactdefaultargs") AllHidden;
 		%feature("autodoc", "Return
 -------
@@ -1075,10 +1063,10 @@ Description
 -----------
 No available documentation.
 ") AllHidden;
-		Standard_Boolean AllHidden();
+		bool AllHidden();
 
 		/****** HLRAlgo_EdgeStatus::AllHidden ******/
-		/****** md5 signature: c65e34a1d18585ba9232b31c8de73e1a ******/
+		/****** md5 signature: 83c4779ebbffa74ed15c5ca651aeddd1 ******/
 		%feature("compactdefaultargs") AllHidden;
 		%feature("autodoc", "
 Parameters
@@ -1093,10 +1081,10 @@ Description
 -----------
 No available documentation.
 ") AllHidden;
-		void AllHidden(const Standard_Boolean B);
+		void AllHidden(const bool B);
 
 		/****** HLRAlgo_EdgeStatus::AllVisible ******/
-		/****** md5 signature: 00cf36cbc8257bc423305cc0050e36ea ******/
+		/****** md5 signature: 4bab10fcd0e493d4ed022b55a189aaa5 ******/
 		%feature("compactdefaultargs") AllVisible;
 		%feature("autodoc", "Return
 -------
@@ -1106,10 +1094,10 @@ Description
 -----------
 No available documentation.
 ") AllVisible;
-		Standard_Boolean AllVisible();
+		bool AllVisible();
 
 		/****** HLRAlgo_EdgeStatus::AllVisible ******/
-		/****** md5 signature: 3d549cb3e9164d44dc625873063b6d82 ******/
+		/****** md5 signature: 42edbcee6738137bdb1fd20bac632b97 ******/
 		%feature("compactdefaultargs") AllVisible;
 		%feature("autodoc", "
 Parameters
@@ -1124,10 +1112,10 @@ Description
 -----------
 No available documentation.
 ") AllVisible;
-		void AllVisible(const Standard_Boolean B);
+		void AllVisible(const bool B);
 
 		/****** HLRAlgo_EdgeStatus::Bounds ******/
-		/****** md5 signature: 2404d913bad202b8990588ec556882a8 ******/
+		/****** md5 signature: 8a50db3eac1d5413c4019ef5f48b8f08 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -1135,9 +1123,9 @@ Parameters
 
 Return
 -------
-theStart: float
+theStart: double
 theTolStart: float
-theEnd: float
+theEnd: double
 theTolEnd: float
 
 Description
@@ -1147,14 +1135,14 @@ No available documentation.
 		void Bounds(Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
 
 		/****** HLRAlgo_EdgeStatus::Hide ******/
-		/****** md5 signature: ce985d27b09ccae676c4faed96ec3d3d ******/
+		/****** md5 signature: 15b738dc9e16c2605465635d177c2f29 ******/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 OnFace: bool
 OnBoundary: bool
@@ -1165,9 +1153,9 @@ None
 
 Description
 -----------
-Hides the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>. This interval is subtracted from the visible parts. If the hidden part is on ( or under ) the face the flag <OnFace> is True ( or False ). If the hidden part is on ( or inside ) the boundary of the face the flag <OnBoundary> is True ( or False ).
+Hides the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>. This interval is subtracted from the visible parts. If the hidden part is on (or under) the face the flag <OnFace> is True (or False). If the hidden part is on (or inside) the boundary of the face the flag <OnBoundary> is True (or False).
 ") Hide;
-		void Hide(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd, const Standard_Boolean OnFace, const Standard_Boolean OnBoundary);
+		void Hide(const double Start, const float TolStart, const double End, const float TolEnd, const bool OnFace, const bool OnBoundary);
 
 		/****** HLRAlgo_EdgeStatus::HideAll ******/
 		/****** md5 signature: b17bc2d765e07d0c3a7ff1493933dbbf ******/
@@ -1183,14 +1171,14 @@ Hide the whole Edge.
 		void HideAll();
 
 		/****** HLRAlgo_EdgeStatus::Initialize ******/
-		/****** md5 signature: 66a4d5af44516b8b231058b61351c415 ******/
+		/****** md5 signature: 23c1b9607d7214380c18237c526277b8 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Return
@@ -1201,10 +1189,10 @@ Description
 -----------
 Initialize an EdgeStatus. Default visible. The Edge is bounded by the interval <Start>, <End> with the tolerances <TolStart>, <TolEnd>.
 ") Initialize;
-		void Initialize(const Standard_Real Start, const Standard_ShortReal TolStart, const Standard_Real End, const Standard_ShortReal TolEnd);
+		void Initialize(const double Start, const float TolStart, const double End, const float TolEnd);
 
 		/****** HLRAlgo_EdgeStatus::NbVisiblePart ******/
-		/****** md5 signature: 9a498c897135fb45b8f2666e88e9e8d2 ******/
+		/****** md5 signature: e2cd2fa0fc1dafb7582d28f78c900e42 ******/
 		%feature("compactdefaultargs") NbVisiblePart;
 		%feature("autodoc", "Return
 -------
@@ -1214,7 +1202,7 @@ Description
 -----------
 No available documentation.
 ") NbVisiblePart;
-		Standard_Integer NbVisiblePart();
+		int NbVisiblePart();
 
 		/****** HLRAlgo_EdgeStatus::ShowAll ******/
 		/****** md5 signature: 8830d77e81e4aea9e344b97fb84a4d38 ******/
@@ -1230,7 +1218,7 @@ Show the whole Edge.
 		void ShowAll();
 
 		/****** HLRAlgo_EdgeStatus::VisiblePart ******/
-		/****** md5 signature: 4c46e496ab3812de269341d9f8810e2c ******/
+		/****** md5 signature: 82b3eee1e4e3cef5f92244020b907887 ******/
 		%feature("compactdefaultargs") VisiblePart;
 		%feature("autodoc", "
 Parameters
@@ -1239,16 +1227,16 @@ Index: int
 
 Return
 -------
-Start: float
+Start: double
 TolStart: float
-End: float
+End: double
 TolEnd: float
 
 Description
 -----------
 No available documentation.
 ") VisiblePart;
-		void VisiblePart(const Standard_Integer Index, Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
+		void VisiblePart(const int Index, Standard_Real &OutValue, Standard_ShortReal &OutValue, Standard_Real &OutValue, Standard_ShortReal &OutValue);
 
 };
 
@@ -1266,7 +1254,7 @@ class HLRAlgo_EdgesBlock : public Standard_Transient {
 	public:
 		class MinMaxIndices {};
 		/****** HLRAlgo_EdgesBlock::HLRAlgo_EdgesBlock ******/
-		/****** md5 signature: 71e902f31e06a0591c9c4ebc094c8377 ******/
+		/****** md5 signature: 2a05a49f3793248b50593f5f083cb87c ******/
 		%feature("compactdefaultargs") HLRAlgo_EdgesBlock;
 		%feature("autodoc", "
 Parameters
@@ -1281,10 +1269,10 @@ Description
 -----------
 Create a Block of Edges for a wire.
 ") HLRAlgo_EdgesBlock;
-		 HLRAlgo_EdgesBlock(const Standard_Integer NbEdges);
+		 HLRAlgo_EdgesBlock(const int NbEdges);
 
 		/****** HLRAlgo_EdgesBlock::Double ******/
-		/****** md5 signature: 6c72b8e6b6274e1d3f857b9282cb9b70 ******/
+		/****** md5 signature: 158983b058e18cf69e411138fe5f7b3b ******/
 		%feature("compactdefaultargs") Double;
 		%feature("autodoc", "
 Parameters
@@ -1299,10 +1287,10 @@ Description
 -----------
 No available documentation.
 ") Double;
-		Standard_Boolean Double(const Standard_Integer I);
+		bool Double(const int I);
 
 		/****** HLRAlgo_EdgesBlock::Double ******/
-		/****** md5 signature: 7fa4c606f56abb0c7abcd5dcb8adf04a ******/
+		/****** md5 signature: da761495d7c7bec77285197077c7d8fa ******/
 		%feature("compactdefaultargs") Double;
 		%feature("autodoc", "
 Parameters
@@ -1318,10 +1306,10 @@ Description
 -----------
 No available documentation.
 ") Double;
-		void Double(const Standard_Integer I, const Standard_Boolean B);
+		void Double(const int I, const bool B);
 
 		/****** HLRAlgo_EdgesBlock::Edge ******/
-		/****** md5 signature: 62bb8354d821134309ab38d5fed1fbef ******/
+		/****** md5 signature: f7c40698714a9fe6fb4c290f7b99a688 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -1337,10 +1325,10 @@ Description
 -----------
 No available documentation.
 ") Edge;
-		void Edge(const Standard_Integer I, const Standard_Integer EI);
+		void Edge(const int I, const int EI);
 
 		/****** HLRAlgo_EdgesBlock::Edge ******/
-		/****** md5 signature: 1d1b2d0e7b27341cb468e475dd87e73c ******/
+		/****** md5 signature: 243c047291324cef20dc8b4ba1853e3a ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -1355,10 +1343,10 @@ Description
 -----------
 No available documentation.
 ") Edge;
-		Standard_Integer Edge(const Standard_Integer I);
+		int Edge(const int I);
 
 		/****** HLRAlgo_EdgesBlock::Internal ******/
-		/****** md5 signature: 2ebee6ed32d53f541cd70e45a531b94a ******/
+		/****** md5 signature: b3faced342912ce93fab7a4ff895bb49 ******/
 		%feature("compactdefaultargs") Internal;
 		%feature("autodoc", "
 Parameters
@@ -1373,10 +1361,10 @@ Description
 -----------
 No available documentation.
 ") Internal;
-		Standard_Boolean Internal(const Standard_Integer I);
+		bool Internal(const int I);
 
 		/****** HLRAlgo_EdgesBlock::Internal ******/
-		/****** md5 signature: 71c4557631338dca9dcf00500b427528 ******/
+		/****** md5 signature: 629eec2ed00955af26bf9aec0e461664 ******/
 		%feature("compactdefaultargs") Internal;
 		%feature("autodoc", "
 Parameters
@@ -1392,10 +1380,10 @@ Description
 -----------
 No available documentation.
 ") Internal;
-		void Internal(const Standard_Integer I, const Standard_Boolean B);
+		void Internal(const int I, const bool B);
 
 		/****** HLRAlgo_EdgesBlock::IsoLine ******/
-		/****** md5 signature: 2df012e054083f333566eb45c2e6d38c ******/
+		/****** md5 signature: 3f6a4b7b7605a8fb0ca65c399783ff4b ******/
 		%feature("compactdefaultargs") IsoLine;
 		%feature("autodoc", "
 Parameters
@@ -1410,10 +1398,10 @@ Description
 -----------
 No available documentation.
 ") IsoLine;
-		Standard_Boolean IsoLine(const Standard_Integer I);
+		bool IsoLine(const int I);
 
 		/****** HLRAlgo_EdgesBlock::IsoLine ******/
-		/****** md5 signature: e7af88fec0d17e97ac6b43000ce2a544 ******/
+		/****** md5 signature: a3037212dba2062bd90f707928bceefa ******/
 		%feature("compactdefaultargs") IsoLine;
 		%feature("autodoc", "
 Parameters
@@ -1429,7 +1417,7 @@ Description
 -----------
 No available documentation.
 ") IsoLine;
-		void IsoLine(const Standard_Integer I, const Standard_Boolean B);
+		void IsoLine(const int I, const bool B);
 
 		/****** HLRAlgo_EdgesBlock::MinMax ******/
 		/****** md5 signature: 6e0edc4d2c658ff135af2a2e1e510838 ******/
@@ -1445,7 +1433,7 @@ No available documentation.
 		HLRAlgo_EdgesBlock::MinMaxIndices MinMax();
 
 		/****** HLRAlgo_EdgesBlock::NbEdges ******/
-		/****** md5 signature: 31924aa1f5b2c848f6f0ca402e060038 ******/
+		/****** md5 signature: 54a1d338afeb2b34e693b9eb0a27ecb6 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -1455,10 +1443,10 @@ Description
 -----------
 No available documentation.
 ") NbEdges;
-		Standard_Integer NbEdges();
+		int NbEdges();
 
 		/****** HLRAlgo_EdgesBlock::Orientation ******/
-		/****** md5 signature: f772f51825c9ab94141dd6f3a70b9b7f ******/
+		/****** md5 signature: 55e6f045f74eef4e9b7564ba961730f3 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -1474,10 +1462,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		void Orientation(const Standard_Integer I, const TopAbs_Orientation Or);
+		void Orientation(const int I, const TopAbs_Orientation Or);
 
 		/****** HLRAlgo_EdgesBlock::Orientation ******/
-		/****** md5 signature: 479760e19ea923e6936cbb01cf1113f7 ******/
+		/****** md5 signature: 1ea86af50f0936d7bb6a7e990ac2aa71 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -1492,10 +1480,10 @@ Description
 -----------
 No available documentation.
 ") Orientation;
-		TopAbs_Orientation Orientation(const Standard_Integer I);
+		TopAbs_Orientation Orientation(const int I);
 
 		/****** HLRAlgo_EdgesBlock::OutLine ******/
-		/****** md5 signature: 65c09ab60793633aeb2bb852bc06f097 ******/
+		/****** md5 signature: 3120bfb4f898cf7bc36d3f7eafa9d556 ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "
 Parameters
@@ -1510,10 +1498,10 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		Standard_Boolean OutLine(const Standard_Integer I);
+		bool OutLine(const int I);
 
 		/****** HLRAlgo_EdgesBlock::OutLine ******/
-		/****** md5 signature: cd10a7e3e6f18fc4f7ac9c04828c04a8 ******/
+		/****** md5 signature: 11aebcac3ebf8d0c3ec19ff24b824c51 ******/
 		%feature("compactdefaultargs") OutLine;
 		%feature("autodoc", "
 Parameters
@@ -1529,7 +1517,7 @@ Description
 -----------
 No available documentation.
 ") OutLine;
-		void OutLine(const Standard_Integer I, const Standard_Boolean B);
+		void OutLine(const int I, const bool B);
 
 };
 
@@ -1795,7 +1783,7 @@ No available documentation.
 		 HLRAlgo_Intersection();
 
 		/****** HLRAlgo_Intersection::HLRAlgo_Intersection ******/
-		/****** md5 signature: a552b56b3147c6a34521ff3a330adb47 ******/
+		/****** md5 signature: ea5f3031f10e8fb51492e5edce0ef0ec ******/
 		%feature("compactdefaultargs") HLRAlgo_Intersection;
 		%feature("autodoc", "
 Parameters
@@ -1804,7 +1792,7 @@ Ori: TopAbs_Orientation
 Lev: int
 SegInd: int
 Ind: int
-P: float
+P: double
 Tol: float
 S: TopAbs_State
 
@@ -1816,10 +1804,10 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_Intersection;
-		 HLRAlgo_Intersection(const TopAbs_Orientation Ori, const Standard_Integer Lev, const Standard_Integer SegInd, const Standard_Integer Ind, const Standard_Real P, const Standard_ShortReal Tol, const TopAbs_State S);
+		 HLRAlgo_Intersection(const TopAbs_Orientation Ori, const int Lev, const int SegInd, const int Ind, const double P, const float Tol, const TopAbs_State S);
 
 		/****** HLRAlgo_Intersection::Index ******/
-		/****** md5 signature: d9536fd77c7a838bcbe5ab5b8ec5b47b ******/
+		/****** md5 signature: b3e032ab67148993191fd5375e70e609 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -1834,10 +1822,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		void Index(const Standard_Integer Ind);
+		void Index(const int Ind);
 
 		/****** HLRAlgo_Intersection::Index ******/
-		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
+		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -1847,10 +1835,10 @@ Description
 -----------
 No available documentation.
 ") Index;
-		Standard_Integer Index();
+		int Index();
 
 		/****** HLRAlgo_Intersection::Level ******/
-		/****** md5 signature: 0b9584f63692a34651d63a9002f4c2be ******/
+		/****** md5 signature: d37ab5f86e04c89ac1e90ad5c47a8afa ******/
 		%feature("compactdefaultargs") Level;
 		%feature("autodoc", "
 Parameters
@@ -1865,10 +1853,10 @@ Description
 -----------
 No available documentation.
 ") Level;
-		void Level(const Standard_Integer Lev);
+		void Level(const int Lev);
 
 		/****** HLRAlgo_Intersection::Level ******/
-		/****** md5 signature: 06f7279e938b54c0bc4a49915192a536 ******/
+		/****** md5 signature: 1c6749a8f4fa3c4b1ef506600d9abb66 ******/
 		%feature("compactdefaultargs") Level;
 		%feature("autodoc", "Return
 -------
@@ -1878,7 +1866,7 @@ Description
 -----------
 No available documentation.
 ") Level;
-		Standard_Integer Level();
+		int Level();
 
 		/****** HLRAlgo_Intersection::Orientation ******/
 		/****** md5 signature: f8caec47636351355ae298c52891751a ******/
@@ -1912,12 +1900,12 @@ No available documentation.
 		TopAbs_Orientation Orientation();
 
 		/****** HLRAlgo_Intersection::Parameter ******/
-		/****** md5 signature: 26acaf0b4677a7a04af978de63424b8a ******/
+		/****** md5 signature: bd5fcf434c6f44bcf7a174a8658fcc12 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 
 Return
 -------
@@ -1927,23 +1915,23 @@ Description
 -----------
 No available documentation.
 ") Parameter;
-		void Parameter(const Standard_Real P);
+		void Parameter(const double P);
 
 		/****** HLRAlgo_Intersection::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** HLRAlgo_Intersection::SegIndex ******/
-		/****** md5 signature: 6c0bbfd6ca734f01032cbeaddd314451 ******/
+		/****** md5 signature: be852527cab282bba22baa0fce0b3a9f ******/
 		%feature("compactdefaultargs") SegIndex;
 		%feature("autodoc", "
 Parameters
@@ -1958,10 +1946,10 @@ Description
 -----------
 No available documentation.
 ") SegIndex;
-		void SegIndex(const Standard_Integer SegInd);
+		void SegIndex(const int SegInd);
 
 		/****** HLRAlgo_Intersection::SegIndex ******/
-		/****** md5 signature: 8443266d1f894bac2a802a9675ebcf0b ******/
+		/****** md5 signature: 18cc7eedd3d2dd7041a8b66f193e96ee ******/
 		%feature("compactdefaultargs") SegIndex;
 		%feature("autodoc", "Return
 -------
@@ -1971,7 +1959,7 @@ Description
 -----------
 No available documentation.
 ") SegIndex;
-		Standard_Integer SegIndex();
+		int SegIndex();
 
 		/****** HLRAlgo_Intersection::State ******/
 		/****** md5 signature: 6c0c61660b3c195e1ef8292e9b6ce7fe ******/
@@ -2005,7 +1993,7 @@ No available documentation.
 		TopAbs_State State();
 
 		/****** HLRAlgo_Intersection::Tolerance ******/
-		/****** md5 signature: 727a2a2475c49599237ddd2a82d39f90 ******/
+		/****** md5 signature: 44c1d03f65a75afa45dfd9b1634ae75c ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -2020,10 +2008,10 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		void Tolerance(const Standard_ShortReal T);
+		void Tolerance(const float T);
 
 		/****** HLRAlgo_Intersection::Tolerance ******/
-		/****** md5 signature: 680c1c68cea56ee6a9513e808e1d379c ******/
+		/****** md5 signature: 27173cec126fd48cceae62b7a1012170 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2033,7 +2021,7 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_ShortReal Tolerance();
+		float Tolerance();
 
 };
 
@@ -2089,7 +2077,7 @@ No available documentation.
 		void Clear();
 
 		/****** HLRAlgo_PolyAlgo::Hide ******/
-		/****** md5 signature: fccc58a3359f48fc2d4621a26ceb7214 ******/
+		/****** md5 signature: 3f2ba13cf204b919f9bd203b04422ae1 ******/
 		%feature("compactdefaultargs") Hide;
 		%feature("autodoc", "
 Parameters
@@ -2111,7 +2099,7 @@ process hiding between <Pt1> and <Pt2>.
 		HLRAlgo_BiPoint::PointsT & Hide(HLRAlgo_EdgeStatus & status, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** HLRAlgo_PolyAlgo::Init ******/
-		/****** md5 signature: 4f6558833fa45b2851e3cccaa0030ced ******/
+		/****** md5 signature: 6ff90aa8ae853ee01d7b5c874bd81bc6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2126,7 +2114,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer theNbShells);
+		void Init(const int theNbShells);
 
 		/****** HLRAlgo_PolyAlgo::InitHide ******/
 		/****** md5 signature: 6d3a01e37a94e3705475c3d6870e3eb9 ******/
@@ -2155,7 +2143,7 @@ No available documentation.
 		void InitShow();
 
 		/****** HLRAlgo_PolyAlgo::MoreHide ******/
-		/****** md5 signature: ee934ca6bfa0a4423c581ec95be0690b ******/
+		/****** md5 signature: 209e689301a035d18ddc46a73d4882f7 ******/
 		%feature("compactdefaultargs") MoreHide;
 		%feature("autodoc", "Return
 -------
@@ -2165,10 +2153,10 @@ Description
 -----------
 No available documentation.
 ") MoreHide;
-		Standard_Boolean MoreHide();
+		bool MoreHide();
 
 		/****** HLRAlgo_PolyAlgo::MoreShow ******/
-		/****** md5 signature: 676e76c7f6a46e8688a744d734543b5e ******/
+		/****** md5 signature: 43df07479bdbac7168dbf918778d43e2 ******/
 		%feature("compactdefaultargs") MoreShow;
 		%feature("autodoc", "Return
 -------
@@ -2178,7 +2166,7 @@ Description
 -----------
 No available documentation.
 ") MoreShow;
-		Standard_Boolean MoreShow();
+		bool MoreShow();
 
 		/****** HLRAlgo_PolyAlgo::NextHide ******/
 		/****** md5 signature: 22f8ebe157186c9b9096225d279bf0df ******/
@@ -2220,7 +2208,7 @@ No available documentation.
 		const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> & PolyShell();
 
 		/****** HLRAlgo_PolyAlgo::Show ******/
-		/****** md5 signature: 91aa0cc1a8ccb2620f595ef894877d22 ******/
+		/****** md5 signature: 4a3ac2af0902e9ef8d96b4c5e8c0a7d6 ******/
 		%feature("compactdefaultargs") Show;
 		%feature("autodoc", "
 Parameters
@@ -2271,7 +2259,6 @@ class HLRAlgo_PolyData : public Standard_Transient {
 	public:
 		class FaceIndices {};
 		class Triangle {};
-		class Box {};
 		/****** HLRAlgo_PolyData::HLRAlgo_PolyData ******/
 		/****** md5 signature: 1c65d84b4a3839b161f93cf8e2da4233 ******/
 		%feature("compactdefaultargs") HLRAlgo_PolyData;
@@ -2286,7 +2273,7 @@ No available documentation.
 		 HLRAlgo_PolyData();
 
 		/****** HLRAlgo_PolyData::FaceIndex ******/
-		/****** md5 signature: 5e806ac158a6330b361c999dd9d44981 ******/
+		/****** md5 signature: 99ffed997535aaa31d88f3c3118404c3 ******/
 		%feature("compactdefaultargs") FaceIndex;
 		%feature("autodoc", "
 Parameters
@@ -2301,10 +2288,10 @@ Description
 -----------
 No available documentation.
 ") FaceIndex;
-		void FaceIndex(const Standard_Integer I);
+		void FaceIndex(const int I);
 
 		/****** HLRAlgo_PolyData::FaceIndex ******/
-		/****** md5 signature: 366897155dd7b2bff3344d29f2c14f58 ******/
+		/****** md5 signature: a77371bfb81df3325321feb280590e13 ******/
 		%feature("compactdefaultargs") FaceIndex;
 		%feature("autodoc", "Return
 -------
@@ -2314,15 +2301,15 @@ Description
 -----------
 No available documentation.
 ") FaceIndex;
-		Standard_Integer FaceIndex();
+		int FaceIndex();
 
 		/****** HLRAlgo_PolyData::HNodes ******/
-		/****** md5 signature: 69a54caea9bb74f119caf9a6bcb60407 ******/
+		/****** md5 signature: 7c52b6b6464a1c7965e020e8d78676b8 ******/
 		%feature("compactdefaultargs") HNodes;
 		%feature("autodoc", "
 Parameters
 ----------
-HNodes: TColgp_HArray1OfXYZ
+HNodes: NCollection_HArray1<gp_XYZ
 
 Return
 -------
@@ -2332,15 +2319,15 @@ Description
 -----------
 No available documentation.
 ") HNodes;
-		void HNodes(const opencascade::handle<TColgp_HArray1OfXYZ> & HNodes);
+		void HNodes(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & HNodes);
 
 		/****** HLRAlgo_PolyData::HPHDat ******/
-		/****** md5 signature: 407ecc7db70700775b2cdea78dae0d56 ******/
+		/****** md5 signature: 84b21d416f83099f9d82765a2d1f1a52 ******/
 		%feature("compactdefaultargs") HPHDat;
 		%feature("autodoc", "
 Parameters
 ----------
-HPHDat: HLRAlgo_HArray1OfPHDat
+HPHDat: NCollection_HArray1<HLRAlgo_PolyHidingData
 
 Return
 -------
@@ -2350,15 +2337,15 @@ Description
 -----------
 No available documentation.
 ") HPHDat;
-		void HPHDat(const opencascade::handle<HLRAlgo_HArray1OfPHDat> & HPHDat);
+		void HPHDat(const opencascade::handle<NCollection_HArray1<HLRAlgo_PolyHidingData> > & HPHDat);
 
 		/****** HLRAlgo_PolyData::HTData ******/
-		/****** md5 signature: 5167f9f4945cedbdd1aaa1e15424c679 ******/
+		/****** md5 signature: 288d50379a08f7af5d7d65b1bd7d29d7 ******/
 		%feature("compactdefaultargs") HTData;
 		%feature("autodoc", "
 Parameters
 ----------
-HTData: HLRAlgo_HArray1OfTData
+HTData: NCollection_HArray1<HLRAlgo_TriangleData
 
 Return
 -------
@@ -2368,10 +2355,10 @@ Description
 -----------
 No available documentation.
 ") HTData;
-		void HTData(const opencascade::handle<HLRAlgo_HArray1OfTData> & HTData);
+		void HTData(const opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData> > & HTData);
 
 		/****** HLRAlgo_PolyData::Hiding ******/
-		/****** md5 signature: bc42207e7cb8f65a46eef744c498e613 ******/
+		/****** md5 signature: 1ecaf9532c51f7586db9e63b215ba79e ******/
 		%feature("compactdefaultargs") Hiding;
 		%feature("autodoc", "Return
 -------
@@ -2381,46 +2368,46 @@ Description
 -----------
 No available documentation.
 ") Hiding;
-		Standard_Boolean Hiding();
+		bool Hiding();
 
 		/****** HLRAlgo_PolyData::Nodes ******/
-		/****** md5 signature: 40bed0368afc95a818c5232b7234373d ******/
+		/****** md5 signature: 741b03c10a2bfd7b83a86b9cc1df986f ******/
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-TColgp_Array1OfXYZ
+NCollection_Array1<gp_XYZ>
 
 Description
 -----------
 No available documentation.
 ") Nodes;
-		TColgp_Array1OfXYZ & Nodes();
+		NCollection_Array1<gp_XYZ> Nodes();
 
 		/****** HLRAlgo_PolyData::PHDat ******/
-		/****** md5 signature: 71970b8aaa61be920cefc9b2e2aac141 ******/
+		/****** md5 signature: 9f59ebc4007ceaf4a2c3717d66bcfa38 ******/
 		%feature("compactdefaultargs") PHDat;
 		%feature("autodoc", "Return
 -------
-HLRAlgo_Array1OfPHDat
+NCollection_Array1<HLRAlgo_PolyHidingData>
 
 Description
 -----------
 No available documentation.
 ") PHDat;
-		HLRAlgo_Array1OfPHDat & PHDat();
+		NCollection_Array1<HLRAlgo_PolyHidingData> & PHDat();
 
 		/****** HLRAlgo_PolyData::TData ******/
-		/****** md5 signature: c515f32c68690ac4f5e95cee5afc6d26 ******/
+		/****** md5 signature: 575c003ec7645c6f29de58fdbf9ad6b3 ******/
 		%feature("compactdefaultargs") TData;
 		%feature("autodoc", "Return
 -------
-HLRAlgo_Array1OfTData
+NCollection_Array1<HLRAlgo_TriangleData>
 
 Description
 -----------
 No available documentation.
 ") TData;
-		HLRAlgo_Array1OfTData & TData();
+		NCollection_Array1<HLRAlgo_TriangleData> & TData();
 
 };
 
@@ -2454,7 +2441,7 @@ No available documentation.
 class HLRAlgo_PolyInternalData : public Standard_Transient {
 	public:
 		/****** HLRAlgo_PolyInternalData::HLRAlgo_PolyInternalData ******/
-		/****** md5 signature: 0ff52cf9e5d6520d4bc055b55c64770e ******/
+		/****** md5 signature: 716788ebe8fd7e34556278e15f1e66a5 ******/
 		%feature("compactdefaultargs") HLRAlgo_PolyInternalData;
 		%feature("autodoc", "
 Parameters
@@ -2470,22 +2457,22 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_PolyInternalData;
-		 HLRAlgo_PolyInternalData(const Standard_Integer nbNod, const Standard_Integer nbTri);
+		 HLRAlgo_PolyInternalData(const int nbNod, const int nbTri);
 
 		/****** HLRAlgo_PolyInternalData::AddNode ******/
-		/****** md5 signature: 030edbaa89e0e51ec1ee836bbe028a9a ******/
+		/****** md5 signature: d636afe1171e2318a01c03579b2a3acc ******/
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "
 Parameters
 ----------
 theNod1RValues: HLRAlgo_PolyInternalNode::NodeData
 theNod2RValues: HLRAlgo_PolyInternalNode::NodeData
-thePINod1: HLRAlgo_Array1OfPINod *
-thePINod2: HLRAlgo_Array1OfPINod *
-theCoef1: float
-theX3: float
-theY3: float
-theZ3: float
+thePINod1: HLRAlgo_PolyInternalNode
+thePINod2: HLRAlgo_PolyInternalNode
+theCoef1: double
+theX3: double
+theY3: double
+theZ3: double
 
 Return
 -------
@@ -2495,7 +2482,7 @@ Description
 -----------
 No available documentation.
 ") AddNode;
-		Standard_Integer AddNode(HLRAlgo_PolyInternalNode::NodeData & theNod1RValues, HLRAlgo_PolyInternalNode::NodeData & theNod2RValues, HLRAlgo_Array1OfPINod * & thePINod1, HLRAlgo_Array1OfPINod * & thePINod2, const Standard_Real theCoef1, const Standard_Real theX3, const Standard_Real theY3, const Standard_Real theZ3);
+		int AddNode(HLRAlgo_PolyInternalNode::NodeData & theNod1RValues, HLRAlgo_PolyInternalNode::NodeData & theNod2RValues, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod2, const double theCoef1, const double theX3, const double theY3, const double theZ3);
 
 		/****** HLRAlgo_PolyInternalData::DecPINod ******/
 		/****** md5 signature: 23c9a454c260ae9304cb22b337d0f0ff ******/
@@ -2550,13 +2537,13 @@ No available documentation.
 		void Dump();
 
 		/****** HLRAlgo_PolyInternalData::IncPINod ******/
-		/****** md5 signature: e28e8098a494a718c0df7f109cd14590 ******/
+		/****** md5 signature: 6f6e1576b65c68d1831d86ceb77680ae ******/
 		%feature("compactdefaultargs") IncPINod;
 		%feature("autodoc", "
 Parameters
 ----------
-thePINod1: HLRAlgo_Array1OfPINod *
-thePINod2: HLRAlgo_Array1OfPINod *
+thePINod1: HLRAlgo_PolyInternalNode
+thePINod2: HLRAlgo_PolyInternalNode
 
 Return
 -------
@@ -2566,16 +2553,16 @@ Description
 -----------
 No available documentation.
 ") IncPINod;
-		void IncPINod(HLRAlgo_Array1OfPINod * & thePINod1, HLRAlgo_Array1OfPINod * & thePINod2);
+		void IncPINod(NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod2);
 
 		/****** HLRAlgo_PolyInternalData::IncPISeg ******/
-		/****** md5 signature: bf0b8293a85db37a0ab57e624faff682 ******/
+		/****** md5 signature: cdfae8b14010c8c1896073e40d2a74b0 ******/
 		%feature("compactdefaultargs") IncPISeg;
 		%feature("autodoc", "
 Parameters
 ----------
-PISeg1: HLRAlgo_Array1OfPISeg *
-PISeg2: HLRAlgo_Array1OfPISeg *
+PISeg1: NCollection_Array1<HLRAlgo_PolyInternalSegment> *
+PISeg2: NCollection_Array1<HLRAlgo_PolyInternalSegment> *
 
 Return
 -------
@@ -2585,16 +2572,16 @@ Description
 -----------
 No available documentation.
 ") IncPISeg;
-		void IncPISeg(HLRAlgo_Array1OfPISeg * & PISeg1, HLRAlgo_Array1OfPISeg * & PISeg2);
+		void IncPISeg(NCollection_Array1<HLRAlgo_PolyInternalSegment> * & PISeg1, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & PISeg2);
 
 		/****** HLRAlgo_PolyInternalData::IncTData ******/
-		/****** md5 signature: 4202f3d8bfe60b72e74d49bb11fd54b3 ******/
+		/****** md5 signature: 2eebf4fb6d2530a97070a6e6bbefd61b ******/
 		%feature("compactdefaultargs") IncTData;
 		%feature("autodoc", "
 Parameters
 ----------
-TData1: HLRAlgo_Array1OfTData *
-TData2: HLRAlgo_Array1OfTData *
+TData1: NCollection_Array1<HLRAlgo_TriangleData> *
+TData2: NCollection_Array1<HLRAlgo_TriangleData> *
 
 Return
 -------
@@ -2604,10 +2591,10 @@ Description
 -----------
 No available documentation.
 ") IncTData;
-		void IncTData(HLRAlgo_Array1OfTData * & TData1, HLRAlgo_Array1OfTData * & TData2);
+		void IncTData(NCollection_Array1<HLRAlgo_TriangleData> * & TData1, NCollection_Array1<HLRAlgo_TriangleData> * & TData2);
 
 		/****** HLRAlgo_PolyInternalData::IntOutL ******/
-		/****** md5 signature: 9ebb75c9ccf4fb86133d4f40a9c7e192 ******/
+		/****** md5 signature: 937e55216c84228194f36e04ec657e9a ******/
 		%feature("compactdefaultargs") IntOutL;
 		%feature("autodoc", "Return
 -------
@@ -2617,10 +2604,10 @@ Description
 -----------
 No available documentation.
 ") IntOutL;
-		Standard_Boolean IntOutL();
+		bool IntOutL();
 
 		/****** HLRAlgo_PolyInternalData::IntOutL ******/
-		/****** md5 signature: df61f55aa2c1a618e8b2da86f8aa5c5c ******/
+		/****** md5 signature: 83ba7d0c87aab7a57d06feccab43ff56 ******/
 		%feature("compactdefaultargs") IntOutL;
 		%feature("autodoc", "
 Parameters
@@ -2635,10 +2622,10 @@ Description
 -----------
 No available documentation.
 ") IntOutL;
-		void IntOutL(const Standard_Boolean B);
+		void IntOutL(const bool B);
 
 		/****** HLRAlgo_PolyInternalData::NbPINod ******/
-		/****** md5 signature: d6666dd17f4d73c1bec0ec3989a55dc0 ******/
+		/****** md5 signature: 3149e0afc0e3186b626fad14fc9d67ab ******/
 		%feature("compactdefaultargs") NbPINod;
 		%feature("autodoc", "Return
 -------
@@ -2648,10 +2635,10 @@ Description
 -----------
 No available documentation.
 ") NbPINod;
-		Standard_Integer NbPINod();
+		int NbPINod();
 
 		/****** HLRAlgo_PolyInternalData::NbPISeg ******/
-		/****** md5 signature: b79df3ce19221048c26094b09e0e54ec ******/
+		/****** md5 signature: bd8afbf8cff45e09da70458d8df50ee1 ******/
 		%feature("compactdefaultargs") NbPISeg;
 		%feature("autodoc", "Return
 -------
@@ -2661,10 +2648,10 @@ Description
 -----------
 No available documentation.
 ") NbPISeg;
-		Standard_Integer NbPISeg();
+		int NbPISeg();
 
 		/****** HLRAlgo_PolyInternalData::NbTData ******/
-		/****** md5 signature: 5b32649d54b5514785013f7ef57d84bd ******/
+		/****** md5 signature: 464d5aa5b707478f2c555f54175949fb ******/
 		%feature("compactdefaultargs") NbTData;
 		%feature("autodoc", "Return
 -------
@@ -2674,36 +2661,36 @@ Description
 -----------
 No available documentation.
 ") NbTData;
-		Standard_Integer NbTData();
+		int NbTData();
 
 		/****** HLRAlgo_PolyInternalData::PINod ******/
-		/****** md5 signature: 8bf6e0be7a530ded0d69a23dc6019fab ******/
+		/****** md5 signature: 0d3e2bbf673dfbf2e1a6ccd6cc38b646 ******/
 		%feature("compactdefaultargs") PINod;
 		%feature("autodoc", "Return
 -------
-HLRAlgo_Array1OfPINod
+NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>
 
 Description
 -----------
 No available documentation.
 ") PINod;
-		HLRAlgo_Array1OfPINod & PINod();
+		NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> & PINod();
 
 		/****** HLRAlgo_PolyInternalData::PISeg ******/
-		/****** md5 signature: 38e3d567ce2f7112db67ea149a905697 ******/
+		/****** md5 signature: 0eb5a4d7c5cc4d8808b7862615347c1d ******/
 		%feature("compactdefaultargs") PISeg;
 		%feature("autodoc", "Return
 -------
-HLRAlgo_Array1OfPISeg
+NCollection_Array1<HLRAlgo_PolyInternalSegment>
 
 Description
 -----------
 No available documentation.
 ") PISeg;
-		HLRAlgo_Array1OfPISeg & PISeg();
+		NCollection_Array1<HLRAlgo_PolyInternalSegment> & PISeg();
 
 		/****** HLRAlgo_PolyInternalData::Planar ******/
-		/****** md5 signature: 4d830f54345a28c8f8e2ff1825b8872b ******/
+		/****** md5 signature: b1499fd072312701f35006b5034e5034 ******/
 		%feature("compactdefaultargs") Planar;
 		%feature("autodoc", "Return
 -------
@@ -2713,10 +2700,10 @@ Description
 -----------
 No available documentation.
 ") Planar;
-		Standard_Boolean Planar();
+		bool Planar();
 
 		/****** HLRAlgo_PolyInternalData::Planar ******/
-		/****** md5 signature: 31c2d87b16bb517676f748d18b147ffc ******/
+		/****** md5 signature: 5c01ac18c79cd3ca98c82a3e92bbca6b ******/
 		%feature("compactdefaultargs") Planar;
 		%feature("autodoc", "
 Parameters
@@ -2731,30 +2718,30 @@ Description
 -----------
 No available documentation.
 ") Planar;
-		void Planar(const Standard_Boolean B);
+		void Planar(const bool B);
 
 		/****** HLRAlgo_PolyInternalData::TData ******/
-		/****** md5 signature: c515f32c68690ac4f5e95cee5afc6d26 ******/
+		/****** md5 signature: 575c003ec7645c6f29de58fdbf9ad6b3 ******/
 		%feature("compactdefaultargs") TData;
 		%feature("autodoc", "Return
 -------
-HLRAlgo_Array1OfTData
+NCollection_Array1<HLRAlgo_TriangleData>
 
 Description
 -----------
 No available documentation.
 ") TData;
-		HLRAlgo_Array1OfTData & TData();
+		NCollection_Array1<HLRAlgo_TriangleData> & TData();
 
 		/****** HLRAlgo_PolyInternalData::UpdateLinks ******/
-		/****** md5 signature: 6ecb7e49245bc9a027a02cec4a8ab955 ******/
+		/****** md5 signature: edd888e73ee32c04e002b34567e65673 ******/
 		%feature("compactdefaultargs") UpdateLinks;
 		%feature("autodoc", "
 Parameters
 ----------
-theTData: HLRAlgo_Array1OfTData
-thePISeg: HLRAlgo_Array1OfPISeg
-thePINod: HLRAlgo_Array1OfPINod
+theTData: NCollection_Array1<HLRAlgo_TriangleData>
+thePISeg: NCollection_Array1<HLRAlgo_PolyInternalSegment>
+thePINod: HLRAlgo_PolyInternalNode
 
 Return
 -------
@@ -2764,10 +2751,10 @@ Description
 -----------
 No available documentation.
 ") UpdateLinks;
-		void UpdateLinks(HLRAlgo_Array1OfTData & theTData, HLRAlgo_Array1OfPISeg & thePISeg, HLRAlgo_Array1OfPINod & thePINod);
+		void UpdateLinks(NCollection_Array1<HLRAlgo_TriangleData> & theTData, NCollection_Array1<HLRAlgo_PolyInternalSegment> & thePISeg, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > & thePINod);
 
 		/****** HLRAlgo_PolyInternalData::UpdateLinks ******/
-		/****** md5 signature: 12f0176cf18713f7b8c1d91b9594981c ******/
+		/****** md5 signature: b9caa06ceffbea68f86030781de62747 ******/
 		%feature("compactdefaultargs") UpdateLinks;
 		%feature("autodoc", "
 Parameters
@@ -2775,12 +2762,12 @@ Parameters
 theIp1: int
 theIp2: int
 theIp3: int
-theTData1: HLRAlgo_Array1OfTData *
-theTData2: HLRAlgo_Array1OfTData *
-thePISeg1: HLRAlgo_Array1OfPISeg *
-thePISeg2: HLRAlgo_Array1OfPISeg *
-thePINod1: HLRAlgo_Array1OfPINod *
-thePINod2: HLRAlgo_Array1OfPINod *
+theTData1: NCollection_Array1<HLRAlgo_TriangleData> *
+theTData2: NCollection_Array1<HLRAlgo_TriangleData> *
+thePISeg1: NCollection_Array1<HLRAlgo_PolyInternalSegment> *
+thePISeg2: NCollection_Array1<HLRAlgo_PolyInternalSegment> *
+thePINod1: HLRAlgo_PolyInternalNode
+thePINod2: HLRAlgo_PolyInternalNode
 
 Return
 -------
@@ -2790,7 +2777,7 @@ Description
 -----------
 No available documentation.
 ") UpdateLinks;
-		void UpdateLinks(const Standard_Integer theIp1, const Standard_Integer theIp2, const Standard_Integer theIp3, HLRAlgo_Array1OfTData * & theTData1, HLRAlgo_Array1OfTData * & theTData2, HLRAlgo_Array1OfPISeg * & thePISeg1, HLRAlgo_Array1OfPISeg * & thePISeg2, HLRAlgo_Array1OfPINod * & thePINod1, HLRAlgo_Array1OfPINod * & thePINod2);
+		void UpdateLinks(const int theIp1, const int theIp2, const int theIp3, NCollection_Array1<HLRAlgo_TriangleData> * & theTData1, NCollection_Array1<HLRAlgo_TriangleData> * & theTData2, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & thePISeg1, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & thePISeg2, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod2);
 
 };
 
@@ -2852,7 +2839,7 @@ class HLRAlgo_PolyShellData : public Standard_Transient {
 	public:
 		class ShellIndices {};
 		/****** HLRAlgo_PolyShellData::HLRAlgo_PolyShellData ******/
-		/****** md5 signature: 47db112083a4d1df57fb42f2ab31d718 ******/
+		/****** md5 signature: f45e97fd9e2679a58f7c299871e96e83 ******/
 		%feature("compactdefaultargs") HLRAlgo_PolyShellData;
 		%feature("autodoc", "
 Parameters
@@ -2867,23 +2854,23 @@ Description
 -----------
 No available documentation.
 ") HLRAlgo_PolyShellData;
-		 HLRAlgo_PolyShellData(const Standard_Integer nbFace);
+		 HLRAlgo_PolyShellData(const int nbFace);
 
 		/****** HLRAlgo_PolyShellData::Edges ******/
-		/****** md5 signature: 3ffe8deadeb0fe47515ab51a09784967 ******/
+		/****** md5 signature: a560831d1ad3546dff68467a7a8896af ******/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Return
 -------
-HLRAlgo_ListOfBPoint
+NCollection_List<HLRAlgo_BiPoint>
 
 Description
 -----------
 No available documentation.
 ") Edges;
-		HLRAlgo_ListOfBPoint & Edges();
+		NCollection_List<HLRAlgo_BiPoint> & Edges();
 
 		/****** HLRAlgo_PolyShellData::Hiding ******/
-		/****** md5 signature: 9e063098b7345ab66f670b3b16d882e5 ******/
+		/****** md5 signature: 873b9a53c522527c5a77c05a27c28b8b ******/
 		%feature("compactdefaultargs") Hiding;
 		%feature("autodoc", "Return
 -------
@@ -2893,7 +2880,7 @@ Description
 -----------
 No available documentation.
 ") Hiding;
-		Standard_Boolean Hiding();
+		bool Hiding();
 
 		/****** HLRAlgo_PolyShellData::HidingPolyData ******/
 		/****** md5 signature: 1677904005cfe756ecd5ae731539a322 ******/
@@ -2922,12 +2909,12 @@ No available documentation.
 		NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>> & PolyData();
 
 		/****** HLRAlgo_PolyShellData::UpdateGlobalMinMax ******/
-		/****** md5 signature: 582d6cf1a888375cf933c3643964498a ******/
+		/****** md5 signature: 65504e67a52e19904c177bf36a5a960f ******/
 		%feature("compactdefaultargs") UpdateGlobalMinMax;
 		%feature("autodoc", "
 Parameters
 ----------
-theBox: HLRAlgo_PolyData::Box
+theBox: Bnd_Box
 
 Return
 -------
@@ -2937,10 +2924,10 @@ Description
 -----------
 No available documentation.
 ") UpdateGlobalMinMax;
-		void UpdateGlobalMinMax(HLRAlgo_PolyData::Box & theBox);
+		void UpdateGlobalMinMax(Bnd_Box & theBox);
 
 		/****** HLRAlgo_PolyShellData::UpdateHiding ******/
-		/****** md5 signature: 48e4fc2e43d44cd5a98f1e46fb470e26 ******/
+		/****** md5 signature: b5e81227262148b00a654ec8bd03a63b ******/
 		%feature("compactdefaultargs") UpdateHiding;
 		%feature("autodoc", "
 Parameters
@@ -2955,7 +2942,7 @@ Description
 -----------
 No available documentation.
 ") UpdateHiding;
-		void UpdateHiding(const Standard_Integer nbHiding);
+		void UpdateHiding(const int nbHiding);
 
 };
 
@@ -3009,13 +2996,13 @@ Creates an axonometric projector. <CS> is the viewing coordinate system.
 		 HLRAlgo_Projector(const gp_Ax2 & CS);
 
 		/****** HLRAlgo_Projector::HLRAlgo_Projector ******/
-		/****** md5 signature: ef7cb75d5f445f065cfbfbdb8e57f993 ******/
+		/****** md5 signature: eccf510c370852be35d093eab3079790 ******/
 		%feature("compactdefaultargs") HLRAlgo_Projector;
 		%feature("autodoc", "
 Parameters
 ----------
 CS: gp_Ax2
-Focus: float
+Focus: double
 
 Return
 -------
@@ -3025,17 +3012,17 @@ Description
 -----------
 Creates a perspective projector. <CS> is the viewing coordinate system.
 ") HLRAlgo_Projector;
-		 HLRAlgo_Projector(const gp_Ax2 & CS, const Standard_Real Focus);
+		 HLRAlgo_Projector(const gp_Ax2 & CS, const double Focus);
 
 		/****** HLRAlgo_Projector::HLRAlgo_Projector ******/
-		/****** md5 signature: 54f8c71605df068b4ce26364b27a1fb4 ******/
+		/****** md5 signature: 7bb17c8604ea3c0acf2e4a6b71e121e9 ******/
 		%feature("compactdefaultargs") HLRAlgo_Projector;
 		%feature("autodoc", "
 Parameters
 ----------
 T: gp_Trsf
 Persp: bool
-Focus: float
+Focus: double
 
 Return
 -------
@@ -3045,17 +3032,17 @@ Description
 -----------
 build a Projector with automatic minmax directions.
 ") HLRAlgo_Projector;
-		 HLRAlgo_Projector(const gp_Trsf & T, const Standard_Boolean Persp, const Standard_Real Focus);
+		 HLRAlgo_Projector(const gp_Trsf & T, const bool Persp, const double Focus);
 
 		/****** HLRAlgo_Projector::HLRAlgo_Projector ******/
-		/****** md5 signature: f1a2a7d2f4c76422bc4b7985bc0b8d7d ******/
+		/****** md5 signature: 719879665359f8b4082a4d53a87d1017 ******/
 		%feature("compactdefaultargs") HLRAlgo_Projector;
 		%feature("autodoc", "
 Parameters
 ----------
 T: gp_Trsf
 Persp: bool
-Focus: float
+Focus: double
 v1: gp_Vec2d
 v2: gp_Vec2d
 v3: gp_Vec2d
@@ -3068,7 +3055,7 @@ Description
 -----------
 build a Projector with given minmax directions.
 ") HLRAlgo_Projector;
-		 HLRAlgo_Projector(const gp_Trsf & T, const Standard_Boolean Persp, const Standard_Real Focus, const gp_Vec2d & v1, const gp_Vec2d & v2, const gp_Vec2d & v3);
+		 HLRAlgo_Projector(const gp_Trsf & T, const bool Persp, const double Focus, const gp_Vec2d & v1, const gp_Vec2d & v2, const gp_Vec2d & v3);
 
 		/****** HLRAlgo_Projector::Directions ******/
 		/****** md5 signature: 896ac6730deebeb97ba07e51ae851bb0 ******/
@@ -3091,17 +3078,17 @@ No available documentation.
 		void Directions(gp_Vec2d & D1, gp_Vec2d & D2, gp_Vec2d & D3);
 
 		/****** HLRAlgo_Projector::Focus ******/
-		/****** md5 signature: 7f25143d4ee01dbca172f0ac199ce7eb ******/
+		/****** md5 signature: 7b37f21a5b277bef2347e2820d959069 ******/
 		%feature("compactdefaultargs") Focus;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the focal length.
 ") Focus;
-		Standard_Real Focus();
+		double Focus();
 
 		/****** HLRAlgo_Projector::FullTransformation ******/
 		/****** md5 signature: 2fd1c84627aa6ce62b5b2fab31952206 ******/
@@ -3130,7 +3117,7 @@ Returns the active inverted transformation.
 		const gp_Trsf InvertedTransformation();
 
 		/****** HLRAlgo_Projector::Perspective ******/
-		/****** md5 signature: d485b60782e71223fcfb73cc547c4eaa ******/
+		/****** md5 signature: f01917bba551bc5ea062216167b1e4a0 ******/
 		%feature("compactdefaultargs") Perspective;
 		%feature("autodoc", "Return
 -------
@@ -3140,7 +3127,7 @@ Description
 -----------
 Returns True if there is a perspective transformation.
 ") Perspective;
-		Standard_Boolean Perspective();
+		bool Perspective();
 
 		/****** HLRAlgo_Projector::Project ******/
 		/****** md5 signature: 8f672feab377350a4417b6e7b72f5cd2 ******/
@@ -3162,7 +3149,7 @@ Transform and apply perspective if needed.
 		void Project(const gp_Pnt & P, gp_Pnt2d & Pout);
 
 		/****** HLRAlgo_Projector::Project ******/
-		/****** md5 signature: ce805b12431d64048a7400b93bc43f0b ******/
+		/****** md5 signature: 041825ebceef31d236dfacddc15cde6e ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -3171,9 +3158,9 @@ P: gp_Pnt
 
 Return
 -------
-X: float
-Y: float
-Z: float
+X: double
+Y: double
+Z: double
 
 Description
 -----------
@@ -3203,12 +3190,12 @@ Transform and apply perspective if needed.
 		void Project(const gp_Pnt & P, const gp_Vec & D1, gp_Pnt2d & Pout, gp_Vec2d & D1out);
 
 		/****** HLRAlgo_Projector::Scaled ******/
-		/****** md5 signature: 7f9a7b250b2e4068d09b302fbc93c460 ******/
+		/****** md5 signature: bbafb9338c0fbe4d4912665f77c12580 ******/
 		%feature("compactdefaultargs") Scaled;
 		%feature("autodoc", "
 Parameters
 ----------
-On: bool (optional, default to Standard_False)
+On: bool (optional, default to false)
 
 Return
 -------
@@ -3218,17 +3205,17 @@ Description
 -----------
 to compute with the given scale and translation.
 ") Scaled;
-		void Scaled(const Standard_Boolean On = Standard_False);
+		void Scaled(const bool On = false);
 
 		/****** HLRAlgo_Projector::Set ******/
-		/****** md5 signature: 6fb0e09772c01422c0b5d28ac8a1a63a ******/
+		/****** md5 signature: cbba7a282b7b445a3f53fb424e0f5722 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 T: gp_Trsf
 Persp: bool
-Focus: float
+Focus: double
 
 Return
 -------
@@ -3238,16 +3225,16 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const gp_Trsf & T, const Standard_Boolean Persp, const Standard_Real Focus);
+		void Set(const gp_Trsf & T, const bool Persp, const double Focus);
 
 		/****** HLRAlgo_Projector::Shoot ******/
-		/****** md5 signature: 519282116437ba6a032c9ac364098f98 ******/
+		/****** md5 signature: ca35193decd8da911b70b447a55d8e8b ******/
 		%feature("compactdefaultargs") Shoot;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
-Y: float
+X: double
+Y: double
 
 Return
 -------
@@ -3257,7 +3244,7 @@ Description
 -----------
 return a line going through the eye towards the 2d point <X,Y>.
 ") Shoot;
-		gp_Lin Shoot(const Standard_Real X, const Standard_Real Y);
+		gp_Lin Shoot(const double X, const double Y);
 
 		/****** HLRAlgo_Projector::Transform ******/
 		/****** md5 signature: 10baf6732f1abbea1a4e7de2bad21710 ******/
@@ -3326,7 +3313,7 @@ Returns the active transformation.
 class HLRAlgo_WiresBlock : public Standard_Transient {
 	public:
 		/****** HLRAlgo_WiresBlock::HLRAlgo_WiresBlock ******/
-		/****** md5 signature: a3813db1547d3356adc436359819aab0 ******/
+		/****** md5 signature: b1a5379df8bee04eefa7845fd5afd920 ******/
 		%feature("compactdefaultargs") HLRAlgo_WiresBlock;
 		%feature("autodoc", "
 Parameters
@@ -3341,7 +3328,7 @@ Description
 -----------
 Create a Block of Blocks.
 ") HLRAlgo_WiresBlock;
-		 HLRAlgo_WiresBlock(const Standard_Integer NbWires);
+		 HLRAlgo_WiresBlock(const int NbWires);
 
 		/****** HLRAlgo_WiresBlock::MinMax ******/
 		/****** md5 signature: b360e6f636632e8d4f24d53763098bae ******/
@@ -3357,7 +3344,7 @@ No available documentation.
 		HLRAlgo_EdgesBlock::MinMaxIndices & MinMax();
 
 		/****** HLRAlgo_WiresBlock::NbWires ******/
-		/****** md5 signature: bce549b9d0543bc5dacda7fa2e69e8be ******/
+		/****** md5 signature: fd4feeac48e0420944f46658b8fcc010 ******/
 		%feature("compactdefaultargs") NbWires;
 		%feature("autodoc", "Return
 -------
@@ -3367,10 +3354,10 @@ Description
 -----------
 No available documentation.
 ") NbWires;
-		Standard_Integer NbWires();
+		int NbWires();
 
 		/****** HLRAlgo_WiresBlock::Set ******/
-		/****** md5 signature: c1ab1a849e1a595daa7a5f0a0335fbb3 ******/
+		/****** md5 signature: b703dd7c35a4086479856456e22fd975 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -3386,7 +3373,7 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const Standard_Integer I, const opencascade::handle<HLRAlgo_EdgesBlock> & W);
+		void Set(const int I, const opencascade::handle<HLRAlgo_EdgesBlock> & W);
 
 		/****** HLRAlgo_WiresBlock::UpdateMinMax ******/
 		/****** md5 signature: 26c6b0e6335e69c3bc9452c803f3a7a7 ******/
@@ -3407,7 +3394,7 @@ No available documentation.
 		void UpdateMinMax(const HLRAlgo_EdgesBlock::MinMaxIndices & theMinMaxes);
 
 		/****** HLRAlgo_WiresBlock::Wire ******/
-		/****** md5 signature: f8c17dee52a3648b0a4db214d314823d ******/
+		/****** md5 signature: d133c0e0bcaa1a0c6a6c1f5e2c1bf6fe ******/
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "
 Parameters
@@ -3422,7 +3409,7 @@ Description
 -----------
 No available documentation.
 ") Wire;
-		opencascade::handle<HLRAlgo_EdgesBlock> & Wire(const Standard_Integer I);
+		opencascade::handle<HLRAlgo_EdgesBlock> & Wire(const int I);
 
 };
 
@@ -3453,46 +3440,46 @@ class HLRAlgo_PolyHidingData:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class HLRAlgo_HArray1OfPHDat : public HLRAlgo_Array1OfPHDat, public Standard_Transient {
+class HLRAlgo_HArray1OfPHDat : public NCollection_Array1<HLRAlgo_PolyHidingData>, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPHDat::value_type& theValue);
-    HLRAlgo_HArray1OfPHDat(const HLRAlgo_Array1OfPHDat& theOther);
-    const HLRAlgo_Array1OfPHDat& Array1();
-    HLRAlgo_Array1OfPHDat& ChangeArray1();
+    HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<HLRAlgo_PolyHidingData>::value_type& theValue);
+    HLRAlgo_HArray1OfPHDat(const NCollection_Array1<HLRAlgo_PolyHidingData>& theOther);
+    const NCollection_Array1<HLRAlgo_PolyHidingData>& Array1();
+    NCollection_Array1<HLRAlgo_PolyHidingData>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPHDat)
 
 
-class HLRAlgo_HArray1OfPINod : public HLRAlgo_Array1OfPINod, public Standard_Transient {
+class HLRAlgo_HArray1OfPINod : public NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPINod::value_type& theValue);
-    HLRAlgo_HArray1OfPINod(const HLRAlgo_Array1OfPINod& theOther);
-    const HLRAlgo_Array1OfPINod& Array1();
-    HLRAlgo_Array1OfPINod& ChangeArray1();
+    HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>::value_type& theValue);
+    HLRAlgo_HArray1OfPINod(const NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>& theOther);
+    const NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>& Array1();
+    NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPINod)
 
 
-class HLRAlgo_HArray1OfPISeg : public HLRAlgo_Array1OfPISeg, public Standard_Transient {
+class HLRAlgo_HArray1OfPISeg : public NCollection_Array1<HLRAlgo_PolyInternalSegment>, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfPISeg::value_type& theValue);
-    HLRAlgo_HArray1OfPISeg(const HLRAlgo_Array1OfPISeg& theOther);
-    const HLRAlgo_Array1OfPISeg& Array1();
-    HLRAlgo_Array1OfPISeg& ChangeArray1();
+    HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<HLRAlgo_PolyInternalSegment>::value_type& theValue);
+    HLRAlgo_HArray1OfPISeg(const NCollection_Array1<HLRAlgo_PolyInternalSegment>& theOther);
+    const NCollection_Array1<HLRAlgo_PolyInternalSegment>& Array1();
+    NCollection_Array1<HLRAlgo_PolyInternalSegment>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPISeg)
 
 
-class HLRAlgo_HArray1OfTData : public HLRAlgo_Array1OfTData, public Standard_Transient {
+class HLRAlgo_HArray1OfTData : public NCollection_Array1<HLRAlgo_TriangleData>, public Standard_Transient {
   public:
     HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper);
-    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const HLRAlgo_Array1OfTData::value_type& theValue);
-    HLRAlgo_HArray1OfTData(const HLRAlgo_Array1OfTData& theOther);
-    const HLRAlgo_Array1OfTData& Array1();
-    HLRAlgo_Array1OfTData& ChangeArray1();
+    HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<HLRAlgo_TriangleData>::value_type& theValue);
+    HLRAlgo_HArray1OfTData(const NCollection_Array1<HLRAlgo_TriangleData>& theOther);
+    const NCollection_Array1<HLRAlgo_TriangleData>& Array1();
+    NCollection_Array1<HLRAlgo_TriangleData>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfTData)
 

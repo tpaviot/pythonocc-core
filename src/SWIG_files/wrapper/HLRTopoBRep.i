@@ -46,8 +46,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrtopobrep.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Contap_module.hxx>
-#include<BRepTopAdaptor_module.hxx>
-#include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<HLRAlgo_module.hxx>
@@ -62,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrtopobrep.html"
 #include<Message_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -71,8 +70,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrtopobrep.html"
 %import NCollection.i
 %import TopoDS.i
 %import Contap.i
-%import BRepTopAdaptor.i
-%import TopTools.i
 %import Geom2d.i
 %import gp.i
 %import HLRAlgo.i
@@ -95,6 +92,8 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_FaceData,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_FaceData,TopTools_ShapeMapHasher>::KeyValues;
 %template(HLRTopoBRep_DataMapOfShapeFaceData) NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_FaceData,TopTools_ShapeMapHasher>;
 %template(HLRTopoBRep_ListIteratorOfListOfVData) NCollection_TListIterator<HLRTopoBRep_VData>;
 %template(HLRTopoBRep_ListOfVData) NCollection_List<HLRTopoBRep_VData>;
@@ -103,14 +102,10 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
-
-    def __iter__(self):
-        it = HLRTopoBRep_ListIteratorOfListOfVData(self.this)
-        while it.More():
-            yield it.Value()
-            it.Next()
     }
 };
+%ignore NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_ListOfVData,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_ListOfVData,TopTools_ShapeMapHasher>::KeyValues;
 %template(HLRTopoBRep_MapOfShapeListOfVData) NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_ListOfVData,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
@@ -129,7 +124,7 @@ typedef NCollection_DataMap<TopoDS_Shape, HLRTopoBRep_ListOfVData, TopTools_Shap
 class HLRTopoBRep_DSFiller {
 	public:
 		/****** HLRTopoBRep_DSFiller::Insert ******/
-		/****** md5 signature: b2e552304e7f9ebfee5763c251f737f6 ******/
+		/****** md5 signature: 8d9c4e50f1bfbffad41514dce6fb61be ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -137,7 +132,7 @@ Parameters
 S: TopoDS_Shape
 FO: Contap_Contour
 DS: HLRTopoBRep_Data
-MST: BRepTopAdaptor_MapOfShapeTool
+MST: NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher>
 nbIso: int
 
 Return
@@ -148,7 +143,7 @@ Description
 -----------
 Stores in <DS> the outlines of <S> using the current outliner and stores the isolines in <DS> using a Hatcher.
 ") Insert;
-		static void Insert(const TopoDS_Shape & S, Contap_Contour & FO, HLRTopoBRep_Data & DS, BRepTopAdaptor_MapOfShapeTool & MST, const Standard_Integer nbIso);
+		static void Insert(const TopoDS_Shape & S, Contap_Contour & FO, HLRTopoBRep_Data & DS, NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher> & MST, const int nbIso);
 
 };
 
@@ -178,7 +173,7 @@ No available documentation.
 		 HLRTopoBRep_Data();
 
 		/****** HLRTopoBRep_Data::AddIntL ******/
-		/****** md5 signature: 1456d9912c4df1aca0dfdeeb10fc4f3b ******/
+		/****** md5 signature: 117fa0e798f34918db31b4fb35dd551a ******/
 		%feature("compactdefaultargs") AddIntL;
 		%feature("autodoc", "
 Parameters
@@ -187,13 +182,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddIntL;
-		TopTools_ListOfShape & AddIntL(const TopoDS_Face & F);
+		NCollection_List<TopoDS_Shape> AddIntL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::AddIntV ******/
 		/****** md5 signature: 5e98927600b04f5897dcb0892a001128 ******/
@@ -214,7 +209,7 @@ No available documentation.
 		void AddIntV(const TopoDS_Vertex & V);
 
 		/****** HLRTopoBRep_Data::AddIsoL ******/
-		/****** md5 signature: 3cf27e0469b23f78087d22be94a92b60 ******/
+		/****** md5 signature: 27d1a6615124f4f946a02523ff27e9a6 ******/
 		%feature("compactdefaultargs") AddIsoL;
 		%feature("autodoc", "
 Parameters
@@ -223,13 +218,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddIsoL;
-		TopTools_ListOfShape & AddIsoL(const TopoDS_Face & F);
+		NCollection_List<TopoDS_Shape> AddIsoL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::AddOldS ******/
 		/****** md5 signature: 879d3ca3686db00613d78566c0341220 ******/
@@ -251,7 +246,7 @@ No available documentation.
 		void AddOldS(const TopoDS_Shape & NewS, const TopoDS_Shape & OldS);
 
 		/****** HLRTopoBRep_Data::AddOutL ******/
-		/****** md5 signature: 1cf3533e8294630d040101c9faef5d28 ******/
+		/****** md5 signature: 69adbe1b3b72c0e8d1c3505237acf4b7 ******/
 		%feature("compactdefaultargs") AddOutL;
 		%feature("autodoc", "
 Parameters
@@ -260,13 +255,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddOutL;
-		TopTools_ListOfShape & AddOutL(const TopoDS_Face & F);
+		NCollection_List<TopoDS_Shape> AddOutL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::AddOutV ******/
 		/****** md5 signature: 290502373d4127c32e710710e5cb8afd ******/
@@ -287,7 +282,7 @@ No available documentation.
 		void AddOutV(const TopoDS_Vertex & V);
 
 		/****** HLRTopoBRep_Data::AddSplE ******/
-		/****** md5 signature: 73c316e7b2adf39f31ad6b48f1a5d62d ******/
+		/****** md5 signature: afe4ecb8b04ed31c849436a7afb7c5d6 ******/
 		%feature("compactdefaultargs") AddSplE;
 		%feature("autodoc", "
 Parameters
@@ -296,22 +291,22 @@ E: TopoDS_Edge
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddSplE;
-		TopTools_ListOfShape & AddSplE(const TopoDS_Edge & E);
+		NCollection_List<TopoDS_Shape> AddSplE(const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::Append ******/
-		/****** md5 signature: 00475ef41389f61adcb6b0b67841bbb8 ******/
+		/****** md5 signature: 6ca99ff105599a5775060bfc4892ff2b ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
 ----------
 V: TopoDS_Vertex
-P: float
+P: double
 
 Return
 -------
@@ -321,7 +316,7 @@ Description
 -----------
 No available documentation.
 ") Append;
-		void Append(const TopoDS_Vertex & V, const Standard_Real P);
+		void Append(const TopoDS_Vertex & V, const double P);
 
 		/****** HLRTopoBRep_Data::Clean ******/
 		/****** md5 signature: 2b06aa6e249aa983252ec57e01a88d51 ******/
@@ -363,7 +358,7 @@ No available documentation.
 		const TopoDS_Edge Edge();
 
 		/****** HLRTopoBRep_Data::EdgeHasSplE ******/
-		/****** md5 signature: 991a1f39de0c081cc71ee5fb6a1cfa50 ******/
+		/****** md5 signature: ccd313fabb0dfbc6f32846214c95869b ******/
 		%feature("compactdefaultargs") EdgeHasSplE;
 		%feature("autodoc", "
 Parameters
@@ -378,10 +373,10 @@ Description
 -----------
 Returns True if the Edge is split.
 ") EdgeHasSplE;
-		Standard_Boolean EdgeHasSplE(const TopoDS_Edge & E);
+		bool EdgeHasSplE(const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::EdgeSplE ******/
-		/****** md5 signature: 0292eaf6d4ac823dc5f147ac96d5ec15 ******/
+		/****** md5 signature: d974f386c17d3f75ab7f9fb101344fc2 ******/
 		%feature("compactdefaultargs") EdgeSplE;
 		%feature("autodoc", "
 Parameters
@@ -390,16 +385,16 @@ E: TopoDS_Edge
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of the edges.
 ") EdgeSplE;
-		const TopTools_ListOfShape & EdgeSplE(const TopoDS_Edge & E);
+		const NCollection_List<TopoDS_Shape> EdgeSplE(const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::FaceHasIntL ******/
-		/****** md5 signature: 59332e80ae15e68fd1c1ee6d3eabfb36 ******/
+		/****** md5 signature: 2d0b80a7d2835c96c3af947cd3d235af ******/
 		%feature("compactdefaultargs") FaceHasIntL;
 		%feature("autodoc", "
 Parameters
@@ -414,10 +409,10 @@ Description
 -----------
 Returns True if the Face has internal outline.
 ") FaceHasIntL;
-		Standard_Boolean FaceHasIntL(const TopoDS_Face & F);
+		bool FaceHasIntL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceHasIsoL ******/
-		/****** md5 signature: 04be6df8d9262693dc280e7814154667 ******/
+		/****** md5 signature: 76d623b8e5626c99c2dfbfcfd6ba916d ******/
 		%feature("compactdefaultargs") FaceHasIsoL;
 		%feature("autodoc", "
 Parameters
@@ -432,10 +427,10 @@ Description
 -----------
 Returns True if the Face has isolines.
 ") FaceHasIsoL;
-		Standard_Boolean FaceHasIsoL(const TopoDS_Face & F);
+		bool FaceHasIsoL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceHasOutL ******/
-		/****** md5 signature: fe706a496b25d02d4155871806cf6627 ******/
+		/****** md5 signature: 58f2a78fd53bd111fe47704a0af35c50 ******/
 		%feature("compactdefaultargs") FaceHasOutL;
 		%feature("autodoc", "
 Parameters
@@ -450,10 +445,10 @@ Description
 -----------
 Returns True if the Face has outlines on restriction.
 ") FaceHasOutL;
-		Standard_Boolean FaceHasOutL(const TopoDS_Face & F);
+		bool FaceHasOutL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceIntL ******/
-		/****** md5 signature: f6a871453aa4795fac9d0529e35de862 ******/
+		/****** md5 signature: 680c77f08734f23b56cc39c96bc1cf1e ******/
 		%feature("compactdefaultargs") FaceIntL;
 		%feature("autodoc", "
 Parameters
@@ -462,16 +457,16 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of the internal OutLines.
 ") FaceIntL;
-		const TopTools_ListOfShape & FaceIntL(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> FaceIntL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceIsoL ******/
-		/****** md5 signature: 76e6d85b9d054144eac64c16c2ec17d9 ******/
+		/****** md5 signature: 1e21e035c66d29438c1c72cca2804285 ******/
 		%feature("compactdefaultargs") FaceIsoL;
 		%feature("autodoc", "
 Parameters
@@ -480,16 +475,16 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of the IsoLines.
 ") FaceIsoL;
-		const TopTools_ListOfShape & FaceIsoL(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> FaceIsoL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceOutL ******/
-		/****** md5 signature: f57ccf08ba31bbdd7034c0d7aa3b9925 ******/
+		/****** md5 signature: 44fa904040e95a2cc6a2c84cfa883869 ******/
 		%feature("compactdefaultargs") FaceOutL;
 		%feature("autodoc", "
 Parameters
@@ -498,13 +493,13 @@ F: TopoDS_Face
 
 Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 Returns the list of the OutLines on restriction.
 ") FaceOutL;
-		const TopTools_ListOfShape & FaceOutL(const TopoDS_Face & F);
+		const NCollection_List<TopoDS_Shape> FaceOutL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::InitEdge ******/
 		/****** md5 signature: 13e3d303d78cdf9134a0106c465fdb17 ******/
@@ -538,13 +533,13 @@ Start an iteration on the vertices of E.
 		void InitVertex(const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::InsertBefore ******/
-		/****** md5 signature: 4a1798f5c836121497b4ee790871fffe ******/
+		/****** md5 signature: 689929be1642138497f6af9171b0078f ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
 ----------
 V: TopoDS_Vertex
-P: float
+P: double
 
 Return
 -------
@@ -554,10 +549,10 @@ Description
 -----------
 Insert before the current position.
 ") InsertBefore;
-		void InsertBefore(const TopoDS_Vertex & V, const Standard_Real P);
+		void InsertBefore(const TopoDS_Vertex & V, const double P);
 
 		/****** HLRTopoBRep_Data::IsIntLFaceEdge ******/
-		/****** md5 signature: bb84ad682e05a1f730f15e117ef30da8 ******/
+		/****** md5 signature: c9b24f5bf2e38a3595c35f5936eefb1d ******/
 		%feature("compactdefaultargs") IsIntLFaceEdge;
 		%feature("autodoc", "
 Parameters
@@ -573,10 +568,10 @@ Description
 -----------
 No available documentation.
 ") IsIntLFaceEdge;
-		Standard_Boolean IsIntLFaceEdge(const TopoDS_Face & F, const TopoDS_Edge & E);
+		bool IsIntLFaceEdge(const TopoDS_Face & F, const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::IsIntV ******/
-		/****** md5 signature: b1b24e644dc69921a94917b90c1c26fa ******/
+		/****** md5 signature: b927a2444cc74598b39e7a21cc871182 ******/
 		%feature("compactdefaultargs") IsIntV;
 		%feature("autodoc", "
 Parameters
@@ -591,10 +586,10 @@ Description
 -----------
 Returns True if V is an internal outline vertex.
 ") IsIntV;
-		Standard_Boolean IsIntV(const TopoDS_Vertex & V);
+		bool IsIntV(const TopoDS_Vertex & V);
 
 		/****** HLRTopoBRep_Data::IsIsoLFaceEdge ******/
-		/****** md5 signature: 0b0eb36c5c1197f74d6946c5c7ec1f0e ******/
+		/****** md5 signature: 2dc9faf0501b3c98b717d45e1f8660fb ******/
 		%feature("compactdefaultargs") IsIsoLFaceEdge;
 		%feature("autodoc", "
 Parameters
@@ -610,10 +605,10 @@ Description
 -----------
 No available documentation.
 ") IsIsoLFaceEdge;
-		Standard_Boolean IsIsoLFaceEdge(const TopoDS_Face & F, const TopoDS_Edge & E);
+		bool IsIsoLFaceEdge(const TopoDS_Face & F, const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::IsOutLFaceEdge ******/
-		/****** md5 signature: 522753da8edeea9778c9baccf12a6f7e ******/
+		/****** md5 signature: 297f300facd31cf1e0b390b8bca6cd56 ******/
 		%feature("compactdefaultargs") IsOutLFaceEdge;
 		%feature("autodoc", "
 Parameters
@@ -629,10 +624,10 @@ Description
 -----------
 No available documentation.
 ") IsOutLFaceEdge;
-		Standard_Boolean IsOutLFaceEdge(const TopoDS_Face & F, const TopoDS_Edge & E);
+		bool IsOutLFaceEdge(const TopoDS_Face & F, const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::IsOutV ******/
-		/****** md5 signature: 2a2bde77fa4c60fff4bd75d117c2a205 ******/
+		/****** md5 signature: 290f1c580131e83adb89b18d1919363f ******/
 		%feature("compactdefaultargs") IsOutV;
 		%feature("autodoc", "
 Parameters
@@ -647,10 +642,10 @@ Description
 -----------
 Returns True if V is an outline vertex on a restriction.
 ") IsOutV;
-		Standard_Boolean IsOutV(const TopoDS_Vertex & V);
+		bool IsOutV(const TopoDS_Vertex & V);
 
 		/****** HLRTopoBRep_Data::IsSplEEdgeEdge ******/
-		/****** md5 signature: 847be34284baaf807b3f295ed2b4eec2 ******/
+		/****** md5 signature: 9e8b942b25953f69bac8210fe8233fa9 ******/
 		%feature("compactdefaultargs") IsSplEEdgeEdge;
 		%feature("autodoc", "
 Parameters
@@ -666,10 +661,10 @@ Description
 -----------
 No available documentation.
 ") IsSplEEdgeEdge;
-		Standard_Boolean IsSplEEdgeEdge(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
+		bool IsSplEEdgeEdge(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
 		/****** HLRTopoBRep_Data::MoreEdge ******/
-		/****** md5 signature: 3deabda73e93b20e8a72f2f0ebea4e02 ******/
+		/****** md5 signature: 6ad80ac0d66dad5013f4fe4cff20c934 ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -679,10 +674,10 @@ Description
 -----------
 No available documentation.
 ") MoreEdge;
-		Standard_Boolean MoreEdge();
+		bool MoreEdge();
 
 		/****** HLRTopoBRep_Data::MoreVertex ******/
-		/****** md5 signature: a83eb0d708855c09e405b7e894d8577e ******/
+		/****** md5 signature: 73bec1e3a9592b7ee376cebfedb62bcf ******/
 		%feature("compactdefaultargs") MoreVertex;
 		%feature("autodoc", "Return
 -------
@@ -692,7 +687,7 @@ Description
 -----------
 No available documentation.
 ") MoreVertex;
-		Standard_Boolean MoreVertex();
+		bool MoreVertex();
 
 		/****** HLRTopoBRep_Data::NewSOldS ******/
 		/****** md5 signature: 3f59a742699025ce4e0f9c924b81eadc ******/
@@ -739,17 +734,17 @@ No available documentation.
 		void NextVertex();
 
 		/****** HLRTopoBRep_Data::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** HLRTopoBRep_Data::Vertex ******/
 		/****** md5 signature: 84212ff79cd7d64cd0ebfa6f17214e90 ******/
@@ -792,82 +787,82 @@ No available documentation.
 		 HLRTopoBRep_FaceData();
 
 		/****** HLRTopoBRep_FaceData::AddIntL ******/
-		/****** md5 signature: ed5756c462704226d2db9de9c0cee89b ******/
+		/****** md5 signature: 53589e462157dbc594977bce9c465a43 ******/
 		%feature("compactdefaultargs") AddIntL;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddIntL;
-		TopTools_ListOfShape & AddIntL();
+		NCollection_List<TopoDS_Shape> AddIntL();
 
 		/****** HLRTopoBRep_FaceData::AddIsoL ******/
-		/****** md5 signature: 2c8902f8914b566f4bb45a10a866ce82 ******/
+		/****** md5 signature: ce5e7b86b3df29bdb876a740cdf989e5 ******/
 		%feature("compactdefaultargs") AddIsoL;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddIsoL;
-		TopTools_ListOfShape & AddIsoL();
+		NCollection_List<TopoDS_Shape> AddIsoL();
 
 		/****** HLRTopoBRep_FaceData::AddOutL ******/
-		/****** md5 signature: 28cc103f74fc7ef6b72420f014db9735 ******/
+		/****** md5 signature: 4149b6951ab812961ff5fd8a3b7e3023 ******/
 		%feature("compactdefaultargs") AddOutL;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") AddOutL;
-		TopTools_ListOfShape & AddOutL();
+		NCollection_List<TopoDS_Shape> AddOutL();
 
 		/****** HLRTopoBRep_FaceData::FaceIntL ******/
-		/****** md5 signature: 58941f3a1440a39f9f9cb11cd209e9a8 ******/
+		/****** md5 signature: 76e3332fb465028cdb9c0bb01e717eb6 ******/
 		%feature("compactdefaultargs") FaceIntL;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") FaceIntL;
-		const TopTools_ListOfShape & FaceIntL();
+		const NCollection_List<TopoDS_Shape> FaceIntL();
 
 		/****** HLRTopoBRep_FaceData::FaceIsoL ******/
-		/****** md5 signature: 131042b7c0ce17e204549c5b5450bc6c ******/
+		/****** md5 signature: 3e948e1d73dfd44abb5b12dcdf7ec82d ******/
 		%feature("compactdefaultargs") FaceIsoL;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") FaceIsoL;
-		const TopTools_ListOfShape & FaceIsoL();
+		const NCollection_List<TopoDS_Shape> FaceIsoL();
 
 		/****** HLRTopoBRep_FaceData::FaceOutL ******/
-		/****** md5 signature: 661b3afd1d426ffa8d3f898fd948bc40 ******/
+		/****** md5 signature: 207b5955a63dd20f0f9c99fe89293504 ******/
 		%feature("compactdefaultargs") FaceOutL;
 		%feature("autodoc", "Return
 -------
-TopTools_ListOfShape
+NCollection_List<TopoDS_Shape>
 
 Description
 -----------
 No available documentation.
 ") FaceOutL;
-		const TopTools_ListOfShape & FaceOutL();
+		const NCollection_List<TopoDS_Shape> FaceOutL();
 
 };
 
@@ -884,7 +879,7 @@ No available documentation.
 class HLRTopoBRep_FaceIsoLiner {
 	public:
 		/****** HLRTopoBRep_FaceIsoLiner::MakeIsoLine ******/
-		/****** md5 signature: d2b34f6e7e126f0c703d940f98997863 ******/
+		/****** md5 signature: d7e09f49a0ec80de0c620ea4abc8b985 ******/
 		%feature("compactdefaultargs") MakeIsoLine;
 		%feature("autodoc", "
 Parameters
@@ -893,9 +888,9 @@ F: TopoDS_Face
 Iso: Geom2d_Line
 V1: TopoDS_Vertex
 V2: TopoDS_Vertex
-U1: float
-U2: float
-Tol: float
+U1: double
+U2: double
+Tol: double
 DS: HLRTopoBRep_Data
 
 Return
@@ -906,18 +901,18 @@ Description
 -----------
 No available documentation.
 ") MakeIsoLine;
-		static void MakeIsoLine(const TopoDS_Face & F, const opencascade::handle<Geom2d_Line> & Iso, TopoDS_Vertex & V1, TopoDS_Vertex & V2, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, HLRTopoBRep_Data & DS);
+		static void MakeIsoLine(const TopoDS_Face & F, const opencascade::handle<Geom2d_Line> & Iso, TopoDS_Vertex & V1, TopoDS_Vertex & V2, const double U1, const double U2, const double Tol, HLRTopoBRep_Data & DS);
 
 		/****** HLRTopoBRep_FaceIsoLiner::MakeVertex ******/
-		/****** md5 signature: 2c31f8e73ac2feb716fb4d1c1fd32e65 ******/
+		/****** md5 signature: 27040f9ff225068b4d4efc2c2f5e124c ******/
 		%feature("compactdefaultargs") MakeVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 E: TopoDS_Edge
 P: gp_Pnt
-Par: float
-Tol: float
+Par: double
+Tol: double
 DS: HLRTopoBRep_Data
 
 Return
@@ -928,10 +923,10 @@ Description
 -----------
 No available documentation.
 ") MakeVertex;
-		static TopoDS_Vertex MakeVertex(const TopoDS_Edge & E, const gp_Pnt & P, const Standard_Real Par, const Standard_Real Tol, HLRTopoBRep_Data & DS);
+		static TopoDS_Vertex MakeVertex(const TopoDS_Edge & E, const gp_Pnt & P, const double Par, const double Tol, HLRTopoBRep_Data & DS);
 
 		/****** HLRTopoBRep_FaceIsoLiner::Perform ******/
-		/****** md5 signature: bc74be90af4fd07ffb7264f81ab5bdd1 ******/
+		/****** md5 signature: 93cb78b20a1e17c3e8e2c28b2a0d7d22 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -949,7 +944,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		static void Perform(const Standard_Integer FI, const TopoDS_Face & F, HLRTopoBRep_Data & DS, const Standard_Integer nbIsos);
+		static void Perform(const int FI, const TopoDS_Face & F, HLRTopoBRep_Data & DS, const int nbIsos);
 
 };
 
@@ -1029,13 +1024,13 @@ No available documentation.
 		HLRTopoBRep_Data & DataStructure();
 
 		/****** HLRTopoBRep_OutLiner::Fill ******/
-		/****** md5 signature: d575dc70cb5c7eb9b21e06993ed1023d ******/
+		/****** md5 signature: a71f6d7c10824851fa66f2a1f15f0df7 ******/
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "
 Parameters
 ----------
 P: HLRAlgo_Projector
-MST: BRepTopAdaptor_MapOfShapeTool
+MST: NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher>
 nbIso: int
 
 Return
@@ -1046,7 +1041,7 @@ Description
 -----------
 No available documentation.
 ") Fill;
-		void Fill(const HLRAlgo_Projector & P, BRepTopAdaptor_MapOfShapeTool & MST, const Standard_Integer nbIso);
+		void Fill(const HLRAlgo_Projector & P, NCollection_DataMap<TopoDS_Shape, BRepTopAdaptor_Tool, TopTools_ShapeMapHasher> & MST, const int nbIso);
 
 		/****** HLRTopoBRep_OutLiner::OriginalShape ******/
 		/****** md5 signature: 2b6491e3d80cdba3d8f6bd93e377fdf8 ******/
@@ -1140,12 +1135,12 @@ No available documentation.
 		 HLRTopoBRep_VData();
 
 		/****** HLRTopoBRep_VData::HLRTopoBRep_VData ******/
-		/****** md5 signature: 551d0e885e84ccb3b20ceb28cfb50e28 ******/
+		/****** md5 signature: 5aa82c0239abfa66bc154915bc7fc288 ******/
 		%feature("compactdefaultargs") HLRTopoBRep_VData;
 		%feature("autodoc", "
 Parameters
 ----------
-P: float
+P: double
 V: TopoDS_Shape
 
 Return
@@ -1156,20 +1151,20 @@ Description
 -----------
 No available documentation.
 ") HLRTopoBRep_VData;
-		 HLRTopoBRep_VData(const Standard_Real P, const TopoDS_Shape & V);
+		 HLRTopoBRep_VData(const double P, const TopoDS_Shape & V);
 
 		/****** HLRTopoBRep_VData::Parameter ******/
-		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
+		/****** md5 signature: 28e42519a120bf741c23eca7aaca5525 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** HLRTopoBRep_VData::Vertex ******/
 		/****** md5 signature: 4b1334c642d4415d88330a5fa6216463 ******/

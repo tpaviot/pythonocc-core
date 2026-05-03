@@ -97,13 +97,13 @@ from OCC.Core.Exception import *
 class BRepMeshData_Curve : public IMeshData_Curve {
 	public:
 		/****** BRepMeshData_Curve::AddPoint ******/
-		/****** md5 signature: 5587b337748a540e6cb9a51458b03bf2 ******/
+		/****** md5 signature: cf7d852a1b042ccd6475ee5e1f72b171 ******/
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 thePoint: gp_Pnt
-theParamOnCurve: float
+theParamOnCurve: double
 
 Return
 -------
@@ -113,10 +113,10 @@ Description
 -----------
 Adds new discretization point to pcurve.
 ") AddPoint;
-		virtual void AddPoint(const gp_Pnt & thePoint, const Standard_Real theParamOnCurve);
+		void AddPoint(const gp_Pnt & thePoint, const double theParamOnCurve);
 
 		/****** BRepMeshData_Curve::Clear ******/
-		/****** md5 signature: b91f21d79c57aeb0ab4d6d89d0391c2c ******/
+		/****** md5 signature: ceb34dd2749a7aa7fa2365bb5bc2a010 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -131,10 +131,10 @@ Description
 -----------
 Clears parameters list.
 ") Clear;
-		virtual void Clear(const Standard_Boolean isKeepEndPoints);
+		void Clear(const bool isKeepEndPoints);
 
 		/****** BRepMeshData_Curve::GetParameter ******/
-		/****** md5 signature: 43c7041b75cad4564a4558a2da55af83 ******/
+		/****** md5 signature: 60610898713f2509facd4a2026bd8ee6 ******/
 		%feature("compactdefaultargs") GetParameter;
 		%feature("autodoc", "
 Parameters
@@ -143,16 +143,16 @@ theIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns parameter with the given index.
 ") GetParameter;
-		virtual Standard_Real & GetParameter(const Standard_Integer theIndex);
+		double & GetParameter(const int theIndex);
 
 		/****** BRepMeshData_Curve::GetPoint ******/
-		/****** md5 signature: ae53efbf52e2afb6d158d4bc0d262b60 ******/
+		/****** md5 signature: 20ea33858b5f70008ef7a4aa83a8e98c ******/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "
 Parameters
@@ -167,17 +167,17 @@ Description
 -----------
 Returns discretization point with the given index.
 ") GetPoint;
-		virtual gp_Pnt GetPoint(const Standard_Integer theIndex);
+		gp_Pnt GetPoint(const int theIndex);
 
 		/****** BRepMeshData_Curve::InsertPoint ******/
-		/****** md5 signature: 5e229fee3ffb69ce367f8b52f9cc2a2d ******/
+		/****** md5 signature: 45b1bed9bb2c45400a684a7f1321ce04 ******/
 		%feature("compactdefaultargs") InsertPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: int
 thePoint: gp_Pnt
-theParamOnPCurve: float
+theParamOnPCurve: double
 
 Return
 -------
@@ -187,10 +187,10 @@ Description
 -----------
 Inserts new discretization point at the given position.
 ") InsertPoint;
-		virtual void InsertPoint(const Standard_Integer thePosition, const gp_Pnt & thePoint, const Standard_Real theParamOnPCurve);
+		void InsertPoint(const int thePosition, const gp_Pnt & thePoint, const double theParamOnPCurve);
 
 		/****** BRepMeshData_Curve::ParametersNb ******/
-		/****** md5 signature: 98955ccca9a9a58d67efd3cf821045d5 ******/
+		/****** md5 signature: 9aba53c4cea655c67c05817f24e589f4 ******/
 		%feature("compactdefaultargs") ParametersNb;
 		%feature("autodoc", "Return
 -------
@@ -200,10 +200,10 @@ Description
 -----------
 Returns number of parameters stored in curve.
 ") ParametersNb;
-		virtual Standard_Integer ParametersNb();
+		int ParametersNb();
 
 		/****** BRepMeshData_Curve::RemovePoint ******/
-		/****** md5 signature: dc9ca36142ba2044706f1377e29a7b2a ******/
+		/****** md5 signature: b86669460245a17be990b44a978aea98 ******/
 		%feature("compactdefaultargs") RemovePoint;
 		%feature("autodoc", "
 Parameters
@@ -218,7 +218,7 @@ Description
 -----------
 Removes point with the given index.
 ") RemovePoint;
-		virtual void RemovePoint(const Standard_Integer theIndex);
+		void RemovePoint(const int theIndex);
 
 };
 
@@ -308,7 +308,7 @@ Removes point with the given index.
 class BRepMeshData_Edge : public IMeshData_Edge {
 	public:
 		/****** BRepMeshData_Edge::AddPCurve ******/
-		/****** md5 signature: b0e75fdb233dd95364fad0411000ec96 ******/
+		/****** md5 signature: 4f25305764f9aa31a3b39f2fa4f23af2 ******/
 		%feature("compactdefaultargs") AddPCurve;
 		%feature("autodoc", "
 Parameters
@@ -324,10 +324,10 @@ Description
 -----------
 Adds discrete pcurve for the specified discrete face.
 ") AddPCurve;
-		virtual IMeshData::IPCurveHandle AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
+		IMeshData::IPCurveHandle AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****** BRepMeshData_Edge::GetPCurve ******/
-		/****** md5 signature: 4c651c871b35e5f5f12404be43db3374 ******/
+		/****** md5 signature: 5c1d0413206cd4d5654e003c35b71367 ******/
 		%feature("compactdefaultargs") GetPCurve;
 		%feature("autodoc", "
 Parameters
@@ -343,10 +343,10 @@ Description
 -----------
 Returns pcurve for the specified discrete face.
 ") GetPCurve;
-		virtual IMeshData::IPCurveHandle GetPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
+		IMeshData::IPCurveHandle GetPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****** BRepMeshData_Edge::GetPCurve ******/
-		/****** md5 signature: c2f904a58e6d4fae050f2bef2b323320 ******/
+		/****** md5 signature: 1354232aceccc51c83298ffa078e48ff ******/
 		%feature("compactdefaultargs") GetPCurve;
 		%feature("autodoc", "
 Parameters
@@ -361,10 +361,28 @@ Description
 -----------
 Returns pcurve with the given index.
 ") GetPCurve;
-		virtual IMeshData::IPCurveHandle GetPCurve(const Standard_Integer theIndex);
+		IMeshData::IPCurveHandle GetPCurve(const int theIndex);
+
+		/****** BRepMeshData_Edge::GetPCurves ******/
+		/****** md5 signature: 491c9fe0639e2760c1b01b2974df445b ******/
+		%feature("compactdefaultargs") GetPCurves;
+		%feature("autodoc", "
+Parameters
+----------
+theDFace: IMeshData::IFacePtr
+
+Return
+-------
+IMeshData::ListOfInteger
+
+Description
+-----------
+Returns an array of pcurves indices for the specified discrete face.
+") GetPCurves;
+		const IMeshData::ListOfInteger & GetPCurves(const IMeshData::IFacePtr & theDFace);
 
 		/****** BRepMeshData_Edge::PCurvesNb ******/
-		/****** md5 signature: 396e4ba5fd70d100e8e49ef4d5da81c6 ******/
+		/****** md5 signature: a3c146d8913221c4d641830d3dc90f1d ******/
 		%feature("compactdefaultargs") PCurvesNb;
 		%feature("autodoc", "Return
 -------
@@ -374,7 +392,7 @@ Description
 -----------
 Returns number of pcurves assigned to current edge.
 ") PCurvesNb;
-		virtual Standard_Integer PCurvesNb();
+		int PCurvesNb();
 
 };
 
@@ -460,7 +478,7 @@ Returns number of pcurves assigned to current edge.
 class BRepMeshData_Face : public IMeshData_Face {
 	public:
 		/****** BRepMeshData_Face::AddWire ******/
-		/****** md5 signature: 887f3c30d9841bcc014daace52a3b4dc ******/
+		/****** md5 signature: da6383228b6811d9b2e53917e314db4c ******/
 		%feature("compactdefaultargs") AddWire;
 		%feature("autodoc", "
 Parameters
@@ -476,10 +494,10 @@ Description
 -----------
 Adds wire to discrete model of face.
 ") AddWire;
-		virtual const IMeshData::IWireHandle & AddWire(const TopoDS_Wire & theWire, const Standard_Integer theEdgeNb = 0);
+		const IMeshData::IWireHandle & AddWire(const TopoDS_Wire & theWire, const int theEdgeNb = 0);
 
 		/****** BRepMeshData_Face::GetWire ******/
-		/****** md5 signature: dc2ee08263a7ad8e6a1e6e9bce47ac66 ******/
+		/****** md5 signature: 3e289414d2c00bf902051ece2205a4f6 ******/
 		%feature("compactdefaultargs") GetWire;
 		%feature("autodoc", "
 Parameters
@@ -494,10 +512,10 @@ Description
 -----------
 Gets wire with the given index.
 ") GetWire;
-		virtual const IMeshData::IWireHandle & GetWire(const Standard_Integer theIndex);
+		const IMeshData::IWireHandle & GetWire(const int theIndex);
 
 		/****** BRepMeshData_Face::WiresNb ******/
-		/****** md5 signature: c1ae306201b98c47c64b7d6fd7fee1f4 ******/
+		/****** md5 signature: aecfdab6f8a30a78956b602bc1766537 ******/
 		%feature("compactdefaultargs") WiresNb;
 		%feature("autodoc", "Return
 -------
@@ -507,7 +525,7 @@ Description
 -----------
 Gets number of children.
 ") WiresNb;
-		virtual Standard_Integer WiresNb();
+		int WiresNb();
 
 };
 
@@ -610,7 +628,7 @@ Constructor. Initializes empty model.
 		 BRepMeshData_Model(const TopoDS_Shape & theShape);
 
 		/****** BRepMeshData_Model::AddEdge ******/
-		/****** md5 signature: 2ec0cf61f4a3389f2fb166c66d06ce72 ******/
+		/****** md5 signature: bbdf5246f49115b5073f1184599756c3 ******/
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "
 Parameters
@@ -625,10 +643,10 @@ Description
 -----------
 Adds new edge to shape model.
 ") AddEdge;
-		virtual const IMeshData::IEdgeHandle & AddEdge(const TopoDS_Edge & theEdge);
+		const IMeshData::IEdgeHandle & AddEdge(const TopoDS_Edge & theEdge);
 
 		/****** BRepMeshData_Model::AddFace ******/
-		/****** md5 signature: a58703e7432ff85120d2b68c02a8bff4 ******/
+		/****** md5 signature: cbe3e3287395d683281ce086f245f2d8 ******/
 		%feature("compactdefaultargs") AddFace;
 		%feature("autodoc", "
 Parameters
@@ -643,10 +661,10 @@ Description
 -----------
 Adds new face to shape model.
 ") AddFace;
-		virtual const IMeshData::IFaceHandle & AddFace(const TopoDS_Face & theFace);
+		const IMeshData::IFaceHandle & AddFace(const TopoDS_Face & theFace);
 
 		/****** BRepMeshData_Model::EdgesNb ******/
-		/****** md5 signature: d8bed3659eeea9d444f232f4eeeb7350 ******/
+		/****** md5 signature: 8dd09b2e9dc369a335971c4c78eb7b09 ******/
 		%feature("compactdefaultargs") EdgesNb;
 		%feature("autodoc", "Return
 -------
@@ -656,10 +674,10 @@ Description
 -----------
 Returns number of edges in discrete model.
 ") EdgesNb;
-		virtual Standard_Integer EdgesNb();
+		int EdgesNb();
 
 		/****** BRepMeshData_Model::FacesNb ******/
-		/****** md5 signature: 65bd60c646a1f9634db0dc8215150552 ******/
+		/****** md5 signature: af7796a9b289ec2eec0d7d01f734c419 ******/
 		%feature("compactdefaultargs") FacesNb;
 		%feature("autodoc", "Return
 -------
@@ -669,10 +687,10 @@ Description
 -----------
 Returns number of faces in discrete model.
 ") FacesNb;
-		virtual Standard_Integer FacesNb();
+		int FacesNb();
 
 		/****** BRepMeshData_Model::GetEdge ******/
-		/****** md5 signature: 086e707eb61c4770df8201df143365ff ******/
+		/****** md5 signature: ddaff6ad7cb928e4030ef3825c90a50e ******/
 		%feature("compactdefaultargs") GetEdge;
 		%feature("autodoc", "
 Parameters
@@ -687,10 +705,10 @@ Description
 -----------
 Gets model's edge with the given index.
 ") GetEdge;
-		virtual const IMeshData::IEdgeHandle & GetEdge(const Standard_Integer theIndex);
+		const IMeshData::IEdgeHandle & GetEdge(const int theIndex);
 
 		/****** BRepMeshData_Model::GetFace ******/
-		/****** md5 signature: 00576006cdfa2bb95715ca47ec356d25 ******/
+		/****** md5 signature: 173a5ffac5e8612c1a36d0c1960c1e2d ******/
 		%feature("compactdefaultargs") GetFace;
 		%feature("autodoc", "
 Parameters
@@ -705,28 +723,28 @@ Description
 -----------
 Gets model's face with the given index.
 ") GetFace;
-		virtual const IMeshData::IFaceHandle & GetFace(const Standard_Integer theIndex);
+		const IMeshData::IFaceHandle & GetFace(const int theIndex);
 
 		/****** BRepMeshData_Model::GetMaxSize ******/
-		/****** md5 signature: 0a00229321f1e3e5c5930bb31d203e3a ******/
+		/****** md5 signature: b8dd7606074f6ea46655e9c3adb337f7 ******/
 		%feature("compactdefaultargs") GetMaxSize;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns maximum size of shape's bounding box.
 ") GetMaxSize;
-		virtual Standard_Real GetMaxSize();
+		double GetMaxSize();
 
 		/****** BRepMeshData_Model::SetMaxSize ******/
-		/****** md5 signature: bec30c9764ffff8d39bf47869dadae4b ******/
+		/****** md5 signature: 42367ddc52452e4f025a814bc8332b1c ******/
 		%feature("compactdefaultargs") SetMaxSize;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -736,7 +754,7 @@ Description
 -----------
 Sets maximum size of shape's bounding box.
 ") SetMaxSize;
-		void SetMaxSize(const Standard_Real theValue);
+		void SetMaxSize(const double theValue);
 
 };
 
@@ -754,13 +772,13 @@ Sets maximum size of shape's bounding box.
 class BRepMeshData_PCurve : public IMeshData_PCurve {
 	public:
 		/****** BRepMeshData_PCurve::AddPoint ******/
-		/****** md5 signature: b1d43f3062f4eec32549956924a93d1c ******/
+		/****** md5 signature: b2b5c056d97b79b76e4a43e23a39f25f ******/
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 thePoint: gp_Pnt2d
-theParamOnPCurve: float
+theParamOnPCurve: double
 
 Return
 -------
@@ -770,10 +788,10 @@ Description
 -----------
 Adds new discretization point to pcurve.
 ") AddPoint;
-		virtual void AddPoint(const gp_Pnt2d & thePoint, const Standard_Real theParamOnPCurve);
+		void AddPoint(const gp_Pnt2d & thePoint, const double theParamOnPCurve);
 
 		/****** BRepMeshData_PCurve::Clear ******/
-		/****** md5 signature: b91f21d79c57aeb0ab4d6d89d0391c2c ******/
+		/****** md5 signature: ceb34dd2749a7aa7fa2365bb5bc2a010 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -788,10 +806,10 @@ Description
 -----------
 Clears parameters list.
 ") Clear;
-		virtual void Clear(const Standard_Boolean isKeepEndPoints);
+		void Clear(const bool isKeepEndPoints);
 
 		/****** BRepMeshData_PCurve::GetIndex ******/
-		/****** md5 signature: 14de5a18fa0133a999b5cff84739f766 ******/
+		/****** md5 signature: 2f116843b760cd4c10df5d69702454e6 ******/
 		%feature("compactdefaultargs") GetIndex;
 		%feature("autodoc", "
 Parameters
@@ -806,10 +824,10 @@ Description
 -----------
 Returns index in mesh corresponded to discretization point with the given index.
 ") GetIndex;
-		virtual Standard_Integer & GetIndex(const Standard_Integer theIndex);
+		int & GetIndex(const int theIndex);
 
 		/****** BRepMeshData_PCurve::GetParameter ******/
-		/****** md5 signature: 43c7041b75cad4564a4558a2da55af83 ******/
+		/****** md5 signature: 60610898713f2509facd4a2026bd8ee6 ******/
 		%feature("compactdefaultargs") GetParameter;
 		%feature("autodoc", "
 Parameters
@@ -818,16 +836,16 @@ theIndex: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns parameter with the given index.
 ") GetParameter;
-		virtual Standard_Real & GetParameter(const Standard_Integer theIndex);
+		double & GetParameter(const int theIndex);
 
 		/****** BRepMeshData_PCurve::GetPoint ******/
-		/****** md5 signature: cf6dfc6bc543dce91044cba5d793fcb2 ******/
+		/****** md5 signature: d2c0c474cbbf62dd04262a796fef4305 ******/
 		%feature("compactdefaultargs") GetPoint;
 		%feature("autodoc", "
 Parameters
@@ -842,17 +860,17 @@ Description
 -----------
 Returns discretization point with the given index.
 ") GetPoint;
-		virtual gp_Pnt2d GetPoint(const Standard_Integer theIndex);
+		gp_Pnt2d GetPoint(const int theIndex);
 
 		/****** BRepMeshData_PCurve::InsertPoint ******/
-		/****** md5 signature: ba146337f4ebc5f84d06489cf31e1ee0 ******/
+		/****** md5 signature: 468896dd222e4cdfe67775448c07ee67 ******/
 		%feature("compactdefaultargs") InsertPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 thePosition: int
 thePoint: gp_Pnt2d
-theParamOnPCurve: float
+theParamOnPCurve: double
 
 Return
 -------
@@ -862,10 +880,10 @@ Description
 -----------
 Inserts new discretization point at the given position.
 ") InsertPoint;
-		virtual void InsertPoint(const Standard_Integer thePosition, const gp_Pnt2d & thePoint, const Standard_Real theParamOnPCurve);
+		void InsertPoint(const int thePosition, const gp_Pnt2d & thePoint, const double theParamOnPCurve);
 
 		/****** BRepMeshData_PCurve::ParametersNb ******/
-		/****** md5 signature: 98955ccca9a9a58d67efd3cf821045d5 ******/
+		/****** md5 signature: 9aba53c4cea655c67c05817f24e589f4 ******/
 		%feature("compactdefaultargs") ParametersNb;
 		%feature("autodoc", "Return
 -------
@@ -875,10 +893,10 @@ Description
 -----------
 Returns number of parameters stored in pcurve.
 ") ParametersNb;
-		virtual Standard_Integer ParametersNb();
+		int ParametersNb();
 
 		/****** BRepMeshData_PCurve::RemovePoint ******/
-		/****** md5 signature: dc9ca36142ba2044706f1377e29a7b2a ******/
+		/****** md5 signature: b86669460245a17be990b44a978aea98 ******/
 		%feature("compactdefaultargs") RemovePoint;
 		%feature("autodoc", "
 Parameters
@@ -893,7 +911,7 @@ Description
 -----------
 Removes point with the given index.
 ") RemovePoint;
-		virtual void RemovePoint(const Standard_Integer theIndex);
+		void RemovePoint(const int theIndex);
 
 };
 
@@ -987,7 +1005,7 @@ Removes point with the given index.
 class BRepMeshData_Wire : public IMeshData_Wire {
 	public:
 		/****** BRepMeshData_Wire::AddEdge ******/
-		/****** md5 signature: 5d6a61a9aded474f1c90ff1465972fef ******/
+		/****** md5 signature: b506e93e4c2f588eed717766d900a11d ******/
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "
 Parameters
@@ -1004,10 +1022,10 @@ Description
 Adds new discrete edge with specified orientation to wire chain. 
 Return: index of added edge in wire chain.
 ") AddEdge;
-		virtual Standard_Integer AddEdge(const IMeshData::IEdgePtr & theDEdge, const TopAbs_Orientation theOrientation);
+		int AddEdge(const IMeshData::IEdgePtr & theDEdge, const TopAbs_Orientation theOrientation);
 
 		/****** BRepMeshData_Wire::EdgesNb ******/
-		/****** md5 signature: d8bed3659eeea9d444f232f4eeeb7350 ******/
+		/****** md5 signature: 8dd09b2e9dc369a335971c4c78eb7b09 ******/
 		%feature("compactdefaultargs") EdgesNb;
 		%feature("autodoc", "Return
 -------
@@ -1017,10 +1035,10 @@ Description
 -----------
 Gets number of children.
 ") EdgesNb;
-		virtual Standard_Integer EdgesNb();
+		int EdgesNb();
 
 		/****** BRepMeshData_Wire::GetEdge ******/
-		/****** md5 signature: 071d6cbcbf6a096f1abbf54c9f4a9a9e ******/
+		/****** md5 signature: 3f65b77383c174358c7254a610d4738b ******/
 		%feature("compactdefaultargs") GetEdge;
 		%feature("autodoc", "
 Parameters
@@ -1035,10 +1053,10 @@ Description
 -----------
 Gets edge with the given index.
 ") GetEdge;
-		virtual const IMeshData::IEdgePtr & GetEdge(const Standard_Integer theIndex);
+		const IMeshData::IEdgePtr & GetEdge(const int theIndex);
 
 		/****** BRepMeshData_Wire::GetEdgeOrientation ******/
-		/****** md5 signature: 928c9f1f2b575dbdba2dc9dd7c999c8f ******/
+		/****** md5 signature: a7711c6fef17b2fbfbb7f5a363d23fd2 ******/
 		%feature("compactdefaultargs") GetEdgeOrientation;
 		%feature("autodoc", "
 Parameters
@@ -1053,7 +1071,7 @@ Description
 -----------
 Returns True if orientation of discrete edge with the given index is forward.
 ") GetEdgeOrientation;
-		virtual TopAbs_Orientation GetEdgeOrientation(const Standard_Integer theIndex);
+		TopAbs_Orientation GetEdgeOrientation(const int theIndex);
 
 };
 

@@ -48,7 +48,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomadaptor.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Message_module.hxx>
@@ -63,7 +62,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomadaptor.html"
 %import Geom.i
 %import gp.i
 %import GeomAbs.i
-%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -81,6 +79,8 @@ from OCC.Core.Exception import *
 /* handles */
 %wrap_handle(GeomAdaptor_Curve)
 %wrap_handle(GeomAdaptor_Surface)
+%wrap_handle(GeomAdaptor_TransformedCurve)
+%wrap_handle(GeomAdaptor_TransformedSurface)
 %wrap_handle(GeomAdaptor_SurfaceOfLinearExtrusion)
 %wrap_handle(GeomAdaptor_SurfaceOfRevolution)
 /* end handles declaration */
@@ -116,13 +116,13 @@ Inherited from GHCurve. Provides a curve handled by reference. Build a Geom_Curv
 		static opencascade::handle<Geom_Curve> MakeCurve(const Adaptor3d_Curve & C);
 
 		/****** GeomAdaptor::MakeSurface ******/
-		/****** md5 signature: e2d97ddab298fadfa35fcf5d3da46eb5 ******/
+		/****** md5 signature: 5d21e78a69c7cc3759237f4e58ff95c9 ******/
 		%feature("compactdefaultargs") MakeSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 theS: Adaptor3d_Surface
-theTrimFlag: bool (optional, default to Standard_True)
+theTrimFlag: bool (optional, default to true)
 
 Return
 -------
@@ -134,7 +134,7 @@ Build a Geom_Surface using the information from the Surface from Adaptor3d
 Parameter theS - Surface adaptor to convert. 
 Parameter theTrimFlag - True if perform trim surface values by adaptor and false otherwise.
 ") MakeSurface;
-		static opencascade::handle<Geom_Surface> MakeSurface(const Adaptor3d_Surface & theS, const Standard_Boolean theTrimFlag = Standard_True);
+		static opencascade::handle<Geom_Surface> MakeSurface(const Adaptor3d_Surface & theS, const bool theTrimFlag = true);
 
 };
 
@@ -150,6 +150,9 @@ Parameter theTrimFlag - True if perform trim surface values by adaptor and false
 **************************/
 class GeomAdaptor_Curve : public Adaptor3d_Curve {
 	public:
+		class OffsetData {};
+		class BezierData {};
+		class BSplineData {};
 		/****** GeomAdaptor_Curve::GeomAdaptor_Curve ******/
 		/****** md5 signature: ccb204f3ef4733cff0b86e86ac3d5f12 ******/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
@@ -182,14 +185,14 @@ No available documentation.
 		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & theCurve);
 
 		/****** GeomAdaptor_Curve::GeomAdaptor_Curve ******/
-		/****** md5 signature: 1a10d0efcbd8197e53d90228c15a2809 ******/
+		/****** md5 signature: 2695a6212695c4bcbaefc951703ae5a7 ******/
 		%feature("compactdefaultargs") GeomAdaptor_Curve;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: Geom_Curve
-theUFirst: float
-theULast: float
+theUFirst: double
+theULast: double
 
 Return
 -------
@@ -197,12 +200,12 @@ None
 
 Description
 -----------
-Standard_ConstructionError is raised if theUFirst>theULast.
+Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion().
 ") GeomAdaptor_Curve;
-		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
+		 GeomAdaptor_Curve(const opencascade::handle<Geom_Curve> & theCurve, const double theUFirst, const double theULast);
 
 		/****** GeomAdaptor_Curve::BSpline ******/
-		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
+		/****** md5 signature: 7bed4aa4788773a8c748371dea2999b6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -215,7 +218,7 @@ this will NOT make a copy of the BSpline Curve: If you want to modify the Curve 
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****** GeomAdaptor_Curve::Bezier ******/
-		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
+		/****** md5 signature: 18c746ed347d210e28744f5b1c7eb527 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -228,7 +231,7 @@ this will NOT make a copy of the Bezier Curve: If you want to modify the Curve p
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
 		/****** GeomAdaptor_Curve::Circle ******/
-		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
+		/****** md5 signature: 7475f3d2915ecc09ceb3114f02b43080 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -241,7 +244,7 @@ No available documentation.
 		gp_Circ Circle();
 
 		/****** GeomAdaptor_Curve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -266,109 +269,8 @@ Provides a curve inherited from Hcurve from Adaptor. This is inherited to provid
 ") Curve;
 		const opencascade::handle<Geom_Curve> & Curve();
 
-		/****** GeomAdaptor_Curve::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** GeomAdaptor_Curve::D1 ******/
-		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve with its first derivative. //! Warning: On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
-
-		/****** GeomAdaptor_Curve::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2. //! Warning: On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** GeomAdaptor_Curve::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first, the second and the third derivative. //! Warning: On the specific case of BSplineCurve: if the curve is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** GeomAdaptor_Curve::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Warning: On the specific case of BSplineCurve: if the curve is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis curve. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** GeomAdaptor_Curve::Degree ******/
-		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
+		/****** md5 signature: 6a99b61f429058b67ffcdab561815cfb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -378,10 +280,10 @@ Description
 -----------
 this should NEVER make a copy of the underlying curve to read the relevant information.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** GeomAdaptor_Curve::Ellipse ******/
-		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
+		/****** md5 signature: b7cf7020e3992d6d2378fd2118e8d198 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -393,21 +295,112 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
+		/****** GeomAdaptor_Curve::EvalD0 ******/
+		/****** md5 signature: 534d5bf2fd8e92a6dcc7c1d53e829bc3 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Point evaluation. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU);
+
+		/****** GeomAdaptor_Curve::EvalD1 ******/
+		/****** md5 signature: 7afa7a9bd3f5047a6ef303b4732e48db ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+D1 evaluation. Raises an exception on failure.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double theU);
+
+		/****** GeomAdaptor_Curve::EvalD2 ******/
+		/****** md5 signature: bdf34f9b5fb078dabb16e072337b36b5 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+D2 evaluation. Raises an exception on failure.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double theU);
+
+		/****** GeomAdaptor_Curve::EvalD3 ******/
+		/****** md5 signature: a6e2ea19f102d61c7a916bef9a895bcb ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+D3 evaluation. Raises an exception on failure.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double theU);
+
+		/****** GeomAdaptor_Curve::EvalDN ******/
+		/****** md5 signature: 77005f048bbfcdbbddaf4af5a7b6cef4 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+DN evaluation. Raises an exception on failure.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const int theN);
+
 		/****** GeomAdaptor_Curve::FirstParameter ******/
-		/****** md5 signature: 93c381754667baab23468a195644e410 ******/
+		/****** md5 signature: dc78d2d12bb932c87a4c14a5c9c0d19a ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** GeomAdaptor_Curve::GetType ******/
-		/****** md5 signature: eaef05bb051ab4b74eda73aca8930d16 ******/
+		/****** md5 signature: e8702ba2a9b67d9bf1a9f4972b71ea7a ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -417,10 +410,10 @@ Description
 -----------
 No available documentation.
 ") GetType;
-		virtual GeomAbs_CurveType GetType();
+		GeomAbs_CurveType GetType();
 
 		/****** GeomAdaptor_Curve::Hyperbola ******/
-		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
+		/****** md5 signature: 308d3b34f3aaba706261ba7e6cb1678e ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -433,12 +426,12 @@ No available documentation.
 		gp_Hypr Hyperbola();
 
 		/****** GeomAdaptor_Curve::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -449,10 +442,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_Curve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -462,10 +455,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** GeomAdaptor_Curve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -475,10 +468,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** GeomAdaptor_Curve::IsRational ******/
-		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
+		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -488,23 +481,23 @@ Description
 -----------
 this should NEVER make a copy of the underlying curve to read the relevant information.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** GeomAdaptor_Curve::LastParameter ******/
-		/****** md5 signature: a2893a92f9c4af09acb0cd59d959d964 ******/
+		/****** md5 signature: 9b49916bc4bf24d69a406e677dabf205 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** GeomAdaptor_Curve::Line ******/
-		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
+		/****** md5 signature: acdc8f5fc99e967530fe196307d05538 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -535,14 +528,14 @@ No available documentation.
 		void Load(const opencascade::handle<Geom_Curve> & theCurve);
 
 		/****** GeomAdaptor_Curve::Load ******/
-		/****** md5 signature: 870dfd0d647afc03a8ecd96c1d9b3367 ******/
+		/****** md5 signature: 4c0bb4e6e7a2fdd6f5c521660b1cc11f ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 theCurve: Geom_Curve
-theUFirst: float
-theULast: float
+theUFirst: double
+theULast: double
 
 Return
 -------
@@ -550,12 +543,12 @@ None
 
 Description
 -----------
-Standard_ConstructionError is raised if theUFirst>theULast.
+Standard_ConstructionError is raised if theUFirst > theULast + Precision::PConfusion().
 ") Load;
-		void Load(const opencascade::handle<Geom_Curve> & theCurve, const Standard_Real theUFirst, const Standard_Real theULast);
+		void Load(const opencascade::handle<Geom_Curve> & theCurve, const double theUFirst, const double theULast);
 
 		/****** GeomAdaptor_Curve::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -570,10 +563,10 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_Curve::NbKnots ******/
-		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
+		/****** md5 signature: d6bff4f2a244b781cf7c609ff1cddaf1 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -583,10 +576,10 @@ Description
 -----------
 this should NEVER make a copy of the underlying curve to read the relevant information.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** GeomAdaptor_Curve::NbPoles ******/
-		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
+		/****** md5 signature: bdb1092e5fcaeae9c85a332311d7f069 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -596,10 +589,10 @@ Description
 -----------
 this should NEVER make a copy of the underlying curve to read the relevant information.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** GeomAdaptor_Curve::OffsetCurve ******/
-		/****** md5 signature: c9712770a031ed315e762ca33ff3eddd ******/
+		/****** md5 signature: 1e87aabad8756a087f230feb50c541bc ******/
 		%feature("compactdefaultargs") OffsetCurve;
 		%feature("autodoc", "Return
 -------
@@ -612,7 +605,7 @@ No available documentation.
 		opencascade::handle<Geom_OffsetCurve> OffsetCurve();
 
 		/****** GeomAdaptor_Curve::Parabola ******/
-		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
+		/****** md5 signature: de70ebd3fa2d227512b9d0058ee94ca5 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -625,17 +618,17 @@ No available documentation.
 		gp_Parab Parabola();
 
 		/****** GeomAdaptor_Curve::Period ******/
-		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** GeomAdaptor_Curve::Reset ******/
 		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
@@ -651,25 +644,25 @@ Reset currently loaded curve (undone Load()).
 		void Reset();
 
 		/****** GeomAdaptor_Curve::Resolution ******/
-		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
+		/****** md5 signature: 7cb383c1a004c01dc3f51b7088c4d899 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns the parametric resolution.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** GeomAdaptor_Curve::ShallowCopy ******/
-		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
+		/****** md5 signature: 20e70b6ba2d95db55811b68454eb9003 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -679,17 +672,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+		opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****** GeomAdaptor_Curve::Trim ******/
-		/****** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ******/
+		/****** md5 signature: 91538b497dfbccd564dbd54083e8e395 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -699,25 +692,7 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
-
-		/****** GeomAdaptor_Curve::Value ******/
-		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-gp_Pnt
-
-Description
------------
-Computes the point of parameter U on the curve.
-") Value;
-		gp_Pnt Value(const Standard_Real U);
+		opencascade::handle<Adaptor3d_Curve> Trim(const double First, const double Last, const double Tol);
 
 };
 
@@ -735,6 +710,11 @@ Computes the point of parameter U on the curve.
 ****************************/
 class GeomAdaptor_Surface : public Adaptor3d_Surface {
 	public:
+		class ExtrusionData {};
+		class RevolutionData {};
+		class OffsetData {};
+		class BezierData {};
+		class BSplineData {};
 		/****** GeomAdaptor_Surface::GeomAdaptor_Surface ******/
 		/****** md5 signature: e4d8f69fd067a07f447e80b193ed4e6d ******/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
@@ -767,18 +747,18 @@ No available documentation.
 		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & theSurf);
 
 		/****** GeomAdaptor_Surface::GeomAdaptor_Surface ******/
-		/****** md5 signature: bd6e4cc11ebb04ed69b2ff924099da48 ******/
+		/****** md5 signature: d2b2b12f5ae173db4ef7622a26640b11 ******/
 		%feature("compactdefaultargs") GeomAdaptor_Surface;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Geom_Surface
-theUFirst: float
-theULast: float
-theVFirst: float
-theVLast: float
-theTolU: float (optional, default to 0.0)
-theTolV: float (optional, default to 0.0)
+theUFirst: double
+theULast: double
+theVFirst: double
+theVLast: double
+theTolU: double (optional, default to 0.0)
+theTolV: double (optional, default to 0.0)
 
 Return
 -------
@@ -788,10 +768,10 @@ Description
 -----------
 Standard_ConstructionError is raised if UFirst>ULast or VFirst>VLast.
 ") GeomAdaptor_Surface;
-		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theUFirst, const Standard_Real theULast, const Standard_Real theVFirst, const Standard_Real theVLast, const Standard_Real theTolU = 0.0, const Standard_Real theTolV = 0.0);
+		 GeomAdaptor_Surface(const opencascade::handle<Geom_Surface> & theSurf, const double theUFirst, const double theULast, const double theVFirst, const double theVLast, const double theTolU = 0.0, const double theTolV = 0.0);
 
 		/****** GeomAdaptor_Surface::AxeOfRevolution ******/
-		/****** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ******/
+		/****** md5 signature: d1efe882bcb9f42b1937beb2fb773ec6 ******/
 		%feature("compactdefaultargs") AxeOfRevolution;
 		%feature("autodoc", "Return
 -------
@@ -804,7 +784,7 @@ No available documentation.
 		gp_Ax1 AxeOfRevolution();
 
 		/****** GeomAdaptor_Surface::BSpline ******/
-		/****** md5 signature: 7edfedec29b3e090d1dbb1c560f9218f ******/
+		/****** md5 signature: 8fde07817a4bc7940e9febcd357d3f61 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -817,7 +797,7 @@ This will NOT make a copy of the BSpline Surface: If you want to modify the Surf
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****** GeomAdaptor_Surface::BasisCurve ******/
-		/****** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ******/
+		/****** md5 signature: 5b4605e53987d121f30b9516d7561fb1 ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -830,7 +810,7 @@ No available documentation.
 		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****** GeomAdaptor_Surface::BasisSurface ******/
-		/****** md5 signature: de63a8a43356a45f5d395e828ec0014c ******/
+		/****** md5 signature: f8144cf04b9828f1299d0b447e023a32 ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -843,7 +823,7 @@ No available documentation.
 		opencascade::handle<Adaptor3d_Surface> BasisSurface();
 
 		/****** GeomAdaptor_Surface::Bezier ******/
-		/****** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ******/
+		/****** md5 signature: d3c3048c9ceead5583877ee745b6f3b3 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -855,8 +835,28 @@ This will NOT make a copy of the Bezier Surface: If you want to modify the Surfa
 ") Bezier;
 		opencascade::handle<Geom_BezierSurface> Bezier();
 
+		/****** GeomAdaptor_Surface::Bounds ******/
+		/****** md5 signature: 5f4d765abcfec97bff0d7706ad34037a ******/
+		%feature("compactdefaultargs") Bounds;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+theU1: double
+theU2: double
+theV1: double
+theV2: double
+
+Description
+-----------
+Returns the parametric bounds of the surface. @param[out] theU1 minimum U parameter @param[out] theU2 maximum U parameter @param[out] theV1 minimum V parameter @param[out] theV2 maximum V parameter.
+") Bounds;
+		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+
 		/****** GeomAdaptor_Surface::Cone ******/
-		/****** md5 signature: 3ce87f79e83a129f74e88ef746e3e34b ******/
+		/****** md5 signature: f0efa0c0c395b3d1aaec8b678ed3fd71 ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "Return
 -------
@@ -869,7 +869,7 @@ No available documentation.
 		gp_Cone Cone();
 
 		/****** GeomAdaptor_Surface::Cylinder ******/
-		/****** md5 signature: fdc0e133b47b8d299b834e1b65638963 ******/
+		/****** md5 signature: f4b3244c5a78bd7cd9f7c60b7f2b75e6 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "Return
 -------
@@ -881,125 +881,8 @@ No available documentation.
 ") Cylinder;
 		gp_Cylinder Cylinder();
 
-		/****** GeomAdaptor_Surface::D0 ******/
-		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameters U,V on the surface.
-") D0;
-		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
-
-		/****** GeomAdaptor_Surface::D1 ******/
-		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point and the first derivatives on the surface. //! Warning: On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C1, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
-") D1;
-		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
-
-		/****** GeomAdaptor_Surface::D2 ******/
-		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point, the first and second derivatives on the surface. //! Warning: On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C2, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
-") D2;
-		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
-
-		/****** GeomAdaptor_Surface::D3 ******/
-		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point, the first, second and third derivatives on the surface. //! Warning: On the specific case of BSplineSurface: if the surface is cut in interval of continuity at least C3, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface.
-") D3;
-		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
-
-		/****** GeomAdaptor_Surface::DN ******/
-		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-Nu: int
-Nv: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). //! Warning: On the specific case of BSplineSurface: if the surface is cut in interval of continuity CN, the derivatives are computed on the current interval. else the derivatives are computed on the basis surface. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
-
 		/****** GeomAdaptor_Surface::Direction ******/
-		/****** md5 signature: 701909e88752dfbf540944de6bad9f3a ******/
+		/****** md5 signature: e82225d5d4e09b88b8ad039d354130e5 ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -1011,34 +894,131 @@ No available documentation.
 ") Direction;
 		gp_Dir Direction();
 
+		/****** GeomAdaptor_Surface::EvalD0 ******/
+		/****** md5 signature: 6ae9a3a500564237b621fd4f196eba74 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Point evaluation. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU, const double theV);
+
+		/****** GeomAdaptor_Surface::EvalD1 ******/
+		/****** md5 signature: 7ee30f985df48bfdd6167fd3ac9b0ac0 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+D1 evaluation. Raises an exception on failure.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double theU, const double theV);
+
+		/****** GeomAdaptor_Surface::EvalD2 ******/
+		/****** md5 signature: c229ce24fe9d69a5d26f837aa4938d55 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+D2 evaluation. Raises an exception on failure.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double theU, const double theV);
+
+		/****** GeomAdaptor_Surface::EvalD3 ******/
+		/****** md5 signature: 60d093ede0ac1d132fbeca3192fa6132 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+D3 evaluation. Raises an exception on failure.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double theU, const double theV);
+
+		/****** GeomAdaptor_Surface::EvalDN ******/
+		/****** md5 signature: a887ee7f3e724bf66be4d7951087d3ec ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+theNu: int
+theNv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+DN evaluation. Raises an exception on failure.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const double theV, const int theNu, const int theNv);
+
 		/****** GeomAdaptor_Surface::FirstUParameter ******/
-		/****** md5 signature: 9f6a318ef39f30d9051cc243f6edc9ac ******/
+		/****** md5 signature: 75d5fede1e3df60e6b25fc207601e5e5 ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		virtual Standard_Real FirstUParameter();
+		double FirstUParameter();
 
 		/****** GeomAdaptor_Surface::FirstVParameter ******/
-		/****** md5 signature: 026c8b687e22be56263a275efcb1a191 ******/
+		/****** md5 signature: ca83c9b14a103eca8f40b01e4b58b6e2 ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		virtual Standard_Real FirstVParameter();
+		double FirstVParameter();
 
 		/****** GeomAdaptor_Surface::GetType ******/
-		/****** md5 signature: 936170b269276a5a12605a71a86272c0 ******/
+		/****** md5 signature: 86e3e543a6e2d6f3f0b532be8e8ff523 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -1048,10 +1028,10 @@ Description
 -----------
 Returns the type of the surface: Plane, Cylinder, Cone, Sphere, Torus, BezierSurface, BSplineSurface, SurfaceOfRevolution, SurfaceOfExtrusion, OtherSurface.
 ") GetType;
-		virtual GeomAbs_SurfaceType GetType();
+		GeomAbs_SurfaceType GetType();
 
 		/****** GeomAdaptor_Surface::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: 91c191879c9b39e0c4f123772c17dbd2 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -1061,10 +1041,10 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** GeomAdaptor_Surface::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: 7236661160e2b4989ea98f769e60fafb ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1074,10 +1054,10 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** GeomAdaptor_Surface::IsURational ******/
-		/****** md5 signature: 503a5a81658ea54283ba1b83fd4c4159 ******/
+		/****** md5 signature: a2496b20d14d31a116825513bae2afcd ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -1087,10 +1067,10 @@ Description
 -----------
 No available documentation.
 ") IsURational;
-		Standard_Boolean IsURational();
+		bool IsURational();
 
 		/****** GeomAdaptor_Surface::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: b42d07343ce292533f9bd94d419cf3f6 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -1100,10 +1080,10 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** GeomAdaptor_Surface::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 0654a6d88753f46bfbed67995e913efa ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1113,10 +1093,10 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** GeomAdaptor_Surface::IsVRational ******/
-		/****** md5 signature: 43ab877f92028162dd9780a1e61ecdd7 ******/
+		/****** md5 signature: a372cfe96ee85490dfdd8a9905fccc55 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -1126,33 +1106,33 @@ Description
 -----------
 No available documentation.
 ") IsVRational;
-		Standard_Boolean IsVRational();
+		bool IsVRational();
 
 		/****** GeomAdaptor_Surface::LastUParameter ******/
-		/****** md5 signature: 3133997e2ee3ea09c0b46a884e833ca4 ******/
+		/****** md5 signature: 0338cd13904e2a1635d8dad15e486bfc ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		virtual Standard_Real LastUParameter();
+		double LastUParameter();
 
 		/****** GeomAdaptor_Surface::LastVParameter ******/
-		/****** md5 signature: f1f64233932dd0768276d78ffb537717 ******/
+		/****** md5 signature: b9bfd4676801b418d9bbc8e2ddee2e27 ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		virtual Standard_Real LastVParameter();
+		double LastVParameter();
 
 		/****** GeomAdaptor_Surface::Load ******/
 		/****** md5 signature: 9ae80bb85601d8887024ee162e816c42 ******/
@@ -1173,18 +1153,18 @@ No available documentation.
 		void Load(const opencascade::handle<Geom_Surface> & theSurf);
 
 		/****** GeomAdaptor_Surface::Load ******/
-		/****** md5 signature: ad45ae5b785f93959bfca62c6c7fcaca ******/
+		/****** md5 signature: ae0413c2e6315842349aef6d3a67f403 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Geom_Surface
-theUFirst: float
-theULast: float
-theVFirst: float
-theVLast: float
-theTolU: float (optional, default to 0.0)
-theTolV: float (optional, default to 0.0)
+theUFirst: double
+theULast: double
+theVFirst: double
+theVLast: double
+theTolU: double (optional, default to 0.0)
+theTolV: double (optional, default to 0.0)
 
 Return
 -------
@@ -1194,10 +1174,10 @@ Description
 -----------
 Standard_ConstructionError is raised if theUFirst>theULast or theVFirst>theVLast.
 ") Load;
-		void Load(const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theUFirst, const Standard_Real theULast, const Standard_Real theVFirst, const Standard_Real theVLast, const Standard_Real theTolU = 0.0, const Standard_Real theTolV = 0.0);
+		void Load(const opencascade::handle<Geom_Surface> & theSurf, const double theUFirst, const double theULast, const double theVFirst, const double theVLast, const double theTolU = 0.0, const double theTolV = 0.0);
 
 		/****** GeomAdaptor_Surface::NbUIntervals ******/
-		/****** md5 signature: 36290e0c805f559fce0d4de0d4d51789 ******/
+		/****** md5 signature: 4a0e99d191f66cbed14931fc697354f3 ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1212,10 +1192,10 @@ Description
 -----------
 Returns the number of U intervals for continuity <S>. May be one if UContinuity(me) >= <S>.
 ") NbUIntervals;
-		Standard_Integer NbUIntervals(const GeomAbs_Shape S);
+		int NbUIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_Surface::NbUKnots ******/
-		/****** md5 signature: b3d8ce13e5341877d4ffaaf0b52ec603 ******/
+		/****** md5 signature: e8948433ba47c7becc94d85d8e770339 ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -1225,10 +1205,10 @@ Description
 -----------
 No available documentation.
 ") NbUKnots;
-		Standard_Integer NbUKnots();
+		int NbUKnots();
 
 		/****** GeomAdaptor_Surface::NbUPoles ******/
-		/****** md5 signature: 5c5f4e3c3fe024076b4fb29a46558ec0 ******/
+		/****** md5 signature: 5011752e7f57399068c3e11d28ac4d8a ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -1238,10 +1218,10 @@ Description
 -----------
 No available documentation.
 ") NbUPoles;
-		Standard_Integer NbUPoles();
+		int NbUPoles();
 
 		/****** GeomAdaptor_Surface::NbVIntervals ******/
-		/****** md5 signature: 1386a357acacae70889de04788135ce2 ******/
+		/****** md5 signature: ec7c8eea10888bbaeb74f56a34fc6af1 ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1256,10 +1236,10 @@ Description
 -----------
 Returns the number of V intervals for continuity <S>. May be one if VContinuity(me) >= <S>.
 ") NbVIntervals;
-		Standard_Integer NbVIntervals(const GeomAbs_Shape S);
+		int NbVIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_Surface::NbVKnots ******/
-		/****** md5 signature: b1cd06ae6e3ff5f29ab4140934f12d0a ******/
+		/****** md5 signature: 48a662c9885a4cfafb3aee6695bc8b14 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -1269,10 +1249,10 @@ Description
 -----------
 No available documentation.
 ") NbVKnots;
-		Standard_Integer NbVKnots();
+		int NbVKnots();
 
 		/****** GeomAdaptor_Surface::NbVPoles ******/
-		/****** md5 signature: d1321a0d34d7aaceadde41cd3444173f ******/
+		/****** md5 signature: bc79fcef9984de53f249da2e7edfb93b ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -1282,23 +1262,23 @@ Description
 -----------
 No available documentation.
 ") NbVPoles;
-		Standard_Integer NbVPoles();
+		int NbVPoles();
 
 		/****** GeomAdaptor_Surface::OffsetValue ******/
-		/****** md5 signature: ae23f5f41fc62b65137ff41b8ee27c47 ******/
+		/****** md5 signature: 432da7a67ccf3a0dbaba9e39e592a2e4 ******/
 		%feature("compactdefaultargs") OffsetValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") OffsetValue;
-		Standard_Real OffsetValue();
+		double OffsetValue();
 
 		/****** GeomAdaptor_Surface::Plane ******/
-		/****** md5 signature: 38bd3e56cdca70a78cd998154292a430 ******/
+		/****** md5 signature: 60fc0b62d6b3f27638f11ea963b523f7 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -1311,7 +1291,7 @@ No available documentation.
 		gp_Pln Plane();
 
 		/****** GeomAdaptor_Surface::ShallowCopy ******/
-		/****** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ******/
+		/****** md5 signature: 7aa156a18d0b7bf72bf05655ccd9ffff ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -1321,10 +1301,10 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
+		opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
 		/****** GeomAdaptor_Surface::Sphere ******/
-		/****** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ******/
+		/****** md5 signature: 2ad96025b6f047093038a616d097ceae ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "Return
 -------
@@ -1349,8 +1329,34 @@ No available documentation.
 ") Surface;
 		const opencascade::handle<Geom_Surface> & Surface();
 
+		/****** GeomAdaptor_Surface::ToleranceU ******/
+		/****** md5 signature: ffab08eebc650a4644bafb288883a76a ******/
+		%feature("compactdefaultargs") ToleranceU;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns tolerance in U direction.
+") ToleranceU;
+		double ToleranceU();
+
+		/****** GeomAdaptor_Surface::ToleranceV ******/
+		/****** md5 signature: 0db48bd95023f8e22b120c4806977d4f ******/
+		%feature("compactdefaultargs") ToleranceV;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns tolerance in V direction.
+") ToleranceV;
+		double ToleranceV();
+
 		/****** GeomAdaptor_Surface::Torus ******/
-		/****** md5 signature: 13ce946397b0f1bcfd3f38f215bbadac ******/
+		/****** md5 signature: e3d8b3166c4d170ce4f0eb64ffeae486 ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "Return
 -------
@@ -1363,7 +1369,7 @@ No available documentation.
 		gp_Torus Torus();
 
 		/****** GeomAdaptor_Surface::UContinuity ******/
-		/****** md5 signature: 734a4ef77d0d03bc93d92e10bda465e4 ******/
+		/****** md5 signature: ade4d04439e04c72cc7414c0ec4a29a8 ******/
 		%feature("compactdefaultargs") UContinuity;
 		%feature("autodoc", "Return
 -------
@@ -1376,7 +1382,7 @@ No available documentation.
 		GeomAbs_Shape UContinuity();
 
 		/****** GeomAdaptor_Surface::UDegree ******/
-		/****** md5 signature: fe5d6f101c0706d20343b36865ccf566 ******/
+		/****** md5 signature: fca90e3f2f4c1ba6e7bc9cbc04110d23 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -1386,15 +1392,15 @@ Description
 -----------
 No available documentation.
 ") UDegree;
-		Standard_Integer UDegree();
+		int UDegree();
 
 		/****** GeomAdaptor_Surface::UIntervals ******/
-		/****** md5 signature: 5a653f364681c4a5c1065b7e92c5d659 ******/
+		/****** md5 signature: 6994811896db22ce8af785fb3194a1dc ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -1405,48 +1411,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the U direction.
 ") UIntervals;
-		void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void UIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_Surface::UPeriod ******/
-		/****** md5 signature: a3dec1a81b623affa1d3ea1e9e49c97e ******/
+		/****** md5 signature: 0ac7288e2577dfedb94dacb3d9a60302 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		Standard_Real UPeriod();
+		double UPeriod();
 
 		/****** GeomAdaptor_Surface::UResolution ******/
-		/****** md5 signature: 449c7efbd4cbc4136589973c1bc1500b ******/
+		/****** md5 signature: 8db9b159a7bf4bfe0753b953109a6bbd ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 ") UResolution;
-		Standard_Real UResolution(const Standard_Real R3d);
+		double UResolution(const double R3d);
 
 		/****** GeomAdaptor_Surface::UTrim ******/
-		/****** md5 signature: 3604326125cf753b2a6722a946fb54be ******/
+		/****** md5 signature: d065f303d0a2948f4ff7102b479c7aa6 ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -1456,10 +1462,10 @@ Description
 -----------
 Returns a surface trimmed in the U direction equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") UTrim;
-		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const double First, const double Last, const double Tol);
 
 		/****** GeomAdaptor_Surface::VContinuity ******/
-		/****** md5 signature: 147ea173efc6a600ed241c35c98936ea ******/
+		/****** md5 signature: 7db46254d043ce61da12775dc816a925 ******/
 		%feature("compactdefaultargs") VContinuity;
 		%feature("autodoc", "Return
 -------
@@ -1472,7 +1478,7 @@ No available documentation.
 		GeomAbs_Shape VContinuity();
 
 		/****** GeomAdaptor_Surface::VDegree ******/
-		/****** md5 signature: b7875d48d80bf8a6fde9c47500038fd4 ******/
+		/****** md5 signature: c793f94fb8ca1e7cdd3fc97529f675d2 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -1482,15 +1488,15 @@ Description
 -----------
 No available documentation.
 ") VDegree;
-		Standard_Integer VDegree();
+		int VDegree();
 
 		/****** GeomAdaptor_Surface::VIntervals ******/
-		/****** md5 signature: bf8bef8286fec18f81beea299dd5cb6d ******/
+		/****** md5 signature: a2cbea5fb0c66ee7a577bf7b7a8aa6ea ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -1501,48 +1507,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the V direction.
 ") VIntervals;
-		void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void VIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_Surface::VPeriod ******/
-		/****** md5 signature: e6f079a3e4e62dbf708e1ce56dfd23b6 ******/
+		/****** md5 signature: 59a61c3d75ffd436a26d1e119e233654 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		Standard_Real VPeriod();
+		double VPeriod();
 
 		/****** GeomAdaptor_Surface::VResolution ******/
-		/****** md5 signature: a2dfdb6521f339dcde6811097088d560 ******/
+		/****** md5 signature: 7d4c767dc5a3559454fc0c9681d327c0 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 ") VResolution;
-		Standard_Real VResolution(const Standard_Real R3d);
+		double VResolution(const double R3d);
 
 		/****** GeomAdaptor_Surface::VTrim ******/
-		/****** md5 signature: d094345261a4439c6edc98b200ea4e3d ******/
+		/****** md5 signature: d4060f4796d31b403a0bbdb7b3c4cc96 ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -1552,26 +1558,7 @@ Description
 -----------
 Returns a surface trimmed in the V direction between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") VTrim;
-		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
-
-		/****** GeomAdaptor_Surface::Value ******/
-		/****** md5 signature: bc01a119296408176c75cc0dfb0636ae ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-V: float
-
-Return
--------
-gp_Pnt
-
-Description
------------
-Computes the point of parameters U,V on the surface.
-") Value;
-		gp_Pnt Value(const Standard_Real U, const Standard_Real V);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const double First, const double Last, const double Tol);
 
 };
 
@@ -1579,6 +1566,1653 @@ Computes the point of parameters U,V on the surface.
 %make_alias(GeomAdaptor_Surface)
 
 %extend GeomAdaptor_Surface {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************************
+* class GeomAdaptor_TransformedCurve *
+*************************************/
+class GeomAdaptor_TransformedCurve : public Adaptor3d_Curve {
+	public:
+		/****** GeomAdaptor_TransformedCurve::GeomAdaptor_TransformedCurve ******/
+		/****** md5 signature: d0802327e3c02481d6faed4a1a8eabec ******/
+		%feature("compactdefaultargs") GeomAdaptor_TransformedCurve;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates an undefined curve with identity transformation.
+") GeomAdaptor_TransformedCurve;
+		 GeomAdaptor_TransformedCurve();
+
+		/****** GeomAdaptor_TransformedCurve::GeomAdaptor_TransformedCurve ******/
+		/****** md5 signature: 1119a6211c96d86a4866444a9c58049b ******/
+		%feature("compactdefaultargs") GeomAdaptor_TransformedCurve;
+		%feature("autodoc", "
+Parameters
+----------
+theCurve: Geom_Curve
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a curve adaptor with transformation. 
+Parameter theCurve underlying geometry 
+Parameter theTrsf transformation to apply.
+") GeomAdaptor_TransformedCurve;
+		 GeomAdaptor_TransformedCurve(const opencascade::handle<Geom_Curve> & theCurve, const gp_Trsf & theTrsf);
+
+		/****** GeomAdaptor_TransformedCurve::GeomAdaptor_TransformedCurve ******/
+		/****** md5 signature: 9ccac8d7c350a80e5c7630a55d619def ******/
+		%feature("compactdefaultargs") GeomAdaptor_TransformedCurve;
+		%feature("autodoc", "
+Parameters
+----------
+theCurve: Geom_Curve
+theFirst: double
+theLast: double
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a curve adaptor with transformation and parameter bounds. 
+Parameter theCurve underlying geometry 
+Parameter theFirst minimum parameter 
+Parameter theLast maximum parameter 
+Parameter theTrsf transformation to apply.
+") GeomAdaptor_TransformedCurve;
+		 GeomAdaptor_TransformedCurve(const opencascade::handle<Geom_Curve> & theCurve, const double theFirst, const double theLast, const gp_Trsf & theTrsf);
+
+		/****** GeomAdaptor_TransformedCurve::BSpline ******/
+		/****** md5 signature: 7bed4aa4788773a8c748371dea2999b6 ******/
+		%feature("compactdefaultargs") BSpline;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_BSplineCurve>
+
+Description
+-----------
+No available documentation.
+") BSpline;
+		opencascade::handle<Geom_BSplineCurve> BSpline();
+
+		/****** GeomAdaptor_TransformedCurve::Bezier ******/
+		/****** md5 signature: 18c746ed347d210e28744f5b1c7eb527 ******/
+		%feature("compactdefaultargs") Bezier;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_BezierCurve>
+
+Description
+-----------
+No available documentation.
+") Bezier;
+		opencascade::handle<Geom_BezierCurve> Bezier();
+
+		/****** GeomAdaptor_TransformedCurve::ChangeCurve ******/
+		/****** md5 signature: b118739e4660ff86c2bcb1f9857a6112 ******/
+		%feature("compactdefaultargs") ChangeCurve;
+		%feature("autodoc", "Return
+-------
+GeomAdaptor_Curve
+
+Description
+-----------
+Returns the underlying GeomAdaptor_Curve for modification.
+") ChangeCurve;
+		GeomAdaptor_Curve & ChangeCurve();
+
+		/****** GeomAdaptor_TransformedCurve::Circle ******/
+		/****** md5 signature: 7475f3d2915ecc09ceb3114f02b43080 ******/
+		%feature("compactdefaultargs") Circle;
+		%feature("autodoc", "Return
+-------
+gp_Circ
+
+Description
+-----------
+No available documentation.
+") Circle;
+		gp_Circ Circle();
+
+		/****** GeomAdaptor_TransformedCurve::Continuity ******/
+		/****** md5 signature: 04700f24cebb43a08144b5f6f180e4f9 ******/
+		%feature("compactdefaultargs") Continuity;
+		%feature("autodoc", "Return
+-------
+GeomAbs_Shape
+
+Description
+-----------
+No available documentation.
+") Continuity;
+		GeomAbs_Shape Continuity();
+
+		/****** GeomAdaptor_TransformedCurve::Curve ******/
+		/****** md5 signature: ff7dedad8526761c9df2a87ef909e6fc ******/
+		%feature("compactdefaultargs") Curve;
+		%feature("autodoc", "Return
+-------
+GeomAdaptor_Curve
+
+Description
+-----------
+Returns the underlying GeomAdaptor_Curve.
+") Curve;
+		GeomAdaptor_Curve Curve();
+
+		/****** GeomAdaptor_TransformedCurve::CurveOnSurface ******/
+		/****** md5 signature: 762fc32e84a418551a7c5abbf7a90df3 ******/
+		%feature("compactdefaultargs") CurveOnSurface;
+		%feature("autodoc", "Return
+-------
+Adaptor3d_CurveOnSurface
+
+Description
+-----------
+Returns the CurveOnSurface adaptor.
+") CurveOnSurface;
+		Adaptor3d_CurveOnSurface CurveOnSurface();
+
+		/****** GeomAdaptor_TransformedCurve::Degree ******/
+		/****** md5 signature: 614805e14ec51874c2f55b971b256d50 ******/
+		%feature("compactdefaultargs") Degree;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") Degree;
+		int Degree();
+
+		/****** GeomAdaptor_TransformedCurve::Ellipse ******/
+		/****** md5 signature: b7cf7020e3992d6d2378fd2118e8d198 ******/
+		%feature("compactdefaultargs") Ellipse;
+		%feature("autodoc", "Return
+-------
+gp_Elips
+
+Description
+-----------
+No available documentation.
+") Ellipse;
+		gp_Elips Ellipse();
+
+		/****** GeomAdaptor_TransformedCurve::EvalD0 ******/
+		/****** md5 signature: 534d5bf2fd8e92a6dcc7c1d53e829bc3 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Point evaluation. Applies transformation after evaluation.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU);
+
+		/****** GeomAdaptor_TransformedCurve::EvalD1 ******/
+		/****** md5 signature: 7afa7a9bd3f5047a6ef303b4732e48db ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+D1 evaluation. Applies transformation after evaluation.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double theU);
+
+		/****** GeomAdaptor_TransformedCurve::EvalD2 ******/
+		/****** md5 signature: bdf34f9b5fb078dabb16e072337b36b5 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+D2 evaluation. Applies transformation after evaluation.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double theU);
+
+		/****** GeomAdaptor_TransformedCurve::EvalD3 ******/
+		/****** md5 signature: a6e2ea19f102d61c7a916bef9a895bcb ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+D3 evaluation. Applies transformation after evaluation.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double theU);
+
+		/****** GeomAdaptor_TransformedCurve::EvalDN ******/
+		/****** md5 signature: 77005f048bbfcdbbddaf4af5a7b6cef4 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+DN evaluation. Applies transformation after evaluation.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const int theN);
+
+		/****** GeomAdaptor_TransformedCurve::FirstParameter ******/
+		/****** md5 signature: dc78d2d12bb932c87a4c14a5c9c0d19a ******/
+		%feature("compactdefaultargs") FirstParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") FirstParameter;
+		double FirstParameter();
+
+		/****** GeomAdaptor_TransformedCurve::GeomCurve ******/
+		/****** md5 signature: aee8daa0fe639cc5fc37a05d96843ef6 ******/
+		%feature("compactdefaultargs") GeomCurve;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_Curve>
+
+Description
+-----------
+Returns the underlying Geom_Curve.
+") GeomCurve;
+		const opencascade::handle<Geom_Curve> & GeomCurve();
+
+		/****** GeomAdaptor_TransformedCurve::GetType ******/
+		/****** md5 signature: e8702ba2a9b67d9bf1a9f4972b71ea7a ******/
+		%feature("compactdefaultargs") GetType;
+		%feature("autodoc", "Return
+-------
+GeomAbs_CurveType
+
+Description
+-----------
+No available documentation.
+") GetType;
+		GeomAbs_CurveType GetType();
+
+		/****** GeomAdaptor_TransformedCurve::Hyperbola ******/
+		/****** md5 signature: 308d3b34f3aaba706261ba7e6cb1678e ******/
+		%feature("compactdefaultargs") Hyperbola;
+		%feature("autodoc", "Return
+-------
+gp_Hypr
+
+Description
+-----------
+No available documentation.
+") Hyperbola;
+		gp_Hypr Hyperbola();
+
+		/****** GeomAdaptor_TransformedCurve::Intervals ******/
+		/****** md5 signature: dcf70287d04e93a83ccf46dc9dc96eb9 ******/
+		%feature("compactdefaultargs") Intervals;
+		%feature("autodoc", "
+Parameters
+----------
+theT: NCollection_Array1<double>
+theS: GeomAbs_Shape
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Intervals;
+		void Intervals(NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
+
+		/****** GeomAdaptor_TransformedCurve::Is3DCurve ******/
+		/****** md5 signature: f1070732b28dee63f6628d9eef4869ce ******/
+		%feature("compactdefaultargs") Is3DCurve;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if the geometry is a 3D curve (not curve on surface).
+") Is3DCurve;
+		bool Is3DCurve();
+
+		/****** GeomAdaptor_TransformedCurve::IsClosed ******/
+		/****** md5 signature: 594ce92d890baf7ffab43133187a0672 ******/
+		%feature("compactdefaultargs") IsClosed;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsClosed;
+		bool IsClosed();
+
+		/****** GeomAdaptor_TransformedCurve::IsCurveOnSurface ******/
+		/****** md5 signature: e5a6a0125779453dd5ff55e0a5acd31b ******/
+		%feature("compactdefaultargs") IsCurveOnSurface;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if the geometry is a curve on surface.
+") IsCurveOnSurface;
+		bool IsCurveOnSurface();
+
+		/****** GeomAdaptor_TransformedCurve::IsPeriodic ******/
+		/****** md5 signature: 3716e8aa9b894dac4aa0c284c6bfe4b0 ******/
+		%feature("compactdefaultargs") IsPeriodic;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsPeriodic;
+		bool IsPeriodic();
+
+		/****** GeomAdaptor_TransformedCurve::IsRational ******/
+		/****** md5 signature: f30c7725220ba7b7214110e5715c3d99 ******/
+		%feature("compactdefaultargs") IsRational;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsRational;
+		bool IsRational();
+
+		/****** GeomAdaptor_TransformedCurve::LastParameter ******/
+		/****** md5 signature: 9b49916bc4bf24d69a406e677dabf205 ******/
+		%feature("compactdefaultargs") LastParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") LastParameter;
+		double LastParameter();
+
+		/****** GeomAdaptor_TransformedCurve::Line ******/
+		/****** md5 signature: acdc8f5fc99e967530fe196307d05538 ******/
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "Return
+-------
+gp_Lin
+
+Description
+-----------
+No available documentation.
+") Line;
+		gp_Lin Line();
+
+		/****** GeomAdaptor_TransformedCurve::Load ******/
+		/****** md5 signature: e05559f93c046e47a8be3d9ab64ebec8 ******/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "
+Parameters
+----------
+theCurve: Geom_Curve
+
+Return
+-------
+None
+
+Description
+-----------
+Loads the curve geometry. 
+Parameter theCurve underlying geometry.
+") Load;
+		void Load(const opencascade::handle<Geom_Curve> & theCurve);
+
+		/****** GeomAdaptor_TransformedCurve::Load ******/
+		/****** md5 signature: 4e5d30292d6c9e71f092f5f58600d75c ******/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "
+Parameters
+----------
+theCurve: Geom_Curve
+theFirst: double
+theLast: double
+
+Return
+-------
+None
+
+Description
+-----------
+Loads the curve geometry with parameter bounds. 
+Parameter theCurve underlying geometry 
+Parameter theFirst minimum parameter 
+Parameter theLast maximum parameter.
+") Load;
+		void Load(const opencascade::handle<Geom_Curve> & theCurve, const double theFirst, const double theLast);
+
+		/****** GeomAdaptor_TransformedCurve::LoadCurveOnSurface ******/
+		/****** md5 signature: 3b725d2bd19f31ffdd001e6d36511ff0 ******/
+		%feature("compactdefaultargs") LoadCurveOnSurface;
+		%feature("autodoc", "
+Parameters
+----------
+theConSurf: Adaptor3d_CurveOnSurface
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the curve on surface adaptor. 
+Parameter theConSurf curve on surface adaptor.
+") LoadCurveOnSurface;
+		void LoadCurveOnSurface(const opencascade::handle<Adaptor3d_CurveOnSurface> & theConSurf);
+
+		/****** GeomAdaptor_TransformedCurve::NbIntervals ******/
+		/****** md5 signature: 86d20aece993b222833023cd29aae702 ******/
+		%feature("compactdefaultargs") NbIntervals;
+		%feature("autodoc", "
+Parameters
+----------
+theS: GeomAbs_Shape
+
+Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbIntervals;
+		int NbIntervals(const GeomAbs_Shape theS);
+
+		/****** GeomAdaptor_TransformedCurve::NbKnots ******/
+		/****** md5 signature: f7928e3ab81f5d59bf00aef695917623 ******/
+		%feature("compactdefaultargs") NbKnots;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbKnots;
+		int NbKnots();
+
+		/****** GeomAdaptor_TransformedCurve::NbPoles ******/
+		/****** md5 signature: 5994111f5b843f8ad0ad2ec53c77affa ******/
+		%feature("compactdefaultargs") NbPoles;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbPoles;
+		int NbPoles();
+
+		/****** GeomAdaptor_TransformedCurve::OffsetCurve ******/
+		/****** md5 signature: 1e87aabad8756a087f230feb50c541bc ******/
+		%feature("compactdefaultargs") OffsetCurve;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_OffsetCurve>
+
+Description
+-----------
+No available documentation.
+") OffsetCurve;
+		opencascade::handle<Geom_OffsetCurve> OffsetCurve();
+
+		/****** GeomAdaptor_TransformedCurve::Parabola ******/
+		/****** md5 signature: de70ebd3fa2d227512b9d0058ee94ca5 ******/
+		%feature("compactdefaultargs") Parabola;
+		%feature("autodoc", "Return
+-------
+gp_Parab
+
+Description
+-----------
+No available documentation.
+") Parabola;
+		gp_Parab Parabola();
+
+		/****** GeomAdaptor_TransformedCurve::Period ******/
+		/****** md5 signature: 1d58794363180279185ced631d60afb1 ******/
+		%feature("compactdefaultargs") Period;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") Period;
+		double Period();
+
+		/****** GeomAdaptor_TransformedCurve::Resolution ******/
+		/****** md5 signature: 9ba49d77ce77795403075d5825b70dde ******/
+		%feature("compactdefaultargs") Resolution;
+		%feature("autodoc", "
+Parameters
+----------
+theR3d: double
+
+Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") Resolution;
+		double Resolution(const double theR3d);
+
+		/****** GeomAdaptor_TransformedCurve::SetTrsf ******/
+		/****** md5 signature: 1a91030a3a81f641a81466daaf5c0c2f ******/
+		%feature("compactdefaultargs") SetTrsf;
+		%feature("autodoc", "
+Parameters
+----------
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the transformation. 
+Parameter theTrsf transformation to apply.
+") SetTrsf;
+		void SetTrsf(const gp_Trsf & theTrsf);
+
+		/****** GeomAdaptor_TransformedCurve::ShallowCopy ******/
+		/****** md5 signature: 20e70b6ba2d95db55811b68454eb9003 ******/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+
+		/****** GeomAdaptor_TransformedCurve::Trim ******/
+		/****** md5 signature: 78db5965fb403b477d6addb384e075bf ******/
+		%feature("compactdefaultargs") Trim;
+		%feature("autodoc", "
+Parameters
+----------
+theFirst: double
+theLast: double
+theTol: double
+
+Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+No available documentation.
+") Trim;
+		opencascade::handle<Adaptor3d_Curve> Trim(const double theFirst, const double theLast, const double theTol);
+
+		/****** GeomAdaptor_TransformedCurve::Trsf ******/
+		/****** md5 signature: 994369af5cf027a69090540425b26b58 ******/
+		%feature("compactdefaultargs") Trsf;
+		%feature("autodoc", "Return
+-------
+gp_Trsf
+
+Description
+-----------
+Returns the transformation.
+") Trsf;
+		const gp_Trsf Trsf();
+
+};
+
+
+%make_alias(GeomAdaptor_TransformedCurve)
+
+%extend GeomAdaptor_TransformedCurve {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class GeomAdaptor_TransformedSurface *
+***************************************/
+class GeomAdaptor_TransformedSurface : public Adaptor3d_Surface {
+	public:
+		/****** GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface ******/
+		/****** md5 signature: 7d2b8e0b5faa7478058131f8bdd8eb04 ******/
+		%feature("compactdefaultargs") GeomAdaptor_TransformedSurface;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates an undefined surface with identity transformation.
+") GeomAdaptor_TransformedSurface;
+		 GeomAdaptor_TransformedSurface();
+
+		/****** GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface ******/
+		/****** md5 signature: 3fec3bb29ac4e103ed778d3fbca406c1 ******/
+		%feature("compactdefaultargs") GeomAdaptor_TransformedSurface;
+		%feature("autodoc", "
+Parameters
+----------
+theSurface: Geom_Surface
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a surface adaptor with transformation. 
+Parameter theSurface underlying geometry 
+Parameter theTrsf transformation to apply.
+") GeomAdaptor_TransformedSurface;
+		 GeomAdaptor_TransformedSurface(const opencascade::handle<Geom_Surface> & theSurface, const gp_Trsf & theTrsf);
+
+		/****** GeomAdaptor_TransformedSurface::GeomAdaptor_TransformedSurface ******/
+		/****** md5 signature: 6d729bc08a55b0b0c1541205502c4b38 ******/
+		%feature("compactdefaultargs") GeomAdaptor_TransformedSurface;
+		%feature("autodoc", "
+Parameters
+----------
+theSurface: Geom_Surface
+theUFirst: double
+theULast: double
+theVFirst: double
+theVLast: double
+theTrsf: gp_Trsf
+theTolU: double (optional, default to 0.0)
+theTolV: double (optional, default to 0.0)
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a surface adaptor with transformation and parameter bounds. 
+Parameter theSurface underlying geometry 
+Parameter theUFirst minimum U parameter 
+Parameter theULast maximum U parameter 
+Parameter theVFirst minimum V parameter 
+Parameter theVLast maximum V parameter 
+Parameter theTrsf transformation to apply 
+Parameter theTolU tolerance in U direction 
+Parameter theTolV tolerance in V direction.
+") GeomAdaptor_TransformedSurface;
+		 GeomAdaptor_TransformedSurface(const opencascade::handle<Geom_Surface> & theSurface, const double theUFirst, const double theULast, const double theVFirst, const double theVLast, const gp_Trsf & theTrsf, const double theTolU = 0.0, const double theTolV = 0.0);
+
+		/****** GeomAdaptor_TransformedSurface::AdaptorSurfaceOriginal ******/
+		/****** md5 signature: 97a99513aa9654e818bf6a45619a07c6 ******/
+		%feature("compactdefaultargs") AdaptorSurfaceOriginal;
+		%feature("autodoc", "Return
+-------
+GeomAdaptor_Surface
+
+Description
+-----------
+Returns the underlying original GeomAdaptor_Surface without transformation applied.
+") AdaptorSurfaceOriginal;
+		GeomAdaptor_Surface AdaptorSurfaceOriginal();
+
+		/****** GeomAdaptor_TransformedSurface::AdaptorSurfaceTransformed ******/
+		/****** md5 signature: 855f7280ad8904742d293826098ffdb7 ******/
+		%feature("compactdefaultargs") AdaptorSurfaceTransformed;
+		%feature("autodoc", "Return
+-------
+GeomAdaptor_Surface
+
+Description
+-----------
+Returns an adaptor for the transformed surface state. Uses the original adaptor for identity transformation to preserve existing trimming.
+") AdaptorSurfaceTransformed;
+		GeomAdaptor_Surface AdaptorSurfaceTransformed();
+
+		/****** GeomAdaptor_TransformedSurface::AxeOfRevolution ******/
+		/****** md5 signature: d1efe882bcb9f42b1937beb2fb773ec6 ******/
+		%feature("compactdefaultargs") AxeOfRevolution;
+		%feature("autodoc", "Return
+-------
+gp_Ax1
+
+Description
+-----------
+No available documentation.
+") AxeOfRevolution;
+		gp_Ax1 AxeOfRevolution();
+
+		/****** GeomAdaptor_TransformedSurface::BSpline ******/
+		/****** md5 signature: 8fde07817a4bc7940e9febcd357d3f61 ******/
+		%feature("compactdefaultargs") BSpline;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_BSplineSurface>
+
+Description
+-----------
+No available documentation.
+") BSpline;
+		opencascade::handle<Geom_BSplineSurface> BSpline();
+
+		/****** GeomAdaptor_TransformedSurface::BasisCurve ******/
+		/****** md5 signature: 5b4605e53987d121f30b9516d7561fb1 ******/
+		%feature("compactdefaultargs") BasisCurve;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Curve>
+
+Description
+-----------
+No available documentation.
+") BasisCurve;
+		opencascade::handle<Adaptor3d_Curve> BasisCurve();
+
+		/****** GeomAdaptor_TransformedSurface::BasisSurface ******/
+		/****** md5 signature: f8144cf04b9828f1299d0b447e023a32 ******/
+		%feature("compactdefaultargs") BasisSurface;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+No available documentation.
+") BasisSurface;
+		opencascade::handle<Adaptor3d_Surface> BasisSurface();
+
+		/****** GeomAdaptor_TransformedSurface::Bezier ******/
+		/****** md5 signature: d3c3048c9ceead5583877ee745b6f3b3 ******/
+		%feature("compactdefaultargs") Bezier;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_BezierSurface>
+
+Description
+-----------
+No available documentation.
+") Bezier;
+		opencascade::handle<Geom_BezierSurface> Bezier();
+
+		/****** GeomAdaptor_TransformedSurface::Cone ******/
+		/****** md5 signature: f0efa0c0c395b3d1aaec8b678ed3fd71 ******/
+		%feature("compactdefaultargs") Cone;
+		%feature("autodoc", "Return
+-------
+gp_Cone
+
+Description
+-----------
+No available documentation.
+") Cone;
+		gp_Cone Cone();
+
+		/****** GeomAdaptor_TransformedSurface::Cylinder ******/
+		/****** md5 signature: f4b3244c5a78bd7cd9f7c60b7f2b75e6 ******/
+		%feature("compactdefaultargs") Cylinder;
+		%feature("autodoc", "Return
+-------
+gp_Cylinder
+
+Description
+-----------
+No available documentation.
+") Cylinder;
+		gp_Cylinder Cylinder();
+
+		/****** GeomAdaptor_TransformedSurface::Direction ******/
+		/****** md5 signature: e82225d5d4e09b88b8ad039d354130e5 ******/
+		%feature("compactdefaultargs") Direction;
+		%feature("autodoc", "Return
+-------
+gp_Dir
+
+Description
+-----------
+No available documentation.
+") Direction;
+		gp_Dir Direction();
+
+		/****** GeomAdaptor_TransformedSurface::EvalD0 ******/
+		/****** md5 signature: 6ae9a3a500564237b621fd4f196eba74 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Point evaluation. Applies transformation after evaluation.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU, const double theV);
+
+		/****** GeomAdaptor_TransformedSurface::EvalD1 ******/
+		/****** md5 signature: 7ee30f985df48bfdd6167fd3ac9b0ac0 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+D1 evaluation. Applies transformation after evaluation.
+") EvalD1;
+		Geom_Surface::ResD1 EvalD1(const double theU, const double theV);
+
+		/****** GeomAdaptor_TransformedSurface::EvalD2 ******/
+		/****** md5 signature: c229ce24fe9d69a5d26f837aa4938d55 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+D2 evaluation. Applies transformation after evaluation.
+") EvalD2;
+		Geom_Surface::ResD2 EvalD2(const double theU, const double theV);
+
+		/****** GeomAdaptor_TransformedSurface::EvalD3 ******/
+		/****** md5 signature: 60d093ede0ac1d132fbeca3192fa6132 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+D3 evaluation. Applies transformation after evaluation.
+") EvalD3;
+		Geom_Surface::ResD3 EvalD3(const double theU, const double theV);
+
+		/****** GeomAdaptor_TransformedSurface::EvalDN ******/
+		/****** md5 signature: a887ee7f3e724bf66be4d7951087d3ec ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+theNu: int
+theNv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+DN evaluation. Applies transformation after evaluation.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const double theV, const int theNu, const int theNv);
+
+		/****** GeomAdaptor_TransformedSurface::FirstUParameter ******/
+		/****** md5 signature: 75d5fede1e3df60e6b25fc207601e5e5 ******/
+		%feature("compactdefaultargs") FirstUParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") FirstUParameter;
+		double FirstUParameter();
+
+		/****** GeomAdaptor_TransformedSurface::FirstVParameter ******/
+		/****** md5 signature: ca83c9b14a103eca8f40b01e4b58b6e2 ******/
+		%feature("compactdefaultargs") FirstVParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") FirstVParameter;
+		double FirstVParameter();
+
+		/****** GeomAdaptor_TransformedSurface::GeomSurface ******/
+		/****** md5 signature: 683ed3269791e2f0ac37f01eef575e3e ******/
+		%feature("compactdefaultargs") GeomSurface;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_Surface>
+
+Description
+-----------
+No available documentation.
+") GeomSurface;
+		const opencascade::handle<Geom_Surface> & GeomSurface();
+
+		/****** GeomAdaptor_TransformedSurface::GeomSurfaceOriginal ******/
+		/****** md5 signature: cd29fc5e5ecaa7b78e38539ce4d1ef77 ******/
+		%feature("compactdefaultargs") GeomSurfaceOriginal;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_Surface>
+
+Description
+-----------
+Returns the underlying original Geom_Surface without transformation applied.
+") GeomSurfaceOriginal;
+		const opencascade::handle<Geom_Surface> & GeomSurfaceOriginal();
+
+		/****** GeomAdaptor_TransformedSurface::GeomSurfaceTransformed ******/
+		/****** md5 signature: 9d2936a62fe35d26b823331d208defd0 ******/
+		%feature("compactdefaultargs") GeomSurfaceTransformed;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_Surface>
+
+Description
+-----------
+Returns the transformed Geom_Surface cached for current state.
+") GeomSurfaceTransformed;
+		const opencascade::handle<Geom_Surface> & GeomSurfaceTransformed();
+
+		/****** GeomAdaptor_TransformedSurface::GetType ******/
+		/****** md5 signature: 86e3e543a6e2d6f3f0b532be8e8ff523 ******/
+		%feature("compactdefaultargs") GetType;
+		%feature("autodoc", "Return
+-------
+GeomAbs_SurfaceType
+
+Description
+-----------
+No available documentation.
+") GetType;
+		GeomAbs_SurfaceType GetType();
+
+		/****** GeomAdaptor_TransformedSurface::HasTrsf ******/
+		/****** md5 signature: 921928f2ca87d3fd5ddec907942a96b7 ******/
+		%feature("compactdefaultargs") HasTrsf;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if non-identity transformation is applied.
+") HasTrsf;
+		bool HasTrsf();
+
+		/****** GeomAdaptor_TransformedSurface::IsUClosed ******/
+		/****** md5 signature: 3651b4d7c09c8cce21ca5beb1c9663aa ******/
+		%feature("compactdefaultargs") IsUClosed;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsUClosed;
+		bool IsUClosed();
+
+		/****** GeomAdaptor_TransformedSurface::IsUPeriodic ******/
+		/****** md5 signature: 2276026a8ccbe2a25cf61c18474bcee1 ******/
+		%feature("compactdefaultargs") IsUPeriodic;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsUPeriodic;
+		bool IsUPeriodic();
+
+		/****** GeomAdaptor_TransformedSurface::IsURational ******/
+		/****** md5 signature: 39076b1a8f0d81f39c8079a95d3bac29 ******/
+		%feature("compactdefaultargs") IsURational;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsURational;
+		bool IsURational();
+
+		/****** GeomAdaptor_TransformedSurface::IsVClosed ******/
+		/****** md5 signature: 0d710811959b989a9f490c49b2e586fc ******/
+		%feature("compactdefaultargs") IsVClosed;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsVClosed;
+		bool IsVClosed();
+
+		/****** GeomAdaptor_TransformedSurface::IsVPeriodic ******/
+		/****** md5 signature: 115f1398e0e539df496eb92e60b6b191 ******/
+		%feature("compactdefaultargs") IsVPeriodic;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsVPeriodic;
+		bool IsVPeriodic();
+
+		/****** GeomAdaptor_TransformedSurface::IsVRational ******/
+		/****** md5 signature: 9e5c79a42dbd2e1b896e1acba3fdc3b9 ******/
+		%feature("compactdefaultargs") IsVRational;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") IsVRational;
+		bool IsVRational();
+
+		/****** GeomAdaptor_TransformedSurface::LastUParameter ******/
+		/****** md5 signature: 0338cd13904e2a1635d8dad15e486bfc ******/
+		%feature("compactdefaultargs") LastUParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") LastUParameter;
+		double LastUParameter();
+
+		/****** GeomAdaptor_TransformedSurface::LastVParameter ******/
+		/****** md5 signature: b9bfd4676801b418d9bbc8e2ddee2e27 ******/
+		%feature("compactdefaultargs") LastVParameter;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") LastVParameter;
+		double LastVParameter();
+
+		/****** GeomAdaptor_TransformedSurface::Load ******/
+		/****** md5 signature: dfe6efd136cdbd2d73f532d77145132b ******/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "
+Parameters
+----------
+theSurface: Geom_Surface
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Loads the surface geometry. 
+Parameter theSurface underlying geometry 
+Parameter theTrsf transformation to apply.
+") Load;
+		void Load(const opencascade::handle<Geom_Surface> & theSurface, const gp_Trsf & theTrsf);
+
+		/****** GeomAdaptor_TransformedSurface::Load ******/
+		/****** md5 signature: ca218faf9901e55a0845136261728d19 ******/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "
+Parameters
+----------
+theSurface: Geom_Surface
+theUFirst: double
+theULast: double
+theVFirst: double
+theVLast: double
+theTrsf: gp_Trsf
+theTolU: double (optional, default to 0.0)
+theTolV: double (optional, default to 0.0)
+
+Return
+-------
+None
+
+Description
+-----------
+Loads the surface geometry with parameter bounds. 
+Parameter theSurface underlying geometry 
+Parameter theUFirst minimum U parameter 
+Parameter theULast maximum U parameter 
+Parameter theVFirst minimum V parameter 
+Parameter theVLast maximum V parameter 
+Parameter theTrsf transformation to apply 
+Parameter theTolU tolerance in U direction 
+Parameter theTolV tolerance in V direction.
+") Load;
+		void Load(const opencascade::handle<Geom_Surface> & theSurface, const double theUFirst, const double theULast, const double theVFirst, const double theVLast, const gp_Trsf & theTrsf, const double theTolU = 0.0, const double theTolV = 0.0);
+
+		/****** GeomAdaptor_TransformedSurface::NbUIntervals ******/
+		/****** md5 signature: c116fe7ebfe4f31cf9841ef4e3738973 ******/
+		%feature("compactdefaultargs") NbUIntervals;
+		%feature("autodoc", "
+Parameters
+----------
+theS: GeomAbs_Shape
+
+Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbUIntervals;
+		int NbUIntervals(const GeomAbs_Shape theS);
+
+		/****** GeomAdaptor_TransformedSurface::NbUKnots ******/
+		/****** md5 signature: 53862e690bacaf38a350728e42fc2a40 ******/
+		%feature("compactdefaultargs") NbUKnots;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbUKnots;
+		int NbUKnots();
+
+		/****** GeomAdaptor_TransformedSurface::NbUPoles ******/
+		/****** md5 signature: 9fa03df5e5ab5f4dcfe5dd653dae5721 ******/
+		%feature("compactdefaultargs") NbUPoles;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbUPoles;
+		int NbUPoles();
+
+		/****** GeomAdaptor_TransformedSurface::NbVIntervals ******/
+		/****** md5 signature: 0c1d53bf75d3ba86691bbb1e478c702d ******/
+		%feature("compactdefaultargs") NbVIntervals;
+		%feature("autodoc", "
+Parameters
+----------
+theS: GeomAbs_Shape
+
+Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbVIntervals;
+		int NbVIntervals(const GeomAbs_Shape theS);
+
+		/****** GeomAdaptor_TransformedSurface::NbVKnots ******/
+		/****** md5 signature: 78a01e825cc1bd8ca2083a583d5b5b1c ******/
+		%feature("compactdefaultargs") NbVKnots;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbVKnots;
+		int NbVKnots();
+
+		/****** GeomAdaptor_TransformedSurface::NbVPoles ******/
+		/****** md5 signature: ffc54dfa22985539cf30e51564c2bcac ******/
+		%feature("compactdefaultargs") NbVPoles;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") NbVPoles;
+		int NbVPoles();
+
+		/****** GeomAdaptor_TransformedSurface::OffsetValue ******/
+		/****** md5 signature: 432da7a67ccf3a0dbaba9e39e592a2e4 ******/
+		%feature("compactdefaultargs") OffsetValue;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") OffsetValue;
+		double OffsetValue();
+
+		/****** GeomAdaptor_TransformedSurface::Plane ******/
+		/****** md5 signature: 60fc0b62d6b3f27638f11ea963b523f7 ******/
+		%feature("compactdefaultargs") Plane;
+		%feature("autodoc", "Return
+-------
+gp_Pln
+
+Description
+-----------
+No available documentation.
+") Plane;
+		gp_Pln Plane();
+
+		/****** GeomAdaptor_TransformedSurface::SetTrsf ******/
+		/****** md5 signature: f1c59d26b8a6d180bcbd9fa2ab73c120 ******/
+		%feature("compactdefaultargs") SetTrsf;
+		%feature("autodoc", "
+Parameters
+----------
+theTrsf: gp_Trsf
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the transformation. 
+Parameter theTrsf transformation to apply.
+") SetTrsf;
+		void SetTrsf(const gp_Trsf & theTrsf);
+
+		/****** GeomAdaptor_TransformedSurface::ShallowCopy ******/
+		/****** md5 signature: 7aa156a18d0b7bf72bf05655ccd9ffff ******/
+		%feature("compactdefaultargs") ShallowCopy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+Shallow copy of adaptor.
+") ShallowCopy;
+		opencascade::handle<Adaptor3d_Surface> ShallowCopy();
+
+		/****** GeomAdaptor_TransformedSurface::Sphere ******/
+		/****** md5 signature: 2ad96025b6f047093038a616d097ceae ******/
+		%feature("compactdefaultargs") Sphere;
+		%feature("autodoc", "Return
+-------
+gp_Sphere
+
+Description
+-----------
+No available documentation.
+") Sphere;
+		gp_Sphere Sphere();
+
+		/****** GeomAdaptor_TransformedSurface::Surface ******/
+		/****** md5 signature: d8b3a71336a26596a7e105e13d0649c7 ******/
+		%feature("compactdefaultargs") Surface;
+		%feature("autodoc", "Return
+-------
+GeomAdaptor_Surface
+
+Description
+-----------
+No available documentation.
+") Surface;
+		GeomAdaptor_Surface Surface();
+
+		/****** GeomAdaptor_TransformedSurface::ToleranceU ******/
+		/****** md5 signature: ffab08eebc650a4644bafb288883a76a ******/
+		%feature("compactdefaultargs") ToleranceU;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns tolerance in U direction.
+") ToleranceU;
+		double ToleranceU();
+
+		/****** GeomAdaptor_TransformedSurface::ToleranceV ******/
+		/****** md5 signature: 0db48bd95023f8e22b120c4806977d4f ******/
+		%feature("compactdefaultargs") ToleranceV;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Returns tolerance in V direction.
+") ToleranceV;
+		double ToleranceV();
+
+		/****** GeomAdaptor_TransformedSurface::Torus ******/
+		/****** md5 signature: e3d8b3166c4d170ce4f0eb64ffeae486 ******/
+		%feature("compactdefaultargs") Torus;
+		%feature("autodoc", "Return
+-------
+gp_Torus
+
+Description
+-----------
+No available documentation.
+") Torus;
+		gp_Torus Torus();
+
+		/****** GeomAdaptor_TransformedSurface::Trsf ******/
+		/****** md5 signature: 994369af5cf027a69090540425b26b58 ******/
+		%feature("compactdefaultargs") Trsf;
+		%feature("autodoc", "Return
+-------
+gp_Trsf
+
+Description
+-----------
+Returns the transformation.
+") Trsf;
+		const gp_Trsf Trsf();
+
+		/****** GeomAdaptor_TransformedSurface::UContinuity ******/
+		/****** md5 signature: 5fe24fda67de3496914b1f45d9455993 ******/
+		%feature("compactdefaultargs") UContinuity;
+		%feature("autodoc", "Return
+-------
+GeomAbs_Shape
+
+Description
+-----------
+No available documentation.
+") UContinuity;
+		GeomAbs_Shape UContinuity();
+
+		/****** GeomAdaptor_TransformedSurface::UDegree ******/
+		/****** md5 signature: e5aabe332dc5ea702c49bae40cf3033c ******/
+		%feature("compactdefaultargs") UDegree;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") UDegree;
+		int UDegree();
+
+		/****** GeomAdaptor_TransformedSurface::UIntervals ******/
+		/****** md5 signature: e5375e5f4826c45c8abfaad8d491e3c8 ******/
+		%feature("compactdefaultargs") UIntervals;
+		%feature("autodoc", "
+Parameters
+----------
+theT: NCollection_Array1<double>
+theS: GeomAbs_Shape
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") UIntervals;
+		void UIntervals(NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
+
+		/****** GeomAdaptor_TransformedSurface::UPeriod ******/
+		/****** md5 signature: 854c1aa98247d2787cc5da76dc45ec1b ******/
+		%feature("compactdefaultargs") UPeriod;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") UPeriod;
+		double UPeriod();
+
+		/****** GeomAdaptor_TransformedSurface::UResolution ******/
+		/****** md5 signature: 3c9bb661a9b274fdd921f72e6e9d92d1 ******/
+		%feature("compactdefaultargs") UResolution;
+		%feature("autodoc", "
+Parameters
+----------
+theR3d: double
+
+Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") UResolution;
+		double UResolution(const double theR3d);
+
+		/****** GeomAdaptor_TransformedSurface::UTrim ******/
+		/****** md5 signature: 529a95ece33d99c4cef6f188cdd1ead8 ******/
+		%feature("compactdefaultargs") UTrim;
+		%feature("autodoc", "
+Parameters
+----------
+theFirst: double
+theLast: double
+theTol: double
+
+Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+No available documentation.
+") UTrim;
+		opencascade::handle<Adaptor3d_Surface> UTrim(const double theFirst, const double theLast, const double theTol);
+
+		/****** GeomAdaptor_TransformedSurface::VContinuity ******/
+		/****** md5 signature: efa372739a9c7d719d52c7ebdceb796b ******/
+		%feature("compactdefaultargs") VContinuity;
+		%feature("autodoc", "Return
+-------
+GeomAbs_Shape
+
+Description
+-----------
+No available documentation.
+") VContinuity;
+		GeomAbs_Shape VContinuity();
+
+		/****** GeomAdaptor_TransformedSurface::VDegree ******/
+		/****** md5 signature: 86bb6b1c4f5ef25f80a37a1d6d0dbdd2 ******/
+		%feature("compactdefaultargs") VDegree;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+No available documentation.
+") VDegree;
+		int VDegree();
+
+		/****** GeomAdaptor_TransformedSurface::VIntervals ******/
+		/****** md5 signature: d70831ad9ab83cb8c1879d7550324ccd ******/
+		%feature("compactdefaultargs") VIntervals;
+		%feature("autodoc", "
+Parameters
+----------
+theT: NCollection_Array1<double>
+theS: GeomAbs_Shape
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") VIntervals;
+		void VIntervals(NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
+
+		/****** GeomAdaptor_TransformedSurface::VPeriod ******/
+		/****** md5 signature: 63247bfa2687417edd488574d34e561a ******/
+		%feature("compactdefaultargs") VPeriod;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") VPeriod;
+		double VPeriod();
+
+		/****** GeomAdaptor_TransformedSurface::VResolution ******/
+		/****** md5 signature: d402c782af432e52fd7078a68e171e15 ******/
+		%feature("compactdefaultargs") VResolution;
+		%feature("autodoc", "
+Parameters
+----------
+theR3d: double
+
+Return
+-------
+double
+
+Description
+-----------
+No available documentation.
+") VResolution;
+		double VResolution(const double theR3d);
+
+		/****** GeomAdaptor_TransformedSurface::VTrim ******/
+		/****** md5 signature: 15aecb223ba0881ad72a33a8523c26e8 ******/
+		%feature("compactdefaultargs") VTrim;
+		%feature("autodoc", "
+Parameters
+----------
+theFirst: double
+theLast: double
+theTol: double
+
+Return
+-------
+opencascade::handle<Adaptor3d_Surface>
+
+Description
+-----------
+No available documentation.
+") VTrim;
+		opencascade::handle<Adaptor3d_Surface> VTrim(const double theFirst, const double theLast, const double theTol);
+
+};
+
+
+%make_alias(GeomAdaptor_TransformedSurface)
+
+%extend GeomAdaptor_TransformedSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1640,7 +3274,7 @@ Thew Curve and the Direction are loaded.
 		 GeomAdaptor_SurfaceOfLinearExtrusion(const opencascade::handle<Adaptor3d_Curve> & C, const gp_Dir & V);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::AxeOfRevolution ******/
-		/****** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ******/
+		/****** md5 signature: d1efe882bcb9f42b1937beb2fb773ec6 ******/
 		%feature("compactdefaultargs") AxeOfRevolution;
 		%feature("autodoc", "Return
 -------
@@ -1653,7 +3287,7 @@ No available documentation.
 		gp_Ax1 AxeOfRevolution();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::BSpline ******/
-		/****** md5 signature: 7edfedec29b3e090d1dbb1c560f9218f ******/
+		/****** md5 signature: 8fde07817a4bc7940e9febcd357d3f61 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -1666,7 +3300,7 @@ No available documentation.
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::BasisCurve ******/
-		/****** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ******/
+		/****** md5 signature: 5b4605e53987d121f30b9516d7561fb1 ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -1679,7 +3313,7 @@ No available documentation.
 		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Bezier ******/
-		/****** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ******/
+		/****** md5 signature: d3c3048c9ceead5583877ee745b6f3b3 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -1692,7 +3326,7 @@ No available documentation.
 		opencascade::handle<Geom_BezierSurface> Bezier();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Cone ******/
-		/****** md5 signature: 3ce87f79e83a129f74e88ef746e3e34b ******/
+		/****** md5 signature: f0efa0c0c395b3d1aaec8b678ed3fd71 ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "Return
 -------
@@ -1705,7 +3339,7 @@ No available documentation.
 		gp_Cone Cone();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Cylinder ******/
-		/****** md5 signature: fdc0e133b47b8d299b834e1b65638963 ******/
+		/****** md5 signature: f4b3244c5a78bd7cd9f7c60b7f2b75e6 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "Return
 -------
@@ -1718,7 +3352,7 @@ No available documentation.
 		gp_Cylinder Cylinder();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Direction ******/
-		/****** md5 signature: 701909e88752dfbf540944de6bad9f3a ******/
+		/****** md5 signature: e82225d5d4e09b88b8ad039d354130e5 ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -1731,33 +3365,33 @@ No available documentation.
 		gp_Dir Direction();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::FirstUParameter ******/
-		/****** md5 signature: 62341804d7e1ffc3de87fae2bf43b512 ******/
+		/****** md5 signature: 3b34797cc85f1b510a0affa8833b42d9 ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		Standard_Real FirstUParameter();
+		double FirstUParameter();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::FirstVParameter ******/
-		/****** md5 signature: 982af8f353fd309c87f6c3698af95089 ******/
+		/****** md5 signature: 04e2fd0b31fdb9ccd9a2db3ea0033b44 ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		Standard_Real FirstVParameter();
+		double FirstVParameter();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::GetType ******/
-		/****** md5 signature: 96aa962fbb94c2c631f870283212b1d3 ******/
+		/****** md5 signature: 449da8b3405f13374cd8d9f66145c751 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -1770,7 +3404,7 @@ Returns the type of the surface: Plane, Cylinder, Cone, Sphere, Torus, BezierSur
 		GeomAbs_SurfaceType GetType();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: 91c191879c9b39e0c4f123772c17dbd2 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -1780,10 +3414,10 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: 7236661160e2b4989ea98f769e60fafb ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1793,10 +3427,10 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::IsURational ******/
-		/****** md5 signature: 503a5a81658ea54283ba1b83fd4c4159 ******/
+		/****** md5 signature: a2496b20d14d31a116825513bae2afcd ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -1806,10 +3440,10 @@ Description
 -----------
 No available documentation.
 ") IsURational;
-		Standard_Boolean IsURational();
+		bool IsURational();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: b42d07343ce292533f9bd94d419cf3f6 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -1819,10 +3453,10 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 0654a6d88753f46bfbed67995e913efa ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1832,10 +3466,10 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::IsVRational ******/
-		/****** md5 signature: 43ab877f92028162dd9780a1e61ecdd7 ******/
+		/****** md5 signature: a372cfe96ee85490dfdd8a9905fccc55 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -1845,33 +3479,33 @@ Description
 -----------
 No available documentation.
 ") IsVRational;
-		Standard_Boolean IsVRational();
+		bool IsVRational();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::LastUParameter ******/
-		/****** md5 signature: 1d079dee0cfc1756347bcb2471c5c822 ******/
+		/****** md5 signature: e92217a3f489afcceae09778713fa6ea ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		Standard_Real LastUParameter();
+		double LastUParameter();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::LastVParameter ******/
-		/****** md5 signature: 2b4acdfbc345aaeedbb1d34eef2873f2 ******/
+		/****** md5 signature: 264cb783d4e8de6c30b6d8102f4caa8c ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		Standard_Real LastVParameter();
+		double LastVParameter();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Load ******/
 		/****** md5 signature: 01185c022b32d6c381a2144e2963295b ******/
@@ -1910,7 +3544,7 @@ Changes the Direction.
 		void Load(const gp_Dir & V);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::NbUIntervals ******/
-		/****** md5 signature: 36290e0c805f559fce0d4de0d4d51789 ******/
+		/****** md5 signature: 4a0e99d191f66cbed14931fc697354f3 ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1925,10 +3559,10 @@ Description
 -----------
 Returns the number of U intervals for continuity <S>. May be one if UContinuity(me) >= <S>.
 ") NbUIntervals;
-		Standard_Integer NbUIntervals(const GeomAbs_Shape S);
+		int NbUIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::NbUPoles ******/
-		/****** md5 signature: 5c5f4e3c3fe024076b4fb29a46558ec0 ******/
+		/****** md5 signature: 5011752e7f57399068c3e11d28ac4d8a ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -1938,10 +3572,10 @@ Description
 -----------
 No available documentation.
 ") NbUPoles;
-		Standard_Integer NbUPoles();
+		int NbUPoles();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::NbVIntervals ******/
-		/****** md5 signature: 1386a357acacae70889de04788135ce2 ******/
+		/****** md5 signature: ec7c8eea10888bbaeb74f56a34fc6af1 ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1956,10 +3590,10 @@ Description
 -----------
 Returns the number of V intervals for continuity <S>. May be one if VContinuity(me) >= <S>.
 ") NbVIntervals;
-		Standard_Integer NbVIntervals(const GeomAbs_Shape S);
+		int NbVIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Plane ******/
-		/****** md5 signature: 38bd3e56cdca70a78cd998154292a430 ******/
+		/****** md5 signature: 60fc0b62d6b3f27638f11ea963b523f7 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -1972,7 +3606,7 @@ No available documentation.
 		gp_Pln Plane();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::ShallowCopy ******/
-		/****** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ******/
+		/****** md5 signature: 7aa156a18d0b7bf72bf05655ccd9ffff ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -1982,10 +3616,10 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
+		opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Sphere ******/
-		/****** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ******/
+		/****** md5 signature: 2ad96025b6f047093038a616d097ceae ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "Return
 -------
@@ -1998,7 +3632,7 @@ No available documentation.
 		gp_Sphere Sphere();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::Torus ******/
-		/****** md5 signature: 13ce946397b0f1bcfd3f38f215bbadac ******/
+		/****** md5 signature: e3d8b3166c4d170ce4f0eb64ffeae486 ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "Return
 -------
@@ -2011,7 +3645,7 @@ No available documentation.
 		gp_Torus Torus();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::UContinuity ******/
-		/****** md5 signature: 734a4ef77d0d03bc93d92e10bda465e4 ******/
+		/****** md5 signature: ade4d04439e04c72cc7414c0ec4a29a8 ******/
 		%feature("compactdefaultargs") UContinuity;
 		%feature("autodoc", "Return
 -------
@@ -2024,7 +3658,7 @@ No available documentation.
 		GeomAbs_Shape UContinuity();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::UDegree ******/
-		/****** md5 signature: fe5d6f101c0706d20343b36865ccf566 ******/
+		/****** md5 signature: fca90e3f2f4c1ba6e7bc9cbc04110d23 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -2034,15 +3668,15 @@ Description
 -----------
 No available documentation.
 ") UDegree;
-		Standard_Integer UDegree();
+		int UDegree();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::UIntervals ******/
-		/****** md5 signature: 5a653f364681c4a5c1065b7e92c5d659 ******/
+		/****** md5 signature: 6994811896db22ce8af785fb3194a1dc ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2053,48 +3687,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the U direction.
 ") UIntervals;
-		void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void UIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::UPeriod ******/
-		/****** md5 signature: a3dec1a81b623affa1d3ea1e9e49c97e ******/
+		/****** md5 signature: 0ac7288e2577dfedb94dacb3d9a60302 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		Standard_Real UPeriod();
+		double UPeriod();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::UResolution ******/
-		/****** md5 signature: 449c7efbd4cbc4136589973c1bc1500b ******/
+		/****** md5 signature: 8db9b159a7bf4bfe0753b953109a6bbd ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 ") UResolution;
-		Standard_Real UResolution(const Standard_Real R3d);
+		double UResolution(const double R3d);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::UTrim ******/
-		/****** md5 signature: 3604326125cf753b2a6722a946fb54be ******/
+		/****** md5 signature: d065f303d0a2948f4ff7102b479c7aa6 ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2104,10 +3738,10 @@ Description
 -----------
 Returns a surface trimmed in the U direction equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") UTrim;
-		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const double First, const double Last, const double Tol);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::VContinuity ******/
-		/****** md5 signature: 147ea173efc6a600ed241c35c98936ea ******/
+		/****** md5 signature: 7db46254d043ce61da12775dc816a925 ******/
 		%feature("compactdefaultargs") VContinuity;
 		%feature("autodoc", "Return
 -------
@@ -2120,12 +3754,12 @@ Return CN.
 		GeomAbs_Shape VContinuity();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::VIntervals ******/
-		/****** md5 signature: bf8bef8286fec18f81beea299dd5cb6d ******/
+		/****** md5 signature: a2cbea5fb0c66ee7a577bf7b7a8aa6ea ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2136,48 +3770,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the V direction.
 ") VIntervals;
-		void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void VIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::VPeriod ******/
-		/****** md5 signature: e6f079a3e4e62dbf708e1ce56dfd23b6 ******/
+		/****** md5 signature: 59a61c3d75ffd436a26d1e119e233654 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		Standard_Real VPeriod();
+		double VPeriod();
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::VResolution ******/
-		/****** md5 signature: a2dfdb6521f339dcde6811097088d560 ******/
+		/****** md5 signature: 7d4c767dc5a3559454fc0c9681d327c0 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 ") VResolution;
-		Standard_Real VResolution(const Standard_Real R3d);
+		double VResolution(const double R3d);
 
 		/****** GeomAdaptor_SurfaceOfLinearExtrusion::VTrim ******/
-		/****** md5 signature: d094345261a4439c6edc98b200ea4e3d ******/
+		/****** md5 signature: d4060f4796d31b403a0bbdb7b3c4cc96 ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2187,7 +3821,7 @@ Description
 -----------
 Returns a surface trimmed in the V direction between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") VTrim;
-		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const double First, const double Last, const double Tol);
 
 };
 
@@ -2256,7 +3890,7 @@ The Curve and the Direction are loaded.
 		 GeomAdaptor_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_Curve> & C, const gp_Ax1 & V);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::AxeOfRevolution ******/
-		/****** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ******/
+		/****** md5 signature: d1efe882bcb9f42b1937beb2fb773ec6 ******/
 		%feature("compactdefaultargs") AxeOfRevolution;
 		%feature("autodoc", "Return
 -------
@@ -2282,7 +3916,7 @@ No available documentation.
 		const gp_Ax3 Axis();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::BSpline ******/
-		/****** md5 signature: 7edfedec29b3e090d1dbb1c560f9218f ******/
+		/****** md5 signature: 8fde07817a4bc7940e9febcd357d3f61 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -2295,7 +3929,7 @@ No available documentation.
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::BasisCurve ******/
-		/****** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ******/
+		/****** md5 signature: 5b4605e53987d121f30b9516d7561fb1 ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -2308,7 +3942,7 @@ No available documentation.
 		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Bezier ******/
-		/****** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ******/
+		/****** md5 signature: d3c3048c9ceead5583877ee745b6f3b3 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -2321,7 +3955,7 @@ No available documentation.
 		opencascade::handle<Geom_BezierSurface> Bezier();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Cone ******/
-		/****** md5 signature: 3ce87f79e83a129f74e88ef746e3e34b ******/
+		/****** md5 signature: f0efa0c0c395b3d1aaec8b678ed3fd71 ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "Return
 -------
@@ -2334,7 +3968,7 @@ Apex of the Cone = Cone.Position().Location() ==> ReferenceRadius = 0.
 		gp_Cone Cone();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Cylinder ******/
-		/****** md5 signature: fdc0e133b47b8d299b834e1b65638963 ******/
+		/****** md5 signature: f4b3244c5a78bd7cd9f7c60b7f2b75e6 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "Return
 -------
@@ -2347,33 +3981,33 @@ No available documentation.
 		gp_Cylinder Cylinder();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::FirstUParameter ******/
-		/****** md5 signature: 62341804d7e1ffc3de87fae2bf43b512 ******/
+		/****** md5 signature: 3b34797cc85f1b510a0affa8833b42d9 ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		Standard_Real FirstUParameter();
+		double FirstUParameter();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::FirstVParameter ******/
-		/****** md5 signature: 982af8f353fd309c87f6c3698af95089 ******/
+		/****** md5 signature: 04e2fd0b31fdb9ccd9a2db3ea0033b44 ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		Standard_Real FirstVParameter();
+		double FirstVParameter();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::GetType ******/
-		/****** md5 signature: 96aa962fbb94c2c631f870283212b1d3 ******/
+		/****** md5 signature: 449da8b3405f13374cd8d9f66145c751 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -2386,7 +4020,7 @@ Returns the type of the surface: Plane, Cylinder, Cone, Sphere, Torus, BezierSur
 		GeomAbs_SurfaceType GetType();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::IsUClosed ******/
-		/****** md5 signature: d1e8bae29b90dc447f4693c94ad31c37 ******/
+		/****** md5 signature: 91c191879c9b39e0c4f123772c17dbd2 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -2396,10 +4030,10 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		Standard_Boolean IsUClosed();
+		bool IsUClosed();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::IsUPeriodic ******/
-		/****** md5 signature: 91acb028d6850ac4bbf00dc198b558b7 ******/
+		/****** md5 signature: 7236661160e2b4989ea98f769e60fafb ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2409,10 +4043,10 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		Standard_Boolean IsUPeriodic();
+		bool IsUPeriodic();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::IsURational ******/
-		/****** md5 signature: 503a5a81658ea54283ba1b83fd4c4159 ******/
+		/****** md5 signature: a2496b20d14d31a116825513bae2afcd ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -2422,10 +4056,10 @@ Description
 -----------
 No available documentation.
 ") IsURational;
-		Standard_Boolean IsURational();
+		bool IsURational();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::IsVClosed ******/
-		/****** md5 signature: aa0eae8155ddef3e9f1d0cc573955bb6 ******/
+		/****** md5 signature: b42d07343ce292533f9bd94d419cf3f6 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -2435,10 +4069,10 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		Standard_Boolean IsVClosed();
+		bool IsVClosed();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::IsVPeriodic ******/
-		/****** md5 signature: 88e9b94f2ab4a3d73c3fe787315e4448 ******/
+		/****** md5 signature: 0654a6d88753f46bfbed67995e913efa ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -2448,10 +4082,10 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		Standard_Boolean IsVPeriodic();
+		bool IsVPeriodic();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::IsVRational ******/
-		/****** md5 signature: 43ab877f92028162dd9780a1e61ecdd7 ******/
+		/****** md5 signature: a372cfe96ee85490dfdd8a9905fccc55 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -2461,33 +4095,33 @@ Description
 -----------
 No available documentation.
 ") IsVRational;
-		Standard_Boolean IsVRational();
+		bool IsVRational();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::LastUParameter ******/
-		/****** md5 signature: 1d079dee0cfc1756347bcb2471c5c822 ******/
+		/****** md5 signature: e92217a3f489afcceae09778713fa6ea ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		Standard_Real LastUParameter();
+		double LastUParameter();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::LastVParameter ******/
-		/****** md5 signature: 2b4acdfbc345aaeedbb1d34eef2873f2 ******/
+		/****** md5 signature: 264cb783d4e8de6c30b6d8102f4caa8c ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		Standard_Real LastVParameter();
+		double LastVParameter();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Load ******/
 		/****** md5 signature: 01185c022b32d6c381a2144e2963295b ******/
@@ -2526,7 +4160,7 @@ Changes the Direction.
 		void Load(const gp_Ax1 & V);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::NbUIntervals ******/
-		/****** md5 signature: 36290e0c805f559fce0d4de0d4d51789 ******/
+		/****** md5 signature: 4a0e99d191f66cbed14931fc697354f3 ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2541,10 +4175,10 @@ Description
 -----------
 Returns the number of U intervals for continuity <S>. May be one if UContinuity(me) >= <S>.
 ") NbUIntervals;
-		Standard_Integer NbUIntervals(const GeomAbs_Shape S);
+		int NbUIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::NbVIntervals ******/
-		/****** md5 signature: 1386a357acacae70889de04788135ce2 ******/
+		/****** md5 signature: ec7c8eea10888bbaeb74f56a34fc6af1 ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2559,10 +4193,10 @@ Description
 -----------
 Returns the number of V intervals for continuity <S>. May be one if VContinuity(me) >= <S>.
 ") NbVIntervals;
-		Standard_Integer NbVIntervals(const GeomAbs_Shape S);
+		int NbVIntervals(const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::NbVKnots ******/
-		/****** md5 signature: b1cd06ae6e3ff5f29ab4140934f12d0a ******/
+		/****** md5 signature: 48a662c9885a4cfafb3aee6695bc8b14 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -2572,10 +4206,10 @@ Description
 -----------
 No available documentation.
 ") NbVKnots;
-		Standard_Integer NbVKnots();
+		int NbVKnots();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::NbVPoles ******/
-		/****** md5 signature: d1321a0d34d7aaceadde41cd3444173f ******/
+		/****** md5 signature: bc79fcef9984de53f249da2e7edfb93b ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -2585,10 +4219,10 @@ Description
 -----------
 No available documentation.
 ") NbVPoles;
-		Standard_Integer NbVPoles();
+		int NbVPoles();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Plane ******/
-		/****** md5 signature: 38bd3e56cdca70a78cd998154292a430 ******/
+		/****** md5 signature: 60fc0b62d6b3f27638f11ea963b523f7 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -2601,7 +4235,7 @@ No available documentation.
 		gp_Pln Plane();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::ShallowCopy ******/
-		/****** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ******/
+		/****** md5 signature: 7aa156a18d0b7bf72bf05655ccd9ffff ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -2611,10 +4245,10 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
+		opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Sphere ******/
-		/****** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ******/
+		/****** md5 signature: 2ad96025b6f047093038a616d097ceae ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "Return
 -------
@@ -2627,7 +4261,7 @@ No available documentation.
 		gp_Sphere Sphere();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::Torus ******/
-		/****** md5 signature: 13ce946397b0f1bcfd3f38f215bbadac ******/
+		/****** md5 signature: e3d8b3166c4d170ce4f0eb64ffeae486 ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "Return
 -------
@@ -2640,7 +4274,7 @@ No available documentation.
 		gp_Torus Torus();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::UContinuity ******/
-		/****** md5 signature: 734a4ef77d0d03bc93d92e10bda465e4 ******/
+		/****** md5 signature: ade4d04439e04c72cc7414c0ec4a29a8 ******/
 		%feature("compactdefaultargs") UContinuity;
 		%feature("autodoc", "Return
 -------
@@ -2653,12 +4287,12 @@ No available documentation.
 		GeomAbs_Shape UContinuity();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::UIntervals ******/
-		/****** md5 signature: 5a653f364681c4a5c1065b7e92c5d659 ******/
+		/****** md5 signature: 6994811896db22ce8af785fb3194a1dc ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2669,48 +4303,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the U direction.
 ") UIntervals;
-		void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void UIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::UPeriod ******/
-		/****** md5 signature: a3dec1a81b623affa1d3ea1e9e49c97e ******/
+		/****** md5 signature: 0ac7288e2577dfedb94dacb3d9a60302 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		Standard_Real UPeriod();
+		double UPeriod();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::UResolution ******/
-		/****** md5 signature: 449c7efbd4cbc4136589973c1bc1500b ******/
+		/****** md5 signature: 8db9b159a7bf4bfe0753b953109a6bbd ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 ") UResolution;
-		Standard_Real UResolution(const Standard_Real R3d);
+		double UResolution(const double R3d);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::UTrim ******/
-		/****** md5 signature: 3604326125cf753b2a6722a946fb54be ******/
+		/****** md5 signature: d065f303d0a2948f4ff7102b479c7aa6 ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2720,10 +4354,10 @@ Description
 -----------
 Returns a surface trimmed in the U direction equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") UTrim;
-		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> UTrim(const double First, const double Last, const double Tol);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::VContinuity ******/
-		/****** md5 signature: 147ea173efc6a600ed241c35c98936ea ******/
+		/****** md5 signature: 7db46254d043ce61da12775dc816a925 ******/
 		%feature("compactdefaultargs") VContinuity;
 		%feature("autodoc", "Return
 -------
@@ -2736,7 +4370,7 @@ Return CN.
 		GeomAbs_Shape VContinuity();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::VDegree ******/
-		/****** md5 signature: b7875d48d80bf8a6fde9c47500038fd4 ******/
+		/****** md5 signature: c793f94fb8ca1e7cdd3fc97529f675d2 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -2746,15 +4380,15 @@ Description
 -----------
 No available documentation.
 ") VDegree;
-		Standard_Integer VDegree();
+		int VDegree();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::VIntervals ******/
-		/****** md5 signature: bf8bef8286fec18f81beea299dd5cb6d ******/
+		/****** md5 signature: a2cbea5fb0c66ee7a577bf7b7a8aa6ea ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2765,48 +4399,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the V direction.
 ") VIntervals;
-		void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void VIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::VPeriod ******/
-		/****** md5 signature: e6f079a3e4e62dbf708e1ce56dfd23b6 ******/
+		/****** md5 signature: 59a61c3d75ffd436a26d1e119e233654 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		Standard_Real VPeriod();
+		double VPeriod();
 
 		/****** GeomAdaptor_SurfaceOfRevolution::VResolution ******/
-		/****** md5 signature: a2dfdb6521f339dcde6811097088d560 ******/
+		/****** md5 signature: 7d4c767dc5a3559454fc0c9681d327c0 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 ") VResolution;
-		Standard_Real VResolution(const Standard_Real R3d);
+		double VResolution(const double R3d);
 
 		/****** GeomAdaptor_SurfaceOfRevolution::VTrim ******/
-		/****** md5 signature: d094345261a4439c6edc98b200ea4e3d ******/
+		/****** md5 signature: d4060f4796d31b403a0bbdb7b3c4cc96 ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2816,7 +4450,7 @@ Description
 -----------
 Returns a surface trimmed in the V direction between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") VTrim;
-		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		opencascade::handle<Adaptor3d_Surface> VTrim(const double First, const double Last, const double Tol);
 
 };
 

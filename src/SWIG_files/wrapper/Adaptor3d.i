@@ -47,7 +47,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_adaptor3d.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
-#include<TColStd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<math_module.hxx>
@@ -63,7 +62,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_adaptor3d.html"
 %import Geom.i
 %import gp.i
 %import GeomAbs.i
-%import TColStd.i
 %import TopAbs.i
 %import Adaptor2d.i
 %import math.i
@@ -154,13 +152,13 @@ No available documentation.
 		virtual GeomAbs_Shape Continuity();
 
 		/****** Adaptor3d_Curve::D0 ******/
-		/****** md5 signature: ff252230a6b53579b22b53cd2be20378 ******/
+		/****** md5 signature: 18bc962f0ab46fd90c0b9c2762f34965 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
+theU: double
+theP: gp_Pnt
 
 Return
 -------
@@ -170,17 +168,17 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") D0;
-		virtual void D0(const Standard_Real U, gp_Pnt & P);
+		void D0(const double theU, gp_Pnt & theP);
 
 		/****** Adaptor3d_Curve::D1 ******/
-		/****** md5 signature: 46c2267eec5c778b3f712b1f654b247b ******/
+		/****** md5 signature: e0975b57518001aca2fb24c7ef146d82 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
-V: gp_Vec
+theU: double
+theP: gp_Pnt
+theV: gp_Vec
 
 Return
 -------
@@ -190,18 +188,18 @@ Description
 -----------
 Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
 ") D1;
-		virtual void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
+		void D1(const double theU, gp_Pnt & theP, gp_Vec & theV);
 
 		/****** Adaptor3d_Curve::D2 ******/
-		/****** md5 signature: bd2a31f266173337a625aa6cc256dc38 ******/
+		/****** md5 signature: 9e3f5ca4fcecaabda81bbd1965e0bf69 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
+theU: double
+theP: gp_Pnt
+theV1: gp_Vec
+theV2: gp_Vec
 
 Return
 -------
@@ -211,19 +209,19 @@ Description
 -----------
 Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
 ") D2;
-		virtual void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		void D2(const double theU, gp_Pnt & theP, gp_Vec & theV1, gp_Vec & theV2);
 
 		/****** Adaptor3d_Curve::D3 ******/
-		/****** md5 signature: 4c8a92894fd5c8702f8e4fc644b169e8 ******/
+		/****** md5 signature: 1384619b6eab6a0b63af19af82165c94 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
+theU: double
+theP: gp_Pnt
+theV1: gp_Vec
+theV2: gp_Vec
+theV3: gp_Vec
 
 Return
 -------
@@ -233,16 +231,16 @@ Description
 -----------
 Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
 ") D3;
-		virtual void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		void D3(const double theU, gp_Pnt & theP, gp_Vec & theV1, gp_Vec & theV2, gp_Vec & theV3);
 
 		/****** Adaptor3d_Curve::DN ******/
-		/****** md5 signature: e7a556aebd910c39086a16864c70a895 ******/
+		/****** md5 signature: aea79806955537215bb5b9bb8a88ce01 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-N: int
+theU: double
+theN: int
 
 Return
 -------
@@ -252,10 +250,10 @@ Description
 -----------
 The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
 ") DN;
-		virtual gp_Vec DN(const Standard_Real U, const Standard_Integer N);
+		gp_Vec DN(const double theU, const int theN);
 
 		/****** Adaptor3d_Curve::Degree ******/
-		/****** md5 signature: d442d1b77ae7b1ce10d9531914b14be7 ******/
+		/****** md5 signature: 788d639566905aeb8417180053be0d13 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -265,7 +263,7 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		virtual Standard_Integer Degree();
+		virtual int Degree();
 
 		/****** Adaptor3d_Curve::Ellipse ******/
 		/****** md5 signature: d9f1f2aa507ae2b9ee66e792a6ec6d18 ******/
@@ -280,18 +278,109 @@ No available documentation.
 ") Ellipse;
 		virtual gp_Elips Ellipse();
 
+		/****** Adaptor3d_Curve::EvalD0 ******/
+		/****** md5 signature: bec965f6203f2bd3cb267e7ea0b98500 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter U on the curve. Raises an exception on failure.
+") EvalD0;
+		virtual gp_Pnt EvalD0(const double theU);
+
+		/****** Adaptor3d_Curve::EvalD1 ******/
+		/****** md5 signature: 10dd781fd1e8a8f4a9ac2e86c0f143e3 ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Computes the point and first derivative at parameter U. Raises an exception on failure.
+") EvalD1;
+		virtual Geom_Curve::ResD1 EvalD1(const double theU);
+
+		/****** Adaptor3d_Curve::EvalD2 ******/
+		/****** md5 signature: e08ebe32e74f989a261008b50f1148de ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Computes the point and first two derivatives at parameter U. Raises an exception on failure.
+") EvalD2;
+		virtual Geom_Curve::ResD2 EvalD2(const double theU);
+
+		/****** Adaptor3d_Curve::EvalD3 ******/
+		/****** md5 signature: 8a2032404733ec4bc52c0222e6cf1f97 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Computes the point and first three derivatives at parameter U. Raises an exception on failure.
+") EvalD3;
+		virtual Geom_Curve::ResD3 EvalD3(const double theU);
+
+		/****** Adaptor3d_Curve::EvalDN ******/
+		/****** md5 signature: 0039827652a145ead7b1e6660a1f482a ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the Nth derivative at parameter U. Raises an exception on failure.
+") EvalDN;
+		virtual gp_Vec EvalDN(const double theU, const int theN);
+
 		/****** Adaptor3d_Curve::FirstParameter ******/
-		/****** md5 signature: adaac52a0f2d3263c19caadcbea394a2 ******/
+		/****** md5 signature: 7978a2990234eeb5a0f14eabeba3ec61 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		virtual double FirstParameter();
 
 		/****** Adaptor3d_Curve::GetType ******/
 		/****** md5 signature: 657f9e3cbd23a069ca4adcba08a9b196 ******/
@@ -320,12 +409,12 @@ No available documentation.
 		virtual gp_Hypr Hyperbola();
 
 		/****** Adaptor3d_Curve::Intervals ******/
-		/****** md5 signature: 1b47d9fadea42b0a52e1ad5844faff05 ******/
+		/****** md5 signature: 5bb53c7be4eec2188f8b9f9aee984d74 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -336,10 +425,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Curve::IsClosed ******/
-		/****** md5 signature: d57ef0715a5abf96ea6273eee63d5417 ******/
+		/****** md5 signature: 49d9d49cc3fa9662ba5676889922566f ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -349,10 +438,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		virtual Standard_Boolean IsClosed();
+		virtual bool IsClosed();
 
 		/****** Adaptor3d_Curve::IsPeriodic ******/
-		/****** md5 signature: aac83d336e26e94b4cd1076ac72ce2c9 ******/
+		/****** md5 signature: daaf449c42d5bb429050710fdc4f02e8 ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -362,10 +451,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		virtual Standard_Boolean IsPeriodic();
+		virtual bool IsPeriodic();
 
 		/****** Adaptor3d_Curve::IsRational ******/
-		/****** md5 signature: 5389f1211fc99cfdcbd6575b8eec7b5c ******/
+		/****** md5 signature: ae23ebcbf6cc9299758a0f23be96cc0f ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -375,20 +464,20 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		virtual Standard_Boolean IsRational();
+		virtual bool IsRational();
 
 		/****** Adaptor3d_Curve::LastParameter ******/
-		/****** md5 signature: 38a37eecbdff8d3a1b5ffdd6b12bf4d9 ******/
+		/****** md5 signature: fa3b62031f1b975a2d7e7ebfdd882040 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		virtual double LastParameter();
 
 		/****** Adaptor3d_Curve::Line ******/
 		/****** md5 signature: 82d4979efdeac0c1d5c97a520a424fe8 ******/
@@ -404,7 +493,7 @@ No available documentation.
 		virtual gp_Lin Line();
 
 		/****** Adaptor3d_Curve::NbIntervals ******/
-		/****** md5 signature: 0b37dc42182e542f53017d0e52c8cd03 ******/
+		/****** md5 signature: e5b7f4ad30a0880e81cced064d6ed4f2 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -419,10 +508,10 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
-		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		virtual int NbIntervals(const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Curve::NbKnots ******/
-		/****** md5 signature: 22b54658d4850824758b23cad1529c2f ******/
+		/****** md5 signature: cbca6624a247032b6b1950ab6065e8ae ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -432,10 +521,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		virtual Standard_Integer NbKnots();
+		virtual int NbKnots();
 
 		/****** Adaptor3d_Curve::NbPoles ******/
-		/****** md5 signature: 1b49ced11f88c6092f4e3b2473fe0460 ******/
+		/****** md5 signature: bfe8e3100f3c4e3ffe8aae529d870eee ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -445,7 +534,7 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		virtual Standard_Integer NbPoles();
+		virtual int NbPoles();
 
 		/****** Adaptor3d_Curve::OffsetCurve ******/
 		/****** md5 signature: 655d22f4633348168546c74998986f8b ******/
@@ -474,35 +563,35 @@ No available documentation.
 		virtual gp_Parab Parabola();
 
 		/****** Adaptor3d_Curve::Period ******/
-		/****** md5 signature: e4913c399f3a0a7037e498c5a9da8e1f ******/
+		/****** md5 signature: 7838680e9098dc30bd28a13c225a8304 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		virtual Standard_Real Period();
+		virtual double Period();
 
 		/****** Adaptor3d_Curve::Resolution ******/
-		/****** md5 signature: 66fa92ada4ec8706453c0525abd4ecd6 ******/
+		/****** md5 signature: 2aced3ff79091a39dec8fd0afd7e22c0 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		virtual Standard_Real Resolution(const Standard_Real R3d);
+		virtual double Resolution(const double R3d);
 
 		/****** Adaptor3d_Curve::ShallowCopy ******/
 		/****** md5 signature: 60c6e7da29991094d97100dbb8a8d321 ******/
@@ -518,14 +607,14 @@ Shallow copy of adaptor.
 		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****** Adaptor3d_Curve::Trim ******/
-		/****** md5 signature: 28307ca5011d5510d72469097ddcd806 ******/
+		/****** md5 signature: 174861c7d78190d8d92a8048c12f585d ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -535,15 +624,15 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		virtual opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		virtual opencascade::handle<Adaptor3d_Curve> Trim(const double First, const double Last, const double Tol);
 
 		/****** Adaptor3d_Curve::Value ******/
-		/****** md5 signature: 29b1ab46081b3ec6882d2390e14cd6b7 ******/
+		/****** md5 signature: fad4da29110a54c71087cb74f60bbdc9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
+theU: double
 
 Return
 -------
@@ -553,7 +642,7 @@ Description
 -----------
 Computes the point of parameter U on the curve.
 ") Value;
-		virtual gp_Pnt Value(const Standard_Real U);
+		gp_Pnt Value(const double theU);
 
 };
 
@@ -698,14 +787,14 @@ No available documentation.
 		static gp_Cylinder Cylinder(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::D0 ******/
-		/****** md5 signature: ef0f2f9a8ca6c0c9f75569aea26f4923 ******/
+		/****** md5 signature: 39181a26370b7e22bbb222eeaa80d7a9 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theU: float
-theV: float
+theU: double
+theV: double
 thePnt: gp_Pnt
 
 Return
@@ -716,17 +805,17 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt);
+		static void D0(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theU, const double theV, gp_Pnt & thePnt);
 
 		/****** Adaptor3d_HSurfaceTool::D1 ******/
-		/****** md5 signature: a7a9c17ffe5446525786782c4d8ec23c ******/
+		/****** md5 signature: f3d9d0d48c55b4f828555efb1a20f1aa ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theU: float
-theV: float
+theU: double
+theV: double
 thePnt: gp_Pnt
 theD1U: gp_Vec
 theD1V: gp_Vec
@@ -739,17 +828,17 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V);
+		static void D1(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theU, const double theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V);
 
 		/****** Adaptor3d_HSurfaceTool::D2 ******/
-		/****** md5 signature: d37322a7acd2c884c1193c7c40124ccd ******/
+		/****** md5 signature: bc28e1eafc37b8316ad797b4c02766a8 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theU: float
-theV: float
+theU: double
+theV: double
 thePnt: gp_Pnt
 theD1U: gp_Vec
 theD1V: gp_Vec
@@ -765,17 +854,17 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
+		static void D2(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theU, const double theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
 		/****** Adaptor3d_HSurfaceTool::D3 ******/
-		/****** md5 signature: 548950301f5d431905372eddf5619eb0 ******/
+		/****** md5 signature: 63c2d5782c738c572fc038b0daa6da3b ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theU: float
-theV: float
+theU: double
+theV: double
 thePnt: gp_Pnt
 theD1U: gp_Vec
 theD1V: gp_Vec
@@ -795,17 +884,17 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
+		static void D3(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theU, const double theV, gp_Pnt & thePnt, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
 		/****** Adaptor3d_HSurfaceTool::DN ******/
-		/****** md5 signature: 53aedfdee41fb6987ac126268a92d99b ******/
+		/****** md5 signature: f30ae93569550e4882fb00917b2ad89d ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theU: float
-theV: float
+theU: double
+theV: double
 theNU: int
 theNV: int
 
@@ -817,7 +906,7 @@ Description
 -----------
 No available documentation.
 ") DN;
-		static gp_Vec DN(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV, const Standard_Integer theNU, const Standard_Integer theNV);
+		static gp_Vec DN(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theU, const double theV, const int theNU, const int theNV);
 
 		/****** Adaptor3d_HSurfaceTool::Direction ******/
 		/****** md5 signature: 390f6a317984f3d7d015dcaaccd7ed67 ******/
@@ -838,7 +927,7 @@ No available documentation.
 		static gp_Dir Direction(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::FirstUParameter ******/
-		/****** md5 signature: 09a568c2a86c9579d6d807f3e72bc98f ******/
+		/****** md5 signature: 89cca62b14ca7939d694c928a72aad0e ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "
 Parameters
@@ -847,16 +936,16 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		static Standard_Real FirstUParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double FirstUParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::FirstVParameter ******/
-		/****** md5 signature: 9a27fa1be5f466c88aad4c2e37fb7f0f ******/
+		/****** md5 signature: 6803b005a4ae6c85984057b426b2da58 ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "
 Parameters
@@ -865,13 +954,13 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		static Standard_Real FirstVParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double FirstVParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::GetType ******/
 		/****** md5 signature: 53f66bf2c621ee9ef4e55ebd8ffafedc ******/
@@ -892,14 +981,14 @@ No available documentation.
 		static GeomAbs_SurfaceType GetType(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::IsSurfG1 ******/
-		/****** md5 signature: d95107568ad3b12d40cce978273a764d ******/
+		/****** md5 signature: 030f0b8bae5eedaa7641fde49f4280c7 ******/
 		%feature("compactdefaultargs") IsSurfG1;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
 theAlongU: bool
-theAngTol: float (optional, default to Precision::Angular())
+theAngTol: double (optional, default to Precision::Angular())
 
 Return
 -------
@@ -909,10 +998,10 @@ Description
 -----------
 No available documentation.
 ") IsSurfG1;
-		static Standard_Boolean IsSurfG1(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Boolean theAlongU, const Standard_Real theAngTol = Precision::Angular());
+		static bool IsSurfG1(const opencascade::handle<Adaptor3d_Surface> & theSurf, const bool theAlongU, const double theAngTol = Precision::Angular());
 
 		/****** Adaptor3d_HSurfaceTool::IsUClosed ******/
-		/****** md5 signature: 72572d307cc1b0c468f6fd5b46afb6a4 ******/
+		/****** md5 signature: f5e79880948e7d27af2027148438d97f ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "
 Parameters
@@ -927,10 +1016,10 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		static Standard_Boolean IsUClosed(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static bool IsUClosed(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::IsUPeriodic ******/
-		/****** md5 signature: b78a8d5ae8699626e5a192f250e8d734 ******/
+		/****** md5 signature: 527fad082b192d7ad9502d33aa7098a9 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -945,10 +1034,10 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		static Standard_Boolean IsUPeriodic(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static bool IsUPeriodic(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::IsVClosed ******/
-		/****** md5 signature: c45c621ec386b255606174f186649fab ******/
+		/****** md5 signature: 91b8548f6a19445b3e0cd7be25c35bb2 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "
 Parameters
@@ -963,10 +1052,10 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		static Standard_Boolean IsVClosed(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static bool IsVClosed(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::IsVPeriodic ******/
-		/****** md5 signature: f4305ccce01d0fbbd27855b1043d4ce5 ******/
+		/****** md5 signature: ec092a10dd078db8e297d2446a281e43 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -981,10 +1070,10 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		static Standard_Boolean IsVPeriodic(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static bool IsVPeriodic(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::LastUParameter ******/
-		/****** md5 signature: 30477e987d8f575f84b54a57ce9f7444 ******/
+		/****** md5 signature: fabe251621b4919eb9baaf3178498762 ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "
 Parameters
@@ -993,16 +1082,16 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		static Standard_Real LastUParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double LastUParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::LastVParameter ******/
-		/****** md5 signature: d5915a1291074a4423aec5d175b66bbc ******/
+		/****** md5 signature: 4e807877c6cba6ebf2aafa94077210fb ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "
 Parameters
@@ -1011,16 +1100,16 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		static Standard_Real LastVParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double LastVParameter(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::NbSamplesU ******/
-		/****** md5 signature: 50ddbf72eceb31a63e22869e67292178 ******/
+		/****** md5 signature: 1ae7b8c18cd74289c60ea9be1659e11a ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
@@ -1035,17 +1124,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S);
+		static int NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** Adaptor3d_HSurfaceTool::NbSamplesU ******/
-		/****** md5 signature: 7ffe816252db97bdbf2950cea2ca2037 ******/
+		/****** md5 signature: 113907439d309bff36ab3cf1a00b7ae6 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
-u1: float
-u2: float
+u1: double
+u2: double
 
 Return
 -------
@@ -1055,10 +1144,10 @@ Description
 -----------
 No available documentation.
 ") NbSamplesU;
-		static Standard_Integer NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real u1, const Standard_Real u2);
+		static int NbSamplesU(const opencascade::handle<Adaptor3d_Surface> & S, const double u1, const double u2);
 
 		/****** Adaptor3d_HSurfaceTool::NbSamplesV ******/
-		/****** md5 signature: 3604df32e5eb1f507b1b53de19c12208 ******/
+		/****** md5 signature: cc0bde5e974a8eb51f554d4496f64a18 ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
@@ -1073,17 +1162,17 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_Surface> & S);
+		static int NbSamplesV(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** Adaptor3d_HSurfaceTool::NbSamplesV ******/
-		/****** md5 signature: c65f614c9f36a107ebd0cfa1e6386566 ******/
+		/****** md5 signature: efb03cbd392a18995a0940b8033ed419 ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "
 Parameters
 ----------
 &: Adaptor3d_Surface
-v1: float
-v2: float
+v1: double
+v2: double
 
 Return
 -------
@@ -1093,10 +1182,10 @@ Description
 -----------
 No available documentation.
 ") NbSamplesV;
-		static Standard_Integer NbSamplesV(const opencascade::handle<Adaptor3d_Surface > &, const Standard_Real v1, const Standard_Real v2);
+		static int NbSamplesV(const opencascade::handle<Adaptor3d_Surface > &, const double v1, const double v2);
 
 		/****** Adaptor3d_HSurfaceTool::NbUIntervals ******/
-		/****** md5 signature: fef1dad379e290c3cf16fef6ea8c820e ******/
+		/****** md5 signature: b1bb765895d54b74a58f8092ba96dd8c ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1112,10 +1201,10 @@ Description
 -----------
 No available documentation.
 ") NbUIntervals;
-		static Standard_Integer NbUIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, const GeomAbs_Shape theSh);
+		static int NbUIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, const GeomAbs_Shape theSh);
 
 		/****** Adaptor3d_HSurfaceTool::NbVIntervals ******/
-		/****** md5 signature: 54fd606ca3f499eebfa8059b5b5d9f74 ******/
+		/****** md5 signature: 596457c5864cdeb7849996b45b131334 ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1131,10 +1220,10 @@ Description
 -----------
 No available documentation.
 ") NbVIntervals;
-		static Standard_Integer NbVIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, const GeomAbs_Shape theSh);
+		static int NbVIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, const GeomAbs_Shape theSh);
 
 		/****** Adaptor3d_HSurfaceTool::OffsetValue ******/
-		/****** md5 signature: 85e20729392a6c80ca1b75cc991aedbe ******/
+		/****** md5 signature: b1a3ff02828116edca4cb91d98edf6a8 ******/
 		%feature("compactdefaultargs") OffsetValue;
 		%feature("autodoc", "
 Parameters
@@ -1143,13 +1232,13 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") OffsetValue;
-		static Standard_Real OffsetValue(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double OffsetValue(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::Plane ******/
 		/****** md5 signature: 130558349c1c282f4139d902e5e9368f ******/
@@ -1206,13 +1295,13 @@ No available documentation.
 		static gp_Torus Torus(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::UIntervals ******/
-		/****** md5 signature: f279ed888174d088294a26485fe4f7d2 ******/
+		/****** md5 signature: 3e6e5926729437d93208358f54b5ec30 ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theTab: TColStd_Array1OfReal
+theTab: NCollection_Array1<double>
 theSh: GeomAbs_Shape
 
 Return
@@ -1223,10 +1312,10 @@ Description
 -----------
 No available documentation.
 ") UIntervals;
-		static void UIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, TColStd_Array1OfReal & theTab, const GeomAbs_Shape theSh);
+		static void UIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, NCollection_Array1<double> & theTab, const GeomAbs_Shape theSh);
 
 		/****** Adaptor3d_HSurfaceTool::UPeriod ******/
-		/****** md5 signature: 4aeb87257dacd4656faf037c69140a18 ******/
+		/****** md5 signature: 7127066bac41d91734a287f595385519 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "
 Parameters
@@ -1235,43 +1324,43 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		static Standard_Real UPeriod(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double UPeriod(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::UResolution ******/
-		/****** md5 signature: c6db1a9c95ce8de22a88509a6b426b1c ******/
+		/****** md5 signature: ed46410caeb0007ef2302574d5773c59 ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theR3d: float
+theR3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UResolution;
-		static Standard_Real UResolution(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theR3d);
+		static double UResolution(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theR3d);
 
 		/****** Adaptor3d_HSurfaceTool::UTrim ******/
-		/****** md5 signature: 89490d90b4ba34479d131997cc0a14c7 ******/
+		/****** md5 signature: c33fcc1c2073b43cd55819cc80f52e69 ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theFirst: float
-theLast: float
-theTol: float
+theFirst: double
+theLast: double
+theTol: double
 
 Return
 -------
@@ -1281,16 +1370,16 @@ Description
 -----------
 If <First> >= <Last>.
 ") UTrim;
-		static opencascade::handle<Adaptor3d_Surface> UTrim(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
+		static opencascade::handle<Adaptor3d_Surface> UTrim(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theFirst, const double theLast, const double theTol);
 
 		/****** Adaptor3d_HSurfaceTool::VIntervals ******/
-		/****** md5 signature: 57ded06c80e1ec6f84e74507a3d38d67 ******/
+		/****** md5 signature: 017ce079512bdee1767dd969197126fa ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theTab: TColStd_Array1OfReal
+theTab: NCollection_Array1<double>
 theSh: GeomAbs_Shape
 
 Return
@@ -1301,10 +1390,10 @@ Description
 -----------
 No available documentation.
 ") VIntervals;
-		static void VIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, TColStd_Array1OfReal & theTab, const GeomAbs_Shape theSh);
+		static void VIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, NCollection_Array1<double> & theTab, const GeomAbs_Shape theSh);
 
 		/****** Adaptor3d_HSurfaceTool::VPeriod ******/
-		/****** md5 signature: f67c9c307abb1d8d90b6594b6b0fbd1d ******/
+		/****** md5 signature: c04cb2c1afb48c14ad608dafd7a0515c ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "
 Parameters
@@ -1313,43 +1402,43 @@ theSurf: Adaptor3d_Surface
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		static Standard_Real VPeriod(const opencascade::handle<Adaptor3d_Surface> & theSurf);
+		static double VPeriod(const opencascade::handle<Adaptor3d_Surface> & theSurf);
 
 		/****** Adaptor3d_HSurfaceTool::VResolution ******/
-		/****** md5 signature: f1bc46b0efcda3053b6da41b831f082f ******/
+		/****** md5 signature: e2ad87c4a604df3ea5cc1184d2893219 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theR3d: float
+theR3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VResolution;
-		static Standard_Real VResolution(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theR3d);
+		static double VResolution(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theR3d);
 
 		/****** Adaptor3d_HSurfaceTool::VTrim ******/
-		/****** md5 signature: 3459ab4e01913199af1a74ede3ba1856 ******/
+		/****** md5 signature: f407453964457bc575ba00b3a58d76aa ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theFirst: float
-theLast: float
-theTol: float
+theFirst: double
+theLast: double
+theTol: double
 
 Return
 -------
@@ -1359,17 +1448,17 @@ Description
 -----------
 If <First> >= <Last>.
 ") VTrim;
-		static opencascade::handle<Adaptor3d_Surface> VTrim(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
+		static opencascade::handle<Adaptor3d_Surface> VTrim(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theFirst, const double theLast, const double theTol);
 
 		/****** Adaptor3d_HSurfaceTool::Value ******/
-		/****** md5 signature: 84d566772d6b3b2e19370cd2b0f8b89c ******/
+		/****** md5 signature: 5d38ff99049d935ba67ce3cf536175ef ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theU: float
-theV: float
+theU: double
+theV: double
 
 Return
 -------
@@ -1379,7 +1468,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		static gp_Pnt Value(const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theU, const Standard_Real theV);
+		static gp_Pnt Value(const opencascade::handle<Adaptor3d_Surface> & theSurf, const double theU, const double theV);
 
 };
 
@@ -1409,14 +1498,14 @@ No available documentation.
 		 Adaptor3d_HVertex();
 
 		/****** Adaptor3d_HVertex::Adaptor3d_HVertex ******/
-		/****** md5 signature: b8097197d4737b7cb21d79f7d8bd45d4 ******/
+		/****** md5 signature: 3b25f95bcb483fa378b13bd7ae7e7e89 ******/
 		%feature("compactdefaultargs") Adaptor3d_HVertex;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
 Ori: TopAbs_Orientation
-Resolution: float
+Resolution: double
 
 Return
 -------
@@ -1426,10 +1515,10 @@ Description
 -----------
 No available documentation.
 ") Adaptor3d_HVertex;
-		 Adaptor3d_HVertex(const gp_Pnt2d & P, const TopAbs_Orientation Ori, const Standard_Real Resolution);
+		 Adaptor3d_HVertex(const gp_Pnt2d & P, const TopAbs_Orientation Ori, const double Resolution);
 
 		/****** Adaptor3d_HVertex::IsSame ******/
-		/****** md5 signature: f23854098e5a2c0e58714ff498a18027 ******/
+		/****** md5 signature: 3e6883ded84326cb1a90b8750be2350c ******/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "
 Parameters
@@ -1444,7 +1533,7 @@ Description
 -----------
 No available documentation.
 ") IsSame;
-		virtual Standard_Boolean IsSame(const opencascade::handle<Adaptor3d_HVertex> & Other);
+		virtual bool IsSame(const opencascade::handle<Adaptor3d_HVertex> & Other);
 
 		/****** Adaptor3d_HVertex::Orientation ******/
 		/****** md5 signature: c985680b482f7598ebf61ff3db6ab594 ******/
@@ -1460,7 +1549,7 @@ No available documentation.
 		virtual TopAbs_Orientation Orientation();
 
 		/****** Adaptor3d_HVertex::Parameter ******/
-		/****** md5 signature: 20685a87d4a2fb9ff73f5a56e84880d4 ******/
+		/****** md5 signature: 9fd9fdb3eda16f9ec5bcc2e2b545c744 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1469,16 +1558,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		virtual Standard_Real Parameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		virtual double Parameter(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** Adaptor3d_HVertex::Resolution ******/
-		/****** md5 signature: ec6f3df4575cf3700b58ff4c13f33f75 ******/
+		/****** md5 signature: b80171e06894eb3cd5fbc71b96da0a44 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -1487,13 +1576,13 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Parametric resolution (2d).
 ") Resolution;
-		virtual Standard_Real Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		virtual double Resolution(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** Adaptor3d_HVertex::Value ******/
 		/****** md5 signature: b163ee7405059c08236e9641cb63201d ******/
@@ -1525,13 +1614,13 @@ No available documentation.
 class Adaptor3d_InterFunc : public math_FunctionWithDerivative {
 	public:
 		/****** Adaptor3d_InterFunc::Adaptor3d_InterFunc ******/
-		/****** md5 signature: d6afc00bbf8d3cd088610834f216ab59 ******/
+		/****** md5 signature: cf13ca5f0e9e6cd3e443a5f8f524cf5c ******/
 		%feature("compactdefaultargs") Adaptor3d_InterFunc;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-FixVal: float
+FixVal: double
 Fix: int
 
 Return
@@ -1542,62 +1631,62 @@ Description
 -----------
 build the function U(t)=FixVal if Fix =1 or V(t)=FixVal if Fix=2.
 ") Adaptor3d_InterFunc;
-		 Adaptor3d_InterFunc(const opencascade::handle<Adaptor2d_Curve2d> & C, const Standard_Real FixVal, const Standard_Integer Fix);
+		 Adaptor3d_InterFunc(const opencascade::handle<Adaptor2d_Curve2d> & C, const double FixVal, const int Fix);
 
 		/****** Adaptor3d_InterFunc::Derivative ******/
-		/****** md5 signature: 95e91729f1fb548d9a62f690b302c323 ******/
+		/****** md5 signature: 5b661e723f14c67a734d7bc68bb6cabf ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-D: float
+D: double
 
 Description
 -----------
 computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Derivative;
-		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
+		bool Derivative(const double X, Standard_Real &OutValue);
 
 		/****** Adaptor3d_InterFunc::Value ******/
-		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
+		/****** md5 signature: 2fdd0f48acb4882f76bbbe432a18ac3a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
+F: double
 
 Description
 -----------
 computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Value;
-		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
+		bool Value(const double X, Standard_Real &OutValue);
 
 		/****** Adaptor3d_InterFunc::Values ******/
-		/****** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ******/
+		/****** md5 signature: 44ea1ebbd1c996779e93f28435817e28 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
-F: float
-D: float
+F: double
+D: double
 
 Description
 -----------
 computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Values;
-		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Values(const double X, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -1705,14 +1794,14 @@ No available documentation.
 		virtual gp_Cylinder Cylinder();
 
 		/****** Adaptor3d_Surface::D0 ******/
-		/****** md5 signature: 8f923a57ca8ceff3aab5a02bea8d5f12 ******/
+		/****** md5 signature: 9016df837eb6bfdd1935679a87e2c49d ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
+theU: double
+theV: double
+theP: gp_Pnt
 
 Return
 -------
@@ -1722,19 +1811,19 @@ Description
 -----------
 Computes the point of parameters U,V on the surface.
 ") D0;
-		virtual void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
+		void D0(const double theU, const double theV, gp_Pnt & theP);
 
 		/****** Adaptor3d_Surface::D1 ******/
-		/****** md5 signature: 35469e629742699989c5c1b8606a25fd ******/
+		/****** md5 signature: a0a06d84188e852df7219bd30627e2e5 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
+theU: double
+theV: double
+theP: gp_Pnt
+theD1U: gp_Vec
+theD1V: gp_Vec
 
 Return
 -------
@@ -1744,22 +1833,22 @@ Description
 -----------
 Computes the point and the first derivatives on the surface. Raised if the continuity of the current intervals is not C1. //! Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
 ") D1;
-		virtual void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
+		void D1(const double theU, const double theV, gp_Pnt & theP, gp_Vec & theD1U, gp_Vec & theD1V);
 
 		/****** Adaptor3d_Surface::D2 ******/
-		/****** md5 signature: 74bb864108093f2d81c871ea0acee116 ******/
+		/****** md5 signature: 76e8d1743bf45a8bd799b1720c6e0a4f ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
+theU: double
+theV: double
+theP: gp_Pnt
+theD1U: gp_Vec
+theD1V: gp_Vec
+theD2U: gp_Vec
+theD2V: gp_Vec
+theD2UV: gp_Vec
 
 Return
 -------
@@ -1769,26 +1858,26 @@ Description
 -----------
 Computes the point, the first and second derivatives on the surface. Raised if the continuity of the current intervals is not C2.
 ") D2;
-		virtual void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
+		void D2(const double theU, const double theV, gp_Pnt & theP, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
 		/****** Adaptor3d_Surface::D3 ******/
-		/****** md5 signature: 508c3f845e4a876a074039e7919851f4 ******/
+		/****** md5 signature: 5315e02fec0ca74d5deca8b9d8ce50e3 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-P: gp_Pnt
-D1U: gp_Vec
-D1V: gp_Vec
-D2U: gp_Vec
-D2V: gp_Vec
-D2UV: gp_Vec
-D3U: gp_Vec
-D3V: gp_Vec
-D3UUV: gp_Vec
-D3UVV: gp_Vec
+theU: double
+theV: double
+theP: gp_Pnt
+theD1U: gp_Vec
+theD1V: gp_Vec
+theD2U: gp_Vec
+theD2V: gp_Vec
+theD2UV: gp_Vec
+theD3U: gp_Vec
+theD3V: gp_Vec
+theD3UUV: gp_Vec
+theD3UVV: gp_Vec
 
 Return
 -------
@@ -1798,18 +1887,18 @@ Description
 -----------
 Computes the point, the first, second and third derivatives on the surface. Raised if the continuity of the current intervals is not C3.
 ") D3;
-		virtual void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
+		void D3(const double theU, const double theV, gp_Pnt & theP, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
 		/****** Adaptor3d_Surface::DN ******/
-		/****** md5 signature: 90d6ef938b4ef7a56483bf904c51a1a8 ******/
+		/****** md5 signature: 3f149ee32df79dc2701e24bf0a9869e5 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
-Nu: int
-Nv: int
+theU: double
+theV: double
+theNu: int
+theNv: int
 
 Return
 -------
@@ -1819,7 +1908,7 @@ Description
 -----------
 Computes the derivative of order Nu in the direction U and Nv in the direction V at the point P(U, V). Raised if the current U interval is not not CNu and the current V interval is not CNv. Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
 ") DN;
-		virtual gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
+		gp_Vec DN(const double theU, const double theV, const int theNu, const int theNv);
 
 		/****** Adaptor3d_Surface::Direction ******/
 		/****** md5 signature: 50eb80ad6a4d551e2cfbf73fe32bbfa8 ******/
@@ -1834,31 +1923,128 @@ No available documentation.
 ") Direction;
 		virtual gp_Dir Direction();
 
+		/****** Adaptor3d_Surface::EvalD0 ******/
+		/****** md5 signature: 3ca37d1f8ccc83ecb2a746b0783aee8b ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameters (U, V) on the surface. Raises an exception on failure.
+") EvalD0;
+		virtual gp_Pnt EvalD0(const double theU, const double theV);
+
+		/****** Adaptor3d_Surface::EvalD1 ******/
+		/****** md5 signature: 85ab5b293f96ca2f425cdcbdcefddb1f ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD1
+
+Description
+-----------
+Computes the point and first partial derivatives at (U, V). Raises an exception on failure.
+") EvalD1;
+		virtual Geom_Surface::ResD1 EvalD1(const double theU, const double theV);
+
+		/****** Adaptor3d_Surface::EvalD2 ******/
+		/****** md5 signature: 226c394cf3fc3c55ef4a22445a653787 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD2
+
+Description
+-----------
+Computes the point and partial derivatives up to 2nd order at (U, V). Raises an exception on failure.
+") EvalD2;
+		virtual Geom_Surface::ResD2 EvalD2(const double theU, const double theV);
+
+		/****** Adaptor3d_Surface::EvalD3 ******/
+		/****** md5 signature: 9c8730e098f1bbe4b9c71be229e872b6 ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+
+Return
+-------
+Geom_Surface::ResD3
+
+Description
+-----------
+Computes the point and partial derivatives up to 3rd order at (U, V). Raises an exception on failure.
+") EvalD3;
+		virtual Geom_Surface::ResD3 EvalD3(const double theU, const double theV);
+
+		/****** Adaptor3d_Surface::EvalDN ******/
+		/****** md5 signature: 7af0a7e90c71663540785483b99303a7 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theV: double
+theNu: int
+theNv: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an exception on failure.
+") EvalDN;
+		virtual gp_Vec EvalDN(const double theU, const double theV, const int theNu, const int theNv);
+
 		/****** Adaptor3d_Surface::FirstUParameter ******/
-		/****** md5 signature: 9f096cb45fc2a40a442b3b2353b81fbb ******/
+		/****** md5 signature: da182ccb2dd28f008dc1bac47b8868e8 ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstUParameter;
-		virtual Standard_Real FirstUParameter();
+		virtual double FirstUParameter();
 
 		/****** Adaptor3d_Surface::FirstVParameter ******/
-		/****** md5 signature: 8340035b2368d72a37ea6eae3b1a363d ******/
+		/****** md5 signature: 1cf4940cba7359dc8d4d6c24069a24ae ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstVParameter;
-		virtual Standard_Real FirstVParameter();
+		virtual double FirstVParameter();
 
 		/****** Adaptor3d_Surface::GetType ******/
 		/****** md5 signature: 488899158a40114032119920bcbe6d69 ******/
@@ -1874,7 +2060,7 @@ Returns the type of the surface: Plane, Cylinder, Cone, Sphere, Torus, BezierSur
 		virtual GeomAbs_SurfaceType GetType();
 
 		/****** Adaptor3d_Surface::IsUClosed ******/
-		/****** md5 signature: e8a70695ac5408e96548fcba7d28a395 ******/
+		/****** md5 signature: 4eb6045d6362176a343f20aabd39c703 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -1884,10 +2070,10 @@ Description
 -----------
 No available documentation.
 ") IsUClosed;
-		virtual Standard_Boolean IsUClosed();
+		virtual bool IsUClosed();
 
 		/****** Adaptor3d_Surface::IsUPeriodic ******/
-		/****** md5 signature: 9d4b893bb8b451d02be4c61ddc985b6f ******/
+		/****** md5 signature: 829359e87bda18f602e915ab5a0228d9 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1897,10 +2083,10 @@ Description
 -----------
 No available documentation.
 ") IsUPeriodic;
-		virtual Standard_Boolean IsUPeriodic();
+		virtual bool IsUPeriodic();
 
 		/****** Adaptor3d_Surface::IsURational ******/
-		/****** md5 signature: 98b0228d6ecbcd4b9af2be5d094f411b ******/
+		/****** md5 signature: e831f2949990a6c76e46104762ecb264 ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -1910,10 +2096,10 @@ Description
 -----------
 No available documentation.
 ") IsURational;
-		virtual Standard_Boolean IsURational();
+		virtual bool IsURational();
 
 		/****** Adaptor3d_Surface::IsVClosed ******/
-		/****** md5 signature: da82351c635dac1ca8aa7073075606ab ******/
+		/****** md5 signature: 418046ad5087d7926a96030755bbc092 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -1923,10 +2109,10 @@ Description
 -----------
 No available documentation.
 ") IsVClosed;
-		virtual Standard_Boolean IsVClosed();
+		virtual bool IsVClosed();
 
 		/****** Adaptor3d_Surface::IsVPeriodic ******/
-		/****** md5 signature: 4fc2bb80a34d1bca3a757ab95e92ad20 ******/
+		/****** md5 signature: ee75c4e0c0cae5f017aa3513efdc994f ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1936,10 +2122,10 @@ Description
 -----------
 No available documentation.
 ") IsVPeriodic;
-		virtual Standard_Boolean IsVPeriodic();
+		virtual bool IsVPeriodic();
 
 		/****** Adaptor3d_Surface::IsVRational ******/
-		/****** md5 signature: b78ede066dfcf5f30f85b3fdc92ebee2 ******/
+		/****** md5 signature: 034c2baea0ccab39ccbc8824ac4d3703 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -1949,36 +2135,36 @@ Description
 -----------
 No available documentation.
 ") IsVRational;
-		virtual Standard_Boolean IsVRational();
+		virtual bool IsVRational();
 
 		/****** Adaptor3d_Surface::LastUParameter ******/
-		/****** md5 signature: 292da90d07338ad25c177c2fa028d14b ******/
+		/****** md5 signature: 02c47ef09effa31026d9ccd10ef0b586 ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastUParameter;
-		virtual Standard_Real LastUParameter();
+		virtual double LastUParameter();
 
 		/****** Adaptor3d_Surface::LastVParameter ******/
-		/****** md5 signature: fe2a75a2531511d2ada9a247cd4ccf4b ******/
+		/****** md5 signature: b875c8f9dd2888f4f828f82510d9b113 ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastVParameter;
-		virtual Standard_Real LastVParameter();
+		virtual double LastVParameter();
 
 		/****** Adaptor3d_Surface::NbUIntervals ******/
-		/****** md5 signature: 3f9b4bb4318cf4eb75b5fc6022bec51c ******/
+		/****** md5 signature: cda7f180282a20c6d145b7e87268248a ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1993,10 +2179,10 @@ Description
 -----------
 Returns the number of U intervals for continuity <S>. May be one if UContinuity(me) >= <S>.
 ") NbUIntervals;
-		virtual Standard_Integer NbUIntervals(const GeomAbs_Shape S);
+		virtual int NbUIntervals(const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Surface::NbUKnots ******/
-		/****** md5 signature: 7a1c0895759d5e9cddda277e4036d7a2 ******/
+		/****** md5 signature: 808f8c456aaa8fdb434927c7f2974636 ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -2006,10 +2192,10 @@ Description
 -----------
 No available documentation.
 ") NbUKnots;
-		virtual Standard_Integer NbUKnots();
+		virtual int NbUKnots();
 
 		/****** Adaptor3d_Surface::NbUPoles ******/
-		/****** md5 signature: 49425c131d5bbf51ecbf25f256eb3893 ******/
+		/****** md5 signature: 399f9d8112bacb42780fd34854c4734f ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -2019,10 +2205,10 @@ Description
 -----------
 No available documentation.
 ") NbUPoles;
-		virtual Standard_Integer NbUPoles();
+		virtual int NbUPoles();
 
 		/****** Adaptor3d_Surface::NbVIntervals ******/
-		/****** md5 signature: c612588f13518c121daaa98c7187c5dd ******/
+		/****** md5 signature: e99c1a370576157e9dea9a89f5723959 ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2037,10 +2223,10 @@ Description
 -----------
 Returns the number of V intervals for continuity <S>. May be one if VContinuity(me) >= <S>.
 ") NbVIntervals;
-		virtual Standard_Integer NbVIntervals(const GeomAbs_Shape S);
+		virtual int NbVIntervals(const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Surface::NbVKnots ******/
-		/****** md5 signature: 056eba7e2948215fc1920f79773a07b7 ******/
+		/****** md5 signature: 470d1c89a20ac4d9d0570283b249445b ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -2050,10 +2236,10 @@ Description
 -----------
 No available documentation.
 ") NbVKnots;
-		virtual Standard_Integer NbVKnots();
+		virtual int NbVKnots();
 
 		/****** Adaptor3d_Surface::NbVPoles ******/
-		/****** md5 signature: 27419519071863c30fa7e303bf9714b1 ******/
+		/****** md5 signature: 22771c7321cb09bc85c4767f32c2f6e6 ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -2063,20 +2249,20 @@ Description
 -----------
 No available documentation.
 ") NbVPoles;
-		virtual Standard_Integer NbVPoles();
+		virtual int NbVPoles();
 
 		/****** Adaptor3d_Surface::OffsetValue ******/
-		/****** md5 signature: 668f7151c7b3b100446406f1c2b0b2e9 ******/
+		/****** md5 signature: f1e5de2d27936b266603223448fcaec0 ******/
 		%feature("compactdefaultargs") OffsetValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") OffsetValue;
-		virtual Standard_Real OffsetValue();
+		virtual double OffsetValue();
 
 		/****** Adaptor3d_Surface::Plane ******/
 		/****** md5 signature: ae2ef8a7cc00a3678c001f660e5e87af ******/
@@ -2144,7 +2330,7 @@ No available documentation.
 		virtual GeomAbs_Shape UContinuity();
 
 		/****** Adaptor3d_Surface::UDegree ******/
-		/****** md5 signature: 5deb29548a36c721198fed8800d06830 ******/
+		/****** md5 signature: 8eb4f38f4fd1e68fb9ccf89d71aa1bf3 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -2154,15 +2340,15 @@ Description
 -----------
 No available documentation.
 ") UDegree;
-		virtual Standard_Integer UDegree();
+		virtual int UDegree();
 
 		/****** Adaptor3d_Surface::UIntervals ******/
-		/****** md5 signature: b593cc9a16bcef9f9aa90ee2aec21589 ******/
+		/****** md5 signature: f31c310cff6e18b57a42c1cafb8ebcf1 ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2173,48 +2359,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the U direction.
 ") UIntervals;
-		virtual void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		virtual void UIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Surface::UPeriod ******/
-		/****** md5 signature: b5a8af3fdd028670ffc618d509b562aa ******/
+		/****** md5 signature: da114fd3a2d26886e0b27128e1d80a77 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") UPeriod;
-		virtual Standard_Real UPeriod();
+		virtual double UPeriod();
 
 		/****** Adaptor3d_Surface::UResolution ******/
-		/****** md5 signature: 47eb7fe0f86b388ef7c61b75143d68fd ******/
+		/****** md5 signature: 2ef9cbce43eb796ebed6ac0bb3560fca ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric U resolution corresponding to the real space resolution <R3d>.
 ") UResolution;
-		virtual Standard_Real UResolution(const Standard_Real R3d);
+		virtual double UResolution(const double R3d);
 
 		/****** Adaptor3d_Surface::UTrim ******/
-		/****** md5 signature: c37e4851cad3cfe0fd1be5953bcbb1dc ******/
+		/****** md5 signature: 6693b340cdd84d34a9b55237eb327b21 ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2224,7 +2410,7 @@ Description
 -----------
 Returns a surface trimmed in the U direction equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") UTrim;
-		virtual opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		virtual opencascade::handle<Adaptor3d_Surface> UTrim(const double First, const double Last, const double Tol);
 
 		/****** Adaptor3d_Surface::VContinuity ******/
 		/****** md5 signature: d072bc9a7996d58b53b4d1e10a7f1999 ******/
@@ -2240,7 +2426,7 @@ No available documentation.
 		virtual GeomAbs_Shape VContinuity();
 
 		/****** Adaptor3d_Surface::VDegree ******/
-		/****** md5 signature: 1fa8f8863980920be56d3f9b30ac2667 ******/
+		/****** md5 signature: 035403fd9b2ccd2bb977e3be0622a714 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -2250,15 +2436,15 @@ Description
 -----------
 No available documentation.
 ") VDegree;
-		virtual Standard_Integer VDegree();
+		virtual int VDegree();
 
 		/****** Adaptor3d_Surface::VIntervals ******/
-		/****** md5 signature: 391c756d3f528314e59ebde11c556497 ******/
+		/****** md5 signature: 2d2738ec2952cc80c4d4039ac6f7047e ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -2269,48 +2455,48 @@ Description
 -----------
 Returns the intervals with the requested continuity in the V direction.
 ") VIntervals;
-		virtual void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		virtual void VIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Surface::VPeriod ******/
-		/****** md5 signature: aaa8f393a9608b88a2a3f8c8043833cb ******/
+		/****** md5 signature: e86089463b2a89664feb779cfe8eac35 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") VPeriod;
-		virtual Standard_Real VPeriod();
+		virtual double VPeriod();
 
 		/****** Adaptor3d_Surface::VResolution ******/
-		/****** md5 signature: 24d123fbb93e57d711b320c4e0431f2a ******/
+		/****** md5 signature: 869488b87ffe670839eface406fb8ceb ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric V resolution corresponding to the real space resolution <R3d>.
 ") VResolution;
-		virtual Standard_Real VResolution(const Standard_Real R3d);
+		virtual double VResolution(const double R3d);
 
 		/****** Adaptor3d_Surface::VTrim ******/
-		/****** md5 signature: feea2421d912ddae74778d2b21c61475 ******/
+		/****** md5 signature: 3cf7c2e715f5d7f0c5c19e8f7e0fabe7 ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -2320,16 +2506,16 @@ Description
 -----------
 Returns a surface trimmed in the V direction between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") VTrim;
-		virtual opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
+		virtual opencascade::handle<Adaptor3d_Surface> VTrim(const double First, const double Last, const double Tol);
 
 		/****** Adaptor3d_Surface::Value ******/
-		/****** md5 signature: 86112fa27918493b04ce20ef2fcddd47 ******/
+		/****** md5 signature: 88a3852ba2d591aad12986a6b5f8b26e ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-U: float
-V: float
+theU: double
+theV: double
 
 Return
 -------
@@ -2339,7 +2525,7 @@ Description
 -----------
 Computes the point of parameters U,V on the surface. Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
 ") Value;
-		virtual gp_Pnt Value(const Standard_Real U, const Standard_Real V);
+		gp_Pnt Value(const double theU, const double theV);
 
 };
 
@@ -2389,12 +2575,12 @@ No available documentation.
 		 Adaptor3d_TopolTool(const opencascade::handle<Adaptor3d_Surface> & Surface);
 
 		/****** Adaptor3d_TopolTool::BSplSamplePnts ******/
-		/****** md5 signature: 6903f238d66cf388d6121d16fc28d803 ******/
+		/****** md5 signature: 39c1c283b1f2a975fc09df4ecaa00a55 ******/
 		%feature("compactdefaultargs") BSplSamplePnts;
 		%feature("autodoc", "
 Parameters
 ----------
-theDefl: float
+theDefl: double
 theNUmin: int
 theNVmin: int
 
@@ -2409,17 +2595,17 @@ Input parameter: theDefl required deflection
 Input parameter: theNUmin minimal nb points for U 
 Input parameter: theNVmin minimal nb points for V.
 ") BSplSamplePnts;
-		virtual void BSplSamplePnts(const Standard_Real theDefl, const Standard_Integer theNUmin, const Standard_Integer theNVmin);
+		virtual void BSplSamplePnts(const double theDefl, const int theNUmin, const int theNVmin);
 
 		/****** Adaptor3d_TopolTool::Classify ******/
-		/****** md5 signature: c8c5dc96886d407d270064b81c56f4cf ******/
+		/****** md5 signature: df1f1ddc6801f5a84106cb971806352f ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
-Tol: float
-ReacdreOnPeriodic: bool (optional, default to Standard_True)
+Tol: double
+ReacdreOnPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -2429,7 +2615,7 @@ Description
 -----------
 No available documentation.
 ") Classify;
-		virtual TopAbs_State Classify(const gp_Pnt2d & P, const Standard_Real Tol, const Standard_Boolean ReacdreOnPeriodic = Standard_True);
+		virtual TopAbs_State Classify(const gp_Pnt2d & P, const double Tol, const bool ReacdreOnPeriodic = true);
 
 		/****** Adaptor3d_TopolTool::ComputeSamplePoints ******/
 		/****** md5 signature: 23fc57af64fa6b59fefe18fa9084fa69 ******/
@@ -2445,7 +2631,7 @@ No available documentation.
 		virtual void ComputeSamplePoints();
 
 		/****** Adaptor3d_TopolTool::DomainIsInfinite ******/
-		/****** md5 signature: 6d41c776a0aa728b4d318a59f43aa974 ******/
+		/****** md5 signature: 288af4c625fbfbca424d011fcf2618a3 ******/
 		%feature("compactdefaultargs") DomainIsInfinite;
 		%feature("autodoc", "Return
 -------
@@ -2455,23 +2641,23 @@ Description
 -----------
 No available documentation.
 ") DomainIsInfinite;
-		virtual Standard_Boolean DomainIsInfinite();
+		virtual bool DomainIsInfinite();
 
 		/****** Adaptor3d_TopolTool::Edge ******/
-		/****** md5 signature: 714bd83d54f0cbd20920648bb51520ec ******/
+		/****** md5 signature: d0134fbb8433575ae46f37dd47df601c ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
-Standard_Address
+void *
 
 Description
 -----------
 No available documentation.
 ") Edge;
-		virtual Standard_Address Edge();
+		virtual void * Edge();
 
 		/****** Adaptor3d_TopolTool::GetConeApexParam ******/
-		/****** md5 signature: 8be4fd6f665527c4e6b570e1d3c513af ******/
+		/****** md5 signature: 1c7e4cbee67d4312f9995d62e953d13a ******/
 		%feature("compactdefaultargs") GetConeApexParam;
 		%feature("autodoc", "
 Parameters
@@ -2480,8 +2666,8 @@ theC: gp_Cone
 
 Return
 -------
-theU: float
-theV: float
+theU: double
+theV: double
 
 Description
 -----------
@@ -2493,7 +2679,7 @@ Input parameter: theV V parameter of cone's apex.
 		static void GetConeApexParam(const gp_Cone & theC, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Adaptor3d_TopolTool::Has3d ******/
-		/****** md5 signature: e26db380d8c3401e2b00bbdf4f01fa61 ******/
+		/****** md5 signature: c17f33a5db05d6b61035a034298e7bf6 ******/
 		%feature("compactdefaultargs") Has3d;
 		%feature("autodoc", "Return
 -------
@@ -2503,10 +2689,10 @@ Description
 -----------
 answers if arcs and vertices may have 3d representations, so that we could use Tol3d and Pnt methods.
 ") Has3d;
-		virtual Standard_Boolean Has3d();
+		virtual bool Has3d();
 
 		/****** Adaptor3d_TopolTool::Identical ******/
-		/****** md5 signature: cfa27a5dfaa8508af97ba96a7ec6e21b ******/
+		/****** md5 signature: 284d5812bb53de07e239efcee16563ed ******/
 		%feature("compactdefaultargs") Identical;
 		%feature("autodoc", "
 Parameters
@@ -2522,7 +2708,7 @@ Description
 -----------
 Returns True if the vertices V1 and V2 are identical. This method does not take the orientation of the vertices in account.
 ") Identical;
-		virtual Standard_Boolean Identical(const opencascade::handle<Adaptor3d_HVertex> & V1, const opencascade::handle<Adaptor3d_HVertex> & V2);
+		virtual bool Identical(const opencascade::handle<Adaptor3d_HVertex> & V1, const opencascade::handle<Adaptor3d_HVertex> & V2);
 
 		/****** Adaptor3d_TopolTool::Init ******/
 		/****** md5 signature: 2f96d79a31287a19717a3642c1e9b28c ******/
@@ -2600,14 +2786,14 @@ No available documentation.
 		virtual void Initialize(const opencascade::handle<Adaptor2d_Curve2d> & Curve);
 
 		/****** Adaptor3d_TopolTool::IsThePointOn ******/
-		/****** md5 signature: 28addf6263169f07c643732d758cdb38 ******/
+		/****** md5 signature: 72ca97359436cd32933a7ef867e70356 ******/
 		%feature("compactdefaultargs") IsThePointOn;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
-Tol: float
-ReacdreOnPeriodic: bool (optional, default to Standard_True)
+Tol: double
+ReacdreOnPeriodic: bool (optional, default to true)
 
 Return
 -------
@@ -2617,10 +2803,10 @@ Description
 -----------
 No available documentation.
 ") IsThePointOn;
-		virtual Standard_Boolean IsThePointOn(const gp_Pnt2d & P, const Standard_Real Tol, const Standard_Boolean ReacdreOnPeriodic = Standard_True);
+		virtual bool IsThePointOn(const gp_Pnt2d & P, const double Tol, const bool ReacdreOnPeriodic = true);
 
 		/****** Adaptor3d_TopolTool::IsUniformSampling ******/
-		/****** md5 signature: 65a63313e56102fef767c73e6c7f9956 ******/
+		/****** md5 signature: 131f5867ad521b95d4baecee4859d3fa ******/
 		%feature("compactdefaultargs") IsUniformSampling;
 		%feature("autodoc", "Return
 -------
@@ -2630,10 +2816,10 @@ Description
 -----------
 Returns true if provide uniform sampling of points.
 ") IsUniformSampling;
-		virtual Standard_Boolean IsUniformSampling();
+		virtual bool IsUniformSampling();
 
 		/****** Adaptor3d_TopolTool::More ******/
-		/****** md5 signature: e821632af8361f06a178b6ca19f5020e ******/
+		/****** md5 signature: ff2fad120b638dfdb2459ba5adb1d9c4 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2643,10 +2829,10 @@ Description
 -----------
 No available documentation.
 ") More;
-		virtual Standard_Boolean More();
+		virtual bool More();
 
 		/****** Adaptor3d_TopolTool::MoreVertex ******/
-		/****** md5 signature: a8b43dc9585a890721f120d7a26ec923 ******/
+		/****** md5 signature: b53808cee905091847d8368168640b6c ******/
 		%feature("compactdefaultargs") MoreVertex;
 		%feature("autodoc", "Return
 -------
@@ -2656,10 +2842,10 @@ Description
 -----------
 No available documentation.
 ") MoreVertex;
-		virtual Standard_Boolean MoreVertex();
+		virtual bool MoreVertex();
 
 		/****** Adaptor3d_TopolTool::NbSamples ******/
-		/****** md5 signature: 67b66476ff5b3d26402ec88a76db99c8 ******/
+		/****** md5 signature: 60494d7c2a383e405b3a1f7b515f286a ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "Return
 -------
@@ -2669,10 +2855,10 @@ Description
 -----------
 compute the sample-points for the intersections algorithms.
 ") NbSamples;
-		virtual Standard_Integer NbSamples();
+		virtual int NbSamples();
 
 		/****** Adaptor3d_TopolTool::NbSamplesU ******/
-		/****** md5 signature: a8a639849a6476b7e06a072e6ce378ca ******/
+		/****** md5 signature: 0b17e4700daafacf1ba7055d0593bcd2 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "Return
 -------
@@ -2682,10 +2868,10 @@ Description
 -----------
 compute the sample-points for the intersections algorithms.
 ") NbSamplesU;
-		virtual Standard_Integer NbSamplesU();
+		virtual int NbSamplesU();
 
 		/****** Adaptor3d_TopolTool::NbSamplesV ******/
-		/****** md5 signature: fe0cfaa8ce33377585fa9145b0af8a01 ******/
+		/****** md5 signature: bbd3c236cab8669846ff6a7d6577a27d ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "Return
 -------
@@ -2695,7 +2881,7 @@ Description
 -----------
 compute the sample-points for the intersections algorithms.
 ") NbSamplesV;
-		virtual Standard_Integer NbSamplesV();
+		virtual int NbSamplesV();
 
 		/****** Adaptor3d_TopolTool::Next ******/
 		/****** md5 signature: 73141d627b33e5b89ace1d498cedfc52 ******/
@@ -2778,12 +2964,12 @@ returns 3d point of the vertex V.
 		virtual gp_Pnt Pnt(const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****** Adaptor3d_TopolTool::SamplePnts ******/
-		/****** md5 signature: cb1bbdcdfeca14f92fa49d557a8ab965 ******/
+		/****** md5 signature: 1c0afe626fcec6060eb4d57ba07c3ae7 ******/
 		%feature("compactdefaultargs") SamplePnts;
 		%feature("autodoc", "
 Parameters
 ----------
-theDefl: float
+theDefl: double
 theNUmin: int
 theNVmin: int
 
@@ -2798,10 +2984,10 @@ Input parameter: theDefl a required deflection
 Input parameter: theNUmin minimal nb points for U 
 Input parameter: theNVmin minimal nb points for V.
 ") SamplePnts;
-		virtual void SamplePnts(const Standard_Real theDefl, const Standard_Integer theNUmin, const Standard_Integer theNVmin);
+		virtual void SamplePnts(const double theDefl, const int theNUmin, const int theNVmin);
 
 		/****** Adaptor3d_TopolTool::SamplePoint ******/
-		/****** md5 signature: fa80c305164d2e62ffe8cb0ec7643678 ******/
+		/****** md5 signature: 56a3614ed7bbdabb35a11bc9ec365879 ******/
 		%feature("compactdefaultargs") SamplePoint;
 		%feature("autodoc", "
 Parameters
@@ -2818,10 +3004,10 @@ Description
 -----------
 No available documentation.
 ") SamplePoint;
-		virtual void SamplePoint(const Standard_Integer Index, gp_Pnt2d & P2d, gp_Pnt & P3d);
+		virtual void SamplePoint(const int Index, gp_Pnt2d & P2d, gp_Pnt & P3d);
 
 		/****** Adaptor3d_TopolTool::Tol3d ******/
-		/****** md5 signature: ca38e336a92c0a050652dac5bd784e6b ******/
+		/****** md5 signature: 36b395006bec263d4b0b8eddca516be6 ******/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "
 Parameters
@@ -2830,16 +3016,16 @@ C: Adaptor2d_Curve2d
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns 3d tolerance of the arc C.
 ") Tol3d;
-		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor2d_Curve2d> & C);
+		virtual double Tol3d(const opencascade::handle<Adaptor2d_Curve2d> & C);
 
 		/****** Adaptor3d_TopolTool::Tol3d ******/
-		/****** md5 signature: e2e5362802ebc0fb247e0d27af1a66c7 ******/
+		/****** md5 signature: d44975e4315fabd5f4c0f60d28fa6d96 ******/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "
 Parameters
@@ -2848,21 +3034,21 @@ V: Adaptor3d_HVertex
 
 Return
 -------
-float
+double
 
 Description
 -----------
 returns 3d tolerance of the vertex V.
 ") Tol3d;
-		virtual Standard_Real Tol3d(const opencascade::handle<Adaptor3d_HVertex> & V);
+		virtual double Tol3d(const opencascade::handle<Adaptor3d_HVertex> & V);
 
 		/****** Adaptor3d_TopolTool::UParameters ******/
-		/****** md5 signature: ca8708c5011ae09ddc342ec3e782fcd0 ******/
+		/****** md5 signature: 7adba3c0b403679a6af592f857842dc3 ******/
 		%feature("compactdefaultargs") UParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-theArray: TColStd_Array1OfReal
+theArray: NCollection_Array1<double>
 
 Return
 -------
@@ -2872,15 +3058,15 @@ Description
 -----------
 return the set of U parameters on the surface obtained by the method SamplePnts.
 ") UParameters;
-		void UParameters(TColStd_Array1OfReal & theArray);
+		void UParameters(NCollection_Array1<double> & theArray);
 
 		/****** Adaptor3d_TopolTool::VParameters ******/
-		/****** md5 signature: 7d86a95e3c8948209ccc18ec9e74b2ce ******/
+		/****** md5 signature: ba2cab239565f9c8bfe9e02fce39a79c ******/
 		%feature("compactdefaultargs") VParameters;
 		%feature("autodoc", "
 Parameters
 ----------
-theArray: TColStd_Array1OfReal
+theArray: NCollection_Array1<double>
 
 Return
 -------
@@ -2890,7 +3076,7 @@ Description
 -----------
 return the set of V parameters on the surface obtained by the method SamplePnts.
 ") VParameters;
-		void VParameters(TColStd_Array1OfReal & theArray);
+		void VParameters(NCollection_Array1<double> & theArray);
 
 		/****** Adaptor3d_TopolTool::Value ******/
 		/****** md5 signature: 69341486cc398dcbf57c11fda47f97ca ******/
@@ -2985,7 +3171,7 @@ Creates a CurveOnSurface from the 2d curve <C> and the surface <S>.
 		 Adaptor3d_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** Adaptor3d_CurveOnSurface::BSpline ******/
-		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
+		/****** md5 signature: 7bed4aa4788773a8c748371dea2999b6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -2998,7 +3184,7 @@ No available documentation.
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****** Adaptor3d_CurveOnSurface::Bezier ******/
-		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
+		/****** md5 signature: 18c746ed347d210e28744f5b1c7eb527 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -3037,7 +3223,7 @@ No available documentation.
 		opencascade::handle<Adaptor3d_Surface> & ChangeSurface();
 
 		/****** Adaptor3d_CurveOnSurface::Circle ******/
-		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
+		/****** md5 signature: 7475f3d2915ecc09ceb3114f02b43080 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -3050,7 +3236,7 @@ No available documentation.
 		gp_Circ Circle();
 
 		/****** Adaptor3d_CurveOnSurface::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -3062,109 +3248,8 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****** Adaptor3d_CurveOnSurface::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Adaptor3d_CurveOnSurface::D1 ******/
-		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
-
-		/****** Adaptor3d_CurveOnSurface::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Adaptor3d_CurveOnSurface::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Adaptor3d_CurveOnSurface::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** Adaptor3d_CurveOnSurface::Degree ******/
-		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
+		/****** md5 signature: 6a99b61f429058b67ffcdab561815cfb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -3174,10 +3259,10 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** Adaptor3d_CurveOnSurface::Ellipse ******/
-		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
+		/****** md5 signature: b7cf7020e3992d6d2378fd2118e8d198 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -3189,18 +3274,109 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
+		/****** Adaptor3d_CurveOnSurface::EvalD0 ******/
+		/****** md5 signature: 534d5bf2fd8e92a6dcc7c1d53e829bc3 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Point evaluation. Raises an exception on failure.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU);
+
+		/****** Adaptor3d_CurveOnSurface::EvalD1 ******/
+		/****** md5 signature: 7afa7a9bd3f5047a6ef303b4732e48db ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+D1 evaluation. Raises an exception on failure.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double theU);
+
+		/****** Adaptor3d_CurveOnSurface::EvalD2 ******/
+		/****** md5 signature: bdf34f9b5fb078dabb16e072337b36b5 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+D2 evaluation. Raises an exception on failure.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double theU);
+
+		/****** Adaptor3d_CurveOnSurface::EvalD3 ******/
+		/****** md5 signature: a6e2ea19f102d61c7a916bef9a895bcb ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+D3 evaluation. Raises an exception on failure.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double theU);
+
+		/****** Adaptor3d_CurveOnSurface::EvalDN ******/
+		/****** md5 signature: 77005f048bbfcdbbddaf4af5a7b6cef4 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+DN evaluation. Raises an exception on failure.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const int theN);
+
 		/****** Adaptor3d_CurveOnSurface::FirstParameter ******/
-		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
+		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Adaptor3d_CurveOnSurface::GetCurve ******/
 		/****** md5 signature: 59faf580a052d0534228f92dbc8fa8ec ******/
@@ -3229,7 +3405,7 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & GetSurface();
 
 		/****** Adaptor3d_CurveOnSurface::GetType ******/
-		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
+		/****** md5 signature: 5a645f79981f2ae05742e39e35676600 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -3242,7 +3418,7 @@ Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hy
 		GeomAbs_CurveType GetType();
 
 		/****** Adaptor3d_CurveOnSurface::Hyperbola ******/
-		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
+		/****** md5 signature: 308d3b34f3aaba706261ba7e6cb1678e ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -3255,12 +3431,12 @@ No available documentation.
 		gp_Hypr Hyperbola();
 
 		/****** Adaptor3d_CurveOnSurface::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -3271,10 +3447,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_CurveOnSurface::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -3284,10 +3460,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Adaptor3d_CurveOnSurface::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -3297,10 +3473,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Adaptor3d_CurveOnSurface::IsRational ******/
-		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
+		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -3310,23 +3486,23 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** Adaptor3d_CurveOnSurface::LastParameter ******/
-		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
+		/****** md5 signature: dd6d522a80d5537086a8d1fbe2265300 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Adaptor3d_CurveOnSurface::Line ******/
-		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
+		/****** md5 signature: acdc8f5fc99e967530fe196307d05538 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -3394,7 +3570,7 @@ Load both curve and surface.
 		void Load(const opencascade::handle<Adaptor2d_Curve2d> & C, const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** Adaptor3d_CurveOnSurface::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -3409,10 +3585,10 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** Adaptor3d_CurveOnSurface::NbKnots ******/
-		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
+		/****** md5 signature: d6bff4f2a244b781cf7c609ff1cddaf1 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -3422,10 +3598,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** Adaptor3d_CurveOnSurface::NbPoles ******/
-		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
+		/****** md5 signature: bdb1092e5fcaeae9c85a332311d7f069 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -3435,10 +3611,10 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** Adaptor3d_CurveOnSurface::Parabola ******/
-		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
+		/****** md5 signature: de70ebd3fa2d227512b9d0058ee94ca5 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -3451,38 +3627,38 @@ No available documentation.
 		gp_Parab Parabola();
 
 		/****** Adaptor3d_CurveOnSurface::Period ******/
-		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** Adaptor3d_CurveOnSurface::Resolution ******/
-		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
+		/****** md5 signature: 7cb383c1a004c01dc3f51b7088c4d899 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** Adaptor3d_CurveOnSurface::ShallowCopy ******/
-		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
+		/****** md5 signature: 20e70b6ba2d95db55811b68454eb9003 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -3492,17 +3668,17 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+		opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****** Adaptor3d_CurveOnSurface::Trim ******/
-		/****** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ******/
+		/****** md5 signature: 91538b497dfbccd564dbd54083e8e395 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -3512,25 +3688,7 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
-
-		/****** Adaptor3d_CurveOnSurface::Value ******/
-		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-gp_Pnt
-
-Description
------------
-Computes the point of parameter U on the curve.
-") Value;
-		gp_Pnt Value(const Standard_Real U);
+		opencascade::handle<Adaptor3d_Curve> Trim(const double First, const double Last, const double Tol);
 
 };
 
@@ -3580,14 +3738,14 @@ The surface is loaded. The iso is set to NoneIso.
 		 Adaptor3d_IsoCurve(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** Adaptor3d_IsoCurve::Adaptor3d_IsoCurve ******/
-		/****** md5 signature: bfbcfabf7a1c156890f141f7adbff1f4 ******/
+		/****** md5 signature: 07dfa79741a5a0c2fdaae91b4de3d16a ******/
 		%feature("compactdefaultargs") Adaptor3d_IsoCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
 Iso: GeomAbs_IsoType
-Param: float
+Param: double
 
 Return
 -------
@@ -3597,19 +3755,19 @@ Description
 -----------
 Creates an IsoCurve curve. Iso defines the type (isoU or isoU) Param defines the value of the iso. The bounds of the iso are the bounds of the surface.
 ") Adaptor3d_IsoCurve;
-		 Adaptor3d_IsoCurve(const opencascade::handle<Adaptor3d_Surface> & S, const GeomAbs_IsoType Iso, const Standard_Real Param);
+		 Adaptor3d_IsoCurve(const opencascade::handle<Adaptor3d_Surface> & S, const GeomAbs_IsoType Iso, const double Param);
 
 		/****** Adaptor3d_IsoCurve::Adaptor3d_IsoCurve ******/
-		/****** md5 signature: e4dee8adea539086aa810249d6783f57 ******/
+		/****** md5 signature: e331993d209440ade63daa4510c53bdd ******/
 		%feature("compactdefaultargs") Adaptor3d_IsoCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Adaptor3d_Surface
 Iso: GeomAbs_IsoType
-Param: float
-WFirst: float
-WLast: float
+Param: double
+WFirst: double
+WLast: double
 
 Return
 -------
@@ -3619,10 +3777,10 @@ Description
 -----------
 Create an IsoCurve curve. Iso defines the type (isoU or isov). Param defines the value of the iso. WFirst,WLast define the bounds of the iso.
 ") Adaptor3d_IsoCurve;
-		 Adaptor3d_IsoCurve(const opencascade::handle<Adaptor3d_Surface> & S, const GeomAbs_IsoType Iso, const Standard_Real Param, const Standard_Real WFirst, const Standard_Real WLast);
+		 Adaptor3d_IsoCurve(const opencascade::handle<Adaptor3d_Surface> & S, const GeomAbs_IsoType Iso, const double Param, const double WFirst, const double WLast);
 
 		/****** Adaptor3d_IsoCurve::BSpline ******/
-		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
+		/****** md5 signature: 7bed4aa4788773a8c748371dea2999b6 ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -3635,7 +3793,7 @@ No available documentation.
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
 		/****** Adaptor3d_IsoCurve::Bezier ******/
-		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
+		/****** md5 signature: 18c746ed347d210e28744f5b1c7eb527 ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -3648,7 +3806,7 @@ No available documentation.
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
 		/****** Adaptor3d_IsoCurve::Circle ******/
-		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
+		/****** md5 signature: 7475f3d2915ecc09ceb3114f02b43080 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -3661,7 +3819,7 @@ No available documentation.
 		gp_Circ Circle();
 
 		/****** Adaptor3d_IsoCurve::Continuity ******/
-		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
+		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -3673,109 +3831,8 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****** Adaptor3d_IsoCurve::D0 ******/
-		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
-		%feature("compactdefaultargs") D0;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve.
-") D0;
-		void D0(const Standard_Real U, gp_Pnt & P);
-
-		/****** Adaptor3d_IsoCurve::D1 ******/
-		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
-		%feature("compactdefaultargs") D1;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Computes the point of parameter U on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
-") D1;
-		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
-
-		/****** Adaptor3d_IsoCurve::D2 ******/
-		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
-		%feature("compactdefaultargs") D2;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first and second derivatives V1 and V2. Raised if the continuity of the current interval is not C2.
-") D2;
-		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
-
-		/****** Adaptor3d_IsoCurve::D3 ******/
-		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
-		%feature("compactdefaultargs") D3;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-P: gp_Pnt
-V1: gp_Vec
-V2: gp_Vec
-V3: gp_Vec
-
-Return
--------
-None
-
-Description
------------
-Returns the point P of parameter U, the first, the second and the third derivative. Raised if the continuity of the current interval is not C3.
-") D3;
-		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
-
-		/****** Adaptor3d_IsoCurve::DN ******/
-		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
-		%feature("compactdefaultargs") DN;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-N: int
-
-Return
--------
-gp_Vec
-
-Description
------------
-The returned vector gives the value of the derivative for the order of derivation N. Raised if the continuity of the current interval is not CN. Raised if N < 1.
-") DN;
-		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
-
 		/****** Adaptor3d_IsoCurve::Degree ******/
-		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
+		/****** md5 signature: 6a99b61f429058b67ffcdab561815cfb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -3785,10 +3842,10 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** Adaptor3d_IsoCurve::Ellipse ******/
-		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
+		/****** md5 signature: b7cf7020e3992d6d2378fd2118e8d198 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -3800,21 +3857,112 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
+		/****** Adaptor3d_IsoCurve::EvalD0 ******/
+		/****** md5 signature: 534d5bf2fd8e92a6dcc7c1d53e829bc3 ******/
+		%feature("compactdefaultargs") EvalD0;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the point of parameter theU on the curve.
+") EvalD0;
+		gp_Pnt EvalD0(const double theU);
+
+		/****** Adaptor3d_IsoCurve::EvalD1 ******/
+		/****** md5 signature: 7afa7a9bd3f5047a6ef303b4732e48db ******/
+		%feature("compactdefaultargs") EvalD1;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD1
+
+Description
+-----------
+Computes the point of parameter theU on the curve with its first derivative. Raised if the continuity of the current interval is not C1.
+") EvalD1;
+		Geom_Curve::ResD1 EvalD1(const double theU);
+
+		/****** Adaptor3d_IsoCurve::EvalD2 ******/
+		/****** md5 signature: bdf34f9b5fb078dabb16e072337b36b5 ******/
+		%feature("compactdefaultargs") EvalD2;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD2
+
+Description
+-----------
+Returns the point and the first and second derivatives at parameter theU. Raised if the continuity of the current interval is not C2.
+") EvalD2;
+		Geom_Curve::ResD2 EvalD2(const double theU);
+
+		/****** Adaptor3d_IsoCurve::EvalD3 ******/
+		/****** md5 signature: a6e2ea19f102d61c7a916bef9a895bcb ******/
+		%feature("compactdefaultargs") EvalD3;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+
+Return
+-------
+Geom_Curve::ResD3
+
+Description
+-----------
+Returns the point and the first, second and third derivatives at parameter theU. Raised if the continuity of the current interval is not C3.
+") EvalD3;
+		Geom_Curve::ResD3 EvalD3(const double theU);
+
+		/****** Adaptor3d_IsoCurve::EvalDN ******/
+		/****** md5 signature: 77005f048bbfcdbbddaf4af5a7b6cef4 ******/
+		%feature("compactdefaultargs") EvalDN;
+		%feature("autodoc", "
+Parameters
+----------
+theU: double
+theN: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Returns the derivative of order theN at parameter theU. Raised if the continuity of the current interval is not CN. Raised if theN < 1.
+") EvalDN;
+		gp_Vec EvalDN(const double theU, const int theN);
+
 		/****** Adaptor3d_IsoCurve::FirstParameter ******/
-		/****** md5 signature: 93c381754667baab23468a195644e410 ******/
+		/****** md5 signature: dc78d2d12bb932c87a4c14a5c9c0d19a ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") FirstParameter;
-		virtual Standard_Real FirstParameter();
+		double FirstParameter();
 
 		/****** Adaptor3d_IsoCurve::GetType ******/
-		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
+		/****** md5 signature: 5a645f79981f2ae05742e39e35676600 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -3827,7 +3975,7 @@ Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hy
 		GeomAbs_CurveType GetType();
 
 		/****** Adaptor3d_IsoCurve::Hyperbola ******/
-		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
+		/****** md5 signature: 308d3b34f3aaba706261ba7e6cb1678e ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -3840,12 +3988,12 @@ No available documentation.
 		gp_Hypr Hyperbola();
 
 		/****** Adaptor3d_IsoCurve::Intervals ******/
-		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
+		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
 ----------
-T: TColStd_Array1OfReal
+T: NCollection_Array1<double>
 S: GeomAbs_Shape
 
 Return
@@ -3856,10 +4004,10 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
+		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_IsoCurve::IsClosed ******/
-		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
+		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -3869,10 +4017,10 @@ Description
 -----------
 No available documentation.
 ") IsClosed;
-		Standard_Boolean IsClosed();
+		bool IsClosed();
 
 		/****** Adaptor3d_IsoCurve::IsPeriodic ******/
-		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
+		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -3882,10 +4030,10 @@ Description
 -----------
 No available documentation.
 ") IsPeriodic;
-		Standard_Boolean IsPeriodic();
+		bool IsPeriodic();
 
 		/****** Adaptor3d_IsoCurve::IsRational ******/
-		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
+		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -3895,7 +4043,7 @@ Description
 -----------
 No available documentation.
 ") IsRational;
-		Standard_Boolean IsRational();
+		bool IsRational();
 
 		/****** Adaptor3d_IsoCurve::Iso ******/
 		/****** md5 signature: ab18592b64592fda4c22a1eda51e637d ******/
@@ -3911,20 +4059,20 @@ No available documentation.
 		GeomAbs_IsoType Iso();
 
 		/****** Adaptor3d_IsoCurve::LastParameter ******/
-		/****** md5 signature: a2893a92f9c4af09acb0cd59d959d964 ******/
+		/****** md5 signature: 9b49916bc4bf24d69a406e677dabf205 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LastParameter;
-		virtual Standard_Real LastParameter();
+		double LastParameter();
 
 		/****** Adaptor3d_IsoCurve::Line ******/
-		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
+		/****** md5 signature: acdc8f5fc99e967530fe196307d05538 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -3955,13 +4103,13 @@ Changes the surface. The iso is reset to NoneIso.
 		void Load(const opencascade::handle<Adaptor3d_Surface> & S);
 
 		/****** Adaptor3d_IsoCurve::Load ******/
-		/****** md5 signature: 66ff0843f86cebdbf3cebf29ed66e909 ******/
+		/****** md5 signature: 7a264b7ad715b4a196559150cabdeec4 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 Iso: GeomAbs_IsoType
-Param: float
+Param: double
 
 Return
 -------
@@ -3971,18 +4119,18 @@ Description
 -----------
 Changes the iso on the current surface.
 ") Load;
-		void Load(const GeomAbs_IsoType Iso, const Standard_Real Param);
+		void Load(const GeomAbs_IsoType Iso, const double Param);
 
 		/****** Adaptor3d_IsoCurve::Load ******/
-		/****** md5 signature: ce2acdffae7f9f3edf3c676305191098 ******/
+		/****** md5 signature: 55f8cf765bf801e9fe9f4804c1a34c3d ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 Iso: GeomAbs_IsoType
-Param: float
-WFirst: float
-WLast: float
+Param: double
+WFirst: double
+WLast: double
 
 Return
 -------
@@ -3992,10 +4140,10 @@ Description
 -----------
 Changes the iso on the current surface.
 ") Load;
-		void Load(const GeomAbs_IsoType Iso, const Standard_Real Param, const Standard_Real WFirst, const Standard_Real WLast);
+		void Load(const GeomAbs_IsoType Iso, const double Param, const double WFirst, const double WLast);
 
 		/****** Adaptor3d_IsoCurve::NbIntervals ******/
-		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
+		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -4010,10 +4158,10 @@ Description
 -----------
 Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const GeomAbs_Shape S);
+		int NbIntervals(const GeomAbs_Shape S);
 
 		/****** Adaptor3d_IsoCurve::NbKnots ******/
-		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
+		/****** md5 signature: d6bff4f2a244b781cf7c609ff1cddaf1 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -4023,10 +4171,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** Adaptor3d_IsoCurve::NbPoles ******/
-		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
+		/****** md5 signature: bdb1092e5fcaeae9c85a332311d7f069 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -4036,10 +4184,10 @@ Description
 -----------
 No available documentation.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** Adaptor3d_IsoCurve::Parabola ******/
-		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
+		/****** md5 signature: de70ebd3fa2d227512b9d0058ee94ca5 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -4052,51 +4200,51 @@ No available documentation.
 		gp_Parab Parabola();
 
 		/****** Adaptor3d_IsoCurve::Parameter ******/
-		/****** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ******/
+		/****** md5 signature: f2f0d3a4c48532483b401ae3d2d5c5fb ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Parameter;
-		Standard_Real Parameter();
+		double Parameter();
 
 		/****** Adaptor3d_IsoCurve::Period ******/
-		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
+		/****** md5 signature: 1f089b3595450d6c97092473e379f329 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Period;
-		Standard_Real Period();
+		double Period();
 
 		/****** Adaptor3d_IsoCurve::Resolution ******/
-		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
+		/****** md5 signature: 7cb383c1a004c01dc3f51b7088c4d899 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
 ----------
-R3d: float
+R3d: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
-		Standard_Real Resolution(const Standard_Real R3d);
+		double Resolution(const double R3d);
 
 		/****** Adaptor3d_IsoCurve::ShallowCopy ******/
-		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
+		/****** md5 signature: 20e70b6ba2d95db55811b68454eb9003 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -4106,7 +4254,7 @@ Description
 -----------
 Shallow copy of adaptor.
 ") ShallowCopy;
-		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
+		opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
 		/****** Adaptor3d_IsoCurve::Surface ******/
 		/****** md5 signature: 36b438ec6a4fa276d7bb47e4d8b0376a ******/
@@ -4122,14 +4270,14 @@ No available documentation.
 		const opencascade::handle<Adaptor3d_Surface> & Surface();
 
 		/****** Adaptor3d_IsoCurve::Trim ******/
-		/****** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ******/
+		/****** md5 signature: 91538b497dfbccd564dbd54083e8e395 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
-Tol: float
+First: double
+Last: double
+Tol: double
 
 Return
 -------
@@ -4139,25 +4287,7 @@ Description
 -----------
 Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol> is used to test for 3d points confusion. If <First> >= <Last>.
 ") Trim;
-		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
-
-		/****** Adaptor3d_IsoCurve::Value ******/
-		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-U: float
-
-Return
--------
-gp_Pnt
-
-Description
------------
-Computes the point of parameter U on the curve.
-") Value;
-		gp_Pnt Value(const Standard_Real U);
+		opencascade::handle<Adaptor3d_Curve> Trim(const double First, const double Last, const double Tol);
 
 };
 

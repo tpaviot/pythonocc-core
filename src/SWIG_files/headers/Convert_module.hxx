@@ -22,6 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Convert_CircleToBSplineCurve.hxx>
 #include<Convert_CompBezierCurves2dToBSplineCurve2d.hxx>
 #include<Convert_CompBezierCurvesToBSplineCurve.hxx>
+#include<Convert_CompBezierCurvesToBSplineCurveBase.hxx>
 #include<Convert_CompPolynomialToPoles.hxx>
 #include<Convert_ConeToBSplineSurface.hxx>
 #include<Convert_ConicToBSplineCurve.hxx>

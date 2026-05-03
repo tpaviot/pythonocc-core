@@ -269,7 +269,7 @@ returns Value as a ApplicationContext (Null if another type).
 		opencascade::handle<StepBasic_ApplicationContext> ApplicationContext();
 
 		/****** StepAP242_IdAttributeSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -284,7 +284,7 @@ Description
 -----------
 Recognizes a IdAttributeSelect Kind Entity that is: 1 -> Action 2 -> Address 3 -> ApplicationContext 4 -> DimensionalSize 5 -> GeometricTolerance 6 -> Group 7 -> Reserved for OrganizatonalProject (not implemented in OCCT) 8 -> ProductCategory 9 -> PropertyDefinition 10 -> Representation 11 -> ShapeAspect 12 -> ShapeAspectRelationship 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP242_IdAttributeSelect::DimensionalSize ******/
 		/****** md5 signature: b3d1e5ecfb9af68552cff269c1a5a7db ******/
@@ -444,20 +444,20 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItem ******/
-		/****** md5 signature: 2f7ebe1107954650bb508514bae23994 ******/
+		/****** md5 signature: 2198c30995df247fb0f08a82bae45298 ******/
 		%feature("compactdefaultargs") IdentifiedItem;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepRepr_HArray1OfRepresentationItem>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>>
 
 Description
 -----------
 Returns field IdentifiedItem.
 ") IdentifiedItem;
-		opencascade::handle<StepRepr_HArray1OfRepresentationItem> IdentifiedItem();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>>> IdentifiedItem();
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::IdentifiedItemValue ******/
-		/****** md5 signature: d901fcdbe75f6f4819aea517aa0951ee ******/
+		/****** md5 signature: acc149fa242ca021ad0426d0c7894df3 ******/
 		%feature("compactdefaultargs") IdentifiedItemValue;
 		%feature("autodoc", "
 Parameters
@@ -472,10 +472,10 @@ Description
 -----------
 Returns identified item with given number.
 ") IdentifiedItemValue;
-		opencascade::handle<StepRepr_RepresentationItem> IdentifiedItemValue(const Standard_Integer num);
+		opencascade::handle<StepRepr_RepresentationItem> IdentifiedItemValue(const int num);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::Init ******/
-		/****** md5 signature: 6d1eb1c4fa0f31b992b8238c982be05a ******/
+		/****** md5 signature: 3e2a1fa1f86837d61c7ca95e46c9ac8d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -484,7 +484,7 @@ theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 theDefinition: StepAP242_ItemIdentifiedRepresentationUsageDefinition
 theUsedRepresentation: StepRepr_Representation
-theIdentifiedItem: StepRepr_HArray1OfRepresentationItem
+theIdentifiedItem: NCollection_HArray1<
 
 Return
 -------
@@ -494,7 +494,7 @@ Description
 -----------
 Init all fields own and inherited.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition, const opencascade::handle<StepRepr_Representation> & theUsedRepresentation, const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theIdentifiedItem);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition, const opencascade::handle<StepRepr_Representation> & theUsedRepresentation, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theIdentifiedItem);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::Name ******/
 		/****** md5 signature: a48270f13ec87e0b7c4b0136a8804c98 ******/
@@ -510,7 +510,7 @@ Returns field Name.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::NbIdentifiedItem ******/
-		/****** md5 signature: 60f8e4abc308ba7cd5d67e96c8cdb010 ******/
+		/****** md5 signature: 406b43e83bf2d7478e5168be86cb5c1c ******/
 		%feature("compactdefaultargs") NbIdentifiedItem;
 		%feature("autodoc", "Return
 -------
@@ -520,7 +520,7 @@ Description
 -----------
 Returns number of identified items.
 ") NbIdentifiedItem;
-		Standard_Integer NbIdentifiedItem();
+		int NbIdentifiedItem();
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::SetDefinition ******/
 		/****** md5 signature: cd39bedc7b00410c1ca91625b706751a ******/
@@ -559,12 +559,12 @@ Set field Description.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItem ******/
-		/****** md5 signature: c8c178c6a18f5eef57cf629ecf236a8b ******/
+		/****** md5 signature: 7cf599190bdd858e31dfa1b99620de84 ******/
 		%feature("compactdefaultargs") SetIdentifiedItem;
 		%feature("autodoc", "
 Parameters
 ----------
-theIdentifiedItem: StepRepr_HArray1OfRepresentationItem
+theIdentifiedItem: NCollection_HArray1<
 
 Return
 -------
@@ -574,10 +574,10 @@ Description
 -----------
 Set field IdentifiedItem.
 ") SetIdentifiedItem;
-		void SetIdentifiedItem(const opencascade::handle<StepRepr_HArray1OfRepresentationItem> & theIdentifiedItem);
+		void SetIdentifiedItem(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theIdentifiedItem);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue ******/
-		/****** md5 signature: 1785481ef39e08611f3beba3da47577e ******/
+		/****** md5 signature: c6c9f1e40869b1c28eae7270d7c74cf1 ******/
 		%feature("compactdefaultargs") SetIdentifiedItemValue;
 		%feature("autodoc", "
 Parameters
@@ -593,7 +593,7 @@ Description
 -----------
 Set identified item with given number.
 ") SetIdentifiedItemValue;
-		void SetIdentifiedItemValue(const Standard_Integer num, const opencascade::handle<StepRepr_RepresentationItem> & theItem);
+		void SetIdentifiedItemValue(const int num, const opencascade::handle<StepRepr_RepresentationItem> & theItem);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::SetName ******/
 		/****** md5 signature: e058c117d39fc45f2a180acd037ae283 ******/
@@ -791,7 +791,7 @@ returns Value as a AppliedSecurityClassificationAssignment (Null if another type
 		opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> AppliedSecurityClassificationAssignment();
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsageDefinition::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -806,7 +806,7 @@ Description
 -----------
 Recognizes a ItemIdentifiedRepresentationUsageDefinition Kind Entity that is: 1 -> AppliedApprovalAssignment 2 -> AppliedDateAndTimeAssignment 3 -> AppliedDateAssignment 4 -> AppliedDocumentReference 5 -> AppliedExternalIdentificationAssignment 6 -> AppliedGroupAssignment 7 -> AppliedOrganizationAssignment 8 -> AppliedPersonAndOrganizationAssignment 9 -> AppliedSecurityClassificationAssignment 10 -> DimensionalSize 11 -> GeneralProperty 12 -> GeometricTolerance 13 -> ProductDefinitionRelationship 14 -> PropertyDefinition 15 -> PropertyDefinitionRelationship 16 -> ShapeAspect 17 -> ShapeAspectRelationship 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsageDefinition::DimensionalSize ******/
 		/****** md5 signature: b3d1e5ecfb9af68552cff269c1a5a7db ******/

@@ -21,6 +21,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<Approx_Array1OfAdHSurface.hxx>
 #include<Approx_Array1OfGTrsf2d.hxx>
+#include<Approx_BSplineApproxInterp.hxx>
 #include<Approx_Curve2d.hxx>
 #include<Approx_Curve3d.hxx>
 #include<Approx_CurveOnSurface.hxx>

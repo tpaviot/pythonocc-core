@@ -24,13 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MAT2d_Circuit.hxx>
 #include<MAT2d_Connexion.hxx>
 #include<MAT2d_CutCurve.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfBiIntInteger.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfIntegerBisec.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion.hxx>
-#include<MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d.hxx>
 #include<MAT2d_DataMapOfBiIntInteger.hxx>
 #include<MAT2d_DataMapOfBiIntSequenceOfInteger.hxx>
 #include<MAT2d_DataMapOfIntegerBisec.hxx>

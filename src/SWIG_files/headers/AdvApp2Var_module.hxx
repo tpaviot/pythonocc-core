@@ -25,8 +25,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<AdvApp2Var_Criterion.hxx>
 #include<AdvApp2Var_CriterionRepartition.hxx>
 #include<AdvApp2Var_CriterionType.hxx>
-#include<AdvApp2Var_Data.hxx>
-#include<AdvApp2Var_Data_f2c.hxx>
 #include<AdvApp2Var_EvaluatorFunc2Var.hxx>
 #include<AdvApp2Var_Framework.hxx>
 #include<AdvApp2Var_Iso.hxx>

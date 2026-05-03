@@ -108,7 +108,7 @@ No available documentation.
 		static void AddToUserInfo(const opencascade::handle<Storage_Data> & aData, TCollection_ExtendedString anInfo);
 
 		/****** UTL::CString ******/
-		/****** md5 signature: 27efc7f42e41e693f1b566c94a6e6b65 ******/
+		/****** md5 signature: fc1d31b495eb46d0445cb879686ac0ad ******/
 		%feature("compactdefaultargs") CString;
 		%feature("autodoc", "
 Parameters
@@ -117,13 +117,13 @@ anExtendedString: str
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") CString;
-		static Standard_CString CString(TCollection_ExtendedString anExtendedString);
+		static const char * CString(TCollection_ExtendedString anExtendedString);
 
 		/****** UTL::Disk ******/
 		/****** md5 signature: d10b057859f3bb88132a108ce30e1b0f ******/
@@ -217,7 +217,7 @@ No available documentation.
 		static OSD_FileIterator FileIterator(const OSD_Path & aPath, TCollection_ExtendedString aMask);
 
 		/****** UTL::Find ******/
-		/****** md5 signature: 7d0c88cfc70710cdf2dc6818263dc184 ******/
+		/****** md5 signature: 833e24700f885a7a9bff250997cbd50c ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -233,7 +233,7 @@ Description
 -----------
 No available documentation.
 ") Find;
-		static Standard_Boolean Find(const opencascade::handle<Resource_Manager> & aResourceManager, TCollection_ExtendedString aResourceName);
+		static bool Find(const opencascade::handle<Resource_Manager> & aResourceManager, TCollection_ExtendedString aResourceName);
 
 		/****** UTL::GUID ******/
 		/****** md5 signature: 76570a611bd03b2da6866c2d772e9fca ******/
@@ -254,7 +254,7 @@ No available documentation.
 		static Standard_GUID GUID(TCollection_ExtendedString anXString);
 
 		/****** UTL::IntegerValue ******/
-		/****** md5 signature: 5a50b43fa4a82a78c3725a39c3dd3b89 ******/
+		/****** md5 signature: baa0d2746355459c7a6b2e5303ed4a5b ******/
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", "
 Parameters
@@ -269,10 +269,10 @@ Description
 -----------
 No available documentation.
 ") IntegerValue;
-		static Standard_Integer IntegerValue(TCollection_ExtendedString anExtendedString);
+		static int IntegerValue(TCollection_ExtendedString anExtendedString);
 
 		/****** UTL::IsReadOnly ******/
-		/****** md5 signature: 20a1ebdd29b1efdf19fc6ba48c54072e ******/
+		/****** md5 signature: a8e76d920932ed816c4b13e57ad6ce94 ******/
 		%feature("compactdefaultargs") IsReadOnly;
 		%feature("autodoc", "
 Parameters
@@ -287,7 +287,7 @@ Description
 -----------
 No available documentation.
 ") IsReadOnly;
-		static Standard_Boolean IsReadOnly(TCollection_ExtendedString aFileName);
+		static bool IsReadOnly(TCollection_ExtendedString aFileName);
 
 		/****** UTL::LocalHost ******/
 		/****** md5 signature: 0263c99711423d618edb93f574dec1d5 ******/
@@ -396,12 +396,12 @@ No available documentation.
 		static TCollection_ExtendedString Value(const opencascade::handle<Resource_Manager> & aResourceManager, TCollection_ExtendedString aResourceName);
 
 		/****** UTL::xgetenv ******/
-		/****** md5 signature: f0cc6b56a545b4756269104c4f87d26e ******/
+		/****** md5 signature: a7a142cc3541d346ca3456ef5c5fe9e5 ******/
 		%feature("compactdefaultargs") xgetenv;
 		%feature("autodoc", "
 Parameters
 ----------
-aCString: str
+aCString: char *
 
 Return
 -------
@@ -411,7 +411,7 @@ Description
 -----------
 No available documentation.
 ") xgetenv;
-		static TCollection_ExtendedString xgetenv(Standard_CString aCString);
+		static TCollection_ExtendedString xgetenv(const char * const aCString);
 
 };
 

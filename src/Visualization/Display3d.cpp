@@ -18,6 +18,7 @@
 */
 
 #include "Visualization.h"
+#include <TColStd_IndexedDataMapOfStringString.hxx>
 
 
 static Handle(OpenGl_GraphicDriver)& GetGraphicDriver()

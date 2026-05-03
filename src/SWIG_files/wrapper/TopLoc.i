@@ -73,6 +73,10 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%ignore NCollection_IndexedMap<TopLoc_Location>::Items;
+%ignore NCollection_IndexedMap<TopLoc_Location>::KeyValues;
+%ignore NCollection_IndexedMap<TopLoc_Location>::IndexedItems;
+%ignore NCollection_IndexedMap<TopLoc_Location>::Contained;
 %template(TopLoc_IndexedMapOfLocation) NCollection_IndexedMap<TopLoc_Location>;
 %template(TopLoc_MapOfLocation) NCollection_Map<TopLoc_Location>;
 /* end templates declaration */
@@ -213,7 +217,7 @@ Returns a gp_Trsf which, when applied to this datum, produces the default datum.
 class TopLoc_ItemLocation {
 	public:
 		/****** TopLoc_ItemLocation::TopLoc_ItemLocation ******/
-		/****** md5 signature: 44c00ea25ac3b4105c24f296cc1b3fc5 ******/
+		/****** md5 signature: 96e3bb32545d2e9085fcd3eaba22ac9a ******/
 		%feature("compactdefaultargs") TopLoc_ItemLocation;
 		%feature("autodoc", "
 Parameters
@@ -229,7 +233,7 @@ Description
 -----------
 Sets the elementary Datum to <D> Sets the exponent to <P>.
 ") TopLoc_ItemLocation;
-		 TopLoc_ItemLocation(const opencascade::handle<TopLoc_Datum3D> & D, const Standard_Integer P);
+		 TopLoc_ItemLocation(const opencascade::handle<TopLoc_Datum3D> & D, const int P);
 
 
         /****************** DumpJson ******************/
@@ -267,7 +271,7 @@ Dump the object to JSON string.
 class TopLoc_Location {
 	public:
 		/****** TopLoc_Location::TopLoc_Location ******/
-		/****** md5 signature: 93aa6734becd0bf9185b7e3b2c2b00c9 ******/
+		/****** md5 signature: 629849c6406c878d579cc13a52514cc1 ******/
 		%feature("compactdefaultargs") TopLoc_Location;
 		%feature("autodoc", "Return
 -------
@@ -278,6 +282,42 @@ Description
 Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be 'empty'.
 ") TopLoc_Location;
 		 TopLoc_Location();
+
+		/****** TopLoc_Location::TopLoc_Location ******/
+		/****** md5 signature: 924653b3d2fe2b76aa03be18bdc788ad ******/
+		%feature("compactdefaultargs") TopLoc_Location;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: TopLoc_Location
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor.
+") TopLoc_Location;
+		 TopLoc_Location(const TopLoc_Location & theOther);
+
+		/****** TopLoc_Location::TopLoc_Location ******/
+		/****** md5 signature: 720edddffc68189c9c11cc9afe04b29c ******/
+		%feature("compactdefaultargs") TopLoc_Location;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: TopLoc_Location
+
+Return
+-------
+None
+
+Description
+-----------
+Move constructor.
+") TopLoc_Location;
+		 TopLoc_Location(TopLoc_Location & theOther);
 
 		/****** TopLoc_Location::TopLoc_Location ******/
 		/****** md5 signature: 6a2d975754aeaf7f3ab3682581acce4a ******/
@@ -316,7 +356,7 @@ Constructs the local coordinate system object defined by the 3D datum D. Excepti
 		 TopLoc_Location(const opencascade::handle<TopLoc_Datum3D> & D);
 
 		/****** TopLoc_Location::Clear ******/
-		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
+		/****** md5 signature: f94ced5490d98e5d60224bef6de49d38 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -381,7 +421,7 @@ Returns the first elementary datum of the Location. Use the NextLocation functio
 		const opencascade::handle<TopLoc_Datum3D> & FirstDatum();
 
 		/****** TopLoc_Location::FirstPower ******/
-		/****** md5 signature: f82e700978233be4257ee703ac848471 ******/
+		/****** md5 signature: 382d87c09f4a02429a528288baab71cf ******/
 		%feature("compactdefaultargs") FirstPower;
 		%feature("autodoc", "Return
 -------
@@ -391,10 +431,10 @@ Description
 -----------
 Returns the power elevation of the first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
 ") FirstPower;
-		Standard_Integer FirstPower();
+		int FirstPower();
 
 		/****** TopLoc_Location::HashCode ******/
-		/****** md5 signature: 06b666a7ce1ccd2c4e4b4282e54344e0 ******/
+		/****** md5 signature: e6d33518f6ceb2746b64a927df545aed ******/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Return
 -------
@@ -408,7 +448,7 @@ Return: a computed hash code.
 		size_t HashCode();
 
 		/****** TopLoc_Location::Identity ******/
-		/****** md5 signature: 64fc51a3ba989a9b1d65ef638ba90638 ******/
+		/****** md5 signature: 1f0eff03c9cfaa24804ec08851807008 ******/
 		%feature("compactdefaultargs") Identity;
 		%feature("autodoc", "Return
 -------
@@ -434,12 +474,12 @@ Returns the inverse of <self>. //! <self> * Inverted() is an Identity.
 		TopLoc_Location Inverted();
 
 		/****** TopLoc_Location::IsDifferent ******/
-		/****** md5 signature: 3d18eb241535f19435a69a497e59d20d ******/
+		/****** md5 signature: d3fecf8d4ee4f3ea397949494d6d4d1a ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
 ----------
-Other: TopLoc_Location
+theOther: TopLoc_Location
 
 Return
 -------
@@ -449,15 +489,15 @@ Description
 -----------
 Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
 ") IsDifferent;
-		Standard_Boolean IsDifferent(const TopLoc_Location & Other);
+		bool IsDifferent(const TopLoc_Location & theOther);
 
 		/****** TopLoc_Location::IsEqual ******/
-		/****** md5 signature: f2932b5badcf39895fb716ab41db8b77 ******/
+		/****** md5 signature: 84fe41995192aebb611dfe059377c1ec ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
 ----------
-Other: TopLoc_Location
+theOther: TopLoc_Location
 
 Return
 -------
@@ -467,10 +507,10 @@ Description
 -----------
 Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
 ") IsEqual;
-		Standard_Boolean IsEqual(const TopLoc_Location & Other);
+		bool IsEqual(const TopLoc_Location & theOther);
 
 		/****** TopLoc_Location::IsIdentity ******/
-		/****** md5 signature: c38f0e0f7a13209171f4210bc9ad93d3 ******/
+		/****** md5 signature: 3d3140142042fb87cb739204e54e7ee9 ******/
 		%feature("compactdefaultargs") IsIdentity;
 		%feature("autodoc", "Return
 -------
@@ -480,7 +520,7 @@ Description
 -----------
 Returns true if this location is equal to the Identity transformation.
 ") IsIdentity;
-		Standard_Boolean IsIdentity();
+		bool IsIdentity();
 
 		/****** TopLoc_Location::Multiplied ******/
 		/****** md5 signature: d0ab0a5bc6e645b7631dc956217bbac6 ******/
@@ -514,7 +554,7 @@ Returns a Location representing <self> without the first datum. We have the rela
 		const TopLoc_Location & NextLocation();
 
 		/****** TopLoc_Location::Powered ******/
-		/****** md5 signature: 2aeb53c5ab1b0e7282c2ac03730989fc ******/
+		/****** md5 signature: a13c87762b94e3afabe1409d5809c520 ******/
 		%feature("compactdefaultargs") Powered;
 		%feature("autodoc", "
 Parameters
@@ -529,7 +569,7 @@ Description
 -----------
 Returns me at the power <pwr>. If <pwr> is zero returns Identity. <pwr> can be lower than zero (usual meaning for powers).
 ") Powered;
-		TopLoc_Location Powered(const Standard_Integer pwr);
+		TopLoc_Location Powered(const int pwr);
 
 		/****** TopLoc_Location::Predivided ******/
 		/****** md5 signature: 67db06b8cb24ea5e40aa828bd3c89dd1 ******/
@@ -550,17 +590,17 @@ Returns <Other>.Inverted() * <self>.
 		TopLoc_Location Predivided(const TopLoc_Location & Other);
 
 		/****** TopLoc_Location::ScalePrec ******/
-		/****** md5 signature: dffe6ee0100207e469842f2ea00b57ac ******/
+		/****** md5 signature: 817106cb55d2e7f8e1d3b6316d44cd32 ******/
 		%feature("compactdefaultargs") ScalePrec;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ScalePrec;
-		static Standard_Real ScalePrec();
+		static double ScalePrec();
 
 		/****** TopLoc_Location::ShallowDump ******/
 		/****** md5 signature: becb37fcb2ae0b90bde25605537706e5 ******/
@@ -736,7 +776,7 @@ No available documentation.
 class TopLoc_SListOfItemLocation {
 	public:
 		/****** TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation ******/
-		/****** md5 signature: 2f9ad3c814b4b63689c359b0393ae771 ******/
+		/****** md5 signature: ff5ed5e968d2ae5348a2fc49425fee50 ******/
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "Return
 -------
@@ -768,7 +808,7 @@ Creates a List with <anItem> as value and <aTail> as tail.
 		 TopLoc_SListOfItemLocation(const TopLoc_ItemLocation & anItem, const TopLoc_SListOfItemLocation & aTail);
 
 		/****** TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation ******/
-		/****** md5 signature: c23bf9b5c1b0adfcaf79aa477b9cc274 ******/
+		/****** md5 signature: a56712eac99de26c80cd4912008d9e2d ******/
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "
 Parameters
@@ -786,7 +826,7 @@ Creates a list from an other one. The lists are shared.
 		 TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation & Other);
 
 		/****** TopLoc_SListOfItemLocation::TopLoc_SListOfItemLocation ******/
-		/****** md5 signature: 0379b2634e957903294469c3ee0f66b5 ******/
+		/****** md5 signature: eb5e10c8bf2a8e0756a15294a08f1243 ******/
 		%feature("compactdefaultargs") TopLoc_SListOfItemLocation;
 		%feature("autodoc", "
 Parameters
@@ -822,7 +862,7 @@ Sets a list from an other one. The lists are shared. The list itself is returned
 		TopLoc_SListOfItemLocation & Assign(const TopLoc_SListOfItemLocation & Other);
 
 		/****** TopLoc_SListOfItemLocation::Clear ******/
-		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
+		/****** md5 signature: f94ced5490d98e5d60224bef6de49d38 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -853,7 +893,7 @@ Replaces the list by a list with <anItem> as Value and the list <self> as tail.
 		void Construct(const TopLoc_ItemLocation & anItem);
 
 		/****** TopLoc_SListOfItemLocation::IsEmpty ******/
-		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
+		/****** md5 signature: 0b1729d7dd66450c10440a01fc8d63d2 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -863,10 +903,10 @@ Description
 -----------
 Return true if this list is empty.
 ") IsEmpty;
-		Standard_Boolean IsEmpty();
+		bool IsEmpty();
 
 		/****** TopLoc_SListOfItemLocation::More ******/
-		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
+		/****** md5 signature: 9e74877ec9fa81689f1de8f969e60d39 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -876,7 +916,7 @@ Description
 -----------
 Returns True if the iterator has a current value. This is !IsEmpty().
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** TopLoc_SListOfItemLocation::Next ******/
 		/****** md5 signature: 1201a55f750036045cd397a65f07fc7d ******/

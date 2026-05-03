@@ -44,8 +44,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tobj.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TCollection_module.hxx>
 #include<TDocStd_module.hxx>
+#include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<TDF_module.hxx>
 #include<gp_module.hxx>
@@ -60,8 +60,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tobj.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TCollection.i
 %import TDocStd.i
+%import TCollection.i
 %import Message.i
 %import TDF.i
 %import gp.i
@@ -94,7 +94,6 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TObj_Application)
 %wrap_handle(TObj_CheckModel)
 %wrap_handle(TObj_Model)
 %wrap_handle(TObj_Object)
@@ -112,13 +111,9 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
 %wrap_handle(TObj_HiddenPartition)
 %wrap_handle(TObj_OcafObjectIterator)
 %wrap_handle(TObj_ReferenceIterator)
-%wrap_handle(TObj_HSequenceOfObject)
 /* end handles declaration */
 
 /* templates */
-%template(TObj_DataMapOfNameLabel) NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>,TDF_Label>;
-%template(TObj_DataMapOfObjectHSequenceOcafObjects) NCollection_DataMap<opencascade::handle<TObj_Object>,opencascade::handle<TObj_HSequenceOfObject>>;
-%template(TObj_DataMapOfStringPointer) NCollection_DataMap<TCollection_AsciiString,Standard_Address>;
 %template(TObj_SequenceOfIterator) NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>>;
 
 %extend NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>> {
@@ -127,26 +122,10 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
         return self.Size()
     }
 };
-%template(TObj_SequenceOfObject) NCollection_Sequence<opencascade::handle<TObj_Object>>;
-
-%extend NCollection_Sequence<opencascade::handle<TObj_Object>> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
-%template(TObj_TIntSparseArray_MapOfData) NCollection_SparseArray<Standard_Integer>;
-%template(TObj_TIntSparseArray_VecOfData) NCollection_SparseArray<Standard_Integer>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> TObj_DataMapOfNameLabel;
-typedef NCollection_DataMap<opencascade::handle<TObj_Object>, opencascade::handle<TObj_HSequenceOfObject>> TObj_DataMapOfObjectHSequenceOcafObjects;
-typedef NCollection_DataMap<TCollection_AsciiString, Standard_Address> TObj_DataMapOfStringPointer;
 typedef NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>> TObj_SequenceOfIterator;
-typedef NCollection_Sequence<opencascade::handle<TObj_Object>> TObj_SequenceOfObject;
-typedef NCollection_SparseArray<Standard_Integer> TObj_TIntSparseArray_MapOfData;
-typedef NCollection_SparseArray<Standard_Integer> TObj_TIntSparseArray_VecOfData;
 /* end typedefs declaration */
 
 /*************************
@@ -156,7 +135,7 @@ typedef NCollection_SparseArray<Standard_Integer> TObj_TIntSparseArray_VecOfData
 class TObj_Application : public TDocStd_Application {
 	public:
 		/****** TObj_Application::CreateNewDocument ******/
-		/****** md5 signature: 66c07fbb868e2d80d40d8dbc03c2c585 ******/
+		/****** md5 signature: 4583c104c79a10037e252373da7f34b6 ******/
 		%feature("compactdefaultargs") CreateNewDocument;
 		%feature("autodoc", "
 Parameters
@@ -172,7 +151,7 @@ Description
 -----------
 Create the OCAF document from scratch.
 ") CreateNewDocument;
-		virtual Standard_Boolean CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString theFormat);
+		virtual bool CreateNewDocument(opencascade::handle<TDocStd_Document> & theDoc, TCollection_ExtendedString theFormat);
 
 
         /****************** DumpJson ******************/
@@ -246,7 +225,7 @@ Returns static instance of the application.
 		static opencascade::handle<TObj_Application> GetInstance();
 
 		/****** TObj_Application::IsVerbose ******/
-		/****** md5 signature: a6d755f3bc2925d0e87129fb67ebe8b2 ******/
+		/****** md5 signature: 27ff900b00ccbb92166278524d75b34c ******/
 		%feature("compactdefaultargs") IsVerbose;
 		%feature("autodoc", "Return
 -------
@@ -256,10 +235,10 @@ Description
 -----------
 Returns the verbose flag.
 ") IsVerbose;
-		Standard_Boolean IsVerbose();
+		bool IsVerbose();
 
 		/****** TObj_Application::LoadDocument ******/
-		/****** md5 signature: 8a2556ff2fdb6a537d3831a48cc67499 ******/
+		/****** md5 signature: 95c7f3e04ad26a6cdfc3c0934a48290a ******/
 		%feature("compactdefaultargs") LoadDocument;
 		%feature("autodoc", "
 Parameters
@@ -275,10 +254,10 @@ Description
 -----------
 Loading the OCAF document from a file.
 ") LoadDocument;
-		virtual Standard_Boolean LoadDocument(TCollection_ExtendedString theSourceFile, opencascade::handle<TDocStd_Document> & theTargetDoc);
+		virtual bool LoadDocument(TCollection_ExtendedString theSourceFile, opencascade::handle<TDocStd_Document> & theTargetDoc);
 
 		/****** TObj_Application::LoadDocument ******/
-		/****** md5 signature: 6198a02fdef7071ddc8d32deda295e03 ******/
+		/****** md5 signature: f15dbce89e9c3a5c3c68c1ddd7fb2a90 ******/
 		%feature("compactdefaultargs") LoadDocument;
 		%feature("autodoc", "
 Parameters
@@ -294,7 +273,7 @@ Description
 -----------
 Loading the OCAF document from a stream.
 ") LoadDocument;
-		virtual Standard_Boolean LoadDocument(std::istream & theIStream, opencascade::handle<TDocStd_Document> & theTargetDoc);
+		virtual bool LoadDocument(std::istream & theIStream, opencascade::handle<TDocStd_Document> & theTargetDoc);
 
 		/****** TObj_Application::Messenger ******/
 		/****** md5 signature: fe56be9196543a6602ef636ef1016498 ******/
@@ -310,20 +289,20 @@ Returns reference to associated messenger handle.
 		opencascade::handle<Message_Messenger> & Messenger();
 
 		/****** TObj_Application::ResourcesName ******/
-		/****** md5 signature: 96f8731792cfcab6c0cf55cdc1a09a9b ******/
+		/****** md5 signature: f28505356ea37c7b82c47cbf3266f2fa ******/
 		%feature("compactdefaultargs") ResourcesName;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 Return name of resource (i.e. 'TObj').
 ") ResourcesName;
-		virtual Standard_CString ResourcesName();
+		const char * ResourcesName();
 
 		/****** TObj_Application::SaveDocument ******/
-		/****** md5 signature: dcfedbeb5fa0e25c1797d36111fba7ba ******/
+		/****** md5 signature: 133db0851d7ce3b1e8e0a14ee683fba5 ******/
 		%feature("compactdefaultargs") SaveDocument;
 		%feature("autodoc", "
 Parameters
@@ -339,10 +318,10 @@ Description
 -----------
 Saving the OCAF document to a file.
 ") SaveDocument;
-		virtual Standard_Boolean SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, TCollection_ExtendedString theTargetFile);
+		virtual bool SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, TCollection_ExtendedString theTargetFile);
 
 		/****** TObj_Application::SaveDocument ******/
-		/****** md5 signature: 732e0f95697794910e7302feb84b3e76 ******/
+		/****** md5 signature: f3f8facdfd87d05753109e38e5cddd73 ******/
 		%feature("compactdefaultargs") SaveDocument;
 		%feature("autodoc", "
 Parameters
@@ -357,10 +336,10 @@ Description
 -----------
 Saving the OCAF document to a stream.
 ") SaveDocument;
-		virtual Standard_Boolean SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, std::ostream &OutValue);
+		virtual bool SaveDocument(const opencascade::handle<TDocStd_Document> & theSourceDoc, std::ostream &OutValue);
 
 		/****** TObj_Application::SetVerbose ******/
-		/****** md5 signature: ec07929ffcbc58b57cfe36e4754b10e9 ******/
+		/****** md5 signature: a14247026854eea7ddd902ef6d36a24c ******/
 		%feature("compactdefaultargs") SetVerbose;
 		%feature("autodoc", "
 Parameters
@@ -375,12 +354,10 @@ Description
 -----------
 Sets the verbose flag, meaning that load/save models should show CPU and elapsed times.
 ") SetVerbose;
-		void SetVerbose(const Standard_Boolean isVerbose);
+		void SetVerbose(const bool isVerbose);
 
 };
 
-
-%make_alias(TObj_Application)
 
 %extend TObj_Application {
 	%pythoncode {
@@ -412,7 +389,7 @@ Binds model to the map.
 		static void BindModel(const opencascade::handle<TObj_Model> & theModel);
 
 		/****** TObj_Assistant::BindType ******/
-		/****** md5 signature: 4c08d477bf36ab0aee13c610d61470b2 ******/
+		/****** md5 signature: b6178cda7b26838d592aed90ca0b1409 ******/
 		%feature("compactdefaultargs") BindType;
 		%feature("autodoc", "
 Parameters
@@ -427,7 +404,7 @@ Description
 -----------
 Binds Standard_Type to the map; returns index of bound type.
 ") BindType;
-		static Standard_Integer BindType(const opencascade::handle<Standard_Type> & theType);
+		static int BindType(const opencascade::handle<Standard_Type> & theType);
 
 		/****** TObj_Assistant::ClearModelMap ******/
 		/****** md5 signature: 3a94bcfdd1d70b146e8b656aace330d2 ******/
@@ -456,12 +433,12 @@ Clears map of types.
 		static void ClearTypeMap();
 
 		/****** TObj_Assistant::FindModel ******/
-		/****** md5 signature: e92adf0596d1a4921ec125698f7e69a8 ******/
+		/****** md5 signature: 93947df4d3ed61e427c43c10db7ec77d ******/
 		%feature("compactdefaultargs") FindModel;
 		%feature("autodoc", "
 Parameters
 ----------
-theName: str
+theName: char *
 
 Return
 -------
@@ -471,10 +448,10 @@ Description
 -----------
 Finds model by name.
 ") FindModel;
-		static opencascade::handle<TObj_Model> FindModel(Standard_CString theName);
+		static opencascade::handle<TObj_Model> FindModel(const char * const theName);
 
 		/****** TObj_Assistant::FindType ******/
-		/****** md5 signature: b1e7bafac320a7941eacca004bbb32c3 ******/
+		/****** md5 signature: 371096dfb467e16b10ef36de9bcdeb29 ******/
 		%feature("compactdefaultargs") FindType;
 		%feature("autodoc", "
 Parameters
@@ -489,10 +466,10 @@ Description
 -----------
 Finds Standard_Type by index; returns NULL handle if not found.
 ") FindType;
-		static opencascade::handle<Standard_Type> FindType(const Standard_Integer theTypeIndex);
+		static opencascade::handle<Standard_Type> FindType(const int theTypeIndex);
 
 		/****** TObj_Assistant::FindTypeIndex ******/
-		/****** md5 signature: 7f781906b702ddcb5ba66a20b4714214 ******/
+		/****** md5 signature: d6a56117413795c28708f020d059b97d ******/
 		%feature("compactdefaultargs") FindTypeIndex;
 		%feature("autodoc", "
 Parameters
@@ -507,10 +484,10 @@ Description
 -----------
 Rinds index by Standard_Type; returns 0 if not found.
 ") FindTypeIndex;
-		static Standard_Integer FindTypeIndex(const opencascade::handle<Standard_Type> & theType);
+		static int FindTypeIndex(const opencascade::handle<Standard_Type> & theType);
 
 		/****** TObj_Assistant::GetAppVersion ******/
-		/****** md5 signature: 4d6364b939641f7662174904b93eee4a ******/
+		/****** md5 signature: a6342b5106155fc659de5afa07f12360 ******/
 		%feature("compactdefaultargs") GetAppVersion;
 		%feature("autodoc", "Return
 -------
@@ -520,7 +497,7 @@ Description
 -----------
 Returns the version of application which wrote the currently read document. Returns 0 if it has not been set yet for the current document.
 ") GetAppVersion;
-		static Standard_Integer GetAppVersion();
+		static int GetAppVersion();
 
 		/****** TObj_Assistant::GetCurrentModel ******/
 		/****** md5 signature: 851c776b5d53e414ee2805ddd9eb6268 ******/
@@ -612,7 +589,7 @@ Returns the checked model.
 		const opencascade::handle<TObj_Model> & GetModel();
 
 		/****** TObj_CheckModel::IsToFix ******/
-		/****** md5 signature: 5e37ed2ecd01c281c73e4a215c68991e ******/
+		/****** md5 signature: e9c030c4e6370cd8be32a88ab20422fe ******/
 		%feature("compactdefaultargs") IsToFix;
 		%feature("autodoc", "Return
 -------
@@ -622,10 +599,10 @@ Description
 -----------
 Returns true if it is allowed to fix inconsistencies.
 ") IsToFix;
-		Standard_Boolean IsToFix();
+		bool IsToFix();
 
 		/****** TObj_CheckModel::Perform ******/
-		/****** md5 signature: 13c494512ebd157b19de66d8b841f157 ******/
+		/****** md5 signature: 107e59197b0bbca4b641ec7127b7b2cd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -635,10 +612,10 @@ Description
 -----------
 Performs all checks. Descendants should call parent method before doing own checks. This implementation checks OCAF references and back references between objects of the model. Returns true if no inconsistencies found.
 ") Perform;
-		virtual Standard_Boolean Perform();
+		virtual bool Perform();
 
 		/****** TObj_CheckModel::SetToFix ******/
-		/****** md5 signature: cb0188f8c8e5eca907778d591f1fcc74 ******/
+		/****** md5 signature: 029c1b3c781d9a0c13315d4583156d3d ******/
 		%feature("compactdefaultargs") SetToFix;
 		%feature("autodoc", "
 Parameters
@@ -653,7 +630,7 @@ Description
 -----------
 Sets flag allowing fixing inconsistencies.
 ") SetToFix;
-		void SetToFix(const Standard_Boolean theToFix);
+		void SetToFix(const bool theToFix);
 
 };
 
@@ -687,7 +664,7 @@ Abort the Command transaction. Do nothing If there is no Command transaction ope
 		void AbortCommand();
 
 		/****** TObj_Model::Close ******/
-		/****** md5 signature: 413b77e104256091d7f6a8bf1c40b584 ******/
+		/****** md5 signature: 9c804eb59e942dad78810cb81b556c35 ******/
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "Return
 -------
@@ -697,7 +674,7 @@ Description
 -----------
 Close the model.
 ") Close;
-		virtual Standard_Boolean Close();
+		virtual bool Close();
 
 		/****** TObj_Model::CloseDocument ******/
 		/****** md5 signature: 9548869473e65a56f81cbd28c6cb6de4 ******/
@@ -878,7 +855,7 @@ Returns the format for save/restore. This implementation returns 'BinOcaf'. The 
 		virtual TCollection_ExtendedString GetFormat();
 
 		/****** TObj_Model::GetFormatVersion ******/
-		/****** md5 signature: c4d68879e42048f499bf2ed66a66697f ******/
+		/****** md5 signature: 907174d844fcfb0ab20df1fa9c474db9 ******/
 		%feature("compactdefaultargs") GetFormatVersion;
 		%feature("autodoc", "Return
 -------
@@ -888,7 +865,7 @@ Description
 -----------
 Returns the version of format stored in TObj file.
 ") GetFormatVersion;
-		Standard_Integer GetFormatVersion();
+		int GetFormatVersion();
 
 		/****** TObj_Model::GetGUID ******/
 		/****** md5 signature: 2e4ec7705c6889137d267052207a2d44 ******/
@@ -969,7 +946,7 @@ Returns root object of model.
 		virtual opencascade::handle<TObj_Object> GetRoot();
 
 		/****** TObj_Model::HasOpenCommand ******/
-		/****** md5 signature: dd69c57ebd4821e931afe0accf5d3235 ******/
+		/****** md5 signature: 5601cfe5457870d35a28da8037b39545 ******/
 		%feature("compactdefaultargs") HasOpenCommand;
 		%feature("autodoc", "Return
 -------
@@ -979,10 +956,10 @@ Description
 -----------
 Returns True if a Command transaction is open Starting, finishing the transaction.
 ") HasOpenCommand;
-		Standard_Boolean HasOpenCommand();
+		bool HasOpenCommand();
 
 		/****** TObj_Model::IsModified ******/
-		/****** md5 signature: 5ce7de654801bdab4f554fb028ad99d5 ******/
+		/****** md5 signature: d7d348677eb84352eb3a9f3752051817 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "Return
 -------
@@ -992,10 +969,10 @@ Description
 -----------
 Modification status.
 ") IsModified;
-		virtual Standard_Boolean IsModified();
+		virtual bool IsModified();
 
 		/****** TObj_Model::IsRegisteredName ******/
-		/****** md5 signature: 7f384ef103fda61fa0e4e4641faf1bcb ******/
+		/****** md5 signature: f4dfc5ac55aca3e9620c53ed4aa13c24 ******/
 		%feature("compactdefaultargs") IsRegisteredName;
 		%feature("autodoc", "
 Parameters
@@ -1011,10 +988,10 @@ Description
 -----------
 Returns True is name is registered in the names map The input argument may be NULL handle, then model check in own global container.
 ") IsRegisteredName;
-		Standard_Boolean IsRegisteredName(const opencascade::handle<TCollection_HExtendedString> & theName, const opencascade::handle<TObj_TNameContainer> & theDictionary);
+		bool IsRegisteredName(const opencascade::handle<TCollection_HExtendedString> & theName, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
 		/****** TObj_Model::Load ******/
-		/****** md5 signature: 71012ab36ad60691b764a409b2c58cf5 ******/
+		/****** md5 signature: ed9cff405b0b6b863721046d97ce2291 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -1029,10 +1006,10 @@ Description
 -----------
 Load the OCAF model from a file. If the filename is empty or file does not exists, it just initializes model by empty data.
 ") Load;
-		virtual Standard_Boolean Load(TCollection_ExtendedString theFile);
+		virtual bool Load(TCollection_ExtendedString theFile);
 
 		/****** TObj_Model::Load ******/
-		/****** md5 signature: 2ffa69b46ac088fac64bbec0e462308b ******/
+		/****** md5 signature: 14258419bbff42ad5a25d18d10582791 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -1047,7 +1024,7 @@ Description
 -----------
 Load the OCAF model from a stream. If case of failure, it initializes the model by empty data.
 ") Load;
-		virtual Standard_Boolean Load(std::istream & theIStream);
+		virtual bool Load(std::istream & theIStream);
 
 		/****** TObj_Model::Messenger ******/
 		/****** md5 signature: 77a43db9d3d7b7c3ed75b149057d7c93 ******/
@@ -1089,13 +1066,13 @@ Open a new command transaction.
 		void OpenCommand();
 
 		/****** TObj_Model::Paste ******/
-		/****** md5 signature: cbf806c47e2ef29c9d73f4131da52e66 ******/
+		/****** md5 signature: 40a5a727f18f71174bf8bb81807ec7f2 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
 ----------
 theModel: TObj_Model
-theRelocTable: TDF_RelocationTable (optional, default to 0)
+theRelocTable: TDF_RelocationTable (optional, default to nullptr)
 
 Return
 -------
@@ -1105,7 +1082,7 @@ Description
 -----------
 Pastes me to the new model references will not be copied if theRelocTable is not 0 if theRelocTable is not NULL theRelocTable is filled by objects.
 ") Paste;
-		virtual Standard_Boolean Paste(opencascade::handle<TObj_Model > theModel, opencascade::handle<TDF_RelocationTable > theRelocTable = 0);
+		virtual bool Paste(opencascade::handle<TObj_Model > theModel, opencascade::handle<TDF_RelocationTable > theRelocTable = nullptr);
 
 		/****** TObj_Model::RegisterName ******/
 		/****** md5 signature: 2d1cada8d3a2478f6398b1f301f39e14 ******/
@@ -1128,7 +1105,7 @@ Register name in the map The input argument may be NULL handle, then model check
 		void RegisterName(const opencascade::handle<TCollection_HExtendedString> & theName, const TDF_Label & theLabel, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
 		/****** TObj_Model::Save ******/
-		/****** md5 signature: 12a2001f1e3273a99e2b2644d098fa70 ******/
+		/****** md5 signature: af7e08ca2cf9706fcbaa9165132931f3 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -1138,10 +1115,10 @@ Description
 -----------
 Save the model to the same file.
 ") Save;
-		Standard_Boolean Save();
+		bool Save();
 
 		/****** TObj_Model::SaveAs ******/
-		/****** md5 signature: 533db7e09bfa4b0b90e7366acbe74a6f ******/
+		/****** md5 signature: dffb215671057b8c21178f1ac162bfbc ******/
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "
 Parameters
@@ -1156,10 +1133,10 @@ Description
 -----------
 Save the model to a file.
 ") SaveAs;
-		virtual Standard_Boolean SaveAs(TCollection_ExtendedString theFile);
+		virtual bool SaveAs(TCollection_ExtendedString theFile);
 
 		/****** TObj_Model::SaveAs ******/
-		/****** md5 signature: f456613ed7926d7d36f3530cb69cdf3e ******/
+		/****** md5 signature: c32ae6784a28ac2f26cdd02f5af5e646 ******/
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "
 Parameters
@@ -1173,7 +1150,7 @@ Description
 -----------
 Save the model to a stream.
 ") SaveAs;
-		virtual Standard_Boolean SaveAs(std::ostream &OutValue);
+		virtual bool SaveAs(std::ostream &OutValue);
 
 		/****** TObj_Model::SetLabel ******/
 		/****** md5 signature: cc470d5ce9738c8709b266c2b6c1b90a ******/
@@ -1212,7 +1189,7 @@ Set messenger to use for messages output.
 		void SetMessenger(const opencascade::handle<Message_Messenger> & theMsgr);
 
 		/****** TObj_Model::SetModified ******/
-		/****** md5 signature: ac1f2a167b77e95d548d4d430640fa75 ******/
+		/****** md5 signature: 12e01e42e34bc4604fc5d831e8768511 ******/
 		%feature("compactdefaultargs") SetModified;
 		%feature("autodoc", "
 Parameters
@@ -1227,7 +1204,7 @@ Description
 -----------
 Sets modification status.
 ") SetModified;
-		void SetModified(const Standard_Boolean theModified);
+		void SetModified(const bool theModified);
 
 		/****** TObj_Model::SetNewName ******/
 		/****** md5 signature: 4ee9fbc2348c268065d60bee26825205 ******/
@@ -1267,7 +1244,7 @@ Unregisters name from the map The input argument may be NULL handle, then model 
 		void UnRegisterName(const opencascade::handle<TCollection_HExtendedString> & theName, const opencascade::handle<TObj_TNameContainer> & theDictionary);
 
 		/****** TObj_Model::Update ******/
-		/****** md5 signature: 9538e94c343decb275b2f65bb11a4f6c ******/
+		/****** md5 signature: e42bd334a9d016162c32293fc33678cf ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "Return
 -------
@@ -1277,7 +1254,7 @@ Description
 -----------
 this method is called before activating this model.
 ") Update;
-		virtual Standard_Boolean Update();
+		virtual bool Update();
 
 };
 
@@ -1395,7 +1372,7 @@ Performs storing the objects transient fields in OCAF document which were outsid
 		virtual void BeforeStoring();
 
 		/****** TObj_Object::CanDetach ******/
-		/****** md5 signature: 2f3782ec79bf0e89e6d8ca3e6212285c ******/
+		/****** md5 signature: 4a13c1549fa052e6ef967d61a661e171 ******/
 		%feature("compactdefaultargs") CanDetach;
 		%feature("autodoc", "
 Parameters
@@ -1410,10 +1387,10 @@ Description
 -----------
 Checks if object can be detached with specified mode.
 ") CanDetach;
-		virtual Standard_Boolean CanDetach(const TObj_DeletingMode theMode = TObj_FreeOnly);
+		virtual bool CanDetach(const TObj_DeletingMode theMode = TObj_FreeOnly);
 
 		/****** TObj_Object::CanRemoveReference ******/
-		/****** md5 signature: a94340f01cf214f7b81795e782a0c6d0 ******/
+		/****** md5 signature: 684f5d38044290927b056707a0d7f912 ******/
 		%feature("compactdefaultargs") CanRemoveReference;
 		%feature("autodoc", "
 Parameters
@@ -1428,7 +1405,7 @@ Description
 -----------
 Returns True if the referred object theObject can be deleted without deletion of this object. Default implementation does nothing and returns False.
 ") CanRemoveReference;
-		virtual Standard_Boolean CanRemoveReference(const opencascade::handle<TObj_Object> & theObject);
+		virtual bool CanRemoveReference(const opencascade::handle<TObj_Object> & theObject);
 
 		/****** TObj_Object::ClearBackReferences ******/
 		/****** md5 signature: db983d4f2ea23562ee8aea96b3acdf23 ******/
@@ -1444,7 +1421,7 @@ The default implementation just clear the back references container.
 		virtual void ClearBackReferences();
 
 		/****** TObj_Object::ClearFlags ******/
-		/****** md5 signature: 541c9d5154c7afaa62eb8ba2740ebe75 ******/
+		/****** md5 signature: af9de926f07c94d5539b96f435f9a4a5 ******/
 		%feature("compactdefaultargs") ClearFlags;
 		%feature("autodoc", "
 Parameters
@@ -1459,16 +1436,16 @@ Description
 -----------
 clears flags by the mask.
 ") ClearFlags;
-		void ClearFlags(const Standard_Integer theMask = ~0);
+		void ClearFlags(const int theMask = ~0);
 
 		/****** TObj_Object::Clone ******/
-		/****** md5 signature: 4d3e1f9e7709184411e95abee3db3285 ******/
+		/****** md5 signature: 2dc659868f6b4c96e7724cf7686120cb ******/
 		%feature("compactdefaultargs") Clone;
 		%feature("autodoc", "
 Parameters
 ----------
 theTargetLabel: TDF_Label
-theRelocTable: TDF_RelocationTable (optional, default to 0)
+theRelocTable: TDF_RelocationTable (optional, default to nullptr)
 
 Return
 -------
@@ -1478,7 +1455,7 @@ Description
 -----------
 Copy me to other label theTargetLabel New object will not have all the reference that has me. Coping object with data and childs, but change name by adding string '_copy' As result return handle of new object (null handle is something wrong) NOTE: BackReferences not coping. After cloning all objects it is necessary to call copy references with the same relocation table.
 ") Clone;
-		virtual opencascade::handle<TObj_Object> Clone(const TDF_Label & theTargetLabel, opencascade::handle<TDF_RelocationTable > theRelocTable = 0);
+		virtual opencascade::handle<TObj_Object> Clone(const TDF_Label & theTargetLabel, opencascade::handle<TDF_RelocationTable > theRelocTable = nullptr);
 
 		/****** TObj_Object::CopyChildren ******/
 		/****** md5 signature: 94136ac341e957983a87f40509805b9f ******/
@@ -1514,12 +1491,12 @@ None
 
 Description
 -----------
-Coping the references. return Standard_False is Target object is different type.
+Coping the references. return false is Target object is different type.
 ") CopyReferences;
 		virtual void CopyReferences(const opencascade::handle<TObj_Object> & theTargetObject, const opencascade::handle<TDF_RelocationTable> & theRelocTable);
 
 		/****** TObj_Object::Detach ******/
-		/****** md5 signature: ef914fbcc4987f7887b48eac4fa01764 ******/
+		/****** md5 signature: 834689c9599615d558b33efd7edea9e3 ******/
 		%feature("compactdefaultargs") Detach;
 		%feature("autodoc", "
 Parameters
@@ -1534,10 +1511,10 @@ Description
 -----------
 Deletes the object from the model. The dependent objects are either deleted or modified when possible (see description of TObj_DeletingMode enumeration for more details) Returns True if deletion was successful. Checks if object can be deleted. Should be redefined for each specific kind of object.
 ") Detach;
-		virtual Standard_Boolean Detach(const TObj_DeletingMode theMode = TObj_FreeOnly);
+		virtual bool Detach(const TObj_DeletingMode theMode = TObj_FreeOnly);
 
 		/****** TObj_Object::Detach ******/
-		/****** md5 signature: f0c9138d15bd2cb29790cadf9f5c972d ******/
+		/****** md5 signature: a517fffadff66e9a5fb61cb90fe0ebaf ******/
 		%feature("compactdefaultargs") Detach;
 		%feature("autodoc", "
 Parameters
@@ -1553,15 +1530,15 @@ Description
 -----------
 Deletes the object from the label. Checks if object can be deleted. Finds object on the label and detaches it by calling previous method. Returns true if there is no object on the label after detaching.
 ") Detach;
-		static Standard_Boolean Detach(const TDF_Label & theLabel, const TObj_DeletingMode theMode = TObj_FreeOnly);
+		static bool Detach(const TDF_Label & theLabel, const TObj_DeletingMode theMode = TObj_FreeOnly);
 
 		/****** TObj_Object::GetBackReferences ******/
-		/****** md5 signature: 3e183cb7f37d2b6bff8cad6e30d26852 ******/
+		/****** md5 signature: b307ef5c49fd42fa7097e76a113a470a ******/
 		%feature("compactdefaultargs") GetBackReferences;
 		%feature("autodoc", "
 Parameters
 ----------
-theType: Standard_Type (optional, default to NULL)
+theType: Standard_Type (optional, default to nullptr)
 
 Return
 -------
@@ -1571,10 +1548,10 @@ Description
 -----------
 Returns iterator for the objects which depend on this one. These referring objects may belong to other models. theType narrows a variety of iterated objects.
 ") GetBackReferences;
-		virtual opencascade::handle<TObj_ObjectIterator> GetBackReferences(const opencascade::handle<Standard_Type> & theType = NULL);
+		virtual opencascade::handle<TObj_ObjectIterator> GetBackReferences(const opencascade::handle<Standard_Type> & theType = nullptr);
 
 		/****** TObj_Object::GetBadReference ******/
-		/****** md5 signature: 29ee3c712ec4008e385e24a4ab449d98 ******/
+		/****** md5 signature: 83b9ec0b0c5c6599f738c116579a6597 ******/
 		%feature("compactdefaultargs") GetBadReference;
 		%feature("autodoc", "
 Parameters
@@ -1590,7 +1567,7 @@ Description
 -----------
 Return True if this refers to the model theRoot belongs to and a referred label is not a descendant of theRoot. In this case theBadReference returns the currently referred label.
 ") GetBadReference;
-		virtual Standard_Boolean GetBadReference(const TDF_Label & theRoot, TDF_Label & theBadReference);
+		virtual bool GetBadReference(const TDF_Label & theRoot, TDF_Label & theBadReference);
 
 		/****** TObj_Object::GetChildLabel ******/
 		/****** md5 signature: 030f3b57530a452d6fb4e66a46b049fa ******/
@@ -1606,12 +1583,12 @@ Returns the label under which children are stored.
 		TDF_Label GetChildLabel();
 
 		/****** TObj_Object::GetChildren ******/
-		/****** md5 signature: 27c72b31816e84c434fb10ecea956811 ******/
+		/****** md5 signature: cba50821994a49d678064f9ec5c0e2c7 ******/
 		%feature("compactdefaultargs") GetChildren;
 		%feature("autodoc", "
 Parameters
 ----------
-theType: Standard_Type (optional, default to NULL)
+theType: Standard_Type (optional, default to nullptr)
 
 Return
 -------
@@ -1621,7 +1598,7 @@ Description
 -----------
 Returns iterator for the child objects. This method provides tree-like view of the objects hierarchy. The references to other objects are not considered as children. theType narrows a variety of iterated objects The default implementation search for children on 1 sublavel of the children sub label.
 ") GetChildren;
-		virtual opencascade::handle<TObj_ObjectIterator> GetChildren(const opencascade::handle<Standard_Type> & theType = NULL);
+		virtual opencascade::handle<TObj_ObjectIterator> GetChildren(const opencascade::handle<Standard_Type> & theType = nullptr);
 
 		/****** TObj_Object::GetDataLabel ******/
 		/****** md5 signature: 5181dba1ab890a3d4f42758cef9ab426 ******/
@@ -1650,12 +1627,12 @@ Returns the map of names of the objects Default implementation returns global Di
 		virtual opencascade::handle<TObj_TNameContainer> GetDictionary();
 
 		/****** TObj_Object::GetFatherObject ******/
-		/****** md5 signature: c9bedb103c74b332cfd536ba80b66e5f ******/
+		/****** md5 signature: ba71e6289b24c27be0852d9e60098f53 ******/
 		%feature("compactdefaultargs") GetFatherObject;
 		%feature("autodoc", "
 Parameters
 ----------
-theType: Standard_Type (optional, default to NULL)
+theType: Standard_Type (optional, default to nullptr)
 
 Return
 -------
@@ -1665,10 +1642,10 @@ Description
 -----------
 Returns the father object, which may be NULL theType gives type of father object to search.
 ") GetFatherObject;
-		opencascade::handle<TObj_Object> GetFatherObject(const opencascade::handle<Standard_Type> & theType = NULL);
+		opencascade::handle<TObj_Object> GetFatherObject(const opencascade::handle<Standard_Type> & theType = nullptr);
 
 		/****** TObj_Object::GetFlags ******/
-		/****** md5 signature: 38653d26e8e65805738b7154ff29aed8 ******/
+		/****** md5 signature: e37e21b99ee37966314520577cce6c33 ******/
 		%feature("compactdefaultargs") GetFlags;
 		%feature("autodoc", "Return
 -------
@@ -1678,7 +1655,7 @@ Description
 -----------
 Returns mask of seted flags.
 ") GetFlags;
-		Standard_Integer GetFlags();
+		int GetFlags();
 
 		/****** TObj_Object::GetLabel ******/
 		/****** md5 signature: b7ae9617d4db4ef8a9995ea610f01207 ******/
@@ -1720,7 +1697,7 @@ Returns the name of the object (empty string if object has no name).
 		virtual opencascade::handle<TCollection_HExtendedString> GetName();
 
 		/****** TObj_Object::GetName ******/
-		/****** md5 signature: ded8d72e7982c4584ae8f23745771666 ******/
+		/****** md5 signature: 9292b4b36649c34eb99b68f0fdb7519b ******/
 		%feature("compactdefaultargs") GetName;
 		%feature("autodoc", "
 Parameters
@@ -1733,12 +1710,12 @@ bool
 
 Description
 -----------
-Returns the Standard_True is object has name and returns name to theName.
+Returns the true is object has name and returns name to theName.
 ") GetName;
-		Standard_Boolean GetName(TCollection_ExtendedString & theName);
+		bool GetName(TCollection_ExtendedString & theName);
 
 		/****** TObj_Object::GetName ******/
-		/****** md5 signature: 0946f8902cc7a5a26d04a92c936f9e88 ******/
+		/****** md5 signature: b86a21d651889e50d089dfdebd0f4204 ******/
 		%feature("compactdefaultargs") GetName;
 		%feature("autodoc", "
 Parameters
@@ -1751,9 +1728,9 @@ bool
 
 Description
 -----------
-Returns the Standard_True is object has name and returns name to theName.
+Returns the true is object has name and returns name to theName.
 ") GetName;
-		Standard_Boolean GetName(TCollection_AsciiString & theName);
+		bool GetName(TCollection_AsciiString & theName);
 
 		/****** TObj_Object::GetNameForClone ******/
 		/****** md5 signature: 3ff098e28a1715eacdc5089c767945c9 ******/
@@ -1774,14 +1751,14 @@ Returns name for copy default implementation returns the same name.
 		virtual opencascade::handle<TCollection_HExtendedString> GetNameForClone(const opencascade::handle<TObj_Object > &);
 
 		/****** TObj_Object::GetObj ******/
-		/****** md5 signature: fc45832e63c78e31a312d2584bd1b74b ******/
+		/****** md5 signature: ed218fd9e978a3e0b4dcdfc883261089 ******/
 		%feature("compactdefaultargs") GetObj;
 		%feature("autodoc", "
 Parameters
 ----------
 theLabel: TDF_Label
 theResult: TObj_Object
-isSuper: bool (optional, default to Standard_False)
+isSuper: bool (optional, default to false)
 
 Return
 -------
@@ -1791,10 +1768,10 @@ Description
 -----------
 Returns the Object attached to a given label. Returns False if no object of type TObj_Object is stored on the specified label. If isSuper is true tries to find on the super labels.
 ") GetObj;
-		static Standard_Boolean GetObj(const TDF_Label & theLabel, opencascade::handle<TObj_Object> & theResult, const Standard_Boolean isSuper = Standard_False);
+		static bool GetObj(const TDF_Label & theLabel, opencascade::handle<TObj_Object> & theResult, const bool isSuper = false);
 
 		/****** TObj_Object::GetOrder ******/
-		/****** md5 signature: 5aab3f1cde1c2f11047c1b86b05c2bd6 ******/
+		/****** md5 signature: d55ba2d08c9d648f3d44233fffbb6d85 ******/
 		%feature("compactdefaultargs") GetOrder;
 		%feature("autodoc", "Return
 -------
@@ -1804,7 +1781,7 @@ Description
 -----------
 returns order of object (or tag of their label if order is not initialised).
 ") GetOrder;
-		virtual Standard_Integer GetOrder();
+		virtual int GetOrder();
 
 		/****** TObj_Object::GetReferenceLabel ******/
 		/****** md5 signature: 5f490bbe9920d957d97c1febc778ae9f ******/
@@ -1820,12 +1797,12 @@ Returns the label which is the root for reference OCAF sub-tree.
 		TDF_Label GetReferenceLabel();
 
 		/****** TObj_Object::GetReferences ******/
-		/****** md5 signature: 649181abc5f0bfd80d3fd3963166901d ******/
+		/****** md5 signature: ad48280cae9630e6c22209cbbbc01471 ******/
 		%feature("compactdefaultargs") GetReferences;
 		%feature("autodoc", "
 Parameters
 ----------
-theType: Standard_Type (optional, default to NULL)
+theType: Standard_Type (optional, default to nullptr)
 
 Return
 -------
@@ -1835,10 +1812,10 @@ Description
 -----------
 Returns an Iterator containing objects that compose the this one theType narrows a variety of iterated objects.
 ") GetReferences;
-		virtual opencascade::handle<TObj_ObjectIterator> GetReferences(const opencascade::handle<Standard_Type> & theType = NULL);
+		virtual opencascade::handle<TObj_ObjectIterator> GetReferences(const opencascade::handle<Standard_Type> & theType = nullptr);
 
 		/****** TObj_Object::GetTypeFlags ******/
-		/****** md5 signature: d2170fe93320a164ab89a2ddecc55009 ******/
+		/****** md5 signature: 7897593c2ac8b94d5379c4b217677f3c ******/
 		%feature("compactdefaultargs") GetTypeFlags;
 		%feature("autodoc", "Return
 -------
@@ -1848,10 +1825,10 @@ Description
 -----------
 Returns flags (bitmask) that define properties of objects of that type By default returns flag Visible.
 ") GetTypeFlags;
-		virtual Standard_Integer GetTypeFlags();
+		virtual int GetTypeFlags();
 
 		/****** TObj_Object::HasBackReferences ******/
-		/****** md5 signature: 0a45fd14f1152310725b0d9b3e69ac78 ******/
+		/****** md5 signature: e9276e5202410661118190b7c95d3a97 ******/
 		%feature("compactdefaultargs") HasBackReferences;
 		%feature("autodoc", "Return
 -------
@@ -1861,10 +1838,10 @@ Description
 -----------
 Returns True if object has 1 or more back references.
 ") HasBackReferences;
-		Standard_Boolean HasBackReferences();
+		bool HasBackReferences();
 
 		/****** TObj_Object::HasModifications ******/
-		/****** md5 signature: 7fabc8d5b945eb96e5ea2a0e8f0d4be4 ******/
+		/****** md5 signature: 57fc05f92e211b751bfc14ae69d0de6d ******/
 		%feature("compactdefaultargs") HasModifications;
 		%feature("autodoc", "Return
 -------
@@ -1874,10 +1851,10 @@ Description
 -----------
 /** * Public methods to check modifications of the object since last commit */ Returns true if object attributes or its children were modified in the current open transaction.
 ") HasModifications;
-		Standard_Boolean HasModifications();
+		bool HasModifications();
 
 		/****** TObj_Object::HasReference ******/
-		/****** md5 signature: e8677deafeb1a27e87cdc3d9ba839b8d ******/
+		/****** md5 signature: 15b1bbfa302cbd9b4e33d61727a03b30 ******/
 		%feature("compactdefaultargs") HasReference;
 		%feature("autodoc", "
 Parameters
@@ -1892,10 +1869,10 @@ Description
 -----------
 Returns True if object has reference to indicated object.
 ") HasReference;
-		virtual Standard_Boolean HasReference(const opencascade::handle<TObj_Object> & theObject);
+		virtual bool HasReference(const opencascade::handle<TObj_Object> & theObject);
 
 		/****** TObj_Object::IsAlive ******/
-		/****** md5 signature: 68953950fdbb6213c244979fcec8e757 ******/
+		/****** md5 signature: c46272ba01900bfbf8a8fe663ae06668 ******/
 		%feature("compactdefaultargs") IsAlive;
 		%feature("autodoc", "Return
 -------
@@ -1905,17 +1882,17 @@ Description
 -----------
 Checks that object alive in model Default implementation checks that object has TObject attribute at own label.
 ") IsAlive;
-		virtual Standard_Boolean IsAlive();
+		virtual bool IsAlive();
 
 		/****** TObj_Object::RelocateReferences ******/
-		/****** md5 signature: 22cdb7815f8ab5309a8abf1d31e8596f ******/
+		/****** md5 signature: 38421a7dcc7f8a2cd541a1edd4da40ec ******/
 		%feature("compactdefaultargs") RelocateReferences;
 		%feature("autodoc", "
 Parameters
 ----------
 theFromRoot: TDF_Label
 theToRoot: TDF_Label
-theUpdateBackRefs: bool (optional, default to Standard_True)
+theUpdateBackRefs: bool (optional, default to true)
 
 Return
 -------
@@ -1925,7 +1902,7 @@ Description
 -----------
 Make that each reference pointing to a descendant label of theFromRoot to point to an equivalent label under theToRoot. Return False if a resulting reference does not point to an TObj_Object Example: a referred object label = 0:3:24:7:2:7 theFromRoot = 0:3:24 theToRoot = 0:2 a new referred label = 0:2:7:2:7.
 ") RelocateReferences;
-		virtual Standard_Boolean RelocateReferences(const TDF_Label & theFromRoot, const TDF_Label & theToRoot, const Standard_Boolean theUpdateBackRefs = Standard_True);
+		virtual bool RelocateReferences(const TDF_Label & theFromRoot, const TDF_Label & theToRoot, const bool theUpdateBackRefs = true);
 
 		/****** TObj_Object::RemoveAllReferences ******/
 		/****** md5 signature: 4fd930fde27f64e3079598fda0c1f72e ******/
@@ -1941,13 +1918,13 @@ Remove all references to other objects, by removing all reference attributes.
 		virtual void RemoveAllReferences();
 
 		/****** TObj_Object::RemoveBackReference ******/
-		/****** md5 signature: d2b2f131b5b148de5e6165eb66ed2a39 ******/
+		/****** md5 signature: 66ec3f75b214f0528caccf31aeac548a ******/
 		%feature("compactdefaultargs") RemoveBackReference;
 		%feature("autodoc", "
 Parameters
 ----------
 theObject: TObj_Object
-theSingleOnly: bool (optional, default to Standard_True)
+theSingleOnly: bool (optional, default to true)
 
 Return
 -------
@@ -1957,10 +1934,10 @@ Description
 -----------
 Removes information on dependent object (back reference). If theSingleOnly is true only the first back reference is removed in the case of duplicate items.
 ") RemoveBackReference;
-		virtual void RemoveBackReference(const opencascade::handle<TObj_Object> & theObject, const Standard_Boolean theSingleOnly = Standard_True);
+		virtual void RemoveBackReference(const opencascade::handle<TObj_Object> & theObject, const bool theSingleOnly = true);
 
 		/****** TObj_Object::RemoveBackReferences ******/
-		/****** md5 signature: 5b23fea9b9159c4461ce1f91930d0a2f ******/
+		/****** md5 signature: d6076075105b49f8746352445ad99c07 ******/
 		%feature("compactdefaultargs") RemoveBackReferences;
 		%feature("autodoc", "
 Parameters
@@ -1975,7 +1952,7 @@ Description
 -----------
 Removes all back reference by removing references from other to me.
 ") RemoveBackReferences;
-		virtual Standard_Boolean RemoveBackReferences(const TObj_DeletingMode theMode = TObj_FreeOnly);
+		virtual bool RemoveBackReferences(const TObj_DeletingMode theMode = TObj_FreeOnly);
 
 		/****** TObj_Object::RemoveReference ******/
 		/****** md5 signature: fed27815f0920dcc9996e740c5005a74 ******/
@@ -2015,7 +1992,7 @@ Replace reference from old object to new object. If it is not possible, may rais
 		virtual void ReplaceReference(const opencascade::handle<TObj_Object> & theOldObject, const opencascade::handle<TObj_Object> & theNewObject);
 
 		/****** TObj_Object::SetFlags ******/
-		/****** md5 signature: 5c54f9725fd82a3db196f501104b6ce2 ******/
+		/****** md5 signature: 12dde0b961dd5a499cca9dbcc1baf36e ******/
 		%feature("compactdefaultargs") SetFlags;
 		%feature("autodoc", "
 Parameters
@@ -2030,10 +2007,10 @@ Description
 -----------
 Sets flags with defined mask.
 ") SetFlags;
-		void SetFlags(const Standard_Integer theMask);
+		void SetFlags(const int theMask);
 
 		/****** TObj_Object::SetName ******/
-		/****** md5 signature: 70f0bbcdf9018e83965c8bb3e3808424 ******/
+		/****** md5 signature: b9c8984665ca00af4dd02d02261486b4 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -2048,10 +2025,10 @@ Description
 -----------
 Sets name of the object. Returns False if theName is not unique.
 ") SetName;
-		virtual Standard_Boolean SetName(const opencascade::handle<TCollection_HExtendedString> & theName);
+		virtual bool SetName(const opencascade::handle<TCollection_HExtendedString> & theName);
 
 		/****** TObj_Object::SetName ******/
-		/****** md5 signature: 5b89c7171705bae537c3c5f033a1e0be ******/
+		/****** md5 signature: 67348868a7e90334ed627816430b20a6 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -2066,15 +2043,15 @@ Description
 -----------
 Sets name of the object. Returns False if theName is not unique.
 ") SetName;
-		Standard_Boolean SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
+		bool SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
 		/****** TObj_Object::SetName ******/
-		/****** md5 signature: 1eb9077655302114102f72d78e176de2 ******/
+		/****** md5 signature: 571b98eae8c3e57868ffed178761629f ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+theName: char *
 
 Return
 -------
@@ -2084,10 +2061,10 @@ Description
 -----------
 Sets name of the object. Returns False if theName is not unique.
 ") SetName;
-		Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const theName);
 
 		/****** TObj_Object::SetOrder ******/
-		/****** md5 signature: 8206803240cbf5a17027b57cbad1c294 ******/
+		/****** md5 signature: bd7ad57088952503de14eeec1f4c3f03 ******/
 		%feature("compactdefaultargs") SetOrder;
 		%feature("autodoc", "
 Parameters
@@ -2102,10 +2079,10 @@ Description
 -----------
 sets order of object.
 ") SetOrder;
-		virtual Standard_Boolean SetOrder(const Standard_Integer & theIndx);
+		virtual bool SetOrder(const int & theIndx);
 
 		/****** TObj_Object::TestFlags ******/
-		/****** md5 signature: 64fc376ba731f343e6a409a5310ddbc7 ******/
+		/****** md5 signature: 841ed2d1bafa4a6f5715107e10cd54a3 ******/
 		%feature("compactdefaultargs") TestFlags;
 		%feature("autodoc", "
 Parameters
@@ -2120,10 +2097,10 @@ Description
 -----------
 tests flags by the mask.
 ") TestFlags;
-		Standard_Boolean TestFlags(const Standard_Integer theMask);
+		bool TestFlags(const int theMask);
 
 		/****** TObj_Object::getChildLabel ******/
-		/****** md5 signature: 5b764b48162341152282dd3b62dcd729 ******/
+		/****** md5 signature: a925797359cf95d830adf5f07ca8bcc7 ******/
 		%feature("compactdefaultargs") getChildLabel;
 		%feature("autodoc", "
 Parameters
@@ -2138,7 +2115,7 @@ Description
 -----------
 Returns the label for child with rank.
 ") getChildLabel;
-		TDF_Label getChildLabel(const Standard_Integer theRank);
+		TDF_Label getChildLabel(const int theRank);
 
 };
 
@@ -2157,7 +2134,7 @@ Returns the label for child with rank.
 class TObj_ObjectIterator : public Standard_Transient {
 	public:
 		/****** TObj_ObjectIterator::More ******/
-		/****** md5 signature: 4bb6f1f5e9d1b93bf6d038f6bdd34088 ******/
+		/****** md5 signature: 1baced8960511e863532ef005bb96cb8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -2167,7 +2144,7 @@ Description
 -----------
 Returns True if iteration is not finished and method Current() will give the object. Default implementation returns False.
 ") More;
-		virtual Standard_Boolean More();
+		virtual bool More();
 
 		/****** TObj_ObjectIterator::Next ******/
 		/****** md5 signature: 73141d627b33e5b89ace1d498cedfc52 ******/
@@ -2214,12 +2191,12 @@ Returns current object (or null if iteration has finished) Default implementatio
 class TObj_Persistence {
 	public:
 		/****** TObj_Persistence::CreateNewObject ******/
-		/****** md5 signature: b7abb2b5034a2342962587782f3e2282 ******/
+		/****** md5 signature: 86c67374ad234b67e537ab63bff299b6 ******/
 		%feature("compactdefaultargs") CreateNewObject;
 		%feature("autodoc", "
 Parameters
 ----------
-theType: str
+theType: char *
 theLabel: TDF_Label
 
 Return
@@ -2230,7 +2207,7 @@ Description
 -----------
 Creates and returns a new object of the registered type If the type is not registered, returns Null handle.
 ") CreateNewObject;
-		static opencascade::handle<TObj_Object> CreateNewObject(Standard_CString theType, const TDF_Label & theLabel);
+		static opencascade::handle<TObj_Object> CreateNewObject(const char * const theType, const TDF_Label & theLabel);
 
 		/****** TObj_Persistence::DumpTypes ******/
 		/****** md5 signature: 6b281615817b960184bb20e020b9d659 ******/
@@ -2263,7 +2240,7 @@ Dumps names of all the types registered for persistence to the specified stream.
 *****************************/
 class TObj_TIntSparseArray : public TDF_Attribute {
 	public:
-typedef TObj_TIntSparseArray_VecOfData ::ConstIterator Iterator;
+typedef NCollection_SparseArray<int>::ConstIterator Iterator;
 		/****** TObj_TIntSparseArray::TObj_TIntSparseArray ******/
 		/****** md5 signature: c9aff193b0588231fc96fab91e80e58f ******/
 		%feature("compactdefaultargs") TObj_TIntSparseArray;
@@ -2278,7 +2255,7 @@ Empty constructor.
 		 TObj_TIntSparseArray();
 
 		/****** TObj_TIntSparseArray::AfterUndo ******/
-		/****** md5 signature: 0676c885125e2e0814f248a2e1de0500 ******/
+		/****** md5 signature: 777e2c0348b1348de68fa455831b61b8 ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
@@ -2294,10 +2271,10 @@ Description
 -----------
 Clears my modification delta; called after application of theDelta.
 ") AfterUndo;
-		Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const Standard_Boolean toForce);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const bool toForce);
 
 		/****** TObj_TIntSparseArray::BackupCopy ******/
-		/****** md5 signature: be67c343943ad438128f575f7f5feaa1 ******/
+		/****** md5 signature: 37a7ca5257c3a9e95a9390edd8c74378 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -2310,7 +2287,7 @@ Moves this delta into a new other attribute.
 		opencascade::handle<TDF_Attribute> BackupCopy();
 
 		/****** TObj_TIntSparseArray::BeforeCommitTransaction ******/
-		/****** md5 signature: 2e92b81a243c66449fd08ab0e1029b99 ******/
+		/****** md5 signature: b76e44a1347f67209d9c23fbb9f47aca ******/
 		%feature("compactdefaultargs") BeforeCommitTransaction;
 		%feature("autodoc", "Return
 -------
@@ -2349,7 +2326,7 @@ No available documentation.
 		void ClearDelta();
 
 		/****** TObj_TIntSparseArray::DeltaOnModification ******/
-		/****** md5 signature: a97b7a3ed4e914790202111b5c287a97 ******/
+		/****** md5 signature: bf9245a9c534e2079cef6c9bfc1791f3 ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -2393,12 +2370,12 @@ Returns iterator on objects contained in the set.
 		Iterator GetIterator();
 
 		/****** TObj_TIntSparseArray::HasValue ******/
-		/****** md5 signature: 66abae458fd8ab579fad194c66b5b353 ******/
+		/****** md5 signature: a86aeac076f480286cc815b53255895c ******/
 		%feature("compactdefaultargs") HasValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theId: Standard_Size
+theId: size_t
 
 Return
 -------
@@ -2408,10 +2385,10 @@ Description
 -----------
 Returns true if the value with the given ID is present.
 ") HasValue;
-		Standard_Boolean HasValue(const Standard_Size theId);
+		bool HasValue(const size_t theId);
 
 		/****** TObj_TIntSparseArray::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2424,7 +2401,7 @@ Returns the ID of this attribute.
 		const Standard_GUID & ID();
 
 		/****** TObj_TIntSparseArray::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2437,7 +2414,7 @@ Returns an new empty TObj_TIntSparseArray attribute. It is used by the copy algo
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TObj_TIntSparseArray::Paste ******/
-		/****** md5 signature: eba505ad0ab2085caec3ed4fb06fc0c2 ******/
+		/****** md5 signature: d899fab304a21d933c88c466423b5c62 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2456,7 +2433,7 @@ This method is used when copying an attribute from a source structure into a tar
 		void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRT);
 
 		/****** TObj_TIntSparseArray::Restore ******/
-		/****** md5 signature: d6da57eeb878ea4df869799e738c8bc8 ******/
+		/****** md5 signature: f6fc6f718a4eb703bfbf0c985ea70c36 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2492,7 +2469,7 @@ Creates TObj_TIntSparseArray attribute on given label.
 		static opencascade::handle<TObj_TIntSparseArray> Set(const TDF_Label & theLabel);
 
 		/****** TObj_TIntSparseArray::SetDoBackup ******/
-		/****** md5 signature: 1deb6cecab7e3c4cc9a49e82bd95c62a ******/
+		/****** md5 signature: 833301f4badc459e02959cfbed8d13f8 ******/
 		%feature("compactdefaultargs") SetDoBackup;
 		%feature("autodoc", "
 Parameters
@@ -2507,15 +2484,15 @@ Description
 -----------
 Sets the flag pointing to the necessity to maintain a modification delta. It is called by the retrieval driver.
 ") SetDoBackup;
-		void SetDoBackup(const Standard_Boolean toDo);
+		void SetDoBackup(const bool toDo);
 
 		/****** TObj_TIntSparseArray::SetValue ******/
-		/****** md5 signature: d85ae25daaa0e824bdee84cfd24f86f3 ******/
+		/****** md5 signature: 84baef025e521405433e741a62a8cc58 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theId: Standard_Size
+theId: size_t
 theValue: int
 
 Return
@@ -2526,28 +2503,28 @@ Description
 -----------
 Sets the value with the given ID. Raises an exception if theId is not positive.
 ") SetValue;
-		void SetValue(const Standard_Size theId, const Standard_Integer theValue);
+		void SetValue(const size_t theId, const int theValue);
 
 		/****** TObj_TIntSparseArray::Size ******/
-		/****** md5 signature: 84043604cd4d694d29fbe523f032e5d8 ******/
+		/****** md5 signature: cbd8471ac8e6ef120a405ad6c4ba90d1 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
-Standard_Size
+size_t
 
 Description
 -----------
 Returns the number of stored values in the set.
 ") Size;
-		Standard_Size Size();
+		size_t Size();
 
 		/****** TObj_TIntSparseArray::UnsetValue ******/
-		/****** md5 signature: 74bb693dfd55fe00e54e841b8496503a ******/
+		/****** md5 signature: 5103ecdcfd368709df9cfee0355d50d9 ******/
 		%feature("compactdefaultargs") UnsetValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theId: Standard_Size
+theId: size_t
 
 Return
 -------
@@ -2557,15 +2534,15 @@ Description
 -----------
 Unsets the value with the given ID. Raises an exception if theId is not positive.
 ") UnsetValue;
-		void UnsetValue(const Standard_Size theId);
+		void UnsetValue(const size_t theId);
 
 		/****** TObj_TIntSparseArray::Value ******/
-		/****** md5 signature: 2a6b8386cc08657e759e5a0f07fbaff8 ******/
+		/****** md5 signature: 8865b06e4a1e94ae5c0c01396fc78ff2 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-theId: Standard_Size
+theId: size_t
 
 Return
 -------
@@ -2575,7 +2552,7 @@ Description
 -----------
 Returns the value by its ID. Raises an exception if no value is stored with this ID.
 ") Value;
-		Standard_Integer Value(const Standard_Size theId);
+		int Value(const size_t theId);
 
 };
 
@@ -2620,7 +2597,7 @@ This method is used in implementation of ID().
 		static const Standard_GUID & GetID();
 
 		/****** TObj_TModel::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2646,7 +2623,7 @@ Returns the Model object.
 		opencascade::handle<TObj_Model> Model();
 
 		/****** TObj_TModel::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2659,7 +2636,7 @@ Returns an new empty TObj_TModel attribute. It is used by the copy algorithm.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TObj_TModel::Paste ******/
-		/****** md5 signature: eba505ad0ab2085caec3ed4fb06fc0c2 ******/
+		/****** md5 signature: d899fab304a21d933c88c466423b5c62 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2678,7 +2655,7 @@ This method is used when copying an attribute from a source structure into a tar
 		void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRT);
 
 		/****** TObj_TModel::Restore ******/
-		/****** md5 signature: 0d710fe671bace8cc3b1b0525257edbc ******/
+		/****** md5 signature: a185c1616ee303e3a863a289ca3eba90 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2756,17 +2733,17 @@ Remove all names registered in container.
 		void Clear();
 
 		/****** TObj_TNameContainer::Get ******/
-		/****** md5 signature: 9c5be8798dcac635c5b72a98614dd809 ******/
+		/****** md5 signature: af3fc34a3cffcb1ef4a3207661eb4801 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
-TObj_DataMapOfNameLabel
+NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label>
 
 Description
 -----------
-Returns the TObj_DataMapOfNameLabel object.
+Returns the NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> object.
 ") Get;
-		const TObj_DataMapOfNameLabel & Get();
+		const NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> & Get();
 
 		/****** TObj_TNameContainer::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -2782,7 +2759,7 @@ This method is used in implementation of ID().
 		static const Standard_GUID & GetID();
 
 		/****** TObj_TNameContainer::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2795,7 +2772,7 @@ Returns the ID of TObj_TNameContainer attribute.
 		const Standard_GUID & ID();
 
 		/****** TObj_TNameContainer::IsRegistered ******/
-		/****** md5 signature: c93cbd794218251c12402966fef45e89 ******/
+		/****** md5 signature: 173d529d608ccf2541241947c8b5680d ******/
 		%feature("compactdefaultargs") IsRegistered;
 		%feature("autodoc", "
 Parameters
@@ -2810,10 +2787,10 @@ Description
 -----------
 Return True is theName is registered in the Map.
 ") IsRegistered;
-		Standard_Boolean IsRegistered(const opencascade::handle<TCollection_HExtendedString> & theName);
+		bool IsRegistered(const opencascade::handle<TCollection_HExtendedString> & theName);
 
 		/****** TObj_TNameContainer::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2826,7 +2803,7 @@ Returns an new empty TObj_TNameContainer attribute. It is used by the copy algor
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TObj_TNameContainer::Paste ******/
-		/****** md5 signature: eba505ad0ab2085caec3ed4fb06fc0c2 ******/
+		/****** md5 signature: d899fab304a21d933c88c466423b5c62 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2882,7 +2859,7 @@ Remove name from the map.
 		void RemoveName(const opencascade::handle<TCollection_HExtendedString> & theName);
 
 		/****** TObj_TNameContainer::Restore ******/
-		/****** md5 signature: 0d710fe671bace8cc3b1b0525257edbc ******/
+		/****** md5 signature: a185c1616ee303e3a863a289ca3eba90 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2913,17 +2890,17 @@ opencascade::handle<TObj_TNameContainer>
 
 Description
 -----------
-Creates TObj_DataMapOfNameLabel attribute on given label if not exist.
+Creates NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> attribute on given label if not exist.
 ") Set;
 		static opencascade::handle<TObj_TNameContainer> Set(const TDF_Label & theLabel);
 
 		/****** TObj_TNameContainer::Set ******/
-		/****** md5 signature: 582c256dc9c9dfafd336c11a75dac99b ******/
+		/****** md5 signature: 762a68ed9f31ca2f975ee88e5f171de6 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
-theElem: TObj_DataMapOfNameLabel
+theElem: TCollection_HExtendedString
 
 Return
 -------
@@ -2931,9 +2908,9 @@ None
 
 Description
 -----------
-Sets the TObj_DataMapOfNameLabel object.
+Sets the NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> object.
 ") Set;
-		void Set(const TObj_DataMapOfNameLabel & theElem);
+		void Set(const NCollection_DataMap<opencascade::handle<TCollection_HExtendedString>, TDF_Label> & theElem);
 
 };
 
@@ -2965,7 +2942,7 @@ Empty constructor.
 		 TObj_TObject();
 
 		/****** TObj_TObject::AfterUndo ******/
-		/****** md5 signature: 38dda504fff4524dcb961f679f184715 ******/
+		/****** md5 signature: 6e81c4ff97963fbfcb822d79f89b888e ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
@@ -2981,10 +2958,10 @@ Description
 -----------
 Tell TObj_Object to rise from the dead, i.e. (myElem->IsAlive() == true) after that.
 ") AfterUndo;
-		Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt);
 
 		/****** TObj_TObject::BeforeForget ******/
-		/****** md5 signature: 07bcf166676be92d6df0b39068250c8d ******/
+		/****** md5 signature: 62cb9500c708360c96952b8784c42662 ******/
 		%feature("compactdefaultargs") BeforeForget;
 		%feature("autodoc", "Return
 -------
@@ -3023,7 +3000,7 @@ This method is used in implementation of ID().
 		static const Standard_GUID & GetID();
 
 		/****** TObj_TObject::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -3036,7 +3013,7 @@ Returns the ID of TObj_TObject attribute.
 		const Standard_GUID & ID();
 
 		/****** TObj_TObject::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3049,7 +3026,7 @@ Returns an new empty TObj_TObject attribute. It is used by the copy algorithm.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TObj_TObject::Paste ******/
-		/****** md5 signature: eba505ad0ab2085caec3ed4fb06fc0c2 ******/
+		/****** md5 signature: d899fab304a21d933c88c466423b5c62 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -3068,7 +3045,7 @@ This method is used when copying an attribute from a source structure into a tar
 		void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRT);
 
 		/****** TObj_TObject::Restore ******/
-		/****** md5 signature: 0d710fe671bace8cc3b1b0525257edbc ******/
+		/****** md5 signature: a185c1616ee303e3a863a289ca3eba90 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -3152,7 +3129,7 @@ Empty constructor.
 		 TObj_TReference();
 
 		/****** TObj_TReference::AfterResume ******/
-		/****** md5 signature: 1d4195e9b512e0fcd0e4fad379210118 ******/
+		/****** md5 signature: 725997b4942a96537f8067a0c4d51cec ******/
 		%feature("compactdefaultargs") AfterResume;
 		%feature("autodoc", "Return
 -------
@@ -3162,15 +3139,15 @@ Description
 -----------
 Check if back reference exists for reference.
 ") AfterResume;
-		virtual void AfterResume();
+		void AfterResume();
 
 		/****** TObj_TReference::AfterRetrieval ******/
-		/****** md5 signature: e7cd83a7b63165871b2409400a899bc8 ******/
+		/****** md5 signature: 4244bb7f4341c6f4f1117b357909fbc5 ******/
 		%feature("compactdefaultargs") AfterRetrieval;
 		%feature("autodoc", "
 Parameters
 ----------
-forceIt: bool (optional, default to Standard_False)
+forceIt: bool (optional, default to false)
 
 Return
 -------
@@ -3180,16 +3157,16 @@ Description
 -----------
 Called after retrieval reference from file.
 ") AfterRetrieval;
-		virtual Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
+		bool AfterRetrieval(const bool forceIt = false);
 
 		/****** TObj_TReference::AfterUndo ******/
-		/****** md5 signature: 1debacfe3c452f53106201f82dee9b20 ******/
+		/****** md5 signature: a87bcd2cb51fb647818db3b3c553e21d ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 theDelta: TDF_AttributeDelta
-isForced: bool (optional, default to Standard_False)
+isForced: bool (optional, default to false)
 
 Return
 -------
@@ -3199,10 +3176,10 @@ Description
 -----------
 It is necessary for tranzaction mechanism (Undo/Redo).
 ") AfterUndo;
-		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const Standard_Boolean isForced = Standard_False);
+		bool AfterUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const bool isForced = false);
 
 		/****** TObj_TReference::BeforeForget ******/
-		/****** md5 signature: e5a78fffddf9fa82f6f158acce858991 ******/
+		/****** md5 signature: 62cb9500c708360c96952b8784c42662 ******/
 		%feature("compactdefaultargs") BeforeForget;
 		%feature("autodoc", "Return
 -------
@@ -3212,16 +3189,16 @@ Description
 -----------
 Remove back references of it reference if it is in other document.
 ") BeforeForget;
-		virtual void BeforeForget();
+		void BeforeForget();
 
 		/****** TObj_TReference::BeforeUndo ******/
-		/****** md5 signature: f2977f7534cce5aca5640b96915a7a0a ******/
+		/****** md5 signature: 339db8cb5901c2f61b060e7fb05c2d74 ******/
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "
 Parameters
 ----------
 theDelta: TDF_AttributeDelta
-isForced: bool (optional, default to Standard_False)
+isForced: bool (optional, default to false)
 
 Return
 -------
@@ -3231,7 +3208,7 @@ Description
 -----------
 It is necessary for tranzaction mechanism (Undo/Redo).
 ") BeforeUndo;
-		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const Standard_Boolean isForced = Standard_False);
+		bool BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & theDelta, const bool isForced = false);
 
 		/****** TObj_TReference::Get ******/
 		/****** md5 signature: eab1a410661a448145930096a9685507 ******/
@@ -3286,7 +3263,7 @@ Returns the Label of master object.
 		TDF_Label GetMasterLabel();
 
 		/****** TObj_TReference::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -3299,7 +3276,7 @@ Returns the ID of TObj_TReference attribute.
 		const Standard_GUID & ID();
 
 		/****** TObj_TReference::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3312,7 +3289,7 @@ Returns an new empty TObj_TReference attribute. It is used by the copy algorithm
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TObj_TReference::Paste ******/
-		/****** md5 signature: eba505ad0ab2085caec3ed4fb06fc0c2 ******/
+		/****** md5 signature: d899fab304a21d933c88c466423b5c62 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -3331,7 +3308,7 @@ This method is used when copying an attribute from a source structure into a tar
 		void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRT);
 
 		/****** TObj_TReference::Restore ******/
-		/****** md5 signature: 0d710fe671bace8cc3b1b0525257edbc ******/
+		/****** md5 signature: a185c1616ee303e3a863a289ca3eba90 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -3436,7 +3413,7 @@ Empty constructor.
 		 TObj_TXYZ();
 
 		/****** TObj_TXYZ::Dump ******/
-		/****** md5 signature: a70630ee0dbc4de065e099a9519a2a06 ******/
+		/****** md5 signature: 93728f1e04c6a4610b0181e40f01badf ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -3450,7 +3427,7 @@ Description
 -----------
 This method dumps the attribute value into the stream.
 ") Dump;
-		virtual Standard_OStream & Dump(std::ostream &OutValue);
+		Standard_OStream & Dump(std::ostream &OutValue);
 
 		/****** TObj_TXYZ::Get ******/
 		/****** md5 signature: d4d7c3399f4d5d1d9662bdcf64101489 ******/
@@ -3479,7 +3456,7 @@ This method is used in implementation of ID().
 		static const Standard_GUID & GetID();
 
 		/****** TObj_TXYZ::ID ******/
-		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -3492,7 +3469,7 @@ Returns the ID of TObj_TXYZ attribute.
 		const Standard_GUID & ID();
 
 		/****** TObj_TXYZ::NewEmpty ******/
-		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
+		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3505,7 +3482,7 @@ Returns an new empty TObj_TXYZ attribute. It is used by the copy algorithm.
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
 		/****** TObj_TXYZ::Paste ******/
-		/****** md5 signature: eba505ad0ab2085caec3ed4fb06fc0c2 ******/
+		/****** md5 signature: d899fab304a21d933c88c466423b5c62 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -3524,7 +3501,7 @@ This method is used when copying an attribute from a source structure into a tar
 		void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRT);
 
 		/****** TObj_TXYZ::Restore ******/
-		/****** md5 signature: 0d710fe671bace8cc3b1b0525257edbc ******/
+		/****** md5 signature: a185c1616ee303e3a863a289ca3eba90 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -3609,7 +3586,7 @@ Returns the label of the current item.
 		const TDF_Label & LabelValue();
 
 		/****** TObj_LabelIterator::More ******/
-		/****** md5 signature: 1e5d8e0dca9bbb9162656bc9b0694e47 ******/
+		/****** md5 signature: eb6fb64d8976d5ca7f592e3e5d243013 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3619,10 +3596,10 @@ Description
 -----------
 Returns True if there is a current Item in the iteration.
 ") More;
-		virtual Standard_Boolean More();
+		bool More();
 
 		/****** TObj_LabelIterator::Next ******/
-		/****** md5 signature: b63ea944a01b0e386a7cb8b02e8cfefd ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -3632,10 +3609,10 @@ Description
 -----------
 Move to the next Item.
 ") Next;
-		virtual void Next();
+		void Next();
 
 		/****** TObj_LabelIterator::Value ******/
-		/****** md5 signature: 45a991f88fedb5caa021fa6be8f33be8 ******/
+		/****** md5 signature: 4adefe9fbfd5e993ad97f66255f2e864 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3645,7 +3622,7 @@ Description
 -----------
 Returns the current item.
 ") Value;
-		virtual opencascade::handle<TObj_Object> Value();
+		opencascade::handle<TObj_Object> Value();
 
 };
 
@@ -3682,7 +3659,7 @@ Description
 		 TObj_ModelIterator(const opencascade::handle<TObj_Model> & theModel);
 
 		/****** TObj_ModelIterator::More ******/
-		/****** md5 signature: b2821025844f4f2823e07323c717a764 ******/
+		/****** md5 signature: 099215d9df143914190eb16587b27e27 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3692,10 +3669,10 @@ Description
 -----------
 Returns True if iteration is not finished and method Value() will give the object.
 ") More;
-		virtual Standard_Boolean More();
+		bool More();
 
 		/****** TObj_ModelIterator::Next ******/
-		/****** md5 signature: b63ea944a01b0e386a7cb8b02e8cfefd ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -3705,10 +3682,10 @@ Description
 -----------
 Iterates to the next object.
 ") Next;
-		virtual void Next();
+		void Next();
 
 		/****** TObj_ModelIterator::Value ******/
-		/****** md5 signature: fc22d89439b76d8e3f054202e24b3f51 ******/
+		/****** md5 signature: 8ac30c26246d3d3db896cd14d03396d5 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3718,7 +3695,7 @@ Description
 -----------
 Returns current object (or MainObj of Model if iteration has finished).
 ") Value;
-		virtual opencascade::handle<TObj_Object> Value();
+		opencascade::handle<TObj_Object> Value();
 
 };
 
@@ -3738,7 +3715,7 @@ Returns current object (or MainObj of Model if iteration has finished).
 class TObj_Partition : public TObj_Object {
 	public:
 		/****** TObj_Partition::AfterRetrieval ******/
-		/****** md5 signature: 5116de267db888dbe3c4cd27cb5af96d ******/
+		/****** md5 signature: 33e1c8c9fad33947c0fdfe1c7a8424dc ******/
 		%feature("compactdefaultargs") AfterRetrieval;
 		%feature("autodoc", "Return
 -------
@@ -3748,16 +3725,16 @@ Description
 -----------
 Performs updating the links and dependencies of the object which are not stored in persistence. Does not register the partition name.
 ") AfterRetrieval;
-		virtual void AfterRetrieval();
+		void AfterRetrieval();
 
 		/****** TObj_Partition::Create ******/
-		/****** md5 signature: 0825e50eb60f2c25400b581c167f8a28 ******/
+		/****** md5 signature: a8b61f7a2a00c77c578eb3bc1d7e4851 ******/
 		%feature("compactdefaultargs") Create;
 		%feature("autodoc", "
 Parameters
 ----------
 theLabel: TDF_Label
-theSetName: bool (optional, default to Standard_True)
+theSetName: bool (optional, default to true)
 
 Return
 -------
@@ -3767,10 +3744,10 @@ Description
 -----------
 Creates a new partition on given label.
 ") Create;
-		static opencascade::handle<TObj_Partition> Create(const TDF_Label & theLabel, const Standard_Boolean theSetName = Standard_True);
+		static opencascade::handle<TObj_Partition> Create(const TDF_Label & theLabel, const bool theSetName = true);
 
 		/****** TObj_Partition::GetLastIndex ******/
-		/****** md5 signature: 3b931de29b8e9da98569a06fe0d1725e ******/
+		/****** md5 signature: a5063ea2930caad6487af44a1264fe65 ******/
 		%feature("compactdefaultargs") GetLastIndex;
 		%feature("autodoc", "Return
 -------
@@ -3780,7 +3757,7 @@ Description
 -----------
 Return Last index in partition (reserved);.
 ") GetLastIndex;
-		Standard_Integer GetLastIndex();
+		int GetLastIndex();
 
 		/****** TObj_Partition::GetNamePrefix ******/
 		/****** md5 signature: e0fdcd5eb35f717e530a3646849ef0b3 ******/
@@ -3796,12 +3773,12 @@ Returns prefix for names of the objects in partition.
 		opencascade::handle<TCollection_HExtendedString> GetNamePrefix();
 
 		/****** TObj_Partition::GetNewName ******/
-		/****** md5 signature: b4e368c8f5d87830213831249f7b65f8 ******/
+		/****** md5 signature: ae810f3247618a836fb1a0aa23390e09 ******/
 		%feature("compactdefaultargs") GetNewName;
 		%feature("autodoc", "
 Parameters
 ----------
-theIsToChangeCount: bool (optional, default to Standard_True)
+theIsToChangeCount: bool (optional, default to true)
 
 Return
 -------
@@ -3811,7 +3788,7 @@ Description
 -----------
 Generates and returns name for new object in partition. if theIsToChangeCount is true partition increase own counter to generate new name next time starting from new counter value.
 ") GetNewName;
-		opencascade::handle<TCollection_HExtendedString> GetNewName(const Standard_Boolean theIsToChangeCount = Standard_True);
+		opencascade::handle<TCollection_HExtendedString> GetNewName(const bool theIsToChangeCount = true);
 
 		/****** TObj_Partition::GetPartition ******/
 		/****** md5 signature: 13ad38d3df7453cccb9a62aab75fddb6 ******/
@@ -3845,7 +3822,7 @@ Creates and Returns label for new object in partition.
 		TDF_Label NewLabel();
 
 		/****** TObj_Partition::SetLastIndex ******/
-		/****** md5 signature: f1c0203e9e973b3ef34565275717760a ******/
+		/****** md5 signature: f90fa816e20a2e005eedc9291dc2552b ******/
 		%feature("compactdefaultargs") SetLastIndex;
 		%feature("autodoc", "
 Parameters
@@ -3860,10 +3837,10 @@ Description
 -----------
 Sets Last index in partition (reserved);.
 ") SetLastIndex;
-		void SetLastIndex(const Standard_Integer theIndex);
+		void SetLastIndex(const int theIndex);
 
 		/****** TObj_Partition::SetName ******/
-		/****** md5 signature: fb723fddc9b8a3cd18607ae9add2b576 ******/
+		/****** md5 signature: fd27888a6f918ea1b67fc1469aaf49a4 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -3878,7 +3855,7 @@ Description
 -----------
 Sets name of the object. partition does not check unique of own name.
 ") SetName;
-		virtual Standard_Boolean SetName(const opencascade::handle<TCollection_HExtendedString> & theName);
+		bool SetName(const opencascade::handle<TCollection_HExtendedString> & theName);
 
 		/****** TObj_Partition::SetNamePrefix ******/
 		/****** md5 signature: c401da4c7bc7e71ebc5fca355f5a59c0 ******/
@@ -3899,7 +3876,7 @@ Sets prefix for names of the objects in partition.
 		void SetNamePrefix(const opencascade::handle<TCollection_HExtendedString> & thePrefix);
 
 		/****** TObj_Partition::Update ******/
-		/****** md5 signature: 8770459c04056535aba1783bd04567c5 ******/
+		/****** md5 signature: e3fec5b33c56ad9ef7eca658df581fba ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "Return
 -------
@@ -3909,7 +3886,7 @@ Description
 -----------
 Does nothing in the partition.
 ") Update;
-		virtual Standard_Boolean Update();
+		virtual bool Update();
 
 };
 
@@ -3928,13 +3905,13 @@ Does nothing in the partition.
 class TObj_SequenceIterator : public TObj_ObjectIterator {
 	public:
 		/****** TObj_SequenceIterator::TObj_SequenceIterator ******/
-		/****** md5 signature: b4180e8a504198d2687dbb509ae28e9a ******/
+		/****** md5 signature: c65d285450763149a280de0f13b9558c ******/
 		%feature("compactdefaultargs") TObj_SequenceIterator;
 		%feature("autodoc", "
 Parameters
 ----------
-theObjects: TObj_HSequenceOfObject
-theType: Standard_Type (optional, default to NULL)
+theObjects: NCollection_HSequence<
+theType: Standard_Type (optional, default to nullptr)
 
 Return
 -------
@@ -3944,10 +3921,10 @@ Description
 -----------
 Creates an iterator an initialize it by sequence of objects.
 ") TObj_SequenceIterator;
-		 TObj_SequenceIterator(const opencascade::handle<TObj_HSequenceOfObject> & theObjects, const opencascade::handle<Standard_Type> & theType = NULL);
+		 TObj_SequenceIterator(const opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object> > > & theObjects, const opencascade::handle<Standard_Type> & theType = nullptr);
 
 		/****** TObj_SequenceIterator::More ******/
-		/****** md5 signature: b2821025844f4f2823e07323c717a764 ******/
+		/****** md5 signature: 099215d9df143914190eb16587b27e27 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3957,10 +3934,10 @@ Description
 -----------
 Returns True if there is a current Item in the iteration.
 ") More;
-		virtual Standard_Boolean More();
+		bool More();
 
 		/****** TObj_SequenceIterator::Next ******/
-		/****** md5 signature: b63ea944a01b0e386a7cb8b02e8cfefd ******/
+		/****** md5 signature: ae2056cc0c58ac4479c643a77ecf6a1e ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -3970,10 +3947,10 @@ Description
 -----------
 Move to the next Item.
 ") Next;
-		virtual void Next();
+		void Next();
 
 		/****** TObj_SequenceIterator::Value ******/
-		/****** md5 signature: fc22d89439b76d8e3f054202e24b3f51 ******/
+		/****** md5 signature: 8ac30c26246d3d3db896cd14d03396d5 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3983,7 +3960,7 @@ Description
 -----------
 Returns the current item.
 ") Value;
-		virtual opencascade::handle<TObj_Object> Value();
+		opencascade::handle<TObj_Object> Value();
 
 };
 
@@ -4020,7 +3997,7 @@ constructor.
 		 TObj_HiddenPartition(const TDF_Label & theLabel);
 
 		/****** TObj_HiddenPartition::GetTypeFlags ******/
-		/****** md5 signature: 43cc802c59d38acacec7dc8db436c23f ******/
+		/****** md5 signature: 914ea1e93d0a1372133432237986dbb1 ******/
 		%feature("compactdefaultargs") GetTypeFlags;
 		%feature("autodoc", "Return
 -------
@@ -4030,7 +4007,7 @@ Description
 -----------
 Returns all flags of father except Visible.
 ") GetTypeFlags;
-		virtual Standard_Integer GetTypeFlags();
+		int GetTypeFlags();
 
 };
 
@@ -4049,15 +4026,15 @@ Returns all flags of father except Visible.
 class TObj_OcafObjectIterator : public TObj_LabelIterator {
 	public:
 		/****** TObj_OcafObjectIterator::TObj_OcafObjectIterator ******/
-		/****** md5 signature: b1349528ca90af110980c95a03b85766 ******/
+		/****** md5 signature: b0fbc1e120b58d7209d52b55e6af4d63 ******/
 		%feature("compactdefaultargs") TObj_OcafObjectIterator;
 		%feature("autodoc", "
 Parameters
 ----------
 theLabel: TDF_Label
-theType: Standard_Type (optional, default to NULL)
-theRecursive: bool (optional, default to Standard_False)
-theAllSubChildren: bool (optional, default to Standard_False)
+theType: Standard_Type (optional, default to nullptr)
+theRecursive: bool (optional, default to false)
+theAllSubChildren: bool (optional, default to false)
 
 Return
 -------
@@ -4071,7 +4048,7 @@ Parameter theType type of the found objects, or all types if Null
 Parameter theRecursive search children recursively, not only on sub-labels of theLabel 
 Parameter theAllSubChildren do not stop at the first level of children, but search for sub-children too.
 ") TObj_OcafObjectIterator;
-		 TObj_OcafObjectIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = NULL, const Standard_Boolean theRecursive = Standard_False, const Standard_Boolean theAllSubChildren = Standard_False);
+		 TObj_OcafObjectIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = nullptr, const bool theRecursive = false, const bool theAllSubChildren = false);
 
 };
 
@@ -4090,14 +4067,14 @@ Parameter theAllSubChildren do not stop at the first level of children, but sear
 class TObj_ReferenceIterator : public TObj_LabelIterator {
 	public:
 		/****** TObj_ReferenceIterator::TObj_ReferenceIterator ******/
-		/****** md5 signature: 42cca6998eb4240301dc13393448d838 ******/
+		/****** md5 signature: 9cb4f8504fd27e0237bc3e3cad62dcd7 ******/
 		%feature("compactdefaultargs") TObj_ReferenceIterator;
 		%feature("autodoc", "
 Parameters
 ----------
 theLabel: TDF_Label
-theType: Standard_Type (optional, default to NULL)
-theRecursive: bool (optional, default to Standard_True)
+theType: Standard_Type (optional, default to nullptr)
+theRecursive: bool (optional, default to true)
 
 Return
 -------
@@ -4107,7 +4084,7 @@ Description
 -----------
 Creates the iterator on references in partition theType narrows a variety of iterated objects.
 ") TObj_ReferenceIterator;
-		 TObj_ReferenceIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = NULL, const Standard_Boolean theRecursive = Standard_True);
+		 TObj_ReferenceIterator(const TDF_Label & theLabel, const opencascade::handle<Standard_Type> & theType = nullptr, const bool theRecursive = true);
 
 };
 
@@ -4123,18 +4100,6 @@ Creates the iterator on references in partition theType narrows a variety of ite
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
-class TObj_HSequenceOfObject : public TObj_SequenceOfObject, public Standard_Transient {
-  public:
-    TObj_HSequenceOfObject();
-    TObj_HSequenceOfObject(const TObj_SequenceOfObject& theOther);
-    const TObj_SequenceOfObject& Sequence();
-    void Append (const TObj_SequenceOfObject::value_type& theItem);
-    void Append (TObj_SequenceOfObject& theSequence);
-    TObj_SequenceOfObject& ChangeSequence();
-};
-%make_alias(TObj_HSequenceOfObject)
-
-
 /* class aliases */
 %pythoncode {
 }

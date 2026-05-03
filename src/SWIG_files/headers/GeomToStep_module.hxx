@@ -29,6 +29,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomToStep_MakeBoundedCurve.hxx>
 #include<GeomToStep_MakeBoundedSurface.hxx>
 #include<GeomToStep_MakeCartesianPoint.hxx>
+#include<GeomToStep_MakeCartesianTransformationOperator.hxx>
 #include<GeomToStep_MakeCircle.hxx>
 #include<GeomToStep_MakeConic.hxx>
 #include<GeomToStep_MakeConicalSurface.hxx>

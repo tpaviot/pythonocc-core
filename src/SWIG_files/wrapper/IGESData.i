@@ -47,7 +47,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igesdata.html"
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<gp_module.hxx>
-#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
@@ -71,7 +70,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igesdata.html"
 %import Interface.i
 %import TCollection.i
 %import gp.i
-%import TColStd.i
 %import Message.i
 
 %pythoncode {
@@ -169,22 +167,15 @@ IGESData_TypeError = IGESData_Status.IGESData_TypeError
 
 /* handles */
 %wrap_handle(IGESData_FileRecognizer)
-%wrap_handle(IGESData_GeneralModule)
 %wrap_handle(IGESData_GlobalNodeOfSpecificLib)
 %wrap_handle(IGESData_GlobalNodeOfWriterLib)
 %wrap_handle(IGESData_IGESEntity)
-%wrap_handle(IGESData_IGESModel)
-%wrap_handle(IGESData_IGESReaderData)
 %wrap_handle(IGESData_NodeOfSpecificLib)
 %wrap_handle(IGESData_NodeOfWriterLib)
-%wrap_handle(IGESData_Protocol)
-%wrap_handle(IGESData_ReadWriteModule)
 %wrap_handle(IGESData_SpecificModule)
 %wrap_handle(IGESData_ToolLocation)
 %wrap_handle(IGESData_ColorEntity)
-%wrap_handle(IGESData_DefaultGeneral)
 %wrap_handle(IGESData_DefaultSpecific)
-%wrap_handle(IGESData_FileProtocol)
 %wrap_handle(IGESData_LabelDisplayEntity)
 %wrap_handle(IGESData_LevelListEntity)
 %wrap_handle(IGESData_LineFontEntity)
@@ -194,7 +185,6 @@ IGESData_TypeError = IGESData_Status.IGESData_TypeError
 %wrap_handle(IGESData_UndefinedEntity)
 %wrap_handle(IGESData_ViewKindEntity)
 %wrap_handle(IGESData_FreeFormatEntity)
-%wrap_handle(IGESData_HArray1OfIGESEntity)
 /* end handles declaration */
 
 /* templates */
@@ -209,6 +199,7 @@ Array1ExtendIter(opencascade::handle<IGESData_IGESEntity>)
 /* typedefs */
 typedef NCollection_Array1<IGESData_DirPart> IGESData_Array1OfDirPart;
 typedef NCollection_Array1<opencascade::handle<IGESData_IGESEntity>> IGESData_Array1OfIGESEntity;
+typedef NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> IGESData_HArray1OfIGESEntity;
 /* end typedefs declaration */
 
 /*****************
@@ -308,12 +299,12 @@ Creates a Basic Editor for IGES Data, ready to run.
 		 IGESData_BasicEditor(const opencascade::handle<IGESData_IGESModel> & model, const opencascade::handle<IGESData_Protocol> & protocol);
 
 		/****** IGESData_BasicEditor::ApplyUnit ******/
-		/****** md5 signature: 8fe231964ac1b98c4fad899bda384896 ******/
+		/****** md5 signature: 90a32d24c79a74eead07db6f23f9e02f ******/
 		%feature("compactdefaultargs") ApplyUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-enforce: bool (optional, default to Standard_False)
+enforce: bool (optional, default to false)
 
 Return
 -------
@@ -323,10 +314,10 @@ Description
 -----------
 Applies unit value to convert header data: Resolution, MaxCoord, MaxLineWeight Applies unit only once after SetUnit... has been called, if <enforce> is given as True. It can be called just before writing the model to a file, i.e. when definitive values are finally known.
 ") ApplyUnit;
-		void ApplyUnit(const Standard_Boolean enforce = Standard_False);
+		void ApplyUnit(const bool enforce = false);
 
 		/****** IGESData_BasicEditor::AutoCorrect ******/
-		/****** md5 signature: ddc81d34506a37c11b7cd4d98642359a ******/
+		/****** md5 signature: ef8a2868237aa322c6874ca9e974fc68 ******/
 		%feature("compactdefaultargs") AutoCorrect;
 		%feature("autodoc", "
 Parameters
@@ -341,10 +332,10 @@ Description
 -----------
 Performs auto-correction on an IGESEntity Returns True if something has changed, False if nothing done. //! Works with the specific IGES Services: DirChecker which allows to correct data in 'Directory Part' of Entities (such as required values for status, or references to be null), and the specific IGES service OwnCorrect, which is specialised for each type of entity.
 ") AutoCorrect;
-		Standard_Boolean AutoCorrect(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool AutoCorrect(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_BasicEditor::AutoCorrectModel ******/
-		/****** md5 signature: fe46979c4f008825d0446287edc6ede7 ******/
+		/****** md5 signature: a16d98f721ede73c126e1945b70eebef ******/
 		%feature("compactdefaultargs") AutoCorrectModel;
 		%feature("autodoc", "Return
 -------
@@ -354,7 +345,7 @@ Description
 -----------
 Performs auto-correction on the whole Model Returns the count of modified entities.
 ") AutoCorrectModel;
-		Standard_Integer AutoCorrectModel();
+		int AutoCorrectModel();
 
 		/****** IGESData_BasicEditor::ComputeStatus ******/
 		/****** md5 signature: 94562276d7c280fff250ec7d0fc92e38 ******/
@@ -370,7 +361,7 @@ Performs the re-computation of status on the whole model (Subordinate Status and
 		void ComputeStatus();
 
 		/****** IGESData_BasicEditor::DraftingMax ******/
-		/****** md5 signature: f35c54843eec6e8da4952db2c47da562 ******/
+		/****** md5 signature: 67b0b0aeb622404b61c2b3ca290fd0cf ******/
 		%feature("compactdefaultargs") DraftingMax;
 		%feature("autodoc", "Return
 -------
@@ -380,10 +371,10 @@ Description
 -----------
 Returns the maximum allowed value for Drafting Flag.
 ") DraftingMax;
-		static Standard_Integer DraftingMax();
+		static int DraftingMax();
 
 		/****** IGESData_BasicEditor::DraftingName ******/
-		/****** md5 signature: 7da09edb2042516a3d00c5651aac3cb9 ******/
+		/****** md5 signature: 74830a99e08813975ae3dd34ae02e68c ******/
 		%feature("compactdefaultargs") DraftingName;
 		%feature("autodoc", "
 Parameters
@@ -392,21 +383,21 @@ flag: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 From the flag of drafting standard, returns name, '' if incorrect.
 ") DraftingName;
-		static Standard_CString DraftingName(const Standard_Integer flag);
+		static const char * DraftingName(const int flag);
 
 		/****** IGESData_BasicEditor::GetFlagByValue ******/
-		/****** md5 signature: 1fbf7be16f7e6c0af91267909c4970a8 ******/
+		/****** md5 signature: d30ca60538ba66f4c997c193f183fe98 ******/
 		%feature("compactdefaultargs") GetFlagByValue;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -416,10 +407,10 @@ Description
 -----------
 Returns Flag corresponding to the scaling theValue. Returns 0 if there's no such flag.
 ") GetFlagByValue;
-		static Standard_Integer GetFlagByValue(const Standard_Real theValue);
+		static int GetFlagByValue(const double theValue);
 
 		/****** IGESData_BasicEditor::IGESVersionMax ******/
-		/****** md5 signature: 019f789bb05d370b5b7bd697923db3e3 ******/
+		/****** md5 signature: 95227e506647711c4b2d0c06a5f45396 ******/
 		%feature("compactdefaultargs") IGESVersionMax;
 		%feature("autodoc", "Return
 -------
@@ -429,10 +420,10 @@ Description
 -----------
 Returns the maximum allowed value for IGESVersion Flag.
 ") IGESVersionMax;
-		static Standard_Integer IGESVersionMax();
+		static int IGESVersionMax();
 
 		/****** IGESData_BasicEditor::IGESVersionName ******/
-		/****** md5 signature: 6707df18996b6c7800bb7770cd0d9e60 ******/
+		/****** md5 signature: 1e2bbc906adbd56111ac1d19b7c4f142 ******/
 		%feature("compactdefaultargs") IGESVersionName;
 		%feature("autodoc", "
 Parameters
@@ -441,13 +432,13 @@ flag: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 From the flag of IGES version, returns name, '' if incorrect.
 ") IGESVersionName;
-		static Standard_CString IGESVersionName(const Standard_Integer flag);
+		static const char * IGESVersionName(const int flag);
 
 		/****** IGESData_BasicEditor::Init ******/
 		/****** md5 signature: 97f796e95dfea5372a999aeb34b6facb ******/
@@ -500,7 +491,7 @@ Returns the designated model.
 		opencascade::handle<IGESData_IGESModel> Model();
 
 		/****** IGESData_BasicEditor::SetUnitFlag ******/
-		/****** md5 signature: 4666c28aaeb01c53577f0d10abec466c ******/
+		/****** md5 signature: 15baa1fe0124575ecb3a5d12e5804a53 ******/
 		%feature("compactdefaultargs") SetUnitFlag;
 		%feature("autodoc", "
 Parameters
@@ -515,15 +506,15 @@ Description
 -----------
 Sets a new unit from its flag (param 14 of Global Section) Returns True if done, False if <flag> is incorrect.
 ") SetUnitFlag;
-		Standard_Boolean SetUnitFlag(const Standard_Integer flag);
+		bool SetUnitFlag(const int flag);
 
 		/****** IGESData_BasicEditor::SetUnitName ******/
-		/****** md5 signature: 883d858a01f10271707c017537c8f9e0 ******/
+		/****** md5 signature: 14f8250cb9fc545cb08454ded6f61bd3 ******/
 		%feature("compactdefaultargs") SetUnitName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -533,15 +524,15 @@ Description
 -----------
 Sets a new unit from its name (param 15 of Global Section) Returns True if done, False if <name> is incorrect Remark: if <flag> has been set to 3 (user defined), <name> is then free.
 ") SetUnitName;
-		Standard_Boolean SetUnitName(Standard_CString name);
+		bool SetUnitName(const char * const name);
 
 		/****** IGESData_BasicEditor::SetUnitValue ******/
-		/****** md5 signature: 4bccc95d28117974dc630c9e1c105787 ******/
+		/****** md5 signature: 649a3b51d3235013f1b97cd04a2bb2cb ******/
 		%feature("compactdefaultargs") SetUnitValue;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -551,10 +542,10 @@ Description
 -----------
 Sets a new unit from its value in meters (rounded to the closest one, max gap 1%) Returns True if done, False if <val> is too far from a suitable value.
 ") SetUnitValue;
-		Standard_Boolean SetUnitValue(const Standard_Real val);
+		bool SetUnitValue(const double val);
 
 		/****** IGESData_BasicEditor::UnitFlagName ******/
-		/****** md5 signature: f037d925469445a27c723e8210ab23f7 ******/
+		/****** md5 signature: a6cda47375e796b85bdbb726aa22e19f ******/
 		%feature("compactdefaultargs") UnitFlagName;
 		%feature("autodoc", "
 Parameters
@@ -563,16 +554,16 @@ flag: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 From the flag of unit, determines its name, '' if incorrect.
 ") UnitFlagName;
-		static Standard_CString UnitFlagName(const Standard_Integer flag);
+		static const char * UnitFlagName(const int flag);
 
 		/****** IGESData_BasicEditor::UnitFlagValue ******/
-		/****** md5 signature: b4467742c6222d78be1cf6dd2ed0ead4 ******/
+		/****** md5 signature: a6e875ea5569bd2ee26f490cf4507141 ******/
 		%feature("compactdefaultargs") UnitFlagValue;
 		%feature("autodoc", "
 Parameters
@@ -581,21 +572,21 @@ flag: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 From the flag of unit, determines value in MM, 0 if incorrect.
 ") UnitFlagValue;
-		static Standard_Real UnitFlagValue(const Standard_Integer flag);
+		static double UnitFlagValue(const int flag);
 
 		/****** IGESData_BasicEditor::UnitNameFlag ******/
-		/****** md5 signature: 8b4c418e38975e78606ce25137dbbc7a ******/
+		/****** md5 signature: af92f4c7e06ef41d106023c4fe300dea ******/
 		%feature("compactdefaultargs") UnitNameFlag;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -605,7 +596,7 @@ Description
 -----------
 From the name of unit, computes flag number, 0 if incorrect (in this case, user defined entity remains possible).
 ") UnitNameFlag;
-		static Standard_Integer UnitNameFlag(Standard_CString name);
+		static int UnitNameFlag(const char * const name);
 
 };
 
@@ -648,7 +639,7 @@ returns DefType status (Void,Reference,Rank).
 		IGESData_DefType DefType();
 
 		/****** IGESData_DefSwitch::SetRank ******/
-		/****** md5 signature: 44ed77fcf7fd7933eabfca8ff08d9959 ******/
+		/****** md5 signature: 630b1f17b1680e6b5a8d40a27d2fbae1 ******/
 		%feature("compactdefaultargs") SetRank;
 		%feature("autodoc", "
 Parameters
@@ -663,7 +654,7 @@ Description
 -----------
 sets DefSwitch to 'Rank' with a Value (in file: Integer > 0).
 ") SetRank;
-		void SetRank(const Standard_Integer val);
+		void SetRank(const int val);
 
 		/****** IGESData_DefSwitch::SetReference ******/
 		/****** md5 signature: af9ec8d5348700121a982909f4b03eb8 ******/
@@ -692,7 +683,7 @@ sets DefSwitch to 'Void' status (in file: Integer = 0).
 		void SetVoid();
 
 		/****** IGESData_DefSwitch::Value ******/
-		/****** md5 signature: c6d99989077b92200f0377d8b792ba0b ******/
+		/****** md5 signature: c627cada3dfed5ccab6c1f1ff49fb87f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -702,7 +693,7 @@ Description
 -----------
 returns Value as Integer (sensefull for a Rank).
 ") Value;
-		Standard_Integer Value();
+		int Value();
 
 };
 
@@ -732,7 +723,7 @@ Returns a DirChecker, with no criterium at all to be checked.
 		 IGESData_DirChecker();
 
 		/****** IGESData_DirChecker::IGESData_DirChecker ******/
-		/****** md5 signature: 5f4208006c542f7010d7e96226a02e55 ******/
+		/****** md5 signature: a55673444e016013fb8a7c84e68c8145 ******/
 		%feature("compactdefaultargs") IGESData_DirChecker;
 		%feature("autodoc", "
 Parameters
@@ -747,10 +738,10 @@ Description
 -----------
 Returns a DirChecker, with no criterium except Required Type.
 ") IGESData_DirChecker;
-		 IGESData_DirChecker(const Standard_Integer atype);
+		 IGESData_DirChecker(const int atype);
 
 		/****** IGESData_DirChecker::IGESData_DirChecker ******/
-		/****** md5 signature: 62a3adf07791971adde9112fe96133dd ******/
+		/****** md5 signature: 4e78294dd0cb01e93f8f371adaa75cc2 ******/
 		%feature("compactdefaultargs") IGESData_DirChecker;
 		%feature("autodoc", "
 Parameters
@@ -766,10 +757,10 @@ Description
 -----------
 Returns a DirChecker, with no criterium except Required values for Type and Form numbers.
 ") IGESData_DirChecker;
-		 IGESData_DirChecker(const Standard_Integer atype, const Standard_Integer aform);
+		 IGESData_DirChecker(const int atype, const int aform);
 
 		/****** IGESData_DirChecker::IGESData_DirChecker ******/
-		/****** md5 signature: 728f4d8dba5b36b6d46e1a9639b46105 ******/
+		/****** md5 signature: e0115a576bd93a0115f667d0259d01b8 ******/
 		%feature("compactdefaultargs") IGESData_DirChecker;
 		%feature("autodoc", "
 Parameters
@@ -786,7 +777,7 @@ Description
 -----------
 Returns a DirChecker, with no criterium except Required values for Type number (atype), and Required Range for Form number (which must be between aform1 and aform2 included).
 ") IGESData_DirChecker;
-		 IGESData_DirChecker(const Standard_Integer atype, const Standard_Integer aform1, const Standard_Integer aform2);
+		 IGESData_DirChecker(const int atype, const int aform1, const int aform2);
 
 		/****** IGESData_DirChecker::BlankStatusIgnored ******/
 		/****** md5 signature: a019c00f20a6cff66cc4b0ca7ef773d4 ******/
@@ -802,7 +793,7 @@ Sets Blank Status to be ignored (should not be defined, or its value should be 0
 		void BlankStatusIgnored();
 
 		/****** IGESData_DirChecker::BlankStatusRequired ******/
-		/****** md5 signature: 27e4ded994f1b0d164c651d44a4f46c4 ******/
+		/****** md5 signature: 7d80131b0a307f8ad58300bb27650f70 ******/
 		%feature("compactdefaultargs") BlankStatusRequired;
 		%feature("autodoc", "
 Parameters
@@ -817,7 +808,7 @@ Description
 -----------
 Sets Blank Status to be required at a given value.
 ") BlankStatusRequired;
-		void BlankStatusRequired(const Standard_Integer val);
+		void BlankStatusRequired(const int val);
 
 		/****** IGESData_DirChecker::Check ******/
 		/****** md5 signature: f4f6d84244833174e19286de6b5f3957 ******/
@@ -876,7 +867,7 @@ Sets Color criterium If crit is DefVoid, Ignored: should not be defined If crit 
 		void Color(const IGESData_DefType crit);
 
 		/****** IGESData_DirChecker::Correct ******/
-		/****** md5 signature: 9d2c2c88b925135509e528153f6a1f2c ******/
+		/****** md5 signature: 621d6ba68e6cc1e16160339b98d717d3 ******/
 		%feature("compactdefaultargs") Correct;
 		%feature("autodoc", "
 Parameters
@@ -891,10 +882,10 @@ Description
 -----------
 Corrects the Directory Entry of an IGES Entity as far as it is possible according recorded criteria without any ambiguity: - if a numeric Status is required a given value, this value is enforced - if an item is required to be Void, or if it recorded as Erroneous, it is cleared (set to Void) - Type Number is enforced - finally Form Number is enforced only if one and only Value is admitted (no range, see Constructors of DirChecker).
 ") Correct;
-		Standard_Boolean Correct(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool Correct(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_DirChecker::GraphicsIgnored ******/
-		/****** md5 signature: 3b3f9c739a6271439c6dd678e0cb88ba ******/
+		/****** md5 signature: ae5b3c45fe1181b63bcd79d2110bee85 ******/
 		%feature("compactdefaultargs") GraphicsIgnored;
 		%feature("autodoc", "
 Parameters
@@ -909,7 +900,7 @@ Description
 -----------
 Sets Graphics data (LineFont, LineWeight, Color, Level, View) to be ignored according value of Hierarchy status: If hierarchy is not given, they are Ignored any way (that is, they should not be defined) If hierarchy is given, Graphics are Ignored if the Hierarchy status has the value given in argument 'hierarchy'.
 ") GraphicsIgnored;
-		void GraphicsIgnored(const Standard_Integer hierarchy = -1);
+		void GraphicsIgnored(const int hierarchy = -1);
 
 		/****** IGESData_DirChecker::HierarchyStatusIgnored ******/
 		/****** md5 signature: ffe6880a2270c9dd8d074fd8791a361b ******/
@@ -925,7 +916,7 @@ Sets Hierarchy Status to be ignored (should not be defined, or its value should 
 		void HierarchyStatusIgnored();
 
 		/****** IGESData_DirChecker::HierarchyStatusRequired ******/
-		/****** md5 signature: b449161bc1a34ebb8c2e7ba44fffc443 ******/
+		/****** md5 signature: a932d089b8bb0ae20a672aa037a93178 ******/
 		%feature("compactdefaultargs") HierarchyStatusRequired;
 		%feature("autodoc", "
 Parameters
@@ -940,10 +931,10 @@ Description
 -----------
 Sets Hierarchy Status to be required at a given value.
 ") HierarchyStatusRequired;
-		void HierarchyStatusRequired(const Standard_Integer val);
+		void HierarchyStatusRequired(const int val);
 
 		/****** IGESData_DirChecker::IsSet ******/
-		/****** md5 signature: d771f80e63fcb5d314de94e557642c75 ******/
+		/****** md5 signature: fa026a649a18f57fe3cfebbe001e5931 ******/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "Return
 -------
@@ -953,7 +944,7 @@ Description
 -----------
 Returns True if at least one criterium has already been set Allows user to store a DirChecker (static variable) then ask if it has been set before setting it.
 ") IsSet;
-		Standard_Boolean IsSet();
+		bool IsSet();
 
 		/****** IGESData_DirChecker::LineFont ******/
 		/****** md5 signature: 6e240c23b24b5b0ad0fc231dbe891a55 ******/
@@ -1036,7 +1027,7 @@ Sets Subordinate Status to be ignored (should not be defined, or its value shoul
 		void SubordinateStatusIgnored();
 
 		/****** IGESData_DirChecker::SubordinateStatusRequired ******/
-		/****** md5 signature: cfd4a7eaae9a113928416e1e3a726c5b ******/
+		/****** md5 signature: f879cbab4071c3ce79b7ceab17ac670b ******/
 		%feature("compactdefaultargs") SubordinateStatusRequired;
 		%feature("autodoc", "
 Parameters
@@ -1051,7 +1042,7 @@ Description
 -----------
 Sets Subordinate Status to be required at a given value.
 ") SubordinateStatusRequired;
-		void SubordinateStatusRequired(const Standard_Integer val);
+		void SubordinateStatusRequired(const int val);
 
 		/****** IGESData_DirChecker::UseFlagIgnored ******/
 		/****** md5 signature: 270ff3aa762df881823a73edf6215bc4 ******/
@@ -1067,7 +1058,7 @@ Sets Blank Status to be ignored (should not be defined, or its value should be 0
 		void UseFlagIgnored();
 
 		/****** IGESData_DirChecker::UseFlagRequired ******/
-		/****** md5 signature: 3f04be01d8e4d038cf5279367cf81a5e ******/
+		/****** md5 signature: 0af7a80a53184348398631798371ba06 ******/
 		%feature("compactdefaultargs") UseFlagRequired;
 		%feature("autodoc", "
 Parameters
@@ -1082,7 +1073,7 @@ Description
 -----------
 Sets Blank Status to be required at a given value Give -1 to demand UseFlag not zero (but no precise value req.).
 ") UseFlagRequired;
-		void UseFlagRequired(const Standard_Integer val);
+		void UseFlagRequired(const int val);
 
 };
 
@@ -1112,7 +1103,7 @@ creates an empty DirPart, ready to be filled by Init.
 		 IGESData_DirPart();
 
 		/****** IGESData_DirPart::Init ******/
-		/****** md5 signature: 18118032f60e0e9839e44d4d6cfb5e08 ******/
+		/****** md5 signature: 6d858f06ee86571da3784b8005ccda96 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1134,10 +1125,10 @@ i14: int
 i15: int
 i16: int
 i17: int
-res1: str
-res2: str
-label: str
-subscript: str
+res1: char *
+res2: char *
+label: char *
+subscript: char *
 
 Return
 -------
@@ -1147,7 +1138,7 @@ Description
 -----------
 fills DirPart with consistent data read from file.
 ") Init;
-		void Init(const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i19, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subscript);
+		void Init(const int i1, const int i2, const int i3, const int i4, const int i5, const int i6, const int i7, const int i8, const int i9, const int i19, const int i11, const int i12, const int i13, const int i14, const int i15, const int i16, const int i17, const char * const res1, const char * const res2, const char * const label, const char * const subscript);
 
 		/****** IGESData_DirPart::Type ******/
 		/****** md5 signature: 69362c058d18efeaee307371b2621b00 ******/
@@ -1163,15 +1154,15 @@ returns 'type' and 'form' info, used to recognize the entity.
 		IGESData_IGESType Type();
 
 		/****** IGESData_DirPart::Values ******/
-		/****** md5 signature: 5828e8aff87ba1d4964d2e7a1d2e2675 ******/
+		/****** md5 signature: 6cb6cc32ecd0043317c816793ad39ec6 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
 ----------
-res1: str
-res2: str
-label: str
-subscript: str
+res1: char *
+res2: char *
+label: char *
+subscript: char *
 
 Return
 -------
@@ -1197,7 +1188,7 @@ Description
 -----------
 returns values recorded in DirPart (content of cstrings are modified).
 ") Values;
-		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subscript);
+		void Values(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, char * res1, char * res2, char * label, char * subscript);
 
 };
 
@@ -1233,7 +1224,7 @@ Adds a new Recognizer to the Compound, at the end Several calls to Add work by a
 		void Add(const opencascade::handle<IGESData_FileRecognizer> & reco);
 
 		/****** IGESData_FileRecognizer::Evaluate ******/
-		/****** md5 signature: 3237dbbb2043959d221cc2e7c8976831 ******/
+		/****** md5 signature: bcea3595519f32194bdd45776a677d5a ******/
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "
 Parameters
@@ -1249,7 +1240,7 @@ Description
 -----------
 Evaluates if recognition has a result, returns it if yes In case of success, Returns True and puts result in 'res' In case of Failure, simply Returns False Works by calling deferred method Eval, and in case of failure, looks for Added Recognizers to work.
 ") Evaluate;
-		Standard_Boolean Evaluate(const IGESData_IGESType & akey, opencascade::handle<IGESData_IGESEntity> & res);
+		bool Evaluate(const IGESData_IGESType & akey, opencascade::handle<IGESData_IGESEntity> & res);
 
 		/****** IGESData_FileRecognizer::Result ******/
 		/****** md5 signature: 29851946acd68a530fd6e44b9d630dfb ******/
@@ -1282,7 +1273,7 @@ Returns result of last recognition (call of Evaluate).
 class IGESData_GeneralModule : public Interface_GeneralModule {
 	public:
 		/****** IGESData_GeneralModule::CanCopy ******/
-		/****** md5 signature: a5bdcf31c0ad2154c49ebf2598d091b9 ******/
+		/****** md5 signature: e21799b76dd4fb3b969e688640623e63 ******/
 		%feature("compactdefaultargs") CanCopy;
 		%feature("autodoc", "
 Parameters
@@ -1298,10 +1289,10 @@ Description
 -----------
 Specific answer to the question 'is Copy properly implemented' For IGES, answer is always True.
 ") CanCopy;
-		virtual Standard_Boolean CanCopy(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent);
+		bool CanCopy(const int CN, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IGESData_GeneralModule::CheckCase ******/
-		/****** md5 signature: d232fb3d35ada68a901b85a0af289c46 ******/
+		/****** md5 signature: d1c7ba6add9212b48bcbb631196567e9 ******/
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "
 Parameters
@@ -1319,10 +1310,10 @@ Description
 -----------
 Semantic Checking of an IGESEntity. Performs general Checks, which use DirChecker, then call OwnCheck which does a check specific for each type of Entity.
 ") CheckCase;
-		void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
+		void CheckCase(const int CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
 		/****** IGESData_GeneralModule::CopyCase ******/
-		/****** md5 signature: 13c34a46cee20a3c1fc929ba0a39372a ******/
+		/****** md5 signature: fc38f8790e575e509f035b0523c81b6a ******/
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "
 Parameters
@@ -1340,10 +1331,10 @@ Description
 -----------
 Copy ('Deep') from <entfrom> to <entto> (same type) by using a CopyTool which provides its working Map. For IGESEntities, Copies general data (Directory Part, List of Properties) and call OwnCopyCase.
 ") CopyCase;
-		void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
+		void CopyCase(const int CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
 		/****** IGESData_GeneralModule::DirChecker ******/
-		/****** md5 signature: 036d653b6ace3b4648653d3a1fe6b651 ******/
+		/****** md5 signature: 24ac4dd970fdb6edfd98c8299928698c ******/
 		%feature("compactdefaultargs") DirChecker;
 		%feature("autodoc", "
 Parameters
@@ -1359,10 +1350,10 @@ Description
 -----------
 Returns a DirChecker, specific for each type of Entity (identified by its Case Number): this DirChecker defines constraints which must be respected by the DirectoryPart.
 ") DirChecker;
-		virtual IGESData_DirChecker DirChecker(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
+		virtual IGESData_DirChecker DirChecker(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_GeneralModule::FillSharedCase ******/
-		/****** md5 signature: 7bbac4d621ea60d6990c803dbf4b2897 ******/
+		/****** md5 signature: a1af00a8f137f9d8747366c144a8316d ******/
 		%feature("compactdefaultargs") FillSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -1379,10 +1370,10 @@ Description
 -----------
 Fills the list of Entities shared by an IGESEntity <ent>, according a Case Number <CN> (formerly computed by CaseNum). Considers Properties and Directory Part, and calls OwnSharedCase (which is adapted to each Type of Entity).
 ") FillSharedCase;
-		void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
+		void FillSharedCase(const int CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
 		/****** IGESData_GeneralModule::ListImpliedCase ******/
-		/****** md5 signature: 2464e54633a79d3cf9363f69b8c3a04f ******/
+		/****** md5 signature: fe950e42f0f82e8defd035719c5cd138 ******/
 		%feature("compactdefaultargs") ListImpliedCase;
 		%feature("autodoc", "
 Parameters
@@ -1399,10 +1390,10 @@ Description
 -----------
 Lists the Implied References of <ent>. Here, these are the Associativities, plus the Entities defined by OwnSharedCase.
 ") ListImpliedCase;
-		virtual void ListImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
+		void ListImpliedCase(const int CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
 		/****** IGESData_GeneralModule::Name ******/
-		/****** md5 signature: ac91548e6672c7a25f89869ddd43f80a ******/
+		/****** md5 signature: 95b9b1ecb679c888363cbd297ea9aae6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -1419,10 +1410,10 @@ Description
 -----------
 Returns the name of an IGES Entity (its NameValue) Can be redefined for an even more specific case ...
 ") Name;
-		virtual opencascade::handle<TCollection_HAsciiString> Name(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
+		opencascade::handle<TCollection_HAsciiString> Name(const int CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
 		/****** IGESData_GeneralModule::NewVoid ******/
-		/****** md5 signature: 89da2a487df7b420c0382ae0dc5fc2c5 ******/
+		/****** md5 signature: 846cb661bd6323cca40137ab9cdf7888 ******/
 		%feature("compactdefaultargs") NewVoid;
 		%feature("autodoc", "
 Parameters
@@ -1438,10 +1429,10 @@ Description
 -----------
 Specific creation of a new void entity.
 ") NewVoid;
-		virtual Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & entto);
+		bool NewVoid(const int CN, opencascade::handle<Standard_Transient> & entto);
 
 		/****** IGESData_GeneralModule::OwnCheckCase ******/
-		/****** md5 signature: 1ee5ab0982c8715677f898fc98959231 ******/
+		/****** md5 signature: eca300876a80daa3d6461589e915cb6d ******/
 		%feature("compactdefaultargs") OwnCheckCase;
 		%feature("autodoc", "
 Parameters
@@ -1459,10 +1450,10 @@ Description
 -----------
 Performs Specific Semantic Check for each type of Entity.
 ") OwnCheckCase;
-		virtual void OwnCheckCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
+		virtual void OwnCheckCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
 		/****** IGESData_GeneralModule::OwnCopyCase ******/
-		/****** md5 signature: 29f249a12dd03139f8f1bcdf3d8aa0ca ******/
+		/****** md5 signature: 9ad0bed5f3aa318c249804d4eee661b5 ******/
 		%feature("compactdefaultargs") OwnCopyCase;
 		%feature("autodoc", "
 Parameters
@@ -1480,10 +1471,10 @@ Description
 -----------
 Copies parameters which are specific of each Type of Entity.
 ") OwnCopyCase;
-		virtual void OwnCopyCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, Interface_CopyTool & TC);
+		virtual void OwnCopyCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, Interface_CopyTool & TC);
 
 		/****** IGESData_GeneralModule::OwnDeleteCase ******/
-		/****** md5 signature: c9a6039a81d69ed5f6b6015f1199b22a ******/
+		/****** md5 signature: f5bcbb33bdbefcdcff9af5594a72d1f4 ******/
 		%feature("compactdefaultargs") OwnDeleteCase;
 		%feature("autodoc", "
 Parameters
@@ -1499,10 +1490,10 @@ Description
 -----------
 Specific preparation for delete, acts on own parameters Default does nothing, to be redefined as required.
 ") OwnDeleteCase;
-		virtual void OwnDeleteCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
+		virtual void OwnDeleteCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_GeneralModule::OwnImpliedCase ******/
-		/****** md5 signature: 75f500e35478984bd78c87787d67741c ******/
+		/****** md5 signature: 1d540cb5f1d86b582ba1f3e8c2fb2ef6 ******/
 		%feature("compactdefaultargs") OwnImpliedCase;
 		%feature("autodoc", "
 Parameters
@@ -1519,10 +1510,10 @@ Description
 -----------
 Specific list of Entities implied by a given IGESEntity <ent> (in addition to Associativities). By default, there are none, but this method can be redefined as required.
 ") OwnImpliedCase;
-		virtual void OwnImpliedCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
+		virtual void OwnImpliedCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
 
 		/****** IGESData_GeneralModule::OwnRenewCase ******/
-		/****** md5 signature: 8cfebfba742ed0ec552abe5502e486fa ******/
+		/****** md5 signature: fa477dc3fdcd812af9b6029bd810e12e ******/
 		%feature("compactdefaultargs") OwnRenewCase;
 		%feature("autodoc", "
 Parameters
@@ -1540,10 +1531,10 @@ Description
 -----------
 Renews parameters which are specific of each Type of Entity: the provided default does nothing, but this method may be redefined as required.
 ") OwnRenewCase;
-		virtual void OwnRenewCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, const Interface_CopyTool & TC);
+		virtual void OwnRenewCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, const Interface_CopyTool & TC);
 
 		/****** IGESData_GeneralModule::OwnSharedCase ******/
-		/****** md5 signature: af6ce2f8effa428553bfd535582299e1 ******/
+		/****** md5 signature: 992f94b4e92ed9a9604d77ea9df93f9b ******/
 		%feature("compactdefaultargs") OwnSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -1560,10 +1551,10 @@ Description
 -----------
 Lists the Entities shared by a given IGESEntity <ent>, from its specific parameters: specific for each type.
 ") OwnSharedCase;
-		virtual void OwnSharedCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
+		virtual void OwnSharedCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
 
 		/****** IGESData_GeneralModule::RenewImpliedCase ******/
-		/****** md5 signature: faab0844f93d5fbf03d896180bb19755 ******/
+		/****** md5 signature: 63f1dcf4eabdcff2e0d31cae949cc27f ******/
 		%feature("compactdefaultargs") RenewImpliedCase;
 		%feature("autodoc", "
 Parameters
@@ -1581,10 +1572,10 @@ Description
 -----------
 Renewing of Implied References. For IGESEntities, Copies general data(List of Associativities) and calls OwnRenewCase.
 ") RenewImpliedCase;
-		virtual void RenewImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, const Interface_CopyTool & TC);
+		void RenewImpliedCase(const int CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, const Interface_CopyTool & TC);
 
 		/****** IGESData_GeneralModule::WhenDeleteCase ******/
-		/****** md5 signature: 7740f2bc1169cdd39ca3b2f12adbb0e7 ******/
+		/****** md5 signature: 928f8a4f0b9f81b1963543974e5e8656 ******/
 		%feature("compactdefaultargs") WhenDeleteCase;
 		%feature("autodoc", "
 Parameters
@@ -1601,12 +1592,10 @@ Description
 -----------
 Prepares an IGES Entity for delete: works on directory part then calls OwnDeleteCase While dispatch requires to copy the entities, <dispatched> is ignored, entities are cleared in any case.
 ") WhenDeleteCase;
-		virtual void WhenDeleteCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean dispatched);
+		void WhenDeleteCase(const int CN, const opencascade::handle<Standard_Transient> & ent, const bool dispatched);
 
 };
 
-
-%make_alias(IGESData_GeneralModule)
 
 %extend IGESData_GeneralModule {
 	%pythoncode {
@@ -1833,17 +1822,17 @@ Returns the name of the IGES file author.
 		opencascade::handle<TCollection_HAsciiString> AuthorName();
 
 		/****** IGESData_GlobalSection::CascadeUnit ******/
-		/****** md5 signature: 0a04d480977f0e8fef0df000d9bf1748 ******/
+		/****** md5 signature: a4fdf5b096820cb26e8793b5002c86f5 ******/
 		%feature("compactdefaultargs") CascadeUnit;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the system length unit.
 ") CascadeUnit;
-		Standard_Real CascadeUnit();
+		double CascadeUnit();
 
 		/****** IGESData_GlobalSection::CompanyName ******/
 		/****** md5 signature: 0ddc26b82ac89e543b514f876f02f512 ******/
@@ -1885,7 +1874,7 @@ Returns the IGES file creation date.
 		opencascade::handle<TCollection_HAsciiString> Date();
 
 		/****** IGESData_GlobalSection::DraftingStandard ******/
-		/****** md5 signature: 2eaebc14c53be4e580dd6ae1343af802 ******/
+		/****** md5 signature: 94ffd77be1dcd1da56243a290bdcd289 ******/
 		%feature("compactdefaultargs") DraftingStandard;
 		%feature("autodoc", "Return
 -------
@@ -1895,20 +1884,20 @@ Description
 -----------
 No available documentation.
 ") DraftingStandard;
-		Standard_Integer DraftingStandard();
+		int DraftingStandard();
 
 		/****** IGESData_GlobalSection::EndMark ******/
-		/****** md5 signature: 825aed0615f08fe50add623a0983b198 ******/
+		/****** md5 signature: 0299b5a3ee7f7d4c6010ffd18ce6eb3e ******/
 		%feature("compactdefaultargs") EndMark;
 		%feature("autodoc", "Return
 -------
-Standard_Character
+char
 
 Description
 -----------
 Returns the record delimiter character.
 ") EndMark;
-		Standard_Character EndMark();
+		char EndMark();
 
 		/****** IGESData_GlobalSection::FileName ******/
 		/****** md5 signature: 57c69ea52795b11d2fa287b066777f7d ******/
@@ -1924,7 +1913,7 @@ Returns the name of the IGES file.
 		opencascade::handle<TCollection_HAsciiString> FileName();
 
 		/****** IGESData_GlobalSection::HasApplicationProtocol ******/
-		/****** md5 signature: cfd29c6043185cacffebd2205d9d7bda ******/
+		/****** md5 signature: 01c3c78544f32667768ccd27cda9e793 ******/
 		%feature("compactdefaultargs") HasApplicationProtocol;
 		%feature("autodoc", "Return
 -------
@@ -1934,10 +1923,10 @@ Description
 -----------
 No available documentation.
 ") HasApplicationProtocol;
-		Standard_Boolean HasApplicationProtocol();
+		bool HasApplicationProtocol();
 
 		/****** IGESData_GlobalSection::HasLastChangeDate ******/
-		/****** md5 signature: f46c048fd0c3edfddb44c95266f02288 ******/
+		/****** md5 signature: 4593c48c6212d874f6498ed2b3e468f4 ******/
 		%feature("compactdefaultargs") HasLastChangeDate;
 		%feature("autodoc", "Return
 -------
@@ -1947,10 +1936,10 @@ Description
 -----------
 Returns True if the date and time when the model was created or last modified are specified, i.e. not defaulted to NULL.
 ") HasLastChangeDate;
-		Standard_Boolean HasLastChangeDate();
+		bool HasLastChangeDate();
 
 		/****** IGESData_GlobalSection::HasMaxCoord ******/
-		/****** md5 signature: 76380c70ec5dd12901d275d3d79b7561 ******/
+		/****** md5 signature: e15506a7884d9363ec0f527341a1dd6b ******/
 		%feature("compactdefaultargs") HasMaxCoord;
 		%feature("autodoc", "Return
 -------
@@ -1960,10 +1949,10 @@ Description
 -----------
 Returns True if the approximate maximum coordinate value found in the model is greater than 0.
 ") HasMaxCoord;
-		Standard_Boolean HasMaxCoord();
+		bool HasMaxCoord();
 
 		/****** IGESData_GlobalSection::IGESVersion ******/
-		/****** md5 signature: 7be43be14b3625c1c9d54d0fadc22fc2 ******/
+		/****** md5 signature: d447e98d31a210dd6b0d93bb308e4a32 ******/
 		%feature("compactdefaultargs") IGESVersion;
 		%feature("autodoc", "Return
 -------
@@ -1973,7 +1962,7 @@ Description
 -----------
 Returns the IGES version that the IGES file was written in.
 ") IGESVersion;
-		Standard_Integer IGESVersion();
+		int IGESVersion();
 
 		/****** IGESData_GlobalSection::Init ******/
 		/****** md5 signature: ed763441a63969eb5172d560669ca3e5 ******/
@@ -1995,7 +1984,7 @@ Fills GlobalSection from a ParamSet (i.e. taken from file) undefined parameters 
 		void Init(const opencascade::handle<Interface_ParamSet> & params, opencascade::handle<Interface_Check> & ach);
 
 		/****** IGESData_GlobalSection::IntegerBits ******/
-		/****** md5 signature: 1ba9b7a80f42a3cceda8900aa483c4a1 ******/
+		/****** md5 signature: 0ecf960c573ff4add56cfd7501165145 ******/
 		%feature("compactdefaultargs") IntegerBits;
 		%feature("autodoc", "Return
 -------
@@ -2005,7 +1994,7 @@ Description
 -----------
 Returns the number of binary bits for integer representations.
 ") IntegerBits;
-		Standard_Integer IntegerBits();
+		int IntegerBits();
 
 		/****** IGESData_GlobalSection::InterfaceVersion ******/
 		/****** md5 signature: ba796e5b26357dbaf114285a3e7aa830 ******/
@@ -2034,7 +2023,7 @@ Returns the date and time when the model was created or last modified (for IGES 
 		opencascade::handle<TCollection_HAsciiString> LastChangeDate();
 
 		/****** IGESData_GlobalSection::LineWeightGrad ******/
-		/****** md5 signature: b89fae1eee517e85d24d795602389c1c ******/
+		/****** md5 signature: 78f9a5d58169d6e1fe069998a5a2ca2c ******/
 		%feature("compactdefaultargs") LineWeightGrad;
 		%feature("autodoc", "Return
 -------
@@ -2044,23 +2033,23 @@ Description
 -----------
 Returns the maximum number of line weight gradations.
 ") LineWeightGrad;
-		Standard_Integer LineWeightGrad();
+		int LineWeightGrad();
 
 		/****** IGESData_GlobalSection::MaxCoord ******/
-		/****** md5 signature: 2a3013b177b0fb471e94fdad5e4d7641 ******/
+		/****** md5 signature: fc8f3aa6e78285e3f0b1aa5a1976ee67 ******/
 		%feature("compactdefaultargs") MaxCoord;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the approximate maximum coordinate value found in the model.
 ") MaxCoord;
-		Standard_Real MaxCoord();
+		double MaxCoord();
 
 		/****** IGESData_GlobalSection::MaxDigitsDouble ******/
-		/****** md5 signature: ece0ba11aa0ccbc3247fa2882f24f813 ******/
+		/****** md5 signature: 212dab61a07903f1121f80a69e13786f ******/
 		%feature("compactdefaultargs") MaxDigitsDouble;
 		%feature("autodoc", "Return
 -------
@@ -2070,10 +2059,10 @@ Description
 -----------
 No available documentation.
 ") MaxDigitsDouble;
-		Standard_Integer MaxDigitsDouble();
+		int MaxDigitsDouble();
 
 		/****** IGESData_GlobalSection::MaxDigitsSingle ******/
-		/****** md5 signature: 6ae72eb1dad89328f033ed9b7774a200 ******/
+		/****** md5 signature: 68e863e40b4e965f4e7d2c7fd43cb997 ******/
 		%feature("compactdefaultargs") MaxDigitsSingle;
 		%feature("autodoc", "Return
 -------
@@ -2083,28 +2072,28 @@ Description
 -----------
 No available documentation.
 ") MaxDigitsSingle;
-		Standard_Integer MaxDigitsSingle();
+		int MaxDigitsSingle();
 
 		/****** IGESData_GlobalSection::MaxLineWeight ******/
-		/****** md5 signature: ff3bad41c4483abeecb982032362bc67 ******/
+		/****** md5 signature: a0b843e223c48e7cd933c8e15c41b42a ******/
 		%feature("compactdefaultargs") MaxLineWeight;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the of maximum line weight width in IGES file units.
 ") MaxLineWeight;
-		Standard_Real MaxLineWeight();
+		double MaxLineWeight();
 
 		/****** IGESData_GlobalSection::MaxMaxCoord ******/
-		/****** md5 signature: b623699c1df21e5e1cabdb5a0b4fc45a ******/
+		/****** md5 signature: 6beaaa00a9682686c6371dab2c3e83df ******/
 		%feature("compactdefaultargs") MaxMaxCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float (optional, default to 0.0)
+val: double (optional, default to 0.0)
 
 Return
 -------
@@ -2114,7 +2103,7 @@ Description
 -----------
 No available documentation.
 ") MaxMaxCoord;
-		void MaxMaxCoord(const Standard_Real val = 0.0);
+		void MaxMaxCoord(const double val = 0.0);
 
 		/****** IGESData_GlobalSection::MaxMaxCoords ******/
 		/****** md5 signature: 405ae2f04167559da5553089a934b14a ******/
@@ -2135,7 +2124,7 @@ No available documentation.
 		void MaxMaxCoords(const gp_XYZ & xyz);
 
 		/****** IGESData_GlobalSection::MaxPower10Double ******/
-		/****** md5 signature: 13bcc9b315d110be21bd26ebc83adf54 ******/
+		/****** md5 signature: 178902b9d857207d15bb43246a2c112d ******/
 		%feature("compactdefaultargs") MaxPower10Double;
 		%feature("autodoc", "Return
 -------
@@ -2145,10 +2134,10 @@ Description
 -----------
 Returns the maximum power of a decimal representation of a double-precision floating point number in the sending system.
 ") MaxPower10Double;
-		Standard_Integer MaxPower10Double();
+		int MaxPower10Double();
 
 		/****** IGESData_GlobalSection::MaxPower10Single ******/
-		/****** md5 signature: e96efe3988ebf92263ddbf4c3dc4b2d7 ******/
+		/****** md5 signature: 454bdf45e84d8cf0ed844fd5afdd8f88 ******/
 		%feature("compactdefaultargs") MaxPower10Single;
 		%feature("autodoc", "Return
 -------
@@ -2158,10 +2147,10 @@ Description
 -----------
 Returns the maximum power of a decimal representation of a single-precision floating point number in the sending system.
 ") MaxPower10Single;
-		Standard_Integer MaxPower10Single();
+		int MaxPower10Single();
 
 		/****** IGESData_GlobalSection::NewDateString ******/
-		/****** md5 signature: 3ecccd135edc3c62282f5e8172ce92c7 ******/
+		/****** md5 signature: 84610212b940c4ae0262c897f726f79e ******/
 		%feature("compactdefaultargs") NewDateString;
 		%feature("autodoc", "
 Parameters
@@ -2182,10 +2171,10 @@ Description
 -----------
 Returns a string built from year, month, day, hour, minute and second values. The form of the resulting string is defined as follows: - -1: YYMMDD.HHNNSS, - 0: YYYYMMDD.HHNNSS, - 1: YYYY-MM-DD:HH-NN-SS, where: - YYYY or YY is 4 or 2 digit year, - HH is hour (00-23), - MM is month (01-12), - NN is minute (00-59) - DD is day (01-31), - SS is second (00-59).
 ") NewDateString;
-		static opencascade::handle<TCollection_HAsciiString> NewDateString(const Standard_Integer year, const Standard_Integer month, const Standard_Integer day, const Standard_Integer hour, const Standard_Integer minut, const Standard_Integer second, const Standard_Integer mode = -1);
+		static opencascade::handle<TCollection_HAsciiString> NewDateString(const int year, const int month, const int day, const int hour, const int minut, const int second, const int mode = -1);
 
 		/****** IGESData_GlobalSection::NewDateString ******/
-		/****** md5 signature: 5540b77516c3a70ce33562e8b5135518 ******/
+		/****** md5 signature: 74bc6592fc6cd3cca3a661ca1802c9c8 ******/
 		%feature("compactdefaultargs") NewDateString;
 		%feature("autodoc", "
 Parameters
@@ -2201,7 +2190,7 @@ Description
 -----------
 Converts the string given in the form YYMMDD.HHNNSS or YYYYMMDD.HHNNSS to either YYMMDD.HHNNSS, YYYYMMDD.HHNNSS or YYYY-MM-DD:HH-NN-SS.
 ") NewDateString;
-		static opencascade::handle<TCollection_HAsciiString> NewDateString(const opencascade::handle<TCollection_HAsciiString> & date, const Standard_Integer mode = 1);
+		static opencascade::handle<TCollection_HAsciiString> NewDateString(const opencascade::handle<TCollection_HAsciiString> & date, const int mode = 1);
 
 		/****** IGESData_GlobalSection::Params ******/
 		/****** md5 signature: c72a45a91254d4d8bb9687c8c3ff1040 ******/
@@ -2230,30 +2219,30 @@ Returns the name of the receiving system.
 		opencascade::handle<TCollection_HAsciiString> ReceiveName();
 
 		/****** IGESData_GlobalSection::Resolution ******/
-		/****** md5 signature: 4e5f84c856f59723b6a6d12fbb356538 ******/
+		/****** md5 signature: a7b2c2af3fdb4b7a1695adc980096fe1 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the resolution used in the IGES file.
 ") Resolution;
-		Standard_Real Resolution();
+		double Resolution();
 
 		/****** IGESData_GlobalSection::Scale ******/
-		/****** md5 signature: 4c0fd48707c01e5a42b2a639ca08da30 ******/
+		/****** md5 signature: 61c9c74d8ec40780bdfa84588e6789a4 ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the scale used in the IGES file.
 ") Scale;
-		Standard_Real Scale();
+		double Scale();
 
 		/****** IGESData_GlobalSection::SendName ******/
 		/****** md5 signature: 52ad059fcd416f2eb44a71aeaec2b28c ******/
@@ -2269,17 +2258,17 @@ Returns the name of the sending system.
 		opencascade::handle<TCollection_HAsciiString> SendName();
 
 		/****** IGESData_GlobalSection::Separator ******/
-		/****** md5 signature: df98896b790fc76bded6cd92dc90ea1b ******/
+		/****** md5 signature: ed61e44b5cb1564a12fa603cec7d9b4d ******/
 		%feature("compactdefaultargs") Separator;
 		%feature("autodoc", "Return
 -------
-Standard_Character
+char
 
 Description
 -----------
 Returns the parameter delimiter character.
 ") Separator;
-		Standard_Character Separator();
+		char Separator();
 
 		/****** IGESData_GlobalSection::SetApplicationProtocol ******/
 		/****** md5 signature: df647e7bb63094648939c9d6d824c516 ******/
@@ -2318,12 +2307,12 @@ No available documentation.
 		void SetAuthorName(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetCascadeUnit ******/
-		/****** md5 signature: 9681d8ff7bf315f004a2dba0dc32aacc ******/
+		/****** md5 signature: dcf34f9697d732cb5f2a6f6cb26388b9 ******/
 		%feature("compactdefaultargs") SetCascadeUnit;
 		%feature("autodoc", "
 Parameters
 ----------
-theUnit: float
+theUnit: double
 
 Return
 -------
@@ -2333,7 +2322,7 @@ Description
 -----------
 No available documentation.
 ") SetCascadeUnit;
-		void SetCascadeUnit(const Standard_Real theUnit);
+		void SetCascadeUnit(const double theUnit);
 
 		/****** IGESData_GlobalSection::SetCompanyName ******/
 		/****** md5 signature: 5dc4f10cc8e8c06b69f5aa1316e288f8 ******/
@@ -2372,7 +2361,7 @@ No available documentation.
 		void SetDate(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetDraftingStandard ******/
-		/****** md5 signature: 7bbb2699bea3a1f68905118277443da0 ******/
+		/****** md5 signature: 48c18cc14b937a8af2c8aa249116d08e ******/
 		%feature("compactdefaultargs") SetDraftingStandard;
 		%feature("autodoc", "
 Parameters
@@ -2387,15 +2376,15 @@ Description
 -----------
 No available documentation.
 ") SetDraftingStandard;
-		void SetDraftingStandard(const Standard_Integer val);
+		void SetDraftingStandard(const int val);
 
 		/****** IGESData_GlobalSection::SetEndMark ******/
-		/****** md5 signature: 0498a960afd8e09430103358b2acdb1c ******/
+		/****** md5 signature: b4515991d942316e9ea26879fffacbdd ******/
 		%feature("compactdefaultargs") SetEndMark;
 		%feature("autodoc", "
 Parameters
 ----------
-val: Standard_Character
+val: char
 
 Return
 -------
@@ -2405,7 +2394,7 @@ Description
 -----------
 No available documentation.
 ") SetEndMark;
-		void SetEndMark(const Standard_Character val);
+		void SetEndMark(const char val);
 
 		/****** IGESData_GlobalSection::SetFileName ******/
 		/****** md5 signature: 5d6e767794c3f7492973d5d7ce4059ee ******/
@@ -2426,7 +2415,7 @@ No available documentation.
 		void SetFileName(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetIGESVersion ******/
-		/****** md5 signature: cfa3ebeb37cf2ce0f743e502181849fb ******/
+		/****** md5 signature: 334d6f705482baa4cef0e90f66413510 ******/
 		%feature("compactdefaultargs") SetIGESVersion;
 		%feature("autodoc", "
 Parameters
@@ -2441,10 +2430,10 @@ Description
 -----------
 No available documentation.
 ") SetIGESVersion;
-		void SetIGESVersion(const Standard_Integer val);
+		void SetIGESVersion(const int val);
 
 		/****** IGESData_GlobalSection::SetIntegerBits ******/
-		/****** md5 signature: 475e7a7cf1bd3b45b7753ae4aff1f81a ******/
+		/****** md5 signature: 3fff598a4bbbf77a482f55042c99858b ******/
 		%feature("compactdefaultargs") SetIntegerBits;
 		%feature("autodoc", "
 Parameters
@@ -2459,7 +2448,7 @@ Description
 -----------
 No available documentation.
 ") SetIntegerBits;
-		void SetIntegerBits(const Standard_Integer val);
+		void SetIntegerBits(const int val);
 
 		/****** IGESData_GlobalSection::SetInterfaceVersion ******/
 		/****** md5 signature: 21ff81f9707d2f4cd40d4a7d0dd8905f ******/
@@ -2511,7 +2500,7 @@ No available documentation.
 		void SetLastChangeDate(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetLineWeightGrad ******/
-		/****** md5 signature: f3ac2940391df0a10217f2be70df803e ******/
+		/****** md5 signature: 584cf18c1e8e7773a81e4d3e2e4d52f9 ******/
 		%feature("compactdefaultargs") SetLineWeightGrad;
 		%feature("autodoc", "
 Parameters
@@ -2526,15 +2515,15 @@ Description
 -----------
 No available documentation.
 ") SetLineWeightGrad;
-		void SetLineWeightGrad(const Standard_Integer val);
+		void SetLineWeightGrad(const int val);
 
 		/****** IGESData_GlobalSection::SetMaxCoord ******/
-		/****** md5 signature: 869d8f71f11df82aaa8d7812f65425ca ******/
+		/****** md5 signature: 1e74bb98bd3f10ac916318eb9f9a9e98 ******/
 		%feature("compactdefaultargs") SetMaxCoord;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float (optional, default to 0.0)
+val: double (optional, default to 0.0)
 
 Return
 -------
@@ -2544,10 +2533,10 @@ Description
 -----------
 No available documentation.
 ") SetMaxCoord;
-		void SetMaxCoord(const Standard_Real val = 0.0);
+		void SetMaxCoord(const double val = 0.0);
 
 		/****** IGESData_GlobalSection::SetMaxDigitsDouble ******/
-		/****** md5 signature: 02f2baf854f4f12a6202f1742067f64e ******/
+		/****** md5 signature: 5727e52cbfebf0b34941d8a7eed4512e ******/
 		%feature("compactdefaultargs") SetMaxDigitsDouble;
 		%feature("autodoc", "
 Parameters
@@ -2562,10 +2551,10 @@ Description
 -----------
 No available documentation.
 ") SetMaxDigitsDouble;
-		void SetMaxDigitsDouble(const Standard_Integer val);
+		void SetMaxDigitsDouble(const int val);
 
 		/****** IGESData_GlobalSection::SetMaxDigitsSingle ******/
-		/****** md5 signature: 873e0772722e5b2095e0b58a2f28018f ******/
+		/****** md5 signature: 0e840716909c340395b734a81f13d285 ******/
 		%feature("compactdefaultargs") SetMaxDigitsSingle;
 		%feature("autodoc", "
 Parameters
@@ -2580,15 +2569,15 @@ Description
 -----------
 No available documentation.
 ") SetMaxDigitsSingle;
-		void SetMaxDigitsSingle(const Standard_Integer val);
+		void SetMaxDigitsSingle(const int val);
 
 		/****** IGESData_GlobalSection::SetMaxLineWeight ******/
-		/****** md5 signature: 0c28dfccef5ca733dafcc2dfcaa7c2b9 ******/
+		/****** md5 signature: d1eda09156c77bb5b80083955a8f1f68 ******/
 		%feature("compactdefaultargs") SetMaxLineWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -2598,10 +2587,10 @@ Description
 -----------
 No available documentation.
 ") SetMaxLineWeight;
-		void SetMaxLineWeight(const Standard_Real val);
+		void SetMaxLineWeight(const double val);
 
 		/****** IGESData_GlobalSection::SetMaxPower10Double ******/
-		/****** md5 signature: d2c84d6f881b70f34544d97d4e762b70 ******/
+		/****** md5 signature: cd367a85c245b02c1da5c045f8246f68 ******/
 		%feature("compactdefaultargs") SetMaxPower10Double;
 		%feature("autodoc", "
 Parameters
@@ -2616,10 +2605,10 @@ Description
 -----------
 No available documentation.
 ") SetMaxPower10Double;
-		void SetMaxPower10Double(const Standard_Integer val);
+		void SetMaxPower10Double(const int val);
 
 		/****** IGESData_GlobalSection::SetMaxPower10Single ******/
-		/****** md5 signature: c10f1c24315e97dc712d31a20682013a ******/
+		/****** md5 signature: 08d880ab31cf4ab60feeb0283a4b5827 ******/
 		%feature("compactdefaultargs") SetMaxPower10Single;
 		%feature("autodoc", "
 Parameters
@@ -2634,7 +2623,7 @@ Description
 -----------
 No available documentation.
 ") SetMaxPower10Single;
-		void SetMaxPower10Single(const Standard_Integer val);
+		void SetMaxPower10Single(const int val);
 
 		/****** IGESData_GlobalSection::SetReceiveName ******/
 		/****** md5 signature: a6cfc808584218fd2ba6aa69773aca18 ******/
@@ -2655,12 +2644,12 @@ No available documentation.
 		void SetReceiveName(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetResolution ******/
-		/****** md5 signature: f960e701377b9a53f863173be9785852 ******/
+		/****** md5 signature: 82315a1eb3b4ec00c2edacfdbf9d055e ******/
 		%feature("compactdefaultargs") SetResolution;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -2670,15 +2659,15 @@ Description
 -----------
 No available documentation.
 ") SetResolution;
-		void SetResolution(const Standard_Real val);
+		void SetResolution(const double val);
 
 		/****** IGESData_GlobalSection::SetScale ******/
-		/****** md5 signature: 4c0ffeeb09801d32a2366f53c2193e30 ******/
+		/****** md5 signature: ddd4d1b045c134444959d7ab171092e2 ******/
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "
 Parameters
 ----------
-val: float
+val: double
 
 Return
 -------
@@ -2688,7 +2677,7 @@ Description
 -----------
 No available documentation.
 ") SetScale;
-		void SetScale(const Standard_Real val);
+		void SetScale(const double val);
 
 		/****** IGESData_GlobalSection::SetSendName ******/
 		/****** md5 signature: a738f63f7016df17effbedb291851702 ******/
@@ -2709,12 +2698,12 @@ No available documentation.
 		void SetSendName(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetSeparator ******/
-		/****** md5 signature: 25ddf0202bcd0473594edac03a820948 ******/
+		/****** md5 signature: 9357bf4133ff06d1de561dd70fd7cbf1 ******/
 		%feature("compactdefaultargs") SetSeparator;
 		%feature("autodoc", "
 Parameters
 ----------
-val: Standard_Character
+val: char
 
 Return
 -------
@@ -2724,7 +2713,7 @@ Description
 -----------
 No available documentation.
 ") SetSeparator;
-		void SetSeparator(const Standard_Character val);
+		void SetSeparator(const char val);
 
 		/****** IGESData_GlobalSection::SetSystemId ******/
 		/****** md5 signature: e662f6c5c9fb230f9c1b2d57f3180f49 ******/
@@ -2745,7 +2734,7 @@ No available documentation.
 		void SetSystemId(const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_GlobalSection::SetUnitFlag ******/
-		/****** md5 signature: 663f9f6ff418fe58f988b532fa70d5d0 ******/
+		/****** md5 signature: 9c2316b2e3efc73396058c56033e90c2 ******/
 		%feature("compactdefaultargs") SetUnitFlag;
 		%feature("autodoc", "
 Parameters
@@ -2760,7 +2749,7 @@ Description
 -----------
 No available documentation.
 ") SetUnitFlag;
-		void SetUnitFlag(const Standard_Integer val);
+		void SetUnitFlag(const int val);
 
 		/****** IGESData_GlobalSection::SetUnitName ******/
 		/****** md5 signature: 30c7109168312dd17229e70ab46f25d0 ******/
@@ -2812,7 +2801,7 @@ Returns a string withpout its Hollerith marks (nnnH ahead). Remark: all strings 
 		opencascade::handle<TCollection_HAsciiString> TranslatedFromHollerith(const opencascade::handle<TCollection_HAsciiString> & astr);
 
 		/****** IGESData_GlobalSection::UnitFlag ******/
-		/****** md5 signature: 54ab2931996d2ea32441ec6724afb20d ******/
+		/****** md5 signature: e17e2d555f141f9348e6e2ad53da7b14 ******/
 		%feature("compactdefaultargs") UnitFlag;
 		%feature("autodoc", "Return
 -------
@@ -2822,7 +2811,7 @@ Description
 -----------
 Returns the unit flag that was used to write the IGES file.
 ") UnitFlag;
-		Standard_Integer UnitFlag();
+		int UnitFlag();
 
 		/****** IGESData_GlobalSection::UnitName ******/
 		/****** md5 signature: 5719249960d4417173aef99e14273641 ******/
@@ -2838,17 +2827,17 @@ Returns the name of the unit the IGES file was written in.
 		opencascade::handle<TCollection_HAsciiString> UnitName();
 
 		/****** IGESData_GlobalSection::UnitValue ******/
-		/****** md5 signature: 44bdd78781973523a9e69dd88c24c355 ******/
+		/****** md5 signature: 40990966ec6a24f0aba3aed2d7321b94 ******/
 		%feature("compactdefaultargs") UnitValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the unit value (in meters) that the IGES file was written in.
 ") UnitValue;
-		Standard_Real UnitValue();
+		double UnitValue();
 
 };
 
@@ -2884,7 +2873,7 @@ Returns an IGESDumper ready to work. The IGESModel provides the numbering of Ent
 		 IGESData_IGESDumper(const opencascade::handle<IGESData_IGESModel> & model, const opencascade::handle<IGESData_Protocol> & protocol);
 
 		/****** IGESData_IGESDumper::Dump ******/
-		/****** md5 signature: c347dc756919bc04f1eac57ddbe6e2a8 ******/
+		/****** md5 signature: 70794450d3b653db562e33121314b30f ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2901,10 +2890,10 @@ Description
 -----------
 No available documentation.
 ") Dump;
-		void Dump(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue, const Standard_Integer own, const Standard_Integer attached = -1);
+		void Dump(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue, const int own, const int attached = -1);
 
 		/****** IGESData_IGESDumper::OwnDump ******/
-		/****** md5 signature: 3235d2f595b46c51344158ad01916bf5 ******/
+		/****** md5 signature: e2eb1e64fb235dee2564ef8b117fbc50 ******/
 		%feature("compactdefaultargs") OwnDump;
 		%feature("autodoc", "
 Parameters
@@ -2920,7 +2909,7 @@ Description
 -----------
 Specific Dump for each IGES Entity, call by Dump (just above) <own> is the parameter <own> from Dump.
 ") OwnDump;
-		void OwnDump(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue, const Standard_Integer own);
+		void OwnDump(const opencascade::handle<IGESData_IGESEntity> & ent, std::ostream &OutValue, const int own);
 
 		/****** IGESData_IGESDumper::PrintDNum ******/
 		/****** md5 signature: 843ade9a40f705735dc483822de7ae21 ******/
@@ -2992,7 +2981,7 @@ Adds a Property in the list.
 		void AddProperty(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_IGESEntity::ArePresentAssociativities ******/
-		/****** md5 signature: 707a417cab87284218fbd5d94abbbb41 ******/
+		/****** md5 signature: b821017cee95b0de18c90c5959bbc3fd ******/
 		%feature("compactdefaultargs") ArePresentAssociativities;
 		%feature("autodoc", "Return
 -------
@@ -3002,10 +2991,10 @@ Description
 -----------
 Returns True if the Entity is defined with an Associativity list, even empty (that is, file contains its length 0) Else, the file contained NO idencation at all about this list.
 ") ArePresentAssociativities;
-		Standard_Boolean ArePresentAssociativities();
+		bool ArePresentAssociativities();
 
 		/****** IGESData_IGESEntity::ArePresentProperties ******/
-		/****** md5 signature: 4584fd74af287816a009d302141c768e ******/
+		/****** md5 signature: 74fd5a5b18b4170c733bd9558b565d85 ******/
 		%feature("compactdefaultargs") ArePresentProperties;
 		%feature("autodoc", "Return
 -------
@@ -3015,7 +3004,7 @@ Description
 -----------
 Returns True if the Entity is defined with a Property list, even empty (that is, file contains its length 0) Else, the file contained NO idencation at all about this list.
 ") ArePresentProperties;
-		Standard_Boolean ArePresentProperties();
+		bool ArePresentProperties();
 
 		/****** IGESData_IGESEntity::Associate ******/
 		/****** md5 signature: 9ed5985e9a1f0bcda52be44e2252a6c0 ******/
@@ -3049,7 +3038,7 @@ Returns the Associativity List under the form of an EntityIterator.
 		Interface_EntityIterator Associativities();
 
 		/****** IGESData_IGESEntity::BlankStatus ******/
-		/****** md5 signature: 3c198eda99c79dd2ea0404847ca6132e ******/
+		/****** md5 signature: b58351b0dcf24a11d9778c004654e547 ******/
 		%feature("compactdefaultargs") BlankStatus;
 		%feature("autodoc", "Return
 -------
@@ -3059,16 +3048,16 @@ Description
 -----------
 gives Blank Status (0 visible, 1 blanked).
 ") BlankStatus;
-		Standard_Integer BlankStatus();
+		int BlankStatus();
 
 		/****** IGESData_IGESEntity::CResValues ******/
-		/****** md5 signature: 78002f1c0b06d38e9dd54430805fc2a5 ******/
+		/****** md5 signature: db15dfeb8086acfac1055baebe1bae64 ******/
 		%feature("compactdefaultargs") CResValues;
 		%feature("autodoc", "
 Parameters
 ----------
-res1: str
-res2: str
+res1: char *
+res2: char *
 
 Return
 -------
@@ -3078,7 +3067,7 @@ Description
 -----------
 returns 'reserved' alphanumeric values res1 and res2 res1 and res2 have to be reserved as Character[9 at least] (remark: their content is changed) returned values are ended by null character in 9th returned Boolean is False if res1 and res2 are blank, true else.
 ") CResValues;
-		Standard_Boolean CResValues(Standard_CString res1, Standard_CString res2);
+		bool CResValues(char * res1, char * res2);
 
 		/****** IGESData_IGESEntity::Color ******/
 		/****** md5 signature: 9f059c3d16c0eb79fdf5239f02d987e7 ******/
@@ -3159,7 +3148,7 @@ Returns the definition status of the view. This can be: none, one or several.
 		virtual IGESData_DefList DefView();
 
 		/****** IGESData_IGESEntity::DirFieldEntity ******/
-		/****** md5 signature: dd94642903c43edfbccaf93ac3d0143d ******/
+		/****** md5 signature: 2fc521f1254e03ea8f56b83a2e765883 ******/
 		%feature("compactdefaultargs") DirFieldEntity;
 		%feature("autodoc", "
 Parameters
@@ -3174,7 +3163,7 @@ Description
 -----------
 Returns the Entity which has been recorded for a given Field Number, i.e. without any cast. Maps with: 3: Structure 4: LineFont 5: LevelList 6: View 7: Transf(ormation Matrix) 8: LabelDisplay 13: Color. Other values give a null handle It can then be of any kind, while specific items have a Type.
 ") DirFieldEntity;
-		opencascade::handle<IGESData_IGESEntity> DirFieldEntity(const Standard_Integer fieldnum);
+		opencascade::handle<IGESData_IGESEntity> DirFieldEntity(const int fieldnum);
 
 		/****** IGESData_IGESEntity::Dissociate ******/
 		/****** md5 signature: 0c02ed30af1330200e9bd25c0645db88 ******/
@@ -3195,7 +3184,7 @@ Resets 'me' from the Associativity list of another Entity.
 		void Dissociate(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_IGESEntity::FormNumber ******/
-		/****** md5 signature: 01816ab5757c400039bfeebd9b3bcbc2 ******/
+		/****** md5 signature: 2635b30c3bcd4a5d6ca1d4359e5c02f5 ******/
 		%feature("compactdefaultargs") FormNumber;
 		%feature("autodoc", "Return
 -------
@@ -3205,10 +3194,10 @@ Description
 -----------
 Returns the form number for that type of an IGES entity. The default form number is 0.
 ") FormNumber;
-		Standard_Integer FormNumber();
+		int FormNumber();
 
 		/****** IGESData_IGESEntity::HasLabelDisplay ******/
-		/****** md5 signature: 9c615fbed732eecfa5155cde061accc7 ******/
+		/****** md5 signature: 9a9a663e4dc6b19a67d4cf0b07b3d542 ******/
 		%feature("compactdefaultargs") HasLabelDisplay;
 		%feature("autodoc", "Return
 -------
@@ -3218,10 +3207,10 @@ Description
 -----------
 Returns True if a LabelDisplay mode is defined for this entity.
 ") HasLabelDisplay;
-		Standard_Boolean HasLabelDisplay();
+		bool HasLabelDisplay();
 
 		/****** IGESData_IGESEntity::HasName ******/
-		/****** md5 signature: 1e1c2790637f6b21f247802eba58ce99 ******/
+		/****** md5 signature: f70fdf10d0079e2612f42cd1bfec535f ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -3231,10 +3220,10 @@ Description
 -----------
 says if a Name is defined, as Short Label or as Name Property (Property is looked first, else ShortLabel is considered).
 ") HasName;
-		Standard_Boolean HasName();
+		bool HasName();
 
 		/****** IGESData_IGESEntity::HasOneParent ******/
-		/****** md5 signature: 0db1d4c4a998e8d80fd0d6c03982cbc5 ******/
+		/****** md5 signature: 852b874a1887aef6ba9b2c36755f32ac ******/
 		%feature("compactdefaultargs") HasOneParent;
 		%feature("autodoc", "Return
 -------
@@ -3244,10 +3233,10 @@ Description
 -----------
 Returns True if an entity has one and only one parent, defined by a SingleParentEntity Type Associativity (explicit sharing). Thus, implicit sharing remains defined at model level (see class ToolLocation).
 ") HasOneParent;
-		Standard_Boolean HasOneParent();
+		bool HasOneParent();
 
 		/****** IGESData_IGESEntity::HasShortLabel ******/
-		/****** md5 signature: 1f29e2d54166d8b69975aaf0e8aae29b ******/
+		/****** md5 signature: 4420ea4a2b3d1bf91d714d62696c1b0c ******/
 		%feature("compactdefaultargs") HasShortLabel;
 		%feature("autodoc", "Return
 -------
@@ -3257,10 +3246,10 @@ Description
 -----------
 Returns true if a short label is defined. A short label is a non-blank 8-character string.
 ") HasShortLabel;
-		Standard_Boolean HasShortLabel();
+		bool HasShortLabel();
 
 		/****** IGESData_IGESEntity::HasStructure ******/
-		/****** md5 signature: 8bf587788d3a40a5c0372efe48a98a27 ******/
+		/****** md5 signature: b807d4a8f9148476e2aa6963add461ea ******/
 		%feature("compactdefaultargs") HasStructure;
 		%feature("autodoc", "Return
 -------
@@ -3270,10 +3259,10 @@ Description
 -----------
 returns True if an IGESEntity is defined with a Structure (it is normally reserved for certain classes, such as Macros).
 ") HasStructure;
-		Standard_Boolean HasStructure();
+		bool HasStructure();
 
 		/****** IGESData_IGESEntity::HasSubScriptNumber ******/
-		/****** md5 signature: 3e229eed9a8086af64d790e1520e7d99 ******/
+		/****** md5 signature: dee9c05f05b2c2ec13fd34d27760abc3 ******/
 		%feature("compactdefaultargs") HasSubScriptNumber;
 		%feature("autodoc", "Return
 -------
@@ -3283,10 +3272,10 @@ Description
 -----------
 Returns true if a subscript number is defined. A subscript number is an integer used to identify a label.
 ") HasSubScriptNumber;
-		virtual Standard_Boolean HasSubScriptNumber();
+		virtual bool HasSubScriptNumber();
 
 		/****** IGESData_IGESEntity::HasTransf ******/
-		/****** md5 signature: a206f41ea34d912255da7ff3fcb695f7 ******/
+		/****** md5 signature: 2819265b70c58f04741e07257704b7aa ******/
 		%feature("compactdefaultargs") HasTransf;
 		%feature("autodoc", "Return
 -------
@@ -3296,10 +3285,10 @@ Description
 -----------
 Returns True if a Transformation Matrix is defined.
 ") HasTransf;
-		Standard_Boolean HasTransf();
+		bool HasTransf();
 
 		/****** IGESData_IGESEntity::HierarchyStatus ******/
-		/****** md5 signature: 814091e9d5cef2cdf9e02fd374611543 ******/
+		/****** md5 signature: 2cbc1d1d725069a96c73853ddef0121c ******/
 		%feature("compactdefaultargs") HierarchyStatus;
 		%feature("autodoc", "Return
 -------
@@ -3309,7 +3298,7 @@ Description
 -----------
 gives Hierarchy status (0-1-2).
 ") HierarchyStatus;
-		Standard_Integer HierarchyStatus();
+		int HierarchyStatus();
 
 		/****** IGESData_IGESEntity::IGESType ******/
 		/****** md5 signature: 2f89b587c31ffcd8749f070fef4d0193 ******/
@@ -3325,7 +3314,7 @@ gives IGES typing info (includes 'Type' and 'Form' data).
 		IGESData_IGESType IGESType();
 
 		/****** IGESData_IGESEntity::InitColor ******/
-		/****** md5 signature: 20c3ccba0bc1486834d9f2d11347d57e ******/
+		/****** md5 signature: 560a69a61626d9dbf37c4b69b8ab0f74 ******/
 		%feature("compactdefaultargs") InitColor;
 		%feature("autodoc", "
 Parameters
@@ -3341,10 +3330,10 @@ Description
 -----------
 Initializes Color data: if <ent> is not Null, it gives Color, else <rank> gives or erases (if zero) RankColor.
 ") InitColor;
-		void InitColor(const opencascade::handle<IGESData_ColorEntity> & ent, const Standard_Integer rank = 0);
+		void InitColor(const opencascade::handle<IGESData_ColorEntity> & ent, const int rank = 0);
 
 		/****** IGESData_IGESEntity::InitDirFieldEntity ******/
-		/****** md5 signature: 3eafe875096d0a62ce74c33f5ef34436 ******/
+		/****** md5 signature: 7134777a7d5395d033f9333167fcea3b ******/
 		%feature("compactdefaultargs") InitDirFieldEntity;
 		%feature("autodoc", "
 Parameters
@@ -3360,10 +3349,10 @@ Description
 -----------
 Initializes a directory field as an Entity of any kind See DirFieldEntity for more details.
 ") InitDirFieldEntity;
-		void InitDirFieldEntity(const Standard_Integer fieldnum, const opencascade::handle<IGESData_IGESEntity> & ent);
+		void InitDirFieldEntity(const int fieldnum, const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_IGESEntity::InitLevel ******/
-		/****** md5 signature: 30789676685773818257f71dd1704061 ******/
+		/****** md5 signature: 118675101c5642d350f2c3107c65c2a1 ******/
 		%feature("compactdefaultargs") InitLevel;
 		%feature("autodoc", "
 Parameters
@@ -3379,10 +3368,10 @@ Description
 -----------
 Initializes Level: if <ent> is not Null, it gives LevelList, else <val> gives or erases (if zero) unique Level.
 ") InitLevel;
-		void InitLevel(const opencascade::handle<IGESData_LevelListEntity> & ent, const Standard_Integer val = 0);
+		void InitLevel(const opencascade::handle<IGESData_LevelListEntity> & ent, const int val = 0);
 
 		/****** IGESData_IGESEntity::InitLineFont ******/
-		/****** md5 signature: 918dd4c6a801d2cb9ba94ff6f57038f9 ******/
+		/****** md5 signature: 782a81f2f410f082f21b9187271f477b ******/
 		%feature("compactdefaultargs") InitLineFont;
 		%feature("autodoc", "
 Parameters
@@ -3398,10 +3387,10 @@ Description
 -----------
 Initializes LineFont: if <ent> is not Null, it gives LineFont, else <rank> gives or erases (if zero) RankLineFont.
 ") InitLineFont;
-		void InitLineFont(const opencascade::handle<IGESData_LineFontEntity> & ent, const Standard_Integer rank = 0);
+		void InitLineFont(const opencascade::handle<IGESData_LineFontEntity> & ent, const int rank = 0);
 
 		/****** IGESData_IGESEntity::InitMisc ******/
-		/****** md5 signature: 7332b3a8806ccde6a9398b22ba0c24f3 ******/
+		/****** md5 signature: 2a82702939f056464476a3208830a33a ******/
 		%feature("compactdefaultargs") InitMisc;
 		%feature("autodoc", "
 Parameters
@@ -3418,10 +3407,10 @@ Description
 -----------
 Initializes various data (those not yet seen above), or erases them if they are given as Null (Zero for <weightnum>): <str> for Structure, <lab> for LabelDisplay, and <weightnum> for WeightNumber.
 ") InitMisc;
-		void InitMisc(const opencascade::handle<IGESData_IGESEntity> & str, const opencascade::handle<IGESData_LabelDisplayEntity> & lab, const Standard_Integer weightnum);
+		void InitMisc(const opencascade::handle<IGESData_IGESEntity> & str, const opencascade::handle<IGESData_LabelDisplayEntity> & lab, const int weightnum);
 
 		/****** IGESData_IGESEntity::InitStatus ******/
-		/****** md5 signature: 453e9e179089c43b59f4f5f338aef1b1 ******/
+		/****** md5 signature: d7cb32e06f13622629195e94d81eec92 ******/
 		%feature("compactdefaultargs") InitStatus;
 		%feature("autodoc", "
 Parameters
@@ -3439,7 +3428,7 @@ Description
 -----------
 Initializes the Status of Directory Part.
 ") InitStatus;
-		void InitStatus(const Standard_Integer blank, const Standard_Integer subordinate, const Standard_Integer useflag, const Standard_Integer hierarchy);
+		void InitStatus(const int blank, const int subordinate, const int useflag, const int hierarchy);
 
 		/****** IGESData_IGESEntity::InitTransf ******/
 		/****** md5 signature: 15edbb5bdef6886110a77d9bc633aa93 ******/
@@ -3491,7 +3480,7 @@ Returns the Label Display Associativity Entity if there is one. Returns a null h
 		opencascade::handle<IGESData_LabelDisplayEntity> LabelDisplay();
 
 		/****** IGESData_IGESEntity::Level ******/
-		/****** md5 signature: 06f7279e938b54c0bc4a49915192a536 ******/
+		/****** md5 signature: 1c6749a8f4fa3c4b1ef506600d9abb66 ******/
 		%feature("compactdefaultargs") Level;
 		%feature("autodoc", "Return
 -------
@@ -3501,7 +3490,7 @@ Description
 -----------
 Returns the level the entity belongs to. Returns -1 if the entity belongs to more than one level.
 ") Level;
-		Standard_Integer Level();
+		int Level();
 
 		/****** IGESData_IGESEntity::LevelList ******/
 		/****** md5 signature: d7769fea2ddbe17721c588ed3d24340d ******/
@@ -3530,20 +3519,20 @@ Returns LineFont as an Entity (if defined as Reference) Returns a Null Handle if
 		opencascade::handle<IGESData_LineFontEntity> LineFont();
 
 		/****** IGESData_IGESEntity::LineWeight ******/
-		/****** md5 signature: e7feb099a03451db8a683621054e9f6f ******/
+		/****** md5 signature: b6d2b651a3633993b90431be4d174e77 ******/
 		%feature("compactdefaultargs") LineWeight;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the true Line Weight, computed from LineWeightNumber and Global Parameter in the Model by call to SetLineWeight.
 ") LineWeight;
-		Standard_Real LineWeight();
+		double LineWeight();
 
 		/****** IGESData_IGESEntity::LineWeightNumber ******/
-		/****** md5 signature: 8bb9498f695e9c36332dc8bbca4498ae ******/
+		/****** md5 signature: 3472f54d62dbfcef8671066f1e360ab3 ******/
 		%feature("compactdefaultargs") LineWeightNumber;
 		%feature("autodoc", "Return
 -------
@@ -3553,7 +3542,7 @@ Description
 -----------
 Returns the LineWeight Number (0 not defined), see also LineWeight.
 ") LineWeightNumber;
-		Standard_Integer LineWeightNumber();
+		int LineWeightNumber();
 
 		/****** IGESData_IGESEntity::Location ******/
 		/****** md5 signature: cf77359027b042b2c12141fee724bdb5 ******/
@@ -3582,7 +3571,7 @@ returns Name value as a String (Property Name or ShortLabel) if SubNumber is def
 		opencascade::handle<TCollection_HAsciiString> NameValue();
 
 		/****** IGESData_IGESEntity::NbAssociativities ******/
-		/****** md5 signature: 76281acc8e6c4e2eec37ccc19fb31766 ******/
+		/****** md5 signature: 2c7f0573d4ff8e44d5e5180a10969f37 ******/
 		%feature("compactdefaultargs") NbAssociativities;
 		%feature("autodoc", "Return
 -------
@@ -3592,10 +3581,10 @@ Description
 -----------
 gives number of recorded associativities (0 no list defined).
 ") NbAssociativities;
-		Standard_Integer NbAssociativities();
+		int NbAssociativities();
 
 		/****** IGESData_IGESEntity::NbProperties ******/
-		/****** md5 signature: b8d59feba7ff602cf35d658f036ef723 ******/
+		/****** md5 signature: c9c6e37d12480f9e186b99864ee97716 ******/
 		%feature("compactdefaultargs") NbProperties;
 		%feature("autodoc", "Return
 -------
@@ -3605,10 +3594,10 @@ Description
 -----------
 Gives number of recorded properties (0 no list defined).
 ") NbProperties;
-		Standard_Integer NbProperties();
+		int NbProperties();
 
 		/****** IGESData_IGESEntity::NbTypedAssociativities ******/
-		/****** md5 signature: 5c0914c44d6265d2a6d7940389eae9f5 ******/
+		/****** md5 signature: 1d89dbca81070b79e0523d63ca47b80b ******/
 		%feature("compactdefaultargs") NbTypedAssociativities;
 		%feature("autodoc", "
 Parameters
@@ -3623,10 +3612,10 @@ Description
 -----------
 gives how many Associativities have a given type.
 ") NbTypedAssociativities;
-		Standard_Integer NbTypedAssociativities(const opencascade::handle<Standard_Type> & atype);
+		int NbTypedAssociativities(const opencascade::handle<Standard_Type> & atype);
 
 		/****** IGESData_IGESEntity::NbTypedProperties ******/
-		/****** md5 signature: 4e2e5083c49f669f257791622375920d ******/
+		/****** md5 signature: 780ab85ad5ea39a2c7545f3e76c9a111 ******/
 		%feature("compactdefaultargs") NbTypedProperties;
 		%feature("autodoc", "
 Parameters
@@ -3641,7 +3630,7 @@ Description
 -----------
 gives how many Properties have a given type.
 ") NbTypedProperties;
-		Standard_Integer NbTypedProperties(const opencascade::handle<Standard_Type> & atype);
+		int NbTypedProperties(const opencascade::handle<Standard_Type> & atype);
 
 		/****** IGESData_IGESEntity::Properties ******/
 		/****** md5 signature: b9da45bd72180b9c10809cdc34a30e03 ******/
@@ -3657,7 +3646,7 @@ Returns Property List under the form of an EntityIterator.
 		Interface_EntityIterator Properties();
 
 		/****** IGESData_IGESEntity::RankColor ******/
-		/****** md5 signature: 748842da901852425d0ed901d57f6955 ******/
+		/****** md5 signature: 758258a940193717b2054a98fa04d641 ******/
 		%feature("compactdefaultargs") RankColor;
 		%feature("autodoc", "Return
 -------
@@ -3667,10 +3656,10 @@ Description
 -----------
 Returns the color definition as an integer value if the color was defined as a rank. Warning A negative value is returned if the color was defined as an entity.
 ") RankColor;
-		Standard_Integer RankColor();
+		int RankColor();
 
 		/****** IGESData_IGESEntity::RankLineFont ******/
-		/****** md5 signature: 38c961b6418a3f68e1631c9b1e7f9361 ******/
+		/****** md5 signature: 5034a7c4b76ddcf29589289c73c06176 ******/
 		%feature("compactdefaultargs") RankLineFont;
 		%feature("autodoc", "Return
 -------
@@ -3680,7 +3669,7 @@ Description
 -----------
 Returns LineFont definition as an Integer (if defined as Rank) If LineFont is defined as an Entity, returns a negative value.
 ") RankLineFont;
-		Standard_Integer RankLineFont();
+		int RankLineFont();
 
 		/****** IGESData_IGESEntity::RemoveProperty ******/
 		/****** md5 signature: 68d52b7c50f6db62ea2798d360495dcd ******/
@@ -3701,7 +3690,7 @@ Removes a Property from the list.
 		void RemoveProperty(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_IGESEntity::SetLabel ******/
-		/****** md5 signature: a2b1447397f697fce5bf5e69cdbb139e ******/
+		/****** md5 signature: 6918652ea1d69ff7df553a7681669d21 ******/
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "
 Parameters
@@ -3717,16 +3706,16 @@ Description
 -----------
 Sets a new Label to an IGES Entity If <sub> is given, it sets value of SubScriptNumber else, SubScriptNumber is erased.
 ") SetLabel;
-		void SetLabel(const opencascade::handle<TCollection_HAsciiString> & label, const Standard_Integer sub = -1);
+		void SetLabel(const opencascade::handle<TCollection_HAsciiString> & label, const int sub = -1);
 
 		/****** IGESData_IGESEntity::SetLineWeight ******/
-		/****** md5 signature: 45a707b0245ae43be696ca63f51811a8 ******/
+		/****** md5 signature: 6d3035811adbd562ce8e1404c2307f23 ******/
 		%feature("compactdefaultargs") SetLineWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-defw: float
-maxw: float
+defw: double
+maxw: double
 gradw: int
 
 Return
@@ -3737,7 +3726,7 @@ Description
 -----------
 computes and sets 'true' line weight according IGES rules from global data MaxLineWeight (maxv) and LineWeightGrad (gradw), or sets it to defw (Default) if LineWeightNumber is null.
 ") SetLineWeight;
-		void SetLineWeight(const Standard_Real defw, const Standard_Real maxw, const Standard_Integer gradw);
+		void SetLineWeight(const double defw, const double maxw, const int gradw);
 
 		/****** IGESData_IGESEntity::ShortLabel ******/
 		/****** md5 signature: 6f2ffdcbc6732ebfbbc06bcb397d07ab ******/
@@ -3779,7 +3768,7 @@ Returns Structure (used by some types of IGES Entities only) Returns a Null Hand
 		opencascade::handle<IGESData_IGESEntity> Structure();
 
 		/****** IGESData_IGESEntity::SubScriptNumber ******/
-		/****** md5 signature: 926d708051b655f4963c2a9c9fcdfb69 ******/
+		/****** md5 signature: 8aaf22b08182cd5057b8247ef14ab90e ******/
 		%feature("compactdefaultargs") SubScriptNumber;
 		%feature("autodoc", "Return
 -------
@@ -3789,10 +3778,10 @@ Description
 -----------
 Returns the integer subscript number used to identify this IGES entity. Warning 0 is returned if no subscript number is defined for this IGES entity.
 ") SubScriptNumber;
-		Standard_Integer SubScriptNumber();
+		int SubScriptNumber();
 
 		/****** IGESData_IGESEntity::SubordinateStatus ******/
-		/****** md5 signature: 70feec2a58cb5b617a258b2a3105db5d ******/
+		/****** md5 signature: 91bec81bac619b7cf9e0843deb518d1d ******/
 		%feature("compactdefaultargs") SubordinateStatus;
 		%feature("autodoc", "Return
 -------
@@ -3802,7 +3791,7 @@ Description
 -----------
 gives Subordinate Switch (0-1-2-3).
 ") SubordinateStatus;
-		Standard_Integer SubordinateStatus();
+		int SubordinateStatus();
 
 		/****** IGESData_IGESEntity::Transf ******/
 		/****** md5 signature: 342b691ddee0e9182c4cfb65faa08c4b ******/
@@ -3818,7 +3807,7 @@ Returns the Transformation Matrix (under IGES definition) Returns a Null Handle 
 		opencascade::handle<IGESData_TransfEntity> Transf();
 
 		/****** IGESData_IGESEntity::TypeNumber ******/
-		/****** md5 signature: 8bfe972f6ae89ab21183f7f2c6ffb423 ******/
+		/****** md5 signature: f2d7e285576144d97ab49ef8bfa7d7e8 ******/
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "Return
 -------
@@ -3828,7 +3817,7 @@ Description
 -----------
 gives IGES Type Number (often coupled with Form Number).
 ") TypeNumber;
-		Standard_Integer TypeNumber();
+		int TypeNumber();
 
 		/****** IGESData_IGESEntity::TypedAssociativity ******/
 		/****** md5 signature: 3c01422c877e912134487113b82f007e ******/
@@ -3849,7 +3838,7 @@ returns the Associativity of a given Type (if only one exists) Error if none or 
 		opencascade::handle<IGESData_IGESEntity> TypedAssociativity(const opencascade::handle<Standard_Type> & atype);
 
 		/****** IGESData_IGESEntity::TypedProperty ******/
-		/****** md5 signature: e1eb748f854a03b81a0e0e177375a310 ******/
+		/****** md5 signature: 13dc6a871a3d4700e4cec92bd8266d12 ******/
 		%feature("compactdefaultargs") TypedProperty;
 		%feature("autodoc", "
 Parameters
@@ -3865,7 +3854,7 @@ Description
 -----------
 returns the Property of a given Type Error if none or more than one.
 ") TypedProperty;
-		opencascade::handle<IGESData_IGESEntity> TypedProperty(const opencascade::handle<Standard_Type> & atype, const Standard_Integer anum = 0);
+		opencascade::handle<IGESData_IGESEntity> TypedProperty(const opencascade::handle<Standard_Type> & atype, const int anum = 0);
 
 		/****** IGESData_IGESEntity::UniqueParent ******/
 		/****** md5 signature: a398586a4430ec15b850b027dd08f2e6 ******/
@@ -3881,7 +3870,7 @@ Returns the Unique Parent (in the sense given by HasOneParent) Error if there is
 		opencascade::handle<IGESData_IGESEntity> UniqueParent();
 
 		/****** IGESData_IGESEntity::UseFlag ******/
-		/****** md5 signature: 5ff6c4705401bef9792e82534561631c ******/
+		/****** md5 signature: 8ee9e3dd1c26a933189d9c37e3ce6138 ******/
 		%feature("compactdefaultargs") UseFlag;
 		%feature("autodoc", "Return
 -------
@@ -3891,7 +3880,7 @@ Description
 -----------
 gives Entity's Use Flag (0 to 5).
 ") UseFlag;
-		Standard_Integer UseFlag();
+		int UseFlag();
 
 		/****** IGESData_IGESEntity::VectorLocation ******/
 		/****** md5 signature: 9ff63ce09420f1fb8fbceb9e2437f31e ******/
@@ -3962,12 +3951,12 @@ No available documentation.
 		 IGESData_IGESModel();
 
 		/****** IGESData_IGESModel::AddStartLine ******/
-		/****** md5 signature: b2e082dbb9611dc32a6105ad74c24e14 ******/
+		/****** md5 signature: 7cc17a52bc94168e72e7dc7319566995 ******/
 		%feature("compactdefaultargs") AddStartLine;
 		%feature("autodoc", "
 Parameters
 ----------
-line: str
+line: char *
 atnum: int (optional, default to 0)
 
 Return
@@ -3978,15 +3967,15 @@ Description
 -----------
 Adds a new string to the existing Start section at the end if atnum is 0 or not given, or before atnumth line.
 ") AddStartLine;
-		void AddStartLine(Standard_CString line, const Standard_Integer atnum = 0);
+		void AddStartLine(const char * const line, const int atnum = 0);
 
 		/****** IGESData_IGESModel::ApplyStatic ******/
-		/****** md5 signature: 994a9ac1357b52e0bee3cbef68d704f1 ******/
+		/****** md5 signature: 3d396d12eaeea510651ecbe6e3032cee ******/
 		%feature("compactdefaultargs") ApplyStatic;
 		%feature("autodoc", "
 Parameters
 ----------
-param: str (optional, default to "")
+param: char * (optional, default to "")
 
 Return
 -------
@@ -3996,7 +3985,7 @@ Description
 -----------
 Sets some of the Global section parameters with the values defined by the translation parameters. param may be: - receiver (value read in XSTEP.iges.header.receiver), - author (value read in XSTEP.iges.header.author), - company (value read in XSTEP.iges.header.company). The default value for param is an empty string. Returns True when done and if param is given, False if param is unknown or empty. Note: Set the unit in the IGES file Global section via IGESData_BasicEditor class.
 ") ApplyStatic;
-		Standard_Boolean ApplyStatic(Standard_CString param = "");
+		bool ApplyStatic(const char * const param = "");
 
 		/****** IGESData_IGESModel::ChangeGlobalSection ******/
 		/****** md5 signature: 040968795059a2599255a0b8e187d384 ******/
@@ -4012,7 +4001,7 @@ Returns the Global section of the IGES file.
 		IGESData_GlobalSection & ChangeGlobalSection();
 
 		/****** IGESData_IGESModel::ClearHeader ******/
-		/****** md5 signature: e0fe665687ba246130521f416ab14715 ******/
+		/****** md5 signature: 81ef923f850ea8300d46a65c729c1bd6 ******/
 		%feature("compactdefaultargs") ClearHeader;
 		%feature("autodoc", "Return
 -------
@@ -4025,7 +4014,7 @@ Erases all data specific to IGES file Header (Start + Global).
 		void ClearHeader();
 
 		/****** IGESData_IGESModel::ClearLabels ******/
-		/****** md5 signature: 3045f499e790e0fc2a95acdb522f6ec7 ******/
+		/****** md5 signature: a5f109e33320ab46b6efaa733b163b63 ******/
 		%feature("compactdefaultargs") ClearLabels;
 		%feature("autodoc", "Return
 -------
@@ -4051,7 +4040,7 @@ Clears the IGES file Start Section.
 		void ClearStartSection();
 
 		/****** IGESData_IGESModel::DNum ******/
-		/****** md5 signature: 9a55ce46e7c2f097913f24946be05bcc ******/
+		/****** md5 signature: 037e6d0f347ff1138ae74ae30f6375f8 ******/
 		%feature("compactdefaultargs") DNum;
 		%feature("autodoc", "
 Parameters
@@ -4066,10 +4055,10 @@ Description
 -----------
 Returns the equivalent DE Number for an Entity, i.e. 2*Number(ent)-1 , or 0 if <ent> is unknown from <self> This DE Number is used for File Writing for instance.
 ") DNum;
-		Standard_Integer DNum(const opencascade::handle<IGESData_IGESEntity> & ent);
+		int DNum(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_IGESModel::DumpHeader ******/
-		/****** md5 signature: 56f8df745054635fd7397075063f4387 ******/
+		/****** md5 signature: 24251371d0f012679b6af8500c3be0b5 ******/
 		%feature("compactdefaultargs") DumpHeader;
 		%feature("autodoc", "
 Parameters
@@ -4084,10 +4073,10 @@ Description
 -----------
 Prints the IGES file header (Start and Global Sections) to the log file. The integer parameter is intended to be used as a level indicator but is not used at present.
 ") DumpHeader;
-		void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
+		void DumpHeader(std::ostream &OutValue, const int level = 0);
 
 		/****** IGESData_IGESModel::Entity ******/
-		/****** md5 signature: 9ad99fc403d738612d5a7261abb4e74e ******/
+		/****** md5 signature: b04c0ca10055a52e271d5463aa6986fd ******/
 		%feature("compactdefaultargs") Entity;
 		%feature("autodoc", "
 Parameters
@@ -4102,10 +4091,10 @@ Description
 -----------
 Returns an IGES entity given by its rank number.
 ") Entity;
-		opencascade::handle<IGESData_IGESEntity> Entity(const Standard_Integer num);
+		opencascade::handle<IGESData_IGESEntity> Entity(const int num);
 
 		/****** IGESData_IGESModel::GetFromAnother ******/
-		/****** md5 signature: 07f4171563413e184028d7c8759ed71c ******/
+		/****** md5 signature: f8d441c5771aa569690b393c9eb132d7 ******/
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "
 Parameters
@@ -4136,7 +4125,7 @@ Returns the Global section of the IGES file.
 		const IGESData_GlobalSection & GlobalSection();
 
 		/****** IGESData_IGESModel::NbStartLines ******/
-		/****** md5 signature: 2d161449c39e91329b09abb1adcacd6b ******/
+		/****** md5 signature: 0d29ab1b2ada9e8acb57b398fee23515 ******/
 		%feature("compactdefaultargs") NbStartLines;
 		%feature("autodoc", "Return
 -------
@@ -4146,10 +4135,10 @@ Description
 -----------
 Returns the count of recorded Start Lines.
 ") NbStartLines;
-		Standard_Integer NbStartLines();
+		int NbStartLines();
 
 		/****** IGESData_IGESModel::NewEmptyModel ******/
-		/****** md5 signature: 40876c8eb593ebc41abaf47645e862e5 ******/
+		/****** md5 signature: c7c7afeaeaa4e3f58350438ec9368a8b ******/
 		%feature("compactdefaultargs") NewEmptyModel;
 		%feature("autodoc", "Return
 -------
@@ -4180,7 +4169,7 @@ Prints label specific to IGES norm for a given entity, i.e. its directory entry 
 		void PrintInfo(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
 		/****** IGESData_IGESModel::PrintLabel ******/
-		/****** md5 signature: 70ad5739c870581f6dca5167f0b3bae0 ******/
+		/****** md5 signature: ef9765f6cbdc6da5c6aaea1612f21d9d ******/
 		%feature("compactdefaultargs") PrintLabel;
 		%feature("autodoc", "
 Parameters
@@ -4198,7 +4187,7 @@ Prints label specific to IGES norm for a given entity, i.e. its directory entry 
 		void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
 		/****** IGESData_IGESModel::PrintToLog ******/
-		/****** md5 signature: 0993bb95706cbffcda2c98453ed6b557 ******/
+		/****** md5 signature: 415cb4936c831272461b79c56e3dd8ad ******/
 		%feature("compactdefaultargs") PrintToLog;
 		%feature("autodoc", "
 Parameters
@@ -4213,7 +4202,7 @@ Description
 -----------
 Prints label specific to IGES norm for a given -- -- entity, i.e. its directory entry number (2*Number-1) in the log file format.
 ") PrintToLog;
-		virtual void PrintToLog(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
+		void PrintToLog(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
 		/****** IGESData_IGESModel::SetGlobalSection ******/
 		/****** md5 signature: 1af9179d630020de23e87e44cbffad84 ******/
@@ -4234,12 +4223,12 @@ Sets the Global section of the IGES file.
 		void SetGlobalSection(const IGESData_GlobalSection & header);
 
 		/****** IGESData_IGESModel::SetLineWeights ******/
-		/****** md5 signature: e662b8b17b36bae19c5a66f41993209b ******/
+		/****** md5 signature: 0d81a802903c455f81846585f3d7508d ******/
 		%feature("compactdefaultargs") SetLineWeights;
 		%feature("autodoc", "
 Parameters
 ----------
-defw: float
+defw: double
 
 Return
 -------
@@ -4249,16 +4238,16 @@ Description
 -----------
 Sets LineWeights of contained Entities according header data (MaxLineWeight and LineWeightGrad) or to a default value for undefined weights.
 ") SetLineWeights;
-		void SetLineWeights(const Standard_Real defw);
+		void SetLineWeights(const double defw);
 
 		/****** IGESData_IGESModel::SetStartSection ******/
-		/****** md5 signature: ebf891bd634c8accc53a220ba641c312 ******/
+		/****** md5 signature: 962c659074889aede8a8243c610997e3 ******/
 		%feature("compactdefaultargs") SetStartSection;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfHAsciiString
-copy: bool (optional, default to Standard_True)
+list: NCollection_HSequence<
+copy: bool (optional, default to true)
 
 Return
 -------
@@ -4268,10 +4257,10 @@ Description
 -----------
 Sets a new Start section from a list of strings. If copy is false, the Start section will be shared. Any modifications made to the strings later on, will have an effect on the Start section. If copy is true (default value), an independent copy of the strings is created and used as the Start section. Any modifications made to the strings later on, will have no effect on the Start section.
 ") SetStartSection;
-		void SetStartSection(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, const Standard_Boolean copy = Standard_True);
+		void SetStartSection(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list, const bool copy = true);
 
 		/****** IGESData_IGESModel::StartLine ******/
-		/****** md5 signature: 230c5bf04b169a2355c350165b2c19cc ******/
+		/****** md5 signature: eb51d28c711734d223175b0959b26d46 ******/
 		%feature("compactdefaultargs") StartLine;
 		%feature("autodoc", "
 Parameters
@@ -4280,29 +4269,29 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 Returns a line from the IGES file Start section by specifying its number. An empty string is returned if the number given is out of range, the range being from 1 to NbStartLines.
 ") StartLine;
-		Standard_CString StartLine(const Standard_Integer num);
+		const char * StartLine(const int num);
 
 		/****** IGESData_IGESModel::StartSection ******/
-		/****** md5 signature: 998fa00be2a7bd3f42c5a6d35ff6278e ******/
+		/****** md5 signature: 6f0e34e71c1038babb351b1099cd062a ******/
 		%feature("compactdefaultargs") StartSection;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns Model's Start Section (list of comment lines).
 ") StartSection;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> StartSection();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> StartSection();
 
 		/****** IGESData_IGESModel::StringLabel ******/
-		/****** md5 signature: 8051e56e871a0ca086f3d44adb661ad2 ******/
+		/****** md5 signature: 8c1d103d0db383cc063c7d455e356ae6 ******/
 		%feature("compactdefaultargs") StringLabel;
 		%feature("autodoc", "
 Parameters
@@ -4320,7 +4309,7 @@ Returns a string with the label attached to a given entity, i.e. a string 'Dnn' 
 		opencascade::handle<TCollection_HAsciiString> StringLabel(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IGESData_IGESModel::VerifyCheck ******/
-		/****** md5 signature: 1054ee41d20b1185127d800c7331e3c3 ******/
+		/****** md5 signature: 695cf5d62a51fec2768c871671281fa7 ******/
 		%feature("compactdefaultargs") VerifyCheck;
 		%feature("autodoc", "
 Parameters
@@ -4335,12 +4324,10 @@ Description
 -----------
 Checks that the IGES file Global section contains valid data that conforms to the IGES specifications.
 ") VerifyCheck;
-		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
+		void VerifyCheck(opencascade::handle<Interface_Check> & ach);
 
 };
 
-
-%make_alias(IGESData_IGESModel)
 
 %extend IGESData_IGESModel {
 	%pythoncode {
@@ -4354,7 +4341,7 @@ Checks that the IGES file Global section contains valid data that conforms to th
 class IGESData_IGESReaderData : public Interface_FileReaderData {
 	public:
 		/****** IGESData_IGESReaderData::IGESData_IGESReaderData ******/
-		/****** md5 signature: 7bd1646350308a5e3a1609527631bae5 ******/
+		/****** md5 signature: e08a1ed7adb02fd87d14eb175ad85dff ******/
 		%feature("compactdefaultargs") IGESData_IGESReaderData;
 		%feature("autodoc", "
 Parameters
@@ -4370,16 +4357,16 @@ Description
 -----------
 creates IGESReaderData correctly dimensioned (for arrays) <nbe> count of entities, that is, half nb of directory lines <nbp>: count of parameters.
 ") IGESData_IGESReaderData;
-		 IGESData_IGESReaderData(const Standard_Integer nbe, const Standard_Integer nbp);
+		 IGESData_IGESReaderData(const int nbe, const int nbp);
 
 		/****** IGESData_IGESReaderData::AddGlobal ******/
-		/****** md5 signature: ec5685d7554a231058028d1107032f97 ******/
+		/****** md5 signature: 8da2fd64c68097c0c9fc903f3032ed71 ******/
 		%feature("compactdefaultargs") AddGlobal;
 		%feature("autodoc", "
 Parameters
 ----------
 atype: Interface_ParamType
-aval: str
+aval: char *
 
 Return
 -------
@@ -4389,15 +4376,15 @@ Description
 -----------
 adds a parameter to global section's parameter list.
 ") AddGlobal;
-		void AddGlobal(const Interface_ParamType atype, Standard_CString aval);
+		void AddGlobal(const Interface_ParamType atype, const char * const aval);
 
 		/****** IGESData_IGESReaderData::AddStartLine ******/
-		/****** md5 signature: ce16629f6b3db7e5bbe2a7c8d7a4bc5f ******/
+		/****** md5 signature: eb3a538318ddf531d0b5c5de7f6f2b37 ******/
 		%feature("compactdefaultargs") AddStartLine;
 		%feature("autodoc", "
 Parameters
 ----------
-aval: str
+aval: char *
 
 Return
 -------
@@ -4407,23 +4394,23 @@ Description
 -----------
 adds a start line to start section.
 ") AddStartLine;
-		void AddStartLine(Standard_CString aval);
+		void AddStartLine(const char * const aval);
 
 		/****** IGESData_IGESReaderData::DefaultLineWeight ******/
-		/****** md5 signature: 6dfd947d9c6ba05b9b68428e24e65be3 ******/
+		/****** md5 signature: 0a210a21c793f519ee82ab14a782a83b ******/
 		%feature("compactdefaultargs") DefaultLineWeight;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the recorded Default Line Weight, if there is (else, returns 0).
 ") DefaultLineWeight;
-		Standard_Real DefaultLineWeight();
+		double DefaultLineWeight();
 
 		/****** IGESData_IGESReaderData::DirPart ******/
-		/****** md5 signature: e38e8285a983ba750a194e68db50c834 ******/
+		/****** md5 signature: 921bb580f06445d5d442b31c12e06162 ******/
 		%feature("compactdefaultargs") DirPart;
 		%feature("autodoc", "
 Parameters
@@ -4438,10 +4425,10 @@ Description
 -----------
 returns DirPart identified by record no (half Dsect number).
 ") DirPart;
-		const IGESData_DirPart & DirPart(const Standard_Integer num);
+		const IGESData_DirPart & DirPart(const int num);
 
 		/****** IGESData_IGESReaderData::DirType ******/
-		/****** md5 signature: 5019de0967d38befc3938c68b6c48a9d ******/
+		/****** md5 signature: dc542b0c913f18aa1432e56ad66fbcc8 ******/
 		%feature("compactdefaultargs") DirType;
 		%feature("autodoc", "
 Parameters
@@ -4456,19 +4443,19 @@ Description
 -----------
 returns 'type' and 'form' info from a directory part.
 ") DirType;
-		IGESData_IGESType DirType(const Standard_Integer num);
+		IGESData_IGESType DirType(const int num);
 
 		/****** IGESData_IGESReaderData::DirValues ******/
-		/****** md5 signature: 6475add3e7837b498bc2310ece31b391 ******/
+		/****** md5 signature: 016897cc0b662205b10d07952028d83e ******/
 		%feature("compactdefaultargs") DirValues;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-res1: str
-res2: str
-label: str
-subs: str
+res1: char *
+res2: char *
+label: char *
+subs: char *
 
 Return
 -------
@@ -4494,10 +4481,10 @@ Description
 -----------
 returns values recorded in directory part n0 <num>.
 ") DirValues;
-		void DirValues(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subs);
+		void DirValues(const int num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, char * res1, char * res2, char * label, char * subs);
 
 		/****** IGESData_IGESReaderData::FindNextRecord ******/
-		/****** md5 signature: b54f23c95a9eaf7d62f9c7b9d32982b2 ******/
+		/****** md5 signature: af0880fae3013305c161fab34dea16e9 ******/
 		%feature("compactdefaultargs") FindNextRecord;
 		%feature("autodoc", "
 Parameters
@@ -4512,7 +4499,7 @@ Description
 -----------
 determines next suitable record from num; that is num+1 except for last one which gives 0.
 ") FindNextRecord;
-		Standard_Integer FindNextRecord(const Standard_Integer num);
+		int FindNextRecord(const int num);
 
 		/****** IGESData_IGESReaderData::GlobalCheck ******/
 		/****** md5 signature: e6a5247811a8543d07da3a4917e3752a ******/
@@ -4541,7 +4528,7 @@ returns header as GlobalSection.
 		const IGESData_GlobalSection & GlobalSection();
 
 		/****** IGESData_IGESReaderData::NbEntities ******/
-		/****** md5 signature: ab39f1a260e05424e9d879a047ae3f8d ******/
+		/****** md5 signature: 9f1930526dd42b0983ed2f53654ed3b7 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -4551,15 +4538,15 @@ Description
 -----------
 Returns count of recorded Entities (i.e. size of Directory).
 ") NbEntities;
-		virtual Standard_Integer NbEntities();
+		int NbEntities();
 
 		/****** IGESData_IGESReaderData::SetDefaultLineWeight ******/
-		/****** md5 signature: ea91eb9fed0bcebc6a359e1960f9b949 ******/
+		/****** md5 signature: 920d1e3321acedc6f4d277b78ec98e74 ******/
 		%feature("compactdefaultargs") SetDefaultLineWeight;
 		%feature("autodoc", "
 Parameters
 ----------
-defw: float
+defw: double
 
 Return
 -------
@@ -4569,10 +4556,10 @@ Description
 -----------
 allows to set a default line weight, will be later applied at load time, on Entities which have no specified line weight.
 ") SetDefaultLineWeight;
-		void SetDefaultLineWeight(const Standard_Real defw);
+		void SetDefaultLineWeight(const double defw);
 
 		/****** IGESData_IGESReaderData::SetDirPart ******/
-		/****** md5 signature: f5563f27adc7f5a15093df370f3cd0bc ******/
+		/****** md5 signature: 1831784f7fd9e2fb573a14e055424629 ******/
 		%feature("compactdefaultargs") SetDirPart;
 		%feature("autodoc", "
 Parameters
@@ -4595,10 +4582,10 @@ i14: int
 i15: int
 i16: int
 i17: int
-res1: str
-res2: str
-label: str
-subs: str
+res1: char *
+res2: char *
+label: char *
+subs: char *
 
 Return
 -------
@@ -4608,7 +4595,7 @@ Description
 -----------
 fills a DirPart, designated by its rank (that is, (N+1)/2 if N is its first number in section D).
 ") SetDirPart;
-		void SetDirPart(const Standard_Integer num, const Standard_Integer i1, const Standard_Integer i2, const Standard_Integer i3, const Standard_Integer i4, const Standard_Integer i5, const Standard_Integer i6, const Standard_Integer i7, const Standard_Integer i8, const Standard_Integer i9, const Standard_Integer i10, const Standard_Integer i11, const Standard_Integer i12, const Standard_Integer i13, const Standard_Integer i14, const Standard_Integer i15, const Standard_Integer i16, const Standard_Integer i17, Standard_CString res1, Standard_CString res2, Standard_CString label, Standard_CString subs);
+		void SetDirPart(const int num, const int i1, const int i2, const int i3, const int i4, const int i5, const int i6, const int i7, const int i8, const int i9, const int i10, const int i11, const int i12, const int i13, const int i14, const int i15, const int i16, const int i17, const char * const res1, const char * const res2, const char * const label, const char * const subs);
 
 		/****** IGESData_IGESReaderData::SetEntityNumbers ******/
 		/****** md5 signature: 2160d07f29f3b4f2e31932dc1880e6da ******/
@@ -4637,22 +4624,20 @@ reads header (as GlobalSection) content from the ParamSet after it has been fill
 		void SetGlobalSection();
 
 		/****** IGESData_IGESReaderData::StartSection ******/
-		/****** md5 signature: 998fa00be2a7bd3f42c5a6d35ff6278e ******/
+		/****** md5 signature: 6f0e34e71c1038babb351b1099cd062a ******/
 		%feature("compactdefaultargs") StartSection;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the Start Section in once.
 ") StartSection;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> StartSection();
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> StartSection();
 
 };
 
-
-%make_alias(IGESData_IGESReaderData)
 
 %extend IGESData_IGESReaderData {
 	%pythoncode {
@@ -4685,7 +4670,7 @@ creates IGESReaderTool to work with an IGESReaderData and an IGES Protocol. Actu
 		 IGESData_IGESReaderTool(const opencascade::handle<IGESData_IGESReaderData> & reader, const opencascade::handle<IGESData_Protocol> & protocol);
 
 		/****** IGESData_IGESReaderTool::AnalyseRecord ******/
-		/****** md5 signature: 11e711b41d10e9d1ee2744d9797437ea ******/
+		/****** md5 signature: a60900bedd4413c52500df36a81d3b7a ******/
 		%feature("compactdefaultargs") AnalyseRecord;
 		%feature("autodoc", "
 Parameters
@@ -4702,10 +4687,10 @@ Description
 -----------
 fills an entity, given record no; works by calling ReadDirPart then ReadParams (with help of a ParamReader), then if required ReadProps and ReadAssocs, from IGESEntity Returns True if no fail has been recorded.
 ") AnalyseRecord;
-		Standard_Boolean AnalyseRecord(const Standard_Integer num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
+		bool AnalyseRecord(const int num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
 
 		/****** IGESData_IGESReaderTool::BeginRead ******/
-		/****** md5 signature: 77f0fe12db475c0a685ef00996ac9075 ******/
+		/****** md5 signature: 46873b04bd6384a1d2fef06e6fde3df7 ******/
 		%feature("compactdefaultargs") BeginRead;
 		%feature("autodoc", "
 Parameters
@@ -4723,7 +4708,7 @@ fills model's header, that is, its GlobalSection.
 		void BeginRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
 		/****** IGESData_IGESReaderTool::EndRead ******/
-		/****** md5 signature: 410f49289536f95f2a8341a522a74781 ******/
+		/****** md5 signature: db8dac182c765bca467b8fdedbbbb0c2 ******/
 		%feature("compactdefaultargs") EndRead;
 		%feature("autodoc", "
 Parameters
@@ -4738,7 +4723,7 @@ Description
 -----------
 after reading entities, true line weights can be computed.
 ") EndRead;
-		virtual void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
+		void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
 		/****** IGESData_IGESReaderTool::Prepare ******/
 		/****** md5 signature: 9cfe3a34381ef8cbe2c88cf2d2f616ac ******/
@@ -4840,7 +4825,7 @@ Reads Property List, if there is (if not, does nothing) criterium is: current pa
 		void ReadProps(const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
 		/****** IGESData_IGESReaderTool::Recognize ******/
-		/****** md5 signature: 910d8cba6a79ab1da4faa756f31c32c7 ******/
+		/****** md5 signature: a2c2c552219e2267fe1814cabbf3077c ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -4857,7 +4842,7 @@ Description
 -----------
 recognizes records by asking Protocol (on data of DirType).
 ") Recognize;
-		Standard_Boolean Recognize(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
+		bool Recognize(const int num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
 };
 
@@ -4887,7 +4872,7 @@ No available documentation.
 		 IGESData_IGESType();
 
 		/****** IGESData_IGESType::IGESData_IGESType ******/
-		/****** md5 signature: 5d6fc738619a208b8bf5cac6d8aa8203 ******/
+		/****** md5 signature: 9654a63ebfae1af0d6583bec81f39737 ******/
 		%feature("compactdefaultargs") IGESData_IGESType;
 		%feature("autodoc", "
 Parameters
@@ -4903,10 +4888,10 @@ Description
 -----------
 No available documentation.
 ") IGESData_IGESType;
-		 IGESData_IGESType(const Standard_Integer atype, const Standard_Integer aform);
+		 IGESData_IGESType(const int atype, const int aform);
 
 		/****** IGESData_IGESType::Form ******/
-		/****** md5 signature: 3d0d90fa7c53c730feed4574fa16c0b4 ******/
+		/****** md5 signature: b3ca7cfbed16ebfe788bcd2ee4d55b20 ******/
 		%feature("compactdefaultargs") Form;
 		%feature("autodoc", "Return
 -------
@@ -4916,10 +4901,10 @@ Description
 -----------
 returns 'form' data.
 ") Form;
-		Standard_Integer Form();
+		int Form();
 
 		/****** IGESData_IGESType::IsEqual ******/
-		/****** md5 signature: 204420b251ddf3b89f3d3ed25993bbce ******/
+		/****** md5 signature: 7b475177d173d9114bc9c19fd7c20539 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -4934,7 +4919,7 @@ Description
 -----------
 compares two IGESTypes, avoiding comparing their fields.
 ") IsEqual;
-		Standard_Boolean IsEqual(const IGESData_IGESType & another);
+		bool IsEqual(const IGESData_IGESType & another);
 
 		/****** IGESData_IGESType::Nullify ******/
 		/****** md5 signature: 1915d5159e87738b7b9af9d5accf4c6e ******/
@@ -4950,7 +4935,7 @@ resets fields (useful when an IGESType is stored as mask).
 		void Nullify();
 
 		/****** IGESData_IGESType::Type ******/
-		/****** md5 signature: fadaf18b7481222141380b2bb22870ff ******/
+		/****** md5 signature: 08d6b3f0f2bca5b690ae63689e8d73f5 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -4960,7 +4945,7 @@ Description
 -----------
 returns 'type' data.
 ") Type;
-		Standard_Integer Type();
+		int Type();
 
 
 %extend{
@@ -5120,7 +5105,7 @@ sends own parameters of the entity, by sending firstly its type, then calling sp
 		void OwnParams(const opencascade::handle<IGESData_IGESEntity> & anent);
 
 		/****** IGESData_IGESWriter::Print ******/
-		/****** md5 signature: 5e5b127c01c68c6fb6a747c286a95265 ******/
+		/****** md5 signature: f9264905c875957693bc6eda08b97601 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -5134,7 +5119,7 @@ Description
 -----------
 Writes result on an output defined as an OStream resolves stored infos at this time; in particular, numbers of lines used to address P-section from D-section and final totals Takes WriteMode into account.
 ") Print;
-		Standard_Boolean Print(std::ostream &OutValue);
+		bool Print(std::ostream &OutValue);
 
 		/****** IGESData_IGESWriter::Properties ******/
 		/****** md5 signature: 593129876ee8c43cc811cf1423c82b5d ******/
@@ -5186,7 +5171,7 @@ declares sending of S section (only a declaration) error if state is not initial
 		void SectionS();
 
 		/****** IGESData_IGESWriter::SectionStrings ******/
-		/****** md5 signature: 80ebd9f11f222c20b13b89b7313ac65e ******/
+		/****** md5 signature: 3c66e1d9a4c2b0499bd0662c078183bb ******/
 		%feature("compactdefaultargs") SectionStrings;
 		%feature("autodoc", "
 Parameters
@@ -5195,13 +5180,13 @@ numsec: int
 
 Return
 -------
-opencascade::handle<TColStd_HSequenceOfHAsciiString>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
 
 Description
 -----------
 Returns the list of strings for a section given its rank 1: Start (if not empty) 2: Global 3 or 4: Parameters RQ: no string list for Directory section An empty section gives a null handle.
 ") SectionStrings;
-		opencascade::handle<TColStd_HSequenceOfHAsciiString> SectionStrings(const Standard_Integer numsec);
+		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SectionStrings(const int numsec);
 
 		/****** IGESData_IGESWriter::SectionT ******/
 		/****** md5 signature: 71f6640137d3036b727d79b6bab712cb ******/
@@ -5230,7 +5215,7 @@ prepares sending of list of entities, as Sections D (directory list) and P (Para
 		void SectionsDP();
 
 		/****** IGESData_IGESWriter::SendBoolean ******/
-		/****** md5 signature: 64cbf8ca025e041c684fe788899fd7cd ******/
+		/****** md5 signature: a9ab78867e7a9275dfd7011d6487664a ******/
 		%feature("compactdefaultargs") SendBoolean;
 		%feature("autodoc", "
 Parameters
@@ -5245,7 +5230,7 @@ Description
 -----------
 sends a Boolean parameter as an Integer value 0(False)/1(True).
 ") SendBoolean;
-		void SendBoolean(const Standard_Boolean val);
+		void SendBoolean(const bool val);
 
 		/****** IGESData_IGESWriter::SendModel ******/
 		/****** md5 signature: 3aafa5ab3573378a6f17270792bcb0d1 ******/
@@ -5266,12 +5251,12 @@ Sends the complete IGESModel (Global Section, Entities as Directory Entries & Pa
 		void SendModel(const opencascade::handle<IGESData_Protocol> & protocol);
 
 		/****** IGESData_IGESWriter::SendStartLine ******/
-		/****** md5 signature: a0b8d0b392e66a48753ee0b5a05b64b1 ******/
+		/****** md5 signature: 80a4467b971d09c1d4b7322787c31079 ******/
 		%feature("compactdefaultargs") SendStartLine;
 		%feature("autodoc", "
 Parameters
 ----------
-startline: str
+startline: char *
 
 Return
 -------
@@ -5281,7 +5266,7 @@ Description
 -----------
 Sends an additional Starting Line: this is the way used to send comments in an IGES File (at beginning of the file). If the line is more than 72 chars long, it is split into as many lines as required to send it completely.
 ") SendStartLine;
-		void SendStartLine(Standard_CString startline);
+		void SendStartLine(const char * const startline);
 
 		/****** IGESData_IGESWriter::SendString ******/
 		/****** md5 signature: 92320a0c3411641c39d308f7f62b1e3b ******/
@@ -5314,19 +5299,19 @@ sends a void parameter, that is null text.
 ") SendVoid;
 		void SendVoid();
 
+		/****** IGESData_IGESWriter::WriteMode ******/
+		/****** md5 signature: 38281ca5f805393ec278c85016f34e58 ******/
+		%feature("compactdefaultargs") WriteMode;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetWriteMode() {
-            return (Standard_Integer) $self->WriteMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetWriteMode(Standard_Integer value) {
-            $self->WriteMode()=value;
-            }
-        };
+Description
+-----------
+Returns the write mode, in order to be read and/or changed Write Mode controls the way final print works 0 (D): Normal IGES, 10: FNES.
+") WriteMode;
+		int & WriteMode();
+
 };
 
 
@@ -5518,7 +5503,7 @@ Returns the Protocol designated by a precise Node.
 class IGESData_ParamCursor {
 	public:
 		/****** IGESData_ParamCursor::IGESData_ParamCursor ******/
-		/****** md5 signature: 17236a15be440009bfc9345a53285d8c ******/
+		/****** md5 signature: 3134a13cd562b29a41a13fc8f3c1b1e5 ******/
 		%feature("compactdefaultargs") IGESData_ParamCursor;
 		%feature("autodoc", "
 Parameters
@@ -5533,10 +5518,10 @@ Description
 -----------
 Creates a Cursor to read a precise parameter of ParamReader, identified by its number, then set Current Number to 'num + 1' (this constructor allows to simply give a Number to a method Read... from ParamReader, which will be translated into a ParamCursor by compiler).
 ") IGESData_ParamCursor;
-		 IGESData_ParamCursor(const Standard_Integer num);
+		 IGESData_ParamCursor(const int num);
 
 		/****** IGESData_ParamCursor::IGESData_ParamCursor ******/
-		/****** md5 signature: ed65ea820dcd6b63c6b259dda34b35e5 ******/
+		/****** md5 signature: 5289c7a6971c6099cf033b182e7d1710 ******/
 		%feature("compactdefaultargs") IGESData_ParamCursor;
 		%feature("autodoc", "
 Parameters
@@ -5553,10 +5538,10 @@ Description
 -----------
 Creates a Cursor to read a list of parameters (count 'nb') starting from a precise one (number 'num') included, then set Current Number of ParamNumber to the first following one ('num + nb') If size is given, it means that each parameter is made of more than one term. One term is the normal (default) case: for instance, a Parameter comprises one Integer, or one Entity ... Size gives the complete size of each Item if it is complex. To be used ONLY IF it is constant.
 ") IGESData_ParamCursor;
-		 IGESData_ParamCursor(const Standard_Integer num, const Standard_Integer nb, const Standard_Integer size = 1);
+		 IGESData_ParamCursor(const int num, const int nb, const int size = 1);
 
 		/****** IGESData_ParamCursor::Advance ******/
-		/****** md5 signature: 8732b03d4deabafe551100a45ffce80e ******/
+		/****** md5 signature: 9c283a54f8ac5a23a6dfd4653eb7d9d1 ******/
 		%feature("compactdefaultargs") Advance;
 		%feature("autodoc", "Return
 -------
@@ -5566,10 +5551,10 @@ Description
 -----------
 Returns True if Advance command has been set.
 ") Advance;
-		Standard_Boolean Advance();
+		bool Advance();
 
 		/****** IGESData_ParamCursor::Count ******/
-		/****** md5 signature: 991c7b8ad8fee748c77481e1ff97e534 ******/
+		/****** md5 signature: 78148c14f4cfe8961517f1210318a2cc ******/
 		%feature("compactdefaultargs") Count;
 		%feature("autodoc", "Return
 -------
@@ -5579,10 +5564,10 @@ Description
 -----------
 Returns required count of items to be read.
 ") Count;
-		Standard_Integer Count();
+		int Count();
 
 		/****** IGESData_ParamCursor::ItemSize ******/
-		/****** md5 signature: 51c711469617c7c15e7b2266ef8e2c5b ******/
+		/****** md5 signature: b281288aefbe60827bc485ba7eb92be1 ******/
 		%feature("compactdefaultargs") ItemSize;
 		%feature("autodoc", "Return
 -------
@@ -5592,10 +5577,10 @@ Description
 -----------
 Returns length of item (count of parameters per item).
 ") ItemSize;
-		Standard_Integer ItemSize();
+		int ItemSize();
 
 		/****** IGESData_ParamCursor::Limit ******/
-		/****** md5 signature: b53224ef6b9824bc94762faf5d79014a ******/
+		/****** md5 signature: 213bf78d59a90b418f7459d491ce2797 ******/
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "Return
 -------
@@ -5605,10 +5590,10 @@ Description
 -----------
 Returns (excluded) upper limit number for reading parameters.
 ") Limit;
-		Standard_Integer Limit();
+		int Limit();
 
 		/****** IGESData_ParamCursor::Offset ******/
-		/****** md5 signature: 03bde6fe15ae3c54c8556dcc0a4901ec ******/
+		/****** md5 signature: 55fa9a2c230a0e3c9f00762fdc3c76f1 ******/
 		%feature("compactdefaultargs") Offset;
 		%feature("autodoc", "Return
 -------
@@ -5618,10 +5603,10 @@ Description
 -----------
 Returns offset from which current term must be read in item.
 ") Offset;
-		Standard_Integer Offset();
+		int Offset();
 
 		/****** IGESData_ParamCursor::SetAdvance ******/
-		/****** md5 signature: 40bfe0c94811631723642e838ccf5256 ******/
+		/****** md5 signature: dd11ffd909e8fa0e0acbd20d3df4f6f4 ******/
 		%feature("compactdefaultargs") SetAdvance;
 		%feature("autodoc", "
 Parameters
@@ -5636,15 +5621,15 @@ Description
 -----------
 Changes command to advance current cursor after reading parameters. If 'advance' True, sets advance, if 'False', resets it. ParamCursor is created by default with True.
 ") SetAdvance;
-		void SetAdvance(const Standard_Boolean advance);
+		void SetAdvance(const bool advance);
 
 		/****** IGESData_ParamCursor::SetOne ******/
-		/****** md5 signature: 1bfaf66a64f419b940b5e9d6e97f6428 ******/
+		/****** md5 signature: 0d8d6aeff1e7821e2eb6ae99dcf1e1c7 ******/
 		%feature("compactdefaultargs") SetOne;
 		%feature("autodoc", "
 Parameters
 ----------
-autoadv: bool (optional, default to Standard_True)
+autoadv: bool (optional, default to true)
 
 Return
 -------
@@ -5654,16 +5639,16 @@ Description
 -----------
 Defines a term of one Parameter (very current case).
 ") SetOne;
-		void SetOne(const Standard_Boolean autoadv = Standard_True);
+		void SetOne(const bool autoadv = true);
 
 		/****** IGESData_ParamCursor::SetTerm ******/
-		/****** md5 signature: 5451e0f8db70fd6b34e9cabd793d48a1 ******/
+		/****** md5 signature: 1b307b55d9e45af110b2650b6a7a6559 ******/
 		%feature("compactdefaultargs") SetTerm;
 		%feature("autodoc", "
 Parameters
 ----------
 size: int
-autoadv: bool (optional, default to Standard_True)
+autoadv: bool (optional, default to true)
 
 Return
 -------
@@ -5673,15 +5658,15 @@ Description
 -----------
 Defines the size of a term to read in the item: this commands ParamReader to read 'size' parameters for each item, then skip the remainder of the item to the same term of next Item (that is, skip 'item size' - 'term size') //! In addition, Offset from beginning of Item is managed: After being created, and for the first call to SetTerm, the part of Item to be read begins exactly as the Item begins But after a SetTerm, the next read will add an offset which is the size of former term. //! autoadv commands Advance management. If it is True (default), the last SetTerm (Item size has been covered) calls SetAdvance If it is False, SetAdvance must be called directly if necessary //! Error if a SetTerm overpasses the size of the Item.
 ") SetTerm;
-		void SetTerm(const Standard_Integer size, const Standard_Boolean autoadv = Standard_True);
+		void SetTerm(const int size, const bool autoadv = true);
 
 		/****** IGESData_ParamCursor::SetXY ******/
-		/****** md5 signature: 0a2da6eac7b51f5fe56357b170dfa18a ******/
+		/****** md5 signature: 84e3c20a04697466aaf8ae38d97cb4a6 ******/
 		%feature("compactdefaultargs") SetXY;
 		%feature("autodoc", "
 Parameters
 ----------
-autoadv: bool (optional, default to Standard_True)
+autoadv: bool (optional, default to true)
 
 Return
 -------
@@ -5691,15 +5676,15 @@ Description
 -----------
 Defines a term of two Parameters for a XY (current case).
 ") SetXY;
-		void SetXY(const Standard_Boolean autoadv = Standard_True);
+		void SetXY(const bool autoadv = true);
 
 		/****** IGESData_ParamCursor::SetXYZ ******/
-		/****** md5 signature: f92ea28b25f113bc557ceaed32b78fce ******/
+		/****** md5 signature: c8ababbcebb8d17d1a9e9f4850371e6e ******/
 		%feature("compactdefaultargs") SetXYZ;
 		%feature("autodoc", "
 Parameters
 ----------
-autoadv: bool (optional, default to Standard_True)
+autoadv: bool (optional, default to true)
 
 Return
 -------
@@ -5709,10 +5694,10 @@ Description
 -----------
 Defines a term of three Parameters for XYZ (current case).
 ") SetXYZ;
-		void SetXYZ(const Standard_Boolean autoadv = Standard_True);
+		void SetXYZ(const bool autoadv = true);
 
 		/****** IGESData_ParamCursor::Start ******/
-		/****** md5 signature: df4b97f316882ae26acb8561520308e4 ******/
+		/****** md5 signature: 88167321d3cf58cf35721be21ad3fa18 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -5722,10 +5707,10 @@ Description
 -----------
 Returns (included) starting number for reading parameters.
 ") Start;
-		Standard_Integer Start();
+		int Start();
 
 		/****** IGESData_ParamCursor::TermSize ******/
-		/****** md5 signature: 3abad23e5df6e9276cb8570fb9313206 ******/
+		/****** md5 signature: 3338f17dbf8c9a2224b682cb1556afb2 ******/
 		%feature("compactdefaultargs") TermSize;
 		%feature("autodoc", "Return
 -------
@@ -5735,7 +5720,7 @@ Description
 -----------
 Returns length of current term (count of parameters) in item.
 ") TermSize;
-		Standard_Integer TermSize();
+		int TermSize();
 
 };
 
@@ -5752,7 +5737,7 @@ Returns length of current term (count of parameters) in item.
 class IGESData_ParamReader {
 	public:
 		/****** IGESData_ParamReader::IGESData_ParamReader ******/
-		/****** md5 signature: 0be7335ed78b6f2c140a4421677b3de3 ******/
+		/****** md5 signature: 687593b5c116290279d7fe2b80fb9feb ******/
 		%feature("compactdefaultargs") IGESData_ParamReader;
 		%feature("autodoc", "
 Parameters
@@ -5771,16 +5756,16 @@ Description
 -----------
 Prepares a ParamReader, stage 'Own', current param = 1 It considers a part of the list, from <base> (excluded) for <nbpar> parameters; <nbpar> = 0 commands to take list length. Default is (1 to skip type).
 ") IGESData_ParamReader;
-		 IGESData_ParamReader(const opencascade::handle<Interface_ParamList> & list, const opencascade::handle<Interface_Check> & ach, const Standard_Integer base = 1, const Standard_Integer nbpar = 0, const Standard_Integer num = 0);
+		 IGESData_ParamReader(const opencascade::handle<Interface_ParamList> & list, const opencascade::handle<Interface_Check> & ach, const int base = 1, const int nbpar = 0, const int num = 0);
 
 		/****** IGESData_ParamReader::AddFail ******/
-		/****** md5 signature: c91e40f5f15a144a7f8c0b135ca877ca ******/
+		/****** md5 signature: e5ce09732e1b8fa7c092b410b162b7d9 ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
 ----------
-afail: str
-bfail: str (optional, default to "")
+afail: char *
+bfail: char * (optional, default to "")
 
 Return
 -------
@@ -5790,7 +5775,7 @@ Description
 -----------
 No available documentation.
 ") AddFail;
-		void AddFail(Standard_CString afail, Standard_CString bfail = "");
+		void AddFail(const char * const afail, const char * const bfail = "");
 
 		/****** IGESData_ParamReader::AddFail ******/
 		/****** md5 signature: c2e5e426059ba8bc38dac40e1adc4faa ******/
@@ -5812,13 +5797,13 @@ feeds the Check with a new fail (as a String or as a CString).
 		void AddFail(const opencascade::handle<TCollection_HAsciiString> & af, const opencascade::handle<TCollection_HAsciiString> & bf);
 
 		/****** IGESData_ParamReader::AddWarning ******/
-		/****** md5 signature: 9a73bc0475344564f058cee8c231b03d ******/
+		/****** md5 signature: 7c2b56d3f182d2e497de441a881fd46e ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
 ----------
-awarn: str
-bwarn: str (optional, default to "")
+awarn: char *
+bwarn: char * (optional, default to "")
 
 Return
 -------
@@ -5828,7 +5813,7 @@ Description
 -----------
 No available documentation.
 ") AddWarning;
-		void AddWarning(Standard_CString awarn, Standard_CString bwarn = "");
+		void AddWarning(const char * const awarn, const char * const bwarn = "");
 
 		/****** IGESData_ParamReader::AddWarning ******/
 		/****** md5 signature: 08b677de5f00f85a69ff40630816ba2b ******/
@@ -5902,7 +5887,7 @@ Creates a ParamCursor from the Current Number, to read one parameter, and to adv
 		IGESData_ParamCursor Current();
 
 		/****** IGESData_ParamReader::CurrentList ******/
-		/****** md5 signature: 907e65a85f73ab24aa0a2bff6b639fc6 ******/
+		/****** md5 signature: 7fb4031c0f691ee4baab2b6d29b14036 ******/
 		%feature("compactdefaultargs") CurrentList;
 		%feature("autodoc", "
 Parameters
@@ -5918,10 +5903,10 @@ Description
 -----------
 Creates a ParamCursor from the Current Number, to read a list of 'nb' items, and to advance Current Number after reading By default, each item is made of one parameter If size is given, it precises the number of params per item.
 ") CurrentList;
-		IGESData_ParamCursor CurrentList(const Standard_Integer nb, const Standard_Integer size = 1);
+		IGESData_ParamCursor CurrentList(const int nb, const int size = 1);
 
 		/****** IGESData_ParamReader::CurrentNumber ******/
-		/****** md5 signature: cad50b6737e024bb37d77c60a68e5874 ******/
+		/****** md5 signature: bf72559fcf52beae75398c0cdefdca93 ******/
 		%feature("compactdefaultargs") CurrentNumber;
 		%feature("autodoc", "Return
 -------
@@ -5929,12 +5914,12 @@ int
 
 Description
 -----------
-returns the current parameter number This notion is involved by the organisation of an IGES list of parameter: it can be ended by two lists (Associativities and Properties), which can be empty, or even absent. Hence, it is necessary to know, at the end of specific reading, how many parameters have been read: the optional lists follow.
+returns the current parameter number This notion is involved by the organisation of an IGES list of parameters: it can be ended by two lists (Associativities and Properties), which can be empty, or even absent. Hence, it is necessary to know, at the end of specific reading, how many parameters have been read: the optional lists follow.
 ") CurrentNumber;
-		Standard_Integer CurrentNumber();
+		int CurrentNumber();
 
 		/****** IGESData_ParamReader::DefinedElseSkip ******/
-		/****** md5 signature: 883cbb4e12366c3b803d0a4caa42669f ******/
+		/****** md5 signature: 61442f45904be43c84e425ca773bab1a ******/
 		%feature("compactdefaultargs") DefinedElseSkip;
 		%feature("autodoc", "Return
 -------
@@ -5944,7 +5929,7 @@ Description
 -----------
 Allows to simply process a parameter which can be defaulted. Waits on the Current Number a defined parameter or skips it: If the parameter <num> is defined, changes nothing and returns True Hence, the next reading with current cursor will concern <num> If it is void, advances Current Position by one, and returns False The next reading will concern <num+1> (except if <num> = NbParams) //! This allows to process Default values as follows (C++): if (PR.DefinedElseSkip()) { .. PR.Read... (current parameter); } else { <current parameter> = default value .. nothing else to do with ParamReader } For Message.
 ") DefinedElseSkip;
-		Standard_Boolean DefinedElseSkip();
+		bool DefinedElseSkip();
 
 		/****** IGESData_ParamReader::EndAll ******/
 		/****** md5 signature: 1ea4b7216b380c8e79eddcee7a9bff79 ******/
@@ -5960,7 +5945,7 @@ passes directly to the end of reading process.
 		void EndAll();
 
 		/****** IGESData_ParamReader::EntityNumber ******/
-		/****** md5 signature: 3b5de40d76500537f54e61dc1880dcc0 ******/
+		/****** md5 signature: 2fcec837afe21e656571ee20a085168d ******/
 		%feature("compactdefaultargs") EntityNumber;
 		%feature("autodoc", "Return
 -------
@@ -5970,10 +5955,10 @@ Description
 -----------
 Returns the entity number in the file.
 ") EntityNumber;
-		Standard_Integer EntityNumber();
+		int EntityNumber();
 
 		/****** IGESData_ParamReader::HasFailed ******/
-		/****** md5 signature: 231f6cf476d6eb671060105fc565fef7 ******/
+		/****** md5 signature: ce7804154429fff28a900a0531c41bbe ******/
 		%feature("compactdefaultargs") HasFailed;
 		%feature("autodoc", "Return
 -------
@@ -5983,10 +5968,10 @@ Description
 -----------
 says if fails have been recorded into the Check.
 ") HasFailed;
-		Standard_Boolean HasFailed();
+		bool HasFailed();
 
 		/****** IGESData_ParamReader::IsCheckEmpty ******/
-		/****** md5 signature: 5084ba875026d6b0ce293344b2432dc8 ******/
+		/****** md5 signature: aec19da7645ad339221fb58e4834df7b ******/
 		%feature("compactdefaultargs") IsCheckEmpty;
 		%feature("autodoc", "Return
 -------
@@ -5996,10 +5981,10 @@ Description
 -----------
 Returns True if the Check is Empty Else, it has to be recorded with the Read Entity.
 ") IsCheckEmpty;
-		Standard_Boolean IsCheckEmpty();
+		bool IsCheckEmpty();
 
 		/****** IGESData_ParamReader::IsParamDefined ******/
-		/****** md5 signature: 8e6b44f252e5989226cd44f91c0cf4b4 ******/
+		/****** md5 signature: 1bcb804e35797503b7895c4d721bd379 ******/
 		%feature("compactdefaultargs") IsParamDefined;
 		%feature("autodoc", "
 Parameters
@@ -6014,10 +5999,10 @@ Description
 -----------
 says if a parameter is defined (not void) See also DefinedElseSkip.
 ") IsParamDefined;
-		Standard_Boolean IsParamDefined(const Standard_Integer num);
+		bool IsParamDefined(const int num);
 
 		/****** IGESData_ParamReader::IsParamEntity ******/
-		/****** md5 signature: edcc5f4164bf630a10b2eddc151d1934 ******/
+		/****** md5 signature: 54d50dbb8acda69f9f7f32ee35bba080 ******/
 		%feature("compactdefaultargs") IsParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -6032,15 +6017,15 @@ Description
 -----------
 says if a parameter can be regarded as an entity reference (see Prepare from IGESReaderData for more explanation) Note that such a parameter can seen as be a plain Integer too.
 ") IsParamEntity;
-		Standard_Boolean IsParamEntity(const Standard_Integer num);
+		bool IsParamEntity(const int num);
 
 		/****** IGESData_ParamReader::Mend ******/
-		/****** md5 signature: 588cd016391e966111d0d2f7b92af695 ******/
+		/****** md5 signature: bbdea5265049b8f554e7c4445d6e73f6 ******/
 		%feature("compactdefaultargs") Mend;
 		%feature("autodoc", "
 Parameters
 ----------
-pref: str (optional, default to "")
+pref: char * (optional, default to "")
 
 Return
 -------
@@ -6050,10 +6035,10 @@ Description
 -----------
 No available documentation.
 ") Mend;
-		void Mend(Standard_CString pref = "");
+		void Mend(const char * const pref = "");
 
 		/****** IGESData_ParamReader::NbParams ******/
-		/****** md5 signature: 826f4756fca7f780e6d976c60183d715 ******/
+		/****** md5 signature: 3d5942837081abb877dd0a91d1f0a57f ******/
 		%feature("compactdefaultargs") NbParams;
 		%feature("autodoc", "Return
 -------
@@ -6063,7 +6048,7 @@ Description
 -----------
 returns number of parameters (minus the first one) following method skip the first parameter (1 gives the 2nd).
 ") NbParams;
-		Standard_Integer NbParams();
+		int NbParams();
 
 		/****** IGESData_ParamReader::NextStage ******/
 		/****** md5 signature: 3afa7b44ad16680a74deb3d8fc21192e ******/
@@ -6079,7 +6064,7 @@ passes to next stage (must be linked with setting Current).
 		void NextStage();
 
 		/****** IGESData_ParamReader::ParamEntity ******/
-		/****** md5 signature: fc5bc5ca0ff84cba8590256531a2aaa5 ******/
+		/****** md5 signature: d4dc63b7a04a58af772b27e62ea5416f ******/
 		%feature("compactdefaultargs") ParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -6095,10 +6080,10 @@ Description
 -----------
 directly returns entity referenced by a parameter.
 ") ParamEntity;
-		opencascade::handle<IGESData_IGESEntity> ParamEntity(const opencascade::handle<IGESData_IGESReaderData> & IR, const Standard_Integer num);
+		opencascade::handle<IGESData_IGESEntity> ParamEntity(const opencascade::handle<IGESData_IGESReaderData> & IR, const int num);
 
 		/****** IGESData_ParamReader::ParamNumber ******/
-		/****** md5 signature: 82bace9b7e2f432720acfca17aba56fb ******/
+		/****** md5 signature: e79b0d95a5f23b9079b9b6385782cee1 ******/
 		%feature("compactdefaultargs") ParamNumber;
 		%feature("autodoc", "
 Parameters
@@ -6113,10 +6098,10 @@ Description
 -----------
 returns entity number corresponding to a parameter if there is otherwise zero (according criterium IsParamEntity).
 ") ParamNumber;
-		Standard_Integer ParamNumber(const Standard_Integer num);
+		int ParamNumber(const int num);
 
 		/****** IGESData_ParamReader::ParamType ******/
-		/****** md5 signature: 06805a954cdda33c70604680f220e0c5 ******/
+		/****** md5 signature: 561418a28e8f194c5a0ff3ab3fec26a2 ******/
 		%feature("compactdefaultargs") ParamType;
 		%feature("autodoc", "
 Parameters
@@ -6131,10 +6116,10 @@ Description
 -----------
 returns type of parameter; note that 'Ident' or 'Sub' cannot be encountered, they correspond to 'Integer', see also below.
 ") ParamType;
-		Interface_ParamType ParamType(const Standard_Integer num);
+		Interface_ParamType ParamType(const int num);
 
 		/****** IGESData_ParamReader::ParamValue ******/
-		/****** md5 signature: 5d590bd3843093ee8ddc8ca8dac44112 ******/
+		/****** md5 signature: 508d44a748509824ce8efc31bf6ddb91 ******/
 		%feature("compactdefaultargs") ParamValue;
 		%feature("autodoc", "
 Parameters
@@ -6143,23 +6128,23 @@ num: int
 
 Return
 -------
-str
+char *
 
 Description
 -----------
 returns literal value of a parameter, as it was in file.
 ") ParamValue;
-		Standard_CString ParamValue(const Standard_Integer num);
+		const char * ParamValue(const int num);
 
 		/****** IGESData_ParamReader::ReadBoolean ******/
-		/****** md5 signature: 5af263137e415d719338928168c161b2 ******/
+		/****** md5 signature: faf439972c2786f555fb1a134638207d ******/
 		%feature("compactdefaultargs") ReadBoolean;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-exact: bool (optional, default to Standard_True)
+exact: bool (optional, default to true)
 
 Return
 -------
@@ -6169,17 +6154,17 @@ Description
 -----------
 No available documentation.
 ") ReadBoolean;
-		Standard_Boolean ReadBoolean(const IGESData_ParamCursor & PC, const Message_Msg & amsg, Standard_Boolean &OutValue, const Standard_Boolean exact = Standard_True);
+		bool ReadBoolean(const IGESData_ParamCursor & PC, const Message_Msg & amsg, Standard_Boolean &OutValue, const bool exact = true);
 
 		/****** IGESData_ParamReader::ReadBoolean ******/
-		/****** md5 signature: 6268762c0673bb403d3a288d7ff30cf4 ******/
+		/****** md5 signature: bde1d1806e40d95a5ccc42127aacdeb8 ******/
 		%feature("compactdefaultargs") ReadBoolean;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
-exact: bool (optional, default to Standard_True)
+mess: char *
+exact: bool (optional, default to true)
 
 Return
 -------
@@ -6189,10 +6174,10 @@ Description
 -----------
 Reads a Boolean value from parameter 'num' A Boolean is given as an Integer value 0 (False) or 1 (True) Anyway, an Integer is demanded (else, Check is filled) If exact is given True, those precise values are demanded Else, Correction is done, as False for 0 or <0, True for >0 (with a Warning error message, and return is True) In case of error (not an Integer, or not 0/1 and exact True), Check is filled with a Fail (using mess) and return is False.
 ") ReadBoolean;
-		Standard_Boolean ReadBoolean(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Boolean &OutValue, const Standard_Boolean exact = Standard_True);
+		bool ReadBoolean(const IGESData_ParamCursor & PC, const char * const mess, Standard_Boolean &OutValue, const bool exact = true);
 
 		/****** IGESData_ParamReader::ReadEntList ******/
-		/****** md5 signature: 9c9af56d8bc83ee3ea10a6bf14216be8 ******/
+		/****** md5 signature: 2a781251548241a7c9a717210b8e3df8 ******/
 		%feature("compactdefaultargs") ReadEntList;
 		%feature("autodoc", "
 Parameters
@@ -6201,7 +6186,7 @@ IR: IGESData_IGESReaderData
 PC: IGESData_ParamCursor
 amsg: Message_Msg
 val: Interface_EntityList
-ord: bool (optional, default to Standard_True)
+ord: bool (optional, default to true)
 
 Return
 -------
@@ -6211,19 +6196,19 @@ Description
 -----------
 No available documentation.
 ") ReadEntList;
-		Standard_Boolean ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Message_Msg & amsg, Interface_EntityList & val, const Standard_Boolean ord = Standard_True);
+		bool ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Message_Msg & amsg, Interface_EntityList & val, const bool ord = true);
 
 		/****** IGESData_ParamReader::ReadEntList ******/
-		/****** md5 signature: 0d9be3239233313112722bdff358270b ******/
+		/****** md5 signature: 9c06118eceecca457236dd15747cdad7 ******/
 		%feature("compactdefaultargs") ReadEntList;
 		%feature("autodoc", "
 Parameters
 ----------
 IR: IGESData_IGESReaderData
 PC: IGESData_ParamCursor
-mess: str
+mess: char *
 val: Interface_EntityList
-ord: bool (optional, default to Standard_True)
+ord: bool (optional, default to true)
 
 Return
 -------
@@ -6231,12 +6216,12 @@ bool
 
 Description
 -----------
-Reads a list of Entities defined by PC Same conditions as for ReadEnts, for PC The list is given as an EntityList (index has no meaning; the EntityList starts from clear) If 'ord' is given True (default), entities will be added to the list in their original order Remark: Negative or Null Pointers are ignored Else ('ord' False), order is not guaranteed (faster mode) If all params cannot be read as Entities, same as above Warning Give 'ord' to False ONLY if order is not significant.
+Reads a list of Entities defined by PC Same conditions as for ReadEnts, for PC The list is given as an EntityList (index has no meaning; the EntityList starts from clear) If 'ord' is given True (default), entities will be added to the list in their original order Remark: Negative or Null Pointers are ignored Else ('ord' False), order is not guaranteed (faster mode) If all params cannot be read as Entities, same as above Warning: Give 'ord' to False ONLY if order is not significant.
 ") ReadEntList;
-		Standard_Boolean ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Standard_CString mess, Interface_EntityList & val, const Standard_Boolean ord = Standard_True);
+		bool ReadEntList(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const char * const mess, Interface_EntityList & val, const bool ord = true);
 
 		/****** IGESData_ParamReader::ReadEnts ******/
-		/****** md5 signature: 750391ef81f0fbfc5d61afa7f04ac7fd ******/
+		/****** md5 signature: 8d37a3056343552c9f257ca3ee1a8cf7 ******/
 		%feature("compactdefaultargs") ReadEnts;
 		%feature("autodoc", "
 Parameters
@@ -6244,7 +6229,7 @@ Parameters
 IR: IGESData_IGESReaderData
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: IGESData_HArray1OfIGESEntity
+val: NCollection_HArray1<
 index: int (optional, default to 1)
 
 Return
@@ -6255,18 +6240,18 @@ Description
 -----------
 No available documentation.
 ") ReadEnts;
-		Standard_Boolean ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<IGESData_HArray1OfIGESEntity> & val, const Standard_Integer index = 1);
+		bool ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadEnts ******/
-		/****** md5 signature: c9f7df380f06bc937e9e8c4995e90b9c ******/
+		/****** md5 signature: 40a43386e4724de502cb4ae94c6cd9c4 ******/
 		%feature("compactdefaultargs") ReadEnts;
 		%feature("autodoc", "
 Parameters
 ----------
 IR: IGESData_IGESReaderData
 PC: IGESData_ParamCursor
-mess: str
-val: IGESData_HArray1OfIGESEntity
+mess: char *
+val: NCollection_HArray1<
 index: int (optional, default to 1)
 
 Return
@@ -6277,10 +6262,10 @@ Description
 -----------
 Reads a list of Entities defined by PC Same conditions as for ReadInts, for PC and index The list is given as a HArray1, numered from 'index' If all params cannot be read as Entities, Check is filled (using mess) and return value is False Remark: Null references are accepted, they are ignored (negative pointers too: they provoke a Warning message) If the caller wants to check them, a loop on ReadEntity should be used.
 ") ReadEnts;
-		Standard_Boolean ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<IGESData_HArray1OfIGESEntity> & val, const Standard_Integer index = 1);
+		bool ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadInteger ******/
-		/****** md5 signature: 5c7a57000d7ed53a1cc81fab0e105a88 ******/
+		/****** md5 signature: 396bd6b0656cc25840454b61f0c6b05c ******/
 		%feature("compactdefaultargs") ReadInteger;
 		%feature("autodoc", "
 Parameters
@@ -6295,16 +6280,16 @@ Description
 -----------
 No available documentation.
 ") ReadInteger;
-		Standard_Boolean ReadInteger(const IGESData_ParamCursor & PC, Standard_Integer &OutValue);
+		bool ReadInteger(const IGESData_ParamCursor & PC, Standard_Integer &OutValue);
 
 		/****** IGESData_ParamReader::ReadInteger ******/
-		/****** md5 signature: ed85b8e4697abef3f4bdbc503427bc64 ******/
+		/****** md5 signature: 701150aaa47f518474e99f850ce855a3 ******/
 		%feature("compactdefaultargs") ReadInteger;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
+mess: char *
 
 Return
 -------
@@ -6314,17 +6299,17 @@ Description
 -----------
 Reads an Integer value designated by PC The method Current designates the current parameter and advances the Current Number by one after reading Note that if a count (not 1) is given, it is ignored If it is not an Integer, fills Check with a Fail (using mess) and returns False.
 ") ReadInteger;
-		Standard_Boolean ReadInteger(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Integer &OutValue);
+		bool ReadInteger(const IGESData_ParamCursor & PC, const char * const mess, Standard_Integer &OutValue);
 
 		/****** IGESData_ParamReader::ReadInts ******/
-		/****** md5 signature: 31cf4defba66a66fd688e116606f5f9e ******/
+		/****** md5 signature: 931995650c62f5733056d355f358705a ******/
 		%feature("compactdefaultargs") ReadInts;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: TColStd_HArray1OfInteger
+val: NCollection_HArray1<int
 index: int (optional, default to 1)
 
 Return
@@ -6335,17 +6320,17 @@ Description
 -----------
 No available documentation.
 ") ReadInts;
-		Standard_Boolean ReadInts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TColStd_HArray1OfInteger> & val, const Standard_Integer index = 1);
+		bool ReadInts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<int> > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadInts ******/
-		/****** md5 signature: cb2250cec74ccc0dc67e08c3af09b5a3 ******/
+		/****** md5 signature: 6fcb8643b24b53ab1771cf7944ec102c ******/
 		%feature("compactdefaultargs") ReadInts;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
-val: TColStd_HArray1OfInteger
+mess: char *
+val: NCollection_HArray1<int
 index: int (optional, default to 1)
 
 Return
@@ -6356,10 +6341,10 @@ Description
 -----------
 Reads a list of Integer values, defined by PC (with a count of parameters). PC can start from Current Number and command it to advance after reading (use method CurrentList to do this) The list is given as a HArray1, numered from 'index' If all params are not Integer, Check is filled (using mess) and return value is False.
 ") ReadInts;
-		Standard_Boolean ReadInts(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfInteger> & val, const Standard_Integer index = 1);
+		bool ReadInts(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<int> > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadReal ******/
-		/****** md5 signature: c82333f3d5ddad52fc0fae29e9ff5ea1 ******/
+		/****** md5 signature: bc37f22926d8c7721cd9b809b4dab78a ******/
 		%feature("compactdefaultargs") ReadReal;
 		%feature("autodoc", "
 Parameters
@@ -6368,42 +6353,42 @@ PC: IGESData_ParamCursor
 
 Return
 -------
-val: float
+val: double
 
 Description
 -----------
 No available documentation.
 ") ReadReal;
-		Standard_Boolean ReadReal(const IGESData_ParamCursor & PC, Standard_Real &OutValue);
+		bool ReadReal(const IGESData_ParamCursor & PC, Standard_Real &OutValue);
 
 		/****** IGESData_ParamReader::ReadReal ******/
-		/****** md5 signature: c3a01ade61f69894a1059017f0b4ccb2 ******/
+		/****** md5 signature: 3d60b45d74dd145f5e3c0212a76729bb ******/
 		%feature("compactdefaultargs") ReadReal;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
+mess: char *
 
 Return
 -------
-val: float
+val: double
 
 Description
 -----------
 Reads a Real value from parameter 'num' An Integer is accepted (Check is filled with a Warning message) and causes return to be True (as normal case) In other cases, Check is filled with a Fail and return is False.
 ") ReadReal;
-		Standard_Boolean ReadReal(const IGESData_ParamCursor & PC, Standard_CString mess, Standard_Real &OutValue);
+		bool ReadReal(const IGESData_ParamCursor & PC, const char * const mess, Standard_Real &OutValue);
 
 		/****** IGESData_ParamReader::ReadReals ******/
-		/****** md5 signature: 966afe503c7f3736d9516f71c49612ff ******/
+		/****** md5 signature: 16e4f096cce335a2923fe9a3b95c8e1a ******/
 		%feature("compactdefaultargs") ReadReals;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: TColStd_HArray1OfReal
+val: NCollection_HArray1<double
 index: int (optional, default to 1)
 
 Return
@@ -6414,17 +6399,17 @@ Description
 -----------
 No available documentation.
 ") ReadReals;
-		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, Message_Msg & amsg, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
+		bool ReadReals(const IGESData_ParamCursor & PC, Message_Msg & amsg, opencascade::handle<NCollection_HArray1<double> > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadReals ******/
-		/****** md5 signature: 0835badf4556bfe7269fbf0ff953e502 ******/
+		/****** md5 signature: 9e2a62a226da70b5e9dce9934a5f64d9 ******/
 		%feature("compactdefaultargs") ReadReals;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
-val: TColStd_HArray1OfReal
+mess: char *
+val: NCollection_HArray1<double
 index: int (optional, default to 1)
 
 Return
@@ -6435,10 +6420,10 @@ Description
 -----------
 Reads a list of Real values defined by PC Same conditions as for ReadInts, for PC and index An Integer parameter is accepted, if at least one parameter is Integer, Check is filled with a 'Warning' message If all params are neither Real nor Integer, Check is filled (using mess) and return value is False.
 ") ReadReals;
-		Standard_Boolean ReadReals(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TColStd_HArray1OfReal> & val, const Standard_Integer index = 1);
+		bool ReadReals(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<double> > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadText ******/
-		/****** md5 signature: e6c8b0b8fb6d1cf4fafe20a1632d5ec8 ******/
+		/****** md5 signature: 80c7d621c609493d0c38860f26140322 ******/
 		%feature("compactdefaultargs") ReadText;
 		%feature("autodoc", "
 Parameters
@@ -6454,16 +6439,16 @@ Description
 -----------
 No available documentation.
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & thePC, const Message_Msg & theMsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		bool ReadText(const IGESData_ParamCursor & thePC, const Message_Msg & theMsg, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****** IGESData_ParamReader::ReadText ******/
-		/****** md5 signature: 583adf171adc696820aae6403d5703c0 ******/
+		/****** md5 signature: 36daf8205207d415c3ac8082eb64d410 ******/
 		%feature("compactdefaultargs") ReadText;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
+mess: char *
 
 Return
 -------
@@ -6473,17 +6458,17 @@ Description
 -----------
 Reads a Text value from parameter 'num', as a String from Collection, that is, Hollerith text without leading 'nnnH' If it is not a String, fills Check with a Fail (using mess) and returns False.
 ") ReadText;
-		Standard_Boolean ReadText(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		bool ReadText(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****** IGESData_ParamReader::ReadTexts ******/
-		/****** md5 signature: c6a37e5e63bf6ab8b99c9480e131fa17 ******/
+		/****** md5 signature: 1b3deb1d0b8956c82857e2da0e820c0d ******/
 		%feature("compactdefaultargs") ReadTexts;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: Interface_HArray1OfHAsciiString
+val: NCollection_HArray1<
 index: int (optional, default to 1)
 
 Return
@@ -6494,17 +6479,17 @@ Description
 -----------
 No available documentation.
 ") ReadTexts;
-		Standard_Boolean ReadTexts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<Interface_HArray1OfHAsciiString> & val, const Standard_Integer index = 1);
+		bool ReadTexts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadTexts ******/
-		/****** md5 signature: 7fc90df81fea9b3334c6a5fb05b22910 ******/
+		/****** md5 signature: c707b1437e30f5fea5bc96986a0057a9 ******/
 		%feature("compactdefaultargs") ReadTexts;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
-val: Interface_HArray1OfHAsciiString
+mess: char *
+val: NCollection_HArray1<
 index: int (optional, default to 1)
 
 Return
@@ -6515,10 +6500,10 @@ Description
 -----------
 Reads a list of Hollerith Texts, defined by PC Texts are read as Hollerith texts without leading 'nnnH' Same conditions as for ReadInts, for PC and index If all params are not Text, Check is filled (using mess) and return value is False.
 ") ReadTexts;
-		Standard_Boolean ReadTexts(const IGESData_ParamCursor & PC, Standard_CString mess, opencascade::handle<Interface_HArray1OfHAsciiString> & val, const Standard_Integer index = 1);
+		bool ReadTexts(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadXY ******/
-		/****** md5 signature: f1f930720d20b00d8163c922eb48a7cf ******/
+		/****** md5 signature: 4763773f69f64b43c371ed82c0b9720e ******/
 		%feature("compactdefaultargs") ReadXY;
 		%feature("autodoc", "
 Parameters
@@ -6535,16 +6520,16 @@ Description
 -----------
 No available documentation.
 ") ReadXY;
-		Standard_Boolean ReadXY(const IGESData_ParamCursor & PC, Message_Msg & amsg, gp_XY & val);
+		bool ReadXY(const IGESData_ParamCursor & PC, Message_Msg & amsg, gp_XY & val);
 
 		/****** IGESData_ParamReader::ReadXY ******/
-		/****** md5 signature: 6992ef4100793f541a2652734a6e22f8 ******/
+		/****** md5 signature: f9504ec92bd205ab0c91acb7bc0ece77 ******/
 		%feature("compactdefaultargs") ReadXY;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
+mess: char *
 val: gp_XY
 
 Return
@@ -6555,10 +6540,10 @@ Description
 -----------
 Reads a couple of Real values (X,Y) from parameter 'num' Integers are accepted (Check is filled with a Warning message) and cause return to be True (as normal case) In other cases, Check is filled with a Fail and return is False.
 ") ReadXY;
-		Standard_Boolean ReadXY(const IGESData_ParamCursor & PC, Standard_CString mess, gp_XY & val);
+		bool ReadXY(const IGESData_ParamCursor & PC, const char * const mess, gp_XY & val);
 
 		/****** IGESData_ParamReader::ReadXYZ ******/
-		/****** md5 signature: e1f260ccc2a99b486835f0bbaf9490d4 ******/
+		/****** md5 signature: 02144fd03b9c4ab36c39f6dbc91377d6 ******/
 		%feature("compactdefaultargs") ReadXYZ;
 		%feature("autodoc", "
 Parameters
@@ -6575,16 +6560,16 @@ Description
 -----------
 No available documentation.
 ") ReadXYZ;
-		Standard_Boolean ReadXYZ(const IGESData_ParamCursor & PC, Message_Msg & amsg, gp_XYZ & val);
+		bool ReadXYZ(const IGESData_ParamCursor & PC, Message_Msg & amsg, gp_XYZ & val);
 
 		/****** IGESData_ParamReader::ReadXYZ ******/
-		/****** md5 signature: 15aa066c60d71f3df435929b7aa189a4 ******/
+		/****** md5 signature: aee41a8a4b26aa1e4a6b738f4b47354c ******/
 		%feature("compactdefaultargs") ReadXYZ;
 		%feature("autodoc", "
 Parameters
 ----------
 PC: IGESData_ParamCursor
-mess: str
+mess: char *
 val: gp_XYZ
 
 Return
@@ -6595,10 +6580,10 @@ Description
 -----------
 Reads a triplet of Real values (X,Y,Z) from parameter 'num' Integers are accepted (Check is filled with a Warning message) and cause return to be True (as normal case) In other cases, Check is filled with a Fail and return is False For Message.
 ") ReadXYZ;
-		Standard_Boolean ReadXYZ(const IGESData_ParamCursor & PC, Standard_CString mess, gp_XYZ & val);
+		bool ReadXYZ(const IGESData_ParamCursor & PC, const char * const mess, gp_XYZ & val);
 
 		/****** IGESData_ParamReader::ReadingEntityNumber ******/
-		/****** md5 signature: 92704ecd65c2acb93d1b95eb5695d76c ******/
+		/****** md5 signature: 8c7a28996d3e9abce00afe53fe64c475 ******/
 		%feature("compactdefaultargs") ReadingEntityNumber;
 		%feature("autodoc", "
 Parameters
@@ -6613,16 +6598,16 @@ Description
 -----------
 No available documentation.
 ") ReadingEntityNumber;
-		Standard_Boolean ReadingEntityNumber(const Standard_Integer num, Standard_Integer &OutValue);
+		bool ReadingEntityNumber(const int num, Standard_Integer &OutValue);
 
 		/****** IGESData_ParamReader::ReadingEntityNumber ******/
-		/****** md5 signature: 5d198f71dec6dc01baf2a876d8d0029b ******/
+		/****** md5 signature: 61e1e421282d3c21cd655b0259ef1d99 ******/
 		%feature("compactdefaultargs") ReadingEntityNumber;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-mess: str
+mess: char *
 
 Return
 -------
@@ -6632,10 +6617,10 @@ Description
 -----------
 Routine which reads an Entity Number (which allows to read the Entity in the IGESReaderData by BoundEntity), given its number in the list of Parameters Same conditions as ReadEntity for mess, val, and return value In particular, returns True and val to zero means Null Entity, and val not zero means Entity read by BoundEntity.
 ") ReadingEntityNumber;
-		Standard_Boolean ReadingEntityNumber(const Standard_Integer num, Standard_CString mess, Standard_Integer &OutValue);
+		bool ReadingEntityNumber(const int num, const char * const mess, Standard_Integer &OutValue);
 
 		/****** IGESData_ParamReader::ReadingReal ******/
-		/****** md5 signature: 1acc3f6abf688d2d1b7f455b5f35fd08 ******/
+		/****** md5 signature: f8645a87fb24502bf76eb392d0e1c3c6 ******/
 		%feature("compactdefaultargs") ReadingReal;
 		%feature("autodoc", "
 Parameters
@@ -6644,32 +6629,32 @@ num: int
 
 Return
 -------
-val: float
+val: double
 
 Description
 -----------
 No available documentation.
 ") ReadingReal;
-		Standard_Boolean ReadingReal(const Standard_Integer num, Standard_Real &OutValue);
+		bool ReadingReal(const int num, Standard_Real &OutValue);
 
 		/****** IGESData_ParamReader::ReadingReal ******/
-		/****** md5 signature: 3a9bac57a6845f06ca42b63580735416 ******/
+		/****** md5 signature: 9406bcfee75c5086366dc33e5479a615 ******/
 		%feature("compactdefaultargs") ReadingReal;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
-mess: str
+mess: char *
 
 Return
 -------
-val: float
+val: double
 
 Description
 -----------
 Routine which reads a Real parameter, given its number Same conditions as ReadReal for mess, val, and return value.
 ") ReadingReal;
-		Standard_Boolean ReadingReal(const Standard_Integer num, Standard_CString mess, Standard_Real &OutValue);
+		bool ReadingReal(const int num, const char * const mess, Standard_Real &OutValue);
 
 		/****** IGESData_ParamReader::SendFail ******/
 		/****** md5 signature: 1eab4e53649e1a16e12a6f58bd826f30 ******/
@@ -6708,7 +6693,7 @@ No available documentation.
 		void SendWarning(const Message_Msg & amsg);
 
 		/****** IGESData_ParamReader::SetCurrentNumber ******/
-		/****** md5 signature: cfd60e21d3b8d6b90fbe9763df1e8c6f ******/
+		/****** md5 signature: 37c05428033726e8ff9c2f26df9e52bf ******/
 		%feature("compactdefaultargs") SetCurrentNumber;
 		%feature("autodoc", "
 Parameters
@@ -6723,7 +6708,7 @@ Description
 -----------
 sets current parameter number to a new value must be done at end of each step: set on first parameter following last read one; is done by some Read... methods (must be done directly if these method are not used) num greater than NbParams means that following lists are empty If current num is not managed, it remains at 1, which probably will cause error when successive steps of reading are made.
 ") SetCurrentNumber;
-		void SetCurrentNumber(const Standard_Integer num);
+		void SetCurrentNumber(const int num);
 
 		/****** IGESData_ParamReader::Stage ******/
 		/****** md5 signature: f26299ac744ccb6ad00be1e60a3fc3f6 ******/
@@ -6770,7 +6755,7 @@ No available documentation.
 		 IGESData_Protocol();
 
 		/****** IGESData_Protocol::IsSuitableModel ******/
-		/****** md5 signature: 3a7d76487f7ffeaa887a18b03ce0e06c ******/
+		/****** md5 signature: d2ccb6e77cddff484d0b7a9051bcd673 ******/
 		%feature("compactdefaultargs") IsSuitableModel;
 		%feature("autodoc", "
 Parameters
@@ -6785,10 +6770,10 @@ Description
 -----------
 Returns True if <model> is a Model of IGES Norm.
 ") IsSuitableModel;
-		Standard_Boolean IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
+		bool IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IGESData_Protocol::IsUnknownEntity ******/
-		/****** md5 signature: cec9bde85b0ea68f8042a2f3f4f9c29b ******/
+		/****** md5 signature: 02362c70d307360a2b6188ad031013c3 ******/
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "
 Parameters
@@ -6803,10 +6788,10 @@ Description
 -----------
 Returns True if <ent> is an Unknown Entity for the Norm, i.e. Type UndefinedEntity, status Unknown.
 ") IsUnknownEntity;
-		Standard_Boolean IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
+		bool IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IGESData_Protocol::NbResources ******/
-		/****** md5 signature: e09215dfaa5a4c92d70662499182122c ******/
+		/****** md5 signature: 3c8410815357f0a892211359291d8070 ******/
 		%feature("compactdefaultargs") NbResources;
 		%feature("autodoc", "Return
 -------
@@ -6816,10 +6801,10 @@ Description
 -----------
 Gives the count of Resource Protocol. Here, none.
 ") NbResources;
-		Standard_Integer NbResources();
+		int NbResources();
 
 		/****** IGESData_Protocol::NewModel ******/
-		/****** md5 signature: 91513f9ebe9e7d52eca2b6b58f6b9b0a ******/
+		/****** md5 signature: 4e176eab7c6da9b73e274debab7af3fb ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -6832,7 +6817,7 @@ Creates an empty Model for IGES Norm.
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
 		/****** IGESData_Protocol::Resource ******/
-		/****** md5 signature: d60e6fb01254af21c091aa5baad80e74 ******/
+		/****** md5 signature: 3c19c2497364406e7d4e9d2a0f8d51c0 ******/
 		%feature("compactdefaultargs") Resource;
 		%feature("autodoc", "
 Parameters
@@ -6847,10 +6832,10 @@ Description
 -----------
 Returns a Resource, given a rank. Here, none.
 ") Resource;
-		opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
+		opencascade::handle<Interface_Protocol> Resource(const int num);
 
 		/****** IGESData_Protocol::TypeNumber ******/
-		/****** md5 signature: c141bcfd5e7e4d36c0619b6951ddde94 ******/
+		/****** md5 signature: bbae632533589e3c2443854ef12e6cb8 ******/
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "
 Parameters
@@ -6865,10 +6850,10 @@ Description
 -----------
 Returns a Case Number, specific of each recognized Type Here, Undefined and Free Format Entities have the Number 1.
 ") TypeNumber;
-		Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
+		int TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
 		/****** IGESData_Protocol::UnknownEntity ******/
-		/****** md5 signature: 201f936eaa0d5d272733a19cbe8e2fa3 ******/
+		/****** md5 signature: 169032e358d8d8ef4fd05f39169f96f5 ******/
 		%feature("compactdefaultargs") UnknownEntity;
 		%feature("autodoc", "Return
 -------
@@ -6883,8 +6868,6 @@ Creates a new Unknown Entity for IGES (UndefinedEntity).
 };
 
 
-%make_alias(IGESData_Protocol)
-
 %extend IGESData_Protocol {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6898,7 +6881,7 @@ Creates a new Unknown Entity for IGES (UndefinedEntity).
 class IGESData_ReadWriteModule : public Interface_ReaderModule {
 	public:
 		/****** IGESData_ReadWriteModule::CaseIGES ******/
-		/****** md5 signature: 50a4ff4f6d600f478137a6aa68e47abb ******/
+		/****** md5 signature: ed86887e9b21ff9e4a423e567668c960 ******/
 		%feature("compactdefaultargs") CaseIGES;
 		%feature("autodoc", "
 Parameters
@@ -6914,10 +6897,10 @@ Description
 -----------
 Defines Case Numbers corresponding to the Entity Types taken into account by a sub-class of ReadWriteModule (hence, each sub-class of ReadWriteModule has to redefine this method) Called by CaseNum. Its result will then be used to call Read, etc ...
 ") CaseIGES;
-		virtual Standard_Integer CaseIGES(const Standard_Integer typenum, const Standard_Integer formnum);
+		virtual int CaseIGES(const int typenum, const int formnum);
 
 		/****** IGESData_ReadWriteModule::CaseNum ******/
-		/****** md5 signature: 9879d2c99e315f91c57304d23ffeaef0 ******/
+		/****** md5 signature: e807b9c49d9153ce57b3e5855eca12f8 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -6933,10 +6916,10 @@ Description
 -----------
 Translates the Type of record <num> in <data> to a positive Case Number, or 0 if failed. Works with IGESReaderData which provides Type & Form Numbers, and calls CaseIGES (see below).
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num);
+		int CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const int num);
 
 		/****** IGESData_ReadWriteModule::Read ******/
-		/****** md5 signature: 42ded38f13a0a591a94dfdfbbc6644f7 ******/
+		/****** md5 signature: 51f5d802b79e4aa06bb2474af3294dbb ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -6955,10 +6938,10 @@ Description
 -----------
 General Read Function. See IGESReaderTool for more info.
 ") Read;
-		void Read(const Standard_Integer CN, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
+		void Read(const int CN, const opencascade::handle<Interface_FileReaderData> & data, const int num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IGESData_ReadWriteModule::ReadOwnParams ******/
-		/****** md5 signature: 44dfe59dc57956979a96c9a23fbaa660 ******/
+		/****** md5 signature: 3a683b15c75377f2978f987ec637a979 ******/
 		%feature("compactdefaultargs") ReadOwnParams;
 		%feature("autodoc", "
 Parameters
@@ -6976,10 +6959,10 @@ Description
 -----------
 Reads own parameters from file for an Entity; <PR> gives access to them, <IR> detains parameter types and values For each class, there must be a specific action provided Note that Properties and Associativities Lists are Read by specific methods (see below), they are called under control of reading process (only one call) according Stage recorded in ParamReader.
 ") ReadOwnParams;
-		virtual void ReadOwnParams(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
+		virtual void ReadOwnParams(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_ParamReader & PR);
 
 		/****** IGESData_ReadWriteModule::WriteOwnParams ******/
-		/****** md5 signature: dba319f8f44c1bd48f0c908dfc0b5313 ******/
+		/****** md5 signature: 54ae2ede18b74f2dd4bebdff953d28c5 ******/
 		%feature("compactdefaultargs") WriteOwnParams;
 		%feature("autodoc", "
 Parameters
@@ -6996,12 +6979,10 @@ Description
 -----------
 Writes own parameters to IGESWriter; defined for each class (to be redefined for other IGES ReadWriteModules) Warning: Properties and Associativities are directly managed by WriteIGES, must not be sent by this method.
 ") WriteOwnParams;
-		virtual void WriteOwnParams(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, IGESData_IGESWriter & IW);
+		virtual void WriteOwnParams(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, IGESData_IGESWriter & IW);
 
 };
 
-
-%make_alias(IGESData_ReadWriteModule)
 
 %extend IGESData_ReadWriteModule {
 	%pythoncode {
@@ -7090,7 +7071,7 @@ Returns the current Module in the Iteration.
 		const opencascade::handle<IGESData_SpecificModule> & Module();
 
 		/****** IGESData_SpecificLib::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -7100,7 +7081,7 @@ Description
 -----------
 Returns True if there are more Modules to iterate on.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** IGESData_SpecificLib::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -7129,7 +7110,7 @@ Returns the current Protocol in the Iteration.
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
 		/****** IGESData_SpecificLib::Select ******/
-		/****** md5 signature: df7326180c9347987eb759b269019ddf ******/
+		/****** md5 signature: fc2d555d24e47499a27818f023accdb3 ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -7145,7 +7126,7 @@ Description
 -----------
 Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
-		Standard_Boolean Select(const opencascade::handle<IGESData_IGESEntity> & obj, opencascade::handle<IGESData_SpecificModule> & module, Standard_Integer &OutValue);
+		bool Select(const opencascade::handle<IGESData_IGESEntity> & obj, opencascade::handle<IGESData_SpecificModule> & module, Standard_Integer &OutValue);
 
 		/****** IGESData_SpecificLib::SetComplete ******/
 		/****** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ******/
@@ -7208,7 +7189,7 @@ Starts Iteration on the Modules (sets it on the first one).
 class IGESData_SpecificModule : public Standard_Transient {
 	public:
 		/****** IGESData_SpecificModule::OwnCorrect ******/
-		/****** md5 signature: dcc0d76987465f3f21f4ad244d5059ed ******/
+		/****** md5 signature: 871238ccb7812cf05419d4dd89dab67c ******/
 		%feature("compactdefaultargs") OwnCorrect;
 		%feature("autodoc", "
 Parameters
@@ -7224,10 +7205,10 @@ Description
 -----------
 Specific Automatic Correction on own Parameters of an Entity. It works by setting in accordance redundant data, if there are when there is no ambiguity (else, it does nothing). Remark that classic Corrections on Directory Entry (to set void data) are taken into account alsewhere. //! For instance, many 'Associativity Entities' have a Number of Properties which must have a fixed value. Or, a ConicalArc has its Form Number which records the kind of Conic, also determined from its coefficients But, a CircularArc of which Distances (Center-Start) and (Center-End) are not equal cannot be corrected ... //! Returns True if something has been corrected in <ent> By default, does nothing. If at least one of the Types processed by a sub-class of SpecificModule has a Correct procedure attached, this method can be redefined.
 ") OwnCorrect;
-		virtual Standard_Boolean OwnCorrect(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
+		virtual bool OwnCorrect(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_SpecificModule::OwnDump ******/
-		/****** md5 signature: f276487f02d27b508cdd766536f98d29 ******/
+		/****** md5 signature: c8c5e761af7b27eee2cb81b6ab056909 ******/
 		%feature("compactdefaultargs") OwnDump;
 		%feature("autodoc", "
 Parameters
@@ -7245,7 +7226,7 @@ Description
 -----------
 Specific Dump for each type of IGES Entity: it concerns only own parameters, the general data (Directory Part, Lists) are taken into account by the IGESDumper See class IGESDumper for the rules to follow for <own> and <attached> level.
 ") OwnDump;
-		virtual void OwnDump(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const IGESData_IGESDumper & dumper, std::ostream &OutValue, const Standard_Integer own);
+		virtual void OwnDump(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, const IGESData_IGESDumper & dumper, std::ostream &OutValue, const int own);
 
 };
 
@@ -7283,7 +7264,7 @@ Creates a ToolLocation on a given Model, filled with the help of a Protocol (whi
 		 IGESData_ToolLocation(const opencascade::handle<IGESData_IGESModel> & amodel, const opencascade::handle<IGESData_Protocol> & protocol);
 
 		/****** IGESData_ToolLocation::AnalyseLocation ******/
-		/****** md5 signature: 6505b52510f29496969bb2c34879f238 ******/
+		/****** md5 signature: d58aa834264eb1d2bc54fb1ef9065df7 ******/
 		%feature("compactdefaultargs") AnalyseLocation;
 		%feature("autodoc", "
 Parameters
@@ -7299,18 +7280,18 @@ Description
 -----------
 Analysis a Location given as a GTrsf, by trying to convert it to a Trsf (i.e. to a True Location of which effect is described by an Isometry or a Similarity) Works with the Precision given by default or by SetPrecision Calls ConvertLocation (see below).
 ") AnalyseLocation;
-		Standard_Boolean AnalyseLocation(const gp_GTrsf & loc, gp_Trsf & result);
+		bool AnalyseLocation(const gp_GTrsf & loc, gp_Trsf & result);
 
 		/****** IGESData_ToolLocation::ConvertLocation ******/
-		/****** md5 signature: d88a9351c35f05028c597b1f49d4a449 ******/
+		/****** md5 signature: 43ad8490b4563a4045d020c5e70eecb3 ******/
 		%feature("compactdefaultargs") ConvertLocation;
 		%feature("autodoc", "
 Parameters
 ----------
-prec: float
+prec: double
 loc: gp_GTrsf
 result: gp_Trsf
-uni: float (optional, default to 1)
+uni: double (optional, default to 1)
 
 Return
 -------
@@ -7320,7 +7301,7 @@ Description
 -----------
 Conversion of a Location, from GTrsf form to Trsf form Works with a precision given as argument. Returns True if the Conversion is possible, (hence, <result> contains the converted location), False else <unit>, if given, indicates the unit in which <loc> is defined in meters. It concerns the translation part (to be converted. //! As a class method, it can be called separately.
 ") ConvertLocation;
-		static Standard_Boolean ConvertLocation(const Standard_Real prec, const gp_GTrsf & loc, gp_Trsf & result, const Standard_Real uni = 1);
+		static bool ConvertLocation(const double prec, const gp_GTrsf & loc, gp_Trsf & result, const double uni = 1);
 
 		/****** IGESData_ToolLocation::EffectiveLocation ******/
 		/****** md5 signature: 965dc7c24b463a3ac115960ff1f244e4 ******/
@@ -7359,7 +7340,7 @@ Returns the Explicit Location defined by the Transformation Matrix of <ent>. Ide
 		gp_GTrsf ExplicitLocation(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::HasParent ******/
-		/****** md5 signature: 30278e3ba06a09dd6b9664cce0877575 ******/
+		/****** md5 signature: 2fc5c1f9c99408896cca3e2d7482d5fd ******/
 		%feature("compactdefaultargs") HasParent;
 		%feature("autodoc", "
 Parameters
@@ -7374,10 +7355,10 @@ Description
 -----------
 Returns True if <ent> is dependent from one and only one other Entity, either by Reference or by Associativity.
 ") HasParent;
-		Standard_Boolean HasParent(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool HasParent(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::HasParentByAssociativity ******/
-		/****** md5 signature: f3a27ae5d42b5e162098b70e7138bf62 ******/
+		/****** md5 signature: 21961e53911a081ad9e77170bcd85e56 ******/
 		%feature("compactdefaultargs") HasParentByAssociativity;
 		%feature("autodoc", "
 Parameters
@@ -7392,10 +7373,10 @@ Description
 -----------
 Returns True if the Parent, if there is one, is defined by a SingleParentEntity Associativity Else, if HasParent is True, it is by Reference.
 ") HasParentByAssociativity;
-		Standard_Boolean HasParentByAssociativity(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool HasParentByAssociativity(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::HasTransf ******/
-		/****** md5 signature: 4328fae714f2eb51054b9fa9feb3e9a0 ******/
+		/****** md5 signature: 23baf648075b0ea53e07f8ef73253559 ******/
 		%feature("compactdefaultargs") HasTransf;
 		%feature("autodoc", "
 Parameters
@@ -7410,10 +7391,10 @@ Description
 -----------
 Returns True if <ent> has a Transformation Matrix in proper (referenced from its Directory Part).
 ") HasTransf;
-		Standard_Boolean HasTransf(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool HasTransf(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::IsAmbiguous ******/
-		/****** md5 signature: a142ade04a303f2a2924927f9be83a32 ******/
+		/****** md5 signature: 0bad7c00204cd3ab36ff37a68e2e2596 ******/
 		%feature("compactdefaultargs") IsAmbiguous;
 		%feature("autodoc", "
 Parameters
@@ -7428,10 +7409,10 @@ Description
 -----------
 Returns True if more than one Parent has been determined for <ent>, by adding direct References and Associativities.
 ") IsAmbiguous;
-		Standard_Boolean IsAmbiguous(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool IsAmbiguous(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::IsAssociativity ******/
-		/****** md5 signature: df8bd2dde6b978364168767639fb635c ******/
+		/****** md5 signature: 31621cd9bbfc84cf010a0d08a7849cc8 ******/
 		%feature("compactdefaultargs") IsAssociativity;
 		%feature("autodoc", "
 Parameters
@@ -7446,10 +7427,10 @@ Description
 -----------
 Returns True if <ent> is an Associativity (IGES Type 402). Then, Location does not apply.
 ") IsAssociativity;
-		Standard_Boolean IsAssociativity(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool IsAssociativity(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::IsTransf ******/
-		/****** md5 signature: 4093feb571ae01012954d808e107de69 ******/
+		/****** md5 signature: 17ab229d4a0d1f1b5b5a28a2859865b0 ******/
 		%feature("compactdefaultargs") IsTransf;
 		%feature("autodoc", "
 Parameters
@@ -7464,7 +7445,7 @@ Description
 -----------
 Returns True if <ent> is kind of TransfEntity. Then, it has no location, while it can be used to define a Location).
 ") IsTransf;
-		Standard_Boolean IsTransf(const opencascade::handle<IGESData_IGESEntity> & ent);
+		bool IsTransf(const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_ToolLocation::Load ******/
 		/****** md5 signature: 14bc79a16a4ba0fe93224560bb579cb0 ******/
@@ -7571,12 +7552,12 @@ Sets the 'Associativity' information for <child> as being <parent> (it must be t
 		void SetParentAssoc(const opencascade::handle<IGESData_IGESEntity> & parent, const opencascade::handle<IGESData_IGESEntity> & child);
 
 		/****** IGESData_ToolLocation::SetPrecision ******/
-		/****** md5 signature: 683e72fa620702e8c921bb4783d3d0b5 ******/
+		/****** md5 signature: f9c41d0388ab8dedd7f97163565c355a ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-prec: float
+prec: double
 
 Return
 -------
@@ -7586,7 +7567,7 @@ Description
 -----------
 Sets a precision for the Analysis of Locations (default by constructor is 1.E-05).
 ") SetPrecision;
-		void SetPrecision(const Standard_Real prec);
+		void SetPrecision(const double prec);
 
 		/****** IGESData_ToolLocation::SetReference ******/
 		/****** md5 signature: ac648ca8ad4e0f9b9f0124f883b5ef65 ******/
@@ -7699,7 +7680,7 @@ Returns the current Module in the Iteration.
 		const opencascade::handle<IGESData_ReadWriteModule> & Module();
 
 		/****** IGESData_WriterLib::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -7709,7 +7690,7 @@ Description
 -----------
 Returns True if there are more Modules to iterate on.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** IGESData_WriterLib::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -7738,7 +7719,7 @@ Returns the current Protocol in the Iteration.
 		const opencascade::handle<IGESData_Protocol> & Protocol();
 
 		/****** IGESData_WriterLib::Select ******/
-		/****** md5 signature: 65d70c03516a734c5fb3f481de80f7aa ******/
+		/****** md5 signature: 66556dc6152f930c4bf81c147fdcf463 ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -7754,7 +7735,7 @@ Description
 -----------
 Selects a Module from the Library, given an Object. Returns True if Select has succeeded, False else. Also Returns (as arguments) the selected Module and the Case Number determined by the associated Protocol. If Select has failed, <module> is Null Handle and CN is zero. (Select can work on any criterium, such as Object DynamicType).
 ") Select;
-		Standard_Boolean Select(const opencascade::handle<IGESData_IGESEntity> & obj, opencascade::handle<IGESData_ReadWriteModule> & module, Standard_Integer &OutValue);
+		bool Select(const opencascade::handle<IGESData_IGESEntity> & obj, opencascade::handle<IGESData_ReadWriteModule> & module, Standard_Integer &OutValue);
 
 		/****** IGESData_WriterLib::SetComplete ******/
 		/****** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ******/
@@ -7845,7 +7826,7 @@ Creates a DefaultGeneral and puts it into GeneralLib, bound with a Protocol from
 		 IGESData_DefaultGeneral();
 
 		/****** IGESData_DefaultGeneral::DirChecker ******/
-		/****** md5 signature: 06ffbfa1e4d88543cc06fdf7c67993ee ******/
+		/****** md5 signature: 06f4bd4bac643698d7bfbfe663662f9c ******/
 		%feature("compactdefaultargs") DirChecker;
 		%feature("autodoc", "
 Parameters
@@ -7861,10 +7842,10 @@ Description
 -----------
 Returns a DirChecker, specific for each type of Entity Here, Returns an empty DirChecker (no constraint to check).
 ") DirChecker;
-		IGESData_DirChecker DirChecker(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent);
+		IGESData_DirChecker DirChecker(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent);
 
 		/****** IGESData_DefaultGeneral::NewVoid ******/
-		/****** md5 signature: 8e184c5622d3823d145bc2105790b57a ******/
+		/****** md5 signature: 8fabc1cc605ad55e47c5042d5c757077 ******/
 		%feature("compactdefaultargs") NewVoid;
 		%feature("autodoc", "
 Parameters
@@ -7880,10 +7861,10 @@ Description
 -----------
 Specific creation of a new void entity (UndefinedEntity only).
 ") NewVoid;
-		Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & entto);
+		bool NewVoid(const int CN, opencascade::handle<Standard_Transient> & entto);
 
 		/****** IGESData_DefaultGeneral::OwnCheckCase ******/
-		/****** md5 signature: a04fd9a5e3c5ef0e136832f7ce57363b ******/
+		/****** md5 signature: 2a5e04523b952b8e6a44224bce15836c ******/
 		%feature("compactdefaultargs") OwnCheckCase;
 		%feature("autodoc", "
 Parameters
@@ -7901,10 +7882,10 @@ Description
 -----------
 Performs Specific Semantic Check for each type of Entity Here, does nothing (no constraint to check).
 ") OwnCheckCase;
-		void OwnCheckCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
+		void OwnCheckCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
 		/****** IGESData_DefaultGeneral::OwnCopyCase ******/
-		/****** md5 signature: 5c0289b7b5a5ec08bef5e9dac3d445b7 ******/
+		/****** md5 signature: 815b2747b3640ba3fcc115728c02532e ******/
 		%feature("compactdefaultargs") OwnCopyCase;
 		%feature("autodoc", "
 Parameters
@@ -7922,10 +7903,10 @@ Description
 -----------
 Copies parameters which are specific of each Type of Entity.
 ") OwnCopyCase;
-		void OwnCopyCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, Interface_CopyTool & TC);
+		void OwnCopyCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & entfrom, const opencascade::handle<IGESData_IGESEntity> & entto, Interface_CopyTool & TC);
 
 		/****** IGESData_DefaultGeneral::OwnSharedCase ******/
-		/****** md5 signature: 1d978dfb0f38035ed4292cc342ee187f ******/
+		/****** md5 signature: 3b0a5840356eebeb8c71901f7742473e ******/
 		%feature("compactdefaultargs") OwnSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -7942,12 +7923,10 @@ Description
 -----------
 Lists the Entities shared by an IGESEntity, which must be an UndefinedEntity.
 ") OwnSharedCase;
-		void OwnSharedCase(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
+		void OwnSharedCase(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, Interface_EntityIterator & iter);
 
 };
 
-
-%make_alias(IGESData_DefaultGeneral)
 
 %extend IGESData_DefaultGeneral {
 	%pythoncode {
@@ -7974,7 +7953,7 @@ Creates a DefaultSpecific and puts it into SpecificLib.
 		 IGESData_DefaultSpecific();
 
 		/****** IGESData_DefaultSpecific::OwnDump ******/
-		/****** md5 signature: 97551005b4180a704e712d2024f870d6 ******/
+		/****** md5 signature: aab069f62219feaf509e7d0bad34539b ******/
 		%feature("compactdefaultargs") OwnDump;
 		%feature("autodoc", "
 Parameters
@@ -7992,7 +7971,7 @@ Description
 -----------
 Specific Dump for UndefinedEntity: it concerns only own parameters, the general data (Directory Part, Lists) are taken into account by the IGESDumper.
 ") OwnDump;
-		void OwnDump(const Standard_Integer CN, const opencascade::handle<IGESData_IGESEntity> & ent, const IGESData_IGESDumper & dumper, std::ostream &OutValue, const Standard_Integer own);
+		void OwnDump(const int CN, const opencascade::handle<IGESData_IGESEntity> & ent, const IGESData_IGESDumper & dumper, std::ostream &OutValue, const int own);
 
 };
 
@@ -8042,7 +8021,7 @@ Adds a resource.
 		void Add(const opencascade::handle<IGESData_Protocol> & protocol);
 
 		/****** IGESData_FileProtocol::NbResources ******/
-		/****** md5 signature: cd524335b33aeb6eb83cc80f6b7e5681 ******/
+		/****** md5 signature: 3c8410815357f0a892211359291d8070 ******/
 		%feature("compactdefaultargs") NbResources;
 		%feature("autodoc", "Return
 -------
@@ -8052,10 +8031,10 @@ Description
 -----------
 Gives the count of Resources: the count of Added Protocols.
 ") NbResources;
-		virtual Standard_Integer NbResources();
+		int NbResources();
 
 		/****** IGESData_FileProtocol::Resource ******/
-		/****** md5 signature: 26597e9d8db9fc70530508f766cf0d70 ******/
+		/****** md5 signature: 3c19c2497364406e7d4e9d2a0f8d51c0 ******/
 		%feature("compactdefaultargs") Resource;
 		%feature("autodoc", "
 Parameters
@@ -8070,12 +8049,10 @@ Description
 -----------
 Returns a Resource, given a rank (rank of call to Add).
 ") Resource;
-		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
+		opencascade::handle<Interface_Protocol> Resource(const int num);
 
 };
 
-
-%make_alias(IGESData_FileProtocol)
 
 %extend IGESData_FileProtocol {
 	%pythoncode {
@@ -8106,7 +8083,7 @@ class IGESData_LabelDisplayEntity : public IGESData_IGESEntity {
 class IGESData_LevelListEntity : public IGESData_IGESEntity {
 	public:
 		/****** IGESData_LevelListEntity::HasLevelNumber ******/
-		/****** md5 signature: 6e3d8ae20cde014b025b6ec7a6e5ad6b ******/
+		/****** md5 signature: 51fb063bc23725fd5f362ca57e5b536f ******/
 		%feature("compactdefaultargs") HasLevelNumber;
 		%feature("autodoc", "
 Parameters
@@ -8121,10 +8098,10 @@ Description
 -----------
 returns True if <level> is in the list.
 ") HasLevelNumber;
-		Standard_Boolean HasLevelNumber(const Standard_Integer level);
+		bool HasLevelNumber(const int level);
 
 		/****** IGESData_LevelListEntity::LevelNumber ******/
-		/****** md5 signature: 728f6d613b520c606432617960e507a1 ******/
+		/****** md5 signature: 67fb8317d645839ccd1d53d5bf2d34ef ******/
 		%feature("compactdefaultargs") LevelNumber;
 		%feature("autodoc", "
 Parameters
@@ -8139,10 +8116,10 @@ Description
 -----------
 returns the Level Number of <self>, indicated by <num> raises an exception if num is out of range.
 ") LevelNumber;
-		virtual Standard_Integer LevelNumber(const Standard_Integer num);
+		virtual int LevelNumber(const int num);
 
 		/****** IGESData_LevelListEntity::NbLevelNumbers ******/
-		/****** md5 signature: 13d01bd3d60c42f0f5f0bf6fa6dbd1f8 ******/
+		/****** md5 signature: 964aa6ac6357fbd898400c0532d421f9 ******/
 		%feature("compactdefaultargs") NbLevelNumbers;
 		%feature("autodoc", "Return
 -------
@@ -8152,7 +8129,7 @@ Description
 -----------
 Must return the count of levels.
 ") NbLevelNumbers;
-		virtual Standard_Integer NbLevelNumbers();
+		virtual int NbLevelNumbers();
 
 };
 
@@ -8218,7 +8195,7 @@ Retyrns the alphanumeric value of the Name, to be defined.
 class IGESData_SingleParentEntity : public IGESData_IGESEntity {
 	public:
 		/****** IGESData_SingleParentEntity::Child ******/
-		/****** md5 signature: f17b0c264f47f8eb24c6a5a5648863ab ******/
+		/****** md5 signature: 0efb06a580a0e79314e266cd4e9c8b1c ******/
 		%feature("compactdefaultargs") Child;
 		%feature("autodoc", "
 Parameters
@@ -8233,10 +8210,10 @@ Description
 -----------
 Returns a Child given its rank.
 ") Child;
-		virtual opencascade::handle<IGESData_IGESEntity> Child(const Standard_Integer num);
+		virtual opencascade::handle<IGESData_IGESEntity> Child(const int num);
 
 		/****** IGESData_SingleParentEntity::NbChildren ******/
-		/****** md5 signature: 175590d729766ac75534fc460a0217e1 ******/
+		/****** md5 signature: 16dff739e0188c79e6a04e07b7fb9714 ******/
 		%feature("compactdefaultargs") NbChildren;
 		%feature("autodoc", "Return
 -------
@@ -8246,7 +8223,7 @@ Description
 -----------
 Returns the count of Entities designated as children.
 ") NbChildren;
-		virtual Standard_Integer NbChildren();
+		virtual int NbChildren();
 
 		/****** IGESData_SingleParentEntity::SingleParent ******/
 		/****** md5 signature: c5750f38b3582e3eed3080b9d08558eb ******/
@@ -8334,7 +8311,7 @@ Returns own data as an UndefinedContent, in order to touch it.
 		opencascade::handle<Interface_UndefinedContent> ChangeableContent();
 
 		/****** IGESData_UndefinedEntity::DefColor ******/
-		/****** md5 signature: df729d36a6c3bd6dbdb73c772781dd7f ******/
+		/****** md5 signature: 9912c34c5e6d96f006043167f5735f9d ******/
 		%feature("compactdefaultargs") DefColor;
 		%feature("autodoc", "Return
 -------
@@ -8344,10 +8321,10 @@ Description
 -----------
 returns Error status if necessary, else calls original method.
 ") DefColor;
-		virtual IGESData_DefType DefColor();
+		IGESData_DefType DefColor();
 
 		/****** IGESData_UndefinedEntity::DefLevel ******/
-		/****** md5 signature: 24ebb34e7ce3d30f47be96247f29f837 ******/
+		/****** md5 signature: cb2b1cdb6e89cf49ced5bbbbe8984b89 ******/
 		%feature("compactdefaultargs") DefLevel;
 		%feature("autodoc", "Return
 -------
@@ -8357,10 +8334,10 @@ Description
 -----------
 returns Error status if necessary, else calls original method.
 ") DefLevel;
-		virtual IGESData_DefList DefLevel();
+		IGESData_DefList DefLevel();
 
 		/****** IGESData_UndefinedEntity::DefLineFont ******/
-		/****** md5 signature: bd07b091f1c06c07442342350e34d6d9 ******/
+		/****** md5 signature: 975de5b346c968ee5195bde8e280a15b ******/
 		%feature("compactdefaultargs") DefLineFont;
 		%feature("autodoc", "Return
 -------
@@ -8370,10 +8347,10 @@ Description
 -----------
 returns Error status if necessary, else calls original method.
 ") DefLineFont;
-		virtual IGESData_DefType DefLineFont();
+		IGESData_DefType DefLineFont();
 
 		/****** IGESData_UndefinedEntity::DefView ******/
-		/****** md5 signature: 2be876ab214cfa81805ee5f9bd3ebbfc ******/
+		/****** md5 signature: 66f292393c0b5d881698b405b0f07bda ******/
 		%feature("compactdefaultargs") DefView;
 		%feature("autodoc", "Return
 -------
@@ -8383,10 +8360,10 @@ Description
 -----------
 returns Error status if necessary, else calls original method.
 ") DefView;
-		virtual IGESData_DefList DefView();
+		IGESData_DefList DefView();
 
 		/****** IGESData_UndefinedEntity::DirStatus ******/
-		/****** md5 signature: 09f6e73726397b9acbdef9af756fd13e ******/
+		/****** md5 signature: d3657712c21a95d884ae553aa3e3e6df ******/
 		%feature("compactdefaultargs") DirStatus;
 		%feature("autodoc", "Return
 -------
@@ -8396,10 +8373,10 @@ Description
 -----------
 returns Directory Error Status (used for Copy).
 ") DirStatus;
-		Standard_Integer DirStatus();
+		int DirStatus();
 
 		/****** IGESData_UndefinedEntity::HasSubScriptNumber ******/
-		/****** md5 signature: 89e5a77782c6a371cdd21bbe6a8912f6 ******/
+		/****** md5 signature: cb0452c3ba0259eb01fed39d29113c18 ******/
 		%feature("compactdefaultargs") HasSubScriptNumber;
 		%feature("autodoc", "Return
 -------
@@ -8409,10 +8386,10 @@ Description
 -----------
 returns Error status if necessary, else calls original method (that is, if SubScript field is not blank or positive integer).
 ") HasSubScriptNumber;
-		virtual Standard_Boolean HasSubScriptNumber();
+		bool HasSubScriptNumber();
 
 		/****** IGESData_UndefinedEntity::IsOKDirPart ******/
-		/****** md5 signature: a586de71abb9fa9ce3a5bd71ddb254bb ******/
+		/****** md5 signature: 16ca1a28e486c30f70ff5ade3573987c ******/
 		%feature("compactdefaultargs") IsOKDirPart;
 		%feature("autodoc", "Return
 -------
@@ -8422,10 +8399,10 @@ Description
 -----------
 says if DirPart is OK or not (if not, it is erroneous) Note that if it is not, Def* methods can return Error status.
 ") IsOKDirPart;
-		Standard_Boolean IsOKDirPart();
+		bool IsOKDirPart();
 
 		/****** IGESData_UndefinedEntity::ReadDir ******/
-		/****** md5 signature: ac4bd3e7c6284d9c7a7b30a00439fc9b ******/
+		/****** md5 signature: f403a93ce71c9ba86d23bbe7ccbdd97e ******/
 		%feature("compactdefaultargs") ReadDir;
 		%feature("autodoc", "
 Parameters
@@ -8442,7 +8419,7 @@ Description
 -----------
 Computes the Directory Error Status, to be called before standard ReadDir from IGESReaderTool Returns True if OK (hence, Directory can be loaded), Else returns False and the DirPart <DP> is modified (hence, Directory Error Status is non null; and standard Read will work with an acceptable DirectoryPart).
 ") ReadDir;
-		virtual Standard_Boolean ReadDir(const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_DirPart & DP, opencascade::handle<Interface_Check> & ach);
+		virtual bool ReadDir(const opencascade::handle<IGESData_IGESReaderData> & IR, IGESData_DirPart & DP, opencascade::handle<Interface_Check> & ach);
 
 		/****** IGESData_UndefinedEntity::ReadOwnParams ******/
 		/****** md5 signature: ce396b7c045c32fe23436ded438eff26 ******/
@@ -8543,7 +8520,7 @@ writes parameters to IGESWriter, taken from UndefinedContent.
 class IGESData_ViewKindEntity : public IGESData_IGESEntity {
 	public:
 		/****** IGESData_ViewKindEntity::IsSingle ******/
-		/****** md5 signature: c7535e12cfc5581af79774d2c5cc3b1f ******/
+		/****** md5 signature: 95cdd497d50f62d05a36f5d9ed71f10b ******/
 		%feature("compactdefaultargs") IsSingle;
 		%feature("autodoc", "Return
 -------
@@ -8553,10 +8530,10 @@ Description
 -----------
 says if 'me' is a Single View (True) or a List of Views (False).
 ") IsSingle;
-		virtual Standard_Boolean IsSingle();
+		virtual bool IsSingle();
 
 		/****** IGESData_ViewKindEntity::NbViews ******/
-		/****** md5 signature: 484337e5f6e276964761f5de8e14cb0e ******/
+		/****** md5 signature: 95ee3df511cbcdf60970a966d2dbf401 ******/
 		%feature("compactdefaultargs") NbViews;
 		%feature("autodoc", "Return
 -------
@@ -8566,10 +8543,10 @@ Description
 -----------
 Returns the count of Views for a List of Views. For a Single View, may return simply 1.
 ") NbViews;
-		virtual Standard_Integer NbViews();
+		virtual int NbViews();
 
 		/****** IGESData_ViewKindEntity::ViewItem ******/
-		/****** md5 signature: 666e828a0dcb29cb2bfb10d85b5c7a20 ******/
+		/****** md5 signature: 0dbc89d3546f7458a63b22a21dd4773c ******/
 		%feature("compactdefaultargs") ViewItem;
 		%feature("autodoc", "
 Parameters
@@ -8584,7 +8561,7 @@ Description
 -----------
 Returns the View n0. <num> for a List of Views. For a Single Views, may return <self> itself.
 ") ViewItem;
-		virtual opencascade::handle<IGESData_ViewKindEntity> ViewItem(const Standard_Integer num);
+		virtual opencascade::handle<IGESData_ViewKindEntity> ViewItem(const int num);
 
 };
 
@@ -8616,12 +8593,12 @@ Creates a completely empty FreeFormatEntity.
 		 IGESData_FreeFormatEntity();
 
 		/****** IGESData_FreeFormatEntity::AddEntities ******/
-		/****** md5 signature: 2722fcab00317dbfb6b14e0dbe4c3385 ******/
+		/****** md5 signature: afefa14844d5fac59a79248a4f32832f ******/
 		%feature("compactdefaultargs") AddEntities;
 		%feature("autodoc", "
 Parameters
 ----------
-ents: IGESData_HArray1OfIGESEntity
+ents: NCollection_HArray1<
 
 Return
 -------
@@ -8631,17 +8608,17 @@ Description
 -----------
 Adds a set of Entities, given as a HArray1OfIGESEntity Causes creation of: an Integer Parameter which gives count of Entities, then the list of Entities of the Array Error if an Entity is not an IGESEntity All these Entities will be interpreted as 'Positive Pointers' by IGESWriter.
 ") AddEntities;
-		void AddEntities(const opencascade::handle<IGESData_HArray1OfIGESEntity> & ents);
+		void AddEntities(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & ents);
 
 		/****** IGESData_FreeFormatEntity::AddEntity ******/
-		/****** md5 signature: 3c8d5644ce8f5f33dcd64f56a87ee434 ******/
+		/****** md5 signature: 3a502aec2cb97399764f67d087329483 ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
 ----------
 ptype: Interface_ParamType
 ent: IGESData_IGESEntity
-negative: bool (optional, default to Standard_False)
+negative: bool (optional, default to false)
 
 Return
 -------
@@ -8651,7 +8628,7 @@ Description
 -----------
 Adds a Parameter which references an Entity. If the Entity is Null, the added parameter will define a 'Null Pointer' (0) If <negative> is given True, this will command Sending to File (see IGESWriter) to produce a 'Negative Pointer' (Default is False).
 ") AddEntity;
-		void AddEntity(const Interface_ParamType ptype, const opencascade::handle<IGESData_IGESEntity> & ent, const Standard_Boolean negative = Standard_False);
+		void AddEntity(const Interface_ParamType ptype, const opencascade::handle<IGESData_IGESEntity> & ent, const bool negative = false);
 
 		/****** IGESData_FreeFormatEntity::AddLiteral ******/
 		/****** md5 signature: 42c39aaae211ba3460d3b8849e56c767 ******/
@@ -8673,13 +8650,13 @@ Adds a literal Parameter to the list (as such).
 		void AddLiteral(const Interface_ParamType ptype, const opencascade::handle<TCollection_HAsciiString> & val);
 
 		/****** IGESData_FreeFormatEntity::AddLiteral ******/
-		/****** md5 signature: 76917af961f32cd77dd8618232875d21 ******/
+		/****** md5 signature: ee03aecf29a195760484275903421292 ******/
 		%feature("compactdefaultargs") AddLiteral;
 		%feature("autodoc", "
 Parameters
 ----------
 ptype: Interface_ParamType
-val: str
+val: char *
 
 Return
 -------
@@ -8689,15 +8666,15 @@ Description
 -----------
 Adds a literal Parameter to the list (builds an HAsciiString).
 ") AddLiteral;
-		void AddLiteral(const Interface_ParamType ptype, Standard_CString val);
+		void AddLiteral(const Interface_ParamType ptype, const char * const val);
 
 		/****** IGESData_FreeFormatEntity::AddNegativePointers ******/
-		/****** md5 signature: 33e3fd63e015423d0c67a74a4d9b8824 ******/
+		/****** md5 signature: 66815cbf776ba2765b0910477f787671 ******/
 		%feature("compactdefaultargs") AddNegativePointers;
 		%feature("autodoc", "
 Parameters
 ----------
-list: TColStd_HSequenceOfInteger
+list: NCollection_HSequence<int
 
 Return
 -------
@@ -8707,7 +8684,7 @@ Description
 -----------
 Adds a list of Ranks of Parameters to be noted as Negative Pointers (this will be taken into account for Parameters which are Entities).
 ") AddNegativePointers;
-		void AddNegativePointers(const opencascade::handle<TColStd_HSequenceOfInteger> & list);
+		void AddNegativePointers(const opencascade::handle<NCollection_HSequence<int> > & list);
 
 		/****** IGESData_FreeFormatEntity::ClearNegativePointers ******/
 		/****** md5 signature: dd3ad83abfc38f29bcf0cbb8425c8532 ******/
@@ -8723,7 +8700,7 @@ Clears all information about Negative Pointers, hence every Entity kind Paramete
 		void ClearNegativePointers();
 
 		/****** IGESData_FreeFormatEntity::IsNegativePointer ******/
-		/****** md5 signature: f21b874b60ac5b311983528a04b8a81f ******/
+		/****** md5 signature: 38da39812a55b2189e82166947b5aa5d ******/
 		%feature("compactdefaultargs") IsNegativePointer;
 		%feature("autodoc", "
 Parameters
@@ -8738,10 +8715,10 @@ Description
 -----------
 Returns True if <num> is noted as for a 'Negative Pointer' (see AddEntity for details). Senseful only if IsParamEntity answers True for <num>, else returns False.
 ") IsNegativePointer;
-		Standard_Boolean IsNegativePointer(const Standard_Integer num);
+		bool IsNegativePointer(const int num);
 
 		/****** IGESData_FreeFormatEntity::IsParamEntity ******/
-		/****** md5 signature: edcc5f4164bf630a10b2eddc151d1934 ******/
+		/****** md5 signature: 54d50dbb8acda69f9f7f32ee35bba080 ******/
 		%feature("compactdefaultargs") IsParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -8756,10 +8733,10 @@ Description
 -----------
 Returns True if a Parameter is recorded as an entity Error if num is not between 1 and NbParams.
 ") IsParamEntity;
-		Standard_Boolean IsParamEntity(const Standard_Integer num);
+		bool IsParamEntity(const int num);
 
 		/****** IGESData_FreeFormatEntity::NbParams ******/
-		/****** md5 signature: 826f4756fca7f780e6d976c60183d715 ******/
+		/****** md5 signature: 3d5942837081abb877dd0a91d1f0a57f ******/
 		%feature("compactdefaultargs") NbParams;
 		%feature("autodoc", "Return
 -------
@@ -8769,23 +8746,23 @@ Description
 -----------
 Gives count of recorded parameters.
 ") NbParams;
-		Standard_Integer NbParams();
+		int NbParams();
 
 		/****** IGESData_FreeFormatEntity::NegativePointers ******/
-		/****** md5 signature: 19bd53b3f3f5b85696a0f7e1cc70530b ******/
+		/****** md5 signature: cd18e2526df58391bd25ae3adfb8bb26 ******/
 		%feature("compactdefaultargs") NegativePointers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HSequenceOfInteger>
+opencascade::handle<NCollection_HSequence<int>>
 
 Description
 -----------
 Returns the complete list of Ramks of Parameters which have been noted as Negative Pointers Warning: It is returned as a Null Handle if none was noted.
 ") NegativePointers;
-		opencascade::handle<TColStd_HSequenceOfInteger> NegativePointers();
+		opencascade::handle<NCollection_HSequence<int>> NegativePointers();
 
 		/****** IGESData_FreeFormatEntity::ParamData ******/
-		/****** md5 signature: 11d466d23f4fcfca11f9559a83610f5e ******/
+		/****** md5 signature: d91e3cd4ff0ad38e16bdeed3b26a9c4b ******/
 		%feature("compactdefaultargs") ParamData;
 		%feature("autodoc", "
 Parameters
@@ -8802,10 +8779,10 @@ Description
 -----------
 Returns data of a Parameter: its type, and the entity if it designates en entity ('ent') or its literal value else ('str') Returned value (Boolean): True if it is an Entity, False else.
 ") ParamData;
-		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		bool ParamData(const int num, Interface_ParamType & ptype, opencascade::handle<IGESData_IGESEntity> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****** IGESData_FreeFormatEntity::ParamEntity ******/
-		/****** md5 signature: 2a0bffa8d17df8d6aa5a1fa692044d19 ******/
+		/****** md5 signature: cf69465ec7bcc77dabc72896ebb76424 ******/
 		%feature("compactdefaultargs") ParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -8820,10 +8797,10 @@ Description
 -----------
 Returns Entity corresponding to a Param, given its rank Error if out of range or if Param num does not designate an Entity.
 ") ParamEntity;
-		opencascade::handle<IGESData_IGESEntity> ParamEntity(const Standard_Integer num);
+		opencascade::handle<IGESData_IGESEntity> ParamEntity(const int num);
 
 		/****** IGESData_FreeFormatEntity::ParamType ******/
-		/****** md5 signature: 06805a954cdda33c70604680f220e0c5 ******/
+		/****** md5 signature: 561418a28e8f194c5a0ff3ab3fec26a2 ******/
 		%feature("compactdefaultargs") ParamType;
 		%feature("autodoc", "
 Parameters
@@ -8838,10 +8815,10 @@ Description
 -----------
 Returns the ParamType of a Param, given its rank Error if num is not between 1 and NbParams.
 ") ParamType;
-		Interface_ParamType ParamType(const Standard_Integer num);
+		Interface_ParamType ParamType(const int num);
 
 		/****** IGESData_FreeFormatEntity::ParamValue ******/
-		/****** md5 signature: 27f0f605c60e921cd93c878a3119e98b ******/
+		/****** md5 signature: a2d933f421389542d0a4e1715ec08e45 ******/
 		%feature("compactdefaultargs") ParamValue;
 		%feature("autodoc", "
 Parameters
@@ -8856,10 +8833,10 @@ Description
 -----------
 Returns literal value of a Parameter, given its rank Error if num is out of range, or if Parameter is not literal.
 ") ParamValue;
-		opencascade::handle<TCollection_HAsciiString> ParamValue(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> ParamValue(const int num);
 
 		/****** IGESData_FreeFormatEntity::SetFormNumber ******/
-		/****** md5 signature: 56d262317d52b4b1487246c0eba647b7 ******/
+		/****** md5 signature: 8ff3af51eca8f325760457ef93539a94 ******/
 		%feature("compactdefaultargs") SetFormNumber;
 		%feature("autodoc", "
 Parameters
@@ -8874,10 +8851,10 @@ Description
 -----------
 Sets Form Number to a new Value (to called after SetTypeNumber).
 ") SetFormNumber;
-		void SetFormNumber(const Standard_Integer formnum);
+		void SetFormNumber(const int formnum);
 
 		/****** IGESData_FreeFormatEntity::SetTypeNumber ******/
-		/****** md5 signature: 85ab744003ab5d58c8acd6bbe2979925 ******/
+		/****** md5 signature: 4ad91c0eda5743f2fc2f07139a0259a7 ******/
 		%feature("compactdefaultargs") SetTypeNumber;
 		%feature("autodoc", "
 Parameters
@@ -8892,10 +8869,10 @@ Description
 -----------
 Sets Type Number to a new Value, and Form Number to Zero.
 ") SetTypeNumber;
-		void SetTypeNumber(const Standard_Integer typenum);
+		void SetTypeNumber(const int typenum);
 
 		/****** IGESData_FreeFormatEntity::WriteOwnParams ******/
-		/****** md5 signature: ce614fc3b2cd77ab3826f39614fd8e9c ******/
+		/****** md5 signature: ea18458846316170be43e3b4450a518b ******/
 		%feature("compactdefaultargs") WriteOwnParams;
 		%feature("autodoc", "
 Parameters
@@ -8910,7 +8887,7 @@ Description
 -----------
 WriteOwnParams is redefined for FreeFormatEntity to take into account the supplementary information 'Negative Pointer'.
 ") WriteOwnParams;
-		virtual void WriteOwnParams(IGESData_IGESWriter & IW);
+		void WriteOwnParams(IGESData_IGESWriter & IW);
 
 };
 
@@ -8925,13 +8902,13 @@ WriteOwnParams is redefined for FreeFormatEntity to take into account the supple
 
 /* harray1 classes */
 
-class IGESData_HArray1OfIGESEntity : public IGESData_Array1OfIGESEntity, public Standard_Transient {
+class IGESData_HArray1OfIGESEntity : public NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>, public Standard_Transient {
   public:
     IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper);
-    IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper, const IGESData_Array1OfIGESEntity::value_type& theValue);
-    IGESData_HArray1OfIGESEntity(const IGESData_Array1OfIGESEntity& theOther);
-    const IGESData_Array1OfIGESEntity& Array1();
-    IGESData_Array1OfIGESEntity& ChangeArray1();
+    IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>::value_type& theValue);
+    IGESData_HArray1OfIGESEntity(const NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>& theOther);
+    const NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>& Array1();
+    NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>& ChangeArray1();
 };
 %make_alias(IGESData_HArray1OfIGESEntity)
 

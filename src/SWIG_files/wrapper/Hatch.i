@@ -114,13 +114,13 @@ typedef NCollection_Sequence<Hatch_Parameter> Hatch_SequenceOfParameter;
 class Hatch_Hatcher {
 	public:
 		/****** Hatch_Hatcher::Hatch_Hatcher ******/
-		/****** md5 signature: d395499112cd28c88e4eddb5713555a6 ******/
+		/****** md5 signature: c62941f2baf8fc62536731dab059f1e4 ******/
 		%feature("compactdefaultargs") Hatch_Hatcher;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
-Oriented: bool (optional, default to Standard_True)
+Tol: double
+Oriented: bool (optional, default to true)
 
 Return
 -------
@@ -128,9 +128,9 @@ None
 
 Description
 -----------
-Returns a empty hatcher. <Tol> is the tolerance for intersections.
+Returns an empty hatcher. <Tol> is the tolerance for intersections.
 ") Hatch_Hatcher;
-		 Hatch_Hatcher(const Standard_Real Tol, const Standard_Boolean Oriented = Standard_True);
+		 Hatch_Hatcher(const double Tol, const bool Oriented = true);
 
 		/****** Hatch_Hatcher::AddLine ******/
 		/****** md5 signature: 720175f49380e09aee880a8101acb044 ******/
@@ -152,13 +152,13 @@ Add a line <L> to be trimmed. <T> the type is only kept from information. It is 
 		void AddLine(const gp_Lin2d & L, const Hatch_LineForm T = Hatch_ANYLINE);
 
 		/****** Hatch_Hatcher::AddLine ******/
-		/****** md5 signature: f40d2833cfc430da0e88e10f4bafef3f ******/
+		/****** md5 signature: 995a96177012b7b33dc74acdf45c5cae ******/
 		%feature("compactdefaultargs") AddLine;
 		%feature("autodoc", "
 Parameters
 ----------
 D: gp_Dir2d
-Dist: float
+Dist: double
 
 Return
 -------
@@ -168,15 +168,15 @@ Description
 -----------
 Add an infinite line on direction <D> at distance <Dist> from the origin to be trimmed. <Dist> may be negative. //! If O is the origin of the 2D plane, and V the vector perpendicular to D (in the direct direction). //! A point P is on the line if: OP dot V = Dist The parameter of P on the line is OP dot D.
 ") AddLine;
-		void AddLine(const gp_Dir2d & D, const Standard_Real Dist);
+		void AddLine(const gp_Dir2d & D, const double Dist);
 
 		/****** Hatch_Hatcher::AddXLine ******/
-		/****** md5 signature: 52a11d1ceeb71074c42a74015839394d ******/
+		/****** md5 signature: 693f8c0d24bbc6bea0ce44797def1ff3 ******/
 		%feature("compactdefaultargs") AddXLine;
 		%feature("autodoc", "
 Parameters
 ----------
-X: float
+X: double
 
 Return
 -------
@@ -186,15 +186,15 @@ Description
 -----------
 Add an infinite line parallel to the Y-axis at abciss <X>.
 ") AddXLine;
-		void AddXLine(const Standard_Real X);
+		void AddXLine(const double X);
 
 		/****** Hatch_Hatcher::AddYLine ******/
-		/****** md5 signature: 36dd30ef9783a0306c8273e14d041c6a ******/
+		/****** md5 signature: c14077ec87809f5f2a1eae39cb399197 ******/
 		%feature("compactdefaultargs") AddYLine;
 		%feature("autodoc", "
 Parameters
 ----------
-Y: float
+Y: double
 
 Return
 -------
@@ -204,10 +204,10 @@ Description
 -----------
 Add an infinite line parallel to the X-axis at ordinate <Y>.
 ") AddYLine;
-		void AddYLine(const Standard_Real Y);
+		void AddYLine(const double Y);
 
 		/****** Hatch_Hatcher::Coordinate ******/
-		/****** md5 signature: a4ed3e8a9b3842494d91918e867e381a ******/
+		/****** md5 signature: dc910dd0ae5ccce5d4a205ecda8952d2 ******/
 		%feature("compactdefaultargs") Coordinate;
 		%feature("autodoc", "
 Parameters
@@ -216,16 +216,16 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the X or Y coordinate of the line of index <I> if it is a X or a Y line.
 ") Coordinate;
-		Standard_Real Coordinate(const Standard_Integer I);
+		double Coordinate(const int I);
 
 		/****** Hatch_Hatcher::End ******/
-		/****** md5 signature: 1ae7240e5faefda9500881fbcd2d7ec1 ******/
+		/****** md5 signature: c4db48619201057014a501887b017c9a ******/
 		%feature("compactdefaultargs") End;
 		%feature("autodoc", "
 Parameters
@@ -235,16 +235,16 @@ J: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the last parameter of interval <J> on line <I>.
 ") End;
-		Standard_Real End(const Standard_Integer I, const Standard_Integer J);
+		double End(const int I, const int J);
 
 		/****** Hatch_Hatcher::EndIndex ******/
-		/****** md5 signature: b03fb22715da6d8d61da7498659d47c8 ******/
+		/****** md5 signature: 236e6f3ab11657d8da99f774b5980868 ******/
 		%feature("compactdefaultargs") EndIndex;
 		%feature("autodoc", "
 Parameters
@@ -255,16 +255,16 @@ J: int
 Return
 -------
 Index: int
-Par2: float
+Par2: double
 
 Description
 -----------
 Returns the last Index and Par2 of interval <J> on line <I>.
 ") EndIndex;
-		void EndIndex(const Standard_Integer I, const Standard_Integer J, Standard_Integer &OutValue, Standard_Real &OutValue);
+		void EndIndex(const int I, const int J, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Hatch_Hatcher::IsXLine ******/
-		/****** md5 signature: b95d7cb31aff0361916e25ff3e597fd1 ******/
+		/****** md5 signature: e55d095aed2695e1da22f251f678eb5e ******/
 		%feature("compactdefaultargs") IsXLine;
 		%feature("autodoc", "
 Parameters
@@ -279,10 +279,10 @@ Description
 -----------
 Returns True if the line of index <I> has a constant X value.
 ") IsXLine;
-		Standard_Boolean IsXLine(const Standard_Integer I);
+		bool IsXLine(const int I);
 
 		/****** Hatch_Hatcher::IsYLine ******/
-		/****** md5 signature: 00bbe7b90307533a3d38791515766482 ******/
+		/****** md5 signature: bcd28c56261b06f568057bb36fb048f3 ******/
 		%feature("compactdefaultargs") IsYLine;
 		%feature("autodoc", "
 Parameters
@@ -297,10 +297,10 @@ Description
 -----------
 Returns True if the line of index <I> has a constant Y value.
 ") IsYLine;
-		Standard_Boolean IsYLine(const Standard_Integer I);
+		bool IsYLine(const int I);
 
 		/****** Hatch_Hatcher::Line ******/
-		/****** md5 signature: 83cf55d529a6032edfa2e7d2dd7644ea ******/
+		/****** md5 signature: 41c8d2949e2bacd4b7228d970cbd74c6 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -315,10 +315,10 @@ Description
 -----------
 Returns the line of index <I>.
 ") Line;
-		const gp_Lin2d Line(const Standard_Integer I);
+		const gp_Lin2d Line(const int I);
 
 		/****** Hatch_Hatcher::LineForm ******/
-		/****** md5 signature: 7aa197af0eec341ff33ce63228e0cac4 ******/
+		/****** md5 signature: 31ba28aaae89bc4dff5ddd26008f9e47 ******/
 		%feature("compactdefaultargs") LineForm;
 		%feature("autodoc", "
 Parameters
@@ -333,10 +333,10 @@ Description
 -----------
 Returns the type of the line of index <I>.
 ") LineForm;
-		Hatch_LineForm LineForm(const Standard_Integer I);
+		Hatch_LineForm LineForm(const int I);
 
 		/****** Hatch_Hatcher::NbIntervals ******/
-		/****** md5 signature: 64f54fde4d9752772b52d73d27261bcb ******/
+		/****** md5 signature: 487b014b9cd194c58d109502ca451d5e ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "Return
 -------
@@ -346,10 +346,10 @@ Description
 -----------
 Returns the total number of intervals on all the lines.
 ") NbIntervals;
-		Standard_Integer NbIntervals();
+		int NbIntervals();
 
 		/****** Hatch_Hatcher::NbIntervals ******/
-		/****** md5 signature: 2945c8ac61bfd6b7594dfa01cee5db59 ******/
+		/****** md5 signature: c893359e61ea676d25a373e08d58ea99 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -364,10 +364,10 @@ Description
 -----------
 Returns the number of intervals on line of index <I>.
 ") NbIntervals;
-		Standard_Integer NbIntervals(const Standard_Integer I);
+		int NbIntervals(const int I);
 
 		/****** Hatch_Hatcher::NbLines ******/
-		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
+		/****** md5 signature: 7c1b53177daa19e8eec95fb1ac3b65c8 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -377,10 +377,10 @@ Description
 -----------
 Returns the number of lines.
 ") NbLines;
-		Standard_Integer NbLines();
+		int NbLines();
 
 		/****** Hatch_Hatcher::Start ******/
-		/****** md5 signature: a9df30c4eb851eb81f6bb337e176c9c2 ******/
+		/****** md5 signature: 3df8661e0f1ec00502ea54225e69b30c ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "
 Parameters
@@ -390,16 +390,16 @@ J: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the first parameter of interval <J> on line <I>.
 ") Start;
-		Standard_Real Start(const Standard_Integer I, const Standard_Integer J);
+		double Start(const int I, const int J);
 
 		/****** Hatch_Hatcher::StartIndex ******/
-		/****** md5 signature: 5ef6400ae991fd8aa0e85f07f54ea1f3 ******/
+		/****** md5 signature: fe1ba8519c2b6bfb15b846067d96eb61 ******/
 		%feature("compactdefaultargs") StartIndex;
 		%feature("autodoc", "
 Parameters
@@ -410,21 +410,21 @@ J: int
 Return
 -------
 Index: int
-Par2: float
+Par2: double
 
 Description
 -----------
 Returns the first Index and Par2 of interval <J> on line <I>.
 ") StartIndex;
-		void StartIndex(const Standard_Integer I, const Standard_Integer J, Standard_Integer &OutValue, Standard_Real &OutValue);
+		void StartIndex(const int I, const int J, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** Hatch_Hatcher::Tolerance ******/
-		/****** md5 signature: e925b87131cc380a2e6cb497cb7384fa ******/
+		/****** md5 signature: c1c7212071b7d95bf782fac6a420fcbb ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -434,23 +434,23 @@ Description
 -----------
 No available documentation.
 ") Tolerance;
-		void Tolerance(const Standard_Real Tol);
+		void Tolerance(const double Tol);
 
 		/****** Hatch_Hatcher::Tolerance ******/
-		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
+		/****** md5 signature: a95a606eeb289469358ac00a6b44ad86 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Tolerance;
-		Standard_Real Tolerance();
+		double Tolerance();
 
 		/****** Hatch_Hatcher::Trim ******/
-		/****** md5 signature: 9acaec07120f7a151b61492b1600653e ******/
+		/****** md5 signature: 56d1c1fa463f15848c256f3c6ba452ac ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -466,17 +466,17 @@ Description
 -----------
 Trims the lines at intersections with <L>.
 ") Trim;
-		void Trim(const gp_Lin2d & L, const Standard_Integer Index = 0);
+		void Trim(const gp_Lin2d & L, const int Index = 0);
 
 		/****** Hatch_Hatcher::Trim ******/
-		/****** md5 signature: 508564c16d3953ace4590eddbaef08e0 ******/
+		/****** md5 signature: c111b483dd4a8eae230daf9a4972f67c ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
-Start: float
-End: float
+Start: double
+End: double
 Index: int (optional, default to 0)
 
 Return
@@ -487,10 +487,10 @@ Description
 -----------
 Trims the lines at intersections with <L> in the parameter range <Start>, <End>.
 ") Trim;
-		void Trim(const gp_Lin2d & L, const Standard_Real Start, const Standard_Real End, const Standard_Integer Index = 0);
+		void Trim(const gp_Lin2d & L, const double Start, const double End, const int Index = 0);
 
 		/****** Hatch_Hatcher::Trim ******/
-		/****** md5 signature: a67cb5966d23f51bc126fde37cd80cb3 ******/
+		/****** md5 signature: cf03ad35d7bc9ec4046953d88111d3b4 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -507,7 +507,7 @@ Description
 -----------
 Trims the line at intersection with the oriented segment P1,P2.
 ") Trim;
-		void Trim(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Integer Index = 0);
+		void Trim(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const int Index = 0);
 
 };
 
@@ -556,16 +556,16 @@ No available documentation.
 		 Hatch_Line(const gp_Lin2d & L, const Hatch_LineForm T);
 
 		/****** Hatch_Line::AddIntersection ******/
-		/****** md5 signature: d65db84de12b8735127f3d06058e363d ******/
+		/****** md5 signature: 0e3beb66d47b6bc2250c92e57d561d17 ******/
 		%feature("compactdefaultargs") AddIntersection;
 		%feature("autodoc", "
 Parameters
 ----------
-Par1: float
+Par1: double
 Start: bool
 Index: int
-Par2: float
-theToler: float
+Par2: double
+theToler: double
 
 Return
 -------
@@ -575,7 +575,7 @@ Description
 -----------
 Insert a new intersection in the sorted list.
 ") AddIntersection;
-		void AddIntersection(const Standard_Real Par1, const Standard_Boolean Start, const Standard_Integer Index, const Standard_Real Par2, const Standard_Real theToler);
+		void AddIntersection(const double Par1, const bool Start, const int Index, const double Par2, const double theToler);
 
 };
 
@@ -605,15 +605,15 @@ No available documentation.
 		 Hatch_Parameter();
 
 		/****** Hatch_Parameter::Hatch_Parameter ******/
-		/****** md5 signature: 15f3c9cdad607e8b534236ee9aaf1f70 ******/
+		/****** md5 signature: b092041a58769b2945e6f4e60bf83cda ******/
 		%feature("compactdefaultargs") Hatch_Parameter;
 		%feature("autodoc", "
 Parameters
 ----------
-Par1: float
+Par1: double
 Start: bool
 Index: int (optional, default to 0)
-Par2: float (optional, default to 0)
+Par2: double (optional, default to 0)
 
 Return
 -------
@@ -623,7 +623,7 @@ Description
 -----------
 No available documentation.
 ") Hatch_Parameter;
-		 Hatch_Parameter(const Standard_Real Par1, const Standard_Boolean Start, const Standard_Integer Index = 0, const Standard_Real Par2 = 0);
+		 Hatch_Parameter(const double Par1, const bool Start, const int Index = 0, const double Par2 = 0);
 
 };
 

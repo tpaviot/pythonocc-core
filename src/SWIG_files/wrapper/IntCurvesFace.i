@@ -101,15 +101,15 @@ from OCC.Core.Exception import *
 class IntCurvesFace_Intersector : public Standard_Transient {
 	public:
 		/****** IntCurvesFace_Intersector::IntCurvesFace_Intersector ******/
-		/****** md5 signature: a52cfef3564a89d4318791e0ef2ba78a ******/
+		/****** md5 signature: 3e33d35696e432695bafc4e76dec3bde ******/
 		%feature("compactdefaultargs") IntCurvesFace_Intersector;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
-aTol: float
-aRestr: bool (optional, default to Standard_True)
-UseBToler: bool (optional, default to Standard_True)
+aTol: double
+aRestr: bool (optional, default to true)
+UseBToler: bool (optional, default to true)
 
 Return
 -------
@@ -119,7 +119,7 @@ Description
 -----------
 Load a Face. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol). If aRestr = true UV bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. If UseBToler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximum between input tolerance(aTol) and tolerances of face bounds (edges).
 ") IntCurvesFace_Intersector;
-		 IntCurvesFace_Intersector(const TopoDS_Face & F, const Standard_Real aTol, const Standard_Boolean aRestr = Standard_True, const Standard_Boolean UseBToler = Standard_True);
+		 IntCurvesFace_Intersector(const TopoDS_Face & F, const double aTol, const bool aRestr = true, const bool UseBToler = true);
 
 		/****** IntCurvesFace_Intersector::Bounding ******/
 		/****** md5 signature: bb711be79be8d737064764272723cdc5 ******/
@@ -166,7 +166,7 @@ Returns the significant face used to determine the intersection.
 		const TopoDS_Face Face();
 
 		/****** IntCurvesFace_Intersector::GetUseBoundToler ******/
-		/****** md5 signature: a5f9a43c7d4370e89e000b44feefda7a ******/
+		/****** md5 signature: 98a57deab3573186c550fab0d451648e ******/
 		%feature("compactdefaultargs") GetUseBoundToler;
 		%feature("autodoc", "Return
 -------
@@ -176,10 +176,10 @@ Description
 -----------
 Returns the boundary tolerance flag.
 ") GetUseBoundToler;
-		Standard_Boolean GetUseBoundToler();
+		bool GetUseBoundToler();
 
 		/****** IntCurvesFace_Intersector::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -189,10 +189,10 @@ Description
 -----------
 True is returned when the intersection have been computed.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntCurvesFace_Intersector::IsParallel ******/
-		/****** md5 signature: 47a312fd58e74bf5bb8a9bb6f0484dfb ******/
+		/****** md5 signature: 25d4ac955341335e2fbcc4e3737ea518 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -202,10 +202,10 @@ Description
 -----------
 Returns true if curve is parallel or belongs face surface This case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
 ") IsParallel;
-		Standard_Boolean IsParallel();
+		bool IsParallel();
 
 		/****** IntCurvesFace_Intersector::NbPnt ******/
-		/****** md5 signature: 7493472b43e2ee7c4bd85784ca2a7eb4 ******/
+		/****** md5 signature: b0974aa225801ebe3ae9518f18a1fa98 ******/
 		%feature("compactdefaultargs") NbPnt;
 		%feature("autodoc", "Return
 -------
@@ -215,17 +215,17 @@ Description
 -----------
 No available documentation.
 ") NbPnt;
-		Standard_Integer NbPnt();
+		int NbPnt();
 
 		/****** IntCurvesFace_Intersector::Perform ******/
-		/****** md5 signature: e18419430124de4e84da27951ae80914 ******/
+		/****** md5 signature: 055d4e5b0233e01eca387d4e74f97b1b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
-PInf: float
-PSup: float
+PInf: double
+PSup: double
 
 Return
 -------
@@ -235,17 +235,17 @@ Description
 -----------
 Perform the intersection between the segment L and the loaded face. //! PInf is the smallest parameter on the line PSup is the highest parameter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
 ") Perform;
-		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
+		void Perform(const gp_Lin & L, const double PInf, const double PSup);
 
 		/****** IntCurvesFace_Intersector::Perform ******/
-		/****** md5 signature: c8caf88fde1edb2033386b7b626b143d ******/
+		/****** md5 signature: 00d549176eca8b66d828f9af6c2e185b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 HCu: Adaptor3d_Curve
-PInf: float
-PSup: float
+PInf: double
+PSup: double
 
 Return
 -------
@@ -255,10 +255,10 @@ Description
 -----------
 same method for a HCurve from Adaptor3d. PInf an PSup can also be - and + INF.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const double PInf, const double PSup);
 
 		/****** IntCurvesFace_Intersector::Pnt ******/
-		/****** md5 signature: d0440fe82ac13d790faf173438707e9c ******/
+		/****** md5 signature: 61ea740602387f9bafd2f292886f951f ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
@@ -273,10 +273,10 @@ Description
 -----------
 Returns the geometric point of the ith intersection between the line and the surface.
 ") Pnt;
-		const gp_Pnt Pnt(const Standard_Integer I);
+		const gp_Pnt Pnt(const int I);
 
 		/****** IntCurvesFace_Intersector::SetUseBoundToler ******/
-		/****** md5 signature: ee0ae617632796bddf249b0f86914544 ******/
+		/****** md5 signature: 7900b8531c7d0ace6a760259f04422ae ******/
 		%feature("compactdefaultargs") SetUseBoundToler;
 		%feature("autodoc", "
 Parameters
@@ -291,10 +291,10 @@ Description
 -----------
 Sets the boundary tolerance flag.
 ") SetUseBoundToler;
-		void SetUseBoundToler(Standard_Boolean UseBToler);
+		void SetUseBoundToler(bool UseBToler);
 
 		/****** IntCurvesFace_Intersector::State ******/
-		/****** md5 signature: 3ef584a4c8697b5b43cfa0be6c8072f7 ******/
+		/****** md5 signature: 43b6d9b6141d9d384a9c4c90b725fb89 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "
 Parameters
@@ -309,7 +309,7 @@ Description
 -----------
 Returns the ith state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boundary of the face).
 ") State;
-		TopAbs_State State(const Standard_Integer I);
+		TopAbs_State State(const int I);
 
 		/****** IntCurvesFace_Intersector::SurfaceType ******/
 		/****** md5 signature: 89d52b53be0e28e341c5b5e94282cf10 ******/
@@ -325,7 +325,7 @@ Return the surface type.
 		GeomAbs_SurfaceType SurfaceType();
 
 		/****** IntCurvesFace_Intersector::Transition ******/
-		/****** md5 signature: 33876f9f7fa6077fbaede5c70296e547 ******/
+		/****** md5 signature: 86d6cbc850562449344972abda6495f5 ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "
 Parameters
@@ -340,10 +340,10 @@ Description
 -----------
 Returns the ith transition of the line on the surface.
 ") Transition;
-		IntCurveSurface_TransitionOnCurve Transition(const Standard_Integer I);
+		IntCurveSurface_TransitionOnCurve Transition(const int I);
 
 		/****** IntCurvesFace_Intersector::UParameter ******/
-		/****** md5 signature: 4e2ab34c664fe365f73ab40bf6b7907c ******/
+		/****** md5 signature: 8c404ee0f187dbc3d735ab96d217d25a ******/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "
 Parameters
@@ -352,16 +352,16 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the U parameter of the ith intersection point on the surface.
 ") UParameter;
-		Standard_Real UParameter(const Standard_Integer I);
+		double UParameter(const int I);
 
 		/****** IntCurvesFace_Intersector::VParameter ******/
-		/****** md5 signature: 9b61d482fd013334ec36688975ff9502 ******/
+		/****** md5 signature: 4a84d53dd72be706ddb2c908ae769b76 ******/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "
 Parameters
@@ -370,16 +370,16 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the V parameter of the ith intersection point on the surface.
 ") VParameter;
-		Standard_Real VParameter(const Standard_Integer I);
+		double VParameter(const int I);
 
 		/****** IntCurvesFace_Intersector::WParameter ******/
-		/****** md5 signature: dc0b89e88ad9e0b7c00279c03b1e7687 ******/
+		/****** md5 signature: e2692c4e0980d8a91a82237179b1e71d ******/
 		%feature("compactdefaultargs") WParameter;
 		%feature("autodoc", "
 Parameters
@@ -388,13 +388,13 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the ith intersection point on the line.
 ") WParameter;
-		Standard_Real WParameter(const Standard_Integer I);
+		double WParameter(const int I);
 
 };
 
@@ -426,7 +426,7 @@ No available documentation.
 		 IntCurvesFace_ShapeIntersector();
 
 		/****** IntCurvesFace_ShapeIntersector::Face ******/
-		/****** md5 signature: cfd60355079000e5d794463ee51aa209 ******/
+		/****** md5 signature: ea22536eb99f8507e52092b4b7d267fc ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -441,10 +441,10 @@ Description
 -----------
 Returns the significant face used to determine the intersection.
 ") Face;
-		const TopoDS_Face Face(const Standard_Integer I);
+		const TopoDS_Face Face(const int I);
 
 		/****** IntCurvesFace_ShapeIntersector::IsDone ******/
-		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -454,16 +454,16 @@ Description
 -----------
 True when the intersection has been computed.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** IntCurvesFace_ShapeIntersector::Load ******/
-		/****** md5 signature: c9653eef18e54c8d7dd81abee6a86d25 ******/
+		/****** md5 signature: 90afdb73abae1062d5e58d3621a6939f ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
 ----------
 Sh: TopoDS_Shape
-Tol: float
+Tol: double
 
 Return
 -------
@@ -473,10 +473,10 @@ Description
 -----------
 No available documentation.
 ") Load;
-		void Load(const TopoDS_Shape & Sh, const Standard_Real Tol);
+		void Load(const TopoDS_Shape & Sh, const double Tol);
 
 		/****** IntCurvesFace_ShapeIntersector::NbPnt ******/
-		/****** md5 signature: be148f70782dfd3642552d1c87925ad8 ******/
+		/****** md5 signature: 0af44f8fe6be8a1c58a13f318e1fe29a ******/
 		%feature("compactdefaultargs") NbPnt;
 		%feature("autodoc", "Return
 -------
@@ -486,17 +486,17 @@ Description
 -----------
 Returns the number of the intersection points.
 ") NbPnt;
-		Standard_Integer NbPnt();
+		int NbPnt();
 
 		/****** IntCurvesFace_ShapeIntersector::Perform ******/
-		/****** md5 signature: e18419430124de4e84da27951ae80914 ******/
+		/****** md5 signature: 055d4e5b0233e01eca387d4e74f97b1b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
-PInf: float
-PSup: float
+PInf: double
+PSup: double
 
 Return
 -------
@@ -506,17 +506,17 @@ Description
 -----------
 Perform the intersection between the segment L and the loaded shape. //! PInf is the smallest parameter on the line PSup is the highest parameter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
 ") Perform;
-		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
+		void Perform(const gp_Lin & L, const double PInf, const double PSup);
 
 		/****** IntCurvesFace_ShapeIntersector::Perform ******/
-		/****** md5 signature: c8caf88fde1edb2033386b7b626b143d ******/
+		/****** md5 signature: 00d549176eca8b66d828f9af6c2e185b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 HCu: Adaptor3d_Curve
-PInf: float
-PSup: float
+PInf: double
+PSup: double
 
 Return
 -------
@@ -526,17 +526,17 @@ Description
 -----------
 same method for a HCurve from Adaptor3d. PInf an PSup can also be -INF and +INF.
 ") Perform;
-		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
+		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const double PInf, const double PSup);
 
 		/****** IntCurvesFace_ShapeIntersector::PerformNearest ******/
-		/****** md5 signature: ed809ea9e3a548c6cd15a623c13b9c18 ******/
+		/****** md5 signature: 558cc1f26b1a11c6e4dccbd92794c1db ******/
 		%feature("compactdefaultargs") PerformNearest;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
-PInf: float
-PSup: float
+PInf: double
+PSup: double
 
 Return
 -------
@@ -546,10 +546,10 @@ Description
 -----------
 Perform the intersection between the segment L and the loaded shape. //! PInf is the smallest parameter on the line PSup is the highest parameter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
 ") PerformNearest;
-		void PerformNearest(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
+		void PerformNearest(const gp_Lin & L, const double PInf, const double PSup);
 
 		/****** IntCurvesFace_ShapeIntersector::Pnt ******/
-		/****** md5 signature: 867836d5adb3737ee8fa8a25df767b5f ******/
+		/****** md5 signature: c19402f347e3ccccaecc59b68d3554ec ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
@@ -564,7 +564,7 @@ Description
 -----------
 Returns the geometric point of the ith intersection between the line and the surface.
 ") Pnt;
-		const gp_Pnt Pnt(const Standard_Integer I);
+		const gp_Pnt Pnt(const int I);
 
 		/****** IntCurvesFace_ShapeIntersector::SortResult ******/
 		/****** md5 signature: 710973a5fe7c429ac44b8335f6329d05 ******/
@@ -580,7 +580,7 @@ Internal method. Sort the result on the Curve parameter.
 		void SortResult();
 
 		/****** IntCurvesFace_ShapeIntersector::State ******/
-		/****** md5 signature: 0b607cc57075af0e92d50aac1d2dabea ******/
+		/****** md5 signature: 159014de965e4002341d01cdd1e6c89e ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "
 Parameters
@@ -595,10 +595,10 @@ Description
 -----------
 Returns the ith state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boundary of the face).
 ") State;
-		TopAbs_State State(const Standard_Integer I);
+		TopAbs_State State(const int I);
 
 		/****** IntCurvesFace_ShapeIntersector::Transition ******/
-		/****** md5 signature: 776c076743ef9a0accb92662a1d0386a ******/
+		/****** md5 signature: e8abe6223d939360cf3cf19dc5377060 ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "
 Parameters
@@ -613,10 +613,10 @@ Description
 -----------
 Returns the ith transition of the line on the surface.
 ") Transition;
-		IntCurveSurface_TransitionOnCurve Transition(const Standard_Integer I);
+		IntCurveSurface_TransitionOnCurve Transition(const int I);
 
 		/****** IntCurvesFace_ShapeIntersector::UParameter ******/
-		/****** md5 signature: 2cb2ac0f526160df3256c7f8e41fd6b3 ******/
+		/****** md5 signature: 00bdd8aab36d49b11aa86c0f6399ccfc ******/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "
 Parameters
@@ -625,16 +625,16 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the U parameter of the ith intersection point on the surface.
 ") UParameter;
-		Standard_Real UParameter(const Standard_Integer I);
+		double UParameter(const int I);
 
 		/****** IntCurvesFace_ShapeIntersector::VParameter ******/
-		/****** md5 signature: 1a707d9bf40883790bcc4de33d8963ae ******/
+		/****** md5 signature: b87417cd04978e42d923b5591abd6f9e ******/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "
 Parameters
@@ -643,16 +643,16 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the V parameter of the ith intersection point on the surface.
 ") VParameter;
-		Standard_Real VParameter(const Standard_Integer I);
+		double VParameter(const int I);
 
 		/****** IntCurvesFace_ShapeIntersector::WParameter ******/
-		/****** md5 signature: 16651482049d64839981feb7105e98dc ******/
+		/****** md5 signature: 6d10eb8fdf7c9e0d25cd740f55291296 ******/
 		%feature("compactdefaultargs") WParameter;
 		%feature("autodoc", "
 Parameters
@@ -661,13 +661,13 @@ I: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the ith intersection point on the line.
 ") WParameter;
-		Standard_Real WParameter(const Standard_Integer I);
+		double WParameter(const int I);
 
 };
 
