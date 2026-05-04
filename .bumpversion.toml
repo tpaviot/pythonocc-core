@@ -1,0 +1,67 @@
+[tool.bumpversion]
+current_version = "7.9.3"
+commit = true
+tag = false
+tag_name = "{new_major}.{new_minor}.{new_patch}"
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+search = "pythonocc-binderhub/{current_version}"
+replace = "pythonocc-binderhub/{new_version}"
+
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+regex = true
+search = "Latest release: \\[pythonocc-core {current_version} \\(\\d{{4}}-\\d{{2}}-\\d{{2}}\\)\\]\\(https://github\\.com/tpaviot/pythonocc-core/releases/tag/{current_version}\\)"
+replace = "Latest release: [pythonocc-core {new_version} ({now:%Y-%m-%d})](https://github.com/tpaviot/pythonocc-core/releases/tag/{new_version})"
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+search = "to open a jupyter notebook running the latest pythonocc-core {current_version}."
+replace = "to open a jupyter notebook running the latest pythonocc-core {new_version}."
+
+[[tool.bumpversion.files]]
+filename = "README.md"
+search = "conda install -c conda-forge pythonocc-core={current_version}"
+replace = "conda install -c conda-forge pythonocc-core={new_version}"
+
+[[tool.bumpversion.files]]
+filename = "CMakeLists.txt"
+search = "VERSION_MAJOR {current_major}"
+replace = "VERSION_MAJOR {new_major}"
+
+[[tool.bumpversion.files]]
+filename = "CMakeLists.txt"
+search = "VERSION_MINOR {current_minor}"
+replace = "VERSION_MINOR {new_minor}"
+
+[[tool.bumpversion.files]]
+filename = "CMakeLists.txt"
+search = "VERSION_PATCH {current_patch}"
+replace = "VERSION_PATCH {new_patch}"
+
+[[tool.bumpversion.files]]
+filename = "src/PkgBase/__init__.py"
+search = "PYTHONOCC_VERSION_MAJOR = {current_major}"
+replace = "PYTHONOCC_VERSION_MAJOR = {new_major}"
+
+[[tool.bumpversion.files]]
+filename = "src/PkgBase/__init__.py"
+search = "PYTHONOCC_VERSION_MINOR = {current_minor}"
+replace = "PYTHONOCC_VERSION_MINOR = {new_minor}"
+
+[[tool.bumpversion.files]]
+filename = "src/PkgBase/__init__.py"
+search = "PYTHONOCC_VERSION_PATCH = {current_patch}"
+replace = "PYTHONOCC_VERSION_PATCH = {new_patch}"
+
+[[tool.bumpversion.files]]
+filename = "ci/conda/meta.yaml"
+search = "set version = \"{current_version}\""
+replace = "set version = \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "ci/conda/meta.yaml"
+search = "- occt =={current_version}"
+replace = "- occt =={new_version}"
