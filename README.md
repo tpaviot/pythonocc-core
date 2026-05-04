@@ -12,7 +12,7 @@ About
 -----
 pythonocc provides 3D modeling and dataexchange features. It is intended for CAD/PDM/PLM/BIM development. It is based on the OpenCascade Technology modeling kernel.
 
-Latest release: [pythonocc-core 7.9.3 (February 2026)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.9.3)
+Latest release: [pythonocc-core 7.9.3 (2026-02-12)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.9.3)
 
 Features
 --------
